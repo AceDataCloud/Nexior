@@ -1,11 +1,11 @@
 {
   "name.bot": {
-    "message": "Grok 視頻機器人",
-    "description": "Grok 視頻生成器的名稱"
+    "message": "Grok 影片機器人",
+    "description": "Grok 影片生成器的名稱"
   },
   "name.prompt": {
     "message": "提示詞",
-    "description": "用於生成視頻的提示"
+    "description": "用於生成影片的提示"
   },
   "name.model": {
     "message": "模型",
@@ -16,8 +16,8 @@
     "description": "畫面比例的標籤"
   },
   "name.resolution": {
-    "message": "分辨率",
-    "description": "分辨率的標籤"
+    "message": "解析度",
+    "description": "解析度的標籤"
   },
   "name.duration": {
     "message": "時長",
@@ -28,7 +28,7 @@
     "description": "輸入圖片的標籤"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
+    "message": "參考圖",
     "description": "Label for reference images"
   },
   "name.required": {
@@ -60,11 +60,11 @@
     "description": "狀態標題"
   },
   "description.prompt": {
-    "message": "描述你想生成的視頻（場景、主體、動作、鏡頭、光線、風格）。",
+    "message": "描述你想生成的影片（場景、主體、動作、鏡頭、光線、風格）。",
     "description": "有關提示輸入的說明"
   },
   "description.model": {
-    "message": "選擇 Grok Imagine 模型。grok-imagine-video 支持文生與圖生視頻；1.5-preview 僅支持圖生視頻。",
+    "message": "選擇 Grok Imagine 模型。grok-imagine-video 支援文生與圖生影片；1.5-preview 僅支援圖生影片。",
     "description": "有關模型選擇的說明"
   },
   "description.ratio": {
@@ -72,23 +72,23 @@
     "description": "有關畫面比例的說明"
   },
   "description.resolution": {
-    "message": "選擇輸出分辨率。分辨率越高，每秒消耗的額度越多。",
-    "description": "有關分辨率的說明"
+    "message": "選擇輸出解析度。解析度越高，每秒消耗的額度越多。",
+    "description": "有關解析度的說明"
   },
   "description.duration": {
-    "message": "視頻時長（秒），按輸出秒數計費。",
+    "message": "影片時長（秒），按輸出秒數計費。",
     "description": "有關時長的說明"
   },
   "description.image": {
-    "message": "可選的輸入圖片，用於圖生視頻。grok-imagine-video-1.5-preview 為必填。",
+    "message": "可選的輸入圖片，用於圖生影片。grok-imagine-video-1.5-preview 為必填。",
     "description": "有關圖片輸入的說明"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "message": "可選的參考圖，用於引導生成影片的風格或內容（僅 grok-imagine-video 支援）。",
     "description": "Instructions for reference images"
   },
   "placeholder.prompt": {
-    "message": "描述你的视频…",
+    "message": "描述你的影片…",
     "description": "提示的佔位符"
   },
   "placeholder.select": {
@@ -96,11 +96,11 @@
     "description": "選擇的佔位符"
   },
   "model.default": {
-    "message": "Grok Imagine 視頻",
-    "description": "默認模型標籤"
+    "message": "Grok Imagine 影片",
+    "description": "預設模型標籤"
   },
   "model.preview15": {
-    "message": "Grok Imagine 視頻 1.5（預覽，圖生視頻）",
+    "message": "Grok Imagine 影片 1.5（預覽，圖生影片）",
     "description": "1.5 預覽模型標籤"
   },
   "button.upload": {
@@ -128,7 +128,7 @@
     "description": "上傳超過限制的警告"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
+    "message": "最多可上傳 4 張參考圖。",
     "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
@@ -136,11 +136,11 @@
     "description": "上傳錯誤"
   },
   "message.downloadVideo": {
-    "message": "下載視頻",
+    "message": "下載影片",
     "description": "下載提示"
   },
   "message.modelRequiresImage": {
-    "message": "該模型需要輸入圖片（圖生視頻）。",
+    "message": "該模型需要輸入圖片（圖生影片）。",
     "description": "模型需要圖片的警告"
   },
   "message.promptOrImageRequired": {
@@ -148,7 +148,7 @@
     "description": "提示詞或圖片必需的警告"
   },
   "message.startingTask": {
-    "message": "正在提交視頻生成任務…",
+    "message": "正在提交影片生成任務…",
     "description": "開始任務"
   },
   "message.startTaskSuccess": {

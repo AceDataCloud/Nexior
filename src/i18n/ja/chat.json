@@ -549,15 +549,15 @@
   },
   "consent.selectScopes": {
     "message": "{provider}の権限範囲を選択",
-    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+    "description": "コンセントカードから開くスコープ選択ダイアログのタイトル。{provider} は上流プロバイダー名（例：Gmail）"
   },
   "consent.selectScopesHint": {
     "message": "付与したい権限範囲を選択してください。複数選択可能で、未選択の場合は基本的なログイン情報のみが付与されます。",
-    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+    "description": "ユーザーが特定のスコープをオプトアウトできることを説明する本文。チェックボックスグループの上に表示される"
   },
   "consent.installFailed": {
     "message": "認証に失敗しました。もう一度お試しください。",
-    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+    "description": "コンセントカードから AuthBackend のインストールエンドポイントがエラーを返した際に表示されるトースト"
   },
   "consent.statusConnected": {
     "message": "接続済み",
@@ -576,77 +576,77 @@
     "description": "ユーザーが認可をスキップした後のカード下部の説明"
   },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "スケジュールタスク"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "スケジュールタスク"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "新規"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "タスクを編集"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "スケジュールタスクがありません。「新規」をクリックして作成してください。"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "まだ実行履歴がありません"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "読み込みに失敗しました"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "「{name}」を削除しますか？タスクの実行が停止されます。"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "今すぐ実行",
+    "description": "スケジュールに関係なく、タスクを即時トリガーする"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "実行をトリガーしました。結果は間もなく実行履歴に表示されます。",
+    "description": "手動トリガー成功"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "トリガーに失敗しました。後でもう一度お試しください。",
+    "description": "手動トリガーエラー"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "結果を表示"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "実行履歴"
   },
   "scheduledTasks.noConversation": {
     "message": "対話記録がありません",
     "description": "実行中のタスクに関連する対話がないことを示します（旧バージョンの実行）。"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60秒のジッター"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "{count}回実行済み"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "アクティブ"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "一時停止"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "エラー"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "待機中"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "実行中"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "成功"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "失敗"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "ステップ上限に到達"
@@ -688,120 +688,120 @@
     "message": "内部エラー"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "操作が必要"
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "毎日"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "毎分"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "毎時"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "毎週"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron式"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "間隔",
+    "description": "固定間隔で実行"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "分",
+    "description": "間隔単位：分"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "時間",
+    "description": "間隔単位：時間"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "日",
+    "description": "間隔単位：日"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "〇分",
+    "description": "毎時何分に実行するか"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "毎時何分に実行するか（0〜59）",
+    "description": "毎時分ヒント"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "前回の実行から一定間隔ごとに1回実行（最短1分）",
+    "description": "間隔ヒント"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "標準5フィールドのCron式：分 時 日 月 曜日",
+    "description": "Cronヒント"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "{text}に実行",
+    "description": "スケジュールプレビュー"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "{n}分ごと",
+    "description": "人間が読める表示：N分ごと"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "{n}時間ごと",
+    "description": "人間が読める表示：N時間ごと"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "{n}日ごと",
+    "description": "人間が読める表示：N日ごと"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "毎時{n}分",
+    "description": "人間が読める表示：毎時N分"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "毎日{time}",
+    "description": "人間が読める表示：毎日〇時"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "{weekday} {time}",
+    "description": "人間が読める表示：毎週〇曜日〇時"
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "人間が読める表示：Cronそのまま"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "{time}に1回",
+    "description": "人間が読める表示：1回のみ"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "タスク名"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "例：毎日のニュースまとめ"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "モデル"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "プロンプト"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "スケジュールされた質問や指示を入力してください。{'{{date}}'}、{'{{run_count}}'}、{'{{last_output}}'}変数が使えます。"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "変数：{'{{date}}'}今日の日付、{'{{run_count}}'}実行回数、{'{{last_output}}'}前回の出力スニペット"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "頻度"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "時刻"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "曜日"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron式"
   },
   "scheduledTasks.form.skills": {
     "message": "権限を付与する Skills",
@@ -833,11 +833,11 @@
   },
   "scheduledTasks.form.maxTurns": {
     "message": "最大ターン数",
-    "description": "Scheduled task per-run agent turn cap"
+    "description": "定期タスクの1回の実行あたりのエージェントターン上限"
   },
   "scheduledTasks.form.maxTurnsHint": {
     "message": "1 回の実行で許可されるエージェントの最大ターン数（1–50）。上限が低すぎると、複数ステップのタスク（Bash やドキュメント検索を何度も実行するスキルなど）が完了前に強制停止され、最終結果が残りません。デフォルトは 50。",
-    "description": "Scheduled task per-run agent turn cap"
+    "description": "定期タスクの1回の実行あたりのエージェントターン上限"
   },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "無人権限付与の確認",
@@ -848,19 +848,19 @@
     "description": "権限付与確認の本文"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "まずスキルを連携してください",
+    "description": "定期タスクで認可されたスキル/MCPがまだユーザーに連携されていない場合に表示されるダイアログタイトル"
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "スキル「{name}」はまだアカウントに連携またはアクティブになっていません。連携しない場合、バックグラウンド実行時にこのタスクが使用できない場合があります。先に連携することをお勧めします。",
+    "description": "警告本文。{name}はスキル/MCP名。連携されていないことを説明し、このまま保存するオプションを提供する"
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "このまま保存",
+    "description": "連携チェックをスキップして定期タスクを保存する確認ボタン"
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "タスク名とプロンプトを入力してください"
   },
   "artifacts.navTitle": {
     "message": "出力",
@@ -1035,55 +1035,55 @@
     "description": "Claude Opus 4.7モデルの説明"
   },
   "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
+    "message": "再表示",
+    "description": "非表示にした出力を元に戻す"
   },
   "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
+    "message": "非表示を表示",
+    "description": "フィルターバーで非表示の出力を含めるトグル"
   },
   "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
+    "message": "非表示",
+    "description": "現在非表示になっている出力に表示されるバッジ"
   },
   "scheduledTasks.run.reason.billing_gate_failed": {
     "message": "請求認証に失敗しました"
   },
   "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
+    "message": "ブラウザ操作",
+    "description": "BrowserDeviceツール操作のフォールバックタイトル"
   },
   "browserTool.state.choose_device": {
-    "message": "Choose a browser device"
+    "message": "ブラウザデバイスを選択"
   },
   "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
+    "message": "ブラウザデバイスがオフラインです"
   },
   "browserTool.state.awaiting_device": {
-    "message": "Waiting for browser device"
+    "message": "ブラウザデバイスを待機中"
   },
   "browserTool.state.awaiting_local_approval": {
-    "message": "Waiting for approval on the browser device"
+    "message": "ブラウザデバイスで承認待ち"
   },
   "browserTool.state.takeover_required": {
-    "message": "Take over on the browser device"
+    "message": "ブラウザデバイスで引き継ぎが必要"
   },
   "browserTool.state.executing": {
-    "message": "Executing in browser"
+    "message": "ブラウザで実行中"
   },
   "browserTool.state.completed": {
-    "message": "Completed"
+    "message": "完了"
   },
   "browserTool.state.denied": {
-    "message": "Denied on the browser device"
+    "message": "ブラウザデバイスで拒否されました"
   },
   "browserTool.state.expired": {
-    "message": "Browser request expired"
+    "message": "ブラウザリクエストの期限切れ"
   },
   "browserTool.state.cancel_too_late": {
-    "message": "Too late to cancel"
+    "message": "キャンセルが間に合いません"
   },
   "scheduledTasks.run.waiting_for_device": {
-    "message": "Waiting for browser device"
+    "message": "ブラウザデバイスを待機中"
   }
 }

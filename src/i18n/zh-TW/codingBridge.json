@@ -9,14 +9,14 @@
   },
   "nodeList.pair": {
     "message": "配對裝置",
-    "description": "開啟配對對話框"
+    "description": "開啟配對對話方塊"
   },
   "nodeList.empty": {
     "message": "尚未配對任何裝置。",
     "description": "裝置清單為空時的提示"
   },
   "nodeList.pairFirst": {
-    "message": "配對第一台裝置",
+    "message": "配對第一臺裝置",
     "description": "空狀態下的配對按鈕"
   },
   "nodeList.remove": {
@@ -61,11 +61,11 @@
   },
   "pair.title": {
     "message": "配對裝置",
-    "description": "配對對話框標題"
+    "description": "配對對話方塊標題"
   },
   "pair.intro": {
     "message": "在你的電腦上執行 Coding Bridge 代理程式，然後在此輸入配對碼即可從網頁端控制它。",
-    "description": "配對對話框介紹"
+    "description": "配對對話方塊介紹"
   },
   "pair.step1": {
     "message": "安裝代理程式（需要 Python 3.10+）：",
@@ -105,11 +105,11 @@
   },
   "permission.title": {
     "message": "需要授權",
-    "description": "授權對話框標題"
+    "description": "授權對話方塊標題"
   },
   "permission.subtitle": {
     "message": "代理程式請求使用工具，核准後繼續。",
-    "description": "授權對話框副標題"
+    "description": "授權對話方塊副標題"
   },
   "permission.deny": {
     "message": "拒絕",
@@ -120,7 +120,7 @@
     "description": "允許工具授權"
   },
   "session.noDevice": {
-    "message": "選擇一台裝置開始編碼。",
+    "message": "選擇一臺裝置開始編碼。",
     "description": "未選擇裝置時的佔位提示"
   },
   "session.newSession": {
@@ -133,15 +133,15 @@
   },
   "session.nodeId": {
     "message": "裝置 ID",
-    "description": "Diagnostic label for the node id"
+    "description": "節點 id 的診斷標籤"
   },
   "session.sessionId": {
     "message": "工作階段 ID",
-    "description": "Diagnostic label for the session id"
+    "description": "會話 id 的診斷標籤"
   },
   "session.traceId": {
     "message": "追蹤 ID",
-    "description": "Diagnostic label for the trace id"
+    "description": "追蹤 id 的診斷標籤"
   },
   "session.startHint": {
     "message": "傳送一則訊息以在此裝置上開始工作階段。",
@@ -165,26 +165,26 @@
   },
   "session.retry": {
     "message": "重試",
-    "description": "Re-run the last prompt after a failure"
+    "description": "失敗後重新執行上一條提示詞"
   },
   "session.editPrompt": {
-    "message": "Edit",
-    "description": "Edit a sent prompt and resend it as a new turn"
+    "message": "編輯",
+    "description": "編輯已傳送的提示詞並作為新一輪重新傳送"
   },
   "session.editingBanner": {
-    "message": "Editing — sending rewinds the conversation to this point.",
+    "message": "編輯中 — 發送將把對話回退到此處",
     "description": "Banner shown while editing a past prompt"
   },
   "session.editRestoreCode": {
-    "message": "Also restore code",
+    "message": "同時回退程式碼",
     "description": "Checkbox to also roll back file changes when editing"
   },
   "session.editCancel": {
-    "message": "Cancel",
+    "message": "取消",
     "description": "Cancel editing a past prompt"
   },
   "session.editSubmit": {
-    "message": "Update",
+    "message": "更新",
     "description": "Submit an edited prompt (rewind and re-run)"
   },
   "session.enterHint": {
@@ -201,54 +201,54 @@
   },
   "history.button": {
     "message": "歷史會話",
-    "description": "Open the conversation history drawer"
+    "description": "開啟歷史會話抽屜"
   },
   "history.title": {
     "message": "歷史會話",
-    "description": "History drawer title"
+    "description": "歷史會話抽屜標題"
   },
   "history.intro": {
     "message": "此裝置上的 Claude Code、Codex 與 GitHub Copilot 歷史工作階段。",
-    "description": "History drawer intro"
+    "description": "歷史會話抽屜說明"
   },
   "history.refresh": {
     "message": "重新整理",
-    "description": "Reload the history list"
+    "description": "重新載入歷史列表"
   },
   "history.loading": {
     "message": "正在載入歷史…",
-    "description": "History loading message"
+    "description": "歷史載入提示"
   },
   "history.empty": {
     "message": "此裝置上找不到歷史會話。",
-    "description": "Empty history message"
+    "description": "歷史為空提示"
   },
   "history.messages": {
     "message": "{count} 則訊息",
-    "description": "History item message count"
+    "description": "歷史條目訊息數"
   },
   "history.readonly": {
     "message": "此 Codex 會話為唯讀，無法繼續。開始新會話以繼續編碼。",
-    "description": "Read-only replay notice"
+    "description": "只讀回放提示"
   },
   "history.running": {
     "message": "執行中",
-    "description": "Marks a history conversation that is currently live on the device"
+    "description": "歷史會話當前正在裝置上執行的標記"
   },
   "history.resumeHint": {
     "message": "傳送訊息將在裝置上接續此會話。",
-    "description": "Resume composer hint"
+    "description": "續接輸入框提示"
   },
   "history.claudeLabel": {
     "message": "Claude 歷史",
-    "description": "Replayed Claude session label"
+    "description": "回放的 Claude 會話標籤"
   },
   "history.codexLabel": {
     "message": "Codex 歷史（唯讀）",
-    "description": "Replayed Codex session label"
+    "description": "回放的 Codex 會話標籤"
   },
   "session.permissionModeLabel": {
-    "message": "權限模式",
+    "message": "許可權模式",
     "description": "Permission-mode selector label"
   },
   "session.permissionModeDefault": {
@@ -264,7 +264,7 @@
     "description": "Permission mode: read-only planning"
   },
   "session.permissionModeBypass": {
-    "message": "略過所有權限",
+    "message": "略過所有許可權",
     "description": "Permission mode: bypass all permission prompts"
   },
   "session.providerLabel": {
@@ -368,47 +368,47 @@
     "description": "Warning shown when exceeding the max number of images"
   },
   "session.modelDefault": {
-    "message": "Default model",
+    "message": "預設模型",
     "description": "Default model"
   },
   "session.cwdDefault": {
-    "message": "Default directory",
+    "message": "預設目錄",
     "description": "Default directory"
   },
   "session.settings": {
-    "message": "Session settings",
+    "message": "工作階段設定",
     "description": "Session settings"
   },
   "session.settingsLocked": {
-    "message": "Settings are locked for this session",
+    "message": "本工作階段設定已鎖定",
     "description": "Settings are locked for this session"
   },
   "session.attachFile": {
-    "message": "Attach file",
+    "message": "附加檔案",
     "description": "Attach file"
   },
   "session.attachmentImageAlt": {
-    "message": "Attached image",
+    "message": "已附加圖片",
     "description": "Attached image"
   },
   "session.removeAttachment": {
-    "message": "Remove attachment",
+    "message": "移除附件",
     "description": "Remove attachment"
   },
   "session.uploadingAttachment": {
-    "message": "Uploading attachments…",
+    "message": "附件上傳中…",
     "description": "Uploading attachments…"
   },
   "session.attachmentTooLarge": {
-    "message": "File is too large; keep each under 50 MB.",
+    "message": "檔案過大，請保持每個檔案不超過 50 MB。",
     "description": "File is too large; keep each under 50 MB."
   },
   "session.attachmentLimit": {
-    "message": "You can attach up to {count} files.",
+    "message": "最多可附加 {count} 個檔案。",
     "description": "You can attach up to {count} files."
   },
   "session.attachmentUploadError": {
-    "message": "Failed to upload attachment.",
+    "message": "附件上傳失敗。",
     "description": "Failed to upload attachment."
   },
   "notice.slashUnavailable": {

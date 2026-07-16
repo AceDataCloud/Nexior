@@ -232,7 +232,7 @@
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
   "error.loginLinkExpired": {
-    "message": "Login link expired. Please sign in again.",
+    "message": "ログインリンクの有効期限が切れました。もう一度サインインしてください。",
     "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
   },
   "entity.operation": {
@@ -312,7 +312,7 @@
     "description": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared"
   },
   "message.mobileNowOnAppStore": {
-    "message": "Now on the App Store",
+    "message": "App Storeで公開中",
     "description": "Status label shown on the iOS card when the app is live on the App Store"
   },
   "message.desktopWindowsHint": {
@@ -332,7 +332,7 @@
     "description": "Button label that opens the app's Google Play Store listing"
   },
   "button.getOnAppStore": {
-    "message": "Get it on the App Store",
+    "message": "App Storeで入手",
     "description": "Button label that opens the app's Apple App Store listing"
   },
   "message.mobileApkFallback": {
@@ -344,7 +344,7 @@
     "description": "Hint under the QR code explaining that scanning it opens the Google Play listing"
   },
   "message.mobileAppStoreHint": {
-    "message": "Scan to open the App Store",
+    "message": "スキャンしてApp Storeを開く",
     "description": "Hint under the QR code explaining that scanning it opens the App Store listing"
   },
   "message.mobileInstallNote": {
@@ -1000,11 +1000,11 @@
     "description": "Help text under the authorized-folders heading."
   },
   "settings.localToolsComputerUseTitle": {
-    "message": "Computer Use (experimental)",
+    "message": "コンピュータ操作（試験的）",
     "description": "Heading for the opt-in Computer Use (screen + mouse/keyboard control) toggle."
   },
   "settings.localToolsComputerUseHint": {
-    "message": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
+    "message": "AIが画面を見て、このコンピュータのマウスとキーボードを操作できるようにします。",
     "description": "Help text under the Computer Use toggle."
   },
   "settings.localToolsAndroidSkillsTitle": {
@@ -1097,15 +1097,15 @@
     "description": "Save the authorized folders."
   },
   "settings.localToolsMcpTitle": {
-    "message": "MCP servers",
+    "message": "MCPサーバー",
     "description": "Section title for local MCP server configuration in Local Tools settings."
   },
   "settings.localToolsMcpHint": {
-    "message": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
+    "message": "stdioを介してローカルMCPサーバーに接続します。それらのツールがAIで利用可能になります。",
     "description": "Explains what local MCP servers do and that changes apply without a restart."
   },
   "settings.localToolsMcpAdd": {
-    "message": "Add server",
+    "message": "サーバーを追加",
     "description": "Button to add a new local MCP server row."
   },
   "settings.localToolsMcpName": {
@@ -1121,7 +1121,7 @@
     "description": "Label for the MCP server command arguments field."
   },
   "settings.localToolsMcpArgsHint": {
-    "message": "One argument per line.",
+    "message": "1行に1引数。",
     "description": "Placeholder/hint for the MCP arguments textarea."
   },
   "settings.localToolsMcpEnv": {
@@ -1129,31 +1129,31 @@
     "description": "Label for the MCP server environment variables field."
   },
   "settings.localToolsMcpEnvHint": {
-    "message": "One KEY=VALUE per line.",
+    "message": "1行にKEY=VALUE。",
     "description": "Placeholder/hint for the MCP environment variables textarea."
   },
   "settings.localToolsMcpNoServers": {
-    "message": "No MCP servers configured.",
+    "message": "MCPサーバーが設定されていません。",
     "description": "Empty state shown when no MCP servers are configured."
   },
   "settings.localToolsMcpNamePlaceholder": {
-    "message": "e.g. filesystem",
+    "message": "例：filesystem",
     "description": "Placeholder for the MCP server name input."
   },
   "settings.localToolsMcpCommandPlaceholder": {
-    "message": "e.g. npx",
+    "message": "例：npx",
     "description": "Placeholder for the MCP server command input."
   },
   "settings.localToolsMcpNameRequired": {
-    "message": "Each server needs a name and a command.",
+    "message": "各サーバーには名前とコマンドが必要です。",
     "description": "Validation error when a server row is missing a name or command."
   },
   "settings.localToolsMcpDuplicateName": {
-    "message": "Server names must be unique.",
+    "message": "サーバー名は一意である必要があります。",
     "description": "Validation error when two servers share the same name."
   },
   "settings.localToolsMcpNameInvalid": {
-    "message": "Name may only contain letters, numbers, hyphens and underscores.",
+    "message": "名前には英字、数字、ハイフン、アンダースコアのみ使用できます。",
     "description": "Validation error when a server name contains invalid characters."
   },
   "settings.localToolsMcpEnabled": {
@@ -1161,19 +1161,19 @@
     "description": "Toggle label to enable/disable a local MCP server."
   },
   "settings.localToolsMcpReconnect": {
-    "message": "Test / Reconnect",
+    "message": "テスト / 再接続",
     "description": "Button to re-spawn one MCP server and refresh its status."
   },
   "settings.localToolsMcpConnecting": {
-    "message": "Connecting…",
+    "message": "接続中…",
     "description": "Badge while an MCP server is being (re)connected."
   },
   "settings.localToolsMcpNotSaved": {
-    "message": "Not saved yet",
+    "message": "まだ保存されていません",
     "description": "Badge for an MCP server row that hasn't been saved/connected yet."
   },
   "settings.localToolsMcpConnected": {
-    "message": "Connected · {n} tools",
+    "message": "接続済み · {n}ツール",
     "description": "Badge when an MCP server connected; {n} is the tool count."
   },
   "settings.localToolsMcpDisabled": {
@@ -1181,11 +1181,11 @@
     "description": "Badge when an MCP server is turned off."
   },
   "settings.localToolsMcpFailed": {
-    "message": "Failed to connect",
+    "message": "接続に失敗しました",
     "description": "Badge when an MCP server failed to start; the reason is shown below."
   },
   "settings.localToolsMcpPlatformHint": {
-    "message": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
+    "message": "ヒント：npxやuvxなどPATH上のコマンドを使用してください（例：npx -y {'@'}modelcontextprotocol/server-filesystem）",
     "description": "Cross-platform hint for configuring the MCP launch command."
   },
   "settings.localToolsSaved": {
@@ -1405,23 +1405,23 @@
     "description": "ブラウジング履歴の前のページに戻るためのボタンテキスト"
   },
   "title.apiCode": {
-    "message": "API code for this request",
+    "message": "このリクエストのAPIコード",
     "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
   },
   "message.viewCodeHint": {
-    "message": "Show API code for this request",
+    "message": "このリクエストのAPIコードを表示",
     "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
   },
   "button.viewCode": {
-    "message": "View code",
+    "message": "コードを表示",
     "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
   },
   "button.getApiKey": {
-    "message": "Get an API key",
+    "message": "APIキーを取得",
     "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
   },
   "button.apiPlatform": {
-    "message": "API Platform",
+    "message": "APIプラットフォーム",
     "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
   },
   "message.apiCodeIntro": {
@@ -1481,19 +1481,19 @@
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
   "appUpgrade.title": {
-    "message": "Update required",
+    "message": "アップデートが必要",
     "description": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports."
   },
   "appUpgrade.blockMessage": {
-    "message": "This version is no longer supported. Please update from the app store to continue.",
+    "message": "このバージョンはサポートが終了しました。続行するにはApp Storeからアップデートしてください。",
     "description": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store."
   },
   "appUpgrade.softMessage": {
-    "message": "A newer version is available. Update from the app store for the best experience.",
+    "message": "新しいバージョンが利用可能です。最良のエクスペリエンスのためにApp Storeからアップデートしてください。",
     "description": "Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app."
   },
   "appUpgrade.openStore": {
-    "message": "Update now",
+    "message": "今すぐアップデート",
     "description": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser."
   },
   "appUpgrade.later": {
@@ -1505,27 +1505,27 @@
     "description": "ナビゲーションバーのマエストロ記事を動画に変換するページの文字で、'マエストロ'のままにします。"
   },
   "nav.digitalhuman": {
-    "message": "Digital Human",
+    "message": "デジタルヒューマン",
     "description": "Text in the website navigation bar for the Digital Human talking-head page"
   },
   "settings.localToolsAndroidPermHint": {
-    "message": "Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.",
+    "message": "アシスタントが画面を見てデバイスを操作できるように、アクセシビリティサービスを有効にしてください。",
     "description": "Hint for the Android Computer Use accessibility permission section in Settings."
   },
   "settings.cuConsentTitle": {
-    "message": "Allow action?",
+    "message": "操作を許可しますか？",
     "description": "Title of the on-demand consent dialog shown when the assistant requests a screen action."
   },
   "settings.cuConsentMessage": {
-    "message": "The assistant wants to run \"{action}\" on your phone. Allow it?",
+    "message": "アシスタントが「{action}」をスマートフォンで実行しようとしています。許可しますか？",
     "description": "Body of the on-demand consent dialog; {action} is the computer.* action name."
   },
   "settings.cuConsentAllow": {
-    "message": "Allow once",
+    "message": "1回許可",
     "description": "Allow button of the on-demand consent dialog."
   },
   "settings.cuConsentAlways": {
-    "message": "Always allow",
+    "message": "常に許可",
     "description": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again."
   },
   "settings.cuConsentDeny": {
@@ -1536,15 +1536,15 @@
     "message": "価格"
   },
   "settings.memoryEnabled": {
-    "message": "Use memory",
+    "message": "メモリを使用",
     "description": "Title for the switch that controls whether chats use saved memory and learn new memory"
   },
   "settings.memoryEnabledHint": {
-    "message": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
+    "message": "オフにすると、保存されたメモリは使用されず、新しいチャットではメモリが作成されません。既存のメモリは保持されます。",
     "description": "Behavior explanation shown below the memory switch"
   },
   "nav.omni": {
-    "message": "Omni Video",
+    "message": "Omni動画",
     "description": "Nav label for the Omni video module"
   },
   "settings.memoryImport": {
@@ -1552,35 +1552,35 @@
     "description": "Button that opens the memory import dialog"
   },
   "settings.memoryImportTitle": {
-    "message": "Import memory from another AI",
+    "message": "他のAIからメモリをインポート",
     "description": "Title of the memory import dialog"
   },
   "settings.memoryImportExportStep": {
-    "message": "1. Ask your current AI to export its memory",
+    "message": "1. 現在のAIにメモリをエクスポートするよう依頼",
     "description": "First step heading in the memory import dialog"
   },
   "settings.memoryImportPrompt": {
-    "message": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
+    "message": "別のAIサービスに移行します。あなたが保存したすべてのメモリと永続的なコンテキストを一覧にしてください。",
     "description": "Prompt users copy into another AI service to export memories"
   },
   "settings.memoryImportCopy": {
-    "message": "Copy prompt",
+    "message": "プロンプトをコピー",
     "description": "Button that copies the memory export prompt"
   },
   "settings.memoryImportCopied": {
-    "message": "Prompt copied",
+    "message": "コピーしました",
     "description": "Toast shown after copying the memory export prompt"
   },
   "settings.memoryImportPasteStep": {
-    "message": "2. Paste the exported memory",
+    "message": "2. エクスポートしたメモリを貼り付け",
     "description": "Second step heading in the memory import dialog"
   },
   "settings.memoryImportPlaceholder": {
-    "message": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
+    "message": "ChatGPT、Claude、Geminiなどから返されたメモリテキストを貼り付けてください…",
     "description": "Placeholder for pasted memory export text"
   },
   "settings.memoryImportSubmit": {
-    "message": "Add to memory",
+    "message": "メモリに追加",
     "description": "Button that submits pasted memories for import"
   },
   "settings.memoryImportSuccess": {
@@ -1588,15 +1588,15 @@
     "description": "Success toast after importing memory; count is the number of accepted entries"
   },
   "settings.memoryImportPartial": {
-    "message": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
+    "message": "{processed}件を処理しました；{rejected}件の安全でないまたは無効なエントリはスキップされました",
     "description": "Warning shown after a partial memory import"
   },
   "settings.memoryImportInvalid": {
-    "message": "No memory could be imported. Make sure memory is on and paste one plain fact per line.",
+    "message": "メモリをインポートできませんでした。メモリがオンになっていることを確認し、1行に1つの事実を貼り付けてください。",
     "description": "Actionable error shown when the memory import request is invalid"
   },
   "settings.memoryImportInProgress": {
-    "message": "A memory import is already running. Keep this dialog open and try again shortly.",
+    "message": "メモリのインポートが既に実行中です。このダイアログを開いたまま、しばらく後にもう一度お試しください。",
     "description": "Warning shown when another memory import job is active"
   }
 }

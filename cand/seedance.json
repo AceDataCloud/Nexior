@@ -1,0 +1,82 @@
+[
+  {
+    "key": "name.required",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Required",
+    "en": "Required",
+    "zh": "必填"
+  },
+  {
+    "key": "name.required",
+    "field": "description",
+    "reason": "ENG_COPY",
+    "el": "Required indicator",
+    "en": "Required indicator",
+    "zh": "必填标记"
+  },
+  {
+    "key": "message.modelUnsupported",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Selected model is not supported. Please pick another.",
+    "en": "Selected model is not supported. Please pick another.",
+    "zh": "所选模型不被支持，请重新选择。"
+  },
+  {
+    "key": "message.modelUnsupported",
+    "field": "description",
+    "reason": "ENG_COPY",
+    "el": "Warning when the model is not in the supported list",
+    "en": "Warning when the model is not in the supported list",
+    "zh": "不在支持列表中的模型提示"
+  },
+  {
+    "key": "message.modelRequiresImage",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "This model requires a first-frame image to generate the video.",
+    "en": "This model requires a first-frame image to generate the video.",
+    "zh": "该模型需要上传首帧图片才能生成视频。"
+  },
+  {
+    "key": "message.modelRequiresImage",
+    "field": "description",
+    "reason": "ENG_COPY",
+    "el": "Warning when an image-to-video model lacks an image",
+    "en": "Warning when an image-to-video model lacks an image",
+    "zh": "图生视频模型需要图片输入提示"
+  },
+  {
+    "key": "message.modelRejectsImage",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "This model is text-to-video only. Please remove the uploaded image.",
+    "en": "This model is text-to-video only. Please remove the uploaded image.",
+    "zh": "该模型仅支持文生视频，请移除已上传的图片。"
+  },
+  {
+    "key": "message.modelRejectsImage",
+    "field": "description",
+    "reason": "ENG_COPY",
+    "el": "Warning when a text-only model is given an image",
+    "en": "Warning when a text-only model is given an image",
+    "zh": "文生视频模型不接受图片输入提示"
+  },
+  {
+    "key": "message.resolutionNotSupported",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "This resolution is not supported by the selected model.",
+    "en": "This resolution is not supported by the selected model.",
+    "zh": "该分辨率不被当前模型支持。"
+  },
+  {
+    "key": "message.resolutionNotSupported",
+    "field": "description",
+    "reason": "ENG_COPY",
+    "el": "Tooltip when a resolution chip is disabled for the current model",
+    "en": "Tooltip when a resolution chip is disabled for the current model",
+    "zh": "分辨率不被当前模型支持的提示"
+  }
+]

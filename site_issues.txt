@@ -1,0 +1,646 @@
+Total issues: 126
+=== field.contacts ===
+  FI_DESC: Field title for the customer-service contacts in site settings
+  EN_DESC: Field title for the customer-service contacts in site settings
+  ZH_DESC: 站点设置中『客服联系方式』的字段标题
+=== field.disableRecharge ===
+  FI_DESC: Site settings: when on, hide all recharge/top-up entries on this site
+  EN_DESC: Site settings: when on, hide all recharge/top-up entries on this site
+  ZH_DESC: 站点设置：开启后隐藏本站所有充值/购买入口
+=== message.disableRechargeTip ===
+  FI_DESC: Help text for the disable-recharge toggle
+  EN_DESC: Help text for the disable-recharge toggle
+  ZH_DESC: 禁用充值开关的说明文字
+=== field.authProvider_google ===
+  FI_MSG: Google
+  EN_MSG: Google
+  ZH_MSG: Google
+=== field.authProvider_github ===
+  FI_MSG: GitHub
+  EN_MSG: GitHub
+  ZH_MSG: GitHub
+=== field.authProvider_apple ===
+  FI_MSG: Apple
+  EN_MSG: Apple
+  ZH_MSG: Apple
+  FI_DESC: Login provider display name: Sign in with Apple.
+  EN_DESC: Login provider display name: Sign in with Apple.
+  ZH_DESC: 登录方式名称：Sign in with Apple；保留英文品牌名 'Apple' 不翻译
+=== field.authProvider_wechat ===
+  FI_MSG: WeChat
+  EN_MSG: WeChat
+  ZH_MSG: 微信
+=== field.authSmsWebhook ===
+  FI_MSG: Custom SMS Sender
+  EN_MSG: Custom SMS Sender
+  ZH_MSG: 自定义短信发件地址
+  FI_DESC: Site settings / login: title for the site's own custom SMS verification-code delivery webhook
+  EN_DESC: Site settings / login: title for the site's own custom SMS verification-code delivery webhook
+  ZH_DESC: Site settings / login: title for the site's own custom SMS verification-code delivery webhook
+=== message.authSmsWebhookTip ===
+  FI_MSG: When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.
+  EN_MSG: When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.
+  ZH_MSG: 开启后，本站发出的手机验证码短信将由你自己的接口用你自己的签名发送；关闭则使用平台默认签名。需先启用「手机号」登录方式。
+  FI_DESC: Explains the custom SMS sender webhook
+  EN_DESC: Explains the custom SMS sender webhook
+  ZH_DESC: Explains the custom SMS sender webhook
+=== placeholder.authSmsWebhookUrl ===
+  FI_DESC: Placeholder for the SMS webhook URL input
+  EN_DESC: Placeholder for the SMS webhook URL input
+  ZH_DESC: 短信 webhook URL 输入框占位
+=== placeholder.authSmsWebhookSecret ===
+  FI_MSG: Signing secret (leave blank to keep unchanged)
+  EN_MSG: Signing secret (leave blank to keep unchanged)
+  ZH_MSG: 签名密钥（留空则保持不变）
+  FI_DESC: Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing
+  EN_DESC: Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing
+  ZH_DESC: Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing
+=== field.authSmsWebhookEnable ===
+  FI_MSG: Use a custom sender
+  EN_MSG: Use a custom sender
+  ZH_MSG: 启用自定义发件地址
+  FI_DESC: Label next to the custom SMS sender toggle
+  EN_DESC: Label next to the custom SMS sender toggle
+  ZH_DESC: Label next to the custom SMS sender toggle
+=== field.authSmsWebhookDoc ===
+  FI_MSG: View docs
+  EN_MSG: View docs
+  ZH_MSG: 查看文档
+  FI_DESC: Link that opens the SMS webhook spec dialog
+  EN_DESC: Link that opens the SMS webhook spec dialog
+  ZH_DESC: Link that opens the SMS webhook spec dialog
+=== field.authSmsWebhookTest ===
+  FI_MSG: Test
+  EN_MSG: Test
+  ZH_MSG: 测试
+  FI_DESC: Button that opens the SMS webhook test dialog
+  EN_DESC: Button that opens the SMS webhook test dialog
+  ZH_DESC: Button that opens the SMS webhook test dialog
+=== message.authSmsWebhookNeedsPhone ===
+  FI_MSG: Enable the phone-number login provider first to configure a custom SMS sender.
+  EN_MSG: Enable the phone-number login provider first to configure a custom SMS sender.
+  ZH_MSG: 需先启用「手机号」登录方式才能配置自定义短信发件地址。
+  FI_DESC: Tooltip shown when the toggle is disabled because phone login is off
+  EN_DESC: Tooltip shown when the toggle is disabled because phone login is off
+  ZH_DESC: Tooltip shown when the toggle is disabled because phone login is off
+=== field.authSmsWebhookDocTitle ===
+  FI_MSG: Custom SMS Sender · Webhook spec
+  EN_MSG: Custom SMS Sender · Webhook spec
+  ZH_MSG: 自定义短信发件地址 · 接口说明
+  FI_DESC: Title of the SMS webhook spec dialog
+  EN_DESC: Title of the SMS webhook spec dialog
+  ZH_DESC: Title of the SMS webhook spec dialog
+=== message.authSmsWebhookDocIntro ===
+  FI_MSG: This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:
+  EN_MSG: This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:
+  ZH_MSG: 本站会向你填写的地址发起一次带签名的 HTTPS POST 请求，由你的服务负责下发短信。请确保你的接口满足以下要求：
+  FI_DESC: Intro paragraph of the SMS webhook spec dialog
+  EN_DESC: Intro paragraph of the SMS webhook spec dialog
+  ZH_DESC: Intro paragraph of the SMS webhook spec dialog
+=== field.authSmsWebhookDocRequest ===
+  FI_MSG: Request
+  EN_MSG: Request
+  ZH_MSG: 请求
+  FI_DESC: Heading: request section of the SMS webhook spec
+  EN_DESC: Heading: request section of the SMS webhook spec
+  ZH_DESC: Heading: request section of the SMS webhook spec
+=== message.authSmsWebhookDocRequest ===
+  FI_MSG: Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:
+  EN_MSG: Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:
+  ZH_MSG: 方法为 POST，Content-Type 为 application/json。purpose 可能为 login / register / test（test 为连通性测试，可不实际下发短信）。请求体结构如下：
+  FI_DESC: Describes the request method and body of the SMS webhook
+  EN_DESC: Describes the request method and body of the SMS webhook
+  ZH_DESC: Describes the request method and body of the SMS webhook
+=== field.authSmsWebhookDocHeaders ===
+  FI_MSG: Signature verification
+  EN_MSG: Signature verification
+  ZH_MSG: 签名校验
+  FI_DESC: Heading: signature section of the SMS webhook spec
+  EN_DESC: Heading: signature section of the SMS webhook spec
+  ZH_DESC: Heading: signature section of the SMS webhook spec
+=== message.authSmsWebhookDocHeaders ===
+  FI_MSG: Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:
+  EN_MSG: Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:
+  ZH_MSG: 每次请求附带以下请求头，请用你的签名密钥按 Standard Webhooks 规范做 HMAC-SHA256 校验，并使用常量时间比较：
+  FI_DESC: Describes signature verification for the SMS webhook
+  EN_DESC: Describes signature verification for the SMS webhook
+  ZH_DESC: Describes signature verification for the SMS webhook
+=== field.authSmsWebhookDocResponse ===
+  FI_MSG: Response
+  EN_MSG: Response
+  ZH_MSG: 响应
+  FI_DESC: Heading: response section of the SMS webhook spec
+  EN_DESC: Heading: response section of the SMS webhook spec
+  ZH_DESC: Heading: response section of the SMS webhook spec
+=== message.authSmsWebhookDocResponse ===
+  FI_MSG: Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.
+  EN_MSG: Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.
+  ZH_MSG: 下发成功请返回 2xx；如需显式表示失败，可返回 HTTP 200，且 body 中 success 字段为 false（见下方示例）。请在 5 秒内响应。
+  FI_DESC: Describes the expected response of the SMS webhook
+  EN_DESC: Describes the expected response of the SMS webhook
+  ZH_DESC: Describes the expected response of the SMS webhook
+=== field.authSmsWebhookTestTitle ===
+  FI_MSG: Test custom SMS sender
+  EN_MSG: Test custom SMS sender
+  ZH_MSG: 测试自定义短信发件地址
+  FI_DESC: Title of the SMS webhook test dialog
+  EN_DESC: Title of the SMS webhook test dialog
+  ZH_DESC: Title of the SMS webhook test dialog
+=== field.authSmsWebhookTestRegion ===
+  FI_MSG: Country/region code
+  EN_MSG: Country/region code
+  ZH_MSG: 国家/地区区号
+  FI_DESC: Label for the region-code field in the test dialog
+  EN_DESC: Label for the region-code field in the test dialog
+  ZH_DESC: Label for the region-code field in the test dialog
+=== field.authSmsWebhookTestNumber ===
+  FI_MSG: Test phone number (optional)
+  EN_MSG: Test phone number (optional)
+  ZH_MSG: 测试手机号（选填）
+  FI_DESC: Label for the phone-number field in the test dialog
+  EN_DESC: Label for the phone-number field in the test dialog
+  ZH_DESC: Label for the phone-number field in the test dialog
+=== field.authSmsWebhookTestSend ===
+  FI_MSG: Send test
+  EN_MSG: Send test
+  ZH_MSG: 发送测试
+  FI_DESC: Button that sends the SMS webhook test request
+  EN_DESC: Button that sends the SMS webhook test request
+  ZH_DESC: Button that sends the SMS webhook test request
+=== message.authSmsWebhookTestOk ===
+  FI_MSG: The test request was delivered to your endpoint successfully.
+  EN_MSG: The test request was delivered to your endpoint successfully.
+  ZH_MSG: 测试请求已成功送达你的接口。
+  FI_DESC: Success message after a webhook test
+  EN_DESC: Success message after a webhook test
+  ZH_DESC: Success message after a webhook test
+=== message.authSmsWebhookTestFailed ===
+  FI_MSG: Test failed. Check the URL, signing secret, and your endpoint's response.
+  EN_MSG: Test failed. Check the URL, signing secret, and your endpoint's response.
+  ZH_MSG: 测试失败，请检查地址、签名密钥与接口返回。
+  FI_DESC: Failure message after a webhook test
+  EN_DESC: Failure message after a webhook test
+  ZH_DESC: Failure message after a webhook test
+=== field.authSmsWebhookDisableTitle ===
+  FI_MSG: Disable custom SMS sender
+  EN_MSG: Disable custom SMS sender
+  ZH_MSG: 关闭自定义短信发件地址
+  FI_DESC: Title of the confirm dialog shown when disabling the custom SMS sender
+  EN_DESC: Title of the confirm dialog shown when disabling the custom SMS sender
+  ZH_DESC: Title of the confirm dialog shown when disabling the custom SMS sender
+=== message.authSmsWebhookDisableConfirm ===
+  FI_MSG: Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?
+  EN_MSG: Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?
+  ZH_MSG: 关闭后将删除已保存的发件地址与签名密钥（密钥不可恢复），本站将改用平台默认签名。确定关闭吗？
+  FI_DESC: Body of the confirm dialog shown when disabling the custom SMS sender
+  EN_DESC: Body of the confirm dialog shown when disabling the custom SMS sender
+  ZH_DESC: Body of the confirm dialog shown when disabling the custom SMS sender
+=== field.featuresChat ===
+  FI_MSG: Chat
+  EN_MSG: Chat
+  ZH_MSG: Chat
+=== field.featuresVeo ===
+  FI_MSG: Veo
+  EN_MSG: Veo
+  ZH_MSG: Veo
+=== field.featuresSora ===
+  FI_MSG: Sora
+  EN_MSG: Sora
+  ZH_MSG: Sora
+=== field.featuresGrok ===
+  FI_MSG: Grok
+  EN_MSG: Grok
+  ZH_MSG: Grok
+=== field.featuresGrokvideo ===
+  FI_MSG: Grok Video
+  EN_MSG: Grok Video
+  ZH_MSG: Grok Video
+=== field.featuresMaestro ===
+  FI_MSG: Maestro
+  EN_MSG: Maestro
+  ZH_MSG: Maestro
+=== field.featuresDigitalhuman ===
+  FI_MSG: Digital Human
+  EN_MSG: Digital Human
+  ZH_MSG: 数字人
+  FI_DESC: Displayed as the title in the editing box
+  EN_DESC: Displayed as the title in the editing box
+  ZH_DESC: Displayed as the title in the editing box
+=== field.featuresDeepseek ===
+  FI_MSG: Deepseek
+  EN_MSG: Deepseek
+  ZH_MSG: Deepseek
+=== field.featuresChatgpt ===
+  FI_MSG: ChatGPT
+  EN_MSG: ChatGPT
+  ZH_MSG: ChatGPT
+=== field.featuresMidjourney ===
+  FI_MSG: Midjourney
+  EN_MSG: Midjourney
+  ZH_MSG: Midjourney
+=== field.featuresChatdoc ===
+  FI_MSG: Chatdoc
+  EN_MSG: Chatdoc
+  ZH_MSG: Chatdoc
+=== field.featuresQrart ===
+  FI_MSG: Qrart
+  EN_MSG: Qrart
+  ZH_MSG: Qrart
+=== field.featuresLuma ===
+  FI_MSG: Luma
+  EN_MSG: Luma
+  ZH_MSG: Luma
+=== field.featuresPixverse ===
+  FI_MSG: Pixverse
+  EN_MSG: Pixverse
+  ZH_MSG: Pixverse
+=== field.featuresPika ===
+  FI_MSG: Pika
+  EN_MSG: Pika
+  ZH_MSG: Pika
+=== field.featuresKling ===
+  FI_MSG: Kling
+  EN_MSG: Kling
+  ZH_MSG: Kling
+=== field.featuresHailuo ===
+  FI_MSG: Hailuo
+  EN_MSG: Hailuo
+  ZH_MSG: Hailuo
+=== field.featuresSuno ===
+  FI_MSG: Suno
+  EN_MSG: Suno
+  ZH_MSG: Suno
+=== field.featuresFlux ===
+  FI_MSG: Flux
+  EN_MSG: Flux
+  ZH_MSG: Flux
+=== field.featuresSeedream ===
+  FI_MSG: SeeDream
+  EN_MSG: SeeDream
+  ZH_MSG: SeeDream
+=== field.featuresSeedance ===
+  FI_MSG: SeeDance
+  EN_MSG: SeeDance
+  ZH_MSG: SeeDance
+=== field.featuresWan ===
+  FI_MSG: Wan
+  EN_MSG: Wan
+  ZH_MSG: Wan
+=== field.featuresKimi ===
+  FI_MSG: Kimi
+  EN_MSG: Kimi
+  ZH_MSG: Kimi
+=== field.featuresSerp ===
+  FI_MSG: SERP
+  EN_MSG: SERP
+  ZH_MSG: SERP
+=== field.featuresCodingBridge ===
+  FI_MSG: Coding Bridge
+  EN_MSG: Coding Bridge
+  ZH_MSG: Coding Bridge
+  FI_DESC: Displayed as the title in the editing box
+  EN_DESC: Displayed as the title in the editing box
+  ZH_DESC: 展示在编辑框的标题
+=== field.featuresWebextrator ===
+  FI_MSG: WebExtrator
+  EN_MSG: WebExtrator
+  ZH_MSG: WebExtrator
+  FI_DESC: Displayed as the title in the editing box
+  EN_DESC: Displayed as the title in the editing box
+  ZH_DESC: 展示在编辑框的标题
+=== title.editContacts ===
+  FI_DESC: Title of the edit-support-contacts dialog
+  EN_DESC: Title of the edit-support-contacts dialog
+  ZH_DESC: 编辑客服联系方式弹窗的标题
+=== message.contactsTip ===
+  FI_DESC: Tip for the support-contacts field
+  EN_DESC: Tip for the support-contacts field
+  ZH_DESC: 客服联系方式字段的提示
+=== message.contactsEmpty ===
+  FI_DESC: Placeholder shown when no support contact has been filled in
+  EN_DESC: Placeholder shown when no support contact has been filled in
+  ZH_DESC: 未填写任何客服联系方式时的占位文案
+=== message.featuresGrok ===
+  FI_DESC: Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding.
+  EN_DESC: Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding.
+  ZH_DESC: xAI 智能助手，提供实时信息、推理、写作和编程能力。的能力简介
+=== message.featuresGrokvideo ===
+  FI_DESC: Concise capability introduction: xAI video generation for short clips from text prompts or reference images.
+  EN_DESC: Concise capability introduction: xAI video generation for short clips from text prompts or reference images.
+  ZH_DESC: xAI 视频生成服务，可根据文字提示或参考图制作短片。的能力简介
+=== message.featuresMaestro ===
+  FI_DESC: Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery.
+  EN_DESC: Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery.
+  ZH_DESC: 将创意制作成完整视频，覆盖策划、配音、场景生成和交付。的能力简介
+=== message.featuresDigitalhuman ===
+  FI_DESC: Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync.
+  EN_DESC: Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync.
+  ZH_DESC: 使用合成语音和自然口型同步制作数字人口播视频。的能力简介
+=== message.featuresDeepseek ===
+  FI_DESC: Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions.
+  EN_DESC: Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions.
+  ZH_DESC: DeepSeek 智能助手，擅长深度推理、编程、数学和日常问答。的能力简介
+=== message.featuresChatgpt ===
+  FI_DESC: Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations.
+  EN_DESC: Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations.
+  ZH_DESC: OpenAI 智能助手，擅长写作、推理、编程和多模态对话。的能力简介
+=== message.featuresMidjourney ===
+  FI_DESC: Concise capability introduction: Create polished images and creative variations from text or visual references.
+  EN_DESC: Concise capability introduction: Create polished images and creative variations from text or visual references.
+  ZH_DESC: 根据文字或参考图生成精美图像与创意变体。的能力简介
+=== message.featuresQrart ===
+  FI_DESC: Concise capability introduction: Turn links into scannable artistic QR codes with custom styles and imagery.
+  EN_DESC: Concise capability introduction: Turn links into scannable artistic QR codes with custom styles and imagery.
+  ZH_DESC: 将链接制作成可扫描的艺术二维码，支持自定义风格与图像。的能力简介
+=== message.featuresVeo ===
+  FI_DESC: Concise capability introduction: Google video generation for cinematic clips with strong prompt and motion control.
+  EN_DESC: Concise capability introduction: Google video generation for cinematic clips with strong prompt and motion control.
+  ZH_DESC: Google 视频生成服务，擅长电影感画面、提示理解和运动控制。的能力简介
+=== message.featuresSora ===
+  FI_DESC: Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations.
+  EN_DESC: Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations.
+  ZH_DESC: OpenAI 视频生成服务，适合真实场景、故事表达和视觉变换。的能力简介
+=== message.featuresSuno ===
+  FI_DESC: Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt.
+  EN_DESC: Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt.
+  ZH_DESC: 根据提示生成完整歌曲、歌词、人声和纯音乐。的能力简介
+=== message.featuresPixverse ===
+  FI_DESC: Concise capability introduction: Generate stylized videos from prompts and images with templates and effects.
+  EN_DESC: Concise capability introduction: Generate stylized videos from prompts and images with templates and effects.
+  ZH_DESC: 根据提示和图像生成风格化视频，并提供模板与特效。的能力简介
+=== message.featuresFlux ===
+  FI_DESC: Concise capability introduction: Create detailed images and edit existing visuals with natural-language instructions.
+  EN_DESC: Concise capability introduction: Create detailed images and edit existing visuals with natural-language instructions.
+  ZH_DESC: 生成细节丰富的图像，并通过自然语言编辑现有画面。的能力简介
+=== message.featuresNanobanana ===
+  FI_DESC: Concise capability introduction: Google-powered image generation and editing with precise instruction following.
+  EN_DESC: Concise capability introduction: Google-powered image generation and editing with precise instruction following.
+  ZH_DESC: Google 驱动的图像生成与编辑，能够精准遵循修改指令。的能力简介
+=== message.featuresOpenaiimage ===
+  FI_DESC: Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions.
+  EN_DESC: Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions.
+  ZH_DESC: OpenAI 图像生成与编辑，擅长精美画面、文字和版式设计。的能力简介
+=== message.featuresSeedream ===
+  FI_DESC: Concise capability introduction: ByteDance image generation and editing for high-quality creative visuals.
+  EN_DESC: Concise capability introduction: ByteDance image generation and editing for high-quality creative visuals.
+  ZH_DESC: 字节跳动图像生成与编辑服务，用于创作高质量视觉内容。的能力简介
+=== message.featuresSeedance ===
+  FI_DESC: Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio.
+  EN_DESC: Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio.
+  ZH_DESC: 字节跳动视频生成服务，支持动态场景、镜头运动和可选音频。的能力简介
+=== message.featuresWan ===
+  FI_DESC: Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions.
+  EN_DESC: Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions.
+  ZH_DESC: 阿里巴巴视频生成服务，支持文字、图像、参考素材和多种分辨率。的能力简介
+=== message.featuresProducer ===
+  FI_DESC: Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations.
+  EN_DESC: Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations.
+  ZH_DESC: 创作歌曲、翻唱和续写，并生成不同人声或纯音乐版本。的能力简介
+=== message.featuresKimi ===
+  FI_DESC: Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding.
+  EN_DESC: Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding.
+  ZH_DESC: 月之暗面智能助手，擅长长上下文研究、推理、写作和编程。的能力简介
+=== message.featuresSerp ===
+  FI_DESC: Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results.
+  EN_DESC: Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results.
+  ZH_DESC: 搜索网页、图片、新闻、地图和视频，返回结构化 Google 结果。的能力简介
+=== message.featuresFish ===
+  FI_DESC: Concise capability introduction: Generate natural speech and clone voices for multilingual audio production.
+  EN_DESC: Concise capability introduction: Generate natural speech and clone voices for multilingual audio production.
+  ZH_DESC: 生成自然语音并克隆音色，用于多语言音频制作。的能力简介
+=== message.featuresCodingBridge ===
+  FI_DESC: Concise capability introduction: Connect AI coding assistants to local projects for guided development workflows.
+  EN_DESC: Concise capability introduction: Connect AI coding assistants to local projects for guided development workflows.
+  ZH_DESC: 将 AI 编程助手连接到本地项目，完成引导式开发工作流。的能力简介
+=== message.featuresWebextrator ===
+  FI_DESC: Concise capability introduction: Extract clean, structured content and data from web pages.
+  EN_DESC: Concise capability introduction: Extract clean, structured content and data from web pages.
+  ZH_DESC: 从网页中提取干净、结构化的内容和数据。的能力简介
+=== message.featuresLuma ===
+  FI_DESC: Concise capability introduction: Create cinematic videos from text or images with natural motion.
+  EN_DESC: Concise capability introduction: Create cinematic videos from text or images with natural motion.
+  ZH_DESC: 根据文字或图像生成具有自然运动效果的电影感视频。的能力简介
+=== message.featuresPika ===
+  FI_DESC: Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations.
+  EN_DESC: Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations.
+  ZH_DESC: 生成和编辑创意短视频，支持特效、场景与画面变换。的能力简介
+=== message.featuresKling ===
+  FI_DESC: Concise capability introduction: Create high-quality videos from text, images, or motion references.
+  EN_DESC: Concise capability introduction: Create high-quality videos from text, images, or motion references.
+  ZH_DESC: 根据文字、图像或动作参考生成高质量视频。的能力简介
+=== message.featuresHailuo ===
+  FI_DESC: Concise capability introduction: Generate expressive videos from text or images with smooth character motion.
+  EN_DESC: Concise capability introduction: Generate expressive videos from text or images with smooth character motion.
+  ZH_DESC: 根据文字或图像生成表现力丰富、人物动作流畅的视频。的能力简介
+=== field.featuresGemini ===
+  FI_MSG: Gemini
+  EN_MSG: Gemini
+  ZH_MSG: Gemini
+=== message.featuresGemini ===
+  FI_DESC: Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work.
+  EN_DESC: Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work.
+  ZH_DESC: Google 智能助手，擅长长上下文推理、研究、编程和多模态任务。的能力简介
+=== field.featuresClaude ===
+  FI_MSG: Claude
+  EN_MSG: Claude
+  ZH_MSG: Claude
+=== message.featuresClaude ===
+  FI_DESC: Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis.
+  EN_DESC: Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis.
+  ZH_DESC: Anthropic 智能助手，擅长严谨推理、写作、编程和文档分析。的能力简介
+=== message.userNotFound ===
+  FI_DESC: Shown when the user lookup endpoint returns 404 in the picker preview.
+  EN_DESC: Shown when the user lookup endpoint returns 404 in the picker preview.
+  ZH_DESC: Shown when the user lookup endpoint returns 404 in the picker preview.
+=== message.editUserHint ===
+  FI_DESC: Tip below the lookup input in the inviter / admin user picker dialog.
+  EN_DESC: Tip below the lookup input in the inviter / admin user picker dialog.
+  ZH_DESC: Tip below the lookup input in the inviter / admin user picker dialog.
+=== message.editUsersEmpty ===
+  FI_DESC: Empty-state text shown when the admins list has no users.
+  EN_DESC: Empty-state text shown when the admins list has no users.
+  ZH_DESC: Empty-state text shown when the admins list has no users.
+=== message.userAlreadyAdded ===
+  FI_DESC: Disabled-state label on the Add button when the resolved user is already in the admin list.
+  EN_DESC: Disabled-state label on the Add button when the resolved user is already in the admin list.
+  ZH_DESC: Disabled-state label on the Add button when the resolved user is already in the admin list.
+=== title.addUser ===
+  FI_DESC: Divider title in the admins picker, between the existing-admins list and the lookup input.
+  EN_DESC: Divider title in the admins picker, between the existing-admins list and the lookup input.
+  ZH_DESC: Divider title in the admins picker, between the existing-admins list and the lookup input.
+=== button.addUser ===
+  FI_DESC: Button label to add the resolved user to the admins list.
+  EN_DESC: Button label to add the resolved user to the admins list.
+  ZH_DESC: Button label to add the resolved user to the admins list.
+=== autoTranslate.tooltipOn ===
+  FI_DESC: Tooltip on the auto-translate toggle when it is ON
+  EN_DESC: Tooltip on the auto-translate toggle when it is ON
+  ZH_DESC: 自动翻译切换按钮在开启状态下的 hover 提示
+=== autoTranslate.tooltipOff ===
+  FI_DESC: Tooltip on the auto-translate toggle when it is OFF
+  EN_DESC: Tooltip on the auto-translate toggle when it is OFF
+  ZH_DESC: 自动翻译切换按钮在关闭状态下的 hover 提示
+=== autoTranslate.tooltipDisabledNotSaved ===
+  FI_DESC: Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)
+  EN_DESC: Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)
+  ZH_DESC: 在创建对话框中（尚未保存）按钮被禁用的提示
+=== autoTranslate.confirmEnable ===
+  FI_DESC: Body text of the confirm dialog shown before enabling auto-translation
+  EN_DESC: Body text of the confirm dialog shown before enabling auto-translation
+  ZH_DESC: 点击开启自动翻译时的二次确认弹窗正文
+=== autoTranslate.confirmDisable ===
+  FI_DESC: Body text of the confirm dialog shown before disabling auto-translation
+  EN_DESC: Body text of the confirm dialog shown before disabling auto-translation
+  ZH_DESC: 点击关闭自动翻译时的二次确认弹窗正文
+=== autoTranslate.empty ===
+  FI_DESC: Warning shown when the user tries to enable auto-translation on an empty field
+  EN_DESC: Warning shown when the user tries to enable auto-translation on an empty field
+  ZH_DESC: 字段为空时尝试开启自动翻译的警告提示
+=== autoTranslate.error ===
+  FI_DESC: Fallback error toast when the enable/disable HTTP call fails with no detail
+  EN_DESC: Fallback error toast when the enable/disable HTTP call fails with no detail
+  ZH_DESC: 切换自动翻译接口返回错误时的兜底文案
+=== field.featuresOmni ===
+  FI_MSG: Omni
+  EN_MSG: Omni
+  ZH_MSG: Omni
+=== capabilityOverride.edit ===
+  FI_MSG: Customize app
+  EN_MSG: Customize app
+  ZH_MSG: 自定义应用
+  FI_DESC: Tooltip and accessible label for editing a capability app name and icon
+  EN_DESC: Tooltip and accessible label for editing a capability app name and icon
+  ZH_DESC: 编辑能力应用名称和图标的提示与无障碍标签
+=== capabilityOverride.dialogTitle ===
+  FI_MSG: Customize {name}
+  EN_MSG: Customize {name}
+  ZH_MSG: 自定义 {name}
+  FI_DESC: Dialog title; {name} is the platform-default capability app name
+  EN_DESC: Dialog title; {name} is the platform-default capability app name
+  ZH_DESC: 弹窗标题，{name} 为平台默认应用名称
+=== capabilityOverride.displayName ===
+  FI_MSG: Custom name
+  EN_MSG: Custom name
+  ZH_MSG: 自定义名称
+  FI_DESC: Field label for a per-site capability app display name
+  EN_DESC: Field label for a per-site capability app display name
+  ZH_DESC: 子站能力应用显示名称字段
+=== capabilityOverride.displayNameTip ===
+  FI_MSG: Leave blank to use {name}. Save once before enabling automatic translation.
+  EN_MSG: Leave blank to use {name}. Save once before enabling automatic translation.
+  ZH_MSG: 留空则使用 {name}。首次保存后可开启自动翻译。
+  FI_DESC: Help text; {name} is the platform-default capability app name
+  EN_DESC: Help text; {name} is the platform-default capability app name
+  ZH_DESC: 名称说明，{name} 为平台默认应用名称
+=== capabilityOverride.icon ===
+  FI_MSG: Custom icon
+  EN_MSG: Custom icon
+  ZH_MSG: 自定义图标
+  FI_DESC: Field label for a per-site capability app icon
+  EN_DESC: Field label for a per-site capability app icon
+  ZH_DESC: 子站能力应用图标字段
+=== capabilityOverride.defaultIcon ===
+  FI_MSG: Default
+  EN_MSG: Default
+  ZH_MSG: 默认
+  FI_DESC: Label above the platform-default capability icon preview
+  EN_DESC: Label above the platform-default capability icon preview
+  ZH_DESC: 平台默认图标预览标签
+=== capabilityOverride.currentIcon ===
+  FI_MSG: Current
+  EN_MSG: Current
+  ZH_MSG: 当前效果
+  FI_DESC: Label above the effective capability icon preview
+  EN_DESC: Label above the effective capability icon preview
+  ZH_DESC: 当前生效图标预览标签
+=== capabilityOverride.replaceIcon ===
+  FI_MSG: Replace icon
+  EN_MSG: Replace icon
+  ZH_MSG: 替换图标
+  FI_DESC: Command to upload a replacement capability icon
+  EN_DESC: Command to upload a replacement capability icon
+  ZH_DESC: 上传替换图标的命令
+=== capabilityOverride.uploadIcon ===
+  FI_MSG: Upload icon
+  EN_MSG: Upload icon
+  ZH_MSG: 上传图标
+  FI_DESC: Command to upload the first custom capability icon
+  EN_DESC: Command to upload the first custom capability icon
+  ZH_DESC: 首次上传自定义图标的命令
+=== capabilityOverride.useDefaultIcon ===
+  FI_MSG: Use default icon
+  EN_MSG: Use default icon
+  ZH_MSG: 使用默认图标
+  FI_DESC: Command to clear the custom icon draft
+  EN_DESC: Command to clear the custom icon draft
+  ZH_DESC: 清除自定义图标草稿的命令
+=== capabilityOverride.iconTip ===
+  FI_MSG: PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.
+  EN_MSG: PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.
+  ZH_MSG: 支持 PNG、JPEG 或 WebP，将裁剪为正方形；透明 PNG 会保留透明背景。
+  FI_DESC: Capability icon upload requirements
+  EN_DESC: Capability icon upload requirements
+  ZH_DESC: 能力应用图标上传要求
+=== capabilityOverride.editIcon ===
+  FI_MSG: Edit app icon
+  EN_MSG: Edit app icon
+  ZH_MSG: 编辑应用图标
+  FI_DESC: Title of the capability icon cropper dialog
+  EN_DESC: Title of the capability icon cropper dialog
+  ZH_DESC: 图标裁剪弹窗标题
+=== capabilityOverride.resetAll ===
+  FI_MSG: Restore defaults
+  EN_MSG: Restore defaults
+  ZH_MSG: 恢复默认
+  FI_DESC: Command that removes both custom name and icon
+  EN_DESC: Command that removes both custom name and icon
+  ZH_DESC: 同时删除自定义名称和图标的命令
+=== capabilityOverride.empty ===
+  FI_MSG: Enter a custom name or upload an icon first.
+  EN_MSG: Enter a custom name or upload an icon first.
+  ZH_MSG: 请先输入自定义名称或上传图标。
+  FI_DESC: Warning when attempting to create an empty override
+  EN_DESC: Warning when attempting to create an empty override
+  ZH_DESC: 尝试创建空覆盖时的提示
+=== capabilityOverride.saved ===
+  FI_MSG: App customization saved
+  EN_MSG: App customization saved
+  ZH_MSG: 应用自定义已保存
+  FI_DESC: Success message after saving a capability override
+  EN_DESC: Success message after saving a capability override
+  ZH_DESC: 保存能力应用覆盖后的成功提示
+=== capabilityOverride.savedEnableTranslation ===
+  FI_MSG: Saved. You can now enable automatic translation for the custom name.
+  EN_MSG: Saved. You can now enable automatic translation for the custom name.
+  ZH_MSG: 已保存，现在可以为自定义名称开启自动翻译。
+  FI_DESC: Success message after first save creates an override ID
+  EN_DESC: Success message after first save creates an override ID
+  ZH_DESC: 首次保存并获得覆盖记录 ID 后的提示
+=== capabilityOverride.saveFailed ===
+  FI_MSG: Failed to save app customization
+  EN_MSG: Failed to save app customization
+  ZH_MSG: 保存应用自定义失败
+  FI_DESC: Fallback error for capability override writes
+  EN_DESC: Fallback error for capability override writes
+  ZH_DESC: 能力应用覆盖写入失败的兜底错误
+=== capabilityOverride.resetConfirm ===
+  FI_MSG: Restore the default name and icon for {name}?
+  EN_MSG: Restore the default name and icon for {name}?
+  ZH_MSG: 恢复 {name} 的默认名称和图标？
+  FI_DESC: Confirmation message; {name} is the platform-default capability app name
+  EN_DESC: Confirmation message; {name} is the platform-default capability app name
+  ZH_DESC: 恢复确认文案，{name} 为平台默认应用名称
+=== capabilityOverride.resetDone ===
+  FI_MSG: Default name and icon restored
+  EN_MSG: Default name and icon restored
+  ZH_MSG: 已恢复默认名称和图标
+  FI_DESC: Success message after deleting a capability override
+  EN_DESC: Success message after deleting a capability override
+  ZH_DESC: 删除能力应用覆盖后的成功提示
+=== capabilityOverride.fetchFailed ===
+  FI_MSG: Failed to load app customizations
+  EN_MSG: Failed to load app customizations
+  ZH_MSG: 加载应用自定义失败
+  FI_DESC: Error shown when capability override management rows cannot be loaded
+  EN_DESC: Error shown when capability override management rows cannot be loaded
+  ZH_DESC: 无法读取能力应用覆盖管理记录时的错误

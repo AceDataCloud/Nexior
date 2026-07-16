@@ -104,11 +104,11 @@
     "description": "ログイン方式名：WeChatのサードパーティログイン"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
+    "message": "カスタムSMS送信者",
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+    "message": "有効にすると、このサイトの電話番号確認コードは独自のエンドポイントを通じて送信されます。",
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
@@ -116,15 +116,15 @@
     "description": "Placeholder for the SMS webhook URL input"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
+    "message": "署名シークレット（未変更の場合は空白のまま）",
     "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
+    "message": "カスタム送信者を使用",
     "description": "Label next to the custom SMS sender toggle"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
+    "message": "ドキュメントを見る",
     "description": "Link that opens the SMS webhook spec dialog"
   },
   "field.authSmsWebhookTest": {
@@ -132,15 +132,15 @@
     "description": "Button that opens the SMS webhook test dialog"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
+    "message": "カスタムSMS送信者を設定するには、まず電話番号ログインプロバイダーを有効にしてください。",
     "description": "Tooltip shown when the toggle is disabled because phone login is off"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
+    "message": "カスタムSMS送信者・Webhook仕様",
     "description": "Title of the SMS webhook spec dialog"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+    "message": "このサイトは指定されたURLに署名済みのHTTPS POSTを送信します。あなたのサービスがSMSの送信を担当します。",
     "description": "Intro paragraph of the SMS webhook spec dialog"
   },
   "field.authSmsWebhookDocRequest": {
@@ -148,15 +148,15 @@
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+    "message": "メソッドPOST、Content-Type: application/json。purposeはlogin/register/resetのいずれかです。",
     "description": "Describes the request method and body of the SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
+    "message": "署名検証",
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
+    "message": "各リクエストには以下のヘッダーが含まれています。署名シークレットを使用してHMAC-SHA256で検証してください。",
     "description": "Describes signature verification for the SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
@@ -164,39 +164,39 @@
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+    "message": "成功時は2xxを返してください。失敗を明示するには、HTTP 200とJSONレスポンスを返してください。",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
+    "message": "カスタムSMS送信者のテスト",
     "description": "Title of the SMS webhook test dialog"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
+    "message": "国/地域コード",
     "description": "Label for the region-code field in the test dialog"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
+    "message": "テスト用電話番号（任意）",
     "description": "Label for the phone-number field in the test dialog"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
+    "message": "テスト送信",
     "description": "Button that sends the SMS webhook test request"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
+    "message": "テストリクエストがエンドポイントに正常に送信されました。",
     "description": "Success message after a webhook test"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+    "message": "テスト失敗。URL、署名シークレット、エンドポイントのレスポンスを確認してください。",
     "description": "Failure message after a webhook test"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
+    "message": "カスタムSMS送信者を無効化",
     "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+    "message": "無効化すると、保存された送信者URLと署名シークレットが削除されます（シークレットは再取得できません）。",
     "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
   },
   "field.featuresChat": {
@@ -224,7 +224,7 @@
     "description": "編集ボックスのタイトルとして表示されます"
   },
   "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+    "message": "デジタルヒューマン",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresDeepseek": {
@@ -891,23 +891,23 @@
     "description": "Omniモデルを使い、テキスト、画像、動画参照から動画を生成・編集します。"
   },
   "capabilityOverride.edit": {
-    "message": "Customize app",
+    "message": "アプリをカスタマイズ",
     "description": "Tooltip and accessible label for editing a capability app name and icon"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
+    "message": "「{name}」をカスタマイズ",
     "description": "Dialog title; {name} is the platform-default capability app name"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
+    "message": "カスタム名",
     "description": "Field label for a per-site capability app display name"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
+    "message": "空白のままにすると{name}が使用されます。自動翻訳を有効にする前に一度保存してください。",
     "description": "Help text; {name} is the platform-default capability app name"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
+    "message": "カスタムアイコン",
     "description": "Field label for a per-site capability app icon"
   },
   "capabilityOverride.defaultIcon": {
@@ -919,55 +919,55 @@
     "description": "Label above the effective capability icon preview"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
+    "message": "アイコンを置き換え",
     "description": "Command to upload a replacement capability icon"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
+    "message": "アイコンをアップロード",
     "description": "Command to upload the first custom capability icon"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
+    "message": "デフォルトアイコンを使用",
     "description": "Command to clear the custom icon draft"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
+    "message": "PNG、JPEG、またはWebP。画像は正方形にトリミングされます；透明なPNGは保持されます。",
     "description": "Capability icon upload requirements"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
+    "message": "アプリアイコンを編集",
     "description": "Title of the capability icon cropper dialog"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
+    "message": "デフォルトに戻す",
     "description": "Command that removes both custom name and icon"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
+    "message": "カスタム名を入力するかアイコンをアップロードしてください。",
     "description": "Warning when attempting to create an empty override"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
+    "message": "アプリのカスタマイズを保存しました",
     "description": "Success message after saving a capability override"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
+    "message": "保存しました。カスタム名の自動翻訳を有効にできるようになりました。",
     "description": "Success message after first save creates an override ID"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
+    "message": "アプリのカスタマイズの保存に失敗しました",
     "description": "Fallback error for capability override writes"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
+    "message": "「{name}」のデフォルト名とアイコンに戻しますか？",
     "description": "Confirmation message; {name} is the platform-default capability app name"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
+    "message": "デフォルト名とアイコンが復元されました",
     "description": "Success message after deleting a capability override"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
+    "message": "アプリのカスタマイズの読み込みに失敗しました",
     "description": "Error shown when capability override management rows cannot be loaded"
   }
 }

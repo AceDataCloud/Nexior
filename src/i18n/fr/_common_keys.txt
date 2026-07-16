@@ -1,0 +1,175 @@
+  button.deletePermanently.description: Final red delete button at the bottom of the delete confirmation dialog
+  button.buyMore.description: Text in button for allowing users to top up. Must translate to 'Top Up'.
+  entity.website.message: Ace Data Cloud
+  error.loginLinkExpired.message: Login link expired. Please sign in again.
+  error.loginLinkExpired.description: Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).
+  message.guestTasks.description: Prompt shown in the task list area for not-logged-in guests
+  message.mobileComingSoon.description: Short status label shown on a platform card (e.g. iOS) while its build is being prepared
+  message.mobileNowOnAppStore.message: Now on the App Store
+  button.getOnAppStore.message: Get it on the App Store
+  message.mobileAppStoreHint.message: Scan to open the App Store
+  message.deleteAccountConfirm.description: Confirmation message shown before permanently deleting the user account
+  message.deleteAccountSuccess.description: Message shown after the user account is successfully deleted
+  message.deleteAccountFailed.description: Message shown when account deletion fails
+  message.deleteAccountWarning.description: Red warning banner at the top of the delete confirmation dialog
+  message.deleteAccountConsequences.description: Explains what data will be removed in the delete confirmation dialog
+  message.deleteAccountTypePrompt.description: Instructs the user to type their username to confirm; the username is shown separately below
+  message.deleteAccountPlaceholder.description: Placeholder for the username confirmation input
+  nav.seedance.description: Text in the website navigation bar to display the SeeDance page, must remain as 'SeeDance'
+  nav.grokvideo.description: Text in the website navigation bar to display the Grok Imagine video page
+  nav.luma.description: Text in the website navigation bar to display the Luma page, must remain as 'Luma'
+  nav.pika.description: Text in the website navigation bar to display the Pika page, must remain as 'Pika'
+  nav.kling.description: Text in the website navigation bar to display the Kling page, must remain as 'Kling'
+  nav.hailuo.description: Text in the website navigation bar to display the Hailuo page, must remain as 'Hailuo'
+  nav.wan.description: Text in the website navigation bar to display the Wan page, must remain as 'Wan'
+  nav.producer.description: Text in the website navigation bar to display the Producer page, must remain as 'Producer'
+  nav.kimi.description: Text in the website navigation bar to display the Kimi page, must remain as 'Kimi'
+  nav.serp.description: Text in the website navigation bar to display the SERP page, must remain as 'SERP'
+  nav.codingBridge.description: Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'
+  nav.webextrator.description: Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'
+  nav.image.description: Text in the website navigation bar to display the image page
+  nav.music.description: Text in the website navigation bar to display the music page
+  nav.video.description: Text in the website navigation bar to display the video page
+  nav.distribution.description: Text in the website navigation bar to display the referral earnings page
+  nav.connections.description: Menu item to navigate to the connection management page at auth.acedata.cloud
+  nav.logOut.description: Text in the website navigation bar to log out
+  nav.deleteAccount.description: Menu item to permanently delete the current user account
+  nav.site.description: Text in the website navigation bar to display the site configuration page
+  nav.subsite.description: Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled
+  nav.setting.description: Text in the website navigation bar to display the settings page
+  nav.more.description: Text in the website navigation bar to expand more services
+  nav.locale.description: Text in the website navigation bar to change the language
+  nav.support.description: Text in the website navigation bar to display the contact page
+  nav.darkMode.description: Text in the website navigation bar to switch to dark theme
+  title.alert.description: Title of the alert message
+  title.placeholderOfSelect.description: Placeholder for select input
+  title.placeholderOfInput.description: Placeholder for input field
+  title.allApplications.description: Page title to display all applications
+  title.allOrders.description: Page title to display all orders
+  title.orderInfo.description: Page title to display order information
+  title.buyMore.description: Page title for recharging. Must be translated to 'Top Up'.
+  title.distribution.description: Page title to display referral income, indicating users can earn by inviting others to use the servi
+  title.site.description: Page title to display site configuration
+  title.distributionHistory.description: Page title to display referral history
+  title.invitee.description: Page title to display the inviter
+  title.allUsages.description: Page title to display all usage of the API service
+  title.allCredentials.description: Page title to display all credentials used to access the API
+  about.email.message: office{'@'}acedata.cloud
+  settings.sendShortcut.description: Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.
+  sendShortcut.enter.description: Send-shortcut option: press Enter to send the message.
+  sendShortcut.modEnter.description: Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modif
+  settings.function.description: Title for the site capabilities section in the settings page
+  settings.localTools.description: Desktop-only settings tab for managing local tool folders, permissions and grants.
+  settings.localToolsDesktopOnly.description: Shown when the Local Tools tab is opened on web/mobile.
+  settings.localToolsFoldersTitle.description: Heading for the list of folders the AI may read/write locally.
+  settings.localToolsFoldersHint.description: Help text under the authorized-folders heading.
+  settings.localToolsComputerUseTitle.message: Computer Use (experimental)
+  settings.localToolsComputerUseHint.message: Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — tur
+  settings.localToolsAddFolder.description: Button to pick a folder to authorize.
+  settings.localToolsRemove.description: Button to remove an authorized folder.
+  settings.localToolsNoFolders.description: Empty state for the authorized-folders list.
+  settings.localToolsSave.description: Save the authorized folders.
+  settings.localToolsMcpTitle.description: Section title for local MCP server configuration in Local Tools settings.
+  settings.localToolsMcpHint.message: Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-
+  settings.localToolsMcpHint.description: Explains what local MCP servers do and that changes apply without a restart.
+  settings.localToolsMcpAdd.description: Button to add a new local MCP server row.
+  settings.localToolsMcpName.description: Label for the MCP server name/id field.
+  settings.localToolsMcpCommand.description: Label for the MCP server launch command field.
+  settings.localToolsMcpArgs.description: Label for the MCP server command arguments field.
+  settings.localToolsMcpArgsHint.message: One argument per line.
+  settings.localToolsMcpArgsHint.description: Placeholder/hint for the MCP arguments textarea.
+  settings.localToolsMcpEnv.description: Label for the MCP server environment variables field.
+  settings.localToolsMcpEnvHint.message: One KEY=VALUE per line.
+  settings.localToolsMcpEnvHint.description: Placeholder/hint for the MCP environment variables textarea.
+  settings.localToolsMcpNoServers.message: No MCP servers configured.
+  settings.localToolsMcpNoServers.description: Empty state shown when no MCP servers are configured.
+  settings.localToolsMcpNamePlaceholder.message: e.g. filesystem
+  settings.localToolsMcpNamePlaceholder.description: Placeholder for the MCP server name input.
+  settings.localToolsMcpCommandPlaceholder.message: e.g. npx
+  settings.localToolsMcpCommandPlaceholder.description: Placeholder for the MCP server command input.
+  settings.localToolsMcpNameRequired.message: Each server needs a name and a command.
+  settings.localToolsMcpNameRequired.description: Validation error when a server row is missing a name or command.
+  settings.localToolsMcpDuplicateName.message: Server names must be unique.
+  settings.localToolsMcpDuplicateName.description: Validation error when two servers share the same name.
+  settings.localToolsMcpNameInvalid.message: Name may only contain letters, numbers, hyphens and underscores.
+  settings.localToolsMcpNameInvalid.description: Validation error when a server name contains invalid characters.
+  settings.localToolsMcpEnabled.description: Toggle label to enable/disable a local MCP server.
+  settings.localToolsMcpReconnect.description: Button to re-spawn one MCP server and refresh its status.
+  settings.localToolsMcpConnecting.description: Badge while an MCP server is being (re)connected.
+  settings.localToolsMcpNotSaved.message: Not saved yet
+  settings.localToolsMcpNotSaved.description: Badge for an MCP server row that hasn't been saved/connected yet.
+  settings.localToolsMcpConnected.message: Connected · {n} tools
+  settings.localToolsMcpConnected.description: Badge when an MCP server connected; {n} is the tool count.
+  settings.localToolsMcpDisabled.description: Badge when an MCP server is turned off.
+  settings.localToolsMcpFailed.message: Failed to connect
+  settings.localToolsMcpFailed.description: Badge when an MCP server failed to start; the reason is shown below.
+  settings.localToolsMcpPlatformHint.message: Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-fil
+  settings.localToolsMcpPlatformHint.description: Cross-platform hint for configuring the MCP launch command.
+  settings.localToolsSaved.description: Transient confirmation after saving local-tool folders.
+  settings.localToolsActiveTools.description: Label before the list of currently available local tools.
+  settings.localToolsGrantsTitle.description: Heading for the persistent consent grants list.
+  settings.localToolsGrantsHint.description: Help text under the always-allowed actions heading.
+  settings.localToolsRevoke.description: Button to revoke a single always-allow grant.
+  settings.localToolsRevokeAll.description: Button to revoke every always-allow grant.
+  settings.localToolsNoGrants.description: Empty state for the always-allowed actions list.
+  settings.localToolsPermsTitle.description: Heading for the macOS system-permission section.
+  settings.localToolsPermsHint.description: Help text under the system-permissions heading.
+  settings.localToolsPermFullDisk.description: macOS Full Disk Access permission row.
+  settings.localToolsPermScreen.description: macOS Screen Recording permission row.
+  settings.localToolsPermAccessibility.description: macOS Accessibility permission row.
+  settings.localToolsGranted.description: Status tag when a system permission is granted.
+  settings.localToolsNotGranted.description: Status tag when a system permission is not granted.
+  settings.localToolsOpen.description: Button to open the relevant macOS System Settings pane.
+  settings.contactSupport.description: Section title on the About page listing the site owner's customer-service channels
+  settings.contactSupportTip.description: Subtitle under the support contacts section on the About page
+  settings.contactInvalidUrl.description: Validation error shown when a contact URL is not a valid http(s) link
+  settings.contactInvalidPhone.description: Validation error shown when the phone number is invalid
+  settings.contactInvalidEmail.description: Validation error shown when the email address is invalid
+  title.apiCode.message: API code for this request
+  title.apiCode.description: Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a
+  message.viewCodeHint.message: Show API code for this request
+  message.viewCodeHint.description: Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Exte
+  button.viewCode.description: Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current 
+  button.getApiKey.message: Get an API key
+  button.getApiKey.description: Link text in the API code dialog footer that opens the platform console page where users can create 
+  appUpgrade.title.description: Title of the native-app version gate modal shown at startup when the installed build is older than w
+  appUpgrade.blockMessage.message: This version is no longer supported. Please update from the app store to continue.
+  appUpgrade.blockMessage.description: Body text of the hard-block upgrade modal shown when the installed version is below min_supported. T
+  appUpgrade.softMessage.message: A newer version is available. Update from the app store for the best experience.
+  appUpgrade.softMessage.description: Body text of the soft upgrade prompt shown when the installed version is below latest but above min_
+  appUpgrade.openStore.description: Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.
+  appUpgrade.later.description: Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the c
+  nav.digitalhuman.description: Text in the website navigation bar for the Digital Human talking-head page
+  settings.localToolsAndroidPermHint.message: Enable the accessibility service so the assistant can see and control your screen. You can pre-autho
+  settings.localToolsAndroidPermHint.description: Hint for the Android Computer Use accessibility permission section in Settings.
+  settings.cuConsentTitle.description: Title of the on-demand consent dialog shown when the assistant requests a screen action.
+  settings.cuConsentMessage.message: The assistant wants to run "{action}" on your phone. Allow it?
+  settings.cuConsentMessage.description: Body of the on-demand consent dialog; {action} is the computer.* action name.
+  settings.cuConsentAllow.description: Allow button of the on-demand consent dialog.
+  settings.cuConsentAlways.description: Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts a
+  settings.cuConsentDeny.description: Deny button of the on-demand consent dialog.
+  settings.memoryEnabled.description: Title for the switch that controls whether chats use saved memory and learn new memory
+  settings.memoryEnabledHint.message: When off, saved memories are not used and new chats do not create memories. Existing memories are ke
+  settings.memoryEnabledHint.description: Behavior explanation shown below the memory switch
+  nav.omni.description: Nav label for the Omni video module
+  settings.memoryImport.description: Button that opens the memory import dialog
+  settings.memoryImportTitle.message: Import memory from another AI
+  settings.memoryImportTitle.description: Title of the memory import dialog
+  settings.memoryImportExportStep.message: 1. Ask your current AI to export its memory
+  settings.memoryImportExportStep.description: First step heading in the memory import dialog
+  settings.memoryImportPrompt.message: I'm moving to another AI service. List every saved memory and durable context you have learned about
+  settings.memoryImportPrompt.description: Prompt users copy into another AI service to export memories
+  settings.memoryImportCopy.description: Button that copies the memory export prompt
+  settings.memoryImportCopied.description: Toast shown after copying the memory export prompt
+  settings.memoryImportPasteStep.message: 2. Paste the exported memory
+  settings.memoryImportPasteStep.description: Second step heading in the memory import dialog
+  settings.memoryImportPlaceholder.message: Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…
+  settings.memoryImportPlaceholder.description: Placeholder for pasted memory export text
+  settings.memoryImportSubmit.message: Add to memory
+  settings.memoryImportSubmit.description: Button that submits pasted memories for import
+  settings.memoryImportPartial.message: Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.
+  settings.memoryImportPartial.description: Warning shown after a partial memory import
+  settings.memoryImportInvalid.message: No memory could be imported. Make sure memory is on and paste one plain fact per line.
+  settings.memoryImportInvalid.description: Actionable error shown when the memory import request is invalid
+  settings.memoryImportInProgress.message: A memory import is already running. Keep this dialog open and try again shortly.
+  settings.memoryImportInProgress.description: Warning shown when another memory import job is active

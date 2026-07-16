@@ -13,7 +13,7 @@
   },
   "title.openSite": {
     "message": "Otwórz podstronę",
-    "description": "Title of the open-subsite confirmation dialog."
+    "description": "Tytuł okna potwierdzenia otwarcia podstrony."
   },
   "field.slug": {
     "message": "Prefiks subdomeny",
@@ -25,11 +25,11 @@
   },
   "field.defaultLabel": {
     "message": "Domyślny",
-    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+    "description": "Etykieta wyświetlana obok domyślnej subdomeny w oknie otwierania podstrony."
   },
   "field.customLabel": {
     "message": "Niestandardowy",
-    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
+    "description": "Etykieta wyświetlana obok niestandardowej nazwy hosta (BYO) w oknie otwierania podstrony."
   },
   "field.title": {
     "message": "Tytuł subdomeny",
@@ -65,7 +65,7 @@
   },
   "button.delete": {
     "message": "Usuń",
-    "description": "Button to delete a subsite"
+    "description": "Przycisk usuwania podstrony"
   },
   "message.indexTip": {
     "message": "Twórz niezależne subdomeny dla swojej marki pod główną stroną. Każda subdomena może mieć swoje logo, tytuł i zestaw funkcji, bez potrzeby osobnego budowania kodu źródłowego.",
@@ -113,15 +113,15 @@
   },
   "message.deleteConfirm": {
     "message": "Usunąć podstronę {origin}? Użytkownicy nie będą już mogli uzyskać dostępu przez tę domenę, a tej operacji nie można cofnąć.",
-    "description": "Confirmation prompt before deleting a subsite"
+    "description": "Prośba o potwierdzenie przed usunięciem podstrony"
   },
   "message.deleted": {
     "message": "Podstrona {origin} została usunięta.",
-    "description": "Success message after deleting a subsite"
+    "description": "Komunikat sukcesu po usunięciu podstrony"
   },
   "message.deleteFailed": {
     "message": "Nie udało się usunąć podstrony, spróbuj ponownie później.",
-    "description": "Fallback error message when DELETE fails"
+    "description": "Domyślny komunikat błędu, gdy żądanie DELETE się nie powiedzie"
   },
   "title.domains": {
     "message": "Dostosowana domena dla {origin}",
@@ -205,31 +205,31 @@
   },
   "message.domainFailed": {
     "message": "Weryfikacja domeny lub uruchomienie nie powiodło się.",
-    "description": "Failed 状态兑底文案"
+    "description": "Komunikat zastępczy dla statusu niepowodzenia"
   },
   "message.domainVerifyFailed": {
     "message": "Weryfikacja nie powiodła się, sprawdź, czy rekord CNAME wskazuje na nasz serwer proxy i czy propagacja DNS została zakończona.",
-    "description": "verify 接口 4xx"
+    "description": "Błąd dla odpowiedzi 4xx z interfejsu verify"
   },
   "message.domainDeleteConfirm": {
     "message": "Czy na pewno chcesz odłączyć {hostname}? Po odłączeniu użytkownicy nie będą mogli uzyskać dostępu do twojej podstrony z tej domeny.",
-    "description": "删除确认"
+    "description": "Potwierdzenie usunięcia powiązania domeny"
   },
   "message.domainDeleteFailed": {
     "message": "Usunięcie domeny nie powiodło się.",
-    "description": "DELETE 接口 5xx"
+    "description": "Błąd dla odpowiedzi 5xx z żądania DELETE"
   },
   "status.pending": {
     "message": "Do weryfikacji",
-    "description": "Pending 状态标签：czekanie na dodanie CNAME i kliknięcie „Zweryfikuj teraz”"
+    "description": "Etykieta statusu pending: oczekiwanie na dodanie CNAME i kliknięcie „Zweryfikuj teraz”"
   },
   "status.active": {
     "message": "Aktywna",
-    "description": "Active 状态标签"
+    "description": "Etykieta statusu active"
   },
   "status.failed": {
     "message": "Niepowodzenie",
-    "description": "Failed 状态标签"
+    "description": "Etykieta statusu failed"
   },
   "message.recordNameHint": {
     "message": "Wskazówka: u większości dostawców DNS (DNSPod, Cloudflare, Aliyun, Tencent Cloud itd.) pole „Host\" / „Nazwa\" przyjmuje tylko przedrostek subdomeny. Na przykład przy podpinaniu studio.your-brand.com wpisujesz tylko studio; przy podpinaniu samej domeny głównej (np. your-brand.com) użyj jako hosta znaku {'@'}. Dostawcy oczekujący pełnego FQDN (AWS Route 53, Bind itp.) przyjmują wartość pokazaną w powyższej tabeli bez zmian.",

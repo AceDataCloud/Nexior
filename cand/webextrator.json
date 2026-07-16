@@ -1,0 +1,362 @@
+[
+  {
+    "key": "name.mode",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Mode",
+    "en": "Mode",
+    "zh": "模式"
+  },
+  {
+    "key": "name.url",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "URL",
+    "en": "URL",
+    "zh": "网址"
+  },
+  {
+    "key": "name.expectedType",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Expected Type",
+    "en": "Expected Type",
+    "zh": "内容类型"
+  },
+  {
+    "key": "name.enableLlm",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "LLM Cleanup",
+    "en": "LLM Cleanup",
+    "zh": "LLM 智能清洗"
+  },
+  {
+    "key": "name.advanced",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Advanced",
+    "en": "Advanced",
+    "zh": "高级选项"
+  },
+  {
+    "key": "name.waitUntil",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Wait Until",
+    "en": "Wait Until",
+    "zh": "等待条件"
+  },
+  {
+    "key": "name.waitForSelector",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Wait For Selector",
+    "en": "Wait For Selector",
+    "zh": "等待选择器"
+  },
+  {
+    "key": "name.timeout",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Timeout (s)",
+    "en": "Timeout (s)",
+    "zh": "超时(秒)"
+  },
+  {
+    "key": "name.delay",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Delay (s)",
+    "en": "Delay (s)",
+    "zh": "加载后延迟(秒)"
+  },
+  {
+    "key": "name.blockResources",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Block Resources",
+    "en": "Block Resources",
+    "zh": "屏蔽资源"
+  },
+  {
+    "key": "name.consumption",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Cost",
+    "en": "Cost",
+    "zh": "单次消耗"
+  },
+  {
+    "key": "mode.extract",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Extract",
+    "en": "Extract",
+    "zh": "抽取内容"
+  },
+  {
+    "key": "mode.render",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Render",
+    "en": "Render",
+    "zh": "渲染页面"
+  },
+  {
+    "key": "expectedType.general",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "General",
+    "en": "General",
+    "zh": "通用"
+  },
+  {
+    "key": "expectedType.article",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Article",
+    "en": "Article",
+    "zh": "文章"
+  },
+  {
+    "key": "expectedType.product",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Product",
+    "en": "Product",
+    "zh": "商品"
+  },
+  {
+    "key": "waitUntil.networkidle",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Network Idle",
+    "en": "Network Idle",
+    "zh": "网络空闲"
+  },
+  {
+    "key": "waitUntil.load",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Load",
+    "en": "Load",
+    "zh": "页面加载完成"
+  },
+  {
+    "key": "waitUntil.domcontentloaded",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "DOM Ready",
+    "en": "DOM Ready",
+    "zh": "DOM 就绪"
+  },
+  {
+    "key": "waitUntil.commit",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Commit",
+    "en": "Commit",
+    "zh": "导航开始"
+  },
+  {
+    "key": "blockResource.image",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Images",
+    "en": "Images",
+    "zh": "图片"
+  },
+  {
+    "key": "blockResource.font",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Fonts",
+    "en": "Fonts",
+    "zh": "字体"
+  },
+  {
+    "key": "blockResource.media",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Media",
+    "en": "Media",
+    "zh": "媒体"
+  },
+  {
+    "key": "blockResource.stylesheet",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Stylesheets",
+    "en": "Stylesheets",
+    "zh": "样式表"
+  },
+  {
+    "key": "placeholder.waitForSelector",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "CSS selector, e.g. .article-body",
+    "en": "CSS selector, e.g. .article-body",
+    "zh": "CSS 选择器，例如 .article-body"
+  },
+  {
+    "key": "placeholder.blockResources",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Resource types to block",
+    "en": "Resource types to block",
+    "zh": "选择要屏蔽的资源类型"
+  },
+  {
+    "key": "button.extract",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Extract",
+    "en": "Extract",
+    "zh": "抽取"
+  },
+  {
+    "key": "button.render",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Render",
+    "en": "Render",
+    "zh": "渲染"
+  },
+  {
+    "key": "description.intro",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Render and extract any web page",
+    "en": "Render and extract any web page",
+    "zh": "渲染并抽取任意网页"
+  },
+  {
+    "key": "description.introHint",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+    "en": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+    "zh": "输入网址，选择「抽取」或「渲染」即可获取干净的正文、Markdown、链接、截图等。"
+  },
+  {
+    "key": "description.enableLlm",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
+    "en": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
+    "zh": "使用 LLM 对抽取出的内容进行二次清洗与结构化整理，会额外消耗积分。"
+  },
+  {
+    "key": "message.running",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Working on it…",
+    "en": "Working on it…",
+    "zh": "正在处理…"
+  },
+  {
+    "key": "message.extracting",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Extracting…",
+    "en": "Extracting…",
+    "zh": "正在抽取…"
+  },
+  {
+    "key": "message.rendering",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Rendering…",
+    "en": "Rendering…",
+    "zh": "正在渲染…"
+  },
+  {
+    "key": "message.success",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Done",
+    "en": "Done",
+    "zh": "完成"
+  },
+  {
+    "key": "message.failed",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Request failed",
+    "en": "Request failed",
+    "zh": "请求失败"
+  },
+  {
+    "key": "message.usedUp",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Your quota has been used up. Please top up to continue.",
+    "en": "Your quota has been used up. Please top up to continue.",
+    "zh": "额度已用完，请充值后再试。"
+  },
+  {
+    "key": "message.busy",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Service is busy. Please try again in a moment.",
+    "en": "Service is busy. Please try again in a moment.",
+    "zh": "服务繁忙，请稍后再试。"
+  },
+  {
+    "key": "message.timeout",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "The page took too long to load. Try a different URL or increase the timeout.",
+    "en": "The page took too long to load. Try a different URL or increase the timeout.",
+    "zh": "页面加载超时，请更换网址或调大超时时间。"
+  },
+  {
+    "key": "message.untitled",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Untitled",
+    "en": "Untitled",
+    "zh": "未命名页面"
+  },
+  {
+    "key": "tab.text",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Text",
+    "en": "Text",
+    "zh": "纯文本"
+  },
+  {
+    "key": "tab.structured",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Structured",
+    "en": "Structured",
+    "zh": "结构化"
+  },
+  {
+    "key": "tab.links",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Links",
+    "en": "Links",
+    "zh": "链接"
+  },
+  {
+    "key": "tab.images",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Images",
+    "en": "Images",
+    "zh": "图片"
+  },
+  {
+    "key": "tab.raw",
+    "field": "message",
+    "reason": "ENG_COPY",
+    "el": "Raw JSON",
+    "en": "Raw JSON",
+    "zh": "原始 JSON"
+  }
+]

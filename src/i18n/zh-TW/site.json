@@ -1,26 +1,26 @@
 {
   "field.title": {
-    "message": "站點標題",
+    "message": "站台標題",
     "description": "展示在編輯框的標題"
   },
   "field.origin": {
-    "message": "站點域名",
+    "message": "站台域名",
     "description": "展示在編輯框的標題"
   },
   "field.description": {
-    "message": "站點描述",
+    "message": "站台描述",
     "description": "展示在編輯框的標題"
   },
   "field.keywords": {
-    "message": "站點關鍵詞",
+    "message": "站台關鍵詞",
     "description": "展示在編輯框的標題"
   },
   "field.logo": {
-    "message": "站點 Logo",
+    "message": "站台 Logo",
     "description": "展示在編輯框的標題"
   },
   "field.favicon": {
-    "message": "站點 Favicon",
+    "message": "站台 Favicon",
     "description": "展示在編輯框的標題"
   },
   "field.primaryColor": {
@@ -32,39 +32,39 @@
     "description": "展示在編輯框的標題"
   },
   "field.url": {
-    "message": "鏈接",
+    "message": "連結",
     "description": "展示在編輯框的標題"
   },
   "field.admins": {
-    "message": "站點管理員 ID",
+    "message": "站台管理員 ID",
     "description": "展示在編輯框的標題"
   },
   "field.contacts": {
     "message": "客服聯絡方式",
-    "description": "Field title for the customer-service contacts in site settings"
+    "description": "站臺設定中『客服聯絡方式』的欄位標題"
   },
   "field.markupRatio": {
     "message": "全站統一加價比例",
-    "description": "站點設置：對本站所有充值套餐統一加價的比例（百分比）"
+    "description": "站台設定：對本站所有充值套餐統一加價的比例（百分比）"
   },
   "message.markupRatioTip": {
     "message": "設定本站所有服務的統一加價比例（0%～500%）。下方「單個服務自訂加價」會覆蓋此值。",
-    "description": "加價比例設置項的說明文字"
+    "description": "加價比例設定項的說明文字"
   },
   "message.markupExample": {
     "message": "示例：官方價 {from} → 你的售價 {to}",
-    "description": "加價比例設置項下方的實時示例，{from} 是官方原價，{to} 是加價後的售價"
+    "description": "加價比例設定項下方的實時示例，{from} 是官方原價，{to} 是加價後的售價"
   },
   "field.disableRecharge": {
     "message": "停用儲值",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+    "description": "站臺設定：開啟後隱藏本站所有充值/購買入口"
   },
   "message.disableRechargeTip": {
     "message": "啟用後，本站將隱藏所有儲值/購買按鈕，使用者無法自行儲值額度。",
-    "description": "Help text for the disable-recharge toggle"
+    "description": "禁用充值開關的說明文字"
   },
   "field.distributionDefaultInviterId": {
-    "message": "默認邀請人 ID",
+    "message": "預設邀請人 ID",
     "description": "展示在編輯框的標題"
   },
   "field.distributionForceInviterId": {
@@ -73,11 +73,11 @@
   },
   "field.authEnabledProviders": {
     "message": "啟用的登入方式",
-    "description": "站點設定 / 登入方式 tab 的標題：勾選允許用戶在登入頁面使用的登入方式"
+    "description": "站台設定 / 登入方式 tab 的標題：勾選允許使用者在登入頁面使用的登入方式"
   },
   "field.authDefaultProvider": {
     "message": "預設登入方式",
-    "description": "站點設定 / 登入方式 tab 的標題：登入頁面打開時預設選中的登入方式"
+    "description": "站台設定 / 登入方式 tab 的標題：登入頁面開啟時預設選中的登入方式"
   },
   "field.authProvider_email": {
     "message": "電子郵件",
@@ -97,106 +97,106 @@
   },
   "field.authProvider_apple": {
     "message": "Apple",
-    "description": "Login provider display name: Sign in with Apple."
+    "description": "登入方式名稱：Sign in with Apple；保留英文品牌名 'Apple' 不翻譯"
   },
   "field.authProvider_wechat": {
     "message": "微信",
     "description": "登入方式名稱：微信第三方登入"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
+    "message": "自定義簡訊發件地址",
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+    "message": "開啟後，本站發出的手機驗證碼簡訊將由你自己的介面用你自己的簽名傳送；關閉則使用平臺預設簽名。需先啟用「手機號」登入方式。",
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://你的域名/sms-webhook",
+    "description": "簡訊 webhook URL 輸入框佔位"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
+    "message": "簽名金鑰（留空則保持不變）",
     "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
+    "message": "啟用自定義發件地址",
     "description": "Label next to the custom SMS sender toggle"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
+    "message": "檢視檔案",
     "description": "Link that opens the SMS webhook spec dialog"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
+    "message": "測試",
     "description": "Button that opens the SMS webhook test dialog"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
+    "message": "需先啟用「手機號」登入方式才能配置自定義簡訊發件地址。",
     "description": "Tooltip shown when the toggle is disabled because phone login is off"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
+    "message": "自定義簡訊發件地址 · 介面說明",
     "description": "Title of the SMS webhook spec dialog"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+    "message": "本站會向你填寫的地址發起一次帶簽名的 HTTPS POST 請求，由你的服務負責下發簡訊。請確保你的介面滿足以下要求：",
     "description": "Intro paragraph of the SMS webhook spec dialog"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
+    "message": "請求",
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+    "message": "方法為 POST，Content-Type 為 application/json。purpose 可能為 login / register / test（test 為連通性測試，可不實際下發簡訊）。請求體結構如下：",
     "description": "Describes the request method and body of the SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
+    "message": "簽名校驗",
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
+    "message": "每次請求附帶以下請求頭，請用你的簽名金鑰按 Standard Webhooks 規範做 HMAC-SHA256 校驗，並使用常量時間比較：",
     "description": "Describes signature verification for the SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
+    "message": "響應",
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+    "message": "下發成功請返回 2xx；如需顯式表示失敗，可返回 HTTP 200，且 body 中 success 欄位為 false（見下方示例）。請在 5 秒內響應。",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
+    "message": "測試自定義簡訊發件地址",
     "description": "Title of the SMS webhook test dialog"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
+    "message": "國家/地區區號",
     "description": "Label for the region-code field in the test dialog"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
+    "message": "測試手機號（選填）",
     "description": "Label for the phone-number field in the test dialog"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
+    "message": "傳送測試",
     "description": "Button that sends the SMS webhook test request"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
+    "message": "測試請求已成功送達你的介面。",
     "description": "Success message after a webhook test"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+    "message": "測試失敗，請檢查地址、簽名金鑰與介面返回。",
     "description": "Failure message after a webhook test"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
+    "message": "關閉自定義簡訊發件地址",
     "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+    "message": "關閉後將刪除已儲存的發件地址與簽名金鑰（金鑰不可恢復），本站將改用平臺預設簽名。確定關閉嗎？",
     "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
   },
   "field.featuresChat": {
@@ -216,7 +216,7 @@
     "description": "展示在編輯框的標題"
   },
   "field.featuresGrokvideo": {
-    "message": "Grok 視頻",
+    "message": "Grok 影片",
     "description": "顯示為編輯框中的標題"
   },
   "field.featuresMaestro": {
@@ -224,7 +224,7 @@
     "description": "顯示為編輯框中的標題"
   },
   "field.featuresDigitalhuman": {
-    "message": "數字人",
+    "message": "數位人",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresDeepseek": {
@@ -280,7 +280,7 @@
     "description": "展示在編輯框的標題"
   },
   "field.featuresOpenaiimage": {
-    "message": "OpenAI 圖像",
+    "message": "OpenAI 影象",
     "description": "展示在編輯框的標題"
   },
   "field.featuresSeedream": {
@@ -308,23 +308,23 @@
     "description": "展示在編輯框的標題"
   },
   "field.featuresFish": {
-    "message": "魚音頻",
+    "message": "魚音訊",
     "description": "展示在編輯框的標題"
   },
   "field.featuresCodingBridge": {
     "message": "Coding Bridge",
-    "description": "Displayed as the title in the editing box"
+    "description": "展示在編輯框的標題"
   },
   "field.featuresWebextrator": {
     "message": "WebExtrator",
-    "description": "Displayed as the title in the editing box"
+    "description": "展示在編輯框的標題"
   },
   "field.featuresSupport": {
-    "message": "客服支持",
+    "message": "客服支援",
     "description": "展示在編輯框的標題"
   },
   "field.featuresI18n": {
-    "message": "多語言支持",
+    "message": "多語言支援",
     "description": "展示在編輯框的標題"
   },
   "title.basicConfig": {
@@ -341,7 +341,7 @@
   },
   "title.editContacts": {
     "message": "編輯客服聯絡方式",
-    "description": "Title of the edit-support-contacts dialog"
+    "description": "編輯客服聯絡方式彈出視窗的標題"
   },
   "title.featuresConfig": {
     "message": "功能配置",
@@ -376,7 +376,7 @@
     "description": "展示在編輯框的標題"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "編輯默認邀請人",
+    "message": "編輯預設邀請人",
     "description": "展示在編輯框的標題"
   },
   "title.editDistributionForceInviterId": {
@@ -392,11 +392,11 @@
     "description": "展示在編輯框的標題"
   },
   "placeholder.title": {
-    "message": "請輸入站點標題",
+    "message": "請輸入站台標題",
     "description": "展示在編輯框的標題"
   },
   "placeholder.origin": {
-    "message": "請輸入站點域名",
+    "message": "請輸入站台域名",
     "description": "展示在編輯框的標題"
   },
   "placeholder.editUrl": {
@@ -404,15 +404,15 @@
     "description": "展示在編輯框的標題"
   },
   "placeholder.description": {
-    "message": "請輸入站點描述",
+    "message": "請輸入站台描述",
     "description": "展示在編輯框的標題"
   },
   "placeholder.keywords": {
-    "message": "請輸入站點關鍵詞",
+    "message": "請輸入站台關鍵詞",
     "description": "展示在編輯框的標題"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "請輸入默認邀請人 ID",
+    "message": "請輸入預設邀請人 ID",
     "description": "展示在編輯框的標題"
   },
   "placeholder.editDistributionForceInviterId": {
@@ -432,7 +432,7 @@
     "description": "上傳圖片錯誤的提示"
   },
   "imageCropper.dropHere": {
-    "message": "將圖片拖到此處，或點擊上傳",
+    "message": "將圖片拖到此處，或點選上傳",
     "description": "圖片裁切器空狀態提示"
   },
   "imageCropper.formatHint": {
@@ -481,15 +481,15 @@
   },
   "message.editLogoTip": {
     "message": "建議尺寸：200*60px",
-    "description": "上傳圖片的提示語言"
+    "description": "上傳圖片的提示文字言"
   },
   "message.editQRTip": {
     "message": "建議尺寸：200*200px",
-    "description": "上傳圖片的提示語言"
+    "description": "上傳圖片的提示文字言"
   },
   "message.editFaviconTip": {
     "message": "建議尺寸：32*32px",
-    "description": "上傳圖片的提示語言"
+    "description": "上傳圖片的提示文字言"
   },
   "message.editUrl": {
     "message": "請輸入連結",
@@ -500,200 +500,200 @@
     "description": "至少保留一位管理員的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "默認邀請人的用戶 ID，分銷連結如果不攜帶 inviter_id 參數，則默認使用該用戶 ID 作為邀請人。",
-    "description": "默認邀請人ID的提示"
+    "message": "預設邀請人的使用者 ID，分銷連結如果不攜帶 inviter_id 引數，則預設使用該使用者 ID 作為邀請人。",
+    "description": "預設邀請人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制邀請人的用戶 ID，如果設置了此 ID，無論分銷連結是否攜帶 inviter_id 參數，則強制使用該用戶 ID 作為邀請人。",
+    "message": "強制邀請人的使用者 ID，如果設定了此 ID，無論分銷連結是否攜帶 inviter_id 引數，則強制使用該使用者 ID 作為邀請人。",
     "description": "強制邀請人ID的提示"
   },
   "message.authEnabledProvidersTip": {
-    "message": "勾選本站登入頁面允許使用的登入方式。至少需要保留一種，否則用戶將無法登入。",
-    "description": "登入方式 tab 中『啟用的登入方式』的說明文本"
+    "message": "勾選本站登入頁面允許使用的登入方式。至少需要保留一種，否則使用者將無法登入。",
+    "description": "登入方式 tab 中『啟用的登入方式』的說明文字"
   },
   "message.authDefaultProviderTip": {
-    "message": "用戶進入登入頁面時預設選中的登入方式，必須為已啟用的登入方式之一。",
-    "description": "登入方式 tab 中『預設登入方式』的說明文本"
+    "message": "使用者進入登入頁面時預設選中的登入方式，必須為已啟用的登入方式之一。",
+    "description": "登入方式 tab 中『預設登入方式』的說明文字"
   },
   "message.authProvidersAtLeastOne": {
     "message": "至少需要保留一種登入方式",
-    "description": "用戶嘗試取消勾選所有登入方式時的警告提示"
+    "description": "使用者嘗試取消勾選所有登入方式時的警告提示"
   },
   "message.originTip": {
-    "message": "站點域名，站點配置與域名綁定，站點域名不可更改。",
-    "description": "站點域名的提示"
+    "message": "站台域名，站台配置與域名繫結，站台域名不可更改。",
+    "description": "站台域名的提示"
   },
   "message.titleTip": {
-    "message": "站點標題，展示在瀏覽器標籤頁。",
-    "description": "站點標題的提示"
+    "message": "站台標題，展示在瀏覽器標籤頁。",
+    "description": "站台標題的提示"
   },
   "message.descriptionTip": {
-    "message": "站點描述，位於站點元信息中，用於站點 SEO 優化。",
-    "description": "站點描述的提示"
+    "message": "站台描述，位於站台元資訊中，用於站台 SEO 最佳化。",
+    "description": "站台描述的提示"
   },
   "message.logoTip": {
-    "message": "站點 Logo，當菜單欄展開時，展示在站點菜單頂部。",
-    "description": "站點 Logo 的提示"
+    "message": "站台 Logo，當選單欄展開時，展示在站台選單頂部。",
+    "description": "站台 Logo 的提示"
   },
   "message.faviconTip": {
-    "message": "站點 Favicon，展示在瀏覽器標籤頁。",
-    "description": "站點 Favicon 的提示"
+    "message": "站台 Favicon，展示在瀏覽器標籤頁。",
+    "description": "站台 Favicon 的提示"
   },
   "message.primaryColorTip": {
-    "message": "站點的主題品牌色，作用於全站的按鈕、連結、高亮以及品牌色漸變。",
-    "description": "站點主題色選擇器的提示"
+    "message": "站台的主題品牌色，作用於全站的按鈕、連結、高亮以及品牌色漸變。",
+    "description": "站台主題色選擇器的提示"
   },
   "message.adminsTip": {
-    "message": "站點管理員 ID，默認首次創建該站點的用戶會成為管理員，只有站點管理員可以管理站點。",
-    "description": "站點管理員的提示"
+    "message": "站台管理員 ID，預設首次建立該站台的使用者會成為管理員，只有站台管理員可以管理站台。",
+    "description": "站台管理員的提示"
   },
   "message.adminsTip2": {
-    "message": "可在此處增刪管理員 ID，可到 https://auth.acedata.cloud 查看用戶 ID",
-    "description": "站點管理員的提示"
+    "message": "可在此處增刪管理員 ID，可到 https://auth.acedata.cloud 檢視使用者 ID",
+    "description": "站台管理員的提示"
   },
   "message.contactsTip": {
     "message": "填寫客服聯絡方式（Discord、X、微信、電話、郵箱），將顯示在「關於」頁面中，方便使用者聯絡你。",
-    "description": "Tip for the support-contacts field"
+    "description": "客服聯絡方式欄位的提示"
   },
   "message.contactsEmpty": {
     "message": "尚未設定",
-    "description": "Placeholder shown when no support contact has been filled in"
+    "description": "未填寫任何客服聯絡方式時的佔位文案"
   },
   "message.keywordsTip": {
-    "message": "站點關鍵詞，位於站點元信息中，用於站點 SEO 優化。",
-    "description": "站點關鍵詞的提示"
+    "message": "站台關鍵詞，位於站台元資訊中，用於站台 SEO 最佳化。",
+    "description": "站台關鍵詞的提示"
   },
   "message.keywordsTip2": {
-    "message": "可在此處增刪網站關鍵詞，關鍵詞越精準，越有利於 SEO 優化。",
-    "description": "站點關鍵詞的提示"
+    "message": "可在此處增刪網站關鍵詞，關鍵詞越精準，越有利於 SEO 最佳化。",
+    "description": "站台關鍵詞的提示"
   },
   "message.featuresChat": {
-    "message": "開啟或關閉 Chat 功能模塊。",
+    "message": "開啟或關閉 Chat 功能模組。",
     "description": "Chat 功能的描述"
   },
   "message.featuresGrok": {
     "message": "xAI 助理，提供即時知識、推理、寫作與程式開發能力。",
-    "description": "Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding."
+    "description": "xAI 智慧助手，提供實時資訊、推理、寫作和程式設計能力。的能力簡介"
   },
   "message.featuresGrokvideo": {
     "message": "xAI 影片生成，可由文字提示或參考圖片製作短片。",
-    "description": "Concise capability introduction: xAI video generation for short clips from text prompts or reference images."
+    "description": "xAI 影片生成服務，可根據文字提示或參考圖製作短片。的能力簡介"
   },
   "message.featuresMaestro": {
     "message": "可從概念出發製作完整影片，涵蓋規劃、旁白、場景與成片交付。",
-    "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
+    "description": "將創意製作成完整影片，覆蓋策劃、配音、場景生成和交付。的能力簡介"
   },
   "message.featuresDigitalhuman": {
     "message": "可製作口播影片，支援合成語音與自然唇形同步。",
-    "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
+    "description": "使用合成語音和自然口型同步製作數位人口播影片。的能力簡介"
   },
   "message.featuresDeepseek": {
     "message": "DeepSeek 助理，適合進階推理、程式開發、數學與日常問答。",
-    "description": "Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions."
+    "description": "DeepSeek 智慧助手，擅長深度推理、程式設計、數學和日常問答。的能力簡介"
   },
   "message.featuresChatgpt": {
     "message": "OpenAI 助理，適合寫作、推理、程式開發與多模態對話。",
-    "description": "Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations."
+    "description": "OpenAI 智慧助手，擅長寫作、推理、程式設計和多模態對話。的能力簡介"
   },
   "message.featuresMidjourney": {
     "message": "可依文字或視覺參考，生成精緻圖片與多種創意變化。",
-    "description": "Concise capability introduction: Create polished images and creative variations from text or visual references."
+    "description": "根據文字或參考圖生成精美影象與創意變體。的能力簡介"
   },
   "message.featuresChatdoc": {
-    "message": "開啟或關閉 Chatdoc 功能模塊。",
+    "message": "開啟或關閉 Chatdoc 功能模組。",
     "description": "Chatdoc 功能的描述"
   },
   "message.featuresQrart": {
-    "message": "將連結轉換為可掃描的藝術 QR Code，並支援自訂風格與圖像。",
-    "description": "Concise capability introduction: Turn links into scannable artistic QR codes with custom styles and imagery."
+    "message": "將連結轉換為可掃描的藝術 QR Code，並支援自訂風格與影象。",
+    "description": "將連結製作成可掃描的藝術二維碼，支援自定義風格與影象。的能力簡介"
   },
   "message.featuresVeo": {
     "message": "Google 影片生成，適合具電影感的片段，並提供強大的提示詞與動作控制。",
-    "description": "Concise capability introduction: Google video generation for cinematic clips with strong prompt and motion control."
+    "description": "Google 影片生成服務，擅長電影感畫面、提示理解和運動控制。的能力簡介"
   },
   "message.featuresSora": {
     "message": "OpenAI 影片生成，適合真實場景、敘事內容與視覺轉換。",
-    "description": "Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations."
+    "description": "OpenAI 影片生成服務，適合真實場景、故事表達和視覺變換。的能力簡介"
   },
   "message.featuresSuno": {
     "message": "可依提示詞生成完整歌曲、歌詞、演唱與伴奏。",
-    "description": "Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt."
+    "description": "根據提示生成完整歌曲、歌詞、人聲和純音樂。的能力簡介"
   },
   "message.featuresPixverse": {
     "message": "可依提示詞與圖片生成風格化影片，並支援範本與特效。",
-    "description": "Concise capability introduction: Generate stylized videos from prompts and images with templates and effects."
+    "description": "根據提示和影象生成風格化影片，並提供模板與特效。的能力簡介"
   },
   "message.featuresFlux": {
     "message": "可生成細緻圖片，並以自然語言指令編輯既有視覺內容。",
-    "description": "Concise capability introduction: Create detailed images and edit existing visuals with natural-language instructions."
+    "description": "生成細節豐富的影象，並透過自然語言編輯現有畫面。的能力簡介"
   },
   "message.featuresNanobanana": {
     "message": "由 Google 提供的圖片生成與編輯，擅長精準遵循指令。",
-    "description": "Concise capability introduction: Google-powered image generation and editing with precise instruction following."
+    "description": "Google 驅動的影象生成與編輯，能夠精準遵循修改指令。的能力簡介"
   },
   "message.featuresOpenaiimage": {
     "message": "OpenAI 圖片生成與編輯，適合精緻視覺、文字與構圖。",
-    "description": "Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions."
+    "description": "OpenAI 影象生成與編輯，擅長精美畫面、文字和版式設計。的能力簡介"
   },
   "message.featuresSeedream": {
     "message": "ByteDance 圖片生成與編輯，可產出高品質創意視覺。",
-    "description": "Concise capability introduction: ByteDance image generation and editing for high-quality creative visuals."
+    "description": "位元組跳動影象生成與編輯服務，用於創作高質量視覺內容。的能力簡介"
   },
   "message.featuresSeedance": {
     "message": "ByteDance 影片生成，適合動態場景、鏡頭運動與可選音訊。",
-    "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+    "description": "位元組跳動影片生成服務，支援動態場景、鏡頭運動和可選音訊。的能力簡介"
   },
   "message.featuresWan": {
     "message": "Alibaba 影片生成，可依文字、圖片或參考素材輸出多種解析度。",
-    "description": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions."
+    "description": "阿里巴巴影片生成服務，支援文字、影象、參考素材和多種解析度。的能力簡介"
   },
   "message.featuresProducer": {
     "message": "可製作歌曲、翻唱、延伸版，��及人聲或純樂器變化。",
-    "description": "Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations."
+    "description": "創作歌曲、翻唱和續寫，並生成不同人聲或純音樂版本。的能力簡介"
   },
   "message.featuresKimi": {
     "message": "Moonshot AI 助理，適合長上下文研究、推理、寫作與程式開發。",
-    "description": "Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding."
+    "description": "月之暗面智慧助手，擅長長上下文研究、推理、寫作和程式設計。的能力簡介"
   },
   "message.featuresSerp": {
     "message": "可搜尋網頁、圖片、新聞、地圖與影片，並提供結構化 Google 結果。",
-    "description": "Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results."
+    "description": "搜尋網頁、圖片、新聞、地圖和影片，返回結構化 Google 結果。的能力簡介"
   },
   "message.featuresFish": {
     "message": "可生成自然語音，並進行多語言音訊製作與聲音複製。",
-    "description": "Concise capability introduction: Generate natural speech and clone voices for multilingual audio production."
+    "description": "生成自然語音並克隆音色，用於多語言音訊製作。的能力簡介"
   },
   "message.featuresCodingBridge": {
-    "message": "可將 AI 程式開發助理連接到本地專案，支援引導式開發流程。",
-    "description": "Concise capability introduction: Connect AI coding assistants to local projects for guided development workflows."
+    "message": "可將 AI 程式開發助理連線到本地專案，支援引導式開發流程。",
+    "description": "將 AI 程式設計助手連線到本地專案，完成引導式開發工作流。的能力簡介"
   },
   "message.featuresWebextrator": {
     "message": "可從網頁擷取乾淨、結構化的內容與資料。",
-    "description": "Concise capability introduction: Extract clean, structured content and data from web pages."
+    "description": "從網頁中提取乾淨、結構化的內容和資料。的能力簡介"
   },
   "message.featuresLuma": {
     "message": "可將文字或圖片轉成具電影感、動作自然的影片。",
-    "description": "Concise capability introduction: Create cinematic videos from text or images with natural motion."
+    "description": "根據文字或影象生成具有自然運動效果的電影感影片。的能力簡介"
   },
   "message.featuresPika": {
     "message": "可生成並編輯短篇創意影片，支援特效、場景與轉換效果。",
-    "description": "Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations."
+    "description": "生成和編輯創意短影片，支援特效、場景與畫面變換。的能力簡介"
   },
   "message.featuresKling": {
     "message": "可依文字、圖片或動作參考，生成高品質影片。",
-    "description": "Concise capability introduction: Create high-quality videos from text, images, or motion references."
+    "description": "根據文字、影象或動作參考生成高質量影片。的能力簡介"
   },
   "message.featuresHailuo": {
     "message": "可依文字或圖片生成富有表現力的影片，角色動作流暢自然。",
-    "description": "Concise capability introduction: Generate expressive videos from text or images with smooth character motion."
+    "description": "根據文字或影象生成表現力豐富、人物動作流暢的影片。的能力簡介"
   },
   "message.featuresSupport": {
-    "message": "開啟或關閉客服支持",
+    "message": "開啟或關閉客服支援",
     "description": "Support 功能的描述"
   },
   "message.featuresI18n": {
-    "message": "開啟或關閉多語言支持，關閉後，使用者只能使用預設語言。",
-    "description": "多語言支持的描述"
+    "message": "開啟或關閉多語言支援，關閉後，使用者只能使用預設語言。",
+    "description": "多語言支援的描述"
   },
   "button.upload": {
     "message": "上傳",
@@ -701,7 +701,7 @@
   },
   "button.resetPrimaryColor": {
     "message": "恢復預設",
-    "description": "恢復站點主題色為平台預設色"
+    "description": "恢復站台主題色為平臺預設色"
   },
   "button.enabled": {
     "message": "已啟用",
@@ -717,26 +717,26 @@
   },
   "message.featuresGemini": {
     "message": "Google 助理，適合長上下文推理、研究、程式開發與多模態工作。",
-    "description": "Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work."
+    "description": "Google 智慧助手，擅長長上下文推理、研究、程式設計和多模態任務。的能力簡介"
   },
   "field.featuresClaude": {
     "message": "Claude",
     "description": "在編輯框中顯示的標題"
   },
   "message.featuresClaude": {
-    "message": "Anthropic 助理，擅長嚴謹推理、寫作、程式開發與文件分析。",
-    "description": "Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis."
+    "message": "Anthropic 助理，擅長嚴謹推理、寫作、程式開發與檔案分析。",
+    "description": "Anthropic 智慧助手，擅長嚴謹推理、寫作、程式設計和檔案分析。的能力簡介"
   },
   "placeholder.admins": {
-    "message": "請輸入管理員用戶 ID",
-    "description": "站點設置中管理員編輯框的佔位符"
+    "message": "請輸入管理員使用者 ID",
+    "description": "站台設定中管理員編輯框的佔位符"
   },
   "message.userNotFound": {
     "message": "未找到此使用者",
     "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
   },
   "message.editUserHint": {
-    "message": "輸入完整 UUID、使用者名稱、信箱或手機號碼查找使用者。",
+    "message": "輸入完整 UUID、使用者名稱、信箱或手機號碼查詢使用者。",
     "description": "Tip below the lookup input in the inviter / admin user picker dialog."
   },
   "message.editUsersEmpty": {
@@ -757,31 +757,31 @@
   },
   "autoTranslate.tooltipOn": {
     "message": "已啟用 — 內容將自動翻譯為 17 種語言顯示",
-    "description": "Tooltip on the auto-translate toggle when it is ON"
+    "description": "自動翻譯切換按鈕在開啟狀態下的 hover 提示"
   },
   "autoTranslate.tooltipOff": {
-    "message": "字面量儲存 — 點擊啟用自動翻譯為 17 種語言",
-    "description": "Tooltip on the auto-translate toggle when it is OFF"
+    "message": "字面量儲存 — 點選啟用自動翻譯為 17 種語言",
+    "description": "自動翻譯切換按鈕在關閉狀態下的 hover 提示"
   },
   "autoTranslate.tooltipDisabledNotSaved": {
     "message": "請先儲存後再啟用自動翻譯",
-    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+    "description": "在建立對話方塊中（尚未儲存）按鈕被禁用的提示"
   },
   "autoTranslate.confirmEnable": {
     "message": "目前內容將被翻譯為 17 種語言，約 1 小時生效。繼續嗎？",
-    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+    "description": "點選開啟自動翻譯時的二次確認彈出視窗正文"
   },
   "autoTranslate.confirmDisable": {
     "message": "關閉後將刪除所有 18 種語言的翻譯，僅保留目前編輯框內容。繼續嗎？",
-    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+    "description": "點選關閉自動翻譯時的二次確認彈出視窗正文"
   },
   "autoTranslate.empty": {
     "message": "請先輸入內容，再啟用自動翻譯",
-    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+    "description": "欄位為空時嘗試開啟自動翻譯的警告提示"
   },
   "autoTranslate.error": {
     "message": "切換自動翻譯失敗，請稍後重試",
-    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+    "description": "切換自動翻譯介面返回錯誤時的兜底文案"
   },
   "services.title": {
     "message": "單個服務自訂加價與展示"
@@ -847,7 +847,7 @@
     "message": "關閉後該服務在本站首頁隱藏（已擁有的使用者仍可存取）。"
   },
   "services.tip.markup": {
-    "message": "0% 按平台原價；0.5 即 +50%；上限 500%。留空則繼承本站預設加價。"
+    "message": "0% 按平臺原價；0.5 即 +50%；上限 500%。留空則繼承本站預設加價。"
   },
   "services.tip.sortOrder": {
     "message": "數字越小越靠前。"
@@ -891,83 +891,83 @@
     "description": "使用 Omni 模型，根據文字、圖片和影片參考生成或編輯影片。"
   },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "自定義應用",
+    "description": "編輯能力應用名稱和圖示的提示與無障礙標籤"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "自定義 {name}",
+    "description": "彈出視窗標題，{name} 為平臺預設應用名稱"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "自定義名稱",
+    "description": "子站能力應用顯示名稱欄位"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "留空則使用 {name}。首次儲存後可開啟自動翻譯。",
+    "description": "名稱說明，{name} 為平臺預設應用名稱"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "自定義圖示",
+    "description": "子站能力應用圖示欄位"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "預設",
+    "description": "平臺預設圖示預覽標籤"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "當前效果",
+    "description": "當前生效圖示預覽標籤"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "替換圖示",
+    "description": "上傳替換圖示的命令"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "上傳圖示",
+    "description": "首次上傳自定義圖示的命令"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "使用預設圖示",
+    "description": "清除自定義圖示草稿的命令"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "支援 PNG、JPEG 或 WebP，將裁剪為正方形；透明 PNG 會保留透明背景。",
+    "description": "能力應用圖示上傳要求"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "編輯應用圖示",
+    "description": "圖示裁剪彈出視窗標題"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "恢復預設",
+    "description": "同時刪除自定義名稱和圖示的命令"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "請先輸入自定義名稱或上傳圖示。",
+    "description": "嘗試建立空覆蓋時的提示"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "應用自定義已儲存",
+    "description": "儲存能力應用覆蓋後的成功提示"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "已儲存，現在可以為自定義名稱開啟自動翻譯。",
+    "description": "首次儲存並獲得覆蓋記錄 ID 後的提示"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "儲存應用自定義失敗",
+    "description": "能力應用覆蓋寫入失敗的兜底錯誤"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "恢復 {name} 的預設名稱和圖示？",
+    "description": "恢復確認文案，{name} 為平臺預設應用名稱"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "已恢復預設名稱和圖示",
+    "description": "刪除能力應用覆蓋後的成功提示"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
+    "message": "載入應用自定義失敗",
+    "description": "無法讀取能力應用覆蓋管理記錄時的錯誤"
   }
 }

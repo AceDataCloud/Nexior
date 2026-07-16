@@ -4,16 +4,16 @@
     "description": "任務的 ID"
   },
   "name.task": {
-    "message": "任務類型",
-    "description": "SeeDream 圖片操作類型"
+    "message": "任務型別",
+    "description": "SeeDream 圖片操作型別"
   },
   "name.generate": {
-    "message": "創建圖片",
-    "description": "操作類型：創建圖片"
+    "message": "建立圖片",
+    "description": "操作型別：建立圖片"
   },
   "name.edits": {
     "message": "編輯圖片",
-    "description": "操作類型：編輯圖片"
+    "description": "操作型別：編輯圖片"
   },
   "name.imageUrls": {
     "message": "參考圖片",
@@ -40,7 +40,7 @@
     "description": "任務的耗時（秒）"
   },
   "name.prompt": {
-    "message": "圖像提示",
+    "message": "影象提示",
     "description": "生成/編輯的提示詞"
   },
   "name.seedreamBot": {
@@ -53,27 +53,27 @@
   },
   "name.watermark": {
     "message": "水印",
-    "description": "是否添加水印"
+    "description": "是否新增水印"
   },
   "description.prompt": {
-    "message": "生成或編輯圖像的提示詞",
+    "message": "生成或編輯影象的提示詞",
     "description": "提示詞描述"
   },
   "description.model": {
     "message": "用於生成或編輯圖片的模型。",
-    "description": "model 參數說明"
+    "description": "model 引數說明"
   },
   "description.size": {
-    "message": "圖片尺寸。支持預設 `1K`、`2K`、`4K` 或自定義 `<寬>x<高>`。",
-    "description": "size 參數說明"
+    "message": "圖片尺寸。支援預設 `1K`、`2K`、`4K` 或自定義 `<寬>x<高>`。",
+    "description": "size 引數說明"
   },
   "description.watermark": {
-    "message": "是否在生成的圖片中添加 AI 水印。默認開啟。",
-    "description": "watermark 參數說明"
+    "message": "是否在生成的圖片中新增 AI 水印。預設開啟。",
+    "description": "watermark 引數說明"
   },
   "description.imageUrls": {
     "message": "上傳 1-14 張參考圖片以啟用圖片編輯。",
-    "description": "image 參數說明"
+    "description": "image 引數說明"
   },
   "status.pending": {
     "message": "等待中",
@@ -109,15 +109,15 @@
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
-    "description": "開始任務消息"
+    "description": "開始任務訊息"
   },
   "message.startTaskSuccess": {
     "message": "成功發起生成任務",
-    "description": "任務成功創建"
+    "description": "任務成功建立"
   },
   "message.startTaskFailed": {
-    "message": "發起任務失敗，請聯繫管理員：",
-    "description": "任務創建失敗"
+    "message": "發起任務失敗，請聯絡管理員：",
+    "description": "任務建立失敗"
   },
   "message.usedUp": {
     "message": "您的積分已用完，請購買更多積分後繼續使用",
@@ -136,12 +136,12 @@
     "description": "能力衝突提示框標題"
   },
   "message.featureNotSupportedBody": {
-    "message": "當前選擇不支持以下已啟用的設置：{fields}。繼續將清理這些設置。",
+    "message": "當前選擇不支援以下已啟用的設定：{fields}。繼續將清理這些設定。",
     "description": "能力衝突提示框正文"
   },
   "message.featureRemovedNotice": {
-    "message": "已清理不支持的設置：{fields}",
-    "description": "能力衝突清理後的提示消息"
+    "message": "已清理不支援的設定：{fields}",
+    "description": "能力衝突清理後的提示訊息"
   },
   "name.model": {
     "message": "模型",
@@ -165,46 +165,46 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 模型選項（支持組圖與流式輸出）"
+    "description": "SeeDream 5.0 模型選項（支援組圖與流式輸出）"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
-    "description": "SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)"
+    "description": "SeeDream 5.0 Pro 模型選項（旗艦單圖，不支援組圖/流式/聯網）"
   },
   "name.maxImages": {
     "message": "圖片張數",
     "description": "組圖生成的圖片張數（max_images）"
   },
   "description.maxImages": {
-    "message": "一次請求生成的圖片數量（1-15）。設為 1 時為單圖模式；大於 1 時自動啟用組圖（sequential_image_generation=auto），跨圖保持角色、風格與細節一致。僅支持 doubao-seedream-5.0 / 4.5 / 4.0；如同時上傳參考圖，需滿足 (參考圖數 + 生成數) ≤ 15。計費按實際生成的圖片張數。",
-    "description": "max_images 參數說明"
+    "message": "一次請求生成的圖片數量（1-15）。設為 1 時為單圖模式；大於 1 時自動啟用組圖（sequential_image_generation=auto），跨圖保持角色、風格與細節一致。僅支援 doubao-seedream-5.0 / 4.5 / 4.0；如同時上傳參考圖，需滿足 (參考圖數 + 生成數) ≤ 15。計費按實際生成的圖片張數。",
+    "description": "max_images 引數說明"
   },
   "name.seed": {
     "message": "隨機種子",
-    "description": "seed 參數標籤"
+    "description": "seed 引數標籤"
   },
   "description.seed": {
-    "message": "用於復現的隨機種子，範圍 [-1, 2147483647]。-1 表示每次隨機。僅支持 doubao-seedream-3.0-t2i 與 doubao-seededit-3.0-i2i。",
-    "description": "seed 參數說明"
+    "message": "用於復現的隨機種子，範圍 [-1, 2147483647]。-1 表示每次隨機。僅支援 doubao-seedream-3.0-t2i 與 doubao-seededit-3.0-i2i。",
+    "description": "seed 引數說明"
   },
   "name.guidanceScale": {
     "message": "提示詞權重",
-    "description": "guidance_scale 參數標籤"
+    "description": "guidance_scale 引數標籤"
   },
   "description.guidanceScale": {
-    "message": "提示詞遵循強度，範圍 [1, 10]。值越大越貼近提示詞。doubao-seedream-3.0-t2i 默認 2.5，doubao-seededit-3.0-i2i 默認 5.5。",
-    "description": "guidance_scale 參數說明"
+    "message": "提示詞遵循強度，範圍 [1, 10]。值越大越貼近提示詞。doubao-seedream-3.0-t2i 預設 2.5，doubao-seededit-3.0-i2i 預設 5.5。",
+    "description": "guidance_scale 引數說明"
   },
   "name.outputFormat": {
     "message": "輸出格式",
-    "description": "output_format 參數標籤"
+    "description": "output_format 引數標籤"
   },
   "description.outputFormat": {
-    "message": "生成圖片的文件格式，jpeg 或 png，默認 jpeg。僅 doubao-seedream-5.0 支持。",
-    "description": "output_format 參數說明"
+    "message": "生成圖片的檔案格式，jpeg 或 png，預設 jpeg。僅 doubao-seedream-5.0 支援。",
+    "description": "output_format 引數說明"
   },
   "size.group.tier": {
-    "message": "分辨率檔位",
+    "message": "解析度檔位",
     "description": "尺寸下拉的檔位分組（1K-4K）"
   },
   "size.group.adaptive": {
@@ -212,8 +212,8 @@
     "description": "尺寸下拉的自適應分組"
   },
   "size.group.pixel": {
-    "message": "具體像素尺寸",
-    "description": "尺寸下拉的像素尺寸分組"
+    "message": "具體畫素尺寸",
+    "description": "尺寸下拉的畫素尺寸分組"
   },
   "size.adaptive": {
     "message": "自適應（與參考圖一致）",

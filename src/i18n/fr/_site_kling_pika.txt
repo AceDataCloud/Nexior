@@ -1,0 +1,211 @@
+
+=== site.json (96) ===
+  field.contacts.description: Field title for the customer-service contacts in site settings
+  field.disableRecharge.description: Site settings: when on, hide all recharge/top-up entries on this site
+  message.disableRechargeTip.description: Help text for the disable-recharge toggle
+  field.authProvider_apple.description: Login provider display name: Sign in with Apple.
+  field.authSmsWebhook.message: Custom SMS Sender
+  message.authSmsWebhookTip.message: When enabled, this site's phone verification codes are sent through your own end
+  placeholder.authSmsWebhookUrl.message: https://your-domain/sms-webhook
+  placeholder.authSmsWebhookUrl.description: Placeholder for the SMS webhook URL input
+  placeholder.authSmsWebhookSecret.message: Signing secret (leave blank to keep unchanged)
+  field.authSmsWebhookEnable.message: Use a custom sender
+  message.authSmsWebhookNeedsPhone.message: Enable the phone-number login provider first to configure a custom SMS sender.
+  field.authSmsWebhookDocTitle.message: Custom SMS Sender · Webhook spec
+  message.authSmsWebhookDocIntro.message: This site sends a signed HTTPS POST to the URL you provide; your service is resp
+  message.authSmsWebhookDocRequest.message: Method POST, Content-Type application/json. purpose is one of login / register /
+  message.authSmsWebhookDocHeaders.message: Each request carries the headers below. Verify with your signing secret using HM
+  message.authSmsWebhookDocResponse.message: Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON
+  field.authSmsWebhookTestTitle.message: Test custom SMS sender
+  field.authSmsWebhookTestRegion.message: Country/region code
+  field.authSmsWebhookTestNumber.message: Test phone number (optional)
+  message.authSmsWebhookTestOk.message: The test request was delivered to your endpoint successfully.
+  message.authSmsWebhookTestFailed.message: Test failed. Check the URL, signing secret, and your endpoint's response.
+  field.authSmsWebhookDisableTitle.message: Disable custom SMS sender
+  message.authSmsWebhookDisableConfirm.message: Disabling this deletes the saved sender URL and signing secret (the secret canno
+  field.featuresCodingBridge.description: Displayed as the title in the editing box
+  field.featuresWebextrator.description: Displayed as the title in the editing box
+  title.editContacts.description: Title of the edit-support-contacts dialog
+  message.contactsTip.description: Tip for the support-contacts field
+  message.contactsEmpty.description: Placeholder shown when no support contact has been filled in
+  message.featuresGrok.description: Concise capability introduction: xAI assistant for real-time knowledge, reasonin
+  message.featuresGrokvideo.description: Concise capability introduction: xAI video generation for short clips from text 
+  message.featuresMaestro.description: Concise capability introduction: Produce complete videos from an idea, including
+  message.featuresDigitalhuman.description: Concise capability introduction: Create talking-head videos with synthesized spe
+  message.featuresDeepseek.description: Concise capability introduction: DeepSeek assistant for advanced reasoning, codi
+  message.featuresChatgpt.description: Concise capability introduction: OpenAI assistant for writing, reasoning, coding
+  message.featuresMidjourney.description: Concise capability introduction: Create polished images and creative variations 
+  message.featuresQrart.description: Concise capability introduction: Turn links into scannable artistic QR codes wit
+  message.featuresVeo.description: Concise capability introduction: Google video generation for cinematic clips wit
+  message.featuresSora.description: Concise capability introduction: OpenAI video generation for realistic scenes, s
+  message.featuresSuno.description: Concise capability introduction: Generate complete songs, lyrics, vocals, and in
+  message.featuresPixverse.description: Concise capability introduction: Generate stylized videos from prompts and image
+  message.featuresFlux.description: Concise capability introduction: Create detailed images and edit existing visual
+  message.featuresNanobanana.description: Concise capability introduction: Google-powered image generation and editing wit
+  message.featuresOpenaiimage.description: Concise capability introduction: OpenAI image generation and editing for polishe
+  message.featuresSeedream.description: Concise capability introduction: ByteDance image generation and editing for high
+  message.featuresSeedance.description: Concise capability introduction: ByteDance video generation for dynamic scenes, 
+  message.featuresWan.description: Concise capability introduction: Alibaba video generation from text, images, or 
+  message.featuresProducer.description: Concise capability introduction: Create songs, covers, extensions, and vocal or 
+  message.featuresKimi.description: Concise capability introduction: Moonshot AI assistant for long-context research
+  message.featuresSerp.description: Concise capability introduction: Search the web, images, news, maps, and videos 
+  message.featuresFish.description: Concise capability introduction: Generate natural speech and clone voices for mu
+  message.featuresCodingBridge.description: Concise capability introduction: Connect AI coding assistants to local projects 
+  message.featuresWebextrator.description: Concise capability introduction: Extract clean, structured content and data from
+  message.featuresLuma.description: Concise capability introduction: Create cinematic videos from text or images wit
+  message.featuresPika.description: Concise capability introduction: Generate and edit short creative videos with ef
+  message.featuresKling.description: Concise capability introduction: Create high-quality videos from text, images, o
+  message.featuresHailuo.description: Concise capability introduction: Generate expressive videos from text or images 
+  message.featuresGemini.description: Concise capability introduction: Google assistant for long-context reasoning, re
+  message.featuresClaude.description: Concise capability introduction: Anthropic assistant for careful reasoning, writ
+  autoTranslate.tooltipOn.description: Tooltip on the auto-translate toggle when it is ON
+  autoTranslate.tooltipOff.description: Tooltip on the auto-translate toggle when it is OFF
+  autoTranslate.tooltipDisabledNotSaved.description: Tooltip shown when the toggle is disabled because the row has no id yet (create-
+  autoTranslate.confirmEnable.description: Body text of the confirm dialog shown before enabling auto-translation
+  autoTranslate.confirmDisable.description: Body text of the confirm dialog shown before disabling auto-translation
+  autoTranslate.empty.description: Warning shown when the user tries to enable auto-translation on an empty field
+  autoTranslate.error.description: Fallback error toast when the enable/disable HTTP call fails with no detail
+  capabilityOverride.edit.description: Tooltip and accessible label for editing a capability app name and icon
+  capabilityOverride.dialogTitle.description: Dialog title; {name} is the platform-default capability app name
+  capabilityOverride.displayName.description: Field label for a per-site capability app display name
+  capabilityOverride.displayNameTip.message: Leave blank to use {name}. Save once before enabling automatic translation.
+  capabilityOverride.displayNameTip.description: Help text; {name} is the platform-default capability app name
+  capabilityOverride.icon.description: Field label for a per-site capability app icon
+  capabilityOverride.defaultIcon.description: Label above the platform-default capability icon preview
+  capabilityOverride.currentIcon.description: Label above the effective capability icon preview
+  capabilityOverride.replaceIcon.description: Command to upload a replacement capability icon
+  capabilityOverride.uploadIcon.description: Command to upload the first custom capability icon
+  capabilityOverride.useDefaultIcon.message: Use default icon
+  capabilityOverride.useDefaultIcon.description: Command to clear the custom icon draft
+  capabilityOverride.iconTip.message: PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserv
+  capabilityOverride.iconTip.description: Capability icon upload requirements
+  capabilityOverride.editIcon.message: Edit app icon
+  capabilityOverride.editIcon.description: Title of the capability icon cropper dialog
+  capabilityOverride.resetAll.description: Command that removes both custom name and icon
+  capabilityOverride.empty.message: Enter a custom name or upload an icon first.
+  capabilityOverride.empty.description: Warning when attempting to create an empty override
+  capabilityOverride.saved.message: App customization saved
+  capabilityOverride.saved.description: Success message after saving a capability override
+  capabilityOverride.savedEnableTranslation.message: Saved. You can now enable automatic translation for the custom name.
+  capabilityOverride.savedEnableTranslation.description: Success message after first save creates an override ID
+  capabilityOverride.saveFailed.message: Failed to save app customization
+  capabilityOverride.saveFailed.description: Fallback error for capability override writes
+  capabilityOverride.resetConfirm.message: Restore the default name and icon for {name}?
+  capabilityOverride.resetConfirm.description: Confirmation message; {name} is the platform-default capability app name
+  capabilityOverride.resetDone.message: Default name and icon restored
+  capabilityOverride.resetDone.description: Success message after deleting a capability override
+  capabilityOverride.fetchFailed.message: Failed to load app customizations
+  capabilityOverride.fetchFailed.description: Error shown when capability override management rows cannot be loaded
+
+=== kling.json (59) ===
+  tab.videoGeneration.description: Tab label: Video Generation
+  tab.motionControl.description: Tab label: Motion Control
+  name.motionImage.description: Character image input in Motion Control
+  name.motionVideo.description: Reference video input in Motion Control
+  name.motionPrompt.description: Additional prompt in Motion Control
+  name.characterOrientation.description: Character orientation field
+  name.orientationImage.description: Character orientation option: Follow Image
+  name.orientationVideo.description: Character orientation option: Follow Video
+  name.keepOriginalSound.description: keep_original_sound toggle
+  description.motionImage.description: motion image_url description
+  description.motionVideo.description: motion video_url description
+  description.motionPrompt.description: motion prompt description
+  description.characterOrientation.description: character_orientation description
+  description.motionMode.description: motion mode description
+  description.motionModel.description: motion model version description
+  description.keepOriginalSound.description: keep_original_sound description
+  placeholder.motionPrompt.description: motion prompt placeholder
+  button.generateMotion.description: Motion Control generate button
+  message.motionMissingInputs.description: Prompt when inputs are missing in Motion Control
+  message.motionPricingNote.description: Explains that Motion Control is billed per second
+  inspiration.title.description: Title of the Inspiration drawer
+  inspiration.openButton.description: Button to open the Inspiration drawer
+  inspiration.removeChip.description: Button aria-label to remove selected preset in the prompt area
+  inspiration.hint.description: Usage instructions at the top of the Inspiration drawer
+  inspiration.empty.description: Empty state of the Inspiration drawer
+  inspiration.selectedSummary.description: Number of selected presets
+  inspiration.clearSelected.description: Button to clear all selected presets
+  inspiration.group.cameraMovements.description: Inspiration group: Camera Movements
+  inspiration.group.cameraSpeed.description: Inspiration group: Movement Speed
+  inspiration.group.shotType.description: Inspiration group: Shot Type / Perspective
+  inspiration.group.light.description: Inspiration group: Lighting
+  inspiration.group.frame.description: Inspiration group: Framing / Composition
+  inspiration.group.atmosphere.description: Inspiration group: Atmosphere / Style
+  name.motionModel.description: The Kling model version used for motion control
+  tab.talkingPhoto.description: Tab label: Talking Photo
+  name.talkingPhotoImage.description: Talking Photo portrait image input
+  name.talkingPhotoAudio.description: Talking Photo driving audio input
+  name.talkingPhotoPrompt.description: Talking Photo optional motion prompt
+  description.talkingPhotoImage.description: Talking Photo portrait image help text
+  description.talkingPhotoAudio.description: Talking Photo driving audio help text
+  description.talkingPhotoPrompt.description: Talking Photo motion prompt help text
+  placeholder.talkingPhotoPrompt.description: Talking Photo prompt input placeholder
+  button.generateTalkingPhoto.description: Talking Photo generate button
+  button.uploadAudio.description: Talking Photo upload audio button
+  message.talkingPhotoMissingInputs.description: Talking Photo missing inputs warning
+  message.uploadAudioExceed.description: Talking Photo audio count limit warning
+  message.uploadAudioError.description: Talking Photo audio upload error
+  name.referenceVideo.description: Form field label: reference/editable video for Omni video editing
+  description.referenceVideo.message: Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit
+  description.referenceVideo.description: Help text for the reference video uploader
+  button.uploadReferenceVideo.description: Button to upload the reference video
+  message.referenceVideoExceed.message: You can upload a maximum of 1 reference video
+  message.referenceVideoExceed.description: Error when more than one reference video is uploaded
+  message.referenceVideoError.message: Reference video upload failed, please try again later
+  message.referenceVideoError.description: Error when the reference video upload fails
+  message.referenceVideoTypeFailed.message: Uploaded file must be in MP4 or MOV format!
+  message.referenceVideoTypeFailed.description: Error when the reference video is not MP4/MOV
+  message.referenceVideoSizeExceed.message: Uploaded file size cannot exceed 200MB!
+  message.referenceVideoSizeExceed.description: Error when the reference video exceeds 200MB
+
+=== pika.json (50) ===
+  style.effect1.description: Name of the video effect in Pika
+  style.effect2.description: Name of the video effect in Pika
+  style.effect3.description: Name of the video effect in Pika
+  style.effect4.description: Name of the video effect in Pika
+  style.effect5.description: Name of the video effect in Pika
+  style.effect6.description: Name of the video effect in Pika
+  style.effect7.description: Name of the video effect in Pika
+  style.effect8.description: Name of the video effect in Pika
+  style.effect9.description: Name of the video effect in Pika
+  style.effect10.description: Name of the video effect in Pika
+  style.effect11.description: Name of the video effect in Pika
+  style.effect12.description: Name of the video effect in Pika
+  style.effect13.description: Name of the video effect in Pika
+  name.taskId.description: ID of the task
+  name.type.description: Content type of the Pika video to be generated, such as 'link', 'text', etc.
+  name.failure.description: Failure status of the task
+  name.failureReason.description: Reason for task failure
+  name.status.description: Status of the task
+  name.traceId.description: Trace ID of the task
+  name.elapsed.description: Time taken for the task (in seconds)
+  name.createdAt.description: Date and time when the Pika video was generated
+  name.imageUrl.description: Reference image for the video to be generated
+  name.videoUrl.description: Custom video
+  name.prompt.description: Prompt for content input
+  name.ingredients.description: Switch/label for creating videos from multiple images (keep it short)
+  name.model.description: Model version used to generate the video
+  name.effect.description: Name of the style parameter used to switch between different versions or styles 
+  name.ingredientsModel.description: Model version used to generate the video
+  name.pikaBot.description: Name of the Pika video generator
+  description.ingredients.description: Description for the 'ingredients' parameter
+  description.imageUrl.description: Description for the 'imageUrl' parameter
+  description.prompt.description: Description for the 'prompt' parameter
+  status.pending.description: Waiting status of the task
+  status.processing.description: Processing status of the task
+  placeholder.paddingNoise.description: Placeholder for padding noise input
+  placeholder.select.description: Placeholder text in the select field
+  placeholder.paddingLevel.description: Placeholder for padding level
+  placeholder.prompt.description: Placeholder text in the prompt field
+  placeholder.position.description: Placeholder for position input
+  placeholder.aspectRatio.description: Placeholder for aspect ratio input
+  placeholder.preset.description: Placeholder for preset input
+  placeholder.markerShape.description: Placeholder for marker shape input
+  placeholder.rotate.description: Placeholder for rotation input
+  placeholder.subMarker.description: Placeholder for sub-marker input
+  button.precise.description: Button text for generating Pika video
+  button.creative.description: Button text for generating Pika video
+  button.generate.description: Button text for generating Pika video
+  button.extend.description: Button text for extending video
+  button.download.description: Button text for downloading video
+  button.uploadImageUrl.description: Button text for uploading images (simplified to 'Upload')

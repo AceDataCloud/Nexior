@@ -1,0 +1,1456 @@
+{
+  "application.json": {
+    "badge.shared": {
+      "desc": {
+        "current": "Badge on the application list marking an application that has been authorized to the current user by someone else (not owned by them).",
+        "en": "Badge on the application list marking an application that has been authorized to the current user by someone else (not owned by them).",
+        "zh": "应用列表中的徽章，标记此应用是由他人授权给当前用户使用，而不是由当前用户拥有。"
+      }
+    }
+  },
+  "chat.json": {
+    "scheduledTasks.empty": {
+      "msg": {
+        "current": "No scheduled tasks yet. Click \"New\" to create one.",
+        "en": "No scheduled tasks yet. Click \"New\" to create one.",
+        "zh": "还没有定时任务，点击「新建」创建一个"
+      }
+    },
+    "scheduledTasks.deleteConfirm": {
+      "msg": {
+        "current": "Delete \"{name}\"? The task will stop running.",
+        "en": "Delete \"{name}\"? The task will stop running.",
+        "zh": "确认删除「{name}」？删除后任务将停止运行。"
+      }
+    },
+    "scheduledTasks.triggerNow": {
+      "desc": {
+        "current": "Trigger the task immediately, out of schedule",
+        "en": "Trigger the task immediately, out of schedule",
+        "zh": "手动立刻运行一次任务"
+      }
+    },
+    "scheduledTasks.jitterHint": {
+      "msg": {
+        "current": "±60s jitter",
+        "en": "±60s jitter",
+        "zh": "±60s 抖动"
+      }
+    },
+    "scheduledTasks.runCount": {
+      "msg": {
+        "current": "Ran {count} time(s)",
+        "en": "Ran {count} time(s)",
+        "zh": "已运行 {count} 次"
+      }
+    },
+    "scheduledTasks.form.hourlyMinuteHint": {
+      "msg": {
+        "current": "Which minute of each hour to run (0–59)",
+        "en": "Which minute of each hour to run (0–59)",
+        "zh": "每小时的第几分钟触发（0–59）"
+      }
+    },
+    "scheduledTasks.form.intervalHint": {
+      "msg": {
+        "current": "Runs once every fixed interval after the previous run (minimum 1 minute)",
+        "en": "Runs once every fixed interval after the previous run (minimum 1 minute)",
+        "zh": "从上次运行起，每隔固定时间执行一次（最短 1 分钟）"
+      }
+    },
+    "scheduledTasks.form.promptPlaceholder": {
+      "msg": {
+        "current": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables.",
+        "en": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables.",
+        "zh": "输入要定时执行的问题或指令，支持 {'{{date}}'}、{'{{run_count}}'}、{'{{last_output}}'} 变量"
+      }
+    },
+    "scheduledTasks.form.promptHint": {
+      "msg": {
+        "current": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet",
+        "en": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet",
+        "zh": "支持模板变量：{'{{date}}'} 今日日期，{'{{run_count}}'} 第几次运行，{'{{last_output}}'} 上次结果摘要"
+      }
+    },
+    "scheduledTasks.form.skillNotActiveMessage": {
+      "msg": {
+        "current": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
+        "en": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
+        "zh": "技能「{name}」尚未在你的账户中绑定或激活。若不先绑定，定时任务在后台自动运行时可能无法使用它。建议先前往绑定后再保存，或点击下方按钮仍要继续保存。"
+      }
+    }
+  },
+  "codingBridge.json": {
+    "nodeList.removeConfirm": {
+      "msg": {
+        "current": "Remove device \"{name}\"? It will need to be paired again.",
+        "en": "Remove device \"{name}\"? It will need to be paired again.",
+        "zh": "移除设备“{name}”？移除后需要重新配对。"
+      }
+    },
+    "connection.connecting": {
+      "msg": {
+        "current": "Connecting…",
+        "en": "Connecting…",
+        "zh": "连接中…"
+      }
+    },
+    "pair.intro": {
+      "msg": {
+        "current": "Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.",
+        "en": "Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.",
+        "zh": "在你的电脑上运行 Coding Bridge 代理，然后在此输入配对码即可在网页端控制它。"
+      }
+    },
+    "pair.step1": {
+      "msg": {
+        "current": "Install the agent (requires Python 3.10+):",
+        "en": "Install the agent (requires Python 3.10+):",
+        "zh": "安装代理（需要 Python 3.10+）："
+      }
+    },
+    "pair.success": {
+      "msg": {
+        "current": "Device \"{name}\" paired.",
+        "en": "Device \"{name}\" paired.",
+        "zh": "设备“{name}”已配对。"
+      }
+    },
+    "session.cwdPlaceholder": {
+      "msg": {
+        "current": "Working directory (optional)",
+        "en": "Working directory (optional)",
+        "zh": "工作目录（可选）"
+      }
+    },
+    "session.modelPlaceholder": {
+      "msg": {
+        "current": "Model (optional)",
+        "en": "Model (optional)",
+        "zh": "模型（可选）"
+      }
+    },
+    "session.promptPlaceholder": {
+      "msg": {
+        "current": "Send a message to the agent…",
+        "en": "Send a message to the agent…",
+        "zh": "向代理发送消息…"
+      }
+    },
+    "session.editingBanner": {
+      "msg": {
+        "current": "Editing — sending rewinds the conversation to this point.",
+        "en": "Editing — sending rewinds the conversation to this point.",
+        "zh": "编辑中 — 发送将把对话回退到此处"
+      }
+    },
+    "session.enterHint": {
+      "msg": {
+        "current": "Enter to send, Shift+Enter for a new line.",
+        "en": "Enter to send, Shift+Enter for a new line.",
+        "zh": "回车发送，Shift+回车换行。"
+      }
+    },
+    "session.uploadingAttachment": {
+      "msg": {
+        "current": "Uploading attachments…",
+        "en": "Uploading attachments…",
+        "zh": "附件上传中…"
+      }
+    },
+    "session.attachmentTooLarge": {
+      "msg": {
+        "current": "File is too large; keep each under 50 MB.",
+        "en": "File is too large; keep each under 50 MB.",
+        "zh": "文件过大，请保持每个文件不超过 50 MB。"
+      }
+    }
+  },
+  "common.json": {
+    "button.buyMore": {
+      "desc_zh": {
+        "current": "Tekst w przycisku, używany do umożliwienia użytkownikowi doładowania. Angielski musi być przetłumaczony na 'Top Up', a chiński na '充值'.",
+        "en": "Text in button for allowing users to top up. Must translate to 'Top Up'.",
+        "zh": "按钮中的文本，用于让用户充值。英文必须翻译为“Top Up”，中文为“充值”。"
+      }
+    },
+    "error.loginLinkExpired": {
+      "desc": {
+        "current": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).",
+        "en": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).",
+        "zh": "桌面客户端 OAuth 回调因 state 校验失败/过期被丢弃时显示的错误提示。"
+      }
+    },
+    "message.mobileComingSoon": {
+      "desc": {
+        "current": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared",
+        "en": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared",
+        "zh": "用于标记某个平台（如 iOS）即将开放下载的短状态标签"
+      }
+    },
+    "message.deleteAccountTypePrompt": {
+      "desc": {
+        "current": "Instructs the user to type their username to confirm; the username is shown separately below",
+        "en": "Instructs the user to type their username to confirm; the username is shown separately below",
+        "zh": "提示用户必须逐字输入自己的用户名才能确认删除；紧随其后会单独显示该用户名"
+      }
+    },
+    "nav.codingBridge": {
+      "desc": {
+        "current": "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'",
+        "en": "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'",
+        "zh": "网站导航栏中的文本，用于显示 Coding Bridge 页面，请不要翻译此字段，必须保持为'Coding Bridge'"
+      }
+    },
+    "nav.webextrator": {
+      "desc": {
+        "current": "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'",
+        "en": "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'",
+        "zh": "网站导航栏中的文本，用于显示WebExtrator页面，请不要翻译此字段，必须保持为'WebExtrator'"
+      }
+    },
+    "about.address": {
+      "msg": {
+        "current": "131 Continental Dr, Suite 305, Newark, DE 19713, USA",
+        "en": "131 Continental Dr, Suite 305, Newark, DE 19713, USA",
+        "zh": "美国特拉华州纽瓦克大陆路131号305室，邮编19713"
+      }
+    },
+    "settings.sendShortcut": {
+      "desc": {
+        "current": "Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.",
+        "en": "Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.",
+        "zh": "设置页面中的发送消息快捷键行标题：选择按 Enter 发送还是按修饰键+Enter 发送"
+      }
+    },
+    "sendShortcut.modEnter": {
+      "desc": {
+        "current": "Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.",
+        "en": "Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.",
+        "zh": "发送快捷键选项：按修饰键（⌘ 或 Ctrl）加 Enter 发送消息，{key} 是平台修饰键符号"
+      }
+    },
+    "settings.localTools": {
+      "desc": {
+        "current": "Desktop-only settings tab for managing local tool folders, permissions and grants.",
+        "en": "Desktop-only settings tab for managing local tool folders, permissions and grants.",
+        "zh": "桌面专属设置 tab：管理本地工具的授权文件夹、系统权限与永久授权。"
+      }
+    },
+    "settings.localToolsComputerUseTitle": {
+      "msg": {
+        "current": "Computer Use (experimental)",
+        "en": "Computer Use (experimental)",
+        "zh": "电脑操作（实验性）"
+      }
+    },
+    "settings.localToolsComputerUseHint": {
+      "msg": {
+        "current": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
+        "en": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
+        "zh": "让 AI 看到你的屏幕并控制本机的鼠标和键盘。默认关闭，按需开启。macOS 上需在下方授予「屏幕录制」和「辅助功能」权限。每个操作仍会请求你的确认。"
+      }
+    },
+    "settings.localToolsMcpHint": {
+      "msg": {
+        "current": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
+        "en": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
+        "zh": "通过 stdio 连接本地 MCP 服务器。它们的工具会提供给 AI 使用，并受同样的逐次调用确认保护。修改后立即生效。"
+      }
+    },
+    "settings.localToolsMcpEnvHint": {
+      "msg": {
+        "current": "One KEY=VALUE per line.",
+        "en": "One KEY=VALUE per line.",
+        "zh": "每行一个 KEY=VALUE。"
+      }
+    },
+    "settings.localToolsMcpNameInvalid": {
+      "msg": {
+        "current": "Name may only contain letters, numbers, hyphens and underscores.",
+        "en": "Name may only contain letters, numbers, hyphens and underscores.",
+        "zh": "名称只能包含字母、数字、连字符和下划线。"
+      }
+    },
+    "settings.localToolsMcpConnecting": {
+      "msg": {
+        "current": "Connecting…",
+        "en": "Connecting…",
+        "zh": "连接中…"
+      },
+      "desc": {
+        "current": "Badge while an MCP server is being (re)connected.",
+        "en": "Badge while an MCP server is being (re)connected.",
+        "zh": "MCP 服务器正在（重新）连接时的状态标签。"
+      }
+    },
+    "settings.localToolsMcpNotSaved": {
+      "desc": {
+        "current": "Badge for an MCP server row that hasn't been saved/connected yet.",
+        "en": "Badge for an MCP server row that hasn't been saved/connected yet.",
+        "zh": "尚未保存/连接的 MCP 服务器行的状态标签。"
+      }
+    },
+    "settings.localToolsMcpConnected": {
+      "msg": {
+        "current": "Connected · {n} tools",
+        "en": "Connected · {n} tools",
+        "zh": "已连接 · {n} 个工具"
+      },
+      "desc": {
+        "current": "Badge when an MCP server connected; {n} is the tool count.",
+        "en": "Badge when an MCP server connected; {n} is the tool count.",
+        "zh": "MCP 服务器连接成功时的标签；{n} 为工具数量。"
+      }
+    },
+    "settings.localToolsMcpFailed": {
+      "desc": {
+        "current": "Badge when an MCP server failed to start; the reason is shown below.",
+        "en": "Badge when an MCP server failed to start; the reason is shown below.",
+        "zh": "MCP 服务器启动失败时的标签；原因显示在下方。"
+      }
+    },
+    "settings.localToolsMcpPlatformHint": {
+      "msg": {
+        "current": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
+        "en": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
+        "zh": "提示：使用 PATH 中的命令，如 npx 或 uvx（例如 npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents）。Windows 上 npx/node 会自动解析。若某服务器显示 “spawn … ENOENT”，请把命令改为完整路径。"
+      }
+    },
+    "settings.contactSupport": {
+      "desc": {
+        "current": "Section title on the About page listing the site owner's customer-service channels",
+        "en": "Section title on the About page listing the site owner's customer-service channels",
+        "zh": "关于页面中展示站长客服渠道的栏目标题"
+      }
+    },
+    "settings.contactInvalidUrl": {
+      "desc": {
+        "current": "Validation error shown when a contact URL is not a valid http(s) link",
+        "en": "Validation error shown when a contact URL is not a valid http(s) link",
+        "zh": "联系方式链接无效时的校验错误提示"
+      }
+    },
+    "settings.contactLabelPlaceholder": {
+      "msg": {
+        "current": "Label (optional), e.g. Sales",
+        "en": "Label (optional), e.g. Sales",
+        "zh": "备注（可选），如：售前"
+      }
+    },
+    "settings.contactEditorHint": {
+      "msg": {
+        "current": "Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.",
+        "en": "Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.",
+        "zh": "为每个渠道选择类型，并至少填写 值 / 链接 / 二维码 之一；可添加多条。"
+      }
+    },
+    "settings.contactInvalidType": {
+      "msg": {
+        "current": "Type may only contain lowercase letters, digits, '-' and '_'",
+        "en": "Type may only contain lowercase letters, digits, '-' and '_'",
+        "zh": "类型只能包含小写字母、数字、- 和 _"
+      }
+    },
+    "settings.contactRowNeedsValue": {
+      "msg": {
+        "current": "Each contact needs at least a value, link or QR code",
+        "en": "Each contact needs at least a value, link or QR code",
+        "zh": "每条联系方式至少填写 值、链接 或 二维码 之一"
+      }
+    },
+    "title.apiCode": {
+      "desc": {
+        "current": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product",
+        "en": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product",
+        "zh": "对话框标题：展示当前结果对应的 curl / Python / Node API 调用代码"
+      }
+    },
+    "message.viewCodeHint": {
+      "desc": {
+        "current": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.",
+        "en": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.",
+        "zh": "结果卡片操作按钮（U1/U2/下载/扩展…）旁边的 View Code 按钮的悬浮提示。点击按钮会弹出对话框，展示 curl / Python / Node 三种语言下与当前结果等价的 API 调用代码。"
+      }
+    },
+    "button.viewCode": {
+      "desc": {
+        "current": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance",
+        "en": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance",
+        "zh": "按钮文本：打开对话框，展示当前结果对应的 curl / Python / Node API 调用代码（类似 OpenAI Playground 的 View code）"
+      }
+    },
+    "appUpgrade.blockMessage": {
+      "desc": {
+        "current": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.",
+        "en": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.",
+        "zh": "强制升级弹窗正文。当客户端版本低于 min_supported 时显示，无法关闭，唯一按钮跳转到应用商店。"
+      }
+    },
+    "appUpgrade.openStore": {
+      "desc": {
+        "current": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.",
+        "en": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.",
+        "zh": "升级弹窗主按钮：在系统浏览器中打开 App Store / Play Store 链接。"
+      }
+    },
+    "appUpgrade.later": {
+      "desc": {
+        "current": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.",
+        "en": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.",
+        "zh": "软提示升级弹窗的次按钮：忽略本次提示继续使用，仅在非强制升级场景出现。"
+      }
+    },
+    "settings.cuConsentTitle": {
+      "msg": {
+        "current": "Allow action?",
+        "en": "Allow action?",
+        "zh": "允许操作？"
+      }
+    },
+    "settings.cuConsentMessage": {
+      "msg": {
+        "current": "The assistant wants to run \"{action}\" on your phone. Allow it?",
+        "en": "The assistant wants to run \"{action}\" on your phone. Allow it?",
+        "zh": "AI 助手想在你的手机上执行「{action}」操作，是否允许？"
+      },
+      "desc": {
+        "current": "Body of the on-demand consent dialog; {action} is the computer.* action name.",
+        "en": "Body of the on-demand consent dialog; {action} is the computer.* action name.",
+        "zh": "按需授权对话框正文；{action} 为具体的 computer.* 操作名。"
+      }
+    },
+    "settings.cuConsentAlways": {
+      "desc": {
+        "current": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.",
+        "en": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.",
+        "zh": "按需授权对话框的总是允许按钮；持久化授权，此操作以后不再询问。"
+      }
+    },
+    "settings.memoryEnabledHint": {
+      "msg": {
+        "current": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
+        "en": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
+        "zh": "关闭后，助手不会读取已保存的记忆，也不会从新对话中保存记忆。已有内容不会被删除。"
+      }
+    },
+    "settings.memoryImportPrompt": {
+      "msg": {
+        "current": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
+        "en": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
+        "zh": "我要迁移到另一个 AI 服务。请列出你保存的关于我的每一条记忆，以及从过往对话中学到的持久信息。把全部内容放在一个代码块中，每行只写一条记忆，格式为：[保存日期，如有] - 记忆内容。请包括回复偏好、个人信息、项目、目标、常用工具、语言、框架，以及我对你做过的纠正。尽量保留我的原话，不要包含密码、密钥等敏感信息。"
+      }
+    },
+    "settings.memoryImportPlaceholder": {
+      "msg": {
+        "current": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
+        "en": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
+        "zh": "粘贴 ChatGPT、Claude、Gemini 或其他 AI 返回的记忆内容…"
+      }
+    },
+    "settings.memoryImportPartial": {
+      "msg": {
+        "current": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
+        "en": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
+        "zh": "已处理 {processed} 条内容，另有 {rejected} 条不安全或无效内容已跳过。"
+      }
+    }
+  },
+  "digitalhuman.json": {
+    "placeholder.text": {
+      "msg": {
+        "current": "Type what the avatar should say…",
+        "en": "Type what the avatar should say…",
+        "zh": "输入数字人要说的内容……"
+      }
+    },
+    "description.face": {
+      "msg": {
+        "current": "Upload a clear, front-facing face video (preferred) or a single photo to drive the talking head.",
+        "en": "Upload a clear, front-facing face video (preferred) or a single photo to drive the talking head.",
+        "zh": "上传清晰的正脸视频（推荐）或一张照片来驱动口播数字人。"
+      }
+    },
+    "description.voiceClone": {
+      "msg": {
+        "current": "Upload a clean 10–20s voice sample to clone a voice, then reuse it to speak your text.",
+        "en": "Upload a clean 10–20s voice sample to clone a voice, then reuse it to speak your text.",
+        "zh": "上传一段干净的 10–20 秒人声样本克隆音色，再用它朗读你的文本。"
+      }
+    },
+    "button.cloning": {
+      "msg": {
+        "current": "Cloning…",
+        "en": "Cloning…",
+        "zh": "克隆中……"
+      }
+    },
+    "message.startingTask": {
+      "msg": {
+        "current": "Submitting your video task…",
+        "en": "Submitting your video task…",
+        "zh": "正在提交视频任务……"
+      }
+    },
+    "message.startTaskSuccess": {
+      "msg": {
+        "current": "Task submitted! It will appear below as it renders.",
+        "en": "Task submitted! It will appear below as it renders.",
+        "zh": "任务已提交！生成后会显示在下方。"
+      }
+    },
+    "message.voiceCloneSuccess": {
+      "msg": {
+        "current": "Voice cloned! You can now generate with your text.",
+        "en": "Voice cloned! You can now generate with your text.",
+        "zh": "音色克隆成功！现在可以用文本生成了。"
+      }
+    }
+  },
+  "grokvideo.json": {
+    "description.referenceImages": {
+      "msg": {
+        "current": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+        "en": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+        "zh": "可选的参考图，用于引导生成视频的风格或内容（仅 grok-imagine-video 支持）。"
+      }
+    }
+  },
+  "index.json": {
+    "title.chat": {
+      "desc_zh": {
+        "current": "AI 聊天章节标题",
+        "en": "AI chat section title",
+        "zh": "AI 聊天章节标题"
+      }
+    },
+    "title.midjourney": {
+      "desc_zh": {
+        "current": "AI绘画章节标题",
+        "en": "AI drawing section title",
+        "zh": "AI绘画章节标题"
+      }
+    },
+    "title.qrart": {
+      "desc_zh": {
+        "current": "AI 艺术二维码章节标题",
+        "en": "AI art QR code section title",
+        "zh": "AI 艺术二维码章节标题"
+      }
+    },
+    "title.suno": {
+      "desc_zh": {
+        "current": "AI 音乐章节标题",
+        "en": "AI music section title",
+        "zh": "AI 音乐章节标题"
+      }
+    },
+    "title.luma": {
+      "desc_zh": {
+        "current": "AI 视频章节标题",
+        "en": "AI video section title",
+        "zh": "AI 视频章节标题"
+      }
+    },
+    "title.comments": {
+      "desc_zh": {
+        "current": "客户评价章节标题",
+        "en": "Customer reviews section title",
+        "zh": "客户评价章节标题"
+      }
+    },
+    "title.introduction": {
+      "desc_zh": {
+        "current": "站点简介",
+        "en": "Site introduction",
+        "zh": "站点简介"
+      }
+    },
+    "subtitle.banner": {
+      "desc_zh": {
+        "current": "站点副标题",
+        "en": "Site subtitle",
+        "zh": "站点副标题"
+      }
+    },
+    "subtitle.chat": {
+      "desc_zh": {
+        "current": "AI 聊天章节标题",
+        "en": "AI chat section subtitle",
+        "zh": "AI 聊天章节标题"
+      }
+    },
+    "subtitle.midjourney": {
+      "desc_zh": {
+        "current": "AI绘画章节标题",
+        "en": "AI drawing section subtitle",
+        "zh": "AI绘画章节标题"
+      }
+    },
+    "subtitle.qrart": {
+      "desc_zh": {
+        "current": "AI 艺术二维码章节标题",
+        "en": "AI art QR code section subtitle",
+        "zh": "AI 艺术二维码章节标题"
+      }
+    },
+    "subtitle.suno": {
+      "desc_zh": {
+        "current": "AI 音乐章节标题",
+        "en": "AI music section subtitle",
+        "zh": "AI 音乐章节标题"
+      }
+    },
+    "subtitle.luma": {
+      "desc_zh": {
+        "current": "AI 音乐章节标题",
+        "en": "AI video section subtitle",
+        "zh": "AI 音乐章节标题"
+      }
+    },
+    "subtitle.comments": {
+      "desc_zh": {
+        "current": "客户评价章节标题",
+        "en": "Customer reviews section subtitle",
+        "zh": "客户评价章节标题"
+      }
+    },
+    "subtitle.introduction": {
+      "desc_zh": {
+        "current": "站点简介",
+        "en": "Site introduction",
+        "zh": "站点简介"
+      }
+    },
+    "button.try": {
+      "desc_zh": {
+        "current": "文字里面的内容",
+        "en": "Content inside the text",
+        "zh": "文字里面的内容"
+      }
+    },
+    "button.testEnv": {
+      "desc_zh": {
+        "current": "测试环境按钮",
+        "en": "Test environment button",
+        "zh": "测试环境按钮"
+      }
+    },
+    "customers.name1": {
+      "desc_zh": {
+        "current": "客户的姓名",
+        "en": "Customer's name",
+        "zh": "客户的姓名"
+      }
+    },
+    "customers.job1": {
+      "desc_zh": {
+        "current": "客户的职位",
+        "en": "Customer's job title",
+        "zh": "客户的职位"
+      }
+    },
+    "customers.comment1": {
+      "desc_zh": {
+        "current": "客户的评论",
+        "en": "Customer's comment",
+        "zh": "客户的评论"
+      }
+    },
+    "customers.name2": {
+      "desc_zh": {
+        "current": "客户的姓名",
+        "en": "Customer's name",
+        "zh": "客户的姓名"
+      }
+    },
+    "customers.job2": {
+      "desc_zh": {
+        "current": "客户的职位",
+        "en": "Customer's job title",
+        "zh": "客户的职位"
+      }
+    },
+    "customers.comment2": {
+      "desc_zh": {
+        "current": "客户的评论",
+        "en": "Customer's comment",
+        "zh": "客户的评论"
+      }
+    },
+    "customers.name3": {
+      "desc_zh": {
+        "current": "客户的姓名",
+        "en": "Customer's name",
+        "zh": "客户的姓名"
+      }
+    },
+    "customers.job3": {
+      "desc_zh": {
+        "current": "客户的职位",
+        "en": "Customer's job title",
+        "zh": "客户的职位"
+      }
+    },
+    "customers.comment3": {
+      "desc_zh": {
+        "current": "客户的评论",
+        "en": "Customer's comment",
+        "zh": "客户的评论"
+      }
+    }
+  },
+  "kling.json": {
+    "tab.videoGeneration": {
+      "desc_zh": {
+        "current": "Tab 标签：Video Generation",
+        "en": "Tab label: Video Generation",
+        "zh": "Tab 标签：Video Generation"
+      }
+    },
+    "tab.motionControl": {
+      "desc_zh": {
+        "current": "Tab 标签：Motion Control",
+        "en": "Tab label: Motion Control",
+        "zh": "Tab 标签：Motion Control"
+      }
+    },
+    "name.motionImage": {
+      "desc_zh": {
+        "current": "Motion Control 中的人物图输入",
+        "en": "Character image input in Motion Control",
+        "zh": "Motion Control 中的人物图输入"
+      }
+    },
+    "name.motionVideo": {
+      "desc_zh": {
+        "current": "Motion Control 中的参考视频输入",
+        "en": "Reference video input in Motion Control",
+        "zh": "Motion Control 中的参考视频输入"
+      }
+    },
+    "name.motionPrompt": {
+      "desc_zh": {
+        "current": "Motion Control 中的补充提示词",
+        "en": "Additional prompt in Motion Control",
+        "zh": "Motion Control 中的补充提示词"
+      }
+    },
+    "name.characterOrientation": {
+      "desc_zh": {
+        "current": "人物朝向字段",
+        "en": "Character orientation field",
+        "zh": "人物朝向字段"
+      }
+    },
+    "name.orientationImage": {
+      "desc_zh": {
+        "current": "人物朝向选项：跟随图片",
+        "en": "Character orientation option: Follow Image",
+        "zh": "人物朝向选项：跟随图片"
+      }
+    },
+    "name.orientationVideo": {
+      "desc_zh": {
+        "current": "人物朝向选项：跟随视频",
+        "en": "Character orientation option: Follow Video",
+        "zh": "人物朝向选项：跟随视频"
+      }
+    },
+    "name.keepOriginalSound": {
+      "desc_zh": {
+        "current": "keep_original_sound 开关",
+        "en": "keep_original_sound toggle",
+        "zh": "keep_original_sound 开关"
+      }
+    },
+    "description.motionImage": {
+      "desc_zh": {
+        "current": "motion image_url 说明",
+        "en": "motion image_url description",
+        "zh": "motion image_url 说明"
+      }
+    },
+    "description.motionVideo": {
+      "desc_zh": {
+        "current": "motion video_url 说明",
+        "en": "motion video_url description",
+        "zh": "motion video_url 说明"
+      }
+    },
+    "description.motionPrompt": {
+      "desc_zh": {
+        "current": "motion prompt 说明",
+        "en": "motion prompt description",
+        "zh": "motion prompt 说明"
+      }
+    },
+    "description.characterOrientation": {
+      "desc_zh": {
+        "current": "character_orientation 说明",
+        "en": "character_orientation description",
+        "zh": "character_orientation 说明"
+      }
+    },
+    "description.motionMode": {
+      "desc_zh": {
+        "current": "motion mode 说明",
+        "en": "motion mode description",
+        "zh": "motion mode 说明"
+      }
+    },
+    "description.keepOriginalSound": {
+      "desc_zh": {
+        "current": "keep_original_sound 说明",
+        "en": "keep_original_sound description",
+        "zh": "keep_original_sound 说明"
+      }
+    },
+    "placeholder.motionPrompt": {
+      "desc_zh": {
+        "current": "motion prompt 占位符",
+        "en": "motion prompt placeholder",
+        "zh": "motion prompt 占位符"
+      }
+    },
+    "button.generateMotion": {
+      "desc_zh": {
+        "current": "Motion Control 生成按钮",
+        "en": "Motion Control generate button",
+        "zh": "Motion Control 生成按钮"
+      }
+    },
+    "message.motionMissingInputs": {
+      "desc_zh": {
+        "current": "Motion Control 缺少输入时的提示",
+        "en": "Prompt when inputs are missing in Motion Control",
+        "zh": "Motion Control 缺少输入时的提示"
+      }
+    },
+    "inspiration.title": {
+      "desc_zh": {
+        "current": "Inspiration 抽屉的标题",
+        "en": "Title of the Inspiration drawer",
+        "zh": "Inspiration 抽屉的标题"
+      }
+    },
+    "inspiration.openButton": {
+      "desc_zh": {
+        "current": "打开 Inspiration 抽屉的按钮",
+        "en": "Button to open the Inspiration drawer",
+        "zh": "打开 Inspiration 抽屉的按钮"
+      }
+    },
+    "inspiration.removeChip": {
+      "desc_zh": {
+        "current": "移除提示词区中已选预设的按钮 aria-label",
+        "en": "Button aria-label to remove selected preset in the prompt area",
+        "zh": "移除提示词区中已选预设的按钮 aria-label"
+      }
+    },
+    "inspiration.hint": {
+      "desc_zh": {
+        "current": "Inspiration 抽屉顶部的使用说明",
+        "en": "Usage instructions at the top of the Inspiration drawer",
+        "zh": "Inspiration 抽屉顶部的使用说明"
+      }
+    },
+    "inspiration.empty": {
+      "desc_zh": {
+        "current": "Inspiration 抽屉空状态",
+        "en": "Empty state of the Inspiration drawer",
+        "zh": "Inspiration 抽屉空状态"
+      }
+    },
+    "inspiration.selectedSummary": {
+      "desc_zh": {
+        "current": "已选择的预设数量",
+        "en": "Number of selected presets",
+        "zh": "已选择的预设数量"
+      }
+    },
+    "inspiration.clearSelected": {
+      "desc_zh": {
+        "current": "清除所有已选预设的按钮",
+        "en": "Button to clear all selected presets",
+        "zh": "清除所有已选预设的按钮"
+      }
+    },
+    "inspiration.group.cameraMovements": {
+      "desc_zh": {
+        "current": "Inspiration 分组：镜头运动",
+        "en": "Inspiration group: Camera Movements",
+        "zh": "Inspiration 分组：镜头运动"
+      }
+    },
+    "inspiration.group.cameraSpeed": {
+      "desc_zh": {
+        "current": "Inspiration 分组：运动速度",
+        "en": "Inspiration group: Movement Speed",
+        "zh": "Inspiration 分组：运动速度"
+      }
+    },
+    "inspiration.group.shotType": {
+      "desc_zh": {
+        "current": "Inspiration 分组：景别 / 视角",
+        "en": "Inspiration group: Shot Type / Perspective",
+        "zh": "Inspiration 分组：景别 / 视角"
+      }
+    },
+    "inspiration.group.light": {
+      "desc_zh": {
+        "current": "Inspiration 分组：光影",
+        "en": "Inspiration group: Lighting",
+        "zh": "Inspiration 分组：光影"
+      }
+    },
+    "inspiration.group.frame": {
+      "desc_zh": {
+        "current": "Inspiration 分组：画面 / 构图",
+        "en": "Inspiration group: Framing / Composition",
+        "zh": "Inspiration 分组：画面 / 构图"
+      }
+    },
+    "inspiration.group.atmosphere": {
+      "desc_zh": {
+        "current": "Inspiration 分组：氛围 / 风格",
+        "en": "Inspiration group: Atmosphere / Style",
+        "zh": "Inspiration 分组：氛围 / 风格"
+      }
+    },
+    "name.modeStd": {
+      "msg": {
+        "current": "Standard (720p)",
+        "en": "Standard (720p)",
+        "zh": "标准 (720p)"
+      }
+    },
+    "description.referenceVideo": {
+      "msg": {
+        "current": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
+        "en": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
+        "zh": "仅 kling-video-o1 支持。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频。提示词会自动以 <<<video_1>>> 引用它，请保留该标记来描述编辑效果（如「把 <<<video_1>>> 改成动漫风格」）。"
+      }
+    },
+    "message.referenceVideoError": {
+      "msg": {
+        "current": "Reference video upload failed, please try again later",
+        "en": "Reference video upload failed, please try again later",
+        "zh": "参考视频上传失败，请稍后重试"
+      }
+    },
+    "message.referenceVideoTypeFailed": {
+      "msg": {
+        "current": "Uploaded file must be in MP4 or MOV format!",
+        "en": "Uploaded file must be in MP4 or MOV format!",
+        "zh": "上传的文件必须是 MP4 或 MOV 格式！"
+      }
+    },
+    "message.referenceVideoSizeExceed": {
+      "msg": {
+        "current": "Uploaded file size cannot exceed 200MB!",
+        "en": "Uploaded file size cannot exceed 200MB!",
+        "zh": "上传的文件大小不能超过 200MB！"
+      }
+    }
+  },
+  "maestro.json": {
+    "name.additionalLanguages": {
+      "msg": {
+        "current": "Additional languages (optional)",
+        "en": "Additional languages (optional)",
+        "zh": "其他语言（可选）"
+      }
+    }
+  },
+  "midjourney.json": {
+    "styleTag.paulCezanne": {
+      "msg": {
+        "current": "Paul Cézanne",
+        "en": "Paul Cézanne",
+        "zh": "保罗·塞尚"
+      }
+    },
+    "styleTag.reneMagritte": {
+      "msg": {
+        "current": "René Magritte",
+        "en": "René Magritte",
+        "zh": "勒内·马格利特"
+      }
+    },
+    "styleTag.salvadorDali": {
+      "msg": {
+        "current": "Salvador Dalí",
+        "en": "Salvador Dalí",
+        "zh": "萨尔瓦多·达利"
+      }
+    },
+    "styleTag.eugeneDelacroix": {
+      "msg": {
+        "current": "Eugène Delacroix",
+        "en": "Eugène Delacroix",
+        "zh": "尤金·德拉克罗瓦"
+      }
+    }
+  },
+  "omni.json": {
+    "description.referenceVideo": {
+      "msg": {
+        "current": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+        "en": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+        "zh": "可选的 MP4/MOV（≤200MB），用于编辑或参考已有视频。需至少一张参考图片。"
+      }
+    },
+    "message.uploadVideoError": {
+      "msg": {
+        "current": "Reference video upload failed, please try again later",
+        "en": "Reference video upload failed, please try again later",
+        "zh": "参考视频上传失败，请稍后重试"
+      }
+    },
+    "message.uploadVideoTypeFailed": {
+      "msg": {
+        "current": "Uploaded file must be in MP4 or MOV format!",
+        "en": "Uploaded file must be in MP4 or MOV format!",
+        "zh": "上传的文件必须是 MP4 或 MOV 格式！"
+      }
+    },
+    "message.uploadVideoSizeExceed": {
+      "msg": {
+        "current": "Uploaded file size cannot exceed 200MB!",
+        "en": "Uploaded file size cannot exceed 200MB!",
+        "zh": "上传的文件大小不能超过 200MB！"
+      }
+    }
+  },
+  "order.json": {
+    "message.wechatPayMobileGuide": {
+      "msg": {
+        "current": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
+        "en": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
+        "zh": "当前浏览器不支持直接调用微信支付。请复制下方链接，在微信中打开后继续完成支付。"
+      },
+      "desc": {
+        "current": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable.",
+        "en": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable.",
+        "zh": "在非微信的移动端浏览器中显示的引导文案。"
+      }
+    },
+    "message.wechatPayMobileHint": {
+      "msg": {
+        "current": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
+        "en": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
+        "zh": "复制成功后，打开微信，将链接粘贴到任意聊天框或顶部搜索框，点击链接即可完成支付。"
+      }
+    },
+    "message.wechatPayLongPressTip": {
+      "desc": {
+        "current": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat.",
+        "en": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat.",
+        "zh": "手机微信内部浏览器打开订单页时，二维码上方的引导文案。用户长按二维码即可识别并完成支付，无需跳出微信。"
+      }
+    }
+  },
+  "seedream.json": {
+    "model.seedream50pro": {
+      "desc": {
+        "current": "SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)",
+        "en": "SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)",
+        "zh": "SeeDream 5.0 Pro 模型选项（旗舰单图，不支持组图/流式/联网）"
+      }
+    }
+  },
+  "site.json": {
+    "field.disableRecharge": {
+      "desc": {
+        "current": "Site settings: when on, hide all recharge/top-up entries on this site",
+        "en": "Site settings: when on, hide all recharge/top-up entries on this site",
+        "zh": "站点设置：开启后隐藏本站所有充值/购买入口"
+      }
+    },
+    "message.authSmsWebhookTip": {
+      "msg": {
+        "current": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+        "en": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+        "zh": "开启后，本站发出的手机验证码短信将由你自己的接口用你自己的签名发送；关闭则使用平台默认签名。需先启用「手机号」登录方式。"
+      }
+    },
+    "placeholder.authSmsWebhookSecret": {
+      "msg": {
+        "current": "Signing secret (leave blank to keep unchanged)",
+        "en": "Signing secret (leave blank to keep unchanged)",
+        "zh": "签名密钥（留空则保持不变）"
+      }
+    },
+    "field.authSmsWebhookDocTitle": {
+      "msg": {
+        "current": "Custom SMS Sender · Webhook spec",
+        "en": "Custom SMS Sender · Webhook spec",
+        "zh": "自定义短信发件地址 · 接口说明"
+      }
+    },
+    "message.authSmsWebhookDocIntro": {
+      "msg": {
+        "current": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+        "en": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+        "zh": "本站会向你填写的地址发起一次带签名的 HTTPS POST 请求，由你的服务负责下发短信。请确保你的接口满足以下要求："
+      }
+    },
+    "message.authSmsWebhookDocRequest": {
+      "msg": {
+        "current": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+        "en": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+        "zh": "方法为 POST，Content-Type 为 application/json。purpose 可能为 login / register / test（test 为连通性测试，可不实际下发短信）。请求体结构如下："
+      }
+    },
+    "message.authSmsWebhookDocResponse": {
+      "msg": {
+        "current": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+        "en": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+        "zh": "下发成功请返回 2xx；如需显式表示失败，可返回 HTTP 200，且 body 中 success 字段为 false（见下方示例）。请在 5 秒内响应。"
+      }
+    },
+    "field.authSmsWebhookTestNumber": {
+      "msg": {
+        "current": "Test phone number (optional)",
+        "en": "Test phone number (optional)",
+        "zh": "测试手机号（选填）"
+      }
+    },
+    "message.authSmsWebhookTestFailed": {
+      "msg": {
+        "current": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+        "en": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+        "zh": "测试失败，请检查地址、签名密钥与接口返回。"
+      }
+    },
+    "message.authSmsWebhookDisableConfirm": {
+      "msg": {
+        "current": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+        "en": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+        "zh": "关闭后将删除已保存的发件地址与签名密钥（密钥不可恢复），本站将改用平台默认签名。确定关闭吗？"
+      }
+    },
+    "message.featuresGrok": {
+      "desc": {
+        "current": "Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding.",
+        "en": "Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding.",
+        "zh": "xAI 智能助手，提供实时信息、推理、写作和编程能力。的能力简介"
+      }
+    },
+    "message.featuresMaestro": {
+      "desc": {
+        "current": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery.",
+        "en": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery.",
+        "zh": "将创意制作成完整视频，覆盖策划、配音、场景生成和交付。的能力简介"
+      }
+    },
+    "message.featuresDeepseek": {
+      "desc": {
+        "current": "Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions.",
+        "en": "Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions.",
+        "zh": "DeepSeek 智能助手，擅长深度推理、编程、数学和日常问答。的能力简介"
+      }
+    },
+    "message.featuresChatgpt": {
+      "desc": {
+        "current": "Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations.",
+        "en": "Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations.",
+        "zh": "OpenAI 智能助手，擅长写作、推理、编程和多模态对话。的能力简介"
+      }
+    },
+    "message.featuresSora": {
+      "desc": {
+        "current": "Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations.",
+        "en": "Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations.",
+        "zh": "OpenAI 视频生成服务，适合真实场景、故事表达和视觉变换。的能力简介"
+      }
+    },
+    "message.featuresSuno": {
+      "desc": {
+        "current": "Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt.",
+        "en": "Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt.",
+        "zh": "根据提示生成完整歌曲、歌词、人声和纯音乐。的能力简介"
+      }
+    },
+    "message.featuresOpenaiimage": {
+      "desc": {
+        "current": "Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions.",
+        "en": "Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions.",
+        "zh": "OpenAI 图像生成与编辑，擅长精美画面、文字和版式设计。的能力简介"
+      }
+    },
+    "message.featuresSeedance": {
+      "desc": {
+        "current": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio.",
+        "en": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio.",
+        "zh": "字节跳动视频生成服务，支持动态场景、镜头运动和可选音频。的能力简介"
+      }
+    },
+    "message.featuresWan": {
+      "desc": {
+        "current": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions.",
+        "en": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions.",
+        "zh": "阿里巴巴视频生成服务，支持文字、图像、参考素材和多种分辨率。的能力简介"
+      }
+    },
+    "message.featuresProducer": {
+      "desc": {
+        "current": "Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations.",
+        "en": "Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations.",
+        "zh": "创作歌曲、翻唱和续写，并生成不同人声或纯音乐版本。的能力简介"
+      }
+    },
+    "message.featuresKimi": {
+      "desc": {
+        "current": "Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding.",
+        "en": "Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding.",
+        "zh": "月之暗面智能助手，擅长长上下文研究、推理、写作和编程。的能力简介"
+      }
+    },
+    "message.featuresSerp": {
+      "desc": {
+        "current": "Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results.",
+        "en": "Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results.",
+        "zh": "搜索网页、图片、新闻、地图和视频，返回结构化 Google 结果。的能力简介"
+      }
+    },
+    "message.featuresWebextrator": {
+      "desc": {
+        "current": "Concise capability introduction: Extract clean, structured content and data from web pages.",
+        "en": "Concise capability introduction: Extract clean, structured content and data from web pages.",
+        "zh": "从网页中提取干净、结构化的内容和数据。的能力简介"
+      }
+    },
+    "message.featuresPika": {
+      "desc": {
+        "current": "Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations.",
+        "en": "Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations.",
+        "zh": "生成和编辑创意短视频，支持特效、场景与画面变换。的能力简介"
+      }
+    },
+    "message.featuresKling": {
+      "desc": {
+        "current": "Concise capability introduction: Create high-quality videos from text, images, or motion references.",
+        "en": "Concise capability introduction: Create high-quality videos from text, images, or motion references.",
+        "zh": "根据文字、图像或动作参考生成高质量视频。的能力简介"
+      }
+    },
+    "message.featuresGemini": {
+      "desc": {
+        "current": "Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work.",
+        "en": "Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work.",
+        "zh": "Google 智能助手，擅长长上下文推理、研究、编程和多模态任务。的能力简介"
+      }
+    },
+    "message.featuresClaude": {
+      "desc": {
+        "current": "Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis.",
+        "en": "Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis.",
+        "zh": "Anthropic 智能助手，擅长严谨推理、写作、编程和文档分析。的能力简介"
+      }
+    },
+    "autoTranslate.tooltipDisabledNotSaved": {
+      "desc": {
+        "current": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)",
+        "en": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)",
+        "zh": "在创建对话框中（尚未保存）按钮被禁用的提示"
+      }
+    },
+    "capabilityOverride.dialogTitle": {
+      "desc": {
+        "current": "Dialog title; {name} is the platform-default capability app name",
+        "en": "Dialog title; {name} is the platform-default capability app name",
+        "zh": "弹窗标题，{name} 为平台默认应用名称"
+      }
+    },
+    "capabilityOverride.displayNameTip": {
+      "desc": {
+        "current": "Help text; {name} is the platform-default capability app name",
+        "en": "Help text; {name} is the platform-default capability app name",
+        "zh": "名称说明，{name} 为平台默认应用名称"
+      }
+    },
+    "capabilityOverride.iconTip": {
+      "msg": {
+        "current": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
+        "en": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
+        "zh": "支持 PNG、JPEG 或 WebP，将裁剪为正方形；透明 PNG 会保留透明背景。"
+      }
+    },
+    "capabilityOverride.resetConfirm": {
+      "msg": {
+        "current": "Restore the default name and icon for {name}?",
+        "en": "Restore the default name and icon for {name}?",
+        "zh": "恢复 {name} 的默认名称和图标？"
+      },
+      "desc": {
+        "current": "Confirmation message; {name} is the platform-default capability app name",
+        "en": "Confirmation message; {name} is the platform-default capability app name",
+        "zh": "恢复确认文案，{name} 为平台默认应用名称"
+      }
+    }
+  },
+  "subsite.json": {
+    "message.domainFailed": {
+      "desc_zh": {
+        "current": "Failed 状态兑底文案",
+        "en": "Failed status message",
+        "zh": "Failed 状态兑底文案"
+      }
+    },
+    "message.domainVerifyFailed": {
+      "desc_zh": {
+        "current": "verify 接口 4xx",
+        "en": "Verify interface 4xx",
+        "zh": "verify 接口 4xx"
+      }
+    },
+    "message.domainDeleteConfirm": {
+      "desc_zh": {
+        "current": "删除确认",
+        "en": "Delete confirmation",
+        "zh": "删除确认"
+      }
+    },
+    "message.domainDeleteFailed": {
+      "desc_zh": {
+        "current": "DELETE 接口 5xx",
+        "en": "DELETE interface 5xx",
+        "zh": "DELETE 接口 5xx"
+      }
+    },
+    "status.pending": {
+      "desc_zh": {
+        "current": "Pending 状态标签：czekanie na dodanie CNAME i kliknięcie „Zweryfikuj teraz”",
+        "en": "Pending status label: waiting for user to add CNAME and click 'Verify Now'",
+        "zh": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
+      }
+    },
+    "status.active": {
+      "desc_zh": {
+        "current": "Active 状态标签",
+        "en": "Active status label",
+        "zh": "Active 状态标签"
+      }
+    },
+    "status.failed": {
+      "desc_zh": {
+        "current": "Failed 状态标签",
+        "en": "Failed status label",
+        "zh": "Failed 状态标签"
+      }
+    }
+  },
+  "suno.json": {
+    "button.addAudio": {
+      "msg": {
+        "current": "+ Audio",
+        "en": "+ Audio",
+        "zh": "+ 音频"
+      }
+    }
+  },
+  "usage.json": {
+    "field.credential": {
+      "desc": {
+        "current": "The API key (credential) that generated this usage record.",
+        "en": "The API key (credential) that generated this usage record.",
+        "zh": "生成该使用记录的 API 密钥（凭证）。"
+      }
+    },
+    "field.share": {
+      "desc": {
+        "current": "Column header in the usage breakdown table for a single API's percentage of the total consumption.",
+        "en": "Column header in the usage breakdown table for a single API's percentage of the total consumption.",
+        "zh": "使用明细表格中，单个 API 消耗占总消耗百分比的列标题。"
+      }
+    },
+    "field.autoRefresh": {
+      "desc": {
+        "current": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval.",
+        "en": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval.",
+        "zh": "使用记录表格右上角的开关标签，开启后定时自动刷新最新记录。"
+      }
+    },
+    "title.usageAnalytics": {
+      "desc": {
+        "current": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs.",
+        "en": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs.",
+        "zh": "使用分析卡片的标题，卡片内含趋势、占比、明细三个视图切换。"
+      }
+    },
+    "view.distribution": {
+      "desc": {
+        "current": "View switch button in the usage analytics card: doughnut chart of each API's consumption share.",
+        "en": "View switch button in the usage analytics card: doughnut chart of each API's consumption share.",
+        "zh": "使用分析卡片的视图切换按钮：展示各 API 消耗占比的环形图。"
+      }
+    },
+    "view.breakdown": {
+      "desc": {
+        "current": "View switch button in the usage analytics card: a table listing every API's exact consumption and share.",
+        "en": "View switch button in the usage analytics card: a table listing every API's exact consumption and share.",
+        "zh": "使用分析卡片的视图切换按钮：以表格列出全部 API 的精确消耗与占比。"
+      }
+    },
+    "message.exportFailed": {
+      "desc": {
+        "current": "Error toast shown when the CSV export request fails (network or server error).",
+        "en": "Error toast shown when the CSV export request fails (network or server error).",
+        "zh": "CSV 导出请求失败（网络或服务端错误）时的错误提示"
+      }
+    }
+  },
+  "webextrator.json": {
+    "name.timeout": {
+      "msg": {
+        "current": "Timeout (s)",
+        "en": "Timeout (s)",
+        "zh": "超时(秒)"
+      }
+    },
+    "name.delay": {
+      "msg": {
+        "current": "Delay (s)",
+        "en": "Delay (s)",
+        "zh": "加载后延迟(秒)"
+      }
+    },
+    "placeholder.waitForSelector": {
+      "msg": {
+        "current": "CSS selector, e.g. .article-body",
+        "en": "CSS selector, e.g. .article-body",
+        "zh": "CSS 选择器，例如 .article-body"
+      }
+    },
+    "description.introHint": {
+      "msg": {
+        "current": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+        "en": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+        "zh": "输入网址，选择「抽取」或「渲染」即可获取干净的正文、Markdown、链接、截图等。"
+      }
+    },
+    "message.running": {
+      "msg": {
+        "current": "Working on it…",
+        "en": "Working on it…",
+        "zh": "正在处理…"
+      }
+    },
+    "message.extracting": {
+      "msg": {
+        "current": "Extracting…",
+        "en": "Extracting…",
+        "zh": "正在抽取…"
+      }
+    },
+    "message.rendering": {
+      "msg": {
+        "current": "Rendering…",
+        "en": "Rendering…",
+        "zh": "正在渲染…"
+      }
+    }
+  }
+}

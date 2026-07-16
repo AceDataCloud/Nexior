@@ -1,0 +1,1318 @@
+application.json|ENGLISH_MSG|badge.shared|Shared
+application.json|ENGLISH_DESC|badge.shared|Badge on the application list marking an application that has been authorized to the current user by someone else (not owned by them).
+application.json|ENGLISH_MSG|field.api|API
+byok.json|ENGLISH_MSG|field.apiKey|API Key
+chat.json|ENGLISH_MSG|modelGroup.chatgpt|ChatGPT
+chat.json|ENGLISH_MSG|modelGroup.deepseek|DeepSeek
+chat.json|ENGLISH_MSG|modelGroup.grok|Grok
+chat.json|ENGLISH_MSG|modelGroup.gemini|Gemini
+chat.json|ENGLISH_MSG|modelGroup.claude|Claude
+chat.json|ENGLISH_MSG|modelGroup.kimi|Kimi
+chat.json|ENGLISH_MSG|modelGroup.glm|GLM
+chat.json|ENGLISH_MSG|model.55|gpt-5.5
+chat.json|ENGLISH_MSG|model.54|gpt-5.4
+chat.json|ENGLISH_MSG|model.54Mini|gpt-5.4-mini
+chat.json|ENGLISH_MSG|model.grok4|grok-4
+chat.json|ENGLISH_MSG|model.grok3|grok-3
+chat.json|ENGLISH_MSG|model.gemini30Pro|gemini-3.0-pro
+chat.json|ENGLISH_MSG|model.gemini31Pro|gemini-3.1-pro
+chat.json|ENGLISH_MSG|model.gemini25Pro|gemini-2.5-pro
+chat.json|ENGLISH_MSG|model.gemini25Flash|gemini-2.5-flash
+chat.json|ENGLISH_MSG|model.gemini35Flash|gemini-3.5-flash
+chat.json|ENGLISH_MSG|model.claudeOpus48|claude-opus-4.8
+chat.json|ENGLISH_MSG|model.claudeSonnet46|claude-sonnet-4.6
+chat.json|ENGLISH_MSG|model.claudeHaiku45|claude-haiku-4.5
+chat.json|ENGLISH_MSG|model.kimiK25|kimi-k2.5
+chat.json|ENGLISH_MSG|model.glm51|glm-5.1
+chat.json|ENGLISH_MSG|model.glm47|glm-4.7
+chat.json|ENGLISH_DESC|consent.selectScopes|Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail).
+chat.json|ENGLISH_DESC|consent.selectScopesHint|Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group.
+chat.json|ENGLISH_DESC|consent.installFailed|Toast shown when the AuthBackend install endpoint returns an error from the consent card.
+chat.json|ENGLISH_MSG|scheduledTasks.navTitle|Scheduled Tasks
+chat.json|ENGLISH_MSG|scheduledTasks.title|Scheduled Tasks
+chat.json|ENGLISH_MSG|scheduledTasks.create|New
+chat.json|ENGLISH_MSG|scheduledTasks.edit|Edit Task
+chat.json|ENGLISH_MSG|scheduledTasks.empty|No scheduled tasks yet. Click "New" to create one.
+chat.json|ENGLISH_MSG|scheduledTasks.noRuns|No runs yet
+chat.json|ENGLISH_MSG|scheduledTasks.loadError|Failed to load
+chat.json|ENGLISH_MSG|scheduledTasks.deleteConfirm|Delete "{name}"? The task will stop running.
+chat.json|ENGLISH_MSG|scheduledTasks.triggerNow|Run now
+chat.json|ENGLISH_DESC|scheduledTasks.triggerNow|Trigger the task immediately, out of schedule
+chat.json|ENGLISH_MSG|scheduledTasks.triggerSuccess|Triggered. The result will appear in run history shortly.
+chat.json|ENGLISH_DESC|scheduledTasks.triggerSuccess|Manual trigger success
+chat.json|ENGLISH_MSG|scheduledTasks.triggerError|Failed to trigger. Please try again later.
+chat.json|ENGLISH_DESC|scheduledTasks.triggerError|Manual trigger error
+chat.json|ENGLISH_MSG|scheduledTasks.viewResult|View Result
+chat.json|ENGLISH_MSG|scheduledTasks.viewRuns|Run history
+chat.json|ENGLISH_MSG|scheduledTasks.jitterHint|±60s jitter
+chat.json|ENGLISH_MSG|scheduledTasks.runCount|Ran {count} time(s)
+chat.json|ENGLISH_MSG|scheduledTasks.state.enabled|Active
+chat.json|ENGLISH_MSG|scheduledTasks.state.disabled|Paused
+chat.json|ENGLISH_MSG|scheduledTasks.state.error|Error
+chat.json|ENGLISH_MSG|scheduledTasks.run.queued|Queued
+chat.json|ENGLISH_MSG|scheduledTasks.run.running|Running
+chat.json|ENGLISH_MSG|scheduledTasks.run.success|Success
+chat.json|ENGLISH_MSG|scheduledTasks.run.failed|Failed
+chat.json|ENGLISH_MSG|scheduledTasks.run.needs_user_input|Needs action
+chat.json|ENGLISH_MSG|scheduledTasks.scheduleType.daily|Daily
+chat.json|ENGLISH_MSG|scheduledTasks.scheduleType.hourly|Hourly
+chat.json|ENGLISH_MSG|scheduledTasks.scheduleType.weekly|Weekly
+chat.json|ENGLISH_MSG|scheduledTasks.scheduleType.cron|Cron expression
+chat.json|ENGLISH_MSG|scheduledTasks.scheduleType.interval|Every
+chat.json|ENGLISH_DESC|scheduledTasks.scheduleType.interval|Run at a fixed interval
+chat.json|ENGLISH_MSG|scheduledTasks.form.intervalUnit.minute|minutes
+chat.json|ENGLISH_DESC|scheduledTasks.form.intervalUnit.minute|Interval unit: minutes
+chat.json|ENGLISH_MSG|scheduledTasks.form.intervalUnit.hour|hours
+chat.json|ENGLISH_DESC|scheduledTasks.form.intervalUnit.hour|Interval unit: hours
+chat.json|ENGLISH_MSG|scheduledTasks.form.intervalUnit.day|days
+chat.json|ENGLISH_DESC|scheduledTasks.form.intervalUnit.day|Interval unit: days
+chat.json|ENGLISH_MSG|scheduledTasks.form.hourlyMinute|At minute
+chat.json|ENGLISH_DESC|scheduledTasks.form.hourlyMinute|Which minute of each hour to run
+chat.json|ENGLISH_MSG|scheduledTasks.form.hourlyMinuteHint|Which minute of each hour to run (0–59)
+chat.json|ENGLISH_DESC|scheduledTasks.form.hourlyMinuteHint|Hourly minute hint
+chat.json|ENGLISH_MSG|scheduledTasks.form.intervalHint|Runs once every fixed interval after the previous run (minimum 1 minute)
+chat.json|ENGLISH_DESC|scheduledTasks.form.intervalHint|Interval hint
+chat.json|ENGLISH_MSG|scheduledTasks.form.cronHint|Standard 5-field cron expression: minute hour day month weekday
+chat.json|ENGLISH_DESC|scheduledTasks.form.cronHint|Cron hint
+chat.json|ENGLISH_MSG|scheduledTasks.form.schedulePreview|Runs {text}
+chat.json|ENGLISH_DESC|scheduledTasks.form.schedulePreview|Schedule preview
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.everyNMinutes|every {n} min
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.everyNMinutes|Human-readable: every N minutes
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.everyNHours|every {n} h
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.everyNHours|Human-readable: every N hours
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.everyNDays|every {n} d
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.everyNDays|Human-readable: every N days
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.hourlyAtMinute|hourly at minute {n}
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.hourlyAtMinute|Human-readable: hourly at minute N
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.dailyAt|daily at {time}
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.dailyAt|Human-readable: daily at time
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.weeklyAt|Human-readable: weekly at weekday/time
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.cronRaw|Cron: {cron}
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.cronRaw|Human-readable: raw cron
+chat.json|ENGLISH_MSG|scheduledTasks.humanize.once|once at {time}
+chat.json|ENGLISH_DESC|scheduledTasks.humanize.once|Human-readable: once
+chat.json|ENGLISH_MSG|scheduledTasks.form.name|Task name
+chat.json|ENGLISH_MSG|scheduledTasks.form.namePlaceholder|e.g. Daily news summary
+chat.json|ENGLISH_MSG|scheduledTasks.form.model|Model
+chat.json|ENGLISH_MSG|scheduledTasks.form.prompt|Prompt
+chat.json|ENGLISH_MSG|scheduledTasks.form.promptPlaceholder|Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables.
+chat.json|ENGLISH_MSG|scheduledTasks.form.promptHint|Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet
+chat.json|ENGLISH_MSG|scheduledTasks.form.schedule|Frequency
+chat.json|ENGLISH_MSG|scheduledTasks.form.time|Time
+chat.json|ENGLISH_MSG|scheduledTasks.form.weekday|Weekday
+chat.json|ENGLISH_MSG|scheduledTasks.form.cron|Cron expression
+chat.json|ENGLISH_DESC|scheduledTasks.form.mcpServersPlaceholder|Placeholder για την εξουσιοδότηση MCP server
+chat.json|ENGLISH_DESC|scheduledTasks.form.maxTurns|Scheduled task per-run agent turn cap
+chat.json|ENGLISH_DESC|scheduledTasks.form.maxTurnsHint|Scheduled task per-run agent turn cap
+chat.json|ENGLISH_MSG|scheduledTasks.form.skillNotActiveTitle|Bind the skill first
+chat.json|ENGLISH_DESC|scheduledTasks.form.skillNotActiveTitle|Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user.
+chat.json|ENGLISH_MSG|scheduledTasks.form.skillNotActiveMessage|The skill "{name}" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.
+chat.json|ENGLISH_DESC|scheduledTasks.form.skillNotActiveMessage|Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway.
+chat.json|ENGLISH_MSG|scheduledTasks.form.skillNotActiveForce|Save anyway
+chat.json|ENGLISH_DESC|scheduledTasks.form.skillNotActiveForce|Confirm button that saves the scheduled task anyway, bypassing the binding check (force).
+chat.json|ENGLISH_MSG|scheduledTasks.form.required|Please fill in task name and prompt
+chat.json|ENGLISH_MSG|artifacts.kind.email|Email
+chat.json|ENGLISH_MSG|model.claudeOpus47|claude-opus-4.7
+chat.json|ENGLISH_MSG|artifacts.unhide|Unhide
+chat.json|ENGLISH_DESC|artifacts.unhide|Restore a hidden artifact
+chat.json|ENGLISH_MSG|artifacts.showHidden|Show hidden
+chat.json|ENGLISH_DESC|artifacts.showHidden|Toggle in the filter bar to include hidden artifacts
+chat.json|ENGLISH_MSG|artifacts.hiddenBadge|Hidden
+chat.json|ENGLISH_DESC|artifacts.hiddenBadge|Badge shown on artifacts that are currently hidden
+chat.json|ENGLISH_MSG|browserTool.title|Browser activity
+chat.json|ENGLISH_DESC|browserTool.title|Fallback title for a BrowserDevice tool activity
+chat.json|ENGLISH_MSG|browserTool.state.choose_device|Choose a browser device
+chat.json|ENGLISH_MSG|browserTool.state.device_offline|Browser device is offline
+chat.json|ENGLISH_MSG|browserTool.state.awaiting_device|Waiting for browser device
+chat.json|ENGLISH_MSG|browserTool.state.awaiting_local_approval|Waiting for approval on the browser device
+chat.json|ENGLISH_MSG|browserTool.state.takeover_required|Take over on the browser device
+chat.json|ENGLISH_MSG|browserTool.state.executing|Executing in browser
+chat.json|ENGLISH_MSG|browserTool.state.completed|Completed
+chat.json|ENGLISH_MSG|browserTool.state.denied|Denied on the browser device
+chat.json|ENGLISH_MSG|browserTool.state.expired|Browser request expired
+chat.json|ENGLISH_MSG|browserTool.state.cancel_too_late|Too late to cancel
+chat.json|ENGLISH_MSG|scheduledTasks.run.waiting_for_device|Waiting for browser device
+codingBridge.json|ENGLISH_MSG|nodeList.title|Devices
+codingBridge.json|ENGLISH_DESC|nodeList.title|Coding Bridge device list title
+codingBridge.json|ENGLISH_MSG|nodeList.refresh|Refresh
+codingBridge.json|ENGLISH_DESC|nodeList.refresh|Refresh the device list
+codingBridge.json|ENGLISH_MSG|nodeList.pair|Pair device
+codingBridge.json|ENGLISH_DESC|nodeList.pair|Open the pairing dialog
+codingBridge.json|ENGLISH_MSG|nodeList.empty|No devices paired yet.
+codingBridge.json|ENGLISH_DESC|nodeList.empty|Empty device list message
+codingBridge.json|ENGLISH_MSG|nodeList.pairFirst|Pair your first device
+codingBridge.json|ENGLISH_DESC|nodeList.pairFirst|Empty-state pairing button
+codingBridge.json|ENGLISH_MSG|nodeList.remove|Remove
+codingBridge.json|ENGLISH_DESC|nodeList.remove|Remove a device
+codingBridge.json|ENGLISH_MSG|nodeList.removeConfirm|Remove device "{name}"? It will need to be paired again.
+codingBridge.json|ENGLISH_DESC|nodeList.removeConfirm|Device removal confirmation
+codingBridge.json|ENGLISH_MSG|nodeList.removeSuccess|Device removed.
+codingBridge.json|ENGLISH_DESC|nodeList.removeSuccess|Device removed toast
+codingBridge.json|ENGLISH_MSG|nodeList.removeFailed|Failed to remove device.
+codingBridge.json|ENGLISH_DESC|nodeList.removeFailed|Device removal error toast
+codingBridge.json|ENGLISH_MSG|status.online|Online
+codingBridge.json|ENGLISH_DESC|status.online|Device online status
+codingBridge.json|ENGLISH_MSG|status.offline|Offline
+codingBridge.json|ENGLISH_DESC|status.offline|Device offline status
+codingBridge.json|ENGLISH_MSG|connection.disconnected|Disconnected
+codingBridge.json|ENGLISH_DESC|connection.disconnected|Relay connection disconnected
+codingBridge.json|ENGLISH_MSG|connection.connecting|Connecting…
+codingBridge.json|ENGLISH_DESC|connection.connecting|Relay connection connecting
+codingBridge.json|ENGLISH_MSG|connection.connected|Connected
+codingBridge.json|ENGLISH_DESC|connection.connected|Relay connection connected
+codingBridge.json|ENGLISH_MSG|connection.error|Connection error
+codingBridge.json|ENGLISH_DESC|connection.error|Relay connection error
+codingBridge.json|ENGLISH_MSG|pair.title|Pair a device
+codingBridge.json|ENGLISH_DESC|pair.title|Pairing dialog title
+codingBridge.json|ENGLISH_MSG|pair.intro|Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.
+codingBridge.json|ENGLISH_DESC|pair.intro|Pairing dialog intro
+codingBridge.json|ENGLISH_MSG|pair.step1|Install the agent (requires Python 3.10+):
+codingBridge.json|ENGLISH_DESC|pair.step1|Pairing step 1
+codingBridge.json|ENGLISH_MSG|pair.step2|Start it and follow the prompt:
+codingBridge.json|ENGLISH_DESC|pair.step2|Pairing step 2
+codingBridge.json|ENGLISH_MSG|pair.step3|Enter the pairing code it shows below.
+codingBridge.json|ENGLISH_DESC|pair.step3|Pairing step 3
+codingBridge.json|ENGLISH_MSG|pair.codePlaceholder|Pairing code
+codingBridge.json|ENGLISH_DESC|pair.codePlaceholder|Pairing code input placeholder
+codingBridge.json|ENGLISH_MSG|pair.claim|Pair device
+codingBridge.json|ENGLISH_DESC|pair.claim|Pairing confirm button
+codingBridge.json|ENGLISH_MSG|pair.success|Device "{name}" paired.
+codingBridge.json|ENGLISH_DESC|pair.success|Pairing success toast
+codingBridge.json|ENGLISH_MSG|pair.invalidCode|Invalid or expired pairing code.
+codingBridge.json|ENGLISH_DESC|pair.invalidCode|Pairing invalid code error
+codingBridge.json|ENGLISH_MSG|pair.usedCode|This pairing code has already been used.
+codingBridge.json|ENGLISH_DESC|pair.usedCode|Pairing used code error
+codingBridge.json|ENGLISH_MSG|pair.failed|Failed to pair device.
+codingBridge.json|ENGLISH_DESC|pair.failed|Pairing generic error
+codingBridge.json|ENGLISH_MSG|permission.title|Permission required
+codingBridge.json|ENGLISH_DESC|permission.title|Permission dialog title
+codingBridge.json|ENGLISH_MSG|permission.subtitle|The agent wants to use a tool. Approve to continue.
+codingBridge.json|ENGLISH_DESC|permission.subtitle|Permission dialog subtitle
+codingBridge.json|ENGLISH_MSG|permission.deny|Deny
+codingBridge.json|ENGLISH_DESC|permission.deny|Deny a tool permission
+codingBridge.json|ENGLISH_MSG|permission.allow|Allow
+codingBridge.json|ENGLISH_DESC|permission.allow|Allow a tool permission
+codingBridge.json|ENGLISH_MSG|session.noDevice|Select a device to start coding.
+codingBridge.json|ENGLISH_DESC|session.noDevice|No device selected placeholder
+codingBridge.json|ENGLISH_MSG|session.newSession|New session
+codingBridge.json|ENGLISH_DESC|session.newSession|Start a new session
+codingBridge.json|ENGLISH_MSG|session.deviceOffline|This device is offline. Start the Coding Bridge agent on it to continue.
+codingBridge.json|ENGLISH_DESC|session.deviceOffline|Device offline warning
+codingBridge.json|ENGLISH_DESC|session.nodeId|Diagnostic label for the node id
+codingBridge.json|ENGLISH_DESC|session.sessionId|Diagnostic label for the session id
+codingBridge.json|ENGLISH_DESC|session.traceId|Diagnostic label for the trace id
+codingBridge.json|ENGLISH_MSG|session.startHint|Send a message to start a session on this device.
+codingBridge.json|ENGLISH_DESC|session.startHint|Empty transcript hint
+codingBridge.json|ENGLISH_MSG|session.cwdPlaceholder|Working directory (optional)
+codingBridge.json|ENGLISH_DESC|session.cwdPlaceholder|Working directory input placeholder
+codingBridge.json|ENGLISH_MSG|session.modelPlaceholder|Model (optional)
+codingBridge.json|ENGLISH_DESC|session.modelPlaceholder|Model input placeholder
+codingBridge.json|ENGLISH_MSG|session.promptPlaceholder|Send a message to the agent…
+codingBridge.json|ENGLISH_DESC|session.promptPlaceholder|Prompt input placeholder
+codingBridge.json|ENGLISH_MSG|session.send|Send
+codingBridge.json|ENGLISH_DESC|session.send|Send prompt button
+codingBridge.json|ENGLISH_DESC|session.retry|Re-run the last prompt after a failure
+codingBridge.json|ENGLISH_MSG|session.editPrompt|Edit
+codingBridge.json|ENGLISH_DESC|session.editPrompt|Edit a sent prompt and resend it as a new turn
+codingBridge.json|ENGLISH_MSG|session.editingBanner|Editing — sending rewinds the conversation to this point.
+codingBridge.json|ENGLISH_DESC|session.editingBanner|Banner shown while editing a past prompt
+codingBridge.json|ENGLISH_MSG|session.editRestoreCode|Also restore code
+codingBridge.json|ENGLISH_DESC|session.editRestoreCode|Checkbox to also roll back file changes when editing
+codingBridge.json|ENGLISH_MSG|session.editCancel|Cancel
+codingBridge.json|ENGLISH_DESC|session.editCancel|Cancel editing a past prompt
+codingBridge.json|ENGLISH_MSG|session.editSubmit|Update
+codingBridge.json|ENGLISH_DESC|session.editSubmit|Submit an edited prompt (rewind and re-run)
+codingBridge.json|ENGLISH_MSG|session.enterHint|Enter to send, Shift+Enter for a new line.
+codingBridge.json|ENGLISH_DESC|session.enterHint|Composer keyboard hint
+codingBridge.json|ENGLISH_MSG|transcript.turnFailed|Turn failed
+codingBridge.json|ENGLISH_DESC|transcript.turnFailed|Turn result failed label
+codingBridge.json|ENGLISH_MSG|transcript.turnDone|Done
+codingBridge.json|ENGLISH_DESC|transcript.turnDone|Turn result done label
+codingBridge.json|ENGLISH_DESC|history.button|Open the conversation history drawer
+codingBridge.json|ENGLISH_DESC|history.title|History drawer title
+codingBridge.json|ENGLISH_DESC|history.intro|History drawer intro
+codingBridge.json|ENGLISH_DESC|history.refresh|Reload the history list
+codingBridge.json|ENGLISH_DESC|history.loading|History loading message
+codingBridge.json|ENGLISH_DESC|history.empty|Empty history message
+codingBridge.json|ENGLISH_DESC|history.messages|History item message count
+codingBridge.json|ENGLISH_DESC|history.readonly|Read-only replay notice
+codingBridge.json|ENGLISH_DESC|history.running|Marks a history conversation that is currently live on the device
+codingBridge.json|ENGLISH_DESC|history.resumeHint|Resume composer hint
+codingBridge.json|ENGLISH_DESC|history.claudeLabel|Replayed Claude session label
+codingBridge.json|ENGLISH_DESC|history.codexLabel|Replayed Codex session label
+codingBridge.json|ENGLISH_DESC|session.permissionModeLabel|Permission-mode selector label
+codingBridge.json|ENGLISH_DESC|session.permissionModeDefault|Permission mode: ask before each tool use
+codingBridge.json|ENGLISH_DESC|session.permissionModeAcceptEdits|Permission mode: auto-accept file edits
+codingBridge.json|ENGLISH_DESC|session.permissionModePlan|Permission mode: read-only planning
+codingBridge.json|ENGLISH_DESC|session.permissionModeBypass|Permission mode: bypass all permission prompts
+codingBridge.json|ENGLISH_DESC|session.providerLabel|Agent backend selector label
+codingBridge.json|ENGLISH_MSG|session.providerClaude|Claude Code
+codingBridge.json|ENGLISH_DESC|session.providerClaude|Backend option: Claude Code
+codingBridge.json|ENGLISH_MSG|session.providerCodex|Codex
+codingBridge.json|ENGLISH_DESC|session.providerCodex|Backend option: Codex
+codingBridge.json|ENGLISH_DESC|session.providerUnavailable|Suffix shown next to a backend whose CLI is not installed on the node
+codingBridge.json|ENGLISH_DESC|session.providerUnavailableHint|Composer hint shown when the selected backend is not installed on the node
+codingBridge.json|ENGLISH_DESC|session.effortLabel|Reasoning-effort selector label
+codingBridge.json|ENGLISH_DESC|session.effortDefault|Reasoning effort: backend default
+codingBridge.json|ENGLISH_DESC|session.effortLow|Reasoning effort: low
+codingBridge.json|ENGLISH_DESC|session.effortMedium|Reasoning effort: medium
+codingBridge.json|ENGLISH_DESC|session.effortHigh|Reasoning effort: high
+codingBridge.json|ENGLISH_DESC|session.effortMax|Reasoning effort: maximum (Claude only)
+codingBridge.json|ENGLISH_DESC|directory.title|Working-directory picker dialog title
+codingBridge.json|ENGLISH_DESC|directory.choose|Button: select the current directory
+codingBridge.json|ENGLISH_DESC|directory.up|Button: go to the parent directory
+codingBridge.json|ENGLISH_DESC|directory.refresh|Button: reload the current directory
+codingBridge.json|ENGLISH_DESC|directory.loading|Directory listing loading hint
+codingBridge.json|ENGLISH_DESC|directory.empty|Empty directory hint
+codingBridge.json|ENGLISH_DESC|directory.truncated|Hint shown when the listing was truncated
+codingBridge.json|ENGLISH_DESC|session.attachImage|Attach image button title
+codingBridge.json|ENGLISH_DESC|session.removeImage|Remove attached image button title
+codingBridge.json|ENGLISH_DESC|session.imageAlt|Attached image thumbnail alt text
+codingBridge.json|ENGLISH_DESC|session.imageTooLarge|Warning shown when an image exceeds the size limit
+codingBridge.json|ENGLISH_DESC|session.imageLimit|Warning shown when exceeding the max number of images
+codingBridge.json|ENGLISH_MSG|session.modelDefault|Default model
+codingBridge.json|ENGLISH_DESC|session.modelDefault|Default model
+codingBridge.json|ENGLISH_MSG|session.cwdDefault|Default directory
+codingBridge.json|ENGLISH_DESC|session.cwdDefault|Default directory
+codingBridge.json|ENGLISH_MSG|session.settings|Session settings
+codingBridge.json|ENGLISH_DESC|session.settings|Session settings
+codingBridge.json|ENGLISH_MSG|session.settingsLocked|Settings are locked for this session
+codingBridge.json|ENGLISH_DESC|session.settingsLocked|Settings are locked for this session
+codingBridge.json|ENGLISH_MSG|session.attachFile|Attach file
+codingBridge.json|ENGLISH_DESC|session.attachFile|Attach file
+codingBridge.json|ENGLISH_MSG|session.attachmentImageAlt|Attached image
+codingBridge.json|ENGLISH_DESC|session.attachmentImageAlt|Attached image
+codingBridge.json|ENGLISH_MSG|session.removeAttachment|Remove attachment
+codingBridge.json|ENGLISH_DESC|session.removeAttachment|Remove attachment
+codingBridge.json|ENGLISH_MSG|session.uploadingAttachment|Uploading attachments…
+codingBridge.json|ENGLISH_DESC|session.uploadingAttachment|Uploading attachments…
+codingBridge.json|ENGLISH_MSG|session.attachmentTooLarge|File is too large; keep each under 50 MB.
+codingBridge.json|ENGLISH_DESC|session.attachmentTooLarge|File is too large; keep each under 50 MB.
+codingBridge.json|ENGLISH_MSG|session.attachmentLimit|You can attach up to {count} files.
+codingBridge.json|ENGLISH_DESC|session.attachmentLimit|You can attach up to {count} files.
+codingBridge.json|ENGLISH_MSG|session.attachmentUploadError|Failed to upload attachment.
+codingBridge.json|ENGLISH_DESC|session.attachmentUploadError|Failed to upload attachment.
+codingBridge.json|ENGLISH_DESC|notice.slashUnavailable|Notice shown when a slash command can't run in a remote session
+codingBridge.json|ENGLISH_DESC|notice.slashCodexUnsupported|Notice shown when a Codex slash command isn't supported remotely
+codingBridge.json|ENGLISH_DESC|notify.enable|Tooltip on the notification bell when notifications are off
+codingBridge.json|ENGLISH_DESC|notify.disable|Tooltip on the notification bell when notifications are on
+codingBridge.json|ENGLISH_DESC|notify.enabled|Toast after enabling notifications
+codingBridge.json|ENGLISH_DESC|notify.disabled|Toast after disabling notifications
+codingBridge.json|ENGLISH_DESC|notify.denied|Toast when notification permission is denied
+codingBridge.json|ENGLISH_DESC|notify.unsupported|Toast when notifications are unsupported
+codingBridge.json|ENGLISH_DESC|notify.failed|Toast when enabling or disabling notifications errors
+common.json|ENGLISH_DESC|button.deletePermanently|Final red delete button at the bottom of the delete confirmation dialog
+common.json|ENGLISH_MSG|button.downloadAndroid|Λήψη Android
+common.json|ENGLISH_DESC|button.downloadWindows|Text in button for downloading the Windows desktop installer
+common.json|ENGLISH_DESC|button.downloadMac|Text in button for downloading the macOS desktop installer
+common.json|ENGLISH_MSG|entity.website|Ace Data Cloud
+common.json|ENGLISH_DESC|error.appleSignInFailed|Error toast shown when native Apple sign-in fails for a reason other than user cancellation
+common.json|ENGLISH_MSG|error.loginLinkExpired|Login link expired. Please sign in again.
+common.json|ENGLISH_DESC|error.loginLinkExpired|Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).
+common.json|ENGLISH_DESC|message.guestTasks|Prompt shown in the task list area for not-logged-in guests
+common.json|ENGLISH_DESC|message.mobileComingSoon|Short status label shown on a platform card (e.g. iOS) while its build is being prepared
+common.json|ENGLISH_MSG|message.mobileNowOnAppStore|Now on the App Store
+common.json|ENGLISH_DESC|message.mobileNowOnAppStore|Status label shown on the iOS card when the app is live on the App Store
+common.json|ENGLISH_DESC|message.desktopWindowsHint|Windows desktop download card description
+common.json|ENGLISH_DESC|message.desktopMacHint|macOS desktop download card description
+common.json|ENGLISH_DESC|message.desktopUnsignedNote|Note explaining the desktop builds are unsigned betas and how to open them
+common.json|ENGLISH_MSG|button.getOnGooglePlay|Λήψη από το Google Play
+common.json|ENGLISH_DESC|button.getOnGooglePlay|Button label that opens the app's Google Play Store listing
+common.json|ENGLISH_MSG|button.getOnAppStore|Get it on the App Store
+common.json|ENGLISH_DESC|button.getOnAppStore|Button label that opens the app's Apple App Store listing
+common.json|ENGLISH_DESC|message.mobileApkFallback|Shown next to a secondary button offering a direct APK download for users who cannot access Google Play
+common.json|ENGLISH_DESC|message.mobilePlayStoreHint|Hint under the QR code explaining that scanning it opens the Google Play listing
+common.json|ENGLISH_MSG|message.mobileAppStoreHint|Scan to open the App Store
+common.json|ENGLISH_DESC|message.mobileAppStoreHint|Hint under the QR code explaining that scanning it opens the App Store listing
+common.json|ENGLISH_DESC|message.deleteAccountConfirm|Confirmation message shown before permanently deleting the user account
+common.json|ENGLISH_DESC|message.deleteAccountSuccess|Message shown after the user account is successfully deleted
+common.json|ENGLISH_DESC|message.deleteAccountFailed|Message shown when account deletion fails
+common.json|ENGLISH_DESC|message.deleteAccountWarning|Red warning banner at the top of the delete confirmation dialog
+common.json|ENGLISH_DESC|message.deleteAccountConsequences|Explains what data will be removed in the delete confirmation dialog
+common.json|ENGLISH_DESC|message.deleteAccountTypePrompt|Instructs the user to type their username to confirm; the username is shown separately below
+common.json|ENGLISH_DESC|message.deleteAccountPlaceholder|Placeholder for the username confirmation input
+common.json|ENGLISH_MSG|nav.chatgpt|ChatGPT
+common.json|ENGLISH_MSG|nav.deepseek|DeepSeek
+common.json|ENGLISH_MSG|nav.grok|Grok
+common.json|ENGLISH_MSG|nav.chat|Chat
+common.json|ENGLISH_MSG|nav.veo|Veo
+common.json|ENGLISH_MSG|nav.sora|Sora
+common.json|ENGLISH_MSG|nav.midjourney|Midjourney
+common.json|ENGLISH_MSG|nav.qrart|QRArt
+common.json|ENGLISH_MSG|nav.suno|Suno
+common.json|ENGLISH_MSG|nav.pixverse|Pixverse
+common.json|ENGLISH_MSG|nav.flux|Flux
+common.json|ENGLISH_MSG|nav.nanobanana|Nano Banana
+common.json|ENGLISH_MSG|nav.openaiimage|OpenAI Image
+common.json|ENGLISH_MSG|nav.seedream|SeeDream
+common.json|ENGLISH_MSG|nav.seedance|SeeDance
+common.json|ENGLISH_DESC|nav.seedance|Website navigation text for displaying the SeeDance page, must remain as 'SeeDance'
+common.json|ENGLISH_MSG|nav.grokvideo|Grok Video
+common.json|ENGLISH_DESC|nav.grokvideo|Text in the website navigation bar to display the Grok Imagine video page
+common.json|ENGLISH_MSG|nav.luma|Luma
+common.json|ENGLISH_DESC|nav.luma|Website navigation text for displaying the Luma page, must remain as 'Luma'
+common.json|ENGLISH_MSG|nav.pika|Pika
+common.json|ENGLISH_DESC|nav.pika|Website navigation text for displaying the Pika page, must remain as 'Pika'
+common.json|ENGLISH_MSG|nav.kling|Kling
+common.json|ENGLISH_DESC|nav.kling|Website navigation text for displaying the Kling page, must remain as 'Kling'
+common.json|ENGLISH_MSG|nav.hailuo|Hailuo
+common.json|ENGLISH_DESC|nav.hailuo|Website navigation text for displaying the Hailuo page, must remain as 'Hailuo'
+common.json|ENGLISH_MSG|nav.wan|Wan
+common.json|ENGLISH_DESC|nav.wan|Website navigation text for displaying the Wan page, must remain as 'Wan'
+common.json|ENGLISH_MSG|nav.producer|Producer
+common.json|ENGLISH_DESC|nav.producer|Website navigation text for displaying the Producer page, must remain as 'Producer'
+common.json|ENGLISH_MSG|nav.fish|Fish Audio
+common.json|ENGLISH_MSG|nav.kimi|Kimi
+common.json|ENGLISH_DESC|nav.kimi|Website navigation text for displaying the Kimi page, must remain as 'Kimi'
+common.json|ENGLISH_MSG|nav.serp|SERP
+common.json|ENGLISH_DESC|nav.serp|Website navigation text for displaying the SERP page, must remain as 'SERP'
+common.json|ENGLISH_MSG|nav.codingBridge|Coding Bridge
+common.json|ENGLISH_DESC|nav.codingBridge|Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'
+common.json|ENGLISH_MSG|nav.webextrator|WebExtrator
+common.json|ENGLISH_DESC|nav.webextrator|Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'
+common.json|ENGLISH_DESC|nav.image|Website navigation text for displaying the image page
+common.json|ENGLISH_DESC|nav.music|Website navigation text for displaying the music page
+common.json|ENGLISH_DESC|nav.video|Website navigation text for displaying the video page
+common.json|ENGLISH_DESC|nav.distribution|Website navigation text for displaying the recommended earnings page
+common.json|ENGLISH_DESC|nav.connections|Menu item to navigate to the connection management page at auth.acedata.cloud
+common.json|ENGLISH_DESC|nav.logOut|Website navigation text for logging out
+common.json|ENGLISH_DESC|nav.deleteAccount|Menu item to permanently delete the current user account
+common.json|ENGLISH_DESC|nav.site|Website navigation text for displaying the site configuration page
+common.json|ENGLISH_DESC|nav.subsite|Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled
+common.json|ENGLISH_DESC|nav.setting|Website navigation text for displaying the settings page
+common.json|ENGLISH_DESC|nav.more|Website navigation text for expanding more services
+common.json|ENGLISH_DESC|nav.locale|Website navigation text for changing the language
+common.json|ENGLISH_DESC|nav.support|Website navigation text for displaying the contact page
+common.json|ENGLISH_DESC|nav.darkMode|Website navigation text for switching to dark theme
+common.json|ENGLISH_DESC|title.alert|Title for alert messages
+common.json|ENGLISH_DESC|title.placeholderOfSelect|Placeholder for select input
+common.json|ENGLISH_DESC|title.placeholderOfInput|Placeholder for input
+common.json|ENGLISH_DESC|title.allApplications|Page title for displaying all applications
+common.json|ENGLISH_DESC|title.allOrders|Page title for displaying all orders
+common.json|ENGLISH_DESC|title.orderInfo|Page title for displaying order information
+common.json|ENGLISH_DESC|title.buyMore|Page title for top-up. Must translate to 'Top Up'.
+common.json|ENGLISH_DESC|title.distribution|Page title for displaying recommended earnings, meaning users can earn by inviting others to use the service
+common.json|ENGLISH_DESC|title.site|Page title for displaying site configuration
+common.json|ENGLISH_DESC|title.distributionHistory|Page title for displaying recommendation history
+common.json|ENGLISH_DESC|title.invitee|Page title for displaying the invitee
+common.json|ENGLISH_DESC|title.allUsages|Page title for displaying all API service usages
+common.json|ENGLISH_DESC|title.allCredentials|Page title for displaying all credentials used to access the API
+common.json|ENGLISH_MSG|about.address|131 Continental Dr, Suite 305, Newark, DE 19713, ΗΠΑ
+common.json|ENGLISH_MSG|about.email|office{'@'}acedata.cloud
+common.json|ENGLISH_DESC|settings.sendShortcut|Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.
+common.json|ENGLISH_DESC|sendShortcut.enter|Send-shortcut option: press Enter to send the message.
+common.json|ENGLISH_DESC|sendShortcut.modEnter|Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.
+common.json|ENGLISH_DESC|settings.loginMode|Login-mode row title in general settings
+common.json|ENGLISH_DESC|loginMode.iframe|Login mode option: embedded iframe popup
+common.json|ENGLISH_DESC|loginMode.redirect|Login mode option: full-page redirect
+common.json|ENGLISH_MSG|settings.apiKey|API Key
+common.json|ENGLISH_MSG|nav.gemini|Gemini
+common.json|ENGLISH_MSG|nav.claude|Claude
+common.json|ENGLISH_MSG|nav.github|GitHub
+common.json|ENGLISH_DESC|settings.localTools|Desktop-only settings tab for managing local tool folders, permissions and grants.
+common.json|ENGLISH_DESC|settings.localToolsDesktopOnly|Shown when the Local Tools tab is opened on web/mobile.
+common.json|ENGLISH_DESC|settings.localToolsFoldersTitle|Heading for the list of folders the AI may read/write locally.
+common.json|ENGLISH_DESC|settings.localToolsFoldersHint|Help text under the authorized-folders heading.
+common.json|ENGLISH_MSG|settings.localToolsComputerUseTitle|Computer Use (experimental)
+common.json|ENGLISH_DESC|settings.localToolsComputerUseTitle|Heading for the opt-in Computer Use (screen + mouse/keyboard control) toggle.
+common.json|ENGLISH_MSG|settings.localToolsComputerUseHint|Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.
+common.json|ENGLISH_DESC|settings.localToolsComputerUseHint|Help text under the Computer Use toggle.
+common.json|ENGLISH_DESC|settings.localToolsAddFolder|Button to pick a folder to authorize.
+common.json|ENGLISH_DESC|settings.localToolsRemove|Button to remove an authorized folder.
+common.json|ENGLISH_DESC|settings.localToolsNoFolders|Empty state for the authorized-folders list.
+common.json|ENGLISH_DESC|settings.localToolsSave|Save the authorized folders.
+common.json|ENGLISH_MSG|settings.localToolsMcpTitle|MCP servers
+common.json|ENGLISH_DESC|settings.localToolsMcpTitle|Section title for local MCP server configuration in Local Tools settings.
+common.json|ENGLISH_MSG|settings.localToolsMcpHint|Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.
+common.json|ENGLISH_DESC|settings.localToolsMcpHint|Explains what local MCP servers do and that changes apply without a restart.
+common.json|ENGLISH_MSG|settings.localToolsMcpAdd|Add server
+common.json|ENGLISH_DESC|settings.localToolsMcpAdd|Button to add a new local MCP server row.
+common.json|ENGLISH_MSG|settings.localToolsMcpName|Name
+common.json|ENGLISH_DESC|settings.localToolsMcpName|Label for the MCP server name/id field.
+common.json|ENGLISH_MSG|settings.localToolsMcpCommand|Command
+common.json|ENGLISH_DESC|settings.localToolsMcpCommand|Label for the MCP server launch command field.
+common.json|ENGLISH_MSG|settings.localToolsMcpArgs|Arguments
+common.json|ENGLISH_DESC|settings.localToolsMcpArgs|Label for the MCP server command arguments field.
+common.json|ENGLISH_MSG|settings.localToolsMcpArgsHint|One argument per line.
+common.json|ENGLISH_DESC|settings.localToolsMcpArgsHint|Placeholder/hint for the MCP arguments textarea.
+common.json|ENGLISH_MSG|settings.localToolsMcpEnv|Environment
+common.json|ENGLISH_DESC|settings.localToolsMcpEnv|Label for the MCP server environment variables field.
+common.json|ENGLISH_MSG|settings.localToolsMcpEnvHint|One KEY=VALUE per line.
+common.json|ENGLISH_DESC|settings.localToolsMcpEnvHint|Placeholder/hint for the MCP environment variables textarea.
+common.json|ENGLISH_MSG|settings.localToolsMcpNoServers|No MCP servers configured.
+common.json|ENGLISH_DESC|settings.localToolsMcpNoServers|Empty state shown when no MCP servers are configured.
+common.json|ENGLISH_MSG|settings.localToolsMcpNamePlaceholder|e.g. filesystem
+common.json|ENGLISH_DESC|settings.localToolsMcpNamePlaceholder|Placeholder for the MCP server name input.
+common.json|ENGLISH_MSG|settings.localToolsMcpCommandPlaceholder|e.g. npx
+common.json|ENGLISH_DESC|settings.localToolsMcpCommandPlaceholder|Placeholder for the MCP server command input.
+common.json|ENGLISH_MSG|settings.localToolsMcpNameRequired|Each server needs a name and a command.
+common.json|ENGLISH_DESC|settings.localToolsMcpNameRequired|Validation error when a server row is missing a name or command.
+common.json|ENGLISH_MSG|settings.localToolsMcpDuplicateName|Server names must be unique.
+common.json|ENGLISH_DESC|settings.localToolsMcpDuplicateName|Validation error when two servers share the same name.
+common.json|ENGLISH_MSG|settings.localToolsMcpNameInvalid|Name may only contain letters, numbers, hyphens and underscores.
+common.json|ENGLISH_DESC|settings.localToolsMcpNameInvalid|Validation error when a server name contains invalid characters.
+common.json|ENGLISH_DESC|settings.localToolsMcpEnabled|Toggle label to enable/disable a local MCP server.
+common.json|ENGLISH_MSG|settings.localToolsMcpReconnect|Test / Reconnect
+common.json|ENGLISH_DESC|settings.localToolsMcpReconnect|Button to re-spawn one MCP server and refresh its status.
+common.json|ENGLISH_MSG|settings.localToolsMcpConnecting|Connecting…
+common.json|ENGLISH_DESC|settings.localToolsMcpConnecting|Badge while an MCP server is being (re)connected.
+common.json|ENGLISH_MSG|settings.localToolsMcpNotSaved|Not saved yet
+common.json|ENGLISH_DESC|settings.localToolsMcpNotSaved|Badge for an MCP server row that hasn't been saved/connected yet.
+common.json|ENGLISH_MSG|settings.localToolsMcpConnected|Connected · {n} tools
+common.json|ENGLISH_DESC|settings.localToolsMcpConnected|Badge when an MCP server connected; {n} is the tool count.
+common.json|ENGLISH_MSG|settings.localToolsMcpDisabled|Disabled
+common.json|ENGLISH_DESC|settings.localToolsMcpDisabled|Badge when an MCP server is turned off.
+common.json|ENGLISH_MSG|settings.localToolsMcpFailed|Failed to connect
+common.json|ENGLISH_DESC|settings.localToolsMcpFailed|Badge when an MCP server failed to start; the reason is shown below.
+common.json|ENGLISH_MSG|settings.localToolsMcpPlatformHint|Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows "spawn … ENOENT", set the command to a full path.
+common.json|ENGLISH_DESC|settings.localToolsMcpPlatformHint|Cross-platform hint for configuring the MCP launch command.
+common.json|ENGLISH_DESC|settings.localToolsSaved|Transient confirmation after saving local-tool folders.
+common.json|ENGLISH_DESC|settings.localToolsActiveTools|Label before the list of currently available local tools.
+common.json|ENGLISH_DESC|settings.localToolsGrantsTitle|Heading for the persistent consent grants list.
+common.json|ENGLISH_DESC|settings.localToolsGrantsHint|Help text under the always-allowed actions heading.
+common.json|ENGLISH_DESC|settings.localToolsRevoke|Button to revoke a single always-allow grant.
+common.json|ENGLISH_DESC|settings.localToolsRevokeAll|Button to revoke every always-allow grant.
+common.json|ENGLISH_DESC|settings.localToolsNoGrants|Empty state for the always-allowed actions list.
+common.json|ENGLISH_DESC|settings.localToolsPermsTitle|Heading for the macOS system-permission section.
+common.json|ENGLISH_DESC|settings.localToolsPermsHint|Help text under the system-permissions heading.
+common.json|ENGLISH_DESC|settings.localToolsPermFullDisk|macOS Full Disk Access permission row.
+common.json|ENGLISH_DESC|settings.localToolsPermScreen|macOS Screen Recording permission row.
+common.json|ENGLISH_DESC|settings.localToolsPermAccessibility|macOS Accessibility permission row.
+common.json|ENGLISH_DESC|settings.localToolsGranted|Status tag when a system permission is granted.
+common.json|ENGLISH_DESC|settings.localToolsNotGranted|Status tag when a system permission is not granted.
+common.json|ENGLISH_DESC|settings.localToolsOpen|Button to open the relevant macOS System Settings pane.
+common.json|ENGLISH_DESC|settings.customDomain|Title for the custom-domain management tab in the settings popup. Visible only on subsites (non-main-official hosts) for site admins.
+common.json|ENGLISH_DESC|settings.contactSupport|Section title on the About page listing the site owner's customer-service channels
+common.json|ENGLISH_DESC|settings.contactSupportTip|Subtitle under the support contacts section on the About page
+common.json|ENGLISH_DESC|settings.contactInvalidUrl|Validation error shown when a contact URL is not a valid http(s) link
+common.json|ENGLISH_DESC|settings.contactInvalidPhone|Validation error shown when the phone number is invalid
+common.json|ENGLISH_DESC|settings.contactInvalidEmail|Validation error shown when the email address is invalid
+common.json|ENGLISH_DESC|settings.contactType|Placeholder for the contact type picker in the editor
+common.json|ENGLISH_DESC|settings.contactType_phone|Display name for the phone contact type
+common.json|ENGLISH_MSG|settings.contactType_email|Email
+common.json|ENGLISH_DESC|settings.contactType_email|Display name for the email contact type
+common.json|ENGLISH_DESC|settings.contactType_website|Display name for the website contact type
+common.json|ENGLISH_MSG|settings.contactType_wechat|WeChat
+common.json|ENGLISH_DESC|settings.contactType_wechat|Display name for the WeChat contact type
+common.json|ENGLISH_MSG|settings.contactLabelPlaceholder|Label (optional), e.g. Sales
+common.json|ENGLISH_DESC|settings.contactLabelPlaceholder|Placeholder for the optional contact label input
+common.json|ENGLISH_MSG|settings.contactValuePlaceholder|Account / display text
+common.json|ENGLISH_DESC|settings.contactValuePlaceholder|Placeholder for the generic contact value input
+common.json|ENGLISH_DESC|settings.contactQr|Label for a contact's QR-code image
+common.json|ENGLISH_MSG|settings.contactQrTip|Upload a QR code users can scan to add you.
+common.json|ENGLISH_DESC|settings.contactQrTip|Tip for the contact QR-code uploader
+common.json|ENGLISH_DESC|settings.contactAdd|Button to add another contact entry
+common.json|ENGLISH_MSG|settings.contactEditorHint|Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.
+common.json|ENGLISH_DESC|settings.contactEditorHint|Hint at the top of the contacts editor dialog
+common.json|ENGLISH_MSG|settings.contactInvalidType|Type may only contain lowercase letters, digits, '-' and '_'
+common.json|ENGLISH_DESC|settings.contactInvalidType|Validation error for an invalid contact type slug
+common.json|ENGLISH_MSG|settings.contactRowNeedsValue|Each contact needs at least a value, link or QR code
+common.json|ENGLISH_DESC|settings.contactRowNeedsValue|Validation error when a contact row has no value/url/qr
+common.json|ENGLISH_MSG|settings.contactInvalidValue|A contact field is invalid or too long
+common.json|ENGLISH_DESC|settings.contactInvalidValue|Validation error when a contact value/label is invalid or too long
+common.json|ENGLISH_MSG|settings.contactTooMany|You can add at most {max} contacts
+common.json|ENGLISH_DESC|settings.contactTooMany|Validation error when too many contacts are added
+common.json|ENGLISH_MSG|title.apiCode|API code for this request
+common.json|ENGLISH_DESC|title.apiCode|Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product
+common.json|ENGLISH_MSG|message.viewCodeHint|Show API code for this request
+common.json|ENGLISH_DESC|message.viewCodeHint|Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.
+common.json|ENGLISH_MSG|button.viewCode|View code
+common.json|ENGLISH_DESC|button.viewCode|Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance
+common.json|ENGLISH_MSG|button.getApiKey|Get an API key
+common.json|ENGLISH_DESC|button.getApiKey|Link text in the API code dialog footer that opens the platform console page where users can create an API key
+common.json|ENGLISH_MSG|button.apiPlatform|API Platform
+common.json|ENGLISH_DESC|button.apiPlatform|API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage.
+common.json|ENGLISH_MSG|message.apiCodeIntro|Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.
+common.json|ENGLISH_DESC|message.apiCodeIntro|Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet
+common.json|ENGLISH_DESC|message.uploadInProgress|Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying.
+common.json|ENGLISH_MSG|appUpgrade.title|Update required
+common.json|ENGLISH_DESC|appUpgrade.title|Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports.
+common.json|ENGLISH_MSG|appUpgrade.blockMessage|This version is no longer supported. Please update from the app store to continue.
+common.json|ENGLISH_DESC|appUpgrade.blockMessage|Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.
+common.json|ENGLISH_MSG|appUpgrade.softMessage|A newer version is available. Update from the app store for the best experience.
+common.json|ENGLISH_DESC|appUpgrade.softMessage|Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app.
+common.json|ENGLISH_MSG|appUpgrade.openStore|Update now
+common.json|ENGLISH_DESC|appUpgrade.openStore|Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.
+common.json|ENGLISH_MSG|appUpgrade.later|Later
+common.json|ENGLISH_DESC|appUpgrade.later|Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.
+common.json|ENGLISH_MSG|nav.maestro|Maestro
+common.json|ENGLISH_MSG|nav.digitalhuman|Digital Human
+common.json|ENGLISH_DESC|nav.digitalhuman|Text in the website navigation bar for the Digital Human talking-head page
+common.json|ENGLISH_MSG|settings.localToolsAndroidPermHint|Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.
+common.json|ENGLISH_DESC|settings.localToolsAndroidPermHint|Hint for the Android Computer Use accessibility permission section in Settings.
+common.json|ENGLISH_MSG|settings.cuConsentTitle|Allow action?
+common.json|ENGLISH_DESC|settings.cuConsentTitle|Title of the on-demand consent dialog shown when the assistant requests a screen action.
+common.json|ENGLISH_MSG|settings.cuConsentMessage|The assistant wants to run "{action}" on your phone. Allow it?
+common.json|ENGLISH_DESC|settings.cuConsentMessage|Body of the on-demand consent dialog; {action} is the computer.* action name.
+common.json|ENGLISH_MSG|settings.cuConsentAllow|Allow once
+common.json|ENGLISH_DESC|settings.cuConsentAllow|Allow button of the on-demand consent dialog.
+common.json|ENGLISH_MSG|settings.cuConsentAlways|Always allow
+common.json|ENGLISH_DESC|settings.cuConsentAlways|Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.
+common.json|ENGLISH_MSG|settings.cuConsentDeny|Deny
+common.json|ENGLISH_DESC|settings.cuConsentDeny|Deny button of the on-demand consent dialog.
+common.json|ENGLISH_MSG|settings.memoryEnabled|Use memory
+common.json|ENGLISH_DESC|settings.memoryEnabled|Title for the switch that controls whether chats use saved memory and learn new memory
+common.json|ENGLISH_MSG|settings.memoryEnabledHint|When off, saved memories are not used and new chats do not create memories. Existing memories are kept.
+common.json|ENGLISH_DESC|settings.memoryEnabledHint|Behavior explanation shown below the memory switch
+common.json|ENGLISH_MSG|nav.omni|Omni Video
+common.json|ENGLISH_DESC|nav.omni|Nav label for the Omni video module
+common.json|ENGLISH_MSG|settings.memoryImport|Import
+common.json|ENGLISH_DESC|settings.memoryImport|Button that opens the memory import dialog
+common.json|ENGLISH_MSG|settings.memoryImportTitle|Import memory from another AI
+common.json|ENGLISH_DESC|settings.memoryImportTitle|Title of the memory import dialog
+common.json|ENGLISH_MSG|settings.memoryImportExportStep|1. Ask your current AI to export its memory
+common.json|ENGLISH_DESC|settings.memoryImportExportStep|First step heading in the memory import dialog
+common.json|ENGLISH_MSG|settings.memoryImportPrompt|I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.
+common.json|ENGLISH_DESC|settings.memoryImportPrompt|Prompt users copy into another AI service to export memories
+common.json|ENGLISH_MSG|settings.memoryImportCopy|Copy prompt
+common.json|ENGLISH_DESC|settings.memoryImportCopy|Button that copies the memory export prompt
+common.json|ENGLISH_MSG|settings.memoryImportCopied|Prompt copied
+common.json|ENGLISH_DESC|settings.memoryImportCopied|Toast shown after copying the memory export prompt
+common.json|ENGLISH_MSG|settings.memoryImportPasteStep|2. Paste the exported memory
+common.json|ENGLISH_DESC|settings.memoryImportPasteStep|Second step heading in the memory import dialog
+common.json|ENGLISH_MSG|settings.memoryImportPlaceholder|Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…
+common.json|ENGLISH_DESC|settings.memoryImportPlaceholder|Placeholder for pasted memory export text
+common.json|ENGLISH_MSG|settings.memoryImportSubmit|Add to memory
+common.json|ENGLISH_DESC|settings.memoryImportSubmit|Button that submits pasted memories for import
+common.json|ENGLISH_MSG|settings.memoryImportSuccess|Imported {count} memory entries
+common.json|ENGLISH_DESC|settings.memoryImportSuccess|Success toast after importing memory; count is the number of accepted entries
+common.json|ENGLISH_MSG|settings.memoryImportPartial|Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.
+common.json|ENGLISH_DESC|settings.memoryImportPartial|Warning shown after a partial memory import
+common.json|ENGLISH_MSG|settings.memoryImportInvalid|No memory could be imported. Make sure memory is on and paste one plain fact per line.
+common.json|ENGLISH_DESC|settings.memoryImportInvalid|Actionable error shown when the memory import request is invalid
+common.json|ENGLISH_MSG|settings.memoryImportInProgress|A memory import is already running. Keep this dialog open and try again shortly.
+common.json|ENGLISH_DESC|settings.memoryImportInProgress|Warning shown when another memory import job is active
+connector.json|ENGLISH_MSG|custom.beta|BETA
+connector.json|ENGLISH_MSG|custom.authBearer|Bearer Token
+connector.json|ENGLISH_MSG|custom.authOAuth|OAuth 2.0
+connector.json|ENGLISH_MSG|custom.authToken|Token
+connector.json|ENGLISH_DESC|custom.authToken|Πεδίο Bearer token
+connector.json|ENGLISH_MSG|custom.authTokenPlaceholder|Εισάγετε το Bearer Token
+connector.json|ENGLISH_DESC|custom.authTokenPlaceholder|Placeholder για το Bearer token
+digitalhuman.json|ENGLISH_MSG|name.bot|Digital Human
+digitalhuman.json|ENGLISH_DESC|name.bot|Bot display name
+digitalhuman.json|ENGLISH_MSG|name.taskId|Task ID
+digitalhuman.json|ENGLISH_DESC|name.taskId|Task id
+digitalhuman.json|ENGLISH_MSG|name.elapsed|Elapsed Time
+digitalhuman.json|ENGLISH_DESC|name.elapsed|Elapsed seconds
+digitalhuman.json|ENGLISH_MSG|name.failure|Failed
+digitalhuman.json|ENGLISH_DESC|name.failure|Failure status
+digitalhuman.json|ENGLISH_MSG|name.failureReason|Failure Reason
+digitalhuman.json|ENGLISH_DESC|name.failureReason|Failure reason
+digitalhuman.json|ENGLISH_MSG|name.face|Face Source
+digitalhuman.json|ENGLISH_DESC|name.face|Face source field
+digitalhuman.json|ENGLISH_MSG|name.faceVideo|Video
+digitalhuman.json|ENGLISH_DESC|name.faceVideo|Face video option
+digitalhuman.json|ENGLISH_MSG|name.facePhoto|Photo
+digitalhuman.json|ENGLISH_DESC|name.facePhoto|Face photo option
+digitalhuman.json|ENGLISH_MSG|name.voice|Voice
+digitalhuman.json|ENGLISH_DESC|name.voice|Voice source field
+digitalhuman.json|ENGLISH_MSG|name.voiceAudio|Audio
+digitalhuman.json|ENGLISH_DESC|name.voiceAudio|Audio-driven voice option
+digitalhuman.json|ENGLISH_MSG|name.voiceText|Text
+digitalhuman.json|ENGLISH_DESC|name.voiceText|Text-driven voice option
+digitalhuman.json|ENGLISH_MSG|name.audioDriven|Audio-driven
+digitalhuman.json|ENGLISH_DESC|name.audioDriven|Audio-driven label
+digitalhuman.json|ENGLISH_MSG|name.textDriven|Text-driven
+digitalhuman.json|ENGLISH_DESC|name.textDriven|Text-driven label
+digitalhuman.json|ENGLISH_MSG|name.engine|Engine
+digitalhuman.json|ENGLISH_DESC|name.engine|Lip-sync engine field
+digitalhuman.json|ENGLISH_MSG|name.resolution|Resolution
+digitalhuman.json|ENGLISH_DESC|name.resolution|Output resolution field
+digitalhuman.json|ENGLISH_MSG|name.voiceReady|Voice ready
+digitalhuman.json|ENGLISH_DESC|name.voiceReady|Cloned voice ready label
+digitalhuman.json|ENGLISH_MSG|placeholder.text|Type what the avatar should say…
+digitalhuman.json|ENGLISH_DESC|placeholder.text|Spoken text placeholder
+digitalhuman.json|ENGLISH_MSG|description.face|Upload a clear, front-facing face video (preferred) or a single photo to drive the talking head.
+digitalhuman.json|ENGLISH_DESC|description.face|Face field help
+digitalhuman.json|ENGLISH_MSG|description.voiceClone|Upload a clean 10–20s voice sample to clone a voice, then reuse it to speak your text.
+digitalhuman.json|ENGLISH_DESC|description.voiceClone|Voice clone help
+digitalhuman.json|ENGLISH_MSG|status.pending|Pending
+digitalhuman.json|ENGLISH_DESC|status.pending|Pending
+digitalhuman.json|ENGLISH_MSG|status.processing|Processing
+digitalhuman.json|ENGLISH_DESC|status.processing|Processing
+digitalhuman.json|ENGLISH_MSG|status.succeed|Succeeded
+digitalhuman.json|ENGLISH_DESC|status.succeed|Succeeded
+digitalhuman.json|ENGLISH_MSG|status.failed|Failed
+digitalhuman.json|ENGLISH_DESC|status.failed|Failed
+digitalhuman.json|ENGLISH_MSG|button.generate|Generate Video
+digitalhuman.json|ENGLISH_DESC|button.generate|Generate button
+digitalhuman.json|ENGLISH_MSG|button.download|Download Video
+digitalhuman.json|ENGLISH_DESC|button.download|Download video button
+digitalhuman.json|ENGLISH_MSG|button.uploadVideo|Upload Face Video
+digitalhuman.json|ENGLISH_DESC|button.uploadVideo|Upload face video button
+digitalhuman.json|ENGLISH_MSG|button.uploadPhoto|Upload Face Photo
+digitalhuman.json|ENGLISH_DESC|button.uploadPhoto|Upload face photo button
+digitalhuman.json|ENGLISH_MSG|button.uploadAudio|Upload Audio
+digitalhuman.json|ENGLISH_DESC|button.uploadAudio|Upload driving audio button
+digitalhuman.json|ENGLISH_MSG|button.uploadSample|Upload Sample
+digitalhuman.json|ENGLISH_DESC|button.uploadSample|Upload voice sample button
+digitalhuman.json|ENGLISH_MSG|button.clone|Clone Voice
+digitalhuman.json|ENGLISH_DESC|button.clone|Clone voice button
+digitalhuman.json|ENGLISH_MSG|button.cloning|Cloning…
+digitalhuman.json|ENGLISH_DESC|button.cloning|Cloning in progress button
+digitalhuman.json|ENGLISH_MSG|message.startingTask|Submitting your video task…
+digitalhuman.json|ENGLISH_DESC|message.startingTask|Submit toast
+digitalhuman.json|ENGLISH_MSG|message.startTaskSuccess|Task submitted! It will appear below as it renders.
+digitalhuman.json|ENGLISH_DESC|message.startTaskSuccess|Submit success
+digitalhuman.json|ENGLISH_MSG|message.startTaskFailed|Failed to submit the task. Please try again.
+digitalhuman.json|ENGLISH_DESC|message.startTaskFailed|Submit fail
+digitalhuman.json|ENGLISH_MSG|message.usedUp|Your balance is not sufficient for this request.
+digitalhuman.json|ENGLISH_DESC|message.usedUp|Used-up toast
+digitalhuman.json|ENGLISH_MSG|message.uploadError|Upload failed. Please try again.
+digitalhuman.json|ENGLISH_DESC|message.uploadError|Upload error toast
+digitalhuman.json|ENGLISH_MSG|message.voiceCloneSuccess|Voice cloned! You can now generate with your text.
+digitalhuman.json|ENGLISH_DESC|message.voiceCloneSuccess|Voice clone success
+digitalhuman.json|ENGLISH_MSG|message.voiceCloneFailed|Voice clone failed. Please try a cleaner sample.
+digitalhuman.json|ENGLISH_DESC|message.voiceCloneFailed|Voice clone fail
+fish.json|ENGLISH_MSG|name.fishBot|Fish Audio
+fish.json|ENGLISH_DESC|placeholder.voice|Placeholder επιλογής ήχου για το Fish TTS
+flux.json|ENGLISH_MSG|name.fluxBot|Flux Bot
+grokvideo.json|ENGLISH_MSG|name.referenceImages|Reference Images
+grokvideo.json|ENGLISH_DESC|name.referenceImages|Label for reference images
+grokvideo.json|ENGLISH_MSG|description.referenceImages|Optional reference images to guide the style or content of the generated video (grok-imagine-video only).
+grokvideo.json|ENGLISH_DESC|description.referenceImages|Instructions for reference images
+grokvideo.json|ENGLISH_MSG|model.default|Grok Imagine βίντεο
+grokvideo.json|ENGLISH_MSG|message.uploadReferenceExceed|You can upload up to 4 reference images.
+grokvideo.json|ENGLISH_DESC|message.uploadReferenceExceed|Reference images upload exceed warning
+hailuo.json|ENGLISH_MSG|name.hailuoBot|Hailuo Bot
+hailuo.json|ENGLISH_DESC|placeholder.paddingLevel|Placeholder για το επίπεδο padding
+index.json|ENGLISH_MSG|customers.name1|Frank
+index.json|ENGLISH_MSG|customers.name2|Jacob
+index.json|ENGLISH_MSG|customers.name3|Larry
+kling.json|CHINESE_DESC|tab.videoGeneration|Tab 标签：Video Generation
+kling.json|CHINESE_DESC|tab.motionControl|Tab 标签：Motion Control
+kling.json|CHINESE_DESC|name.motionImage|Motion Control 中的人物图输入
+kling.json|CHINESE_DESC|name.motionVideo|Motion Control 中的参考视频输入
+kling.json|CHINESE_DESC|name.motionPrompt|Motion Control 中的补充提示词
+kling.json|CHINESE_DESC|name.characterOrientation|人物朝向字段
+kling.json|CHINESE_DESC|name.orientationImage|人物朝向选项：跟随图片
+kling.json|CHINESE_DESC|name.orientationVideo|人物朝向选项：跟随视频
+kling.json|CHINESE_DESC|name.keepOriginalSound|keep_original_sound 开关
+kling.json|CHINESE_DESC|description.motionImage|motion image_url 说明
+kling.json|CHINESE_DESC|description.motionVideo|motion video_url 说明
+kling.json|CHINESE_DESC|description.motionPrompt|motion prompt 说明
+kling.json|CHINESE_DESC|description.characterOrientation|character_orientation 说明
+kling.json|CHINESE_DESC|description.motionMode|motion mode 说明
+kling.json|ENGLISH_DESC|description.motionModel|motion model version description
+kling.json|CHINESE_DESC|description.keepOriginalSound|keep_original_sound 说明
+kling.json|CHINESE_DESC|placeholder.motionPrompt|motion prompt 占位符
+kling.json|CHINESE_DESC|button.generateMotion|Motion Control 生成按钮
+kling.json|CHINESE_DESC|message.motionMissingInputs|Motion Control 缺少输入时的提示
+kling.json|ENGLISH_DESC|message.motionPricingNote|Explains that Motion Control is billed per second
+kling.json|CHINESE_DESC|inspiration.title|Inspiration 抽屉的标题
+kling.json|CHINESE_DESC|inspiration.openButton|打开 Inspiration 抽屉的按钮
+kling.json|CHINESE_DESC|inspiration.removeChip|移除提示词区中已选预设的按钮 aria-label
+kling.json|CHINESE_DESC|inspiration.hint|Inspiration 抽屉顶部的使用说明
+kling.json|CHINESE_DESC|inspiration.empty|Inspiration 抽屉空状态
+kling.json|CHINESE_DESC|inspiration.selectedSummary|已选择的预设数量
+kling.json|CHINESE_DESC|inspiration.clearSelected|清除所有已选预设的按钮
+kling.json|CHINESE_DESC|inspiration.group.cameraMovements|Inspiration 分组：镜头运动
+kling.json|CHINESE_DESC|inspiration.group.cameraSpeed|Inspiration 分组：运动速度
+kling.json|CHINESE_DESC|inspiration.group.shotType|Inspiration 分组：景别 / 视角
+kling.json|CHINESE_DESC|inspiration.group.light|Inspiration 分组：光影
+kling.json|CHINESE_DESC|inspiration.group.frame|Inspiration 分组：画面 / 构图
+kling.json|CHINESE_DESC|inspiration.group.atmosphere|Inspiration 分组：氛围 / 风格
+kling.json|ENGLISH_DESC|name.cc_horizontal|camera_control.config.horizontal
+kling.json|ENGLISH_DESC|name.cc_vertical|camera_control.config.vertical
+kling.json|ENGLISH_DESC|name.cc_pan|camera_control.config.pan
+kling.json|ENGLISH_DESC|name.cc_tilt|camera_control.config.tilt
+kling.json|ENGLISH_DESC|name.cc_roll|camera_control.config.roll
+kling.json|ENGLISH_DESC|name.cc_zoom|camera_control.config.zoom
+kling.json|ENGLISH_DESC|name.motionModel|The Kling model version used for motion control
+kling.json|ENGLISH_DESC|name.perSecond|Unit suffix for per-second pricing
+kling.json|ENGLISH_MSG|name.klingBot|Kling Bot
+kling.json|ENGLISH_DESC|placeholder.paddingLevel|Placeholder για το επίπεδο padding
+kling.json|ENGLISH_DESC|tab.talkingPhoto|Tab label: Talking Photo
+kling.json|ENGLISH_DESC|name.talkingPhotoImage|Talking Photo portrait image input
+kling.json|ENGLISH_DESC|name.talkingPhotoAudio|Talking Photo driving audio input
+kling.json|ENGLISH_DESC|name.talkingPhotoPrompt|Talking Photo optional motion prompt
+kling.json|ENGLISH_DESC|description.talkingPhotoImage|Talking Photo portrait image help text
+kling.json|ENGLISH_DESC|description.talkingPhotoAudio|Talking Photo driving audio help text
+kling.json|ENGLISH_DESC|description.talkingPhotoPrompt|Talking Photo motion prompt help text
+kling.json|ENGLISH_DESC|placeholder.talkingPhotoPrompt|Talking Photo prompt input placeholder
+kling.json|ENGLISH_DESC|button.generateTalkingPhoto|Talking Photo generate button
+kling.json|ENGLISH_DESC|button.uploadAudio|Talking Photo upload audio button
+kling.json|ENGLISH_DESC|message.talkingPhotoMissingInputs|Talking Photo missing inputs warning
+kling.json|ENGLISH_DESC|message.uploadAudioExceed|Talking Photo audio count limit warning
+kling.json|ENGLISH_DESC|message.uploadAudioError|Talking Photo audio upload error
+kling.json|ENGLISH_MSG|name.referenceVideo|Reference Video
+kling.json|ENGLISH_DESC|name.referenceVideo|Form field label: reference/editable video for Omni video editing
+kling.json|ENGLISH_MSG|description.referenceVideo|Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').
+kling.json|ENGLISH_DESC|description.referenceVideo|Help text for the reference video uploader
+kling.json|ENGLISH_MSG|button.uploadReferenceVideo|Upload Video
+kling.json|ENGLISH_DESC|button.uploadReferenceVideo|Button to upload the reference video
+kling.json|ENGLISH_MSG|message.referenceVideoExceed|You can upload a maximum of 1 reference video
+kling.json|ENGLISH_DESC|message.referenceVideoExceed|Error when more than one reference video is uploaded
+kling.json|ENGLISH_MSG|message.referenceVideoError|Reference video upload failed, please try again later
+kling.json|ENGLISH_DESC|message.referenceVideoError|Error when the reference video upload fails
+kling.json|ENGLISH_MSG|message.referenceVideoTypeFailed|Uploaded file must be in MP4 or MOV format!
+kling.json|ENGLISH_DESC|message.referenceVideoTypeFailed|Error when the reference video is not MP4/MOV
+kling.json|ENGLISH_MSG|message.referenceVideoSizeExceed|Uploaded file size cannot exceed 200MB!
+kling.json|ENGLISH_DESC|message.referenceVideoSizeExceed|Error when the reference video exceeds 200MB
+luma.json|ENGLISH_MSG|name.pixelStyle|Στυλ pixel
+luma.json|ENGLISH_MSG|name.lumaBot|Luma Bot
+maestro.json|ENGLISH_MSG|name.maestroBot|Maestro
+maestro.json|ENGLISH_MSG|option.action.remix|Remix
+maestro.json|ENGLISH_DESC|step.plan|Pipeline step: plan
+maestro.json|ENGLISH_DESC|step.source|Pipeline step: source media
+maestro.json|ENGLISH_DESC|step.voice|Pipeline step: voiceover
+maestro.json|ENGLISH_DESC|step.compose|Pipeline step: compose
+maestro.json|ENGLISH_DESC|step.render|Pipeline step: render
+maestro.json|ENGLISH_DESC|step.deliver|Pipeline step: deliver
+maestro.json|ENGLISH_DESC|name.quality|Production quality tier field
+maestro.json|ENGLISH_DESC|option.quality.draft|Draft quality option
+maestro.json|ENGLISH_DESC|option.quality.standard|Standard quality option
+maestro.json|ENGLISH_DESC|option.quality.premium|Premium quality option
+maestro.json|ENGLISH_DESC|placeholder.prompt|Placeholder για το textarea προτροπής
+maestro.json|ENGLISH_DESC|description.duration|Duration help
+maestro.json|ENGLISH_DESC|description.quality|Quality help
+maestro.json|ENGLISH_DESC|name.scenario|Video type field
+maestro.json|ENGLISH_DESC|description.scenario|Scenario field help
+maestro.json|ENGLISH_DESC|option.scenario.auto|Auto scenario option
+maestro.json|ENGLISH_DESC|option.scenario.drama|Short drama scenario option
+maestro.json|ENGLISH_DESC|option.scenario.captions|Add-captions scenario option
+maestro.json|ENGLISH_DESC|message.captionsNeedVideo|Warning shown when captions video type is selected but no source video is uploaded
+maestro.json|ENGLISH_MSG|option.style.glass|Frosted Glass
+maestro.json|ENGLISH_DESC|option.style.glass|Frosted glass style option
+maestro.json|ENGLISH_MSG|option.style.luxury|Luxury
+maestro.json|ENGLISH_DESC|option.style.luxury|Luxury style option
+maestro.json|ENGLISH_MSG|option.style.swiss|Swiss Grid
+maestro.json|ENGLISH_DESC|option.style.swiss|Swiss grid style option
+maestro.json|ENGLISH_MSG|option.style.modern|Modern
+maestro.json|ENGLISH_DESC|option.style.modern|Modern style option
+maestro.json|ENGLISH_MSG|option.style.editorial|Editorial
+maestro.json|ENGLISH_DESC|option.style.editorial|Editorial style option
+maestro.json|ENGLISH_MSG|option.style.warm|Warm
+maestro.json|ENGLISH_DESC|option.style.warm|Warm style option
+maestro.json|ENGLISH_MSG|option.style.vibrant|Vibrant
+maestro.json|ENGLISH_DESC|option.style.vibrant|Vibrant style option
+maestro.json|ENGLISH_MSG|option.style.mono|Monochrome
+maestro.json|ENGLISH_DESC|option.style.mono|Monochrome style option
+maestro.json|ENGLISH_MSG|option.style.pastel|Pastel
+maestro.json|ENGLISH_DESC|option.style.pastel|Pastel style option
+maestro.json|ENGLISH_MSG|option.style.bold|Bold Type
+maestro.json|ENGLISH_DESC|option.style.bold|Bold type style option
+maestro.json|ENGLISH_MSG|option.style.industrial|Industrial
+maestro.json|ENGLISH_DESC|option.style.industrial|Industrial style option
+maestro.json|ENGLISH_MSG|option.style.futuristic|Futuristic
+maestro.json|ENGLISH_DESC|option.style.futuristic|Futuristic style option
+maestro.json|ENGLISH_MSG|option.style.retro|Retro Film
+maestro.json|ENGLISH_DESC|option.style.retro|Retro film style option
+maestro.json|ENGLISH_DESC|placeholder.sourceRef|Placeholder για textarea πηγής
+maestro.json|ENGLISH_DESC|option.scenario.general|Footage piece scenario option
+maestro.json|ENGLISH_DESC|option.scenario.explainer|Explainer scenario option
+maestro.json|ENGLISH_DESC|option.scenario.product|Product promo scenario option
+maestro.json|ENGLISH_DESC|option.scenario.website|Website-to-video scenario option
+maestro.json|ENGLISH_DESC|option.scenario.slides|Slideshow scenario option
+maestro.json|ENGLISH_DESC|option.scenario.changelog|Changelog scenario option
+maestro.json|ENGLISH_DESC|name.customize|Optional creative controls toggle
+maestro.json|ENGLISH_DESC|description.customize.auto|Customization disabled state
+maestro.json|ENGLISH_DESC|description.customize.manual|Customization enabled state
+maestro.json|ENGLISH_MSG|name.primaryLanguage|Primary language
+maestro.json|ENGLISH_DESC|name.primaryLanguage|Primary output language field
+maestro.json|ENGLISH_MSG|name.additionalLanguages|Additional languages (optional)
+maestro.json|ENGLISH_DESC|name.additionalLanguages|Additional output languages field
+maestro.json|ENGLISH_MSG|placeholder.additionalLanguages|Add output languages
+maestro.json|ENGLISH_DESC|placeholder.additionalLanguages|Additional languages placeholder
+maestro.json|ENGLISH_DESC|name.customizeScenario|Video type customization toggle
+maestro.json|ENGLISH_DESC|name.customizeStyle|Visual style customization toggle
+maestro.json|ENGLISH_DESC|name.customizeVoice|Voice timbre customization toggle
+midjourney.json|ENGLISH_MSG|styleTag.infographicDrawing|Ζωγραφική infographic
+midjourney.json|ENGLISH_MSG|styleTag.ukiyoEArt|Τέχνη Ukiyo-e
+midjourney.json|ENGLISH_MSG|styleTag.16Bit|16-Bit
+midjourney.json|ENGLISH_MSG|styleTag.8Bit|8-Bit
+midjourney.json|ENGLISH_MSG|styleTag.nasa|NASA
+midjourney.json|ENGLISH_MSG|styleTag.risograph|Risograph
+midjourney.json|ENGLISH_MSG|styleTag.synthWave|Synthwave
+midjourney.json|ENGLISH_MSG|styleTag.tron|Tron
+midjourney.json|ENGLISH_MSG|styleTag.wlop|WLOP
+midjourney.json|ENGLISH_MSG|styleTag.coryLoftis|Cory Loftis
+midjourney.json|CHINESE_MSG|styleTag.fenghuaZhong|冯华忠
+midjourney.json|ENGLISH_MSG|styleTag.gregRutkowski|Greg Rutkowski
+midjourney.json|CHINESE_MSG|styleTag.hongSoonsang|洪顺相
+midjourney.json|ENGLISH_MSG|styleTag.dennisStock|Dennis Stock
+midjourney.json|ENGLISH_MSG|styleTag.michalLisowski|Michal Lisowski
+midjourney.json|ENGLISH_MSG|styleTag.paulLehr|Paul Lehr
+midjourney.json|ENGLISH_MSG|styleTag.rossTran|Ross Tran
+midjourney.json|ENGLISH_MSG|styleTag.antonPieck|Anton Pieck
+midjourney.json|ENGLISH_MSG|styleTag.carlBarks|Carl Barks
+midjourney.json|ENGLISH_MSG|styleTag.alphonseMucha|Alphonse Mucha
+midjourney.json|ENGLISH_MSG|styleTag.banksy|Banksy
+midjourney.json|ENGLISH_MSG|styleTag.unrealEngine|Unreal Engine
+midjourney.json|ENGLISH_MSG|styleTag.octaneRender|Octane Render
+midjourney.json|ENGLISH_MSG|styleTag.maxonCinema4D|Maxon Cinema 4D
+midjourney.json|ENGLISH_MSG|styleTag.quixelMegascansRender|Quixel Megascans Render
+midjourney.json|ENGLISH_MSG|styleTag.coronaRender|Corona Render
+midjourney.json|ENGLISH_MSG|styleTag.vRay|V-ray
+midjourney.json|ENGLISH_MSG|model.niji|Niji
+midjourney.json|ENGLISH_MSG|name.midjourneyBot|Midjourney Bot
+midjourney.json|ENGLISH_DESC|name.midjourneyBot|Name of the Midjourney model
+midjourney.json|ENGLISH_MSG|name.nijiStyle|Niji
+midjourney.json|ENGLISH_MSG|name.niji|Niji
+nanobanana.json|ENGLISH_MSG|name.nanobananaBot|Nano Banana Bot
+nanobanana.json|ENGLISH_DESC|placeholder.select|Επιλογή placeholder
+nanobanana.json|ENGLISH_MSG|model.nanoBanana|nano-banana
+nanobanana.json|ENGLISH_MSG|model.nanoBananaPro|nano-banana-pro
+nanobanana.json|ENGLISH_MSG|model.nanoBanana2|nano-banana-2
+omni.json|ENGLISH_MSG|name.referenceImages|Reference Images
+omni.json|ENGLISH_DESC|name.referenceImages|Label for reference images
+omni.json|ENGLISH_MSG|description.referenceImages|Optional reference images to guide the style or content of the generated video (omni-flash only).
+omni.json|ENGLISH_DESC|description.referenceImages|Instructions for reference images
+omni.json|ENGLISH_MSG|message.uploadReferenceExceed|You can upload up to 4 reference images.
+omni.json|ENGLISH_DESC|message.uploadReferenceExceed|Reference images upload exceed warning
+omni.json|ENGLISH_MSG|name.referenceVideo|Reference Video
+omni.json|ENGLISH_DESC|name.referenceVideo|Reference/editable video for Omni video editing
+omni.json|ENGLISH_MSG|description.referenceVideo|Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.
+omni.json|ENGLISH_DESC|description.referenceVideo|Help text for the reference video uploader
+omni.json|ENGLISH_MSG|button.uploadVideo|Upload Video
+omni.json|ENGLISH_DESC|button.uploadVideo|Button to upload the reference video
+omni.json|ENGLISH_MSG|message.uploadVideoExceed|You can upload a maximum of 1 reference video
+omni.json|ENGLISH_DESC|message.uploadVideoExceed|Error when more than one reference video is uploaded
+omni.json|ENGLISH_MSG|message.uploadVideoError|Reference video upload failed, please try again later
+omni.json|ENGLISH_DESC|message.uploadVideoError|Error when the reference video upload fails
+omni.json|ENGLISH_MSG|message.uploadVideoTypeFailed|Uploaded file must be in MP4 or MOV format!
+omni.json|ENGLISH_DESC|message.uploadVideoTypeFailed|Error when the reference video is not MP4/MOV
+omni.json|ENGLISH_MSG|message.uploadVideoSizeExceed|Uploaded file size cannot exceed 200MB!
+omni.json|ENGLISH_DESC|message.uploadVideoSizeExceed|Error when the reference video exceeds 200MB
+omni.json|ENGLISH_MSG|message.promptRequired|Please enter a prompt.
+omni.json|ENGLISH_DESC|message.promptRequired|Validation when prompt is empty
+omni.json|ENGLISH_MSG|message.videoRequiresImage|Please add at least one reference image when using a reference video.
+omni.json|ENGLISH_DESC|message.videoRequiresImage|Validation when video_urls has no reference image
+openaiimage.json|ENGLISH_MSG|name.openaiimageBot|OpenAI Image Bot
+openaiimage.json|ENGLISH_MSG|model.gptImage1|gpt-image-1
+openaiimage.json|ENGLISH_MSG|model.gptImage15|gpt-image-1.5
+openaiimage.json|ENGLISH_MSG|model.gptImage2|gpt-image-2
+openaiimage.json|ENGLISH_MSG|model.gptImage2Official|gpt-image-2 (Επίσημο)
+order.json|ENGLISH_MSG|field.api|API
+order.json|ENGLISH_MSG|message.wechatPayMobileGuide|Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.
+order.json|ENGLISH_DESC|message.wechatPayMobileGuide|Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable.
+order.json|ENGLISH_MSG|button.copyPayLink|Copy payment link
+order.json|ENGLISH_DESC|button.copyPayLink|Label for the button that copies the current page URL so the user can paste it inside WeChat.
+order.json|ENGLISH_MSG|message.wechatPayMobileHint|After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.
+order.json|ENGLISH_DESC|message.wechatPayMobileHint|Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat.
+order.json|ENGLISH_DESC|message.applePayProcessing|Message while the Apple in-app purchase is processing.
+order.json|ENGLISH_DESC|message.applePayFailed|Message when the Apple in-app purchase fails.
+order.json|ENGLISH_DESC|message.applePayUnavailable|Message when Apple in-app purchase is unavailable for the package.
+order.json|ENGLISH_DESC|message.publicPayNotFound|Shown on public pay page when the order GET returns 404.
+order.json|ENGLISH_MSG|message.x402WalletStatusQr|QR Code
+order.json|ENGLISH_DESC|message.x402WalletStatusQr|Ετικέτα εισόδου QR Code WalletConnect.
+order.json|ENGLISH_MSG|message.x402WalletConnectTitle|WalletConnect
+order.json|ENGLISH_DESC|message.x402WalletConnectTitle|Τίτλος παραθύρου QR Code WalletConnect.
+order.json|ENGLISH_MSG|message.x402WalletConnectPreparing|Προετοιμασία WalletConnect…
+order.json|ENGLISH_MSG|message.x402ConnectWC|Σύνδεση με WalletConnect
+order.json|ENGLISH_DESC|message.wechatPayLongPressTip|Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat.
+order.json|ENGLISH_DESC|message.creditsValue|Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number.
+order.json|ENGLISH_MSG|title.totalOrders|Total Orders
+order.json|ENGLISH_DESC|title.totalOrders|Summary card: total number of orders matching the current filters.
+order.json|ENGLISH_MSG|title.totalSpent|Total Spent
+order.json|ENGLISH_DESC|title.totalSpent|Summary card: total amount spent across matching orders.
+order.json|ENGLISH_MSG|title.finishedOrders|Finished Orders
+order.json|ENGLISH_DESC|title.finishedOrders|Summary card: number of finished orders.
+order.json|ENGLISH_MSG|title.pendingOrders|Pending Orders
+order.json|ENGLISH_DESC|title.pendingOrders|Summary card: number of pending orders.
+order.json|ENGLISH_MSG|button.export|Export CSV
+order.json|ENGLISH_DESC|button.export|Button label to export the filtered orders as CSV.
+order.json|ENGLISH_MSG|field.allStates|All States
+order.json|ENGLISH_DESC|field.allStates|Placeholder of the state filter dropdown indicating no specific state is selected.
+order.json|ENGLISH_MSG|field.allPayWays|All Payment Methods
+order.json|ENGLISH_DESC|field.allPayWays|Placeholder of the payment method filter dropdown indicating no specific method is selected.
+pika.json|ENGLISH_MSG|name.pikaBot|Pika Bot
+pixverse.json|ENGLISH_MSG|name.style1|Cyberpunk
+pixverse.json|ENGLISH_MSG|name.style2|Anime
+pixverse.json|ENGLISH_MSG|name.style5|3D Animation
+pixverse.json|ENGLISH_MSG|name.pixverseBot|Pixverse Bot
+producer.json|ENGLISH_MSG|model.fuzz20pro|FUZZ-2.0 Pro
+producer.json|ENGLISH_MSG|model.fuzz20|FUZZ-2.0
+producer.json|ENGLISH_MSG|model.fuzz20raw|FUZZ-2.0 Raw
+producer.json|ENGLISH_MSG|model.fuzz11pro|FUZZ-1.1 Pro
+producer.json|ENGLISH_MSG|model.fuzz10pro|FUZZ-1.0 Pro
+producer.json|ENGLISH_MSG|model.fuzz10|FUZZ-1.0
+producer.json|ENGLISH_MSG|model.fuzz11|FUZZ-1.1
+producer.json|ENGLISH_MSG|model.fuzz08|FUZZ-0.8
+producer.json|ENGLISH_MSG|name.producerBot|Producer Bot
+producer.json|ENGLISH_MSG|placeholder.style|Π.χ.: acoustic pop, jazz, R&B, electronic...
+producer.json|ENGLISH_MSG|placeholder.styleNegative|Π.χ.: heavy metal, screaming...
+qrart.json|ENGLISH_MSG|name.pixelStyle|Στυλ pixel
+qrart.json|ENGLISH_MSG|name.qrartBot|QrArt Bot
+qrart.json|ENGLISH_DESC|placeholder.paddingLevel|Placeholder για το επίπεδο padding
+seedance.json|ENGLISH_MSG|name.seedanceBot|SeeDance Ρομπότ
+seedance.json|ENGLISH_MSG|model.seedance10pro|doubao-seedance-1.0-pro
+seedance.json|ENGLISH_DESC|model.seedance10pro|Μοντέλο SeeDance 1.0 Pro
+seedance.json|ENGLISH_MSG|model.seedance10proFast|doubao-seedance-1.0-pro-fast
+seedance.json|ENGLISH_DESC|model.seedance10proFast|Μοντέλο SeeDance 1.0 Pro Fast
+seedance.json|ENGLISH_MSG|model.seedance15pro|doubao-seedance-1.5-pro
+seedance.json|ENGLISH_DESC|model.seedance15pro|Μοντέλο SeeDance 1.5 Pro
+seedance.json|ENGLISH_MSG|model.seedance20|doubao-seedance-2.0
+seedance.json|ENGLISH_DESC|model.seedance20|Μοντέλο SeeDance 2.0
+seedance.json|ENGLISH_MSG|model.seedance20Fast|doubao-seedance-2.0-fast
+seedance.json|ENGLISH_MSG|model.seedance10liteT2v|doubao-seedance-1.0-lite-t2v
+seedance.json|ENGLISH_DESC|model.seedance10liteT2v|Μοντέλο SeeDance 1.0 Lite T2V
+seedance.json|ENGLISH_MSG|model.seedance10liteI2v|doubao-seedance-1.0-lite-i2v
+seedance.json|ENGLISH_DESC|model.seedance10liteI2v|Μοντέλο SeeDance 1.0 Lite I2V
+seedance.json|ENGLISH_MSG|serviceTier.default|default
+seedance.json|ENGLISH_MSG|serviceTier.flex|flex
+seedance.json|ENGLISH_MSG|name.required|Required
+seedance.json|ENGLISH_DESC|name.required|Required indicator
+seedance.json|ENGLISH_MSG|message.modelUnsupported|Selected model is not supported. Please pick another.
+seedance.json|ENGLISH_DESC|message.modelUnsupported|Warning when the model is not in the supported list
+seedance.json|ENGLISH_MSG|message.modelRequiresImage|This model requires a first-frame image to generate the video.
+seedance.json|ENGLISH_DESC|message.modelRequiresImage|Warning when an image-to-video model lacks an image
+seedance.json|ENGLISH_MSG|message.modelRejectsImage|This model is text-to-video only. Please remove the uploaded image.
+seedance.json|ENGLISH_DESC|message.modelRejectsImage|Warning when a text-only model is given an image
+seedance.json|ENGLISH_MSG|message.resolutionNotSupported|This resolution is not supported by the selected model.
+seedance.json|ENGLISH_DESC|message.resolutionNotSupported|Tooltip when a resolution chip is disabled for the current model
+seedance.json|ENGLISH_MSG|name.traceId|Trace ID
+seedance.json|ENGLISH_MSG|model.seedance20Mini|doubao-seedance-2.0-mini
+seedance.json|ENGLISH_DESC|model.seedance20Mini|Μοντέλο SeeDance 2.0 Mini
+seedream.json|ENGLISH_MSG|name.seedreamBot|SeeDream Bot
+seedream.json|ENGLISH_DESC|placeholder.select|Επιλογή placeholder
+seedream.json|ENGLISH_MSG|model.seedream45|doubao-seedream-4.5
+seedream.json|ENGLISH_MSG|model.seedream40|doubao-seedream-4.0
+seedream.json|ENGLISH_MSG|model.seedream30t2i|doubao-seedream-3.0-t2i
+seedream.json|ENGLISH_MSG|model.seededit30i2i|doubao-seededit-3.0-i2i
+seedream.json|ENGLISH_MSG|model.seedream50|doubao-seedream-5.0
+seedream.json|ENGLISH_MSG|model.seedream50pro|doubao-seedream-5.0-pro
+seedream.json|ENGLISH_DESC|model.seedream50pro|SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)
+service.json|ENGLISH_MSG|field.apis|API
+service.json|ENGLISH_MSG|title.apis|API
+service.json|ENGLISH_DESC|unit.count|Count unit (number of API calls), singular.
+service.json|ENGLISH_DESC|unit.Count|Count unit (number of API calls), singular.
+service.json|ENGLISH_DESC|unit.counts|Count unit (number of API calls), plural.
+service.json|ENGLISH_DESC|unit.Counts|Count unit (number of API calls), plural.
+site.json|CHINESE_DESC|field.title|展示在编辑框的标题
+site.json|CHINESE_DESC|field.origin|展示在编辑框的标题
+site.json|CHINESE_DESC|field.description|展示在编辑框的标题
+site.json|CHINESE_DESC|field.keywords|展示在编辑框的标题
+site.json|CHINESE_DESC|field.logo|展示在编辑框的标题
+site.json|CHINESE_DESC|field.favicon|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.qr|QR Code
+site.json|CHINESE_DESC|field.qr|展示在编辑框的标题
+site.json|CHINESE_DESC|field.url|展示在编辑框的标题
+site.json|CHINESE_DESC|field.admins|展示在编辑框的标题
+site.json|ENGLISH_DESC|field.contacts|Field title for the customer-service contacts in site settings
+site.json|ENGLISH_DESC|field.disableRecharge|Site settings: when on, hide all recharge/top-up entries on this site
+site.json|ENGLISH_DESC|message.disableRechargeTip|Help text for the disable-recharge toggle
+site.json|CHINESE_DESC|field.distributionDefaultInviterId|展示在编辑框的标题
+site.json|CHINESE_DESC|field.distributionForceInviterId|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.authProvider_email|Email
+site.json|ENGLISH_MSG|field.authProvider_google|Google
+site.json|ENGLISH_MSG|field.authProvider_github|GitHub
+site.json|ENGLISH_MSG|field.authProvider_apple|Apple
+site.json|ENGLISH_DESC|field.authProvider_apple|Login provider display name: Sign in with Apple.
+site.json|ENGLISH_MSG|field.authProvider_wechat|WeChat
+site.json|ENGLISH_MSG|field.authSmsWebhook|Custom SMS Sender
+site.json|ENGLISH_DESC|field.authSmsWebhook|Site settings / login: title for the site's own custom SMS verification-code delivery webhook
+site.json|ENGLISH_MSG|message.authSmsWebhookTip|When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.
+site.json|ENGLISH_DESC|message.authSmsWebhookTip|Explains the custom SMS sender webhook
+site.json|ENGLISH_DESC|placeholder.authSmsWebhookUrl|Placeholder for the SMS webhook URL input
+site.json|ENGLISH_MSG|placeholder.authSmsWebhookSecret|Signing secret (leave blank to keep unchanged)
+site.json|ENGLISH_DESC|placeholder.authSmsWebhookSecret|Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing
+site.json|ENGLISH_MSG|field.authSmsWebhookEnable|Use a custom sender
+site.json|ENGLISH_DESC|field.authSmsWebhookEnable|Label next to the custom SMS sender toggle
+site.json|ENGLISH_MSG|field.authSmsWebhookDoc|View docs
+site.json|ENGLISH_DESC|field.authSmsWebhookDoc|Link that opens the SMS webhook spec dialog
+site.json|ENGLISH_MSG|field.authSmsWebhookTest|Test
+site.json|ENGLISH_DESC|field.authSmsWebhookTest|Button that opens the SMS webhook test dialog
+site.json|ENGLISH_MSG|message.authSmsWebhookNeedsPhone|Enable the phone-number login provider first to configure a custom SMS sender.
+site.json|ENGLISH_DESC|message.authSmsWebhookNeedsPhone|Tooltip shown when the toggle is disabled because phone login is off
+site.json|ENGLISH_MSG|field.authSmsWebhookDocTitle|Custom SMS Sender · Webhook spec
+site.json|ENGLISH_DESC|field.authSmsWebhookDocTitle|Title of the SMS webhook spec dialog
+site.json|ENGLISH_MSG|message.authSmsWebhookDocIntro|This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:
+site.json|ENGLISH_DESC|message.authSmsWebhookDocIntro|Intro paragraph of the SMS webhook spec dialog
+site.json|ENGLISH_MSG|field.authSmsWebhookDocRequest|Request
+site.json|ENGLISH_DESC|field.authSmsWebhookDocRequest|Heading: request section of the SMS webhook spec
+site.json|ENGLISH_MSG|message.authSmsWebhookDocRequest|Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:
+site.json|ENGLISH_DESC|message.authSmsWebhookDocRequest|Describes the request method and body of the SMS webhook
+site.json|ENGLISH_MSG|field.authSmsWebhookDocHeaders|Signature verification
+site.json|ENGLISH_DESC|field.authSmsWebhookDocHeaders|Heading: signature section of the SMS webhook spec
+site.json|ENGLISH_MSG|message.authSmsWebhookDocHeaders|Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:
+site.json|ENGLISH_DESC|message.authSmsWebhookDocHeaders|Describes signature verification for the SMS webhook
+site.json|ENGLISH_MSG|field.authSmsWebhookDocResponse|Response
+site.json|ENGLISH_DESC|field.authSmsWebhookDocResponse|Heading: response section of the SMS webhook spec
+site.json|ENGLISH_MSG|message.authSmsWebhookDocResponse|Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.
+site.json|ENGLISH_DESC|message.authSmsWebhookDocResponse|Describes the expected response of the SMS webhook
+site.json|ENGLISH_MSG|field.authSmsWebhookTestTitle|Test custom SMS sender
+site.json|ENGLISH_DESC|field.authSmsWebhookTestTitle|Title of the SMS webhook test dialog
+site.json|ENGLISH_MSG|field.authSmsWebhookTestRegion|Country/region code
+site.json|ENGLISH_DESC|field.authSmsWebhookTestRegion|Label for the region-code field in the test dialog
+site.json|ENGLISH_MSG|field.authSmsWebhookTestNumber|Test phone number (optional)
+site.json|ENGLISH_DESC|field.authSmsWebhookTestNumber|Label for the phone-number field in the test dialog
+site.json|ENGLISH_MSG|field.authSmsWebhookTestSend|Send test
+site.json|ENGLISH_DESC|field.authSmsWebhookTestSend|Button that sends the SMS webhook test request
+site.json|ENGLISH_MSG|message.authSmsWebhookTestOk|The test request was delivered to your endpoint successfully.
+site.json|ENGLISH_DESC|message.authSmsWebhookTestOk|Success message after a webhook test
+site.json|ENGLISH_MSG|message.authSmsWebhookTestFailed|Test failed. Check the URL, signing secret, and your endpoint's response.
+site.json|ENGLISH_DESC|message.authSmsWebhookTestFailed|Failure message after a webhook test
+site.json|ENGLISH_MSG|field.authSmsWebhookDisableTitle|Disable custom SMS sender
+site.json|ENGLISH_DESC|field.authSmsWebhookDisableTitle|Title of the confirm dialog shown when disabling the custom SMS sender
+site.json|ENGLISH_MSG|message.authSmsWebhookDisableConfirm|Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?
+site.json|ENGLISH_DESC|message.authSmsWebhookDisableConfirm|Body of the confirm dialog shown when disabling the custom SMS sender
+site.json|ENGLISH_MSG|field.featuresChat|Chat
+site.json|CHINESE_DESC|field.featuresChat|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresVeo|Veo
+site.json|CHINESE_DESC|field.featuresVeo|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresSora|Sora
+site.json|CHINESE_DESC|field.featuresSora|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresGrok|Grok
+site.json|CHINESE_DESC|field.featuresGrok|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresGrokvideo|Grok Video
+site.json|ENGLISH_MSG|field.featuresMaestro|Maestro
+site.json|ENGLISH_MSG|field.featuresDigitalhuman|Digital Human
+site.json|ENGLISH_DESC|field.featuresDigitalhuman|Displayed as the title in the editing box
+site.json|ENGLISH_MSG|field.featuresDeepseek|Deepseek
+site.json|CHINESE_DESC|field.featuresDeepseek|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresChatgpt|ChatGPT
+site.json|CHINESE_DESC|field.featuresChatgpt|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresMidjourney|Midjourney
+site.json|CHINESE_DESC|field.featuresMidjourney|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresChatdoc|Chatdoc
+site.json|CHINESE_DESC|field.featuresChatdoc|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresQrart|Qrart
+site.json|CHINESE_DESC|field.featuresQrart|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresLuma|Luma
+site.json|CHINESE_DESC|field.featuresLuma|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresPixverse|Pixverse
+site.json|CHINESE_DESC|field.featuresPixverse|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresPika|Pika
+site.json|CHINESE_DESC|field.featuresPika|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresKling|Kling
+site.json|CHINESE_DESC|field.featuresKling|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresHailuo|Hailuo
+site.json|CHINESE_DESC|field.featuresHailuo|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresSuno|Suno
+site.json|CHINESE_DESC|field.featuresSuno|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresFlux|Flux
+site.json|CHINESE_DESC|field.featuresFlux|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresNanobanana|Nano Banana
+site.json|CHINESE_DESC|field.featuresNanobanana|展示在编辑框的标题
+site.json|CHINESE_DESC|field.featuresOpenaiimage|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresSeedream|SeeDream
+site.json|CHINESE_DESC|field.featuresSeedream|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresSeedance|SeeDance
+site.json|ENGLISH_DESC|field.featuresSeedance|Displayed as the title in the editing box
+site.json|ENGLISH_MSG|field.featuresWan|Wan
+site.json|CHINESE_DESC|field.featuresWan|展示在编辑框的标题
+site.json|CHINESE_DESC|field.featuresProducer|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresKimi|Kimi
+site.json|CHINESE_DESC|field.featuresKimi|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresSerp|SERP
+site.json|CHINESE_DESC|field.featuresSerp|展示在编辑框的标题
+site.json|ENGLISH_MSG|field.featuresCodingBridge|Coding Bridge
+site.json|ENGLISH_DESC|field.featuresCodingBridge|Displayed as the title in the editing box
+site.json|ENGLISH_MSG|field.featuresWebextrator|WebExtrator
+site.json|ENGLISH_DESC|field.featuresWebextrator|Displayed as the title in the editing box
+site.json|CHINESE_DESC|field.featuresSupport|展示在编辑框的标题
+site.json|CHINESE_DESC|field.featuresI18n|展示在编辑框的标题
+site.json|CHINESE_DESC|title.basicConfig|展示在编辑框的标题
+site.json|CHINESE_DESC|title.seoConfig|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editAdmins|展示在编辑框的标题
+site.json|ENGLISH_DESC|title.editContacts|Title of the edit-support-contacts dialog
+site.json|CHINESE_DESC|title.featuresConfig|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editTitle|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editOrigin|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editKeywords|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editLogo|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editFavicon|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editDescription|展示在编辑框的标题
+site.json|CHINESE_DESC|title.distributionConfig|展示在编辑框的标题
+site.json|CHINESE_DESC|title.editDistributionDefaultInviterId|展示在编辑框的标题
+site.json|ENGLISH_DESC|message.contactsTip|Tip for the support-contacts field
+site.json|ENGLISH_DESC|message.contactsEmpty|Placeholder shown when no support contact has been filled in
+site.json|ENGLISH_MSG|field.featuresGemini|Gemini
+site.json|ENGLISH_MSG|field.featuresClaude|Claude
+site.json|ENGLISH_DESC|message.userNotFound|Shown when the user lookup endpoint returns 404 in the picker preview.
+site.json|ENGLISH_DESC|message.editUserHint|Tip below the lookup input in the inviter / admin user picker dialog.
+site.json|ENGLISH_DESC|message.editUsersEmpty|Empty-state text shown when the admins list has no users.
+site.json|ENGLISH_DESC|message.userAlreadyAdded|Disabled-state label on the Add button when the resolved user is already in the admin list.
+site.json|ENGLISH_DESC|title.addUser|Divider title in the admins picker, between the existing-admins list and the lookup input.
+site.json|ENGLISH_DESC|button.addUser|Button label to add the resolved user to the admins list.
+site.json|ENGLISH_DESC|autoTranslate.tooltipOn|Tooltip on the auto-translate toggle when it is ON
+site.json|ENGLISH_DESC|autoTranslate.tooltipOff|Tooltip on the auto-translate toggle when it is OFF
+site.json|ENGLISH_DESC|autoTranslate.tooltipDisabledNotSaved|Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)
+site.json|ENGLISH_DESC|autoTranslate.confirmEnable|Body text of the confirm dialog shown before enabling auto-translation
+site.json|ENGLISH_DESC|autoTranslate.confirmDisable|Body text of the confirm dialog shown before disabling auto-translation
+site.json|ENGLISH_DESC|autoTranslate.empty|Warning shown when the user tries to enable auto-translation on an empty field
+site.json|ENGLISH_DESC|autoTranslate.error|Fallback error toast when the enable/disable HTTP call fails with no detail
+site.json|ENGLISH_MSG|field.featuresOmni|Omni
+site.json|ENGLISH_MSG|capabilityOverride.edit|Customize app
+site.json|ENGLISH_DESC|capabilityOverride.edit|Tooltip and accessible label for editing a capability app name and icon
+site.json|ENGLISH_MSG|capabilityOverride.dialogTitle|Customize {name}
+site.json|ENGLISH_DESC|capabilityOverride.dialogTitle|Dialog title; {name} is the platform-default capability app name
+site.json|ENGLISH_MSG|capabilityOverride.displayName|Custom name
+site.json|ENGLISH_DESC|capabilityOverride.displayName|Field label for a per-site capability app display name
+site.json|ENGLISH_MSG|capabilityOverride.displayNameTip|Leave blank to use {name}. Save once before enabling automatic translation.
+site.json|ENGLISH_DESC|capabilityOverride.displayNameTip|Help text; {name} is the platform-default capability app name
+site.json|ENGLISH_MSG|capabilityOverride.icon|Custom icon
+site.json|ENGLISH_DESC|capabilityOverride.icon|Field label for a per-site capability app icon
+site.json|ENGLISH_MSG|capabilityOverride.defaultIcon|Default
+site.json|ENGLISH_DESC|capabilityOverride.defaultIcon|Label above the platform-default capability icon preview
+site.json|ENGLISH_MSG|capabilityOverride.currentIcon|Current
+site.json|ENGLISH_DESC|capabilityOverride.currentIcon|Label above the effective capability icon preview
+site.json|ENGLISH_MSG|capabilityOverride.replaceIcon|Replace icon
+site.json|ENGLISH_DESC|capabilityOverride.replaceIcon|Command to upload a replacement capability icon
+site.json|ENGLISH_MSG|capabilityOverride.uploadIcon|Upload icon
+site.json|ENGLISH_DESC|capabilityOverride.uploadIcon|Command to upload the first custom capability icon
+site.json|ENGLISH_MSG|capabilityOverride.useDefaultIcon|Use default icon
+site.json|ENGLISH_DESC|capabilityOverride.useDefaultIcon|Command to clear the custom icon draft
+site.json|ENGLISH_MSG|capabilityOverride.iconTip|PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.
+site.json|ENGLISH_DESC|capabilityOverride.iconTip|Capability icon upload requirements
+site.json|ENGLISH_MSG|capabilityOverride.editIcon|Edit app icon
+site.json|ENGLISH_DESC|capabilityOverride.editIcon|Title of the capability icon cropper dialog
+site.json|ENGLISH_MSG|capabilityOverride.resetAll|Restore defaults
+site.json|ENGLISH_DESC|capabilityOverride.resetAll|Command that removes both custom name and icon
+site.json|ENGLISH_MSG|capabilityOverride.empty|Enter a custom name or upload an icon first.
+site.json|ENGLISH_DESC|capabilityOverride.empty|Warning when attempting to create an empty override
+site.json|ENGLISH_MSG|capabilityOverride.saved|App customization saved
+site.json|ENGLISH_DESC|capabilityOverride.saved|Success message after saving a capability override
+site.json|ENGLISH_MSG|capabilityOverride.savedEnableTranslation|Saved. You can now enable automatic translation for the custom name.
+site.json|ENGLISH_DESC|capabilityOverride.savedEnableTranslation|Success message after first save creates an override ID
+site.json|ENGLISH_MSG|capabilityOverride.saveFailed|Failed to save app customization
+site.json|ENGLISH_DESC|capabilityOverride.saveFailed|Fallback error for capability override writes
+site.json|ENGLISH_MSG|capabilityOverride.resetConfirm|Restore the default name and icon for {name}?
+site.json|ENGLISH_DESC|capabilityOverride.resetConfirm|Confirmation message; {name} is the platform-default capability app name
+site.json|ENGLISH_MSG|capabilityOverride.resetDone|Default name and icon restored
+site.json|ENGLISH_DESC|capabilityOverride.resetDone|Success message after deleting a capability override
+site.json|ENGLISH_MSG|capabilityOverride.fetchFailed|Failed to load app customizations
+site.json|ENGLISH_DESC|capabilityOverride.fetchFailed|Error shown when capability override management rows cannot be loaded
+sora.json|ENGLISH_MSG|name.soraBot|OpenAI Sora Bot
+sora.json|ENGLISH_DESC|placeholder.paddingLevel|Το placeholder για το επίπεδο padding
+subsite.json|ENGLISH_DESC|title.openSite|Title of the open-subsite confirmation dialog.
+subsite.json|ENGLISH_DESC|field.defaultLabel|Tag rendered next to the default subdomain in the open-subsite dialog.
+subsite.json|ENGLISH_DESC|field.customLabel|Tag rendered next to a custom (BYO) hostname in the open-subsite dialog.
+subsite.json|ENGLISH_MSG|placeholder.slug|π.χ. my-brand
+subsite.json|ENGLISH_DESC|button.delete|Button to delete a subsite
+subsite.json|ENGLISH_DESC|message.zoneMissing|Λείπει η subdomain_zone
+subsite.json|ENGLISH_DESC|message.deleteConfirm|Confirmation prompt before deleting a subsite
+subsite.json|ENGLISH_DESC|message.deleted|Success message after deleting a subsite
+subsite.json|ENGLISH_DESC|message.deleteFailed|Fallback error message when DELETE fails
+subsite.json|ENGLISH_MSG|button.domains|Domains
+subsite.json|ENGLISH_MSG|field.hostname|Το Domain σας
+subsite.json|ENGLISH_MSG|placeholder.hostname|π.χ. studio.mybrand.com
+subsite.json|ENGLISH_DESC|placeholder.hostname|Placeholder για το πεδίο εισόδου hostname
+subsite.json|ENGLISH_DESC|message.domainCreated|Επιτυχία POST /site-domains/
+subsite.json|ENGLISH_DESC|message.domainDeleteFailed|DELETE διεπαφή 5xx
+suno.json|ENGLISH_MSG|button.remaster|Επανα-mastering
+suno.json|ENGLISH_MSG|name.sunoBot|Suno Bot
+suno.json|ENGLISH_MSG|placeholder.styleNegative|Π.χ.: heavy metal, screaming...
+usage.json|ENGLISH_MSG|field.api|API
+usage.json|ENGLISH_DESC|field.credential|The API key (credential) that generated this usage record.
+usage.json|ENGLISH_DESC|field.consumed|Column header in the usage breakdown table for the total points a single API consumed within the selected time range.
+usage.json|ENGLISH_DESC|field.share|Column header in the usage breakdown table for a single API's percentage of the total consumption.
+usage.json|ENGLISH_DESC|field.autoRefresh|Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval.
+usage.json|ENGLISH_DESC|value.processing|Placeholder shown in the status code column while an async task has not yet returned a final status code.
+usage.json|ENGLISH_DESC|value.others|Series name in the usage-trend chart that aggregates all APIs outside the top spenders.
+usage.json|ENGLISH_DESC|title.usageAnalytics|Title of the usage analytics card, which contains trend, share, and breakdown view tabs.
+usage.json|ENGLISH_DESC|view.trend|View switch button in the usage analytics card: stacked bar chart of per-API consumption over time.
+usage.json|ENGLISH_DESC|view.distribution|View switch button in the usage analytics card: doughnut chart of each API's consumption share.
+usage.json|ENGLISH_DESC|view.breakdown|View switch button in the usage analytics card: a table listing every API's exact consumption and share.
+usage.json|ENGLISH_DESC|message.exportFailed|Error toast shown when the CSV export request fails (network or server error).
+veo.json|ENGLISH_MSG|name.veoBot|Google Veo Bot
+veo.json|ENGLISH_MSG|message.uploadReferencesLimit|You can upload a maximum of {limit} images
+veo.json|ENGLISH_DESC|message.uploadReferencesLimit|Dynamic image limit for the selected generation mode
+veo.json|ENGLISH_MSG|button.actionTabText|Text
+veo.json|ENGLISH_DESC|button.actionTabText|Compact Veo action tab for text-to-video
+veo.json|ENGLISH_MSG|button.actionTabImage|Image
+veo.json|ENGLISH_DESC|button.actionTabImage|Compact Veo action tab for image-to-video
+veo.json|ENGLISH_MSG|button.actionTabIngredients|Ingredients
+veo.json|ENGLISH_DESC|button.actionTabIngredients|Compact Veo action tab for multi-image fusion
+wan.json|ENGLISH_MSG|name.wanBot|Wan Bot
+webextrator.json|ENGLISH_MSG|name.mode|Mode
+webextrator.json|ENGLISH_DESC|name.mode|Label for render/extract mode toggle
+webextrator.json|ENGLISH_MSG|name.url|URL
+webextrator.json|ENGLISH_DESC|name.url|Label for the URL input
+webextrator.json|ENGLISH_MSG|name.expectedType|Expected Type
+webextrator.json|ENGLISH_DESC|name.expectedType|Label for expected content type
+webextrator.json|ENGLISH_MSG|name.enableLlm|LLM Cleanup
+webextrator.json|ENGLISH_DESC|name.enableLlm|Label for enable LLM toggle
+webextrator.json|ENGLISH_MSG|name.advanced|Advanced
+webextrator.json|ENGLISH_DESC|name.advanced|Label for advanced options collapse
+webextrator.json|ENGLISH_MSG|name.waitUntil|Wait Until
+webextrator.json|ENGLISH_DESC|name.waitUntil|Label for the wait_until field
+webextrator.json|ENGLISH_MSG|name.waitForSelector|Wait For Selector
+webextrator.json|ENGLISH_DESC|name.waitForSelector|Label for the wait_for_selector field
+webextrator.json|ENGLISH_MSG|name.timeout|Timeout (s)
+webextrator.json|ENGLISH_DESC|name.timeout|Label for the timeout field
+webextrator.json|ENGLISH_MSG|name.delay|Delay (s)
+webextrator.json|ENGLISH_DESC|name.delay|Label for the delay_after_load field
+webextrator.json|ENGLISH_MSG|name.blockResources|Block Resources
+webextrator.json|ENGLISH_DESC|name.blockResources|Label for the block_resources multi-select
+webextrator.json|ENGLISH_MSG|name.consumption|Cost
+webextrator.json|ENGLISH_DESC|name.consumption|Label for the per-call cost
+webextrator.json|ENGLISH_MSG|mode.extract|Extract
+webextrator.json|ENGLISH_DESC|mode.extract|Extract mode option
+webextrator.json|ENGLISH_MSG|mode.render|Render
+webextrator.json|ENGLISH_DESC|mode.render|Render mode option
+webextrator.json|ENGLISH_MSG|expectedType.general|General
+webextrator.json|ENGLISH_DESC|expectedType.general|General expected type option
+webextrator.json|ENGLISH_MSG|expectedType.article|Article
+webextrator.json|ENGLISH_DESC|expectedType.article|Article expected type option
+webextrator.json|ENGLISH_MSG|expectedType.product|Product
+webextrator.json|ENGLISH_DESC|expectedType.product|Product expected type option
+webextrator.json|ENGLISH_MSG|waitUntil.networkidle|Network Idle
+webextrator.json|ENGLISH_DESC|waitUntil.networkidle|Wait until network idle option
+webextrator.json|ENGLISH_MSG|waitUntil.load|Load
+webextrator.json|ENGLISH_DESC|waitUntil.load|Wait until load option
+webextrator.json|ENGLISH_MSG|waitUntil.domcontentloaded|DOM Ready
+webextrator.json|ENGLISH_DESC|waitUntil.domcontentloaded|Wait until DOM content loaded option
+webextrator.json|ENGLISH_MSG|waitUntil.commit|Commit
+webextrator.json|ENGLISH_DESC|waitUntil.commit|Wait until commit option
+webextrator.json|ENGLISH_MSG|blockResource.image|Images
+webextrator.json|ENGLISH_DESC|blockResource.image|Block images option
+webextrator.json|ENGLISH_MSG|blockResource.font|Fonts
+webextrator.json|ENGLISH_DESC|blockResource.font|Block fonts option
+webextrator.json|ENGLISH_MSG|blockResource.media|Media
+webextrator.json|ENGLISH_DESC|blockResource.media|Block media option
+webextrator.json|ENGLISH_MSG|blockResource.stylesheet|Stylesheets
+webextrator.json|ENGLISH_DESC|blockResource.stylesheet|Block stylesheets option
+webextrator.json|ENGLISH_MSG|blockResource.xhr|XHR
+webextrator.json|ENGLISH_DESC|blockResource.xhr|Block XHR option
+webextrator.json|ENGLISH_MSG|blockResource.fetch|Fetch
+webextrator.json|ENGLISH_DESC|blockResource.fetch|Block fetch option
+webextrator.json|ENGLISH_DESC|placeholder.url|Placeholder for the URL input
+webextrator.json|ENGLISH_MSG|placeholder.waitForSelector|CSS selector, e.g. .article-body
+webextrator.json|ENGLISH_DESC|placeholder.waitForSelector|Placeholder for the wait_for_selector input
+webextrator.json|ENGLISH_MSG|placeholder.blockResources|Resource types to block
+webextrator.json|ENGLISH_DESC|placeholder.blockResources|Placeholder for the block_resources multi-select
+webextrator.json|ENGLISH_MSG|button.extract|Extract
+webextrator.json|ENGLISH_DESC|button.extract|Run extract button label
+webextrator.json|ENGLISH_MSG|button.render|Render
+webextrator.json|ENGLISH_DESC|button.render|Run render button label
+webextrator.json|ENGLISH_MSG|description.intro|Render and extract any web page
+webextrator.json|ENGLISH_DESC|description.intro|Intro line shown in the empty result state
+webextrator.json|ENGLISH_MSG|description.introHint|Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.
+webextrator.json|ENGLISH_DESC|description.introHint|Hint shown below the intro line
+webextrator.json|ENGLISH_MSG|description.enableLlm|Use an LLM to clean and structure the extracted content. Costs additional credits.
+webextrator.json|ENGLISH_DESC|description.enableLlm|Tooltip explaining the LLM cleanup toggle
+webextrator.json|ENGLISH_MSG|message.running|Working on it…
+webextrator.json|ENGLISH_DESC|message.running|Status while a request is in flight
+webextrator.json|ENGLISH_MSG|message.extracting|Extracting…
+webextrator.json|ENGLISH_DESC|message.extracting|Status shown when extract is running
+webextrator.json|ENGLISH_MSG|message.rendering|Rendering…
+webextrator.json|ENGLISH_DESC|message.rendering|Status shown when render is running
+webextrator.json|ENGLISH_MSG|message.success|Done
+webextrator.json|ENGLISH_DESC|message.success|Toast shown on success
+webextrator.json|ENGLISH_MSG|message.failed|Request failed
+webextrator.json|ENGLISH_DESC|message.failed|Generic error message
+webextrator.json|ENGLISH_MSG|message.usedUp|Your quota has been used up. Please top up to continue.
+webextrator.json|ENGLISH_DESC|message.usedUp|Error shown when balance is exhausted
+webextrator.json|ENGLISH_MSG|message.busy|Service is busy. Please try again in a moment.
+webextrator.json|ENGLISH_DESC|message.busy|Error shown on rate limit
+webextrator.json|ENGLISH_MSG|message.timeout|The page took too long to load. Try a different URL or increase the timeout.
+webextrator.json|ENGLISH_DESC|message.timeout|Error shown on timeout
+webextrator.json|ENGLISH_MSG|message.untitled|Untitled
+webextrator.json|ENGLISH_DESC|message.untitled|Fallback title when the page has no title
+webextrator.json|ENGLISH_MSG|tab.markdown|Markdown
+webextrator.json|ENGLISH_DESC|tab.markdown|Markdown tab label
+webextrator.json|ENGLISH_MSG|tab.text|Text
+webextrator.json|ENGLISH_DESC|tab.text|Plain text tab label
+webextrator.json|ENGLISH_MSG|tab.structured|Structured
+webextrator.json|ENGLISH_DESC|tab.structured|Structured data tab label
+webextrator.json|ENGLISH_MSG|tab.links|Links
+webextrator.json|ENGLISH_DESC|tab.links|Links tab label
+webextrator.json|ENGLISH_MSG|tab.images|Images
+webextrator.json|ENGLISH_DESC|tab.images|Images tab label
+webextrator.json|ENGLISH_MSG|tab.html|HTML
+webextrator.json|ENGLISH_DESC|tab.html|HTML tab label
+webextrator.json|ENGLISH_MSG|tab.raw|Raw JSON
+webextrator.json|ENGLISH_DESC|tab.raw|Raw response tab label

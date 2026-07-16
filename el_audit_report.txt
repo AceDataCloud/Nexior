@@ -1,0 +1,3164 @@
+
+===== application.json (2) =====
+  [ENG_COPY] badge.shared.message
+     EL: 'Shared'
+     EN: 'Shared'
+     ZH: '共享'
+  [ENG_COPY] badge.shared.description
+     EL: 'Badge on the application list marking an application that has been authorized to the current user by someone else (not owned by them).'
+     EN: 'Badge on the application list marking an application that has been authorized to the current user by someone else (not owned by them).'
+     ZH: '应用列表中的徽章，标记此应用是由他人授权给当前用户使用，而不是由当前用户拥有。'
+
+===== chat.json (98) =====
+  [ENG_COPY] scheduledTasks.navTitle.message
+     EL: 'Scheduled Tasks'
+     EN: 'Scheduled Tasks'
+     ZH: '定时任务'
+  [ENG_COPY] scheduledTasks.title.message
+     EL: 'Scheduled Tasks'
+     EN: 'Scheduled Tasks'
+     ZH: '定时任务'
+  [ENG_COPY] scheduledTasks.create.message
+     EL: 'New'
+     EN: 'New'
+     ZH: '新建'
+  [ENG_COPY] scheduledTasks.edit.message
+     EL: 'Edit Task'
+     EN: 'Edit Task'
+     ZH: '编辑任务'
+  [ENG_COPY] scheduledTasks.empty.message
+     EL: 'No scheduled tasks yet. Click "New" to create one.'
+     EN: 'No scheduled tasks yet. Click "New" to create one.'
+     ZH: '还没有定时任务，点击「新建」创建一个'
+  [ENG_COPY] scheduledTasks.noRuns.message
+     EL: 'No runs yet'
+     EN: 'No runs yet'
+     ZH: '尚未运行'
+  [ENG_COPY] scheduledTasks.loadError.message
+     EL: 'Failed to load'
+     EN: 'Failed to load'
+     ZH: '加载失败'
+  [ENG_COPY] scheduledTasks.deleteConfirm.message
+     EL: 'Delete "{name}"? The task will stop running.'
+     EN: 'Delete "{name}"? The task will stop running.'
+     ZH: '确认删除「{name}」？删除后任务将停止运行。'
+  [ENG_COPY] scheduledTasks.triggerNow.message
+     EL: 'Run now'
+     EN: 'Run now'
+     ZH: '立即触发'
+  [ENG_COPY] scheduledTasks.triggerNow.description
+     EL: 'Trigger the task immediately, out of schedule'
+     EN: 'Trigger the task immediately, out of schedule'
+     ZH: '手动立刻运行一次任务'
+  [ENG_COPY] scheduledTasks.triggerSuccess.message
+     EL: 'Triggered. The result will appear in run history shortly.'
+     EN: 'Triggered. The result will appear in run history shortly.'
+     ZH: '已触发，稍后可在运行记录中查看结果。'
+  [ENG_COPY] scheduledTasks.triggerSuccess.description
+     EL: 'Manual trigger success'
+     EN: 'Manual trigger success'
+     ZH: '手动触发成功提示'
+  [ENG_COPY] scheduledTasks.triggerError.message
+     EL: 'Failed to trigger. Please try again later.'
+     EN: 'Failed to trigger. Please try again later.'
+     ZH: '触发失败，请稍后重试。'
+  [ENG_COPY] scheduledTasks.triggerError.description
+     EL: 'Manual trigger error'
+     EN: 'Manual trigger error'
+     ZH: '手动触发失败提示'
+  [ENG_COPY] scheduledTasks.viewResult.message
+     EL: 'View Result'
+     EN: 'View Result'
+     ZH: '查看结果'
+  [ENG_COPY] scheduledTasks.viewRuns.message
+     EL: 'Run history'
+     EN: 'Run history'
+     ZH: '运行记录'
+  [ENG_COPY] scheduledTasks.jitterHint.message
+     EL: '±60s jitter'
+     EN: '±60s jitter'
+     ZH: '±60s 抖动'
+  [ENG_COPY] scheduledTasks.runCount.message
+     EL: 'Ran {count} time(s)'
+     EN: 'Ran {count} time(s)'
+     ZH: '已运行 {count} 次'
+  [ENG_COPY] scheduledTasks.state.enabled.message
+     EL: 'Active'
+     EN: 'Active'
+     ZH: '运行中'
+  [ENG_COPY] scheduledTasks.state.disabled.message
+     EL: 'Paused'
+     EN: 'Paused'
+     ZH: '已暂停'
+  [ENG_COPY] scheduledTasks.state.error.message
+     EL: 'Error'
+     EN: 'Error'
+     ZH: '出错'
+  [ENG_COPY] scheduledTasks.run.queued.message
+     EL: 'Queued'
+     EN: 'Queued'
+     ZH: '排队'
+  [ENG_COPY] scheduledTasks.run.running.message
+     EL: 'Running'
+     EN: 'Running'
+     ZH: '运行中'
+  [ENG_COPY] scheduledTasks.run.success.message
+     EL: 'Success'
+     EN: 'Success'
+     ZH: '成功'
+  [ENG_COPY] scheduledTasks.run.failed.message
+     EL: 'Failed'
+     EN: 'Failed'
+     ZH: '失败'
+  [ENG_COPY] scheduledTasks.run.needs_user_input.message
+     EL: 'Needs action'
+     EN: 'Needs action'
+     ZH: '需要操作'
+  [ENG_COPY] scheduledTasks.scheduleType.daily.message
+     EL: 'Daily'
+     EN: 'Daily'
+     ZH: '每天'
+  [ENG_COPY] scheduledTasks.scheduleType.hourly.message
+     EL: 'Hourly'
+     EN: 'Hourly'
+     ZH: '每小时'
+  [ENG_COPY] scheduledTasks.scheduleType.weekly.message
+     EL: 'Weekly'
+     EN: 'Weekly'
+     ZH: '每周'
+  [ENG_COPY] scheduledTasks.scheduleType.cron.message
+     EL: 'Cron expression'
+     EN: 'Cron expression'
+     ZH: 'Cron 表达式'
+  [ENG_COPY] scheduledTasks.scheduleType.interval.message
+     EL: 'Every'
+     EN: 'Every'
+     ZH: '每隔'
+  [ENG_COPY] scheduledTasks.scheduleType.interval.description
+     EL: 'Run at a fixed interval'
+     EN: 'Run at a fixed interval'
+     ZH: '每隔固定间隔执行'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.minute.message
+     EL: 'minutes'
+     EN: 'minutes'
+     ZH: '分钟'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.minute.description
+     EL: 'Interval unit: minutes'
+     EN: 'Interval unit: minutes'
+     ZH: '间隔单位：分钟'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.hour.message
+     EL: 'hours'
+     EN: 'hours'
+     ZH: '小时'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.hour.description
+     EL: 'Interval unit: hours'
+     EN: 'Interval unit: hours'
+     ZH: '间隔单位：小时'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.day.message
+     EL: 'days'
+     EN: 'days'
+     ZH: '天'
+  [ENG_COPY] scheduledTasks.form.intervalUnit.day.description
+     EL: 'Interval unit: days'
+     EN: 'Interval unit: days'
+     ZH: '间隔单位：天'
+  [ENG_COPY] scheduledTasks.form.hourlyMinute.message
+     EL: 'At minute'
+     EN: 'At minute'
+     ZH: '触发分钟'
+  [ENG_COPY] scheduledTasks.form.hourlyMinute.description
+     EL: 'Which minute of each hour to run'
+     EN: 'Which minute of each hour to run'
+     ZH: '每小时第几分钟触发'
+  [ENG_COPY] scheduledTasks.form.hourlyMinuteHint.message
+     EL: 'Which minute of each hour to run (0–59)'
+     EN: 'Which minute of each hour to run (0–59)'
+     ZH: '每小时的第几分钟触发（0–59）'
+  [ENG_COPY] scheduledTasks.form.hourlyMinuteHint.description
+     EL: 'Hourly minute hint'
+     EN: 'Hourly minute hint'
+     ZH: '每小时分钟说明'
+  [ENG_COPY] scheduledTasks.form.intervalHint.message
+     EL: 'Runs once every fixed interval after the previous run (minimum 1 minute)'
+     EN: 'Runs once every fixed interval after the previous run (minimum 1 minute)'
+     ZH: '从上次运行起，每隔固定时间执行一次（最短 1 分钟）'
+  [ENG_COPY] scheduledTasks.form.intervalHint.description
+     EL: 'Interval hint'
+     EN: 'Interval hint'
+     ZH: '固定间隔说明'
+  [ENG_COPY] scheduledTasks.form.cronHint.message
+     EL: 'Standard 5-field cron expression: minute hour day month weekday'
+     EN: 'Standard 5-field cron expression: minute hour day month weekday'
+     ZH: '标准 5 段 Cron 表达式：分 时 日 月 周'
+  [ENG_COPY] scheduledTasks.form.cronHint.description
+     EL: 'Cron hint'
+     EN: 'Cron hint'
+     ZH: 'Cron 说明'
+  [ENG_COPY] scheduledTasks.form.schedulePreview.message
+     EL: 'Runs {text}'
+     EN: 'Runs {text}'
+     ZH: '执行频率：{text}'
+  [ENG_COPY] scheduledTasks.form.schedulePreview.description
+     EL: 'Schedule preview'
+     EN: 'Schedule preview'
+     ZH: '频率预览'
+  [ENG_COPY] scheduledTasks.humanize.everyNMinutes.message
+     EL: 'every {n} min'
+     EN: 'every {n} min'
+     ZH: '每 {n} 分钟'
+  [ENG_COPY] scheduledTasks.humanize.everyNMinutes.description
+     EL: 'Human-readable: every N minutes'
+     EN: 'Human-readable: every N minutes'
+     ZH: '人类可读：每 N 分钟'
+  [ENG_COPY] scheduledTasks.humanize.everyNHours.message
+     EL: 'every {n} h'
+     EN: 'every {n} h'
+     ZH: '每 {n} 小时'
+  [ENG_COPY] scheduledTasks.humanize.everyNHours.description
+     EL: 'Human-readable: every N hours'
+     EN: 'Human-readable: every N hours'
+     ZH: '人类可读：每 N 小时'
+  [ENG_COPY] scheduledTasks.humanize.everyNDays.message
+     EL: 'every {n} d'
+     EN: 'every {n} d'
+     ZH: '每 {n} 天'
+  [ENG_COPY] scheduledTasks.humanize.everyNDays.description
+     EL: 'Human-readable: every N days'
+     EN: 'Human-readable: every N days'
+     ZH: '人类可读：每 N 天'
+  [ENG_COPY] scheduledTasks.humanize.hourlyAtMinute.message
+     EL: 'hourly at minute {n}'
+     EN: 'hourly at minute {n}'
+     ZH: '每小时第 {n} 分钟'
+  [ENG_COPY] scheduledTasks.humanize.hourlyAtMinute.description
+     EL: 'Human-readable: hourly at minute N'
+     EN: 'Human-readable: hourly at minute N'
+     ZH: '人类可读：每小时第 N 分钟'
+  [ENG_COPY] scheduledTasks.humanize.dailyAt.message
+     EL: 'daily at {time}'
+     EN: 'daily at {time}'
+     ZH: '每天 {time}'
+  [ENG_COPY] scheduledTasks.humanize.dailyAt.description
+     EL: 'Human-readable: daily at time'
+     EN: 'Human-readable: daily at time'
+     ZH: '人类可读：每天某时刻'
+  [ENG_COPY] scheduledTasks.humanize.weeklyAt.message
+     EL: '{weekday} at {time}'
+     EN: '{weekday} at {time}'
+     ZH: '每周 {weekday} {time}'
+  [ENG_COPY] scheduledTasks.humanize.weeklyAt.description
+     EL: 'Human-readable: weekly at weekday/time'
+     EN: 'Human-readable: weekly at weekday/time'
+     ZH: '人类可读：每周某天某时刻'
+  [ENG_COPY] scheduledTasks.humanize.cronRaw.message
+     EL: 'Cron: {cron}'
+     EN: 'Cron: {cron}'
+     ZH: 'Cron：{cron}'
+  [ENG_COPY] scheduledTasks.humanize.cronRaw.description
+     EL: 'Human-readable: raw cron'
+     EN: 'Human-readable: raw cron'
+     ZH: '人类可读：原始 Cron'
+  [ENG_COPY] scheduledTasks.humanize.once.message
+     EL: 'once at {time}'
+     EN: 'once at {time}'
+     ZH: '一次性 {time}'
+  [ENG_COPY] scheduledTasks.humanize.once.description
+     EL: 'Human-readable: once'
+     EN: 'Human-readable: once'
+     ZH: '人类可读：一次性'
+  [ENG_COPY] scheduledTasks.form.name.message
+     EL: 'Task name'
+     EN: 'Task name'
+     ZH: '任务名称'
+  [ENG_COPY] scheduledTasks.form.namePlaceholder.message
+     EL: 'e.g. Daily news summary'
+     EN: 'e.g. Daily news summary'
+     ZH: '例：每日资讯汇总'
+  [ENG_COPY] scheduledTasks.form.model.message
+     EL: 'Model'
+     EN: 'Model'
+     ZH: '模型'
+  [ENG_COPY] scheduledTasks.form.prompt.message
+     EL: 'Prompt'
+     EN: 'Prompt'
+     ZH: '提示词'
+  [ENG_COPY] scheduledTasks.form.promptPlaceholder.message
+     EL: "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+     EN: "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+     ZH: "输入要定时执行的问题或指令，支持 {'{{date}}'}、{'{{run_count}}'}、{'{{last_output}}'} 变量"
+  [ENG_COPY] scheduledTasks.form.promptHint.message
+     EL: "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+     EN: "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+     ZH: "支持模板变量：{'{{date}}'} 今日日期，{'{{run_count}}'} 第几次运行，{'{{last_output}}'} 上次结果摘要"
+  [ENG_COPY] scheduledTasks.form.schedule.message
+     EL: 'Frequency'
+     EN: 'Frequency'
+     ZH: '执行频率'
+  [ENG_COPY] scheduledTasks.form.time.message
+     EL: 'Time'
+     EN: 'Time'
+     ZH: '执行时间'
+  [ENG_COPY] scheduledTasks.form.weekday.message
+     EL: 'Weekday'
+     EN: 'Weekday'
+     ZH: '星期'
+  [ENG_COPY] scheduledTasks.form.cron.message
+     EL: 'Cron expression'
+     EN: 'Cron expression'
+     ZH: 'Cron 表达式'
+  [ENG_COPY] scheduledTasks.form.skillNotActiveTitle.message
+     EL: 'Bind the skill first'
+     EN: 'Bind the skill first'
+     ZH: '需要先绑定技能'
+  [ENG_COPY] scheduledTasks.form.skillNotActiveMessage.message
+     EL: 'The skill "{name}" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.'
+     EN: 'The skill "{name}" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.'
+     ZH: '技能「{name}」尚未在你的账户中绑定或激活。若不先绑定，定时任务在后台自动运行时可能无法使用它。建议先前往绑定后再保存，或点击下方按钮仍要继续保存。'
+  [ENG_COPY] scheduledTasks.form.skillNotActiveForce.message
+     EL: 'Save anyway'
+     EN: 'Save anyway'
+     ZH: '仍要继续保存'
+  [ENG_COPY] scheduledTasks.form.required.message
+     EL: 'Please fill in task name and prompt'
+     EN: 'Please fill in task name and prompt'
+     ZH: '请填写任务名称和提示词'
+  [ENG_COPY] artifacts.kind.email.message
+     EL: 'Email'
+     EN: 'Email'
+     ZH: '邮件'
+  [ENG_COPY] artifacts.unhide.message
+     EL: 'Unhide'
+     EN: 'Unhide'
+     ZH: '取消隐藏'
+  [ENG_COPY] artifacts.unhide.description
+     EL: 'Restore a hidden artifact'
+     EN: 'Restore a hidden artifact'
+     ZH: '恢复被隐藏 Artifact 的按钮'
+  [ENG_COPY] artifacts.showHidden.message
+     EL: 'Show hidden'
+     EN: 'Show hidden'
+     ZH: '显示已隐藏'
+  [ENG_COPY] artifacts.showHidden.description
+     EL: 'Toggle in the filter bar to include hidden artifacts'
+     EN: 'Toggle in the filter bar to include hidden artifacts'
+     ZH: '筛选栏中显示已隐藏 Artifacts 的开关'
+  [ENG_COPY] artifacts.hiddenBadge.message
+     EL: 'Hidden'
+     EN: 'Hidden'
+     ZH: '已隐藏'
+  [ENG_COPY] artifacts.hiddenBadge.description
+     EL: 'Badge shown on artifacts that are currently hidden'
+     EN: 'Badge shown on artifacts that are currently hidden'
+     ZH: '标记 Artifact 已被隐藏的徽章'
+  [ENG_COPY] browserTool.title.message
+     EL: 'Browser activity'
+     EN: 'Browser activity'
+     ZH: '浏览器活动'
+  [ENG_COPY] browserTool.title.description
+     EL: 'Fallback title for a BrowserDevice tool activity'
+     EN: 'Fallback title for a BrowserDevice tool activity'
+     ZH: 'BrowserDevice 工具活动的默认标题'
+  [ENG_COPY] browserTool.state.choose_device.message
+     EL: 'Choose a browser device'
+     EN: 'Choose a browser device'
+     ZH: '请选择浏览器设备'
+  [ENG_COPY] browserTool.state.device_offline.message
+     EL: 'Browser device is offline'
+     EN: 'Browser device is offline'
+     ZH: '浏览器设备已离线'
+  [ENG_COPY] browserTool.state.awaiting_device.message
+     EL: 'Waiting for browser device'
+     EN: 'Waiting for browser device'
+     ZH: '正在等待浏览器设备'
+  [ENG_COPY] browserTool.state.awaiting_local_approval.message
+     EL: 'Waiting for approval on the browser device'
+     EN: 'Waiting for approval on the browser device'
+     ZH: '请在浏览器设备上批准'
+  [ENG_COPY] browserTool.state.takeover_required.message
+     EL: 'Take over on the browser device'
+     EN: 'Take over on the browser device'
+     ZH: '请在浏览器设备上接管'
+  [ENG_COPY] browserTool.state.executing.message
+     EL: 'Executing in browser'
+     EN: 'Executing in browser'
+     ZH: '正在浏览器中执行'
+  [ENG_COPY] browserTool.state.completed.message
+     EL: 'Completed'
+     EN: 'Completed'
+     ZH: '已完成'
+  [ENG_COPY] browserTool.state.denied.message
+     EL: 'Denied on the browser device'
+     EN: 'Denied on the browser device'
+     ZH: '已在浏览器设备上拒绝'
+  [ENG_COPY] browserTool.state.expired.message
+     EL: 'Browser request expired'
+     EN: 'Browser request expired'
+     ZH: '浏览器请求已过期'
+  [ENG_COPY] browserTool.state.cancel_too_late.message
+     EL: 'Too late to cancel'
+     EN: 'Too late to cancel'
+     ZH: '已无法取消'
+  [ENG_COPY] scheduledTasks.run.waiting_for_device.message
+     EL: 'Waiting for browser device'
+     EN: 'Waiting for browser device'
+     ZH: '等待浏览器设备'
+
+===== codingBridge.json (115) =====
+  [ENG_COPY] nodeList.title.message
+     EL: 'Devices'
+     EN: 'Devices'
+     ZH: '设备'
+  [ENG_COPY] nodeList.title.description
+     EL: 'Coding Bridge device list title'
+     EN: 'Coding Bridge device list title'
+     ZH: 'Coding Bridge 设备列表标题'
+  [ENG_COPY] nodeList.refresh.message
+     EL: 'Refresh'
+     EN: 'Refresh'
+     ZH: '刷新'
+  [ENG_COPY] nodeList.refresh.description
+     EL: 'Refresh the device list'
+     EN: 'Refresh the device list'
+     ZH: '刷新设备列表'
+  [ENG_COPY] nodeList.pair.message
+     EL: 'Pair device'
+     EN: 'Pair device'
+     ZH: '配对设备'
+  [ENG_COPY] nodeList.pair.description
+     EL: 'Open the pairing dialog'
+     EN: 'Open the pairing dialog'
+     ZH: '打开配对对话框'
+  [ENG_COPY] nodeList.empty.message
+     EL: 'No devices paired yet.'
+     EN: 'No devices paired yet.'
+     ZH: '尚未配对任何设备。'
+  [ENG_COPY] nodeList.empty.description
+     EL: 'Empty device list message'
+     EN: 'Empty device list message'
+     ZH: '设备列表为空时的提示'
+  [ENG_COPY] nodeList.pairFirst.message
+     EL: 'Pair your first device'
+     EN: 'Pair your first device'
+     ZH: '配对第一台设备'
+  [ENG_COPY] nodeList.pairFirst.description
+     EL: 'Empty-state pairing button'
+     EN: 'Empty-state pairing button'
+     ZH: '空状态下的配对按钮'
+  [ENG_COPY] nodeList.remove.message
+     EL: 'Remove'
+     EN: 'Remove'
+     ZH: '移除'
+  [ENG_COPY] nodeList.remove.description
+     EL: 'Remove a device'
+     EN: 'Remove a device'
+     ZH: '移除设备'
+  [ENG_COPY] nodeList.removeConfirm.message
+     EL: 'Remove device "{name}"? It will need to be paired again.'
+     EN: 'Remove device "{name}"? It will need to be paired again.'
+     ZH: '移除设备“{name}”？移除后需要重新配对。'
+  [ENG_COPY] nodeList.removeConfirm.description
+     EL: 'Device removal confirmation'
+     EN: 'Device removal confirmation'
+     ZH: '移除设备确认'
+  [ENG_COPY] nodeList.removeSuccess.message
+     EL: 'Device removed.'
+     EN: 'Device removed.'
+     ZH: '设备已移除。'
+  [ENG_COPY] nodeList.removeSuccess.description
+     EL: 'Device removed toast'
+     EN: 'Device removed toast'
+     ZH: '移除设备成功提示'
+  [ENG_COPY] nodeList.removeFailed.message
+     EL: 'Failed to remove device.'
+     EN: 'Failed to remove device.'
+     ZH: '移除设备失败。'
+  [ENG_COPY] nodeList.removeFailed.description
+     EL: 'Device removal error toast'
+     EN: 'Device removal error toast'
+     ZH: '移除设备失败提示'
+  [ENG_COPY] status.online.message
+     EL: 'Online'
+     EN: 'Online'
+     ZH: '在线'
+  [ENG_COPY] status.online.description
+     EL: 'Device online status'
+     EN: 'Device online status'
+     ZH: '设备在线状态'
+  [ENG_COPY] status.offline.message
+     EL: 'Offline'
+     EN: 'Offline'
+     ZH: '离线'
+  [ENG_COPY] status.offline.description
+     EL: 'Device offline status'
+     EN: 'Device offline status'
+     ZH: '设备离线状态'
+  [ENG_COPY] connection.disconnected.message
+     EL: 'Disconnected'
+     EN: 'Disconnected'
+     ZH: '已断开'
+  [ENG_COPY] connection.disconnected.description
+     EL: 'Relay connection disconnected'
+     EN: 'Relay connection disconnected'
+     ZH: '中继连接已断开'
+  [ENG_COPY] connection.connecting.message
+     EL: 'Connecting…'
+     EN: 'Connecting…'
+     ZH: '连接中…'
+  [ENG_COPY] connection.connecting.description
+     EL: 'Relay connection connecting'
+     EN: 'Relay connection connecting'
+     ZH: '中继连接中'
+  [ENG_COPY] connection.connected.message
+     EL: 'Connected'
+     EN: 'Connected'
+     ZH: '已连接'
+  [ENG_COPY] connection.connected.description
+     EL: 'Relay connection connected'
+     EN: 'Relay connection connected'
+     ZH: '中继已连接'
+  [ENG_COPY] connection.error.message
+     EL: 'Connection error'
+     EN: 'Connection error'
+     ZH: '连接出错'
+  [ENG_COPY] connection.error.description
+     EL: 'Relay connection error'
+     EN: 'Relay connection error'
+     ZH: '中继连接出错'
+  [ENG_COPY] pair.title.message
+     EL: 'Pair a device'
+     EN: 'Pair a device'
+     ZH: '配对设备'
+  [ENG_COPY] pair.title.description
+     EL: 'Pairing dialog title'
+     EN: 'Pairing dialog title'
+     ZH: '配对对话框标题'
+  [ENG_COPY] pair.intro.message
+     EL: 'Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.'
+     EN: 'Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.'
+     ZH: '在你的电脑上运行 Coding Bridge 代理，然后在此输入配对码即可在网页端控制它。'
+  [ENG_COPY] pair.intro.description
+     EL: 'Pairing dialog intro'
+     EN: 'Pairing dialog intro'
+     ZH: '配对对话框介绍'
+  [ENG_COPY] pair.step1.message
+     EL: 'Install the agent (requires Python 3.10+):'
+     EN: 'Install the agent (requires Python 3.10+):'
+     ZH: '安装代理（需要 Python 3.10+）：'
+  [ENG_COPY] pair.step1.description
+     EL: 'Pairing step 1'
+     EN: 'Pairing step 1'
+     ZH: '配对步骤 1'
+  [ENG_COPY] pair.step2.message
+     EL: 'Start it and follow the prompt:'
+     EN: 'Start it and follow the prompt:'
+     ZH: '启动并按提示操作：'
+  [ENG_COPY] pair.step2.description
+     EL: 'Pairing step 2'
+     EN: 'Pairing step 2'
+     ZH: '配对步骤 2'
+  [ENG_COPY] pair.step3.message
+     EL: 'Enter the pairing code it shows below.'
+     EN: 'Enter the pairing code it shows below.'
+     ZH: '输入下方显示的配对码。'
+  [ENG_COPY] pair.step3.description
+     EL: 'Pairing step 3'
+     EN: 'Pairing step 3'
+     ZH: '配对步骤 3'
+  [ENG_COPY] pair.codePlaceholder.message
+     EL: 'Pairing code'
+     EN: 'Pairing code'
+     ZH: '配对码'
+  [ENG_COPY] pair.codePlaceholder.description
+     EL: 'Pairing code input placeholder'
+     EN: 'Pairing code input placeholder'
+     ZH: '配对码输入框占位符'
+  [ENG_COPY] pair.claim.message
+     EL: 'Pair device'
+     EN: 'Pair device'
+     ZH: '配对设备'
+  [ENG_COPY] pair.claim.description
+     EL: 'Pairing confirm button'
+     EN: 'Pairing confirm button'
+     ZH: '配对确认按钮'
+  [ENG_COPY] pair.success.message
+     EL: 'Device "{name}" paired.'
+     EN: 'Device "{name}" paired.'
+     ZH: '设备“{name}”已配对。'
+  [ENG_COPY] pair.success.description
+     EL: 'Pairing success toast'
+     EN: 'Pairing success toast'
+     ZH: '配对成功提示'
+  [ENG_COPY] pair.invalidCode.message
+     EL: 'Invalid or expired pairing code.'
+     EN: 'Invalid or expired pairing code.'
+     ZH: '配对码无效或已过期。'
+  [ENG_COPY] pair.invalidCode.description
+     EL: 'Pairing invalid code error'
+     EN: 'Pairing invalid code error'
+     ZH: '配对码无效错误'
+  [ENG_COPY] pair.usedCode.message
+     EL: 'This pairing code has already been used.'
+     EN: 'This pairing code has already been used.'
+     ZH: '该配对码已被使用。'
+  [ENG_COPY] pair.usedCode.description
+     EL: 'Pairing used code error'
+     EN: 'Pairing used code error'
+     ZH: '配对码已使用错误'
+  [ENG_COPY] pair.failed.message
+     EL: 'Failed to pair device.'
+     EN: 'Failed to pair device.'
+     ZH: '配对设备失败。'
+  [ENG_COPY] pair.failed.description
+     EL: 'Pairing generic error'
+     EN: 'Pairing generic error'
+     ZH: '配对通用错误'
+  [ENG_COPY] permission.title.message
+     EL: 'Permission required'
+     EN: 'Permission required'
+     ZH: '需要授权'
+  [ENG_COPY] permission.title.description
+     EL: 'Permission dialog title'
+     EN: 'Permission dialog title'
+     ZH: '授权对话框标题'
+  [ENG_COPY] permission.subtitle.message
+     EL: 'The agent wants to use a tool. Approve to continue.'
+     EN: 'The agent wants to use a tool. Approve to continue.'
+     ZH: '代理请求使用一个工具，批准后继续。'
+  [ENG_COPY] permission.subtitle.description
+     EL: 'Permission dialog subtitle'
+     EN: 'Permission dialog subtitle'
+     ZH: '授权对话框副标题'
+  [ENG_COPY] permission.deny.message
+     EL: 'Deny'
+     EN: 'Deny'
+     ZH: '拒绝'
+  [ENG_COPY] permission.deny.description
+     EL: 'Deny a tool permission'
+     EN: 'Deny a tool permission'
+     ZH: '拒绝工具授权'
+  [ENG_COPY] permission.allow.message
+     EL: 'Allow'
+     EN: 'Allow'
+     ZH: '允许'
+  [ENG_COPY] permission.allow.description
+     EL: 'Allow a tool permission'
+     EN: 'Allow a tool permission'
+     ZH: '允许工具授权'
+  [ENG_COPY] session.noDevice.message
+     EL: 'Select a device to start coding.'
+     EN: 'Select a device to start coding.'
+     ZH: '选择一台设备开始编码。'
+  [ENG_COPY] session.noDevice.description
+     EL: 'No device selected placeholder'
+     EN: 'No device selected placeholder'
+     ZH: '未选择设备时的占位提示'
+  [ENG_COPY] session.newSession.message
+     EL: 'New session'
+     EN: 'New session'
+     ZH: '新会话'
+  [ENG_COPY] session.newSession.description
+     EL: 'Start a new session'
+     EN: 'Start a new session'
+     ZH: '开始新会话'
+  [ENG_COPY] session.deviceOffline.message
+     EL: 'This device is offline. Start the Coding Bridge agent on it to continue.'
+     EN: 'This device is offline. Start the Coding Bridge agent on it to continue.'
+     ZH: '该设备已离线。请在该设备上启动 Coding Bridge 代理后继续。'
+  [ENG_COPY] session.deviceOffline.description
+     EL: 'Device offline warning'
+     EN: 'Device offline warning'
+     ZH: '设备离线警告'
+  [ENG_COPY] session.nodeId.description
+     EL: 'Diagnostic label for the node id'
+     EN: 'Diagnostic label for the node id'
+     ZH: '节点 id 的诊断标签'
+  [ENG_COPY] session.sessionId.description
+     EL: 'Diagnostic label for the session id'
+     EN: 'Diagnostic label for the session id'
+     ZH: '会话 id 的诊断标签'
+  [ENG_COPY] session.traceId.description
+     EL: 'Diagnostic label for the trace id'
+     EN: 'Diagnostic label for the trace id'
+     ZH: '追踪 id 的诊断标签'
+  [ENG_COPY] session.startHint.message
+     EL: 'Send a message to start a session on this device.'
+     EN: 'Send a message to start a session on this device.'
+     ZH: '发送一条消息以在该设备上开始会话。'
+  [ENG_COPY] session.startHint.description
+     EL: 'Empty transcript hint'
+     EN: 'Empty transcript hint'
+     ZH: '空白记录提示'
+  [ENG_COPY] session.cwdPlaceholder.message
+     EL: 'Working directory (optional)'
+     EN: 'Working directory (optional)'
+     ZH: '工作目录（可选）'
+  [ENG_COPY] session.cwdPlaceholder.description
+     EL: 'Working directory input placeholder'
+     EN: 'Working directory input placeholder'
+     ZH: '工作目录输入框占位符'
+  [ENG_COPY] session.modelPlaceholder.message
+     EL: 'Model (optional)'
+     EN: 'Model (optional)'
+     ZH: '模型（可选）'
+  [ENG_COPY] session.modelPlaceholder.description
+     EL: 'Model input placeholder'
+     EN: 'Model input placeholder'
+     ZH: '模型输入框占位符'
+  [ENG_COPY] session.promptPlaceholder.message
+     EL: 'Send a message to the agent…'
+     EN: 'Send a message to the agent…'
+     ZH: '向代理发送消息…'
+  [ENG_COPY] session.promptPlaceholder.description
+     EL: 'Prompt input placeholder'
+     EN: 'Prompt input placeholder'
+     ZH: '提示词输入框占位符'
+  [ENG_COPY] session.send.message
+     EL: 'Send'
+     EN: 'Send'
+     ZH: '发送'
+  [ENG_COPY] session.send.description
+     EL: 'Send prompt button'
+     EN: 'Send prompt button'
+     ZH: '发送提示词按钮'
+  [ENG_COPY] session.retry.description
+     EL: 'Re-run the last prompt after a failure'
+     EN: 'Re-run the last prompt after a failure'
+     ZH: '失败后重新执行上一条提示词'
+  [ENG_COPY] session.editPrompt.message
+     EL: 'Edit'
+     EN: 'Edit'
+     ZH: '编辑'
+  [ENG_COPY] session.editPrompt.description
+     EL: 'Edit a sent prompt and resend it as a new turn'
+     EN: 'Edit a sent prompt and resend it as a new turn'
+     ZH: '编辑已发送的提示词并作为新一轮重新发送'
+  [ENG_COPY] session.editingBanner.message
+     EL: 'Editing — sending rewinds the conversation to this point.'
+     EN: 'Editing — sending rewinds the conversation to this point.'
+     ZH: '编辑中 — 发送将把对话回退到此处'
+  [ENG_COPY] session.editRestoreCode.message
+     EL: 'Also restore code'
+     EN: 'Also restore code'
+     ZH: '同时回退代码'
+  [ENG_COPY] session.editCancel.message
+     EL: 'Cancel'
+     EN: 'Cancel'
+     ZH: '取消'
+  [ENG_COPY] session.editSubmit.message
+     EL: 'Update'
+     EN: 'Update'
+     ZH: '更新'
+  [ENG_COPY] session.enterHint.message
+     EL: 'Enter to send, Shift+Enter for a new line.'
+     EN: 'Enter to send, Shift+Enter for a new line.'
+     ZH: '回车发送，Shift+回车换行。'
+  [ENG_COPY] session.enterHint.description
+     EL: 'Composer keyboard hint'
+     EN: 'Composer keyboard hint'
+     ZH: '输入框键盘提示'
+  [ENG_COPY] transcript.turnFailed.message
+     EL: 'Turn failed'
+     EN: 'Turn failed'
+     ZH: '执行失败'
+  [ENG_COPY] transcript.turnFailed.description
+     EL: 'Turn result failed label'
+     EN: 'Turn result failed label'
+     ZH: '回合结果失败标签'
+  [ENG_COPY] transcript.turnDone.message
+     EL: 'Done'
+     EN: 'Done'
+     ZH: '完成'
+  [ENG_COPY] transcript.turnDone.description
+     EL: 'Turn result done label'
+     EN: 'Turn result done label'
+     ZH: '回合结果完成标签'
+  [ENG_COPY] history.button.description
+     EL: 'Open the conversation history drawer'
+     EN: 'Open the conversation history drawer'
+     ZH: '打开历史会话抽屉'
+  [ENG_COPY] history.title.description
+     EL: 'History drawer title'
+     EN: 'History drawer title'
+     ZH: '历史会话抽屉标题'
+  [ENG_COPY] history.intro.description
+     EL: 'History drawer intro'
+     EN: 'History drawer intro'
+     ZH: '历史会话抽屉说明'
+  [ENG_COPY] history.refresh.description
+     EL: 'Reload the history list'
+     EN: 'Reload the history list'
+     ZH: '重新加载历史列表'
+  [ENG_COPY] history.loading.description
+     EL: 'History loading message'
+     EN: 'History loading message'
+     ZH: '历史加载提示'
+  [ENG_COPY] history.empty.description
+     EL: 'Empty history message'
+     EN: 'Empty history message'
+     ZH: '历史为空提示'
+  [ENG_COPY] history.messages.description
+     EL: 'History item message count'
+     EN: 'History item message count'
+     ZH: '历史条目消息数'
+  [ENG_COPY] history.readonly.description
+     EL: 'Read-only replay notice'
+     EN: 'Read-only replay notice'
+     ZH: '只读回放提示'
+  [ENG_COPY] history.running.description
+     EL: 'Marks a history conversation that is currently live on the device'
+     EN: 'Marks a history conversation that is currently live on the device'
+     ZH: '历史会话当前正在设备上运行的标记'
+  [ENG_COPY] history.resumeHint.description
+     EL: 'Resume composer hint'
+     EN: 'Resume composer hint'
+     ZH: '续接输入框提示'
+  [ENG_COPY] history.claudeLabel.description
+     EL: 'Replayed Claude session label'
+     EN: 'Replayed Claude session label'
+     ZH: '回放的 Claude 会话标签'
+  [ENG_COPY] history.codexLabel.description
+     EL: 'Replayed Codex session label'
+     EN: 'Replayed Codex session label'
+     ZH: '回放的 Codex 会话标签'
+  [ENG_COPY] session.modelDefault.message
+     EL: 'Default model'
+     EN: 'Default model'
+     ZH: '默认模型'
+  [ENG_COPY] session.cwdDefault.message
+     EL: 'Default directory'
+     EN: 'Default directory'
+     ZH: '默认目录'
+  [ENG_COPY] session.settings.message
+     EL: 'Session settings'
+     EN: 'Session settings'
+     ZH: '会话设置'
+  [ENG_COPY] session.settingsLocked.message
+     EL: 'Settings are locked for this session'
+     EN: 'Settings are locked for this session'
+     ZH: '本会话设置已锁定'
+  [ENG_COPY] session.attachFile.message
+     EL: 'Attach file'
+     EN: 'Attach file'
+     ZH: '添加文件'
+  [ENG_COPY] session.attachmentImageAlt.message
+     EL: 'Attached image'
+     EN: 'Attached image'
+     ZH: '已附加图片'
+  [ENG_COPY] session.removeAttachment.message
+     EL: 'Remove attachment'
+     EN: 'Remove attachment'
+     ZH: '移除附件'
+  [ENG_COPY] session.uploadingAttachment.message
+     EL: 'Uploading attachments…'
+     EN: 'Uploading attachments…'
+     ZH: '附件上传中…'
+  [ENG_COPY] session.attachmentTooLarge.message
+     EL: 'File is too large; keep each under 50 MB.'
+     EN: 'File is too large; keep each under 50 MB.'
+     ZH: '文件过大，请保持每个文件不超过 50 MB。'
+  [ENG_COPY] session.attachmentLimit.message
+     EL: 'You can attach up to {count} files.'
+     EN: 'You can attach up to {count} files.'
+     ZH: '最多可附加 {count} 个文件。'
+  [ENG_COPY] session.attachmentUploadError.message
+     EL: 'Failed to upload attachment.'
+     EN: 'Failed to upload attachment.'
+     ZH: '附件上传失败。'
+
+===== common.json (175) =====
+  [ENG_COPY] button.deletePermanently.description
+     EL: 'Final red delete button at the bottom of the delete confirmation dialog'
+     EN: 'Final red delete button at the bottom of the delete confirmation dialog'
+     ZH: "删除账号确认对话框底部的红色最终删除按钮文本，translate to 'Permanently delete account'"
+  [ENG_COPY] error.loginLinkExpired.message
+     EL: 'Login link expired. Please sign in again.'
+     EN: 'Login link expired. Please sign in again.'
+     ZH: '登录链接已失效，请重新登录。'
+  [ENG_COPY] error.loginLinkExpired.description
+     EL: 'Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).'
+     EN: 'Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).'
+     ZH: '桌面客户端 OAuth 回调因 state 校验失败/过期被丢弃时显示的错误提示。'
+  [ENG_COPY] message.guestTasks.description
+     EL: 'Prompt shown in the task list area for not-logged-in guests'
+     EN: 'Prompt shown in the task list area for not-logged-in guests'
+     ZH: '未登录访客在任务列表区域看到的提示'
+  [ENG_COPY] message.mobileComingSoon.description
+     EL: 'Short status label shown on a platform card (e.g. iOS) while its build is being prepared'
+     EN: 'Short status label shown on a platform card (e.g. iOS) while its build is being prepared'
+     ZH: '用于标记某个平台（如 iOS）即将开放下载的短状态标签'
+  [ENG_COPY] message.mobileNowOnAppStore.message
+     EL: 'Now on the App Store'
+     EN: 'Now on the App Store'
+     ZH: '已上架 App Store'
+  [ENG_COPY] button.getOnAppStore.message
+     EL: 'Get it on the App Store'
+     EN: 'Get it on the App Store'
+     ZH: '在 App Store 下载'
+  [ENG_COPY] message.mobileAppStoreHint.message
+     EL: 'Scan to open the App Store'
+     EN: 'Scan to open the App Store'
+     ZH: '扫码前往 App Store'
+  [ENG_COPY] message.deleteAccountConfirm.description
+     EL: 'Confirmation message shown before permanently deleting the user account'
+     EN: 'Confirmation message shown before permanently deleting the user account'
+     ZH: '永久删除用户账号前显示的确认消息'
+  [ENG_COPY] message.deleteAccountSuccess.description
+     EL: 'Message shown after the user account is successfully deleted'
+     EN: 'Message shown after the user account is successfully deleted'
+     ZH: '成功删除用户账号后显示的消息'
+  [ENG_COPY] message.deleteAccountFailed.description
+     EL: 'Message shown when account deletion fails'
+     EN: 'Message shown when account deletion fails'
+     ZH: '删除账号失败时显示的消息'
+  [ENG_COPY] message.deleteAccountWarning.description
+     EL: 'Red warning banner at the top of the delete confirmation dialog'
+     EN: 'Red warning banner at the top of the delete confirmation dialog'
+     ZH: '删除账号确认对话框顶部的红色警示横幅文本，必须强烈警告操作不可撤销'
+  [ENG_COPY] message.deleteAccountConsequences.description
+     EL: 'Explains what data will be removed in the delete confirmation dialog'
+     EN: 'Explains what data will be removed in the delete confirmation dialog'
+     ZH: '删除账号确认对话框中列出将被删除内容的说明文本'
+  [ENG_COPY] message.deleteAccountTypePrompt.description
+     EL: 'Instructs the user to type their username to confirm; the username is shown separately below'
+     EN: 'Instructs the user to type their username to confirm; the username is shown separately below'
+     ZH: '提示用户必须逐字输入自己的用户名才能确认删除；紧随其后会单独显示该用户名'
+  [ENG_COPY] message.deleteAccountPlaceholder.description
+     EL: 'Placeholder for the username confirmation input'
+     EN: 'Placeholder for the username confirmation input'
+     ZH: '用户名确认输入框的占位符'
+  [ENG_COPY] nav.grokvideo.message
+     EL: 'Grok Video'
+     EN: 'Grok Video'
+     ZH: 'Grok 视频'
+  [ENG_COPY] nav.grokvideo.description
+     EL: 'Text in the website navigation bar to display the Grok Imagine video page'
+     EN: 'Text in the website navigation bar to display the Grok Imagine video page'
+     ZH: '网站导航栏中的文本，用于显示 Grok Imagine 视频页面'
+  [ENG_COPY] nav.codingBridge.description
+     EL: "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'"
+     EN: "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'"
+     ZH: "网站导航栏中的文本，用于显示 Coding Bridge 页面，请不要翻译此字段，必须保持为'Coding Bridge'"
+  [ENG_COPY] nav.webextrator.description
+     EL: "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'"
+     EN: "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'"
+     ZH: "网站导航栏中的文本，用于显示WebExtrator页面，请不要翻译此字段，必须保持为'WebExtrator'"
+  [ENG_COPY] nav.connections.description
+     EL: 'Menu item to navigate to the connection management page at auth.acedata.cloud'
+     EN: 'Menu item to navigate to the connection management page at auth.acedata.cloud'
+     ZH: '跳转到 auth.acedata.cloud 连接管理页的菜单项'
+  [ENG_COPY] nav.deleteAccount.description
+     EL: 'Menu item to permanently delete the current user account'
+     EN: 'Menu item to permanently delete the current user account'
+     ZH: '用于永久删除当前用户账号的菜单项'
+  [ENG_COPY] nav.subsite.description
+     EL: "Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled"
+     EN: "Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled"
+     ZH: '侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示'
+  [ENG_COPY] title.placeholderOfSelect.description
+     EL: 'Placeholder for select input'
+     EN: 'Placeholder for select input'
+     ZH: '选择输入的占位符'
+  [ENG_COPY] settings.sendShortcut.description
+     EL: 'Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.'
+     EN: 'Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.'
+     ZH: '设置页面中的发送消息快捷键行标题：选择按 Enter 发送还是按修饰键+Enter 发送'
+  [ENG_COPY] sendShortcut.enter.description
+     EL: 'Send-shortcut option: press Enter to send the message.'
+     EN: 'Send-shortcut option: press Enter to send the message.'
+     ZH: '发送快捷键选项：按 Enter 键直接发送消息'
+  [ENG_COPY] sendShortcut.modEnter.description
+     EL: 'Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.'
+     EN: 'Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.'
+     ZH: '发送快捷键选项：按修饰键（⌘ 或 Ctrl）加 Enter 发送消息，{key} 是平台修饰键符号'
+  [ENG_COPY] settings.localTools.description
+     EL: 'Desktop-only settings tab for managing local tool folders, permissions and grants.'
+     EN: 'Desktop-only settings tab for managing local tool folders, permissions and grants.'
+     ZH: '桌面专属设置 tab：管理本地工具的授权文件夹、系统权限与永久授权。'
+  [ENG_COPY] settings.localToolsDesktopOnly.description
+     EL: 'Shown when the Local Tools tab is opened on web/mobile.'
+     EN: 'Shown when the Local Tools tab is opened on web/mobile.'
+     ZH: '在 web/移动端打开本地工具 tab 时的提示。'
+  [ENG_COPY] settings.localToolsFoldersTitle.description
+     EL: 'Heading for the list of folders the AI may read/write locally.'
+     EN: 'Heading for the list of folders the AI may read/write locally.'
+     ZH: 'AI 可在本地读写的文件夹列表标题。'
+  [ENG_COPY] settings.localToolsFoldersHint.description
+     EL: 'Help text under the authorized-folders heading.'
+     EN: 'Help text under the authorized-folders heading.'
+     ZH: '已授权文件夹标题下的说明。'
+  [ENG_COPY] settings.localToolsComputerUseTitle.message
+     EL: 'Computer Use (experimental)'
+     EN: 'Computer Use (experimental)'
+     ZH: '电脑操作（实验性）'
+  [ENG_COPY] settings.localToolsComputerUseHint.message
+     EL: 'Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.'
+     EN: 'Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.'
+     ZH: '让 AI 看到你的屏幕并控制本机的鼠标和键盘。默认关闭，按需开启。macOS 上需在下方授予「屏幕录制」和「辅助功能」权限。每个操作仍会请求你的确认。'
+  [ENG_COPY] settings.localToolsAddFolder.description
+     EL: 'Button to pick a folder to authorize.'
+     EN: 'Button to pick a folder to authorize.'
+     ZH: '选择要授权的文件夹的按钮。'
+  [ENG_COPY] settings.localToolsRemove.description
+     EL: 'Button to remove an authorized folder.'
+     EN: 'Button to remove an authorized folder.'
+     ZH: '移除已授权文件夹的按钮。'
+  [ENG_COPY] settings.localToolsNoFolders.description
+     EL: 'Empty state for the authorized-folders list.'
+     EN: 'Empty state for the authorized-folders list.'
+     ZH: '已授权文件夹列表的空状态。'
+  [ENG_COPY] settings.localToolsSave.description
+     EL: 'Save the authorized folders.'
+     EN: 'Save the authorized folders.'
+     ZH: '保存已授权文件夹。'
+  [ENG_COPY] settings.localToolsMcpTitle.message
+     EL: 'MCP servers'
+     EN: 'MCP servers'
+     ZH: 'MCP 服务器'
+  [ENG_COPY] settings.localToolsMcpTitle.description
+     EL: 'Section title for local MCP server configuration in Local Tools settings.'
+     EN: 'Section title for local MCP server configuration in Local Tools settings.'
+     ZH: '本地工具设置中本地 MCP 服务器配置的分区标题。'
+  [ENG_COPY] settings.localToolsMcpHint.message
+     EL: 'Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.'
+     EN: 'Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.'
+     ZH: '通过 stdio 连接本地 MCP 服务器。它们的工具会提供给 AI 使用，并受同样的逐次调用确认保护。修改后立即生效。'
+  [ENG_COPY] settings.localToolsMcpHint.description
+     EL: 'Explains what local MCP servers do and that changes apply without a restart.'
+     EN: 'Explains what local MCP servers do and that changes apply without a restart.'
+     ZH: '说明本地 MCP 服务器的作用，以及修改无需重启即可生效。'
+  [ENG_COPY] settings.localToolsMcpAdd.message
+     EL: 'Add server'
+     EN: 'Add server'
+     ZH: '添加服务器'
+  [ENG_COPY] settings.localToolsMcpAdd.description
+     EL: 'Button to add a new local MCP server row.'
+     EN: 'Button to add a new local MCP server row.'
+     ZH: '添加一个新的本地 MCP 服务器行的按钮。'
+  [ENG_COPY] settings.localToolsMcpName.message
+     EL: 'Name'
+     EN: 'Name'
+     ZH: '名称'
+  [ENG_COPY] settings.localToolsMcpName.description
+     EL: 'Label for the MCP server name/id field.'
+     EN: 'Label for the MCP server name/id field.'
+     ZH: 'MCP 服务器名称/标识字段的标签。'
+  [ENG_COPY] settings.localToolsMcpCommand.message
+     EL: 'Command'
+     EN: 'Command'
+     ZH: '命令'
+  [ENG_COPY] settings.localToolsMcpCommand.description
+     EL: 'Label for the MCP server launch command field.'
+     EN: 'Label for the MCP server launch command field.'
+     ZH: 'MCP 服务器启动命令字段的标签。'
+  [ENG_COPY] settings.localToolsMcpArgs.message
+     EL: 'Arguments'
+     EN: 'Arguments'
+     ZH: '参数'
+  [ENG_COPY] settings.localToolsMcpArgs.description
+     EL: 'Label for the MCP server command arguments field.'
+     EN: 'Label for the MCP server command arguments field.'
+     ZH: 'MCP 服务器命令参数字段的标签。'
+  [ENG_COPY] settings.localToolsMcpArgsHint.message
+     EL: 'One argument per line.'
+     EN: 'One argument per line.'
+     ZH: '每行一个参数。'
+  [ENG_COPY] settings.localToolsMcpArgsHint.description
+     EL: 'Placeholder/hint for the MCP arguments textarea.'
+     EN: 'Placeholder/hint for the MCP arguments textarea.'
+     ZH: 'MCP 参数文本框的占位提示。'
+  [ENG_COPY] settings.localToolsMcpEnv.message
+     EL: 'Environment'
+     EN: 'Environment'
+     ZH: '环境变量'
+  [ENG_COPY] settings.localToolsMcpEnv.description
+     EL: 'Label for the MCP server environment variables field.'
+     EN: 'Label for the MCP server environment variables field.'
+     ZH: 'MCP 服务器环境变量字段的标签。'
+  [ENG_COPY] settings.localToolsMcpEnvHint.message
+     EL: 'One KEY=VALUE per line.'
+     EN: 'One KEY=VALUE per line.'
+     ZH: '每行一个 KEY=VALUE。'
+  [ENG_COPY] settings.localToolsMcpEnvHint.description
+     EL: 'Placeholder/hint for the MCP environment variables textarea.'
+     EN: 'Placeholder/hint for the MCP environment variables textarea.'
+     ZH: 'MCP 环境变量文本框的占位提示。'
+  [ENG_COPY] settings.localToolsMcpNoServers.message
+     EL: 'No MCP servers configured.'
+     EN: 'No MCP servers configured.'
+     ZH: '尚未配置 MCP 服务器。'
+  [ENG_COPY] settings.localToolsMcpNoServers.description
+     EL: 'Empty state shown when no MCP servers are configured.'
+     EN: 'Empty state shown when no MCP servers are configured.'
+     ZH: '未配置任何 MCP 服务器时显示的空状态。'
+  [ENG_COPY] settings.localToolsMcpNamePlaceholder.message
+     EL: 'e.g. filesystem'
+     EN: 'e.g. filesystem'
+     ZH: '例如 filesystem'
+  [ENG_COPY] settings.localToolsMcpNamePlaceholder.description
+     EL: 'Placeholder for the MCP server name input.'
+     EN: 'Placeholder for the MCP server name input.'
+     ZH: 'MCP 服务器名称输入框的占位符。'
+  [ENG_COPY] settings.localToolsMcpCommandPlaceholder.message
+     EL: 'e.g. npx'
+     EN: 'e.g. npx'
+     ZH: '例如 npx'
+  [ENG_COPY] settings.localToolsMcpCommandPlaceholder.description
+     EL: 'Placeholder for the MCP server command input.'
+     EN: 'Placeholder for the MCP server command input.'
+     ZH: 'MCP 服务器命令输入框的占位符。'
+  [ENG_COPY] settings.localToolsMcpNameRequired.message
+     EL: 'Each server needs a name and a command.'
+     EN: 'Each server needs a name and a command.'
+     ZH: '每个服务器都需要名称和命令。'
+  [ENG_COPY] settings.localToolsMcpNameRequired.description
+     EL: 'Validation error when a server row is missing a name or command.'
+     EN: 'Validation error when a server row is missing a name or command.'
+     ZH: '服务器行缺少名称或命令时的校验错误。'
+  [ENG_COPY] settings.localToolsMcpDuplicateName.message
+     EL: 'Server names must be unique.'
+     EN: 'Server names must be unique.'
+     ZH: '服务器名称必须唯一。'
+  [ENG_COPY] settings.localToolsMcpDuplicateName.description
+     EL: 'Validation error when two servers share the same name.'
+     EN: 'Validation error when two servers share the same name.'
+     ZH: '两个服务器名称重复时的校验错误。'
+  [ENG_COPY] settings.localToolsMcpNameInvalid.message
+     EL: 'Name may only contain letters, numbers, hyphens and underscores.'
+     EN: 'Name may only contain letters, numbers, hyphens and underscores.'
+     ZH: '名称只能包含字母、数字、连字符和下划线。'
+  [ENG_COPY] settings.localToolsMcpNameInvalid.description
+     EL: 'Validation error when a server name contains invalid characters.'
+     EN: 'Validation error when a server name contains invalid characters.'
+     ZH: '服务器名称含非法字符时的校验错误。'
+  [ENG_COPY] settings.localToolsMcpEnabled.message
+     EL: 'On'
+     EN: 'On'
+     ZH: '启用'
+  [ENG_COPY] settings.localToolsMcpEnabled.description
+     EL: 'Toggle label to enable/disable a local MCP server.'
+     EN: 'Toggle label to enable/disable a local MCP server.'
+     ZH: '启用/停用某个本地 MCP 服务器的开关标签。'
+  [ENG_COPY] settings.localToolsMcpReconnect.message
+     EL: 'Test / Reconnect'
+     EN: 'Test / Reconnect'
+     ZH: '测试 / 重连'
+  [ENG_COPY] settings.localToolsMcpReconnect.description
+     EL: 'Button to re-spawn one MCP server and refresh its status.'
+     EN: 'Button to re-spawn one MCP server and refresh its status.'
+     ZH: '重新启动某个 MCP 服务器并刷新其状态的按钮。'
+  [ENG_COPY] settings.localToolsMcpConnecting.message
+     EL: 'Connecting…'
+     EN: 'Connecting…'
+     ZH: '连接中…'
+  [ENG_COPY] settings.localToolsMcpConnecting.description
+     EL: 'Badge while an MCP server is being (re)connected.'
+     EN: 'Badge while an MCP server is being (re)connected.'
+     ZH: 'MCP 服务器正在（重新）连接时的状态标签。'
+  [ENG_COPY] settings.localToolsMcpNotSaved.message
+     EL: 'Not saved yet'
+     EN: 'Not saved yet'
+     ZH: '尚未保存'
+  [ENG_COPY] settings.localToolsMcpNotSaved.description
+     EL: "Badge for an MCP server row that hasn't been saved/connected yet."
+     EN: "Badge for an MCP server row that hasn't been saved/connected yet."
+     ZH: '尚未保存/连接的 MCP 服务器行的状态标签。'
+  [ENG_COPY] settings.localToolsMcpConnected.message
+     EL: 'Connected · {n} tools'
+     EN: 'Connected · {n} tools'
+     ZH: '已连接 · {n} 个工具'
+  [ENG_COPY] settings.localToolsMcpConnected.description
+     EL: 'Badge when an MCP server connected; {n} is the tool count.'
+     EN: 'Badge when an MCP server connected; {n} is the tool count.'
+     ZH: 'MCP 服务器连接成功时的标签；{n} 为工具数量。'
+  [ENG_COPY] settings.localToolsMcpDisabled.message
+     EL: 'Disabled'
+     EN: 'Disabled'
+     ZH: '已停用'
+  [ENG_COPY] settings.localToolsMcpDisabled.description
+     EL: 'Badge when an MCP server is turned off.'
+     EN: 'Badge when an MCP server is turned off.'
+     ZH: 'MCP 服务器被关闭时的标签。'
+  [ENG_COPY] settings.localToolsMcpFailed.message
+     EL: 'Failed to connect'
+     EN: 'Failed to connect'
+     ZH: '连接失败'
+  [ENG_COPY] settings.localToolsMcpFailed.description
+     EL: 'Badge when an MCP server failed to start; the reason is shown below.'
+     EN: 'Badge when an MCP server failed to start; the reason is shown below.'
+     ZH: 'MCP 服务器启动失败时的标签；原因显示在下方。'
+  [ENG_COPY] settings.localToolsMcpPlatformHint.message
+     EL: 'Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {\'@\'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows "spawn … ENOENT", set the command to a full path.'
+     EN: 'Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {\'@\'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows "spawn … ENOENT", set the command to a full path.'
+     ZH: "提示：使用 PATH 中的命令，如 npx 或 uvx（例如 npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents）。Windows 上 npx/node 会自动解析。若某服务器显示 “spawn … ENOENT”，请把命令改为完整路径。"
+  [ENG_COPY] settings.localToolsMcpPlatformHint.description
+     EL: 'Cross-platform hint for configuring the MCP launch command.'
+     EN: 'Cross-platform hint for configuring the MCP launch command.'
+     ZH: '配置 MCP 启动命令的跨平台提示。'
+  [ENG_COPY] settings.localToolsSaved.description
+     EL: 'Transient confirmation after saving local-tool folders.'
+     EN: 'Transient confirmation after saving local-tool folders.'
+     ZH: '保存本地工具文件夹后的短暂确认。'
+  [ENG_COPY] settings.localToolsActiveTools.description
+     EL: 'Label before the list of currently available local tools.'
+     EN: 'Label before the list of currently available local tools.'
+     ZH: '当前可用本地工具列表前的标签。'
+  [ENG_COPY] settings.localToolsGrantsTitle.description
+     EL: 'Heading for the persistent consent grants list.'
+     EN: 'Heading for the persistent consent grants list.'
+     ZH: '永久授权列表的标题。'
+  [ENG_COPY] settings.localToolsGrantsHint.description
+     EL: 'Help text under the always-allowed actions heading.'
+     EN: 'Help text under the always-allowed actions heading.'
+     ZH: '永久允许操作标题下的说明。'
+  [ENG_COPY] settings.localToolsRevoke.description
+     EL: 'Button to revoke a single always-allow grant.'
+     EN: 'Button to revoke a single always-allow grant.'
+     ZH: '撤销单条永久授权的按钮。'
+  [ENG_COPY] settings.localToolsRevokeAll.description
+     EL: 'Button to revoke every always-allow grant.'
+     EN: 'Button to revoke every always-allow grant.'
+     ZH: '撤销所有永久授权的按钮。'
+  [ENG_COPY] settings.localToolsNoGrants.description
+     EL: 'Empty state for the always-allowed actions list.'
+     EN: 'Empty state for the always-allowed actions list.'
+     ZH: '永久允许操作列表的空状态。'
+  [ENG_COPY] settings.localToolsPermsTitle.description
+     EL: 'Heading for the macOS system-permission section.'
+     EN: 'Heading for the macOS system-permission section.'
+     ZH: 'macOS 系统权限区块的标题。'
+  [ENG_COPY] settings.localToolsPermsHint.description
+     EL: 'Help text under the system-permissions heading.'
+     EN: 'Help text under the system-permissions heading.'
+     ZH: '系统权限标题下的说明。'
+  [ENG_COPY] settings.localToolsPermFullDisk.description
+     EL: 'macOS Full Disk Access permission row.'
+     EN: 'macOS Full Disk Access permission row.'
+     ZH: 'macOS 完全磁盘访问权限行。'
+  [ENG_COPY] settings.localToolsPermScreen.description
+     EL: 'macOS Screen Recording permission row.'
+     EN: 'macOS Screen Recording permission row.'
+     ZH: 'macOS 屏幕录制权限行。'
+  [ENG_COPY] settings.localToolsPermAccessibility.description
+     EL: 'macOS Accessibility permission row.'
+     EN: 'macOS Accessibility permission row.'
+     ZH: 'macOS 辅助功能权限行。'
+  [ENG_COPY] settings.localToolsGranted.description
+     EL: 'Status tag when a system permission is granted.'
+     EN: 'Status tag when a system permission is granted.'
+     ZH: '系统权限已授权时的状态标签。'
+  [ENG_COPY] settings.localToolsNotGranted.description
+     EL: 'Status tag when a system permission is not granted.'
+     EN: 'Status tag when a system permission is not granted.'
+     ZH: '系统权限未授权时的状态标签。'
+  [ENG_COPY] settings.localToolsOpen.description
+     EL: 'Button to open the relevant macOS System Settings pane.'
+     EN: 'Button to open the relevant macOS System Settings pane.'
+     ZH: '打开对应 macOS 系统设置面板的按钮。'
+  [ENG_COPY] settings.contactSupport.description
+     EL: "Section title on the About page listing the site owner's customer-service channels"
+     EN: "Section title on the About page listing the site owner's customer-service channels"
+     ZH: '关于页面中展示站长客服渠道的栏目标题'
+  [ENG_COPY] settings.contactSupportTip.description
+     EL: 'Subtitle under the support contacts section on the About page'
+     EN: 'Subtitle under the support contacts section on the About page'
+     ZH: '关于页面客服栏目下方的副标题'
+  [ENG_COPY] settings.contactInvalidUrl.description
+     EL: 'Validation error shown when a contact URL is not a valid http(s) link'
+     EN: 'Validation error shown when a contact URL is not a valid http(s) link'
+     ZH: '联系方式链接无效时的校验错误提示'
+  [ENG_COPY] settings.contactInvalidPhone.description
+     EL: 'Validation error shown when the phone number is invalid'
+     EN: 'Validation error shown when the phone number is invalid'
+     ZH: '电话号码无效时的校验错误提示'
+  [ENG_COPY] settings.contactInvalidEmail.description
+     EL: 'Validation error shown when the email address is invalid'
+     EN: 'Validation error shown when the email address is invalid'
+     ZH: '邮箱地址无效时的校验错误提示'
+  [ENG_COPY] settings.contactType_email.message
+     EL: 'Email'
+     EN: 'Email'
+     ZH: '邮箱'
+  [ENG_COPY] settings.contactType_wechat.message
+     EL: 'WeChat'
+     EN: 'WeChat'
+     ZH: '微信'
+  [ENG_COPY] settings.contactLabelPlaceholder.message
+     EL: 'Label (optional), e.g. Sales'
+     EN: 'Label (optional), e.g. Sales'
+     ZH: '备注（可选），如：售前'
+  [ENG_COPY] settings.contactValuePlaceholder.message
+     EL: 'Account / display text'
+     EN: 'Account / display text'
+     ZH: '账号 / 展示文本'
+  [ENG_COPY] settings.contactQrTip.message
+     EL: 'Upload a QR code users can scan to add you.'
+     EN: 'Upload a QR code users can scan to add you.'
+     ZH: '上传一张二维码，用户扫码即可添加你。'
+  [ENG_COPY] settings.contactEditorHint.message
+     EL: 'Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.'
+     EN: 'Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.'
+     ZH: '为每个渠道选择类型，并至少填写 值 / 链接 / 二维码 之一；可添加多条。'
+  [ENG_COPY] settings.contactInvalidType.message
+     EL: "Type may only contain lowercase letters, digits, '-' and '_'"
+     EN: "Type may only contain lowercase letters, digits, '-' and '_'"
+     ZH: '类型只能包含小写字母、数字、- 和 _'
+  [ENG_COPY] settings.contactRowNeedsValue.message
+     EL: 'Each contact needs at least a value, link or QR code'
+     EN: 'Each contact needs at least a value, link or QR code'
+     ZH: '每条联系方式至少填写 值、链接 或 二维码 之一'
+  [ENG_COPY] settings.contactInvalidValue.message
+     EL: 'A contact field is invalid or too long'
+     EN: 'A contact field is invalid or too long'
+     ZH: '联系方式内容无效或过长'
+  [ENG_COPY] settings.contactTooMany.message
+     EL: 'You can add at most {max} contacts'
+     EN: 'You can add at most {max} contacts'
+     ZH: '最多可添加 {max} 条联系方式'
+  [ENG_COPY] title.apiCode.message
+     EL: 'API code for this request'
+     EN: 'API code for this request'
+     ZH: '本次请求对应的 API 代码'
+  [ENG_COPY] title.apiCode.description
+     EL: 'Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product'
+     EN: 'Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product'
+     ZH: '对话框标题：展示当前结果对应的 curl / Python / Node API 调用代码'
+  [ENG_COPY] message.viewCodeHint.message
+     EL: 'Show API code for this request'
+     EN: 'Show API code for this request'
+     ZH: '查看本次请求对应的 API 代码'
+  [ENG_COPY] message.viewCodeHint.description
+     EL: 'Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.'
+     EN: 'Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.'
+     ZH: '结果卡片操作按钮（U1/U2/下载/扩展…）旁边的 View Code 按钮的悬浮提示。点击按钮会弹出对话框，展示 curl / Python / Node 三种语言下与当前结果等价的 API 调用代码。'
+  [ENG_COPY] button.viewCode.message
+     EL: 'View code'
+     EN: 'View code'
+     ZH: '查看代码'
+  [ENG_COPY] button.viewCode.description
+     EL: "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+     EN: "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+     ZH: '按钮文本：打开对话框，展示当前结果对应的 curl / Python / Node API 调用代码（类似 OpenAI Playground 的 View code）'
+  [ENG_COPY] button.getApiKey.message
+     EL: 'Get an API key'
+     EN: 'Get an API key'
+     ZH: '获取 API Key'
+  [ENG_COPY] button.getApiKey.description
+     EL: 'Link text in the API code dialog footer that opens the platform console page where users can create an API key'
+     EN: 'Link text in the API code dialog footer that opens the platform console page where users can create an API key'
+     ZH: 'API 代码对话框底部的链接文本：点击后跳转到平台控制台用于创建 API Key 的页面'
+  [ENG_COPY] button.apiPlatform.message
+     EL: 'API Platform'
+     EN: 'API Platform'
+     ZH: 'API 平台'
+  [ENG_COPY] appUpgrade.title.message
+     EL: 'Update required'
+     EN: 'Update required'
+     ZH: '需要升级'
+  [ENG_COPY] appUpgrade.title.description
+     EL: 'Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports.'
+     EN: 'Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports.'
+     ZH: '原生 App 启动时的版本闸门弹窗标题。当客户端版本低于服务端要求时显示，告知用户需要升级 App。'
+  [ENG_COPY] appUpgrade.blockMessage.message
+     EL: 'This version is no longer supported. Please update from the app store to continue.'
+     EN: 'This version is no longer supported. Please update from the app store to continue.'
+     ZH: '当前版本过低，请前往应用商店更新到最新版本后再使用。'
+  [ENG_COPY] appUpgrade.blockMessage.description
+     EL: 'Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.'
+     EN: 'Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.'
+     ZH: '强制升级弹窗正文。当客户端版本低于 min_supported 时显示，无法关闭，唯一按钮跳转到应用商店。'
+  [ENG_COPY] appUpgrade.softMessage.message
+     EL: 'A newer version is available. Update from the app store for the best experience.'
+     EN: 'A newer version is available. Update from the app store for the best experience.'
+     ZH: '有新版本可用，建议前往应用商店更新以获得最佳体验。'
+  [ENG_COPY] appUpgrade.softMessage.description
+     EL: 'Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app.'
+     EN: 'Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app.'
+     ZH: '可选升级提示正文。当客户端版本低于 latest 但高于 min_supported 时显示，用户可以选择稍后再说继续使用。'
+  [ENG_COPY] appUpgrade.openStore.message
+     EL: 'Update now'
+     EN: 'Update now'
+     ZH: '前往更新'
+  [ENG_COPY] appUpgrade.openStore.description
+     EL: 'Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.'
+     EN: 'Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.'
+     ZH: '升级弹窗主按钮：在系统浏览器中打开 App Store / Play Store 链接。'
+  [ENG_COPY] appUpgrade.later.message
+     EL: 'Later'
+     EN: 'Later'
+     ZH: '稍后再说'
+  [ENG_COPY] appUpgrade.later.description
+     EL: 'Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.'
+     EN: 'Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.'
+     ZH: '软提示升级弹窗的次按钮：忽略本次提示继续使用，仅在非强制升级场景出现。'
+  [ENG_COPY] nav.digitalhuman.message
+     EL: 'Digital Human'
+     EN: 'Digital Human'
+     ZH: '数字人'
+  [ENG_COPY] nav.digitalhuman.description
+     EL: 'Text in the website navigation bar for the Digital Human talking-head page'
+     EN: 'Text in the website navigation bar for the Digital Human talking-head page'
+     ZH: '导航栏中数字人口播页面的文字'
+  [ENG_COPY] settings.localToolsAndroidPermHint.message
+     EL: 'Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.'
+     EN: 'Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.'
+     ZH: '启用无障碍服务后，AI 助手才能查看并操作你的屏幕。你可以在下方逐项提前授权具体操作。'
+  [ENG_COPY] settings.localToolsAndroidPermHint.description
+     EL: 'Hint for the Android Computer Use accessibility permission section in Settings.'
+     EN: 'Hint for the Android Computer Use accessibility permission section in Settings.'
+     ZH: 'Android 设置里 Computer Use 无障碍权限区块的说明。'
+  [ENG_COPY] settings.cuConsentTitle.message
+     EL: 'Allow action?'
+     EN: 'Allow action?'
+     ZH: '允许操作？'
+  [ENG_COPY] settings.cuConsentTitle.description
+     EL: 'Title of the on-demand consent dialog shown when the assistant requests a screen action.'
+     EN: 'Title of the on-demand consent dialog shown when the assistant requests a screen action.'
+     ZH: '按需授权对话框的标题（模型请求执行某个屏幕操作时弹出）。'
+  [ENG_COPY] settings.cuConsentMessage.message
+     EL: 'The assistant wants to run "{action}" on your phone. Allow it?'
+     EN: 'The assistant wants to run "{action}" on your phone. Allow it?'
+     ZH: 'AI 助手想在你的手机上执行「{action}」操作，是否允许？'
+  [ENG_COPY] settings.cuConsentMessage.description
+     EL: 'Body of the on-demand consent dialog; {action} is the computer.* action name.'
+     EN: 'Body of the on-demand consent dialog; {action} is the computer.* action name.'
+     ZH: '按需授权对话框正文；{action} 为具体的 computer.* 操作名。'
+  [ENG_COPY] settings.cuConsentAllow.message
+     EL: 'Allow once'
+     EN: 'Allow once'
+     ZH: '允许一次'
+  [ENG_COPY] settings.cuConsentAllow.description
+     EL: 'Allow button of the on-demand consent dialog.'
+     EN: 'Allow button of the on-demand consent dialog.'
+     ZH: '按需授权对话框的允许按钮。'
+  [ENG_COPY] settings.cuConsentAlways.message
+     EL: 'Always allow'
+     EN: 'Always allow'
+     ZH: '总是允许'
+  [ENG_COPY] settings.cuConsentAlways.description
+     EL: 'Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.'
+     EN: 'Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.'
+     ZH: '按需授权对话框的总是允许按钮；持久化授权，此操作以后不再询问。'
+  [ENG_COPY] settings.cuConsentDeny.message
+     EL: 'Deny'
+     EN: 'Deny'
+     ZH: '拒绝'
+  [ENG_COPY] settings.cuConsentDeny.description
+     EL: 'Deny button of the on-demand consent dialog.'
+     EN: 'Deny button of the on-demand consent dialog.'
+     ZH: '按需授权对话框的拒绝按钮。'
+  [ENG_COPY] settings.memoryEnabled.message
+     EL: 'Use memory'
+     EN: 'Use memory'
+     ZH: '使用记忆'
+  [ENG_COPY] settings.memoryEnabled.description
+     EL: 'Title for the switch that controls whether chats use saved memory and learn new memory'
+     EN: 'Title for the switch that controls whether chats use saved memory and learn new memory'
+     ZH: '控制助手是否在聊天中使用已保存的记忆并继续学习新记忆的开关标题'
+  [ENG_COPY] settings.memoryEnabledHint.message
+     EL: 'When off, saved memories are not used and new chats do not create memories. Existing memories are kept.'
+     EN: 'When off, saved memories are not used and new chats do not create memories. Existing memories are kept.'
+     ZH: '关闭后，助手不会读取已保存的记忆，也不会从新对话中保存记忆。已有内容不会被删除。'
+  [ENG_COPY] settings.memoryEnabledHint.description
+     EL: 'Behavior explanation shown below the memory switch'
+     EN: 'Behavior explanation shown below the memory switch'
+     ZH: '记忆开关下方的行为说明'
+  [ENG_COPY] nav.omni.message
+     EL: 'Omni Video'
+     EN: 'Omni Video'
+     ZH: 'Omni 视频'
+  [ENG_COPY] nav.omni.description
+     EL: 'Nav label for the Omni video module'
+     EN: 'Nav label for the Omni video module'
+     ZH: 'Omni 视频模块的导航标签'
+  [ENG_COPY] settings.memoryImport.message
+     EL: 'Import'
+     EN: 'Import'
+     ZH: '导入'
+  [ENG_COPY] settings.memoryImport.description
+     EL: 'Button that opens the memory import dialog'
+     EN: 'Button that opens the memory import dialog'
+     ZH: '打开记忆导入弹窗的按钮'
+  [ENG_COPY] settings.memoryImportTitle.message
+     EL: 'Import memory from another AI'
+     EN: 'Import memory from another AI'
+     ZH: '从其他 AI 导入记忆'
+  [ENG_COPY] settings.memoryImportTitle.description
+     EL: 'Title of the memory import dialog'
+     EN: 'Title of the memory import dialog'
+     ZH: '记忆导入弹窗标题'
+  [ENG_COPY] settings.memoryImportExportStep.message
+     EL: '1. Ask your current AI to export its memory'
+     EN: '1. Ask your current AI to export its memory'
+     ZH: '1. 让当前使用的 AI 导出记忆'
+  [ENG_COPY] settings.memoryImportExportStep.description
+     EL: 'First step heading in the memory import dialog'
+     EN: 'First step heading in the memory import dialog'
+     ZH: '记忆导入弹窗第一步标题'
+  [ENG_COPY] settings.memoryImportPrompt.message
+     EL: "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information."
+     EN: "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information."
+     ZH: '我要迁移到另一个 AI 服务。请列出你保存的关于我的每一条记忆，以及从过往对话中学到的持久信息。把全部内容放在一个代码块中，每行只写一条记忆，格式为：[保存日期，如有] - 记忆内容。请包括回复偏好、个人信息、项目、目标、常用工具、语言、框架，以及我对你做过的纠正。尽量保留我的原话，不要包含密码、密钥等敏感信息。'
+  [ENG_COPY] settings.memoryImportPrompt.description
+     EL: 'Prompt users copy into another AI service to export memories'
+     EN: 'Prompt users copy into another AI service to export memories'
+     ZH: '复制到其他 AI 服务中用于导出记忆的提示词'
+  [ENG_COPY] settings.memoryImportCopy.message
+     EL: 'Copy prompt'
+     EN: 'Copy prompt'
+     ZH: '复制提示词'
+  [ENG_COPY] settings.memoryImportCopy.description
+     EL: 'Button that copies the memory export prompt'
+     EN: 'Button that copies the memory export prompt'
+     ZH: '复制记忆导出提示词的按钮'
+  [ENG_COPY] settings.memoryImportCopied.message
+     EL: 'Prompt copied'
+     EN: 'Prompt copied'
+     ZH: '提示词已复制'
+  [ENG_COPY] settings.memoryImportCopied.description
+     EL: 'Toast shown after copying the memory export prompt'
+     EN: 'Toast shown after copying the memory export prompt'
+     ZH: '成功复制记忆导出提示词后的提示'
+  [ENG_COPY] settings.memoryImportPasteStep.message
+     EL: '2. Paste the exported memory'
+     EN: '2. Paste the exported memory'
+     ZH: '2. 粘贴导出的记忆'
+  [ENG_COPY] settings.memoryImportPasteStep.description
+     EL: 'Second step heading in the memory import dialog'
+     EN: 'Second step heading in the memory import dialog'
+     ZH: '记忆导入弹窗第二步标题'
+  [ENG_COPY] settings.memoryImportPlaceholder.message
+     EL: 'Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…'
+     EN: 'Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…'
+     ZH: '粘贴 ChatGPT、Claude、Gemini 或其他 AI 返回的记忆内容…'
+  [ENG_COPY] settings.memoryImportPlaceholder.description
+     EL: 'Placeholder for pasted memory export text'
+     EN: 'Placeholder for pasted memory export text'
+     ZH: '粘贴导出记忆内容的输入框占位文字'
+  [ENG_COPY] settings.memoryImportSubmit.message
+     EL: 'Add to memory'
+     EN: 'Add to memory'
+     ZH: '添加到记忆'
+  [ENG_COPY] settings.memoryImportSubmit.description
+     EL: 'Button that submits pasted memories for import'
+     EN: 'Button that submits pasted memories for import'
+     ZH: '提交粘贴内容进行导入的按钮'
+  [ENG_COPY] settings.memoryImportPartial.message
+     EL: 'Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.'
+     EN: 'Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.'
+     ZH: '已处理 {processed} 条内容，另有 {rejected} 条不安全或无效内容已跳过。'
+  [ENG_COPY] settings.memoryImportPartial.description
+     EL: 'Warning shown after a partial memory import'
+     EN: 'Warning shown after a partial memory import'
+     ZH: '部分记忆导入成功时显示的警告'
+  [ENG_COPY] settings.memoryImportInvalid.message
+     EL: 'No memory could be imported. Make sure memory is on and paste one plain fact per line.'
+     EN: 'No memory could be imported. Make sure memory is on and paste one plain fact per line.'
+     ZH: '未能导入记忆。请确认记忆已开启，并按每行一条普通事实的格式粘贴。'
+  [ENG_COPY] settings.memoryImportInvalid.description
+     EL: 'Actionable error shown when the memory import request is invalid'
+     EN: 'Actionable error shown when the memory import request is invalid'
+     ZH: '记忆导入请求无效时显示的可操作错误提示'
+  [ENG_COPY] settings.memoryImportInProgress.message
+     EL: 'A memory import is already running. Keep this dialog open and try again shortly.'
+     EN: 'A memory import is already running. Keep this dialog open and try again shortly.'
+     ZH: '已有记忆导入任务正在运行，请保持弹窗打开并稍后重试。'
+  [ENG_COPY] settings.memoryImportInProgress.description
+     EL: 'Warning shown when another memory import job is active'
+     EN: 'Warning shown when another memory import job is active'
+     ZH: '已有另一个记忆导入任务运行时显示的警告'
+
+===== digitalhuman.json (38) =====
+  [ENG_COPY] name.bot.message
+     EL: 'Digital Human'
+     EN: 'Digital Human'
+     ZH: '数字人'
+  [ENG_COPY] name.taskId.message
+     EL: 'Task ID'
+     EN: 'Task ID'
+     ZH: '任务 ID'
+  [ENG_COPY] name.elapsed.message
+     EL: 'Elapsed Time'
+     EN: 'Elapsed Time'
+     ZH: '耗时'
+  [ENG_COPY] name.failure.message
+     EL: 'Failed'
+     EN: 'Failed'
+     ZH: '失败'
+  [ENG_COPY] name.failureReason.message
+     EL: 'Failure Reason'
+     EN: 'Failure Reason'
+     ZH: '失败原因'
+  [ENG_COPY] name.face.message
+     EL: 'Face Source'
+     EN: 'Face Source'
+     ZH: '面部来源'
+  [ENG_COPY] name.faceVideo.message
+     EL: 'Video'
+     EN: 'Video'
+     ZH: '视频'
+  [ENG_COPY] name.facePhoto.message
+     EL: 'Photo'
+     EN: 'Photo'
+     ZH: '照片'
+  [ENG_COPY] name.voice.message
+     EL: 'Voice'
+     EN: 'Voice'
+     ZH: '声音'
+  [ENG_COPY] name.voiceAudio.message
+     EL: 'Audio'
+     EN: 'Audio'
+     ZH: '音频'
+  [ENG_COPY] name.voiceText.message
+     EL: 'Text'
+     EN: 'Text'
+     ZH: '文本'
+  [ENG_COPY] name.audioDriven.message
+     EL: 'Audio-driven'
+     EN: 'Audio-driven'
+     ZH: '音频驱动'
+  [ENG_COPY] name.textDriven.message
+     EL: 'Text-driven'
+     EN: 'Text-driven'
+     ZH: '文本驱动'
+  [ENG_COPY] name.engine.message
+     EL: 'Engine'
+     EN: 'Engine'
+     ZH: '引擎'
+  [ENG_COPY] name.resolution.message
+     EL: 'Resolution'
+     EN: 'Resolution'
+     ZH: '分辨率'
+  [ENG_COPY] name.voiceReady.message
+     EL: 'Voice ready'
+     EN: 'Voice ready'
+     ZH: '音色已就绪'
+  [ENG_COPY] placeholder.text.message
+     EL: 'Type what the avatar should say…'
+     EN: 'Type what the avatar should say…'
+     ZH: '输入数字人要说的内容……'
+  [ENG_COPY] description.face.message
+     EL: 'Upload a clear, front-facing face video (preferred) or a single photo to drive the talking head.'
+     EN: 'Upload a clear, front-facing face video (preferred) or a single photo to drive the talking head.'
+     ZH: '上传清晰的正脸视频（推荐）或一张照片来驱动口播数字人。'
+  [ENG_COPY] description.voiceClone.message
+     EL: 'Upload a clean 10–20s voice sample to clone a voice, then reuse it to speak your text.'
+     EN: 'Upload a clean 10–20s voice sample to clone a voice, then reuse it to speak your text.'
+     ZH: '上传一段干净的 10–20 秒人声样本克隆音色，再用它朗读你的文本。'
+  [ENG_COPY] status.pending.message
+     EL: 'Pending'
+     EN: 'Pending'
+     ZH: '排队中'
+  [ENG_COPY] status.processing.message
+     EL: 'Processing'
+     EN: 'Processing'
+     ZH: '处理中'
+  [ENG_COPY] status.succeed.message
+     EL: 'Succeeded'
+     EN: 'Succeeded'
+     ZH: '已完成'
+  [ENG_COPY] status.failed.message
+     EL: 'Failed'
+     EN: 'Failed'
+     ZH: '失败'
+  [ENG_COPY] button.generate.message
+     EL: 'Generate Video'
+     EN: 'Generate Video'
+     ZH: '生成视频'
+  [ENG_COPY] button.download.message
+     EL: 'Download Video'
+     EN: 'Download Video'
+     ZH: '下载视频'
+  [ENG_COPY] button.uploadVideo.message
+     EL: 'Upload Face Video'
+     EN: 'Upload Face Video'
+     ZH: '上传面部视频'
+  [ENG_COPY] button.uploadPhoto.message
+     EL: 'Upload Face Photo'
+     EN: 'Upload Face Photo'
+     ZH: '上传面部照片'
+  [ENG_COPY] button.uploadAudio.message
+     EL: 'Upload Audio'
+     EN: 'Upload Audio'
+     ZH: '上传音频'
+  [ENG_COPY] button.uploadSample.message
+     EL: 'Upload Sample'
+     EN: 'Upload Sample'
+     ZH: '上传样本'
+  [ENG_COPY] button.clone.message
+     EL: 'Clone Voice'
+     EN: 'Clone Voice'
+     ZH: '克隆音色'
+  [ENG_COPY] button.cloning.message
+     EL: 'Cloning…'
+     EN: 'Cloning…'
+     ZH: '克隆中……'
+  [ENG_COPY] message.startingTask.message
+     EL: 'Submitting your video task…'
+     EN: 'Submitting your video task…'
+     ZH: '正在提交视频任务……'
+  [ENG_COPY] message.startTaskSuccess.message
+     EL: 'Task submitted! It will appear below as it renders.'
+     EN: 'Task submitted! It will appear below as it renders.'
+     ZH: '任务已提交！生成后会显示在下方。'
+  [ENG_COPY] message.startTaskFailed.message
+     EL: 'Failed to submit the task. Please try again.'
+     EN: 'Failed to submit the task. Please try again.'
+     ZH: '任务提交失败，请重试。'
+  [ENG_COPY] message.usedUp.message
+     EL: 'Your balance is not sufficient for this request.'
+     EN: 'Your balance is not sufficient for this request.'
+     ZH: '余额不足，无法完成本次请求。'
+  [ENG_COPY] message.uploadError.message
+     EL: 'Upload failed. Please try again.'
+     EN: 'Upload failed. Please try again.'
+     ZH: '上传失败，请重试。'
+  [ENG_COPY] message.voiceCloneSuccess.message
+     EL: 'Voice cloned! You can now generate with your text.'
+     EN: 'Voice cloned! You can now generate with your text.'
+     ZH: '音色克隆成功！现在可以用文本生成了。'
+  [ENG_COPY] message.voiceCloneFailed.message
+     EL: 'Voice clone failed. Please try a cleaner sample.'
+     EN: 'Voice clone failed. Please try a cleaner sample.'
+     ZH: '音色克隆失败，请换一段更干净的样本。'
+
+===== grokvideo.json (3) =====
+  [ENG_COPY] name.referenceImages.message
+     EL: 'Reference Images'
+     EN: 'Reference Images'
+     ZH: '参考图'
+  [ENG_COPY] description.referenceImages.message
+     EL: 'Optional reference images to guide the style or content of the generated video (grok-imagine-video only).'
+     EN: 'Optional reference images to guide the style or content of the generated video (grok-imagine-video only).'
+     ZH: '可选的参考图，用于引导生成视频的风格或内容（仅 grok-imagine-video 支持）。'
+  [ENG_COPY] message.uploadReferenceExceed.message
+     EL: 'You can upload up to 4 reference images.'
+     EN: 'You can upload up to 4 reference images.'
+     ZH: '最多可上传 4 张参考图。'
+
+===== kling.json (61) =====
+  [CHINESE] tab.videoGeneration.description
+     EL: 'Tab 标签：Video Generation'
+     EN: 'Tab label: Video Generation'
+     ZH: 'Tab 标签：Video Generation'
+  [CHINESE] tab.motionControl.description
+     EL: 'Tab 标签：Motion Control'
+     EN: 'Tab label: Motion Control'
+     ZH: 'Tab 标签：Motion Control'
+  [CHINESE] name.motionImage.description
+     EL: 'Motion Control 中的人物图输入'
+     EN: 'Character image input in Motion Control'
+     ZH: 'Motion Control 中的人物图输入'
+  [CHINESE] name.motionVideo.description
+     EL: 'Motion Control 中的参考视频输入'
+     EN: 'Reference video input in Motion Control'
+     ZH: 'Motion Control 中的参考视频输入'
+  [CHINESE] name.motionPrompt.description
+     EL: 'Motion Control 中的补充提示词'
+     EN: 'Additional prompt in Motion Control'
+     ZH: 'Motion Control 中的补充提示词'
+  [CHINESE] name.characterOrientation.description
+     EL: '人物朝向字段'
+     EN: 'Character orientation field'
+     ZH: '人物朝向字段'
+  [CHINESE] name.orientationImage.description
+     EL: '人物朝向选项：跟随图片'
+     EN: 'Character orientation option: Follow Image'
+     ZH: '人物朝向选项：跟随图片'
+  [CHINESE] name.orientationVideo.description
+     EL: '人物朝向选项：跟随视频'
+     EN: 'Character orientation option: Follow Video'
+     ZH: '人物朝向选项：跟随视频'
+  [CHINESE] name.keepOriginalSound.description
+     EL: 'keep_original_sound 开关'
+     EN: 'keep_original_sound toggle'
+     ZH: 'keep_original_sound 开关'
+  [CHINESE] description.motionImage.description
+     EL: 'motion image_url 说明'
+     EN: 'motion image_url description'
+     ZH: 'motion image_url 说明'
+  [CHINESE] description.motionVideo.description
+     EL: 'motion video_url 说明'
+     EN: 'motion video_url description'
+     ZH: 'motion video_url 说明'
+  [CHINESE] description.motionPrompt.description
+     EL: 'motion prompt 说明'
+     EN: 'motion prompt description'
+     ZH: 'motion prompt 说明'
+  [CHINESE] description.characterOrientation.description
+     EL: 'character_orientation 说明'
+     EN: 'character_orientation description'
+     ZH: 'character_orientation 说明'
+  [CHINESE] description.motionMode.description
+     EL: 'motion mode 说明'
+     EN: 'motion mode description'
+     ZH: 'motion mode 说明'
+  [ENG_COPY] description.motionModel.description
+     EL: 'motion model version description'
+     EN: 'motion model version description'
+     ZH: 'motion 模型版本说明'
+  [CHINESE] description.keepOriginalSound.description
+     EL: 'keep_original_sound 说明'
+     EN: 'keep_original_sound description'
+     ZH: 'keep_original_sound 说明'
+  [CHINESE] placeholder.motionPrompt.description
+     EL: 'motion prompt 占位符'
+     EN: 'motion prompt placeholder'
+     ZH: 'motion prompt 占位符'
+  [CHINESE] button.generateMotion.description
+     EL: 'Motion Control 生成按钮'
+     EN: 'Motion Control generate button'
+     ZH: 'Motion Control 生成按钮'
+  [CHINESE] message.motionMissingInputs.description
+     EL: 'Motion Control 缺少输入时的提示'
+     EN: 'Prompt when inputs are missing in Motion Control'
+     ZH: 'Motion Control 缺少输入时的提示'
+  [ENG_COPY] message.motionPricingNote.description
+     EL: 'Explains that Motion Control is billed per second'
+     EN: 'Explains that Motion Control is billed per second'
+     ZH: 'Motion Control 按秒计费的说明'
+  [CHINESE] inspiration.title.description
+     EL: 'Inspiration 抽屉的标题'
+     EN: 'Title of the Inspiration drawer'
+     ZH: 'Inspiration 抽屉的标题'
+  [CHINESE] inspiration.openButton.description
+     EL: '打开 Inspiration 抽屉的按钮'
+     EN: 'Button to open the Inspiration drawer'
+     ZH: '打开 Inspiration 抽屉的按钮'
+  [CHINESE] inspiration.removeChip.description
+     EL: '移除提示词区中已选预设的按钮 aria-label'
+     EN: 'Button aria-label to remove selected preset in the prompt area'
+     ZH: '移除提示词区中已选预设的按钮 aria-label'
+  [CHINESE] inspiration.hint.description
+     EL: 'Inspiration 抽屉顶部的使用说明'
+     EN: 'Usage instructions at the top of the Inspiration drawer'
+     ZH: 'Inspiration 抽屉顶部的使用说明'
+  [CHINESE] inspiration.empty.description
+     EL: 'Inspiration 抽屉空状态'
+     EN: 'Empty state of the Inspiration drawer'
+     ZH: 'Inspiration 抽屉空状态'
+  [CHINESE] inspiration.selectedSummary.description
+     EL: '已选择的预设数量'
+     EN: 'Number of selected presets'
+     ZH: '已选择的预设数量'
+  [CHINESE] inspiration.clearSelected.description
+     EL: '清除所有已选预设的按钮'
+     EN: 'Button to clear all selected presets'
+     ZH: '清除所有已选预设的按钮'
+  [CHINESE] inspiration.group.cameraMovements.description
+     EL: 'Inspiration 分组：镜头运动'
+     EN: 'Inspiration group: Camera Movements'
+     ZH: 'Inspiration 分组：镜头运动'
+  [CHINESE] inspiration.group.cameraSpeed.description
+     EL: 'Inspiration 分组：运动速度'
+     EN: 'Inspiration group: Movement Speed'
+     ZH: 'Inspiration 分组：运动速度'
+  [CHINESE] inspiration.group.shotType.description
+     EL: 'Inspiration 分组：景别 / 视角'
+     EN: 'Inspiration group: Shot Type / Perspective'
+     ZH: 'Inspiration 分组：景别 / 视角'
+  [CHINESE] inspiration.group.light.description
+     EL: 'Inspiration 分组：光影'
+     EN: 'Inspiration group: Lighting'
+     ZH: 'Inspiration 分组：光影'
+  [CHINESE] inspiration.group.frame.description
+     EL: 'Inspiration 分组：画面 / 构图'
+     EN: 'Inspiration group: Framing / Composition'
+     ZH: 'Inspiration 分组：画面 / 构图'
+  [CHINESE] inspiration.group.atmosphere.description
+     EL: 'Inspiration 分组：氛围 / 风格'
+     EN: 'Inspiration group: Atmosphere / Style'
+     ZH: 'Inspiration 分组：氛围 / 风格'
+  [ENG_COPY] name.motionModel.description
+     EL: 'The Kling model version used for motion control'
+     EN: 'The Kling model version used for motion control'
+     ZH: '动作控制使用的 Kling 模型版本'
+  [ENG_COPY] tab.talkingPhoto.description
+     EL: 'Tab label: Talking Photo'
+     EN: 'Tab label: Talking Photo'
+     ZH: 'Tab 标签：Talking Photo'
+  [ENG_COPY] name.talkingPhotoImage.description
+     EL: 'Talking Photo portrait image input'
+     EN: 'Talking Photo portrait image input'
+     ZH: 'Talking Photo 的人物照片输入'
+  [ENG_COPY] name.talkingPhotoAudio.description
+     EL: 'Talking Photo driving audio input'
+     EN: 'Talking Photo driving audio input'
+     ZH: 'Talking Photo 的驱动音频输入'
+  [ENG_COPY] name.talkingPhotoPrompt.description
+     EL: 'Talking Photo optional motion prompt'
+     EN: 'Talking Photo optional motion prompt'
+     ZH: 'Talking Photo 的可选动作提示词'
+  [ENG_COPY] description.talkingPhotoImage.description
+     EL: 'Talking Photo portrait image help text'
+     EN: 'Talking Photo portrait image help text'
+     ZH: 'Talking Photo 人物照片说明'
+  [ENG_COPY] description.talkingPhotoAudio.description
+     EL: 'Talking Photo driving audio help text'
+     EN: 'Talking Photo driving audio help text'
+     ZH: 'Talking Photo 驱动音频说明'
+  [ENG_COPY] description.talkingPhotoPrompt.description
+     EL: 'Talking Photo motion prompt help text'
+     EN: 'Talking Photo motion prompt help text'
+     ZH: 'Talking Photo 动作提示词说明'
+  [ENG_COPY] placeholder.talkingPhotoPrompt.description
+     EL: 'Talking Photo prompt input placeholder'
+     EN: 'Talking Photo prompt input placeholder'
+     ZH: 'Talking Photo 提示词输入占位符'
+  [ENG_COPY] button.generateTalkingPhoto.description
+     EL: 'Talking Photo generate button'
+     EN: 'Talking Photo generate button'
+     ZH: 'Talking Photo 生成按钮'
+  [ENG_COPY] button.uploadAudio.description
+     EL: 'Talking Photo upload audio button'
+     EN: 'Talking Photo upload audio button'
+     ZH: 'Talking Photo 上传音频按钮'
+  [ENG_COPY] message.talkingPhotoMissingInputs.description
+     EL: 'Talking Photo missing inputs warning'
+     EN: 'Talking Photo missing inputs warning'
+     ZH: 'Talking Photo 缺少输入时的提示'
+  [ENG_COPY] message.uploadAudioExceed.description
+     EL: 'Talking Photo audio count limit warning'
+     EN: 'Talking Photo audio count limit warning'
+     ZH: 'Talking Photo 音频超出数量限制提示'
+  [ENG_COPY] message.uploadAudioError.description
+     EL: 'Talking Photo audio upload error'
+     EN: 'Talking Photo audio upload error'
+     ZH: 'Talking Photo 音频上传失败提示'
+  [ENG_COPY] name.referenceVideo.message
+     EL: 'Reference Video'
+     EN: 'Reference Video'
+     ZH: '参考视频'
+  [ENG_COPY] name.referenceVideo.description
+     EL: 'Form field label: reference/editable video for Omni video editing'
+     EN: 'Form field label: reference/editable video for Omni video editing'
+     ZH: '表单字段标签：Omni 视频编辑的参考/待编辑视频'
+  [ENG_COPY] description.referenceVideo.message
+     EL: "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime')."
+     EN: "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime')."
+     ZH: '仅 kling-video-o1 支持。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频。提示词会自动以 <<<video_1>>> 引用它，请保留该标记来描述编辑效果（如「把 <<<video_1>>> 改成动漫风格」）。'
+  [ENG_COPY] description.referenceVideo.description
+     EL: 'Help text for the reference video uploader'
+     EN: 'Help text for the reference video uploader'
+     ZH: '参考视频上传的帮助文字'
+  [ENG_COPY] button.uploadReferenceVideo.message
+     EL: 'Upload Video'
+     EN: 'Upload Video'
+     ZH: '上传视频'
+  [ENG_COPY] button.uploadReferenceVideo.description
+     EL: 'Button to upload the reference video'
+     EN: 'Button to upload the reference video'
+     ZH: '上传参考视频的按钮'
+  [ENG_COPY] message.referenceVideoExceed.message
+     EL: 'You can upload a maximum of 1 reference video'
+     EN: 'You can upload a maximum of 1 reference video'
+     ZH: '最多只能上传 1 个参考视频'
+  [ENG_COPY] message.referenceVideoExceed.description
+     EL: 'Error when more than one reference video is uploaded'
+     EN: 'Error when more than one reference video is uploaded'
+     ZH: '上传超过 1 个参考视频时的错误提示'
+  [ENG_COPY] message.referenceVideoError.message
+     EL: 'Reference video upload failed, please try again later'
+     EN: 'Reference video upload failed, please try again later'
+     ZH: '参考视频上传失败，请稍后重试'
+  [ENG_COPY] message.referenceVideoError.description
+     EL: 'Error when the reference video upload fails'
+     EN: 'Error when the reference video upload fails'
+     ZH: '参考视频上传失败时的错误提示'
+  [ENG_COPY] message.referenceVideoTypeFailed.message
+     EL: 'Uploaded file must be in MP4 or MOV format!'
+     EN: 'Uploaded file must be in MP4 or MOV format!'
+     ZH: '上传的文件必须是 MP4 或 MOV 格式！'
+  [ENG_COPY] message.referenceVideoTypeFailed.description
+     EL: 'Error when the reference video is not MP4/MOV'
+     EN: 'Error when the reference video is not MP4/MOV'
+     ZH: '参考视频格式不是 MP4/MOV 时的错误提示'
+  [ENG_COPY] message.referenceVideoSizeExceed.message
+     EL: 'Uploaded file size cannot exceed 200MB!'
+     EN: 'Uploaded file size cannot exceed 200MB!'
+     ZH: '上传的文件大小不能超过 200MB！'
+  [ENG_COPY] message.referenceVideoSizeExceed.description
+     EL: 'Error when the reference video exceeds 200MB'
+     EN: 'Error when the reference video exceeds 200MB'
+     ZH: '参考视频超过 200MB 时的错误提示'
+
+===== maestro.json (17) =====
+  [ENG_COPY] option.action.remix.message
+     EL: 'Remix'
+     EN: 'Remix'
+     ZH: '二次创作'
+  [ENG_COPY] option.style.glass.message
+     EL: 'Frosted Glass'
+     EN: 'Frosted Glass'
+     ZH: '毛玻璃 · 液态玻璃'
+  [ENG_COPY] option.style.luxury.message
+     EL: 'Luxury'
+     EN: 'Luxury'
+     ZH: '奢华 · 留白'
+  [ENG_COPY] option.style.swiss.message
+     EL: 'Swiss Grid'
+     EN: 'Swiss Grid'
+     ZH: '瑞士网格 · 精密'
+  [ENG_COPY] option.style.modern.message
+     EL: 'Modern'
+     EN: 'Modern'
+     ZH: '简约现代 · SaaS'
+  [ENG_COPY] option.style.editorial.message
+     EL: 'Editorial'
+     EN: 'Editorial'
+     ZH: '杂志编辑'
+  [ENG_COPY] option.style.warm.message
+     EL: 'Warm'
+     EN: 'Warm'
+     ZH: '温暖亲密'
+  [ENG_COPY] option.style.vibrant.message
+     EL: 'Vibrant'
+     EN: 'Vibrant'
+     ZH: '缤纷活力'
+  [ENG_COPY] option.style.mono.message
+     EL: 'Monochrome'
+     EN: 'Monochrome'
+     ZH: '极简黑白'
+  [ENG_COPY] option.style.pastel.message
+     EL: 'Pastel'
+     EN: 'Pastel'
+     ZH: '柔粉彩'
+  [ENG_COPY] option.style.bold.message
+     EL: 'Bold Type'
+     EN: 'Bold Type'
+     ZH: '巨型字 · 高能'
+  [ENG_COPY] option.style.industrial.message
+     EL: 'Industrial'
+     EN: 'Industrial'
+     ZH: '工业故障'
+  [ENG_COPY] option.style.futuristic.message
+     EL: 'Futuristic'
+     EN: 'Futuristic'
+     ZH: '未来科技'
+  [ENG_COPY] option.style.retro.message
+     EL: 'Retro Film'
+     EN: 'Retro Film'
+     ZH: '复古胶片'
+  [ENG_COPY] name.primaryLanguage.message
+     EL: 'Primary language'
+     EN: 'Primary language'
+     ZH: '主语言'
+  [ENG_COPY] name.additionalLanguages.message
+     EL: 'Additional languages (optional)'
+     EN: 'Additional languages (optional)'
+     ZH: '其他语言（可选）'
+  [ENG_COPY] placeholder.additionalLanguages.message
+     EL: 'Add output languages'
+     EN: 'Add output languages'
+     ZH: '添加其他输出语言'
+
+===== midjourney.json (11) =====
+  [ENG_COPY] styleTag.16Bit.message
+     EL: '16-Bit'
+     EN: '16-Bit'
+     ZH: '16位'
+  [ENG_COPY] styleTag.8Bit.message
+     EL: '8-Bit'
+     EN: '8-Bit'
+     ZH: '8位'
+  [ENG_COPY] styleTag.risograph.message
+     EL: 'Risograph'
+     EN: 'Risograph'
+     ZH: '孔版印刷'
+  [ENG_COPY] styleTag.synthWave.message
+     EL: 'Synthwave'
+     EN: 'Synthwave'
+     ZH: '合成波'
+  [ENG_COPY] styleTag.tron.message
+     EL: 'Tron'
+     EN: 'Tron'
+     ZH: '特梦'
+  [CHINESE] styleTag.fenghuaZhong.message
+     EL: '冯华忠'
+     EN: 'Feng Hua Zhong'
+     ZH: '冯华忠'
+  [CHINESE] styleTag.hongSoonsang.message
+     EL: '洪顺相'
+     EN: 'Hong Soon Sang'
+     ZH: '洪顺相'
+  [ENG_COPY] styleTag.unrealEngine.message
+     EL: 'Unreal Engine'
+     EN: 'Unreal Engine'
+     ZH: '虚幻引擎'
+  [ENG_COPY] styleTag.octaneRender.message
+     EL: 'Octane Render'
+     EN: 'Octane Render'
+     ZH: 'Octane渲染'
+  [ENG_COPY] styleTag.quixelMegascansRender.message
+     EL: 'Quixel Megascans Render'
+     EN: 'Quixel Megascans Render'
+     ZH: 'Quixel Megascans渲染'
+  [ENG_COPY] styleTag.coronaRender.message
+     EL: 'Corona Render'
+     EN: 'Corona Render'
+     ZH: 'Corona渲染'
+
+===== omni.json (20) =====
+  [ENG_COPY] name.referenceImages.message
+     EL: 'Reference Images'
+     EN: 'Reference Images'
+     ZH: '参考图'
+  [ENG_COPY] message.uploadReferenceExceed.message
+     EL: 'You can upload up to 4 reference images.'
+     EN: 'You can upload up to 4 reference images.'
+     ZH: '最多可上传 4 张参考图。'
+  [ENG_COPY] name.referenceVideo.message
+     EL: 'Reference Video'
+     EN: 'Reference Video'
+     ZH: '参考视频'
+  [ENG_COPY] name.referenceVideo.description
+     EL: 'Reference/editable video for Omni video editing'
+     EN: 'Reference/editable video for Omni video editing'
+     ZH: 'Omni 视频编辑的参考/待编辑视频'
+  [ENG_COPY] description.referenceVideo.message
+     EL: 'Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.'
+     EN: 'Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.'
+     ZH: '可选的 MP4/MOV（≤200MB），用于编辑或参考已有视频。需至少一张参考图片。'
+  [ENG_COPY] description.referenceVideo.description
+     EL: 'Help text for the reference video uploader'
+     EN: 'Help text for the reference video uploader'
+     ZH: '参考视频上传的帮助文字'
+  [ENG_COPY] button.uploadVideo.message
+     EL: 'Upload Video'
+     EN: 'Upload Video'
+     ZH: '上传视频'
+  [ENG_COPY] button.uploadVideo.description
+     EL: 'Button to upload the reference video'
+     EN: 'Button to upload the reference video'
+     ZH: '上传参考视频的按钮'
+  [ENG_COPY] message.uploadVideoExceed.message
+     EL: 'You can upload a maximum of 1 reference video'
+     EN: 'You can upload a maximum of 1 reference video'
+     ZH: '最多只能上传 1 个参考视频'
+  [ENG_COPY] message.uploadVideoExceed.description
+     EL: 'Error when more than one reference video is uploaded'
+     EN: 'Error when more than one reference video is uploaded'
+     ZH: '超过 1 个参考视频时的错误提示'
+  [ENG_COPY] message.uploadVideoError.message
+     EL: 'Reference video upload failed, please try again later'
+     EN: 'Reference video upload failed, please try again later'
+     ZH: '参考视频上传失败，请稍后重试'
+  [ENG_COPY] message.uploadVideoError.description
+     EL: 'Error when the reference video upload fails'
+     EN: 'Error when the reference video upload fails'
+     ZH: '参考视频上传失败时的错误提示'
+  [ENG_COPY] message.uploadVideoTypeFailed.message
+     EL: 'Uploaded file must be in MP4 or MOV format!'
+     EN: 'Uploaded file must be in MP4 or MOV format!'
+     ZH: '上传的文件必须是 MP4 或 MOV 格式！'
+  [ENG_COPY] message.uploadVideoTypeFailed.description
+     EL: 'Error when the reference video is not MP4/MOV'
+     EN: 'Error when the reference video is not MP4/MOV'
+     ZH: '参考视频格式不是 MP4/MOV 时的错误提示'
+  [ENG_COPY] message.uploadVideoSizeExceed.message
+     EL: 'Uploaded file size cannot exceed 200MB!'
+     EN: 'Uploaded file size cannot exceed 200MB!'
+     ZH: '上传的文件大小不能超过 200MB！'
+  [ENG_COPY] message.uploadVideoSizeExceed.description
+     EL: 'Error when the reference video exceeds 200MB'
+     EN: 'Error when the reference video exceeds 200MB'
+     ZH: '参考视频超过 200MB 时的错误提示'
+  [ENG_COPY] message.promptRequired.message
+     EL: 'Please enter a prompt.'
+     EN: 'Please enter a prompt.'
+     ZH: '请输入提示词。'
+  [ENG_COPY] message.promptRequired.description
+     EL: 'Validation when prompt is empty'
+     EN: 'Validation when prompt is empty'
+     ZH: '提示词为空时的校验提示'
+  [ENG_COPY] message.videoRequiresImage.message
+     EL: 'Please add at least one reference image when using a reference video.'
+     EN: 'Please add at least one reference image when using a reference video.'
+     ZH: '使用参考视频时，请至少添加一张参考图片。'
+  [ENG_COPY] message.videoRequiresImage.description
+     EL: 'Validation when video_urls has no reference image'
+     EN: 'Validation when video_urls has no reference image'
+     ZH: '提供 video_urls 但缺少参考图片时的校验提示'
+
+===== order.json (25) =====
+  [ENG_COPY] message.wechatPayMobileGuide.message
+     EL: "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue."
+     EN: "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue."
+     ZH: '当前浏览器不支持直接调用微信支付。请复制下方链接，在微信中打开后继续完成支付。'
+  [ENG_COPY] message.wechatPayMobileGuide.description
+     EL: 'Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable.'
+     EN: 'Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable.'
+     ZH: '在非微信的移动端浏览器中显示的引导文案。'
+  [ENG_COPY] button.copyPayLink.message
+     EL: 'Copy payment link'
+     EN: 'Copy payment link'
+     ZH: '复制支付链接'
+  [ENG_COPY] button.copyPayLink.description
+     EL: 'Label for the button that copies the current page URL so the user can paste it inside WeChat.'
+     EN: 'Label for the button that copies the current page URL so the user can paste it inside WeChat.'
+     ZH: '复制当前页面 URL 到剪贴板的按钮文案，便于用户粘贴到微信。'
+  [ENG_COPY] message.wechatPayMobileHint.message
+     EL: 'After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.'
+     EN: 'After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.'
+     ZH: '复制成功后，打开微信，将链接粘贴到任意聊天框或顶部搜索框，点击链接即可完成支付。'
+  [ENG_COPY] message.wechatPayMobileHint.description
+     EL: 'Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat.'
+     EN: 'Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat.'
+     ZH: '复制链接按钮下方的二级引导提示。'
+  [ENG_COPY] message.applePayProcessing.description
+     EL: 'Message while the Apple in-app purchase is processing.'
+     EN: 'Message while the Apple in-app purchase is processing.'
+     ZH: 'Apple 内购处理中的消息。'
+  [ENG_COPY] message.applePayFailed.description
+     EL: 'Message when the Apple in-app purchase fails.'
+     EN: 'Message when the Apple in-app purchase fails.'
+     ZH: 'Apple 内购失败的消息。'
+  [ENG_COPY] message.applePayUnavailable.description
+     EL: 'Message when Apple in-app purchase is unavailable for the package.'
+     EN: 'Message when Apple in-app purchase is unavailable for the package.'
+     ZH: 'Apple 内购不可用的消息。'
+  [ENG_COPY] message.x402WalletStatusQr.message
+     EL: 'QR Code'
+     EN: 'QR Code'
+     ZH: '二维码'
+  [ENG_COPY] message.wechatPayLongPressTip.description
+     EL: 'Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat.'
+     EN: 'Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat.'
+     ZH: '手机微信内部浏览器打开订单页时，二维码上方的引导文案。用户长按二维码即可识别并完成支付，无需跳出微信。'
+  [ENG_COPY] title.totalOrders.message
+     EL: 'Total Orders'
+     EN: 'Total Orders'
+     ZH: '订单总数'
+  [ENG_COPY] title.totalOrders.description
+     EL: 'Summary card: total number of orders matching the current filters.'
+     EN: 'Summary card: total number of orders matching the current filters.'
+     ZH: '汇总卡片：当前筛选条件下的订单总数。'
+  [ENG_COPY] title.totalSpent.message
+     EL: 'Total Spent'
+     EN: 'Total Spent'
+     ZH: '总消费'
+  [ENG_COPY] title.totalSpent.description
+     EL: 'Summary card: total amount spent across matching orders.'
+     EN: 'Summary card: total amount spent across matching orders.'
+     ZH: '汇总卡片：当前筛选条件下订单总金额。'
+  [ENG_COPY] title.finishedOrders.message
+     EL: 'Finished Orders'
+     EN: 'Finished Orders'
+     ZH: '已完成订单'
+  [ENG_COPY] title.finishedOrders.description
+     EL: 'Summary card: number of finished orders.'
+     EN: 'Summary card: number of finished orders.'
+     ZH: '汇总卡片：已完成的订单数。'
+  [ENG_COPY] title.pendingOrders.message
+     EL: 'Pending Orders'
+     EN: 'Pending Orders'
+     ZH: '待支付订单'
+  [ENG_COPY] title.pendingOrders.description
+     EL: 'Summary card: number of pending orders.'
+     EN: 'Summary card: number of pending orders.'
+     ZH: '汇总卡片：待支付的订单数。'
+  [ENG_COPY] button.export.message
+     EL: 'Export CSV'
+     EN: 'Export CSV'
+     ZH: '导出 CSV'
+  [ENG_COPY] button.export.description
+     EL: 'Button label to export the filtered orders as CSV.'
+     EN: 'Button label to export the filtered orders as CSV.'
+     ZH: '按钮文案：按当前筛选条件导出订单 CSV。'
+  [ENG_COPY] field.allStates.message
+     EL: 'All States'
+     EN: 'All States'
+     ZH: '全部状态'
+  [ENG_COPY] field.allStates.description
+     EL: 'Placeholder of the state filter dropdown indicating no specific state is selected.'
+     EN: 'Placeholder of the state filter dropdown indicating no specific state is selected.'
+     ZH: '状态筛选下拉的占位符：表示不限定状态。'
+  [ENG_COPY] field.allPayWays.message
+     EL: 'All Payment Methods'
+     EN: 'All Payment Methods'
+     ZH: '全部支付方式'
+  [ENG_COPY] field.allPayWays.description
+     EL: 'Placeholder of the payment method filter dropdown indicating no specific method is selected.'
+     EN: 'Placeholder of the payment method filter dropdown indicating no specific method is selected.'
+     ZH: '支付方式筛选下拉的占位符：表示不限定支付方式。'
+
+===== pixverse.json (3) =====
+  [ENG_COPY] name.style1.message
+     EL: 'Cyberpunk'
+     EN: 'Cyberpunk'
+     ZH: '赛博朋克'
+  [ENG_COPY] name.style2.message
+     EL: 'Anime'
+     EN: 'Anime'
+     ZH: '动漫'
+  [ENG_COPY] name.style5.message
+     EL: '3D Animation'
+     EN: '3D Animation'
+     ZH: '三维动画'
+
+===== seedance.json (10) =====
+  [ENG_COPY] name.required.message
+     EL: 'Required'
+     EN: 'Required'
+     ZH: '必填'
+  [ENG_COPY] name.required.description
+     EL: 'Required indicator'
+     EN: 'Required indicator'
+     ZH: '必填标记'
+  [ENG_COPY] message.modelUnsupported.message
+     EL: 'Selected model is not supported. Please pick another.'
+     EN: 'Selected model is not supported. Please pick another.'
+     ZH: '所选模型不被支持，请重新选择。'
+  [ENG_COPY] message.modelUnsupported.description
+     EL: 'Warning when the model is not in the supported list'
+     EN: 'Warning when the model is not in the supported list'
+     ZH: '不在支持列表中的模型提示'
+  [ENG_COPY] message.modelRequiresImage.message
+     EL: 'This model requires a first-frame image to generate the video.'
+     EN: 'This model requires a first-frame image to generate the video.'
+     ZH: '该模型需要上传首帧图片才能生成视频。'
+  [ENG_COPY] message.modelRequiresImage.description
+     EL: 'Warning when an image-to-video model lacks an image'
+     EN: 'Warning when an image-to-video model lacks an image'
+     ZH: '图生视频模型需要图片输入提示'
+  [ENG_COPY] message.modelRejectsImage.message
+     EL: 'This model is text-to-video only. Please remove the uploaded image.'
+     EN: 'This model is text-to-video only. Please remove the uploaded image.'
+     ZH: '该模型仅支持文生视频，请移除已上传的图片。'
+  [ENG_COPY] message.modelRejectsImage.description
+     EL: 'Warning when a text-only model is given an image'
+     EN: 'Warning when a text-only model is given an image'
+     ZH: '文生视频模型不接受图片输入提示'
+  [ENG_COPY] message.resolutionNotSupported.message
+     EL: 'This resolution is not supported by the selected model.'
+     EN: 'This resolution is not supported by the selected model.'
+     ZH: '该分辨率不被当前模型支持。'
+  [ENG_COPY] message.resolutionNotSupported.description
+     EL: 'Tooltip when a resolution chip is disabled for the current model'
+     EN: 'Tooltip when a resolution chip is disabled for the current model'
+     ZH: '分辨率不被当前模型支持的提示'
+
+===== seedream.json (1) =====
+  [ENG_COPY] model.seedream50pro.description
+     EL: 'SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)'
+     EN: 'SeeDream 5.0 Pro model option (flagship single image; no image sets / streaming / web search)'
+     ZH: 'SeeDream 5.0 Pro 模型选项（旗舰单图，不支持组图/流式/联网）'
+
+===== site.json (133) =====
+  [CHINESE] field.title.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.origin.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.description.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.keywords.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.logo.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.favicon.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.qr.message
+     EL: 'QR Code'
+     EN: 'QR Code'
+     ZH: '二维码'
+  [CHINESE] field.qr.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.url.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.admins.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.contacts.description
+     EL: 'Field title for the customer-service contacts in site settings'
+     EN: 'Field title for the customer-service contacts in site settings'
+     ZH: '站点设置中『客服联系方式』的字段标题'
+  [ENG_COPY] field.disableRecharge.description
+     EL: 'Site settings: when on, hide all recharge/top-up entries on this site'
+     EN: 'Site settings: when on, hide all recharge/top-up entries on this site'
+     ZH: '站点设置：开启后隐藏本站所有充值/购买入口'
+  [ENG_COPY] message.disableRechargeTip.description
+     EL: 'Help text for the disable-recharge toggle'
+     EN: 'Help text for the disable-recharge toggle'
+     ZH: '禁用充值开关的说明文字'
+  [CHINESE] field.distributionDefaultInviterId.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.distributionForceInviterId.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.authProvider_email.message
+     EL: 'Email'
+     EN: 'Email'
+     ZH: '邮箱'
+  [ENG_COPY] field.authProvider_apple.description
+     EL: 'Login provider display name: Sign in with Apple.'
+     EN: 'Login provider display name: Sign in with Apple.'
+     ZH: "登录方式名称：Sign in with Apple；保留英文品牌名 'Apple' 不翻译"
+  [ENG_COPY] field.authProvider_wechat.message
+     EL: 'WeChat'
+     EN: 'WeChat'
+     ZH: '微信'
+  [ENG_COPY] field.authSmsWebhook.message
+     EL: 'Custom SMS Sender'
+     EN: 'Custom SMS Sender'
+     ZH: '自定义短信发件地址'
+  [ENG_COPY] message.authSmsWebhookTip.message
+     EL: "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled."
+     EN: "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled."
+     ZH: '开启后，本站发出的手机验证码短信将由你自己的接口用你自己的签名发送；关闭则使用平台默认签名。需先启用「手机号」登录方式。'
+  [ENG_COPY] placeholder.authSmsWebhookUrl.message
+     EL: 'https://your-domain/sms-webhook'
+     EN: 'https://your-domain/sms-webhook'
+     ZH: 'https://你的域名/sms-webhook'
+  [ENG_COPY] placeholder.authSmsWebhookUrl.description
+     EL: 'Placeholder for the SMS webhook URL input'
+     EN: 'Placeholder for the SMS webhook URL input'
+     ZH: '短信 webhook URL 输入框占位'
+  [ENG_COPY] placeholder.authSmsWebhookSecret.message
+     EL: 'Signing secret (leave blank to keep unchanged)'
+     EN: 'Signing secret (leave blank to keep unchanged)'
+     ZH: '签名密钥（留空则保持不变）'
+  [ENG_COPY] field.authSmsWebhookEnable.message
+     EL: 'Use a custom sender'
+     EN: 'Use a custom sender'
+     ZH: '启用自定义发件地址'
+  [ENG_COPY] field.authSmsWebhookDoc.message
+     EL: 'View docs'
+     EN: 'View docs'
+     ZH: '查看文档'
+  [ENG_COPY] field.authSmsWebhookTest.message
+     EL: 'Test'
+     EN: 'Test'
+     ZH: '测试'
+  [ENG_COPY] message.authSmsWebhookNeedsPhone.message
+     EL: 'Enable the phone-number login provider first to configure a custom SMS sender.'
+     EN: 'Enable the phone-number login provider first to configure a custom SMS sender.'
+     ZH: '需先启用「手机号」登录方式才能配置自定义短信发件地址。'
+  [ENG_COPY] field.authSmsWebhookDocTitle.message
+     EL: 'Custom SMS Sender · Webhook spec'
+     EN: 'Custom SMS Sender · Webhook spec'
+     ZH: '自定义短信发件地址 · 接口说明'
+  [ENG_COPY] message.authSmsWebhookDocIntro.message
+     EL: 'This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:'
+     EN: 'This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:'
+     ZH: '本站会向你填写的地址发起一次带签名的 HTTPS POST 请求，由你的服务负责下发短信。请确保你的接口满足以下要求：'
+  [ENG_COPY] field.authSmsWebhookDocRequest.message
+     EL: 'Request'
+     EN: 'Request'
+     ZH: '请求'
+  [ENG_COPY] message.authSmsWebhookDocRequest.message
+     EL: 'Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:'
+     EN: 'Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:'
+     ZH: '方法为 POST，Content-Type 为 application/json。purpose 可能为 login / register / test（test 为连通性测试，可不实际下发短信）。请求体结构如下：'
+  [ENG_COPY] field.authSmsWebhookDocHeaders.message
+     EL: 'Signature verification'
+     EN: 'Signature verification'
+     ZH: '签名校验'
+  [ENG_COPY] message.authSmsWebhookDocHeaders.message
+     EL: 'Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:'
+     EN: 'Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:'
+     ZH: '每次请求附带以下请求头，请用你的签名密钥按 Standard Webhooks 规范做 HMAC-SHA256 校验，并使用常量时间比较：'
+  [ENG_COPY] field.authSmsWebhookDocResponse.message
+     EL: 'Response'
+     EN: 'Response'
+     ZH: '响应'
+  [ENG_COPY] message.authSmsWebhookDocResponse.message
+     EL: 'Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.'
+     EN: 'Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.'
+     ZH: '下发成功请返回 2xx；如需显式表示失败，可返回 HTTP 200，且 body 中 success 字段为 false（见下方示例）。请在 5 秒内响应。'
+  [ENG_COPY] field.authSmsWebhookTestTitle.message
+     EL: 'Test custom SMS sender'
+     EN: 'Test custom SMS sender'
+     ZH: '测试自定义短信发件地址'
+  [ENG_COPY] field.authSmsWebhookTestRegion.message
+     EL: 'Country/region code'
+     EN: 'Country/region code'
+     ZH: '国家/地区区号'
+  [ENG_COPY] field.authSmsWebhookTestNumber.message
+     EL: 'Test phone number (optional)'
+     EN: 'Test phone number (optional)'
+     ZH: '测试手机号（选填）'
+  [ENG_COPY] field.authSmsWebhookTestSend.message
+     EL: 'Send test'
+     EN: 'Send test'
+     ZH: '发送测试'
+  [ENG_COPY] message.authSmsWebhookTestOk.message
+     EL: 'The test request was delivered to your endpoint successfully.'
+     EN: 'The test request was delivered to your endpoint successfully.'
+     ZH: '测试请求已成功送达你的接口。'
+  [ENG_COPY] message.authSmsWebhookTestFailed.message
+     EL: "Test failed. Check the URL, signing secret, and your endpoint's response."
+     EN: "Test failed. Check the URL, signing secret, and your endpoint's response."
+     ZH: '测试失败，请检查地址、签名密钥与接口返回。'
+  [ENG_COPY] field.authSmsWebhookDisableTitle.message
+     EL: 'Disable custom SMS sender'
+     EN: 'Disable custom SMS sender'
+     ZH: '关闭自定义短信发件地址'
+  [ENG_COPY] message.authSmsWebhookDisableConfirm.message
+     EL: 'Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?'
+     EN: 'Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?'
+     ZH: '关闭后将删除已保存的发件地址与签名密钥（密钥不可恢复），本站将改用平台默认签名。确定关闭吗？'
+  [CHINESE] field.featuresChat.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresVeo.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresSora.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresGrok.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.featuresDigitalhuman.message
+     EL: 'Digital Human'
+     EN: 'Digital Human'
+     ZH: '数字人'
+  [CHINESE] field.featuresDeepseek.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresChatgpt.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresMidjourney.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresChatdoc.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresQrart.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresLuma.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresPixverse.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresPika.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresKling.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresHailuo.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresSuno.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresFlux.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresNanobanana.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresOpenaiimage.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresSeedream.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresWan.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresProducer.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresKimi.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresSerp.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.featuresCodingBridge.description
+     EL: 'Displayed as the title in the editing box'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] field.featuresWebextrator.description
+     EL: 'Displayed as the title in the editing box'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresSupport.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] field.featuresI18n.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.basicConfig.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.seoConfig.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editAdmins.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] title.editContacts.description
+     EL: 'Title of the edit-support-contacts dialog'
+     EN: 'Title of the edit-support-contacts dialog'
+     ZH: '编辑客服联系方式弹窗的标题'
+  [CHINESE] title.featuresConfig.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editTitle.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editOrigin.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editKeywords.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editLogo.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editFavicon.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editDescription.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.distributionConfig.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [CHINESE] title.editDistributionDefaultInviterId.description
+     EL: '展示在编辑框的标题'
+     EN: 'Displayed as the title in the editing box'
+     ZH: '展示在编辑框的标题'
+  [ENG_COPY] message.contactsTip.description
+     EL: 'Tip for the support-contacts field'
+     EN: 'Tip for the support-contacts field'
+     ZH: '客服联系方式字段的提示'
+  [ENG_COPY] message.contactsEmpty.description
+     EL: 'Placeholder shown when no support contact has been filled in'
+     EN: 'Placeholder shown when no support contact has been filled in'
+     ZH: '未填写任何客服联系方式时的占位文案'
+  [ENG_COPY] autoTranslate.tooltipOn.description
+     EL: 'Tooltip on the auto-translate toggle when it is ON'
+     EN: 'Tooltip on the auto-translate toggle when it is ON'
+     ZH: '自动翻译切换按钮在开启状态下的 hover 提示'
+  [ENG_COPY] autoTranslate.tooltipOff.description
+     EL: 'Tooltip on the auto-translate toggle when it is OFF'
+     EN: 'Tooltip on the auto-translate toggle when it is OFF'
+     ZH: '自动翻译切换按钮在关闭状态下的 hover 提示'
+  [ENG_COPY] autoTranslate.tooltipDisabledNotSaved.description
+     EL: 'Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)'
+     EN: 'Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)'
+     ZH: '在创建对话框中（尚未保存）按钮被禁用的提示'
+  [ENG_COPY] autoTranslate.confirmEnable.description
+     EL: 'Body text of the confirm dialog shown before enabling auto-translation'
+     EN: 'Body text of the confirm dialog shown before enabling auto-translation'
+     ZH: '点击开启自动翻译时的二次确认弹窗正文'
+  [ENG_COPY] autoTranslate.confirmDisable.description
+     EL: 'Body text of the confirm dialog shown before disabling auto-translation'
+     EN: 'Body text of the confirm dialog shown before disabling auto-translation'
+     ZH: '点击关闭自动翻译时的二次确认弹窗正文'
+  [ENG_COPY] autoTranslate.empty.description
+     EL: 'Warning shown when the user tries to enable auto-translation on an empty field'
+     EN: 'Warning shown when the user tries to enable auto-translation on an empty field'
+     ZH: '字段为空时尝试开启自动翻译的警告提示'
+  [ENG_COPY] autoTranslate.error.description
+     EL: 'Fallback error toast when the enable/disable HTTP call fails with no detail'
+     EN: 'Fallback error toast when the enable/disable HTTP call fails with no detail'
+     ZH: '切换自动翻译接口返回错误时的兜底文案'
+  [ENG_COPY] capabilityOverride.edit.message
+     EL: 'Customize app'
+     EN: 'Customize app'
+     ZH: '自定义应用'
+  [ENG_COPY] capabilityOverride.edit.description
+     EL: 'Tooltip and accessible label for editing a capability app name and icon'
+     EN: 'Tooltip and accessible label for editing a capability app name and icon'
+     ZH: '编辑能力应用名称和图标的提示与无障碍标签'
+  [ENG_COPY] capabilityOverride.dialogTitle.message
+     EL: 'Customize {name}'
+     EN: 'Customize {name}'
+     ZH: '自定义 {name}'
+  [ENG_COPY] capabilityOverride.dialogTitle.description
+     EL: 'Dialog title; {name} is the platform-default capability app name'
+     EN: 'Dialog title; {name} is the platform-default capability app name'
+     ZH: '弹窗标题，{name} 为平台默认应用名称'
+  [ENG_COPY] capabilityOverride.displayName.message
+     EL: 'Custom name'
+     EN: 'Custom name'
+     ZH: '自定义名称'
+  [ENG_COPY] capabilityOverride.displayName.description
+     EL: 'Field label for a per-site capability app display name'
+     EN: 'Field label for a per-site capability app display name'
+     ZH: '子站能力应用显示名称字段'
+  [ENG_COPY] capabilityOverride.displayNameTip.message
+     EL: 'Leave blank to use {name}. Save once before enabling automatic translation.'
+     EN: 'Leave blank to use {name}. Save once before enabling automatic translation.'
+     ZH: '留空则使用 {name}。首次保存后可开启自动翻译。'
+  [ENG_COPY] capabilityOverride.displayNameTip.description
+     EL: 'Help text; {name} is the platform-default capability app name'
+     EN: 'Help text; {name} is the platform-default capability app name'
+     ZH: '名称说明，{name} 为平台默认应用名称'
+  [ENG_COPY] capabilityOverride.icon.message
+     EL: 'Custom icon'
+     EN: 'Custom icon'
+     ZH: '自定义图标'
+  [ENG_COPY] capabilityOverride.icon.description
+     EL: 'Field label for a per-site capability app icon'
+     EN: 'Field label for a per-site capability app icon'
+     ZH: '子站能力应用图标字段'
+  [ENG_COPY] capabilityOverride.defaultIcon.message
+     EL: 'Default'
+     EN: 'Default'
+     ZH: '默认'
+  [ENG_COPY] capabilityOverride.defaultIcon.description
+     EL: 'Label above the platform-default capability icon preview'
+     EN: 'Label above the platform-default capability icon preview'
+     ZH: '平台默认图标预览标签'
+  [ENG_COPY] capabilityOverride.currentIcon.message
+     EL: 'Current'
+     EN: 'Current'
+     ZH: '当前效果'
+  [ENG_COPY] capabilityOverride.currentIcon.description
+     EL: 'Label above the effective capability icon preview'
+     EN: 'Label above the effective capability icon preview'
+     ZH: '当前生效图标预览标签'
+  [ENG_COPY] capabilityOverride.replaceIcon.message
+     EL: 'Replace icon'
+     EN: 'Replace icon'
+     ZH: '替换图标'
+  [ENG_COPY] capabilityOverride.replaceIcon.description
+     EL: 'Command to upload a replacement capability icon'
+     EN: 'Command to upload a replacement capability icon'
+     ZH: '上传替换图标的命令'
+  [ENG_COPY] capabilityOverride.uploadIcon.message
+     EL: 'Upload icon'
+     EN: 'Upload icon'
+     ZH: '上传图标'
+  [ENG_COPY] capabilityOverride.uploadIcon.description
+     EL: 'Command to upload the first custom capability icon'
+     EN: 'Command to upload the first custom capability icon'
+     ZH: '首次上传自定义图标的命令'
+  [ENG_COPY] capabilityOverride.useDefaultIcon.message
+     EL: 'Use default icon'
+     EN: 'Use default icon'
+     ZH: '使用默认图标'
+  [ENG_COPY] capabilityOverride.useDefaultIcon.description
+     EL: 'Command to clear the custom icon draft'
+     EN: 'Command to clear the custom icon draft'
+     ZH: '清除自定义图标草稿的命令'
+  [ENG_COPY] capabilityOverride.iconTip.message
+     EL: 'PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.'
+     EN: 'PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.'
+     ZH: '支持 PNG、JPEG 或 WebP，将裁剪为正方形；透明 PNG 会保留透明背景。'
+  [ENG_COPY] capabilityOverride.iconTip.description
+     EL: 'Capability icon upload requirements'
+     EN: 'Capability icon upload requirements'
+     ZH: '能力应用图标上传要求'
+  [ENG_COPY] capabilityOverride.editIcon.message
+     EL: 'Edit app icon'
+     EN: 'Edit app icon'
+     ZH: '编辑应用图标'
+  [ENG_COPY] capabilityOverride.editIcon.description
+     EL: 'Title of the capability icon cropper dialog'
+     EN: 'Title of the capability icon cropper dialog'
+     ZH: '图标裁剪弹窗标题'
+  [ENG_COPY] capabilityOverride.resetAll.message
+     EL: 'Restore defaults'
+     EN: 'Restore defaults'
+     ZH: '恢复默认'
+  [ENG_COPY] capabilityOverride.resetAll.description
+     EL: 'Command that removes both custom name and icon'
+     EN: 'Command that removes both custom name and icon'
+     ZH: '同时删除自定义名称和图标的命令'
+  [ENG_COPY] capabilityOverride.empty.message
+     EL: 'Enter a custom name or upload an icon first.'
+     EN: 'Enter a custom name or upload an icon first.'
+     ZH: '请先输入自定义名称或上传图标。'
+  [ENG_COPY] capabilityOverride.empty.description
+     EL: 'Warning when attempting to create an empty override'
+     EN: 'Warning when attempting to create an empty override'
+     ZH: '尝试创建空覆盖时的提示'
+  [ENG_COPY] capabilityOverride.saved.message
+     EL: 'App customization saved'
+     EN: 'App customization saved'
+     ZH: '应用自定义已保存'
+  [ENG_COPY] capabilityOverride.saved.description
+     EL: 'Success message after saving a capability override'
+     EN: 'Success message after saving a capability override'
+     ZH: '保存能力应用覆盖后的成功提示'
+  [ENG_COPY] capabilityOverride.savedEnableTranslation.message
+     EL: 'Saved. You can now enable automatic translation for the custom name.'
+     EN: 'Saved. You can now enable automatic translation for the custom name.'
+     ZH: '已保存，现在可以为自定义名称开启自动翻译。'
+  [ENG_COPY] capabilityOverride.savedEnableTranslation.description
+     EL: 'Success message after first save creates an override ID'
+     EN: 'Success message after first save creates an override ID'
+     ZH: '首次保存并获得覆盖记录 ID 后的提示'
+  [ENG_COPY] capabilityOverride.saveFailed.message
+     EL: 'Failed to save app customization'
+     EN: 'Failed to save app customization'
+     ZH: '保存应用自定义失败'
+  [ENG_COPY] capabilityOverride.saveFailed.description
+     EL: 'Fallback error for capability override writes'
+     EN: 'Fallback error for capability override writes'
+     ZH: '能力应用覆盖写入失败的兜底错误'
+  [ENG_COPY] capabilityOverride.resetConfirm.message
+     EL: 'Restore the default name and icon for {name}?'
+     EN: 'Restore the default name and icon for {name}?'
+     ZH: '恢复 {name} 的默认名称和图标？'
+  [ENG_COPY] capabilityOverride.resetConfirm.description
+     EL: 'Confirmation message; {name} is the platform-default capability app name'
+     EN: 'Confirmation message; {name} is the platform-default capability app name'
+     ZH: '恢复确认文案，{name} 为平台默认应用名称'
+  [ENG_COPY] capabilityOverride.resetDone.message
+     EL: 'Default name and icon restored'
+     EN: 'Default name and icon restored'
+     ZH: '已恢复默认名称和图标'
+  [ENG_COPY] capabilityOverride.resetDone.description
+     EL: 'Success message after deleting a capability override'
+     EN: 'Success message after deleting a capability override'
+     ZH: '删除能力应用覆盖后的成功提示'
+  [ENG_COPY] capabilityOverride.fetchFailed.message
+     EL: 'Failed to load app customizations'
+     EN: 'Failed to load app customizations'
+     ZH: '加载应用自定义失败'
+  [ENG_COPY] capabilityOverride.fetchFailed.description
+     EL: 'Error shown when capability override management rows cannot be loaded'
+     EN: 'Error shown when capability override management rows cannot be loaded'
+     ZH: '无法读取能力应用覆盖管理记录时的错误'
+
+===== subsite.json (5) =====
+  [ENG_COPY] button.delete.description
+     EL: 'Button to delete a subsite'
+     EN: 'Button to delete a subsite'
+     ZH: '删除分站按钮'
+  [ENG_COPY] message.deleteConfirm.description
+     EL: 'Confirmation prompt before deleting a subsite'
+     EN: 'Confirmation prompt before deleting a subsite'
+     ZH: '删除分站二次确认'
+  [ENG_COPY] message.deleted.description
+     EL: 'Success message after deleting a subsite'
+     EN: 'Success message after deleting a subsite'
+     ZH: '删除分站成功'
+  [ENG_COPY] message.deleteFailed.description
+     EL: 'Fallback error message when DELETE fails'
+     EN: 'Fallback error message when DELETE fails'
+     ZH: 'DELETE 接口失败兜底'
+  [ENG_COPY] button.domains.message
+     EL: 'Domains'
+     EN: 'Domains'
+     ZH: '域名'
+
+===== usage.json (11) =====
+  [ENG_COPY] field.credential.description
+     EL: 'The API key (credential) that generated this usage record.'
+     EN: 'The API key (credential) that generated this usage record.'
+     ZH: '生成该使用记录的 API 密钥（凭证）。'
+  [ENG_COPY] field.consumed.description
+     EL: 'Column header in the usage breakdown table for the total points a single API consumed within the selected time range.'
+     EN: 'Column header in the usage breakdown table for the total points a single API consumed within the selected time range.'
+     ZH: '使用明细表格中，单个 API 在所选时间范围内消耗的积分总量列标题。'
+  [ENG_COPY] field.share.description
+     EL: "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+     EN: "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+     ZH: '使用明细表格中，单个 API 消耗占总消耗百分比的列标题。'
+  [ENG_COPY] field.autoRefresh.description
+     EL: 'Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval.'
+     EN: 'Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval.'
+     ZH: '使用记录表格右上角的开关标签，开启后定时自动刷新最新记录。'
+  [ENG_COPY] value.processing.description
+     EL: 'Placeholder shown in the status code column while an async task has not yet returned a final status code.'
+     EN: 'Placeholder shown in the status code column while an async task has not yet returned a final status code.'
+     ZH: '异步任务尚未返回最终状态码时，状态码列显示的占位文案。'
+  [ENG_COPY] value.others.description
+     EL: 'Series name in the usage-trend chart that aggregates all APIs outside the top spenders.'
+     EN: 'Series name in the usage-trend chart that aggregates all APIs outside the top spenders.'
+     ZH: '使用趋势图中，除消耗最高的若干 API 外，其余 API 合并显示的系列名称。'
+  [ENG_COPY] title.usageAnalytics.description
+     EL: 'Title of the usage analytics card, which contains trend, share, and breakdown view tabs.'
+     EN: 'Title of the usage analytics card, which contains trend, share, and breakdown view tabs.'
+     ZH: '使用分析卡片的标题，卡片内含趋势、占比、明细三个视图切换。'
+  [ENG_COPY] view.trend.description
+     EL: 'View switch button in the usage analytics card: stacked bar chart of per-API consumption over time.'
+     EN: 'View switch button in the usage analytics card: stacked bar chart of per-API consumption over time.'
+     ZH: '使用分析卡片的视图切换按钮：按时间展示各 API 消耗的堆叠柱状图。'
+  [ENG_COPY] view.distribution.description
+     EL: "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+     EN: "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+     ZH: '使用分析卡片的视图切换按钮：展示各 API 消耗占比的环形图。'
+  [ENG_COPY] view.breakdown.description
+     EL: "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+     EN: "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+     ZH: '使用分析卡片的视图切换按钮：以表格列出全部 API 的精确消耗与占比。'
+  [ENG_COPY] message.exportFailed.description
+     EL: 'Error toast shown when the CSV export request fails (network or server error).'
+     EN: 'Error toast shown when the CSV export request fails (network or server error).'
+     ZH: 'CSV 导出请求失败（网络或服务端错误）时的错误提示'
+
+===== veo.json (8) =====
+  [ENG_COPY] message.uploadReferencesLimit.message
+     EL: 'You can upload a maximum of {limit} images'
+     EN: 'You can upload a maximum of {limit} images'
+     ZH: '最多可上传 {limit} 张图片'
+  [ENG_COPY] message.uploadReferencesLimit.description
+     EL: 'Dynamic image limit for the selected generation mode'
+     EN: 'Dynamic image limit for the selected generation mode'
+     ZH: '根据当前生成方式显示动态图片数量限制'
+  [ENG_COPY] button.actionTabText.message
+     EL: 'Text'
+     EN: 'Text'
+     ZH: '文生'
+  [ENG_COPY] button.actionTabText.description
+     EL: 'Compact Veo action tab for text-to-video'
+     EN: 'Compact Veo action tab for text-to-video'
+     ZH: 'Veo 操作标签：文生视频'
+  [ENG_COPY] button.actionTabImage.message
+     EL: 'Image'
+     EN: 'Image'
+     ZH: '图生'
+  [ENG_COPY] button.actionTabImage.description
+     EL: 'Compact Veo action tab for image-to-video'
+     EN: 'Compact Veo action tab for image-to-video'
+     ZH: 'Veo 操作标签：图生视频'
+  [ENG_COPY] button.actionTabIngredients.message
+     EL: 'Ingredients'
+     EN: 'Ingredients'
+     ZH: '融合'
+  [ENG_COPY] button.actionTabIngredients.description
+     EL: 'Compact Veo action tab for multi-image fusion'
+     EN: 'Compact Veo action tab for multi-image fusion'
+     ZH: 'Veo 操作标签：多图融合视频'
+
+===== webextrator.json (45) =====
+  [ENG_COPY] name.mode.message
+     EL: 'Mode'
+     EN: 'Mode'
+     ZH: '模式'
+  [ENG_COPY] name.url.message
+     EL: 'URL'
+     EN: 'URL'
+     ZH: '网址'
+  [ENG_COPY] name.expectedType.message
+     EL: 'Expected Type'
+     EN: 'Expected Type'
+     ZH: '内容类型'
+  [ENG_COPY] name.enableLlm.message
+     EL: 'LLM Cleanup'
+     EN: 'LLM Cleanup'
+     ZH: 'LLM 智能清洗'
+  [ENG_COPY] name.advanced.message
+     EL: 'Advanced'
+     EN: 'Advanced'
+     ZH: '高级选项'
+  [ENG_COPY] name.waitUntil.message
+     EL: 'Wait Until'
+     EN: 'Wait Until'
+     ZH: '等待条件'
+  [ENG_COPY] name.waitForSelector.message
+     EL: 'Wait For Selector'
+     EN: 'Wait For Selector'
+     ZH: '等待选择器'
+  [ENG_COPY] name.timeout.message
+     EL: 'Timeout (s)'
+     EN: 'Timeout (s)'
+     ZH: '超时(秒)'
+  [ENG_COPY] name.delay.message
+     EL: 'Delay (s)'
+     EN: 'Delay (s)'
+     ZH: '加载后延迟(秒)'
+  [ENG_COPY] name.blockResources.message
+     EL: 'Block Resources'
+     EN: 'Block Resources'
+     ZH: '屏蔽资源'
+  [ENG_COPY] name.consumption.message
+     EL: 'Cost'
+     EN: 'Cost'
+     ZH: '单次消耗'
+  [ENG_COPY] mode.extract.message
+     EL: 'Extract'
+     EN: 'Extract'
+     ZH: '抽取内容'
+  [ENG_COPY] mode.render.message
+     EL: 'Render'
+     EN: 'Render'
+     ZH: '渲染页面'
+  [ENG_COPY] expectedType.general.message
+     EL: 'General'
+     EN: 'General'
+     ZH: '通用'
+  [ENG_COPY] expectedType.article.message
+     EL: 'Article'
+     EN: 'Article'
+     ZH: '文章'
+  [ENG_COPY] expectedType.product.message
+     EL: 'Product'
+     EN: 'Product'
+     ZH: '商品'
+  [ENG_COPY] waitUntil.networkidle.message
+     EL: 'Network Idle'
+     EN: 'Network Idle'
+     ZH: '网络空闲'
+  [ENG_COPY] waitUntil.load.message
+     EL: 'Load'
+     EN: 'Load'
+     ZH: '页面加载完成'
+  [ENG_COPY] waitUntil.domcontentloaded.message
+     EL: 'DOM Ready'
+     EN: 'DOM Ready'
+     ZH: 'DOM 就绪'
+  [ENG_COPY] waitUntil.commit.message
+     EL: 'Commit'
+     EN: 'Commit'
+     ZH: '导航开始'
+  [ENG_COPY] blockResource.image.message
+     EL: 'Images'
+     EN: 'Images'
+     ZH: '图片'
+  [ENG_COPY] blockResource.font.message
+     EL: 'Fonts'
+     EN: 'Fonts'
+     ZH: '字体'
+  [ENG_COPY] blockResource.media.message
+     EL: 'Media'
+     EN: 'Media'
+     ZH: '媒体'
+  [ENG_COPY] blockResource.stylesheet.message
+     EL: 'Stylesheets'
+     EN: 'Stylesheets'
+     ZH: '样式表'
+  [ENG_COPY] placeholder.waitForSelector.message
+     EL: 'CSS selector, e.g. .article-body'
+     EN: 'CSS selector, e.g. .article-body'
+     ZH: 'CSS 选择器，例如 .article-body'
+  [ENG_COPY] placeholder.blockResources.message
+     EL: 'Resource types to block'
+     EN: 'Resource types to block'
+     ZH: '选择要屏蔽的资源类型'
+  [ENG_COPY] button.extract.message
+     EL: 'Extract'
+     EN: 'Extract'
+     ZH: '抽取'
+  [ENG_COPY] button.render.message
+     EL: 'Render'
+     EN: 'Render'
+     ZH: '渲染'
+  [ENG_COPY] description.intro.message
+     EL: 'Render and extract any web page'
+     EN: 'Render and extract any web page'
+     ZH: '渲染并抽取任意网页'
+  [ENG_COPY] description.introHint.message
+     EL: 'Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.'
+     EN: 'Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.'
+     ZH: '输入网址，选择「抽取」或「渲染」即可获取干净的正文、Markdown、链接、截图等。'
+  [ENG_COPY] description.enableLlm.message
+     EL: 'Use an LLM to clean and structure the extracted content. Costs additional credits.'
+     EN: 'Use an LLM to clean and structure the extracted content. Costs additional credits.'
+     ZH: '使用 LLM 对抽取出的内容进行二次清洗与结构化整理，会额外消耗积分。'
+  [ENG_COPY] message.running.message
+     EL: 'Working on it…'
+     EN: 'Working on it…'
+     ZH: '正在处理…'
+  [ENG_COPY] message.extracting.message
+     EL: 'Extracting…'
+     EN: 'Extracting…'
+     ZH: '正在抽取…'
+  [ENG_COPY] message.rendering.message
+     EL: 'Rendering…'
+     EN: 'Rendering…'
+     ZH: '正在渲染…'
+  [ENG_COPY] message.success.message
+     EL: 'Done'
+     EN: 'Done'
+     ZH: '完成'
+  [ENG_COPY] message.failed.message
+     EL: 'Request failed'
+     EN: 'Request failed'
+     ZH: '请求失败'
+  [ENG_COPY] message.usedUp.message
+     EL: 'Your quota has been used up. Please top up to continue.'
+     EN: 'Your quota has been used up. Please top up to continue.'
+     ZH: '额度已用完，请充值后再试。'
+  [ENG_COPY] message.busy.message
+     EL: 'Service is busy. Please try again in a moment.'
+     EN: 'Service is busy. Please try again in a moment.'
+     ZH: '服务繁忙，请稍后再试。'
+  [ENG_COPY] message.timeout.message
+     EL: 'The page took too long to load. Try a different URL or increase the timeout.'
+     EN: 'The page took too long to load. Try a different URL or increase the timeout.'
+     ZH: '页面加载超时，请更换网址或调大超时时间。'
+  [ENG_COPY] message.untitled.message
+     EL: 'Untitled'
+     EN: 'Untitled'
+     ZH: '未命名页面'
+  [ENG_COPY] tab.text.message
+     EL: 'Text'
+     EN: 'Text'
+     ZH: '纯文本'
+  [ENG_COPY] tab.structured.message
+     EL: 'Structured'
+     EN: 'Structured'
+     ZH: '结构化'
+  [ENG_COPY] tab.links.message
+     EL: 'Links'
+     EN: 'Links'
+     ZH: '链接'
+  [ENG_COPY] tab.images.message
+     EL: 'Images'
+     EN: 'Images'
+     ZH: '图片'
+  [ENG_COPY] tab.raw.message
+     EL: 'Raw JSON'
+     EN: 'Raw JSON'
+     ZH: '原始 JSON'
+
+TOTAL files with issues: 19

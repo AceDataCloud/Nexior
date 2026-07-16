@@ -8,11 +8,11 @@
     "description": "Label for the URL input"
   },
   "name.expectedType": {
-    "message": "Expected Type",
+    "message": "期待する型",
     "description": "Label for expected content type"
   },
   "name.enableLlm": {
-    "message": "LLM Cleanup",
+    "message": "LLMクリーンアップ",
     "description": "Label for enable LLM toggle"
   },
   "name.advanced": {
@@ -20,23 +20,23 @@
     "description": "Label for advanced options collapse"
   },
   "name.waitUntil": {
-    "message": "Wait Until",
+    "message": "待機条件",
     "description": "Label for the wait_until field"
   },
   "name.waitForSelector": {
-    "message": "Wait For Selector",
+    "message": "セレクタを待機",
     "description": "Label for the wait_for_selector field"
   },
   "name.timeout": {
-    "message": "Timeout (s)",
+    "message": "タイムアウト（秒）",
     "description": "Label for the timeout field"
   },
   "name.delay": {
-    "message": "Delay (s)",
+    "message": "遅延（秒）",
     "description": "Label for the delay_after_load field"
   },
   "name.blockResources": {
-    "message": "Block Resources",
+    "message": "リソースをブロック",
     "description": "Label for the block_resources multi-select"
   },
   "name.consumption": {
@@ -64,7 +64,7 @@
     "description": "Product expected type option"
   },
   "waitUntil.networkidle": {
-    "message": "Network Idle",
+    "message": "ネットワークアイドル",
     "description": "Wait until network idle option"
   },
   "waitUntil.load": {
@@ -72,7 +72,7 @@
     "description": "Wait until load option"
   },
   "waitUntil.domcontentloaded": {
-    "message": "DOM Ready",
+    "message": "DOM読み込み完了",
     "description": "Wait until DOM content loaded option"
   },
   "waitUntil.commit": {
@@ -108,11 +108,11 @@
     "description": "Placeholder for the URL input"
   },
   "placeholder.waitForSelector": {
-    "message": "CSS selector, e.g. .article-body",
+    "message": "CSSセレクタ（例：.article-body）",
     "description": "Placeholder for the wait_for_selector input"
   },
   "placeholder.blockResources": {
-    "message": "Resource types to block",
+    "message": "ブロックするリソースタイプ",
     "description": "Placeholder for the block_resources multi-select"
   },
   "button.extract": {
@@ -124,27 +124,27 @@
     "description": "Run render button label"
   },
   "description.intro": {
-    "message": "Render and extract any web page",
+    "message": "ウェブページをレンダリングして抽出",
     "description": "Intro line shown in the empty result state"
   },
   "description.introHint": {
-    "message": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+    "message": "URLを入力し、「抽出」または「レンダリング」を選択してクリーンなコンテンツ、Markdown、リンクなどを取得します。",
     "description": "Hint shown below the intro line"
   },
   "description.enableLlm": {
-    "message": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
+    "message": "LLMを使用して抽出したコンテンツをクリーンアップして構造化します。追加のクレジットが必要です。",
     "description": "Tooltip explaining the LLM cleanup toggle"
   },
   "message.running": {
-    "message": "Working on it…",
+    "message": "処理中…",
     "description": "Status while a request is in flight"
   },
   "message.extracting": {
-    "message": "Extracting…",
+    "message": "抽出中…",
     "description": "Status shown when extract is running"
   },
   "message.rendering": {
-    "message": "Rendering…",
+    "message": "レンダリング中…",
     "description": "Status shown when render is running"
   },
   "message.success": {
@@ -152,19 +152,19 @@
     "description": "Toast shown on success"
   },
   "message.failed": {
-    "message": "Request failed",
+    "message": "リクエストが失敗しました",
     "description": "Generic error message"
   },
   "message.usedUp": {
-    "message": "Your quota has been used up. Please top up to continue.",
+    "message": "クォータを使い切りました。続けるにはチャージしてください。",
     "description": "Error shown when balance is exhausted"
   },
   "message.busy": {
-    "message": "Service is busy. Please try again in a moment.",
+    "message": "サービスが混雑しています。しばらくしてから再試行してください。",
     "description": "Error shown on rate limit"
   },
   "message.timeout": {
-    "message": "The page took too long to load. Try a different URL or increase the timeout.",
+    "message": "ページの読み込みに時間がかかりすぎました。別のURLを試すか、タイムアウトを増やしてください。",
     "description": "Error shown on timeout"
   },
   "message.antibotBlocked": {
@@ -200,7 +200,7 @@
     "description": "HTML tab label"
   },
   "tab.raw": {
-    "message": "Raw JSON",
+    "message": "生のJSON",
     "description": "Raw response tab label"
   }
 }
