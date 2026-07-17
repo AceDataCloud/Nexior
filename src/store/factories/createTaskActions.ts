@@ -77,7 +77,7 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     opts.buildFilter ??
     ((rootState: IRootState, args: IGetTasksArgs): TFilter =>
       ({
-        userId: rootState?.user?.id,
+        actorUserId: rootState?.user?.id,
         ...(opts.paginated ? { offset: args.offset, limit: args.limit } : {}),
         createdAtMin: args.createdAtMin,
         createdAtMax: args.createdAtMax,

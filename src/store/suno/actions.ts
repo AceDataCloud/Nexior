@@ -157,7 +157,7 @@ export const getTasks = async (
     sunoOperator
       .tasks(
         {
-          userId: rootState?.user?.id,
+          actorUserId: rootState?.user?.id,
           createdAtMin,
           createdAtMax,
           type: 'audios'

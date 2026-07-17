@@ -35,7 +35,7 @@ class MidjourneyOperator {
     filter: {
       ids?: string[];
       applicationId?: string;
-      userId?: string;
+      actorUserId?: string;
       type?: string;
       limit?: number;
       offset?: number;
@@ -58,9 +58,9 @@ class MidjourneyOperator {
               application_id: filter.applicationId
             }
           : {}),
-        ...(filter.userId
+        ...(filter.actorUserId
           ? {
-              user_id: filter.userId
+              actor_user_id: filter.actorUserId
             }
           : {}),
         ...(filter.type

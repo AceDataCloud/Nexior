@@ -152,7 +152,7 @@ export const getTasks = async (
     midjourneyOperator
       .tasks(
         {
-          userId: rootState?.user?.id,
+          actorUserId: rootState?.user?.id,
           createdAtMin,
           createdAtMax
         },

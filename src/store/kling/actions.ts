@@ -13,7 +13,7 @@ const baseActions = createTaskActions<IKlingConfig, IKlingTask, KlingTasksFilter
   serviceId: KLING_SERVICE_ID,
   operator: klingOperator,
   buildFilter: (rootState, args: IGetTasksArgs): KlingTasksFilter => ({
-    userId: rootState?.user?.id,
+    actorUserId: rootState?.user?.id,
     createdAtMin: args.createdAtMin,
     createdAtMax: args.createdAtMax,
     type: rootState?.kling?.taskType

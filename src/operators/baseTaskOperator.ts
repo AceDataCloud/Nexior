@@ -11,7 +11,7 @@ import { BASE_URL_API } from '@/constants';
 export interface ITaskListFilter {
   ids?: string[];
   applicationId?: string;
-  userId?: string;
+  actorUserId?: string;
   limit?: number;
   offset?: number;
   createdAtMax?: number;

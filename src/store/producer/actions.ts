@@ -155,7 +155,7 @@ export const getTasks = async (
     producerOperator
       .tasks(
         {
-          userId: rootState?.user?.id,
+          actorUserId: rootState?.user?.id,
           createdAtMin,
           createdAtMax,
           type: 'audios'

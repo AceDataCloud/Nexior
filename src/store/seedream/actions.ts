@@ -152,7 +152,7 @@ export const getTasks = async (
     seedreamOperator
       .tasks(
         {
-          userId: rootState?.user?.id,
+          actorUserId: rootState?.user?.id,
           offset,
           limit,
           createdAtMin,
