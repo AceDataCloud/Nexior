@@ -21,7 +21,7 @@ export const GROKVIDEO_RESOLUTION_720P = '720p';
 export const GROKVIDEO_RESOLUTION_1080P = '1080p';
 export const GROKVIDEO_DEFAULT_RESOLUTION = GROKVIDEO_RESOLUTION_480P;
 
-export const GROKVIDEO_DEFAULT_DURATION = 8;
+export const GROKVIDEO_DEFAULT_DURATION = 6;
 
 // grok-imagine-video (1.0) supports up to 30s; grok-imagine-video-1.5-preview up to 15s.
 export const GROKVIDEO_MAX_DURATION_DEFAULT = 30;
