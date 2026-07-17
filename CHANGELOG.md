@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 17:17:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 17 Jul 2026 09:04:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.15
+
+Fri, 17 Jul 2026 09:04:00 GMT
+
+### Patches
+
+- Use a stable 6-second default for Grok video generation. (dev@acedata.cloud)
 
 ## 3.329.14
 
