@@ -19,8 +19,6 @@ export const SEEDREAM_SIZE_ADAPTIVE = 'adaptive';
 
 export const SEEDREAM_DEFAULT_SIZE = SEEDREAM_SIZE_2K;
 
-export const SEEDREAM_DEFAULT_WATERMARK = false;
-
 // Common explicit width×height presets (aspect ratio + pixel dimensions).
 // The Volcengine LAS API accepts any `<width>x<height>` string in addition to
 // the 1K-4K tier presets and `adaptive`. These cover the most useful aspect

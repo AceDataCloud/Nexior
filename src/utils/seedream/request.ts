@@ -5,6 +5,7 @@ export const buildSeedreamRequest = (config?: ISeedreamConfig): ISeedreamGenerat
   const request = { ...(config || {}) };
   const action = getSeedreamAction(request.model, request.image);
   delete request.action;
+  request.watermark = false;
 
   if (action !== 'edit' || !request.image?.length) {
     delete request.image;

@@ -6,12 +6,13 @@ describe('buildSeedreamRequest', () => {
   it('automatically sends references in edit mode', () => {
     expect(
       buildSeedreamRequest({ action: 'generate', prompt: 'A lighthouse', image: ['https://cdn.example/ref.png'] })
-    ).toEqual({ prompt: 'A lighthouse', image: ['https://cdn.example/ref.png'], async: true });
+    ).toEqual({ prompt: 'A lighthouse', image: ['https://cdn.example/ref.png'], watermark: false, async: true });
   });
 
   it('automatically returns to generate mode after references are removed', () => {
     expect(buildSeedreamRequest({ action: 'edit', prompt: 'A lighthouse', image: [] })).toEqual({
       prompt: 'A lighthouse',
+      watermark: false,
       async: true
     });
   });
@@ -27,7 +28,11 @@ describe('buildSeedreamRequest', () => {
         sequential_image_generation: 'disabled',
         sequential_image_generation_options: { max_images: 4 }
       })
-    ).toEqual({ sequential_image_generation: 'disabled', async: true });
+    ).toEqual({ sequential_image_generation: 'disabled', watermark: false, async: true });
+  });
+
+  it('disables watermarks for persisted legacy configurations', () => {
+    expect(buildSeedreamRequest({ prompt: 'A lighthouse', watermark: true })).toMatchObject({ watermark: false });
   });
 
   it('derives the action from model capabilities and references', () => {

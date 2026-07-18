@@ -7,7 +7,6 @@
       <output-format-selector class="mb-4" />
       <seed-input class="mb-4" />
       <guidance-scale-input class="mb-4" />
-      <watermark-switch class="mb-4" />
       <prompt-input class="mb-4" />
       <image-input v-if="capabilities.image" class="mb-4" />
     </div>
@@ -35,7 +34,6 @@ import MaxImagesSelector from './config/MaxImagesSelector.vue';
 import OutputFormatSelector from './config/OutputFormatSelector.vue';
 import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
-import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
 import { getSeedreamAction, getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
@@ -53,8 +51,7 @@ export default defineComponent({
     MaxImagesSelector,
     OutputFormatSelector,
     SeedInput,
-    GuidanceScaleInput,
-    WatermarkSwitch
+    GuidanceScaleInput
   },
   emits: ['generate'],
   computed: {
