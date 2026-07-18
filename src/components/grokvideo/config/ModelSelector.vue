@@ -6,7 +6,12 @@
         <info-icon :content="$t('grokvideo.description.model')" class="info" />
       </div>
     </div>
-    <el-select v-model="value" class="value" :placeholder="$t('grokvideo.placeholder.select')">
+    <el-select
+      v-model="value"
+      class="value"
+      :title="selectedModelLabel"
+      :placeholder="$t('grokvideo.placeholder.select')"
+    >
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -34,6 +39,9 @@ export default defineComponent({
     };
   },
   computed: {
+    selectedModelLabel(): string {
+      return this.options.find((item) => item.value === this.value)?.label || '';
+    },
     value: {
       get() {
         return this.$store.state.grokvideo?.config?.model;
@@ -56,13 +64,13 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 8px;
   align-items: center;
-  justify-content: space-between;
 
   .label {
-    width: 30%;
+    min-width: 0;
     display: flex;
     align-items: center;
 
@@ -70,6 +78,7 @@ export default defineComponent({
       display: flex;
       flex-direction: row;
       align-items: center;
+      min-width: 0;
 
       .title {
         font-size: 14px;
@@ -83,7 +92,7 @@ export default defineComponent({
   }
 
   .value {
-    width: 200px;
+    width: 100%;
   }
 }
 </style>

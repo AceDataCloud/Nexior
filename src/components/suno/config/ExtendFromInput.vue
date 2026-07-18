@@ -145,19 +145,19 @@ export default defineComponent({
 <style lang="scss" scoped>
 .field {
   .box {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 160px;
+    gap: 8px;
     align-items: center;
-    justify-content: space-between;
     position: relative;
     margin-bottom: 10px;
     .title {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin: 0;
+      min-width: 0;
     }
     .input-wrapper {
-      width: 150px; // 根据需要调整宽度
-      margin-left: 30px; // 增加左边距
+      width: 160px;
     }
   }
 }

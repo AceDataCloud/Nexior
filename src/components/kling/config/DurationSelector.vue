@@ -121,12 +121,13 @@ export default defineComponent({
   flex-direction: column;
 }
 .control {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 8px;
   align-items: center;
-  justify-content: space-between;
 }
 .label {
+  min-width: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -136,6 +137,6 @@ export default defineComponent({
   margin: 0;
 }
 .value {
-  width: 120px;
+  width: 100%;
 }
 </style>

@@ -77,7 +77,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.field {
+.field:has(> .el-slider) {
   display: flex;
   flex-direction: row;
   align-items: center;

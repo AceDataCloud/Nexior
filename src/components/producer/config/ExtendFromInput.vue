@@ -143,19 +143,19 @@ export default defineComponent({
 <style lang="scss" scoped>
 .field {
   .box {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 160px;
+    gap: 8px;
     align-items: center;
-    justify-content: space-between;
     position: relative;
     margin-bottom: 10px;
     .title {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin: 0;
+      min-width: 0;
     }
     .input-wrapper {
-      width: 150px;
-      margin-left: 30px;
+      width: 160px;
     }
   }
 }

@@ -138,16 +138,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 8px;
   align-items: center;
-  justify-content: space-between;
 
   .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 50%;
+    min-width: 0;
 
     .title {
       font-size: 14px;
@@ -155,7 +155,7 @@ export default defineComponent({
     }
   }
   .value {
-    width: 120px;
+    width: 100%;
   }
 }
 .opt-disabled {

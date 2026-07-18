@@ -62,18 +62,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 8px;
   align-items: center;
-  justify-content: space-between;
 
   .title {
     font-size: 14px;
     margin: 0;
-    width: 30%;
+    min-width: 0;
   }
   .value {
-    width: 80px;
+    width: 100%;
   }
 }
 </style>
