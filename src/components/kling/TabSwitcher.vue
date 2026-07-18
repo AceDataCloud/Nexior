@@ -79,24 +79,33 @@ export default defineComponent({
   }
 
   :deep(.el-tabs__item) {
-    height: 38px;
-    line-height: 38px;
+    height: 48px;
+    line-height: 16px;
     font-size: 13px;
     padding: 0 6px;
+    white-space: normal;
   }
 
   .tab-label {
     display: inline-flex;
     align-items: center;
-    white-space: nowrap;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
 
     .text {
-      max-width: 100%;
+      display: -webkit-box;
+      flex: 1;
+      min-width: 0;
       overflow: hidden;
-      text-overflow: ellipsis;
+      text-align: center;
+      overflow-wrap: anywhere;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
 
     .badge {
+      flex: none;
       margin-left: 4px;
       font-size: 9px;
       height: 16px;
