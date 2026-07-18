@@ -1,8 +1,10 @@
 <template>
   <div class="field">
-    <h2 class="title font-bold">{{ $t('pika.name.ingredients') }}</h2>
+    <div class="label">
+      <h2 class="title font-bold">{{ $t('pika.name.ingredients') }}</h2>
+      <info-icon :content="$t('pika.description.ingredients')" class="info" />
+    </div>
     <el-switch v-model="value" class="value" />
-    <info-icon :content="$t('pika.description.ingredients')" class="info" />
   </div>
 </template>
 
@@ -22,8 +24,7 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.ingredients;
       },
-      set(val: string) {
-        console.debug('set ingredients', val);
+      set(val: boolean) {
         if (!val) {
           this.$store.commit('pika/setConfig', {
             ...this.$store.state.pika?.config,
@@ -31,6 +32,7 @@ export default defineComponent({
             ingredients_mode: undefined,
             image_url: undefined
           });
+          return;
         }
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika?.config,
@@ -50,18 +52,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
   align-items: center;
 
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
+  .label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    min-width: 0;
   }
-  .value {
-    flex: 1;
-    margin-left: 60px; // Adjust this value as needed
+
+  .title {
+    min-width: 0;
+    margin: 0;
+    font-size: 14px;
   }
 }
 </style>

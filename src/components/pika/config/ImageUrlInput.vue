@@ -1,7 +1,10 @@
 <template>
   <div class="field">
-    <h2 class="title font-bold">{{ $t('pika.name.imageUrl') }}</h2>
-    <div class="upload-wrapper">
+    <div class="label">
+      <h2 class="title font-bold">{{ $t('pika.name.imageUrl') }}</h2>
+      <info-icon :content="$t('pika.description.imageUrl')" class="info" />
+    </div>
+    <div class="upload-control">
       <el-upload
         ref="uploader"
         v-model:file-list="fileList"
@@ -23,7 +26,7 @@
             :url="file.url || (file.response as any)?.file_url"
             :name="file.name"
             :percentage="file.percentage"
-            @remove="fileList.splice(fileList.indexOf(file), 1)"
+            @remove="onRemovePreview(file)"
           />
         </template>
         <el-button size="small" type="primary" round>
@@ -32,13 +35,12 @@
         </el-button>
       </el-upload>
     </div>
-    <info-icon :content="$t('pika.description.imageUrl')" class="info" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
+import { ElButton, ElUpload, ElMessage, UploadFile, UploadFiles } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -73,26 +75,15 @@ export default defineComponent({
       };
     },
     urls(): string[] {
-      // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+      return this.fileList
+        .map((file: UploadFile) => (file.response as { file_url?: string } | undefined)?.file_url)
+        .filter((url): url is string => Boolean(url));
     },
-    value: {
-      get() {
-        return this.$store.state.pika?.config?.image_url;
-      },
-      set() {
-        const url = this.urls?.[0];
-        this.$store.commit('pika/setConfig', {
-          ...this.$store.state.pika?.config,
-          image_url: url
-        });
-      }
+    value(): string[] | undefined {
+      return this.$store.state.pika?.config?.image_url;
     }
   },
   mounted() {
-    if (!this.value) {
-      this.value = undefined;
-    }
     this.onSetStartImageUrl();
   },
   methods: {
@@ -102,8 +93,8 @@ export default defineComponent({
     onError() {
       ElMessage.error(this.$t('pika.message.uploadStartImageError'));
     },
-    async onRemove() {
-      ElMessage.error(this.$t('pika.message.uploadStartImageError'));
+    onRemove() {
+      this.onSetStartImageUrl();
     },
     onSetStartImageUrl() {
       this.$store.commit('pika/setConfig', {
@@ -111,7 +102,12 @@ export default defineComponent({
         image_url: this.urls
       });
     },
-    async onSuccess() {
+    onSuccess() {
+      this.onSetStartImageUrl();
+    },
+    onRemovePreview(file: UploadFiles[number]) {
+      const index = this.fileList.indexOf(file);
+      if (index >= 0) this.fileList.splice(index, 1);
       this.onSetStartImageUrl();
     }
   }
@@ -120,27 +116,39 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; // Distribute space evenly
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 8px;
+  align-items: start;
+
+  .label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .info {
+    flex: none;
+  }
+
   .title {
-    font-size: 14px;
+    min-width: 0;
     margin: 0;
-    width: 30%;
+    font-size: 14px;
   }
-  .value {
-    flex: 1;
-    margin-left: 60px; // Adjust this value as needed
+
+  .upload-control {
+    width: 160px;
+    min-width: 0;
   }
+
   .upload-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     gap: 8px;
-  }
-  .info {
-    margin-left: auto; // Pushes the info icon to the right
   }
 }
 </style>
