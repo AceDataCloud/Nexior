@@ -1,7 +1,7 @@
 <template>
   <div class="main flex flex-row flex-1">
     <div
-      class="config w-[320px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      class="config w-[360px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
     >
       <slot name="config" />
     </div>
@@ -46,12 +46,18 @@ export default defineComponent({
   display: none;
 }
 
+.result {
+  min-width: 0;
+  overflow: hidden;
+}
+
 @media (max-width: 767px) {
   .config {
     display: none;
   }
   .result {
     width: 100%;
+    padding: 12px;
   }
   .menu {
     display: block;

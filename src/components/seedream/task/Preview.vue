@@ -1,5 +1,5 @@
 <template>
-  <div class="preview">
+  <article class="preview">
     <div class="left">
       <capability-presentation capability="seedream" part="avatar" class="avatar" />
     </div>
@@ -13,7 +13,7 @@
       <div class="info">
         <div
           v-if="Array.isArray(modelValue?.request?.image) && modelValue?.request?.image.length > 0"
-          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+          class="media-strip mt-2"
         >
           <image-preview
             v-for="(url, idx) in modelValue?.request?.image"
@@ -43,7 +43,7 @@
         </el-alert>
       </div>
       <div v-else-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
+        <div class="media-strip result-media">
           <image-wrapper
             v-for="(image, imageIndex) in images"
             :key="imageIndex"
@@ -51,7 +51,7 @@
             :raw-src="image?.image_url!"
           />
         </div>
-        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
+        <div class="operations">
           <el-tooltip class="box-item" effect="dark" :content="$t('common.button.edit')" placement="top-start">
             <el-button type="info" size="small" class="btn-action" @click.stop="onEdit(images?.[0]?.image_url)">
               {{ $t('common.button.edit') }}
@@ -59,7 +59,7 @@
           </el-tooltip>
           <api-code-button path="/seedream/images" :body="modelValue?.request" />
         </div>
-        <el-alert :closable="false" class="mt-2 success">
+        <el-alert :closable="false" class="metadata success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedream.name.model') }}:
@@ -94,7 +94,7 @@
         </el-alert>
       </div>
       <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="metadata failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedream.name.failure') }}
@@ -139,7 +139,7 @@
         </el-alert>
       </div>
       <div v-else :class="{ content: true }">
-        <el-alert :closable="false" class="info">
+        <el-alert :closable="false" class="metadata info">
           <template #template>
             <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedream.name.status') }}
@@ -159,7 +159,7 @@
         </el-alert>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
@@ -238,20 +238,28 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$left-width: 70px;
+$left-width: 44px;
 .preview {
   width: 100%;
   height: fit-content;
   text-align: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: 8px;
+  background: var(--app-bg-surface);
+  box-shadow: var(--app-shadow-xs);
+
   .left {
+    flex: 0 0 $left-width;
     width: $left-width;
+
     .avatar {
-      width: 50px;
-      height: 50px;
-      margin: 10px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
     }
   }
@@ -260,32 +268,36 @@ $left-width: 70px;
     flex: 1;
     width: calc(100% - $left-width);
     min-width: 0;
-    padding: 10px 10px 0 10px;
 
     .bot {
-      font-size: 16px;
-      font-weight: bold;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: 0;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--el-color-primary);
-      margin-bottom: 0;
-      margin-top: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       .datetime {
+        flex: 0 0 auto;
         font-size: 12px;
         font-weight: normal;
         color: var(--el-text-color-secondary);
-        margin-left: 10px;
       }
     }
 
     .info {
       overflow: hidden;
+
       .prompt {
-        font-size: 16px;
-        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
         color: var(--el-text-color-regular);
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
@@ -295,9 +307,11 @@ $left-width: 70px;
     .content {
       word-break: break-word;
       overflow-wrap: anywhere;
+
       .el-alert {
         border-left-width: 2px;
         border-left-style: solid;
+
         &.failure {
           border-color: var(--el-color-danger);
         }
@@ -307,27 +321,88 @@ $left-width: 70px;
         &.info {
           border-color: var(--el-color-info);
         }
-        // Drop the trailing `mb-2` on whichever `<p>` ends up rendered
-        // last (trace_id / elapsed are conditional — e.g. pending tasks).
+
         :deep(p:last-child) {
           margin-bottom: 0;
         }
       }
     }
 
+    .media-strip {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+
+      :deep(.image-wrapper) {
+        flex: 0 0 auto;
+        margin-bottom: 0;
+      }
+    }
+
+    .result-media {
+      margin-bottom: 10px;
+    }
+
     .operations {
       display: flex;
-      justify-content: left;
-      flex-direction: row;
-      width: 100%;
-      align-items: baseline;
+      align-items: center;
       flex-wrap: wrap;
-      overflow: hidden;
-      text-align: center;
+      gap: 8px;
+      margin-bottom: 10px;
       color: var(--el-text-color-regular);
       font-size: 14px;
+
       .btn-action {
-        margin-bottom: 10px;
+        margin: 0;
+      }
+
+      :deep(.el-button + .el-button) {
+        margin-left: 0;
+      }
+    }
+
+    .metadata {
+      border-radius: 6px;
+
+      :deep(.el-alert__content) {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .preview {
+    gap: 10px;
+    padding: 12px;
+
+    .left {
+      flex-basis: 36px;
+      width: 36px;
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    .main {
+      width: calc(100% - 36px);
+
+      .bot {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+        white-space: normal;
+      }
+
+      .info .prompt {
+        font-size: 13px;
       }
     }
   }

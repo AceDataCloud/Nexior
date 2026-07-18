@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-5">
+  <div class="config-panel flex flex-col h-full">
+    <div class="config-scroll flex-1 overflow-y-auto p-5">
       <model-selector class="mb-4" />
       <size-selector class="mb-4" />
       <max-images-selector class="mb-4" />
@@ -11,7 +11,7 @@
       <prompt-input class="mb-4" />
       <image-input v-if="capabilities.image" class="mb-4" />
     </div>
-    <div class="flex flex-col items-center justify-center px-5 pb-5">
+    <div class="config-footer flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -98,3 +98,60 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.config-scroll {
+  scrollbar-gutter: stable;
+}
+
+.config-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--app-border-subtle);
+  background: var(--app-sidebar-bg);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.config-panel :deep(.field) {
+  display: grid;
+  grid-template-columns: 148px minmax(140px, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.config-panel :deep(.field .label),
+.config-panel :deep(.field .value) {
+  width: 100%;
+  min-width: 0;
+}
+
+.config-panel :deep(.field .label .box) {
+  min-width: 0;
+}
+
+.config-panel :deep(.field .label .title) {
+  line-height: 1.35;
+}
+
+.config-panel :deep(.field .value) {
+  justify-content: flex-end;
+}
+
+.config-panel :deep(.field .value > *) {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .config-panel :deep(.field) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .config-panel :deep(.field .value) {
+    justify-content: flex-start;
+  }
+
+  .config-panel :deep(.field .value > *) {
+    width: 100%;
+  }
+}
+</style>

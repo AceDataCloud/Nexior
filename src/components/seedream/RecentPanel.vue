@@ -54,3 +54,17 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.tasks {
+  padding-right: 4px;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 767px) {
+  .tasks {
+    padding-right: 0;
+  }
+}
+</style>
