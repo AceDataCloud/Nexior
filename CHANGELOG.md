@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 07:42:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 07:43:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.19
+
+Sat, 18 Jul 2026 07:43:21 GMT
+
+### Patches
+
+- Keep all Kling scenario tab labels readable in narrow parameter panels. (dev@acedata.cloud)
+- Make Seedream Generate and Edit modes explicit while preserving uploaded references. (dev@acedata.cloud)
+- Make shared audio previews keyboard-accessible and show load failures. (dev@acedata.cloud)
 
 ## 3.329.18
 
