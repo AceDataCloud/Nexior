@@ -31,11 +31,7 @@ import {
   SEEDREAM_MODEL_5_0_PRO,
   SEEDREAM_MODEL_SEEDEDIT_3_0_I2I
 } from '@/constants';
-import {
-  findSeedreamConflicts,
-  clearSeedreamConflicts,
-  getCompatibleSeedreamAction
-} from '@/utils/seedream/capabilities';
+import { findSeedreamConflicts, clearSeedreamConflicts } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamModelSelector',
@@ -89,7 +85,6 @@ export default defineComponent({
           }
         );
         const cleared = clearSeedreamConflicts({ ...config, model: val }, conflicts, { model: val });
-        cleared.action = getCompatibleSeedreamAction(cleared.action, val);
         this.$store.commit('seedream/setConfig', cleared);
         ElMessage.success(this.$t('seedream.message.featureRemovedNotice', { fields }));
       } catch {
@@ -100,8 +95,7 @@ export default defineComponent({
     applyModel(val: string) {
       this.$store.commit('seedream/setConfig', {
         ...this.$store.state.seedream?.config,
-        model: val,
-        action: getCompatibleSeedreamAction(this.$store.state.seedream?.config?.action, val)
+        model: val
       });
     }
   }

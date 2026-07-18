@@ -1,19 +1,6 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
-      <el-radio-group
-        class="action-selector mb-4"
-        :model-value="action"
-        :aria-label="$t('seedream.name.action')"
-        @update:model-value="onActionChange"
-      >
-        <el-radio-button value="generate" :disabled="capabilities.imageRequired">
-          {{ $t('seedream.name.generate') }}
-        </el-radio-button>
-        <el-radio-button value="edit" :disabled="!capabilities.image">
-          {{ $t('seedream.name.edits') }}
-        </el-radio-button>
-      </el-radio-group>
       <model-selector class="mb-4" />
       <size-selector class="mb-4" />
       <max-images-selector class="mb-4" />
@@ -22,7 +9,7 @@
       <guidance-scale-input class="mb-4" />
       <watermark-switch class="mb-4" />
       <prompt-input class="mb-4" />
-      <image-input v-if="action === 'edit'" class="mb-4" />
+      <image-input v-if="capabilities.image" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
@@ -37,7 +24,7 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElRadioButton, ElRadioGroup } from 'element-plus';
+import { ElButton } from 'element-plus';
 import PromptInput from './config/PromptInput.vue';
 import ImageInput from './config/ImageInput.vue';
 import Consumption from '../common/Consumption.vue';
@@ -50,7 +37,7 @@ import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
 import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
-import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
+import { getSeedreamAction, getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
 
 export default defineComponent({
@@ -58,8 +45,6 @@ export default defineComponent({
   components: {
     MagicIcon,
     ElButton,
-    ElRadioButton,
-    ElRadioGroup,
     PromptInput,
     Consumption,
     ImageInput,
@@ -74,7 +59,7 @@ export default defineComponent({
   emits: ['generate'],
   computed: {
     action(): 'generate' | 'edit' {
-      return this.config?.action === 'edit' ? 'edit' : 'generate';
+      return getSeedreamAction(this.config?.model, this.config?.image);
     },
     capabilities() {
       return getSeedreamCapabilities(this.config?.model);
@@ -107,29 +92,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onActionChange(action: string | number | boolean | undefined) {
-      if (action !== 'generate' && action !== 'edit') return;
-      this.$store.commit('seedream/setConfig', { ...this.config, action });
-    },
     onGenerate() {
       this.$emit('generate');
     }
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.action-selector {
-  display: flex;
-  width: 100%;
-}
-
-.action-selector :deep(.el-radio-button) {
-  flex: 1;
-}
-
-.action-selector :deep(.el-radio-button__inner) {
-  width: 100%;
-  min-height: 40px;
-}
-</style>
