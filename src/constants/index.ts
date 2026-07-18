@@ -32,3 +32,4 @@ export * from './surface';
 export * from './mobile';
 export * from './setting';
 export * from './codingBridge';
+export * from './scenarioRoutes';
