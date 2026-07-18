@@ -47,7 +47,7 @@ describe('scenario primitives', () => {
     const wrapper = mount(ScenarioSegmented, {
       props: {
         modelValue: 'generate',
-        ariaLabel: 'Action',
+        accessibleLabel: 'Action',
         options: [
           { label: 'Generate', value: 'generate' },
           { label: 'Edit', value: 'edit' }

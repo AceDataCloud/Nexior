@@ -2,7 +2,7 @@
   <el-radio-group
     class="scenario-segmented"
     :model-value="modelValue"
-    :aria-label="ariaLabel"
+    :aria-label="accessibleLabel"
     @update:model-value="onUpdate"
   >
     <el-radio-button
@@ -30,7 +30,7 @@ export interface ScenarioSegmentedOption {
 defineProps<{
   modelValue: ScenarioSegmentedValue;
   options: readonly ScenarioSegmentedOption[];
-  ariaLabel: string;
+  accessibleLabel: string;
 }>();
 
 const emit = defineEmits<{

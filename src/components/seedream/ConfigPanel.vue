@@ -1,6 +1,13 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
+      <scenario-segmented
+        class="mb-4"
+        :model-value="action"
+        :options="actionOptions"
+        :accessible-label="$t('seedream.name.action')"
+        @update:model-value="onActionChange"
+      />
       <model-selector class="mb-4" />
       <size-selector class="mb-4" />
       <max-images-selector class="mb-4" />
@@ -37,6 +44,8 @@ import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
 import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
+import { ScenarioSegmented, type ScenarioSegmentedOption, type ScenarioSegmentedValue } from '@/components/scenario';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamConfigPanel',
@@ -52,16 +61,34 @@ export default defineComponent({
     OutputFormatSelector,
     SeedInput,
     GuidanceScaleInput,
-    WatermarkSwitch
+    WatermarkSwitch,
+    ScenarioSegmented
   },
   emits: ['generate'],
   computed: {
+    action(): 'generate' | 'edit' {
+      return this.config?.action === 'edit' ? 'edit' : 'generate';
+    },
+    actionOptions(): ScenarioSegmentedOption[] {
+      const capabilities = getSeedreamCapabilities(this.config?.model);
+      return [
+        {
+          value: 'generate',
+          label: this.$t('seedream.name.generate'),
+          disabled: capabilities.imageRequired
+        },
+        {
+          value: 'edit',
+          label: this.$t('seedream.name.edits'),
+          disabled: !capabilities.image
+        }
+      ];
+    },
     config() {
       return this.$store.state.seedream?.config;
     },
     consumption() {
       const cfg: any = { ...(this.config || {}) };
-      const hasReferenceImages = Array.isArray(cfg?.image) && cfg.image.length > 0;
       // Per-image billing: cost/api/86ad30f3-…json multiplies the unit price by
       // `count`. When the user opts into group generation we forward the
       // selected `max_images`; otherwise default to 1 to match the upstream.
@@ -72,7 +99,7 @@ export default defineComponent({
       return getConsumption(
         {
           ...cfg,
-          action: hasReferenceImages ? 'edit' : 'generate',
+          action: this.action,
           model: getSeedreamShortModel(cfg?.model),
           count: requestedCount
         },
@@ -84,6 +111,10 @@ export default defineComponent({
     }
   },
   methods: {
+    onActionChange(action: ScenarioSegmentedValue) {
+      if (action !== 'generate' && action !== 'edit') return;
+      this.$store.commit('seedream/setConfig', { ...this.config, action });
+    },
     onGenerate() {
       this.$emit('generate');
     }

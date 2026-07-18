@@ -171,6 +171,7 @@ export default defineComponent({
       this.suppressWatch = true;
       this.$store.commit('seedream/setConfig', {
         ...this.$store.state.seedream?.config,
+        action: urls.length > 0 ? 'edit' : this.$store.state.seedream?.config?.action,
         image: urls
       });
       this.$nextTick(() => {

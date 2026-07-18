@@ -10,6 +10,7 @@ export default (): ISeedreamState => {
     tasks: undefined,
     credential: undefined,
     config: {
+      action: 'generate',
       model: SEEDREAM_DEFAULT_MODEL,
       size: SEEDREAM_DEFAULT_SIZE,
       watermark: SEEDREAM_DEFAULT_WATERMARK
