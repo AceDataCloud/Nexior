@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-5">
+    <div class="flex-1 min-h-0 overflow-hidden">
       <el-tabs v-model="type" class="demo-tabs" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <model-selector class="mb-2" />
             <prompt-input class="mb-4" />
             <reference-image class="mb-2" />
@@ -23,7 +23,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.videos')" name="videos">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
             <image-url-input class="mb-2" />
             <end-image-url-input class="mb-2" />
@@ -33,7 +33,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.describe')" name="describe">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <image-url-input2 class="mb-2" />
           </div>
         </el-tab-pane>
@@ -148,3 +148,23 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.demo-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  :deep(.el-tabs__header) {
+    flex: none;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  :deep(.el-tabs__content) {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+</style>

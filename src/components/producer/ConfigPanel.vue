@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-5">
+    <div class="flex-1 min-h-0 overflow-hidden">
       <el-tabs v-model="mode" class="producer-mode-tabs" stretch>
         <el-tab-pane :label="$t('producer.mode.simple')" name="simple">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <type-selector class="mb-4" />
             <upload-audio class="mb-4" />
             <prompt-input class="mb-4" />
@@ -14,7 +14,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('producer.mode.custom')" name="custom">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <type-selector class="mb-4" />
             <upload-audio class="mb-4" />
             <lyric-input v-if="!config?.instrumental" class="mb-4" />
@@ -138,6 +138,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .producer-mode-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  :deep(.el-tabs__header) {
+    flex: none;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  :deep(.el-tabs__content) {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
   :deep(.el-tabs__nav-wrap::after) {
     height: 1px;
   }
