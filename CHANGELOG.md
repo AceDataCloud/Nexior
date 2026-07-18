@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 17 Jul 2026 09:04:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 06:17:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.16
+
+Sat, 18 Jul 2026 06:17:45 GMT
+
+### Patches
+
+- Align task response names and avatars with Service capability presentation overrides. (dev@acedata.cloud)
 
 ## 3.329.15
 
