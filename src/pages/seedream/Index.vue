@@ -15,6 +15,7 @@ import Layout from '@/layouts/Seedream.vue';
 import ConfigPanel from '@/components/seedream/ConfigPanel.vue';
 import { seedreamOperator } from '@/operators';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -149,7 +150,7 @@ export default defineComponent({
       ) {
         return;
       }
-      if (this.config?.action === 'edit' && !this.config.image?.length) {
+      if (getSeedreamCapabilities(this.config?.model).imageRequired && !this.config?.image?.length) {
         ElMessage.warning(this.$t('seedream.message.referenceImageRequired'));
         return;
       }

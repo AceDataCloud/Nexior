@@ -179,6 +179,12 @@ export function getCompatibleSeedreamAction(
   return action === 'edit' ? 'edit' : 'generate';
 }
 
+export function getSeedreamAction(model?: string, image?: string[]): 'generate' | 'edit' {
+  const capabilities = getSeedreamCapabilities(model);
+  if (capabilities.imageRequired) return 'edit';
+  return capabilities.image && image?.length ? 'edit' : 'generate';
+}
+
 export type SeedreamConflictField =
   | 'image'
   | 'size'

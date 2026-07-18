@@ -1,8 +1,9 @@
 import type { ISeedreamConfig, ISeedreamGenerateRequest } from '@/models';
+import { getSeedreamAction } from './capabilities';
 
 export const buildSeedreamRequest = (config?: ISeedreamConfig): ISeedreamGenerateRequest => {
   const request = { ...(config || {}) };
-  const action = request.action === 'edit' ? 'edit' : 'generate';
+  const action = getSeedreamAction(request.model, request.image);
   delete request.action;
 
   if (action !== 'edit' || !request.image?.length) {
