@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 11:35:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 11:38:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.23
+
+Sat, 18 Jul 2026 11:38:03 GMT
+
+### Patches
+
+- Align Pika ingredient and image labels with their controls without magic offsets. (dev@acedata.cloud)
 
 ## 3.329.22
 
