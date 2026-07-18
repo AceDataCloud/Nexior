@@ -4,7 +4,7 @@
       <text-input class="mb-4" />
       <model-selector class="mb-4" />
       <voice-picker class="mb-4" />
-      <div class="field mb-2">
+      <div class="field mb-4">
         <h2 class="title font-bold">{{ $t('fish.name.speed') }}</h2>
         <el-slider v-model="speed" :min="0.5" :max="2" :step="0.1" class="value" show-input />
       </div>

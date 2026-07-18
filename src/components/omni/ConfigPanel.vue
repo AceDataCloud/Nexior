@@ -4,8 +4,8 @@
       <prompt-input class="mb-4" />
       <ratio-selector class="mb-4" />
       <resolution-selector class="mb-4" />
-      <reference-images-input class="mb-2" />
-      <video-input class="mb-2" />
+      <reference-images-input class="mb-4" />
+      <video-input class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />

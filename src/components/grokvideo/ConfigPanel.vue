@@ -6,8 +6,8 @@
       <ratio-selector class="mb-4" />
       <resolution-selector class="mb-4" />
       <duration-selector class="mb-4" />
-      <image-input class="mb-2" />
-      <reference-images-input v-if="supportsReferenceImages" class="mb-2" />
+      <image-input class="mb-4" />
+      <reference-images-input v-if="supportsReferenceImages" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
