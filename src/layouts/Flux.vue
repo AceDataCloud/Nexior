@@ -1,7 +1,7 @@
 <template>
   <div class="main flex flex-row flex-1">
     <div
-      class="config w-[320px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      class="config w-[320px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
     >
       <slot name="config" />
     </div>
@@ -11,7 +11,7 @@
     <el-button v-show="!tasksEmpty" circle class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-magic" />
     </el-button>
-    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="340px" class="drawer">
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="340px" class="drawer generator-drawer">
       <slot name="config" />
     </el-drawer>
   </div>
