@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 09:21:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 11:35:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.22
+
+Sat, 18 Jul 2026 11:35:22 GMT
+
+### Patches
+
+- Align top-level generator fields to a consistent 16px vertical rhythm. (dev@acedata.cloud)
 
 ## 3.329.21
 
