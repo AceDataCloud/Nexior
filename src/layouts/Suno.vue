@@ -1,7 +1,7 @@
 <template>
   <div class="main flex flex-row flex-1">
     <div
-      class="config w-[320px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      class="config generator-config-panel w-[360px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
     >
       <slot name="config" />
     </div>
@@ -49,9 +49,9 @@ export default defineComponent({
   display: none;
 }
 
-// On laptops (≤1180px) the 320 + flex + 300 layout crushes the song list —
+// On laptops (≤1220px) the 360 + flex + 300 layout crushes the song list —
 // drop the detail preview here so the list keeps a usable width.
-@media (max-width: 1180px) {
+@media (max-width: 1220px) {
   .main .preview {
     display: none;
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="main flex-1 h-full flex flex-row">
     <div
-      class="config w-[320px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      class="config generator-config-panel w-[360px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
     >
       <slot name="config" />
     </div>

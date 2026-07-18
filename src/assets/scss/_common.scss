@@ -195,6 +195,44 @@ w3m-modal {
   overflow: hidden;
 }
 
+.generator-config-panel,
+.el-drawer.generator-drawer {
+  --el-component-size: 40px;
+  --el-component-size-small: 32px;
+
+  .el-button {
+    --el-button-size: 40px;
+    height: var(--el-button-size);
+
+    &.el-button--small {
+      --el-button-size: 32px;
+    }
+  }
+
+  .el-input {
+    --el-input-height: 40px;
+
+    &.el-input--small {
+      --el-input-height: 32px;
+    }
+  }
+
+  .el-select:not(.el-select--small) .el-select__wrapper {
+    min-height: 40px;
+  }
+
+  .el-select.el-select--small .el-select__wrapper {
+    min-height: 32px;
+  }
+
+  .el-radio-button--small .el-radio-button__inner {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 11px;
+  }
+}
+
 .el-button {
   font-weight: var(--adc-font-weight-medium);
   letter-spacing: var(--adc-letter-spacing);
