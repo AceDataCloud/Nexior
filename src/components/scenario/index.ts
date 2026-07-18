@@ -4,5 +4,7 @@ export { default as ScenarioFooter } from './ScenarioFooter.vue';
 export { default as ScenarioPanel } from './ScenarioPanel.vue';
 export { default as ScenarioSection } from './ScenarioSection.vue';
 export { default as ScenarioSegmented } from './ScenarioSegmented.vue';
+export { default as TaskResultShell } from './TaskResultShell.vue';
 export type { MediaInputKind, MediaInputState } from './MediaInputField.vue';
 export type { ScenarioSegmentedOption, ScenarioSegmentedValue } from './ScenarioSegmented.vue';
+export type { TaskResultError, TaskResultMetadataItem, TaskResultState } from './TaskResultShell.vue';
