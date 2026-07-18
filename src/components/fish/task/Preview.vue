@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/e40fccc727.png" class="avatar" />
+      <capability-presentation capability="fish" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('fish.name.fishBot') }}
+        <capability-presentation capability="fish" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton } from 'element-plus';
+import { ElAlert, ElButton } from 'element-plus';
 import { IFishTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -71,7 +71,6 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'FishTaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,

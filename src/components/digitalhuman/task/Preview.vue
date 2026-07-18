@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="DIGITALHUMAN_LOGO" class="avatar" />
+      <capability-presentation capability="digitalhuman" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('digitalhuman.name.bot') }}
+        <capability-presentation capability="digitalhuman" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -77,9 +77,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElProgress } from 'element-plus';
+import { ElAlert, ElButton, ElProgress } from 'element-plus';
 import { IDigitalHumanTask } from '@/models';
-import { DIGITALHUMAN_LOGO } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -88,7 +87,6 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -102,11 +100,6 @@ export default defineComponent({
       type: Object as () => IDigitalHumanTask | undefined,
       required: true
     }
-  },
-  data() {
-    return {
-      DIGITALHUMAN_LOGO
-    };
   },
   computed: {
     status(): string {

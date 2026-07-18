@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="OPENAIIMAGE_LOGO" class="avatar" />
+      <capability-presentation capability="openaiimage" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('openaiimage.name.openaiimageBot') }}
+        <capability-presentation capability="openaiimage" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -164,9 +164,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IOpenAIImageTask, IOpenAIImageImage } from '@/models';
-import { OPENAIIMAGE_LOGO } from '@/constants/openaiimage';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
@@ -176,7 +175,6 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -191,9 +189,6 @@ export default defineComponent({
       type: Object as () => IOpenAIImageTask | undefined,
       required: true
     }
-  },
-  setup() {
-    return { OPENAIIMAGE_LOGO };
   },
   computed: {
     isEditRequest(): boolean {

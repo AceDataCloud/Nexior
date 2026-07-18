@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="seedanceLogo" class="avatar" />
+      <capability-presentation capability="seedance" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('seedance.name.seedanceBot') }}
+        <capability-presentation capability="seedance" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -173,7 +173,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { ISeedanceTask, ISeedanceVideo, SeedanceImageRole } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -183,12 +183,10 @@ import ImagePreview from '@/components/common/ImagePreview.vue';
 import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
-import { SEEDANCE_LOGO } from '@/constants';
 
 export default defineComponent({
   name: 'SeedanceTaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -206,11 +204,6 @@ export default defineComponent({
       type: Object as () => ISeedanceTask | undefined,
       required: true
     }
-  },
-  data() {
-    return {
-      seedanceLogo: SEEDANCE_LOGO
-    };
   },
   computed: {
     video(): ISeedanceVideo | undefined {

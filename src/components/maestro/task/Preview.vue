@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="MAESTRO_LOGO" class="avatar" />
+      <capability-presentation capability="maestro" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('maestro.name.maestroBot') }}
+        <capability-presentation capability="maestro" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -174,9 +174,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElMessage } from 'element-plus';
+import { ElAlert, ElButton, ElMessage } from 'element-plus';
 import { IMaestroTask, IMaestroVariant } from '@/models';
-import { MAESTRO_ACTION_REMIX, MAESTRO_LOGO } from '@/constants';
+import { MAESTRO_ACTION_REMIX } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -203,7 +203,6 @@ interface IMaestroInputFile {
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -224,7 +223,6 @@ export default defineComponent({
   },
   data() {
     return {
-      MAESTRO_LOGO,
       fetchedReferenceTask: undefined as IMaestroTask | undefined,
       fetchedReferenceKey: undefined as string | undefined,
       referenceLoadAttempt: 0,
