@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 11:38:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 18:30:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.24
+
+Sat, 18 Jul 2026 18:30:47 GMT
+
+### Patches
+
+- Migrate production non-brand icons to shared semantic Lucide components. (dev@acedata.cloud)
 
 ## 3.329.23
 
