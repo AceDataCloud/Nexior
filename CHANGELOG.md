@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 07:44:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 09:21:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.21
+
+Sat, 18 Jul 2026 09:21:49 GMT
+
+### Patches
+
+- Unify generator sidebar scrolling and 20px content padding across services. (dev@acedata.cloud)
 
 ## 3.329.20
 
