@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="omniLogo" class="avatar" />
+      <capability-presentation capability="omni" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('omni.name.bot') }}
+        <capability-presentation capability="omni" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -128,19 +128,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IOmniTask, IOmniVideo } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
-import { OMNI_LOGO } from '@/constants';
 
 export default defineComponent({
   name: 'OmniTaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -158,7 +156,6 @@ export default defineComponent({
   },
   data() {
     return {
-      omniLogo: OMNI_LOGO,
       nowTs: Date.now(),
       timer: 0
     };

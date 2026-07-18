@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="WAN_LOGO" class="avatar" />
+      <capability-presentation capability="wan" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('wan.name.wanBot') }}
+        <capability-presentation capability="wan" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -109,18 +109,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IWanTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
-import { WAN_LOGO } from '@/constants/wan';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
@@ -134,9 +132,6 @@ export default defineComponent({
       type: Object as () => IWanTask | undefined,
       required: true
     }
-  },
-  setup() {
-    return { WAN_LOGO };
   },
   computed: {
     application() {

@@ -1,8 +1,9 @@
 <template>
   <div class="preview w-full h-fit text-left flex flex-row mb-[15px]">
     <div class="left">
-      <el-image
-        src="https://cdn.acedata.cloud/bcml67.png"
+      <capability-presentation
+        capability="qrart"
+        part="avatar"
         class="avatar bg-[var(--el-bg-color)] p-[2px] w-[50px] h-[50px] m-[10px] rounded-full"
       />
     </div>
@@ -10,7 +11,7 @@
       <div
         class="bot text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden text-ellipsis whitespace-nowrap"
       >
-        {{ $t('qrart.name.qrartBot') }}
+        <capability-presentation capability="qrart" part="name" />
         <span class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px]">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -126,7 +127,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert } from 'element-plus';
+import { ElAlert } from 'element-plus';
 import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -136,7 +137,6 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,

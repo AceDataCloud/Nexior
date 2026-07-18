@@ -16,6 +16,7 @@ import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
+import CapabilityPresentation from '@/components/common/CapabilityPresentation.vue';
 import { getSurface, isNative, isDesktop, isMacOS, isWindows } from '@/utils/surface';
 import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
@@ -47,6 +48,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   app.use(i18n);
   app.use(MotionPlugin);
   app.use(dayjs, { formatString: 'YYYY-MM-DD HH:mm:ss' });
+  app.component('CapabilityPresentation', CapabilityPresentation);
   app.directive('loading', vLoading);
   setupRouterGuards(router);
   setActiveRouter(router);

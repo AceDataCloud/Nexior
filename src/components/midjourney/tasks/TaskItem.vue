@@ -1,11 +1,11 @@
 <template>
   <div v-if="modelValue?.type === 'imagine'" class="item">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
+      <capability-presentation capability="midjourney" part="avatar" class="avatar" />
     </div>
     <div class="preview">
       <div class="bot">
-        {{ $t('midjourney.name.midjourneyBot') }}
+        <capability-presentation capability="midjourney" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -120,11 +120,11 @@
   </div>
   <div v-if="modelValue?.type === 'videos'" class="item">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
+      <capability-presentation capability="midjourney" part="avatar" class="avatar" />
     </div>
     <div class="preview">
       <div class="bot">
-        {{ $t('midjourney.name.midjourneyBot') }}
+        <capability-presentation capability="midjourney" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -314,11 +314,11 @@
   </div>
   <div v-if="modelValue?.type === 'describe'" class="item">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
+      <capability-presentation capability="midjourney" part="avatar" class="avatar" />
     </div>
     <div class="preview">
       <div class="bot">
-        {{ $t('midjourney.name.midjourneyBot') }}
+        <capability-presentation capability="midjourney" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -421,7 +421,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
+import { ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -439,7 +439,6 @@ interface IData {
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
     ImageWrapper,
     ImagePreview,
     ElButton,
