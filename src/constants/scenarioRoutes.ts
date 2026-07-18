@@ -22,6 +22,7 @@ export const SCENARIO_ROUTES = [
     output: 'audio',
     auditVariants: ['text-to-speech', 'voice-cloning']
   },
+  { name: 'fish-model', path: '/fish/model', output: 'audio' },
   {
     name: 'suno',
     path: '/suno',
@@ -64,6 +65,7 @@ export const SCENARIO_ROUTES = [
   { name: 'pika', path: '/pika', output: 'video' },
   { name: 'pixverse', path: '/pixverse', output: 'video' },
   { name: 'grok-video', path: '/grok-video', output: 'video' },
+  { name: 'omni', path: '/omni', output: 'video' },
   {
     name: 'digital-human',
     path: '/digital-human',

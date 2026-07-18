@@ -5,9 +5,9 @@ describe('scenario route manifest', () => {
   it('tracks the audited generation routes without duplicate names or paths', () => {
     // Keep this explicit: adding or removing an audited product surface must
     // update the review manifest, not silently change screenshot coverage.
-    expect(SCENARIO_ROUTES).toHaveLength(20);
-    expect(new Set(SCENARIO_ROUTES.map(({ name }) => name))).toHaveLength(20);
-    expect(new Set(SCENARIO_ROUTES.map(({ path }) => path))).toHaveLength(20);
+    expect(SCENARIO_ROUTES).toHaveLength(22);
+    expect(new Set(SCENARIO_ROUTES.map(({ name }) => name))).toHaveLength(22);
+    expect(new Set(SCENARIO_ROUTES.map(({ path }) => path))).toHaveLength(22);
     expect(SCENARIO_ROUTES.every(({ path }) => path.startsWith('/'))).toBe(true);
   });
 
