@@ -42,10 +42,11 @@ describe('seedream/ConfigPanel', () => {
     getConsumptionMock.mockClear();
   });
 
-  it('shows reference image upload without create/edit tabs', () => {
+  it('shows reference image upload without mode or watermark controls', () => {
     const { wrapper } = mountPanel();
 
     expect(wrapper.find('.action-selector').exists()).toBe(false);
+    expect(wrapper.html()).not.toContain('watermark');
     expect(wrapper.findComponent(ImageInput).exists()).toBe(true);
     expect(wrapper.findComponent(ModelSelector).exists()).toBe(true);
 

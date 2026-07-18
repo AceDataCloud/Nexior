@@ -57,7 +57,7 @@
               {{ $t('common.button.edit') }}
             </el-button>
           </el-tooltip>
-          <api-code-button path="/seedream/images" :body="modelValue?.request" />
+          <api-code-button path="/seedream/images" :body="apiRequest" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -181,6 +181,7 @@ import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import { getSeedreamShortModel } from '@/constants';
+import { buildSeedreamRequest } from '@/utils/seedream/request';
 
 export default defineComponent({
   name: 'SeedreamTaskPreview',
@@ -208,6 +209,9 @@ export default defineComponent({
     }
   },
   computed: {
+    apiRequest() {
+      return buildSeedreamRequest(this.modelValue?.request);
+    },
     isEdit(): boolean {
       return Array.isArray(this.modelValue?.request?.image) && (this.modelValue?.request?.image?.length || 0) > 0;
     },
