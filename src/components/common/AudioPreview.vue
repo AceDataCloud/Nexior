@@ -1,11 +1,14 @@
 <template>
-  <div
+  <button
+    type="button"
     class="audio-preview w-[50px] h-[50px] relative rounded-[var(--el-border-radius-base)] overflow-hidden shadow-sm cursor-pointer flex items-center justify-center"
-    :title="name"
+    :title="accessibleLabel"
+    :aria-label="accessibleLabel"
+    :disabled="failed"
     @click.stop="onToggle"
   >
     <font-awesome-icon
-      :icon="playing ? 'fa-solid fa-pause' : 'fa-solid fa-music'"
+      :icon="failed ? 'fa-solid fa-triangle-exclamation' : playing ? 'fa-solid fa-pause' : 'fa-solid fa-music'"
       class="icon text-white text-[16px]"
     />
     <audio
@@ -15,8 +18,9 @@
       @play="playing = true"
       @pause="playing = false"
       @ended="playing = false"
+      @error="onError"
     />
-  </div>
+  </button>
 </template>
 
 <script lang="ts">
@@ -41,8 +45,14 @@ export default defineComponent({
   },
   data() {
     return {
-      playing: false
+      playing: false,
+      failed: false
     };
+  },
+  computed: {
+    accessibleLabel(): string {
+      return this.failed ? `${this.name}: ${this.$t('common.message.mediaPreviewUnavailable')}` : this.name;
+    }
   },
   methods: {
     onToggle() {
@@ -55,6 +65,10 @@ export default defineComponent({
       } else {
         audio.pause();
       }
+    },
+    onError() {
+      this.playing = false;
+      this.failed = true;
     }
   }
 });
@@ -62,10 +76,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .audio-preview {
+  padding: 0;
+  border: 0;
   background: linear-gradient(135deg, var(--el-color-primary), var(--el-color-primary-light-3));
   transition: filter 0.15s ease;
   &:hover {
     filter: brightness(1.08);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--el-color-primary-light-5);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(0.5);
   }
 }
 </style>
