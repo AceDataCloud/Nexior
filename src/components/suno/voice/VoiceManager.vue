@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between mb-3">
       <span class="text-sm font-medium">{{ $t('suno.voice.title') }}</span>
       <el-button type="primary" size="small" @click="showCreateDialog = true">
-        <font-awesome-icon icon="fa-solid fa-plus" class="mr-1" />
+        <add-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('suno.voice.create') }}
       </el-button>
     </div>
@@ -12,7 +12,7 @@
       <el-tab-pane name="favorites" :label="$t('suno.voice.tabFavorites') + ' (' + favoritePersonas.length + ')'" />
     </el-tabs>
     <div v-if="loading" class="text-center py-6">
-      <el-icon class="is-loading"><loading /></el-icon>
+      <el-icon class="is-loading"><loading :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
     </div>
     <div v-else-if="visiblePersonas.length === 0" class="text-center py-6 text-gray-400 text-sm">
       {{ activeTab === 'favorites' ? $t('suno.voice.emptyFavorites') : $t('suno.voice.empty') }}
@@ -27,9 +27,19 @@
       >
         <div class="flex-1 min-w-0">
           <div class="voice-name">
-            <font-awesome-icon
-              :icon="persona.source_type === 'voice' ? 'fa-solid fa-microphone' : 'fa-solid fa-music'"
+            <microphone-icon
+              v-if="persona.source_type === 'voice'"
               class="mr-1.5 text-xs opacity-60"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
+            <music-icon
+              v-else
+              class="mr-1.5 text-xs opacity-60"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
             />
             {{ persona.name || persona.persona_id }}
           </div>
@@ -44,9 +54,11 @@
               size="small"
               text
               :class="{ 'voice-fav-active': isFavorite(persona.persona_id) }"
+              :aria-label="isFavorite(persona.persona_id) ? $t('suno.voice.unfavorite') : $t('suno.voice.favorite')"
+              :title="isFavorite(persona.persona_id) ? $t('suno.voice.unfavorite') : $t('suno.voice.favorite')"
               @click="onToggleFavorite(persona)"
             >
-              <font-awesome-icon :icon="isFavorite(persona.persona_id) ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+              <favorite-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-button>
           </el-tooltip>
           <el-button
@@ -54,9 +66,11 @@
             size="small"
             text
             :loading="deletingId === persona.persona_id"
+            :aria-label="$t('common.button.delete')"
+            :title="$t('common.button.delete')"
             @click="onDelete(persona)"
           >
-            <font-awesome-icon icon="fa-solid fa-trash" />
+            <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </el-button>
         </div>
       </div>
@@ -66,23 +80,34 @@
 </template>
 
 <script lang="ts">
+import {
+  AddIcon,
+  DeleteIcon,
+  FavoriteIcon,
+  LoadingIcon as Loading,
+  MicrophoneIcon,
+  MusicIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElIcon, ElMessage, ElMessageBox, ElTabs, ElTabPane, ElTooltip } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import VoiceCreateDialog from './VoiceCreateDialog.vue';
 import { ISunoPersona } from '@/models';
 
 export default defineComponent({
   name: 'VoiceManager',
   components: {
+    AddIcon,
+    DeleteIcon,
+    FavoriteIcon,
     ElButton,
     ElIcon,
     ElTabs,
     ElTabPane,
     ElTooltip,
     Loading,
-    FontAwesomeIcon,
+    MicrophoneIcon,
+    MusicIcon,
     VoiceCreateDialog
   },
   data() {

@@ -13,7 +13,7 @@
       </p>
       <div class="rounded-md border border-[var(--app-border-subtle)] p-3 mb-3">
         <div class="flex items-center gap-2 font-medium">
-          <font-awesome-icon icon="fa-solid fa-code" />
+          <code-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ request.display_name || request.title || request.tool }}</span>
         </div>
         <p v-if="request.description" class="text-xs text-[var(--app-text-subtle)] mt-1">
@@ -29,11 +29,11 @@
     <template #footer>
       <div class="flex justify-end gap-2">
         <el-button round @click="onDeny">
-          <font-awesome-icon icon="fa-solid fa-xmark" class="mr-1" />
+          <close-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('codingBridge.permission.deny') }}
         </el-button>
         <el-button type="primary" round @click="onAllow">
-          <font-awesome-icon icon="fa-solid fa-check" class="mr-1" />
+          <confirm-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('codingBridge.permission.allow') }}
         </el-button>
       </div>
@@ -42,18 +42,20 @@
 </template>
 
 <script lang="ts">
+import { CloseIcon, CodeIcon, ConfirmIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgePermissionRequest } from '@/models';
 import { isAskUserQuestionRequest } from './askUserQuestion';
 
 export default defineComponent({
   name: 'CodingBridgePermissionDialog',
   components: {
+    CloseIcon,
+    CodeIcon,
+    ConfirmIcon,
     ElDialog,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   computed: {
     request(): ICodingBridgePermissionRequest | undefined {

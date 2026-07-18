@@ -14,7 +14,7 @@
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-receipt" class="icon" />
+                <receipt-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <p class="description">{{ $t('order.title.totalOrders') }}</p>
               <p class="value">{{ summary.total_count }}</p>
@@ -26,7 +26,7 @@
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-dollar-sign" class="icon" />
+                <money-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <p class="description">{{ $t('order.title.totalSpent') }}</p>
               <p class="value">{{ getPriceString({ value: summary.total_spent }) }}</p>
@@ -38,7 +38,7 @@
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-check-circle" class="icon" />
+                <success-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <p class="description">{{ $t('order.title.finishedOrders') }}</p>
               <p class="value">{{ summary.state_counts?.Finished || 0 }}</p>
@@ -50,7 +50,7 @@
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-clock" class="icon" />
+                <time-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <p class="description">{{ $t('order.title.pendingOrders') }}</p>
               <p class="value">{{ summary.state_counts?.Pending || 0 }}</p>
@@ -89,7 +89,7 @@
           @change="onFilterChange"
         />
         <el-button type="primary" plain :loading="exporting" @click="onExport">
-          <font-awesome-icon icon="fa-solid fa-file-export" class="mr-1" />
+          <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('order.button.export') }}
         </el-button>
       </div>
@@ -191,6 +191,7 @@
 </template>
 
 <script lang="ts">
+import { ExportIcon, MoneyIcon, ReceiptIcon, SuccessIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { orderOperator, IOrderSummary } from '@/operators/order';
 import { Pagination } from '@acedatacloud/core/components';
@@ -210,7 +211,6 @@ import {
 } from 'element-plus';
 import { IOrder, IOrderListResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   orders: IOrder[];
@@ -232,6 +232,11 @@ const DEFAULT_SUMMARY: IOrderSummary = { total_count: 0, total_spent: 0, state_c
 export default defineComponent({
   name: 'ConsoleOrderList',
   components: {
+    ExportIcon,
+    MoneyIcon,
+    ReceiptIcon,
+    SuccessIcon,
+    TimeIcon,
     Pagination,
     CopyToClipboard,
     ElRow,
@@ -244,8 +249,7 @@ export default defineComponent({
     ElSelect,
     ElOption,
     ElDatePicker,
-    ElSkeleton,
-    FontAwesomeIcon
+    ElSkeleton
   },
   data(): IData {
     return {
@@ -466,18 +470,23 @@ export default defineComponent({
   .icon-wrapper {
     height: 36px;
     width: 36px;
-    line-height: 36px;
+    display: grid;
+    place-items: center;
     border-radius: 50%;
     background-color: var(--el-bg-color-page);
-    text-align: center;
     margin-bottom: 8px;
     .icon {
+      display: block;
+      width: 16px;
+      height: 16px;
       color: var(--el-color-primary);
     }
   }
   .value {
     font-weight: 600;
     font-size: 24px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     color: var(--el-text-color-primary);
   }
   .description {

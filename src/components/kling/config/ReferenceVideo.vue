@@ -31,7 +31,7 @@
         />
       </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+        <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.uploadReferenceVideo') }}
       </el-button>
     </el-upload>
@@ -52,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   ElButton,
@@ -66,7 +67,6 @@ import {
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IKlingReferenceVideo } from '@/models';
 import { KLING_VIDEO_TOKEN, stripKlingVideoToken } from '@/utils/kling/capabilities';
 
@@ -85,7 +85,7 @@ export default defineComponent({
     ElSwitch,
     InfoIcon,
     FilePreview,
-    FontAwesomeIcon
+    UploadIcon
   },
   mixins: [uploadTrackerMixin],
   data(): IData {

@@ -34,7 +34,7 @@
         <el-empty v-if="!loading && !entries.length" :description="$t('common.settings.memoryEmpty')" />
         <ul v-else class="rows">
           <li v-for="entry in entries" :key="entry.id" class="row memory-row">
-            <font-awesome-icon icon="fa-regular fa-lightbulb" class="row-icon" />
+            <idea-icon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span class="memory-content">{{ entry.content }}</span>
             <el-button size="small" type="danger" :loading="removingId === entry.id" @click="onRemove(entry)">
               {{ $t('common.settings.memoryForget') }}
@@ -80,17 +80,17 @@
 </template>
 
 <script lang="ts">
+import { IdeaIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import copy from 'copy-to-clipboard';
 import { ElButton, ElDialog, ElEmpty, ElInput, ElMessage, ElMessageBox, ElSwitch, vLoading } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { memoriesOperator, type IMemoryEntry } from '@/operators/memories';
 import type { ICredential } from '@/models';
 import { ensureStoreModule } from '@/store/lazy';
 
 export default defineComponent({
   name: 'MemorySetting',
-  components: { ElButton, ElDialog, ElEmpty, ElInput, ElSwitch, FontAwesomeIcon },
+  components: { ElButton, ElDialog, ElEmpty, ElInput, ElSwitch, IdeaIcon },
   directives: { loading: vLoading },
   data() {
     return {

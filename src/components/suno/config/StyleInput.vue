@@ -6,7 +6,7 @@
         <info-icon :content="$t('suno.description.style')" />
       </div>
       <el-button size="small" :loading="optimizing" round @click="onOptimizeStyle">
-        <font-awesome-icon v-if="!optimizing" icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+        <magic-icon v-if="!optimizing" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('suno.button.optimize_style') }}
       </el-button>
     </div>
@@ -19,17 +19,22 @@
       <button v-for="tag in visibleTags" :key="tag" class="style-tag" @click="onTagClick(tag)">
         {{ tag }}
       </button>
-      <button class="style-tag style-tag-refresh" @click="onRefreshTags">
-        <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
+      <button
+        class="style-tag style-tag-refresh"
+        :aria-label="$t('common.button.refresh')"
+        :title="$t('common.button.refresh')"
+        @click="onRefreshTags"
+      >
+        <refresh-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { MagicIcon, RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { sunoOperator } from '@/operators';
 
@@ -100,9 +105,10 @@ function shuffleArray<T>(arr: T[]): T[] {
 export default defineComponent({
   name: 'StyleInput',
   components: {
+    MagicIcon,
+    RefreshIcon,
     ElInput,
     ElButton,
-    FontAwesomeIcon,
     InfoIcon
   },
   data() {

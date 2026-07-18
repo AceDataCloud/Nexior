@@ -6,7 +6,6 @@
         <info-icon :content="$t('suno.description.uploadAudios')" />
       </div>
       <el-button round type="primary" size="small" @click="dialogVisible = true">
-        <font-awesome-icon icon="fa-solid fa-plus" class="icon mr-1" />
         {{ $t('suno.button.addAudio') }}
       </el-button>
     </div>
@@ -45,7 +44,12 @@
               drag
             >
               <div class="text-center py-6">
-                <font-awesome-icon icon="fa-solid fa-upload" class="text-4xl text-gray-400 mb-3" />
+                <upload-icon
+                  class="text-4xl text-gray-400 mb-3"
+                  :size="'1em' as any"
+                  aria-hidden="true"
+                  focusable="false"
+                />
                 <div class="text-sm">{{ $t('suno.description.dropAudioHere') }}</div>
                 <div class="text-xs text-gray-400 mt-1">{{ $t('suno.description.audioFormats') }}</div>
               </div>
@@ -60,7 +64,7 @@
                 <span class="text-2xl font-mono">{{ formattedTime }}</span>
               </div>
               <div v-else-if="recordedBlob" class="text-green-600">
-                <font-awesome-icon icon="fa-solid fa-check-circle" class="text-2xl mr-2" />
+                <success-icon class="text-2xl mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 <span>{{ $t('suno.message.recordingReady') }} ({{ formattedTime }})</span>
               </div>
               <div v-else class="text-gray-400 text-2xl font-mono">00:00</div>
@@ -70,20 +74,20 @@
             </div>
             <div class="flex justify-center gap-3">
               <el-button v-if="!recording && !recordedBlob" type="primary" round @click="startRecording">
-                <font-awesome-icon icon="fa-solid fa-microphone" class="mr-1" />
+                <microphone-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.startRecord') }}
               </el-button>
               <el-button v-if="recording" type="danger" round @click="stopRecording">
-                <font-awesome-icon icon="fa-solid fa-stop" class="mr-1" />
+                <stop-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.stopRecord') }}
               </el-button>
               <template v-if="recordedBlob && !recording">
                 <el-button round @click="resetRecording">
-                  <font-awesome-icon icon="fa-solid fa-rotate-left" class="mr-1" />
+                  <undo-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ $t('suno.button.reRecord') }}
                 </el-button>
                 <el-button type="primary" round :loading="uploadingRecord" @click="uploadRecording">
-                  <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+                  <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ $t('suno.button.useRecording') }}
                 </el-button>
               </template>
@@ -96,6 +100,7 @@
 </template>
 
 <script lang="ts">
+import { MicrophoneIcon, StopIcon, SuccessIcon, UndoIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   ElUpload,
@@ -109,7 +114,6 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { ISunoUploadRequest } from '@/models';
@@ -135,13 +139,17 @@ interface IData {
 export default defineComponent({
   name: 'UploadAudio',
   components: {
+    MicrophoneIcon,
+    StopIcon,
+    SuccessIcon,
+    UndoIcon,
+    UploadIcon,
     ElUpload,
     ElButton,
     ElDialog,
     ElTabs,
     ElTabPane,
     InfoIcon,
-    FontAwesomeIcon,
     ElRadioGroup,
     ElRadioButton
   },

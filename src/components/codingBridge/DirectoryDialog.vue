@@ -17,9 +17,10 @@
           circle
           :disabled="!listing || !listing.parent || loading"
           :title="$t('codingBridge.directory.up')"
+          :aria-label="$t('codingBridge.directory.up')"
           @click="goParent"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-up" />
+          <up-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-button>
         <el-input
           v-model="pathInput"
@@ -35,9 +36,10 @@
             <el-button
               :title="$t('codingBridge.directory.go')"
               :disabled="loading || !pathInput.trim()"
+              :aria-label="$t('codingBridge.directory.go')"
               @click="goPath"
             >
-              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+              <continue-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-button>
           </template>
         </el-input>
@@ -46,9 +48,10 @@
           circle
           :disabled="loading"
           :title="$t('codingBridge.directory.refresh')"
+          :aria-label="$t('codingBridge.directory.refresh')"
           @click="refresh"
         >
-          <font-awesome-icon icon="fa-solid fa-rotate-right" :spin="loading" />
+          <redo-icon :class="{ 'adc-icon-spin': loading }" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-button>
       </div>
 
@@ -76,7 +79,12 @@
             class="w-full flex items-center gap-2 px-3 py-2 text-left text-sm hover:bg-[var(--app-content-hover-bg)]"
             @click="openDir(entry.path)"
           >
-            <font-awesome-icon icon="fa-solid fa-folder" class="text-[var(--el-color-warning)]" />
+            <folder-icon
+              class="text-[var(--el-color-warning)]"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             <span class="truncate" dir="ltr">{{ entry.name }}</span>
           </button>
           <div
@@ -84,7 +92,7 @@
             :key="entry.path"
             class="w-full flex items-center gap-2 px-3 py-2 text-sm text-[var(--app-text-subtle)]"
           >
-            <font-awesome-icon icon="fa-solid fa-file" />
+            <file-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span class="truncate" dir="ltr">{{ entry.name }}</span>
           </div>
           <div
@@ -112,18 +120,22 @@
 </template>
 
 <script lang="ts">
+import { ContinueIcon, FileIcon, FolderIcon, RedoIcon, UpIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElButton, ElInput } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgeDirEntry, ICodingBridgeDirListing } from '@/models';
 
 export default defineComponent({
   name: 'CodingBridgeDirectoryDialog',
   components: {
+    ContinueIcon,
+    FileIcon,
+    FolderIcon,
+    RedoIcon,
+    UpIcon,
     ElDialog,
     ElButton,
-    ElInput,
-    FontAwesomeIcon
+    ElInput
   },
   props: {
     visible: {

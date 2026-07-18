@@ -42,11 +42,11 @@
       <consumption :value="consumption" :service="service" />
       <div class="flex gap-2 w-full">
         <el-button class="flex-1" @click="onClearAll">
-          <font-awesome-icon icon="fa-solid fa-broom" class="mr-1" />
+          <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('suno.button.clear_all') }}
         </el-button>
         <el-button type="primary" class="flex-1" round @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+          <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ generateButtonText }}
         </el-button>
       </div>
@@ -55,6 +55,7 @@
 </template>
 
 <script lang="ts">
+import { CleanupIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus';
 import TypeSelector from './config/TypeSelector.vue';
@@ -73,13 +74,14 @@ import UnderpaintingInput from './config/UnderpaintingInput.vue';
 import SamplesInput from './config/SamplesInput.vue';
 import AdjustSpeedInput from './config/AdjustSpeedInput.vue';
 import PersonaInput from './config/PersonaInput.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
 export default defineComponent({
   name: 'PresetPanel',
   components: {
+    CleanupIcon,
+    MagicIcon,
     TypeSelector,
     PromptInput,
     LyricInput,
@@ -96,7 +98,6 @@ export default defineComponent({
     SamplesInput,
     AdjustSpeedInput,
     PersonaInput,
-    FontAwesomeIcon,
     ElButton,
     ElTabs,
     ElTabPane,

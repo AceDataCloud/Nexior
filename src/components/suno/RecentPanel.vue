@@ -29,12 +29,12 @@
         class="task-search"
       >
         <template #prefix>
-          <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="text-xs" />
+          <search-icon class="text-xs" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </template>
       </el-input>
       <el-dropdown trigger="click" @command="onSortChange">
         <el-button size="small" round class="sort-btn">
-          <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="mr-1" />
+          <sort-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ sortLabel }}
         </el-button>
         <template #dropdown>
@@ -51,7 +51,7 @@
       <el-popover trigger="click" placement="bottom-end" :width="260">
         <template #reference>
           <el-button size="small" round class="filter-btn" :class="{ 'has-active-filter': activeFilterCount > 0 }">
-            <font-awesome-icon icon="fa-solid fa-filter" class="mr-1" />
+            <filter-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('suno.filter.title') }}
             <span v-if="activeFilterCount > 0" class="filter-badge">{{ activeFilterCount }}</span>
           </el-button>
@@ -120,7 +120,9 @@
       <el-button size="small" text @click="onResetFilters">{{ $t('suno.filter.reset') }}</el-button>
     </div>
     <div v-else-if="loading" class="w-full flex-1 flex items-center justify-center">
-      <el-icon class="is-loading text-xl text-gray-400"><loading /></el-icon>
+      <el-icon class="is-loading text-xl text-gray-400"
+        ><loading :size="'1em' as any" aria-hidden="true" focusable="false"
+      /></el-icon>
     </div>
     <div v-else-if="tasks?.items?.length === 0" class="w-full flex-1 flex items-center justify-center">
       <no-tasks />
@@ -132,6 +134,7 @@
 </template>
 
 <script lang="ts">
+import { FilterIcon, LoadingIcon as Loading, SearchIcon, SortIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Player from '@/components/common/player/Player.vue';
@@ -151,14 +154,16 @@ import {
   ElOption,
   ElIcon
 } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import ScrollList from '@/components/common/ScrollList.vue';
 import { ISunoTask, ISunoAudio } from '@/models';
 
 export default defineComponent({
   name: 'RecentPanel',
   components: {
+    FilterIcon,
+    SearchIcon,
+    SortIcon,
     ElSkeletonItem,
     ElSkeleton,
     ElInput,
@@ -173,7 +178,6 @@ export default defineComponent({
     ElOption,
     ElIcon,
     Loading,
-    FontAwesomeIcon,
     TaskPreview,
     Player,
     NoTasks,

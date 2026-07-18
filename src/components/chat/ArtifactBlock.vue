@@ -29,7 +29,7 @@
     <!-- Generic file -->
     <div v-else class="artifact-file">
       <a :href="artifact.url" target="_blank" rel="noopener noreferrer" class="artifact-link">
-        <el-icon><Document /></el-icon>
+        <el-icon><Document :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
         <span>{{ artifact.name }}</span>
       </a>
     </div>
@@ -37,8 +37,9 @@
 </template>
 
 <script lang="ts">
+import { DocumentIcon as Document } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
-import { Document } from '@element-plus/icons-vue';
+
 import type { IChatArtifact } from '@/models';
 
 interface IData {

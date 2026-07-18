@@ -13,24 +13,28 @@
       :width="34"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px] z-[10] m-auto text-[12px]"
     />
-    <div
+    <button
       v-if="closable"
+      type="button"
       class="close absolute cursor-pointer top-[4px] right-[4px] bg-[rgba(0,0,0,0.65)] text-white w-[16px] h-[16px] rounded-full flex text-[10px] text-center items-center justify-center hover:bg-[rgba(0,0,0,0.8)]"
+      :aria-label="$t('common.button.close')"
+      :title="$t('common.button.close')"
+      @click.stop="$emit('remove')"
     >
-      <font-awesome-icon icon="fa-solid fa-xmark" class="icon icon-close" @click.stop="$emit('remove')" />
-    </div>
+      <close-icon class="icon icon-close" :size="'1em' as any" aria-hidden="true" focusable="false" />
+    </button>
   </div>
 </template>
 
 <script lang="ts">
+import { CloseIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElProgress, ElImageViewer } from 'element-plus';
 
 export default defineComponent({
   name: 'ImagePreview',
   components: {
-    FontAwesomeIcon,
+    CloseIcon,
     ElProgress,
     ElImageViewer
   },

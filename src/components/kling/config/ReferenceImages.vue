@@ -20,7 +20,7 @@
         :headers="headers"
       >
         <el-button round type="primary" size="small" :disabled="remainingSlots === 0">
-          <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+          <UploadIcon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('kling.button.uploadReferenceImages') }}
         </el-button>
       </el-upload>
@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElUpload, UploadFile, UploadFiles } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IKlingReferenceImage } from '@/models';
@@ -58,7 +58,7 @@ export default defineComponent({
   components: {
     ElButton,
     ElUpload,
-    FontAwesomeIcon,
+    UploadIcon,
     ImagePreview,
     InfoIcon
   },

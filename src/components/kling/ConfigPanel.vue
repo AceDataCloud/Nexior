@@ -25,11 +25,11 @@
         round
         @click="onGenerate"
       >
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.extend') }}
       </el-button>
       <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.generate') }}
       </el-button>
     </div>
@@ -38,9 +38,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
 import ModeSelector from './config/ModeSelector.vue';
 import DurationSelector from './config/DurationSelector.vue';
@@ -63,9 +63,9 @@ import { getKlingCapabilities } from '@/utils/kling/capabilities';
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    MagicIcon,
     ElButton,
     Consumption,
-    FontAwesomeIcon,
     PromptInput,
     NegativePromptInput,
     ModelSelector,

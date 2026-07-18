@@ -26,7 +26,13 @@
             ]"
             @click="activeTab = item.key"
           >
-            <font-awesome-icon :icon="item.icon" :class="mobile ? 'mr-1.5' : 'mr-2'" />
+            <component
+              :is="item.icon"
+              :class="mobile ? 'mr-1.5' : 'mr-2'"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             {{ item.label }}
           </el-menu-item>
         </el-menu>
@@ -77,24 +83,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, defineAsyncComponent } from 'vue';
-import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
-  faCog,
-  faBell,
-  faKey,
-  faBrain,
-  faUserShield,
-  faMagic,
-  faMoneyBill,
-  faTags,
-  faInfoCircle,
-  faSitemap,
-  faGlobe,
-  faRightToBracket,
-  faLaptopCode
-} from '@fortawesome/free-solid-svg-icons';
+  AdminIcon,
+  AnnouncementIcon,
+  ContinueIcon,
+  CredentialIcon,
+  DeveloperIcon,
+  GlobeIcon,
+  InfoIcon,
+  IntelligenceIcon,
+  LabelIcon,
+  MagicIcon,
+  MoneyIcon,
+  SettingsIcon,
+  WorkflowIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, defineAsyncComponent, markRaw, type Component } from 'vue';
+import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
 import MemorySetting from '@/components/setting/Memory.vue';
@@ -133,7 +138,6 @@ export default defineComponent({
     ElDialog,
     ElMenu,
     ElMenuItem,
-    FontAwesomeIcon,
     GeneralSetting,
     ByokSetting,
     MemorySetting,
@@ -186,15 +190,30 @@ export default defineComponent({
     };
   },
   computed: {
-    navItems(): Array<{ key: SettingTabKey; label: string; icon: typeof faCog; visible: boolean }> {
+    navItems(): Array<{ key: SettingTabKey; label: string; icon: Component; visible: boolean }> {
       return [
-        { key: SETTING_TAB_GENERAL, label: this.$t('common.settings.general'), icon: faCog, visible: true },
-        { key: SETTING_TAB_API_KEY, label: this.$t('common.settings.apiKey'), icon: faKey, visible: true },
-        { key: SETTING_TAB_MEMORY, label: this.$t('common.settings.memory'), icon: faBrain, visible: true },
+        {
+          key: SETTING_TAB_GENERAL,
+          label: this.$t('common.settings.general'),
+          icon: markRaw(SettingsIcon),
+          visible: true
+        },
+        {
+          key: SETTING_TAB_API_KEY,
+          label: this.$t('common.settings.apiKey'),
+          icon: markRaw(CredentialIcon),
+          visible: true
+        },
+        {
+          key: SETTING_TAB_MEMORY,
+          label: this.$t('common.settings.memory'),
+          icon: markRaw(IntelligenceIcon),
+          visible: true
+        },
         {
           key: SETTING_TAB_SITE,
           label: this.$t('common.settings.site'),
-          icon: faBell,
+          icon: markRaw(AnnouncementIcon),
           visible: this.isSiteConfigVisible
         },
         {
@@ -202,25 +221,25 @@ export default defineComponent({
           // overrides also keep their related visibility and display controls.
           key: SETTING_TAB_SITE_SERVICES,
           label: this.$t('common.settings.siteServices'),
-          icon: faTags,
+          icon: markRaw(LabelIcon),
           visible: this.isSiteConfigVisible
         },
         {
           key: SETTING_TAB_SEO,
           label: this.$t('common.settings.seo'),
-          icon: faUserShield,
+          icon: markRaw(AdminIcon),
           visible: this.isSiteConfigVisible
         },
         {
           key: SETTING_TAB_DISTRIBUTION,
           label: this.$t('common.settings.distribution'),
-          icon: faMoneyBill,
+          icon: markRaw(MoneyIcon),
           visible: this.isSiteConfigVisible
         },
         {
           key: SETTING_TAB_FUNCTION,
           label: this.$t('common.settings.function'),
-          icon: faMagic,
+          icon: markRaw(MagicIcon),
           visible: this.isSiteConfigVisible
         },
         {
@@ -231,7 +250,7 @@ export default defineComponent({
           // off ``site.auth`` from the backend.
           key: SETTING_TAB_AUTH,
           label: this.$t('common.settings.auth'),
-          icon: faRightToBracket,
+          icon: markRaw(ContinueIcon),
           visible: this.isSiteConfigVisible
         },
         {
@@ -242,7 +261,7 @@ export default defineComponent({
           // this is purely UI cleanup.
           key: SETTING_TAB_SUBSITES,
           label: this.$t('common.settings.subsites'),
-          icon: faSitemap,
+          icon: markRaw(WorkflowIcon),
           visible: this.isSubsitesVisible
         },
         {
@@ -255,7 +274,7 @@ export default defineComponent({
           // there even for the site admin.
           key: SETTING_TAB_CUSTOM_DOMAIN,
           label: this.$t('common.settings.customDomain'),
-          icon: faGlobe,
+          icon: markRaw(GlobeIcon),
           visible: this.isCustomDomainVisible
         },
         {
@@ -264,13 +283,13 @@ export default defineComponent({
           // machine. Hidden on web & mobile (no localExec bridge there).
           key: SETTING_TAB_LOCAL_TOOLS,
           label: this.$t('common.settings.localTools'),
-          icon: faLaptopCode,
+          icon: markRaw(DeveloperIcon),
           visible: import.meta.env.VITE_COMPUTER_USE !== 'false' && this.isDesktopApp
         },
-        { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
+        { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: markRaw(InfoIcon), visible: true }
       ];
     },
-    visibleNavItems(): Array<{ key: SettingTabKey; label: string; icon: typeof faCog; visible: boolean }> {
+    visibleNavItems(): Array<{ key: SettingTabKey; label: string; icon: Component; visible: boolean }> {
       return this.navItems.filter((item) => item.visible);
     },
     // The tab actually rendered. Falls back to General when `activeTab` points
@@ -382,7 +401,7 @@ export default defineComponent({
   word-break: break-word;
 }
 
-:deep(.settings-menu .el-menu-item .svg-inline--fa) {
+:deep(.settings-menu .el-menu-item svg) {
   margin-top: 2px;
 }
 

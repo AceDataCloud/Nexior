@@ -9,9 +9,11 @@
     >
       <span class="ico">
         <el-icon v-if="i === currentIndex" class="is-loading" :aria-label="$t(`maestro.step.${step.key}`)">
-          <loading />
+          <loading :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-icon>
-        <el-icon v-else-if="i < currentIndex"><check /></el-icon>
+        <el-icon v-else-if="i < currentIndex"
+          ><check :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
       </span>
       <span class="txt">{{ $t(`maestro.step.${step.key}`) }}</span>
     </div>
@@ -20,9 +22,10 @@
 </template>
 
 <script lang="ts">
+import { LoadingIcon as Loading, ConfirmIcon as Check } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElIcon } from 'element-plus';
-import { Loading, Check } from '@element-plus/icons-vue';
+
 import { IMaestroTask } from '@/models';
 
 // Canonical, ordered pipeline stages the backend emits (runner.py). The checklist mirrors them.

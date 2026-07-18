@@ -1,6 +1,6 @@
 <template>
-  <div class="field flex items-center justify-between">
-    <h2 class="title font-bold text-[14px] mb-[10px]">{{ $t('nanobanana.name.imageUrls') }}</h2>
+  <div class="field mb-[10px] flex items-center justify-between">
+    <h2 class="title m-0 text-[14px] font-bold">{{ $t('nanobanana.name.imageUrls') }}</h2>
     <div class="upload-wrapper flex flex-col items-start gap-[8px]">
       <div class="controls flex items-center">
         <el-upload
@@ -21,11 +21,11 @@
           :headers="headers"
         >
           <el-button size="small" type="primary" round>
-            <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('nanobanana.button.uploadImageUrls') }}
           </el-button>
         </el-upload>
-        <info-icon :content="$t('nanobanana.description.imageUrls')" class="ml-2" />
+        <info-icon :content="$t('nanobanana.description.imageUrls')" />
       </div>
     </div>
   </div>
@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -59,11 +59,11 @@ interface IData {
 export default defineComponent({
   name: 'ImageUrlsInput',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     InfoIcon,
-    ImagePreview,
-    FontAwesomeIcon
+    ImagePreview
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {

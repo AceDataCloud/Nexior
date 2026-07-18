@@ -38,12 +38,12 @@
             :headers="uploadHeaders"
           >
             <el-button type="primary" plain round :loading="uploading">
-              <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+              <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ $t('fish.button.uploadAudio') }}
             </el-button>
           </el-upload>
           <el-button type="primary" round :disabled="!supportsRecorder" @click="onStartRecord">
-            <font-awesome-icon icon="fa-solid fa-microphone" class="icon mr-1" />
+            <microphone-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.button.recordAudio') }}
           </el-button>
         </div>
@@ -65,7 +65,7 @@
           <audio :src="form.voicesUrl" controls preload="metadata" class="w-full" />
           <div class="ready-actions">
             <el-button link size="small" @click="clearAudio">
-              <font-awesome-icon icon="fa-solid fa-rotate-left" class="mr-1" />
+              <undo-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ $t('fish.button.replaceAudio') }}
             </el-button>
           </div>
@@ -144,7 +144,7 @@
         :loading="creating"
         @click="onCreate"
       >
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('fish.button.createModel') }}
       </el-button>
     </div>
@@ -152,6 +152,7 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon, MicrophoneIcon, UndoIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   ElButton,
@@ -164,7 +165,6 @@ import {
   UploadFile,
   UploadFiles
 } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import Recorder from './model/Recorder.vue';
 
@@ -218,13 +218,16 @@ const defaultForm = (): IForm => ({
 export default defineComponent({
   name: 'FishModelConfigPanel',
   components: {
+    MagicIcon,
+    MicrophoneIcon,
+    UndoIcon,
+    UploadIcon,
     ElButton,
     ElInput,
     ElRadioButton,
     ElRadioGroup,
     ElSwitch,
     ElUpload,
-    FontAwesomeIcon,
     Recorder
   },
   mixins: [uploadTrackerMixin],

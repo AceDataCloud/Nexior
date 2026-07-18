@@ -7,7 +7,7 @@
         :class="['btn-action', 'btn-api-code', buttonClass]"
         @click.stop="onOpen"
       >
-        <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+        <code-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('common.button.viewCode') }}
       </el-button>
     </el-tooltip>
@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts">
+import { CodeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import { isMainOfficial } from '@/utils';
 
@@ -70,9 +70,9 @@ const PLATFORM_DOCS_BASE = 'https://platform.acedata.cloud/documents';
 export default defineComponent({
   name: 'ApiCodeButton',
   components: {
+    CodeIcon,
     ElButton,
     ElTooltip,
-    FontAwesomeIcon,
     ApiCodeDialog
   },
   props: {

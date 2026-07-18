@@ -8,14 +8,14 @@
     </template>
     <template v-else-if="state === 'missing'">
       <el-icon class="user-chip__icon">
-        <warning-filled />
+        <warning-filled :size="'1em' as any" aria-hidden="true" focusable="false" />
       </el-icon>
       <span class="user-chip__id" :title="userId">{{ shortId }}</span>
     </template>
     <template v-else>
       <el-avatar v-if="user?.avatar" :src="user.avatar" :size="22" class="user-chip__avatar" />
       <el-avatar v-else :size="22" class="user-chip__avatar">
-        <el-icon><user-icon /></el-icon>
+        <el-icon><user-icon :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
       </el-avatar>
       <span class="user-chip__name" :title="userId">{{ user?.display_name || shortId }}</span>
       <span v-if="user?.contact" class="user-chip__contact">{{ user.contact }}</span>
@@ -24,9 +24,10 @@
 </template>
 
 <script lang="ts">
+import { UserIcon, WarningIcon as WarningFilled } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElAvatar, ElIcon } from 'element-plus';
-import { User as UserIcon, WarningFilled } from '@element-plus/icons-vue';
+
 import { userOperator } from '@/operators';
 import type { IUserPublic } from '@/models';
 

@@ -6,7 +6,8 @@
         <p class="settings-title">{{ $t('subsite.title.index') }}</p>
         <p class="settings-tip">{{ $t('subsite.message.indexTip') }}</p>
       </div>
-      <el-button type="primary" round :icon="Plus" :disabled="!canCreate" @click="onOpenCreate">
+      <el-button type="primary" round :disabled="!canCreate" @click="onOpenCreate">
+        <plus :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('subsite.button.create') }}
       </el-button>
     </div>
@@ -133,6 +134,7 @@
 </template>
 
 <script lang="ts">
+import { AddIcon as Plus } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
 import {
   ElCard,
@@ -149,7 +151,7 @@ import {
   ElTag,
   vLoading
 } from 'element-plus';
-import { Plus } from '@element-plus/icons-vue';
+
 import { siteOperator, siteDomainOperator } from '@/operators';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { SiteDomainStatus, type ISite, type ISiteDomain } from '@/models';

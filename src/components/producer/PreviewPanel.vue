@@ -4,7 +4,9 @@
       <el-image :src="audio.image_url" fit="cover" class="size-full">
         <template #error>
           <div class="flex items-center justify-center size-full bg-[var(--el-bg-color)]">
-            <el-icon class="text-3xl"><icon-picture /></el-icon>
+            <el-icon class="text-3xl"
+              ><icon-picture :size="'1em' as any" aria-hidden="true" focusable="false"
+            /></el-icon>
           </div>
         </template>
       </el-image>
@@ -30,9 +32,9 @@
 </template>
 
 <script lang="ts">
+import { ImageIcon as IconPicture } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElImage, ElAvatar, ElIcon } from 'element-plus';
-import { Picture as IconPicture } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'TaskPreview',

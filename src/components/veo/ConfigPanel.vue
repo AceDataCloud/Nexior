@@ -18,7 +18,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('veo.button.generate') }}
       </el-button>
     </div>
@@ -26,9 +26,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
 import ActionSelector from './config/ActionSelector.vue';
 import TranslationSelector from './config/TranslationSelector.vue';
@@ -41,9 +41,9 @@ import { getConsumption } from '@/utils';
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    MagicIcon,
     ElButton,
     Consumption,
-    FontAwesomeIcon,
     PromptInput,
     ModelSelector,
     StartEndImage,

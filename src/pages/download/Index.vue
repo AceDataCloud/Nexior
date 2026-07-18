@@ -4,7 +4,7 @@
     <div class="download-page__inner">
       <!-- Bare layout has no app chrome (native/desktop have no browser back) — always offer a way back. -->
       <button type="button" class="download-back" @click="goBack">
-        <font-awesome-icon :icon="faArrowLeft" class="download-back__icon" />
+        <back-icon class="download-back__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span>{{ $t('common.button.goBack') }}</span>
       </button>
 
@@ -97,14 +97,14 @@
             <template v-if="hasAndroidDownload">
               <div v-if="hasPlayStore" class="platform__fallback">
                 <el-button round tag="a" :href="androidDownloadUrl" target="_blank" class="btn-ghost">
-                  <font-awesome-icon :icon="faDownload" class="btn-icon" />
+                  <download-icon class="btn-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ $t('common.button.downloadAndroid') }}
                 </el-button>
                 <span class="platform__meta">{{ $t('common.message.mobileApkFallback') }}</span>
               </div>
               <template v-else>
                 <el-button type="primary" round size="large" tag="a" :href="androidDownloadUrl" target="_blank">
-                  <font-awesome-icon :icon="faDownload" class="btn-icon" />
+                  <download-icon class="btn-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ $t('common.button.downloadAndroid') }}
                 </el-button>
                 <span class="platform__meta">{{ $t('common.message.mobileDirectInstall') }}</span>
@@ -254,13 +254,13 @@
 
       <!-- Install note -->
       <aside v-if="hasIosDownload" class="note">
-        <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
+        <info-icon class="note__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <p class="note__text">{{ $t('common.message.mobileInstallNote') }}</p>
       </aside>
 
       <!-- Desktop unsigned-beta note -->
       <aside class="note">
-        <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
+        <info-icon class="note__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <p class="note__text">{{ $t('common.message.desktopUnsignedNote') }}</p>
       </aside>
     </div>
@@ -268,12 +268,12 @@
 </template>
 
 <script lang="ts">
+import { BackIcon, DownloadIcon, InfoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faAndroid, faApple, faGooglePlay, faWindows } from '@fortawesome/free-brands-svg-icons';
-import { faDownload, faCircleInfo, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import defaultLogo from '@/assets/images/logo.png';
 import {
   DESKTOP_RELEASES_URL,
@@ -287,7 +287,10 @@ import {
 export default defineComponent({
   name: 'DownloadIndex',
   components: {
+    BackIcon,
+    DownloadIcon,
     ElButton,
+    InfoIcon,
     QrCode,
     FontAwesomeIcon
   },
@@ -296,10 +299,7 @@ export default defineComponent({
       faAndroid,
       faApple,
       faGooglePlay,
-      faWindows,
-      faDownload,
-      faCircleInfo,
-      faArrowLeft
+      faWindows
     };
   },
   computed: {

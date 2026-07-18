@@ -35,7 +35,7 @@
             />
           </template>
           <el-button round type="primary" size="small" class="btn btn-upload">
-            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('kling.button.uploadReferences') }}
           </el-button>
         </el-upload>
@@ -63,7 +63,7 @@
           :on-remove="onAudioRemove"
         >
           <el-button round type="primary" size="small" class="btn">
-            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('kling.button.uploadAudio') }}
           </el-button>
         </el-upload>
@@ -90,7 +90,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.generateTalkingPhoto') }}
       </el-button>
     </div>
@@ -98,9 +98,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElInput, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -118,10 +118,11 @@ interface IData {
 export default defineComponent({
   name: 'TalkingPhotoPanel',
   components: {
+    MagicIcon,
+    UploadIcon,
     ElUpload,
     ElButton,
     ElInput,
-    FontAwesomeIcon,
     Consumption,
     InfoIcon,
     ImagePreview,

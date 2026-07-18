@@ -21,8 +21,7 @@ function mountActivity(item: IChatMessageContentItem) {
   return mount(BrowserToolActivity, {
     props: { item },
     global: {
-      mocks: { $t: (key: string) => key },
-      stubs: { FontAwesomeIcon: true }
+      mocks: { $t: (key: string) => key }
     }
   });
 }

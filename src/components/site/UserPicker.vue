@@ -15,7 +15,7 @@
     @input="onInput"
   >
     <template #prefix>
-      <el-icon><search-icon /></el-icon>
+      <el-icon><search-icon :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
     </template>
     <template #default="{ item }">
       <div
@@ -26,13 +26,15 @@
         }"
       >
         <template v-if="item.__empty">
-          <el-icon class="user-picker__empty-icon"><warning-filled /></el-icon>
+          <el-icon class="user-picker__empty-icon"
+            ><warning-filled :size="'1em' as any" aria-hidden="true" focusable="false"
+          /></el-icon>
           <span class="user-picker__empty-text">{{ $t('site.message.userNotFound') }}</span>
         </template>
         <template v-else>
           <el-avatar v-if="item.avatar" :src="item.avatar" :size="32" class="user-picker__avatar" />
           <el-avatar v-else :size="32" class="user-picker__avatar">
-            <el-icon><user-icon /></el-icon>
+            <el-icon><user-icon :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
           </el-avatar>
           <div class="user-picker__option-text">
             <div class="user-picker__option-name">{{ item.display_name }}</div>
@@ -48,9 +50,10 @@
 </template>
 
 <script lang="ts">
+import { SearchIcon, UserIcon, WarningIcon as WarningFilled } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElAutocomplete, ElAvatar, ElIcon } from 'element-plus';
-import { Search as SearchIcon, User as UserIcon, WarningFilled } from '@element-plus/icons-vue';
+
 import { userOperator } from '@/operators';
 import type { IUserPublic } from '@/models';
 import { seedUserChipCache } from '@/components/site/UserChip.vue';

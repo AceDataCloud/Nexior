@@ -3,7 +3,7 @@
     <!-- Loading skeleton -->
     <div v-if="running" class="max-w-4xl mx-auto py-4">
       <div class="flex items-center gap-2 mb-3 text-[var(--el-color-primary)] text-sm">
-        <font-awesome-icon icon="fa-solid fa-circle-notch" spin />
+        <loading-icon class="adc-icon-spin" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span>{{ $t('webextrator.message.running') }}</span>
       </div>
       <div class="mb-6 animate-pulse">
@@ -21,7 +21,7 @@
       v-else-if="!response && !errorMessage"
       class="flex flex-col items-center justify-center py-24 text-[var(--el-text-color-disabled)]"
     >
-      <font-awesome-icon icon="fa-solid fa-globe" class="text-6xl mb-4 opacity-30" />
+      <globe-icon class="text-6xl mb-4 opacity-30" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <p class="text-base mb-1">{{ $t('webextrator.description.intro') }}</p>
       <p class="text-xs opacity-70">{{ $t('webextrator.description.introHint') }}</p>
     </div>
@@ -48,16 +48,20 @@
             rel="noopener"
             class="hover:underline truncate max-w-[60%]"
           >
-            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />{{ finalUrl }}
+            <external-link-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{ finalUrl }}
           </a>
           <span v-if="renderData?.status">
-            <font-awesome-icon icon="fa-solid fa-signal" class="mr-1" />{{ renderData.status }}
+            <signal-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{
+              renderData.status
+            }}
           </span>
           <span v-if="response?.elapsed">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />{{ response.elapsed.toFixed(2) }}s
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{
+              response.elapsed.toFixed(2)
+            }}s
           </span>
           <span v-if="contentTypeLabel">
-            <font-awesome-icon icon="fa-solid fa-tag" class="mr-1" />{{ contentTypeLabel }}
+            <label-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{ contentTypeLabel }}
           </span>
         </div>
         <p
@@ -144,9 +148,16 @@
 </template>
 
 <script lang="ts">
+import {
+  ExternalLinkIcon,
+  GlobeIcon,
+  LabelIcon,
+  LoadingIcon,
+  SignalIcon,
+  TimeIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElImage, ElTabs, ElTabPane } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { IWebextratorExtractData, IWebextratorRenderData, IWebextratorResponse, Status } from '@/models';
 
@@ -155,11 +166,16 @@ const isExtractData = (d: any): d is IWebextratorExtractData => !!d && d.kind !=
 export default defineComponent({
   name: 'WebextratorResultPanel',
   components: {
+    ExternalLinkIcon,
+    GlobeIcon,
+    LabelIcon,
+    LoadingIcon,
+    SignalIcon,
+    TimeIcon,
     ElAlert,
     ElImage,
     ElTabs,
     ElTabPane,
-    FontAwesomeIcon,
     CopyToClipboard
   },
   data() {

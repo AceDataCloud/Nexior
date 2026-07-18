@@ -7,7 +7,7 @@
     </vue-plyr>
     <div v-else-if="safeSrc" class="video-fallback">
       <el-button type="primary" round @click="onOpen">
-        <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-2" />
+        <external-link-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('common.button.download') }}
       </el-button>
     </div>
@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts">
+import { ExternalLinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // @ts-ignore
 import VuePlyr from '@skjnldsv/vue-plyr';
 // @ts-ignore
@@ -25,7 +25,7 @@ import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
 
 export default defineComponent({
   name: 'VideoPlayer',
-  components: { ElButton, FontAwesomeIcon, VuePlyr },
+  components: { ElButton, ExternalLinkIcon, VuePlyr },
   props: {
     src: {
       type: String,

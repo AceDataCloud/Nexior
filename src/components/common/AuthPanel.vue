@@ -5,7 +5,9 @@
        functional differences (URL params, in-app OAuth) below. -->
   <div class="auth-frame-modal" role="dialog" aria-modal="true">
     <div class="auth-frame-modal__panel">
-      <button class="auth-frame-modal__close" type="button" aria-label="Close" @click="closeWebLogin">×</button>
+      <button class="auth-frame-modal__close" type="button" aria-label="Close" title="Close" @click="closeWebLogin">
+        <close-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+      </button>
       <div v-if="useBrowser" class="auth-frame-modal__loading">
         <p>{{ $t('common.status.loading') }}</p>
       </div>
@@ -33,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import { CloseIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElDialog } from 'element-plus';
@@ -55,6 +58,7 @@ const APPLE_NATIVE_CLIENT_ID = 'com.acedatacloud.nexior';
 export default defineComponent({
   name: 'AuthPanel',
   components: {
+    CloseIcon,
     ElDialog,
     QrCode
   },
@@ -361,9 +365,15 @@ export default defineComponent({
     border-radius: 999px;
     background: rgba(15, 23, 42, 0.68);
     color: #fff;
-    font-size: 24px;
-    line-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 </style>

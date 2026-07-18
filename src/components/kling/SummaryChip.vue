@@ -8,14 +8,14 @@
     <span class="dot">·</span>
     <span class="part" :title="$t('kling.name.mode')">{{ modeLabel }}</span>
     <span v-if="generateAudio" class="audio" :title="$t('kling.name.generateAudio')">
-      <font-awesome-icon icon="fa-solid fa-headphones" />
+      <audio-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
     </span>
   </div>
 </template>
 
 <script lang="ts">
+import { AudioIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const MODEL_LABELS: Record<string, string> = {
   'kling-v3': 'v3',
@@ -38,7 +38,7 @@ const MODE_RESOLUTION: Record<string, string> = {
 export default defineComponent({
   name: 'SummaryChip',
   components: {
-    FontAwesomeIcon
+    AudioIcon
   },
   computed: {
     config() {

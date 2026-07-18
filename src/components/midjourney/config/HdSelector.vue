@@ -3,7 +3,7 @@
     <span class="text-sm font-bold">
       {{ $t('midjourney.name.hd') }}
       <el-tooltip :content="$t('midjourney.description.hd')" placement="top">
-        <font-awesome-icon icon="fa-solid fa-circle-info" class="info-icon" />
+        <info-icon class="info-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       </el-tooltip>
     </span>
     <el-switch v-model="value" />
@@ -11,16 +11,16 @@
 </template>
 
 <script lang="ts">
+import { InfoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElSwitch, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'HdSelector',
   components: {
+    InfoIcon,
     ElSwitch,
-    ElTooltip,
-    FontAwesomeIcon
+    ElTooltip
   },
   computed: {
     value: {

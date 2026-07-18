@@ -12,7 +12,7 @@
         :aria-label="$t('codingBridge.session.editPrompt')"
         @click="$emit('edit', event)"
       >
-        <font-awesome-icon icon="fa-solid fa-pen" />
+        <edit-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
       <div
         class="max-w-[85%] rounded-lg px-3 py-2 bg-[var(--el-color-primary)] text-white whitespace-pre-wrap break-words"
@@ -41,7 +41,7 @@
           >
             <img v-if="attachment.type === 'image'" :src="attachment.url" class="h-9 w-9 rounded object-cover" alt="" />
             <span v-else class="flex h-9 w-9 items-center justify-center rounded bg-white/15">
-              <font-awesome-icon icon="fa-solid fa-file" />
+              <file-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </span>
             <span class="min-w-0 truncate">{{ attachment.name || attachment.url }}</span>
           </a>
@@ -69,7 +69,13 @@
       class="overflow-hidden rounded-md bg-[var(--app-sidebar-bg)] border border-[var(--app-border-subtle)]"
     >
       <div class="flex items-center gap-2 px-2.5 py-1.5 font-medium text-[var(--app-text-subtle)]">
-        <font-awesome-icon :icon="toolIcon" class="text-[var(--el-color-primary)]" />
+        <component
+          :is="toolIcon"
+          class="text-[var(--el-color-primary)]"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
         <span>{{ event.tool }}</span>
         <span v-if="toolDescription" class="min-w-0 truncate text-xs font-normal opacity-70">{{
           toolDescription
@@ -122,7 +128,8 @@
 
     <!-- Turn result -->
     <div v-else-if="event.kind === 'result'" class="flex items-center gap-2 text-xs text-[var(--app-text-subtle)]">
-      <font-awesome-icon :icon="event.is_error ? 'fa-solid fa-xmark' : 'fa-solid fa-check'" />
+      <close-icon v-if="event.is_error" :size="'1em' as any" aria-hidden="true" focusable="false" />
+      <confirm-icon v-else :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span>{{ resultLabel }}</span>
     </div>
 
@@ -131,7 +138,12 @@
       v-else-if="event.kind === 'notice'"
       class="flex items-start gap-2 rounded-md bg-[var(--app-sidebar-bg)] border border-[var(--app-border-subtle)] text-[var(--app-text-subtle)] px-3 py-2 text-xs"
     >
-      <font-awesome-icon icon="fa-solid fa-circle-info" class="mt-0.5 flex-none text-[var(--el-color-primary)]" />
+      <info-icon
+        class="mt-0.5 flex-none text-[var(--el-color-primary)]"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
+      />
       <span class="whitespace-pre-wrap break-words">{{ noticeText }}</span>
     </div>
 
@@ -146,8 +158,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  CloseIcon,
+  CodeIcon,
+  ConfirmIcon,
+  EditIcon,
+  FileIcon,
+  FileTextIcon,
+  InfoIcon,
+  SearchIcon,
+  TerminalIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component, PropType } from 'vue';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
 import CodeSnippet from '@/components/common/CodeSnippet.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -184,7 +206,11 @@ export default defineComponent({
     highlight
   },
   components: {
-    FontAwesomeIcon,
+    CloseIcon,
+    ConfirmIcon,
+    EditIcon,
+    FileIcon,
+    InfoIcon,
     VueMarkdown,
     CodeSnippet,
     CopyToClipboard
@@ -241,21 +267,21 @@ export default defineComponent({
       const description = this.event.input?.description;
       return typeof description === 'string' ? description : '';
     },
-    toolIcon(): string {
+    toolIcon(): Component {
       if (this.commandText) {
-        return 'fa-solid fa-terminal';
+        return TerminalIcon;
       }
       const tool = (this.event.tool ?? '').toLowerCase();
       if (/read|cat|view/.test(tool)) {
-        return 'fa-solid fa-file-lines';
+        return FileTextIcon;
       }
       if (/write|edit|create|update|insert/.test(tool)) {
-        return 'fa-solid fa-pen';
+        return EditIcon;
       }
       if (/grep|glob|search|find|list/.test(tool)) {
-        return 'fa-solid fa-magnifying-glass';
+        return SearchIcon;
       }
-      return 'fa-solid fa-code';
+      return CodeIcon;
     },
     // AskUserQuestion is relayed as a tool_use; surface the question text
     // instead of the raw `{questions:[...]}` JSON.

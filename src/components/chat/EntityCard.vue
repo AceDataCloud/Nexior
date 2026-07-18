@@ -11,7 +11,7 @@
         <audio class="player" controls preload="metadata" :src="card.url" @error="onMediaError" />
         <div class="actions">
           <a class="download" :href="card.url" target="_blank" rel="noopener noreferrer">
-            <font-awesome-icon icon="fa-solid fa-arrow-down" />
+            <down-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.button.download') }}
           </a>
         </div>
@@ -73,20 +73,27 @@
       rel="noopener noreferrer"
       :title="card.title || card.url"
     >
-      <font-awesome-icon class="icon" :icon="fileIcon" />
+      <component :is="fileIcon" class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <div class="info">
         <div class="title">{{ card.title || cleanFileName }}</div>
         <div class="sub">{{ card.mimeType || hostname }}</div>
       </div>
-      <font-awesome-icon class="open" icon="fa-solid fa-arrow-up-right-from-square" />
+      <external-link-icon class="open" :size="'1em' as any" aria-hidden="true" focusable="false" />
     </a>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import {
+  DownIcon,
+  ExternalLinkIcon,
+  FileArchiveIcon,
+  FileIcon,
+  FileSpreadsheetIcon,
+  FileTextIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component, type PropType } from 'vue';
 import { ElImage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IChatCard } from '@/models';
 
 interface IData {
@@ -95,7 +102,7 @@ interface IData {
 
 export default defineComponent({
   name: 'EntityCard',
-  components: { ElImage, FontAwesomeIcon },
+  components: { DownIcon, ElImage, ExternalLinkIcon },
   props: {
     card: {
       type: Object as PropType<IChatCard>,
@@ -159,14 +166,14 @@ export default defineComponent({
         return '';
       }
     },
-    fileIcon(): string {
+    fileIcon(): Component {
       const mime = (this.card.mimeType || '').toLowerCase();
-      if (mime.includes('pdf')) return 'fa-solid fa-file-pdf';
-      if (mime.includes('word') || mime.includes('msword')) return 'fa-solid fa-file-word';
-      if (mime.includes('sheet') || mime.includes('excel') || mime.includes('csv')) return 'fa-solid fa-file-excel';
-      if (mime.includes('zip') || mime.includes('compressed')) return 'fa-solid fa-file-zipper';
-      if (mime.startsWith('text/')) return 'fa-solid fa-file-lines';
-      return 'fa-solid fa-file';
+      if (mime.includes('word') || mime.includes('msword') || mime.includes('pdf') || mime.startsWith('text/')) {
+        return FileTextIcon;
+      }
+      if (mime.includes('sheet') || mime.includes('excel') || mime.includes('csv')) return FileSpreadsheetIcon;
+      if (mime.includes('zip') || mime.includes('compressed')) return FileArchiveIcon;
+      return FileIcon;
     }
   },
   watch: {

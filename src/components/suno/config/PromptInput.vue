@@ -13,8 +13,13 @@
         <button v-for="tag in visibleTags" :key="tag.key" class="inspo-tag" @click="onTagClick(tag)">
           {{ tag.label }}
         </button>
-        <button class="inspo-tag inspo-tag-refresh" @click="onRefreshTags">
-          <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
+        <button
+          class="inspo-tag inspo-tag-refresh"
+          :aria-label="$t('common.button.refresh')"
+          :title="$t('common.button.refresh')"
+          @click="onRefreshTags"
+        >
+          <refresh-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </button>
       </div>
     </template>
@@ -22,8 +27,8 @@
 </template>
 
 <script lang="ts">
+import { RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 export const DEFAULT_PROMPT = '';
@@ -81,7 +86,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 export default defineComponent({
   name: 'PromptInput',
   components: {
-    FontAwesomeIcon,
+    RefreshIcon,
     PromptTextarea
   },
   data() {

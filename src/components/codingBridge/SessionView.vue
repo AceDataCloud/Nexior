@@ -5,11 +5,11 @@
       v-if="!currentNode"
       class="flex-1 flex flex-col items-center justify-center text-center p-8 text-[var(--app-text-subtle)]"
     >
-      <font-awesome-icon icon="fa-solid fa-laptop-code" class="text-4xl mb-3" />
+      <developer-icon class="text-4xl mb-3" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <p class="text-sm">{{ $t('codingBridge.session.noDevice') }}</p>
       <!-- Mobile: the device list is in a drawer, so offer a way to open it. -->
       <el-button class="md:hidden mt-4" round @click="$emit('devices')">
-        <font-awesome-icon icon="fa-solid fa-laptop-code" class="mr-1" />
+        <developer-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('codingBridge.nodeList.title') }}
       </el-button>
     </div>
@@ -27,7 +27,7 @@
             :aria-label="$t('codingBridge.nodeList.title')"
             @click="$emit('devices')"
           >
-            <font-awesome-icon icon="fa-solid fa-laptop-code" />
+            <developer-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </button>
           <div class="min-w-0">
             <div class="flex items-center gap-2 font-medium">
@@ -45,11 +45,11 @@
         </div>
         <div class="flex items-center gap-2 flex-none">
           <el-button size="small" round @click="$emit('history')">
-            <font-awesome-icon icon="fa-solid fa-clock-rotate-left" class="mr-1" />
+            <history-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('codingBridge.history.button') }}
           </el-button>
           <el-button v-if="currentSessionId" size="small" round @click="onNewSession">
-            <font-awesome-icon icon="fa-solid fa-plus" class="mr-1" />
+            <add-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('codingBridge.session.newSession') }}
           </el-button>
         </div>
@@ -113,7 +113,7 @@
           :title="`+${hiddenEventCount}`"
           @click="loadEarlier"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-up" />
+          <up-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ hiddenEventCount }}
         </button>
         <transcript-item
@@ -128,7 +128,7 @@
         <!-- Retry: re-run the last prompt after a turn ends in error. -->
         <div v-if="canRetry" class="flex justify-center pt-1">
           <el-button size="small" round @click="onRetry">
-            <font-awesome-icon icon="fa-solid fa-rotate-right" class="mr-1" />
+            <redo-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('codingBridge.session.retry') }}
           </el-button>
         </div>
@@ -153,7 +153,7 @@
       <div class="border-t border-[var(--app-border-subtle)] p-3">
         <!-- Read-only replay (e.g. Codex history cannot be resumed). -->
         <div v-if="readonly" class="flex items-center gap-2 text-xs text-[var(--app-text-subtle)] px-1 py-2">
-          <font-awesome-icon icon="fa-solid fa-eye" />
+          <view-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('codingBridge.history.readonly') }}</span>
           <el-button class="ml-auto" size="small" round @click="onNewSession">
             {{ $t('codingBridge.session.newSession') }}
@@ -166,7 +166,12 @@
             class="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-lg bg-[var(--el-color-primary-light-9)] px-3 py-2 text-xs text-[var(--app-text)]"
           >
             <span class="inline-flex items-center gap-1.5">
-              <font-awesome-icon icon="fa-solid fa-pen" class="text-[var(--el-color-primary)]" />
+              <edit-icon
+                class="text-[var(--el-color-primary)]"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
               {{ $t('codingBridge.session.editingBanner') }}
             </span>
             <el-checkbox v-if="canRestoreCode" v-model="restoreCode" size="small" class="cb-restore-code">
@@ -192,7 +197,7 @@
                   :alt="$t('codingBridge.session.attachmentImageAlt')"
                 />
                 <span v-else class="flex h-8 w-8 items-center justify-center rounded bg-[var(--app-content-bg)]">
-                  <font-awesome-icon icon="fa-solid fa-file" />
+                  <file-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 </span>
                 <span class="min-w-0 flex-1 truncate" :title="file.name">{{ file.name }}</span>
                 <span v-if="isAttachmentUploading(file)" class="text-[10px] text-[var(--app-text-subtle)]">
@@ -202,9 +207,10 @@
                   type="button"
                   class="flex h-5 w-5 items-center justify-center rounded-full text-[var(--app-text-subtle)] hover:bg-[var(--app-content-hover-bg)] hover:text-[var(--el-color-danger)]"
                   :title="$t('codingBridge.session.removeAttachment')"
+                  :aria-label="$t('codingBridge.session.removeAttachment')"
                   @click="removeAttachment(index, file)"
                 >
-                  <font-awesome-icon icon="fa-solid fa-xmark" />
+                  <close-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 </button>
               </div>
             </div>
@@ -258,9 +264,10 @@
                 type="button"
                 class="cb-icon-btn"
                 :title="$t('codingBridge.session.attachFile')"
+                :aria-label="$t('codingBridge.session.attachFile')"
                 @click="onTriggerAttachmentUpload"
               >
-                <font-awesome-icon icon="fa-solid fa-paperclip" />
+                <attachment-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               </button>
 
               <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
@@ -274,9 +281,14 @@
                       :class="{ 'cb-pill__brand--invert': providerIcon(provider)!.invertOnDark }"
                       alt=""
                     />
-                    <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
+                    <code-icon v-else class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     <span class="truncate">{{ providerName(provider) }}</span>
-                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    <expand-down-icon
+                      class="cb-pill__caret"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
                   </button>
                   <template #dropdown>
                     <el-dropdown-menu>
@@ -286,10 +298,12 @@
                         :command="opt.value"
                         :disabled="!opt.available"
                       >
-                        <font-awesome-icon
-                          icon="fa-solid fa-check"
+                        <confirm-icon
                           class="mr-2"
                           :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
+                          :size="'1em' as any"
+                          aria-hidden="true"
+                          focusable="false"
                         />
                         <img
                           v-if="providerIcon(opt.value)"
@@ -316,7 +330,7 @@
                     }"
                     alt=""
                   />
-                  <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
+                  <code-icon v-else class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
                 </span>
 
@@ -324,17 +338,24 @@
                 <el-popover ref="modelPopover" trigger="click" placement="top-start" :width="260">
                   <template #reference>
                     <button type="button" class="cb-pill">
-                      <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
+                      <ai-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                       <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
-                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                      <expand-down-icon
+                        class="cb-pill__caret"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
+                      />
                     </button>
                   </template>
                   <div class="cb-model-menu">
                     <button type="button" class="cb-model-option" @click="selectModel('')">
-                      <font-awesome-icon
-                        icon="fa-solid fa-check"
+                      <confirm-icon
                         class="cb-model-option__check"
                         :class="!model ? 'opacity-100' : 'opacity-0'"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
                       />
                       <span class="truncate">{{ $t('codingBridge.session.modelDefault') }}</span>
                     </button>
@@ -345,10 +366,12 @@
                       class="cb-model-option"
                       @click="selectModel(opt.value)"
                     >
-                      <font-awesome-icon
-                        icon="fa-solid fa-check"
+                      <confirm-icon
                         class="cb-model-option__check"
                         :class="opt.value === model ? 'opacity-100' : 'opacity-0'"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
                       />
                       <span class="truncate">{{ opt.label }}</span>
                     </button>
@@ -360,8 +383,13 @@
                         @keyup.enter="applyCustomModel"
                       >
                         <template #append>
-                          <el-button :disabled="!customModelDraft.trim()" @click="applyCustomModel">
-                            <font-awesome-icon icon="fa-solid fa-check" />
+                          <el-button
+                            :disabled="!customModelDraft.trim()"
+                            :aria-label="$t('common.button.confirm')"
+                            :title="$t('common.button.confirm')"
+                            @click="applyCustomModel"
+                          >
+                            <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                           </el-button>
                         </template>
                       </el-input>
@@ -374,17 +402,24 @@
                      resumed conversation can change them per query. -->
                 <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
                   <button type="button" class="cb-pill">
-                    <font-awesome-icon icon="fa-solid fa-gauge-high" class="cb-pill__icon" />
+                    <performance-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     <span class="truncate">{{ effortLabel(effort) }}</span>
-                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    <expand-down-icon
+                      class="cb-pill__caret"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
                   </button>
                   <template #dropdown>
                     <el-dropdown-menu>
                       <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
-                        <font-awesome-icon
-                          icon="fa-solid fa-check"
+                        <confirm-icon
                           class="mr-2"
                           :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
+                          :size="'1em' as any"
+                          aria-hidden="true"
+                          focusable="false"
                         />
                         {{ opt.label }}
                       </el-dropdown-item>
@@ -394,17 +429,24 @@
 
                 <el-dropdown trigger="click" @command="permissionMode = $event">
                   <button type="button" class="cb-pill">
-                    <font-awesome-icon icon="fa-solid fa-shield-halved" class="cb-pill__icon" />
+                    <security-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
-                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    <expand-down-icon
+                      class="cb-pill__caret"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
                   </button>
                   <template #dropdown>
                     <el-dropdown-menu>
                       <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
-                        <font-awesome-icon
-                          icon="fa-solid fa-check"
+                        <confirm-icon
                           class="mr-2"
                           :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
+                          :size="'1em' as any"
+                          aria-hidden="true"
+                          focusable="false"
                         />
                         {{ opt.label }}
                       </el-dropdown-item>
@@ -418,9 +460,19 @@
                 <el-popover v-if="canPickCwd" trigger="click" placement="top-start" :width="320">
                   <template #reference>
                     <button type="button" class="cb-pill">
-                      <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                      <folder-open-icon
+                        class="cb-pill__icon"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
+                      />
                       <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
-                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                      <expand-down-icon
+                        class="cb-pill__caret"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
+                      />
                     </button>
                   </template>
                   <el-input
@@ -441,19 +493,25 @@
                         @keydown.enter.prevent="openDirectory"
                         @keydown.space.prevent="openDirectory"
                       >
-                        <font-awesome-icon icon="fa-solid fa-folder-open" />
+                        <folder-open-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                       </span>
                     </template>
                   </el-input>
                 </el-popover>
                 <span v-else-if="currentSession?.cwd" class="cb-pill cb-pill--static">
-                  <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                  <folder-open-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   <span class="truncate">{{ currentSession?.cwd }}</span>
                 </span>
               </div>
 
-              <el-button v-if="running" circle @click="onInterrupt">
-                <font-awesome-icon icon="fa-solid fa-stop" />
+              <el-button
+                v-if="running"
+                circle
+                :aria-label="$t('common.button.stop')"
+                :title="$t('common.button.stop')"
+                @click="onInterrupt"
+              >
+                <stop-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               </el-button>
               <el-button type="primary" round :disabled="!canSend" @click="onSend">
                 {{ editingActive ? $t('codingBridge.session.editSubmit') : $t('codingBridge.session.send') }}
@@ -472,6 +530,26 @@
 </template>
 
 <script lang="ts">
+import {
+  AddIcon,
+  AiIcon,
+  AttachmentIcon,
+  CloseIcon,
+  CodeIcon,
+  ConfirmIcon,
+  DeveloperIcon,
+  EditIcon,
+  ExpandDownIcon,
+  FileIcon,
+  FolderOpenIcon,
+  HistoryIcon,
+  PerformanceIcon,
+  RedoIcon,
+  SecurityIcon,
+  StopIcon,
+  UpIcon,
+  ViewIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   ElInput,
@@ -488,7 +566,6 @@ import {
   UploadFile,
   UploadFiles
 } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import ThinkingIndicator from './ThinkingIndicator.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
@@ -534,6 +611,24 @@ const PROVIDER_BRANDS: Record<string, { src: string; invertOnDark: boolean }> = 
 export default defineComponent({
   name: 'CodingBridgeSessionView',
   components: {
+    AddIcon,
+    AiIcon,
+    AttachmentIcon,
+    CloseIcon,
+    CodeIcon,
+    ConfirmIcon,
+    DeveloperIcon,
+    EditIcon,
+    ExpandDownIcon,
+    FileIcon,
+    FolderOpenIcon,
+    HistoryIcon,
+    PerformanceIcon,
+    RedoIcon,
+    SecurityIcon,
+    StopIcon,
+    UpIcon,
+    ViewIcon,
     ElInput,
     ElButton,
     ElPopover,
@@ -544,7 +639,6 @@ export default defineComponent({
     ElCheckbox,
     ElSkeleton,
     ElSkeletonItem,
-    FontAwesomeIcon,
     TranscriptItem,
     ThinkingIndicator,
     DirectoryDialog,

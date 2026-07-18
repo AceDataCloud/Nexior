@@ -1,23 +1,30 @@
 <template>
   <div v-if="value !== null && value !== undefined" class="text-center text-[var(--el-text-color-secondary)] mb-1">
-    <font-awesome-icon icon="fa-solid fa-coins" class="text-xs mr-1 text-[var(--el-color-primary-light-3)]" />
-    <span class="text-xs font-medium">
-      {{ value.toFixed(2) }}
-      {{ $t(`service.unit.${service?.unit || 'credits'}`) }}<template v-if="rateUnit">/{{ rateUnit }}</template>
+    <span class="inline-flex items-center justify-center gap-1 text-xs">
+      <credits-icon
+        class="text-[var(--el-color-primary-light-3)]"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
+      />
+      <span class="font-medium">
+        {{ value.toFixed(2) }}
+        {{ $t(`service.unit.${service?.unit || 'credits'}`) }}<template v-if="rateUnit">/{{ rateUnit }}</template>
+      </span>
     </span>
     <div v-if="note" class="text-[10px] leading-tight mt-0.5 opacity-80">{{ note }}</div>
   </div>
 </template>
 
 <script lang="ts">
+import { CreditsIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IService } from '@/models';
 
 export default defineComponent({
   name: 'Consumption',
   components: {
-    FontAwesomeIcon
+    CreditsIcon
   },
   props: {
     value: {

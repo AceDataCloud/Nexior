@@ -14,17 +14,17 @@
             />
             <el-alert v-else-if="task?.response?.success === false" :closable="false" class="failure">
               <template #template>
-                <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+                <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('qrart.name.failure') }}
               </template>
               <p class="description">
-                <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+                <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('qrart.name.failureReason') }}:
                 {{ task?.response?.error?.message }}
                 <copy-to-clipboard :content="task?.response?.error?.message!" class="btn-copy" />
               </p>
               <p class="description">
-                <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+                <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('qrart.name.traceId') }}:
                 {{ task?.response?.trace_id }}
                 <copy-to-clipboard :content="task?.response?.trace_id" class="btn-copy" />
@@ -85,17 +85,19 @@
 </template>
 
 <script lang="ts">
+import { ChannelIcon, InfoIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElImage, ElRow, ElCol, ElDescriptions, ElDescriptionsItem, ElAlert } from 'element-plus';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'TaskDetail',
   components: {
+    ChannelIcon,
+    InfoIcon,
+    WarningIcon,
     ElImage,
     ElAlert,
-    FontAwesomeIcon,
     CopyToClipboard,
     ElDescriptions,
     ElDescriptionsItem,

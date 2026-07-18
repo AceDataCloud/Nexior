@@ -56,11 +56,11 @@
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
@@ -70,17 +70,17 @@
       <div :class="{ content: true }">
         <el-alert :closable="false" :class="['mt-2', 'task-metadata', taskInfoClass]">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.model') }}:
             {{ modelValue?.request?.model }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.action') }}:
             {{ actionLabel }}
           </p>
           <p v-if="modelValue?.request?.aspect_ratio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+            <expand-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.ratio') }}:
             {{ modelValue?.request?.aspect_ratio }}
           </p>
@@ -88,22 +88,22 @@
             v-if="modelValue?.request?.translation !== undefined"
             class="text-[var(--el-text-color-regular)] text-xs mb-2"
           >
-            <font-awesome-icon icon="fa-solid fa-language" class="mr-1" />
+            <language-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.translation') }}:
             {{ $t(modelValue?.request?.translation ? 'seedance.button.on' : 'seedance.button.off') }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('veo.name.traceId') }}:
             {{ traceId }}
             <copy-to-clipboard :content="traceId" class="btn-copy inline-block" />
@@ -115,11 +115,21 @@
 </template>
 
 <script lang="ts">
+import {
+  ApplicationIcon,
+  ChannelIcon,
+  ExpandIcon,
+  InfoIcon,
+  LanguageIcon,
+  LightningIcon,
+  MagicIcon,
+  TimeIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IVeoTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
@@ -127,8 +137,16 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    ApplicationIcon,
+    ChannelIcon,
+    ExpandIcon,
+    InfoIcon,
+    LanguageIcon,
+    LightningIcon,
+    MagicIcon,
+    TimeIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     VideoPlayer,
     ImagePreview,

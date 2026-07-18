@@ -35,7 +35,8 @@
             <img :src="iconUrl || defaultIcon" class="icon-preview" alt="" />
           </div>
           <div class="icon-actions">
-            <el-button :icon="Upload" @click="iconEditorVisible = true">
+            <el-button @click="iconEditorVisible = true">
+              <UploadIcon :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ iconUrl ? $t('site.capabilityOverride.replaceIcon') : $t('site.capabilityOverride.uploadIcon') }}
             </el-button>
             <el-button v-if="iconUrl" link type="primary" @click="iconUrl = ''">
@@ -76,7 +77,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElDialog, ElForm, ElFormItem, ElInput, ElMessage, ElMessageBox } from 'element-plus';
-import { Upload } from '@element-plus/icons-vue';
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import ImageCropper from '@/components/common/ImageCropper.vue';
 import { siteCapabilityOverrideOperator } from '@/operators';
@@ -92,7 +93,8 @@ export default defineComponent({
     ElForm,
     ElFormItem,
     ElInput,
-    ImageCropper
+    ImageCropper,
+    UploadIcon
   },
   props: {
     modelValue: { type: Boolean, default: false },
@@ -111,8 +113,7 @@ export default defineComponent({
       autoTranslatedFields: [] as string[],
       iconEditorVisible: false,
       submitting: false,
-      resetting: false,
-      Upload
+      resetting: false
     };
   },
   computed: {

@@ -12,7 +12,7 @@
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
+                <wallet-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.price') }}</p>
@@ -29,7 +29,7 @@
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-coins" class="icon" />
+                <credits-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.reward') }}</p>
@@ -48,7 +48,7 @@
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-solid fa-percent" class="icon" />
+                <percent-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.percentage') }}</p>
@@ -62,7 +62,7 @@
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
-                <font-awesome-icon icon="fa-regular fa-user" class="icon" />
+                <user-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.inviteesCount') }}</p>
@@ -139,7 +139,7 @@
               </h4>
               <el-divider />
               <div class="link-wrapper text-center">
-                <font-awesome-icon v-if="false" icon="fa-solid fa-link" class="icon" />
+                <link-icon v-if="false" class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 <a :href="distributionLink" class="link">
                   {{ distributionLink }}
                 </a>
@@ -180,6 +180,7 @@
 </template>
 
 <script lang="ts">
+import { CreditsIcon, LinkIcon, PercentIcon, UserIcon, WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
@@ -195,7 +196,6 @@ import {
   ElSkeleton
 } from 'element-plus';
 import { distributionLevelOperator, distributionStatusOperator, shortUrlOperator } from '@/operators';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
@@ -214,8 +214,12 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleDistributionList',
   components: {
+    CreditsIcon,
+    LinkIcon,
+    PercentIcon,
+    UserIcon,
+    WalletIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     QrCode,
     ElProgress,
     ElRow,
@@ -363,12 +367,15 @@ export default defineComponent({
   .icon-wrapper {
     height: 40px;
     width: 40px;
-    line-height: 40px;
+    display: grid;
+    place-items: center;
     border-radius: 50%;
     background-color: var(--el-color-primary-light-9);
-    text-align: center;
     margin-bottom: 10px;
     .icon {
+      display: block;
+      width: 18px;
+      height: 18px;
       color: var(--el-color-primary);
     }
   }
@@ -383,6 +390,8 @@ export default defineComponent({
   .value {
     font-weight: 600;
     font-size: 30px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     margin: 0;
   }
   .description {

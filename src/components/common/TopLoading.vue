@@ -1,16 +1,16 @@
 <template>
   <div :class="['top-loading', { floating }]" role="status" aria-live="polite">
     <el-icon class="is-loading" :size="size">
-      <loading />
+      <loading :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-icon>
     <span>{{ label }}</span>
   </div>
 </template>
 
 <script lang="ts">
+import { LoadingIcon as Loading } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElIcon } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'TopLoading',
