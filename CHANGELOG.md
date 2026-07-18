@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 07:43:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Jul 2026 07:44:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.20
+
+Sat, 18 Jul 2026 07:44:13 GMT
+
+### Patches
+
+- Make shared audio previews keyboard-accessible and show load failures. (dev@acedata.cloud)
 
 ## 3.329.19
 
