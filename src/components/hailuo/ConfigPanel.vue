@@ -3,7 +3,7 @@
     <div class="flex-1 overflow-y-auto p-5">
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
-      <start-image-url-input v-if="config?.model === 'minimax-i2v'" class="mb-2" />
+      <start-image-url-input v-if="config?.model === 'minimax-i2v'" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />

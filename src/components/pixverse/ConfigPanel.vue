@@ -7,7 +7,7 @@
       <ratio-selector class="mb-4" />
       <motion-selector class="mb-4" />
       <quality-selector class="mb-4" />
-      <start-image class="mb-2" />
+      <start-image class="mb-4" />
       <seed-selector class="mb-4" />
       <duration-selector class="mb-4" />
     </div>

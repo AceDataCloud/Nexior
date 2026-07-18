@@ -5,7 +5,7 @@
       <model-selector class="mb-4" />
       <resolution-selector v-if="supportsResolution" class="mb-4" />
       <duration-selector v-if="supportsDuration" class="mb-4" />
-      <image-url-input v-if="supportsImageUrl" class="mb-2" />
+      <image-url-input v-if="supportsImageUrl" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />

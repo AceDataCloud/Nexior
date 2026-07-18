@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
-      <action-selector class="mb-5" />
+      <action-selector class="mb-4" />
 
       <model-selector class="mb-4" />
       <start-end-image
@@ -13,7 +13,7 @@
       />
       <prompt-input class="mb-4" />
       <aspect-ratio-selector class="mb-4" />
-      <translation-selector class="mb-2" />
+      <translation-selector class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />

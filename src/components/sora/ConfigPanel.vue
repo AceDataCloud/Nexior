@@ -7,7 +7,7 @@
       <size-selector class="mb-4" />
       <orientation-selector class="mb-4" />
       <prompt-input class="mb-4" />
-      <start-end-image v-show="config?.action === 'image2video'" class="mb-2" />
+      <start-end-image v-show="config?.action === 'image2video'" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
