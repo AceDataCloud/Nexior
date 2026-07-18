@@ -3,6 +3,7 @@ export interface ISeedreamSequentialOptions {
 }
 
 export interface ISeedreamConfig {
+  action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
   image?: string[];
