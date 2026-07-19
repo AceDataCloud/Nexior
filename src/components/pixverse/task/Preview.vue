@@ -72,7 +72,7 @@
       </div>
       <!-- Display error message -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="info">
+        <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('pixverse.name.failure') }}
