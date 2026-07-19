@@ -5,7 +5,7 @@
     >
       <slot name="config" />
     </div>
-    <div class="result h-full p-6 flex-1 flex flex-col bg-[var(--app-content-bg)]">
+    <div class="result h-full p-6 flex-1 flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="result" />
     </div>
     <el-button

@@ -93,7 +93,10 @@
           </p>
         </el-alert>
       </div>
-      <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div
+        v-else-if="modelValue?.response?.success === false"
+        :class="{ content: true, 'mt-[15px]': !modelValue?.request?.prompt }"
+      >
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -249,7 +252,7 @@ $left-width: 70px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   .left {
     width: $left-width;
     .avatar {
