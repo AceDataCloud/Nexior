@@ -23,6 +23,8 @@ export const CHAT_MODEL_NAME_CLAUDE_OPUS_4_8 = 'claude-opus-4-8';
 export const CHAT_MODEL_NAME_CLAUDE_SONNET_4_6 = 'claude-sonnet-4-6';
 export const CHAT_MODEL_NAME_CLAUDE_HAIKU_4_5 = 'claude-haiku-4-5-20251001';
 
+export const CHAT_MODEL_NAME_KIMI_K3 = 'kimi-k3';
+export const CHAT_MODEL_NAME_KIMI_K2_6 = 'kimi-k2.6';
 export const CHAT_MODEL_NAME_KIMI_K2_5 = 'kimi-k2.5';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
@@ -225,6 +227,29 @@ export const CHAT_MODEL_CLAUDE_HAIKU_4_5: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.claudeHaiku45Description')
 };
 
+export const CHAT_MODEL_KIMI_K3: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K3,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK3'),
+  getDescription: () => i18n.global.t('chat.model.kimiK3Description')
+};
+
+export const CHAT_MODEL_KIMI_K2_6: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K2_6,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isImageSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK26'),
+  getDescription: () => i18n.global.t('chat.model.kimiK26Description')
+};
+
 export const CHAT_MODEL_KIMI_K2_5: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_KIMI_K2_5,
@@ -330,7 +355,13 @@ export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
   name: 'kimi',
   getDisplayName: () => i18n.global.t('chat.modelGroup.kimi'),
   getDescription: () => i18n.global.t('chat.modelGroup.kimiDescription'),
-  models: [CHAT_MODEL_KIMI_K2_5, CHAT_MODEL_KIMI_K2_THINKING, CHAT_MODEL_KIMI_K2_THINKING_TURBO]
+  models: [
+    CHAT_MODEL_KIMI_K3,
+    CHAT_MODEL_KIMI_K2_6,
+    CHAT_MODEL_KIMI_K2_5,
+    CHAT_MODEL_KIMI_K2_THINKING,
+    CHAT_MODEL_KIMI_K2_THINKING_TURBO
+  ]
 };
 
 export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
@@ -357,6 +388,8 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_CLAUDE_OPUS_4_8,
   CHAT_MODEL_CLAUDE_SONNET_4_6,
   CHAT_MODEL_CLAUDE_HAIKU_4_5,
+  CHAT_MODEL_KIMI_K3,
+  CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K2_5,
   CHAT_MODEL_KIMI_K2_THINKING,
   CHAT_MODEL_KIMI_K2_THINKING_TURBO,
