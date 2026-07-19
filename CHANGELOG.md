@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 04:19:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 04:29:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.28
+
+Sun, 19 Jul 2026 04:29:01 GMT
+
+### Patches
+
+- Improve local Suno variation controls and Seedance frame field spacing. (dev@acedata.cloud)
 
 ## 3.329.27
 
