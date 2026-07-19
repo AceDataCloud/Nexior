@@ -46,7 +46,35 @@
           </p>
         </el-alert>
       </div>
-      <!-- Pending / no audio yet -->
+      <!-- Failure -->
+      <div v-else-if="isFailure" class="content">
+        <el-alert :closable="false" class="failure">
+          <template #title>
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('fish.name.failure') }}
+          </template>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('fish.name.taskId') }}: {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id" />
+          </p>
+          <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('fish.name.failureReason') }}: {{ failureReason }}
+            <copy-to-clipboard :content="failureReason" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('fish.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('fish.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+          </p>
+        </el-alert>
+      </div>
+      <!-- Pending / no response yet -->
       <div v-else class="content">
         <el-alert :closable="false" class="info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
@@ -61,7 +89,15 @@
 </template>
 
 <script lang="ts">
-import { CpuIcon, MagicIcon, MicrophoneIcon, TimeIcon } from '@acedatacloud/core/icons/components';
+import {
+  ChannelIcon,
+  CpuIcon,
+  InfoIcon,
+  MagicIcon,
+  MicrophoneIcon,
+  TimeIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton } from 'element-plus';
 import { IFishTask } from '@/models';
@@ -71,10 +107,13 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'FishTaskPreview',
   components: {
+    ChannelIcon,
     CpuIcon,
+    InfoIcon,
     MagicIcon,
     MicrophoneIcon,
     TimeIcon,
+    WarningIcon,
     CopyToClipboard,
     ElAlert,
     ElButton,
@@ -92,6 +131,13 @@ export default defineComponent({
     },
     audioUrl(): string | undefined {
       return this.modelValue?.response?.audio_url;
+    },
+    isFailure(): boolean {
+      return this.modelValue?.response?.success === false || !!this.modelValue?.response?.error;
+    },
+    failureReason(): string | undefined {
+      const error = this.modelValue?.response?.error;
+      return typeof error === 'string' ? error : error?.message;
     }
   },
   methods: {
