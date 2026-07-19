@@ -30,4 +30,28 @@ describe('seedream/task/Preview', () => {
       async: true
     });
   });
+
+  it('adds request-context spacing only when a failed task has no prompt', () => {
+    const mountFailure = (prompt?: string) =>
+      shallowMount(Preview, {
+        props: {
+          modelValue: {
+            id: 'task-1',
+            request: prompt === undefined ? {} : { prompt },
+            response: { success: false, task_id: 'task-1', error: { message: 'failed' } }
+          }
+        },
+        global: {
+          mocks: {
+            $t: (key: string) => key,
+            $dayjs: { format: () => '2026-07-19' },
+            $store: { state: { seedream: { config: {} } }, commit: () => undefined }
+          }
+        }
+      });
+
+    expect(mountFailure().find('.content').classes()).toContain('mt-[15px]');
+    expect(mountFailure('').find('.content').classes()).toContain('mt-[15px]');
+    expect(mountFailure('A lighthouse').find('.content').classes()).not.toContain('mt-[15px]');
+  });
 });
