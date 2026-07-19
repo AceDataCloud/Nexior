@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 16:22:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 16:23:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.52
+
+Sun, 19 Jul 2026 16:23:19 GMT
+
+### Patches
+
+- Label unfinished Nano Banana responses with pending semantics instead of failure copy. (dev@acedata.cloud)
+- Show accurate pending and processing semantics for Pika tasks. (dev@acedata.cloud)
 
 ## 3.329.51
 
