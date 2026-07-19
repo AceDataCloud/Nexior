@@ -14,19 +14,14 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('wan.status.pending') }}) </span>
-          <span
-            v-if="
-              modelValue?.response?.state === 'processing' ||
-              modelValue?.response?.state === 'pending' ||
-              modelValue?.response?.state === 'running'
-            "
-          >
-            - ({{ $t('wan.status.processing') }})
-          </span>
+          <span v-if="modelValue?.response && isWaiting"> - ({{ $t('wan.status.processing') }}) </span>
         </p>
       </div>
       <!-- Display success message -->
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
+      <div
+        v-if="modelValue?.response?.success === true && !isFailure && !isWaiting"
+        :class="{ content: true, failed: true }"
+      >
         <div v-if="modelValue?.response?.video_url" class="mb-4">
           <video-player :src="modelValue?.response?.video_url" />
         </div>
@@ -58,7 +53,7 @@
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div v-if="isFailure" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -89,11 +84,11 @@
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
+      <div v-if="isWaiting" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('wan.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t(modelValue?.response ? 'wan.status.processing' : 'wan.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -138,6 +133,22 @@ export default defineComponent({
     }
   },
   computed: {
+    isFailure(): boolean {
+      const response = this.modelValue?.response;
+      return (
+        response?.success === false ||
+        !!response?.error ||
+        response?.state === 'failed' ||
+        response?.state === 'cancelled'
+      );
+    },
+    isWaiting(): boolean {
+      const response = this.modelValue?.response;
+      if (!response) return true;
+      if (this.isFailure) return false;
+      if (['queued', 'pending', 'processing', 'running'].includes(response.state || '')) return true;
+      return response.success !== true && !response.state;
+    },
     application() {
       return this.$store.state.wan?.application;
     },
