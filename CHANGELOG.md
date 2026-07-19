@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 04:29:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 05:03:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.29
+
+Sun, 19 Jul 2026 05:03:23 GMT
+
+### Patches
+
+- Improve local media field spacing in Seedance, Kling, and Midjourney. (dev@acedata.cloud)
 
 ## 3.329.28
 
