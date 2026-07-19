@@ -232,7 +232,7 @@ $left-width: 70px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   .left {
     width: $left-width;
     .avatar {
