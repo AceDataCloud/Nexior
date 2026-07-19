@@ -1,6 +1,6 @@
 <template>
   <div v-if="capability.acceptsLastFrame" class="relative">
-    <div class="flex justify-between">
+    <div class="flex min-h-8 items-center pr-20">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('seedance.name.lastFrame') }}</span>
         <info-icon :content="$t('seedance.description.lastFrame')" />
