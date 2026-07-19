@@ -58,6 +58,7 @@
           v-if="modelValue?.response?.raw_image_url"
           :src="modelValue?.response?.image_url"
           :raw-src="modelValue?.response?.raw_image_url"
+          class="mb-4"
         />
         <div v-if="modelValue?.response?.actions" :class="{ operations: true, full }">
           <el-tooltip
