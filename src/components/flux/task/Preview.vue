@@ -174,7 +174,7 @@ $left-width: 70px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   .left {
     width: $left-width;
     .avatar {
