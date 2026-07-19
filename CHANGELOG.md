@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 16:19:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 16:20:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.47
+
+Sun, 19 Jul 2026 16:20:31 GMT
+
+### Patches
+
+- Label queued and processing Sora tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
 
 ## 3.329.46
 
