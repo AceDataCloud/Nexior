@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 06:09:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 07:39:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.31
+
+Sun, 19 Jul 2026 07:39:43 GMT
+
+### Patches
+
+- Label Flux tasks without a response as pending instead of failed. (dev@acedata.cloud)
 
 ## 3.329.30
 
