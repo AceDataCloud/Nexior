@@ -1,5 +1,26 @@
 <template>
   <div class="task">
+    <el-alert v-if="isFailure" :closable="false" class="task-failure">
+      <template #title>
+        <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.failure') }}
+      </template>
+      <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.taskId') }}: {{ modelValue?.id }}
+        <copy-to-clipboard :content="modelValue?.id" />
+      </p>
+      <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.failureReason') }}: {{ failureReason }}
+        <copy-to-clipboard :content="failureReason" />
+      </p>
+      <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+        <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.traceId') }}: {{ traceId }}
+        <copy-to-clipboard :content="traceId" />
+      </p>
+    </el-alert>
     <div
       v-for="(audio, index) in audios"
       :key="audio.id"
@@ -267,6 +288,7 @@
 <script lang="ts">
 import {
   AudioIcon,
+  ChannelIcon,
   CodeIcon,
   CollectionIcon,
   CutIcon,
@@ -276,6 +298,7 @@ import {
   EditIcon,
   FastForwardIcon,
   GuitarIcon,
+  InfoIcon,
   LinkIcon,
   LoadingIcon as Loading,
   MagicIcon,
@@ -287,7 +310,8 @@ import {
   ShuffleIcon,
   SortIcon,
   TimeIcon,
-  UndoIcon
+  UndoIcon,
+  WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
@@ -303,7 +327,8 @@ import {
   ElInput,
   ElMessageBox,
   ElProgress,
-  ElCheckbox
+  ElCheckbox,
+  ElAlert
 } from 'element-plus';
 
 import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/core/icons/components';
@@ -311,11 +336,13 @@ import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
     AudioIcon,
+    ChannelIcon,
     CodeIcon,
     CollectionIcon,
     CutIcon,
@@ -325,6 +352,7 @@ export default defineComponent({
     EditIcon,
     FastForwardIcon,
     GuitarIcon,
+    InfoIcon,
     LinkIcon,
     MagicIcon,
     MicrophoneIcon,
@@ -336,6 +364,7 @@ export default defineComponent({
     SortIcon,
     TimeIcon,
     UndoIcon,
+    WarningIcon,
     ElImage,
     ElIcon,
     ElTooltip,
@@ -347,8 +376,10 @@ export default defineComponent({
     ElInput,
     ElProgress,
     ElCheckbox,
+    ElAlert,
     Loading,
-    ApiCodeDialog
+    ApiCodeDialog,
+    CopyToClipboard
   },
   props: {
     modelValue: {
@@ -389,6 +420,18 @@ export default defineComponent({
       // @ts-ignore
       const action = this.modelValue?.request?.action as ISunoAudio['action'] | undefined;
       return action ? data.map((a) => ({ ...a, action })) : data;
+    },
+    isFailure(): boolean {
+      return (
+        this.audios.length === 0 && (this.modelValue?.response?.success === false || !!this.modelValue?.response?.error)
+      );
+    },
+    failureReason(): string | undefined {
+      const error = this.modelValue?.response?.error;
+      return typeof error === 'string' ? error : error?.message;
+    },
+    traceId(): string | undefined {
+      return this.modelValue?.response?.trace_id || this.modelValue?.trace_id;
     },
     application() {
       return this.$store.state.suno?.application;
@@ -915,6 +958,9 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid transparent;
   transition: border-color 0.2s;
+  .task-failure {
+    border-left: 2px solid var(--el-color-danger);
+  }
   &:hover {
     border-color: var(--el-border-color-lighter);
   }
