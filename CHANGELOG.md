@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 08:16:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 10:33:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.36
+
+Sun, 19 Jul 2026 10:33:06 GMT
+
+### Patches
+
+- Show Producer task-level failures when generation returns no audio rows. (dev@acedata.cloud)
 
 ## 3.329.35
 
