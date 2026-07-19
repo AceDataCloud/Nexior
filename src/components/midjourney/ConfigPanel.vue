@@ -6,7 +6,7 @@
           <div class="p-5">
             <model-selector class="mb-2" />
             <prompt-input class="mb-4" />
-            <reference-image class="mb-2" />
+            <reference-image class="mb-4" />
             <ratio-selector class="mb-4" />
             <quality-selector class="mb-4" />
             <version-selector v-if="!isNiji" class="mb-4" />
@@ -25,8 +25,8 @@
         <el-tab-pane :label="$t('midjourney.tab.videos')" name="videos">
           <div class="p-5">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
-            <image-url-input class="mb-2" />
-            <end-image-url-input class="mb-2" />
+            <image-url-input class="mb-4" />
+            <end-image-url-input class="mb-4" />
             <loop-selector class="mb-2" />
             <resolution-selector class="mb-4" />
             <prompt-input class="mb-4" />
@@ -34,7 +34,7 @@
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.describe')" name="describe">
           <div class="p-5">
-            <image-url-input2 class="mb-2" />
+            <image-url-input2 class="mb-4" />
           </div>
         </el-tab-pane>
       </el-tabs>
