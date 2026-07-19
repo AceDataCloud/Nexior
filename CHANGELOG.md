@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 16:18:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 16:19:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.46
+
+Sun, 19 Jul 2026 16:19:43 GMT
+
+### Patches
+
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Cover Veo task metadata across pending, successful, and failed generations. (dev@acedata.cloud)
 
 ## 3.329.45
 
