@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 10:33:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 12:30:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.37
+
+Sun, 19 Jul 2026 12:30:28 GMT
+
+### Patches
+
+- Cover Seedream failure spacing when legacy requests contain a null prompt. (dev@acedata.cloud)
 
 ## 3.329.36
 
