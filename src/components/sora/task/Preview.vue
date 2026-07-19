@@ -14,7 +14,7 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('sora.status.pending') }}) </span>
-          <span v-if="Array.isArray(modelValue?.response?.data) && modelValue?.response?.data[0]?.state === 'pending'">
+          <span v-if="modelValue?.response && modelValue?.response?.success === undefined">
             - ({{ $t('sora.status.processing') }})
           </span>
         </p>
@@ -94,8 +94,8 @@
       <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('sora.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t(modelValue?.response ? 'sora.status.processing' : 'sora.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
