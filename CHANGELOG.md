@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 05:03:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 06:09:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.30
+
+Sun, 19 Jul 2026 06:09:40 GMT
+
+### Patches
+
+- Render failed Pixverse tasks with failure alert semantics. (dev@acedata.cloud)
 
 ## 3.329.29
 
