@@ -100,8 +100,8 @@
       >
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('luma.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t(modelValue?.response ? 'luma.status.processing' : 'luma.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
