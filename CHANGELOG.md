@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 16:20:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 16:21:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.48
+
+Sun, 19 Jul 2026 16:21:08 GMT
+
+### Patches
+
+- Show pending and processing states for unfinished Kling video tasks. (dev@acedata.cloud)
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Sora tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
 
 ## 3.329.47
 
