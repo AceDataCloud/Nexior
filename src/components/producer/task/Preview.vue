@@ -1,5 +1,26 @@
 <template>
   <div class="task">
+    <el-alert v-if="isFailure" :closable="false" class="task-failure">
+      <template #title>
+        <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('producer.name.failure') }}
+      </template>
+      <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('producer.name.taskId') }}: {{ modelValue?.id }}
+        <copy-to-clipboard :content="modelValue?.id" />
+      </p>
+      <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('producer.name.failureReason') }}: {{ failureReason }}
+        <copy-to-clipboard :content="failureReason" />
+      </p>
+      <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+        <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('producer.name.traceId') }}: {{ traceId }}
+        <copy-to-clipboard :content="traceId" />
+      </p>
+    </el-alert>
     <div v-for="audio in audios" :key="audio.id" class="audio" @click.stop="onClick(audio)">
       <div v-loading="!audio?.audio_url" class="left">
         <el-image :src="audio?.image_url" class="cover" fit="cover" lazy />
@@ -141,30 +162,49 @@
 
 <script lang="ts">
 import {
+  ChannelIcon,
   CodeIcon,
   DownloadIcon,
+  InfoIcon,
   LoadingIcon as Loading,
+  MagicIcon,
   MoreIcon,
   PauseIcon as VideoPause,
-  PlayIcon as VideoPlay
+  PlayIcon as VideoPlay,
+  WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { IProducerAudio, IProducerTask } from '@/models';
-import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
+import {
+  ElAlert,
+  ElImage,
+  ElIcon,
+  ElTooltip,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElMessage
+} from 'element-plus';
 
 import { IProducerVideoRequest, IProducerAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    ChannelIcon,
     CodeIcon,
     DownloadIcon,
+    InfoIcon,
+    MagicIcon,
     MoreIcon,
+    WarningIcon,
+    ElAlert,
     ElImage,
     ElIcon,
     ElTooltip,
@@ -174,7 +214,8 @@ export default defineComponent({
     ElDropdownMenu,
     ElDropdownItem,
     Loading,
-    ApiCodeDialog
+    ApiCodeDialog,
+    CopyToClipboard
   },
   props: {
     modelValue: {
@@ -212,6 +253,18 @@ export default defineComponent({
       // @ts-ignore
       const action = this.modelValue?.request?.action as IProducerAudio['action'] | undefined;
       return action ? data.map((a) => ({ ...a, action })) : data;
+    },
+    isFailure(): boolean {
+      return (
+        this.audios.length === 0 && (this.modelValue?.response?.success === false || !!this.modelValue?.response?.error)
+      );
+    },
+    failureReason(): string | undefined {
+      const error = this.modelValue?.response?.error;
+      return typeof error === 'string' ? error : error?.message;
+    },
+    traceId(): string | undefined {
+      return this.modelValue?.response?.trace_id || this.modelValue?.trace_id;
     },
     application() {
       return this.$store.state.producer?.application;
@@ -465,6 +518,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  .task-failure {
+    border-left: 2px solid var(--el-color-danger);
+  }
   .audio {
     display: flex;
     margin-bottom: 10px;

@@ -89,14 +89,23 @@ export interface IProducerVideo {
   video_url?: string;
 }
 
-export interface IProducerAudioResponse {
+export interface IProducerTaskResultMeta {
   success?: boolean;
-  task_id: string;
-  data: IProducerAudio[];
+  trace_id?: string;
+  error?:
+    | string
+    | {
+        code?: string;
+        message?: string;
+      };
 }
 
-export interface IProducerLyricResponse {
-  success?: boolean;
+export interface IProducerAudioResponse extends IProducerTaskResultMeta {
+  task_id?: string;
+  data?: IProducerAudio[];
+}
+
+export interface IProducerLyricResponse extends IProducerTaskResultMeta {
   task_id: string;
   data: IProducerAudioLyric;
 }
@@ -117,6 +126,7 @@ export interface IProducerTask {
   map(arg0: (song: any) => any): any;
   id: string;
   created_at?: number;
+  trace_id?: string;
   request?: IProducerAudioRequest | IProducerLyricRequest;
   response?: IProducerAudioResponse | IProducerLyricResponse;
 }
