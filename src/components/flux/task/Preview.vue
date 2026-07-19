@@ -82,8 +82,8 @@
       <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('flux.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('flux.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
