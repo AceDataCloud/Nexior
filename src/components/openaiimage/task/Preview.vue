@@ -132,8 +132,15 @@
       <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('openaiimage.name.failure') }}
+            <time-icon
+              v-if="!modelValue?.response"
+              class="mr-1"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
+            <info-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t(modelValue?.response ? 'openaiimage.name.status' : 'openaiimage.status.pending') }}
           </template>
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
