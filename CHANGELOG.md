@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 12:32:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 12:32:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.41
+
+Sun, 19 Jul 2026 12:32:35 GMT
+
+### Patches
+
+- Consolidate shared scenario tab baseline styles while preserving specialized overflow behavior. (dev@acedata.cloud)
+- Unify inter-item spacing across image generation task previews. (dev@acedata.cloud)
+- Align Midjourney task state metadata to a consistent top-spacing rhythm. (dev@acedata.cloud)
 
 ## 3.329.40
 
