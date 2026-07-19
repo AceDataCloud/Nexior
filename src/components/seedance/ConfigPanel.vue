@@ -12,9 +12,9 @@
       <seed-input class="mb-4" />
       <first-frame-image class="mb-4" />
       <last-frame-image class="mb-4" />
-      <reference-image class="mb-2" />
-      <reference-audio class="mb-2" />
-      <reference-video class="mb-2" />
+      <reference-image class="mb-4" />
+      <reference-audio class="mb-4" />
+      <reference-video class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />

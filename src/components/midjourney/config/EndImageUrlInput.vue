@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="flex justify-between">
+    <div class="flex min-h-8 items-center pr-20">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('midjourney.name.endImageUrl') }}</span>
         <info-icon :content="$t('midjourney.description.endImageUrl')" />
