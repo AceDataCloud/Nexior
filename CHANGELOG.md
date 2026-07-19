@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 12:30:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 12:30:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.38
+
+Sun, 19 Jul 2026 12:30:56 GMT
+
+### Patches
+
+- Move generated image result spacing from the shared media primitive to its parent task layouts. (dev@acedata.cloud)
+- Cover Seedream failure spacing when legacy requests contain a null prompt. (dev@acedata.cloud)
 
 ## 3.329.37
 
