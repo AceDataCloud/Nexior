@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 07:39:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 07:40:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.32
+
+Sun, 19 Jul 2026 07:40:42 GMT
+
+### Patches
+
+- Label OpenAI Image pending and unknown tasks without failure copy. (dev@acedata.cloud)
+- Label Flux tasks without a response as pending instead of failed. (dev@acedata.cloud)
 
 ## 3.329.31
 
