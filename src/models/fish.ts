@@ -24,6 +24,13 @@ export interface IFishTtsResponse {
   trace_id?: string;
   started_at?: number;
   audio_url?: string;
+  success?: boolean;
+  error?:
+    | string
+    | {
+        code?: string;
+        message?: string;
+      };
 }
 
 export interface IFishTtsConfig {
