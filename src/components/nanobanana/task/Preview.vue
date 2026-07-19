@@ -86,7 +86,10 @@
           </p>
         </el-alert>
       </div>
-      <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div
+        v-else-if="modelValue?.response?.success === false || modelValue?.response?.error"
+        :class="{ content: true }"
+      >
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -141,8 +144,8 @@
       <div v-else-if="modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('nanobanana.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('nanobanana.status.pending') }}
           </template>
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
