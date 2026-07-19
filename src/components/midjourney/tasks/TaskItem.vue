@@ -27,7 +27,7 @@
       </div>
       <!-- response error -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="mt-2 failure">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
@@ -171,7 +171,7 @@
       </div>
       <!-- response error -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="mt-2 failure">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.action') }}:
@@ -289,7 +289,7 @@
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
-        <el-alert :closable="false" class="info">
+        <el-alert :closable="false" class="mt-2 info">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.action') }}:
@@ -343,7 +343,7 @@
         v-if="modelValue?.response && !modelValue?.response?.descriptions"
         :class="{ content: true, full: full, failed: true }"
       >
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="mt-2 failure">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
@@ -393,7 +393,7 @@
         <div :class="{ operations: true, 'mt-2': true, 'mb-2': true, full }">
           <api-code-button path="/midjourney/describe" :body="modelValue?.request" />
         </div>
-        <el-alert :closable="false" class="success">
+        <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
@@ -414,7 +414,7 @@
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
-        <el-alert :closable="false" class="info">
+        <el-alert :closable="false" class="mt-2 info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
