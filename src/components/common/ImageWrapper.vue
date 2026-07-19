@@ -79,7 +79,6 @@ export default defineComponent({
 .image-wrapper {
   position: relative;
   width: fit-content;
-  margin-bottom: 16px;
   .image {
     max-height: 400px;
     max-width: 300px;
