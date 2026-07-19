@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 13:10:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 16:18:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.45
+
+Sun, 19 Jul 2026 16:18:56 GMT
+
+### Patches
+
+- Cover Veo task metadata across pending, successful, and failed generations. (dev@acedata.cloud)
 
 ## 3.329.44
 
