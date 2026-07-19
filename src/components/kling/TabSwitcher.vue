@@ -1,5 +1,10 @@
 <template>
-  <el-tabs :model-value="modelValue" class="kling-tabs" stretch @update:model-value="onUpdate">
+  <el-tabs
+    :model-value="modelValue"
+    class="kling-tabs scenario-tabs scenario-tabs--divided"
+    stretch
+    @update:model-value="onUpdate"
+  >
     <el-tab-pane v-for="tab in tabs" :key="tab.value" :name="tab.value" :disabled="tab.disabled">
       <template #label>
         <span class="tab-label" :title="tab.disabled ? tab.disabledReason : undefined">
@@ -69,14 +74,6 @@ export default defineComponent({
   flex: none;
   padding: 0 8px;
   background-color: var(--app-sidebar-bg);
-
-  :deep(.el-tabs__header) {
-    margin: 0;
-  }
-
-  :deep(.el-tabs__nav-wrap::after) {
-    height: 1px;
-  }
 
   :deep(.el-tabs__item) {
     height: 48px;
