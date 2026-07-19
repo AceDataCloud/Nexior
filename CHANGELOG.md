@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 18 Jul 2026 21:10:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 04:19:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.27
+
+Sun, 19 Jul 2026 04:19:50 GMT
+
+### Patches
+
+- Align Seedream task spacing and result containment with Nano Banana, and add missing spacing above failures without a prompt. (dev@acedata.cloud)
 
 ## 3.329.26
 
