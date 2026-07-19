@@ -10,8 +10,8 @@
       <camera-fixed-switch class="mb-4" />
       <return-last-frame-switch class="mb-4" />
       <seed-input class="mb-4" />
-      <first-frame-image class="mb-2" />
-      <last-frame-image class="mb-2" />
+      <first-frame-image class="mb-4" />
+      <last-frame-image class="mb-4" />
       <reference-image class="mb-2" />
       <reference-audio class="mb-2" />
       <reference-video class="mb-2" />

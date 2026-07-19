@@ -40,7 +40,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.variationCategory') }}</span>
         </div>
-        <el-radio-group v-model="variationCategory" size="small">
+        <el-radio-group v-model="variationCategory">
           <el-radio-button value="">{{ $t('suno.gender.auto') }}</el-radio-button>
           <el-radio-button value="high">{{ $t('suno.variation.high') }}</el-radio-button>
           <el-radio-button value="low">{{ $t('suno.variation.low') }}</el-radio-button>
