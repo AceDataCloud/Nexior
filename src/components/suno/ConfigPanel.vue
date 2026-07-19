@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 min-h-0 overflow-hidden">
-      <el-tabs v-model="mode" class="suno-mode-tabs" stretch>
+      <el-tabs v-model="mode" class="suno-mode-tabs scenario-tabs scenario-tabs--scrollable" stretch>
         <el-tab-pane :label="$t('suno.mode.simple')" name="simple">
           <div class="p-5">
             <type-selector class="mb-4" />
@@ -173,24 +173,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.suno-mode-tabs {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  :deep(.el-tabs__header) {
-    flex: none;
-    margin: 0;
-    padding: 0 8px;
-  }
-
-  :deep(.el-tabs__content) {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-  }
-}
-
 .panel {
   height: 100%;
   padding: 20px;

@@ -419,6 +419,33 @@ html.dark .el-dialog {
   }
 }
 
+.scenario-tabs {
+  > .el-tabs__header {
+    margin: 0;
+  }
+
+  &.scenario-tabs--scrollable {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    > .el-tabs__header {
+      flex: none;
+      padding: 0 8px;
+    }
+
+    > .el-tabs__content {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+    }
+  }
+
+  &.scenario-tabs--divided > .el-tabs__header > .el-tabs__nav-wrap::after {
+    height: 1px;
+  }
+}
+
 .el-select {
   .el-select__wrapper {
     width: 100%;

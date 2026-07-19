@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 min-h-0 overflow-hidden">
-      <el-tabs v-model="type" class="demo-tabs" stretch>
+      <el-tabs v-model="type" class="demo-tabs scenario-tabs scenario-tabs--scrollable" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
           <div class="p-5">
             <model-selector class="mb-2" />
@@ -148,23 +148,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.demo-tabs {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  :deep(.el-tabs__header) {
-    flex: none;
-    margin: 0;
-    padding: 0 8px;
-  }
-
-  :deep(.el-tabs__content) {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-  }
-}
-</style>
