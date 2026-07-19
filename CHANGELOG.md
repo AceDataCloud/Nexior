@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Jul 2026 12:33:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 19 Jul 2026 12:33:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.43
+
+Sun, 19 Jul 2026 12:33:52 GMT
+
+### Patches
+
+- Consolidate shared scenario tab baseline styles while preserving specialized overflow behavior. (dev@acedata.cloud)
 
 ## 3.329.42
 
