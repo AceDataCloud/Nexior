@@ -775,9 +775,53 @@
     "message": "Wideo referencyjne",
     "description": "Etykieta pola wideo referencyjnego / edytowalnego do edycji wideo Kling"
   },
-  "description.referenceVideo": {
-    "message": "Tylko dla kling-video-o1. Prześlij jedno MP4/MOV (720–2160 px, 3–10 s, <=200MB), aby edytować lub użyć istniejącego wideo jako referencji. Prompt automatycznie odwoła się do niego jako <<<video_1>>>; zachowaj ten token, aby opisać edycję (np. „zamień <<<video_1>>> w anime\").",
-    "description": "Pomoc dotycząca przesyłania wideo referencyjnego"
+  "description.omniReferenceVideo": {
+    "message": "Dla Kling O1 i V3 Omni. Prześlij plik MP4/MOV (720–2160px, 3–10 sekund, ≤200MB) do edycji lub jako odniesienie do istniejącego wideo, słowa kluczowe zostaną automatycznie dodane <<<video_1>>>.",
+    "description": "Pomoc dotycząca przesyłania wideo referencyjnego Omni"
+  },
+  "name.referenceImages": {
+    "message": "Obrazy referencyjne",
+    "description": "Etykieta pola obrazów referencyjnych Omni"
+  },
+  "description.referenceImages": {
+    "message": "Dla Kling O1 i V3 Omni. Możesz przesłać maksymalnie 7 obrazów referencyjnych; w przypadku istniejącego wideo referencyjnego maksymalnie 4 obrazy. Słowa kluczowe będą automatycznie dodawane.",
+    "description": "Pomoc dotycząca obrazów referencyjnych Omni"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Prześlij obrazy",
+    "description": "Przycisk do przesyłania obrazów referencyjnych Omni"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Możesz przesłać jeszcze {count} obrazów referencyjnych.",
+    "description": "Informacja o liczbie dostępnych obrazów referencyjnych do przesłania"
+  },
+  "message.referenceImagesError": {
+    "message": "Przesyłanie obrazów referencyjnych nie powiodło się, spróbuj ponownie.",
+    "description": "Błąd przesyłania obrazów referencyjnych"
+  },
+  "name.referenceVideoType": {
+    "message": "Zastosowanie wideo",
+    "description": "Etykieta typu wideo referencyjnego"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Referencja cech",
+    "description": "Opcje wideo referencyjnego dotyczące cech"
+  },
+  "name.referenceVideoBase": {
+    "message": "Edycja oryginalnego wideo",
+    "description": "Opcje podstawowej edycji wideo"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "W przypadku istniejącego wideo referencyjnego możesz przesłać maksymalnie 4 obrazy referencyjne, najpierw usuń nadmiarowe obrazy.",
+    "description": "Konflikt liczby wideo referencyjnego i obrazów"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "To żądanie obsługuje maksymalnie {count} obrazów referencyjnych, przy czym pierwsza i ostatnia klatka również wliczają się do całkowitej liczby.",
+    "description": "Ograniczenie całkowitej liczby obrazów referencyjnych."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Podstawowe wideo do edycji nie może być używane jednocześnie z pierwszą lub ostatnią klatką.",
+    "description": "Wskazanie konfliktu między podstawowym wideo a pierwszą lub ostatnią klatką."
   },
   "button.uploadReferenceVideo": {
     "message": "Prześlij wideo",

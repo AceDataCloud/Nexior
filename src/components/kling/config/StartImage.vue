@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="flex justify-between">
+    <div class="flex min-h-8 items-center pr-20">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('kling.name.startImage') }}</span>
         <info-icon :content="$t('kling.description.uploadStartImage')" />
@@ -17,6 +17,7 @@
       :multiple="false"
       :action="uploadUrl"
       list-type="picture"
+      :before-upload="onBeforeUpload"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-success="onSuccess"
@@ -28,13 +29,13 @@
           :url="file.url"
           :name="file.name"
           :percentage="file.percentage"
-          @remove="fileList.splice(fileList.indexOf(file), 1)"
+          @remove="onRemove(file)"
         />
       </template>
       <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
         <span>
           <el-button round type="primary" size="small" class="btn btn-upload" :disabled="reachedLimit">
-            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('kling.button.uploadReferences') }}
           </el-button>
         </span>
@@ -44,9 +45,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -59,11 +60,11 @@ interface IData {
 export default defineComponent({
   name: 'StartImage',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     ElTooltip,
     InfoIcon,
-    FontAwesomeIcon,
     ImagePreview
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
@@ -99,6 +100,13 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    value(val: string | undefined) {
+      if (!val && this.fileList.length > 0) {
+        this.fileList = [];
+      }
+    }
+  },
   mounted() {
     if (!this.value) {
       this.value = undefined;
@@ -112,6 +120,20 @@ export default defineComponent({
     onError() {
       ElMessage.error(this.$t('kling.message.uploadReferencesError'));
     },
+    onBeforeUpload(): boolean {
+      const config = this.$store.state.kling?.config || {};
+      if (config.video_list?.[0]?.refer_type === 'base') {
+        ElMessage.warning(this.$t('kling.message.baseVideoFrameConflict'));
+        return false;
+      }
+      const maxImages = config.video_list?.length ? 4 : 7;
+      const total = (config.image_list?.length || 0) + Number(Boolean(config.end_image_url)) + 1;
+      if (total > maxImages) {
+        ElMessage.warning(this.$t('kling.message.referenceImagesTotalLimit', { count: maxImages }));
+        return false;
+      }
+      return true;
+    },
     onSetStartImageUrl() {
       const url = this.urls?.[0];
       this.$store.commit('kling/setConfig', {
@@ -120,6 +142,10 @@ export default defineComponent({
       });
     },
     async onSuccess() {
+      this.onSetStartImageUrl();
+    },
+    onRemove(file: UploadFile) {
+      this.fileList.splice(this.fileList.indexOf(file), 1);
       this.onSetStartImageUrl();
     }
   }

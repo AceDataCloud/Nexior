@@ -1,6 +1,6 @@
 import { ISeedreamState } from './models';
 import { Status } from '@/models';
-import { SEEDREAM_DEFAULT_MODEL, SEEDREAM_DEFAULT_SIZE, SEEDREAM_DEFAULT_WATERMARK } from '@/constants';
+import { SEEDREAM_DEFAULT_MODEL, SEEDREAM_DEFAULT_SIZE } from '@/constants';
 
 export default (): ISeedreamState => {
   return {
@@ -10,9 +10,9 @@ export default (): ISeedreamState => {
     tasks: undefined,
     credential: undefined,
     config: {
+      action: 'generate',
       model: SEEDREAM_DEFAULT_MODEL,
-      size: SEEDREAM_DEFAULT_SIZE,
-      watermark: SEEDREAM_DEFAULT_WATERMARK
+      size: SEEDREAM_DEFAULT_SIZE
     },
     status: {
       getService: Status.None,

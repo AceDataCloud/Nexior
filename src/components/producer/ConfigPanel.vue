@@ -1,9 +1,13 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-5">
-      <el-tabs v-model="mode" class="producer-mode-tabs" stretch>
+    <div class="flex-1 min-h-0 overflow-hidden">
+      <el-tabs
+        v-model="mode"
+        class="producer-mode-tabs scenario-tabs scenario-tabs--scrollable scenario-tabs--divided"
+        stretch
+      >
         <el-tab-pane :label="$t('producer.mode.simple')" name="simple">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <type-selector class="mb-4" />
             <upload-audio class="mb-4" />
             <prompt-input class="mb-4" />
@@ -14,7 +18,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('producer.mode.custom')" name="custom">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <type-selector class="mb-4" />
             <upload-audio class="mb-4" />
             <lyric-input v-if="!config?.instrumental" class="mb-4" />
@@ -33,11 +37,11 @@
       <consumption :value="consumption" :service="service" />
       <div class="flex gap-2 w-full">
         <el-button class="flex-1" @click="onClearAll">
-          <font-awesome-icon icon="fa-solid fa-broom" class="mr-1" />
+          <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('producer.button.clear_all') }}
         </el-button>
         <el-button type="primary" class="flex-1" round @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+          <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ generateButtonText }}
         </el-button>
       </div>
@@ -46,6 +50,7 @@
 </template>
 
 <script lang="ts">
+import { CleanupIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus';
 import TypeSelector from './config/TypeSelector.vue';
@@ -59,13 +64,14 @@ import CoverFromInput from './config/CoverFromInput.vue';
 import VocalGenderSelector from './config/VocalGenderSelector.vue';
 import AdvancedParams from './config/AdvancedParams.vue';
 import ReplaceSectionInput from './config/ReplaceSectionInput.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
 export default defineComponent({
   name: 'PresetPanel',
   components: {
+    CleanupIcon,
+    MagicIcon,
     TypeSelector,
     PromptInput,
     LyricInput,
@@ -77,7 +83,6 @@ export default defineComponent({
     VocalGenderSelector,
     AdvancedParams,
     ReplaceSectionInput,
-    FontAwesomeIcon,
     ElButton,
     ElTabs,
     ElTabPane,
@@ -138,9 +143,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .producer-mode-tabs {
-  :deep(.el-tabs__nav-wrap::after) {
-    height: 1px;
-  }
   :deep(.el-tabs__item) {
     font-size: 14px;
     font-weight: 500;

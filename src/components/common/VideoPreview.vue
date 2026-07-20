@@ -6,7 +6,7 @@
   >
     <video class="w-full h-full object-cover" :src="`${url}#t=0.1`" muted preload="metadata" playsinline />
     <div class="overlay absolute inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.25)]">
-      <font-awesome-icon icon="fa-solid fa-play" class="text-white text-[14px]" />
+      <play-icon class="text-white text-[14px]" :size="'1em' as any" aria-hidden="true" focusable="false" />
     </div>
     <el-dialog
       v-model="open"
@@ -23,16 +23,16 @@
 </template>
 
 <script lang="ts">
+import { PlayIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 
 export default defineComponent({
   name: 'VideoPreview',
   components: {
+    PlayIcon,
     ElDialog,
-    FontAwesomeIcon,
     VideoPlayer
   },
   props: {

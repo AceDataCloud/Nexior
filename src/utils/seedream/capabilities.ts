@@ -169,6 +169,22 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
   }
 }
 
+export function getCompatibleSeedreamAction(
+  action: 'generate' | 'edit' | undefined,
+  model?: string
+): 'generate' | 'edit' {
+  const capabilities = getSeedreamCapabilities(model);
+  if (capabilities.imageRequired) return 'edit';
+  if (!capabilities.image) return 'generate';
+  return action === 'edit' ? 'edit' : 'generate';
+}
+
+export function getSeedreamAction(model?: string, image?: string[]): 'generate' | 'edit' {
+  const capabilities = getSeedreamCapabilities(model);
+  if (capabilities.imageRequired) return 'edit';
+  return capabilities.image && image?.length ? 'edit' : 'generate';
+}
+
 export type SeedreamConflictField =
   | 'image'
   | 'size'

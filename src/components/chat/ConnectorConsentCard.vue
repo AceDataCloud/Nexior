@@ -1,7 +1,7 @@
 <template>
   <div class="connector-consent-card" :class="{ 'is-resolved': resolved }">
     <div class="ccc-header">
-      <font-awesome-icon icon="fa-solid fa-shield-halved" class="header-icon" />
+      <security-icon class="header-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="header-title">{{ $t('chat.consent.title') }}</span>
     </div>
     <p v-if="payload.rationale" class="ccc-rationale">{{ payload.rationale }}</p>
@@ -78,9 +78,9 @@
 </template>
 
 <script lang="ts">
+import { SecurityIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IConsentRequestEntry, IConsentRequestPayload, IConsentRequestRequirement } from '@/models';
 import ConnectorEntryRow from './ConnectorEntryRow.vue';
 import { buildConsentOutput, unsatisfiedConnectors } from './connectorConsent';
@@ -130,7 +130,7 @@ interface IData {
 
 export default defineComponent({
   name: 'ConnectorConsentCard',
-  components: { ConnectorEntryRow, ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, FontAwesomeIcon },
+  components: { ConnectorEntryRow, ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, SecurityIcon },
   props: {
     /** Tool-use block id; sent back as `tool_use_id` on resume. */
     toolUseId: {

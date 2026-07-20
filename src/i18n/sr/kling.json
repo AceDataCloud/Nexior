@@ -775,9 +775,53 @@
     "message": "Референтни видео",
     "description": "Ознака поља: референтни/уређиви видео за Omni уређивање видеа"
   },
-  "description.referenceVideo": {
-    "message": "Само за kling-video-o1. Отпремите један MP4/MOV (720-2160px, 3-10s, <=200MB) за уређивање или коришћење постојећег видеа као референце. Упит га аутоматски наводи као <<<video_1>>>; задржите ту ознаку да опишете измену (нпр. „претвори <<<video_1>>> у аниме“).",
-    "description": "Текст помоћи за отпремање референтног видеа"
+  "description.omniReferenceVideo": {
+    "message": "Погодно за Kling O1 и V3 Omni. Отпремите MP4/MOV (720–2160px, 3–10 секунди, ≤200MB) за уређивање или референцу постојећег видеа, кључне речи ће бити аутоматски додате <<<video_1>>>.",
+    "description": "Помоћни текст за отпремање Omni референтног видеа"
+  },
+  "name.referenceImages": {
+    "message": "Референтне слике",
+    "description": "Ознака поља за Omni референтне слике"
+  },
+  "description.referenceImages": {
+    "message": "Погодно за Kling O1 и V3 Omni. Можете отпремити до 7 референтних слика; ако постоји референтни видео, максимум је 4 слике. Кључне речи ће бити аутоматски додате.",
+    "description": "Помоћни текст за Omni референтне слике"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Отпремите слике",
+    "description": "Дугме за отпремање Omni референтних слика"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Можете отпремити још {count} референтних слика.",
+    "description": "Индикација о броју преосталих референтних слика"
+  },
+  "message.referenceImagesError": {
+    "message": "Отпремање референтних слика није успело, молимо покушајте поново.",
+    "description": "Грешка при отпремању референтних слика"
+  },
+  "name.referenceVideoType": {
+    "message": "Намена видеа",
+    "description": "Ознака типа референтног видеа"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Референца карактеристика",
+    "description": "Опција за референтни видео карактеристика"
+  },
+  "name.referenceVideoBase": {
+    "message": "Уредите оригинални видео",
+    "description": "Основна опција за уређивање видеа"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Када постоји референтни видео, можете подржати максимум 4 референтне слике, молимо уклоните вишак слика.",
+    "description": "Конфликт између броја референтног видеа и слика"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Ovaj zahtev podržava najviše {count} referentnih slika, pri čemu se prvi i poslednji kadar takođe računaju u ukupan broj.",
+    "description": "Obaveštenje o ograničenju ukupnog broja referentnih slika."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Osnovni video koji čeka uređivanje ne može se koristiti istovremeno sa prvim ili poslednjim kadrom.",
+    "description": "Obaveštenje o sukobu između osnovnog videa i prvog ili poslednjeg kadra."
   },
   "button.uploadReferenceVideo": {
     "message": "Отпреми видео",

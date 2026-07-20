@@ -4,7 +4,7 @@
     <div v-else class="conversations">
       <div class="conversation" @click="onNewConversation">
         <div class="icons">
-          <font-awesome-icon icon="fa-solid fa-plus" class="icon" />
+          <add-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </div>
         <div class="title">
           {{ $t('chat.message.startNewChat') }}
@@ -12,7 +12,7 @@
       </div>
       <div class="conversation" @click="onScheduledTasks">
         <div class="icons">
-          <font-awesome-icon icon="fa-solid fa-clock" class="icon" />
+          <time-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </div>
         <div class="title">
           {{ $t('chat.scheduledTasks.navTitle') }}
@@ -20,7 +20,7 @@
       </div>
       <div class="conversation" @click="onArtifacts">
         <div class="icons">
-          <font-awesome-icon icon="fa-solid fa-box-archive" class="icon" />
+          <file-archive-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </div>
         <div class="title">
           {{ $t('chat.artifacts.navTitle') }}
@@ -46,21 +46,30 @@
               :teleported="true"
               @command="(command) => onConversationCommand(command, conversation)"
             >
-              <span class="more" @click.stop>
-                <font-awesome-icon icon="fa-solid fa-ellipsis" />
+              <span
+                class="more"
+                role="button"
+                tabindex="0"
+                :aria-label="$t('common.button.more')"
+                :title="$t('common.button.more')"
+                @click.stop
+                @keydown.enter.stop
+                @keydown.space.prevent.stop
+              >
+                <more-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item command="rename" @click.stop>
-                    <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-2" />
+                    <edit-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     重命名
                   </el-dropdown-item>
                   <el-dropdown-item command="share" @click.stop>
-                    <font-awesome-icon icon="fa-solid fa-share-nodes" class="mr-2" />
+                    <share-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     {{ $t('chat.share.menu') }}
                   </el-dropdown-item>
                   <el-dropdown-item command="delete" @click.stop>
-                    <font-awesome-icon icon="fa-solid fa-trash" class="mr-2" />
+                    <delete-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     {{ $t('common.button.delete') }}
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -106,6 +115,15 @@
 </template>
 
 <script lang="ts">
+import {
+  AddIcon,
+  DeleteIcon,
+  EditIcon,
+  FileArchiveIcon,
+  MoreIcon,
+  ShareIcon,
+  TimeIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   ElSkeleton,
@@ -117,7 +135,6 @@ import {
   ElDropdownMenu,
   ElMessage
 } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
@@ -129,13 +146,19 @@ type ConversationCommand = 'rename' | 'delete' | 'share';
 export default defineComponent({
   name: 'SidePanel',
   components: {
+    AddIcon,
+    DeleteIcon,
+    EditIcon,
+    FileArchiveIcon,
+    MoreIcon,
+    ShareIcon,
+    TimeIcon,
     ElInput,
     ElButton,
     ElDialog,
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
-    FontAwesomeIcon,
     ElSkeleton,
     ShareConversationDialog
   },
@@ -393,9 +416,15 @@ export default defineComponent({
       }
 
       .icons {
-        width: 30px;
-        padding-left: 10px;
+        display: flex;
+        flex: 0 0 30px;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        line-height: 1;
+
         .icon {
+          display: block;
           font-size: 14px;
         }
       }

@@ -3,7 +3,12 @@
     <h2 class="title font-bold">
       {{ $t('webextrator.name.enableLlm') }}
       <el-tooltip effect="dark" :content="$t('webextrator.description.enableLlm')" placement="top">
-        <font-awesome-icon icon="fa-solid fa-circle-info" class="ml-1 text-[var(--el-text-color-secondary)] text-xs" />
+        <info-icon
+          class="ml-1 text-[var(--el-text-color-secondary)] text-xs"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
       </el-tooltip>
     </h2>
     <el-switch v-model="value" class="value" />
@@ -11,16 +16,16 @@
 </template>
 
 <script lang="ts">
+import { InfoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElSwitch, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'LlmToggle',
   components: {
+    InfoIcon,
     ElSwitch,
-    ElTooltip,
-    FontAwesomeIcon
+    ElTooltip
   },
   computed: {
     value: {

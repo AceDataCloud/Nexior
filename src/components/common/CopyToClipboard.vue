@@ -1,22 +1,31 @@
 <template>
   <el-tooltip v-if="!copied" effect="dark" :content="$t('common.button.copy')" placement="bottom">
-    <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" @click.stop="onCopy"
-  /></el-tooltip>
+    <button
+      type="button"
+      class="icon-copy"
+      :aria-label="$t('common.button.copy')"
+      :title="$t('common.button.copy')"
+      @click.stop="onCopy"
+    >
+      <copy-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+    </button>
+  </el-tooltip>
   <el-tooltip v-else :visible="copied" effect="dark" :content="$t('common.message.copied')" placement="bottom">
-    <font-awesome-icon icon="fa-solid fa-check" class="icon-check" />
+    <confirm-icon class="icon-check" :size="'1em' as any" aria-hidden="true" focusable="false" />
   </el-tooltip>
 </template>
 
 <script lang="ts">
+import { ConfirmIcon, CopyIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
 import { ElTooltip } from 'element-plus';
 
 export default defineComponent({
   name: 'CopyToClipboard',
   components: {
-    FontAwesomeIcon,
+    ConfirmIcon,
+    CopyIcon,
     ElTooltip
   },
   props: {
@@ -51,8 +60,15 @@ export default defineComponent({
 <style lang="scss" scoped>
 .icon-check,
 .icon-copy {
-  margin-left: 5px;
+  margin-inline-start: 5px;
   cursor: pointer;
   color: inherit;
+}
+
+.icon-copy {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 </style>

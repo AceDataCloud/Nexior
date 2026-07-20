@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Ισχύει για Kling O1 και V3 Omni. Ανέβασμα ενός MP4/MOV (720–2160px, 3–10 δευτερόλεπτα, ≤200MB) για επεξεργασία ή αναφορά υπάρχοντος βίντεο, οι ετικέτες θα προστεθούν αυτόματα <<<video_1>>>.",
+    "description": "Βοηθητικό κείμενο για ανέβασμα βίντεο αναφοράς Omni"
+  },
+  "name.referenceImages": {
+    "message": "Εικόνες αναφοράς",
+    "description": "Ετικέτα πεδίου εικόνων αναφοράς Omni"
+  },
+  "description.referenceImages": {
+    "message": "Ισχύει για Kling O1 και V3 Omni. Μπορείτε να ανεβάσετε έως 7 εικόνες αναφοράς; αν υπάρχει βίντεο αναφοράς, έως 4 εικόνες. Οι ετικέτες αναφοράς θα προστεθούν αυτόματα.",
+    "description": "Βοηθητικό κείμενο για εικόνες αναφοράς Omni"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Ανέβασμα εικόνας",
+    "description": "Κουμπί για ανέβασμα αναφοράς εικόνας Omni"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Μπορείτε να ανεβάσετε ακόμη {count} εικόνες αναφοράς.",
+    "description": "Υπόδειξη για τον αριθμό εικόνων αναφοράς"
+  },
+  "message.referenceImagesError": {
+    "message": "Η ανέβασμα εικόνας αναφοράς απέτυχε, παρακαλώ δοκιμάστε ξανά.",
+    "description": "Σφάλμα κατά την ανέβασμα εικόνας αναφοράς"
+  },
+  "name.referenceVideoType": {
+    "message": "Χρήση βίντεο",
+    "description": "Ετικέτα τύπου βίντεο αναφοράς"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Χαρακτηριστικό αναφοράς",
+    "description": "Επιλογές βίντεο χαρακτηριστικού αναφοράς"
+  },
+  "name.referenceVideoBase": {
+    "message": "Επεξεργασία αρχικού βίντεο",
+    "description": "Βασικές επιλογές επεξεργασίας βίντεο"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Όταν υπάρχει βίντεο αναφοράς, υποστηρίζονται έως 4 εικόνες αναφοράς, παρακαλώ αφαιρέστε τις επιπλέον εικόνες.",
+    "description": "Σύγκρουση αριθμού βίντεο αναφοράς και εικόνων"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Αυτή η αίτηση υποστηρίζει το πολύ {count} αναφορικές εικόνες, συμπεριλαμβανομένων των αρχικών και τελικών καρέ.",
+    "description": "Ειδοποίηση περιορισμού συνολικού αριθμού αναφορικών εικόνων."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Το βασικό βίντεο που περιμένει επεξεργασία δεν μπορεί να χρησιμοποιηθεί ταυτόχρονα με την αρχική ή την τελική καρέ.",
+    "description": "Ειδοποίηση σύγκρουσης μεταξύ του βασικού βίντεο και των αρχικών/τελικών καρέ."
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="WAN_LOGO" class="avatar" />
+      <capability-presentation capability="wan" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('wan.name.wanBot') }}
+        <capability-presentation capability="wan" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -14,19 +14,14 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('wan.status.pending') }}) </span>
-          <span
-            v-if="
-              modelValue?.response?.state === 'processing' ||
-              modelValue?.response?.state === 'pending' ||
-              modelValue?.response?.state === 'running'
-            "
-          >
-            - ({{ $t('wan.status.processing') }})
-          </span>
+          <span v-if="modelValue?.response && isWaiting"> - ({{ $t('wan.status.processing') }}) </span>
         </p>
       </div>
       <!-- Display success message -->
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
+      <div
+        v-if="modelValue?.response?.success === true && !isFailure && !isWaiting"
+        :class="{ content: true, failed: true }"
+      >
         <div v-if="modelValue?.response?.video_url" class="mb-4">
           <video-player :src="modelValue?.response?.video_url" />
         </div>
@@ -40,48 +35,48 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.model') }}:
             {{ modelValue?.request?.model }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div v-if="isFailure" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" />
@@ -89,14 +84,14 @@
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
+      <div v-if="isWaiting" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('wan.name.failure') }}
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t(modelValue?.response ? 'wan.status.processing' : 'wan.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('wan.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
@@ -108,21 +103,23 @@
 </template>
 
 <script lang="ts">
+import { ChannelIcon, InfoIcon, MagicIcon, TimeIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IWanTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
-import { WAN_LOGO } from '@/constants/wan';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
+    ChannelIcon,
+    InfoIcon,
+    MagicIcon,
+    TimeIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     VideoPlayer,
     ElTooltip,
@@ -135,10 +132,23 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
-    return { WAN_LOGO };
-  },
   computed: {
+    isFailure(): boolean {
+      const response = this.modelValue?.response;
+      return (
+        response?.success === false ||
+        !!response?.error ||
+        response?.state === 'failed' ||
+        response?.state === 'cancelled'
+      );
+    },
+    isWaiting(): boolean {
+      const response = this.modelValue?.response;
+      if (!response) return true;
+      if (this.isFailure) return false;
+      if (['queued', 'pending', 'processing', 'running'].includes(response.state || '')) return true;
+      return response.success !== true && !response.state;
+    },
     application() {
       return this.$store.state.wan?.application;
     },

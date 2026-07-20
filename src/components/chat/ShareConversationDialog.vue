@@ -10,14 +10,14 @@
         </el-button>
       </div>
       <el-button link type="danger" class="share-disable" :loading="disabling" @click="onDisable">
-        <font-awesome-icon icon="fa-solid fa-link-slash" class="mr-1" />
+        <unlink-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('chat.share.disable') }}
       </el-button>
     </div>
 
     <div v-else class="share-create">
       <el-button type="primary" round :loading="creating" @click="onCreate">
-        <font-awesome-icon icon="fa-solid fa-link" class="mr-1" />
+        <link-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('chat.share.createLink') }}
       </el-button>
     </div>
@@ -29,19 +29,20 @@
 </template>
 
 <script lang="ts">
+import { LinkIcon, UnlinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElInput, ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
 import { chatOperator } from '@/operators';
 
 export default defineComponent({
   name: 'ShareConversationDialog',
   components: {
+    LinkIcon,
+    UnlinkIcon,
     ElDialog,
     ElInput,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   props: {
     modelValue: {

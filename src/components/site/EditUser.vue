@@ -19,17 +19,27 @@
       </span>
     </template>
   </el-dialog>
-  <span class="edit" @click="onOpen">
+  <span
+    class="edit"
+    role="button"
+    tabindex="0"
+    :aria-label="$t('common.button.edit')"
+    :title="$t('common.button.edit')"
+    @click="onOpen"
+    @keydown.enter.prevent="onOpen"
+    @keydown.space.prevent="onOpen"
+  >
     <el-icon class="icon">
-      <edit />
+      <edit :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-icon>
   </span>
 </template>
 
 <script lang="ts">
+import { EditIcon as Edit } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElButton, ElIcon } from 'element-plus';
-import { Edit } from '@element-plus/icons-vue';
+
 import UserChip, { prefetchUserChip } from '@/components/site/UserChip.vue';
 import UserPicker from '@/components/site/UserPicker.vue';
 import type { IUserPublic } from '@/models';

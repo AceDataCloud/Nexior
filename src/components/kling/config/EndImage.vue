@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="flex justify-between">
+    <div class="flex min-h-8 items-center pr-20">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('kling.name.endImage') }}</span>
         <info-icon :content="$t('kling.description.uploadEndImage')" />
@@ -29,13 +29,13 @@
           :url="file.url"
           :name="file.name"
           :percentage="file.percentage"
-          @remove="fileList.splice(fileList.indexOf(file), 1)"
+          @remove="onRemove(file)"
         />
       </template>
       <el-tooltip :content="uploadTooltip" :disabled="!uploadDisabled" placement="top">
         <span>
           <el-button round type="primary" size="small" class="btn btn-upload" :disabled="uploadDisabled">
-            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('kling.button.uploadReferences') }}
           </el-button>
         </span>
@@ -45,9 +45,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import { getKlingCapabilities } from '@/utils/kling/capabilities';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -61,12 +61,12 @@ interface IData {
 export default defineComponent({
   name: 'EndImage',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     ElTooltip,
     ImagePreview,
-    InfoIcon,
-    FontAwesomeIcon
+    InfoIcon
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {
@@ -155,6 +155,16 @@ export default defineComponent({
         ElMessage.warning(this.$t('kling.message.endImageRequiresStart'));
         return false;
       }
+      if (this.klingConfig.video_list?.[0]?.refer_type === 'base') {
+        ElMessage.warning(this.$t('kling.message.baseVideoFrameConflict'));
+        return false;
+      }
+      const maxImages = this.klingConfig.video_list?.length ? 4 : 7;
+      const total = (this.klingConfig.image_list?.length || 0) + 2;
+      if (total > maxImages) {
+        ElMessage.warning(this.$t('kling.message.referenceImagesTotalLimit', { count: maxImages }));
+        return false;
+      }
       return true;
     },
     onExceed() {
@@ -171,6 +181,10 @@ export default defineComponent({
       });
     },
     async onSuccess() {
+      this.onSetEndImageUrl();
+    },
+    onRemove(file: UploadFile) {
+      this.fileList.splice(this.fileList.indexOf(file), 1);
       this.onSetEndImageUrl();
     }
   }

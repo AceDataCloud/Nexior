@@ -5,13 +5,15 @@
       :class="{ 'is-on': enabled, 'is-off': !enabled }"
       :loading="busy"
       :disabled="isDisabled"
+      :aria-label="tooltipContent"
+      :title="tooltipContent"
       circle
       size="small"
       :type="enabled ? 'primary' : 'default'"
       @click="onClick"
     >
       <span class="icon-wrap">
-        <font-awesome-icon icon="fa-solid fa-globe" />
+        <globe-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span v-if="enabled" class="dot" />
       </span>
     </el-button>
@@ -19,18 +21,18 @@
 </template>
 
 <script lang="ts">
+import { GlobeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElMessage, ElMessageBox, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { translationOperator } from '@/operators/translation';
 import type { ITranslationDisableResponse, ITranslationEnableResponse } from '@acedatacloud/core/types';
 
 export default defineComponent({
   name: 'AutoTranslateToggle',
   components: {
+    GlobeIcon,
     ElButton,
-    ElTooltip,
-    FontAwesomeIcon
+    ElTooltip
   },
   props: {
     model: {

@@ -25,9 +25,15 @@
               $store.state?.suno?.audio?.state === 'playing'
             "
             class="overlay"
+            role="button"
+            tabindex="0"
+            :aria-label="$t('common.player.pause')"
+            :title="$t('common.player.pause')"
             @click="onPause(audio)"
+            @keydown.enter.stop.prevent="onPause(audio)"
+            @keydown.space.stop.prevent="onPause(audio)"
           >
-            <el-icon><video-pause /></el-icon>
+            <el-icon><video-pause :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
           </div>
           <div
             v-if="
@@ -36,9 +42,15 @@
                 ($store.state?.suno?.audio?.id === audio.id && $store.state?.suno?.audio?.state === 'paused'))
             "
             class="overlay"
+            role="button"
+            tabindex="0"
+            :aria-label="$t('common.player.play')"
+            :title="$t('common.player.play')"
             @click="onPlay(audio)"
+            @keydown.enter.stop.prevent="onPlay(audio)"
+            @keydown.space.stop.prevent="onPlay(audio)"
           >
-            <el-icon><video-play /></el-icon>
+            <el-icon><video-play :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
           </div>
           <div v-if="audio?.duration" class="duration">
             {{ useFormatDuring(audio?.duration) }}
@@ -54,11 +66,11 @@
 </template>
 
 <script lang="ts">
+import { PlayIcon as VideoPlay, PauseIcon as VideoPause } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio } from '@/models';
 import { ElImage, ElIcon, ElInputNumber } from 'element-plus';
-import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 
 export const DEFAULT_LYRIC = '';
 

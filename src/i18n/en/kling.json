@@ -32,8 +32,8 @@
     "description": "Character orientation option: Follow Video"
   },
   "name.keepOriginalSound": {
-    "message": "Keep Original Audio",
-    "description": "keep_original_sound toggle"
+    "message": "Keep Original Sound",
+    "description": "Keep reference video audio switch label"
   },
   "description.motionImage": {
     "message": "Upload a character reference image; elements like character and background in the generated video will reference this.",
@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "For Kling O1 and V3 Omni. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>.",
+    "description": "Help text for the Omni reference video uploader"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Form field label for Omni reference images"
+  },
+  "description.referenceImages": {
+    "message": "For Kling O1 and V3 Omni. Upload up to 7 reference images, or up to 4 when a reference video is present. Prompt tokens are added automatically.",
+    "description": "Help text for Omni reference images"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Upload Images",
+    "description": "Button to upload Omni reference images"
+  },
+  "message.referenceImagesExceed": {
+    "message": "You can upload {count} more reference images.",
+    "description": "Reference image count warning"
+  },
+  "message.referenceImagesError": {
+    "message": "Reference image upload failed. Please retry.",
+    "description": "Reference image upload error"
+  },
+  "name.referenceVideoType": {
+    "message": "Video Usage",
+    "description": "Reference video type label"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Reference",
+    "description": "Feature reference video option"
+  },
+  "name.referenceVideoBase": {
+    "message": "Edit Source",
+    "description": "Base video editing option"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "A reference video supports at most 4 reference images. Remove extra images first.",
+    "description": "Reference video image count conflict"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "This request supports at most {count} reference images, including first and last frames.",
+    "description": "Total reference image limit warning"
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "An editable base video cannot be combined with first or last frames.",
+    "description": "Base video and frame conflict warning"
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

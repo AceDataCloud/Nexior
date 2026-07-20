@@ -1,8 +1,385 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 10:08:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 20 Jul 2026 16:09:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.1
+
+Mon, 20 Jul 2026 16:09:07 GMT
+
+### Patches
+
+- Show pending and processing states for unfinished Hailuo video tasks. (dev@acedata.cloud)
+
+## 3.330.0
+
+Mon, 20 Jul 2026 14:44:59 GMT
+
+### Minor changes
+
+- Add the Poivelle professional AI film production workspace. (dev@acedata.cloud)
+
+## 3.329.53
+
+Mon, 20 Jul 2026 04:09:30 GMT
+
+### Patches
+
+- Add Claude Fable 5 to the Claude model picker. (dev@acedata.cloud)
+
+## 3.329.52
+
+Sun, 19 Jul 2026 16:23:19 GMT
+
+### Patches
+
+- Label unfinished Nano Banana responses with pending semantics instead of failure copy. (dev@acedata.cloud)
+- Show accurate pending and processing semantics for Pika tasks. (dev@acedata.cloud)
+
+## 3.329.51
+
+Sun, 19 Jul 2026 16:22:56 GMT
+
+### Patches
+
+- Label unfinished Nano Banana responses with pending semantics instead of failure copy. (dev@acedata.cloud)
+- Show accurate pending and processing semantics for Pika tasks. (dev@acedata.cloud)
+- Label queued and processing Wan tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+
+## 3.329.50
+
+Sun, 19 Jul 2026 16:22:11 GMT
+
+### Patches
+
+- Label unfinished Nano Banana responses with pending semantics instead of failure copy. (dev@acedata.cloud)
+- Show accurate pending and processing semantics for Pika tasks. (dev@acedata.cloud)
+- Label queued and processing Wan tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Show pending and processing states for unfinished Kling video tasks. (dev@acedata.cloud)
+
+## 3.329.49
+
+Sun, 19 Jul 2026 16:21:33 GMT
+
+### Patches
+
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Sora tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Wan tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Show pending and processing states for unfinished Kling video tasks. (dev@acedata.cloud)
+
+## 3.329.48
+
+Sun, 19 Jul 2026 16:21:08 GMT
+
+### Patches
+
+- Show pending and processing states for unfinished Kling video tasks. (dev@acedata.cloud)
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Sora tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+
+## 3.329.47
+
+Sun, 19 Jul 2026 16:20:31 GMT
+
+### Patches
+
+- Label queued and processing Sora tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+
+## 3.329.46
+
+Sun, 19 Jul 2026 16:19:43 GMT
+
+### Patches
+
+- Label queued and processing Luma tasks with waiting semantics instead of failure copy. (dev@acedata.cloud)
+- Cover Veo task metadata across pending, successful, and failed generations. (dev@acedata.cloud)
+
+## 3.329.45
+
+Sun, 19 Jul 2026 16:18:56 GMT
+
+### Patches
+
+- Cover Veo task metadata across pending, successful, and failed generations. (dev@acedata.cloud)
+
+## 3.329.44
+
+Sun, 19 Jul 2026 13:10:33 GMT
+
+### Patches
+
+- Add Kimi K3 and K2.6 to the chat model picker. (dev@acedata.cloud)
+
+## 3.329.43
+
+Sun, 19 Jul 2026 12:33:52 GMT
+
+### Patches
+
+- Consolidate shared scenario tab baseline styles while preserving specialized overflow behavior. (dev@acedata.cloud)
+
+## 3.329.42
+
+Sun, 19 Jul 2026 12:33:28 GMT
+
+### Patches
+
+- Consolidate shared scenario tab baseline styles while preserving specialized overflow behavior. (dev@acedata.cloud)
+
+## 3.329.41
+
+Sun, 19 Jul 2026 12:32:35 GMT
+
+### Patches
+
+- Consolidate shared scenario tab baseline styles while preserving specialized overflow behavior. (dev@acedata.cloud)
+- Unify inter-item spacing across image generation task previews. (dev@acedata.cloud)
+- Align Midjourney task state metadata to a consistent top-spacing rhythm. (dev@acedata.cloud)
+
+## 3.329.40
+
+Sun, 19 Jul 2026 12:32:08 GMT
+
+### Patches
+
+- Move generated image result spacing from the shared media primitive to its parent task layouts. (dev@acedata.cloud)
+- Align Midjourney task state metadata to a consistent top-spacing rhythm. (dev@acedata.cloud)
+- Unify inter-item spacing across image generation task previews. (dev@acedata.cloud)
+
+## 3.329.39
+
+Sun, 19 Jul 2026 12:31:40 GMT
+
+### Patches
+
+- Unify inter-item spacing across image generation task previews. (dev@acedata.cloud)
+- Move generated image result spacing from the shared media primitive to its parent task layouts. (dev@acedata.cloud)
+- Align Midjourney task state metadata to a consistent top-spacing rhythm. (dev@acedata.cloud)
+- Cover Seedream failure spacing when legacy requests contain a null prompt. (dev@acedata.cloud)
+
+## 3.329.38
+
+Sun, 19 Jul 2026 12:30:56 GMT
+
+### Patches
+
+- Move generated image result spacing from the shared media primitive to its parent task layouts. (dev@acedata.cloud)
+- Cover Seedream failure spacing when legacy requests contain a null prompt. (dev@acedata.cloud)
+
+## 3.329.37
+
+Sun, 19 Jul 2026 12:30:28 GMT
+
+### Patches
+
+- Cover Seedream failure spacing when legacy requests contain a null prompt. (dev@acedata.cloud)
+
+## 3.329.36
+
+Sun, 19 Jul 2026 10:33:06 GMT
+
+### Patches
+
+- Show Producer task-level failures when generation returns no audio rows. (dev@acedata.cloud)
+
+## 3.329.35
+
+Sun, 19 Jul 2026 08:16:24 GMT
+
+### Patches
+
+- Show Suno task-level failures when generation returns no audio rows. (dev@acedata.cloud)
+
+## 3.329.34
+
+Sun, 19 Jul 2026 07:42:55 GMT
+
+### Patches
+
+- Show failed Fish TTS tasks separately from pending tasks with failure reason and trace details. (dev@acedata.cloud)
+
+## 3.329.33
+
+Sun, 19 Jul 2026 07:41:24 GMT
+
+### Patches
+
+- Label OpenAI Image pending and unknown tasks without failure copy. (dev@acedata.cloud)
+
+## 3.329.32
+
+Sun, 19 Jul 2026 07:40:42 GMT
+
+### Patches
+
+- Label OpenAI Image pending and unknown tasks without failure copy. (dev@acedata.cloud)
+- Label Flux tasks without a response as pending instead of failed. (dev@acedata.cloud)
+
+## 3.329.31
+
+Sun, 19 Jul 2026 07:39:43 GMT
+
+### Patches
+
+- Label Flux tasks without a response as pending instead of failed. (dev@acedata.cloud)
+
+## 3.329.30
+
+Sun, 19 Jul 2026 06:09:40 GMT
+
+### Patches
+
+- Render failed Pixverse tasks with failure alert semantics. (dev@acedata.cloud)
+
+## 3.329.29
+
+Sun, 19 Jul 2026 05:03:23 GMT
+
+### Patches
+
+- Improve local media field spacing in Seedance, Kling, and Midjourney. (dev@acedata.cloud)
+
+## 3.329.28
+
+Sun, 19 Jul 2026 04:29:01 GMT
+
+### Patches
+
+- Improve local Suno variation controls and Seedance frame field spacing. (dev@acedata.cloud)
+
+## 3.329.27
+
+Sun, 19 Jul 2026 04:19:50 GMT
+
+### Patches
+
+- Align Seedream task spacing and result containment with Nano Banana, and add missing spacing above failures without a prompt. (dev@acedata.cloud)
+
+## 3.329.26
+
+Sat, 18 Jul 2026 21:10:12 GMT
+
+### Patches
+
+- Remove the Seedream watermark option and always generate images without a watermark. (dev@acedata.cloud)
+
+## 3.329.25
+
+Sat, 18 Jul 2026 20:49:36 GMT
+
+### Patches
+
+- Automatically switch Seedream between image creation and editing based on reference images. (dev@acedata.cloud)
+
+## 3.329.24
+
+Sat, 18 Jul 2026 18:30:47 GMT
+
+### Patches
+
+- Migrate production non-brand icons to shared semantic Lucide components. (dev@acedata.cloud)
+
+## 3.329.23
+
+Sat, 18 Jul 2026 11:38:03 GMT
+
+### Patches
+
+- Align Pika ingredient and image labels with their controls without magic offsets. (dev@acedata.cloud)
+
+## 3.329.22
+
+Sat, 18 Jul 2026 11:35:22 GMT
+
+### Patches
+
+- Align top-level generator fields to a consistent 16px vertical rhythm. (dev@acedata.cloud)
+
+## 3.329.21
+
+Sat, 18 Jul 2026 09:21:49 GMT
+
+### Patches
+
+- Unify generator sidebar scrolling and 20px content padding across services. (dev@acedata.cloud)
+
+## 3.329.20
+
+Sat, 18 Jul 2026 07:44:13 GMT
+
+### Patches
+
+- Make shared audio previews keyboard-accessible and show load failures. (dev@acedata.cloud)
+
+## 3.329.19
+
+Sat, 18 Jul 2026 07:43:21 GMT
+
+### Patches
+
+- Keep all Kling scenario tab labels readable in narrow parameter panels. (dev@acedata.cloud)
+- Make Seedream Generate and Edit modes explicit while preserving uploaded references. (dev@acedata.cloud)
+- Make shared audio previews keyboard-accessible and show load failures. (dev@acedata.cloud)
+
+## 3.329.18
+
+Sat, 18 Jul 2026 07:42:29 GMT
+
+### Patches
+
+- Make Seedream Generate and Edit modes explicit while preserving uploaded references. (dev@acedata.cloud)
+- Keep all Kling scenario tab labels readable in narrow parameter panels. (dev@acedata.cloud)
+
+## 3.329.17
+
+Sat, 18 Jul 2026 07:42:03 GMT
+
+### Patches
+
+- Keep all Kling scenario tab labels readable in narrow parameter panels. (dev@acedata.cloud)
+
+## 3.329.16
+
+Sat, 18 Jul 2026 06:17:45 GMT
+
+### Patches
+
+- Align task response names and avatars with Service capability presentation overrides. (dev@acedata.cloud)
+
+## 3.329.15
+
+Fri, 17 Jul 2026 09:04:00 GMT
+
+### Patches
+
+- Use a stable 6-second default for Grok video generation. (dev@acedata.cloud)
+
+## 3.329.14
+
+Thu, 16 Jul 2026 17:17:28 GMT
+
+### Patches
+
+- Add canonical Kling O1 and V3 Omni image/video reference controls. (dev@acedata.cloud)
+
+## 3.329.13
+
+Thu, 16 Jul 2026 15:43:05 GMT
+
+### Patches
+
+- Emphasize homepage business-story headings with a stronger visual weight (dev@acedata.cloud)
+
+## 3.329.12
+
+Thu, 16 Jul 2026 15:01:57 GMT
+
+### Patches
+
+- Showcase branded subsites, referrals, and the complete responsive AI capability catalog on the homepage (dev@acedata.cloud)
 
 ## 3.329.11
 

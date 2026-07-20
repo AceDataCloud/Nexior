@@ -775,9 +775,53 @@
     "message": "參考影片",
     "description": "表單欄位標籤：Omni 影片編輯的參考/待編輯影片"
   },
-  "description.referenceVideo": {
-    "message": "僅 kling-video-o1 支援。上傳一個 MP4/MOV（720–2160px、3–10 秒、≤200MB）用於編輯或參考已有影片。提示詞會自動以 <<<video_1>>> 引用它，請保留該標記來描述編輯效果（如「把 <<<video_1>>> 改成動漫風格」）。",
-    "description": "參考影片上傳的幫助文字"
+  "description.omniReferenceVideo": {
+    "message": "適用於 Kling O1 和 V3 Omni。上傳一個 MP4/MOV（720–2160px、3–10 秒、≤200MB）用於編輯或參考已有視頻，提示詞會自動添加 <<<video_1>>>。",
+    "description": "Omni 參考視頻上傳的幫助文字"
+  },
+  "name.referenceImages": {
+    "message": "參考圖片",
+    "description": "Omni 參考圖片字段標籤"
+  },
+  "description.referenceImages": {
+    "message": "適用於 Kling O1 和 V3 Omni。最多上傳 7 張參考圖；存在參考視頻時最多 4 張。提示詞引用標記會自動添加。",
+    "description": "Omni 參考圖片幫助文字"
+  },
+  "button.uploadReferenceImages": {
+    "message": "上傳圖片",
+    "description": "上傳 Omni 參考圖片按鈕"
+  },
+  "message.referenceImagesExceed": {
+    "message": "還可以上傳 {count} 張參考圖片。",
+    "description": "參考圖片數量提示"
+  },
+  "message.referenceImagesError": {
+    "message": "參考圖片上傳失敗，請重試。",
+    "description": "參考圖片上傳錯誤"
+  },
+  "name.referenceVideoType": {
+    "message": "視頻用途",
+    "description": "參考視頻類型標籤"
+  },
+  "name.referenceVideoFeature": {
+    "message": "特徵參考",
+    "description": "特徵參考視頻選項"
+  },
+  "name.referenceVideoBase": {
+    "message": "編輯原視頻",
+    "description": "基礎視頻編輯選項"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "存在參考視頻時最多支持 4 張參考圖片，請先移除多餘圖片。",
+    "description": "參考視頻與圖片數量衝突"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "該請求最多支持 {count} 張參考圖片，首幀和尾幀也計入總數。",
+    "description": "參考圖片總數限制提示"
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "待編輯的基礎視頻不能與首幀或尾幀同時使用。",
+    "description": "基礎視頻與首尾幀衝突提示"
   },
   "button.uploadReferenceVideo": {
     "message": "上傳影片",

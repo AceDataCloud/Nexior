@@ -1,5 +1,10 @@
 <template>
-  <el-tabs :model-value="value" class="action-tabs" stretch @update:model-value="onUpdate">
+  <el-tabs
+    :model-value="value"
+    class="action-tabs scenario-tabs scenario-tabs--divided"
+    stretch
+    @update:model-value="onUpdate"
+  >
     <el-tab-pane v-for="item in options" :key="item.value" :name="item.value" :label="item.label" />
   </el-tabs>
 </template>
@@ -59,12 +64,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .action-tabs {
   :deep(.el-tabs__header) {
-    margin: 0;
     height: 64px;
-  }
-
-  :deep(.el-tabs__nav-wrap::after) {
-    height: 1px;
   }
 
   :deep(.el-tabs__nav-scroll) {

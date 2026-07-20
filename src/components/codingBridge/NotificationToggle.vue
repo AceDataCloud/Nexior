@@ -6,28 +6,31 @@
     :type="enabled ? 'primary' : 'default'"
     :title="enabled ? $t('codingBridge.notify.disable') : $t('codingBridge.notify.enable')"
     :disabled="busy"
+    :aria-label="enabled ? $t('codingBridge.notify.disable') : $t('codingBridge.notify.enable')"
     @click="onToggle"
   >
-    <!-- Swap the bell for a spinner while busy: Element Plus's built-in loading
-         spinner renders cramped inside a small circle icon-button. A same-size
-         font-awesome icon keeps the button visually consistent with its siblings. -->
-    <font-awesome-icon v-if="busy" icon="fa-solid fa-spinner" spin />
-    <font-awesome-icon v-else :icon="enabled ? 'fa-solid fa-bell' : 'fa-regular fa-bell'" />
+    <!-- Swap the notification icon for a spinner while busy because Element Plus's
+          built-in loading spinner renders cramped inside a small circle button. -->
+    <loading-icon v-if="busy" class="adc-icon-spin" :size="'1em' as any" aria-hidden="true" focusable="false" />
+    <notification-icon v-else-if="enabled" :size="'1em' as any" aria-hidden="true" focusable="false" />
+    <notification-off-icon v-else :size="'1em' as any" aria-hidden="true" focusable="false" />
   </el-button>
 </template>
 
 <script lang="ts">
+import { LoadingIcon, NotificationIcon, NotificationOffIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { notifyPermission, webNotificationsSupported } from '@/utils/codingBridgeNotify';
 import { isNative } from '@/utils/surface';
 
 export default defineComponent({
   name: 'CodingBridgeNotificationToggle',
   components: {
-    ElButton,
-    FontAwesomeIcon
+    LoadingIcon,
+    NotificationIcon,
+    NotificationOffIcon,
+    ElButton
   },
   data() {
     return {

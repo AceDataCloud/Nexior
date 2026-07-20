@@ -179,7 +179,7 @@
     </div>
     <div v-else class="error-card">
       <div class="error-content">
-        <font-awesome-icon icon="fa-solid fa-circle-exclamation" class="error-icon" />
+        <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="error-text">{{ errorText }}</span>
       </div>
       <el-button v-if="showBuyMore && !readonly" round type="primary" class="btn-topup" size="small" @click="onBuyMore">
@@ -190,11 +190,11 @@
 </template>
 
 <script lang="ts">
+import { ErrorIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
 import { ElButton, ElImage, ElInput } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState, IChatModelGroup } from '@/models';
 import type { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
@@ -234,6 +234,7 @@ interface IData {
 export default defineComponent({
   name: 'Message',
   components: {
+    ErrorIcon,
     EditMessage,
     CopyToClipboard,
     RestartToGenerate,
@@ -248,8 +249,7 @@ export default defineComponent({
     ConnectorConsentCard,
     ElButton,
     ElImage,
-    ElInput,
-    FontAwesomeIcon
+    ElInput
   },
   props: {
     messages: {

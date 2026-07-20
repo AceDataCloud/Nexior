@@ -15,14 +15,14 @@
           v-if="faceMode === 'video'"
           :accept="DIGITALHUMAN_VIDEO_ACCEPT"
           :button-text="$t('digitalhuman.button.uploadVideo')"
-          icon="fa-solid fa-film"
+          icon="video"
           @change="onFaceVideoChange"
         />
         <file-input
           v-else
           :accept="DIGITALHUMAN_IMAGE_ACCEPT"
           :button-text="$t('digitalhuman.button.uploadPhoto')"
-          icon="fa-solid fa-image"
+          icon="image"
           @change="onFacePhotoChange"
         />
       </div>
@@ -41,7 +41,7 @@
           v-if="voiceMode === 'audio'"
           :accept="DIGITALHUMAN_AUDIO_ACCEPT"
           :button-text="$t('digitalhuman.button.uploadAudio')"
-          icon="fa-solid fa-music"
+          icon="music"
           @change="onAudioChange"
         />
         <template v-else>
@@ -80,7 +80,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-user" class="mr-2" />
+        <user-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('digitalhuman.button.generate') }}
       </el-button>
     </div>
@@ -88,9 +88,9 @@
 </template>
 
 <script lang="ts">
+import { UserIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElInput, ElRadioGroup, ElRadioButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FileInput from './config/FileInput.vue';
@@ -120,6 +120,7 @@ interface IData {
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    UserIcon,
     ElButton,
     ElInput,
     ElRadioGroup,
@@ -127,8 +128,7 @@ export default defineComponent({
     Consumption,
     InfoIcon,
     FileInput,
-    VoiceClone,
-    FontAwesomeIcon
+    VoiceClone
   },
   emits: ['generate'],
   data(): IData {

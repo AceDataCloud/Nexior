@@ -70,15 +70,22 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="icon" />
+                    <external-link-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     {{ $t('chat.artifacts.open') }}
                   </el-button>
                   <el-button size="small" text @click="onToggleHide(item)">
-                    <font-awesome-icon :icon="item.hidden ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'" class="icon" />
+                    <view-icon
+                      v-if="item.hidden"
+                      class="icon"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
+                    <view-off-icon v-else class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     {{ item.hidden ? $t('chat.artifacts.unhide') : $t('chat.artifacts.hide') }}
                   </el-button>
                   <el-button size="small" text type="danger" @click="onDelete(item)">
-                    <font-awesome-icon icon="fa-solid fa-trash" class="icon" />
+                    <delete-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                     {{ $t('chat.artifacts.delete') }}
                   </el-button>
                 </div>
@@ -95,8 +102,8 @@
 </template>
 
 <script lang="ts">
+import { DeleteIcon, ExternalLinkIcon, ViewIcon, ViewOffIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch, ElMessage, ElMessageBox } from 'element-plus';
 import { artifactsOperator, IArtifact, IArtifactKind } from '@/operators/artifacts';
 
@@ -117,7 +124,18 @@ const KIND_FILTERS: (IArtifactKind | 'all')[] = [
 
 export default defineComponent({
   name: 'Artifacts',
-  components: { FontAwesomeIcon, ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch },
+  components: {
+    DeleteIcon,
+    ElButton,
+    ElCard,
+    ElSkeleton,
+    ElEmpty,
+    ElTag,
+    ElSwitch,
+    ExternalLinkIcon,
+    ViewIcon,
+    ViewOffIcon
+  },
   data() {
     return {
       loading: true,

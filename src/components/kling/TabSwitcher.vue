@@ -1,5 +1,10 @@
 <template>
-  <el-tabs :model-value="modelValue" class="kling-tabs" stretch @update:model-value="onUpdate">
+  <el-tabs
+    :model-value="modelValue"
+    class="kling-tabs scenario-tabs scenario-tabs--divided"
+    stretch
+    @update:model-value="onUpdate"
+  >
     <el-tab-pane v-for="tab in tabs" :key="tab.value" :name="tab.value" :disabled="tab.disabled">
       <template #label>
         <span class="tab-label" :title="tab.disabled ? tab.disabledReason : undefined">
@@ -70,33 +75,34 @@ export default defineComponent({
   padding: 0 8px;
   background-color: var(--app-sidebar-bg);
 
-  :deep(.el-tabs__header) {
-    margin: 0;
-  }
-
-  :deep(.el-tabs__nav-wrap::after) {
-    height: 1px;
-  }
-
   :deep(.el-tabs__item) {
-    height: 38px;
-    line-height: 38px;
+    height: 48px;
+    line-height: 16px;
     font-size: 13px;
     padding: 0 6px;
+    white-space: normal;
   }
 
   .tab-label {
     display: inline-flex;
     align-items: center;
-    white-space: nowrap;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
 
     .text {
-      max-width: 100%;
+      display: -webkit-box;
+      flex: 1;
+      min-width: 0;
       overflow: hidden;
-      text-overflow: ellipsis;
+      text-align: center;
+      overflow-wrap: anywhere;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
 
     .badge {
+      flex: none;
       margin-left: 4px;
       font-size: 9px;
       height: 16px;

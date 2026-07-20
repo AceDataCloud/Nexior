@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-5">
-      <el-tabs v-model="type" class="demo-tabs" stretch>
+    <div class="flex-1 min-h-0 overflow-hidden">
+      <el-tabs v-model="type" class="demo-tabs scenario-tabs scenario-tabs--scrollable" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <model-selector class="mb-2" />
             <prompt-input class="mb-4" />
-            <reference-image class="mb-2" />
+            <reference-image class="mb-4" />
             <ratio-selector class="mb-4" />
             <quality-selector class="mb-4" />
             <version-selector v-if="!isNiji" class="mb-4" />
@@ -23,18 +23,18 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.videos')" name="videos">
-          <div class="pt-2 px-1">
+          <div class="p-5">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
-            <image-url-input class="mb-2" />
-            <end-image-url-input class="mb-2" />
+            <image-url-input class="mb-4" />
+            <end-image-url-input class="mb-4" />
             <loop-selector class="mb-2" />
             <resolution-selector class="mb-4" />
             <prompt-input class="mb-4" />
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.describe')" name="describe">
-          <div class="pt-2 px-1">
-            <image-url-input2 class="mb-2" />
+          <div class="p-5">
+            <image-url-input2 class="mb-4" />
           </div>
         </el-tab-pane>
       </el-tabs>

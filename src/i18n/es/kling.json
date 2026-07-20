@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Aplicable a Kling O1 y V3 Omni. Suba un MP4/MOV (720–2160px, 3–10 segundos, ≤200MB) para editar o como referencia de un video existente, la etiqueta de palabras clave se añadirá automáticamente <<<video_1>>>.",
+    "description": "Texto de ayuda para la subida de video de referencia de Omni"
+  },
+  "name.referenceImages": {
+    "message": "Imágenes de referencia",
+    "description": "Etiqueta del campo de imágenes de referencia de Omni"
+  },
+  "description.referenceImages": {
+    "message": "Aplicable a Kling O1 y V3 Omni. Puede subir hasta 7 imágenes de referencia; si hay un video de referencia, se permiten hasta 4. Las etiquetas de palabras clave se añadirán automáticamente.",
+    "description": "Texto de ayuda para las imágenes de referencia de Omni"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Subir imágenes",
+    "description": "Botón para subir imágenes de referencia de Omni"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Puede subir {count} imágenes de referencia más.",
+    "description": "Indicador de cantidad de imágenes de referencia"
+  },
+  "message.referenceImagesError": {
+    "message": "Error al subir imágenes de referencia, por favor intente de nuevo.",
+    "description": "Error en la subida de imágenes de referencia"
+  },
+  "name.referenceVideoType": {
+    "message": "Uso del video",
+    "description": "Etiqueta del tipo de video de referencia"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Referencia de características",
+    "description": "Opciones de video de referencia de características"
+  },
+  "name.referenceVideoBase": {
+    "message": "Editar video original",
+    "description": "Opciones básicas de edición de video"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Si hay un video de referencia, se pueden soportar hasta 4 imágenes de referencia, por favor elimine las imágenes adicionales.",
+    "description": "Conflicto entre la cantidad de video de referencia e imágenes"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Esta solicitud admite un máximo de {count} imágenes de referencia, incluyendo el primer y último fotograma en el total.",
+    "description": "Advertencia sobre el límite total de imágenes de referencia."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "El video base en espera de edición no puede usarse al mismo tiempo que el primer o último fotograma.",
+    "description": "Advertencia sobre el conflicto entre el video base y los fotogramas inicial y final."
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

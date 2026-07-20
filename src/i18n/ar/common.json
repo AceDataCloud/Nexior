@@ -859,14 +859,6 @@
     "message": "سيتذكر المساعد المعلومات المفيدة التي تذكرها في المحادثات، مما يوفر ردوداً أكثر تخصيصاً في المحادثات المختلفة. لديك السيطرة الكاملة - يمكنك عرض المحتويات المحفوظة وحذف الأجزاء التي لا ترغب في تذكرها.",
     "description": "نص تقديمي في أعلى علامة تبويب إعدادات الذاكرة."
   },
-  "settings.memoryEnabled": {
-    "message": "استخدام الذاكرة",
-    "description": "عنوان مفتاح للتحكم فيما إذا كان المساعد يستخدم الذاكرة المحفوظة في الدردشة ويستمر في تعلم ذاكرة جديدة."
-  },
-  "settings.memoryEnabledHint": {
-    "message": "عند الإيقاف، لن يقرأ المساعد الذاكرة المحفوظة، ولن يحفظ الذاكرة من المحادثات الجديدة. لن يتم حذف المحتوى الموجود.",
-    "description": "وصف سلوك مفتاح الذاكرة أسفل المفتاح."
-  },
   "settings.memoryNeedsChat": {
     "message": "يرجى بدء محادثة لتفعيل ميزة الذاكرة.",
     "description": "يظهر في علامة تبويب إعدادات الذاكرة عندما لم يتم تحميل تطبيق الدردشة/التوكن بعد."
@@ -874,58 +866,6 @@
   "settings.memoryStored": {
     "message": "الذكريات المحفوظة",
     "description": "عنوان القسم أعلى قائمة إدخالات الذاكرة المخزنة."
-  },
-  "settings.memoryImport": {
-    "message": "استيراد",
-    "description": "زر لفتح نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportTitle": {
-    "message": "استيراد الذاكرة من ذكاء اصطناعي آخر",
-    "description": "عنوان نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportExportStep": {
-    "message": "1. اجعل الذكاء الاصطناعي المستخدم حاليًا يصدر الذاكرة",
-    "description": "عنوان الخطوة الأولى في نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportPrompt": {
-    "message": "أريد الانتقال إلى خدمة ذكاء اصطناعي أخرى. يرجى سرد كل ذاكرة محفوظة عني، بالإضافة إلى المعلومات المستدامة التي تعلمتها من المحادثات السابقة. ضع كل المحتوى في كتلة كود، واكتب ذاكرة واحدة فقط في كل سطر، بالتنسيق: [تاريخ الحفظ، إن وُجد] - محتوى الذاكرة. يرجى تضمين تفضيلات الرد، المعلومات الشخصية، المشاريع، الأهداف، الأدوات الشائعة، اللغات، الأطر، وأي تصحيحات قمت بها. حاول الحفاظ على كلماتي الأصلية، ولا تتضمن كلمات المرور أو المفاتيح أو أي معلومات حساسة.",
-    "description": "عبارة التذكير المستخدمة لتصدير الذاكرة إلى خدمات ذكاء اصطناعي أخرى."
-  },
-  "settings.memoryImportCopy": {
-    "message": "نسخ عبارة التذكير",
-    "description": "زر لنسخ عبارة تصدير الذاكرة."
-  },
-  "settings.memoryImportCopied": {
-    "message": "تم نسخ عبارة التذكير",
-    "description": "تنبيه بعد نسخ عبارة تصدير الذاكرة بنجاح."
-  },
-  "settings.memoryImportPasteStep": {
-    "message": "2. لصق الذاكرة المصدرة",
-    "description": "عنوان الخطوة الثانية في نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportPlaceholder": {
-    "message": "ألصق محتوى الذاكرة المسترجعة من ChatGPT أو Claude أو Gemini أو أي ذكاء اصطناعي آخر...",
-    "description": "نص العنصر المدخل لصق محتوى تصدير الذاكرة."
-  },
-  "settings.memoryImportSubmit": {
-    "message": "إضافة إلى الذاكرة",
-    "description": "زر لتقديم المحتوى الملصوق للاستيراد."
-  },
-  "settings.memoryImportSuccess": {
-    "message": "تمت معالجة {count} عنصرًا من الذاكرة. راجع الذكريات المحفوظة أدناه.",
-    "description": "إشعار نجاح استيراد الذاكرة؛ العدد هو عدد عناصر الإدخال التي اجتازت التحقق قبل إزالة التكرارات وتطبيق حدود السعة"
-  },
-  "settings.memoryImportPartial": {
-    "message": "تم معالجة {processed} محتوى، وتم تخطي {rejected} محتوى غير آمن أو غير صالح.",
-    "description": "تحذير يظهر عند نجاح جزء من استيراد الذاكرة."
-  },
-  "settings.memoryImportInvalid": {
-    "message": "فشل استيراد الذاكرة. يرجى التأكد من تشغيل الذاكرة، ولصق المعلومات بتنسيق حقيقة عادية لكل سطر.",
-    "description": "تنبيه خطأ قابل للتنفيذ يظهر عند طلب استيراد الذاكرة غير صالح."
-  },
-  "settings.memoryImportInProgress": {
-    "message": "هناك مهمة استيراد ذاكرة قيد التشغيل، يرجى إبقاء النافذة مفتوحة والمحاولة لاحقًا.",
-    "description": "تحذير يظهر عند تشغيل مهمة استيراد ذاكرة أخرى."
   },
   "settings.memoryEmpty": {
     "message": "لا توجد ذكريات محفوظة.",
@@ -1595,8 +1535,112 @@
   "settings.siteServices": {
     "message": "الأسعار"
   },
+  "settings.memoryEnabled": {
+    "message": "استخدام الذاكرة",
+    "description": "عنوان مفتاح للتحكم فيما إذا كان المساعد يستخدم الذاكرة المحفوظة في الدردشة ويستمر في تعلم ذاكرة جديدة."
+  },
+  "settings.memoryEnabledHint": {
+    "message": "عند الإيقاف، لن يقرأ المساعد الذاكرة المحفوظة، ولن يحفظ الذاكرة من المحادثات الجديدة. لن يتم حذف المحتوى الموجود.",
+    "description": "وصف سلوك مفتاح الذاكرة أسفل المفتاح."
+  },
   "nav.omni": {
     "message": "فيديو Omni",
     "description": "علامة التنقل لوحدة فيديو Omni."
+  },
+  "settings.memoryImport": {
+    "message": "استيراد",
+    "description": "زر لفتح نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportTitle": {
+    "message": "استيراد الذاكرة من ذكاء اصطناعي آخر",
+    "description": "عنوان نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. اجعل الذكاء الاصطناعي المستخدم حاليًا يصدر الذاكرة",
+    "description": "عنوان الخطوة الأولى في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPrompt": {
+    "message": "أريد الانتقال إلى خدمة ذكاء اصطناعي أخرى. يرجى سرد كل ذاكرة محفوظة عني، بالإضافة إلى المعلومات المستدامة التي تعلمتها من المحادثات السابقة. ضع كل المحتوى في كتلة كود، واكتب ذاكرة واحدة فقط في كل سطر، بالتنسيق: [تاريخ الحفظ، إن وُجد] - محتوى الذاكرة. يرجى تضمين تفضيلات الرد، المعلومات الشخصية، المشاريع، الأهداف، الأدوات الشائعة، اللغات، الأطر، وأي تصحيحات قمت بها. حاول الحفاظ على كلماتي الأصلية، ولا تتضمن كلمات المرور أو المفاتيح أو أي معلومات حساسة.",
+    "description": "عبارة التذكير المستخدمة لتصدير الذاكرة إلى خدمات ذكاء اصطناعي أخرى."
+  },
+  "settings.memoryImportCopy": {
+    "message": "نسخ عبارة التذكير",
+    "description": "زر لنسخ عبارة تصدير الذاكرة."
+  },
+  "settings.memoryImportCopied": {
+    "message": "تم نسخ عبارة التذكير",
+    "description": "تنبيه بعد نسخ عبارة تصدير الذاكرة بنجاح."
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. لصق الذاكرة المصدرة",
+    "description": "عنوان الخطوة الثانية في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "ألصق محتوى الذاكرة المسترجعة من ChatGPT أو Claude أو Gemini أو أي ذكاء اصطناعي آخر...",
+    "description": "نص العنصر المدخل لصق محتوى تصدير الذاكرة."
+  },
+  "settings.memoryImportSubmit": {
+    "message": "إضافة إلى الذاكرة",
+    "description": "زر لتقديم المحتوى الملصوق للاستيراد."
+  },
+  "settings.memoryImportSuccess": {
+    "message": "تمت معالجة {count} عنصرًا من الذاكرة. راجع الذكريات المحفوظة أدناه.",
+    "description": "إشعار نجاح استيراد الذاكرة؛ العدد هو عدد عناصر الإدخال التي اجتازت التحقق قبل إزالة التكرارات وتطبيق حدود السعة"
+  },
+  "settings.memoryImportPartial": {
+    "message": "تم معالجة {processed} محتوى، وتم تخطي {rejected} محتوى غير آمن أو غير صالح.",
+    "description": "تحذير يظهر عند نجاح جزء من استيراد الذاكرة."
+  },
+  "settings.memoryImportInvalid": {
+    "message": "فشل استيراد الذاكرة. يرجى التأكد من تشغيل الذاكرة، ولصق المعلومات بتنسيق حقيقة عادية لكل سطر.",
+    "description": "تنبيه خطأ قابل للتنفيذ يظهر عند طلب استيراد الذاكرة غير صالح."
+  },
+  "settings.memoryImportInProgress": {
+    "message": "هناك مهمة استيراد ذاكرة قيد التشغيل، يرجى إبقاء النافذة مفتوحة والمحاولة لاحقًا.",
+    "description": "تحذير يظهر عند تشغيل مهمة استيراد ذاكرة أخرى."
+  },
+  "message.mediaPreviewUnavailable": {
+    "message": "Preview unavailable",
+    "description": "Media preview could not be loaded"
+  },
+  "button.send": {
+    "message": "Send",
+    "description": "Accessible label for sending content"
+  },
+  "button.stop": {
+    "message": "Stop",
+    "description": "Accessible label for stopping an operation"
+  },
+  "button.openMenu": {
+    "message": "Open menu",
+    "description": "Accessible label for opening a navigation or configuration menu"
+  },
+  "button.more": {
+    "message": "More actions",
+    "description": "Accessible label for opening an actions menu"
+  },
+  "button.remove": {
+    "message": "Remove",
+    "description": "Accessible label for removing an item"
+  },
+  "player.previous": {
+    "message": "Previous track",
+    "description": "Accessible label for the previous-track player button"
+  },
+  "player.play": {
+    "message": "Play",
+    "description": "Accessible label for the player play button"
+  },
+  "player.pause": {
+    "message": "Pause",
+    "description": "Accessible label for the player pause button"
+  },
+  "player.next": {
+    "message": "Next track",
+    "description": "Accessible label for the next-track player button"
+  },
+  "player.volume": {
+    "message": "Volume",
+    "description": "Accessible label for the player volume control"
   }
 }

@@ -144,7 +144,7 @@
     "description": "اسم النموذج للخدمة، أي Grok 4"
   },
   "model.grok4Description": {
-    "message": "النموذج الأكثر تقدمًا حاليًا",
+    "message": "General-purpose K2 model for compatible workflows",
     "description": "وصف نموذج Grok 4"
   },
   "model.grok3": {
@@ -575,50 +575,6 @@
     "message": "تم تخطي تفويض الموصل",
     "description": "شرح أسفل البطاقة بعد أن يتخطى المستخدم التفويض"
   },
-  "browserTool.title": {
-    "message": "نشاط المتصفح",
-    "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
-  },
-  "browserTool.state.choose_device": {
-    "message": "يرجى اختيار جهاز المتصفح",
-    "description": "لم يتم اختيار جهاز المتصفح بعد"
-  },
-  "browserTool.state.device_offline": {
-    "message": "جهاز المتصفح غير متصل",
-    "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
-  },
-  "browserTool.state.awaiting_device": {
-    "message": "في انتظار جهاز المتصفح",
-    "description": "انتظار جهاز المتصفح لاستلام المهمة"
-  },
-  "browserTool.state.awaiting_local_approval": {
-    "message": "يرجى الموافقة على جهاز المتصفح",
-    "description": "انتظار الموافقة على العملية من جهاز المتصفح المحلي"
-  },
-  "browserTool.state.takeover_required": {
-    "message": "يرجى الاستحواذ على جهاز المتصفح",
-    "description": "يتطلب من المستخدم الاستحواذ على العملية من جهاز المتصفح المحلي"
-  },
-  "browserTool.state.executing": {
-    "message": "يتم التنفيذ في المتصفح",
-    "description": "جهاز المتصفح يقوم بتنفيذ الأداة"
-  },
-  "browserTool.state.completed": {
-    "message": "تم الانتهاء",
-    "description": "تم تنفيذ أداة المتصفح بنجاح"
-  },
-  "browserTool.state.denied": {
-    "message": "تم الرفض على جهاز المتصفح",
-    "description": "رفض المستخدم العملية على جهاز المتصفح المحلي"
-  },
-  "browserTool.state.expired": {
-    "message": "انتهت صلاحية الطلب",
-    "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
-  },
-  "browserTool.state.cancel_too_late": {
-    "message": "لا يمكن الإلغاء",
-    "description": "العملية قد أثرت بالفعل، الطلب للإلغاء متأخر"
-  },
   "scheduledTasks.navTitle": {
     "message": "المهام المجدولة",
     "description": "مدخل المهام المجدولة في الشريط الجانبي"
@@ -741,9 +697,6 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "رصيد غير كافٍ"
   },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "فشل تفويض الفوترة"
-  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "غير مصرّح"
   },
@@ -756,10 +709,6 @@
   "scheduledTasks.run.needs_user_input": {
     "message": "تحتاج إلى إجراء",
     "description": "حالة تحتاج إلى تدخل المستخدم"
-  },
-  "scheduledTasks.run.waiting_for_device": {
-    "message": "انتظار جهاز المتصفح",
-    "description": "المهمة المجدولة تنتظر تشغيل جهاز المتصفح"
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "يوميًا",
@@ -984,18 +933,6 @@
     "message": "إخفاء",
     "description": "زر إخفاء الإنتاج"
   },
-  "artifacts.unhide": {
-    "message": "إلغاء الإخفاء",
-    "description": "زر لاستعادة العنصر المخفي"
-  },
-  "artifacts.showHidden": {
-    "message": "عرض العناصر المخفية",
-    "description": "زر لتفعيل عرض العناصر المخفية في شريط الفلترة"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "تم إخفاؤه",
-    "description": "علامة تشير إلى أن العنصر قد تم إخفاؤه"
-  },
   "artifacts.delete": {
     "message": "حذف",
     "description": "زر حذف الإنتاج"
@@ -1131,5 +1068,92 @@
   "model.claudeOpus47Description": {
     "message": "النموذج الأكثر تقدمًا حاليًا",
     "description": "وصف نموذج Claude Opus 4.7"
+  },
+  "artifacts.unhide": {
+    "message": "إلغاء الإخفاء",
+    "description": "زر لاستعادة العنصر المخفي"
+  },
+  "artifacts.showHidden": {
+    "message": "عرض العناصر المخفية",
+    "description": "زر لتفعيل عرض العناصر المخفية في شريط الفلترة"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "تم إخفاؤه",
+    "description": "علامة تشير إلى أن العنصر قد تم إخفاؤه"
+  },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "فشل تفويض الفوترة"
+  },
+  "browserTool.title": {
+    "message": "نشاط المتصفح",
+    "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
+  },
+  "browserTool.state.choose_device": {
+    "message": "يرجى اختيار جهاز المتصفح",
+    "description": "لم يتم اختيار جهاز المتصفح بعد"
+  },
+  "browserTool.state.device_offline": {
+    "message": "جهاز المتصفح غير متصل",
+    "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "في انتظار جهاز المتصفح",
+    "description": "انتظار جهاز المتصفح لاستلام المهمة"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "يرجى الموافقة على جهاز المتصفح",
+    "description": "انتظار الموافقة على العملية من جهاز المتصفح المحلي"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "يرجى الاستحواذ على جهاز المتصفح",
+    "description": "يتطلب من المستخدم الاستحواذ على العملية من جهاز المتصفح المحلي"
+  },
+  "browserTool.state.executing": {
+    "message": "يتم التنفيذ في المتصفح",
+    "description": "جهاز المتصفح يقوم بتنفيذ الأداة"
+  },
+  "browserTool.state.completed": {
+    "message": "تم الانتهاء",
+    "description": "تم تنفيذ أداة المتصفح بنجاح"
+  },
+  "browserTool.state.denied": {
+    "message": "تم الرفض على جهاز المتصفح",
+    "description": "رفض المستخدم العملية على جهاز المتصفح المحلي"
+  },
+  "browserTool.state.expired": {
+    "message": "انتهت صلاحية الطلب",
+    "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "لا يمكن الإلغاء",
+    "description": "العملية قد أثرت بالفعل، الطلب للإلغاء متأخر"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "انتظار جهاز المتصفح",
+    "description": "المهمة المجدولة تنتظر تشغيل جهاز المتصفح"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Flagship reasoning and vision model with a 1M-token context window",
+    "description": "Description of the Kimi K3 model"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Reasoning and vision model for compatible K2 workflows",
+    "description": "Description of the Kimi K2.6 model"
+  },
+  "model.claudeFable5": {
+    "message": "claude-fable-5",
+    "description": "Name of Anthropic's Claude Fable 5 flagship model"
+  },
+  "model.claudeFable5Description": {
+    "message": "Flagship reasoning and vision model for long-horizon work with a 1M-token context window",
+    "description": "Description of the Claude Fable 5 model"
   }
 }

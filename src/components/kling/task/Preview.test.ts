@@ -6,6 +6,9 @@ import type { IKlingTask } from '@/models';
 vi.mock('@/components/common/VideoPlayer.vue', () => ({
   default: { name: 'VideoPlayer', template: '<div />' }
 }));
+vi.mock('@/components/common/ApiCodeButton.vue', () => ({
+  default: { name: 'ApiCodeButton', template: '<div />' }
+}));
 
 import TaskPreview from './Preview.vue';
 
@@ -34,6 +37,9 @@ const mountPreview = (modelValue = task) =>
   shallowMount(TaskPreview, {
     props: { modelValue },
     global: {
+      stubs: {
+        ElAlert: { template: '<div><slot /><slot name="template" /></div>' }
+      },
       mocks: {
         $t: (key: string) => key,
         $dayjs: { format: () => '' },
@@ -43,6 +49,84 @@ const mountPreview = (modelValue = task) =>
   });
 
 describe('kling/task/Preview', () => {
+  it('shows pending copy and a time icon before a response exists', () => {
+    const wrapper = mountPreview({
+      ...task,
+      response: undefined
+    });
+
+    expect(wrapper.find('.prompt').text()).toContain('kling.status.pending');
+    expect(wrapper.text()).toContain('kling.status.pending');
+    expect(wrapper.text()).not.toContain('kling.name.failure');
+    expect(wrapper.findComponent({ name: 'TimeIcon' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'WarningIcon' }).exists()).toBe(false);
+  });
+
+  it.each(['pending', 'processing', undefined])(
+    'shows processing copy for an unfinished response with state %s',
+    (state) => {
+      const wrapper = mountPreview({
+        ...task,
+        response: {
+          task_id: 'kling-task',
+          state
+        } as IKlingTask['response']
+      });
+
+      expect(wrapper.find('.prompt').text()).toContain('kling.status.processing');
+      expect(wrapper.text()).toContain('kling.status.processing');
+      expect(wrapper.text()).not.toContain('kling.status.pending');
+      expect(wrapper.text()).not.toContain('kling.name.failure');
+      expect(wrapper.findComponent({ name: 'TimeIcon' }).exists()).toBe(true);
+      expect(wrapper.findComponent({ name: 'WarningIcon' }).exists()).toBe(false);
+    }
+  );
+
+  it('preserves explicit failure copy and warning icon', () => {
+    const wrapper = mountPreview({
+      ...task,
+      response: {
+        success: false,
+        task_id: 'kling-task',
+        error: { message: 'Generation failed' }
+      }
+    });
+
+    expect(wrapper.text()).toContain('kling.name.failure');
+    expect(wrapper.text()).not.toContain('kling.status.pending');
+    expect(wrapper.text()).not.toContain('kling.status.processing');
+    expect(wrapper.findComponent({ name: 'WarningIcon' }).exists()).toBe(true);
+  });
+
+  it.each([
+    { state: 'failed', error: { message: 'Generation failed' } },
+    { error: { message: 'Provider rejected the task' } }
+  ])('keeps legacy terminal responses on failure semantics', (response) => {
+    const wrapper = mountPreview({
+      ...task,
+      response: { task_id: 'kling-task', ...response } as IKlingTask['response']
+    });
+
+    expect(wrapper.text()).toContain('kling.name.failure');
+    expect(wrapper.text()).not.toContain('kling.status.processing');
+    expect(wrapper.findComponent({ name: 'WarningIcon' }).exists()).toBe(true);
+  });
+
+  it('gives failure semantics priority over a contradictory success flag', () => {
+    const wrapper = mountPreview({
+      ...task,
+      response: {
+        success: true,
+        task_id: 'kling-task',
+        video_url: 'https://cdn.example.com/result.mp4',
+        error: { message: 'Provider marked the task failed' }
+      }
+    });
+
+    expect(wrapper.text()).toContain('kling.name.failure');
+    expect(wrapper.find('.success').exists()).toBe(false);
+  });
+
   it('shows every previewable request input before the prompt', () => {
     const wrapper = mountPreview();
 

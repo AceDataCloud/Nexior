@@ -1,34 +1,41 @@
 <template>
   <div class="main flex-1 h-full flex flex-row">
     <div
-      class="config w-[320px] flex-none h-full flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      class="config w-[320px] flex-none h-full min-h-0 overflow-hidden flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
     >
       <slot name="config" />
     </div>
     <div class="results flex-1 h-full flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="results" />
     </div>
-    <el-button v-show="!tasksEmpty" circle class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-magic" />
+    <el-button
+      v-show="!tasksEmpty"
+      circle
+      class="menu"
+      :aria-label="$t('common.button.openMenu')"
+      :title="$t('common.button.openMenu')"
+      @click="drawer = true"
+    >
+      <magic-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-button>
-    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px" class="drawer">
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="340px" class="drawer generator-drawer">
       <slot name="config" />
     </el-drawer>
   </div>
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import taskDrawerMixin from '@/utils/taskDrawerMixin';
 
 export default defineComponent({
   name: 'LayoutMidjourney',
   components: {
+    MagicIcon,
     ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   mixins: [taskDrawerMixin]
 });

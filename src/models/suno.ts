@@ -254,14 +254,23 @@ export interface ISunoMP4 {
   video_url?: string;
 }
 
-export interface ISunoAudioResponse {
+export interface ISunoTaskResultMeta {
   success?: boolean;
-  task_id: string;
-  data: ISunoAudio[];
+  trace_id?: string;
+  error?:
+    | string
+    | {
+        code?: string;
+        message?: string;
+      };
 }
 
-export interface ISunoLyricResponse {
-  success?: boolean;
+export interface ISunoAudioResponse extends ISunoTaskResultMeta {
+  task_id?: string;
+  data?: ISunoAudio[];
+}
+
+export interface ISunoLyricResponse extends ISunoTaskResultMeta {
   task_id: string;
   data: ISunoAudioLyric;
 }
@@ -282,6 +291,7 @@ export interface ISunoTask {
   map(arg0: (song: any) => any): any;
   id: string;
   created_at?: number;
+  trace_id?: string;
   request?: ISunoAudioRequest | ISunoLyricRequest;
   response?: ISunoAudioResponse | ISunoLyricResponse;
 }

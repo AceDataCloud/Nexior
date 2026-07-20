@@ -134,7 +134,15 @@
       <div class="settings-content">
         <div v-if="hasContacts" class="contacts-summary">
           <el-tag v-for="(c, i) in contacts" :key="i" size="small" round class="contact-chip">
-            <font-awesome-icon :icon="contactIconFor(c.type)" class="chip-icon" />
+            <font-awesome-icon v-if="contactUsesFontAwesome(c.type)" :icon="contactIconFor(c.type)" class="chip-icon" />
+            <component
+              :is="contactIconFor(c.type)"
+              v-else
+              class="chip-icon"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             {{ contactSummary(c) }}
           </el-tag>
         </div>
@@ -158,7 +166,7 @@ import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import { getBrandContacts, hasBrandContacts, toWritableSitePayload } from '@/utils';
-import { contactIcon, contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
+import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
 
@@ -231,6 +239,7 @@ export default defineComponent({
     }
   },
   methods: {
+    contactUsesFontAwesome,
     contactIconFor(type: string) {
       return contactIcon(type);
     },

@@ -1,7 +1,7 @@
 <template>
   <el-dialog v-model="visible" title="确认操作" width="480px" :close-on-click-modal="false">
     <div class="confirmation-body">
-      <el-icon size="24" color="#e6a23c"><Warning /></el-icon>
+      <el-icon size="24" color="#e6a23c"><Warning :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
       <div>
         <p class="confirmation-desc">{{ description }}</p>
         <p class="confirmation-tool">
@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
+import { WarningIcon as Warning } from '@acedatacloud/core/icons/components';
 import { defineComponent, ref } from 'vue';
-import { Warning } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'ConfirmationDialog',

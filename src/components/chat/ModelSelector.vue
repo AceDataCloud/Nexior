@@ -4,7 +4,7 @@
       <div class="trigger">
         <img v-if="model?.icon" :src="model.icon" class="trigger-icon" />
         <span class="trigger-name">{{ model?.getDisplayName?.() ?? model?.name ?? '' }}</span>
-        <font-awesome-icon icon="fa-solid fa-chevron-down" class="trigger-arrow" />
+        <expand-down-icon class="trigger-arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
       </div>
       <template #dropdown>
         <el-dropdown-menu v-if="modelGroup && modelGroup?.models">
@@ -23,7 +23,13 @@
                 </p>
                 <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
               </div>
-              <font-awesome-icon v-if="model?.name === option?.name" icon="fa-solid fa-check" class="item-check" />
+              <confirm-icon
+                v-if="model?.name === option?.name"
+                class="item-check"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
             </div>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -33,9 +39,9 @@
 </template>
 
 <script lang="ts">
+import { ConfirmIcon, ExpandDownIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModelGroup } from '@/models';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
@@ -53,10 +59,11 @@ interface IData {
 export default defineComponent({
   name: 'ModelSelector',
   components: {
+    ConfirmIcon,
+    ExpandDownIcon,
     ElDropdown,
     ElDropdownMenu,
-    ElDropdownItem,
-    FontAwesomeIcon
+    ElDropdownItem
   },
   emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {

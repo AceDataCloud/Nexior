@@ -775,9 +775,53 @@
     "message": "Referenzvideo",
     "description": "Formularfeld für Referenz- oder bearbeitbares Video"
   },
-  "description.referenceVideo": {
-    "message": "Nur für kling-video-o1. Ein MP4/MOV (720–2160px, 3–10 s, ≤200 MB) hochladen, um ein vorhandenes Video zu bearbeiten oder zu referenzieren. Der Prompt zitiert es automatisch als <<<video_1>>>; diesen Token beibehalten, um die Bearbeitung zu beschreiben (z. B. \"<<<video_1>>> in Anime-Stil umwandeln\").",
-    "description": "Hilfetext für den Upload des Referenzvideos"
+  "description.omniReferenceVideo": {
+    "message": "Für Kling O1 und V3 Omni. Laden Sie ein MP4/MOV (720–2160px, 3–10 Sekunden, ≤200MB) für die Bearbeitung oder als Referenz für vorhandenes Video hoch, Stichwörter werden automatisch hinzugefügt <<<video_1>>>.",
+    "description": "Hilfetext zum Hochladen von Omni Referenzvideos"
+  },
+  "name.referenceImages": {
+    "message": "Referenzbilder",
+    "description": "Feldbezeichnung für Omni Referenzbilder"
+  },
+  "description.referenceImages": {
+    "message": "Für Kling O1 und V3 Omni. Maximal 7 Referenzbilder hochladen; bei vorhandenem Referenzvideo maximal 4 Bilder. Stichwortverweise werden automatisch hinzugefügt.",
+    "description": "Hilfetext zu Omni Referenzbildern"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Bilder hochladen",
+    "description": "Button zum Hochladen von Omni Referenzbildern"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Es können noch {count} Referenzbilder hochgeladen werden.",
+    "description": "Hinweis zur Anzahl der Referenzbilder"
+  },
+  "message.referenceImagesError": {
+    "message": "Hochladen der Referenzbilder fehlgeschlagen, bitte versuchen Sie es erneut.",
+    "description": "Fehler beim Hochladen der Referenzbilder"
+  },
+  "name.referenceVideoType": {
+    "message": "Videonutzung",
+    "description": "Bezeichnung für den Typ des Referenzvideos"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Merkmalsreferenz",
+    "description": "Option für Referenzvideos zu Merkmalen"
+  },
+  "name.referenceVideoBase": {
+    "message": "Originalvideo bearbeiten",
+    "description": "Basisoptionen zur Videobearbeitung"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Bei vorhandenem Referenzvideo sind maximal 4 Referenzbilder erlaubt, bitte entfernen Sie überschüssige Bilder.",
+    "description": "Konflikt zwischen Anzahl der Referenzvideos und -bilder"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Diese Anfrage unterstützt maximal {count} Referenzbilder, wobei der erste und letzte Frame ebenfalls in die Gesamtzahl einfließen.",
+    "description": "Hinweis auf die Begrenzung der Gesamtzahl der Referenzbilder."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Das zu bearbeitende Basisvideo kann nicht gleichzeitig mit dem ersten oder letzten Frame verwendet werden.",
+    "description": "Hinweis auf Konflikt zwischen Basisvideo und ersten/letzten Frames."
   },
   "button.uploadReferenceVideo": {
     "message": "Video hochladen",

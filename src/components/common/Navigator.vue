@@ -104,6 +104,7 @@ import {
   ROUTE_VEO_HISTORY,
   ROUTE_SORA_INDEX,
   ROUTE_MAESTRO_INDEX,
+  ROUTE_POIVELLE_INDEX,
   ROUTE_DIGITALHUMAN_INDEX,
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
@@ -146,6 +147,7 @@ import {
   VEO_LOGO,
   SORA_LOGO,
   MAESTRO_LOGO,
+  POIVELLE_LOGO,
   DIGITALHUMAN_LOGO,
   PIXVERSE_LOGO,
   WAN_LOGO,
@@ -194,6 +196,7 @@ const NAV_CAPABILITY_BY_ROUTE: Partial<Record<string, CapabilityKey>> = {
   [ROUTE_KLING_INDEX]: 'kling',
   [ROUTE_VEO_INDEX]: 'veo',
   [ROUTE_MAESTRO_INDEX]: 'maestro',
+  [ROUTE_POIVELLE_INDEX]: 'poivelle',
   [ROUTE_DIGITALHUMAN_INDEX]: 'digitalhuman',
   [ROUTE_SORA_INDEX]: 'sora',
   [ROUTE_PIXVERSE_INDEX]: 'pixverse',
@@ -438,6 +441,17 @@ export default defineComponent({
           logo: MAESTRO_LOGO,
           routes: [ROUTE_MAESTRO_INDEX],
           category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.poivelle?.enabled) {
+        result.push({
+          route: { name: ROUTE_POIVELLE_INDEX },
+          displayName: this.$t('poivelle.nav.name'),
+          logo: POIVELLE_LOGO,
+          routes: [ROUTE_POIVELLE_INDEX],
+          category: 'video',
+          capability: 'poivelle',
+          defaultLogo: POIVELLE_LOGO
         });
       }
       if (this.$store?.state?.site?.features?.digitalhuman?.enabled) {

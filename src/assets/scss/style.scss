@@ -2,3 +2,41 @@
 @use './common';
 @use './scrollbar';
 @use './markdown';
+
+@keyframes adc-icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.adc-icon-spin {
+  animation: adc-icon-spin 1s linear infinite;
+}
+
+svg.lucide {
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+
+.preview .content .el-alert p.text-xs {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 0;
+  line-height: 1.5;
+
+  > svg:first-child,
+  > .el-icon:first-child {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    margin: 2px 0 0;
+    margin-inline-end: 6px;
+  }
+
+  > .btn-copy,
+  > .icon-copy,
+  > .icon-check {
+    flex: 0 0 auto;
+  }
+}

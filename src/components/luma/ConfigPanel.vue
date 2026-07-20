@@ -19,11 +19,11 @@
         round
         @click="onGenerate"
       >
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('luma.button.extend') }}
       </el-button>
       <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('luma.button.generate') }}
       </el-button>
     </div>
@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EnhancementSelector from './config/EnhancementSelector.vue';
 import CustomSelector from './config/CustomSelector.vue';
 import LoopSelector from './config/LoopSelector.vue';
@@ -49,12 +49,12 @@ import { getConsumption } from '@/utils';
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    MagicIcon,
     LoopSelector,
     StartImageInput,
     EndImageInput,
     EnhancementSelector,
     ElButton,
-    FontAwesomeIcon,
     PromptInput,
     ExtendFromInput,
     CustomSelector,

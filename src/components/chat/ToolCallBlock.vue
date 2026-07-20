@@ -2,14 +2,20 @@
   <div class="tool-call-block" :class="{ 'is-error': toolCall.state === 'failed' }">
     <div class="tool-header" @click="collapsed = !collapsed">
       <span class="tool-icon">
-        <el-icon v-if="toolCall.state === 'running'" class="is-loading"><Loading /></el-icon>
-        <el-icon v-else-if="toolCall.state === 'completed'" color="#67c23a"><CircleCheck /></el-icon>
-        <el-icon v-else color="#f56c6c"><CircleClose /></el-icon>
+        <el-icon v-if="toolCall.state === 'running'" class="is-loading"
+          ><Loading :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
+        <el-icon v-else-if="toolCall.state === 'completed'" color="#67c23a"
+          ><CircleCheck :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
+        <el-icon v-else color="#f56c6c"
+          ><CircleClose :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
       </span>
       <span class="tool-name">{{ toolCall.displayName || toolCall.name }}</span>
       <span v-if="toolCall.durationMs" class="tool-duration"> {{ (toolCall.durationMs / 1000).toFixed(1) }}s </span>
       <el-icon class="collapse-icon" :class="{ 'is-collapsed': collapsed }">
-        <ArrowDown />
+        <ArrowDown :size="'1em' as any" aria-hidden="true" focusable="false" />
       </el-icon>
     </div>
 
@@ -42,8 +48,14 @@
 </template>
 
 <script lang="ts">
+import {
+  LoadingIcon as Loading,
+  SuccessIcon as CircleCheck,
+  ErrorIcon as CircleClose,
+  ExpandDownIcon as ArrowDown
+} from '@acedatacloud/core/icons/components';
 import { defineComponent, ref, type PropType } from 'vue';
-import { Loading, CircleCheck, CircleClose, ArrowDown } from '@element-plus/icons-vue';
+
 import ArtifactBlock from './ArtifactBlock.vue';
 import type { IChatToolCall } from '@/models';
 

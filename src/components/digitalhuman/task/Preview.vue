@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="DIGITALHUMAN_LOGO" class="avatar" />
+      <capability-presentation capability="digitalhuman" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('digitalhuman.name.bot') }}
+        <capability-presentation capability="digitalhuman" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -20,8 +20,20 @@
           <span v-if="!isTerminal"> - ({{ statusLabel }}) </span>
         </p>
         <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">
-          <font-awesome-icon :icon="faceIcon" class="mr-1" />{{ faceLabel }}
-          <span class="ml-2"><font-awesome-icon icon="fa-solid fa-sliders" class="mr-1" />{{ engineLabel }}</span>
+          <image-icon
+            v-if="modelValue?.request?.image_url"
+            class="mr-1"
+            :size="'1em' as any"
+            aria-hidden="true"
+            focusable="false"
+          />
+          <video-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ faceLabel }}
+          <span class="ml-2"
+            ><controls-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{
+              engineLabel
+            }}</span
+          >
         </p>
       </div>
 
@@ -42,12 +54,12 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-user" class="mr-1" />
+            <user-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
@@ -57,16 +69,16 @@
       <div v-if="isFailure" class="content">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-user" class="mr-1" />
+            <user-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.failureReason') }}: {{ failureReason }}
           </p>
         </el-alert>
@@ -76,21 +88,33 @@
 </template>
 
 <script lang="ts">
+import {
+  ControlsIcon,
+  ImageIcon,
+  InfoIcon,
+  TimeIcon,
+  UserIcon,
+  VideoIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElProgress } from 'element-plus';
+import { ElAlert, ElButton, ElProgress } from 'element-plus';
 import { IDigitalHumanTask } from '@/models';
-import { DIGITALHUMAN_LOGO } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
+    ControlsIcon,
+    ImageIcon,
+    InfoIcon,
+    TimeIcon,
+    UserIcon,
+    VideoIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     ElProgress,
     VideoPlayer,
@@ -102,11 +126,6 @@ export default defineComponent({
       type: Object as () => IDigitalHumanTask | undefined,
       required: true
     }
-  },
-  data() {
-    return {
-      DIGITALHUMAN_LOGO
-    };
   },
   computed: {
     status(): string {
@@ -139,9 +158,6 @@ export default defineComponent({
       return this.modelValue?.request?.image_url
         ? (this.$t('digitalhuman.name.facePhoto') as string)
         : (this.$t('digitalhuman.name.faceVideo') as string);
-    },
-    faceIcon(): string {
-      return this.modelValue?.request?.image_url ? 'fa-solid fa-image' : 'fa-solid fa-film';
     },
     engineLabel(): string {
       return this.modelValue?.request?.engine || this.modelValue?.response?.engine || 'latentsync';

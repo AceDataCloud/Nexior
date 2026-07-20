@@ -3,6 +3,8 @@
 // brand name, plus the preset list the editor offers. Adding a channel here is
 // the only change needed to give a new `type` a nice icon everywhere.
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import type { Component } from 'vue';
+import { EmailIcon, GlobeIcon, LinkIcon, PhoneIcon } from '@acedatacloud/core/icons/components';
 import {
   faDiscord,
   faXTwitter,
@@ -18,13 +20,13 @@ import {
   faLine,
   faTiktok
 } from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope, faGlobe, faLink } from '@fortawesome/free-solid-svg-icons';
 
 // How the entry's `value` becomes an href when no explicit `url` is set.
 export type ContactScheme = 'tel' | 'mailto' | 'text';
 
 interface ContactTypeMeta {
-  icon: IconDefinition;
+  icon: IconDefinition | Component;
+  fontAwesome?: boolean;
   // Scheme used to build a link from `value` (ignored when `url` is present).
   scheme: ContactScheme;
   // Locale-independent display name for known brands ('' = derive/translate).
@@ -32,32 +34,34 @@ interface ContactTypeMeta {
 }
 
 const TYPES: Record<string, ContactTypeMeta> = {
-  discord: { icon: faDiscord, scheme: 'text', brand: 'Discord' },
-  x: { icon: faXTwitter, scheme: 'text', brand: 'X' },
-  twitter: { icon: faXTwitter, scheme: 'text', brand: 'X' },
-  wechat: { icon: faWeixin, scheme: 'text' },
-  telegram: { icon: faTelegram, scheme: 'text', brand: 'Telegram' },
-  whatsapp: { icon: faWhatsapp, scheme: 'text', brand: 'WhatsApp' },
-  facebook: { icon: faFacebook, scheme: 'text', brand: 'Facebook' },
-  instagram: { icon: faInstagram, scheme: 'text', brand: 'Instagram' },
-  youtube: { icon: faYoutube, scheme: 'text', brand: 'YouTube' },
-  tiktok: { icon: faTiktok, scheme: 'text', brand: 'TikTok' },
-  linkedin: { icon: faLinkedin, scheme: 'text', brand: 'LinkedIn' },
-  github: { icon: faGithub, scheme: 'text', brand: 'GitHub' },
-  qq: { icon: faQq, scheme: 'text', brand: 'QQ' },
-  line: { icon: faLine, scheme: 'text', brand: 'LINE' },
-  phone: { icon: faPhone, scheme: 'tel' },
-  email: { icon: faEnvelope, scheme: 'mailto' },
-  website: { icon: faGlobe, scheme: 'text' }
+  discord: { icon: faDiscord, fontAwesome: true, scheme: 'text', brand: 'Discord' },
+  x: { icon: faXTwitter, fontAwesome: true, scheme: 'text', brand: 'X' },
+  twitter: { icon: faXTwitter, fontAwesome: true, scheme: 'text', brand: 'X' },
+  wechat: { icon: faWeixin, fontAwesome: true, scheme: 'text' },
+  telegram: { icon: faTelegram, fontAwesome: true, scheme: 'text', brand: 'Telegram' },
+  whatsapp: { icon: faWhatsapp, fontAwesome: true, scheme: 'text', brand: 'WhatsApp' },
+  facebook: { icon: faFacebook, fontAwesome: true, scheme: 'text', brand: 'Facebook' },
+  instagram: { icon: faInstagram, fontAwesome: true, scheme: 'text', brand: 'Instagram' },
+  youtube: { icon: faYoutube, fontAwesome: true, scheme: 'text', brand: 'YouTube' },
+  tiktok: { icon: faTiktok, fontAwesome: true, scheme: 'text', brand: 'TikTok' },
+  linkedin: { icon: faLinkedin, fontAwesome: true, scheme: 'text', brand: 'LinkedIn' },
+  github: { icon: faGithub, fontAwesome: true, scheme: 'text', brand: 'GitHub' },
+  qq: { icon: faQq, fontAwesome: true, scheme: 'text', brand: 'QQ' },
+  line: { icon: faLine, fontAwesome: true, scheme: 'text', brand: 'LINE' },
+  phone: { icon: PhoneIcon, scheme: 'tel' },
+  email: { icon: EmailIcon, scheme: 'mailto' },
+  website: { icon: GlobeIcon, scheme: 'text' }
 };
 
-const DEFAULT_META: ContactTypeMeta = { icon: faLink, scheme: 'text' };
+const DEFAULT_META: ContactTypeMeta = { icon: LinkIcon, scheme: 'text' };
 
 const normalize = (type?: string): string => (type || '').trim().toLowerCase();
 
 export const contactMeta = (type?: string): ContactTypeMeta => TYPES[normalize(type)] || DEFAULT_META;
 
-export const contactIcon = (type?: string): IconDefinition => contactMeta(type).icon;
+export const contactIcon = (type?: string): IconDefinition | Component => contactMeta(type).icon;
+
+export const contactUsesFontAwesome = (type?: string): boolean => !!contactMeta(type).fontAwesome;
 
 // Locale-independent brand name for known channels ('' when the caller should
 // translate — phone/email/website — or fall back to the raw/capitalized slug).

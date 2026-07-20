@@ -14,6 +14,8 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedream.vue';
 import ConfigPanel from '@/components/seedream/ConfigPanel.vue';
 import { seedreamOperator } from '@/operators';
+import { buildSeedreamRequest } from '@/utils/seedream/request';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -148,18 +150,11 @@ export default defineComponent({
       ) {
         return;
       }
-      const cfg: any = { ...(this.config || {}) };
-      const hasReferenceImages = Array.isArray(cfg?.image) && cfg.image.length > 0;
-      if (!hasReferenceImages && 'image' in cfg) {
-        delete cfg.image;
+      if (getSeedreamCapabilities(this.config?.model).imageRequired && !this.config?.image?.length) {
+        ElMessage.warning(this.$t('seedream.message.referenceImageRequired'));
+        return;
       }
-      if (!cfg?.size) {
-        delete cfg.size;
-      }
-      const request = {
-        ...cfg,
-        async: true
-      } as ISeedreamGenerateRequest;
+      const request = buildSeedreamRequest(this.config) as ISeedreamGenerateRequest;
       if (!ensureLoggedIn()) {
         return;
       }

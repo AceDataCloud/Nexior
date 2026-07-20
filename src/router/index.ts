@@ -20,6 +20,7 @@ import kling from './kling';
 import veo from './veo';
 import sora from './sora';
 import maestro from './maestro';
+import poivelle from './poivelle';
 import digitalhuman from './digitalhuman';
 import pixverse from './pixverse';
 import flux from './flux';
@@ -63,6 +64,7 @@ import {
   ROUTE_VEO_INDEX,
   ROUTE_SORA_INDEX,
   ROUTE_MAESTRO_INDEX,
+  ROUTE_POIVELLE_INDEX,
   ROUTE_DIGITALHUMAN_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
@@ -87,7 +89,7 @@ import { isNative, isDesktop } from '@/utils/surface';
 // popup). Everything else (AI service pages, home) is browsable as a guest;
 // login is deferred until they actually start an operation. Keep this list in
 // sync when adding account/billing-style routes.
-const AUTH_REQUIRED_PREFIXES = ['/console', '/distribution', '/settings', '/coding-bridge'];
+const AUTH_REQUIRED_PREFIXES = ['/console', '/distribution', '/settings', '/coding-bridge', '/poivelle'];
 
 const requiresLogin = (path: string): boolean =>
   AUTH_REQUIRED_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
@@ -185,6 +187,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
       'Turn any article or topic into a captioned short video — script, visuals, voiceover and music, fully automated.',
     keywords: ['Maestro', 'AI Video', 'Article to Video', 'Faceless Video', 'Short Video Generator'],
     category: 'AI Video Generation'
+  },
+  poivelle: {
+    title: 'Poivelle',
+    description:
+      'Direct AI film production through a canonical project graph, shared by human editors, skills, agents, and production tools.',
+    keywords: ['Poivelle', 'AI Film Studio', 'AI Storyboard', 'AI Video Production', 'Creative Agent'],
+    category: 'AI Creative Production'
   },
   'digital-human': {
     title: 'Digital Human',
@@ -323,6 +332,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['veo', ROUTE_VEO_INDEX],
   ['sora', ROUTE_SORA_INDEX],
   ['maestro', ROUTE_MAESTRO_INDEX],
+  ['poivelle', ROUTE_POIVELLE_INDEX],
   ['digitalhuman', ROUTE_DIGITALHUMAN_INDEX],
   ['kling', ROUTE_KLING_INDEX],
   ['luma', ROUTE_LUMA_INDEX],
@@ -336,7 +346,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['webextrator', ROUTE_WEBEXTRATOR_INDEX]
 ];
 
-const getDefaultRoute = (): { name: string } => {
+export const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
   for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
     if (features[key]?.enabled) {
@@ -373,6 +383,7 @@ export const routes = [
   veo,
   sora,
   maestro,
+  poivelle,
   digitalhuman,
   pixverse,
   flux,

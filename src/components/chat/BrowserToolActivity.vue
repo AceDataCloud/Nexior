@@ -1,7 +1,13 @@
 <template>
   <div :class="['browser-tool-activity', `state-${state}`]" role="status" aria-live="polite">
     <div class="activity-icon" aria-hidden="true">
-      <font-awesome-icon :icon="icon" :spin="state === 'executing'" />
+      <component
+        :is="icon"
+        :class="{ 'is-spinning': state === 'executing' }"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
+      />
     </div>
     <div class="activity-copy">
       <div class="activity-title">{{ title }}</div>
@@ -12,16 +18,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  CloseIcon,
+  DesktopIcon,
+  GlobeIcon,
+  LoadingIcon,
+  PointerIcon,
+  SuccessIcon,
+  TimeIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component, type PropType } from 'vue';
 import type { IBrowserToolExecutionState, IChatMessageContentItem } from '@/models';
 import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
 
-const TERMINAL_STATES = new Set<IBrowserToolExecutionState>(['completed', 'denied', 'expired', 'cancel_too_late']);
+const STATE_ICONS: Record<IBrowserToolExecutionState, Component> = {
+  choose_device: DesktopIcon,
+  device_offline: WarningIcon,
+  awaiting_device: GlobeIcon,
+  awaiting_local_approval: TimeIcon,
+  takeover_required: PointerIcon,
+  executing: LoadingIcon,
+  completed: SuccessIcon,
+  denied: CloseIcon,
+  expired: TimeIcon,
+  cancel_too_late: WarningIcon
+};
 
 export default defineComponent({
   name: 'BrowserToolActivity',
-  components: { FontAwesomeIcon },
   props: {
     item: {
       type: Object as PropType<IChatMessageContentItem>,
@@ -42,12 +67,8 @@ export default defineComponent({
     origin(): string | undefined {
       return sanitizeBrowserOrigin(this.item.origin);
     },
-    icon(): string {
-      if (this.state === 'completed') return 'fa-solid fa-check';
-      if (this.state === 'denied' || this.state === 'expired') return 'fa-solid fa-xmark';
-      if (this.state === 'executing') return 'fa-solid fa-spinner';
-      if (TERMINAL_STATES.has(this.state)) return 'fa-solid fa-triangle-exclamation';
-      return 'fa-solid fa-globe';
+    icon(): Component {
+      return STATE_ICONS[this.state];
     }
   }
 });
@@ -83,6 +104,22 @@ export default defineComponent({
   height: 18px;
   margin-top: 1px;
   color: var(--el-text-color-secondary);
+}
+
+.is-spinning {
+  animation: browser-tool-spin 1s linear infinite;
+}
+
+@keyframes browser-tool-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-spinning {
+    animation: none;
+  }
 }
 
 .activity-copy {

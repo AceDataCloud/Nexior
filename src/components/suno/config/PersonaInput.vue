@@ -6,7 +6,7 @@
         <info-icon :content="$t('suno.description.persona')" />
       </div>
       <el-button size="small" round @click="showManager = true">
-        <font-awesome-icon icon="fa-solid fa-microphone" class="mr-1" />
+        <microphone-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('suno.voice.manage') }}
       </el-button>
     </div>
@@ -30,9 +30,9 @@
 </template>
 
 <script lang="ts">
+import { MicrophoneIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElButton, ElDrawer } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import VoiceManager from '@/components/suno/voice/VoiceManager.vue';
 import { ISunoPersona } from '@/models';
@@ -40,11 +40,11 @@ import { ISunoPersona } from '@/models';
 export default defineComponent({
   name: 'PersonaInput',
   components: {
+    MicrophoneIcon,
     ElSelect,
     ElOption,
     ElButton,
     ElDrawer,
-    FontAwesomeIcon,
     InfoIcon,
     VoiceManager
   },

@@ -27,6 +27,7 @@ import { findKlingConflicts, clearKlingConflicts } from '@/utils/kling/capabilit
 
 const V3_VALUES = [3, 5, 8, 10, 12, 15];
 const STANDARD_VALUES = [5, 10];
+const O1_VALUES = [5];
 
 export default defineComponent({
   name: 'DurationSelector',
@@ -51,6 +52,7 @@ export default defineComponent({
       return KLING_V3_MODELS.includes(this.selectedModel);
     },
     allowedDurations(): number[] {
+      if (this.selectedModel === 'kling-o1') return O1_VALUES;
       return this.isV3Model ? V3_VALUES : STANDARD_VALUES;
     },
     value(): number {
@@ -65,7 +67,7 @@ export default defineComponent({
     }
   },
   watch: {
-    isV3Model() {
+    selectedModel() {
       if (!this.allowedDurations.includes(this.value)) {
         this.applyDuration(KLING_DEFAULT_DURATION);
       }

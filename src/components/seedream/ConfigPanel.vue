@@ -7,14 +7,13 @@
       <output-format-selector class="mb-4" />
       <seed-input class="mb-4" />
       <guidance-scale-input class="mb-4" />
-      <watermark-switch class="mb-4" />
       <prompt-input class="mb-4" />
-      <image-input class="mb-4" />
+      <image-input v-if="capabilities.image" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('seedream.button.generate') }}
       </el-button>
     </div>
@@ -22,9 +21,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import PromptInput from './config/PromptInput.vue';
 import ImageInput from './config/ImageInput.vue';
 import Consumption from '../common/Consumption.vue';
@@ -35,14 +34,15 @@ import MaxImagesSelector from './config/MaxImagesSelector.vue';
 import OutputFormatSelector from './config/OutputFormatSelector.vue';
 import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
-import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
+import { getSeedreamAction, getSeedreamCapabilities } from '@/utils/seedream/capabilities';
+import { buildSeedreamRequest } from '@/utils/seedream/request';
 
 export default defineComponent({
   name: 'SeedreamConfigPanel',
   components: {
+    MagicIcon,
     ElButton,
-    FontAwesomeIcon,
     PromptInput,
     Consumption,
     ImageInput,
@@ -51,29 +51,34 @@ export default defineComponent({
     MaxImagesSelector,
     OutputFormatSelector,
     SeedInput,
-    GuidanceScaleInput,
-    WatermarkSwitch
+    GuidanceScaleInput
   },
   emits: ['generate'],
   computed: {
+    action(): 'generate' | 'edit' {
+      return getSeedreamAction(this.config?.model, this.config?.image);
+    },
+    capabilities() {
+      return getSeedreamCapabilities(this.config?.model);
+    },
     config() {
       return this.$store.state.seedream?.config;
     },
     consumption() {
-      const cfg: any = { ...(this.config || {}) };
-      const hasReferenceImages = Array.isArray(cfg?.image) && cfg.image.length > 0;
+      const request = buildSeedreamRequest(this.config);
       // Per-image billing: cost/api/86ad30f3-…json multiplies the unit price by
       // `count`. When the user opts into group generation we forward the
       // selected `max_images`; otherwise default to 1 to match the upstream.
       const requestedCount =
-        cfg?.sequential_image_generation === 'auto'
-          ? Math.max(1, Math.floor(cfg?.sequential_image_generation_options?.max_images || 1))
+        request.sequential_image_generation === 'auto'
+          ? Math.max(1, Math.floor(request.sequential_image_generation_options?.max_images || 1))
           : 1;
       return getConsumption(
         {
-          ...cfg,
-          action: hasReferenceImages ? 'edit' : 'generate',
-          model: getSeedreamShortModel(cfg?.model),
+          ...request,
+          action: this.action,
+          model: getSeedreamShortModel(request.model),
+          input_image_count: request.image?.length || 0,
           count: requestedCount
         },
         this.service?.cost

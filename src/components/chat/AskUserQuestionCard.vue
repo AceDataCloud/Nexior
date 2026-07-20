@@ -3,9 +3,9 @@
     <!-- Collapsed view: one-line summary per question after submit / restore -->
     <div v-if="collapsed" class="collapsed">
       <div v-for="(q, idx) in questions" :key="idx" class="collapsed-row">
-        <span class="check">✓</span>
+        <success-icon class="check" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="collapsed-q">{{ q.question }}</span>
-        <span class="collapsed-arrow">→</span>
+        <continue-icon class="collapsed-arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="collapsed-a">{{ collapsedAnswerFor(q) }}</span>
       </div>
     </div>
@@ -33,7 +33,8 @@
         <div :key="currentIndex" class="pane">
           <div class="question-text">{{ currentQuestion.question }}</div>
           <div v-if="currentQuestion.multiSelect" class="multi-hint">
-            <span class="dot">●</span> {{ $t('chat.askUserQuestion.multiSelectHint') }}
+            <confirm-icon class="dot" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('chat.askUserQuestion.multiSelectHint') }}
           </div>
 
           <!-- Freeform question: no options provided by tool payload. -->
@@ -113,7 +114,8 @@
       <!-- Actions -->
       <div class="actions">
         <el-button class="btn btn-back" text :disabled="currentIndex === 0" @click="onBack">
-          ← {{ $t('chat.askUserQuestion.back') }}
+          <back-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('chat.askUserQuestion.back') }}
         </el-button>
         <el-button class="btn btn-skip" text @click="onSkip">
           {{ $t('chat.askUserQuestion.skipAll') }}
@@ -121,7 +123,8 @@
         <span class="spacer" />
         <el-button class="btn btn-next" type="primary" round :disabled="!canAdvance" @click="onNext">
           {{ isLastQuestion ? $t('chat.askUserQuestion.submit') : $t('chat.askUserQuestion.next') }}
-          <span class="arrow">{{ isLastQuestion ? '✓' : '→' }}</span>
+          <confirm-icon v-if="isLastQuestion" class="arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <continue-icon v-else class="arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-button>
       </div>
     </div>
@@ -129,6 +132,7 @@
 </template>
 
 <script lang="ts">
+import { BackIcon, ConfirmIcon, ContinueIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElInput, ElRadio, ElRadioGroup } from 'element-plus';
 import { IAskUserQuestion, IAskUserQuestionPayload } from '@/models';
@@ -147,12 +151,16 @@ interface IData {
 export default defineComponent({
   name: 'AskUserQuestionCard',
   components: {
+    BackIcon,
+    ConfirmIcon,
+    ContinueIcon,
     ElButton,
     ElInput,
     ElRadio,
     ElRadioGroup,
     ElCheckbox,
-    ElCheckboxGroup
+    ElCheckboxGroup,
+    SuccessIcon
   },
   props: {
     /** Tool-use block id; sent back as `tool_use_id` on resume. */
@@ -461,8 +469,8 @@ export default defineComponent({
   font-weight: 500;
 
   .dot {
-    font-size: 6px;
-    line-height: 1;
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -634,7 +642,8 @@ export default defineComponent({
 
   .arrow {
     margin-left: 4px;
-    display: inline-block;
+    width: 14px;
+    height: 14px;
     transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -728,7 +737,9 @@ export default defineComponent({
 
 .check {
   color: var(--el-color-success);
-  font-weight: 700;
+  width: 14px;
+  height: 14px;
+  flex: none;
 }
 
 .collapsed-q {
@@ -737,6 +748,9 @@ export default defineComponent({
 
 .collapsed-arrow {
   color: var(--el-text-color-placeholder);
+  width: 14px;
+  height: 14px;
+  flex: none;
 }
 
 .collapsed-a {

@@ -27,14 +27,15 @@
       <section v-if="!android">
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsFoldersTitle') }}</h3>
-          <el-button size="small" type="primary" :icon="Plus" @click="addFolder">
+          <el-button size="small" type="primary" @click="addFolder">
+            <add-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.settings.localToolsAddFolder') }}
           </el-button>
         </div>
         <p class="muted">{{ $t('common.settings.localToolsFoldersHint') }}</p>
         <ul class="rows">
           <li v-for="(r, i) in roots" :key="r" class="row">
-            <font-awesome-icon icon="fa-solid fa-folder" class="row-icon" />
+            <folder-icon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span class="path">{{ r }}</span>
             <el-button size="small" text type="danger" @click="removeRoot(i)">
               {{ $t('common.settings.localToolsRemove') }}
@@ -57,7 +58,8 @@
       <section>
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsMcpTitle') }}</h3>
-          <el-button size="small" type="primary" :icon="Plus" @click="addMcp">
+          <el-button size="small" type="primary" @click="addMcp">
+            <add-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.settings.localToolsMcpAdd') }}
           </el-button>
         </div>
@@ -134,7 +136,7 @@
         <p class="muted">{{ $t('common.settings.localToolsGrantsHint') }}</p>
         <ul class="rows">
           <li v-for="g in grants" :key="g.key" class="row">
-            <font-awesome-icon icon="fa-solid fa-shield-halved" class="row-icon" />
+            <security-icon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span class="grant">
               <code class="grant-name">{{ g.name }}</code>
               <span class="grant-input">{{ g.input }}</span>
@@ -155,7 +157,13 @@
         <p class="muted">{{ $t('common.settings.localToolsBuiltinHint') }}</p>
         <ul class="rows">
           <li v-for="t in builtinTools" :key="t.name" class="row">
-            <font-awesome-icon :icon="builtinIcon(t.name)" class="row-icon" />
+            <component
+              :is="builtinIcon(t.name)"
+              class="row-icon"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             <span class="cu-action">
               <span class="cu-action-name">
                 <code class="grant-name">{{ t.name }}</code>
@@ -203,7 +211,13 @@
           <p class="muted">{{ $t('common.settings.localToolsCuActionsHint') }}</p>
           <ul class="rows">
             <li v-for="t in computerTools" :key="t.name" class="row">
-              <font-awesome-icon :icon="cuIcon(t.name)" class="row-icon" />
+              <component
+                :is="cuIcon(t.name)"
+                class="row-icon"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
               <span class="cu-action">
                 <span class="cu-action-name">{{ cuLabel(t.name) }}</span>
                 <span class="cu-action-desc">{{ t.description }}</span>
@@ -227,7 +241,7 @@
         <p class="muted">{{ $t('common.settings.localToolsAndroidSkillsHint') }}</p>
         <ul class="rows">
           <li v-if="xhsSkill" class="row">
-            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="row-icon" />
+            <magic-icon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span class="cu-action">
               <span class="cu-action-name">{{ $t('common.settings.localToolsAndroidSkillsXhsName') }}</span>
               <span class="cu-action-desc">{{ $t('common.settings.localToolsAndroidSkillsXhsDesc') }}</span>
@@ -307,10 +321,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {
+  AddIcon,
+  CameraIcon,
+  EditIcon,
+  FileIcon,
+  FolderIcon,
+  KeyboardIcon,
+  MagicIcon,
+  MoveIcon,
+  PointerIcon,
+  ScrollIcon,
+  SecurityIcon,
+  TerminalIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component } from 'vue';
 import { ElButton, ElTag, ElSwitch, ElInput } from 'element-plus';
-import { Plus } from '@element-plus/icons-vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { localExec, type IMcpServerStatus } from '@/utils/desktop';
 import { isAndroid } from '@/utils/surface';
 import { httpClient } from '@/operators/common';
@@ -346,10 +372,9 @@ interface McpDraft {
 
 export default defineComponent({
   name: 'LocalToolsSetting',
-  components: { ElButton, ElTag, ElSwitch, ElInput, FontAwesomeIcon },
+  components: { AddIcon, ElButton, ElTag, ElSwitch, ElInput, FolderIcon, MagicIcon, SecurityIcon },
   data() {
     return {
-      Plus,
       roots: [] as string[],
       tools: [] as string[],
       // Editable MCP server drafts (loaded from config, parsed back on save).
@@ -769,16 +794,16 @@ export default defineComponent({
       const label = this.$t(key);
       return label === key ? name.replace(/^computer\./, '') : label;
     },
-    cuIcon(name: string): string {
-      const map: Record<string, string> = {
-        screenshot: 'fa-solid fa-camera',
-        click: 'fa-solid fa-arrow-pointer',
-        move: 'fa-solid fa-up-down-left-right',
-        type: 'fa-solid fa-keyboard',
-        key: 'fa-solid fa-keyboard',
-        scroll: 'fa-solid fa-arrows-up-down'
+    cuIcon(name: string): Component {
+      const map: Record<string, Component> = {
+        screenshot: CameraIcon,
+        click: PointerIcon,
+        move: MoveIcon,
+        type: KeyboardIcon,
+        key: KeyboardIcon,
+        scroll: ScrollIcon
       };
-      return map[name.replace(/^computer\./, '')] ?? 'fa-solid fa-shield-halved';
+      return map[name.replace(/^computer\./, '')] ?? SecurityIcon;
     },
     cuSuffix(name: string): string {
       const s = name.replace(/^computer\./, '');
@@ -806,12 +831,12 @@ export default defineComponent({
         this.builtinBusy = null;
       }
     },
-    builtinIcon(name: string): string {
-      if (name === 'shell.run_command') return 'fa-solid fa-terminal';
-      if (name === 'fs.write_file') return 'fa-solid fa-pen';
-      if (name === 'fs.read_file') return 'fa-solid fa-file';
-      if (name === 'fs.list_dir') return 'fa-solid fa-folder';
-      return 'fa-solid fa-shield-halved';
+    builtinIcon(name: string): Component {
+      if (name === 'shell.run_command') return TerminalIcon;
+      if (name === 'fs.write_file') return EditIcon;
+      if (name === 'fs.read_file') return FileIcon;
+      if (name === 'fs.list_dir') return FolderIcon;
+      return SecurityIcon;
     },
     async revoke(key: string) {
       await localExec()?.grants?.revoke(key);

@@ -775,9 +775,53 @@
     "message": "Viitevideo",
     "description": "Lomakekentän otsikko: Omni-videoeditorin viite- tai muokattava video"
   },
-  "description.referenceVideo": {
-    "message": "Vain kling-video-o1:lle. Lataa yksi MP4/MOV (720–2160 px, 3–10 s, ≤200 Mt) muokataksesi tai viitataksesi olemassa olevaan videoon. Ohje viittaa siihen automaattisesti merkinnällä <<<video_1>>>; säilytä tämä tunniste kuvaillessasi muokkausta (esim. 'muuta <<<video_1>>> anime-tyyliseksi').",
-    "description": "Viitevideon lataajan ohjeteksti"
+  "description.omniReferenceVideo": {
+    "message": "Sopii Kling O1:lle ja V3 Omni:lle. Lataa MP4/MOV (720–2160px, 3–10 sekuntia, ≤200MB) muokkausta tai olemassa olevan videon viitteenä varten, avainsanat lisätään automaattisesti <<<video_1>>>.",
+    "description": "Omni-viitevideon lataamisen ohjeet"
+  },
+  "name.referenceImages": {
+    "message": "Viitekuvat",
+    "description": "Omni-viitekuvien kenttälabel"
+  },
+  "description.referenceImages": {
+    "message": "Sopii Kling O1:lle ja V3 Omni:lle. Voit ladata enintään 7 viitekuvaa; jos viitevideo on olemassa, enintään 4 kuvaa. Avainsanat lisätään automaattisesti.",
+    "description": "Omni-viitekuvien ohjeet"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Lataa kuvia",
+    "description": "Omni-viitekuvien latausnappi"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Voit ladata vielä {count} viitekuvaa.",
+    "description": "Viitekuvien määrän ilmoitus"
+  },
+  "message.referenceImagesError": {
+    "message": "Viitekuvien lataaminen epäonnistui, yritä uudelleen.",
+    "description": "Viitekuvien latausvirhe"
+  },
+  "name.referenceVideoType": {
+    "message": "Videon käyttö",
+    "description": "Viitevideon tyyppilabel"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Ominaisuusviite",
+    "description": "Ominaisuusviitevideon vaihtoehto"
+  },
+  "name.referenceVideoBase": {
+    "message": "Muokkaa alkuperäistä videota",
+    "description": "Perusvideon muokkausvaihtoehto"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Jos viitevideo on olemassa, voit ladata enintään 4 viitekuvaa, poista ylimääräiset kuvat ensin.",
+    "description": "Viitevideon ja kuvien määrän ristiriita"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Tässä pyynnössä voi olla enintään {count} viitekuvaa, mukaan lukien ensimmäinen ja viimeinen kehys.",
+    "description": "Viitekuvien kokonaismäärän rajoitus."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Odottavassa muokkauksessa oleva perusvideo ei voi olla samanaikaisesti käytössä ensimmäisessä tai viimeisessä kehyksessä.",
+    "description": "Perusvideon ja ensimmäisen/viimeisen kehyksen välinen konflikti."
   },
   "button.uploadReferenceVideo": {
     "message": "Lataa video",

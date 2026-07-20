@@ -1,5 +1,26 @@
 <template>
   <div class="task">
+    <el-alert v-if="isFailure" :closable="false" class="task-failure">
+      <template #title>
+        <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.failure') }}
+      </template>
+      <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.taskId') }}: {{ modelValue?.id }}
+        <copy-to-clipboard :content="modelValue?.id" />
+      </p>
+      <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+        <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.failureReason') }}: {{ failureReason }}
+        <copy-to-clipboard :content="failureReason" />
+      </p>
+      <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+        <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.name.traceId') }}: {{ traceId }}
+        <copy-to-clipboard :content="traceId" />
+      </p>
+    </el-alert>
     <div
       v-for="(audio, index) in audios"
       :key="audio.id"
@@ -27,12 +48,28 @@
             $store.state?.suno?.audio?.state === 'playing'
           "
           class="play-btn"
+          role="button"
+          tabindex="0"
+          :aria-label="$t('common.player.pause')"
+          :title="$t('common.player.pause')"
           @click.stop="onPause(audio)"
+          @keydown.enter.stop.prevent="onPause(audio)"
+          @keydown.space.stop.prevent="onPause(audio)"
         >
-          <el-icon><video-pause /></el-icon>
+          <el-icon><video-pause :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
         </div>
-        <div v-else-if="audio?.audio_url" class="play-btn" @click.stop="onPlay(audio)">
-          <el-icon><video-play /></el-icon>
+        <div
+          v-else-if="audio?.audio_url"
+          class="play-btn"
+          role="button"
+          tabindex="0"
+          :aria-label="$t('common.player.play')"
+          :title="$t('common.player.play')"
+          @click.stop="onPlay(audio)"
+          @keydown.enter.stop.prevent="onPlay(audio)"
+          @keydown.space.stop.prevent="onPlay(audio)"
+        >
+          <el-icon><video-play :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
         </div>
         <div v-if="audio?.duration" class="duration">
           {{ useFormatDuring(audio?.duration) }}
@@ -53,12 +90,16 @@
         <div v-else class="title-row">
           <h2 class="title">{{ audio?.title }}</h2>
           <span v-if="shortModel(audio)" class="model-chip">{{ shortModel(audio) }}</span>
-          <font-awesome-icon
+          <button
             v-if="audio?.audio_url"
-            icon="fa-solid fa-pen"
-            class="edit-icon"
+            type="button"
+            class="icon-button edit-icon"
+            :aria-label="$t('common.button.edit')"
+            :title="$t('common.button.edit')"
             @click.stop="onStartTitleEdit(audio)"
-          />
+          >
+            <edit-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </button>
         </div>
         <p class="style">{{ audio?.style }}</p>
         <!-- Generation progress bar -->
@@ -76,19 +117,25 @@
       <div class="right">
         <!-- Quick Extend — the most common re-use action, surfaced out of the "…" menu -->
         <el-tooltip v-if="audio?.audio_url" effect="dark" :content="$t('suno.button.extend')" placement="top">
-          <font-awesome-icon
-            icon="fa-solid fa-forward"
-            class="icon icon-extend"
+          <button
+            type="button"
+            class="icon-button icon icon-extend"
+            :aria-label="$t('suno.button.extend')"
+            :title="$t('suno.button.extend')"
             @click.stop="onExtend($event, audio)"
-          />
+          >
+            <fast-forward-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </button>
         </el-tooltip>
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
-              <font-awesome-icon
+              <download-icon
                 v-if="audio?.audio_url || audio?.video_url"
-                icon="fa-solid fa-download"
                 class="icon icon-download"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
               />
             </el-tooltip>
           </span>
@@ -97,7 +144,7 @@
               <el-dropdown-item :disabled="isFetchingVideoUrl" @click="handleVideoDownload(audio)">
                 <div class="flex items-center min-w-[120px]">
                   <el-icon v-if="isFetchingVideoUrl" class="is-loading mr-2">
-                    <Loading />
+                    <Loading :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </el-icon>
                   <span>{{ $t('suno.button.download_video') }}</span>
                 </div>
@@ -108,7 +155,7 @@
               <el-dropdown-item :disabled="isFetchingWav" @click="handleWavDownload(audio)">
                 <div class="flex items-center min-w-[120px]">
                   <el-icon v-if="isFetchingWav" class="is-loading mr-2">
-                    <Loading />
+                    <Loading :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </el-icon>
                   <span>{{ $t('suno.button.download_wav') }}</span>
                 </div>
@@ -116,7 +163,7 @@
               <el-dropdown-item :disabled="isFetchingMidi" @click="handleMidiDownload(audio)">
                 <div class="flex items-center min-w-[120px]">
                   <el-icon v-if="isFetchingMidi" class="is-loading mr-2">
-                    <Loading />
+                    <Loading :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </el-icon>
                   <span>{{ $t('suno.button.download_midi') }}</span>
                 </div>
@@ -127,10 +174,12 @@
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.more')" placement="top">
-              <font-awesome-icon
+              <more-icon
                 v-if="audio?.audio_url || audio?.video_url"
-                icon="fa-solid fa-ellipsis"
                 class="icon icon-ellipsis"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
               />
             </el-tooltip>
           </span>
@@ -138,87 +187,87 @@
             <el-dropdown-menu class="suno-action-menu">
               <!-- Creation group -->
               <el-dropdown-item v-if="audio?.audio_url" @click.stop="onExtend($event, audio)">
-                <font-awesome-icon icon="fa-solid fa-forward" class="menu-icon" />
+                <fast-forward-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.extend') }}
               </el-dropdown-item>
               <el-dropdown-item @click.stop="onCover(audio)">
-                <font-awesome-icon icon="fa-solid fa-music" class="menu-icon" />
+                <music-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.cover_music') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onMashup(audio)">
-                <font-awesome-icon icon="fa-solid fa-shuffle" class="menu-icon" />
+                <shuffle-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.mashup') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click.stop="onConcatMusic(audio?.id)">
-                <font-awesome-icon icon="fa-solid fa-link" class="menu-icon" />
+                <link-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.concat_music') }}
               </el-dropdown-item>
 
               <!-- Editing group -->
               <div class="menu-divider" />
               <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
-                <font-awesome-icon icon="fa-solid fa-scissors" class="menu-icon" />
+                <cut-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.replace_section') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onOverpainting(audio)">
-                <font-awesome-icon icon="fa-solid fa-microphone" class="menu-icon" />
+                <microphone-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.overpainting') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onUnderpainting(audio)">
-                <font-awesome-icon icon="fa-solid fa-guitar" class="menu-icon" />
+                <guitar-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.underpainting') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onSamples(audio)">
-                <font-awesome-icon icon="fa-solid fa-drum" class="menu-icon" />
+                <drum-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.samples') }}
               </el-dropdown-item>
 
               <!-- Processing group -->
               <div class="menu-divider" />
               <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
-                <font-awesome-icon icon="fa-solid fa-layer-group" class="menu-icon" />
+                <collection-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio.id" @click.stop="onGetAllStems(audio.id)">
-                <font-awesome-icon icon="fa-solid fa-bars-staggered" class="menu-icon" />
+                <sort-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.all_stems') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio.id)">
-                <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="menu-icon" />
+                <magic-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.remaster') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onExtractVocals(audio.id)">
-                <font-awesome-icon icon="fa-solid fa-headphones" class="menu-icon" />
+                <audio-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.extract_vocals') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onArtistConsistency(audio)">
-                <font-awesome-icon icon="fa-solid fa-palette" class="menu-icon" />
+                <palette-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.artist_consistency') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onAdjustSpeed(audio)">
-                <font-awesome-icon icon="fa-solid fa-gauge-high" class="menu-icon" />
+                <performance-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.adjust_speed') }}
               </el-dropdown-item>
 
               <!-- Utility group -->
               <div class="menu-divider" />
               <el-dropdown-item @click.stop="onReusePrompt(audio)">
-                <font-awesome-icon icon="fa-solid fa-rotate-left" class="menu-icon" />
+                <undo-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.reuse_prompt') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onGetTiming(audio.id)">
-                <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
+                <time-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="showViewCode" @click.stop="onViewCode">
-                <font-awesome-icon icon="fa-solid fa-code" class="menu-icon" />
+                <code-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
 
               <!-- Delete group -->
               <div class="menu-divider" />
               <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
-                <font-awesome-icon icon="fa-solid fa-trash" class="menu-icon delete-icon" />
+                <delete-icon class="menu-icon delete-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.delete') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -237,6 +286,33 @@
 </template>
 
 <script lang="ts">
+import {
+  AudioIcon,
+  ChannelIcon,
+  CodeIcon,
+  CollectionIcon,
+  CutIcon,
+  DeleteIcon,
+  DownloadIcon,
+  DrumIcon,
+  EditIcon,
+  FastForwardIcon,
+  GuitarIcon,
+  InfoIcon,
+  LinkIcon,
+  LoadingIcon as Loading,
+  MagicIcon,
+  MicrophoneIcon,
+  MoreIcon,
+  MusicIcon,
+  PaletteIcon,
+  PerformanceIcon,
+  ShuffleIcon,
+  SortIcon,
+  TimeIcon,
+  UndoIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
@@ -251,23 +327,47 @@ import {
   ElInput,
   ElMessageBox,
   ElProgress,
-  ElCheckbox
+  ElCheckbox,
+  ElAlert
 } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
-import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
+
+import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/core/icons/components';
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    AudioIcon,
+    ChannelIcon,
+    CodeIcon,
+    CollectionIcon,
+    CutIcon,
+    DeleteIcon,
+    DownloadIcon,
+    DrumIcon,
+    EditIcon,
+    FastForwardIcon,
+    GuitarIcon,
+    InfoIcon,
+    LinkIcon,
+    MagicIcon,
+    MicrophoneIcon,
+    MoreIcon,
+    MusicIcon,
+    PaletteIcon,
+    PerformanceIcon,
+    ShuffleIcon,
+    SortIcon,
+    TimeIcon,
+    UndoIcon,
+    WarningIcon,
     ElImage,
     ElIcon,
     ElTooltip,
-    FontAwesomeIcon,
     VideoPlay,
     VideoPause,
     ElDropdown,
@@ -276,8 +376,10 @@ export default defineComponent({
     ElInput,
     ElProgress,
     ElCheckbox,
+    ElAlert,
     Loading,
-    ApiCodeDialog
+    ApiCodeDialog,
+    CopyToClipboard
   },
   props: {
     modelValue: {
@@ -318,6 +420,18 @@ export default defineComponent({
       // @ts-ignore
       const action = this.modelValue?.request?.action as ISunoAudio['action'] | undefined;
       return action ? data.map((a) => ({ ...a, action })) : data;
+    },
+    isFailure(): boolean {
+      return (
+        this.audios.length === 0 && (this.modelValue?.response?.success === false || !!this.modelValue?.response?.error)
+      );
+    },
+    failureReason(): string | undefined {
+      const error = this.modelValue?.response?.error;
+      return typeof error === 'string' ? error : error?.message;
+    },
+    traceId(): string | undefined {
+      return this.modelValue?.response?.trace_id || this.modelValue?.trace_id;
     },
     application() {
       return this.$store.state.suno?.application;
@@ -826,6 +940,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.icon-button {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
 .task {
   display: flex;
   flex-direction: column;
@@ -836,6 +958,9 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid transparent;
   transition: border-color 0.2s;
+  .task-failure {
+    border-left: 2px solid var(--el-color-danger);
+  }
   &:hover {
     border-color: var(--el-border-color-lighter);
   }

@@ -5,16 +5,16 @@
     placement="bottom"
   >
     <button type="button" class="byok-badge" @click="onClickManage">
-      <font-awesome-icon icon="fa-solid fa-key" class="badge-icon" />
+      <key-icon class="badge-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="badge-text">{{ $t('byok.badge.active', { provider: providerLabel }) }}</span>
     </button>
   </el-tooltip>
 </template>
 
 <script lang="ts">
+import { KeyIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { byokCredentialOperator } from '@/operators';
 import type { IBYOKCredential, IBYOKProvider, ICredential } from '@/models';
 
@@ -39,8 +39,8 @@ const PROVIDER_FOR_GROUP: Record<string, IBYOKProvider> = {
 export default defineComponent({
   name: 'BYOKBadge',
   components: {
-    ElTooltip,
-    FontAwesomeIcon
+    KeyIcon,
+    ElTooltip
   },
   data() {
     return {

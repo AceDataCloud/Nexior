@@ -15,7 +15,7 @@
       v-else-if="noResults"
       class="flex flex-col items-center justify-center py-24 text-[var(--el-text-color-disabled)]"
     >
-      <font-awesome-icon icon="fa-solid fa-face-meh" class="text-5xl mb-4 opacity-40" />
+      <help-icon class="text-5xl mb-4 opacity-40" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <p class="text-base">{{ $t('serp.message.noResults') }}</p>
     </div>
     <div v-else-if="results" class="max-w-3xl mx-auto">
@@ -35,15 +35,15 @@
       />
     </div>
     <div v-else class="flex flex-col items-center justify-center py-24 text-[var(--el-text-color-disabled)]">
-      <font-awesome-icon icon="fa-solid fa-globe" class="text-5xl mb-4 opacity-30" />
+      <globe-icon class="text-5xl mb-4 opacity-30" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <p class="text-base">{{ $t('serp.description.query') }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { GlobeIcon, HelpIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Status } from '@/models';
 import KnowledgeGraph from './result/KnowledgeGraph.vue';
 import OrganicResult from './result/OrganicResult.vue';
@@ -56,7 +56,8 @@ import RelatedSearches from './result/RelatedSearches.vue';
 export default defineComponent({
   name: 'ResultPanel',
   components: {
-    FontAwesomeIcon,
+    GlobeIcon,
+    HelpIcon,
     KnowledgeGraph,
     OrganicResult,
     ImageResults,

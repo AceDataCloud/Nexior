@@ -4,7 +4,7 @@
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
         <el-button type="primary" round :disabled="saving" @click="openCreate">
-          <add-icon :size="16" class="icon" aria-hidden="true" />
+          <add-icon :size="16" class="icon" aria-hidden="true" focusable="false" />
           {{ $t('chat.scheduledTasks.create') }}
         </el-button>
       </div>
@@ -24,13 +24,25 @@
                   @change="(v: string | number | boolean) => toggleState(task, v === true)"
                 />
                 <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
-                  <el-button text class="icon-action" :loading="triggeringId === task.id" @click="triggerNow(task)">
-                    <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
+                  <el-button
+                    text
+                    class="icon-action"
+                    :loading="triggeringId === task.id"
+                    :aria-label="$t('chat.scheduledTasks.triggerNow')"
+                    :title="$t('chat.scheduledTasks.triggerNow')"
+                    @click="triggerNow(task)"
+                  >
+                    <play-icon
+                      v-if="triggeringId !== task.id"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
                   </el-button>
                 </el-tooltip>
                 <el-tooltip :content="$t('common.button.edit')" placement="top">
                   <el-button text class="icon-action" :aria-label="$t('common.button.edit')" @click="openEdit(task)">
-                    <edit-icon :size="16" aria-hidden="true" />
+                    <edit-icon :size="16" aria-hidden="true" focusable="false" />
                   </el-button>
                 </el-tooltip>
                 <el-tooltip :content="$t('common.button.delete')" placement="top">
@@ -41,7 +53,7 @@
                     :aria-label="$t('common.button.delete')"
                     @click="confirmDelete(task)"
                   >
-                    <delete-icon :size="16" aria-hidden="true" />
+                    <delete-icon :size="16" aria-hidden="true" focusable="false" />
                   </el-button>
                 </el-tooltip>
               </div>
@@ -51,11 +63,11 @@
                 {{ $t(`chat.scheduledTasks.state.${task.state}`) }}
               </el-tag>
               <span class="meta-chip">
-                <font-awesome-icon icon="fa-solid fa-clock" class="meta-icon" />
+                <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ scheduleLabel(task.schedule) }}
               </span>
               <span class="meta-chip">
-                <font-awesome-icon icon="fa-solid fa-brain" class="meta-icon" />
+                <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ task.template.model }}
               </span>
             </div>
@@ -65,13 +77,13 @@
             </div>
             <div class="task-footer">
               <span class="run-count">
-                <refresh-icon :size="16" class="footer-icon" aria-hidden="true" />
+                <refresh-icon :size="16" class="footer-icon" aria-hidden="true" focusable="false" />
                 {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
               </span>
               <span v-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
               <span class="open-hint">
                 {{ $t('chat.scheduledTasks.viewRuns') }}
-                <font-awesome-icon icon="fa-solid fa-chevron-right" />
+                <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               </span>
             </div>
           </el-card>
@@ -129,7 +141,13 @@
             </div>
           </div>
           <div class="run-action">
-            <font-awesome-icon v-if="run.conversation_id" icon="fa-solid fa-chevron-right" class="run-arrow" />
+            <expand-right-icon
+              v-if="run.conversation_id"
+              class="run-arrow"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
           </div>
         </div>
@@ -181,7 +199,7 @@
             <el-radio value="cron">{{ $t('chat.scheduledTasks.scheduleType.cron') }}</el-radio>
           </el-radio-group>
           <div v-if="schedulePreview" class="schedule-preview">
-            <font-awesome-icon icon="fa-solid fa-clock" class="preview-icon" />
+            <time-icon class="preview-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('chat.scheduledTasks.form.schedulePreview', { text: schedulePreview }) }}
           </div>
         </el-form-item>
@@ -293,8 +311,8 @@
 </template>
 
 <script lang="ts">
+import { AiIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   ElButton,
   ElCard,
@@ -362,7 +380,10 @@ interface TaskForm {
 export default defineComponent({
   name: 'ScheduledTasks',
   components: {
-    FontAwesomeIcon,
+    AiIcon,
+    ExpandRightIcon,
+    PlayIcon,
+    TimeIcon,
     AddIcon,
     DeleteIcon,
     EditIcon,
@@ -880,6 +901,11 @@ export default defineComponent({
 }
 .header .icon {
   margin-right: 6px;
+}
+@media (max-width: 767px) {
+  .inner {
+    padding-top: 56px;
+  }
 }
 .loading-block {
   padding: 12px 4px;

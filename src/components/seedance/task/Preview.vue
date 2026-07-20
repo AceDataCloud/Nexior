@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="seedanceLogo" class="avatar" />
+      <capability-presentation capability="seedance" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('seedance.name.seedanceBot') }}
+        <capability-presentation capability="seedance" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -46,11 +46,11 @@
       <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.status.pending') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
@@ -79,38 +79,38 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.model') }}:
             {{ modelValue?.request?.model }}
           </p>
           <p v-if="video?.duration" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.duration') }}: {{ video?.duration }}s
           </p>
           <p v-if="video?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-expand" class="mr-1" />
+            <fullscreen-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.resolution') }}:
             {{ video?.resolution }}
             <span v-if="video?.ratio"> · {{ video?.ratio }}</span>
             <span v-if="video?.framespersecond"> · {{ video?.framespersecond }}fps</span>
           </p>
           <p v-if="modelValue?.request?.generate_audio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-volume-up" class="mr-1" />
+            <volume-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.generateAudio') }}:
             {{ $t('seedance.button.on') }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy inline-block" />
@@ -120,27 +120,27 @@
       <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
           <p v-if="modelValue?.response?.error?.message" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy inline-block" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy inline-block" />
@@ -150,17 +150,17 @@
       <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.status') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
           <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('seedance.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy inline-block" />
@@ -172,25 +172,39 @@
 </template>
 
 <script lang="ts">
+import {
+  ApplicationIcon,
+  ChannelIcon,
+  FullscreenIcon,
+  InfoIcon,
+  MagicIcon,
+  TimeIcon,
+  VolumeIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { ISeedanceTask, ISeedanceVideo, SeedanceImageRole } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
-import { SEEDANCE_LOGO } from '@/constants';
 
 export default defineComponent({
   name: 'SeedanceTaskPreview',
   components: {
-    ElImage,
+    ApplicationIcon,
+    ChannelIcon,
+    FullscreenIcon,
+    InfoIcon,
+    MagicIcon,
+    TimeIcon,
+    VolumeIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     VideoPlayer,
     ElTooltip,
@@ -206,11 +220,6 @@ export default defineComponent({
       type: Object as () => ISeedanceTask | undefined,
       required: true
     }
-  },
-  data() {
-    return {
-      seedanceLogo: SEEDANCE_LOGO
-    };
   },
   computed: {
     video(): ISeedanceVideo | undefined {

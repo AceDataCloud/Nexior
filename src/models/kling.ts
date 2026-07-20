@@ -20,8 +20,9 @@ export interface IKlingReferenceVideo {
   keep_original_sound?: 'yes' | 'no';
 }
 
-export interface IKlingElementRef {
-  element_id?: string;
+export interface IKlingReferenceImage {
+  image_url: string;
+  type?: 'first_frame' | 'end_frame';
 }
 
 export type IKlingTaskType = 'videos' | 'motion' | 'talking-photo';
@@ -90,7 +91,7 @@ export interface IKlingConfig {
   callback_url?: string;
   async?: boolean;
   generate_audio?: boolean;
-  element_list?: IKlingElementRef[];
+  image_list?: IKlingReferenceImage[];
   video_list?: IKlingReferenceVideo[];
 }
 
@@ -111,7 +112,7 @@ export interface IKlingGenerateRequest {
   callback_url?: string;
   async?: boolean;
   generate_audio?: boolean;
-  element_list?: IKlingElementRef[];
+  image_list?: IKlingReferenceImage[];
   video_list?: IKlingReferenceVideo[];
 }
 export interface IKlingVideo {

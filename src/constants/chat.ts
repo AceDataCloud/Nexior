@@ -19,10 +19,13 @@ export const CHAT_MODEL_NAME_GEMINI_3_0_PRO = 'gemini-3.0-pro';
 export const CHAT_MODEL_NAME_GEMINI_3_5_FLASH = 'gemini-3.5-flash';
 export const CHAT_MODEL_NAME_GEMINI_2_5_PRO = 'gemini-2.5-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_FLASH = 'gemini-2.5-flash';
+export const CHAT_MODEL_NAME_CLAUDE_FABLE_5 = 'claude-fable-5';
 export const CHAT_MODEL_NAME_CLAUDE_OPUS_4_8 = 'claude-opus-4-8';
 export const CHAT_MODEL_NAME_CLAUDE_SONNET_4_6 = 'claude-sonnet-4-6';
 export const CHAT_MODEL_NAME_CLAUDE_HAIKU_4_5 = 'claude-haiku-4-5-20251001';
 
+export const CHAT_MODEL_NAME_KIMI_K3 = 'kimi-k3';
+export const CHAT_MODEL_NAME_KIMI_K2_6 = 'kimi-k2.6';
 export const CHAT_MODEL_NAME_KIMI_K2_5 = 'kimi-k2.5';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
@@ -201,6 +204,18 @@ export const CHAT_MODEL_CLAUDE_OPUS_4_8: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.claudeOpus48Description')
 };
 
+export const CHAT_MODEL_CLAUDE_FABLE_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_CLAUDE_FABLE_5,
+  icon: CHAT_MODEL_ICON_CLAUDE,
+  modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.claudeFable5'),
+  getDescription: () => i18n.global.t('chat.model.claudeFable5Description')
+};
+
 export const CHAT_MODEL_CLAUDE_SONNET_4_6: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_CLAUDE_SONNET_4_6,
@@ -223,6 +238,29 @@ export const CHAT_MODEL_CLAUDE_HAIKU_4_5: IChatModel = {
   isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeHaiku45'),
   getDescription: () => i18n.global.t('chat.model.claudeHaiku45Description')
+};
+
+export const CHAT_MODEL_KIMI_K3: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K3,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK3'),
+  getDescription: () => i18n.global.t('chat.model.kimiK3Description')
+};
+
+export const CHAT_MODEL_KIMI_K2_6: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K2_6,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isImageSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK26'),
+  getDescription: () => i18n.global.t('chat.model.kimiK26Description')
 };
 
 export const CHAT_MODEL_KIMI_K2_5: IChatModel = {
@@ -322,7 +360,12 @@ export const CHAT_MODEL_GROUP_CLAUDE: IChatModelGroup = {
   name: 'claude',
   getDisplayName: () => i18n.global.t('chat.modelGroup.claude'),
   getDescription: () => i18n.global.t('chat.modelGroup.claudeDescription'),
-  models: [CHAT_MODEL_CLAUDE_OPUS_4_8, CHAT_MODEL_CLAUDE_SONNET_4_6, CHAT_MODEL_CLAUDE_HAIKU_4_5]
+  models: [
+    CHAT_MODEL_CLAUDE_FABLE_5,
+    CHAT_MODEL_CLAUDE_OPUS_4_8,
+    CHAT_MODEL_CLAUDE_SONNET_4_6,
+    CHAT_MODEL_CLAUDE_HAIKU_4_5
+  ]
 };
 
 export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
@@ -330,7 +373,13 @@ export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
   name: 'kimi',
   getDisplayName: () => i18n.global.t('chat.modelGroup.kimi'),
   getDescription: () => i18n.global.t('chat.modelGroup.kimiDescription'),
-  models: [CHAT_MODEL_KIMI_K2_5, CHAT_MODEL_KIMI_K2_THINKING, CHAT_MODEL_KIMI_K2_THINKING_TURBO]
+  models: [
+    CHAT_MODEL_KIMI_K3,
+    CHAT_MODEL_KIMI_K2_6,
+    CHAT_MODEL_KIMI_K2_5,
+    CHAT_MODEL_KIMI_K2_THINKING,
+    CHAT_MODEL_KIMI_K2_THINKING_TURBO
+  ]
 };
 
 export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
@@ -354,9 +403,12 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GEMINI_3_5_FLASH,
   CHAT_MODEL_GEMINI_2_5_PRO,
   CHAT_MODEL_GEMINI_2_5_FLASH,
+  CHAT_MODEL_CLAUDE_FABLE_5,
   CHAT_MODEL_CLAUDE_OPUS_4_8,
   CHAT_MODEL_CLAUDE_SONNET_4_6,
   CHAT_MODEL_CLAUDE_HAIKU_4_5,
+  CHAT_MODEL_KIMI_K3,
+  CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K2_5,
   CHAT_MODEL_KIMI_K2_THINKING,
   CHAT_MODEL_KIMI_K2_THINKING_TURBO,

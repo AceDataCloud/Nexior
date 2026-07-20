@@ -1,11 +1,11 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image :src="MAESTRO_LOGO" class="avatar" />
+      <capability-presentation capability="maestro" part="avatar" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('maestro.name.maestroBot') }}
+        <capability-presentation capability="maestro" part="name" />
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
@@ -32,7 +32,7 @@
           v-if="referenceLoadFailed && referenceTaskId && !referenceTask"
           class="reference-load-failed flex items-center gap-1 mt-2 text-xs text-[var(--el-text-color-secondary)]"
         >
-          <font-awesome-icon icon="fa-solid fa-circle-info" />
+          <info-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('maestro.name.files') }}: {{ $t('maestro.name.failure') }}</span>
           <el-button
             class="reference-retry"
@@ -43,7 +43,7 @@
             :aria-label="$t('codingBridge.session.retry')"
             @click="retryReferenceTask"
           >
-            <font-awesome-icon icon="fa-solid fa-rotate-right" />
+            <redo-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </el-button>
         </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
@@ -62,16 +62,16 @@
             class="text-[var(--el-text-color-regular)] text-xs mb-2"
             :class="{ 'mt-3': pIdx === 0 }"
           >
-            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            <component :is="param.icon" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ param.label }}: {{ param.value }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.traceId') }}: {{ traceId }}
             <copy-to-clipboard :content="traceId" />
           </p>
@@ -82,7 +82,7 @@
       <div v-if="modelValue?.response?.success === true && variants.length" class="content">
         <div v-for="(variant, vi) in variants" :key="vi" class="mb-4">
           <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">
-            <font-awesome-icon icon="fa-solid fa-language" class="mr-1" />{{ variant.lang
+            <language-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{ variant.lang
             }}<span v-if="variant.title"> · {{ variant.title }}</span>
           </p>
           <video-player v-if="variant.output_url" :src="variant.output_url" />
@@ -97,12 +97,12 @@
               class="btn-action"
               @click="onDownload($event, variant.output_url)"
             >
-              <font-awesome-icon icon="fa-solid fa-download" class="mr-1" />
+              <download-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ $t('maestro.button.download') }}<span v-if="variants.length > 1"> · {{ variant.lang }}</span>
             </el-button>
           </template>
           <el-button size="small" type="primary" class="btn-action" @click="onRemix">
-            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.button.remix') }}
           </el-button>
           <api-code-button path="/maestro/videos" :body="modelValue?.request" />
@@ -113,20 +113,20 @@
             :key="`param-${pIdx}`"
             class="text-[var(--el-text-color-regular)] text-xs mb-2"
           >
-            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            <component :is="param.icon" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ param.label }}: {{ param.value }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.traceId') }}: {{ traceId }}
             <copy-to-clipboard :content="traceId" />
           </p>
@@ -137,7 +137,7 @@
       <div v-if="modelValue?.response?.success === false" class="content">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.failure') }}
           </template>
           <p
@@ -145,24 +145,24 @@
             :key="`param-${pIdx}`"
             class="text-[var(--el-text-color-regular)] text-xs mb-2"
           >
-            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            <component :is="param.icon" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ param.label }}: {{ param.value }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.failureReason') }}: {{ failureReason }}
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('maestro.name.traceId') }}: {{ traceId }}
             <copy-to-clipboard :content="traceId" />
           </p>
@@ -173,12 +173,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElMessage } from 'element-plus';
+import {
+  ChannelIcon,
+  DownloadIcon,
+  FullscreenIcon,
+  InfoIcon,
+  LanguageIcon,
+  MagicIcon,
+  PaletteIcon,
+  PerformanceIcon,
+  RedoIcon,
+  TimeIcon,
+  VideoIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, markRaw, type Component } from 'vue';
+import { ElAlert, ElButton, ElMessage } from 'element-plus';
 import { IMaestroTask, IMaestroVariant } from '@/models';
-import { MAESTRO_ACTION_REMIX, MAESTRO_LOGO } from '@/constants';
+import { MAESTRO_ACTION_REMIX } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -203,9 +216,15 @@ interface IMaestroInputFile {
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
+    ChannelIcon,
+    DownloadIcon,
+    InfoIcon,
+    LanguageIcon,
+    MagicIcon,
+    RedoIcon,
+    TimeIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     VideoPlayer,
     ElButton,
@@ -224,7 +243,6 @@ export default defineComponent({
   },
   data() {
     return {
-      MAESTRO_LOGO,
       fetchedReferenceTask: undefined as IMaestroTask | undefined,
       fetchedReferenceKey: undefined as string | undefined,
       referenceLoadAttempt: 0,
@@ -301,55 +319,55 @@ export default defineComponent({
       if (!err) return undefined;
       return typeof err === 'string' ? err : err?.message;
     },
-    requestParams(): { icon: string; label: string; value: string }[] {
+    requestParams(): { icon: Component; label: string; value: string }[] {
       const req = this.modelValue?.request;
       if (!req) return [];
-      const out: { icon: string; label: string; value: string }[] = [];
+      const out: { icon: Component; label: string; value: string }[] = [];
       if (req.action) {
         out.push({
-          icon: 'fa-solid fa-wand-magic-sparkles',
+          icon: markRaw(MagicIcon),
           label: this.$t('maestro.name.mode') as string,
           value: this.optionLabel('maestro.option.action', req.action)
         });
       }
       if (req.scenario) {
         out.push({
-          icon: 'fa-solid fa-clapperboard',
+          icon: markRaw(VideoIcon),
           label: this.$t('maestro.name.scenario') as string,
           value: this.optionLabel('maestro.option.scenario', req.scenario)
         });
       }
       if (req.style) {
         out.push({
-          icon: 'fa-solid fa-palette',
+          icon: markRaw(PaletteIcon),
           label: this.$t('maestro.name.style') as string,
           value: this.optionLabel('maestro.option.style', req.style)
         });
       }
       if (req.quality) {
         out.push({
-          icon: 'fa-solid fa-gauge-high',
+          icon: markRaw(PerformanceIcon),
           label: this.$t('maestro.name.quality') as string,
           value: this.optionLabel('maestro.option.quality', req.quality)
         });
       }
       if (req.aspect) {
         out.push({
-          icon: 'fa-solid fa-expand',
+          icon: markRaw(FullscreenIcon),
           label: this.$t('maestro.name.aspect') as string,
           value: req.aspect
         });
       }
       if (req.duration) {
         out.push({
-          icon: 'fa-solid fa-clock',
+          icon: markRaw(TimeIcon),
           label: this.$t('maestro.name.duration') as string,
           value: `${req.duration}s`
         });
       }
       if (req.langs?.length) {
         out.push({
-          icon: 'fa-solid fa-language',
+          icon: markRaw(LanguageIcon),
           label: this.$t('maestro.name.langs') as string,
           value: req.langs.join(' · ')
         });

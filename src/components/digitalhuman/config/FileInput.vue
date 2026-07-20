@@ -15,7 +15,29 @@
       :on-remove="onChange"
     >
       <el-button size="small" round>
-        <font-awesome-icon :icon="icon" class="mr-1" />
+        <video-icon v-if="icon === 'video'" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <image-icon
+          v-else-if="icon === 'image'"
+          class="mr-1"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
+        <microphone-icon
+          v-else-if="icon === 'microphone'"
+          class="mr-1"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
+        <music-icon
+          v-else-if="icon === 'music'"
+          class="mr-1"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
+        <upload-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ buttonText }}
       </el-button>
     </el-upload>
@@ -23,9 +45,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { ImageIcon, MicrophoneIcon, MusicIcon, UploadIcon, VideoIcon } from '@acedatacloud/core/icons/components';
+import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile, UploadInstance } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {
@@ -38,7 +60,11 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
-    FontAwesomeIcon
+    ImageIcon,
+    MicrophoneIcon,
+    MusicIcon,
+    UploadIcon,
+    VideoIcon
   },
   props: {
     accept: {
@@ -50,8 +76,8 @@ export default defineComponent({
       default: ''
     },
     icon: {
-      type: String,
-      default: 'fa-solid fa-upload'
+      type: String as PropType<'image' | 'microphone' | 'music' | 'upload' | 'video'>,
+      default: 'upload'
     }
   },
   emits: ['change'],
