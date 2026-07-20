@@ -62,7 +62,12 @@
               @select-node="selectNode"
               @select-take="selectTake"
             />
-            <timeline-view v-else-if="projection === 'timeline'" :timeline="timeline" />
+            <timeline-view
+              v-else-if="projection === 'timeline'"
+              :timeline="timeline"
+              :graph="graph"
+              :artifacts="artifacts"
+            />
             <review-view
               v-else
               :graph="graph"
