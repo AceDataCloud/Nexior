@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 20 Jul 2026 16:09:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 20 Jul 2026 16:16:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.2
+
+Mon, 20 Jul 2026 16:16:39 GMT
+
+### Patches
+
+- Align the Poivelle studio with Nexior design tokens, responsive surfaces, and keyboard focus states. (dev@acedata.cloud)
 
 ## 3.330.1
 
