@@ -52,8 +52,15 @@
             <storyboard-view
               v-else-if="projection === 'storyboard'"
               :graph="graph"
+              :storyboard="storyboard"
+              :artifacts="artifacts"
+              :takes="takes"
+              :selections="selections"
               :selected-node-id="selectedNodeId"
+              :can-edit="canEdit"
+              :can-select="canEdit && revisions.length > 0"
               @select-node="selectNode"
+              @select-take="selectTake"
             />
             <timeline-view v-else-if="projection === 'timeline'" :timeline="timeline" />
             <review-view
@@ -127,8 +134,25 @@
         <el-form-item :label="$t('poivelle.project.title')">
           <el-input v-model="projectForm.title" maxlength="200" />
         </el-form-item>
+        <el-form-item :label="$t('poivelle.project.workflow')">
+          <el-segmented v-model="projectForm.workflow" :options="workflowOptions" block />
+        </el-form-item>
+        <template v-if="projectForm.workflow === 'commercial_tvc'">
+          <el-form-item :label="$t('poivelle.project.productName')">
+            <el-input v-model="projectForm.product_name" maxlength="120" />
+          </el-form-item>
+          <el-form-item :label="$t('poivelle.project.productCategory')">
+            <el-input v-model="projectForm.product_category" maxlength="180" />
+          </el-form-item>
+          <el-form-item :label="$t('poivelle.project.brandTone')">
+            <el-input v-model="projectForm.brand_tone" type="textarea" :rows="2" maxlength="240" />
+          </el-form-item>
+          <el-form-item :label="$t('poivelle.project.aspectRatio')">
+            <el-segmented v-model="projectForm.aspect_ratio" :options="['16:9', '9:16', '1:1']" />
+          </el-form-item>
+        </template>
         <el-form-item :label="$t('poivelle.project.skill')">
-          <el-select v-model="projectForm.skill" style="width: 100%">
+          <el-select v-if="projectForm.workflow === 'blank'" v-model="projectForm.skill" style="width: 100%">
             <el-option label="Short drama · professional" value="film.drama.short@1.0.0" />
             <el-option label="Commercial film · professional" value="film.commercial@1.0.0" />
             <el-option label="Music video · professional" value="film.music-video@1.0.0" />
@@ -225,6 +249,7 @@ import {
   ElMessage,
   ElMessageBox,
   ElOption,
+  ElSegmented,
   ElSelect
 } from 'element-plus';
 import { AlertTriangle, Clapperboard, Film, LoaderCircle, Plus } from '@lucide/vue';
@@ -246,6 +271,10 @@ const workspaces = computed(() => state.value?.workspaces ?? []);
 const projects = computed(() => state.value?.projects ?? []);
 const graph = computed(() => state.value?.graph);
 const assets = computed(() => state.value?.assets ?? []);
+const artifacts = computed(() => state.value?.artifacts ?? []);
+const takes = computed(() => state.value?.takes ?? []);
+const selections = computed(() => state.value?.selections ?? []);
+const storyboard = computed(() => state.value?.storyboard);
 const revisions = computed(() => state.value?.revisions ?? []);
 const proposals = computed(() => state.value?.proposals ?? []);
 const runs = computed(() => state.value?.runs ?? []);
@@ -272,7 +301,20 @@ const nodeDialogVisible = ref(false);
 const assetDialogVisible = ref(false);
 const dryRunDialogVisible = ref(false);
 const workspaceForm = reactive({ name: '', monthly_limit_microcredits: undefined as number | undefined });
-const projectForm = reactive({ workspace_id: '', title: '', skill: 'film.drama.short@1.0.0' });
+const projectForm = reactive({
+  workspace_id: '',
+  title: '',
+  workflow: 'blank' as 'blank' | 'commercial_tvc',
+  skill: 'film.drama.short@1.0.0',
+  product_name: '',
+  product_category: 'professional action imaging device',
+  brand_tone: 'precise, fearless, cinematic, premium',
+  aspect_ratio: '16:9' as '16:9' | '9:16' | '1:1'
+});
+const workflowOptions = [
+  { label: t('poivelle.project.blankWorkflow'), value: 'blank' },
+  { label: t('poivelle.project.commercialTVC'), value: 'commercial_tvc' }
+];
 const nodeForm = reactive({ node_type: 'scene' as PoivelleNodeType, title: '', prompt: '' });
 const assetForm = reactive({ title: '', kind: 'image', source_url: '', content_hash: '' });
 const nodeTypes: PoivelleNodeType[] = [
@@ -312,11 +354,25 @@ const createWorkspace = async () => {
 const createProject = async () => {
   if (!projectForm.workspace_id || !projectForm.title.trim()) return;
   await submittingTask(async () => {
-    await store.dispatch('poivelle/createProject', {
-      ...projectForm,
-      title: projectForm.title.trim(),
-      domain: 'film.drama.short'
-    });
+    if (projectForm.workflow === 'commercial_tvc') {
+      await store.dispatch('poivelle/createCommercialTVCProject', {
+        workspace_id: projectForm.workspace_id,
+        title: projectForm.title.trim(),
+        product_name: projectForm.product_name.trim() || projectForm.title.trim(),
+        product_category: projectForm.product_category.trim(),
+        brand_tone: projectForm.brand_tone.trim(),
+        aspect_ratio: projectForm.aspect_ratio,
+        managed_execution: false
+      });
+      setProjection('storyboard');
+    } else {
+      await store.dispatch('poivelle/createProject', {
+        workspace_id: projectForm.workspace_id,
+        title: projectForm.title.trim(),
+        skill: projectForm.skill,
+        domain: 'film.drama.short'
+      });
+    }
     projectDialogVisible.value = false;
     projectForm.title = '';
   });
@@ -380,6 +436,12 @@ const rejectProposal = async (proposalId: string) => {
 const cancelRun = async (runId: string) => {
   await ElMessageBox.confirm(t('poivelle.run.cancelConfirm'), '', { type: 'warning' });
   await submittingTask(() => store.dispatch('poivelle/cancelRun', runId));
+};
+const selectTake = async (payload: { target_node_id: string; take_id: string }) => {
+  await submittingTask(async () => {
+    await store.dispatch('poivelle/selectTake', payload);
+    ElMessage.success(t('poivelle.storyboard.selectionSaved'));
+  });
 };
 const formatCredits = (microcredits: number) => `${(microcredits / 1_000_000).toFixed(2)} credits`;
 const submittingTask = async (task: () => Promise<void>) => {

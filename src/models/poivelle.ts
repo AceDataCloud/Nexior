@@ -57,7 +57,54 @@ export interface IPoivelleProject {
   current_revision_id?: string;
   current_goal_snapshot_id?: string;
   automation_policy_snapshot_id?: string;
+  blueprint_ref?: string;
+  managed_execution?: boolean;
   updated_at: string;
+}
+
+export interface IPoivelleCommercialTVCBlueprintRequest {
+  title: string;
+  product_name: string;
+  product_category: string;
+  brand_tone: string;
+  aspect_ratio: '16:9' | '9:16' | '1:1';
+  managed_execution?: boolean;
+}
+
+export interface IPoivelleTVCShotRow {
+  id: string;
+  act_id: string;
+  shot_number: number;
+  duration_seconds: number;
+  plot_description: string;
+  characters: Array<{ logical_id: string; description: string; asset_version_id?: string }>;
+  shot_size: string;
+  character_action: string;
+  emotion: string;
+  scene_tags: string[];
+  lighting_and_atmosphere: string;
+  audio_effects: string;
+  dialogue: string;
+  image_generation_prompt: string;
+  video_motion_prompt: string;
+}
+
+export interface IPoivelleTVCStoryboardShot {
+  row: IPoivelleTVCShotRow;
+  shot_node_id: string;
+  image_node_ids: string[];
+  video_node_ids: string[];
+}
+
+export interface IPoivelleTVCStoryboard {
+  project_id: string;
+  graph_version: number;
+  schema_ref: 'commercial.tvc.storyboard@1';
+  script_node_id: string;
+  title: string;
+  product_name: string;
+  target_duration_seconds: number;
+  sections: Array<{ id: string; title: string; order: number; shots: IPoivelleTVCStoryboardShot[] }>;
 }
 
 export interface IPoivellePortRef {
@@ -164,6 +211,47 @@ export interface IPoivelleAsset {
   title: string;
   current_version_id: string;
   state: 'active' | 'restricted' | 'deleted';
+  created_at: string;
+}
+
+export interface IPoivelleArtifact {
+  id: string;
+  project_id: string;
+  revision_id: string;
+  run_id: string;
+  step_run_id: string;
+  attempt_id: string;
+  node_id?: string;
+  kind: 'document' | 'image' | 'video' | 'audio' | 'subtitle' | 'manifest';
+  storage_url: string;
+  content_hash: string;
+  state: 'pending' | 'committed' | 'restricted' | 'purged';
+  restriction_watermark: number;
+  metadata: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface IPoivelleTake {
+  id: string;
+  project_id: string;
+  revision_id: string;
+  target_node_id: string;
+  artifact_ids: string[];
+  intent: string;
+  source_step_run_id?: string;
+  state: 'ready' | 'failed' | 'restricted';
+  created_at: string;
+}
+
+export interface IPoivelleSelection {
+  id: string;
+  project_id: string;
+  revision_id: string;
+  target_node_id: string;
+  take_id: string;
+  sequence: number;
+  expected_previous_event_id?: string;
+  actor: IPoivelleActor;
   created_at: string;
 }
 

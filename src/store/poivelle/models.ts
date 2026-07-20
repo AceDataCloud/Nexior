@@ -1,5 +1,6 @@
 import type {
   IPoivelleActionDryRun,
+  IPoivelleArtifact,
   IPoivelleAsset,
   IPoivelleGraphNode,
   IPoivelleGraphSnapshot,
@@ -10,7 +11,10 @@ import type {
   IPoivelleRevision,
   IPoivelleRun,
   IPoivelleRunDetail,
+  IPoivelleSelection,
+  IPoivelleTake,
   IPoivelleTimeline,
+  IPoivelleTVCStoryboard,
   IPoivelleWorkspace,
   Status
 } from '@/models';
@@ -24,6 +28,10 @@ export interface IPoivelleState {
   projection: PoivelleProjection;
   graph?: IPoivelleGraphSnapshot;
   assets: IPoivelleAsset[];
+  artifacts: IPoivelleArtifact[];
+  takes: IPoivelleTake[];
+  selections: IPoivelleSelection[];
+  storyboard?: IPoivelleTVCStoryboard;
   revisions: IPoivelleRevision[];
   proposals: IPoivelleProposal[];
   runs: IPoivelleRun[];

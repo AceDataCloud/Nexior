@@ -1,126 +1,375 @@
 <template>
   <div class="storyboard-view">
-    <article
-      v-for="(node, index) in storyboardNodes"
-      :key="node.id"
-      :class="['story-card', { selected: node.id === selectedNodeId }]"
-      @click="$emit('select-node', node.id)"
-    >
-      <div class="frame">
-        <span class="frame-number">{{ String(index + 1).padStart(2, '0') }}</span>
-        <Clapperboard :size="30" stroke-width="1.25" aria-hidden="true" />
-        <span>{{ node.node_type }}</span>
+    <header v-if="storyboard" class="storyboard-heading">
+      <div>
+        <span>{{ storyboard.schema_ref }}</span>
+        <h2>{{ storyboard.title }}</h2>
       </div>
-      <div class="story-copy">
+      <dl>
+        <div>
+          <dt>{{ $t('poivelle.storyboard.product') }}</dt>
+          <dd>{{ storyboard.product_name }}</dd>
+        </div>
+        <div>
+          <dt>{{ $t('poivelle.storyboard.duration') }}</dt>
+          <dd>{{ storyboard.target_duration_seconds }}s</dd>
+        </div>
+        <div>
+          <dt>{{ $t('poivelle.storyboard.shots') }}</dt>
+          <dd>{{ shotCount }}</dd>
+        </div>
+      </dl>
+    </header>
+
+    <template v-if="storyboard">
+      <section v-for="section in storyboard.sections" :key="section.id" class="story-section">
+        <div class="section-label">
+          <span>{{ String(section.order).padStart(2, '0') }}</span>
+          <h3>{{ section.title }}</h3>
+        </div>
+        <article
+          v-for="shot in section.shots"
+          :key="shot.row.id"
+          :class="['shot-row', { selected: shot.shot_node_id === selectedNodeId }]"
+        >
+          <button class="shot-brief" type="button" @click="$emit('select-node', shot.shot_node_id)">
+            <span class="shot-number">SHOT {{ String(shot.row.shot_number).padStart(2, '0') }}</span>
+            <strong>{{ shot.row.plot_description }}</strong>
+            <span>{{ shot.row.duration_seconds }}s · {{ shot.row.shot_size }}</span>
+          </button>
+
+          <div class="shot-production">
+            <dl class="shot-metadata">
+              <div>
+                <dt>{{ $t('poivelle.storyboard.action') }}</dt>
+                <dd>{{ shot.row.character_action || '—' }}</dd>
+              </div>
+              <div>
+                <dt>{{ $t('poivelle.storyboard.emotion') }}</dt>
+                <dd>{{ shot.row.emotion || '—' }}</dd>
+              </div>
+              <div>
+                <dt>{{ $t('poivelle.storyboard.lighting') }}</dt>
+                <dd>{{ shot.row.lighting_and_atmosphere }}</dd>
+              </div>
+              <div>
+                <dt>{{ $t('poivelle.storyboard.audio') }}</dt>
+                <dd>{{ shot.row.audio_effects }}</dd>
+              </div>
+            </dl>
+            <div class="prompt-columns">
+              <div>
+                <span>{{ $t('poivelle.storyboard.imagePrompt') }}</span>
+                <p>{{ shot.row.image_generation_prompt }}</p>
+              </div>
+              <div>
+                <span>{{ $t('poivelle.storyboard.motionPrompt') }}</span>
+                <p>{{ shot.row.video_motion_prompt }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="candidate-columns">
+            <media-lane
+              :title="$t('poivelle.storyboard.frames')"
+              kind="image"
+              :node-ids="shot.image_node_ids"
+              :artifacts="artifacts"
+              :takes="takes"
+              :selections="selections"
+              :can-edit="canEdit"
+              :can-select="canSelect"
+              @select-node="$emit('select-node', $event)"
+              @select-take="$emit('select-take', $event)"
+            />
+            <media-lane
+              :title="$t('poivelle.storyboard.motion')"
+              kind="video"
+              :node-ids="shot.video_node_ids"
+              :artifacts="artifacts"
+              :takes="takes"
+              :selections="selections"
+              :can-edit="canEdit"
+              :can-select="canSelect"
+              @select-node="$emit('select-node', $event)"
+              @select-take="$emit('select-take', $event)"
+            />
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template v-else>
+      <article
+        v-for="(node, index) in legacyNodes"
+        :key="node.id"
+        :class="['legacy-card', { selected: node.id === selectedNodeId }]"
+        @click="$emit('select-node', node.id)"
+      >
+        <span>{{ String(index + 1).padStart(2, '0') }}</span>
+        <Clapperboard :size="26" stroke-width="1.25" aria-hidden="true" />
         <strong>{{ node.title }}</strong>
-        <p>{{ node.payload.prompt || node.payload.text || $t('poivelle.storyboard.noPrompt') }}</p>
+      </article>
+      <div v-if="!legacyNodes.length" class="empty-view">
+        <Clapperboard :size="30" stroke-width="1.4" />
+        <h2>{{ $t('poivelle.storyboard.emptyTitle') }}</h2>
+        <p>{{ $t('poivelle.storyboard.emptyBody') }}</p>
       </div>
-    </article>
-    <div v-if="!storyboardNodes.length" class="empty-view">
-      <Clapperboard :size="30" stroke-width="1.4" />
-      <h2>{{ $t('poivelle.storyboard.emptyTitle') }}</h2>
-      <p>{{ $t('poivelle.storyboard.emptyBody') }}</p>
-    </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Clapperboard } from '@lucide/vue';
-import type { IPoivelleGraphSnapshot } from '@/models';
+import type {
+  IPoivelleArtifact,
+  IPoivelleGraphSnapshot,
+  IPoivelleSelection,
+  IPoivelleTake,
+  IPoivelleTVCStoryboard
+} from '@/models';
+import MediaLane from './StoryboardMediaLane.vue';
 
-const props = defineProps<{ graph: IPoivelleGraphSnapshot; selectedNodeId?: string }>();
-defineEmits<{ 'select-node': [nodeId: string] }>();
-const storyboardNodes = computed(() =>
+const props = defineProps<{
+  graph: IPoivelleGraphSnapshot;
+  storyboard?: IPoivelleTVCStoryboard;
+  artifacts: IPoivelleArtifact[];
+  takes: IPoivelleTake[];
+  selections: IPoivelleSelection[];
+  selectedNodeId?: string;
+  canEdit: boolean;
+  canSelect: boolean;
+}>();
+defineEmits<{
+  'select-node': [nodeId: string];
+  'select-take': [payload: { target_node_id: string; take_id: string }];
+}>();
+const shotCount = computed(
+  () => props.storyboard?.sections.reduce((total, section) => total + section.shots.length, 0) ?? 0
+);
+const legacyNodes = computed(() =>
   props.graph.nodes.filter((node) => ['storyboard', 'scene', 'shot', 'image', 'video'].includes(node.node_type))
 );
 </script>
 
 <style scoped>
 .storyboard-view {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  align-content: start;
-  gap: 14px;
   height: 100%;
   padding: 18px;
   overflow: auto;
   background: var(--poivelle-canvas);
 }
-
-.story-card {
-  min-width: 0;
-  border: 1px solid var(--poivelle-line-strong);
-  background: var(--poivelle-paper);
-  cursor: pointer;
+.storyboard-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--poivelle-ink);
 }
-
-.story-card.selected {
-  border-color: var(--poivelle-red);
-  box-shadow: 3px 3px 0 color-mix(in srgb, var(--poivelle-red) 22%, transparent);
-}
-
-.frame {
-  position: relative;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  aspect-ratio: 16 / 9;
-  gap: 6px;
+.storyboard-heading span,
+.shot-number,
+dt,
+.prompt-columns span {
   color: var(--poivelle-muted);
-  background: #dce2dc;
   font-family: 'Courier New', monospace;
   font-size: 9px;
   text-transform: uppercase;
 }
-
-.frame-number {
-  position: absolute;
-  left: 8px;
-  top: 7px;
-  color: var(--poivelle-red);
+.storyboard-heading h2 {
+  margin: 4px 0 0;
+  font-family: Georgia, serif;
+  font-size: 24px;
+}
+.storyboard-heading dl {
+  display: flex;
+  gap: 22px;
+  margin: 0;
+}
+.storyboard-heading dl div {
+  display: grid;
+  gap: 3px;
+}
+.storyboard-heading dd {
+  margin: 0;
+  font-size: 12px;
   font-weight: 700;
 }
-
-.story-copy {
-  padding: 11px;
+.story-section {
+  border-bottom: 1px solid var(--poivelle-line-strong);
 }
-
-.story-copy strong {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 14px;
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
 }
-
-.story-copy p {
-  display: -webkit-box;
-  margin: 6px 0 0;
-  overflow: hidden;
+.section-label span {
+  color: var(--poivelle-red);
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+}
+.section-label h3 {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.shot-row {
+  display: grid;
+  grid-template-columns: 210px minmax(280px, 0.9fr) minmax(430px, 1.25fr);
+  border-top: 1px solid var(--poivelle-line);
+  background: var(--poivelle-paper);
+}
+.shot-row.selected {
+  box-shadow: inset 3px 0 0 var(--poivelle-red);
+}
+.shot-brief {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border: 0;
+  border-right: 1px solid var(--poivelle-line);
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.shot-brief strong {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.35;
+}
+.shot-brief > span:last-child {
   color: var(--poivelle-muted);
   font-size: 10px;
-  line-height: 1.45;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
-
-.empty-view {
-  grid-column: 1 / -1;
+.shot-production {
+  min-width: 0;
+  padding: 12px;
+  border-right: 1px solid var(--poivelle-line);
+}
+.shot-metadata {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.shot-metadata div {
+  min-width: 0;
+}
+.shot-metadata dd {
+  margin: 3px 0 0;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.prompt-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.prompt-columns div {
+  min-width: 0;
+  padding: 8px;
+  background: var(--poivelle-canvas);
+}
+.prompt-columns p {
+  margin: 4px 0 0;
+  color: var(--poivelle-muted);
+  font-size: 9px;
+  line-height: 1.45;
+}
+.candidate-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 0;
+}
+.legacy-card {
+  display: inline-grid;
+  width: 220px;
+  min-height: 130px;
+  margin: 7px;
   place-content: center;
   justify-items: center;
+  gap: 8px;
+  border: 1px solid var(--poivelle-line-strong);
+  background: var(--poivelle-paper);
+  cursor: pointer;
+}
+.legacy-card.selected {
+  border-color: var(--poivelle-red);
+}
+.legacy-card span {
+  color: var(--poivelle-red);
+  font:
+    10px 'Courier New',
+    monospace;
+}
+.empty-view {
+  display: grid;
   min-height: 340px;
+  place-content: center;
+  justify-items: center;
   color: var(--poivelle-muted);
   text-align: center;
 }
-
 .empty-view h2 {
   margin: 12px 0 5px;
   color: var(--poivelle-ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 22px;
+  font:
+    22px Georgia,
+    serif;
 }
-
 .empty-view p {
   margin: 0;
   font-size: 11px;
+}
+@media (max-width: 1100px) {
+  .shot-row {
+    grid-template-columns: 180px minmax(250px, 1fr);
+  }
+  .candidate-columns {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--poivelle-line);
+  }
+}
+@media (max-width: 767px) {
+  .storyboard-view {
+    min-width: 0;
+    padding: 12px;
+  }
+  .storyboard-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .storyboard-heading h2 {
+    font-size: 21px;
+    overflow-wrap: anywhere;
+  }
+  .storyboard-heading dl {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .shot-row {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid var(--poivelle-line-strong);
+  }
+  .shot-brief {
+    border-right: 0;
+    border-bottom: 1px solid var(--poivelle-line);
+  }
+  .shot-production {
+    border-right: 0;
+    border-bottom: 1px solid var(--poivelle-line);
+  }
+  .prompt-columns {
+    grid-template-columns: 1fr;
+  }
+  .candidate-columns {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>

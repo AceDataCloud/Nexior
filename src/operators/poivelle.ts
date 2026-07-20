@@ -2,7 +2,9 @@ import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import { BASE_URL_POIVELLE } from '@/constants';
 import type {
   IPoivelleActionDryRun,
+  IPoivelleArtifact,
   IPoivelleAsset,
+  IPoivelleCommercialTVCBlueprintRequest,
   IPoivelleGraphCommandRequest,
   IPoivelleGraphSnapshot,
   IPoivelleMembership,
@@ -12,6 +14,9 @@ import type {
   IPoivelleRun,
   IPoivelleRunDetail,
   IPoivelleTimeline,
+  IPoivelleTake,
+  IPoivelleSelection,
+  IPoivelleTVCStoryboard,
   IPoivelleWorkspace
 } from '@/models';
 
@@ -25,6 +30,7 @@ class PoivelleOperator {
   private config(options: IPoivelleRequestOptions): AxiosRequestConfig {
     return {
       baseURL: BASE_URL_POIVELLE,
+      timeout: 20000,
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',
@@ -66,6 +72,25 @@ class PoivelleOperator {
     return axios.post('/poivelle/projects', payload, this.config(options));
   }
 
+  createCommercialTVCProject(
+    workspaceId: string,
+    payload: IPoivelleCommercialTVCBlueprintRequest,
+    options: IPoivelleRequestOptions
+  ): Promise<
+    AxiosResponse<{
+      project: IPoivelleProject;
+      graph: IPoivelleGraphSnapshot;
+      revision: IPoivelleRevision;
+      storyboard: IPoivelleTVCStoryboard;
+    }>
+  > {
+    return axios.post(
+      `/poivelle/workspaces/${encode(workspaceId)}/projects/from-blueprint`,
+      payload,
+      this.config(options)
+    );
+  }
+
   updateProject(
     projectId: string,
     payload: { title?: string; automation_policy_snapshot_id?: string },
@@ -76,6 +101,10 @@ class PoivelleOperator {
 
   getGraph(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleGraphSnapshot>> {
     return axios.get(`/poivelle/projects/${encode(projectId)}/graph/snapshot`, this.config(options));
+  }
+
+  getStoryboard(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleTVCStoryboard>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/storyboard`, this.config(options));
   }
 
   applyGraphCommand(
@@ -101,6 +130,33 @@ class PoivelleOperator {
 
   getAssets(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleAsset[]>> {
     return axios.get(`/poivelle/projects/${encode(projectId)}/assets`, this.config(options));
+  }
+
+  getArtifacts(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleArtifact[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/artifacts`, this.config(options));
+  }
+
+  getTakes(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleTake[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/takes`, this.config(options));
+  }
+
+  getSelections(
+    projectId: string,
+    revisionId: string | undefined,
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleSelection[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/selections`, {
+      ...this.config(options),
+      params: revisionId ? { revision_id: revisionId } : undefined
+    });
+  }
+
+  selectTake(
+    projectId: string,
+    payload: { revision_id: string; target_node_id: string; take_id: string; expected_previous_event_id?: string },
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleSelection>> {
+    return axios.post(`/poivelle/projects/${encode(projectId)}/selections`, payload, this.config(options));
   }
 
   importAsset(

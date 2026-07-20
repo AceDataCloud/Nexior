@@ -27,6 +27,10 @@ export const setProjects = (state: IPoivelleState, value: IPoivelleState['projec
 const clearProjectData = (state: IPoivelleState): void => {
   state.graph = undefined;
   state.assets = [];
+  state.artifacts = [];
+  state.takes = [];
+  state.selections = [];
+  state.storyboard = undefined;
   state.revisions = [];
   state.proposals = [];
   state.runs = [];
@@ -69,6 +73,18 @@ export const setSelectedNode = (state: IPoivelleState, value?: string): void => 
 };
 export const setAssets = (state: IPoivelleState, value: IPoivelleState['assets']): void => {
   state.assets = value;
+};
+export const setArtifacts = (state: IPoivelleState, value: IPoivelleState['artifacts']): void => {
+  state.artifacts = value;
+};
+export const setTakes = (state: IPoivelleState, value: IPoivelleState['takes']): void => {
+  state.takes = value;
+};
+export const setSelections = (state: IPoivelleState, value: IPoivelleState['selections']): void => {
+  state.selections = value;
+};
+export const setStoryboard = (state: IPoivelleState, value: IPoivelleState['storyboard']): void => {
+  state.storyboard = value;
 };
 export const setRevisions = (state: IPoivelleState, value: IPoivelleState['revisions']): void => {
   state.revisions = value;

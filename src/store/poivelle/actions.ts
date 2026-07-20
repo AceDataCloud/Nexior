@@ -1,5 +1,11 @@
 import type { ActionContext } from 'vuex';
-import { Status, type IPoivelleGraphCommandRequest, type IPoivelleRun, type PoivelleProjection } from '@/models';
+import {
+  Status,
+  type IPoivelleCommercialTVCBlueprintRequest,
+  type IPoivelleGraphCommandRequest,
+  type IPoivelleRun,
+  type PoivelleProjection
+} from '@/models';
 import { poivelleOperator } from '@/operators';
 import type { IRootState } from '../common/models';
 import type { IPoivelleState } from './models';
@@ -93,20 +99,49 @@ export const createProject = async (
   await dispatch('loadProject', data.id);
 };
 
-export const loadProject = async ({ commit, rootState }: Context, projectId: string): Promise<void> => {
+export const createCommercialTVCProject = async (
+  { commit, rootState }: Context,
+  payload: { workspace_id: string } & IPoivelleCommercialTVCBlueprintRequest
+): Promise<void> => {
+  const { workspace_id: workspaceId, ...blueprint } = payload;
+  const { data } = await poivelleOperator.createCommercialTVCProject(workspaceId, blueprint, {
+    token: token(rootState)
+  });
+  commit('addProject', data.project);
+  commit('setGraph', data.graph);
+  commit('setRevisions', [data.revision]);
+  commit('setStoryboard', data.storyboard);
+  commit('setArtifacts', []);
+  commit('setTakes', []);
+  commit('setSelections', []);
+};
+
+export const loadProject = async ({ commit, rootState, state }: Context, projectId: string): Promise<void> => {
   commit('setCurrentProject', projectId);
   commit('setStatus', { key: 'graph', value: Status.Request });
   commit('setError');
   let finalStatus = Status.Success;
   try {
     const options = { token: token(rootState) };
-    const [graph, assets, revisions, proposals, runs, timeline] = await Promise.all([
+    const project = state.projects.find((item) => item.id === projectId);
+    const [graph, assets, revisions, proposals, runs, timeline, artifacts, takes] = await Promise.all([
       poivelleOperator.getGraph(projectId, options),
       poivelleOperator.getAssets(projectId, options),
       poivelleOperator.getRevisions(projectId, options),
       poivelleOperator.getProposals(projectId, options),
       poivelleOperator.getRuns(projectId, options),
-      poivelleOperator.getTimeline(projectId, options)
+      poivelleOperator.getTimeline(projectId, options),
+      poivelleOperator.getArtifacts(projectId, options),
+      poivelleOperator.getTakes(projectId, options)
+    ]);
+    const currentRevisionId = revisions.data[0]?.id;
+    const [selections, storyboard] = await Promise.all([
+      currentRevisionId
+        ? poivelleOperator.getSelections(projectId, currentRevisionId, options)
+        : Promise.resolve({ data: [] }),
+      project?.blueprint_ref === 'commercial.tvc.action-imaging@1'
+        ? poivelleOperator.getStoryboard(projectId, options)
+        : Promise.resolve(undefined)
     ]);
     commit('setGraph', graph.data);
     commit('setAssets', assets.data);
@@ -114,6 +149,10 @@ export const loadProject = async ({ commit, rootState }: Context, projectId: str
     commit('setProposals', proposals.data);
     commit('setRuns', runs.data);
     commit('setTimeline', timeline.data);
+    commit('setArtifacts', artifacts.data);
+    commit('setTakes', takes.data);
+    commit('setSelections', selections.data);
+    commit('setStoryboard', storyboard?.data);
   } catch (error) {
     finalStatus = Status.Error;
     commit('setError', message(error));
@@ -304,6 +343,39 @@ export const cancelRun = async ({ state, commit, rootState }: Context, runId: st
   }
 };
 
+export const selectTake = async (
+  { state, commit, rootState }: Context,
+  payload: { target_node_id: string; take_id: string }
+): Promise<void> => {
+  if (!state.currentProjectId) return;
+  const revision = state.revisions[0];
+  if (!revision) throw new Error('Commit a project revision before selecting a take');
+  const previous = state.selections.find((item) => item.target_node_id === payload.target_node_id);
+  let data;
+  try {
+    const response = await poivelleOperator.selectTake(
+      state.currentProjectId,
+      {
+        revision_id: revision.id,
+        target_node_id: payload.target_node_id,
+        take_id: payload.take_id,
+        expected_previous_event_id: previous?.id
+      },
+      { token: token(rootState) }
+    );
+    data = response.data;
+  } catch (error: any) {
+    if (error?.response?.status === 409) {
+      const latest = await poivelleOperator.getSelections(state.currentProjectId, revision.id, {
+        token: token(rootState)
+      });
+      commit('setSelections', latest.data);
+    }
+    throw error;
+  }
+  commit('setSelections', [...state.selections.filter((item) => item.target_node_id !== payload.target_node_id), data]);
+};
+
 export const selectNode = ({ commit }: Context, nodeId?: string): void => commit('setSelectedNode', nodeId);
 
 export default {
@@ -311,6 +383,7 @@ export default {
   createWorkspace,
   selectWorkspace,
   createProject,
+  createCommercialTVCProject,
   loadProject,
   applyCommand,
   createNode,
@@ -323,5 +396,6 @@ export default {
   confirmDryRun,
   rejectProposal,
   cancelRun,
+  selectTake,
   selectNode
 };
