@@ -98,23 +98,22 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   justify-content: space-between;
   padding: 18px;
   border: 1px solid var(--poivelle-line-strong);
+  border-radius: var(--poivelle-radius);
   background: var(--poivelle-paper);
+  box-shadow: var(--app-shadow-xs);
 }
 
 .eyebrow,
 .review-columns h3 {
-  color: var(--poivelle-red);
-  font-family: 'Courier New', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--app-brand-hex);
+  font-size: 10px;
+  font-weight: 650;
 }
 
 .review-summary h2 {
   margin: 5px 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 650;
 }
 
 .summary-metrics {
@@ -125,12 +124,10 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   display: grid;
   color: var(--poivelle-muted);
   font-size: 9px;
-  text-transform: uppercase;
 }
 
 .summary-metrics strong {
   color: var(--poivelle-ink);
-  font-family: Georgia, 'Times New Roman', serif;
   font-size: 20px;
 }
 
@@ -153,6 +150,7 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   margin-bottom: 8px;
   padding: 12px;
   border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius);
   background: var(--poivelle-paper);
 }
 
@@ -186,8 +184,9 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
 
 .item-actions button,
 .cancel-run {
-  border: 1px solid #bd5b50;
-  color: #a63329;
+  border: 1px solid color-mix(in srgb, var(--el-color-danger) 45%, transparent);
+  border-radius: var(--poivelle-radius-small);
+  color: var(--el-color-danger);
   background: transparent;
   font: inherit;
   font-size: 9px;
@@ -204,13 +203,13 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   color: var(--poivelle-muted);
   background: var(--poivelle-hover);
   font-size: 8px;
-  text-transform: uppercase;
+  border-radius: var(--adc-radius-full);
 }
 
 .risk-high,
 .risk-critical {
-  color: #a63329;
-  background: #f6d8d3;
+  color: var(--el-color-danger);
+  background: color-mix(in srgb, var(--el-color-danger) 10%, transparent);
 }
 
 .run-item {
@@ -222,7 +221,7 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #9d9d92;
+  background: var(--el-text-color-placeholder);
 }
 
 .state-running,
@@ -246,6 +245,12 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   padding: 0 8px;
 }
 
+.item-actions button:focus-visible,
+.cancel-run:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--el-color-danger) 45%, transparent);
+  outline-offset: 2px;
+}
+
 .run-item strong {
   font-size: 11px;
   text-transform: capitalize;
@@ -254,7 +259,6 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
 .run-item small {
   overflow: hidden;
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
   font-size: 8px;
   text-overflow: ellipsis;
   white-space: nowrap;

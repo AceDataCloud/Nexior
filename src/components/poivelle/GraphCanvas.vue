@@ -101,9 +101,9 @@ const summary = (node: IPoivelleGraphNode) => {
 }
 
 .connections line {
-  stroke: var(--poivelle-line-strong);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 4;
+  stroke: color-mix(in srgb, var(--app-brand-hex) 32%, var(--poivelle-line-strong));
+  stroke-width: 1.25;
+  stroke-dasharray: 5 5;
 }
 
 .graph-node {
@@ -112,8 +112,9 @@ const summary = (node: IPoivelleGraphNode) => {
   grid-template-rows: auto auto 1fr;
   gap: 7px;
   padding: 12px 13px;
-  border: 1px solid var(--poivelle-line-strong);
-  box-shadow: 2px 2px 0 rgba(23, 33, 29, 0.08);
+  border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius);
+  box-shadow: var(--poivelle-shadow);
   color: var(--poivelle-ink);
   background: var(--poivelle-paper);
   text-align: left;
@@ -122,26 +123,35 @@ const summary = (node: IPoivelleGraphNode) => {
 
 .graph-node:hover,
 .graph-node.selected {
-  border-color: var(--poivelle-red);
+  border-color: color-mix(in srgb, var(--app-brand-hex) 58%, transparent);
 }
 
 .graph-node.selected {
-  box-shadow: 3px 3px 0 color-mix(in srgb, var(--poivelle-red) 24%, transparent);
+  box-shadow:
+    0 0 0 3px rgba(var(--app-brand-rgb), 0.12),
+    var(--app-shadow-md);
+}
+
+.graph-node:focus-visible,
+.empty-canvas button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 
 .node-type {
-  color: var(--poivelle-red);
-  font-family: 'Courier New', monospace;
+  width: fit-content;
+  padding: 2px 6px;
+  border-radius: var(--adc-radius-full);
+  color: var(--app-brand-hex-dark-2);
+  background: var(--poivelle-hover);
   font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 650;
 }
 
 .graph-node strong {
   overflow: hidden;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 650;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -163,24 +173,23 @@ const summary = (node: IPoivelleGraphNode) => {
   gap: 4px;
   color: var(--poivelle-muted);
   font-size: 9px;
-  text-transform: uppercase;
 }
 
 .type-character,
 .type-location,
 .type-prop {
-  border-top: 3px solid #2f7c6a;
+  border-left: 3px solid var(--el-color-success);
 }
 
 .type-shot,
 .type-storyboard,
 .type-scene {
-  border-top: 3px solid var(--poivelle-red);
+  border-left: 3px solid var(--app-brand-hex);
 }
 
 .type-audio,
 .type-subtitle {
-  border-top: 3px solid #bd8b2f;
+  border-left: 3px solid var(--el-color-warning);
 }
 
 .empty-canvas {
@@ -198,8 +207,8 @@ const summary = (node: IPoivelleGraphNode) => {
 .empty-canvas h2 {
   margin: 12px 0 6px;
   color: var(--poivelle-ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 650;
 }
 
 .empty-canvas p {
@@ -214,9 +223,10 @@ const summary = (node: IPoivelleGraphNode) => {
   gap: 7px;
   height: 34px;
   padding: 0 13px;
-  border: 1px solid var(--poivelle-ink);
-  color: var(--poivelle-paper);
-  background: var(--poivelle-ink);
+  border: 1px solid var(--app-brand-hex);
+  border-radius: var(--poivelle-radius-small);
+  color: #fff;
+  background: var(--app-brand-hex);
   font: inherit;
   font-size: 11px;
   cursor: pointer;

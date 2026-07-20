@@ -50,8 +50,8 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr) auto;
   align-items: center;
-  min-height: 58px;
-  padding: 8px 12px;
+  min-height: 64px;
+  padding: 10px 14px;
   border-top: 1px solid var(--poivelle-line-strong);
   background: var(--poivelle-paper);
 }
@@ -80,8 +80,7 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
 
 .agent-identity span {
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .proposal-strip {
@@ -97,6 +96,7 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
   gap: 7px;
   padding: 0 9px;
   border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-ink);
   background: var(--poivelle-canvas);
   font: inherit;
@@ -125,7 +125,7 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #9d9d92;
+  background: var(--el-text-color-placeholder);
 }
 
 .risk-high,
@@ -134,20 +134,32 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
 }
 
 .risk-medium {
-  background: #bd8b2f;
+  background: var(--el-color-warning);
 }
 
 .agent-button {
   height: 34px;
   gap: 7px;
   padding: 0 12px;
-  border: 1px solid var(--poivelle-ink);
-  color: var(--poivelle-ink);
-  background: var(--poivelle-mint);
+  border: 1px solid var(--app-brand-hex);
+  border-radius: var(--poivelle-radius-small);
+  color: var(--app-brand-hex-dark-2);
+  background: var(--poivelle-hover);
   font: inherit;
   font-size: 10px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.agent-button:not(:disabled):hover {
+  color: #fff;
+  background: var(--app-brand-hex);
+}
+
+.proposal-strip button:focus-visible,
+.agent-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 
 .agent-button:disabled {
@@ -158,12 +170,25 @@ const pendingProposals = computed(() => props.proposals.filter((proposal) => pro
 @media (max-width: 767px) {
   .agent-dock {
     grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 52px;
-    padding: 7px 9px;
+    min-height: 50px;
+    padding: 6px 10px calc(6px + var(--app-safe-area-bottom));
+    background: color-mix(in srgb, var(--poivelle-paper) 92%, transparent);
+    backdrop-filter: blur(12px);
   }
 
   .agent-identity {
     display: none;
+  }
+
+  .proposal-strip p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .agent-button {
+    height: 32px;
+    padding: 0 10px;
   }
 }
 </style>

@@ -71,8 +71,9 @@
             type="button"
             class="timeline-clip"
             :style="clipStyle(clip)"
+            :title="clip.artifact_id"
           >
-            {{ clip.artifact_id }}
+            {{ clipLabel(clip) }}
           </button>
         </div>
       </div>
@@ -142,6 +143,7 @@ const frameLabel = computed(() => {
   return width && height ? `${width} × ${height}` : '—';
 });
 const clipsFor = (trackId: string) => props.timeline?.clips.filter((clip) => clip.track_id === trackId) ?? [];
+const clipLabel = (clip: IPoivelleTimelineClip) => clip.artifact_id.slice(-6);
 const clipStyle = (clip: IPoivelleTimelineClip) => ({
   left: `${clip.timeline_start_ms / 100}px`,
   width: `${Math.max(48, (clip.source_out_ms - clip.source_in_ms) / 100)}px`
@@ -151,7 +153,7 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
 <style scoped>
 .timeline-view {
   height: 100%;
-  padding: 18px;
+  padding: 22px;
   overflow: auto;
   background: var(--poivelle-canvas);
 }
@@ -159,8 +161,11 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
 .master-output {
   width: min(100%, 960px);
   margin: 0 auto 24px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--poivelle-line-strong);
+  overflow: hidden;
+  border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius);
+  background: var(--poivelle-paper);
+  box-shadow: var(--app-shadow-md);
 }
 
 .master-heading {
@@ -168,22 +173,22 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   align-items: end;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+  padding: 18px 20px;
+  background: var(--app-gradient-subtle);
 }
 
 .master-kicker {
-  color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
-  font-size: 9px;
-  text-transform: uppercase;
+  color: var(--app-brand-hex);
+  font-size: 10px;
+  font-weight: 650;
 }
 
 .master-heading h2 {
   margin: 3px 0 0;
   color: var(--poivelle-ink);
-  font-family: Georgia, 'Times New Roman', serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 650;
 }
 
 .master-download {
@@ -193,24 +198,35 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   min-height: 34px;
   padding: 0 12px;
   border: 1px solid var(--poivelle-line-strong);
-  color: var(--poivelle-ink);
+  border-radius: var(--poivelle-radius-small);
+  color: var(--app-brand-hex-dark-2);
   background: var(--poivelle-paper);
   font-size: 10px;
   text-decoration: none;
+}
+
+.master-download:hover {
+  border-color: var(--app-brand-hex);
+  background: var(--poivelle-hover);
+}
+
+.master-download:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 
 .master-media {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #050706;
+  background: var(--poivelle-media-stage);
 }
 
 .master-player {
   display: block;
   width: 100%;
   height: 100%;
-  background: #050706;
+  background: var(--poivelle-media-stage);
   object-fit: contain;
 }
 
@@ -221,15 +237,15 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   place-content: center;
   justify-items: center;
   gap: 8px;
-  color: #d8ddd8;
-  background: rgb(5 7 6 / 78%);
+  color: var(--poivelle-on-media);
+  background: var(--poivelle-media-overlay);
   font-size: 10px;
   pointer-events: none;
   z-index: 1;
 }
 
 .master-status.is-error {
-  color: #f0c4b7;
+  color: var(--poivelle-on-media-danger);
 }
 
 .is-spinning {
@@ -246,13 +262,13 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0;
-  border: 1px solid var(--poivelle-line);
+  border: 0;
   border-top: 0;
 }
 
 .master-metadata div {
   min-width: 0;
-  padding: 9px 11px;
+  padding: 11px 13px;
   border-right: 1px solid var(--poivelle-line);
 }
 
@@ -262,20 +278,23 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
 
 .master-metadata dt {
   color: var(--poivelle-muted);
-  font-size: 8px;
-  text-transform: uppercase;
+  font-size: 9px;
 }
 
 .master-metadata dd {
   margin: 3px 0 0;
   overflow: hidden;
   color: var(--poivelle-ink);
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 600;
   text-overflow: ellipsis;
 }
 
 @media (max-width: 720px) {
+  .timeline-view {
+    padding: 16px 18px 28px;
+  }
+
   .master-heading {
     align-items: stretch;
     flex-direction: column;
@@ -283,6 +302,10 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
 
   .master-download {
     align-self: flex-start;
+  }
+
+  .master-output {
+    box-shadow: var(--app-shadow-sm);
   }
 
   .master-metadata {
@@ -304,9 +327,10 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   width: 1200px;
   height: 28px;
   padding-left: 120px;
-  border-bottom: 1px solid var(--poivelle-line-strong);
+  border: 1px solid var(--poivelle-line);
+  border-bottom: 0;
+  border-radius: var(--poivelle-radius) var(--poivelle-radius) 0 0;
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
   font-size: 9px;
 }
 
@@ -315,7 +339,14 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   grid-template-columns: 120px 1fr;
   width: 1320px;
   min-height: 58px;
-  border-bottom: 1px solid var(--poivelle-line);
+  border: 1px solid var(--poivelle-line);
+  border-top: 0;
+  background: var(--poivelle-paper);
+}
+
+.track-row:last-child {
+  border-radius: 0 0 var(--poivelle-radius) var(--poivelle-radius);
+  overflow: hidden;
 }
 
 .track-label {
@@ -324,9 +355,8 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   padding: 0 10px;
   border-right: 1px solid var(--poivelle-line-strong);
   color: var(--poivelle-muted);
-  background: var(--poivelle-paper);
+  background: var(--app-sidebar-bg);
   font-size: 10px;
-  text-transform: uppercase;
 }
 
 .track-lane {
@@ -340,13 +370,19 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   height: 38px;
   padding: 0 8px;
   overflow: hidden;
-  border: 1px solid #6aa48d;
+  border: 1px solid color-mix(in srgb, var(--app-brand-hex) 42%, transparent);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-ink);
-  background: var(--poivelle-mint);
+  background: var(--poivelle-hover);
   font: inherit;
   font-size: 9px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.timeline-clip:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--app-brand-hex) 55%, transparent);
 }
 
 .empty-timeline {
@@ -361,8 +397,8 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
 .empty-timeline h2 {
   margin: 12px 0 5px;
   color: var(--poivelle-ink);
-  font-family: Georgia, 'Times New Roman', serif;
   font-size: 22px;
+  font-weight: 650;
 }
 
 .empty-timeline p {

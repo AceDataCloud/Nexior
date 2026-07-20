@@ -105,16 +105,16 @@ const assetIcon = (kind: string): Component => {
 .production-rail {
   display: flex;
   flex-direction: column;
-  width: 236px;
-  min-width: 236px;
+  width: 248px;
+  min-width: 248px;
   min-height: 0;
   border-right: 1px solid var(--poivelle-line);
-  background: var(--poivelle-paper);
+  background: var(--app-sidebar-bg);
   overflow-y: auto;
 }
 
 .rail-section {
-  padding: 12px 10px;
+  padding: 14px 12px;
   border-bottom: 1px solid var(--poivelle-line);
 }
 
@@ -137,11 +137,8 @@ const assetIcon = (kind: string): Component => {
   height: 28px;
   padding: 0 5px;
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 650;
 }
 
 .section-heading button {
@@ -150,6 +147,7 @@ const assetIcon = (kind: string): Component => {
   height: 26px;
   padding: 0;
   border: 0;
+  border-radius: var(--poivelle-radius-small);
   color: inherit;
   background: transparent;
   cursor: pointer;
@@ -159,7 +157,7 @@ const assetIcon = (kind: string): Component => {
 .asset-list,
 .revision-list {
   display: grid;
-  gap: 3px;
+  gap: 5px;
 }
 
 .project-row,
@@ -174,16 +172,19 @@ const assetIcon = (kind: string): Component => {
 }
 
 .project-row {
-  height: 34px;
+  height: 38px;
   gap: 8px;
-  padding: 0 7px;
+  padding: 0 9px;
+  border-radius: var(--poivelle-radius-small);
   font: inherit;
   font-size: 12px;
 }
 
 .project-row.active {
-  background: var(--poivelle-mint);
+  color: var(--app-brand-hex-dark-2);
+  background: var(--poivelle-hover);
   font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--app-brand-hex);
 }
 
 .project-row span {
@@ -197,7 +198,6 @@ const assetIcon = (kind: string): Component => {
 .project-row small,
 .revision-row small {
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
   font-size: 9px;
 }
 
@@ -211,29 +211,43 @@ const assetIcon = (kind: string): Component => {
 .asset-filters button {
   padding: 3px 7px;
   border: 1px solid var(--poivelle-line);
+  border-radius: var(--adc-radius-full);
   color: var(--poivelle-muted);
   background: transparent;
   font: inherit;
   font-size: 9px;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
 .asset-filters button.active {
-  border-color: var(--poivelle-ink);
-  color: var(--poivelle-paper);
-  background: var(--poivelle-ink);
+  border-color: var(--app-brand-hex);
+  color: var(--app-brand-hex-dark-2);
+  background: var(--poivelle-hover);
 }
 
 .asset-row {
   min-height: 42px;
   gap: 9px;
   padding: 6px 7px;
+  border-radius: var(--poivelle-radius-small);
 }
 
 .asset-row:hover,
 .project-row:hover {
   background: var(--poivelle-hover);
+}
+
+.section-heading button:hover {
+  color: var(--app-brand-hex);
+  background: var(--poivelle-hover);
+}
+
+.section-heading button:focus-visible,
+.project-row:focus-visible,
+.asset-filters button:focus-visible,
+.asset-row:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 
 .asset-row > span {
@@ -252,7 +266,6 @@ const assetIcon = (kind: string): Component => {
 .asset-row small {
   color: var(--poivelle-muted);
   font-size: 9px;
-  text-transform: uppercase;
 }
 
 .revision-row {
