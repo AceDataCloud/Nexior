@@ -1,7 +1,7 @@
 <template>
   <header class="studio-header">
     <div class="identity">
-      <span class="wordmark">POIVELLE</span>
+      <span class="wordmark"><Clapperboard :size="15" aria-hidden="true" /> POIVELLE</span>
       <button class="project-button" type="button" @click="$emit('open-projects')">
         <span>{{ projectTitle || $t('poivelle.project.noProject') }}</span>
         <ChevronDown :size="14" aria-hidden="true" />
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChevronDown, GitCommitHorizontal, Play } from '@lucide/vue';
+import { ChevronDown, Clapperboard, GitCommitHorizontal, Play } from '@lucide/vue';
 
 defineProps<{
   projectTitle?: string;
@@ -52,10 +52,12 @@ defineEmits<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 58px;
-  padding: 8px 14px 8px 18px;
+  min-height: 60px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--poivelle-line);
   background: var(--poivelle-paper);
+  box-shadow: var(--app-shadow-xs);
+  z-index: 2;
 }
 
 .identity,
@@ -77,17 +79,20 @@ defineEmits<{
 }
 
 .wordmark {
-  color: var(--poivelle-red);
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--app-brand-hex);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
 }
 
 .project-button,
 .icon-button,
 .primary-button {
   border: 1px solid var(--poivelle-line-strong);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-ink);
   background: transparent;
   cursor: pointer;
@@ -96,12 +101,13 @@ defineEmits<{
 .project-button {
   min-width: 0;
   max-width: 280px;
-  height: 34px;
+  height: 36px;
   gap: 7px;
   padding: 0 10px;
   font: inherit;
   font-size: 13px;
   font-weight: 650;
+  background: var(--poivelle-canvas);
 }
 
 .project-button span {
@@ -113,8 +119,7 @@ defineEmits<{
 .version,
 .sync-state {
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .sync-state {
@@ -126,24 +131,26 @@ defineEmits<{
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--poivelle-green);
+  background: var(--el-color-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--el-color-success) 14%, transparent);
 }
 
 .icon-button {
   display: grid;
   place-items: center;
   width: 34px;
-  height: 34px;
+  height: 36px;
   padding: 0;
 }
 
 .primary-button {
-  height: 34px;
+  height: 36px;
   gap: 7px;
   padding: 0 13px;
-  border-color: var(--poivelle-ink);
-  color: var(--poivelle-paper);
-  background: var(--poivelle-ink);
+  border-color: var(--app-brand-hex);
+  color: #fff;
+  background: var(--app-brand-hex);
+  box-shadow: var(--app-shadow-sm);
   font: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -152,6 +159,25 @@ defineEmits<{
 .primary-button:disabled {
   cursor: not-allowed;
   opacity: 0.42;
+}
+
+.project-button:hover,
+.icon-button:hover {
+  border-color: var(--app-brand-hex);
+  color: var(--app-brand-hex);
+  background: var(--poivelle-hover);
+}
+
+.primary-button:not(:disabled):hover {
+  background: var(--app-brand-hex-dark-2);
+  box-shadow: var(--app-glow-primary);
+}
+
+.project-button:focus-visible,
+.icon-button:focus-visible,
+.primary-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 
 @media (max-width: 767px) {
