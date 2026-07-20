@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 20 Jul 2026 04:09:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 20 Jul 2026 14:44:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.0
+
+Mon, 20 Jul 2026 14:44:59 GMT
+
+### Minor changes
+
+- Add the Poivelle professional AI film production workspace. (dev@acedata.cloud)
 
 ## 3.329.53
 
