@@ -38,9 +38,10 @@ const items = [
 <style scoped>
 .projection-tabs {
   display: flex;
-  align-items: stretch;
-  height: 40px;
-  min-height: 40px;
+  align-items: center;
+  height: 48px;
+  min-height: 48px;
+  padding: 6px 10px;
   border-bottom: 1px solid var(--poivelle-line);
   background: var(--poivelle-paper);
   overflow-x: auto;
@@ -50,22 +51,34 @@ const items = [
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
+  min-width: 104px;
+  height: 36px;
   gap: 7px;
   padding: 0 12px;
   border: 0;
-  border-right: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-muted);
   background: transparent;
   font: inherit;
-  font-size: 10px;
+  font-size: 11px;
   cursor: pointer;
 }
 
 .projection-tabs button.active {
-  color: var(--poivelle-ink);
-  background: var(--poivelle-mint);
+  color: var(--app-brand-hex-dark-2);
+  background: var(--poivelle-hover);
   font-weight: 700;
+  box-shadow: inset 0 -2px 0 var(--app-brand-hex);
+}
+
+.projection-tabs button:hover {
+  color: var(--app-brand-hex);
+  background: var(--poivelle-hover);
+}
+
+.projection-tabs button:focus-visible {
+  outline: 2px solid var(--app-brand-hex);
+  outline-offset: 2px;
 }
 
 .spacer {
@@ -74,9 +87,7 @@ const items = [
 }
 
 .projection-tabs .add-node {
-  border-left: 1px solid var(--poivelle-line);
-  border-right: 0;
-  color: var(--poivelle-ink);
+  color: var(--app-brand-hex);
 }
 
 @media (max-width: 767px) {

@@ -100,16 +100,17 @@
     </template>
 
     <template v-else>
-      <article
+      <button
         v-for="(node, index) in legacyNodes"
         :key="node.id"
+        type="button"
         :class="['legacy-card', { selected: node.id === selectedNodeId }]"
         @click="$emit('select-node', node.id)"
       >
         <span>{{ String(index + 1).padStart(2, '0') }}</span>
         <Clapperboard :size="26" stroke-width="1.25" aria-hidden="true" />
         <strong>{{ node.title }}</strong>
-      </article>
+      </button>
       <div v-if="!legacyNodes.length" class="empty-view">
         <Clapperboard :size="30" stroke-width="1.4" />
         <h2>{{ $t('poivelle.storyboard.emptyTitle') }}</h2>
@@ -156,7 +157,7 @@ const legacyNodes = computed(() =>
 <style scoped>
 .storyboard-view {
   height: 100%;
-  padding: 18px;
+  padding: 20px;
   overflow: auto;
   background: var(--poivelle-canvas);
 }
@@ -165,22 +166,24 @@ const legacyNodes = computed(() =>
   align-items: end;
   justify-content: space-between;
   gap: 20px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--poivelle-ink);
+  margin-bottom: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius);
+  background: var(--poivelle-paper);
+  box-shadow: var(--app-shadow-xs);
 }
 .storyboard-heading span,
 .shot-number,
 dt,
 .prompt-columns span {
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
   font-size: 9px;
-  text-transform: uppercase;
 }
 .storyboard-heading h2 {
   margin: 4px 0 0;
-  font-family: Georgia, serif;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 650;
 }
 .storyboard-heading dl {
   display: flex;
@@ -197,7 +200,7 @@ dt,
   font-weight: 700;
 }
 .story-section {
-  border-bottom: 1px solid var(--poivelle-line-strong);
+  margin-top: 14px;
 }
 .section-label {
   display: flex;
@@ -206,23 +209,29 @@ dt,
   min-height: 42px;
 }
 .section-label span {
-  color: var(--poivelle-red);
-  font-family: 'Courier New', monospace;
+  color: var(--app-brand-hex);
   font-size: 10px;
 }
 .section-label h3 {
   margin: 0;
   font-size: 12px;
-  text-transform: uppercase;
+  font-weight: 650;
 }
 .shot-row {
   display: grid;
   grid-template-columns: 210px minmax(280px, 0.9fr) minmax(430px, 1.25fr);
-  border-top: 1px solid var(--poivelle-line);
+  margin-bottom: 8px;
+  overflow: hidden;
+  border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius);
   background: var(--poivelle-paper);
+  box-shadow: var(--app-shadow-xs);
 }
 .shot-row.selected {
-  box-shadow: inset 3px 0 0 var(--poivelle-red);
+  border-color: color-mix(in srgb, var(--app-brand-hex) 45%, var(--poivelle-line));
+  box-shadow:
+    inset 3px 0 0 var(--app-brand-hex),
+    var(--app-shadow-sm);
 }
 .shot-brief {
   display: grid;
@@ -237,13 +246,18 @@ dt,
   cursor: pointer;
 }
 .shot-brief strong {
-  font-family: Georgia, serif;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 650;
   line-height: 1.35;
 }
 .shot-brief > span:last-child {
   color: var(--poivelle-muted);
   font-size: 10px;
+}
+.shot-brief:focus-visible,
+.legacy-card:focus-visible {
+  outline: 2px solid var(--app-brand-hex);
+  outline-offset: 2px;
 }
 .shot-production {
   min-width: 0;
@@ -272,7 +286,8 @@ dt,
 .prompt-columns div {
   min-width: 0;
   padding: 8px;
-  background: var(--poivelle-canvas);
+  border-radius: var(--poivelle-radius-small);
+  background: var(--app-bg-section);
 }
 .prompt-columns p {
   margin: 4px 0 0;
@@ -294,17 +309,16 @@ dt,
   justify-items: center;
   gap: 8px;
   border: 1px solid var(--poivelle-line-strong);
+  border-radius: var(--poivelle-radius);
   background: var(--poivelle-paper);
   cursor: pointer;
 }
 .legacy-card.selected {
-  border-color: var(--poivelle-red);
+  border-color: var(--app-brand-hex);
 }
 .legacy-card span {
-  color: var(--poivelle-red);
-  font:
-    10px 'Courier New',
-    monospace;
+  color: var(--app-brand-hex);
+  font-size: 10px;
 }
 .empty-view {
   display: grid;
@@ -317,9 +331,8 @@ dt,
 .empty-view h2 {
   margin: 12px 0 5px;
   color: var(--poivelle-ink);
-  font:
-    22px Georgia,
-    serif;
+  font-size: 22px;
+  font-weight: 650;
 }
 .empty-view p {
   margin: 0;
@@ -355,7 +368,7 @@ dt,
   .shot-row {
     display: block;
     margin-bottom: 12px;
-    border: 1px solid var(--poivelle-line-strong);
+    border: 1px solid var(--poivelle-line);
   }
   .shot-brief {
     border-right: 0;

@@ -470,17 +470,24 @@ onMounted(bootstrap);
 
 <style scoped>
 .poivelle-studio {
-  --poivelle-ink: #17211d;
-  --poivelle-muted: #68726d;
-  --poivelle-red: #d04435;
-  --poivelle-green: #2b8b67;
-  --poivelle-mint: #b8e0cc;
-  --poivelle-paper: #f8faf6;
-  --poivelle-canvas: #edf1eb;
-  --poivelle-hover: #e5ebe4;
-  --poivelle-line: rgba(23, 33, 29, 0.13);
-  --poivelle-line-strong: rgba(23, 33, 29, 0.28);
-  --poivelle-grid: rgba(23, 33, 29, 0.045);
+  --poivelle-ink: var(--el-text-color-primary);
+  --poivelle-muted: var(--el-text-color-secondary);
+  --poivelle-red: var(--app-brand-hex);
+  --poivelle-green: var(--el-color-success);
+  --poivelle-mint: var(--app-badge-bg);
+  --poivelle-paper: var(--app-bg-surface);
+  --poivelle-canvas: var(--app-bg-section);
+  --poivelle-hover: rgba(var(--app-brand-rgb), 0.08);
+  --poivelle-line: var(--app-border-subtle);
+  --poivelle-line-strong: var(--el-border-color);
+  --poivelle-grid: rgba(var(--app-brand-rgb), 0.055);
+  --poivelle-radius: var(--adc-radius-card);
+  --poivelle-radius-small: var(--adc-radius-control);
+  --poivelle-shadow: var(--app-shadow-sm);
+  --poivelle-media-stage: #050706;
+  --poivelle-media-overlay: rgb(5 7 6 / 78%);
+  --poivelle-on-media: var(--el-color-white);
+  --poivelle-on-media-danger: var(--el-color-danger-light-3);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -488,7 +495,7 @@ onMounted(bootstrap);
   overflow: hidden;
   color: var(--poivelle-ink);
   background: var(--poivelle-canvas);
-  font-family: 'Avenir Next', Avenir, sans-serif;
+  font-family: var(--adc-font-family-sans);
 }
 
 .studio-body {
@@ -515,10 +522,10 @@ onMounted(bootstrap);
   min-height: 36px;
   gap: 8px;
   padding: 0 12px;
-  border-bottom: 1px solid #d8998f;
-  color: #8f2c23;
-  background: #f8ddd8;
-  font-size: 11px;
+  border-bottom: 1px solid color-mix(in srgb, var(--el-color-danger) 28%, transparent);
+  color: var(--el-color-danger);
+  background: color-mix(in srgb, var(--el-color-danger) 9%, var(--poivelle-paper));
+  font-size: 12px;
 }
 .error-banner span {
   flex: 1;
@@ -542,9 +549,7 @@ onMounted(bootstrap);
 }
 .loading-state {
   gap: 10px;
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
+  font-size: 12px;
 }
 .is-spinning {
   animation: spin 0.9s linear infinite;
@@ -552,31 +557,26 @@ onMounted(bootstrap);
 .onboarding {
   padding: 28px;
   text-align: center;
-  background-color: var(--poivelle-canvas);
-  background-image:
-    linear-gradient(var(--poivelle-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--poivelle-grid) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background: var(--poivelle-canvas);
 }
 .onboarding-number {
-  margin-bottom: 24px;
-  color: var(--poivelle-red);
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
+  margin-bottom: 20px;
+  color: var(--app-brand-hex);
+  font-size: 11px;
+  font-weight: 650;
 }
 .onboarding h1 {
   max-width: 620px;
   margin: 15px 0 8px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 38px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 650;
   letter-spacing: 0;
 }
 .onboarding > p {
   max-width: 520px;
   margin: 0 0 22px;
   color: var(--poivelle-muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
 }
 .onboarding > button {
@@ -585,9 +585,11 @@ onMounted(bootstrap);
   height: 38px;
   gap: 8px;
   padding: 0 15px;
-  border: 1px solid var(--poivelle-ink);
-  color: var(--poivelle-paper);
-  background: var(--poivelle-ink);
+  border: 1px solid var(--app-brand-hex);
+  border-radius: var(--poivelle-radius-small);
+  color: #fff;
+  background: var(--app-brand-hex);
+  box-shadow: var(--app-shadow-sm);
   font: inherit;
   font-size: 11px;
   font-weight: 700;
@@ -598,6 +600,8 @@ onMounted(bootstrap);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--poivelle-line-strong);
+  border-radius: var(--poivelle-radius);
+  overflow: hidden;
 }
 .dry-run-summary div {
   display: grid;
@@ -610,8 +614,7 @@ onMounted(bootstrap);
 }
 .dry-run-summary span {
   color: var(--poivelle-muted);
-  font-size: 9px;
-  text-transform: uppercase;
+  font-size: 10px;
 }
 .dry-run-summary strong {
   font-size: 13px;
@@ -627,18 +630,6 @@ onMounted(bootstrap);
   to {
     transform: rotate(360deg);
   }
-}
-
-:global(html.dark) .poivelle-studio {
-  --poivelle-ink: #eef2ed;
-  --poivelle-muted: #9fa9a3;
-  --poivelle-paper: #141a17;
-  --poivelle-canvas: #0d1210;
-  --poivelle-hover: #202923;
-  --poivelle-line: rgba(238, 242, 237, 0.1);
-  --poivelle-line-strong: rgba(238, 242, 237, 0.24);
-  --poivelle-grid: rgba(238, 242, 237, 0.04);
-  --poivelle-mint: #356c59;
 }
 
 @media (max-width: 767px) {

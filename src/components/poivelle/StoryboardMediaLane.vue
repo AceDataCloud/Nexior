@@ -105,19 +105,22 @@ header {
   margin-bottom: 7px;
 }
 header span {
-  font:
-    9px 'Courier New',
-    monospace;
-  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 650;
 }
 header button,
 .candidate button {
   padding: 0;
   border: 0;
-  color: var(--poivelle-red);
+  color: var(--app-brand-hex);
   background: transparent;
   font: 9px inherit;
   cursor: pointer;
+}
+header button:focus-visible,
+.candidate button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
+  outline-offset: 2px;
 }
 .candidate-strip {
   display: flex;
@@ -128,11 +131,12 @@ header button,
   flex: 0 0 132px;
   overflow: hidden;
   border: 1px solid var(--poivelle-line-strong);
+  border-radius: var(--poivelle-radius);
   background: var(--poivelle-canvas);
 }
 .candidate.selected {
-  border-color: var(--poivelle-green);
-  box-shadow: inset 0 -3px 0 var(--poivelle-green);
+  border-color: var(--app-brand-hex);
+  box-shadow: 0 0 0 2px rgba(var(--app-brand-rgb), 0.12);
 }
 .candidate img,
 .candidate video {
@@ -140,7 +144,7 @@ header button,
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: #111;
+  background: var(--poivelle-media-stage);
 }
 .candidate > div {
   display: grid;
@@ -150,16 +154,14 @@ header button,
 }
 .candidate span {
   color: var(--poivelle-muted);
-  font:
-    8px 'Courier New',
-    monospace;
+  font-size: 8px;
 }
 .candidate strong {
   grid-column: 1 / -1;
   font-size: 9px;
 }
 .candidate em {
-  color: var(--poivelle-green);
+  color: var(--app-brand-hex);
   font-size: 8px;
   font-style: normal;
   font-weight: 700;
@@ -169,6 +171,7 @@ header button,
   min-height: 82px;
   place-items: center;
   border: 1px dashed var(--poivelle-line);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-muted);
   font-size: 9px;
 }
@@ -179,6 +182,7 @@ header button,
 .unavailable-takes span {
   padding: 7px;
   border: 1px solid var(--poivelle-line);
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-muted);
   background: var(--poivelle-canvas);
   font-size: 9px;

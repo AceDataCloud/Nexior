@@ -86,10 +86,10 @@ const savePrompt = () => {
 .inspector-panel {
   display: flex;
   flex-direction: column;
-  width: 272px;
-  min-width: 272px;
+  width: 284px;
+  min-width: 284px;
   min-height: 0;
-  padding: 14px;
+  padding: 16px;
   border-left: 1px solid var(--poivelle-line);
   background: var(--poivelle-paper);
   overflow-y: auto;
@@ -114,18 +114,15 @@ const savePrompt = () => {
 .field > span,
 .node-meta > span {
   color: var(--poivelle-muted);
-  font-family: 'Courier New', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 650;
 }
 
 .inspector-heading strong {
   overflow: hidden;
   margin-top: 4px;
-  font-family: Georgia, 'Times New Roman', serif;
   font-size: 15px;
+  font-weight: 650;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -141,9 +138,9 @@ const savePrompt = () => {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--poivelle-line-strong);
-  border-radius: 0;
+  border-radius: var(--poivelle-radius-small);
   color: var(--poivelle-ink);
-  background: var(--poivelle-canvas);
+  background: var(--poivelle-paper);
   font: inherit;
   font-size: 11px;
   outline: none;
@@ -163,11 +160,14 @@ const savePrompt = () => {
 
 .field input:focus,
 .field textarea:focus {
-  border-color: var(--poivelle-red);
+  border-color: var(--app-brand-hex);
+  box-shadow: 0 0 0 3px rgba(var(--app-brand-rgb), 0.18);
 }
 
 .field input:disabled {
   color: var(--poivelle-muted);
+  background: var(--poivelle-canvas);
+  cursor: not-allowed;
 }
 
 .node-meta {
@@ -194,12 +194,22 @@ const savePrompt = () => {
   height: 34px;
   gap: 7px;
   margin-top: 14px;
-  border: 1px solid #bd5b50;
-  color: #a63329;
+  border: 1px solid color-mix(in srgb, var(--el-color-danger) 45%, transparent);
+  border-radius: var(--poivelle-radius-small);
+  color: var(--el-color-danger);
   background: transparent;
   font: inherit;
   font-size: 10px;
   cursor: pointer;
+}
+
+.danger-button:hover {
+  background: color-mix(in srgb, var(--el-color-danger) 8%, transparent);
+}
+
+.danger-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--el-color-danger) 45%, transparent);
+  outline-offset: 2px;
 }
 
 .empty-inspector {
