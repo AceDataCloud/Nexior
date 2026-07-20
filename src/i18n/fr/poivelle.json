@@ -1,0 +1,310 @@
+{
+  "nav.name": {
+    "message": "Poivelle",
+    "description": "Poivelle product name in navigation"
+  },
+  "status.synced": {
+    "message": "Graph synced",
+    "description": "Graph sync status"
+  },
+  "status.loading": {
+    "message": "Loading production state",
+    "description": "Workspace loading status"
+  },
+  "action.commit": {
+    "message": "Commit revision",
+    "description": "Commit graph revision tooltip"
+  },
+  "action.runSkill": {
+    "message": "Run skill",
+    "description": "Run selected node with project skill"
+  },
+  "action.retry": {
+    "message": "Retry",
+    "description": "Retry failed load"
+  },
+  "section.projects": {
+    "message": "Projects",
+    "description": "Projects rail heading"
+  },
+  "section.assets": {
+    "message": "Asset library",
+    "description": "Assets rail heading"
+  },
+  "section.revisions": {
+    "message": "Revisions",
+    "description": "Revisions rail heading"
+  },
+  "section.inspector": {
+    "message": "Inspector",
+    "description": "Node inspector heading"
+  },
+  "workspace.create": {
+    "message": "Create workspace",
+    "description": "Create workspace command"
+  },
+  "workspace.name": {
+    "message": "Workspace name",
+    "description": "Workspace name field"
+  },
+  "workspace.budget": {
+    "message": "Monthly limit (microcredits)",
+    "description": "Workspace monthly budget field"
+  },
+  "project.create": {
+    "message": "New project",
+    "description": "Create project command"
+  },
+  "project.empty": {
+    "message": "No projects in this workspace.",
+    "description": "Empty projects message"
+  },
+  "project.noProject": {
+    "message": "Choose a project",
+    "description": "Missing current project label"
+  },
+  "project.workspace": {
+    "message": "Workspace",
+    "description": "Project workspace field"
+  },
+  "project.title": {
+    "message": "Project title",
+    "description": "Project title field"
+  },
+  "project.skill": {
+    "message": "Production skill",
+    "description": "Project skill field"
+  },
+  "asset.import": {
+    "message": "Import asset",
+    "description": "Import asset command"
+  },
+  "asset.all": {
+    "message": "All",
+    "description": "All assets filter"
+  },
+  "asset.empty": {
+    "message": "No matching production assets.",
+    "description": "Empty asset message"
+  },
+  "asset.title": {
+    "message": "Asset title",
+    "description": "Asset title field"
+  },
+  "asset.url": {
+    "message": "Source URL",
+    "description": "Asset source URL field"
+  },
+  "asset.hash": {
+    "message": "Content hash",
+    "description": "Asset hash field"
+  },
+  "revision.empty": {
+    "message": "No committed revisions.",
+    "description": "Empty revisions message"
+  },
+  "revision.committed": {
+    "message": "Revision committed",
+    "description": "Revision success toast"
+  },
+  "node.create": {
+    "message": "Add node",
+    "description": "Create graph node command"
+  },
+  "node.delete": {
+    "message": "Delete node",
+    "description": "Delete graph node command"
+  },
+  "node.deleteConfirm": {
+    "message": "Delete this graph node? Connected nodes must be disconnected first.",
+    "description": "Delete node confirmation"
+  },
+  "field.title": {
+    "message": "Title",
+    "description": "Node title field"
+  },
+  "field.type": {
+    "message": "Type",
+    "description": "Node or asset type field"
+  },
+  "field.prompt": {
+    "message": "Production prompt",
+    "description": "Node prompt field"
+  },
+  "projection.label": {
+    "message": "Project graph projections",
+    "description": "Projection tabs accessible label"
+  },
+  "projection.canvas": {
+    "message": "Canvas",
+    "description": "Canvas projection tab"
+  },
+  "projection.storyboard": {
+    "message": "Storyboard",
+    "description": "Storyboard projection tab"
+  },
+  "projection.timeline": {
+    "message": "Timeline",
+    "description": "Timeline projection tab"
+  },
+  "projection.review": {
+    "message": "Review",
+    "description": "Review projection tab"
+  },
+  "graph.emptyTitle": {
+    "message": "Build the production graph",
+    "description": "Empty graph heading"
+  },
+  "graph.emptyBody": {
+    "message": "Add scripts, characters, scenes, shots, media, and outputs. Human editors and skills write through the same graph command history.",
+    "description": "Empty graph explanation"
+  },
+  "storyboard.noPrompt": {
+    "message": "No shot prompt yet.",
+    "description": "Missing storyboard prompt"
+  },
+  "storyboard.emptyTitle": {
+    "message": "No storyboard frames",
+    "description": "Empty storyboard heading"
+  },
+  "storyboard.emptyBody": {
+    "message": "Create scene, shot, image, or video nodes to project them here.",
+    "description": "Empty storyboard explanation"
+  },
+  "timeline.emptyTitle": {
+    "message": "No timeline assembly",
+    "description": "Empty timeline heading"
+  },
+  "timeline.emptyBody": {
+    "message": "Commit takes and selections before assembling clips into tracks.",
+    "description": "Empty timeline explanation"
+  },
+  "inspector.noSelection": {
+    "message": "Nothing selected",
+    "description": "Inspector title without selection"
+  },
+  "inspector.empty": {
+    "message": "Select a node in Canvas or Storyboard to edit typed production properties.",
+    "description": "Empty inspector explanation"
+  },
+  "agent.title": {
+    "message": "Skill agent",
+    "description": "Agent dock title"
+  },
+  "agent.noProposals": {
+    "message": "No pending proposals. Select a node to ask the skill for the next production action.",
+    "description": "Empty agent proposals message"
+  },
+  "agent.propose": {
+    "message": "Propose next",
+    "description": "Request agent proposal command"
+  },
+  "agent.proposal": {
+    "message": "Proposal",
+    "description": "Proposal toast label"
+  },
+  "review.heading": {
+    "message": "Production review",
+    "description": "Review summary heading"
+  },
+  "review.noRevision": {
+    "message": "Uncommitted graph",
+    "description": "Review heading without revision"
+  },
+  "review.nodes": {
+    "message": "nodes",
+    "description": "Review node count label"
+  },
+  "review.proposals": {
+    "message": "proposals",
+    "description": "Review proposal count label"
+  },
+  "review.runs": {
+    "message": "runs",
+    "description": "Review run count label"
+  },
+  "review.pendingProposals": {
+    "message": "Agent proposals",
+    "description": "Review proposal section"
+  },
+  "review.noProposals": {
+    "message": "No proposals awaiting review.",
+    "description": "No review proposals message"
+  },
+  "review.execution": {
+    "message": "Execution ledger",
+    "description": "Review execution section"
+  },
+  "review.noRuns": {
+    "message": "No execution runs for this project.",
+    "description": "No runs message"
+  },
+  "onboarding.title": {
+    "message": "A professional workspace for AI film production",
+    "description": "Poivelle onboarding heading"
+  },
+  "onboarding.body": {
+    "message": "Direct humans, skills, agents, and production tools through one canonical project graph. Canvas, Storyboard, Timeline, and Review are synchronized projections, not separate documents.",
+    "description": "Poivelle onboarding explanation"
+  },
+  "run.confirmTitle": {
+    "message": "Confirm production run",
+    "description": "Run confirmation dialog title"
+  },
+  "run.targets": {
+    "message": "Dependency closure",
+    "description": "Dry run target count"
+  },
+  "run.maximum": {
+    "message": "Maximum cost",
+    "description": "Dry run maximum cost"
+  },
+  "run.approval": {
+    "message": "Approval class",
+    "description": "Dry run approval class"
+  },
+  "run.confirmBody": {
+    "message": "The compiler will execute only the selected dependency closure against this immutable revision. Provider-backed work remains reservation-gated.",
+    "description": "Run confirmation explanation"
+  },
+  "run.confirm": {
+    "message": "Confirm run",
+    "description": "Confirm run command"
+  },
+  "run.queued": {
+    "message": "Production run queued",
+    "description": "Run queue success toast"
+  },
+  "error.generic": {
+    "message": "Poivelle could not complete the request.",
+    "description": "Generic Poivelle request error"
+  },
+  "agent.plan": {
+    "message": "Plan selected",
+    "description": "Plan a skill action for the selected graph node"
+  },
+  "run.reservationPending": {
+    "message": "Run created; Gateway budget reservation is required before provider execution.",
+    "description": "Reservation-pending run notice"
+  },
+  "review.reject": {
+    "message": "Reject",
+    "description": "Reject agent proposal command"
+  },
+  "review.rejectConfirm": {
+    "message": "Reject this agent proposal?",
+    "description": "Reject proposal confirmation"
+  },
+  "review.approvalTokenRequired": {
+    "message": "Approval requires its original signed token.",
+    "description": "Proposal approval trust-boundary note"
+  },
+  "run.cancel": {
+    "message": "Cancel",
+    "description": "Cancel execution run command"
+  },
+  "run.cancelConfirm": {
+    "message": "Cancel this execution run and release its reservation?",
+    "description": "Cancel run confirmation"
+  }
+}

@@ -32,6 +32,7 @@ export const I18N_SCOPES = [
   'veo',
   'sora',
   'maestro',
+  'poivelle',
   'digitalhuman',
   'pixverse',
   'flux',

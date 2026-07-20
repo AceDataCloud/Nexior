@@ -20,6 +20,7 @@ export interface ISiteFeatures {
   veo?: any;
   sora?: any;
   maestro?: any;
+  poivelle?: any;
   digitalhuman?: any;
   pixverse?: any;
   hailuo?: any;
