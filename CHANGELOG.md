@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 20 Jul 2026 14:44:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 20 Jul 2026 16:09:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.1
+
+Mon, 20 Jul 2026 16:09:07 GMT
+
+### Patches
+
+- Show pending and processing states for unfinished Hailuo video tasks. (dev@acedata.cloud)
 
 ## 3.330.0
 
