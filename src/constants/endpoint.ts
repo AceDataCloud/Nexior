@@ -5,6 +5,7 @@ export const BASE_URL_PLATFORM = isTest ? 'https://platform-test.acedata.cloud' 
 export const BASE_URL_HUB = isTest ? 'https://hub-test.acedata.cloud' : 'https://hub.acedata.cloud';
 export const BASE_URL_AUTH = isTest ? 'https://auth-test.acedata.cloud' : 'https://auth.acedata.cloud';
 export const BASE_URL_API = isTest ? 'https://api-test.acedata.cloud' : 'https://api.acedata.cloud';
+export const BASE_URL_POIVELLE = 'https://poivelle.acedata.cloud';
 
 // Coding Bridge relay (stateful WebSocket hub). REST for pairing / node
 // management, plus a single browser WebSocket derived from the same origin.
