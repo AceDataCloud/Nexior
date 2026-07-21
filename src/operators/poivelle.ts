@@ -264,7 +264,13 @@ class PoivelleOperator {
 
   confirmAction(
     projectId: string,
-    payload: { dry_run_id: string; revision_id: string; confirmation_nonce: string; idempotency_key: string },
+    payload: {
+      dry_run_id: string;
+      revision_id: string;
+      confirmation_nonce: string;
+      idempotency_key: string;
+      execution_credential?: string;
+    },
     options: IPoivelleRequestOptions
   ): Promise<AxiosResponse<{ run: IPoivelleRun; steps: unknown[] }>> {
     return axios.post(`/poivelle/projects/${encode(projectId)}/actions/confirm`, payload, this.config(options));

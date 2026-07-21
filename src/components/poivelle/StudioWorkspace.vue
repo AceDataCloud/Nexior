@@ -441,11 +441,7 @@ const confirmRun = async () => {
   await submittingTask(async () => {
     const run = await store.dispatch('poivelle/confirmDryRun');
     dryRunDialogVisible.value = false;
-    if (run?.state === 'reservation_pending') {
-      ElMessage.warning(t('poivelle.run.reservationPending'));
-    } else {
-      ElMessage.success(t('poivelle.run.queued'));
-    }
+    if (run) ElMessage.success(t('poivelle.run.queued'));
   });
 };
 const openProposal = (proposalId: string) => {
