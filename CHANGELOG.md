@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 14:54:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 15:14:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.11
+
+Tue, 21 Jul 2026 15:14:25 GMT
+
+### Patches
+
+- Fix large empty band above the Veo config tabs by aligning ActionSelector with the shared 48px scenario-tabs pattern. (dev@acedata.cloud)
 
 ## 3.330.10
 
