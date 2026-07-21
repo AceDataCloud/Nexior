@@ -296,6 +296,20 @@ export interface IPoivelleStepRun {
   artifact_ids: string[];
 }
 
+export interface IPoivelleAttempt {
+  id: string;
+  run_id: string;
+  step_run_id: string;
+  provider: string;
+  dispatch_provider?: string;
+  provider_task_id?: string;
+  state: 'pending' | 'running' | 'unknown' | 'unknown_charge' | 'succeeded' | 'failed';
+  error?: { code?: string; message?: string };
+  created_at: string;
+  finished_at?: string;
+  reconcile_count: number;
+}
+
 export interface IPoivelleRun {
   id: string;
   project_id: string;
@@ -318,6 +332,48 @@ export interface IPoivelleRun {
 export interface IPoivelleRunDetail {
   run: IPoivelleRun;
   steps: IPoivelleStepRun[];
+  attempts: IPoivelleAttempt[];
+}
+
+export interface IPoivelleEvaluation {
+  id: string;
+  project_id: string;
+  subject_kind: 'node' | 'take' | 'artifact' | 'revision' | 'deliverable';
+  subject_id: string;
+  rubric: string;
+  verdict: 'pass' | 'fail' | 'review';
+  score?: number;
+  confidence?: number;
+  evidence_refs: string[];
+  checks: Array<{ kind?: string; code?: string; passed?: boolean; expected?: unknown; actual?: unknown }>;
+  created_at: string;
+}
+
+export interface IPoivelleForensicValidation {
+  id: string;
+  project_id: string;
+  request_hash: string;
+  result: {
+    verdict: 'pass' | 'fail';
+    expected_frame_count: number;
+    probe_status: 'caller_submitted';
+    server_verified: false;
+    checks: Array<{ code: string; verdict: 'pass' | 'fail'; expected?: unknown; actual?: unknown }>;
+  };
+  created_at: string;
+}
+
+export interface IPoivelleProjectCosts {
+  project_id: string;
+  totals_microcredits: Record<'provisional' | 'final' | 'correction' | 'refund', number>;
+  entries: Array<{
+    id: string;
+    run_id: string;
+    entry_type: 'provisional' | 'final' | 'correction' | 'refund';
+    amount_microcredits: number;
+    source: string;
+    created_at: string;
+  }>;
 }
 
 export interface IPoivelleTimelineClip {
@@ -327,6 +383,8 @@ export interface IPoivelleTimelineClip {
   timeline_start_ms: number;
   source_in_ms: number;
   source_out_ms: number;
+  speed?: number;
+  gain_db?: number;
 }
 
 export interface IPoivelleTimeline {

@@ -3,7 +3,10 @@ import {
   Status,
   type IPoivelleCommercialTVCBlueprintRequest,
   type IPoivelleGraphCommandRequest,
+  type IPoivelleActionDryRun,
   type IPoivelleRun,
+  type IPoivelleStepRun,
+  type IPoivelleTimeline,
   type PoivelleProjection
 } from '@/models';
 import { poivelleOperator } from '@/operators';
@@ -124,16 +127,20 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
   try {
     const options = { token: token(rootState) };
     const project = state.projects.find((item) => item.id === projectId);
-    const [graph, assets, revisions, proposals, runs, timeline, artifacts, takes] = await Promise.all([
-      poivelleOperator.getGraph(projectId, options),
-      poivelleOperator.getAssets(projectId, options),
-      poivelleOperator.getRevisions(projectId, options),
-      poivelleOperator.getProposals(projectId, options),
-      poivelleOperator.getRuns(projectId, options),
-      poivelleOperator.getTimeline(projectId, options),
-      poivelleOperator.getArtifacts(projectId, options),
-      poivelleOperator.getTakes(projectId, options)
-    ]);
+    const [graph, assets, revisions, proposals, runs, timeline, artifacts, takes, evaluations, forensics, costs] =
+      await Promise.all([
+        poivelleOperator.getGraph(projectId, options),
+        poivelleOperator.getAssets(projectId, options),
+        poivelleOperator.getRevisions(projectId, options),
+        poivelleOperator.getProposals(projectId, options),
+        poivelleOperator.getRuns(projectId, options),
+        poivelleOperator.getTimeline(projectId, options),
+        poivelleOperator.getArtifacts(projectId, options),
+        poivelleOperator.getTakes(projectId, options),
+        poivelleOperator.getEvaluations(projectId, options),
+        poivelleOperator.getForensicValidations(projectId, options),
+        poivelleOperator.getCosts(projectId, options)
+      ]);
     const currentRevisionId = revisions.data[0]?.id;
     const [selections, storyboard] = await Promise.all([
       currentRevisionId
@@ -151,6 +158,9 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
     commit('setTimeline', timeline.data);
     commit('setArtifacts', artifacts.data);
     commit('setTakes', takes.data);
+    commit('setEvaluations', evaluations.data);
+    commit('setForensicValidations', forensics.data);
+    commit('setCosts', costs.data);
     commit('setSelections', selections.data);
     commit('setStoryboard', storyboard?.data);
   } catch (error) {
@@ -305,6 +315,57 @@ export const confirmDryRun = async ({ state, commit, rootState }: Context): Prom
   return data.run;
 };
 
+export const loadRun = async ({ state, commit, rootState }: Context, runId: string): Promise<void> => {
+  if (!state.currentProjectId) return;
+  const { data } = await poivelleOperator.getRun(state.currentProjectId, runId, { token: token(rootState) });
+  commit('setActiveRun', data);
+};
+
+export const retryStep = async (
+  { state, commit, rootState }: Context,
+  step: Pick<IPoivelleStepRun, 'node_id' | 'operation'>
+): Promise<IPoivelleActionDryRun | undefined> => {
+  if (!state.currentProjectId || !state.graph) return;
+  if (!state.graph.nodes.some((node) => node.id === step.node_id)) {
+    throw new Error('The failed production node no longer exists in the current graph');
+  }
+  let revision = state.revisions[0];
+  if (!revision || revision.graph_version !== state.graph.graph_version) {
+    const response = await poivelleOperator.createRevision(
+      state.currentProjectId,
+      { graph_version: state.graph.graph_version, message: 'Retry failed production step' },
+      { token: token(rootState) }
+    );
+    revision = response.data;
+    commit('setRevisions', [revision, ...state.revisions]);
+  }
+  const { data } = await poivelleOperator.dryRunAction(
+    state.currentProjectId,
+    {
+      action_type: step.operation === 'compose.timeline@1' ? 'compose' : 'generate',
+      target_ids: [step.node_id],
+      graph_version: state.graph.graph_version,
+      revision_id: revision.id,
+      options: { recovery_of_run_id: state.activeRun?.run.id }
+    },
+    { token: token(rootState) }
+  );
+  commit('setSelectedNode', step.node_id);
+  commit('setDryRun', data);
+  return data;
+};
+
+export const saveTimeline = async (
+  { state, commit, rootState }: Context,
+  timeline: IPoivelleTimeline
+): Promise<void> => {
+  if (!state.currentProjectId) return;
+  const { data } = await poivelleOperator.saveTimeline(state.currentProjectId, timeline, {
+    token: token(rootState)
+  });
+  commit('setTimeline', data);
+};
+
 export const rejectProposal = async ({ state, commit, rootState }: Context, proposalId: string): Promise<void> => {
   if (!state.currentProjectId) return;
   commit('setStatus', { key: 'action', value: Status.Request });
@@ -394,6 +455,9 @@ export default {
   commitRevision,
   dryRun,
   confirmDryRun,
+  loadRun,
+  retryStep,
+  saveTimeline,
   rejectProposal,
   cancelRun,
   selectTake,

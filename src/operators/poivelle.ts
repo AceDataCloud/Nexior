@@ -7,8 +7,11 @@ import type {
   IPoivelleCommercialTVCBlueprintRequest,
   IPoivelleGraphCommandRequest,
   IPoivelleGraphSnapshot,
+  IPoivelleEvaluation,
+  IPoivelleForensicValidation,
   IPoivelleMembership,
   IPoivelleProject,
+  IPoivelleProjectCosts,
   IPoivelleProposal,
   IPoivelleRevision,
   IPoivelleRun,
@@ -214,12 +217,35 @@ class PoivelleOperator {
     return axios.get(`/poivelle/projects/${encode(projectId)}/runs/${encode(runId)}`, this.config(options));
   }
 
+  getEvaluations(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleEvaluation[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/evaluations`, this.config(options));
+  }
+
+  getForensicValidations(
+    projectId: string,
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleForensicValidation[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/forensic-validations`, this.config(options));
+  }
+
+  getCosts(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleProjectCosts>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/costs`, this.config(options));
+  }
+
   cancelRun(projectId: string, runId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleRun>> {
     return axios.post(`/poivelle/projects/${encode(projectId)}/runs/${encode(runId)}/cancel`, {}, this.config(options));
   }
 
   getTimeline(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleTimeline>> {
     return axios.get(`/poivelle/projects/${encode(projectId)}/timeline`, this.config(options));
+  }
+
+  saveTimeline(
+    projectId: string,
+    timeline: IPoivelleTimeline,
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleTimeline>> {
+    return axios.put(`/poivelle/projects/${encode(projectId)}/timeline`, timeline, this.config(options));
   }
 
   dryRunAction(
