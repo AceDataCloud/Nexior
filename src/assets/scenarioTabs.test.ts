@@ -45,10 +45,10 @@ describe('scenario tab style contract', () => {
   });
 
   it('preserves Kling and Veo readability and overflow rules locally', () => {
-    expect(components.kling).toMatch(/:deep\(\.el-tabs__item\)[\s\S]*?height: 48px;[\s\S]*?white-space: normal;/);
-    expect(components.kling).toContain('-webkit-line-clamp: 2;');
-    expect(components.veo).toMatch(/:deep\(\.el-tabs__nav-scroll\)[\s\S]*?overflow: visible;[\s\S]*?height: 64px;/);
-    expect(components.veo).toMatch(/:deep\(\.el-tabs__nav-prev\),[\s\S]*?display: none;/);
-    expect(components.veo).toMatch(/:deep\(\.el-tabs__item\)[\s\S]*?min-width: 0;[\s\S]*?overflow-wrap: anywhere;/);
+    for (const name of ['kling', 'veo'] as const) {
+      expect(components[name]).toMatch(/:deep\(\.el-tabs__item\)[\s\S]*?height: 48px;[\s\S]*?white-space: normal;/);
+      expect(components[name]).toContain('-webkit-line-clamp: 2;');
+      expect(components[name]).toMatch(/\.text\s*{[\s\S]*?overflow-wrap: anywhere;/);
+    }
   });
 });

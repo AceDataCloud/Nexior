@@ -5,7 +5,13 @@
     stretch
     @update:model-value="onUpdate"
   >
-    <el-tab-pane v-for="item in options" :key="item.value" :name="item.value" :label="item.label" />
+    <el-tab-pane v-for="item in options" :key="item.value" :name="item.value">
+      <template #label>
+        <span class="tab-label">
+          <span class="text">{{ item.label }}</span>
+        </span>
+      </template>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -62,54 +68,37 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+// Mirror the shared Kling tab pattern so all scenario tab bars stay uniform:
+// fixed 48px header (tight top/bottom) with a 2-line clamp for long locales
+// (ru/ar) instead of a taller fixed height that leaves dead space above CJK.
+// No horizontal padding here — unlike Kling's standalone header, this tab bar
+// sits inside ConfigPanel's p-5 column and must align with the fields below.
 .action-tabs {
-  :deep(.el-tabs__header) {
-    height: 64px;
-  }
-
-  :deep(.el-tabs__nav-scroll) {
-    overflow: visible;
-    height: 64px;
-  }
-
-  :deep(.el-tabs__nav) {
-    width: 100%;
-    height: 64px;
-    transform: none !important;
-  }
-
-  :deep(.el-tabs__nav-wrap) {
-    height: 64px;
-  }
-
-  :deep(.el-tabs__nav-prev),
-  :deep(.el-tabs__nav-next) {
-    display: none;
-  }
-
-  :deep(.el-tabs__active-bar) {
-    display: none;
-  }
-
   :deep(.el-tabs__item) {
-    flex: 1;
-    min-width: 0;
-    height: 64px;
-    padding: 0 6px;
-    border-bottom: 2px solid transparent;
-    font-size: 12px;
+    height: 48px;
     line-height: 16px;
-    letter-spacing: 0;
-    text-align: center;
+    font-size: 13px;
+    padding: 0 6px;
     white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  }
+
+  .tab-label {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
+    width: 100%;
+    min-width: 0;
 
-  :deep(.el-tabs__item.is-active) {
-    border-bottom-color: var(--el-color-primary);
+    .text {
+      display: -webkit-box;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-align: center;
+      overflow-wrap: anywhere;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
 }
 </style>
