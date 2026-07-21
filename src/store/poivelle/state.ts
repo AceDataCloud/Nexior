@@ -3,6 +3,7 @@ import type { IPoivelleState } from './models';
 
 export default (): IPoivelleState => ({
   workspaces: [],
+  discoveryWorks: [],
   projects: [],
   projection: 'canvas',
   assets: [],
@@ -12,6 +13,8 @@ export default (): IPoivelleState => ({
   revisions: [],
   proposals: [],
   runs: [],
+  evaluations: [],
+  forensicValidations: [],
   application: undefined,
   applications: undefined,
   service: undefined,

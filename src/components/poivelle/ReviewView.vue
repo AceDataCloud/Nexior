@@ -18,6 +18,20 @@
           ><strong>{{ runs.length }}</strong
           >{{ $t('poivelle.review.runs') }}</span
         >
+        <span
+          ><strong>{{ formatCredits(costs?.totals_microcredits.final ?? 0) }}</strong
+          >{{ $t('poivelle.review.finalCost') }}</span
+        >
+        <span
+          ><strong>{{ passedEvaluations }}/{{ evaluations.length }}</strong
+          >{{ $t('poivelle.review.qualityChecks') }}</span
+        >
+        <span
+          ><strong :class="latestForensic?.result.verdict === 'fail' ? 'metric-fail' : ''">{{
+            latestForensic?.result.verdict ?? '—'
+          }}</strong
+          >{{ $t('poivelle.review.forensics') }}</span
+        >
       </div>
     </section>
     <section class="review-columns">
@@ -38,7 +52,12 @@
       </div>
       <div>
         <h3>{{ $t('poivelle.review.execution') }}</h3>
-        <article v-for="run in runs" :key="run.id" class="run-item">
+        <article
+          v-for="run in runs"
+          :key="run.id"
+          :class="['run-item', { active: activeRun?.run.id === run.id }]"
+          @click="$emit('open-run', run.id)"
+        >
           <span :class="['run-state', `state-${run.state}`]" />
           <div>
             <strong>{{ run.state }}</strong>
@@ -48,12 +67,43 @@
             v-if="canEdit && cancellable(run)"
             type="button"
             class="cancel-run"
-            @click="$emit('cancel-run', run.id)"
+            @click.stop="$emit('cancel-run', run.id)"
           >
             {{ $t('poivelle.run.cancel') }}
           </button>
         </article>
         <p v-if="!runs.length" class="empty-copy">{{ $t('poivelle.review.noRuns') }}</p>
+        <section v-if="activeRun" class="run-detail">
+          <header>
+            <strong>{{ $t('poivelle.review.runDetail') }}</strong>
+            <span>{{ activeRun.attempts.length }} {{ $t('poivelle.review.attempts') }}</span>
+          </header>
+          <article v-for="step in activeRun.steps" :key="step.id" class="step-item">
+            <span :class="['run-state', `state-${step.state}`]" />
+            <div>
+              <strong>{{ step.operation }}</strong>
+              <small>{{ step.state }} · {{ step.node_id }}</small>
+              <p v-if="latestAttempt(step.id)?.error">
+                {{ latestAttempt(step.id)?.error?.code ?? 'provider_error' }}:
+                {{ latestAttempt(step.id)?.error?.message ?? $t('poivelle.error.generic') }}
+              </p>
+            </div>
+            <button
+              v-if="canEdit && ['failed', 'manual_recovery'].includes(step.state)"
+              type="button"
+              class="retry-step"
+              @click.stop="$emit('retry-step', step)"
+            >
+              {{ $t('poivelle.review.retryStep') }}
+            </button>
+          </article>
+        </section>
+        <section v-if="failedForensicChecks.length" class="forensic-failures" role="alert">
+          <strong>{{ $t('poivelle.review.forensics') }}</strong>
+          <p v-for="check in failedForensicChecks" :key="check.code">
+            {{ check.code }} · {{ String(check.actual ?? '—') }} / {{ String(check.expected ?? '—') }}
+          </p>
+        </section>
       </div>
     </section>
   </div>
@@ -61,21 +111,47 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IPoivelleGraphSnapshot, IPoivelleProposal, IPoivelleRevision, IPoivelleRun } from '@/models';
+import type {
+  IPoivelleEvaluation,
+  IPoivelleForensicValidation,
+  IPoivelleGraphSnapshot,
+  IPoivelleProjectCosts,
+  IPoivelleProposal,
+  IPoivelleRevision,
+  IPoivelleRun,
+  IPoivelleRunDetail,
+  IPoivelleStepRun
+} from '@/models';
 
 const props = defineProps<{
   graph: IPoivelleGraphSnapshot;
   proposals: IPoivelleProposal[];
   revisions: IPoivelleRevision[];
   runs: IPoivelleRun[];
+  activeRun?: IPoivelleRunDetail;
+  evaluations: IPoivelleEvaluation[];
+  forensicValidations: IPoivelleForensicValidation[];
+  costs?: IPoivelleProjectCosts;
   canEdit: boolean;
 }>();
 defineEmits<{
   'reject-proposal': [proposalId: string];
   'cancel-run': [runId: string];
+  'open-run': [runId: string];
+  'retry-step': [step: IPoivelleStepRun];
 }>();
 const pendingProposals = computed(() => props.proposals.filter((proposal) => proposal.state === 'awaiting_approval'));
 const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'failed', 'cancelled'].includes(run.state);
+const passedEvaluations = computed(() => props.evaluations.filter((item) => item.verdict === 'pass').length);
+const latestForensic = computed(() => props.forensicValidations[0]);
+const failedForensicChecks = computed(
+  () => latestForensic.value?.result.checks.filter((check) => check.verdict === 'fail') ?? []
+);
+const latestAttempt = (stepId: string) =>
+  [...(props.activeRun?.attempts ?? [])]
+    .filter((attempt) => attempt.step_run_id === stepId)
+    .sort((left, right) => right.created_at.localeCompare(left.created_at))[0];
+const formatCredits = (microcredits: number) => (microcredits / 1_000_000).toFixed(2);
 </script>
 
 <style scoped>
@@ -130,6 +206,9 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   color: var(--poivelle-ink);
   font-size: 20px;
 }
+.summary-metrics .metric-fail {
+  color: var(--poivelle-red);
+}
 
 .review-columns {
   gap: 18px;
@@ -152,6 +231,12 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   border: 1px solid var(--poivelle-line);
   border-radius: var(--poivelle-radius);
   background: var(--poivelle-paper);
+}
+.run-item {
+  cursor: pointer;
+}
+.run-item.active {
+  border-color: var(--app-brand-hex);
 }
 
 .review-item strong {
@@ -190,6 +275,60 @@ const cancellable = (run: IPoivelleRun) => !['release_pending', 'succeeded', 'fa
   background: transparent;
   font: inherit;
   font-size: 9px;
+  cursor: pointer;
+}
+.run-detail {
+  margin-top: 14px;
+  border-top: 1px solid var(--poivelle-line-strong);
+}
+.forensic-failures {
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--poivelle-red) 40%, transparent);
+  color: var(--poivelle-red);
+  background: color-mix(in srgb, var(--poivelle-red) 6%, var(--poivelle-paper));
+  font-size: 9px;
+}
+.forensic-failures p {
+  margin: 5px 0 0;
+}
+.run-detail > header,
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.run-detail > header {
+  justify-content: space-between;
+  padding: 12px 2px 8px;
+  font-size: 10px;
+}
+.run-detail > header span {
+  color: var(--poivelle-muted);
+}
+.step-item {
+  padding: 10px;
+  border: 1px solid var(--poivelle-line);
+  background: var(--poivelle-paper);
+}
+.step-item + .step-item {
+  border-top: 0;
+}
+.step-item > div {
+  display: grid;
+  min-width: 0;
+}
+.step-item p {
+  margin: 4px 0 0;
+  color: var(--poivelle-red);
+  font-size: 9px;
+}
+.retry-step {
+  margin-left: auto;
+  border: 0;
+  color: var(--app-brand-hex);
+  background: transparent;
+  font: 9px inherit;
   cursor: pointer;
 }
 

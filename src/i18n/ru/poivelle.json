@@ -264,7 +264,7 @@
     "description": "Dry run approval class"
   },
   "run.confirmBody": {
-    "message": "The compiler will execute only the selected dependency closure against this immutable revision. Provider-backed work remains reservation-gated.",
+    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
     "description": "Run confirmation explanation"
   },
   "run.confirm": {
@@ -283,10 +283,6 @@
     "message": "Plan selected",
     "description": "Plan a skill action for the selected graph node"
   },
-  "run.reservationPending": {
-    "message": "Run created; Gateway budget reservation is required before provider execution.",
-    "description": "Reservation-pending run notice"
-  },
   "review.reject": {
     "message": "Reject",
     "description": "Reject agent proposal command"
@@ -304,7 +300,7 @@
     "description": "Cancel execution run command"
   },
   "run.cancelConfirm": {
-    "message": "Cancel this execution run and release its reservation?",
+    "message": "Cancel this execution run?",
     "description": "Cancel run confirmation"
   },
   "project.workflow": {
@@ -446,5 +442,129 @@
   "timeline.loadError": {
     "message": "The production master could not be loaded.",
     "description": "Master video load failure"
+  },
+  "storyboard.compare": {
+    "message": "Compare",
+    "description": "Add a Take to the comparison set"
+  },
+  "storyboard.comparing": {
+    "message": "Comparing",
+    "description": "Take is in the comparison set"
+  },
+  "review.finalCost": {
+    "message": "final credits",
+    "description": "Settled project cost label"
+  },
+  "review.qualityChecks": {
+    "message": "quality checks",
+    "description": "Passed automatic evaluations label"
+  },
+  "review.forensics": {
+    "message": "forensics",
+    "description": "Latest forensic validation label"
+  },
+  "review.runDetail": {
+    "message": "Run detail",
+    "description": "Selected execution run detail heading"
+  },
+  "review.attempts": {
+    "message": "attempts",
+    "description": "Provider attempt count label"
+  },
+  "review.retryStep": {
+    "message": "Retry node",
+    "description": "Create a new run for a failed production node"
+  },
+  "discovery.kicker": {
+    "message": "AI film production",
+    "description": "Creator home eyebrow"
+  },
+  "discovery.title": {
+    "message": "What do you want to make?",
+    "description": "Creator home prompt heading"
+  },
+  "discovery.skills": {
+    "message": "Production workflows",
+    "description": "Workflow selector accessible name"
+  },
+  "discovery.placeholder": {
+    "message": "Describe the film, product, story, or mood you want to create...",
+    "description": "Creator prompt placeholder"
+  },
+  "discovery.create": {
+    "message": "Create project",
+    "description": "Submit creator prompt"
+  },
+  "discovery.commercial": {
+    "message": "Commercial TVC",
+    "description": "Commercial workflow label"
+  },
+  "discovery.musicVideo": {
+    "message": "Music video",
+    "description": "Music video workflow label"
+  },
+  "discovery.documentary": {
+    "message": "Documentary",
+    "description": "Documentary workflow label"
+  },
+  "discovery.starterProduct": {
+    "message": "A product film with precise studio lighting",
+    "description": "Commercial prompt starter"
+  },
+  "discovery.starterMusic": {
+    "message": "A moonlit performance about memory and return",
+    "description": "Music video prompt starter"
+  },
+  "discovery.starterDocumentary": {
+    "message": "A company milestone film about people and invention",
+    "description": "Documentary prompt starter"
+  },
+  "discovery.galleryKicker": {
+    "message": "Copy a proven workflow",
+    "description": "Gallery eyebrow"
+  },
+  "discovery.gallery": {
+    "message": "Works and production threads",
+    "description": "Gallery heading"
+  },
+  "discovery.search": {
+    "message": "Search works",
+    "description": "Gallery search placeholder"
+  },
+  "discovery.all": {
+    "message": "All",
+    "description": "All gallery category"
+  },
+  "discovery.community": {
+    "message": "Community",
+    "description": "Community gallery category"
+  },
+  "discovery.copy": {
+    "message": "Copy",
+    "description": "Copy work command"
+  },
+  "discovery.copyPrefix": {
+    "message": "Create a new interpretation of",
+    "description": "Default copied work prompt prefix"
+  },
+  "discovery.back": {
+    "message": "Back to discovery",
+    "description": "Return from studio to creator home"
+  },
+  "discovery.narrative": {
+    "message": "Narrative film",
+    "description": "Narrative film category"
+  },
+  "discovery.play": {
+    "message": "Play",
+    "description": "Compact play film command"
+  },
+  "discovery.playFilm": {
+    "message": "Play finished film",
+    "description": "Play finished film command"
+  },
+  "discovery.finishedFilm": {
+    "message": "Finished film",
+    "description": "Finished film badge and player eyebrow"
   }
 }

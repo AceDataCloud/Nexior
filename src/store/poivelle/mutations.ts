@@ -17,6 +17,9 @@ export const setError = (state: IPoivelleState, value?: string): void => {
 export const setWorkspaces = (state: IPoivelleState, value: IPoivelleState['workspaces']): void => {
   state.workspaces = value;
 };
+export const setDiscoveryWorks = (state: IPoivelleState, value: IPoivelleState['discoveryWorks']): void => {
+  state.discoveryWorks = value;
+};
 export const addWorkspace = (state: IPoivelleState, value: IPoivelleState['workspaces'][number]): void => {
   state.workspaces.unshift(value);
   state.currentWorkspaceId = value.id;
@@ -35,11 +38,15 @@ const clearProjectData = (state: IPoivelleState): void => {
   state.proposals = [];
   state.runs = [];
   state.activeRun = undefined;
+  state.evaluations = [];
+  state.forensicValidations = [];
+  state.costs = undefined;
   state.timeline = undefined;
   state.selectedNodeId = undefined;
   state.dryRun = undefined;
 };
 export const addProject = (state: IPoivelleState, value: IPoivelleState['projects'][number]): void => {
+  state.projects = state.projects.filter((project) => project.id !== value.id);
   state.projects.unshift(value);
   if (state.currentProjectId !== value.id) clearProjectData(state);
   state.currentProjectId = value.id;
@@ -97,6 +104,15 @@ export const setRuns = (state: IPoivelleState, value: IPoivelleState['runs']): v
 };
 export const setActiveRun = (state: IPoivelleState, value: IPoivelleState['activeRun']): void => {
   state.activeRun = value;
+};
+export const setEvaluations = (state: IPoivelleState, value: IPoivelleState['evaluations']): void => {
+  state.evaluations = value;
+};
+export const setForensicValidations = (state: IPoivelleState, value: IPoivelleState['forensicValidations']): void => {
+  state.forensicValidations = value;
+};
+export const setCosts = (state: IPoivelleState, value: IPoivelleState['costs']): void => {
+  state.costs = value;
 };
 export const setTimeline = (state: IPoivelleState, value: IPoivelleState['timeline']): void => {
   state.timeline = value;

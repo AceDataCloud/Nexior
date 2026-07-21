@@ -4,18 +4,33 @@ import {
   bootstrap,
   cancelRun,
   confirmDryRun,
+  copyDiscoveryWork,
   createCommercialTVCProject,
   loadProject,
+  loadRun,
   rejectProposal,
+  retryStep,
   selectTake
 } from './actions';
-import { poivelleOperator } from '@/operators';
+import { applicationOperator, credentialOperator, poivelleOperator } from '@/operators';
 import { setCurrentProject } from './mutations';
+import { addProject } from './mutations';
 import stateFactory from './state';
 
 vi.mock('@/operators', () => ({
+  applicationOperator: {
+    getAll: vi.fn()
+  },
+  credentialOperator: {
+    getAll: vi.fn(),
+    create: vi.fn(),
+    delete: vi.fn()
+  },
   poivelleOperator: {
     getWorkspaces: vi.fn(),
+    getDiscovery: vi.fn(),
+    createWorkspace: vi.fn(),
+    copyDiscoveryWork: vi.fn(),
     applyGraphCommand: vi.fn(),
     getMembers: vi.fn(),
     getGraph: vi.fn(),
@@ -28,6 +43,12 @@ vi.mock('@/operators', () => ({
     getTakes: vi.fn(),
     getSelections: vi.fn(),
     getStoryboard: vi.fn(),
+    getEvaluations: vi.fn(),
+    getForensicValidations: vi.fn(),
+    getCosts: vi.fn(),
+    getRun: vi.fn(),
+    createRevision: vi.fn(),
+    dryRunAction: vi.fn(),
     createCommercialTVCProject: vi.fn(),
     selectTake: vi.fn(),
     confirmAction: vi.fn(),
@@ -38,13 +59,16 @@ vi.mock('@/operators', () => ({
 
 const context = (access?: string) => ({
   state: stateFactory(),
-  rootState: { token: { access } },
+  rootState: { token: { access }, user: { id: 'user' }, applications: [] },
   commit: vi.fn(),
   dispatch: vi.fn()
 });
 
 describe('Poivelle Vuex actions', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(credentialOperator.getAll).mockResolvedValue({ data: { count: 0, items: [] } } as any);
+  });
 
   it('fails bootstrap without sending an unauthenticated request', async () => {
     const ctx = context();
@@ -52,6 +76,61 @@ describe('Poivelle Vuex actions', () => {
     expect(poivelleOperator.getWorkspaces).not.toHaveBeenCalled();
     expect(ctx.commit).toHaveBeenCalledWith('setError', 'Poivelle requires an authenticated Ace Data Cloud session');
     expect(ctx.commit).toHaveBeenCalledWith('setStatus', { key: 'bootstrap', value: 'Error' });
+  });
+
+  it('loads discovery without opening a project graph on the creator home', async () => {
+    const ctx = context('token');
+    vi.mocked(poivelleOperator.getWorkspaces).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getDiscovery).mockResolvedValue({ data: [{ id: 'official:pulsecam' }] } as any);
+
+    await bootstrap(ctx as any, { loadProject: false });
+
+    expect(ctx.commit).toHaveBeenCalledWith('setDiscoveryWorks', [{ id: 'official:pulsecam' }]);
+    expect(ctx.dispatch).not.toHaveBeenCalledWith('loadProject', expect.anything());
+  });
+
+  it('does not start a second discovery bootstrap while one is pending', async () => {
+    const ctx = context('token');
+    ctx.state.status.bootstrap = 'Request' as any;
+
+    await bootstrap(ctx as any, { loadProject: false });
+
+    expect(poivelleOperator.getWorkspaces).not.toHaveBeenCalled();
+    expect(poivelleOperator.getDiscovery).not.toHaveBeenCalled();
+  });
+
+  it('creates a first workspace and copies a discovery work into the studio', async () => {
+    const ctx = context('token');
+    const workspace = { id: 'workspace', name: 'My Studio' };
+    const project = { id: 'project', title: 'Alpine Camera' };
+    vi.mocked(poivelleOperator.createWorkspace).mockResolvedValue({ data: workspace } as any);
+    vi.mocked(poivelleOperator.getMembers).mockResolvedValue({
+      data: [{ user_id: 'user', state: 'active', role: 'owner' }]
+    } as any);
+    vi.mocked(poivelleOperator.copyDiscoveryWork).mockResolvedValue({
+      data: { project, source_work_id: 'official:pulsecam' }
+    } as any);
+
+    await expect(
+      copyDiscoveryWork(ctx as any, {
+        work_id: 'official:pulsecam',
+        prompt: 'A climbing camera for rescue teams',
+        title: 'Alpine Camera'
+      })
+    ).resolves.toEqual(project);
+
+    expect(poivelleOperator.createWorkspace).toHaveBeenCalledWith({ name: 'My Studio' }, { token: 'token' });
+    expect(poivelleOperator.copyDiscoveryWork).toHaveBeenCalledWith(
+      'official:pulsecam',
+      {
+        workspace_id: 'workspace',
+        prompt: 'A climbing camera for rescue teams',
+        title: 'Alpine Camera',
+        aspect_ratio: '16:9'
+      },
+      { token: 'token' }
+    );
+    expect(ctx.dispatch).toHaveBeenCalledWith('loadProject', 'project');
   });
 
   it('sends the exact node, edge, and group versions in GraphCommand read sets', async () => {
@@ -164,17 +243,37 @@ describe('Poivelle Vuex actions', () => {
     expect(state.selectedNodeId).toBeUndefined();
   });
 
-  it('returns a reservation-pending run to the confirmation UI', async () => {
+  it('moves an existing project to the front without duplicating it', () => {
+    const state = stateFactory();
+    state.projects = [{ id: 'project-one', title: 'One' } as any, { id: 'project-two', title: 'Two' } as any];
+
+    addProject(state, { id: 'project-two', title: 'Updated Two' } as any);
+
+    expect(state.projects.map((project) => project.id)).toEqual(['project-two', 'project-one']);
+    expect(state.projects[0].title).toBe('Updated Two');
+  });
+
+  it('delegates a capped temporary Global credential to a provider run', async () => {
     const run = {
       id: 'run',
       project_id: 'project',
       revision_id: 'revision',
-      state: 'reservation_pending',
+      state: 'pending',
+      funding_mode: 'user_credential',
       created_at: 'now'
     } as const;
     vi.mocked(poivelleOperator.confirmAction).mockResolvedValue({ data: { run, steps: [] } } as any);
+    vi.mocked(applicationOperator.getAll).mockResolvedValue({
+      data: {
+        items: [{ id: 'global-app', scope: 'Global', role: 'owner' }]
+      }
+    } as any);
+    vi.mocked(credentialOperator.create).mockResolvedValue({
+      data: { id: 'temporary-credential', token: 'temporary-global-credential-00000001' }
+    } as any);
     const ctx = context('token');
     ctx.state.currentProjectId = 'project';
+    ctx.state.projects = [{ id: 'project', managed_execution: false } as any];
     ctx.state.dryRun = {
       id: 'dryrun',
       project_id: 'project',
@@ -182,14 +281,80 @@ describe('Poivelle Vuex actions', () => {
       target_ids: ['node'],
       revision_id: 'revision',
       dependency_closure: ['node'],
-      max_cost_microcredits: 0,
+      max_cost_microcredits: 2_500_000,
+      requires_credential: true,
       required_approval: 'batch',
       confirmation_nonce: 'nonce',
       expires_at: 'later'
     };
 
     await expect(confirmDryRun(ctx as any)).resolves.toEqual(run);
+    expect(credentialOperator.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        application_id: 'global-app',
+        limited_amount: 2.5,
+        metadata: {
+          purpose: 'poivelle_execution',
+          project_id: 'project',
+          dry_run_id: 'dryrun'
+        }
+      })
+    );
+    expect(poivelleOperator.confirmAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({
+        idempotency_key: 'confirm-dryrun',
+        execution_credential: 'temporary-global-credential-00000001'
+      }),
+      { token: 'token' }
+    );
     expect(ctx.commit).toHaveBeenCalledWith('setRuns', [run]);
+  });
+
+  it('reuses the temporary credential for an idempotent confirmation retry', async () => {
+    const run = { id: 'run', project_id: 'project', revision_id: 'revision', state: 'pending', created_at: 'now' };
+    vi.mocked(applicationOperator.getAll).mockResolvedValue({
+      data: { items: [{ id: 'global-app', scope: 'Global', role: 'owner' }] }
+    } as any);
+    vi.mocked(credentialOperator.getAll).mockResolvedValue({
+      data: {
+        count: 1,
+        items: [
+          {
+            id: 'existing-credential',
+            token: 'existing-temporary-credential-000001',
+            expired_at: new Date(Date.now() + 60_000).toISOString(),
+            metadata: { purpose: 'poivelle_execution', dry_run_id: 'dryrun' }
+          }
+        ]
+      }
+    } as any);
+    vi.mocked(poivelleOperator.confirmAction).mockResolvedValue({ data: { run, steps: [] } } as any);
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    ctx.state.projects = [{ id: 'project' } as any];
+    ctx.state.dryRun = {
+      id: 'dryrun',
+      project_id: 'project',
+      action_type: 'generate',
+      target_ids: ['node'],
+      revision_id: 'revision',
+      dependency_closure: ['node'],
+      max_cost_microcredits: 1_000_000,
+      requires_credential: true,
+      required_approval: 'batch',
+      confirmation_nonce: 'nonce',
+      expires_at: 'later'
+    };
+
+    await confirmDryRun(ctx as any);
+
+    expect(credentialOperator.create).not.toHaveBeenCalled();
+    expect(poivelleOperator.confirmAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({ execution_credential: 'existing-temporary-credential-000001' }),
+      { token: 'token' }
+    );
   });
 
   it('replaces the rejected proposal with the server result', async () => {
@@ -209,7 +374,7 @@ describe('Poivelle Vuex actions', () => {
 
   it('replaces a cancelling run with the server lifecycle state', async () => {
     const run = { id: 'run', state: 'running' } as const;
-    const cancelling = { ...run, state: 'release_pending' as const };
+    const cancelling = { ...run, state: 'cancelled' as const };
     vi.mocked(poivelleOperator.cancelRun).mockResolvedValue({ data: cancelling } as any);
     const ctx = context('token');
     ctx.state.currentProjectId = 'project';
@@ -248,6 +413,7 @@ describe('Poivelle Vuex actions', () => {
 
   it('loads TVC storyboard, artifacts, takes, and revision-scoped selections', async () => {
     const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
     ctx.state.projects = [{ id: 'project', blueprint_ref: 'commercial.tvc.action-imaging@1' } as any];
     vi.mocked(poivelleOperator.getGraph).mockResolvedValue({ data: { nodes: [] } } as any);
     vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
@@ -257,6 +423,9 @@ describe('Poivelle Vuex actions', () => {
     vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
     vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [{ id: 'artifact' }] } as any);
     vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [{ id: 'take' }] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [{ id: 'evaluation' }] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [{ id: 'forensic' }] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: { totals_microcredits: { final: 5 } } } as any);
     vi.mocked(poivelleOperator.getSelections).mockResolvedValue({ data: [{ id: 'selection' }] } as any);
     vi.mocked(poivelleOperator.getStoryboard).mockResolvedValue({ data: { sections: [] } } as any);
 
@@ -267,10 +436,14 @@ describe('Poivelle Vuex actions', () => {
     expect(ctx.commit).toHaveBeenCalledWith('setArtifacts', [{ id: 'artifact' }]);
     expect(ctx.commit).toHaveBeenCalledWith('setTakes', [{ id: 'take' }]);
     expect(ctx.commit).toHaveBeenCalledWith('setSelections', [{ id: 'selection' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setEvaluations', [{ id: 'evaluation' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setForensicValidations', [{ id: 'forensic' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setCosts', { totals_microcredits: { final: 5 } });
   });
 
   it('does not load project-wide selections when a project has no revision', async () => {
     const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
     ctx.state.projects = [{ id: 'project' } as any];
     vi.mocked(poivelleOperator.getGraph).mockResolvedValue({ data: { nodes: [] } } as any);
     vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
@@ -280,11 +453,87 @@ describe('Poivelle Vuex actions', () => {
     vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
     vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [] } as any);
     vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: {} } as any);
 
     await loadProject(ctx as any, 'project');
 
     expect(poivelleOperator.getSelections).not.toHaveBeenCalled();
     expect(ctx.commit).toHaveBeenCalledWith('setSelections', []);
+  });
+
+  it('does not let a stale project response overwrite the active project', async () => {
+    let resolveGraph: (value: any) => void = () => undefined;
+    const graphResponse = new Promise((resolve) => {
+      resolveGraph = resolve;
+    });
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project-one';
+    ctx.state.projects = [{ id: 'project-one' } as any];
+    vi.mocked(poivelleOperator.getGraph).mockReturnValue(graphResponse as any);
+    vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getRevisions).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getProposals).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getRuns).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
+    vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: {} } as any);
+
+    const loading = loadProject(ctx as any, 'project-one');
+    ctx.state.currentProjectId = 'project-two';
+    resolveGraph({ data: { project_id: 'project-one', nodes: [] } });
+    await loading;
+
+    expect(ctx.commit).not.toHaveBeenCalledWith('setGraph', expect.objectContaining({ project_id: 'project-one' }));
+    expect(ctx.commit).not.toHaveBeenCalledWith('setStatus', { key: 'graph', value: 'Success' });
+  });
+
+  it('loads run steps and attempts for recovery inspection', async () => {
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    const detail = { run: { id: 'run' }, steps: [{ id: 'step' }], attempts: [{ id: 'attempt' }] };
+    vi.mocked(poivelleOperator.getRun).mockResolvedValue({ data: detail } as any);
+
+    await loadRun(ctx as any, 'run');
+
+    expect(poivelleOperator.getRun).toHaveBeenCalledWith('project', 'run', { token: 'token' });
+    expect(ctx.commit).toHaveBeenCalledWith('setActiveRun', detail);
+  });
+
+  it('creates a new dry run for the failed step node', async () => {
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    ctx.state.graph = {
+      project_id: 'project',
+      graph_version: 4,
+      nodes: [{ id: 'video-node', node_type: 'video' }],
+      edges: [],
+      groups: [],
+      layouts: []
+    } as any;
+    ctx.state.revisions = [{ id: 'revision', graph_version: 4 } as any];
+    ctx.state.activeRun = { run: { id: 'failed-run' }, steps: [], attempts: [] } as any;
+    const dryRun = { id: 'retry-dry-run', target_ids: ['video-node'] };
+    vi.mocked(poivelleOperator.dryRunAction).mockResolvedValue({ data: dryRun } as any);
+
+    await expect(retryStep(ctx as any, { node_id: 'video-node', operation: 'video.shot@1' })).resolves.toEqual(dryRun);
+
+    expect(poivelleOperator.dryRunAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({
+        action_type: 'generate',
+        target_ids: ['video-node'],
+        revision_id: 'revision',
+        options: { recovery_of_run_id: 'failed-run' }
+      }),
+      { token: 'token' }
+    );
+    expect(ctx.commit).toHaveBeenCalledWith('setSelectedNode', 'video-node');
+    expect(ctx.commit).toHaveBeenCalledWith('setDryRun', dryRun);
   });
 
   it('selects a take against the current revision and selection head', async () => {

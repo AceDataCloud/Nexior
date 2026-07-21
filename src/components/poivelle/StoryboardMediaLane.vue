@@ -10,7 +10,7 @@
       <article
         v-for="candidate in candidates"
         :key="candidate.key"
-        :class="['candidate', { selected: candidate.selected }]"
+        :class="['candidate', { selected: candidate.selected, comparing: comparedKeys.includes(candidate.key) }]"
       >
         <img v-if="kind === 'image'" :src="candidate.artifact.storage_url" alt="" />
         <video v-else :src="candidate.artifact.storage_url" controls preload="metadata" />
@@ -25,6 +25,13 @@
             {{ $t('poivelle.storyboard.selectTake') }}
           </button>
           <em v-else-if="candidate.selected">{{ $t('poivelle.storyboard.selected') }}</em>
+          <button type="button" class="compare-toggle" @click="toggleCompare(candidate.key)">
+            {{
+              comparedKeys.includes(candidate.key)
+                ? $t('poivelle.storyboard.comparing')
+                : $t('poivelle.storyboard.compare')
+            }}
+          </button>
         </div>
       </article>
     </div>
@@ -40,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { IPoivelleArtifact, IPoivelleSelection, IPoivelleTake } from '@/models';
 
 const props = defineProps<{
@@ -87,6 +94,12 @@ const candidates = computed(() => {
 const unavailableTakes = computed(() =>
   props.takes.filter((take) => props.nodeIds.includes(take.target_node_id) && take.state !== 'ready')
 );
+const comparedKeys = ref<string[]>([]);
+const toggleCompare = (key: string) => {
+  comparedKeys.value = comparedKeys.value.includes(key)
+    ? comparedKeys.value.filter((item) => item !== key)
+    : [...comparedKeys.value.slice(-1), key];
+};
 </script>
 
 <style scoped>
@@ -138,6 +151,9 @@ header button:focus-visible,
   border-color: var(--app-brand-hex);
   box-shadow: 0 0 0 2px rgba(var(--app-brand-rgb), 0.12);
 }
+.candidate.comparing {
+  border-color: var(--el-color-warning);
+}
 .candidate img,
 .candidate video {
   display: block;
@@ -165,6 +181,11 @@ header button:focus-visible,
   font-size: 8px;
   font-style: normal;
   font-weight: 700;
+}
+.candidate .compare-toggle {
+  grid-column: 1 / -1;
+  justify-self: start;
+  color: var(--poivelle-muted);
 }
 .empty-candidates {
   display: grid;

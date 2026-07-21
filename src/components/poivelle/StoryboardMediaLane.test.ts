@@ -70,4 +70,13 @@ describe('Poivelle StoryboardMediaLane', () => {
     expect(wrapper.text()).toContain('poivelle.storyboard.selectTake');
     expect(wrapper.text()).toContain('poivelle.storyboard.restrictedTake');
   });
+
+  it('keeps at most two candidates in explicit comparison', async () => {
+    const wrapper = mountLane(true);
+    const compare = wrapper.find('.compare-toggle');
+    await compare.trigger('click');
+    expect(wrapper.find('.candidate').classes()).toContain('comparing');
+    await compare.trigger('click');
+    expect(wrapper.find('.candidate').classes()).not.toContain('comparing');
+  });
 });

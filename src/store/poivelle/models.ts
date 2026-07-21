@@ -4,8 +4,12 @@ import type {
   IPoivelleAsset,
   IPoivelleGraphNode,
   IPoivelleGraphSnapshot,
+  IPoivelleEvaluation,
+  IPoivelleDiscoveryWork,
+  IPoivelleForensicValidation,
   IPoivelleMembership,
   IPoivelleProject,
+  IPoivelleProjectCosts,
   PoivelleProjection,
   IPoivelleProposal,
   IPoivelleRevision,
@@ -21,6 +25,7 @@ import type {
 
 export interface IPoivelleState {
   workspaces: IPoivelleWorkspace[];
+  discoveryWorks: IPoivelleDiscoveryWork[];
   projects: IPoivelleProject[];
   currentWorkspaceId?: string;
   currentMembership?: IPoivelleMembership;
@@ -36,6 +41,9 @@ export interface IPoivelleState {
   proposals: IPoivelleProposal[];
   runs: IPoivelleRun[];
   activeRun?: IPoivelleRunDetail;
+  evaluations: IPoivelleEvaluation[];
+  forensicValidations: IPoivelleForensicValidation[];
+  costs?: IPoivelleProjectCosts;
   timeline?: IPoivelleTimeline;
   selectedNodeId?: string;
   dryRun?: IPoivelleActionDryRun;

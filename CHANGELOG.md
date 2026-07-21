@@ -1,8 +1,104 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 20 Jul 2026 16:09:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 16:48:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.13
+
+Tue, 21 Jul 2026 16:48:50 GMT
+
+### Patches
+
+- Add playable finished films to the Poivelle discovery gallery (dev@acedata.cloud)
+
+## 3.330.12
+
+Tue, 21 Jul 2026 15:38:34 GMT
+
+### Patches
+
+- Remove Claude Fable 5 from the Claude model picker. (dev@acedata.cloud)
+
+## 3.330.11
+
+Tue, 21 Jul 2026 15:14:25 GMT
+
+### Patches
+
+- Fix large empty band above the Veo config tabs by aligning ActionSelector with the shared 48px scenario-tabs pattern. (dev@acedata.cloud)
+
+## 3.330.10
+
+Tue, 21 Jul 2026 14:54:51 GMT
+
+### Patches
+
+- fix(scenarios): align upload actions and preserve field spacing (dev@acedata.cloud)
+
+## 3.330.9
+
+Tue, 21 Jul 2026 14:53:03 GMT
+
+### Patches
+
+- fix(fish): create voice models as private by default and remove the visibility picker (dev@acedata.cloud)
+
+## 3.330.8
+
+Tue, 21 Jul 2026 14:50:00 GMT
+
+### Patches
+
+- Add a prompt-first Poivelle creator home with real works and one-click project copying (dev@acedata.cloud)
+
+## 3.330.7
+
+Tue, 21 Jul 2026 14:47:39 GMT
+
+### Patches
+
+- Hide unsupported Quality and Turbo controls when Midjourney V8.1 is selected. (dev@acedata.cloud)
+
+## 3.330.6
+
+Tue, 21 Jul 2026 14:13:16 GMT
+
+### Patches
+
+- Show Nano Banana task metadata while generated images are still pending. (dev@acedata.cloud)
+
+## 3.330.5
+
+Tue, 21 Jul 2026 13:58:45 GMT
+
+### Patches
+
+- fix(fish): render voice model visibility & train-mode controls at normal size (dev@acedata.cloud)
+
+## 3.330.4
+
+Tue, 21 Jul 2026 11:32:37 GMT
+
+### Patches
+
+- Route Poivelle provider runs through standard user Credentials, API cost rules, and usage recording. (dev@acedata.cloud)
+
+## 3.330.3
+
+Tue, 21 Jul 2026 10:20:45 GMT
+
+### Patches
+
+- Add Poivelle production recovery, quality evidence, Take comparison, and timeline editing workflows. (dev@acedata.cloud)
+
+## 3.330.2
+
+Mon, 20 Jul 2026 16:16:39 GMT
+
+### Patches
+
+- Align the Poivelle studio with Nexior design tokens, responsive surfaces, and keyboard focus states. (dev@acedata.cloud)
 
 ## 3.330.1
 

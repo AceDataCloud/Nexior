@@ -7,8 +7,12 @@ import type {
   IPoivelleCommercialTVCBlueprintRequest,
   IPoivelleGraphCommandRequest,
   IPoivelleGraphSnapshot,
+  IPoivelleDiscoveryWork,
+  IPoivelleEvaluation,
+  IPoivelleForensicValidation,
   IPoivelleMembership,
   IPoivelleProject,
+  IPoivelleProjectCosts,
   IPoivelleProposal,
   IPoivelleRevision,
   IPoivelleRun,
@@ -41,6 +45,21 @@ class PoivelleOperator {
 
   getWorkspaces(options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleWorkspace[]>> {
     return axios.get('/poivelle/workspaces', this.config(options));
+  }
+
+  getDiscovery(options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleDiscoveryWork[]>> {
+    return axios.get('/poivelle/discovery', {
+      ...this.config(options),
+      params: { site_id: typeof window === 'undefined' ? 'studio.acedata.cloud' : window.location.host }
+    });
+  }
+
+  copyDiscoveryWork(
+    workId: string,
+    payload: { workspace_id: string; prompt: string; title?: string; aspect_ratio?: '16:9' | '9:16' | '1:1' },
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<{ project: IPoivelleProject; source_work_id: string }>> {
+    return axios.post(`/poivelle/discovery/${encode(workId)}/copy`, payload, this.config(options));
   }
 
   createWorkspace(
@@ -214,12 +233,35 @@ class PoivelleOperator {
     return axios.get(`/poivelle/projects/${encode(projectId)}/runs/${encode(runId)}`, this.config(options));
   }
 
+  getEvaluations(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleEvaluation[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/evaluations`, this.config(options));
+  }
+
+  getForensicValidations(
+    projectId: string,
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleForensicValidation[]>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/forensic-validations`, this.config(options));
+  }
+
+  getCosts(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleProjectCosts>> {
+    return axios.get(`/poivelle/projects/${encode(projectId)}/costs`, this.config(options));
+  }
+
   cancelRun(projectId: string, runId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleRun>> {
     return axios.post(`/poivelle/projects/${encode(projectId)}/runs/${encode(runId)}/cancel`, {}, this.config(options));
   }
 
   getTimeline(projectId: string, options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleTimeline>> {
     return axios.get(`/poivelle/projects/${encode(projectId)}/timeline`, this.config(options));
+  }
+
+  saveTimeline(
+    projectId: string,
+    timeline: IPoivelleTimeline,
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<IPoivelleTimeline>> {
+    return axios.put(`/poivelle/projects/${encode(projectId)}/timeline`, timeline, this.config(options));
   }
 
   dryRunAction(
@@ -238,7 +280,13 @@ class PoivelleOperator {
 
   confirmAction(
     projectId: string,
-    payload: { dry_run_id: string; revision_id: string; confirmation_nonce: string; idempotency_key: string },
+    payload: {
+      dry_run_id: string;
+      revision_id: string;
+      confirmation_nonce: string;
+      idempotency_key: string;
+      execution_credential?: string;
+    },
     options: IPoivelleRequestOptions
   ): Promise<AxiosResponse<{ run: IPoivelleRun; steps: unknown[] }>> {
     return axios.post(`/poivelle/projects/${encode(projectId)}/actions/confirm`, payload, this.config(options));

@@ -21,6 +21,7 @@ export interface ICredential {
   created_at?: string;
   updated_at?: string;
   user_id?: string;
+  metadata?: Record<string, unknown>;
 }
 
 export interface ICredentialListResponse {

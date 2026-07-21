@@ -1,12 +1,19 @@
 import type { ActionContext } from 'vuex';
 import {
   Status,
+  IApplicationScope,
+  IApplicationType,
+  type ICredential,
   type IPoivelleCommercialTVCBlueprintRequest,
   type IPoivelleGraphCommandRequest,
+  type IPoivelleActionDryRun,
+  type IPoivelleProject,
   type IPoivelleRun,
+  type IPoivelleStepRun,
+  type IPoivelleTimeline,
   type PoivelleProjection
 } from '@/models';
-import { poivelleOperator } from '@/operators';
+import { applicationOperator, credentialOperator, poivelleOperator } from '@/operators';
 import type { IRootState } from '../common/models';
 import type { IPoivelleState } from './models';
 
@@ -21,7 +28,7 @@ const message = (error: unknown): string => {
   if (error && typeof error === 'object' && 'response' in error) {
     const detail = (error as any).response?.data?.detail;
     if (typeof detail === 'string') return detail;
-    if (detail?.message) return detail.message;
+    if (typeof detail?.message === 'string') return detail.message;
   }
   return error instanceof Error ? error.message : 'Poivelle request failed';
 };
@@ -29,6 +36,65 @@ const uid = (): string =>
   typeof crypto !== 'undefined' && crypto.randomUUID
     ? crypto.randomUUID()
     : `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+
+const createExecutionCredential = async (
+  rootState: IRootState,
+  dryRun: IPoivelleActionDryRun
+): Promise<ICredential | undefined> => {
+  if (!dryRun.requires_credential) return undefined;
+  const userId = rootState.user?.id;
+  if (!userId) throw new Error('Poivelle provider execution requires an authenticated user');
+  let applications = rootState.applications ?? [];
+  let globalApplication = applications
+    .filter((application) => application.scope === IApplicationScope.GLOBAL && application.role === 'owner')
+    .sort((left, right) => (right.remaining_amount ?? 0) - (left.remaining_amount ?? 0))[0];
+  if (!globalApplication) {
+    const response = await applicationOperator.getAll({
+      limit: 100,
+      offset: 0,
+      user_id: 'me',
+      ordering: '-created_at',
+      type: IApplicationType.USAGE,
+      scope: IApplicationScope.GLOBAL,
+      affiliation: 'owner'
+    });
+    applications = response.data.items;
+    globalApplication = [...applications].sort(
+      (left, right) => (right.remaining_amount ?? 0) - (left.remaining_amount ?? 0)
+    )[0];
+  }
+  if (!globalApplication?.id) throw new Error('A Global usage application is required for provider execution');
+  const usable = (credential: ICredential): boolean =>
+    credential.metadata?.purpose === 'poivelle_execution' &&
+    credential.metadata?.dry_run_id === dryRun.id &&
+    !!credential.token &&
+    (!credential.expired_at || Date.parse(credential.expired_at) > Date.now());
+  let credential = globalApplication.credentials?.find(usable);
+  if (!credential) {
+    const response = await credentialOperator.getAll({
+      application_id: globalApplication.id,
+      limit: 100,
+      ordering: '-created_at'
+    });
+    credential = response.data.items.find(usable);
+  }
+  if (credential) return credential;
+  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+  const limitedAmount = dryRun.max_cost_microcredits > 0 ? dryRun.max_cost_microcredits / 1_000_000 : undefined;
+  const { data: createdCredential } = await credentialOperator.create({
+    application_id: globalApplication.id,
+    host: typeof window === 'undefined' ? 'https://studio.acedata.cloud' : window.location.origin,
+    expired_at: expiresAt,
+    limited_amount: limitedAmount,
+    metadata: {
+      purpose: 'poivelle_execution',
+      project_id: dryRun.project_id,
+      dry_run_id: dryRun.id
+    }
+  });
+  if (!createdCredential.token) throw new Error('The temporary execution credential has no token');
+  return createdCredential;
+};
 
 const loadMembership = async (
   { commit, rootState }: Pick<Context, 'commit' | 'rootState'>,
@@ -40,13 +106,22 @@ const loadMembership = async (
   commit('setCurrentMembership', membership);
 };
 
-export const bootstrap = async ({ commit, rootState, state, dispatch }: Context): Promise<void> => {
+export const bootstrap = async (
+  { commit, rootState, state, dispatch }: Context,
+  options: { loadProject?: boolean } = {}
+): Promise<void> => {
+  if (state.status.bootstrap === Status.Request) return;
   commit('setStatus', { key: 'bootstrap', value: Status.Request });
   commit('setError');
   let finalStatus = Status.Success;
   try {
-    const { data: workspaces } = await poivelleOperator.getWorkspaces({ token: token(rootState) });
+    const requestOptions = { token: token(rootState) };
+    const [{ data: workspaces }, { data: discoveryWorks }] = await Promise.all([
+      poivelleOperator.getWorkspaces(requestOptions),
+      poivelleOperator.getDiscovery(requestOptions)
+    ]);
     commit('setWorkspaces', workspaces);
+    commit('setDiscoveryWorks', discoveryWorks);
     const workspaceId = state.currentWorkspaceId ?? workspaces[0]?.id;
     commit('setCurrentWorkspace', workspaceId);
     if (!workspaceId) {
@@ -60,7 +135,7 @@ export const bootstrap = async ({ commit, rootState, state, dispatch }: Context)
     commit('setProjects', projects);
     const projectId = state.currentProjectId ?? projects[0]?.id;
     commit('setCurrentProject', projectId);
-    if (projectId) await dispatch('loadProject', projectId);
+    if (projectId && options.loadProject !== false) await dispatch('loadProject', projectId);
   } catch (error) {
     finalStatus = Status.Error;
     commit('setError', message(error));
@@ -72,12 +147,53 @@ export const bootstrap = async ({ commit, rootState, state, dispatch }: Context)
 export const createWorkspace = async (
   { commit, rootState }: Context,
   payload: { name: string; monthly_limit_microcredits?: number }
-): Promise<void> => {
+): Promise<string> => {
   const { data } = await poivelleOperator.createWorkspace(payload, { token: token(rootState) });
   commit('addWorkspace', data);
   await loadMembership({ commit, rootState }, data.id);
   commit('setProjects', []);
   commit('setCurrentProject');
+  return data.id;
+};
+
+const ensureWorkspace = async ({ state, commit, rootState }: Context): Promise<string> => {
+  if (state.currentWorkspaceId) return state.currentWorkspaceId;
+  const existing = state.workspaces[0];
+  if (existing) {
+    commit('setCurrentWorkspace', existing.id);
+    await loadMembership({ commit, rootState }, existing.id);
+    return existing.id;
+  }
+  const { data } = await poivelleOperator.createWorkspace({ name: 'My Studio' }, { token: token(rootState) });
+  commit('addWorkspace', data);
+  await loadMembership({ commit, rootState }, data.id);
+  return data.id;
+};
+
+export const copyDiscoveryWork = async (
+  context: Context,
+  payload: {
+    work_id: string;
+    prompt: string;
+    title?: string;
+    aspect_ratio?: '16:9' | '9:16' | '1:1';
+  }
+): Promise<IPoivelleProject> => {
+  const { commit, rootState, dispatch } = context;
+  const workspaceId = await ensureWorkspace(context);
+  const { data } = await poivelleOperator.copyDiscoveryWork(
+    payload.work_id,
+    {
+      workspace_id: workspaceId,
+      prompt: payload.prompt.trim(),
+      title: payload.title?.trim(),
+      aspect_ratio: payload.aspect_ratio ?? '16:9'
+    },
+    { token: token(rootState) }
+  );
+  commit('addProject', data.project);
+  await dispatch('loadProject', data.project.id);
+  return data.project;
 };
 
 export const selectWorkspace = async ({ commit, rootState, dispatch }: Context, workspaceId: string): Promise<void> => {
@@ -124,16 +240,21 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
   try {
     const options = { token: token(rootState) };
     const project = state.projects.find((item) => item.id === projectId);
-    const [graph, assets, revisions, proposals, runs, timeline, artifacts, takes] = await Promise.all([
-      poivelleOperator.getGraph(projectId, options),
-      poivelleOperator.getAssets(projectId, options),
-      poivelleOperator.getRevisions(projectId, options),
-      poivelleOperator.getProposals(projectId, options),
-      poivelleOperator.getRuns(projectId, options),
-      poivelleOperator.getTimeline(projectId, options),
-      poivelleOperator.getArtifacts(projectId, options),
-      poivelleOperator.getTakes(projectId, options)
-    ]);
+    const [graph, assets, revisions, proposals, runs, timeline, artifacts, takes, evaluations, forensics, costs] =
+      await Promise.all([
+        poivelleOperator.getGraph(projectId, options),
+        poivelleOperator.getAssets(projectId, options),
+        poivelleOperator.getRevisions(projectId, options),
+        poivelleOperator.getProposals(projectId, options),
+        poivelleOperator.getRuns(projectId, options),
+        poivelleOperator.getTimeline(projectId, options),
+        poivelleOperator.getArtifacts(projectId, options),
+        poivelleOperator.getTakes(projectId, options),
+        poivelleOperator.getEvaluations(projectId, options),
+        poivelleOperator.getForensicValidations(projectId, options),
+        poivelleOperator.getCosts(projectId, options)
+      ]);
+    if (state.currentProjectId !== projectId) return;
     const currentRevisionId = revisions.data[0]?.id;
     const [selections, storyboard] = await Promise.all([
       currentRevisionId
@@ -143,6 +264,7 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
         ? poivelleOperator.getStoryboard(projectId, options)
         : Promise.resolve(undefined)
     ]);
+    if (state.currentProjectId !== projectId) return;
     commit('setGraph', graph.data);
     commit('setAssets', assets.data);
     commit('setRevisions', revisions.data);
@@ -151,13 +273,19 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
     commit('setTimeline', timeline.data);
     commit('setArtifacts', artifacts.data);
     commit('setTakes', takes.data);
+    commit('setEvaluations', evaluations.data);
+    commit('setForensicValidations', forensics.data);
+    commit('setCosts', costs.data);
     commit('setSelections', selections.data);
     commit('setStoryboard', storyboard?.data);
   } catch (error) {
+    if (state.currentProjectId !== projectId) return;
     finalStatus = Status.Error;
     commit('setError', message(error));
   } finally {
-    commit('setStatus', { key: 'graph', value: finalStatus });
+    if (state.currentProjectId === projectId) {
+      commit('setStatus', { key: 'graph', value: finalStatus });
+    }
   }
 };
 
@@ -290,19 +418,83 @@ export const dryRun = async (
 
 export const confirmDryRun = async ({ state, commit, rootState }: Context): Promise<IPoivelleRun | undefined> => {
   if (!state.currentProjectId || !state.dryRun) return;
-  const { data } = await poivelleOperator.confirmAction(
-    state.currentProjectId,
-    {
-      dry_run_id: state.dryRun.id,
-      revision_id: state.dryRun.revision_id,
-      confirmation_nonce: state.dryRun.confirmation_nonce,
-      idempotency_key: `confirm-${uid()}`
-    },
-    { token: token(rootState) }
-  );
+  const project = state.projects.find((item) => item.id === state.currentProjectId);
+  const credential = project?.managed_execution ? undefined : await createExecutionCredential(rootState, state.dryRun);
+  let data;
+  try {
+    const response = await poivelleOperator.confirmAction(
+      state.currentProjectId,
+      {
+        dry_run_id: state.dryRun.id,
+        revision_id: state.dryRun.revision_id,
+        confirmation_nonce: state.dryRun.confirmation_nonce,
+        idempotency_key: `confirm-${state.dryRun.id}`,
+        execution_credential: credential?.token
+      },
+      { token: token(rootState) }
+    );
+    data = response.data;
+  } catch (error: any) {
+    const status = error?.response?.status;
+    if (credential?.id && [400, 401, 403, 404, 422].includes(status)) {
+      await credentialOperator.delete(credential.id).catch(() => undefined);
+    }
+    throw new Error(message(error));
+  }
   commit('setRuns', [data.run, ...state.runs.filter((run) => run.id !== data.run.id)]);
   commit('setDryRun');
   return data.run;
+};
+
+export const loadRun = async ({ state, commit, rootState }: Context, runId: string): Promise<void> => {
+  if (!state.currentProjectId) return;
+  const { data } = await poivelleOperator.getRun(state.currentProjectId, runId, { token: token(rootState) });
+  commit('setActiveRun', data);
+};
+
+export const retryStep = async (
+  { state, commit, rootState }: Context,
+  step: Pick<IPoivelleStepRun, 'node_id' | 'operation'>
+): Promise<IPoivelleActionDryRun | undefined> => {
+  if (!state.currentProjectId || !state.graph) return;
+  if (!state.graph.nodes.some((node) => node.id === step.node_id)) {
+    throw new Error('The failed production node no longer exists in the current graph');
+  }
+  let revision = state.revisions[0];
+  if (!revision || revision.graph_version !== state.graph.graph_version) {
+    const response = await poivelleOperator.createRevision(
+      state.currentProjectId,
+      { graph_version: state.graph.graph_version, message: 'Retry failed production step' },
+      { token: token(rootState) }
+    );
+    revision = response.data;
+    commit('setRevisions', [revision, ...state.revisions]);
+  }
+  const { data } = await poivelleOperator.dryRunAction(
+    state.currentProjectId,
+    {
+      action_type: step.operation === 'compose.timeline@1' ? 'compose' : 'generate',
+      target_ids: [step.node_id],
+      graph_version: state.graph.graph_version,
+      revision_id: revision.id,
+      options: { recovery_of_run_id: state.activeRun?.run.id }
+    },
+    { token: token(rootState) }
+  );
+  commit('setSelectedNode', step.node_id);
+  commit('setDryRun', data);
+  return data;
+};
+
+export const saveTimeline = async (
+  { state, commit, rootState }: Context,
+  timeline: IPoivelleTimeline
+): Promise<void> => {
+  if (!state.currentProjectId) return;
+  const { data } = await poivelleOperator.saveTimeline(state.currentProjectId, timeline, {
+    token: token(rootState)
+  });
+  commit('setTimeline', data);
 };
 
 export const rejectProposal = async ({ state, commit, rootState }: Context, proposalId: string): Promise<void> => {
@@ -381,6 +573,7 @@ export const selectNode = ({ commit }: Context, nodeId?: string): void => commit
 export default {
   bootstrap,
   createWorkspace,
+  copyDiscoveryWork,
   selectWorkspace,
   createProject,
   createCommercialTVCProject,
@@ -394,6 +587,9 @@ export default {
   commitRevision,
   dryRun,
   confirmDryRun,
+  loadRun,
+  retryStep,
+  saveTimeline,
   rejectProposal,
   cancelRun,
   selectTake,
