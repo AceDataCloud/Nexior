@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 15:14:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 15:38:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.12
+
+Tue, 21 Jul 2026 15:38:34 GMT
+
+### Patches
+
+- Remove Claude Fable 5 from the Claude model picker. (dev@acedata.cloud)
 
 ## 3.330.11
 
