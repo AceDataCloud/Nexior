@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 14:50:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 14:53:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.9
+
+Tue, 21 Jul 2026 14:53:03 GMT
+
+### Patches
+
+- fix(fish): create voice models as private by default and remove the visibility picker (dev@acedata.cloud)
 
 ## 3.330.8
 
