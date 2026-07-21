@@ -86,10 +86,23 @@ export default defineComponent({
         return this.$store.state.midjourney.config.version;
       },
       set(val: string) {
+        const config = this.$store.state.midjourney.config;
         this.$store.commit('midjourney/setConfig', {
-          ...this.$store.state.midjourney.config,
-          version: val
+          ...config,
+          version: val,
+          ...(val === '8.1' ? { quality: undefined, mode: config.mode === 'turbo' ? 'fast' : config.mode } : {})
         });
+      }
+    }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler(val: string) {
+        const config = this.$store.state.midjourney.config;
+        if (val === '8.1' && (config.quality || config.mode === 'turbo')) {
+          this.value = val;
+        }
       }
     }
   },

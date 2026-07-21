@@ -8,7 +8,7 @@
             <prompt-input class="mb-4" />
             <reference-image class="mb-4" />
             <ratio-selector class="mb-4" />
-            <quality-selector class="mb-4" />
+            <quality-selector v-if="config?.version !== '8.1'" class="mb-4" />
             <version-selector v-if="!isNiji" class="mb-4" />
             <hd-selector v-if="isV8 && !isNiji" class="mb-4" />
             <elements-selector class="mb-2" />

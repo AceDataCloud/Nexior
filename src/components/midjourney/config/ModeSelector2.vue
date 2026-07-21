@@ -2,7 +2,7 @@
   <el-dropdown trigger="click" @command="onCommand">
     <el-button round>
       <component
-        :is="activeOption.icon"
+        :is="activeOption?.icon"
         v-if="activeOption?.icon"
         :style="{
           color: activeOption?.color
@@ -61,7 +61,7 @@ export default defineComponent({
   },
   data() {
     return {
-      options: [
+      allOptions: [
         {
           label: this.$t('midjourney.button.fast'),
           value: 'fast',
@@ -84,6 +84,18 @@ export default defineComponent({
     };
   },
   computed: {
+    version(): string {
+      return this.$store.state.midjourney.config.version || '';
+    },
+    type(): string {
+      return this.$store.state.midjourney.config.type || 'imagine';
+    },
+    isV81Imagine(): boolean {
+      return this.type === 'imagine' && this.version === '8.1';
+    },
+    options() {
+      return this.isV81Imagine ? this.allOptions.filter((option) => option.value !== 'turbo') : this.allOptions;
+    },
     activeOption() {
       return this.options.find((option) => option.value === this.value);
     },
@@ -96,6 +108,16 @@ export default defineComponent({
           ...this.$store.state.midjourney.config,
           mode: val
         });
+      }
+    }
+  },
+  watch: {
+    isV81Imagine: {
+      immediate: true,
+      handler(val: boolean) {
+        if (val && this.value === 'turbo') {
+          this.value = DEFAULT_MODE;
+        }
       }
     }
   },
