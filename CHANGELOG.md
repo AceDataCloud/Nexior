@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 11:32:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 13:58:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.5
+
+Tue, 21 Jul 2026 13:58:45 GMT
+
+### Patches
+
+- fix(fish): render voice model visibility & train-mode controls at normal size (dev@acedata.cloud)
 
 ## 3.330.4
 
