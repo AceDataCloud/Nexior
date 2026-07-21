@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 10:20:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 11:32:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.4
+
+Tue, 21 Jul 2026 11:32:37 GMT
+
+### Patches
+
+- Route Poivelle provider runs through standard user Credentials, API cost rules, and usage recording. (dev@acedata.cloud)
 
 ## 3.330.3
 
