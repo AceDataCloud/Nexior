@@ -12,6 +12,8 @@ export default (): IPoivelleState => ({
   revisions: [],
   proposals: [],
   runs: [],
+  evaluations: [],
+  forensicValidations: [],
   application: undefined,
   applications: undefined,
   service: undefined,

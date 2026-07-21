@@ -67,6 +67,8 @@
               :timeline="timeline"
               :graph="graph"
               :artifacts="artifacts"
+              :can-edit="canEdit"
+              @move-clip="moveTimelineClip"
             />
             <review-view
               v-else
@@ -74,9 +76,15 @@
               :proposals="proposals"
               :revisions="revisions"
               :runs="runs"
+              :active-run="activeRun"
+              :evaluations="evaluations"
+              :forensic-validations="forensicValidations"
+              :costs="costs"
               :can-edit="canEdit"
               @reject-proposal="rejectProposal"
               @cancel-run="cancelRun"
+              @open-run="loadRun"
+              @retry-step="retryStep"
             />
           </div>
           <agent-dock
@@ -259,7 +267,13 @@ import {
 } from 'element-plus';
 import { AlertTriangle, Clapperboard, Film, LoaderCircle, Plus } from '@lucide/vue';
 import { t } from '@/i18n';
-import { Status, type IPoivelleGraphNode, type PoivelleNodeType, type PoivelleProjection } from '@/models';
+import {
+  Status,
+  type IPoivelleGraphNode,
+  type IPoivelleStepRun,
+  type PoivelleNodeType,
+  type PoivelleProjection
+} from '@/models';
 import StudioHeader from './StudioHeader.vue';
 import ProductionRail from './ProductionRail.vue';
 import ProjectionTabs from './ProjectionTabs.vue';
@@ -283,6 +297,10 @@ const storyboard = computed(() => state.value?.storyboard);
 const revisions = computed(() => state.value?.revisions ?? []);
 const proposals = computed(() => state.value?.proposals ?? []);
 const runs = computed(() => state.value?.runs ?? []);
+const activeRun = computed(() => state.value?.activeRun);
+const evaluations = computed(() => state.value?.evaluations ?? []);
+const forensicValidations = computed(() => state.value?.forensicValidations ?? []);
+const costs = computed(() => state.value?.costs);
 const timeline = computed(() => state.value?.timeline);
 const projection = computed<PoivelleProjection>(() => state.value?.projection ?? 'canvas');
 const selectedNodeId = computed<string | undefined>(() => state.value?.selectedNodeId);
@@ -441,6 +459,31 @@ const rejectProposal = async (proposalId: string) => {
 const cancelRun = async (runId: string) => {
   await ElMessageBox.confirm(t('poivelle.run.cancelConfirm'), '', { type: 'warning' });
   await submittingTask(() => store.dispatch('poivelle/cancelRun', runId));
+};
+const loadRun = (runId: string) => submittingTask(() => store.dispatch('poivelle/loadRun', runId));
+const retryStep = async (step: IPoivelleStepRun) => {
+  await submittingTask(async () => {
+    await store.dispatch('poivelle/retryStep', step);
+    dryRunDialogVisible.value = true;
+  });
+};
+const moveTimelineClip = async (payload: { trackId: string; clipId: string; direction: -1 | 1 }) => {
+  if (!timeline.value) return;
+  const clips = timeline.value.clips.map((clip: any) => ({ ...clip }));
+  const trackClips = clips
+    .filter((clip: any) => clip.track_id === payload.trackId)
+    .sort((left: any, right: any) => left.timeline_start_ms - right.timeline_start_ms);
+  const currentIndex = trackClips.findIndex((clip: any) => clip.id === payload.clipId);
+  const nextIndex = currentIndex + payload.direction;
+  if (currentIndex < 0 || nextIndex < 0 || nextIndex >= trackClips.length) return;
+  [trackClips[currentIndex], trackClips[nextIndex]] = [trackClips[nextIndex], trackClips[currentIndex]];
+  let cursor = 0;
+  trackClips.forEach((clip: any) => {
+    const speed = typeof clip.speed === 'number' && Number.isFinite(clip.speed) && clip.speed > 0 ? clip.speed : 1;
+    clip.timeline_start_ms = cursor;
+    cursor += (clip.source_out_ms - clip.source_in_ms) / speed;
+  });
+  await submittingTask(() => store.dispatch('poivelle/saveTimeline', { ...timeline.value, clips }));
 };
 const selectTake = async (payload: { target_node_id: string; take_id: string }) => {
   await submittingTask(async () => {

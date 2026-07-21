@@ -17,7 +17,7 @@
           {{ $t('poivelle.timeline.download') }}
         </a>
       </div>
-      <div class="master-media">
+      <div class="master-media" :style="masterMediaStyle">
         <video
           class="master-player"
           :src="masterArtifact.storage_url"
@@ -65,16 +65,31 @@
       <div v-for="track in timeline.tracks" :key="track.id" class="track-row">
         <div class="track-label">{{ track.title || track.kind || track.id }}</div>
         <div class="track-lane">
-          <button
-            v-for="clip in clipsFor(track.id)"
+          <div
+            v-for="(clip, clipIndex) in clipsFor(track.id)"
             :key="clip.id"
-            type="button"
             class="timeline-clip"
             :style="clipStyle(clip)"
             :title="clip.artifact_id"
           >
-            {{ clipLabel(clip) }}
-          </button>
+            <button type="button" :aria-label="clip.artifact_id">{{ clipLabel(clip) }}</button>
+            <span v-if="canEdit && track.kind === 'video'" class="clip-actions">
+              <button
+                type="button"
+                :disabled="clipIndex === 0"
+                @click="$emit('move-clip', { trackId: track.id, clipId: clip.id, direction: -1 })"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                :disabled="clipIndex === clipsFor(track.id).length - 1"
+                @click="$emit('move-clip', { trackId: track.id, clipId: clip.id, direction: 1 })"
+              >
+                ›
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +110,10 @@ const props = defineProps<{
   timeline?: IPoivelleTimeline;
   graph: IPoivelleGraphSnapshot;
   artifacts?: IPoivelleArtifact[];
+  canEdit?: boolean;
+}>();
+defineEmits<{
+  'move-clip': [payload: { trackId: string; clipId: string; direction: -1 | 1 }];
 }>();
 const masterArtifact = computed(() => {
   const compositionNodes = new Set(
@@ -142,11 +161,17 @@ const frameLabel = computed(() => {
   const height = metadataNumber('height');
   return width && height ? `${width} × ${height}` : '—';
 });
+const masterMediaStyle = computed(() => {
+  const width = metadataNumber('width');
+  const height = metadataNumber('height');
+  return width && height ? { aspectRatio: `${width} / ${height}` } : undefined;
+});
 const clipsFor = (trackId: string) => props.timeline?.clips.filter((clip) => clip.track_id === trackId) ?? [];
 const clipLabel = (clip: IPoivelleTimelineClip) => clip.artifact_id.slice(-6);
+const pixelsPerMillisecond = 120 / 5000;
 const clipStyle = (clip: IPoivelleTimelineClip) => ({
-  left: `${clip.timeline_start_ms / 100}px`,
-  width: `${Math.max(48, (clip.source_out_ms - clip.source_in_ms) / 100)}px`
+  left: `${clip.timeline_start_ms * pixelsPerMillisecond}px`,
+  width: `${Math.max(48, ((clip.source_out_ms - clip.source_in_ms) / (clip.speed ?? 1)) * pixelsPerMillisecond)}px`
 });
 </script>
 
@@ -368,7 +393,11 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   position: absolute;
   top: 9px;
   height: 38px;
-  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 5px 0 8px;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-brand-hex) 42%, transparent);
   border-radius: var(--poivelle-radius-small);
@@ -378,6 +407,25 @@ const clipStyle = (clip: IPoivelleTimelineClip) => ({
   font-size: 9px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.timeline-clip > button,
+.clip-actions button {
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+}
+.clip-actions {
+  display: flex;
+}
+.clip-actions button {
+  width: 18px;
+  height: 24px;
+  cursor: pointer;
+}
+.clip-actions button:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .timeline-clip:focus-visible {

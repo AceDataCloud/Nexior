@@ -47,7 +47,8 @@ const timeline: IPoivelleTimeline = {
       artifact_id: 'shot-artifact',
       timeline_start_ms: 0,
       source_in_ms: 0,
-      source_out_ms: 4000
+      source_out_ms: 4000,
+      speed: 2
     }
   ]
 };
@@ -108,6 +109,7 @@ describe('Poivelle TimelineView', () => {
     expect(wrapper.text()).toContain('1920 × 1080');
     expect(wrapper.text()).toContain('10');
     expect(wrapper.text()).toContain('2');
+    expect(wrapper.get('.timeline-clip').attributes('style')).toContain('width: 48px');
   });
 
   it('does not promote shot video or restricted composition artifacts', () => {

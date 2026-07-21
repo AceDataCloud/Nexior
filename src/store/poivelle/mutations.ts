@@ -35,6 +35,9 @@ const clearProjectData = (state: IPoivelleState): void => {
   state.proposals = [];
   state.runs = [];
   state.activeRun = undefined;
+  state.evaluations = [];
+  state.forensicValidations = [];
+  state.costs = undefined;
   state.timeline = undefined;
   state.selectedNodeId = undefined;
   state.dryRun = undefined;
@@ -97,6 +100,15 @@ export const setRuns = (state: IPoivelleState, value: IPoivelleState['runs']): v
 };
 export const setActiveRun = (state: IPoivelleState, value: IPoivelleState['activeRun']): void => {
   state.activeRun = value;
+};
+export const setEvaluations = (state: IPoivelleState, value: IPoivelleState['evaluations']): void => {
+  state.evaluations = value;
+};
+export const setForensicValidations = (state: IPoivelleState, value: IPoivelleState['forensicValidations']): void => {
+  state.forensicValidations = value;
+};
+export const setCosts = (state: IPoivelleState, value: IPoivelleState['costs']): void => {
+  state.costs = value;
 };
 export const setTimeline = (state: IPoivelleState, value: IPoivelleState['timeline']): void => {
   state.timeline = value;

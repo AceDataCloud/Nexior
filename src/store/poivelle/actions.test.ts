@@ -6,7 +6,9 @@ import {
   confirmDryRun,
   createCommercialTVCProject,
   loadProject,
+  loadRun,
   rejectProposal,
+  retryStep,
   selectTake
 } from './actions';
 import { poivelleOperator } from '@/operators';
@@ -28,6 +30,12 @@ vi.mock('@/operators', () => ({
     getTakes: vi.fn(),
     getSelections: vi.fn(),
     getStoryboard: vi.fn(),
+    getEvaluations: vi.fn(),
+    getForensicValidations: vi.fn(),
+    getCosts: vi.fn(),
+    getRun: vi.fn(),
+    createRevision: vi.fn(),
+    dryRunAction: vi.fn(),
     createCommercialTVCProject: vi.fn(),
     selectTake: vi.fn(),
     confirmAction: vi.fn(),
@@ -257,6 +265,9 @@ describe('Poivelle Vuex actions', () => {
     vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
     vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [{ id: 'artifact' }] } as any);
     vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [{ id: 'take' }] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [{ id: 'evaluation' }] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [{ id: 'forensic' }] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: { totals_microcredits: { final: 5 } } } as any);
     vi.mocked(poivelleOperator.getSelections).mockResolvedValue({ data: [{ id: 'selection' }] } as any);
     vi.mocked(poivelleOperator.getStoryboard).mockResolvedValue({ data: { sections: [] } } as any);
 
@@ -267,6 +278,9 @@ describe('Poivelle Vuex actions', () => {
     expect(ctx.commit).toHaveBeenCalledWith('setArtifacts', [{ id: 'artifact' }]);
     expect(ctx.commit).toHaveBeenCalledWith('setTakes', [{ id: 'take' }]);
     expect(ctx.commit).toHaveBeenCalledWith('setSelections', [{ id: 'selection' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setEvaluations', [{ id: 'evaluation' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setForensicValidations', [{ id: 'forensic' }]);
+    expect(ctx.commit).toHaveBeenCalledWith('setCosts', { totals_microcredits: { final: 5 } });
   });
 
   it('does not load project-wide selections when a project has no revision', async () => {
@@ -280,11 +294,58 @@ describe('Poivelle Vuex actions', () => {
     vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
     vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [] } as any);
     vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: {} } as any);
 
     await loadProject(ctx as any, 'project');
 
     expect(poivelleOperator.getSelections).not.toHaveBeenCalled();
     expect(ctx.commit).toHaveBeenCalledWith('setSelections', []);
+  });
+
+  it('loads run steps and attempts for recovery inspection', async () => {
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    const detail = { run: { id: 'run' }, steps: [{ id: 'step' }], attempts: [{ id: 'attempt' }] };
+    vi.mocked(poivelleOperator.getRun).mockResolvedValue({ data: detail } as any);
+
+    await loadRun(ctx as any, 'run');
+
+    expect(poivelleOperator.getRun).toHaveBeenCalledWith('project', 'run', { token: 'token' });
+    expect(ctx.commit).toHaveBeenCalledWith('setActiveRun', detail);
+  });
+
+  it('creates a new dry run for the failed step node', async () => {
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    ctx.state.graph = {
+      project_id: 'project',
+      graph_version: 4,
+      nodes: [{ id: 'video-node', node_type: 'video' }],
+      edges: [],
+      groups: [],
+      layouts: []
+    } as any;
+    ctx.state.revisions = [{ id: 'revision', graph_version: 4 } as any];
+    ctx.state.activeRun = { run: { id: 'failed-run' }, steps: [], attempts: [] } as any;
+    const dryRun = { id: 'retry-dry-run', target_ids: ['video-node'] };
+    vi.mocked(poivelleOperator.dryRunAction).mockResolvedValue({ data: dryRun } as any);
+
+    await expect(retryStep(ctx as any, { node_id: 'video-node', operation: 'video.shot@1' })).resolves.toEqual(dryRun);
+
+    expect(poivelleOperator.dryRunAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({
+        action_type: 'generate',
+        target_ids: ['video-node'],
+        revision_id: 'revision',
+        options: { recovery_of_run_id: 'failed-run' }
+      }),
+      { token: 'token' }
+    );
+    expect(ctx.commit).toHaveBeenCalledWith('setSelectedNode', 'video-node');
+    expect(ctx.commit).toHaveBeenCalledWith('setDryRun', dryRun);
   });
 
   it('selects a take against the current revision and selection head', async () => {
