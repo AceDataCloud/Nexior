@@ -7,6 +7,7 @@ import {
   type IPoivelleCommercialTVCBlueprintRequest,
   type IPoivelleGraphCommandRequest,
   type IPoivelleActionDryRun,
+  type IPoivelleProject,
   type IPoivelleRun,
   type IPoivelleStepRun,
   type IPoivelleTimeline,
@@ -105,13 +106,22 @@ const loadMembership = async (
   commit('setCurrentMembership', membership);
 };
 
-export const bootstrap = async ({ commit, rootState, state, dispatch }: Context): Promise<void> => {
+export const bootstrap = async (
+  { commit, rootState, state, dispatch }: Context,
+  options: { loadProject?: boolean } = {}
+): Promise<void> => {
+  if (state.status.bootstrap === Status.Request) return;
   commit('setStatus', { key: 'bootstrap', value: Status.Request });
   commit('setError');
   let finalStatus = Status.Success;
   try {
-    const { data: workspaces } = await poivelleOperator.getWorkspaces({ token: token(rootState) });
+    const requestOptions = { token: token(rootState) };
+    const [{ data: workspaces }, { data: discoveryWorks }] = await Promise.all([
+      poivelleOperator.getWorkspaces(requestOptions),
+      poivelleOperator.getDiscovery(requestOptions)
+    ]);
     commit('setWorkspaces', workspaces);
+    commit('setDiscoveryWorks', discoveryWorks);
     const workspaceId = state.currentWorkspaceId ?? workspaces[0]?.id;
     commit('setCurrentWorkspace', workspaceId);
     if (!workspaceId) {
@@ -125,7 +135,7 @@ export const bootstrap = async ({ commit, rootState, state, dispatch }: Context)
     commit('setProjects', projects);
     const projectId = state.currentProjectId ?? projects[0]?.id;
     commit('setCurrentProject', projectId);
-    if (projectId) await dispatch('loadProject', projectId);
+    if (projectId && options.loadProject !== false) await dispatch('loadProject', projectId);
   } catch (error) {
     finalStatus = Status.Error;
     commit('setError', message(error));
@@ -137,12 +147,53 @@ export const bootstrap = async ({ commit, rootState, state, dispatch }: Context)
 export const createWorkspace = async (
   { commit, rootState }: Context,
   payload: { name: string; monthly_limit_microcredits?: number }
-): Promise<void> => {
+): Promise<string> => {
   const { data } = await poivelleOperator.createWorkspace(payload, { token: token(rootState) });
   commit('addWorkspace', data);
   await loadMembership({ commit, rootState }, data.id);
   commit('setProjects', []);
   commit('setCurrentProject');
+  return data.id;
+};
+
+const ensureWorkspace = async ({ state, commit, rootState }: Context): Promise<string> => {
+  if (state.currentWorkspaceId) return state.currentWorkspaceId;
+  const existing = state.workspaces[0];
+  if (existing) {
+    commit('setCurrentWorkspace', existing.id);
+    await loadMembership({ commit, rootState }, existing.id);
+    return existing.id;
+  }
+  const { data } = await poivelleOperator.createWorkspace({ name: 'My Studio' }, { token: token(rootState) });
+  commit('addWorkspace', data);
+  await loadMembership({ commit, rootState }, data.id);
+  return data.id;
+};
+
+export const copyDiscoveryWork = async (
+  context: Context,
+  payload: {
+    work_id: string;
+    prompt: string;
+    title?: string;
+    aspect_ratio?: '16:9' | '9:16' | '1:1';
+  }
+): Promise<IPoivelleProject> => {
+  const { commit, rootState, dispatch } = context;
+  const workspaceId = await ensureWorkspace(context);
+  const { data } = await poivelleOperator.copyDiscoveryWork(
+    payload.work_id,
+    {
+      workspace_id: workspaceId,
+      prompt: payload.prompt.trim(),
+      title: payload.title?.trim(),
+      aspect_ratio: payload.aspect_ratio ?? '16:9'
+    },
+    { token: token(rootState) }
+  );
+  commit('addProject', data.project);
+  await dispatch('loadProject', data.project.id);
+  return data.project;
 };
 
 export const selectWorkspace = async ({ commit, rootState, dispatch }: Context, workspaceId: string): Promise<void> => {
@@ -203,6 +254,7 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
         poivelleOperator.getForensicValidations(projectId, options),
         poivelleOperator.getCosts(projectId, options)
       ]);
+    if (state.currentProjectId !== projectId) return;
     const currentRevisionId = revisions.data[0]?.id;
     const [selections, storyboard] = await Promise.all([
       currentRevisionId
@@ -212,6 +264,7 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
         ? poivelleOperator.getStoryboard(projectId, options)
         : Promise.resolve(undefined)
     ]);
+    if (state.currentProjectId !== projectId) return;
     commit('setGraph', graph.data);
     commit('setAssets', assets.data);
     commit('setRevisions', revisions.data);
@@ -226,10 +279,13 @@ export const loadProject = async ({ commit, rootState, state }: Context, project
     commit('setSelections', selections.data);
     commit('setStoryboard', storyboard?.data);
   } catch (error) {
+    if (state.currentProjectId !== projectId) return;
     finalStatus = Status.Error;
     commit('setError', message(error));
   } finally {
-    commit('setStatus', { key: 'graph', value: finalStatus });
+    if (state.currentProjectId === projectId) {
+      commit('setStatus', { key: 'graph', value: finalStatus });
+    }
   }
 };
 
@@ -517,6 +573,7 @@ export const selectNode = ({ commit }: Context, nodeId?: string): void => commit
 export default {
   bootstrap,
   createWorkspace,
+  copyDiscoveryWork,
   selectWorkspace,
   createProject,
   createCommercialTVCProject,

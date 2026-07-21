@@ -5,6 +5,7 @@ import type {
   IPoivelleGraphNode,
   IPoivelleGraphSnapshot,
   IPoivelleEvaluation,
+  IPoivelleDiscoveryWork,
   IPoivelleForensicValidation,
   IPoivelleMembership,
   IPoivelleProject,
@@ -24,6 +25,7 @@ import type {
 
 export interface IPoivelleState {
   workspaces: IPoivelleWorkspace[];
+  discoveryWorks: IPoivelleDiscoveryWork[];
   projects: IPoivelleProject[];
   currentWorkspaceId?: string;
   currentMembership?: IPoivelleMembership;

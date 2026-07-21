@@ -34,6 +34,22 @@ export interface IPoivelleWorkspace {
   updated_at: string;
 }
 
+export type PoivelleDiscoveryCategory = 'commercial' | 'music_video' | 'documentary' | 'community';
+
+export interface IPoivelleDiscoveryWork {
+  id: string;
+  title: string;
+  description: string;
+  category: PoivelleDiscoveryCategory;
+  creator_name: string;
+  cover_url?: string;
+  source: 'official' | 'community';
+  blueprint_id?: string;
+  template_id?: string;
+  duration_seconds?: number;
+  tags: string[];
+}
+
 export interface IPoivelleMembership {
   id: string;
   workspace_id: string;
