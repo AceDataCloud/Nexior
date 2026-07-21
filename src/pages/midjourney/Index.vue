@@ -102,6 +102,7 @@ export default defineComponent({
         content += ` --chaos ${this.config.chaos}`;
       }
       if (
+        this.config?.version !== '8.1' &&
         this.config?.quality &&
         !content.includes(`--quality `) &&
         !content.includes(`--q `) &&
@@ -322,14 +323,15 @@ export default defineComponent({
         });
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
+      const isV81 = this.config?.version === '8.1';
       const request = {
         image_id: payload.image_id,
         action: payload.action,
-        mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
+        mode: isV81 ? MIDJOURNEY_DEFAULT_MODE : this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
         async: true,
         version: this.config?.version,
         hd: this.config?.hd || false,
-        quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY
+        ...(!isV81 ? { quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY } : {})
       };
       this.onStartImagineTask(request);
     },
@@ -358,6 +360,7 @@ export default defineComponent({
         };
         await this.onStartVideosTask(request);
       } else if (this.config?.type === 'imagine') {
+        const isV81 = this.config?.version === '8.1';
         const isV8 = this.config?.version === '8' || this.config?.version === '8.1';
         const hasSref = !!(this.finalPrompt && this.finalPrompt.includes('--sref'));
         const hasMoodboard = !!(isV8 && this.config?.references && this.config.references.length > 0);
@@ -369,7 +372,7 @@ export default defineComponent({
           async: true,
           version: this.config?.version,
           hd: this.config?.hd || false,
-          quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY,
+          ...(!isV81 ? { quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY } : {}),
           style_reference: hasSref,
           moodboard: hasMoodboard
         };
