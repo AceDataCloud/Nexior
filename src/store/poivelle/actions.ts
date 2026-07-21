@@ -1,6 +1,9 @@
 import type { ActionContext } from 'vuex';
 import {
   Status,
+  IApplicationScope,
+  IApplicationType,
+  type ICredential,
   type IPoivelleCommercialTVCBlueprintRequest,
   type IPoivelleGraphCommandRequest,
   type IPoivelleActionDryRun,
@@ -9,7 +12,7 @@ import {
   type IPoivelleTimeline,
   type PoivelleProjection
 } from '@/models';
-import { poivelleOperator } from '@/operators';
+import { applicationOperator, credentialOperator, poivelleOperator } from '@/operators';
 import type { IRootState } from '../common/models';
 import type { IPoivelleState } from './models';
 
@@ -24,7 +27,7 @@ const message = (error: unknown): string => {
   if (error && typeof error === 'object' && 'response' in error) {
     const detail = (error as any).response?.data?.detail;
     if (typeof detail === 'string') return detail;
-    if (detail?.message) return detail.message;
+    if (typeof detail?.message === 'string') return detail.message;
   }
   return error instanceof Error ? error.message : 'Poivelle request failed';
 };
@@ -32,6 +35,65 @@ const uid = (): string =>
   typeof crypto !== 'undefined' && crypto.randomUUID
     ? crypto.randomUUID()
     : `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+
+const createExecutionCredential = async (
+  rootState: IRootState,
+  dryRun: IPoivelleActionDryRun
+): Promise<ICredential | undefined> => {
+  if (!dryRun.requires_credential) return undefined;
+  const userId = rootState.user?.id;
+  if (!userId) throw new Error('Poivelle provider execution requires an authenticated user');
+  let applications = rootState.applications ?? [];
+  let globalApplication = applications
+    .filter((application) => application.scope === IApplicationScope.GLOBAL && application.role === 'owner')
+    .sort((left, right) => (right.remaining_amount ?? 0) - (left.remaining_amount ?? 0))[0];
+  if (!globalApplication) {
+    const response = await applicationOperator.getAll({
+      limit: 100,
+      offset: 0,
+      user_id: 'me',
+      ordering: '-created_at',
+      type: IApplicationType.USAGE,
+      scope: IApplicationScope.GLOBAL,
+      affiliation: 'owner'
+    });
+    applications = response.data.items;
+    globalApplication = [...applications].sort(
+      (left, right) => (right.remaining_amount ?? 0) - (left.remaining_amount ?? 0)
+    )[0];
+  }
+  if (!globalApplication?.id) throw new Error('A Global usage application is required for provider execution');
+  const usable = (credential: ICredential): boolean =>
+    credential.metadata?.purpose === 'poivelle_execution' &&
+    credential.metadata?.dry_run_id === dryRun.id &&
+    !!credential.token &&
+    (!credential.expired_at || Date.parse(credential.expired_at) > Date.now());
+  let credential = globalApplication.credentials?.find(usable);
+  if (!credential) {
+    const response = await credentialOperator.getAll({
+      application_id: globalApplication.id,
+      limit: 100,
+      ordering: '-created_at'
+    });
+    credential = response.data.items.find(usable);
+  }
+  if (credential) return credential;
+  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+  const limitedAmount = dryRun.max_cost_microcredits > 0 ? dryRun.max_cost_microcredits / 1_000_000 : undefined;
+  const { data: createdCredential } = await credentialOperator.create({
+    application_id: globalApplication.id,
+    host: typeof window === 'undefined' ? 'https://studio.acedata.cloud' : window.location.origin,
+    expired_at: expiresAt,
+    limited_amount: limitedAmount,
+    metadata: {
+      purpose: 'poivelle_execution',
+      project_id: dryRun.project_id,
+      dry_run_id: dryRun.id
+    }
+  });
+  if (!createdCredential.token) throw new Error('The temporary execution credential has no token');
+  return createdCredential;
+};
 
 const loadMembership = async (
   { commit, rootState }: Pick<Context, 'commit' | 'rootState'>,
@@ -300,16 +362,29 @@ export const dryRun = async (
 
 export const confirmDryRun = async ({ state, commit, rootState }: Context): Promise<IPoivelleRun | undefined> => {
   if (!state.currentProjectId || !state.dryRun) return;
-  const { data } = await poivelleOperator.confirmAction(
-    state.currentProjectId,
-    {
-      dry_run_id: state.dryRun.id,
-      revision_id: state.dryRun.revision_id,
-      confirmation_nonce: state.dryRun.confirmation_nonce,
-      idempotency_key: `confirm-${uid()}`
-    },
-    { token: token(rootState) }
-  );
+  const project = state.projects.find((item) => item.id === state.currentProjectId);
+  const credential = project?.managed_execution ? undefined : await createExecutionCredential(rootState, state.dryRun);
+  let data;
+  try {
+    const response = await poivelleOperator.confirmAction(
+      state.currentProjectId,
+      {
+        dry_run_id: state.dryRun.id,
+        revision_id: state.dryRun.revision_id,
+        confirmation_nonce: state.dryRun.confirmation_nonce,
+        idempotency_key: `confirm-${state.dryRun.id}`,
+        execution_credential: credential?.token
+      },
+      { token: token(rootState) }
+    );
+    data = response.data;
+  } catch (error: any) {
+    const status = error?.response?.status;
+    if (credential?.id && [400, 401, 403, 404, 422].includes(status)) {
+      await credentialOperator.delete(credential.id).catch(() => undefined);
+    }
+    throw new Error(message(error));
+  }
   commit('setRuns', [data.run, ...state.runs.filter((run) => run.id !== data.run.id)]);
   commit('setDryRun');
   return data.run;

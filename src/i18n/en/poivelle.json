@@ -119,13 +119,12 @@
   "run.maximum": { "message": "Maximum cost", "description": "Dry run maximum cost" },
   "run.approval": { "message": "Approval class", "description": "Dry run approval class" },
   "run.confirmBody": {
-    "message": "The compiler will execute only the selected dependency closure against this immutable revision. Provider-backed work remains reservation-gated.",
+    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
     "description": "Run confirmation explanation"
   },
   "run.confirm": { "message": "Confirm run", "description": "Confirm run command" },
   "run.queued": { "message": "Production run queued", "description": "Run queue success toast" },
-  "run.reservationPending": { "message": "Run created; Gateway budget reservation is required before provider execution.", "description": "Reservation-pending run notice" },
   "run.cancel": { "message": "Cancel", "description": "Cancel execution run command" },
-  "run.cancelConfirm": { "message": "Cancel this execution run and release its reservation?", "description": "Cancel run confirmation" },
+  "run.cancelConfirm": { "message": "Cancel this execution run?", "description": "Cancel run confirmation" },
   "error.generic": { "message": "Poivelle could not complete the request.", "description": "Generic Poivelle request error" }
 }

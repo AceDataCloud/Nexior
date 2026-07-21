@@ -112,11 +112,10 @@
   "run.targets": { "message": "依赖闭包", "description": "Dry run 目标数量" },
   "run.maximum": { "message": "最高成本", "description": "Dry run 最高成本" },
   "run.approval": { "message": "审批级别", "description": "Dry run 审批级别" },
-  "run.confirmBody": { "message": "编译器只会针对这个不可变修订执行选中的依赖闭包。调用外部供应商的工作仍必须先完成额度预留。", "description": "运行确认说明" },
+  "run.confirmBody": { "message": "编译器将使用短期 API Credential 执行这个不可变依赖闭包；每次供应商调用均沿用现有成本规则与用量记录。", "description": "运行确认说明" },
   "run.confirm": { "message": "确认运行", "description": "确认运行命令" },
   "run.queued": { "message": "制作运行已进入队列", "description": "运行入队成功提示" },
-  "run.reservationPending": { "message": "运行已创建；调用外部供应商前仍需由 Gateway 完成额度预留。", "description": "等待额度预留的运行提示" },
   "run.cancel": { "message": "取消", "description": "取消执行运行操作" },
-  "run.cancelConfirm": { "message": "取消此执行运行并释放其额度预留吗？", "description": "取消运行确认" },
+  "run.cancelConfirm": { "message": "确定取消此执行运行吗？", "description": "取消运行确认" },
   "error.generic": { "message": "Poivelle 未能完成该请求。", "description": "Poivelle 通用错误" }
 }

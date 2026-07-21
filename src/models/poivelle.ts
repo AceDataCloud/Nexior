@@ -274,6 +274,7 @@ export interface IPoivelleActionDryRun {
   revision_id: string;
   dependency_closure: string[];
   max_cost_microcredits: number;
+  requires_credential: boolean;
   required_approval: 'auto' | 'batch' | 'always';
   confirmation_nonce: string;
   expires_at: string;
@@ -314,17 +315,8 @@ export interface IPoivelleRun {
   id: string;
   project_id: string;
   revision_id: string;
-  state:
-    | 'reservation_pending'
-    | 'pending'
-    | 'running'
-    | 'paused'
-    | 'paused_for_recovery'
-    | 'settling'
-    | 'release_pending'
-    | 'succeeded'
-    | 'failed'
-    | 'cancelled';
+  funding_mode?: 'user_credential' | 'user_reserved' | 'managed';
+  state: 'pending' | 'running' | 'paused' | 'paused_for_recovery' | 'succeeded' | 'failed' | 'cancelled';
   created_at: string;
   finished_at?: string;
 }

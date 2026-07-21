@@ -11,11 +11,19 @@ import {
   retryStep,
   selectTake
 } from './actions';
-import { poivelleOperator } from '@/operators';
+import { applicationOperator, credentialOperator, poivelleOperator } from '@/operators';
 import { setCurrentProject } from './mutations';
 import stateFactory from './state';
 
 vi.mock('@/operators', () => ({
+  applicationOperator: {
+    getAll: vi.fn()
+  },
+  credentialOperator: {
+    getAll: vi.fn(),
+    create: vi.fn(),
+    delete: vi.fn()
+  },
   poivelleOperator: {
     getWorkspaces: vi.fn(),
     applyGraphCommand: vi.fn(),
@@ -46,13 +54,16 @@ vi.mock('@/operators', () => ({
 
 const context = (access?: string) => ({
   state: stateFactory(),
-  rootState: { token: { access } },
+  rootState: { token: { access }, user: { id: 'user' }, applications: [] },
   commit: vi.fn(),
   dispatch: vi.fn()
 });
 
 describe('Poivelle Vuex actions', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(credentialOperator.getAll).mockResolvedValue({ data: { count: 0, items: [] } } as any);
+  });
 
   it('fails bootstrap without sending an unauthenticated request', async () => {
     const ctx = context();
@@ -172,17 +183,27 @@ describe('Poivelle Vuex actions', () => {
     expect(state.selectedNodeId).toBeUndefined();
   });
 
-  it('returns a reservation-pending run to the confirmation UI', async () => {
+  it('delegates a capped temporary Global credential to a provider run', async () => {
     const run = {
       id: 'run',
       project_id: 'project',
       revision_id: 'revision',
-      state: 'reservation_pending',
+      state: 'pending',
+      funding_mode: 'user_credential',
       created_at: 'now'
     } as const;
     vi.mocked(poivelleOperator.confirmAction).mockResolvedValue({ data: { run, steps: [] } } as any);
+    vi.mocked(applicationOperator.getAll).mockResolvedValue({
+      data: {
+        items: [{ id: 'global-app', scope: 'Global', role: 'owner' }]
+      }
+    } as any);
+    vi.mocked(credentialOperator.create).mockResolvedValue({
+      data: { id: 'temporary-credential', token: 'temporary-global-credential-00000001' }
+    } as any);
     const ctx = context('token');
     ctx.state.currentProjectId = 'project';
+    ctx.state.projects = [{ id: 'project', managed_execution: false } as any];
     ctx.state.dryRun = {
       id: 'dryrun',
       project_id: 'project',
@@ -190,14 +211,80 @@ describe('Poivelle Vuex actions', () => {
       target_ids: ['node'],
       revision_id: 'revision',
       dependency_closure: ['node'],
-      max_cost_microcredits: 0,
+      max_cost_microcredits: 2_500_000,
+      requires_credential: true,
       required_approval: 'batch',
       confirmation_nonce: 'nonce',
       expires_at: 'later'
     };
 
     await expect(confirmDryRun(ctx as any)).resolves.toEqual(run);
+    expect(credentialOperator.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        application_id: 'global-app',
+        limited_amount: 2.5,
+        metadata: {
+          purpose: 'poivelle_execution',
+          project_id: 'project',
+          dry_run_id: 'dryrun'
+        }
+      })
+    );
+    expect(poivelleOperator.confirmAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({
+        idempotency_key: 'confirm-dryrun',
+        execution_credential: 'temporary-global-credential-00000001'
+      }),
+      { token: 'token' }
+    );
     expect(ctx.commit).toHaveBeenCalledWith('setRuns', [run]);
+  });
+
+  it('reuses the temporary credential for an idempotent confirmation retry', async () => {
+    const run = { id: 'run', project_id: 'project', revision_id: 'revision', state: 'pending', created_at: 'now' };
+    vi.mocked(applicationOperator.getAll).mockResolvedValue({
+      data: { items: [{ id: 'global-app', scope: 'Global', role: 'owner' }] }
+    } as any);
+    vi.mocked(credentialOperator.getAll).mockResolvedValue({
+      data: {
+        count: 1,
+        items: [
+          {
+            id: 'existing-credential',
+            token: 'existing-temporary-credential-000001',
+            expired_at: new Date(Date.now() + 60_000).toISOString(),
+            metadata: { purpose: 'poivelle_execution', dry_run_id: 'dryrun' }
+          }
+        ]
+      }
+    } as any);
+    vi.mocked(poivelleOperator.confirmAction).mockResolvedValue({ data: { run, steps: [] } } as any);
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
+    ctx.state.projects = [{ id: 'project' } as any];
+    ctx.state.dryRun = {
+      id: 'dryrun',
+      project_id: 'project',
+      action_type: 'generate',
+      target_ids: ['node'],
+      revision_id: 'revision',
+      dependency_closure: ['node'],
+      max_cost_microcredits: 1_000_000,
+      requires_credential: true,
+      required_approval: 'batch',
+      confirmation_nonce: 'nonce',
+      expires_at: 'later'
+    };
+
+    await confirmDryRun(ctx as any);
+
+    expect(credentialOperator.create).not.toHaveBeenCalled();
+    expect(poivelleOperator.confirmAction).toHaveBeenCalledWith(
+      'project',
+      expect.objectContaining({ execution_credential: 'existing-temporary-credential-000001' }),
+      { token: 'token' }
+    );
   });
 
   it('replaces the rejected proposal with the server result', async () => {
@@ -217,7 +304,7 @@ describe('Poivelle Vuex actions', () => {
 
   it('replaces a cancelling run with the server lifecycle state', async () => {
     const run = { id: 'run', state: 'running' } as const;
-    const cancelling = { ...run, state: 'release_pending' as const };
+    const cancelling = { ...run, state: 'cancelled' as const };
     vi.mocked(poivelleOperator.cancelRun).mockResolvedValue({ data: cancelling } as any);
     const ctx = context('token');
     ctx.state.currentProjectId = 'project';

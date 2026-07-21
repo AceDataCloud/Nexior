@@ -264,7 +264,7 @@
     "description": "Dry run approval class"
   },
   "run.confirmBody": {
-    "message": "The compiler will execute only the selected dependency closure against this immutable revision. Provider-backed work remains reservation-gated.",
+    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
     "description": "Run confirmation explanation"
   },
   "run.confirm": {
@@ -283,10 +283,6 @@
     "message": "Plan selected",
     "description": "Plan a skill action for the selected graph node"
   },
-  "run.reservationPending": {
-    "message": "Run created; Gateway budget reservation is required before provider execution.",
-    "description": "Reservation-pending run notice"
-  },
   "review.reject": {
     "message": "Reject",
     "description": "Reject agent proposal command"
@@ -304,7 +300,7 @@
     "description": "Cancel execution run command"
   },
   "run.cancelConfirm": {
-    "message": "Cancel this execution run and release its reservation?",
+    "message": "Cancel this execution run?",
     "description": "Cancel run confirmation"
   },
   "project.workflow": {
