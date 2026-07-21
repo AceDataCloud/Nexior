@@ -141,7 +141,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-else-if="modelValue?.response" :class="{ content: true }">
+      <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />

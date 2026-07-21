@@ -32,6 +32,16 @@ const mountPreview = (response: INanobananaTask['response']) =>
   });
 
 describe('nanobanana/task/Preview', () => {
+  it('shows task metadata before the first response arrives', () => {
+    const wrapper = mountPreview(undefined);
+
+    expect(wrapper.text()).toContain('nanobanana.status.pending');
+    expect(wrapper.text()).toContain('nanobanana.name.model');
+    expect(wrapper.text()).toContain('nanobanana.name.taskId');
+    expect(wrapper.text()).toContain('task-1');
+    expect(wrapper.findComponent({ name: 'TimeIcon' }).exists()).toBe(true);
+  });
+
   it('labels an unfinished response as pending rather than failed', () => {
     const wrapper = mountPreview({ task_id: 'task-1' } as INanobananaTask['response']);
 
