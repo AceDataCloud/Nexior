@@ -1,34 +1,34 @@
 <template>
-  <div class="field flex items-center justify-between">
-    <h2 class="title font-bold text-[14px] mb-[10px]">{{ $t('omni.name.referenceVideo') }}</h2>
-    <div class="upload-wrapper flex flex-col items-start gap-[8px]">
-      <div class="controls flex items-center">
-        <el-upload
-          v-model:file-list="fileList"
-          accept=".mp4,.mov"
-          name="file"
-          class="value"
-          :show-file-list="false"
-          :limit="1"
-          :multiple="false"
-          :action="uploadUrl"
-          :before-upload="beforeUpload"
-          :on-exceed="onExceed"
-          :on-error="onError"
-          :on-success="onSuccess"
-          :headers="headers"
-        >
-          <el-button size="small" type="primary" round>
-            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('omni.button.uploadVideo') }}
-          </el-button>
-        </el-upload>
-        <info-icon :content="$t('omni.description.referenceVideo')" class="ml-2" />
+  <div>
+    <div class="field flex min-h-8 w-full items-center justify-between gap-3">
+      <div class="flex min-w-0 items-center">
+        <h2 class="title m-0 text-[14px] font-bold">{{ $t('omni.name.referenceVideo') }}</h2>
+        <info-icon :content="$t('omni.description.referenceVideo')" />
       </div>
+      <el-upload
+        v-model:file-list="fileList"
+        accept=".mp4,.mov"
+        name="file"
+        class="value shrink-0"
+        :show-file-list="false"
+        :limit="1"
+        :multiple="false"
+        :action="uploadUrl"
+        :before-upload="beforeUpload"
+        :on-exceed="onExceed"
+        :on-error="onError"
+        :on-success="onSuccess"
+        :headers="headers"
+      >
+        <el-button size="small" type="primary" round>
+          <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('omni.button.uploadVideo') }}
+        </el-button>
+      </el-upload>
     </div>
-  </div>
-  <div v-if="videoUrl" class="file-list flex flex-wrap gap-[10px]">
-    <file-preview :url="videoUrl" :name="videoName" :percentage="100" @remove="onRemove" />
+    <div v-if="videoUrl" class="file-list flex flex-wrap gap-[10px]">
+      <file-preview :url="videoUrl" :name="videoName" :percentage="100" @remove="onRemove" />
+    </div>
   </div>
 </template>
 

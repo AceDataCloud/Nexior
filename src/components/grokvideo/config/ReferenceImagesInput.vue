@@ -1,43 +1,43 @@
 <template>
-  <div class="field mb-[10px] flex items-center justify-between">
-    <h2 class="title m-0 text-[14px] font-bold">{{ $t('grokvideo.name.referenceImages') }}</h2>
-    <div class="upload-wrapper flex flex-col items-start gap-[8px]">
-      <div class="controls flex items-center">
-        <el-upload
-          ref="uploader"
-          v-model:file-list="fileList"
-          accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-          name="file"
-          class="value"
-          :limit="limit"
-          :multiple="true"
-          :show-file-list="false"
-          :action="uploadUrl"
-          :on-exceed="onExceed"
-          :on-error="onError"
-          :on-success="onSuccess"
-          :on-change="onChange"
-          :on-remove="onRemove"
-          :headers="headers"
-        >
-          <el-button size="small" type="primary" round>
-            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('grokvideo.button.upload') }}
-          </el-button>
-        </el-upload>
+  <div>
+    <div class="field mb-[10px] flex min-h-8 w-full items-center justify-between gap-3">
+      <div class="flex min-w-0 items-center">
+        <h2 class="title m-0 text-[14px] font-bold">{{ $t('grokvideo.name.referenceImages') }}</h2>
         <info-icon :content="$t('grokvideo.description.referenceImages')" />
       </div>
+      <el-upload
+        ref="uploader"
+        v-model:file-list="fileList"
+        accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+        name="file"
+        class="value shrink-0"
+        :limit="limit"
+        :multiple="true"
+        :show-file-list="false"
+        :action="uploadUrl"
+        :on-exceed="onExceed"
+        :on-error="onError"
+        :on-success="onSuccess"
+        :on-change="onChange"
+        :on-remove="onRemove"
+        :headers="headers"
+      >
+        <el-button size="small" type="primary" round>
+          <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('grokvideo.button.upload') }}
+        </el-button>
+      </el-upload>
     </div>
-  </div>
-  <div class="file-list flex flex-wrap gap-[10px]">
-    <image-preview
-      v-for="(file, idx) in fileList"
-      :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
-      :url="(file as any).url || (file as any)?.response?.file_url"
-      :name="(file as any).name"
-      :percentage="(file as any).percentage"
-      @remove="onRemovePreview(idx, file)"
-    />
+    <div class="file-list flex flex-wrap gap-[10px]">
+      <image-preview
+        v-for="(file, idx) in fileList"
+        :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
+        :url="(file as any).url || (file as any)?.response?.file_url"
+        :name="(file as any).name"
+        :percentage="(file as any).percentage"
+        @remove="onRemovePreview(idx, file)"
+      />
+    </div>
   </div>
 </template>
 
