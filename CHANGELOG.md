@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 13:58:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 14:13:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.6
+
+Tue, 21 Jul 2026 14:13:16 GMT
+
+### Patches
+
+- Show Nano Banana task metadata while generated images are still pending. (dev@acedata.cloud)
 
 ## 3.330.5
 
