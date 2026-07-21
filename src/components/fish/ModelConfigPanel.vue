@@ -101,7 +101,7 @@
       <!-- Visibility -->
       <div class="field-block mb-4">
         <h2 class="title font-bold">{{ $t('fish.name.visibility') }}</h2>
-        <el-radio-group v-model="form.visibility" size="small">
+        <el-radio-group v-model="form.visibility">
           <el-radio-button label="private" value="private">{{ $t('fish.value.private') }}</el-radio-button>
           <el-radio-button label="unlist" value="unlist">{{ $t('fish.value.unlist') }}</el-radio-button>
           <el-radio-button label="public" value="public">{{ $t('fish.value.public') }}</el-radio-button>
@@ -111,7 +111,7 @@
       <!-- Train mode -->
       <div class="field-block mb-4">
         <h2 class="title font-bold">{{ $t('fish.name.trainMode') }}</h2>
-        <el-radio-group v-model="form.trainMode" size="small">
+        <el-radio-group v-model="form.trainMode">
           <el-radio-button label="fast" value="fast">{{ $t('fish.value.trainModeFast') }}</el-radio-button>
           <el-radio-button label="precise" value="precise">{{ $t('fish.value.trainModePrecise') }}</el-radio-button>
         </el-radio-group>
