@@ -34,7 +34,7 @@ export interface IPoivelleWorkspace {
   updated_at: string;
 }
 
-export type PoivelleDiscoveryCategory = 'commercial' | 'music_video' | 'documentary' | 'community';
+export type PoivelleDiscoveryCategory = 'commercial' | 'music_video' | 'narrative' | 'documentary' | 'community';
 
 export interface IPoivelleDiscoveryWork {
   id: string;
@@ -43,7 +43,9 @@ export interface IPoivelleDiscoveryWork {
   category: PoivelleDiscoveryCategory;
   creator_name: string;
   cover_url?: string;
+  video_url?: string;
   source: 'official' | 'community';
+  copyable?: boolean;
   blueprint_id?: string;
   template_id?: string;
   duration_seconds?: number;
