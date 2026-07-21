@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 14:53:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 14:54:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.10
+
+Tue, 21 Jul 2026 14:54:51 GMT
+
+### Patches
+
+- fix(scenarios): align upload actions and preserve field spacing (dev@acedata.cloud)
 
 ## 3.330.9
 
