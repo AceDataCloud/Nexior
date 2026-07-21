@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 14:47:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 14:50:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.8
+
+Tue, 21 Jul 2026 14:50:00 GMT
+
+### Patches
+
+- Add a prompt-first Poivelle creator home with real works and one-click project copying (dev@acedata.cloud)
 
 ## 3.330.7
 
