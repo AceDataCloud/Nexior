@@ -28,8 +28,8 @@
     "description": "画像入力のラベル"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "参考画像",
+    "description": "参考画像のラベル"
   },
   "name.required": {
     "message": "必須",
@@ -128,8 +128,8 @@
     "description": "アップロード超過警告"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "参考画像は最大4枚までアップロードできます。",
+    "description": "参考画像のアップロード上限を超えた場合の警告"
   },
   "message.uploadError": {
     "message": "画像のアップロードに失敗しました。再試行してください。",
@@ -164,39 +164,39 @@
     "description": "使い切り"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "参考動画",
+    "description": "Omni動画編集用の参考/編集動画"
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "オプションのMP4/MOV（200MB以下）で既存の動画を編集または参照できます。参考動画を使用する場合は少なくとも1枚の参考画像が必要です。",
+    "description": "参考動画アップローダーのヘルプテキスト"
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "動画をアップロード",
+    "description": "参考動画をアップロードするボタン"
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "参考動画は最大1本までアップロードできます。",
+    "description": "参考動画が1本を超えた場合のエラー"
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "参考動画のアップロードに失敗しました。後でもう一度お試しください。",
+    "description": "参考動画のアップロードが失敗した場合のエラー"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "アップロードするファイルはMP4またはMOV形式でなければなりません！",
+    "description": "参考動画がMP4/MOVでない場合のエラー"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "アップロードするファイルのサイズは200MB以下でなければなりません！",
+    "description": "参考動画が200MBを超えた場合のエラー"
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "プロンプトを入力してください。",
+    "description": "プロンプトが空の場合のバリデーション"
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "参考動画を使用する場合は少なくとも1枚の参考画像を追加してください。",
+    "description": "video_urlsに参考画像がない場合のバリデーション"
   }
 }

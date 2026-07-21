@@ -80,16 +80,16 @@
     "description": "WeChat 결제 도움말에 대한 메시지입니다."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "모바일 브라우저에서는 WeChat Pay를 바로 열 수 없습니다. 아래 결제 링크를 복사하여 WeChat 내에서 열어 결제를 완료하세요.",
+    "description": "모바일 브라우저에서 WeChat H5 결제를 사용할 수 없을 때 표시되는 안내"
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "결제 링크 복사",
+    "description": "현재 페이지 URL을 복사하여 WeChat에 붙여넣을 수 있는 버튼 레이블"
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "복사 후 WeChat을 열고, 링크를 채팅이나 검색창에 붙여넣어 탭하면 결제가 완료됩니다.",
+    "description": "복사 링크 버튼 아래 표시되는 WeChat 내 붙여넣기 안내"
   },
   "message.free": {
     "message": "무료",
@@ -101,15 +101,15 @@
   },
   "message.applePayProcessing": {
     "message": "App Store에서 결제를 완료하는 중…",
-    "description": "Message while the Apple in-app purchase is processing."
+    "description": "Apple 인앱 결제가 처리 중일 때 표시되는 메시지"
   },
   "message.applePayFailed": {
     "message": "App Store 결제가 완료되지 않았습니다. 다시 시도해 주세요.",
-    "description": "Message when the Apple in-app purchase fails."
+    "description": "Apple 인앱 결제가 실패했을 때 표시되는 메시지"
   },
   "message.applePayUnavailable": {
     "message": "이 패키지는 앱 내에서 구매할 수 없습니다.",
-    "description": "Message when Apple in-app purchase is unavailable for the package."
+    "description": "해당 패키지에 Apple 인앱 결제를 사용할 수 없을 때 표시되는 메시지"
   },
   "message.updateFailed": {
     "message": "업데이트 실패",
@@ -397,7 +397,7 @@
   },
   "message.publicPayNotFound": {
     "message": "주문을 찾을 수 없거나 만료되었습니다.",
-    "description": "Shown on public pay page when the order GET returns 404."
+    "description": "주문 GET이 404를 반환할 때 공개 결제 페이지에 표시됨"
   },
   "message.x402WalletStatusDetected": {
     "message": "감지됨",
@@ -533,7 +533,7 @@
   },
   "message.wechatPayLongPressTip": {
     "message": "아래 QR 코드를 길게 눌러 'QR 코드 인식'을 선택해 WeChat에서 결제를 완료하세요.",
-    "description": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat."
+    "description": "모바일 WeChat에서 네이티브 QR 위에 표시되는 안내. WeChat에서 나가지 않고 QR을 길게 눌러 결제 가능."
   },
   "message.wechatPayMobileScanTip": {
     "message": "아래 QR 코드를 저장하거나 스크린샷을 찍고, WeChat을 열어 스캔하기를 클릭한 후 오른쪽 상단의 앨범을 선택하여 방금 저장한 이미지를 선택하면 결제가 완료됩니다.",
@@ -541,34 +541,34 @@
   },
   "message.creditsValue": {
     "message": "{value} 크레딧",
-    "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
+    "description": "주문의 크레딧 수량 표시, 예: '5 크레딧'. {value}는 형식화된 크레딧 수."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "총 주문 수",
+    "description": "현재 필터에 일치하는 총 주문 수 요약 카드"
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "총 지출",
+    "description": "일치하는 주문의 총 지출 요약 카드"
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "완료된 주문",
+    "description": "완료된 주문 수 요약 카드"
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "대기 중인 주문",
+    "description": "대기 중인 주문 수 요약 카드"
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "CSV 내보내기",
+    "description": "필터된 주문을 CSV로 내보내는 버튼 레이블"
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "모든 상태",
+    "description": "특정 상태가 선택되지 않았음을 나타내는 상태 필터 드롭다운 자리 표시자"
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "모든 결제 수단",
+    "description": "특정 결제 수단이 선택되지 않았음을 나타내는 결제 수단 필터 드롭다운 자리 표시자"
   }
 }

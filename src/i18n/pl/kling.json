@@ -1,135 +1,135 @@
 {
   "tab.videoGeneration": {
     "message": "Generowanie wideo",
-    "description": "Tab 标签：Video Generation"
+    "description": "Etykieta karty: generowanie wideo"
   },
   "tab.motionControl": {
     "message": "Kontrola ruchu",
-    "description": "Tab 标签：Motion Control"
+    "description": "Etykieta karty: kontrola ruchu"
   },
   "name.motionImage": {
     "message": "Obraz referencyjny postaci",
-    "description": "Motion Control 中的人物图输入"
+    "description": "Pole obrazu postaci w Kontroli ruchu"
   },
   "name.motionVideo": {
     "message": "Wideo referencyjne ruchu",
-    "description": "Motion Control 中的参考视频输入"
+    "description": "Pole wideo referencyjnego w Kontroli ruchu"
   },
   "name.motionPrompt": {
     "message": "Dodatkowe wskazówki (opcjonalne)",
-    "description": "Motion Control 中的补充提示词"
+    "description": "Pole dodatkowego promptu w Kontroli ruchu"
   },
   "name.characterOrientation": {
     "message": "Orientacja postaci",
-    "description": "人物朝向字段"
+    "description": "Pole orientacji postaci"
   },
   "name.orientationImage": {
     "message": "Obraz do śledzenia",
-    "description": "人物朝向选项：跟随图片"
+    "description": "Opcja orientacji postaci: według obrazu"
   },
   "name.orientationVideo": {
     "message": "Wideo do śledzenia",
-    "description": "人物朝向选项：跟随视频"
+    "description": "Opcja orientacji postaci: według wideo"
   },
   "name.keepOriginalSound": {
     "message": "Zachowaj oryginalny dźwięk",
-    "description": "keep_original_sound 开关"
+    "description": "Przełącznik keep_original_sound"
   },
   "description.motionImage": {
     "message": "Prześlij obraz referencyjny postaci, aby elementy w wideo, takie jak postać i tło, były zgodne z tym obrazem.",
-    "description": "motion image_url 说明"
+    "description": "Opis pola motion image_url"
   },
   "description.motionVideo": {
     "message": "Prześlij wideo referencyjne ruchu, aby ruch postaci w wideo był zgodny z tym wideo (MP4 / MOV, ≤1 minuta, ≤1 GB).",
-    "description": "motion video_url 说明"
+    "description": "Opis pola motion video_url"
   },
   "description.motionPrompt": {
     "message": "Opcjonalne. Może zawierać opisy pozytywne i negatywne, wspomagające generację efektów.",
-    "description": "motion prompt 说明"
+    "description": "Opis pola motion prompt"
   },
   "description.characterOrientation": {
     "message": "Wybierając „Wideo do śledzenia”, złożone ruchy są lepiej odwzorowane; wybierając „Obraz do śledzenia”, orientacja postaci jest zgodna z obrazem referencyjnym, a ruch kamery jest lepszy.",
-    "description": "character_orientation 说明"
+    "description": "Opis pola character_orientation"
   },
   "description.motionMode": {
     "message": "std priorytet wydajności, pro priorytet jakości obrazu",
-    "description": "motion mode 说明"
+    "description": "Opis pola motion mode"
   },
   "description.motionModel": {
     "message": "Kling 3.0 oferuje wyższą jakość, ale wyższą cenę za sekundę; Kling 2.6 jest bardziej opłacalny.",
-    "description": "motion model version description"
+    "description": "Opis wersji modelu ruchu"
   },
   "description.keepOriginalSound": {
     "message": "Włączając, zachowujesz oryginalny dźwięk z wideo referencyjnego; wyłączając, wideo wyjściowe nie zawiera oryginalnego dźwięku.",
-    "description": "keep_original_sound 说明"
+    "description": "Opis pola keep_original_sound"
   },
   "placeholder.motionPrompt": {
     "message": "Na przykład: osoba skacze. Opcjonalne.",
-    "description": "motion prompt 占位符"
+    "description": "Placeholder pola motion prompt"
   },
   "button.generateMotion": {
     "message": "Generuj wideo z kontrolą ruchu",
-    "description": "Motion Control 生成按钮"
+    "description": "Przycisk generowania dla Kontroli ruchu"
   },
   "message.motionMissingInputs": {
     "message": "Proszę przesłać zarówno obraz postaci, jak i wideo referencyjne ruchu.",
-    "description": "Motion Control 缺少输入时的提示"
+    "description": "Komunikat o brakujących danych w Kontroli ruchu"
   },
   "message.motionPricingNote": {
     "message": "Rozliczenie za sekundę wygenerowanego wideo; ostateczna kwota zależy od długości wideo referencyjnego.",
-    "description": "Explains that Motion Control is billed per second"
+    "description": "Wyjaśnia, że Kontrola ruchu jest rozliczana za sekundę"
   },
   "inspiration.title": {
     "message": "Inspiracje i ustawienia",
-    "description": "Inspiration 抽屉的标题"
+    "description": "Tytuł panelu Inspiracje"
   },
   "inspiration.openButton": {
     "message": "Inspiracje",
-    "description": "打开 Inspiration 抽屉的按钮"
+    "description": "Przycisk otwierający panel Inspiracje"
   },
   "inspiration.removeChip": {
     "message": "Usuń to ustawienie",
-    "description": "移除提示词区中已选预设的按钮 aria-label"
+    "description": "Etykieta aria przycisku usuwającego wybrane ustawienie"
   },
   "inspiration.hint": {
     "message": "Kliknij frazę, aby automatycznie dodać do wskazówek; kliknij ponownie, aby usunąć.",
-    "description": "Inspiration 抽屉顶部的使用说明"
+    "description": "Instrukcja u góry panelu Inspiracje"
   },
   "inspiration.empty": {
     "message": "Brak dostępnych ustawień",
-    "description": "Inspiration 抽屉空状态"
+    "description": "Pusty stan panelu Inspiracje"
   },
   "inspiration.selectedSummary": {
     "message": "Wybrano {count} elementów",
-    "description": "已选择的预设数量"
+    "description": "Liczba wybranych ustawień"
   },
   "inspiration.clearSelected": {
     "message": "Wyczyść wszystko",
-    "description": "清除所有已选预设的按钮"
+    "description": "Przycisk czyszczenia wszystkich wybranych ustawień"
   },
   "inspiration.group.cameraMovements": {
     "message": "Ruch kamery",
-    "description": "Inspiration 分组：镜头运动"
+    "description": "Grupa Inspiracje: ruch kamery"
   },
   "inspiration.group.cameraSpeed": {
     "message": "Prędkość ruchu",
-    "description": "Inspiration 分组：运动速度"
+    "description": "Grupa Inspiracje: prędkość ruchu"
   },
   "inspiration.group.shotType": {
     "message": "Typ ujęcia",
-    "description": "Inspiration 分组：景别 / 视角"
+    "description": "Grupa Inspiracje: typ ujęcia / perspektywa"
   },
   "inspiration.group.light": {
     "message": "Światło i cień",
-    "description": "Inspiration 分组：光影"
+    "description": "Grupa Inspiracje: światło i cień"
   },
   "inspiration.group.frame": {
     "message": "Klatka",
-    "description": "Inspiration 分组：画面 / 构图"
+    "description": "Grupa Inspiracje: kadr / kompozycja"
   },
   "inspiration.group.atmosphere": {
     "message": "Atmosfera",
-    "description": "Inspiration 分组：氛围 / 风格"
+    "description": "Grupa Inspiracje: atmosfera / styl"
   },
   "inspiration.chip.rotateAround": {
     "message": "Obrót kamery wokół obiektu",
@@ -440,7 +440,7 @@
     "description": "Wersja modelu używana do generowania wideo"
   },
   "name.klingBot": {
-    "message": "Kling Bot",
+    "message": "Bot Kling",
     "description": "Nazwa generatora wideo Kling"
   },
   "description.ingredients": {
@@ -721,59 +721,59 @@
   },
   "tab.talkingPhoto": {
     "message": "Mówiące zdjęcie",
-    "description": "Tab label: Talking Photo"
+    "description": "Etykieta karty: mówiące zdjęcie"
   },
   "name.talkingPhotoImage": {
     "message": "Zdjęcie portretowe",
-    "description": "Talking Photo portrait image input"
+    "description": "Pole zdjęcia portretowego w funkcji Mówiące zdjęcie"
   },
   "name.talkingPhotoAudio": {
     "message": "Audio sterujące",
-    "description": "Talking Photo driving audio input"
+    "description": "Pole audio sterującego w funkcji Mówiące zdjęcie"
   },
   "name.talkingPhotoPrompt": {
     "message": "Podpowiedź ruchu (opcjonalnie)",
-    "description": "Talking Photo optional motion prompt"
+    "description": "Opcjonalne pole promptu ruchu w funkcji Mówiące zdjęcie"
   },
   "description.talkingPhotoImage": {
     "message": "Prześlij wyraźny portret en face; zostanie animowany i zacznie mówić.",
-    "description": "Talking Photo portrait image help text"
+    "description": "Pomoc dla pola zdjęcia portretowego w funkcji Mówiące zdjęcie"
   },
   "description.talkingPhotoAudio": {
     "message": "Prześlij klip audio (mp3/wav, ≤5MB); postać zsynchronizuje ruch ust.",
-    "description": "Talking Photo driving audio help text"
+    "description": "Pomoc dla pola audio sterującego w funkcji Mówiące zdjęcie"
   },
   "description.talkingPhotoPrompt": {
     "message": "Opcjonalnie: opisz pożądany wyraz twarzy/ruch, np. „spójrz łagodnie w kamerę”.",
-    "description": "Talking Photo motion prompt help text"
+    "description": "Pomoc dla pola promptu ruchu w funkcji Mówiące zdjęcie"
   },
   "placeholder.talkingPhotoPrompt": {
     "message": "np. delikatny, spokojny, naturalny, lekki ruch głowy",
-    "description": "Talking Photo prompt input placeholder"
+    "description": "Placeholder promptu w funkcji Mówiące zdjęcie"
   },
   "button.generateTalkingPhoto": {
     "message": "Wygeneruj mówiące zdjęcie",
-    "description": "Talking Photo generate button"
+    "description": "Przycisk generowania w funkcji Mówiące zdjęcie"
   },
   "button.uploadAudio": {
     "message": "Prześlij audio",
-    "description": "Talking Photo upload audio button"
+    "description": "Przycisk przesyłania audio w funkcji Mówiące zdjęcie"
   },
   "message.talkingPhotoMissingInputs": {
     "message": "Najpierw prześlij zdjęcie portretowe i audio sterujące.",
-    "description": "Talking Photo missing inputs warning"
+    "description": "Ostrzeżenie o brakujących danych w funkcji Mówiące zdjęcie"
   },
   "message.uploadAudioExceed": {
     "message": "Dozwolony jest tylko jeden plik audio.",
-    "description": "Talking Photo audio count limit warning"
+    "description": "Ostrzeżenie o limicie liczby plików audio w funkcji Mówiące zdjęcie"
   },
   "message.uploadAudioError": {
     "message": "Przesłanie audio nie powiodło się, spróbuj ponownie.",
-    "description": "Talking Photo audio upload error"
+    "description": "Błąd przesyłania audio w funkcji Mówiące zdjęcie"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "message": "Wideo referencyjne",
+    "description": "Etykieta pola wideo referencyjnego / edytowalnego do edycji wideo Kling"
   },
   "description.omniReferenceVideo": {
     "message": "Dla Kling O1 i V3 Omni. Prześlij plik MP4/MOV (720–2160px, 3–10 sekund, ≤200MB) do edycji lub jako odniesienie do istniejącego wideo, słowa kluczowe zostaną automatycznie dodane <<<video_1>>>.",
@@ -824,23 +824,23 @@
     "description": "Wskazanie konfliktu między podstawowym wideo a pierwszą lub ostatnią klatką."
   },
   "button.uploadReferenceVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Prześlij wideo",
+    "description": "Przycisk przesyłania wideo referencyjnego"
   },
   "message.referenceVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Możesz przesłać maksymalnie 1 wideo referencyjne",
+    "description": "Błąd po przesłaniu więcej niż jednego wideo referencyjnego"
   },
   "message.referenceVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Przesyłanie wideo referencyjnego nie powiodło się, spróbuj ponownie później",
+    "description": "Błąd przesyłania wideo referencyjnego"
   },
   "message.referenceVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Przesłany plik musi być w formacie MP4 lub MOV!",
+    "description": "Błąd, gdy wideo referencyjne nie ma formatu MP4/MOV"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Rozmiar przesłanego pliku nie może przekraczać 200MB!",
+    "description": "Błąd, gdy wideo referencyjne przekracza 200MB"
   }
 }

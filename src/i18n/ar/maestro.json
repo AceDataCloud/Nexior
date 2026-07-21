@@ -83,6 +83,14 @@
     "message": "اللغات",
     "description": "حقل لغات الإخراج"
   },
+  "name.primaryLanguage": {
+    "message": "اللغة الأساسية",
+    "description": "حقل اللغة الأساسية للإخراج"
+  },
+  "name.additionalLanguages": {
+    "message": "لغات إضافية (اختياري)",
+    "description": "حقل لغات الإخراج الإضافية"
+  },
   "name.aspect": {
     "message": "نسبة العرض إلى الارتفاع",
     "description": "حقل نسبة العرض إلى الارتفاع"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "يرجى الاختيار",
     "description": "نموذج عام لمكان حجز الاختيار"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "إضافة لغات إخراج إضافية",
+    "description": "نموذج لغات إضافية"
   },
   "description.prompt": {
     "message": "استخدم لغة بسيطة لشرح ما تريده، النص، المشاهد، الصوت، والتحرير كلها تعود إلى Maestro.",
@@ -207,6 +219,30 @@
     "message": "لا توجد فيديوهات بعد — قم بإنشاء أول فيديو لك على اليسار.",
     "description": "لا توجد مهام"
   },
+  "name.customize": {
+    "message": "تخصيص",
+    "description": "Optional creative controls toggle"
+  },
+  "description.customize.auto": {
+    "message": "تلقائي · يحدد Maestro نوع الفيديو والأسلوب البصري ونغمة الصوت.",
+    "description": "Customization disabled state"
+  },
+  "description.customize.manual": {
+    "message": "اختر نوع الفيديو والأسلوب البصري ونغمة الصوت.",
+    "description": "Customization enabled state"
+  },
+  "name.customizeScenario": {
+    "message": "تخصيص نوع الفيديو",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "تخصيص الأسلوب البصري",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "تخصيص نغمة الصوت",
+    "description": "Voice timbre customization toggle"
+  },
   "name.scenario": {
     "message": "نوع الفيديو",
     "description": "Video type field"
@@ -256,60 +292,60 @@
     "description": "خيار أسلوب سينمائي"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Frosted glass style option"
+    "message": "زجاج مصنفر · زجاج سائل",
+    "description": "خيار نمط الزجاج المصنفر"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Luxury style option"
+    "message": "فاخر · فراغ",
+    "description": "خيار نمط الفخامة"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Swiss grid style option"
+    "message": "شبكة سويسرية · دقة",
+    "description": "خيار نمط الشبكة السويسرية"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Modern style option"
+    "message": "حديث بسيط · SaaS",
+    "description": "خيار نمط الحديث"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Editorial style option"
+    "message": "تحرير المجلات",
+    "description": "خيار نمط التحرير"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Warm style option"
+    "message": "دافئ وحميم",
+    "description": "خيار نمط الدفء"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Vibrant style option"
+    "message": "حيوية نابضة",
+    "description": "خيار نمط الحيوية"
   },
   "option.style.neon": {
     "message": "نيون",
     "description": "خيار أسلوب نيون"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Monochrome style option"
+    "message": "أبيض وأسود بسيط",
+    "description": "خيار نمط أحادي اللون"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Pastel style option"
+    "message": "ألوان باهتة",
+    "description": "خيار نمط الألوان الباهتة"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Bold type style option"
+    "message": "خط عريض · طاقة عالية",
+    "description": "خيار نمط الخط العريض"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Industrial style option"
+    "message": "عطل صناعي",
+    "description": "خيار نمط صناعي"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Futuristic style option"
+    "message": "تقنية مستقبلية",
+    "description": "خيار نمط المستقبل"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Retro film style option"
+    "message": "فيلم قديم",
+    "description": "خيار نمط الفيلم القديم"
   },
   "name.voice": {
     "message": "نغمة الصوت",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "سجل التغييرات (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "تخصيص",
-    "description": "Optional creative controls toggle"
-  },
-  "description.customize.auto": {
-    "message": "تلقائي · يحدد Maestro نوع الفيديو والأسلوب البصري ونغمة الصوت.",
-    "description": "Customization disabled state"
-  },
-  "description.customize.manual": {
-    "message": "اختر نوع الفيديو والأسلوب البصري ونغمة الصوت.",
-    "description": "Customization enabled state"
-  },
-  "name.primaryLanguage": {
-    "message": "Primary language",
-    "description": "Primary output language field"
-  },
-  "name.additionalLanguages": {
-    "message": "Additional languages (optional)",
-    "description": "Additional output languages field"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Add output languages",
-    "description": "Additional languages placeholder"
-  },
-  "name.customizeScenario": {
-    "message": "تخصيص نوع الفيديو",
-    "description": "Video type customization toggle"
-  },
-  "name.customizeStyle": {
-    "message": "تخصيص الأسلوب البصري",
-    "description": "Visual style customization toggle"
-  },
-  "name.customizeVoice": {
-    "message": "تخصيص نغمة الصوت",
-    "description": "Voice timbre customization toggle"
   }
 }

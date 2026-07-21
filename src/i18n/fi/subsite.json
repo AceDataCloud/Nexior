@@ -205,11 +205,11 @@
   },
   "message.domainFailed": {
     "message": "Verkkotunnuksen vahvistus tai julkaisu epäonnistui.",
-    "description": "Failed 状态兑底文案"
+    "description": "Epäonnistui-tilan varmuusteksti"
   },
   "message.domainVerifyFailed": {
     "message": "Vahvistus epäonnistui, tarkista että CNAME-tietue osoittaa meidän käänteiseen välimuistiin ja että DNS-levitys on valmis.",
-    "description": "verify 接口 4xx"
+    "description": "Vahvistusrajapinnan 4xx-virhe"
   },
   "message.domainDeleteConfirm": {
     "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse käsiksi aliverkkotunnukseesi tämän verkkotunnuksen kautta.",
@@ -217,19 +217,19 @@
   },
   "message.domainDeleteFailed": {
     "message": "Verkkotunnuksen poistaminen epäonnistui.",
-    "description": "DELETE 接口 5xx"
+    "description": "DELETE-rajapinnan 5xx-virhe"
   },
   "status.pending": {
     "message": "Vahvistusta odottamassa",
-    "description": "Pending 状态标签：odottaa käyttäjän lisäävän CNAME:n ja napsauttavan 'Vahvista nyt'"
+    "description": "Odottaa-tilatunniste: odottaa käyttäjän lisäävän CNAME:n ja napsauttavan 'Vahvista nyt'"
   },
   "status.active": {
     "message": "Julkaistu",
-    "description": "Active 状态标签"
+    "description": "Aktiivinen-tilatunniste"
   },
   "status.failed": {
     "message": "Epäonnistui",
-    "description": "Failed 状态标签"
+    "description": "Epäonnistui-tilatunniste"
   },
   "message.recordNameHint": {
     "message": "Vinkki: Useimmissa DNS-palveluntarjoajissa (DNSPod, Cloudflare, Aliyun, Tencent Cloud jne.) \"Host\" / \"Name\" -kenttä hyväksyy vain alidomainin etuliitteen. Esimerkiksi sidottaessa studio.your-brand.com syötät vain studio; sidottaessa juuritoimialuetta itseään (esim. your-brand.com) käytä isäntänä {'@'}-merkkiä. Palvelut, jotka odottavat täydellistä FQDN:ää (AWS Route 53, Bind jne.) hyväksyvät yllä olevassa taulukossa näkyvän arvon sellaisenaan.",

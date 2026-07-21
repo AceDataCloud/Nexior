@@ -21,7 +21,7 @@
   },
   "field.credential": {
     "message": "認証情報",
-    "description": "The API key (credential) that generated this usage record."
+    "description": "この使用記録を生成したAPIキー（クレデンシャル）"
   },
   "field.usedAmount": {
     "message": "使用済み数量",
@@ -125,42 +125,42 @@
   },
   "field.consumed": {
     "message": "消費量",
-    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+    "description": "選択した期間内に1つのAPIが消費した合計ポイントの使用内訳テーブルの列ヘッダー"
   },
   "field.share": {
     "message": "割合",
-    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+    "description": "合計消費量に対する1つのAPIの割合の使用内訳テーブルの列ヘッダー"
   },
   "field.autoRefresh": {
     "message": "自動更新",
-    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+    "description": "使用テーブル右上のトグルラベル（オンの場合は最新記録が自動更新される）"
   },
   "value.processing": {
     "message": "処理中",
-    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+    "description": "非同期タスクがまだ最終ステータスを返していない場合のステータスコード列のプレースホルダー"
   },
   "value.others": {
     "message": "その他",
-    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+    "description": "上位消費者以外のすべてのAPIを集計する使用傾向グラフのシリーズ名"
   },
   "title.usageAnalytics": {
     "message": "使用状況分析",
-    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+    "description": "使用分析カードのタイトル（傾向・シェア・内訳ビュータブを含む）"
   },
   "view.trend": {
     "message": "推移",
-    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+    "description": "使用分析カードのビュー切替ボタン：時系列の積み上げ棒グラフ"
   },
   "view.distribution": {
     "message": "割合",
-    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+    "description": "使用分析カードのビュー切替ボタン：各APIの消費シェアのドーナツグラフ"
   },
   "view.breakdown": {
     "message": "明細",
-    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+    "description": "使用分析カードのビュー切替ボタン：各APIの正確な消費量とシェアの一覧テーブル"
   },
   "message.exportFailed": {
     "message": "エクスポートに失敗しました。期間を絞って再試行してください。",
-    "description": "Error toast shown when the CSV export request fails (network or server error)."
+    "description": "CSVエクスポートリクエストが失敗した場合のエラートースト"
   }
 }

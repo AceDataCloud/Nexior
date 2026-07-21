@@ -48,7 +48,7 @@
     "description": "延長操作選項"
   },
   "step.plan": {
-    "message": "理解需求 · 分鏡腳本",
+    "message": "理解需求 · 分鏡指令碼",
     "description": "Pipeline step: plan"
   },
   "step.source": {
@@ -85,11 +85,11 @@
   },
   "name.aspect": {
     "message": "畫面比例",
-    "description": "畫面比例字段"
+    "description": "畫面比例欄位"
   },
   "name.duration": {
     "message": "時長",
-    "description": "目標時長字段"
+    "description": "目標時長欄位"
   },
   "name.quality": {
     "message": "製作檔位",
@@ -104,7 +104,7 @@
     "description": "Standard quality option"
   },
   "option.quality.premium": {
-    "message": "高級 · 更精細",
+    "message": "高階 · 更精細",
     "description": "Premium quality option"
   },
   "name.remixing": {
@@ -112,15 +112,15 @@
     "description": "二次創作橫幅標籤"
   },
   "placeholder.prompt": {
-    "message": "描述你想要的視頻——主題、要展示什麼、風格、受眾……",
-    "description": "提示詞文本區佔位符"
+    "message": "描述你想要的影片——主題、要展示什麼、風格、受眾……",
+    "description": "提示詞文字區佔位符"
   },
   "placeholder.select": {
     "message": "請選擇",
     "description": "通用選擇佔位符"
   },
   "description.prompt": {
-    "message": "用大白話說清楚你想要什麼,腳本、畫面、配音、剪輯都交給 Maestro。",
+    "message": "用大白話說清楚你想要什麼,指令碼、畫面、配音、剪輯都交給 Maestro。",
     "description": "提示詞欄位幫助"
   },
   "description.langs": {
@@ -128,8 +128,8 @@
     "description": "語言幫助"
   },
   "description.files": {
-    "message": "可選。上傳圖片、視頻或音頻供 Maestro 使用(如產品圖、logo)。",
-    "description": "文件幫助"
+    "message": "可選。上傳圖片、影片或音訊供 Maestro 使用(如產品圖、logo)。",
+    "description": "檔案幫助"
   },
   "description.duration": {
     "message": "目標影片時長,越長則製作耗時與消耗的積分越多。",
@@ -156,27 +156,27 @@
     "description": "正在處理"
   },
   "button.generate": {
-    "message": "生成視頻",
+    "message": "生成影片",
     "description": "生成按鈕"
   },
   "button.download": {
-    "message": "下載視頻",
-    "description": "下載視頻按鈕"
+    "message": "下載影片",
+    "description": "下載影片按鈕"
   },
   "button.uploadFiles": {
-    "message": "上傳文件",
-    "description": "上傳參考文件的按鈕"
+    "message": "上傳檔案",
+    "description": "上傳參考檔案的按鈕"
   },
   "button.remix": {
     "message": "二次創作",
-    "description": "對此視頻進行二次創作的按鈕"
+    "description": "對此影片進行二次創作的按鈕"
   },
   "button.cancelRemix": {
     "message": "取消二次創作",
     "description": "取消二次創作的按鈕"
   },
   "message.startingTask": {
-    "message": "正在提交視頻任務…",
+    "message": "正在提交影片任務…",
     "description": "提交提示"
   },
   "message.startTaskSuccess": {
@@ -196,7 +196,7 @@
     "description": "二次創作載入的提示"
   },
   "message.uploadExceed": {
-    "message": "文件過多,請刪除一些後重試。",
+    "message": "檔案過多,請刪除一些後重試。",
     "description": "上傳超過限制"
   },
   "message.uploadError": {
@@ -204,15 +204,15 @@
     "description": "上傳錯誤"
   },
   "message.noTasks": {
-    "message": "還沒有視頻 — 在左側創建你的第一個吧。",
+    "message": "還沒有影片 — 在左側建立你的第一個吧。",
     "description": "沒有任務"
   },
   "name.scenario": {
-    "message": "影片類型",
+    "message": "影片型別",
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "開啟自訂後可選擇影片類型；關閉則由 Maestro 自動決定。",
+    "message": "開啟自訂後可選擇影片型別；關閉則由 Maestro 自動決定。",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -221,15 +221,15 @@
   },
   "option.scenario.narrated": {
     "message": "圖文旁白成片",
-    "description": "旁白多場景視頻選項"
+    "description": "旁白多場景影片選項"
   },
   "option.scenario.drama": {
     "message": "短劇",
     "description": "Short drama scenario option"
   },
   "option.scenario.avatar": {
-    "message": "數字人 · 口播",
-    "description": "數字人/口播場景選項"
+    "message": "數位人 · 口播",
+    "description": "數位人/口播場景選項"
   },
   "option.scenario.captions": {
     "message": "影片加字幕",
@@ -256,31 +256,31 @@
     "description": "電影風格選項"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
+    "message": "毛玻璃 · 液態玻璃",
     "description": "Frosted glass style option"
   },
   "option.style.luxury": {
-    "message": "Luxury",
+    "message": "奢華 · 留白",
     "description": "Luxury style option"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
+    "message": "瑞士網格 · 精密",
     "description": "Swiss grid style option"
   },
   "option.style.modern": {
-    "message": "Modern",
+    "message": "簡約現代 · SaaS",
     "description": "Modern style option"
   },
   "option.style.editorial": {
-    "message": "Editorial",
+    "message": "雜誌編輯",
     "description": "Editorial style option"
   },
   "option.style.warm": {
-    "message": "Warm",
+    "message": "溫暖親密",
     "description": "Warm style option"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
+    "message": "繽紛活力",
     "description": "Vibrant style option"
   },
   "option.style.neon": {
@@ -288,27 +288,27 @@
     "description": "霓虹風格選項"
   },
   "option.style.mono": {
-    "message": "Monochrome",
+    "message": "極簡黑白",
     "description": "Monochrome style option"
   },
   "option.style.pastel": {
-    "message": "Pastel",
+    "message": "柔粉彩",
     "description": "Pastel style option"
   },
   "option.style.bold": {
-    "message": "Bold Type",
+    "message": "巨型字 · 高能",
     "description": "Bold type style option"
   },
   "option.style.industrial": {
-    "message": "Industrial",
+    "message": "工業故障",
     "description": "Industrial style option"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
+    "message": "未來科技",
     "description": "Futuristic style option"
   },
   "option.style.retro": {
-    "message": "Retro Film",
+    "message": "復古膠片",
     "description": "Retro film style option"
   },
   "name.voice": {
@@ -316,11 +316,11 @@
     "description": "配音音色欄位"
   },
   "button.preview": {
-    "message": "试听",
+    "message": "試聽",
     "description": "語音預覽 / 播放範例按鈕"
   },
   "description.voice": {
-    "message": "開啟自訂後可選擇配音音色；關閉則由 Maestro 自動配對。音色與語言無關，點擊播放即可試聽。",
+    "message": "開啟自訂後可選擇配音音色；關閉則由 Maestro 自動配對。音色與語言無關，點選播放即可試聽。",
     "description": "語音欄位幫助"
   },
   "option.voice.auto": {
@@ -348,8 +348,8 @@
     "description": "沉穩男聲選項"
   },
   "option.voice.deep-male": {
-    "message": "浑厚男聲",
-    "description": "浑厚男聲選項"
+    "message": "渾厚男聲",
+    "description": "渾厚男聲選項"
   },
   "option.voice.documentary-male": {
     "message": "解說男聲",
@@ -360,56 +360,56 @@
     "description": "活力男聲選項"
   },
   "option.voice.storyteller-male": {
-    "message": "叙事男聲",
-    "description": "叙事男聲選項"
+    "message": "敘事男聲",
+    "description": "敘事男聲選項"
   },
   "option.scenario.slideshow": {
     "message": "演示幻燈",
     "description": "幻燈片場景選項"
   },
   "name.sourceType": {
-    "message": "來源類型",
-    "description": "來源類型字段"
+    "message": "來源型別",
+    "description": "來源型別欄位"
   },
   "name.sourceRef": {
     "message": "內容",
-    "description": "來源內容字段"
+    "description": "來源內容欄位"
   },
   "name.lang": {
     "message": "主語言",
-    "description": "主要語言字段"
+    "description": "主要語言欄位"
   },
   "name.extraLangs": {
     "message": "額外語言",
-    "description": "額外語言版本字段"
+    "description": "額外語言版本欄位"
   },
   "name.music": {
     "message": "背景音樂",
-    "description": "音樂切換字段"
+    "description": "音樂切換欄位"
   },
   "option.topic": {
     "message": "話題",
-    "description": "來源類型：一個話題/標題"
+    "description": "來源型別：一個話題/標題"
   },
   "option.article": {
     "message": "文章",
-    "description": "來源類型：完整文章文本"
+    "description": "來源型別：完整文章文字"
   },
   "placeholder.sourceRef": {
-    "message": "輸入一個話題(如“什麼是向量資料庫”)或粘貼整篇文章…",
-    "description": "來源文本區域佔位符"
+    "message": "輸入一個話題(如“什麼是向量資料庫”)或貼上整篇文章…",
+    "description": "來源文字區域佔位符"
   },
   "description.sourceRef": {
-    "message": "一個話題/標題，或要做成視頻的整篇文章正文。",
-    "description": "來源字段幫助"
+    "message": "一個話題/標題，或要做成影片的整篇文章正文。",
+    "description": "來源欄位幫助"
   },
   "description.extraLangs": {
     "message": "重用畫面，額外產出這些語言版本（每種 +6 積分）。",
     "description": "額外語言幫助"
   },
   "status.scripting": {
-    "message": "腳本生成中",
-    "description": "正在生成腳本"
+    "message": "指令碼生成中",
+    "description": "正在生成指令碼"
   },
   "status.generating": {
     "message": "畫面生成中",
@@ -424,7 +424,7 @@
     "description": "下載 srt 按鈕"
   },
   "message.downloadVideo": {
-    "message": "下載生成的視頻",
+    "message": "下載生成的影片",
     "description": "下載提示"
   },
   "option.scenario.general": {
@@ -456,27 +456,27 @@
     "description": "Optional creative controls toggle"
   },
   "description.customize.auto": {
-    "message": "自動 · 由 Maestro 決定影片類型、視覺風格與配音音色。",
+    "message": "自動 · 由 Maestro 決定影片型別、視覺風格與配音音色。",
     "description": "Customization disabled state"
   },
   "description.customize.manual": {
-    "message": "選擇影片類型、視覺風格與配音音色。",
+    "message": "選擇影片型別、視覺風格與配音音色。",
     "description": "Customization enabled state"
   },
   "name.primaryLanguage": {
-    "message": "Primary language",
+    "message": "主語言",
     "description": "Primary output language field"
   },
   "name.additionalLanguages": {
-    "message": "Additional languages (optional)",
+    "message": "其他語言（可選）",
     "description": "Additional output languages field"
   },
   "placeholder.additionalLanguages": {
-    "message": "Add output languages",
+    "message": "新增其他輸出語言",
     "description": "Additional languages placeholder"
   },
   "name.customizeScenario": {
-    "message": "自訂影片類型",
+    "message": "自訂影片型別",
     "description": "Video type customization toggle"
   },
   "name.customizeStyle": {

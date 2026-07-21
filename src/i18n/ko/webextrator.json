@@ -1,206 +1,206 @@
 {
   "name.mode": {
-    "message": "Mode",
-    "description": "Label for render/extract mode toggle"
+    "message": "모드",
+    "description": "렌더/추출 모드 토글 레이블"
   },
   "name.url": {
     "message": "URL",
-    "description": "Label for the URL input"
+    "description": "URL 입력 레이블"
   },
   "name.expectedType": {
-    "message": "Expected Type",
-    "description": "Label for expected content type"
+    "message": "예상 유형",
+    "description": "예상 콘텐츠 유형 레이블"
   },
   "name.enableLlm": {
-    "message": "LLM Cleanup",
-    "description": "Label for enable LLM toggle"
+    "message": "LLM 정리",
+    "description": "LLM 활성화 토글 레이블"
   },
   "name.advanced": {
-    "message": "Advanced",
-    "description": "Label for advanced options collapse"
+    "message": "고급",
+    "description": "고급 옵션 접기 레이블"
   },
   "name.waitUntil": {
-    "message": "Wait Until",
-    "description": "Label for the wait_until field"
+    "message": "대기 조건",
+    "description": "wait_until 필드 레이블"
   },
   "name.waitForSelector": {
-    "message": "Wait For Selector",
-    "description": "Label for the wait_for_selector field"
+    "message": "셀렉터 대기",
+    "description": "wait_for_selector 필드 레이블"
   },
   "name.timeout": {
-    "message": "Timeout (s)",
-    "description": "Label for the timeout field"
+    "message": "타임아웃 (초)",
+    "description": "타임아웃 필드 레이블"
   },
   "name.delay": {
-    "message": "Delay (s)",
-    "description": "Label for the delay_after_load field"
+    "message": "지연 (초)",
+    "description": "지연 필드 레이블"
   },
   "name.blockResources": {
-    "message": "Block Resources",
-    "description": "Label for the block_resources multi-select"
+    "message": "리소스 차단",
+    "description": "리소스 차단 필드 레이블"
   },
   "name.consumption": {
-    "message": "Cost",
-    "description": "Label for the per-call cost"
+    "message": "비용",
+    "description": "비용 필드 레이블"
   },
   "mode.extract": {
-    "message": "Extract",
-    "description": "Extract mode option"
+    "message": "추출",
+    "description": "추출 모드 옵션"
   },
   "mode.render": {
-    "message": "Render",
-    "description": "Render mode option"
+    "message": "렌더",
+    "description": "렌더 모드 옵션"
   },
   "expectedType.general": {
-    "message": "General",
-    "description": "General expected type option"
+    "message": "일반",
+    "description": "일반 예상 유형 옵션"
   },
   "expectedType.article": {
-    "message": "Article",
-    "description": "Article expected type option"
+    "message": "기사",
+    "description": "기사 예상 유형 옵션"
   },
   "expectedType.product": {
-    "message": "Product",
-    "description": "Product expected type option"
+    "message": "상품",
+    "description": "상품 예상 유형 옵션"
   },
   "waitUntil.networkidle": {
-    "message": "Network Idle",
-    "description": "Wait until network idle option"
+    "message": "네트워크 유휴",
+    "description": "네트워크 유휴 대기 옵션"
   },
   "waitUntil.load": {
-    "message": "Load",
-    "description": "Wait until load option"
+    "message": "로드",
+    "description": "로드 완료 대기 옵션"
   },
   "waitUntil.domcontentloaded": {
-    "message": "DOM Ready",
-    "description": "Wait until DOM content loaded option"
+    "message": "DOM 준비",
+    "description": "DOM 콘텐츠 로드 완료 대기 옵션"
   },
   "waitUntil.commit": {
-    "message": "Commit",
-    "description": "Wait until commit option"
+    "message": "커밋",
+    "description": "커밋 대기 옵션"
   },
   "blockResource.image": {
-    "message": "Images",
-    "description": "Block images option"
+    "message": "이미지",
+    "description": "이미지 리소스 차단 옵션"
   },
   "blockResource.font": {
-    "message": "Fonts",
-    "description": "Block fonts option"
+    "message": "폰트",
+    "description": "폰트 리소스 차단 옵션"
   },
   "blockResource.media": {
-    "message": "Media",
-    "description": "Block media option"
+    "message": "미디어",
+    "description": "미디어 리소스 차단 옵션"
   },
   "blockResource.stylesheet": {
-    "message": "Stylesheets",
-    "description": "Block stylesheets option"
+    "message": "스타일시트",
+    "description": "스타일시트 리소스 차단 옵션"
   },
   "blockResource.xhr": {
     "message": "XHR",
-    "description": "Block XHR option"
+    "description": "XHR 리소스 차단 옵션"
   },
   "blockResource.fetch": {
     "message": "Fetch",
-    "description": "Block fetch option"
+    "description": "Fetch 리소스 차단 옵션"
   },
   "placeholder.url": {
     "message": "https://example.com",
     "description": "Placeholder for the URL input"
   },
   "placeholder.waitForSelector": {
-    "message": "CSS selector, e.g. .article-body",
-    "description": "Placeholder for the wait_for_selector input"
+    "message": "CSS 셀렉터, 예: .article-body",
+    "description": "셀렉터 입력 자리 표시자"
   },
   "placeholder.blockResources": {
-    "message": "Resource types to block",
-    "description": "Placeholder for the block_resources multi-select"
+    "message": "차단할 리소스 유형",
+    "description": "차단 리소스 유형 자리 표시자"
   },
   "button.extract": {
-    "message": "Extract",
-    "description": "Run extract button label"
+    "message": "추출",
+    "description": "추출 버튼"
   },
   "button.render": {
-    "message": "Render",
-    "description": "Run render button label"
+    "message": "렌더",
+    "description": "렌더 버튼"
   },
   "description.intro": {
-    "message": "Render and extract any web page",
-    "description": "Intro line shown in the empty result state"
+    "message": "모든 웹 페이지를 렌더링하고 추출",
+    "description": "소개 설명"
   },
   "description.introHint": {
-    "message": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
-    "description": "Hint shown below the intro line"
+    "message": "URL을 입력하고 추출 또는 렌더를 선택하여 깔끔한 콘텐츠, 마크다운, 링크, 스크린샷 등을 가져오세요.",
+    "description": "소개 힌트"
   },
   "description.enableLlm": {
-    "message": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
-    "description": "Tooltip explaining the LLM cleanup toggle"
+    "message": "LLM을 사용하여 추출된 콘텐츠를 정리하고 구조화합니다. 추가 크레딧이 소모됩니다.",
+    "description": "LLM 활성화 도움말"
   },
   "message.running": {
-    "message": "Working on it…",
-    "description": "Status while a request is in flight"
+    "message": "처리 중…",
+    "description": "처리 중 상태 메시지"
   },
   "message.extracting": {
-    "message": "Extracting…",
-    "description": "Status shown when extract is running"
+    "message": "추출 중…",
+    "description": "추출 중 상태 메시지"
   },
   "message.rendering": {
-    "message": "Rendering…",
-    "description": "Status shown when render is running"
+    "message": "렌더링 중…",
+    "description": "렌더링 중 상태 메시지"
   },
   "message.success": {
-    "message": "Done",
-    "description": "Toast shown on success"
+    "message": "완료",
+    "description": "성공 상태 메시지"
   },
   "message.failed": {
-    "message": "Request failed",
-    "description": "Generic error message"
+    "message": "요청 실패",
+    "description": "실패 상태 메시지"
   },
   "message.usedUp": {
-    "message": "Your quota has been used up. Please top up to continue.",
-    "description": "Error shown when balance is exhausted"
+    "message": "할당량이 소진되었습니다. 계속하려면 충전하세요.",
+    "description": "할당량 소진 메시지"
   },
   "message.busy": {
-    "message": "Service is busy. Please try again in a moment.",
-    "description": "Error shown on rate limit"
+    "message": "서비스가 바쁩니다. 잠시 후 다시 시도해 주세요.",
+    "description": "서비스 과부하 메시지"
   },
   "message.timeout": {
-    "message": "The page took too long to load. Try a different URL or increase the timeout.",
-    "description": "Error shown on timeout"
+    "message": "페이지 로딩 시간이 너무 오래 걸렸습니다. 다른 URL을 시도하거나 타임아웃을 늘려보세요.",
+    "description": "타임아웃 오류 메시지"
   },
   "message.antibotBlocked": {
     "message": "대상 웹사이트가 반봇 보호를 활성화하여 일시적으로 크롤링할 수 없습니다(이번에는 요금이 청구되지 않습니다).",
     "description": "대상 페이지가 해결되지 않은 반봇 챌린지를 표시할 때 나타나는 오류입니다 (HTTP 422, 요금 청구되지 않음)"
   },
   "message.untitled": {
-    "message": "Untitled",
-    "description": "Fallback title when the page has no title"
+    "message": "제목 없음",
+    "description": "제목 없는 페이지"
   },
   "tab.markdown": {
     "message": "Markdown",
-    "description": "Markdown tab label"
+    "description": "Markdown 탭"
   },
   "tab.text": {
-    "message": "Text",
-    "description": "Plain text tab label"
+    "message": "텍스트",
+    "description": "텍스트 탭"
   },
   "tab.structured": {
-    "message": "Structured",
-    "description": "Structured data tab label"
+    "message": "구조화된",
+    "description": "구조화된 콘텐츠 탭"
   },
   "tab.links": {
-    "message": "Links",
-    "description": "Links tab label"
+    "message": "링크",
+    "description": "링크 탭"
   },
   "tab.images": {
-    "message": "Images",
-    "description": "Images tab label"
+    "message": "이미지",
+    "description": "이미지 탭"
   },
   "tab.html": {
     "message": "HTML",
-    "description": "HTML tab label"
+    "description": "HTML 탭"
   },
   "tab.raw": {
-    "message": "Raw JSON",
-    "description": "Raw response tab label"
+    "message": "원시 JSON",
+    "description": "원시 JSON 탭"
   }
 }

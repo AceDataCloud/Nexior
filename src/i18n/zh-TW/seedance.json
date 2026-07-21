@@ -1,18 +1,18 @@
 {
   "name.seedanceBot": {
     "message": "SeeDance 機器人",
-    "description": "SeeDance 視頻生成器名稱"
+    "description": "SeeDance 影片生成器名稱"
   },
   "name.prompt": {
     "message": "提示詞",
-    "description": "生成視頻的提示詞"
+    "description": "生成影片的提示詞"
   },
   "description.prompt": {
-    "message": "描述你要生成的視頻，可附加 SeeDance 參數（例如：--rs 720p --rt 16:9 --dur 5）。",
+    "message": "描述你要生成的影片，可附加 SeeDance 引數（例如：--rs 720p --rt 16:9 --dur 5）。",
     "description": "提示詞輸入說明"
   },
   "placeholder.prompt": {
-    "message": "描述你的视频…",
+    "message": "描述你的影片…",
     "description": "提示詞佔位符"
   },
   "name.model": {
@@ -29,23 +29,23 @@
   },
   "name.duration": {
     "message": "時長",
-    "description": "視頻時長選擇標籤"
+    "description": "影片時長選擇標籤"
   },
   "description.duration": {
-    "message": "視頻時長（秒），範圍 2-12 秒。",
-    "description": "視頻時長說明"
+    "message": "影片時長（秒），範圍 2-12 秒。",
+    "description": "影片時長說明"
   },
   "name.generateAudio": {
-    "message": "生成音頻",
-    "description": "是否生成音頻標籤"
+    "message": "生成音訊",
+    "description": "是否生成音訊標籤"
   },
   "description.generateAudio": {
-    "message": "開啟後視頻將附帶音頻。僅 seedance-1.5-pro 模型支持，費用約為 2 倍。",
-    "description": "生成音頻說明"
+    "message": "開啟後影片將附帶音訊。僅 seedance-1.5-pro 模型支援，費用約為 2 倍。",
+    "description": "生成音訊說明"
   },
   "name.resolution": {
     "message": "解析度",
-    "description": "視頻解析度標籤"
+    "description": "影片解析度標籤"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -85,7 +85,7 @@
   },
   "serviceTier.default": {
     "message": "default",
-    "description": "默認檔位"
+    "description": "預設檔位"
   },
   "serviceTier.flex": {
     "message": "flex",
@@ -152,7 +152,7 @@
     "description": "額度用盡提示"
   },
   "message.uploadExceed": {
-    "message": "最多只能上傳 1 張圖片",
+    "message": "最多隻能上傳 1 張圖片",
     "description": "上傳超限提示"
   },
   "name.required": {
@@ -164,12 +164,12 @@
     "description": "不在支援列表中的模型提示"
   },
   "message.modelRequiresImage": {
-    "message": "該模型需要上傳首幀圖片才能生成視頻。",
-    "description": "圖生視頻模型需要圖片輸入提示"
+    "message": "該模型需要上傳首幀圖片才能生成影片。",
+    "description": "圖生影片模型需要圖片輸入提示"
   },
   "message.modelRejectsImage": {
-    "message": "該模型僅支援文生視頻，請移除已上傳的圖片。",
-    "description": "文生視頻模型不接受圖片輸入提示"
+    "message": "該模型僅支援文生影片，請移除已上傳的圖片。",
+    "description": "文生影片模型不接受圖片輸入提示"
   },
   "message.resolutionNotSupported": {
     "message": "該解析度不被目前模型支援。",
@@ -180,8 +180,8 @@
     "description": "上傳失敗提示"
   },
   "message.downloadVideo": {
-    "message": "下載視頻",
-    "description": "下載視頻提示"
+    "message": "下載影片",
+    "description": "下載影片提示"
   },
   "status.pending": {
     "message": "排隊中",
@@ -260,27 +260,27 @@
     "description": "參考主體圖片上傳標籤（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "可選。上傳參考主體圖片，例如用於口播視頻的人臉。僅 Seedance 2.0 支持。",
+    "message": "可選。上傳參考主體圖片，例如用於口播影片的人臉。僅 Seedance 2.0 支援。",
     "description": "參考圖片說明"
   },
   "name.referenceAudio": {
-    "message": "參考音頻",
-    "description": "參考音頻上傳標籤（Seedance 2.0）"
+    "message": "參考音訊",
+    "description": "參考音訊上傳標籤（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "可選。上傳一段語音/音頻用於生成口播（數字人）視頻，需配合參考圖片使用。僅 Seedance 2.0 支持。",
-    "description": "參考音頻說明"
+    "message": "可選。上傳一段語音/音訊用於生成口播（數位人）影片，需配合參考圖片使用。僅 Seedance 2.0 支援。",
+    "description": "參考音訊說明"
   },
   "name.referenceVideo": {
-    "message": "參考視頻",
-    "description": "參考視頻上傳標籤（Seedance 2.0）"
+    "message": "參考影片",
+    "description": "參考影片上傳標籤（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "可選。上傳一段參考視頻。僅 Seedance 2.0 支持。",
-    "description": "參考視頻說明"
+    "message": "可選。上傳一段參考影片。僅 Seedance 2.0 支援。",
+    "description": "參考影片說明"
   },
   "message.audioRequiresReferenceImage": {
-    "message": "參考音頻需要配合參考圖片（口播主體）使用，請同時上傳參考圖片。",
-    "description": "提供音頻但缺少參考圖片時的提示"
+    "message": "參考音訊需要配合參考圖片（口播主體）使用，請同時上傳參考圖片。",
+    "description": "提供音訊但缺少參考圖片時的提示"
   }
 }

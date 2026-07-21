@@ -13,15 +13,15 @@
   },
   "field.status": {
     "message": "狀態",
-    "description": "申請程序的狀態。"
+    "description": "申請程式的狀態。"
   },
   "field.api": {
     "message": "API",
-    "description": "調用的API，無需翻譯"
+    "description": "呼叫的API，無需翻譯"
   },
   "field.credential": {
     "message": "憑證",
-    "description": "生成该使用记录的 API 密钥（凭证）。"
+    "description": "生成該使用記錄的 API 金鑰（憑證）。"
   },
   "field.usedAmount": {
     "message": "已使用數量",
@@ -36,8 +36,8 @@
     "description": "剩餘的資源數量。"
   },
   "field.metadata": {
-    "message": "元數據",
-    "description": "使用記錄的元數據。"
+    "message": "後設資料",
+    "description": "使用記錄的後設資料。"
   },
   "title.totalUsed": {
     "message": "使用總量（積分）",
@@ -45,7 +45,7 @@
   },
   "title.usageTrend": {
     "message": "使用趨勢",
-    "description": "用量趨勢圖標題。"
+    "description": "用量趨勢圖示題。"
   },
   "shortcuts.today": {
     "message": "今天",
@@ -89,7 +89,7 @@
   },
   "field.balanceAfter": {
     "message": "扣後餘額",
-    "description": "本次扣費之後申請實例的餘額。"
+    "description": "本次扣費之後申請例項的餘額。"
   },
   "option.statusCodeAll": {
     "message": "狀態碼",
@@ -100,16 +100,16 @@
     "description": "本月的日期範圍"
   },
   "button.export": {
-    "message": "導出 CSV",
-    "description": "按鈕文字，點擊後導出當前篩選條件下的使用記錄為 CSV 檔案"
+    "message": "匯出 CSV",
+    "description": "按鈕文字，點選後匯出當前篩選條件下的使用記錄為 CSV 檔案"
   },
   "button.viewDetail": {
     "message": "詳情",
-    "description": "按鈕文字，點擊後彈窗顯示請求和回應的詳細資訊"
+    "description": "按鈕文字，點選後彈出視窗顯示請求和回應的詳細資訊"
   },
   "dialog.detailTitle": {
     "message": "請求/響應詳情",
-    "description": "彈窗標題，展示請求和回應的詳細 JSON 資料"
+    "description": "彈出視窗標題，展示請求和回應的詳細 JSON 資料"
   },
   "dialog.request": {
     "message": "請求",
@@ -120,47 +120,47 @@
     "description": "分頁標題，回應資料"
   },
   "dialog.noData": {
-    "message": "暫無數據",
+    "message": "暫無資料",
     "description": "沒有請求或回應資料時的提示"
   },
   "field.consumed": {
     "message": "消耗積分",
-    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+    "description": "使用明細表格中，單個 API 在所選時間範圍內消耗的積分總量列標題。"
   },
   "field.share": {
     "message": "佔比",
-    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+    "description": "使用明細表格中，單個 API 消耗佔總消耗百分比的列標題。"
   },
   "field.autoRefresh": {
     "message": "自動重新整理",
-    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+    "description": "使用記錄表格右上角的開關標籤，開啟後定時自動重新整理最新記錄。"
   },
   "value.processing": {
     "message": "處理中",
-    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+    "description": "非同步任務尚未返回最終狀態碼時，狀態碼列顯示的佔位文案。"
   },
   "value.others": {
     "message": "其他",
-    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+    "description": "使用趨勢圖中，除消耗最高的若干 API 外，其餘 API 合併顯示的系列名稱。"
   },
   "title.usageAnalytics": {
     "message": "使用分析",
-    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+    "description": "使用分析卡片的標題，卡片內含趨勢、佔比、明細三個檢視切換。"
   },
   "view.trend": {
     "message": "趨勢",
-    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+    "description": "使用分析卡片的檢視切換按鈕：按時間展示各 API 消耗的堆疊柱狀圖。"
   },
   "view.distribution": {
     "message": "佔比",
-    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+    "description": "使用分析卡片的檢視切換按鈕：展示各 API 消耗佔比的環形圖。"
   },
   "view.breakdown": {
     "message": "明細",
-    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+    "description": "使用分析卡片的檢視切換按鈕：以表格列出全部 API 的精確消耗與佔比。"
   },
   "message.exportFailed": {
     "message": "匯出失敗，請縮小時間範圍後重試。",
-    "description": "Error toast shown when the CSV export request fails (network or server error)."
+    "description": "CSV 匯出請求失敗（網路或服務端錯誤）時的錯誤提示"
   }
 }

@@ -32,7 +32,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.url": {
-    "message": "Link",
+    "message": "Линк",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.admins": {
@@ -104,11 +104,11 @@
     "description": "Naziv načina prijave: WeChat treća strana"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
+    "message": "Прилагођени SMS пошиљалац",
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+    "message": "Када је омогућено, кодови за верификацију телефона за овај сајт шаљу се преко вашег сопственог endpoint-а под вашим потписом; искључите га да бисте користили подразумевани потпис платформе. Захтева да буде омогућен провајдер за пријаву бројем телефона.",
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
@@ -116,91 +116,91 @@
     "description": "Placeholder for the SMS webhook URL input"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
+    "message": "Тајна за потписивање (оставите празно да остане непромењено)",
     "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
+    "message": "Користи прилагођеног пошиљаоца",
     "description": "Label next to the custom SMS sender toggle"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
+    "message": "Прикажи документацију",
     "description": "Link that opens the SMS webhook spec dialog"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
+    "message": "Тестирај",
     "description": "Button that opens the SMS webhook test dialog"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
+    "message": "Прво омогућите провајдера за пријаву бројем телефона да бисте подесили прилагођеног SMS пошиљаоца.",
     "description": "Tooltip shown when the toggle is disabled because phone login is off"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
+    "message": "Прилагођени SMS пошиљалац · Webhook спецификација",
     "description": "Title of the SMS webhook spec dialog"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+    "message": "Овај сајт шаље потписан HTTPS POST на URL који наведете; ваша услуга је задужена за испоруку SMS-а. Ваш endpoint мора испуњавати следеће услове:",
     "description": "Intro paragraph of the SMS webhook spec dialog"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
+    "message": "Захтев",
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+    "message": "Метод је POST, а Content-Type application/json. purpose је једно од login / register / test (test је провера повезивости — можете прескочити стварно слање). Тело захтева изгледа овако:",
     "description": "Describes the request method and body of the SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
+    "message": "Провера потписа",
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
+    "message": "Сваки захтев носи заглавља испод. Проверите их помоћу своје тајне за потписивање уз HMAC-SHA256 по Standard Webhooks спецификацији и упоредите у константном времену:",
     "description": "Describes signature verification for the SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
+    "message": "Одговор",
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+    "message": "Вратите 2xx у случају успеха. Да бисте изричито означили неуспех, вратите HTTP 200 са JSON телом чије је поље success постављено на false (погледајте пример испод). Одговорите у року од 5 секунди.",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
+    "message": "Тестирај прилагођеног SMS пошиљаоца",
     "description": "Title of the SMS webhook test dialog"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
+    "message": "Позивни број државе/региона",
     "description": "Label for the region-code field in the test dialog"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
+    "message": "Број телефона за тест (опционо)",
     "description": "Label for the phone-number field in the test dialog"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
+    "message": "Пошаљи тест",
     "description": "Button that sends the SMS webhook test request"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
+    "message": "Тест захтев је успешно испоручен вашем endpoint-у.",
     "description": "Success message after a webhook test"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+    "message": "Тест није успео. Проверите URL, тајну за потписивање и одговор вашег endpoint-а.",
     "description": "Failure message after a webhook test"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
+    "message": "Онемогући прилагођеног SMS пошиљаоца",
     "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+    "message": "Искључивањем се бришу сачувани URL пошиљаоца и тајна за потписивање (тајна се не може повратити), а овај сајт се враћа на подразумевани потпис платформе. Искључити?",
     "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
   },
   "field.featuresChat": {
-    "message": "Chat",
+    "message": "Разговор",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresVeo": {
@@ -224,7 +224,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+    "message": "Дигитални човек",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresDeepseek": {
@@ -891,83 +891,83 @@
     "description": "Креирајте или уређујте видео-записе помоћу Omni модела на основу текста, слика и видео-референци."
   },
   "capabilityOverride.edit": {
-    "message": "Customize app",
+    "message": "Прилагоди апликацију",
     "description": "Tooltip and accessible label for editing a capability app name and icon"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
+    "message": "Прилагоди {name}",
     "description": "Dialog title; {name} is the platform-default capability app name"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
+    "message": "Прилагођени назив",
     "description": "Field label for a per-site capability app display name"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
+    "message": "Оставите празно да бисте користили {name}. Сачувајте једном пре него што омогућите аутоматски превод.",
     "description": "Help text; {name} is the platform-default capability app name"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
+    "message": "Прилагођена икона",
     "description": "Field label for a per-site capability app icon"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
+    "message": "Подразумевана",
     "description": "Label above the platform-default capability icon preview"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
+    "message": "Тренутна",
     "description": "Label above the effective capability icon preview"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
+    "message": "Замени икону",
     "description": "Command to upload a replacement capability icon"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
+    "message": "Отпреми икону",
     "description": "Command to upload the first custom capability icon"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
+    "message": "Користи подразумевану икону",
     "description": "Command to clear the custom icon draft"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
+    "message": "PNG, JPEG или WebP. Слика се исече у квадрат; провидан PNG се задржава.",
     "description": "Capability icon upload requirements"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
+    "message": "Уреди икону апликације",
     "description": "Title of the capability icon cropper dialog"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
+    "message": "Врати подразумевано",
     "description": "Command that removes both custom name and icon"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
+    "message": "Прво унесите прилагођени назив или отпремите икону.",
     "description": "Warning when attempting to create an empty override"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
+    "message": "Прилагођавање апликације је сачувано",
     "description": "Success message after saving a capability override"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
+    "message": "Сачувано. Сада можете омогућити аутоматски превод прилагођеног назива.",
     "description": "Success message after first save creates an override ID"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
+    "message": "Чување прилагођавања апликације није успело",
     "description": "Fallback error for capability override writes"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
+    "message": "Вратити подразумевани назив и икону за {name}?",
     "description": "Confirmation message; {name} is the platform-default capability app name"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
+    "message": "Подразумевани назив и икона су враћени",
     "description": "Success message after deleting a capability override"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
+    "message": "Учитавање прилагођавања апликације није успело",
     "description": "Error shown when capability override management rows cannot be loaded"
   },
   "field.featuresPoivelle": {

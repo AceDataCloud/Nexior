@@ -576,77 +576,77 @@
     "description": "Kortin alaosan ilmoitus, kun käyttäjä ohittaa valtuutuksen"
   },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Ajoitetut tehtävät"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Ajoitetut tehtävät"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Uusi"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Muokkaa tehtävää"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Ei ajoitettuja tehtäviä vielä. Luo uusi napsauttamalla “Uusi”."
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Ei ajoja vielä"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Lataaminen epäonnistui"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Poistetaanko “{name}”? Tehtävä lopettaa ajamisen."
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Aja nyt",
+    "description": "Käynnistä tehtävä heti, aikataulun ulkopuolella"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Käynnistetty. Tulos näkyy ajohistoriassa pian.",
+    "description": "Manuaalinen käynnistys onnistui"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Käynnistäminen epäonnistui. Yritä myöhemmin uudelleen.",
+    "description": "Manuaalinen käynnistysvirhe"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Näytä tulos"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Ajohistoria"
   },
   "scheduledTasks.noConversation": {
     "message": "Ei keskusteluhistoriaa",
     "description": "Suoritus ei ole liitetty keskusteluun (vanha versio suoritus)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60 s hajonta"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Ajettu {count} kerta(a)"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Aktiivinen"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Tauolla"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Virhe"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "Jonossa"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "Käynnissä"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Onnistui"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Epäonnistui"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Vaiheiden yläraja saavutettu"
@@ -688,120 +688,120 @@
     "message": "Sisäinen virhe"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Vaatii toimia"
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Päivittäin"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Joka minuutti"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Tunneittain"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Viikoittain"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron-lauseke"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Joka",
+    "description": "Aja kiinteällä välillä"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "minuuttia",
+    "description": "Välin yksikkö: minuuttia"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "tuntia",
+    "description": "Välin yksikkö: tuntia"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "päivää",
+    "description": "Välin yksikkö: päivää"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "Minuutilla",
+    "description": "Millä minuutilla joka tunti ajetaan"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "Millä minuutilla joka tunti ajetaan (0–59)",
+    "description": "Tuntikohtaisen minuutin vihje"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Käynnistyy kerran kiinteän välin kuluttua edellisestä ajosta (vähintään 1 minuutti)",
+    "description": "Välivihje"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Tavallinen 5-kentän cron-lauseke: minuutti tunti päivä kuukausi viikonpäivä",
+    "description": "Cron-vihje"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Ajetaan {text}",
+    "description": "Aikataluesikatsel"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "joka {n} min",
+    "description": "Luettava muoto: joka N minuutti"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "joka {n} h",
+    "description": "Luettava muoto: joka N tunti"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "joka {n} pv",
+    "description": "Luettava muoto: joka N päivä"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "tunneittain minuutilla {n}",
+    "description": "Luettava muoto: tunneittain minuutilla N"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "päivittäin klo {time}",
+    "description": "Luettava muoto: päivittäin kello"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "{weekday} klo {time}",
+    "description": "Luettava muoto: viikoittain viikonpäivänä/kellonaikana"
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Luettava muoto: raaka cron"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "kerran klo {time}",
+    "description": "Luettava muoto: kerran"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Tehtävän nimi"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "esim. Päivittäinen uutiskooste"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Malli"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Kehote"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Kirjoita ajoitettu kysymys tai ohje. Tukee muuttujia {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'}."
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Muuttujat: {'{{date}}'} tänään, {'{{run_count}}'} ajokerta, {'{{last_output}}'} viimeisin tuloste"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Toistuvuus"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Aika"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "Viikonpäivä"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron-lauseke"
   },
   "scheduledTasks.form.skills": {
     "message": "Valtuuta taidot",
@@ -848,19 +848,19 @@
     "description": "Valtuutuksen vahvistusteksti"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Yhdistä taito ensin",
+    "description": "Valintaikkunan otsikko, kun ajoitetun tehtävän valtuutettu taito tai MCP ei ole vielä yhdistetty."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "Taito “{name}” ei ole vielä yhdistetty tai aktiivinen tilissäsi. Ilman yhdistämistä ajoitettu tehtävä ei ehkä pysty käyttämään sitä valvomattomissa taustasuorituksissa. Suosittelemme yhdistämistä ensin, tai voit tallentaa silti.",
+    "description": "Varoitusteksti; {name} on taidon tai MCP:n nimi. Selittää, että se ei ole yhdistetty, ja tarjoaa tallentamista silti."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Tallenna silti",
+    "description": "Vahvistuspainike, joka tallentaa tehtävän joka tapauksessa ohittaen yhdistämistarkistuksen."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Täytä tehtävän nimi ja kehote"
   },
   "artifacts.navTitle": {
     "message": "Tuotokset",
@@ -1035,56 +1035,56 @@
     "description": "Claude Opus 4.7 -mallin kuvaus"
   },
   "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
+    "message": "Näytä uudelleen",
+    "description": "Palauta piilotettu tuotos näkyviin"
   },
   "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
+    "message": "Näytä piilotetut",
+    "description": "Suodatinpalkin kytkin piilotettujen tuotosten näyttämiseksi"
   },
   "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
+    "message": "Piilotettu",
+    "description": "Merkki, joka näkyy tällä hetkellä piilotetuissa tuotoksissa"
   },
   "scheduledTasks.run.reason.billing_gate_failed": {
     "message": "Laskutuksen valtuutus epäonnistui"
   },
   "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
+    "message": "Selaimen toiminta",
+    "description": "Varakeotsikko BrowserDevice-työkalun toiminnalle"
   },
   "browserTool.state.choose_device": {
-    "message": "Choose a browser device"
+    "message": "Valitse selainlaite"
   },
   "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
+    "message": "Selainlaite on offline-tilassa"
   },
   "browserTool.state.awaiting_device": {
-    "message": "Waiting for browser device"
+    "message": "Odotetaan selainlaitetta"
   },
   "browserTool.state.awaiting_local_approval": {
-    "message": "Waiting for approval on the browser device"
+    "message": "Odotetaan hyväksyntää selainlaitteessa"
   },
   "browserTool.state.takeover_required": {
-    "message": "Take over on the browser device"
+    "message": "Ota haltuun selainlaitteessa"
   },
   "browserTool.state.executing": {
-    "message": "Executing in browser"
+    "message": "Suoritetaan selaimessa"
   },
   "browserTool.state.completed": {
-    "message": "Completed"
+    "message": "Valmis"
   },
   "browserTool.state.denied": {
-    "message": "Denied on the browser device"
+    "message": "Hylätty selainlaitteessa"
   },
   "browserTool.state.expired": {
-    "message": "Browser request expired"
+    "message": "Selaimen pyyntö vanhentui"
   },
   "browserTool.state.cancel_too_late": {
-    "message": "Too late to cancel"
+    "message": "Liian myöhäistä peruuttaa"
   },
   "scheduledTasks.run.waiting_for_device": {
-    "message": "Waiting for browser device"
+    "message": "Odotetaan selainlaitetta"
   },
   "model.kimiK3": {
     "message": "kimi-k3",

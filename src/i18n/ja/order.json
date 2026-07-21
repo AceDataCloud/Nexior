@@ -80,16 +80,16 @@
     "description": "WeChat支払いのヘルプメッセージです。"
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "モバイルブラウザからは直接WeChat Payを開けません。以下のお支払いリンクをコピーしてください。",
+    "description": "WeChatの外のモバイルブラウザユーザー向けガイド（H5 WeChat Payが利用不可の場合）"
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "支払いリンクをコピー",
+    "description": "ユーザーがWeChatに貼り付けられるよう現在のページURLをコピーするボタンのラベル"
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "コピー後、WeChatを開き、リンクをチャットや検索バーに貼り付けてください。",
+    "description": "リンクコピーボタンの下に表示されるヒント（WeChat内でリンクを貼り付ける手順）"
   },
   "message.free": {
     "message": "無料",
@@ -101,15 +101,15 @@
   },
   "message.applePayProcessing": {
     "message": "App Store で購入を完了しています…",
-    "description": "Message while the Apple in-app purchase is processing."
+    "description": "Apple App内購入の処理中のメッセージ"
   },
   "message.applePayFailed": {
     "message": "App Store の支払いが完了しませんでした。もう一度お試しください。",
-    "description": "Message when the Apple in-app purchase fails."
+    "description": "Apple App内購入が失敗した場合のメッセージ"
   },
   "message.applePayUnavailable": {
     "message": "このパッケージはアプリ内で購入できません。",
-    "description": "Message when Apple in-app purchase is unavailable for the package."
+    "description": "パッケージでApple App内購入が利用できない場合のメッセージ"
   },
   "message.updateFailed": {
     "message": "更新失敗",
@@ -397,7 +397,7 @@
   },
   "message.publicPayNotFound": {
     "message": "注文が見つからないか期限切れです。",
-    "description": "Shown on public pay page when the order GET returns 404."
+    "description": "注文GETが404を返した場合に公開支払いページで表示される"
   },
   "message.x402WalletStatusDetected": {
     "message": "検出済み",
@@ -533,7 +533,7 @@
   },
   "message.wechatPayLongPressTip": {
     "message": "下のQRコードを長押しし、「QRコードを認識」を選択してWeChatで支払いを完了してください。",
-    "description": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat."
+    "description": "モバイルWeChatでネイティブQRの上に表示されるヒント"
   },
   "message.wechatPayMobileScanTip": {
     "message": "下のQRコードを保存またはスクリーンショットを撮り、WeChatを開いて、スキャンをクリックし、右上のアルバムを選択して、先ほど保存した画像を選択することで支払いが完了します。",
@@ -541,34 +541,34 @@
   },
   "message.creditsValue": {
     "message": "{value} クレジット",
-    "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
+    "description": "注文のクレジット額の表示。{value}はフォーマットされたクレジット数"
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "注文総数",
+    "description": "サマリーカード：現在のフィルターに一致する注文の合計数"
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "合計使用額",
+    "description": "サマリーカード：一致する注文の合計使用額"
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "完了した注文",
+    "description": "サマリーカード：完了した注文の数"
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "保留中の注文",
+    "description": "サマリーカード：保留中の注文の数"
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "CSVエクスポート",
+    "description": "フィルター済み注文をCSVとしてエクスポートするボタンのラベル"
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "すべての状態",
+    "description": "状態フィルタードロップダウンのプレースホルダー（特定の状態が選択されていない場合）"
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "すべての支払い方法",
+    "description": "支払い方法フィルタードロップダウンのプレースホルダー（特定の方法が選択されていない場合）"
   }
 }

@@ -49,27 +49,27 @@
   },
   "step.plan": {
     "message": "기획 및 스토리보드",
-    "description": "Pipeline step: plan"
+    "description": "파이프라인 단계: 기획"
   },
   "step.source": {
     "message": "소재 수집",
-    "description": "Pipeline step: source media"
+    "description": "파이프라인 단계: 소재 수집"
   },
   "step.voice": {
     "message": "내레이션 생성",
-    "description": "Pipeline step: voiceover"
+    "description": "파이프라인 단계: 내레이션"
   },
   "step.compose": {
     "message": "장면 구성",
-    "description": "Pipeline step: compose"
+    "description": "파이프라인 단계: 구성"
   },
   "step.render": {
     "message": "영상 렌더링",
-    "description": "Pipeline step: render"
+    "description": "파이프라인 단계: 렌더링"
   },
   "step.deliver": {
     "message": "전달",
-    "description": "Pipeline step: deliver"
+    "description": "파이프라인 단계: 전달"
   },
   "name.prompt": {
     "message": "프롬프트",
@@ -93,19 +93,19 @@
   },
   "name.quality": {
     "message": "품질",
-    "description": "Production quality tier field"
+    "description": "제작 품질 등급 필드"
   },
   "option.quality.draft": {
     "message": "초안 · 빠른 미리보기",
-    "description": "Draft quality option"
+    "description": "초안 품질 옵션"
   },
   "option.quality.standard": {
     "message": "표준 · 균형",
-    "description": "Standard quality option"
+    "description": "표준 품질 옵션"
   },
   "option.quality.premium": {
     "message": "프리미엄 · 더 세밀함",
-    "description": "Premium quality option"
+    "description": "프리미엄 품질 옵션"
   },
   "name.remixing": {
     "message": "리믹스",
@@ -133,11 +133,11 @@
   },
   "description.duration": {
     "message": "목표 영상 길이입니다. 길수록 제작 시간과 포인트가 더 많이 듭니다.",
-    "description": "Duration help"
+    "description": "재생 시간 도움말"
   },
   "description.quality": {
     "message": "제작 등급이 높을수록 화면과 편집이 정교해지지만 시간과 포인트가 더 많이 듭니다.",
-    "description": "Quality help"
+    "description": "품질 도움말"
   },
   "status.pending": {
     "message": "대기 중",
@@ -209,15 +209,15 @@
   },
   "name.scenario": {
     "message": "동영상 유형",
-    "description": "Video type field"
+    "description": "비디오 유형 필드"
   },
   "description.scenario": {
     "message": "맞춤 설정을 켜면 동영상 유형을 선택할 수 있습니다. 끄면 Maestro가 자동으로 결정합니다.",
-    "description": "Scenario field help"
+    "description": "시나리오 필드 도움말"
   },
   "option.scenario.auto": {
     "message": "자동 · Maestro가 결정",
-    "description": "Auto scenario option"
+    "description": "자동 시나리오 옵션"
   },
   "option.scenario.narrated": {
     "message": "이미지와 텍스트 내레이션 영상",
@@ -225,7 +225,7 @@
   },
   "option.scenario.drama": {
     "message": "숏드라마",
-    "description": "Short drama scenario option"
+    "description": "단막극 시나리오 옵션"
   },
   "option.scenario.avatar": {
     "message": "디지털 사람 · 구술",
@@ -233,11 +233,11 @@
   },
   "option.scenario.captions": {
     "message": "자막 추가",
-    "description": "Add-captions scenario option"
+    "description": "자막 추가 시나리오 옵션"
   },
   "message.captionsNeedVideo": {
     "message": "키네틱 자막은 기존 토킹헤드 영상에 적용됩니다. 먼저 위에서 영상을 업로드하세요.",
-    "description": "Warning shown when captions video type is selected but no source video is uploaded"
+    "description": "자막 비디오 유형을 선택했으나 소스 비디오가 업로드되지 않은 경우 표시되는 경고"
   },
   "name.style": {
     "message": "시각적 스타일",
@@ -256,60 +256,60 @@
     "description": "영화적 스타일 옵션"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Frosted glass style option"
+    "message": "흐린 유리",
+    "description": "흐린 유리 스타일 옵션"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Luxury style option"
+    "message": "고급스러운",
+    "description": "고급스러운 스타일 옵션"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Swiss grid style option"
+    "message": "스위스 그리드",
+    "description": "스위스 그리드 스타일 옵션"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Modern style option"
+    "message": "모던",
+    "description": "모던 스타일 옵션"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Editorial style option"
+    "message": "에디토리얼",
+    "description": "에디토리얼 스타일 옵션"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Warm style option"
+    "message": "따뜻한",
+    "description": "따뜻한 스타일 옵션"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Vibrant style option"
+    "message": "생동감 있는",
+    "description": "생동감 있는 스타일 옵션"
   },
   "option.style.neon": {
     "message": "네온",
     "description": "네온 스타일 옵션"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Monochrome style option"
+    "message": "단색",
+    "description": "단색 스타일 옵션"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Pastel style option"
+    "message": "파스텔",
+    "description": "파스텔 스타일 옵션"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Bold type style option"
+    "message": "볼드 타입",
+    "description": "볼드 타입 스타일 옵션"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Industrial style option"
+    "message": "인더스트리얼",
+    "description": "인더스트리얼 스타일 옵션"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Futuristic style option"
+    "message": "미래적인",
+    "description": "미래적인 스타일 옵션"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Retro film style option"
+    "message": "레트로 필름",
+    "description": "레트로 필름 스타일 옵션"
   },
   "name.voice": {
     "message": "내레이터 음색",
@@ -429,62 +429,62 @@
   },
   "option.scenario.general": {
     "message": "실사 영상",
-    "description": "Footage piece scenario option"
+    "description": "영상 편집 시나리오 옵션"
   },
   "option.scenario.explainer": {
     "message": "설명 영상",
-    "description": "Explainer scenario option"
+    "description": "설명형 시나리오 옵션"
   },
   "option.scenario.product": {
     "message": "제품 홍보",
-    "description": "Product promo scenario option"
+    "description": "제품 홍보 시나리오 옵션"
   },
   "option.scenario.website": {
     "message": "웹사이트 영상화",
-    "description": "Website-to-video scenario option"
+    "description": "웹사이트-비디오 시나리오 옵션"
   },
   "option.scenario.slides": {
     "message": "슬라이드쇼",
-    "description": "Slideshow scenario option"
+    "description": "슬라이드쇼 시나리오 옵션"
   },
   "option.scenario.changelog": {
     "message": "변경 로그 (PR)",
-    "description": "Changelog scenario option"
+    "description": "변경 이력 시나리오 옵션"
   },
   "name.customize": {
     "message": "맞춤 설정",
-    "description": "Optional creative controls toggle"
+    "description": "선택적 크리에이티브 제어 토글"
   },
   "description.customize.auto": {
     "message": "자동 · 동영상 유형, 시각적 스타일, 내레이터 음색은 Maestro가 결정합니다.",
-    "description": "Customization disabled state"
+    "description": "사용자 지정 비활성화 상태"
   },
   "description.customize.manual": {
     "message": "동영상 유형, 시각적 스타일, 내레이터 음색을 선택하세요.",
-    "description": "Customization enabled state"
+    "description": "사용자 지정 활성화 상태"
   },
   "name.primaryLanguage": {
-    "message": "Primary language",
-    "description": "Primary output language field"
+    "message": "주 언어",
+    "description": "주 출력 언어 필드"
   },
   "name.additionalLanguages": {
-    "message": "Additional languages (optional)",
-    "description": "Additional output languages field"
+    "message": "추가 언어 (선택 사항)",
+    "description": "추가 출력 언어 필드"
   },
   "placeholder.additionalLanguages": {
-    "message": "Add output languages",
-    "description": "Additional languages placeholder"
+    "message": "출력 언어 추가",
+    "description": "추가 언어 자리 표시자"
   },
   "name.customizeScenario": {
     "message": "동영상 유형 맞춤 설정",
-    "description": "Video type customization toggle"
+    "description": "비디오 유형 사용자 지정 토글"
   },
   "name.customizeStyle": {
     "message": "시각적 스타일 맞춤 설정",
-    "description": "Visual style customization toggle"
+    "description": "시각적 스타일 사용자 지정 토글"
   },
   "name.customizeVoice": {
     "message": "내레이터 음색 맞춤 설정",
-    "description": "Voice timbre customization toggle"
+    "description": "음성 음색 사용자 지정 토글"
   }
 }

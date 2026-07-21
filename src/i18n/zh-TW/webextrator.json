@@ -1,98 +1,98 @@
 {
   "name.mode": {
-    "message": "Mode",
+    "message": "模式",
     "description": "Label for render/extract mode toggle"
   },
   "name.url": {
-    "message": "URL",
+    "message": "網址",
     "description": "Label for the URL input"
   },
   "name.expectedType": {
-    "message": "Expected Type",
+    "message": "內容型別",
     "description": "Label for expected content type"
   },
   "name.enableLlm": {
-    "message": "LLM Cleanup",
+    "message": "LLM 智慧清洗",
     "description": "Label for enable LLM toggle"
   },
   "name.advanced": {
-    "message": "Advanced",
+    "message": "高階選項",
     "description": "Label for advanced options collapse"
   },
   "name.waitUntil": {
-    "message": "Wait Until",
+    "message": "等待條件",
     "description": "Label for the wait_until field"
   },
   "name.waitForSelector": {
-    "message": "Wait For Selector",
+    "message": "等待選擇器",
     "description": "Label for the wait_for_selector field"
   },
   "name.timeout": {
-    "message": "Timeout (s)",
+    "message": "超時(秒)",
     "description": "Label for the timeout field"
   },
   "name.delay": {
-    "message": "Delay (s)",
+    "message": "載入後延遲(秒)",
     "description": "Label for the delay_after_load field"
   },
   "name.blockResources": {
-    "message": "Block Resources",
+    "message": "遮蔽資源",
     "description": "Label for the block_resources multi-select"
   },
   "name.consumption": {
-    "message": "Cost",
+    "message": "單次消耗",
     "description": "Label for the per-call cost"
   },
   "mode.extract": {
-    "message": "Extract",
+    "message": "抽取內容",
     "description": "Extract mode option"
   },
   "mode.render": {
-    "message": "Render",
+    "message": "渲染頁面",
     "description": "Render mode option"
   },
   "expectedType.general": {
-    "message": "General",
+    "message": "通用",
     "description": "General expected type option"
   },
   "expectedType.article": {
-    "message": "Article",
+    "message": "文章",
     "description": "Article expected type option"
   },
   "expectedType.product": {
-    "message": "Product",
+    "message": "商品",
     "description": "Product expected type option"
   },
   "waitUntil.networkidle": {
-    "message": "Network Idle",
+    "message": "網路空閒",
     "description": "Wait until network idle option"
   },
   "waitUntil.load": {
-    "message": "Load",
+    "message": "頁面載入完成",
     "description": "Wait until load option"
   },
   "waitUntil.domcontentloaded": {
-    "message": "DOM Ready",
+    "message": "DOM 就緒",
     "description": "Wait until DOM content loaded option"
   },
   "waitUntil.commit": {
-    "message": "Commit",
+    "message": "導航開始",
     "description": "Wait until commit option"
   },
   "blockResource.image": {
-    "message": "Images",
+    "message": "圖片",
     "description": "Block images option"
   },
   "blockResource.font": {
-    "message": "Fonts",
+    "message": "字型",
     "description": "Block fonts option"
   },
   "blockResource.media": {
-    "message": "Media",
+    "message": "媒體",
     "description": "Block media option"
   },
   "blockResource.stylesheet": {
-    "message": "Stylesheets",
+    "message": "樣式表",
     "description": "Block stylesheets option"
   },
   "blockResource.xhr": {
@@ -108,63 +108,63 @@
     "description": "Placeholder for the URL input"
   },
   "placeholder.waitForSelector": {
-    "message": "CSS selector, e.g. .article-body",
+    "message": "CSS 選擇器，例如 .article-body",
     "description": "Placeholder for the wait_for_selector input"
   },
   "placeholder.blockResources": {
-    "message": "Resource types to block",
+    "message": "選擇要遮蔽的資源型別",
     "description": "Placeholder for the block_resources multi-select"
   },
   "button.extract": {
-    "message": "Extract",
+    "message": "抽取",
     "description": "Run extract button label"
   },
   "button.render": {
-    "message": "Render",
+    "message": "渲染",
     "description": "Run render button label"
   },
   "description.intro": {
-    "message": "Render and extract any web page",
+    "message": "渲染並抽取任意網頁",
     "description": "Intro line shown in the empty result state"
   },
   "description.introHint": {
-    "message": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+    "message": "輸入網址，選擇「抽取」或「渲染」即可獲取乾淨的正文、Markdown、連結、截圖等。",
     "description": "Hint shown below the intro line"
   },
   "description.enableLlm": {
-    "message": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
+    "message": "使用 LLM 對抽取出的內容進行二次清洗與結構化整理，會額外消耗積分。",
     "description": "Tooltip explaining the LLM cleanup toggle"
   },
   "message.running": {
-    "message": "Working on it…",
+    "message": "正在處理…",
     "description": "Status while a request is in flight"
   },
   "message.extracting": {
-    "message": "Extracting…",
+    "message": "正在抽取…",
     "description": "Status shown when extract is running"
   },
   "message.rendering": {
-    "message": "Rendering…",
+    "message": "正在渲染…",
     "description": "Status shown when render is running"
   },
   "message.success": {
-    "message": "Done",
+    "message": "完成",
     "description": "Toast shown on success"
   },
   "message.failed": {
-    "message": "Request failed",
+    "message": "請求失敗",
     "description": "Generic error message"
   },
   "message.usedUp": {
-    "message": "Your quota has been used up. Please top up to continue.",
+    "message": "額度已用完，請充值後再試。",
     "description": "Error shown when balance is exhausted"
   },
   "message.busy": {
-    "message": "Service is busy. Please try again in a moment.",
+    "message": "服務繁忙，請稍後再試。",
     "description": "Error shown on rate limit"
   },
   "message.timeout": {
-    "message": "The page took too long to load. Try a different URL or increase the timeout.",
+    "message": "頁面載入超時，請更換網址或調大超時時間。",
     "description": "Error shown on timeout"
   },
   "message.antibotBlocked": {
@@ -172,7 +172,7 @@
     "description": "當目標頁面啟用未清除的反爬挑戰時顯示的錯誤（HTTP 422，不計費）"
   },
   "message.untitled": {
-    "message": "Untitled",
+    "message": "未命名頁面",
     "description": "Fallback title when the page has no title"
   },
   "tab.markdown": {
@@ -180,19 +180,19 @@
     "description": "Markdown tab label"
   },
   "tab.text": {
-    "message": "Text",
+    "message": "純文字",
     "description": "Plain text tab label"
   },
   "tab.structured": {
-    "message": "Structured",
+    "message": "結構化",
     "description": "Structured data tab label"
   },
   "tab.links": {
-    "message": "Links",
+    "message": "連結",
     "description": "Links tab label"
   },
   "tab.images": {
-    "message": "Images",
+    "message": "圖片",
     "description": "Images tab label"
   },
   "tab.html": {
@@ -200,7 +200,7 @@
     "description": "HTML tab label"
   },
   "tab.raw": {
-    "message": "Raw JSON",
+    "message": "原始 JSON",
     "description": "Raw response tab label"
   }
 }

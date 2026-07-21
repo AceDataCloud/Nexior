@@ -576,77 +576,96 @@
     "description": "شرح أسفل البطاقة بعد أن يتخطى المستخدم التفويض"
   },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "المهام المجدولة",
+    "description": "مدخل المهام المجدولة في الشريط الجانبي"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "المهام المجدولة",
+    "description": "عنوان الصفحة"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "إنشاء جديد",
+    "description": "زر لإنشاء مهمة مجدولة جديدة"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "تحرير المهمة",
+    "description": "عنوان نافذة التحرير"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "لا توجد مهام مجدولة بعد، انقر على «إنشاء جديد» لإنشاء واحدة",
+    "description": "رسالة حالة فارغة"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "لم يتم التشغيل بعد",
+    "description": "لا توجد سجلات تشغيل"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "فشل التحميل",
+    "description": "رسالة خطأ التحميل"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "هل تريد تأكيد حذف «{name}»؟ بعد الحذف، ستتوقف المهمة عن العمل.",
+    "description": "تأكيد الحذف"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "تشغيل الآن",
+    "description": "تشغيل المهمة يدويًا على الفور"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "تم التشغيل، يمكنك التحقق من النتائج لاحقًا في سجل التشغيل.",
+    "description": "رسالة نجاح التشغيل اليدوي"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "فشل في التشغيل، يرجى المحاولة لاحقًا.",
+    "description": "رسالة فشل التشغيل اليدوي"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "عرض النتائج",
+    "description": "الانتقال إلى المحادثة"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "سجل التشغيل",
+    "description": "عرض تاريخ التشغيل في أسفل البطاقة"
   },
   "scheduledTasks.noConversation": {
     "message": "لا توجد سجلات محادثة",
     "description": "تشير إلى أن التشغيل غير مرتبط بمحادثة (نسخة قديمة من التشغيل)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60 ثانية تذبذب",
+    "description": "شرح تذبذب وقت التشغيل"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "تم التشغيل {count} مرات",
+    "description": "عدد مرات التشغيل"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "قيد التشغيل",
+    "description": "حالة مفعلة"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "معلق",
+    "description": "حالة معطلة"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "خطأ",
+    "description": "حالة الخطأ"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "قيد التشغيل",
+    "description": "حالة التشغيل"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "نجاح",
+    "description": "حالة النجاح"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "فشل",
+    "description": "حالة الفشل"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "تم بلوغ حد الخطوات"
@@ -688,120 +707,135 @@
     "message": "خطأ داخلي"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "تحتاج إلى إجراء",
+    "description": "حالة تحتاج إلى تدخل المستخدم"
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "يوميًا",
+    "description": "يتم التنفيذ يوميًا"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "كل دقيقة"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "ساعة",
+    "description": "يتم التنفيذ كل ساعة"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "أسبوعيًا",
+    "description": "يتم التنفيذ أسبوعيًا"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "تعبير Cron",
+    "description": "Cron مخصص"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "كل فترة",
+    "description": "يتم التنفيذ كل فترة زمنية محددة"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "دقيقة",
+    "description": "وحدة الفاصل: دقيقة"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "ساعة",
+    "description": "وحدة الفاصل: ساعة"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "يوم",
+    "description": "وحدة الفاصل: يوم"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "دقيقة التفعيل",
+    "description": "الدقيقة التي يتم فيها التفعيل كل ساعة"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "الدقيقة التي يتم فيها التفعيل كل ساعة (0–59)",
+    "description": "شرح دقيقة كل ساعة"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "تنفيذ مرة واحدة كل فترة ثابتة منذ آخر تشغيل (أقل فترة 1 دقيقة)",
+    "description": "شرح الفترات الثابتة"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "تعبير كرون القياسي 5 أجزاء: دقيقة ساعة يوم شهر أسبوع",
+    "description": "شرح تعبير كرون"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "تكرار التنفيذ: {text}",
+    "description": "معاينة التكرار"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "كل {n} دقائق",
+    "description": "قابل للقراءة البشرية: كل N دقيقة"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "كل {n} ساعات",
+    "description": "قابل للقراءة البشرية: كل N ساعة"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "كل {n} أيام",
+    "description": "قابل للقراءة البشرية: كل N يوم"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "كل ساعة في الدقيقة {n}",
+    "description": "قابل للقراءة البشرية: في الدقيقة N من كل ساعة"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "يوميًا {time}",
+    "description": "قابل للقراءة البشرية: في وقت معين كل يوم"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "كل أسبوع {weekday} {time}",
+    "description": "قابل للقراءة البشرية: في يوم معين من الأسبوع في وقت معين"
   },
   "scheduledTasks.humanize.cronRaw": {
-    "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "message": "كرون: {cron}",
+    "description": "قابل للقراءة البشرية: كرون الأصلي"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "مرة واحدة {time}",
+    "description": "قابل للقراءة البشرية: مرة واحدة"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "اسم المهمة",
+    "description": "حقل الاسم"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "مثال: ملخص الأخبار اليومية",
+    "description": "نموذج الاسم"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "نموذج",
+    "description": "اختيار النموذج"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "كلمة التوجيه",
+    "description": "حقل كلمة التوجيه"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "أدخل السؤال أو الأمر الذي سيتم تنفيذه بشكل دوري، يدعم متغيرات {'{{date}}'}، {'{{run_count}}'}، {'{{last_output}}'}",
+    "description": "نموذج كلمة التوجيه"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "يدعم متغيرات القالب: {'{{date}}'} تاريخ اليوم، {'{{run_count}}'} عدد مرات التشغيل، {'{{last_output}}'} ملخص النتيجة الأخيرة",
+    "description": "شرح كلمة التوجيه"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "تكرار التنفيذ",
+    "description": "اختيار التكرار"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "وقت التنفيذ",
+    "description": "حقل الوقت"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "يوم الأسبوع",
+    "description": "حقل يوم الأسبوع"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "تعبير كرون",
+    "description": "حقل تعبير كرون"
   },
   "scheduledTasks.form.skills": {
     "message": "تفويض المهارات",
@@ -848,19 +882,20 @@
     "description": "نص تأكيد التفويض"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "يجب ربط المهارة أولاً",
+    "description": "عنوان الحوار الذي يظهر عندما لا تكون المهارة/MCP المصرح بها للمهمة المجدولة مرتبطة بعد بالمستخدم."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "المهارة «{name}» لم يتم ربطها أو تفعيلها في حسابك. إذا لم تقم بالربط أولاً، قد لا تعمل المهمة المجدولة في الخلفية. يُنصح بالذهاب للربط أولاً ثم الحفظ، أو النقر على الزر أدناه للاستمرار في الحفظ.",
+    "description": "نص تحذير؛ {name} هو اسم المهارة/MCP. يشرح أنها غير مرتبطة ويعرض خيار الحفظ على أي حال."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "هل تريد الاستمرار في الحفظ",
+    "description": "زر التأكيد الذي يحفظ المهمة المجدولة على أي حال، متجاوزًا تحقق الربط (إجباري)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "يرجى ملء اسم المهمة وكلمة التوجيه",
+    "description": "تحقق من الحقول المطلوبة"
   },
   "artifacts.navTitle": {
     "message": "الإنتاج",
@@ -1035,56 +1070,67 @@
     "description": "وصف نموذج Claude Opus 4.7"
   },
   "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
+    "message": "إلغاء الإخفاء",
+    "description": "زر لاستعادة العنصر المخفي"
   },
   "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
+    "message": "عرض العناصر المخفية",
+    "description": "زر لتفعيل عرض العناصر المخفية في شريط الفلترة"
   },
   "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
+    "message": "تم إخفاؤه",
+    "description": "علامة تشير إلى أن العنصر قد تم إخفاؤه"
   },
   "scheduledTasks.run.reason.billing_gate_failed": {
     "message": "فشل تفويض الفوترة"
   },
   "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
+    "message": "نشاط المتصفح",
+    "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
   },
   "browserTool.state.choose_device": {
-    "message": "Choose a browser device"
+    "message": "يرجى اختيار جهاز المتصفح",
+    "description": "لم يتم اختيار جهاز المتصفح بعد"
   },
   "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
+    "message": "جهاز المتصفح غير متصل",
+    "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
   },
   "browserTool.state.awaiting_device": {
-    "message": "Waiting for browser device"
+    "message": "في انتظار جهاز المتصفح",
+    "description": "انتظار جهاز المتصفح لاستلام المهمة"
   },
   "browserTool.state.awaiting_local_approval": {
-    "message": "Waiting for approval on the browser device"
+    "message": "يرجى الموافقة على جهاز المتصفح",
+    "description": "انتظار الموافقة على العملية من جهاز المتصفح المحلي"
   },
   "browserTool.state.takeover_required": {
-    "message": "Take over on the browser device"
+    "message": "يرجى الاستحواذ على جهاز المتصفح",
+    "description": "يتطلب من المستخدم الاستحواذ على العملية من جهاز المتصفح المحلي"
   },
   "browserTool.state.executing": {
-    "message": "Executing in browser"
+    "message": "يتم التنفيذ في المتصفح",
+    "description": "جهاز المتصفح يقوم بتنفيذ الأداة"
   },
   "browserTool.state.completed": {
-    "message": "Completed"
+    "message": "تم الانتهاء",
+    "description": "تم تنفيذ أداة المتصفح بنجاح"
   },
   "browserTool.state.denied": {
-    "message": "Denied on the browser device"
+    "message": "تم الرفض على جهاز المتصفح",
+    "description": "رفض المستخدم العملية على جهاز المتصفح المحلي"
   },
   "browserTool.state.expired": {
-    "message": "Browser request expired"
+    "message": "انتهت صلاحية الطلب",
+    "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
   },
   "browserTool.state.cancel_too_late": {
-    "message": "Too late to cancel"
+    "message": "لا يمكن الإلغاء",
+    "description": "العملية قد أثرت بالفعل، الطلب للإلغاء متأخر"
   },
   "scheduledTasks.run.waiting_for_device": {
-    "message": "Waiting for browser device"
+    "message": "انتظار جهاز المتصفح",
+    "description": "المهمة المجدولة تنتظر تشغيل جهاز المتصفح"
   },
   "model.kimiK3": {
     "message": "kimi-k3",

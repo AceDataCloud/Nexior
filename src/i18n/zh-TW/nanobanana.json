@@ -4,16 +4,16 @@
     "description": "任務的 ID"
   },
   "name.task": {
-    "message": "任務類型",
-    "description": "Nano Banana 圖片操作類型"
+    "message": "任務型別",
+    "description": "Nano Banana 圖片操作型別"
   },
   "name.generate": {
-    "message": "創建圖片",
-    "description": "操作類型：創建圖片"
+    "message": "建立圖片",
+    "description": "操作型別：建立圖片"
   },
   "name.edits": {
     "message": "編輯圖片",
-    "description": "操作類型：編輯圖片"
+    "description": "操作型別：編輯圖片"
   },
   "name.imageUrls": {
     "message": "參考圖片",
@@ -40,7 +40,7 @@
     "description": "任務的耗時（秒）"
   },
   "name.prompt": {
-    "message": "圖像提示",
+    "message": "影象提示",
     "description": "生成/編輯的提示詞"
   },
   "name.nanobananaBot": {
@@ -49,35 +49,35 @@
   },
   "name.aspectRatio": {
     "message": "寬高比",
-    "description": "生成圖像的寬高比"
+    "description": "生成影象的寬高比"
   },
   "name.resolution": {
     "message": "解析度",
-    "description": "生成圖像的解析度"
+    "description": "生成影象的解析度"
   },
   "description.resolutionProOnly": {
     "message": "僅 nano-banana-pro 支援解析度設定。",
     "description": "解析度選項僅對 pro 模型生效"
   },
   "description.prompt": {
-    "message": "生成或編輯圖像的提示詞",
+    "message": "生成或編輯影象的提示詞",
     "description": "提示詞描述"
   },
   "description.action": {
     "message": "生成圖片的動作。如果為 `generate`，將根據提示詞生成圖片；如果為 `edit`，則會基於提示詞和上傳的圖片進行編輯。",
-    "description": "action 參數說明"
+    "description": "action 引數說明"
   },
   "description.model": {
     "message": "用於生成圖片的模型。預設是 nano-banana。nano-banana-pro 是 gemini-3-pro-image 的別名，nano-banana 是 gemini-2.5-flash-image 的別名。",
-    "description": "model 參數說明"
+    "description": "model 引數說明"
   },
   "description.imageUrls": {
     "message": "在編輯圖片任務中必須上傳 1-5 張圖片。",
-    "description": "image_urls 參數說明"
+    "description": "image_urls 引數說明"
   },
   "description.aspectRatio": {
-    "message": "生成圖像的寬高比。支持的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。預設值為 `1:1`。僅當 `action` 為 `generate` 時生效；若 `action` 為 `edit`，則以 `image_urls` 中第一張圖片的比例為準。",
-    "description": "aspect_ratio 參數說明"
+    "message": "生成影象的寬高比。支援的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。預設值為 `1:1`。僅當 `action` 為 `generate` 時生效；若 `action` 為 `edit`，則以 `image_urls` 中第一張圖片的比例為準。",
+    "description": "aspect_ratio 引數說明"
   },
   "status.pending": {
     "message": "等待中",
@@ -101,15 +101,15 @@
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
-    "description": "開始任務消息"
+    "description": "開始任務訊息"
   },
   "message.startTaskSuccess": {
     "message": "成功發起生成任務",
-    "description": "任務成功創建"
+    "description": "任務成功建立"
   },
   "message.startTaskFailed": {
-    "message": "發起任務失敗，請聯繫管理員：",
-    "description": "任務創建失敗"
+    "message": "發起任務失敗，請聯絡管理員：",
+    "description": "任務建立失敗"
   },
   "message.usedUp": {
     "message": "您的積分已用完，請購買更多積分後繼續使用",

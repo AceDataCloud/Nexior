@@ -1,11 +1,11 @@
 {
   "tab.videoGeneration": {
     "message": "Videoerstellung",
-    "description": "Tab Label: Video Generation"
+    "description": "Tab-Beschriftung: Videoerstellung"
   },
   "tab.motionControl": {
     "message": "Bewegungssteuerung",
-    "description": "Tab Label: Motion Control"
+    "description": "Tab-Beschriftung: Bewegungssteuerung"
   },
   "name.motionImage": {
     "message": "Referenzbild",
@@ -57,7 +57,7 @@
   },
   "description.motionModel": {
     "message": "Kling 3.0 bietet höhere Qualität, aber einen höheren Preis pro Sekunde; Kling 2.6 ist preisgünstiger.",
-    "description": "motion model version description"
+    "description": "Beschreibung der Motion-Modellversion"
   },
   "description.keepOriginalSound": {
     "message": "Aktiviert, um den Originalton des Referenzvideos beizubehalten; deaktiviert, um das Ausgangsvideo ohne Originalton zu erstellen.",
@@ -77,7 +77,7 @@
   },
   "message.motionPricingNote": {
     "message": "Abrechnung pro Sekunde des generierten Videos; der Endbetrag richtet sich nach der Länge des Referenzvideos.",
-    "description": "Explains that Motion Control is billed per second"
+    "description": "Erklärt, dass Motion Control pro Sekunde abgerechnet wird"
   },
   "inspiration.title": {
     "message": "Inspiration und Voreinstellungen",
@@ -329,27 +329,27 @@
   },
   "name.cc_horizontal": {
     "message": "Horizontale Bewegung",
-    "description": "camera_control.config.horizontal"
+    "description": "Parameter für die horizontale Kamerabewegung"
   },
   "name.cc_vertical": {
     "message": "Vertikale Bewegung",
-    "description": "camera_control.config.vertical"
+    "description": "Parameter für die vertikale Kamerabewegung"
   },
   "name.cc_pan": {
     "message": "Horizontales Schwenken (pan)",
-    "description": "camera_control.config.pan"
+    "description": "Parameter für das horizontale Schwenken der Kamera"
   },
   "name.cc_tilt": {
     "message": "Vertikales Neigen (tilt)",
-    "description": "camera_control.config.tilt"
+    "description": "Parameter für das vertikale Schwenken der Kamera"
   },
   "name.cc_roll": {
     "message": "Rollbewegung (roll)",
-    "description": "camera_control.config.roll"
+    "description": "Parameter für die Rollbewegung der Kamera"
   },
   "name.cc_zoom": {
     "message": "Zoom (zoom)",
-    "description": "camera_control.config.zoom"
+    "description": "Parameter für den Kamerazoom"
   },
   "name.failure": {
     "message": "Fehler",
@@ -425,7 +425,7 @@
   },
   "name.motionModel": {
     "message": "Modellversion",
-    "description": "The Kling model version used for motion control"
+    "description": "Für Motion Control verwendete Kling-Modellversion"
   },
   "name.perSecond": {
     "message": "Sekunde",
@@ -721,59 +721,59 @@
   },
   "tab.talkingPhoto": {
     "message": "Sprechendes Foto",
-    "description": "Tab label: Talking Photo"
+    "description": "Tab-Beschriftung: Sprechendes Foto"
   },
   "name.talkingPhotoImage": {
     "message": "Porträtfoto",
-    "description": "Talking Photo portrait image input"
+    "description": "Eingabefeld für das Porträtbild bei Sprechendes Foto"
   },
   "name.talkingPhotoAudio": {
     "message": "Steuer-Audio",
-    "description": "Talking Photo driving audio input"
+    "description": "Eingabefeld für das Steuer-Audio bei Sprechendes Foto"
   },
   "name.talkingPhotoPrompt": {
     "message": "Bewegungs-Prompt (optional)",
-    "description": "Talking Photo optional motion prompt"
+    "description": "Optionaler Bewegungs-Prompt für Sprechendes Foto"
   },
   "description.talkingPhotoImage": {
     "message": "Laden Sie ein klares frontales Porträt hoch; es wird animiert und zum Sprechen gebracht.",
-    "description": "Talking Photo portrait image help text"
+    "description": "Hilfetext für das Porträtbild bei Sprechendes Foto"
   },
   "description.talkingPhotoAudio": {
     "message": "Laden Sie einen Audioclip hoch (mp3/wav, ≤5 MB); die Figur synchronisiert die Lippen dazu.",
-    "description": "Talking Photo driving audio help text"
+    "description": "Hilfetext für das Steuer-Audio bei Sprechendes Foto"
   },
   "description.talkingPhotoPrompt": {
     "message": "Optional: Beschreiben Sie den gewünschten Ausdruck/die Bewegung, z. B. „sanft in die Kamera blicken“.",
-    "description": "Talking Photo motion prompt help text"
+    "description": "Hilfetext für den Bewegungs-Prompt bei Sprechendes Foto"
   },
   "placeholder.talkingPhotoPrompt": {
     "message": "z. B. sanft, ruhig, natürlich, leichte Kopfbewegung",
-    "description": "Talking Photo prompt input placeholder"
+    "description": "Platzhalter für den Prompt bei Sprechendes Foto"
   },
   "button.generateTalkingPhoto": {
     "message": "Sprechendes Foto erstellen",
-    "description": "Talking Photo generate button"
+    "description": "Schaltfläche zum Generieren von Sprechendes Foto"
   },
   "button.uploadAudio": {
     "message": "Audio hochladen",
-    "description": "Talking Photo upload audio button"
+    "description": "Schaltfläche zum Hochladen des Audios für Sprechendes Foto"
   },
   "message.talkingPhotoMissingInputs": {
     "message": "Bitte laden Sie zuerst ein Porträtfoto und ein Steuer-Audio hoch.",
-    "description": "Talking Photo missing inputs warning"
+    "description": "Warnung bei fehlenden Eingaben für Sprechendes Foto"
   },
   "message.uploadAudioExceed": {
     "message": "Es ist nur eine Audiodatei erlaubt.",
-    "description": "Talking Photo audio count limit warning"
+    "description": "Warnung, wenn zu viele Audiodateien für Sprechendes Foto hochgeladen werden"
   },
   "message.uploadAudioError": {
     "message": "Audio-Upload fehlgeschlagen, bitte erneut versuchen.",
-    "description": "Talking Photo audio upload error"
+    "description": "Fehler beim Audio-Upload für Sprechendes Foto"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "message": "Referenzvideo",
+    "description": "Formularfeld für Referenz- oder bearbeitbares Video"
   },
   "description.omniReferenceVideo": {
     "message": "Für Kling O1 und V3 Omni. Laden Sie ein MP4/MOV (720–2160px, 3–10 Sekunden, ≤200MB) für die Bearbeitung oder als Referenz für vorhandenes Video hoch, Stichwörter werden automatisch hinzugefügt <<<video_1>>>.",
@@ -824,23 +824,23 @@
     "description": "Hinweis auf Konflikt zwischen Basisvideo und ersten/letzten Frames."
   },
   "button.uploadReferenceVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Video hochladen",
+    "description": "Schaltfläche zum Hochladen des Referenzvideos"
   },
   "message.referenceVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Sie können maximal 1 Referenzvideo hochladen",
+    "description": "Fehler, wenn mehr als ein Referenzvideo hochgeladen wird"
   },
   "message.referenceVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Upload des Referenzvideos fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehler, wenn das Hochladen des Referenzvideos fehlschlägt"
   },
   "message.referenceVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Die hochgeladene Datei muss im MP4- oder MOV-Format vorliegen!",
+    "description": "Fehler, wenn das Referenzvideo nicht im MP4- oder MOV-Format vorliegt"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Die Dateigröße darf 200 MB nicht überschreiten!",
+    "description": "Fehler, wenn das Referenzvideo 200 MB überschreitet"
   }
 }

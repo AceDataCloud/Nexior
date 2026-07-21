@@ -57,7 +57,7 @@
   },
   "description.motionModel": {
     "message": "Kling 3.0 on laadukkaampi mutta kalliimpi sekunnilta; Kling 2.6 on edullisempi.",
-    "description": "motion model version description"
+    "description": "Liikeohjauksen mallin versioselite"
   },
   "description.keepOriginalSound": {
     "message": "Kun tämä on päällä, alkuperäinen ääni säilytetään viitevideosta; kun se on pois päältä, tuotetussa videossa ei ole alkuperäistä ääntä.",
@@ -77,7 +77,7 @@
   },
   "message.motionPricingNote": {
     "message": "Laskutetaan tuotetun videon sekunneilta; lopullinen summa riippuu viitevideon pituudesta.",
-    "description": "Explains that Motion Control is billed per second"
+    "description": "Selittää, että Motion Control laskutetaan sekunnin mukaan"
   },
   "inspiration.title": {
     "message": "Inspiraatio ja esiasetukset",
@@ -425,7 +425,7 @@
   },
   "name.motionModel": {
     "message": "Mallin versio",
-    "description": "The Kling model version used for motion control"
+    "description": "Liikeohjauksen käyttämä Kling-mallin versio"
   },
   "name.perSecond": {
     "message": "sekunti",
@@ -721,59 +721,59 @@
   },
   "tab.talkingPhoto": {
     "message": "Puhuva kuva",
-    "description": "Tab label: Talking Photo"
+    "description": "Välilehtiotsikko: Talking Photo"
   },
   "name.talkingPhotoImage": {
     "message": "Muotokuva",
-    "description": "Talking Photo portrait image input"
+    "description": "Talking Photo -muotokuvan kuvasyöte"
   },
   "name.talkingPhotoAudio": {
     "message": "Ohjaava ääni",
-    "description": "Talking Photo driving audio input"
+    "description": "Talking Photo -ohjaava äänisyöte"
   },
   "name.talkingPhotoPrompt": {
     "message": "Liikekehote (valinnainen)",
-    "description": "Talking Photo optional motion prompt"
+    "description": "Talking Photo -valinnainen liikeohje"
   },
   "description.talkingPhotoImage": {
     "message": "Lataa selkeä kasvokuva edestä; se animoidaan ja saadaan puhumaan.",
-    "description": "Talking Photo portrait image help text"
+    "description": "Talking Photo -muotokuvan ohjeteksti"
   },
   "description.talkingPhotoAudio": {
     "message": "Lataa äänileike (mp3/wav, ≤5 Mt); hahmo huulisynkronoi siihen.",
-    "description": "Talking Photo driving audio help text"
+    "description": "Talking Photo -ohjaavan äänen ohjeteksti"
   },
   "description.talkingPhotoPrompt": {
     "message": "Valinnainen: kuvaile haluttu ilme/liike, esim. ”katso lempeästi kameraan”.",
-    "description": "Talking Photo motion prompt help text"
+    "description": "Talking Photo -liikeohjeen ohjeteksti"
   },
   "placeholder.talkingPhotoPrompt": {
     "message": "esim. lempeä, rauhallinen, luonnollinen, kevyt pään liike",
-    "description": "Talking Photo prompt input placeholder"
+    "description": "Talking Photo -kehotekenttäpaikkamerkki"
   },
   "button.generateTalkingPhoto": {
     "message": "Luo puhuva kuva",
-    "description": "Talking Photo generate button"
+    "description": "Talking Photo -luomispainike"
   },
   "button.uploadAudio": {
     "message": "Lataa ääni",
-    "description": "Talking Photo upload audio button"
+    "description": "Talking Photo -äänen latauspainike"
   },
   "message.talkingPhotoMissingInputs": {
     "message": "Lataa ensin muotokuva ja ohjaava ääni.",
-    "description": "Talking Photo missing inputs warning"
+    "description": "Talking Photo -puuttuvien syötteiden varoitus"
   },
   "message.uploadAudioExceed": {
     "message": "Vain yksi äänitiedosto on sallittu.",
-    "description": "Talking Photo audio count limit warning"
+    "description": "Talking Photo -äänen määrärajoituksen varoitus"
   },
   "message.uploadAudioError": {
     "message": "Äänen lataus epäonnistui, yritä uudelleen.",
-    "description": "Talking Photo audio upload error"
+    "description": "Talking Photo -äänen latausvirhe"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "message": "Viitevideo",
+    "description": "Lomakekentän otsikko: Omni-videoeditorin viite- tai muokattava video"
   },
   "description.omniReferenceVideo": {
     "message": "Sopii Kling O1:lle ja V3 Omni:lle. Lataa MP4/MOV (720–2160px, 3–10 sekuntia, ≤200MB) muokkausta tai olemassa olevan videon viitteenä varten, avainsanat lisätään automaattisesti <<<video_1>>>.",
@@ -824,23 +824,23 @@
     "description": "Perusvideon ja ensimmäisen/viimeisen kehyksen välinen konflikti."
   },
   "button.uploadReferenceVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Lataa video",
+    "description": "Viitevideon latauspainike"
   },
   "message.referenceVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Voit ladata enintään 1 viitevideon",
+    "description": "Virhe, kun ladataan enemmän kuin yksi viitevideo"
   },
   "message.referenceVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Viitevideon lataus epäonnistui, yritä uudelleen myöhemmin",
+    "description": "Virhe, kun viitevideon lataus epäonnistuu"
   },
   "message.referenceVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Ladatun tiedoston täytyy olla MP4- tai MOV-muodossa!",
+    "description": "Virhe, kun viitevideo ei ole MP4/MOV-muodossa"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Ladatun tiedoston koko ei voi ylittää 200 Mt!",
+    "description": "Virhe, kun viitevideo ylittää 200 Mt"
   }
 }

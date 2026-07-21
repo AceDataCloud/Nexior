@@ -28,8 +28,8 @@
     "description": "Метка для ввода изображения"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Референсные изображения",
+    "description": "Подпись для референсных изображений."
   },
   "name.required": {
     "message": "Обязательно",
@@ -84,8 +84,8 @@
     "description": "Инструкции по входному изображению"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
-    "description": "Instructions for reference images"
+    "message": "Необязательные референсные изображения (до 4), которые помогают направить генерацию видео. Они обязательны при редактировании референсного видео.",
+    "description": "Подсказка для референсных изображений."
   },
   "placeholder.prompt": {
     "message": "Опишите ваше видео…",
@@ -128,8 +128,8 @@
     "description": "Предупреждение о превышении загрузки"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Можно загрузить до 4 референсных изображений.",
+    "description": "Предупреждение о превышении лимита референсных изображений."
   },
   "message.uploadError": {
     "message": "Ошибка загрузки изображения, пожалуйста, попробуйте снова.",
@@ -164,39 +164,39 @@
     "description": "Исчерпано"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "Референсное видео",
+    "description": "Референсное или редактируемое видео для редактирования в Omni."
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "Необязательный файл MP4/MOV (≤200MB) для редактирования существующего видео или использования его как референса. Требуется хотя бы одно референсное изображение.",
+    "description": "Подсказка для загрузки референсного видео."
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Загрузить видео",
+    "description": "Кнопка для загрузки референсного видео."
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Можно загрузить не более 1 референсного видео",
+    "description": "Ошибка при загрузке более одного референсного видео."
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Не удалось загрузить референсное видео, попробуйте позже",
+    "description": "Ошибка при сбое загрузки референсного видео."
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Файл должен быть в формате MP4 или MOV!",
+    "description": "Ошибка, когда референсное видео не в формате MP4 или MOV."
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Размер файла не должен превышать 200MB!",
+    "description": "Ошибка, когда размер референсного видео превышает 200MB."
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "Введите промпт.",
+    "description": "Проверка, когда промпт пуст."
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "При использовании референсного видео добавьте хотя бы одно референсное изображение.",
+    "description": "Проверка, когда для video_urls не добавлено референсное изображение."
   }
 }

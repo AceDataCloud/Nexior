@@ -80,16 +80,16 @@
     "description": "WeChat-maksuohjeen viesti."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Mobiiliselaimet eivät voi avata WeChat Pay -maksua suoraan. Kopioi alla oleva maksulinkki ja avaa se WeChat-sovelluksessa jatkaaksesi.",
+    "description": "Ohje mobiiliselaimen käyttäjille WeChatin ulkopuolella, missä H5 WeChat Pay ei ole käytettävissä."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Kopioi maksulinkki",
+    "description": "Painikkeen otsikko, joka kopioi nykyisen sivun URL-osoitteen liitettäväksi WeChat-sovelluksessa."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Kopioimisen jälkeen avaa WeChat, liitä linkki mihin tahansa keskusteluun tai hakukenttään ja napauta sitä suorittaaksesi maksun.",
+    "description": "Toissijainen ohje kopiointilinkin painikkeen alla, joka ohjaa käyttäjiä linkin liittämisessä WeChat-sovelluksessa."
   },
   "message.free": {
     "message": "Ilmainen",
@@ -101,15 +101,15 @@
   },
   "message.applePayProcessing": {
     "message": "Viimeistellään ostoa App Storessa…",
-    "description": "Message while the Apple in-app purchase is processing."
+    "description": "Viesti Apple-sisäoston käsittelyn aikana."
   },
   "message.applePayFailed": {
     "message": "App Store -maksu ei valmistunut. Yritä uudelleen.",
-    "description": "Message when the Apple in-app purchase fails."
+    "description": "Viesti, kun Apple-sisäosto epäonnistuu."
   },
   "message.applePayUnavailable": {
     "message": "Tätä pakettia ei voi ostaa sovelluksessa.",
-    "description": "Message when Apple in-app purchase is unavailable for the package."
+    "description": "Viesti, kun Apple-sisäosto ei ole käytettävissä paketille."
   },
   "message.updateFailed": {
     "message": "Päivitys epäonnistui",
@@ -397,7 +397,7 @@
   },
   "message.publicPayNotFound": {
     "message": "Tilausta ei löytynyt tai se on vanhentunut.",
-    "description": "Shown on public pay page when the order GET returns 404."
+    "description": "Näytetään julkisella maksusivulla, kun tilauksen GET palauttaa 404."
   },
   "message.x402WalletStatusDetected": {
     "message": "Havaittu",
@@ -533,7 +533,7 @@
   },
   "message.wechatPayLongPressTip": {
     "message": "Paina alla olevaa QR-koodia pitkaan ja valitse 'Tunnista QR-koodi' suorittaaksesi maksun WeChatissa.",
-    "description": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat."
+    "description": "Vihje, joka näkyy QR-koodin yläpuolella mobiili-WeChat-selaimessa. Käyttäjä painaa pitkään tunnistaakseen `weixin://wxpay/bizpayurl` -osoitteen ja voi maksaa poistumatta WeChat-sovelluksesta."
   },
   "message.wechatPayMobileScanTip": {
     "message": "Tallenna tai ota kuvakaappaus alla olevasta QR-koodista, avaa WeChat, napsauta Skannaa, valitse oikeassa yläkulmassa oleva galleria ja valitse juuri tallennettu kuva maksamisen suorittamiseksi.",
@@ -541,34 +541,34 @@
   },
   "message.creditsValue": {
     "message": "{value} krediittiä",
-    "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
+    "description": "Tilauksen krediittimäärän näyttö, esim. '5 krediittiä'. {value} on muotoiltu krediittinumero."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Tilaukset yhteensä",
+    "description": "Yhteenvetokortti: nykyisten suodattimien mukaisten tilausten kokonaismäärä."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Yhteensä käytetty",
+    "description": "Yhteenvetokortti: yhteensä käytetty summa vastaavissa tilauksissa."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Valmiit tilaukset",
+    "description": "Yhteenvetokortti: valmiiden tilausten määrä."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Odottavat tilaukset",
+    "description": "Yhteenvetokortti: odottavien tilausten määrä."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Vie CSV",
+    "description": "Painikkeen otsikko suodatettujen tilausten viemiseen CSV-muodossa."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Kaikki tilat",
+    "description": "Tilasuodattimen pudotusvalikon paikkamerkki, kun tilaa ei ole valittu."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Kaikki maksutavat",
+    "description": "Maksutapasuodattimen pudotusvalikon paikkamerkki, kun maksutapaa ei ole valittu."
   }
 }

@@ -28,8 +28,8 @@
     "description": "Etykieta dla wprowadzenia obrazu"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Obrazy referencyjne",
+    "description": "Etykieta obrazów referencyjnych"
   },
   "name.required": {
     "message": "Wymagane",
@@ -84,8 +84,8 @@
     "description": "Instrukcje dotyczące obrazu wejściowego"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
-    "description": "Instructions for reference images"
+    "message": "Opcjonalne obrazy referencyjne (maks. 4), które pomagają ukierunkować wideo. Wymagane podczas edycji wideo referencyjnego.",
+    "description": "Instrukcje dotyczące obrazów referencyjnych"
   },
   "placeholder.prompt": {
     "message": "Opisz swoje wideo…",
@@ -128,8 +128,8 @@
     "description": "Ostrzeżenie o przekroczeniu limitu przesyłania"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Możesz przesłać maksymalnie 4 obrazy referencyjne.",
+    "description": "Ostrzeżenie o przekroczeniu limitu obrazów referencyjnych"
   },
   "message.uploadError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie.",
@@ -164,39 +164,39 @@
     "description": "Wykorzystano limit"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "Wideo referencyjne",
+    "description": "Wideo referencyjne / edytowalne do edycji wideo Omni"
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "Opcjonalny plik MP4/MOV (≤200MB) do edycji lub użycia istniejącego wideo jako referencji. Wymaga co najmniej jednego obrazu referencyjnego.",
+    "description": "Pomoc dotycząca przesyłania wideo referencyjnego"
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Prześlij wideo",
+    "description": "Przycisk przesyłania wideo referencyjnego"
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Możesz przesłać maksymalnie 1 wideo referencyjne",
+    "description": "Błąd po przesłaniu więcej niż jednego wideo referencyjnego"
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Przesyłanie wideo referencyjnego nie powiodło się, spróbuj ponownie później",
+    "description": "Błąd przesyłania wideo referencyjnego"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Przesłany plik musi być w formacie MP4 lub MOV!",
+    "description": "Błąd, gdy wideo referencyjne nie ma formatu MP4/MOV"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Rozmiar przesłanego pliku nie może przekraczać 200MB!",
+    "description": "Błąd, gdy wideo referencyjne przekracza 200MB"
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "Wpisz prompt.",
+    "description": "Walidacja, gdy prompt jest pusty"
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "Dodaj co najmniej jeden obraz referencyjny podczas używania wideo referencyjnego.",
+    "description": "Walidacja, gdy video_urls nie zawiera obrazu referencyjnego"
   }
 }

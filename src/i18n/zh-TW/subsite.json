@@ -4,19 +4,19 @@
     "description": "分站管理首頁大標題"
   },
   "title.create": {
-    "message": "創建分站",
-    "description": "新建分站對話框標題"
+    "message": "建立分站",
+    "description": "新建分站對話方塊標題"
   },
   "title.openNow": {
-    "message": "立即訪問分站",
-    "description": "新建成功後詢問是否立即跳轉的對話框標題"
+    "message": "立即存取分站",
+    "description": "新建成功後詢問是否立即跳轉的對話方塊標題"
   },
   "title.openSite": {
     "message": "開啟分站",
     "description": "Title of the open-subsite confirmation dialog."
   },
   "field.slug": {
-    "message": "子域名前綴",
+    "message": "子域名字首",
     "description": "分站 slug 輸入框標題"
   },
   "field.origin": {
@@ -33,11 +33,11 @@
   },
   "field.title": {
     "message": "分站標題",
-    "description": "分站標題字段"
+    "description": "分站標題欄位"
   },
   "field.createdAt": {
-    "message": "創建時間",
-    "description": "分站創建時間列"
+    "message": "建立時間",
+    "description": "分站建立時間列"
   },
   "field.actions": {
     "message": "操作",
@@ -48,68 +48,68 @@
     "description": "slug 輸入框佔位符"
   },
   "placeholder.title": {
-    "message": "用於顯示在分站瀏覽器標籤和站點頭部",
+    "message": "用於顯示在分站瀏覽器標籤和站台頭部",
     "description": "標題輸入框佔位符"
   },
   "button.create": {
-    "message": "創建分站",
-    "description": "創建分站按鈕"
+    "message": "建立分站",
+    "description": "建立分站按鈕"
   },
   "button.open": {
-    "message": "打開",
-    "description": "打開分站按鈕"
+    "message": "開啟",
+    "description": "開啟分站按鈕"
   },
   "button.manage": {
     "message": "管理",
-    "description": "進入分站設置按鈕"
+    "description": "進入分站設定按鈕"
   },
   "button.delete": {
     "message": "刪除",
     "description": "刪除分站按鈕"
   },
   "message.indexTip": {
-    "message": "在主站之下創建獨立品牌的分站，每個分站可以擁有自己的 Logo、標題和功能集，不需要單獨搭建源代碼。",
+    "message": "在主站之下建立獨立品牌的分站，每個分站可以擁有自己的 Logo、標題和功能集，不需要單獨搭建原始碼。",
     "description": "分站管理首頁說明文字"
   },
   "message.empty": {
-    "message": "你還沒有創建任何分站。點擊右上角“創建分站”開始。",
+    "message": "你還沒有建立任何分站。點選右上角“建立分站”開始。",
     "description": "空列表提示"
   },
   "message.slugTip": {
     "message": "3-32 位小寫字母、數字或短橫線；不能以短橫線開頭或結尾，也不能包含連續短橫線。",
-    "description": "slug 字段說明"
+    "description": "slug 欄位說明"
   },
   "message.slugInvalid": {
-    "message": "子域名前綴格式不正確，請檢查規則後重試。",
+    "message": "子域名字首格式不正確，請檢查規則後重試。",
     "description": "slug 校驗失敗"
   },
   "message.zoneMissing": {
-    "message": "當前主站未配置分站域名區，請聯繫站點管理員。",
+    "message": "當前主站未配置分站域名區，請聯絡站台管理員。",
     "description": "subdomain_zone 缺失"
   },
   "message.created": {
-    "message": "分站創建成功！",
-    "description": "創建成功"
+    "message": "分站建立成功！",
+    "description": "建立成功"
   },
   "message.createFailed": {
-    "message": "創建分站失敗，請稍後重試。",
-    "description": "創建失敗"
+    "message": "建立分站失敗，請稍後重試。",
+    "description": "建立失敗"
   },
   "message.slugTaken": {
-    "message": "子域名 {origin} 已被使用，请換一個再試。",
-    "description": "創建分站時，slug 已被占用（後端返回 code=duplication）"
+    "message": "子域名 {origin} 已被使用，請換一個再試。",
+    "description": "建立分站時，slug 已被佔用（後端返回 code=duplication）"
   },
   "message.loadFailed": {
-    "message": "加載分站列表失敗。",
+    "message": "載入分站列表失敗。",
     "description": "拉列表失敗"
   },
   "message.openNowConfirm": {
-    "message": "分站 {origin} 已創建。是否現在打開它繼續配置？",
-    "description": "創建後是否立即打開"
+    "message": "分站 {origin} 已建立。是否現在開啟它繼續配置？",
+    "description": "建立後是否立即開啟"
   },
   "message.openSiteHint": {
-    "message": "該分站綁定了多個域名，請選擇要打開的地址，我們會在新標籤頁中為你打開。",
-    "description": "在打開子站對話框中的提示，解釋了 URL 選擇器的功能。"
+    "message": "該分站繫結了多個域名，請選擇要開啟的地址，我們會在新標籤頁中為你開啟。",
+    "description": "在開啟子站對話方塊中的提示，解釋了 URL 選擇器的功能。"
   },
   "message.deleteConfirm": {
     "message": "確定要刪除分站 {origin} 嗎？刪除後所有使用者都將無法再透過該網域存取該分站，且操作不可恢復。",
@@ -125,26 +125,26 @@
   },
   "title.domains": {
     "message": "{origin} 的自定義域名",
-    "description": "自定義域名對話框標題"
+    "description": "自定義域名對話方塊標題"
   },
   "title.bindDomain": {
-    "message": "綁定新域名",
-    "description": "綁定表單標題"
+    "message": "繫結新域名",
+    "description": "繫結表單標題"
   },
   "button.domains": {
     "message": "域名",
-    "description": "打開域名管理對話框的按鈕"
+    "description": "開啟域名管理對話方塊的按鈕"
   },
   "button.bindDomain": {
-    "message": "綁定域名",
-    "description": "提交綁定新域名"
+    "message": "繫結域名",
+    "description": "提交繫結新域名"
   },
   "button.verify": {
     "message": "立即驗證",
-    "description": "通過我們的反向代理探測該域名是否已能正常解析並簽發證書"
+    "description": "透過我們的反向代理探測該域名是否已能正常解析並簽發證書"
   },
   "button.refresh": {
-    "message": "刷新",
+    "message": "重新整理",
     "description": "重新拉取該域名的狀態"
   },
   "field.hostname": {
@@ -152,8 +152,8 @@
     "description": "輸入你擁有的域名或子域名"
   },
   "field.recordType": {
-    "message": "記錄類型",
-    "description": "DNS 記錄類型列"
+    "message": "記錄型別",
+    "description": "DNS 記錄型別列"
   },
   "field.recordName": {
     "message": "記錄名稱",
@@ -168,11 +168,11 @@
     "description": "hostname 輸入框佔位符"
   },
   "message.domainsIntro": {
-    "message": "將你擁有的域名綁定到該分站。你需要能修改該域名的 DNS。按照下方提示添加一條 CNAME 後點擊“立即驗證”即可，我們會自動通過 Let's Encrypt 為你免費簽發並續期 HTTPS 證書。",
-    "description": "對話框頂部說明"
+    "message": "將你擁有的域名繫結到該分站。你需要能修改該域名的 DNS。按照下方提示新增一條 CNAME 後點選“立即驗證”即可，我們會自動透過 Let's Encrypt 為你免費簽發並續期 HTTPS 證書。",
+    "description": "對話方塊頂部說明"
   },
   "message.domainsEmpty": {
-    "message": "暫未綁定任何自定義域名。在下方表單中填寫完整域名並點擊“綁定”即可開始。",
+    "message": "暫未繫結任何自定義域名。在下方表單中填寫完整域名並點選“繫結”即可開始。",
     "description": "空列表提示"
   },
   "message.hostnameTip": {
@@ -184,23 +184,23 @@
     "description": "hostname 本地校驗失敗"
   },
   "message.domainCreated": {
-    "message": "域名已提交，請按提示添加 CNAME 記錄。",
+    "message": "域名已提交，請按提示新增 CNAME 記錄。",
     "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
-    "message": "創建域名失敗，請稍後重試。",
-    "description": "創建失敗"
+    "message": "建立域名失敗，請稍後重試。",
+    "description": "建立失敗"
   },
   "message.domainTaken": {
-    "message": "域名 {hostname} 已經添加過了，請換一個域名再試。",
-    "description": "所選域名已被綁定到某個站點時顯示（後端返回 code=duplication）。"
+    "message": "域名 {hostname} 已經新增過了，請換一個域名再試。",
+    "description": "所選域名已被繫結到某個站台時顯示（後端返回 code=duplication）。"
   },
   "message.domainsLoadFailed": {
-    "message": "加載域名列表失敗。",
+    "message": "載入域名列表失敗。",
     "description": "拉域名列表失敗"
   },
   "message.domainActive": {
-    "message": "域名已啟用！現在可以透過你的自訂 HTTPS 地址訪問子站。",
+    "message": "域名已啟用！現在可以透過你的自訂 HTTPS 地址存取子站。",
     "description": "進入 Active 狀態"
   },
   "message.domainFailed": {
@@ -209,19 +209,19 @@
   },
   "message.domainVerifyFailed": {
     "message": "驗證失敗，請檢查 CNAME 記錄是否已指向我們的反向代理並完成 DNS 傳播。",
-    "description": "verify 接口 4xx"
+    "description": "verify 介面 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "確定要解除綁定 {hostname} 嗎？解除綁定後用戶將無法從該域名訪問你的分站。",
+    "message": "確定要解除繫結 {hostname} 嗎？解除繫結後使用者將無法從該域名存取你的分站。",
     "description": "刪除確認"
   },
   "message.domainDeleteFailed": {
     "message": "刪除域名失敗。",
-    "description": "DELETE 接口 5xx"
+    "description": "DELETE 介面 5xx"
   },
   "status.pending": {
     "message": "待驗證",
-    "description": "Pending 狀態標籤：等待用戶加 CNAME 並點擊“立即驗證”"
+    "description": "Pending 狀態標籤：等待使用者加 CNAME 並點選“立即驗證”"
   },
   "status.active": {
     "message": "已上線",
@@ -232,7 +232,7 @@
     "description": "Failed 狀態標籤"
   },
   "message.recordNameHint": {
-    "message": "提示：大多數 DNS 控制台（DNSPod / Cloudflare / 阿里雲 / 騰訊雲 等）的「主機記錄 / 記錄名稱」只需填子網域前綴。例如綁定 studio.your-brand.com 時填 studio；若綁定的是根網域本身（如 your-brand.com），主機記錄請填 {'@'}。AWS Route 53 / Bind 等需要完整網域的服務，按上表顯示的完整網域填寫即可。",
-    "description": "DNS 記錄表下方的提示，向使用者說明「記錄名稱」在不同 DNS 服務商通常應填寫的形式（子網域前綴 / @ / 完整網域）"
+    "message": "提示：大多數 DNS 控制檯（DNSPod / Cloudflare / 阿里雲 / 騰訊雲 等）的「主機記錄 / 記錄名稱」只需填子網域字首。例如繫結 studio.your-brand.com 時填 studio；若繫結的是根網域本身（如 your-brand.com），主機記錄請填 {'@'}。AWS Route 53 / Bind 等需要完整網域的服務，按上表顯示的完整網域填寫即可。",
+    "description": "DNS 記錄表下方的提示，向使用者說明「記錄名稱」在不同 DNS 服務商通常應填寫的形式（子網域字首 / @ / 完整網域）"
   }
 }

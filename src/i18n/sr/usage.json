@@ -12,7 +12,7 @@
     "description": "Zahtev za korišćenje resursa."
   },
   "field.status": {
-    "message": "Status",
+    "message": "Статус",
     "description": "Status aplikacije."
   },
   "field.api": {
@@ -21,7 +21,7 @@
   },
   "field.credential": {
     "message": "Креденцијал",
-    "description": "The API key (credential) that generated this usage record."
+    "description": "API кључ (креденцијал) који је направио овај запис о коришћењу."
   },
   "field.usedAmount": {
     "message": "Količina korišćena",
@@ -125,42 +125,42 @@
   },
   "field.consumed": {
     "message": "Потрошено",
-    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+    "description": "Наслов колоне у табели прегледа коришћења за укупан број поена које је један API потрошио у изабраном временском опсегу."
   },
   "field.share": {
     "message": "Удео",
-    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+    "description": "Наслов колоне у табели прегледа коришћења за проценат укупне потрошње који отпада на један API."
   },
   "field.autoRefresh": {
     "message": "Аутоматско освежавање",
-    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+    "description": "Ознака прекидача у горњем десном углу табеле коришћења; када је укључено, најновији записи се аутоматски освежавају у интервалима."
   },
   "value.processing": {
     "message": "Обрада",
-    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+    "description": "Заменски текст у колони статусног кода док асинхрони задатак још није вратио коначан статусни код."
   },
   "value.others": {
     "message": "Остало",
-    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+    "description": "Назив серије на графикону тренда коришћења који обједињује све API-је изван највећих потрошача."
   },
   "title.usageAnalytics": {
     "message": "Аналитика коришћења",
-    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+    "description": "Наслов картице за аналитику коришћења, која садржи картице за тренд, удео и детаљни приказ."
   },
   "view.trend": {
     "message": "Тренд",
-    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+    "description": "Дугме за пребацивање приказа у картици аналитике коришћења: наслагани стубичасти графикон потрошње по API-ју кроз време."
   },
   "view.distribution": {
     "message": "Удео",
-    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+    "description": "Дугме за пребацивање приказа у картици аналитике коришћења: кружни графикон удела потрошње сваког API-ја."
   },
   "view.breakdown": {
     "message": "Детаљно",
-    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+    "description": "Дугме за пребацивање приказа у картици аналитике коришћења: табела са тачном потрошњом и уделом сваког API-ја."
   },
   "message.exportFailed": {
     "message": "Извоз није успео. Сузите опсег датума и покушајте поново.",
-    "description": "Error toast shown when the CSV export request fails (network or server error)."
+    "description": "Порука о грешци када захтев за извоз CSV-а не успе (мрежна или серверска грешка)."
   }
 }
