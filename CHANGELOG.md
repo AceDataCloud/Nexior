@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 14:13:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 14:47:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.7
+
+Tue, 21 Jul 2026 14:47:39 GMT
+
+### Patches
+
+- Hide unsupported Quality and Turbo controls when Midjourney V8.1 is selected. (dev@acedata.cloud)
 
 ## 3.330.6
 
