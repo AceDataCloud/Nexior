@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 15:38:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 21 Jul 2026 16:48:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.13
+
+Tue, 21 Jul 2026 16:48:50 GMT
+
+### Patches
+
+- Add playable finished films to the Poivelle discovery gallery (dev@acedata.cloud)
 
 ## 3.330.12
 
