@@ -6,6 +6,7 @@
       :can-run="canEdit && !!selectedNode"
       :can-edit="canEdit"
       @open-projects="projectDialogVisible = true"
+      @home="$emit('back-home')"
       @commit="commitRevision"
       @run="runSelected"
     />
@@ -283,6 +284,8 @@ import TimelineView from './TimelineView.vue';
 import ReviewView from './ReviewView.vue';
 import InspectorPanel from './InspectorPanel.vue';
 import AgentDock from './AgentDock.vue';
+
+defineEmits<{ 'back-home': [] }>();
 
 const store = useStore();
 const state = computed(() => store.state.poivelle);

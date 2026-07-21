@@ -4,6 +4,7 @@ import {
   bootstrap,
   cancelRun,
   confirmDryRun,
+  copyDiscoveryWork,
   createCommercialTVCProject,
   loadProject,
   loadRun,
@@ -13,6 +14,7 @@ import {
 } from './actions';
 import { applicationOperator, credentialOperator, poivelleOperator } from '@/operators';
 import { setCurrentProject } from './mutations';
+import { addProject } from './mutations';
 import stateFactory from './state';
 
 vi.mock('@/operators', () => ({
@@ -26,6 +28,9 @@ vi.mock('@/operators', () => ({
   },
   poivelleOperator: {
     getWorkspaces: vi.fn(),
+    getDiscovery: vi.fn(),
+    createWorkspace: vi.fn(),
+    copyDiscoveryWork: vi.fn(),
     applyGraphCommand: vi.fn(),
     getMembers: vi.fn(),
     getGraph: vi.fn(),
@@ -71,6 +76,61 @@ describe('Poivelle Vuex actions', () => {
     expect(poivelleOperator.getWorkspaces).not.toHaveBeenCalled();
     expect(ctx.commit).toHaveBeenCalledWith('setError', 'Poivelle requires an authenticated Ace Data Cloud session');
     expect(ctx.commit).toHaveBeenCalledWith('setStatus', { key: 'bootstrap', value: 'Error' });
+  });
+
+  it('loads discovery without opening a project graph on the creator home', async () => {
+    const ctx = context('token');
+    vi.mocked(poivelleOperator.getWorkspaces).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getDiscovery).mockResolvedValue({ data: [{ id: 'official:pulsecam' }] } as any);
+
+    await bootstrap(ctx as any, { loadProject: false });
+
+    expect(ctx.commit).toHaveBeenCalledWith('setDiscoveryWorks', [{ id: 'official:pulsecam' }]);
+    expect(ctx.dispatch).not.toHaveBeenCalledWith('loadProject', expect.anything());
+  });
+
+  it('does not start a second discovery bootstrap while one is pending', async () => {
+    const ctx = context('token');
+    ctx.state.status.bootstrap = 'Request' as any;
+
+    await bootstrap(ctx as any, { loadProject: false });
+
+    expect(poivelleOperator.getWorkspaces).not.toHaveBeenCalled();
+    expect(poivelleOperator.getDiscovery).not.toHaveBeenCalled();
+  });
+
+  it('creates a first workspace and copies a discovery work into the studio', async () => {
+    const ctx = context('token');
+    const workspace = { id: 'workspace', name: 'My Studio' };
+    const project = { id: 'project', title: 'Alpine Camera' };
+    vi.mocked(poivelleOperator.createWorkspace).mockResolvedValue({ data: workspace } as any);
+    vi.mocked(poivelleOperator.getMembers).mockResolvedValue({
+      data: [{ user_id: 'user', state: 'active', role: 'owner' }]
+    } as any);
+    vi.mocked(poivelleOperator.copyDiscoveryWork).mockResolvedValue({
+      data: { project, source_work_id: 'official:pulsecam' }
+    } as any);
+
+    await expect(
+      copyDiscoveryWork(ctx as any, {
+        work_id: 'official:pulsecam',
+        prompt: 'A climbing camera for rescue teams',
+        title: 'Alpine Camera'
+      })
+    ).resolves.toEqual(project);
+
+    expect(poivelleOperator.createWorkspace).toHaveBeenCalledWith({ name: 'My Studio' }, { token: 'token' });
+    expect(poivelleOperator.copyDiscoveryWork).toHaveBeenCalledWith(
+      'official:pulsecam',
+      {
+        workspace_id: 'workspace',
+        prompt: 'A climbing camera for rescue teams',
+        title: 'Alpine Camera',
+        aspect_ratio: '16:9'
+      },
+      { token: 'token' }
+    );
+    expect(ctx.dispatch).toHaveBeenCalledWith('loadProject', 'project');
   });
 
   it('sends the exact node, edge, and group versions in GraphCommand read sets', async () => {
@@ -181,6 +241,16 @@ describe('Poivelle Vuex actions', () => {
     expect(state.assets).toEqual([]);
     expect(state.runs).toEqual([]);
     expect(state.selectedNodeId).toBeUndefined();
+  });
+
+  it('moves an existing project to the front without duplicating it', () => {
+    const state = stateFactory();
+    state.projects = [{ id: 'project-one', title: 'One' } as any, { id: 'project-two', title: 'Two' } as any];
+
+    addProject(state, { id: 'project-two', title: 'Updated Two' } as any);
+
+    expect(state.projects.map((project) => project.id)).toEqual(['project-two', 'project-one']);
+    expect(state.projects[0].title).toBe('Updated Two');
   });
 
   it('delegates a capped temporary Global credential to a provider run', async () => {
@@ -343,6 +413,7 @@ describe('Poivelle Vuex actions', () => {
 
   it('loads TVC storyboard, artifacts, takes, and revision-scoped selections', async () => {
     const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
     ctx.state.projects = [{ id: 'project', blueprint_ref: 'commercial.tvc.action-imaging@1' } as any];
     vi.mocked(poivelleOperator.getGraph).mockResolvedValue({ data: { nodes: [] } } as any);
     vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
@@ -372,6 +443,7 @@ describe('Poivelle Vuex actions', () => {
 
   it('does not load project-wide selections when a project has no revision', async () => {
     const ctx = context('token');
+    ctx.state.currentProjectId = 'project';
     ctx.state.projects = [{ id: 'project' } as any];
     vi.mocked(poivelleOperator.getGraph).mockResolvedValue({ data: { nodes: [] } } as any);
     vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
@@ -389,6 +461,35 @@ describe('Poivelle Vuex actions', () => {
 
     expect(poivelleOperator.getSelections).not.toHaveBeenCalled();
     expect(ctx.commit).toHaveBeenCalledWith('setSelections', []);
+  });
+
+  it('does not let a stale project response overwrite the active project', async () => {
+    let resolveGraph: (value: any) => void = () => undefined;
+    const graphResponse = new Promise((resolve) => {
+      resolveGraph = resolve;
+    });
+    const ctx = context('token');
+    ctx.state.currentProjectId = 'project-one';
+    ctx.state.projects = [{ id: 'project-one' } as any];
+    vi.mocked(poivelleOperator.getGraph).mockReturnValue(graphResponse as any);
+    vi.mocked(poivelleOperator.getAssets).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getRevisions).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getProposals).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getRuns).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getTimeline).mockResolvedValue({ data: {} } as any);
+    vi.mocked(poivelleOperator.getArtifacts).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getTakes).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getEvaluations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getForensicValidations).mockResolvedValue({ data: [] } as any);
+    vi.mocked(poivelleOperator.getCosts).mockResolvedValue({ data: {} } as any);
+
+    const loading = loadProject(ctx as any, 'project-one');
+    ctx.state.currentProjectId = 'project-two';
+    resolveGraph({ data: { project_id: 'project-one', nodes: [] } });
+    await loading;
+
+    expect(ctx.commit).not.toHaveBeenCalledWith('setGraph', expect.objectContaining({ project_id: 'project-one' }));
+    expect(ctx.commit).not.toHaveBeenCalledWith('setStatus', { key: 'graph', value: 'Success' });
   });
 
   it('loads run steps and attempts for recovery inspection', async () => {

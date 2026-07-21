@@ -7,6 +7,7 @@ import type {
   IPoivelleCommercialTVCBlueprintRequest,
   IPoivelleGraphCommandRequest,
   IPoivelleGraphSnapshot,
+  IPoivelleDiscoveryWork,
   IPoivelleEvaluation,
   IPoivelleForensicValidation,
   IPoivelleMembership,
@@ -44,6 +45,21 @@ class PoivelleOperator {
 
   getWorkspaces(options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleWorkspace[]>> {
     return axios.get('/poivelle/workspaces', this.config(options));
+  }
+
+  getDiscovery(options: IPoivelleRequestOptions): Promise<AxiosResponse<IPoivelleDiscoveryWork[]>> {
+    return axios.get('/poivelle/discovery', {
+      ...this.config(options),
+      params: { site_id: typeof window === 'undefined' ? 'studio.acedata.cloud' : window.location.host }
+    });
+  }
+
+  copyDiscoveryWork(
+    workId: string,
+    payload: { workspace_id: string; prompt: string; title?: string; aspect_ratio?: '16:9' | '9:16' | '1:1' },
+    options: IPoivelleRequestOptions
+  ): Promise<AxiosResponse<{ project: IPoivelleProject; source_work_id: string }>> {
+    return axios.post(`/poivelle/discovery/${encode(workId)}/copy`, payload, this.config(options));
   }
 
   createWorkspace(
