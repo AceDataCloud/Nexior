@@ -104,11 +104,23 @@
               v-if="work.cover_url && !failedCoverIds.has(work.id)"
               :src="work.cover_url"
               :alt="work.title"
-              loading="lazy"
               @error="hideFailedCover(work.id)"
             />
             <Film v-else :size="32" aria-hidden="true" />
-            <span>{{ work.duration_seconds ? `${work.duration_seconds}s` : $t('poivelle.discovery.community') }}</span>
+            <span v-if="playableVideoUrl(work)" class="film-badge">{{ $t('poivelle.discovery.finishedFilm') }}</span>
+            <button
+              v-if="playableVideoUrl(work)"
+              type="button"
+              class="cover-play"
+              :aria-label="`${$t('poivelle.discovery.playFilm')}: ${work.title}`"
+              @click="previewWork = work"
+            >
+              <Play :size="18" fill="currentColor" aria-hidden="true" />
+              {{ $t('poivelle.discovery.playFilm') }}
+            </button>
+            <span class="duration-badge">
+              {{ work.duration_seconds ? formatDuration(work.duration_seconds) : $t('poivelle.discovery.community') }}
+            </span>
           </div>
           <div class="work-copy">
             <div class="work-meta">
@@ -116,23 +128,74 @@
               <strong>{{ work.title }}</strong>
               <p>{{ work.description }}</p>
             </div>
-            <button type="button" :disabled="bootstrapLoading || submitting" @click="copyWork(work)">
-              <Copy :size="14" aria-hidden="true" /> {{ $t('poivelle.discovery.copy') }}
-            </button>
+            <div class="work-actions">
+              <button v-if="playableVideoUrl(work)" type="button" class="play-button" @click="previewWork = work">
+                <Play :size="14" fill="currentColor" aria-hidden="true" /> {{ $t('poivelle.discovery.play') }}
+              </button>
+              <button
+                v-if="work.copyable !== false"
+                type="button"
+                class="copy-button"
+                :disabled="bootstrapLoading || submitting"
+                @click="copyWork(work)"
+              >
+                <Copy :size="14" aria-hidden="true" /> {{ $t('poivelle.discovery.copy') }}
+              </button>
+            </div>
           </div>
         </article>
       </div>
     </section>
+
+    <el-dialog
+      v-model="previewVisible"
+      class="film-preview-dialog"
+      aria-labelledby="poivelle-film-dialog-title"
+      width="min(920px, calc(100vw - 32px))"
+      align-center
+      append-to-body
+      destroy-on-close
+    >
+      <template #header>
+        <div v-if="previewWork" class="film-dialog-heading">
+          <span>{{ $t('poivelle.discovery.finishedFilm') }}</span>
+          <strong id="poivelle-film-dialog-title">{{ previewWork.title }}</strong>
+          <small>
+            {{ previewWork.creator_name }}
+            <template v-if="previewWork.duration_seconds">
+              · {{ formatDuration(previewWork.duration_seconds) }}</template
+            >
+          </small>
+        </div>
+      </template>
+      <video-player
+        v-if="previewWork && playableVideoUrl(previewWork)"
+        :key="`${previewWork.id}-${previewWork.video_url}`"
+        :src="playableVideoUrl(previewWork)!"
+      />
+    </el-dialog>
   </main>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
-import { ArrowUp, Building2, ChevronRight, Clapperboard, Copy, Film, LoaderCircle, Music2, Search } from '@lucide/vue';
-import { ElMessage } from 'element-plus';
+import {
+  ArrowUp,
+  Building2,
+  ChevronRight,
+  Clapperboard,
+  Copy,
+  Film,
+  LoaderCircle,
+  Music2,
+  Play,
+  Search
+} from '@lucide/vue';
+import { ElDialog, ElMessage } from 'element-plus';
 import { Status, type IPoivelleDiscoveryWork, type PoivelleDiscoveryCategory } from '@/models';
 import { t } from '@/i18n';
+import VideoPlayer from '@/components/common/VideoPlayer.vue';
 
 const emit = defineEmits<{ 'open-studio': [] }>();
 const store = useStore();
@@ -142,6 +205,7 @@ const works = computed<IPoivelleDiscoveryWork[]>(() => state.value?.discoveryWor
 const prompt = ref('');
 const query = ref('');
 const submitting = ref(false);
+const previewWork = ref<IPoivelleDiscoveryWork>();
 const failedCoverIds = ref(new Set<string>());
 const selectedWorkId = ref('official:pulsecam');
 const selectedCategory = ref<'all' | PoivelleDiscoveryCategory>('all');
@@ -159,6 +223,7 @@ const categories = [
   { value: 'all' as const, label: 'poivelle.discovery.all' },
   { value: 'commercial' as const, label: 'poivelle.discovery.commercial' },
   { value: 'music_video' as const, label: 'poivelle.discovery.musicVideo' },
+  { value: 'narrative' as const, label: 'poivelle.discovery.narrative' },
   { value: 'documentary' as const, label: 'poivelle.discovery.documentary' },
   { value: 'community' as const, label: 'poivelle.discovery.community' }
 ];
@@ -175,10 +240,35 @@ const filteredWorks = computed(() => {
 });
 const bootstrapLoading = computed(() => state.value?.status?.bootstrap === Status.Request);
 const bootstrapError = computed(() => state.value?.error as string | undefined);
-const selectedWork = computed(() => works.value.find((item) => item.id === selectedWorkId.value) ?? works.value[0]);
+const previewVisible = computed({
+  get: () => !!previewWork.value,
+  set: (visible: boolean) => {
+    if (!visible) previewWork.value = undefined;
+  }
+});
+const selectedWork = computed(() => {
+  const selected = works.value.find((item) => item.id === selectedWorkId.value);
+  if (selected && selected.copyable !== false) return selected;
+  return works.value.find((item) => item.copyable !== false);
+});
 const bootstrap = () => store.dispatch('poivelle/bootstrap', { loadProject: false });
 const hideFailedCover = (workId: string) => {
   failedCoverIds.value = new Set([...failedCoverIds.value, workId]);
+};
+const playableVideoUrl = (work: IPoivelleDiscoveryWork) =>
+  work.video_url?.startsWith('https://') ? work.video_url : undefined;
+const requestErrorMessage = (error: unknown) => {
+  if (error && typeof error === 'object' && 'response' in error) {
+    const detail = (error as any).response?.data?.detail;
+    if (typeof detail === 'string') return detail;
+    if (typeof detail?.message === 'string') return detail.message;
+  }
+  return error instanceof Error ? error.message : t('poivelle.error.generic');
+};
+const formatDuration = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return minutes ? `${minutes}:${remainder.toString().padStart(2, '0')}` : `0:${remainder.toString().padStart(2, '0')}`;
 };
 const openProject = async (projectId: string) => {
   await store.dispatch('poivelle/loadProject', projectId);
@@ -194,8 +284,8 @@ const submitCopy = async (work: IPoivelleDiscoveryWork, brief: string) => {
       title: brief.slice(0, 80)
     });
     emit('open-studio');
-  } catch (error: any) {
-    ElMessage.error(error?.message ?? t('poivelle.error.generic'));
+  } catch (error) {
+    ElMessage.error(requestErrorMessage(error));
   } finally {
     submitting.value = false;
   }
@@ -463,15 +553,51 @@ onMounted(bootstrap);
 .work-card:hover .cover img {
   transform: scale(1.025);
 }
-.cover > span {
+.duration-badge,
+.film-badge {
   position: absolute;
-  right: 8px;
   bottom: 8px;
   padding: 3px 6px;
   border-radius: 4px;
   color: white;
   background: rgb(0 0 0 / 68%);
   font-size: 9px;
+}
+.duration-badge {
+  right: 8px;
+}
+.film-badge {
+  top: 8px;
+  bottom: auto;
+  left: 8px;
+  color: #111;
+  background: #f4e24b;
+  font-weight: 750;
+}
+.cover-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  color: white;
+  background: rgb(0 0 0 / 22%);
+  font: 11px var(--adc-font-family-sans);
+  opacity: 0;
+  cursor: pointer;
+  transition:
+    opacity 0.18s ease,
+    background 0.18s ease;
+}
+.cover-play:hover,
+.cover-play:focus-visible {
+  background: rgb(0 0 0 / 46%);
+  opacity: 1;
+}
+.work-card:hover .cover-play {
+  opacity: 1;
 }
 .work-copy {
   display: flex;
@@ -503,7 +629,12 @@ onMounted(bootstrap);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.work-copy > button {
+.work-actions {
+  display: flex;
+  flex: none;
+  gap: 6px;
+}
+.work-actions button {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -517,9 +648,45 @@ onMounted(bootstrap);
   font: 10px inherit;
   cursor: pointer;
 }
-.work-copy > button:hover {
+.work-actions button:hover {
   color: white;
   background: var(--app-brand-hex);
+}
+.play-button {
+  color: var(--ink) !important;
+  border-color: var(--app-border-subtle) !important;
+}
+.play-button:hover {
+  color: white !important;
+  border-color: var(--app-brand-hex) !important;
+}
+:global(.film-preview-dialog .el-dialog__body) {
+  padding-top: 8px;
+  max-height: 82vh;
+  overflow: auto;
+}
+:global(.film-preview-dialog .video) {
+  width: 100%;
+  max-width: 100%;
+  max-height: min(70vh, 620px);
+  border-radius: 6px;
+}
+.film-dialog-heading {
+  display: grid;
+  gap: 3px;
+  text-align: left;
+}
+.film-dialog-heading span {
+  color: var(--app-brand-hex);
+  font-size: 10px;
+  font-weight: 750;
+}
+.film-dialog-heading strong {
+  font-size: 18px;
+}
+.film-dialog-heading small {
+  color: var(--muted);
+  font-size: 10px;
 }
 .spinning {
   animation: spin 0.8s linear infinite;
@@ -557,6 +724,24 @@ onMounted(bootstrap);
   }
   .work-grid {
     grid-template-columns: 1fr;
+  }
+  .cover-play {
+    align-items: end;
+    justify-content: flex-start;
+    padding: 0 0 10px 10px;
+    background: transparent;
+    opacity: 1;
+    font-size: 0;
+  }
+  .cover-play svg {
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 68%);
+  }
+  .work-actions {
+    flex-direction: column;
   }
   .works {
     width: min(100% - 24px, 520px);
