@@ -14,6 +14,14 @@
       <div class="activity-status">{{ $t(`chat.browserTool.state.${state}`) }}</div>
       <div v-if="origin" class="activity-origin">{{ origin }}</div>
     </div>
+    <div class="activity-actions">
+      <el-button v-if="recoveryAction" text size="small" @click="$emit('recovery', recoveryAction)">
+        {{ $t(`chat.browserTool.recovery.${recoveryAction}`) }}
+      </el-button>
+      <el-button v-if="canStop" text size="small" @click="$emit('stop-session', item.browser_session_id)">
+        {{ $t('chat.browserTool.stop') }}
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -23,39 +31,51 @@ import {
   DesktopIcon,
   GlobeIcon,
   LoadingIcon,
-  PointerIcon,
   SuccessIcon,
   TimeIcon,
   WarningIcon
 } from '@acedatacloud/core/icons/components';
+import { ElButton } from 'element-plus';
 import { defineComponent, type Component, type PropType } from 'vue';
 import type { IBrowserToolExecutionState, IChatMessageContentItem } from '@/models';
 import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
 
 const STATE_ICONS: Record<IBrowserToolExecutionState, Component> = {
-  choose_device: DesktopIcon,
-  device_offline: WarningIcon,
-  awaiting_device: GlobeIcon,
-  awaiting_local_approval: TimeIcon,
-  takeover_required: PointerIcon,
+  starting_session: LoadingIcon,
+  attaching_tab: GlobeIcon,
+  ready: DesktopIcon,
   executing: LoadingIcon,
   completed: SuccessIcon,
-  denied: CloseIcon,
+  device_offline: WarningIcon,
+  device_busy: WarningIcon,
+  authorization_required: TimeIcon,
+  stopped: CloseIcon,
   expired: TimeIcon,
-  cancel_too_late: WarningIcon
+  debugger_unavailable: WarningIcon,
+  unknown_outcome: WarningIcon,
+  failed: CloseIcon
 };
+
+const RECOVERY_ACTIONS = {
+  device_offline: 'open-device-manager',
+  device_busy: 'stop-other-session',
+  debugger_unavailable: 'close-devtools',
+  authorization_required: 'open-consent-card'
+} as const;
 
 export default defineComponent({
   name: 'BrowserToolActivity',
+  components: { ElButton },
   props: {
     item: {
       type: Object as PropType<IChatMessageContentItem>,
       required: true
     }
   },
+  emits: ['stop-session', 'recovery'],
   computed: {
     state(): IBrowserToolExecutionState {
-      return isBrowserToolExecutionState(this.item.execution_state) ? this.item.execution_state : 'awaiting_device';
+      return isBrowserToolExecutionState(this.item.execution_state) ? this.item.execution_state : 'starting_session';
     },
     title(): string {
       return (
@@ -65,10 +85,20 @@ export default defineComponent({
       );
     },
     origin(): string | undefined {
-      return sanitizeBrowserOrigin(this.item.origin);
+      const origin = sanitizeBrowserOrigin(this.item.origin);
+      return origin ? new URL(origin).hostname : undefined;
     },
     icon(): Component {
       return STATE_ICONS[this.state];
+    },
+    recoveryAction(): (typeof RECOVERY_ACTIONS)[keyof typeof RECOVERY_ACTIONS] | undefined {
+      return RECOVERY_ACTIONS[this.state as keyof typeof RECOVERY_ACTIONS];
+    },
+    canStop(): boolean {
+      return (
+        !!this.item.browser_session_id &&
+        ['starting_session', 'attaching_tab', 'ready', 'executing'].includes(this.state)
+      );
     }
   }
 });
@@ -124,6 +154,13 @@ export default defineComponent({
 
 .activity-copy {
   min-width: 0;
+  flex: 1;
+}
+
+.activity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .activity-title {

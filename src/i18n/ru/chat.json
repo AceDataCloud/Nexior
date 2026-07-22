@@ -1088,24 +1088,8 @@
     "message": "Активность браузера",
     "description": "Заголовок по умолчанию для активности инструмента BrowserDevice."
   },
-  "browserTool.state.choose_device": {
-    "message": "Выберите браузерное устройство",
-    "description": ""
-  },
   "browserTool.state.device_offline": {
     "message": "Браузерное устройство не в сети",
-    "description": ""
-  },
-  "browserTool.state.awaiting_device": {
-    "message": "Ожидание браузерного устройства",
-    "description": ""
-  },
-  "browserTool.state.awaiting_local_approval": {
-    "message": "Ожидание подтверждения на браузерном устройстве",
-    "description": ""
-  },
-  "browserTool.state.takeover_required": {
-    "message": "Нужно перехватить управление на браузерном устройстве",
     "description": ""
   },
   "browserTool.state.executing": {
@@ -1116,20 +1100,8 @@
     "message": "Завершено",
     "description": ""
   },
-  "browserTool.state.denied": {
-    "message": "Отклонено на браузерном устройстве",
-    "description": ""
-  },
   "browserTool.state.expired": {
     "message": "Срок запроса к браузеру истек",
-    "description": ""
-  },
-  "browserTool.state.cancel_too_late": {
-    "message": "Отменять уже поздно",
-    "description": ""
-  },
-  "scheduledTasks.run.waiting_for_device": {
-    "message": "Ожидание браузерного устройства",
     "description": ""
   },
   "model.kimiK3": {
@@ -1147,5 +1119,65 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Starting browser session"
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Attaching browser tab"
+  },
+  "browserTool.state.ready": {
+    "message": "Browser is ready"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Browser device is busy"
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Authorization required in Studio"
+  },
+  "browserTool.state.stopped": {
+    "message": "Browser session stopped"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Close DevTools to continue"
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Outcome is unknown; verify before retrying"
+  },
+  "browserTool.state.failed": {
+    "message": "Browser operation failed"
+  },
+  "browserTool.stop": {
+    "message": "Stop"
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Manage device"
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Stop other session"
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Close DevTools"
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Review authorization"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Browser device is offline"
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Browser authorization changed; edit this task"
+  },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Browser connection"
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "May perform these external side effects: {effects}"
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Unattended authorization expires: {time}"
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Select an online, compatible browser connection before saving"
   }
 }

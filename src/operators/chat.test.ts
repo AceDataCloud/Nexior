@@ -3,6 +3,7 @@ import { chatOperator } from './chat';
 import type { IChatConversationResponse } from '@/models';
 import { BaseError } from '@/models';
 import { ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
+import { FACADE_CATALOG_DIGEST, WIRE_CONTRACT_DIGEST } from '@/generated/browserContract.generated';
 
 // currentSiteOrigin reads window/location; stub it so the operator can run
 // under the plain test environment without touching the DOM.
@@ -64,7 +65,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
         .fn()
         .mockResolvedValue(
           sseResponse([
-            'data: {"type":"browser_execution","tool_id":"call_browser","tool_name":"browser.read","browser_state":"executing","execution_sequence":7,"origin":"https://user:secret@example.com/private?token=hidden#fragment"}\n',
+            `data: {"type":"browser_execution","tool_id":"call_browser","tool_name":"browser.read","browser_state":"executing","execution_sequence":7,"browser_session_id":"session-1","browser_call_id":"call-1","wire_contract_digest":"${WIRE_CONTRACT_DIGEST}","facade_catalog_digest":"${FACADE_CATALOG_DIGEST}","origin":"https://user:secret@example.com/private?token=hidden#fragment"}\n`,
             'data: [DONE]\n'
           ])
         )
@@ -80,9 +81,33 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
       execution: 'browser',
       execution_state: 'executing',
       execution_sequence: 7,
+      browser_session_id: 'session-1',
+      browser_call_id: 'call-1',
+      wire_contract_digest: WIRE_CONTRACT_DIGEST,
+      facade_catalog_digest: FACADE_CATALOG_DIGEST,
       origin: 'https://example.com'
     });
     expect(events[0]).not.toHaveProperty('browser_state');
+  });
+
+  it('fails closed when either generated Browser contract digest mismatches', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          sseResponse([
+            `data: {"type":"browser_execution","tool_id":"call_browser","browser_state":"executing","wire_contract_digest":"${WIRE_CONTRACT_DIGEST}","facade_catalog_digest":"sha256:stale"}\n`,
+            'data: [DONE]\n'
+          ])
+        )
+    );
+    const events: IChatConversationResponse[] = [];
+    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'read' } as never, {
+      token: 't',
+      stream: (response) => events.push(response)
+    });
+    expect(events[0]).toMatchObject({ execution: 'browser', execution_state: 'failed' });
   });
 
   it('drops unsafe browser origins at the operator boundary', async () => {
@@ -92,7 +117,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
         .fn()
         .mockResolvedValue(
           sseResponse([
-            'data: {"type":"browser_execution","tool_id":"call_browser","execution":"browser","state":"denied","origin":"javascript:alert(1)"}\n',
+            'data: {"type":"browser_execution","tool_id":"call_browser","execution":"browser","state":"failed","origin":"javascript:alert(1)"}\n',
             'data: [DONE]\n'
           ])
         )
@@ -104,7 +129,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
       stream: (response) => events.push(response)
     });
 
-    expect(events[0]).toMatchObject({ execution: 'browser', execution_state: 'denied' });
+    expect(events[0]).toMatchObject({ execution: 'browser', execution_state: 'failed' });
     expect(events[0].origin).toBeUndefined();
   });
 

@@ -1053,20 +1053,8 @@
     "message": "瀏覽器活動",
     "description": "BrowserDevice 工具活動的預設標題"
   },
-  "browserTool.state.choose_device": {
-    "message": "請選擇瀏覽器裝置"
-  },
   "browserTool.state.device_offline": {
     "message": "瀏覽器裝置已離線"
-  },
-  "browserTool.state.awaiting_device": {
-    "message": "正在等待瀏覽器裝置"
-  },
-  "browserTool.state.awaiting_local_approval": {
-    "message": "請在瀏覽器裝置上批准"
-  },
-  "browserTool.state.takeover_required": {
-    "message": "請在瀏覽器裝置上接管"
   },
   "browserTool.state.executing": {
     "message": "正在瀏覽器中執行"
@@ -1074,17 +1062,8 @@
   "browserTool.state.completed": {
     "message": "已完成"
   },
-  "browserTool.state.denied": {
-    "message": "已在瀏覽器裝置上拒絕"
-  },
   "browserTool.state.expired": {
     "message": "瀏覽器請求已過期"
-  },
-  "browserTool.state.cancel_too_late": {
-    "message": "已無法取消"
-  },
-  "scheduledTasks.run.waiting_for_device": {
-    "message": "等待瀏覽器裝置"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1101,5 +1080,65 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Starting browser session"
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Attaching browser tab"
+  },
+  "browserTool.state.ready": {
+    "message": "Browser is ready"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Browser device is busy"
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Authorization required in Studio"
+  },
+  "browserTool.state.stopped": {
+    "message": "Browser session stopped"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Close DevTools to continue"
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Outcome is unknown; verify before retrying"
+  },
+  "browserTool.state.failed": {
+    "message": "Browser operation failed"
+  },
+  "browserTool.stop": {
+    "message": "Stop"
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Manage device"
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Stop other session"
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Close DevTools"
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Review authorization"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Browser device is offline"
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Browser authorization changed; edit this task"
+  },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Browser connection"
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "May perform these external side effects: {effects}"
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Unattended authorization expires: {time}"
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Select an online, compatible browser connection before saving"
   }
 }

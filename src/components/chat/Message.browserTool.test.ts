@@ -18,7 +18,11 @@ describe('Message browser tool rendering', () => {
               tool_id: 'browser-call-1',
               tool_name: 'browser_read',
               execution: 'browser',
-              execution_state: 'awaiting_local_approval'
+              execution_state: 'authorization_required',
+              browser_session_id: 'session-1',
+              browser_call_id: 'call-1',
+              wire_contract_digest: 'sha256:wire',
+              facade_catalog_digest: 'sha256:facade'
             }
           ]
         }

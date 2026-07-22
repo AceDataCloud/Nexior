@@ -3,7 +3,8 @@ import {
   BROWSER_TOOL_EXECUTION_STATES,
   isBrowserToolExecutionState,
   reduceBrowserToolExecution,
-  sanitizeBrowserOrigin
+  sanitizeBrowserOrigin,
+  shouldExecuteWithLocalExec
 } from './browserToolExecution';
 
 describe('reduceBrowserToolExecution', () => {
@@ -11,12 +12,12 @@ describe('reduceBrowserToolExecution', () => {
     expect(
       reduceBrowserToolExecution(
         { execution_state: 'executing', origin: 'https://example.com' },
-        { execution_state: 'awaiting_device', origin: 'https://example.com/late-event?secret=1' }
+        { execution_state: 'ready', origin: 'https://example.com/late-event?secret=1' }
       )
     ).toEqual({ execution_state: 'executing', origin: 'https://example.com' });
   });
 
-  it.each(['completed', 'denied', 'expired', 'cancel_too_late'] as const)(
+  it.each(['completed', 'stopped', 'expired', 'unknown_outcome', 'failed'] as const)(
     'keeps terminal state %s immutable',
     (executionState) => {
       expect(
@@ -32,40 +33,37 @@ describe('reduceBrowserToolExecution', () => {
     expect(
       reduceBrowserToolExecution(
         { execution_state: 'device_offline' },
-        { execution_state: 'awaiting_device', origin: 'https://example.com/path' }
+        { execution_state: 'starting_session', origin: 'https://example.com/path' }
       )
-    ).toEqual({ execution_state: 'awaiting_device', origin: 'https://example.com' });
+    ).toEqual({ execution_state: 'starting_session', origin: 'https://example.com' });
   });
 
   it('rejects peer-state regressions without a newer forward transition', () => {
     expect(
       reduceBrowserToolExecution(
-        { execution_state: 'awaiting_device' },
+        { execution_state: 'ready' },
         { execution_state: 'device_offline', origin: 'https://late.example' }
       )
-    ).toEqual({ execution_state: 'awaiting_device' });
+    ).toEqual({ execution_state: 'device_offline', origin: 'https://late.example' });
     expect(
-      reduceBrowserToolExecution(
-        { execution_state: 'takeover_required' },
-        { execution_state: 'awaiting_local_approval' }
-      )
-    ).toEqual({ execution_state: 'takeover_required' });
+      reduceBrowserToolExecution({ execution_state: 'executing' }, { execution_state: 'authorization_required' })
+    ).toEqual({ execution_state: 'executing' });
   });
 
   it('rejects stale sequence updates and accepts newer forward transitions', () => {
     expect(
       reduceBrowserToolExecution(
-        { execution_state: 'awaiting_device', execution_sequence: 4, origin: 'https://original.example' },
+        { execution_state: 'ready', execution_sequence: 4, origin: 'https://original.example' },
         { execution_state: 'executing', execution_sequence: 3, origin: 'https://stale.example' }
       )
     ).toEqual({
-      execution_state: 'awaiting_device',
+      execution_state: 'ready',
       execution_sequence: 4,
       origin: 'https://original.example'
     });
     expect(
       reduceBrowserToolExecution(
-        { execution_state: 'awaiting_device', execution_sequence: 4 },
+        { execution_state: 'ready', execution_sequence: 4 },
         { execution_state: 'executing', execution_sequence: 5 }
       )
     ).toEqual({ execution_state: 'executing', execution_sequence: 5 });
@@ -77,7 +75,7 @@ describe('isBrowserToolExecutionState', () => {
     expect(isBrowserToolExecutionState(state)).toBe(true);
   });
 
-  it.each(['failed', 'running', '', null])('rejects unsupported state %s', (state) => {
+  it.each(['running', 'queued', 'paused', '', null])('rejects unsupported state %s', (state) => {
     expect(isBrowserToolExecutionState(state)).toBe(false);
   });
 });
@@ -91,5 +89,13 @@ describe('sanitizeBrowserOrigin', () => {
 
   it.each(['javascript:alert(1)', 'data:text/html,secret', 'not a URL', ''])('rejects unsafe origin %s', (origin) => {
     expect(sanitizeBrowserOrigin(origin)).toBeUndefined();
+  });
+});
+
+describe('shouldExecuteWithLocalExec', () => {
+  it('keeps BrowserDevice tools on the cloud execution path', () => {
+    expect(shouldExecuteWithLocalExec('browser')).toBe(false);
+    expect(shouldExecuteWithLocalExec('server')).toBe(false);
+    expect(shouldExecuteWithLocalExec('client')).toBe(true);
   });
 });
