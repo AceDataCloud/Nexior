@@ -1053,8 +1053,20 @@
     "message": "Browser activity",
     "description": "Fallback title for a BrowserDevice tool activity"
   },
+  "browserTool.state.choose_device": {
+    "message": "Choose a browser device"
+  },
   "browserTool.state.device_offline": {
     "message": "Browser device is offline"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "Waiting for browser device"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "Waiting for approval on the browser device"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "Take over on the browser device"
   },
   "browserTool.state.executing": {
     "message": "Executing in browser"
@@ -1062,8 +1074,17 @@
   "browserTool.state.completed": {
     "message": "Completed"
   },
+  "browserTool.state.denied": {
+    "message": "Denied on the browser device"
+  },
   "browserTool.state.expired": {
     "message": "Browser request expired"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "Too late to cancel"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "Waiting for browser device"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1080,6 +1101,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

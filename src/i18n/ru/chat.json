@@ -1088,8 +1088,24 @@
     "message": "Активность браузера",
     "description": "Заголовок по умолчанию для активности инструмента BrowserDevice."
   },
+  "browserTool.state.choose_device": {
+    "message": "Выберите браузерное устройство",
+    "description": ""
+  },
   "browserTool.state.device_offline": {
     "message": "Браузерное устройство не в сети",
+    "description": ""
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "Ожидание браузерного устройства",
+    "description": ""
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "Ожидание подтверждения на браузерном устройстве",
+    "description": ""
+  },
+  "browserTool.state.takeover_required": {
+    "message": "Нужно перехватить управление на браузерном устройстве",
     "description": ""
   },
   "browserTool.state.executing": {
@@ -1100,8 +1116,20 @@
     "message": "Завершено",
     "description": ""
   },
+  "browserTool.state.denied": {
+    "message": "Отклонено на браузерном устройстве",
+    "description": ""
+  },
   "browserTool.state.expired": {
     "message": "Срок запроса к браузеру истек",
+    "description": ""
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "Отменять уже поздно",
+    "description": ""
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "Ожидание браузерного устройства",
     "description": ""
   },
   "model.kimiK3": {
@@ -1119,6 +1147,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

@@ -1,11 +1,11 @@
 <template>
-  <div :class="['tool-activity', { 'is-error': item.is_error, 'is-running': item.status === 'running' }]">
+  <div :class="['tool-activity', { 'is-error': isError, 'is-running': isRunning }]">
     <div class="tool-header" @click="expanded = !expanded">
       <span class="tool-icon">
-        <el-icon v-if="item.status === 'running'" class="is-loading"
+        <el-icon v-if="isRunning" class="is-loading"
           ><Loading :size="'1em' as any" aria-hidden="true" focusable="false"
         /></el-icon>
-        <el-icon v-else-if="item.is_error" color="var(--el-color-danger)"
+        <el-icon v-else-if="isError" color="var(--el-color-danger)"
           ><CircleCloseFilled :size="'1em' as any" aria-hidden="true" focusable="false"
         /></el-icon>
         <el-icon v-else color="var(--el-color-success)"
@@ -13,7 +13,8 @@
         /></el-icon>
       </span>
       <span class="tool-name">{{ displayName }}</span>
-      <span v-if="item.duration_ms" class="tool-duration">{{ item.duration_ms }}ms</span>
+      <span v-if="isInterrupted" class="tool-interrupted">{{ $t('chat.toolActivity.interrupted') }}</span>
+      <span v-else-if="item.duration_ms" class="tool-duration">{{ item.duration_ms }}ms</span>
       <el-icon class="tool-expand" :class="{ rotated: expanded }"
         ><ArrowRight :size="'1em' as any" aria-hidden="true" focusable="false"
       /></el-icon>
@@ -56,6 +57,14 @@ export default defineComponent({
     item: {
       type: Object as PropType<IChatMessageContentItem>,
       required: true
+    },
+    // False once the parent turn has finished/failed. A `running` block on an
+    // ended turn never received a tool result (error mid-tool, or a legacy
+    // orphan persisted before the backend finalized it), so we settle its icon
+    // instead of spinning forever.
+    turnActive: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -64,6 +73,20 @@ export default defineComponent({
     };
   },
   computed: {
+    // Spin ONLY while the tool is genuinely in flight on a live turn.
+    isRunning(): boolean {
+      return this.item.status === 'running' && this.turnActive;
+    },
+    // A never-resolved block on an ended turn is shown as failed (honest —
+    // we never observed a success), alongside blocks that errored explicitly.
+    isError(): boolean {
+      return !!this.item.is_error || (this.item.status === 'running' && !this.turnActive);
+    },
+    // Distinguish "the turn ended before this tool reported" from a normal
+    // error, so we can show a short hint instead of a stale duration.
+    isInterrupted(): boolean {
+      return this.item.status === 'running' && !this.turnActive;
+    },
     displayName(): string {
       if (this.item.tool_display_name) return this.item.tool_display_name;
       const name = this.item.tool_name || '';
@@ -134,6 +157,11 @@ export default defineComponent({
 
 .tool-duration {
   color: var(--el-text-color-secondary);
+  font-size: 12px;
+}
+
+.tool-interrupted {
+  color: var(--el-color-danger);
   font-size: 12px;
 }
 

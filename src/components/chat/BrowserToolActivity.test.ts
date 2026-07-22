@@ -76,4 +76,31 @@ describe('BrowserToolActivity', () => {
     expect(wrapper.text()).not.toContain('secret');
     expect(wrapper.text()).not.toContain('private');
   });
+
+  it('marks a non-terminal state as interrupted (no spinner) once the turn has ended', () => {
+    const wrapper = mount(BrowserToolActivity, {
+      props: {
+        item: { type: 'tool_use', execution: 'browser', execution_state: 'executing', tool_display_name: 'Read tab' },
+        turnActive: false
+      },
+      global: { mocks: { $t: (key: string) => key } }
+    });
+
+    expect(wrapper.text()).toContain('chat.toolActivity.interrupted');
+    expect(wrapper.text()).not.toContain('chat.browserTool.state.executing');
+    expect(wrapper.find('.is-spinning').exists()).toBe(false);
+  });
+
+  it('keeps a terminal state intact after the turn ends', () => {
+    const wrapper = mount(BrowserToolActivity, {
+      props: {
+        item: { type: 'tool_use', execution: 'browser', execution_state: 'completed', tool_display_name: 'Read tab' },
+        turnActive: false
+      },
+      global: { mocks: { $t: (key: string) => key } }
+    });
+
+    expect(wrapper.text()).toContain('chat.browserTool.state.completed');
+    expect(wrapper.text()).not.toContain('chat.toolActivity.interrupted');
+  });
 });

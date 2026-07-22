@@ -1053,8 +1053,20 @@
     "message": "Активност прегледача",
     "description": "Fallback title for a BrowserDevice tool activity"
   },
+  "browserTool.state.choose_device": {
+    "message": "Изаберите уређај прегледача"
+  },
   "browserTool.state.device_offline": {
     "message": "Уређај прегледача је ван мреже"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "Чека се уређај прегледача"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "Чека се одобрење на уређају прегледача"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "Преузмите контролу на уређају прегледача"
   },
   "browserTool.state.executing": {
     "message": "Извршава се у прегледачу"
@@ -1062,8 +1074,17 @@
   "browserTool.state.completed": {
     "message": "Завршено"
   },
+  "browserTool.state.denied": {
+    "message": "Одбијено на уређају прегледача"
+  },
   "browserTool.state.expired": {
     "message": "Захтев прегледача је истекао"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "Прекасно за отказивање"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "Чека се уређај прегледача"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1080,6 +1101,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

@@ -74,10 +74,12 @@
                   )
                 "
                 :item="item"
+                :turn-active="isTurnActive"
               />
               <browser-tool-activity
                 v-if="item.type === 'tool_use' && item.execution === 'browser'"
                 :item="item"
+                :turn-active="isTurnActive"
                 @stop-session="$emit('stopBrowserSession', $event)"
                 @recovery="$emit('browserRecovery', $event)"
               />
@@ -315,6 +317,12 @@ export default defineComponent({
       // chat session. Optional chaining guards the case where the chat store
       // module isn't registered (anonymous /share/:id route).
       return this.modelGroupOverride || this.$store.state.chat?.modelGroup;
+    },
+    // A turn is "active" only while streaming. A FINISHED/FAILED message that
+    // still carries a `running` tool block never got its result, so tool rows
+    // settle their icon instead of spinning forever (see ToolActivity).
+    isTurnActive(): boolean {
+      return this.message.state === IChatMessageState.PENDING || this.message.state === IChatMessageState.ANSWERING;
     },
     // Plain-text view of `message.content` for the copy button. Assistant
     // messages are now stored as IChatMessageContentItem[] (text + tool_use

@@ -1053,8 +1053,20 @@
     "message": "Selaimen toiminta",
     "description": "Varakeotsikko BrowserDevice-työkalun toiminnalle"
   },
+  "browserTool.state.choose_device": {
+    "message": "Valitse selainlaite"
+  },
   "browserTool.state.device_offline": {
     "message": "Selainlaite on offline-tilassa"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "Odotetaan selainlaitetta"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "Odotetaan hyväksyntää selainlaitteessa"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "Ota haltuun selainlaitteessa"
   },
   "browserTool.state.executing": {
     "message": "Suoritetaan selaimessa"
@@ -1062,8 +1074,17 @@
   "browserTool.state.completed": {
     "message": "Valmis"
   },
+  "browserTool.state.denied": {
+    "message": "Hylätty selainlaitteessa"
+  },
   "browserTool.state.expired": {
     "message": "Selaimen pyyntö vanhentui"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "Liian myöhäistä peruuttaa"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "Odotetaan selainlaitetta"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1080,6 +1101,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

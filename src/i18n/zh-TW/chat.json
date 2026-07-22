@@ -1053,8 +1053,20 @@
     "message": "瀏覽器活動",
     "description": "BrowserDevice 工具活動的預設標題"
   },
+  "browserTool.state.choose_device": {
+    "message": "請選擇瀏覽器裝置"
+  },
   "browserTool.state.device_offline": {
     "message": "瀏覽器裝置已離線"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "正在等待瀏覽器裝置"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "請在瀏覽器裝置上批准"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "請在瀏覽器裝置上接管"
   },
   "browserTool.state.executing": {
     "message": "正在瀏覽器中執行"
@@ -1062,8 +1074,17 @@
   "browserTool.state.completed": {
     "message": "已完成"
   },
+  "browserTool.state.denied": {
+    "message": "已在瀏覽器裝置上拒絕"
+  },
   "browserTool.state.expired": {
     "message": "瀏覽器請求已過期"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "已無法取消"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "等待瀏覽器裝置"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1080,6 +1101,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

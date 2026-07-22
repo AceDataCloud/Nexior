@@ -1088,9 +1088,25 @@
     "message": "نشاط المتصفح",
     "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
   },
+  "browserTool.state.choose_device": {
+    "message": "يرجى اختيار جهاز المتصفح",
+    "description": "لم يتم اختيار جهاز المتصفح بعد"
+  },
   "browserTool.state.device_offline": {
     "message": "جهاز المتصفح غير متصل",
     "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "في انتظار جهاز المتصفح",
+    "description": "انتظار جهاز المتصفح لاستلام المهمة"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "يرجى الموافقة على جهاز المتصفح",
+    "description": "انتظار الموافقة على العملية من جهاز المتصفح المحلي"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "يرجى الاستحواذ على جهاز المتصفح",
+    "description": "يتطلب من المستخدم الاستحواذ على العملية من جهاز المتصفح المحلي"
   },
   "browserTool.state.executing": {
     "message": "يتم التنفيذ في المتصفح",
@@ -1100,9 +1116,21 @@
     "message": "تم الانتهاء",
     "description": "تم تنفيذ أداة المتصفح بنجاح"
   },
+  "browserTool.state.denied": {
+    "message": "تم الرفض على جهاز المتصفح",
+    "description": "رفض المستخدم العملية على جهاز المتصفح المحلي"
+  },
   "browserTool.state.expired": {
     "message": "انتهت صلاحية الطلب",
     "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "لا يمكن الإلغاء",
+    "description": "العملية قد أثرت بالفعل، الطلب للإلغاء متأخر"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "انتظار جهاز المتصفح",
+    "description": "المهمة المجدولة تنتظر تشغيل جهاز المتصفح"
   },
   "model.kimiK3": {
     "message": "kimi-k3",
@@ -1119,6 +1147,10 @@
   "model.kimiK26Description": {
     "message": "Reasoning and vision model for compatible K2 workflows",
     "description": "Description of the Kimi K2.6 model"
+  },
+  "toolActivity.interrupted": {
+    "message": "Interrupted",
+    "description": "Shown on a tool row whose turn ended before the tool reported a result"
   },
   "browserTool.state.starting_session": {
     "message": "Starting browser session"

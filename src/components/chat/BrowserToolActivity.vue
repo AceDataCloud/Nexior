@@ -3,7 +3,7 @@
     <div class="activity-icon" aria-hidden="true">
       <component
         :is="icon"
-        :class="{ 'is-spinning': state === 'executing' }"
+        :class="{ 'is-spinning': state === 'executing' && !isStalled }"
         :size="'1em' as any"
         aria-hidden="true"
         focusable="false"
@@ -11,11 +11,13 @@
     </div>
     <div class="activity-copy">
       <div class="activity-title">{{ title }}</div>
-      <div class="activity-status">{{ $t(`chat.browserTool.state.${state}`) }}</div>
+      <div class="activity-status">
+        {{ isStalled ? $t('chat.toolActivity.interrupted') : $t(`chat.browserTool.state.${state}`) }}
+      </div>
       <div v-if="origin" class="activity-origin">{{ origin }}</div>
     </div>
     <div class="activity-actions">
-      <el-button v-if="recoveryAction" text size="small" @click="$emit('recovery', recoveryAction)">
+      <el-button v-if="recoveryAction && !isStalled" text size="small" @click="$emit('recovery', recoveryAction)">
         {{ $t(`chat.browserTool.recovery.${recoveryAction}`) }}
       </el-button>
       <el-button v-if="canStop" text size="small" @click="$emit('stop-session', item.browser_session_id)">
@@ -63,6 +65,11 @@ const RECOVERY_ACTIONS = {
   authorization_required: 'open-consent-card'
 } as const;
 
+// In-flight states — the browser tool is still working. Anything else is a
+// settled outcome. A turn that ends while a tool is still in one of these
+// states left it stalled (no device report), so we stop the spinner.
+const ACTIVE_STATES: IBrowserToolExecutionState[] = ['starting_session', 'attaching_tab', 'ready', 'executing'];
+
 export default defineComponent({
   name: 'BrowserToolActivity',
   components: { ElButton },
@@ -70,12 +77,22 @@ export default defineComponent({
     item: {
       type: Object as PropType<IChatMessageContentItem>,
       required: true
+    },
+    // False once the parent turn has finished/failed. An in-flight browser
+    // state on an ended turn never settled, so we show a stalled/interrupted
+    // icon instead of an eternal spinner.
+    turnActive: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['stop-session', 'recovery'],
   computed: {
     state(): IBrowserToolExecutionState {
       return isBrowserToolExecutionState(this.item.execution_state) ? this.item.execution_state : 'starting_session';
+    },
+    isStalled(): boolean {
+      return !this.turnActive && ACTIVE_STATES.includes(this.state);
     },
     title(): string {
       return (
@@ -89,16 +106,13 @@ export default defineComponent({
       return origin ? new URL(origin).hostname : undefined;
     },
     icon(): Component {
-      return STATE_ICONS[this.state];
+      return this.isStalled ? WarningIcon : STATE_ICONS[this.state];
     },
     recoveryAction(): (typeof RECOVERY_ACTIONS)[keyof typeof RECOVERY_ACTIONS] | undefined {
       return RECOVERY_ACTIONS[this.state as keyof typeof RECOVERY_ACTIONS];
     },
     canStop(): boolean {
-      return (
-        !!this.item.browser_session_id &&
-        ['starting_session', 'attaching_tab', 'ready', 'executing'].includes(this.state)
-      );
+      return !this.isStalled && !!this.item.browser_session_id && ACTIVE_STATES.includes(this.state);
     }
   }
 });
