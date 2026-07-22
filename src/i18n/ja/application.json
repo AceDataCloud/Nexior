@@ -156,7 +156,7 @@
     "description": "ユーザーがこのサービスをまだ申請していない場合に表示されるメッセージ。"
   },
   "message.globalBalanceBuyDescription": {
-    "message": "一般残高にチャージすることも、各申請インスタンスに個別にチャージすることもできます。今回のチャージは一般残高に入ります。特定の申請インスタンスの残高が不足した場合、自動的に一般残高が補充されます。",
+    "message": "一般残高にチャージすることも、各申請インスタンスに個別にチャージすることもできます。今回のチャージは一般残高に入ります。特定の申請専用残高が不足した場合、自動的に一般残高が補充されます。",
     "description": "一般残高にチャージし、インスタンスの残高が不足した場合に自動的に補充されることを説明するヒント文。用語：一般残高=General Balance（Global Balanceに翻訳しないでください）。"
   },
   "message.yourApplication": {
@@ -256,7 +256,7 @@
     "description": "ユーザーが申請を管理したい場合のページタイトル。"
   },
   "title.applicationBalance": {
-    "message": "専用ポイント - {service}",
+    "message": "専用残高 - {service}",
     "description": "ユーザーが申請残高を確認する場合に表示されるメッセージ。"
   },
   "title.count": {
@@ -272,7 +272,7 @@
     "description": "ユーザーが共通残高を確認する場合のページタイトル。英語は「General Balance」に翻訳する必要があります。"
   },
   "message.globalBalanceDescription": {
-    "message": "「共通残高を許可」を有効にすると、インスタンスの残高が不足した場合に自動的に共通残高が使用されます。",
+    "message": "「共通残高を許可」を有効にすると、専用残高が不足した場合に自動的に共通残高が使用されます。",
     "description": "インスタンスの残高が不足した場合に自動的に共通残高が消費されることを説明するメッセージ。用語：共通残高=General Balance（Global Balanceに翻訳しないことに注意）。"
   },
   "button.service": {
