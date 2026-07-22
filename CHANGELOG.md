@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 13:22:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 17:35:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.22
+
+Wed, 22 Jul 2026 17:35:42 GMT
+
+### Patches
+
+- Preserve owner-bound browser resource metadata across chat attachment submission and retry. (dev@acedata.cloud)
 
 ## 3.330.21
 
