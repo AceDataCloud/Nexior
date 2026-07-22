@@ -25,6 +25,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   NODE_VERSION: '22'
 
@@ -159,6 +163,16 @@ jobs:
 
       - name: Build web assets (iOS surface)
         run: npm run build:ios
+
+      # Restore Pods BEFORE `cap sync` — cap sync runs `pod install` itself, so a
+      # cache restored after it would miss the dominant install. Key on the
+      # committed Podfile.lock; pod install reconciles if cap sync regenerates it.
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: ios/App/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
+          restore-keys: ${{ runner.os }}-pods-
 
       - name: Sync web assets and native plugins to iOS project
         # `cap sync` (not `cap copy`) regenerates the Podfile from the installed
