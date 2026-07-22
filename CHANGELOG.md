@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 18:11:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 18:24:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.332.0
+
+Wed, 22 Jul 2026 18:24:01 GMT
+
+### Minor changes
+
+- Seedance generator: default to 2.0 Fast and add a Talking mode (口播) toggle that routes uploads to reference_image, forces audio, and guides dialogue phrasing so characters actually speak. (dev@acedata.cloud)
 
 ## 3.331.0
 
