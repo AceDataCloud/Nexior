@@ -40,6 +40,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
             'data: {"type":"tool_use_start","tool_id":"call_1","tool_name":"Bash","input":{}}\n',
             'data: {"type":"tool_progress","tool_id":"call_1","progress":"{\\"command\\":\\""}\n',
             'data: {"type":"tool_progress","tool_id":"call_1","progress":"echo hi\\"}"}\n',
+            'data: {"type":"tool_use_commit","tool_id":"call_1","tool_name":"Bash","input":{"command":"echo hi"}}\n',
             'data: [DONE]\n'
           ])
         )
@@ -56,6 +57,10 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     expect(progressEvents.every((e) => e.tool_id === 'call_1')).toBe(true);
     const argText = progressEvents.map((e) => e.progress ?? '').join('');
     expect(argText).toBe('{"command":"echo hi"}');
+    expect(events.find((e) => e.type === 'tool_use_commit')).toMatchObject({
+      tool_id: 'call_1',
+      input: { command: 'echo hi' }
+    });
   });
 
   it('forwards browser execution state with a sanitized origin', async () => {
