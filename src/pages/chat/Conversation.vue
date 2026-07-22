@@ -1415,8 +1415,13 @@ export default defineComponent({
               currentText = (response.answer || '').slice(answerOffset);
             }
 
-            // Build display content: parts + trailing text
-            const displayParts: IChatMessageContentItem[] = [...contentParts];
+            // Build display content: parts + trailing text. Clone each part
+            // (not just the array) so an in-place mutation of a persisted block
+            // — e.g. a tool_use flipping status 'running'→'done' on tool_result
+            // — yields a NEW object reference. Otherwise the child's `:item`
+            // prop ref is unchanged and Vue skips its update, leaving the tool
+            // row's spinner frozen until an unrelated re-render (expanding it).
+            const displayParts: IChatMessageContentItem[] = contentParts.map((part) => ({ ...part }));
             if (currentText) {
               displayParts.push({ type: 'text', text: currentText });
             }
