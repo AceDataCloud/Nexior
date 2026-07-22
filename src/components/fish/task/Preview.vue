@@ -20,7 +20,7 @@
       <div v-if="audioUrl" class="content">
         <audio :src="audioUrl" controls preload="metadata" class="w-full mb-3" />
         <div class="operations mt-2">
-          <el-button type="info" size="small" class="mb-2" @click.stop="onDownload(audioUrl)">
+          <el-button type="info" size="small" class="btn-action" @click.stop="onDownload(audioUrl)">
             {{ $t('fish.button.download') }}
           </el-button>
           <api-code-button path="/fish/tts" :body="modelValue?.request" />
