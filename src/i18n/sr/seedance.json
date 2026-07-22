@@ -282,5 +282,33 @@
   "message.audioRequiresReferenceImage": {
     "message": "Referentni audio zahteva korišćenje sa referentnom slikom (subjekt za glas), molimo vas da istovremeno učitate referentnu sliku.",
     "description": "Poruka kada je audio dostupan, ali nedostaje referentna slika"
+  },
+  "name.talking": {
+    "message": "Talking mode",
+    "description": "Make the on-screen character speak the lines (talking-head / avatar)"
+  },
+  "description.talking": {
+    "message": "When on, your uploaded image is used as the reference subject and the character speaks the lines in your prompt, with audio turned on automatically. Seedance 2.0 series only.",
+    "description": "Talking mode switch hint"
+  },
+  "description.talkingPrompt": {
+    "message": "To make the character speak, write: the person in image 1 says \"your line\" (use straight double quotes).",
+    "description": "Dialogue phrasing hint in talking mode"
+  },
+  "button.insertTemplate": {
+    "message": "Insert line template",
+    "description": "Insert dialogue template button"
+  },
+  "template.talkingLine": {
+    "message": "the person in image 1 says \"your line here\"",
+    "description": "Dialogue template text"
+  },
+  "message.talkingRecommendModel": {
+    "message": "Lite / Fast models may not speak your lines verbatim; for exact lines use Seedance 2.0 standard or upload a reference audio.",
+    "description": "Talking verbatim-accuracy hint"
+  },
+  "message.talkingRequiresReferenceImage": {
+    "message": "Talking mode needs a portrait image as the reference subject. Please upload an image first.",
+    "description": "Warning when talking mode has no reference image"
   }
 }
