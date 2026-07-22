@@ -8,12 +8,11 @@
       :placeholder="$t('fish.placeholder.voice')"
       clearable
       filterable
-      remote
-      :remote-method="onSearch"
+      :filter-method="onFilter"
       :loading="remoteLoading"
       :loading-text="$t('fish.message.searching')"
       :no-data-text="noDataText"
-      @focus="onFocus"
+      @visible-change="onVisibleChange"
     >
       <!-- Keep the currently-selected voice renderable even when it is not in
            the freshly-fetched result set (e.g. a public voice picked earlier). -->
@@ -35,8 +34,8 @@
         </el-option>
       </el-option-group>
 
-      <el-option-group v-if="publicOptions.length" :label="$t('fish.group.publicVoices')">
-        <el-option v-for="item in publicOptions" :key="item.value" :label="item.label" :value="item.value">
+      <el-option-group v-if="filteredPublicOptions.length" :label="$t('fish.group.publicVoices')">
+        <el-option v-for="item in filteredPublicOptions" :key="item.value" :label="item.label" :value="item.value">
           <voice-option
             :option="item"
             :playing="playingId === item.value"
@@ -87,8 +86,14 @@ export default defineComponent({
   },
   data() {
     return {
-      publicVoices: [] as IFishVoiceModel[],
-      remoteLoading: false,
+      // Stable set of popular public voices loaded once with an empty query;
+      // never overwritten by searches, so clearing the query restores it.
+      popularVoices: [] as IFishVoiceModel[],
+      // Transient server results for the current non-empty query.
+      searchVoices: [] as IFishVoiceModel[],
+      popularLoading: false,
+      searchLoading: false,
+      preloaded: false,
       query: '',
       playingId: null as string | null,
       loadingId: null as string | null,
@@ -101,25 +106,38 @@ export default defineComponent({
     };
   },
   computed: {
+    remoteLoading(): boolean {
+      return this.popularLoading || this.searchLoading;
+    },
     myVoices(): IFishVoiceModel[] {
       return this.$store.state.fish?.voices ?? [];
     },
     myOptions(): IVoiceOption[] {
       return this.myVoices.map(toOption).filter((o) => !!o.value);
     },
-    // Remote mode delegates filtering to `remote-method`, so own voices would
-    // otherwise stay unfiltered while the user types. Filter them locally by
-    // label/description to keep the two groups in sync.
-    filteredMyOptions(): IVoiceOption[] {
-      const q = this.query.toLowerCase();
-      if (!q) return this.myOptions;
-      return this.myOptions.filter(
-        (o) => o.label.toLowerCase().includes(q) || (o.description || '').toLowerCase().includes(q)
-      );
+    // While a query is active show the server's search results; otherwise show
+    // the stable popular set. Server results are already title-filtered, so we
+    // render them as-is; the popular set is narrowed locally for instant feel.
+    publicPool(): { voices: IFishVoiceModel[]; isSearch: boolean } {
+      if (this.query && (this.searchVoices.length || this.searchLoading)) {
+        return { voices: this.searchVoices, isSearch: true };
+      }
+      return { voices: this.popularVoices, isSearch: false };
     },
     publicOptions(): IVoiceOption[] {
       const mine = new Set(this.myOptions.map((o) => o.value));
-      return this.publicVoices.map(toOption).filter((o) => !!o.value && !mine.has(o.value));
+      return this.publicPool.voices.map(toOption).filter((o) => !!o.value && !mine.has(o.value));
+    },
+    // Local, instant filtering (no `remote` mode) so the dropdown is populated
+    // the moment it opens and narrows as the user types — a debounced server
+    // search still runs in the background to reach beyond the loaded page.
+    filteredMyOptions(): IVoiceOption[] {
+      return this.applyQuery(this.myOptions);
+    },
+    filteredPublicOptions(): IVoiceOption[] {
+      // Don't re-narrow server search results — the API already matched the
+      // query and a stricter local substring test could hide valid hits.
+      return this.publicPool.isSearch ? this.publicOptions : this.applyQuery(this.publicOptions);
     },
     fallbackOption(): IVoiceOption | null {
       const id = this.value;
@@ -129,7 +147,9 @@ export default defineComponent({
       return { value: id, label: this.labelCache[id] || id };
     },
     noDataText(): string {
-      return this.remoteLoading ? this.$t('fish.message.searching') : this.$t('fish.message.searchVoiceHint');
+      if (this.remoteLoading) return this.$t('fish.message.searching');
+      if (!this.credential?.token) return this.$t('fish.message.noVoices');
+      return this.$t('fish.message.searchVoiceHint');
     },
     credential() {
       return this.$store.state.fish?.credential;
@@ -159,14 +179,17 @@ export default defineComponent({
     credential: {
       immediate: true,
       handler(val) {
+        if (!val?.token) return;
         // Refetch the user's own voices when the credential arrives and we have
         // no snapshot yet — covers the picker mounting before the fish
         // credential is resolved, or the user just creating their first voice.
-        if (!val?.token) return;
         const voices = this.$store.state.fish?.voices;
         if (voices === undefined || voices.length === 0) {
           this.$store.dispatch('fish/getVoices');
         }
+        // Eager-load popular public voices so the dropdown already has content
+        // the first time it opens — no focus-then-wait dead feeling.
+        if (!this.preloaded) this.fetchPopular();
       }
     }
   },
@@ -178,37 +201,61 @@ export default defineComponent({
     cacheLabels(opts: IVoiceOption[]) {
       for (const o of opts) this.labelCache[o.value] = o.label;
     },
-    onFocus() {
-      // Preload popular public voices so the dropdown is never empty before the
-      // user types.
-      if (!this.publicVoices.length && !this.remoteLoading) this.fetchPublic('');
+    applyQuery(opts: IVoiceOption[]): IVoiceOption[] {
+      const q = this.query.toLowerCase();
+      if (!q) return opts;
+      return opts.filter((o) => o.label.toLowerCase().includes(q) || (o.description || '').toLowerCase().includes(q));
     },
-    onSearch(query: string) {
+    onVisibleChange(open: boolean) {
+      if (open && !this.preloaded && !this.popularLoading) this.fetchPopular();
+    },
+    onFilter(query: string) {
       this.query = (query || '').trim();
-      // Invalidate any in-flight request immediately so a slower earlier
-      // response (e.g. the focus preload) can't repopulate under a newer query.
-      this.searchSeq++;
+      // Local filtering already narrowed the popular set instantly; also pull
+      // matching voices from the server (debounced) to reach beyond page 1.
       if (this.searchTimer) clearTimeout(this.searchTimer);
-      this.searchTimer = setTimeout(() => this.fetchPublic(this.query), 350);
+      if (!this.query) {
+        // Cleared the box → drop stale search results so the popular set shows.
+        this.searchSeq++;
+        this.searchVoices = [];
+        this.searchLoading = false;
+        return;
+      }
+      this.searchTimer = setTimeout(() => this.fetchSearch(this.query), 350);
     },
-    async fetchPublic(title: string) {
+    // Load the stable popular set once. Its own in-flight flag never collides
+    // with search seq, so a concurrent search can't stop `preloaded` latching.
+    async fetchPopular() {
+      const token = this.credential?.token;
+      if (!token || this.popularLoading) return;
+      this.popularLoading = true;
+      try {
+        const { data } = await fishOperator.listModels({ self: false, page_size: 30, page_number: 1 }, { token });
+        this.popularVoices = data?.items ?? [];
+        this.preloaded = true;
+      } catch (error) {
+        console.error('fish.loadPopularVoices failed', error);
+      } finally {
+        this.popularLoading = false;
+      }
+    },
+    async fetchSearch(title: string) {
       const token = this.credential?.token;
       if (!token) return;
       const seq = ++this.searchSeq;
-      this.remoteLoading = true;
+      this.searchLoading = true;
       try {
         const { data } = await fishOperator.listModels(
-          { self: false, page_size: 30, page_number: 1, ...(title ? { title } : {}) },
+          { self: false, page_size: 30, page_number: 1, title },
           { token }
         );
-        // Drop stale responses so a slow earlier query can't overwrite a newer one.
         if (seq !== this.searchSeq) return;
-        this.publicVoices = data?.items ?? [];
+        this.searchVoices = data?.items ?? [];
       } catch (error) {
-        if (seq === this.searchSeq) this.publicVoices = [];
+        if (seq === this.searchSeq) this.searchVoices = [];
         console.error('fish.searchPublicVoices failed', error);
       } finally {
-        if (seq === this.searchSeq) this.remoteLoading = false;
+        if (seq === this.searchSeq) this.searchLoading = false;
       }
     },
     togglePreview(option: IVoiceOption) {
