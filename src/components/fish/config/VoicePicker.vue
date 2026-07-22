@@ -4,12 +4,14 @@
     <el-select
       v-model="value"
       class="value"
+      popper-class="fish-voice-popper"
       :placeholder="$t('fish.placeholder.voice')"
       clearable
       filterable
       remote
       :remote-method="onSearch"
-      :loading="loading"
+      :loading="remoteLoading"
+      :loading-text="$t('fish.message.searching')"
       :no-data-text="noDataText"
       @focus="onFocus"
     >
@@ -24,13 +26,23 @@
 
       <el-option-group v-if="filteredMyOptions.length" :label="$t('fish.title.myVoices')">
         <el-option v-for="item in filteredMyOptions" :key="item.value" :label="item.label" :value="item.value">
-          <voice-option :option="item" :playing="playingId === item.value" @preview="togglePreview" />
+          <voice-option
+            :option="item"
+            :playing="playingId === item.value"
+            :loading="loadingId === item.value"
+            @preview="togglePreview"
+          />
         </el-option>
       </el-option-group>
 
       <el-option-group v-if="publicOptions.length" :label="$t('fish.group.publicVoices')">
         <el-option v-for="item in publicOptions" :key="item.value" :label="item.label" :value="item.value">
-          <voice-option :option="item" :playing="playingId === item.value" @preview="togglePreview" />
+          <voice-option
+            :option="item"
+            :playing="playingId === item.value"
+            :loading="loadingId === item.value"
+            @preview="togglePreview"
+          />
         </el-option>
       </el-option-group>
     </el-select>
@@ -40,7 +52,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElOptionGroup } from 'element-plus';
-import { IFishVoiceModel, Status } from '@/models';
+import { IFishVoiceModel } from '@/models';
 import { fishOperator } from '@/operators';
 import VoiceOption from './VoiceOption.vue';
 
@@ -79,6 +91,7 @@ export default defineComponent({
       remoteLoading: false,
       query: '',
       playingId: null as string | null,
+      loadingId: null as string | null,
       // Remember labels for every voice we have ever rendered so a selected
       // public voice keeps its name after the result set changes.
       labelCache: {} as Record<string, string>,
@@ -88,9 +101,6 @@ export default defineComponent({
     };
   },
   computed: {
-    loading(): boolean {
-      return this.remoteLoading || this.$store.state.fish?.status?.getApplications === Status.Request;
-    },
     myVoices(): IFishVoiceModel[] {
       return this.$store.state.fish?.voices ?? [];
     },
@@ -203,7 +213,8 @@ export default defineComponent({
     },
     togglePreview(option: IVoiceOption) {
       if (!option.audio) return;
-      if (this.playingId === option.value) {
+      // Second click on the currently playing/loading clip → stop.
+      if (this.playingId === option.value || this.loadingId === option.value) {
         this.stopPreview();
         return;
       }
@@ -211,13 +222,21 @@ export default defineComponent({
       const audio = new Audio(option.audio);
       // Scope handlers to THIS instance: a stale callback from a previously
       // stopped clip must not tear down the clip the user just started.
+      const onPlaying = () => {
+        if (this.previewAudio !== audio) return;
+        this.loadingId = null;
+        this.playingId = option.value;
+      };
       const onEnd = () => {
         if (this.previewAudio === audio) this.stopPreview();
       };
+      audio.addEventListener('playing', onPlaying);
       audio.addEventListener('ended', onEnd);
       audio.addEventListener('error', onEnd);
       this.previewAudio = audio;
-      this.playingId = option.value;
+      // Show a spinner on the button until the (often slow) R2 clip buffers.
+      this.loadingId = option.value;
+      this.playingId = null;
       audio.play().catch(() => {
         if (this.previewAudio === audio) this.stopPreview();
       });
@@ -229,6 +248,7 @@ export default defineComponent({
         this.previewAudio = null;
       }
       this.playingId = null;
+      this.loadingId = null;
     }
   }
 });
@@ -247,6 +267,23 @@ export default defineComponent({
   }
   .value {
     flex: 1;
+  }
+}
+</style>
+
+<!-- The dropdown popper is teleported to <body>, so it must be styled
+     un-scoped. Cap its width (fish descriptions are long) and let each row
+     grow to fit a two-line description instead of the default 34px. -->
+<style lang="scss">
+.fish-voice-popper {
+  max-width: 420px;
+
+  .el-select-dropdown__item {
+    height: auto;
+    min-height: 34px;
+    line-height: 1.35;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 }
 </style>
