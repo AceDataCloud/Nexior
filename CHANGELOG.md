@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 11:21:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 11:27:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.19
+
+Wed, 22 Jul 2026 11:27:09 GMT
+
+### Patches
+
+- Fish TTS voice picker: search Fish's public voice library (self=false) with grouped results and inline audio preview, not just the user's own cloned voices (dev@acedata.cloud)
 
 ## 3.330.18
 
