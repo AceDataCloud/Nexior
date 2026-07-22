@@ -1,5 +1,5 @@
 export type PoivelleRole = 'owner' | 'producer' | 'director' | 'editor' | 'reviewer' | 'viewer';
-export type PoivelleProjection = 'canvas' | 'storyboard' | 'timeline' | 'review';
+export type PoivelleProjection = 'overview' | 'canvas' | 'storyboard' | 'timeline' | 'review';
 export type PoivelleNodeType =
   | 'text'
   | 'script'

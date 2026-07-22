@@ -4,6 +4,7 @@ import { ROUTE_POIVELLE_INDEX } from '@/router/constants';
 import { POIVELLE_LOGO } from '@/constants';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS } from '@/constants/capabilities';
 import { loadLocaleResource } from '@/i18n';
+import stateFactory from '@/store/poivelle/state';
 
 const keys = (messages: Record<string, unknown>) => Object.keys(messages).sort();
 
@@ -14,6 +15,7 @@ describe('Poivelle application foundation', () => {
     expect(poivelleRoute.children[0].name).toBe(ROUTE_POIVELLE_INDEX);
     expect(CAPABILITY_KEYS).toContain('poivelle');
     expect(CAPABILITY_ICONS.poivelle).toBe(POIVELLE_LOGO);
+    expect(stateFactory().projection).toBe('overview');
   });
 
   it('keeps English and simplified Chinese message keys aligned', async () => {

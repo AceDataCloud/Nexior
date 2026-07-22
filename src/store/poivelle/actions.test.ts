@@ -233,10 +233,12 @@ describe('Poivelle Vuex actions', () => {
     state.assets = [{ id: 'asset' } as any];
     state.runs = [{ id: 'run' } as any];
     state.selectedNodeId = 'node';
+    state.projection = 'canvas';
 
     setCurrentProject(state, 'project-two');
 
     expect(state.currentProjectId).toBe('project-two');
+    expect(state.projection).toBe('overview');
     expect(state.graph).toBeUndefined();
     expect(state.assets).toEqual([]);
     expect(state.runs).toEqual([]);

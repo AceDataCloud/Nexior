@@ -27,7 +27,7 @@
       </button>
       <button class="primary-button" type="button" :disabled="!canRun" @click="$emit('run')">
         <Play :size="15" fill="currentColor" aria-hidden="true" />
-        {{ $t('poivelle.action.runSkill') }}
+        {{ primaryLabel || $t('poivelle.action.runSkill') }}
       </button>
     </div>
   </header>
@@ -41,6 +41,7 @@ defineProps<{
   graphVersion?: number;
   canRun: boolean;
   canEdit: boolean;
+  primaryLabel?: string;
 }>();
 
 defineEmits<{
@@ -214,9 +215,17 @@ defineEmits<{
 
   .project-button {
     max-width: 180px;
+    height: 44px;
+  }
+
+  .home-button {
+    width: 44px;
+    height: 44px;
   }
 
   .primary-button {
+    min-width: 44px;
+    height: 44px;
     padding: 0 10px;
   }
 }

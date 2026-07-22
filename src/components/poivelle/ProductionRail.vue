@@ -134,7 +134,7 @@ const assetIcon = (kind: string): Component => {
 
 .section-heading {
   justify-content: space-between;
-  height: 28px;
+  min-height: 44px;
   padding: 0 5px;
   color: var(--poivelle-muted);
   font-size: 11px;
@@ -143,8 +143,8 @@ const assetIcon = (kind: string): Component => {
 
 .section-heading button {
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   border-radius: var(--poivelle-radius-small);
@@ -172,7 +172,7 @@ const assetIcon = (kind: string): Component => {
 }
 
 .project-row {
-  height: 38px;
+  min-height: 44px;
   gap: 8px;
   padding: 0 9px;
   border-radius: var(--poivelle-radius-small);
@@ -226,7 +226,7 @@ const assetIcon = (kind: string): Component => {
 }
 
 .asset-row {
-  min-height: 42px;
+  min-height: 44px;
   gap: 9px;
   padding: 6px 7px;
   border-radius: var(--poivelle-radius-small);
