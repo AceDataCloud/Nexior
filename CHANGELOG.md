@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 12:37:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 13:22:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.21
+
+Wed, 22 Jul 2026 13:22:56 GMT
+
+### Patches
+
+- Unify the per-service balance label to 专属余额 / Dedicated Balance across all locales. (dev@acedata.cloud)
 
 ## 3.330.20
 
