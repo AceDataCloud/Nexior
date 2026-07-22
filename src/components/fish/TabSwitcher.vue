@@ -1,10 +1,5 @@
 <template>
-  <el-tabs
-    :model-value="active"
-    class="fish-tabs scenario-tabs scenario-tabs--divided"
-    stretch
-    @update:model-value="onUpdate"
-  >
+  <el-tabs :model-value="active" class="fish-tabs scenario-tabs scenario-tabs--divided" @update:model-value="onUpdate">
     <el-tab-pane :label="$t('fish.tab.tts')" :name="ROUTE_FISH_TTS_INDEX" />
     <el-tab-pane :label="$t('fish.tab.model')" :name="ROUTE_FISH_MODEL_INDEX" />
   </el-tabs>
@@ -54,7 +49,9 @@ export default defineComponent({
     height: 38px;
     line-height: 38px;
     font-size: 13px;
-    padding: 0 12px;
+    // Width follows the label with fixed whitespace; no wrap.
+    padding: 0 16px;
+    white-space: nowrap;
   }
 }
 </style>

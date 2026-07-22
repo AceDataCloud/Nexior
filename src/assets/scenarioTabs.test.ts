@@ -44,11 +44,20 @@ describe('scenario tab style contract', () => {
     expect(source('src/components/webextrator/ResultPanel.vue')).not.toContain('scenario-tabs');
   });
 
-  it('preserves Kling and Veo readability and overflow rules locally', () => {
+  it('keeps every scenario tab bar single-line and width-adaptive', () => {
+    // No tab bar uses `stretch` (equal 1/N slices squeezed long locales into
+    // two lines); each tab sizes to its own label and the nav scrolls instead.
+    Object.entries(components).forEach(([, component]) => {
+      expect(component).not.toMatch(/<el-tabs[\s\S]*?\bstretch\b[\s\S]*?>/);
+      // Every scenario tab bar must keep its items on one line.
+      expect(component).toMatch(/:deep\(\.el-tabs__item\)[\s\S]*?white-space:\s*nowrap;/);
+      // No leftover multi-line clamp, tolerant of spacing/value variants.
+      expect(component).not.toMatch(/-webkit-line-clamp\s*:\s*\d/);
+    });
+
+    // Kling and Veo render a rich label, so their text truncates with ellipsis.
     for (const name of ['kling', 'veo'] as const) {
-      expect(components[name]).toMatch(/:deep\(\.el-tabs__item\)[\s\S]*?height: 48px;[\s\S]*?white-space: normal;/);
-      expect(components[name]).toContain('-webkit-line-clamp: 2;');
-      expect(components[name]).toMatch(/\.text\s*{[\s\S]*?overflow-wrap: anywhere;/);
+      expect(components[name]).toMatch(/\.text\s*{[\s\S]*?text-overflow:\s*ellipsis;/);
     }
   });
 });
