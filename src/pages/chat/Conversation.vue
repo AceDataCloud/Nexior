@@ -128,14 +128,6 @@ import { hasLoadedConversationMessages } from '@/components/chat/conversationRes
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
 import { ElButton, ElSkeleton, ElSkeletonItem, ElTooltip } from 'element-plus';
-import {
-  commitStreamTool,
-  createChatStreamContentState,
-  flushStreamText,
-  getStreamDisplayParts,
-  setStreamText,
-  upsertPendingTool
-} from '@/components/chat/chatStreamContent';
 
 export interface IData {
   drawer: boolean;
@@ -514,7 +506,16 @@ export default defineComponent({
               const ref = item.type === 'image_url' ? item.image_url : item.file_url;
               const url = typeof ref === 'string' ? ref : ref?.url;
               if (url) {
-                this.references.push(item.name ? { url, name: item.name } : { url });
+                const reference: IChatReference = item.name ? { url, name: item.name } : { url };
+                if (item.file_id && item.sha256 && item.mime && typeof item.size === 'number') {
+                  Object.assign(reference, {
+                    file_id: item.file_id,
+                    sha256: item.sha256,
+                    mime: item.mime,
+                    size: item.size
+                  });
+                }
+                this.references.push(reference);
               }
             } else if (item.type === 'text' && item.text) {
               this.question = item.text;
@@ -705,6 +706,14 @@ export default defineComponent({
             ? { type: 'image_url', image_url: ref.url }
             : { type: 'file_url', file_url: ref.url };
           if (ref.name) item.name = ref.name;
+          if (ref.file_id && ref.sha256 && ref.mime && typeof ref.size === 'number') {
+            Object.assign(item, {
+              file_id: ref.file_id,
+              sha256: ref.sha256,
+              mime: ref.mime,
+              size: ref.size
+            });
+          }
           content.push(item);
         }
         this.messages.push({
@@ -738,9 +747,7 @@ export default defineComponent({
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question.trim();
-      // Wire format only takes URL strings; the names live on the
-      // rendered message item via `IChatReference.name`.
-      const references = this.references.map((r) => r.url);
+      const references = this.references.map((reference) => ({ ...reference }));
       console.debug('validated', question, references);
       // reset question and references
       this.question = '';
@@ -1227,12 +1234,22 @@ export default defineComponent({
       // Messages are only appended during a turn, so this index stays valid for
       // the slot we own.
       const targetIndex = this.messages.length - 1;
-      const streamContent = createChatStreamContentState();
-      const { contentParts, toolMap } = streamContent;
+      // Track content parts for tool-calling interleaving
+      const contentParts: IChatMessageContentItem[] = [];
+      const toolMap = new Map<string, IChatMessageContentItem>();
       const pendingBrowserUpdates = new Map<
         string,
         Pick<IChatMessageContentItem, 'execution_state' | 'execution_sequence' | 'origin'>
       >();
+      let currentText = '';
+      // The aichat2 operator emits `response.answer` as the full
+      // accumulated text since the start of the turn. Whenever we flush
+      // currentText as its own content block (because a tool_use or a
+      // card arrives mid-stream and has to land between text segments),
+      // bump this offset so the next text_delta only contains the
+      // *remaining* text instead of duplicating everything we already
+      // pushed.
+      let answerOffset = 0;
       chatOperator
         .chatConversation(body, {
           token,
@@ -1261,25 +1278,46 @@ export default defineComponent({
               const target = this.messages[targetIndex];
               target.thinking = (target.thinking ?? '') + response.content;
             } else if (response.type === 'tool_use_start' && response.tool_id) {
-              const toolItem = upsertPendingTool(streamContent, {
-                tool_id: response.tool_id,
-                tool_name: response.tool_name,
-                tool_display_name: response.tool_display_name,
-                execution: response.execution,
-                input: response.input
-              });
-              if (response.execution === 'browser') {
-                Object.assign(toolItem, reduceBrowserToolExecution(toolItem, response));
-                const pending = pendingBrowserUpdates.get(response.tool_id);
-                if (pending) {
-                  Object.assign(toolItem, reduceBrowserToolExecution(toolItem, pending));
-                  pendingBrowserUpdates.delete(response.tool_id);
+              // The worker announces a tool call the instant its name is known
+              // (arguments may still be streaming) and then re-emits
+              // tool_use_start once with the full parsed input / execution.
+              // UPSERT by tool_id so the two starts merge into ONE block
+              // instead of rendering a duplicate.
+              let toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                if (response.tool_name) toolItem.tool_name = response.tool_name;
+                if (response.tool_display_name) toolItem.tool_display_name = response.tool_display_name;
+                if (response.execution) toolItem.execution = response.execution;
+                if (response.execution === 'browser') {
+                  Object.assign(toolItem, reduceBrowserToolExecution(toolItem, response));
+                  const pending = pendingBrowserUpdates.get(response.tool_id);
+                  if (pending) {
+                    Object.assign(toolItem, reduceBrowserToolExecution(toolItem, pending));
+                    pendingBrowserUpdates.delete(response.tool_id);
+                  }
                 }
-              }
-              // Older workers have no explicit commit event. Their late
-              // client/browser start arrives only after full input exists.
-              if (response.execution === 'client' || response.execution === 'browser') {
-                commitStreamTool(streamContent, response.tool_id, response.answer?.length ?? 0);
+                if (response.input && Object.keys(response.input).length > 0) {
+                  toolItem.input = response.input;
+                }
+              } else {
+                // Flush any accumulated text before the new tool block.
+                if (currentText) {
+                  contentParts.push({ type: 'text', text: currentText });
+                  currentText = '';
+                  answerOffset = response.answer?.length ?? 0;
+                }
+                toolItem = {
+                  type: 'tool_use',
+                  tool_id: response.tool_id,
+                  tool_name: response.tool_name,
+                  tool_display_name: response.tool_display_name,
+                  execution: response.execution,
+                  ...(response.execution === 'browser' ? reduceBrowserToolExecution({}, response) : {}),
+                  input: response.input,
+                  status: 'running'
+                };
+                contentParts.push(toolItem);
+                toolMap.set(response.tool_id, toolItem);
               }
               // Desktop: defer the local run until this paused stream fully
               // finalizes (so this.conversationId + route are settled for a
@@ -1301,18 +1339,6 @@ export default defineComponent({
                   input: response.input || {}
                 });
               }
-            } else if (response.type === 'tool_use_commit' && response.tool_id) {
-              const toolItem = upsertPendingTool(streamContent, {
-                tool_id: response.tool_id,
-                tool_name: response.tool_name,
-                tool_display_name: response.tool_display_name,
-                execution: response.execution,
-                input: response.input
-              });
-              if (response.execution === 'browser') {
-                Object.assign(toolItem, reduceBrowserToolExecution(toolItem, response));
-              }
-              commitStreamTool(streamContent, response.tool_id, response.answer?.length ?? 0);
             } else if (response.type === 'tool_progress' && response.tool_id) {
               // The worker streams the tool-call arguments text as the model
               // writes it. Surface it live on the running block so the user
@@ -1323,9 +1349,7 @@ export default defineComponent({
                 toolItem.input_stream = (toolItem.input_stream ?? '') + (response.progress ?? '');
               }
             } else if (response.type === 'tool_result' && response.tool_id) {
-              const toolItem =
-                commitStreamTool(streamContent, response.tool_id, response.answer?.length ?? 0) ||
-                toolMap.get(response.tool_id);
+              const toolItem = toolMap.get(response.tool_id);
               if (toolItem) {
                 toolItem.output = response.output;
                 toolItem.is_error = response.is_error;
@@ -1345,9 +1369,7 @@ export default defineComponent({
               // it to `awaiting_input`; the renderer will swap in
               // <AskUserQuestionCard>. SSE then ends with terminal_reason
               // 'awaiting_user_input'.
-              const toolItem =
-                commitStreamTool(streamContent, response.tool_id, response.answer?.length ?? 0) ||
-                toolMap.get(response.tool_id);
+              const toolItem = toolMap.get(response.tool_id);
               if (toolItem) {
                 toolItem.status = 'awaiting_input';
                 toolItem.pending_question = response.payload as IAskUserQuestionPayload;
@@ -1358,9 +1380,7 @@ export default defineComponent({
               // `awaiting_input`; the renderer swaps in
               // <ConnectorConsentCard>. SSE then ends with terminal_reason
               // 'awaiting_user_input'.
-              const toolItem =
-                commitStreamTool(streamContent, response.tool_id, response.answer?.length ?? 0) ||
-                toolMap.get(response.tool_id);
+              const toolItem = toolMap.get(response.tool_id);
               if (toolItem) {
                 toolItem.status = 'awaiting_input';
                 toolItem.pending_consent_request = response.payload as IConsentRequestPayload;
@@ -1387,7 +1407,11 @@ export default defineComponent({
               // point as its own block first so the card lands at the
               // right position in the message; this mirrors how
               // tool_use blocks bracket the text stream.
-              flushStreamText(streamContent, response.answer?.length ?? 0);
+              if (currentText) {
+                contentParts.push({ type: 'text', text: currentText });
+                currentText = '';
+                answerOffset = response.answer?.length ?? 0;
+              }
               contentParts.push({ type: 'card', card: response.card });
             } else if (response.type === 'citation' && response.citation) {
               // Source citation footnote from the worker's <acite>
@@ -1403,7 +1427,7 @@ export default defineComponent({
               const target = this.messages[targetIndex];
               target.citations = { ...(target.citations ?? {}), [response.citation.id]: response.citation };
             } else if (response.delta_answer) {
-              setStreamText(streamContent, response.answer || '');
+              currentText = (response.answer || '').slice(answerOffset);
             }
 
             // Build display content: parts + trailing text. Clone each part
@@ -1412,7 +1436,10 @@ export default defineComponent({
             // — yields a NEW object reference. Otherwise the child's `:item`
             // prop ref is unchanged and Vue skips its update, leaving the tool
             // row's spinner frozen until an unrelated re-render (expanding it).
-            const displayParts = getStreamDisplayParts(streamContent).map((part) => ({ ...part }));
+            const displayParts: IChatMessageContentItem[] = contentParts.map((part) => ({ ...part }));
+            if (currentText) {
+              displayParts.push({ type: 'text', text: currentText });
+            }
 
             if (displayParts.length > 0) {
               this.messages[targetIndex] = {

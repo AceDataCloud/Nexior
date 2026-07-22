@@ -115,6 +115,10 @@ export interface IChatMessageContentItem {
   file_url?: { url: string } | string;
   name?: string;
   mimeType?: string;
+  file_id?: string;
+  sha256?: string;
+  mime?: string;
+  size?: number;
   // Alt text for an `image_url` block. The aichat2 worker sets this on a
   // tool-result screenshot (`<tool_id> screenshot`); the frontend reuses it as
   // a dedupe key when folding the same block locally on client-tool resume.
@@ -252,6 +256,10 @@ export interface IConsentRequestPayload {
 export interface IChatReference {
   url: string;
   name?: string;
+  file_id?: string;
+  sha256?: string;
+  mime?: string;
+  size?: number;
 }
 
 export interface IChatMessage {
@@ -325,7 +333,7 @@ export interface IChatConversationRequest {
   id?: string;
   question?: string;
   message?: string | IChatMessageContentItem[];
-  references?: string[];
+  references?: Array<string | IChatReference>;
   stateful?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
