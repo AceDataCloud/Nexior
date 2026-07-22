@@ -60,8 +60,8 @@
     "description": "신청의 ID. 영어는 'App ID'로 번역해야 하며, 중국어는 '申请ID'입니다."
   },
   "field.remainingAmount": {
-    "message": "잔여 잔액",
-    "description": "신청의 잔액. 영어는 'Balance'로 번역해야 하며, 중국어는 '实例余额'입니다."
+    "message": "잔액",
+    "description": "신청의 잔액. 영어는 'Balance'로 번역해야 하며, 중국어는 '余额'입니다."
   },
   "field.usedAmount": {
     "message": "사용됨",
@@ -157,7 +157,7 @@
   },
   "message.globalBalanceBuyDescription": {
     "message": "일반 잔액으로 충전할 수 있으며, 각 신청 인스턴스에 대해 개별적으로 충전할 수도 있습니다. 이번 충전은 일반 잔액으로 들어가며, 특정 신청 인스턴스의 잔액이 부족할 경우 자동으로 일반 잔액을 사용하여 보충됩니다.",
-    "description": "일반 잔액으로 충전하고 인스턴스 잔액이 부족할 때 자동으로 보충된다는 것을 설명하는 안내 문구. 용어: 일반 잔액 = General Balance (Global Balance로 번역하지 않도록 주의)."
+    "description": "일반 잔액으로 충전하고 전용 잔액이 부족할 때 자동으로 보충된다는 것을 설명하는 안내 문구. 용어: 일반 잔액 = General Balance (Global Balance로 번역하지 않도록 주의)."
   },
   "message.yourApplication": {
     "message": "귀하의 신청",
@@ -256,7 +256,7 @@
     "description": "사용자가 신청을 관리하고자 할 때 페이지 제목."
   },
   "title.applicationBalance": {
-    "message": "전용 포인트 - {service}",
+    "message": "전용 잔액 - {service}",
     "description": "사용자가 신청 잔액을 확인할 때 사용자에게 표시되는 메시지."
   },
   "title.count": {
@@ -272,8 +272,8 @@
     "description": "사용자가 일반 잔액을 확인할 때 페이지 제목."
   },
   "message.globalBalanceDescription": {
-    "message": "‘일반 잔액 허용’이 활성화되면 인스턴스 잔액이 부족할 때 자동으로 일반 잔액이 사용됩니다.",
-    "description": "인스턴스 잔액이 부족할 때 일반 잔액이 자동으로 소모된다는 것을 설명하는 메시지."
+    "message": "‘일반 잔액 허용’이 활성화되면 전용 잔액이 부족할 때 자동으로 일반 잔액이 사용됩니다.",
+    "description": "전용 잔액이 부족할 때 일반 잔액이 자동으로 소모된다는 것을 설명하는 메시지."
   },
   "button.service": {
     "message": "전용 고객 지원",
