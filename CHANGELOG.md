@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 06:03:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 11:21:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.18
+
+Wed, 22 Jul 2026 11:21:13 GMT
+
+### Patches
+
+- Fix chat tool-call rows spinning forever: clone rebuilt content parts so a settled tool block gets a fresh ref and Vue re-renders its icon (dev@acedata.cloud)
 
 ## 3.330.17
 
