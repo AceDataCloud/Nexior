@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 01:18:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 05:05:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.16
+
+Wed, 22 Jul 2026 05:05:03 GMT
+
+### Patches
+
+- Replace Poivelle's graph-first entry with a guided production overview (dev@acedata.cloud)
 
 ## 3.330.15
 
