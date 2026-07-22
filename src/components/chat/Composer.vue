@@ -261,7 +261,22 @@ export default defineComponent({
         // @ts-ignore — el-upload types `response` as unknown.
         const url = file?.response?.file_url as string | undefined;
         if (!url) continue;
-        out.push(file?.name ? { url, name: file.name } : { url });
+        const response = file.response as Record<string, unknown>;
+        const reference: IChatReference = file?.name ? { url, name: file.name } : { url };
+        if (
+          typeof response.file_id === 'string' &&
+          typeof response.sha256 === 'string' &&
+          typeof response.mime === 'string' &&
+          typeof response.size === 'number'
+        ) {
+          Object.assign(reference, {
+            file_id: response.file_id,
+            sha256: response.sha256,
+            mime: response.mime,
+            size: response.size
+          });
+        }
+        out.push(reference);
       }
       return out;
     },
@@ -289,9 +304,7 @@ export default defineComponent({
   watch: {
     refs(val: IChatReference[]) {
       console.debug('References:', val);
-      if (val.length > 0) {
-        this.$emit('update:references', val);
-      }
+      this.$emit('update:references', val);
     },
     questionValue(val: string) {
       this.$emit('update:question', val.trim());
