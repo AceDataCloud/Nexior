@@ -1,11 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 min-h-0 overflow-hidden">
-      <el-tabs
-        v-model="mode"
-        class="producer-mode-tabs scenario-tabs scenario-tabs--scrollable scenario-tabs--divided"
-        stretch
-      >
+      <el-tabs v-model="mode" class="producer-mode-tabs scenario-tabs scenario-tabs--scrollable scenario-tabs--divided">
         <el-tab-pane :label="$t('producer.mode.simple')" name="simple">
           <div class="p-5">
             <type-selector class="mb-4" />
@@ -146,6 +142,9 @@ export default defineComponent({
   :deep(.el-tabs__item) {
     font-size: 14px;
     font-weight: 500;
+    // Width follows the label with fixed whitespace; no wrap.
+    padding: 0 16px;
+    white-space: nowrap;
   }
 }
 </style>

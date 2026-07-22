@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 min-h-0 overflow-hidden">
-      <el-tabs v-model="mode" class="suno-mode-tabs scenario-tabs scenario-tabs--scrollable" stretch>
+      <el-tabs v-model="mode" class="suno-mode-tabs scenario-tabs scenario-tabs--scrollable">
         <el-tab-pane :label="$t('suno.mode.simple')" name="simple">
           <div class="p-5">
             <type-selector class="mb-4" />
@@ -173,6 +173,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.suno-mode-tabs {
+  :deep(.el-tabs__item) {
+    // Width follows the label with fixed whitespace; no wrap.
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+}
 .panel {
   height: 100%;
   padding: 20px;

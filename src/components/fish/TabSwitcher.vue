@@ -1,10 +1,5 @@
 <template>
-  <el-tabs
-    :model-value="active"
-    class="fish-tabs scenario-tabs scenario-tabs--divided"
-    stretch
-    @update:model-value="onUpdate"
-  >
+  <el-tabs :model-value="active" class="fish-tabs scenario-tabs scenario-tabs--divided" @update:model-value="onUpdate">
     <el-tab-pane :label="$t('fish.tab.tts')" :name="ROUTE_FISH_TTS_INDEX" />
     <el-tab-pane :label="$t('fish.tab.model')" :name="ROUTE_FISH_MODEL_INDEX" />
   </el-tabs>
@@ -47,14 +42,19 @@ export default defineComponent({
 <style lang="scss" scoped>
 .fish-tabs {
   flex: none;
-  padding: 0 8px;
+  // Match the p-5 (20px) side gutters of the panels below and add top breathing
+  // room so the bar doesn't hug the panel's top edge. See `.scenario-tabs` in
+  // _common.scss (first/last item padding is zeroed there to keep labels flush).
+  padding: 12px 20px 0;
   background-color: var(--app-sidebar-bg);
 
   :deep(.el-tabs__item) {
     height: 38px;
     line-height: 38px;
     font-size: 13px;
-    padding: 0 12px;
+    // Width follows the label with fixed whitespace; no wrap.
+    padding: 0 16px;
+    white-space: nowrap;
   }
 }
 </style>

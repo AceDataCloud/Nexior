@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 min-h-0 overflow-hidden">
-      <el-tabs v-model="type" class="demo-tabs scenario-tabs scenario-tabs--scrollable" stretch>
+      <el-tabs v-model="type" class="demo-tabs scenario-tabs scenario-tabs--scrollable">
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
           <div class="p-5">
             <model-selector class="mb-2" />
@@ -148,3 +148,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.demo-tabs {
+  :deep(.el-tabs__item) {
+    // Width follows the label with fixed whitespace; no wrap.
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+}
+</style>
