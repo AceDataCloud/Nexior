@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 05:05:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 06:03:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.17
+
+Wed, 22 Jul 2026 06:03:36 GMT
+
+### Patches
+
+- Align BrowserDevice activity, scheduled authorization, artifacts, and Desktop execution with the final browser contract (dev@acedata.cloud)
 
 ## 3.330.16
 
