@@ -25,6 +25,11 @@ export interface IFishTtsResponse {
   started_at?: number;
   audio_url?: string;
   success?: boolean;
+  // Fish-native failure shape (worker `sendFailureResult`): the record is
+  // persisted as `{status, message, task_id, trace_id}` with NO `success`
+  // or `error` field, so the UI must key failure off `status`/`message` too.
+  status?: number | string;
+  message?: string;
   error?:
     | string
     | {

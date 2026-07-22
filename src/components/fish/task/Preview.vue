@@ -103,6 +103,7 @@ import { ElAlert, ElButton } from 'element-plus';
 import { IFishTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import { humanizeFishError } from '@/utils/fish';
 
 export default defineComponent({
   name: 'FishTaskPreview',
@@ -133,11 +134,20 @@ export default defineComponent({
       return this.modelValue?.response?.audio_url;
     },
     isFailure(): boolean {
-      return this.modelValue?.response?.success === false || !!this.modelValue?.response?.error;
+      const response = this.modelValue?.response;
+      if (!response || response.audio_url) {
+        return false;
+      }
+      // Platform-wrapped failures set success/error; Fish-native failures
+      // (worker sendFailureResult) instead carry status>=400 + message.
+      if (response.success === false || !!response.error) {
+        return true;
+      }
+      const status = Number(response.status);
+      return (!Number.isNaN(status) && status >= 400) || !!response.message;
     },
     failureReason(): string | undefined {
-      const error = this.modelValue?.response?.error;
-      return typeof error === 'string' ? error : error?.message;
+      return humanizeFishError(this.modelValue?.response);
     }
   },
   methods: {
