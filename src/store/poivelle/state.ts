@@ -5,7 +5,7 @@ export default (): IPoivelleState => ({
   workspaces: [],
   discoveryWorks: [],
   projects: [],
-  projection: 'canvas',
+  projection: 'overview',
   assets: [],
   artifacts: [],
   takes: [],

@@ -59,7 +59,10 @@ export const setCurrentMembership = (state: IPoivelleState, value?: IPoivelleSta
   state.currentMembership = value;
 };
 export const setCurrentProject = (state: IPoivelleState, value?: string): void => {
-  if (state.currentProjectId !== value) clearProjectData(state);
+  if (state.currentProjectId !== value) {
+    clearProjectData(state);
+    state.projection = 'overview';
+  }
   state.currentProjectId = value;
 };
 export const setProjection = (state: IPoivelleState, value: IPoivelleState['projection']): void => {

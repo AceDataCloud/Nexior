@@ -3,12 +3,19 @@
     <studio-header
       :project-title="currentProject?.title"
       :graph-version="graph?.graph_version"
-      :can-run="canEdit && !!selectedNode"
+      :can-run="canEdit && (projection === 'overview' ? !!guideNextNode || guideRequiresReview : !!selectedNode)"
       :can-edit="canEdit"
+      :primary-label="
+        projection === 'overview'
+          ? guideRequiresReview
+            ? $t('poivelle.guide.chooseResults')
+            : guidePrimaryLabel
+          : undefined
+      "
       @open-projects="projectDialogVisible = true"
       @home="$emit('back-home')"
       @commit="commitRevision"
-      @run="runSelected"
+      @run="runPrimary"
     />
 
     <div v-if="error" class="error-banner">
@@ -25,6 +32,7 @@
     <template v-else-if="currentProject && graph">
       <div class="studio-body">
         <production-rail
+          v-if="projection !== 'overview'"
           :projects="projects"
           :current-project-id="currentProject.id"
           :assets="assets"
@@ -42,8 +50,21 @@
             @create-node="nodeDialogVisible = true"
           />
           <div class="projection-content">
+            <project-guide
+              v-if="projection === 'overview'"
+              :project-title="currentProject.title"
+              :graph="graph"
+              :storyboard="storyboard"
+              :artifacts="artifacts"
+              :takes="takes"
+              :selections="selections"
+              :can-edit="canEdit"
+              :busy="submitting"
+              @generate-node="startNode"
+              @open-storyboard="setProjection('storyboard')"
+            />
             <graph-canvas
-              v-if="projection === 'canvas'"
+              v-else-if="projection === 'canvas'"
               :graph="graph"
               :selected-node-id="selectedNodeId"
               :can-edit="canEdit"
@@ -89,6 +110,7 @@
             />
           </div>
           <agent-dock
+            v-if="projection !== 'overview'"
             :proposals="proposals"
             :selected-node-id="selectedNodeId"
             :skill="currentProject.active_skill"
@@ -97,7 +119,12 @@
             @open-proposal="openProposal"
           />
         </section>
-        <inspector-panel v-if="canEdit" :node="selectedNode" @update="updateNode" @delete="deleteNode" />
+        <inspector-panel
+          v-if="canEdit && projection === 'canvas'"
+          :node="selectedNode"
+          @update="updateNode"
+          @delete="deleteNode"
+        />
       </div>
     </template>
 
@@ -251,7 +278,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { useStore } from 'vuex';
 import {
   ElButton,
@@ -284,6 +311,7 @@ import TimelineView from './TimelineView.vue';
 import ReviewView from './ReviewView.vue';
 import InspectorPanel from './InspectorPanel.vue';
 import AgentDock from './AgentDock.vue';
+import ProjectGuide from './ProjectGuide.vue';
 
 defineEmits<{ 'back-home': [] }>();
 
@@ -305,7 +333,7 @@ const evaluations = computed(() => state.value?.evaluations ?? []);
 const forensicValidations = computed(() => state.value?.forensicValidations ?? []);
 const costs = computed(() => state.value?.costs);
 const timeline = computed(() => state.value?.timeline);
-const projection = computed<PoivelleProjection>(() => state.value?.projection ?? 'canvas');
+const projection = computed<PoivelleProjection>(() => state.value?.projection ?? 'overview');
 const selectedNodeId = computed<string | undefined>(() => state.value?.selectedNodeId);
 const selectedNode = computed<IPoivelleGraphNode | undefined>(() =>
   graph.value?.nodes.find((node: IPoivelleGraphNode) => node.id === selectedNodeId.value)
@@ -319,6 +347,58 @@ const canEdit = computed(() =>
 const dryRun = computed(() => state.value?.dryRun);
 const error = computed(() => state.value?.error);
 const loading = computed(() => [state.value?.status?.bootstrap, state.value?.status?.graph].includes(Status.Request));
+const readyNodeIds = computed(
+  () =>
+    new Set([
+      ...artifacts.value
+        .filter((artifact: any) => artifact.state === 'committed')
+        .flatMap((artifact: any) => artifact.node_id ?? []),
+      ...takes.value.filter((take: any) => take.state === 'ready').map((take: any) => take.target_node_id)
+    ])
+);
+const selectedNodeIds = computed(() => new Set(selections.value.map((selection: any) => selection.target_node_id)));
+const guideImageNodeIds = computed(() =>
+  storyboard.value
+    ? storyboard.value.sections.flatMap((section: any) => section.shots.flatMap((shot: any) => shot.image_node_ids))
+    : (graph.value?.nodes
+        .filter((node: IPoivelleGraphNode) => node.node_type === 'image')
+        .map((node: IPoivelleGraphNode) => node.id) ?? [])
+);
+const guideVideoNodeIds = computed(() =>
+  storyboard.value
+    ? storyboard.value.sections.flatMap((section: any) => section.shots.flatMap((shot: any) => shot.video_node_ids))
+    : (graph.value?.nodes
+        .filter((node: IPoivelleGraphNode) => node.node_type === 'video')
+        .map((node: IPoivelleGraphNode) => node.id) ?? [])
+);
+const guideRequiresReview = computed(
+  () =>
+    (guideImageNodeIds.value.length > 0 &&
+      guideImageNodeIds.value.every((nodeId: string) => readyNodeIds.value.has(nodeId)) &&
+      guideImageNodeIds.value.some((nodeId: string) => !selectedNodeIds.value.has(nodeId))) ||
+    (guideVideoNodeIds.value.length > 0 &&
+      guideVideoNodeIds.value.every((nodeId: string) => readyNodeIds.value.has(nodeId)) &&
+      guideVideoNodeIds.value.some((nodeId: string) => !selectedNodeIds.value.has(nodeId)))
+);
+const guideNextNode = computed(() => {
+  const nextImageId = guideImageNodeIds.value.find((nodeId: string) => !readyNodeIds.value.has(nodeId));
+  if (nextImageId) return graph.value?.nodes.find((node: IPoivelleGraphNode) => node.id === nextImageId);
+  if (guideImageNodeIds.value.some((nodeId: string) => !selectedNodeIds.value.has(nodeId))) return undefined;
+  const nextVideoId = guideVideoNodeIds.value.find((nodeId: string) => !readyNodeIds.value.has(nodeId));
+  if (nextVideoId) return graph.value?.nodes.find((node: IPoivelleGraphNode) => node.id === nextVideoId);
+  if (guideVideoNodeIds.value.some((nodeId: string) => !selectedNodeIds.value.has(nodeId))) return undefined;
+  const node = graph.value?.nodes.find(
+    (item: IPoivelleGraphNode) => item.node_type === 'audio' && !readyNodeIds.value.has(item.id)
+  );
+  if (node) return node;
+  return undefined;
+});
+const guidePrimaryLabel = computed(() => {
+  if (guideNextNode.value?.node_type === 'image') return t('poivelle.guide.generateNextFrame');
+  if (guideNextNode.value?.node_type === 'video') return t('poivelle.guide.generateNextMotion');
+  if (guideNextNode.value?.node_type === 'audio') return t('poivelle.guide.generateScore');
+  return t('poivelle.guide.continue');
+});
 
 const submitting = ref(false);
 const workspaceDialogVisible = ref(false);
@@ -439,6 +519,21 @@ const runSelected = async () => {
     await store.dispatch('poivelle/dryRun', selectedNode.value?.node_type === 'composition' ? 'compose' : 'generate');
     dryRunDialogVisible.value = true;
   });
+};
+const startNode = async (nodeId: string) => {
+  await selectNode(nodeId);
+  await nextTick();
+  await runSelected();
+};
+const runPrimary = async () => {
+  if (projection.value === 'overview') {
+    if (guideNextNode.value) await startNode(guideNextNode.value.id);
+    else if (guideRequiresReview.value) setProjection('storyboard');
+    return;
+  }
+  if (selectedNode.value) {
+    await runSelected();
+  }
 };
 const confirmRun = async () => {
   await submittingTask(async () => {

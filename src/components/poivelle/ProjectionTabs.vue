@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { Clapperboard, GitBranch, ListChecks, Plus, Rows3 } from '@lucide/vue';
+import { Clapperboard, GitBranch, House, ListChecks, Plus, Rows3 } from '@lucide/vue';
 import type { PoivelleProjection } from '@/models';
 
 defineProps<{ modelValue: PoivelleProjection; canEdit: boolean }>();
@@ -28,7 +28,8 @@ defineEmits<{
   'create-node': [];
 }>();
 const items = [
-  { value: 'canvas' as const, label: 'poivelle.projection.canvas', icon: GitBranch },
+  { value: 'overview' as const, label: 'poivelle.projection.overview', icon: House },
+  { value: 'canvas' as const, label: 'poivelle.projection.advanced', icon: GitBranch },
   { value: 'storyboard' as const, label: 'poivelle.projection.storyboard', icon: Clapperboard },
   { value: 'timeline' as const, label: 'poivelle.projection.timeline', icon: Rows3 },
   { value: 'review' as const, label: 'poivelle.projection.review', icon: ListChecks }
