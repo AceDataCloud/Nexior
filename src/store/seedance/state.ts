@@ -26,7 +26,8 @@ export default (): ISeedanceState => {
       camerafixed: SEEDANCE_DEFAULT_CAMERA_FIXED,
       generate_audio: SEEDANCE_DEFAULT_GENERATE_AUDIO,
       return_last_frame: SEEDANCE_DEFAULT_RETURN_LAST_FRAME,
-      execution_expires_after: SEEDANCE_DEFAULT_EXECUTION_EXPIRES_AFTER
+      execution_expires_after: SEEDANCE_DEFAULT_EXECUTION_EXPIRES_AFTER,
+      talking: false
     },
     status: {
       getService: Status.None,

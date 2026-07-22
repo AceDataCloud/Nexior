@@ -282,5 +282,33 @@
   "message.audioRequiresReferenceImage": {
     "message": "参考音频需要配合参考图片（口播主体）使用，请同时上传参考图片。",
     "description": "提供音频但缺少参考图片时的提示"
+  },
+  "name.talking": {
+    "message": "口播模式",
+    "description": "让画面中的角色开口说台词（口播 / 数字人）"
+  },
+  "description.talking": {
+    "message": "开启后，上传的图片将作为“参考主体”，角色会按提示词中的台词开口说话，并自动打开生成音频。仅 Seedance 2.0 系列支持。",
+    "description": "口播模式开关说明"
+  },
+  "description.talkingPrompt": {
+    "message": "让角色说话请写：图片1中的<角色>说\"你的台词\"（用直角双引号）。",
+    "description": "口播模式下的台词写法提示"
+  },
+  "button.insertTemplate": {
+    "message": "插入台词模板",
+    "description": "插入台词模板按钮"
+  },
+  "template.talkingLine": {
+    "message": "图片1中的角色说\"在此填写台词\"",
+    "description": "台词模板文本"
+  },
+  "message.talkingRecommendModel": {
+    "message": "轻量 / Fast 模型可能不会逐字念出台词；需要精确念台词建议改用 Seedance 2.0 标准版，或上传参考音频。",
+    "description": "口播逐字准确度提示"
+  },
+  "message.talkingRequiresReferenceImage": {
+    "message": "口播模式需要一张人物图片作为参考主体，请先上传一张图片。",
+    "description": "口播模式缺少参考图片时的提示"
   }
 }

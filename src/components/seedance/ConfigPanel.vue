@@ -2,6 +2,7 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
       <prompt-input class="mb-4" />
+      <talking-mode-switch class="mb-4" />
       <model-selector class="mb-4" />
       <ratio-selector class="mb-4" />
       <resolution-selector class="mb-4" />
@@ -36,6 +37,7 @@ import DurationSelector from './config/DurationSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
 import RatioSelector from './config/RatioSelector.vue';
 import GenerateAudioSwitch from './config/GenerateAudioSwitch.vue';
+import TalkingModeSwitch from './config/TalkingModeSwitch.vue';
 import CameraFixedSwitch from './config/CameraFixedSwitch.vue';
 import FirstFrameImage from './config/FirstFrameImage.vue';
 import LastFrameImage from './config/LastFrameImage.vue';
@@ -58,6 +60,7 @@ export default defineComponent({
     ResolutionSelector,
     RatioSelector,
     GenerateAudioSwitch,
+    TalkingModeSwitch,
     CameraFixedSwitch,
     ReturnLastFrameSwitch,
     SeedInput,

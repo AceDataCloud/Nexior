@@ -16,11 +16,12 @@ import ConfigPanel from '@/components/seedance/ConfigPanel.vue';
 import RecentPanel from '@/components/seedance/RecentPanel.vue';
 import { seedanceOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { ISeedanceGenerateRequest, Status } from '@/models';
+import { Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getSeedanceCapability, SEEDANCE_MODEL_CAPABILITIES } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { normalizeSeedanceRequest } from '@/utils/seedance';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
@@ -134,97 +135,14 @@ export default defineComponent({
       ) {
         return;
       }
-      const cfg: any = { ...(this.config || {}) };
-      if (typeof cfg?.prompt === 'string') {
-        cfg.prompt = cfg.prompt.trim();
-        if (!cfg.prompt) delete cfg.prompt;
-      }
-
-      if (Array.isArray(cfg?.images)) {
-        cfg.images = cfg.images.filter((img: any) => !!img?.url);
-        const hasFirstFrame = cfg.images.some((img: any) => img?.role === 'first_frame');
-        const hasLastFrame = cfg.images.some((img: any) => img?.role === 'last_frame');
-        if (!hasFirstFrame && hasLastFrame) {
-          cfg.images = cfg.images.map((img: any) =>
-            img?.role === 'last_frame' ? { ...img, role: 'first_frame' } : img
-          );
-        }
-      }
-
-      const hasImages = Array.isArray(cfg?.images) && cfg.images.length > 0;
-      if (!hasImages && 'images' in cfg) {
-        delete cfg.images;
-      }
-
-      // Never send the Ark "flex" tier: it queues jobs on the batch pipeline that
-      // sits far past the worker's poll window (=> "timeout when generating video")
-      // and carries no pricing benefit. Force realtime by omitting service_tier,
-      // even for users who still have flex persisted in local state.
-      if ('service_tier' in cfg) {
-        delete cfg.service_tier;
-      }
-
-      // Validate against the per-model capability matrix BEFORE submitting so users
-      // get an inline warning instead of an opaque "model X is not supported" error.
-      if (cfg?.model && !SEEDANCE_MODEL_CAPABILITIES[cfg.model]) {
-        ElMessage.warning(this.$t('seedance.message.modelUnsupported'));
+      const { request, reject } = normalizeSeedanceRequest(this.config);
+      if (reject) {
+        ElMessage.warning(this.$t(`seedance.message.${reject}`));
         return;
       }
-      const cap = getSeedanceCapability(cfg?.model);
-      if (cap.requiresImage && !hasImages) {
-        ElMessage.warning(this.$t('seedance.message.modelRequiresImage'));
+      if (!request) {
         return;
       }
-      if (!cap.acceptsImage && hasImages) {
-        ElMessage.warning(this.$t('seedance.message.modelRejectsImage'));
-        return;
-      }
-      if (!cap.acceptsText && !hasImages) {
-        ElMessage.warning(this.$t('seedance.message.modelRequiresImage'));
-        return;
-      }
-      if (!cap.acceptsAudio && cfg.generate_audio) {
-        cfg.generate_audio = false;
-      }
-      if (!cap.acceptsReturnLastFrame && cfg.return_last_frame) {
-        cfg.return_last_frame = false;
-      }
-      if (!cap.acceptsLastFrame && hasImages) {
-        cfg.images = cfg.images.filter((img: any) => img?.role !== 'last_frame');
-      }
-
-      // Reference media (Seedance 2.0 multimodal): keep only valid urls, drop
-      // entirely when the model doesn't accept that reference type.
-      if (cap.acceptsReferenceAudio && Array.isArray(cfg?.audios)) {
-        cfg.audios = cfg.audios.filter((a: any) => a?.url);
-      }
-      if (!cap.acceptsReferenceAudio || !Array.isArray(cfg?.audios) || cfg.audios.length === 0) {
-        delete cfg.audios;
-      }
-      if (cap.acceptsReferenceVideo && Array.isArray(cfg?.videos)) {
-        cfg.videos = cfg.videos.filter((v: any) => v?.url);
-      }
-      if (!cap.acceptsReferenceVideo || !Array.isArray(cfg?.videos) || cfg.videos.length === 0) {
-        delete cfg.videos;
-      }
-      if (!cap.acceptsReferenceImage && Array.isArray(cfg?.images)) {
-        cfg.images = cfg.images.filter((img: any) => img?.role !== 'reference_image');
-        if (cfg.images.length === 0) delete cfg.images;
-      }
-
-      // Reference audio needs a paired reference image (the talking-head subject);
-      // upstream rejects an audio-only reference, so warn inline instead.
-      const hasReferenceImage =
-        Array.isArray(cfg?.images) && cfg.images.some((img: any) => img?.role === 'reference_image');
-      if (Array.isArray(cfg?.audios) && cfg.audios.length > 0 && !hasReferenceImage) {
-        ElMessage.warning(this.$t('seedance.message.audioRequiresReferenceImage'));
-        return;
-      }
-
-      const request = {
-        ...cfg,
-        async: true
-      } as ISeedanceGenerateRequest;
 
       if (!ensureLoggedIn()) {
         return;
