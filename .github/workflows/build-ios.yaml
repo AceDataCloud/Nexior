@@ -26,7 +26,11 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # Include auto_submit_review so a testing build (04:07 auto-release-mobile,
+  # submit=false) and a production submit build (09:32 auto-production-mobile,
+  # submit=true) — both dispatched on --ref main — land in DIFFERENT groups and
+  # can never cancel each other. Same-type re-dispatches still coalesce.
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.auto_submit_review }}
   cancel-in-progress: true
 
 env:
