@@ -10,6 +10,16 @@ vi.mock('@/components/common/ApiCodeButton.vue', () => ({
   default: { name: 'ApiCodeButton', template: '<div />' }
 }));
 
+const confirm = vi.fn();
+vi.mock('element-plus', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('element-plus')>();
+  return {
+    ...actual,
+    ElMessageBox: { confirm: (...args: unknown[]) => confirm(...args) },
+    ElMessage: { success: vi.fn(), error: vi.fn() }
+  };
+});
+
 import TaskPreview from './Preview.vue';
 
 const task: IKlingTask = {
@@ -161,4 +171,59 @@ describe('kling/task/Preview', () => {
       expect(() => mountPreview(malformedTask)).not.toThrow();
     }
   );
+
+  it('renders a hover-reveal delete button whenever the task has an id', () => {
+    const wrapper = shallowMount(TaskPreview, {
+      props: { modelValue: { ...task, response: undefined } },
+      global: {
+        stubs: {
+          ElAlert: { template: '<div><slot /><slot name="template" /></div>' },
+          ElTooltip: { template: '<div><slot /></div>' }
+        },
+        mocks: { $t: (key: string) => key, $dayjs: { format: () => '' }, $store: { state: { kling: {} } } }
+      }
+    });
+    expect(wrapper.find('.btn-delete').exists()).toBe(true);
+  });
+
+  it('dispatches kling/deleteTask after the user confirms', async () => {
+    confirm.mockResolvedValueOnce(undefined);
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+    const wrapper = shallowMount(TaskPreview, {
+      props: { modelValue: task },
+      global: {
+        stubs: {
+          ElAlert: { template: '<div><slot /><slot name="template" /></div>' },
+          ElTooltip: { template: '<div><slot /></div>' }
+        },
+        mocks: { $t: (key: string) => key, $dayjs: { format: () => '' }, $store: { state: { kling: {} }, dispatch } }
+      }
+    });
+
+    await wrapper.find('.btn-delete').trigger('click');
+    await Promise.resolve();
+
+    expect(confirm).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalledWith('kling/deleteTask', { id: 'kling-task' });
+  });
+
+  it('does not dispatch when the user cancels the confirm dialog', async () => {
+    confirm.mockRejectedValueOnce(new Error('cancel'));
+    const dispatch = vi.fn();
+    const wrapper = shallowMount(TaskPreview, {
+      props: { modelValue: task },
+      global: {
+        stubs: {
+          ElAlert: { template: '<div><slot /><slot name="template" /></div>' },
+          ElTooltip: { template: '<div><slot /></div>' }
+        },
+        mocks: { $t: (key: string) => key, $dayjs: { format: () => '' }, $store: { state: { kling: {} }, dispatch } }
+      }
+    });
+
+    await wrapper.find('.btn-delete').trigger('click');
+    await Promise.resolve();
+
+    expect(dispatch).not.toHaveBeenCalled();
+  });
 });

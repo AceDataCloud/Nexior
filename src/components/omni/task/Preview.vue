@@ -9,6 +9,17 @@
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
+        <el-tooltip effect="dark" :content="$t('common.button.delete')" placement="top">
+          <button
+            v-if="modelValue?.id"
+            type="button"
+            class="btn-delete"
+            :aria-label="$t('common.button.delete')"
+            @click.stop="onDelete"
+          >
+            <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </button>
+        </el-tooltip>
       </div>
       <div class="info">
         <div v-if="inputImage" class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto">
@@ -130,6 +141,7 @@
 import {
   ApplicationIcon,
   ChannelIcon,
+  DeleteIcon,
   ExpandIcon,
   InfoIcon,
   MagicIcon,
@@ -137,7 +149,7 @@ import {
   WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElAlert, ElButton, ElTooltip } from 'element-plus';
+import { ElAlert, ElButton, ElTooltip, ElMessageBox, ElMessage } from 'element-plus';
 import { IOmniTask, IOmniVideo } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -147,6 +159,7 @@ import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'OmniTaskPreview',
   components: {
+    DeleteIcon,
     ApplicationIcon,
     ChannelIcon,
     CopyToClipboard,
@@ -211,6 +224,26 @@ export default defineComponent({
     this.stopTimer();
   },
   methods: {
+    async onDelete() {
+      const id = this.modelValue?.id;
+      if (!id) return;
+      try {
+        await ElMessageBox.confirm(this.$t('common.message.deleteTaskConfirm'), this.$t('common.button.delete'), {
+          type: 'warning',
+          confirmButtonText: this.$t('common.button.delete'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          confirmButtonClass: 'el-button--danger'
+        });
+      } catch {
+        return; // user cancelled
+      }
+      try {
+        await this.$store.dispatch('omni/deleteTask', { id });
+        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
+      } catch {
+        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
+      }
+    },
     stopTimer() {
       if (this.timer) {
         window.clearInterval(this.timer);
@@ -251,6 +284,8 @@ $left-width: 70px;
     padding: 10px 10px 0 10px;
 
     .bot {
+      display: flex;
+      align-items: center;
       font-size: 16px;
       font-weight: bold;
       color: var(--el-color-primary);
@@ -261,9 +296,32 @@ $left-width: 70px;
       white-space: nowrap;
       .datetime {
         font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
         font-weight: normal;
         color: var(--el-text-color-secondary);
         margin-left: 10px;
+      }
+      .btn-delete {
+        margin-left: auto;
+        padding: 4px 6px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        line-height: 1;
+        color: var(--el-text-color-secondary);
+        // Hover-reveal on pointer devices; keep it out of the way until wanted.
+        opacity: 0;
+        transition:
+          opacity 0.15s ease,
+          color 0.15s ease;
+        &:hover {
+          color: var(--el-color-danger);
+        }
+        // Touch devices have no hover — always show the control.
+        @media (hover: none) {
+          opacity: 1;
+        }
       }
     }
 
@@ -300,6 +358,11 @@ $left-width: 70px;
         }
       }
     }
+  }
+
+  // Reveal the trash icon when hovering anywhere on the card.
+  &:hover .main .bot .btn-delete {
+    opacity: 1;
   }
 }
 </style>
