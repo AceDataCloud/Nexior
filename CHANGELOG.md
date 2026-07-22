@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 18:03:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 18:11:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.331.0
+
+Wed, 22 Jul 2026 18:11:30 GMT
+
+### Minor changes
+
+- feat(tasks): per-card delete button on GPT-image + Nano Banana history — hover-reveal trash control hard-deletes a task server-side across all devices (dev@acedata.cloud)
 
 ## 3.330.23
 
