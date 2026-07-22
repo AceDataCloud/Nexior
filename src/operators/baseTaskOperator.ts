@@ -132,4 +132,21 @@ export class BaseTaskOperator<
       headers: { ...GENERATE_HEADERS, authorization: `Bearer ${options.token}` }
     });
   }
+
+  // Hard-delete one of the caller's own history tasks. The worker requires both
+  // id and user_id (scoped to the requester), so a leaked id alone can't wipe
+  // another user's record. Shared by every task service via createTaskActions.
+  async delete(
+    id: string,
+    options: { token: string; userId?: string; applicationId?: string }
+  ): Promise<AxiosResponse<{ id: string; deleted: boolean }>> {
+    return axios.post(
+      this.tasksPath,
+      { action: 'delete', id, user_id: options.userId, application_id: options.applicationId },
+      {
+        baseURL: BASE_URL_API,
+        headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }
+      }
+    );
+  }
 }

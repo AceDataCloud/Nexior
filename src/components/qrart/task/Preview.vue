@@ -9,12 +9,25 @@
     </div>
     <div class="main flex-1 w-[calc(100%-70px)] min-w-0 pt-[10px] pr-[10px] pb-0 pl-[10px]">
       <div
-        class="bot text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden text-ellipsis whitespace-nowrap"
+        class="bot flex items-center text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden whitespace-nowrap"
       >
         <capability-presentation capability="qrart" part="name" />
-        <span class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px]">
+        <span
+          class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px] overflow-hidden text-ellipsis"
+        >
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
+        <el-tooltip effect="dark" :content="$t('common.button.delete')" placement="top">
+          <button
+            v-if="modelValue?.id"
+            type="button"
+            class="btn-delete ml-auto shrink-0 cursor-pointer border-none bg-transparent p-[4px_6px] leading-none"
+            :aria-label="$t('common.button.delete')"
+            @click.stop="onDelete"
+          >
+            <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </button>
+        </el-tooltip>
       </div>
       <div class="info">
         <p
@@ -132,6 +145,7 @@
 <script lang="ts">
 import {
   ChannelIcon,
+  DeleteIcon,
   ExternalLinkIcon,
   GrowthIcon,
   InfoIcon,
@@ -142,7 +156,7 @@ import {
   WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElAlert } from 'element-plus';
+import { ElAlert, ElMessageBox, ElMessage, ElTooltip } from 'element-plus';
 import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
@@ -152,6 +166,7 @@ export default defineComponent({
   name: 'TaskPreview',
   components: {
     ChannelIcon,
+    DeleteIcon,
     ExternalLinkIcon,
     GrowthIcon,
     InfoIcon,
@@ -162,6 +177,7 @@ export default defineComponent({
     WarningIcon,
     CopyToClipboard,
     ElAlert,
+    ElTooltip,
     ImageWrapper,
     ApiCodeButton
   },
@@ -180,6 +196,26 @@ export default defineComponent({
     }
   },
   methods: {
+    async onDelete() {
+      const id = this.modelValue?.id;
+      if (!id) return;
+      try {
+        await ElMessageBox.confirm(this.$t('common.message.deleteTaskConfirm'), this.$t('common.button.delete'), {
+          type: 'warning',
+          confirmButtonText: this.$t('common.button.delete'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          confirmButtonClass: 'el-button--danger'
+        });
+      } catch {
+        return; // user cancelled
+      }
+      try {
+        await this.$store.dispatch('qrart/deleteTask', { id });
+        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
+      } catch {
+        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
+      }
+    },
     onOpenLink(url: string) {
       window.open(url, '_blank');
     },
@@ -266,6 +302,22 @@ $left-width: 70px;
         color: var(--el-text-color-secondary);
         margin-left: 10px;
       }
+      .btn-delete {
+        margin-left: auto;
+        color: var(--el-text-color-secondary);
+        // Hover-reveal on pointer devices; keep it out of the way until wanted.
+        opacity: 0;
+        transition:
+          opacity 0.15s ease,
+          color 0.15s ease;
+        &:hover {
+          color: var(--el-color-danger);
+        }
+        // Touch devices have no hover — always show the control.
+        @media (hover: none) {
+          opacity: 1;
+        }
+      }
     }
 
     .info {
@@ -309,6 +361,11 @@ $left-width: 70px;
       font-size: 12px;
       margin-bottom: 8px;
     }
+  }
+
+  // Reveal the trash icon when hovering anywhere on the card.
+  &:hover .main .bot .btn-delete {
+    opacity: 1;
   }
 }
 </style>

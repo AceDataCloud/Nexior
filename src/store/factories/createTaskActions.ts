@@ -35,6 +35,10 @@ export interface ITaskServiceState<TConfig, TTask> {
 /** Minimal contract every per-service operator must satisfy. */
 export interface ITaskOperator<TFilter, TTask> {
   tasks(filter: TFilter, options: { token: string }): Promise<{ data: { items: TTask[]; count?: number } }>;
+  delete?(
+    id: string,
+    options: { token: string; userId?: string; applicationId?: string }
+  ): Promise<{ data: { id: string; deleted: boolean } }>;
 }
 
 /** Optional argument bag the page-level `dispatch('xxx/getTasks', ...)` passes. */
@@ -196,6 +200,46 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     return response.data.items;
   };
 
+  // Hard-delete one of the caller's own tasks and drop it from the list.
+  // Optimistic: remove the card + decrement total FIRST so the ≤5s poll can't
+  // flash it back mid-flight; on failure, roll the snapshot back and rethrow.
+  const deleteTask = async (
+    { commit, state, rootState }: ActionContext<S, IRootState>,
+    payload: { id: string } | string
+  ): Promise<void> => {
+    const id = typeof payload === 'string' ? payload : payload?.id;
+    if (!id) {
+      return;
+    }
+    const token = state.credential?.token;
+    if (!token || !opts.operator.delete) {
+      throw new Error('delete not available');
+    }
+    const prevItems = state?.tasks?.items || [];
+    const prevTotal = state?.tasks?.total;
+    const nextItems = (prevItems as Array<{ id?: string }>).filter((t) => t?.id !== id) as TTask[];
+    commit('setTasksItems', nextItems);
+    if (typeof prevTotal === 'number') {
+      commit('setTasksTotal', Math.max(0, prevTotal - (prevItems.length - nextItems.length)));
+    }
+    try {
+      const response = await opts.operator.delete(id, { token, userId: rootState?.user?.id });
+      // A skip-auth worker answers 200 even when nothing matched {id, user_id}
+      // (blank/foreign user_id, or already gone). Treat only deleted===true as
+      // success so the row isn't optimistically dropped while it still exists
+      // server-side (the next poll would flash it back and the toast would lie).
+      if (!response?.data?.deleted) {
+        throw new Error('task not deleted');
+      }
+    } catch (error) {
+      commit('setTasksItems', prevItems);
+      if (typeof prevTotal === 'number') {
+        commit('setTasksTotal', prevTotal);
+      }
+      throw error;
+    }
+  };
+
   // Trivial setters — match the per-service spelling exactly.
   const resetAll = ({ commit }: ActionContext<S, IRootState>): void => commit('resetAll');
   const setApplications = ({ commit }: ActionContext<S, IRootState>, payload: IApplication[]): void =>
@@ -227,6 +271,7 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     setTasksItems,
     setTasksTotal,
     setTasksActive,
-    getTasks
+    getTasks,
+    deleteTask
   };
 }
