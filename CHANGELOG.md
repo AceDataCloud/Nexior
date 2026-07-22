@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 11:27:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 12:37:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.20
+
+Wed, 22 Jul 2026 12:37:25 GMT
+
+### Patches
+
+- Keep assistant text contiguous when an early tool announcement arrives mid-stream, while preserving live tool progress (dev@acedata.cloud)
 
 ## 3.330.19
 
