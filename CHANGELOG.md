@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 21 Jul 2026 17:56:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 01:18:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.15
+
+Wed, 22 Jul 2026 01:18:06 GMT
+
+### Patches
+
+- Render failed Fish TTS tasks with their error reason instead of showing them as pending forever (dev@acedata.cloud)
 
 ## 3.330.14
 
