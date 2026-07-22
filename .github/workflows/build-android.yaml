@@ -36,7 +36,10 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # Include promote_to_production so a testing build (04:07, promote=false) and a
+  # production release build (09:32, promote=true) — both on --ref main — never
+  # cancel each other. Same-type re-dispatches still coalesce.
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.promote_to_production }}
   cancel-in-progress: true
 
 env:
