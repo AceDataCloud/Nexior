@@ -1,10 +1,10 @@
 name: Auto Release Mobile (Testing)
 
-# Fires automatically after a merge to main bumps the version. Beachball
-# (publish.yaml) commits the bump and pushes the @acedatacloud/nexior_v* tag
-# using BOT_GITHUB_TOKEN (a PAT), which is what lets this tag push trigger
-# further workflows. We trigger on that tag — not raw `push: main` — so the
-# mobile build uses the final, released version and never races the bump.
+# Runs ONCE PER DAY (not per merge) to keep macOS/iOS Actions minutes down —
+# iOS builds on the 10x-billed macOS runner, so per-merge fan-out was the single
+# largest Actions cost. The daily build uses main's HEAD (the latest released
+# version via beachball). build-ios.yaml's TestFlight dedup preflight auto-skips
+# the macOS job on days with no new version, so a quiet day costs ~nothing.
 #
 # This orchestrator dispatches the existing build-android.yaml / build-ios.yaml
 # with PRODUCTION EXPLICITLY DISABLED:
@@ -18,9 +18,10 @@ name: Auto Release Mobile (Testing)
 # testing, internal = Internal testing), edit ANDROID_TRACK below.
 
 on:
-  push:
-    tags:
-      - '@acedatacloud/nexior_v*'
+  schedule:
+    # 04:07 Beijing time (UTC 20:07). Off the top of the hour to dodge GitHub's
+    # cron congestion. Cadence is intentionally daily, not per-merge.
+    - cron: '7 20 * * *'
   # Allow re-running the auto test-publish by hand for the current ref.
   workflow_dispatch: {}
 
