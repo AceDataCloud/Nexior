@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 17:35:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 22 Jul 2026 18:03:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.330.23
+
+Wed, 22 Jul 2026 18:03:59 GMT
+
+### Patches
+
+- Fix misaligned download & view-code buttons in the Fish TTS task card (the download button used mb-2, shifting its baseline vs the sibling; use btn-action like the other cards). (dev@acedata.cloud)
 
 ## 3.330.22
 
