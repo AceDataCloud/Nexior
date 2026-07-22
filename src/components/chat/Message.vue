@@ -75,7 +75,12 @@
                 "
                 :item="item"
               />
-              <browser-tool-activity v-if="item.type === 'tool_use' && item.execution === 'browser'" :item="item" />
+              <browser-tool-activity
+                v-if="item.type === 'tool_use' && item.execution === 'browser'"
+                :item="item"
+                @stop-session="$emit('stopBrowserSession', $event)"
+                @recovery="$emit('browserRecovery', $event)"
+              />
               <ask-user-question-card
                 v-if="
                   item.type === 'tool_use' &&
@@ -292,7 +297,9 @@ export default defineComponent({
     'answerAskUserQuestion',
     'skipAskUserQuestion',
     'respondConnectorConsent',
-    'authorizeConnector'
+    'authorizeConnector',
+    'stopBrowserSession',
+    'browserRecovery'
   ],
   data(): IData {
     return {

@@ -595,25 +595,24 @@
     "message": "浏览器活动",
     "description": "BrowserDevice 工具活动的默认标题"
   },
-  "browserTool.state.choose_device": {
-    "message": "请选择浏览器设备",
-    "description": "尚未选择浏览器设备"
+  "browserTool.state.starting_session": {
+    "message": "正在启动浏览器会话"
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "正在连接浏览器标签页"
+  },
+  "browserTool.state.ready": {
+    "message": "浏览器已就绪"
   },
   "browserTool.state.device_offline": {
     "message": "浏览器设备已离线",
     "description": "所选浏览器设备不在线"
   },
-  "browserTool.state.awaiting_device": {
-    "message": "正在等待浏览器设备",
-    "description": "等待浏览器设备接收任务"
+  "browserTool.state.device_busy": {
+    "message": "浏览器设备正忙"
   },
-  "browserTool.state.awaiting_local_approval": {
-    "message": "请在浏览器设备上批准",
-    "description": "等待本地浏览器设备批准操作"
-  },
-  "browserTool.state.takeover_required": {
-    "message": "请在浏览器设备上接管",
-    "description": "需要用户在本地浏览器设备上接管操作"
+  "browserTool.state.authorization_required": {
+    "message": "需要在 Studio 中确认授权"
   },
   "browserTool.state.executing": {
     "message": "正在浏览器中执行",
@@ -623,17 +622,36 @@
     "message": "已完成",
     "description": "浏览器工具执行完成"
   },
-  "browserTool.state.denied": {
-    "message": "已在浏览器设备上拒绝",
-    "description": "用户在本地浏览器设备上拒绝操作"
+  "browserTool.state.stopped": {
+    "message": "浏览器会话已停止"
   },
   "browserTool.state.expired": {
     "message": "浏览器请求已过期",
     "description": "浏览器工具执行请求已过期"
   },
-  "browserTool.state.cancel_too_late": {
-    "message": "已无法取消",
-    "description": "操作已产生副作用，取消请求过晚"
+  "browserTool.state.debugger_unavailable": {
+    "message": "请关闭开发者工具后继续"
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "执行结果未知，请核实后再重试"
+  },
+  "browserTool.state.failed": {
+    "message": "浏览器操作失败"
+  },
+  "browserTool.stop": {
+    "message": "停止"
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "管理设备"
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "停止其他会话"
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "关闭开发者工具"
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "查看授权"
   },
   "scheduledTasks.navTitle": {
     "message": "定时任务",
@@ -787,9 +805,11 @@
     "message": "需要操作",
     "description": "需要用户操作状态"
   },
-  "scheduledTasks.run.waiting_for_device": {
-    "message": "等待浏览器设备",
-    "description": "定时任务正在等待浏览器设备上线"
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "浏览器设备已离线"
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "浏览器授权已变更，请编辑此任务"
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "每天",
@@ -930,6 +950,18 @@
   "scheduledTasks.form.skillsHint": {
     "message": "选中的 Skills 可在定时任务后台执行时跳过人工确认；未选中的 Skills 仍只能预览或等待确认。",
     "description": "授权 skill 说明"
+  },
+  "scheduledTasks.form.browserConnection": {
+    "message": "浏览器连接"
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "可能执行以下外部副作用：{effects}"
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "无人值守授权到期时间：{time}"
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "保存前请选择在线且兼容的浏览器连接"
   },
   "scheduledTasks.form.skillMissing": {
     "message": "未连接",

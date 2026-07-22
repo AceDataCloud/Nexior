@@ -33,7 +33,10 @@ export interface IArtifact {
   user_id: string;
   application_id?: string;
   conversation_id?: string;
+  browser_session_id?: string;
+  browser_call_id?: string;
   scheduled_task_id?: string;
+  scheduled_run_id?: string;
   run_id?: string;
   site_origin?: string;
   kind: IArtifactKind;

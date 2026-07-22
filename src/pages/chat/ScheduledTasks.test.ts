@@ -3,7 +3,12 @@ import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
 import { CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
-import type { IScheduledTask } from '@/operators/scheduledTasks';
+import {
+  SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE,
+  SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE,
+  validateScheduledBrowserBinding
+} from '@/operators/scheduledTasks';
+import type { IAuthorizableSkill, IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
 
 const editedTask: IScheduledTask = {
@@ -19,7 +24,7 @@ const editedTask: IScheduledTask = {
     max_turns: 12
   },
   unattended_policy: {
-    mode: 'allow_selected',
+    mode: 'allow_selected_skills',
     allowed_skills: ['hashnode'],
     allowed_mcp_servers: ['publishing']
   },
@@ -55,6 +60,43 @@ const mountComponent = () =>
   });
 
 describe('chat/ScheduledTasks', () => {
+  const browserSkill: IAuthorizableSkill = {
+    slug: 'xiaohongshu',
+    name: 'Xiaohongshu',
+    description: '',
+    required_connections: ['xiaohongshu'],
+    allowed_tools: ['browser.navigate'],
+    source: 'installed',
+    connected: true,
+    missing_connections: [],
+    browser_connections: [
+      {
+        connection_id: 'connection-1',
+        revision: 4,
+        device_id: 'device-1',
+        wire_contract_digest: 'sha256:wire',
+        policy_digest: 'sha256:policy',
+        name: 'Xiaohongshu',
+        device_name: 'Chrome',
+        allowed_origins: ['https://www.xiaohongshu.com'],
+        side_effects: ['publish', 'comment'],
+        online: true,
+        compatible: true
+      }
+    ]
+  };
+
+  it('fails immediately for stale and offline browser bindings', () => {
+    expect(() => validateScheduledBrowserBinding(browserSkill, 'missing')).toThrow(
+      SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE
+    );
+    const offline = structuredClone(browserSkill);
+    offline.browser_connections![0].online = false;
+    expect(() => validateScheduledBrowserBinding(offline, 'connection-1')).toThrow(
+      SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE
+    );
+  });
+
   it.each([
     ['internal_error', 'Internal error'],
     ['billing_gate_failed', 'Billing authorization failed']
@@ -104,6 +146,8 @@ describe('chat/ScheduledTasks', () => {
       cronExpr: '0 9 * * *',
       authorizedSkills: [],
       authorizedMcpServers: [],
+      browserConnectionId: '',
+      authorizationExpiresAt: expect.any(Number),
       maxTurns: 50
     });
   });
@@ -135,21 +179,26 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
   });
-  it('shows scheduled runs that are waiting for a browser device', async () => {
-    const wrapper = mountComponent();
-    await wrapper.setData({
-      selectedTask: editedTask,
-      showRunHistory: true,
-      runs: [
-        {
-          id: 'run-1',
-          task_id: editedTask.id,
-          status: 'waiting_for_device',
-          scheduled_at: 1
-        }
-      ]
-    });
+  it.each(['browser_device_offline', 'browser_authorization_stale'])(
+    'shows typed browser run error %s without a waiting queue',
+    async (errorCode) => {
+      const wrapper = mountComponent();
+      await wrapper.setData({
+        selectedTask: editedTask,
+        showRunHistory: true,
+        runs: [
+          {
+            id: 'run-1',
+            task_id: editedTask.id,
+            status: 'failed',
+            scheduled_at: 1,
+            error_code: errorCode
+          }
+        ]
+      });
 
-    expect(wrapper.text()).toContain('chat.scheduledTasks.run.waiting_for_device');
-  });
+      expect(wrapper.text()).toContain(errorCode.replace(/_/g, ' '));
+      expect(wrapper.text()).not.toContain('waiting');
+    }
+  );
 });

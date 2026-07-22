@@ -5,16 +5,19 @@ import type { IBrowserToolExecutionState, IChatMessageContentItem } from '@/mode
 import BrowserToolActivity from './BrowserToolActivity.vue';
 
 const STATES: IBrowserToolExecutionState[] = [
-  'choose_device',
-  'device_offline',
-  'awaiting_device',
-  'awaiting_local_approval',
-  'takeover_required',
+  'starting_session',
+  'attaching_tab',
+  'ready',
   'executing',
   'completed',
-  'denied',
+  'device_offline',
+  'device_busy',
+  'authorization_required',
+  'stopped',
   'expired',
-  'cancel_too_late'
+  'debugger_unavailable',
+  'unknown_outcome',
+  'failed'
 ];
 
 function mountActivity(item: IChatMessageContentItem) {
@@ -27,7 +30,7 @@ function mountActivity(item: IChatMessageContentItem) {
 }
 
 describe('BrowserToolActivity', () => {
-  it.each(STATES)('renders durable state %s without cloud approval controls', (executionState) => {
+  it.each(STATES)('renders durable state %s', (executionState) => {
     const wrapper = mountActivity({
       type: 'tool_use',
       execution: 'browser',
@@ -36,8 +39,28 @@ describe('BrowserToolActivity', () => {
     });
 
     expect(wrapper.text()).toContain(`chat.browserTool.state.${executionState}`);
-    expect(wrapper.find('button').exists()).toBe(false);
-    expect(wrapper.emitted()).toEqual({});
+  });
+
+  it('stops an active browser session', async () => {
+    const wrapper = mountActivity({
+      type: 'tool_use',
+      execution: 'browser',
+      execution_state: 'executing',
+      browser_session_id: 'session-1'
+    });
+    await wrapper.find('.activity-actions button').trigger('click');
+    expect(wrapper.emitted('stop-session')).toEqual([['session-1']]);
+  });
+
+  it.each([
+    ['device_offline', 'open-device-manager'],
+    ['device_busy', 'stop-other-session'],
+    ['debugger_unavailable', 'close-devtools'],
+    ['authorization_required', 'open-consent-card']
+  ] as const)('emits recovery action for %s', async (executionState, action) => {
+    const wrapper = mountActivity({ type: 'tool_use', execution: 'browser', execution_state: executionState });
+    await wrapper.find('.activity-actions button').trigger('click');
+    expect(wrapper.emitted('recovery')).toEqual([[action]]);
   });
 
   it('shows only the sanitized origin from persisted content', () => {
@@ -48,7 +71,8 @@ describe('BrowserToolActivity', () => {
       origin: 'https://user:secret@example.com/private?token=hidden#fragment'
     });
 
-    expect(wrapper.text()).toContain('https://example.com');
+    expect(wrapper.text()).toContain('example.com');
+    expect(wrapper.text()).not.toContain('https://');
     expect(wrapper.text()).not.toContain('secret');
     expect(wrapper.text()).not.toContain('private');
   });

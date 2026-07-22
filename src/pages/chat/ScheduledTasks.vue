@@ -272,6 +272,39 @@
           <div class="hint">{{ $t('chat.scheduledTasks.form.skillsHint') }}</div>
         </el-form-item>
 
+        <el-form-item
+          v-if="selectedBrowserSkills.length"
+          :label="$t('chat.scheduledTasks.form.browserConnection')"
+          required
+        >
+          <el-select v-model="form.browserConnectionId" style="width: 100%">
+            <el-option
+              v-for="connection in selectedBrowserConnections"
+              :key="connection.connection_id"
+              :label="`${connection.name} · ${connection.device_name}`"
+              :value="connection.connection_id"
+              :disabled="
+                !connection.online || !connection.compatible || connection.wire_contract_digest !== WIRE_CONTRACT_DIGEST
+              "
+            />
+          </el-select>
+          <div v-if="selectedBrowserConnection" class="browser-binding-summary">
+            <div>{{ selectedBrowserConnection.allowed_origins.join(', ') }}</div>
+            <div>
+              {{
+                $t('chat.scheduledTasks.form.browserEffects', {
+                  effects: selectedBrowserConnection.side_effects.join(', ')
+                })
+              }}
+            </div>
+            <div>
+              {{
+                $t('chat.scheduledTasks.form.authorizationExpires', { time: formatTime(form.authorizationExpiresAt) })
+              }}
+            </div>
+          </div>
+        </el-form-item>
+
         <el-form-item :label="$t('chat.scheduledTasks.form.mcpServers')">
           <el-select
             v-model="form.authorizedMcpServers"
@@ -352,8 +385,10 @@ import {
   IScheduledTaskCapabilityDetail,
   extractSkillNotActive
 } from '@/operators/scheduledTasks';
+import type { IAuthorizableBrowserConnection, IScheduledBrowserBinding } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
 import { IChatModelGroup } from '@/models';
+import { WIRE_CONTRACT_DIGEST as CANONICAL_WIRE_CONTRACT_DIGEST } from '@/generated/browserContract.generated';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
 
@@ -374,6 +409,8 @@ interface TaskForm {
   cronExpr: string;
   authorizedSkills: string[];
   authorizedMcpServers: string[];
+  browserConnectionId: string;
+  authorizationExpiresAt: number;
   maxTurns: number;
 }
 
@@ -429,7 +466,8 @@ export default defineComponent({
       pageSize: 6,
       runPage: 1,
       runPageSize: 8,
-      form: this.emptyForm() as TaskForm
+      form: this.emptyForm() as TaskForm,
+      WIRE_CONTRACT_DIGEST: CANONICAL_WIRE_CONTRACT_DIGEST
     };
   },
   computed: {
@@ -462,6 +500,23 @@ export default defineComponent({
       } catch {
         return '';
       }
+    },
+    selectedBrowserConnections(): IAuthorizableBrowserConnection[] {
+      const selected = new Set(this.form.authorizedSkills);
+      return this.authorizableSkills
+        .filter((skill) => selected.has(skill.slug))
+        .flatMap((skill) => skill.browser_connections ?? []);
+    },
+    selectedBrowserSkills(): IAuthorizableSkill[] {
+      const selected = new Set(this.form.authorizedSkills);
+      return this.authorizableSkills.filter(
+        (skill) => selected.has(skill.slug) && skill.browser_connections !== undefined
+      );
+    },
+    selectedBrowserConnection(): IAuthorizableBrowserConnection | undefined {
+      return this.selectedBrowserConnections.find(
+        (connection) => connection.connection_id === this.form.browserConnectionId
+      );
     }
   },
   async mounted() {
@@ -482,6 +537,8 @@ export default defineComponent({
         cronExpr: '0 9 * * *',
         authorizedSkills: [],
         authorizedMcpServers: [],
+        browserConnectionId: '',
+        authorizationExpiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
       };
     },
@@ -583,13 +640,13 @@ export default defineComponent({
         weekday,
         cronExpr,
         authorizedSkills:
-          task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
-            ? task.unattended_policy.allowed_skills || []
-            : [],
+          task.unattended_policy?.mode === 'allow_selected_skills' ? task.unattended_policy.allowed_skills || [] : [],
         authorizedMcpServers:
-          task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
+          task.unattended_policy?.mode === 'allow_selected_skills'
             ? task.unattended_policy.allowed_mcp_servers || []
             : [],
+        browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
+        authorizationExpiresAt: task.unattended_policy?.expires_at ?? Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
       };
       this.showCreateDialog = true;
@@ -641,6 +698,28 @@ export default defineComponent({
       }
       const authorizedSkills = [...this.form.authorizedSkills];
       const authorizedMcpServers = [...this.form.authorizedMcpServers];
+      let browserConnections: IScheduledBrowserBinding[] | undefined;
+      if (this.selectedBrowserSkills.length) {
+        const connection = this.selectedBrowserConnection;
+        if (
+          !connection ||
+          !connection.online ||
+          !connection.compatible ||
+          connection.wire_contract_digest !== CANONICAL_WIRE_CONTRACT_DIGEST
+        ) {
+          ElMessage.error(this.$t('chat.scheduledTasks.form.browserBindingInvalid') as string);
+          return;
+        }
+        browserConnections = [
+          {
+            connection_id: connection.connection_id,
+            revision: connection.revision,
+            device_id: connection.device_id,
+            wire_contract_digest: connection.wire_contract_digest,
+            policy_digest: connection.policy_digest
+          }
+        ];
+      }
       const payload: ScheduledTaskPayload = {
         name: this.form.name.trim() || this.deriveName(this.form.question),
         schedule: this.buildSchedule(),
@@ -654,9 +733,11 @@ export default defineComponent({
         unattended_policy:
           authorizedSkills.length || authorizedMcpServers.length
             ? {
-                mode: 'allow_selected' as const,
+                mode: 'allow_selected_skills' as const,
                 allowed_skills: authorizedSkills,
-                allowed_mcp_servers: authorizedMcpServers
+                allowed_mcp_servers: authorizedMcpServers,
+                browser_connections: browserConnections,
+                expires_at: this.form.authorizationExpiresAt
               }
             : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
       };
@@ -694,6 +775,7 @@ export default defineComponent({
         this.saving = false;
       }
       if (notActive) {
+        if (this.selectedBrowserSkills.length) return;
         const proceed = await this.confirmForceSkill(notActive);
         if (proceed) await this.submitTask(payload, true);
       }

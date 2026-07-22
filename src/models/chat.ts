@@ -94,16 +94,19 @@ export enum IChatMessageState {
 export type IChatToolExecution = 'client' | 'server' | 'browser';
 
 export type IBrowserToolExecutionState =
-  | 'choose_device'
-  | 'device_offline'
-  | 'awaiting_device'
-  | 'awaiting_local_approval'
-  | 'takeover_required'
+  | 'starting_session'
+  | 'attaching_tab'
+  | 'ready'
   | 'executing'
   | 'completed'
-  | 'denied'
+  | 'device_offline'
+  | 'device_busy'
+  | 'authorization_required'
+  | 'stopped'
   | 'expired'
-  | 'cancel_too_late';
+  | 'debugger_unavailable'
+  | 'unknown_outcome'
+  | 'failed';
 
 export interface IChatMessageContentItem {
   type: string;
@@ -123,6 +126,10 @@ export interface IChatMessageContentItem {
   execution?: IChatToolExecution;
   execution_state?: IBrowserToolExecutionState;
   execution_sequence?: number;
+  browser_session_id?: string;
+  browser_call_id?: string;
+  wire_contract_digest?: string;
+  facade_catalog_digest?: string;
   origin?: string;
   input?: Record<string, unknown>;
   output?: string;
@@ -356,6 +363,10 @@ export interface IChatConversationResponse {
   execution?: IChatToolExecution;
   execution_state?: IBrowserToolExecutionState;
   execution_sequence?: number;
+  browser_session_id?: string;
+  browser_call_id?: string;
+  wire_contract_digest?: string;
+  facade_catalog_digest?: string;
   origin?: string;
   input?: Record<string, unknown>;
   output?: string;

@@ -65,6 +65,8 @@
             @skip-ask-user-question="onSkipAskUserQuestion"
             @respond-connector-consent="onRespondConnectorConsent"
             @authorize-connector="onAuthorizeConnector"
+            @stop-browser-session="onStopBrowserSession"
+            @browser-recovery="onBrowserRecovery"
           />
         </div>
         <div class="starter">
@@ -90,6 +92,7 @@ import { ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
+import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import {
   IChatMessageState,
@@ -473,6 +476,16 @@ export default defineComponent({
         this.canceler.abort();
         this.answering = false;
       }
+    },
+    async onStopBrowserSession(_browserSessionId: string) {
+      await this.onStop();
+    },
+    onBrowserRecovery(action: 'open-device-manager' | 'stop-other-session' | 'close-devtools' | 'open-consent-card') {
+      if (action === 'open-consent-card') {
+        document.querySelector('.connector-consent-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      this.$router.push({ name: 'settings-index', query: { browserRecovery: action } });
     },
     async onRestart(targetMessage: IChatMessage) {
       // 1. Clear the following message
@@ -1301,7 +1314,7 @@ export default defineComponent({
               // guard against double-enqueue across the two starts.
               if (
                 supportsClientTools() &&
-                response.execution === 'client' &&
+                shouldExecuteWithLocalExec(response.execution) &&
                 !this.pendingClientTools.some((t) => t.toolId === response.tool_id)
               ) {
                 toolItem.status = 'awaiting_input';

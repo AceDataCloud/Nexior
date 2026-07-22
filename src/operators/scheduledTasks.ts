@@ -37,7 +37,7 @@ export interface IScheduledTask {
 export interface IScheduledRun {
   id: string;
   task_id: string;
-  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input' | 'waiting_for_device';
+  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input';
   scheduled_at: number;
   llm_started_at?: number;
   llm_finished_at?: number;
@@ -55,10 +55,28 @@ export type IScheduleSpec =
   | { type: 'once'; at: number; tz: string };
 
 export interface IScheduledTaskUnattendedPolicy {
-  mode: 'deny_all' | 'allow_selected' | 'allow_selected_skills';
+  mode: 'deny_all' | 'allow_selected_skills';
   allowed_skills: string[];
   allowed_mcp_servers?: string[];
+  browser_connections?: IScheduledBrowserBinding[];
   expires_at?: number;
+}
+
+export interface IScheduledBrowserBinding {
+  connection_id: string;
+  revision: number;
+  device_id: string;
+  wire_contract_digest: string;
+  policy_digest: string;
+}
+
+export interface IAuthorizableBrowserConnection extends IScheduledBrowserBinding {
+  name: string;
+  device_name: string;
+  allowed_origins: string[];
+  side_effects: Array<'publish' | 'comment'>;
+  online: boolean;
+  compatible: boolean;
 }
 
 export interface IAuthorizableSkill {
@@ -71,6 +89,7 @@ export interface IAuthorizableSkill {
   source: string;
   connected: boolean;
   missing_connections: string[];
+  browser_connections?: IAuthorizableBrowserConnection[];
 }
 
 export interface IAuthorizableMcpServer {
@@ -87,6 +106,20 @@ export interface IAuthorizableCapabilities {
 // Error code returned when an unattended-policy skill / MCP server is not bound
 // (not active or missing a required connection) for the user.
 export const SCHEDULED_TASK_ERROR_SKILL_NOT_ACTIVE = 'skill_not_active';
+export const SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE = 'browser_authorization_stale';
+export const SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE = 'browser_device_offline';
+
+export function validateScheduledBrowserBinding(
+  skill: IAuthorizableSkill | undefined,
+  connectionId: string
+): IAuthorizableBrowserConnection {
+  if (!skill?.connected) throw new Error(SCHEDULED_TASK_ERROR_SKILL_NOT_ACTIVE);
+  const connection = skill.browser_connections?.find((candidate) => candidate.connection_id === connectionId);
+  if (!connection) throw new Error(SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE);
+  if (!connection.online) throw new Error(SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE);
+  if (!connection.compatible) throw new Error(SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE);
+  return connection;
+}
 
 export interface IScheduledTaskCapabilityDetail {
   kind: 'skill' | 'mcp_server';
