@@ -42,7 +42,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .fish-tabs {
   flex: none;
-  padding: 0 8px;
+  // Match the p-5 (20px) side gutters of the panels below and add top breathing
+  // room so the bar doesn't hug the panel's top edge. See `.scenario-tabs` in
+  // _common.scss (first/last item padding is zeroed there to keep labels flush).
+  padding: 12px 20px 0;
   background-color: var(--app-sidebar-bg);
 
   :deep(.el-tabs__item) {
