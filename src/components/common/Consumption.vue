@@ -8,7 +8,7 @@
         focusable="false"
       />
       <span class="font-medium">
-        {{ value.toFixed(2) }}
+        {{ formattedValue }}
         {{ $t(`service.unit.${service?.unit || 'credits'}`) }}<template v-if="rateUnit">/{{ rateUnit }}</template>
       </span>
     </span>
@@ -47,6 +47,17 @@ export default defineComponent({
       type: String,
       required: false,
       default: ''
+    }
+  },
+  computed: {
+    formattedValue(): string {
+      if (this.value > 0 && this.value < 0.0001) {
+        return '<0.0001';
+      }
+      if (this.value < 0.01) {
+        return this.value.toFixed(4);
+      }
+      return this.value.toFixed(2);
     }
   }
 });
