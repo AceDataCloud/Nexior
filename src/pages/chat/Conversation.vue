@@ -265,9 +265,6 @@ export default defineComponent({
     }
   },
   watch: {
-    async references(val) {
-      console.log('references changed', val);
-    },
     /**
      * Mirror the unsubmitted composer text into vuex on every
      * keystroke so a route-level remount (clicking ChatGPT in the

@@ -303,7 +303,6 @@ export default defineComponent({
   },
   watch: {
     refs(val: IChatReference[]) {
-      console.debug('References:', val);
       this.$emit('update:references', val);
     },
     questionValue(val: string) {
@@ -315,8 +314,16 @@ export default defineComponent({
       }
     },
     references(val: IChatReference[]) {
-      console.debug('References updated:', val);
-      if (val.length === 0) {
+      // Only reset when there's something to clear AND nothing is mid-upload.
+      //  - `fileList.length > 0`: assigning a fresh `[]` when already empty would
+      //    recompute `refs` → re-emit `update:references([])` → parent resets
+      //    `references` → back here: an infinite loop (the `refs` watcher lost its
+      //    length guard in #1398, so it now echoes empty values).
+      //  - `!uploading`: while a file is still uploading, `refs` is empty (no
+      //    `response.file_url` yet) so the parent momentarily holds `[]`; clearing
+      //    here would wipe the in-flight upload. Send is gated on `!uploading`, so
+      //    the post-send reset (the case we DO want to clear) always passes this.
+      if (val.length === 0 && this.fileList.length > 0 && !this.uploading) {
         this.fileList = [];
       }
     },
