@@ -36,28 +36,38 @@ afterEach(() => {
 });
 
 describe('dropUploadMixin (mounted)', () => {
-  it('reveals the overlay only while this target is the active drag target', async () => {
+  it('reveals the overlay on any file drag and marks it active only when hovered', async () => {
     const wrapper = mount(Host, { attachTo: document.body });
     await nextTick();
 
     const rootEl = wrapper.element as HTMLElement;
     expect(rootEl.querySelector('.drop-upload-overlay--visible')).toBeNull();
 
-    // Simulate the global router marking THIS component active.
     const id = (wrapper.vm as any).__dropId as symbol;
+
+    // A drag begins anywhere → overlay shows on this uploader (aim-able box)
+    // and the host reserves real height, even though it is not yet hovered.
     isDraggingFiles.value = true;
-    activeDropTargetId.value = id;
+    activeDropTargetId.value = null;
     await nextTick();
 
     const overlay = rootEl.querySelector('.drop-upload-overlay');
     expect(overlay).not.toBeNull();
     expect(overlay!.classList.contains('drop-upload-overlay--visible')).toBe(true);
+    expect(overlay!.classList.contains('drop-upload-overlay--active')).toBe(false);
+    expect(rootEl.classList.contains('drop-upload-host--dragging')).toBe(true);
 
-    // Dragging ends → overlay hides.
+    // Cursor enters THIS uploader → active highlight.
+    activeDropTargetId.value = id;
+    await nextTick();
+    expect(overlay!.classList.contains('drop-upload-overlay--active')).toBe(true);
+
+    // Dragging ends → overlay hides and height is released.
     isDraggingFiles.value = false;
     activeDropTargetId.value = null;
     await nextTick();
     expect(rootEl.querySelector('.drop-upload-overlay--visible')).toBeNull();
+    expect(rootEl.classList.contains('drop-upload-host--dragging')).toBe(false);
 
     wrapper.unmount();
   });

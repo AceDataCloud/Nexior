@@ -33,11 +33,14 @@ interface IDropMixinThis extends ComponentPublicInstance {
   __dropStopWatch?: WatchStopHandle;
   __dropOverlay?: HTMLElement | null;
   __dropRegisteredEl?: HTMLElement | null;
+  __dropVisible?: boolean;
+  __dropActive?: boolean;
   __syncDropRegistration: () => void;
-  __toggleOverlay: (active: boolean) => void;
+  __toggleOverlay: (visible: boolean, active: boolean) => void;
 }
 
 const OVERLAY_CLASS = 'drop-upload-overlay';
+const HOST_DRAGGING_CLASS = 'drop-upload-host--dragging';
 
 const resolveAcceptFromEl = (el: HTMLElement, override?: string): string | undefined => {
   if (override) return override;
@@ -86,11 +89,14 @@ export const dropUploadMixin = {
   beforeUnmount(this: IDropMixinThis) {
     if (this.__dropStopWatch) this.__dropStopWatch();
     if (this.__dropCleanup) this.__dropCleanup();
+    if (this.__dropRegisteredEl) this.__dropRegisteredEl.classList.remove(HOST_DRAGGING_CLASS);
     if (this.__dropOverlay?.parentElement) {
       this.__dropOverlay.parentElement.removeChild(this.__dropOverlay);
     }
     this.__dropOverlay = null;
     this.__dropRegisteredEl = null;
+    this.__dropVisible = false;
+    this.__dropActive = false;
     this.__dropStopWatch = undefined;
     this.__dropCleanup = undefined;
   },
@@ -104,10 +110,13 @@ export const dropUploadMixin = {
 
       // Root element changed: tear down the old registration/overlay first.
       if (this.__dropCleanup) this.__dropCleanup();
+      if (this.__dropRegisteredEl) this.__dropRegisteredEl.classList.remove(HOST_DRAGGING_CLASS);
       if (this.__dropOverlay?.parentElement) {
         this.__dropOverlay.parentElement.removeChild(this.__dropOverlay);
       }
       this.__dropOverlay = null;
+      this.__dropVisible = false;
+      this.__dropActive = false;
 
       // The overlay is positioned absolutely against the root; make sure the
       // root is a positioning context (only touch `static` roots).
@@ -133,29 +142,46 @@ export const dropUploadMixin = {
         }
       });
 
-      // Set up the reveal-on-drag overlay watcher (once).
+      // Set up the reveal-on-drag overlay watcher (once). The overlay appears
+      // on EVERY uploader the moment a file drag begins (so the user can see
+      // and aim at each drop zone); the one under the cursor also gets the
+      // `--active` highlight.
       if (!this.__dropStopWatch) {
         this.__dropStopWatch = watch(
-          () => isDraggingFiles.value && activeDropTargetId.value === this.__dropId && !this.dropDisabled,
-          (active) => this.__toggleOverlay(active),
+          () => ({
+            visible: isDraggingFiles.value && !this.dropDisabled,
+            active: activeDropTargetId.value === this.__dropId
+          }),
+          ({ visible, active }) => this.__toggleOverlay(visible, active),
           { immediate: false }
         );
       }
     },
-    __toggleOverlay(this: IDropMixinThis, active: boolean) {
+    __toggleOverlay(this: IDropMixinThis, visible: boolean, active: boolean) {
       const el = this.__dropRegisteredEl;
       if (!el) return;
-      if (active) {
+      // The watcher hands us a fresh object on every activeDropTargetId change
+      // (cursor moving between ANY uploaders), so skip when our own state is
+      // unchanged — avoids reflowing every uploader on each move.
+      if (this.__dropVisible === visible && this.__dropActive === active) return;
+      const wasVisible = this.__dropVisible === true;
+      this.__dropVisible = visible;
+      this.__dropActive = active;
+      if (visible) {
         if (!this.__dropOverlay) this.__dropOverlay = buildOverlay();
         // Refresh the label each time so a locale change is reflected.
         const label = this.__dropOverlay.querySelector(`.${OVERLAY_CLASS}__label`);
         if (label) label.textContent = dropLabel();
         if (!this.__dropOverlay.parentElement) el.appendChild(this.__dropOverlay);
-        // Force reflow so the CSS transition plays.
-        void this.__dropOverlay.offsetWidth;
+        // Reserve a real, aim-able box even when the root is a thin row.
+        el.classList.add(HOST_DRAGGING_CLASS);
+        // Force reflow only on the hidden→visible edge so the CSS transition plays.
+        if (!wasVisible) void this.__dropOverlay.offsetWidth;
         this.__dropOverlay.classList.add(`${OVERLAY_CLASS}--visible`);
+        this.__dropOverlay.classList.toggle(`${OVERLAY_CLASS}--active`, active);
       } else if (this.__dropOverlay) {
-        this.__dropOverlay.classList.remove(`${OVERLAY_CLASS}--visible`);
+        this.__dropOverlay.classList.remove(`${OVERLAY_CLASS}--visible`, `${OVERLAY_CLASS}--active`);
+        el.classList.remove(HOST_DRAGGING_CLASS);
       }
     }
   }
