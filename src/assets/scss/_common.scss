@@ -499,3 +499,39 @@ html.dark {
     border: 1px solid var(--app-glass-border);
   }
 }
+
+/* Drag-and-drop upload overlay: created by `dropUploadMixin` and appended to an
+   uploader's root only while a file is dragged over THAT uploader. Hidden the
+   rest of the time — there is no permanent drop area. */
+.drop-upload-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* let the drop event reach the uploader beneath */
+  border-radius: var(--adc-radius-control, 8px);
+  border: 2px dashed rgba(var(--app-brand-rgb), 0.75);
+  background-color: rgba(var(--app-brand-rgb), 0.1);
+  backdrop-filter: blur(1px);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--app-brand-hex, #277186);
+    padding: 4px 10px;
+    border-radius: var(--adc-radius-full, 999px);
+    background: var(--app-glass-bg, rgba(255, 255, 255, 0.7));
+  }
+}
+
+html.dark .drop-upload-overlay__label {
+  color: #fff;
+}
