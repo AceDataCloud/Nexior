@@ -6,6 +6,7 @@
         <info-icon :content="$t('kling.description.referenceImages')" />
       </div>
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         accept=".png,.jpg,.jpeg"
         name="file"
@@ -45,7 +46,7 @@ import { UploadIcon } from '@acedatacloud/core/icons/components';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IKlingReferenceImage } from '@/models';
-import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin, uploadTrackerMixin } from '@/utils';
 import { stripKlingImageTokens } from '@/utils/kling/capabilities';
 
 interface IData {
@@ -62,7 +63,7 @@ export default defineComponent({
     ImagePreview,
     InfoIcon
   },
-  mixins: [pasteUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

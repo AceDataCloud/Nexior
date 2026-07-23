@@ -7,6 +7,7 @@
       </div>
     </div>
     <el-upload
+      ref="uploader"
       v-model:file-list="fileList"
       accept=".mp4,.mov"
       name="file"
@@ -64,7 +65,7 @@ import {
   UploadFile,
   UploadFiles
 } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import { IKlingReferenceVideo } from '@/models';
@@ -87,7 +88,7 @@ export default defineComponent({
     FilePreview,
     UploadIcon
   },
-  mixins: [uploadTrackerMixin],
+  mixins: [dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

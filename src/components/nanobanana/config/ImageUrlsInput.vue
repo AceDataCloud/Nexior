@@ -48,7 +48,7 @@ import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
-import { pasteUploadMixin, uploadTrackerMixin } from '@/utils';
+import { pasteUploadMixin, dropUploadMixin, uploadTrackerMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -65,7 +65,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [pasteUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

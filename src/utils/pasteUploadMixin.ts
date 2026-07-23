@@ -12,6 +12,7 @@
 
 import type { ComponentPublicInstance } from 'vue';
 import { registerPasteUploadTarget } from '@/utils/pasteUpload';
+import { forwardFileToUploader } from '@/utils/uploadShared';
 
 interface IPasteMixinThis extends ComponentPublicInstance {
   pasteAccept?: string;
@@ -33,23 +34,7 @@ export const pasteUploadMixin = {
       accept: this.pasteAccept,
       el,
       handleFile: (file: File) => {
-        const uploader: any = this.$refs?.uploader;
-        if (!uploader) return;
-        // ElUpload exposes handleStart since 2.x. Fall back to .submit/.upload
-        // if the version differs.
-        if (typeof uploader.handleStart === 'function') {
-          uploader.handleStart(file);
-          if (typeof uploader.submit === 'function') {
-            // Some configurations (auto-upload=false) need an explicit submit.
-            try {
-              uploader.submit();
-            } catch (_e) {
-              /* ignore */
-            }
-          }
-        } else if (typeof uploader.handleAdd === 'function') {
-          uploader.handleAdd(file);
-        }
+        forwardFileToUploader(this.$refs?.uploader, file);
       }
     });
   },

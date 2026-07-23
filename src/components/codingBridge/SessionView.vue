@@ -571,7 +571,7 @@ import ThinkingIndicator from './ThinkingIndicator.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
 import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
 import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
-import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
   Status,
@@ -645,7 +645,7 @@ export default defineComponent({
     AskUserQuestionCard,
     CopyToClipboard
   },
-  mixins: [pasteUploadMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin],
   emits: ['history', 'devices'],
   data() {
     return {

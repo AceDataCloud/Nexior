@@ -13,6 +13,7 @@
  */
 
 import { ElMessage } from 'element-plus';
+import { matchesAccept, renameForDedup } from '@/utils/uploadShared';
 
 export interface IPasteUploadTarget {
   /** Stable id used for dedup / targeting. */
@@ -28,26 +29,6 @@ export interface IPasteUploadTarget {
 const targets: IPasteUploadTarget[] = [];
 let hoveredTargetId: symbol | null = null;
 let listenerInstalled = false;
-
-const matchesAccept = (file: File, accept?: string): boolean => {
-  if (!accept) return true;
-  const rules = accept
-    .split(',')
-    .map((s) => s.trim().toLowerCase())
-    .filter(Boolean);
-  if (!rules.length) return true;
-  const name = file.name.toLowerCase();
-  const type = (file.type || '').toLowerCase();
-  return rules.some((rule) => {
-    if (rule.startsWith('.')) {
-      return name.endsWith(rule);
-    }
-    if (rule.endsWith('/*')) {
-      return type.startsWith(rule.slice(0, -1));
-    }
-    return type === rule;
-  });
-};
 
 const pickTarget = (): IPasteUploadTarget | null => {
   if (!targets.length) return null;
@@ -100,21 +81,7 @@ const onDocumentPaste = (event: ClipboardEvent) => {
     // Clipboard images are usually named `image.png` with the same name for
     // every paste, which trips Element Plus dedup logic. Give each one a
     // unique suffix while preserving the extension.
-    let named: File = file;
-    try {
-      const dot = file.name.lastIndexOf('.');
-      const base = dot > 0 ? file.name.slice(0, dot) : file.name || 'pasted';
-      const ext = dot > 0 ? file.name.slice(dot) : '';
-      const stamp = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-      named = new File([file], `${base}-${stamp}${ext || '.png'}`, {
-        type: file.type || 'image/png',
-        lastModified: Date.now()
-      });
-    } catch (_e) {
-      // Some older browsers don't allow constructing File; fall back to raw.
-      named = file;
-    }
-    target.handleFile(named);
+    target.handleFile(renameForDedup(file));
   });
 };
 

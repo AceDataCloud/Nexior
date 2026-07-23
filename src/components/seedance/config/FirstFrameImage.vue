@@ -46,7 +46,7 @@
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ISeedanceImageInput } from '@/models';
@@ -66,7 +66,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [pasteUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

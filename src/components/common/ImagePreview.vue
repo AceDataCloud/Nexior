@@ -11,7 +11,7 @@
       :stroke-width="4"
       :percentage="displayPercentage"
       :width="34"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px] z-[10] m-auto text-[12px]"
+      class="absolute inset-0 z-[10] flex items-center justify-center text-[12px]"
     />
     <button
       v-if="closable"

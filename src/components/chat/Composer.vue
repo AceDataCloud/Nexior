@@ -169,6 +169,7 @@ import {
   getBaseUrlPlatform,
   isImageUrl,
   pasteUploadMixin,
+  dropUploadMixin,
   uploadTrackerMixin,
   withCurrentUserIdAndSite
 } from '@/utils';
@@ -197,7 +198,7 @@ export default defineComponent({
     ElDropdownMenu,
     ElDropdownItem
   },
-  mixins: [pasteUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
   props: {
     answering: {
       type: Boolean,
@@ -245,6 +246,11 @@ export default defineComponent({
     },
     isImageSupported() {
       return this.model?.isImageSupported;
+    },
+    dropDisabled(): boolean {
+      // Mirror the upload gating: no drop when the model takes no files/images
+      // or while an answer is streaming.
+      return (!this.isFileSupported && !this.isImageSupported) || this.answering;
     },
     headers() {
       return {
