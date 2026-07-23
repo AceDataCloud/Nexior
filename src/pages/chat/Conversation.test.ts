@@ -64,6 +64,8 @@ describe('chat/Conversation loading state', () => {
     const loading = wrapper.get('.conversation-loading');
     expect(loading.attributes('role')).toBe('status');
     expect(loading.attributes('aria-label')).toBe('Loading...');
+    expect(wrapper.find('.conversation-loading-label').exists()).toBe(false);
+    expect(wrapper.find('.conversation-loading-spinner').exists()).toBe(false);
     expect(wrapper.get('.dialogue').classes()).not.toContain('empty');
     expect((wrapper.vm as unknown as { ready: boolean }).ready).toBe(false);
 
