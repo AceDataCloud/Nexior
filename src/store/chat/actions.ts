@@ -4,6 +4,7 @@ import { ActionContext } from 'vuex';
 import { IChatState } from './models';
 import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService, Status } from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
+import { stripConversationMessages } from './summarize';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
   commit('resetAll');
@@ -137,10 +138,12 @@ export const setConversation = async ({ commit, state }: any, payload: IChatConv
   console.debug('set conversation', payload);
   const conversations = state.conversations || [];
   const index = conversations?.findIndex((conversation: IChatConversation) => conversation.id === payload.id);
+  // Never let full `messages` into the persisted list — see stripConversationMessages.
+  const summary = stripConversationMessages(payload);
   if (index > -1) {
-    conversations[index] = payload;
+    conversations[index] = { ...conversations[index], ...summary };
   } else {
-    conversations?.unshift(payload);
+    conversations?.unshift(summary);
   }
   commit('setConversations', conversations);
   console.debug('set conversation success', conversations);
@@ -173,7 +176,8 @@ export const getConversations = async ({
     const { data } = await chatOperator.getConversations(
       {
         userId: rootState.user?.id,
-        modelGroup
+        modelGroup,
+        limit: 100
       },
       {
         token
@@ -209,7 +213,8 @@ export const getConversation = async (
     const merged = idx > -1 ? { ...list[idx], ...data } : data;
     if (idx > -1) {
       const next = [...list];
-      next[idx] = merged;
+      // Persist only the summary; the caller keeps full `messages` locally.
+      next[idx] = stripConversationMessages(merged);
       commit('setConversations', next);
     }
     return merged;

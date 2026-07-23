@@ -2,6 +2,8 @@ import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import root from './common';
 import persistRoot from './common/persist';
+import { stripConversationMessages } from './chat/summarize';
+import type { IChatConversation } from '@/models';
 
 // Per-app store modules (chat / midjourney / qrart / luma / pika / kling /
 // veo / sora / pixverse / flux / hailuo / suno / producer /
@@ -60,6 +62,41 @@ const safeStorage: Storage = {
   }
 };
 
+const persistPaths: string[] = [...persistRoot, ...lazyPersistPaths];
+
+// Minimal get/set over dot-paths (all persisted paths are simple dot-paths —
+// no array indices), mirroring vuex-persistedstate's default reducer.
+const getPath = (obj: any, path: string): any => path.split('.').reduce((acc, key) => acc?.[key], obj);
+const setPath = (obj: any, path: string, value: any): void => {
+  const keys = path.split('.');
+  let cursor = obj;
+  keys.forEach((key, i) => {
+    if (i === keys.length - 1) {
+      cursor[key] = value;
+    } else {
+      cursor[key] = cursor[key] ?? {};
+      cursor = cursor[key];
+    }
+  });
+};
+
+// Persist only the listed paths, and NEVER serialize full chat message
+// histories (see stripConversationMessages) — a heavy `chat.conversations`
+// blob would make every mutation JSON.stringify hundreds of MB and freeze
+// the tab / OOM on send.
+const persistReducer = (state: any): Record<string, any> => {
+  const substate: Record<string, any> = {};
+  for (const path of persistPaths) {
+    let value = getPath(state, path);
+    if (value === undefined) continue;
+    if (path === 'chat.conversations' && Array.isArray(value)) {
+      value = (value as IChatConversation[]).map((c) => stripConversationMessages(c));
+    }
+    setPath(substate, path, value);
+  }
+  return substate;
+};
+
 const store = createStore({
   ...root,
   // SSG build has no localStorage — persistedstate reads it at store creation,
@@ -68,7 +105,8 @@ const store = createStore({
     ? []
     : [
         createPersistedState({
-          paths: [...persistRoot, ...lazyPersistPaths],
+          paths: persistPaths,
+          reducer: persistReducer,
           storage: safeStorage
         })
       ]
