@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 08:07:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 08:47:02 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.334.1
+
+Thu, 23 Jul 2026 08:47:02 GMT
+
+### Patches
+
+- Chat conversations: remove the separate loading spinner and visible loading text while conversation history restores, leaving the message skeleton as the loading affordance. (dev@acedata.cloud)
 
 ## 3.334.0
 
