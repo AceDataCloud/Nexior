@@ -34,10 +34,6 @@
           aria-live="polite"
           :aria-label="$t('common.status.loading')"
         >
-          <div class="conversation-loading-label">
-            <span class="conversation-loading-spinner" aria-hidden="true"></span>
-            <span>{{ $t('common.status.loading') }}</span>
-          </div>
           <el-skeleton v-for="item in 3" :key="item" animated class="conversation-loading-row">
             <template #template>
               <el-skeleton-item variant="circle" class="conversation-loading-avatar" />
@@ -1674,22 +1670,6 @@ export default defineComponent({
     padding: 0 12px;
     flex: 1;
   }
-  .conversation-loading-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
-    color: var(--el-text-color-secondary);
-    font-size: 13px;
-  }
-  .conversation-loading-spinner {
-    width: 14px;
-    height: 14px;
-    border: 2px solid var(--el-border-color);
-    border-top-color: var(--el-color-primary);
-    border-radius: 50%;
-    animation: conversation-loading-spin 0.8s linear infinite;
-  }
   .conversation-loading-row {
     display: flex;
     align-items: flex-start;
@@ -1718,12 +1698,6 @@ export default defineComponent({
       width: 100%;
       padding: 0 12px 8px;
     }
-  }
-}
-
-@keyframes conversation-loading-spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 
