@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 05:44:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 08:07:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.334.0
+
+Thu, 23 Jul 2026 08:07:56 GMT
+
+### Minor changes
+
+- Upload controls: add drag-and-drop. Drop a file onto any uploader (chat composer + all generator config panels) and it uploads through the normal el-upload pipeline. A drop overlay appears only while a file is dragged over that uploader — nothing is shown otherwise. Mirrors the existing paste-to-upload behavior. (dev@acedata.cloud)
 
 ## 3.333.1
 
