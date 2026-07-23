@@ -8,7 +8,7 @@
     "description": "生成视频的提示词"
   },
   "description.prompt": {
-    "message": "描述你要生成的视频，可附加 SeeDance 参数（例如：--rs 720p --rt 16:9 --dur 5）。",
+    "message": "描述你要生成的视频。想让角色开口说话：把图片传到下面的“参考图片”框（不是“首帧图片”），在提示词里写清台词并用引号包住，例如 图片1中的角色对着镜头说：“你的台词”，并打开“生成音频”。可附加参数（如 --rs 720p --rt 16:9 --dur 5）。",
     "description": "提示词输入说明"
   },
   "placeholder.prompt": {
@@ -40,7 +40,7 @@
     "description": "是否生成音频标签"
   },
   "description.generateAudio": {
-    "message": "开启后视频将附带音频。仅 seedance-1.5-pro / seedance-2.0 系列模型支持，费用约为 2 倍。",
+    "message": "开启后视频带声音。想让角色开口说话需要：把人物图传到“参考图片”框 + 打开本开关 + 在提示词里用引号写出台词。仅 seedance-1.5-pro / seedance-2.0 系列支持，费用约 2 倍。",
     "description": "生成音频说明"
   },
   "name.resolution": {
@@ -100,11 +100,11 @@
     "description": "返回尾帧说明"
   },
   "name.firstFrame": {
-    "message": "首帧图片",
+    "message": "首帧图片（画面动效）",
     "description": "首帧图片上传标签"
   },
   "description.firstFrame": {
-    "message": "可选。上传参考/首帧图片。",
+    "message": "图生视频：你上传的这张图会成为视频的第一帧，画面从它开始动。适合“让一张图动起来”，但角色不会开口说话、没有口型。想让角色说话请改用下面的“参考图片”。",
     "description": "首帧图片说明"
   },
   "name.lastFrame": {
@@ -112,7 +112,7 @@
     "description": "尾帧图片上传标签"
   },
   "description.lastFrame": {
-    "message": "可选。上传尾帧图片（需要首帧）。",
+    "message": "首尾帧图生视频：指定视频最后一帧（需配合首帧图）。用于锁定画面从某图开始、到某图结束。",
     "description": "尾帧图片说明"
   },
   "button.generate": {
@@ -256,19 +256,19 @@
     "description": "SeeDance 2.0 Mini 模型"
   },
   "name.referenceImage": {
-    "message": "参考图片",
+    "message": "参考图片（让角色说话）",
     "description": "参考主体图片上传标签（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "可选。上传参考主体图片，例如用于口播视频的人脸。仅 Seedance 2.0 支持。",
+    "message": "让图中人物在视频里开口说话、对口型的通道（口播 / 数字人首选，会保留人物形象）。想让角色说话就把图传到这里，而不是“首帧图片”。配合提示词里的引号台词 +“生成音频”一起用。可传 1~9 张。仅 Seedance 2.0 系列。注意：不能与“首帧/尾帧图片”同时使用。",
     "description": "参考图片说明"
   },
   "name.referenceAudio": {
-    "message": "参考音频",
+    "message": "参考音频（音色/配乐）",
     "description": "参考音频上传标签（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "可选。上传一段语音/音频用于生成口播（数字人）视频，需配合参考图片使用。仅 Seedance 2.0 支持。",
+    "message": "让生成视频借用这段音频的音色或背景音乐（配合参考图片让角色用该音色说话）。需搭配参考图片或参考视频一起用，不能单独只传音频。可传 1~3 段。仅 Seedance 2.0 系列。",
     "description": "参考音频说明"
   },
   "name.referenceVideo": {
@@ -276,39 +276,11 @@
     "description": "参考视频上传标签（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "可选。上传一段参考视频。仅 Seedance 2.0 支持。",
+    "message": "让模型借用这段视频的动作/运镜/风格/音效，生成一段新视频。可传 1~3 段。仅 Seedance 2.0 系列。",
     "description": "参考视频说明"
   },
-  "message.audioRequiresReferenceImage": {
-    "message": "参考音频需要配合参考图片（口播主体）使用，请同时上传参考图片。",
-    "description": "提供音频但缺少参考图片时的提示"
-  },
-  "name.talking": {
-    "message": "口播模式",
-    "description": "让画面中的角色开口说台词（口播 / 数字人）"
-  },
-  "description.talking": {
-    "message": "开启后，上传的图片将作为“参考主体”，角色会按提示词中的台词开口说话，并自动打开生成音频。仅 Seedance 2.0 系列支持。",
-    "description": "口播模式开关说明"
-  },
-  "description.talkingPrompt": {
-    "message": "让角色说话请写：图片1中的<角色>说\"你的台词\"（用直角双引号）。",
-    "description": "口播模式下的台词写法提示"
-  },
-  "button.insertTemplate": {
-    "message": "插入台词模板",
-    "description": "插入台词模板按钮"
-  },
-  "template.talkingLine": {
-    "message": "图片1中的角色说\"在此填写台词\"",
-    "description": "台词模板文本"
-  },
-  "message.talkingRecommendModel": {
-    "message": "轻量 / Fast 模型可能不会逐字念出台词；需要精确念台词建议改用 Seedance 2.0 标准版，或上传参考音频。",
-    "description": "口播逐字准确度提示"
-  },
-  "message.talkingRequiresReferenceImage": {
-    "message": "口播模式需要一张人物图片作为参考主体，请先上传一张图片。",
-    "description": "口播模式缺少参考图片时的提示"
+  "message.audioRequiresReference": {
+    "message": "参考音频不能单独使用，请同时上传一张参考图片或一段参考视频。",
+    "description": "Warning when reference audio has no paired image/video"
   }
 }

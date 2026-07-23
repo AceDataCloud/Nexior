@@ -8,17 +8,14 @@ const KNOWN_MODELS = new Set(Object.keys(SEEDANCE_MODEL_CAPABILITIES));
  * Normalize a Seedance config into the exact request sent to /seedance/videos.
  *
  * Centralizes the per-model capability gating that used to live inline in the
- * studio page, plus the talking-head (口播) rules: a talking request MUST use
- * `reference_image` (the r2v multimodal path that actually generates speech),
- * never `first_frame` (the silent i2v path). Returns null when the config is
- * invalid, with a machine-readable reason the caller maps to a localized warning.
+ * studio page. Returns a reject reason (mapped to a localized warning) when the
+ * config can't produce a valid request, else the request with async:true.
  */
 export type SeedanceRejectReason =
   | 'modelUnsupported'
   | 'modelRequiresImage'
   | 'modelRejectsImage'
-  | 'audioRequiresReferenceImage'
-  | 'talkingRequiresReferenceImage';
+  | 'audioRequiresReference';
 
 export interface SeedanceNormalizeResult {
   request?: ISeedanceGenerateRequest;
@@ -42,23 +39,6 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
     return { reject: 'modelUnsupported' };
   }
   const cap = getSeedanceCapability(cfg.model);
-
-  // Talking-head mode: route the uploaded portrait through the r2v path.
-  // first_frame/last_frame drive silent i2v and never produce speech, so remap
-  // them to reference_image, force audio on, and drop camerafixed (upstream
-  // rejects camera_fixed on the 2.0 i2v/r2v path with "must be empty").
-  const talking = !!cfg.talking && cap.acceptsReferenceImage;
-  if (talking) {
-    const imgs = cleanImages(cfg.images).map((img) =>
-      img.role === 'first_frame' || img.role === 'last_frame' || !img.role
-        ? { ...img, role: 'reference_image' as const }
-        : img
-    );
-    cfg.images = imgs;
-    cfg.generate_audio = true;
-    delete cfg.camerafixed;
-  }
-  delete cfg.talking;
 
   // Filter empty images; promote a lone last_frame to first_frame.
   cfg.images = cleanImages(cfg.images);
@@ -114,20 +94,12 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
   if (cap.requiresImage && !hasImages) return { reject: 'modelRequiresImage' };
   if (!cap.acceptsText && !hasImages) return { reject: 'modelRequiresImage' };
 
-  const hasReferenceImage =
-    Array.isArray(cfg.images) && cfg.images.some((img: ISeedanceImageInput) => img.role === 'reference_image');
-
-  // Talking-head mode needs a portrait to drive the r2v speech path; without a
-  // reference image the model falls back to a silent clip — exactly the failure
-  // this mode exists to prevent — so reject with a clear "upload a portrait" hint.
-  if (talking && !hasReferenceImage) {
-    return { reject: 'talkingRequiresReferenceImage' };
-  }
-
-  // Reference audio needs a paired reference image (the talking-head subject);
-  // upstream rejects an audio-only reference.
-  if (Array.isArray(cfg.audios) && cfg.audios.length > 0 && !hasReferenceImage) {
-    return { reject: 'audioRequiresReferenceImage' };
+  // Reference audio is a multimodal companion, never a standalone input: the
+  // official combos are 图片+音频 / 视频+音频 / 图片+视频+音频 (纯音频 and 文本+音频
+  // are rejected upstream). Require a paired image or video reference.
+  const hasVideo = Array.isArray(cfg.videos) && cfg.videos.length > 0;
+  if (Array.isArray(cfg.audios) && cfg.audios.length > 0 && !hasImages && !hasVideo) {
+    return { reject: 'audioRequiresReference' };
   }
 
   return { request: { ...cfg, async: true } as ISeedanceGenerateRequest };

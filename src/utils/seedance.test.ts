@@ -9,47 +9,23 @@ import {
 } from '@/constants';
 
 describe('normalizeSeedanceRequest', () => {
-  it('talking mode routes a first_frame image to reference_image and forces audio', () => {
+  it('keeps a first_frame image as-is and sends async', () => {
     const { request, reject } = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_2_0_FAST,
-      talking: true,
-      camerafixed: true,
-      prompt: '图片1中的角色说"你好"',
+      prompt: 'a cat',
       images: [{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]
     });
-
     expect(reject).toBeUndefined();
-    expect(request?.images).toEqual([{ url: 'https://cdn.example.com/a.jpg', role: 'reference_image' }]);
-    expect(request?.generate_audio).toBe(true);
-    // camera_fixed is rejected upstream on the 2.0 i2v/r2v path.
-    expect(request).not.toHaveProperty('camerafixed');
-    // The UI-only flag must never reach the API.
-    expect(request).not.toHaveProperty('talking');
+    expect(request?.images).toEqual([{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]);
     expect(request?.async).toBe(true);
   });
 
-  it('strips the talking flag and leaves image role untouched when talking is off', () => {
+  it('promotes a lone last_frame image to first_frame', () => {
     const { request } = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_2_0_FAST,
-      talking: false,
-      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]
+      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'last_frame' }]
     });
-
-    expect(request).not.toHaveProperty('talking');
     expect(request?.images).toEqual([{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]);
-  });
-
-  it('does not create a reference_image on a model that cannot accept one', () => {
-    const { request, reject } = normalizeSeedanceRequest({
-      model: SEEDANCE_MODEL_1_0_PRO,
-      talking: true,
-      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]
-    });
-
-    expect(reject).toBeUndefined();
-    // 1.0 Pro is not reference-capable, so the image stays a first_frame.
-    expect(request?.images).toEqual([{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]);
-    expect(request).not.toHaveProperty('talking');
   });
 
   it('rejects an unknown model', () => {
@@ -65,24 +41,14 @@ describe('normalizeSeedanceRequest', () => {
     expect(reject).toBe('modelRejectsImage');
   });
 
-  it('drops reference audio without a paired reference image via rejection', () => {
-    const { reject } = normalizeSeedanceRequest({
-      model: SEEDANCE_MODEL_2_0_FAST,
-      audios: [{ url: 'https://cdn.example.com/voice.mp3' }]
+  it('strips a reference_image on a non-2.0 model instead of sending it', () => {
+    const { request } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_1_0_PRO,
+      prompt: 'a cat',
+      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'reference_image' }]
     });
-    expect(reject).toBe('audioRequiresReferenceImage');
-  });
-
-  it('rejects talking mode when no image is uploaded', () => {
-    const { request, reject } = normalizeSeedanceRequest({
-      model: SEEDANCE_MODEL_2_0_FAST,
-      talking: true,
-      prompt: '图片1中的角色说"你好"'
-    });
-    // Without a portrait the r2v path yields a silent clip — the exact failure
-    // talking mode exists to prevent — so it must reject, not submit.
-    expect(request).toBeUndefined();
-    expect(reject).toBe('talkingRequiresReferenceImage');
+    // 1.0 Pro has no multimodal reference; the stray reference_image is dropped.
+    expect(request?.images).toBeUndefined();
   });
 
   it('rejects a required-image model when its only image is a stripped reference_image', () => {
@@ -94,6 +60,27 @@ describe('normalizeSeedanceRequest', () => {
     });
     expect(request).toBeUndefined();
     expect(reject).toBe('modelRequiresImage');
+  });
+
+  it('rejects reference audio with no paired image or video', () => {
+    // Official combos are image+audio / video+audio / image+video+audio;
+    // audio-only (and text+audio) are rejected upstream.
+    const { reject } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_0_FAST,
+      audios: [{ url: 'https://cdn.example.com/voice.mp3' }]
+    });
+    expect(reject).toBe('audioRequiresReference');
+  });
+
+  it('accepts reference audio when paired with a reference image', () => {
+    const { request, reject } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_0_FAST,
+      prompt: '角色说{你好}',
+      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'reference_image' }],
+      audios: [{ url: 'https://cdn.example.com/voice.mp3' }]
+    });
+    expect(reject).toBeUndefined();
+    expect(request?.audios).toEqual([{ url: 'https://cdn.example.com/voice.mp3' }]);
   });
 
   it('never sends the flex service tier', () => {
