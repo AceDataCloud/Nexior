@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 22 Jul 2026 18:24:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 04:53:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.332.1
+
+Thu, 23 Jul 2026 04:53:10 GMT
+
+### Patches
+
+- Remove stale auth iframe message listeners when login panels close (dev@acedata.cloud)
 
 ## 3.332.0
 
