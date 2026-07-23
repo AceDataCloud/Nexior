@@ -8,7 +8,7 @@ const mountConsumption = (value: number) =>
   shallowMount(Consumption, {
     props: {
       value,
-      service: { unit: 'credits' }
+      service: { id: 'service-id', title: 'Test service', unit: 'credits' }
     },
     global: {
       mocks: {
