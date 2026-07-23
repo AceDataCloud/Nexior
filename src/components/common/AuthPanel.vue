@@ -49,6 +49,7 @@ import { SignInWithApple } from '@capacitor-community/apple-sign-in';
 import { isNative as isNativeSurface, isIOS, isDesktop } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
 import { track } from '@/plugins/telemetry';
+import type { PluginListenerHandle } from '@capacitor/core';
 
 // Native Sign In with Apple is keyed by the iOS bundle identifier, NOT
 // the web Services ID. The same Apple `sub` is returned for both, so
@@ -66,7 +67,10 @@ export default defineComponent({
     return {
       showQR: false,
       qrLink: '',
-      useBrowser: false
+      useBrowser: false,
+      messageHandler: null as ((event: MessageEvent) => Promise<void>) | null,
+      browserFinishedHandle: null as PluginListenerHandle | null,
+      unmounted: false
     };
   },
   computed: {
@@ -133,21 +137,27 @@ export default defineComponent({
       return !!this.$store.state.token.access;
     }
   },
-  mounted() {
+  async mounted() {
     if (this.isNative) {
       // Capacitor-only: if the user closes the in-app browser manually, fall
       // back to the iframe login UI. Desktop OAuth opens the SYSTEM browser
       // (no browserFinished event), so this listener must stay isNative-only —
       // never isInAppLogin — or desktop would get stuck on the loading screen.
-      Browser.addListener('browserFinished', () => {
+      const handle = await Browser.addListener('browserFinished', () => {
         console.debug('browser closed by user');
         this.useBrowser = false;
       });
+      if (this.unmounted) {
+        await handle.remove();
+        return;
+      } else {
+        this.browserFinishedHandle = handle;
+      }
     }
     // On native platforms, keep the iframe for regular login (email/password).
     // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
     // postMessage asking us to open the OAuth flow in the in-app browser.
-    window.addEventListener('message', async (event: MessageEvent) => {
+    this.messageHandler = async (event: MessageEvent) => {
       const iframe = this.$refs.iframe as HTMLIFrameElement | undefined;
       if (event.origin !== this.authOrigin || event.source !== iframe?.contentWindow) {
         return;
@@ -291,7 +301,19 @@ export default defineComponent({
         this.qrLink = data.qrLink;
         this.showQR = true;
       }
-    });
+    };
+    window.addEventListener('message', this.messageHandler);
+  },
+  async beforeUnmount() {
+    this.unmounted = true;
+    if (this.messageHandler) {
+      window.removeEventListener('message', this.messageHandler);
+      this.messageHandler = null;
+    }
+    if (this.browserFinishedHandle) {
+      await this.browserFinishedHandle.remove();
+      this.browserFinishedHandle = null;
+    }
   },
   methods: {
     closeWebLogin() {
