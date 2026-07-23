@@ -28,7 +28,7 @@ import ModelSelector from './config/ModelSelector.vue';
 import VoicePicker from './config/VoicePicker.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
-import { FISH_DEFAULT_PROSODY_SPEED } from '@/constants';
+import { FISH_DEFAULT_PROSODY_SPEED, FISH_DEFAULT_TTS_MODEL } from '@/constants';
 
 export default defineComponent({
   name: 'FishConfigPanel',
@@ -47,7 +47,15 @@ export default defineComponent({
       return this.$store.state.fish?.config;
     },
     consumption() {
-      return getConsumption(this.config, this.service?.cost);
+      const text = this.config?.text?.trim() ?? '';
+      return getConsumption(
+        {
+          ...this.config,
+          model: this.config?.model ?? FISH_DEFAULT_TTS_MODEL,
+          byte_count: new TextEncoder().encode(text).byteLength
+        },
+        this.service?.cost
+      );
     },
     service() {
       return this.$store.state.fish?.service;
