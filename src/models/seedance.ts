@@ -41,8 +41,6 @@ export interface ISeedanceConfig {
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;
-  /** UI-only talking-head (口播) mode flag; stripped before the request is sent. */
-  talking?: boolean;
 }
 
 export interface ISeedanceGenerateRequest {

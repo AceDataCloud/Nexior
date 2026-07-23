@@ -8,7 +8,7 @@
     "description": "Prompt for generating the video"
   },
   "description.prompt": {
-    "message": "Describe the video you want to generate, you can add SeeDance parameters (e.g., --rs 720p --rt 16:9 --dur 5).",
+    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
     "description": "Instructions for prompt input"
   },
   "placeholder.prompt": {
@@ -40,7 +40,7 @@
     "description": "Label for audio generation option"
   },
   "description.generateAudio": {
-    "message": "Enabling this will include audio with the video. Only supported by seedance-1.5-pro / seedance-2.0 family models, costs about 2 times more.",
+    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
     "description": "Instructions for audio generation"
   },
   "name.resolution": {
@@ -100,11 +100,11 @@
     "description": "Instructions for returning last frame"
   },
   "name.firstFrame": {
-    "message": "First Frame Image",
+    "message": "First Frame Image (motion)",
     "description": "Label for first frame image upload"
   },
   "description.firstFrame": {
-    "message": "Optional. Upload reference/first frame image.",
+    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
     "description": "Instructions for first frame image"
   },
   "name.lastFrame": {
@@ -112,7 +112,7 @@
     "description": "Label for last frame image upload"
   },
   "description.lastFrame": {
-    "message": "Optional. Upload last frame image (requires first frame).",
+    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
     "description": "Instructions for last frame image"
   },
   "button.generate": {
@@ -256,19 +256,19 @@
     "description": "SeeDance 2.0 Mini model"
   },
   "name.referenceImage": {
-    "message": "Reference Image",
+    "message": "Reference Image (make it speak)",
     "description": "Label for reference subject image upload (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "Optional. Upload reference subject image(s), e.g. a face for talking-head videos. Seedance 2.0 only.",
+    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
     "description": "Instructions for reference image"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio",
+    "message": "Reference Audio (timbre/music)",
     "description": "Label for reference audio upload (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Optional. Upload a voice/audio clip to drive a talking-head video. Requires a reference image. Seedance 2.0 only.",
+    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
     "description": "Instructions for reference audio"
   },
   "name.referenceVideo": {
@@ -276,39 +276,11 @@
     "description": "Label for reference video upload (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Optional. Upload a reference video. Seedance 2.0 only.",
+    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
     "description": "Instructions for reference video"
   },
-  "message.audioRequiresReferenceImage": {
-    "message": "Reference audio needs a reference image (the talking-head subject). Please upload a reference image too.",
-    "description": "Warning when audio is provided without a reference image"
-  },
-  "name.talking": {
-    "message": "Talking mode",
-    "description": "Make the on-screen character speak the lines (talking-head / avatar)"
-  },
-  "description.talking": {
-    "message": "When on, your uploaded image is used as the reference subject and the character speaks the lines in your prompt, with audio turned on automatically. Seedance 2.0 series only.",
-    "description": "Talking mode switch hint"
-  },
-  "description.talkingPrompt": {
-    "message": "To make the character speak, write: the person in image 1 says \"your line\" (use straight double quotes).",
-    "description": "Dialogue phrasing hint in talking mode"
-  },
-  "button.insertTemplate": {
-    "message": "Insert line template",
-    "description": "Insert dialogue template button"
-  },
-  "template.talkingLine": {
-    "message": "the person in image 1 says \"your line here\"",
-    "description": "Dialogue template text"
-  },
-  "message.talkingRecommendModel": {
-    "message": "Lite / Fast models may not speak your lines verbatim; for exact lines use Seedance 2.0 standard or upload a reference audio.",
-    "description": "Talking verbatim-accuracy hint"
-  },
-  "message.talkingRequiresReferenceImage": {
-    "message": "Talking mode needs a portrait image as the reference subject. Please upload an image first.",
-    "description": "Warning when talking mode has no reference image"
+  "message.audioRequiresReference": {
+    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
+    "description": "Warning when reference audio has no paired image/video"
   }
 }
