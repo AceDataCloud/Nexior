@@ -6,6 +6,7 @@
         <info-icon :content="$t('openaiimage.description.imageUrls')" />
       </div>
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
         name="file"
@@ -47,6 +48,7 @@ import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import { pasteUploadMixin, dropUploadMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -63,7 +65,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

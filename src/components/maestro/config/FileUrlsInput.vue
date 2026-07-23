@@ -27,7 +27,7 @@
 import { AttachmentIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, dropUploadMixin } from '@/utils';
 import { MAESTRO_FILE_ACCEPT, MAESTRO_FILE_LIMIT } from '@/constants';
 
 interface IData {
@@ -44,6 +44,7 @@ export default defineComponent({
     ElUpload,
     ElButton
   },
+  mixins: [dropUploadMixin],
   data(): IData {
     return {
       fileList: [],

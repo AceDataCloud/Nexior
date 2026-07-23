@@ -7,6 +7,7 @@
       </div>
     </div>
     <el-upload
+      ref="uploader"
       v-model:file-list="fileList"
       accept=".mp4,.mov"
       name="file"
@@ -42,7 +43,7 @@
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 
@@ -60,7 +61,7 @@ export default defineComponent({
     InfoIcon,
     FilePreview
   },
-  mixins: [uploadTrackerMixin],
+  mixins: [dropUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],
