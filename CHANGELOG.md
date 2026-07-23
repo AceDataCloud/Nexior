@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 04:53:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 05:04:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.332.2
+
+Thu, 23 Jul 2026 05:04:50 GMT
+
+### Patches
+
+- Fix Fish TTS credit estimates by pricing UTF-8 text bytes and showing small positive costs instead of rounding them to zero. (dev@acedata.cloud)
 
 ## 3.332.1
 
