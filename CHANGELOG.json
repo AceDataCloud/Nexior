@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Thu, 23 Jul 2026 05:44:17 GMT",
+      "version": "3.333.1",
+      "tag": "@acedatacloud/nexior_v3.333.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "b18fc3f0b1debb7c79edeb72d6c707aeebcb0390",
+            "comment": "Fix ChatGPT conversations freeze/OOM on send: never persist full message histories (base64 screenshots) into chat.conversations; keep summary-only in the persisted store."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jul 2026 05:38:21 GMT",
       "version": "3.333.0",
       "tag": "@acedatacloud/nexior_v3.333.0",

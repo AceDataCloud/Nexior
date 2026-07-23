@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 05:38:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 05:44:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.333.1
+
+Thu, 23 Jul 2026 05:44:17 GMT
+
+### Patches
+
+- Fix ChatGPT conversations freeze/OOM on send: never persist full message histories (base64 screenshots) into chat.conversations; keep summary-only in the persisted store. (dev@acedata.cloud)
 
 ## 3.333.0
 
