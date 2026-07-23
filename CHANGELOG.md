@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 05:04:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 23 Jul 2026 05:38:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.333.0
+
+Thu, 23 Jul 2026 05:38:21 GMT
+
+### Minor changes
+
+- Seedance generator: drop the confusing Talking-mode switch and instead spell out, per Volcengine's official docs, exactly what each input does — first-frame vs reference image vs reference audio — and how to make a character speak ({line} + Generate Audio). (dev@acedata.cloud)
 
 ## 3.332.2
 
