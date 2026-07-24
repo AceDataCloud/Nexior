@@ -16,7 +16,12 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { GROKVIDEO_DEFAULT_DURATION, GROKVIDEO_DURATION_OPTIONS, getGrokVideoMaxDuration } from '@/constants';
+import {
+  GROKVIDEO_DEFAULT_DURATION,
+  GROKVIDEO_DURATION_OPTIONS,
+  getGrokVideoMaxDuration,
+  getGrokVideoMinDuration
+} from '@/constants';
 
 export default defineComponent({
   name: 'GrokVideoDurationSelector',
@@ -29,12 +34,18 @@ export default defineComponent({
     model(): string | undefined {
       return this.$store.state.grokvideo?.config?.model;
     },
-    // grok-imagine-video supports up to 30s; grok-imagine-video-1.5-preview up to 15s.
+    // reverse 1.5-fast is 6-30s; every other variant is 1-15s.
     maxDuration(): number {
       return getGrokVideoMaxDuration(this.model);
     },
+    minDuration(): number {
+      return getGrokVideoMinDuration(this.model);
+    },
     options(): { value: number; label: string }[] {
-      return GROKVIDEO_DURATION_OPTIONS.filter((d) => d <= this.maxDuration).map((d) => ({ value: d, label: `${d}s` }));
+      return GROKVIDEO_DURATION_OPTIONS.filter((d) => d >= this.minDuration && d <= this.maxDuration).map((d) => ({
+        value: d,
+        label: `${d}s`
+      }));
     },
     value: {
       get(): number | undefined {
@@ -49,10 +60,15 @@ export default defineComponent({
     }
   },
   watch: {
-    // Switching to a model with a lower cap (e.g. 1.5-preview) clamps the value.
+    // Switching models clamps the value into the new model's [min, max] range.
     maxDuration(max: number) {
       if (this.value && this.value > max) {
         this.value = max;
+      }
+    },
+    minDuration(min: number) {
+      if (this.value && this.value < min) {
+        this.value = min;
       }
     }
   },

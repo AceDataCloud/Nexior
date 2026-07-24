@@ -1,57 +1,152 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.referenceImages": { "message": "Reference Images", "description": "Label for reference images" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok Video Bot",
+    "description": "Name of the Grok video generator"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt for generating the video"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Label for model selection"
+  },
+  "name.ratio": {
+    "message": "Aspect Ratio",
+    "description": "Label for aspect ratio"
+  },
+  "name.resolution": {
+    "message": "Resolution",
+    "description": "Label for resolution"
+  },
+  "name.duration": {
+    "message": "Duration",
+    "description": "Label for duration"
+  },
+  "name.image": {
+    "message": "Image",
+    "description": "Label for input image"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Required",
+    "description": "Required badge"
+  },
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "Task id label"
+  },
+  "name.elapsed": {
+    "message": "Elapsed",
+    "description": "Elapsed time label"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Trace id label"
+  },
+  "name.failure": {
+    "message": "Generation Failed",
+    "description": "Failure title"
+  },
+  "name.failureReason": {
+    "message": "Reason",
+    "description": "Failure reason label"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status title"
+  },
   "description.prompt": {
     "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
     "description": "Instructions for prompt input"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image up to 30s; 1.5-preview is image-to-video only up to 15s.",
+    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
     "description": "Instructions for model selection"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Select the output aspect ratio.",
+    "description": "Instructions for aspect ratio"
+  },
   "description.resolution": {
     "message": "Select the output resolution. 480p / 720p / 1080p are supported; higher resolution costs more.",
     "description": "Instructions for resolution"
   },
   "description.duration": {
-    "message": "Video duration in seconds. grok-imagine-video supports 1-30s with banded pricing; 1.5-preview supports 1-15s and is billed per output second.",
+    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
     "description": "Instructions for duration"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
+    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
     "description": "Instructions for image input"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "message": "Optional reference images to guide the style or content of the generated video.",
     "description": "Instructions for reference images"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadReferenceExceed": { "message": "You can upload up to 4 reference images.", "description": "Reference images upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Describe your video…",
+    "description": "Placeholder for prompt"
+  },
+  "placeholder.select": {
+    "message": "Please select",
+    "description": "Placeholder for selects"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
+    "description": "1.5-fast reverse model label"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (standard, 1–15s)",
+    "description": "grok-imagine-video reverse model label"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
+    "description": "grok-imagine-video official model label"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
+    "description": "1.5 official model label"
+  },
+  "button.upload": {
+    "message": "Upload",
+    "description": "Upload button"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Generate button"
+  },
+  "button.download": {
+    "message": "Download",
+    "description": "Download button"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "Pending status"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "Processing status"
+  },
+  "message.uploadExceed": {
+    "message": "You can upload only one image.",
+    "description": "Upload exceed warning"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Image upload failed, please try again.",
+    "description": "Upload error"
+  },
+  "message.downloadVideo": {
+    "message": "Download video",
+    "description": "Download tooltip"
+  },
   "message.modelRequiresImage": {
     "message": "This model requires an input image (image-to-video).",
     "description": "Model requires image warning"
@@ -60,8 +155,20 @@
     "message": "Please enter a prompt or upload an image.",
     "description": "Prompt or image required warning"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Submitting your video generation task…",
+    "description": "Starting task"
+  },
+  "message.startTaskSuccess": {
+    "message": "Task submitted successfully.",
+    "description": "Task success"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to submit task: ",
+    "description": "Task failed"
+  },
+  "message.usedUp": {
+    "message": "Your quota has been used up. Please purchase more to continue.",
+    "description": "Used up"
+  }
 }

@@ -64,8 +64,8 @@
     "description": "プロンプト入力に関する指示"
   },
   "description.model": {
-    "message": "Grok Imagineモデルを選択します。grok-imagine-videoはテキストから画像生成と画像から動画生成をサポートします；1.5-previewは画像から動画生成のみサポートします。",
-    "description": "モデル選択に関する指示"
+    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
+    "description": "Instructions for model selection"
   },
   "description.ratio": {
     "message": "出力画面のアスペクト比を選択します。",
@@ -76,16 +76,16 @@
     "description": "解像度に関する指示"
   },
   "description.duration": {
-    "message": "動画の長さ（秒）、出力秒数に基づいて課金されます。",
-    "description": "長さに関する指示"
+    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
+    "description": "Instructions for duration"
   },
   "description.image": {
-    "message": "オプションの入力画像、動画生成に使用します。grok-imagine-video-1.5-previewは必須です。",
-    "description": "画像入力に関する指示"
+    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
+    "description": "Instructions for image input"
   },
   "description.referenceImages": {
-    "message": "生成動画のスタイルや内容をガイドするオプションの参考画像（最大4枚）。",
-    "description": "参考画像の使い方の説明"
+    "message": "Optional reference images to guide the style or content of the generated video.",
+    "description": "Instructions for reference images"
   },
   "placeholder.prompt": {
     "message": "あなたのビデオを説明してください…",
@@ -94,14 +94,6 @@
   "placeholder.select": {
     "message": "選択してください",
     "description": "選択のプレースホルダー"
-  },
-  "model.default": {
-    "message": "Grok Imagine 動画",
-    "description": "デフォルトモデルラベル"
-  },
-  "model.preview15": {
-    "message": "Grok Imagine 動画 1.5（プレビュー、画像から動画生成）",
-    "description": "1.5プレビューモデルラベル"
   },
   "button.upload": {
     "message": "アップロード",
@@ -162,5 +154,21 @@
   "message.usedUp": {
     "message": "利用可能な額が使い切られました。購入後に続行してください。",
     "description": "使い切り"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
+    "description": "1.5-fast reverse model label"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (standard, 1–15s)",
+    "description": "grok-imagine-video reverse model label"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
+    "description": "grok-imagine-video official model label"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
+    "description": "1.5 official model label"
   }
 }

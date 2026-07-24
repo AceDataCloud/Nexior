@@ -16,7 +16,13 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { GROKVIDEO_DEFAULT_MODEL, GROKVIDEO_MODEL_1_5_PREVIEW, GROKVIDEO_MODEL_DEFAULT } from '@/constants';
+import {
+  GROKVIDEO_DEFAULT_MODEL,
+  GROKVIDEO_MODEL_FAST_REVERSE,
+  GROKVIDEO_MODEL_REVERSE,
+  GROKVIDEO_MODEL_OFFICIAL,
+  GROKVIDEO_MODEL_1_5_OFFICIAL
+} from '@/constants';
 
 export default defineComponent({
   name: 'GrokVideoModelSelector',
@@ -28,8 +34,10 @@ export default defineComponent({
   data() {
     return {
       options: [
-        { value: GROKVIDEO_MODEL_DEFAULT, label: this.$t('grokvideo.model.default') },
-        { value: GROKVIDEO_MODEL_1_5_PREVIEW, label: this.$t('grokvideo.model.preview15') }
+        { value: GROKVIDEO_MODEL_FAST_REVERSE, label: this.$t('grokvideo.model.fastReverse') },
+        { value: GROKVIDEO_MODEL_REVERSE, label: this.$t('grokvideo.model.reverse') },
+        { value: GROKVIDEO_MODEL_OFFICIAL, label: this.$t('grokvideo.model.official') },
+        { value: GROKVIDEO_MODEL_1_5_OFFICIAL, label: this.$t('grokvideo.model.official15') }
       ]
     };
   },

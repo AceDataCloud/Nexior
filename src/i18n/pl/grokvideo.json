@@ -64,8 +64,8 @@
     "description": "Instrukcje dotyczące wprowadzenia podpowiedzi"
   },
   "description.model": {
-    "message": "Wybierz model Grok Imagine. grok-imagine-video obsługuje wideo generowane z tekstu i obrazu; 1.5-preview obsługuje tylko wideo generowane z obrazu.",
-    "description": "Instrukcje dotyczące wyboru modelu"
+    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
+    "description": "Instructions for model selection"
   },
   "description.ratio": {
     "message": "Wybierz proporcje wyjściowego obrazu.",
@@ -76,15 +76,15 @@
     "description": "Instrukcje dotyczące rozdzielczości"
   },
   "description.duration": {
-    "message": "Czas trwania wideo (sekundy), rozliczany według liczby sekund.",
-    "description": "Instrukcje dotyczące czasu trwania"
+    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
+    "description": "Instructions for duration"
   },
   "description.image": {
-    "message": "Opcjonalny obraz wejściowy do generowania wideo. grok-imagine-video-1.5-preview jest wymagany.",
-    "description": "Instrukcje dotyczące obrazu wejściowego"
+    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
+    "description": "Instructions for image input"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "message": "Optional reference images to guide the style or content of the generated video.",
     "description": "Instructions for reference images"
   },
   "placeholder.prompt": {
@@ -94,14 +94,6 @@
   "placeholder.select": {
     "message": "Wybierz",
     "description": "Miejsce na wybór"
-  },
-  "model.default": {
-    "message": "Grok Imagine wideo",
-    "description": "Etykieta domyślnego modelu"
-  },
-  "model.preview15": {
-    "message": "Grok Imagine wideo 1.5 (podgląd, wideo generowane z obrazu)",
-    "description": "Etykieta modelu podglądu 1.5"
   },
   "button.upload": {
     "message": "Prześlij",
@@ -162,5 +154,21 @@
   "message.usedUp": {
     "message": "Limit został wykorzystany, proszę zakupić więcej, aby kontynuować korzystanie.",
     "description": "Wykorzystano limit"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
+    "description": "1.5-fast reverse model label"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (standard, 1–15s)",
+    "description": "grok-imagine-video reverse model label"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
+    "description": "grok-imagine-video official model label"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
+    "description": "1.5 official model label"
   }
 }
