@@ -47,7 +47,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     );
 
     const events: IChatConversationResponse[] = [];
-    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'run echo hi' } as never, {
+    await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'run echo hi' } as never, {
       token: 't',
       stream: (r) => events.push(r)
     });
@@ -77,7 +77,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     );
 
     const events: IChatConversationResponse[] = [];
-    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'read the page' } as never, {
+    await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'read the page' } as never, {
       token: 't',
       stream: (response) => events.push(response)
     });
@@ -108,7 +108,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
         )
     );
     const events: IChatConversationResponse[] = [];
-    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'read' } as never, {
+    await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'read' } as never, {
       token: 't',
       stream: (response) => events.push(response)
     });
@@ -129,7 +129,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     );
 
     const events: IChatConversationResponse[] = [];
-    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'click' } as never, {
+    await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'click' } as never, {
       token: 't',
       stream: (response) => events.push(response)
     });

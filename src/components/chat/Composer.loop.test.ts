@@ -10,7 +10,7 @@ function mountComposer() {
       mocks: {
         $t: (key: string) => key,
         $router: { push: () => undefined },
-        $store: { state: { chat: { model: { name: 'gpt-5.5', capabilities: [] } }, token: { access: 't' } } }
+        $store: { state: { chat: { model: { name: 'gpt-5.6-sol', capabilities: [] } }, token: { access: 't' } } }
       },
       stubs: {
         'el-upload': true,

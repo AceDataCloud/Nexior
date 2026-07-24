@@ -2,7 +2,7 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
-import { CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
+import { CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import {
   SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE,
   SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE,
@@ -17,7 +17,7 @@ const editedTask: IScheduledTask = {
   state: 'enabled',
   schedule: { type: 'interval', interval_seconds: 21600, tz: 'Asia/Shanghai' },
   template: {
-    model: 'gpt-5.5',
+    model: 'gpt-5.6-sol',
     question: 'Reuse the existing task prompt',
     skills: ['hashnode'],
     mcp_servers: ['publishing'],
@@ -124,7 +124,7 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toMatchObject({
       name: 'Existing task',
       question: 'Reuse the existing task prompt',
-      model: 'gpt-5.5',
+      model: 'gpt-5.6-sol',
       authorizedSkills: ['hashnode'],
       authorizedMcpServers: ['publishing']
     });
@@ -136,7 +136,7 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toEqual({
       name: '',
       question: '',
-      model: CHAT_MODEL_NAME_GPT_5_4_MINI,
+      model: CHAT_MODEL_NAME_GPT_5_6_LUNA,
       scheduleType: 'daily',
       intervalValue: 4,
       intervalUnit: 'hour',
