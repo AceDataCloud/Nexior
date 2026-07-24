@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 24 Jul 2026 09:55:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 24 Jul 2026 10:04:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.0
+
+Fri, 24 Jul 2026 10:04:57 GMT
+
+### Minor changes
+
+- Grok video: add the ttapi Official endpoint via new :reverse / :official model variants (grok-imagine-video-1.5-fast:reverse, grok-imagine-video:reverse, grok-imagine-video:official, grok-imagine-video-1.5:official) with per-model duration bounds and updated pricing copy. (dev@acedata.cloud)
 
 ## 3.334.3
 
