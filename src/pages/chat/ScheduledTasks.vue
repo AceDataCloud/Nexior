@@ -386,7 +386,7 @@ import {
   extractSkillNotActive
 } from '@/operators/scheduledTasks';
 import type { IAuthorizableBrowserConnection, IScheduledBrowserBinding } from '@/operators/scheduledTasks';
-import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
+import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import { IChatModelGroup } from '@/models';
 import { WIRE_CONTRACT_DIGEST as CANONICAL_WIRE_CONTRACT_DIGEST } from '@/generated/browserContract.generated';
 
@@ -527,7 +527,7 @@ export default defineComponent({
       return {
         name: '',
         question: '',
-        model: CHAT_MODEL_NAME_GPT_5_4_MINI,
+        model: CHAT_MODEL_NAME_GPT_5_6_LUNA,
         scheduleType: 'daily',
         intervalValue: 4,
         intervalUnit: 'hour',

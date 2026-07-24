@@ -5,9 +5,9 @@ export const ROLE_SYSTEM = 'system';
 export const ROLE_ASSISTANT = 'assistant';
 export const ROLE_USER = 'user';
 
-export const CHAT_MODEL_NAME_GPT_5_5 = 'gpt-5.5';
-export const CHAT_MODEL_NAME_GPT_5_4 = 'gpt-5.4';
-export const CHAT_MODEL_NAME_GPT_5_4_MINI = 'gpt-5.4-mini';
+export const CHAT_MODEL_NAME_GPT_5_6_SOL = 'gpt-5.6-sol';
+export const CHAT_MODEL_NAME_GPT_5_6_TERRA = 'gpt-5.6-terra';
+export const CHAT_MODEL_NAME_GPT_5_6_LUNA = 'gpt-5.6-luna';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
 export const CHAT_MODEL_NAME_DEEPSEEK32_CHAT = 'deepseek-v3.2-exp';
 export const CHAT_MODEL_NAME_DEEPSEEK_V4_FLASH = 'deepseek-v4-flash';
@@ -42,38 +42,38 @@ export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
-export const CHAT_MODEL_GPT_5_5: IChatModel = {
+export const CHAT_MODEL_GPT_5_6_SOL: IChatModel = {
   enabled: true,
-  name: CHAT_MODEL_NAME_GPT_5_5,
+  name: CHAT_MODEL_NAME_GPT_5_6_SOL,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   isImageSupported: true,
-  getDisplayName: () => i18n.global.t('chat.model.55'),
-  getDescription: () => i18n.global.t('chat.model.55Description')
+  getDisplayName: () => i18n.global.t('chat.model.56Sol'),
+  getDescription: () => i18n.global.t('chat.model.56SolDescription')
 };
 
-export const CHAT_MODEL_GPT_5_4: IChatModel = {
+export const CHAT_MODEL_GPT_5_6_TERRA: IChatModel = {
   enabled: true,
-  name: CHAT_MODEL_NAME_GPT_5_4,
+  name: CHAT_MODEL_NAME_GPT_5_6_TERRA,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   isImageSupported: true,
-  getDisplayName: () => i18n.global.t('chat.model.54'),
-  getDescription: () => i18n.global.t('chat.model.54Description')
+  getDisplayName: () => i18n.global.t('chat.model.56Terra'),
+  getDescription: () => i18n.global.t('chat.model.56TerraDescription')
 };
 
-export const CHAT_MODEL_GPT_5_4_MINI: IChatModel = {
+export const CHAT_MODEL_GPT_5_6_LUNA: IChatModel = {
   enabled: true,
-  name: CHAT_MODEL_NAME_GPT_5_4_MINI,
+  name: CHAT_MODEL_NAME_GPT_5_6_LUNA,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   isImageSupported: true,
   isFree: true,
-  getDisplayName: () => i18n.global.t('chat.model.54Mini'),
-  getDescription: () => i18n.global.t('chat.model.54MiniDescription')
+  getDisplayName: () => i18n.global.t('chat.model.56Luna'),
+  getDescription: () => i18n.global.t('chat.model.56LunaDescription')
 };
 
 export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
@@ -303,7 +303,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [CHAT_MODEL_GPT_5_4_MINI, CHAT_MODEL_GPT_5_5, CHAT_MODEL_GPT_5_4],
+  models: [CHAT_MODEL_GPT_5_6_LUNA, CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GPT_5_6_TERRA],
   isVoiceCallSupported: true
 };
 
@@ -373,9 +373,9 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 };
 
 export const CHAT_MODELS: IChatModel[] = [
-  CHAT_MODEL_GPT_5_4_MINI,
-  CHAT_MODEL_GPT_5_5,
-  CHAT_MODEL_GPT_5_4,
+  CHAT_MODEL_GPT_5_6_LUNA,
+  CHAT_MODEL_GPT_5_6_SOL,
+  CHAT_MODEL_GPT_5_6_TERRA,
   CHAT_MODEL_DEEPSEEK_CHAT,
   CHAT_MODEL_DEEPSEEK_REASONER,
   CHAT_MODEL_GROK_4,
