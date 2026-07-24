@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 23 Jul 2026 08:47:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 24 Jul 2026 02:25:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.334.2
+
+Fri, 24 Jul 2026 02:25:40 GMT
+
+### Patches
+
+- Chat models: replace GPT 5.5 and 5.4 with the GPT 5.6 Sol, Terra, and Luna tiers, with Luna as the free default. (dev@acedata.cloud)
 
 ## 3.334.1
 
