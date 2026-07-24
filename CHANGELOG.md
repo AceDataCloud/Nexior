@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 24 Jul 2026 10:04:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 24 Jul 2026 23:32:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.1
+
+Fri, 24 Jul 2026 23:32:23 GMT
+
+### Patches
+
+- Sync the browser contract with the 100MB Route A resource limit. (dev@acedata.cloud)
 
 ## 3.335.0
 
