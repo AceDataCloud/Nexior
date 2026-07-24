@@ -141,8 +141,8 @@ export default defineComponent({
       if (typeof cfg?.image_url === 'string' && !cfg.image_url.trim()) {
         delete cfg.image_url;
       }
-      // Reference images are only supported by grok-imagine-video (1.0). Drop
-      // stale refs (e.g. uploaded on 1.0 then switched to 1.5-preview) and empties.
+      // Drop stale reference images (e.g. uploaded then switched to an
+      // image-only model) and empty arrays.
       if (
         isGrokVideoImageOnlyModel(cfg?.model) ||
         !(Array.isArray(cfg?.reference_image_urls) && cfg.reference_image_urls.length)
@@ -151,7 +151,7 @@ export default defineComponent({
       }
 
       const hasImage = !!cfg?.image_url;
-      // grok-imagine-video-1.5-preview is image-to-video only.
+      // grok-imagine-video-1.5:official is image-to-video only.
       if (isGrokVideoImageOnlyModel(cfg?.model) && !hasImage) {
         ElMessage.warning(this.$t('grokvideo.message.modelRequiresImage'));
         return;

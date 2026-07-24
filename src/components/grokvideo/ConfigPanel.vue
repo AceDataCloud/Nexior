@@ -53,8 +53,8 @@ export default defineComponent({
     config() {
       return this.$store.state.grokvideo?.config;
     },
-    // grok-imagine-video (1.0) accepts multiple reference images;
-    // grok-imagine-video-1.5-preview is single-image only.
+    // Most models accept reference images; grok-imagine-video-1.5:official is
+    // image-to-video only (single input image).
     supportsReferenceImages(): boolean {
       return !isGrokVideoImageOnlyModel(this.$store.state.grokvideo?.config?.model);
     },

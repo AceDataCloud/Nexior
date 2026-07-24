@@ -64,8 +64,8 @@
     "description": "有關提示輸入的說明"
   },
   "description.model": {
-    "message": "選擇 Grok Imagine 模型。grok-imagine-video 支援文生與圖生影片；1.5-preview 僅支援圖生影片。",
-    "description": "有關模型選擇的說明"
+    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
+    "description": "Instructions for model selection"
   },
   "description.ratio": {
     "message": "選擇輸出畫面比例。",
@@ -76,15 +76,15 @@
     "description": "有關解析度的說明"
   },
   "description.duration": {
-    "message": "影片時長（秒），按輸出秒數計費。",
-    "description": "有關時長的說明"
+    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
+    "description": "Instructions for duration"
   },
   "description.image": {
-    "message": "可選的輸入圖片，用於圖生影片。grok-imagine-video-1.5-preview 為必填。",
-    "description": "有關圖片輸入的說明"
+    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
+    "description": "Instructions for image input"
   },
   "description.referenceImages": {
-    "message": "可選的參考圖，用於引導生成影片的風格或內容（僅 grok-imagine-video 支援）。",
+    "message": "Optional reference images to guide the style or content of the generated video.",
     "description": "Instructions for reference images"
   },
   "placeholder.prompt": {
@@ -94,14 +94,6 @@
   "placeholder.select": {
     "message": "請選擇",
     "description": "選擇的佔位符"
-  },
-  "model.default": {
-    "message": "Grok Imagine 影片",
-    "description": "預設模型標籤"
-  },
-  "model.preview15": {
-    "message": "Grok Imagine 影片 1.5（預覽，圖生影片）",
-    "description": "1.5 預覽模型標籤"
   },
   "button.upload": {
     "message": "上傳",
@@ -162,5 +154,21 @@
   "message.usedUp": {
     "message": "額度已用盡，請購買後繼續使用。",
     "description": "已用盡"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
+    "description": "1.5-fast reverse model label"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (standard, 1–15s)",
+    "description": "grok-imagine-video reverse model label"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
+    "description": "grok-imagine-video official model label"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
+    "description": "1.5 official model label"
   }
 }
