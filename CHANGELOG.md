@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 24 Jul 2026 02:25:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 24 Jul 2026 09:55:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.334.3
+
+Fri, 24 Jul 2026 09:55:55 GMT
+
+### Patches
+
+- Browser execution: sync the canonical LocatorPlan wire contract digest. (dev@acedata.cloud)
 
 ## 3.334.2
 
