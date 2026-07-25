@@ -19,6 +19,7 @@ export const CHAT_MODEL_NAME_GEMINI_3_0_PRO = 'gemini-3.0-pro';
 export const CHAT_MODEL_NAME_GEMINI_3_5_FLASH = 'gemini-3.5-flash';
 export const CHAT_MODEL_NAME_GEMINI_2_5_PRO = 'gemini-2.5-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_FLASH = 'gemini-2.5-flash';
+export const CHAT_MODEL_NAME_CLAUDE_OPUS_5 = 'claude-opus-5';
 export const CHAT_MODEL_NAME_CLAUDE_OPUS_4_8 = 'claude-opus-4-8';
 export const CHAT_MODEL_NAME_CLAUDE_SONNET_4_6 = 'claude-sonnet-4-6';
 export const CHAT_MODEL_NAME_CLAUDE_HAIKU_4_5 = 'claude-haiku-4-5-20251001';
@@ -191,6 +192,18 @@ export const CHAT_MODEL_GEMINI_2_5_FLASH: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.gemini25FlashDescription')
 };
 
+export const CHAT_MODEL_CLAUDE_OPUS_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_CLAUDE_OPUS_5,
+  icon: CHAT_MODEL_ICON_CLAUDE,
+  modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.claudeOpus5'),
+  getDescription: () => i18n.global.t('chat.model.claudeOpus5Description')
+};
+
 export const CHAT_MODEL_CLAUDE_OPUS_4_8: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_CLAUDE_OPUS_4_8,
@@ -347,7 +360,7 @@ export const CHAT_MODEL_GROUP_CLAUDE: IChatModelGroup = {
   name: 'claude',
   getDisplayName: () => i18n.global.t('chat.modelGroup.claude'),
   getDescription: () => i18n.global.t('chat.modelGroup.claudeDescription'),
-  models: [CHAT_MODEL_CLAUDE_OPUS_4_8, CHAT_MODEL_CLAUDE_SONNET_4_6, CHAT_MODEL_CLAUDE_HAIKU_4_5]
+  models: [CHAT_MODEL_CLAUDE_OPUS_5, CHAT_MODEL_CLAUDE_OPUS_4_8, CHAT_MODEL_CLAUDE_SONNET_4_6, CHAT_MODEL_CLAUDE_HAIKU_4_5]
 };
 
 export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
@@ -385,6 +398,7 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GEMINI_3_5_FLASH,
   CHAT_MODEL_GEMINI_2_5_PRO,
   CHAT_MODEL_GEMINI_2_5_FLASH,
+  CHAT_MODEL_CLAUDE_OPUS_5,
   CHAT_MODEL_CLAUDE_OPUS_4_8,
   CHAT_MODEL_CLAUDE_SONNET_4_6,
   CHAT_MODEL_CLAUDE_HAIKU_4_5,
