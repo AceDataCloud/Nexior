@@ -2,7 +2,6 @@
   <el-tabs
     :model-value="modelValue"
     class="kling-tabs scenario-tabs scenario-tabs--divided"
-    stretch
     @update:model-value="onUpdate"
   >
     <el-tab-pane v-for="tab in tabs" :key="tab.value" :name="tab.value" :disabled="tab.disabled">
@@ -72,33 +71,33 @@ export default defineComponent({
 <style lang="scss" scoped>
 .kling-tabs {
   flex: none;
-  padding: 0 8px;
+  // Match the p-5 (20px) side gutters of the panels below and add top breathing
+  // room so the bar doesn't hug the panel's top edge. See `.scenario-tabs` in
+  // _common.scss (first/last item padding is zeroed there to keep labels flush).
+  padding: 12px 20px 0;
   background-color: var(--app-sidebar-bg);
 
   :deep(.el-tabs__item) {
-    height: 48px;
-    line-height: 16px;
+    height: 38px;
+    line-height: 38px;
     font-size: 13px;
-    padding: 0 6px;
-    white-space: normal;
+    // Width follows each label with fixed 16px whitespace, so longer
+    // locales (English) stay on one line; the nav scrolls if they overflow.
+    padding: 0 16px;
+    white-space: nowrap;
   }
 
   .tab-label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     min-width: 0;
 
     .text {
-      display: -webkit-box;
-      flex: 1;
-      min-width: 0;
       overflow: hidden;
       text-align: center;
-      overflow-wrap: anywhere;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .badge {

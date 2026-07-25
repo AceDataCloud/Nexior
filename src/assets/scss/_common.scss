@@ -422,6 +422,21 @@ html.dark .el-dialog {
 .scenario-tabs {
   > .el-tabs__header {
     margin: 0;
+
+    // Align the first/last tab labels flush with the tab strip's own gutters so
+    // they line up with the p-5 (20px) content below, instead of being pushed in
+    // by each item's symmetric 16px whitespace. The nav's first child is the
+    // absolutely-positioned `.el-tabs__active-bar`, so the first real item is the
+    // one right after it (`:first-child` alone would miss it); the last item is a
+    // genuine `:last-child`.
+    .el-tabs__active-bar + .el-tabs__item,
+    .el-tabs__item:first-child {
+      padding-left: 0;
+    }
+
+    .el-tabs__item:last-child {
+      padding-right: 0;
+    }
   }
 
   &.scenario-tabs--scrollable {
@@ -431,7 +446,9 @@ html.dark .el-dialog {
 
     > .el-tabs__header {
       flex: none;
-      padding: 0 8px;
+      // Match the 20px side gutters of the p-5 content below and add top
+      // breathing room so the tabs don't hug the panel's top edge.
+      padding: 12px 20px 0;
     }
 
     > .el-tabs__content {
