@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 25 Jul 2026 01:38:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 25 Jul 2026 02:49:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.3
+
+Sat, 25 Jul 2026 02:49:28 GMT
+
+### Patches
+
+- Make scenario-top tabs single-line and width-adaptive so long locales (English) no longer wrap; overflow scrolls horizontally instead. (dev@acedata.cloud)
+- Unify scenario-tab spacing: align tab side gutters with the p-5 (20px) content below and add top padding so the tabs no longer hug the panel edge, across all six config-panel tab bars. (dev@acedata.cloud)
 
 ## 3.335.2
 
