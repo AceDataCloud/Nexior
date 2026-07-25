@@ -320,6 +320,7 @@ export default defineComponent({
       return [
         { value: 'WechatPay', label: this.$t('order.title.wechatPay') },
         { value: 'Stripe', label: this.$t('order.title.stripe') },
+        { value: 'Card', label: this.$t('order.title.card') },
         { value: 'AliPay', label: this.$t('order.title.aliPay') },
         { value: 'X402', label: this.$t('order.title.x402') },
         { value: 'PayPal', label: this.$t('order.title.paypal') }
