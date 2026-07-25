@@ -81,11 +81,20 @@
                     <span class="payname">{{ $t('order.title.aliPay') }}</span>
                   </div>
                   <div
+                    v-if="!enableCard"
                     :class="{ payway: true, stripe: true, active: payWay === PayWay.Stripe }"
                     @click="payWay = PayWay.Stripe"
                   >
                     <span class="payicon stripe"></span>
                     <span class="payname">{{ $t('order.title.stripe') }}</span>
+                  </div>
+                  <div
+                    v-if="enableCard"
+                    :class="{ payway: true, creditcard: true, active: payWay === PayWay.Card }"
+                    @click="payWay = PayWay.Card"
+                  >
+                    <span class="payicon card" aria-hidden="true"></span>
+                    <span class="payname">{{ $t('order.title.card') }}</span>
                   </div>
                 </div>
                 <div v-if="!order.pay_way">
@@ -111,14 +120,19 @@
     :visible="paying"
     @hide="paying = false"
   />
-  <public-stripe-pay v-if="order && payWay === PayWay.Stripe" :order="order" :visible="paying" @hide="paying = false" />
+  <public-stripe-pay
+    v-if="order && (payWay === PayWay.Stripe || payWay === PayWay.Card)"
+    :order="order"
+    :visible="paying"
+    @hide="paying = false"
+  />
   <public-alipay-pay v-if="order && payWay === PayWay.AliPay" :order="order" :visible="paying" @hide="paying = false" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { orderOperator } from '@/operators';
-import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
+import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import {
   ElRow,
   ElCol,
@@ -144,10 +158,12 @@ const POLL_INITIAL_DELAY_MS = 2000;
 
 // Mirrors PlatformBackend's ANON_ALLOWED_PAY_WAYS. X402/PayPal need a
 // request.user the anonymous flow can't supply and would 403 server-side.
+// Card is the ENABLE_CARD-gated replacement for Stripe (hosted PaymentLink).
 enum PayWay {
   WechatPay = 'WechatPay',
   Stripe = 'Stripe',
-  AliPay = 'AliPay'
+  AliPay = 'AliPay',
+  Card = 'Card'
 }
 
 interface IData {
@@ -193,6 +209,13 @@ export default defineComponent({
     id(): string {
       return this.$route.params?.id?.toString() ?? '';
     },
+    config(): IConfigResponse | undefined {
+      return this.$store.getters.config as IConfigResponse | undefined;
+    },
+    // When ENABLE_CARD is on, Card replaces Stripe on the anonymous page too.
+    enableCard(): boolean {
+      return !!this.config?.features?.ENABLE_CARD;
+    },
     // App Store Review Guideline 3.1.1: no non-IAP payment UI on iOS.
     showPayment(): boolean {
       return !isIOS();
@@ -219,7 +242,8 @@ export default defineComponent({
       const map: Record<string, string> = {
         WechatPay: this.$t('order.title.wechatPay') as string,
         Stripe: this.$t('order.title.stripe') as string,
-        AliPay: this.$t('order.title.aliPay') as string
+        AliPay: this.$t('order.title.aliPay') as string,
+        Card: this.$t('order.title.card') as string
       };
       return map[payWay] || payWay;
     },
@@ -380,6 +404,10 @@ export default defineComponent({
         }
         &.alipay {
           background-image: url(//cdn.acedata.cloud/alipay.webp);
+          background-size: contain;
+        }
+        &.card {
+          background-image: url(//cdn.acedata.cloud/card.webp);
           background-size: contain;
         }
       }

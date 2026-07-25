@@ -129,6 +129,7 @@
                     <span class="payname">{{ $t('order.title.aliPay') }}</span>
                   </div>
                   <div
+                    v-if="!enableCard"
                     :class="{
                       payway: true,
                       stripe: true,
@@ -138,6 +139,18 @@
                   >
                     <span class="payicon stripe"></span>
                     <span class="payname">{{ $t('order.title.stripe') }}</span>
+                  </div>
+                  <div
+                    v-if="enableCard"
+                    :class="{
+                      payway: true,
+                      creditcard: true,
+                      active: payWay === PayWay.Card
+                    }"
+                    @click="payWay = PayWay.Card"
+                  >
+                    <span class="payicon card" aria-hidden="true"></span>
+                    <span class="payname">{{ $t('order.title.card') }}</span>
                   </div>
                   <div
                     :class="{
@@ -197,7 +210,7 @@
             @hide="paying = false"
           />
           <stripe-pay-order
-            v-if="order && payWay === PayWay.Stripe"
+            v-if="order && (payWay === PayWay.Stripe || payWay === PayWay.Card)"
             v-model="order"
             :visible="paying"
             @hide="paying = false"
@@ -269,7 +282,8 @@ enum PayWay {
   AliPay = 'AliPay',
   X402 = 'X402',
   PayPal = 'PayPal',
-  Apple = 'AppleIAP'
+  Apple = 'AppleIAP',
+  Card = 'Card'
 }
 
 interface IData {
@@ -325,6 +339,10 @@ export default defineComponent({
     },
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
+    },
+    // When ENABLE_CARD is on, Card replaces Stripe in the payment picker.
+    enableCard(): boolean {
+      return !!this.config?.features?.ENABLE_CARD;
     },
     isIos(): boolean {
       return isIOS();
@@ -566,6 +584,8 @@ export default defineComponent({
           return this.$t('order.title.wechatPay') as string;
         case PayWay.Stripe:
           return this.$t('order.title.stripe') as string;
+        case PayWay.Card:
+          return this.$t('order.title.card') as string;
         case PayWay.AliPay:
           return this.$t('order.title.aliPay') as string;
         case PayWay.X402:
@@ -811,6 +831,12 @@ export default defineComponent({
       width: 22px;
       height: 22px;
       background-image: url(//cdn.acedata.cloud/alipay.webp);
+      background-size: contain;
+    }
+    &.card {
+      width: 22px;
+      height: 22px;
+      background-image: url(//cdn.acedata.cloud/card.webp);
       background-size: contain;
     }
     &.x402 {
