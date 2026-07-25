@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 24 Jul 2026 23:32:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 25 Jul 2026 01:38:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.2
+
+Sat, 25 Jul 2026 01:38:45 GMT
+
+### Patches
+
+- Add Claude Opus 5 to the chat model picker (Claude group flagship). (dev@acedata.cloud)
 
 ## 3.335.1
 
