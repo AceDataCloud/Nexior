@@ -1,14 +1,15 @@
 // @vitest-environment jsdom
-import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { flushPromises, shallowMount } from '@vue/test-utils';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import {
   SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE,
   SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE,
+  scheduledTasksOperator,
   validateScheduledBrowserBinding
 } from '@/operators/scheduledTasks';
-import type { IAuthorizableSkill, IScheduledTask } from '@/operators/scheduledTasks';
+import type { IAuthorizableSkill, IScheduledRun, IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
 
 const editedTask: IScheduledTask = {
@@ -201,4 +202,117 @@ describe('chat/ScheduledTasks', () => {
       expect(wrapper.text()).not.toContain('waiting');
     }
   );
+
+  describe('runs tab', () => {
+    const listAllRuns = () => vi.spyOn(scheduledTasksOperator, 'listAllRuns');
+
+    afterEach(() => vi.restoreAllMocks());
+
+    const withToken = () =>
+      shallowMount(ScheduledTasks, {
+        global: {
+          stubs: {
+            ElCard: { template: '<div><slot /></div>' },
+            ElDrawer: { template: '<div><slot /></div>' },
+            ElTag: { template: '<span><slot /></span>' }
+          },
+          mocks: {
+            $t: (key: string) => errorMessages[key] ?? key,
+            $te: (key: string) => key in errorMessages,
+            $store: {
+              state: { chat: { credential: { token: 'tok' } }, site: { features: {} } }
+            }
+          }
+        }
+      });
+
+    it('fetches the feed on entry, and refetches on every re-entry', async () => {
+      const spy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as { switchTab: (t: 'tasks' | 'runs') => void };
+
+      // Nothing loads until the tab is opened.
+      expect(spy).not.toHaveBeenCalled();
+      vm.switchTab('runs');
+      await flushPromises();
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      // Re-entry must refetch: runs land in the background and a task rename or
+      // delete on the tasks tab changes the task_name tag on existing rows.
+      vm.switchTab('tasks');
+      vm.switchTab('runs');
+      await flushPromises();
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      // Switching to the tab you are already on is a no-op.
+      vm.switchTab('runs');
+      await flushPromises();
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+
+    it('tags each run row with its parent task name', async () => {
+      const wrapper = withToken();
+      await wrapper.setData({
+        activeTab: 'runs',
+        allRuns: [
+          { id: 'r1', task_id: 't1', task_name: 'Gmail digest', status: 'success', scheduled_at: 1 },
+          { id: 'r2', task_id: 't2', status: 'failed', scheduled_at: 2 }
+        ],
+        allRunsCount: 2
+      });
+
+      const tags = wrapper.findAll('.run-task-tag');
+      expect(tags).toHaveLength(1);
+      expect(tags[0].text()).toBe('Gmail digest');
+    });
+
+    it('resets to page 1 and refetches when the status filter changes', async () => {
+      const spy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      const wrapper = withToken();
+      await wrapper.setData({ activeTab: 'runs', allRunsPage: 3 });
+
+      (wrapper.vm as unknown as { onStatusFilter: (s: string) => void }).onStatusFilter('failed');
+      await flushPromises();
+
+      expect(spy).toHaveBeenCalledWith('tok', { status: 'failed', offset: 0, limit: 20 });
+      expect((wrapper.vm as unknown as { allRunsPage: number }).allRunsPage).toBe(1);
+    });
+
+    it('sends no status for the "all" filter', async () => {
+      const spy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      const wrapper = withToken();
+      await wrapper.setData({ activeTab: 'runs', allRunsStatus: 'failed' });
+
+      (wrapper.vm as unknown as { onStatusFilter: (s: string) => void }).onStatusFilter('all');
+      await flushPromises();
+
+      expect(spy).toHaveBeenCalledWith('tok', { status: undefined, offset: 0, limit: 20 });
+    });
+
+    it('drops a stale in-flight response when the filter changed mid-flight', async () => {
+      let resolveStale: (v: { items: IScheduledRun[]; count: number }) => void = () => undefined;
+      const spy = listAllRuns()
+        .mockImplementationOnce(() => new Promise((resolve) => (resolveStale = resolve)))
+        .mockResolvedValue({ items: [{ id: 'fresh', task_id: 't1', status: 'failed', scheduled_at: 2 }], count: 1 });
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as {
+        onStatusFilter: (s: string) => void;
+        allRuns: IScheduledRun[];
+        allRunsLoading: boolean;
+      };
+      await wrapper.setData({ activeTab: 'runs' });
+
+      vm.onStatusFilter('success');
+      vm.onStatusFilter('failed');
+      await flushPromises();
+
+      resolveStale({ items: [{ id: 'stale', task_id: 't9', status: 'success', scheduled_at: 1 }], count: 1 });
+      await flushPromises();
+
+      expect(spy).toHaveBeenCalledTimes(2);
+      expect(vm.allRuns.map((r) => r.id)).toEqual(['fresh']);
+      expect(vm.allRunsLoading).toBe(false);
+    });
+  });
 });
