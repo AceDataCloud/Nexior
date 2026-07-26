@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Jul 2026 06:46:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 09:32:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.336.0
+
+Sun, 26 Jul 2026 09:32:20 GMT
+
+### Minor changes
+
+- Add a Runs tab to the scheduled tasks page: a cross-task feed of every scheduled run, newest first, each row tagged with its parent task name and filterable by status. (dev@acedata.cloud)
 
 ## 3.335.5
 
