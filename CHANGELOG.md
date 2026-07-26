@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Jul 2026 12:25:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 12:34:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.336.2
+
+Sun, 26 Jul 2026 12:34:57 GMT
+
+### Patches
+
+- 定时任务支持为每个 connector 指定使用哪个账号 (dev@acedata.cloud)
 
 ## 3.336.1
 
