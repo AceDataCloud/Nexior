@@ -48,6 +48,11 @@ export interface IScheduledRun {
   conversation_model_group?: string;
   error_code?: string;
   error_message?: string;
+  /** Did the run achieve the user's goal? Judged from tool evidence, not from
+   *  whether the agent loop merely terminated. Absent on pre-judge runs. */
+  outcome?: 'achieved' | 'not_achieved' | 'unknown';
+  /** One-line, user-facing explanation of `outcome`. */
+  outcome_reason?: string;
 }
 
 export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed';

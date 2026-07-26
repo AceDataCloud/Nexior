@@ -162,8 +162,12 @@
                     {{ run.task_name }}
                   </el-tag>
                   <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
-                  <span v-if="run.error_code || run.error_message" class="run-error" :title="runErrorText(run)">
-                    {{ runErrorText(run) }}
+                  <span
+                    v-if="runOutcomeText(run)"
+                    :class="run.status === 'success' ? 'run-outcome' : 'run-error'"
+                    :title="runOutcomeText(run)"
+                  >
+                    {{ runOutcomeText(run) }}
                   </span>
                 </div>
               </div>
@@ -232,8 +236,12 @@
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
             <div class="run-sub">
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
-              <span v-if="run.error_code || run.error_message" class="run-error" :title="runErrorText(run)">
-                {{ runErrorText(run) }}
+              <span
+                v-if="runOutcomeText(run)"
+                :class="run.status === 'success' ? 'run-outcome' : 'run-error'"
+                :title="runOutcomeText(run)"
+              >
+                {{ runOutcomeText(run) }}
               </span>
             </div>
           </div>
@@ -1133,6 +1141,12 @@ export default defineComponent({
     runTagType(status: string) {
       return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
     },
+    // The judge's own sentence beats a bare code like `goal_not_achieved`, and
+    // it is shown for successes too — so it is NOT read from `error_message`.
+    runOutcomeText(run: IScheduledRun) {
+      if (run.outcome_reason) return run.outcome_reason;
+      return this.runErrorText(run);
+    },
     runErrorText(run: IScheduledRun) {
       if (run.error_message) return run.error_message;
       const code = run.error_code;
@@ -1510,7 +1524,8 @@ export default defineComponent({
   font-size: 12px;
   color: var(--el-text-color-secondary);
 }
-.run-error {
+.run-error,
+.run-outcome {
   min-width: 0;
   font-size: 11px;
   color: var(--el-text-color-secondary);
