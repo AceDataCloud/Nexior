@@ -12,11 +12,7 @@ import {
 } from '@/models';
 import { BASE_URL_API, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
-import {
-  isBrowserToolExecutionState,
-  isCompatibleBrowserContract,
-  sanitizeBrowserOrigin
-} from '@/utils/browserToolExecution';
+import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
 
 /**
  * Headers carrying the calling Site's bare host. Shared with
@@ -98,9 +94,6 @@ class ChatOperator {
                   json.execution_state ??
                   json.browser_state ??
                   (json.execution === 'browser' || json.type === 'browser_execution' ? json.state : undefined);
-                const browserContractCompatible =
-                  json.type !== 'browser_execution' ||
-                  isCompatibleBrowserContract(json.wire_contract_digest, json.facade_catalog_digest);
                 if (json.delta_answer) {
                   finalAnswer += json.delta_answer;
                 }
@@ -128,11 +121,7 @@ class ChatOperator {
                     tool_name: json.tool_name,
                     tool_display_name: json.tool_display_name,
                     execution: json.type === 'browser_execution' ? 'browser' : json.execution,
-                    execution_state: !browserContractCompatible
-                      ? 'failed'
-                      : isBrowserToolExecutionState(browserState)
-                        ? browserState
-                        : undefined,
+                    execution_state: isBrowserToolExecutionState(browserState) ? browserState : undefined,
                     execution_sequence:
                       typeof json.execution_sequence === 'number' ? json.execution_sequence : undefined,
                     browser_session_id:

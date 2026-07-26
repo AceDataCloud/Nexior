@@ -1,5 +1,4 @@
 import type { IBrowserToolExecutionState, IChatMessageContentItem } from '@/models';
-import { FACADE_CATALOG_DIGEST, WIRE_CONTRACT_DIGEST } from '@/generated/browserContract.generated';
 
 export const BROWSER_TOOL_EXECUTION_STATES: readonly IBrowserToolExecutionState[] = [
   'starting_session',
@@ -56,10 +55,6 @@ export function isBrowserToolExecutionState(value: unknown): value is IBrowserTo
 
 export function shouldExecuteWithLocalExec(execution: IChatMessageContentItem['execution']): boolean {
   return execution === 'client';
-}
-
-export function isCompatibleBrowserContract(wireDigest: unknown, facadeDigest: unknown): boolean {
-  return wireDigest === WIRE_CONTRACT_DIGEST && facadeDigest === FACADE_CATALOG_DIGEST;
 }
 
 export function sanitizeBrowserOrigin(value: unknown): string | undefined {
