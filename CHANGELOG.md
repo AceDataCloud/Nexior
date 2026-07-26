@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 25 Jul 2026 02:49:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 01:48:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.4
+
+Sun, 26 Jul 2026 01:48:09 GMT
+
+### Patches
+
+- Use new bank-card icon for Card pay-way (dev@acedata.cloud)
 
 ## 3.335.3
 
