@@ -283,9 +283,7 @@
               :key="connection.connection_id"
               :label="`${connection.name} · ${connection.device_name}`"
               :value="connection.connection_id"
-              :disabled="
-                !connection.online || !connection.compatible || connection.wire_contract_digest !== WIRE_CONTRACT_DIGEST
-              "
+              :disabled="!connection.online || !connection.compatible"
             />
           </el-select>
           <div v-if="selectedBrowserConnection" class="browser-binding-summary">
@@ -388,7 +386,6 @@ import {
 import type { IAuthorizableBrowserConnection, IScheduledBrowserBinding } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import { IChatModelGroup } from '@/models';
-import { WIRE_CONTRACT_DIGEST as CANONICAL_WIRE_CONTRACT_DIGEST } from '@/generated/browserContract.generated';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
 
@@ -466,8 +463,7 @@ export default defineComponent({
       pageSize: 6,
       runPage: 1,
       runPageSize: 8,
-      form: this.emptyForm() as TaskForm,
-      WIRE_CONTRACT_DIGEST: CANONICAL_WIRE_CONTRACT_DIGEST
+      form: this.emptyForm() as TaskForm
     };
   },
   computed: {
@@ -701,12 +697,7 @@ export default defineComponent({
       let browserConnections: IScheduledBrowserBinding[] | undefined;
       if (this.selectedBrowserSkills.length) {
         const connection = this.selectedBrowserConnection;
-        if (
-          !connection ||
-          !connection.online ||
-          !connection.compatible ||
-          connection.wire_contract_digest !== CANONICAL_WIRE_CONTRACT_DIGEST
-        ) {
+        if (!connection || !connection.online || !connection.compatible) {
           ElMessage.error(this.$t('chat.scheduledTasks.form.browserBindingInvalid') as string);
           return;
         }
