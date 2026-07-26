@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Jul 2026 01:48:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 06:46:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.335.5
+
+Sun, 26 Jul 2026 06:46:35 GMT
+
+### Patches
+
+- Drop the cross-repo browser wire/facade digest gate: delete the generated browserContract module and the isCompatibleBrowserContract check, keeping the browser execution FSM, state forwarding and scheduled-task online/compatible validation intact. (dev@acedata.cloud)
 
 ## 3.335.4
 

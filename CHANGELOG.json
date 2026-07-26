@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 26 Jul 2026 06:46:35 GMT",
+      "version": "3.335.5",
+      "tag": "@acedatacloud/nexior_v3.335.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "dc42b4d3feb20f86e35d106046b9a92fd8f4f0a7",
+            "comment": "Drop the cross-repo browser wire/facade digest gate: delete the generated browserContract module and the isCompatibleBrowserContract check, keeping the browser execution FSM, state forwarding and scheduled-task online/compatible validation intact."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 26 Jul 2026 01:48:09 GMT",
       "version": "3.335.4",
       "tag": "@acedatacloud/nexior_v3.335.4",
