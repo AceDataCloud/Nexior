@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Jul 2026 09:32:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 12:25:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.336.1
+
+Sun, 26 Jul 2026 12:25:20 GMT
+
+### Patches
+
+- chore(i18n): drop orphan menu.publishIndex key (publish center retired) (dev@acedata.cloud)
 
 ## 3.336.0
 
