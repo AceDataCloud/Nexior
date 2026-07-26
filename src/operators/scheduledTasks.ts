@@ -68,15 +68,46 @@ export interface IScheduledTaskUnattendedPolicy {
   allowed_skills: string[];
   allowed_mcp_servers?: string[];
   browser_connections?: IScheduledBrowserBinding[];
+  /** Which account of each connector this task runs as. Omit to use the
+   *  connector's default account (what interactive chat always does). */
+  connection_bindings?: IScheduledConnectionBinding[];
   expires_at?: number;
+}
+
+export interface IScheduledConnectionBinding {
+  connector_identifier: string;
+  connection_id: string;
+  /** Server-derived; never sent by the client (the backend re-derives it
+   *  from the stored connection so a binding can't claim a provider it
+   *  doesn't belong to). */
+  provider_alias?: string;
+}
+
+/** One selectable account for a connector a skill needs. */
+export interface IAuthorizableConnectionAccount {
+  connection_id: string;
+  connector_identifier: string;
+  label: string;
+  is_default: boolean;
+  account_name: string;
 }
 
 export interface IScheduledBrowserBinding {
   connection_id: string;
-  revision: number;
+  /** Named to match the worker's `ScheduledBrowserBinding.connection_revision`
+   *  — the old `revision` never matched and the field was dropped on save. */
+  connection_revision: number;
   device_id: string;
   wire_contract_digest: string;
   policy_digest: string;
+  /** The worker treats these as REQUIRED and rejects a binding whose values
+   *  don't match the live skill authority. They stay optional here because
+   *  the server does not yet surface them on `IAuthorizableBrowserConnection`,
+   *  so the client has nothing to populate them from — the browser-binding
+   *  path is inert until it does. Closing that gap is a prerequisite for
+   *  shipping browser-backed scheduled tasks. */
+  skill_id?: string;
+  skill_revision?: string;
 }
 
 export interface IAuthorizableBrowserConnection extends IScheduledBrowserBinding {
@@ -99,6 +130,10 @@ export interface IAuthorizableSkill {
   connected: boolean;
   missing_connections: string[];
   browser_connections?: IAuthorizableBrowserConnection[];
+  /** Candidate accounts per required connector, keyed by the same strings
+   *  that appear in `required_connections`. Only present when the user has
+   *  at least one connection for that connector. */
+  connection_accounts?: Record<string, IAuthorizableConnectionAccount[]>;
 }
 
 export interface IAuthorizableMcpServer {

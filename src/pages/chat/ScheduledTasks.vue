@@ -400,6 +400,32 @@
           </div>
         </el-form-item>
 
+        <!-- Only rendered for connectors the user holds several accounts of;
+             everything else silently uses that connector's default account. -->
+        <el-form-item
+          v-for="choice in accountChoices"
+          :key="choice.identifier"
+          :label="$t('chat.scheduledTasks.form.connectionAccount', { connector: choice.label })"
+        >
+          <el-select
+            v-model="form.connectionAccounts[choice.identifier]"
+            clearable
+            :placeholder="$t('chat.scheduledTasks.form.connectionAccountDefault')"
+            style="width: 100%"
+          >
+            <el-option
+              v-for="account in choice.accounts"
+              :key="account.connection_id"
+              :label="
+                account.is_default
+                  ? `${account.label || account.account_name} · ${$t('chat.scheduledTasks.form.accountIsDefault')}`
+                  : account.label || account.account_name
+              "
+              :value="account.connection_id"
+            />
+          </el-select>
+        </el-form-item>
+
         <el-form-item :label="$t('chat.scheduledTasks.form.mcpServers')">
           <el-select
             v-model="form.authorizedMcpServers"
@@ -481,7 +507,11 @@ import {
   IScheduledTaskCapabilityDetail,
   extractSkillNotActive
 } from '@/operators/scheduledTasks';
-import type { IAuthorizableBrowserConnection, IScheduledBrowserBinding } from '@/operators/scheduledTasks';
+import type {
+  IAuthorizableBrowserConnection,
+  IAuthorizableConnectionAccount,
+  IScheduledBrowserBinding
+} from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import { IChatModelGroup } from '@/models';
 
@@ -508,6 +538,9 @@ interface TaskForm {
   authorizedSkills: string[];
   authorizedMcpServers: string[];
   browserConnectionId: string;
+  /** connector_identifier → chosen connection_id. Empty value = use that
+   *  connector's default account. */
+  connectionAccounts: Record<string, string>;
   authorizationExpiresAt: number;
   maxTurns: number;
 }
@@ -626,6 +659,27 @@ export default defineComponent({
       return this.selectedBrowserConnections.find(
         (connection) => connection.connection_id === this.form.browserConnectionId
       );
+    },
+    /** Connectors the selected skills need where the user holds MORE THAN ONE
+     *  account — only those need a picker; a single account needs no choice
+     *  and stays on the connector's default. */
+    accountChoices(): Array<{ identifier: string; label: string; accounts: IAuthorizableConnectionAccount[] }> {
+      const selected = new Set(this.form.authorizedSkills);
+      // Key on the account's own `connector_identifier`, NOT the map key.
+      // Skills declare bare names in their frontmatter (`connections: [zhihu]`)
+      // so that's what the map is keyed by, but the server validates a binding
+      // against the canonical identifier (`zhihu/zhihu`) — posting the bare
+      // key back would fail every save.
+      const byConnector = new Map<string, { label: string; accounts: IAuthorizableConnectionAccount[] }>();
+      for (const skill of this.authorizableSkills) {
+        if (!selected.has(skill.slug)) continue;
+        for (const [key, accounts] of Object.entries(skill.connection_accounts ?? {})) {
+          if ((accounts?.length ?? 0) < 2) continue;
+          const identifier = accounts[0].connector_identifier || key;
+          if (!byConnector.has(identifier)) byConnector.set(identifier, { label: key, accounts });
+        }
+      }
+      return [...byConnector.entries()].map(([identifier, { label, accounts }]) => ({ identifier, label, accounts }));
     }
   },
   async mounted() {
@@ -647,6 +701,7 @@ export default defineComponent({
         authorizedSkills: [],
         authorizedMcpServers: [],
         browserConnectionId: '',
+        connectionAccounts: {},
         authorizationExpiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
       };
@@ -793,6 +848,9 @@ export default defineComponent({
             ? task.unattended_policy.allowed_mcp_servers || []
             : [],
         browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
+        connectionAccounts: Object.fromEntries(
+          (task.unattended_policy?.connection_bindings ?? []).map((b) => [b.connector_identifier, b.connection_id])
+        ),
         authorizationExpiresAt: task.unattended_policy?.expires_at ?? Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
       };
@@ -855,13 +913,32 @@ export default defineComponent({
         browserConnections = [
           {
             connection_id: connection.connection_id,
-            revision: connection.revision,
+            connection_revision: connection.connection_revision,
             device_id: connection.device_id,
             wire_contract_digest: connection.wire_contract_digest,
             policy_digest: connection.policy_digest
           }
         ];
       }
+      // Which account of each connector this task runs as. Left empty for
+      // connectors where the user only has one account (or hasn't picked),
+      // which makes the run fall back to that connector's default account.
+      // Derived from the currently-relevant choices, not the raw form map, so
+      // deselecting a skill drops its binding instead of shipping a stale one.
+      // Also drops a saved account that no longer exists — otherwise the task
+      // would be unsavable with no picker rendered to clear it.
+      const connectionBindings = this.accountChoices
+        .map((choice) => ({
+          connector_identifier: choice.identifier,
+          connection_id: this.form.connectionAccounts[choice.identifier] || ''
+        }))
+        .filter(
+          (binding) =>
+            !!binding.connection_id &&
+            this.accountChoices
+              .find((choice) => choice.identifier === binding.connector_identifier)
+              ?.accounts.some((account) => account.connection_id === binding.connection_id)
+        );
       const payload: ScheduledTaskPayload = {
         name: this.form.name.trim() || this.deriveName(this.form.question),
         schedule: this.buildSchedule(),
@@ -879,6 +956,7 @@ export default defineComponent({
                 allowed_skills: authorizedSkills,
                 allowed_mcp_servers: authorizedMcpServers,
                 browser_connections: browserConnections,
+                connection_bindings: connectionBindings.length ? connectionBindings : undefined,
                 expires_at: this.form.authorizationExpiresAt
               }
             : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }

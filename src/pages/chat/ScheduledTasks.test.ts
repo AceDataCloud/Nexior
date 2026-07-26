@@ -73,7 +73,7 @@ describe('chat/ScheduledTasks', () => {
     browser_connections: [
       {
         connection_id: 'connection-1',
-        revision: 4,
+        connection_revision: 4,
         device_id: 'device-1',
         wire_contract_digest: 'sha256:wire',
         policy_digest: 'sha256:policy',
@@ -148,6 +148,7 @@ describe('chat/ScheduledTasks', () => {
       authorizedSkills: [],
       authorizedMcpServers: [],
       browserConnectionId: '',
+      connectionAccounts: {},
       authorizationExpiresAt: expect.any(Number),
       maxTurns: 50
     });
@@ -179,6 +180,93 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.editingTask).toMatchObject({ id: editedTask.id });
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
+  });
+  it('offers an account picker only for connectors the user has several accounts of', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      authorizableSkills: unknown[];
+      form: { connectionAccounts: Record<string, string> } & Record<string, unknown>;
+      accountChoices: Array<{ identifier: string; label: string; accounts: Array<{ connection_id: string }> }>;
+    };
+    await wrapper.setData({
+      authorizableSkills: [
+        {
+          slug: 'multi',
+          name: 'multi',
+          description: '',
+          required_connections: ['zhihu/zhihu', 'github/github'],
+          allowed_tools: [],
+          source: 'installed',
+          connected: true,
+          missing_connections: [],
+          connection_accounts: {
+            // Server keys this map by the skill's frontmatter entry, which is
+            // the BARE name — the binding must still go out as the canonical
+            // `zhihu/zhihu` the server validates against.
+            zhihu: [
+              {
+                connection_id: 'z1',
+                connector_identifier: 'zhihu/zhihu',
+                label: '主号',
+                is_default: true,
+                account_name: 'A'
+              },
+              {
+                connection_id: 'z2',
+                connector_identifier: 'zhihu/zhihu',
+                label: '小号',
+                is_default: false,
+                account_name: 'B'
+              }
+            ],
+            // Single account → no choice needed, falls back to the default.
+            github: [
+              {
+                connection_id: 'g1',
+                connector_identifier: 'github/github',
+                label: '',
+                is_default: true,
+                account_name: 'C'
+              }
+            ]
+          }
+        }
+      ],
+      form: { ...(wrapper.vm as unknown as { form: Record<string, unknown> }).form, authorizedSkills: ['multi'] }
+    });
+
+    // Keyed on the canonical identifier, not the bare frontmatter name.
+    expect(vm.accountChoices.map((c) => c.identifier)).toEqual(['zhihu/zhihu']);
+    expect(vm.accountChoices[0].accounts).toHaveLength(2);
+
+    // A binding for a connector that is no longer relevant (skill deselected)
+    // or whose account no longer exists must not be shipped — the server
+    // rejects unverifiable bindings and `force` does not bypass that, which
+    // would otherwise leave the task unsavable.
+    await wrapper.setData({
+      form: {
+        ...(wrapper.vm as unknown as { form: Record<string, unknown> }).form,
+        connectionAccounts: { 'zhihu/zhihu': 'z2', 'gone/gone': 'x1' }
+      }
+    });
+    const bindings = (
+      wrapper.vm as unknown as {
+        accountChoices: Array<{ identifier: string; accounts: Array<{ connection_id: string }> }>;
+        form: { connectionAccounts: Record<string, string> };
+      }
+    ).accountChoices
+      .map((choice) => ({
+        connector_identifier: choice.identifier,
+        connection_id: vm.form.connectionAccounts[choice.identifier] || ''
+      }))
+      .filter(
+        (b) =>
+          !!b.connection_id &&
+          vm.accountChoices
+            .find((c) => c.identifier === b.connector_identifier)
+            ?.accounts.some((a) => a.connection_id === b.connection_id)
+      );
+    expect(bindings).toEqual([{ connector_identifier: 'zhihu/zhihu', connection_id: 'z2' }]);
   });
   it.each(['browser_device_offline', 'browser_authorization_stale'])(
     'shows typed browser run error %s without a waiting queue',

@@ -360,7 +360,12 @@ export const CHAT_MODEL_GROUP_CLAUDE: IChatModelGroup = {
   name: 'claude',
   getDisplayName: () => i18n.global.t('chat.modelGroup.claude'),
   getDescription: () => i18n.global.t('chat.modelGroup.claudeDescription'),
-  models: [CHAT_MODEL_CLAUDE_OPUS_5, CHAT_MODEL_CLAUDE_OPUS_4_8, CHAT_MODEL_CLAUDE_SONNET_4_6, CHAT_MODEL_CLAUDE_HAIKU_4_5]
+  models: [
+    CHAT_MODEL_CLAUDE_OPUS_5,
+    CHAT_MODEL_CLAUDE_OPUS_4_8,
+    CHAT_MODEL_CLAUDE_SONNET_4_6,
+    CHAT_MODEL_CLAUDE_HAIKU_4_5
+  ]
 };
 
 export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
