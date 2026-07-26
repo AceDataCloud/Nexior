@@ -37,6 +37,7 @@ export interface IScheduledTask {
 export interface IScheduledRun {
   id: string;
   task_id: string;
+  task_name?: string;
   status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input';
   scheduled_at: number;
   llm_started_at?: number;
@@ -47,6 +48,14 @@ export interface IScheduledRun {
   conversation_model_group?: string;
   error_code?: string;
   error_message?: string;
+}
+
+export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed';
+
+export interface IScheduledRunFilter {
+  status?: IScheduledRunStatus;
+  offset?: number;
+  limit?: number;
 }
 
 export type IScheduleSpec =
@@ -191,6 +200,15 @@ class ScheduledTasksOperator {
   async listRuns(token: string, id: string): Promise<IScheduledRun[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_runs', id }, { headers: headers(token) });
     return data?.items ?? [];
+  }
+
+  // Every run the user owns, across all tasks, newest first.
+  async listAllRuns(
+    token: string,
+    filter: IScheduledRunFilter = {}
+  ): Promise<{ items: IScheduledRun[]; count: number }> {
+    const { data } = await axios.post(BASE, { action: 'retrieve_runs_batch', ...filter }, { headers: headers(token) });
+    return { items: data?.items ?? [], count: data?.count ?? 0 };
   }
 
   async listAuthorizableSkills(token: string): Promise<IAuthorizableSkill[]> {

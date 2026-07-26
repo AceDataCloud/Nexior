@@ -3,95 +3,192 @@
     <div class="inner">
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
-        <el-button type="primary" round :disabled="saving" @click="openCreate">
+        <el-button v-if="activeTab === 'tasks'" type="primary" round :disabled="saving" @click="openCreate">
           <add-icon :size="16" class="icon" aria-hidden="true" focusable="false" />
           {{ $t('chat.scheduledTasks.create') }}
         </el-button>
       </div>
 
-      <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
+      <div class="tabs" role="tablist" :aria-label="$t('chat.scheduledTasks.title')">
+        <button
+          v-for="tab in tabs"
+          :key="tab"
+          type="button"
+          role="tab"
+          class="tab"
+          :class="{ active: activeTab === tab }"
+          :aria-selected="activeTab === tab"
+          @click="switchTab(tab)"
+        >
+          {{ $t(`chat.scheduledTasks.tab.${tab}`) }}
+        </button>
+      </div>
 
-      <el-empty v-else-if="!tasks.length" :description="$t('chat.scheduledTasks.empty')" class="empty" />
+      <template v-if="activeTab === 'tasks'">
+        <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
+
+        <el-empty v-else-if="!tasks.length" :description="$t('chat.scheduledTasks.empty')" class="empty" />
+
+        <template v-else>
+          <div class="task-list">
+            <el-card
+              v-for="task in pagedTasks"
+              :key="task.id"
+              class="task-card"
+              shadow="hover"
+              @click="selectTask(task)"
+            >
+              <div class="task-top">
+                <div class="task-name">{{ task.name }}</div>
+                <div class="task-actions" @click.stop>
+                  <el-switch
+                    :model-value="task.state === 'enabled'"
+                    @change="(v: string | number | boolean) => toggleState(task, v === true)"
+                  />
+                  <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
+                    <el-button
+                      text
+                      class="icon-action"
+                      :loading="triggeringId === task.id"
+                      :aria-label="$t('chat.scheduledTasks.triggerNow')"
+                      :title="$t('chat.scheduledTasks.triggerNow')"
+                      @click="triggerNow(task)"
+                    >
+                      <play-icon
+                        v-if="triggeringId !== task.id"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
+                      />
+                    </el-button>
+                  </el-tooltip>
+                  <el-tooltip :content="$t('common.button.edit')" placement="top">
+                    <el-button text class="icon-action" :aria-label="$t('common.button.edit')" @click="openEdit(task)">
+                      <edit-icon :size="16" aria-hidden="true" focusable="false" />
+                    </el-button>
+                  </el-tooltip>
+                  <el-tooltip :content="$t('common.button.delete')" placement="top">
+                    <el-button
+                      text
+                      type="danger"
+                      class="icon-action"
+                      :aria-label="$t('common.button.delete')"
+                      @click="confirmDelete(task)"
+                    >
+                      <delete-icon :size="16" aria-hidden="true" focusable="false" />
+                    </el-button>
+                  </el-tooltip>
+                </div>
+              </div>
+              <div class="task-meta">
+                <el-tag size="small" :type="stateTagType(task.state)" effect="dark" round>
+                  {{ $t(`chat.scheduledTasks.state.${task.state}`) }}
+                </el-tag>
+                <span class="meta-chip">
+                  <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  {{ scheduleLabel(task.schedule) }}
+                </span>
+                <span class="meta-chip">
+                  <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  {{ task.template.model }}
+                </span>
+              </div>
+              <div class="task-prompt">{{ task.template.question }}</div>
+              <div v-if="task.last_output_snippet" class="task-last-output">
+                {{ task.last_output_snippet }}
+              </div>
+              <div class="task-footer">
+                <span class="run-count">
+                  <refresh-icon :size="16" class="footer-icon" aria-hidden="true" focusable="false" />
+                  {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
+                </span>
+                <span v-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
+                <span class="open-hint">
+                  {{ $t('chat.scheduledTasks.viewRuns') }}
+                  <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                </span>
+              </div>
+            </el-card>
+          </div>
+
+          <div v-if="tasks.length > pageSize" class="pager">
+            <pagination :current-page="page" :page-size="pageSize" :total="tasks.length" @change="onPageChange" />
+          </div>
+        </template>
+      </template>
 
       <template v-else>
-        <div class="task-list">
-          <el-card v-for="task in pagedTasks" :key="task.id" class="task-card" shadow="hover" @click="selectTask(task)">
-            <div class="task-top">
-              <div class="task-name">{{ task.name }}</div>
-              <div class="task-actions" @click.stop>
-                <el-switch
-                  :model-value="task.state === 'enabled'"
-                  @change="(v: string | number | boolean) => toggleState(task, v === true)"
-                />
-                <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
-                  <el-button
-                    text
-                    class="icon-action"
-                    :loading="triggeringId === task.id"
-                    :aria-label="$t('chat.scheduledTasks.triggerNow')"
-                    :title="$t('chat.scheduledTasks.triggerNow')"
-                    @click="triggerNow(task)"
-                  >
-                    <play-icon
-                      v-if="triggeringId !== task.id"
-                      :size="'1em' as any"
-                      aria-hidden="true"
-                      focusable="false"
-                    />
-                  </el-button>
-                </el-tooltip>
-                <el-tooltip :content="$t('common.button.edit')" placement="top">
-                  <el-button text class="icon-action" :aria-label="$t('common.button.edit')" @click="openEdit(task)">
-                    <edit-icon :size="16" aria-hidden="true" focusable="false" />
-                  </el-button>
-                </el-tooltip>
-                <el-tooltip :content="$t('common.button.delete')" placement="top">
-                  <el-button
-                    text
-                    type="danger"
-                    class="icon-action"
-                    :aria-label="$t('common.button.delete')"
-                    @click="confirmDelete(task)"
-                  >
-                    <delete-icon :size="16" aria-hidden="true" focusable="false" />
-                  </el-button>
-                </el-tooltip>
-              </div>
-            </div>
-            <div class="task-meta">
-              <el-tag size="small" :type="stateTagType(task.state)" effect="dark" round>
-                {{ $t(`chat.scheduledTasks.state.${task.state}`) }}
-              </el-tag>
-              <span class="meta-chip">
-                <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ scheduleLabel(task.schedule) }}
-              </span>
-              <span class="meta-chip">
-                <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ task.template.model }}
-              </span>
-            </div>
-            <div class="task-prompt">{{ task.template.question }}</div>
-            <div v-if="task.last_output_snippet" class="task-last-output">
-              {{ task.last_output_snippet }}
-            </div>
-            <div class="task-footer">
-              <span class="run-count">
-                <refresh-icon :size="16" class="footer-icon" aria-hidden="true" focusable="false" />
-                {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
-              </span>
-              <span v-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
-              <span class="open-hint">
-                {{ $t('chat.scheduledTasks.viewRuns') }}
-                <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-              </span>
-            </div>
-          </el-card>
+        <div class="filters" role="group" :aria-label="$t('chat.scheduledTasks.tab.runs')">
+          <button
+            v-for="opt in statusFilters"
+            :key="opt"
+            type="button"
+            class="filter-chip"
+            :class="{ active: allRunsStatus === opt }"
+            :aria-pressed="allRunsStatus === opt"
+            @click="onStatusFilter(opt)"
+          >
+            {{ opt === 'all' ? $t('chat.scheduledTasks.filterAll') : $t(`chat.scheduledTasks.run.${opt}`) }}
+          </button>
         </div>
 
-        <div v-if="tasks.length > pageSize" class="pager">
-          <pagination :current-page="page" :page-size="pageSize" :total="tasks.length" @change="onPageChange" />
-        </div>
+        <el-skeleton v-if="allRunsLoading" :rows="4" animated class="loading-block" />
+
+        <el-empty v-else-if="!allRuns.length" :description="$t('chat.scheduledTasks.noRuns')" class="empty" />
+
+        <template v-else>
+          <div class="run-list">
+            <div
+              v-for="run in allRuns"
+              :key="run.id"
+              class="run-item"
+              :class="{ clickable: !!run.conversation_id }"
+              :tabindex="run.conversation_id ? 0 : -1"
+              :role="run.conversation_id ? 'button' : undefined"
+              @click="openRun(run)"
+              @keydown.enter="openRun(run)"
+              @keydown.space.prevent="openRun(run)"
+            >
+              <div class="run-body">
+                <div class="run-line">
+                  <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
+                  <el-tag size="small" :type="runTagType(run.status)" effect="dark" round class="run-tag">
+                    {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
+                  </el-tag>
+                </div>
+                <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
+                <div class="run-sub">
+                  <el-tag v-if="run.task_name" size="small" type="info" round class="run-task-tag">
+                    {{ run.task_name }}
+                  </el-tag>
+                  <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
+                  <span v-if="run.error_code || run.error_message" class="run-error" :title="runErrorText(run)">
+                    {{ runErrorText(run) }}
+                  </span>
+                </div>
+              </div>
+              <div class="run-action">
+                <expand-right-icon
+                  v-if="run.conversation_id"
+                  class="run-arrow"
+                  :size="'1em' as any"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+                <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="allRunsCount > allRunsPageSize" class="pager">
+            <pagination
+              :current-page="allRunsPage"
+              :page-size="allRunsPageSize"
+              :total="allRunsCount"
+              @change="onAllRunsPageChange"
+            />
+          </div>
+        </template>
       </template>
     </div>
 
@@ -376,6 +473,7 @@ import {
   scheduledTasksOperator,
   IScheduledTask,
   IScheduledRun,
+  IScheduledRunStatus,
   IScheduleSpec,
   IAuthorizableSkill,
   IAuthorizableMcpServer,
@@ -388,6 +486,9 @@ import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
 import { IChatModelGroup } from '@/models';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
+
+type ScheduledTab = 'tasks' | 'runs';
+type RunStatusFilter = 'all' | IScheduledRunStatus;
 
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
 // DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
@@ -447,6 +548,18 @@ export default defineComponent({
     return {
       tasks: [] as IScheduledTask[],
       runs: [] as IScheduledRun[],
+      activeTab: 'tasks' as ScheduledTab,
+      tabs: ['tasks', 'runs'] as ScheduledTab[],
+      statusFilters: ['all', 'success', 'failed', 'running', 'queued'] as RunStatusFilter[],
+      allRuns: [] as IScheduledRun[],
+      allRunsCount: 0,
+      allRunsLoading: false,
+      allRunsStatus: 'all' as RunStatusFilter,
+      allRunsPage: 1,
+      allRunsPageSize: 20,
+      // Bumped on every all-runs request so a slow response from a stale
+      // filter/page can't overwrite the newest one.
+      allRunsRequestId: 0,
       loading: false,
       runsLoading: false,
       skillsLoading: false,
@@ -570,6 +683,44 @@ export default defineComponent({
     },
     onPageChange(p: number) {
       this.page = p;
+    },
+    switchTab(tab: ScheduledTab) {
+      if (this.activeTab === tab) return;
+      this.activeTab = tab;
+      // Always refetch on entry: runs land in the background from the scheduler,
+      // and task renames/deletes change the task_name tag on existing rows.
+      if (tab === 'runs') void this.loadAllRuns();
+    },
+    onStatusFilter(status: RunStatusFilter) {
+      if (this.allRunsStatus === status) return;
+      this.allRunsStatus = status;
+      this.allRunsPage = 1;
+      void this.loadAllRuns();
+    },
+    onAllRunsPageChange(p: number) {
+      this.allRunsPage = p;
+      void this.loadAllRuns();
+    },
+    async loadAllRuns() {
+      if (!this.token) return;
+      const requestId = ++this.allRunsRequestId;
+      this.allRunsLoading = true;
+      try {
+        const { items, count } = await scheduledTasksOperator.listAllRuns(this.token, {
+          status: this.allRunsStatus === 'all' ? undefined : this.allRunsStatus,
+          offset: (this.allRunsPage - 1) * this.allRunsPageSize,
+          limit: this.allRunsPageSize
+        });
+        // Drop the response if the user changed filter/page mid-flight.
+        if (requestId !== this.allRunsRequestId) return;
+        this.allRuns = items;
+        this.allRunsCount = count;
+      } catch {
+        if (requestId !== this.allRunsRequestId) return;
+        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      } finally {
+        if (requestId === this.allRunsRequestId) this.allRunsLoading = false;
+      }
     },
     onRunPageChange(p: number) {
       this.runPage = p;
@@ -975,6 +1126,77 @@ export default defineComponent({
 .header .icon {
   margin-right: 6px;
 }
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+}
+.tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 12px;
+  margin-bottom: -1px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--el-text-color-secondary);
+  cursor: pointer;
+  transition:
+    color 0.16s,
+    border-color 0.16s;
+}
+.tab:hover {
+  color: var(--el-text-color-primary);
+}
+.tab:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.tab.active {
+  color: var(--el-color-primary);
+  border-bottom-color: var(--el-color-primary);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.filter-chip {
+  appearance: none;
+  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+  background: var(--app-bg-surface, var(--el-bg-color-overlay));
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: var(--el-text-color-regular);
+  cursor: pointer;
+  transition:
+    background 0.16s,
+    border-color 0.16s,
+    color 0.16s;
+}
+.filter-chip:hover:not(.active) {
+  background: var(--el-fill-color-lighter);
+}
+.filter-chip:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+}
+.filter-chip.active {
+  background: var(--el-color-primary);
+  border-color: var(--el-color-primary);
+  color: #fff;
+}
+.run-task-tag {
+  flex-shrink: 0;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @media (max-width: 767px) {
   .inner {
     padding-top: 56px;
@@ -1202,6 +1424,9 @@ export default defineComponent({
   gap: 10px;
   align-items: center;
   min-width: 0;
+  /* The runs tab adds a task tag to this row; on narrow screens let the
+     time / error drop to a second line instead of squeezing to ellipsis. */
+  flex-wrap: wrap;
 }
 .run-time {
   font-size: 12px;
