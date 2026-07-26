@@ -836,7 +836,7 @@ export default defineComponent({
     &.card {
       width: 22px;
       height: 22px;
-      background-image: url(//cdn.acedata.cloud/card.webp);
+      background-image: url(//cdn.acedata.cloud/jensvf.png);
       background-size: contain;
     }
     &.x402 {
