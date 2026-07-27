@@ -49,7 +49,8 @@ import {
   CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_CLAUDE,
-  CHAT_MODEL_GROUP_KIMI
+  CHAT_MODEL_GROUP_KIMI,
+  getDefaultChatModel
 } from '@/constants';
 
 interface IData {
@@ -92,7 +93,7 @@ export default defineComponent({
     modelGroup(newValue: IChatModelGroup) {
       console.debug('modelGroup from route changed', newValue);
       this.$store.dispatch('chat/setModelGroup', newValue);
-      this.$store.dispatch('chat/setModel', newValue.models[0]);
+      this.$store.dispatch('chat/setModel', getDefaultChatModel(newValue));
     }
   },
   mounted() {
@@ -103,7 +104,7 @@ export default defineComponent({
     //
     // We also reconcile `chat.model` (which IS persisted): if the
     // remembered model belongs to a different group than the route, fall
-    // back to the new group's first model. Otherwise leave the user's
+    // back to the new group's default model. Otherwise leave the user's
     // selection alone \u2014 a refresh shouldn't snap them from gpt-5-mini
     // back to gpt-5.
     const route = this.modelGroup;
@@ -112,7 +113,7 @@ export default defineComponent({
     }
     const persistedModel = this.$store.state.chat?.model;
     if (!route.models.some((m) => m.name === persistedModel?.name)) {
-      this.$store.dispatch('chat/setModel', route.models[0]);
+      this.$store.dispatch('chat/setModel', getDefaultChatModel(route));
     }
   },
   methods: {

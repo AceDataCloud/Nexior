@@ -520,7 +520,7 @@ import type {
   IAuthorizableConnectionAccount,
   IScheduledBrowserBinding
 } from '@/operators/scheduledTasks';
-import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
+import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import { IChatModelGroup } from '@/models';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
@@ -698,7 +698,7 @@ export default defineComponent({
       return {
         name: '',
         question: '',
-        model: CHAT_MODEL_NAME_GPT_5_6_LUNA,
+        model: CHAT_MODEL_NAME_GPT_5_6_SOL,
         scheduleType: 'daily',
         intervalValue: 4,
         intervalUnit: 'hour',

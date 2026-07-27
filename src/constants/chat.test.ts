@@ -2,11 +2,13 @@ import { describe, expect, it } from 'vitest';
 
 import {
   CHAT_MODEL_GPT_5_6_LUNA,
+  CHAT_MODEL_GPT_5_6_SOL,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K3,
-  CHAT_MODELS
+  CHAT_MODELS,
+  getDefaultChatModel
 } from './chat';
 
 describe('chat models', () => {
@@ -18,6 +20,14 @@ describe('chat models', () => {
     ]);
     expect(CHAT_MODEL_GPT_5_6_LUNA.isFree).toBe(true);
     expect(CHAT_MODEL_GROUP_CHATGPT.models.filter((model) => model.isFree)).toEqual([CHAT_MODEL_GPT_5_6_LUNA]);
+  });
+
+  it('defaults the ChatGPT group to Sol, not the first listed model', () => {
+    expect(getDefaultChatModel(CHAT_MODEL_GROUP_CHATGPT)).toBe(CHAT_MODEL_GPT_5_6_SOL);
+  });
+
+  it('falls back to the first model for groups without an explicit default', () => {
+    expect(getDefaultChatModel(CHAT_MODEL_GROUP_KIMI)).toBe(CHAT_MODEL_GROUP_KIMI.models[0]);
   });
 
   it('lists K3 first and registers both current Kimi models', () => {
