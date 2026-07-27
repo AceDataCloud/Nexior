@@ -161,6 +161,16 @@
                   <el-tag v-if="run.task_name" size="small" type="info" round class="run-task-tag">
                     {{ run.task_name }}
                   </el-tag>
+                  <el-tag
+                    v-for="(account, index) in run.run_accounts"
+                    :key="`${account.connector_identifier}-${index}`"
+                    size="small"
+                    type="info"
+                    round
+                    class="run-account-tag"
+                  >
+                    {{ accountTagText(account) }}
+                  </el-tag>
                   <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
                   <span
                     v-if="runOutcomeText(run)"
@@ -235,6 +245,16 @@
             </div>
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
             <div class="run-sub">
+              <el-tag
+                v-for="(account, index) in run.run_accounts"
+                :key="`${account.connector_identifier}-${index}`"
+                size="small"
+                type="info"
+                round
+                class="run-account-tag"
+              >
+                {{ accountTagText(account) }}
+              </el-tag>
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
               <span
                 v-if="runOutcomeText(run)"
@@ -518,6 +538,7 @@ import {
 import type {
   IAuthorizableBrowserConnection,
   IAuthorizableConnectionAccount,
+  IRunConnectionAccount,
   IScheduledBrowserBinding
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
@@ -1141,6 +1162,14 @@ export default defineComponent({
     runTagType(status: string) {
       return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
     },
+    // Which account the run posted as, e.g. `zhihu · Germey`. The name half is
+    // resolved server-side and disappears once the account is deleted, so fall
+    // back to the connector alone rather than rendering a dangling separator.
+    accountTagText(account: IRunConnectionAccount) {
+      const connector = account.provider_alias || account.connector_identifier;
+      const name = account.label || account.account_name;
+      return name ? `${connector} · ${name}` : connector;
+    },
     // The judge's own sentence beats a bare code like `goal_not_achieved`, and
     // it is shown for successes too — so it is NOT read from `error_message`.
     runOutcomeText(run: IScheduledRun) {
@@ -1283,7 +1312,8 @@ export default defineComponent({
   border-color: var(--el-color-primary);
   color: #fff;
 }
-.run-task-tag {
+.run-task-tag,
+.run-account-tag {
   flex-shrink: 0;
   max-width: 200px;
   overflow: hidden;

@@ -53,6 +53,19 @@ export interface IScheduledRun {
   outcome?: 'achieved' | 'not_achieved' | 'unknown';
   /** One-line, user-facing explanation of `outcome`. */
   outcome_reason?: string;
+  /** Which connector accounts this run actually used, snapshotted when it
+   *  started. Absent on runs that used each connector's default account, and
+   *  on runs predating the snapshot. */
+  run_accounts?: IRunConnectionAccount[];
+}
+
+/** One connector account a run ran as. `label` / `account_name` are resolved at
+ *  read time and are both absent once the account is deleted. */
+export interface IRunConnectionAccount {
+  connector_identifier: string;
+  provider_alias?: string;
+  label?: string;
+  account_name?: string;
 }
 
 export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed';
