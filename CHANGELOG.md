@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Jul 2026 16:37:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 27 Jul 2026 02:11:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.336.4
+
+Mon, 27 Jul 2026 02:11:41 GMT
+
+### Patches
+
+- localize the run_abandoned scheduled-run reason (dev@acedata.cloud)
 
 ## 3.336.3
 
