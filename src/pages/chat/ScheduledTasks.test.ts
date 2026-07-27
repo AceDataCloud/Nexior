@@ -154,6 +154,158 @@ describe('chat/ScheduledTasks', () => {
     });
   });
 
+  it('prefills the create form from an existing task, with a numbered name', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      editingTask: IScheduledTask | null;
+      form: Record<string, unknown>;
+      showCreateDialog: boolean;
+    };
+    await wrapper.setData({ tasks: [editedTask] });
+
+    vm.openDuplicate(editedTask);
+
+    // A copy is a CREATE, not an edit — otherwise saving would overwrite the original.
+    expect(vm.editingTask).toBeNull();
+    expect(vm.showCreateDialog).toBe(true);
+    expect(vm.form).toMatchObject({
+      name: 'Existing task 2',
+      question: 'Reuse the existing task prompt',
+      model: 'gpt-5.6-sol',
+      scheduleType: 'interval',
+      intervalValue: 6,
+      intervalUnit: 'hour',
+      authorizedSkills: ['hashnode'],
+      authorizedMcpServers: ['publishing'],
+      maxTurns: 12
+    });
+  });
+
+  it('skips names already taken when duplicating repeatedly', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    await wrapper.setData({
+      tasks: [editedTask, { ...editedTask, id: 'task-2', name: 'Existing task 2' }]
+    });
+
+    vm.openDuplicate(editedTask);
+    expect(vm.form.name).toBe('Existing task 3');
+
+    // Duplicating a copy re-uses the base name rather than stacking suffixes.
+    vm.openDuplicate({ ...editedTask, id: 'task-2', name: 'Existing task 2' });
+    expect(vm.form.name).toBe('Existing task 3');
+  });
+
+  it('keeps the duplicated name within the 80-char input cap, without repeating it', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    const longName = 'x'.repeat(80);
+    await wrapper.setData({ tasks: [{ ...editedTask, name: longName }] });
+
+    vm.openDuplicate({ ...editedTask, name: longName });
+    const first = vm.form.name;
+    expect(first.length).toBeLessThanOrEqual(80);
+    expect(first.endsWith(' 2')).toBe(true);
+
+    // Once that copy exists, duplicating again must not hand back the same
+    // truncated string — names are not unique server-side, so a repeat would
+    // leave two indistinguishable rows.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: longName },
+        { ...editedTask, id: 'task-2', name: first }
+      ]
+    });
+    vm.openDuplicate({ ...editedTask, name: longName });
+    expect(vm.form.name).not.toBe(first);
+    expect(vm.form.name.length).toBeLessThanOrEqual(80);
+  });
+
+  it('does not split an emoji when truncating a long name', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    // 90 code points (180 UTF-16 units) so truncation actually fires, and the
+    // 78-code-point cut lands mid-emoji.
+    const emojiName = `a${'😀'.repeat(90)}`;
+    await wrapper.setData({ tasks: [{ ...editedTask, name: emojiName }] });
+
+    vm.openDuplicate({ ...editedTask, name: emojiName });
+
+    // A lone high surrogate renders as the replacement character.
+    expect(vm.form.name).not.toMatch(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/);
+    expect([...vm.form.name].length).toBeLessThanOrEqual(80);
+    expect(vm.form.name.endsWith(' 2')).toBe(true);
+  });
+
+  it('keeps a trailing number that is part of the name, not a copy suffix', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    await wrapper.setData({ tasks: [{ ...editedTask, name: 'Weekly report 2026' }] });
+
+    vm.openDuplicate({ ...editedTask, name: 'Weekly report 2026' });
+
+    // "Weekly report" is not an existing task, so 2026 is a year, not a suffix.
+    expect(vm.form.name).toBe('Weekly report 2026 2');
+  });
+
+  it('mints a fresh authorization expiry for the copy', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      openEdit: (task: IScheduledTask) => void;
+      form: { authorizationExpiresAt: number };
+    };
+    const expired = Math.floor(Date.now() / 1000) - 86400;
+    const stale = {
+      ...editedTask,
+      unattended_policy: { ...editedTask.unattended_policy!, expires_at: expired }
+    };
+    await wrapper.setData({ tasks: [stale] });
+
+    // Editing preserves the existing grant …
+    vm.openEdit(stale);
+    expect(vm.form.authorizationExpiresAt).toBe(expired);
+
+    // … but a copy must not inherit an already-expired one, or it would run
+    // with no skills and no error shown.
+    vm.openDuplicate(stale);
+    expect(vm.form.authorizationExpiresAt).toBeGreaterThan(Math.floor(Date.now() / 1000));
+  });
+
+  it('does not open a duplicate while a save is in progress', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      openEdit: (task: IScheduledTask) => void;
+      editingTask: IScheduledTask | null;
+      form: { name: string };
+    };
+    // Seed tasks so an unguarded openDuplicate would visibly rename the form.
+    await wrapper.setData({ tasks: [editedTask] });
+    vm.openEdit(editedTask);
+    await wrapper.setData({ saving: true });
+
+    vm.openDuplicate(editedTask);
+
+    // The in-flight edit must survive — swapping the form mid-save would submit
+    // the copy's fields as an update to the original.
+    expect(vm.editingTask).toMatchObject({ id: editedTask.id });
+    expect(vm.form.name).toBe('Existing task');
+  });
+
   it('prevents switching forms while a save is in progress', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
