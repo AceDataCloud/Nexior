@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 27 Jul 2026 05:20:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 27 Jul 2026 23:39:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.337.0
+
+Mon, 27 Jul 2026 23:39:30 GMT
+
+### Minor changes
+
+- Show which connector account each scheduled run used: run rows now carry a tag per pinned account (e.g. `zhihu · Germey`), falling back to the connector alone once the account is gone. (dev@acedata.cloud)
 
 ## 3.336.5
 
