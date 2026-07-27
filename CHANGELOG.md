@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 27 Jul 2026 02:11:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 27 Jul 2026 05:20:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.336.5
+
+Mon, 27 Jul 2026 05:20:15 GMT
+
+### Patches
+
+- default the ChatGPT model picker to GPT-5.6 Sol (dev@acedata.cloud)
 
 ## 3.336.4
 
