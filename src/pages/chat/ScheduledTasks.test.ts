@@ -2,7 +2,7 @@
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { CHAT_MODEL_NAME_GPT_5_6_LUNA } from '@/constants';
+import { CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import {
   SCHEDULED_TASK_ERROR_BROWSER_AUTHORIZATION_STALE,
   SCHEDULED_TASK_ERROR_BROWSER_DEVICE_OFFLINE,
@@ -137,7 +137,7 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toEqual({
       name: '',
       question: '',
-      model: CHAT_MODEL_NAME_GPT_5_6_LUNA,
+      model: CHAT_MODEL_NAME_GPT_5_6_SOL,
       scheduleType: 'daily',
       intervalValue: 4,
       intervalUnit: 'hour',

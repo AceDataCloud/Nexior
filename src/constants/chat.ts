@@ -317,6 +317,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
   models: [CHAT_MODEL_GPT_5_6_LUNA, CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GPT_5_6_TERRA],
+  defaultModel: CHAT_MODEL_GPT_5_6_SOL,
   isVoiceCallSupported: true
 };
 
@@ -425,3 +426,5 @@ export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_GROUP_GLM
 ];
+
+export const getDefaultChatModel = (group: IChatModelGroup): IChatModel => group.defaultModel ?? group.models[0];
