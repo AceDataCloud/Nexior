@@ -69,7 +69,9 @@ export type IScheduleSpec =
   | { type: 'once'; at: number; tz: string };
 
 export interface IScheduledTaskUnattendedPolicy {
-  mode: 'deny_all' | 'allow_selected_skills';
+  /** Authorization IS these lists — empty means nothing is authorized. There is
+   *  deliberately no `mode` flag: a second representation of the same fact is
+   *  what silently blanked the edit dialog when the two drifted apart. */
   allowed_skills: string[];
   allowed_mcp_servers?: string[];
   browser_connections?: IScheduledBrowserBinding[];
