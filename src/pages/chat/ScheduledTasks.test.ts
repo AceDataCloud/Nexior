@@ -354,6 +354,52 @@ describe('chat/ScheduledTasks', () => {
       expect(tags[0].text()).toBe('Gmail digest');
     });
 
+    it('tags each run row with every connector account it ran as', async () => {
+      const wrapper = withToken();
+      await wrapper.setData({
+        activeTab: 'runs',
+        allRuns: [
+          {
+            id: 'r1',
+            task_id: 't1',
+            status: 'success',
+            scheduled_at: 1,
+            run_accounts: [
+              { connector_identifier: 'zhihu/zhihu', provider_alias: 'zhihu', label: '主号' },
+              { connector_identifier: 'medium/medium', provider_alias: 'medium', account_name: 'Germey' }
+            ]
+          }
+        ],
+        allRunsCount: 1
+      });
+
+      expect(wrapper.findAll('.run-account-tag').map((t) => t.text())).toEqual(['zhihu · 主号', 'medium · Germey']);
+    });
+
+    // A deleted account resolves to no name at all — the tag must not render a
+    // dangling separator, and rows without accounts must stay unchanged.
+    it('falls back to the connector alone when the account name is gone', async () => {
+      const wrapper = withToken();
+      await wrapper.setData({
+        activeTab: 'runs',
+        allRuns: [
+          {
+            id: 'r1',
+            task_id: 't1',
+            status: 'success',
+            scheduled_at: 1,
+            run_accounts: [{ connector_identifier: 'zhihu/zhihu', provider_alias: 'zhihu' }]
+          },
+          { id: 'r2', task_id: 't2', status: 'success', scheduled_at: 2 }
+        ],
+        allRunsCount: 2
+      });
+
+      const tags = wrapper.findAll('.run-account-tag');
+      expect(tags).toHaveLength(1);
+      expect(tags[0].text()).toBe('zhihu');
+    });
+
     it('resets to page 1 and refetches when the status filter changes', async () => {
       const spy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
       const wrapper = withToken();
