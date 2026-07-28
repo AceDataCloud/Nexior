@@ -349,6 +349,14 @@ export const applyNodeEvent = (
     case CB_EVENT_SESSION_CLOSED:
       commit('finalizeAllStreams', { session_id: sessionId });
       commit('updateSession', { session_id: sessionId, status: 'closed' });
+      // A closed session's relay-side log is released, and an older relay
+      // renumbers its seq space from 1 on the next event — WITHOUT dropping our
+      // socket, so `seqChecked` would keep the re-baseline branch from ever
+      // running and every later event would look already-applied. Clear only the
+      // validation, never the cursor: the first event of a renumbered space then
+      // re-baselines (and resyncs) on its own, while a plain reconnect can still
+      // resume from here instead of silently skipping what it missed.
+      commit('clearSeqCheckedFor', sessionId);
       break;
     case CB_EVENT_SESSION_REWOUND:
       // A past prompt was edited: fold the fork into the transcript by rewinding
@@ -365,7 +373,13 @@ export const applyNodeEvent = (
     case CB_EVENT_SESSION_STREAM_TRUNCATED:
       // The live stream lost events neither relay nor node could retain (cursor
       // too old / outbox overflow). Resync the session from the device transcript
-      // rather than trust the cursor — never a silent gap.
+      // rather than trust the cursor — never a silent gap. Unlike `session.closed`
+      // the cursor really is dropped here, because the relay has just declared it
+      // unreachable: keeping it would re-trigger this same truncation on every
+      // reconnect. Clear the validation too, or a renumbered space arriving on
+      // this still-open connection is dropped before it can re-baseline.
+      commit('resetLastSeq', sessionId);
+      commit('clearSeqCheckedFor', sessionId);
       dispatch('resyncSession', sessionId);
       break;
     case CB_EVENT_SESSIONS_SNAPSHOT:

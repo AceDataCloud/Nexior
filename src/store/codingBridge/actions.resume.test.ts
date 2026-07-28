@@ -31,7 +31,7 @@ vi.mock('@/utils/codingBridgeSocket', () => ({
   }
 }));
 
-const { connect, reattachSession } = await import('./actions');
+const { connect, reattachSession, applyNodeEvent } = await import('./actions');
 
 const NODE = 'node-1';
 
@@ -55,6 +55,8 @@ const harness = () => {
   return {
     state,
     dispatched,
+    closed: (session_id: string) =>
+      applyNodeEvent(commit as never, dispatch as never, state, { event: 'session.closed', session_id } as never, NODE),
     open: (session_id: string) =>
       reattachSession(ctx as never, { node_id: NODE, provider: 'claude', session_id } as never)
   };
@@ -83,10 +85,12 @@ describe('coding bridge session resume cursor', () => {
     expect(resumeCalls).toEqual([{ seen: 42 }]);
   });
 
-  it('resumes from 0 for a session re-keyed mid-turn (its seq space restarts at 1)', () => {
-    // `renameSession` sets lastSeq[real] = 0 on purpose: the relay numbers seq
-    // per session_id, so the real id begins a FRESH space. That 0 is a real
-    // cursor over a buffer we are actively watching — a few events at most.
+  it('does NOT resume for a session re-keyed mid-turn (no cursor = nothing to catch up)', () => {
+    // `renameSession` leaves the real id with NO cursor: the relay numbers seq
+    // per session_id, so the real id begins a FRESH space this tab has never
+    // followed. Handing `reattachSession` a 0 instead would make it ask the
+    // relay for everything from seq 0 — the very full-buffer replay this guard
+    // exists to prevent.
     const h = harness();
     h.state.sessions['prov'] = { session_id: 'prov', node_id: NODE, status: 'running' } as never;
     h.state.lastSeq['prov'] = 7;
@@ -94,7 +98,20 @@ describe('coding bridge session resume cursor', () => {
       from: 'prov',
       to: 'real-1'
     });
+    expect(h.state.lastSeq['real-1']).toBeUndefined();
     h.open('real-1');
-    expect(resumeCalls).toEqual([{ 'real-1': 0 }]);
+    expect(resumeCalls).toEqual([]);
+  });
+
+  it('still resumes a closed session after a reconnect (close must not erase the cursor)', () => {
+    // `session.closed` releases the relay-side log but the session can be written
+    // to again. If the close had dropped our cursor, this reconnect would ask for
+    // nothing and whatever arrived while we were away would be lost with no
+    // truncation notice — a silent hole in the transcript.
+    const h = harness();
+    h.state.lastSeq['closed-then-written'] = 350;
+    h.closed('closed-then-written');
+    h.open('closed-then-written');
+    expect(resumeCalls).toEqual([{ 'closed-then-written': 350 }]);
   });
 });

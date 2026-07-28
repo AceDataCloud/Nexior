@@ -117,11 +117,18 @@ export const renameSession = (state: ICodingBridgeState, payload: { from: string
   // that id begins a FRESH seq space (1, 2, 3…). Inheriting the provisional
   // cursor made the dedup in `applyNodeEvent` drop the real id's first events as
   // "already seen" — e.g. a codex turn's first reply (low seq) silently vanished
-  // while a later turn (higher seq) showed. The real id is brand-new to this tab
-  // at re-key time, so reset its cursor to accept its whole stream.
+  // while a later turn (higher seq) showed. Leave the real id with NO cursor:
+  // it is brand-new to this tab, so it accepts its whole stream, and
+  // `reattachSession` reads absent-cursor as "never followed" and skips the
+  // resume (a cursor of 0 would instead ask the relay for the entire buffer).
   delete state.lastSeq[from];
   delete state.seqChecked[from];
-  state.lastSeq[to] = 0;
+  // `to` may already carry a cursor from an earlier life in this tab (reopened
+  // history entry, LRU-evicted relay log). Its space restarts under us here, so
+  // drop the validation that would otherwise short-circuit the re-baseline in
+  // `applyNodeEvent` and swallow the real id's first events. The cursor itself
+  // stays: the re-baseline needs it to notice the restart at all.
+  delete state.seqChecked[to];
   for (const request of state.permissions) {
     if (request.session_id === from) {
       request.session_id = to;
@@ -197,6 +204,13 @@ export const resetLastSeq = (state: ICodingBridgeState, sessionId: string): void
 // Mark a session's seq space as validated on this connection.
 export const markSeqChecked = (state: ICodingBridgeState, sessionId: string): void => {
   state.seqChecked[sessionId] = true;
+};
+
+// Forget ONE session's validation. Used where that session's seq space is known
+// to restart under us (session.closed) but the socket — and every other
+// session's cursor on it — stays valid.
+export const clearSeqCheckedFor = (state: ICodingBridgeState, sessionId: string): void => {
+  delete state.seqChecked[sessionId];
 };
 
 // Forget every validation. Called on each (re)connect: the relay is
@@ -349,6 +363,7 @@ export default {
   resetLastSeq,
   markSeqChecked,
   clearSeqChecked,
+  clearSeqCheckedFor,
   appendDelta,
   finalizeStream,
   finalizeAllStreams,
