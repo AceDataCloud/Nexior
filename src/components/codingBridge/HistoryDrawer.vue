@@ -86,12 +86,15 @@
               aria-hidden="true"
               focusable="false"
             />
-            <span class="text-sm truncate flex-1" :class="item.unread ? 'font-bold' : 'font-medium'">{{
-              item.title
-            }}</span>
-            <!-- Finished since the user last opened it. The watermark lives on the
-                 node, so reading it here clears it on every other device too. -->
-            <span v-if="item.unread" class="unread-dot" :title="$t('codingBridge.history.unread')"></span>
+            <!-- Unread (finished since the user last opened it) is shown by weight
+                 alone. 400-vs-700 so the jump reads at 13px; 500 was invisible. The
+                 watermark lives on the node, so opening it clears it everywhere. -->
+            <span
+              class="text-sm truncate flex-1"
+              :class="item.unread ? 'font-bold' : 'font-normal'"
+              :title="item.unread ? $t('codingBridge.history.unread') : undefined"
+              >{{ item.title }}</span
+            >
             <!-- Live on the node right now: opening it reattaches to the running
                  session (Stop button + streaming) rather than replaying a copy. -->
             <span v-if="item.running" class="running-dot" :title="$t('codingBridge.history.running')"></span>
@@ -341,14 +344,6 @@ export default defineComponent({
   border-radius: 9999px;
   background: var(--el-color-success);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--el-color-success) 25%, transparent);
-}
-
-.unread-dot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background: var(--el-color-danger);
 }
 
 // The OpenAI glyph ships black; flip it to white on dark backgrounds.
