@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 06:11:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 06:38:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.339.0
+
+Tue, 28 Jul 2026 06:38:10 GMT
+
+### Minor changes
+
+- rename a Coding Bridge device; the name syncs to every signed-in client (dev@acedata.cloud)
 
 ## 3.338.0
 
