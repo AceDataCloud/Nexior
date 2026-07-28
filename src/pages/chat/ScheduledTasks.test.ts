@@ -1,8 +1,9 @@
 // @vitest-environment jsdom
 import { flushPromises, shallowMount } from '@vue/test-utils';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { reactive } from 'vue';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import type { MessageBoxData } from 'element-plus';
 
 import { CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import {
@@ -27,7 +28,7 @@ const editedTask: IScheduledTask = {
     max_turns: 12
   },
   unattended_policy: {
-    mode: 'allow_selected_skills',
+    // Authorization is the lists themselves — there is no mode flag.
     allowed_skills: ['hashnode'],
     allowed_mcp_servers: ['publishing']
   },
@@ -36,12 +37,17 @@ const editedTask: IScheduledTask = {
   updated_at: 1
 };
 
+// `MessageBoxData` is an intersection (`MessageBoxInputData & 'confirm'`) that
+// no runtime value satisfies; what confirm() actually resolves with is the
+// action string.
+const CONFIRMED = 'confirm' as unknown as MessageBoxData;
+
 const errorMessages: Record<string, string> = {
   'chat.scheduledTasks.run.reason.internal_error': 'Internal error',
   'chat.scheduledTasks.run.reason.billing_gate_failed': 'Billing authorization failed'
 };
 
-const mountComponent = () =>
+const mountComponent = (credential: { token: string } | null = null) =>
   shallowMount(ScheduledTasks, {
     global: {
       stubs: {
@@ -54,7 +60,8 @@ const mountComponent = () =>
         $te: (key: string) => key in errorMessages,
         $store: {
           state: {
-            chat: { credential: null },
+            // `token` is a computed off the store — setData('token') is a no-op.
+            chat: { credential },
             site: { features: {} }
           }
         }
@@ -63,6 +70,7 @@ const mountComponent = () =>
   });
 
 describe('chat/ScheduledTasks', () => {
+  afterEach(() => vi.restoreAllMocks());
   const browserSkill: IAuthorizableSkill = {
     slug: 'xiaohongshu',
     name: 'Xiaohongshu',
@@ -357,6 +365,240 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
   });
+
+  // A legacy task doc may still carry `mode`; it has no authority and must
+  // neither blank the dialog nor round-trip back to the server.
+  it.each([undefined, 'allow_selected', 'deny_all'])(
+    'restores authorizations regardless of a legacy mode=%s and re-saves without it',
+    async (mode) => {
+      // saveTask gates on the "you are authorizing these skills" confirm.
+      vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue(CONFIRMED);
+      const update = vi
+        .spyOn(scheduledTasksOperator, 'updateTask')
+        .mockResolvedValue({ ...editedTask } as IScheduledTask);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({
+        skills: [],
+        mcp_servers: []
+      });
+      const wrapper = mountComponent({ token: 'tok' });
+      await flushPromises();
+      const vm = wrapper.vm as unknown as {
+        openEdit: (task: IScheduledTask) => void;
+        saveTask: () => Promise<void>;
+        form: Record<string, unknown>;
+      };
+
+      vm.openEdit({
+        ...editedTask,
+        unattended_policy: { ...editedTask.unattended_policy!, ...(mode ? { mode } : {}) }
+      } as IScheduledTask);
+
+      expect(vm.form).toMatchObject({
+        authorizedSkills: ['hashnode'],
+        authorizedMcpServers: ['publishing']
+      });
+
+      await vm.saveTask();
+      await flushPromises();
+
+      const [, , payload] = update.mock.calls[0];
+      expect(payload.unattended_policy).toEqual({
+        allowed_skills: ['hashnode'],
+        allowed_mcp_servers: ['publishing'],
+        browser_connections: undefined,
+        connection_bindings: undefined,
+        expires_at: expect.any(Number)
+      });
+      expect(payload.unattended_policy).not.toHaveProperty('mode');
+      expect(payload.template).toMatchObject({ skills: ['hashnode'], mcp_servers: ['publishing'] });
+    }
+  );
+
+  it('keeps the saved account binding when confirm is clicked before capabilities load', async () => {
+    vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue(CONFIRMED);
+    const update = vi
+      .spyOn(scheduledTasksOperator, 'updateTask')
+      .mockResolvedValue({ ...editedTask } as IScheduledTask);
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    // Resolve only after openEdit returns, so saveTask starts while in flight.
+    let release: (v: { skills: IAuthorizableSkill[]; mcp_servers: [] }) => void = () => undefined;
+    vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockReturnValue(
+      new Promise((resolve) => (release = resolve)) as ReturnType<
+        typeof scheduledTasksOperator.listAuthorizableCapabilities
+      >
+    );
+
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as {
+      openEdit: (task: IScheduledTask) => void;
+      saveTask: () => Promise<void>;
+    };
+
+    const boundTask: IScheduledTask = {
+      ...editedTask,
+      template: { ...editedTask.template, skills: ['multi'] },
+      unattended_policy: {
+        allowed_skills: ['multi'],
+        allowed_mcp_servers: [],
+        connection_bindings: [{ connector_identifier: 'zhihu/zhihu', connection_id: 'conn-a' }]
+      }
+    };
+    vm.openEdit(boundTask);
+
+    const saving = vm.saveTask();
+    release({
+      skills: [
+        {
+          slug: 'multi',
+          name: 'multi',
+          description: '',
+          required_connections: ['zhihu/zhihu'],
+          allowed_tools: [],
+          source: 'installed',
+          connected: true,
+          missing_connections: [],
+          connection_accounts: {
+            zhihu: [
+              {
+                connection_id: 'conn-a',
+                connector_identifier: 'zhihu/zhihu',
+                label: 'A',
+                is_default: true,
+                account_name: 'a'
+              },
+              {
+                connection_id: 'conn-b',
+                connector_identifier: 'zhihu/zhihu',
+                label: 'B',
+                is_default: false,
+                account_name: 'b'
+              }
+            ]
+          }
+        } as unknown as IAuthorizableSkill
+      ],
+      mcp_servers: []
+    });
+    await saving;
+    await flushPromises();
+
+    const [, , payload] = update.mock.calls[0];
+    expect(payload.unattended_policy?.connection_bindings).toEqual([
+      { connector_identifier: 'zhihu/zhihu', connection_id: 'conn-a' }
+    ]);
+  });
+
+  describe('save while capabilities are still loading', () => {
+    const boundTask: IScheduledTask = {
+      ...editedTask,
+      template: { ...editedTask.template, skills: ['multi'] },
+      unattended_policy: {
+        allowed_skills: ['multi'],
+        allowed_mcp_servers: [],
+        connection_bindings: [{ connector_identifier: 'zhihu/zhihu', connection_id: 'conn-a' }]
+      }
+    };
+
+    /** Mounts with a capability request the test resolves/rejects by hand. */
+    const arrange = async () => {
+      vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue(CONFIRMED);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      const update = vi
+        .spyOn(scheduledTasksOperator, 'updateTask')
+        .mockResolvedValue({ ...editedTask } as IScheduledTask);
+      const create = vi
+        .spyOn(scheduledTasksOperator, 'createTask')
+        .mockResolvedValue({ ...editedTask } as IScheduledTask);
+      let settle: { resolve: () => void; reject: () => void } = { resolve: () => undefined, reject: () => undefined };
+      vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockReturnValue(
+        new Promise((resolve, reject) => {
+          settle = { resolve: () => resolve({ skills: [], mcp_servers: [] }), reject: () => reject(new Error('net')) };
+        }) as ReturnType<typeof scheduledTasksOperator.listAuthorizableCapabilities>
+      );
+      const wrapper = mountComponent({ token: 'tok' });
+      await flushPromises();
+      const vm = wrapper.vm as unknown as {
+        openEdit: (task: IScheduledTask) => void;
+        openCreate: () => void;
+        closeTaskDialog: () => void;
+        saveTask: () => Promise<void>;
+        saving: boolean;
+        form: { connectionAccounts: Record<string, string> } & Record<string, unknown>;
+      };
+      return { vm, update, create, settle };
+    };
+
+    it('aborts instead of wiping bindings when the capability load fails', async () => {
+      const error = vi.spyOn(ElMessage, 'error');
+      const { vm, update, settle } = await arrange();
+      vm.openEdit(boundTask);
+
+      const saving = vm.saveTask();
+      settle.reject();
+      await saving;
+      await flushPromises();
+
+      expect(update).not.toHaveBeenCalled();
+      // Aborted for THIS reason — not incidentally via some other early return.
+      expect(error).toHaveBeenCalledWith('chat.scheduledTasks.loadError');
+      expect(vm.form.connectionAccounts).toEqual({ 'zhihu/zhihu': 'conn-a' });
+    });
+
+    it('still saves when there is no token, so the auth failure surfaces', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      const update = vi.spyOn(scheduledTasksOperator, 'updateTask').mockRejectedValue(new Error('401'));
+      const error = vi.spyOn(ElMessage, 'error');
+      const wrapper = mountComponent(null);
+      await flushPromises();
+      const vm = wrapper.vm as unknown as {
+        openEdit: (task: IScheduledTask) => void;
+        saveTask: () => Promise<void>;
+      };
+
+      vm.openEdit({ ...editedTask, unattended_policy: { allowed_skills: [] } });
+      await vm.saveTask();
+      await flushPromises();
+
+      expect(update).toHaveBeenCalledTimes(1);
+      expect(error).toHaveBeenCalled();
+    });
+
+    // `saving` is held across the capability wait, and openCreate/closeTaskDialog
+    // both early-return on it — so the mid-save clicks are no-ops and the
+    // original edit still lands intact, rather than becoming a blank create.
+    it('ignores New clicked mid-save and still saves the edit', async () => {
+      const { vm, update, create, settle } = await arrange();
+      vm.openEdit(boundTask);
+
+      const saving = vm.saveTask();
+      vm.openCreate();
+      settle.resolve();
+      await saving;
+      await flushPromises();
+
+      expect(create).not.toHaveBeenCalled();
+      const [, id, payload] = update.mock.calls[0];
+      expect(id).toBe(boundTask.id);
+      expect(payload.template?.question).toBe(boundTask.template.question);
+    });
+
+    it('ignores Cancel clicked mid-save and still saves the edit', async () => {
+      const { vm, update, settle } = await arrange();
+      vm.openEdit(boundTask);
+
+      const saving = vm.saveTask();
+      vm.closeTaskDialog();
+      settle.resolve();
+      await saving;
+      await flushPromises();
+
+      const [, id] = update.mock.calls[0];
+      expect(id).toBe(boundTask.id);
+    });
+  });
+
   it('offers an account picker only for connectors the user has several accounts of', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
@@ -629,6 +871,11 @@ describe('chat/ScheduledTasks', () => {
   describe('polling pending runs', () => {
     const listAllRuns = () => vi.spyOn(scheduledTasksOperator, 'listAllRuns');
     const listRuns = () => vi.spyOn(scheduledTasksOperator, 'listRuns');
+
+    // Prevent real XHR from loadTasks() leaking into subsequent tests.
+    beforeEach(() => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    });
 
     afterEach(() => {
       vi.restoreAllMocks();

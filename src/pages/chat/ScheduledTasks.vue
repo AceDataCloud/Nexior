@@ -648,6 +648,7 @@ export default defineComponent({
       loading: false,
       runsLoading: false,
       skillsLoading: false,
+      skillsInflight: null as Promise<boolean> | null,
       saving: false,
       showCreateDialog: false,
       showRunHistory: false,
@@ -1043,12 +1044,8 @@ export default defineComponent({
         dailyTime,
         weekday,
         cronExpr,
-        authorizedSkills:
-          task.unattended_policy?.mode === 'allow_selected_skills' ? task.unattended_policy.allowed_skills || [] : [],
-        authorizedMcpServers:
-          task.unattended_policy?.mode === 'allow_selected_skills'
-            ? task.unattended_policy.allowed_mcp_servers || []
-            : [],
+        authorizedSkills: task.unattended_policy?.allowed_skills || [],
+        authorizedMcpServers: task.unattended_policy?.allowed_mcp_servers || [],
         browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
         connectionAccounts: Object.fromEntries(
           (task.unattended_policy?.connection_bindings ?? []).map((b) => [b.connector_identifier, b.connection_id])
@@ -1138,6 +1135,23 @@ export default defineComponent({
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
         return;
       }
+      // Connection/browser bindings below are rebuilt from authorizableSkills;
+      // saving before openEdit's load lands would ship none and wipe the ones
+      // already stored (the server $sets the policy wholesale). Hold `saving`
+      // across the wait so New/Cancel can't swap the form out mid-flight.
+      const editingBefore = this.editingTask;
+      this.saving = true;
+      let loaded: boolean;
+      try {
+        loaded = await this.loadAuthorizableSkills();
+      } finally {
+        this.saving = false;
+      }
+      // A failed load leaves the list empty, which would rebuild the bindings
+      // as "none" — abort instead of destroying the stored ones.
+      if (!loaded) return;
+      // Cancel closed the dialog, or New/Edit swapped the target, while we waited.
+      if (!this.showCreateDialog || this.editingTask !== editingBefore) return;
       if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
         try {
           await ElMessageBox.confirm(
@@ -1206,14 +1220,13 @@ export default defineComponent({
         unattended_policy:
           authorizedSkills.length || authorizedMcpServers.length
             ? {
-                mode: 'allow_selected_skills' as const,
                 allowed_skills: authorizedSkills,
                 allowed_mcp_servers: authorizedMcpServers,
                 browser_connections: browserConnections,
                 connection_bindings: connectionBindings.length ? connectionBindings : undefined,
                 expires_at: this.form.authorizationExpiresAt
               }
-            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
+            : { allowed_skills: [], allowed_mcp_servers: [] }
       };
       await this.submitTask(payload, false);
     },
@@ -1280,23 +1293,35 @@ export default defineComponent({
       if (mcp) return mcp.name || mcp.slug;
       return slug;
     },
-    async loadAuthorizableSkills(force = false) {
-      if (
-        !this.token ||
-        this.skillsLoading ||
-        (!force && (this.authorizableSkills.length || this.authorizableMcpServers.length))
-      )
-        return;
+    /** Resolves true when the capability list is loaded (or already was).
+     *  saveTask rebuilds bindings from it, so a false here must abort the save
+     *  rather than ship an empty list the server would $set over the stored one. */
+    async loadAuthorizableSkills(force = false): Promise<boolean> {
+      // Callers that arrive mid-flight must await the SAME request, not return
+      // early — saveTask reads authorizableSkills to rebuild connection/browser
+      // bindings, and an empty list there silently drops the saved ones.
+      if (this.skillsInflight) return this.skillsInflight;
+      // No token: nothing to load and nothing to wipe. Report success so the
+      // save proceeds to submitTask, which surfaces the auth failure — aborting
+      // silently here would turn Save into a dead button.
+      if (!this.token) return true;
+      if (!force && (this.authorizableSkills.length || this.authorizableMcpServers.length)) return true;
       this.skillsLoading = true;
-      try {
-        const capabilities = await scheduledTasksOperator.listAuthorizableCapabilities(this.token);
-        this.authorizableSkills = capabilities.skills;
-        this.authorizableMcpServers = capabilities.mcp_servers;
-      } catch {
-        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
-      } finally {
-        this.skillsLoading = false;
-      }
+      this.skillsInflight = (async () => {
+        try {
+          const capabilities = await scheduledTasksOperator.listAuthorizableCapabilities(this.token!);
+          this.authorizableSkills = capabilities.skills;
+          this.authorizableMcpServers = capabilities.mcp_servers;
+          return true;
+        } catch {
+          ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+          return false;
+        } finally {
+          this.skillsLoading = false;
+          this.skillsInflight = null;
+        }
+      })();
+      return this.skillsInflight;
     },
     onSkillSelectVisible(visible: boolean) {
       if (visible) void this.loadAuthorizableSkills(true);
