@@ -86,7 +86,12 @@
               aria-hidden="true"
               focusable="false"
             />
-            <span class="text-sm font-medium truncate flex-1">{{ item.title }}</span>
+            <span class="text-sm truncate flex-1" :class="item.unread ? 'font-bold' : 'font-medium'">{{
+              item.title
+            }}</span>
+            <!-- Finished since the user last opened it. The watermark lives on the
+                 node, so reading it here clears it on every other device too. -->
+            <span v-if="item.unread" class="unread-dot" :title="$t('codingBridge.history.unread')"></span>
             <!-- Live on the node right now: opening it reattaches to the running
                  session (Stop button + streaming) rather than replaying a copy. -->
             <span v-if="item.running" class="running-dot" :title="$t('codingBridge.history.running')"></span>
@@ -236,6 +241,16 @@ export default defineComponent({
       if (!this.currentNodeId) {
         return;
       }
+      if (item.unread) {
+        // Watermark what this browser rendered, so anything appended after the
+        // listing stays unread. The node replies with a refreshed snapshot.
+        this.$store.dispatch('codingBridge/markHistoryRead', {
+          node_id: this.currentNodeId,
+          provider: item.provider,
+          session_id: item.session_id,
+          updated_at: item.updated_at
+        });
+      }
       // Reattach (not just fetch the transcript): if this conversation is still
       // running on the node, this re-pulls its live stream, running state and any
       // blocked permission/AskUserQuestion prompt instead of showing it idle.
@@ -326,6 +341,14 @@ export default defineComponent({
   border-radius: 9999px;
   background: var(--el-color-success);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--el-color-success) 25%, transparent);
+}
+
+.unread-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--el-color-danger);
 }
 
 // The OpenAI glyph ships black; flip it to white on dark backgrounds.
