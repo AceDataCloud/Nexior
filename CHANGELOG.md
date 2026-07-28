@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 15:00:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 16:13:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.5
+
+Tue, 28 Jul 2026 16:13:38 GMT
+
+### Patches
+
+- coding bridge: open a conversation at its newest message instead of replaying the relay buffer oldest-first (dev@acedata.cloud)
 
 ## 3.340.4
 
