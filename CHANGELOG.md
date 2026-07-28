@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 08:46:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 11:09:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.2
+
+Tue, 28 Jul 2026 11:09:19 GMT
+
+### Patches
+
+- filter coding bridge history by provider (Claude Code / Codex / GitHub Copilot) (dev@acedata.cloud)
 
 ## 3.340.1
 
