@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 27 Jul 2026 23:39:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 06:11:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.338.0
+
+Tue, 28 Jul 2026 06:11:42 GMT
+
+### Minor changes
+
+- Scheduled run lists now refresh themselves while a run is still queued or running, so a finished run stops showing as 运行中 and becomes clickable without leaving and re-entering the page. (dev@acedata.cloud)
 
 ## 3.337.0
 
