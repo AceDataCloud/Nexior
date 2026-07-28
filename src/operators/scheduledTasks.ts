@@ -13,6 +13,11 @@ function headers(token: string) {
 
 const BASE = `${BASE_URL_API}/aichat2/scheduled-tasks`;
 
+// Without a timeout a stalled mobile connection leaves the promise pending
+// forever, which would wedge the run-list poller's in-flight guard for the
+// life of the page. Mirrors the 20s used by the shared client in common.ts.
+const RUN_REQUEST_TIMEOUT_MS = 20_000;
+
 export interface IScheduledTask {
   id: string;
   name: string;
@@ -69,6 +74,32 @@ export interface IRunConnectionAccount {
 }
 
 export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed';
+
+/** Give up on a pending run this long after it was scheduled. The worker's
+ *  reaper force-fails abandoned runs 45 min in, sweeping every 5 min, so
+ *  anything still pending past this is one the reaper can't reach — polling it
+ *  would never end. Seconds, matching `scheduled_at`. */
+export const RUN_PENDING_MAX_AGE_SECONDS = 55 * 60;
+
+/** Is this run still expected to change on its own? A pending run has no
+ *  `conversation_id` — the worker backfills it only once the agent loop
+ *  returns — so the UI polls while any of these are on screen.
+ *
+ *  `needs_user_input` is deliberately excluded: the reaper only sweeps
+ *  `queued`/`running`, so a run parked awaiting input has no guaranteed
+ *  terminal transition.
+ *
+ *  Anchored to the run's own age rather than to a wall-clock deadline held in
+ *  the component, so leaving and returning to the page can't extend polling on
+ *  a run that is never going to settle.
+ *
+ *  `nowMs` is required rather than defaulted: as a default it silently absorbs
+ *  the index argument from `Array.some(isRunWorthPolling)`, which reads as
+ *  correct and polls forever. */
+export function isRunWorthPolling(run: IScheduledRun, nowMs: number): boolean {
+  if (run.status !== 'queued' && run.status !== 'running') return false;
+  return nowMs / 1000 - run.scheduled_at < RUN_PENDING_MAX_AGE_SECONDS;
+}
 
 export interface IScheduledRunFilter {
   status?: IScheduledRunStatus;
@@ -251,7 +282,11 @@ class ScheduledTasksOperator {
   }
 
   async listRuns(token: string, id: string): Promise<IScheduledRun[]> {
-    const { data } = await axios.post(BASE, { action: 'retrieve_runs', id }, { headers: headers(token) });
+    const { data } = await axios.post(
+      BASE,
+      { action: 'retrieve_runs', id },
+      { headers: headers(token), timeout: RUN_REQUEST_TIMEOUT_MS }
+    );
     return data?.items ?? [];
   }
 
@@ -260,7 +295,11 @@ class ScheduledTasksOperator {
     token: string,
     filter: IScheduledRunFilter = {}
   ): Promise<{ items: IScheduledRun[]; count: number }> {
-    const { data } = await axios.post(BASE, { action: 'retrieve_runs_batch', ...filter }, { headers: headers(token) });
+    const { data } = await axios.post(
+      BASE,
+      { action: 'retrieve_runs_batch', ...filter },
+      { headers: headers(token), timeout: RUN_REQUEST_TIMEOUT_MS }
+    );
     return { items: data?.items ?? [], count: data?.count ?? 0 };
   }
 
