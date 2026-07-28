@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 06:52:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 07:19:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.0
+
+Tue, 28 Jul 2026 07:19:57 GMT
+
+### Minor changes
+
+- add a duplicate action to scheduled tasks that prefills the create form from an existing task (dev@acedata.cloud)
 
 ## 3.339.1
 
