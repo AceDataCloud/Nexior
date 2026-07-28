@@ -195,9 +195,10 @@ describe('chat/ScheduledTasks', () => {
     vm.openDuplicate(editedTask);
     expect(vm.form.name).toBe('Existing task 3');
 
-    // Duplicating a copy re-uses the base name rather than stacking suffixes.
+    // Duplicating a copy appends rather than reusing the base: any rule that
+    // strips a trailing number eventually eats a real one (see the year test).
     vm.openDuplicate({ ...editedTask, id: 'task-2', name: 'Existing task 2' });
-    expect(vm.form.name).toBe('Existing task 3');
+    expect(vm.form.name).toBe('Existing task 2 2');
   });
 
   it('keeps the duplicated name within the 80-char input cap, without repeating it', async () => {
@@ -228,36 +229,57 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form.name.length).toBeLessThanOrEqual(80);
   });
 
-  it('does not split an emoji when truncating a long name', async () => {
+  it('does not split an emoji, and stays within the cap the browser enforces', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
       openDuplicate: (task: IScheduledTask) => void;
       form: { name: string };
     };
-    // 90 code points (180 UTF-16 units) so truncation actually fires, and the
-    // 78-code-point cut lands mid-emoji.
-    const emojiName = `a${'😀'.repeat(90)}`;
+    // Exactly 80 UTF-16 units — the input is already full, so the suffix has to
+    // displace something. Budgeting in code points here would return 82 units,
+    // the browser's maxlength would clip the " 2" back off, and every copy would
+    // come out identical.
+    const emojiName = '😀'.repeat(40);
     await wrapper.setData({ tasks: [{ ...editedTask, name: emojiName }] });
 
     vm.openDuplicate({ ...editedTask, name: emojiName });
+    const first = vm.form.name;
 
+    // maxlength counts UTF-16 units, so that is the unit that must be asserted.
+    expect(first.length).toBeLessThanOrEqual(80);
     // A lone high surrogate renders as the replacement character.
-    expect(vm.form.name).not.toMatch(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/);
-    expect([...vm.form.name].length).toBeLessThanOrEqual(80);
-    expect(vm.form.name.endsWith(' 2')).toBe(true);
+    expect(first).not.toMatch(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/);
+    expect(first.endsWith(' 2')).toBe(true);
+
+    // And the copy of the copy must still differ.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: emojiName },
+        { ...editedTask, id: 'task-2', name: first }
+      ]
+    });
+    vm.openDuplicate({ ...editedTask, name: emojiName });
+    expect(vm.form.name).not.toBe(first);
+    expect(vm.form.name.length).toBeLessThanOrEqual(80);
   });
 
-  it('keeps a trailing number that is part of the name, not a copy suffix', async () => {
+  it('never eats a trailing number that is part of the name', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
       openDuplicate: (task: IScheduledTask) => void;
       form: { name: string };
     };
-    await wrapper.setData({ tasks: [{ ...editedTask, name: 'Weekly report 2026' }] });
+    // The generic prefix exists as its own task — the case where any
+    // "strip the trailing number" heuristic destroys the year.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: 'Weekly report' },
+        { ...editedTask, id: 'task-2', name: 'Weekly report 2026' }
+      ]
+    });
 
     vm.openDuplicate({ ...editedTask, name: 'Weekly report 2026' });
 
-    // "Weekly report" is not an existing task, so 2026 is a year, not a suffix.
     expect(vm.form.name).toBe('Weekly report 2026 2');
   });
 

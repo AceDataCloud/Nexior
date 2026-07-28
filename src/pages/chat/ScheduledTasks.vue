@@ -922,25 +922,27 @@ export default defineComponent({
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
     },
-    // "Report" → "Report 2"; "Report 2" → "Report 3". Skips names already taken
-    // so duplicating the same task twice doesn't produce two identical labels.
+    // "Report" → "Report 2", skipping names already taken so duplicating the
+    // same task twice doesn't produce two identical labels. The suffix is always
+    // appended to the full name: stripping a trailing number to avoid "X 2 2"
+    // needs a heuristic, and every version of it eventually eats a real number
+    // (a task literally named "Weekly report 2026" alongside "Weekly report").
+    // Names are not unique server-side, so never destroying one wins over pretty.
     nextCopyName(name: string): string {
-      const raw = (name || '').trim();
+      const base = (name || '').trim() || (this.$t('chat.scheduledTasks.title') as string);
       const taken = new Set(this.tasks.map((t) => t.name));
-      // Only treat a trailing number as a copy suffix when the stripped name is
-      // itself a real task — otherwise "Q3 2026" would become "Q3 2", destroying
-      // the year that distinguishes it.
-      const stripped = raw.replace(/\s+\d+$/, '').trim();
-      const base =
-        (stripped && stripped !== raw && taken.has(stripped) ? stripped : raw) ||
-        (this.$t('chat.scheduledTasks.title') as string);
-      // The name input caps at 80 chars; trim the base rather than the suffix so
-      // the copy stays distinguishable. Slice by code point so an emoji at the
-      // boundary isn't split into a lone surrogate.
+      // The name input's maxlength is 80 UTF-16 code units, so budget in units —
+      // going over would let the browser silently clip the suffix and hand back a
+      // duplicate name. Step by code point so an emoji is never split in half.
       const build = (n: number) => {
         const suffix = ` ${n}`;
-        const chars = [...base];
-        const head = chars.length + suffix.length <= 80 ? base : chars.slice(0, 80 - suffix.length).join('');
+        const budget = 80 - suffix.length;
+        if (base.length <= budget) return `${base}${suffix}`;
+        let head = '';
+        for (const ch of base) {
+          if (head.length + ch.length > budget) break;
+          head += ch;
+        }
         return `${head}${suffix}`;
       };
       // Collide-check the FINAL (already truncated) name — checking the untruncated
