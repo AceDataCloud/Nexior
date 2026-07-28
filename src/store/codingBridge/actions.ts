@@ -145,8 +145,29 @@ export const applyNodeEvent = (
   if (typeof seq === 'number' && sessionId) {
     const last = state.lastSeq[sessionId];
     if (last !== undefined && seq <= last) {
-      return;
+      // seq comes from the relay's IN-MEMORY log, so a relay restart (deploy,
+      // crash) begins the session's seq space again at 1 while our cursor — which
+      // outlives it, persisted — still holds the pre-restart high-water mark.
+      // Every live event then looks already-applied and the session goes silent
+      // for good. The relay is single-replica, so a restart always drops our
+      // socket: within ONE connection the first event of a healthy space is
+      // necessarily above the cursor (replay only sends seq > cursor, live only
+      // grows). So a first-since-connect event at or below it means the space
+      // restarted — re-baseline onto the new one. Afterwards, seq <= cursor is a
+      // genuine replay/live overlap and stays dropped.
+      if (state.seqChecked[sessionId]) {
+        return;
+      }
+      commit('resetLastSeq', sessionId);
+      // Re-baselining only rescues the stream from here on. Anything the new
+      // space emitted while we were disconnected sits BELOW this event and no
+      // resume can reach it (we asked from the old, far higher cursor and the
+      // relay saw a valid log, so it sent nothing and raised no truncation).
+      // Pull the device transcript to close that gap — the same recovery the
+      // relay asks for on `stream_truncated`.
+      dispatch('resyncSession', sessionId);
     }
+    commit('markSeqChecked', sessionId);
     commit('setLastSeq', { session_id: sessionId, seq });
   }
   // Keep the session's trace id current with whatever turn the node is on.
@@ -634,6 +655,10 @@ export const connect = ({
   socket = new CodingBridgeSocket(token, {
     onOpen: () => {
       commit('setConnection', 'connected');
+      // A dropped socket is the only way the relay can have restarted (it is
+      // single-replica), so this is where a renumbered seq space becomes
+      // detectable — see the cursor guard in `applyNodeEvent`.
+      commit('clearSeqChecked');
       // Reconnect: resume each session's live stream from the seq we last saw,
       // so in-flight output is replayed instead of lost. Empty after a full page
       // reload (lastSeq is in-memory) — there the history restore below rebuilds
@@ -1096,9 +1121,16 @@ export const reattachSession = (
   dispatch('getHistoryDetail', ref);
   dispatch('requestSessions', ref.node_id);
   dispatch('requestPendingPermissions', ref.node_id);
-  // Replay the live stream from the last event we applied (0 = from the start of
-  // the relay's buffer). The relay and the browser both dedupe by seq.
-  socket?.resume({ [ref.session_id]: state.lastSeq[ref.session_id] ?? 0 });
+  // Resume the live stream ONLY for a session this tab already followed. The
+  // relay broadcasts new events to every browser unconditionally, so `resume` is
+  // pure backfill — and with no cursor it replayed the relay's ENTIRE retained
+  // buffer for that session (up to 5000 events, oldest first, one message each)
+  // on top of the transcript we just asked for. That is what made an opened
+  // conversation crawl in from the oldest message instead of showing the newest.
+  const cursor = state.lastSeq[ref.session_id];
+  if (cursor !== undefined) {
+    socket?.resume({ [ref.session_id]: cursor });
+  }
 };
 
 // Resync a live session from the device transcript after the live stream lost

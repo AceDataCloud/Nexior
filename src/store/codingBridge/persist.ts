@@ -7,9 +7,11 @@
 // `lastSeq` is persisted so that after a full page reload the reconnect can ask
 // the relay to `resume` each session's stream from the last event we applied —
 // otherwise the cursor is empty, no replay is requested, and an actively
-// streaming session looks frozen until the user sends something. A stale cursor
-// (relay buffer trimmed) is self-healing: the relay replies `stream_truncated`
-// and the session resyncs from the device transcript.
+// streaming session looks frozen until the user sends something. A cursor left
+// past the relay's retained window heals via `stream_truncated` → resync from
+// the device transcript; a cursor left past a RESTARTED relay's seq space does
+// not (the relay sees a valid log starting at 1) and is caught client-side by
+// the `seqChecked` re-baseline in `applyNodeEvent`.
 export default [
   'codingBridge.currentNodeId',
   'codingBridge.historyRef',

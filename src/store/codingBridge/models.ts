@@ -26,9 +26,13 @@ export interface ICodingBridgeState {
   sessions: Record<string, ICodingBridgeSession>;
   events: Record<string, ICodingBridgeEvent[]>;
   // Highest relay-assigned event `seq` applied per session. Drives reconnect
-  // replay (resume_from) and dedups overlapping events. In-memory only: a full
-  // reload rebuilds the transcript from history instead of a seq cursor.
+  // replay (resume_from) and dedups overlapping events. Persisted, so it can
+  // outlive the relay's in-memory seq space — see `seqChecked`.
   lastSeq: Record<string, number>;
+  // Sessions whose seq space has already been validated against `lastSeq` on
+  // the CURRENT connection. Never persisted: the flag is what distinguishes a
+  // duplicate from a relay that restarted and renumbered from 1.
+  seqChecked: Record<string, boolean>;
   // Past on-device sessions per node, sourced live from `history.list`.
   history: Record<string, ICodingBridgeHistorySummary[]>;
   // What each node can do (providers/models/efforts), from `capabilities.get`.
