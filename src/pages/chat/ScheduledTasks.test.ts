@@ -1,15 +1,9 @@
 // @vitest-environment jsdom
 import { flushPromises, shallowMount } from '@vue/test-utils';
-<<<<<<< HEAD
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import type { MessageBoxData } from 'element-plus';
-=======
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { reactive } from 'vue';
-import { ElMessage } from 'element-plus';
->>>>>>> origin/main
 
 import { CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import {
@@ -878,14 +872,11 @@ describe('chat/ScheduledTasks', () => {
     const listAllRuns = () => vi.spyOn(scheduledTasksOperator, 'listAllRuns');
     const listRuns = () => vi.spyOn(scheduledTasksOperator, 'listRuns');
 
-<<<<<<< HEAD
     // Prevent real XHR from loadTasks() leaking into subsequent tests.
     beforeEach(() => {
       vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
     });
 
-=======
->>>>>>> origin/main
     afterEach(() => {
       vi.restoreAllMocks();
       vi.useRealTimers();
