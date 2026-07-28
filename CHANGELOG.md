@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 11:09:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 13:00:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.3
+
+Tue, 28 Jul 2026 13:00:47 GMT
+
+### Patches
+
+- mark finished, unopened coding bridge history sessions as unread (bold title + red dot) (dev@acedata.cloud)
 
 ## 3.340.2
 
