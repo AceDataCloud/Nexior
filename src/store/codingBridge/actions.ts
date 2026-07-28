@@ -31,6 +31,8 @@ import {
   CB_ACTION_SESSIONS_LIST,
   CB_ACTION_HISTORY_LIST,
   CB_ACTION_HISTORY_GET,
+  CB_ACTION_HISTORY_MARK_READ,
+  CB_HISTORY_LIMIT,
   CB_ACTION_FS_LIST,
   CB_ACTION_CAPABILITIES_GET,
   CB_EVENT_SESSION_STARTED,
@@ -1023,7 +1025,7 @@ export const getHistory = ({ commit, state }: ActionContext<ICodingBridgeState, 
     return;
   }
   commit('updateStatus', { key: 'getHistory', value: Status.Request });
-  socket.sendToNode(target, { action: CB_ACTION_HISTORY_LIST, limit: 200 });
+  socket.sendToNode(target, { action: CB_ACTION_HISTORY_LIST, limit: CB_HISTORY_LIMIT });
 };
 
 // Ask a node to replay one past transcript so it can be viewed / resumed.
@@ -1045,6 +1047,26 @@ export const getHistoryDetail = (
   // Safety net: never leave the skeleton spinning if the reply is lost (node
   // went offline mid-request). The transcript falls back to its empty hint.
   setTimeout(() => commit('updateStatus', { key: 'getHistoryDetail', value: Status.Success }), 12000);
+};
+
+// Clear one session's unread dot. `updated_at` is what this browser actually
+// rendered — the node stores that as the watermark, so output appended during
+// the round trip stays unread. The reply is a refreshed history snapshot.
+export const markHistoryRead = (
+  _ctx: ActionContext<ICodingBridgeState, IRootState>,
+  payload: ICodingBridgeHistoryRef & { updated_at?: number }
+): void => {
+  if (!payload?.node_id || !payload?.session_id || !payload?.provider || !socket) {
+    return;
+  }
+  socket.sendToNode(payload.node_id, {
+    action: CB_ACTION_HISTORY_MARK_READ,
+    provider: payload.provider,
+    session_id: payload.session_id,
+    updated_at: payload.updated_at,
+    // Same page size as getHistory, so the refreshed listing isn't truncated.
+    limit: CB_HISTORY_LIMIT
+  });
 };
 
 // Re-establish a conversation as fully LIVE — used when restoring after a reload
@@ -1223,6 +1245,7 @@ export default {
   answerQuestion,
   getHistory,
   getHistoryDetail,
+  markHistoryRead,
   reattachSession,
   resyncSession,
   browseDir,

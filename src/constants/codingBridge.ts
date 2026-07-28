@@ -36,6 +36,12 @@ export const CB_ACTION_PERMISSIONS_LIST = 'permissions.list';
 export const CB_ACTION_SESSIONS_LIST = 'sessions.list';
 export const CB_ACTION_HISTORY_LIST = 'history.list';
 export const CB_ACTION_HISTORY_GET = 'history.get';
+// Clear a session's unread dot. The node answers with a refreshed history
+// snapshot, so no dedicated reply event is needed.
+export const CB_ACTION_HISTORY_MARK_READ = 'history.mark_read';
+// Page size for the history drawer. mark_read echoes it so its refreshed
+// listing covers the same rows the drawer is showing.
+export const CB_HISTORY_LIMIT = 200;
 export const CB_ACTION_FS_LIST = 'fs.list';
 export const CB_ACTION_CAPABILITIES_GET = 'capabilities.get';
 export const CB_ACTION_PING = 'ping';

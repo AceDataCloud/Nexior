@@ -115,6 +115,9 @@ export interface ICodingBridgeHistorySummary {
   // True when this transcript is a session live on the node right now, so the
   // drawer can flag it and opening it reattaches instead of replaying a copy.
   running?: boolean;
+  // Finished since the user last opened it. The read watermark lives on the node,
+  // so a session read on the phone is read on the desktop too.
+  unread?: boolean;
 }
 
 /** A normalised transcript returned by `history.get`. */
