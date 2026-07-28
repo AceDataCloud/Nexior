@@ -25,7 +25,7 @@
   },
   "voice.description": {
     "message": "Description",
-    "description": "Étiquette pour la description du son"
+    "description": "Étiquette pour la description de la voix"
   },
   "voice.descriptionPlaceholder": {
     "message": "Décrivez les caractéristiques de ce son...",
@@ -217,7 +217,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Texte du bouton pour créer un mashup de plusieurs chansons"
+    "description": "Texte du bouton pour mélanger plusieurs chansons"
   },
   "button.generate_lyrics": {
     "message": "Générer des paroles avec l'IA",
@@ -293,7 +293,7 @@
   },
   "name.style": {
     "message": "Style",
-    "description": "Invite pour l'entrée de contenu du style de la chanson"
+    "description": "Indication pour le contenu de saisie du style de la chanson"
   },
   "name.styleNegative": {
     "message": "Styles à exclure",
@@ -334,6 +334,10 @@
   "name.failureReason": {
     "message": "Raison de l'échec",
     "description": "Raison de l'échec de la tâche"
+  },
+  "name.failure": {
+    "message": "Échec de la génération",
+    "description": "Titre pour une tâche Suno échouée"
   },
   "name.status": {
     "message": "Statut",
@@ -817,7 +821,7 @@
   },
   "filter.type": {
     "message": "Type",
-    "description": "Section de filtrage : Voix / Musique instrumentale"
+    "description": "Filtre de catégorie : voix/musique instrumentale"
   },
   "filter.typeAll": {
     "message": "Tout",
@@ -841,15 +845,15 @@
   },
   "filter.durationShort": {
     "message": "< 1 minute",
-    "description": "Durée : Moins de 1 minute"
+    "description": "Durée : moins de 1 minute"
   },
   "filter.durationMedium": {
     "message": "1-3 minutes",
-    "description": "Durée : 1 à 3 minutes"
+    "description": "Durée : de 1 à 3 minutes"
   },
   "filter.durationLong": {
     "message": "> 3 minutes",
-    "description": "Durée : Plus de 3 minutes"
+    "description": "Durée : plus de 3 minutes"
   },
   "filter.video": {
     "message": "Vidéo",
@@ -938,9 +942,5 @@
   "name.lyricsMode": {
     "message": "Mode paroles",
     "description": "Étiquette du sélecteur de mode paroles (manuel / automatique)"
-  },
-  "name.failure": {
-    "message": "Generation failed",
-    "description": "Suno task failure title"
   }
 }

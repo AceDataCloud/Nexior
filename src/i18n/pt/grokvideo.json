@@ -4,7 +4,7 @@
     "description": "Nome do gerador de vídeo Grok"
   },
   "name.prompt": {
-    "message": "Prompt",
+    "message": "Palavra-chave",
     "description": "Prompt para gerar o vídeo"
   },
   "name.model": {
@@ -28,8 +28,8 @@
     "description": "Rótulo para entrada de imagem"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Imagens de referência",
+    "description": "Rótulo para imagens de referência"
   },
   "name.required": {
     "message": "Obrigatório",
@@ -64,8 +64,8 @@
     "description": "Instruções para entrada de prompt"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Escolha o modelo Grok Imagine. :reverse utiliza o ponto de extremidade rápido/padrão; :official utiliza o ponto de extremidade oficial (qualidade superior, cobrança por segundo). grok-imagine-video-1.5:official suporta apenas vídeo gerado a partir de imagem.",
+    "description": "Instruções para seleção de modelo"
   },
   "description.ratio": {
     "message": "Escolha a proporção da saída.",
@@ -76,16 +76,16 @@
     "description": "Instruções para resolução"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Duração do vídeo (segundos). 1.5-fast (reverso) suporta de 6 a 30 segundos, com cobrança por duração; as demais variantes suportam de 1 a 15 segundos, com cobrança por segundos de saída.",
+    "description": "Instruções sobre a duração"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Imagem de entrada opcional, usada para gerar vídeo. grok-imagine-video-1.5:official é obrigatório.",
+    "description": "Instruções para a entrada de imagem"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Imagens de referência opcionais, usadas para guiar o estilo ou conteúdo do vídeo gerado.",
+    "description": "Instruções para imagens de referência"
   },
   "placeholder.prompt": {
     "message": "Descreva seu vídeo…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Selecione",
     "description": "Texto de espaço reservado para seleções"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Vídeo 1.5 Fast (rápido, 6–30 segundos)",
+    "description": "Rótulo do modelo 1.5-fast reverso"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Vídeo (padrão, 1–15 segundos)",
+    "description": "Rótulo do modelo reverso grok-imagine-video"
+  },
+  "model.official": {
+    "message": "Grok Imagine Vídeo · Oficial (qualidade superior, cobrança por segundo)",
+    "description": "Rótulo do modelo oficial grok-imagine-video"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Vídeo 1.5 · Oficial (geração de vídeo a partir de imagem, até 1080p)",
+    "description": "Rótulo do modelo oficial 1.5"
   },
   "button.upload": {
     "message": "Enviar",
@@ -120,8 +136,8 @@
     "description": "Aviso de excesso de upload"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "É possível fazer o upload de no máximo 4 imagens de referência.",
+    "description": "Aviso sobre o limite de upload de imagens de referência"
   },
   "message.uploadError": {
     "message": "Falha ao enviar a imagem, por favor tente novamente.",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Créditos esgotados, por favor compre mais para continuar usando.",
     "description": "Esgotado"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

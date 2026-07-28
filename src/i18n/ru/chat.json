@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Самая современная модель на данный момент",
+    "description": "Описание модели Claude Opus 5"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -227,12 +227,28 @@
     "message": "Легкая и быстрая модель",
     "description": "Описание модели Claude Haiku 4.5"
   },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Флагманская модель с поддержкой вывода, визуализации и контекста на 1 миллион токенов",
+    "description": "Описание модели Kimi K3"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Модель для вывода и визуализации, совместимая с K2 рабочими процессами",
+    "description": "Описание модели Kimi K2.6"
+  },
   "model.kimiK25": {
     "message": "kimi-k2.5",
     "description": "Название модели сервиса, то есть Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "General-purpose K2 model for compatible workflows",
+    "message": "Универсальная модель K2, подходящая для совместимых рабочих процессов",
     "description": "Описание модели Kimi K2.5"
   },
   "model.kimiK2Thinking": {
@@ -583,6 +599,82 @@
     "message": "Авторизация коннектора пропущена",
     "description": "Нижняя подпись карточки после того, как пользователь пропустил авторизацию"
   },
+  "browserTool.title": {
+    "message": "Активность браузера",
+    "description": "Заголовок по умолчанию для активности инструмента BrowserDevice."
+  },
+  "browserTool.state.starting_session": {
+    "message": "Запуск сессии браузера",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Подключение к вкладке браузера",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Браузер готов",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Браузерное устройство не в сети",
+    "description": ""
+  },
+  "browserTool.state.device_busy": {
+    "message": "Устройство браузера занято",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Требуется подтверждение авторизации в Studio",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Выполняется в браузере",
+    "description": ""
+  },
+  "browserTool.state.completed": {
+    "message": "Завершено",
+    "description": ""
+  },
+  "browserTool.state.stopped": {
+    "message": "Сессия браузера остановлена",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Срок запроса к браузеру истек",
+    "description": ""
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Пожалуйста, закройте инструменты разработчика и продолжите",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Результат выполнения неизвестен, пожалуйста, проверьте и повторите попытку",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Операция браузера не удалась",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Остановить",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Управление устройствами",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Остановить другие сессии",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Закрыть инструменты разработчика",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Посмотреть разрешение",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
     "message": "Запланированные задачи",
     "description": ""
@@ -610,6 +702,10 @@
   "scheduledTasks.edit": {
     "message": "Редактировать задачу",
     "description": ""
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Копировать задачу",
+    "description": "Кнопка для копирования задачи, предзаполняет новую форму на основе существующей задачи"
   },
   "scheduledTasks.empty": {
     "message": "Запланированных задач пока нет. Нажмите «Новая», чтобы создать задачу.",
@@ -717,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Недостаточно средств"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Не удалось авторизовать оплату"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Не авторизовано"
   },
@@ -728,6 +827,14 @@
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "Требуется действие",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Устройство браузера офлайн",
+    "description": "Сообщение указывает на то, что устройство, на котором запущен браузер, не подключено к интернету."
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Авторизация браузера была изменена, пожалуйста, отредактируйте эту задачу",
     "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
@@ -811,7 +918,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Человекочитаемое описание: исходное Cron-выражение."
+    "description": "Читаемый человеком: оригинальный Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "один раз в {time}",
@@ -869,6 +976,25 @@
     "message": "Выбранные Skills могут выполнять действия в фоновом режиме без подтверждения; невыбранные Skills все еще требуют предварительного просмотра или ожидания подтверждения.",
     "description": "Описание разрешения skill"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Подключение браузера",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Могут быть выполнены следующие внешние побочные эффекты: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Время истечения неавторизованного доступа: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Перед сохранением выберите онлайн и совместимое подключение браузера",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Не подключено",
     "description": "Отсутствует подключение к skill"
@@ -952,6 +1078,18 @@
   "artifacts.hide": {
     "message": "Скрыть",
     "description": "Кнопка скрытия результата"
+  },
+  "artifacts.unhide": {
+    "message": "Показать",
+    "description": "Снова показать скрытый артефакт."
+  },
+  "artifacts.showHidden": {
+    "message": "Показать скрытые",
+    "description": "Переключатель в панели фильтров, который включает отображение скрытых артефактов."
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Скрыт",
+    "description": "Метка на артефактах, которые сейчас скрыты."
   },
   "artifacts.delete": {
     "message": "Удалить",
@@ -1081,6 +1219,17 @@
     "message": "Вы просматриваете часть общего разговора. Нажмите выше, чтобы начать разговор с AI.",
     "description": "Объяснение под разговором на публичной странице общего доступа"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Цель не достигнута",
+    "description": "Сообщение указывает на то, что запланированная цель не была достигнута."
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Результат неизвестен",
+    "description": "Сообщение указывает на то, что результат выполнения задачи еще не подтвержден."
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Статус выполнения неизвестен"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Название модели сервиса, то есть Claude Opus 4.7"
@@ -1088,131 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "На данный момент самая продвинутая модель",
     "description": "Описание модели Claude Opus 4.7"
-  },
-  "artifacts.unhide": {
-    "message": "Показать",
-    "description": "Снова показать скрытый артефакт."
-  },
-  "artifacts.showHidden": {
-    "message": "Показать скрытые",
-    "description": "Переключатель в панели фильтров, который включает отображение скрытых артефактов."
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Скрыт",
-    "description": "Метка на артефактах, которые сейчас скрыты."
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Не удалось авторизовать оплату"
-  },
-  "browserTool.title": {
-    "message": "Активность браузера",
-    "description": "Заголовок по умолчанию для активности инструмента BrowserDevice."
-  },
-  "browserTool.state.device_offline": {
-    "message": "Браузерное устройство не в сети",
-    "description": ""
-  },
-  "browserTool.state.executing": {
-    "message": "Выполняется в браузере",
-    "description": ""
-  },
-  "browserTool.state.completed": {
-    "message": "Завершено",
-    "description": ""
-  },
-  "browserTool.state.expired": {
-    "message": "Срок запроса к браузеру истек",
-    "description": ""
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Статус выполнения неизвестен"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

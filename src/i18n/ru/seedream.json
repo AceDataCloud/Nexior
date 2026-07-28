@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Действие",
+    "description": "Выбор генерации или редактирования действия."
+  },
   "name.taskId": {
     "message": "ID задачи",
     "description": "ID задачи"
@@ -131,6 +135,10 @@
     "message": "Не удалось загрузить изображение, пожалуйста, попробуйте позже",
     "description": "Ошибка загрузки"
   },
+  "message.referenceImageRequired": {
+    "message": "В режиме редактирования необходимо загрузить хотя бы одно эталонное изображение.",
+    "description": "Сообщение, отображаемое, когда в режиме редактирования нет эталонного изображения."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Требуется подтверждение",
     "description": "Заголовок окна конфликта возможностей"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Адаптивно (соответствует образцу)",
     "description": "Метка опции adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

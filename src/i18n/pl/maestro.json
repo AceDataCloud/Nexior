@@ -83,6 +83,14 @@
     "message": "Języki",
     "description": "Pole języków wyjściowych"
   },
+  "name.primaryLanguage": {
+    "message": "Język główny",
+    "description": "Pole głównego języka wyjściowego"
+  },
+  "name.additionalLanguages": {
+    "message": "Dodatkowe języki (opcjonalnie)",
+    "description": "Pole dodatkowych języków wyjściowych"
+  },
   "name.aspect": {
     "message": "Proporcje obrazu",
     "description": "Pole proporcji obrazu"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "Wybierz",
     "description": "Ogólny placeholder dla wyboru"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Dodaj języki wyjściowe",
+    "description": "Placeholder dodatkowych języków"
   },
   "description.prompt": {
     "message": "Wyraź jasno, czego chcesz, skrypt, obraz, dubbing, montaż zostaw Maestro.",
@@ -207,6 +219,30 @@
     "message": "Brak wideo — stwórz swoje pierwsze po lewej stronie.",
     "description": "Brak zadań"
   },
+  "name.customize": {
+    "message": "Dostosuj",
+    "description": "Przełącznik opcjonalnych ustawień kreatywnych"
+  },
+  "description.customize.auto": {
+    "message": "Automatycznie · Maestro wybiera typ wideo, styl wizualny i ton głosu.",
+    "description": "Stan przy wyłączonym dostosowaniu"
+  },
+  "description.customize.manual": {
+    "message": "Wybierz typ wideo, styl wizualny i ton głosu.",
+    "description": "Stan przy włączonym dostosowaniu"
+  },
+  "name.customizeScenario": {
+    "message": "Dostosuj typ wideo",
+    "description": "Przełącznik dostosowania typu wideo"
+  },
+  "name.customizeStyle": {
+    "message": "Dostosuj styl wizualny",
+    "description": "Przełącznik dostosowania stylu wizualnego"
+  },
+  "name.customizeVoice": {
+    "message": "Dostosuj ton głosu",
+    "description": "Przełącznik dostosowania barwy głosu"
+  },
   "name.scenario": {
     "message": "Typ wideo",
     "description": "Pole typu wideo"
@@ -256,60 +292,60 @@
     "description": "Opcja stylu filmowego"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Opcja stylu Frosted Glass"
+    "message": "Mrożone szkło · Płynne szkło",
+    "description": "Opcja stylu szkła mrożonego"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Opcja stylu Luxury"
+    "message": "Luksusowy · Pusta przestrzeń",
+    "description": "Opcja stylu luksusowego"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Opcja stylu Swiss Grid"
+    "message": "Szwajcarska siatka · Precyzyjny",
+    "description": "Opcja stylu szwajcarskiej siatki"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Opcja stylu Modern"
+    "message": "Nowoczesny · SaaS",
+    "description": "Opcja stylu nowoczesnego"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Opcja stylu Editorial"
+    "message": "Styl redakcyjny",
+    "description": "Opcja stylu redakcyjnego"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Opcja stylu Warm"
+    "message": "Ciepły i bliski",
+    "description": "Opcja stylu ciepłego"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Vibrant style option"
+    "message": "Jaskrawy",
+    "description": "Opcja stylu jaskrawego"
   },
   "option.style.neon": {
     "message": "Neonowy",
     "description": "Opcja stylu neonowego"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Monochrome style option"
+    "message": "Minimalistyczny czarno-biały",
+    "description": "Opcja stylu monochromatycznego"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Pastel style option"
+    "message": "Pastelowy",
+    "description": "Opcja stylu pastelowego"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Bold type style option"
+    "message": "Pogrubiony · Wysoka energia",
+    "description": "Opcja stylu pogrubionego"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Industrial style option"
+    "message": "Przemysłowy",
+    "description": "Opcja stylu przemysłowego"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Futuristic style option"
+    "message": "Futurystyczny",
+    "description": "Opcja stylu futurystycznego"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Retro film style option"
+    "message": "Retro filmowy",
+    "description": "Opcja stylu retro filmowego"
   },
   "name.voice": {
     "message": "Ton głosu",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "Lista zmian (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Dostosuj",
-    "description": "Przełącznik opcjonalnych ustawień kreatywnych"
-  },
-  "description.customize.auto": {
-    "message": "Automatycznie · Maestro wybiera typ wideo, styl wizualny i ton głosu.",
-    "description": "Stan przy wyłączonym dostosowaniu"
-  },
-  "description.customize.manual": {
-    "message": "Wybierz typ wideo, styl wizualny i ton głosu.",
-    "description": "Stan przy włączonym dostosowaniu"
-  },
-  "name.primaryLanguage": {
-    "message": "Język główny",
-    "description": "Pole głównego języka wyjściowego"
-  },
-  "name.additionalLanguages": {
-    "message": "Dodatkowe języki (opcjonalnie)",
-    "description": "Pole dodatkowych języków wyjściowych"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Dodaj języki wyjściowe",
-    "description": "Placeholder dodatkowych języków"
-  },
-  "name.customizeScenario": {
-    "message": "Dostosuj typ wideo",
-    "description": "Przełącznik dostosowania typu wideo"
-  },
-  "name.customizeStyle": {
-    "message": "Dostosuj styl wizualny",
-    "description": "Przełącznik dostosowania stylu wizualnego"
-  },
-  "name.customizeVoice": {
-    "message": "Dostosuj ton głosu",
-    "description": "Przełącznik dostosowania barwy głosu"
   }
 }

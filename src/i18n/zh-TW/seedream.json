@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "操作",
+    "description": "生成或編輯操作選擇器"
+  },
   "name.taskId": {
     "message": "任務 ID",
     "description": "任務的 ID"
@@ -131,6 +135,10 @@
     "message": "上傳圖片失敗，請稍後重試",
     "description": "上傳失敗"
   },
+  "message.referenceImageRequired": {
+    "message": "編輯模式至少需要上傳一張參考圖片。",
+    "description": "編輯模式沒有參考圖片時顯示的校驗提示"
+  },
   "message.featureNotSupportedTitle": {
     "message": "需要確認",
     "description": "能力衝突提示框標題"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "自適應（與參考圖一致）",
     "description": "adaptive 選項標籤"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

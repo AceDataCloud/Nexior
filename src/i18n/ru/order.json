@@ -80,16 +80,16 @@
     "description": "Сообщение помощи по оплате через WeChat."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Текущий браузер не поддерживает прямой вызов WeChat Pay. Пожалуйста, скопируйте ссылку ниже и откройте ее в WeChat для завершения оплаты.",
+    "description": "Текст подсказки, отображаемый в мобильном браузере, отличном от WeChat."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Скопировать ссылку на оплату",
+    "description": "Кнопка для копирования текущего URL страницы в буфер обмена, чтобы пользователь мог вставить его в WeChat."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "После успешного копирования откройте WeChat, вставьте ссылку в любое окно чата или в верхнее поле поиска и нажмите на ссылку для завершения оплаты.",
+    "description": "Вторичная подсказка под кнопкой копирования ссылки."
   },
   "message.free": {
     "message": "Бесплатно",
@@ -160,8 +160,8 @@
     "description": "Заголовок, отображаемый на сайте, указывающий на оплату через Stripe."
   },
   "title.card": {
-    "message": "Card",
-    "description": "Title displayed on the website indicating card payment (credit/debit card)."
+    "message": "Банковская карта",
+    "description": "Заголовок, отображаемый на сайте, указывающий на оплату банковской картой (кредитной/дебетовой)."
   },
   "title.manageOrder": {
     "message": "Управление заказом",
@@ -548,31 +548,31 @@
     "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Общее количество заказов",
+    "description": "Карточка сводки: общее количество заказов по текущим фильтрам."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Общие расходы",
+    "description": "Карточка сводки: общая сумма заказов по текущим фильтрам."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Завершенные заказы",
+    "description": "Карточка сводки: количество завершенных заказов."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Заказы на оплату",
+    "description": "Карточка сводки: количество заказов, ожидающих оплаты."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Экспортировать CSV",
+    "description": "Текст кнопки: экспортировать заказы в CSV по текущим фильтрам."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Все статусы",
+    "description": "Заполнитель выпадающего списка фильтра статусов: означает отсутствие ограничений по статусам."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Все способы оплаты",
+    "description": "Заполнитель выпадающего списка фильтра способов оплаты: означает отсутствие ограничений по способам оплаты."
   }
 }

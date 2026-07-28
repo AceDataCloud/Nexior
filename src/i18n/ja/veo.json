@@ -143,6 +143,10 @@
     "message": "最大2枚の画像をアップロードできます",
     "description": "アップロードした画像数が制限を超えたときのエラーメッセージ"
   },
+  "message.uploadReferencesLimit": {
+    "message": "参考画像は最大{limit}枚までアップロードできます。",
+    "description": "選択した生成モードの動的画像上限"
+  },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
     "description": "画像のアップロードが成功したときのメッセージ"
@@ -231,20 +235,16 @@
     "message": "複数画像融合動画",
     "description": "ingredients2video — 1-3枚の画像を融合して新しいシーンを生成"
   },
-  "message.uploadReferencesLimit": {
-    "message": "参考画像は最大{limit}枚までアップロードできます。",
-    "description": "選択した生成モードの動的画像上限"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "テキストから動画のコンパクトVeoアクションタブ"
+    "message": "テキスト生成",
+    "description": "Veo 操作タブ：テキスト生成動画"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "画像から動画のコンパクトVeoアクションタブ"
+    "message": "画像生成",
+    "description": "Veo 操作タブ：画像生成動画"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "マルチ画像融合のコンパクトVeoアクションタブ"
+    "message": "融合",
+    "description": "Veo 操作タブ：複数画像の融合動画"
   }
 }

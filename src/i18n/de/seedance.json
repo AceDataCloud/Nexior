@@ -1,15 +1,15 @@
 {
   "name.seedanceBot": {
-    "message": "SeeDance Bot",
-    "description": "SeeDance Video-Generator Name"
+    "message": "SeeDance-Bot",
+    "description": "Name des SeeDance Video-Generators"
   },
   "name.prompt": {
     "message": "Eingabeaufforderung",
     "description": "Eingabeaufforderung für die Videoerstellung"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Erläuterung zur Eingabeaufforderung"
+    "message": "Beschreiben Sie das Video, das Sie generieren möchten. Um die Charaktere sprechen zu lassen: Laden Sie das Bild in das unten stehende \"Referenzbild\"-Feld hoch (nicht in das \"Erste Frame-Bild\"), schreiben Sie die Dialoge im Prompt und setzen Sie sie in Anführungszeichen, z.B. der Charakter im Bild 1 sagt zur Kamera: „Ihr Dialog“, und aktivieren Sie „Audio generieren“. Zusätzliche Parameter sind möglich (z.B. --rs 720p --rt 16:9 --dur 5).",
+    "description": "Eingabeanweisung für den Prompt"
   },
   "placeholder.prompt": {
     "message": "Beschreibe dein Video…",
@@ -40,8 +40,8 @@
     "description": "Label zur Audioerzeugung"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Erläuterung zur Audioerzeugung"
+    "message": "Aktivieren Sie dies, um das Video mit Ton zu versehen. Um die Charaktere sprechen zu lassen, müssen Sie: das Charakterbild in das Feld \"Referenzbild\" hochladen + diesen Schalter aktivieren + die Dialoge in Anführungszeichen im Prompt schreiben. Nur für die Serien seedance-1.5-pro / seedance-2.0 verfügbar, Kosten etwa 2-fach.",
+    "description": "Beschreibung zur Audioerzeugung"
   },
   "name.resolution": {
     "message": "Auflösung",
@@ -100,20 +100,20 @@
     "description": "Erläuterung zur Rückgabe des letzten Bildes"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Label zum Hochladen des ersten Bildes"
+    "message": "Erstes Frame-Bild (Bewegungseffekt)",
+    "description": "Hochlade-Label für das erste Frame-Bild"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Erläuterung zum ersten Bild"
+    "message": "Erste Frame-Bild: Das Bild, das Sie hochladen, wird das erste Frame des Videos und die Bewegung beginnt damit. Geeignet für \"Lass ein Bild lebendig werden\", aber die Charaktere werden nicht sprechen oder Lippenbewegungen haben. Wenn Sie möchten, dass die Charaktere sprechen, verwenden Sie das unten stehende \"Referenzbild\".",
+    "description": "Beschreibung des ersten Frame-Bildes"
   },
   "name.lastFrame": {
     "message": "Letztes Bild",
     "description": "Label zum Hochladen des letzten Bildes"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Erläuterung zum letzten Bild"
+    "message": "Letztes Frame-Bild für das Video: Bestimmen Sie das letzte Frame des Videos (muss mit dem ersten Frame-Bild kombiniert werden). Dient dazu, das Bild von einem bestimmten Bild zu starten und zu einem bestimmten Bild zu beenden.",
+    "description": "Beschreibung des letzten Frame-Bildes"
   },
   "button.generate": {
     "message": "Generieren",
@@ -213,7 +213,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Label für den Status"
+    "description": "Statusetikett"
   },
   "name.ratio": {
     "message": "Seitenverhältnis",
@@ -240,47 +240,47 @@
     "description": "Kamera-fixieren-Beschreibung"
   },
   "name.seed": {
-    "message": "Seed",
-    "description": "Zufallswert-Label"
+    "message": "Zufälliger Seed",
+    "description": "Label für den zufälligen Seed"
   },
   "description.seed": {
     "message": "Zufalls-Seed für reproduzierbare Ergebnisse. Leer lassen für Zufall.",
     "description": "Zufallswert-Beschreibung"
   },
   "placeholder.seed": {
-    "message": "Auto",
-    "description": "Seed-Platzhalter"
+    "message": "Automatisch",
+    "description": "Platzhalter für den zufälligen Seed"
   },
   "model.seedance20Mini": {
     "message": "doubao-seedance-2.0-mini",
     "description": "SeeDance 2.0 Mini Modell"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Hochladen-Label für Referenzbild (Seedance 2.0)"
+    "message": "Referenzbild (Charakter sprechen lassen)",
+    "description": "Hochlade-Label für das Referenzbild (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Ein Kanal, der es den Charakteren im Bild ermöglicht, im Video zu sprechen und Lippenbewegungen zu synchronisieren (bevorzugt für Sprachübertragungen / digitale Menschen, behält das Charakterbild bei). Wenn Sie möchten, dass die Charaktere sprechen, laden Sie das Bild hier hoch, nicht in das \"Erste Frame-Bild\". In Kombination mit den Dialogen in Anführungszeichen im Prompt + „Audio generieren“. Sie können 1-9 Bilder hochladen. Nur für die Seedance 2.0-Serie. Hinweis: Kann nicht gleichzeitig mit \"Erstes Frame/Bild des letzten Frames\" verwendet werden.",
     "description": "Beschreibung des Referenzbildes"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Hochladen-Label für Referenzaudio (Seedance 2.0)"
+    "message": "Referenzaudio (Stimme/Musik)",
+    "description": "Hochlade-Label für das Referenzaudio (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "Beschreibung des Referenzaudio"
+    "message": "Lassen Sie das generierte Video diese Audiofarbe oder Hintergrundmusik verwenden (in Kombination mit dem Referenzbild, damit die Charaktere in dieser Farbe sprechen). Muss zusammen mit einem Referenzbild oder Referenzvideo verwendet werden, kann nicht nur Audio hochgeladen werden. Sie können 1-3 Abschnitte hochladen. Nur für die Seedance 2.0-Serie.",
+    "description": "Beschreibung des Referenz-Audios"
   },
   "name.referenceVideo": {
     "message": "Referenzvideo",
     "description": "Hochladen-Label für Referenzvideo (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
+    "message": "Lassen Sie das Modell diese Videoaktionen/Kamerafahrten/Stile/Soundeffekte verwenden, um ein neues Video zu generieren. Sie können 1-3 Abschnitte hochladen. Nur für die Seedance 2.0-Serie.",
     "description": "Beschreibung des Referenzvideos"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Referenzaudio kann nicht alleine verwendet werden, bitte laden Sie gleichzeitig ein Referenzbild oder ein Referenzvideo hoch.",
+    "description": "Warnung, wenn Referenzaudio kein zugehöriges Bild/Video hat"
   }
 }

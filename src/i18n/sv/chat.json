@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Det mest avancerade modellen hittills",
+    "description": "Beskrivning av Claude Opus 5 modellen"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "Lätt och snabb modell",
     "description": "Beskrivning av Claude Haiku 4.5-modellen"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Flaggskeppmodell som stöder inferens, visuell och 1 miljon tokens kontext",
+    "description": "Beskrivning av Kimi K3-modellen"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Modell för inferens och visuell kompatibilitet med K2 arbetsflöden",
+    "description": "Beskrivning av Kimi K2.6 modellen"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,8 +599,85 @@
     "message": "Kopplingsbehörighet hoppad över",
     "description": "Kortets nederdel som visas efter att användaren har hoppat över behörighet"
   },
+  "browserTool.title": {
+    "message": "Webbläsaraktivitet",
+    "description": "Standardtiteln för BrowserDevice verktygsaktivitet"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Startar webbläsarsession",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Ansluter webbläsartab",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Webbläsaren är redo",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Webbläsarenheten är offline",
+    "description": "Den valda webbläsarenheten är inte online"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Webbläsarenheten är upptagen",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Godkännande krävs i Studio",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Utförs i webbläsaren",
+    "description": "Webbläsarenheten utför verktyget"
+  },
+  "browserTool.state.completed": {
+    "message": "Genomfört",
+    "description": "Webbläsarverktyget har slutförts"
+  },
+  "browserTool.state.stopped": {
+    "message": "Webbläsarsession har stoppats",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Webbläsarförfrågan har gått ut",
+    "description": "Förfrågan för webbläsarverktyget har gått ut"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Stäng utvecklarverktyg för att fortsätta",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Utfallet är okänt, vänligen verifiera och försök igen",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Webbläsaroperation misslyckades",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Stoppa",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Hantera enheter",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Stoppa andra sessioner",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Stäng utvecklarverktyg",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Visa godkännande",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Schemalagda uppgifter",
+    "description": "Sidofältets ingång för schemalagda uppgifter"
   },
   "scheduledTasks.tab.tasks": {
     "message": "Schemalagda uppgifter",
@@ -599,74 +692,96 @@
     "description": "Körningshistorikens statusfilter - Alla"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Schemalagda uppgifter",
+    "description": "Sidans titel"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Skapa ny",
+    "description": "Knapp för att skapa en schemalagd uppgift"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Redigera uppgift",
+    "description": "Titel för redigeringsdialogrutan"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Kopiera uppgift",
+    "description": "Knapp för att kopiera en uppgift och förifylla det nya formuläret baserat på en befintlig uppgift"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Inga schemalagda uppgifter än, klicka på «Skapa ny» för att skapa en",
+    "description": "Tomt tillstånd meddelande"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Har ännu inte körts",
+    "description": "Ingen körhistorik"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Laddning misslyckades",
+    "description": "Felmeddelande vid laddning"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Bekräfta borttagning av «{name}»? Uppgiften kommer att sluta köras efter borttagning.",
+    "description": "Bekräftelse för borttagning"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Utlös nu",
+    "description": "Kör uppgiften omedelbart"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Utlöst, resultatet kan ses i körningshistoriken senare.",
+    "description": "Meddelande vid lyckad manuell utlösning"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Utlösning misslyckades, försök igen senare.",
+    "description": "Meddelande vid misslyckad manuell utlösning"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Visa resultat",
+    "description": "Navigera till konversationen"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Körningshistorik",
+    "description": "Visa körningshistorik längst ner på kortet"
   },
   "scheduledTasks.noConversation": {
     "message": "Ingen konversationshistorik",
     "description": "Körning utan kopplad konversation (äldre version av körning)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60s jitter",
+    "description": "Förklaring av tidsjitter"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Har körts {count} gånger",
+    "description": "Antal körningar"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Körs",
+    "description": "Aktiverad status"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Pausad",
+    "description": "Inaktiverad status"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Fel",
+    "description": "Felstatus"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "I kö",
+    "description": "Köstatus"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "Körs",
+    "description": "Körs status"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Lyckad",
+    "description": "Lyckad status"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Misslyckades",
+    "description": "Misslyckad status"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Stegsgräns uppnådd"
@@ -698,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Otillräckligt saldo"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Faktureringsauktoriseringen misslyckades"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Obehörig"
   },
@@ -708,120 +826,143 @@
     "message": "Internt fel"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Behöver åtgärd",
+    "description": "Status som kräver användaråtgärd"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Webbläsarens enhet är offline",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Webbläsartillståndet har ändrats, vänligen redigera denna uppgift",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Dagligen",
+    "description": "Körs varje dag"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Varje minut"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Varje timme",
+    "description": "Körs varje timme"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Veckovis",
+    "description": "Körs varje vecka"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron-uttryck",
+    "description": "Anpassad cron"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Varje",
+    "description": "Körs med fasta intervall"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "Minut",
+    "description": "Intervall enhet: minut"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "Timme",
+    "description": "Intervall enhet: timme"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "Dag",
+    "description": "Intervall enhet: dag"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "Utlösningsminut",
+    "description": "Vilken minut varje timme som ska utlösa"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "Vilken minut varje timme som ska utlösa (0–59)",
+    "description": "Förklaring av minut varje timme"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Kör en gång med fast tid mellan varje körning (minst 1 minut)",
+    "description": "Förklaring av fast intervall"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Standard 5-delat Cron-uttryck: Minut Timme Dag Månad Vecka",
+    "description": "Förklaring av Cron"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Utförandefrekvens: {text}",
+    "description": "Frekvensförhandsvisning"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "Varje {n} minut",
+    "description": "Mänskligt läsbart: varje N minut"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "Varje {n} timme",
+    "description": "Mänskligt läsbart: varje N timme"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "Varje {n} dag",
+    "description": "Mänskligt läsbart: varje N dag"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "Varje timme vid {n} minut",
+    "description": "Mänskligt läsbart: varje timme vid N minut"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "Varje dag {time}",
+    "description": "Mänskligt läsbart: varje dag vid en viss tid"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "Varje vecka {weekday} {time}",
+    "description": "Mänskligt läsbart: varje vecka på en viss dag vid en viss tid"
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Mänskligt läsbart: rå Cron"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "Engångs {time}",
+    "description": "Mänskligt läsbart: engångs"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Uppgiftsnamn",
+    "description": "Namn fält"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "Ex: Daglig informationssammanställning",
+    "description": "Namn platshållare"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Modell",
+    "description": "Val av modell"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Prompt",
+    "description": "Fält för prompt"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Ange frågan eller kommandot som ska köras schemalagt, stöder {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variabler",
+    "description": "Prompt platshållare"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Stöder mallvariabler: {'{{date}}'} dagens datum, {'{{run_count}}'} antal körningar, {'{{last_output}}'} sammanfattning av senaste resultat",
+    "description": "Förklaring av prompt"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Utförandefrekvens",
+    "description": "Frekvensval"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Utförande tid",
+    "description": "Tidsfält"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "Veckodag",
+    "description": "Veckodagsfält"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron-uttryck",
+    "description": "Fält för cron-uttryck"
   },
   "scheduledTasks.form.skills": {
     "message": "Auktorisera Skills",
@@ -835,6 +976,25 @@
     "message": "Valda Skills kan köras i bakgrunden utan manuell bekräftelse; icke-valda Skills kan fortfarande endast förhandsgranskas eller vänta på bekräftelse.",
     "description": "Beskrivning av auktorisering av skills"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Webbläsaranslutning",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Kan utföra följande externa bieffekter: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Obemannad auktoriseringens utgångstid: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Vänligen välj en online och kompatibel webbläsaranslutning innan du sparar",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Ej ansluten",
     "description": "skill saknar anslutning"
@@ -868,19 +1028,20 @@
     "description": "Text för auktoriseringsbekräftelse"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Du måste först binda färdigheten",
+    "description": "Dialogtitel som visas när en schemalagd uppgift har en auktoriserad färdighet/MCP som ännu inte är bunden för användaren."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "Färdigheten „{name}” har ännu inte bundits eller aktiverats på ditt konto. Om du inte binder den först kan den schemalagda uppgiften kanske inte använda den när den körs automatiskt i bakgrunden. Vi rekommenderar att du binder den först innan du sparar, eller klicka på knappen nedan för att fortfarande spara.",
+    "description": "Varningsmeddelande; {name} är namnet på färdigheten/MCP. Förklarar att den inte är bunden och erbjuder att spara ändå."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Vill du fortfarande spara",
+    "description": "Bekräfta-knapp som sparar den schemalagda uppgiften ändå, utan att kontrollera bindningen (tvinga)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Vänligen fyll i uppgiftsnamn och prompt",
+    "description": "Validering av obligatoriska fält"
   },
   "artifacts.navTitle": {
     "message": "Utdata",
@@ -918,6 +1079,18 @@
     "message": "Dölj",
     "description": "Knapp för att dölja utdata"
   },
+  "artifacts.unhide": {
+    "message": "Återställ dolda",
+    "description": "Knappen för att återställa en dold Artifact"
+  },
+  "artifacts.showHidden": {
+    "message": "Visa dolda",
+    "description": "Växeln för att visa dolda Artifacts i filtreringsfältet"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Dold",
+    "description": "Märket för att en Artifact har blivit dolt"
+  },
   "artifacts.delete": {
     "message": "Ta bort",
     "description": "Knapp för att ta bort utdata"
@@ -944,7 +1117,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Utdata typ - video"
+    "description": "Typ av produktion - video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",
@@ -1046,6 +1219,17 @@
     "message": "Du tittar på en delad konversation. Klicka ovan för att chatta med AI själv.",
     "description": "Förklarande text under den delade offentliga sidan"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Mål inte uppnått",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Resultat väntar på bekräftelse",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Okänd körningsstatus"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Modellnamnet för tjänsten, det vill säga Claude Opus 4.7"
@@ -1053,127 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "Den mest avancerade modellen hittills",
     "description": "Beskrivning av Claude Opus 4.7-modellen"
-  },
-  "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
-  },
-  "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Faktureringsauktoriseringen misslyckades"
-  },
-  "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
-  },
-  "browserTool.state.executing": {
-    "message": "Executing in browser"
-  },
-  "browserTool.state.completed": {
-    "message": "Completed"
-  },
-  "browserTool.state.expired": {
-    "message": "Browser request expired"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Okänd körningsstatus"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

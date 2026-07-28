@@ -1,4 +1,8 @@
 {
+  "message.mediaPreviewUnavailable": {
+    "message": "المعاينة غير متاحة",
+    "description": "لا يمكن تحميل معاينة الوسائط"
+  },
   "button.setup": {
     "message": "إعداد",
     "description": "النص في الزر، المستخدم لإجراء الإعدادات"
@@ -66,6 +70,46 @@
   "button.close": {
     "message": "إغلاق",
     "description": "النص في الزر، المستخدم لإغلاق مربع الحوار أو اللوحة"
+  },
+  "button.send": {
+    "message": "إرسال",
+    "description": "علامة الوصول لزر إرسال المحتوى"
+  },
+  "button.stop": {
+    "message": "إيقاف",
+    "description": "علامة الوصول لزر إيقاف العملية"
+  },
+  "button.openMenu": {
+    "message": "فتح القائمة",
+    "description": "علامة الوصول لزر فتح قائمة التنقل أو الإعدادات"
+  },
+  "button.more": {
+    "message": "المزيد من العمليات",
+    "description": "علامة الوصول لزر فتح قائمة العمليات"
+  },
+  "button.remove": {
+    "message": "إزالة",
+    "description": "علامة الوصول لزر إزالة العنصر"
+  },
+  "player.previous": {
+    "message": "السابق",
+    "description": "علامة الوصول لزر السابق في مشغل الوسائط"
+  },
+  "player.play": {
+    "message": "تشغيل",
+    "description": "علامة الوصول لزر تشغيل في مشغل الوسائط"
+  },
+  "player.pause": {
+    "message": "إيقاف مؤقت",
+    "description": "علامة الوصول لزر إيقاف مؤقت في مشغل الوسائط"
+  },
+  "player.next": {
+    "message": "التالي",
+    "description": "علامة الوصول لزر التالي في مشغل الوسائط"
+  },
+  "player.volume": {
+    "message": "الصوت",
+    "description": "علامة الوصول لعنصر التحكم في الصوت في مشغل الوسائط"
   },
   "button.expand": {
     "message": "توسيع",
@@ -398,6 +442,18 @@
   "message.confirmDelete": {
     "message": "هل أنت متأكد من الحذف؟",
     "description": "确认用户要删除某项内容的消息"
+  },
+  "message.deleteTaskConfirm": {
+    "message": "هل أنت متأكد أنك تريد حذف هذه السجل؟ سيتم إزالته من جميع الأجهزة ولن يمكن استعادته.",
+    "description": "رسالة التأكيد المعروضة قبل حذف سجل مهمة فردية"
+  },
+  "message.deleteTaskSuccess": {
+    "message": "تم حذف السجل.",
+    "description": "الرسالة المعروضة بعد نجاح حذف سجل المهمة"
+  },
+  "message.deleteTaskFailed": {
+    "message": "فشل الحذف، يرجى المحاولة لاحقًا.",
+    "description": "الرسالة المعروضة عند فشل حذف سجل المهمة"
   },
   "message.expiredAt": {
     "message": "تاريخ انتهاء الصلاحية",
@@ -859,6 +915,14 @@
     "message": "سيتذكر المساعد المعلومات المفيدة التي تذكرها في المحادثات، مما يوفر ردوداً أكثر تخصيصاً في المحادثات المختلفة. لديك السيطرة الكاملة - يمكنك عرض المحتويات المحفوظة وحذف الأجزاء التي لا ترغب في تذكرها.",
     "description": "نص تقديمي في أعلى علامة تبويب إعدادات الذاكرة."
   },
+  "settings.memoryEnabled": {
+    "message": "استخدام الذاكرة",
+    "description": "عنوان مفتاح للتحكم فيما إذا كان المساعد يستخدم الذاكرة المحفوظة في الدردشة ويستمر في تعلم ذاكرة جديدة."
+  },
+  "settings.memoryEnabledHint": {
+    "message": "عند الإيقاف، لن يقرأ المساعد الذاكرة المحفوظة، ولن يحفظ الذاكرة من المحادثات الجديدة. لن يتم حذف المحتوى الموجود.",
+    "description": "وصف سلوك مفتاح الذاكرة أسفل المفتاح."
+  },
   "settings.memoryNeedsChat": {
     "message": "يرجى بدء محادثة لتفعيل ميزة الذاكرة.",
     "description": "يظهر في علامة تبويب إعدادات الذاكرة عندما لم يتم تحميل تطبيق الدردشة/التوكن بعد."
@@ -866,6 +930,58 @@
   "settings.memoryStored": {
     "message": "الذكريات المحفوظة",
     "description": "عنوان القسم أعلى قائمة إدخالات الذاكرة المخزنة."
+  },
+  "settings.memoryImport": {
+    "message": "استيراد",
+    "description": "زر لفتح نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportTitle": {
+    "message": "استيراد الذاكرة من ذكاء اصطناعي آخر",
+    "description": "عنوان نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. اجعل الذكاء الاصطناعي المستخدم حاليًا يصدر الذاكرة",
+    "description": "عنوان الخطوة الأولى في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPrompt": {
+    "message": "أريد الانتقال إلى خدمة ذكاء اصطناعي أخرى. يرجى سرد كل ذاكرة محفوظة عني، بالإضافة إلى المعلومات المستدامة التي تعلمتها من المحادثات السابقة. ضع كل المحتوى في كتلة كود، واكتب ذاكرة واحدة فقط في كل سطر، بالتنسيق: [تاريخ الحفظ، إن وُجد] - محتوى الذاكرة. يرجى تضمين تفضيلات الرد، المعلومات الشخصية، المشاريع، الأهداف، الأدوات الشائعة، اللغات، الأطر، وأي تصحيحات قمت بها. حاول الحفاظ على كلماتي الأصلية، ولا تتضمن كلمات المرور أو المفاتيح أو أي معلومات حساسة.",
+    "description": "عبارة التذكير المستخدمة لتصدير الذاكرة إلى خدمات ذكاء اصطناعي أخرى."
+  },
+  "settings.memoryImportCopy": {
+    "message": "نسخ عبارة التذكير",
+    "description": "زر لنسخ عبارة تصدير الذاكرة."
+  },
+  "settings.memoryImportCopied": {
+    "message": "تم نسخ عبارة التذكير",
+    "description": "تنبيه بعد نسخ عبارة تصدير الذاكرة بنجاح."
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. لصق الذاكرة المصدرة",
+    "description": "عنوان الخطوة الثانية في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "ألصق محتوى الذاكرة المسترجعة من ChatGPT أو Claude أو Gemini أو أي ذكاء اصطناعي آخر...",
+    "description": "نص العنصر المدخل لصق محتوى تصدير الذاكرة."
+  },
+  "settings.memoryImportSubmit": {
+    "message": "إضافة إلى الذاكرة",
+    "description": "زر لتقديم المحتوى الملصوق للاستيراد."
+  },
+  "settings.memoryImportSuccess": {
+    "message": "تمت معالجة {count} عنصرًا من الذاكرة. راجع الذكريات المحفوظة أدناه.",
+    "description": "إشعار نجاح استيراد الذاكرة؛ العدد هو عدد عناصر الإدخال التي اجتازت التحقق قبل إزالة التكرارات وتطبيق حدود السعة"
+  },
+  "settings.memoryImportPartial": {
+    "message": "تم معالجة {processed} محتوى، وتم تخطي {rejected} محتوى غير آمن أو غير صالح.",
+    "description": "تحذير يظهر عند نجاح جزء من استيراد الذاكرة."
+  },
+  "settings.memoryImportInvalid": {
+    "message": "فشل استيراد الذاكرة. يرجى التأكد من تشغيل الذاكرة، ولصق المعلومات بتنسيق حقيقة عادية لكل سطر.",
+    "description": "تنبيه خطأ قابل للتنفيذ يظهر عند طلب استيراد الذاكرة غير صالح."
+  },
+  "settings.memoryImportInProgress": {
+    "message": "هناك مهمة استيراد ذاكرة قيد التشغيل، يرجى إبقاء النافذة مفتوحة والمحاولة لاحقًا.",
+    "description": "تحذير يظهر عند تشغيل مهمة استيراد ذاكرة أخرى."
   },
   "settings.memoryEmpty": {
     "message": "لا توجد ذكريات محفوظة.",
@@ -1333,8 +1449,8 @@
     "description": "Display name for the website contact type"
   },
   "settings.contactType_wechat": {
-    "message": "WeChat",
-    "description": "اسم العرض لنوع الاتصال WeChat."
+    "message": "وي شات",
+    "description": "اسم العرض لنوع جهة الاتصال وي شات"
   },
   "settings.contactLabelPlaceholder": {
     "message": "تسمية (اختياري)، مثل: المبيعات",
@@ -1480,6 +1596,10 @@
     "message": "لا تزال عمليات رفع المراجع جارية — يُرجى الانتظار قليلاً.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.dropToUpload": {
+    "message": "اسحب وأفلت هنا لتحميل",
+    "description": "نص التلميح الذي يظهر مؤقتًا فوق عنصر تحميل عند سحب ملف فوقه، ليخبر المستخدم أنه يمكنه الإفلات لتحميل"
+  },
   "appUpgrade.title": {
     "message": "تحتاج إلى الترقية",
     "description": "عنوان نافذة الترقية عند بدء تشغيل التطبيق الأصلي. يظهر عندما يكون إصدار العميل أقل من المتطلبات الخدمية، ليعلم المستخدم بأنه بحاجة إلى ترقية التطبيق."
@@ -1535,128 +1655,8 @@
   "settings.siteServices": {
     "message": "الأسعار"
   },
-  "settings.memoryEnabled": {
-    "message": "استخدام الذاكرة",
-    "description": "عنوان مفتاح للتحكم فيما إذا كان المساعد يستخدم الذاكرة المحفوظة في الدردشة ويستمر في تعلم ذاكرة جديدة."
-  },
-  "settings.memoryEnabledHint": {
-    "message": "عند الإيقاف، لن يقرأ المساعد الذاكرة المحفوظة، ولن يحفظ الذاكرة من المحادثات الجديدة. لن يتم حذف المحتوى الموجود.",
-    "description": "وصف سلوك مفتاح الذاكرة أسفل المفتاح."
-  },
   "nav.omni": {
     "message": "فيديو Omni",
     "description": "علامة التنقل لوحدة فيديو Omni."
-  },
-  "settings.memoryImport": {
-    "message": "استيراد",
-    "description": "زر لفتح نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportTitle": {
-    "message": "استيراد الذاكرة من ذكاء اصطناعي آخر",
-    "description": "عنوان نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportExportStep": {
-    "message": "1. اجعل الذكاء الاصطناعي المستخدم حاليًا يصدر الذاكرة",
-    "description": "عنوان الخطوة الأولى في نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportPrompt": {
-    "message": "أريد الانتقال إلى خدمة ذكاء اصطناعي أخرى. يرجى سرد كل ذاكرة محفوظة عني، بالإضافة إلى المعلومات المستدامة التي تعلمتها من المحادثات السابقة. ضع كل المحتوى في كتلة كود، واكتب ذاكرة واحدة فقط في كل سطر، بالتنسيق: [تاريخ الحفظ، إن وُجد] - محتوى الذاكرة. يرجى تضمين تفضيلات الرد، المعلومات الشخصية، المشاريع، الأهداف، الأدوات الشائعة، اللغات، الأطر، وأي تصحيحات قمت بها. حاول الحفاظ على كلماتي الأصلية، ولا تتضمن كلمات المرور أو المفاتيح أو أي معلومات حساسة.",
-    "description": "عبارة التذكير المستخدمة لتصدير الذاكرة إلى خدمات ذكاء اصطناعي أخرى."
-  },
-  "settings.memoryImportCopy": {
-    "message": "نسخ عبارة التذكير",
-    "description": "زر لنسخ عبارة تصدير الذاكرة."
-  },
-  "settings.memoryImportCopied": {
-    "message": "تم نسخ عبارة التذكير",
-    "description": "تنبيه بعد نسخ عبارة تصدير الذاكرة بنجاح."
-  },
-  "settings.memoryImportPasteStep": {
-    "message": "2. لصق الذاكرة المصدرة",
-    "description": "عنوان الخطوة الثانية في نافذة استيراد الذاكرة."
-  },
-  "settings.memoryImportPlaceholder": {
-    "message": "ألصق محتوى الذاكرة المسترجعة من ChatGPT أو Claude أو Gemini أو أي ذكاء اصطناعي آخر...",
-    "description": "نص العنصر المدخل لصق محتوى تصدير الذاكرة."
-  },
-  "settings.memoryImportSubmit": {
-    "message": "إضافة إلى الذاكرة",
-    "description": "زر لتقديم المحتوى الملصوق للاستيراد."
-  },
-  "settings.memoryImportSuccess": {
-    "message": "تمت معالجة {count} عنصرًا من الذاكرة. راجع الذكريات المحفوظة أدناه.",
-    "description": "إشعار نجاح استيراد الذاكرة؛ العدد هو عدد عناصر الإدخال التي اجتازت التحقق قبل إزالة التكرارات وتطبيق حدود السعة"
-  },
-  "settings.memoryImportPartial": {
-    "message": "تم معالجة {processed} محتوى، وتم تخطي {rejected} محتوى غير آمن أو غير صالح.",
-    "description": "تحذير يظهر عند نجاح جزء من استيراد الذاكرة."
-  },
-  "settings.memoryImportInvalid": {
-    "message": "فشل استيراد الذاكرة. يرجى التأكد من تشغيل الذاكرة، ولصق المعلومات بتنسيق حقيقة عادية لكل سطر.",
-    "description": "تنبيه خطأ قابل للتنفيذ يظهر عند طلب استيراد الذاكرة غير صالح."
-  },
-  "settings.memoryImportInProgress": {
-    "message": "هناك مهمة استيراد ذاكرة قيد التشغيل، يرجى إبقاء النافذة مفتوحة والمحاولة لاحقًا.",
-    "description": "تحذير يظهر عند تشغيل مهمة استيراد ذاكرة أخرى."
-  },
-  "message.mediaPreviewUnavailable": {
-    "message": "Preview unavailable",
-    "description": "Media preview could not be loaded"
-  },
-  "button.send": {
-    "message": "Send",
-    "description": "Accessible label for sending content"
-  },
-  "button.stop": {
-    "message": "Stop",
-    "description": "Accessible label for stopping an operation"
-  },
-  "button.openMenu": {
-    "message": "Open menu",
-    "description": "Accessible label for opening a navigation or configuration menu"
-  },
-  "button.more": {
-    "message": "More actions",
-    "description": "Accessible label for opening an actions menu"
-  },
-  "button.remove": {
-    "message": "Remove",
-    "description": "Accessible label for removing an item"
-  },
-  "player.previous": {
-    "message": "Previous track",
-    "description": "Accessible label for the previous-track player button"
-  },
-  "player.play": {
-    "message": "Play",
-    "description": "Accessible label for the player play button"
-  },
-  "player.pause": {
-    "message": "Pause",
-    "description": "Accessible label for the player pause button"
-  },
-  "player.next": {
-    "message": "Next track",
-    "description": "Accessible label for the next-track player button"
-  },
-  "player.volume": {
-    "message": "Volume",
-    "description": "Accessible label for the player volume control"
-  },
-  "message.deleteTaskConfirm": {
-    "message": "Delete this generation record? It will be removed from all your devices and cannot be recovered.",
-    "description": "Confirmation message shown before deleting a single task record"
-  },
-  "message.deleteTaskSuccess": {
-    "message": "Record deleted.",
-    "description": "Message shown after a task record is successfully deleted"
-  },
-  "message.deleteTaskFailed": {
-    "message": "Failed to delete. Please try again later.",
-    "description": "Message shown when deleting a task record fails"
-  },
-  "message.dropToUpload": {
-    "message": "Drop to upload",
-    "description": "Text on the transient overlay that appears over an uploader while a file is being dragged onto it, telling the user to release to upload."
   }
 }

@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Azione",
+    "description": "Selettore per generare o modificare un'azione."
+  },
   "name.taskId": {
     "message": "ID attività",
     "description": "ID dell'attività"
@@ -131,6 +135,10 @@
     "message": "Caricamento immagine fallito, riprova più tardi",
     "description": "Caricamento fallito"
   },
+  "message.referenceImageRequired": {
+    "message": "È necessario caricare almeno un'immagine di riferimento in modalità di modifica.",
+    "description": "Messaggio di verifica mostrato quando non ci sono immagini di riferimento in modalità di modifica."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Richiesta di conferma",
     "description": "Titolo della finestra di avviso per conflitti di capacità"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Adattivo (coerente con l'immagine di riferimento)",
     "description": "Etichetta dell'opzione adattiva"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

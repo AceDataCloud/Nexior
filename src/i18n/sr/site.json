@@ -81,7 +81,7 @@
   },
   "field.authProvider_email": {
     "message": "Email",
-    "description": "Naziv načina prijave: Email (email + lozinka ili kod)"
+    "description": "Naziv načina prijave: Email (Email + lozinka ili kod)"
   },
   "field.authProvider_phone": {
     "message": "Broj telefona",
@@ -101,7 +101,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Naziv načina prijave: WeChat treća strana"
+    "description": "Naziv načina prijave: WeChat treća strana prijave"
   },
   "field.authSmsWebhook": {
     "message": "Прилагођени SMS пошиљалац",
@@ -112,8 +112,8 @@
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://tvoj-domen/sms-webhook",
+    "description": "Placeholder za unos SMS webhook URL-a."
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "Тајна за потписивање (оставите празно да остане непромењено)",
@@ -223,6 +223,10 @@
     "message": "Maestro",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresDigitalhuman": {
     "message": "Дигитални човек",
     "description": "Displayed as the title in the editing box"
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Приказује се као наслов у пољу за уређивање"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Покретање комплетних видео снимака из идеје, укључујући планирање, дикцију, сцене и испоруку.",
     "description": "Кратак увод у могућност: Покретање комплетних видео снимака из идеје, укључујући планирање, дикцију, сцене и испоруку."
   },
+  "message.featuresPoivelle": {
+    "message": "Kroz deljenje projektnog dijagrama, storyboard-a, vremenske linije, pregleda i Skill Agent radnog toka, upravljajte profesionalnom AI filmskom produkcijom.",
+    "description": "Kratak opis sposobnosti upravljanja profesionalnom AI filmskom produkcijom kroz deljenje projektnog dijagrama, storyboard-a, vremenske linije, pregleda i Skill Agent radnog toka."
+  },
   "message.featuresDigitalhuman": {
     "message": "Креирајте видео снимке са говорном главом уз синтетизован говор и природну синхронизацију усана.",
     "description": "Кратак увод у могућност: Креирајте видео снимке са говорном главом уз синтетизован говор и природну синхронизацију усана."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "ByteDance видео генерација за динамичне сцене, покрет камере и опциони звук.",
     "description": "Кратак увод у могућност: ByteDance видео генерација за динамичне сцене, покрет камере и опциони звук."
+  },
+  "message.featuresOmni": {
+    "message": "Креирајте или уређујте видео-записе помоћу Omni модела на основу текста, слика и видео-референци.",
+    "description": "Креирајте или уређујте видео-записе помоћу Omni модела на основу текста, слика и видео-референци."
   },
   "message.featuresWan": {
     "message": "Alibaba видео генерација из текста, слика или референци у више резолуција.",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "Учитавање измена услуга није успело"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Приказује се као наслов у пољу за уређивање"
-  },
-  "message.featuresOmni": {
-    "message": "Креирајте или уређујте видео-записе помоћу Omni модела на основу текста, слика и видео-референци.",
-    "description": "Креирајте или уређујте видео-записе помоћу Omni модела на основу текста, слика и видео-референци."
-  },
   "capabilityOverride.edit": {
     "message": "Прилагоди апликацију",
     "description": "Tooltip and accessible label for editing a capability app name and icon"
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "Учитавање прилагођавања апликације није успело",
     "description": "Error shown when capability override management rows cannot be loaded"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

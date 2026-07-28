@@ -112,8 +112,8 @@
     "description": "يشرح واجهة برمجة تطبيقات مرسل SMS المخصص"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "نص توضيحي لحقل إدخال URL لواجهة برمجة تطبيقات SMS"
+    "message": "https://اسم_النطاق_الخاصة_بك/sms-webhook",
+    "description": "مربع إدخال URL webhook للرسائل القصيرة."
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "مفتاح التوقيع (اتركه فارغًا للحفاظ على الوضع الحالي)",
@@ -223,6 +223,10 @@
     "message": "مايسترو",
     "description": "يظهر كعنوان في صندوق التحرير"
   },
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresDigitalhuman": {
     "message": "إنسان رقمي",
     "description": "يظهر كعنوان في صندوق التحرير"
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "سي دانس",
     "description": "عرض في مربع التحرير"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "يُعرض كعنوان في مربع التحرير"
   },
   "field.featuresWan": {
     "message": "وان",
@@ -583,6 +591,10 @@
     "message": "أنتج فيديوهات كاملة من الفكرة، بما في ذلك التخطيط والتعليق الصوتي والمشاهد والتسليم.",
     "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
   },
+  "message.featuresPoivelle": {
+    "message": "تنسيق إنتاج الأفلام الاحترافية باستخدام الذكاء الاصطناعي من خلال مشاركة مخططات المشاريع، والقصص المصورة، والجداول الزمنية، ومراجعة اللقطات، وتدفقات عمل Skill Agent.",
+    "description": "تنسيق إنتاج الأفلام الاحترافية باستخدام الذكاء الاصطناعي من خلال مشاركة مخططات المشاريع، والقصص المصورة، والجداول الزمنية، ومراجعة اللقطات، وتدفقات عمل Skill Agent."
+  },
   "message.featuresDigitalhuman": {
     "message": "أنشئ فيديوهات بوجه متحدث مع صوت مُركّب ومزامنة شفاه طبيعية.",
     "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "توليد فيديو من ByteDance لمشاهد ديناميكية وحركة كاميرا وصوت اختياري.",
     "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+  },
+  "message.featuresOmni": {
+    "message": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو.",
+    "description": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو."
   },
   "message.featuresWan": {
     "message": "توليد فيديو من Alibaba من النصوص أو الصور أو المراجع بدقات متعددة.",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "فشل تحميل تجاوزات الخدمة"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "يُعرض كعنوان في مربع التحرير"
-  },
-  "message.featuresOmni": {
-    "message": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو.",
-    "description": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو."
-  },
   "capabilityOverride.edit": {
     "message": "تخصيص التطبيق",
     "description": "تلميح لتحرير اسم الأيقونة والتطبيق مع علامة وصول"
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "فشل تحميل تخصيص التطبيق",
     "description": "خطأ عند عدم القدرة على قراءة سجلات إدارة تغطية تطبيق القدرة"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

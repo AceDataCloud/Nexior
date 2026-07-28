@@ -28,8 +28,8 @@
     "description": "Мітка для введення зображення"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Референсні зображення",
+    "description": "Мітка для референсних зображень"
   },
   "name.required": {
     "message": "Обов'язково",
@@ -64,8 +64,8 @@
     "description": "Інструкції щодо введення підказки"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Виберіть модель Grok Imagine. :reverse використовує швидкий/стандартний кінцевий пункт; :official використовує офіційний кінцевий пункт (вища якість, оплата за секунду). grok-imagine-video-1.5:official підтримує лише генерацію відео з зображення.",
+    "description": "Інструкції щодо вибору моделі"
   },
   "description.ratio": {
     "message": "Виберіть співвідношення сторін виходу.",
@@ -76,16 +76,16 @@
     "description": "Інструкції щодо роздільної здатності"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Тривалість відео (секунди). 1.5-fast (реверс) підтримує 6-30 секунд, оплата за тривалістю; інші варіанти підтримують 1-15 секунд, оплата за вихідні секунди.",
+    "description": "Інструкції щодо тривалості"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Додаткове зображення для генерації відео. grok-imagine-video-1.5:official є обов'язковим.",
+    "description": "Інструкції щодо введення зображення"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Додаткові зображення для керування стилем або змістом згенерованого відео.",
+    "description": "Інструкції щодо референсних зображень"
   },
   "placeholder.prompt": {
     "message": "Опишіть ваше відео…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Будь ласка, виберіть",
     "description": "Заповнювач для вибору"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine відео 1.5 Fast (швидко, 6–30 секунд)",
+    "description": "Мітка моделі 1.5-fast реверс"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine відео (стандартне, 1–15 секунд)",
+    "description": "Мітка моделі grok-imagine-video реверс"
+  },
+  "model.official": {
+    "message": "Grok Imagine відео · Офіційне (вища якість, оплата за секунду)",
+    "description": "Мітка офіційної моделі grok-imagine-video"
+  },
+  "model.official15": {
+    "message": "Grok Imagine відео 1.5 · Офіційне (генерація відео з зображення, до 1080p)",
+    "description": "Мітка офіційної моделі 1.5"
   },
   "button.upload": {
     "message": "Завантажити",
@@ -120,8 +136,8 @@
     "description": "Попередження про перевищення завантаження"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Максимум можна завантажити 4 референсні зображення.",
+    "description": "Попередження про перевищення завантаження референсних зображень"
   },
   "message.uploadError": {
     "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз.",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Ліміт вичерпано, будь ласка, купіть, щоб продовжити використання.",
     "description": "Вичерпано"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

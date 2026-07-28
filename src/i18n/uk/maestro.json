@@ -83,6 +83,14 @@
     "message": "Мови",
     "description": "Поле для мов виводу"
   },
+  "name.primaryLanguage": {
+    "message": "Основна мова",
+    "description": "Поле для основної мови виходу"
+  },
+  "name.additionalLanguages": {
+    "message": "Додаткові мови (необов'язково)",
+    "description": "Поле для додаткових мов виходу"
+  },
   "name.aspect": {
     "message": "Співвідношення сторін",
     "description": "Поле співвідношення сторін"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "Будь ласка, виберіть",
     "description": "Загальний заповнювач для вибору"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Додати інші мови виходу",
+    "description": "Заповнювач для додаткових мов"
   },
   "description.prompt": {
     "message": "Чітко сформулюйте, що ви хочете, сценарій, кадри, озвучення, монтаж - все це Maestro.",
@@ -207,6 +219,30 @@
     "message": "Ще немає відео — створіть своє перше зліва.",
     "description": "Відсутність завдань"
   },
+  "name.customize": {
+    "message": "Налаштувати",
+    "description": "Optional creative controls toggle"
+  },
+  "description.customize.auto": {
+    "message": "Авто · Maestro обирає тип відео, візуальний стиль і тональність озвучення.",
+    "description": "Customization disabled state"
+  },
+  "description.customize.manual": {
+    "message": "Виберіть тип відео, візуальний стиль і тональність озвучення.",
+    "description": "Customization enabled state"
+  },
+  "name.customizeScenario": {
+    "message": "Налаштувати тип відео",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Налаштувати візуальний стиль",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Налаштувати тональність озвучення",
+    "description": "Voice timbre customization toggle"
+  },
   "name.scenario": {
     "message": "Тип відео",
     "description": "Video type field"
@@ -256,60 +292,60 @@
     "description": "Опція кінематографічного стилю"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Frosted glass style option"
+    "message": "Матове скло · Рідке скло",
+    "description": "Опція стилю матового скла"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Luxury style option"
+    "message": "Розкіш · Пустота",
+    "description": "Опція розкішного стилю"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Swiss grid style option"
+    "message": "Швейцарська сітка · Точність",
+    "description": "Опція швейцарського стилю"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Modern style option"
+    "message": "Сучасний · SaaS",
+    "description": "Опція сучасного стилю"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Editorial style option"
+    "message": "Редакційний стиль",
+    "description": "Опція редакційного стилю"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Warm style option"
+    "message": "Теплий та близький",
+    "description": "Опція теплого стилю"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Vibrant style option"
+    "message": "Яскравий стиль",
+    "description": "Опція яскравого стилю"
   },
   "option.style.neon": {
     "message": "Неоновий",
     "description": "Опція неонового стилю"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Monochrome style option"
+    "message": "Мінімалістичний чорний і білий",
+    "description": "Опція монохромного стилю"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Pastel style option"
+    "message": "Пастельні кольори",
+    "description": "Опція пастельного стилю"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Bold type style option"
+    "message": "Жирний шрифт · Висока енергія",
+    "description": "Опція стилю жирного шрифту"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Industrial style option"
+    "message": "Промисловий стиль",
+    "description": "Опція промислового стилю"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Futuristic style option"
+    "message": "Футуристичний стиль",
+    "description": "Опція футуристичного стилю"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Retro film style option"
+    "message": "Ретро плівка",
+    "description": "Опція ретро стилю"
   },
   "name.voice": {
     "message": "Тональність озвучення",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "Журнал змін (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Налаштувати",
-    "description": "Optional creative controls toggle"
-  },
-  "description.customize.auto": {
-    "message": "Авто · Maestro обирає тип відео, візуальний стиль і тональність озвучення.",
-    "description": "Customization disabled state"
-  },
-  "description.customize.manual": {
-    "message": "Виберіть тип відео, візуальний стиль і тональність озвучення.",
-    "description": "Customization enabled state"
-  },
-  "name.primaryLanguage": {
-    "message": "Primary language",
-    "description": "Primary output language field"
-  },
-  "name.additionalLanguages": {
-    "message": "Additional languages (optional)",
-    "description": "Additional output languages field"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Add output languages",
-    "description": "Additional languages placeholder"
-  },
-  "name.customizeScenario": {
-    "message": "Налаштувати тип відео",
-    "description": "Video type customization toggle"
-  },
-  "name.customizeStyle": {
-    "message": "Налаштувати візуальний стиль",
-    "description": "Visual style customization toggle"
-  },
-  "name.customizeVoice": {
-    "message": "Налаштувати тональність озвучення",
-    "description": "Voice timbre customization toggle"
   }
 }

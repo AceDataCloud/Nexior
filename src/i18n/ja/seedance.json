@@ -8,7 +8,7 @@
     "description": "動画生成のためのプロンプト"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
+    "message": "生成したい動画を説明してください。キャラクターに話させたい場合は、画像を下の「参考画像」ボックスにアップロード（「最初のフレーム画像」ではありません）、プロンプトにセリフを引用符で記載し、「音声生成」をオンにします。追加のパラメータ（例： --rs 720p --rt 16:9 --dur 5）を付けることもできます。",
     "description": "プロンプト入力の説明"
   },
   "placeholder.prompt": {
@@ -40,7 +40,7 @@
     "description": "音声生成の有無ラベル"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
+    "message": "有効にすると動画に音声が付きます。キャラクターに話させるには：人物画像を「参考画像」ボックスにアップロード + このスイッチをオンにする + プロンプトにセリフを引用符で書く必要があります。seedance-1.5-pro / seedance-2.0シリーズのみ対応、料金は約2倍です。",
     "description": "音声生成の説明"
   },
   "name.resolution": {
@@ -100,11 +100,11 @@
     "description": "最後のフレームの説明"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
+    "message": "最初のフレーム画像（映像効果）",
     "description": "最初のフレーム画像のアップロードラベル"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
+    "message": "画像から動画：アップロードしたこの画像が動画の最初のフレームになります。映像はそこから動き始めます。「画像を動かす」には適していますが、キャラクターは口を開けず、口の動きはありません。キャラクターに話させたい場合は、下の「参考画像」を使用してください。",
     "description": "最初のフレーム画像の説明"
   },
   "name.lastFrame": {
@@ -112,7 +112,7 @@
     "description": "最後のフレーム画像のアップロードラベル"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
+    "message": "最初と最後のフレーム画像から動画を生成：動画の最後のフレームを指定します（最初のフレーム画像と組み合わせる必要があります）。特定の画像から始まり、特定の画像で終了する映像を固定するために使用します。",
     "description": "最後のフレーム画像の説明"
   },
   "button.generate": {
@@ -256,19 +256,19 @@
     "description": "SeeDance 2.0 Mini モデル"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
+    "message": "参考画像（キャラクターに話させる）",
     "description": "参考主体画像のアップロードラベル（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "動画内でキャラクターが話し、口の動きを合わせるためのチャネル（ナレーション / デジタルキャラクターの優先選択、キャラクターのイメージを保持します）。キャラクターに話させたい場合は、ここに画像をアップロードし、「最初のフレーム画像」ではありません。プロンプト内の引用符付きセリフ +「音声生成」と一緒に使用します。1〜9枚をアップロードできます。Seedance 2.0シリーズのみ。注意：最初のフレーム/最後のフレーム画像と同時に使用することはできません。",
     "description": "参考画像の説明"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
+    "message": "参考音声（音色/音楽）",
     "description": "参考音声のアップロードラベル（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "生成する動画がこの音声の音色やバックグラウンドミュージックを借用します（参考画像と組み合わせてキャラクターがその音色で話します）。参考画像または参考動画と一緒に使用する必要があり、音声のみを単独でアップロードすることはできません。1〜3セグメントをアップロードできます。Seedance 2.0シリーズのみ。",
     "description": "参考音声の説明"
   },
   "name.referenceVideo": {
@@ -276,11 +276,11 @@
     "description": "参考ビデオのアップロードラベル（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "参考ビデオの説明"
+    "message": "モデルがこの動画の動き/カメラワーク/スタイル/音響を借用し、新しい動画を生成します。1〜3セグメントをアップロードできます。Seedance 2.0シリーズのみ。",
+    "description": "参考動画の説明"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "参考音声は単独では使用できません。参考画像または参考動画を同時にアップロードしてください。",
+    "description": "参考音声に対して画像/動画がペアになっていない場合の警告"
   }
 }

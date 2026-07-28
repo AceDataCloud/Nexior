@@ -29,7 +29,7 @@
   },
   "field.qr": {
     "message": "QR Code",
-    "description": "展示在编辑框的标题"
+    "description": "Εμφανίζεται ως τίτλος στο πλαίσιο επεξεργασίας"
   },
   "field.url": {
     "message": "Σύνδεσμος",
@@ -104,100 +104,100 @@
     "description": "Όνομα τρόπου σύνδεσης: Σύνδεση μέσω τρίτου μέρους WeChat"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "Προσαρμοσμένη Διεύθυνση Αποστολής SMS",
+    "description": "Ρυθμίσεις ιστότοπου / σύνδεση: τίτλος για το δικό του προσαρμοσμένο webhook αποστολής κωδικού επαλήθευσης SMS"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "Αφού ενεργοποιηθεί, οι SMS κωδικοί επιβεβαίωσης που αποστέλλονται από την πλατφόρμα θα αποστέλλονται μέσω της δικής σας διεπαφής με τη δική σας υπογραφή; αν απενεργοποιηθεί, θα χρησιμοποιηθεί η προεπιλεγμένη υπογραφή της πλατφόρμας. Πρέπει πρώτα να ενεργοποιήσετε τη μέθοδο σύνδεσης «Αριθμός Τηλεφώνου».",
+    "description": "Εξηγεί τον προσαρμοσμένο αποστολέα SMS webhook"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://το-τομέα-σας/sms-webhook",
+    "description": "Placeholder για το πεδίο εισόδου URL SMS webhook"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "Κλειδί Υπογραφής (αφήστε κενό για να παραμείνει αμετάβλητο)",
+    "description": "Placeholder για την είσοδο του κλειδιού υπογραφής SMS webhook; μόνο για εγγραφή, το κενό διατηρεί το υπάρχον"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "Ενεργοποίηση Προσαρμοσμένης Διεύθυνσης Αποστολής",
+    "description": "Ετικέτα δίπλα στον διακόπτη προσαρμοσμένου αποστολέα SMS"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "Δείτε το Έγγραφο",
+    "description": "Σύνδεσμος που ανοίγει το παράθυρο προδιαγραφών webhook SMS"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "Δοκιμή",
+    "description": "Κουμπί που ανοίγει το διάλογο δοκιμής SMS webhook"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "Πρέπει πρώτα να ενεργοποιήσετε τη μέθοδο σύνδεσης «Αριθμός Τηλεφώνου» για να ρυθμίσετε την προσαρμοσμένη διεύθυνση αποστολής SMS.",
+    "description": "Tooltip που εμφανίζεται όταν ο διακόπτης είναι απενεργοποιημένος επειδή η σύνδεση μέσω τηλεφώνου είναι απενεργοποιημένη"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "Προσαρμοσμένη Διεύθυνση Αποστολής SMS · Περιγραφή Διεπαφής",
+    "description": "Τίτλος του διαλόγου προδιαγραφής SMS webhook"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "Η πλατφόρμα θα στείλει μια υπογεγραμμένη αίτηση HTTPS POST στη διεύθυνση που συμπληρώσατε, και η υπηρεσία σας θα είναι υπεύθυνη για την αποστολή των SMS. Παρακαλώ βεβαιωθείτε ότι η διεπαφή σας πληροί τις παρακάτω απαιτήσεις:",
+    "description": "Εισαγωγική παράγραφος του διαλόγου προδιαγραφής SMS webhook"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "Αίτηση",
+    "description": "Επικεφαλίδα: τμήμα αίτησης της προδιαγραφής SMS webhook"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "Η μέθοδος είναι POST, το Content-Type είναι application/json. Ο σκοπός μπορεί να είναι login / register / test (test είναι δοκιμή συνδεσιμότητας, δεν απαιτείται πραγματική αποστολή SMS). Η δομή του σώματος αίτησης είναι η εξής:",
+    "description": "Περιγράφει τη μέθοδο αίτησης και το σώμα του SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "Επιβεβαίωση Υπογραφής",
+    "description": "Επικεφαλίδα: τμήμα υπογραφής της προδιαγραφής SMS webhook"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "Κάθε αίτηση συνοδεύεται από τις παρακάτω κεφαλίδες, παρακαλώ κάντε HMAC-SHA256 επιβεβαίωση με το κλειδί υπογραφής σας σύμφωνα με τις προδιαγραφές Standard Webhooks και χρησιμοποιήστε συγκρίσεις σταθερού χρόνου:",
+    "description": "Περιγράφει την επιβεβαίωση υπογραφής για το SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "Απάντηση",
+    "description": "Επικεφαλίδα: τμήμα απάντησης της προδιαγραφής SMS webhook"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "Εάν η αποστολή είναι επιτυχής, παρακαλώ επιστρέψτε 2xx; αν χρειάζεται να δηλώσετε ρητά αποτυχία, μπορείτε να επιστρέψετε HTTP 200, και το πεδίο success στο σώμα να είναι false (βλ. παρακάτω παράδειγμα). Παρακαλώ απαντήστε εντός 5 δευτερολέπτων.",
+    "description": "Περιγράφει την αναμενόμενη απάντηση του SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "Δοκιμή Προσαρμοσμένης Διεύθυνσης Αποστολής SMS",
+    "description": "Τίτλος του διαλόγου δοκιμής SMS webhook"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "Κωδικός Χώρας/Περιοχής",
+    "description": "Ετικέτα για το πεδίο κωδικού περιοχής στο διάλογο δοκιμής"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "Αριθμός Τηλεφώνου Δοκιμής (προαιρετικό)",
+    "description": "Ετικέτα για το πεδίο αριθμού τηλεφώνου στο διάλογο δοκιμής"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "Αποστολή Δοκιμής",
+    "description": "Κουμπί που στέλνει το αίτημα δοκιμής SMS webhook"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "Το αίτημα δοκιμής έχει παραληφθεί επιτυχώς από τη διεπαφή σας.",
+    "description": "Μήνυμα επιτυχίας μετά από μια δοκιμή webhook"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "Η δοκιμή απέτυχε, παρακαλώ ελέγξτε τη διεύθυνση, το κλειδί υπογραφής και την απάντηση της διεπαφής.",
+    "description": "Μήνυμα αποτυχίας μετά από μια δοκιμή webhook"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Απενεργοποίηση Προσαρμοσμένης Διεύθυνσης Αποστολής SMS",
+    "description": "Τίτλος του παραθύρου επιβεβαίωσης που εμφανίζεται κατά την απενεργοποίηση του προσαρμοσμένου αποστολέα SMS"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Αφού απενεργοποιηθεί, θα διαγραφούν οι αποθηκευμένες διευθύνσεις αποστολής και το κλειδί υπογραφής (το κλειδί δεν μπορεί να ανακτηθεί), και η πλατφόρμα θα χρησιμοποιήσει την προεπιλεγμένη υπογραφή. Είστε σίγουροι ότι θέλετε να απενεργοποιήσετε;",
+    "description": "Κείμενο του διαλόγου επιβεβαίωσης που εμφανίζεται όταν απενεργοποιείται ο προσαρμοσμένος αποστολέας SMS"
   },
   "field.featuresChat": {
     "message": "Chat",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Εμφανίζεται ως ο τίτλος στο πλαίσιο επεξεργασίας"
   },
-  "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresDigitalhuman": {
+    "message": "Ψηφιακός Άνθρωπος",
+    "description": "Εμφανίζεται ως τίτλος στο πλαίσιο επεξεργασίας"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Εμφανίζεται ως τίτλος στο πλαίσιο επεξεργασίας"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Παράγει ολοκληρωμένα βίντεο από μια ιδέα, με σχεδιασμό, αφήγηση, σκηνές και παράδοση.",
     "description": "Σύντομη εισαγωγή δυνατοτήτων: Παράγει ολοκληρωμένα βίντεο από μια ιδέα, με σχεδιασμό, αφήγηση, σκηνές και παράδοση."
   },
+  "message.featuresPoivelle": {
+    "message": "Συντονίστε την επαγγελματική παραγωγή AI ταινιών μέσω κοινών διαγραμμάτων έργων, storyboard, χρονογραμμάτων, αναθεωρήσεων και ροών εργασίας Skill Agent.",
+    "description": "Περιγραφή ικανοτήτων για τον συντονισμό επαγγελματικής παραγωγής AI ταινιών"
+  },
   "message.featuresDigitalhuman": {
     "message": "Δημιουργήστε βίντεο με ομιλούν πρόσωπο και συνθετική ομιλία με φυσικό συγχρονισμό χειλιών.",
     "description": "Σύντομη εισαγωγή δυνατοτήτων: Δημιουργήστε βίντεο με ομιλούν πρόσωπο και συνθετική ομιλία με φυσικό συγχρονισμό χειλιών."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "Δημιουργία βίντεο ByteDance για δυναμικές σκηνές, κίνηση κάμερας και προαιρετικό ήχο.",
     "description": "Σύντομη εισαγωγή δυνατοτήτων: Δημιουργία βίντεο ByteDance για δυναμικές σκηνές, κίνηση κάμερας και προαιρετικό ήχο."
+  },
+  "message.featuresOmni": {
+    "message": "Δημιουργήστε ή επεξεργαστείτε βίντεο με μοντέλα Omni από κείμενο, εικόνες και αναφορές βίντεο.",
+    "description": "Δημιουργήστε ή επεξεργαστείτε βίντεο με μοντέλα Omni από κείμενο, εικόνες και αναφορές βίντεο."
   },
   "message.featuresWan": {
     "message": "Δημιουργία βίντεο Alibaba από κείμενο, εικόνες ή αναφορές σε πολλαπλές αναλύσεις.",
@@ -882,100 +898,84 @@
   "services.message.fetchFailed": {
     "message": "Αποτυχία φόρτωσης παρακάμψεων υπηρεσίας"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Εμφανίζεται ως τίτλος στο πλαίσιο επεξεργασίας"
-  },
-  "message.featuresOmni": {
-    "message": "Δημιουργήστε ή επεξεργαστείτε βίντεο με μοντέλα Omni από κείμενο, εικόνες και αναφορές βίντεο.",
-    "description": "Δημιουργήστε ή επεξεργαστείτε βίντεο με μοντέλα Omni από κείμενο, εικόνες και αναφορές βίντεο."
-  },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "Προσαρμοσμένη Εφαρμογή",
+    "description": "Υπόδειξη και ετικέτα προσβασιμότητας για την επεξεργασία ονόματος και εικόνας εφαρμογής"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "Προσαρμοσμένο {name}",
+    "description": "Τίτλος παραθύρου, {name} είναι το προεπιλεγμένο όνομα εφαρμογής της πλατφόρμας"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "Προσαρμοσμένο Όνομα",
+    "description": "Πεδίο εμφάνισης ονόματος εφαρμογής υποτομέα"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "Αφήστε κενό για να χρησιμοποιήσετε το {name}. Μετά την πρώτη αποθήκευση, μπορείτε να ενεργοποιήσετε την αυτόματη μετάφραση.",
+    "description": "Περιγραφή ονόματος, {name} είναι το προεπιλεγμένο όνομα εφαρμογής της πλατφόρμας"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "Προσαρμοσμένη Εικόνα",
+    "description": "Πεδίο εικόνας εφαρμογής υποτομέα"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "Προεπιλογή",
+    "description": "Ετικέτα προεπισκόπησης προεπιλεγμένης εικόνας της πλατφόρμας"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "Τρέχουσα Εικόνα",
+    "description": "Ετικέτα προεπισκόπησης τρέχουσας εικόνας εφέ"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "Αντικατάσταση Εικόνας",
+    "description": "Εντολή για την ανάρτηση αντικατάστασης εικόνας"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "Ανέβασμα Εικόνας",
+    "description": "Εντολή για την πρώτη ανάρτηση προσαρμοσμένης εικόνας"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "Χρήση Προεπιλεγμένης Εικόνας",
+    "description": "Εντολή για την εκκαθάριση προσχεδίου προσαρμοσμένης εικόνας"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "Υποστηρίζει PNG, JPEG ή WebP, θα περικοπεί σε τετράγωνο; Διαφανές PNG θα διατηρήσει το διαφανές φόντο.",
+    "description": "Απαιτήσεις για την ανάρτηση εικόνας εφαρμογής"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "Επεξεργασία Εικόνας Εφαρμογής",
+    "description": "Τίτλος παραθύρου περικοπής εικόνας"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "Επαναφορά Προεπιλογών",
+    "description": "Εντολή για την ταυτόχρονη διαγραφή προσαρμοσμένου ονόματος και εικόνας"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "Παρακαλώ εισάγετε πρώτα ένα προσαρμοσμένο όνομα ή ανεβάστε μια εικόνα.",
+    "description": "Υπόδειξη όταν προσπαθείτε να δημιουργήσετε μια κενή κάλυψη"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "Οι προσαρμοσμένες εφαρμογές έχουν αποθηκευτεί",
+    "description": "Επιτυχής υπόδειξη μετά την αποθήκευση κάλυψης εφαρμογής"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "Έχει αποθηκευτεί, τώρα μπορείτε να ενεργοποιήσετε την αυτόματη μετάφραση για το προσαρμοσμένο όνομα.",
+    "description": "Υπόδειξη μετά την πρώτη αποθήκευση και απόκτηση ID κάλυψης"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "Αποτυχία αποθήκευσης προσαρμοσμένων εφαρμογών",
+    "description": "Σφάλμα κατά την εγγραφή κάλυψης εφαρμογής"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "Επαναφορά του προεπιλεγμένου ονόματος και εικόνας του {name};",
+    "description": "Κείμενο επιβεβαίωσης επαναφοράς, {name} είναι το προεπιλεγμένο όνομα εφαρμογής της πλατφόρμας"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "Επαναφέρθηκαν το προεπιλεγμένο όνομα και εικόνα",
+    "description": "Επιτυχής υπόδειξη μετά την διαγραφή της κάλυψης εφαρμογής"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
+    "message": "Αποτυχία φόρτωσης προσαρμοσμένων εφαρμογών",
+    "description": "Σφάλμα κατά την ανάγνωση των αρχείων διαχείρισης κάλυψης εφαρμογής"
   }
 }

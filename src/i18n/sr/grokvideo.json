@@ -64,8 +64,8 @@
     "description": "Uputstvo za unos prompta"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Izaberite Grok Imagine model. :reverse koristi brze/standardne tačke; :official koristi zvaničnu tačku (veći kvalitet, naplata po sekundi). grok-imagine-video-1.5:official podržava samo generisanje videa iz slika.",
+    "description": "Uputstva za izbor modela"
   },
   "description.ratio": {
     "message": "Izaberite odnos stranica izlaznog videa.",
@@ -76,16 +76,16 @@
     "description": "Uputstvo za rezoluciju"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Дужина видеа (секунде). 1.5-brzo (obrnuto) podržava 6-30 sekundi, naplata po dužini; ostale varijante podržavaju 1-15 sekundi, naplata po izlaznim sekundama.",
+    "description": "Uputstva za dužinu"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Opcionalna ulazna slika za generisanje videa. grok-imagine-video-1.5:official je obavezno.",
+    "description": "Uputstva za ulaznu sliku"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Opcione referentne slike za vođenje stila ili sadržaja generisanog videa.",
+    "description": "Uputstva za referentne slike"
   },
   "placeholder.prompt": {
     "message": "Опишите ваш видео…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Изаберите",
     "description": "Плацехолдер за избор"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine video 1.5 Brzo (brzo, 6–30 sekundi)",
+    "description": "Oznaka modela 1.5-brzo obrnuto"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine video (standard, 1–15 sekundi)",
+    "description": "Oznaka modela grok-imagine-video obrnuto"
+  },
+  "model.official": {
+    "message": "Grok Imagine video · Zvanično (veći kvalitet, naplata po sekundi)",
+    "description": "Oznaka zvaničnog modela grok-imagine-video"
+  },
+  "model.official15": {
+    "message": "Grok Imagine video 1.5 · Zvanično (generisanje videa iz slika, do 1080p)",
+    "description": "Oznaka 1.5 zvaničnog modela"
   },
   "button.upload": {
     "message": "Otpremi",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Kredit je iskorišćen, molimo kupite više da biste nastavili sa korišćenjem.",
     "description": "Iskorišćeno"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

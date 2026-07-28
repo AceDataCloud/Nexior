@@ -4,687 +4,687 @@
     "description": "Poivelle product name in navigation"
   },
   "status.synced": {
-    "message": "Graph synced",
-    "description": "Graph sync status"
+    "message": "Схема проекту синхронізована",
+    "description": "Статус синхронізації схеми проекту"
   },
   "status.loading": {
-    "message": "Loading production state",
-    "description": "Workspace loading status"
+    "message": "Завантаження статусу запуску",
+    "description": "Статус завантаження робочого столу"
   },
   "action.commit": {
-    "message": "Commit revision",
-    "description": "Commit graph revision tooltip"
+    "message": "Подати виправлення",
+    "description": "Подати виправлення проектної схеми"
   },
   "action.runSkill": {
-    "message": "Run skill",
-    "description": "Run selected node with project skill"
+    "message": "Запустити Skill",
+    "description": "Запустити вибраний вузол за допомогою проектного Skill"
   },
   "action.retry": {
-    "message": "Retry",
-    "description": "Retry failed load"
-  },
-  "section.projects": {
-    "message": "Projects",
-    "description": "Projects rail heading"
-  },
-  "section.assets": {
-    "message": "Asset library",
-    "description": "Assets rail heading"
-  },
-  "section.revisions": {
-    "message": "Revisions",
-    "description": "Revisions rail heading"
-  },
-  "section.inspector": {
-    "message": "Inspector",
-    "description": "Node inspector heading"
-  },
-  "workspace.create": {
-    "message": "Create workspace",
-    "description": "Create workspace command"
-  },
-  "workspace.name": {
-    "message": "Workspace name",
-    "description": "Workspace name field"
-  },
-  "workspace.budget": {
-    "message": "Monthly limit (microcredits)",
-    "description": "Workspace monthly budget field"
-  },
-  "project.create": {
-    "message": "New project",
-    "description": "Create project command"
-  },
-  "project.empty": {
-    "message": "No projects in this workspace.",
-    "description": "Empty projects message"
-  },
-  "project.noProject": {
-    "message": "Choose a project",
-    "description": "Missing current project label"
-  },
-  "project.workspace": {
-    "message": "Workspace",
-    "description": "Project workspace field"
-  },
-  "project.title": {
-    "message": "Project title",
-    "description": "Project title field"
-  },
-  "project.skill": {
-    "message": "Production skill",
-    "description": "Project skill field"
-  },
-  "asset.import": {
-    "message": "Import asset",
-    "description": "Import asset command"
-  },
-  "asset.all": {
-    "message": "All",
-    "description": "All assets filter"
-  },
-  "asset.empty": {
-    "message": "No matching production assets.",
-    "description": "Empty asset message"
-  },
-  "asset.title": {
-    "message": "Asset title",
-    "description": "Asset title field"
-  },
-  "asset.url": {
-    "message": "Source URL",
-    "description": "Asset source URL field"
-  },
-  "asset.hash": {
-    "message": "Content hash",
-    "description": "Asset hash field"
-  },
-  "revision.empty": {
-    "message": "No committed revisions.",
-    "description": "Empty revisions message"
-  },
-  "revision.committed": {
-    "message": "Revision committed",
-    "description": "Revision success toast"
-  },
-  "node.create": {
-    "message": "Add node",
-    "description": "Create graph node command"
-  },
-  "node.delete": {
-    "message": "Delete node",
-    "description": "Delete graph node command"
-  },
-  "node.deleteConfirm": {
-    "message": "Delete this graph node? Connected nodes must be disconnected first.",
-    "description": "Delete node confirmation"
-  },
-  "field.title": {
-    "message": "Title",
-    "description": "Node title field"
-  },
-  "field.type": {
-    "message": "Type",
-    "description": "Node or asset type field"
-  },
-  "field.prompt": {
-    "message": "Production prompt",
-    "description": "Node prompt field"
-  },
-  "projection.label": {
-    "message": "Project graph projections",
-    "description": "Projection tabs accessible label"
-  },
-  "projection.canvas": {
-    "message": "Canvas",
-    "description": "Canvas projection tab"
-  },
-  "projection.storyboard": {
-    "message": "Storyboard",
-    "description": "Storyboard projection tab"
-  },
-  "projection.timeline": {
-    "message": "Timeline",
-    "description": "Timeline projection tab"
-  },
-  "projection.review": {
-    "message": "Review",
-    "description": "Review projection tab"
-  },
-  "graph.emptyTitle": {
-    "message": "Build the production graph",
-    "description": "Empty graph heading"
-  },
-  "graph.emptyBody": {
-    "message": "Add scripts, characters, scenes, shots, media, and outputs. Human editors and skills write through the same graph command history.",
-    "description": "Empty graph explanation"
-  },
-  "storyboard.noPrompt": {
-    "message": "No shot prompt yet.",
-    "description": "Missing storyboard prompt"
-  },
-  "storyboard.emptyTitle": {
-    "message": "No storyboard frames",
-    "description": "Empty storyboard heading"
-  },
-  "storyboard.emptyBody": {
-    "message": "Create scene, shot, image, or video nodes to project them here.",
-    "description": "Empty storyboard explanation"
-  },
-  "timeline.emptyTitle": {
-    "message": "No timeline assembly",
-    "description": "Empty timeline heading"
-  },
-  "timeline.emptyBody": {
-    "message": "Commit takes and selections before assembling clips into tracks.",
-    "description": "Empty timeline explanation"
-  },
-  "inspector.noSelection": {
-    "message": "Nothing selected",
-    "description": "Inspector title without selection"
-  },
-  "inspector.empty": {
-    "message": "Select a node in Canvas or Storyboard to edit typed production properties.",
-    "description": "Empty inspector explanation"
-  },
-  "agent.title": {
-    "message": "Skill agent",
-    "description": "Agent dock title"
-  },
-  "agent.noProposals": {
-    "message": "No pending proposals. Select a node to ask the skill for the next production action.",
-    "description": "Empty agent proposals message"
-  },
-  "agent.propose": {
-    "message": "Propose next",
-    "description": "Request agent proposal command"
-  },
-  "agent.proposal": {
-    "message": "Proposal",
-    "description": "Proposal toast label"
-  },
-  "review.heading": {
-    "message": "Production review",
-    "description": "Review summary heading"
-  },
-  "review.noRevision": {
-    "message": "Uncommitted graph",
-    "description": "Review heading without revision"
-  },
-  "review.nodes": {
-    "message": "nodes",
-    "description": "Review node count label"
-  },
-  "review.proposals": {
-    "message": "proposals",
-    "description": "Review proposal count label"
-  },
-  "review.runs": {
-    "message": "runs",
-    "description": "Review run count label"
-  },
-  "review.pendingProposals": {
-    "message": "Agent proposals",
-    "description": "Review proposal section"
-  },
-  "review.noProposals": {
-    "message": "No proposals awaiting review.",
-    "description": "No review proposals message"
-  },
-  "review.execution": {
-    "message": "Execution ledger",
-    "description": "Review execution section"
-  },
-  "review.noRuns": {
-    "message": "No execution runs for this project.",
-    "description": "No runs message"
-  },
-  "onboarding.title": {
-    "message": "A professional workspace for AI film production",
-    "description": "Poivelle onboarding heading"
-  },
-  "onboarding.body": {
-    "message": "Direct humans, skills, agents, and production tools through one canonical project graph. Canvas, Storyboard, Timeline, and Review are synchronized projections, not separate documents.",
-    "description": "Poivelle onboarding explanation"
-  },
-  "run.confirmTitle": {
-    "message": "Confirm production run",
-    "description": "Run confirmation dialog title"
-  },
-  "run.targets": {
-    "message": "Dependency closure",
-    "description": "Dry run target count"
-  },
-  "run.maximum": {
-    "message": "Maximum cost",
-    "description": "Dry run maximum cost"
-  },
-  "run.approval": {
-    "message": "Approval class",
-    "description": "Dry run approval class"
-  },
-  "run.confirmBody": {
-    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
-    "description": "Run confirmation explanation"
-  },
-  "run.confirm": {
-    "message": "Confirm run",
-    "description": "Confirm run command"
-  },
-  "run.queued": {
-    "message": "Production run queued",
-    "description": "Run queue success toast"
-  },
-  "error.generic": {
-    "message": "Poivelle could not complete the request.",
-    "description": "Generic Poivelle request error"
-  },
-  "agent.plan": {
-    "message": "Plan selected",
-    "description": "Plan a skill action for the selected graph node"
-  },
-  "review.reject": {
-    "message": "Reject",
-    "description": "Reject agent proposal command"
-  },
-  "review.rejectConfirm": {
-    "message": "Reject this agent proposal?",
-    "description": "Reject proposal confirmation"
-  },
-  "review.approvalTokenRequired": {
-    "message": "Approval requires its original signed token.",
-    "description": "Proposal approval trust-boundary note"
-  },
-  "run.cancel": {
-    "message": "Cancel",
-    "description": "Cancel execution run command"
-  },
-  "run.cancelConfirm": {
-    "message": "Cancel this execution run?",
-    "description": "Cancel run confirmation"
-  },
-  "project.workflow": {
-    "message": "Project workflow",
-    "description": "Project workflow type field"
-  },
-  "project.blankWorkflow": {
-    "message": "Blank graph",
-    "description": "Blank professional project option"
-  },
-  "project.commercialTVC": {
-    "message": "Commercial TVC · 40s",
-    "description": "Commercial TVC blueprint option"
-  },
-  "project.productName": {
-    "message": "Product name",
-    "description": "Commercial product name field"
-  },
-  "project.productCategory": {
-    "message": "Product category",
-    "description": "Commercial product category field"
-  },
-  "project.brandTone": {
-    "message": "Brand tone",
-    "description": "Commercial brand tone field"
-  },
-  "project.aspectRatio": {
-    "message": "Aspect ratio",
-    "description": "Commercial output aspect ratio"
-  },
-  "storyboard.product": {
-    "message": "Product",
-    "description": "Storyboard product label"
-  },
-  "storyboard.duration": {
-    "message": "Duration",
-    "description": "Storyboard duration label"
-  },
-  "storyboard.shots": {
-    "message": "Shots",
-    "description": "Storyboard shot count"
-  },
-  "storyboard.action": {
-    "message": "Action",
-    "description": "Shot character action label"
-  },
-  "storyboard.emotion": {
-    "message": "Emotion",
-    "description": "Shot emotion label"
-  },
-  "storyboard.lighting": {
-    "message": "Lighting & atmosphere",
-    "description": "Shot lighting label"
-  },
-  "storyboard.audio": {
-    "message": "Sound design",
-    "description": "Shot sound design label"
-  },
-  "storyboard.imagePrompt": {
-    "message": "Image prompt",
-    "description": "Shot image prompt label"
-  },
-  "storyboard.motionPrompt": {
-    "message": "Motion prompt",
-    "description": "Shot motion prompt label"
-  },
-  "storyboard.frames": {
-    "message": "Frame candidates",
-    "description": "Storyboard image candidates heading"
-  },
-  "storyboard.motion": {
-    "message": "Motion candidates",
-    "description": "Storyboard video candidates heading"
-  },
-  "storyboard.openNode": {
-    "message": "Open node",
-    "description": "Open media graph node command"
-  },
-  "storyboard.selectTake": {
-    "message": "Select take",
-    "description": "Select a media take command"
-  },
-  "storyboard.selected": {
-    "message": "Selected",
-    "description": "Selected take badge"
-  },
-  "storyboard.noCandidates": {
-    "message": "No generated candidates",
-    "description": "Empty media candidates message"
-  },
-  "storyboard.selectionSaved": {
-    "message": "Take selected for downstream production",
-    "description": "Take selection success message"
-  },
-  "storyboard.failedTake": {
-    "message": "Generation failed · review the run",
-    "description": "Failed Take status"
-  },
-  "storyboard.restrictedTake": {
-    "message": "Candidate restricted by rights policy",
-    "description": "Restricted Take status"
-  },
-  "timeline.deliverable": {
-    "message": "Committed deliverable",
-    "description": "Master output eyebrow"
-  },
-  "timeline.masterTitle": {
-    "message": "Production master",
-    "description": "Master output title"
-  },
-  "timeline.download": {
-    "message": "Download master",
-    "description": "Download master command"
-  },
-  "timeline.duration": {
-    "message": "Duration",
-    "description": "Master duration label"
-  },
-  "timeline.frame": {
-    "message": "Frame",
-    "description": "Master dimensions label"
-  },
-  "timeline.videoClips": {
-    "message": "Video clips",
-    "description": "Master video clip count"
-  },
-  "timeline.audioClips": {
-    "message": "Audio clips",
-    "description": "Master audio clip count"
-  },
-  "timeline.playerLabel": {
-    "message": "Production master video",
-    "description": "Master video player accessible name"
-  },
-  "timeline.loading": {
-    "message": "Loading production master",
-    "description": "Master video loading state"
-  },
-  "timeline.loadError": {
-    "message": "The production master could not be loaded.",
-    "description": "Master video load failure"
-  },
-  "storyboard.compare": {
-    "message": "Compare",
-    "description": "Add a Take to the comparison set"
-  },
-  "storyboard.comparing": {
-    "message": "Comparing",
-    "description": "Take is in the comparison set"
-  },
-  "review.finalCost": {
-    "message": "final credits",
-    "description": "Settled project cost label"
-  },
-  "review.qualityChecks": {
-    "message": "quality checks",
-    "description": "Passed automatic evaluations label"
-  },
-  "review.forensics": {
-    "message": "forensics",
-    "description": "Latest forensic validation label"
-  },
-  "review.runDetail": {
-    "message": "Run detail",
-    "description": "Selected execution run detail heading"
-  },
-  "review.attempts": {
-    "message": "attempts",
-    "description": "Provider attempt count label"
-  },
-  "review.retryStep": {
-    "message": "Retry node",
-    "description": "Create a new run for a failed production node"
+    "message": "Спробувати ще раз",
+    "description": "Спробувати завантажити знову"
   },
   "discovery.kicker": {
-    "message": "AI film production",
-    "description": "Creator home eyebrow"
+    "message": "AI кіновиробництво",
+    "description": "Заголовок на домашній сторінці"
   },
   "discovery.title": {
-    "message": "What do you want to make?",
-    "description": "Creator home prompt heading"
+    "message": "Що ви хочете створити?",
+    "description": "Введіть заголовок на домашній сторінці"
   },
   "discovery.skills": {
-    "message": "Production workflows",
-    "description": "Workflow selector accessible name"
+    "message": "Робочий процес виробництва",
+    "description": "Назва вибірника робочого процесу"
   },
   "discovery.placeholder": {
-    "message": "Describe the film, product, story, or mood you want to create...",
-    "description": "Creator prompt placeholder"
+    "message": "Опишіть, який фільм, продукт, історію або атмосферу ви хочете створити…",
+    "description": "Текст-заповнювач для поля введення"
   },
   "discovery.create": {
-    "message": "Create project",
-    "description": "Submit creator prompt"
+    "message": "Створити проект",
+    "description": "Подати вхідні дані для творчості"
   },
   "discovery.commercial": {
-    "message": "Commercial TVC",
-    "description": "Commercial workflow label"
+    "message": "Комерційний TVC",
+    "description": "Робочий процес для комерційної реклами"
   },
   "discovery.musicVideo": {
-    "message": "Music video",
-    "description": "Music video workflow label"
-  },
-  "discovery.documentary": {
-    "message": "Documentary",
-    "description": "Documentary workflow label"
-  },
-  "discovery.starterProduct": {
-    "message": "A product film with precise studio lighting",
-    "description": "Commercial prompt starter"
-  },
-  "discovery.starterMusic": {
-    "message": "A moonlit performance about memory and return",
-    "description": "Music video prompt starter"
-  },
-  "discovery.starterDocumentary": {
-    "message": "A company milestone film about people and invention",
-    "description": "Documentary prompt starter"
-  },
-  "discovery.galleryKicker": {
-    "message": "Copy a proven workflow",
-    "description": "Gallery eyebrow"
-  },
-  "discovery.gallery": {
-    "message": "Works and production threads",
-    "description": "Gallery heading"
-  },
-  "discovery.search": {
-    "message": "Search works",
-    "description": "Gallery search placeholder"
-  },
-  "discovery.all": {
-    "message": "All",
-    "description": "All gallery category"
-  },
-  "discovery.community": {
-    "message": "Community",
-    "description": "Community gallery category"
-  },
-  "discovery.copy": {
-    "message": "Copy",
-    "description": "Copy work command"
-  },
-  "discovery.copyPrefix": {
-    "message": "Create a new interpretation of",
-    "description": "Default copied work prompt prefix"
-  },
-  "discovery.back": {
-    "message": "Back to discovery",
-    "description": "Return from studio to creator home"
+    "message": "Музичний MV",
+    "description": "Робочий процес музичного відео"
   },
   "discovery.narrative": {
-    "message": "Narrative film",
-    "description": "Narrative film category"
+    "message": "Наративний короткометражний фільм",
+    "description": "Категорія наративних короткометражок"
+  },
+  "discovery.documentary": {
+    "message": "Документальний фільм",
+    "description": "Робочий процес для документальних фільмів"
+  },
+  "discovery.starterProduct": {
+    "message": "Продуктове відео з точним освітленням на зйомках",
+    "description": "Підказка для комерційної реклами"
+  },
+  "discovery.starterMusic": {
+    "message": "Виступ про пам'ять та повернення під місячним світлом",
+    "description": "Підказка для музичного відео"
+  },
+  "discovery.starterDocumentary": {
+    "message": "Фільм про команду та винаходи в корпоративних досягненнях",
+    "description": "Підказка для документального фільму"
+  },
+  "discovery.galleryKicker": {
+    "message": "Скопіювати зрілий робочий процес",
+    "description": "Заголовок потоку робіт"
+  },
+  "discovery.gallery": {
+    "message": "Роботи та виробничі потоки",
+    "description": "Заголовок потоку робіт"
+  },
+  "discovery.search": {
+    "message": "Шукати роботи",
+    "description": "Текст-заповнювач для пошуку робіт"
+  },
+  "discovery.all": {
+    "message": "Всі",
+    "description": "Фільтрація для всіх категорій робіт"
+  },
+  "discovery.community": {
+    "message": "Спільнота",
+    "description": "Категорія робіт спільноти"
+  },
+  "discovery.copy": {
+    "message": "Копіювати одним клацанням",
+    "description": "Операція копіювання роботи"
   },
   "discovery.play": {
-    "message": "Play",
-    "description": "Compact play film command"
+    "message": "Відтворити",
+    "description": "Операція компактного відтворення фільму"
   },
   "discovery.playFilm": {
-    "message": "Play finished film",
-    "description": "Play finished film command"
+    "message": "Відтворити фільм",
+    "description": "Операція відтворення повного фільму"
   },
   "discovery.finishedFilm": {
-    "message": "Finished film",
-    "description": "Finished film badge and player eyebrow"
+    "message": "Готовий фільм",
+    "description": "Ідентифікатор готового фільму та заголовок плеєра"
+  },
+  "discovery.copyPrefix": {
+    "message": "Створити нову версію на основі цього робочого процесу",
+    "description": "Префікс за замовчуванням для підказки копіювання роботи"
+  },
+  "discovery.back": {
+    "message": "Повернутися на сторінку відкриття",
+    "description": "Повернутися на головну сторінку творчості з робочої панелі"
+  },
+  "section.projects": {
+    "message": "Проекти",
+    "description": "Заголовок секції проектів"
+  },
+  "section.assets": {
+    "message": "Бібліотека активів",
+    "description": "Заголовок секції активів"
+  },
+  "section.revisions": {
+    "message": "Ревізії",
+    "description": "Заголовок секції ревізій"
+  },
+  "section.inspector": {
+    "message": "Інспектор",
+    "description": "Заголовок інспектора вузлів"
+  },
+  "workspace.create": {
+    "message": "Створити робочу область",
+    "description": "Команда для створення робочої області"
+  },
+  "workspace.name": {
+    "message": "Назва робочої області",
+    "description": "Поле назви робочої області"
+  },
+  "workspace.budget": {
+    "message": "Місячний ліміт (мікрокалькуляція)",
+    "description": "Поле місячного бюджету робочої області"
+  },
+  "project.create": {
+    "message": "Створити проект",
+    "description": "Команда для створення проекту"
+  },
+  "project.empty": {
+    "message": "У цьому робочому просторі ще немає проектів.",
+    "description": "Підказка про порожній проект"
+  },
+  "project.noProject": {
+    "message": "Виберіть проект",
+    "description": "Мітка для не вибраного проекту"
+  },
+  "project.workspace": {
+    "message": "Робочий простір",
+    "description": "Поле робочого простору проекту"
+  },
+  "project.title": {
+    "message": "Назва проекту",
+    "description": "Поле назви проекту"
+  },
+  "project.skill": {
+    "message": "Навичка виробництва",
+    "description": "Поле навички проекту"
+  },
+  "project.workflow": {
+    "message": "Робочий процес проекту",
+    "description": "Поле типу робочого процесу проекту"
+  },
+  "project.blankWorkflow": {
+    "message": "Порожня проектна схема",
+    "description": "Опція порожнього професійного проекту"
+  },
+  "project.commercialTVC": {
+    "message": "Комерційний TVC · 40 секунд",
+    "description": "Опція шаблону комерційного TVC"
+  },
+  "project.productName": {
+    "message": "Назва продукту",
+    "description": "Поле назви комерційного продукту"
+  },
+  "project.productCategory": {
+    "message": "Категорія продукту",
+    "description": "Поле категорії комерційного продукту"
+  },
+  "project.brandTone": {
+    "message": "Тон бренду",
+    "description": "Поле тональності комерційного бренду"
+  },
+  "project.aspectRatio": {
+    "message": "Співвідношення сторін",
+    "description": "Співвідношення сторін для комерційного виходу"
+  },
+  "asset.import": {
+    "message": "Імпортувати актив",
+    "description": "Команда для імпорту активу"
+  },
+  "asset.all": {
+    "message": "Всі",
+    "description": "Фільтр для всіх активів"
+  },
+  "asset.empty": {
+    "message": "Немає відповідних виробничих активів.",
+    "description": "Підказка про пусті активи"
+  },
+  "asset.title": {
+    "message": "Назва активу",
+    "description": "Поле для назви активу"
+  },
+  "asset.url": {
+    "message": "URL джерела",
+    "description": "Адреса джерела активу"
+  },
+  "asset.hash": {
+    "message": "Хеш вмісту",
+    "description": "Хеш вмісту активу"
+  },
+  "revision.empty": {
+    "message": "Ще не подано жодного виправлення.",
+    "description": "Повідомлення про порожні виправлення"
+  },
+  "revision.committed": {
+    "message": "Виправлення надіслано",
+    "description": "Повідомлення про успішну подачу виправлення"
+  },
+  "node.create": {
+    "message": "Додати вузол",
+    "description": "Створення вузла проекту"
+  },
+  "node.delete": {
+    "message": "Видалити вузол",
+    "description": "Видалення вузла проекту"
+  },
+  "node.deleteConfirm": {
+    "message": "Ви впевнені, що хочете видалити цей вузол проекту? Пов'язані вузли потрібно спочатку відключити.",
+    "description": "Підтвердження видалення вузла"
+  },
+  "field.title": {
+    "message": "Заголовок",
+    "description": "Поле заголовка для вузла"
+  },
+  "field.type": {
+    "message": "Тип",
+    "description": "Поле типу для вузла або активу"
+  },
+  "field.prompt": {
+    "message": "Підказка для виробництва",
+    "description": "Підказка для виробництва на вузлі"
+  },
+  "projection.label": {
+    "message": "Проекція проектної схеми",
+    "description": "Безбар'єрна назва для мітки проекції"
   },
   "projection.overview": {
-    "message": "Overview",
-    "description": "Guided project overview tab"
+    "message": "Огляд проекту",
+    "description": "Мітка огляду проекту"
   },
-  "guide.kicker": {
-    "message": "Your production is ready",
-    "description": "Guided project eyebrow"
-  },
-  "guide.title": {
-    "message": "Turn {title} into a finished film",
-    "description": "Guided project heading"
-  },
-  "guide.body": {
-    "message": "The brief and shot plan are already prepared. Generate the first storyboard frame, review the result, then continue through motion and the final cut.",
-    "description": "Guided project explanation"
-  },
-  "guide.duration": {
-    "message": "Duration",
-    "description": "Guided project duration fact"
-  },
-  "guide.shots": {
-    "message": "Shot plan",
-    "description": "Guided project shot-count fact"
-  },
-  "guide.format": {
-    "message": "Frame",
-    "description": "Guided project aspect-ratio fact"
-  },
-  "guide.continue": {
-    "message": "Continue production",
-    "description": "Primary guided production command"
-  },
-  "guide.generateFrame": {
-    "message": "Generate storyboard {current} of {total}",
-    "description": "Generate the next storyboard frame"
-  },
-  "guide.generateMotion": {
-    "message": "Generate motion {current} of {total}",
-    "description": "Generate the next motion clip"
-  },
-  "guide.generateScore": {
-    "message": "Generate the soundtrack",
-    "description": "Generate project score"
-  },
-  "guide.reviewPlan": {
-    "message": "Review the shot plan",
-    "description": "Open project storyboard plan"
-  },
-  "guide.reviewResults": {
-    "message": "Review generated results",
-    "description": "Open generated storyboard results"
-  },
-  "guide.costNote": {
-    "message": "You will see the maximum cost before anything runs.",
-    "description": "Guided production cost safety note"
-  },
-  "guide.stepPlan": {
-    "message": "Brief and shot plan",
-    "description": "Production plan stage"
-  },
-  "guide.stepPlanBody": {
-    "message": "{shots} shots are structured and ready.",
-    "description": "Production plan stage detail"
-  },
-  "guide.stepFrames": {
-    "message": "Storyboard frames",
-    "description": "Storyboard generation stage"
-  },
-  "guide.stepFramesBody": {
-    "message": "Create and choose the visual direction for each shot.",
-    "description": "Storyboard generation stage detail"
-  },
-  "guide.stepMotion": {
-    "message": "Motion clips",
-    "description": "Motion generation stage"
-  },
-  "guide.stepMotionBody": {
-    "message": "Animate the approved storyboard frames.",
-    "description": "Motion generation stage detail"
-  },
-  "guide.stepMaster": {
-    "message": "Soundtrack and final cut",
-    "description": "Final production stage"
-  },
-  "guide.stepMasterBody": {
-    "message": "Assemble selected clips, music, and delivery checks.",
-    "description": "Final production stage detail"
-  },
-  "guide.ready": {
-    "message": "Ready",
-    "description": "Completed production stage status"
-  },
-  "guide.waiting": {
-    "message": "Waiting",
-    "description": "Pending production stage status"
+  "projection.canvas": {
+    "message": "Полотно",
+    "description": "Перегляд проекції полотна"
   },
   "projection.advanced": {
-    "message": "Advanced nodes",
-    "description": "Advanced graph-node projection tab"
+    "message": "Розширений вузол",
+    "description": "Мітка розширеного вузла проектної схеми"
   },
-  "guide.chooseResults": {
-    "message": "Review and choose results",
-    "description": "Review and select generated candidates before continuing"
+  "projection.storyboard": {
+    "message": "Сторіборд",
+    "description": "Перегляд проекції сторіборду"
   },
-  "guide.generated": {
-    "message": "generated",
-    "description": "Generated progress suffix"
+  "projection.timeline": {
+    "message": "Таймлайн",
+    "description": "Перегляд проекції таймлайну"
   },
-  "guide.selected": {
-    "message": "selected",
-    "description": "Selected progress suffix"
+  "projection.review": {
+    "message": "Рецензія",
+    "description": "Перегляд проекції рецензії"
+  },
+  "guide.kicker": {
+    "message": "План виробництва готовий",
+    "description": "Заголовок для проекту"
+  },
+  "guide.title": {
+    "message": "Перетворіть «{title}» на повний фільм",
+    "description": "Заголовок для проекту"
+  },
+  "guide.body": {
+    "message": "Вимоги та сценарні пропозиції вже готові. Спочатку створіть перший кадр сторіборду, підтвердьте напрямок, а потім продовжте створення динамічних кадрів та фінального фільму.",
+    "description": "Опис керівництва проекту"
+  },
+  "guide.duration": {
+    "message": "Цільова тривалість",
+    "description": "Інформація про тривалість проекту"
+  },
+  "guide.shots": {
+    "message": "План кадрів",
+    "description": "Інформація про кількість кадрів проекту"
+  },
+  "guide.format": {
+    "message": "Співвідношення сторін",
+    "description": "Інформація про формат проекту"
+  },
+  "guide.continue": {
+    "message": "Продовжити виробництво",
+    "description": "Основна операція проекту"
   },
   "guide.generateNextFrame": {
-    "message": "Generate next storyboard",
-    "description": "Header action for next storyboard frame"
+    "message": "Генерація наступної сторінки",
+    "description": "Операція для генерації наступної сторінки"
   },
   "guide.generateNextMotion": {
-    "message": "Generate next motion",
-    "description": "Header action for next motion clip"
+    "message": "Генерація наступного динамічного кадру",
+    "description": "Операція для генерації наступного динамічного кадру"
+  },
+  "guide.generateFrame": {
+    "message": "Створити сторіборд {current}/{total}",
+    "description": "Створення наступного кадру сторіборду"
+  },
+  "guide.generateMotion": {
+    "message": "Генерація динамічного кадру {current}/{total}",
+    "description": "Генерація наступного динамічного кадру"
+  },
+  "guide.generateScore": {
+    "message": "Генерація музичного супроводу",
+    "description": "Генерація музичного супроводу для проекту"
+  },
+  "guide.reviewPlan": {
+    "message": "Переглянути план кадрів",
+    "description": "Відкрити план сторінки"
+  },
+  "guide.reviewResults": {
+    "message": "Переглянути результати генерації",
+    "description": "Відкрити результати генерації сторінки"
+  },
+  "guide.chooseResults": {
+    "message": "Перегляньте та виберіть результати",
+    "description": "Перегляд та вибір згенерованих кандидатів перед продовженням виробництва"
+  },
+  "guide.generated": {
+    "message": "Згенеровано",
+    "description": "Суфікс прогресу генерації"
+  },
+  "guide.selected": {
+    "message": "Вибрано",
+    "description": "Суфікс прогресу вибору"
+  },
+  "guide.costNote": {
+    "message": "Перед запуском буде показано максимальну вартість, не буде безпосередньо почато стягнення плати за генерацію.",
+    "description": "Безпечне повідомлення про витрати на виробництво"
+  },
+  "guide.stepPlan": {
+    "message": "Вимоги та план кадрів",
+    "description": "Етап планування виробництва"
+  },
+  "guide.stepPlanBody": {
+    "message": "{shots} кадрів було розділено, можна починати виробництво.",
+    "description": "Опис етапу планування виробництва"
+  },
+  "guide.stepFrames": {
+    "message": "Сторінки",
+    "description": "Етап генерації сторінок"
+  },
+  "guide.stepFramesBody": {
+    "message": "Генеруйте по кадру та обирайте задовільний візуальний напрямок.",
+    "description": "Опис етапу генерації сторінок"
+  },
+  "guide.stepMotion": {
+    "message": "Динамічні кадри",
+    "description": "Етап динамічної генерації"
+  },
+  "guide.stepMotionBody": {
+    "message": "Перетворіть підтверджений план сторінки в динамічні фрагменти.",
+    "description": "Опис етапу динамічної генерації"
+  },
+  "guide.stepMaster": {
+    "message": "Музичний супровід та фінальний монтаж",
+    "description": "Останній етап виробництва"
+  },
+  "guide.stepMasterBody": {
+    "message": "Комбінуйте обрані фрагменти, музичний супровід та завершуйте перевірку доставки.",
+    "description": "Опис останнього етапу виробництва"
+  },
+  "guide.ready": {
+    "message": "Готово",
+    "description": "Статус завершення етапу виробництва"
+  },
+  "guide.waiting": {
+    "message": "В очікуванні",
+    "description": "Статус очікування на етапі виробництва"
+  },
+  "graph.emptyTitle": {
+    "message": "Створіть проектну схему",
+    "description": "Заголовок порожньої проектної схеми"
+  },
+  "graph.emptyBody": {
+    "message": "Додайте сценарій, персонажів, сцени, кадри, медіа та виходи. Людський редактор співпрацює з Skill через одну й ту ж історію команд проекту.",
+    "description": "Опис порожньої проектної схеми"
+  },
+  "storyboard.noPrompt": {
+    "message": "Ще немає підказок для кадрів.",
+    "description": "Відсутні підказки дляStoryboard"
+  },
+  "storyboard.emptyTitle": {
+    "message": "Ще немає кадрівStoryboard",
+    "description": "Заголовок порожньогоStoryboard"
+  },
+  "storyboard.emptyBody": {
+    "message": "Сцена, кадри, зображення або відео з'являться тут після створення.",
+    "description": "Опис порожньогоStoryboard"
+  },
+  "storyboard.product": {
+    "message": "Продукт",
+    "description": "Мітка продукту сторіборда"
+  },
+  "storyboard.duration": {
+    "message": "Тривалість",
+    "description": "Мітка тривалості уStoryboard"
+  },
+  "storyboard.shots": {
+    "message": "Кількість кадрів",
+    "description": "Кількість кадрів у сторіборді"
+  },
+  "storyboard.action": {
+    "message": "Дія",
+    "description": "Мітка дії персонажа у сцені"
+  },
+  "storyboard.emotion": {
+    "message": "Емоція",
+    "description": "Мітка емоції у сцені"
+  },
+  "storyboard.lighting": {
+    "message": "Світло та атмосфера",
+    "description": "Мітка світла у сцені"
+  },
+  "storyboard.audio": {
+    "message": "Звуковий дизайн",
+    "description": "Мітка звукового дизайну у сцені"
+  },
+  "storyboard.imagePrompt": {
+    "message": "Підказка для статичного кадру",
+    "description": "Мітка підказки для зображення у сцені"
+  },
+  "storyboard.motionPrompt": {
+    "message": "Підказка для руху",
+    "description": "Мітка підказки для руху у сцені"
+  },
+  "storyboard.frames": {
+    "message": "Кандидати на кадри",
+    "description": "Заголовок кандидатів на зображення уStoryboard"
+  },
+  "storyboard.motion": {
+    "message": "Кандидати на відео",
+    "description": "Заголовок кандидатів на відео уStoryboard"
+  },
+  "storyboard.openNode": {
+    "message": "Відкрити вузол",
+    "description": "Відкрити вузол медіа проекту"
+  },
+  "storyboard.selectTake": {
+    "message": "Вибрати Take",
+    "description": "Операція вибору медіа Take"
+  },
+  "storyboard.selected": {
+    "message": "Вибрано",
+    "description": "Мітка вибраного Take"
+  },
+  "storyboard.noCandidates": {
+    "message": "Ще не згенеровано кандидатів",
+    "description": "Підказка про порожні медіа-кандидати"
+  },
+  "storyboard.failedTake": {
+    "message": "Генерація не вдалася · Переглянути журнали запуску",
+    "description": "Статус невдалого Take"
+  },
+  "storyboard.restrictedTake": {
+    "message": "Кандидат обмежений за політикою авторських прав",
+    "description": "Стан обмеженого Take"
+  },
+  "storyboard.selectionSaved": {
+    "message": "Вибрано Take, подальше виробництво буде безпосередньо повторно використано",
+    "description": "Підказка про успішний вибір Take"
+  },
+  "storyboard.compare": {
+    "message": "Додати до порівняння",
+    "description": "Додати Take до колекції для порівняння"
+  },
+  "storyboard.comparing": {
+    "message": "В порівнянні",
+    "description": "Take додано до колекції для порівняння"
+  },
+  "timeline.emptyTitle": {
+    "message": "Ще немає зібраної часової лінії",
+    "description": "Заголовок порожньої часової лінії"
+  },
+  "timeline.emptyBody": {
+    "message": "Спочатку подайте Take і вибрані результати, а потім зберіть фрагменти на треку.",
+    "description": "Опис порожньої часової лінії"
+  },
+  "timeline.deliverable": {
+    "message": "Подані результати",
+    "description": "Основний заголовок виходу"
+  },
+  "timeline.masterTitle": {
+    "message": "Виробничий майстер",
+    "description": "Заголовок виходу Master"
+  },
+  "timeline.download": {
+    "message": "Завантажити майстер",
+    "description": "Операція завантаження Master"
+  },
+  "timeline.duration": {
+    "message": "Тривалість",
+    "description": "Мітка тривалості Master"
+  },
+  "timeline.frame": {
+    "message": "Формат",
+    "description": "Мітка роздільної здатності Master"
+  },
+  "timeline.videoClips": {
+    "message": "Відео фрагменти",
+    "description": "Кількість відео фрагментів Master"
+  },
+  "timeline.audioClips": {
+    "message": "Аудіо фрагменти",
+    "description": "Кількість основних аудіо фрагментів"
+  },
+  "timeline.playerLabel": {
+    "message": "Відео виробничого майстра",
+    "description": "Безбар'єрна назва плеєра відео Master"
+  },
+  "timeline.loading": {
+    "message": "Завантаження майстра",
+    "description": "Стан завантаження відео Master"
+  },
+  "timeline.loadError": {
+    "message": "Не вдалося завантажити майстер.",
+    "description": "Підказка про невдале завантаження відео Master"
+  },
+  "inspector.noSelection": {
+    "message": "Не вибрано вміст",
+    "description": "Заголовок інспектора, коли нічого не вибрано"
+  },
+  "inspector.empty": {
+    "message": "Виберіть вузол на полотні або на сторінці, щоб редагувати типізовані властивості виробництва.",
+    "description": "Опис порожнього інспектора"
+  },
+  "agent.title": {
+    "message": "Skill Агент",
+    "description": "Заголовок секції агента"
+  },
+  "agent.noProposals": {
+    "message": "Немає очікуючих пропозицій. Виберіть вузол, щоб Skill запропонував наступний крок дій.",
+    "description": "Підказка про пусті пропозиції агента"
+  },
+  "agent.propose": {
+    "message": "Запропонувати наступний крок",
+    "description": "Запросити пропозицію від агента"
+  },
+  "agent.plan": {
+    "message": "Спланувати вибрані дії",
+    "description": "Спланувати дії Skill для вибраних вузлів проектної схеми"
+  },
+  "agent.proposal": {
+    "message": "Пропозиція",
+    "description": "Мітка підказки пропозиції"
+  },
+  "review.heading": {
+    "message": "Створення перегляду",
+    "description": "Заголовок підсумку перегляду"
+  },
+  "review.noRevision": {
+    "message": "Не подано проектних графіків",
+    "description": "Заголовок перегляду без виправлень"
+  },
+  "review.nodes": {
+    "message": "Вузли",
+    "description": "Кількість вузлів для перегляду"
+  },
+  "review.proposals": {
+    "message": "Пропозиції",
+    "description": "Кількість пропозицій для перегляду"
+  },
+  "review.runs": {
+    "message": "Запуски",
+    "description": "Кількість запусків для перегляду"
+  },
+  "review.finalCost": {
+    "message": "Остаточні кредити",
+    "description": "Мітка вартості проекту"
+  },
+  "review.qualityChecks": {
+    "message": "Перевірки якості",
+    "description": "Мітка кількості успішно пройдених автоматичних оцінок"
+  },
+  "review.forensics": {
+    "message": "Перевірка доказів",
+    "description": "Мітка останнього статусу перевірки доказів"
+  },
+  "review.pendingProposals": {
+    "message": "Пропозиції агента",
+    "description": "Зона перегляду пропозицій"
+  },
+  "review.noProposals": {
+    "message": "Немає пропозицій на очікуванні перегляду.",
+    "description": "Повідомлення про відсутність пропозицій"
+  },
+  "review.execution": {
+    "message": "Виконати бухгалтерію",
+    "description": "Зона перегляду виконання"
+  },
+  "review.noRuns": {
+    "message": "Цей проект ще не має виконаних запусків.",
+    "description": "Повідомлення про відсутність запусків"
+  },
+  "review.reject": {
+    "message": "Відхилити",
+    "description": "Операція відхилення пропозиції агента"
+  },
+  "review.rejectConfirm": {
+    "message": "Ви впевнені, що хочете відхилити цю пропозицію агента?",
+    "description": "Підтвердження відхилення пропозиції"
+  },
+  "review.approvalTokenRequired": {
+    "message": "Для затвердження потрібен оригінальний токен, виданий під час створення пропозиції.",
+    "description": "Опис довірчих меж затвердження пропозиції"
+  },
+  "review.runDetail": {
+    "message": "Деталі запуску",
+    "description": "Заголовок деталей вибраного виконаного запуску"
+  },
+  "review.attempts": {
+    "message": "Спроб",
+    "description": "Мітка кількості спроб постачальника"
+  },
+  "review.retryStep": {
+    "message": "Перезапустити вузол",
+    "description": "Створити новий запуск для вузла, що зазнав невдачі"
+  },
+  "onboarding.title": {
+    "message": "Робоча станція для професійного AI кіновиробництва",
+    "description": "Заголовок інструкції Poivelle"
+  },
+  "onboarding.body": {
+    "message": "Дайте можливість людям, Skill, Agent та інструментам створення спільно редагувати один і той же проект. Полотно, сторіборд, таймлайн та рецензія є синхронізованими проекціями, а не окремими документами.",
+    "description": "Інструкція для Poivelle"
+  },
+  "run.confirmTitle": {
+    "message": "Підтвердити виконання запуску",
+    "description": "Заголовок діалогу підтвердження запуску"
+  },
+  "run.targets": {
+    "message": "Залежні закриття",
+    "description": "Кількість цілей для сухого запуску"
+  },
+  "run.maximum": {
+    "message": "Максимальна вартість",
+    "description": "Максимальна вартість для сухого запуску"
+  },
+  "run.approval": {
+    "message": "Рівень затвердження",
+    "description": "Рівень затвердження для сухого запуску"
+  },
+  "run.confirmBody": {
+    "message": "Компилятор використає короткострокові API облікові дані для виконання цього незмінного залежного блоку; кожен виклик постачальника використовуватиме існуючі правила витрат та записи використання.",
+    "description": "Опис підтвердження запуску"
+  },
+  "run.confirm": {
+    "message": "Підтвердити запуск",
+    "description": "Команда підтвердження запуску"
+  },
+  "run.queued": {
+    "message": "Запуск потрапив у чергу",
+    "description": "Повідомлення про успішне додавання запуску до черги"
+  },
+  "run.cancel": {
+    "message": "Скасувати",
+    "description": "Операція скасування виконаного запуску"
+  },
+  "run.cancelConfirm": {
+    "message": "Ви впевнені, що хочете скасувати цей виконаний запуск?",
+    "description": "Підтвердження скасування запуску"
+  },
+  "error.generic": {
+    "message": "Poivelle не змогла виконати цей запит.",
+    "description": "Загальна помилка Poivelle"
   }
 }

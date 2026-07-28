@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Tällä hetkellä edistynein malli",
+    "description": "Claude Opus 5 -mallin kuvaus"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -227,13 +227,29 @@
     "message": "Kevyt ja nopea malli",
     "description": "Claude Haiku 4.5 mallin kuvaus"
   },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Lippulaivamalli, joka tukee päättelyä, visuaalisuutta ja 1 miljoonaa tokenia kontekstissa",
+    "description": "Kimi K3 -mallin kuvaus"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Yhteensopiva K2 työnkulkujen päättely- ja visuaalimalli",
+    "description": "Kimi K2.6 -mallin kuvaus"
+  },
   "model.kimiK25": {
     "message": "kimi-k2.5",
     "description": "Palvelun mallin nimi, eli Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "General-purpose K2 model for compatible workflows",
-    "description": "Kimi K2.5 mallin kuvaus"
+    "message": "Yhteensopiva K2 työnkulkujen yleismalli",
+    "description": "Kimi K2.5 -mallin kuvaus"
   },
   "model.kimiK2Thinking": {
     "message": "kimi-k2 päättely",
@@ -583,6 +599,78 @@
     "message": "Liittimen valtuutus ohitettu",
     "description": "Kortin alaosan ilmoitus, kun käyttäjä ohittaa valtuutuksen"
   },
+  "browserTool.title": {
+    "message": "Selaimen toiminta",
+    "description": "Varakeotsikko BrowserDevice-työkalun toiminnalle"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Käynnistetään selainistuntoa",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Yhdistetään selainvälilehteä",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Selain on valmis",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Selainlaite on offline-tilassa"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Selainlaite on varattu",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Valtuutus on vahvistettava Studiossa",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Suoritetaan selaimessa"
+  },
+  "browserTool.state.completed": {
+    "message": "Valmis"
+  },
+  "browserTool.state.stopped": {
+    "message": "Selainistunto on pysäytetty",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Selaimen pyyntö vanhentui"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Sulje kehittäjätyökalut jatkaaksesi",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Suoritustulos tuntematon, tarkista ja yritä uudelleen",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Selainoperaatio epäonnistui",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Pysäytä",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Hallinnoi laitteita",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Pysäytä muut istunnot",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Sulje kehittäjätyökalut",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Näytä valtuutus",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
     "message": "Ajoitetut tehtävät"
   },
@@ -606,6 +694,10 @@
   },
   "scheduledTasks.edit": {
     "message": "Muokkaa tehtävää"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Kopioi tehtävä",
+    "description": "Kopioi tehtäväpainike, joka esitäyttää uuden lomakkeen olemassa olevan tehtävän perusteella"
   },
   "scheduledTasks.empty": {
     "message": "Ei ajoitettuja tehtäviä vielä. Luo uusi napsauttamalla “Uusi”."
@@ -698,6 +790,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Riittämätön saldo"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Laskutuksen valtuutus epäonnistui"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Ei valtuutettu"
   },
@@ -709,6 +804,14 @@
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "Vaatii toimia"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Selaimen laite on offline-tilassa",
+    "description": "Tämä viesti ilmoittaa, että selaimen laite ei ole yhteydessä verkkoon."
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Selaimen valtuutus on muuttunut, muokkaa tätä tehtävää",
+    "description": "Tämä viesti ilmoittaa, että selaimen valtuutus on vanhentunut ja käyttäjän on muokattava tehtävää."
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "Päivittäin"
@@ -787,7 +890,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Luettava muoto: raaka cron"
+    "description": "Ihmisten luettavissa: alkuperäinen Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "kerran klo {time}",
@@ -835,6 +938,25 @@
     "message": "Valitut taidot voivat suorittaa taustalla ilman manuaalista vahvistusta; valitsemattomat taidot voivat vain esikatsella tai odottaa vahvistusta.",
     "description": "Valtuutettujen taitojen selitys"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Selainyhteys",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Saattaa aiheuttaa seuraavat ulkoiset sivuvaikutukset: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Valtuutuksen voimassaoloaika: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Tallenna ennen kuin valitset online-yhteensopivan selainyhteyden",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Ei yhdistetty",
     "description": "skill puuttuu yhteydestä"
@@ -918,6 +1040,18 @@
     "message": "Piilota",
     "description": "Tuotteen piilottamispainike"
   },
+  "artifacts.unhide": {
+    "message": "Näytä uudelleen",
+    "description": "Palauta piilotettu tuotos näkyviin"
+  },
+  "artifacts.showHidden": {
+    "message": "Näytä piilotetut",
+    "description": "Suodatinpalkin kytkin piilotettujen tuotosten näyttämiseksi"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Piilotettu",
+    "description": "Merkki, joka näkyy tällä hetkellä piilotetuissa tuotoksissa"
+  },
   "artifacts.delete": {
     "message": "Poista",
     "description": "Tuotteen poistopainike"
@@ -944,7 +1078,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tuotostyyppi - video"
+    "description": "Tuotetyyppi - video"
   },
   "artifacts.kind.audio": {
     "message": "Ääni",
@@ -1046,6 +1180,17 @@
     "message": "Olet katsomassa jaettua keskustelua. Klikkaa ylhäältä keskustellaksesi itse AI:n kanssa.",
     "description": "Selitys jaetun julkisen sivun keskustelun alapuolella"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Tavoitetta ei saavutettu",
+    "description": "Tämä viesti ilmoittaa, että asetettua tavoitetta ei ole saavutettu."
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Tulos odottaa vahvistusta",
+    "description": "Tämä viesti tarkoittaa, että tulosta ei ole vielä vahvistettu."
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Suorituksen tila tuntematon"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Palvelun mallin nimi, eli Claude Opus 4.7"
@@ -1053,127 +1198,5 @@
   "model.claudeOpus47Description": {
     "message": "Tällä hetkellä edistyksellisin malli",
     "description": "Claude Opus 4.7 -mallin kuvaus"
-  },
-  "artifacts.unhide": {
-    "message": "Näytä uudelleen",
-    "description": "Palauta piilotettu tuotos näkyviin"
-  },
-  "artifacts.showHidden": {
-    "message": "Näytä piilotetut",
-    "description": "Suodatinpalkin kytkin piilotettujen tuotosten näyttämiseksi"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Piilotettu",
-    "description": "Merkki, joka näkyy tällä hetkellä piilotetuissa tuotoksissa"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Laskutuksen valtuutus epäonnistui"
-  },
-  "browserTool.title": {
-    "message": "Selaimen toiminta",
-    "description": "Varakeotsikko BrowserDevice-työkalun toiminnalle"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Selainlaite on offline-tilassa"
-  },
-  "browserTool.state.executing": {
-    "message": "Suoritetaan selaimessa"
-  },
-  "browserTool.state.completed": {
-    "message": "Valmis"
-  },
-  "browserTool.state.expired": {
-    "message": "Selaimen pyyntö vanhentui"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Suorituksen tila tuntematon"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

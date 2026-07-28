@@ -83,6 +83,14 @@
     "message": "言語",
     "description": "出力言語フィールド"
   },
+  "name.primaryLanguage": {
+    "message": "主要言語",
+    "description": "主要出力言語フィールド"
+  },
+  "name.additionalLanguages": {
+    "message": "追加言語（任意）",
+    "description": "追加出力言語フィールド"
+  },
   "name.aspect": {
     "message": "アスペクト比",
     "description": "アスペクト比フィールド"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "選択してください",
     "description": "一般的な選択プレースホルダー"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "出力言語を追加",
+    "description": "追加言語のプレースホルダー"
   },
   "description.prompt": {
     "message": "あなたが望むことを明確に説明してください。スクリプト、映像、音声、編集はすべてMaestroにお任せください。",
@@ -207,6 +219,30 @@
     "message": "まだ動画がありません — 左側で最初の動画を作成しましょう。",
     "description": "タスクがないことを示すメッセージ"
   },
+  "name.customize": {
+    "message": "カスタマイズ",
+    "description": "オプションのクリエイティブコントロールトグル"
+  },
+  "description.customize.auto": {
+    "message": "自動 · 動画タイプ、ビジュアルスタイル、ナレーション音色は Maestro が決定します。",
+    "description": "カスタマイズ無効状態"
+  },
+  "description.customize.manual": {
+    "message": "動画タイプ、ビジュアルスタイル、ナレーション音色を選択します。",
+    "description": "カスタマイズ有効状態"
+  },
+  "name.customizeScenario": {
+    "message": "動画タイプをカスタマイズ",
+    "description": "動画タイプカスタマイズトグル"
+  },
+  "name.customizeStyle": {
+    "message": "ビジュアルスタイルをカスタマイズ",
+    "description": "ビジュアルスタイルカスタマイズトグル"
+  },
+  "name.customizeVoice": {
+    "message": "ナレーション音色をカスタマイズ",
+    "description": "音声タイムブレカスタマイズトグル"
+  },
   "name.scenario": {
     "message": "動画タイプ",
     "description": "動画タイプフィールド"
@@ -260,52 +296,52 @@
     "description": "フロストガラススタイルオプション"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "ラグジュアリースタイルオプション"
+    "message": "ラグジュアリー · ホワイトスペース",
+    "description": "ラグジュアリースタイルのオプション"
   },
   "option.style.swiss": {
     "message": "スイスグリッド",
     "description": "スイスグリッドスタイルオプション"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "モダンスタイルオプション"
+    "message": "シンプルモダン · SaaS",
+    "description": "モダンスタイルのオプション"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "エディトリアルスタイルオプション"
+    "message": "雑誌編集",
+    "description": "エディトリアルスタイルのオプション"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "ウォームスタイルオプション"
+    "message": "温かく親密",
+    "description": "ウォームスタイルのオプション"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "ビビッドスタイルオプション"
+    "message": "鮮やかな活力",
+    "description": "ビブラントスタイルのオプション"
   },
   "option.style.neon": {
     "message": "ネオン",
     "description": "ネオンスタイルオプション"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "モノクロスタイルオプション"
+    "message": "ミニマルモノクロ",
+    "description": "モノクロスタイルのオプション"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "パステルスタイルオプション"
+    "message": "柔らかいパステル",
+    "description": "パステルスタイルのオプション"
   },
   "option.style.bold": {
     "message": "ボールドタイプ",
     "description": "ボールドタイプスタイルオプション"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "インダストリアルスタイルオプション"
+    "message": "産業故障",
+    "description": "インダストリアルスタイルのオプション"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "フューチャリスティックスタイルオプション"
+    "message": "未来技術",
+    "description": "フューチャリスティックスタイルのオプション"
   },
   "option.style.retro": {
     "message": "レトロフィルム",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "変更履歴 (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "カスタマイズ",
-    "description": "オプションのクリエイティブコントロールトグル"
-  },
-  "description.customize.auto": {
-    "message": "自動 · 動画タイプ、ビジュアルスタイル、ナレーション音色は Maestro が決定します。",
-    "description": "カスタマイズ無効状態"
-  },
-  "description.customize.manual": {
-    "message": "動画タイプ、ビジュアルスタイル、ナレーション音色を選択します。",
-    "description": "カスタマイズ有効状態"
-  },
-  "name.primaryLanguage": {
-    "message": "主要言語",
-    "description": "主要出力言語フィールド"
-  },
-  "name.additionalLanguages": {
-    "message": "追加言語（任意）",
-    "description": "追加出力言語フィールド"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "出力言語を追加",
-    "description": "追加言語のプレースホルダー"
-  },
-  "name.customizeScenario": {
-    "message": "動画タイプをカスタマイズ",
-    "description": "動画タイプカスタマイズトグル"
-  },
-  "name.customizeStyle": {
-    "message": "ビジュアルスタイルをカスタマイズ",
-    "description": "ビジュアルスタイルカスタマイズトグル"
-  },
-  "name.customizeVoice": {
-    "message": "ナレーション音色をカスタマイズ",
-    "description": "音声タイムブレカスタマイズトグル"
   }
 }

@@ -348,7 +348,7 @@
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
-    "message": "Zoom",
+    "message": "Zoom (push-pull)",
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
@@ -361,7 +361,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status da tarefa"
+    "description": "O status da tarefa"
   },
   "name.traceId": {
     "message": "ID de Rastreamento",
@@ -772,8 +772,8 @@
     "description": "Talking Photo audio upload error"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "message": "Vídeo de referência",
+    "description": "Rótulo do campo do formulário: vídeo de referência/para edição do Omni"
   },
   "description.omniReferenceVideo": {
     "message": "Aplicável ao Kling O1 e V3 Omni. Envie um MP4/MOV (720–2160px, 3–10 segundos, ≤200MB) para edição ou referência de vídeo existente, as palavras-chave serão adicionadas automaticamente <<<video_1>>>.",
@@ -824,23 +824,23 @@
     "description": "Aviso de conflito entre o vídeo base e os quadros inicial e final."
   },
   "button.uploadReferenceVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Enviar vídeo",
+    "description": "Botão para enviar o vídeo de referência"
   },
   "message.referenceVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "É permitido enviar apenas 1 vídeo de referência",
+    "description": "Mensagem de erro quando mais de 1 vídeo de referência é enviado"
   },
   "message.referenceVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Falha ao enviar o vídeo de referência, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro quando o envio do vídeo de referência falha"
   },
   "message.referenceVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "O arquivo enviado deve ser no formato MP4 ou MOV!",
+    "description": "Mensagem de erro quando o formato do vídeo de referência não é MP4/MOV"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "O tamanho do arquivo enviado não pode exceder 200MB!",
+    "description": "Mensagem de erro quando o vídeo de referência excede 200MB"
   }
 }

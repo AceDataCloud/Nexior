@@ -28,8 +28,8 @@
     "description": "Etikett för inmatningsbild"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Referensbilder",
+    "description": "Etikett för referensbilder"
   },
   "name.required": {
     "message": "Obligatorisk",
@@ -96,7 +96,7 @@
     "description": "Platsinnehåll för val"
   },
   "model.default": {
-    "message": "Omni",
+    "message": "Omni video",
     "description": "Standardmodellens etikett"
   },
   "model.preview15": {
@@ -128,8 +128,8 @@
     "description": "Varning för överskridning av uppladdning"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Maximalt 4 referensbilder kan laddas upp.",
+    "description": "Varning för att överskrida antalet uppladdade referensbilder"
   },
   "message.uploadError": {
     "message": "Bilduppladdning misslyckades, försök igen.",
@@ -164,39 +164,39 @@
     "description": "Användning slut"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "Referensvideo",
+    "description": "Referens-/redigeringsvideo för Omni video"
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "Valfri MP4/MOV (≤200MB) för redigering eller referens av befintlig video. Minst en referensbild krävs.",
+    "description": "Hjälptext för uppladdning av referensvideo"
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Ladda upp video",
+    "description": "Knapp för att ladda upp referensvideo"
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Maximalt 1 referensvideo kan laddas upp",
+    "description": "Felmeddelande när mer än 1 referensvideo laddas upp"
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Uppladdning av referensvideo misslyckades, vänligen försök igen senare",
+    "description": "Felmeddelande när uppladdning av referensvideo misslyckas"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Den uppladdade filen måste vara i MP4 eller MOV-format!",
+    "description": "Felmeddelande när referensvideoformatet inte är MP4/MOV"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Den uppladdade filens storlek får inte överstiga 200MB!",
+    "description": "Felmeddelande när referensvideo överskrider 200MB"
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "Vänligen ange en prompt.",
+    "description": "Valideringsmeddelande när prompten är tom"
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "När du använder referensvideo, vänligen lägg till minst en referensbild.",
+    "description": "Valideringsmeddelande när video_urls tillhandahålls men referensbild saknas"
   }
 }

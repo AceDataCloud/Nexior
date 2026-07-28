@@ -61,7 +61,7 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy é um serviço online, referindo-se a um proxy HTTP para transmissão de dados."
+    "description": "Proxy é um serviço online que se refere a um proxy HTTP usado para transmitir dados."
   },
   "message.paidSuccessfully": {
     "message": "Pagamento Realizado com Sucesso",
@@ -80,16 +80,16 @@
     "description": "Mensagem de ajuda para pagamento via WeChat."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "O navegador atual não suporta a chamada direta do WeChat Pay. Por favor, copie o link abaixo e abra no WeChat para continuar o pagamento.",
+    "description": "Texto de orientação exibido em navegadores móveis que não são do WeChat."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Copiar link de pagamento",
+    "description": "Texto do botão para copiar a URL da página atual para a área de transferência, facilitando ao usuário colar no WeChat."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Após copiar com sucesso, abra o WeChat, cole o link em qualquer caixa de conversa ou na barra de pesquisa superior, e clique no link para concluir o pagamento.",
+    "description": "Dica secundária abaixo do botão de copiar link."
   },
   "message.free": {
     "message": "Gratuito",
@@ -153,15 +153,15 @@
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Título exibido no site, indicando pagamento via Alipay, que é um método de pagamento online."
+    "description": "Título exibido no site que representa o pagamento via Alipay, um método de pagamento online."
   },
   "title.stripe": {
     "message": "Stripe",
     "description": "Título exibido no site, indicando pagamento via Stripe, que é um método de pagamento online."
   },
   "title.card": {
-    "message": "Card",
-    "description": "Title displayed on the website indicating card payment (credit/debit card)."
+    "message": "Cartão de crédito",
+    "description": "Título exibido como título do site, indicando pagamento via cartão de crédito/débito."
   },
   "title.manageOrder": {
     "message": "Gerenciar Pedido",
@@ -548,31 +548,31 @@
     "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Total de pedidos",
+    "description": "Cartão de resumo: total de pedidos de acordo com os critérios de filtragem atuais."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Total gasto",
+    "description": "Cartão de resumo: valor total dos pedidos de acordo com os critérios de filtragem atuais."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Pedidos concluídos",
+    "description": "Cartão de resumo: número de pedidos concluídos."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Pedidos pendentes",
+    "description": "Cartão de resumo: número de pedidos pendentes de pagamento."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Exportar CSV",
+    "description": "Texto do botão: exportar pedidos em CSV de acordo com os critérios de filtragem atuais."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Todos os estados",
+    "description": "Placeholder do dropdown de estados: indica que não há restrição sobre os estados."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Todas as formas de pagamento",
+    "description": "Placeholder do dropdown de formas de pagamento: indica que não há restrição sobre as formas de pagamento."
   }
 }

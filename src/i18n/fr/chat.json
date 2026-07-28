@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Modèle le plus avancé actuellement",
+    "description": "Description du modèle Claude Opus 5"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "Modèle léger et rapide",
     "description": "Description du modèle Claude Haiku 4.5"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Modèle phare prenant en charge le raisonnement, la vision et un contexte de 1 million de tokens",
+    "description": "Description du modèle Kimi K3"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Modèle de raisonnement et de vision compatible avec le flux de travail K2",
+    "description": "Description du modèle Kimi K2.6"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,8 +599,85 @@
     "message": "Autorisation du connecteur ignorée",
     "description": "Texte au bas de la carte après que l'utilisateur ait sauté l'autorisation"
   },
+  "browserTool.title": {
+    "message": "Activité du navigateur",
+    "description": "Titre par défaut pour l'activité de l'outil BrowserDevice"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Démarrage de la session du navigateur",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Connexion à l'onglet du navigateur",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Navigateur prêt",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "L'appareil du navigateur est hors ligne",
+    "description": "L'appareil du navigateur sélectionné n'est pas en ligne"
+  },
+  "browserTool.state.device_busy": {
+    "message": "L'appareil du navigateur est occupé",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Autorisation requise dans Studio",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Exécution dans le navigateur",
+    "description": "L'appareil du navigateur exécute l'outil"
+  },
+  "browserTool.state.completed": {
+    "message": "Terminé",
+    "description": "Exécution de l'outil du navigateur terminée"
+  },
+  "browserTool.state.stopped": {
+    "message": "Session du navigateur arrêtée",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "La demande du navigateur a expiré",
+    "description": "La demande d'exécution de l'outil du navigateur a expiré"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Veuillez fermer les outils de développement pour continuer",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Résultat d'exécution inconnu, veuillez vérifier et réessayer",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Échec de l'opération du navigateur",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Arrêter",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Gérer les appareils",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Arrêter l'autre session",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Fermer les outils de développement",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Voir l'autorisation",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Tâches planifiées",
+    "description": "Entrée des tâches planifiées dans la barre latérale"
   },
   "scheduledTasks.tab.tasks": {
     "message": "Tâches planifiées",
@@ -599,74 +692,96 @@
     "description": "Filtre d'état des enregistrements d'exécution - Tout"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Tâches planifiées",
+    "description": "Titre de la page"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Nouveau",
+    "description": "Bouton pour créer une tâche planifiée"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Modifier la tâche",
+    "description": "Titre de la boîte de dialogue d'édition"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Dupliquer la tâche",
+    "description": "Bouton pour dupliquer une tâche, pré-remplissant le formulaire de création basé sur une tâche existante"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Aucune tâche planifiée pour le moment, cliquez sur « Nouveau » pour en créer une",
+    "description": "Message d'état vide"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Pas encore exécuté",
+    "description": "Aucune historique d'exécution"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Échec du chargement",
+    "description": "Message d'erreur de chargement"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Confirmer la suppression de « {name} » ? La tâche cessera de fonctionner après la suppression.",
+    "description": "Confirmation de suppression"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Déclencher maintenant",
+    "description": "Exécuter manuellement la tâche immédiatement"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Déclenché, vous pourrez voir le résultat dans l'historique d'exécution plus tard.",
+    "description": "Message de succès de déclenchement manuel"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Échec du déclenchement, veuillez réessayer plus tard.",
+    "description": "Message d'échec de déclenchement manuel"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Voir le résultat",
+    "description": "Accéder à la conversation"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Historique des exécutions",
+    "description": "Voir l'historique des exécutions en bas de la carte"
   },
   "scheduledTasks.noConversation": {
     "message": "Aucun enregistrement de conversation",
     "description": "Exécution sans conversation associée (version ancienne)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60s de variation",
+    "description": "Explication de la variation de l'heure d'exécution"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Exécuté {count} fois",
+    "description": "Nombre d'exécutions"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "En cours",
+    "description": "État activé"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Suspendu",
+    "description": "État désactivé"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Erreur",
+    "description": "État d'erreur"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "En attente",
+    "description": "État en attente"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "En cours",
+    "description": "État en cours"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Réussi",
+    "description": "État de succès"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Échoué",
+    "description": "État d'échec"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Limite d'étapes atteinte"
@@ -698,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Solde insuffisant"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Échec de l’autorisation de facturation"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Non autorisé"
   },
@@ -708,120 +826,143 @@
     "message": "Erreur interne"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Nécessite une action",
+    "description": "État nécessitant une action de l'utilisateur"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "L'appareil du navigateur est hors ligne",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "L'autorisation du navigateur a changé, veuillez modifier cette tâche",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Quotidien",
+    "description": "Exécution quotidienne"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Chaque minute"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Horaire",
+    "description": "Exécution horaire"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Hebdomadaire",
+    "description": "Exécution hebdomadaire"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Expression Cron",
+    "description": "Cron personnalisé"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Tous les",
+    "description": "Exécution à intervalles réguliers"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "Minute",
+    "description": "Unité d'intervalle : minute"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "Heure",
+    "description": "Unité d'intervalle : heure"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "Jour",
+    "description": "Unité d'intervalle : jour"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "Minute de déclenchement",
+    "description": "Minute à laquelle la tâche se déclenche chaque heure"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "Minute de déclenchement chaque heure (0–59)",
+    "description": "Explication des minutes par heure"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Exécute une fois à intervalles fixes depuis la dernière exécution (minimum 1 minute)",
+    "description": "Explication des intervalles fixes"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Expression Cron standard à 5 segments : minute heure jour mois semaine",
+    "description": "Explication de Cron"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Fréquence d'exécution : {text}",
+    "description": "Aperçu de la fréquence"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "Toutes les {n} minutes",
+    "description": "Lisible par l'homme : toutes les N minutes"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "Toutes les {n} heures",
+    "description": "Lisible par l'homme : toutes les N heures"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "Tous les {n} jours",
+    "description": "Lisible par l'homme : tous les N jours"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "À la {n} minute de chaque heure",
+    "description": "Lisible par l'homme : à la N minute de chaque heure"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "Chaque jour à {time}",
+    "description": "Lisible par l'homme : chaque jour à un moment donné"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "Chaque semaine {weekday} à {time}",
+    "description": "Lisible par l'homme : chaque semaine à un moment donné"
   },
   "scheduledTasks.humanize.cronRaw": {
-    "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "message": "Cron : {cron}",
+    "description": "Lisible par l'homme : Cron brut"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "Une seule fois à {time}",
+    "description": "Lisible par l'homme : une seule fois"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Nom de la tâche",
+    "description": "Champ de nom"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "Ex : Résumé des informations quotidiennes",
+    "description": "Placeholder pour le nom"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Modèle",
+    "description": "Sélection du modèle"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Mot d'invite",
+    "description": "Champ pour le mot d'invite"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Entrez la question ou la commande à exécuter régulièrement, prenant en charge les variables {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'}",
+    "description": "Espace réservé pour le mot d'invite"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Variables de modèle prises en charge : {'{{date}}'} date d'aujourd'hui, {'{{run_count}}'} numéro de la course, {'{{last_output}}'} résumé du dernier résultat",
+    "description": "Explication du mot d'invite"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Fréquence d'exécution",
+    "description": "Choix de la fréquence"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Heure d'exécution",
+    "description": "Champ pour l'heure"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "Jour de la semaine",
+    "description": "Champ pour le jour de la semaine"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Expression Cron",
+    "description": "Champ pour l'expression cron"
   },
   "scheduledTasks.form.skills": {
     "message": "Autoriser les Skills",
@@ -835,6 +976,25 @@
     "message": "Les Skills sélectionnés peuvent s'exécuter en arrière-plan lors des tâches planifiées sans confirmation manuelle ; les Skills non sélectionnés ne peuvent que prévisualiser ou attendre une confirmation.",
     "description": "Explication de l'autorisation des skills"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Connexion du navigateur",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Peut exécuter les effets externes suivants : {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Heure d'expiration de l'autorisation sans surveillance : {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Veuillez sélectionner une connexion de navigateur en ligne et compatible avant de sauvegarder",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Non connecté",
     "description": "skill manque de connexion"
@@ -868,19 +1028,20 @@
     "description": "Texte de confirmation d'autorisation"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Vous devez d'abord lier la compétence",
+    "description": "Titre de la boîte de dialogue affichée lorsqu'une compétence/MCP autorisée pour une tâche planifiée n'est pas encore liée pour l'utilisateur."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "La compétence « {name} » n'est pas encore liée ou activée sur votre compte. Si vous ne liez pas d'abord, la tâche planifiée peut ne pas pouvoir l'utiliser lors de son exécution automatique en arrière-plan. Il est conseillé de lier d'abord avant d'enregistrer, ou cliquez sur le bouton ci-dessous pour continuer à enregistrer.",
+    "description": "Corps d'avertissement ; {name} est le nom de la compétence/MCP. Explique qu'elle n'est pas liée et propose de sauvegarder quand même."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Voulez-vous vraiment continuer à enregistrer",
+    "description": "Bouton de confirmation qui enregistre la tâche planifiée malgré tout, en contournant la vérification de liaison (forcer)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Veuillez remplir le nom de la tâche et le mot d'invite",
+    "description": "Validation des champs obligatoires"
   },
   "artifacts.navTitle": {
     "message": "Productions",
@@ -917,6 +1078,18 @@
   "artifacts.hide": {
     "message": "Masquer",
     "description": "Bouton pour masquer la production"
+  },
+  "artifacts.unhide": {
+    "message": "Annuler le caché",
+    "description": "Bouton pour restaurer un Artifact caché"
+  },
+  "artifacts.showHidden": {
+    "message": "Afficher les cachés",
+    "description": "Commutateur pour afficher les Artifacts cachés dans la barre de filtrage"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Caché",
+    "description": "Badge indiquant que l'Artifact a été caché"
   },
   "artifacts.delete": {
     "message": "Supprimer",
@@ -1046,6 +1219,17 @@
     "message": "Vous consultez une conversation partagée. Cliquez ci-dessus pour discuter avec l'IA vous-même.",
     "description": "Explication sous la conversation sur la page publique partagée"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Objectif non atteint",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Résultat en attente de confirmation",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "État d'exécution inconnu"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Nom du modèle du service, c'est-à-dire Claude Opus 4.7"
@@ -1053,127 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "Modèle le plus avancé actuellement",
     "description": "Description du modèle Claude Opus 4.7"
-  },
-  "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
-  },
-  "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Échec de l’autorisation de facturation"
-  },
-  "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
-  },
-  "browserTool.state.executing": {
-    "message": "Executing in browser"
-  },
-  "browserTool.state.completed": {
-    "message": "Completed"
-  },
-  "browserTool.state.expired": {
-    "message": "Browser request expired"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "État d'exécution inconnu"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

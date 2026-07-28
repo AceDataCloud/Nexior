@@ -28,8 +28,8 @@
     "description": "Syöttokuvan etiketti"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Viittauskuvat",
+    "description": "Viittauskuville tarkoitettu etiketti"
   },
   "name.required": {
     "message": "Pakollinen",
@@ -64,8 +64,8 @@
     "description": "Ohjeet kehotteen syöttämiseen"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Valitse Grok Imagine -malli. :reverse käyttää nopeaa/standardi-pistettä; :official käyttää virallista pistettä (korkeampi laatu, laskutus sekuntien mukaan). grok-imagine-video-1.5:official tukee vain kuva-videota.",
+    "description": "Ohjeet mallin valintaan"
   },
   "description.ratio": {
     "message": "Valitse ulostulojen kuvasuhde.",
@@ -76,16 +76,16 @@
     "description": "Ohjeet resoluution valintaan"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Videon kesto (sekunteina). 1.5-fast (käänteinen) tukee 6-30 sekuntia, laskutus kestosta; muut variantit tukevat 1-15 sekuntia, laskutus ulostulo sekuntien mukaan.",
+    "description": "Ohjeet keston määrittämiseen"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Valinnainen syötekuva videon luomiseen. grok-imagine-video-1.5:official on pakollinen.",
+    "description": "Ohjeet kuva syötteelle"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Valinnaiset viittauskuvat, joita käytetään videon tyylin tai sisällön ohjaamiseen.",
+    "description": "Ohjeet viittauskuville"
   },
   "placeholder.prompt": {
     "message": "Kuvaile videota…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Valitse",
     "description": "Valintojen paikkamerkki"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (nopea, 6–30 sekuntia)",
+    "description": "1.5-fast käänteinen mallin etiketti"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (standardi, 1–15 sekuntia)",
+    "description": "grok-imagine-video käänteisen mallin etiketti"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Virallinen (korkeampi laatu, laskutus sekuntien mukaan)",
+    "description": "grok-imagine-video virallisen mallin etiketti"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Virallinen (kuva-videot, enintään 1080p)",
+    "description": "1.5 virallisen mallin etiketti"
   },
   "button.upload": {
     "message": "Lataa",
@@ -120,8 +136,8 @@
     "description": "Latausylitysvaroitus"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Voit ladata enintään 4 viittauskuvaa.",
+    "description": "Viittauskuvien latausrajan ylityksen varoitus"
   },
   "message.uploadError": {
     "message": "Kuvan lataaminen epäonnistui, yritä uudelleen.",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Varat on käytetty loppuun, osta lisää jatkaaksesi käyttöä.",
     "description": "Loppu"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

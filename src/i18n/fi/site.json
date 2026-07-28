@@ -112,8 +112,8 @@
     "description": "Selittää mukautetun SMS-lähettäjän webhookin"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "SMS-webhook-URL-syötteen paikkamerkki"
+    "message": "https://oma-alueesi/sms-webhook",
+    "description": "SMS webhook URL -syöttökentän paikka"
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "Allekirjoitusavain (jätä tyhjäksi pitääksesi nykyisen)",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Näytetään otsikkona muokkausruudussa"
   },
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresDigitalhuman": {
-    "message": "Digital Human",
-    "description": "Näytetään muokkausruudun otsikkona"
+    "message": "Digitaalinen ihminen",
+    "description": "Näytetään otsikkona muokkausruudussa"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -289,6 +293,10 @@
   },
   "field.featuresSeedance": {
     "message": "SeeDance",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresWan": {
@@ -583,6 +591,10 @@
     "message": "Tuottaa kokonaisia videoita ideasta alkaen, mukaan lukien suunnittelu, selostus, kohtaukset ja toimitus.",
     "description": "Kyvykkyysesittely: tuota kokonaisia videoita ideasta, mukaan lukien suunnittelu, ääninäyttelijät, kohtaukset ja toimitus."
   },
+  "message.featuresPoivelle": {
+    "message": "Yhdistä ammattimainen AI-elokuvatuotanto jakamalla projektikuvia, tarinatauluja, aikajanoja, leikkausmateriaaleja ja Skill Agent -työnkulkuja.",
+    "description": "Yhdistä ammattimainen AI-elokuvatuotanto jakamalla projektikuvia, tarinatauluja, aikajanoja, leikkausmateriaaleja ja Skill Agent -työnkulkuja. -kyvyn kuvaus"
+  },
   "message.featuresDigitalhuman": {
     "message": "Luo puhuvia videoita synteettisellä puheella ja luonnollisella huulisynkalla.",
     "description": "Kyvykkyysesittely: luo puhujavideoita syntetisoituun puheeseen ja luonnolliseen huulisynkronointiin."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "ByteDancen videonluonti dynaamisiin kohtauksiin, kameraliikkeisiin ja valinnaiseen ääneen.",
     "description": "Kyvykkyysesittely: ByteDancen videonluonti dynaamisiin kohtauksiin, kameraliikkeeseen ja valinnaiseen ääneen."
+  },
+  "message.featuresOmni": {
+    "message": "Luo tai muokkaa videoita Omni-malleilla tekstin, kuvien ja videoviitteiden pohjalta.",
+    "description": "Luo tai muokkaa videoita Omni-malleilla tekstin, kuvien ja videoviitteiden pohjalta."
   },
   "message.featuresWan": {
     "message": "Alibaban videonluonti tekstistä, kuvista tai viitteistä useilla resoluutioilla.",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "Palveluohitusten lataus epäonnistui"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Näytetään muokkausruudun otsikkona"
-  },
-  "message.featuresOmni": {
-    "message": "Luo tai muokkaa videoita Omni-malleilla tekstin, kuvien ja videoviitteiden pohjalta.",
-    "description": "Luo tai muokkaa videoita Omni-malleilla tekstin, kuvien ja videoviitteiden pohjalta."
-  },
   "capabilityOverride.edit": {
     "message": "Mukauta sovellusta",
     "description": "Vihje ja saavutettava merkintä kyvykkyyssovelluksen nimen ja kuvakkeen muokkaamiseen"
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "Sovelluksen mukautusten lataaminen epäonnistui",
     "description": "Virhe, joka näytetään, kun kyvykkyyden korvauksen hallintarivejä ei voida ladata"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

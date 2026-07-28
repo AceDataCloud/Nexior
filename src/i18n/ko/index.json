@@ -115,6 +115,10 @@
     "message": "기능 알아보기",
     "description": "홈페이지 Hero의 보조 버튼, 클릭 시 서비스 소개 구역으로 스크롤 이동"
   },
+  "button.learnBusiness": {
+    "message": "전체 계획 보기",
+    "description": "홈페이지 비즈니스 기능 공통 문서 링크"
+  },
   "title.models": {
     "message": "세계적 수준의 대모델 내장",
     "description": "홈페이지 대모델 섹션 제목"
@@ -132,259 +136,255 @@
     "description": "홈페이지 하단 행동 촉구 부제목"
   },
   "stat.capabilities": {
-    "message": "AI capabilities you can combine",
-    "description": "Homepage capability count label"
+    "message": "자유롭게 조합 가능한 AI 능력",
+    "description": "홈페이지 능력 수 설명"
   },
   "stat.subsite": {
-    "message": "To launch a branded subsite",
-    "description": "Homepage subsite speed label"
+    "message": "브랜드 서브사이트 완료",
+    "description": "홈페이지 서브사이트 속도 설명"
   },
   "stat.platforms": {
-    "message": "Complete desktop and mobile coverage",
-    "description": "Homepage platform coverage label"
+    "message": "데스크탑 및 모바일 완전 지원",
+    "description": "홈페이지 크로스 플랫폼 지원 설명"
+  },
+  "stat.commission": {
+    "message": "최고 분배 수수료",
+    "description": "홈페이지 최고 분배 수수료 설명"
   },
   "note.allInOne": {
-    "message": "One account for every AI tool",
-    "description": "Homepage screenshot note"
+    "message": "하나의 계정으로 모든 AI 도구 사용",
+    "description": "홈페이지 스크린샷 오버레이 설명"
   },
   "note.customDomain": {
-    "message": "Custom domain and branding",
-    "description": "Homepage custom domain note"
+    "message": "사용자 정의 도메인 및 브랜드",
+    "description": "홈페이지 사용자 정의 도메인 오버레이 설명"
   },
   "eyebrow.business": {
-    "message": "Your AI business infrastructure",
-    "description": "Homepage business section eyebrow"
+    "message": "당신의 AI 비즈니스 인프라",
+    "description": "홈페이지 비즈니스 플랫폼 섹션 제목"
   },
   "title.business": {
-    "message": "More than AI tools: build an AI business of your own",
-    "description": "Homepage business section title"
+    "message": "AI 도구를 제공하는 것 이상으로, 귀하의 AI 비즈니스를 구축하는 데 도움을 드립니다.",
+    "description": "홈페이지 비즈니스 플랫폼 섹션 제목"
   },
   "subtitle.business": {
-    "message": "Create a subsite, customize the brand, connect a domain, select capabilities, configure pricing, and run referrals from one console without building or deploying another product.",
-    "description": "Homepage business section subtitle"
+    "message": "서브사이트 생성, 브랜드 변경, 도메인 연결, 능력 선택, 가격 및 분배 규칙 설정을 동일한 백엔드에서 완료할 수 있어 별도의 개발 및 배포가 필요 없습니다.",
+    "description": "홈페이지 비즈니스 플랫폼 섹션 부제목"
   },
   "eyebrow.subsites": {
-    "message": "Live in five minutes",
-    "description": "Homepage subsite eyebrow"
+    "message": "5분 만에 시작",
+    "description": "홈페이지 서브사이트 기능의 제목"
   },
   "title.subsites": {
-    "message": "Launch a branded subsite with its own domain",
-    "description": "Homepage subsite title"
+    "message": "브랜드 서브사이트를 빠르게 구축하고 독립 도메인을 제공합니다",
+    "description": "홈페이지 서브사이트 기능 제목"
   },
   "subtitle.subsites": {
-    "message": "Every subsite gets its own logo, title, capability set, and customer entry point. Connect a custom domain so the entire journey, from visit to purchase, stays under your brand.",
-    "description": "Homepage subsite description"
+    "message": "서브사이트를 생성한 후 독립적인 로고, 제목, 기능 집합 및 사용자 진입점을 가질 수 있습니다. 사용자 정의 도메인을 연결하면 고객은 방문부터 구매까지 모두 귀하의 브랜드 내에서 이루어집니다.",
+    "description": "홈페이지 서브사이트 기능 설명"
   },
   "button.createSubsite": {
-    "message": "Create my subsite",
-    "description": "Homepage create subsite button"
+    "message": "내 분사이트 만들기",
+    "description": "홈페이지 분사이트 생성 버튼"
   },
   "eyebrow.capabilities": {
-    "message": "Fully configurable",
-    "description": "Homepage capabilities eyebrow"
+    "message": "완전한 구성 가능",
+    "description": "홈페이지 기능 구성 제목"
   },
   "title.capabilities": {
-    "message": "Choose the brand, models, prices, and sign-in methods",
-    "description": "Homepage capabilities title"
+    "message": "브랜드, 모델, 가격, 로그인 방식은 당신이 결정합니다",
+    "description": "홈페이지 능력 구성 제목"
   },
   "subtitle.capabilities": {
     "message": "Enable any of 31 AI capabilities and configure service names, descriptions, pricing, homepage visibility, SEO, contacts, and authentication. New capabilities join the same management experience.",
     "description": "Homepage capabilities description"
   },
   "button.configure": {
-    "message": "View capability settings",
-    "description": "Homepage capabilities button"
+    "message": "기능 구성 보기",
+    "description": "홈페이지 기능 구성 버튼"
+  },
+  "eyebrow.operations": {
+    "message": "완전한 운영 백엔드",
+    "description": "홈페이지 운영 설정의 제목"
+  },
+  "title.operations": {
+    "message": "고객 유치부터 로그인까지, 모든 브랜드 접점을 구성할 수 있습니다",
+    "description": "홈페이지 운영 구성 제목"
+  },
+  "subtitle.operations": {
+    "message": "검색 표시, 다국어 콘텐츠, 연락처 및 사용자 로그인 방식을 독립적으로 관리하여 서브사이트가 단순히 시작할 수 있을 뿐만 아니라 장기적으로 운영 및 성장할 수 있도록 합니다.",
+    "description": "홈페이지 운영 설정 설명"
+  },
+  "button.operations": {
+    "message": "운영 구성 보기",
+    "description": "홈페이지 운영 구성 버튼"
   },
   "eyebrow.distribution": {
-    "message": "Growth and monetization",
-    "description": "Homepage referral eyebrow"
+    "message": "성장 및 수익화",
+    "description": "홈페이지 분배 기능의 제목"
   },
   "title.distribution": {
-    "message": "Tiered commissions, referral links, and withdrawals",
-    "description": "Homepage referral title"
+    "message": "계층별 수수료, 초대 링크 및 수익 인출",
+    "description": "홈페이지 분배 기능 제목"
   },
   "subtitle.distribution": {
     "message": "Every user receives a referral link and QR code. The platform tracks orders, calculates tiered commissions, and aggregates withdrawable earnings so customer growth becomes a sustainable network.",
     "description": "Homepage referral description"
   },
   "button.viewDistribution": {
-    "message": "Open referral center",
-    "description": "Homepage referral center button"
+    "message": "유통 센터 보기",
+    "description": "홈페이지 유통 센터 버튼"
   },
   "eyebrow.creation": {
-    "message": "Real product screens",
-    "description": "Homepage creation section eyebrow"
+    "message": "실제 제품 인터페이스",
+    "description": "홈페이지 창작 기능 섹션 제목"
   },
   "title.creation": {
-    "message": "Turn one idea into a complete multimodal creation",
-    "description": "Homepage creation section title"
+    "message": "아이디어에서 완전한 멀티모달 작품까지",
+    "description": "홈페이지 창작 능력 챕터 제목"
   },
   "subtitle.creation": {
-    "message": "One account, one balance, and one cross-device experience for images, video, music, digital humans, and workflows.",
-    "description": "Homepage creation section subtitle"
+    "message": "동일한 계정, 동일한 잔액, 동일한 크로스 플랫폼 경험으로 이미지, 비디오, 음악, 디지털인 및 워크플로우를 포괄합니다.",
+    "description": "홈페이지 창작 능력 섹션 부제목"
   },
   "eyebrow.chat": {
-    "message": "Chat and search",
-    "description": "Homepage chat eyebrow"
+    "message": "대화 및 검색",
+    "description": "홈페이지 채팅 기능 제목"
   },
   "eyebrow.image": {
-    "message": "Image creation",
-    "description": "Homepage image eyebrow"
+    "message": "이미지 생성",
+    "description": "홈페이지 이미지 기능의 제목"
   },
   "title.image": {
-    "message": "AI image generation and professional editing",
-    "description": "Homepage image title"
+    "message": "AI 그림 및 전문 이미지 편집",
+    "description": "홈페이지 이미지 능력 제목"
   },
   "subtitle.image": {
-    "message": "Create from text, edit reference images, blend multiple inputs, inpaint regions, design artistic QR codes, and produce headshots with leading models and useful aspect ratios.",
-    "description": "Homepage image description"
+    "message": "텍스트에서 이미지 생성, 참조 이미지 편집, 다중 이미지 융합, 부분 재구성, 예술적 QR 코드 및 증명사진을 지원하며, 주요 모델과 일반적인 비율을 지원합니다.",
+    "description": "홈페이지 이미지 능력 설명"
   },
   "eyebrow.video": {
-    "message": "Video generation",
-    "description": "Homepage video eyebrow"
+    "message": "비디오 생성",
+    "description": "홈페이지 비디오 기능의 제목"
   },
   "title.video": {
-    "message": "AI video from text, images, and video inputs",
-    "description": "Homepage video title"
+    "message": "텍스트, 이미지 및 비디오 기반의 AI 비디오",
+    "description": "홈페이지 비디오 능력 제목"
   },
   "subtitle.video": {
-    "message": "Use Kling, Veo, Sora, Seedance, Hailuo, and Luma for generation, extension, camera control, lip sync, and multi-asset creation.",
-    "description": "Homepage video description"
+    "message": "Kling, Veo, Sora, Seedance, Hailuo, Luma 등의 모델을 사용하여 생성, 연장, 촬영, 입 모양 및 다중 자료 창작을 완료합니다.",
+    "description": "홈페이지 비디오 능력 설명"
   },
   "eyebrow.music": {
-    "message": "Music and voice",
-    "description": "Homepage music eyebrow"
+    "message": "음악 및 소리",
+    "description": "홈페이지 음악 기능의 제목"
   },
   "title.music": {
-    "message": "Songs, soundtracks, lyrics, and speech",
-    "description": "Homepage music title"
+    "message": "노래, 배경 음악, 가사 및 음성 생성",
+    "description": "홈페이지 음악 능력 제목"
   },
   "subtitle.music": {
-    "message": "Start from a prompt or custom lyrics, create a complete song, extend or cover it, separate vocals, or synthesize natural speech with Fish Audio.",
-    "description": "Homepage music description"
+    "message": "하나의 설명이나 사용자 정의 가사로 시작하여 완전한 곡을 생성하고, 계속해서 연장, 리믹스, 보컬 분리 또는 Fish를 통해 자연어 음성을 합성합니다.",
+    "description": "홈페이지 음악 능력 설명"
   },
   "eyebrow.workflow": {
-    "message": "Digital humans and workflows",
-    "description": "Homepage workflow eyebrow"
+    "message": "디지털인과 워크플로우",
+    "description": "홈페이지 워크플로우 기능의 제목"
   },
   "title.workflow": {
-    "message": "Turn a script into a presenter video and full production",
-    "description": "Homepage workflow title"
+    "message": "스크립트를 디지털 인구 방송 및 완전한 비디오로 변환",
+    "description": "홈페이지 워크플로우 능력 제목"
   },
   "subtitle.workflow": {
-    "message": "Maestro and digital-human capabilities connect scripts, media, voices, shots, and rendering into repeatable content production workflows.",
-    "description": "Homepage workflow description"
-  },
-  "eyebrow.coding": {
-    "message": "Coding collaboration",
-    "description": "Homepage coding eyebrow"
-  },
-  "title.coding": {
-    "message": "An AI coding assistant connected to your devices",
-    "description": "Homepage coding title"
-  },
-  "subtitle.coding": {
-    "message": "Coding Bridge securely connects development devices so AI can read projects, run approved tasks, and continuously report progress under explicit permission.",
-    "description": "Homepage coding description"
-  },
-  "eyebrow.directory": {
-    "message": "Capability directory",
-    "description": "Homepage capability directory eyebrow"
-  },
-  "title.directory": {
-    "message": "A complete AI capability catalog, always adding the latest models",
-    "description": "Homepage capability directory title"
-  },
-  "subtitle.directory": {
-    "message": "These are all capabilities enabled on this site. The main platform keeps adding models, while subsite operators decide exactly which services their customers see.",
-    "description": "Homepage capability directory description"
-  },
-  "eyebrow.cta": {
-    "message": "Start now",
-    "description": "Homepage final call-to-action eyebrow"
-  },
-  "stat.commission": {
-    "message": "Maximum referral commission",
-    "description": "Homepage maximum referral commission label"
-  },
-  "eyebrow.operations": {
-    "message": "Complete operations console",
-    "description": "Homepage operations eyebrow"
-  },
-  "title.operations": {
-    "message": "Configure every brand touchpoint from discovery to sign-in",
-    "description": "Homepage operations title"
-  },
-  "subtitle.operations": {
-    "message": "Manage search presence, localized content, support contacts, and sign-in methods independently so every subsite can operate and grow over time.",
-    "description": "Homepage operations description"
-  },
-  "button.operations": {
-    "message": "View operations settings",
-    "description": "Homepage operations button"
+    "message": "Maestro와 디지털인 능력이 스크립트, 자료, 음성, 촬영 및 렌더링을 연결하여 반복 가능한 콘텐츠 생산 프로세스를 만듭니다.",
+    "description": "홈페이지 워크플로우 능력 설명"
   },
   "eyebrow.digitalHuman": {
-    "message": "Digital presenters",
-    "description": "Homepage digital human eyebrow"
+    "message": "디지털 인구 방송",
+    "description": "홈페이지 디지털 사람 기능 제목"
   },
   "title.digitalHuman": {
-    "message": "Create presenter videos from a portrait, voice, and script",
-    "description": "Homepage digital human title"
+    "message": "사진, 음성 및 스크립트로 디지털 인간 비디오 생성",
+    "description": "홈페이지 디지털 인간 능력 제목"
   },
   "subtitle.digitalHuman": {
-    "message": "Generate natural lip sync and complete presenter videos from real portraits and voices for courses, marketing, product demos, and repeatable content production.",
-    "description": "Homepage digital human description"
+    "message": "실제 인물의 이미지와 소리를 사용하여 자연스러운 입 모양과 완전한 구술 비디오를 생성하며, 강의, 마케팅, 제품 소개 및 대량 콘텐츠 제작에 적합합니다.",
+    "description": "홈페이지 디지털인 능력 설명"
+  },
+  "eyebrow.coding": {
+    "message": "프로그래밍 협업",
+    "description": "홈페이지 프로그래밍 기능 제목"
+  },
+  "title.coding": {
+    "message": "로컬 장치와 연결된 AI 프로그래밍 도우미",
+    "description": "홈페이지 프로그래밍 능력 제목"
+  },
+  "subtitle.coding": {
+    "message": "Coding Bridge를 통해 개발 장비와 안전하게 연결하여 AI가 명확한 권한 하에 프로젝트를 읽고, 작업을 수행하며 지속적으로 진행 상황을 피드백합니다.",
+    "description": "홈페이지 프로그래밍 능력 설명"
+  },
+  "eyebrow.directory": {
+    "message": "기능 목록",
+    "description": "홈페이지 기능 목록 제목"
+  },
+  "title.directory": {
+    "message": "완전한 AI 능력 디렉토리, 최신 모델 지속 접속",
+    "description": "홈페이지 능력 디렉토리 제목"
+  },
+  "subtitle.directory": {
+    "message": "아래는 현재 사이트에서 활성화된 전체 능력입니다. 메인 사이트는 지속적으로 새로운 모델을 접목하며, 서브사이트 관리자는 고객에게 어떤 서비스를 보여줄지 자유롭게 결정할 수 있습니다.",
+    "description": "홈페이지 능력 디렉토리 설명"
+  },
+  "eyebrow.cta": {
+    "message": "지금 시작하기",
+    "description": "홈페이지 하단 행동 촉구 제목"
   },
   "benefit.subsites.noServer": {
-    "message": "No servers or system setup required: launch an AI subsite in five minutes",
-    "description": "Homepage no-server subsite benefit"
+    "message": "서버를 구매하거나 시스템을 구축할 필요 없이, 5분 만에 AI 서브사이트를 생성하고 온라인으로 전환할 수 있습니다.",
+    "description": "홈페이지 서브사이트 서버 불필요 판매 포인트"
   },
   "benefit.subsites.customDomain": {
-    "message": "Use the included subdomain or connect your own branded domain with HTTPS",
-    "description": "Homepage custom-domain benefit"
+    "message": "독립 서브 도메인을 사용할 수 있으며, 자신의 브랜드 도메인 및 HTTPS를 바인딩할 수 있습니다.",
+    "description": "홈페이지 서브사이트 사용자 정의 도메인 판매 포인트"
   },
   "benefit.subsites.branding": {
-    "message": "Customize the logo, name, primary color, contacts, and brand entry points",
-    "description": "Homepage branding benefit"
+    "message": "로고, 이름, 주요 색상, 연락처 및 브랜드 진입점은 독립적으로 설정할 수 있습니다.",
+    "description": "홈페이지 서브사이트 브랜드 맞춤 판매 포인트"
   },
   "benefit.capabilities.catalog": {
-    "message": "A growing catalog spanning chat, images, video, music, digital humans, workflows, and coding",
-    "description": "Homepage full capability catalog benefit"
+    "message": "채팅, 이미지, 비디오, 음악, 디지털 사람, 워크플로우 및 프로그래밍 기능이 지속적으로 업데이트됩니다.",
+    "description": "홈페이지의 전체 기능 목록 판매 포인트"
   },
   "benefit.capabilities.display": {
-    "message": "Show, hide, rename, rewrite, and reorder every capability independently",
-    "description": "Homepage capability display benefit"
+    "message": "각 기능은 독립적으로 표시/숨기기, 이름 변경, 설명 수정 및 표시 순서 조정이 가능합니다.",
+    "description": "홈페이지 기능 표시 구성 판매 포인트"
   },
   "benefit.capabilities.pricing": {
-    "message": "Set a site-wide markup or service-specific pricing: your pricing strategy stays yours",
-    "description": "Homepage capability pricing benefit"
+    "message": "전체 사이트 통합 가격 인상 및 개별 서비스 독립 가격 책정을 지원하며, 가격 전략은 당신이 결정합니다.",
+    "description": "홈페이지 기능 가격 책정 판매 포인트"
   },
   "benefit.operations.seo": {
-    "message": "Customize SEO titles, keywords, and descriptions to build your own search presence",
-    "description": "Homepage SEO benefit"
+    "message": "사용자 정의 SEO 제목, 키워드 및 설명을 설정하여 자신의 검색 브랜드를 구축합니다.",
+    "description": "홈페이지 SEO 판매 포인트"
   },
   "benefit.operations.auth": {
-    "message": "Offer email, phone, GitHub, Google, WeChat, Apple, and passkey sign-in",
-    "description": "Homepage authentication benefit"
+    "message": "이메일, 휴대폰, GitHub, Google, WeChat, Apple 및 통행 키를 자유롭게 활성화하여 로그인할 수 있습니다.",
+    "description": "홈페이지 로그인 방식 판매 포인트"
   },
   "benefit.operations.localization": {
-    "message": "Localize service names, descriptions, and operations content with automatic translation",
-    "description": "Homepage localization benefit"
+    "message": "서비스 이름, 소개 및 운영 내용은 다국어 및 자동 번역을 지원합니다.",
+    "description": "홈페이지 다국어 운영 판매 포인트"
   },
   "benefit.distribution.noBarrier": {
-    "message": "No application threshold: every registered user automatically gets a referral link and QR code",
-    "description": "Homepage no-barrier referral benefit"
+    "message": "신청 기준이 없으며, 등록된 사용자는 자동으로 전용 초대 링크와 QR 코드를 받습니다.",
+    "description": "홈페이지 무장애 유통 판매 포인트"
   },
   "benefit.distribution.levels": {
-    "message": "Thirteen growth tiers increase commission with performance, up to 24%",
-    "description": "Homepage referral tier benefit"
+    "message": "13단계 성장 시스템, 성과에 따라 커미션이 증가하며, 최대 24%까지 가능합니다.",
+    "description": "홈페이지 유통 등급 판매 포인트"
   },
   "benefit.distribution.withdrawal": {
-    "message": "Orders, invitees, and rewards are tracked automatically, with earnings ready for withdrawal",
-    "description": "Homepage referral withdrawal benefit"
-  },
-  "button.learnBusiness": {
-    "message": "View the complete solution",
-    "description": "Homepage public documentation link for business capabilities"
+    "message": "주문, 초대 인원 및 보상이 자동으로 통계화되며, 수익은 통합하여 출금 신청이 가능합니다.",
+    "description": "홈페이지 유통 출금 판매 포인트"
   }
 }

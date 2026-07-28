@@ -115,6 +115,10 @@
     "message": "瞭解功能",
     "description": "首頁 Hero 次要按鈕，點選滾動到服務介紹區"
   },
+  "button.learnBusiness": {
+    "message": "查看完整方案",
+    "description": "首頁業務能力公共文檔鏈接"
+  },
   "title.models": {
     "message": "內建全球領先大模型",
     "description": "首頁大模型牆區塊標題"
@@ -132,259 +136,255 @@
     "description": "首頁底部行動號召副標題"
   },
   "stat.capabilities": {
-    "message": "AI capabilities you can combine",
-    "description": "Homepage capability count label"
+    "message": "可自由組合的 AI 能力",
+    "description": "首頁能力數量說明"
   },
   "stat.subsite": {
-    "message": "To launch a branded subsite",
-    "description": "Homepage subsite speed label"
+    "message": "完成品牌分站上線",
+    "description": "首頁分站速度說明"
   },
   "stat.platforms": {
-    "message": "Complete desktop and mobile coverage",
-    "description": "Homepage platform coverage label"
+    "message": "桌面與移動端完整覆蓋",
+    "description": "首頁跨端支持說明"
+  },
+  "stat.commission": {
+    "message": "最高分銷佣金",
+    "description": "首頁最高分銷佣金說明"
   },
   "note.allInOne": {
-    "message": "One account for every AI tool",
-    "description": "Homepage screenshot note"
+    "message": "一個帳號，使用全部 AI 工具",
+    "description": "首頁截圖浮層說明"
   },
   "note.customDomain": {
-    "message": "Custom domain and branding",
-    "description": "Homepage custom domain note"
+    "message": "自定義域名與品牌",
+    "description": "首頁自定義域名浮層說明"
   },
   "eyebrow.business": {
-    "message": "Your AI business infrastructure",
-    "description": "Homepage business section eyebrow"
+    "message": "你的 AI 業務基礎設施",
+    "description": "首頁業務平台章節眉題"
   },
   "title.business": {
-    "message": "More than AI tools: build an AI business of your own",
-    "description": "Homepage business section title"
+    "message": "不止提供 AI 工具，也幫你建立自己的 AI 業務",
+    "description": "首頁業務平台章節標題"
   },
   "subtitle.business": {
-    "message": "Create a subsite, customize the brand, connect a domain, select capabilities, configure pricing, and run referrals from one console without building or deploying another product.",
-    "description": "Homepage business section subtitle"
+    "message": "建分站、換品牌、綁定域名、選擇能力、配置價格和分銷規則都在同一套後台完成，不需要單獨開發和部署。",
+    "description": "首頁業務平台章節副標題"
   },
   "eyebrow.subsites": {
-    "message": "Live in five minutes",
-    "description": "Homepage subsite eyebrow"
+    "message": "5 分鐘上線",
+    "description": "首頁分站功能眉題"
   },
   "title.subsites": {
-    "message": "Launch a branded subsite with its own domain",
-    "description": "Homepage subsite title"
+    "message": "快速建立品牌分站，自帶獨立域名",
+    "description": "首頁分站功能標題"
   },
   "subtitle.subsites": {
-    "message": "Every subsite gets its own logo, title, capability set, and customer entry point. Connect a custom domain so the entire journey, from visit to purchase, stays under your brand.",
-    "description": "Homepage subsite description"
+    "message": "創建分站後即可擁有獨立 Logo、標題、功能集和用戶入口。綁定自定義域名後，客戶從訪問到購買都停留在你的品牌裡。",
+    "description": "首頁分站功能說明"
   },
   "button.createSubsite": {
-    "message": "Create my subsite",
-    "description": "Homepage create subsite button"
+    "message": "創建我的分站",
+    "description": "首頁創建分站按鈕"
   },
   "eyebrow.capabilities": {
-    "message": "Fully configurable",
-    "description": "Homepage capabilities eyebrow"
+    "message": "完全可配置",
+    "description": "首頁能力配置眉題"
   },
   "title.capabilities": {
-    "message": "Choose the brand, models, prices, and sign-in methods",
-    "description": "Homepage capabilities title"
+    "message": "品牌、模型、價格、登入方式都由你決定",
+    "description": "首頁能力配置標題"
   },
   "subtitle.capabilities": {
     "message": "Enable any of 31 AI capabilities and configure service names, descriptions, pricing, homepage visibility, SEO, contacts, and authentication. New capabilities join the same management experience.",
     "description": "Homepage capabilities description"
   },
   "button.configure": {
-    "message": "View capability settings",
-    "description": "Homepage capabilities button"
+    "message": "查看能力配置",
+    "description": "首頁能力配置按鈕"
+  },
+  "eyebrow.operations": {
+    "message": "完整運營後台",
+    "description": "首頁運營配置眉題"
+  },
+  "title.operations": {
+    "message": "從獲客到登入，每個品牌觸點都能配置",
+    "description": "首頁運營配置標題"
+  },
+  "subtitle.operations": {
+    "message": "獨立管理搜索展示、多語言內容、聯繫方式與用戶登錄方式，讓分站不僅能上線，也能長期運營和增長。",
+    "description": "首頁運營配置說明"
+  },
+  "button.operations": {
+    "message": "查看運營配置",
+    "description": "首頁運營配置按鈕"
   },
   "eyebrow.distribution": {
-    "message": "Growth and monetization",
-    "description": "Homepage referral eyebrow"
+    "message": "增長與變現",
+    "description": "首頁分銷功能眉題"
   },
   "title.distribution": {
-    "message": "Tiered commissions, referral links, and withdrawals",
-    "description": "Homepage referral title"
+    "message": "分級返佣、邀請連結與收益提現",
+    "description": "首頁分銷功能標題"
   },
   "subtitle.distribution": {
     "message": "Every user receives a referral link and QR code. The platform tracks orders, calculates tiered commissions, and aggregates withdrawable earnings so customer growth becomes a sustainable network.",
     "description": "Homepage referral description"
   },
   "button.viewDistribution": {
-    "message": "Open referral center",
-    "description": "Homepage referral center button"
+    "message": "查看分銷中心",
+    "description": "首頁分銷中心按鈕"
   },
   "eyebrow.creation": {
-    "message": "Real product screens",
-    "description": "Homepage creation section eyebrow"
+    "message": "真實產品界面",
+    "description": "首頁創作能力章節眉題"
   },
   "title.creation": {
-    "message": "Turn one idea into a complete multimodal creation",
-    "description": "Homepage creation section title"
+    "message": "從一個想法，到完整的多模態作品",
+    "description": "首頁創作能力章節標題"
   },
   "subtitle.creation": {
-    "message": "One account, one balance, and one cross-device experience for images, video, music, digital humans, and workflows.",
-    "description": "Homepage creation section subtitle"
+    "message": "同一帳號、同一餘額、同一套跨端體驗，覆蓋圖像、視頻、音樂、數字人和工作流。",
+    "description": "首頁創作能力章節副標題"
   },
   "eyebrow.chat": {
-    "message": "Chat and search",
-    "description": "Homepage chat eyebrow"
+    "message": "對話與搜索",
+    "description": "首頁聊天能力眉題"
   },
   "eyebrow.image": {
-    "message": "Image creation",
-    "description": "Homepage image eyebrow"
+    "message": "圖像創作",
+    "description": "首頁圖像能力眉題"
   },
   "title.image": {
-    "message": "AI image generation and professional editing",
-    "description": "Homepage image title"
+    "message": "AI 繪圖與專業圖像編輯",
+    "description": "首頁圖像能力標題"
   },
   "subtitle.image": {
-    "message": "Create from text, edit reference images, blend multiple inputs, inpaint regions, design artistic QR codes, and produce headshots with leading models and useful aspect ratios.",
-    "description": "Homepage image description"
+    "message": "覆蓋文生圖、參考圖編輯、多圖融合、局部重繪、藝術二維碼和證件照，支持主流模型與常用畫幅。",
+    "description": "首頁圖像能力說明"
   },
   "eyebrow.video": {
-    "message": "Video generation",
-    "description": "Homepage video eyebrow"
+    "message": "視頻生成",
+    "description": "首頁視頻能力眉題"
   },
   "title.video": {
-    "message": "AI video from text, images, and video inputs",
-    "description": "Homepage video title"
+    "message": "文本、圖片與視頻驅動的 AI 視頻",
+    "description": "首頁視頻能力標題"
   },
   "subtitle.video": {
-    "message": "Use Kling, Veo, Sora, Seedance, Hailuo, and Luma for generation, extension, camera control, lip sync, and multi-asset creation.",
-    "description": "Homepage video description"
+    "message": "使用 Kling、Veo、Sora、Seedance、Hailuo、Luma 等模型完成生成、延長、運鏡、口型和多素材創作。",
+    "description": "首頁視頻能力說明"
   },
   "eyebrow.music": {
-    "message": "Music and voice",
-    "description": "Homepage music eyebrow"
+    "message": "音樂與聲音",
+    "description": "首頁音樂能力眉題"
   },
   "title.music": {
-    "message": "Songs, soundtracks, lyrics, and speech",
-    "description": "Homepage music title"
+    "message": "歌曲、配樂、歌詞與聲音生成",
+    "description": "首頁音樂能力標題"
   },
   "subtitle.music": {
-    "message": "Start from a prompt or custom lyrics, create a complete song, extend or cover it, separate vocals, or synthesize natural speech with Fish Audio.",
-    "description": "Homepage music description"
+    "message": "從一句描述或自定義歌詞開始，生成完整歌曲，繼續延長、翻唱、分離人聲，或通過 Fish 合成自然語音。",
+    "description": "首頁音樂能力說明"
   },
   "eyebrow.workflow": {
-    "message": "Digital humans and workflows",
-    "description": "Homepage workflow eyebrow"
+    "message": "數字人与工作流",
+    "description": "首頁工作流能力眉題"
   },
   "title.workflow": {
-    "message": "Turn a script into a presenter video and full production",
-    "description": "Homepage workflow title"
+    "message": "把腳本變成數位人口播與完整視頻",
+    "description": "首頁工作流能力標題"
   },
   "subtitle.workflow": {
-    "message": "Maestro and digital-human capabilities connect scripts, media, voices, shots, and rendering into repeatable content production workflows.",
-    "description": "Homepage workflow description"
-  },
-  "eyebrow.coding": {
-    "message": "Coding collaboration",
-    "description": "Homepage coding eyebrow"
-  },
-  "title.coding": {
-    "message": "An AI coding assistant connected to your devices",
-    "description": "Homepage coding title"
-  },
-  "subtitle.coding": {
-    "message": "Coding Bridge securely connects development devices so AI can read projects, run approved tasks, and continuously report progress under explicit permission.",
-    "description": "Homepage coding description"
-  },
-  "eyebrow.directory": {
-    "message": "Capability directory",
-    "description": "Homepage capability directory eyebrow"
-  },
-  "title.directory": {
-    "message": "A complete AI capability catalog, always adding the latest models",
-    "description": "Homepage capability directory title"
-  },
-  "subtitle.directory": {
-    "message": "These are all capabilities enabled on this site. The main platform keeps adding models, while subsite operators decide exactly which services their customers see.",
-    "description": "Homepage capability directory description"
-  },
-  "eyebrow.cta": {
-    "message": "Start now",
-    "description": "Homepage final call-to-action eyebrow"
-  },
-  "stat.commission": {
-    "message": "Maximum referral commission",
-    "description": "Homepage maximum referral commission label"
-  },
-  "eyebrow.operations": {
-    "message": "Complete operations console",
-    "description": "Homepage operations eyebrow"
-  },
-  "title.operations": {
-    "message": "Configure every brand touchpoint from discovery to sign-in",
-    "description": "Homepage operations title"
-  },
-  "subtitle.operations": {
-    "message": "Manage search presence, localized content, support contacts, and sign-in methods independently so every subsite can operate and grow over time.",
-    "description": "Homepage operations description"
-  },
-  "button.operations": {
-    "message": "View operations settings",
-    "description": "Homepage operations button"
+    "message": "Maestro 與數字人能力把腳本、素材、語音、鏡頭和渲染連接成可重複的內容生產流程。",
+    "description": "首頁工作流能力說明"
   },
   "eyebrow.digitalHuman": {
-    "message": "Digital presenters",
-    "description": "Homepage digital human eyebrow"
+    "message": "數字人口播",
+    "description": "首頁數字人能力眉題"
   },
   "title.digitalHuman": {
-    "message": "Create presenter videos from a portrait, voice, and script",
-    "description": "Homepage digital human title"
+    "message": "照片、聲音與腳本生成數位人視頻",
+    "description": "首頁數位人能力標題"
   },
   "subtitle.digitalHuman": {
-    "message": "Generate natural lip sync and complete presenter videos from real portraits and voices for courses, marketing, product demos, and repeatable content production.",
-    "description": "Homepage digital human description"
+    "message": "使用真實人像和聲音生成自然口型與完整口播視頻，適合課程、行銷、產品介紹和批量內容生產。",
+    "description": "首頁數字人能力說明"
+  },
+  "eyebrow.coding": {
+    "message": "編程協作",
+    "description": "首頁編程能力眉題"
+  },
+  "title.coding": {
+    "message": "連接本地設備的 AI 程式設計助手",
+    "description": "首頁程式設計能力標題"
+  },
+  "subtitle.coding": {
+    "message": "通過 Coding Bridge 安全連接你的開發設備，讓 AI 在明確授權下讀取項目、執行任務並持續反饋進度。",
+    "description": "首頁編程能力說明"
+  },
+  "eyebrow.directory": {
+    "message": "能力目錄",
+    "description": "首頁能力目錄眉題"
+  },
+  "title.directory": {
+    "message": "完整 AI 能力目錄，持續接入最新模型",
+    "description": "首頁能力目錄標題"
+  },
+  "subtitle.directory": {
+    "message": "下面是當前站點已開啟的完整能力。主站會持續接入新模型，分站管理員可以自由決定向客戶展示哪些服務。",
+    "description": "首頁能力目錄說明"
+  },
+  "eyebrow.cta": {
+    "message": "立即開始",
+    "description": "首頁底部行動號召眉題"
   },
   "benefit.subsites.noServer": {
-    "message": "No servers or system setup required: launch an AI subsite in five minutes",
-    "description": "Homepage no-server subsite benefit"
+    "message": "無需購買伺服器或搭建系統，5 分鐘創建並上線 AI 子站",
+    "description": "首頁子站無需伺服器賣點"
   },
   "benefit.subsites.customDomain": {
-    "message": "Use the included subdomain or connect your own branded domain with HTTPS",
-    "description": "Homepage custom-domain benefit"
+    "message": "自帶獨立子域名，也可綁定自己的品牌域名與 HTTPS",
+    "description": "首頁子站自定義域名賣點"
   },
   "benefit.subsites.branding": {
-    "message": "Customize the logo, name, primary color, contacts, and brand entry points",
-    "description": "Homepage branding benefit"
+    "message": "Logo、名稱、主色、聯繫方式和品牌入口均可獨立設置",
+    "description": "首頁子站品牌定制賣點"
   },
   "benefit.capabilities.catalog": {
-    "message": "A growing catalog spanning chat, images, video, music, digital humans, workflows, and coding",
-    "description": "Homepage full capability catalog benefit"
+    "message": "聊天、圖像、視頻、音樂、數字人、工作流和編程能力持續更新",
+    "description": "首頁完整能力目錄賣點"
   },
   "benefit.capabilities.display": {
-    "message": "Show, hide, rename, rewrite, and reorder every capability independently",
-    "description": "Homepage capability display benefit"
+    "message": "每項能力可獨立顯隱、改名、修改介紹和調整展示順序",
+    "description": "首頁能力展示配置賣點"
   },
   "benefit.capabilities.pricing": {
-    "message": "Set a site-wide markup or service-specific pricing: your pricing strategy stays yours",
-    "description": "Homepage capability pricing benefit"
+    "message": "支持全站統一加價與單服務獨立定價，價格策略由你決定",
+    "description": "首頁能力定價賣點"
   },
   "benefit.operations.seo": {
-    "message": "Customize SEO titles, keywords, and descriptions to build your own search presence",
-    "description": "Homepage SEO benefit"
+    "message": "自定義 SEO 標題、關鍵詞和描述，建立自己的搜索品牌",
+    "description": "首頁 SEO 賣點"
   },
   "benefit.operations.auth": {
-    "message": "Offer email, phone, GitHub, Google, WeChat, Apple, and passkey sign-in",
-    "description": "Homepage authentication benefit"
+    "message": "自由啟用郵箱、手機、GitHub、Google、微信、Apple 與通行密鑰登錄",
+    "description": "首頁登錄方式賣點"
   },
   "benefit.operations.localization": {
-    "message": "Localize service names, descriptions, and operations content with automatic translation",
-    "description": "Homepage localization benefit"
+    "message": "服務名稱、介紹和運營內容支持多語言與自動翻譯",
+    "description": "首頁多語言運營賣點"
   },
   "benefit.distribution.noBarrier": {
-    "message": "No application threshold: every registered user automatically gets a referral link and QR code",
-    "description": "Homepage no-barrier referral benefit"
+    "message": "無申請門檻，註冊用戶自動獲得專屬邀請鏈接和二維碼",
+    "description": "首頁無門檻分銷賣點"
   },
   "benefit.distribution.levels": {
-    "message": "Thirteen growth tiers increase commission with performance, up to 24%",
-    "description": "Homepage referral tier benefit"
+    "message": "13 級成長體系，佣金隨業績提升，最高可達 24%",
+    "description": "首頁分銷等級賣點"
   },
   "benefit.distribution.withdrawal": {
-    "message": "Orders, invitees, and rewards are tracked automatically, with earnings ready for withdrawal",
-    "description": "Homepage referral withdrawal benefit"
-  },
-  "button.learnBusiness": {
-    "message": "View the complete solution",
-    "description": "Homepage public documentation link for business capabilities"
+    "message": "訂單、邀請人數和獎勵自動統計，收益可統一申請提現",
+    "description": "首頁分銷提現賣點"
   }
 }

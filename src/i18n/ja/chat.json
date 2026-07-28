@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "現在の最先端モデル",
+    "description": "Claude Opus 5モデルの説明"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -227,13 +227,29 @@
     "message": "軽量で高速なモデル",
     "description": "Claude Haiku 4.5 モデルの説明"
   },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "推論、視覚、100万Tokenのコンテキストをサポートするフラッグシップモデル",
+    "description": "Kimi K3モデルの説明"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "K2ワークフローに適した推論と視覚モデル",
+    "description": "Kimi K2.6モデルの説明"
+  },
   "model.kimiK25": {
     "message": "kimi-k2.5",
     "description": "サービスのモデル名、つまり Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "General-purpose K2 model for compatible workflows",
-    "description": "Kimi K2.5 モデルの説明"
+    "message": "互換性のあるワークフローに適した汎用K2モデル",
+    "description": "Kimi K2.5モデルの説明"
   },
   "model.kimiK2Thinking": {
     "message": "kimi-k2 推論",
@@ -583,6 +599,78 @@
     "message": "コネクタ認可をスキップしました",
     "description": "ユーザーが認可をスキップした後のカード下部の説明"
   },
+  "browserTool.title": {
+    "message": "ブラウザ操作",
+    "description": "BrowserDeviceツール操作のフォールバックタイトル"
+  },
+  "browserTool.state.starting_session": {
+    "message": "ブラウザセッションを起動中",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "ブラウザタブに接続中",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "ブラウザが準備完了です",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "ブラウザデバイスがオフラインです"
+  },
+  "browserTool.state.device_busy": {
+    "message": "ブラウザデバイスが忙しい",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Studioで承認を確認する必要があります",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "ブラウザで実行中"
+  },
+  "browserTool.state.completed": {
+    "message": "完了"
+  },
+  "browserTool.state.stopped": {
+    "message": "ブラウザセッションが停止しました",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "ブラウザリクエストの期限切れ"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "開発者ツールを閉じてから続行してください",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "実行結果が不明です。確認後再試行してください",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "ブラウザ操作に失敗しました",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "停止",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "デバイスを管理する",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "他のセッションを停止する",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "開発者ツールを閉じる",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "承認を確認する",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
     "message": "スケジュールタスク"
   },
@@ -606,6 +694,10 @@
   },
   "scheduledTasks.edit": {
     "message": "タスクを編集"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "タスクをコピー",
+    "description": "既存のタスクに基づいて新しいフォームをプリフィルするタスクコピーのボタン"
   },
   "scheduledTasks.empty": {
     "message": "スケジュールタスクがありません。「新規」をクリックして作成してください。"
@@ -698,6 +790,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "残高不足"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "請求認証に失敗しました"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "認証エラー"
   },
@@ -709,6 +804,14 @@
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "操作が必要"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "ブラウザデバイスがオフラインです",
+    "description": "ブラウザがインターネットに接続されていない状態を示します。"
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "ブラウザの承認が変更されました。このタスクを編集してください",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "毎日"
@@ -786,8 +889,8 @@
     "description": "人間が読める表示：毎週〇曜日〇時"
   },
   "scheduledTasks.humanize.cronRaw": {
-    "message": "Cron: {cron}",
-    "description": "人間が読める表示：Cronそのまま"
+    "message": "Cron：{cron}",
+    "description": "人間が読みやすい：原始的なCron"
   },
   "scheduledTasks.humanize.once": {
     "message": "{time}に1回",
@@ -835,6 +938,25 @@
     "message": "選択した Skills は定期タスクのバックグラウンド実行時に人工確認をスキップできます；未選択の Skills はプレビューまたは確認待ちのままとなります。",
     "description": "権限付与の skill 説明"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "ブラウザ接続",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "以下の外部副作用が発生する可能性があります：{effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "無人承認の有効期限：{time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "保存前にオンラインで互換性のあるブラウザ接続を選択してください",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "未接続",
     "description": "skill が接続されていません"
@@ -917,6 +1039,18 @@
   "artifacts.hide": {
     "message": "非表示",
     "description": "出力を非表示にするボタン"
+  },
+  "artifacts.unhide": {
+    "message": "再表示",
+    "description": "非表示にした出力を元に戻す"
+  },
+  "artifacts.showHidden": {
+    "message": "非表示を表示",
+    "description": "フィルターバーで非表示の出力を含めるトグル"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "非表示",
+    "description": "現在非表示になっている出力に表示されるバッジ"
   },
   "artifacts.delete": {
     "message": "削除",
@@ -1046,6 +1180,17 @@
     "message": "あなたは共有された会話を見ています。上をクリックすると自分でAIと会話できます。",
     "description": "共有公開ページの会話の下にある説明"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "目標が達成されていません",
+    "description": "設定した目標が達成されなかったことを示します。"
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "結果は未確認です",
+    "description": "結果がまだ確認されていない状態を示します。"
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "実行状態が不明です"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "サービスのモデル名、すなわち Claude Opus 4.7"
@@ -1053,127 +1198,5 @@
   "model.claudeOpus47Description": {
     "message": "現在最も先進的なモデル",
     "description": "Claude Opus 4.7モデルの説明"
-  },
-  "artifacts.unhide": {
-    "message": "再表示",
-    "description": "非表示にした出力を元に戻す"
-  },
-  "artifacts.showHidden": {
-    "message": "非表示を表示",
-    "description": "フィルターバーで非表示の出力を含めるトグル"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "非表示",
-    "description": "現在非表示になっている出力に表示されるバッジ"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "請求認証に失敗しました"
-  },
-  "browserTool.title": {
-    "message": "ブラウザ操作",
-    "description": "BrowserDeviceツール操作のフォールバックタイトル"
-  },
-  "browserTool.state.device_offline": {
-    "message": "ブラウザデバイスがオフラインです"
-  },
-  "browserTool.state.executing": {
-    "message": "ブラウザで実行中"
-  },
-  "browserTool.state.completed": {
-    "message": "完了"
-  },
-  "browserTool.state.expired": {
-    "message": "ブラウザリクエストの期限切れ"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "実行状態が不明です"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

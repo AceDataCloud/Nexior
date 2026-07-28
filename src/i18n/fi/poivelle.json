@@ -4,687 +4,687 @@
     "description": "Poivelle product name in navigation"
   },
   "status.synced": {
-    "message": "Graph synced",
-    "description": "Graph sync status"
+    "message": "Projektikartta on synkronoitu",
+    "description": "Projektikartan synkronointitila"
   },
   "status.loading": {
-    "message": "Loading production state",
-    "description": "Workspace loading status"
+    "message": "Valmistustilaa ladataan",
+    "description": "Työpöydän lataustila"
   },
   "action.commit": {
-    "message": "Commit revision",
-    "description": "Commit graph revision tooltip"
+    "message": "Lähetä muutos",
+    "description": "Lähetä projektin kuvan muutos"
   },
   "action.runSkill": {
-    "message": "Run skill",
-    "description": "Run selected node with project skill"
+    "message": "Suorita taito",
+    "description": "Suorita valitun solmun projektin taidolla"
   },
   "action.retry": {
-    "message": "Retry",
-    "description": "Retry failed load"
-  },
-  "section.projects": {
-    "message": "Projects",
-    "description": "Projects rail heading"
-  },
-  "section.assets": {
-    "message": "Asset library",
-    "description": "Assets rail heading"
-  },
-  "section.revisions": {
-    "message": "Revisions",
-    "description": "Revisions rail heading"
-  },
-  "section.inspector": {
-    "message": "Inspector",
-    "description": "Node inspector heading"
-  },
-  "workspace.create": {
-    "message": "Create workspace",
-    "description": "Create workspace command"
-  },
-  "workspace.name": {
-    "message": "Workspace name",
-    "description": "Workspace name field"
-  },
-  "workspace.budget": {
-    "message": "Monthly limit (microcredits)",
-    "description": "Workspace monthly budget field"
-  },
-  "project.create": {
-    "message": "New project",
-    "description": "Create project command"
-  },
-  "project.empty": {
-    "message": "No projects in this workspace.",
-    "description": "Empty projects message"
-  },
-  "project.noProject": {
-    "message": "Choose a project",
-    "description": "Missing current project label"
-  },
-  "project.workspace": {
-    "message": "Workspace",
-    "description": "Project workspace field"
-  },
-  "project.title": {
-    "message": "Project title",
-    "description": "Project title field"
-  },
-  "project.skill": {
-    "message": "Production skill",
-    "description": "Project skill field"
-  },
-  "asset.import": {
-    "message": "Import asset",
-    "description": "Import asset command"
-  },
-  "asset.all": {
-    "message": "All",
-    "description": "All assets filter"
-  },
-  "asset.empty": {
-    "message": "No matching production assets.",
-    "description": "Empty asset message"
-  },
-  "asset.title": {
-    "message": "Asset title",
-    "description": "Asset title field"
-  },
-  "asset.url": {
-    "message": "Source URL",
-    "description": "Asset source URL field"
-  },
-  "asset.hash": {
-    "message": "Content hash",
-    "description": "Asset hash field"
-  },
-  "revision.empty": {
-    "message": "No committed revisions.",
-    "description": "Empty revisions message"
-  },
-  "revision.committed": {
-    "message": "Revision committed",
-    "description": "Revision success toast"
-  },
-  "node.create": {
-    "message": "Add node",
-    "description": "Create graph node command"
-  },
-  "node.delete": {
-    "message": "Delete node",
-    "description": "Delete graph node command"
-  },
-  "node.deleteConfirm": {
-    "message": "Delete this graph node? Connected nodes must be disconnected first.",
-    "description": "Delete node confirmation"
-  },
-  "field.title": {
-    "message": "Title",
-    "description": "Node title field"
-  },
-  "field.type": {
-    "message": "Type",
-    "description": "Node or asset type field"
-  },
-  "field.prompt": {
-    "message": "Production prompt",
-    "description": "Node prompt field"
-  },
-  "projection.label": {
-    "message": "Project graph projections",
-    "description": "Projection tabs accessible label"
-  },
-  "projection.canvas": {
-    "message": "Canvas",
-    "description": "Canvas projection tab"
-  },
-  "projection.storyboard": {
-    "message": "Storyboard",
-    "description": "Storyboard projection tab"
-  },
-  "projection.timeline": {
-    "message": "Timeline",
-    "description": "Timeline projection tab"
-  },
-  "projection.review": {
-    "message": "Review",
-    "description": "Review projection tab"
-  },
-  "graph.emptyTitle": {
-    "message": "Build the production graph",
-    "description": "Empty graph heading"
-  },
-  "graph.emptyBody": {
-    "message": "Add scripts, characters, scenes, shots, media, and outputs. Human editors and skills write through the same graph command history.",
-    "description": "Empty graph explanation"
-  },
-  "storyboard.noPrompt": {
-    "message": "No shot prompt yet.",
-    "description": "Missing storyboard prompt"
-  },
-  "storyboard.emptyTitle": {
-    "message": "No storyboard frames",
-    "description": "Empty storyboard heading"
-  },
-  "storyboard.emptyBody": {
-    "message": "Create scene, shot, image, or video nodes to project them here.",
-    "description": "Empty storyboard explanation"
-  },
-  "timeline.emptyTitle": {
-    "message": "No timeline assembly",
-    "description": "Empty timeline heading"
-  },
-  "timeline.emptyBody": {
-    "message": "Commit takes and selections before assembling clips into tracks.",
-    "description": "Empty timeline explanation"
-  },
-  "inspector.noSelection": {
-    "message": "Nothing selected",
-    "description": "Inspector title without selection"
-  },
-  "inspector.empty": {
-    "message": "Select a node in Canvas or Storyboard to edit typed production properties.",
-    "description": "Empty inspector explanation"
-  },
-  "agent.title": {
-    "message": "Skill agent",
-    "description": "Agent dock title"
-  },
-  "agent.noProposals": {
-    "message": "No pending proposals. Select a node to ask the skill for the next production action.",
-    "description": "Empty agent proposals message"
-  },
-  "agent.propose": {
-    "message": "Propose next",
-    "description": "Request agent proposal command"
-  },
-  "agent.proposal": {
-    "message": "Proposal",
-    "description": "Proposal toast label"
-  },
-  "review.heading": {
-    "message": "Production review",
-    "description": "Review summary heading"
-  },
-  "review.noRevision": {
-    "message": "Uncommitted graph",
-    "description": "Review heading without revision"
-  },
-  "review.nodes": {
-    "message": "nodes",
-    "description": "Review node count label"
-  },
-  "review.proposals": {
-    "message": "proposals",
-    "description": "Review proposal count label"
-  },
-  "review.runs": {
-    "message": "runs",
-    "description": "Review run count label"
-  },
-  "review.pendingProposals": {
-    "message": "Agent proposals",
-    "description": "Review proposal section"
-  },
-  "review.noProposals": {
-    "message": "No proposals awaiting review.",
-    "description": "No review proposals message"
-  },
-  "review.execution": {
-    "message": "Execution ledger",
-    "description": "Review execution section"
-  },
-  "review.noRuns": {
-    "message": "No execution runs for this project.",
-    "description": "No runs message"
-  },
-  "onboarding.title": {
-    "message": "A professional workspace for AI film production",
-    "description": "Poivelle onboarding heading"
-  },
-  "onboarding.body": {
-    "message": "Direct humans, skills, agents, and production tools through one canonical project graph. Canvas, Storyboard, Timeline, and Review are synchronized projections, not separate documents.",
-    "description": "Poivelle onboarding explanation"
-  },
-  "run.confirmTitle": {
-    "message": "Confirm production run",
-    "description": "Run confirmation dialog title"
-  },
-  "run.targets": {
-    "message": "Dependency closure",
-    "description": "Dry run target count"
-  },
-  "run.maximum": {
-    "message": "Maximum cost",
-    "description": "Dry run maximum cost"
-  },
-  "run.approval": {
-    "message": "Approval class",
-    "description": "Dry run approval class"
-  },
-  "run.confirmBody": {
-    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
-    "description": "Run confirmation explanation"
-  },
-  "run.confirm": {
-    "message": "Confirm run",
-    "description": "Confirm run command"
-  },
-  "run.queued": {
-    "message": "Production run queued",
-    "description": "Run queue success toast"
-  },
-  "error.generic": {
-    "message": "Poivelle could not complete the request.",
-    "description": "Generic Poivelle request error"
-  },
-  "agent.plan": {
-    "message": "Plan selected",
-    "description": "Plan a skill action for the selected graph node"
-  },
-  "review.reject": {
-    "message": "Reject",
-    "description": "Reject agent proposal command"
-  },
-  "review.rejectConfirm": {
-    "message": "Reject this agent proposal?",
-    "description": "Reject proposal confirmation"
-  },
-  "review.approvalTokenRequired": {
-    "message": "Approval requires its original signed token.",
-    "description": "Proposal approval trust-boundary note"
-  },
-  "run.cancel": {
-    "message": "Cancel",
-    "description": "Cancel execution run command"
-  },
-  "run.cancelConfirm": {
-    "message": "Cancel this execution run?",
-    "description": "Cancel run confirmation"
-  },
-  "project.workflow": {
-    "message": "Project workflow",
-    "description": "Project workflow type field"
-  },
-  "project.blankWorkflow": {
-    "message": "Blank graph",
-    "description": "Blank professional project option"
-  },
-  "project.commercialTVC": {
-    "message": "Commercial TVC · 40s",
-    "description": "Commercial TVC blueprint option"
-  },
-  "project.productName": {
-    "message": "Product name",
-    "description": "Commercial product name field"
-  },
-  "project.productCategory": {
-    "message": "Product category",
-    "description": "Commercial product category field"
-  },
-  "project.brandTone": {
-    "message": "Brand tone",
-    "description": "Commercial brand tone field"
-  },
-  "project.aspectRatio": {
-    "message": "Aspect ratio",
-    "description": "Commercial output aspect ratio"
-  },
-  "storyboard.product": {
-    "message": "Product",
-    "description": "Storyboard product label"
-  },
-  "storyboard.duration": {
-    "message": "Duration",
-    "description": "Storyboard duration label"
-  },
-  "storyboard.shots": {
-    "message": "Shots",
-    "description": "Storyboard shot count"
-  },
-  "storyboard.action": {
-    "message": "Action",
-    "description": "Shot character action label"
-  },
-  "storyboard.emotion": {
-    "message": "Emotion",
-    "description": "Shot emotion label"
-  },
-  "storyboard.lighting": {
-    "message": "Lighting & atmosphere",
-    "description": "Shot lighting label"
-  },
-  "storyboard.audio": {
-    "message": "Sound design",
-    "description": "Shot sound design label"
-  },
-  "storyboard.imagePrompt": {
-    "message": "Image prompt",
-    "description": "Shot image prompt label"
-  },
-  "storyboard.motionPrompt": {
-    "message": "Motion prompt",
-    "description": "Shot motion prompt label"
-  },
-  "storyboard.frames": {
-    "message": "Frame candidates",
-    "description": "Storyboard image candidates heading"
-  },
-  "storyboard.motion": {
-    "message": "Motion candidates",
-    "description": "Storyboard video candidates heading"
-  },
-  "storyboard.openNode": {
-    "message": "Open node",
-    "description": "Open media graph node command"
-  },
-  "storyboard.selectTake": {
-    "message": "Select take",
-    "description": "Select a media take command"
-  },
-  "storyboard.selected": {
-    "message": "Selected",
-    "description": "Selected take badge"
-  },
-  "storyboard.noCandidates": {
-    "message": "No generated candidates",
-    "description": "Empty media candidates message"
-  },
-  "storyboard.selectionSaved": {
-    "message": "Take selected for downstream production",
-    "description": "Take selection success message"
-  },
-  "storyboard.failedTake": {
-    "message": "Generation failed · review the run",
-    "description": "Failed Take status"
-  },
-  "storyboard.restrictedTake": {
-    "message": "Candidate restricted by rights policy",
-    "description": "Restricted Take status"
-  },
-  "timeline.deliverable": {
-    "message": "Committed deliverable",
-    "description": "Master output eyebrow"
-  },
-  "timeline.masterTitle": {
-    "message": "Production master",
-    "description": "Master output title"
-  },
-  "timeline.download": {
-    "message": "Download master",
-    "description": "Download master command"
-  },
-  "timeline.duration": {
-    "message": "Duration",
-    "description": "Master duration label"
-  },
-  "timeline.frame": {
-    "message": "Frame",
-    "description": "Master dimensions label"
-  },
-  "timeline.videoClips": {
-    "message": "Video clips",
-    "description": "Master video clip count"
-  },
-  "timeline.audioClips": {
-    "message": "Audio clips",
-    "description": "Master audio clip count"
-  },
-  "timeline.playerLabel": {
-    "message": "Production master video",
-    "description": "Master video player accessible name"
-  },
-  "timeline.loading": {
-    "message": "Loading production master",
-    "description": "Master video loading state"
-  },
-  "timeline.loadError": {
-    "message": "The production master could not be loaded.",
-    "description": "Master video load failure"
-  },
-  "storyboard.compare": {
-    "message": "Compare",
-    "description": "Add a Take to the comparison set"
-  },
-  "storyboard.comparing": {
-    "message": "Comparing",
-    "description": "Take is in the comparison set"
-  },
-  "review.finalCost": {
-    "message": "final credits",
-    "description": "Settled project cost label"
-  },
-  "review.qualityChecks": {
-    "message": "quality checks",
-    "description": "Passed automatic evaluations label"
-  },
-  "review.forensics": {
-    "message": "forensics",
-    "description": "Latest forensic validation label"
-  },
-  "review.runDetail": {
-    "message": "Run detail",
-    "description": "Selected execution run detail heading"
-  },
-  "review.attempts": {
-    "message": "attempts",
-    "description": "Provider attempt count label"
-  },
-  "review.retryStep": {
-    "message": "Retry node",
-    "description": "Create a new run for a failed production node"
+    "message": "Yritä uudelleen",
+    "description": "Yritä ladata uudelleen"
   },
   "discovery.kicker": {
-    "message": "AI film production",
-    "description": "Creator home eyebrow"
+    "message": "AI elokuvatuotanto",
+    "description": "Luovuus etusivun otsikko"
   },
   "discovery.title": {
-    "message": "What do you want to make?",
-    "description": "Creator home prompt heading"
+    "message": "Mitä haluat luoda?",
+    "description": "Luontisyötteen otsikko"
   },
   "discovery.skills": {
-    "message": "Production workflows",
-    "description": "Workflow selector accessible name"
+    "message": "Tuotantoprosessi",
+    "description": "Työprosessin valitsimen esteettömyysnimi"
   },
   "discovery.placeholder": {
-    "message": "Describe the film, product, story, or mood you want to create...",
-    "description": "Creator prompt placeholder"
+    "message": "Kuvaile, mitä haluat luoda: elokuva, tuote, tarina tai tunnelma...",
+    "description": "Luontisyötteen paikkamerkki"
   },
   "discovery.create": {
-    "message": "Create project",
-    "description": "Submit creator prompt"
+    "message": "Luo projekti",
+    "description": "Lähetä luomisen syöte"
   },
   "discovery.commercial": {
-    "message": "Commercial TVC",
-    "description": "Commercial workflow label"
+    "message": "Kaupallinen TVC",
+    "description": "Kaupallisten mainosten työnkulku"
   },
   "discovery.musicVideo": {
-    "message": "Music video",
-    "description": "Music video workflow label"
-  },
-  "discovery.documentary": {
-    "message": "Documentary",
-    "description": "Documentary workflow label"
-  },
-  "discovery.starterProduct": {
-    "message": "A product film with precise studio lighting",
-    "description": "Commercial prompt starter"
-  },
-  "discovery.starterMusic": {
-    "message": "A moonlit performance about memory and return",
-    "description": "Music video prompt starter"
-  },
-  "discovery.starterDocumentary": {
-    "message": "A company milestone film about people and invention",
-    "description": "Documentary prompt starter"
-  },
-  "discovery.galleryKicker": {
-    "message": "Copy a proven workflow",
-    "description": "Gallery eyebrow"
-  },
-  "discovery.gallery": {
-    "message": "Works and production threads",
-    "description": "Gallery heading"
-  },
-  "discovery.search": {
-    "message": "Search works",
-    "description": "Gallery search placeholder"
-  },
-  "discovery.all": {
-    "message": "All",
-    "description": "All gallery category"
-  },
-  "discovery.community": {
-    "message": "Community",
-    "description": "Community gallery category"
-  },
-  "discovery.copy": {
-    "message": "Copy",
-    "description": "Copy work command"
-  },
-  "discovery.copyPrefix": {
-    "message": "Create a new interpretation of",
-    "description": "Default copied work prompt prefix"
-  },
-  "discovery.back": {
-    "message": "Back to discovery",
-    "description": "Return from studio to creator home"
+    "message": "Musiikkivideo",
+    "description": "Musiikkivideoiden työprosessi"
   },
   "discovery.narrative": {
-    "message": "Narrative film",
-    "description": "Narrative film category"
+    "message": "Kerrontalyhytelokuva",
+    "description": "Kerrontalyhytelokuvien luokka"
+  },
+  "discovery.documentary": {
+    "message": "Dokumentti",
+    "description": "Dokumenttityönkulku"
+  },
+  "discovery.starterProduct": {
+    "message": "Tuotevideo tarkasta studio-valaistuksesta",
+    "description": "Mainosvideon avainsanat"
+  },
+  "discovery.starterMusic": {
+    "message": "Esitys muistista ja paluusta kuutamossa",
+    "description": "Musiikkivideon avainsanat"
+  },
+  "discovery.starterDocumentary": {
+    "message": "Elokuva, joka kertoo tiimistä ja keksinnöistä",
+    "description": "Dokumenttielokuvan avainsanat"
+  },
+  "discovery.galleryKicker": {
+    "message": "Kopioi kypsä työnkulku",
+    "description": "Teosvirran otsikko"
+  },
+  "discovery.gallery": {
+    "message": "Teokset ja tuotantoketjut",
+    "description": "Teosvirran otsikko"
+  },
+  "discovery.search": {
+    "message": "Etsi teoksia",
+    "description": "Teosten hakemisen paikkamerkki"
+  },
+  "discovery.all": {
+    "message": "Kaikki",
+    "description": "Kaikkien teosten luokittelu"
+  },
+  "discovery.community": {
+    "message": "Yhteisö",
+    "description": "Yhteisön teosten luokittelu"
+  },
+  "discovery.copy": {
+    "message": "Kopioi yhdellä napsautuksella",
+    "description": "Teoksen kopiointitoiminto"
   },
   "discovery.play": {
-    "message": "Play",
-    "description": "Compact play film command"
+    "message": "Toista",
+    "description": "Tiivis toistotoiminto"
   },
   "discovery.playFilm": {
-    "message": "Play finished film",
-    "description": "Play finished film command"
+    "message": "Toista elokuva",
+    "description": "Koko elokuvan toistotoiminto"
   },
   "discovery.finishedFilm": {
-    "message": "Finished film",
-    "description": "Finished film badge and player eyebrow"
+    "message": "Valmis elokuva",
+    "description": "Valmiin elokuvan tunnistus ja soittimen otsikko"
+  },
+  "discovery.copyPrefix": {
+    "message": "Luo uusi versio tämän työnkulun perusteella",
+    "description": "Teoksen kopioinnin oletusviestin etuliite"
+  },
+  "discovery.back": {
+    "message": "Palaa löytösivulle",
+    "description": "Palaa työpöydältä luomisen etusivulle"
+  },
+  "section.projects": {
+    "message": "Projektit",
+    "description": "Projektiosion otsikko"
+  },
+  "section.assets": {
+    "message": "Omaisuusarkisto",
+    "description": "Omaisuusosion otsikko"
+  },
+  "section.revisions": {
+    "message": "Muokkaukset",
+    "description": "Muokkausosion otsikko"
+  },
+  "section.inspector": {
+    "message": "Tarkastaja",
+    "description": "Solmun tarkastajan otsikko"
+  },
+  "workspace.create": {
+    "message": "Luo työtila",
+    "description": "Työtilan luomiskäsky"
+  },
+  "workspace.name": {
+    "message": "Työtilan nimi",
+    "description": "Työtilan nimen kenttä"
+  },
+  "workspace.budget": {
+    "message": "Kuukausiraja (mikrotilastot)",
+    "description": "Työtilan kuukausibudjetin kenttä"
+  },
+  "project.create": {
+    "message": "Luo uusi projekti",
+    "description": "Projektin luontikomento"
+  },
+  "project.empty": {
+    "message": "Tässä työtilassa ei ole vielä projekteja.",
+    "description": "Tyhjät projektihälytykset"
+  },
+  "project.noProject": {
+    "message": "Valitse projekti",
+    "description": "Ei valitun projektin etiketti"
+  },
+  "project.workspace": {
+    "message": "Työtila",
+    "description": "Projektin työtilan kenttä"
+  },
+  "project.title": {
+    "message": "Projektin nimi",
+    "description": "Projektin nimen kenttä"
+  },
+  "project.skill": {
+    "message": "Tuotanto Skill",
+    "description": "Projektin Skill kenttä"
+  },
+  "project.workflow": {
+    "message": "Projektin työnkulku",
+    "description": "Projektin työnkulun tyyppikenttä"
+  },
+  "project.blankWorkflow": {
+    "message": "Tyhjät projektikaaviot",
+    "description": "Tyhjät ammatilliset projektivaihtoehdot"
+  },
+  "project.commercialTVC": {
+    "message": "Kaupallinen TVC · 40 sekuntia",
+    "description": "Kaupallisen TVC:n kaaviovaihtoehto"
+  },
+  "project.productName": {
+    "message": "Tuotteen nimi",
+    "description": "Liiketoiminnan tuotteen nimi kenttä"
+  },
+  "project.productCategory": {
+    "message": "Tuotekategoria",
+    "description": "Liiketoiminnan tuotekategoria kenttä"
+  },
+  "project.brandTone": {
+    "message": "Brändin sävy",
+    "description": "Liiketoiminnan brändin sävykenttä"
+  },
+  "project.aspectRatio": {
+    "message": "Kuvan suhde",
+    "description": "Liiketoiminnan ulostulon kuvasuhde"
+  },
+  "asset.import": {
+    "message": "Tuo omaisuus",
+    "description": "Omaisuuden tuontikomento"
+  },
+  "asset.all": {
+    "message": "Kaikki",
+    "description": "Kaikkien omaisuuksien suodatus"
+  },
+  "asset.empty": {
+    "message": "Ei vastaavia tuotanto-omaisuuksia.",
+    "description": "Tyhjät omaisuusviestit"
+  },
+  "asset.title": {
+    "message": "Omaisuuden nimi",
+    "description": "Omaisuuden nimen kenttä"
+  },
+  "asset.url": {
+    "message": "Lähde-URL",
+    "description": "Omaisuuden lähdeosoite"
+  },
+  "asset.hash": {
+    "message": "Sisällön hash",
+    "description": "Omaisuuden sisällön hash"
+  },
+  "revision.empty": {
+    "message": "Ei vielä toimitettuja muutoksia.",
+    "description": "Tyhjät muutokset -ilmoitus"
+  },
+  "revision.committed": {
+    "message": "Muutokset on toimitettu",
+    "description": "Muutosten onnistuneen toimituksen ilmoitus"
+  },
+  "node.create": {
+    "message": "Lisää solmu",
+    "description": "Luo projektikaavion solmu"
+  },
+  "node.delete": {
+    "message": "Poista solmu",
+    "description": "Poista projektikaavion solmu"
+  },
+  "node.deleteConfirm": {
+    "message": "Haluatko varmasti poistaa tämän projektin solmun? Liitetyt solmut on ensin irrotettava.",
+    "description": "Solmun poistamisen vahvistus"
+  },
+  "field.title": {
+    "message": "Otsikko",
+    "description": "Solmun otsikkokenttä"
+  },
+  "field.type": {
+    "message": "Tyyppi",
+    "description": "Solmun tai omaisuuden tyyppikenttä"
+  },
+  "field.prompt": {
+    "message": "Tuotannon avainsanat",
+    "description": "Solmun tuotannon avainsanat"
+  },
+  "projection.label": {
+    "message": "Projektikaavion projisoitu näkymä",
+    "description": "Projisoinnin etiketti esteettömänä nimenä"
   },
   "projection.overview": {
-    "message": "Overview",
-    "description": "Guided project overview tab"
+    "message": "Projektin yleiskatsaus",
+    "description": "Opastava projektin yleiskatsaus etiketti"
   },
-  "guide.kicker": {
-    "message": "Your production is ready",
-    "description": "Guided project eyebrow"
-  },
-  "guide.title": {
-    "message": "Turn {title} into a finished film",
-    "description": "Guided project heading"
-  },
-  "guide.body": {
-    "message": "The brief and shot plan are already prepared. Generate the first storyboard frame, review the result, then continue through motion and the final cut.",
-    "description": "Guided project explanation"
-  },
-  "guide.duration": {
-    "message": "Duration",
-    "description": "Guided project duration fact"
-  },
-  "guide.shots": {
-    "message": "Shot plan",
-    "description": "Guided project shot-count fact"
-  },
-  "guide.format": {
-    "message": "Frame",
-    "description": "Guided project aspect-ratio fact"
-  },
-  "guide.continue": {
-    "message": "Continue production",
-    "description": "Primary guided production command"
-  },
-  "guide.generateFrame": {
-    "message": "Generate storyboard {current} of {total}",
-    "description": "Generate the next storyboard frame"
-  },
-  "guide.generateMotion": {
-    "message": "Generate motion {current} of {total}",
-    "description": "Generate the next motion clip"
-  },
-  "guide.generateScore": {
-    "message": "Generate the soundtrack",
-    "description": "Generate project score"
-  },
-  "guide.reviewPlan": {
-    "message": "Review the shot plan",
-    "description": "Open project storyboard plan"
-  },
-  "guide.reviewResults": {
-    "message": "Review generated results",
-    "description": "Open generated storyboard results"
-  },
-  "guide.costNote": {
-    "message": "You will see the maximum cost before anything runs.",
-    "description": "Guided production cost safety note"
-  },
-  "guide.stepPlan": {
-    "message": "Brief and shot plan",
-    "description": "Production plan stage"
-  },
-  "guide.stepPlanBody": {
-    "message": "{shots} shots are structured and ready.",
-    "description": "Production plan stage detail"
-  },
-  "guide.stepFrames": {
-    "message": "Storyboard frames",
-    "description": "Storyboard generation stage"
-  },
-  "guide.stepFramesBody": {
-    "message": "Create and choose the visual direction for each shot.",
-    "description": "Storyboard generation stage detail"
-  },
-  "guide.stepMotion": {
-    "message": "Motion clips",
-    "description": "Motion generation stage"
-  },
-  "guide.stepMotionBody": {
-    "message": "Animate the approved storyboard frames.",
-    "description": "Motion generation stage detail"
-  },
-  "guide.stepMaster": {
-    "message": "Soundtrack and final cut",
-    "description": "Final production stage"
-  },
-  "guide.stepMasterBody": {
-    "message": "Assemble selected clips, music, and delivery checks.",
-    "description": "Final production stage detail"
-  },
-  "guide.ready": {
-    "message": "Ready",
-    "description": "Completed production stage status"
-  },
-  "guide.waiting": {
-    "message": "Waiting",
-    "description": "Pending production stage status"
+  "projection.canvas": {
+    "message": "Kangas",
+    "description": "Kankaan projisoitu näkymä"
   },
   "projection.advanced": {
-    "message": "Advanced nodes",
-    "description": "Advanced graph-node projection tab"
+    "message": "Edistyneet solmut",
+    "description": "Edistyneiden projektikaaviosolmu etiketti"
   },
-  "guide.chooseResults": {
-    "message": "Review and choose results",
-    "description": "Review and select generated candidates before continuing"
+  "projection.storyboard": {
+    "message": "Tarinataulu",
+    "description": "Tarinataulun projisoitu näkymä"
   },
-  "guide.generated": {
-    "message": "generated",
-    "description": "Generated progress suffix"
+  "projection.timeline": {
+    "message": "Aikajana",
+    "description": "Aikajanan projisoitu näkymä"
   },
-  "guide.selected": {
-    "message": "selected",
-    "description": "Selected progress suffix"
+  "projection.review": {
+    "message": "Tarkastus",
+    "description": "Tarkastuksen projisoitu näkymä"
+  },
+  "guide.kicker": {
+    "message": "Tuotantoehdotus on valmis",
+    "description": "Projektin ohjaava otsikko"
+  },
+  "guide.title": {
+    "message": "Muuta \"{title}\" täydelliseksi elokuvaksi",
+    "description": "Projektin ohjaava otsikko"
+  },
+  "guide.body": {
+    "message": "Vaateet ja otossuunnitelmat on valmiina. Luo ensin ensimmäinen tarinataulu, vahvista suunta, ja jatka sitten dynaamisten otosten ja lopullisen elokuvan tuotantoa.",
+    "description": "Projektin ohjeistus"
+  },
+  "guide.duration": {
+    "message": "Tavoitekesto",
+    "description": "Projektin kesto tiedot"
+  },
+  "guide.shots": {
+    "message": "Kuvaehdotus",
+    "description": "Projektin kuva- ja tietoinformaatiota"
+  },
+  "guide.format": {
+    "message": "Kuvan suhde",
+    "description": "Projektin kuvamittasuhteet"
+  },
+  "guide.continue": {
+    "message": "Jatka tuotantoa",
+    "description": "Projektin päätoiminto"
   },
   "guide.generateNextFrame": {
-    "message": "Generate next storyboard",
-    "description": "Header action for next storyboard frame"
+    "message": "Generoi seuraava tarinakuva",
+    "description": "Ylhäällä seuraavan tarinakuvan toiminto"
   },
   "guide.generateNextMotion": {
-    "message": "Generate next motion",
-    "description": "Header action for next motion clip"
+    "message": "Generoi seuraava dynaaminen kuva",
+    "description": "Ylhäällä seuraavan dynaamisen kuvan toiminto"
+  },
+  "guide.generateFrame": {
+    "message": "Luo tarinataulu {current}/{total}",
+    "description": "Luo seuraava tarinataulu"
+  },
+  "guide.generateMotion": {
+    "message": "Generoi dynaaminen kuva {current}/{total}",
+    "description": "Generoi seuraava dynaaminen kuva"
+  },
+  "guide.generateScore": {
+    "message": "Generoi musiikki",
+    "description": "Generoi projektin musiikki"
+  },
+  "guide.reviewPlan": {
+    "message": "Tarkastele kuvaehdotusta",
+    "description": "Avaa tarinakuvaehdotus"
+  },
+  "guide.reviewResults": {
+    "message": "Tarkastele generoituja tuloksia",
+    "description": "Avaa tarinakuvan generoitu tulos"
+  },
+  "guide.chooseResults": {
+    "message": "Tarkastele ja valitse tulokset",
+    "description": "Tarkista ja valitse luodut ehdotukset ennen jatkamista"
+  },
+  "guide.generated": {
+    "message": "On generoitu",
+    "description": "Generoinnin edistymisen jälkiliite"
+  },
+  "guide.selected": {
+    "message": "On valittu",
+    "description": "Valinnan edistymisen jälkiliite"
+  },
+  "guide.costNote": {
+    "message": "Ennen toimintaa näytetään enimmäiskustannus, eikä maksua veloiteta suoraan.",
+    "description": "Tuotantokustannusten turvallisuushälytys"
+  },
+  "guide.stepPlan": {
+    "message": "Vaateet ja kuvaehdotus",
+    "description": "Tuotantoehdotusvaihe"
+  },
+  "guide.stepPlanBody": {
+    "message": "{shots} kuvaa on jaettu, voit aloittaa tuotannon.",
+    "description": "Tuotantoehdotusvaiheen selitys"
+  },
+  "guide.stepFrames": {
+    "message": "Tarinakuvan kuvat",
+    "description": "Tarinakuvan generointivaihe"
+  },
+  "guide.stepFramesBody": {
+    "message": "Generoi kuvat yksi kerrallaan ja valitse tyytyväinen visuaalinen suunta.",
+    "description": "Tarinakuvan generointivaiheen selitys"
+  },
+  "guide.stepMotion": {
+    "message": "Dynaaminen kuva",
+    "description": "Dynaaminen generointivaihe"
+  },
+  "guide.stepMotionBody": {
+    "message": "Muuta vahvistettu tarinakuva dynaamiseksi pätkäksi.",
+    "description": "Dynaamisen generointivaiheen selitys"
+  },
+  "guide.stepMaster": {
+    "message": "Musiikki ja lopullinen leikkaus",
+    "description": "Lopullinen tuotantovaihe"
+  },
+  "guide.stepMasterBody": {
+    "message": "Yhdistä valitut pätkät, musiikki ja suorita toimitustarkistus.",
+    "description": "Lopullisen tuotantovaiheen selitys"
+  },
+  "guide.ready": {
+    "message": "On valmis",
+    "description": "Tuotantovaiheen valmistumistila"
+  },
+  "guide.waiting": {
+    "message": "Odottaa",
+    "description": "Tuotantovaiheen odotustila"
+  },
+  "graph.emptyTitle": {
+    "message": "Rakenna tuotantoprojektikaavio",
+    "description": "Tyhjän projektikaavion otsikko"
+  },
+  "graph.emptyBody": {
+    "message": "Lisää käsikirjoitus, hahmot, kohtaukset, otokset, media ja tulosteet. Ihmistoimittajat ja taidot tekevät yhteistyötä saman projektikaavion komento- historian kautta.",
+    "description": "Tyhjän projektikaavion kuvaus"
+  },
+  "storyboard.noPrompt": {
+    "message": "Ei vielä kuvakulman ohjeita.",
+    "description": "Puuttuvat tarina-laudan ohjeet"
+  },
+  "storyboard.emptyTitle": {
+    "message": "Ei vielä tarina-laudan kuvia",
+    "description": "Tyhjän tarina-laudan otsikko"
+  },
+  "storyboard.emptyBody": {
+    "message": "Luo kohtaus, kuvakulma, kuva tai videon solmu, niin se näkyy täällä.",
+    "description": "Tyhjän tarina-laudan selitys"
+  },
+  "storyboard.product": {
+    "message": "Tuote",
+    "description": "Tarina-laudan tuotelappu"
+  },
+  "storyboard.duration": {
+    "message": "Kesto",
+    "description": "Tarina-laudan kesto-tunniste"
+  },
+  "storyboard.shots": {
+    "message": "Kuvamäärä",
+    "description": "Tarina-laudan kuvien määrä"
+  },
+  "storyboard.action": {
+    "message": "Toiminto",
+    "description": "Kuvakulman hahmon toimintotunniste"
+  },
+  "storyboard.emotion": {
+    "message": "Tunne",
+    "description": "Kuvakulman tunteetunniste"
+  },
+  "storyboard.lighting": {
+    "message": "Valo ja tunnelma",
+    "description": "Kuvakulman valotunniste"
+  },
+  "storyboard.audio": {
+    "message": "Äänisuunnittelu",
+    "description": "Kuvakulman äänisuunnittelutunniste"
+  },
+  "storyboard.imagePrompt": {
+    "message": "Staattinen kehys - ohjeet",
+    "description": "Kuvakulman kuvan ohjeetunniste"
+  },
+  "storyboard.motionPrompt": {
+    "message": "Liikeohjeet",
+    "description": "Kuvakulman liikeohjeetunniste"
+  },
+  "storyboard.frames": {
+    "message": "Kuvavalinnat",
+    "description": "Tarina-laudan kuvavalintojen otsikko"
+  },
+  "storyboard.motion": {
+    "message": "Videovalinnat",
+    "description": "Tarina-laudan videovalintojen otsikko"
+  },
+  "storyboard.openNode": {
+    "message": "Avaa solmu",
+    "description": "Avaa media projektikartan solmu"
+  },
+  "storyboard.selectTake": {
+    "message": "Valitse Take",
+    "description": "Valitse media Take -toiminto"
+  },
+  "storyboard.selected": {
+    "message": "Valittu",
+    "description": "Valittu Take -lappu"
+  },
+  "storyboard.noCandidates": {
+    "message": "Ei vielä luotu ehdokkaita",
+    "description": "Tyhjät mediavalintojen ilmoitus"
+  },
+  "storyboard.failedTake": {
+    "message": "Tuotanto epäonnistui · Tarkista ajohistoria",
+    "description": "Epäonnistuneen otoksen tila"
+  },
+  "storyboard.restrictedTake": {
+    "message": "Ehdokas rajoitettu tekijänoikeuspolitiikan vuoksi",
+    "description": "Rajoitettu Take -tila"
+  },
+  "storyboard.selectionSaved": {
+    "message": "Valittu Take, jatkossa tuotanto käyttää suoraan",
+    "description": "Take-valinnan onnistumisen ilmoitus"
+  },
+  "storyboard.compare": {
+    "message": "Lisää vertailuun",
+    "description": "Lisää otos vertailukokoelmaan"
+  },
+  "storyboard.comparing": {
+    "message": "Vertailussa",
+    "description": "Otos on lisätty vertailukokoelmaan"
+  },
+  "timeline.emptyTitle": {
+    "message": "Ei vielä aikajanan yhdistelmää",
+    "description": "Tyhjän aikajanan otsikko"
+  },
+  "timeline.emptyBody": {
+    "message": "Lähetä ensin Take ja valintatulokset, sitten kokoa leikkeet aikajanalle.",
+    "description": "Tyhjän aikajanan selitys"
+  },
+  "timeline.deliverable": {
+    "message": "Toimitusmateriaali lähetetty",
+    "description": "Master-lähtöotsikko"
+  },
+  "timeline.masterTitle": {
+    "message": "Master-videomateriaali",
+    "description": "Master-lähtöotsikko"
+  },
+  "timeline.download": {
+    "message": "Lataa master",
+    "description": "Lataa Master -toiminto"
+  },
+  "timeline.duration": {
+    "message": "Kesto",
+    "description": "Masterin kesto-otsikko"
+  },
+  "timeline.frame": {
+    "message": "Kuvakoko",
+    "description": "Masterin resoluutio-otsikko"
+  },
+  "timeline.videoClips": {
+    "message": "Videoleikkeet",
+    "description": "Master-videoleikkeiden määrä"
+  },
+  "timeline.audioClips": {
+    "message": "Äänileikkeet",
+    "description": "Master-äänileikkeiden määrä"
+  },
+  "timeline.playerLabel": {
+    "message": "Master-videon soittaja",
+    "description": "Master-videon soittimen esteettömyysnimi"
+  },
+  "timeline.loading": {
+    "message": "Ladataan master-videota",
+    "description": "Master-videon lataustila"
+  },
+  "timeline.loadError": {
+    "message": "Masterin lataaminen epäonnistui.",
+    "description": "Master-videon lataamisen epäonnistumisilmoitus"
+  },
+  "inspector.noSelection": {
+    "message": "Ei valittua sisältöä",
+    "description": "Tarkastimen otsikko, kun solmua ei ole valittu"
+  },
+  "inspector.empty": {
+    "message": "Valitse solmu kankaalla tai tarinakuvassa, niin voit muokata tyypitettyjä tuotanto-ominaisuuksia.",
+    "description": "Tyhjän tarkastimen selitys"
+  },
+  "agent.title": {
+    "message": "Taitoagentti",
+    "description": "Agentti-alueen otsikko"
+  },
+  "agent.noProposals": {
+    "message": "Ei käsiteltäviä ehdotuksia. Valitse solmu, jotta taito voi ehdottaa seuraavaa toimintoa.",
+    "description": "Tyhjät agentti ehdotusviestit"
+  },
+  "agent.propose": {
+    "message": "Ehdota seuraavaa",
+    "description": "Pyydä agentilta ehdotusta"
+  },
+  "agent.plan": {
+    "message": "Suunnittele valittu toiminto",
+    "description": "Suunnittele taitotoiminto valitulle projektin solmulle"
+  },
+  "agent.proposal": {
+    "message": "Ehdotus",
+    "description": "Ehdotusviestin etiketti"
+  },
+  "review.heading": {
+    "message": "Tarkastelun laatiminen",
+    "description": "Tarkastelun yhteenveto otsikko"
+  },
+  "review.noRevision": {
+    "message": "Ei toimitettuja projektikuvia",
+    "description": "Ei muutoksia -tarkastelun otsikko"
+  },
+  "review.nodes": {
+    "message": "Solmut",
+    "description": "Tarkastelun solmujen määrä"
+  },
+  "review.proposals": {
+    "message": "Ehdotukset",
+    "description": "Tarkasteltavien ehdotusten määrä"
+  },
+  "review.runs": {
+    "message": "Ajot",
+    "description": "Tarkasteltavien ajokertojen määrä"
+  },
+  "review.finalCost": {
+    "message": "Lopulliset Credits",
+    "description": "Projektin selvityskustannusten etiketti"
+  },
+  "review.qualityChecks": {
+    "message": "Laatutarkastukset",
+    "description": "Automaattisesti hyväksyttyjen määrien etiketti"
+  },
+  "review.forensics": {
+    "message": "Todistusten vahvistus",
+    "description": "Viimeisimmän todistusten vahvistuksen tilan etiketti"
+  },
+  "review.pendingProposals": {
+    "message": "Agentin ehdotukset",
+    "description": "Ehdotusten tarkastelualue"
+  },
+  "review.noProposals": {
+    "message": "Ei odottavia ehdotuksia tarkasteltavaksi.",
+    "description": "Ei ehdotuksia -ilmoitus"
+  },
+  "review.execution": {
+    "message": "Suorita kirjanpito",
+    "description": "Suorita tarkastelualue"
+  },
+  "review.noRuns": {
+    "message": "Tässä projektissa ei ole vielä suoritettuja ajokertoja.",
+    "description": "Ei ajokertoja -ilmoitus"
+  },
+  "review.reject": {
+    "message": "Hylkää",
+    "description": "Hylkää agentin ehdotus -toiminto"
+  },
+  "review.rejectConfirm": {
+    "message": "Haluatko varmasti hylätä tämän agentin ehdotuksen?",
+    "description": "Ehdotuksen hylkäämisen vahvistus"
+  },
+  "review.approvalTokenRequired": {
+    "message": "Hyväksyntä vaatii alkuperäisen tokenin, joka on myönnetty ehdotuksen luontivaiheessa.",
+    "description": "Ehdotuksen hyväksynnän luottamusrajojen selitys"
+  },
+  "review.runDetail": {
+    "message": "Ajon tiedot",
+    "description": "Valitun suorituksen tietojen otsikko"
+  },
+  "review.attempts": {
+    "message": "Kerran yritetty",
+    "description": "Toimittajan yritysnumero etiketti"
+  },
+  "review.retryStep": {
+    "message": "Suorita solmu uudelleen",
+    "description": "Luo uusi ajo epäonnistuneelle solmulle"
+  },
+  "onboarding.title": {
+    "message": "Ammattimainen AI-elokuvatuotannon työpöytä",
+    "description": "Poivelle-opastuksen otsikko"
+  },
+  "onboarding.body": {
+    "message": "Anna ihmisten, Skillin, Agentin ja tuotetyökalujen muokata samaa projektikaaviota yhdessä. Kankaat, tarinataulut, aikajanat ja tarkastukset ovat synkronoituja projekteja, eivät erillisiä asiakirjoja.",
+    "description": "Poivelle-opastus"
+  },
+  "run.confirmTitle": {
+    "message": "Vahvista suorituksen ajo",
+    "description": "Ajon vahvistusdialogin otsikko"
+  },
+  "run.targets": {
+    "message": "Riippuvuus sulkeista",
+    "description": "Kuivan ajon kohteiden määrä"
+  },
+  "run.maximum": {
+    "message": "Maksimikustannus",
+    "description": "Dry run maksimikustannus"
+  },
+  "run.approval": {
+    "message": "Hyväksyntätaso",
+    "description": "Dry run hyväksyntätaso"
+  },
+  "run.confirmBody": {
+    "message": "Kääntäjä käyttää lyhytaikaista API-todistusta tämän muuttumattoman riippuvuuslohkonsa suorittamiseen; jokainen toimittajan kutsu noudattaa olemassa olevia kustannussääntöjä ja käyttörekisteriä.",
+    "description": "Ajon vahvistusohje"
+  },
+  "run.confirm": {
+    "message": "Vahvista ajo",
+    "description": "Vahvista ajokäsky"
+  },
+  "run.queued": {
+    "message": "Valmistus on jonossa",
+    "description": "Ilmoitus onnistuneesta jonottamisesta"
+  },
+  "run.cancel": {
+    "message": "Peruuta",
+    "description": "Peruuta suorituksen ajo -toiminto"
+  },
+  "run.cancelConfirm": {
+    "message": "Haluatko varmasti peruuttaa tämän suorituksen?",
+    "description": "Suorituksen peruuttamisen vahvistus"
+  },
+  "error.generic": {
+    "message": "Poivelle ei onnistunut suorittamaan pyyntöä.",
+    "description": "Poivelle yleinen virhe"
   }
 }

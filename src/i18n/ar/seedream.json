@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "إجراء",
+    "description": "اختيار إجراء لإنشاء أو تحرير"
+  },
   "name.taskId": {
     "message": "معرف المهمة",
     "description": "معرف المهمة"
@@ -131,6 +135,10 @@
     "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
     "description": "فشل التحميل"
   },
+  "message.referenceImageRequired": {
+    "message": "يجب رفع صورة مرجعية واحدة على الأقل في وضع التحرير.",
+    "description": "رسالة التحقق التي تظهر عند عدم وجود صورة مرجعية في وضع التحرير"
+  },
   "message.featureNotSupportedTitle": {
     "message": "تأكيد مطلوب",
     "description": "عنوان مربع حوار تعارض القدرات"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "تلقائي (مطابق للصورة المرجعية)",
     "description": "تسمية خيار adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

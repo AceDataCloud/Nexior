@@ -1,4 +1,8 @@
 {
+  "message.mediaPreviewUnavailable": {
+    "message": "Aperçu indisponible",
+    "description": "Indique que l'aperçu du média ne peut pas être chargé."
+  },
   "button.setup": {
     "message": "Configurer",
     "description": "Texte dans le bouton, utilisé pour effectuer des réglages"
@@ -67,6 +71,46 @@
     "message": "Fermer",
     "description": "Texte dans le bouton, utilisé pour fermer une boîte de dialogue ou un panneau"
   },
+  "button.send": {
+    "message": "Envoyer",
+    "description": "Étiquette d'accessibilité du bouton pour envoyer du contenu."
+  },
+  "button.stop": {
+    "message": "Arrêter",
+    "description": "Étiquette d'accessibilité du bouton pour arrêter une opération."
+  },
+  "button.openMenu": {
+    "message": "Ouvrir le menu",
+    "description": "Étiquette d'accessibilité du bouton pour ouvrir le menu de navigation ou de configuration."
+  },
+  "button.more": {
+    "message": "Plus d'actions",
+    "description": "Étiquette d'accessibilité du bouton pour ouvrir le menu des actions."
+  },
+  "button.remove": {
+    "message": "Supprimer",
+    "description": "Étiquette d'accessibilité du bouton pour supprimer un élément."
+  },
+  "player.previous": {
+    "message": "Précédent",
+    "description": "Étiquette d'accessibilité pour le bouton précédent du lecteur."
+  },
+  "player.play": {
+    "message": "Lecture",
+    "description": "Étiquette d'accessibilité pour le bouton lecture du lecteur."
+  },
+  "player.pause": {
+    "message": "Pause",
+    "description": "Étiquette d'accessibilité pour le bouton de pause du lecteur"
+  },
+  "player.next": {
+    "message": "Suivant",
+    "description": "Étiquette d'accessibilité pour le bouton suivant du lecteur."
+  },
+  "player.volume": {
+    "message": "Volume",
+    "description": "Étiquette d'accessibilité pour le contrôle du volume du lecteur"
+  },
   "button.expand": {
     "message": "Développer",
     "description": "Texte d'alerte du bouton, utilisé pour ouvrir l'éditeur en plein écran de la zone de saisie des mots-clés."
@@ -97,7 +141,7 @@
   },
   "button.console": {
     "message": "Console",
-    "description": "Texte dans le bouton, utilisé pour afficher la page de la console pour contrôler un contenu sur la page web"
+    "description": "Texte dans le bouton pour afficher la page de la console, afin de contrôler un élément sur la page web"
   },
   "button.learn": {
     "message": "Apprendre",
@@ -232,8 +276,8 @@
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
   "error.loginLinkExpired": {
-    "message": "Login link expired. Please sign in again.",
-    "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
+    "message": "Le lien de connexion a expiré, veuillez vous reconnecter.",
+    "description": "Message d'erreur affiché lorsque le rappel OAuth du client de bureau est abandonné en raison d'un échec ou d'une expiration de la vérification de l'état."
   },
   "entity.operation": {
     "message": "Opération",
@@ -312,8 +356,8 @@
     "description": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared"
   },
   "message.mobileNowOnAppStore": {
-    "message": "Now on the App Store",
-    "description": "Status label shown on the iOS card when the app is live on the App Store"
+    "message": "Disponible sur l'App Store",
+    "description": "Étiquette de statut affichée sur la carte iOS lorsque l'application est en ligne sur l'App Store."
   },
   "message.desktopWindowsHint": {
     "message": "Pour Windows 10 et versions ultérieures (64 bits). Téléchargez l’installateur et double-cliquez pour l’installer.",
@@ -332,8 +376,8 @@
     "description": "Button label that opens the app's Google Play Store listing"
   },
   "button.getOnAppStore": {
-    "message": "Get it on the App Store",
-    "description": "Button label that opens the app's Apple App Store listing"
+    "message": "Télécharger sur l'App Store",
+    "description": "Étiquette du bouton qui ouvre la page de l'application sur l'Apple App Store."
   },
   "message.mobileApkFallback": {
     "message": "Pas d'accès à Google Play ? Téléchargez directement l'APK.",
@@ -344,8 +388,8 @@
     "description": "Hint under the QR code explaining that scanning it opens the Google Play listing"
   },
   "message.mobileAppStoreHint": {
-    "message": "Scan to open the App Store",
-    "description": "Hint under the QR code explaining that scanning it opens the App Store listing"
+    "message": "Scannez pour accéder à l'App Store",
+    "description": "Indication sous le code QR expliquant que le scan ouvre la liste de l'App Store."
   },
   "message.mobileInstallNote": {
     "message": "Lors de la première installation d'un package d'entreprise ou Ad Hoc sur iOS, le système peut demander de faire confiance au certificat dans 'Réglages > Général > VPN et gestion des appareils'.",
@@ -398,6 +442,18 @@
   "message.confirmDelete": {
     "message": "Êtes-vous sûr de vouloir supprimer ?",
     "description": "Message de confirmation pour la suppression d'un élément"
+  },
+  "message.deleteTaskConfirm": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet enregistrement généré ? Il sera supprimé de tous les appareils et ne pourra pas être récupéré.",
+    "description": "Message de confirmation affiché avant de supprimer un enregistrement de tâche généré."
+  },
+  "message.deleteTaskSuccess": {
+    "message": "L'enregistrement a été supprimé.",
+    "description": "Message affiché après la suppression réussie d'un enregistrement de tâche."
+  },
+  "message.deleteTaskFailed": {
+    "message": "Échec de la suppression, veuillez réessayer plus tard.",
+    "description": "Message affiché lorsque la suppression d'un enregistrement de tâche échoue."
   },
   "message.expiredAt": {
     "message": "Date d'expiration",
@@ -568,8 +624,8 @@
     "description": "网站导航栏中的文本，用于显示SeeDance页面，请不要翻译此字段，必须保持为'SeeDance'"
   },
   "nav.grokvideo": {
-    "message": "Grok Video",
-    "description": "Text in the website navigation bar to display the Grok Imagine video page"
+    "message": "Vidéo Grok",
+    "description": "Texte dans la barre de navigation du site pour afficher la page vidéo Grok Imagine."
   },
   "nav.luma": {
     "message": "Luma",
@@ -617,7 +673,7 @@
   },
   "nav.image": {
     "message": "Image",
-    "description": "网站导航栏中的文本，用于显示图片页面"
+    "description": "Texte dans la barre de navigation du site pour afficher la page d'image"
   },
   "nav.music": {
     "message": "Musique",
@@ -744,7 +800,7 @@
     "description": "Email de l'entreprise"
   },
   "about.link1": {
-    "message": "Services",
+    "message": "Documentation",
     "description": "Lien vers la page de documentation"
   },
   "about.link2": {
@@ -859,6 +915,14 @@
     "message": "L'assistant retiendra les informations utiles que vous mentionnez dans les conversations, afin de fournir des réponses plus personnalisées dans différentes discussions. Vous avez un contrôle total - vous pouvez consulter le contenu enregistré et supprimer ce que vous ne souhaitez pas qu'il retienne.",
     "description": "Texte d'introduction en haut de l'onglet des paramètres de mémoire."
   },
+  "settings.memoryEnabled": {
+    "message": "Utiliser la mémoire",
+    "description": "Titre du commutateur pour contrôler si l'assistant utilise la mémoire enregistrée dans le chat et continue d'apprendre de nouvelles mémoires."
+  },
+  "settings.memoryEnabledHint": {
+    "message": "Une fois désactivé, l'assistant ne lira pas la mémoire enregistrée et ne sauvegardera pas de nouvelles mémoires à partir des nouvelles conversations. Le contenu existant ne sera pas supprimé.",
+    "description": "Description du comportement sous le commutateur de mémoire."
+  },
   "settings.memoryNeedsChat": {
     "message": "Veuillez d'abord commencer une conversation pour activer la fonction de mémoire.",
     "description": "Affiché dans l'onglet des paramètres de mémoire lorsque l'application de chat/token n'est pas encore chargée."
@@ -866,6 +930,58 @@
   "settings.memoryStored": {
     "message": "Mémoires enregistrées",
     "description": "Titre de la section au-dessus de la liste des entrées de mémoire enregistrées."
+  },
+  "settings.memoryImport": {
+    "message": "Importer",
+    "description": "Bouton pour ouvrir la fenêtre contextuelle d'importation de mémoire."
+  },
+  "settings.memoryImportTitle": {
+    "message": "Importer la mémoire d'autres IA",
+    "description": "Titre de la fenêtre contextuelle d'importation de mémoire."
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. Faites exporter la mémoire par l'IA actuellement utilisée",
+    "description": "Titre de la première étape de la fenêtre contextuelle d'importation de mémoire."
+  },
+  "settings.memoryImportPrompt": {
+    "message": "Je souhaite migrer vers un autre service d'IA. Veuillez énumérer chaque mémoire que vous avez sauvegardée à mon sujet, ainsi que les informations persistantes apprises des conversations passées. Mettez tout le contenu dans un bloc de code, en écrivant une mémoire par ligne, au format : [date de sauvegarde, si disponible] - contenu de la mémoire. Veuillez inclure les préférences de réponse, les informations personnelles, les projets, les objectifs, les outils courants, les langues, les cadres, ainsi que les corrections que j'ai apportées. Essayez de conserver mes propres mots, sans inclure de mots de passe, clés ou autres informations sensibles.",
+    "description": "Texte d'invite pour exporter la mémoire à copier dans d'autres services d'IA."
+  },
+  "settings.memoryImportCopy": {
+    "message": "Copier le mot-clé",
+    "description": "Bouton pour copier le mot-clé d'exportation de mémoire."
+  },
+  "settings.memoryImportCopied": {
+    "message": "Le mot-clé a été copié",
+    "description": "Message affiché après la copie réussie du mot-clé d'exportation de mémoire."
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. Collez la mémoire exportée",
+    "description": "Titre de la deuxième étape de la fenêtre contextuelle d'importation de mémoire."
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "Collez le contenu de mémoire retourné par ChatGPT, Claude, Gemini ou d'autres IA…",
+    "description": "Texte d'espace réservé dans le champ d'entrée pour coller le contenu de mémoire exporté."
+  },
+  "settings.memoryImportSubmit": {
+    "message": "Ajouter à la mémoire",
+    "description": "Bouton pour soumettre le contenu collé pour l'importation."
+  },
+  "settings.memoryImportSuccess": {
+    "message": "Imported {count} memory entries",
+    "description": "Success toast after importing memory; count is the number of accepted entries"
+  },
+  "settings.memoryImportPartial": {
+    "message": "Traitement de {processed} contenus, {rejected} contenus non sécurisés ou invalides ont été ignorés.",
+    "description": "Avertissement affiché lorsque l'importation de mémoire est partiellement réussie."
+  },
+  "settings.memoryImportInvalid": {
+    "message": "Échec de l'importation de la mémoire. Veuillez vérifier que la mémoire est activée et coller au format d'une ligne par fait ordinaire.",
+    "description": "Message d'erreur actionnable affiché lorsque la demande d'importation de mémoire est invalide."
+  },
+  "settings.memoryImportInProgress": {
+    "message": "Une tâche d'importation de mémoire est déjà en cours, veuillez garder la fenêtre ouverte et réessayer plus tard.",
+    "description": "Avertissement affiché lorsque une autre tâche d'importation de mémoire est en cours."
   },
   "settings.memoryEmpty": {
     "message": "Aucune mémoire enregistrée pour le moment. Au fur et à mesure de votre utilisation, l'assistant retiendra ici vos préférences et informations durables.",
@@ -1000,12 +1116,12 @@
     "description": "Help text under the authorized-folders heading."
   },
   "settings.localToolsComputerUseTitle": {
-    "message": "Computer Use (experimental)",
-    "description": "Heading for the opt-in Computer Use (screen + mouse/keyboard control) toggle."
+    "message": "Utilisation de l'ordinateur (expérimental)",
+    "description": "Titre pour le commutateur d'utilisation de l'ordinateur (contrôle de l'écran + souris/clavier)."
   },
   "settings.localToolsComputerUseHint": {
-    "message": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
-    "description": "Help text under the Computer Use toggle."
+    "message": "Permet à l'IA de voir votre écran et de contrôler la souris et le clavier de cet ordinateur. Désactivé par défaut, activez-le si nécessaire. Sur macOS, vous devez accorder les autorisations « Enregistrement d'écran » et « Accessibilité » ci-dessous. Chaque action demandera toujours votre confirmation.",
+    "description": "Texte d'aide sous le commutateur d'utilisation de l'ordinateur."
   },
   "settings.localToolsAndroidSkillsTitle": {
     "message": "Compétences d'automatisation du téléphone",
@@ -1097,96 +1213,96 @@
     "description": "Save the authorized folders."
   },
   "settings.localToolsMcpTitle": {
-    "message": "MCP servers",
-    "description": "Section title for local MCP server configuration in Local Tools settings."
+    "message": "Serveur MCP",
+    "description": "Titre de la section de configuration du serveur MCP local dans les paramètres des outils locaux."
   },
   "settings.localToolsMcpHint": {
-    "message": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
-    "description": "Explains what local MCP servers do and that changes apply without a restart."
+    "message": "Connectez-vous au serveur MCP local via stdio. Ses outils seront disponibles pour l'IA et protégés par la même confirmation d'appel séquentielle. Les modifications prennent effet immédiatement.",
+    "description": "Explication sur le rôle du serveur MCP local et que les modifications prennent effet sans redémarrage."
   },
   "settings.localToolsMcpAdd": {
-    "message": "Add server",
-    "description": "Button to add a new local MCP server row."
+    "message": "Ajouter un serveur",
+    "description": "Bouton pour ajouter une nouvelle ligne de serveur MCP local."
   },
   "settings.localToolsMcpName": {
-    "message": "Name",
-    "description": "Label for the MCP server name/id field."
+    "message": "Nom",
+    "description": "Étiquette du champ de nom/identifiant du serveur MCP."
   },
   "settings.localToolsMcpCommand": {
-    "message": "Command",
-    "description": "Label for the MCP server launch command field."
+    "message": "Commande",
+    "description": "Étiquette du champ de commande de démarrage du serveur MCP."
   },
   "settings.localToolsMcpArgs": {
-    "message": "Arguments",
-    "description": "Label for the MCP server command arguments field."
+    "message": "Paramètres",
+    "description": "Étiquette pour le champ des paramètres de commande du serveur MCP."
   },
   "settings.localToolsMcpArgsHint": {
-    "message": "One argument per line.",
-    "description": "Placeholder/hint for the MCP arguments textarea."
+    "message": "Un argument par ligne.",
+    "description": "Indication de l'espace réservé dans la zone de texte des arguments MCP."
   },
   "settings.localToolsMcpEnv": {
-    "message": "Environment",
-    "description": "Label for the MCP server environment variables field."
+    "message": "Variables d'environnement",
+    "description": "Étiquette du champ des variables d'environnement du serveur MCP."
   },
   "settings.localToolsMcpEnvHint": {
-    "message": "One KEY=VALUE per line.",
-    "description": "Placeholder/hint for the MCP environment variables textarea."
+    "message": "Une ligne par KEY=VALUE.",
+    "description": "Indication de l'espace réservé dans la zone de texte des variables d'environnement MCP."
   },
   "settings.localToolsMcpNoServers": {
-    "message": "No MCP servers configured.",
-    "description": "Empty state shown when no MCP servers are configured."
+    "message": "Aucun serveur MCP configuré.",
+    "description": "État vide affiché lorsqu'aucun serveur MCP n'est configuré."
   },
   "settings.localToolsMcpNamePlaceholder": {
-    "message": "e.g. filesystem",
-    "description": "Placeholder for the MCP server name input."
+    "message": "Par exemple filesystem",
+    "description": "Espace réservé dans le champ de saisie du nom du serveur MCP."
   },
   "settings.localToolsMcpCommandPlaceholder": {
-    "message": "e.g. npx",
-    "description": "Placeholder for the MCP server command input."
+    "message": "Par exemple npx",
+    "description": "Espace réservé dans le champ de saisie de la commande du serveur MCP."
   },
   "settings.localToolsMcpNameRequired": {
-    "message": "Each server needs a name and a command.",
-    "description": "Validation error when a server row is missing a name or command."
+    "message": "Chaque serveur nécessite un nom et une commande.",
+    "description": "Erreur de validation lorsque la ligne du serveur manque de nom ou de commande."
   },
   "settings.localToolsMcpDuplicateName": {
-    "message": "Server names must be unique.",
-    "description": "Validation error when two servers share the same name."
+    "message": "Le nom du serveur doit être unique.",
+    "description": "Erreur de validation lorsque deux noms de serveur sont en double."
   },
   "settings.localToolsMcpNameInvalid": {
-    "message": "Name may only contain letters, numbers, hyphens and underscores.",
-    "description": "Validation error when a server name contains invalid characters."
+    "message": "Le nom ne peut contenir que des lettres, des chiffres, des tirets et des underscores.",
+    "description": "Erreur de validation lorsque le nom du serveur contient des caractères non valides."
   },
   "settings.localToolsMcpEnabled": {
-    "message": "On",
-    "description": "Toggle label to enable/disable a local MCP server."
+    "message": "Activé",
+    "description": "Étiquette du commutateur pour activer/désactiver un serveur MCP local."
   },
   "settings.localToolsMcpReconnect": {
-    "message": "Test / Reconnect",
-    "description": "Button to re-spawn one MCP server and refresh its status."
+    "message": "Tester / Reconnecter",
+    "description": "Bouton pour redémarrer un serveur MCP et actualiser son état."
   },
   "settings.localToolsMcpConnecting": {
-    "message": "Connecting…",
-    "description": "Badge while an MCP server is being (re)connected."
+    "message": "Connexion en cours…",
+    "description": "Étiquette d'état lorsque le serveur MCP est en train de se (re)connecter."
   },
   "settings.localToolsMcpNotSaved": {
-    "message": "Not saved yet",
-    "description": "Badge for an MCP server row that hasn't been saved/connected yet."
+    "message": "Non enregistré",
+    "description": "Étiquette d'état pour une ligne de serveur MCP non enregistrée/connectée."
   },
   "settings.localToolsMcpConnected": {
-    "message": "Connected · {n} tools",
-    "description": "Badge when an MCP server connected; {n} is the tool count."
+    "message": "Connecté · {n} outils",
+    "description": "Étiquette lorsque la connexion au serveur MCP est réussie ; {n} est le nombre d'outils."
   },
   "settings.localToolsMcpDisabled": {
-    "message": "Disabled",
-    "description": "Badge when an MCP server is turned off."
+    "message": "Désactivé",
+    "description": "Étiquette lorsque le serveur MCP est désactivé."
   },
   "settings.localToolsMcpFailed": {
-    "message": "Failed to connect",
-    "description": "Badge when an MCP server failed to start; the reason is shown below."
+    "message": "Échec de la connexion",
+    "description": "Étiquette lorsque le démarrage du serveur MCP échoue ; la raison s'affiche ci-dessous."
   },
   "settings.localToolsMcpPlatformHint": {
-    "message": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
-    "description": "Cross-platform hint for configuring the MCP launch command."
+    "message": "Astuce : utilisez des commandes dans le PATH, comme npx ou uvx (par exemple npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). Sur Windows, npx/node sera automatiquement résolu. Si un serveur affiche “spawn … ENOENT”, modifiez la commande pour le chemin complet.",
+    "description": "Astuce inter-plateforme pour configurer la commande de démarrage MCP."
   },
   "settings.localToolsSaved": {
     "message": "Enregistré",
@@ -1318,7 +1434,7 @@
   },
   "settings.contactType": {
     "message": "Type",
-    "description": "Placeholder for the contact type picker in the editor"
+    "description": "Placeholder pour le sélecteur de type de contact dans l'éditeur"
   },
   "settings.contactType_phone": {
     "message": "Téléphone",
@@ -1334,7 +1450,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Display name for the WeChat contact type"
+    "description": "Nom affiché pour le type de contact WeChat"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Libellé (facultatif), ex. Ventes",
@@ -1345,8 +1461,8 @@
     "description": "Placeholder for the generic contact value input"
   },
   "settings.contactQr": {
-    "message": "QR code",
-    "description": "Label for a contact's QR-code image"
+    "message": "Code QR",
+    "description": "Étiquette pour l'image du code QR d'un contact."
   },
   "settings.contactQrTip": {
     "message": "Téléversez un QR code que les utilisateurs peuvent scanner.",
@@ -1405,24 +1521,24 @@
     "description": "Texte du bouton pour revenir à la page précédente dans l'historique de navigation"
   },
   "title.apiCode": {
-    "message": "API code for this request",
-    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+    "message": "Code API correspondant à cette demande",
+    "description": "Titre de la boîte de dialogue : affiche le code d'appel API curl / Python / Node correspondant au résultat actuel."
   },
   "message.viewCodeHint": {
-    "message": "Show API code for this request",
-    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+    "message": "Voir le code API correspondant à cette demande",
+    "description": "Astuce flottante du bouton Voir le code à côté des boutons d'action de la carte de résultats (U1/U2/Télécharger/Étendre…). Cliquer sur le bouton ouvrira une boîte de dialogue affichant le code d'appel API équivalent en curl / Python / Node."
   },
   "button.viewCode": {
-    "message": "View code",
-    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+    "message": "Voir le code",
+    "description": "Texte du bouton : ouvre une boîte de dialogue affichant le code d'appel API curl / Python / Node correspondant au résultat actuel (similaire à 'Voir le code' dans OpenAI Playground)."
   },
   "button.getApiKey": {
-    "message": "Get an API key",
-    "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
+    "message": "Obtenir la clé API",
+    "description": "Texte du lien en bas du dialogue de code API : redirige vers la page de la console de la plateforme pour créer une clé API."
   },
   "button.apiPlatform": {
-    "message": "API Platform",
-    "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
+    "message": "Plateforme API",
+    "description": "Étiquette du bouton dans le pied de page du dialogue de code API. Cliquer ouvre https://platform.acedata.cloud/ dans un nouvel onglet pour que les utilisateurs puissent gérer leurs clés API, leur solde et leur utilisation."
   },
   "message.apiCodeIntro": {
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
@@ -1480,183 +1596,67 @@
     "message": "Les téléversements de référence sont toujours en cours — veuillez patienter un instant.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.dropToUpload": {
+    "message": "Déposez ici pour télécharger",
+    "description": "Texte d'invite flottant au-dessus d'un contrôle de téléchargement lorsque l'utilisateur fait glisser un fichier, indiquant qu'il peut lâcher pour télécharger."
+  },
   "appUpgrade.title": {
-    "message": "Update required",
-    "description": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports."
+    "message": "Mise à niveau requise",
+    "description": "Titre de la fenêtre pop-up de version lors du lancement de l'application native. S'affiche lorsque la version du client est inférieure à celle requise par le serveur, informant l'utilisateur qu'une mise à niveau est nécessaire."
   },
   "appUpgrade.blockMessage": {
-    "message": "This version is no longer supported. Please update from the app store to continue.",
-    "description": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store."
+    "message": "La version actuelle est trop ancienne, veuillez mettre à jour vers la dernière version dans l'App Store avant de continuer.",
+    "description": "Texte du pop-up de mise à niveau obligatoire. S'affiche lorsque la version du client est inférieure à min_supported, ne peut pas être fermée, le seul bouton redirige vers l'App Store."
   },
   "appUpgrade.softMessage": {
-    "message": "A newer version is available. Update from the app store for the best experience.",
-    "description": "Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app."
+    "message": "Une nouvelle version est disponible, il est recommandé de mettre à jour dans l'App Store pour une meilleure expérience.",
+    "description": "Texte de notification de mise à niveau optionnelle. S'affiche lorsque la version du client est inférieure à latest mais supérieure à min_supported, l'utilisateur peut choisir de dire plus tard et continuer à utiliser."
   },
   "appUpgrade.openStore": {
-    "message": "Update now",
-    "description": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser."
+    "message": "Aller à la mise à jour",
+    "description": "Bouton principal du pop-up de mise à niveau : ouvre le lien de l'App Store / Play Store dans le navigateur système."
   },
   "appUpgrade.later": {
-    "message": "Later",
-    "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
+    "message": "Plus tard",
+    "description": "Bouton secondaire du pop-up de mise à niveau douce : ignore cette notification et continuez à utiliser, apparaît uniquement dans les scénarios de mise à niveau non obligatoire."
   },
   "nav.maestro": {
     "message": "Maestro",
     "description": "Texte sur la page de conversion d'articles en vidéos Maestro dans la barre de navigation, restez comme 'Maestro'"
   },
   "nav.digitalhuman": {
-    "message": "Digital Human",
-    "description": "Text in the website navigation bar for the Digital Human talking-head page"
+    "message": "Humain numérique",
+    "description": "Texte de la page de diffusion numérique dans la barre de navigation."
   },
   "settings.localToolsAndroidPermHint": {
-    "message": "Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.",
-    "description": "Hint for the Android Computer Use accessibility permission section in Settings."
+    "message": "Après avoir activé le service d'accessibilité, l'assistant AI pourra voir et interagir avec votre écran. Vous pouvez préautoriser des actions spécifiques ci-dessous.",
+    "description": "Explication dans la section des autorisations d'accessibilité de l'utilisation de l'ordinateur dans les paramètres Android."
   },
   "settings.cuConsentTitle": {
-    "message": "Allow action?",
-    "description": "Title of the on-demand consent dialog shown when the assistant requests a screen action."
+    "message": "Autoriser l'opération ?",
+    "description": "Titre de la boîte de dialogue d'autorisation à la demande (s'affiche lorsque le modèle demande d'effectuer une opération à l'écran)."
   },
   "settings.cuConsentMessage": {
-    "message": "The assistant wants to run \"{action}\" on your phone. Allow it?",
-    "description": "Body of the on-demand consent dialog; {action} is the computer.* action name."
+    "message": "L'assistant IA souhaite effectuer l'opération « {action} » sur votre téléphone, souhaitez-vous autoriser ?",
+    "description": "Corps de la boîte de dialogue d'autorisation à la demande ; {action} est le nom de l'opération computer.* spécifique."
   },
   "settings.cuConsentAllow": {
-    "message": "Allow once",
-    "description": "Allow button of the on-demand consent dialog."
+    "message": "Autoriser une fois",
+    "description": "Bouton d'autorisation dans la boîte de dialogue d'autorisation à la demande."
   },
   "settings.cuConsentAlways": {
-    "message": "Always allow",
-    "description": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again."
+    "message": "Toujours autoriser",
+    "description": "Bouton d'autorisation permanente dans la boîte de dialogue d'autorisation à la demande ; autorisation persistante, cette opération ne sera plus demandée à l'avenir."
   },
   "settings.cuConsentDeny": {
-    "message": "Deny",
-    "description": "Deny button of the on-demand consent dialog."
+    "message": "Refuser",
+    "description": "Bouton de refus dans la boîte de dialogue d'autorisation à la demande."
   },
   "settings.siteServices": {
     "message": "Prix"
   },
-  "settings.memoryEnabled": {
-    "message": "Use memory",
-    "description": "Title for the switch that controls whether chats use saved memory and learn new memory"
-  },
-  "settings.memoryEnabledHint": {
-    "message": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
-    "description": "Behavior explanation shown below the memory switch"
-  },
   "nav.omni": {
-    "message": "Omni Video",
-    "description": "Nav label for the Omni video module"
-  },
-  "settings.memoryImport": {
-    "message": "Import",
-    "description": "Button that opens the memory import dialog"
-  },
-  "settings.memoryImportTitle": {
-    "message": "Import memory from another AI",
-    "description": "Title of the memory import dialog"
-  },
-  "settings.memoryImportExportStep": {
-    "message": "1. Ask your current AI to export its memory",
-    "description": "First step heading in the memory import dialog"
-  },
-  "settings.memoryImportPrompt": {
-    "message": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
-    "description": "Prompt users copy into another AI service to export memories"
-  },
-  "settings.memoryImportCopy": {
-    "message": "Copy prompt",
-    "description": "Button that copies the memory export prompt"
-  },
-  "settings.memoryImportCopied": {
-    "message": "Prompt copied",
-    "description": "Toast shown after copying the memory export prompt"
-  },
-  "settings.memoryImportPasteStep": {
-    "message": "2. Paste the exported memory",
-    "description": "Second step heading in the memory import dialog"
-  },
-  "settings.memoryImportPlaceholder": {
-    "message": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
-    "description": "Placeholder for pasted memory export text"
-  },
-  "settings.memoryImportSubmit": {
-    "message": "Add to memory",
-    "description": "Button that submits pasted memories for import"
-  },
-  "settings.memoryImportSuccess": {
-    "message": "Imported {count} memory entries",
-    "description": "Success toast after importing memory; count is the number of accepted entries"
-  },
-  "settings.memoryImportPartial": {
-    "message": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
-    "description": "Warning shown after a partial memory import"
-  },
-  "settings.memoryImportInvalid": {
-    "message": "No memory could be imported. Make sure memory is on and paste one plain fact per line.",
-    "description": "Actionable error shown when the memory import request is invalid"
-  },
-  "settings.memoryImportInProgress": {
-    "message": "A memory import is already running. Keep this dialog open and try again shortly.",
-    "description": "Warning shown when another memory import job is active"
-  },
-  "message.mediaPreviewUnavailable": {
-    "message": "Preview unavailable",
-    "description": "Media preview could not be loaded"
-  },
-  "button.send": {
-    "message": "Send",
-    "description": "Accessible label for sending content"
-  },
-  "button.stop": {
-    "message": "Stop",
-    "description": "Accessible label for stopping an operation"
-  },
-  "button.openMenu": {
-    "message": "Open menu",
-    "description": "Accessible label for opening a navigation or configuration menu"
-  },
-  "button.more": {
-    "message": "More actions",
-    "description": "Accessible label for opening an actions menu"
-  },
-  "button.remove": {
-    "message": "Remove",
-    "description": "Accessible label for removing an item"
-  },
-  "player.previous": {
-    "message": "Previous track",
-    "description": "Accessible label for the previous-track player button"
-  },
-  "player.play": {
-    "message": "Play",
-    "description": "Accessible label for the player play button"
-  },
-  "player.pause": {
-    "message": "Pause",
-    "description": "Accessible label for the player pause button"
-  },
-  "player.next": {
-    "message": "Next track",
-    "description": "Accessible label for the next-track player button"
-  },
-  "player.volume": {
-    "message": "Volume",
-    "description": "Accessible label for the player volume control"
-  },
-  "message.deleteTaskConfirm": {
-    "message": "Delete this generation record? It will be removed from all your devices and cannot be recovered.",
-    "description": "Confirmation message shown before deleting a single task record"
-  },
-  "message.deleteTaskSuccess": {
-    "message": "Record deleted.",
-    "description": "Message shown after a task record is successfully deleted"
-  },
-  "message.deleteTaskFailed": {
-    "message": "Failed to delete. Please try again later.",
-    "description": "Message shown when deleting a task record fails"
-  },
-  "message.dropToUpload": {
-    "message": "Drop to upload",
-    "description": "Text on the transient overlay that appears over an uploader while a file is being dragged onto it, telling the user to release to upload."
+    "message": "Vidéo Omni",
+    "description": "Étiquette de navigation pour le module vidéo Omni."
   }
 }

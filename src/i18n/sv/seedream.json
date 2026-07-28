@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Åtgärd",
+    "description": "Välj åtgärd för att generera eller redigera."
+  },
   "name.taskId": {
     "message": "Uppgift ID",
     "description": "Uppgiftens ID"
@@ -29,7 +33,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Uppgiftens status"
+    "description": "Visar uppgiftens status."
   },
   "name.traceId": {
     "message": "Spårnings ID",
@@ -131,6 +135,10 @@
     "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
     "description": "Misslyckades med uppladdning"
   },
+  "message.referenceImageRequired": {
+    "message": "Redigeringsläget kräver att minst en referensbild laddas upp.",
+    "description": "Visas som en valideringsprompt när det inte finns någon referensbild i redigeringsläget."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Bekräftelse krävs",
     "description": "Titel i varningsdialog för funktionskonflikt"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Adaptiv (samma som referensbild)",
     "description": "Etikett för adaptive-valet"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

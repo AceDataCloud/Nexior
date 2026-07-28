@@ -83,6 +83,14 @@
     "message": "Langues",
     "description": "Champ pour les langues de sortie"
   },
+  "name.primaryLanguage": {
+    "message": "Langue principale",
+    "description": "Champ pour la langue de sortie principale"
+  },
+  "name.additionalLanguages": {
+    "message": "Langues supplémentaires (facultatif)",
+    "description": "Champ pour les langues de sortie supplémentaires"
+  },
   "name.aspect": {
     "message": "Ratio d'aspect",
     "description": "Champ de ratio d'aspect"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "Veuillez sélectionner",
     "description": "Espace réservé générique pour la sélection"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Ajouter d'autres langues de sortie",
+    "description": "Espace réservé pour les langues supplémentaires"
   },
   "description.prompt": {
     "message": "Exprimez clairement ce que vous voulez en termes simples, le script, les images, le doublage et le montage sont gérés par Maestro.",
@@ -207,6 +219,30 @@
     "message": "Aucune vidéo encore — créez votre première à gauche.",
     "description": "Aucune tâche"
   },
+  "name.customize": {
+    "message": "Personnaliser",
+    "description": "Optional creative controls toggle"
+  },
+  "description.customize.auto": {
+    "message": "Auto · Maestro choisit le type de vidéo, le style visuel et le timbre de voix.",
+    "description": "Customization disabled state"
+  },
+  "description.customize.manual": {
+    "message": "Choisissez le type de vidéo, le style visuel et le timbre de voix.",
+    "description": "Customization enabled state"
+  },
+  "name.customizeScenario": {
+    "message": "Personnaliser le type de vidéo",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Personnaliser le style visuel",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Personnaliser le timbre de voix",
+    "description": "Voice timbre customization toggle"
+  },
   "name.scenario": {
     "message": "Type de vidéo",
     "description": "Video type field"
@@ -256,60 +292,60 @@
     "description": "Option de style cinématographique"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Frosted glass style option"
+    "message": "Verre dépoli · Verre liquide",
+    "description": "Option de style verre dépoli"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Luxury style option"
+    "message": "Luxe · Espaces vides",
+    "description": "Option de style de luxe"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Swiss grid style option"
+    "message": "Grille suisse · Précis",
+    "description": "Option de style grille suisse"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Modern style option"
+    "message": "Moderne minimaliste · SaaS",
+    "description": "Option de style moderne"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Editorial style option"
+    "message": "Édition magazine",
+    "description": "Option de style éditorial"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Warm style option"
+    "message": "Chaleureux et intime",
+    "description": "Option de style chaleureux"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Vibrant style option"
+    "message": "Style vibrant",
+    "description": "Option de style vibrant"
   },
   "option.style.neon": {
     "message": "Style néon",
     "description": "Option de style néon"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Monochrome style option"
+    "message": "Monochrome minimaliste",
+    "description": "Option de style monochrome"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Pastel style option"
+    "message": "Pastel doux",
+    "description": "Option de style pastel"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Bold type style option"
+    "message": "Texte en gras · Énergique",
+    "description": "Option de style de type gras"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Industrial style option"
+    "message": "Industrie défaillante",
+    "description": "Option de style industriel"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Futuristic style option"
+    "message": "Futuriste",
+    "description": "Option de style futuriste"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Retro film style option"
+    "message": "Film rétro",
+    "description": "Option de style film rétro"
   },
   "name.voice": {
     "message": "Timbre de voix",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "Journal des modifs (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Personnaliser",
-    "description": "Optional creative controls toggle"
-  },
-  "description.customize.auto": {
-    "message": "Auto · Maestro choisit le type de vidéo, le style visuel et le timbre de voix.",
-    "description": "Customization disabled state"
-  },
-  "description.customize.manual": {
-    "message": "Choisissez le type de vidéo, le style visuel et le timbre de voix.",
-    "description": "Customization enabled state"
-  },
-  "name.primaryLanguage": {
-    "message": "Primary language",
-    "description": "Primary output language field"
-  },
-  "name.additionalLanguages": {
-    "message": "Additional languages (optional)",
-    "description": "Additional output languages field"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Add output languages",
-    "description": "Additional languages placeholder"
-  },
-  "name.customizeScenario": {
-    "message": "Personnaliser le type de vidéo",
-    "description": "Video type customization toggle"
-  },
-  "name.customizeStyle": {
-    "message": "Personnaliser le style visuel",
-    "description": "Visual style customization toggle"
-  },
-  "name.customizeVoice": {
-    "message": "Personnaliser le timbre de voix",
-    "description": "Voice timbre customization toggle"
   }
 }

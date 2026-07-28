@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Toiminto",
+    "description": "Generoi tai muokkaa toimintovalitsinta."
+  },
   "name.taskId": {
     "message": "Tehtävä ID",
     "description": "Tehtävän ID"
@@ -131,6 +135,10 @@
     "message": "Kuvan lataus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
   },
+  "message.referenceImageRequired": {
+    "message": "Muokkaustilassa on ladattava vähintään yksi viittauskuva.",
+    "description": "Näytetään tarkistushälytyksenä, kun muokkaustilassa ei ole viittauskuvaa."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Vahvistus vaaditaan",
     "description": "Kykyjen ristiriita -ilmoituksen otsikko"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Sovita (sama kuin referenssikuva)",
     "description": "adaptive-vaihtoehdon etiketti"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

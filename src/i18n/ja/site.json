@@ -100,8 +100,8 @@
     "description": "ログインプロバイダー表示名：Appleでサインイン"
   },
   "field.authProvider_wechat": {
-    "message": "WeChat",
-    "description": "ログイン方式名：WeChatのサードパーティログイン"
+    "message": "微信",
+    "description": "ログイン方法の名称：WeChatサードパーティログイン"
   },
   "field.authSmsWebhook": {
     "message": "カスタムSMS送信者",
@@ -112,8 +112,8 @@
     "description": "カスタムSMS送信者Webhookの説明"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "SMS Webhook URL入力のプレースホルダー"
+    "message": "https://あなたのドメイン/sms-webhook",
+    "description": "SMS webhook URL入力フィールドのプレースホルダー"
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "署名シークレット（未変更の場合は空白のまま）",
@@ -128,8 +128,8 @@
     "description": "SMS Webhook仕様ダイアログを開くリンク"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "SMS Webhookテストダイアログを開くボタン"
+    "message": "テスト",
+    "description": "SMS webhookテストダイアログを開くボタン"
   },
   "message.authSmsWebhookNeedsPhone": {
     "message": "カスタムSMS送信者を設定するには、まず電話番号ログインプロバイダーを有効にしてください。",
@@ -144,8 +144,8 @@
     "description": "SMS Webhook仕様ダイアログのイントロ段落"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "SMS Webhook仕様のリクエストセクションの見出し"
+    "message": "リクエスト",
+    "description": "見出し：SMS webhook仕様のリクエストセクション"
   },
   "message.authSmsWebhookDocRequest": {
     "message": "メソッドPOST、Content-Type: application/json。purposeはlogin/register/resetのいずれかです。",
@@ -160,8 +160,8 @@
     "description": "SMS Webhookの署名検証を説明する"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "SMS Webhook仕様のレスポンスセクションの見出し"
+    "message": "レスポンス",
+    "description": "見出し：SMS webhook仕様のレスポンスセクション"
   },
   "message.authSmsWebhookDocResponse": {
     "message": "成功時は2xxを返してください。失敗を明示するには、HTTP 200とJSONレスポンスを返してください。",
@@ -222,6 +222,10 @@
   "field.featuresMaestro": {
     "message": "マエストロ",
     "description": "編集ボックスのタイトルとして表示されます"
+  },
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
+    "description": "Displayed as the title in the editing box"
   },
   "field.featuresDigitalhuman": {
     "message": "デジタルヒューマン",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "編集ボックスのタイトルとして表示"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "企画、ナレーション、シーン構成、納品まで、アイデアから完成動画を作成します。",
     "description": "企画、ナレーション、シーン構成、納品まで、アイデアから完成動画を作成する機能の簡潔な紹介。"
   },
+  "message.featuresPoivelle": {
+    "message": "プロジェクト図、ストーリーボード、タイムライン、レビュー、Skill Agentワークフローを共有することで、専門的なAI映像制作を統括します。",
+    "description": "プロジェクト図、ストーリーボード、タイムライン、レビュー、Skill Agentワークフローを共有することで、専門的なAI映像制作を統括する能力の紹介"
+  },
   "message.featuresDigitalhuman": {
     "message": "合成音声と自然な口の動きで、話す人物の動画を作成します。",
     "description": "合成音声と自然な口の動きで、話す人物の動画を作成する機能の簡潔な紹介。"
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "多様な解像度で、動きのあるシーンやカメラワーク、任意の音声を���えたByteDanceの動画生成機能。",
     "description": "多様な解像度で、動きのあるシーンやカメラワーク、任意の音声を備えたByteDanceの動画生成機能の簡潔な紹介。"
+  },
+  "message.featuresOmni": {
+    "message": "Omniモデルを使い、テキスト、画像、動画参照から動画を生成・編集します。",
+    "description": "Omniモデルを使い、テキスト、画像、動画参照から動画を生成・編集します。"
   },
   "message.featuresWan": {
     "message": "テキスト、画像、参照をもとに、複数解像度で動画を生成するAlibabaの機能。",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "サービス上書きの読み込みに失敗しました"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "編集ボックスのタイトルとして表示"
-  },
-  "message.featuresOmni": {
-    "message": "Omniモデルを使い、テキスト、画像、動画参照から動画を生成・編集します。",
-    "description": "Omniモデルを使い、テキスト、画像、動画参照から動画を生成・編集します。"
-  },
   "capabilityOverride.edit": {
     "message": "アプリをカスタマイズ",
     "description": "機能アプリ名とアイコンを編集するためのツールチップとアクセシブルラベル"
@@ -911,12 +919,12 @@
     "description": "サイトごとの機能アプリアイコンのフィールドラベル"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "プラットフォームデフォルト機能アイコンプレビューの上のラベル"
+    "message": "デフォルト",
+    "description": "プラットフォームのデフォルトアイコンのプレビューラベル"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "有効な機能アイコンプレビューの上のラベル"
+    "message": "現在の効果",
+    "description": "現在有効なアイコンのプレビューラベル"
   },
   "capabilityOverride.replaceIcon": {
     "message": "アイコンを置き換え",
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "アプリのカスタマイズの読み込みに失敗しました",
     "description": "機能オーバーライド管理行の読み込みに失敗した場合のエラー"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

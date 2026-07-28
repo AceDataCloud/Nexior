@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Дія",
+    "description": "Вибірник для генерації або редагування дій."
+  },
   "name.taskId": {
     "message": "ID завдання",
     "description": "ID завдання"
@@ -131,6 +135,10 @@
     "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
     "description": "Помилка завантаження"
   },
+  "message.referenceImageRequired": {
+    "message": "В режимі редагування потрібно завантажити принаймні одне зображення для посилання.",
+    "description": "Підказка для перевірки, яка відображається, коли в режимі редагування немає зображення для посилання."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Потрібне підтвердження",
     "description": "Заголовок вікна конфлікту можливостей"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Адаптивний (як на зразку)",
     "description": "Позначка опції adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

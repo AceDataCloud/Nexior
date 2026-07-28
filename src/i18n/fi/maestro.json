@@ -83,6 +83,14 @@
     "message": "Kielet",
     "description": "Tuotettavat kielet -kenttä"
   },
+  "name.primaryLanguage": {
+    "message": "Pääkieli",
+    "description": "Pääkielen tulostuskenttä"
+  },
+  "name.additionalLanguages": {
+    "message": "Lisäkielet (valinnainen)",
+    "description": "Lisäkielten tulostuskenttä"
+  },
   "name.aspect": {
     "message": "Kuvan suhde",
     "description": "Kuvan suhde kenttä"
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "Valitse",
     "description": "Yleinen valintapaikka"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Lisää tulostuskielet",
+    "description": "Lisäkielten paikkamerkki"
   },
   "description.prompt": {
     "message": "Kerro selkeästi, mitä haluat, käsikirjoitus, kuvat, äänitys ja leikkaus ovat Maestroa varten.",
@@ -169,7 +181,7 @@
   },
   "button.remix": {
     "message": "Remix",
-    "description": "Remixaa tämä video -painike"
+    "description": "Remixaa tätä videota -painike"
   },
   "button.cancelRemix": {
     "message": "Peru remix",
@@ -206,6 +218,30 @@
   "message.noTasks": {
     "message": "Ei vielä videoita — luo ensimmäinen vasemmalla.",
     "description": "Ei tehtäviä"
+  },
+  "name.customize": {
+    "message": "Mukauta",
+    "description": "Valinnaisten luovien ohjausten vaihtokytkentä"
+  },
+  "description.customize.auto": {
+    "message": "Automaattinen · Maestro päättää videon tyypin, visuaalisen tyylin ja ääninäytteen äänenvärin.",
+    "description": "Mukautuksen poistettu käytöstä -tila"
+  },
+  "description.customize.manual": {
+    "message": "Valitse videon tyyppi, visuaalinen tyyli ja ääninäytteen äänenväri.",
+    "description": "Mukautuksen käytössä -tila"
+  },
+  "name.customizeScenario": {
+    "message": "Mukauta videon tyyppiä",
+    "description": "Videotyypin mukautusvaihtokytkentä"
+  },
+  "name.customizeStyle": {
+    "message": "Mukauta visuaalista tyyliä",
+    "description": "Visuaalisen tyylin mukautusvaihtokytkentä"
+  },
+  "name.customizeVoice": {
+    "message": "Mukauta ääninäytteen äänenväriä",
+    "description": "Äänenvärinkentän mukautusvaihtokytkentä"
   },
   "name.scenario": {
     "message": "Videon tyyppi",
@@ -264,8 +300,8 @@
     "description": "Luksus-tyylivaihtoehto"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Swiss Grid -tyylivaihtoehto"
+    "message": "Sveitsi · Tarkka",
+    "description": "Sveitsi-ruudukko-tyylin vaihtoehto"
   },
   "option.style.modern": {
     "message": "Moderni",
@@ -285,7 +321,7 @@
   },
   "option.style.neon": {
     "message": "Neon",
-    "description": "Neon-tyylivaihtoehto"
+    "description": "Neon-tyylin vaihtoehto"
   },
   "option.style.mono": {
     "message": "Mustavalkoinen",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "Muutosloki (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Mukauta",
-    "description": "Valinnaisten luovien ohjausten vaihtokytkentä"
-  },
-  "description.customize.auto": {
-    "message": "Automaattinen · Maestro päättää videon tyypin, visuaalisen tyylin ja ääninäytteen äänenvärin.",
-    "description": "Mukautuksen poistettu käytöstä -tila"
-  },
-  "description.customize.manual": {
-    "message": "Valitse videon tyyppi, visuaalinen tyyli ja ääninäytteen äänenväri.",
-    "description": "Mukautuksen käytössä -tila"
-  },
-  "name.primaryLanguage": {
-    "message": "Pääkieli",
-    "description": "Pääkielen tulostuskenttä"
-  },
-  "name.additionalLanguages": {
-    "message": "Lisäkielet (valinnainen)",
-    "description": "Lisäkielten tulostuskenttä"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Lisää tulostuskielet",
-    "description": "Lisäkielten paikkamerkki"
-  },
-  "name.customizeScenario": {
-    "message": "Mukauta videon tyyppiä",
-    "description": "Videotyypin mukautusvaihtokytkentä"
-  },
-  "name.customizeStyle": {
-    "message": "Mukauta visuaalista tyyliä",
-    "description": "Visuaalisen tyylin mukautusvaihtokytkentä"
-  },
-  "name.customizeVoice": {
-    "message": "Mukauta ääninäytteen äänenväriä",
-    "description": "Äänenvärinkentän mukautusvaihtokytkentä"
   }
 }

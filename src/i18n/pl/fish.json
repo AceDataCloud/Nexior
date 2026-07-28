@@ -9,7 +9,7 @@
   },
   "name.model": {
     "message": "Model",
-    "description": "Etykieta pola modelu Fish TTS"
+    "description": "Etykieta pola modelu TTS w Fish"
   },
   "name.referenceId": {
     "message": "ID głosu",
@@ -26,6 +26,18 @@
   "name.elapsed": {
     "message": "Czas trwania",
     "description": "Etykieta czasu trwania zadania Fish"
+  },
+  "name.failure": {
+    "message": "Generowanie nie powiodło się",
+    "description": "Tytuł błędu zadania w Fish"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Etykieta powodu niepowodzenia zadania w Fish"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "Etykieta ID śledzenia zadania w Fish"
   },
   "name.fishBot": {
     "message": "Fish Audio",
@@ -92,16 +104,16 @@
     "description": "Komunikat, gdy wybór głosów Fish jest pusty"
   },
   "group.publicVoices": {
-    "message": "Public voice library",
-    "description": "Fish voice picker public voices group header"
+    "message": "Publiczna biblioteka dźwięków",
+    "description": "Tytuł grupy publicznych dźwięków w selektorze dźwięków Fish"
   },
   "message.searching": {
-    "message": "Searching…",
-    "description": "Fish voice picker remote search loading hint"
+    "message": "Wyszukiwanie…",
+    "description": "Wskazówka ładowania podczas zdalnego wyszukiwania w selektorze dźwięków Fish"
   },
   "message.searchVoiceHint": {
-    "message": "Type a keyword to search public voices",
-    "description": "Fish voice picker remote search empty-state hint"
+    "message": "Wprowadź słowo kluczowe, aby wyszukać publiczne dźwięki",
+    "description": "Wskazówka dotycząca pustego stanu wyszukiwania w selektorze dźwięków Fish"
   },
   "name.voiceTitle": {
     "message": "Nazwa",
@@ -334,17 +346,5 @@
   "script.passage4": {
     "message": "Jeden, dwa, trzy, cztery, pięć, sześć, siedem, osiem, dziewięć, dziesięć, zero, jeden, dwa, trzy, cztery, pięć, sześć, siedem, osiem, dziewięć. Dzisiaj jest poniedziałek, w przyszły poniedziałek mamy wolne, a za dwa tygodnie zaczynamy nowy projekt. Proszę, przeczytaj ten tekst wyraźnie, nie zatrzymuj się zbyt długo.",
     "description": "Fish fragment nagrania demonstracyjnego 4 (cyfry i wymowa)"
-  },
-  "name.failure": {
-    "message": "Generation failed",
-    "description": "Fish task failure title"
-  },
-  "name.failureReason": {
-    "message": "Failure reason",
-    "description": "Fish task failure reason label"
-  },
-  "name.traceId": {
-    "message": "Trace ID",
-    "description": "Fish task trace ID label"
   }
 }
