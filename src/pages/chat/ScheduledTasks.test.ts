@@ -1,9 +1,15 @@
 // @vitest-environment jsdom
 import { flushPromises, shallowMount } from '@vue/test-utils';
+<<<<<<< HEAD
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import type { MessageBoxData } from 'element-plus';
+=======
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { reactive } from 'vue';
+import { ElMessage } from 'element-plus';
+>>>>>>> origin/main
 
 import { CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import {
@@ -162,6 +168,180 @@ describe('chat/ScheduledTasks', () => {
       authorizationExpiresAt: expect.any(Number),
       maxTurns: 50
     });
+  });
+
+  it('prefills the create form from an existing task, with a numbered name', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      editingTask: IScheduledTask | null;
+      form: Record<string, unknown>;
+      showCreateDialog: boolean;
+    };
+    await wrapper.setData({ tasks: [editedTask] });
+
+    vm.openDuplicate(editedTask);
+
+    // A copy is a CREATE, not an edit — otherwise saving would overwrite the original.
+    expect(vm.editingTask).toBeNull();
+    expect(vm.showCreateDialog).toBe(true);
+    expect(vm.form).toMatchObject({
+      name: 'Existing task 2',
+      question: 'Reuse the existing task prompt',
+      model: 'gpt-5.6-sol',
+      scheduleType: 'interval',
+      intervalValue: 6,
+      intervalUnit: 'hour',
+      authorizedSkills: ['hashnode'],
+      authorizedMcpServers: ['publishing'],
+      maxTurns: 12
+    });
+  });
+
+  it('skips names already taken when duplicating repeatedly', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    await wrapper.setData({
+      tasks: [editedTask, { ...editedTask, id: 'task-2', name: 'Existing task 2' }]
+    });
+
+    vm.openDuplicate(editedTask);
+    expect(vm.form.name).toBe('Existing task 3');
+
+    // Duplicating a copy appends rather than reusing the base: any rule that
+    // strips a trailing number eventually eats a real one (see the year test).
+    vm.openDuplicate({ ...editedTask, id: 'task-2', name: 'Existing task 2' });
+    expect(vm.form.name).toBe('Existing task 2 2');
+  });
+
+  it('keeps the duplicated name within the 80-char input cap, without repeating it', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    const longName = 'x'.repeat(80);
+    await wrapper.setData({ tasks: [{ ...editedTask, name: longName }] });
+
+    vm.openDuplicate({ ...editedTask, name: longName });
+    const first = vm.form.name;
+    expect(first.length).toBeLessThanOrEqual(80);
+    expect(first.endsWith(' 2')).toBe(true);
+
+    // Once that copy exists, duplicating again must not hand back the same
+    // truncated string — names are not unique server-side, so a repeat would
+    // leave two indistinguishable rows.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: longName },
+        { ...editedTask, id: 'task-2', name: first }
+      ]
+    });
+    vm.openDuplicate({ ...editedTask, name: longName });
+    expect(vm.form.name).not.toBe(first);
+    expect(vm.form.name.length).toBeLessThanOrEqual(80);
+  });
+
+  it('does not split an emoji, and stays within the cap the browser enforces', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    // Exactly 80 UTF-16 units — the input is already full, so the suffix has to
+    // displace something. Budgeting in code points here would return 82 units,
+    // the browser's maxlength would clip the " 2" back off, and every copy would
+    // come out identical.
+    const emojiName = '😀'.repeat(40);
+    await wrapper.setData({ tasks: [{ ...editedTask, name: emojiName }] });
+
+    vm.openDuplicate({ ...editedTask, name: emojiName });
+    const first = vm.form.name;
+
+    // maxlength counts UTF-16 units, so that is the unit that must be asserted.
+    expect(first.length).toBeLessThanOrEqual(80);
+    // A lone high surrogate renders as the replacement character.
+    expect(first).not.toMatch(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/);
+    expect(first.endsWith(' 2')).toBe(true);
+
+    // And the copy of the copy must still differ.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: emojiName },
+        { ...editedTask, id: 'task-2', name: first }
+      ]
+    });
+    vm.openDuplicate({ ...editedTask, name: emojiName });
+    expect(vm.form.name).not.toBe(first);
+    expect(vm.form.name.length).toBeLessThanOrEqual(80);
+  });
+
+  it('never eats a trailing number that is part of the name', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      form: { name: string };
+    };
+    // The generic prefix exists as its own task — the case where any
+    // "strip the trailing number" heuristic destroys the year.
+    await wrapper.setData({
+      tasks: [
+        { ...editedTask, name: 'Weekly report' },
+        { ...editedTask, id: 'task-2', name: 'Weekly report 2026' }
+      ]
+    });
+
+    vm.openDuplicate({ ...editedTask, name: 'Weekly report 2026' });
+
+    expect(vm.form.name).toBe('Weekly report 2026 2');
+  });
+
+  it('mints a fresh authorization expiry for the copy', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      openEdit: (task: IScheduledTask) => void;
+      form: { authorizationExpiresAt: number };
+    };
+    const expired = Math.floor(Date.now() / 1000) - 86400;
+    const stale = {
+      ...editedTask,
+      unattended_policy: { ...editedTask.unattended_policy!, expires_at: expired }
+    };
+    await wrapper.setData({ tasks: [stale] });
+
+    // Editing preserves the existing grant …
+    vm.openEdit(stale);
+    expect(vm.form.authorizationExpiresAt).toBe(expired);
+
+    // … but a copy must not inherit an already-expired one, or it would run
+    // with no skills and no error shown.
+    vm.openDuplicate(stale);
+    expect(vm.form.authorizationExpiresAt).toBeGreaterThan(Math.floor(Date.now() / 1000));
+  });
+
+  it('does not open a duplicate while a save is in progress', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      openEdit: (task: IScheduledTask) => void;
+      editingTask: IScheduledTask | null;
+      form: { name: string };
+    };
+    // Seed tasks so an unguarded openDuplicate would visibly rename the form.
+    await wrapper.setData({ tasks: [editedTask] });
+    vm.openEdit(editedTask);
+    await wrapper.setData({ saving: true });
+
+    vm.openDuplicate(editedTask);
+
+    // The in-flight edit must survive — swapping the form mid-save would submit
+    // the copy's fields as an update to the original.
+    expect(vm.editingTask).toMatchObject({ id: editedTask.id });
+    expect(vm.form.name).toBe('Existing task');
   });
 
   it('prevents switching forms while a save is in progress', async () => {
@@ -698,11 +878,14 @@ describe('chat/ScheduledTasks', () => {
     const listAllRuns = () => vi.spyOn(scheduledTasksOperator, 'listAllRuns');
     const listRuns = () => vi.spyOn(scheduledTasksOperator, 'listRuns');
 
+<<<<<<< HEAD
     // Prevent real XHR from loadTasks() leaking into subsequent tests.
     beforeEach(() => {
       vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
     });
 
+=======
+>>>>>>> origin/main
     afterEach(() => {
       vi.restoreAllMocks();
       vi.useRealTimers();

@@ -1,9 +1,24 @@
 # Change Log - @acedatacloud/nexior
 
+<<<<<<< HEAD
 <!-- This log was last generated on Tue, 28 Jul 2026 06:38:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
 
+=======
+<!-- This log was last generated on Tue, 28 Jul 2026 06:52:10 GMT and should not be manually modified. -->
+
+<!-- Start content -->
+
+## 3.339.1
+
+Tue, 28 Jul 2026 06:52:10 GMT
+
+### Patches
+
+- render coding bridge TodoWrite calls as a checklist instead of raw JSON (dev@acedata.cloud)
+
+>>>>>>> origin/main
 ## 3.339.0
 
 Tue, 28 Jul 2026 06:38:10 GMT

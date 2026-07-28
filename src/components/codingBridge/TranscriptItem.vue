@@ -92,6 +92,29 @@
           <div class="whitespace-pre-wrap break-words text-[var(--app-text-subtle)]">{{ line.question }}</div>
         </div>
       </div>
+      <!-- TodoWrite: a checklist, not the raw `{todos:[...]}` JSON. -->
+      <div v-else-if="todoItems.length" class="px-2.5 pb-2">
+        <div :id="todoProgressId" class="mb-1.5 text-xs text-[var(--app-text-subtle)]">{{ todoProgressLabel }}</div>
+        <ul class="flex flex-col gap-1" :aria-labelledby="todoProgressId">
+          <li v-for="(todo, index) in todoItems" :key="index" class="flex items-start gap-2 text-xs">
+            <component
+              :is="todo.icon"
+              class="mt-0.5 flex-none"
+              :class="todo.iconClass"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
+            <!-- Status is otherwise icon/colour/strikethrough only; name it for
+                 screen readers so completed and pending rows aren't identical. -->
+            <span class="sr-only">{{ todo.statusLabel }}</span>
+            <span class="min-w-0 break-words" :class="todo.textClass">{{ todo.text }}</span>
+          </li>
+        </ul>
+        <div v-if="todoOverflow" class="mt-1 text-xs text-[var(--app-text-subtle)]">
+          {{ $t('codingBridge.transcript.todoOverflow', { count: todoOverflow }) }}
+        </div>
+      </div>
       <!-- Shell-style tools render as a highlighted, copyable command block. -->
       <div v-else-if="commandText" class="px-2.5 pb-2">
         <code-snippet :code="commandText" lang="bash" copyable />
@@ -166,8 +189,11 @@ import {
   FileIcon,
   FileTextIcon,
   InfoIcon,
+  LoadingIcon,
   SearchIcon,
-  TerminalIcon
+  StopIcon,
+  TerminalIcon,
+  WriteIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent, type Component, PropType } from 'vue';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
@@ -192,6 +218,9 @@ const STREAM_RENDER_MS = 100;
 const MAX_TEXT_CHARS = 40000;
 const MAX_RESULT_CHARS = 12000;
 const MAX_INPUT_CHARS = 6000;
+// Same rationale for todo lists: agents occasionally emit very long plans.
+const MAX_TODO_ITEMS = 50;
+const MAX_TODO_TEXT_CHARS = 200;
 const capForRender = (value: string, max: number): string => {
   if (value.length <= max) {
     return value;
@@ -268,6 +297,9 @@ export default defineComponent({
       return typeof description === 'string' ? description : '';
     },
     toolIcon(): Component {
+      if (this.todoList.length) {
+        return WriteIcon;
+      }
       if (this.commandText) {
         return TerminalIcon;
       }
@@ -298,6 +330,88 @@ export default defineComponent({
           header: typeof q.header === 'string' ? q.header : '',
           question: q.question as string
         }));
+    },
+    // TodoWrite relays a `{todos:[{content,status,activeForm}]}` payload — the
+    // most structured input any tool sends, and the least readable as raw JSON.
+    todoList(): { content: string; status: string; activeForm?: string }[] {
+      const todos = this.event.input?.todos;
+      if (!Array.isArray(todos)) {
+        return [];
+      }
+      // Match on the tool name first. For a differently-named provider tool,
+      // only claim the payload when `todos` is essentially all of it —
+      // this branch renders no other key, so hijacking a richer payload would
+      // hide what the tool actually did (a command, a path, an API mutation).
+      const tool = (this.event.tool ?? '').toLowerCase();
+      if (!tool.includes('todo')) {
+        const meaningful = Object.keys(this.event.input ?? {}).filter(
+          (key) => key !== 'todos' && key !== 'description'
+        );
+        if (meaningful.length) {
+          return [];
+        }
+      }
+      return todos
+        .filter((todo) => todo && typeof todo.content === 'string')
+        .map((todo) => ({
+          content: todo.content as string,
+          status: typeof todo.status === 'string' ? todo.status : 'pending',
+          activeForm: typeof todo.activeForm === 'string' ? todo.activeForm : undefined
+        }));
+    },
+    todoItems(): {
+      text: string;
+      status: string;
+      statusLabel: string;
+      icon: Component;
+      iconClass: string;
+      textClass: string;
+    }[] {
+      return this.todoList.slice(0, MAX_TODO_ITEMS).map((todo) => {
+        // In-progress rows read better in the present continuous the agent supplies.
+        const raw = todo.status === 'in_progress' && todo.activeForm ? todo.activeForm : todo.content;
+        const text = raw.length > MAX_TODO_TEXT_CHARS ? `${raw.slice(0, MAX_TODO_TEXT_CHARS)}…` : raw;
+        if (todo.status === 'completed') {
+          return {
+            text,
+            status: 'completed',
+            statusLabel: this.$t('codingBridge.transcript.todoCompleted') as string,
+            icon: ConfirmIcon,
+            iconClass: 'text-[var(--el-color-success)]',
+            textClass: 'text-[var(--app-text-subtle)] line-through'
+          };
+        }
+        if (todo.status === 'in_progress') {
+          return {
+            text,
+            status: 'in_progress',
+            statusLabel: this.$t('codingBridge.transcript.todoInProgress') as string,
+            icon: LoadingIcon,
+            iconClass: 'text-[var(--el-color-primary)]',
+            textClass: 'text-[var(--app-text)] font-medium'
+          };
+        }
+        return {
+          text,
+          status: 'pending',
+          statusLabel: this.$t('codingBridge.transcript.todoPending') as string,
+          icon: StopIcon,
+          iconClass: 'text-[var(--app-text-subtle)] opacity-60',
+          textClass: 'text-[var(--app-text-subtle)]'
+        };
+      });
+    },
+    todoProgressLabel(): string {
+      const done = this.todoList.filter((todo) => todo.status === 'completed').length;
+      return this.$t('codingBridge.transcript.todoProgress', { done, total: this.todoList.length }) as string;
+    },
+    // Ties the <ul> to its progress line for assistive tech. `event.id` is
+    // required and already the transcript's v-for key, so it's unique per page.
+    todoProgressId(): string {
+      return `cb-todo-progress-${this.event.id}`;
+    },
+    todoOverflow(): number {
+      return Math.max(0, this.todoList.length - MAX_TODO_ITEMS);
     },
     inputText(): string {
       const input = this.event.input;

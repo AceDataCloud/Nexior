@@ -67,6 +67,16 @@
                       <edit-icon :size="16" aria-hidden="true" focusable="false" />
                     </el-button>
                   </el-tooltip>
+                  <el-tooltip :content="$t('chat.scheduledTasks.duplicate')" placement="top">
+                    <el-button
+                      text
+                      class="icon-action"
+                      :aria-label="$t('chat.scheduledTasks.duplicate')"
+                      @click="openDuplicate(task)"
+                    >
+                      <copy-icon :size="16" aria-hidden="true" focusable="false" />
+                    </el-button>
+                  </el-tooltip>
                   <el-tooltip :content="$t('common.button.delete')" placement="top">
                     <el-button
                       text
@@ -520,6 +530,7 @@ import {
 } from 'element-plus';
 import { Pagination } from '@acedatacloud/core/components';
 import { AddIcon } from '@acedatacloud/core/icons/add';
+import { CopyIcon } from '@acedatacloud/core/icons/copy';
 import { DeleteIcon } from '@acedatacloud/core/icons/delete';
 import { EditIcon } from '@acedatacloud/core/icons/edit';
 import { RefreshIcon } from '@acedatacloud/core/icons/refresh';
@@ -593,6 +604,7 @@ export default defineComponent({
     PlayIcon,
     TimeIcon,
     AddIcon,
+    CopyIcon,
     DeleteIcon,
     EditIcon,
     RefreshIcon,
@@ -980,8 +992,9 @@ export default defineComponent({
       if (this.saving) return;
       this.showCreateDialog = false;
     },
-    openEdit(task: IScheduledTask) {
-      this.editingTask = task;
+    // Reverse of buildSchedule() + the policy hydration: turn a saved task back
+    // into an editable form. Shared by openEdit and openDuplicate.
+    taskToForm(task: IScheduledTask): TaskForm {
       const s = task.schedule;
       let scheduleType: TaskForm['scheduleType'] = 'cron';
       let intervalValue = 4;
@@ -1020,7 +1033,7 @@ export default defineComponent({
           intervalValue = Math.max(1, Math.round(sec / 60));
         }
       }
-      this.form = {
+      return {
         name: task.name,
         question: task.template.question,
         model: task.template.model,
@@ -1040,8 +1053,60 @@ export default defineComponent({
         authorizationExpiresAt: task.unattended_policy?.expires_at ?? Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
       };
+    },
+    openEdit(task: IScheduledTask) {
+      this.editingTask = task;
+      this.form = this.taskToForm(task);
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
+    },
+    // Prefill the create form from an existing task. Deliberately opens the
+    // dialog instead of creating straight away: the backend forces new tasks to
+    // `enabled` and registers them with the scheduler before the response
+    // lands, so a silent copy could fire once before the user could review it.
+    openDuplicate(task: IScheduledTask) {
+      if (this.saving) return;
+      this.editingTask = null;
+      this.form = {
+        ...this.taskToForm(task),
+        name: this.nextCopyName(task.name),
+        // A copy is a fresh grant. Inheriting the original's expiry would let an
+        // old task produce a new one that is already expired — the backend only
+        // clamps expiry downward, and an expired policy drops all skills at run
+        // time with nothing surfaced to the user.
+        authorizationExpiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60
+      };
+      this.showCreateDialog = true;
+      void this.loadAuthorizableSkills();
+    },
+    // "Report" → "Report 2", skipping names already taken so duplicating the
+    // same task twice doesn't produce two identical labels. The suffix is always
+    // appended to the full name: stripping a trailing number to avoid "X 2 2"
+    // needs a heuristic, and every version of it eventually eats a real number
+    // (a task literally named "Weekly report 2026" alongside "Weekly report").
+    // Names are not unique server-side, so never destroying one wins over pretty.
+    nextCopyName(name: string): string {
+      const base = (name || '').trim() || (this.$t('chat.scheduledTasks.title') as string);
+      const taken = new Set(this.tasks.map((t) => t.name));
+      // The name input's maxlength is 80 UTF-16 code units, so budget in units —
+      // going over would let the browser silently clip the suffix and hand back a
+      // duplicate name. Step by code point so an emoji is never split in half.
+      const build = (n: number) => {
+        const suffix = ` ${n}`;
+        const budget = 80 - suffix.length;
+        if (base.length <= budget) return `${base}${suffix}`;
+        let head = '';
+        for (const ch of base) {
+          if (head.length + ch.length > budget) break;
+          head += ch;
+        }
+        return `${head}${suffix}`;
+      };
+      // Collide-check the FINAL (already truncated) name — checking the untruncated
+      // one would let a capped name repeat forever.
+      let n = 2;
+      while (taken.has(build(n))) n += 1;
+      return build(n);
     },
     buildSchedule(): IScheduleSpec {
       const { scheduleType, intervalValue, intervalUnit, hourlyMinute, dailyTime, weekday, cronExpr } = this.form;
