@@ -1,8 +1,32 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 27 Jul 2026 05:20:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 06:38:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.339.0
+
+Tue, 28 Jul 2026 06:38:10 GMT
+
+### Minor changes
+
+- rename a Coding Bridge device; the name syncs to every signed-in client (dev@acedata.cloud)
+
+## 3.338.0
+
+Tue, 28 Jul 2026 06:11:42 GMT
+
+### Minor changes
+
+- Scheduled run lists now refresh themselves while a run is still queued or running, so a finished run stops showing as 运行中 and becomes clickable without leaving and re-entering the page. (dev@acedata.cloud)
+
+## 3.337.0
+
+Mon, 27 Jul 2026 23:39:30 GMT
+
+### Minor changes
+
+- Show which connector account each scheduled run used: run rows now carry a tag per pinned account (e.g. `zhihu · Germey`), falling back to the connector alone once the account is gone. (dev@acedata.cloud)
 
 ## 3.336.5
 

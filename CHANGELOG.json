@@ -2,6 +2,51 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Tue, 28 Jul 2026 06:38:10 GMT",
+      "version": "3.339.0",
+      "tag": "@acedatacloud/nexior_v3.339.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "24bf252a4c76bdf95c9b51ff45443a68570dbfa9",
+            "comment": "rename a Coding Bridge device; the name syncs to every signed-in client"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jul 2026 06:11:42 GMT",
+      "version": "3.338.0",
+      "tag": "@acedatacloud/nexior_v3.338.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "bcf2e86b037ce2374a30b3abffedd13fa39424e0",
+            "comment": "Scheduled run lists now refresh themselves while a run is still queued or running, so a finished run stops showing as 运行中 and becomes clickable without leaving and re-entering the page."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2026 23:39:30 GMT",
+      "version": "3.337.0",
+      "tag": "@acedatacloud/nexior_v3.337.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f7a651ee5ceceb29f483c81f1c7ddca25b76f607",
+            "comment": "Show which connector account each scheduled run used: run rows now carry a tag per pinned account (e.g. `zhihu · Germey`), falling back to the connector alone once the account is gone."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2026 05:20:15 GMT",
       "version": "3.336.5",
       "tag": "@acedatacloud/nexior_v3.336.5",

@@ -54,6 +54,7 @@ export interface ICodingBridgeState {
     getNodes: Status;
     claimPair: Status;
     deleteNode: Status;
+    renameNode: Status;
     getApplications: Status;
     getHistory: Status;
     getHistoryDetail: Status;

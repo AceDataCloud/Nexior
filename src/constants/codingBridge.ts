@@ -15,6 +15,12 @@ export const CB_BROWSER_RESUME = 'browser.resume';
 export const CB_NODE_TO_BROWSER = 'node.to_browser';
 export const CB_NODES_SNAPSHOT = 'nodes.snapshot';
 export const CB_NODE_STATUS = 'node.status';
+// Another client of the same user renamed a node; apply it live.
+export const CB_NODE_RENAMED = 'node.renamed';
+// Kept in step with the relay's CODING_BRIDGE_NODE_NAME_MAX_LENGTH, so an
+// over-long name is rejected in the dialog instead of by a 400.
+export const CB_NODE_NAME_MAX_LENGTH = 64;
+
 export const CB_ERROR = 'error';
 
 // --- Inner actions: browser -> node ----------------------------------------

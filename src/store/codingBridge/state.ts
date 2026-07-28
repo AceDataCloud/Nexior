@@ -24,6 +24,7 @@ export default (): ICodingBridgeState => {
       getNodes: Status.None,
       claimPair: Status.None,
       deleteNode: Status.None,
+      renameNode: Status.None,
       getApplications: Status.None,
       getHistory: Status.None,
       getHistoryDetail: Status.None
