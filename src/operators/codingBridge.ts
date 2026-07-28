@@ -34,6 +34,19 @@ class CodingBridgeOperator {
     });
   }
 
+  /** Rename a node. Stored server-side, so every client of this user sees it. */
+  async renameNode(
+    nodeId: string,
+    name: string,
+    options: { token: string }
+  ): Promise<AxiosResponse<{ ok: boolean; node_id: string; name: string }>> {
+    return await axios.patch(
+      `/api/nodes/${encodeURIComponent(nodeId)}`,
+      { name },
+      { headers: this.headers(options.token), baseURL: BASE_URL_CODING_BRIDGE }
+    );
+  }
+
   /** Revoke a node and drop any live connection it holds. */
   async deleteNode(nodeId: string, options: { token: string }): Promise<AxiosResponse<{ ok: boolean }>> {
     return await axios.delete(`/api/nodes/${encodeURIComponent(nodeId)}`, {
