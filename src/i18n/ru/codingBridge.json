@@ -19,6 +19,30 @@
     "message": "Подключите первое устройство",
     "description": "Кнопка подключения первого устройства"
   },
+  "nodeList.rename": {
+    "message": "Переименовать",
+    "description": "Rename a device"
+  },
+  "nodeList.renamePrompt": {
+    "message": "Задайте имя этому устройству. Имя синхронизируется со всеми устройствами, где выполнен вход.",
+    "description": "Rename device input prompt"
+  },
+  "nodeList.renameEmpty": {
+    "message": "Имя не может быть пустым.",
+    "description": "Rename device empty-name validation"
+  },
+  "nodeList.renameTooLong": {
+    "message": "Имя должно содержать не более {max} символов.",
+    "description": "Rename device too-long validation"
+  },
+  "nodeList.renameSuccess": {
+    "message": "Устройство переименовано.",
+    "description": "Rename device success"
+  },
+  "nodeList.renameFailed": {
+    "message": "Не удалось переименовать устройство.",
+    "description": "Rename device failure"
+  },
   "nodeList.remove": {
     "message": "Удалить",
     "description": "Удаление устройства"
@@ -199,6 +223,26 @@
     "message": "Готово",
     "description": "Метка успешного результата хода"
   },
+  "transcript.todoProgress": {
+    "message": "{done}/{total} completed",
+    "description": "Todo list progress"
+  },
+  "transcript.todoOverflow": {
+    "message": "…and {count} more",
+    "description": "Todo list overflow hint"
+  },
+  "transcript.todoCompleted": {
+    "message": "Completed",
+    "description": "Todo list: completed status for screen readers"
+  },
+  "transcript.todoInProgress": {
+    "message": "In progress",
+    "description": "Todo list: in-progress status for screen readers"
+  },
+  "transcript.todoPending": {
+    "message": "Pending",
+    "description": "Todo list: pending status for screen readers"
+  },
   "history.button": {
     "message": "История",
     "description": "Открывает панель истории разговоров"
@@ -222,6 +266,14 @@
   "history.empty": {
     "message": "История на этом устройстве не найдена.",
     "description": "Сообщение об отсутствии истории"
+  },
+  "history.filterAll": {
+    "message": "Все",
+    "description": "Сбросить фильтр источника, показать все сессии"
+  },
+  "history.filterEmpty": {
+    "message": "Нет сессий по текущему фильтру.",
+    "description": "Сообщение, когда результаты фильтрации пусты"
   },
   "history.messages": {
     "message": "Сообщений: {count}",
@@ -446,49 +498,5 @@
   "notify.failed": {
     "message": "Не удалось обновить настройки уведомлений.",
     "description": "Уведомление об ошибке при изменении настроек уведомлений"
-  },
-  "nodeList.rename": {
-    "message": "Переименовать",
-    "description": "Rename a device"
-  },
-  "nodeList.renamePrompt": {
-    "message": "Задайте имя этому устройству. Имя синхронизируется со всеми устройствами, где выполнен вход.",
-    "description": "Rename device input prompt"
-  },
-  "nodeList.renameEmpty": {
-    "message": "Имя не может быть пустым.",
-    "description": "Rename device empty-name validation"
-  },
-  "nodeList.renameTooLong": {
-    "message": "Имя должно содержать не более {max} символов.",
-    "description": "Rename device too-long validation"
-  },
-  "nodeList.renameSuccess": {
-    "message": "Устройство переименовано.",
-    "description": "Rename device success"
-  },
-  "nodeList.renameFailed": {
-    "message": "Не удалось переименовать устройство.",
-    "description": "Rename device failure"
-  },
-  "transcript.todoProgress": {
-    "message": "{done}/{total} completed",
-    "description": "Todo list progress"
-  },
-  "transcript.todoOverflow": {
-    "message": "…and {count} more",
-    "description": "Todo list overflow hint"
-  },
-  "transcript.todoCompleted": {
-    "message": "Completed",
-    "description": "Todo list: completed status for screen readers"
-  },
-  "transcript.todoInProgress": {
-    "message": "In progress",
-    "description": "Todo list: in-progress status for screen readers"
-  },
-  "transcript.todoPending": {
-    "message": "Pending",
-    "description": "Todo list: pending status for screen readers"
   }
 }

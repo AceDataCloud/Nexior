@@ -17,14 +17,50 @@
         </el-button>
       </div>
 
+      <!-- Only worth showing once more than one provider is actually present. -->
+      <div v-if="providerOptions.length > 1" class="flex flex-wrap items-center gap-1.5 mb-3">
+        <button
+          v-for="option in providerOptions"
+          :key="option.value"
+          type="button"
+          class="chip"
+          :class="{ 'chip--active': isSelected(option.value) }"
+          :aria-pressed="isSelected(option.value)"
+          @click="toggle(option.value)"
+        >
+          <img
+            v-if="option.icon"
+            :src="option.icon.src"
+            class="provider-icon"
+            :class="{ 'provider-icon--invert': option.icon.invertOnDark }"
+            alt=""
+            aria-hidden="true"
+          />
+          <code-icon v-else class="provider-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <span>{{ option.label }}</span>
+          <span class="chip-count">{{ option.count }}</span>
+        </button>
+        <button v-if="selectedProviders.length" type="button" class="chip-clear" @click="clearFilter">
+          {{ $t('codingBridge.history.filterAll') }}
+        </button>
+      </div>
+
       <div v-if="!currentNodeId" class="m-auto text-sm text-[var(--app-text-subtle)]">
         {{ $t('codingBridge.session.noDevice') }}
       </div>
-      <div v-else-if="loading && !sessions.length" class="m-auto text-sm text-[var(--app-text-subtle)]">
+      <div v-else-if="loading && !allSessions.length" class="m-auto text-sm text-[var(--app-text-subtle)]">
         {{ $t('codingBridge.history.loading') }}
       </div>
-      <div v-else-if="!sessions.length" class="m-auto text-sm text-[var(--app-text-subtle)] text-center">
+      <div v-else-if="!allSessions.length" class="m-auto text-sm text-[var(--app-text-subtle)] text-center">
         {{ $t('codingBridge.history.empty') }}
+      </div>
+      <!-- Sessions exist but the filter hides them all — say so, don't claim the
+           device has no history. -->
+      <div v-else-if="!sessions.length" class="m-auto text-sm text-[var(--app-text-subtle)] text-center">
+        <p class="m-0">{{ $t('codingBridge.history.filterEmpty') }}</p>
+        <el-button class="mt-2" size="small" round @click="clearFilter">
+          {{ $t('codingBridge.history.filterAll') }}
+        </el-button>
       </div>
 
       <ul v-else class="list-none m-0 p-0 flex-1 overflow-y-auto flex flex-col gap-2">
@@ -86,6 +122,16 @@ const PROVIDER_ICONS: Record<string, { src: string; invertOnDark: boolean }> = {
   copilot: { src: copilotIcon, invertOnDark: true }
 };
 
+// Chip order; providers not listed here fall in after these, alphabetically.
+const PROVIDER_ORDER = ['claude', 'codex', 'copilot'];
+
+interface IProviderOption {
+  value: string;
+  label: string;
+  count: number;
+  icon: { src: string; invertOnDark: boolean } | null;
+}
+
 export default defineComponent({
   name: 'CodingBridgeHistoryDrawer',
   components: {
@@ -101,6 +147,12 @@ export default defineComponent({
     }
   },
   emits: ['update:visible'],
+  data() {
+    return {
+      // Empty = no filter (show every provider).
+      selectedProviders: [] as string[]
+    };
+  },
   computed: {
     currentNodeId(): string | undefined {
       return this.$store.state.codingBridge?.currentNodeId;
@@ -108,10 +160,37 @@ export default defineComponent({
     loading(): boolean {
       return this.$store.state.codingBridge?.status?.getHistory === Status.Request;
     },
-    sessions(): ICodingBridgeHistorySummary[] {
+    allSessions(): ICodingBridgeHistorySummary[] {
       const id = this.currentNodeId;
       const list = id ? (this.$store.state.codingBridge?.history?.[id] ?? []) : [];
       return [...list].sort((a, b) => (b.updated_at ?? 0) - (a.updated_at ?? 0));
+    },
+    sessions(): ICodingBridgeHistorySummary[] {
+      if (!this.selectedProviders.length) {
+        return this.allSessions;
+      }
+      return this.allSessions.filter((item) => this.selectedProviders.includes(item.provider));
+    },
+    providerOptions(): IProviderOption[] {
+      const counts = new Map<string, number>();
+      this.allSessions.forEach((item) => {
+        counts.set(item.provider, (counts.get(item.provider) ?? 0) + 1);
+      });
+      return [...counts.entries()]
+        .sort(([a], [b]) => {
+          const ia = PROVIDER_ORDER.indexOf(a);
+          const ib = PROVIDER_ORDER.indexOf(b);
+          if (ia !== ib) {
+            return (ia < 0 ? PROVIDER_ORDER.length : ia) - (ib < 0 ? PROVIDER_ORDER.length : ib);
+          }
+          return a.localeCompare(b);
+        })
+        .map(([value, count]) => ({
+          value,
+          label: this.providerLabel(value),
+          count,
+          icon: this.providerIcon(value)
+        }));
     }
   },
   watch: {
@@ -119,9 +198,24 @@ export default defineComponent({
       if (value && this.currentNodeId) {
         this.$store.dispatch('codingBridge/getHistory', this.currentNodeId);
       }
+    },
+    // History is per-device; a filter picked for one node means nothing on another.
+    currentNodeId() {
+      this.selectedProviders = [];
     }
   },
   methods: {
+    isSelected(provider: string): boolean {
+      return this.selectedProviders.includes(provider);
+    },
+    toggle(provider: string) {
+      this.selectedProviders = this.isSelected(provider)
+        ? this.selectedProviders.filter((item) => item !== provider)
+        : [...this.selectedProviders, provider];
+    },
+    clearFilter() {
+      this.selectedProviders = [];
+    },
     providerLabel(provider: string): string {
       const labels: Record<string, string> = {
         claude: 'Claude Code',
@@ -168,6 +262,53 @@ export default defineComponent({
   transition: border-color 0.15s ease;
   &:hover {
     border-color: var(--el-color-primary);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  border: 1px solid var(--app-border-subtle);
+  background: transparent;
+  color: var(--app-text-subtle);
+  font-size: 12px;
+  line-height: 18px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--el-color-primary);
+  }
+
+  &--active {
+    border-color: var(--el-color-primary);
+    color: var(--el-color-primary);
+    background: color-mix(in srgb, var(--el-color-primary) 10%, transparent);
+  }
+}
+
+.chip-count {
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip-clear {
+  padding: 3px 6px;
+  border: none;
+  background: transparent;
+  color: var(--app-text-subtle);
+  font-size: 12px;
+  line-height: 18px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--el-color-primary);
   }
 }
 
