@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { reactive } from 'vue';
+import { ElMessage } from 'element-plus';
 
 import { CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import {
@@ -354,6 +356,52 @@ describe('chat/ScheduledTasks', () => {
       expect(tags[0].text()).toBe('Gmail digest');
     });
 
+    it('tags each run row with every connector account it ran as', async () => {
+      const wrapper = withToken();
+      await wrapper.setData({
+        activeTab: 'runs',
+        allRuns: [
+          {
+            id: 'r1',
+            task_id: 't1',
+            status: 'success',
+            scheduled_at: 1,
+            run_accounts: [
+              { connector_identifier: 'zhihu/zhihu', provider_alias: 'zhihu', label: '主号' },
+              { connector_identifier: 'medium/medium', provider_alias: 'medium', account_name: 'Germey' }
+            ]
+          }
+        ],
+        allRunsCount: 1
+      });
+
+      expect(wrapper.findAll('.run-account-tag').map((t) => t.text())).toEqual(['zhihu · 主号', 'medium · Germey']);
+    });
+
+    // A deleted account resolves to no name at all — the tag must not render a
+    // dangling separator, and rows without accounts must stay unchanged.
+    it('falls back to the connector alone when the account name is gone', async () => {
+      const wrapper = withToken();
+      await wrapper.setData({
+        activeTab: 'runs',
+        allRuns: [
+          {
+            id: 'r1',
+            task_id: 't1',
+            status: 'success',
+            scheduled_at: 1,
+            run_accounts: [{ connector_identifier: 'zhihu/zhihu', provider_alias: 'zhihu' }]
+          },
+          { id: 'r2', task_id: 't2', status: 'success', scheduled_at: 2 }
+        ],
+        allRunsCount: 2
+      });
+
+      const tags = wrapper.findAll('.run-account-tag');
+      expect(tags).toHaveLength(1);
+      expect(tags[0].text()).toBe('zhihu');
+    });
+
     it('resets to page 1 and refetches when the status filter changes', async () => {
       const spy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
       const wrapper = withToken();
@@ -401,6 +449,638 @@ describe('chat/ScheduledTasks', () => {
       expect(spy).toHaveBeenCalledTimes(2);
       expect(vm.allRuns.map((r) => r.id)).toEqual(['fresh']);
       expect(vm.allRunsLoading).toBe(false);
+    });
+  });
+
+  describe('polling pending runs', () => {
+    const listAllRuns = () => vi.spyOn(scheduledTasksOperator, 'listAllRuns');
+    const listRuns = () => vi.spyOn(scheduledTasksOperator, 'listRuns');
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+      vi.useRealTimers();
+    });
+
+    const pending: IScheduledRun = { id: 'r1', task_id: 't1', status: 'running', scheduled_at: 0 };
+    const settled: IScheduledRun = {
+      id: 'r1',
+      task_id: 't1',
+      status: 'success',
+      scheduled_at: 0,
+      conversation_id: 'conv-1'
+    };
+
+    // Keep a `scheduled_at: 0` run inside the 55-min give-up window.
+    const freshClock = () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(60_000);
+    };
+
+    const withToken = () =>
+      shallowMount(ScheduledTasks, {
+        global: {
+          stubs: {
+            ElCard: { template: '<div><slot /></div>' },
+            ElDrawer: { template: '<div><slot /></div>' },
+            ElTag: { template: '<span><slot /></span>' }
+          },
+          mocks: {
+            $t: (key: string) => errorMessages[key] ?? key,
+            $te: (key: string) => key in errorMessages,
+            $store: {
+              state: { chat: { credential: { token: 'tok' } }, site: { features: {} } }
+            }
+          }
+        }
+      });
+
+    type Vm = {
+      switchTab: (t: 'tasks' | 'runs') => void;
+      selectTask: (t: IScheduledTask) => Promise<void>;
+      onVisibilityChange: () => void;
+      allRuns: IScheduledRun[];
+      runs: IScheduledRun[];
+      allRunsLoading: boolean;
+      runsLoading: boolean;
+      showRunHistory: boolean;
+      selectedTask: IScheduledTask | null;
+      runPollTimer: ReturnType<typeof setInterval> | null;
+      runPollFailures: number;
+      runPollInFlight: boolean;
+      onStatusFilter: (s: string) => void;
+    };
+
+    const enterRunsTab = async (wrapper: ReturnType<typeof withToken>) => {
+      const vm = wrapper.vm as unknown as Vm;
+      vm.switchTab('runs');
+      await flushPromises();
+      return vm;
+    };
+
+    /** jsdom's `document.hidden` is a read-only getter; override it for the test. */
+    const setHidden = (hidden: boolean) => {
+      Object.defineProperty(document, 'hidden', { configurable: true, get: () => hidden });
+    };
+    afterEach(() => setHidden(false));
+
+    it('polls while a run is pending and stops once every row is terminal', async () => {
+      freshClock();
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockResolvedValue({ items: [settled], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      // A pending row on screen arms the timer.
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(spy).toHaveBeenCalledTimes(2);
+      // The whole point: the row settles and becomes clickable on its own.
+      expect(vm.allRuns[0].status).toBe('success');
+      expect(vm.allRuns[0].conversation_id).toBe('conv-1');
+
+      // Now that the row is terminal the timer must be gone.
+      await vi.advanceTimersByTimeAsync(60_000);
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+
+    it('never polls when every row is already terminal', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [settled], count: 1 });
+
+      const wrapper = withToken();
+      await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      await vi.advanceTimersByTimeAsync(60_000);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('gives up on a pending run too old for the worker reaper to settle', async () => {
+      vi.useFakeTimers();
+      // scheduled_at 0 + now 2h — past the 55-min window, so the reaper can no
+      // longer transition this row and polling it would never end.
+      vi.setSystemTime(2 * 60 * 60 * 1000);
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      await vi.advanceTimersByTimeAsync(60_000);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('stops polling the moment the user leaves the runs tab', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(vm.runPollTimer).not.toBeNull();
+
+      vm.switchTab('tasks');
+      // Assert the timer is disarmed synchronously. Checking only the request
+      // count would also pass on an implementation that leaves the timer
+      // running and merely no-ops inside the tick.
+      expect(vm.runPollTimer).toBeNull();
+
+      await vi.advanceTimersByTimeAsync(12_000 * 3);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('disarms the timer if a tick ever fires off the runs tab', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      expect(vm.runPollTimer).not.toBeNull();
+
+      // Leave the tab without going through `switchTab` — the backstop inside
+      // the tick is what has to catch this.
+      await wrapper.setData({ activeTab: 'tasks' });
+      await vi.advanceTimersByTimeAsync(12_000);
+
+      expect(vm.runPollTimer).toBeNull();
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('stops polling once the component unmounts', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      wrapper.unmount();
+      await vi.advanceTimersByTimeAsync(60_000);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('removes its visibility listener on unmount', async () => {
+      freshClock();
+      const remove = vi.spyOn(document, 'removeEventListener');
+      const wrapper = withToken();
+      await flushPromises();
+
+      wrapper.unmount();
+      expect(remove).toHaveBeenCalledWith('visibilitychange', expect.any(Function));
+    });
+
+    it('refreshes the drawer, not the feed, while it is open on a task', async () => {
+      freshClock();
+      const feedSpy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      const runsSpy = listRuns().mockResolvedValue([pending]);
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      await vm.selectTask(editedTask);
+      await flushPromises();
+      expect(runsSpy).toHaveBeenCalledTimes(1);
+
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(runsSpy).toHaveBeenCalledTimes(2);
+      // The drawer sits above the feed, so the feed must stay untouched.
+      expect(feedSpy).not.toHaveBeenCalled();
+    });
+
+    it('stops polling and drops the task when the drawer closes', async () => {
+      freshClock();
+      const feedSpy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      const runsSpy = listRuns().mockResolvedValue([pending]);
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      await vm.selectTask(editedTask);
+      await flushPromises();
+      expect(runsSpy).toHaveBeenCalledTimes(1);
+
+      // Close the way `v-model` does — no `@closed` transition event, which a
+      // stubbed or transition-less drawer never emits.
+      await wrapper.setData({ showRunHistory: false });
+      await flushPromises();
+      expect(vm.selectedTask).toBeNull();
+
+      await vi.advanceTimersByTimeAsync(60_000);
+      expect(runsSpy).toHaveBeenCalledTimes(1);
+      expect(feedSpy).not.toHaveBeenCalled();
+    });
+
+    it('keeps rows visible, shows no skeleton and stays silent on a failed poll', async () => {
+      freshClock();
+      const toast = vi.spyOn(ElMessage, 'error').mockImplementation(() => undefined as never);
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockRejectedValue(new Error('network blip'));
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      toast.mockClear();
+
+      let sawSkeleton = false;
+      const stopWatch = wrapper.vm.$watch('allRunsLoading', (v: boolean) => {
+        if (v) sawSkeleton = true;
+      });
+      await vi.advanceTimersByTimeAsync(12_000);
+      stopWatch();
+
+      expect(spy).toHaveBeenCalledTimes(2);
+      // A background refresh must not blank the list, flash the skeleton, or
+      // toast at a user who never asked for the request.
+      expect(vm.allRuns.map((r) => r.id)).toEqual(['r1']);
+      expect(sawSkeleton).toBe(false);
+      expect(toast).not.toHaveBeenCalled();
+    });
+
+    it('shows the skeleton and reports the error on a deliberate load', async () => {
+      freshClock();
+      const toast = vi.spyOn(ElMessage, 'error').mockImplementation(() => undefined as never);
+      listAllRuns().mockRejectedValue(new Error('network blip'));
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+
+      let sawSkeleton = false;
+      const stopWatch = wrapper.vm.$watch('allRunsLoading', (v: boolean) => {
+        if (v) sawSkeleton = true;
+      });
+      vm.switchTab('runs');
+      await flushPromises();
+      stopWatch();
+
+      expect(sawSkeleton).toBe(true);
+      expect(toast).toHaveBeenCalledTimes(1);
+    });
+
+    it('gives up after repeated failures instead of retrying an expired token forever', async () => {
+      freshClock();
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockRejectedValue(new Error('401'));
+
+      const wrapper = withToken();
+      await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      // 3 consecutive silent failures trip the breaker; the pending row stays
+      // on screen, so without one the timer would never disarm.
+      await vi.advanceTimersByTimeAsync(12_000 * 10);
+      expect(spy).toHaveBeenCalledTimes(1 + 3);
+    });
+
+    it('skips a tick rather than stacking a second request behind a slow poll', async () => {
+      freshClock();
+      let releaseSlow: (v: { items: IScheduledRun[]; count: number }) => void = () => undefined;
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseSlow = resolve)));
+
+      const wrapper = withToken();
+      await enterRunsTab(wrapper);
+
+      // First poll fires and hangs.
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      // Several more ticks elapse while it is still in flight — a silent poll
+      // never sets `allRunsLoading`, so only the dedicated in-flight guard can
+      // stop these from stacking up.
+      await vi.advanceTimersByTimeAsync(12_000 * 3);
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      releaseSlow({ items: [settled], count: 1 });
+      await flushPromises();
+    });
+
+    it('drops a stale drawer response that lands after the user switched tasks', async () => {
+      freshClock();
+      const otherTask = { ...editedTask, id: 'task-2', name: 'Second task' };
+      let releaseFirst: (v: IScheduledRun[]) => void = () => undefined;
+      const runsSpy = listRuns()
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseFirst = resolve)))
+        .mockResolvedValue([{ ...pending, id: 'r2', task_id: 'task-2' }]);
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      void vm.selectTask(editedTask);
+      await flushPromises();
+
+      // Move to another task while the first request is still in flight, then
+      // let the stale one land.
+      void vm.selectTask(otherTask);
+      await flushPromises();
+      releaseFirst([{ ...pending, id: 'r1', task_id: 'task-1' }]);
+      await flushPromises();
+
+      expect(runsSpy).toHaveBeenCalledTimes(2);
+      // The stale response must neither overwrite task 2's rows nor clear the
+      // skeleton belonging to the request that superseded it.
+      expect(vm.runs.map((r) => r.id)).toEqual(['r2']);
+      expect(vm.runsLoading).toBe(false);
+    });
+
+    it('ignores an out-of-order drawer response for the task still on screen', async () => {
+      freshClock();
+      let releaseOld: (v: IScheduledRun[]) => void = () => undefined;
+      listRuns()
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseOld = resolve)))
+        .mockResolvedValue([settled]);
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      void vm.selectTask(editedTask);
+      await flushPromises();
+
+      // A second load for the SAME task overtakes the first and settles the row.
+      await vm.selectTask(editedTask);
+      await flushPromises();
+      expect(vm.runs.map((r) => r.status)).toEqual(['success']);
+
+      // The older response now lands. Task id and drawer state both still
+      // match, so only the request-ordering guard can reject it — without one
+      // the row would flip back to 运行中 and re-arm the timer.
+      releaseOld([pending]);
+      await flushPromises();
+
+      expect(vm.runs.map((r) => r.status)).toEqual(['success']);
+      expect(vm.runPollTimer).toBeNull();
+    });
+
+    it('keeps the drawer skeleton off during a background refresh', async () => {
+      freshClock();
+      const runsSpy = listRuns().mockResolvedValue([pending]);
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      await vm.selectTask(editedTask);
+      await flushPromises();
+      expect(runsSpy).toHaveBeenCalledTimes(1);
+
+      let sawSkeleton = false;
+      const stopWatch = wrapper.vm.$watch('runsLoading', (v: boolean) => {
+        if (v) sawSkeleton = true;
+      });
+      await vi.advanceTimersByTimeAsync(12_000);
+      stopWatch();
+
+      expect(runsSpy).toHaveBeenCalledTimes(2);
+      expect(sawSkeleton).toBe(false);
+    });
+
+    it('recovers polling after the breaker trips once the user acts', async () => {
+      freshClock();
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockRejectedValueOnce(new Error('500'))
+        .mockRejectedValueOnce(new Error('500'))
+        .mockRejectedValueOnce(new Error('500'))
+        .mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      await vi.advanceTimersByTimeAsync(12_000 * 5);
+      expect(vm.runPollFailures).toBe(3);
+      expect(vm.runPollTimer).toBeNull();
+
+      // A deliberate action is the user retrying — polling must come back.
+      vm.onStatusFilter('failed');
+      await flushPromises();
+      expect(vm.runPollFailures).toBe(0);
+      expect(vm.runPollTimer).not.toBeNull();
+
+      const afterRetry = spy.mock.calls.length;
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(spy.mock.calls.length).toBeGreaterThan(afterRetry);
+    });
+
+    it('resets the shared breaker when the drawer closes, freeing the feed', async () => {
+      freshClock();
+      const feedSpy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+      listRuns().mockResolvedValueOnce([pending]).mockRejectedValue(new Error('500 on this one task'));
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      await enterRunsTab(wrapper);
+      await vm.selectTask(editedTask);
+      await flushPromises();
+
+      // This one task's endpoint is broken; the breaker trips.
+      await vi.advanceTimersByTimeAsync(12_000 * 5);
+      expect(vm.runPollFailures).toBe(3);
+
+      // The feed is healthy — closing the drawer must not leave it stuck.
+      const beforeClose = feedSpy.mock.calls.length;
+      await wrapper.setData({ showRunHistory: false });
+      await flushPromises();
+      expect(vm.runPollFailures).toBe(0);
+      expect(vm.runPollTimer).not.toBeNull();
+
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(feedSpy.mock.calls.length).toBeGreaterThan(beforeClose);
+    });
+
+    it('resets the breaker on a successful refresh, not just on user action', async () => {
+      freshClock();
+      listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        .mockRejectedValueOnce(new Error('blip'))
+        .mockRejectedValueOnce(new Error('blip'))
+        .mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+
+      await vi.advanceTimersByTimeAsync(12_000 * 2);
+      expect(vm.runPollFailures).toBe(2);
+
+      // A transient blip must not accumulate toward the trip once it clears.
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(vm.runPollFailures).toBe(0);
+      expect(vm.runPollTimer).not.toBeNull();
+    });
+
+    it('stops polling instead of spinning once the session token is gone', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      // A reactive store so clearing the credential actually invalidates the
+      // `token` computed, the way a real logout does.
+      const state = reactive({
+        chat: { credential: { token: 'tok' } as { token: string } | null },
+        site: { features: {} }
+      });
+      const wrapper = shallowMount(ScheduledTasks, {
+        global: {
+          stubs: {
+            ElCard: { template: '<div><slot /></div>' },
+            ElDrawer: { template: '<div><slot /></div>' },
+            ElTag: { template: '<span><slot /></span>' }
+          },
+          mocks: {
+            $t: (key: string) => errorMessages[key] ?? key,
+            $te: (key: string) => key in errorMessages,
+            $store: { state }
+          }
+        }
+      });
+      const vm = await enterRunsTab(wrapper);
+      expect(vm.runPollTimer).not.toBeNull();
+
+      // Logged out elsewhere. Every load would now return before its `try`,
+      // so nothing downstream could disarm the timer or trip the breaker.
+      state.chat.credential = null;
+      await vi.advanceTimersByTimeAsync(12_000);
+
+      expect(vm.runPollTimer).toBeNull();
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('clears a wedged in-flight guard when the tab regains focus', async () => {
+      freshClock();
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        // Never settles — the timeout is the first line of defence, this is
+        // the second: a wedged guard must not silently kill polling forever.
+        .mockImplementationOnce(() => new Promise(() => undefined))
+        .mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(vm.runPollInFlight).toBe(true);
+
+      // Ticks are now no-ops — the guard never clears on its own.
+      await vi.advanceTimersByTimeAsync(12_000 * 5);
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      setHidden(true);
+      vm.onVisibilityChange();
+      setHidden(false);
+      vm.onVisibilityChange();
+      await flushPromises();
+
+      expect(vm.runPollInFlight).toBe(false);
+      expect(spy).toHaveBeenCalledTimes(3);
+      expect(vm.runPollTimer).not.toBeNull();
+    });
+
+    it('holds the skeleton for the newer drawer request when a stale one lands', async () => {
+      freshClock();
+      const otherTask = { ...editedTask, id: 'task-2', name: 'Second task' };
+      let releaseFirst: (v: IScheduledRun[]) => void = () => undefined;
+      let releaseSecond: (v: IScheduledRun[]) => void = () => undefined;
+      listRuns()
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseFirst = resolve)))
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseSecond = resolve)));
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      void vm.selectTask(editedTask);
+      await flushPromises();
+      void vm.selectTask(otherTask);
+      await flushPromises();
+      expect(vm.runsLoading).toBe(true);
+
+      // The stale response lands while the newer request is STILL in flight.
+      // Only a guarded `finally` keeps the skeleton up for the live request.
+      releaseFirst([pending]);
+      await flushPromises();
+      expect(vm.runsLoading).toBe(true);
+      expect(vm.runs).toEqual([]);
+
+      releaseSecond([settled]);
+      await flushPromises();
+      expect(vm.runsLoading).toBe(false);
+      expect(vm.runs.map((r) => r.id)).toEqual(['r1']);
+    });
+
+    it('abandons an in-flight drawer request when the drawer closes', async () => {
+      freshClock();
+      listAllRuns().mockResolvedValue({ items: [], count: 0 });
+      let release: (v: IScheduledRun[]) => void = () => undefined;
+      listRuns().mockImplementationOnce(() => new Promise((resolve) => (release = resolve)));
+
+      const wrapper = withToken();
+      const vm = wrapper.vm as unknown as Vm;
+      void vm.selectTask(editedTask);
+      await flushPromises();
+
+      await wrapper.setData({ showRunHistory: false });
+      await flushPromises();
+      // Reopening on the same task is what makes the id bump load-bearing:
+      // without it the abandoned response still matches task + drawer state.
+      await vm.selectTask(editedTask);
+      await flushPromises();
+
+      // The first response lands last; its rows belong to a request the user
+      // dismissed and must not be adopted by the reopened drawer.
+      release([pending]);
+      await flushPromises();
+      expect(vm.runs).toEqual([]);
+      expect(vm.runsLoading).toBe(false);
+    });
+
+    it('does not let an abandoned poll unlock the guard for its successor', async () => {
+      freshClock();
+      let releaseStalled: (v: { items: IScheduledRun[]; count: number }) => void = () => undefined;
+      const spy = listAllRuns()
+        .mockResolvedValueOnce({ items: [pending], count: 1 })
+        // Poll A stalls, gets abandoned on refocus, and settles later.
+        .mockImplementationOnce(() => new Promise((resolve) => (releaseStalled = resolve)))
+        .mockImplementationOnce(() => new Promise(() => undefined))
+        .mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      // Refocus force-clears the guard and starts poll B, so A and B overlap.
+      setHidden(true);
+      vm.onVisibilityChange();
+      setHidden(false);
+      vm.onVisibilityChange();
+      await flushPromises();
+      expect(spy).toHaveBeenCalledTimes(3);
+
+      // A settles while B is still in flight. Its `finally` must not release
+      // the guard, or the next tick would stack a third request on top of B.
+      releaseStalled({ items: [pending], count: 1 });
+      await flushPromises();
+      expect(vm.runPollInFlight).toBe(true);
+
+      await vi.advanceTimersByTimeAsync(12_000 * 2);
+      expect(spy).toHaveBeenCalledTimes(3);
+    });
+
+    it('pauses in a background tab and refreshes once on return', async () => {
+      freshClock();
+      const spy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
+
+      const wrapper = withToken();
+      const vm = await enterRunsTab(wrapper);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      setHidden(true);
+      vm.onVisibilityChange();
+      await vi.advanceTimersByTimeAsync(12_000 * 3);
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      setHidden(false);
+      vm.onVisibilityChange();
+      // One catch-up request, issued synchronously so the user isn't left
+      // waiting out a full interval on rows that went stale while away.
+      expect(spy).toHaveBeenCalledTimes(2);
+      await flushPromises();
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      // And the timer is running again.
+      await vi.advanceTimersByTimeAsync(12_000);
+      expect(spy).toHaveBeenCalledTimes(3);
     });
   });
 });

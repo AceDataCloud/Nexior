@@ -161,6 +161,16 @@
                   <el-tag v-if="run.task_name" size="small" type="info" round class="run-task-tag">
                     {{ run.task_name }}
                   </el-tag>
+                  <el-tag
+                    v-for="(account, index) in run.run_accounts"
+                    :key="`${account.connector_identifier}-${index}`"
+                    size="small"
+                    type="info"
+                    round
+                    class="run-account-tag"
+                  >
+                    {{ accountTagText(account) }}
+                  </el-tag>
                   <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
                   <span
                     v-if="runOutcomeText(run)"
@@ -235,6 +245,16 @@
             </div>
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
             <div class="run-sub">
+              <el-tag
+                v-for="(account, index) in run.run_accounts"
+                :key="`${account.connector_identifier}-${index}`"
+                size="small"
+                type="info"
+                round
+                class="run-account-tag"
+              >
+                {{ accountTagText(account) }}
+              </el-tag>
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
               <span
                 v-if="runOutcomeText(run)"
@@ -513,11 +533,13 @@ import {
   IAuthorizableMcpServer,
   ScheduledTaskPayload,
   IScheduledTaskCapabilityDetail,
-  extractSkillNotActive
+  extractSkillNotActive,
+  isRunWorthPolling
 } from '@/operators/scheduledTasks';
 import type {
   IAuthorizableBrowserConnection,
   IAuthorizableConnectionAccount,
+  IRunConnectionAccount,
   IScheduledBrowserBinding
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
@@ -531,6 +553,16 @@ type RunStatusFilter = 'all' | IScheduledRunStatus;
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
 // DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
 const DEFAULT_SCHEDULED_MAX_TURNS = 50;
+
+// A run holds no `conversation_id` until the worker backfills it after the
+// agent loop returns, so a pending row is neither clickable nor accurate until
+// then. Nothing pushes that transition to the client, so poll while any
+// pending row is on screen. The give-up rule lives with `isRunWorthPolling`.
+const RUN_POLL_INTERVAL_MS = 12 * 1000;
+// Stop after this many consecutive failures. A poll is silent by design, so
+// without a circuit breaker an expired token would retry unseen every 12s for
+// as long as the pending rows stay within the give-up window.
+const RUN_POLL_MAX_FAILURES = 3;
 
 interface TaskForm {
   name: string;
@@ -617,6 +649,19 @@ export default defineComponent({
       pageSize: 6,
       runPage: 1,
       runPageSize: 8,
+      // One timer serves both run lists; whichever is on screen refreshes.
+      runPollTimer: null as ReturnType<typeof setInterval> | null,
+      runPollInFlight: false,
+      // Identifies the current poll so an abandoned one can't release the
+      // in-flight guard belonging to its successor.
+      runPollSeq: 0,
+      // Consecutive failed refreshes. An expired token fails every poll while
+      // leaving the pending rows on screen, which would otherwise keep the
+      // timer armed forever on an error nobody is being told about.
+      runPollFailures: 0,
+      // Bumped per drawer request so a stale response can't clear the skeleton
+      // or overwrite rows belonging to a task the user has since moved on from.
+      runsRequestId: 0,
       form: this.emptyForm() as TaskForm
     };
   },
@@ -690,8 +735,33 @@ export default defineComponent({
       return [...byConnector.entries()].map(([identifier, { label, accounts }]) => ({ identifier, label, accounts }));
     }
   },
+  watch: {
+    // The drawer sits above the feed, so closing it hands polling back to
+    // whatever the feed shows (or stops it on the tasks tab). Keyed on
+    // `showRunHistory` rather than the drawer's `@closed` transition event:
+    // every visibility decision reads this flag, and a close path that skips
+    // the transition would strand `selectedTask` and keep polling a drawer
+    // nobody can see.
+    showRunHistory(open: boolean) {
+      if (open) return;
+      this.selectedTask = null;
+      // Belt-and-braces: the `showRunHistory` / task-id checks already reject a
+      // response that lands after this, and reopening bumps the id anyway.
+      this.runsRequestId += 1;
+      this.runsLoading = false;
+      // The breaker is shared with the feed, so a task whose runs endpoint is
+      // failing must not leave the healthy feed stuck when the drawer closes.
+      this.runPollFailures = 0;
+      this.syncRunPolling();
+    }
+  },
   async mounted() {
+    document.addEventListener('visibilitychange', this.onVisibilityChange);
     await this.loadTasks();
+  },
+  unmounted() {
+    document.removeEventListener('visibilitychange', this.onVisibilityChange);
+    this.stopRunPolling();
   },
   methods: {
     emptyForm(): TaskForm {
@@ -737,11 +807,36 @@ export default defineComponent({
       this.selectedTask = task;
       this.showRunHistory = true;
       this.runPage = 1;
-      this.runsLoading = true;
+      await this.loadTaskRuns(task.id);
+    },
+    /** @param silent background poll refresh — see `loadAllRuns`. */
+    async loadTaskRuns(taskId: string, silent = false) {
+      if (!this.token) return;
+      const requestId = ++this.runsRequestId;
+      // A deliberate load is the user retrying; give the breaker a fresh start.
+      if (!silent) {
+        this.runsLoading = true;
+        this.runPollFailures = 0;
+      }
       try {
-        this.runs = await scheduledTasksOperator.listRuns(this.token!, task.id);
+        const items = await scheduledTasksOperator.listRuns(this.token, taskId);
+        // Drop the response if the drawer closed, moved to another task, or a
+        // newer request overtook this one mid-flight.
+        if (requestId !== this.runsRequestId) return;
+        if (!this.showRunHistory || this.selectedTask?.id !== taskId) return;
+        this.runs = items;
+        this.runPollFailures = 0;
+      } catch {
+        if (requestId !== this.runsRequestId) return;
+        this.runPollFailures += 1;
+        if (!silent) ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       } finally {
-        this.runsLoading = false;
+        // Guarded: a stale response must not clear the skeleton or re-evaluate
+        // polling on behalf of the request that superseded it.
+        if (requestId === this.runsRequestId) {
+          this.runsLoading = false;
+          this.syncRunPolling();
+        }
       }
     },
     onPageChange(p: number) {
@@ -753,6 +848,7 @@ export default defineComponent({
       // Always refetch on entry: runs land in the background from the scheduler,
       // and task renames/deletes change the task_name tag on existing rows.
       if (tab === 'runs') void this.loadAllRuns();
+      else this.stopRunPolling();
     },
     onStatusFilter(status: RunStatusFilter) {
       if (this.allRunsStatus === status) return;
@@ -764,10 +860,16 @@ export default defineComponent({
       this.allRunsPage = p;
       void this.loadAllRuns();
     },
-    async loadAllRuns() {
+    /** @param silent background poll refresh — keep the current rows visible
+     *  instead of flashing the skeleton, and stay quiet on failure. */
+    async loadAllRuns(silent = false) {
       if (!this.token) return;
       const requestId = ++this.allRunsRequestId;
-      this.allRunsLoading = true;
+      // A deliberate load is the user retrying; give the breaker a fresh start.
+      if (!silent) {
+        this.allRunsLoading = true;
+        this.runPollFailures = 0;
+      }
       try {
         const { items, count } = await scheduledTasksOperator.listAllRuns(this.token, {
           status: this.allRunsStatus === 'all' ? undefined : this.allRunsStatus,
@@ -778,15 +880,94 @@ export default defineComponent({
         if (requestId !== this.allRunsRequestId) return;
         this.allRuns = items;
         this.allRunsCount = count;
+        this.runPollFailures = 0;
       } catch {
         if (requestId !== this.allRunsRequestId) return;
-        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+        this.runPollFailures += 1;
+        // A poll runs unattended; a transient network blip shouldn't spray
+        // toasts at a user who never asked for this request.
+        if (!silent) ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       } finally {
-        if (requestId === this.allRunsRequestId) this.allRunsLoading = false;
+        if (requestId === this.allRunsRequestId) {
+          this.allRunsLoading = false;
+          this.syncRunPolling();
+        }
       }
     },
     onRunPageChange(p: number) {
       this.runPage = p;
+    },
+    /** Rows currently on screen — the drawer wins when open, since it sits
+     *  above the feed. */
+    visibleRuns(): IScheduledRun[] {
+      return this.showRunHistory ? this.runs : this.activeTab === 'runs' ? this.allRuns : [];
+    },
+    /** Start or stop polling to match what's on screen. Safe to call often —
+     *  it's the single owner of the timer's lifecycle. */
+    syncRunPolling() {
+      const now = Date.now();
+      const wanted =
+        !!this.token &&
+        this.runPollFailures < RUN_POLL_MAX_FAILURES &&
+        this.visibleRuns().some((run) => isRunWorthPolling(run, now));
+      if (!wanted || document.hidden) {
+        this.stopRunPolling();
+        return;
+      }
+      if (this.runPollTimer) return;
+      this.runPollTimer = setInterval(() => void this.pollRuns(), RUN_POLL_INTERVAL_MS);
+    },
+    stopRunPolling() {
+      if (!this.runPollTimer) return;
+      clearInterval(this.runPollTimer);
+      this.runPollTimer = null;
+    },
+    async pollRuns() {
+      // No token (session ended, logged out in another tab) means every load
+      // returns before its `try`, so nothing downstream would ever disarm the
+      // timer or trip the breaker — stop here instead of spinning.
+      if (!this.token) {
+        this.stopRunPolling();
+        return;
+      }
+      // Skip this tick rather than queue a second request behind a slow one.
+      // Tracked separately from the `loading` flags, which a silent poll
+      // deliberately leaves alone — so they can't serve as the in-flight guard.
+      if (this.runPollInFlight) return;
+      const seq = ++this.runPollSeq;
+      this.runPollInFlight = true;
+      try {
+        if (this.showRunHistory && this.selectedTask) {
+          await this.loadTaskRuns(this.selectedTask.id, true);
+        } else if (this.activeTab === 'runs') {
+          await this.loadAllRuns(true);
+        } else {
+          this.stopRunPolling();
+        }
+      } finally {
+        // Only the newest poll may release the guard. A stalled poll that was
+        // abandoned on refocus settles later, and would otherwise unlock on
+        // behalf of the poll that replaced it — letting requests stack up.
+        if (seq === this.runPollSeq) this.runPollInFlight = false;
+      }
+    },
+    onVisibilityChange() {
+      // Pause in a background tab; on return, refresh at once rather than
+      // waiting out a full interval on rows that may be stale by minutes.
+      if (document.hidden) this.stopRunPolling();
+      else {
+        // Coming back is a fresh start: whatever failed while away may well
+        // have been the sleeping tab itself. Clearing the in-flight guard too
+        // means a request that never settled despite its timeout can't wedge
+        // the poller for the life of the page.
+        this.runPollFailures = 0;
+        this.runPollInFlight = false;
+        void this.pollRuns();
+        // `pollRuns` re-arms via its load call, but only if it reaches one —
+        // an early return (no token, wrong tab) would otherwise leave the
+        // timer disarmed with no path back.
+        this.syncRunPolling();
+      }
     },
     openCreate() {
       if (this.saving) return;
@@ -1100,8 +1281,11 @@ export default defineComponent({
         // If the run-history drawer is open on this task, refresh it so the
         // freshly-queued run shows up right away.
         if (this.showRunHistory && this.selectedTask?.id === task.id) {
-          this.runs = await scheduledTasksOperator.listRuns(this.token!, task.id);
           this.runPage = 1;
+          await this.loadTaskRuns(task.id);
+        } else if (this.activeTab === 'runs') {
+          // Same for the global feed — the new run belongs at its top.
+          await this.loadAllRuns(true);
         }
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.triggerError') as string);
@@ -1140,6 +1324,14 @@ export default defineComponent({
     },
     runTagType(status: string) {
       return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
+    },
+    // Which account the run posted as, e.g. `zhihu · Germey`. The name half is
+    // resolved server-side and disappears once the account is deleted, so fall
+    // back to the connector alone rather than rendering a dangling separator.
+    accountTagText(account: IRunConnectionAccount) {
+      const connector = account.provider_alias || account.connector_identifier;
+      const name = account.label || account.account_name;
+      return name ? `${connector} · ${name}` : connector;
     },
     // The judge's own sentence beats a bare code like `goal_not_achieved`, and
     // it is shown for successes too — so it is NOT read from `error_message`.
@@ -1283,7 +1475,8 @@ export default defineComponent({
   border-color: var(--el-color-primary);
   color: #fff;
 }
-.run-task-tag {
+.run-task-tag,
+.run-account-tag {
   flex-shrink: 0;
   max-width: 200px;
   overflow: hidden;

@@ -6,6 +6,7 @@ import {
   CB_NODE_TO_BROWSER,
   CB_NODES_SNAPSHOT,
   CB_NODE_STATUS,
+  CB_NODE_RENAMED,
   CB_ERROR,
   CB_RECONNECT_MIN_MS,
   CB_RECONNECT_MAX_MS
@@ -19,6 +20,7 @@ export interface ICodingBridgeSocketHandlers {
   onEvent?: (payload: Record<string, any>, fromNode: string | undefined) => void;
   onNodesSnapshot?: (nodes: ICodingBridgeNode[]) => void;
   onNodeStatus?: (nodeId: string, status: 'online' | 'offline') => void;
+  onNodeRenamed?: (nodeId: string, name: string) => void;
   onRelayError?: (code: string, message: string) => void;
 }
 
@@ -135,6 +137,9 @@ export class CodingBridgeSocket {
         break;
       case CB_NODE_STATUS:
         this.handlers.onNodeStatus?.(payload.node_id, payload.status);
+        break;
+      case CB_NODE_RENAMED:
+        this.handlers.onNodeRenamed?.(payload.node_id, payload.name);
         break;
       case CB_ERROR:
         this.handlers.onRelayError?.(payload.code ?? 'error', payload.message ?? '');
