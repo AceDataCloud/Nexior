@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 07:19:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Jul 2026 08:46:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.1
+
+Tue, 28 Jul 2026 08:46:44 GMT
+
+### Patches
+
+- restore the authorized Skills / MCP servers when editing a scheduled task (dev@acedata.cloud)
 
 ## 3.340.0
 
