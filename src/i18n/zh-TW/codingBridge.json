@@ -19,6 +19,30 @@
     "message": "配對第一臺裝置",
     "description": "空狀態下的配對按鈕"
   },
+  "nodeList.rename": {
+    "message": "重新命名",
+    "description": "Rename a device"
+  },
+  "nodeList.renamePrompt": {
+    "message": "為這台裝置取個名稱，所有登入的裝置都會看到。",
+    "description": "Rename device input prompt"
+  },
+  "nodeList.renameEmpty": {
+    "message": "名稱不能為空。",
+    "description": "Rename device empty-name validation"
+  },
+  "nodeList.renameTooLong": {
+    "message": "名稱最長 {max} 個字元。",
+    "description": "Rename device too-long validation"
+  },
+  "nodeList.renameSuccess": {
+    "message": "裝置已重新命名。",
+    "description": "Rename device success"
+  },
+  "nodeList.renameFailed": {
+    "message": "重新命名裝置失敗。",
+    "description": "Rename device failure"
+  },
   "nodeList.remove": {
     "message": "移除",
     "description": "移除裝置"
@@ -199,6 +223,26 @@
     "message": "完成",
     "description": "回合結果完成標籤"
   },
+  "transcript.todoProgress": {
+    "message": "{done}/{total} completed",
+    "description": "Todo list progress"
+  },
+  "transcript.todoOverflow": {
+    "message": "…and {count} more",
+    "description": "Todo list overflow hint"
+  },
+  "transcript.todoCompleted": {
+    "message": "Completed",
+    "description": "Todo list: completed status for screen readers"
+  },
+  "transcript.todoInProgress": {
+    "message": "In progress",
+    "description": "Todo list: in-progress status for screen readers"
+  },
+  "transcript.todoPending": {
+    "message": "Pending",
+    "description": "Todo list: pending status for screen readers"
+  },
   "history.button": {
     "message": "歷史會話",
     "description": "開啟歷史會話抽屜"
@@ -222,6 +266,14 @@
   "history.empty": {
     "message": "此裝置上找不到歷史會話。",
     "description": "歷史為空提示"
+  },
+  "history.filterAll": {
+    "message": "全部",
+    "description": "清除來源篩選，顯示全部會話"
+  },
+  "history.filterEmpty": {
+    "message": "當前篩選下沒有會話。",
+    "description": "篩選後結果為空的提示"
   },
   "history.messages": {
     "message": "{count} 則訊息",
@@ -446,49 +498,5 @@
   "notify.failed": {
     "message": "無法更新通知設定。",
     "description": "Toast when enabling or disabling notifications errors"
-  },
-  "nodeList.rename": {
-    "message": "重新命名",
-    "description": "Rename a device"
-  },
-  "nodeList.renamePrompt": {
-    "message": "為這台裝置取個名稱，所有登入的裝置都會看到。",
-    "description": "Rename device input prompt"
-  },
-  "nodeList.renameEmpty": {
-    "message": "名稱不能為空。",
-    "description": "Rename device empty-name validation"
-  },
-  "nodeList.renameTooLong": {
-    "message": "名稱最長 {max} 個字元。",
-    "description": "Rename device too-long validation"
-  },
-  "nodeList.renameSuccess": {
-    "message": "裝置已重新命名。",
-    "description": "Rename device success"
-  },
-  "nodeList.renameFailed": {
-    "message": "重新命名裝置失敗。",
-    "description": "Rename device failure"
-  },
-  "transcript.todoProgress": {
-    "message": "{done}/{total} completed",
-    "description": "Todo list progress"
-  },
-  "transcript.todoOverflow": {
-    "message": "…and {count} more",
-    "description": "Todo list overflow hint"
-  },
-  "transcript.todoCompleted": {
-    "message": "Completed",
-    "description": "Todo list: completed status for screen readers"
-  },
-  "transcript.todoInProgress": {
-    "message": "In progress",
-    "description": "Todo list: in-progress status for screen readers"
-  },
-  "transcript.todoPending": {
-    "message": "Pending",
-    "description": "Todo list: pending status for screen readers"
   }
 }
