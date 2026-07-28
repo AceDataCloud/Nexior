@@ -34,8 +34,16 @@ export const setNodes = (state: ICodingBridgeState, payload: ICodingBridgeNode[]
 
 export const mergeNodeSnapshot = (state: ICodingBridgeState, snapshot: ICodingBridgeNode[]): void => {
   const online = new Set(snapshot.map((node) => node.node_id));
+  const names = new Map(snapshot.map((node) => [node.node_id, node.name]));
   for (const node of state.nodes) {
     node.status = online.has(node.node_id) ? 'online' : 'offline';
+    // The relay is the source of truth for the name. Adopting it here is what
+    // makes a rename land on a client that was disconnected when the
+    // `node.renamed` broadcast went out (backgrounded phone, closed laptop).
+    const name = names.get(node.node_id);
+    if (name) {
+      node.name = name;
+    }
   }
   for (const snap of snapshot) {
     if (!state.nodes.some((node) => node.node_id === snap.node_id)) {
@@ -51,6 +59,13 @@ export const setNodeStatus = (
   const node = state.nodes.find((item) => item.node_id === payload.node_id);
   if (node) {
     node.status = payload.status;
+  }
+};
+
+export const setNodeName = (state: ICodingBridgeState, payload: { node_id: string; name: string }): void => {
+  const node = state.nodes.find((item) => item.node_id === payload.node_id);
+  if (node) {
+    node.name = payload.name;
   }
 };
 
@@ -300,6 +315,7 @@ export default {
   setNodes,
   mergeNodeSnapshot,
   setNodeStatus,
+  setNodeName,
   setCurrentNode,
   setCurrentSession,
   upsertSession,

@@ -481,7 +481,18 @@ const normalizeHistoryProvider = (provider: unknown): ICodingBridgeHistoryProvid
   return provider === 'codex' || provider === 'copilot' ? provider : 'claude';
 };
 
+// Renames applied locally, stamped with a monotonic tick. A `getNodes` issued
+// BEFORE a rename but resolving AFTER it carries the pre-rename name and must
+// not revert it. Keyed per node so a rename of A never pins a name another
+// device set for B. A counter, not Date.now(): two events in the same
+// millisecond must still be ordered.
+let renameTick = 0;
+const locallyRenamed = new Map<string, { name: string; at: number }>();
+
 export const resetAll = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
+  // Drop the rename shadows too: they are keyed by node id and a different user
+  // must not inherit them.
+  locallyRenamed.clear();
   commit('resetAll');
 };
 
@@ -490,6 +501,15 @@ export const resetAll = ({ commit }: ActionContext<ICodingBridgeState, IRootStat
 // stubs keep that contract without pulling in any billing concept. ----------
 export const getApplications = async (): Promise<void> => {};
 export const setApplication = async (): Promise<void> => {};
+
+/** Apply a `node.renamed` broadcast. Exported so the reducer is testable. */
+export const applyNodeRenamed = (
+  commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
+  nodeId: string,
+  name: string
+): void => {
+  commit('setNodeName', { node_id: nodeId, name });
+};
 
 export const getNodes = async ({
   commit,
@@ -500,11 +520,19 @@ export const getNodes = async ({
     return [];
   }
   commit('updateStatus', { key: 'getNodes', value: Status.Request });
+  const requestedAt = renameTick;
   try {
     const { data } = await codingBridgeOperator.getNodes({ token });
-    commit('setNodes', data.nodes ?? []);
+    const nodes = (data.nodes ?? []).map((node) => {
+      // Protect only nodes renamed AFTER this request went out — that response
+      // was built before the rename and would revert it. A rename older than the
+      // request is already reflected server-side, so take the server's value.
+      const pending = locallyRenamed.get(node.node_id);
+      return pending && pending.at > requestedAt ? { ...node, name: pending.name } : node;
+    });
+    commit('setNodes', nodes);
     commit('updateStatus', { key: 'getNodes', value: Status.Success });
-    return data.nodes ?? [];
+    return nodes;
   } catch (error) {
     commit('updateStatus', { key: 'getNodes', value: Status.Error });
     throw error;
@@ -527,6 +555,37 @@ export const claimPair = async (
     return data.node_name;
   } catch (error) {
     commit('updateStatus', { key: 'claimPair', value: Status.Error });
+    throw error;
+  }
+};
+
+export const renameNode = async (
+  { commit, rootState }: ActionContext<ICodingBridgeState, IRootState>,
+  payload: { nodeId: string; name: string }
+): Promise<void> => {
+  const token = rootState.token?.access;
+  if (!token) {
+    throw new Error('not authenticated');
+  }
+  const name = payload.name.trim();
+  if (!name) {
+    throw new Error('name must not be empty');
+  }
+  commit('updateStatus', { key: 'renameNode', value: Status.Request });
+  try {
+    const { data } = await codingBridgeOperator.renameNode(payload.nodeId, name, { token });
+    // Trust the server's stored name — it is the value every other client gets.
+    const stored = data?.name ?? name;
+    // Bounded: a user has a handful of devices, and only the newest entries can
+    // still be newer than an in-flight request.
+    if (locallyRenamed.size >= 50) {
+      locallyRenamed.clear();
+    }
+    locallyRenamed.set(payload.nodeId, { name: stored, at: ++renameTick });
+    commit('setNodeName', { node_id: payload.nodeId, name: stored });
+    commit('updateStatus', { key: 'renameNode', value: Status.Success });
+  } catch (error) {
+    commit('updateStatus', { key: 'renameNode', value: Status.Error });
     throw error;
   }
 };
@@ -598,6 +657,11 @@ export const connect = ({
       // Merge live online flags onto the REST-sourced list without dropping
       // offline nodes the snapshot omits.
       commit('mergeNodeSnapshot', nodes);
+      // Then re-read the full list: a rename made elsewhere while this client
+      // was disconnected never arrived as `node.renamed`, and the snapshot
+      // above only covers ONLINE nodes. Dispatched here rather than in onOpen
+      // so the REST response can't land before — and overwrite — the snapshot.
+      dispatch('getNodes');
     },
     onNodeStatus: (nodeId, status) => {
       commit('setNodeStatus', { node_id: nodeId, status });
@@ -607,6 +671,10 @@ export const connect = ({
         dispatch('requestSessions', nodeId);
         dispatch('requestPendingPermissions', nodeId);
       }
+    },
+    onNodeRenamed: (nodeId, name) => {
+      // Renamed from another tab / the phone — mirror it here without a reload.
+      applyNodeRenamed(commit, nodeId, name);
     },
     onRelayError: (code, message) => console.warn('[codingBridge] relay error', code, message)
   });
@@ -1137,6 +1205,7 @@ export default {
   getNodes,
   claimPair,
   deleteNode,
+  renameNode,
   connect,
   disconnect,
   selectNode,
