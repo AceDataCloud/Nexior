@@ -120,6 +120,7 @@ export const renameSession = (state: ICodingBridgeState, payload: { from: string
   // while a later turn (higher seq) showed. The real id is brand-new to this tab
   // at re-key time, so reset its cursor to accept its whole stream.
   delete state.lastSeq[from];
+  delete state.seqChecked[from];
   state.lastSeq[to] = 0;
   for (const request of state.permissions) {
     if (request.session_id === from) {
@@ -184,6 +185,25 @@ export const setLastSeq = (state: ICodingBridgeState, payload: { session_id: str
   if (payload.seq > current) {
     state.lastSeq[payload.session_id] = payload.seq;
   }
+};
+
+// Drop a session's cursor. Used when the relay's seq space restarts under us
+// (see `applyNodeEvent`), where keeping the old high-water mark would make every
+// live event look like one we had already applied.
+export const resetLastSeq = (state: ICodingBridgeState, sessionId: string): void => {
+  delete state.lastSeq[sessionId];
+};
+
+// Mark a session's seq space as validated on this connection.
+export const markSeqChecked = (state: ICodingBridgeState, sessionId: string): void => {
+  state.seqChecked[sessionId] = true;
+};
+
+// Forget every validation. Called on each (re)connect: the relay is
+// single-replica, so a restart always drops our socket — the first event of a
+// session after one is where a renumbered seq space can be detected.
+export const clearSeqChecked = (state: ICodingBridgeState): void => {
+  state.seqChecked = {};
 };
 
 // Streaming: append an incremental text chunk onto the open bubble matching
@@ -301,6 +321,7 @@ export const removeNodeData = (state: ICodingBridgeState, nodeId: string): void 
       delete state.sessions[session.session_id];
       delete state.events[session.session_id];
       delete state.lastSeq[session.session_id];
+      delete state.seqChecked[session.session_id];
       if (state.currentSessionId === session.session_id) {
         state.currentSessionId = undefined;
       }
@@ -325,6 +346,9 @@ export default {
   truncateEventsBefore,
   rewindToCut,
   setLastSeq,
+  resetLastSeq,
+  markSeqChecked,
+  clearSeqChecked,
   appendDelta,
   finalizeStream,
   finalizeAllStreams,

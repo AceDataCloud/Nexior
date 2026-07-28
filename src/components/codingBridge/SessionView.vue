@@ -76,7 +76,11 @@
       </div>
 
       <!-- Transcript -->
-      <div ref="transcript" class="flex-1 min-h-0 overflow-y-auto px-5 py-4 flex flex-col gap-3">
+      <div
+        ref="transcript"
+        class="flex-1 min-h-0 overflow-y-auto px-5 py-4 flex flex-col gap-3"
+        @scroll="onTranscriptScroll"
+      >
         <!-- Restoring a conversation: show a skeleton until its transcript lands,
              but only when we don't already hold (live) events to render. -->
         <div v-if="historyLoading && !events.length" class="cb-skeleton">
@@ -599,6 +603,9 @@ const MAX_ATTACHMENTS = 10;
 // TranscriptItem, this bounds rendered memory regardless of conversation size.
 const RENDER_WINDOW = 60;
 const RENDER_PAGE = 60;
+// Px from the bottom still counted as "following the tail". Generous enough to
+// survive sub-pixel rounding and the composer's own resize.
+const SCROLL_PIN_THRESHOLD = 80;
 
 // Brand marks for each coding backend. `invertOnDark` flips the black OpenAI /
 // Copilot glyphs to white in dark mode; Claude's orange already reads on both.
@@ -671,7 +678,15 @@ export default defineComponent({
       maxAttachments: MAX_ATTACHMENTS,
       // How many of the most recent events to render; grows by RENDER_PAGE when
       // the user loads earlier turns. Reset on session switch.
-      visibleCount: RENDER_WINDOW
+      visibleCount: RENDER_WINDOW,
+      // Whether the transcript is following the tail. Cleared when the user
+      // scrolls up (so incoming events don't yank them back down), restored the
+      // moment they scroll back to the bottom or switch conversations.
+      pinnedToBottom: true,
+      // One tail-jump per frame, however many mutations the burst produced.
+      scrollPending: false,
+      transcriptObserver: undefined as MutationObserver | undefined,
+      observedTranscript: undefined as HTMLElement | undefined
     };
   },
   computed: {
@@ -704,6 +719,10 @@ export default defineComponent({
     events(): ICodingBridgeEvent[] {
       const id = this.currentSessionId;
       return id ? (this.$store.state.codingBridge?.events?.[id] ?? []) : [];
+    },
+    // A primitive the watcher can actually compare — see the `eventCount` watch.
+    eventCount(): number {
+      return this.events.length;
     },
     // Only the most recent `visibleCount` events are rendered; the rest stay
     // behind the "load earlier" control so a huge transcript never mounts at once.
@@ -963,7 +982,10 @@ export default defineComponent({
     }
   },
   watch: {
-    events() {
+    // Watch the COUNT, not the array: `appendEvent` pushes into the same array
+    // instance, so a watcher on `events` sees oldValue === newValue and never
+    // fires — the transcript then stopped following live output.
+    eventCount() {
       this.scrollToBottom();
     },
     pendingQuestion() {
@@ -973,6 +995,8 @@ export default defineComponent({
       this.scrollToBottom();
     },
     currentSessionId() {
+      // A different conversation always opens pinned to its newest message.
+      this.pinnedToBottom = true;
       this.scrollToBottom();
       // A different conversation starts capped to the most recent window again.
       this.visibleCount = RENDER_WINDOW;
@@ -1027,6 +1051,20 @@ export default defineComponent({
   mounted() {
     this.requestCapabilities();
     this.syncSessionSettings();
+    // A transcript restored before mount (deep link / page reload) already has
+    // its events in the store, so no watcher fires — open it at the newest turn.
+    this.scrollToBottom();
+    this.observeTranscript();
+  },
+  updated() {
+    // The transcript is behind `v-if="currentNode"`, so on a reload it appears
+    // only once the device list lands — after mount. Cheap no-op once attached.
+    this.observeTranscript();
+  },
+  beforeUnmount() {
+    this.transcriptObserver?.disconnect();
+    this.transcriptObserver = undefined;
+    this.observedTranscript = undefined;
   },
   methods: {
     requestCapabilities() {
@@ -1393,17 +1431,73 @@ export default defineComponent({
       });
     },
     scrollToBottom() {
-      this.$nextTick(() => {
+      if (!this.pinnedToBottom) {
+        return;
+      }
+      const jump = () => {
         const el = this.$refs.transcript as HTMLElement | undefined;
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
+      };
+      // Two passes: $nextTick lands after the patch, the rAF after the browser
+      // has laid out (images, code blocks and markdown grow the content AFTER
+      // the DOM patch, which left the old single-pass jump short of the bottom).
+      this.$nextTick(() => {
+        jump();
+        requestAnimationFrame(jump);
       });
+    },
+    // Streamed output grows via `appendDelta`, which mutates the open bubble's
+    // text in place — the event COUNT never changes, so no watcher fires and the
+    // tail would grow below the viewport. Watch the rendered DOM instead, which
+    // covers every way the transcript gets taller (deltas, markdown, images).
+    // Re-runs on every patch because the transcript sits behind `v-if`: on a
+    // reload the device list arrives after mount, so the element the observer
+    // needs does not exist yet at mount time.
+    observeTranscript() {
+      const el = this.$refs.transcript as HTMLElement | undefined;
+      if (el === this.observedTranscript) {
+        return;
+      }
+      this.transcriptObserver?.disconnect();
+      this.transcriptObserver = undefined;
+      this.observedTranscript = el;
+      if (!el || typeof MutationObserver === 'undefined') {
+        return;
+      }
+      this.transcriptObserver = new MutationObserver(() => this.scheduleScrollToBottom());
+      this.transcriptObserver.observe(el, { childList: true, subtree: true, characterData: true });
+    },
+    // Coalesce a delta burst into one jump per frame.
+    scheduleScrollToBottom() {
+      if (!this.pinnedToBottom || this.scrollPending) {
+        return;
+      }
+      this.scrollPending = true;
+      requestAnimationFrame(() => {
+        this.scrollPending = false;
+        const el = this.$refs.transcript as HTMLElement | undefined;
+        if (el && this.pinnedToBottom) {
+          el.scrollTop = el.scrollHeight;
+        }
+      });
+    },
+    // Following the tail is the user's to break: scrolling up detaches, coming
+    // back within a threshold of the bottom re-attaches.
+    onTranscriptScroll() {
+      const el = this.$refs.transcript as HTMLElement | undefined;
+      if (!el) {
+        return;
+      }
+      this.pinnedToBottom = el.scrollHeight - el.scrollTop - el.clientHeight <= SCROLL_PIN_THRESHOLD;
     },
     // Reveal an older page of the transcript, keeping the current scroll anchor.
     loadEarlier() {
       const el = this.$refs.transcript as HTMLElement | undefined;
       const prevHeight = el?.scrollHeight ?? 0;
+      // Reading earlier turns means we are no longer following the tail.
+      this.pinnedToBottom = false;
       this.visibleCount += RENDER_PAGE;
       this.$nextTick(() => {
         if (el) {
