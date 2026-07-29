@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 04:14:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 04:49:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.10
+
+Wed, 29 Jul 2026 04:49:09 GMT
+
+### Patches
+
+- fix(chat): restore blockquote spacing overridden by lazy-loaded github-markdown-css (dev@acedata.cloud)
 
 ## 3.340.9
 
