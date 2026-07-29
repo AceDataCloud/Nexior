@@ -73,7 +73,10 @@ export interface IRunConnectionAccount {
   account_name?: string;
 }
 
-export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed';
+/** `indeterminate` = the outcome judge abstained. Terminal, but NOT a failure —
+ *  the run may well have succeeded, we just could not prove it from tool
+ *  evidence, so it must not render in the failure style. */
+export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed' | 'indeterminate';
 
 /** Give up on a pending run this long after it was scheduled. The worker's
  *  reaper force-fails abandoned runs 45 min in, sweeping every 5 min, so

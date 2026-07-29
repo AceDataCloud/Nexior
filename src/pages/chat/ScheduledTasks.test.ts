@@ -866,6 +866,17 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.allRuns.map((r) => r.id)).toEqual(['fresh']);
       expect(vm.allRunsLoading).toBe(false);
     });
+
+    it('does not style an indeterminate run as a failure', () => {
+      // The judge abstaining means "could not prove it", not "it broke". Four
+      // runs whose articles were live rendered red under the old mapping.
+      const vm = withToken().vm as unknown as { runTagType: (s: string) => string };
+      expect(vm.runTagType('indeterminate')).not.toBe('danger');
+      expect(vm.runTagType('failed')).toBe('danger');
+      expect(vm.runTagType('success')).toBe('success');
+      // Still distinct from a run that is merely in flight.
+      expect(vm.runTagType('indeterminate')).not.toBe(vm.runTagType('running'));
+    });
   });
 
   describe('polling pending runs', () => {

@@ -184,7 +184,7 @@
                   <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
                   <span
                     v-if="runOutcomeText(run)"
-                    :class="run.status === 'success' ? 'run-outcome' : 'run-error'"
+                    :class="run.status === 'failed' ? 'run-error' : 'run-outcome'"
                     :title="runOutcomeText(run)"
                   >
                     {{ runOutcomeText(run) }}
@@ -268,7 +268,7 @@
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
               <span
                 v-if="runOutcomeText(run)"
-                :class="run.status === 'success' ? 'run-outcome' : 'run-error'"
+                :class="run.status === 'failed' ? 'run-error' : 'run-outcome'"
                 :title="runOutcomeText(run)"
               >
                 {{ runOutcomeText(run) }}
@@ -635,7 +635,7 @@ export default defineComponent({
       runs: [] as IScheduledRun[],
       activeTab: 'tasks' as ScheduledTab,
       tabs: ['tasks', 'runs'] as ScheduledTab[],
-      statusFilters: ['all', 'success', 'failed', 'running', 'queued'] as RunStatusFilter[],
+      statusFilters: ['all', 'success', 'failed', 'indeterminate', 'running', 'queued'] as RunStatusFilter[],
       allRuns: [] as IScheduledRun[],
       allRunsCount: 0,
       allRunsLoading: false,
@@ -1413,7 +1413,12 @@ export default defineComponent({
       return state === 'enabled' ? 'success' : state === 'error' ? 'danger' : 'info';
     },
     runTagType(status: string) {
-      return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
+      // `indeterminate` is not a failure — the judge only failed to prove the
+      // outcome. Rendering it red made four live-published runs read as broken.
+      if (status === 'success') return 'success';
+      if (status === 'failed') return 'danger';
+      if (status === 'indeterminate') return 'info';
+      return 'warning';
     },
     // Which account the run posted as, e.g. `zhihu · Germey`. The name half is
     // resolved server-side and disappears once the account is deleted, so fall
