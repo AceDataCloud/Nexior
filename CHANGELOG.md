@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 05:40:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 13:16:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.12
+
+Wed, 29 Jul 2026 13:16:43 GMT
+
+### Patches
+
+- kling/flux/pixverse: 数字参数 setter 的类型标注改回 number (dev@acedata.cloud)
 
 ## 3.340.11
 
