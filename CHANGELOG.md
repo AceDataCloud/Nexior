@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 13:16:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 16:05:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.341.0
+
+Wed, 29 Jul 2026 16:05:41 GMT
+
+### Minor changes
+
+- desktop: per-tool always-allow toggles for connected MCP tools (dev@acedata.cloud)
 
 ## 3.340.12
 
