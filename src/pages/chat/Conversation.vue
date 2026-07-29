@@ -1595,6 +1595,10 @@ export default defineComponent({
   :deep(.trigger-name) {
     overflow: hidden;
     text-overflow: ellipsis;
+    // `.trigger-name` ships line-height == font-size (15px), so its line box
+    // has no room for descenders. Clipping for the ellipsis would shear the
+    // `g`/`p` in names like `gpt-5.6-luna` flat — give the box that room back.
+    line-height: 1.4;
   }
 }
 
