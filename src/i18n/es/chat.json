@@ -1231,6 +1231,46 @@
   "scheduledTasks.run.reason.run_abandoned": {
     "message": "Estado de ejecución desconocido"
   },
+  "actions.rename": {
+    "message": "Renombrar",
+    "description": "Elemento del menú de operaciones de conversación para renombrar"
+  },
+  "actions.renameTitle": {
+    "message": "Renombrar conversación",
+    "description": "Título del cuadro de diálogo para renombrar la conversación"
+  },
+  "actions.renameEmpty": {
+    "message": "Por favor ingresa un nombre",
+    "description": "Mensaje que indica que el nombre está vacío al intentar renombrar"
+  },
+  "actions.renameSuccess": {
+    "message": "Renombrado",
+    "description": "Mensaje que indica que la conversación se renombró con éxito"
+  },
+  "actions.renameFailed": {
+    "message": "Error al renombrar, por favor intenta de nuevo más tarde",
+    "description": "Mensaje que indica que el renombrado de la conversación falló"
+  },
+  "actions.deleteConfirm": {
+    "message": "¿Confirmar la eliminación de esta conversación? No se puede recuperar una vez eliminada.",
+    "description": "Mensaje de confirmación antes de eliminar la conversación"
+  },
+  "actions.deleteSuccess": {
+    "message": "Eliminado",
+    "description": "Mensaje que indica que la conversación se eliminó con éxito"
+  },
+  "actions.deleteFailed": {
+    "message": "Error al eliminar, por favor intenta de nuevo más tarde",
+    "description": "Mensaje que indica que la eliminación de la conversación falló"
+  },
+  "actions.tokenMissing": {
+    "message": "Token no existe, por favor vuelve a iniciar sesión",
+    "description": "Mensaje de error cuando falta el token durante la operación de conversación"
+  },
+  "actions.conversationMissing": {
+    "message": "La conversación no existe",
+    "description": "Mensaje de error cuando la conversación objetivo no existe durante la operación de conversación"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Nombre del modelo del servicio, es decir, Claude Opus 4.7"

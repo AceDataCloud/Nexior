@@ -5,26 +5,45 @@
         <div class="toolbar-left">
           <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
           <byok-badge class="byok-badge" />
-        </div>
-        <div class="toolbar-actions">
-          <el-tooltip v-if="conversationId" :content="$t('chat.share.menu')" placement="bottom">
-            <el-button
-              class="toolbar-btn"
-              text
-              :aria-label="$t('chat.share.menu')"
-              :title="$t('chat.share.menu')"
-              @click="shareDialogVisible = true"
+          <el-dropdown
+            v-if="conversationId"
+            trigger="click"
+            placement="bottom-start"
+            :teleported="true"
+            @command="onConversationCommand"
+          >
+            <span
+              class="toolbar-more"
+              role="button"
+              tabindex="0"
+              :aria-label="$t('common.button.more')"
+              :title="$t('common.button.more')"
             >
-              <share-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
+              <more-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="rename">
+                  <edit-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  {{ $t('chat.actions.rename') }}
+                </el-dropdown-item>
+                <el-dropdown-item command="share">
+                  <share-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  {{ $t('chat.share.menu') }}
+                </el-dropdown-item>
+                <el-dropdown-item command="delete">
+                  <delete-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  {{ $t('common.button.delete') }}
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
       </div>
-      <share-conversation-dialog
-        v-model="shareDialogVisible"
-        :conversation-id="conversationId"
-        :share-id="conversation?.share_id"
-        @update:share-id="onShareIdUpdated"
+      <conversation-actions
+        ref="actions"
+        :active-conversation-id="conversationId"
+        @change-conversation="onChangeConversation"
       />
       <div :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation }">
         <div
@@ -84,7 +103,7 @@
 </template>
 
 <script lang="ts">
-import { ShareIcon } from '@acedatacloud/core/icons/components';
+import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
@@ -101,7 +120,7 @@ import {
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import BYOKBadge from '@/components/chat/BYOKBadge.vue';
-import ShareConversationDialog from '@/components/chat/ShareConversationDialog.vue';
+import ConversationActions, { type ConversationCommand } from '@/components/chat/ConversationActions.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -123,7 +142,7 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
-import { ElButton, ElSkeleton, ElSkeletonItem, ElTooltip } from 'element-plus';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
   drawer: boolean;
@@ -139,7 +158,6 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  shareDialogVisible: boolean;
   restoringConversationId: string | undefined;
   /**
    * Set right before pushing the URL for a freshly-completed chat so the
@@ -174,19 +192,23 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
+    DeleteIcon,
+    EditIcon,
+    MoreIcon,
     ShareIcon,
     Composer,
     Disclaimer,
     ConnectorStrip,
     ModelSelector,
     'byok-badge': BYOKBadge,
-    ShareConversationDialog,
+    ConversationActions,
     Message,
     Layout,
-    ElButton,
+    ElDropdown,
+    ElDropdownItem,
+    ElDropdownMenu,
     ElSkeleton,
-    ElSkeletonItem,
-    ElTooltip
+    ElSkeletonItem
   },
   data(): IData {
     return {
@@ -199,7 +221,6 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      shareDialogVisible: false,
       restoringConversationId: undefined,
       skipNextRestoreId: undefined,
       messages: [],
@@ -347,11 +368,12 @@ export default defineComponent({
       // never auto-runs a stale tool against the wrong conversation.
       this.pendingClientTools = [];
     },
-    onShareIdUpdated(shareId?: string) {
-      // Keep the store conversation in sync so the dialog reopens with the
-      // current link (or the "create" state after revoking).
-      if (!this.conversation) return;
-      this.$store.dispatch('chat/setConversation', { ...this.conversation, share_id: shareId });
+    onConversationCommand(command: ConversationCommand) {
+      // The dropdown only renders when the route has an :id; the store row
+      // may still be loading, so fall back to a minimal stub carrying the id.
+      const conversation = this.conversation ?? ({ id: this.conversationId } as IChatConversation);
+      if (!conversation.id) return;
+      (this.$refs.actions as InstanceType<typeof ConversationActions>)?.run(command, conversation);
     },
     // Idempotent restore for the URL-pinned conversation. Bails on
     // missing token (credential.token watcher will retry), missing :id
@@ -1559,6 +1581,25 @@ export default defineComponent({
 
 .selector {
   width: max-content;
+  // Let a long model name ellipsize instead of pushing the `…` menu — and on
+  // mobile the fixed Credits pill — out of reach. `min-width: 0` alone isn't
+  // enough: the inner name is `white-space: nowrap`, so it needs an explicit
+  // ellipsis to actually give up width.
+  min-width: 0;
+  overflow: hidden;
+
+  :deep(.trigger) {
+    max-width: 100%;
+  }
+
+  :deep(.trigger-name) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // `.trigger-name` ships line-height == font-size (15px), so its line box
+    // has no room for descenders. Clipping for the ellipsis would shear the
+    // `g`/`p` in names like `gpt-5.6-luna` flat — give the box that room back.
+    line-height: 1.4;
+  }
 }
 
 .toolbar-left {
@@ -1572,31 +1613,27 @@ export default defineComponent({
   flex-shrink: 0;
 }
 
-.toolbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.toolbar-btn {
-  position: relative;
+.toolbar-more {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 10px;
   font-size: 15px;
   color: var(--el-text-color-secondary);
-  padding: 6px 10px;
-  height: 32px;
-  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
 
   &:hover {
-    color: var(--el-color-primary);
+    background: var(--el-fill-color-light);
+    color: var(--el-text-color-primary);
   }
 
-  .external-icon {
-    font-size: 9px;
-    opacity: 0.55;
-    margin-left: -2px;
+  &:focus-visible {
+    outline: 2px solid var(--el-color-primary);
+    outline-offset: 1px;
   }
 }
 @media (max-width: 767px) {
@@ -1707,11 +1744,10 @@ export default defineComponent({
 
 @media (max-width: 767px) {
   .toolbar {
-    padding: 0 8px 0 54px;
-  }
-
-  .toolbar-actions {
-    margin-right: 36px;
+    // Right gutter clears the fixed Credits pill (Main.vue, right: 0.5rem);
+    // left clears the hamburger. The pill drops its "Credits" unit label
+    // below 480px (application/Status.vue), so it needs less room there.
+    padding: 0 160px 0 54px;
   }
 
   .dialogue.empty .starter {

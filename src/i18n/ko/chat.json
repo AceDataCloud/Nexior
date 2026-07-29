@@ -1230,6 +1230,46 @@
   "scheduledTasks.run.reason.run_abandoned": {
     "message": "실행 상태를 알 수 없음"
   },
+  "actions.rename": {
+    "message": "이름 변경",
+    "description": "회사 작업 메뉴에서 이름 변경 항목"
+  },
+  "actions.renameTitle": {
+    "message": "세션 이름 변경",
+    "description": "세션 이름 변경 대화 상자의 제목"
+  },
+  "actions.renameEmpty": {
+    "message": "이름을 입력하세요",
+    "description": "이름이 비어 있을 때의 리네임 알림"
+  },
+  "actions.renameSuccess": {
+    "message": "이름이 변경되었습니다",
+    "description": "세션 이름 변경 성공 알림"
+  },
+  "actions.renameFailed": {
+    "message": "이름 변경에 실패했습니다. 나중에 다시 시도하세요",
+    "description": "세션 이름 변경 실패 알림"
+  },
+  "actions.deleteConfirm": {
+    "message": "이 회사를 삭제하시겠습니까? 삭제 후에는 복구할 수 없습니다.",
+    "description": "회사를 삭제하기 전의 확인 메시지"
+  },
+  "actions.deleteSuccess": {
+    "message": "삭제되었습니다",
+    "description": "회사를 성공적으로 삭제했을 때의 메시지"
+  },
+  "actions.deleteFailed": {
+    "message": "삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    "description": "회사를 삭제하는 데 실패했을 때의 메시지"
+  },
+  "actions.tokenMissing": {
+    "message": "토큰이 존재하지 않습니다. 다시 로그인하세요",
+    "description": "세션 작업 시 자격 증명이 누락된 오류 알림"
+  },
+  "actions.conversationMissing": {
+    "message": "회사가 존재하지 않습니다",
+    "description": "회사가 작업 중 목표 회사가 존재하지 않을 때의 오류 메시지"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "서비스의 모델 이름, 즉 Claude Opus 4.7"

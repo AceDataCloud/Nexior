@@ -62,7 +62,7 @@
                 <el-dropdown-menu>
                   <el-dropdown-item command="rename" @click.stop>
                     <edit-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                    重命名
+                    {{ $t('chat.actions.rename') }}
                   </el-dropdown-item>
                   <el-dropdown-item command="share" @click.stop>
                     <share-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -80,36 +80,10 @@
       </div>
     </div>
 
-    <el-dialog v-model="renameDialogVisible" width="420px" title="重命名" :close-on-click-modal="false">
-      <el-input v-model="renameDraft" autofocus @keydown.enter="onConfirmRename" />
-      <template #footer>
-        <el-button @click="renameDialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
-        <el-button type="primary" :loading="renameSubmitting" @click="onConfirmRename">
-          {{ $t('common.button.confirm') }}
-        </el-button>
-      </template>
-    </el-dialog>
-
-    <el-dialog
-      v-model="deleteDialogVisible"
-      width="420px"
-      :title="$t('chat.message.confirmDelete')"
-      :close-on-click-modal="false"
-    >
-      <div class="delete-tip">确认删除该会话？删除后不可恢复。</div>
-      <template #footer>
-        <el-button @click="deleteDialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
-        <el-button type="danger" :loading="deleteSubmitting" @click="onConfirmDelete">
-          {{ $t('common.button.delete') }}
-        </el-button>
-      </template>
-    </el-dialog>
-
-    <share-conversation-dialog
-      v-model="shareDialogVisible"
-      :conversation-id="actingConversation?.id"
-      :share-id="actingConversation?.share_id"
-      @update:share-id="onShareIdUpdated"
+    <conversation-actions
+      ref="actions"
+      :active-conversation-id="conversationId"
+      @change-conversation="$emit('change-conversation', $event)"
     />
   </div>
 </template>
@@ -125,23 +99,11 @@ import {
   TimeIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import {
-  ElSkeleton,
-  ElInput,
-  ElButton,
-  ElDialog,
-  ElDropdown,
-  ElDropdownItem,
-  ElDropdownMenu,
-  ElMessage
-} from 'element-plus';
-import { chatOperator } from '@/operators';
+import { ElSkeleton, ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
 import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_ARTIFACTS } from '@/router/constants';
-import ShareConversationDialog from './ShareConversationDialog.vue';
-
-type ConversationCommand = 'rename' | 'delete' | 'share';
+import ConversationActions, { type ConversationCommand } from './ConversationActions.vue';
 
 export default defineComponent({
   name: 'SidePanel',
@@ -153,27 +115,16 @@ export default defineComponent({
     MoreIcon,
     ShareIcon,
     TimeIcon,
-    ElInput,
-    ElButton,
-    ElDialog,
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
     ElSkeleton,
-    ShareConversationDialog
+    ConversationActions
   },
   props: {},
   emits: ['change-conversation'],
   data() {
-    return {
-      renameDialogVisible: false,
-      deleteDialogVisible: false,
-      shareDialogVisible: false,
-      actingConversation: undefined as IChatConversation | undefined,
-      renameDraft: '',
-      renameSubmitting: false,
-      deleteSubmitting: false
-    };
+    return {};
   },
   computed: {
     conversationId() {
@@ -231,9 +182,6 @@ export default defineComponent({
     },
     loading() {
       return this.$store.state.chat.status.getConversations === Status.Request;
-    },
-    token() {
-      return this.$store.state.chat?.credential?.token;
     }
   },
   methods: {
@@ -259,95 +207,7 @@ export default defineComponent({
       return conversation?.title || conversation?.last_message_preview || '';
     },
     onConversationCommand(command: ConversationCommand, conversation: IChatConversation) {
-      if (command === 'rename') {
-        this.openRenameDialog(conversation);
-      } else if (command === 'delete') {
-        this.openDeleteDialog(conversation);
-      } else if (command === 'share') {
-        this.openShareDialog(conversation);
-      }
-    },
-    openShareDialog(conversation: IChatConversation) {
-      this.actingConversation = conversation;
-      this.shareDialogVisible = true;
-    },
-    onShareIdUpdated(shareId?: string) {
-      // Reflect the new share state on the sidebar row + store so reopening
-      // the dialog shows the correct link without a refetch.
-      if (!this.actingConversation) return;
-      this.actingConversation.share_id = shareId;
-      this.$store.dispatch('chat/setConversation', { ...this.actingConversation, share_id: shareId });
-    },
-    openRenameDialog(conversation: IChatConversation) {
-      this.actingConversation = conversation;
-      this.renameDraft = (conversation?.title || '').trim();
-      this.renameDialogVisible = true;
-    },
-    openDeleteDialog(conversation: IChatConversation) {
-      this.actingConversation = conversation;
-      this.deleteDialogVisible = true;
-    },
-    async onConfirmRename() {
-      const token = this.token;
-      const conversationId = this.actingConversation?.id;
-      const title = (this.renameDraft || '').trim();
-      if (!token) {
-        ElMessage.error('Token 不存在，请重新登录');
-        return;
-      }
-      if (!conversationId) {
-        ElMessage.error('会话不存在');
-        return;
-      }
-      if (!title) {
-        ElMessage.warning('请输入名称');
-        return;
-      }
-      this.renameSubmitting = true;
-      try {
-        await chatOperator.updateConversation(
-          {
-            id: conversationId,
-            title
-          } as IChatConversation,
-          { token }
-        );
-        await this.$store.dispatch('chat/getConversations');
-        this.renameDialogVisible = false;
-        ElMessage.success('已重命名');
-      } catch (e) {
-        console.error(e);
-        ElMessage.error('重命名失败，请稍后重试');
-      } finally {
-        this.renameSubmitting = false;
-      }
-    },
-    async onConfirmDelete() {
-      const token = this.token;
-      const conversationId = this.actingConversation?.id;
-      if (!token) {
-        ElMessage.error('Token 不存在，请重新登录');
-        return;
-      }
-      if (!conversationId) {
-        ElMessage.error('会话不存在');
-        return;
-      }
-      this.deleteSubmitting = true;
-      try {
-        await chatOperator.deleteConversation(conversationId, { token });
-        await this.$store.dispatch('chat/getConversations');
-        if (conversationId === this.conversationId) {
-          this.$emit('change-conversation', undefined);
-        }
-        this.deleteDialogVisible = false;
-        ElMessage.success('已删除');
-      } catch (e) {
-        console.error(e);
-        ElMessage.error('删除失败，请稍后重试');
-      } finally {
-        this.deleteSubmitting = false;
-      }
+      (this.$refs.actions as InstanceType<typeof ConversationActions>)?.run(command, conversation);
     }
   }
 });
@@ -461,12 +321,6 @@ export default defineComponent({
           }
         }
       }
-    }
-
-    .delete-tip {
-      color: var(--el-text-color-regular);
-      font-size: 14px;
-      line-height: 22px;
     }
   }
 }

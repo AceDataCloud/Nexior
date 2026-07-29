@@ -1191,6 +1191,46 @@
   "scheduledTasks.run.reason.run_abandoned": {
     "message": "実行状態が不明です"
   },
+  "actions.rename": {
+    "message": "名前を変更",
+    "description": "会話操作メニュー内の名前を変更する項目"
+  },
+  "actions.renameTitle": {
+    "message": "会話の名前を変更",
+    "description": "会話の名前を変更するダイアログのタイトル"
+  },
+  "actions.renameEmpty": {
+    "message": "名前を入力してください",
+    "description": "名前を変更する際に名前が空であることを示すメッセージ"
+  },
+  "actions.renameSuccess": {
+    "message": "名前が変更されました",
+    "description": "会話の名前変更が成功したことを示すメッセージ"
+  },
+  "actions.renameFailed": {
+    "message": "名前の変更に失敗しました。後でもう一度お試しください。",
+    "description": "会話の名前変更に失敗した際のメッセージ"
+  },
+  "actions.deleteConfirm": {
+    "message": "この会話を削除してもよろしいですか？削除後は復元できません。",
+    "description": "会話を削除する前の確認メッセージ"
+  },
+  "actions.deleteSuccess": {
+    "message": "削除されました",
+    "description": "会話の削除が成功したことを示すメッセージ"
+  },
+  "actions.deleteFailed": {
+    "message": "削除に失敗しました。後でもう一度お試しください。",
+    "description": "会話の削除に失敗した際のメッセージ"
+  },
+  "actions.tokenMissing": {
+    "message": "トークンが存在しません。再度ログインしてください。",
+    "description": "会話操作時に認証情報が不足しているエラーメッセージ"
+  },
+  "actions.conversationMissing": {
+    "message": "会話が存在しません",
+    "description": "会話操作時に対象の会話が存在しないエラーメッセージ"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "サービスのモデル名、すなわち Claude Opus 4.7"
