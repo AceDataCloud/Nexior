@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 03:43:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 04:14:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.9
+
+Wed, 29 Jul 2026 04:14:35 GMT
+
+### Patches
+
+- surface rename/share/delete for the open conversation in a toolbar menu next to the model selector (dev@acedata.cloud)
 
 ## 3.340.8
 
