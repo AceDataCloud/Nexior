@@ -44,7 +44,7 @@ export default defineComponent({
       get() {
         return this.$store.state.pixverse?.config?.duration;
       },
-      set(val: string) {
+      set(val: number) {
         this.$store.commit('pixverse/setConfig', {
           ...this.$store.state.pixverse.config,
           duration: val

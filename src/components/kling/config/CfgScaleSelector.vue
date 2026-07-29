@@ -33,7 +33,7 @@ export default defineComponent({
       get() {
         return this.$store.state?.kling?.config?.cfg_scale;
       },
-      set(val: string) {
+      set(val: number) {
         console.debug('set cfg_scale', val);
         this.$store.commit('kling/setConfig', {
           ...this.$store.state?.kling?.config,
