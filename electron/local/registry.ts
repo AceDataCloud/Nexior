@@ -31,6 +31,20 @@ function isComputerTool(name: string): boolean {
   return name.startsWith('computer.');
 }
 
+// Heuristic: does this MCP tool name look like it CHANGES remote state?
+// Used only to pick the UI default (writes ⇒ toggle starts off, harsher warning)
+// — never to relax a check, so a mis-classified read is at worst an extra
+// warning and a mis-classified write is still gated behind an explicit toggle
+// plus a native confirm dialog. Matched on the bare tool name (after the
+// `mcp.<server>.` prefix) so a server id like `post-bot` can't flip every tool.
+const WRITE_HINTS =
+  /(^|_)(publish|post|create|send|delete|remove|update|edit|write|upload|comment|reply|like|unlike|favorite|unfavorite|follow|unfollow|share|schedule|set|add)(_|$)/;
+
+function looksLikeWrite(qualifiedName: string): boolean {
+  const bare = qualifiedName.split('.').slice(2).join('.') || qualifiedName;
+  return WRITE_HINTS.test(bare);
+}
+
 // A first connect can fail on a slow machine (the MCP server exceeds its
 // `initialize` budget). Rather than strand it as `failed` until the user
 // manually clicks Test/Reconnect, retry a few times in the background.
@@ -88,6 +102,23 @@ export class Registry {
   // grant request so it can never persist an unknown/MCP/computer name.
   isBuiltinTool(name: string): boolean {
     return BUILTIN.some((s) => s.name === name);
+  }
+
+  // Currently-connected MCP tool specs, for the Settings per-tool always-allow
+  // toggles. `writes` marks the ones whose name looks like it changes remote
+  // state (publish/post/delete/…); the UI defaults those OFF and warns harder.
+  mcpToolSpecs(): { name: string; description: string; writes: boolean }[] {
+    return this.mcpSpecs.map((s) => ({
+      name: s.name,
+      description: s.description,
+      writes: looksLikeWrite(s.name)
+    }));
+  }
+
+  // Whether a name is a tool of a CURRENTLY CONNECTED MCP server — validates a
+  // tool-wide grant so a stale/unknown `mcp.*` name can never be persisted.
+  isMcpTool(name: string): boolean {
+    return this.mcpSpecs.some((s) => s.name === name);
   }
 
   async boot(servers: McpServerConf[]): Promise<void> {

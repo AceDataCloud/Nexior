@@ -117,6 +117,9 @@ export interface LocalExecBridge {
   /** Builtin (fs/shell) tool specs for the per-tool always-allow toggles.
    * Undefined on older preloads. */
   builtinTools?(): Promise<{ name: string; description: string; mutates: boolean }[]>;
+  /** Connected MCP tool specs for the per-tool always-allow toggles.
+   * Undefined on older preloads. */
+  mcpTools?(): Promise<{ name: string; description: string; writes: boolean }[]>;
   /** Subscribe to the global panic hotkey forcing Computer Use off. Returns an
    * unsubscribe fn. Undefined on older preloads. */
   onComputerUseDisabled?(cb: () => void): () => void;

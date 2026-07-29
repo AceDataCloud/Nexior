@@ -96,6 +96,9 @@ contextBridge.exposeInMainWorld('localExec', {
   // Builtin (fs/shell) tool specs for the per-tool always-allow toggles.
   builtinTools: (): Promise<{ name: string; description: string; mutates: boolean }[]> =>
     ipcRenderer.invoke('local.tools.builtin'),
+  // Connected MCP tool specs for the per-tool always-allow toggles.
+  mcpTools: (): Promise<{ name: string; description: string; writes: boolean }[]> =>
+    ipcRenderer.invoke('local.tools.mcp'),
   // Fired when the global panic hotkey forces Computer Use off, so the Settings
   // toggle reflects reality and a later Save can't silently re-enable it.
   onComputerUseDisabled: (cb: () => void): (() => void) => {
