@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 04:49:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 05:40:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.11
+
+Wed, 29 Jul 2026 05:40:53 GMT
+
+### Patches
+
+- scheduled runs: render an unverifiable outcome as 待确认 instead of 失败 (dev@acedata.cloud)
 
 ## 3.340.10
 
