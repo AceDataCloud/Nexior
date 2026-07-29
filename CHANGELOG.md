@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Jul 2026 16:13:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 00:41:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.6
+
+Wed, 29 Jul 2026 00:41:33 GMT
+
+### Patches
+
+- retranslate i18n values left as English placeholders by the backfill script (dev@acedata.cloud)
 
 ## 3.340.5
 
