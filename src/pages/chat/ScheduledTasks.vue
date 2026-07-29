@@ -1434,9 +1434,16 @@ export default defineComponent({
       if (run.outcome_reason) return run.outcome_reason;
       return this.runErrorText(run);
     },
+    // A localized code beats server prose. The old order returned
+    // `error_message` first, so an English sentence written next to
+    // `billing_gate_failed` permanently shadowed that key's 18 translations.
+    // Raw exception text still shows when the code has no translation.
     runErrorText(run: IScheduledRun) {
-      if (run.error_message) return run.error_message;
       const code = run.error_code;
+      if (code && (this as any).$te(`chat.scheduledTasks.run.reason.${code}`)) {
+        return this.errorCodeText(code);
+      }
+      if (run.error_message) return run.error_message;
       if (!code) return '';
       return this.errorCodeText(code);
     },

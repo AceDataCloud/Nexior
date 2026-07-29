@@ -877,6 +877,35 @@ describe('chat/ScheduledTasks', () => {
       // Still distinct from a run that is merely in flight.
       expect(vm.runTagType('indeterminate')).not.toBe(vm.runTagType('running'));
     });
+
+    describe('runErrorText precedence', () => {
+      const vm = () => withToken().vm as unknown as { runErrorText: (r: unknown) => string };
+
+      it('prefers the localized code over server prose', () => {
+        // The old order returned error_message first, so this English sentence
+        // permanently shadowed billing_gate_failed's 18 translations.
+        expect(
+          vm().runErrorText({
+            error_code: 'billing_gate_failed',
+            error_message: 'Gateway auth failed (invalid token or zero balance)'
+          })
+        ).toBe('Billing authorization failed');
+      });
+
+      it('still shows raw exception text when the code has no translation', () => {
+        expect(vm().runErrorText({ error_code: 'some_unmapped_code', error_message: 'ECONNRESET at upstream' })).toBe(
+          'ECONNRESET at upstream'
+        );
+      });
+
+      it('humanizes an untranslated code when there is no message', () => {
+        expect(vm().runErrorText({ error_code: 'some_unmapped_code' })).toBe('some unmapped code');
+      });
+
+      it('returns empty when there is nothing at all', () => {
+        expect(vm().runErrorText({})).toBe('');
+      });
+    });
   });
 
   describe('polling pending runs', () => {
