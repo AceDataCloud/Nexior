@@ -889,6 +889,46 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.allRuns.map((r) => r.id)).toEqual(['fresh']);
       expect(vm.allRunsLoading).toBe(false);
     });
+
+    it('does not style an indeterminate run as a failure', () => {
+      // The judge abstaining means "could not prove it", not "it broke". Four
+      // runs whose articles were live rendered red under the old mapping.
+      const vm = withToken().vm as unknown as { runTagType: (s: string) => string };
+      expect(vm.runTagType('indeterminate')).not.toBe('danger');
+      expect(vm.runTagType('failed')).toBe('danger');
+      expect(vm.runTagType('success')).toBe('success');
+      // Still distinct from a run that is merely in flight.
+      expect(vm.runTagType('indeterminate')).not.toBe(vm.runTagType('running'));
+    });
+
+    describe('runErrorText precedence', () => {
+      const vm = () => withToken().vm as unknown as { runErrorText: (r: unknown) => string };
+
+      it('prefers the localized code over server prose', () => {
+        // The old order returned error_message first, so this English sentence
+        // permanently shadowed billing_gate_failed's 18 translations.
+        expect(
+          vm().runErrorText({
+            error_code: 'billing_gate_failed',
+            error_message: 'Gateway auth failed (invalid token or zero balance)'
+          })
+        ).toBe('Billing authorization failed');
+      });
+
+      it('still shows raw exception text when the code has no translation', () => {
+        expect(vm().runErrorText({ error_code: 'some_unmapped_code', error_message: 'ECONNRESET at upstream' })).toBe(
+          'ECONNRESET at upstream'
+        );
+      });
+
+      it('humanizes an untranslated code when there is no message', () => {
+        expect(vm().runErrorText({ error_code: 'some_unmapped_code' })).toBe('some unmapped code');
+      });
+
+      it('returns empty when there is nothing at all', () => {
+        expect(vm().runErrorText({})).toBe('');
+      });
+    });
   });
 
   describe('polling pending runs', () => {
