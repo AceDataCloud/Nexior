@@ -39,7 +39,13 @@
               @click="selectTask(task)"
             >
               <div class="task-top">
-                <div class="task-name">{{ task.name }}</div>
+                <div class="task-heading">
+                  <div class="task-name">{{ task.name }}</div>
+                  <div class="task-id">
+                    <span class="task-id-text">{{ $t('common.entity.id') }}: {{ task.id }}</span>
+                    <copy-to-clipboard :content="task.id" class="inline-block shrink-0" />
+                  </div>
+                </div>
                 <div class="task-actions" @click.stop>
                   <el-switch
                     :model-value="task.state === 'enabled'"
@@ -225,6 +231,10 @@
       class="run-history-drawer"
     >
       <div v-if="selectedTask" class="run-context">
+        <div class="task-id run-context-id">
+          <span class="task-id-text">{{ $t('common.entity.id') }}: {{ selectedTask.id }}</span>
+          <copy-to-clipboard :content="selectedTask.id" class="inline-block shrink-0" />
+        </div>
         <div class="run-context-meta">
           <span>{{ scheduleLabel(selectedTask.schedule) }}</span>
           <span>{{ selectedTask.template.model }}</span>
@@ -504,6 +514,7 @@
 
 <script lang="ts">
 import { AiIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { defineComponent } from 'vue';
 import {
   ElButton,
@@ -627,7 +638,8 @@ export default defineComponent({
     ElRadio,
     ElTimePicker,
     ElInputNumber,
-    Pagination
+    Pagination,
+    CopyToClipboard
   },
   data() {
     return {
@@ -1600,12 +1612,29 @@ export default defineComponent({
   gap: 12px;
   margin-bottom: 10px;
 }
+.task-heading {
+  min-width: 0;
+}
 .task-name {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.4;
   color: var(--el-text-color-primary);
   word-break: break-word;
+}
+.task-id {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  font-family: var(--el-font-family-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--el-text-color-placeholder);
+}
+.task-id-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .task-actions {
   display: flex;
@@ -1720,6 +1749,9 @@ export default defineComponent({
   gap: 8px;
   font-size: 12px;
   color: var(--el-text-color-secondary);
+}
+.run-context-id {
+  margin: 0 0 6px;
 }
 .run-context-meta span + span::before {
   content: '·';

@@ -15,6 +15,9 @@ import {
 import type { IAuthorizableSkill, IScheduledRun, IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
 
+const copyToClipboard = vi.hoisted(() => vi.fn());
+vi.mock('copy-to-clipboard', () => ({ default: copyToClipboard }));
+
 const editedTask: IScheduledTask = {
   id: 'task-1',
   name: 'Existing task',
@@ -47,13 +50,14 @@ const errorMessages: Record<string, string> = {
   'chat.scheduledTasks.run.reason.billing_gate_failed': 'Billing authorization failed'
 };
 
-const mountComponent = (credential: { token: string } | null = null) =>
+const mountComponent = (credential: { token: string } | null = null, extraStubs: Record<string, unknown> = {}) =>
   shallowMount(ScheduledTasks, {
     global: {
       stubs: {
         ElCard: { template: '<div><slot /></div>' },
         ElDrawer: { template: '<div><slot /></div>' },
-        ElTag: { template: '<span><slot /></span>' }
+        ElTag: { template: '<span><slot /></span>' },
+        ...extraStubs
       },
       mocks: {
         $t: (key: string) => errorMessages[key] ?? key,
@@ -118,6 +122,25 @@ describe('chat/ScheduledTasks', () => {
 
     expect(wrapper.find('.error-hint').text()).toBe(expected);
     expect(wrapper.text()).not.toContain(errorCode);
+  });
+
+  it('labels the task id and copies it without opening the run drawer', async () => {
+    // Render the real CopyToClipboard rather than a stub — the click guard that
+    // keeps the copy from opening the drawer lives inside it. Its button sits in
+    // an ElTooltip slot, so that has to pass its children through too.
+    const wrapper = mountComponent(null, {
+      CopyToClipboard: false,
+      ElTooltip: { template: '<span><slot /></span>' }
+    });
+
+    await wrapper.setData({ tasks: [editedTask] });
+
+    expect(wrapper.find('.task-id-text').text()).toBe('common.entity.id: task-1');
+
+    await wrapper.find('.task-id .icon-copy').trigger('click');
+
+    expect(copyToClipboard).toHaveBeenCalledWith('task-1', expect.anything());
+    expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
   });
 
   it('opens a fresh form when New is clicked after editing a task', async () => {
