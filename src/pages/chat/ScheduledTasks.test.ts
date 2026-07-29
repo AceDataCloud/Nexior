@@ -15,6 +15,9 @@ import {
 import type { IAuthorizableSkill, IScheduledRun, IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
 
+const copyToClipboard = vi.hoisted(() => vi.fn());
+vi.mock('copy-to-clipboard', () => ({ default: copyToClipboard }));
+
 const editedTask: IScheduledTask = {
   id: 'task-1',
   name: 'Existing task',
@@ -118,6 +121,20 @@ describe('chat/ScheduledTasks', () => {
 
     expect(wrapper.find('.error-hint').text()).toBe(expected);
     expect(wrapper.text()).not.toContain(errorCode);
+  });
+
+  it('shows the task id on the card and copies it without opening the run drawer', async () => {
+    const wrapper = mountComponent();
+
+    await wrapper.setData({ tasks: [editedTask] });
+
+    const id = wrapper.find('.task-id');
+    expect(id.text()).toBe('task-1');
+
+    await id.trigger('click');
+
+    expect(copyToClipboard).toHaveBeenCalledWith('task-1');
+    expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
   });
 
   it('opens a fresh form when New is clicked after editing a task', async () => {

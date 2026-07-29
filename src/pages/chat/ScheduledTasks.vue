@@ -39,7 +39,18 @@
               @click="selectTask(task)"
             >
               <div class="task-top">
-                <div class="task-name">{{ task.name }}</div>
+                <div class="task-heading">
+                  <div class="task-name">{{ task.name }}</div>
+                  <button
+                    type="button"
+                    class="task-id"
+                    :title="$t('common.button.copy')"
+                    :aria-label="$t('common.button.copy')"
+                    @click.stop="copyId(task.id)"
+                  >
+                    {{ task.id }}
+                  </button>
+                </div>
                 <div class="task-actions" @click.stop>
                   <el-switch
                     :model-value="task.state === 'enabled'"
@@ -225,6 +236,15 @@
       class="run-history-drawer"
     >
       <div v-if="selectedTask" class="run-context">
+        <button
+          type="button"
+          class="task-id run-context-id"
+          :title="$t('common.button.copy')"
+          :aria-label="$t('common.button.copy')"
+          @click="copyId(selectedTask.id)"
+        >
+          {{ selectedTask.id }}
+        </button>
         <div class="run-context-meta">
           <span>{{ scheduleLabel(selectedTask.schedule) }}</span>
           <span>{{ selectedTask.template.model }}</span>
@@ -504,6 +524,7 @@
 
 <script lang="ts">
 import { AiIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
+import copyToClipboard from 'copy-to-clipboard';
 import { defineComponent } from 'vue';
 import {
   ElButton,
@@ -1362,6 +1383,10 @@ export default defineComponent({
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       }
     },
+    copyId(id: string) {
+      copyToClipboard(id);
+      ElMessage.success(this.$t('common.message.copied') as string);
+    },
     async triggerNow(task: IScheduledTask) {
       if (this.triggeringId) return;
       this.triggeringId = task.id;
@@ -1600,12 +1625,32 @@ export default defineComponent({
   gap: 12px;
   margin-bottom: 10px;
 }
+.task-heading {
+  min-width: 0;
+}
 .task-name {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.4;
   color: var(--el-text-color-primary);
   word-break: break-word;
+}
+.task-id {
+  display: block;
+  margin-top: 3px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--el-font-family-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--el-text-color-placeholder);
+  word-break: break-all;
+  text-align: left;
+  cursor: pointer;
+}
+.task-id:hover {
+  color: var(--el-color-primary);
 }
 .task-actions {
   display: flex;
@@ -1720,6 +1765,9 @@ export default defineComponent({
   gap: 8px;
   font-size: 12px;
   color: var(--el-text-color-secondary);
+}
+.run-context-id {
+  margin: 0 0 6px;
 }
 .run-context-meta span + span::before {
   content: '·';
