@@ -91,3 +91,72 @@ describe('Registry MCP boot', () => {
     expect(reg.mcpStatus()).toEqual([]);
   });
 });
+
+// The per-tool always-allow toggles in Settings are driven by these two, and a
+// tool-wide MCP grant bypasses the per-call prompt entirely — so a name that
+// isn't a LIVE tool must never validate, and the write heuristic must not
+// silently mark a publishing tool as a safe read.
+describe('Registry MCP tool-wide grant surface', () => {
+  class NamedHost extends FakeHost {
+    constructor(private names: string[]) {
+      super(0);
+    }
+    async listTools(server: string): Promise<ToolSpec[]> {
+      return this.names.map((n) => ({
+        name: `mcp.${server}.${n}`,
+        description: `${n} desc`,
+        input_schema: {},
+        source: 'mcp' as const,
+        mutates: true
+      }));
+    }
+  }
+
+  it('exposes connected tools with descriptions for the toggle list', async () => {
+    const reg = mk(new NamedHost(['search_feeds', 'publish_content']));
+    await reg.boot([server()]);
+    expect(reg.mcpToolSpecs()).toEqual([
+      { name: 'mcp.pw.search_feeds', description: 'search_feeds desc', writes: false },
+      { name: 'mcp.pw.publish_content', description: 'publish_content desc', writes: true }
+    ]);
+  });
+
+  it('flags state-changing tools as writes and leaves reads alone', async () => {
+    const reg = mk(new NamedHost(['list_feeds', 'get_feed_detail', 'user_profile', 'post_comment_to_feed', 'like_feed', 'delete_cookies']));
+    await reg.boot([server()]);
+    const writes = Object.fromEntries(reg.mcpToolSpecs().map((s) => [s.name.split('.')[2], s.writes]));
+    expect(writes).toEqual({
+      list_feeds: false,
+      get_feed_detail: false,
+      user_profile: false,
+      post_comment_to_feed: true,
+      like_feed: true,
+      delete_cookies: true
+    });
+  });
+
+  it('does not let a write-ish SERVER id mark every tool as a write', async () => {
+    const reg = mk(new NamedHost(['search_feeds']));
+    await reg.boot([server({ id: 'post-bot' })]);
+    expect(reg.mcpToolSpecs()[0].writes).toBe(false);
+  });
+
+  it('validates only live MCP tools, never builtin/computer/unknown names', async () => {
+    const reg = mk(new NamedHost(['search_feeds']));
+    await reg.boot([server()]);
+    expect(reg.isMcpTool('mcp.pw.search_feeds')).toBe(true);
+    expect(reg.isMcpTool('mcp.pw.nope')).toBe(false);
+    expect(reg.isMcpTool('shell.run_command')).toBe(false);
+    expect(reg.isMcpTool('computer.click')).toBe(false);
+    expect(reg.isMcpTool('mcp.other.search_feeds')).toBe(false);
+  });
+
+  it('stops validating a tool once its server is removed', async () => {
+    const reg = mk(new NamedHost(['search_feeds']));
+    await reg.boot([server()]);
+    expect(reg.isMcpTool('mcp.pw.search_feeds')).toBe(true);
+    await reg.reboot([]);
+    expect(reg.isMcpTool('mcp.pw.search_feeds')).toBe(false);
+    expect(reg.mcpToolSpecs()).toEqual([]);
+  });
+});

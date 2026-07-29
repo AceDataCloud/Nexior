@@ -165,18 +165,30 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     return registry.builtinToolSpecs();
   });
 
-  // Tool-wide "Always allow" for a builtin tool (shell.run_command, fs.*): persist
-  // a bare-name grant so the tool runs for ANY input without a per-call prompt.
-  // Native (main-process) confirm — a compromised/XSS'd renderer must NOT be able
-  // to silently give itself prompt-less shell/file access; only the user clicking
-  // this dialog can. Rejects non-builtin names (no computer/MCP/unknown widening).
+  // Connected MCP tool specs, for the per-tool always-allow toggles.
+  ipcMain.handle('local.tools.mcp', (e) => {
+    gate(e);
+    return registry.mcpToolSpecs();
+  });
+
+  // Tool-wide "Always allow" for a builtin (shell.run_command, fs.*) or a
+  // CONNECTED MCP tool: persist a bare-name grant so the tool runs for ANY input
+  // without a per-call prompt. Native (main-process) confirm — a compromised/XSS'd
+  // renderer must NOT be able to silently give itself prompt-less shell/file/MCP
+  // access; only the user clicking this dialog can. Rejects anything that is
+  // neither a builtin nor a live MCP tool (no computer/stale/unknown widening).
   ipcMain.handle('local.grants.grantToolWide', async (e, name: string) => {
     gate(e);
-    if (typeof name !== 'string' || !registry.isBuiltinTool(name)) return { grants: listGrants(), ok: false };
+    if (typeof name !== 'string') return { grants: listGrants(), ok: false };
+    const isMcp = registry.isMcpTool(name);
+    if (!registry.isBuiltinTool(name) && !isMcp) return { grants: listGrants(), ok: false };
     const win = getWin();
-    const dangerous = name === 'shell.run_command' || name === 'fs.write_file';
-    const detail =
-      name === 'shell.run_command'
+    // MCP servers are third-party code we can't bound (no roots/sandbox), so a
+    // tool-wide MCP grant is always treated as the risky tier.
+    const dangerous = isMcp || name === 'shell.run_command' || name === 'fs.write_file';
+    const detail = isMcp
+      ? `This lets the AI run ${name} with ANY input, WITHOUT asking each time. MCP servers are third-party programs and are not limited to your authorized folders — this tool may change or publish data outside this app. Only enable if you trust this server. Revoke anytime in Settings → Local Tools.`
+      : name === 'shell.run_command'
         ? 'This lets the AI run ANY shell command on this machine WITHOUT asking each time — full access to your files and system. Only enable if you fully trust this. Revoke anytime in Settings → Local Tools.'
         : name === 'fs.write_file'
           ? 'This lets the AI write files WITHOUT asking each time (still limited to your authorized folders). Revoke anytime in Settings → Local Tools.'

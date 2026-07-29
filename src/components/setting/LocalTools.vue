@@ -183,6 +183,35 @@
         </ul>
       </section>
 
+      <!-- MCP tools: per-tool "always allow (any input)" toggles. Populated from
+           the CONNECTED servers, so adding a server makes its tools appear here. -->
+      <section v-if="mcpTools.length && !android">
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsMcpToolsTitle') }}</h3>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsMcpToolsHint') }}</p>
+        <ul class="rows">
+          <li v-for="t in mcpTools" :key="t.name" class="row">
+            <MagicIcon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <span class="cu-action">
+              <span class="cu-action-name">
+                <code class="grant-name">{{ t.name }}</code>
+                <el-tag v-if="t.writes" size="small" type="danger" effect="plain">{{
+                  $t('common.settings.localToolsBuiltinRisky')
+                }}</el-tag>
+              </span>
+              <span class="cu-action-desc">{{ t.description }}</span>
+            </span>
+            <el-switch
+              :model-value="toolGrants[t.name] === true"
+              :loading="builtinBusy === t.name"
+              :disabled="!!builtinBusy"
+              @change="(v: string | number | boolean) => onToggleBuiltinTool(t.name, v)"
+            />
+          </li>
+        </ul>
+      </section>
+
       <!-- Computer Use (opt-in: screen capture + mouse/keyboard control) -->
       <section>
         <div class="section-head">
@@ -396,6 +425,9 @@ export default defineComponent({
       cuBusy: null as null | string,
       // Builtin (fs/shell) tool catalog + per-tool tool-wide always-allow state.
       builtinTools: [] as { name: string; description: string; mutates: boolean }[],
+      // Connected MCP tools, same toggle model. Refreshed whenever the server
+      // set changes (save / reconnect) so new servers' tools appear right away.
+      mcpTools: [] as { name: string; description: string; writes: boolean }[],
       toolGrants: {} as Record<string, boolean>,
       builtinBusy: null as null | string,
       savingCU: false,
@@ -453,6 +485,7 @@ export default defineComponent({
     this.tools = (await ex.listTools()).map((t) => t.name);
     this.computerTools = (await ex.computerTools?.()) ?? [];
     this.builtinTools = (await ex.builtinTools?.()) ?? [];
+    this.mcpTools = (await ex.mcpTools?.()) ?? [];
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
     await this.loadGrants();
@@ -557,15 +590,18 @@ export default defineComponent({
       const cuGrants: Record<string, boolean> = {};
       const toolWide: Record<string, boolean> = {};
       const builtinNames = new Set(this.builtinTools.map((t) => t.name));
+      const mcpNames = new Set(this.mcpTools.map((t) => t.name));
       const rows: GrantRow[] = [];
       for (const k of keys) {
         if (k.startsWith('computer.') && !k.includes(':')) {
           cuGrants[k] = true;
           continue;
         }
-        // Bare-name (no `:input`) grant for a builtin tool = tool-wide always-allow,
-        // surfaced as its own toggle → hide from the generic list too.
-        if (!k.includes(':') && builtinNames.has(k)) {
+        // Bare-name (no `:input`) grant for a builtin OR connected MCP tool =
+        // tool-wide always-allow, surfaced as its own toggle → hide from the
+        // generic list too. A bare name we don't recognise (server since removed)
+        // still falls through to the list so it stays revocable.
+        if (!k.includes(':') && (builtinNames.has(k) || mcpNames.has(k))) {
           toolWide[k] = true;
           continue;
         }
@@ -689,6 +725,10 @@ export default defineComponent({
       if (!ex) return;
       this.mcpStatuses = (await ex.mcp?.status()) ?? [];
       this.tools = (await ex.listTools())?.map((t) => t.name) ?? this.tools;
+      // Server set changed ⇒ the per-tool toggle list must follow, and a removed
+      // server's stale bare-name grant has to fall back to the revocable list.
+      this.mcpTools = (await ex.mcpTools?.()) ?? [];
+      await this.loadGrants();
     },
     // Toggling enable/disable persists immediately (needs a save+reboot to take
     // effect). If another row is invalid the save is blocked, so revert the
