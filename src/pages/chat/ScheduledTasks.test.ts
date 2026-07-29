@@ -50,13 +50,14 @@ const errorMessages: Record<string, string> = {
   'chat.scheduledTasks.run.reason.billing_gate_failed': 'Billing authorization failed'
 };
 
-const mountComponent = (credential: { token: string } | null = null) =>
+const mountComponent = (credential: { token: string } | null = null, extraStubs: Record<string, unknown> = {}) =>
   shallowMount(ScheduledTasks, {
     global: {
       stubs: {
         ElCard: { template: '<div><slot /></div>' },
         ElDrawer: { template: '<div><slot /></div>' },
-        ElTag: { template: '<span><slot /></span>' }
+        ElTag: { template: '<span><slot /></span>' },
+        ...extraStubs
       },
       mocks: {
         $t: (key: string) => errorMessages[key] ?? key,
@@ -123,17 +124,22 @@ describe('chat/ScheduledTasks', () => {
     expect(wrapper.text()).not.toContain(errorCode);
   });
 
-  it('shows the task id on the card and copies it without opening the run drawer', async () => {
-    const wrapper = mountComponent();
+  it('labels the task id and copies it without opening the run drawer', async () => {
+    // Render the real CopyToClipboard rather than a stub — the click guard that
+    // keeps the copy from opening the drawer lives inside it. Its button sits in
+    // an ElTooltip slot, so that has to pass its children through too.
+    const wrapper = mountComponent(null, {
+      CopyToClipboard: false,
+      ElTooltip: { template: '<span><slot /></span>' }
+    });
 
     await wrapper.setData({ tasks: [editedTask] });
 
-    const id = wrapper.find('.task-id');
-    expect(id.text()).toBe('task-1');
+    expect(wrapper.find('.task-id-text').text()).toBe('common.entity.id: task-1');
 
-    await id.trigger('click');
+    await wrapper.find('.task-id .icon-copy').trigger('click');
 
-    expect(copyToClipboard).toHaveBeenCalledWith('task-1');
+    expect(copyToClipboard).toHaveBeenCalledWith('task-1', expect.anything());
     expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
   });
 
