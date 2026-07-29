@@ -146,9 +146,11 @@ describe('coding bridge session identity (renameSession)', () => {
     expect(state.sessions['real'].status).toBe('running');
     expect(state.events['prov']).toBeUndefined();
     expect(state.events['real'].map((e) => e.id)).toEqual(['a']);
-    // The real id starts a FRESH relay seq space, so its cursor resets to 0 (not
-    // the provisional id's 7) — otherwise the real id's first events get dropped.
-    expect(state.lastSeq['real']).toBe(0);
+    // The real id starts a FRESH relay seq space, so it carries NO cursor (not
+    // the provisional id's 7) — otherwise the real id's first events get
+    // dropped. Absent, not 0: `reattachSession` treats a 0 as a real cursor and
+    // would ask the relay to replay that session's entire buffer.
+    expect(state.lastSeq['real']).toBeUndefined();
     expect(state.lastSeq['prov']).toBeUndefined();
     expect(state.currentSessionId).toBe('real');
     expect(state.historyRef?.session_id).toBe('real');
@@ -166,6 +168,24 @@ describe('coding bridge session identity (renameSession)', () => {
 
     expect(state.sessions['real'].model).toBe('opus');
     expect(state.events['real'].map((e) => e.id)).toEqual(['live']);
+  });
+
+  it('re-opens the re-baseline window when the real id was already validated', () => {
+    // The real id can already carry a cursor AND a validation from an earlier
+    // life in this tab (reopened history entry whose relay log has since been
+    // LRU-evicted). Its seq space restarts here, so the validation must go —
+    // otherwise `applyNodeEvent` short-circuits on the first low-seq event and
+    // the session never recovers. The cursor stays: the re-baseline needs it to
+    // notice the restart at all.
+    const state = createState();
+    upsertSession(state, session({ session_id: 'prov' }));
+    state.lastSeq['real'] = 120;
+    state.seqChecked['real'] = true;
+
+    renameSession(state, { from: 'prov', to: 'real' });
+
+    expect(state.seqChecked['real']).toBeUndefined();
+    expect(state.lastSeq['real']).toBe(120);
   });
 
   it('is a no-op when ids match or the source is missing', () => {

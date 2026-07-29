@@ -50,6 +50,14 @@ const harness = () => {
     dispatched,
     // A (re)connect is what re-opens the window for detecting a renumbered space.
     reconnect: () => commit('clearSeqChecked'),
+    emit: (event: string, extra: Record<string, unknown> = {}) =>
+      applyNodeEvent(
+        commit as never,
+        dispatch as never,
+        state,
+        { event, session_id: SESSION, ...extra } as never,
+        NODE
+      ),
     text: (seq: number, text: string) =>
       applyNodeEvent(
         commit as never,
@@ -136,5 +144,37 @@ describe('coding bridge seq cursor', () => {
     h.text(1, 'after a restart mid-session');
     expect(texts(h.state)).toEqual(['a', 'b', 'after a restart mid-session']);
     expect(h.state.lastSeq[SESSION]).toBe(1);
+  });
+
+  it('re-opens the re-baseline window on session.closed without losing the cursor', () => {
+    // An older relay releases a closed session's log, so its next event starts
+    // over at seq 1 — WITHOUT dropping our socket. The per-connection validation
+    // must go, or the re-baseline never runs and the transcript freezes for good.
+    const h = harness();
+    h.text(1, 'a');
+    h.text(2, 'b');
+    h.emit('session.closed');
+    expect(h.state.seqChecked[SESSION]).toBeUndefined();
+    // The cursor SURVIVES: dropping it would leave a reconnect with nothing to
+    // resume from, silently skipping whatever the closed session emitted while
+    // we were disconnected.
+    expect(h.state.lastSeq[SESSION]).toBe(2);
+    h.text(1, 'reopened');
+    expect(texts(h.state)).toEqual(['a', 'b', 'reopened']);
+  });
+
+  it('clears the cursor on stream_truncated so the resynced session keeps streaming', () => {
+    // The relay tells us our cursor is unreachable. Refetching the transcript
+    // without dropping the cursor leaves it above the events that follow, so the
+    // session would re-freeze the moment the resync lands.
+    const h = harness();
+    h.state.lastSeq[SESSION] = 900;
+    h.state.seqChecked[SESSION] = true;
+    h.emit('session.stream_truncated', { reason: 'cursor_too_old' });
+    expect(h.dispatched).toContain('resyncSession');
+    expect(h.state.lastSeq[SESSION]).toBeUndefined();
+    expect(h.state.seqChecked[SESSION]).toBeUndefined();
+    h.text(3, 'post-resync');
+    expect(texts(h.state)).toEqual(['post-resync']);
   });
 });
