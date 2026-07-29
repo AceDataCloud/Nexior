@@ -86,9 +86,11 @@
     font-size: 14px !important;
     border-left: 3px solid var(--el-color-primary) !important;
     background-color: var(--el-color-primary-light-9);
-    padding: 12px 16px !important;
+    // github-markdown-css ships in a lazily-loaded chunk that lands AFTER
+    // this file, so its `blockquote { margin: 0 }` wins without !important.
+    margin: 16px 0 !important;
+    padding: 16px 20px !important;
     border-radius: 0 8px 8px 0;
-    margin: 16px 0;
   }
 
   a {
