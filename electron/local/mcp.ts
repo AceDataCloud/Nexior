@@ -9,8 +9,39 @@ const RPC_TIMEOUT_MS = 30_000;
 // slow machine can take far longer than RPC_TIMEOUT_MS just to boot Node + its
 // deps before it answers — a first-boot timeout would strand it as `failed`.
 const STARTUP_TIMEOUT_MS = 60_000;
+// Mirrors the cap in computer.ts: stay under the aichat2 worker's tool-result
+// image budget (~6 MB of base64). An MCP image over budget is dropped from the
+// `image` channel and left as text in `output` rather than blowing up the turn.
+const MAX_IMAGE_B64_CHARS = 5_400_000;
 
 interface Pending { resolve: (v: unknown) => void; reject: (e: Error) => void; timer: NodeJS.Timeout; }
+
+// One block of an MCP `tools/call` result. Only `image` needs special handling;
+// everything else is serialized into `output` as before.
+interface McpContentBlock {
+  type?: string;
+  data?: string;
+  mimeType?: string;
+  [k: string]: unknown;
+}
+
+// Map an MCP `tools/call` result to a ToolResult. Exported for tests.
+// Lifts the first image block into `image` (the same channel
+// computer.screenshot uses) so the model actually SEES it. Left inside
+// `output` it was only a base64 blob in a JSON string: unrenderable, and the
+// model would claim to have shown a picture it never received.
+export function mapCallResult(r: { content?: unknown; isError?: boolean }): ToolResult {
+  const blocks = Array.isArray(r.content) ? (r.content as McpContentBlock[]) : [];
+  const img = blocks.find((b) => b?.type === 'image' && typeof b.data === 'string');
+  const image =
+    img && img.data!.length <= MAX_IMAGE_B64_CHARS ? `data:${img.mimeType || 'image/png'};base64,${img.data}` : undefined;
+  const rest = image ? blocks.filter((b) => b !== img) : blocks;
+  return {
+    output: JSON.stringify(Array.isArray(r.content) ? rest : (r.content ?? '')),
+    is_error: !!r.isError,
+    ...(image ? { image } : {})
+  };
+}
 
 // A GUI-launched Electron app (Finder / Dock / Start menu) inherits a stripped
 // PATH — it does NOT source the user's shell profile — so `npx` / `node` /
@@ -163,7 +194,7 @@ export class McpHost {
 
   async call(server: string, tool: string, input: Record<string, unknown>): Promise<ToolResult> {
     const r = (await this.rpc(server, 'tools/call', { name: tool, arguments: input })) as { content?: unknown; isError?: boolean };
-    return { output: JSON.stringify(r.content ?? ''), is_error: !!r.isError };
+    return mapCallResult(r);
   }
 
   stopAll(): void {
