@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 00:41:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 01:28:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.7
+
+Wed, 29 Jul 2026 01:28:47 GMT
+
+### Patches
+
+- coding bridge: stop replaying the whole buffer on a re-keyed session, and clear the seq cursor when the relay renumbers it (dev@acedata.cloud)
 
 ## 3.340.6
 
