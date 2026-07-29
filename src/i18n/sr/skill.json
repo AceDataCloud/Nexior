@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "Veštine",
+    "description": "Naziv sekcije koja prikazuje veštine."
+  },
+  "title.create": {
+    "message": "Otpremi veštinu",
+    "description": "Dugme za otpremanje nove veštine."
+  },
+  "title.edit": {
+    "message": "Uredi veštinu",
+    "description": "Dugme za uređivanje postojeće veštine."
+  },
+  "title.detail": {
+    "message": "Detalji veštine",
+    "description": "Sekcija koja prikazuje detalje o veštini."
+  },
+  "tab.mine": {
+    "message": "Moje",
+    "description": "Tab koji prikazuje korisnikove veštine."
+  },
+  "tab.globals": {
+    "message": "Globalne",
+    "description": "Tab koji prikazuje globalne veštine dostupne na platformi."
+  },
+  "section.personal": {
+    "message": "Lične veštine",
+    "description": "Sekcija koja prikazuje lične veštine korisnika."
+  },
+  "section.platform": {
+    "message": "Platformske veštine",
+    "description": "Sekcija koja prikazuje veštine dostupne na platformi."
+  },
+  "menu.browse": {
+    "message": "Pretraži veštine",
+    "description": "Opcija za pretraživanje veština."
+  },
+  "menu.create": {
+    "message": "Kreiraj veštinu",
+    "description": "Opcija za kreiranje nove veštine."
+  },
+  "menu.createWithClaude": {
+    "message": "Kreiraj pomoću AI",
+    "description": "Opcija za kreiranje veštine koristeći veštačku inteligenciju."
+  },
+  "menu.write": {
+    "message": "Napiši opis veštine",
+    "description": "Opcija za pisanje opisa veštine."
+  },
+  "menu.upload": {
+    "message": "Otpremi veštinu",
+    "description": "Opcija za otpremanje veštine."
+  },
+  "menu.soon": {
+    "message": "Uskoro dostupno",
+    "description": "Obaveštenje da će funkcionalnost uskoro biti dostupna."
+  },
+  "meta.addedBy": {
+    "message": "Dodao",
+    "description": "Osoba koja je dodala veštinu."
+  },
+  "meta.lastUpdated": {
+    "message": "Poslednje ažuriranje",
+    "description": "Datum kada je veština poslednji put ažurirana."
+  },
+  "meta.you": {
+    "message": "Ti",
+    "description": "Referenca na trenutnog korisnika."
+  },
+  "meta.platform": {
+    "message": "Platforma",
+    "description": "Naziv platforme na kojoj se veštine nalaze."
+  },
+  "dialog.uploadTitle": {
+    "message": "Otpremi veštinu",
+    "description": "Naslov dijaloga za otpremanje veštine."
+  },
+  "dialog.uploadDrop": {
+    "message": "Prevuci ili klikni da otpremiš datoteku",
+    "description": "Uputstvo za otpremanje datoteke."
+  },
+  "dialog.fileRequirements": {
+    "message": "Zahtevi za datoteke",
+    "description": "Informacije o zahtevima za datoteke koje se otpremaju."
+  },
+  "dialog.requirementMd": {
+    "message": ".md datoteka mora sadržati name i description u YAML frontmatter",
+    "description": "Specifikacija za .md datoteku."
+  },
+  "dialog.requirementArchive": {
+    "message": ".zip / .tar.gz arhiva mora sadržati SKILL.md na vrhu",
+    "description": "Specifikacija za arhivske datoteke."
+  },
+  "dialog.writeTitle": {
+    "message": "Napiši opis veštine",
+    "description": "Naslov dijaloga za pisanje opisa veštine."
+  },
+  "dialog.writeHint": {
+    "message": "Nalepi ceo sadržaj SKILL.md (frontmatter + telo) ispod.",
+    "description": "Uputstvo za lepljenje sadržaja veštine."
+  },
+  "dialog.directoryTitle": {
+    "message": "Pretraži veštine",
+    "description": "Naslov dijaloga za pretraživanje veština."
+  },
+  "field.slug": {
+    "message": "Identifikator",
+    "description": "Jedinstveni identifikator veštine."
+  },
+  "field.name": {
+    "message": "Naziv",
+    "description": "Naziv veštine."
+  },
+  "field.description": {
+    "message": "Opis",
+    "description": "Opis veštine."
+  },
+  "field.requiredConnections": {
+    "message": "Zavisni konektori",
+    "description": "Konektori koji su potrebni za veštinu."
+  },
+  "field.allowedTools": {
+    "message": "Dozvoljeni alati",
+    "description": "Alati koji se mogu koristiti sa veštinom."
+  },
+  "field.assets": {
+    "message": "Resursi",
+    "description": "Resursi povezani sa veštinom."
+  },
+  "field.enabled": {
+    "message": "Omogućeno",
+    "description": "Status da li je veština omogućena."
+  },
+  "field.version": {
+    "message": "Verzija",
+    "description": "Verzija veštine."
+  },
+  "field.lastUsedAt": {
+    "message": "Poslednji put korišćeno",
+    "description": "Datum kada je veština poslednji put korišćena."
+  },
+  "field.updatedAt": {
+    "message": "Ažurirano",
+    "description": "Datum kada je veština ažurirana."
+  },
+  "field.files": {
+    "message": "Lista datoteka",
+    "description": "Lista datoteka povezanih sa veštinom."
+  },
+  "field.content": {
+    "message": "Sadržaj SKILL.md",
+    "description": "Sadržaj datoteke SKILL.md."
+  },
+  "mode.markdown": {
+    "message": "Nalepi SKILL.md",
+    "description": "Opcija za lepljenje sadržaja SKILL.md."
+  },
+  "mode.tarball": {
+    "message": "Otpremi arhivu",
+    "description": "Opcija za otpremanje arhive."
+  },
+  "button.create": {
+    "message": "Otpremi",
+    "description": "Dugme za otpremanje veštine."
+  },
+  "button.edit": {
+    "message": "Uredi",
+    "description": "Dugme za uređivanje veštine."
+  },
+  "button.save": {
+    "message": "Sačuvaj",
+    "description": "Dugme za čuvanje promena."
+  },
+  "button.delete": {
+    "message": "Obriši",
+    "description": "Dugme za brisanje veštine."
+  },
+  "button.enable": {
+    "message": "Omogući",
+    "description": "Dugme za omogućavanje veštine."
+  },
+  "button.disable": {
+    "message": "Onemogući",
+    "description": "Dugme za onemogućavanje veštine."
+  },
+  "button.viewDetail": {
+    "message": "Detalji",
+    "description": "Dugme za prikaz detalja o veštini."
+  },
+  "button.selectFile": {
+    "message": "Izaberi arhivu",
+    "description": "Dugme za izbor arhive za otpremanje."
+  },
+  "button.cancel": {
+    "message": "Otkaži",
+    "description": "Dugme za otkazivanje akcije."
+  },
+  "button.search": {
+    "message": "Pretraži",
+    "description": "Dugme za pretraživanje veština."
+  },
+  "button.add": {
+    "message": "Dodaj veštinu",
+    "description": "Dugme za dodavanje nove veštine."
+  },
+  "button.more": {
+    "message": "Više",
+    "description": "Dugme za prikaz više opcija."
+  },
+  "label.noAssets": {
+    "message": "Nema",
+    "description": "Obaveštenje kada nema resursa."
+  },
+  "label.withAssets": {
+    "message": "{count} datoteka",
+    "description": "Obaveštenje o broju datoteka povezanih sa veštinom."
+  },
+  "label.never": {
+    "message": "Nikada korišćeno",
+    "description": "Obaveštenje kada veština nikada nije korišćena."
+  },
+  "label.noScopes": {
+    "message": "Nema",
+    "description": "Obaveštenje kada nema opsega."
+  },
+  "empty.search": {
+    "message": "Nema odgovarajućih veština.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: moja-veština\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nMarkdown telo koje objašnjava šta ova veština radi...",
+    "description": "Primer sadržaja za SKILL.md."
+  },
+  "placeholder.search": {
+    "message": "Pretraži veštine",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Veštine (Skill) su deo koji govori AI 'koje alate koristiti, kojim redosledom izvršiti zadatak' u Markdown formatu. Možeš otpremiti svoje veštine, a platforma takođe ima nekoliko javnih veština.",
+    "description": "Opis stranice o veštinama."
+  },
+  "message.noSkills": {
+    "message": "Još uvek nemaš nijednu veštinu.",
+    "description": "Obaveštenje kada korisnik nema veštine."
+  },
+  "message.noGlobals": {
+    "message": "Trenutno nema javnih veština na platformi.",
+    "description": "Obaveštenje kada nema javnih veština."
+  },
+  "message.createMarkdownTip": {
+    "message": "Nalepi ceo sadržaj SKILL.md (frontmatter + telo) ispod.",
+    "description": "Uputstvo za kreiranje veštine iz Markdown sadržaja."
+  },
+  "message.createTarballTip": {
+    "message": "Otpremi .tar.gz ili .zip arhivu, maksimalno 10 MB; arhiva mora sadržati SKILL.md (može biti na vrhu ili u jednoj korenskoj direktoriji). Skripte se nalaze u scripts/, referentne datoteke u reference/.",
+    "description": "Uputstvo za otpremanje arhive."
+  },
+  "message.globalsReadonly": {
+    "message": "Javne veštine platforme ne mogu se menjati ili brisati, mogu se samo omogućiti / onemogućiti u sopstvenim razgovorima.",
+    "description": "Obaveštenje o statusu javnih veština."
+  },
+  "message.deleteConfirm": {
+    "message": "Da li ste sigurni da želite da obrišete veštinu \"{slug}\"? Ova akcija se ne može poništiti, resursi će takođe biti obrisani sa servera.",
+    "description": "Potvrda za brisanje veštine."
+  },
+  "message.createSuccess": {
+    "message": "Veština je otpremljena",
+    "description": "Obaveštenje o uspešnom otpremanju veštine."
+  },
+  "message.updateSuccess": {
+    "message": "Veština je ažurirana",
+    "description": "Obaveštenje o uspešnom ažuriranju veštine."
+  },
+  "message.deleteSuccess": {
+    "message": "Veština je obrisana",
+    "description": "Obaveštenje o uspešnom brisanju veštine."
+  },
+  "message.enableSuccess": {
+    "message": "Omogućeno",
+    "description": "Obaveštenje o uspešnom omogućavanju veštine."
+  },
+  "message.disableSuccess": {
+    "message": "Onemogućeno",
+    "description": "Obaveštenje o uspešnom onemogućavanju veštine."
+  },
+  "message.loadFailed": {
+    "message": "Nije uspelo učitavanje liste veština",
+    "description": "Obaveštenje o neuspešnom učitavanju veština."
+  },
+  "message.createFailed": {
+    "message": "Otpremanje nije uspelo: {detail}",
+    "description": "Obaveštenje o neuspešnom otpremanju veštine."
+  },
+  "message.fileTooLarge": {
+    "message": "Veličina datoteke prelazi ograničenje od 10 MB",
+    "description": "Obaveštenje kada je datoteka prevelika."
+  },
+  "message.fileTypeWrong": {
+    "message": "Molimo izaberite .md / .tar.gz / .tgz / .tar / .zip datoteku",
+    "description": "Obaveštenje o pogrešnom tipu datoteke."
+  },
+  "message.browseHint": {
+    "message": "Platformske veštine su navedene ispod.",
+    "description": "Uputstvo za pregled platformskih veština."
+  },
+  "directory.section": {
+    "message": "Katalog",
+    "description": "Naslov sekcije za katalog veština."
+  },
+  "directory.skills": {
+    "message": "Veštine",
+    "description": "Naziv sekcije koja prikazuje veštine."
+  },
+  "directory.connectors": {
+    "message": "Konektori",
+    "description": "Naziv sekcije koja prikazuje konektore."
+  },
+  "directory.plugins": {
+    "message": "Dodaci",
+    "description": "Naziv sekcije koja prikazuje dodatke."
+  },
+  "directory.searchPlaceholder": {
+    "message": "Pretraži veštine…",
+    "description": "Placeholder za pretragu veština."
+  },
+  "directory.allPublishers": {
+    "message": "Svi izdavači",
+    "description": "Obaveštenje o svim izdavačima veština."
+  },
+  "directory.sort.popular": {
+    "message": "Popularno",
+    "description": "Opcija za sortiranje po popularnosti."
+  },
+  "directory.sort.recent": {
+    "message": "Nedavno",
+    "description": "Opcija za sortiranje po najnovijim veštinama."
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "Opcija za sortiranje po abecednom redu."
+  },
+  "directory.empty": {
+    "message": "Nema veština koje odgovaraju kriterijumima.",
+    "description": "Obaveštenje kada nema veština u katalogu."
+  },
+  "directory.back": {
+    "message": "Vrati se na katalog",
+    "description": "Dugme za povratak na katalog."
+  },
+  "directory.viewSource": {
+    "message": "Pogledaj izvor",
+    "description": "Opcija za pregled izvora veštine."
+  },
+  "directory.license": {
+    "message": "Licenca",
+    "description": "Informacije o licenci veštine."
+  },
+  "directory.install": {
+    "message": "Instaliraj",
+    "description": "Dugme za instalaciju veštine."
+  },
+  "directory.installed": {
+    "message": "Instalirano",
+    "description": "Obaveštenje da je veština instalirana."
+  },
+  "directory.notInstallable": {
+    "message": "Nije moguće instalirati",
+    "description": "Obaveštenje da veština nije moguća za instalaciju."
+  },
+  "directory.loadFailed": {
+    "message": "Nije uspelo učitavanje kataloga veština",
+    "description": "Obaveštenje o neuspešnom učitavanju kataloga."
+  },
+  "directory.installSuccess": {
+    "message": "Instalirana je „{name}“",
+    "description": "Obaveštenje o uspešnoj instalaciji veštine."
+  },
+  "directory.alreadyInstalled": {
+    "message": "Veština „{name}“ već postoji u tvojim veštinama.",
+    "description": "Obaveštenje kada veština već postoji."
+  },
+  "directory.installFailed": {
+    "message": "Instalacija nije uspela: {detail}",
+    "description": "Obaveštenje o neuspešnoj instalaciji veštine."
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "directory.surface.desktop": {
+    "message": "Desktop verzija",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.mac": {
+    "message": "macOS Desktop",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.web": {
+    "message": "Web verzija",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.windows": {
+    "message": "Windows Desktop",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surfaceHint": {
+    "message": "Ova funkcija može raditi samo na sledećim platformama",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "Samo {platforms}",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "Ova veština može se instalirati i koristiti samo na {platforms}",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "Trenutna platforma nije dostupna",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "preview.viewRendered": {
+    "message": "Pregledaj",
+    "description": "Opcija za pregled renderovane veštine."
+  },
+  "preview.viewSource": {
+    "message": "Izvor",
+    "description": "Opcija za pregled izvora veštine."
+  },
+  "preview.copy": {
+    "message": "Kopiraj",
+    "description": "Dugme za kopiranje sadržaja."
+  },
+  "preview.copied": {
+    "message": "Kopirano u međuspremnik",
+    "description": "Obaveštenje da je sadržaj kopiran."
+  },
+  "preview.copyFailed": {
+    "message": "Kopiranje nije uspelo",
+    "description": "Obaveštenje o neuspešnom kopiranju."
+  },
+  "preview.binary": {
+    "message": "Binarne datoteke se ne mogu pregledati na stranici (tip: {type})",
+    "description": "Obaveštenje o binarnim datotekama."
+  },
+  "preview.truncated": {
+    "message": "Pregled je skraćen na prvih {size}. Potpuno sačuvajte prilikom otpremanja.",
+    "description": "Obaveštenje o skraćenom pregledu."
+  },
+  "preview.selectFile": {
+    "message": "Izaberi datoteku sa leve strane za pregled",
+    "description": "Uputstvo za izbor datoteke za pregled."
+  },
+  "preview.selectSkill": {
+    "message": "Izaberi veštinu sa leve liste za prikaz detalja",
+    "description": "Uputstvo za izbor veštine za prikaz detalja."
+  }
+}

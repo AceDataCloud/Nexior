@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "기술",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "기술 업로드",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "기술 편집",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "기술 세부정보",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "내 기술",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "공용",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "개인 기술",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "플랫폼 기술",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "기술 탐색",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "기술 생성",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "AI로 생성",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "기술 설명 작성",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "기술 업로드",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "곧 출시",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "추가자",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "최종 업데이트",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "당신",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "플랫폼",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "기술 업로드",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "파일을 드래그하거나 클릭하여 업로드",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "파일 요구 사항",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": ".md 파일은 YAML frontmatter에 name과 description을 포함해야 합니다.",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": ".zip / .tar.gz 압축 파일은 최상위에 SKILL.md를 포함해야 합니다.",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "기술 설명 작성",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "SKILL.md의 전체 내용(프론트매터 + 본문)을 아래에 붙여넣으세요.",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "기술 탐색",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "식별자",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "이름",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "설명",
+    "description": "skill: field.description"
+  },
+  "field.requiredConnections": {
+    "message": "필요한 연결기",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "허용된 도구",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "자원 패키지",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "활성화",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "버전",
+    "description": "skill: field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "마지막 사용",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "업데이트 시간",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "파일 목록",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "SKILL.md 내용",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "SKILL.md 붙여넣기",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "압축 파일 업로드",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "업로드",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "편집",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "저장",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "삭제",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "활성화",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "비활성화",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "세부정보",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "압축 파일 선택",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "취소",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "검색",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "기술 추가",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "더보기",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "없음",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} 개 파일",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "한 번도 사용하지 않음",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "없음",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "일치하는 기술이 없습니다.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: my-skill\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\n이 기술이 수행하는 작업을 설명하는 Markdown 본문...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "기술 검색",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "기술(Skill)은 AI에게 '어떤 도구를 사용하고, 어떤 단계로 특정 작업을 수행해야 하는지'를 알려주는 Markdown 설명서입니다. 자신의 기술을 업로드할 수 있으며, 플랫폼에는 일부 공용 기술이 내장되어 있습니다.",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "아직 기술이 없습니다.",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "현재 플랫폼 공용 기술이 없습니다.",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "SKILL.md의 전체 내용(프론트매터 + 본문)을 아래에 붙여넣으세요.",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": ".tar.gz 또는 .zip 압축 파일을 업로드하세요. 최대 10 MB; 패키지 안에 SKILL.md가 있어야 합니다(최상위에 있거나 단일 루트 디렉토리 내에 있을 수 있습니다). 스크립트는 scripts/에, 참조 파일은 reference/에 두세요.",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "플랫폼 공용 기술은 수정하거나 삭제할 수 없으며, 자신의 대화에서만 활성화/비활성화할 수 있습니다.",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "기술 \"{slug}\"를 삭제하시겠습니까? 이 작업은 취소할 수 없으며, 자원 패키지도 서버에서 삭제됩니다.",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "기술이 업로드되었습니다.",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "기술이 업데이트되었습니다.",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "기술이 삭제되었습니다.",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "활성화되었습니다.",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "비활성화되었습니다.",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "기술 목록 로드 실패",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "업로드 실패: {detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "파일 크기가 10 MB 제한을 초과했습니다.",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": ".md / .tar.gz / .tgz / .tar / .zip 파일을 선택하세요.",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "플랫폼 기술이 아래에 나열되어 있습니다.",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "디렉토리",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "기술",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "연결기",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "플러그인",
+    "description": "skill: directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "기술 검색…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "모든 발행자",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "인기",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "최신 동기화",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "조건에 맞는 기술이 없습니다.",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "디렉토리로 돌아가기",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "소스 보기",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "라이센스",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "설치",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "설치됨",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "설치할 수 없음",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "기술 디렉토리 로드 실패",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "「{name}」이(가) 설치되었습니다.",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "당신의 기술에 이미「{name}」이(가) 있습니다.",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "설치 실패: {detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surface.android": {
+    "message": "안드로이드",
+    "description": "skill: directory.surface.android"
+  },
+  "directory.surface.desktop": {
+    "message": "데스크탑",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.mac": {
+    "message": "macOS 데스크탑",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.web": {
+    "message": "웹 버전",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.windows": {
+    "message": "Windows 데스크탑",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surfaceHint": {
+    "message": "이 기능은 다음 플랫폼에서만 사용할 수 있습니다",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "{platforms} 전용",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "이 기능은 {platforms}에서만 설치 및 사용 가능합니다.",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "현재 플랫폼을 사용할 수 없습니다.",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "preview.viewRendered": {
+    "message": "미리보기",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "소스",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "복사",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "클립보드에 복사되었습니다.",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "복사 실패",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "이진 파일은 페이지 미리보기에서 표시할 수 없습니다(유형: {type})",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "미리보기가 앞 {size}로 잘렸습니다. 업로드 시 전체를 저장하세요.",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "왼쪽에서 파일을 선택하여 미리보기",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "왼쪽 목록에서 기술을 선택하여 세부정보 보기",
+    "description": "skill: preview.selectSkill"
+  }
+}

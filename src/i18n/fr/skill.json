@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "Compétences",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "Télécharger une compétence",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "Modifier la compétence",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "Détails de la compétence",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "Mes compétences",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "Globales",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "Compétences personnelles",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "Compétences de la plateforme",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "Parcourir les compétences",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "Créer une compétence",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "Créer avec l'IA",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "Rédiger la description de la compétence",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "Télécharger une compétence",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "Bientôt disponible",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "Ajouté par",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "Dernière mise à jour",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "Vous",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "Plateforme",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "Télécharger une compétence",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "Glissez-déposez ou cliquez pour télécharger le fichier",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "Exigences du fichier",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": "Le fichier .md doit contenir name et description dans le frontmatter YAML",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": "L'archive .zip / .tar.gz doit contenir SKILL.md à la racine",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "Rédiger la description de la compétence",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "Collez le contenu complet de SKILL.md (frontmatter + corps) ci-dessous.",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "Parcourir les compétences",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "Identifiant",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "Nom",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "Description",
+    "description": "compétence : field.description"
+  },
+  "field.requiredConnections": {
+    "message": "Connecteurs requis",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "Outils autorisés",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "Paquet de ressources",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "Activé",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "Version",
+    "description": "compétence : field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "Dernière utilisation",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "Dernière mise à jour",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "Liste des fichiers",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "Contenu de SKILL.md",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "Coller SKILL.md",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "Télécharger l'archive",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "Télécharger",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "Modifier",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "Enregistrer",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "Supprimer",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "Activer",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "Désactiver",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "Détails",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "Sélectionner l'archive",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "Annuler",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "Rechercher",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "Ajouter une compétence",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "Plus",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "Aucun",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} fichiers",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "Jamais utilisé",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "Aucun",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "Aucune compétence correspondante.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: ma-compétence\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nCorps Markdown expliquant ce que fait cette compétence...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "Rechercher des compétences",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Une compétence (Skill) est une description Markdown qui indique à l'IA « quels outils utiliser et quelles étapes suivre pour accomplir une tâche ». Vous pouvez télécharger vos propres compétences, et la plateforme inclut également certaines compétences publiques.",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "Vous n'avez encore aucune compétence.",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "Aucune compétence publique de la plateforme pour le moment.",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "Collez le contenu complet de SKILL.md (frontmatter + corps) ci-dessous.",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": "Téléchargez une archive .tar.gz ou .zip, maximum 10 Mo ; l'archive doit contenir SKILL.md (peut être à la racine ou dans un seul répertoire). Les scripts se trouvent dans scripts/, les fichiers de référence dans reference/.",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "Les compétences publiques de la plateforme ne peuvent pas être modifiées ou supprimées, elles ne peuvent être activées / désactivées que dans vos propres conversations.",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "Confirmer la suppression de la compétence \"{slug}\" ? Cette action est irréversible et le paquet de ressources sera également supprimé du serveur.",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "Compétence téléchargée",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "Compétence mise à jour",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "Compétence supprimée",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "Activé",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "Désactivé",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "Échec du chargement de la liste des compétences",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "Échec du téléchargement : {detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "La taille du fichier dépasse la limite de 10 Mo",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": "Veuillez sélectionner un fichier .md / .tar.gz / .tgz / .tar / .zip",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "Les compétences de la plateforme sont listées ci-dessous.",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "Répertoire",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "Compétences",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "Connecteurs",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "Plugins",
+    "description": "compétence : directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "Rechercher des compétences…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "Tous les éditeurs",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "Populaire",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "Dernière synchronisation",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "Aucune compétence correspondant aux critères.",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "Retour au répertoire",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "Voir le code source",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "Licence",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "Installer",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "Installé",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "Non installable",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "Échec du chargement du répertoire des compétences",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "« {name} » installé",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "Vous avez déjà « {name} » dans vos compétences.",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "Échec de l'installation : {detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surfaceHint": {
+    "message": "Cette compétence ne peut fonctionner que sur les plateformes suivantes",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "Uniquement {platforms}",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "Cette compétence ne peut être installée et utilisée que sur {platforms}.",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "La plateforme actuelle n'est pas disponible.",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "directory.surface.mac": {
+    "message": "Version de bureau macOS",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.windows": {
+    "message": "Version de bureau Windows",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surface.desktop": {
+    "message": "Version de bureau",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.web": {
+    "message": "Version Web",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "preview.viewRendered": {
+    "message": "Aperçu",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "Code source",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "Copier",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "Copié dans le presse-papiers",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "Échec de la copie",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "Les fichiers binaires ne peuvent pas être prévisualisés sur la page (type : {type})",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "Aperçu tronqué aux {size} premiers caractères. Enregistrez complet lors du téléchargement.",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "Sélectionnez un fichier à prévisualiser à gauche",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "Sélectionnez une compétence dans la liste de gauche pour voir les détails",
+    "description": "skill: preview.selectSkill"
+  }
+}

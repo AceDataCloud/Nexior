@@ -100,5 +100,6 @@ export const ROUTE_DISTRIBUTION_INVITEES = 'distribution-invitees';
 
 export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
 export const ROUTE_CONSOLE_CONNECTORS = 'console-connectors';
+export const ROUTE_CONSOLE_SKILLS = 'console-skills';
 
 export const ROUTE_NOT_FOUND = 'not-found';

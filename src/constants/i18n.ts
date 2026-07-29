@@ -63,6 +63,7 @@ export const I18N_SCOPES = [
   'serp',
   'connector',
   'connection',
+  'skill',
   'byok',
   'subsite',
   'webextrator',

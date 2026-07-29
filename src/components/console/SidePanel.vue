@@ -32,6 +32,7 @@ import {
   ConnectionIcon,
   ExternalLinkIcon,
   HistoryIcon,
+  SkillIcon,
   StoreIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent, type Component } from 'vue';
@@ -39,6 +40,7 @@ import {
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_CONNECTORS,
   ROUTE_CONSOLE_ORDER_LIST,
+  ROUTE_CONSOLE_SKILLS,
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
@@ -90,14 +92,20 @@ export default defineComponent({
         }
       ];
 
-      // Connector management is still rolling out; until the flag is on
-      // everywhere, connections are managed at auth.acedata.cloud.
+      // Connector + skill management are still rolling out; until the flag
+      // is on everywhere, both are managed at auth.acedata.cloud.
       if (isFeatureEnabled('connections-in-studio')) {
         links.push({
           key: 'connectors',
           text: this.$t('console.menu.connectors'),
           name: ROUTE_CONSOLE_CONNECTORS,
           icon: ConnectionIcon
+        });
+        links.push({
+          key: 'skills',
+          text: this.$t('console.menu.skills'),
+          name: ROUTE_CONSOLE_SKILLS,
+          icon: SkillIcon
         });
       }
 
