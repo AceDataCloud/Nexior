@@ -33,7 +33,7 @@ export default defineComponent({
       get() {
         return this.$store.state.flux.config?.quality;
       },
-      set(val: string) {
+      set(val: number) {
         console.debug('set quality', val);
         this.$store.commit('flux/setConfig', {
           ...this.$store.state.flux.config,
