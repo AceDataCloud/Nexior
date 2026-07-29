@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "目前最先進的模型",
+    "description": "Claude Opus 5 模型的描述"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "輕量快速的模型",
     "description": "Claude Haiku 4.5 模型的描述"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "支持推理、視覺和 100 萬 Token 上下文的旗艦模型",
+    "description": "Kimi K3 模型的描述"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "適合兼容 K2 工作流的推理與視覺模型",
+    "description": "Kimi K2.6 模型的描述"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,6 +599,78 @@
     "message": "已跳過聯結器授權",
     "description": "使用者跳過授權後的卡片底部說明"
   },
+  "browserTool.title": {
+    "message": "瀏覽器活動",
+    "description": "BrowserDevice 工具活動的預設標題"
+  },
+  "browserTool.state.starting_session": {
+    "message": "正在啟動瀏覽器會話",
+    "description": "顯示正在啟動新的瀏覽器會話"
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "正在連接瀏覽器標籤頁",
+    "description": "顯示正在連接到瀏覽器標籤頁的狀態"
+  },
+  "browserTool.state.ready": {
+    "message": "瀏覽器已就緒",
+    "description": "顯示瀏覽器已準備好的狀態"
+  },
+  "browserTool.state.device_offline": {
+    "message": "瀏覽器裝置已離線"
+  },
+  "browserTool.state.device_busy": {
+    "message": "瀏覽器設備正忙",
+    "description": "顯示瀏覽器設備當前忙碌的狀態"
+  },
+  "browserTool.state.authorization_required": {
+    "message": "需要在 Studio 中確認授權",
+    "description": "顯示需要在 Studio 確認授權的狀態"
+  },
+  "browserTool.state.executing": {
+    "message": "正在瀏覽器中執行"
+  },
+  "browserTool.state.completed": {
+    "message": "已完成"
+  },
+  "browserTool.state.stopped": {
+    "message": "瀏覽器會話已停止",
+    "description": "顯示瀏覽器會話已經停止的狀態"
+  },
+  "browserTool.state.expired": {
+    "message": "瀏覽器請求已過期"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "請關閉開發者工具後繼續",
+    "description": "提示用戶關閉開發者工具以繼續操作"
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "執行結果未知，請核實後再重試",
+    "description": "提示用戶執行結果不明，需核實後再試"
+  },
+  "browserTool.state.failed": {
+    "message": "瀏覽器操作失敗",
+    "description": "顯示瀏覽器操作未成功的狀態"
+  },
+  "browserTool.stop": {
+    "message": "停止",
+    "description": "用於停止當前操作的按鈕"
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "管理設備",
+    "description": "用於打開設備管理器的選項"
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "停止其他會話",
+    "description": "用於停止其他正在進行的會話"
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "關閉開發者工具",
+    "description": "用於關閉瀏覽器的開發者工具"
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "查看授權",
+    "description": "用於查看授權卡片的選項"
+  },
   "scheduledTasks.navTitle": {
     "message": "定時任務"
   },
@@ -606,6 +694,10 @@
   },
   "scheduledTasks.edit": {
     "message": "編輯任務"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "複製任務",
+    "description": "複製任務按鈕，基於已有任務預填新建表單"
   },
   "scheduledTasks.empty": {
     "message": "還沒有定時任務，點選「新建」建立一個"
@@ -698,6 +790,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "餘額不足"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "計費授權失敗"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "未授權"
   },
@@ -709,6 +804,14 @@
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "需要操作"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "瀏覽器設備已離線",
+    "description": "顯示瀏覽器設備當前離線的狀態"
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "瀏覽器授權已變更，請編輯此任務",
+    "description": "提示用戶瀏覽器授權已變更，需要編輯任務"
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "每天"
@@ -835,6 +938,25 @@
     "message": "選中的 Skills 可在定時任務後臺執行時跳過人工確認；未選中的 Skills 仍只能預覽或等待確認。",
     "description": "授權 skill 說明"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "瀏覽器連接",
+    "description": "用於設置瀏覽器連接的表單標題"
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "可能執行以下外部副作用：{effects}",
+    "description": "顯示可能產生的外部副作用"
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "無人值守授權到期時間：{time}",
+    "description": "顯示無人值守授權的到期時間"
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "保存前請選擇在線且兼容的瀏覽器連接",
+    "description": "提示用戶選擇有效的瀏覽器連接"
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "未連線",
     "description": "skill 缺少連線"
@@ -917,6 +1039,18 @@
   "artifacts.hide": {
     "message": "隱藏",
     "description": "隱藏產出按鈕"
+  },
+  "artifacts.unhide": {
+    "message": "取消隱藏",
+    "description": "恢復被隱藏 Artifact 的按鈕"
+  },
+  "artifacts.showHidden": {
+    "message": "顯示已隱藏",
+    "description": "篩選欄中顯示已隱藏 Artifacts 的開關"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "已隱藏",
+    "description": "標記 Artifact 已被隱藏的徽章"
   },
   "artifacts.delete": {
     "message": "刪除",
@@ -1046,6 +1180,17 @@
     "message": "您正在檢視一段分享的對話。點選上方即可自己與 AI 對話。",
     "description": "分享公開頁面對話下方的說明"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "未達成目標",
+    "description": "顯示任務未達成預期目標的狀態"
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "結果待確認",
+    "description": "表示任務的執行結果尚未確定。"
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "執行狀態未知"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "服務的模型名稱，即 Claude Opus 4.7"
@@ -1053,127 +1198,5 @@
   "model.claudeOpus47Description": {
     "message": "目前最先進的模型",
     "description": "Claude Opus 4.7 模型的描述"
-  },
-  "artifacts.unhide": {
-    "message": "取消隱藏",
-    "description": "恢復被隱藏 Artifact 的按鈕"
-  },
-  "artifacts.showHidden": {
-    "message": "顯示已隱藏",
-    "description": "篩選欄中顯示已隱藏 Artifacts 的開關"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "已隱藏",
-    "description": "標記 Artifact 已被隱藏的徽章"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "計費授權失敗"
-  },
-  "browserTool.title": {
-    "message": "瀏覽器活動",
-    "description": "BrowserDevice 工具活動的預設標題"
-  },
-  "browserTool.state.device_offline": {
-    "message": "瀏覽器裝置已離線"
-  },
-  "browserTool.state.executing": {
-    "message": "正在瀏覽器中執行"
-  },
-  "browserTool.state.completed": {
-    "message": "已完成"
-  },
-  "browserTool.state.expired": {
-    "message": "瀏覽器請求已過期"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "執行狀態未知"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

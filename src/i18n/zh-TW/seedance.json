@@ -8,7 +8,7 @@
     "description": "生成影片的提示詞"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
+    "message": "描述你要生成的視頻。想讓角色開口說話：把圖片傳到下面的「參考圖片」框（不是「首幀圖片」），在提示詞裡寫清台詞並用引號包住，例如 圖片1中的角色對著鏡頭說：「你的台詞」，並打開「生成音頻」。可附加參數（如 --rs 720p --rt 16:9 --dur 5）。",
     "description": "提示詞輸入說明"
   },
   "placeholder.prompt": {
@@ -40,8 +40,8 @@
     "description": "是否生成音訊標籤"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "生成音訊說明"
+    "message": "開啟後視頻帶聲音。想讓角色開口說話需要：把人物圖傳到「參考圖片」框 + 打開本開關 + 在提示詞裡用引號寫出台詞。僅 seedance-1.5-pro / seedance-2.0 系列支持，費用約 2 倍。",
+    "description": "生成音頻說明"
   },
   "name.resolution": {
     "message": "解析度",
@@ -100,11 +100,11 @@
     "description": "返回尾幀說明"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
+    "message": "首幀圖片（畫面動效）",
     "description": "首幀圖片上傳標籤"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
+    "message": "圖生視頻：你上傳的這張圖會成為視頻的第一幀，畫面從它開始動。適合「讓一張圖動起來」，但角色不會開口說話、沒有口型。想讓角色說話請改用下面的「參考圖片」。",
     "description": "首幀圖片說明"
   },
   "name.lastFrame": {
@@ -112,7 +112,7 @@
     "description": "尾幀圖片上傳標籤"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
+    "message": "首尾幀圖生視頻：指定視頻最後一幀（需配合首幀圖）。用於鎖定畫面從某圖開始、到某圖結束。",
     "description": "尾幀圖片說明"
   },
   "button.generate": {
@@ -256,31 +256,31 @@
     "description": "SeeDance 2.0 Mini 模型"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
+    "message": "參考圖片（讓角色說話）",
     "description": "參考主體圖片上傳標籤（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "讓圖中人物在視頻裡開口說話、對口型的通道（口播 / 數字人首選，會保留人物形象）。想讓角色說話就把圖傳到這裡，而不是「首幀圖片」。配合提示詞裡的引號台詞 +「生成音頻」一起用。可傳 1~9 張。僅 Seedance 2.0 系列。注意：不能與「首幀/尾幀圖片」同時使用。",
     "description": "參考圖片說明"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "參考音訊上傳標籤（Seedance 2.0）"
+    "message": "參考音頻（音色/配樂）",
+    "description": "參考音頻上傳標籤（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "參考音訊說明"
+    "message": "讓生成視頻借用這段音頻的音色或背景音樂（配合參考圖片讓角色用該音色說話）。需搭配參考圖片或參考視頻一起用，不能單獨只傳音頻。可傳 1~3 段。僅 Seedance 2.0 系列。",
+    "description": "參考音頻說明"
   },
   "name.referenceVideo": {
     "message": "參考影片",
     "description": "參考影片上傳標籤（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "參考影片說明"
+    "message": "讓模型借用這段視頻的動作/運鏡/風格/音效，生成一段新視頻。可傳 1~3 段。僅 Seedance 2.0 系列。",
+    "description": "參考視頻說明"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "參考音頻不能單獨使用，請同時上傳一張參考圖片或一段參考視頻。",
+    "description": "當參考音頻沒有配對的圖片/視頻時的警告"
   }
 }

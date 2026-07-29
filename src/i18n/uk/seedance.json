@@ -8,8 +8,8 @@
     "description": "Підказка для генерації відео"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Інструкція для введення підказки"
+    "message": "Опишіть відео, яке ви хочете створити. Щоб персонажі говорили: завантажте зображення в поле \"референсне зображення\" (не \"перша рамка\"), вкажіть репліки в підказці в лапках, наприклад, персонаж з зображення 1 говорить: \"ваші репліки\", і увімкніть \"генерацію аудіо\". Можна додати параметри (наприклад, --rs 720p --rt 16:9 --dur 5).",
+    "description": "Опис введення підказки"
   },
   "placeholder.prompt": {
     "message": "Опишіть ваше відео…",
@@ -40,8 +40,8 @@
     "description": "Мітка для генерації аудіо"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Інструкція для генерації аудіо"
+    "message": "При увімкненні відео буде з озвученням. Щоб персонажі говорили, потрібно: завантажити зображення персонажа в поле \"референсне зображення\" + увімкнути цей перемикач + вказати репліки в підказці в лапках. Підтримується лише серія seedance-1.5-pro / seedance-2.0, вартість приблизно в 2 рази вища.",
+    "description": "Опис генерації аудіо"
   },
   "name.resolution": {
     "message": "Роздільна здатність",
@@ -100,20 +100,20 @@
     "description": "Інструкція для повернення останнього кадру"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Мітка для завантаження зображення першого кадру"
+    "message": "Перша рамка (ефект анімації)",
+    "description": "Мітка для завантаження першої рамки"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Інструкція для зображення першого кадру"
+    "message": "Перша рамка: завантажене зображення стане першою рамкою відео, з якої почнеться анімація. Підходить для \"оживлення зображення\", але персонажі не говоритимуть і не матимуть міміки. Щоб персонажі говорили, використовуйте нижче \"референсне зображення\".",
+    "description": "Опис першої рамки зображення"
   },
   "name.lastFrame": {
     "message": "Зображення останнього кадру",
     "description": "Мітка для завантаження зображення останнього кадру"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Інструкція для зображення останнього кадру"
+    "message": "Остання рамка: вкажіть останню рамку відео (потрібно в поєднанні з першою рамкою). Використовується для фіксації зображення, з якого починається, до зображення, на якому закінчується.",
+    "description": "Опис останньої рамки зображення"
   },
   "button.generate": {
     "message": "Генерувати",
@@ -156,24 +156,24 @@
     "description": "Підказка про перевищення ліміту завантаження"
   },
   "name.required": {
-    "message": "Required",
-    "description": "Required indicator"
+    "message": "Обов'язково",
+    "description": "Мітка обов'язкового поля"
   },
   "message.modelUnsupported": {
-    "message": "Selected model is not supported. Please pick another.",
-    "description": "Warning when the model is not in the supported list"
+    "message": "Вибрана модель не підтримується, будь ласка, виберіть іншу.",
+    "description": "Повідомлення про модель, яка не в списку підтримуваних"
   },
   "message.modelRequiresImage": {
-    "message": "This model requires a first-frame image to generate the video.",
-    "description": "Warning when an image-to-video model lacks an image"
+    "message": "Ця модель потребує завантаження першої рамки, щоб створити відео.",
+    "description": "Модель на основі зображень потребує зображення"
   },
   "message.modelRejectsImage": {
-    "message": "This model is text-to-video only. Please remove the uploaded image.",
-    "description": "Warning when a text-only model is given an image"
+    "message": "Ця модель підтримує лише відео на основі тексту, будь ласка, видаліть завантажене зображення.",
+    "description": "Модель на основі тексту не приймає зображення"
   },
   "message.resolutionNotSupported": {
-    "message": "This resolution is not supported by the selected model.",
-    "description": "Tooltip when a resolution chip is disabled for the current model"
+    "message": "Ця роздільна здатність не підтримується поточною моделлю.",
+    "description": "Повідомлення про роздільну здатність, яка не підтримується"
   },
   "message.uploadError": {
     "message": "Не вдалося завантажити",
@@ -256,19 +256,19 @@
     "description": "Модель SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Мітка для завантаження референсного зображення об'єкта (Seedance 2.0)"
+    "message": "Референсне зображення (щоб персонажі говорили)",
+    "description": "Мітка для завантаження референсного зображення (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Канал, що дозволяє персонажам говорити у відео та синхронізувати міміку (рекомендується для озвучення / цифрових персонажів, зберігає образ персонажа). Щоб персонажі говорили, завантажте зображення сюди, а не в \"перша рамка\". Використовуйте разом з репліками в лапках у підказці + \"генерацію аудіо\". Можна завантажити 1-9 зображень. Лише серія Seedance 2.0. Увага: не можна використовувати разом з \"першою/останніми рамками\".",
     "description": "Опис референсного зображення"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
+    "message": "Референсне аудіо (тон/музика)",
     "description": "Мітка для завантаження референсного аудіо (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "Дайте змогу відео використовувати цей аудіофайл як тон або фонову музику (в поєднанні з референсним зображенням, щоб персонажі говорили цим тоном). Потрібно використовувати разом з референсним зображенням або відео, не можна завантажувати тільки аудіо. Можна завантажити 1-3 фрагменти. Лише серія Seedance 2.0.",
     "description": "Опис референсного аудіо"
   },
   "name.referenceVideo": {
@@ -276,11 +276,11 @@
     "description": "Мітка для завантаження референсного відео (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
+    "message": "Дайте змогу моделі використовувати цей відеофрагмент для рухів/кадрування/стилю/звукових ефектів, щоб створити нове відео. Можна завантажити 1-3 фрагменти. Лише серія Seedance 2.0.",
     "description": "Опис референсного відео"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Референсне аудіо не може використовуватися окремо, будь ласка, одночасно завантажте референсне зображення або відео.",
+    "description": "Попередження, коли референсне аудіо не має парного зображення/відео"
   }
 }

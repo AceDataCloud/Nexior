@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Ação",
+    "description": "Selecionador de ações para gerar ou editar."
+  },
   "name.taskId": {
     "message": "ID da Tarefa",
     "description": "ID da tarefa"
@@ -29,7 +33,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status da tarefa"
+    "description": "Estado da tarefa"
   },
   "name.traceId": {
     "message": "ID de Rastreamento",
@@ -131,6 +135,10 @@
     "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
     "description": "Falha no envio"
   },
+  "message.referenceImageRequired": {
+    "message": "É necessário enviar pelo menos uma imagem de referência no modo de edição.",
+    "description": "Mensagem de validação exibida quando não há imagem de referência no modo de edição."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Confirmação necessária",
     "description": "Título da caixa de aviso de conflito de recurso"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Adaptativo (igual à imagem de referência)",
     "description": "Etiqueta da opção adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

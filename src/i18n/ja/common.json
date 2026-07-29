@@ -1,4 +1,8 @@
 {
+  "message.mediaPreviewUnavailable": {
+    "message": "プレビューは利用できません",
+    "description": "メディアプレビューが読み込めないことを示します"
+  },
   "button.setup": {
     "message": "設定",
     "description": "ボタンのテキスト、設定を行うため"
@@ -66,6 +70,46 @@
   "button.close": {
     "message": "閉じる",
     "description": "ボタンのテキスト、ダイアログやパネルを閉じるため"
+  },
+  "button.send": {
+    "message": "送信",
+    "description": "コンテンツを送信するボタンのアクセシビリティラベル"
+  },
+  "button.stop": {
+    "message": "停止",
+    "description": "操作を停止するボタンのアクセシビリティラベル"
+  },
+  "button.openMenu": {
+    "message": "メニューを開く",
+    "description": "ナビゲーションまたは設定メニューを開くボタンのアクセシビリティラベル"
+  },
+  "button.more": {
+    "message": "もっと操作",
+    "description": "操作メニューを開くボタンのアクセシビリティラベル"
+  },
+  "button.remove": {
+    "message": "削除",
+    "description": "アイテムを削除するボタンのアクセシビリティラベル"
+  },
+  "player.previous": {
+    "message": "前の曲",
+    "description": "プレーヤーの前の曲ボタンのアクセシビリティラベル"
+  },
+  "player.play": {
+    "message": "再生",
+    "description": "プレーヤーの再生ボタンのアクセシビリティラベル"
+  },
+  "player.pause": {
+    "message": "一時停止",
+    "description": "プレーヤーの一時停止ボタンのアクセシビリティラベル"
+  },
+  "player.next": {
+    "message": "次の曲",
+    "description": "プレーヤーの次の曲ボタンのアクセシビリティラベル"
+  },
+  "player.volume": {
+    "message": "音量",
+    "description": "プレーヤーの音量コントロールのアクセシビリティラベル"
   },
   "button.expand": {
     "message": "展開",
@@ -399,6 +443,18 @@
     "message": "本当に削除しますか？",
     "description": "ユーザーがコンテンツを削除することを確認するメッセージ"
   },
+  "message.deleteTaskConfirm": {
+    "message": "この生成記録を削除してもよろしいですか？削除後はすべてのデバイスから削除され、復元できません。",
+    "description": "単一のタスク生成記録を削除する前に表示される確認メッセージ"
+  },
+  "message.deleteTaskSuccess": {
+    "message": "記録が削除されました。",
+    "description": "タスク記録を正常に削除した後に表示されるメッセージ"
+  },
+  "message.deleteTaskFailed": {
+    "message": "削除に失敗しました。後でもう一度お試しください。",
+    "description": "タスク記録の削除に失敗したときに表示されるメッセージ"
+  },
   "message.expiredAt": {
     "message": "有効期限",
     "description": "サービスの有効期限を表示するためのメッセージ"
@@ -568,8 +624,8 @@
     "description": "ウェブサイトのナビゲーションバーのテキストで、SeeDanceページを表示するためのものです。このフィールドは翻訳しないでください。'SeeDance'のままにしてください。"
   },
   "nav.grokvideo": {
-    "message": "Grok Video",
-    "description": "Grok動画ページを表示するナビゲーションバーのテキスト"
+    "message": "Grok ビデオ",
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Grok Imagine ビデオページを示します"
   },
   "nav.luma": {
     "message": "Luma",
@@ -859,6 +915,14 @@
     "message": "アシスタントは、あなたが対話中に言及した有用な情報を記憶し、異なる対話でよりあなたに合ったパーソナライズされた返信を提供します。あなたは完全なコントロールを持っており、保存された内容を確認し、覚えてほしくない部分を削除できます。",
     "description": "記憶設定タブの上部にある紹介文です。"
   },
+  "settings.memoryEnabled": {
+    "message": "メモリを使用",
+    "description": "チャットで保存済みメモリを使用し新しいメモリを学習するかどうかを制御するスイッチのタイトル"
+  },
+  "settings.memoryEnabledHint": {
+    "message": "オフにすると、保存されたメモリは使用されず、新しいチャットではメモリが作成されません。既存のメモリは保持されます。",
+    "description": "メモリスイッチの下に表示される動作説明"
+  },
   "settings.memoryNeedsChat": {
     "message": "記憶機能を有効にするには、まず対話を開始してください。",
     "description": "チャットアプリ/トークンがまだ読み込まれていない場合、記憶設定タブに表示されます。"
@@ -866,6 +930,58 @@
   "settings.memoryStored": {
     "message": "保存された記憶",
     "description": "保存された記憶エントリーリストの上部にあるセクションタイトルです。"
+  },
+  "settings.memoryImport": {
+    "message": "インポート",
+    "description": "メモリインポートポップアップを開くボタン"
+  },
+  "settings.memoryImportTitle": {
+    "message": "他のAIからメモリをインポート",
+    "description": "メモリインポートダイアログのタイトル"
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. 現在のAIにメモリをエクスポートするよう依頼",
+    "description": "メモリインポートダイアログの最初のステップの見出し"
+  },
+  "settings.memoryImportPrompt": {
+    "message": "別のAIサービスに移行します。あなたが保存したすべてのメモリと永続的なコンテキストを一覧にしてください。",
+    "description": "ユーザーが別のAIサービスにコピーしてメモリをエクスポートするプロンプト"
+  },
+  "settings.memoryImportCopy": {
+    "message": "プロンプトをコピー",
+    "description": "メモリエクスポートプロンプトをコピーするボタン"
+  },
+  "settings.memoryImportCopied": {
+    "message": "コピーしました",
+    "description": "メモリエクスポートプロンプトをコピーした後のトースト"
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. エクスポートしたメモリを貼り付け",
+    "description": "メモリインポートダイアログの2番目のステップの見出し"
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "ChatGPT、Claude、Geminiなどから返されたメモリテキストを貼り付けてください…",
+    "description": "貼り付けたメモリエクスポートテキストのプレースホルダー"
+  },
+  "settings.memoryImportSubmit": {
+    "message": "メモリに追加",
+    "description": "貼り付けたメモリをインポート送信するボタン"
+  },
+  "settings.memoryImportSuccess": {
+    "message": "Imported {count} memory entries",
+    "description": "Success toast after importing memory; count is the number of accepted entries"
+  },
+  "settings.memoryImportPartial": {
+    "message": "{processed}件を処理しました；{rejected}件の安全でないまたは無効なエントリはスキップされました",
+    "description": "部分的なメモリインポート後の警告"
+  },
+  "settings.memoryImportInvalid": {
+    "message": "メモリをインポートできませんでした。メモリがオンになっていることを確認し、1行に1つの事実を貼り付けてください。",
+    "description": "メモリインポートリクエストが無効な場合のアクション可能なエラー"
+  },
+  "settings.memoryImportInProgress": {
+    "message": "メモリのインポートが既に実行中です。このダイアログを開いたまま、しばらく後にもう一度お試しください。",
+    "description": "別のメモリインポートジョブがアクティブな場合の警告"
   },
   "settings.memoryEmpty": {
     "message": "保存された記憶はありません。使用するにつれて、アシスタントはここに持続的な好みや情報を記憶します。",
@@ -1109,24 +1225,24 @@
     "description": "新しいローカルMCPサーバー行を追加するボタン"
   },
   "settings.localToolsMcpName": {
-    "message": "Name",
-    "description": "MCPサーバー名/IDフィールドのラベル"
+    "message": "名前",
+    "description": "MCP サーバー名/識別フィールドのラベル。"
   },
   "settings.localToolsMcpCommand": {
-    "message": "Command",
-    "description": "MCPサーバー起動コマンドフィールドのラベル"
+    "message": "コマンド",
+    "description": "MCP サーバー起動コマンドフィールドのラベル。"
   },
   "settings.localToolsMcpArgs": {
-    "message": "Arguments",
-    "description": "MCPサーバーコマンド引数フィールドのラベル"
+    "message": "パラメータ",
+    "description": "MCP サーバーコマンドパラメータフィールドのラベル。"
   },
   "settings.localToolsMcpArgsHint": {
     "message": "1行に1引数。",
     "description": "MCP引数テキストエリアのプレースホルダー/ヒント"
   },
   "settings.localToolsMcpEnv": {
-    "message": "Environment",
-    "description": "MCPサーバー環境変数フィールドのラベル"
+    "message": "環境変数",
+    "description": "MCP サーバー環境変数フィールドのラベル。"
   },
   "settings.localToolsMcpEnvHint": {
     "message": "1行にKEY=VALUE。",
@@ -1157,8 +1273,8 @@
     "description": "サーバー名に無効な文字が含まれる場合のバリデーションエラー"
   },
   "settings.localToolsMcpEnabled": {
-    "message": "On",
-    "description": "ローカルMCPサーバーを有効/無効にするトグルラベル"
+    "message": "有効",
+    "description": "特定のローカル MCP サーバーを有効/無効にするスイッチラベル。"
   },
   "settings.localToolsMcpReconnect": {
     "message": "テスト / 再接続",
@@ -1177,8 +1293,8 @@
     "description": "MCPサーバーが接続済みのバッジ。{n}はツール数"
   },
   "settings.localToolsMcpDisabled": {
-    "message": "Disabled",
-    "description": "MCPサーバーがオフのバッジ"
+    "message": "無効",
+    "description": "MCP サーバーがオフになっているときのラベル。"
   },
   "settings.localToolsMcpFailed": {
     "message": "接続に失敗しました",
@@ -1333,8 +1449,8 @@
     "description": "ウェブサイト連絡先タイプの表示名"
   },
   "settings.contactType_wechat": {
-    "message": "WeChat",
-    "description": "WeChat連絡先タイプの表示名"
+    "message": "微信",
+    "description": "WeChatの連絡先タイプの表示名"
   },
   "settings.contactLabelPlaceholder": {
     "message": "ラベル（任意）例：営業",
@@ -1480,6 +1596,10 @@
     "message": "参照ファイルのアップロードがまだ進行中です。少々お待ちください。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.dropToUpload": {
+    "message": "ここにドラッグしてアップロード",
+    "description": "ファイルをアップロードコントロールの上にドラッグしたときに、一時的にそのコントロール上に表示されるヒントテキスト。ユーザーに手を離すとアップロードされることを知らせます。"
+  },
   "appUpgrade.title": {
     "message": "アップデートが必要",
     "description": "インストール済みビルドがバックエンドのサポート対象より古い場合に起動時に表示されるアップグレードモーダルのタイトル"
@@ -1497,8 +1617,8 @@
     "description": "アップグレードモーダルのプライマリボタン（App Store/Play StoreのURLを開く）"
   },
   "appUpgrade.later": {
-    "message": "Later",
-    "description": "ソフトアップグレードプロンプトのセカンダリボタン（モーダルを閉じて現在のバージョンを使い続ける）"
+    "message": "後で",
+    "description": "ソフトアップグレードのポップアップの次のボタン：この通知を無視して使用を続ける、強制アップグレードのシナリオでは表示されません。"
   },
   "nav.maestro": {
     "message": "マエストロ",
@@ -1529,134 +1649,14 @@
     "description": "オンデマンド同意ダイアログの常時許可ボタン（このアクションへのプロンプトが二度と表示されないように許可を保存する）"
   },
   "settings.cuConsentDeny": {
-    "message": "Deny",
-    "description": "オンデマンド同意ダイアログの拒否ボタン"
+    "message": "拒否",
+    "description": "オプトインのダイアログボックスの拒否ボタン。"
   },
   "settings.siteServices": {
     "message": "価格"
   },
-  "settings.memoryEnabled": {
-    "message": "メモリを使用",
-    "description": "チャットで保存済みメモリを使用し新しいメモリを学習するかどうかを制御するスイッチのタイトル"
-  },
-  "settings.memoryEnabledHint": {
-    "message": "オフにすると、保存されたメモリは使用されず、新しいチャットではメモリが作成されません。既存のメモリは保持されます。",
-    "description": "メモリスイッチの下に表示される動作説明"
-  },
   "nav.omni": {
     "message": "Omni動画",
     "description": "Omni動画モジュールのナビラベル"
-  },
-  "settings.memoryImport": {
-    "message": "Import",
-    "description": "メモリインポートダイアログを開くボタン"
-  },
-  "settings.memoryImportTitle": {
-    "message": "他のAIからメモリをインポート",
-    "description": "メモリインポートダイアログのタイトル"
-  },
-  "settings.memoryImportExportStep": {
-    "message": "1. 現在のAIにメモリをエクスポートするよう依頼",
-    "description": "メモリインポートダイアログの最初のステップの見出し"
-  },
-  "settings.memoryImportPrompt": {
-    "message": "別のAIサービスに移行します。あなたが保存したすべてのメモリと永続的なコンテキストを一覧にしてください。",
-    "description": "ユーザーが別のAIサービスにコピーしてメモリをエクスポートするプロンプト"
-  },
-  "settings.memoryImportCopy": {
-    "message": "プロンプトをコピー",
-    "description": "メモリエクスポートプロンプトをコピーするボタン"
-  },
-  "settings.memoryImportCopied": {
-    "message": "コピーしました",
-    "description": "メモリエクスポートプロンプトをコピーした後のトースト"
-  },
-  "settings.memoryImportPasteStep": {
-    "message": "2. エクスポートしたメモリを貼り付け",
-    "description": "メモリインポートダイアログの2番目のステップの見出し"
-  },
-  "settings.memoryImportPlaceholder": {
-    "message": "ChatGPT、Claude、Geminiなどから返されたメモリテキストを貼り付けてください…",
-    "description": "貼り付けたメモリエクスポートテキストのプレースホルダー"
-  },
-  "settings.memoryImportSubmit": {
-    "message": "メモリに追加",
-    "description": "貼り付けたメモリをインポート送信するボタン"
-  },
-  "settings.memoryImportSuccess": {
-    "message": "Imported {count} memory entries",
-    "description": "Success toast after importing memory; count is the number of accepted entries"
-  },
-  "settings.memoryImportPartial": {
-    "message": "{processed}件を処理しました；{rejected}件の安全でないまたは無効なエントリはスキップされました",
-    "description": "部分的なメモリインポート後の警告"
-  },
-  "settings.memoryImportInvalid": {
-    "message": "メモリをインポートできませんでした。メモリがオンになっていることを確認し、1行に1つの事実を貼り付けてください。",
-    "description": "メモリインポートリクエストが無効な場合のアクション可能なエラー"
-  },
-  "settings.memoryImportInProgress": {
-    "message": "メモリのインポートが既に実行中です。このダイアログを開いたまま、しばらく後にもう一度お試しください。",
-    "description": "別のメモリインポートジョブがアクティブな場合の警告"
-  },
-  "message.mediaPreviewUnavailable": {
-    "message": "Preview unavailable",
-    "description": "Media preview could not be loaded"
-  },
-  "button.send": {
-    "message": "Send",
-    "description": "Accessible label for sending content"
-  },
-  "button.stop": {
-    "message": "Stop",
-    "description": "Accessible label for stopping an operation"
-  },
-  "button.openMenu": {
-    "message": "Open menu",
-    "description": "Accessible label for opening a navigation or configuration menu"
-  },
-  "button.more": {
-    "message": "More actions",
-    "description": "Accessible label for opening an actions menu"
-  },
-  "button.remove": {
-    "message": "Remove",
-    "description": "Accessible label for removing an item"
-  },
-  "player.previous": {
-    "message": "Previous track",
-    "description": "Accessible label for the previous-track player button"
-  },
-  "player.play": {
-    "message": "Play",
-    "description": "Accessible label for the player play button"
-  },
-  "player.pause": {
-    "message": "Pause",
-    "description": "Accessible label for the player pause button"
-  },
-  "player.next": {
-    "message": "Next track",
-    "description": "Accessible label for the next-track player button"
-  },
-  "player.volume": {
-    "message": "Volume",
-    "description": "Accessible label for the player volume control"
-  },
-  "message.deleteTaskConfirm": {
-    "message": "Delete this generation record? It will be removed from all your devices and cannot be recovered.",
-    "description": "Confirmation message shown before deleting a single task record"
-  },
-  "message.deleteTaskSuccess": {
-    "message": "Record deleted.",
-    "description": "Message shown after a task record is successfully deleted"
-  },
-  "message.deleteTaskFailed": {
-    "message": "Failed to delete. Please try again later.",
-    "description": "Message shown when deleting a task record fails"
-  },
-  "message.dropToUpload": {
-    "message": "Drop to upload",
-    "description": "Text on the transient overlay that appears over an uploader while a file is being dragged onto it, telling the user to release to upload."
   }
 }

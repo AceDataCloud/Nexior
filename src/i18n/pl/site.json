@@ -33,7 +33,7 @@
   },
   "field.url": {
     "message": "Link",
-    "description": "Wyświetlane w tytule edytora"
+    "description": "Wyświetlane jako tytuł w polu edycji"
   },
   "field.admins": {
     "message": "ID administratorów witryny",
@@ -101,7 +101,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Nazwa sposobu logowania: logowanie przez WeChat"
+    "description": "Nazwa metody logowania: logowanie przez WeChat"
   },
   "field.authSmsWebhook": {
     "message": "Własny nadawca SMS",
@@ -112,8 +112,8 @@
     "description": "Wyjaśnia działanie webhooka własnego nadawcy SMS"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder pola URL webhooka SMS"
+    "message": "https://twoja-domena/sms-webhook",
+    "description": "Placeholder w polu wejściowym URL webhooka SMS"
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "Sekret podpisu (pozostaw puste, aby zachować bez zmian)",
@@ -129,7 +129,7 @@
   },
   "field.authSmsWebhookTest": {
     "message": "Test",
-    "description": "Przycisk otwierający okno testu webhooka SMS"
+    "description": "Przycisk, który otwiera okno testowe webhooka SMS"
   },
   "message.authSmsWebhookNeedsPhone": {
     "message": "Najpierw włącz logowanie numerem telefonu, aby skonfigurować własnego nadawcę SMS.",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Wyświetlane jako tytuł w oknie edycji"
   },
-  "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresDigitalhuman": {
+    "message": "Cyfrowa osoba",
+    "description": "Wyświetlane jako tytuł w polu edycji"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "Wyświetlane w tytule edytora"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Wyświetlane jako tytuł w polu edycji"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Twórz kompletne wideo z pomysłu — od planu i lektora po sceny i finalny materiał.",
     "description": "Krótki opis możliwości: tworzenie kompletnych wideo z pomysłu, od planu i lektora po sceny i finalny materiał."
   },
+  "message.featuresPoivelle": {
+    "message": "Zarządzaj profesjonalną produkcją filmową AI poprzez współdzielenie diagramów projektów, storyboardów, harmonogramów, przeglądów i przepływów pracy Skill Agent.",
+    "description": "Opis możliwości zarządzania profesjonalną produkcją filmową AI."
+  },
   "message.featuresDigitalhuman": {
     "message": "Twórz wideo z mówiącą głową z syntezowaną mową i naturalną synchronizacją ust.",
     "description": "Krótki opis możliwości: tworzenie wideo z mówiącą głową z syntezowaną mową i naturalną synchronizacją ust."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "Generowanie wideo od ByteDance do dynamicznych scen, ruchu kamery i opcjonalnego dźwięku.",
     "description": "Krótki opis możliwości: generowanie wideo od ByteDance do dynamicznych scen, ruchu kamery i opcjonalnego dźwięku."
+  },
+  "message.featuresOmni": {
+    "message": "Twórz lub edytuj filmy za pomocą modeli Omni na podstawie tekstu, obrazów i materiałów wideo.",
+    "description": "Twórz lub edytuj filmy za pomocą modeli Omni na podstawie tekstu, obrazów i materiałów wideo."
   },
   "message.featuresWan": {
     "message": "Generowanie wideo od Alibaba z tekstu, obrazów lub referencji w wielu rozdzielczościach.",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "Nie udało się wczytać nadpisań usług"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Wyświetlane jako tytuł w polu edycji"
-  },
-  "message.featuresOmni": {
-    "message": "Twórz lub edytuj filmy za pomocą modeli Omni na podstawie tekstu, obrazów i materiałów wideo.",
-    "description": "Twórz lub edytuj filmy za pomocą modeli Omni na podstawie tekstu, obrazów i materiałów wideo."
-  },
   "capabilityOverride.edit": {
     "message": "Dostosuj aplikację",
     "description": "Tooltip i etykieta dostępności do edycji nazwy oraz ikony aplikacji funkcji"
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "Nie udało się wczytać dostosowań aplikacji",
     "description": "Błąd wyświetlany, gdy nie można wczytać wierszy zarządzania nadpisaniami aplikacji funkcji"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

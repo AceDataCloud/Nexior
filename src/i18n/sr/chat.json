@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Тренутно најнапреднији модел",
+    "description": "Опис Claude Opus 5 модела"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "Lagani i brzi model",
     "description": "Opis Claude Haiku 4.5 modela"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Флагшип модел који подржава разматрање, визуелизацију и контекст од 1.000.000 токена",
+    "description": "Опис Kimi K3 модела"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Модел за разматрање и визуелизацију компатибилан са K2 токовима",
+    "description": "Опис Kimi K2.6 модела"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,6 +599,78 @@
     "message": "Овлашћење конектора је прескочено",
     "description": "Објашњење на дну картице након што је корисник прескочио овлашћење"
   },
+  "browserTool.title": {
+    "message": "Активност прегледача",
+    "description": "Fallback title for a BrowserDevice tool activity"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Покрећем сесију прегледача",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Повезујем прегледач таб",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Прегледач је спреман",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Уређај прегледача је ван мреже"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Уређај прегледача је заузет",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Потребно је потврдити овлашћење у Студију",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Извршава се у прегледачу"
+  },
+  "browserTool.state.completed": {
+    "message": "Завршено"
+  },
+  "browserTool.state.stopped": {
+    "message": "Сесија прегледача је заустављена",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Захтев прегледача је истекао"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Молимо затворите алате за развој и наставите",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Резултат извршења је непознат, молимо проверите и покушајте поново",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Операција прегледача није успела",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Заустави",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Управљајте уређајима",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Заустави друге сесије",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Затвори алате за развој",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Погледајте овлашћење",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
     "message": "Заказани задаци"
   },
@@ -606,6 +694,10 @@
   },
   "scheduledTasks.edit": {
     "message": "Уреди задатак"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Копирај задатак",
+    "description": "Кноп за копирање задатка, аутоматски попуњава нови образац на основу постојећег задатка"
   },
   "scheduledTasks.empty": {
     "message": "Још нема заказаних задатака. Кликните на „Ново“ да бисте направили један."
@@ -698,6 +790,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Недовољно средстава"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Ауторизација наплате није успела"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Неовлашћено"
   },
@@ -709,6 +804,14 @@
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "Потребна је радња"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Уређај прегледача је офлајн",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Овлашћење прегледача је промењено, молимо измените овај задатак",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "Дневно"
@@ -787,7 +890,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Читљиво за људе: оригинални Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "једном у {time}",
@@ -835,6 +938,25 @@
     "message": "Изабрани Skills могу се извршавати у позадини без људске потврде; неизабрани Skills и даље могу само да се прегледају или чекају потврду.",
     "description": "Објашњење за овлашћење skill"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Веза прегледача",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Могу извршити следеће спољне ефекте: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Време истека овлашћења без надзора: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Пре него што сачувате, изаберите онлајн и компатибилну везу прегледача",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Није повезано",
     "description": "skill недостаје веза"
@@ -917,6 +1039,18 @@
   "artifacts.hide": {
     "message": "Сакриј",
     "description": "Дугме за сакривање производа"
+  },
+  "artifacts.unhide": {
+    "message": "Откриј",
+    "description": "Restore a hidden artifact"
+  },
+  "artifacts.showHidden": {
+    "message": "Прикажи скривено",
+    "description": "Toggle in the filter bar to include hidden artifacts"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Скривено",
+    "description": "Badge shown on artifacts that are currently hidden"
   },
   "artifacts.delete": {
     "message": "Избриши",
@@ -1046,6 +1180,17 @@
     "message": "Гледате део дељеног разговора. Кликните горе да бисте сами ћаскали са AI.",
     "description": "Објашњење испод разговора на јавној страници"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Cilj nije postignut",
+    "description": "Ova poruka se koristi kada korisnik nije postigao postavljeni cilj."
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Rezultat nije potvrđen",
+    "description": "Ova poruka se koristi kada rezultat još uvek nije poznat ili potvrđen."
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Непознат статус извршавања"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Naziv modela usluge, tj. Claude Opus 4.7"
@@ -1053,127 +1198,5 @@
   "model.claudeOpus47Description": {
     "message": "Trenutno najnapredniji model",
     "description": "Opis Claude Opus 4.7 modela"
-  },
-  "artifacts.unhide": {
-    "message": "Откриј",
-    "description": "Restore a hidden artifact"
-  },
-  "artifacts.showHidden": {
-    "message": "Прикажи скривено",
-    "description": "Toggle in the filter bar to include hidden artifacts"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Скривено",
-    "description": "Badge shown on artifacts that are currently hidden"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Ауторизација наплате није успела"
-  },
-  "browserTool.title": {
-    "message": "Активност прегледача",
-    "description": "Fallback title for a BrowserDevice tool activity"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Уређај прегледача је ван мреже"
-  },
-  "browserTool.state.executing": {
-    "message": "Извршава се у прегледачу"
-  },
-  "browserTool.state.completed": {
-    "message": "Завршено"
-  },
-  "browserTool.state.expired": {
-    "message": "Захтев прегледача је истекао"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Непознат статус извршавања"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

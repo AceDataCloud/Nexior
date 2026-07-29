@@ -56,8 +56,8 @@
     "description": "Pipeline-Schritt: Medien sammeln"
   },
   "step.voice": {
-    "message": "Voiceover",
-    "description": "Pipeline-Schritt: Voiceover"
+    "message": "Sprachaufnahme generieren",
+    "description": "Pipeline-Schritt: Sprachübertragung"
   },
   "step.compose": {
     "message": "Szenen komponieren",
@@ -82,6 +82,14 @@
   "name.langs": {
     "message": "Sprachen",
     "description": "Feld für Ausgabesprachen"
+  },
+  "name.primaryLanguage": {
+    "message": "Primärsprache",
+    "description": "Feld für die Primärsprache"
+  },
+  "name.additionalLanguages": {
+    "message": "Weitere Sprachen (optional)",
+    "description": "Feld für weitere Ausgabesprachen"
   },
   "name.aspect": {
     "message": "Seitenverhältnis",
@@ -118,6 +126,10 @@
   "placeholder.select": {
     "message": "Bitte auswählen",
     "description": "Allgemeiner Platzhalter für Auswahl"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Ausgabesprachen hinzufügen",
+    "description": "Platzhalter für weitere Sprachen"
   },
   "description.prompt": {
     "message": "Formulieren Sie klar, was Sie möchten. Skript, Bilder, Sprachübertragung und Schnitt übernimmt Maestro.",
@@ -207,6 +219,30 @@
     "message": "Noch keine Videos — erstelle dein erstes auf der linken Seite.",
     "description": "Keine Aufgaben vorhanden"
   },
+  "name.customize": {
+    "message": "Anpassen",
+    "description": "Schalter für optionale kreative Einstellungen"
+  },
+  "description.customize.auto": {
+    "message": "Auto · Maestro bestimmt Videotyp, visuellen Stil und Erzählstimme.",
+    "description": "Zustand bei deaktivierter Anpassung"
+  },
+  "description.customize.manual": {
+    "message": "Videotyp, visuellen Stil und Erzählstimme auswählen.",
+    "description": "Zustand bei aktivierter Anpassung"
+  },
+  "name.customizeScenario": {
+    "message": "Videotyp anpassen",
+    "description": "Schalter zum Anpassen des Videotyps"
+  },
+  "name.customizeStyle": {
+    "message": "Visuellen Stil anpassen",
+    "description": "Schalter zum Anpassen des visuellen Stils"
+  },
+  "name.customizeVoice": {
+    "message": "Erzählstimme anpassen",
+    "description": "Schalter zum Anpassen der Erzählstimme"
+  },
   "name.scenario": {
     "message": "Videotyp",
     "description": "Feld für den Videotyp"
@@ -256,60 +292,60 @@
     "description": "Option für filmischen Stil"
   },
   "option.style.glass": {
-    "message": "Frosted Glass",
-    "description": "Option für Frosted-Glass-Stil"
+    "message": "Frosted Glass · Flüssigglas",
+    "description": "Option für mattes Glas-Stil"
   },
   "option.style.luxury": {
-    "message": "Luxury",
-    "description": "Option für Luxury-Stil"
+    "message": "Luxus · Weißraum",
+    "description": "Option für luxuriösen Stil"
   },
   "option.style.swiss": {
-    "message": "Swiss Grid",
-    "description": "Option für Swiss-Grid-Stil"
+    "message": "Schweizer Raster · Präzise",
+    "description": "Option für Schweizer Raster-Stil"
   },
   "option.style.modern": {
-    "message": "Modern",
-    "description": "Option für Modern-Stil"
+    "message": "Minimalistisch Modern · SaaS",
+    "description": "Option für modernen Stil"
   },
   "option.style.editorial": {
-    "message": "Editorial",
-    "description": "Option für Editorial-Stil"
+    "message": "Magazin-Layout",
+    "description": "Option für redaktionellen Stil"
   },
   "option.style.warm": {
-    "message": "Warm",
-    "description": "Option für Warm-Stil"
+    "message": "Warm und Nah",
+    "description": "Option für warmen Stil"
   },
   "option.style.vibrant": {
-    "message": "Vibrant",
-    "description": "Option für Vibrant-Stil"
+    "message": "Lebendig und Bunt",
+    "description": "Option für lebendigen Stil"
   },
   "option.style.neon": {
-    "message": "Neon",
+    "message": "Neonlicht",
     "description": "Option für Neon-Stil"
   },
   "option.style.mono": {
-    "message": "Monochrome",
-    "description": "Option für Monochrome-Stil"
+    "message": "Minimalistisch Schwarz-Weiß",
+    "description": "Option für monochromen Stil"
   },
   "option.style.pastel": {
-    "message": "Pastel",
-    "description": "Option für Pastel-Stil"
+    "message": "Pastellfarben",
+    "description": "Option für pastellfarbigen Stil"
   },
   "option.style.bold": {
-    "message": "Bold Type",
-    "description": "Option für Bold-Type-Stil"
+    "message": "Fett · Hochenergie",
+    "description": "Option für fetten Schriftstil"
   },
   "option.style.industrial": {
-    "message": "Industrial",
-    "description": "Option für Industrial-Stil"
+    "message": "Industrieller Fehler",
+    "description": "Option für industriellen Stil"
   },
   "option.style.futuristic": {
-    "message": "Futuristic",
-    "description": "Option für Futuristic-Stil"
+    "message": "Zukunftstechnologie",
+    "description": "Option für futuristischen Stil"
   },
   "option.style.retro": {
-    "message": "Retro Film",
-    "description": "Option für Retro-Film-Stil"
+    "message": "Retro-Film",
+    "description": "Option für retro Filmstil"
   },
   "name.voice": {
     "message": "Erzählstimme",
@@ -450,41 +486,5 @@
   "option.scenario.changelog": {
     "message": "Änderungsprotokoll (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Anpassen",
-    "description": "Schalter für optionale kreative Einstellungen"
-  },
-  "description.customize.auto": {
-    "message": "Auto · Maestro bestimmt Videotyp, visuellen Stil und Erzählstimme.",
-    "description": "Zustand bei deaktivierter Anpassung"
-  },
-  "description.customize.manual": {
-    "message": "Videotyp, visuellen Stil und Erzählstimme auswählen.",
-    "description": "Zustand bei aktivierter Anpassung"
-  },
-  "name.primaryLanguage": {
-    "message": "Primärsprache",
-    "description": "Feld für die Primärsprache"
-  },
-  "name.additionalLanguages": {
-    "message": "Weitere Sprachen (optional)",
-    "description": "Feld für weitere Ausgabesprachen"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Ausgabesprachen hinzufügen",
-    "description": "Platzhalter für weitere Sprachen"
-  },
-  "name.customizeScenario": {
-    "message": "Videotyp anpassen",
-    "description": "Schalter zum Anpassen des Videotyps"
-  },
-  "name.customizeStyle": {
-    "message": "Visuellen Stil anpassen",
-    "description": "Schalter zum Anpassen des visuellen Stils"
-  },
-  "name.customizeVoice": {
-    "message": "Erzählstimme anpassen",
-    "description": "Schalter zum Anpassen der Erzählstimme"
   }
 }

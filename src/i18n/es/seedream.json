@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Acción",
+    "description": "Selector para elegir operaciones de generación o edición."
+  },
   "name.taskId": {
     "message": "ID de tarea",
     "description": "ID de la tarea"
@@ -131,6 +135,10 @@
     "message": "Error al subir la imagen, por favor intenta de nuevo más tarde",
     "description": "Error en la subida"
   },
+  "message.referenceImageRequired": {
+    "message": "Se requiere subir al menos una imagen de referencia en modo de edición.",
+    "description": "Mensaje de validación que se muestra cuando no hay imagen de referencia en modo de edición."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Confirmación requerida",
     "description": "Título del cuadro de advertencia de conflicto de capacidades"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Adaptativo (igual que la imagen de referencia)",
     "description": "Etiqueta de opción adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

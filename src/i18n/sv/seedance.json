@@ -1,15 +1,15 @@
 {
   "name.seedanceBot": {
     "message": "SeeDance Bot",
-    "description": "SeeDance video generator name"
+    "description": "Namn på SeeDance videogenerator"
   },
   "name.prompt": {
     "message": "Prompt",
-    "description": "Prompt for generating video"
+    "description": "Prompt för att generera video"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Prompt input description"
+    "message": "Beskriv videon du vill generera. För att få karaktären att prata: ladda upp bilden till \"referensbild\"-rutan (inte \"första bildrutan\"), skriv tydligt dialogen i prompten och omge den med citattecken, till exempel karaktären i bild 1 säger till kameran: \"din dialog\", och aktivera \"generera ljud\". Ytterligare parametrar kan läggas till (t.ex. --rs 720p --rt 16:9 --dur 5).",
+    "description": "Promptinmatning förklaringstext"
   },
   "placeholder.prompt": {
     "message": "Beskriv din video…",
@@ -40,8 +40,8 @@
     "description": "Label for generating audio"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Generate audio description"
+    "message": "När detta är aktiverat kommer videon att ha ljud. För att få karaktären att prata behöver du: ladda upp karaktärsbilden till \"referensbild\"-rutan + aktivera denna växel + skriva dialogen inom citattecken i prompten. Endast seedance-1.5-pro / seedance-2.0-serien stöds, kostnaden är cirka 2 gånger.",
+    "description": "Generera ljud förklaringstext"
   },
   "name.resolution": {
     "message": "Upplösning",
@@ -100,20 +100,20 @@
     "description": "Return last frame description"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "First frame image upload label"
+    "message": "Första bildruta (rörelseeffekt)",
+    "description": "Uppladdningsetikett för första bildruta"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "First frame image description"
+    "message": "Första bildrutan: Den bild du laddar upp kommer att bli den första rutan i videon, och rörelsen börjar där. Passar för \"att få en bild att röra sig\", men karaktären kommer inte att prata eller ha läpprörelser. Om du vill att karaktären ska prata, använd \"referensbilden\" nedan.",
+    "description": "Första bildrutan förklaringstext"
   },
   "name.lastFrame": {
     "message": "Sista bild",
     "description": "Last frame image upload label"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Last frame image description"
+    "message": "Sista bildrutan: Ange den sista bilden i videon (måste kombineras med första bildrutan). Används för att låsa bilden från en viss bild till en annan.",
+    "description": "Sista bildrutan förklaringstext"
   },
   "button.generate": {
     "message": "Generera",
@@ -156,24 +156,24 @@
     "description": "Upload limit exceeded prompt"
   },
   "name.required": {
-    "message": "Required",
-    "description": "Required indicator"
+    "message": "Obligatoriskt",
+    "description": "Obligatorisk markering"
   },
   "message.modelUnsupported": {
-    "message": "Selected model is not supported. Please pick another.",
-    "description": "Warning when the model is not in the supported list"
+    "message": "Den valda modellen stöds inte, vänligen välj igen.",
+    "description": "Varning för modell som inte finns på stödlistan"
   },
   "message.modelRequiresImage": {
-    "message": "This model requires a first-frame image to generate the video.",
-    "description": "Warning when an image-to-video model lacks an image"
+    "message": "Denna modell kräver att du laddar upp en första bildruta för att generera video.",
+    "description": "Bildbaserad videomodel kräver bildinmatning"
   },
   "message.modelRejectsImage": {
-    "message": "This model is text-to-video only. Please remove the uploaded image.",
-    "description": "Warning when a text-only model is given an image"
+    "message": "Denna modell stöder endast video genererad från text, vänligen ta bort den uppladdade bilden.",
+    "description": "Textbaserad videomodel stöder inte bildinmatning"
   },
   "message.resolutionNotSupported": {
-    "message": "This resolution is not supported by the selected model.",
-    "description": "Tooltip when a resolution chip is disabled for the current model"
+    "message": "Denna upplösning stöds inte av den aktuella modellen.",
+    "description": "Varning för upplösning som inte stöds av den aktuella modellen"
   },
   "message.uploadError": {
     "message": "Uppladdning misslyckades",
@@ -213,7 +213,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status label"
+    "description": "Statusetikett"
   },
   "name.ratio": {
     "message": "Bildförhållande",
@@ -240,47 +240,47 @@
     "description": "Beskrivning av lås kamera"
   },
   "name.seed": {
-    "message": "Seed",
-    "description": "Etikett för slumpfrö"
+    "message": "Slumptal",
+    "description": "Etikett för slumptal"
   },
   "description.seed": {
     "message": "Slumpfrö för reproducerbara resultat. Lämna tomt för slumpmässigt.",
     "description": "Beskrivning av slumpfrö"
   },
   "placeholder.seed": {
-    "message": "Auto",
-    "description": "Platshållare för seed"
+    "message": "Automatisk",
+    "description": "Platsinnehavare för slumptal"
   },
   "model.seedance20Mini": {
     "message": "doubao-seedance-2.0-mini",
     "description": "SeeDance 2.0 Mini-modell"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Uppladdningsetikett för referensbild av huvudpersonen (Seedance 2.0)"
+    "message": "Referensbild (få karaktären att prata)",
+    "description": "Uppladdningsetikett för referensbild (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
-    "description": "Beskrivning av referensbild"
+    "message": "Kanalen för att få karaktären i bilden att prata och synka läpparna (talande / digitala människor föredras, kommer att behålla karaktärens bild). Om du vill att karaktären ska prata, ladda upp bilden här, inte \"första bildrutan\". Använd tillsammans med citattecken dialog i prompten + \"generera ljud\". Kan ladda upp 1-9 bilder. Endast Seedance 2.0-serien. Observera: kan inte användas tillsammans med \"första/ sista bildrutan\".",
+    "description": "Referensbild förklaringstext"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
+    "message": "Referensljud (ton/ musik)",
     "description": "Uppladdningsetikett för referensljud (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "Beskrivning av referensljud"
+    "message": "Låt den genererade videon använda denna ljudklipps ton eller bakgrundsmusik (i kombination med referensbilden för att få karaktären att prata med den tonen). Måste användas tillsammans med referensbild eller referensvideo, kan inte laddas upp som ljud ensamt. Kan ladda upp 1-3 klipp. Endast Seedance 2.0-serien.",
+    "description": "Referensljud förklaringstext"
   },
   "name.referenceVideo": {
     "message": "Referensvideo",
     "description": "Uppladdningsetikett för referensvideo (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "Beskrivning av referensvideo"
+    "message": "Låt modellen använda denna video för rörelser/ kameravinklar/ stil/ ljudeffekter för att generera en ny video. Kan ladda upp 1-3 klipp. Endast Seedance 2.0-serien.",
+    "description": "Referensvideo förklaringstext"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Referensljud kan inte användas ensamt, vänligen ladda upp en referensbild eller en referensvideo samtidigt.",
+    "description": "Varning när referensljud inte har en kopplad bild/video"
   }
 }

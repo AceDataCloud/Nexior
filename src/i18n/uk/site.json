@@ -101,103 +101,103 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Назва типу авторизації: стороння авторизація через WeChat."
+    "description": "Назва способу входу: сторонній вхід через WeChat"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "Користувацька адреса відправника SMS",
+    "description": "Налаштування сайту / вхід: заголовок для власного вебхука доставки коду підтвердження SMS"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "Після увімкнення SMS-коди, надіслані з сайту, будуть відправлені вашим власним інтерфейсом з вашим власним підписом; при вимкненні використовується стандартний підпис платформи. Спочатку потрібно увімкнути спосіб входу через «номер телефону».",
+    "description": "Пояснює вебхук для налаштування адреси відправника SMS"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://вашдомен/sms-webhook",
+    "description": "Заповнювач для поля введення URL SMS вебхука"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "Ключ підпису (залиште порожнім, щоб зберегти без змін)",
+    "description": "Заповнювач для введення секрету підпису SMS вебхука; тільки для запису, порожнє зберігає існуюче"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "Увімкнути налаштування адреси відправника",
+    "description": "Мітка поруч з перемикачем для налаштування адреси відправника SMS"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "Переглянути документацію",
+    "description": "Посилання, яке відкриває діалогову вікно специфікації вебхука SMS"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "Тест",
+    "description": "Кнопка, яка відкриває діалог тестування SMS вебхука"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "Спочатку потрібно увімкнути спосіб входу через «номер телефону», щоб налаштувати адресу відправника SMS.",
+    "description": "Підказка, що відображається, коли перемикач вимкнено через те, що вхід за номером телефону вимкнено"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "Налаштування адреси відправника SMS · Опис інтерфейсу",
+    "description": "Назва діалогу специфікації SMS вебхука"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "Сайт надішле підписаний HTTPS POST запит на вказану вами адресу, а ваша служба відповідатиме за відправку SMS. Будь ласка, переконайтеся, що ваш інтерфейс відповідає наступним вимогам:",
+    "description": "Вступний абзац діалогу специфікації SMS вебхука"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "Запит",
+    "description": "Заголовок: секція запиту специфікації SMS вебхука"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "Метод POST, Content-Type application/json. purpose може бути login / register / test (test - для перевірки з'єднання, SMS не надсилається). Структура тіла запиту така:",
+    "description": "Описує метод запиту та тіло SMS вебхука"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "Перевірка підпису",
+    "description": "Заголовок: секція підпису специфікації вебхука SMS"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "Кожен запит супроводжується наступними заголовками, будь ласка, використовуйте свій ключ підпису для перевірки HMAC-SHA256 відповідно до стандарту вебхуків, та використовуйте порівняння з постійним часом:",
+    "description": "Описує перевірку підпису для SMS вебхука"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "Відповідь",
+    "description": "Заголовок: секція відповіді специфікації SMS вебхука"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "Успішно відправлено, поверніть 2xx; для явного позначення помилки можна повернути HTTP 200, а в тілі поле success має бути false (див. приклад нижче). Будь ласка, відповідайте протягом 5 секунд.",
+    "description": "Описує очікувану відповідь SMS вебхука"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "Тестування налаштування адреси відправника SMS",
+    "description": "Назва діалогу тестування SMS вебхука"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "Код країни/регіону",
+    "description": "Мітка для поля коду регіону в діалозі тестування"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "Тестовий номер телефону (необов'язково)",
+    "description": "Мітка для поля номера телефону в діалозі тестування"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "Відправити тест",
+    "description": "Кнопка, яка відправляє запит на тестування SMS вебхука"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "Тестовий запит успішно надіслано на ваш інтерфейс.",
+    "description": "Повідомлення про успіх після тестування вебхука"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "Тест не вдався, будь ласка, перевірте адресу, ключ підпису та відповідь інтерфейсу.",
+    "description": "Повідомлення про помилку після тестування вебхука"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Вимкнути користувацьку адресу відправника SMS",
+    "description": "Заголовок діалогового вікна підтвердження, що з'являється при вимкненні користувацького відправника SMS"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Після вимкнення буде видалено збережену адресу відправника та ключ підпису (ключ не можна відновити), сайт використовуватиме стандартний підпис платформи. Ви впевнені, що хочете вимкнути?",
+    "description": "Текст підтвердження, що відображається при вимкненні налаштування адреси відправника SMS"
   },
   "field.featuresChat": {
     "message": "Чат",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Відображається як заголовок у полі редагування"
   },
-  "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresDigitalhuman": {
+    "message": "Цифрова людина",
+    "description": "Відображається як заголовок у вікні редагування"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "展示在编辑框的标题"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Відображається як заголовок у полі редагування"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Створюйте повні відео з ідеї, включно з плануванням, озвученням, сценами та фінальною подачею.",
     "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
   },
+  "message.featuresPoivelle": {
+    "message": "Координуйте професійне AI кіновиробництво за допомогою спільних проектних карт, сценаріїв, часових ліній, переглядів та робочих процесів Skill Agent.",
+    "description": "Опис можливостей координування професійного AI кіновиробництва"
+  },
   "message.featuresDigitalhuman": {
     "message": "Створюйте відео з говорячою головою із синтезованою мовою та природною синхронізацією губ.",
     "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "Відеогенерація ByteDance для динамічних сцен, руху камери та необов’язкового аудіо.",
     "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+  },
+  "message.featuresOmni": {
+    "message": "Створюйте або редагуйте відео за допомогою моделей Omni на основі тексту, зображень і відеореференсів.",
+    "description": "Створюйте або редагуйте відео за допомогою моделей Omni на основі тексту, зображень і відеореференсів."
   },
   "message.featuresWan": {
     "message": "Відеогенерація Alibaba з тексту, зображень або референсів у різних роздільностях.",
@@ -882,100 +898,84 @@
   "services.message.fetchFailed": {
     "message": "Не вдалося завантажити перевизначення сервісів"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Відображається як заголовок у полі редагування"
-  },
-  "message.featuresOmni": {
-    "message": "Створюйте або редагуйте відео за допомогою моделей Omni на основі тексту, зображень і відеореференсів.",
-    "description": "Створюйте або редагуйте відео за допомогою моделей Omni на основі тексту, зображень і відеореференсів."
-  },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "Редагувати програму",
+    "description": "Підказка та доступність для редагування назви та значка програми"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "Налаштування {name}",
+    "description": "Заголовок вікна, {name} - це назва програми за замовчуванням платформи"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "Користувацька назва",
+    "description": "Поле для відображення назви програми підсайту"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "Залиште порожнім, щоб використовувати {name}. Після першого збереження можна включити автоматичний переклад.",
+    "description": "Опис назви, {name} - це назва програми за замовчуванням платформи"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "Користувацький значок",
+    "description": "Поле для значка програми підсайту"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "За замовчуванням",
+    "description": "Тег попереднього перегляду значка за замовчуванням платформи"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "Поточний ефект",
+    "description": "Тег попереднього перегляду поточного активного значка"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "Замінити значок",
+    "description": "Команда для завантаження замінного значка"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "Завантажити значок",
+    "description": "Команда для першого завантаження користувацького значка"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "Використовувати значок за замовчуванням",
+    "description": "Команда для очищення чернетки користувацького значка"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "Підтримуються PNG, JPEG або WebP, буде обрізано до квадратної форми; прозорий PNG зберігає прозорий фон.",
+    "description": "Вимоги до завантаження значка програми"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "Редагувати значок програми",
+    "description": "Заголовок вікна для обрізки значка"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "Відновити за замовчуванням",
+    "description": "Команда для одночасного видалення користувацької назви та значка"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "Будь ласка, спочатку введіть користувацьку назву або завантажте значок.",
+    "description": "Підказка при спробі створити порожнє перекриття"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "Налаштування програми збережено",
+    "description": "Успішне повідомлення після збереження перекриття програми"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "Збережено, тепер можна увімкнути автоматичний переклад для користувацької назви.",
+    "description": "Підказка після першого збереження та отримання ID запису перекриття"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "Не вдалося зберегти налаштування програми",
+    "description": "Помилка при запису перекриття програми"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "Відновити значок та назву за замовчуванням для {name}?",
+    "description": "Текст підтвердження відновлення, {name} - це назва програми за замовчуванням платформи"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "Відновлено назву та значок за замовчуванням",
+    "description": "Успішне повідомлення після видалення перекриття програми"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
+    "message": "Не вдалося завантажити налаштування програми",
+    "description": "Помилка при спробі прочитати записи управління перекриттям програми"
   }
 }

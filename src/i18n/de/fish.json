@@ -1,7 +1,7 @@
 {
   "name.text": {
     "message": "Text",
-    "description": "Fish TTS Textfeld Label"
+    "description": "Fish TTS Textfeld-Label"
   },
   "name.voice": {
     "message": "Stimme",
@@ -26,6 +26,18 @@
   "name.elapsed": {
     "message": "Dauer",
     "description": "Fish Aufgaben Dauer Label"
+  },
+  "name.failure": {
+    "message": "Generierung fehlgeschlagen",
+    "description": "Titel für fehlgeschlagene Aufgaben im Fish"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "Label für die Fehlerursache bei fehlgeschlagenen Aufgaben im Fish"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Label für die Verfolgungs-ID der Aufgaben im Fish"
   },
   "name.fishBot": {
     "message": "Fish Audio",
@@ -92,20 +104,20 @@
     "description": "Fish Sprachwähler ist leer Hinweis"
   },
   "group.publicVoices": {
-    "message": "Public voice library",
-    "description": "Fish voice picker public voices group header"
+    "message": "Öffentliche Stimmensammlung",
+    "description": "Titel der öffentlichen Stimmensammlung im Fish Stimmenauswähler"
   },
   "message.searching": {
-    "message": "Searching…",
-    "description": "Fish voice picker remote search loading hint"
+    "message": "Suche läuft…",
+    "description": "Ladehinweis für die Fernsuche im Fish Stimmenauswähler"
   },
   "message.searchVoiceHint": {
-    "message": "Type a keyword to search public voices",
-    "description": "Fish voice picker remote search empty-state hint"
+    "message": "Geben Sie Schlüsselwörter ein, um öffentliche Stimmen zu suchen",
+    "description": "Hinweis für den leeren Zustand der Fernsuche im Fish Stimmenauswähler"
   },
   "name.voiceTitle": {
     "message": "Name",
-    "description": "Fish Geräuschmodell Name Feldbezeichnung"
+    "description": "Fish Sprachmodell Name Feld-Label"
   },
   "name.voiceDescription": {
     "message": "Beschreibung",
@@ -334,17 +346,5 @@
   "script.passage4": {
     "message": "Eins zwei drei vier fünf sechs sieben acht neun zehn, null Punkt eins zwei drei vier fünf sechs sieben acht neun. Heute ist Montag, nächste Woche Montag ist Feiertag, und übernächste Woche Montag beginnt das neue Projekt. Bitte lesen Sie diesen Text klar und deutlich vor, ohne zu lange Pausen zu machen.",
     "description": "Fish Aufnahmebeispielabschnitt 4 (Zahlen und Aussprache)"
-  },
-  "name.failure": {
-    "message": "Generation failed",
-    "description": "Fish task failure title"
-  },
-  "name.failureReason": {
-    "message": "Failure reason",
-    "description": "Fish task failure reason label"
-  },
-  "name.traceId": {
-    "message": "Trace ID",
-    "description": "Fish task trace ID label"
   }
 }

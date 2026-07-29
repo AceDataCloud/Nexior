@@ -25,8 +25,10 @@ describe('Poivelle application foundation', () => {
   });
 
   it('backfills the Poivelle scope for other locales', async () => {
-    const english = await loadLocaleResource('poivelle', 'en');
-    const german = await loadLocaleResource('poivelle', 'de');
-    expect(german).toEqual(english);
+    const english = (await loadLocaleResource('poivelle', 'en')) as Record<string, unknown>;
+    const german = (await loadLocaleResource('poivelle', 'de')) as Record<string, unknown>;
+    // Key coverage only. Asserting deep equality would require German to stay
+    // byte-identical to English, which is what left every locale untranslated.
+    expect(keys(german)).toEqual(keys(english));
   });
 });

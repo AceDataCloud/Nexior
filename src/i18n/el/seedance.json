@@ -8,8 +8,8 @@
     "description": "Υπόδειξη για τη δημιουργία βίντεο"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Οδηγίες εισόδου υπόδειξης"
+    "message": "Περιγράψτε το βίντεο που θέλετε να δημιουργήσετε. Για να μιλήσουν οι χαρακτήρες: ανεβάστε την εικόνα στο πλαίσιο \"εικόνα αναφοράς\" παρακάτω (όχι στην \"πρώτη εικόνα\"), γράψτε τα λόγια με εισαγωγικά στο πεδίο υποδείξεων, π.χ. ο χαρακτήρας στην εικόνα 1 λέει στην κάμερα: \"τα λόγια σας\", και ανοίξτε \"δημιουργία ήχου\". Μπορείτε να προσθέσετε παραμέτρους (π.χ. --rs 720p --rt 16:9 --dur 5).",
+    "description": "Εξήγηση εισόδου υποδείξεων"
   },
   "placeholder.prompt": {
     "message": "Περιγράψτε το βίντεό σας…",
@@ -40,8 +40,8 @@
     "description": "Ετικέτα για τη δημιουργία ήχου"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Οδηγίες για τη δημιουργία ήχου"
+    "message": "Ανοίξτε το για να έχει ήχο το βίντεο. Για να μιλήσουν οι χαρακτήρες χρειάζεται: να ανεβάσετε την εικόνα του χαρακτήρα στο πλαίσιο \"εικόνα αναφοράς\" + να ανοίξετε αυτόν τον διακόπτη + να γράψετε τα λόγια σε εισαγωγικά στο πεδίο υποδείξεων. Υποστηρίζεται μόνο από τις σειρές seedance-1.5-pro / seedance-2.0, με κόστος περίπου 2 φορές.",
+    "description": "Εξήγηση δημιουργίας ήχου"
   },
   "name.resolution": {
     "message": "Ανάλυση",
@@ -100,20 +100,20 @@
     "description": "Οδηγίες για την επιστροφή τελευταίας καρέ"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Ετικέτα για την ανάρτηση εικόνας πρώτης καρέ"
+    "message": "Πρώτη εικόνα (κινηματογραφική εφέ)",
+    "description": "Ετικέτα ανάρτησης πρώτης εικόνας"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Οδηγίες για την εικόνα πρώτης καρέ"
+    "message": "Πρώτη εικόνα βίντεο: Η εικόνα που ανεβάσατε θα γίνει η πρώτη καρέ του βίντεο, η κίνηση ξεκινά από αυτήν. Κατάλληλο για \"να κάνετε μια εικόνα να κινείται\", αλλά οι χαρακτήρες δεν θα μιλούν, δεν έχουν κίνηση στόματος. Αν θέλετε οι χαρακτήρες να μιλούν, χρησιμοποιήστε την \"εικόνα αναφοράς\" παρακάτω.",
+    "description": "Εξήγηση πρώτης καρέ εικόνας"
   },
   "name.lastFrame": {
     "message": "Εικόνα τελευταίας καρέ",
     "description": "Ετικέτα για την ανάρτηση εικόνας τελευταίας καρέ"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Οδηγίες για την εικόνα τελευταίας καρέ"
+    "message": "Τελευταία καρέ εικόνα βίντεο: Καθορίστε την τελευταία καρέ του βίντεο (πρέπει να συνδυαστεί με την πρώτη καρέ εικόνα). Χρησιμοποιείται για να κλειδώσει την εικόνα από μια συγκεκριμένη εικόνα στην αρχή μέχρι μια συγκεκριμένη εικόνα στο τέλος.",
+    "description": "Εξήγηση τελευταίας καρέ εικόνας"
   },
   "button.generate": {
     "message": "Δημιουργία",
@@ -156,24 +156,24 @@
     "description": "Μήνυμα υπέρβασης ανάρτησης"
   },
   "name.required": {
-    "message": "Required",
-    "description": "Required indicator"
+    "message": "Υποχρεωτικό",
+    "description": "Ετικέτα υποχρεωτικού πεδίου"
   },
   "message.modelUnsupported": {
-    "message": "Selected model is not supported. Please pick another.",
-    "description": "Warning when the model is not in the supported list"
+    "message": "Το επιλεγμένο μοντέλο δεν υποστηρίζεται, παρακαλώ επιλέξτε ξανά.",
+    "description": "Προειδοποίηση για μοντέλο που δεν είναι στη λίστα υποστήριξης"
   },
   "message.modelRequiresImage": {
-    "message": "This model requires a first-frame image to generate the video.",
-    "description": "Warning when an image-to-video model lacks an image"
+    "message": "Αυτό το μοντέλο απαιτεί να ανεβάσετε την πρώτη εικόνα για να δημιουργήσετε βίντεο.",
+    "description": "Το μοντέλο βίντεο από εικόνες απαιτεί είσοδο εικόνας"
   },
   "message.modelRejectsImage": {
-    "message": "This model is text-to-video only. Please remove the uploaded image.",
-    "description": "Warning when a text-only model is given an image"
+    "message": "Αυτό το μοντέλο υποστηρίζει μόνο βίντεο από εικόνες, παρακαλώ αφαιρέστε την ήδη ανεβασμένη εικόνα.",
+    "description": "Το μοντέλο βίντεο από εικόνες δεν δέχεται είσοδο εικόνας"
   },
   "message.resolutionNotSupported": {
-    "message": "This resolution is not supported by the selected model.",
-    "description": "Tooltip when a resolution chip is disabled for the current model"
+    "message": "Αυτή η ανάλυση δεν υποστηρίζεται από το τρέχον μοντέλο.",
+    "description": "Προειδοποίηση για ανάλυση που δεν υποστηρίζεται από το τρέχον μοντέλο"
   },
   "message.uploadError": {
     "message": "Αποτυχία ανάρτησης",
@@ -256,31 +256,31 @@
     "description": "Μοντέλο SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Ετικέτα για την ανέβασμα αναφοράς εικόνας (Seedance 2.0)"
+    "message": "Εικόνα αναφοράς (για να μιλήσουν οι χαρακτήρες)",
+    "description": "Ετικέτα ανάρτησης εικόνας αναφοράς (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
-    "description": "Περιγραφή αναφοράς εικόνας"
+    "message": "Διαδίκτυο για να μιλήσουν οι χαρακτήρες στο βίντεο, με κίνηση στόματος (προτιμώμενη επιλογή για φωνητική / ψηφιακή ανθρώπινη μορφή, θα διατηρήσει την εικόνα του χαρακτήρα). Για να μιλήσουν οι χαρακτήρες, ανεβάστε την εικόνα εδώ, όχι στην \"πρώτη εικόνα\". Χρησιμοποιήστε την μαζί με τα λόγια που είναι σε εισαγωγικά στο πεδίο υποδείξεων + \"δημιουργία ήχου\". Μπορείτε να ανεβάσετε 1~9 εικόνες. Υποστηρίζεται μόνο από τη σειρά Seedance 2.0. Σημείωση: δεν μπορεί να χρησιμοποιηθεί ταυτόχρονα με \"πρώτη/τελευταία εικόνα\".",
+    "description": "Εξήγηση εικόνας αναφοράς"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Ετικέτα για την ανέβασμα αναφοράς ήχου (Seedance 2.0)"
+    "message": "Ήχος αναφοράς (φωνητική/μουσική υπόκρουση)",
+    "description": "Ετικέτα ανάρτησης ήχου αναφοράς (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "Περιγραφή αναφοράς ήχου"
+    "message": "Επιτρέψτε στο παραγόμενο βίντεο να δανειστεί αυτή τη μουσική ήχου ή υπόκρουση (σε συνδυασμό με την εικόνα αναφοράς για να μιλήσουν οι χαρακτήρες με αυτή τη φωνή). Πρέπει να χρησιμοποιηθεί μαζί με την εικόνα αναφοράς ή το βίντεο αναφοράς, δεν μπορεί να μεταφορτωθεί μόνο ήχος. Μπορείτε να ανεβάσετε 1~3 τμήματα. Υποστηρίζεται μόνο από τη σειρά Seedance 2.0.",
+    "description": "Εξήγηση ήχου αναφοράς"
   },
   "name.referenceVideo": {
     "message": "Αναφορά βίντεο",
     "description": "Ετικέτα για την ανέβασμα αναφοράς βίντεο (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "Περιγραφή αναφοράς βίντεο"
+    "message": "Επιτρέψτε στο μοντέλο να δανειστεί τις κινήσεις/γωνίες/στυλ/ηχητικά εφέ από αυτό το βίντεο για να δημιουργήσει ένα νέο βίντεο. Μπορείτε να ανεβάσετε 1~3 τμήματα. Υποστηρίζεται μόνο από τη σειρά Seedance 2.0.",
+    "description": "Εξήγηση βίντεο αναφοράς"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Ο ήχος αναφοράς δεν μπορεί να χρησιμοποιηθεί μόνος του, παρακαλώ ανεβάστε ταυτόχρονα μια εικόνα αναφοράς ή ένα βίντεο αναφοράς.",
+    "description": "Προειδοποίηση όταν ο ήχος αναφοράς δεν έχει ζευγαρωμένη εικόνα/βίντεο"
   }
 }

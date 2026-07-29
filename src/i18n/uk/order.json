@@ -80,16 +80,16 @@
     "description": "Повідомлення про допомогу з оплатою через WeChat."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Поточний браузер не підтримує прямий виклик WeChat Pay. Будь ласка, скопіюйте посилання нижче та відкрийте його в WeChat, щоб продовжити оплату.",
+    "description": "Текст підказки, що відображається в мобільному браузері, який не є WeChat."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Скопіювати платіжне посилання",
+    "description": "Кнопка для копіювання URL поточної сторінки в буфер обміну, щоб користувач міг вставити його в WeChat."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Після успішного копіювання відкрийте WeChat, вставте посилання в будь-який чат або верхнє поле пошуку, натисніть на посилання, щоб завершити оплату.",
+    "description": "Додаткова підказка під кнопкою копіювання посилання."
   },
   "message.free": {
     "message": "Безкоштовно",
@@ -160,8 +160,8 @@
     "description": "Заголовок, що відображається на сайті, що вказує на оплату через Stripe."
   },
   "title.card": {
-    "message": "Card",
-    "description": "Title displayed on the website indicating card payment (credit/debit card)."
+    "message": "Банківська картка",
+    "description": "Заголовок, що відображається на сайті, який вказує на оплату банківською карткою (кредитною/дебетовою)."
   },
   "title.manageOrder": {
     "message": "Управління замовленнями",
@@ -548,31 +548,31 @@
     "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Загальна кількість замовлень",
+    "description": "Загальна картка: загальна кількість замовлень за поточними умовами фільтрації."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Загальні витрати",
+    "description": "Загальна картка: загальна сума замовлень за поточними умовами фільтрації."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Завершені замовлення",
+    "description": "Загальна картка: кількість завершених замовлень."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Замовлення на оплату",
+    "description": "Загальна картка: кількість замовлень, що чекають на оплату."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Експортувати CSV",
+    "description": "Текст кнопки: експортувати замовлення у форматі CSV за поточними умовами фільтрації."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Усі статуси",
+    "description": "Плейсхолдер для випадаючого списку статусів: означає, що статуси не обмежені."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Усі способи оплати",
+    "description": "Плейсхолдер для випадаючого списку способів оплати: означає, що способи оплати не обмежені."
   }
 }

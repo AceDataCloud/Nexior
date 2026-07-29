@@ -1,15 +1,15 @@
 {
   "name.seedanceBot": {
-    "message": "SeeDance Bot",
-    "description": "Nome do gerador de vídeo SeeDance"
+    "message": "Robô SeeDance",
+    "description": "Nome do gerador de vídeos SeeDance"
   },
   "name.prompt": {
-    "message": "Prompt",
-    "description": "Prompt para gerar vídeo"
+    "message": "Palavras-chave",
+    "description": "Palavras-chave para geração do vídeo"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Instruções para entrada de prompt"
+    "message": "Descreva o vídeo que você deseja gerar. Para que os personagens falem: envie a imagem para o campo \"imagem de referência\" abaixo (não para \"imagem inicial\"), escreva os diálogos claramente entre aspas nas palavras-chave, por exemplo, o personagem na imagem 1 diz para a câmera: \"sua fala\", e ative \"gerar áudio\". Parâmetros adicionais podem ser incluídos (como --rs 720p --rt 16:9 --dur 5).",
+    "description": "Instruções para entrada de palavras-chave"
   },
   "placeholder.prompt": {
     "message": "Descreva seu vídeo…",
@@ -40,8 +40,8 @@
     "description": "Rótulo para geração de áudio"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Instruções para geração de áudio"
+    "message": "Ao ativar, o vídeo terá som. Para que os personagens falem, você precisa: enviar a imagem do personagem para o campo \"imagem de referência\" + ativar este botão + escrever os diálogos entre aspas nas palavras-chave. Suportado apenas nas séries seedance-1.5-pro / seedance-2.0, com custo cerca de 2 vezes maior.",
+    "description": "Descrição para geração de áudio"
   },
   "name.resolution": {
     "message": "Resolução",
@@ -100,20 +100,20 @@
     "description": "Instruções para retornar último quadro"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Rótulo para upload da imagem do primeiro quadro"
+    "message": "Imagem inicial (efeito de animação)",
+    "description": "Etiqueta para upload da imagem inicial"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Instruções para imagem do primeiro quadro"
+    "message": "Imagem inicial do vídeo: a imagem que você enviou será o primeiro quadro do vídeo, e a animação começará a partir dela. Ideal para \"dar vida a uma imagem\", mas os personagens não falarão, nem terão movimentos labiais. Para que os personagens falem, utilize a \"imagem de referência\" abaixo.",
+    "description": "Descrição da imagem do primeiro quadro"
   },
   "name.lastFrame": {
     "message": "Imagem do último quadro",
     "description": "Rótulo para upload da imagem do último quadro"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Instruções para imagem do último quadro"
+    "message": "Imagem final do vídeo: especifique o último quadro do vídeo (deve ser combinado com a imagem inicial). Usado para fixar a animação começando de uma imagem e terminando em outra.",
+    "description": "Descrição da imagem do último quadro"
   },
   "button.generate": {
     "message": "Gerar",
@@ -213,7 +213,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Rótulo de status"
+    "description": "Etiqueta de status"
   },
   "name.ratio": {
     "message": "Proporção",
@@ -248,27 +248,27 @@
     "description": "Descrição da semente aleatória"
   },
   "placeholder.seed": {
-    "message": "Auto",
-    "description": "Marcador de posição da semente"
+    "message": "Automático",
+    "description": "Placeholder para semente aleatória"
   },
   "model.seedance20Mini": {
     "message": "doubao-seedance-2.0-mini",
     "description": "Modelo SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Etiqueta de upload de imagem de referência (Seedance 2.0)"
+    "message": "Imagem de referência (para fazer o personagem falar)",
+    "description": "Etiqueta para upload da imagem de referência (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Canal para fazer o personagem na imagem falar e sincronizar os lábios (preferido para narração / personagens digitais, mantendo a imagem do personagem). Para que o personagem fale, envie a imagem aqui, e não na \"imagem inicial\". Deve ser usado junto com os diálogos entre aspas nas palavras-chave + \"gerar áudio\". É possível enviar de 1 a 9 imagens. Apenas na série Seedance 2.0. Atenção: não pode ser usado simultaneamente com \"imagem inicial/imagem final\".",
     "description": "Descrição da imagem de referência"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Etiqueta de upload de áudio de referência (Seedance 2.0)"
+    "message": "Áudio de referência (tom/música de fundo)",
+    "description": "Etiqueta para upload do áudio de referência (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "Permita que o vídeo gerado utilize o tom ou a música de fundo deste áudio (em combinação com a imagem de referência para que o personagem fale com esse tom). Deve ser usado junto com a imagem ou vídeo de referência, não pode ser enviado apenas o áudio. É possível enviar de 1 a 3 trechos. Apenas na série Seedance 2.0.",
     "description": "Descrição do áudio de referência"
   },
   "name.referenceVideo": {
@@ -276,11 +276,11 @@
     "description": "Etiqueta de upload de vídeo de referência (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
+    "message": "Permita que o modelo utilize os movimentos/estilos/efeitos sonoros deste vídeo para gerar um novo vídeo. É possível enviar de 1 a 3 trechos. Apenas na série Seedance 2.0.",
     "description": "Descrição do vídeo de referência"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "O áudio de referência não pode ser usado sozinho, por favor, envie também uma imagem de referência ou um vídeo de referência.",
+    "description": "Aviso quando o áudio de referência não tem imagem/vídeo pareado"
   }
 }

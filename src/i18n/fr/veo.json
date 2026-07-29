@@ -40,7 +40,7 @@
     "description": "Étiquette du champ de formulaire : images de référence début/fin (en anglais, suggéré comme 'Start/End Frames', garder court pour éviter de masquer le bouton)"
   },
   "name.action": {
-    "message": "Actions",
+    "message": "Action",
     "description": "Liste des actions disponibles"
   },
   "name.action3": {
@@ -143,6 +143,10 @@
     "message": "Vous pouvez télécharger jusqu'à 2 images",
     "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
   },
+  "message.uploadReferencesLimit": {
+    "message": "Vous pouvez télécharger jusqu'à {limit} images",
+    "description": "Affiche la limite dynamique du nombre d'images en fonction du mode de génération actuel"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Images téléchargées avec succès",
     "description": "Message de succès lors du téléchargement réussi d'images"
@@ -231,20 +235,16 @@
     "message": "Vidéo de fusion d'images",
     "description": "ingredients2video — Fusionner 1 à 3 images pour générer une nouvelle scène"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "Texte généré",
+    "description": "Étiquette d'action Veo : vidéo générée à partir de texte"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "Image générée",
+    "description": "Étiquette d'action Veo : vidéo générée à partir d'images"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "Fusion",
+    "description": "Étiquette d'action Veo : vidéo fusionnée à partir de plusieurs images"
   }
 }

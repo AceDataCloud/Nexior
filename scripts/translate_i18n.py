@@ -30,6 +30,10 @@ Algorithm:
 
 Idempotent: a green tree → zero writes, zero API calls.
 
+`--repair` additionally retranslates entries whose `message` is still the
+untranslated English seed left behind by `i18n_backfill.py`. Without it those
+keys exist, so step 3's missing-key diff skips them and they stay English.
+
 Env vars:
   ACEDATACLOUD_OPENAI_KEY   (preferred) or VITE_OPENAI_API_KEY
   TRANSLATE_API_URL         override the gateway
@@ -37,14 +41,17 @@ Env vars:
   TRANSLATE_MODEL           override the model (default: gpt-4o-mini)
 
 CLI:
-  python3 scripts/translate_i18n.py            # all locales
-  python3 scripts/translate_i18n.py en de fr   # subset
+  python3 scripts/translate_i18n.py             # all locales, fill holes only
+  python3 scripts/translate_i18n.py en de fr    # subset
+  python3 scripts/translate_i18n.py --repair    # also fix English placeholders
+  python3 scripts/translate_i18n.py ko --repair # one locale, with repair
 """
 
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -93,6 +100,7 @@ LANGUAGE_NAMES = {
 }
 REPO_ROOT = Path(__file__).resolve().parent.parent
 I18N_ROOT = REPO_ROOT / "src" / "i18n"
+ALLOW_ENGLISH_FILE = I18N_ROOT / ".allow-english"
 
 API_URL = os.environ.get(
     "TRANSLATE_API_URL", "https://api.acedata.cloud/openai/chat/completions"
@@ -116,6 +124,69 @@ def collect_keys_with_message(data: Any) -> set[str]:
         if isinstance(v, dict) and isinstance(v.get("message"), str) and v["message"]:
             keys.add(k)
     return keys
+
+
+HAN_RE = re.compile(r"[一-鿿]")
+# Locales that legitimately contain Han characters.
+HAN_LOCALES = {"zh-CN", "zh-TW", "ja"}
+
+
+def leaks_source_script(value: str, locale: str) -> bool:
+    """True if a non-CJK translation still carries Chinese source characters.
+
+    gpt-4o-mini occasionally half-translates ("任意 조건 충족"). Japanese keeps
+    kanji so it is exempt; Korean is not.
+    """
+    return locale not in HAN_LOCALES and bool(HAN_RE.search(value))
+
+
+def load_allowed_english() -> set[str]:
+    """`<namespace>:<key>` pairs allowed to stay English (see the file header)."""
+    if not ALLOW_ENGLISH_FILE.exists():
+        return set()
+    allowed: set[str] = set()
+    for raw in ALLOW_ENGLISH_FILE.read_text(encoding="utf-8").splitlines():
+        line = raw.split("#", 1)[0].strip()
+        if line:
+            allowed.add(line)
+    return allowed
+
+
+def find_stale_keys(
+    zh_data: dict[str, Any],
+    en_data: dict[str, Any],
+    target_data: dict[str, Any],
+    keys: list[str],
+) -> list[str]:
+    """Keys whose target `message` is still the untranslated English seed.
+
+    `i18n_backfill.py` fills new keys with the English entry so the coverage
+    guard passes. Those keys then exist, so the missing-key diff never sees
+    them again and they stay English forever. A key is stale when the target
+    message equals English *and* zh-CN differs from English — the zh-CN check
+    is what keeps brand nouns ("API Key", "Stripe"), which are identical in
+    every locale by design, from being flagged.
+    """
+
+    def message_of(data: dict[str, Any], key: str) -> str | None:
+        entry = data.get(key)
+        if isinstance(entry, dict) and isinstance(entry.get("message"), str):
+            return entry["message"]
+        return None
+
+    stale: list[str] = []
+    for key in keys:
+        zh_message = message_of(zh_data, key)
+        en_message = message_of(en_data, key)
+        target_message = message_of(target_data, key)
+        if zh_message is None or en_message is None or target_message is None:
+            continue
+        if (
+            target_message.strip() == en_message.strip()
+            and zh_message.strip() != en_message.strip()
+        ):
+            stale.append(key)
+    return stale
 
 
 # ---------- HTTP ----------
@@ -224,6 +295,10 @@ def translate_batch(
             raise RuntimeError(
                 f"model returned key {key!r} without a non-empty `message`: {v!r}"
             )
+        if leaks_source_script(message, locale):
+            raise RuntimeError(
+                f"model left untranslated Chinese in {key!r} for {locale}: {message!r}"
+            )
         description = v.get("description")
         if not isinstance(description, str):
             description = payload_in[key]["description"]
@@ -245,12 +320,18 @@ def translate_with_split(
     keys: list[str],
     locale: str,
 ) -> dict[str, dict[str, str]]:
-    """Translate `keys` for `locale`, halving the batch on failure."""
+    """Translate `keys` for `locale`, halving the batch on failure.
+
+    A single key that keeps failing (usually a brand string the model echoes
+    back in Chinese) is dropped rather than aborting the whole run — the caller
+    leaves the existing value in place and the coverage guard still reports it.
+    """
     try:
         return translate_batch(api_key, zh_data, keys, locale)
     except Exception as e:
         if len(keys) <= 1:
-            raise
+            print(f"    skipping {keys[0]!r}: {e}", flush=True)
+            return {}
         mid = len(keys) // 2
         print(
             f"    batch of {len(keys)} failed ({e}); splitting "
@@ -265,7 +346,7 @@ def translate_with_split(
 # ---------- per-locale processing ----------
 
 
-def process_locale(api_key: str, locale: str) -> int:
+def process_locale(api_key: str, locale: str, repair: bool = False) -> int:
     """Returns the number of keys still missing after the run (should be 0)."""
     base_dir = I18N_ROOT / BASE_LOCALE
     target_dir = I18N_ROOT / locale
@@ -292,18 +373,39 @@ def process_locale(api_key: str, locale: str) -> int:
         target_keys = collect_keys_with_message(target_data)
 
         missing = [k for k in zh_keys if k not in target_keys]
-        if not missing:
+
+        stale: list[str] = []
+        if repair and locale != "en":
+            en_file = I18N_ROOT / "en" / namespace
+            en_data: dict[str, Any] = {}
+            if en_file.exists():
+                loaded = json.loads(en_file.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    en_data = loaded
+            stale = find_stale_keys(zh_data, en_data, target_data, zh_keys)
+            allowed = {
+                entry.split(":", 1)[1]
+                for entry in load_allowed_english()
+                if entry.startswith(f"{namespace}:")
+            }
+            stale = [k for k in stale if k not in allowed]
+
+        todo = missing + [k for k in stale if k not in set(missing)]
+        if not todo:
             print(f"  {namespace:24s}  OK")
             continue
 
+        detail = f"filling {len(missing)}"
+        if stale:
+            detail += f" + retranslating {len(stale)} stale"
         print(
-            f"  {namespace:24s}  filling {len(missing)} key(s)...",
+            f"  {namespace:24s}  {detail} key(s)...",
             flush=True,
         )
 
         translated: dict[str, dict[str, str]] = {}
-        for i in range(0, len(missing), BATCH_SIZE):
-            chunk = missing[i : i + BATCH_SIZE]
+        for i in range(0, len(todo), BATCH_SIZE):
+            chunk = todo[i : i + BATCH_SIZE]
             got = translate_with_split(api_key, zh_data, chunk, locale)
             translated.update(got)
             print(
@@ -358,7 +460,8 @@ def main() -> int:
         )
         return 1
 
-    requested = sys.argv[1:]
+    requested = [a for a in sys.argv[1:] if a != "--repair"]
+    repair = "--repair" in sys.argv[1:]
     if requested:
         unknown = [loc for loc in requested if loc not in TARGET_LOCALES]
         if unknown:
@@ -368,9 +471,16 @@ def main() -> int:
     else:
         locales = list(TARGET_LOCALES)
 
+    if repair:
+        print(
+            "repair mode: also retranslating values still equal to the "
+            "English seed (see find_stale_keys)",
+            flush=True,
+        )
+
     total_missing = 0
     for locale in locales:
-        total_missing += process_locale(api_key, locale)
+        total_missing += process_locale(api_key, locale, repair=repair)
 
     if total_missing:
         print(

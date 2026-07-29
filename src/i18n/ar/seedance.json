@@ -8,7 +8,7 @@
     "description": "الكلمات الدالة لتوليد الفيديو"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
+    "message": "وصف الفيديو الذي تريد توليده. لجعل الشخصية تتحدث: قم بتحميل الصورة في مربع \"الصورة المرجعية\" أدناه (ليس \"الصورة الأولى\"), اكتب الحوار بوضوح بين علامات اقتباس، مثل: الشخصية في الصورة 1 تقول إلى الكاميرا: \"نصك\"، وقم بتفعيل \"توليد الصوت\". يمكن إضافة معلمات (مثل --rs 720p --rt 16:9 --dur 5).",
     "description": "شرح إدخال الكلمات الدالة"
   },
   "placeholder.prompt": {
@@ -40,7 +40,7 @@
     "description": "علامة اختيار توليد الصوت"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
+    "message": "عند التفعيل، سيكون للفيديو صوت. لجعل الشخصية تتحدث، تحتاج إلى: تحميل صورة الشخصية في مربع \"الصورة المرجعية\" + تفعيل هذا المفتاح + كتابة الحوار بين علامات اقتباس في الكلمات الدالة. مدعوم فقط من سلسلة seedance-1.5-pro / seedance-2.0، التكلفة تقريبًا مضاعفة.",
     "description": "شرح توليد الصوت"
   },
   "name.resolution": {
@@ -100,20 +100,20 @@
     "description": "شرح إرجاع الإطار الأخير"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "علامة تحميل صورة الإطار الأول"
+    "message": "الصورة الأولى (تأثير الحركة)",
+    "description": "علامة تحميل الصورة الأولى"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "شرح صورة الإطار الأول"
+    "message": "الصورة الأولى: الصورة التي قمت بتحميلها ستصبح الإطار الأول للفيديو، وستبدأ الحركة منها. مناسبة لـ \"تحريك صورة واحدة\"، لكن الشخصيات لن تتحدث أو تتحرك شفاههم. إذا كنت تريد أن تتحدث الشخصية، يرجى استخدام \"الصورة المرجعية\" أدناه.",
+    "description": "شرح الصورة الأولى"
   },
   "name.lastFrame": {
     "message": "صورة الإطار الأخير",
     "description": "علامة تحميل صورة الإطار الأخير"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "شرح صورة الإطار الأخير"
+    "message": "الإطار الأخير للفيديو: تحديد الإطار الأخير للفيديو (يجب أن يترافق مع الصورة الأولى). يستخدم لتثبيت الحركة من صورة معينة إلى صورة معينة.",
+    "description": "شرح الصورة الأخيرة"
   },
   "button.generate": {
     "message": "توليد",
@@ -256,31 +256,31 @@
     "description": "نموذج SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
+    "message": "الصورة المرجعية (لجعل الشخصية تتحدث)",
     "description": "علامة تحميل الصورة المرجعية (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
-    "description": "وصف الصورة المرجعية"
+    "message": "قناة لجعل الشخصيات في الصورة تتحدث وتتحرك شفاههم (اختيار مثالي للحديث الرقمي، ستبقى صورة الشخصية). إذا كنت تريد أن تتحدث الشخصية، قم بتحميل الصورة هنا، وليس في \"الصورة الأولى\". استخدم مع الحوار بين علامات الاقتباس + \"توليد الصوت\". يمكن تحميل 1~9 صور. مدعوم فقط من سلسلة Seedance 2.0. ملاحظة: لا يمكن استخدامه مع \"الصورة الأولى/الأخيرة\" في نفس الوقت.",
+    "description": "شرح الصورة المرجعية"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
+    "message": "الصوت المرجعي (نغمة/موسيقى)",
     "description": "علامة تحميل الصوت المرجعي (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "وصف الصوت المرجعي"
+    "message": "اجعل الفيديو الناتج يستخدم نغمة أو موسيقى خلفية من هذا المقطع الصوتي (مع الصورة المرجعية لجعل الشخصية تتحدث بهذه النغمة). يجب استخدامه مع الصورة المرجعية أو الفيديو المرجعي، لا يمكن تحميل الصوت بمفرده. يمكن تحميل 1~3 مقاطع. مدعوم فقط من سلسلة Seedance 2.0.",
+    "description": "شرح الصوت المرجعي"
   },
   "name.referenceVideo": {
     "message": "الفيديو المرجعي",
     "description": "علامة تحميل الفيديو المرجعي (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "وصف الفيديو المرجعي"
+    "message": "اجعل النموذج يستخدم حركة/توجيه/أسلوب/تأثيرات صوتية من هذا الفيديو، لإنشاء فيديو جديد. يمكن تحميل 1~3 مقاطع. مدعوم فقط من سلسلة Seedance 2.0.",
+    "description": "شرح الفيديو المرجعي"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "لا يمكن استخدام الصوت المرجعي بمفرده، يرجى تحميل صورة مرجعية أو فيديو مرجعي في نفس الوقت.",
+    "description": "تحذير عند عدم وجود صورة/فيديو مرتبط بالصوت المرجعي"
   }
 }

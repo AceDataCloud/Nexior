@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "操作",
+    "description": "生成または編集の操作選択を示します"
+  },
   "name.taskId": {
     "message": "タスク ID",
     "description": "タスクの ID"
@@ -131,6 +135,10 @@
     "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "アップロード失敗"
   },
+  "message.referenceImageRequired": {
+    "message": "編集モードでは少なくとも1枚の参考画像をアップロードする必要があります。",
+    "description": "編集モードに参考画像がない場合に表示される検証メッセージ"
+  },
   "message.featureNotSupportedTitle": {
     "message": "確認が必要",
     "description": "能力の衝突を示すポップアップのタイトル"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "自適応（参照画像に一致）",
     "description": "adaptive オプションのラベル"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

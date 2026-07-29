@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Action",
+    "description": "Générer ou éditer un sélecteur d'action"
+  },
   "name.taskId": {
     "message": "ID de tâche",
     "description": "ID de la tâche"
@@ -131,6 +135,10 @@
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
     "description": "Échec du téléchargement"
   },
+  "message.referenceImageRequired": {
+    "message": "Le mode d'édition nécessite au moins une image de référence.",
+    "description": "Message de validation affiché lorsque le mode d'édition n'a pas d'image de référence."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Confirmation requise",
     "description": "Titre de la boîte de dialogue de conflit de fonctionnalités"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Adaptatif (comme l'image de référence)",
     "description": "Étiquette de l'option adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

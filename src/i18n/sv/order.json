@@ -61,7 +61,7 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy är en typ av online-tjänst som används för att överföra data via HTTP."
+    "description": "Proxy är en typ av onlinetjänst som används för att överföra data via HTTP-proxy."
   },
   "message.paidSuccessfully": {
     "message": "Betalning genomförd",
@@ -80,16 +80,16 @@
     "description": "Meddelande om hjälp med WeChat-betalning."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Den aktuella webbläsaren stöder inte direkt anrop av WeChat-betalning. Kopiera länken nedan och öppna den i WeChat för att fortsätta med betalningen.",
+    "description": "Guidetext som visas i en mobil webbläsare som inte är WeChat."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Kopiera betalningslänk",
+    "description": "Knapptext för att kopiera den aktuella sidans URL till urklipp, så att användaren kan klistra in den i WeChat."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Efter att ha kopierat, öppna WeChat, klistra in länken i valfritt chattfönster eller i sökfältet högst upp, klicka på länken för att slutföra betalningen.",
+    "description": "Andra guidetips under knappen för att kopiera länken."
   },
   "message.free": {
     "message": "Gratis",
@@ -153,15 +153,15 @@
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Titel som visas på webbplatsen, vilket indikerar Alipay-betalning, Alipay är en typ av online-betalning."
+    "description": "Titel som visas som webbplatsens rubrik, indikerar Alipay-betalning, vilket är en typ av onlinebetalning."
   },
   "title.stripe": {
     "message": "Stripe",
     "description": "Titel som visas på webbplatsen, vilket indikerar Stripe-betalning, Stripe är en typ av online-betalning."
   },
   "title.card": {
-    "message": "Card",
-    "description": "Title displayed on the website indicating card payment (credit/debit card)."
+    "message": "Bankkort",
+    "description": "Titel som visas som webbplatsens rubrik, indikerar betalning med bankkort (kreditkort/debitkort)."
   },
   "title.manageOrder": {
     "message": "Hantera beställningar",
@@ -548,31 +548,31 @@
     "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Totalt antal beställningar",
+    "description": "Sammanfattningskort: Totalt antal beställningar baserat på aktuella filtreringsvillkor."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Totala utgifter",
+    "description": "Sammanfattningskort: Totalt belopp för beställningar baserat på aktuella filtreringsvillkor."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Avslutade beställningar",
+    "description": "Sammanfattningskort: Antal avslutade beställningar."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Väntande betalningar",
+    "description": "Sammanfattningskort: Antal väntande betalningar."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Exportera CSV",
+    "description": "Knapptext: Exportera order CSV baserat på aktuella filtreringsvillkor."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Alla statusar",
+    "description": "Platsinnehavare för rullgardinsmenyn för status: indikerar att inga statusar är begränsade."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Alla betalningsmetoder",
+    "description": "Platsinnehavare för rullgardinsmenyn för betalningsmetoder: indikerar att inga betalningsmetoder är begränsade."
   }
 }

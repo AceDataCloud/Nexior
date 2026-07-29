@@ -21,7 +21,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status da tarefa"
+    "description": "O estado da tarefa"
   },
   "name.traceId": {
     "message": "ID de Rastreamento",
@@ -143,6 +143,10 @@
     "message": "Máximo de 2 imagens permitidas",
     "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
+  "message.uploadReferencesLimit": {
+    "message": "Máximo de {limit} imagens podem ser enviadas",
+    "description": "Limite dinâmico de quantidade de imagens com base no método de geração atual"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Imagens enviadas com sucesso",
     "description": "Mensagem de sucesso ao enviar imagens com sucesso"
@@ -231,20 +235,16 @@
     "message": "Vídeo de fusão de múltiplas imagens",
     "description": "ingredients2video — Fusão de 1-3 imagens para gerar uma nova cena"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "Texto",
+    "description": "Aba de ação do Veo: vídeo de texto"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "Imagem",
+    "description": "Aba de ação do Veo: vídeo de imagem"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "Fusão",
+    "description": "Aba de ação do Veo: vídeo de fusão de múltiplas imagens"
   }
 }

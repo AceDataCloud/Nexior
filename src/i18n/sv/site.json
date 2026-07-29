@@ -104,100 +104,100 @@
     "description": "Namn på inloggningsmetod: WeChat tredjepartsinloggning"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "Anpassad SMS-avsändaradress",
+    "description": "Webbplatsinställningar / inloggning: titel för webbplatsens egen anpassade SMS-verifieringskodleverans webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "När den är aktiverad kommer SMS-kod som skickas från plattformen att skickas av ditt eget API med din egen signatur; när den är avstängd används plattformens standard signatur. Du måste först aktivera \"telefonnummer\" inloggningsmetod.",
+    "description": "Förklarar den anpassade SMS-avsändarens webhook"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://dittdomännamn/sms-webhook",
+    "description": "Platshållare för SMS webhook URL inmatningsfält"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "Signaturnyckel (lämna tom för att behålla oförändrad)",
+    "description": "Platshållare för SMS webhook signeringshemlighet; skrivskyddad, tomt behåller befintligt"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "Aktivera anpassad avsändaradress",
+    "description": "Etikett bredvid växeln för anpassad SMS-avsändare"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "Visa dokumentation",
+    "description": "Länk som öppnar dialogrutan för SMS webhook-specifikation"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "Testa",
+    "description": "Knapp som öppnar dialogrutan för SMS webhook-test"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "Du måste först aktivera \"telefonnummer\" inloggningsmetod för att kunna konfigurera en anpassad SMS-avsändaradress.",
+    "description": "Tooltip som visas när växeln är inaktiverad eftersom telefoninloggning är avstängd"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "Anpassad SMS-avsändaradress · API-specifikation",
+    "description": "Titel på dialogrutan för SMS webhook-specifikationen"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "Vi kommer att göra en signerad HTTPS POST-begäran till den angivna adressen, och din tjänst ansvarar för att skicka SMS. Se till att ditt API uppfyller följande krav:",
+    "description": "Introduktionstext i dialogrutan för SMS webhook-specifikationen"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "Begäran",
+    "description": "Rubrik: begärans avsnitt av SMS webhook-specifikationen"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "Metoden är POST, Content-Type är application/json. Syftet kan vara login / register / test (test är en anslutningstest, SMS behöver inte skickas). Begärningskroppens struktur är som följer:",
+    "description": "Beskriver begärningsmetoden och kroppen för SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "Signaturverifiering",
+    "description": "Rubrik: signaturavsnittet av SMS webhook-specifikationen"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "Bifoga följande begärningshuvuden vid varje begäran, använd din signaturnyckel för att göra HMAC-SHA256-verifiering enligt Standard Webhooks-specifikationen och använd konstant tidsjämförelse:",
+    "description": "Beskriver signaturverifiering för SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "Svar",
+    "description": "Rubrik: svarsavsnitt av SMS webhook-specifikationen"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "Vid framgång, returnera 2xx; för att uttryckligen indikera ett misslyckande, kan du returnera HTTP 200, och body-fältet success ska vara false (se exempel nedan). Svara inom 5 sekunder.",
+    "description": "Beskriver den förväntade svaret av SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "Testa anpassad SMS-avsändaradress",
+    "description": "Titel på dialogrutan för SMS webhook-test"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "Lands-/regionskod",
+    "description": "Etikett för regionskodsfältet i testdialogrutan"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "Testtelefonnummer (valfritt)",
+    "description": "Etikett för telefonnummerfältet i testdialogrutan"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "Skicka test",
+    "description": "Knapp som skickar SMS webhook-testbegäran"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "Testbegäran har framgångsrikt nått ditt API.",
+    "description": "Framgångsmeddelande efter ett webhook-test"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "Testet misslyckades, kontrollera adressen, signaturnyckeln och API-svaret.",
+    "description": "Felmeddelande efter ett webhook-test"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Stäng av anpassad SMS-avsändaradress",
+    "description": "Titel på bekräftelsedialogen som visas när den anpassade SMS-avsändaren inaktiveras"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "När du stänger av kommer sparade avsändaradresser och signaturnycklar att raderas (nycklar kan inte återställas), och plattformen kommer att använda standard signatur. Är du säker på att du vill stänga av?",
+    "description": "Text i bekräftelsedialogen som visas när den anpassade SMS-avsändaren stängs av"
   },
   "field.featuresChat": {
     "message": "Chat",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Visas som titeln i redigeringsrutan"
   },
-  "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresDigitalhuman": {
+    "message": "Digital människa",
+    "description": "Visas som titel i redigeringsrutan"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "Visas som titeln i redigeringsrutan"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Visas som rubrik i redigeringsrutan"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Skapa kompletta videor från en idé, inklusive planering, speakerröst, scener och leverans.",
     "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
   },
+  "message.featuresPoivelle": {
+    "message": "Genom att dela projektplaner, storyboard, tidslinjer, granskningar och Skill Agent-arbetsflöden, samordnar professionell AI filmproduktion.",
+    "description": "Introduktion till kapaciteten för att samordna professionell AI filmproduktion."
+  },
   "message.featuresDigitalhuman": {
     "message": "Skapa talking-head-videor med syntetiserat tal och naturlig läppsynk.",
     "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "ByteDance-videogenerering för dynamiska scener, kamerarörelser och valfritt ljud.",
     "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+  },
+  "message.featuresOmni": {
+    "message": "Skapa eller redigera videor med Omni-modeller utifrån text, bilder och videoreferenser.",
+    "description": "Skapa eller redigera videor med Omni-modeller utifrån text, bilder och videoreferenser."
   },
   "message.featuresWan": {
     "message": "Alibaba-videogenerering från text, bilder eller referenser i flera upplösningar.",
@@ -882,100 +898,84 @@
   "services.message.fetchFailed": {
     "message": "Kunde inte läsa in tjänståsidosättningar"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Visas som rubrik i redigeringsrutan"
-  },
-  "message.featuresOmni": {
-    "message": "Skapa eller redigera videor med Omni-modeller utifrån text, bilder och videoreferenser.",
-    "description": "Skapa eller redigera videor med Omni-modeller utifrån text, bilder och videoreferenser."
-  },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "Anpassa applikation",
+    "description": "Tips och tillgänglighetslabel för att redigera kapabilitetsapplikationens namn och ikon"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "Anpassa {name}",
+    "description": "Dialogtitel, {name} är plattformens standardapplikationsnamn"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "Anpassat namn",
+    "description": "Fält för visningsnamn av underwebbplatsens kapabilitetsapplikation"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "Lämna tomt för att använda {name}. Automatisk översättning kan aktiveras efter första sparandet.",
+    "description": "Namnförklaring, {name} är plattformens standardapplikationsnamn"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "Anpassad ikon",
+    "description": "Fält för ikon av underwebbplatsens kapabilitetsapplikation"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "Standard",
+    "description": "Label för förhandsvisning av plattformens standardikon"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "Aktuell effekt",
+    "description": "Label för förhandsvisning av aktuell aktiv ikon"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "Ersätt ikon",
+    "description": "Kommando för att ladda upp en ersättningsikon"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "Ladda upp ikon",
+    "description": "Kommando för att första gången ladda upp en anpassad ikon"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "Använd standardikon",
+    "description": "Kommando för att rensa utkast av anpassad ikon"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "Stöder PNG, JPEG eller WebP, kommer att beskäras till kvadrat; transparent PNG behåller transparent bakgrund.",
+    "description": "Krav för uppladdning av kapabilitetsapplikationsikon"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "Redigera applikationsikon",
+    "description": "Titel för dialogrutan för ikonbeskärning"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "Återställ till standard",
+    "description": "Kommando för att ta bort både anpassat namn och ikon"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "Vänligen ange ett anpassat namn eller ladda upp en ikon först.",
+    "description": "Tips när man försöker skapa en tom överskrivning"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "Applikationens anpassningar har sparats",
+    "description": "Framgångsmeddelande efter att ha sparat kapabilitetsapplikationens överskrivning"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "Sparad, nu kan automatisk översättning för anpassat namn aktiveras.",
+    "description": "Tips efter första sparandet och erhållande av överskrivningspost-ID"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "Misslyckades med att spara applikationens anpassningar",
+    "description": "Fallback-fel vid misslyckande av skrivning av kapabilitetsapplikationens överskrivning"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "Återställ {name} till standardnamn och ikon?",
+    "description": "Bekräftelsemeddelande för återställning, {name} är plattformens standardapplikationsnamn"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "Standardnamn och ikon har återställts",
+    "description": "Framgångsmeddelande efter att ha tagit bort kapabilitetsapplikationens överskrivning"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
+    "message": "Misslyckades med att ladda applikationens anpassningar",
+    "description": "Fel när man inte kan läsa kapabilitetsapplikationens överskrivningshanteringsposter"
   }
 }

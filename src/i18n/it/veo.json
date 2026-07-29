@@ -143,6 +143,10 @@
     "message": "È possibile caricare al massimo 2 immagini",
     "description": "Messaggio di errore quando il numero di immagini caricate supera il limite"
   },
+  "message.uploadReferencesLimit": {
+    "message": "Massimo {limit} immagini possono essere caricate",
+    "description": "Limite dinamico del numero di immagini da caricare in base al metodo di generazione attuale"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Immagini caricate con successo",
     "description": "Messaggio di successo quando le immagini sono state caricate con successo"
@@ -231,20 +235,16 @@
     "message": "Video di fusione multipla",
     "description": "ingredients2video — Fusione di 1-3 immagini per generare una nuova scena"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "Testo",
+    "description": "Etichetta dell'azione Veo: video di generazione di testo"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "Immagine",
+    "description": "Etichetta dell'azione Veo: video di generazione di immagini"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "Integrazione",
+    "description": "Etichetta dell'azione Veo: video di integrazione di più immagini"
   }
 }

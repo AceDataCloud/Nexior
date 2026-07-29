@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Aktion",
+    "description": "Auswahl für die Generierung oder Bearbeitung von Aktionen."
+  },
   "name.taskId": {
     "message": "Aufgaben-ID",
     "description": "ID der Aufgabe"
@@ -29,7 +33,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Aufgabenstatus"
+    "description": "Der Status der Aufgabe"
   },
   "name.traceId": {
     "message": "Verfolgungs-ID",
@@ -131,6 +135,10 @@
     "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
     "description": "Hochladen fehlgeschlagen"
   },
+  "message.referenceImageRequired": {
+    "message": "Im Bearbeitungsmodus muss mindestens ein Referenzbild hochgeladen werden.",
+    "description": "Überprüfungshinweis, der angezeigt wird, wenn im Bearbeitungsmodus kein Referenzbild vorhanden ist."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Bestätigung erforderlich",
     "description": "Titel im Konfliktwarnungsdialog"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Anpassungsfähig (entspricht Referenzbild)",
     "description": "Label für die adaptive Option"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

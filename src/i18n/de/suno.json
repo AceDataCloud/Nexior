@@ -125,7 +125,7 @@
   },
   "button.addAudio": {
     "message": "+ Audio",
-    "description": "Button zum Öffnen des Dialogs zum Hinzufügen von Audio (Durchsuchen oder Aufnehmen)"
+    "description": "Schaltfläche zum Öffnen des Dialogs zum Hinzufügen von Audio (Durchsuchen oder Aufnehmen)"
   },
   "button.startRecord": {
     "message": "Aufnahme starten",
@@ -177,7 +177,7 @@
   },
   "button.video": {
     "message": "Video",
-    "description": "Text des Video-Buttons"
+    "description": "Text für die Video-Schaltfläche"
   },
   "button.download_video": {
     "message": "Video herunterladen",
@@ -197,7 +197,7 @@
   },
   "button.cover_music": {
     "message": "Cover",
-    "description": "Text für den Button zum Erstellen eines Covers"
+    "description": "Text für die Cover-Schaltfläche"
   },
   "button.concat_music": {
     "message": "Zusammenfügen",
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "Remaster",
-    "description": "Text für den Button zum Remastern für bessere Audioqualität"
+    "description": "Text für die Schaltfläche zur Verbesserung der Audioqualität"
   },
   "button.replace_section": {
     "message": "Abschnitt ersetzen",
@@ -217,7 +217,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Text für den Button zum Erstellen eines Mashups mehrerer Songs"
+    "description": "Text für die Schaltfläche zum Mischen mehrerer Songs"
   },
   "button.generate_lyrics": {
     "message": "AI-generierte Lyrics",
@@ -241,7 +241,7 @@
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Generierung von rein instrumentaler Musik ohne Gesang"
+    "description": "Generiert instrumentale Musik ohne Gesang"
   },
   "name.referenceAudios": {
     "message": "Referenzmusik",
@@ -288,8 +288,8 @@
     "description": "Eingabeaufforderung für den Inhalt"
   },
   "name.lyrics": {
-    "message": "Lyrics",
-    "description": "Eingabeaufforderung für den Inhalt der Lyrics"
+    "message": "Songtext",
+    "description": "Hinweis zum Eingeben des Songtextinhalts"
   },
   "name.style": {
     "message": "Stil",
@@ -334,6 +334,10 @@
   "name.failureReason": {
     "message": "Fehlergrund",
     "description": "Grund für das Scheitern der Aufgabe"
+  },
+  "name.failure": {
+    "message": "Generierung fehlgeschlagen",
+    "description": "Titel für fehlgeschlagene Suno-Aufgaben"
   },
   "name.status": {
     "message": "Status",
@@ -813,7 +817,7 @@
   },
   "filter.title": {
     "message": "Filter",
-    "description": "Filter-Button"
+    "description": "Schaltfläche zum Filtern"
   },
   "filter.type": {
     "message": "Typ",
@@ -829,7 +833,7 @@
   },
   "filter.typeInstrumental": {
     "message": "Instrumental",
-    "description": "Typ: Instrumental"
+    "description": "Typ: Instrumentalmusik"
   },
   "filter.duration": {
     "message": "Dauer",
@@ -853,7 +857,7 @@
   },
   "filter.video": {
     "message": "Video",
-    "description": "Filterbereich: Enthält Video"
+    "description": "Filterbereich: Enthält es Videos?"
   },
   "filter.videoAll": {
     "message": "Alle",
@@ -938,9 +942,5 @@
   "name.lyricsMode": {
     "message": "Lyrics-Modus",
     "description": "Label des Auswahlfeldes für den Lyrics-Modus (manuell / automatisch)"
-  },
-  "name.failure": {
-    "message": "Generation failed",
-    "description": "Suno task failure title"
   }
 }

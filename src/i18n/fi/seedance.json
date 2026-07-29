@@ -8,8 +8,8 @@
     "description": "Videon generoimiseen käytettävä kehotus"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Kehotuksen syöttöohje"
+    "message": "Kuvaile, mitä videota haluat luoda. Jos haluat, että hahmo puhuu: lataa kuva alla olevaan \"viittauskuva\" -ruutuun (ei \"ensimmäinen kehys\"), kirjoita repliikit selkeästi lainausmerkkeihin vihjeessä, esimerkiksi hahmo kuvassa 1 katsoo kameraan ja sanoo: \"sinun repliikkisi\", ja kytke \"generoi ääni\" päälle. Voit lisätä parametreja (kuten --rs 720p --rt 16:9 --dur 5).",
+    "description": "Vihjeen syöttöselitys"
   },
   "placeholder.prompt": {
     "message": "Kuvaile videota…",
@@ -40,8 +40,8 @@
     "description": "Äänen generoimisen valintatunnus"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Äänen generoimisen ohje"
+    "message": "Kun tämä on päällä, video sisältää ääntä. Jos haluat, että hahmo puhuu, sinun on: ladattava hahmon kuva \"viittauskuva\" -ruutuun + kytkettävä tämä päälle + kirjoitettava repliikit lainausmerkkeihin vihjeessä. Vain seedance-1.5-pro / seedance-2.0 sarjat tukevat, kustannus noin 2-kertainen.",
+    "description": "Äänen generoinnin selitys"
   },
   "name.resolution": {
     "message": "Resoluutio",
@@ -100,20 +100,20 @@
     "description": "Viimeisen kehyksen palautuksen ohje"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Ensimmäisen kehyksen kuvan lataustunnus"
+    "message": "Ensimmäinen kehyskuva (kuvan tehoste)",
+    "description": "Ensimmäisen kehyksen kuvan latausmerkintä"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Ensimmäisen kehyksen kuvan ohje"
+    "message": "Ensimmäinen kehys: lataamasi kuva tulee videon ensimmäiseksi kehykseksi, ja kuva alkaa liikkua siitä. Sopii \"saamaan kuva liikkumaan\", mutta hahmo ei puhu eikä ole suun liikettä. Jos haluat, että hahmo puhuu, käytä alla olevaa \"viittauskuvaa\".",
+    "description": "Ensimmäisen kehyksen kuvan selitys"
   },
   "name.lastFrame": {
     "message": "Viimeinen kehyskuva",
     "description": "Viimeisen kehyksen kuvan lataustunnus"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Viimeisen kehyksen kuvan ohje"
+    "message": "Viimeinen kehys: määritä videon viimeinen kehys (yhdistettävä ensimmäiseen kehykseen). Käytetään lukitsemaan kuva, joka alkaa tietystä kuvasta ja päättyy tiettyyn kuvaan.",
+    "description": "Viimeisen kehyksen kuvan selitys"
   },
   "button.generate": {
     "message": "Generoi",
@@ -156,24 +156,24 @@
     "description": "Latausrajan ylitysviesti"
   },
   "name.required": {
-    "message": "Required",
-    "description": "Required indicator"
+    "message": "Pakollinen",
+    "description": "Pakollinen merkintä"
   },
   "message.modelUnsupported": {
-    "message": "Selected model is not supported. Please pick another.",
-    "description": "Warning when the model is not in the supported list"
+    "message": "Valittua mallia ei tueta, valitse uudelleen.",
+    "description": "Ei tuettujen mallien ilmoitus"
   },
   "message.modelRequiresImage": {
-    "message": "This model requires a first-frame image to generate the video.",
-    "description": "Warning when an image-to-video model lacks an image"
+    "message": "Tämä malli vaatii ensimmäisen kehyksen kuvan lataamista videon luomiseksi.",
+    "description": "Kuvasta video -malli tarvitsee kuvasyötteen"
   },
   "message.modelRejectsImage": {
-    "message": "This model is text-to-video only. Please remove the uploaded image.",
-    "description": "Warning when a text-only model is given an image"
+    "message": "Tämä malli tukee vain tekstistä videota, poista ladattu kuva.",
+    "description": "Tekstistä video -malli ei hyväksy kuvasyöttöä"
   },
   "message.resolutionNotSupported": {
-    "message": "This resolution is not supported by the selected model.",
-    "description": "Tooltip when a resolution chip is disabled for the current model"
+    "message": "Tätä resoluutiota ei tueta nykyisellä mallilla.",
+    "description": "Resoluutio ei ole tuettujen mallien ilmoitus"
   },
   "message.uploadError": {
     "message": "Lataus epäonnistui",
@@ -248,27 +248,27 @@
     "description": "Satunnaissiemenen kuvaus"
   },
   "placeholder.seed": {
-    "message": "Auto",
-    "description": "Siemenen paikkamerkki"
+    "message": "Automaattinen",
+    "description": "Satunnainen siemenpaikka"
   },
   "model.seedance20Mini": {
     "message": "doubao-seedance-2.0-mini",
     "description": "SeeDance 2.0 Mini -malli"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Viittauskuvan lataustunniste (Seedance 2.0)"
+    "message": "Viittauskuva (antaa hahmon puhua)",
+    "description": "Viittauskuvan latausmerkintä (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Mahdollistaa, että kuvassa oleva hahmo puhuu videossa ja synkronoi suun liikettä (puhe / digitaalinen henkilö ensisijaisesti, säilyttää hahmon ilmeen). Jos haluat, että hahmo puhuu, lataa kuva tänne, ei \"ensimmäiseen kehykseen\". Käytä yhdessä vihjeen lainausmerkkirepliikkien + \"generoi ääni\" kanssa. Voit ladata 1-9 kuvaa. Vain Seedance 2.0 sarja. Huom: ei voi käyttää samanaikaisesti \"ensimmäisen/viimeisen kehyksen kuvan\" kanssa.",
     "description": "Viittauskuvan selitys"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Viittausäänen lataustunniste (Seedance 2.0)"
+    "message": "Viittausääni (sävy/taustamusiikki)",
+    "description": "Viittausäänen latausmerkintä (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "Anna videon lainata tätä äänitallennetta äänen sävyä tai taustamusiikkia (yhdistettävä viittauskuvan kanssa, jotta hahmo puhuu kyseisellä äänellä). Vain viittauskuvan tai viittausvideon kanssa käytettävä, ei voi ladata vain ääntä. Voit ladata 1-3 pätkää. Vain Seedance 2.0 sarja.",
     "description": "Viittausäänen selitys"
   },
   "name.referenceVideo": {
@@ -276,11 +276,11 @@
     "description": "Viittausvideon lataustunniste (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
+    "message": "Mahdollistaa mallin lainata tämän videon liikkeitä/kameraliikkeitä/tyyliä/ääniefektejä, luodaksesi uuden videon. Voit ladata 1-3 pätkää. Vain Seedance 2.0 sarja.",
     "description": "Viittausvideon selitys"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Viittausääntä ei voi käyttää yksin, lataa samalla viittauskuva tai viittausvideo.",
+    "description": "Varoitus, kun viittausäänellä ei ole paritettu kuvaa/videota"
   }
 }

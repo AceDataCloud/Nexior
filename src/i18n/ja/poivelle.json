@@ -4,687 +4,687 @@
     "description": "Poivelle product name in navigation"
   },
   "status.synced": {
-    "message": "Graph synced",
-    "description": "Graph sync status"
+    "message": "プロジェクト図が同期されました",
+    "description": "プロジェクト図の同期状態"
   },
   "status.loading": {
-    "message": "Loading production state",
-    "description": "Workspace loading status"
+    "message": "制作状態を読み込んでいます",
+    "description": "ワークスペースの読み込み状態"
   },
   "action.commit": {
-    "message": "Commit revision",
-    "description": "Commit graph revision tooltip"
+    "message": "修正を提出",
+    "description": "プロジェクト図の修正を提出します"
   },
   "action.runSkill": {
-    "message": "Run skill",
-    "description": "Run selected node with project skill"
+    "message": "Skillを実行",
+    "description": "プロジェクトSkillを使用して選択したノードを実行します"
   },
   "action.retry": {
-    "message": "Retry",
-    "description": "Retry failed load"
-  },
-  "section.projects": {
-    "message": "Projects",
-    "description": "Projects rail heading"
-  },
-  "section.assets": {
-    "message": "Asset library",
-    "description": "Assets rail heading"
-  },
-  "section.revisions": {
-    "message": "Revisions",
-    "description": "Revisions rail heading"
-  },
-  "section.inspector": {
-    "message": "Inspector",
-    "description": "Node inspector heading"
-  },
-  "workspace.create": {
-    "message": "Create workspace",
-    "description": "Create workspace command"
-  },
-  "workspace.name": {
-    "message": "Workspace name",
-    "description": "Workspace name field"
-  },
-  "workspace.budget": {
-    "message": "Monthly limit (microcredits)",
-    "description": "Workspace monthly budget field"
-  },
-  "project.create": {
-    "message": "New project",
-    "description": "Create project command"
-  },
-  "project.empty": {
-    "message": "No projects in this workspace.",
-    "description": "Empty projects message"
-  },
-  "project.noProject": {
-    "message": "Choose a project",
-    "description": "Missing current project label"
-  },
-  "project.workspace": {
-    "message": "Workspace",
-    "description": "Project workspace field"
-  },
-  "project.title": {
-    "message": "Project title",
-    "description": "Project title field"
-  },
-  "project.skill": {
-    "message": "Production skill",
-    "description": "Project skill field"
-  },
-  "asset.import": {
-    "message": "Import asset",
-    "description": "Import asset command"
-  },
-  "asset.all": {
-    "message": "All",
-    "description": "All assets filter"
-  },
-  "asset.empty": {
-    "message": "No matching production assets.",
-    "description": "Empty asset message"
-  },
-  "asset.title": {
-    "message": "Asset title",
-    "description": "Asset title field"
-  },
-  "asset.url": {
-    "message": "Source URL",
-    "description": "Asset source URL field"
-  },
-  "asset.hash": {
-    "message": "Content hash",
-    "description": "Asset hash field"
-  },
-  "revision.empty": {
-    "message": "No committed revisions.",
-    "description": "Empty revisions message"
-  },
-  "revision.committed": {
-    "message": "Revision committed",
-    "description": "Revision success toast"
-  },
-  "node.create": {
-    "message": "Add node",
-    "description": "Create graph node command"
-  },
-  "node.delete": {
-    "message": "Delete node",
-    "description": "Delete graph node command"
-  },
-  "node.deleteConfirm": {
-    "message": "Delete this graph node? Connected nodes must be disconnected first.",
-    "description": "Delete node confirmation"
-  },
-  "field.title": {
-    "message": "Title",
-    "description": "Node title field"
-  },
-  "field.type": {
-    "message": "Type",
-    "description": "Node or asset type field"
-  },
-  "field.prompt": {
-    "message": "Production prompt",
-    "description": "Node prompt field"
-  },
-  "projection.label": {
-    "message": "Project graph projections",
-    "description": "Projection tabs accessible label"
-  },
-  "projection.canvas": {
-    "message": "Canvas",
-    "description": "Canvas projection tab"
-  },
-  "projection.storyboard": {
-    "message": "Storyboard",
-    "description": "Storyboard projection tab"
-  },
-  "projection.timeline": {
-    "message": "Timeline",
-    "description": "Timeline projection tab"
-  },
-  "projection.review": {
-    "message": "Review",
-    "description": "Review projection tab"
-  },
-  "graph.emptyTitle": {
-    "message": "Build the production graph",
-    "description": "Empty graph heading"
-  },
-  "graph.emptyBody": {
-    "message": "Add scripts, characters, scenes, shots, media, and outputs. Human editors and skills write through the same graph command history.",
-    "description": "Empty graph explanation"
-  },
-  "storyboard.noPrompt": {
-    "message": "No shot prompt yet.",
-    "description": "Missing storyboard prompt"
-  },
-  "storyboard.emptyTitle": {
-    "message": "No storyboard frames",
-    "description": "Empty storyboard heading"
-  },
-  "storyboard.emptyBody": {
-    "message": "Create scene, shot, image, or video nodes to project them here.",
-    "description": "Empty storyboard explanation"
-  },
-  "timeline.emptyTitle": {
-    "message": "No timeline assembly",
-    "description": "Empty timeline heading"
-  },
-  "timeline.emptyBody": {
-    "message": "Commit takes and selections before assembling clips into tracks.",
-    "description": "Empty timeline explanation"
-  },
-  "inspector.noSelection": {
-    "message": "Nothing selected",
-    "description": "Inspector title without selection"
-  },
-  "inspector.empty": {
-    "message": "Select a node in Canvas or Storyboard to edit typed production properties.",
-    "description": "Empty inspector explanation"
-  },
-  "agent.title": {
-    "message": "Skill agent",
-    "description": "Agent dock title"
-  },
-  "agent.noProposals": {
-    "message": "No pending proposals. Select a node to ask the skill for the next production action.",
-    "description": "Empty agent proposals message"
-  },
-  "agent.propose": {
-    "message": "Propose next",
-    "description": "Request agent proposal command"
-  },
-  "agent.proposal": {
-    "message": "Proposal",
-    "description": "Proposal toast label"
-  },
-  "review.heading": {
-    "message": "Production review",
-    "description": "Review summary heading"
-  },
-  "review.noRevision": {
-    "message": "Uncommitted graph",
-    "description": "Review heading without revision"
-  },
-  "review.nodes": {
-    "message": "nodes",
-    "description": "Review node count label"
-  },
-  "review.proposals": {
-    "message": "proposals",
-    "description": "Review proposal count label"
-  },
-  "review.runs": {
-    "message": "runs",
-    "description": "Review run count label"
-  },
-  "review.pendingProposals": {
-    "message": "Agent proposals",
-    "description": "Review proposal section"
-  },
-  "review.noProposals": {
-    "message": "No proposals awaiting review.",
-    "description": "No review proposals message"
-  },
-  "review.execution": {
-    "message": "Execution ledger",
-    "description": "Review execution section"
-  },
-  "review.noRuns": {
-    "message": "No execution runs for this project.",
-    "description": "No runs message"
-  },
-  "onboarding.title": {
-    "message": "A professional workspace for AI film production",
-    "description": "Poivelle onboarding heading"
-  },
-  "onboarding.body": {
-    "message": "Direct humans, skills, agents, and production tools through one canonical project graph. Canvas, Storyboard, Timeline, and Review are synchronized projections, not separate documents.",
-    "description": "Poivelle onboarding explanation"
-  },
-  "run.confirmTitle": {
-    "message": "Confirm production run",
-    "description": "Run confirmation dialog title"
-  },
-  "run.targets": {
-    "message": "Dependency closure",
-    "description": "Dry run target count"
-  },
-  "run.maximum": {
-    "message": "Maximum cost",
-    "description": "Dry run maximum cost"
-  },
-  "run.approval": {
-    "message": "Approval class",
-    "description": "Dry run approval class"
-  },
-  "run.confirmBody": {
-    "message": "The compiler executes this immutable dependency closure with a short-lived API credential. Each provider call uses its existing cost rules and usage record.",
-    "description": "Run confirmation explanation"
-  },
-  "run.confirm": {
-    "message": "Confirm run",
-    "description": "Confirm run command"
-  },
-  "run.queued": {
-    "message": "Production run queued",
-    "description": "Run queue success toast"
-  },
-  "error.generic": {
-    "message": "Poivelle could not complete the request.",
-    "description": "Generic Poivelle request error"
-  },
-  "agent.plan": {
-    "message": "Plan selected",
-    "description": "Plan a skill action for the selected graph node"
-  },
-  "review.reject": {
-    "message": "Reject",
-    "description": "Reject agent proposal command"
-  },
-  "review.rejectConfirm": {
-    "message": "Reject this agent proposal?",
-    "description": "Reject proposal confirmation"
-  },
-  "review.approvalTokenRequired": {
-    "message": "Approval requires its original signed token.",
-    "description": "Proposal approval trust-boundary note"
-  },
-  "run.cancel": {
-    "message": "Cancel",
-    "description": "Cancel execution run command"
-  },
-  "run.cancelConfirm": {
-    "message": "Cancel this execution run?",
-    "description": "Cancel run confirmation"
-  },
-  "project.workflow": {
-    "message": "Project workflow",
-    "description": "Project workflow type field"
-  },
-  "project.blankWorkflow": {
-    "message": "Blank graph",
-    "description": "Blank professional project option"
-  },
-  "project.commercialTVC": {
-    "message": "Commercial TVC · 40s",
-    "description": "Commercial TVC blueprint option"
-  },
-  "project.productName": {
-    "message": "Product name",
-    "description": "Commercial product name field"
-  },
-  "project.productCategory": {
-    "message": "Product category",
-    "description": "Commercial product category field"
-  },
-  "project.brandTone": {
-    "message": "Brand tone",
-    "description": "Commercial brand tone field"
-  },
-  "project.aspectRatio": {
-    "message": "Aspect ratio",
-    "description": "Commercial output aspect ratio"
-  },
-  "storyboard.product": {
-    "message": "Product",
-    "description": "Storyboard product label"
-  },
-  "storyboard.duration": {
-    "message": "Duration",
-    "description": "Storyboard duration label"
-  },
-  "storyboard.shots": {
-    "message": "Shots",
-    "description": "Storyboard shot count"
-  },
-  "storyboard.action": {
-    "message": "Action",
-    "description": "Shot character action label"
-  },
-  "storyboard.emotion": {
-    "message": "Emotion",
-    "description": "Shot emotion label"
-  },
-  "storyboard.lighting": {
-    "message": "Lighting & atmosphere",
-    "description": "Shot lighting label"
-  },
-  "storyboard.audio": {
-    "message": "Sound design",
-    "description": "Shot sound design label"
-  },
-  "storyboard.imagePrompt": {
-    "message": "Image prompt",
-    "description": "Shot image prompt label"
-  },
-  "storyboard.motionPrompt": {
-    "message": "Motion prompt",
-    "description": "Shot motion prompt label"
-  },
-  "storyboard.frames": {
-    "message": "Frame candidates",
-    "description": "Storyboard image candidates heading"
-  },
-  "storyboard.motion": {
-    "message": "Motion candidates",
-    "description": "Storyboard video candidates heading"
-  },
-  "storyboard.openNode": {
-    "message": "Open node",
-    "description": "Open media graph node command"
-  },
-  "storyboard.selectTake": {
-    "message": "Select take",
-    "description": "Select a media take command"
-  },
-  "storyboard.selected": {
-    "message": "Selected",
-    "description": "Selected take badge"
-  },
-  "storyboard.noCandidates": {
-    "message": "No generated candidates",
-    "description": "Empty media candidates message"
-  },
-  "storyboard.selectionSaved": {
-    "message": "Take selected for downstream production",
-    "description": "Take selection success message"
-  },
-  "storyboard.failedTake": {
-    "message": "Generation failed · review the run",
-    "description": "Failed Take status"
-  },
-  "storyboard.restrictedTake": {
-    "message": "Candidate restricted by rights policy",
-    "description": "Restricted Take status"
-  },
-  "timeline.deliverable": {
-    "message": "Committed deliverable",
-    "description": "Master output eyebrow"
-  },
-  "timeline.masterTitle": {
-    "message": "Production master",
-    "description": "Master output title"
-  },
-  "timeline.download": {
-    "message": "Download master",
-    "description": "Download master command"
-  },
-  "timeline.duration": {
-    "message": "Duration",
-    "description": "Master duration label"
-  },
-  "timeline.frame": {
-    "message": "Frame",
-    "description": "Master dimensions label"
-  },
-  "timeline.videoClips": {
-    "message": "Video clips",
-    "description": "Master video clip count"
-  },
-  "timeline.audioClips": {
-    "message": "Audio clips",
-    "description": "Master audio clip count"
-  },
-  "timeline.playerLabel": {
-    "message": "Production master video",
-    "description": "Master video player accessible name"
-  },
-  "timeline.loading": {
-    "message": "Loading production master",
-    "description": "Master video loading state"
-  },
-  "timeline.loadError": {
-    "message": "The production master could not be loaded.",
-    "description": "Master video load failure"
-  },
-  "storyboard.compare": {
-    "message": "Compare",
-    "description": "Add a Take to the comparison set"
-  },
-  "storyboard.comparing": {
-    "message": "Comparing",
-    "description": "Take is in the comparison set"
-  },
-  "review.finalCost": {
-    "message": "final credits",
-    "description": "Settled project cost label"
-  },
-  "review.qualityChecks": {
-    "message": "quality checks",
-    "description": "Passed automatic evaluations label"
-  },
-  "review.forensics": {
-    "message": "forensics",
-    "description": "Latest forensic validation label"
-  },
-  "review.runDetail": {
-    "message": "Run detail",
-    "description": "Selected execution run detail heading"
-  },
-  "review.attempts": {
-    "message": "attempts",
-    "description": "Provider attempt count label"
-  },
-  "review.retryStep": {
-    "message": "Retry node",
-    "description": "Create a new run for a failed production node"
+    "message": "再試行",
+    "description": "読み込みを再試行します"
   },
   "discovery.kicker": {
-    "message": "AI film production",
-    "description": "Creator home eyebrow"
+    "message": "AI 映画制作",
+    "description": "クリエイティブホームページの見出し"
   },
   "discovery.title": {
-    "message": "What do you want to make?",
-    "description": "Creator home prompt heading"
+    "message": "何を制作したいですか？",
+    "description": "制作ホームページのタイトル入力"
   },
   "discovery.skills": {
-    "message": "Production workflows",
-    "description": "Workflow selector accessible name"
+    "message": "制作ワークフロー",
+    "description": "ワークフローセレクターのアクセシビリティ名"
   },
   "discovery.placeholder": {
-    "message": "Describe the film, product, story, or mood you want to create...",
-    "description": "Creator prompt placeholder"
+    "message": "制作したい映画、製品、物語、または雰囲気を説明してください……",
+    "description": "制作入力ボックスのプレースホルダー文"
   },
   "discovery.create": {
-    "message": "Create project",
-    "description": "Submit creator prompt"
+    "message": "プロジェクトを作成",
+    "description": "創作入力を提出します"
   },
   "discovery.commercial": {
-    "message": "Commercial TVC",
-    "description": "Commercial workflow label"
+    "message": "商業TVC",
+    "description": "商業広告のワークフロー"
   },
   "discovery.musicVideo": {
-    "message": "Music video",
-    "description": "Music video workflow label"
-  },
-  "discovery.documentary": {
-    "message": "Documentary",
-    "description": "Documentary workflow label"
-  },
-  "discovery.starterProduct": {
-    "message": "A product film with precise studio lighting",
-    "description": "Commercial prompt starter"
-  },
-  "discovery.starterMusic": {
-    "message": "A moonlit performance about memory and return",
-    "description": "Music video prompt starter"
-  },
-  "discovery.starterDocumentary": {
-    "message": "A company milestone film about people and invention",
-    "description": "Documentary prompt starter"
-  },
-  "discovery.galleryKicker": {
-    "message": "Copy a proven workflow",
-    "description": "Gallery eyebrow"
-  },
-  "discovery.gallery": {
-    "message": "Works and production threads",
-    "description": "Gallery heading"
-  },
-  "discovery.search": {
-    "message": "Search works",
-    "description": "Gallery search placeholder"
-  },
-  "discovery.all": {
-    "message": "All",
-    "description": "All gallery category"
-  },
-  "discovery.community": {
-    "message": "Community",
-    "description": "Community gallery category"
-  },
-  "discovery.copy": {
-    "message": "Copy",
-    "description": "Copy work command"
-  },
-  "discovery.copyPrefix": {
-    "message": "Create a new interpretation of",
-    "description": "Default copied work prompt prefix"
-  },
-  "discovery.back": {
-    "message": "Back to discovery",
-    "description": "Return from studio to creator home"
+    "message": "音楽 MV",
+    "description": "音楽ビデオのワークフロー"
   },
   "discovery.narrative": {
-    "message": "Narrative film",
-    "description": "Narrative film category"
+    "message": "ナラティブ短編",
+    "description": "ナラティブ短編のカテゴリ"
+  },
+  "discovery.documentary": {
+    "message": "ドキュメンタリー",
+    "description": "ドキュメンタリーのワークフロー"
+  },
+  "discovery.starterProduct": {
+    "message": "精密なスタジオ照明の製品ビデオ",
+    "description": "商業広告のプロンプト"
+  },
+  "discovery.starterMusic": {
+    "message": "記憶と帰郷についての月光パフォーマンス",
+    "description": "音楽ビデオのプロンプト"
+  },
+  "discovery.starterDocumentary": {
+    "message": "チームと発明についての企業のマイルストーンを描いたドキュメンタリー",
+    "description": "ドキュメンタリーのプロンプト"
+  },
+  "discovery.galleryKicker": {
+    "message": "成熟したワークフローをコピー",
+    "description": "作品の流れのタイトル"
+  },
+  "discovery.gallery": {
+    "message": "作品と制作スレッド",
+    "description": "作品の流れのタイトル"
+  },
+  "discovery.search": {
+    "message": "作品を検索",
+    "description": "作品検索のプレースホルダー文"
+  },
+  "discovery.all": {
+    "message": "すべて",
+    "description": "すべての作品カテゴリ"
+  },
+  "discovery.community": {
+    "message": "コミュニティ",
+    "description": "コミュニティ作品カテゴリ"
+  },
+  "discovery.copy": {
+    "message": "ワンクリックコピー",
+    "description": "作品をコピーする操作"
   },
   "discovery.play": {
-    "message": "Play",
-    "description": "Compact play film command"
+    "message": "再生",
+    "description": "コンパクトな再生操作"
   },
   "discovery.playFilm": {
-    "message": "Play finished film",
-    "description": "Play finished film command"
+    "message": "フィルムを再生",
+    "description": "完全なフィルムを再生する操作"
   },
   "discovery.finishedFilm": {
-    "message": "Finished film",
-    "description": "Finished film badge and player eyebrow"
+    "message": "完成作品",
+    "description": "完成作品の識別子とプレーヤーのタイトル"
+  },
+  "discovery.copyPrefix": {
+    "message": "このワークフローに基づいて新しいバージョンを作成",
+    "description": "作品コピーのデフォルトのヒントプレフィックス"
+  },
+  "discovery.back": {
+    "message": "発見ページに戻る",
+    "description": "ワークスペースから創作ホームに戻ります"
+  },
+  "section.projects": {
+    "message": "プロジェクト",
+    "description": "プロジェクトセクションのタイトル"
+  },
+  "section.assets": {
+    "message": "アセットライブラリ",
+    "description": "アセットセクションのタイトル"
+  },
+  "section.revisions": {
+    "message": "リビジョン",
+    "description": "リビジョンセクションのタイトル"
+  },
+  "section.inspector": {
+    "message": "インスペクター",
+    "description": "ノードインスペクターのタイトル"
+  },
+  "workspace.create": {
+    "message": "ワークスペースを作成",
+    "description": "ワークスペース作成コマンド"
+  },
+  "workspace.name": {
+    "message": "ワークスペース名",
+    "description": "ワークスペース名フィールド"
+  },
+  "workspace.budget": {
+    "message": "月間上限（マイクロポイント）",
+    "description": "ワークスペースの月次予算フィールド"
+  },
+  "project.create": {
+    "message": "新しいプロジェクトを作成",
+    "description": "プロジェクト作成コマンド"
+  },
+  "project.empty": {
+    "message": "このワークスペースにはまだプロジェクトがありません。",
+    "description": "空のプロジェクトの通知"
+  },
+  "project.noProject": {
+    "message": "プロジェクトを選択",
+    "description": "プロジェクトが選択されていないことを示すラベル"
+  },
+  "project.workspace": {
+    "message": "ワークスペース",
+    "description": "プロジェクトワークスペースフィールド"
+  },
+  "project.title": {
+    "message": "プロジェクト名",
+    "description": "プロジェクト名フィールド"
+  },
+  "project.skill": {
+    "message": "制作 Skill",
+    "description": "プロジェクト Skill フィールド"
+  },
+  "project.workflow": {
+    "message": "プロジェクトワークフロー",
+    "description": "プロジェクトワークフロータイプフィールド"
+  },
+  "project.blankWorkflow": {
+    "message": "空白のプロジェクト図",
+    "description": "空白のプロフェッショナルプロジェクトオプション"
+  },
+  "project.commercialTVC": {
+    "message": "商業 TVC · 40 秒",
+    "description": "商業 TVC のブループリントオプション"
+  },
+  "project.productName": {
+    "message": "製品名",
+    "description": "商業製品名フィールド"
+  },
+  "project.productCategory": {
+    "message": "製品カテゴリ",
+    "description": "商業製品カテゴリフィールド"
+  },
+  "project.brandTone": {
+    "message": "ブランドトーン",
+    "description": "商業ブランドトーンフィールド"
+  },
+  "project.aspectRatio": {
+    "message": "アスペクト比",
+    "description": "商業出力のアスペクト比"
+  },
+  "asset.import": {
+    "message": "資産をインポート",
+    "description": "資産をインポートするコマンド"
+  },
+  "asset.all": {
+    "message": "すべて",
+    "description": "すべての資産をフィルタリング"
+  },
+  "asset.empty": {
+    "message": "一致する制作資産はありません。",
+    "description": "空の資産のヒント"
+  },
+  "asset.title": {
+    "message": "資産名",
+    "description": "資産名フィールド"
+  },
+  "asset.url": {
+    "message": "ソースURL",
+    "description": "資産のソースアドレス"
+  },
+  "asset.hash": {
+    "message": "コンテンツハッシュ",
+    "description": "資産のコンテンツハッシュ"
+  },
+  "revision.empty": {
+    "message": "提出された修正はまだありません。",
+    "description": "空の修正を示すメッセージ"
+  },
+  "revision.committed": {
+    "message": "修正が提出されました",
+    "description": "修正が成功裏に提出されたことを示すメッセージ"
+  },
+  "node.create": {
+    "message": "ノードを追加",
+    "description": "プロジェクト図のノードを作成します"
+  },
+  "node.delete": {
+    "message": "ノードを削除",
+    "description": "プロジェクト図のノードを削除します"
+  },
+  "node.deleteConfirm": {
+    "message": "このアイテムのノードを削除してもよろしいですか？関連するノードは先に接続を切る必要があります。",
+    "description": "ノード削除の確認"
+  },
+  "field.title": {
+    "message": "タイトル",
+    "description": "ノードタイトルフィールド"
+  },
+  "field.type": {
+    "message": "タイプ",
+    "description": "ノードまたはアセットのタイプフィールド"
+  },
+  "field.prompt": {
+    "message": "制作プロンプト",
+    "description": "ノード制作のプロンプト"
+  },
+  "projection.label": {
+    "message": "プロジェクト図投影ビュー",
+    "description": "投影ラベルのアクセシビリティ名"
   },
   "projection.overview": {
-    "message": "Overview",
-    "description": "Guided project overview tab"
+    "message": "プロジェクト概要",
+    "description": "ガイド式プロジェクト概要ラベル"
   },
-  "guide.kicker": {
-    "message": "Your production is ready",
-    "description": "Guided project eyebrow"
-  },
-  "guide.title": {
-    "message": "Turn {title} into a finished film",
-    "description": "Guided project heading"
-  },
-  "guide.body": {
-    "message": "The brief and shot plan are already prepared. Generate the first storyboard frame, review the result, then continue through motion and the final cut.",
-    "description": "Guided project explanation"
-  },
-  "guide.duration": {
-    "message": "Duration",
-    "description": "Guided project duration fact"
-  },
-  "guide.shots": {
-    "message": "Shot plan",
-    "description": "Guided project shot-count fact"
-  },
-  "guide.format": {
-    "message": "Frame",
-    "description": "Guided project aspect-ratio fact"
-  },
-  "guide.continue": {
-    "message": "Continue production",
-    "description": "Primary guided production command"
-  },
-  "guide.generateFrame": {
-    "message": "Generate storyboard {current} of {total}",
-    "description": "Generate the next storyboard frame"
-  },
-  "guide.generateMotion": {
-    "message": "Generate motion {current} of {total}",
-    "description": "Generate the next motion clip"
-  },
-  "guide.generateScore": {
-    "message": "Generate the soundtrack",
-    "description": "Generate project score"
-  },
-  "guide.reviewPlan": {
-    "message": "Review the shot plan",
-    "description": "Open project storyboard plan"
-  },
-  "guide.reviewResults": {
-    "message": "Review generated results",
-    "description": "Open generated storyboard results"
-  },
-  "guide.costNote": {
-    "message": "You will see the maximum cost before anything runs.",
-    "description": "Guided production cost safety note"
-  },
-  "guide.stepPlan": {
-    "message": "Brief and shot plan",
-    "description": "Production plan stage"
-  },
-  "guide.stepPlanBody": {
-    "message": "{shots} shots are structured and ready.",
-    "description": "Production plan stage detail"
-  },
-  "guide.stepFrames": {
-    "message": "Storyboard frames",
-    "description": "Storyboard generation stage"
-  },
-  "guide.stepFramesBody": {
-    "message": "Create and choose the visual direction for each shot.",
-    "description": "Storyboard generation stage detail"
-  },
-  "guide.stepMotion": {
-    "message": "Motion clips",
-    "description": "Motion generation stage"
-  },
-  "guide.stepMotionBody": {
-    "message": "Animate the approved storyboard frames.",
-    "description": "Motion generation stage detail"
-  },
-  "guide.stepMaster": {
-    "message": "Soundtrack and final cut",
-    "description": "Final production stage"
-  },
-  "guide.stepMasterBody": {
-    "message": "Assemble selected clips, music, and delivery checks.",
-    "description": "Final production stage detail"
-  },
-  "guide.ready": {
-    "message": "Ready",
-    "description": "Completed production stage status"
-  },
-  "guide.waiting": {
-    "message": "Waiting",
-    "description": "Pending production stage status"
+  "projection.canvas": {
+    "message": "キャンバス",
+    "description": "キャンバス投影ビュー"
   },
   "projection.advanced": {
-    "message": "Advanced nodes",
-    "description": "Advanced graph-node projection tab"
+    "message": "高度なノード",
+    "description": "高度なプロジェクト図ノードラベル"
   },
-  "guide.chooseResults": {
-    "message": "Review and choose results",
-    "description": "Review and select generated candidates before continuing"
+  "projection.storyboard": {
+    "message": "ストーリーボード",
+    "description": "ストーリーボード投影ビュー"
   },
-  "guide.generated": {
-    "message": "generated",
-    "description": "Generated progress suffix"
+  "projection.timeline": {
+    "message": "タイムライン",
+    "description": "タイムライン投影ビュー"
   },
-  "guide.selected": {
-    "message": "selected",
-    "description": "Selected progress suffix"
+  "projection.review": {
+    "message": "レビュー",
+    "description": "レビュー投影ビュー"
+  },
+  "guide.kicker": {
+    "message": "制作プランが準備完了",
+    "description": "プロジェクトのガイドタイトル"
+  },
+  "guide.title": {
+    "message": "《{title}》を完全な映画に制作",
+    "description": "プロジェクトのガイドタイトル"
+  },
+  "guide.body": {
+    "message": "要件とショットプランが準備完了しました。最初のストーリーボードを生成し、方向を確認した後、動的ショットと最終フィルムの制作を続けてください。",
+    "description": "プロジェクトガイドの説明"
+  },
+  "guide.duration": {
+    "message": "目標時間",
+    "description": "プロジェクトの時間情報"
+  },
+  "guide.shots": {
+    "message": "ショットプラン",
+    "description": "プロジェクトのショット数情報"
+  },
+  "guide.format": {
+    "message": "画面比率",
+    "description": "プロジェクトのアスペクト比情報"
+  },
+  "guide.continue": {
+    "message": "制作を続ける",
+    "description": "プロジェクトの主要操作"
   },
   "guide.generateNextFrame": {
-    "message": "Generate next storyboard",
-    "description": "Header action for next storyboard frame"
+    "message": "次のストーリーボードを生成",
+    "description": "上部の次のストーリーボード操作"
   },
   "guide.generateNextMotion": {
-    "message": "Generate next motion",
-    "description": "Header action for next motion clip"
+    "message": "次の動的ショットを生成",
+    "description": "上部の次の動的ショット操作"
+  },
+  "guide.generateFrame": {
+    "message": "ストーリーボードを生成 {current}/{total}",
+    "description": "次のストーリーボードを生成"
+  },
+  "guide.generateMotion": {
+    "message": "動的ショットを生成 {current}/{total}",
+    "description": "次の動的ショットを生成します"
+  },
+  "guide.generateScore": {
+    "message": "音楽を生成",
+    "description": "プロジェクトの音楽を生成します"
+  },
+  "guide.reviewPlan": {
+    "message": "ショットプランを確認",
+    "description": "ストーリーボードプランを開きます"
+  },
+  "guide.reviewResults": {
+    "message": "生成結果を確認",
+    "description": "ストーリーボード生成結果を開きます"
+  },
+  "guide.chooseResults": {
+    "message": "結果を確認して選択",
+    "description": "制作を続ける前に生成候補を確認して選択"
+  },
+  "guide.generated": {
+    "message": "生成済み",
+    "description": "生成進捗のサフィックス"
+  },
+  "guide.selected": {
+    "message": "選択済み",
+    "description": "選択進捗のサフィックス"
+  },
+  "guide.costNote": {
+    "message": "実行前に最高費用が表示され、直接課金は開始されません。",
+    "description": "制作費用の安全提示"
+  },
+  "guide.stepPlan": {
+    "message": "要件とショットプラン",
+    "description": "制作プラン段階"
+  },
+  "guide.stepPlanBody": {
+    "message": "{shots} 個のショットが分割完了、制作を開始できます。",
+    "description": "制作プラン段階の説明"
+  },
+  "guide.stepFrames": {
+    "message": "ストーリーボード画面",
+    "description": "ストーリーボード生成段階"
+  },
+  "guide.stepFramesBody": {
+    "message": "各ショットを生成し、満足のいくビジュアル方向を選択します。",
+    "description": "ストーリーボード生成段階の説明"
+  },
+  "guide.stepMotion": {
+    "message": "動的ショット",
+    "description": "動的生成段階"
+  },
+  "guide.stepMotionBody": {
+    "message": "確認済みのストーリーボードを動的なクリップに制作します。",
+    "description": "動的生成段階の説明"
+  },
+  "guide.stepMaster": {
+    "message": "音楽と最終編集",
+    "description": "最終制作段階"
+  },
+  "guide.stepMasterBody": {
+    "message": "選択したクリップと音楽を組み合わせ、納品チェックを完了します。",
+    "description": "最終制作段階の説明"
+  },
+  "guide.ready": {
+    "message": "準備完了",
+    "description": "制作段階の完了状態"
+  },
+  "guide.waiting": {
+    "message": "待機中",
+    "description": "制作段階の待機状態"
+  },
+  "graph.emptyTitle": {
+    "message": "制作プロジェクト図を構築",
+    "description": "空のプロジェクト図のタイトル"
+  },
+  "graph.emptyBody": {
+    "message": "脚本、キャラクター、シーン、ショット、メディア、出力を追加してください。人間の編集者と Skill は同じプロジェクト図のコマンド履歴で協力します。",
+    "description": "空のプロジェクト図の説明"
+  },
+  "storyboard.noPrompt": {
+    "message": "まだショットのプロンプトがありません。",
+    "description": "ストーリーボードのプロンプトが不足しています"
+  },
+  "storyboard.emptyTitle": {
+    "message": "まだストーリーボードの画面がありません",
+    "description": "空のストーリーボードのタイトル"
+  },
+  "storyboard.emptyBody": {
+    "message": "シーン、ショット、画像、または動画ノードを作成すると、ここに投影されます。",
+    "description": "空のストーリーボードの説明"
+  },
+  "storyboard.product": {
+    "message": "製品",
+    "description": "ストーリーボード製品ラベル"
+  },
+  "storyboard.duration": {
+    "message": "長さ",
+    "description": "ストーリーボードの長さラベル"
+  },
+  "storyboard.shots": {
+    "message": "ショット数",
+    "description": "ストーリーボードのショット数"
+  },
+  "storyboard.action": {
+    "message": "アクション",
+    "description": "ショットのキャラクターアクションラベル"
+  },
+  "storyboard.emotion": {
+    "message": "感情",
+    "description": "ショットの感情ラベル"
+  },
+  "storyboard.lighting": {
+    "message": "光と雰囲気",
+    "description": "ショットの光と影のラベル"
+  },
+  "storyboard.audio": {
+    "message": "音声デザイン",
+    "description": "ショットの音声デザインラベル"
+  },
+  "storyboard.imagePrompt": {
+    "message": "静止フレームのプロンプト",
+    "description": "ショットの画像プロンプトラベル"
+  },
+  "storyboard.motionPrompt": {
+    "message": "動きのプロンプト",
+    "description": "ショットの動きのプロンプトラベル"
+  },
+  "storyboard.frames": {
+    "message": "画面候補",
+    "description": "ストーリーボードの画像候補のタイトル"
+  },
+  "storyboard.motion": {
+    "message": "動画候補",
+    "description": "ストーリーボードの動画候補のタイトル"
+  },
+  "storyboard.openNode": {
+    "message": "ノードを開く",
+    "description": "メディアプロジェクトのノードを開く"
+  },
+  "storyboard.selectTake": {
+    "message": "Take を選択",
+    "description": "メディア Take 操作を選択"
+  },
+  "storyboard.selected": {
+    "message": "選択済み",
+    "description": "選択された Take ラベル"
+  },
+  "storyboard.noCandidates": {
+    "message": "まだ候補が生成されていません",
+    "description": "空のメディア候補の提示"
+  },
+  "storyboard.failedTake": {
+    "message": "生成に失敗しました · 実行記録を確認",
+    "description": "失敗したテイクの状態"
+  },
+  "storyboard.restrictedTake": {
+    "message": "候補は著作権ポリシーにより制限されています",
+    "description": "制限された Take 状態"
+  },
+  "storyboard.selectionSaved": {
+    "message": "選択した Take は、今後の制作で直接再利用されます",
+    "description": "Take 選択成功の通知"
+  },
+  "storyboard.compare": {
+    "message": "比較に追加",
+    "description": "テイクを比較コレクションに追加"
+  },
+  "storyboard.comparing": {
+    "message": "比較中",
+    "description": "テイクが比較コレクションに追加されました"
+  },
+  "timeline.emptyTitle": {
+    "message": "まだタイムラインが組み合わされていません",
+    "description": "空のタイムラインのタイトル"
+  },
+  "timeline.emptyBody": {
+    "message": "まず Take と選択結果を提出し、その後クリップをトラックに組み立ててください。",
+    "description": "空のタイムラインの説明"
+  },
+  "timeline.deliverable": {
+    "message": "提出済みの成果物",
+    "description": "マスター出力のタイトル"
+  },
+  "timeline.masterTitle": {
+    "message": "マスター制作",
+    "description": "マスター出力のタイトル"
+  },
+  "timeline.download": {
+    "message": "マスターをダウンロード",
+    "description": "マスターのダウンロード操作"
+  },
+  "timeline.duration": {
+    "message": "長さ",
+    "description": "マスターの長さラベル"
+  },
+  "timeline.frame": {
+    "message": "フレーム",
+    "description": "マスターの解像度ラベル"
+  },
+  "timeline.videoClips": {
+    "message": "ビデオクリップ",
+    "description": "マスター動画クリップの数"
+  },
+  "timeline.audioClips": {
+    "message": "オーディオクリップ",
+    "description": "マスターオーディオクリップの数"
+  },
+  "timeline.playerLabel": {
+    "message": "マスター動画",
+    "description": "マスター動画プレーヤーのアクセシビリティ名"
+  },
+  "timeline.loading": {
+    "message": "マスターを読み込んでいます",
+    "description": "マスター動画の読み込み状態"
+  },
+  "timeline.loadError": {
+    "message": "マスターの読み込みに失敗しました。",
+    "description": "マスター動画の読み込み失敗の通知"
+  },
+  "inspector.noSelection": {
+    "message": "未選択の内容",
+    "description": "ノードが選択されていない時のインスペクタータイトル"
+  },
+  "inspector.empty": {
+    "message": "キャンバスまたはストーリーボードでノードを選択すると、タイプ化された制作属性を編集できます。",
+    "description": "空のインスペクターの説明"
+  },
+  "agent.title": {
+    "message": "Skillエージェント",
+    "description": "エージェントセクションのタイトル"
+  },
+  "agent.noProposals": {
+    "message": "処理中の提案はありません。ノードを選択して、Skillに次の制作アクションを提案させてください。",
+    "description": "空のエージェント提案のヒント"
+  },
+  "agent.propose": {
+    "message": "次のステップを提案",
+    "description": "エージェントに提案をリクエストします"
+  },
+  "agent.plan": {
+    "message": "選択したアクションを計画",
+    "description": "選択したプロジェクト図ノードのSkillアクションを計画します"
+  },
+  "agent.proposal": {
+    "message": "提案",
+    "description": "提案のヒントラベル"
+  },
+  "review.heading": {
+    "message": "レビュー作成",
+    "description": "レビューサマリーのタイトル"
+  },
+  "review.noRevision": {
+    "message": "未提出のプロジェクト図",
+    "description": "修正がない時のレビュータイトル"
+  },
+  "review.nodes": {
+    "message": "ノード",
+    "description": "レビューのノード数"
+  },
+  "review.proposals": {
+    "message": "提案",
+    "description": "レビュー提案の数"
+  },
+  "review.runs": {
+    "message": "実行",
+    "description": "レビュー実行の数"
+  },
+  "review.finalCost": {
+    "message": "最終クレジット",
+    "description": "プロジェクトの決済コストラベル"
+  },
+  "review.qualityChecks": {
+    "message": "品質チェック",
+    "description": "自動評価通過数のラベル"
+  },
+  "review.forensics": {
+    "message": "証拠確認",
+    "description": "最新の証拠確認ステータスラベル"
+  },
+  "review.pendingProposals": {
+    "message": "エージェント提案",
+    "description": "提案レビューエリア"
+  },
+  "review.noProposals": {
+    "message": "レビュー待ちの提案はありません。",
+    "description": "提案がないことを示すメッセージ"
+  },
+  "review.execution": {
+    "message": "帳簿を実行",
+    "description": "レビューエリアを実行"
+  },
+  "review.noRuns": {
+    "message": "このプロジェクトにはまだ実行がありません。",
+    "description": "実行がないことを示すメッセージ"
+  },
+  "review.reject": {
+    "message": "拒否",
+    "description": "エージェント提案を拒否する操作"
+  },
+  "review.rejectConfirm": {
+    "message": "このエージェント提案を拒否してもよろしいですか？",
+    "description": "提案拒否の確認"
+  },
+  "review.approvalTokenRequired": {
+    "message": "承認には提案作成時に発行された元のトークンが必要です。",
+    "description": "提案承認の信頼境界の説明"
+  },
+  "review.runDetail": {
+    "message": "実行の詳細",
+    "description": "選択した実行の詳細タイトル"
+  },
+  "review.attempts": {
+    "message": "試行回数",
+    "description": "ベンダーの試行回数ラベル"
+  },
+  "review.retryStep": {
+    "message": "ノードを再実行",
+    "description": "失敗したノードのために新しい実行を作成"
+  },
+  "onboarding.title": {
+    "message": "プロフェッショナルな AI 映画制作のワークスペース",
+    "description": "Poivelle のガイドタイトル"
+  },
+  "onboarding.body": {
+    "message": "人間、Skill、Agent と制作ツールが同じ仕様プロジェクト図を共同編集します。キャンバス、ストーリーボード、タイムライン、レビューは同期投影であり、別々の文書ではありません。",
+    "description": "Poivelle のガイド説明"
+  },
+  "run.confirmTitle": {
+    "message": "実行を確認",
+    "description": "実行確認ダイアログのタイトル"
+  },
+  "run.targets": {
+    "message": "依存関係の閉じる",
+    "description": "ドライランのターゲット数"
+  },
+  "run.maximum": {
+    "message": "最高コスト",
+    "description": "ドライランの最高コスト"
+  },
+  "run.approval": {
+    "message": "承認レベル",
+    "description": "ドライランの承認レベル"
+  },
+  "run.confirmBody": {
+    "message": "コンパイラは短期APIクレデンシャルを使用してこの不変依存関数を実行します；各ベンダー呼び出しは既存のコストルールと使用量記録を引き継ぎます。",
+    "description": "実行確認の説明"
+  },
+  "run.confirm": {
+    "message": "実行を確認",
+    "description": "実行コマンドを確認"
+  },
+  "run.queued": {
+    "message": "制作の実行がキューに入りました",
+    "description": "実行がキューに成功したことを示すメッセージ"
+  },
+  "run.cancel": {
+    "message": "キャンセル",
+    "description": "実行をキャンセルする操作"
+  },
+  "run.cancelConfirm": {
+    "message": "この実行をキャンセルしてもよろしいですか？",
+    "description": "実行キャンセルの確認"
+  },
+  "error.generic": {
+    "message": "Poivelle はリクエストを完了できませんでした。",
+    "description": "Poivelle の一般的なエラー"
   }
 }

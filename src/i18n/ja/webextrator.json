@@ -1,7 +1,7 @@
 {
   "name.mode": {
-    "message": "Mode",
-    "description": "レンダリング/抽出モードトグルのラベル"
+    "message": "モード",
+    "description": "レンダリング/抽出モード切り替えのラベル"
   },
   "name.url": {
     "message": "URL",
@@ -16,8 +16,8 @@
     "description": "LLM有効化トグルのラベル"
   },
   "name.advanced": {
-    "message": "Advanced",
-    "description": "詳細オプション折りたたみのラベル"
+    "message": "詳細オプション",
+    "description": "詳細オプションの折りたたみラベル"
   },
   "name.waitUntil": {
     "message": "待機条件",
@@ -40,60 +40,60 @@
     "description": "block_resourcesマルチセレクトのラベル"
   },
   "name.consumption": {
-    "message": "Cost",
-    "description": "1回の呼び出しコストのラベル"
+    "message": "単回消費",
+    "description": "1回あたりのコストのラベル"
   },
   "mode.extract": {
-    "message": "Extract",
+    "message": "内容を抽出",
     "description": "抽出モードオプション"
   },
   "mode.render": {
-    "message": "Render",
+    "message": "ページをレンダリング",
     "description": "レンダリングモードオプション"
   },
   "expectedType.general": {
-    "message": "General",
-    "description": "汎用の期待タイプオプション"
+    "message": "一般",
+    "description": "期待されるタイプのオプションとしての一般"
   },
   "expectedType.article": {
-    "message": "Article",
-    "description": "記事の期待タイプオプション"
+    "message": "記事",
+    "description": "期待されるタイプのオプションとしての記事"
   },
   "expectedType.product": {
-    "message": "Product",
-    "description": "製品の期待タイプオプション"
+    "message": "商品",
+    "description": "期待されるタイプのオプションとしての商品"
   },
   "waitUntil.networkidle": {
     "message": "ネットワークアイドル",
     "description": "ネットワークアイドルまで待機オプション"
   },
   "waitUntil.load": {
-    "message": "Load",
-    "description": "ロードまで待機オプション"
+    "message": "ページが読み込まれるまで",
+    "description": "読み込みまで待機オプション"
   },
   "waitUntil.domcontentloaded": {
     "message": "DOM読み込み完了",
     "description": "DOMコンテンツロードまで待機オプション"
   },
   "waitUntil.commit": {
-    "message": "Commit",
+    "message": "ナビゲーション開始",
     "description": "コミットまで待機オプション"
   },
   "blockResource.image": {
-    "message": "Images",
-    "description": "画像をブロックオプション"
+    "message": "画像",
+    "description": "ブロック画像オプション"
   },
   "blockResource.font": {
-    "message": "Fonts",
-    "description": "フォントをブロックオプション"
+    "message": "フォント",
+    "description": "ブロックフォントオプション"
   },
   "blockResource.media": {
-    "message": "Media",
-    "description": "メディアをブロックオプション"
+    "message": "メディア",
+    "description": "ブロックメディアオプション"
   },
   "blockResource.stylesheet": {
-    "message": "Stylesheets",
-    "description": "スタイルシートをブロックオプション"
+    "message": "スタイルシート",
+    "description": "ブロックスタイルシートオプション"
   },
   "blockResource.xhr": {
     "message": "XHR",
@@ -116,12 +116,12 @@
     "description": "block_resourcesマルチセレクトのプレースホルダー"
   },
   "button.extract": {
-    "message": "Extract",
-    "description": "抽出実行ボタンのラベル"
+    "message": "抽出",
+    "description": "抽出を実行するボタンラベル"
   },
   "button.render": {
-    "message": "Render",
-    "description": "レンダリング実行ボタンのラベル"
+    "message": "レンダリング",
+    "description": "レンダリングを実行するボタンラベル"
   },
   "description.intro": {
     "message": "ウェブページをレンダリングして抽出",
@@ -148,8 +148,8 @@
     "description": "レンダリング実行中のステータス"
   },
   "message.success": {
-    "message": "Done",
-    "description": "成功時のトースト"
+    "message": "成功",
+    "description": "成功時に表示されるトースト"
   },
   "message.failed": {
     "message": "リクエストが失敗しました",
@@ -172,7 +172,7 @@
     "description": "対象ページが未クリアのボット対策チャレンジの場合に表示されるエラー（HTTP 422、料金は発生しません）"
   },
   "message.untitled": {
-    "message": "Untitled",
+    "message": "無題のページ",
     "description": "ページにタイトルがない場合のフォールバックタイトル"
   },
   "tab.markdown": {
@@ -180,19 +180,19 @@
     "description": "Markdownタブのラベル"
   },
   "tab.text": {
-    "message": "Text",
-    "description": "プレーンテキストタブのラベル"
+    "message": "プレーンテキスト",
+    "description": "プレーンテキスタブのラベル"
   },
   "tab.structured": {
-    "message": "Structured",
+    "message": "構造化",
     "description": "構造化データタブのラベル"
   },
   "tab.links": {
-    "message": "Links",
+    "message": "リンク",
     "description": "リンクタブのラベル"
   },
   "tab.images": {
-    "message": "Images",
+    "message": "画像",
     "description": "画像タブのラベル"
   },
   "tab.html": {

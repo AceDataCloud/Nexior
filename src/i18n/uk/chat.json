@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Найсучасніша модель на даний момент",
+    "description": "Опис моделі Claude Opus 5"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -227,12 +227,28 @@
     "message": "Легка та швидка модель",
     "description": "Опис моделі Claude Haiku 4.5"
   },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Флагманська модель з підтримкою інференції, зору та контексту на 1 мільйон токенів",
+    "description": "Опис моделі Kimi K3"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Модель для інференції та візуалізації, сумісна з робочими процесами K2",
+    "description": "Опис моделі Kimi K2.6"
+  },
   "model.kimiK25": {
     "message": "kimi-k2.5",
     "description": "Назва моделі сервісу, тобто Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "General-purpose K2 model for compatible workflows",
+    "message": "Універсальна модель K2, сумісна з робочими процесами",
     "description": "Опис моделі Kimi K2.5"
   },
   "model.kimiK2Thinking": {
@@ -583,8 +599,85 @@
     "message": "Авторизацію конектора пропущено",
     "description": "Пояснення внизу картки після того, як користувач пропустив авторизацію"
   },
+  "browserTool.title": {
+    "message": "Активність браузера",
+    "description": "Заголовок за замовчуванням для активності інструменту BrowserDevice"
+  },
+  "browserTool.state.starting_session": {
+    "message": "Запуск сесії браузера",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Підключення вкладки браузера",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Браузер готовий",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Пристрій браузера офлайн",
+    "description": "Обраний пристрій браузера не в мережі"
+  },
+  "browserTool.state.device_busy": {
+    "message": "Пристрій браузера зайнятий",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Необхідно підтвердити дозвіл у Studio",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Виконання в браузері",
+    "description": "Пристрій браузера виконує інструмент"
+  },
+  "browserTool.state.completed": {
+    "message": "Завершено",
+    "description": "Виконання інструменту браузера завершено"
+  },
+  "browserTool.state.stopped": {
+    "message": "Сесія браузера зупинена",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Запит браузера закінчився",
+    "description": "Запит на виконання інструменту браузера закінчився"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Будь ласка, закрийте інструменти розробника та продовжте",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Результат виконання невідомий, будь ласка, перевірте та спробуйте ще раз",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Операція браузера не вдалася",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Зупинити",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Керувати пристроями",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Зупинити іншу сесію",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Закрити інструменти розробника",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Переглянути дозвіл",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Заплановані завдання",
+    "description": "Вхід до запланованих завдань у бічній панелі"
   },
   "scheduledTasks.tab.tasks": {
     "message": "Заплановані завдання",
@@ -599,74 +692,96 @@
     "description": "Фільтр статусу виконання записів - Усе"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Заплановані завдання",
+    "description": "Назва сторінки"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Створити",
+    "description": "Кнопка для створення запланованого завдання"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Редагувати завдання",
+    "description": "Назва діалогового вікна редагування"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Копіювати завдання",
+    "description": "Кнопка для копіювання завдання, автоматично заповнює нову форму на основі існуючого завдання"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Ще немає запланованих завдань, натисніть «Створити», щоб створити одне",
+    "description": "Підказка про порожній стан"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Ще не виконувалося",
+    "description": "Відсутня історія виконань"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Не вдалося завантажити",
+    "description": "Повідомлення про помилку завантаження"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Підтвердити видалення «{name}»? Після видалення завдання зупинить свою роботу.",
+    "description": "Підтвердження видалення"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Запустити зараз",
+    "description": "Ручний запуск завдання негайно"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Запущено, результати можна переглянути пізніше в історії виконання.",
+    "description": "Повідомлення про успішний ручний запуск"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Не вдалося запустити, будь ласка, спробуйте ще раз пізніше.",
+    "description": "Повідомлення про невдалий ручний запуск"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Переглянути результати",
+    "description": "Перехід до діалогу"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Історія виконань",
+    "description": "Перегляд історії виконань внизу картки"
   },
   "scheduledTasks.noConversation": {
     "message": "Немає записів розмов",
     "description": "Запуск без пов'язаних розмов (версія без оновлень)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60с коливання",
+    "description": "Опис коливання часу виконання"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Виконано {count} разів",
+    "description": "Кількість виконань"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Виконується",
+    "description": "Статус увімкнення"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Призупинено",
+    "description": "Статус вимкнення"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Помилка",
+    "description": "Статус помилки"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "У черзі",
+    "description": "Статус у черзі"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "Виконується",
+    "description": "Статус виконання"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Успішно",
+    "description": "Статус успішного виконання"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Не вдалося",
+    "description": "Статус невдачі"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Досягнуто ліміт кроків"
@@ -698,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Недостатньо коштів"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Не вдалося авторизувати оплату"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Не авторизовано"
   },
@@ -708,120 +826,143 @@
     "message": "Внутрішня помилка"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Потрібні дії",
+    "description": "Статус, що вимагає дій користувача"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Пристрій браузера офлайн",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Авторизація браузера змінилася, будь ласка, відредагуйте це завдання",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Щодня",
+    "description": "Виконання щодня"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Щохвилини"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Щогодини",
+    "description": "Виконання щогодини"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Щотижня",
+    "description": "Виконання щотижня"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron вираз",
+    "description": "Користувацький cron"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Кожні",
+    "description": "Виконання з фіксованим інтервалом"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "Хвилина",
+    "description": "Одиниця інтервалу: хвилина"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "Година",
+    "description": "Одиниця інтервалу: година"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "День",
+    "description": "Одиниця інтервалу: день"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "Хвилина спрацьовування",
+    "description": "Хвилина, коли спрацьовує кожну годину"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "Хвилина спрацьовування кожну годину (0–59)",
+    "description": "Опис хвилин для кожної години"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Виконувати раз на фіксований час з моменту останнього запуску (мінімум 1 хвилина)",
+    "description": "Опис фіксованого інтервалу"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Стандартний 5-частинний Cron вираз: хвилина година день місяць тиждень",
+    "description": "Опис cron"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Частота виконання: {text}",
+    "description": "Попередній перегляд частоти"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "Кожні {n} хвилин",
+    "description": "Людське читання: кожні N хвилин"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "Кожні {n} годин",
+    "description": "Людське читання: кожні N годин"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "Кожні {n} днів",
+    "description": "Людське читання: кожні N днів"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "Кожну годину на {n} хвилині",
+    "description": "Людське читання: кожну годину на N хвилині"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "Щодня {time}",
+    "description": "Людське читання: щодня в певний час"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "Щотижня {weekday} о {time}",
+    "description": "Людське читання: щотижня в певний день та час"
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Людське читання: оригінальний Cron"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "Одноразово {time}",
+    "description": "Людське читання: одноразово"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Назва завдання",
+    "description": "Поле для введення назви"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "Наприклад: щоденний звіт",
+    "description": "Заповнювач для назви"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Модель",
+    "description": "Вибір моделі"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Підказка",
+    "description": "Поле для введення підказки"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Введіть питання або команду для запланованого виконання, підтримує {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} змінні",
+    "description": "Заповнювач для підказки"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Підтримує шаблонні змінні: {'{{date}}'} сьогоднішня дата, {'{{run_count}}'} номер запуску, {'{{last_output}}'} короткий зміст останнього результату",
+    "description": "Опис підказки"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Частота виконання",
+    "description": "Вибір частоти"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Час виконання",
+    "description": "Поле часу"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "День тижня",
+    "description": "Поле дня тижня"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron вираз",
+    "description": "Поле для введення cron виразу"
   },
   "scheduledTasks.form.skills": {
     "message": "Авторизувати навички",
@@ -835,6 +976,25 @@
     "message": "Вибрані навички можуть виконуватись у фоновому режимі без підтвердження; невибрані навички все ще можуть лише переглядатися або чекати підтвердження.",
     "description": "Опис авторизації навичок"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "З'єднання браузера",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Можливі зовнішні побічні ефекти: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Час закінчення безперервної авторизації: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Перед збереженням виберіть онлайн та сумісний браузер",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Не підключено",
     "description": "Відсутнє з'єднання з навичкою"
@@ -868,19 +1028,20 @@
     "description": "Текст підтвердження авторизації"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Необхідно спочатку прив'язати навичку",
+    "description": "Заголовок діалогу, що відображається, коли навичка/MCP, авторизована для запланованого завдання, ще не прив'язана до користувача."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "Навичка «{name}» ще не прив'язана або активована у вашому акаунті. Якщо не прив'язати, заплановане завдання може не використовувати її під час автоматичного виконання у фоновому режимі. Рекомендуємо спочатку прив'язати, а потім зберегти, або натисніть кнопку нижче, щоб все ще зберегти.",
+    "description": "Текст попередження; {name} - це назва навички/MCP. Пояснює, що вона не прив'язана, і пропонує зберегти все ж."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Все ще хочете зберегти",
+    "description": "Кнопка підтвердження, яка зберігає заплановане завдання, обминаючи перевірку прив'язки (примусово)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Будь ласка, заповніть назву завдання та підказку",
+    "description": "Перевірка обов'язкових полів"
   },
   "artifacts.navTitle": {
     "message": "Артефакти",
@@ -917,6 +1078,18 @@
   "artifacts.hide": {
     "message": "Сховати",
     "description": "Кнопка для приховування артефакту"
+  },
+  "artifacts.unhide": {
+    "message": "Відновити видимість",
+    "description": "Кнопка для відновлення видимості схованого артефакту"
+  },
+  "artifacts.showHidden": {
+    "message": "Показати сховане",
+    "description": "Перемикач для відображення схованих артефактів у фільтрі"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Сховано",
+    "description": "Позначка, що вказує, що артефакт був схований"
   },
   "artifacts.delete": {
     "message": "Видалити",
@@ -1046,6 +1219,17 @@
     "message": "Ви переглядаєте частину спільної розмови. Натисніть вище, щоб самостійно поспілкуватися з AI.",
     "description": "Опис під розмовою на публічній сторінці спільного доступу"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Мета не досягнута",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Результат чекає підтвердження",
+    "description": "Статус, коли результат ще не відомий"
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Статус виконання невідомий"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Назва моделі сервісу, тобто Claude Opus 4.7"
@@ -1053,127 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "Найсучасніша модель на сьогодні",
     "description": "Опис моделі Claude Opus 4.7"
-  },
-  "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
-  },
-  "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Не вдалося авторизувати оплату"
-  },
-  "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
-  },
-  "browserTool.state.executing": {
-    "message": "Executing in browser"
-  },
-  "browserTool.state.completed": {
-    "message": "Completed"
-  },
-  "browserTool.state.expired": {
-    "message": "Browser request expired"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Статус виконання невідомий"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

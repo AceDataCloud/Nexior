@@ -64,8 +64,8 @@
     "description": "프롬프트 입력에 대한 설명"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Grok Imagine 모델을 선택하세요. :reverse는 빠른/표준 엔드포인트를 사용하고; :official은 공식 엔드포인트를 사용합니다(화질이 더 높고, 초당 요금이 부과됨). grok-imagine-video-1.5:official은 비디오 생성을 위한 이미지 전용입니다.",
+    "description": "모델 선택에 대한 설명"
   },
   "description.ratio": {
     "message": "출력 화면 비율을 선택하세요.",
@@ -76,16 +76,16 @@
     "description": "해상도에 대한 설명"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "비디오 길이(초). 1.5-fast(리버스)는 6-30초를 지원하며, 길이에 따라 요금이 부과됩니다; 나머지 변형은 1-15초를 지원하며, 출력 초수에 따라 요금이 부과됩니다.",
+    "description": "길이에 대한 설명"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "비디오 생성을 위한 선택적 입력 이미지. grok-imagine-video-1.5:official은 필수입니다.",
+    "description": "이미지 입력에 대한 설명"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "비디오 생성의 스타일이나 내용을 안내하기 위한 선택적 참조 이미지.",
+    "description": "참조 이미지에 대한 설명"
   },
   "placeholder.prompt": {
     "message": "비디오를 설명하세요…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "선택하세요",
     "description": "선택을 위한 플레이스홀더"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine 비디오 1.5 Fast(빠름, 6–30초)",
+    "description": "1.5-fast 리버스 모델 레이블"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine 비디오(표준, 1–15초)",
+    "description": "grok-imagine-video 리버스 모델 레이블"
+  },
+  "model.official": {
+    "message": "Grok Imagine 비디오 · 공식(더 높은 화질, 초당 요금 부과)",
+    "description": "grok-imagine-video 공식 모델 레이블"
+  },
+  "model.official15": {
+    "message": "Grok Imagine 비디오 1.5 · 공식(이미지 생성 비디오, 최대 1080p)",
+    "description": "1.5 공식 모델 레이블"
   },
   "button.upload": {
     "message": "업로드",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "크레딧이 소진되었습니다. 구매 후 계속 사용하세요.",
     "description": "소진됨"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

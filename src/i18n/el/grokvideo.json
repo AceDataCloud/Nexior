@@ -28,8 +28,8 @@
     "description": "Ετικέτα για την είσοδο εικόνας"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Αναφορές εικόνας",
+    "description": "Ετικέτα για αναφορές εικόνας"
   },
   "name.required": {
     "message": "Υποχρεωτικό",
@@ -64,8 +64,8 @@
     "description": "Οδηγίες για την είσοδο προτροπής"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Επιλέξτε το μοντέλο Grok Imagine. Το :reverse χρησιμοποιεί τα γρήγορα/τυπικά σημεία πρόσβασης; το :official χρησιμοποιεί το επίσημο σημείο πρόσβασης (υψηλότερη ποιότητα, χρέωση ανά δευτερόλεπτο). Το grok-imagine-video-1.5:official υποστηρίζει μόνο βίντεο που δημιουργούνται από εικόνες.",
+    "description": "Οδηγίες για την επιλογή μοντέλου"
   },
   "description.ratio": {
     "message": "Επιλέξτε την αναλογία εξόδου.",
@@ -76,16 +76,16 @@
     "description": "Οδηγίες για την ανάλυση"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Διάρκεια βίντεο (δευτερόλεπτα). Το 1.5-fast (αντίστροφα) υποστηρίζει 6-30 δευτερόλεπτα, με χρέωση ανά διάρκεια. Οι υπόλοιπες παραλλαγές υποστηρίζουν 1-15 δευτερόλεπτα, με χρέωση ανά δευτερόλεπτο εξόδου.",
+    "description": "Οδηγίες για τη διάρκεια"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Επιλεγμένη είσοδος εικόνας για τη δημιουργία βίντεο. Το grok-imagine-video-1.5:official είναι υποχρεωτικό.",
+    "description": "Οδηγίες για την είσοδο εικόνας"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Επιλεγμένες αναφορές εικόνας για να καθοδηγήσουν το στυλ ή το περιεχόμενο του παραγόμενου βίντεο.",
+    "description": "Οδηγίες για τις αναφορές εικόνας"
   },
   "placeholder.prompt": {
     "message": "Περιγράψτε το βίντεό σας…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Επιλέξτε",
     "description": "Placeholder για επιλογές"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine βίντεο 1.5 Fast (γρήγορο, 6–30 δευτερόλεπτα)",
+    "description": "Ετικέτα μοντέλου 1.5-fast αντίστροφα"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine βίντεο (τυπικό, 1–15 δευτερόλεπτα)",
+    "description": "Ετικέτα μοντέλου grok-imagine-video αντίστροφα"
+  },
+  "model.official": {
+    "message": "Grok Imagine βίντεο · Επίσημο (υψηλότερη ποιότητα, χρέωση ανά δευτερόλεπτο)",
+    "description": "Ετικέτα μοντέλου grok-imagine-video επίσημο"
+  },
+  "model.official15": {
+    "message": "Grok Imagine βίντεο 1.5 · Επίσημο (βίντεο από εικόνες, μέγιστη ανάλυση 1080p)",
+    "description": "Ετικέτα μοντέλου 1.5 επίσημο"
   },
   "button.upload": {
     "message": "Ανέβασμα",
@@ -120,8 +136,8 @@
     "description": "Προειδοποίηση υπέρβασης ανέβασματος"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Μπορείτε να ανεβάσετε έως 4 αναφορές εικόνας.",
+    "description": "Προειδοποίηση υπέρβασης ανέβασμα αναφορών εικόνας"
   },
   "message.uploadError": {
     "message": "Η ανέβασμα εικόνας απέτυχε, παρακαλώ δοκιμάστε ξανά.",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Η ποσόστωση έχει εξαντληθεί, παρακαλώ αγοράστε για να συνεχίσετε τη χρήση.",
     "description": "Εξαντλημένο"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

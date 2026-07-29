@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Akcja",
+    "description": "Wybór akcji do generowania lub edytowania."
+  },
   "name.taskId": {
     "message": "ID zadania",
     "description": "ID zadania"
@@ -29,7 +33,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status zadania"
+    "description": "Status zadania."
   },
   "name.traceId": {
     "message": "ID śledzenia",
@@ -131,6 +135,10 @@
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
     "description": "Błąd przesyłania"
   },
+  "message.referenceImageRequired": {
+    "message": "W trybie edycji należy przesłać co najmniej jeden obraz referencyjny.",
+    "description": "Komunikat walidacyjny wyświetlany, gdy w trybie edycji brakuje obrazu referencyjnego."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Wymagana potwierdzenie",
     "description": "Tytuł okna konfliktu funkcji"
@@ -145,7 +153,7 @@
   },
   "name.model": {
     "message": "Model",
-    "description": "Etykieta wyboru modelu SeeDream"
+    "description": "Etykieta wyboru modelu SeeDream."
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Dopasowanie (zgodne z obrazem referencyjnym)",
     "description": "Etykieta opcji adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

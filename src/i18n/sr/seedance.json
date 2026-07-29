@@ -8,8 +8,8 @@
     "description": "Упутство за генерисање видеа"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Упутство за унос упутства"
+    "message": "Opisujte video koji želite da generišete. Da bi lik govorio: otpremite sliku u okvir \"referentna slika\" (ne \"prva slika\"), napišite dijalog u navodnicima, na primer lik iz slike 1 govori: \"tvoj dijalog\", i uključite \"generisanje audio zapisa\". Mogu se dodati parametri (kao što su --rs 720p --rt 16:9 --dur 5).",
+    "description": "Objašnjenje unosa prompta"
   },
   "placeholder.prompt": {
     "message": "Опис вашег видеа…",
@@ -40,8 +40,8 @@
     "description": "Ознака за генерисање аудија"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
-    "description": "Упутство за генерисање аудија"
+    "message": "Kada je uključeno, video će imati zvuk. Da bi lik govorio, potrebno je: otpremiti sliku lika u okvir \"referentna slika\" + uključiti ovu opciju + napisati dijalog u navodnicima u promptu. Samo seedance-1.5-pro / seedance-2.0 serije podržavaju, trošak je oko 2 puta veći.",
+    "description": "Objašnjenje generisanja audio zapisa"
   },
   "name.resolution": {
     "message": "Резолуција",
@@ -100,20 +100,20 @@
     "description": "Упутство за враћање последњег кадра"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Ознака за учитавање прве слике"
+    "message": "Prva slika (animacija)",
+    "description": "Oznaka za otpremanje prve slike"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Упутство за прву слику"
+    "message": "Prva slika: slika koju ste otpremili će postati prva scena videa, kretanje počinje od nje. Pogodno za \"pokretanje slike\", ali lik neće govoriti, nema usne pokrete. Ako želite da lik govori, koristite \"referentnu sliku\" ispod.",
+    "description": "Objašnjenje prve slike"
   },
   "name.lastFrame": {
     "message": "Последња слика",
     "description": "Ознака за учитавање последње слике"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Упутство за последњу слику"
+    "message": "Poslednja slika: odredite poslednju scenu videa (mora biti u skladu sa prvom slikom). Koristi se za zaključavanje kretanja od jedne slike do druge.",
+    "description": "Objašnjenje poslednje slike"
   },
   "button.generate": {
     "message": "Генериши",
@@ -256,19 +256,19 @@
     "description": "Model SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Oznaka za učitavanje referentne slike subjekta (Seedance 2.0)"
+    "message": "Referentna slika (da lik govori)",
+    "description": "Oznaka za otpremanje referentne slike (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Omogućava liku u videu da govori i uskladi usne (preporučuje se za glasovne ili digitalne likove, zadržava izgled lika). Ako želite da lik govori, otpremite sliku ovde, a ne u \"prvu sliku\". Koristite zajedno sa dijalogom u navodnicima + \"generisanje audio zapisa\". Možete otpremiti 1~9 slika. Samo Seedance 2.0 serija. Napomena: ne može se koristiti zajedno sa \"prvom/poslednjom slikom\".",
     "description": "Objašnjenje referentne slike"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Oznaka za učitavanje referentnog audio zapisa (Seedance 2.0)"
+    "message": "Referentni audio (ton/pozadinska muzika)",
+    "description": "Oznaka za otpremanje referentnog audio zapisa (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "Omogućava generisanje videa koristeći ton ili pozadinsku muziku ovog audio zapisa (uz referentnu sliku kako bi lik govorio tim tonom). Mora se koristiti zajedno sa referentnom slikom ili videom, ne može se koristiti samo audio. Možete otpremiti 1~3 segmenta. Samo Seedance 2.0 serija.",
     "description": "Objašnjenje referentnog audio zapisa"
   },
   "name.referenceVideo": {
@@ -276,11 +276,11 @@
     "description": "Oznaka za učitavanje referentnog video zapisa (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "Objašnjenje referentnog video zapisa"
+    "message": "Omogućava modelu da koristi pokrete/uglove/stil/efekte iz ovog videa za generisanje novog videa. Možete otpremiti 1~3 segmenta. Samo Seedance 2.0 serija.",
+    "description": "Objašnjenje referentnog videa"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Referentni audio ne može se koristiti samostalno, molimo vas da otpremite referentnu sliku ili video.",
+    "description": "Upozorenje kada referentni audio nema povezanu sliku/video"
   }
 }

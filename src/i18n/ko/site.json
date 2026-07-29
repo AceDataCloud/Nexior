@@ -100,8 +100,8 @@
     "description": "로그인 방식 이름: Apple로 로그인"
   },
   "field.authProvider_wechat": {
-    "message": "WeChat",
-    "description": "로그인 방식 이름: WeChat 제3자 로그인"
+    "message": "위챗",
+    "description": "로그인 방식 이름: 위챗 제3자 로그인"
   },
   "field.authSmsWebhook": {
     "message": "맞춤 SMS 발신자",
@@ -112,8 +112,8 @@
     "description": "맞춤 SMS 발신자 웹훅 설명"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://당신의도메인/sms-webhook",
+    "description": "SMS webhook URL 입력란의 자리 표시자"
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "서명 비밀키 (변경하지 않으려면 빈칸)",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "편집 상자에서 제목으로 표시됩니다."
   },
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresDigitalhuman": {
-    "message": "Digital Human",
-    "description": "편집 상자에 표시되는 제목"
+    "message": "디지털 휴먼",
+    "description": "편집 상자에 제목으로 표시됩니다."
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "편집 상자에 표시되는 제목"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "편집 상자의 제목으로 표시"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "아이디어를 바탕으로 기획, 나레이션, 장면 구성, 완성본 전달까지 포함한 영상을 제작합니다.",
     "description": "아이디어를 바탕으로 기획, 나레이션, 장면 구성, 완성본 전달까지 포함한 영상을 제작합니다."
   },
+  "message.featuresPoivelle": {
+    "message": "프로젝트 다이어그램, 스토리보드, 타임라인, 리뷰 및 Skill Agent 워크플로우를 공유하여 전문 AI 영화 제작을 통합합니다.",
+    "description": "프로젝트 다이어그램, 스토리보드, 타임라인, 리뷰 및 Skill Agent 워크플로우를 공유하여 전문 AI 영화 제작을 통합하는 능력 소개"
+  },
   "message.featuresDigitalhuman": {
     "message": "합성 음성과 자연스러운 립싱크로 말하는 얼굴 영상을 만듭니다.",
     "description": "합성 음성과 자��스러운 립싱크로 말하는 얼굴 영상을 만듭니다."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "다양한 해상도에서 역동적인 장면, 카메라 움직임, 선택적 오디오를 만드는 ByteDance 영상 생성 기능입니다.",
     "description": "다양한 해상도에서 역동적인 장면, 카메라 움직임, 선택적 오디오를 만드는 ByteDance 영상 생성 기능입니다."
+  },
+  "message.featuresOmni": {
+    "message": "Omni 모델로 텍스트, 이미지, 동영상 참조를 바탕으로 동영상을 생성하거나 편집합니다.",
+    "description": "Omni 모델로 텍스트, 이미지, 동영상 참조를 바탕으로 동영상을 생성하거나 편집합니다."
   },
   "message.featuresWan": {
     "message": "텍스트, 이미지, 참조 자료를 바탕으로 다양한 해상도의 Alibaba 영상 생성 기능입니다.",
@@ -882,14 +898,6 @@
   "services.message.fetchFailed": {
     "message": "서비스 재정의를 불러오지 못했습니다"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "편집 상자의 제목으로 표시"
-  },
-  "message.featuresOmni": {
-    "message": "Omni 모델로 텍스트, 이미지, 동영상 참조를 바탕으로 동영상을 생성하거나 편집합니다.",
-    "description": "Omni 모델로 텍스트, 이미지, 동영상 참조를 바탕으로 동영상을 생성하거나 편집합니다."
-  },
   "capabilityOverride.edit": {
     "message": "앱 사용자 지정",
     "description": "기능 앱 이름/아이콘 편집 버튼 툴팁 및 접근성 레이블"
@@ -969,13 +977,5 @@
   "capabilityOverride.fetchFailed": {
     "message": "앱 사용자 지정 불러오기 실패",
     "description": "기능 재정의 관리 행을 불러올 수 없을 때 표시되는 오류"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
   }
 }

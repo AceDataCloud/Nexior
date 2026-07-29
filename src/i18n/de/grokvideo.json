@@ -1,7 +1,7 @@
 {
   "name.bot": {
-    "message": "Grok Video Bot",
-    "description": "Name des Grok Video Generators"
+    "message": "Grok Video-Bot",
+    "description": "Name des Grok Video-Generators"
   },
   "name.prompt": {
     "message": "Eingabeaufforderung",
@@ -64,8 +64,8 @@
     "description": "Anweisungen zur Eingabe des Prompts"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Wählen Sie das Grok Imagine Modell. :reverse nutzt den schnellen/standard Endpunkt; :official nutzt den offiziellen Endpunkt (höhere Qualität, nach Sekunden abgerechnet). grok-imagine-video-1.5:official unterstützt nur Bild-zu-Video.",
+    "description": "Anweisungen zur Modellauswahl"
   },
   "description.ratio": {
     "message": "Wählen Sie das Ausgabe-Seitenverhältnis.",
@@ -76,16 +76,16 @@
     "description": "Anweisungen zur Auflösung"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Videolänge (Sekunden). 1.5-fast (rückwärts) unterstützt 6-30 Sekunden, nach Länge gestaffelt abgerechnet; andere Varianten unterstützen 1-15 Sekunden, nach ausgegebenen Sekunden abgerechnet.",
+    "description": "Anweisungen zur Dauer"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "Optionales Eingabebild zur Videoerstellung. grok-imagine-video-1.5:official ist erforderlich.",
+    "description": "Anweisungen zur Bild-Eingabe"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "Optionale Referenzbilder zur Anleitung bei der Erstellung des Videos in Bezug auf Stil oder Inhalt.",
+    "description": "Anweisungen zu Referenzbildern"
   },
   "placeholder.prompt": {
     "message": "Beschreibe dein Video…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "Bitte auswählen",
     "description": "Platzhalter für Auswahlfelder"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine Video 1.5 Fast (schnell, 6–30 Sekunden)",
+    "description": "Bezeichnung für das 1.5-fast Rückwärtsmodell"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine Video (Standard, 1–15 Sekunden)",
+    "description": "Bezeichnung für das grok-imagine-video Rückwärtsmodell"
+  },
+  "model.official": {
+    "message": "Grok Imagine Video · Offiziell (höhere Qualität, nach Sekunden abgerechnet)",
+    "description": "Bezeichnung für das grok-imagine-video offizielle Modell"
+  },
+  "model.official15": {
+    "message": "Grok Imagine Video 1.5 · Offiziell (Bild-zu-Video, bis zu 1080p)",
+    "description": "Bezeichnung für das 1.5 offizielle Modell"
   },
   "button.upload": {
     "message": "Hochladen",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "Kontingent erschöpft, bitte kaufen Sie, um fortzufahren.",
     "description": "Erschöpft"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

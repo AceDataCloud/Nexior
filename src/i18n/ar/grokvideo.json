@@ -64,8 +64,8 @@
     "description": "تعليمات حول إدخال النص"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. :reverse variants use the fast/standard endpoint; :official variants use the official endpoint (higher fidelity, per-second pricing). grok-imagine-video-1.5:official is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "اختر نموذج Grok Imagine. :reverse يستخدم نقطة النهاية السريعة/القياسية؛ :official يستخدم نقطة النهاية الرسمية (جودة أعلى، يتم احتساب الرسوم حسب الثواني). grok-imagine-video-1.5:official يدعم فقط إنشاء الفيديو من الصور.",
+    "description": "تعليمات حول اختيار النموذج"
   },
   "description.ratio": {
     "message": "اختر نسبة عرض إلى ارتفاع الإخراج.",
@@ -76,16 +76,16 @@
     "description": "تعليمات حول الدقة"
   },
   "description.duration": {
-    "message": "Video duration in seconds. 1.5-fast (reverse) supports 6-30s with banded pricing; the other variants support 1-15s billed per output second.",
-    "description": "Instructions for duration"
+    "message": "مدة الفيديو (بالثواني). يدعم 1.5-fast (عكسي) من 6 إلى 30 ثانية، ويتم احتساب الرسوم حسب المدة؛ بينما تدعم المتغيرات الأخرى من 1 إلى 15 ثانية، ويتم احتساب الرسوم حسب عدد الثواني الناتجة.",
+    "description": "تعليمات حول المدة"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5:official.",
-    "description": "Instructions for image input"
+    "message": "صورة إدخال اختيارية، تستخدم لإنشاء الفيديو. grok-imagine-video-1.5:official إلزامية.",
+    "description": "تعليمات حول إدخال الصورة"
   },
   "description.referenceImages": {
-    "message": "Optional reference images to guide the style or content of the generated video.",
-    "description": "Instructions for reference images"
+    "message": "صور مرجعية اختيارية، تستخدم لتوجيه أسلوب أو محتوى الفيديو الناتج.",
+    "description": "تعليمات حول الصور المرجعية"
   },
   "placeholder.prompt": {
     "message": "وصف الفيديو الخاص بك…",
@@ -94,6 +94,22 @@
   "placeholder.select": {
     "message": "يرجى الاختيار",
     "description": "نص بديل للاختيارات"
+  },
+  "model.fastReverse": {
+    "message": "Grok Imagine فيديو 1.5 سريع (6–30 ثانية)",
+    "description": "تسمية نموذج 1.5-fast العكسي"
+  },
+  "model.reverse": {
+    "message": "Grok Imagine فيديو (قياسي، 1–15 ثانية)",
+    "description": "تسمية نموذج grok-imagine-video العكسي"
+  },
+  "model.official": {
+    "message": "Grok Imagine فيديو · رسمي (جودة أعلى، يتم احتساب الرسوم حسب الثواني)",
+    "description": "تسمية نموذج grok-imagine-video الرسمي"
+  },
+  "model.official15": {
+    "message": "Grok Imagine فيديو 1.5 · رسمي (إنشاء فيديو من الصور، حتى 1080p)",
+    "description": "تسمية النموذج الرسمي 1.5"
   },
   "button.upload": {
     "message": "رفع",
@@ -154,21 +170,5 @@
   "message.usedUp": {
     "message": "تم استهلاك الرصيد، يرجى الشراء للاستمرار في الاستخدام.",
     "description": "استهلاك الرصيد"
-  },
-  "model.fastReverse": {
-    "message": "Grok Imagine Video 1.5 Fast (fast, 6–30s)",
-    "description": "1.5-fast reverse model label"
-  },
-  "model.reverse": {
-    "message": "Grok Imagine Video (standard, 1–15s)",
-    "description": "grok-imagine-video reverse model label"
-  },
-  "model.official": {
-    "message": "Grok Imagine Video · Official (higher fidelity, per-second)",
-    "description": "grok-imagine-video official model label"
-  },
-  "model.official15": {
-    "message": "Grok Imagine Video 1.5 · Official (image-to-video, up to 1080p)",
-    "description": "1.5 official model label"
   }
 }

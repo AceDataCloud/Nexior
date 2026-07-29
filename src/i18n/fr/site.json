@@ -104,100 +104,100 @@
     "description": "Nom de la méthode de connexion : Connexion tierce WeChat"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "Adresse d'envoi de SMS personnalisée",
+    "description": "Paramètres du site / connexion : titre pour le webhook de livraison de code de vérification SMS personnalisé du site"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "Une fois activé, les SMS de vérification envoyés par le site seront envoyés par votre propre interface avec votre propre signature ; s'il est désactivé, la signature par défaut de la plateforme sera utilisée. Vous devez d'abord activer le mode de connexion par « numéro de téléphone ».",
+    "description": "Explique le webhook de l'expéditeur SMS personnalisé"
   },
   "placeholder.authSmsWebhookUrl": {
-    "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "message": "https://votredomaine/sms-webhook",
+    "description": "Espace réservé pour le champ d'entrée de l'URL du webhook SMS"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "Clé de signature (laisser vide pour conserver l'existant)",
+    "description": "Espace réservé pour l'entrée de la clé de signature du webhook SMS ; en écriture seule, vide conserve l'existant"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "Activer l'adresse d'expédition personnalisée",
+    "description": "Étiquette à côté du bascule de l'expéditeur SMS personnalisé"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "Voir la documentation",
+    "description": "Lien qui ouvre la boîte de dialogue des spécifications du webhook SMS"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "Tester",
+    "description": "Bouton qui ouvre la boîte de dialogue de test du webhook SMS"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "Vous devez d'abord activer le mode de connexion par « numéro de téléphone » pour configurer l'adresse d'expédition SMS personnalisée.",
+    "description": "Info-bulle affichée lorsque le bascule est désactivé car la connexion par téléphone est désactivée"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "Adresse d'expédition SMS personnalisée · Documentation de l'API",
+    "description": "Titre de la boîte de dialogue de spécification du webhook SMS"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "Le site enverra une demande HTTPS POST signée à l'adresse que vous avez fournie, votre service sera responsable de l'envoi des SMS. Veuillez vous assurer que votre interface répond aux exigences suivantes :",
+    "description": "Paragraphe d'introduction de la boîte de dialogue de spécification du webhook SMS"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "Demande",
+    "description": "En-tête : section de demande de la spécification du webhook SMS"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "La méthode est POST, le Content-Type est application/json. Le but peut être login / register / test (test pour tester la connectivité, sans envoyer de SMS réel). La structure du corps de la demande est la suivante :",
+    "description": "Décrit la méthode de demande et le corps du webhook SMS"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "Vérification de la signature",
+    "description": "En-tête : section de signature de la spécification du webhook SMS"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "Chaque demande doit inclure les en-têtes suivants, veuillez vérifier la signature avec votre clé de signature selon la norme des Webhooks, en utilisant HMAC-SHA256 et une comparaison en temps constant :",
+    "description": "Décrit la vérification de la signature pour le webhook SMS"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "Réponse",
+    "description": "En-tête : section de réponse de la spécification du webhook SMS"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "Pour un envoi réussi, veuillez renvoyer un code 2xx ; pour indiquer explicitement un échec, vous pouvez renvoyer un HTTP 200, avec le champ success dans le corps étant false (voir l'exemple ci-dessous). Veuillez répondre dans les 5 secondes.",
+    "description": "Décrit la réponse attendue du webhook SMS"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "Tester l'adresse d'expédition SMS personnalisée",
+    "description": "Titre de la boîte de dialogue de test du webhook SMS"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "Indicatif du pays/région",
+    "description": "Étiquette pour le champ de code de région dans la boîte de dialogue de test"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "Numéro de téléphone de test (facultatif)",
+    "description": "Étiquette pour le champ de numéro de téléphone dans la boîte de dialogue de test"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "Envoyer le test",
+    "description": "Bouton qui envoie la demande de test du webhook SMS"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "La demande de test a été livrée avec succès à votre interface.",
+    "description": "Message de succès après un test de webhook"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "Échec du test, veuillez vérifier l'adresse, la clé de signature et la réponse de l'interface.",
+    "description": "Message d'échec après un test de webhook"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Désactiver l'adresse d'envoi de SMS personnalisée",
+    "description": "Titre de la boîte de dialogue de confirmation affichée lors de la désactivation de l'expéditeur de SMS personnalisé"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "La désactivation supprimera les adresses d'expédition et les clés de signature enregistrées (les clés ne peuvent pas être récupérées), le site utilisera la signature par défaut de la plateforme. Êtes-vous sûr de vouloir désactiver ?",
+    "description": "Corps de la boîte de dialogue de confirmation affichée lors de la désactivation de l'expéditeur SMS personnalisé"
   },
   "field.featuresChat": {
     "message": "Chat",
@@ -223,9 +223,13 @@
     "message": "Maestro",
     "description": "Affiché comme le titre dans la boîte d'édition"
   },
-  "field.featuresDigitalhuman": {
-    "message": "Digital Human",
+  "field.featuresPoivelle": {
+    "message": "Poivelle",
     "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresDigitalhuman": {
+    "message": "Humain numérique",
+    "description": "Affiché comme le titre dans la boîte d'édition"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -290,6 +294,10 @@
   "field.featuresSeedance": {
     "message": "SeeDance",
     "description": "Affiché comme titre dans la zone d'édition"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "Affiché comme titre dans la zone d’édition"
   },
   "field.featuresWan": {
     "message": "Wan",
@@ -583,6 +591,10 @@
     "message": "Produit des vidéos complètes à partir d’une idée, avec planification, voix off, scènes et livraison.",
     "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
   },
+  "message.featuresPoivelle": {
+    "message": "Coordonnez la production cinématographique professionnelle par IA grâce au partage de diagrammes de projet, de storyboards, de chronologies, de révisions et de flux de travail Skill Agent.",
+    "description": "Présentation des capacités de coordination de la production cinématographique professionnelle par IA."
+  },
   "message.featuresDigitalhuman": {
     "message": "Crée des vidéos face caméra avec une voix synthétique et une synchronisation labiale naturelle.",
     "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
@@ -642,6 +654,10 @@
   "message.featuresSeedance": {
     "message": "Génération vidéo ByteDance pour des scènes dynamiques, des mouvements de caméra et un audio optionnel.",
     "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+  },
+  "message.featuresOmni": {
+    "message": "Générez ou modifiez des vidéos avec les modèles Omni à partir de texte, d’images et de références vidéo.",
+    "description": "Générez ou modifiez des vidéos avec les modèles Omni à partir de texte, d’images et de références vidéo."
   },
   "message.featuresWan": {
     "message": "Génération vidéo Alibaba à partir de texte, d’images ou de références, en plusieurs résolutions.",
@@ -796,10 +812,12 @@
     "message": "Aucune surcharge — chaque service utilise ses valeurs par défaut."
   },
   "services.field.service": {
-    "message": "Service"
+    "message": "Service",
+    "description": ""
   },
   "services.field.visible": {
-    "message": "Visible"
+    "message": "Visible",
+    "description": ""
   },
   "services.field.customMarkupRatio": {
     "message": "Majoration personnalisée par service"
@@ -814,7 +832,8 @@
     "message": "Ordre"
   },
   "services.field.action": {
-    "message": "Actions"
+    "message": "Action",
+    "description": ""
   },
   "services.status.visible": {
     "message": "Affiché"
@@ -882,100 +901,84 @@
   "services.message.fetchFailed": {
     "message": "Échec du chargement des surcharges de service"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "Affiché comme titre dans la zone d’édition"
-  },
-  "message.featuresOmni": {
-    "message": "Générez ou modifiez des vidéos avec les modèles Omni à partir de texte, d’images et de références vidéo.",
-    "description": "Générez ou modifiez des vidéos avec les modèles Omni à partir de texte, d’images et de références vidéo."
-  },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "Personnaliser l'application",
+    "description": "Indication et étiquette d'accessibilité pour éditer le nom et l'icône de l'application de capacité"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "Personnaliser {name}",
+    "description": "Titre de la fenêtre contextuelle, {name} étant le nom de l'application par défaut de la plateforme"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "Nom personnalisé",
+    "description": "Champ pour le nom affiché de l'application de capacité du sous-site"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "Laissez vide pour utiliser {name}. La traduction automatique peut être activée après la première sauvegarde.",
+    "description": "Explication du nom, {name} étant le nom de l'application par défaut de la plateforme"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "Icône personnalisée",
+    "description": "Champ pour l'icône de l'application de capacité du sous-site"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "Par défaut",
+    "description": "Étiquette d'aperçu de l'icône par défaut de la plateforme"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "Icône actuelle",
+    "description": "Étiquette d'aperçu de l'icône actuellement active"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "Remplacer l'icône",
+    "description": "Commande pour télécharger une icône de remplacement"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "Télécharger l'icône",
+    "description": "Commande pour le premier téléchargement d'une icône personnalisée"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "Utiliser l'icône par défaut",
+    "description": "Commande pour supprimer le brouillon de l'icône personnalisée"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "Formats supportés : PNG, JPEG ou WebP, recadré en carré ; les PNG transparents conserveront l'arrière-plan transparent.",
+    "description": "Exigences pour le téléchargement de l'icône de l'application de capacité"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "Modifier l'icône de l'application",
+    "description": "Titre de la fenêtre contextuelle pour le recadrage de l'icône"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "Restaurer par défaut",
+    "description": "Commande pour supprimer à la fois le nom personnalisé et l'icône"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "Veuillez d'abord entrer un nom personnalisé ou télécharger une icône.",
+    "description": "Indication lors de la tentative de création d'une couverture vide"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "Personnalisation de l'application sauvegardée",
+    "description": "Indication de succès après la sauvegarde de la couverture de l'application de capacité"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "Sauvegardé, vous pouvez maintenant activer la traduction automatique pour le nom personnalisé.",
+    "description": "Indication après la première sauvegarde et obtention de l'ID d'enregistrement de couverture"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "Échec de la sauvegarde de la personnalisation de l'application",
+    "description": "Erreur de sauvegarde de la couverture de l'application de capacité"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "Restaurer le nom et l'icône par défaut de {name} ?",
+    "description": "Texte de confirmation de restauration, {name} étant le nom de l'application par défaut de la plateforme"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "Nom et icône par défaut restaurés",
+    "description": "Indication de succès après la suppression de la couverture de l'application de capacité"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
-  },
-  "field.featuresPoivelle": {
-    "message": "Poivelle",
-    "description": "Displayed as the title in the editing box"
-  },
-  "message.featuresPoivelle": {
-    "message": "Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow.",
-    "description": "Concise capability introduction: Direct professional AI film production through a shared project graph, storyboard, timeline, review, and skill-agent workflow."
+    "message": "Échec du chargement de la personnalisation de l'application",
+    "description": "Erreur lors de la lecture des enregistrements de gestion de la couverture de l'application de capacité"
   }
 }

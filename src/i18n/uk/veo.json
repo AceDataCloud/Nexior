@@ -143,6 +143,10 @@
     "message": "Максимум можна завантажити 2 зображення",
     "description": "Повідомлення про помилку, коли кількість завантажених зображень перевищує ліміт"
   },
+  "message.uploadReferencesLimit": {
+    "message": "Максимум можна завантажити {limit} зображень",
+    "description": "Динамічне обмеження кількості зображень, що відображається відповідно до поточного способу генерації"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Зображення успішно завантажено",
     "description": "Повідомлення про успіх при успішному завантаженні зображення"
@@ -231,20 +235,16 @@
     "message": "Відео з кількома зображеннями",
     "description": "ingredients2video — об'єднання 1-3 зображень для створення нової сцени"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "Текст",
+    "description": "Операційна вкладка Veo: відео на основі тексту"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "Зображення",
+    "description": "Операційна вкладка Veo: відео на основі зображень"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "Злиття",
+    "description": "Операційна вкладка Veo: відео на основі злиття кількох зображень"
   }
 }

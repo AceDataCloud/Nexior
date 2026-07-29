@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Ενέργεια",
+    "description": "Επιλογέας για τη δημιουργία ή επεξεργασία ενεργειών."
+  },
   "name.taskId": {
     "message": "ID εργασίας",
     "description": "Το ID της εργασίας"
@@ -131,6 +135,10 @@
     "message": "Αποτυχία ανέβασματος εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
     "description": "Αποτυχία ανέβασματος"
   },
+  "message.referenceImageRequired": {
+    "message": "Απαιτείται τουλάχιστον μία αναφορά εικόνας σε λειτουργία επεξεργασίας.",
+    "description": "Εμφανίζεται προειδοποίηση ελέγχου όταν δεν υπάρχει αναφορά εικόνας σε λειτουργία επεξεργασίας."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Απαιτείται επιβεβαίωση",
     "description": "Τίτλος του πλαισίου διαλόγου σύγκρουσης δυνατοτήτων"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Προσαρμοστικό (ίδιο με την αναφορά εικόνας)",
     "description": "Ετικέτα επιλογής adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

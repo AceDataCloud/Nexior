@@ -143,6 +143,10 @@
     "message": "Można przesłać maksymalnie 2 obrazy",
     "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
   },
+  "message.uploadReferencesLimit": {
+    "message": "Możesz przesłać maksymalnie {limit} obrazów",
+    "description": "Wyświetla dynamiczny limit liczby obrazów w zależności od bieżącego sposobu generowania"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Obrazy przesłane pomyślnie",
     "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazów"
@@ -231,20 +235,16 @@
     "message": "Wideo z wielu obrazów",
     "description": "ingredients2video — połączenie 1-3 obrazów w nową scenę"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "Tekst z obrazu",
+    "description": "Etykieta akcji Veo: wideo z tekstu"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "Obraz z tekstu",
+    "description": "Etykieta akcji Veo: wideo z obrazu"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "Fuzja",
+    "description": "Etykieta akcji Veo: wideo z wieloma obrazami"
   }
 }

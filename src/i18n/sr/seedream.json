@@ -1,4 +1,8 @@
 {
+  "name.action": {
+    "message": "Akcija",
+    "description": "Izbor za generisanje ili uređivanje akcije."
+  },
   "name.taskId": {
     "message": "ID zadatka",
     "description": "ID zadatka"
@@ -131,6 +135,10 @@
     "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
     "description": "Neuspeh pri otpremanju"
   },
+  "message.referenceImageRequired": {
+    "message": "U režimu uređivanja potrebno je da otpremite barem jednu referentnu sliku.",
+    "description": "Poruka za proveru koja se prikazuje kada u režimu uređivanja nema referentne slike."
+  },
   "message.featureNotSupportedTitle": {
     "message": "Потребна потврда",
     "description": "Наслов дијалога о сукобу способности"
@@ -218,13 +226,5 @@
   "size.adaptive": {
     "message": "Адаптивно (попут референтне слике)",
     "description": "Ознака опције adaptive"
-  },
-  "name.action": {
-    "message": "Action",
-    "description": "Generate or edit action selector"
-  },
-  "message.referenceImageRequired": {
-    "message": "Upload at least one reference image to use Edit mode.",
-    "description": "Validation shown when Edit mode has no reference image"
   }
 }

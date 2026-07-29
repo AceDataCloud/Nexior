@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "Το πιο προηγμένο μοντέλο μέχρι στιγμής",
+    "description": "Περιγραφή του μοντέλου Claude Opus 5."
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "Ελαφρύ και γρήγορο μοντέλο",
     "description": "Περιγραφή του μοντέλου Claude Haiku 4.5"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "Υποστηρίζει αναγνώριση, οπτική και 1 εκατομμύριο Token συμφραζόμενα, ναυαρχίδα μοντέλου",
+    "description": "Περιγραφή του μοντέλου Kimi K3"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "Μοντέλο λογικής και οπτικής κατάλληλο για συμβατότητα με ροές εργασίας K2",
+    "description": "Περιγραφή του μοντέλου Kimi K2.6."
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,8 +599,85 @@
     "message": "Η εξουσιοδότηση συνδέσεων παραλείφθηκε",
     "description": "Σημείωση στο κάτω μέρος της κάρτας όταν ο χρήστης παραλείψει την εξουσιοδότηση"
   },
+  "browserTool.title": {
+    "message": "Δραστηριότητα προγράμματος περιήγησης",
+    "description": "Ο προεπιλεγμένος τίτλος για τη δραστηριότητα του εργαλείου BrowserDevice."
+  },
+  "browserTool.state.starting_session": {
+    "message": "Εκκίνηση συνεδρίας προγράμματος περιήγησης",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "Σύνδεση καρτέλας προγράμματος περιήγησης",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "Το πρόγραμμα περιήγησης είναι έτοιμο",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "Η συσκευή προγράμματος περιήγησης είναι εκτός σύνδεσης",
+    "description": "Η επιλεγμένη συσκευή προγράμματος περιήγησης δεν είναι online."
+  },
+  "browserTool.state.device_busy": {
+    "message": "Η συσκευή προγράμματος περιήγησης είναι απασχολημένη",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "Απαιτείται επιβεβαίωση έγκρισης στο Studio",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "Εκτελείται στο πρόγραμμα περιήγησης",
+    "description": "Η συσκευή προγράμματος περιήγησης εκτελεί το εργαλείο."
+  },
+  "browserTool.state.completed": {
+    "message": "Ολοκληρώθηκε",
+    "description": "Η εκτέλεση του εργαλείου προγράμματος περιήγησης έχει ολοκληρωθεί."
+  },
+  "browserTool.state.stopped": {
+    "message": "Η συνεδρία προγράμματος περιήγησης έχει σταματήσει",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "Η αίτηση προγράμματος περιήγησης έχει λήξει",
+    "description": "Η αίτηση εκτέλεσης εργαλείου προγράμματος περιήγησης έχει λήξει."
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "Παρακαλώ κλείστε τα εργαλεία προγραμματιστή για να συνεχίσετε",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "Το αποτέλεσμα εκτέλεσης είναι άγνωστο, παρακαλώ ελέγξτε και δοκιμάστε ξανά",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "Η λειτουργία του προγράμματος περιήγησης απέτυχε",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "Σταμάτησε",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "Διαχείριση συσκευών",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "Σταμάτησε άλλες συνεδρίες",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "Κλείσιμο εργαλείων προγραμματιστή",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "Δείτε την έγκριση",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Προγραμματισμένες εργασίες",
+    "description": "Είσοδος προγραμματισμένων εργασιών στην πλαϊνή μπάρα"
   },
   "scheduledTasks.tab.tasks": {
     "message": "Προγραμματισμένες Εργασίες",
@@ -599,74 +692,96 @@
     "description": "Φίλτρο κατάστασης εκτέλεσης - Όλα"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Προγραμματισμένα καθήκοντα",
+    "description": "Τίτλος σελίδας"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Δημιουργία",
+    "description": "Κουμπί για τη δημιουργία προγραμματισμένου καθήκοντος"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Επεξεργασία καθήκοντος",
+    "description": "Τίτλος διαλόγου επεξεργασίας"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "Αντιγραφή καθήκοντος",
+    "description": "Κουμπί για την αντιγραφή καθήκοντος, προ-συμπλήρωση νέας φόρμας βασισμένης σε υπάρχον καθήκον"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Δεν υπάρχουν προγραμματισμένα καθήκοντα, κάντε κλικ στο «Δημιουργία» για να δημιουργήσετε ένα",
+    "description": "Μήνυμα κατάστασης κενής"
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Δεν έχουν εκτελεστεί ακόμη",
+    "description": "Δεν υπάρχει ιστορικό εκτέλεσης"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Αποτυχία φόρτωσης",
+    "description": "Μήνυμα σφάλματος φόρτωσης"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Επιβεβαίωση διαγραφής «{name}»; Μετά τη διαγραφή, το καθήκον θα σταματήσει να εκτελείται.",
+    "description": "Επιβεβαίωση διαγραφής"
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Ενεργοποίηση τώρα",
+    "description": "Χειροκίνητη εκτέλεση της εργασίας αμέσως"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Έχει ενεργοποιηθεί, μπορείτε να δείτε το αποτέλεσμα στα αρχεία εκτέλεσης αργότερα.",
+    "description": "Μήνυμα επιτυχίας χειροκίνητης ενεργοποίησης"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Η ενεργοποίηση απέτυχε, παρακαλώ δοκιμάστε ξανά αργότερα.",
+    "description": "Μήνυμα αποτυχίας χειροκίνητης ενεργοποίησης"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Δείτε το αποτέλεσμα",
+    "description": "Μετάβαση στη συνομιλία"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Αρχεία εκτέλεσης",
+    "description": "Δείτε την ιστορία εκτέλεσης στο κάτω μέρος της κάρτας"
   },
   "scheduledTasks.noConversation": {
     "message": "Δεν υπάρχουν καταγεγραμμένες συνομιλίες",
     "description": "Η λειτουργία δεν έχει συσχετιστεί με συνομιλίες (παλαιά έκδοση λειτουργίας)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60s τζιτζίκι",
+    "description": "Εξήγηση τζιτζικιού χρόνου εκτέλεσης"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Έχει εκτελεστεί {count} φορές",
+    "description": "Αριθμός εκτελέσεων"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Εκτελείται",
+    "description": "Κατάσταση ενεργοποίησης"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Έχει ανασταλεί",
+    "description": "Κατάσταση απενεργοποίησης"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Σφάλμα",
+    "description": "Κατάσταση σφάλματος"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "Σε αναμονή",
+    "description": "Κατάσταση σε αναμονή"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "Εκτελείται",
+    "description": "Κατάσταση εκτέλεσης"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Επιτυχία",
+    "description": "Κατάσταση επιτυχίας"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Αποτυχία",
+    "description": "Κατάσταση αποτυχίας"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Επιτεύχθηκε το όριο βημάτων"
@@ -698,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "Ανεπαρκές υπόλοιπο"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "Η εξουσιοδότηση χρέωσης απέτυχε"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "Μη εξουσιοδοτημένο"
   },
@@ -708,120 +826,143 @@
     "message": "Εσωτερικό σφάλμα"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Απαιτείται ενέργεια",
+    "description": "Κατάσταση που απαιτεί ενέργεια από τον χρήστη"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "Η συσκευή του προγράμματος περιήγησης είναι εκτός σύνδεσης",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "Η εξουσιοδότηση του προγράμματος περιήγησης έχει αλλάξει, παρακαλώ επεξεργαστείτε αυτή την εργασία",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Καθημερινά",
+    "description": "Εκτέλεση καθημερινά"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Κάθε λεπτό"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Κάθε ώρα",
+    "description": "Εκτέλεση κάθε ώρα"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Κάθε εβδομάδα",
+    "description": "Εκτέλεση κάθε εβδομάδα"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Έκφραση Cron",
+    "description": "Προσαρμοσμένο cron"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Κάθε",
+    "description": "Εκτέλεση σε σταθερά διαστήματα"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "Λεπτό",
+    "description": "Μονάδα διαστήματος: λεπτό"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "Ώρα",
+    "description": "Μονάδα διαστήματος: ώρα"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "Ημέρα",
+    "description": "Μονάδα διαστήματος: ημέρα"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "Λεπτό ενεργοποίησης",
+    "description": "Ποιο λεπτό της ώρας θα ενεργοποιηθεί"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "Ποιο λεπτό της ώρας θα ενεργοποιηθεί (0–59)",
+    "description": "Επεξήγηση λεπτού ανά ώρα"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Από την τελευταία εκτέλεση, εκτελείται μία φορά σε σταθερό χρόνο (τουλάχιστον 1 λεπτό)",
+    "description": "Επεξήγηση σταθερού διαστήματος"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Τυπική 5-τμήματική έκφραση Cron: Λεπτά Ώρες Ημέρα Μήνας Εβδομάδα",
+    "description": "Επεξήγηση Cron"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Συχνότητα εκτέλεσης: {text}",
+    "description": "Προεπισκόπηση συχνότητας"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "Κάθε {n} λεπτά",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε N λεπτά"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "Κάθε {n} ώρες",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε N ώρες"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "Κάθε {n} ημέρες",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε N ημέρες"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "Κάθε ώρα στην {n} λεπτό",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε ώρα στην N λεπτό"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "Κάθε μέρα {time}",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε μέρα σε συγκεκριμένη ώρα"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "Κάθε εβδομάδα {weekday} {time}",
+    "description": "Αναγνώσιμο από ανθρώπους: Κάθε εβδομάδα σε συγκεκριμένη ημέρα και ώρα"
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Αναγνώσιμο από ανθρώπους: Ακατέργαστο Cron"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "Μία φορά {time}",
+    "description": "Αναγνώσιμο από ανθρώπους: Μία φορά"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Όνομα καθήκοντος",
+    "description": "Πεδίο ονόματος"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "π.χ.: Συλλογή καθημερινών ειδήσεων",
+    "description": "Καταληκτική θέση ονόματος"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Μοντέλο",
+    "description": "Επιλογή μοντέλου"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Λέξη-κλειδί",
+    "description": "Πεδίο λέξης-κλειδί"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Εισάγετε την ερώτηση ή εντολή που θα εκτελείται προγραμματισμένα, υποστηρίζει τις μεταβλητές {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'",
+    "description": "Καταληκτική θέση λέξης-κλειδί"
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Υποστηρίζει μεταβλητές προτύπου: {'{{date}}'} σημερινή ημερομηνία, {'{{run_count}}'} πόσες φορές εκτελείται, {'{{last_output}}'} περίληψη τελευταίου αποτελέσματος",
+    "description": "Επεξήγηση λέξης-κλειδί"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Συχνότητα εκτέλεσης",
+    "description": "Επιλογή συχνότητας"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Πεδίο χρόνου"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "Ημέρα της εβδομάδας",
+    "description": "Πεδίο ημέρας της εβδομάδας"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Έκφραση Cron",
+    "description": "Πεδίο έκφρασης cron"
   },
   "scheduledTasks.form.skills": {
     "message": "Εξουσιοδοτημένες Δεξιότητες",
@@ -835,6 +976,25 @@
     "message": "Οι επιλεγμένες Δεξιότητες μπορούν να παρακάμψουν την ανθρώπινη επιβεβαίωση κατά την εκτέλεση στο παρασκήνιο. Οι μη επιλεγμένες Δεξιότητες μπορούν μόνο να προβάλλονται ή να περιμένουν επιβεβαίωση.",
     "description": "Περιγραφή εξουσιοδότησης δεξιοτήτων"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "Σύνδεση περιηγητή",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "Μπορεί να εκτελέσει τις εξής εξωτερικές παρενέργειες: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "Η εξουσιοδότηση χωρίς επιτήρηση λήγει στις: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "Παρακαλώ επιλέξτε μια συμβατή και συνδεδεμένη περιήγηση πριν αποθηκεύσετε",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "Μη συνδεδεμένο",
     "description": "Η δεξιότητα λείπει σύνδεση"
@@ -868,19 +1028,20 @@
     "description": "Κείμενο επιβεβαίωσης εξουσιοδότησης"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Πρέπει πρώτα να δεσμεύσετε τη δεξιότητα",
+    "description": "Τίτλος διαλόγου που εμφανίζεται όταν μια εξουσιοδοτημένη δεξιότητα/MCP της προγραμματισμένης εργασίας δεν έχει ακόμη δεσμευτεί για τον χρήστη."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "Η δεξιότητα «{name}» δεν έχει ακόμη δεσμευτεί ή ενεργοποιηθεί στον λογαριασμό σας. Αν δεν δεσμευτεί πρώτα, η προγραμματισμένη εργασία μπορεί να μην μπορεί να τη χρησιμοποιήσει κατά την αυτόματη εκτέλεση στο παρασκήνιο. Συνιστάται να πάτε πρώτα για δέσμευση και μετά να αποθηκεύσετε ή να κάνετε κλικ στο παρακάτω κουμπί για να συνεχίσετε την αποθήκευση.",
+    "description": "Σώμα προειδοποίησης; {name} είναι το όνομα της δεξιότητας/MCP. Εξηγεί ότι δεν είναι δεσμευμένη και προσφέρει την επιλογή να αποθηκεύσετε ούτως ή άλλως."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Να συνεχίσω την αποθήκευση",
+    "description": "Κουμπί επιβεβαίωσης που αποθηκεύει την προγραμματισμένη εργασία ούτως ή άλλως, παρακάμπτοντας τον έλεγχο δέσμευσης (αναγκαστικά)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Παρακαλώ συμπληρώστε το όνομα καθήκοντος και τη λέξη-κλειδί",
+    "description": "Επικύρωση υποχρεωτικών πεδίων"
   },
   "artifacts.navTitle": {
     "message": "Παραγωγές",
@@ -917,6 +1078,18 @@
   "artifacts.hide": {
     "message": "Απόκρυψη",
     "description": "Κουμπί απόκρυψης παραγωγής"
+  },
+  "artifacts.unhide": {
+    "message": "Αναίρεση κρυψίματος",
+    "description": "Κουμπί για την αποκατάσταση κρυφών Artifact."
+  },
+  "artifacts.showHidden": {
+    "message": "Εμφάνιση κρυφών",
+    "description": "Διακόπτης για την εμφάνιση κρυφών Artifact στην γραμμή φίλτρων."
+  },
+  "artifacts.hiddenBadge": {
+    "message": "Έχει κρυφτεί",
+    "description": "Σημείωση ότι το Artifact έχει κρυφτεί."
   },
   "artifacts.delete": {
     "message": "Διαγραφή",
@@ -956,7 +1129,7 @@
   },
   "artifacts.kind.email": {
     "message": "Email",
-    "description": "Τύπος παραγωγής - email"
+    "description": "Τύπος παραγωγής - Email."
   },
   "artifacts.kind.message": {
     "message": "Μήνυμα",
@@ -1046,6 +1219,17 @@
     "message": "Βρίσκεστε σε μια κοινοποιημένη συνομιλία. Κάντε κλικ παραπάνω για να συνομιλήσετε με τον AI.",
     "description": "Επεξήγηση κάτω από τη δημόσια σελίδα συνομιλίας."
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "Ο στόχος δεν έχει επιτευχθεί",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "Το αποτέλεσμα αναμένεται να επιβεβαιωθεί",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "Άγνωστη κατάσταση εκτέλεσης"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή Claude Opus 4.7"
@@ -1053,127 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "Το πιο προηγμένο μοντέλο αυτή τη στιγμή",
     "description": "Περιγραφή του μοντέλου Claude Opus 4.7"
-  },
-  "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
-  },
-  "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "Η εξουσιοδότηση χρέωσης απέτυχε"
-  },
-  "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
-  },
-  "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
-  },
-  "browserTool.state.executing": {
-    "message": "Executing in browser"
-  },
-  "browserTool.state.completed": {
-    "message": "Completed"
-  },
-  "browserTool.state.expired": {
-    "message": "Browser request expired"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "Άγνωστη κατάσταση εκτέλεσης"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

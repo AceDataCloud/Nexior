@@ -200,8 +200,8 @@
     "description": "Name of the service model, i.e., Claude Opus 5"
   },
   "model.claudeOpus5Description": {
-    "message": "Currently the most advanced model",
-    "description": "Description of the Claude Opus 5 model"
+    "message": "النموذج الأكثر تقدمًا حاليًا",
+    "description": "وصف نموذج Claude Opus 5"
   },
   "model.claudeOpus48": {
     "message": "claude-opus-4.8",
@@ -226,6 +226,22 @@
   "model.claudeHaiku45Description": {
     "message": "نموذج خفيف وسريع",
     "description": "وصف نموذج Claude Haiku 4.5"
+  },
+  "model.kimiK3": {
+    "message": "kimi-k3",
+    "description": "Name of Moonshot AI's Kimi K3 flagship model"
+  },
+  "model.kimiK3Description": {
+    "message": "نموذج رائد يدعم الاستنتاج والرؤية وسياق 1 مليون توكن",
+    "description": "وصف نموذج Kimi K3"
+  },
+  "model.kimiK26": {
+    "message": "kimi-k2.6",
+    "description": "Name of the Kimi K2.6 model"
+  },
+  "model.kimiK26Description": {
+    "message": "نموذج استنتاج ورؤية متوافق مع سير عمل K2",
+    "description": "وصف نموذج Kimi K2.6"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -583,6 +599,82 @@
     "message": "تم تخطي تفويض الموصل",
     "description": "شرح أسفل البطاقة بعد أن يتخطى المستخدم التفويض"
   },
+  "browserTool.title": {
+    "message": "نشاط المتصفح",
+    "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
+  },
+  "browserTool.state.starting_session": {
+    "message": "جارٍ بدء جلسة المتصفح",
+    "description": ""
+  },
+  "browserTool.state.attaching_tab": {
+    "message": "جارٍ الاتصال بصفحة المتصفح",
+    "description": ""
+  },
+  "browserTool.state.ready": {
+    "message": "المتصفح جاهز",
+    "description": ""
+  },
+  "browserTool.state.device_offline": {
+    "message": "جهاز المتصفح غير متصل",
+    "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
+  },
+  "browserTool.state.device_busy": {
+    "message": "جهاز المتصفح مشغول",
+    "description": ""
+  },
+  "browserTool.state.authorization_required": {
+    "message": "يتطلب تأكيد التفويض في الاستوديو",
+    "description": ""
+  },
+  "browserTool.state.executing": {
+    "message": "يتم التنفيذ في المتصفح",
+    "description": "جهاز المتصفح يقوم بتنفيذ الأداة"
+  },
+  "browserTool.state.completed": {
+    "message": "تم الانتهاء",
+    "description": "تم تنفيذ أداة المتصفح بنجاح"
+  },
+  "browserTool.state.stopped": {
+    "message": "تم إيقاف جلسة المتصفح",
+    "description": ""
+  },
+  "browserTool.state.expired": {
+    "message": "انتهت صلاحية الطلب",
+    "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
+  },
+  "browserTool.state.debugger_unavailable": {
+    "message": "يرجى إغلاق أدوات المطور للمتابعة",
+    "description": ""
+  },
+  "browserTool.state.unknown_outcome": {
+    "message": "نتيجة التنفيذ غير معروفة، يرجى التحقق وإعادة المحاولة",
+    "description": ""
+  },
+  "browserTool.state.failed": {
+    "message": "فشل عملية المتصفح",
+    "description": ""
+  },
+  "browserTool.stop": {
+    "message": "إيقاف",
+    "description": ""
+  },
+  "browserTool.recovery.open-device-manager": {
+    "message": "إدارة الأجهزة",
+    "description": ""
+  },
+  "browserTool.recovery.stop-other-session": {
+    "message": "إيقاف جلسات أخرى",
+    "description": ""
+  },
+  "browserTool.recovery.close-devtools": {
+    "message": "إغلاق أدوات المطور",
+    "description": ""
+  },
+  "browserTool.recovery.open-consent-card": {
+    "message": "عرض التفويض",
+    "description": ""
+  },
   "scheduledTasks.navTitle": {
     "message": "المهام المجدولة",
     "description": "مدخل المهام المجدولة في الشريط الجانبي"
@@ -610,6 +702,10 @@
   "scheduledTasks.edit": {
     "message": "تحرير المهمة",
     "description": "عنوان نافذة التحرير"
+  },
+  "scheduledTasks.duplicate": {
+    "message": "نسخ المهمة",
+    "description": "زر نسخ المهمة، يقوم بملء النموذج الجديد بناءً على المهمة الحالية"
   },
   "scheduledTasks.empty": {
     "message": "لا توجد مهام مجدولة بعد، انقر على «إنشاء جديد» لإنشاء واحدة",
@@ -717,6 +813,9 @@
   "scheduledTasks.run.reason.balance_insufficient": {
     "message": "رصيد غير كافٍ"
   },
+  "scheduledTasks.run.reason.billing_gate_failed": {
+    "message": "فشل تفويض الفوترة"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "غير مصرّح"
   },
@@ -729,6 +828,14 @@
   "scheduledTasks.run.needs_user_input": {
     "message": "تحتاج إلى إجراء",
     "description": "حالة تحتاج إلى تدخل المستخدم"
+  },
+  "scheduledTasks.run.reason.browser_device_offline": {
+    "message": "جهاز المتصفح غير متصل بالإنترنت",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.browser_authorization_stale": {
+    "message": "تم تغيير تفويض المتصفح، يرجى تعديل هذه المهمة",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "يوميًا",
@@ -869,6 +976,25 @@
     "message": "يمكن للمهارات المحددة تخطي التأكيد البشري عند تنفيذ المهام المجدولة في الخلفية؛ بينما المهارات غير المحددة لا تزال قادرة على المعاينة أو الانتظار للتأكيد.",
     "description": "وصف تفويض المهارات"
   },
+  "scheduledTasks.form.browserConnection": {
+    "message": "اتصال المتصفح",
+    "description": ""
+  },
+  "scheduledTasks.form.browserEffects": {
+    "message": "قد يتم تنفيذ الآثار الخارجية التالية: {effects}",
+    "description": ""
+  },
+  "scheduledTasks.form.authorizationExpires": {
+    "message": "وقت انتهاء التفويض غير المراقب: {time}",
+    "description": ""
+  },
+  "scheduledTasks.form.browserBindingInvalid": {
+    "message": "يرجى اختيار اتصال متصفح متوافق ومتصل بالإنترنت قبل الحفظ",
+    "description": ""
+  },
+  "scheduledTasks.form.connectionAccount": "Account for {connector}",
+  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
+  "scheduledTasks.form.accountIsDefault": "default",
   "scheduledTasks.form.skillMissing": {
     "message": "غير متصل",
     "description": "تفتقر المهارة إلى الاتصال"
@@ -952,6 +1078,18 @@
   "artifacts.hide": {
     "message": "إخفاء",
     "description": "زر إخفاء الإنتاج"
+  },
+  "artifacts.unhide": {
+    "message": "إلغاء الإخفاء",
+    "description": "زر لاستعادة العنصر المخفي"
+  },
+  "artifacts.showHidden": {
+    "message": "عرض العناصر المخفية",
+    "description": "زر لتفعيل عرض العناصر المخفية في شريط الفلترة"
+  },
+  "artifacts.hiddenBadge": {
+    "message": "تم إخفاؤه",
+    "description": "علامة تشير إلى أن العنصر قد تم إخفاؤه"
   },
   "artifacts.delete": {
     "message": "حذف",
@@ -1081,6 +1219,17 @@
     "message": "أنت تشاهد محادثة تم مشاركتها. انقر أعلاه للدردشة مع AI بنفسك.",
     "description": "شرح أسفل المحادثة في الصفحة العامة المشاركة"
   },
+  "scheduledTasks.run.reason.goal_not_achieved": {
+    "message": "لم يتم تحقيق الهدف",
+    "description": ""
+  },
+  "scheduledTasks.run.reason.outcome_unknown": {
+    "message": "النتيجة قيد التأكيد",
+    "description": "تشير هذه الرسالة إلى أن نتيجة المهمة المجدولة لم تتأكد بعد."
+  },
+  "scheduledTasks.run.reason.run_abandoned": {
+    "message": "حالة التشغيل غير معروفة"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "اسم النموذج للخدمة، أي Claude Opus 4.7"
@@ -1088,131 +1237,5 @@
   "model.claudeOpus47Description": {
     "message": "النموذج الأكثر تقدمًا حاليًا",
     "description": "وصف نموذج Claude Opus 4.7"
-  },
-  "artifacts.unhide": {
-    "message": "إلغاء الإخفاء",
-    "description": "زر لاستعادة العنصر المخفي"
-  },
-  "artifacts.showHidden": {
-    "message": "عرض العناصر المخفية",
-    "description": "زر لتفعيل عرض العناصر المخفية في شريط الفلترة"
-  },
-  "artifacts.hiddenBadge": {
-    "message": "تم إخفاؤه",
-    "description": "علامة تشير إلى أن العنصر قد تم إخفاؤه"
-  },
-  "scheduledTasks.run.reason.billing_gate_failed": {
-    "message": "فشل تفويض الفوترة"
-  },
-  "browserTool.title": {
-    "message": "نشاط المتصفح",
-    "description": "العنوان الافتراضي لنشاط أداة جهاز المتصفح"
-  },
-  "browserTool.state.device_offline": {
-    "message": "جهاز المتصفح غير متصل",
-    "description": "جهاز المتصفح المختار غير متصل بالإنترنت"
-  },
-  "browserTool.state.executing": {
-    "message": "يتم التنفيذ في المتصفح",
-    "description": "جهاز المتصفح يقوم بتنفيذ الأداة"
-  },
-  "browserTool.state.completed": {
-    "message": "تم الانتهاء",
-    "description": "تم تنفيذ أداة المتصفح بنجاح"
-  },
-  "browserTool.state.expired": {
-    "message": "انتهت صلاحية الطلب",
-    "description": "انتهت صلاحية طلب تنفيذ أداة المتصفح"
-  },
-  "model.kimiK3": {
-    "message": "kimi-k3",
-    "description": "Name of Moonshot AI's Kimi K3 flagship model"
-  },
-  "model.kimiK3Description": {
-    "message": "Flagship reasoning and vision model with a 1M-token context window",
-    "description": "Description of the Kimi K3 model"
-  },
-  "model.kimiK26": {
-    "message": "kimi-k2.6",
-    "description": "Name of the Kimi K2.6 model"
-  },
-  "model.kimiK26Description": {
-    "message": "Reasoning and vision model for compatible K2 workflows",
-    "description": "Description of the Kimi K2.6 model"
-  },
-  "browserTool.state.starting_session": {
-    "message": "Starting browser session"
-  },
-  "browserTool.state.attaching_tab": {
-    "message": "Attaching browser tab"
-  },
-  "browserTool.state.ready": {
-    "message": "Browser is ready"
-  },
-  "browserTool.state.device_busy": {
-    "message": "Browser device is busy"
-  },
-  "browserTool.state.authorization_required": {
-    "message": "Authorization required in Studio"
-  },
-  "browserTool.state.stopped": {
-    "message": "Browser session stopped"
-  },
-  "browserTool.state.debugger_unavailable": {
-    "message": "Close DevTools to continue"
-  },
-  "browserTool.state.unknown_outcome": {
-    "message": "Outcome is unknown; verify before retrying"
-  },
-  "browserTool.state.failed": {
-    "message": "Browser operation failed"
-  },
-  "browserTool.stop": {
-    "message": "Stop"
-  },
-  "browserTool.recovery.open-device-manager": {
-    "message": "Manage device"
-  },
-  "browserTool.recovery.stop-other-session": {
-    "message": "Stop other session"
-  },
-  "browserTool.recovery.close-devtools": {
-    "message": "Close DevTools"
-  },
-  "browserTool.recovery.open-consent-card": {
-    "message": "Review authorization"
-  },
-  "scheduledTasks.run.reason.browser_device_offline": {
-    "message": "Browser device is offline"
-  },
-  "scheduledTasks.run.reason.browser_authorization_stale": {
-    "message": "Browser authorization changed; edit this task"
-  },
-  "scheduledTasks.form.browserConnection": {
-    "message": "Browser connection"
-  },
-  "scheduledTasks.form.browserEffects": {
-    "message": "May perform these external side effects: {effects}"
-  },
-  "scheduledTasks.form.authorizationExpires": {
-    "message": "Unattended authorization expires: {time}"
-  },
-  "scheduledTasks.form.browserBindingInvalid": {
-    "message": "Select an online, compatible browser connection before saving"
-  },
-  "scheduledTasks.form.connectionAccount": "Account for {connector}",
-  "scheduledTasks.form.connectionAccountDefault": "Use the default account",
-  "scheduledTasks.form.accountIsDefault": "default",
-  "scheduledTasks.run.reason.goal_not_achieved": {
-    "message": "Goal not achieved"
-  },
-  "scheduledTasks.run.reason.outcome_unknown": {
-    "message": "Result unconfirmed"
-  },
-  "scheduledTasks.run.reason.run_abandoned": {
-    "message": "حالة التشغيل غير معروفة"
-  },
-  "scheduledTasks.duplicate": {
-    "message": "Duplicate Task"
   }
 }

@@ -25,11 +25,11 @@
   },
   "name.image": {
     "message": "Image",
-    "description": "Étiquette pour l'image d'entrée"
+    "description": "Étiquette pour le champ d'entrée d'image"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Images de référence",
+    "description": "Étiquette pour les images de référence"
   },
   "name.required": {
     "message": "Champ requis",
@@ -128,8 +128,8 @@
     "description": "Avertissement sur le dépassement de téléversement"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "Vous pouvez télécharger jusqu'à 4 images de référence.",
+    "description": "Avertissement lorsque le nombre d'images de référence téléchargées dépasse la limite"
   },
   "message.uploadError": {
     "message": "Échec du téléversement de l'image, veuillez réessayer.",
@@ -164,39 +164,39 @@
     "description": "Épuisé"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "Vidéo de référence",
+    "description": "Vidéo de référence/à éditer pour l'édition vidéo Omni"
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "MP4/MOV optionnel (≤200MB) pour éditer ou référencer une vidéo existante. Au moins une image de référence est requise.",
+    "description": "Texte d'aide pour le téléchargement de la vidéo de référence"
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Télécharger la vidéo",
+    "description": "Bouton pour télécharger une vidéo de référence"
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Vous ne pouvez télécharger qu'une seule vidéo de référence",
+    "description": "Message d'erreur lorsque plus d'une vidéo de référence est téléchargée"
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Échec du téléchargement de la vidéo de référence, veuillez réessayer plus tard",
+    "description": "Message d'erreur lorsque le téléchargement de la vidéo de référence échoue"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Le fichier téléchargé doit être au format MP4 ou MOV !",
+    "description": "Message d'erreur lorsque le format de la vidéo de référence n'est pas MP4/MOV"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 200MB !",
+    "description": "Message d'erreur lorsque la vidéo de référence dépasse 200MB"
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "Veuillez entrer un mot-clé.",
+    "description": "Alerte de validation lorsque le mot-clé est vide"
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "Lorsque vous utilisez une vidéo de référence, veuillez ajouter au moins une image de référence.",
+    "description": "Alerte de validation lorsque des video_urls sont fournies mais qu'il manque des images de référence"
   }
 }

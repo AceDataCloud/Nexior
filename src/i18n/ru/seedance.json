@@ -8,7 +8,7 @@
     "description": "Подсказка для генерации видео"
   },
   "description.prompt": {
-    "message": "Describe the video you want. To make a character speak: upload the image to the “Reference Image” box below (NOT “First Frame”), and write the line in the prompt inside quotes, e.g. the person in image 1 says to camera: “your line”, then turn on “Generate Audio”. You can append params (e.g. --rs 720p --rt 16:9 --dur 5).",
+    "message": "Опишите видео, которое вы хотите создать. Чтобы персонажи могли говорить: загрузите изображение в поле \"Референсное изображение\" (не \"Первый кадр\"), напишите реплики в подсказке в кавычках, например, персонаж на изображении 1 говорит в камеру: \"Ваши реплики\", и включите \"Генерацию аудио\". Можно добавить параметры (например, --rs 720p --rt 16:9 --dur 5).",
     "description": "Описание ввода подсказки"
   },
   "placeholder.prompt": {
@@ -40,7 +40,7 @@
     "description": "Метка для генерации аудио"
   },
   "description.generateAudio": {
-    "message": "Adds sound to the video. To make a character talk you need: the portrait in the “Reference Image” box + this switch on + the spoken line in quotes in the prompt. Only seedance-1.5-pro / seedance-2.0 family; about 2x the cost.",
+    "message": "При включении видео будет со звуком. Чтобы персонажи могли говорить, нужно: загрузить изображение персонажа в поле \"Референсное изображение\" + включить этот переключатель + написать реплики в кавычках в подсказке. Поддерживается только серия seedance-1.5-pro / seedance-2.0, стоимость примерно в 2 раза выше.",
     "description": "Описание генерации аудио"
   },
   "name.resolution": {
@@ -100,20 +100,20 @@
     "description": "Описание возврата последнего кадра"
   },
   "name.firstFrame": {
-    "message": "First Frame Image (motion)",
-    "description": "Метка загрузки первого кадра"
+    "message": "Первый кадр (эффект движения)",
+    "description": "Метка загрузки первого кадра изображения"
   },
   "description.firstFrame": {
-    "message": "Image-to-video: your image becomes the video’s first frame and the scene animates from it. Good for “bring a still to life”, but the character will NOT speak and has no lip-sync. To make a character speak, use “Reference Image” below instead.",
-    "description": "Описание первого кадра"
+    "message": "Первый кадр: загруженное вами изображение станет первым кадром видео, с которого начнется движение. Подходит для \"оживления изображения\", но персонажи не будут говорить, нет синхронизации губ. Если хотите, чтобы персонажи говорили, используйте \"Референсное изображение\" ниже.",
+    "description": "Описание первого кадра изображения"
   },
   "name.lastFrame": {
     "message": "Последний кадр",
     "description": "Метка загрузки последнего кадра"
   },
   "description.lastFrame": {
-    "message": "First+last-frame image-to-video: pins the last frame (needs a first-frame image). Locks the clip from one image to another.",
-    "description": "Описание последнего кадра"
+    "message": "Последний кадр: укажите последний кадр видео (необходимо совместить с первым кадром). Используется для блокировки изображения с определенного кадра до определенного кадра.",
+    "description": "Описание последнего кадра изображения"
   },
   "button.generate": {
     "message": "Сгенерировать",
@@ -256,31 +256,31 @@
     "description": "Модель SeeDance 2.0 Mini"
   },
   "name.referenceImage": {
-    "message": "Reference Image (make it speak)",
-    "description": "Метка загрузки изображения-образца (Seedance 2.0)"
+    "message": "Референсное изображение (чтобы персонажи говорили)",
+    "description": "Метка загрузки референсного изображения (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
-    "description": "Описание справочного изображения"
+    "message": "Канал, позволяющий персонажам говорить в видео и синхронизировать губы (рекомендуется для озвучивания / цифровых людей, сохранит облик персонажа). Чтобы персонажи говорили, загрузите изображение сюда, а не в \"Первый кадр\". Используйте вместе с репликами в кавычках в подсказке + \"Генерацию аудио\". Можно загрузить 1-9 изображений. Только серия Seedance 2.0. Внимание: нельзя использовать одновременно с \"Первым/Последним кадром\".",
+    "description": "Описание референсного изображения"
   },
   "name.referenceAudio": {
-    "message": "Reference Audio (timbre/music)",
-    "description": "Метка загрузки справочного аудио (Seedance 2.0)"
+    "message": "Референсное аудио (голос/музыка)",
+    "description": "Метка загрузки референсного аудио (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
-    "description": "Описание справочного аудио"
+    "message": "Позволяет видео использовать этот аудиотрек для голоса или фоновой музыки (в сочетании с референсным изображением, чтобы персонажи говорили этим голосом). Должно использоваться вместе с референсным изображением или видео, нельзя загружать только аудио. Можно загрузить 1-3 отрывка. Только серия Seedance 2.0.",
+    "description": "Описание референсного аудио"
   },
   "name.referenceVideo": {
     "message": "Справочное видео",
     "description": "Метка загрузки справочного видео (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
-    "description": "Описание справочного видео"
+    "message": "Позволяет модели использовать движения/кадры/стиль/звуковые эффекты этого видео для создания нового видео. Можно загрузить 1-3 отрывка. Только серия Seedance 2.0.",
+    "description": "Описание референсного видео"
   },
   "message.audioRequiresReference": {
-    "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
-    "description": "Warning when reference audio has no paired image/video"
+    "message": "Референсное аудио не может использоваться отдельно, пожалуйста, загрузите референсное изображение или видео.",
+    "description": "Предупреждение, когда референсное аудио не имеет сопоставленного изображения/видео"
   }
 }

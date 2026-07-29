@@ -4,7 +4,7 @@
     "description": "Nome do gerador de vídeo Omni"
   },
   "name.prompt": {
-    "message": "Prompt",
+    "message": "Palavra-chave",
     "description": "Prompt para gerar o vídeo"
   },
   "name.model": {
@@ -28,8 +28,8 @@
     "description": "Rótulo para entrada de imagem"
   },
   "name.referenceImages": {
-    "message": "Reference Images",
-    "description": "Label for reference images"
+    "message": "Imagens de referência",
+    "description": "Rótulo para imagens de referência"
   },
   "name.required": {
     "message": "Obrigatório",
@@ -128,8 +128,8 @@
     "description": "Aviso de excesso de upload"
   },
   "message.uploadReferenceExceed": {
-    "message": "You can upload up to 4 reference images.",
-    "description": "Reference images upload exceed warning"
+    "message": "É possível carregar no máximo 4 imagens de referência.",
+    "description": "Aviso de que o upload de imagens de referência excedeu o limite"
   },
   "message.uploadError": {
     "message": "Falha ao enviar a imagem, por favor tente novamente.",
@@ -164,39 +164,39 @@
     "description": "Esgotado"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Reference/editable video for Omni video editing"
+    "message": "Vídeo de referência",
+    "description": "Vídeo de referência/aguardando edição para edição de vídeo Omni"
   },
   "description.referenceVideo": {
-    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
-    "description": "Help text for the reference video uploader"
+    "message": "Vídeo MP4/MOV opcional (≤200MB) para edição ou referência de vídeos existentes. É necessário pelo menos uma imagem de referência.",
+    "description": "Texto de ajuda para o upload do vídeo de referência"
   },
   "button.uploadVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Carregar vídeo",
+    "description": "Botão para carregar um vídeo de referência"
   },
   "message.uploadVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "É permitido carregar apenas 1 vídeo de referência.",
+    "description": "Mensagem de erro quando mais de 1 vídeo de referência é carregado"
   },
   "message.uploadVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Falha ao carregar o vídeo de referência, por favor, tente novamente mais tarde.",
+    "description": "Mensagem de erro quando o upload do vídeo de referência falha"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "O arquivo carregado deve ser no formato MP4 ou MOV!",
+    "description": "Mensagem de erro quando o formato do vídeo de referência não é MP4/MOV"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "O tamanho do arquivo carregado não pode exceder 200MB!",
+    "description": "Mensagem de erro quando o vídeo de referência excede 200MB"
   },
   "message.promptRequired": {
-    "message": "Please enter a prompt.",
-    "description": "Validation when prompt is empty"
+    "message": "Por favor, insira a palavra-chave.",
+    "description": "Mensagem de validação quando a palavra-chave está vazia"
   },
   "message.videoRequiresImage": {
-    "message": "Please add at least one reference image when using a reference video.",
-    "description": "Validation when video_urls has no reference image"
+    "message": "Ao usar um vídeo de referência, adicione pelo menos uma imagem de referência.",
+    "description": "Mensagem de validação quando video_urls são fornecidos, mas falta uma imagem de referência"
   }
 }
