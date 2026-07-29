@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "توصيل {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "اختر طريقة الاتصال",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "موصى به",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "تفويض OAuth",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "تفويض OAuth",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "بيانات اعتمادك الخاصة",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "وصول عام",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "جلسة متصفح محلية",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "سجّل الدخول وامنح الإذن لدى المزوّد — آمن وبدون إدخال مفاتيح.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "سجّل الدخول وامنح الإذن لدى المزوّد — آمن وبدون إدخال مفاتيح.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "الصق المفاتيح من وحدة تحكم الخدمة أو التقط جلسة الدخول عبر إضافة المتصفح.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "اتصل مباشرة — لا حاجة لتسجيل الدخول.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "توصيل وكيل متصفح ACE؛ يتم تنفيذ عمليات المتصفح محليًا ولا تزال بحاجة إلى موافقة منفصلة.",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "الاتصالات",
+    "description": "connection: title.connections"
+  },
+  "title.connectNew": {
+    "message": "اتصال الخدمة",
+    "description": "connection: title.connectNew"
+  },
+  "title.connectCustom": {
+    "message": "اتصال خادم MCP",
+    "description": "connection: title.connectCustom"
+  },
+  "title.addCustomConnector": {
+    "message": "إضافة موصل مخصص",
+    "description": "connection: title.addCustomConnector"
+  },
+  "title.browse": {
+    "message": "تصفح الموصلات",
+    "description": "connection: title.browse"
+  },
+  "title.directory": {
+    "message": "دليل الموصلات",
+    "description": "connection: title.directory"
+  },
+  "title.groupConnected": {
+    "message": "متصل",
+    "description": "connection: title.groupConnected"
+  },
+  "title.groupAvailable": {
+    "message": "متاح للاتصال",
+    "description": "connection: title.groupAvailable"
+  },
+  "title.toolPermissions": {
+    "message": "أذونات الأدوات",
+    "description": "connection: title.toolPermissions"
+  },
+  "title.tryIt": {
+    "message": "جربه",
+    "description": "connection: title.tryIt"
+  },
+  "title.groupRecommended": {
+    "message": "موصى به",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "نظرة عامة",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "الإجراءات",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "الحساب",
+    "description": "connection: field.account"
+  },
+  "field.status": {
+    "message": "الحالة",
+    "description": "connection: field.status"
+  },
+  "field.expiresAt": {
+    "message": "تاريخ الانتهاء",
+    "description": "connection: field.expiresAt"
+  },
+  "field.lastRefreshedAt": {
+    "message": "تاريخ التحديث الأخير",
+    "description": "connection: field.lastRefreshedAt"
+  },
+  "field.createdAt": {
+    "message": "تاريخ الاتصال",
+    "description": "connection: field.createdAt"
+  },
+  "field.connectionRevision": {
+    "message": "إصدار الاتصال",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "الجلسات النشطة",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "تنفيذ العقد",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "نشط",
+    "description": "connection: status.active"
+  },
+  "status.expired": {
+    "message": "منتهي",
+    "description": "connection: status.expired"
+  },
+  "status.revoked": {
+    "message": "ملغى",
+    "description": "connection: status.revoked"
+  },
+  "status.pending": {
+    "message": "قيد التفعيل",
+    "description": "connection: status.pending"
+  },
+  "button.connect": {
+    "message": "اتصل",
+    "description": "connection: button.connect"
+  },
+  "button.addCustom": {
+    "message": "إضافة",
+    "description": "connection: button.addCustom"
+  },
+  "button.reconnect": {
+    "message": "إعادة الاتصال",
+    "description": "connection: button.reconnect"
+  },
+  "button.refresh": {
+    "message": "تحديث",
+    "description": "connection: button.refresh"
+  },
+  "button.disconnect": {
+    "message": "قطع الاتصال",
+    "description": "connection: button.disconnect"
+  },
+  "button.browse": {
+    "message": "تصفح",
+    "description": "connection: button.browse"
+  },
+  "button.addCustomConnector": {
+    "message": "إضافة موصل مخصص",
+    "description": "connection: button.addCustomConnector"
+  },
+  "button.install": {
+    "message": "إضافة",
+    "description": "connection: button.install"
+  },
+  "button.returnToApp": {
+    "message": "العودة إلى التطبيق",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "تصفح جميع الموصلات",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "تغيير الجهاز",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "إيقاف الجلسات",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "إضافة حساب",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "اجعلها افتراضية",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "إعادة تسمية",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "الحالي هو الافتراضي",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "إدارة",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "خادم MCP",
+    "description": "connection: label.mcpServer"
+  },
+  "label.advancedSettings": {
+    "message": "الإعدادات المتقدمة",
+    "description": "connection: label.advancedSettings"
+  },
+  "label.noScopes": {
+    "message": "لا توجد نطاقات تفويض",
+    "description": "connection: label.noScopes"
+  },
+  "label.noTools": {
+    "message": "لا توفر هذه الخدمة أي أدوات",
+    "description": "connection: label.noTools"
+  },
+  "label.never": {
+    "message": "أبداً",
+    "description": "connection: label.never"
+  },
+  "label.defaultAccount": {
+    "message": "افتراضي",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "مخصص",
+    "description": "connection: label.custom"
+  },
+  "label.authMethod": {
+    "message": "طريقة المصادقة",
+    "description": "connection: label.authMethod"
+  },
+  "label.credentials": {
+    "message": "بيانات الاعتماد",
+    "description": "connection: label.credentials"
+  },
+  "label.official": {
+    "message": "رسمي",
+    "description": "connection: label.official"
+  },
+  "label.partner": {
+    "message": "شريك",
+    "description": "connection: label.partner"
+  },
+  "label.community": {
+    "message": "مجتمع",
+    "description": "connection: label.community"
+  },
+  "label.featured": {
+    "message": "مميز",
+    "description": "connection: label.featured"
+  },
+  "label.new": {
+    "message": "جديد",
+    "description": "connection: label.new"
+  },
+  "label.trending": {
+    "message": "رائج",
+    "description": "connection: label.trending"
+  },
+  "label.all": {
+    "message": "الكل",
+    "description": "connection: label.all"
+  },
+  "label.notConnected": {
+    "message": "غير متصل",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "بعد الاتصال، يمكنك عرض الأدوات المقدمة من هذه الخدمة",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "الكل",
+    "description": "connection: category.all"
+  },
+  "category.creative": {
+    "message": "الإبداع والوسائط",
+    "description": "connection: category.creative"
+  },
+  "category.search": {
+    "message": "البحث والويب",
+    "description": "connection: category.search"
+  },
+  "category.developer": {
+    "message": "أدوات المطورين",
+    "description": "connection: category.developer"
+  },
+  "category.productivity": {
+    "message": "الإنتاجية والمستندات",
+    "description": "connection: category.productivity"
+  },
+  "category.communication": {
+    "message": "الاتصالات",
+    "description": "connection: category.communication"
+  },
+  "category.data": {
+    "message": "البيانات والتحليلات",
+    "description": "connection: category.data"
+  },
+  "category.commerce": {
+    "message": "التجارة والمالية",
+    "description": "connection: category.commerce"
+  },
+  "category.automation": {
+    "message": "الأتمتة",
+    "description": "connection: category.automation"
+  },
+  "category.uncategorized": {
+    "message": "أخرى",
+    "description": "connection: category.uncategorized"
+  },
+  "placeholder.name": {
+    "message": "الاسم",
+    "description": "connection: placeholder.name"
+  },
+  "placeholder.serverUrl": {
+    "message": "عنوان URL لخادم MCP البعيد",
+    "description": "connection: placeholder.serverUrl"
+  },
+  "placeholder.clientId": {
+    "message": "معرف عميل OAuth (اختياري)",
+    "description": "connection: placeholder.clientId"
+  },
+  "placeholder.clientSecret": {
+    "message": "سر عميل OAuth (اختياري)",
+    "description": "connection: placeholder.clientSecret"
+  },
+  "placeholder.search": {
+    "message": "ابحث عن الموصلات",
+    "description": "connection: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "إدارة الخدمات الخارجية المتصلة. هذه الاتصالات تسمح لتطبيق AceDataCloud بتنفيذ العمليات نيابة عنك.",
+    "description": "connection: message.pageDescription"
+  },
+  "message.noConnections": {
+    "message": "لا توجد موصلات حالياً",
+    "description": "connection: message.noConnections"
+  },
+  "message.noConnectionsHint": {
+    "message": "بعد الاتصال بالخدمة، يمكنك الحصول على تجربة أكثر ثراءً في تطبيقات مثل ChatGPT وClaude.",
+    "description": "connection: message.noConnectionsHint"
+  },
+  "message.connectConfirm": {
+    "message": "سيتم الانتقال إلى {provider} للتفويض.",
+    "description": "connection: message.connectConfirm"
+  },
+  "message.selectScopes": {
+    "message": "اختر نطاقات تفويض {provider}",
+    "description": "connection: message.selectScopes"
+  },
+  "message.selectScopesHint": {
+    "message": "اختر الأذونات التي ترغب في تفويضها. يمكنك اختيار أكثر من واحدة، وإذا لم يتم اختيار أي منها، سيتم منح معلومات تسجيل الدخول الأساسية فقط.",
+    "description": "connection: message.selectScopesHint"
+  },
+  "message.disconnectConfirm": {
+    "message": "هل أنت متأكد أنك تريد قطع الاتصال بـ {provider}؟ ستفقد التطبيقات التي تستخدم هذا الموصل الوصول.",
+    "description": "connection: message.disconnectConfirm"
+  },
+  "message.disconnected": {
+    "message": "تم قطع الاتصال بـ {provider}",
+    "description": "connection: message.disconnected"
+  },
+  "message.refreshed": {
+    "message": "تم تحديث الاتصال",
+    "description": "connection: message.refreshed"
+  },
+  "message.refreshFailed": {
+    "message": "فشل تحديث الاتصال",
+    "description": "connection: message.refreshFailed"
+  },
+  "message.customConnectorHint": {
+    "message": "الاتصال يدعم خادم MCP البعيد باستخدام OAuth.",
+    "description": "connection: message.customConnectorHint"
+  },
+  "message.customConnectorTrust": {
+    "message": "قم بإضافة الموصلات التي تثق بها فقط. يتم التحكم في الأدوات وأذونات البيانات المقدمة من قبل الموصل من قبل الخدمة المعنية.",
+    "description": "connection: message.customConnectorTrust"
+  },
+  "message.callbackMissingParams": {
+    "message": "تفتقر ردود التفويض إلى المعلمات الضرورية، يرجى إعادة بدء الاتصال.",
+    "description": "connection: message.callbackMissingParams"
+  },
+  "message.callbackFailed": {
+    "message": "فشل تفويض الاتصال، يرجى المحاولة لاحقاً.",
+    "description": "connection: message.callbackFailed"
+  },
+  "message.selectConnector": {
+    "message": "اختر موصلاً من اليسار لعرض التفاصيل",
+    "description": "connection: message.selectConnector"
+  },
+  "message.noMatch": {
+    "message": "لا توجد موصلات مطابقة",
+    "description": "connection: message.noMatch"
+  },
+  "message.toolsLoading": {
+    "message": "جارٍ تحميل الأدوات المقدمة من الخادم…",
+    "description": "connection: message.toolsLoading"
+  },
+  "message.browseHint": {
+    "message": "تصفح الموصلات المميزة، وأضفها إلى مساحة عملك بنقرة واحدة.",
+    "description": "connection: message.browseHint"
+  },
+  "message.browseEmpty": {
+    "message": "لم يتم العثور على موصلات مطابقة، جرب كلمات مفتاحية مختلفة أو عدل معايير التصفية.",
+    "description": "connection: message.browseEmpty"
+  },
+  "message.installFailed": {
+    "message": "فشل الإضافة، يرجى المحاولة لاحقاً.",
+    "description": "connection: message.installFailed"
+  },
+  "message.installed": {
+    "message": "تمت الإضافة {name}",
+    "description": "connection: message.installed"
+  },
+  "message.tryItHint": {
+    "message": "انقر على النص أدناه، واستمر في الدردشة في الاستوديو.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "تتطلب هذه الوصلة إدخال بيانات الاعتماد يدويًا في قائمة الوصلات.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "عنوان العودة غير موثوق به، تم رفض التوجيه.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "لم يتم تحديد الوصلة التي يجب إضافتها.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "جارٍ التوجيه إلى صفحة التفويض...",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "لم يتم الاتصال بعد، انقر لبدء التفويض",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "بعد الاتصال، يمكنك استخدام هذه الأمثلة من العبارات",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "يستخدم هذا الموصل جلسات المتصفح المحلية. يرجى أولاً اقتران عميل متصفح ACE؛ لن يتم جمع أي بيانات اعتماد هنا.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "تم اقتران الجهاز. لا يزال هذا الموصل غير متاح حتى يتم تمكين تنفيذ جلسة المتصفح؛ لم يتم إنشاء أي أذونات سحابية.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "اختر جهاز المتصفح",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "المواقع المسموح بها",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "الجهاز v{version} لا يزال غير متوافق، ينقصه: {capabilities}. يرجى تحديث عميل المتصفح أو اقتران جهاز آخر.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "متصل",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "غير متصل",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "متصل ومتوافق",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} جلسات نشطة",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "يمكن لهذا الموصل قراءة الصفحات وتنفيذ النقرات والإدخالات والتحميلات والتنزيلات والنشر في المواقع المصرح بها عبر المتصفح المحلي المختار. يرجى اختيار الأجهزة التي تتحكم بها فقط.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "تم تعطيل هذا الجهاز أو إلغاؤه.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "يستخدم عميل المتصفح عقد تنفيذ مختلف، يرجى تحديث الإضافة.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "إصدار عميل المتصفح قديم جدًا، يرجى تحديث الإضافة.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "عميل المتصفح غير متصل حاليًا، يرجى فتح الإضافة على هذا الجهاز.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "تم تغيير جهاز المتصفح. تم إيقاف الجلسات الحالية، ويحتاج ربط إذن المتصفح القديم إلى تأكيد جديد.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "تم إيقاف {count} جلسات متصفح.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "فشل إيقاف جلسة المتصفح.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "تم تحديث الحساب الافتراضي",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "فشل تعيين الحساب الافتراضي",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "أعطِ هذا الحساب اسمًا (يتم التمييز بين الحسابات المتعددة تحت نفس الموصل به)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "الاسم لا يمكن أن يتجاوز 64 حرفًا",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "فشل إعادة التسمية",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — الحسابات المتصلة: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "لا يمكن فتح حساب هذا الموصل، يرجى التحديث والمحاولة مرة أخرى.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "إضافة بيانات اعتماد {name}",
+    "description": "connection: byoc.dialogTitle"
+  },
+  "byoc.intro": {
+    "message": "يرجى إدخال مفتاح الوصول الذي حصلت عليه من وحدة التحكم الخاصة بالخدمة. هذه البيانات تستخدم فقط لاستدعاء واجهة برمجة التطبيقات السحابية / SaaS المعنية نيابة عنك.",
+    "description": "connection: byoc.intro"
+  },
+  "byoc.submit": {
+    "message": "احفظ وفعّل",
+    "description": "connection: byoc.submit"
+  },
+  "byoc.required": {
+    "message": "هذه الخانة مطلوبة",
+    "description": "connection: byoc.required"
+  },
+  "byoc.disclaimer": {
+    "message": "تستخدم بيانات الاعتماد تشفير AES-256-GCM؛ يتم فك تشفيرها مؤقتًا فقط في الذاكرة الرملية أثناء تنفيذ المهارة، ولا يتم كتابتها أبدًا في قاعدة البيانات كنص عادي / سجلات / استجابة API. يمكنك قطع الاتصال في أي وقت لإبطالها.",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionCapture": {
+    "message": "التقاط والاتصال",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "استخدم ملحق متصفح ACE لالتقاط حالة تسجيل الدخول الخاصة بك للاتصال، دون الحاجة إلى كلمة مرور أو رمز.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "لم يتم اكتشاف ملحق متصفح ACE، يرجى التثبيت ثم المحاولة مرة أخرى.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "لم يتم التقاط ملفات تعريف الارتباط لتسجيل الدخول، يرجى التأكد من أنك قد سجلت الدخول إلى المنصة في علامة تبويب أخرى.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "فتح صفحة تسجيل الدخول",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "انقر على \"التقاط والاتصال\" أدناه، سيقوم ملحق ACE بقراءة ملفات تعريف الارتباط لتسجيل الدخول لإكمال الاتصال.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "قم بتسجيل الدخول إلى المنصة في علامة تبويب جديدة.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "عرض دليل التثبيت",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "الاتصال يستخدم ملحق ACE لالتقاط حالة تسجيل الدخول الخاصة بك، دون الحاجة إلى كلمة مرور أو رمز. يرجى تثبيت الملحق أولاً، ثم العودة إلى هنا.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "يجب تثبيت ملحق متصفح ACE أولاً",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "لقد قمت بالتثبيت، إعادة الفحص",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}

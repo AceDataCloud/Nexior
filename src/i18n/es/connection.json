@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "Conectar {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Elige cómo conectar",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Recomendado",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "Autorización OAuth",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "Autorización OAuth",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Usa tus credenciales",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Acceso público",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Sesión de navegador local",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Inicia sesión y autoriza en el proveedor: seguro, sin pegar claves.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Inicia sesión y autoriza en el proveedor: seguro, sin pegar claves.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Pega las claves de la consola del servicio o captura tu sesión con la extensión del navegador.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Conéctate directamente, sin necesidad de iniciar sesión.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Emparejar ACE Browser Agent; las operaciones del navegador se ejecutan localmente y aún requieren aprobación explícita por separado.",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "Conectores",
+    "description": "connection: title.connections"
+  },
+  "title.connectNew": {
+    "message": "Conectar servicio",
+    "description": "connection: title.connectNew"
+  },
+  "title.connectCustom": {
+    "message": "Conectar servidor MCP",
+    "description": "connection: title.connectCustom"
+  },
+  "title.addCustomConnector": {
+    "message": "Agregar conector personalizado",
+    "description": "connection: title.addCustomConnector"
+  },
+  "title.browse": {
+    "message": "Explorar conectores",
+    "description": "connection: title.browse"
+  },
+  "title.directory": {
+    "message": "Directorio de conectores",
+    "description": "connection: title.directory"
+  },
+  "title.groupConnected": {
+    "message": "Conectados",
+    "description": "connection: title.groupConnected"
+  },
+  "title.groupAvailable": {
+    "message": "Disponibles para conectar",
+    "description": "connection: title.groupAvailable"
+  },
+  "title.toolPermissions": {
+    "message": "Permisos de herramientas",
+    "description": "connection: title.toolPermissions"
+  },
+  "title.tryIt": {
+    "message": "Pruébalo",
+    "description": "connection: title.tryIt"
+  },
+  "title.groupRecommended": {
+    "message": "Recomendado",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "Resumen",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "Acciones",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Cuenta",
+    "description": "connection: field.account"
+  },
+  "field.status": {
+    "message": "Estado",
+    "description": "connection: field.status"
+  },
+  "field.expiresAt": {
+    "message": "Fecha de expiración",
+    "description": "connection: field.expiresAt"
+  },
+  "field.lastRefreshedAt": {
+    "message": "Última actualización",
+    "description": "connection: field.lastRefreshedAt"
+  },
+  "field.createdAt": {
+    "message": "Fecha de conexión",
+    "description": "connection: field.createdAt"
+  },
+  "field.connectionRevision": {
+    "message": "Versión de conexión",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Sesiones activas",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Ejecutar contrato",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Activado",
+    "description": "connection: status.active"
+  },
+  "status.expired": {
+    "message": "Expirado",
+    "description": "connection: status.expired"
+  },
+  "status.revoked": {
+    "message": "Revocado",
+    "description": "connection: status.revoked"
+  },
+  "status.pending": {
+    "message": "Pendiente de activación",
+    "description": "connection: status.pending"
+  },
+  "button.connect": {
+    "message": "Conectar",
+    "description": "connection: button.connect"
+  },
+  "button.addCustom": {
+    "message": "Agregar",
+    "description": "connection: button.addCustom"
+  },
+  "button.reconnect": {
+    "message": "Reconectar",
+    "description": "connection: button.reconnect"
+  },
+  "button.refresh": {
+    "message": "Actualizar",
+    "description": "connection: button.refresh"
+  },
+  "button.disconnect": {
+    "message": "Desconectar",
+    "description": "connection: button.disconnect"
+  },
+  "button.browse": {
+    "message": "Explorar",
+    "description": "connection: button.browse"
+  },
+  "button.addCustomConnector": {
+    "message": "Agregar conector personalizado",
+    "description": "connection: button.addCustomConnector"
+  },
+  "button.install": {
+    "message": "Agregar",
+    "description": "connection: button.install"
+  },
+  "button.returnToApp": {
+    "message": "Volver a la aplicación",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "Ver todos los conectores",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Cambiar dispositivo",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Detener sesiones",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Agregar cuenta",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "Establecer como predeterminado",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Renombrar",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Actual es el predeterminado",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "Gestionar",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "Servidor MCP",
+    "description": "connection: label.mcpServer"
+  },
+  "label.advancedSettings": {
+    "message": "Configuraciones avanzadas",
+    "description": "connection: label.advancedSettings"
+  },
+  "label.noScopes": {
+    "message": "Sin ámbitos de autorización",
+    "description": "connection: label.noScopes"
+  },
+  "label.noTools": {
+    "message": "Este servicio no proporciona herramientas",
+    "description": "connection: label.noTools"
+  },
+  "label.never": {
+    "message": "Nunca",
+    "description": "connection: label.never"
+  },
+  "label.defaultAccount": {
+    "message": "Predeterminado",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Personalizado",
+    "description": "connection: label.custom"
+  },
+  "label.authMethod": {
+    "message": "Método de autenticación",
+    "description": "connection: label.authMethod"
+  },
+  "label.credentials": {
+    "message": "Credenciales",
+    "description": "connection: label.credentials"
+  },
+  "label.official": {
+    "message": "Oficial",
+    "description": "connection: label.official"
+  },
+  "label.partner": {
+    "message": "Socio",
+    "description": "connection: label.partner"
+  },
+  "label.community": {
+    "message": "Comunidad",
+    "description": "connection: label.community"
+  },
+  "label.featured": {
+    "message": "Destacado",
+    "description": "connection: label.featured"
+  },
+  "label.new": {
+    "message": "Nuevo",
+    "description": "connection: label.new"
+  },
+  "label.trending": {
+    "message": "Tendencias",
+    "description": "connection: label.trending"
+  },
+  "label.all": {
+    "message": "Todo",
+    "description": "connection: label.all"
+  },
+  "label.notConnected": {
+    "message": "No conectado",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "Conéctate primero para ver las herramientas que ofrece este servicio",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "Todo",
+    "description": "connection: category.all"
+  },
+  "category.creative": {
+    "message": "Creatividad y medios",
+    "description": "connection: category.creative"
+  },
+  "category.search": {
+    "message": "Búsqueda y web",
+    "description": "connection: category.search"
+  },
+  "category.developer": {
+    "message": "Herramientas para desarrolladores",
+    "description": "connection: category.developer"
+  },
+  "category.productivity": {
+    "message": "Productividad y documentación",
+    "description": "connection: category.productivity"
+  },
+  "category.communication": {
+    "message": "Comunicación",
+    "description": "connection: category.communication"
+  },
+  "category.data": {
+    "message": "Datos y análisis",
+    "description": "connection: category.data"
+  },
+  "category.commerce": {
+    "message": "Comercio y finanzas",
+    "description": "connection: category.commerce"
+  },
+  "category.automation": {
+    "message": "Automatización",
+    "description": "connection: category.automation"
+  },
+  "category.uncategorized": {
+    "message": "Otros",
+    "description": "connection: category.uncategorized"
+  },
+  "placeholder.name": {
+    "message": "Nombre",
+    "description": "connection: placeholder.name"
+  },
+  "placeholder.serverUrl": {
+    "message": "URL del servidor MCP remoto",
+    "description": "connection: placeholder.serverUrl"
+  },
+  "placeholder.clientId": {
+    "message": "ID de cliente OAuth (opcional)",
+    "description": "connection: placeholder.clientId"
+  },
+  "placeholder.clientSecret": {
+    "message": "Secreto de cliente OAuth (opcional)",
+    "description": "connection: placeholder.clientSecret"
+  },
+  "placeholder.search": {
+    "message": "Buscar conectores",
+    "description": "connection: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Administra los servicios de terceros que has conectado. Estas conexiones permiten que la aplicación AceDataCloud realice acciones en tu nombre.",
+    "description": "connection: message.pageDescription"
+  },
+  "message.noConnections": {
+    "message": "No hay conectores disponibles",
+    "description": "connection: message.noConnections"
+  },
+  "message.noConnectionsHint": {
+    "message": "Conecta servicios para obtener una experiencia más rica en aplicaciones como ChatGPT, Claude, etc.",
+    "description": "connection: message.noConnectionsHint"
+  },
+  "message.connectConfirm": {
+    "message": "Serás redirigido a {provider} para autorización.",
+    "description": "connection: message.connectConfirm"
+  },
+  "message.selectScopes": {
+    "message": "Selecciona los ámbitos de autorización de {provider}",
+    "description": "connection: message.selectScopes"
+  },
+  "message.selectScopesHint": {
+    "message": "Selecciona los permisos que deseas autorizar. Puedes seleccionar múltiples, si no seleccionas, solo se otorgarán los datos básicos de inicio de sesión.",
+    "description": "connection: message.selectScopesHint"
+  },
+  "message.disconnectConfirm": {
+    "message": "¿Estás seguro de que deseas desconectar de {provider}? Las aplicaciones que utilizan este conector perderán acceso.",
+    "description": "connection: message.disconnectConfirm"
+  },
+  "message.disconnected": {
+    "message": "Desconectado de {provider}",
+    "description": "connection: message.disconnected"
+  },
+  "message.refreshed": {
+    "message": "Conexión actualizada",
+    "description": "connection: message.refreshed"
+  },
+  "message.refreshFailed": {
+    "message": "Error al actualizar la conexión",
+    "description": "connection: message.refreshFailed"
+  },
+  "message.customConnectorHint": {
+    "message": "Conectar a un servidor MCP remoto que soporte OAuth.",
+    "description": "connection: message.customConnectorHint"
+  },
+  "message.customConnectorTrust": {
+    "message": "Agrega solo conectores en los que confíes. Las herramientas y permisos de datos proporcionados por el conector son controlados por el servicio correspondiente.",
+    "description": "connection: message.customConnectorTrust"
+  },
+  "message.callbackMissingParams": {
+    "message": "Faltan parámetros necesarios en la devolución de llamada de autorización, por favor inicia la conexión nuevamente.",
+    "description": "connection: message.callbackMissingParams"
+  },
+  "message.callbackFailed": {
+    "message": "La autorización de conexión falló, por favor intenta de nuevo más tarde.",
+    "description": "connection: message.callbackFailed"
+  },
+  "message.selectConnector": {
+    "message": "Selecciona un conector a la izquierda para ver los detalles",
+    "description": "connection: message.selectConnector"
+  },
+  "message.noMatch": {
+    "message": "No hay conectores coincidentes",
+    "description": "connection: message.noMatch"
+  },
+  "message.toolsLoading": {
+    "message": "Cargando herramientas proporcionadas por el servidor…",
+    "description": "connection: message.toolsLoading"
+  },
+  "message.browseHint": {
+    "message": "Explora conectores destacados y agrégales a tu espacio de trabajo con un solo clic.",
+    "description": "connection: message.browseHint"
+  },
+  "message.browseEmpty": {
+    "message": "No se encontraron conectores coincidentes, prueba con otra palabra clave o ajusta los filtros.",
+    "description": "connection: message.browseEmpty"
+  },
+  "message.installFailed": {
+    "message": "Error al agregar, por favor intenta de nuevo más tarde.",
+    "description": "connection: message.installFailed"
+  },
+  "message.installed": {
+    "message": "Agregado {name}",
+    "description": "connection: message.installed"
+  },
+  "message.tryItHint": {
+    "message": "Haz clic en la sugerencia a continuación para continuar en el chat de Studio.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Este conector requiere que las credenciales se completen manualmente en la lista de conectores.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "La dirección de retorno no es de confianza, se ha rechazado el redireccionamiento.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "No se ha especificado el conector a añadir.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "Redirigiendo a la página de autorización…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "Aún no conectado, haga clic para comenzar la autorización",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Conéctate primero para usar estos ejemplos de palabras clave",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Este conector utiliza sesiones del navegador local. Por favor empareje primero el Agente del Navegador ACE; no se recopilarán credenciales aquí.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "El dispositivo ha sido emparejado. Este conector aún no está disponible hasta que se habilite el ejecutor de sesiones del navegador; no se ha creado ninguna autorización en la nube.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Seleccionar dispositivo del navegador",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Sitios permitidos",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "El dispositivo v{version} sigue siendo incompatible, falta: {capabilities}. Por favor actualice el Agente del Navegador o empareje otro dispositivo.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "En línea",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Fuera de línea",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "En línea y compatible",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} sesiones activas",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Este conector puede leer páginas en los sitios declarados, y realizar clics, entradas, subidas, descargas y publicaciones a través del navegador local seleccionado. Seleccione solo dispositivos que controle.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Este dispositivo está desactivado o revocado.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "El Agente del Navegador está utilizando un contrato de ejecución diferente, por favor actualice la extensión.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "La versión del Agente del Navegador es demasiado antigua, por favor actualice la extensión.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "El Agente del Navegador está actualmente fuera de línea, por favor abra la extensión en este dispositivo.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "El dispositivo del navegador ha sido cambiado. Las sesiones existentes se han detenido, la autorización del navegador de la versión anterior necesita ser confirmada nuevamente.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "Se han detenido {count} sesiones del navegador.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "No se pudo detener la sesión del navegador.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Cuenta predeterminada actualizada",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Error al establecer la cuenta predeterminada",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Asigne un nombre a esta cuenta (distingue múltiples cuentas bajo el mismo conector)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "El nombre no puede exceder 64 caracteres",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Error al renombrar",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Cuentas conectadas: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "No se puede abrir la cuenta del conector, por favor actualiza y vuelve a intentar.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "Agregar credenciales de {name}",
+    "description": "connection: byoc.dialogTitle"
+  },
+  "byoc.intro": {
+    "message": "Por favor, completa la clave de acceso que obtuviste en la consola de ese servicio. Estas credenciales solo se utilizan para invocar la API de nube / SaaS correspondiente en tu nombre.",
+    "description": "connection: byoc.intro"
+  },
+  "byoc.submit": {
+    "message": "Guardar y habilitar",
+    "description": "connection: byoc.submit"
+  },
+  "byoc.required": {
+    "message": "Este campo es obligatorio",
+    "description": "connection: byoc.required"
+  },
+  "byoc.disclaimer": {
+    "message": "Las credenciales se almacenan encriptadas con AES-256-GCM; durante la ejecución de Skill, solo se desencriptan brevemente en la memoria del sandbox, nunca se escriben en la base de datos en texto claro / registros / respuestas de API. Puedes desconectarlas en esta página en cualquier momento para invalidarlas.",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionCapture": {
+    "message": "Capturar y conectar",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "Usa la extensión del navegador ACE para capturar tu estado de inicio de sesión y conectar, sin necesidad de contraseña o token.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "No se detectó la extensión del navegador ACE, por favor instálala y vuelve a intentarlo.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "No se capturó la cookie de inicio de sesión, por favor asegúrate de haber iniciado sesión en la plataforma en otra pestaña.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Abrir página de inicio de sesión",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Haz clic en 'Capturar y conectar' a continuación, la extensión ACE leerá la cookie de inicio de sesión para completar la conexión.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Inicia sesión en la plataforma en una nueva pestaña.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "Ver guía de instalación",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "La conexión utiliza el complemento ACE para capturar tu estado de inicio de sesión, sin necesidad de contraseña o token. Por favor, instala el complemento primero y luego regresa aquí.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "Necesitas instalar el complemento del navegador ACE primero",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "Ya lo he instalado, volver a verificar",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}

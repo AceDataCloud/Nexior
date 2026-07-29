@@ -27,15 +27,22 @@
 </template>
 
 <script lang="ts">
-import { ApplicationIcon, ExternalLinkIcon, HistoryIcon, StoreIcon } from '@acedatacloud/core/icons/components';
+import {
+  ApplicationIcon,
+  ConnectionIcon,
+  ExternalLinkIcon,
+  HistoryIcon,
+  StoreIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent, type Component } from 'vue';
 import {
   ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_CONNECTORS,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { isOfficial } from '@/utils';
+import { isFeatureEnabled, isOfficial } from '@/utils';
 
 interface ILink {
   key: string;
@@ -82,6 +89,17 @@ export default defineComponent({
           icon: HistoryIcon
         }
       ];
+
+      // Connector management is still rolling out; until the flag is on
+      // everywhere, connections are managed at auth.acedata.cloud.
+      if (isFeatureEnabled('connections-in-studio')) {
+        links.push({
+          key: 'connectors',
+          text: this.$t('console.menu.connectors'),
+          name: ROUTE_CONSOLE_CONNECTORS,
+          icon: ConnectionIcon
+        });
+      }
 
       // Order history stays visible on iOS — purchases now happen in-app via
       // Apple IAP, so users should see their orders.

@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "{name} を接続",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "接続方法を選択",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "推奨",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth認証",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth認証",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "独自の認証情報",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "公開アクセス",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "ローカルブラウザセッション",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "プロバイダーでログインして認可します。安全でキーの入力は不要です。",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "プロバイダーでログインして認可します。安全でキーの入力は不要です。",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "サービスコンソールで取得したキーを貼り付けるか、ブラウザ拡張でログイン状態を取得します。",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "ログイン不要で直接接続します。",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "ACEブラウザエージェントをペアリング；ブラウザ操作はローカルで実行され、別途明示的な承認が必要です。",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "コネクタ",
+    "description": "コネクタのセクションタイトル"
+  },
+  "title.connectNew": {
+    "message": "サービスに接続",
+    "description": "新しいサービスに接続するためのボタンテキスト"
+  },
+  "title.connectCustom": {
+    "message": "MCPサーバーに接続",
+    "description": "カスタムMCPサーバーに接続するためのボタンテキスト"
+  },
+  "title.addCustomConnector": {
+    "message": "カスタムコネクタを追加",
+    "description": "新しいカスタムコネクタを追加するためのボタンテキスト"
+  },
+  "title.browse": {
+    "message": "コネクタをブラウズ",
+    "description": "コネクタをブラウズするためのボタンテキスト"
+  },
+  "title.directory": {
+    "message": "コネクタディレクトリ",
+    "description": "コネクタの一覧を表示するセクションタイトル"
+  },
+  "title.groupConnected": {
+    "message": "接続済み",
+    "description": "接続されているコネクタのグループタイトル"
+  },
+  "title.groupAvailable": {
+    "message": "接続可能",
+    "description": "接続可能なコネクタのグループタイトル"
+  },
+  "title.toolPermissions": {
+    "message": "ツールの権限",
+    "description": "ツールの権限に関するセクションタイトル"
+  },
+  "title.tryIt": {
+    "message": "試してみる",
+    "description": "機能を試すためのボタンテキスト"
+  },
+  "title.groupRecommended": {
+    "message": "おすすめ",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "概要",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "操作",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "アカウント",
+    "description": "ユーザーのアカウント情報を示すフィールド名"
+  },
+  "field.status": {
+    "message": "ステータス",
+    "description": "コネクタの現在の状態を示すフィールド名"
+  },
+  "field.expiresAt": {
+    "message": "有効期限",
+    "description": "コネクタの有効期限を示すフィールド名"
+  },
+  "field.lastRefreshedAt": {
+    "message": "最終更新日時",
+    "description": "コネクタの最終更新日時を示すフィールド名"
+  },
+  "field.createdAt": {
+    "message": "接続日時",
+    "description": "コネクタが作成された日時を示すフィールド名"
+  },
+  "field.connectionRevision": {
+    "message": "接続バージョン",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "アクティブセッション",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "契約を実行",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "アクティブ",
+    "description": "現在アクティブなコネクタのステータス"
+  },
+  "status.expired": {
+    "message": "期限切れ",
+    "description": "期限が切れたコネクタのステータス"
+  },
+  "status.revoked": {
+    "message": "取り消し済み",
+    "description": "取り消されたコネクタのステータス"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "アクティブ化を待っているコネクタのステータス"
+  },
+  "button.connect": {
+    "message": "接続",
+    "description": "サービスに接続するためのボタンテキスト"
+  },
+  "button.addCustom": {
+    "message": "追加",
+    "description": "新しいアイテムを追加するためのボタンテキスト"
+  },
+  "button.reconnect": {
+    "message": "再接続",
+    "description": "コネクタに再接続するためのボタンテキスト"
+  },
+  "button.refresh": {
+    "message": "更新",
+    "description": "コネクタを更新するためのボタンテキスト"
+  },
+  "button.disconnect": {
+    "message": "切断",
+    "description": "コネクタの接続を切断するためのボタンテキスト"
+  },
+  "button.browse": {
+    "message": "ブラウズ",
+    "description": "コネクタをブラウズするためのボタンテキスト"
+  },
+  "button.addCustomConnector": {
+    "message": "カスタムコネクタを追加",
+    "description": "新しいカスタムコネクタを追加するためのボタンテキスト"
+  },
+  "button.install": {
+    "message": "追加",
+    "description": "新しいアイテムをインストールするためのボタンテキスト"
+  },
+  "button.returnToApp": {
+    "message": "アプリに戻る",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "すべてのコネクタを表示",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "デバイスを変更",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "セッションを停止",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "アカウントを追加",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "デフォルトに設定",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "名前を変更",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "現在のデフォルト",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "管理",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "MCPサーバー",
+    "description": "MCPサーバーのラベル"
+  },
+  "label.advancedSettings": {
+    "message": "詳細設定",
+    "description": "詳細設定のセクションタイトル"
+  },
+  "label.noScopes": {
+    "message": "権限範囲なし",
+    "description": "権限範囲がないことを示すメッセージ"
+  },
+  "label.noTools": {
+    "message": "このサービスはツールを提供していません",
+    "description": "ツールが提供されていないことを示すメッセージ"
+  },
+  "label.never": {
+    "message": "未設定",
+    "description": "未設定の状態を示すラベル"
+  },
+  "label.defaultAccount": {
+    "message": "デフォルト",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "カスタム",
+    "description": "カスタム設定を示すラベル"
+  },
+  "label.authMethod": {
+    "message": "認証方法",
+    "description": "認証方法を示すラベル"
+  },
+  "label.credentials": {
+    "message": "認証情報",
+    "description": "認証情報を示すラベル"
+  },
+  "label.official": {
+    "message": "公式",
+    "description": "公式のラベル"
+  },
+  "label.partner": {
+    "message": "パートナー",
+    "description": "パートナーのラベル"
+  },
+  "label.community": {
+    "message": "コミュニティ",
+    "description": "コミュニティのラベル"
+  },
+  "label.featured": {
+    "message": "おすすめ",
+    "description": "おすすめのラベル"
+  },
+  "label.new": {
+    "message": "新着",
+    "description": "新着アイテムを示すラベル"
+  },
+  "label.trending": {
+    "message": "トレンド",
+    "description": "トレンドのラベル"
+  },
+  "label.all": {
+    "message": "すべて",
+    "description": "すべてのアイテムを示すラベル"
+  },
+  "label.notConnected": {
+    "message": "未接続",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "接続後にこのサービスが提供するツールを確認できます",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "すべて",
+    "description": "すべてのカテゴリを示すラベル"
+  },
+  "category.creative": {
+    "message": "クリエイティブとメディア",
+    "description": "クリエイティブとメディアカテゴリのラベル"
+  },
+  "category.search": {
+    "message": "検索とウェブ",
+    "description": "検索とウェブカテゴリのラベル"
+  },
+  "category.developer": {
+    "message": "開発者ツール",
+    "description": "開発者ツールカテゴリのラベル"
+  },
+  "category.productivity": {
+    "message": "生産性と文書",
+    "description": "生産性と文書カテゴリのラベル"
+  },
+  "category.communication": {
+    "message": "コミュニケーション",
+    "description": "コミュニケーションカテゴリのラベル"
+  },
+  "category.data": {
+    "message": "データと分析",
+    "description": "データと分析カテゴリのラベル"
+  },
+  "category.commerce": {
+    "message": "ビジネスと金融",
+    "description": "ビジネスと金融カテゴリのラベル"
+  },
+  "category.automation": {
+    "message": "自動化",
+    "description": "自動化カテゴリのラベル"
+  },
+  "category.uncategorized": {
+    "message": "その他",
+    "description": "カテゴリに分類されていないアイテムを示すラベル"
+  },
+  "placeholder.name": {
+    "message": "名前",
+    "description": "名前を入力するためのプレースホルダー"
+  },
+  "placeholder.serverUrl": {
+    "message": "リモートMCPサーバーのURL",
+    "description": "リモートMCPサーバーのURLを入力するためのプレースホルダー"
+  },
+  "placeholder.clientId": {
+    "message": "OAuthクライアントID（オプション）",
+    "description": "OAuthクライアントIDを入力するためのプレースホルダー"
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuthクライアントシークレット（オプション）",
+    "description": "OAuthクライアントシークレットを入力するためのプレースホルダー"
+  },
+  "placeholder.search": {
+    "message": "コネクタを検索",
+    "description": "connection: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "接続されているサードパーティサービスを管理します。これらの接続により、AceDataCloudアプリが代わりに操作を実行できます。",
+    "description": "ページの説明文"
+  },
+  "message.noConnections": {
+    "message": "接続コネクタはありません",
+    "description": "接続コネクタがないことを示すメッセージ"
+  },
+  "message.noConnectionsHint": {
+    "message": "サービスに接続すると、ChatGPTやClaudeなどのアプリでより豊かな体験が得られます。",
+    "description": "接続後の体験に関するヒント"
+  },
+  "message.connectConfirm": {
+    "message": "{provider}に移動して認証します。",
+    "description": "接続確認メッセージ"
+  },
+  "message.selectScopes": {
+    "message": "{provider}の権限範囲を選択",
+    "description": "権限範囲を選択するためのメッセージ"
+  },
+  "message.selectScopesHint": {
+    "message": "付与したい権限範囲を選択してください。複数選択可能で、未選択の場合は基本的なログイン情報のみが付与されます。",
+    "description": "権限範囲選択のヒント"
+  },
+  "message.disconnectConfirm": {
+    "message": "{provider}との接続を切断してもよろしいですか？このコネクタを使用しているアプリはアクセス権を失います。",
+    "description": "切断確認メッセージ"
+  },
+  "message.disconnected": {
+    "message": "{provider}との接続が切断されました",
+    "description": "接続が切断されたことを示すメッセージ"
+  },
+  "message.refreshed": {
+    "message": "接続が更新されました",
+    "description": "接続が正常に更新されたことを示すメッセージ"
+  },
+  "message.refreshFailed": {
+    "message": "接続の更新に失敗しました",
+    "description": "接続の更新に失敗したことを示すメッセージ"
+  },
+  "message.customConnectorHint": {
+    "message": "OAuthをサポートするリモートMCPサーバーに接続します。",
+    "description": "カスタムコネクタに関するヒント"
+  },
+  "message.customConnectorTrust": {
+    "message": "信頼できるコネクタのみを追加してください。コネクタが提供するツールとデータの権限は、対応するサービスによって制御されます。",
+    "description": "信頼性に関する注意事項"
+  },
+  "message.callbackMissingParams": {
+    "message": "認証コールバックに必要なパラメータが不足しています。接続を再度開始してください。",
+    "description": "コールバックパラメータ不足のエラーメッセージ"
+  },
+  "message.callbackFailed": {
+    "message": "接続認証に失敗しました。後でもう一度お試しください。",
+    "description": "認証失敗のエラーメッセージ"
+  },
+  "message.selectConnector": {
+    "message": "左側からコネクタを選択して詳細を表示",
+    "description": "コネクタ選択の指示"
+  },
+  "message.noMatch": {
+    "message": "一致するコネクタはありません",
+    "description": "一致するコネクタがないことを示すメッセージ"
+  },
+  "message.toolsLoading": {
+    "message": "サーバーが提供するツールを読み込んでいます…",
+    "description": "ツールの読み込み中のメッセージ"
+  },
+  "message.browseHint": {
+    "message": "おすすめのコネクタをブラウズし、ワンクリックで作業スペースに追加します。",
+    "description": "コネクタブラウズのヒント"
+  },
+  "message.browseEmpty": {
+    "message": "一致するコネクタが見つかりませんでした。別のキーワードを試すか、フィルタ条件を調整してください。",
+    "description": "コネクタが見つからないことを示すメッセージ"
+  },
+  "message.installFailed": {
+    "message": "追加に失敗しました。後でもう一度お試しください。",
+    "description": "追加失敗のエラーメッセージ"
+  },
+  "message.installed": {
+    "message": "{name}が追加されました",
+    "description": "アイテムが追加されたことを示すメッセージ"
+  },
+  "message.tryItHint": {
+    "message": "下のヒントをクリックして、Studioチャットで続行します。",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "このコネクタは、コネクタリストに手動で資格情報を入力する必要があります。",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "戻り先のアドレスは信頼されておらず、リダイレクトが拒否されました。",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "追加するコネクタが指定されていません。",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "認証ページにリダイレクト中…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "まだ接続されていません。クリックして認証を開始してください",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "接続後にこれらのサンプルプロンプトを使用できます",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "このコネクタはローカルブラウザセッションを使用します。まずACEブラウザエージェントとペアリングしてください；ここでは認証情報は収集されません。",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "デバイスがペアリングされました。ブラウザセッションの実行端が有効になる前に、このコネクタはまだ使用できません。クラウド認証は作成されていません。",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "ブラウザデバイスを選択",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "許可されたサイト",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "デバイス v{version} はまだ互換性がありません。欠落している機能：{capabilities}。ブラウザエージェントを更新するか、他のデバイスとペアリングしてください。",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "オンライン",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "オフライン",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "オンラインで互換性あり",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} のアクティブセッション",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "このコネクタは、選択したローカルブラウザを介して、指定されたサイトでページを読み取り、クリック、入力、アップロード、ダウンロード、公開操作を実行できます。制御できるデバイスのみを選択してください。",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "このデバイスは無効または取り消されています。",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "ブラウザエージェントが異なる契約を使用しています。拡張機能を更新してください。",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "ブラウザエージェントのバージョンが古すぎます。拡張機能を更新してください。",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "ブラウザエージェントは現在オフラインです。このデバイスで拡張機能を開いてください。",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "ブラウザデバイスが変更されました。既存のセッションは停止され、古いバージョンのタイミングブラウザの認証を再確認する必要があります。",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "{count} のブラウザセッションが停止されました。",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "ブラウザセッションを停止できませんでした。",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "デフォルトアカウントが更新されました",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "デフォルトアカウントの設定に失敗しました",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "このアカウントに名前を付けてください（同じコネクタ内の複数のアカウントを区別するため）",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "名前は64文字を超えることはできません",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "名前の変更に失敗しました",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — 接続済みアカウント：{count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "このコネクタのアカウントを開けません。リフレッシュして再試行してください。",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "{name}の認証情報を追加",
+    "description": "認証情報追加ダイアログのタイトル"
+  },
+  "byoc.intro": {
+    "message": "サービスコンソールで取得したアクセスキーを入力してください。これらの認証情報は、対応するクラウド/SaaS APIを呼び出すためのものです。",
+    "description": "認証情報入力の説明文"
+  },
+  "byoc.submit": {
+    "message": "保存して有効化",
+    "description": "認証情報を保存するためのボタンテキスト"
+  },
+  "byoc.required": {
+    "message": "必須項目です",
+    "description": "必須項目を示すメッセージ"
+  },
+  "byoc.disclaimer": {
+    "message": "認証情報はAES-256-GCMで暗号化されて保存されます。Skillを実行する際には、サンドボックス内のメモリで一時的に復号化され、決してデータベースに平文で書き込まれたり、ログやAPIレスポンスに記録されたりすることはありません。このページでいつでも切断して無効にできます。",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionCapture": {
+    "message": "キャッチして接続",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "ACEブラウザ拡張機能を使用して、パスワードやトークンなしでログイン状態をキャッチして接続します。",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "ACEブラウザ拡張機能が検出されません。まずインストールしてから再試行してください。",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "ログインCookieがキャッチされませんでした。別のタブでそのプラットフォームにログインしていることを確認してください。",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "ログインページを開く",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "下の「キャッチして接続」をクリックすると、ACE拡張機能がログインCookieを読み取って接続を完了します。",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "新しいタブでそのプラットフォームにログインしてください。",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "インストールガイドを見る",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "接続は ACE プラグインを使用してログイン状態を取得します。パスワードやトークンは不要です。プラグインをインストールしてから、ここに戻ってください。",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "ACE ブラウザプラグインを先にインストールする必要があります",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "インストール済み、再検出する",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}

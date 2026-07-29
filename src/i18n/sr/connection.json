@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "Poveži {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Izaberite način povezivanja",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Preporučeno",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth ауторизација",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth ауторизација",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Sopstveni akreditivi",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Javni pristup",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Локална сесија прегледача",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Prijavite se i autorizujte kod provajdera — bezbedno, bez unosa ključeva.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Prijavite se i autorizujte kod provajdera — bezbedno, bez unosa ključeva.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Nalepite ključeve iz konzole servisa ili uhvatite prijavu pomoću ekstenzije pregledača.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Povežite se direktno — prijava nije potrebna.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Парирајте ACE Browser Agent; радње у прегледачу се изводе локално и захтевају посебно одобрење.",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "Konektori",
+    "description": "Naslov za odeljak koji prikazuje dostupne konektore."
+  },
+  "title.connectNew": {
+    "message": "Poveži uslugu",
+    "description": "Dugme za povezivanje nove usluge."
+  },
+  "title.connectCustom": {
+    "message": "Poveži MCP Server",
+    "description": "Opcija za povezivanje sa prilagođenim MCP serverom."
+  },
+  "title.addCustomConnector": {
+    "message": "Dodaj prilagođeni konektor",
+    "description": "Dugme za dodavanje novog prilagođenog konektora."
+  },
+  "title.browse": {
+    "message": "Pretraži konektore",
+    "description": "Opcija za pretraživanje dostupnih konektora."
+  },
+  "title.directory": {
+    "message": "Direktorijum konektora",
+    "description": "Sekcija koja prikazuje sve dostupne konektore."
+  },
+  "title.groupConnected": {
+    "message": "Povezani",
+    "description": "Grupa koja prikazuje sve trenutno povezane konektore."
+  },
+  "title.groupAvailable": {
+    "message": "Dostupni",
+    "description": "Grupa koja prikazuje sve dostupne konektore za povezivanje."
+  },
+  "title.toolPermissions": {
+    "message": "Dozvole alata",
+    "description": "Sekcija koja prikazuje dozvole za korišćenje alata."
+  },
+  "title.tryIt": {
+    "message": "Isprobaj",
+    "description": "Dugme za isprobavanje funkcionalnosti."
+  },
+  "title.groupRecommended": {
+    "message": "Preporučeno",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "Увод",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "Акције",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Nalog",
+    "description": "Polje za unos korisničkog naloga."
+  },
+  "field.status": {
+    "message": "Статус",
+    "description": "Polje koje prikazuje trenutni status konektora."
+  },
+  "field.expiresAt": {
+    "message": "Ističe",
+    "description": "Polje koje prikazuje vreme isteka konekcije."
+  },
+  "field.lastRefreshedAt": {
+    "message": "Poslednje osveženo",
+    "description": "Polje koje prikazuje kada je konekcija poslednji put osvežena."
+  },
+  "field.createdAt": {
+    "message": "Kreirano",
+    "description": "Polje koje prikazuje vreme kada je konekcija kreirana."
+  },
+  "field.connectionRevision": {
+    "message": "Верзија везе",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Активне сесије",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Изврши уговор",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Aktivno",
+    "description": "Status koji označava da je konektor aktivan."
+  },
+  "status.expired": {
+    "message": "Isteklo",
+    "description": "Status koji označava da je konektor istekao."
+  },
+  "status.revoked": {
+    "message": "Otkazano",
+    "description": "Status koji označava da je konektor otkazan."
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Status koji označava da je konektor na čekanju za aktivaciju."
+  },
+  "button.connect": {
+    "message": "Poveži",
+    "description": "Dugme za povezivanje sa izabranim konektorom."
+  },
+  "button.addCustom": {
+    "message": "Dodaj",
+    "description": "Dugme za dodavanje novog elementa."
+  },
+  "button.reconnect": {
+    "message": "Ponovo poveži",
+    "description": "Dugme za ponovnu konekciju sa prethodno povezanim konektorom."
+  },
+  "button.refresh": {
+    "message": "Osveži",
+    "description": "Dugme za osvežavanje trenutne konekcije."
+  },
+  "button.disconnect": {
+    "message": "Prekini",
+    "description": "Dugme za prekidanje veze sa konektorom."
+  },
+  "button.browse": {
+    "message": "Pretraži",
+    "description": "Dugme za pretraživanje konektora."
+  },
+  "button.addCustomConnector": {
+    "message": "Dodaj prilagođeni konektor",
+    "description": "Dugme za dodavanje novog prilagođenog konektora."
+  },
+  "button.install": {
+    "message": "Dodaj",
+    "description": "Dugme za instalaciju konektora."
+  },
+  "button.returnToApp": {
+    "message": "Врати се на апликацију",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "Pregledaj sve konektore",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Промени уређај",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Заустави сесије",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Додај налог",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "Постави као подразумевани",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Преименуј",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Тренутно је подразумевани",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "Управљај",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "MCP Server",
+    "description": "Oznaka za MCP server."
+  },
+  "label.advancedSettings": {
+    "message": "Napredne postavke",
+    "description": "Oznaka za sekciju sa naprednim postavkama."
+  },
+  "label.noScopes": {
+    "message": "Nema ovlašćenja",
+    "description": "Poruka koja se prikazuje kada nema dostupnih ovlašćenja."
+  },
+  "label.noTools": {
+    "message": "Ova usluga ne nudi alate",
+    "description": "Poruka koja se prikazuje kada usluga ne nudi alate."
+  },
+  "label.never": {
+    "message": "Nikada",
+    "description": "Oznaka koja označava da nešto nikada nije bilo učinjeno."
+  },
+  "label.defaultAccount": {
+    "message": "Подразумевани",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Prilagođeno",
+    "description": "Oznaka za prilagođene opcije."
+  },
+  "label.authMethod": {
+    "message": "Metod autentifikacije",
+    "description": "Oznaka za metod autentifikacije."
+  },
+  "label.credentials": {
+    "message": "Akreditivi",
+    "description": "Oznaka za akreditive potrebne za autentifikaciju."
+  },
+  "label.official": {
+    "message": "Zvanično",
+    "description": "Oznaka koja označava zvanične konektore."
+  },
+  "label.partner": {
+    "message": "Партнер",
+    "description": "Oznaka za partnere."
+  },
+  "label.community": {
+    "message": "Zajednica",
+    "description": "Oznaka za zajednicu."
+  },
+  "label.featured": {
+    "message": "Preporučeno",
+    "description": "Oznaka za preporučene konektore."
+  },
+  "label.new": {
+    "message": "Novi",
+    "description": "Oznaka za nove konektore."
+  },
+  "label.trending": {
+    "message": "Popularno",
+    "description": "Oznaka za popularne konektore."
+  },
+  "label.all": {
+    "message": "Sve",
+    "description": "Oznaka koja označava sve dostupne opcije."
+  },
+  "label.notConnected": {
+    "message": "Nije povezano",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "Повеžite се да бисте видели алате које ова услуга нуди",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "Sve",
+    "description": "Oznaka za sve kategorije."
+  },
+  "category.creative": {
+    "message": "Kreativnost i mediji",
+    "description": "Kategorija koja se odnosi na kreativne alate i medije."
+  },
+  "category.search": {
+    "message": "Pretraga i web",
+    "description": "Kategorija koja se odnosi na alate za pretragu."
+  },
+  "category.developer": {
+    "message": "Alati za programere",
+    "description": "Kategorija koja se odnosi na alate za programere."
+  },
+  "category.productivity": {
+    "message": "Produktivnost i dokumentacija",
+    "description": "Kategorija koja se odnosi na alate za produktivnost."
+  },
+  "category.communication": {
+    "message": "Komunikacija",
+    "description": "Kategorija koja se odnosi na alate za komunikaciju."
+  },
+  "category.data": {
+    "message": "Podaci i analitika",
+    "description": "Kategorija koja se odnosi na alate za analizu podataka."
+  },
+  "category.commerce": {
+    "message": "Trgovina i finansije",
+    "description": "Kategorija koja se odnosi na alate za trgovinu i finansije."
+  },
+  "category.automation": {
+    "message": "Automatizacija",
+    "description": "Kategorija koja se odnosi na alate za automatizaciju."
+  },
+  "category.uncategorized": {
+    "message": "Ostalo",
+    "description": "Kategorija za alate koji nisu klasifikovani."
+  },
+  "placeholder.name": {
+    "message": "Ime",
+    "description": "Placeholder za unos imena."
+  },
+  "placeholder.serverUrl": {
+    "message": "URL daljinskog MCP servera",
+    "description": "Placeholder za unos URL-a daljinskog MCP servera."
+  },
+  "placeholder.clientId": {
+    "message": "OAuth Klijent ID (opcionalno)",
+    "description": "Placeholder za unos OAuth Klijent ID-a."
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth Klijent Tajna (opcionalno)",
+    "description": "Placeholder za unos OAuth Klijent Tajne."
+  },
+  "placeholder.search": {
+    "message": "Pretraži konektore",
+    "description": "connection: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Upravljajte svojim povezanim uslugama trećih strana. Ove konekcije omogućavaju AceDataCloud aplikaciji da izvršava radnje u vaše ime.",
+    "description": "Opis stranice koja objašnjava svrhu povezivanja."
+  },
+  "message.noConnections": {
+    "message": "Nema konektora",
+    "description": "Poruka koja se prikazuje kada nema povezanih konektora."
+  },
+  "message.noConnectionsHint": {
+    "message": "Povezivanjem usluga možete dobiti bogatije iskustvo u aplikacijama kao što su ChatGPT, Claude itd.",
+    "description": "Savet za korisnike o prednostima povezivanja."
+  },
+  "message.connectConfirm": {
+    "message": "Bićete preusmereni na {provider} radi autorizacije.",
+    "description": "Poruka koja obaveštava korisnika o preusmeravanju na autorizaciju."
+  },
+  "message.selectScopes": {
+    "message": "Izaberite ovlašćenja {provider}",
+    "description": "Poruka koja traži od korisnika da izabere ovlašćenja."
+  },
+  "message.selectScopesHint": {
+    "message": "Izaberite ovlašćenja koja želite da odobrite. Možete izabrati više opcija, a neizabrana će podrazumevano odobriti samo osnovne informacije za prijavu.",
+    "description": "Objašnjenje o izboru ovlašćenja."
+  },
+  "message.disconnectConfirm": {
+    "message": "Da li ste sigurni da želite da prekinete vezu sa {provider}?",
+    "description": "Potvrda za prekid veze sa konektorom."
+  },
+  "message.disconnected": {
+    "message": "Veza sa {provider} je prekinuta",
+    "description": "Poruka koja obaveštava korisnika da je veza prekinuta."
+  },
+  "message.refreshed": {
+    "message": "Konekcija je osvežena",
+    "description": "Poruka koja obaveštava korisnika da je konekcija uspešno osvežena."
+  },
+  "message.refreshFailed": {
+    "message": "Osvežavanje konekcije nije uspelo",
+    "description": "Poruka koja obaveštava korisnika o neuspehu osvežavanja."
+  },
+  "message.customConnectorHint": {
+    "message": "Povezivanje podržava daljinski MCP server sa OAuth.",
+    "description": "Objašnjenje o podršci za prilagođene konektore."
+  },
+  "message.customConnectorTrust": {
+    "message": "Dodajte samo konektore kojima verujete. Alati i dozvole podataka koje pruža konektor kontroliše odgovarajuća usluga.",
+    "description": "Upozorenje o dodavanju samo pouzdanih konektora."
+  },
+  "message.callbackMissingParams": {
+    "message": "Povratni poziv za autorizaciju nedostaje neophodne parametre, molimo ponovo pokrenite vezu.",
+    "description": "Poruka koja obaveštava o nedostatku parametara u povratnom pozivu."
+  },
+  "message.callbackFailed": {
+    "message": "Autorizacija veze nije uspela, molimo pokušajte ponovo kasnije.",
+    "description": "Poruka koja obaveštava o neuspehu autorizacije."
+  },
+  "message.selectConnector": {
+    "message": "Izaberite konektor sa leve strane za detalje",
+    "description": "Uputstvo za korisnika da izabere konektor."
+  },
+  "message.noMatch": {
+    "message": "Nema odgovarajućih konektora",
+    "description": "Poruka koja se prikazuje kada nema odgovarajućih konektora."
+  },
+  "message.toolsLoading": {
+    "message": "Učitavanje alata koje pruža server…",
+    "description": "Poruka koja obaveštava o učitavanju alata."
+  },
+  "message.browseHint": {
+    "message": "Pretražite preporučene konektore i dodajte ih jednim klikom u svoj radni prostor.",
+    "description": "Savet za korisnike o pretraživanju konektora."
+  },
+  "message.browseEmpty": {
+    "message": "Nema pronađenih konektora, pokušajte sa drugim ključnim rečima ili prilagodite filtere.",
+    "description": "Poruka koja se prikazuje kada nema pronađenih konektora."
+  },
+  "message.installFailed": {
+    "message": "Dodavanje nije uspelo, molimo pokušajte ponovo kasnije.",
+    "description": "Poruka koja obaveštava o neuspehu dodavanja."
+  },
+  "message.installed": {
+    "message": "Dodato {name}",
+    "description": "Poruka koja obaveštava korisnika da je konektor uspešno dodat."
+  },
+  "message.tryItHint": {
+    "message": "Kliknite na donji savet da nastavite u Studio chatu.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Овај конектор захтева ручно попуњавање акредтива у списку конектора.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "Враћање адресе није поуздано, преусмеравање је одбијено.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "Није назначен конектор који треба додати.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "Преусмеравање на страницу за ауторизацију…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "Još uvek nije povezano, kliknite da započnete autorizaciju",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Повеžite се да бисте користили ове примерне упитнике",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Овај конектор користи локалне прегледачке сесије. Молимо прво упарите ACE Browser Agent; овде се неће прикупљати никакви акредитиви.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Уређај је упарен. Овај конектор није доступан пре него што се омогући извршни крај прегледачке сесије; није створена ниједна облачна дозвола.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Изаберите уређај прегледача",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Дозвољени сајтови",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Уређај v{version} и даље није компатибилан, недостаје: {capabilities}. Молимо ажурирајте Browser Agent или упарите други уређај.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "Онлајн",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Ван мреже",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "Онлајн и компатибилан",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} активних сесија",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Овај конектор може да чита странице на изабраним локалним прегледачима, и да извршава кликове, уносе, отпреме, преузме и објави. Изаберите само уређаје које контролишете.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Овај уређај је онемогућен или повучен.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Browser Agent користи различити извршни уговор, молимо ажурирајте екстензију.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Верзија Browser Agent-а је застарела, молимо ажурирајте екстензију.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Browser Agent је тренутно ван мреже, молимо отворите екстензију на овом уређају.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Уређај прегледача је промењен. Постојеће сесије су заустављене, потребно је поново потврдити везу са старом верзијом прегледача.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "Заустављено је {count} прегледачких сесија.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Није могуће зауставити прегледачку сесију.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Подразумевани налог је ажуриран",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Неуспешно подешавање подразумеваног налога",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Додајте име овом налогу (више налога под истим конектором се разликују по овом имену)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Име не може бити дужи од 64 знака",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Преименовање није успело",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Povezani nalozi: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "Није могуће отворити налог за овај конектор, молимо освежите и покушајте поново.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "Dodaj akreditive za {name}",
+    "description": "Naslov dijaloga za dodavanje akreditiva."
+  },
+  "byoc.intro": {
+    "message": "Molimo unesite pristupni ključ koji ste dobili na kontrolnoj tabli te usluge. Ovi akreditivi se koriste isključivo za pozivanje odgovarajućeg cloud / SaaS API-ja.",
+    "description": "Uvodna poruka koja objašnjava svrhu akreditiva."
+  },
+  "byoc.submit": {
+    "message": "Sačuvaj i aktiviraj",
+    "description": "Dugme za čuvanje i aktivaciju akreditiva."
+  },
+  "byoc.required": {
+    "message": "Obavezno",
+    "description": "Poruka koja označava da je polje obavezno."
+  },
+  "byoc.disclaimer": {
+    "message": "Akreditivi se koriste uz AES-256-GCM enkripciju; prilikom izvršavanja veštine, samo se privremeno dekriptuju u memoriji sandboxes, nikada se ne čuvaju u bazi podataka u čistom tekstu / logovima / API odgovorima. Možete ih u svakom trenutku prekinuti na ovoj stranici da bi postali nevažeći.",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionCapture": {
+    "message": "Uhvatite i povežite",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "Koristite ACE ekstenziju pretraživača da uhvatite svoj login status za povezivanje, bez potrebe za lozinkom ili tokenom.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "ACE ekstenzija pretraživača nije otkrivena, molimo instalirajte je pre nego što pokušate ponovo.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "Nisu uhvaćeni login kolačići, molimo proverite da li ste se prijavili na platformu u drugom tabu.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Otvorite stranicu za prijavu",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Kliknite na dugme „Uhvatite i povežite“ ispod, ACE ekstenzija će pročitati login kolačiće i završiti povezivanje.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Prijavite se na platformu u novom tabu.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "Pogledajte vodič za instalaciju",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "Veza koristi ACE dodatak za preuzimanje vašeg prijavljivanja, bez potrebe za lozinkom ili tokenom. Prvo instalirajte dodatak, a zatim se vratite ovde.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "Potrebno je prvo instalirati ACE dodatak za pregledač",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "Već sam instalirao, ponovo proveri",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}

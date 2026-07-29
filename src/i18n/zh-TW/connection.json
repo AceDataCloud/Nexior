@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "連接 {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "選擇連接方式",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "推薦",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth 授權",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth 授權",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "自帶憑證",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "公開存取",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "本地瀏覽器會話",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "跳轉到服務方登入並授權，安全且無需填寫金鑰。",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "跳轉到服務方登入並授權，安全且無需填寫金鑰。",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "填寫你在服務控制台取得的金鑰，或用瀏覽器擴充功能擷取登入狀態。",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "無需登入即可直接連接。",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "配對 ACE 瀏覽器代理；瀏覽器操作在本地執行，並且仍需單獨明確批准。",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "連接器",
+    "description": "顯示所有可用的連接器"
+  },
+  "title.connectNew": {
+    "message": "連接服務",
+    "description": "用於連接新的服務"
+  },
+  "title.connectCustom": {
+    "message": "連接 MCP 伺服器",
+    "description": "用於連接自定義的 MCP 伺服器"
+  },
+  "title.addCustomConnector": {
+    "message": "添加自定義連接器",
+    "description": "用於添加新的自定義連接器"
+  },
+  "title.browse": {
+    "message": "瀏覽連接器",
+    "description": "用於瀏覽可用的連接器"
+  },
+  "title.directory": {
+    "message": "連接器目錄",
+    "description": "顯示所有連接器的目錄"
+  },
+  "title.groupConnected": {
+    "message": "已連接",
+    "description": "顯示已連接的服務組"
+  },
+  "title.groupAvailable": {
+    "message": "可連接",
+    "description": "顯示可用的連接服務組"
+  },
+  "title.toolPermissions": {
+    "message": "工具權限",
+    "description": "顯示工具的權限設置"
+  },
+  "title.tryIt": {
+    "message": "試一試",
+    "description": "用於測試功能"
+  },
+  "title.groupRecommended": {
+    "message": "推薦",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "簡介",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "操作",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "帳號",
+    "description": "用戶的帳號信息"
+  },
+  "field.status": {
+    "message": "狀態",
+    "description": "顯示連接器的當前狀態"
+  },
+  "field.expiresAt": {
+    "message": "過期時間",
+    "description": "顯示連接器的過期時間"
+  },
+  "field.lastRefreshedAt": {
+    "message": "刷新時間",
+    "description": "顯示上次刷新時間"
+  },
+  "field.createdAt": {
+    "message": "連接時間",
+    "description": "顯示連接器的創建時間"
+  },
+  "field.connectionRevision": {
+    "message": "連接版本",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "活動會話",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "執行合同",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "已激活",
+    "description": "顯示連接器已激活"
+  },
+  "status.expired": {
+    "message": "已過期",
+    "description": "顯示連接器已過期"
+  },
+  "status.revoked": {
+    "message": "已撤銷",
+    "description": "顯示連接器已被撤銷"
+  },
+  "status.pending": {
+    "message": "待激活",
+    "description": "顯示連接器待激活狀態"
+  },
+  "button.connect": {
+    "message": "連接",
+    "description": "用於連接服務的按鈕"
+  },
+  "button.addCustom": {
+    "message": "添加",
+    "description": "用於添加自定義項目的按鈕"
+  },
+  "button.reconnect": {
+    "message": "重新連接",
+    "description": "用於重新連接的按鈕"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "用於刷新連接的按鈕"
+  },
+  "button.disconnect": {
+    "message": "斷開",
+    "description": "用於斷開連接的按鈕"
+  },
+  "button.browse": {
+    "message": "瀏覽",
+    "description": "用於瀏覽的按鈕"
+  },
+  "button.addCustomConnector": {
+    "message": "添加自定義連接器",
+    "description": "用於添加自定義連接器的按鈕"
+  },
+  "button.install": {
+    "message": "添加",
+    "description": "用於安裝的按鈕"
+  },
+  "button.returnToApp": {
+    "message": "返回應用",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "瀏覽全部連接器",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "更換設備",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "停止會話",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "添加帳號",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "設為默認",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "重命名",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "當前為默認",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "管理",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "MCP 伺服器",
+    "description": "顯示 MCP 伺服器的標籤"
+  },
+  "label.advancedSettings": {
+    "message": "高級設置",
+    "description": "顯示高級設置的標籤"
+  },
+  "label.noScopes": {
+    "message": "無授權範圍",
+    "description": "顯示無授權範圍的提示"
+  },
+  "label.noTools": {
+    "message": "該服務未提供任何工具",
+    "description": "顯示該服務無工具的提示"
+  },
+  "label.never": {
+    "message": "從未",
+    "description": "顯示從未的標籤"
+  },
+  "label.defaultAccount": {
+    "message": "默認",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "自定義",
+    "description": "顯示自定義的標籤"
+  },
+  "label.authMethod": {
+    "message": "鑑權方式",
+    "description": "顯示鑑權方式的標籤"
+  },
+  "label.credentials": {
+    "message": "憑據",
+    "description": "顯示憑據的標籤"
+  },
+  "label.official": {
+    "message": "官方",
+    "description": "顯示官方的標籤"
+  },
+  "label.partner": {
+    "message": "合作夥伴",
+    "description": "顯示合作夥伴的標籤"
+  },
+  "label.community": {
+    "message": "社區",
+    "description": "顯示社區的標籤"
+  },
+  "label.featured": {
+    "message": "推薦",
+    "description": "顯示推薦的標籤"
+  },
+  "label.new": {
+    "message": "新增",
+    "description": "顯示新增的標籤"
+  },
+  "label.trending": {
+    "message": "熱門",
+    "description": "顯示熱門的標籤"
+  },
+  "label.all": {
+    "message": "全部",
+    "description": "顯示全部的標籤"
+  },
+  "label.notConnected": {
+    "message": "未連接",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "連接後即可查看該服務提供的工具",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "全部",
+    "description": "顯示所有類別"
+  },
+  "category.creative": {
+    "message": "創作與媒體",
+    "description": "顯示創作與媒體類別"
+  },
+  "category.search": {
+    "message": "搜索與網頁",
+    "description": "顯示搜索與網頁類別"
+  },
+  "category.developer": {
+    "message": "開發者工具",
+    "description": "顯示開發者工具類別"
+  },
+  "category.productivity": {
+    "message": "效率與文檔",
+    "description": "顯示效率與文檔類別"
+  },
+  "category.communication": {
+    "message": "通訊",
+    "description": "顯示通訊類別"
+  },
+  "category.data": {
+    "message": "數據與分析",
+    "description": "顯示數據與分析類別"
+  },
+  "category.commerce": {
+    "message": "商務與金融",
+    "description": "顯示商務與金融類別"
+  },
+  "category.automation": {
+    "message": "自動化",
+    "description": "顯示自動化類別"
+  },
+  "category.uncategorized": {
+    "message": "其他",
+    "description": "顯示未分類的項目"
+  },
+  "placeholder.name": {
+    "message": "名稱",
+    "description": "用於輸入名稱的佔位符"
+  },
+  "placeholder.serverUrl": {
+    "message": "遠程 MCP 伺服器 URL",
+    "description": "用於輸入遠程 MCP 伺服器 URL 的佔位符"
+  },
+  "placeholder.clientId": {
+    "message": "OAuth 客戶端 ID（可選）",
+    "description": "用於輸入 OAuth 客戶端 ID 的佔位符"
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth 客戶端密鑰（可選）",
+    "description": "用於輸入 OAuth 客戶端密鑰的佔位符"
+  },
+  "placeholder.search": {
+    "message": "搜索連接器",
+    "description": "用於搜索連接器的佔位符"
+  },
+  "message.pageDescription": {
+    "message": "管理您已連接的第三方服務。這些連接允許 AceDataCloud 應用代您執行操作。",
+    "description": "顯示頁面的描述信息"
+  },
+  "message.noConnections": {
+    "message": "暫無連接器",
+    "description": "顯示沒有連接器的提示"
+  },
+  "message.noConnectionsHint": {
+    "message": "連接服務後即可在 ChatGPT、Claude 等應用中獲得更豐富的體驗。",
+    "description": "顯示連接服務後的提示"
+  },
+  "message.connectConfirm": {
+    "message": "將跳轉到 {provider} 進行授權。",
+    "description": "顯示授權確認信息"
+  },
+  "message.selectScopes": {
+    "message": "選擇 {provider} 授權範圍",
+    "description": "顯示選擇授權範圍的提示"
+  },
+  "message.selectScopesHint": {
+    "message": "選擇您希望授權的權限範圍。可多選，未選中默認僅授予基礎登錄信息。",
+    "description": "顯示選擇授權範圍的提示"
+  },
+  "message.disconnectConfirm": {
+    "message": "確定要斷開與 {provider} 的連接嗎？使用此連接器的應用將失去訪問權限。",
+    "description": "顯示斷開連接的確認信息"
+  },
+  "message.disconnected": {
+    "message": "已斷開 {provider}",
+    "description": "顯示已斷開的提示"
+  },
+  "message.refreshed": {
+    "message": "連接已刷新",
+    "description": "顯示連接已刷新的提示"
+  },
+  "message.refreshFailed": {
+    "message": "刷新連接失敗",
+    "description": "顯示刷新失敗的提示"
+  },
+  "message.customConnectorHint": {
+    "message": "連接支持 OAuth 的遠程 MCP 伺服器。",
+    "description": "顯示自定義連接器的提示"
+  },
+  "message.customConnectorTrust": {
+    "message": "僅添加您信任的連接器。連接器提供的工具和數據權限由對應服務控制。",
+    "description": "顯示信任連接器的提示"
+  },
+  "message.callbackMissingParams": {
+    "message": "授權回調缺少必要參數，請重新發起連接。",
+    "description": "顯示缺少參數的提示"
+  },
+  "message.callbackFailed": {
+    "message": "連接授權失敗，請稍後重試。",
+    "description": "顯示授權失敗的提示"
+  },
+  "message.selectConnector": {
+    "message": "在左側選擇一個連接器查看詳情",
+    "description": "顯示選擇連接器的提示"
+  },
+  "message.noMatch": {
+    "message": "沒有匹配的連接器",
+    "description": "顯示沒有匹配連接器的提示"
+  },
+  "message.toolsLoading": {
+    "message": "正在加載伺服器提供的工具…",
+    "description": "顯示正在加載工具的提示"
+  },
+  "message.browseHint": {
+    "message": "瀏覽精選連接器，一鍵添加到你的工作區。",
+    "description": "顯示瀏覽連接器的提示"
+  },
+  "message.browseEmpty": {
+    "message": "未找到匹配的連接器，換個關鍵字或調整篩選條件試試。",
+    "description": "顯示未找到連接器的提示"
+  },
+  "message.installFailed": {
+    "message": "添加失敗，請稍後重試。",
+    "description": "顯示添加失敗的提示"
+  },
+  "message.installed": {
+    "message": "已添加 {name}",
+    "description": "顯示已添加的提示"
+  },
+  "message.tryItHint": {
+    "message": "點擊下面的提示，在 Studio 聊天裡繼續。",
+    "description": "顯示試用提示"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "此連接器需要在連接器列表中手動填寫憑證。",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "返回地址不受信任，已拒絕跳轉。",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "未指定要添加的連接器。",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "正在跳轉到授權頁面…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "尚未連接，點擊開始授權",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "連接後即可使用這些示例提示詞",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "此連接器使用本地瀏覽器會話。請先配對 ACE Browser Agent；此處不會收集任何憑據。",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "設備已配對。瀏覽器會話執行端啟用前，此連接器仍不可用；未創建任何雲端授權。",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "選擇瀏覽器設備",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "允許訪問的站點",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "設備 v{version} 仍不兼容，缺少：{capabilities}。請更新 Browser Agent 或配對其他設備。",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "在線",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "離線",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "在線且兼容",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} 個活動會話",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "此連接器可通過所選本地瀏覽器，在聲明的站點中讀取頁面，並執行點擊、輸入、上傳、下載和發布操作。請僅選擇您控制的設備。",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "此設備已停用或撤銷。",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Browser Agent 使用了不同的執行合同，請更新擴展。",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Browser Agent 版本過舊，請更新擴展。",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Browser Agent 當前離線，請在此設備上打開擴展。",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "瀏覽器設備已更換。現有會話已停止，綁定舊版本的定時瀏覽器授權需要重新確認。",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "已停止 {count} 個瀏覽器會話。",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "無法停止瀏覽器會話。",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "已更新默認帳號",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "設置默認帳號失敗",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "給這個帳號起個名字（同一連接器下多個帳號靠它區分）",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "名稱不能超過 64 個字符",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "重命名失敗",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — 已連接帳號：{count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "無法打開該連接器的帳號，請刷新後重試。",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "添加 {name} 憑據",
+    "description": "顯示添加憑據的對話框標題"
+  },
+  "byoc.intro": {
+    "message": "請填寫您在該服務控制台獲取的訪問密鑰。這些憑據僅用於代您調用對應的雲 / SaaS API。",
+    "description": "顯示添加憑據的介紹信息"
+  },
+  "byoc.submit": {
+    "message": "保存並啟用",
+    "description": "用於提交的按鈕"
+  },
+  "byoc.required": {
+    "message": "此項必填",
+    "description": "顯示必填項的提示"
+  },
+  "byoc.disclaimer": {
+    "message": "憑據使用 AES-256-GCM 加密落庫；執行 Skill 時僅在沙盒內存裡短暫解密注入，絕不寫入數據庫明文 / 日誌 / API 響應。可隨時在本頁斷開以失效。",
+    "description": "顯示憑據使用的聲明"
+  },
+  "byoc.extensionCapture": {
+    "message": "抓取並連接",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "用 ACE 瀏覽器插件抓取你的登入態來連接，無需密碼或令牌。",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "未檢測到 ACE 瀏覽器插件，請先安裝後重試。",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "沒抓到登入 Cookie，請確認已在另一個標籤頁登入該平台。",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "打開登入頁",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "點擊下方「抓取並連接」，ACE 插件會讀取登入 Cookie 完成連接。",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "在新標籤頁登入該平台。",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "查看安裝指南",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "連接是用 ACE 插件抓取你的登入態，無需密碼或令牌。請先安裝插件，再回到這裡。",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "需要先安裝 ACE 瀏覽器插件",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "我已安裝，重新檢測",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}

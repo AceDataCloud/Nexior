@@ -1,0 +1,630 @@
+{
+  "title.connections": {
+    "message": "Anslutningar",
+    "description": "connection: title.connections"
+  },
+  "title.connectNew": {
+    "message": "Anslut tjänst",
+    "description": "connection: title.connectNew"
+  },
+  "title.connectCustom": {
+    "message": "Anslut MCP-server",
+    "description": "connection: title.connectCustom"
+  },
+  "title.addCustomConnector": {
+    "message": "Lägg till anpassad anslutning",
+    "description": "connection: title.addCustomConnector"
+  },
+  "title.browse": {
+    "message": "Bläddra i anslutningar",
+    "description": "connection: title.browse"
+  },
+  "title.directory": {
+    "message": "Anslutningskatalog",
+    "description": "connection: title.directory"
+  },
+  "title.groupConnected": {
+    "message": "Anslutna",
+    "description": "connection: title.groupConnected"
+  },
+  "title.groupAvailable": {
+    "message": "Tillgängliga",
+    "description": "connection: title.groupAvailable"
+  },
+  "title.groupRecommended": {
+    "message": "Rekommenderat",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.toolPermissions": {
+    "message": "Verktygsbehörigheter",
+    "description": "connection: title.toolPermissions"
+  },
+  "title.overview": {
+    "message": "Översikt",
+    "description": "connection: title.overview"
+  },
+  "title.tryIt": {
+    "message": "Prova",
+    "description": "connection: title.tryIt"
+  },
+  "title.actions": {
+    "message": "Åtgärder",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Konto",
+    "description": "connection: field.account"
+  },
+  "field.status": {
+    "message": "Status",
+    "description": "connection: field.status"
+  },
+  "field.expiresAt": {
+    "message": "Utgångstid",
+    "description": "connection: field.expiresAt"
+  },
+  "field.lastRefreshedAt": {
+    "message": "Senast uppdaterad",
+    "description": "connection: field.lastRefreshedAt"
+  },
+  "field.createdAt": {
+    "message": "Ansluten vid",
+    "description": "connection: field.createdAt"
+  },
+  "field.connectionRevision": {
+    "message": "Anslutningsversion",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Aktiva sessioner",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Utför kontrakt",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Aktiv",
+    "description": "connection: status.active"
+  },
+  "status.expired": {
+    "message": "Utgången",
+    "description": "connection: status.expired"
+  },
+  "status.revoked": {
+    "message": "Återkallad",
+    "description": "connection: status.revoked"
+  },
+  "status.pending": {
+    "message": "Väntar på aktivering",
+    "description": "connection: status.pending"
+  },
+  "button.connect": {
+    "message": "Anslut",
+    "description": "connection: button.connect"
+  },
+  "button.addCustom": {
+    "message": "Lägg till",
+    "description": "connection: button.addCustom"
+  },
+  "button.reconnect": {
+    "message": "Återanslut",
+    "description": "connection: button.reconnect"
+  },
+  "button.refresh": {
+    "message": "Uppdatera",
+    "description": "connection: button.refresh"
+  },
+  "button.disconnect": {
+    "message": "Koppla bort",
+    "description": "connection: button.disconnect"
+  },
+  "button.browse": {
+    "message": "Bläddra",
+    "description": "connection: button.browse"
+  },
+  "button.browseAll": {
+    "message": "Bläddra bland alla anslutningar",
+    "description": "connection: button.browseAll"
+  },
+  "button.addCustomConnector": {
+    "message": "Lägg till anpassad anslutning",
+    "description": "connection: button.addCustomConnector"
+  },
+  "button.install": {
+    "message": "Lägg till",
+    "description": "connection: button.install"
+  },
+  "button.returnToApp": {
+    "message": "Återgå till appen",
+    "description": "connection: button.returnToApp"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Byt enhet",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Stoppa sessioner",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Lägg till konto",
+    "description": "connection: button.addAccount"
+  },
+  "button.manageAccounts": {
+    "message": "Hantera",
+    "description": "connection: button.manageAccounts"
+  },
+  "button.setDefault": {
+    "message": "Ställ in som standard",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Döp om",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Aktuell som standard",
+    "description": "connection: button.isDefault"
+  },
+  "label.mcpServer": {
+    "message": "MCP-server",
+    "description": "connection: label.mcpServer"
+  },
+  "label.advancedSettings": {
+    "message": "Avancerade inställningar",
+    "description": "connection: label.advancedSettings"
+  },
+  "label.noScopes": {
+    "message": "Inga behörighetsområden",
+    "description": "connection: label.noScopes"
+  },
+  "label.noTools": {
+    "message": "Denna tjänst tillhandahåller inga verktyg",
+    "description": "connection: label.noTools"
+  },
+  "label.toolsConnectFirst": {
+    "message": "Anslut för att se verktygen som erbjuds av denna tjänst",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "label.never": {
+    "message": "Aldrig",
+    "description": "connection: label.never"
+  },
+  "label.defaultAccount": {
+    "message": "Standard",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Anpassad",
+    "description": "connection: label.custom"
+  },
+  "label.notConnected": {
+    "message": "Ej ansluten",
+    "description": "connection: label.notConnected"
+  },
+  "label.authMethod": {
+    "message": "Autentiseringsmetod",
+    "description": "connection: label.authMethod"
+  },
+  "label.credentials": {
+    "message": "Referenser",
+    "description": "connection: label.credentials"
+  },
+  "label.official": {
+    "message": "Officiell",
+    "description": "connection: label.official"
+  },
+  "label.partner": {
+    "message": "Partner",
+    "description": "connection: label.partner"
+  },
+  "label.community": {
+    "message": "Gemenskap",
+    "description": "connection: label.community"
+  },
+  "label.featured": {
+    "message": "Utvalda",
+    "description": "connection: label.featured"
+  },
+  "label.new": {
+    "message": "Ny",
+    "description": "connection: label.new"
+  },
+  "label.trending": {
+    "message": "Populär",
+    "description": "connection: label.trending"
+  },
+  "label.all": {
+    "message": "Alla",
+    "description": "connection: label.all"
+  },
+  "category.all": {
+    "message": "Alla",
+    "description": "connection: category.all"
+  },
+  "category.creative": {
+    "message": "Kreativitet och media",
+    "description": "connection: category.creative"
+  },
+  "category.search": {
+    "message": "Sök och webbsidor",
+    "description": "connection: category.search"
+  },
+  "category.developer": {
+    "message": "Utvecklarverktyg",
+    "description": "connection: category.developer"
+  },
+  "category.productivity": {
+    "message": "Produktivitet och dokument",
+    "description": "connection: category.productivity"
+  },
+  "category.communication": {
+    "message": "Kommunikation",
+    "description": "connection: category.communication"
+  },
+  "category.data": {
+    "message": "Data och analys",
+    "description": "connection: category.data"
+  },
+  "category.commerce": {
+    "message": "Handel och finans",
+    "description": "connection: category.commerce"
+  },
+  "category.automation": {
+    "message": "Automatisering",
+    "description": "connection: category.automation"
+  },
+  "category.uncategorized": {
+    "message": "Övrigt",
+    "description": "connection: category.uncategorized"
+  },
+  "placeholder.name": {
+    "message": "Namn",
+    "description": "connection: placeholder.name"
+  },
+  "placeholder.serverUrl": {
+    "message": "Fjärr MCP-server URL",
+    "description": "connection: placeholder.serverUrl"
+  },
+  "placeholder.clientId": {
+    "message": "OAuth-klient-ID (valfritt)",
+    "description": "connection: placeholder.clientId"
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth-klienthemlighet (valfritt)",
+    "description": "connection: placeholder.clientSecret"
+  },
+  "placeholder.search": {
+    "message": "Sök anslutningar",
+    "description": "connection: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Hantera dina anslutna tredjepartstjänster. Dessa anslutningar tillåter AceDataCloud-applikationen att utföra åtgärder å dina vägnar.",
+    "description": "connection: message.pageDescription"
+  },
+  "message.noConnections": {
+    "message": "Inga anslutningar tillgängliga",
+    "description": "connection: message.noConnections"
+  },
+  "message.notConnectedYet": {
+    "message": "Ej ansluten än, klicka för att börja auktorisera",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.noConnectionsHint": {
+    "message": "Anslut tjänster för att få en rikare upplevelse i appar som ChatGPT, Claude med flera.",
+    "description": "connection: message.noConnectionsHint"
+  },
+  "message.connectConfirm": {
+    "message": "Du kommer att omdirigeras till {provider} för att auktorisera.",
+    "description": "connection: message.connectConfirm"
+  },
+  "message.selectScopes": {
+    "message": "Välj {provider} behörighetsområden",
+    "description": "connection: message.selectScopes"
+  },
+  "message.selectScopesHint": {
+    "message": "Välj de behörigheter du vill auktorisera. Flera val är möjliga, om inget väljs ges endast grundläggande inloggningsinformation.",
+    "description": "connection: message.selectScopesHint"
+  },
+  "message.disconnectConfirm": {
+    "message": "Är du säker på att du vill koppla bort från {provider}? Appar som använder denna anslutning kommer att förlora åtkomst.",
+    "description": "connection: message.disconnectConfirm"
+  },
+  "message.disconnected": {
+    "message": "Kopplad bort från {provider}",
+    "description": "connection: message.disconnected"
+  },
+  "message.refreshed": {
+    "message": "Anslutning har uppdaterats",
+    "description": "connection: message.refreshed"
+  },
+  "message.refreshFailed": {
+    "message": "Uppdatering av anslutning misslyckades",
+    "description": "connection: message.refreshFailed"
+  },
+  "message.customConnectorHint": {
+    "message": "Anslut till en fjärr MCP-server som stöder OAuth.",
+    "description": "connection: message.customConnectorHint"
+  },
+  "message.customConnectorTrust": {
+    "message": "Lägg endast till anslutningar du litar på. Verktyg och databehörigheter som tillhandahålls av anslutningen kontrolleras av den aktuella tjänsten.",
+    "description": "connection: message.customConnectorTrust"
+  },
+  "message.callbackMissingParams": {
+    "message": "Auktoriseringsåterkoppling saknar nödvändiga parametrar, vänligen initiera anslutningen igen.",
+    "description": "connection: message.callbackMissingParams"
+  },
+  "message.callbackFailed": {
+    "message": "Auktorisering av anslutning misslyckades, försök igen senare.",
+    "description": "connection: message.callbackFailed"
+  },
+  "message.selectConnector": {
+    "message": "Välj en anslutning till vänster för att se detaljer",
+    "description": "connection: message.selectConnector"
+  },
+  "message.noMatch": {
+    "message": "Inga matchande anslutningar",
+    "description": "connection: message.noMatch"
+  },
+  "message.manageUnavailable": {
+    "message": "Kunde inte öppna kontot för den här anslutningen, vänligen uppdatera och försök igen.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Anslutna konton: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.toolsLoading": {
+    "message": "Laddar verktyg som tillhandahålls av servern…",
+    "description": "connection: message.toolsLoading"
+  },
+  "message.browseHint": {
+    "message": "Bläddra bland utvalda anslutningar och lägg till dem i din arbetsyta med ett klick.",
+    "description": "connection: message.browseHint"
+  },
+  "message.browseEmpty": {
+    "message": "Inga matchande anslutningar hittades, prova med ett annat nyckelord eller justera filtreringskriterierna.",
+    "description": "connection: message.browseEmpty"
+  },
+  "message.installFailed": {
+    "message": "Tillägg misslyckades, försök igen senare.",
+    "description": "connection: message.installFailed"
+  },
+  "message.installed": {
+    "message": "Tillagd {name}",
+    "description": "connection: message.installed"
+  },
+  "message.installRedirecting": {
+    "message": "Omdirigerar till auktoriseringssidan…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.installMissingId": {
+    "message": "Ingen anslutning angiven för att lägga till.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "Återvändsadressen är inte betrodd och har avvisats.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Denna anslutning kräver att autentiseringsuppgifter anges manuellt i anslutningslistan.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.tryItHint": {
+    "message": "Klicka på tipsen nedan för att fortsätta i Studio-chatten.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Anslut för att använda dessa exempel på uppmaningar",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Denna anslutare använder lokala webbläsarsessioner. Vänligen para först med ACE Webbläsaragent; inga uppgifter kommer att samlas in här.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Enheten är parat. Denna anslutare är fortfarande inte tillgänglig innan webbläsarsessionens exekveringsändpunkt aktiveras; inga molntillstånd har skapats.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Välj webbläsarens enhet",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Tillåtna webbplatser",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Enhet v{version} är fortfarande inkompatibel, saknar: {capabilities}. Vänligen uppdatera webbläsaragenten eller para med en annan enhet.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "Online",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Offline",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "Online och kompatibel",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} aktiva sessioner",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Denna anslutare kan läsa sidor och utföra klick, inmatningar, uppladdningar, nedladdningar och publiceringar på angivna webbplatser via den valda lokala webbläsaren. Vänligen välj endast enheter du kontrollerar.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Denna enhet har inaktiverats eller återkallats.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Webbläsaragenten använder ett annat utförandekontrakt, vänligen uppdatera tillägget.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Webbläsaragentens version är för gammal, vänligen uppdatera tillägget.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Webbläsaragenten är för närvarande offline, vänligen öppna tillägget på denna enhet.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Webbläsarens enhet har bytts. Befintliga sessioner har stoppats, bindning av den gamla versionen av den tidsbundna webbläsartillståndet behöver bekräftas på nytt.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "{count} webbläsarsessioner har stoppats.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Kunde inte stoppa webbläsarsessionen.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Standardkonto har uppdaterats",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Misslyckades med att ställa in standardkonto",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Ge detta konto ett namn (flera konton under samma anslutning särskiljs av detta)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Namnet får inte överstiga 64 tecken",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Misslyckades med att byta namn",
+    "description": "connection: message.renameFailed"
+  },
+  "byoc.dialogTitle": {
+    "message": "Lägg till {name} referenser",
+    "description": "connection: byoc.dialogTitle"
+  },
+  "byoc.intro": {
+    "message": "Fyll i den åtkomstnyckel du fått från tjänstens kontrollpanel. Dessa referenser används endast för att anropa motsvarande moln / SaaS API.",
+    "description": "connection: byoc.intro"
+  },
+  "byoc.submit": {
+    "message": "Spara och aktivera",
+    "description": "connection: byoc.submit"
+  },
+  "byoc.required": {
+    "message": "Detta fält är obligatoriskt",
+    "description": "connection: byoc.required"
+  },
+  "byoc.disclaimer": {
+    "message": "Referenser lagras med AES-256-GCM-kryptering; vid körning av Skill avkrypteras de endast kortvarigt i sandbox-minnet och skrivs aldrig in i databasen i klartext / loggar / API-svar. Du kan när som helst koppla bort här för att ogiltigförklara.",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionIntro": {
+    "message": "Använd ACE webbläsartillägg för att fånga din inloggning utan lösenord eller token.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Logga in på plattformen i en ny flik.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Öppna inloggningssidan",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Klicka på \"Fånga och anslut\" nedan, ACE-tillägget kommer att läsa inloggningscookies för att slutföra anslutningen.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionCapture": {
+    "message": "Fånga och anslut",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionMissing": {
+    "message": "ACE webbläsartillägg har inte upptäckts, vänligen installera det och försök igen.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "Inga inloggningscookies fångades, vänligen bekräfta att du är inloggad på plattformen i en annan flik.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "ACE webbläsartillägg måste installeras först",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "Anslutningen använder ACE-plugin för att hämta din inloggning, utan lösenord eller token. Vänligen installera plugin först och återkom hit.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionGuide": {
+    "message": "Se installationsguiden",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionRecheck": {
+    "message": "Jag har installerat, kontrollera igen",
+    "description": "connection: byoc.extensionRecheck"
+  },
+  "method.dialogTitle": {
+    "message": "Anslut {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Välj anslutningssätt",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Rekommenderas",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth-autorisering",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth-autorisering",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Egna autentiseringsuppgifter",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Offentlig åtkomst",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Lokal webbläsarsession",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Logga in och godkänn hos leverantören — säkert, inga nycklar att klistra in.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Logga in och godkänn hos leverantören — säkert, inga nycklar att klistra in.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Klistra in nycklarna från tjänstens konsol eller fånga inloggningen med webbläsartillägget.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Anslut direkt — ingen inloggning krävs.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Para ACE Browser Agent; webbläsarens åtgärder utförs lokalt och kräver fortfarande separat godkännande.",
+    "description": "connection: method.desc.browser_session"
+  }
+}

@@ -2,6 +2,7 @@ import {
   ROUTE_CONSOLE_APPLICATION_EXTRA,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+  ROUTE_CONSOLE_CONNECTORS,
   ROUTE_CONSOLE_ORDER_DETAIL,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_ROOT,
@@ -51,6 +52,15 @@ export default {
       path: 'usages',
       name: ROUTE_CONSOLE_USAGE_LIST,
       component: () => import('@/pages/console/usage/List.vue')
+    },
+    // Connector management, ported from auth.acedata.cloud/user/connections.
+    // The route always exists (so a deep link works for testers); the sidebar
+    // entry and the in-app links are gated on the `connections-in-studio`
+    // feature flag. AuthFrontend's page stays live for PlatformFrontend/Dify.
+    {
+      path: 'connectors',
+      name: ROUTE_CONSOLE_CONNECTORS,
+      component: () => import('@/pages/console/connectors/Index.vue')
     }
   ]
 };

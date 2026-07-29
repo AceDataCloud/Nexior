@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "Σύνδεση {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Επιλέξτε τρόπο σύνδεσης",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Συνιστάται",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "Εξουσιοδότηση OAuth",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "Εξουσιοδότηση OAuth",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Δικά σας διαπιστευτήρια",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Δημόσια πρόσβαση",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Τοπική συνεδρία προγράμματος περιήγησης",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Συνδεθείτε και εξουσιοδοτήστε στον πάροχο — ασφαλές, χωρίς κλειδιά.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Συνδεθείτε και εξουσιοδοτήστε στον πάροχο — ασφαλές, χωρίς κλειδιά.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Επικολλήστε τα κλειδιά από την κονσόλα της υπηρεσίας ή καταγράψτε τη σύνδεσή σας με την επέκταση του προγράμματος περιήγησης.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Συνδεθείτε απευθείας — δεν απαιτείται σύνδεση.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Συζήτηση ACE Browser Agent; Οι ενέργειες του προγράμματος περιήγησης εκτελούνται τοπικά και απαιτούν ξεχωριστή έγκριση.",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "Συνδέσεις",
+    "description": "Ο τίτλος της ενότητας που περιέχει τις συνδέσεις."
+  },
+  "title.connectNew": {
+    "message": "Σύνδεση Υπηρεσίας",
+    "description": "Κείμενο για το κουμπί που επιτρέπει τη σύνδεση με μια νέα υπηρεσία."
+  },
+  "title.connectCustom": {
+    "message": "Σύνδεση MCP Server",
+    "description": "Κείμενο για τη σύνδεση με έναν προσαρμοσμένο MCP Server."
+  },
+  "title.addCustomConnector": {
+    "message": "Προσθήκη Προσαρμοσμένου Συνδέτη",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την προσθήκη ενός προσαρμοσμένου συνδέτη."
+  },
+  "title.browse": {
+    "message": "Περιήγηση Συνδέσεων",
+    "description": "Κείμενο για την περιήγηση στις διαθέσιμες συνδέσεις."
+  },
+  "title.directory": {
+    "message": "Κατάλογος Συνδέσεων",
+    "description": "Ο τίτλος του καταλόγου που περιέχει τις συνδέσεις."
+  },
+  "title.groupConnected": {
+    "message": "Συνδεδεμένες",
+    "description": "Ο τίτλος της ομάδας που περιέχει τις συνδεδεμένες υπηρεσίες."
+  },
+  "title.groupAvailable": {
+    "message": "Διαθέσιμες",
+    "description": "Ο τίτλος της ομάδας που περιέχει τις διαθέσιμες υπηρεσίες προς σύνδεση."
+  },
+  "title.toolPermissions": {
+    "message": "Δικαιώματα Εργαλείων",
+    "description": "Ο τίτλος που αναφέρεται στα δικαιώματα των εργαλείων."
+  },
+  "title.tryIt": {
+    "message": "Δοκιμάστε το",
+    "description": "Κείμενο για το κουμπί που επιτρέπει στον χρήστη να δοκιμάσει τη λειτουργία."
+  },
+  "title.groupRecommended": {
+    "message": "Συνιστώμενα",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "Επισκόπηση",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "Ενέργειες",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Λογαριασμός",
+    "description": "Το πεδίο που αναφέρεται στον λογαριασμό του χρήστη."
+  },
+  "field.status": {
+    "message": "Κατάσταση",
+    "description": "Το πεδίο που αναφέρεται στην κατάσταση της σύνδεσης."
+  },
+  "field.expiresAt": {
+    "message": "Ημερομηνία Λήξης",
+    "description": "Το πεδίο που δείχνει πότε λήγει η σύνδεση."
+  },
+  "field.lastRefreshedAt": {
+    "message": "Τελευταία Ανανέωση",
+    "description": "Το πεδίο που δείχνει πότε ανανεώθηκε τελευταία η σύνδεση."
+  },
+  "field.createdAt": {
+    "message": "Ημερομηνία Δημιουργίας",
+    "description": "Το πεδίο που δείχνει πότε δημιουργήθηκε η σύνδεση."
+  },
+  "field.connectionRevision": {
+    "message": "Έκδοση σύνδεσης",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Ενεργές συνεδρίες",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Εκτέλεση σύμβασης",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Ενεργό",
+    "description": "Η κατάσταση που δείχνει ότι η σύνδεση είναι ενεργή."
+  },
+  "status.expired": {
+    "message": "Ληγμένο",
+    "description": "Η κατάσταση που δείχνει ότι η σύνδεση έχει λήξει."
+  },
+  "status.revoked": {
+    "message": "Ανακληθέν",
+    "description": "Η κατάσταση που δείχνει ότι η σύνδεση έχει ανακληθεί."
+  },
+  "status.pending": {
+    "message": "Σε Αναμονή",
+    "description": "Η κατάσταση που δείχνει ότι η σύνδεση είναι σε αναμονή."
+  },
+  "button.connect": {
+    "message": "Σύνδεση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει τη σύνδεση."
+  },
+  "button.addCustom": {
+    "message": "Προσθήκη",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την προσθήκη."
+  },
+  "button.reconnect": {
+    "message": "Επανασύνδεση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την επανασύνδεση."
+  },
+  "button.refresh": {
+    "message": "Ανανέωση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την ανανέωση της σύνδεσης."
+  },
+  "button.disconnect": {
+    "message": "Αποσύνδεση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την αποσύνδεση."
+  },
+  "button.browse": {
+    "message": "Περιήγηση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την περιήγηση."
+  },
+  "button.addCustomConnector": {
+    "message": "Προσθήκη Προσαρμοσμένου Συνδέτη",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την προσθήκη ενός προσαρμοσμένου συνδέτη."
+  },
+  "button.install": {
+    "message": "Προσθήκη",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την εγκατάσταση."
+  },
+  "button.returnToApp": {
+    "message": "Επιστροφή στην εφαρμογή",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "Προβολή όλων των συνδετήρων",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Αλλαγή συσκευής",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Διακοπή συνεδριών",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Προσθήκη λογαριασμού",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "Ορισμός ως προεπιλογή",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Μετονομασία",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Τρέχων ως προεπιλογή",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "Διαχείριση",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "MCP Server",
+    "description": "Ετικέτα που αναφέρεται στον MCP Server."
+  },
+  "label.advancedSettings": {
+    "message": "Προηγμένες Ρυθμίσεις",
+    "description": "Ετικέτα που αναφέρεται στις προηγμένες ρυθμίσεις."
+  },
+  "label.noScopes": {
+    "message": "Χωρίς Εξουσιοδοτήσεις",
+    "description": "Μήνυμα που δείχνει ότι δεν υπάρχουν εξουσιοδοτήσεις."
+  },
+  "label.noTools": {
+    "message": "Αυτή η υπηρεσία δεν παρέχει εργαλεία",
+    "description": "Μήνυμα που δείχνει ότι δεν υπάρχουν εργαλεία διαθέσιμα."
+  },
+  "label.never": {
+    "message": "Ποτέ",
+    "description": "Μήνυμα που δείχνει ότι κάτι δεν έχει συμβεί ποτέ."
+  },
+  "label.defaultAccount": {
+    "message": "Προεπιλογή",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Προσαρμοσμένο",
+    "description": "Ετικέτα που αναφέρεται σε προσαρμοσμένα στοιχεία."
+  },
+  "label.authMethod": {
+    "message": "Μέθοδος Αυθεντικοποίησης",
+    "description": "Ετικέτα που αναφέρεται στη μέθοδο αυθεντικοποίησης."
+  },
+  "label.credentials": {
+    "message": "Διαπιστευτήρια",
+    "description": "Ετικέτα που αναφέρεται στα διαπιστευτήρια."
+  },
+  "label.official": {
+    "message": "Επίσημο",
+    "description": "Ετικέτα που αναφέρεται σε επίσημα στοιχεία."
+  },
+  "label.partner": {
+    "message": "Συνεργάτης",
+    "description": "Ετικέτα που αναφέρεται σε συνεργάτες."
+  },
+  "label.community": {
+    "message": "Κοινότητα",
+    "description": "Ετικέτα που αναφέρεται στην κοινότητα."
+  },
+  "label.featured": {
+    "message": "Προτεινόμενο",
+    "description": "Ετικέτα που αναφέρεται σε προτεινόμενα στοιχεία."
+  },
+  "label.new": {
+    "message": "Νέο",
+    "description": "Ετικέτα που αναφέρεται σε νέα στοιχεία."
+  },
+  "label.trending": {
+    "message": "Δημοφιλές",
+    "description": "Ετικέτα που αναφέρεται σε δημοφιλή στοιχεία."
+  },
+  "label.all": {
+    "message": "Όλα",
+    "description": "Ετικέτα που αναφέρεται σε όλα τα στοιχεία."
+  },
+  "label.notConnected": {
+    "message": "Μη συνδεδεμένο",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "Συνδεθείτε για να δείτε τα εργαλεία που προσφέρει αυτή η υπηρεσία",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "Όλα",
+    "description": "Κατηγορία που περιλαμβάνει όλα τα στοιχεία."
+  },
+  "category.creative": {
+    "message": "Δημιουργία και Μέσα",
+    "description": "Κατηγορία που αναφέρεται στη δημιουργία και τα μέσα."
+  },
+  "category.search": {
+    "message": "Αναζήτηση και Ιστός",
+    "description": "Κατηγορία που αναφέρεται στην αναζήτηση και τον ιστό."
+  },
+  "category.developer": {
+    "message": "Εργαλεία Ανάπτυξης",
+    "description": "Κατηγορία που αναφέρεται στα εργαλεία ανάπτυξης."
+  },
+  "category.productivity": {
+    "message": "Αποτελεσματικότητα και Έγγραφα",
+    "description": "Κατηγορία που αναφέρεται στην αποτελεσματικότητα και τα έγγραφα."
+  },
+  "category.communication": {
+    "message": "Επικοινωνία",
+    "description": "Κατηγορία που αναφέρεται στην επικοινωνία."
+  },
+  "category.data": {
+    "message": "Δεδομένα και Ανάλυση",
+    "description": "Κατηγορία που αναφέρεται στα δεδομένα και την ανάλυση."
+  },
+  "category.commerce": {
+    "message": "Εμπόριο και Χρηματοοικονομικά",
+    "description": "Κατηγορία που αναφέρεται στο εμπόριο και τα χρηματοοικονομικά."
+  },
+  "category.automation": {
+    "message": "Αυτοματοποίηση",
+    "description": "Κατηγορία που αναφέρεται στην αυτοματοποίηση."
+  },
+  "category.uncategorized": {
+    "message": "Άλλα",
+    "description": "Κατηγορία που περιλαμβάνει άλλα στοιχεία."
+  },
+  "placeholder.name": {
+    "message": "Όνομα",
+    "description": "Placeholder για το πεδίο ονόματος."
+  },
+  "placeholder.serverUrl": {
+    "message": "URL απομακρυσμένου MCP server",
+    "description": "Placeholder για το πεδίο URL του απομακρυσμένου MCP server."
+  },
+  "placeholder.clientId": {
+    "message": "OAuth Client ID (προαιρετικό)",
+    "description": "Placeholder για το πεδίο Client ID του OAuth."
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth Client Secret (προαιρετικό)",
+    "description": "Placeholder για το πεδίο Client Secret του OAuth."
+  },
+  "placeholder.search": {
+    "message": "Αναζήτηση Συνδέσεων",
+    "description": "Placeholder για το πεδίο αναζήτησης συνδέσεων."
+  },
+  "message.pageDescription": {
+    "message": "Διαχειριστείτε τις τρίτες υπηρεσίες που έχετε συνδέσει. Αυτές οι συνδέσεις επιτρέπουν στην εφαρμογή AceDataCloud να εκτελεί ενέργειες εκ μέρους σας.",
+    "description": "Περιγραφή της σελίδας που εξηγεί τη λειτουργία των συνδέσεων."
+  },
+  "message.noConnections": {
+    "message": "Δεν υπάρχουν συνδέσεις",
+    "description": "Μήνυμα που δείχνει ότι δεν υπάρχουν διαθέσιμες συνδέσεις."
+  },
+  "message.noConnectionsHint": {
+    "message": "Αφού συνδεθείτε με υπηρεσίες, μπορείτε να αποκτήσετε μια πιο πλούσια εμπειρία σε εφαρμογές όπως το ChatGPT και το Claude.",
+    "description": "Υπόδειξη που εξηγεί τα οφέλη της σύνδεσης με υπηρεσίες."
+  },
+  "message.connectConfirm": {
+    "message": "Θα μεταφερθείτε στο {provider} για εξουσιοδότηση.",
+    "description": "Μήνυμα επιβεβαίωσης που δείχνει ότι ο χρήστης θα μεταφερθεί για εξουσιοδότηση."
+  },
+  "message.selectScopes": {
+    "message": "Επιλέξτε εξουσιοδοτήσεις {provider}",
+    "description": "Μήνυμα που ζητά από τον χρήστη να επιλέξει τις εξουσιοδοτήσεις."
+  },
+  "message.selectScopesHint": {
+    "message": "Επιλέξτε τις εξουσιοδοτήσεις που θέλετε να δώσετε. Μπορείτε να επιλέξετε πολλές, αν δεν επιλέξετε, θα δοθούν μόνο οι βασικές πληροφορίες σύνδεσης.",
+    "description": "Υπόδειξη που εξηγεί τις επιλογές εξουσιοδότησης."
+  },
+  "message.disconnectConfirm": {
+    "message": "Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε από το {provider}; Οι εφαρμογές που χρησιμοποιούν αυτόν τον συνδέτη θα χάσουν την πρόσβαση.",
+    "description": "Μήνυμα επιβεβαίωσης για την αποσύνδεση από τον πάροχο."
+  },
+  "message.disconnected": {
+    "message": "Αποσυνδεδεμένο από το {provider}",
+    "description": "Μήνυμα που δείχνει ότι η σύνδεση έχει αποσυνδεθεί."
+  },
+  "message.refreshed": {
+    "message": "Η σύνδεση έχει ανανεωθεί",
+    "description": "Μήνυμα που δείχνει ότι η σύνδεση έχει ανανεωθεί."
+  },
+  "message.refreshFailed": {
+    "message": "Αποτυχία ανανέωσης σύνδεσης",
+    "description": "Μήνυμα που δείχνει ότι η ανανέωση της σύνδεσης απέτυχε."
+  },
+  "message.customConnectorHint": {
+    "message": "Η σύνδεση υποστηρίζει απομακρυσμένο MCP server με OAuth.",
+    "description": "Υπόδειξη που εξηγεί ότι η σύνδεση υποστηρίζει OAuth."
+  },
+  "message.customConnectorTrust": {
+    "message": "Προσθέστε μόνο συνδέτες που εμπιστεύεστε. Τα εργαλεία και τα δικαιώματα δεδομένων που παρέχονται από τον συνδέτη ελέγχονται από την αντίστοιχη υπηρεσία.",
+    "description": "Μήνυμα προειδοποίησης σχετικά με την εμπιστοσύνη στους συνδέτες."
+  },
+  "message.callbackMissingParams": {
+    "message": "Η εξουσιοδότηση επιστροφής κλήσης λείπει απαραίτητες παράμετροι, παρακαλώ επαναλάβετε τη σύνδεση.",
+    "description": "Μήνυμα σφάλματος που δείχνει ότι λείπουν παράμετροι."
+  },
+  "message.callbackFailed": {
+    "message": "Η εξουσιοδότηση σύνδεσης απέτυχε, παρακαλώ δοκιμάστε ξανά αργότερα.",
+    "description": "Μήνυμα σφάλματος που δείχνει ότι η εξουσιοδότηση απέτυχε."
+  },
+  "message.selectConnector": {
+    "message": "Επιλέξτε έναν συνδέτη από αριστερά για να δείτε λεπτομέρειες",
+    "description": "Μήνυμα που ζητά από τον χρήστη να επιλέξει έναν συνδέτη."
+  },
+  "message.noMatch": {
+    "message": "Δεν βρέθηκαν ταιριαστοί συνδέτες",
+    "description": "Μήνυμα που δείχνει ότι δεν υπάρχουν ταιριαστοί συνδέτες."
+  },
+  "message.toolsLoading": {
+    "message": "Φορτώνουμε τα εργαλεία που παρέχονται από τον διακομιστή…",
+    "description": "Μήνυμα που δείχνει ότι τα εργαλεία φορτώνονται."
+  },
+  "message.browseHint": {
+    "message": "Περιηγηθείτε σε επιλεγμένους συνδέτες και προσθέστε τους στο χώρο εργασίας σας με ένα κλικ.",
+    "description": "Υπόδειξη που εξηγεί τη διαδικασία περιήγησης και προσθήκης συνδέσεων."
+  },
+  "message.browseEmpty": {
+    "message": "Δεν βρέθηκαν ταιριαστοί συνδέτες, δοκιμάστε με διαφορετική λέξη-κλειδί ή προσαρμόστε τα φίλτρα.",
+    "description": "Μήνυμα που δείχνει ότι δεν υπάρχουν ταιριαστοί συνδέτες."
+  },
+  "message.installFailed": {
+    "message": "Η προσθήκη απέτυχε, παρακαλώ δοκιμάστε ξανά αργότερα.",
+    "description": "Μήνυμα σφάλματος που δείχνει ότι η προσθήκη απέτυχε."
+  },
+  "message.installed": {
+    "message": "Προστέθηκε {name}",
+    "description": "Μήνυμα που δείχνει ότι κάτι έχει προστεθεί."
+  },
+  "message.tryItHint": {
+    "message": "Κάντε κλικ στις παρακάτω υποδείξεις για να συνεχίσετε στη συνομιλία του Studio.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Αυτή η σύνδεση απαιτεί χειροκίνητη συμπλήρωση των διαπιστευτηρίων στη λίστα συνδέσεων.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "Η διεύθυνση επιστροφής δεν είναι αξιόπιστη, η ανακατεύθυνση απορρίφθηκε.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "Δεν έχει καθοριστεί η σύνδεση που πρέπει να προστεθεί.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "Ανακατευθυνόμαστε στη σελίδα εξουσιοδότησης…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "Δεν έχει συνδεθεί ακόμα, κάντε κλικ για να ξεκινήσετε την εξουσιοδότηση",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Συνδεθείτε για να χρησιμοποιήσετε αυτά τα παραδείγματα προτροπών",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Αυτός ο συνδετήρας χρησιμοποιεί τοπικές συνεδρίες προγράμματος περιήγησης. Παρακαλώ ζευγαρώστε πρώτα τον ACE Browser Agent; Δεν θα συλλεχθούν διαπιστευτήρια εδώ.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Η συσκευή έχει ζευγαρωθεί. Αυτός ο συνδετήρας δεν είναι διαθέσιμος μέχρι να ενεργοποιηθεί η εκτέλεση της συνεδρίας του προγράμματος περιήγησης; Δεν έχει δημιουργηθεί καμία εξουσιοδότηση στο cloud.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Επιλέξτε συσκευή προγράμματος περιήγησης",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Επιτρεπόμενοι ιστότοποι",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Η συσκευή v{version} εξακολουθεί να είναι ασύμβατη, λείπουν: {capabilities}. Παρακαλώ ενημερώστε τον Browser Agent ή ζευγαρώστε με άλλη συσκευή.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "Συνδεδεμένο",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Εκτός σύνδεσης",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "Συνδεδεμένο και συμβατό",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} ενεργές συνεδρίες",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Αυτός ο συνδετήρας μπορεί να διαβάσει σελίδες και να εκτελεί κλικ, εισαγωγές, αναφορές, λήψεις και δημοσιεύσεις στους δηλωμένους ιστότοπους μέσω του επιλεγμένου τοπικού προγράμματος περιήγησης. Επιλέξτε μόνο συσκευές που ελέγχετε.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Αυτή η συσκευή έχει απενεργοποιηθεί ή ανακληθεί.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Ο Browser Agent χρησιμοποιεί διαφορετική εκτέλεση σύμβασης, παρακαλώ ενημερώστε την επέκταση.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Η έκδοση του Browser Agent είναι πολύ παλιά, παρακαλώ ενημερώστε την επέκταση.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Ο Browser Agent είναι αυτή τη στιγμή εκτός σύνδεσης, παρακαλώ ανοίξτε την επέκταση σε αυτή τη συσκευή.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Η συσκευή του προγράμματος περιήγησης έχει αλλάξει. Οι υπάρχουσες συνεδρίες έχουν σταματήσει, η δέσμευση της παλιάς έκδοσης του χρονομετρημένου προγράμματος περιήγησης απαιτεί επαναβεβαίωση.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "Διακόπηκαν {count} συνεδρίες προγράμματος περιήγησης.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Αποτυχία διακοπής συνεδρίας προγράμματος περιήγησης.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Ο προεπιλεγμένος λογαριασμός έχει ενημερωθεί",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Αποτυχία ρύθμισης προεπιλεγμένου λογαριασμού",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Δώστε ένα όνομα σε αυτόν τον λογαριασμό (πολλοί λογαριασμοί κάτω από τον ίδιο συνδετήρα διακρίνονται με αυτό)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Το όνομα δεν μπορεί να υπερβαίνει τους 64 χαρακτήρες",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Αποτυχία μετονομασίας",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Συνδεδεμένοι λογαριασμοί: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "Δεν είναι δυνατή η πρόσβαση στους λογαριασμούς αυτού του συνδέσμου, παρακαλώ ανανεώστε και δοκιμάστε ξανά.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "Προσθήκη Διαπιστευτηρίων {name}",
+    "description": "Τίτλος διαλόγου για την προσθήκη διαπιστευτηρίων."
+  },
+  "byoc.intro": {
+    "message": "Παρακαλώ συμπληρώστε το κλειδί πρόσβασης που αποκτήσατε από την κονσόλα της υπηρεσίας. Αυτά τα διαπιστευτήρια χρησιμοποιούνται μόνο για να καλέσετε το αντίστοιχο API cloud / SaaS.",
+    "description": "Εισαγωγή που εξηγεί τη χρήση των διαπιστευτηρίων."
+  },
+  "byoc.submit": {
+    "message": "Αποθήκευση και Ενεργοποίηση",
+    "description": "Κείμενο για το κουμπί που επιτρέπει την αποθήκευση και ενεργοποίηση."
+  },
+  "byoc.required": {
+    "message": "Απαιτείται",
+    "description": "Μήνυμα που δείχνει ότι το πεδίο είναι υποχρεωτικό."
+  },
+  "byoc.disclaimer": {
+    "message": "Τα διαπιστευτήρια χρησιμοποιούν κρυπτογράφηση AES-256-GCM. Κατά την εκτέλεση του Skill, αποκρυπτογραφούνται προσωρινά στη μνήμη του sandbox και δεν αποθηκεύονται σε βάσεις δεδομένων ή αρχεία καταγραφής. Μπορείτε να αποσυνδεθείτε ανά πάσα στιγμή από αυτή τη σελίδα για να τα ακυρώσετε.",
+    "description": "Προειδοποίηση σχετικά με τη χρήση και την ασφάλεια των διαπιστευτηρίων."
+  },
+  "byoc.extensionCapture": {
+    "message": "Σύλληψη και σύνδεση",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "Χρησιμοποιήστε το πρόσθετο του προγράμματος περιήγησης ACE για να συλλάβετε την κατάσταση σύνδεσής σας χωρίς κωδικό πρόσβασης ή διακριτικό.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "Δεν ανιχνεύθηκε το πρόσθετο του προγράμματος περιήγησης ACE, παρακαλώ εγκαταστήστε το και δοκιμάστε ξανά.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "Δεν βρέθηκαν cookies σύνδεσης, παρακαλώ επιβεβαιώστε ότι έχετε συνδεθεί στην πλατφόρμα σε άλλη καρτέλα.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Άνοιγμα σελίδας σύνδεσης",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Κάντε κλικ στο «Σύλληψη και σύνδεση» παρακάτω, το πρόσθετο ACE θα διαβάσει τα cookies σύνδεσης για να ολοκληρώσει τη σύνδεση.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Συνδεθείτε στην πλατφόρμα σε νέα καρτέλα.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "Δείτε τον οδηγό εγκατάστασης",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "Η σύνδεση γίνεται μέσω του πρόσθετου ACE που ανακτά την κατάσταση σύνδεσής σας, χωρίς να απαιτείται κωδικός ή διακριτικό. Παρακαλώ εγκαταστήστε πρώτα το πρόσθετο και επιστρέψτε εδώ.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "Πρέπει πρώτα να εγκαταστήσετε το πρόσθετο προγράμματος περιήγησης ACE",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "Έχω εγκαταστήσει, επανέλεγχος",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}
