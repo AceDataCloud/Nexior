@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 01:28:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 29 Jul 2026 03:43:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.340.8
+
+Wed, 29 Jul 2026 03:43:07 GMT
+
+### Patches
+
+- show the scheduled task id under its name, click to copy (dev@acedata.cloud)
 
 ## 3.340.7
 
