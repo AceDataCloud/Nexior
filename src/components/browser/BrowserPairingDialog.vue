@@ -121,8 +121,11 @@ interface IData {
   deviceName: string;
   errorMessage: string;
   nowMs: number;
-  pollTimer: ReturnType<typeof window.setInterval> | null;
-  clockTimer: ReturnType<typeof window.setInterval> | null;
+  // `number`, not ReturnType<typeof setInterval> — Nexior's tsconfig pulls in
+  // Node types, where that resolves to NodeJS.Timeout and clashes with the
+  // browser's numeric handle.
+  pollTimer: number | null;
+  clockTimer: number | null;
   decision: 'confirm' | 'reject' | null;
   requestGeneration: number;
 }

@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
 import { getBaseUrlAuth } from '@/utils';
+import type { IBrowserDevice } from '@/models/browserDevice';
 
 /**
  * Connections and the connector catalog live in AuthBackend, not
@@ -30,16 +31,7 @@ export interface IConnectionProfile {
   [key: string]: unknown;
 }
 
-/** Browser-device-backed connections are managed at auth.acedata.cloud —
- *  Studio only renders what the API returns, so a structural type is
- *  enough here (no device pairing UI is ported). */
-export interface IBrowserConnectionDevice {
-  id: string;
-  name?: string;
-  platform?: string;
-  status?: string;
-  [key: string]: unknown;
-}
+export type IBrowserConnectionDevice = IBrowserDevice;
 
 /** A localized OAuth permission entry returned by the catalog endpoint.
  *  ``id`` is the raw upstream OAuth scope (e.g. ``channels:read``,
