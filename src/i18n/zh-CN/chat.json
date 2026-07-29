@@ -1223,5 +1223,45 @@
   "scheduledTasks.run.reason.run_abandoned": {
     "message": "运行状态未知",
     "description": "工作进程未报告最终状态，运行可能已完成也可能已中断"
+  },
+  "actions.rename": {
+    "message": "重命名",
+    "description": "会话操作菜单中的重命名菜单项"
+  },
+  "actions.renameTitle": {
+    "message": "重命名会话",
+    "description": "重命名会话对话框的标题"
+  },
+  "actions.renameEmpty": {
+    "message": "请输入名称",
+    "description": "重命名时名称为空的提示"
+  },
+  "actions.renameSuccess": {
+    "message": "已重命名",
+    "description": "重命名会话成功的提示"
+  },
+  "actions.renameFailed": {
+    "message": "重命名失败，请稍后重试",
+    "description": "重命名会话失败的提示"
+  },
+  "actions.deleteConfirm": {
+    "message": "确认删除该会话？删除后不可恢复。",
+    "description": "删除会话前的确认说明"
+  },
+  "actions.deleteSuccess": {
+    "message": "已删除",
+    "description": "删除会话成功的提示"
+  },
+  "actions.deleteFailed": {
+    "message": "删除失败，请稍后重试",
+    "description": "删除会话失败的提示"
+  },
+  "actions.tokenMissing": {
+    "message": "Token 不存在，请重新登录",
+    "description": "会话操作时缺少凭证的错误提示"
+  },
+  "actions.conversationMissing": {
+    "message": "会话不存在",
+    "description": "会话操作时目标会话不存在的错误提示"
   }
 }

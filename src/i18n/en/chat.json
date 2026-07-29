@@ -1155,5 +1155,45 @@
   },
   "scheduledTasks.run.reason.run_abandoned": {
     "message": "Run status unknown"
+  },
+  "actions.rename": {
+    "message": "Rename",
+    "description": "Rename menu item in the conversation actions menu"
+  },
+  "actions.renameTitle": {
+    "message": "Rename conversation",
+    "description": "Title of the rename-conversation dialog"
+  },
+  "actions.renameEmpty": {
+    "message": "Please enter a name",
+    "description": "Warning shown when the rename input is empty"
+  },
+  "actions.renameSuccess": {
+    "message": "Renamed",
+    "description": "Toast shown after a conversation is renamed"
+  },
+  "actions.renameFailed": {
+    "message": "Failed to rename. Please try again later.",
+    "description": "Toast shown when renaming a conversation fails"
+  },
+  "actions.deleteConfirm": {
+    "message": "Delete this conversation? This cannot be undone.",
+    "description": "Confirmation text before deleting a conversation"
+  },
+  "actions.deleteSuccess": {
+    "message": "Deleted",
+    "description": "Toast shown after a conversation is deleted"
+  },
+  "actions.deleteFailed": {
+    "message": "Failed to delete. Please try again later.",
+    "description": "Toast shown when deleting a conversation fails"
+  },
+  "actions.tokenMissing": {
+    "message": "Token missing. Please sign in again.",
+    "description": "Error shown when the credential is missing during a conversation action"
+  },
+  "actions.conversationMissing": {
+    "message": "Conversation not found",
+    "description": "Error shown when the target conversation is missing"
   }
 }
