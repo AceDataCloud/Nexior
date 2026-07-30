@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 09:43:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 10:00:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.344.0
+
+Thu, 30 Jul 2026 10:00:57 GMT
+
+### Minor changes
+
+- feat(local-tools): 新增 fs.edit_file 精确编辑与 fs.read_file 分页读 (dev@acedata.cloud)
 
 ## 3.343.5
 
