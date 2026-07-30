@@ -1,5 +1,6 @@
 import { McpHost } from './mcp';
 import * as fsTool from './fs';
+import * as search from './search';
 import { run_command } from './shell';
 import * as computer from './computer';
 import type { McpServerConf, McpServerStatus, ToolInvoke, ToolResult, ToolSpec } from './types';
@@ -9,6 +10,8 @@ const BUILTIN: ToolSpec[] = [
   { name: 'fs.list_dir', description: 'List a directory inside an authorized root', input_schema: { type: 'object', properties: { path: { type: 'string' } }, required: ['path'] }, source: 'builtin', mutates: false },
   { name: 'fs.write_file', description: 'Create or overwrite a whole file inside an authorized root. To change part of an existing file, prefer fs.edit_file.', input_schema: { type: 'object', properties: { path: { type: 'string' }, content: { type: 'string' } }, required: ['path', 'content'] }, source: 'builtin', mutates: true },
   { name: 'fs.edit_file', description: 'Replace an exact string in an existing file inside an authorized root. old_string must match exactly (including indentation) and be unique unless replace_all is set. Preferred over fs.write_file for editing — no need to resend the whole file.', input_schema: { type: 'object', properties: { path: { type: 'string' }, old_string: { type: 'string' }, new_string: { type: 'string' }, replace_all: { type: 'boolean' } }, required: ['path', 'old_string', 'new_string'] }, source: 'builtin', mutates: true },
+  { name: 'fs.glob', description: 'Find files by name pattern inside the authorized roots (e.g. "**/*.ts", "src/**/index.*"). Searches every root when path is omitted. Skips node_modules/.git/dist and similar. Prefer this over crawling with fs.list_dir.', input_schema: { type: 'object', properties: { pattern: { type: 'string' }, path: { type: 'string' }, hidden: { type: 'boolean' }, case_insensitive: { type: 'boolean' } }, required: ['pattern'] }, source: 'builtin', mutates: false },
+  { name: 'fs.grep', description: 'Search file CONTENT by regular expression inside the authorized roots, returning "path:line: text". Optionally restrict to files matching a glob. Skips binaries and node_modules/.git/dist. Use this to locate code instead of reading files one by one.', input_schema: { type: 'object', properties: { pattern: { type: 'string' }, path: { type: 'string' }, glob: { type: 'string' }, case_insensitive: { type: 'boolean' }, hidden: { type: 'boolean' }, max_results: { type: 'number' } }, required: ['pattern'] }, source: 'builtin', mutates: false },
   { name: 'shell.run_command', description: 'Run a local command (argv form)', input_schema: { type: 'object', properties: { cmd: { type: 'string' }, args: { type: 'array', items: { type: 'string' } }, cwd: { type: 'string' } }, required: ['cmd'] }, source: 'builtin', mutates: true }
 ];
 
@@ -261,6 +264,19 @@ export class Registry {
     if (inv.name === 'fs.write_file') return fsTool.write_file(inv.input as { path: string; content: string });
     if (inv.name === 'fs.edit_file')
       return fsTool.edit_file(inv.input as { path: string; old_string: string; new_string: string; replace_all?: boolean });
+    if (inv.name === 'fs.glob')
+      return search.glob(inv.input as { pattern: string; path?: string; hidden?: boolean; case_insensitive?: boolean });
+    if (inv.name === 'fs.grep')
+      return search.grep(
+        inv.input as {
+          pattern: string;
+          path?: string;
+          glob?: string;
+          case_insensitive?: boolean;
+          hidden?: boolean;
+          max_results?: number;
+        }
+      );
     if (inv.name === 'shell.run_command') return run_command(inv.input as { cmd: string; args?: string[]; cwd?: string });
     if (inv.name === 'computer.screenshot') return computer.screenshot();
     if (inv.name === 'computer.click') return computer.click(inv.input as { x: number; y: number; button?: 'left' | 'right' | 'middle' });
