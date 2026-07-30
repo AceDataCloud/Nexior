@@ -92,7 +92,9 @@ export default defineComponent({
   gap: 6px;
   padding: 6px 12px 6px 8px;
   margin: 1px 8px;
-  border-radius: 6px;
+  /* Match the console sidebar's nav rows (SidePanel.vue) and the connectors
+     list, which sit right next to this one. */
+  border-radius: 10px;
   cursor: pointer;
   font-size: 13px;
   color: var(--el-text-color-regular);
@@ -100,12 +102,14 @@ export default defineComponent({
 }
 
 .skill-row:hover {
-  background: var(--el-fill-color);
+  background: var(--el-fill-color-extra-light);
 }
 
+/* Selection used a grey fill, dropping the brand accent every other list in
+   the console uses. */
 .skill-row.active {
-  background: var(--el-fill-color-darker);
-  color: var(--el-text-color-primary);
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
   font-weight: 500;
 }
 

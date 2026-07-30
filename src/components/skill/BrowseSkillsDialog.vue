@@ -550,19 +550,21 @@ export default defineComponent({
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
+/* Same tokens as <el-card>, which every console page uses. */
 .directory-card {
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: 10px;
+  border: 1px solid var(--el-card-border-color);
+  border-radius: var(--el-card-border-radius);
   padding: 14px 16px;
-  background: var(--el-bg-color);
+  background: var(--el-card-bg-color);
   cursor: pointer;
   transition:
     border-color 0.15s,
     box-shadow 0.15s;
 }
+/* A literal black shadow is invisible on the dark background; the token adapts. */
 .directory-card:hover {
   border-color: var(--el-color-primary-light-5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--app-shadow-sm);
 }
 .directory-card.is-installed {
   background: var(--el-color-primary-light-9);
