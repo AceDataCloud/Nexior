@@ -96,7 +96,12 @@ export function reduceBrowserToolExecution(
   const currentSequence = current.execution_sequence;
   const nextSequence = update.execution_sequence;
   if (currentState && TERMINAL_STATES.has(currentState)) return next;
-  if (nextSequence !== undefined && currentSequence !== undefined && nextSequence <= currentSequence) return next;
+  // The sequence identifies the tool call, not a revision of it: dispatch and
+  // completion both carry the same number, so rejecting `<=` dropped every
+  // terminal update and left the card spinning forever. Only a strictly older
+  // sequence is a stale event; same-sequence updates fall through to the
+  // state machine below.
+  if (nextSequence !== undefined && currentSequence !== undefined && nextSequence < currentSequence) return next;
   if (nextState && currentState && nextState !== currentState && !ALLOWED_TRANSITIONS[currentState].has(nextState)) {
     return next;
   }
