@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 05:04:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 09:43:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.343.5
+
+Thu, 30 Jul 2026 09:43:42 GMT
+
+### Patches
+
+- desktop local tools: folder-scoped fs consent stated in the dialog, working PATH for shell.run_command, session grants honored for every tool, macOS folder TCC strings, crash-safe write_file (dev@acedata.cloud)
 
 ## 3.343.4
 
