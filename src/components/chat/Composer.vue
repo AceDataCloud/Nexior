@@ -171,8 +171,7 @@ import {
   openConnectionsManager,
   pasteUploadMixin,
   dropUploadMixin,
-  uploadTrackerMixin,
-  withCurrentUserIdAndSite
+  uploadTrackerMixin
 } from '@/utils';
 import { getSendShortcut } from '@/utils/composer';
 import { openSkillsManager } from '@/utils/skills/openSkillsManager';
