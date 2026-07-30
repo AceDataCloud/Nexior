@@ -68,6 +68,26 @@ describe('reduceBrowserToolExecution', () => {
       )
     ).toEqual({ execution_state: 'executing', execution_sequence: 5 });
   });
+
+  it('accepts a terminal update carrying the same sequence as its dispatch', () => {
+    // Dispatch and completion echo one sequence number (it identifies the tool
+    // call, not a revision), so a `<=` guard froze the card on `executing`.
+    expect(
+      reduceBrowserToolExecution(
+        { execution_state: 'executing', execution_sequence: 1 },
+        { execution_state: 'completed', execution_sequence: 1, origin: 'https://example.com' }
+      )
+    ).toEqual({ execution_state: 'completed', execution_sequence: 1, origin: 'https://example.com' });
+  });
+
+  it('still rejects a same-sequence backward transition', () => {
+    expect(
+      reduceBrowserToolExecution(
+        { execution_state: 'executing', execution_sequence: 2 },
+        { execution_state: 'ready', execution_sequence: 2 }
+      )
+    ).toEqual({ execution_state: 'executing', execution_sequence: 2 });
+  });
 });
 
 describe('isBrowserToolExecutionState', () => {

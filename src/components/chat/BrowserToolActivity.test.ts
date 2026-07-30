@@ -76,4 +76,52 @@ describe('BrowserToolActivity', () => {
     expect(wrapper.text()).not.toContain('secret');
     expect(wrapper.text()).not.toContain('private');
   });
+
+  it('reveals input and output only once expanded', async () => {
+    const wrapper = mountActivity({
+      type: 'tool_use',
+      execution: 'browser',
+      execution_state: 'completed',
+      tool_display_name: 'Read page',
+      input: { url: 'https://example.com' },
+      output: 'page body text',
+      duration_ms: 1234
+    });
+
+    expect(wrapper.find('.activity-body').exists()).toBe(false);
+    expect(wrapper.text()).toContain('1234ms');
+
+    await wrapper.find('.activity-header').trigger('click');
+
+    expect(wrapper.text()).toContain('page body text');
+    expect(wrapper.text()).toContain('https://example.com');
+  });
+
+  it('falls back to streaming args while the input is still arriving', async () => {
+    const wrapper = mountActivity({
+      type: 'tool_use',
+      execution: 'browser',
+      execution_state: 'executing',
+      input_stream: '{"url":"https://partial'
+    });
+
+    await wrapper.find('.activity-header').trigger('click');
+
+    expect(wrapper.text()).toContain('https://partial');
+  });
+
+  it('keeps action buttons from toggling the panel', async () => {
+    const wrapper = mountActivity({
+      type: 'tool_use',
+      execution: 'browser',
+      execution_state: 'executing',
+      browser_session_id: 'session-1',
+      output: 'should stay hidden'
+    });
+
+    await wrapper.find('.activity-actions button').trigger('click');
+
+    expect(wrapper.emitted('stop-session')).toEqual([['session-1']]);
+    expect(wrapper.find('.activity-body').exists()).toBe(false);
+  });
 });
