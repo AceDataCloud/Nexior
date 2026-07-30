@@ -85,13 +85,18 @@ mac:
   entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
   # TCC usage strings for the opt-in local-tool tiers (screen/mic/camera/
-  # automation). Without these macOS hard-crashes the app on first access.
+  # automation) and the three per-folder gates the file tools hit most
+  # (Desktop / Documents / Downloads). Without these macOS hard-crashes the app
+  # on first access, or shows a prompt with a blank reason.
   extendInfo:
     NSScreenCaptureUsageDescription: AceData lets the AI capture your screen only when you run a screen tool.
     NSAudioCaptureUsageDescription: AceData records system audio only when you run an audio-capture tool.
     NSMicrophoneUsageDescription: AceData uses the microphone only for voice tools you start.
     NSCameraUsageDescription: AceData uses the camera only for vision tools you start.
     NSAppleEventsUsageDescription: AceData controls other apps only when you run an automation tool.
+    NSDesktopFolderUsageDescription: AceData reads and writes files on your Desktop only in folders you approve when a file tool runs.
+    NSDocumentsFolderUsageDescription: AceData reads and writes files in Documents only in folders you approve when a file tool runs.
+    NSDownloadsFolderUsageDescription: AceData reads and writes files in Downloads only in folders you approve when a file tool runs.
   # electron-builder 26.x requires `notarize` to be a boolean. Credentials come
   # from env at sign time (any ONE of these sets):
   #   1) APPLE_API_KEY + APPLE_API_KEY_ID + APPLE_API_ISSUER   (App Store Connect API key — CI's choice)

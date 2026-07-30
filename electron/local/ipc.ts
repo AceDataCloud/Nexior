@@ -72,9 +72,16 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   ipcMain.handle('local.tool.invoke', async (e, inv: ToolInvoke) => {
     gate(e);
     if (!registry.isKnown(inv.name)) return { output: `unknown tool ${inv.name}`, is_error: true };
-    const mutates = inv.name !== 'fs.read_file' && inv.name !== 'fs.list_dir';
-    if (!(await consentOk(inv, getWin(), mutates))) return { output: 'denied by user', is_error: true };
-    return registry.invoke(inv);
+    const decision = await consentOk(inv, getWin());
+    if (!decision.ok) return { output: 'denied by user', is_error: true };
+    try {
+      return await registry.invoke(inv);
+    } finally {
+      // An "Allow once" fs grant covers exactly this call — release this
+      // invocation's own hold even if the tool threw. Other calls' grants (and
+      // the session/persistent tiers) are unaffected.
+      decision.release();
+    }
   });
 
   ipcMain.handle('local.config.get', (e) => {

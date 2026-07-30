@@ -1,8 +1,11 @@
-import { spawn, execFile, ChildProcess } from 'node:child_process';
-import { promisify } from 'node:util';
+import { spawn, ChildProcess } from 'node:child_process';
+import { resolveEnhancedPath, windowsNodeDirs } from './env';
 import type { McpServerConf, ToolSpec, ToolResult } from './types';
 
-const execFileAsync = promisify(execFile);
+// Re-exported so existing importers/tests keep resolving it from here; the
+// implementation now lives in env.ts, shared with shell.run_command.
+export { windowsNodeDirs };
+
 const RPC_TIMEOUT_MS = 30_000;
 // The initial `initialize` handshake gets a longer budget than a mid-turn call:
 // a cold MCP server (e.g. `node …/@playwright/mcp` loading playwright-core) on a
@@ -67,59 +70,6 @@ export function mapCallResult(r: { content?: unknown; isError?: boolean }): Tool
     is_error: !!r.isError,
     ...(image ? { image } : {})
   };
-}
-
-// A GUI-launched Electron app (Finder / Dock / Start menu) inherits a stripped
-// PATH — it does NOT source the user's shell profile — so `npx` / `node` /
-// `uvx` / `bunx` (in Homebrew, nvm, ~/.local, bun) resolve to `spawn ENOENT`
-// and every MCP server silently fails to connect. Rebuild a usable PATH once,
-// cached (as a Promise) for the process lifetime. ASYNC so the login-shell
-// probe never blocks the main thread / UI.
-// Standard Node + global-npm install dirs on Windows, derived from STABLE env
-// vars (never the possibly-stale inherited PATH). Exported for tests.
-export function windowsNodeDirs(env: NodeJS.ProcessEnv = process.env): string[] {
-  return [
-    env.ProgramFiles && `${env.ProgramFiles}\\nodejs`,
-    env['ProgramFiles(x86)'] && `${env['ProgramFiles(x86)']}\\nodejs`,
-    env.APPDATA && `${env.APPDATA}\\npm`,
-    env.LOCALAPPDATA && `${env.LOCALAPPDATA}\\Programs\\nodejs`
-  ].filter((d): d is string => !!d);
-}
-
-let cachedPath: Promise<string> | null = null;
-function resolveEnhancedPath(): Promise<string> {
-  if (cachedPath) return cachedPath;
-  cachedPath = (async (): Promise<string> => {
-    const sep = process.platform === 'win32' ? ';' : ':';
-    let parts = (process.env.PATH || '').split(sep);
-    if (process.platform !== 'win32') {
-      // Ask the user's login shell for its real PATH (covers nvm / asdf / brew /
-      // bun). Bounded by a short timeout + static fallback so a slow or noisy
-      // shell can't wedge startup; take the last non-empty line.
-      try {
-        const shell = process.env.SHELL || '/bin/zsh';
-        const { stdout } = await execFileAsync(shell, ['-lic', 'printf "%s" "$PATH"'], { timeout: 3000, encoding: 'utf8' });
-        const line = stdout.trim().split('\n').filter(Boolean).pop() || '';
-        if (line.includes('/')) parts = line.split(sep).concat(parts);
-      } catch {
-        /* login shell unavailable — fall back to the static dirs below */
-      }
-      const home = process.env.HOME || '';
-      parts = parts.concat(['/opt/homebrew/bin', '/usr/local/bin', '/usr/bin', '/bin', `${home}/.local/bin`, `${home}/.bun/bin`]);
-    } else {
-      // A GUI-launched Windows app can inherit a STALE PATH — e.g. an
-      // explorer.exe started before Node was installed (or before its installer
-      // updated the registry PATH) — so a bare `node` / `npx` resolves to
-      // `spawn ENOENT` even though Node IS installed and on the machine PATH.
-      // Append the standard Node + global-npm install dirs so the common install
-      // still resolves. Bare-command resolution tolerates the space in
-      // "Program Files".
-      parts = parts.concat(windowsNodeDirs());
-    }
-    const seen = new Set<string>();
-    return parts.filter((d) => d && !seen.has(d) && seen.add(d)).join(sep);
-  })();
-  return cachedPath;
 }
 
 // Spawns local stdio MCP servers and bridges tools/list + tools/call.
