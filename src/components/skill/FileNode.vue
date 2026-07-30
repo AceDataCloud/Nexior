@@ -215,7 +215,8 @@ export default defineComponent({
   gap: 6px;
   padding: 4px 12px 4px 8px;
   margin: 1px 8px;
-  border-radius: 6px;
+  /* Match the sibling skill rows and the console sidebar. */
+  border-radius: 10px;
   cursor: pointer;
   font-size: 13px;
   color: var(--el-text-color-regular);
@@ -223,12 +224,12 @@ export default defineComponent({
 }
 
 .file-node:hover {
-  background: var(--el-fill-color);
+  background: var(--el-fill-color-extra-light);
 }
 
 .file-node.active {
-  background: var(--el-fill-color-darker);
-  color: var(--el-text-color-primary);
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
   font-weight: 500;
 }
 

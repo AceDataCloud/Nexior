@@ -2082,11 +2082,23 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 0;
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: var(--page-card-radius);
-  background: var(--el-bg-color);
+  // Match <el-card>, which every other console page uses: same border token,
+  // same 4px radius, same elevation. `--page-card-radius` used to be here —
+  // an AuthFrontend variable that doesn't exist in Nexior, so the frame
+  // silently rendered square.
+  border: 1px solid var(--el-card-border-color);
+  border-radius: var(--el-card-border-radius);
+  background: var(--el-card-bg-color);
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--app-shadow-xs);
+}
+
+// el-card gets a glass treatment in dark mode (see _common.scss). This pane
+// isn't an el-card, so mirror it or the page reads flat next to Applications.
+html.dark .connectors-shell {
+  background: var(--app-glass-bg);
+  backdrop-filter: blur(var(--app-glass-blur));
+  border-color: var(--app-glass-border);
 }
 
 .connectors-list {
@@ -2257,7 +2269,9 @@ export default defineComponent({
   gap: 10px;
   padding: 8px 10px;
   margin: 1px 0;
-  border-radius: 8px;
+  // Match the console sidebar's nav rows (SidePanel.vue): same radius, same
+  // hover fill, so the two lists sitting side by side agree.
+  border-radius: 10px;
   cursor: pointer;
   transition:
     background 0.15s,
@@ -2265,7 +2279,7 @@ export default defineComponent({
   position: relative;
 
   &:hover {
-    background: var(--el-fill-color-light);
+    background: var(--el-fill-color-extra-light);
   }
 
   &.active {

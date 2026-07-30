@@ -778,16 +778,19 @@ export default defineComponent({
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: 10px;
-  background: var(--el-bg-color);
+  // Same tokens as <el-card>, which every console page uses.
+  border: 1px solid var(--el-card-border-color);
+  border-radius: var(--el-card-border-radius);
+  background: var(--el-card-bg-color);
   transition:
     border-color 0.1s,
     box-shadow 0.1s;
 
   &:hover {
     border-color: var(--el-border-color);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    // A literal black shadow is invisible on the dark background; the token
+    // adapts.
+    box-shadow: var(--app-shadow-sm);
   }
 }
 

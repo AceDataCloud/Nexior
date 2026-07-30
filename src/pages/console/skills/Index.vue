@@ -564,10 +564,22 @@ export default defineComponent({
   flex: 1 1 auto;
   min-height: 0;
   display: flex;
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: var(--page-card-radius);
-  background: var(--el-bg-color);
+  /* Match <el-card>, which every other console page uses. `--page-card-radius`
+     used to be here — an AuthFrontend variable that doesn't exist in Nexior,
+     so the frame silently rendered square. */
+  border: 1px solid var(--el-card-border-color);
+  border-radius: var(--el-card-border-radius);
+  background: var(--el-card-bg-color);
   overflow: hidden;
+  box-shadow: var(--app-shadow-xs);
+}
+
+/* el-card gets a glass treatment in dark mode (see _common.scss); mirror it
+   here or the page reads flat next to Applications / Orders. */
+html.dark .skills-shell {
+  background: var(--app-glass-bg);
+  backdrop-filter: blur(var(--app-glass-blur));
+  border-color: var(--app-glass-border);
 }
 
 /* ---- Left pane ---- */
