@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 04:07:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 04:12:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.343.3
+
+Thu, 30 Jul 2026 04:12:26 GMT
+
+### Patches
+
+- test(chat): 补浏览器工具卡片的流式回归测试 (dev@acedata.cloud)
 
 ## 3.343.2
 
