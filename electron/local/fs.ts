@@ -119,8 +119,34 @@ export function _resetRootsForTesting(): void {
   ONCE_ROOTS.clear();
 }
 
-export async function read_file(i: { path: string }): Promise<ToolResult> {
-  return { output: await fsp.readFile(resolveExisting(i.path), 'utf8') };
+// A whole-file read of a large source file can dwarf the model's context
+// budget, so reads are paginated by line: `offset` (1-based) + `limit`.
+const DEFAULT_READ_LIMIT = 2000;
+
+export async function read_file(i: { path: string; offset?: number; limit?: number }): Promise<ToolResult> {
+  const text = await fsp.readFile(resolveExisting(i.path), 'utf8');
+  const paginate = i.offset !== undefined || i.limit !== undefined;
+  if (!paginate) {
+    const total = countLines(text);
+    if (total <= DEFAULT_READ_LIMIT) return { output: text };
+    // Silently returning the head would let the model believe it saw the whole
+    // file and "rewrite" it from a truncated view, destroying the tail.
+    const head = text.split(/\r?\n/).slice(0, DEFAULT_READ_LIMIT).join('\n');
+    return {
+      output: `${head}\n\n[truncated: showing lines 1-${DEFAULT_READ_LIMIT} of ${total}; pass offset/limit to read more]`
+    };
+  }
+  const lines = text.split(/\r?\n/);
+  const start = Math.max(1, Math.floor(i.offset ?? 1));
+  const limit = Math.max(1, Math.floor(i.limit ?? DEFAULT_READ_LIMIT));
+  const slice = lines.slice(start - 1, start - 1 + limit);
+  if (!slice.length) return { output: `[no lines: file has ${lines.length} lines, offset ${start} is past the end]` };
+  const end = start + slice.length - 1;
+  return { output: `${slice.join('\n')}\n\n[lines ${start}-${end} of ${lines.length}]` };
+}
+
+function countLines(text: string): number {
+  return text.split(/\r?\n/).length;
 }
 
 export async function list_dir(i: { path: string }): Promise<ToolResult> {
@@ -142,4 +168,48 @@ export async function write_file(i: { path: string; content: string }): Promise<
     throw e;
   }
   return { output: `wrote ${i.content.length} bytes` };
+}
+
+/**
+ * Exact string replacement — the difference between "can edit code" and
+ * "must rewrite whole files". `old_string` must appear EXACTLY once unless
+ * `replace_all` is set, so an ambiguous match fails loudly instead of
+ * silently editing the wrong occurrence.
+ */
+export async function edit_file(i: {
+  path: string;
+  old_string: string;
+  new_string: string;
+  replace_all?: boolean;
+}): Promise<ToolResult> {
+  const f = resolveExisting(i.path);
+  if (i.old_string === i.new_string) throw new Error('old_string and new_string are identical');
+  const text = await fsp.readFile(f, 'utf8');
+  const count = occurrences(text, i.old_string);
+  if (count === 0) throw new Error('old_string not found in file');
+  if (count > 1 && !i.replace_all) {
+    throw new Error(`old_string is not unique (${count} matches); add surrounding context or set replace_all`);
+  }
+  const next = i.replace_all ? text.split(i.old_string).join(i.new_string) : text.replace(i.old_string, i.new_string);
+  // Preserve the original mode: a fixed 0600 would silently strip the
+  // executable bit off a script, or make a world-readable file private.
+  const mode = (await fsp.stat(f)).mode & 0o777;
+  // Unique temp name + cleanup, same rationale as write_file: a fixed
+  // `<file>.tmp` orphaned by a crash makes the path unwritable forever.
+  const tmp = `${f}.${process.pid}.${randomUUID().slice(0, 8)}.tmp`;
+  try {
+    await fsp.writeFile(tmp, next, { flag: 'wx', mode });
+    await fsp.rename(tmp, f); // atomic
+  } catch (e) {
+    await fsp.unlink(tmp).catch(() => undefined);
+    throw e;
+  }
+  return { output: `replaced ${count === 1 || !i.replace_all ? 1 : count} occurrence(s) in ${f}` };
+}
+
+// `split().length - 1` rather than a regex: old_string is arbitrary user text
+// and must never be interpreted as a pattern.
+function occurrences(haystack: string, needle: string): number {
+  if (!needle) return 0;
+  return haystack.split(needle).length - 1;
 }

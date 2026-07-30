@@ -5,9 +5,10 @@ import * as computer from './computer';
 import type { McpServerConf, McpServerStatus, ToolInvoke, ToolResult, ToolSpec } from './types';
 
 const BUILTIN: ToolSpec[] = [
-  { name: 'fs.read_file', description: 'Read a UTF-8 file inside an authorized root', input_schema: { type: 'object', properties: { path: { type: 'string' } }, required: ['path'] }, source: 'builtin', mutates: false },
+  { name: 'fs.read_file', description: 'Read a UTF-8 file inside an authorized root. Large files are paginated: pass offset (1-based line) + limit to read a specific range.', input_schema: { type: 'object', properties: { path: { type: 'string' }, offset: { type: 'number' }, limit: { type: 'number' } }, required: ['path'] }, source: 'builtin', mutates: false },
   { name: 'fs.list_dir', description: 'List a directory inside an authorized root', input_schema: { type: 'object', properties: { path: { type: 'string' } }, required: ['path'] }, source: 'builtin', mutates: false },
-  { name: 'fs.write_file', description: 'Write a file inside an authorized root', input_schema: { type: 'object', properties: { path: { type: 'string' }, content: { type: 'string' } }, required: ['path', 'content'] }, source: 'builtin', mutates: true },
+  { name: 'fs.write_file', description: 'Create or overwrite a whole file inside an authorized root. To change part of an existing file, prefer fs.edit_file.', input_schema: { type: 'object', properties: { path: { type: 'string' }, content: { type: 'string' } }, required: ['path', 'content'] }, source: 'builtin', mutates: true },
+  { name: 'fs.edit_file', description: 'Replace an exact string in an existing file inside an authorized root. old_string must match exactly (including indentation) and be unique unless replace_all is set. Preferred over fs.write_file for editing — no need to resend the whole file.', input_schema: { type: 'object', properties: { path: { type: 'string' }, old_string: { type: 'string' }, new_string: { type: 'string' }, replace_all: { type: 'boolean' } }, required: ['path', 'old_string', 'new_string'] }, source: 'builtin', mutates: true },
   { name: 'shell.run_command', description: 'Run a local command (argv form)', input_schema: { type: 'object', properties: { cmd: { type: 'string' }, args: { type: 'array', items: { type: 'string' } }, cwd: { type: 'string' } }, required: ['cmd'] }, source: 'builtin', mutates: true }
 ];
 
@@ -255,9 +256,11 @@ export class Registry {
       if (dot < 0) return { output: `bad mcp tool name ${inv.name}`, is_error: true };
       return this.host.call(rest.slice(0, dot), rest.slice(dot + 1), inv.input);
     }
-    if (inv.name === 'fs.read_file') return fsTool.read_file(inv.input as { path: string });
+    if (inv.name === 'fs.read_file') return fsTool.read_file(inv.input as { path: string; offset?: number; limit?: number });
     if (inv.name === 'fs.list_dir') return fsTool.list_dir(inv.input as { path: string });
     if (inv.name === 'fs.write_file') return fsTool.write_file(inv.input as { path: string; content: string });
+    if (inv.name === 'fs.edit_file')
+      return fsTool.edit_file(inv.input as { path: string; old_string: string; new_string: string; replace_all?: boolean });
     if (inv.name === 'shell.run_command') return run_command(inv.input as { cmd: string; args?: string[]; cwd?: string });
     if (inv.name === 'computer.screenshot') return computer.screenshot();
     if (inv.name === 'computer.click') return computer.click(inv.input as { x: number; y: number; button?: 'left' | 'right' | 'middle' });

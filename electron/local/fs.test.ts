@@ -1,5 +1,14 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { mkdtempSync, mkdirSync, writeFileSync, readdirSync, realpathSync } from 'node:fs';
+import {
+  mkdtempSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  readdirSync,
+  realpathSync,
+  chmodSync,
+  statSync
+} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {
@@ -9,6 +18,7 @@ import {
   list_dir,
   read_file,
   write_file,
+  edit_file,
   _resetRootsForTesting
 } from './fs';
 
@@ -121,5 +131,96 @@ describe('fs consent-authorized roots', () => {
     await expect(write_file({ path: path.join(docs, 'adir'), content: 'x' })).rejects.toThrow();
     const leftovers = readdirSync(docs).filter((f) => f.includes('.tmp'));
     expect(leftovers).toEqual([]);
+  });
+});
+
+describe('fs.edit_file', () => {
+  afterEach(() => _resetRootsForTesting());
+
+  function rooted(content: string, name = 'a.ts') {
+    const base = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-edit-')));
+    const file = path.join(base, name);
+    writeFileSync(file, content);
+    setRoots([base]);
+    return { base, file };
+  }
+
+  it('replaces a unique occurrence and leaves the rest intact', async () => {
+    const { file } = rooted('const a = 1;\nconst b = 2;\n');
+    const res = await edit_file({ path: file, old_string: 'const b = 2;', new_string: 'const b = 3;' });
+    expect(res.is_error).toBeFalsy();
+    expect(readFileSync(file, 'utf8')).toBe('const a = 1;\nconst b = 3;\n');
+  });
+
+  it('refuses an ambiguous match instead of editing the wrong one', async () => {
+    const { file } = rooted('x();\nx();\n');
+    await expect(edit_file({ path: file, old_string: 'x();', new_string: 'y();' })).rejects.toThrow('not unique');
+    expect(readFileSync(file, 'utf8')).toBe('x();\nx();\n'); // unchanged
+  });
+
+  it('replaces every occurrence with replace_all', async () => {
+    const { file } = rooted('x();\nx();\n');
+    await edit_file({ path: file, old_string: 'x();', new_string: 'y();', replace_all: true });
+    expect(readFileSync(file, 'utf8')).toBe('y();\ny();\n');
+  });
+
+  it('rejects a missing old_string', async () => {
+    const { file } = rooted('hello\n');
+    await expect(edit_file({ path: file, old_string: 'nope', new_string: 'x' })).rejects.toThrow('not found');
+  });
+
+  it('enforces the roots boundary', async () => {
+    const outside = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-out-')));
+    const file = path.join(outside, 'a.txt');
+    writeFileSync(file, 'hello');
+    setRoots([realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-in-')))]);
+    await expect(edit_file({ path: file, old_string: 'hello', new_string: 'bye' })).rejects.toThrow(
+      'path outside allowed roots'
+    );
+  });
+
+  it('preserves the original file mode (does not strip the exec bit)', async () => {
+    const { file } = rooted('#!/bin/sh\necho hi\n', 'run.sh');
+    chmodSync(file, 0o755);
+    await edit_file({ path: file, old_string: 'echo hi', new_string: 'echo bye' });
+    expect(statSync(file).mode & 0o777).toBe(0o755);
+  });
+});
+
+describe('fs.read_file pagination', () => {
+  afterEach(() => _resetRootsForTesting());
+
+  function rootedLines(n: number) {
+    const base = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-read-')));
+    const file = path.join(base, 'big.txt');
+    writeFileSync(file, Array.from({ length: n }, (_, i) => `line ${i + 1}`).join('\n'));
+    setRoots([base]);
+    return file;
+  }
+
+  it('returns a small file whole, with no pagination footer', async () => {
+    const file = rootedLines(3);
+    const res = await read_file({ path: file });
+    expect(res.output).toBe('line 1\nline 2\nline 3');
+  });
+
+  it('returns the requested line window', async () => {
+    const file = rootedLines(100);
+    const res = await read_file({ path: file, offset: 10, limit: 3 });
+    expect(res.output).toContain('line 10\nline 11\nline 12');
+    expect(res.output).toContain('[lines 10-12 of 100]');
+  });
+
+  it('flags truncation so the model never thinks it saw the whole file', async () => {
+    const file = rootedLines(2500);
+    const res = await read_file({ path: file });
+    expect(res.output).toContain('[truncated: showing lines 1-2000 of 2500');
+    expect(res.output).not.toContain('line 2001');
+  });
+
+  it('reports an offset past the end rather than returning empty output', async () => {
+    const file = rootedLines(5);
+    const res = await read_file({ path: file, offset: 99 });
+    expect(res.output).toContain('offset 99 is past the end');
   });
 });
