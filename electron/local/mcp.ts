@@ -13,11 +13,19 @@ const STARTUP_TIMEOUT_MS = 60_000;
 // image budget (~6 MB of base64). An MCP image over budget is dropped from the
 // `image` channel and left as text in `output` rather than blowing up the turn.
 const MAX_IMAGE_B64_CHARS = 5_400_000;
+// The aichat2 worker only accepts these in a tool result's `image`
+// (isValidResultImage in handlers/conversations.ts). Lifting anything else
+// would be WORSE than doing nothing: the worker drops it silently AND we would
+// have already removed it from `output` — the image vanishes with no trace.
+// Keep this in sync with the worker's regex.
+const LIFTABLE_IMAGE_MIME = /^image\/(png|jpe?g|webp)$/;
 
 interface Pending { resolve: (v: unknown) => void; reject: (e: Error) => void; timer: NodeJS.Timeout; }
 
 // One block of an MCP `tools/call` result. Only `image` needs special handling;
-// everything else is serialized into `output` as before.
+// everything else is serialized into `output` as before. MCP also defines
+// `audio`, `resource` and `resource_link` blocks — those have no channel to the
+// model today (ToolResult carries an image only), so they stay in `output`.
 interface McpContentBlock {
   type?: string;
   data?: string;
@@ -25,17 +33,35 @@ interface McpContentBlock {
   [k: string]: unknown;
 }
 
+// Why a block could not be lifted, so `output` can say so instead of the image
+// disappearing without explanation (which is what made the model claim it had
+// displayed a QR code that was never there).
+function liftBlocker(b: McpContentBlock): string | null {
+  const mime = b.mimeType || 'image/png';
+  if (!LIFTABLE_IMAGE_MIME.test(mime)) return `unsupported type ${mime} (expected png/jpeg/webp)`;
+  if ((b.data?.length ?? 0) > MAX_IMAGE_B64_CHARS) return 'too large to send';
+  return null;
+}
+
 // Map an MCP `tools/call` result to a ToolResult. Exported for tests.
-// Lifts the first image block into `image` (the same channel
+// Lifts the first liftable image block into `image` (the same channel
 // computer.screenshot uses) so the model actually SEES it. Left inside
 // `output` it was only a base64 blob in a JSON string: unrenderable, and the
 // model would claim to have shown a picture it never received.
 export function mapCallResult(r: { content?: unknown; isError?: boolean }): ToolResult {
   const blocks = Array.isArray(r.content) ? (r.content as McpContentBlock[]) : [];
-  const img = blocks.find((b) => b?.type === 'image' && typeof b.data === 'string');
-  const image =
-    img && img.data!.length <= MAX_IMAGE_B64_CHARS ? `data:${img.mimeType || 'image/png'};base64,${img.data}` : undefined;
-  const rest = image ? blocks.filter((b) => b !== img) : blocks;
+  const images = blocks.filter((b) => b?.type === 'image' && typeof b.data === 'string');
+  const img = images.find((b) => liftBlocker(b) === null);
+  const image = img ? `data:${img.mimeType || 'image/png'};base64,${img.data}` : undefined;
+  // Replace every image block with a short note: the lifted one is already in
+  // `image` (no need to repeat 5 MB of base64 in the text channel), and a
+  // non-liftable one must not silently vanish — the model should know an image
+  // exists that it cannot see, rather than assume it was shown.
+  const rest = blocks.map((b) => {
+    if (!images.includes(b)) return b;
+    if (b === img) return { type: 'text', text: '[image returned separately and shown to you]' };
+    return { type: 'text', text: `[image not shown: ${liftBlocker(b)}]` };
+  });
   return {
     output: JSON.stringify(Array.isArray(r.content) ? rest : (r.content ?? '')),
     is_error: !!r.isError,
