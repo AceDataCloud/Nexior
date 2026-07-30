@@ -6,6 +6,7 @@ import {
   ROUTE_CONSOLE_ORDER_DETAIL,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_ROOT,
+  ROUTE_CONSOLE_SKILLS,
   ROUTE_CONSOLE_USAGE_LIST
 } from './constants';
 
@@ -61,6 +62,13 @@ export default {
       path: 'connectors',
       name: ROUTE_CONSOLE_CONNECTORS,
       component: () => import('@/pages/console/connectors/Index.vue')
+    },
+    // Agent Skills, same deal — ported UI, same flag, AuthFrontend's page
+    // stays live.
+    {
+      path: 'skills',
+      name: ROUTE_CONSOLE_SKILLS,
+      component: () => import('@/pages/console/skills/Index.vue')
     }
   ]
 };

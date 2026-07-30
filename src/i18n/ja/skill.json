@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "スキル",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "スキルをアップロード",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "スキルを編集",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "スキルの詳細",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "マイ",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "グローバル",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "個人スキル",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "プラットフォームスキル",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "スキルをブラウズ",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "スキルを作成",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "AIで作成",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "スキル説明を書く",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "スキルをアップロード",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "近日公開",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "追加者",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "最終更新",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "あなた",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "プラットフォーム",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "スキルをアップロード",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "ファイルをドラッグ＆ドロップまたはクリックしてアップロード",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "ファイル要件",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": ".mdファイルはYAML frontmatterにnameとdescriptionを含める必要があります",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": ".zip / .tar.gzアーカイブはトップレベルにSKILL.mdを含める必要があります",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "スキル説明を書く",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "SKILL.mdの完全な内容（frontmatter + 本文）を下に貼り付けてください。",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "スキルをブラウズ",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "識別子",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "名前",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "説明",
+    "description": "skill: field.description"
+  },
+  "field.requiredConnections": {
+    "message": "依存接続",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "許可されたツール",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "リソースパッケージ",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "有効",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "バージョン",
+    "description": "skill: field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "最終使用",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "最終更新",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "ファイルリスト",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "SKILL.mdの内容",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "SKILL.mdを貼り付け",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "アーカイブをアップロード",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "アップロード",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "編集",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "保存",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "削除",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "有効化",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "無効化",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "詳細",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "アーカイブを選択",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "キャンセル",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "検索",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "スキルを追加",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "もっと",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "なし",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} 個のファイル",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "未使用",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "なし",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "一致するスキルはありません。",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: my-skill\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nこのスキルが何をするかを説明するMarkdown本文...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "スキルを検索",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "スキルはAIに「どのツールを使い、どの手順でタスクを完了するか」を伝えるMarkdownの説明書です。自分のスキルをアップロードすることができ、プラットフォームにはいくつかの公共スキルも内蔵されています。",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "あなたはまだスキルを持っていません。",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "プラットフォームの公共スキルはありません。",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "SKILL.mdの完全な内容（frontmatter + 本文）を下に貼り付けてください。",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": ".tar.gzまたは.zipアーカイブをアップロードしてください。最大10MB；パッケージにはSKILL.mdが含まれている必要があります（トップレベルまたは単一のルートディレクトリ内）。スクリプトはscripts/に、参考ファイルはreference/に配置してください。",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "プラットフォームの公共スキルは変更または削除できず、自分の対話でのみ有効化/無効化できます。",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "スキル \"{slug}\" を削除してもよろしいですか？この操作は元に戻せず、リソースパッケージもサーバーから削除されます。",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "スキルがアップロードされました",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "スキルが更新されました",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "スキルが削除されました",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "有効化されました",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "無効化されました",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "スキルリストの読み込みに失敗しました",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "アップロードに失敗しました：{detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "ファイルサイズが10MBの制限を超えています",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": ".md / .tar.gz / .tgz / .tar / .zipファイルを選択してください",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "プラットフォームスキルは下にリストされています。",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "ディレクトリ",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "スキル",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "コネクタ",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "プラグイン",
+    "description": "skill: directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "スキルを検索…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "すべての発行者",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "人気",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "最新の同期",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "条件に合うスキルはありません。",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "ディレクトリに戻る",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "ソースを表示",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "ライセンス",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "インストール",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "インストール済み",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "インストール不可",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "スキルディレクトリの読み込みに失敗しました",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "「{name}」がインストールされました",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "あなたのスキルにはすでに「{name}」があります。",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "インストールに失敗しました：{detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "directory.surface.desktop": {
+    "message": "デスクトップ版",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.mac": {
+    "message": "macOS デスクトップ版",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.web": {
+    "message": "ウェブ版",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.windows": {
+    "message": "Windows デスクトップ版",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surfaceHint": {
+    "message": "このスキルは以下のプラットフォームでのみ動作します",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "{platforms} のみ",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "このスキルは {platforms} でのみインストールして使用できます",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "現在のプラットフォームは利用できません",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "preview.viewRendered": {
+    "message": "プレビュー",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "ソース",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "コピー",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "クリップボードにコピーされました",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "コピーに失敗しました",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "バイナリファイルはページプレビューで表示できません（タイプ：{type}）",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "プレビューは最初の {size} に切り捨てられました。アップロード時に完全に保存されます。",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "左側からファイルを選択してプレビュー",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "左側のリストからスキルを選択して詳細を表示",
+    "description": "skill: preview.selectSkill"
+  }
+}

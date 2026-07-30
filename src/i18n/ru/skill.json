@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "Навыки",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "Загрузить навык",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "Редактировать навык",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "Детали навыка",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "Мои",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "Общие",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "Личные навыки",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "Платформенные навыки",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "Просмотреть навыки",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "Создать навык",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "Создать с помощью AI",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "Написать описание навыка",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "Загрузить навык",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "Скоро будет доступно",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "Добавлено",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "Последнее обновление",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "Вы",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "Платформа",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "Загрузить навык",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "Перетащите или нажмите, чтобы загрузить файл",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "Требования к файлам",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": ".md файл должен содержать name и description в YAML frontmatter",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": ".zip / .tar.gz архив должен содержать SKILL.md на верхнем уровне",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "Написать описание навыка",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "Вставьте полный текст SKILL.md (frontmatter + основной текст) ниже.",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "Просмотреть навыки",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "Идентификатор",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "Название",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "Описание",
+    "description": "skill: field.description"
+  },
+  "field.requiredConnections": {
+    "message": "Необходимые соединения",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "Разрешенные инструменты",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "Ресурсы",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "Включено",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "Версия",
+    "description": "skill: field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "Последнее использование",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "Обновлено",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "Список файлов",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "Содержимое SKILL.md",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "Вставить SKILL.md",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "Загрузить архив",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "Загрузить",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "Редактировать",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "Сохранить",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "Удалить",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "Включить",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "Отключить",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "Детали",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "Выбрать архив",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "Отмена",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "Поиск",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "Добавить навык",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "Больше",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "Нет",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} файлов",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "Никогда не использовался",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "Нет",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "Нет подходящих навыков.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: my-skill\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nТекст в формате Markdown, объясняющий, что делает этот навык...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "Поиск навыков",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Навыки (Skill) — это описание в формате Markdown, которое говорит AI, «какие инструменты использовать и какие шаги предпринять для выполнения задачи». Вы можете загрузить свои навыки, а платформа также включает некоторые общие навыки.",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "У вас еще нет навыков.",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "Нет общих навыков платформы.",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "Вставьте полный текст SKILL.md (frontmatter + основной текст) ниже.",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": "Загрузите .tar.gz или .zip архив, максимальный размер 10 МБ; архив должен содержать SKILL.md (может быть на верхнем уровне или в едином корневом каталоге). Скрипты находятся в scripts/, файлы для справки в reference/.",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "Общие навыки платформы нельзя изменять или удалять, их можно только включать/выключать в своих диалогах.",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "Подтвердите удаление навыка \"{slug}\"? Это действие необратимо, ресурсы также будут удалены с сервера.",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "Навык загружен",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "Навык обновлен",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "Навык удален",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "Включено",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "Отключено",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "Не удалось загрузить список навыков",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "Ошибка загрузки: {detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "Размер файла превышает ограничение в 10 МБ",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": "Пожалуйста, выберите файл .md / .tar.gz / .tgz / .tar / .zip",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "Общие навыки платформы перечислены ниже.",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "Каталог",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "Навыки",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "Соединители",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "Плагины",
+    "description": "skill: directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "Поиск навыков…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "Все издатели",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "Популярные",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "Недавние",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "Нет навыков, соответствующих критериям.",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "Вернуться в каталог",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "Просмотреть исходный код",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "Лицензия",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "Установить",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "Установлено",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "Не подлежит установке",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "Не удалось загрузить каталог навыков",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "Установлено «{name}»",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "Ваши навыки уже содержат «{name}».",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "Ошибка установки: {detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "directory.surface.desktop": {
+    "message": "Десктопная версия",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.mac": {
+    "message": "macOS Десктопная версия",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.web": {
+    "message": "Веб-версия",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.windows": {
+    "message": "Windows Десктопная версия",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surfaceHint": {
+    "message": "Этот навык доступен только на следующих платформах",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "Только {platforms}",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "Этот навык доступен только для установки на {platforms}",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "Текущая платформа недоступна",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "preview.viewRendered": {
+    "message": "Предпросмотр",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "Исходный код",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "Копировать",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "Скопировано в буфер обмена",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "Ошибка копирования",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "Двоичный файл не может быть предварительно просмотрен на странице (тип: {type})",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "Предпросмотр был обрезан до {size}. Полное сохранение при загрузке.",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "Выберите файл для предварительного просмотра слева",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "Выберите навык из левого списка для просмотра деталей",
+    "description": "skill: preview.selectSkill"
+  }
+}

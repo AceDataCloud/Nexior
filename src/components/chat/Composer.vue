@@ -171,10 +171,10 @@ import {
   openConnectionsManager,
   pasteUploadMixin,
   dropUploadMixin,
-  uploadTrackerMixin,
-  withCurrentUserIdAndSite
+  uploadTrackerMixin
 } from '@/utils';
 import { getSendShortcut } from '@/utils/composer';
+import { openSkillsManager } from '@/utils/skills/openSkillsManager';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ROUTE_CHATGPT_CALL } from '@/router/constants';
@@ -416,11 +416,9 @@ export default defineComponent({
       });
     },
     onOpenSkills() {
-      // Skills are managed exclusively at auth.acedata.cloud/user/skills.
-      // Nexior is a thin entry point - clicking opens the canonical
-      // management page in a new tab. Pass `site` so AuthFrontend renders
-      // the calling subsite's white-label logo (no-op on the main host).
-      window.open(withCurrentUserIdAndSite('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
+      // Routes to Studio's own skills page when `connections-in-studio` is
+      // on, else opens auth.acedata.cloud in a new tab (today's behaviour).
+      openSkillsManager(this.$router);
     },
     onOpenConnections() {
       // Routes to Studio's own connector page when `connections-in-studio`

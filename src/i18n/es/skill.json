@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "Habilidades",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "Subir habilidad",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "Editar habilidad",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "Detalles de la habilidad",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "Mis habilidades",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "Globales",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "Habilidades personales",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "Habilidades de la plataforma",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "Explorar habilidades",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "Crear habilidad",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "Crear con IA",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "Escribir descripción de la habilidad",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "Subir habilidad",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "Próximamente",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "Añadido por",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "Última actualización",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "Tú",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "Plataforma",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "Subir habilidad",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "Arrastra o haz clic para subir el archivo",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "Requisitos del archivo",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": "El archivo .md debe incluir name y description en el frontmatter de YAML",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": "El archivo comprimido .zip / .tar.gz debe incluir SKILL.md en la raíz",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "Escribir descripción de la habilidad",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "Pega el contenido completo de SKILL.md (frontmatter + cuerpo) a continuación.",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "Explorar habilidades",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "Identificador",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "Nombre",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "Descripción",
+    "description": "skill: field.description"
+  },
+  "field.requiredConnections": {
+    "message": "Conectores requeridos",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "Herramientas permitidas",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "Paquete de recursos",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "Habilitado",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "Versión",
+    "description": "skill: field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "Último uso",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "Última actualización",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "Lista de archivos",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "Contenido de SKILL.md",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "Pegar SKILL.md",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "Subir archivo comprimido",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "Subir",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "Editar",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "Guardar",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "Eliminar",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "Habilitar",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "Deshabilitar",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "Detalles",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "Seleccionar archivo comprimido",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "Buscar",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "Agregar habilidad",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "Más",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "Ninguno",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} archivos",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "Nunca usado",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "Ninguno",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "No hay habilidades que coincidan.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: my-skill\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nCuerpo en Markdown que explica lo que hace esta habilidad...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "Buscar habilidades",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Las habilidades son una descripción en Markdown que le dice a la IA 'qué herramientas usar y qué pasos seguir para completar una tarea'. Puedes subir tus propias habilidades, y la plataforma también incluye algunas habilidades públicas.",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "No tienes ninguna habilidad aún.",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "No hay habilidades públicas de la plataforma por el momento.",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "Pega el contenido completo de SKILL.md (frontmatter + cuerpo) a continuación.",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": "Sube un archivo comprimido .tar.gz o .zip, máximo 10 MB; el paquete debe contener SKILL.md (puede estar en la raíz o en un único directorio). Los scripts van en scripts/ y los archivos de referencia en reference/.",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "Las habilidades públicas de la plataforma no se pueden modificar o eliminar, solo se pueden habilitar / deshabilitar en tus propias conversaciones.",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "¿Confirmar eliminación de la habilidad \"{slug}\"? Esta acción no se puede deshacer y el paquete de recursos también se eliminará del servidor.",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "Habilidad subida con éxito",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "Habilidad actualizada con éxito",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "Habilidad eliminada con éxito",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "Habilitado",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "Deshabilitado",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "Error al cargar la lista de habilidades",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "Error al subir: {detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "El tamaño del archivo excede el límite de 10 MB",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": "Por favor selecciona archivos .md / .tar.gz / .tgz / .tar / .zip",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "Las habilidades de la plataforma se enumeran a continuación.",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "Directorio",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "Habilidades",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "Conectores",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "Complementos",
+    "description": "skill: directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "Buscar habilidades…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "Todos los editores",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "Popular",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "Reciente",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "No hay habilidades que cumplan con los criterios.",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "Volver al directorio",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "Ver código fuente",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "Licencia",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "Instalar",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "Instalado",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "No instalable",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "Error al cargar el directorio de habilidades",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "Instalado \"{name}\"",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "Ya tienes \"{name}\" en tus habilidades.",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "Error al instalar: {detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surfaceHint": {
+    "message": "Esta habilidad solo se puede ejecutar en las siguientes plataformas",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "Solo en {platforms}",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "Esta habilidad solo se puede instalar y usar en {platforms}",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "La plataforma actual no está disponible",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "directory.surface.mac": {
+    "message": "macOS Escritorio",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.windows": {
+    "message": "Windows Escritorio",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surface.desktop": {
+    "message": "Escritorio",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.web": {
+    "message": "Versión web",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "preview.viewRendered": {
+    "message": "Vista previa",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "Código fuente",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "Copiar",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "Copiado al portapapeles",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "Error al copiar",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "Los archivos binarios no se pueden previsualizar en la página (tipo: {type})",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "La vista previa se ha truncado a los primeros {size}. Guarda completo al subir.",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "Selecciona un archivo para previsualizar desde la izquierda",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "Selecciona una habilidad de la lista de la izquierda para ver detalles",
+    "description": "skill: preview.selectSkill"
+  }
+}

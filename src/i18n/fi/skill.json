@@ -1,0 +1,462 @@
+{
+  "title.skills": {
+    "message": "Taidot",
+    "description": "skill: title.skills"
+  },
+  "title.create": {
+    "message": "Lataa taito",
+    "description": "skill: title.create"
+  },
+  "title.edit": {
+    "message": "Muokkaa taitoa",
+    "description": "skill: title.edit"
+  },
+  "title.detail": {
+    "message": "Taidon tiedot",
+    "description": "skill: title.detail"
+  },
+  "tab.mine": {
+    "message": "Omat",
+    "description": "skill: tab.mine"
+  },
+  "tab.globals": {
+    "message": "Yleiset",
+    "description": "skill: tab.globals"
+  },
+  "section.personal": {
+    "message": "Henkilökohtaiset taidot",
+    "description": "skill: section.personal"
+  },
+  "section.platform": {
+    "message": "Alustan taidot",
+    "description": "skill: section.platform"
+  },
+  "menu.browse": {
+    "message": "Selaa taitoja",
+    "description": "skill: menu.browse"
+  },
+  "menu.create": {
+    "message": "Luo taito",
+    "description": "skill: menu.create"
+  },
+  "menu.createWithClaude": {
+    "message": "Luo AI:n avulla",
+    "description": "skill: menu.createWithClaude"
+  },
+  "menu.write": {
+    "message": "Kirjoita taitokuvauksen",
+    "description": "skill: menu.write"
+  },
+  "menu.upload": {
+    "message": "Lataa taito",
+    "description": "skill: menu.upload"
+  },
+  "menu.soon": {
+    "message": "Pian saatavilla",
+    "description": "skill: menu.soon"
+  },
+  "meta.addedBy": {
+    "message": "Lisääjä",
+    "description": "skill: meta.addedBy"
+  },
+  "meta.lastUpdated": {
+    "message": "Viimeksi päivitetty",
+    "description": "skill: meta.lastUpdated"
+  },
+  "meta.you": {
+    "message": "Sinä",
+    "description": "skill: meta.you"
+  },
+  "meta.platform": {
+    "message": "Alusta",
+    "description": "skill: meta.platform"
+  },
+  "dialog.uploadTitle": {
+    "message": "Lataa taito",
+    "description": "skill: dialog.uploadTitle"
+  },
+  "dialog.uploadDrop": {
+    "message": "Vedä ja pudota tai napsauta ladataksesi tiedoston",
+    "description": "skill: dialog.uploadDrop"
+  },
+  "dialog.fileRequirements": {
+    "message": "Tiedostovaatimukset",
+    "description": "skill: dialog.fileRequirements"
+  },
+  "dialog.requirementMd": {
+    "message": ".md-tiedostossa on oltava YAML frontmatterissa name ja description",
+    "description": "skill: dialog.requirementMd"
+  },
+  "dialog.requirementArchive": {
+    "message": ".zip / .tar.gz -paketin on sisällettävä SKILL.md pääkansiossa",
+    "description": "skill: dialog.requirementArchive"
+  },
+  "dialog.writeTitle": {
+    "message": "Kirjoita taitokuvauksen",
+    "description": "skill: dialog.writeTitle"
+  },
+  "dialog.writeHint": {
+    "message": "Liitä SKILL.md:n koko sisältö (frontmatter + runko) alle.",
+    "description": "skill: dialog.writeHint"
+  },
+  "dialog.directoryTitle": {
+    "message": "Selaa taitoja",
+    "description": "skill: dialog.directoryTitle"
+  },
+  "field.slug": {
+    "message": "Tunniste",
+    "description": "skill: field.slug"
+  },
+  "field.name": {
+    "message": "Nimi",
+    "description": "skill: field.name"
+  },
+  "field.description": {
+    "message": "Kuvaus",
+    "description": "skill: field.description"
+  },
+  "field.requiredConnections": {
+    "message": "Vaaditut liittimet",
+    "description": "skill: field.requiredConnections"
+  },
+  "field.allowedTools": {
+    "message": "Sallitut työkalut",
+    "description": "skill: field.allowedTools"
+  },
+  "field.assets": {
+    "message": "Resurssipaketti",
+    "description": "skill: field.assets"
+  },
+  "field.enabled": {
+    "message": "Ota käyttöön",
+    "description": "skill: field.enabled"
+  },
+  "field.version": {
+    "message": "Versio",
+    "description": "skill: field.version"
+  },
+  "field.lastUsedAt": {
+    "message": "Viimeksi käytetty",
+    "description": "skill: field.lastUsedAt"
+  },
+  "field.updatedAt": {
+    "message": "Päivitetty",
+    "description": "skill: field.updatedAt"
+  },
+  "field.files": {
+    "message": "Tiedostoluettelo",
+    "description": "skill: field.files"
+  },
+  "field.content": {
+    "message": "SKILL.md:n sisältö",
+    "description": "skill: field.content"
+  },
+  "mode.markdown": {
+    "message": "Liitä SKILL.md",
+    "description": "skill: mode.markdown"
+  },
+  "mode.tarball": {
+    "message": "Lataa paketti",
+    "description": "skill: mode.tarball"
+  },
+  "button.create": {
+    "message": "Lataa",
+    "description": "skill: button.create"
+  },
+  "button.edit": {
+    "message": "Muokkaa",
+    "description": "skill: button.edit"
+  },
+  "button.save": {
+    "message": "Tallenna",
+    "description": "skill: button.save"
+  },
+  "button.delete": {
+    "message": "Poista",
+    "description": "skill: button.delete"
+  },
+  "button.enable": {
+    "message": "Ota käyttöön",
+    "description": "skill: button.enable"
+  },
+  "button.disable": {
+    "message": "Poista käytöstä",
+    "description": "skill: button.disable"
+  },
+  "button.viewDetail": {
+    "message": "Tiedot",
+    "description": "skill: button.viewDetail"
+  },
+  "button.selectFile": {
+    "message": "Valitse paketti",
+    "description": "skill: button.selectFile"
+  },
+  "button.cancel": {
+    "message": "Peruuta",
+    "description": "skill: button.cancel"
+  },
+  "button.search": {
+    "message": "Hae",
+    "description": "skill: button.search"
+  },
+  "button.add": {
+    "message": "Lisää taito",
+    "description": "skill: button.add"
+  },
+  "button.more": {
+    "message": "Lisää",
+    "description": "skill: button.more"
+  },
+  "label.noAssets": {
+    "message": "Ei mitään",
+    "description": "skill: label.noAssets"
+  },
+  "label.withAssets": {
+    "message": "{count} tiedostoa",
+    "description": "skill: label.withAssets"
+  },
+  "label.never": {
+    "message": "Ei koskaan käytetty",
+    "description": "skill: label.never"
+  },
+  "label.noScopes": {
+    "message": "Ei mitään",
+    "description": "skill: label.noScopes"
+  },
+  "empty.search": {
+    "message": "Ei löytynyt vastaavia taitoja.",
+    "description": "skill: empty.search"
+  },
+  "placeholder.content": {
+    "message": "---\nname: my-skill\ndescription: ...\nrequired_connections: [google]\nallowed_tools: [Bash]\n---\n\nMarkdown-teksti, joka selittää, mitä tämä taito tekee...",
+    "description": "skill: placeholder.content"
+  },
+  "placeholder.search": {
+    "message": "Hae taitoja",
+    "description": "skill: placeholder.search"
+  },
+  "message.pageDescription": {
+    "message": "Taito (Skill) on Markdown-kuvaus, joka kertoo AI:lle, 'mitä työkaluja käyttää ja mitä vaiheita seurata tietyn tehtävän suorittamiseksi'. Voit ladata omia taitojasi, ja alustalla on myös joitakin julkisia taitoja.",
+    "description": "skill: message.pageDescription"
+  },
+  "message.noSkills": {
+    "message": "Sinulla ei ole vielä taitoja.",
+    "description": "skill: message.noSkills"
+  },
+  "message.noGlobals": {
+    "message": "Ei julkisia alustan taitoja.",
+    "description": "skill: message.noGlobals"
+  },
+  "message.createMarkdownTip": {
+    "message": "Liitä SKILL.md:n koko sisältö (frontmatter + runko) alle.",
+    "description": "skill: message.createMarkdownTip"
+  },
+  "message.createTarballTip": {
+    "message": "Lataa .tar.gz tai .zip -paketti, enintään 10 MB; paketin on sisällettävä SKILL.md (se voi olla pääkansiossa tai yksittäisessä juurikansiossa). Skriptit ovat kansiossa scripts/ ja viiteasiakirjat kansiossa reference/.",
+    "description": "skill: message.createTarballTip"
+  },
+  "message.globalsReadonly": {
+    "message": "Alustan julkisia taitoja ei voi muokata tai poistaa, niitä voi vain ottaa käyttöön / poistaa käytöstä omissa keskusteluissa.",
+    "description": "skill: message.globalsReadonly"
+  },
+  "message.deleteConfirm": {
+    "message": "Vahvistatko taidon \"{slug}\" poistamisen? Tämä toimenpide on peruuttamaton, ja resurssipaketti poistetaan myös palvelimelta.",
+    "description": "skill: message.deleteConfirm"
+  },
+  "message.createSuccess": {
+    "message": "Taito on ladattu",
+    "description": "skill: message.createSuccess"
+  },
+  "message.updateSuccess": {
+    "message": "Taito on päivitetty",
+    "description": "skill: message.updateSuccess"
+  },
+  "message.deleteSuccess": {
+    "message": "Taito on poistettu",
+    "description": "skill: message.deleteSuccess"
+  },
+  "message.enableSuccess": {
+    "message": "Otetaan käyttöön",
+    "description": "skill: message.enableSuccess"
+  },
+  "message.disableSuccess": {
+    "message": "Poistettu käytöstä",
+    "description": "skill: message.disableSuccess"
+  },
+  "message.loadFailed": {
+    "message": "Taitoluettelon lataaminen epäonnistui",
+    "description": "skill: message.loadFailed"
+  },
+  "message.createFailed": {
+    "message": "Lataus epäonnistui: {detail}",
+    "description": "skill: message.createFailed"
+  },
+  "message.fileTooLarge": {
+    "message": "Tiedoston koko ylittää 10 MB rajan",
+    "description": "skill: message.fileTooLarge"
+  },
+  "message.fileTypeWrong": {
+    "message": "Valitse .md / .tar.gz / .tgz / .tar / .zip -tiedosto",
+    "description": "skill: message.fileTypeWrong"
+  },
+  "message.browseHint": {
+    "message": "Alustan taidot on lueteltu alla.",
+    "description": "skill: message.browseHint"
+  },
+  "directory.section": {
+    "message": "Hakemisto",
+    "description": "skill: directory.section"
+  },
+  "directory.skills": {
+    "message": "Taidot",
+    "description": "skill: directory.skills"
+  },
+  "directory.connectors": {
+    "message": "Liittimet",
+    "description": "skill: directory.connectors"
+  },
+  "directory.plugins": {
+    "message": "Lisäosat",
+    "description": "skill: directory.plugins"
+  },
+  "directory.searchPlaceholder": {
+    "message": "Hae taitoja…",
+    "description": "skill: directory.searchPlaceholder"
+  },
+  "directory.allPublishers": {
+    "message": "Kaikki julkaisijat",
+    "description": "skill: directory.allPublishers"
+  },
+  "directory.sort.popular": {
+    "message": "Suosituimmat",
+    "description": "skill: directory.sort.popular"
+  },
+  "directory.sort.recent": {
+    "message": "Uusimmat",
+    "description": "skill: directory.sort.recent"
+  },
+  "directory.sort.name": {
+    "message": "A-Z",
+    "description": "skill: directory.sort.name"
+  },
+  "directory.empty": {
+    "message": "Ei löytynyt sopivia taitoja.",
+    "description": "skill: directory.empty"
+  },
+  "directory.back": {
+    "message": "Palaa hakemistoon",
+    "description": "skill: directory.back"
+  },
+  "directory.viewSource": {
+    "message": "Näytä lähdekoodi",
+    "description": "skill: directory.viewSource"
+  },
+  "directory.license": {
+    "message": "Lisenssi",
+    "description": "skill: directory.license"
+  },
+  "directory.install": {
+    "message": "Asenna",
+    "description": "skill: directory.install"
+  },
+  "directory.installed": {
+    "message": "Asennettu",
+    "description": "skill: directory.installed"
+  },
+  "directory.notInstallable": {
+    "message": "Ei asennettavissa",
+    "description": "skill: directory.notInstallable"
+  },
+  "directory.loadFailed": {
+    "message": "Taitohakemiston lataaminen epäonnistui",
+    "description": "skill: directory.loadFailed"
+  },
+  "directory.installSuccess": {
+    "message": "Asennettu \"{name}\"",
+    "description": "skill: directory.installSuccess"
+  },
+  "directory.alreadyInstalled": {
+    "message": "Sinun taidoissasi on jo \"{name}\".",
+    "description": "skill: directory.alreadyInstalled"
+  },
+  "directory.installFailed": {
+    "message": "Asennus epäonnistui: {detail}",
+    "description": "skill: directory.installFailed"
+  },
+  "directory.surface.android": {
+    "message": "Android",
+    "description": "skill: directory.surface.android"
+  },
+  "directory.surface.desktop": {
+    "message": "Työpöytäversio",
+    "description": "skill: directory.surface.desktop"
+  },
+  "directory.surface.ios": {
+    "message": "iOS",
+    "description": "skill: directory.surface.ios"
+  },
+  "directory.surface.mac": {
+    "message": "macOS Työpöytäversio",
+    "description": "skill: directory.surface.mac"
+  },
+  "directory.surface.web": {
+    "message": "Verkko- versio",
+    "description": "skill: directory.surface.web"
+  },
+  "directory.surface.windows": {
+    "message": "Windows Työpöytäversio",
+    "description": "skill: directory.surface.windows"
+  },
+  "directory.surfaceHint": {
+    "message": "Tämä taito toimii vain seuraavilla alustoilla",
+    "description": "skill: directory.surfaceHint"
+  },
+  "directory.surfaceOnly": {
+    "message": "Vain {platforms}",
+    "description": "skill: directory.surfaceOnly"
+  },
+  "directory.surfaceBlocked": {
+    "message": "Tätä taitoa voi käyttää vain asennettuna {platforms}.",
+    "description": "skill: directory.surfaceBlocked"
+  },
+  "directory.surfaceUnavailable": {
+    "message": "Nykyinen alusta ei ole käytettävissä.",
+    "description": "skill: directory.surfaceUnavailable"
+  },
+  "preview.viewRendered": {
+    "message": "Esikatselu",
+    "description": "skill: preview.viewRendered"
+  },
+  "preview.viewSource": {
+    "message": "Lähdekoodi",
+    "description": "skill: preview.viewSource"
+  },
+  "preview.copy": {
+    "message": "Kopioi",
+    "description": "skill: preview.copy"
+  },
+  "preview.copied": {
+    "message": "Kopioitu leikepöydälle",
+    "description": "skill: preview.copied"
+  },
+  "preview.copyFailed": {
+    "message": "Kopiointi epäonnistui",
+    "description": "skill: preview.copyFailed"
+  },
+  "preview.binary": {
+    "message": "Binaaritiedostoja ei voi esikatsella sivulla (tyyppi: {type})",
+    "description": "skill: preview.binary"
+  },
+  "preview.truncated": {
+    "message": "Esikatselu on katkaistu {size} ensimmäiseen. Tallenna kokonaisuudessaan lataamisen yhteydessä.",
+    "description": "skill: preview.truncated"
+  },
+  "preview.selectFile": {
+    "message": "Valitse vasemmalta tiedosto esikatseltavaksi",
+    "description": "skill: preview.selectFile"
+  },
+  "preview.selectSkill": {
+    "message": "Valitse vasemmalta luettelosta taito nähdäksesi tiedot",
+    "description": "skill: preview.selectSkill"
+  }
+}
