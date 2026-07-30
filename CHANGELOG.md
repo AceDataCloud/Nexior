@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 10:13:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 10:21:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.345.1
+
+Thu, 30 Jul 2026 10:21:24 GMT
+
+### Patches
+
+- fix(console): 连接器/技能页样式对齐 Studio 控制台 (dev@acedata.cloud)
 
 ## 3.345.0
 
