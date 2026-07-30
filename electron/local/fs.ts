@@ -35,10 +35,22 @@ function inRootDir(full: string): boolean {
 // Models commonly pass `~/Desktop`; Node never expands `~`, so realpathSync
 // would walk a literal `/~` and ENOENT. Expand a leading `~`/`~/` to the home
 // dir (which is typically what an authorized root sits under).
-function expandHome(p: string): string {
+export function expandHome(p: string): string {
   if (p === '~') return os.homedir();
   if (p.startsWith('~/') || p.startsWith('~\\')) return path.join(os.homedir(), p.slice(2));
   return p;
+}
+
+// Every authorized root (persistent + session), for tools that operate across
+// all of them when no explicit path is given.
+export function listRoots(): string[] {
+  return [...ROOTS, ...SESSION_ROOTS];
+}
+
+// Public boundary check for non-fs tools: resolve and assert the path stays
+// inside an authorized root. Same realpath semantics as resolveExisting.
+export function assertInRoots(p: string): string {
+  return resolveExisting(p);
 }
 
 // For reads/lists: resolve the real file and assert it stays in a root (blocks
