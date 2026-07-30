@@ -1,5 +1,12 @@
 <template>
-  <el-dialog v-model="visible" :title="dialogTitle" width="480px" append-to-body destroy-on-close @close="onClose">
+  <el-dialog
+    v-model="visible"
+    :title="dialogTitle"
+    width="min(480px, 94vw)"
+    append-to-body
+    destroy-on-close
+    @close="onClose"
+  >
     <p class="picker-intro">{{ $t('connection.method.heading') }}</p>
     <el-tabs v-model="selectedId" class="picker-tabs">
       <el-tab-pane v-for="method in methods" :key="method.id" :name="method.id">

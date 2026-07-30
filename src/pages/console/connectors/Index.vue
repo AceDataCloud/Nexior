@@ -8,15 +8,17 @@
       <!-- Left pane -->
       <aside class="connectors-list">
         <div class="list-toolbar">
-          <div class="search-wrapper">
-            <search-icon class="search-icon" :size="16" aria-hidden="true" focusable="false" />
-            <input
-              v-model="searchQuery"
-              type="text"
-              class="search-input"
-              :placeholder="$t('connection.placeholder.search')"
-            />
-          </div>
+          <el-input
+            v-model="searchQuery"
+            class="search-input"
+            size="default"
+            clearable
+            :placeholder="$t('connection.placeholder.search')"
+          >
+            <template #prefix>
+              <search-icon :size="14" aria-hidden="true" focusable="false" />
+            </template>
+          </el-input>
           <el-dropdown trigger="click" placement="bottom-end" @command="onAddCommand">
             <button
               type="button"
@@ -2068,7 +2070,7 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 767px) {
   // On phones let the page grow and scroll instead of trapping content
   // inside a viewport-height flex column.
   .page-shell {
@@ -2116,49 +2118,10 @@ html.dark .connectors-shell {
   padding: 14px 14px 12px;
 }
 
-.search-wrapper {
-  flex: 1 1 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 10px;
-  font-size: 12px;
-  color: var(--el-text-color-placeholder);
-  pointer-events: none;
-}
-
+// Styling comes from the global `.el-input__wrapper` rules in
+// _common.scss, so the field matches every other input in the console.
 .search-input {
-  width: 100%;
-  height: 34px;
-  padding: 0 10px 0 30px;
-  font-size: 13px;
-  color: var(--el-text-color-primary);
-  background: var(--el-fill-color-light);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  outline: none;
-  transition:
-    background 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
-
-  &::placeholder {
-    color: var(--el-text-color-placeholder);
-  }
-
-  &:hover {
-    background: var(--el-fill-color);
-  }
-
-  &:focus {
-    background: var(--el-bg-color);
-    border-color: var(--el-color-primary);
-    box-shadow: 0 0 0 3px var(--el-color-primary-light-9);
-  }
+  flex: 1 1 auto;
 }
 
 .add-button {
@@ -2911,7 +2874,7 @@ html.dark .connectors-shell {
   margin: 4px 0 0;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .connectors-shell {
     grid-template-columns: 1fr;
   }

@@ -2,7 +2,7 @@
   <el-dialog
     :model-value="modelValue"
     :title="$t('skill.dialog.directoryTitle')"
-    width="960px"
+    width="min(960px, 94vw)"
     align-center
     class="directory-dialog"
     :close-on-click-modal="!installing"
@@ -15,15 +15,18 @@
       <main class="directory-main">
         <template v-if="!selectedItem">
           <header class="directory-header">
-            <div class="directory-search">
-              <search-icon class="directory-search-icon" :size="16" aria-hidden="true" focusable="false" />
-              <input
-                v-model="searchQuery"
-                class="directory-search-input"
-                :placeholder="$t('skill.directory.searchPlaceholder')"
-                @input="onSearchInput"
-              />
-            </div>
+            <el-input
+              v-model="searchQuery"
+              class="directory-search"
+              size="default"
+              clearable
+              :placeholder="$t('skill.directory.searchPlaceholder')"
+              @input="onSearchInput"
+            >
+              <template #prefix>
+                <search-icon :size="14" aria-hidden="true" focusable="false" />
+              </template>
+            </el-input>
             <div class="directory-controls">
               <el-select
                 v-model="namespaceFilter"
@@ -188,7 +191,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElButton, ElMessage, ElPagination, ElSelect, ElOption, vLoading } from 'element-plus';
+import { ElDialog, ElInput, ElButton, ElMessage, ElPagination, ElSelect, ElOption, vLoading } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   AddIcon,
@@ -255,6 +258,7 @@ export default defineComponent({
   components: {
     VueMarkdown,
     ElDialog,
+    ElInput,
     ElButton,
     ElPagination,
     ElSelect,
@@ -492,31 +496,10 @@ export default defineComponent({
   padding: 16px 20px;
   border-bottom: 1px solid var(--el-border-color-lighter);
 }
+/* Styling comes from the global `.el-input__wrapper` rules in _common.scss,
+   so the field matches every other input in the console. */
 .directory-search {
   flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.directory-search-icon {
-  position: absolute;
-  left: 12px;
-  color: var(--el-text-color-placeholder);
-  pointer-events: none;
-}
-.directory-search-input {
-  width: 100%;
-  height: 36px;
-  padding: 0 12px 0 36px;
-  border: 1px solid var(--el-border-color);
-  border-radius: 8px;
-  font-size: 14px;
-  background: var(--el-bg-color);
-  color: var(--el-text-color-primary);
-  outline: none;
-}
-.directory-search-input:focus {
-  border-color: var(--el-color-primary);
 }
 .directory-controls {
   display: flex;

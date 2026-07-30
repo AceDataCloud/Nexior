@@ -2,7 +2,7 @@
   <el-dialog
     v-model="visible"
     :title="$t('connection.title.browse')"
-    width="900px"
+    width="min(900px, 94vw)"
     top="5vh"
     :close-on-click-modal="false"
     @open="onOpen"
@@ -10,10 +10,17 @@
     <p class="browse-intro">{{ $t('connection.message.browseHint') }}</p>
 
     <div class="browse-toolbar">
-      <div class="search-wrapper">
-        <search-icon class="search-icon" :size="16" aria-hidden="true" focusable="false" />
-        <input v-model="query" type="text" class="search-input" :placeholder="$t('connection.placeholder.search')" />
-      </div>
+      <el-input
+        v-model="query"
+        class="search-input"
+        size="default"
+        clearable
+        :placeholder="$t('connection.placeholder.search')"
+      >
+        <template #prefix>
+          <search-icon :size="14" aria-hidden="true" focusable="false" />
+        </template>
+      </el-input>
       <el-select v-model="sort" size="default" class="sort-select" @change="fetchItems">
         <el-option :label="$t('connection.label.featured')" value="popular" />
         <el-option :label="$t('connection.label.new')" value="new" />
@@ -169,6 +176,7 @@
 import { defineComponent, PropType } from 'vue';
 import {
   ElDialog,
+  ElInput,
   ElSelect,
   ElOption,
   ElMessage,
@@ -278,6 +286,7 @@ export default defineComponent({
   name: 'BrowseConnectors',
   components: {
     ElDialog,
+    ElInput,
     ElSelect,
     ElOption,
     ElTooltip,
@@ -633,49 +642,10 @@ export default defineComponent({
   margin-bottom: 14px;
 }
 
-.search-wrapper {
-  flex: 1 1 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 10px;
-  font-size: 12px;
-  color: var(--el-text-color-placeholder);
-  pointer-events: none;
-}
-
+// Styling comes from the global `.el-input__wrapper` rules in _common.scss,
+// so the field matches every other input in the console.
 .search-input {
-  width: 100%;
-  height: 34px;
-  padding: 0 10px 0 30px;
-  font-size: 13px;
-  color: var(--el-text-color-primary);
-  background: var(--el-fill-color-light);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  outline: none;
-  transition:
-    background 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
-
-  &::placeholder {
-    color: var(--el-text-color-placeholder);
-  }
-
-  &:hover {
-    background: var(--el-fill-color);
-  }
-
-  &:focus {
-    background: var(--el-bg-color);
-    border-color: var(--el-color-primary);
-    box-shadow: 0 0 0 3px var(--el-color-primary-light-9);
-  }
+  flex: 1 1 auto;
 }
 
 .sort-select {

@@ -2,7 +2,7 @@
   <el-dialog
     :model-value="modelValue"
     :title="$t('skill.dialog.uploadTitle')"
-    width="520px"
+    width="min(520px, 94vw)"
     align-center
     :close-on-click-modal="!uploading"
     :close-on-press-escape="!uploading"

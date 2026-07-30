@@ -2,7 +2,7 @@
   <el-dialog
     :model-value="modelValue"
     :title="$t('skill.dialog.writeTitle')"
-    width="720px"
+    width="min(720px, 94vw)"
     align-center
     :close-on-click-modal="!saving"
     :close-on-press-escape="!saving"

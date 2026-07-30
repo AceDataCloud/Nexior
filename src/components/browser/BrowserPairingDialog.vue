@@ -2,7 +2,7 @@
   <el-dialog
     v-model="visible"
     :title="$t('user.browserDevice.pairTitle')"
-    width="620px"
+    width="min(620px, 94vw)"
     append-to-body
     destroy-on-close
     :close-on-click-modal="false"
