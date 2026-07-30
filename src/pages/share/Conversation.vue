@@ -1,9 +1,8 @@
 <template>
   <div class="shared-page">
     <header class="shared-header">
-      <div class="brand" @click="goToApp">
-        <img v-if="brandLogo" :src="brandLogo" class="brand-logo" alt="logo" />
-        <span class="brand-name">{{ brandName }}</span>
+      <div class="brand">
+        <logo @click="goToApp" />
       </div>
       <el-button class="cta" type="primary" round @click="goToApp">
         {{ $t('chat.share.startYourOwn') }}
@@ -62,6 +61,7 @@ import { UnlinkIcon, ViewIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, provide } from 'vue';
 import { ElButton, ElSkeleton } from 'element-plus';
 import Message from '@/components/chat/Message.vue';
+import Logo from '@/components/common/Logo.vue';
 import { chatOperator } from '@/operators';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS } from '@/constants';
 import { IChatConversation, IChatMessage, IChatModelGroup } from '@/models';
@@ -79,6 +79,7 @@ export default defineComponent({
     UnlinkIcon,
     ViewIcon,
     Message,
+    Logo,
     ElButton,
     ElSkeleton
   },
@@ -119,12 +120,6 @@ export default defineComponent({
     },
     modelGroupName(): string {
       return this.modelGroup?.getDisplayName?.() || '';
-    },
-    brandName(): string {
-      return this.$store.state.site?.title || 'AceData';
-    },
-    brandLogo(): string | undefined {
-      return this.$store.state.site?.logo || this.$store.state.site?.favicon || undefined;
     }
   },
   async mounted() {
@@ -190,28 +185,25 @@ export default defineComponent({
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
+  display: grid;
+  // 1fr / auto / 1fr keeps the brand optically centered no matter how wide
+  // the CTA gets in other locales.
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 20px;
   border-bottom: 1px solid var(--el-border-color-lighter, #ebeef5);
   background-color: var(--el-bg-color, #fff);
 
   .brand {
+    grid-column: 2;
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
+    justify-content: center;
+  }
 
-    .brand-logo {
-      height: 28px;
-      width: auto;
-    }
-    .brand-name {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--el-text-color-primary);
-    }
+  .cta {
+    grid-column: 3;
+    justify-self: end;
   }
 }
 
