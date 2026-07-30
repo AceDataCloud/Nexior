@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 02:15:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 03:33:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.343.1
+
+Thu, 30 Jul 2026 03:33:09 GMT
+
+### Patches
+
+- fix(chat): 浏览器工具卡片停在转圈且看不到结果 (dev@acedata.cloud)
 
 ## 3.343.0
 
