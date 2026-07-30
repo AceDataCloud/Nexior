@@ -21,6 +21,7 @@ import { Browser } from '@capacitor/browser';
 import { ElMessage } from 'element-plus';
 import { isNative, isDesktop } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
+import { currentSiteOrigin } from '@/utils';
 import { parseInviterFromDeepLink, writeInviterCookie } from '@/utils/attribution';
 import { exchangeSsoCode } from '@/utils/auth/exchangeSsoCode';
 
@@ -60,7 +61,8 @@ export default defineComponent({
       // Desktop IPC listener detach handles (set in mounted on desktop only).
       offAuthCb: null as null | (() => void),
       offAuthExpired: null as null | (() => void),
-      offSiteWatch: null as null | (() => void)
+      offSiteWatch: null as null | (() => void),
+      offCredentialWatch: null as null | (() => void)
     };
   },
   computed: {
@@ -132,6 +134,18 @@ export default defineComponent({
         },
         { immediate: true }
       );
+      // Keep the scheduled-task daemon's copy of the API credential current.
+      // It runs in the main process with no window, so it cannot read the
+      // store — without this handoff a local task stops firing the moment the
+      // window closes, which looks identical to the machine being asleep.
+      this.offCredentialWatch = this.$watch(
+        () => this.$store.state.chat?.credential?.token as string | undefined,
+        (token) => {
+          if (token) void bridge?.scheduler?.setCredentials(token, currentSiteOrigin());
+          else void bridge?.scheduler?.clearCredentials();
+        },
+        { immediate: true }
+      );
     }
 
     const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
@@ -152,6 +166,7 @@ export default defineComponent({
     this.offAuthCb?.();
     this.offAuthExpired?.();
     this.offSiteWatch?.();
+    this.offCredentialWatch?.();
   },
   methods: {
     async loadElementPlusLocale() {
