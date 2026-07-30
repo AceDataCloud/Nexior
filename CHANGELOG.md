@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 29 Jul 2026 16:05:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 01:14:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.342.0
+
+Thu, 30 Jul 2026 01:14:54 GMT
+
+### Minor changes
+
+- feat(console): 连接器管理搬进 Studio 控制台（feature flag 保护） (dev@acedata.cloud)
 
 ## 3.341.0
 
