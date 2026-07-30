@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 10:00:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 10:13:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.345.0
+
+Thu, 30 Jul 2026 10:13:22 GMT
+
+### Minor changes
+
+- feat(local-tools): 新增 fs.glob / fs.grep 本地检索工具 (dev@acedata.cloud)
 
 ## 3.344.0
 
