@@ -11,7 +11,7 @@
         accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
         name="file"
         class="value shrink-0"
-        :limit="5"
+        :limit="maxImages"
         :multiple="true"
         :show-file-list="false"
         :action="uploadUrl"
@@ -49,6 +49,7 @@ import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { pasteUploadMixin, dropUploadMixin } from '@/utils';
+import { OPENAIIMAGE_MAX_REFERENCE_IMAGES } from '@/constants/openaiimage';
 
 interface IData {
   fileList: UploadFiles;
@@ -76,6 +77,9 @@ export default defineComponent({
     };
   },
   computed: {
+    maxImages(): number {
+      return OPENAIIMAGE_MAX_REFERENCE_IMAGES;
+    },
     headers() {
       return {
         Authorization: `Bearer ${this.$store.state.token.access}`
@@ -163,7 +167,7 @@ export default defineComponent({
       this.onSetImageUrls();
     },
     onExceed() {
-      ElMessage.warning(this.$t('openaiimage.message.uploadImageExceed'));
+      ElMessage.warning(this.$t('openaiimage.message.uploadImageExceed', { count: OPENAIIMAGE_MAX_REFERENCE_IMAGES }));
     },
     onError() {
       ElMessage.error(this.$t('openaiimage.message.uploadImageError'));
