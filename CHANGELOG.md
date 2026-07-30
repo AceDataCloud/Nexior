@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 03:33:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 04:07:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.343.2
+
+Thu, 30 Jul 2026 04:07:42 GMT
+
+### Patches
+
+- desktop: surface MCP tool image results to the model instead of burying them in JSON (dev@acedata.cloud)
 
 ## 3.343.1
 
