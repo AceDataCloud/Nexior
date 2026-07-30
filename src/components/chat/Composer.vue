@@ -168,6 +168,7 @@ import { IChatModel, IChatReference } from '@/models';
 import {
   getBaseUrlPlatform,
   isImageUrl,
+  openConnectionsManager,
   pasteUploadMixin,
   dropUploadMixin,
   uploadTrackerMixin,
@@ -422,9 +423,10 @@ export default defineComponent({
       window.open(withCurrentUserIdAndSite('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
     },
     onOpenConnections() {
-      // Connections (MCP + OAuth connectors) are managed exclusively at
-      // auth.acedata.cloud/user/connections.
-      window.open(withCurrentUserIdAndSite('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
+      // Routes to Studio's own connector page when `connections-in-studio`
+      // is on, else opens auth.acedata.cloud in a new tab (the historical
+      // behaviour). Either way auth stays the OAuth broker + vault.
+      openConnectionsManager(undefined, this.$router);
     }
   }
 });

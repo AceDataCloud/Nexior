@@ -1,0 +1,630 @@
+{
+  "title.connections": {
+    "message": "Connectors",
+    "description": "Title for the section that lists all connectors."
+  },
+  "title.connectNew": {
+    "message": "Connect Service",
+    "description": "Button text for connecting a new service."
+  },
+  "title.connectCustom": {
+    "message": "Connect MCP Server",
+    "description": "Button text for connecting to a custom MCP server."
+  },
+  "title.addCustomConnector": {
+    "message": "Add Custom Connector",
+    "description": "Button text for adding a new custom connector."
+  },
+  "title.browse": {
+    "message": "Browse Connectors",
+    "description": "Button text for browsing available connectors."
+  },
+  "title.directory": {
+    "message": "Connector Directory",
+    "description": "Title for the directory of connectors."
+  },
+  "title.groupConnected": {
+    "message": "Connected",
+    "description": "Label for the group of connected services."
+  },
+  "title.groupAvailable": {
+    "message": "Available to Connect",
+    "description": "Label for the group of services that can be connected."
+  },
+  "title.groupRecommended": {
+    "message": "Recommended",
+    "description": "Label for the curated shortlist of connectors pinned in the left rail."
+  },
+  "title.toolPermissions": {
+    "message": "Tool Permissions",
+    "description": "Label for the section that manages tool permissions."
+  },
+  "title.overview": {
+    "message": "Overview",
+    "description": "Title for the section showing the connector's long-form description."
+  },
+  "title.tryIt": {
+    "message": "Try It",
+    "description": "Button text for trying out a feature."
+  },
+  "title.actions": {
+    "message": "Actions",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Account",
+    "description": "Label for the account field."
+  },
+  "field.status": {
+    "message": "Status",
+    "description": "Label for the status field."
+  },
+  "field.expiresAt": {
+    "message": "Expires At",
+    "description": "Label for the expiration date field."
+  },
+  "field.lastRefreshedAt": {
+    "message": "Last Refreshed At",
+    "description": "Label for the last refreshed date field."
+  },
+  "field.createdAt": {
+    "message": "Created At",
+    "description": "Label for the creation date field."
+  },
+  "field.connectionRevision": {
+    "message": "Connection revision",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Active sessions",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Execution contract",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Active",
+    "description": "Status indicating the connector is active."
+  },
+  "status.expired": {
+    "message": "Expired",
+    "description": "Status indicating the connector has expired."
+  },
+  "status.revoked": {
+    "message": "Revoked",
+    "description": "Status indicating the connector has been revoked."
+  },
+  "status.pending": {
+    "message": "Pending Activation",
+    "description": "Status indicating the connector is awaiting activation."
+  },
+  "button.connect": {
+    "message": "Connect",
+    "description": "Button text for connecting a service."
+  },
+  "button.addCustom": {
+    "message": "Add",
+    "description": "Button text for adding a new item."
+  },
+  "button.reconnect": {
+    "message": "Reconnect",
+    "description": "Button text for reconnecting to a service."
+  },
+  "button.refresh": {
+    "message": "Refresh",
+    "description": "Button text for refreshing the connection."
+  },
+  "button.disconnect": {
+    "message": "Disconnect",
+    "description": "Button text for disconnecting from a service."
+  },
+  "button.browse": {
+    "message": "Browse",
+    "description": "Button text for browsing items."
+  },
+  "button.browseAll": {
+    "message": "Browse all connectors",
+    "description": "Footer button under the left rail; opens the full Browse Connectors dialog."
+  },
+  "button.addCustomConnector": {
+    "message": "Add Custom Connector",
+    "description": "Button text for adding a custom connector."
+  },
+  "button.install": {
+    "message": "Add",
+    "description": "Button text for installing a connector."
+  },
+  "button.returnToApp": {
+    "message": "Return to app",
+    "description": "Button text on the install deep-link page to return to the originating application."
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Change device",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Stop sessions",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Add account",
+    "description": "connection: button.addAccount"
+  },
+  "button.manageAccounts": {
+    "message": "Manage",
+    "description": "Menu item on a connected directory card; closes the browse dialog and selects that connector in the connections list."
+  },
+  "button.setDefault": {
+    "message": "Set as default",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Rename",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Current default",
+    "description": "connection: button.isDefault"
+  },
+  "label.mcpServer": {
+    "message": "MCP Server",
+    "description": "Label for the MCP server."
+  },
+  "label.advancedSettings": {
+    "message": "Advanced Settings",
+    "description": "Label for the advanced settings section."
+  },
+  "label.noScopes": {
+    "message": "No Authorization Scopes",
+    "description": "Message indicating there are no authorization scopes available."
+  },
+  "label.noTools": {
+    "message": "This service does not provide any tools",
+    "description": "Message indicating that the service has no tools available."
+  },
+  "label.toolsConnectFirst": {
+    "message": "Connect to view the tools this service provides.",
+    "description": "Hint shown for an unconnected MCP connector whose live tool list only loads after connecting."
+  },
+  "label.never": {
+    "message": "Never",
+    "description": "Label indicating something has never occurred."
+  },
+  "label.defaultAccount": {
+    "message": "Default",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Custom",
+    "description": "Label indicating a custom option."
+  },
+  "label.notConnected": {
+    "message": "Not connected",
+    "description": "Inline pill on a recommended rail row that has no active connection yet."
+  },
+  "label.authMethod": {
+    "message": "Authentication Method",
+    "description": "Label for the authentication method field."
+  },
+  "label.credentials": {
+    "message": "Credentials",
+    "description": "Label for the credentials field."
+  },
+  "label.official": {
+    "message": "Official",
+    "description": "Label indicating an official source."
+  },
+  "label.partner": {
+    "message": "Partner",
+    "description": "Label indicating a partner source."
+  },
+  "label.community": {
+    "message": "Community",
+    "description": "Label indicating a community source."
+  },
+  "label.featured": {
+    "message": "Featured",
+    "description": "Label for featured items."
+  },
+  "label.new": {
+    "message": "New",
+    "description": "Label indicating a new item."
+  },
+  "label.trending": {
+    "message": "Trending",
+    "description": "Label for trending items."
+  },
+  "label.all": {
+    "message": "All",
+    "description": "Label indicating all items."
+  },
+  "category.all": {
+    "message": "All",
+    "description": "Label for all categories."
+  },
+  "category.creative": {
+    "message": "Creative and Media",
+    "description": "Label for the creative and media category."
+  },
+  "category.search": {
+    "message": "Search and Web",
+    "description": "Label for the search and web category."
+  },
+  "category.developer": {
+    "message": "Developer Tools",
+    "description": "Label for the developer tools category."
+  },
+  "category.productivity": {
+    "message": "Productivity and Documentation",
+    "description": "Label for the productivity and documentation category."
+  },
+  "category.communication": {
+    "message": "Communication",
+    "description": "Label for the communication category."
+  },
+  "category.data": {
+    "message": "Data and Analytics",
+    "description": "Label for the data and analytics category."
+  },
+  "category.commerce": {
+    "message": "Commerce and Finance",
+    "description": "Label for the commerce and finance category."
+  },
+  "category.automation": {
+    "message": "Automation",
+    "description": "Label for the automation category."
+  },
+  "category.uncategorized": {
+    "message": "Others",
+    "description": "Label for uncategorized items."
+  },
+  "placeholder.name": {
+    "message": "Name",
+    "description": "Placeholder text for the name field."
+  },
+  "placeholder.serverUrl": {
+    "message": "Remote MCP Server URL",
+    "description": "Placeholder text for the server URL field."
+  },
+  "placeholder.clientId": {
+    "message": "OAuth Client ID (optional)",
+    "description": "Placeholder text for the client ID field."
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth Client Secret (optional)",
+    "description": "Placeholder text for the client secret field."
+  },
+  "placeholder.search": {
+    "message": "Search Connectors",
+    "description": "Placeholder text for the search field."
+  },
+  "message.pageDescription": {
+    "message": "Manage your connected third-party services. These connections allow the AceDataCloud app to perform actions on your behalf.",
+    "description": "Description of the page's purpose."
+  },
+  "message.noConnections": {
+    "message": "No connectors available",
+    "description": "Message indicating there are no connectors."
+  },
+  "message.notConnectedYet": {
+    "message": "Not connected. Click to start authorization.",
+    "description": "Tooltip on the 'Not connected' pill in the recommended rail."
+  },
+  "message.noConnectionsHint": {
+    "message": "You can get a richer experience in applications like ChatGPT, Claude, etc., after connecting services.",
+    "description": "Hint for users about the benefits of connecting services."
+  },
+  "message.connectConfirm": {
+    "message": "You will be redirected to {provider} for authorization.",
+    "description": "Confirmation message for connecting to a provider."
+  },
+  "message.selectScopes": {
+    "message": "Select {provider} Authorization Scopes",
+    "description": "Prompt to select authorization scopes for the provider."
+  },
+  "message.selectScopesHint": {
+    "message": "Select the permissions you wish to authorize. Multiple selections are allowed; by default, only basic login information is granted.",
+    "description": "Hint for selecting authorization scopes."
+  },
+  "message.disconnectConfirm": {
+    "message": "Are you sure you want to disconnect from {provider}? Applications using this connector will lose access.",
+    "description": "Confirmation message for disconnecting from a provider."
+  },
+  "message.disconnected": {
+    "message": "Disconnected from {provider}",
+    "description": "Message indicating successful disconnection from a provider."
+  },
+  "message.refreshed": {
+    "message": "Connection has been refreshed",
+    "description": "Message indicating the connection was successfully refreshed."
+  },
+  "message.refreshFailed": {
+    "message": "Failed to refresh connection",
+    "description": "Message indicating the refresh operation failed."
+  },
+  "message.customConnectorHint": {
+    "message": "Connect to a remote MCP server that supports OAuth.",
+    "description": "Hint for using a custom connector."
+  },
+  "message.customConnectorTrust": {
+    "message": "Only add connectors you trust. The tools and data permissions provided by the connector are controlled by the corresponding service.",
+    "description": "Warning about trusting custom connectors."
+  },
+  "message.callbackMissingParams": {
+    "message": "Authorization callback is missing required parameters, please re-initiate the connection.",
+    "description": "Error message for missing parameters in the callback."
+  },
+  "message.callbackFailed": {
+    "message": "Connection authorization failed, please try again later.",
+    "description": "Error message for failed authorization."
+  },
+  "message.selectConnector": {
+    "message": "Select a connector on the left to view details",
+    "description": "Instruction to select a connector for more information."
+  },
+  "message.noMatch": {
+    "message": "No matching connectors found",
+    "description": "Message indicating no connectors matched the search."
+  },
+  "message.manageUnavailable": {
+    "message": "Could not open this connector's accounts. Please refresh and try again.",
+    "description": "Shown when Manage is clicked on a directory card but no matching connection row could be found, e.g. the connections list failed to load."
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — connected accounts: {count}",
+    "description": "Tooltip and accessible name for the green badge on a connected directory card, which shows only the number. Phrase it so no word has to agree grammatically with {count} (languages with three plural forms cannot render 'N accounts' from a single string)."
+  },
+  "message.toolsLoading": {
+    "message": "Loading tools provided by the server…",
+    "description": "Message indicating tools are being loaded."
+  },
+  "message.browseHint": {
+    "message": "Browse featured connectors and add them to your workspace with one click.",
+    "description": "Hint for browsing featured connectors."
+  },
+  "message.browseEmpty": {
+    "message": "No matching connectors found, try a different keyword or adjust the filters.",
+    "description": "Message indicating no connectors were found."
+  },
+  "message.installFailed": {
+    "message": "Failed to add, please try again later.",
+    "description": "Error message for failed installation."
+  },
+  "message.installed": {
+    "message": "Added {name}",
+    "description": "Message indicating a connector has been added."
+  },
+  "message.tryItHint": {
+    "message": "Click the prompt below to continue in the Studio chat.",
+    "description": "Hint for trying out a feature in the Studio chat."
+  },
+  "message.tryItConnectFirst": {
+    "message": "Connect this connector to use these example prompts.",
+    "description": "Tooltip/hint shown on locked Try It prompts for a connector the user hasn't connected yet."
+  },
+  "message.installRedirecting": {
+    "message": "Redirecting to the authorization page…",
+    "description": "Status text shown on the deep-link install page while the redirect is being prepared."
+  },
+  "message.installMissingId": {
+    "message": "The connector to add is not specified.",
+    "description": "Error shown when the install deep-link URL lacks a catalog id."
+  },
+  "message.installInvalidReturnTo": {
+    "message": "The return target is not trusted; redirect refused.",
+    "description": "Error shown when a deep-link install URL carries a return_to outside the trusted allow-list."
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Enter your credentials in the form that just opened to finish connecting.",
+    "description": "Prompt shown when a BYOC connector deep-link install opens the inline credential form."
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "This connector uses a local browser session. Pair ACE Browser Agent first; no credentials will be collected here.",
+    "description": "Fail-closed notice for a browser_session connector before pairing a local browser device."
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Device paired. This connector remains unavailable until its browser-session producer is enabled; no cloud authorization was created.",
+    "description": "Shown after device pairing when the browser_session connector is still hidden and not installable."
+  },
+  "message.selectBrowserDevice": {
+    "message": "Select browser device",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Allowed sites",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities: {capabilities}",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Device v{version} is still incompatible. Missing: {capabilities}. Update Browser Agent or pair another device.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "Online",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Offline",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "Online and compatible",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} active sessions",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "This connector can read pages and perform clicks, typing, uploads, downloads, and publishing actions on the declared sites through the selected local browser. Only choose a device you control.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "This device is inactive or revoked.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Browser Agent uses a different execution contract. Update the extension.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Browser Agent is too old. Update the extension.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Browser Agent is offline. Open the extension on this device.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Browser device changed. Existing sessions were stopped, and scheduled browser authorizations using the old revision must be confirmed again.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "Stopped {count} browser sessions.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Couldn't stop browser sessions.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Default account updated",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Failed to set default account",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Name this account (this is how you tell several accounts of one connector apart)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Name must be 64 characters or fewer",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Rename failed",
+    "description": "connection: message.renameFailed"
+  },
+  "byoc.dialogTitle": {
+    "message": "Add {name} Credentials",
+    "description": "Title for the dialog to add credentials."
+  },
+  "byoc.intro": {
+    "message": "Please fill in the access key obtained from the service console. These credentials are only used to call the corresponding cloud/SaaS API on your behalf.",
+    "description": "Introduction text for entering credentials."
+  },
+  "byoc.submit": {
+    "message": "Save and Enable",
+    "description": "Button text for saving and enabling the credentials."
+  },
+  "byoc.required": {
+    "message": "This field is required",
+    "description": "Message indicating a required field."
+  },
+  "byoc.disclaimer": {
+    "message": "Credentials are stored encrypted with AES-256-GCM; during Skill execution, they are only briefly decrypted in sandbox memory and never written in plaintext to the database/logs/API responses. You can disconnect at any time on this page to invalidate them.",
+    "description": "Disclaimer about the security of credentials."
+  },
+  "byoc.extensionIntro": {
+    "message": "Cookie-based connectors require the ACE browser extension. It captures your login session to connect — no password or token needed.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Log in to the platform in a new tab.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Open login page",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Click \"Capture & Connect\"; the ACE browser extension reads your login cookies and connects.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionCapture": {
+    "message": "Capture & Connect",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionMissing": {
+    "message": "ACE browser extension not detected. Please install it and try again.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "No login cookies found — make sure you are logged in to the platform in another tab.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "ACE browser extension required",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "Connecting captures your login session with the ACE extension — no password or token. Install it first, then come back.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionGuide": {
+    "message": "Installation guide",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionRecheck": {
+    "message": "I've installed it — re-check",
+    "description": "connection: byoc.extensionRecheck"
+  },
+  "method.dialogTitle": {
+    "message": "Connect {name}",
+    "description": "Title of the dialog that lets the user pick how to connect a multi-method connector."
+  },
+  "method.heading": {
+    "message": "Choose how to connect",
+    "description": "Prompt above the list of auth methods."
+  },
+  "method.recommended": {
+    "message": "Recommended",
+    "description": "Badge marking the recommended auth method."
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth",
+    "description": "Fallback label for the OAuth (dynamic client registration) auth method."
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth",
+    "description": "Fallback label for the OAuth (static client) auth method."
+  },
+  "method.mode.byoc": {
+    "message": "Bring your own credentials",
+    "description": "Fallback label for the bring-your-own-credentials auth method."
+  },
+  "method.mode.public": {
+    "message": "Public access",
+    "description": "Fallback label for the public (no auth) method."
+  },
+  "method.mode.browser_session": {
+    "message": "Local browser session",
+    "description": "Fallback label for a connector executed by the paired ACE Browser Agent."
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Sign in and authorize on the provider — secure, no keys to paste.",
+    "description": "Description of the OAuth (DCR) method."
+  },
+  "method.desc.oauth_static": {
+    "message": "Sign in and authorize on the provider — secure, no keys to paste.",
+    "description": "Description of the OAuth (static client) method."
+  },
+  "method.desc.byoc": {
+    "message": "Paste the keys from the service console, or capture your login with the browser extension.",
+    "description": "Description of the bring-your-own-credentials method."
+  },
+  "method.desc.public": {
+    "message": "Connect directly — no sign-in required.",
+    "description": "Description of the public method."
+  },
+  "method.desc.browser_session": {
+    "message": "Pair ACE Browser Agent. Browser actions run locally and require their own explicit approval.",
+    "description": "Description of the local browser-session method; pairing is not action approval."
+  }
+}

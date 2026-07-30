@@ -94,7 +94,7 @@ export default defineComponent({
       }
     },
     onOpen() {
-      openConnectionsManager();
+      openConnectionsManager(undefined, this.$router);
     }
   }
 });

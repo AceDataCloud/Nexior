@@ -62,6 +62,7 @@ export const I18N_SCOPES = [
   'midjourney',
   'serp',
   'connector',
+  'connection',
   'byok',
   'subsite',
   'webextrator',

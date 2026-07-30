@@ -1,0 +1,630 @@
+{
+  "title.connections": {
+    "message": "Connecteurs",
+    "description": "Titre pour la section des connecteurs."
+  },
+  "title.connectNew": {
+    "message": "Connecter un service",
+    "description": "Texte pour le bouton permettant de connecter un nouveau service."
+  },
+  "title.connectCustom": {
+    "message": "Connecter le serveur MCP",
+    "description": "Texte pour le bouton permettant de connecter un serveur MCP personnalisé."
+  },
+  "title.addCustomConnector": {
+    "message": "Ajouter un connecteur personnalisé",
+    "description": "Texte pour le bouton permettant d'ajouter un connecteur personnalisé."
+  },
+  "title.browse": {
+    "message": "Parcourir les connecteurs",
+    "description": "Texte pour le bouton permettant de parcourir les connecteurs disponibles."
+  },
+  "title.directory": {
+    "message": "Répertoire des connecteurs",
+    "description": "Titre pour la section du répertoire des connecteurs."
+  },
+  "title.groupConnected": {
+    "message": "Connectés",
+    "description": "Titre pour le groupe des connecteurs déjà connectés."
+  },
+  "title.groupAvailable": {
+    "message": "Disponibles",
+    "description": "Titre pour le groupe des connecteurs disponibles à la connexion."
+  },
+  "title.groupRecommended": {
+    "message": "Recommandé",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.toolPermissions": {
+    "message": "Permissions des outils",
+    "description": "Titre pour la section des permissions des outils."
+  },
+  "title.overview": {
+    "message": "Aperçu",
+    "description": "connection: title.overview"
+  },
+  "title.tryIt": {
+    "message": "Essayez-le",
+    "description": "Texte pour le bouton permettant d'essayer une fonctionnalité."
+  },
+  "title.actions": {
+    "message": "Actions",
+    "description": "connexion : title.actions"
+  },
+  "field.account": {
+    "message": "Compte",
+    "description": "Champ pour le nom du compte."
+  },
+  "field.status": {
+    "message": "Statut",
+    "description": "Champ pour afficher le statut de la connexion."
+  },
+  "field.expiresAt": {
+    "message": "Date d'expiration",
+    "description": "Champ pour afficher la date d'expiration de la connexion."
+  },
+  "field.lastRefreshedAt": {
+    "message": "Dernière actualisation",
+    "description": "Champ pour afficher la dernière date d'actualisation."
+  },
+  "field.createdAt": {
+    "message": "Date de création",
+    "description": "Champ pour afficher la date de création de la connexion."
+  },
+  "field.connectionRevision": {
+    "message": "Version de connexion",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Sessions actives",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Contrat d'exécution",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Actif",
+    "description": "Statut indiquant que la connexion est active."
+  },
+  "status.expired": {
+    "message": "Expiré",
+    "description": "Statut indiquant que la connexion a expiré."
+  },
+  "status.revoked": {
+    "message": "Révoqué",
+    "description": "Statut indiquant que la connexion a été révoquée."
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "Statut indiquant que la connexion est en attente d'activation."
+  },
+  "button.connect": {
+    "message": "Connecter",
+    "description": "Texte pour le bouton permettant de connecter un service."
+  },
+  "button.addCustom": {
+    "message": "Ajouter",
+    "description": "Texte pour le bouton permettant d'ajouter un élément."
+  },
+  "button.reconnect": {
+    "message": "Reconnecter",
+    "description": "Texte pour le bouton permettant de reconnecter un service."
+  },
+  "button.refresh": {
+    "message": "Actualiser",
+    "description": "Texte pour le bouton permettant d'actualiser la connexion."
+  },
+  "button.disconnect": {
+    "message": "Déconnecter",
+    "description": "Texte pour le bouton permettant de déconnecter un service."
+  },
+  "button.browse": {
+    "message": "Parcourir",
+    "description": "Texte pour le bouton permettant de parcourir les options."
+  },
+  "button.browseAll": {
+    "message": "Parcourir tous les connecteurs",
+    "description": "connection: button.browseAll"
+  },
+  "button.addCustomConnector": {
+    "message": "Ajouter un connecteur personnalisé",
+    "description": "Texte pour le bouton permettant d'ajouter un connecteur personnalisé."
+  },
+  "button.install": {
+    "message": "Ajouter",
+    "description": "Texte pour le bouton permettant d'installer un élément."
+  },
+  "button.returnToApp": {
+    "message": "Retour à l'application",
+    "description": "connection: button.returnToApp"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Changer de dispositif",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Arrêter les sessions",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Ajouter un compte",
+    "description": "connection: button.addAccount"
+  },
+  "button.manageAccounts": {
+    "message": "Gérer",
+    "description": "connection: button.manageAccounts"
+  },
+  "button.setDefault": {
+    "message": "Définir par défaut",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Renommer",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Actuel par défaut",
+    "description": "connection: button.isDefault"
+  },
+  "label.mcpServer": {
+    "message": "Serveur MCP",
+    "description": "Étiquette pour le champ du serveur MCP."
+  },
+  "label.advancedSettings": {
+    "message": "Paramètres avancés",
+    "description": "Étiquette pour accéder aux paramètres avancés."
+  },
+  "label.noScopes": {
+    "message": "Aucune portée",
+    "description": "Message indiquant qu'il n'y a pas de portée d'autorisation."
+  },
+  "label.noTools": {
+    "message": "Ce service ne propose aucun outil",
+    "description": "Message indiquant qu'aucun outil n'est disponible pour ce service."
+  },
+  "label.toolsConnectFirst": {
+    "message": "Connectez-vous pour voir les outils fournis par ce service",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "label.never": {
+    "message": "Jamais",
+    "description": "Texte indiquant qu'un événement ne s'est jamais produit."
+  },
+  "label.defaultAccount": {
+    "message": "Par défaut",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Personnalisé",
+    "description": "Étiquette pour indiquer un élément personnalisé."
+  },
+  "label.notConnected": {
+    "message": "Non connecté",
+    "description": "connection: label.notConnected"
+  },
+  "label.authMethod": {
+    "message": "Méthode d'authentification",
+    "description": "Étiquette pour le champ de la méthode d'authentification."
+  },
+  "label.credentials": {
+    "message": "Identifiants",
+    "description": "Étiquette pour le champ des identifiants."
+  },
+  "label.official": {
+    "message": "Officiel",
+    "description": "Étiquette pour indiquer un élément officiel."
+  },
+  "label.partner": {
+    "message": "Partenaire",
+    "description": "Étiquette pour indiquer un partenaire."
+  },
+  "label.community": {
+    "message": "Communauté",
+    "description": "Étiquette pour indiquer un élément de la communauté."
+  },
+  "label.featured": {
+    "message": "En vedette",
+    "description": "Étiquette pour indiquer un élément en vedette."
+  },
+  "label.new": {
+    "message": "Nouveau",
+    "description": "Étiquette pour indiquer un nouvel élément."
+  },
+  "label.trending": {
+    "message": "Tendance",
+    "description": "Étiquette pour indiquer un élément tendance."
+  },
+  "label.all": {
+    "message": "Tout",
+    "description": "Étiquette pour indiquer tous les éléments."
+  },
+  "category.all": {
+    "message": "Tout",
+    "description": "Étiquette pour indiquer toutes les catégories."
+  },
+  "category.creative": {
+    "message": "Création et médias",
+    "description": "Catégorie pour les outils de création et de médias."
+  },
+  "category.search": {
+    "message": "Recherche et web",
+    "description": "Catégorie pour les outils de recherche et de navigation web."
+  },
+  "category.developer": {
+    "message": "Outils de développement",
+    "description": "Catégorie pour les outils destinés aux développeurs."
+  },
+  "category.productivity": {
+    "message": "Productivité et documentation",
+    "description": "Catégorie pour les outils de productivité et de documentation."
+  },
+  "category.communication": {
+    "message": "Communication",
+    "description": "connexion : category.communication"
+  },
+  "category.data": {
+    "message": "Données et analyses",
+    "description": "Catégorie pour les outils de données et d'analyse."
+  },
+  "category.commerce": {
+    "message": "Commerce et finance",
+    "description": "Catégorie pour les outils de commerce et de finance."
+  },
+  "category.automation": {
+    "message": "Automatisation",
+    "description": "Catégorie pour les outils d'automatisation."
+  },
+  "category.uncategorized": {
+    "message": "Autres",
+    "description": "Catégorie pour les éléments non classés."
+  },
+  "placeholder.name": {
+    "message": "Nom",
+    "description": "Texte d'espace réservé pour le champ du nom."
+  },
+  "placeholder.serverUrl": {
+    "message": "URL du serveur MCP distant",
+    "description": "Texte d'espace réservé pour l'URL du serveur MCP."
+  },
+  "placeholder.clientId": {
+    "message": "ID client OAuth (facultatif)",
+    "description": "Texte d'espace réservé pour l'ID client OAuth."
+  },
+  "placeholder.clientSecret": {
+    "message": "Secret client OAuth (facultatif)",
+    "description": "Texte d'espace réservé pour le secret client OAuth."
+  },
+  "placeholder.search": {
+    "message": "Rechercher des connecteurs",
+    "description": "Texte d'espace réservé pour la recherche de connecteurs."
+  },
+  "message.pageDescription": {
+    "message": "Gérez vos services tiers connectés. Ces connexions permettent à l'application AceDataCloud d'effectuer des actions en votre nom.",
+    "description": "Description de la page pour la gestion des services connectés."
+  },
+  "message.noConnections": {
+    "message": "Aucun connecteur disponible",
+    "description": "Message indiquant qu'il n'y a pas de connecteurs disponibles."
+  },
+  "message.notConnectedYet": {
+    "message": "Pas encore connecté, cliquez pour commencer l'autorisation",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.noConnectionsHint": {
+    "message": "Connectez des services pour obtenir une expérience plus riche dans des applications comme ChatGPT, Claude, etc.",
+    "description": "Conseil pour encourager la connexion de services."
+  },
+  "message.connectConfirm": {
+    "message": "Vous allez être redirigé vers {provider} pour autorisation.",
+    "description": "Message de confirmation pour la redirection vers le fournisseur pour l'autorisation."
+  },
+  "message.selectScopes": {
+    "message": "Sélectionnez les portées d'autorisation {provider}",
+    "description": "Message demandant de sélectionner les portées d'autorisation pour le fournisseur."
+  },
+  "message.selectScopesHint": {
+    "message": "Sélectionnez les permissions que vous souhaitez autoriser. Plusieurs choix possibles, par défaut, seules les informations de connexion de base sont accordées.",
+    "description": "Conseil pour la sélection des portées d'autorisation."
+  },
+  "message.disconnectConfirm": {
+    "message": "Êtes-vous sûr de vouloir déconnecter {provider} ? Les applications utilisant ce connecteur perdront l'accès.",
+    "description": "Message de confirmation pour la déconnexion d'un fournisseur."
+  },
+  "message.disconnected": {
+    "message": "Déconnecté de {provider}",
+    "description": "Message indiquant que la connexion avec le fournisseur a été déconnectée."
+  },
+  "message.refreshed": {
+    "message": "Connexion actualisée",
+    "description": "Message indiquant que la connexion a été actualisée."
+  },
+  "message.refreshFailed": {
+    "message": "Échec de l'actualisation de la connexion",
+    "description": "Message indiquant que l'actualisation de la connexion a échoué."
+  },
+  "message.customConnectorHint": {
+    "message": "Connectez-vous à un serveur MCP distant prenant en charge OAuth.",
+    "description": "Conseil pour l'utilisation d'un connecteur personnalisé."
+  },
+  "message.customConnectorTrust": {
+    "message": "Ajoutez uniquement des connecteurs en lesquels vous avez confiance. Les outils et permissions de données fournis par le connecteur sont contrôlés par le service correspondant.",
+    "description": "Avertissement concernant la confiance dans les connecteurs."
+  },
+  "message.callbackMissingParams": {
+    "message": "Les paramètres nécessaires manquent dans le rappel d'autorisation, veuillez relancer la connexion.",
+    "description": "Message d'erreur indiquant que des paramètres sont manquants."
+  },
+  "message.callbackFailed": {
+    "message": "Échec de l'autorisation de connexion, veuillez réessayer plus tard.",
+    "description": "Message d'erreur indiquant que l'autorisation a échoué."
+  },
+  "message.selectConnector": {
+    "message": "Sélectionnez un connecteur à gauche pour voir les détails",
+    "description": "Instruction pour sélectionner un connecteur."
+  },
+  "message.noMatch": {
+    "message": "Aucun connecteur correspondant",
+    "description": "Message indiquant qu'il n'y a pas de connecteur correspondant."
+  },
+  "message.manageUnavailable": {
+    "message": "Impossible d'ouvrir le compte de ce connecteur, veuillez rafraîchir et réessayer.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Comptes connectés : {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.toolsLoading": {
+    "message": "Chargement des outils fournis par le serveur…",
+    "description": "Message indiquant que les outils sont en cours de chargement."
+  },
+  "message.browseHint": {
+    "message": "Parcourez les connecteurs sélectionnés et ajoutez-les à votre espace de travail d'un clic.",
+    "description": "Conseil pour parcourir et ajouter des connecteurs."
+  },
+  "message.browseEmpty": {
+    "message": "Aucun connecteur correspondant trouvé, essayez un autre mot-clé ou ajustez les filtres.",
+    "description": "Message indiquant qu'aucun connecteur n'a été trouvé."
+  },
+  "message.installFailed": {
+    "message": "Échec de l'ajout, veuillez réessayer plus tard.",
+    "description": "Message indiquant que l'ajout a échoué."
+  },
+  "message.installed": {
+    "message": "Ajouté {name}",
+    "description": "Message indiquant qu'un élément a été ajouté avec succès."
+  },
+  "message.installRedirecting": {
+    "message": "Redirection vers la page d'autorisation…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.installMissingId": {
+    "message": "Aucun connecteur spécifié à ajouter.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "L'URL de retour n'est pas de confiance, le redirection a été refusé.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Ce connecteur nécessite que les informations d'identification soient saisies manuellement dans la liste des connecteurs.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.tryItHint": {
+    "message": "Cliquez sur l'invite ci-dessous pour continuer dans le chat de Studio.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Connectez-vous pour utiliser ces exemples de prompts",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Ce connecteur utilise les sessions du navigateur local. Veuillez d'abord associer l'ACE Browser Agent ; aucune information d'identification ne sera collectée ici.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Le dispositif est associé. Ce connecteur n'est toujours pas disponible avant l'activation de l'exécution de session du navigateur ; aucune autorisation cloud n'a été créée.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Sélectionner un appareil de navigateur",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Sites autorisés",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Le dispositif v{version} est toujours incompatible, manque : {capabilities}. Veuillez mettre à jour le Browser Agent ou associer un autre dispositif.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "En ligne",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Hors ligne",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "En ligne et compatible",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} sessions actives",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Ce connecteur peut lire des pages sur les sites déclarés via le navigateur local sélectionné, et exécuter des clics, saisies, téléchargements et publications. Veuillez choisir uniquement des dispositifs que vous contrôlez.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Ce dispositif est désactivé ou révoqué.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Le Browser Agent utilise un contrat d'exécution différent, veuillez mettre à jour l'extension.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "La version du Browser Agent est obsolète, veuillez mettre à jour l'extension.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Le Browser Agent est actuellement hors ligne, veuillez ouvrir l'extension sur ce dispositif.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Le dispositif du navigateur a été changé. Les sessions existantes ont été arrêtées, la liaison de l'ancienne version du navigateur nécessite une nouvelle confirmation.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "{count} sessions de navigateur arrêtées.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Impossible d'arrêter la session du navigateur.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Compte par défaut mis à jour",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Échec de la mise à jour du compte par défaut",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Donnez un nom à ce compte (plusieurs comptes sous le même connecteur sont distingués par cela)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Le nom ne peut pas dépasser 64 caractères",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Échec du renommage",
+    "description": "connection: message.renameFailed"
+  },
+  "byoc.dialogTitle": {
+    "message": "Ajouter des identifiants {name}",
+    "description": "Titre de la boîte de dialogue pour ajouter des identifiants."
+  },
+  "byoc.intro": {
+    "message": "Veuillez saisir la clé d'accès obtenue dans la console de ce service. Ces identifiants ne sont utilisés que pour appeler l'API cloud / SaaS correspondante en votre nom.",
+    "description": "Introduction expliquant l'utilisation des identifiants."
+  },
+  "byoc.submit": {
+    "message": "Enregistrer et activer",
+    "description": "Texte pour le bouton permettant d'enregistrer et d'activer."
+  },
+  "byoc.required": {
+    "message": "Champ requis",
+    "description": "Message indiquant qu'un champ est obligatoire."
+  },
+  "byoc.disclaimer": {
+    "message": "Les identifiants sont stockés avec un chiffrement AES-256-GCM ; lors de l'exécution de la compétence, ils ne sont déchiffrés que temporairement en mémoire sandbox et ne sont jamais écrits en clair dans la base de données / les journaux / les réponses API. Vous pouvez les déconnecter à tout moment sur cette page pour les rendre invalides.",
+    "description": "Avertissement concernant la sécurité des identifiants."
+  },
+  "byoc.extensionIntro": {
+    "message": "Utilisez l'extension du navigateur ACE pour capturer votre état de connexion sans mot de passe ni jeton.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Connectez-vous à la plateforme dans un nouvel onglet.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Ouvrir la page de connexion",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Cliquez sur « Capturer et se connecter » ci-dessous, l'extension ACE lira le cookie de connexion pour terminer la connexion.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionCapture": {
+    "message": "Capturer et se connecter",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionMissing": {
+    "message": "Aucune extension du navigateur ACE détectée, veuillez l'installer puis réessayer.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "Aucun cookie de connexion capturé, veuillez vous assurer que vous êtes connecté sur la plateforme dans un autre onglet.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "Vous devez d'abord installer le plugin de navigateur ACE",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "La connexion utilise le plugin ACE pour capturer votre état de connexion, sans mot de passe ni jeton. Veuillez d'abord installer le plugin, puis revenir ici.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionGuide": {
+    "message": "Voir le guide d'installation",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionRecheck": {
+    "message": "J'ai installé, vérifier à nouveau",
+    "description": "connection: byoc.extensionRecheck"
+  },
+  "method.dialogTitle": {
+    "message": "Connecter {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Choisissez le mode de connexion",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Recommandé",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "Autorisation OAuth",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "Autorisation OAuth",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Vos propres identifiants",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Accès public",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Session de navigateur local",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Connectez-vous et autorisez chez le fournisseur — sécurisé, sans clé à saisir.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Connectez-vous et autorisez chez le fournisseur — sécurisé, sans clé à saisir.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Collez les clés de la console du service ou capturez votre session via l’extension navigateur.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Connexion directe — aucune connexion requise.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Appairer l'ACE Browser Agent ; les actions du navigateur s'exécutent localement et nécessitent toujours une approbation explicite séparée.",
+    "description": "connection: method.desc.browser_session"
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "method.dialogTitle": {
+    "message": "Подключить {name}",
+    "description": "connection: method.dialogTitle"
+  },
+  "method.heading": {
+    "message": "Выберите способ подключения",
+    "description": "connection: method.heading"
+  },
+  "method.recommended": {
+    "message": "Рекомендуется",
+    "description": "connection: method.recommended"
+  },
+  "method.mode.oauth_dcr": {
+    "message": "OAuth авторизация",
+    "description": "connection: method.mode.oauth_dcr"
+  },
+  "method.mode.oauth_static": {
+    "message": "OAuth авторизация",
+    "description": "connection: method.mode.oauth_static"
+  },
+  "method.mode.byoc": {
+    "message": "Свои учётные данные",
+    "description": "connection: method.mode.byoc"
+  },
+  "method.mode.public": {
+    "message": "Открытый доступ",
+    "description": "connection: method.mode.public"
+  },
+  "method.mode.browser_session": {
+    "message": "Локальная сессия браузера",
+    "description": "connection: method.mode.browser_session"
+  },
+  "method.desc.oauth_dcr": {
+    "message": "Войдите и авторизуйтесь у поставщика — безопасно, без ввода ключей.",
+    "description": "connection: method.desc.oauth_dcr"
+  },
+  "method.desc.oauth_static": {
+    "message": "Войдите и авторизуйтесь у поставщика — безопасно, без ввода ключей.",
+    "description": "connection: method.desc.oauth_static"
+  },
+  "method.desc.byoc": {
+    "message": "Вставьте ключи из консоли сервиса или получите сессию через расширение браузера.",
+    "description": "connection: method.desc.byoc"
+  },
+  "method.desc.public": {
+    "message": "Подключайтесь напрямую — вход не требуется.",
+    "description": "connection: method.desc.public"
+  },
+  "method.desc.browser_session": {
+    "message": "Сопряжение с ACE Browser Agent; действия в браузере выполняются локально и требуют отдельного явного одобрения.",
+    "description": "connection: method.desc.browser_session"
+  },
+  "title.connections": {
+    "message": "Соединения",
+    "description": "Заголовок для раздела, где отображаются соединения."
+  },
+  "title.connectNew": {
+    "message": "Подключить сервис",
+    "description": "Кнопка для подключения нового сервиса."
+  },
+  "title.connectCustom": {
+    "message": "Подключить MCP сервер",
+    "description": "Кнопка для подключения пользовательского MCP сервера."
+  },
+  "title.addCustomConnector": {
+    "message": "Добавить пользовательский соединитель",
+    "description": "Кнопка для добавления нового пользовательского соединителя."
+  },
+  "title.browse": {
+    "message": "Просмотреть соединители",
+    "description": "Кнопка для просмотра доступных соединителей."
+  },
+  "title.directory": {
+    "message": "Каталог соединителей",
+    "description": "Заголовок для каталога соединителей."
+  },
+  "title.groupConnected": {
+    "message": "Подключенные",
+    "description": "Заголовок для группы подключенных соединителей."
+  },
+  "title.groupAvailable": {
+    "message": "Доступные для подключения",
+    "description": "Заголовок для группы доступных соединителей."
+  },
+  "title.toolPermissions": {
+    "message": "Разрешения инструмента",
+    "description": "Заголовок для раздела с разрешениями инструментов."
+  },
+  "title.tryIt": {
+    "message": "Попробуйте",
+    "description": "connection: title.tryIt"
+  },
+  "title.groupRecommended": {
+    "message": "Рекомендуется",
+    "description": "connection: title.groupRecommended"
+  },
+  "title.overview": {
+    "message": "Обзор",
+    "description": "connection: title.overview"
+  },
+  "title.actions": {
+    "message": "Действия",
+    "description": "connection: title.actions"
+  },
+  "field.account": {
+    "message": "Учетная запись",
+    "description": "Поле для ввода учетной записи пользователя."
+  },
+  "field.status": {
+    "message": "Статус",
+    "description": "Поле для отображения статуса соединения."
+  },
+  "field.expiresAt": {
+    "message": "Срок действия",
+    "description": "Поле для отображения времени истечения срока действия."
+  },
+  "field.lastRefreshedAt": {
+    "message": "Последнее обновление",
+    "description": "Поле для отображения времени последнего обновления."
+  },
+  "field.createdAt": {
+    "message": "Время подключения",
+    "description": "Поле для отображения времени создания соединения."
+  },
+  "field.connectionRevision": {
+    "message": "Версия подключения",
+    "description": "connection: field.connectionRevision"
+  },
+  "field.activeSessions": {
+    "message": "Активные сессии",
+    "description": "connection: field.activeSessions"
+  },
+  "field.wireContractDigest": {
+    "message": "Исполнение контракта",
+    "description": "connection: field.wireContractDigest"
+  },
+  "status.active": {
+    "message": "Активен",
+    "description": "Статус, указывающий, что соединение активно."
+  },
+  "status.expired": {
+    "message": "Истек",
+    "description": "Статус, указывающий, что соединение истекло."
+  },
+  "status.revoked": {
+    "message": "Отозвано",
+    "description": "Статус, указывающий, что соединение было отозвано."
+  },
+  "status.pending": {
+    "message": "Ожидает активации",
+    "description": "Статус, указывающий, что соединение ожидает активации."
+  },
+  "button.connect": {
+    "message": "Подключить",
+    "description": "Кнопка для подключения."
+  },
+  "button.addCustom": {
+    "message": "Добавить",
+    "description": "Кнопка для добавления."
+  },
+  "button.reconnect": {
+    "message": "Переподключить",
+    "description": "Кнопка для переподключения."
+  },
+  "button.refresh": {
+    "message": "Обновить",
+    "description": "Кнопка для обновления соединения."
+  },
+  "button.disconnect": {
+    "message": "Отключить",
+    "description": "Кнопка для отключения."
+  },
+  "button.browse": {
+    "message": "Просмотреть",
+    "description": "Кнопка для просмотра."
+  },
+  "button.addCustomConnector": {
+    "message": "Добавить пользовательский соединитель",
+    "description": "Кнопка для добавления нового пользовательского соединителя."
+  },
+  "button.install": {
+    "message": "Добавить",
+    "description": "Кнопка для установки."
+  },
+  "button.returnToApp": {
+    "message": "Вернуться в приложение",
+    "description": "connection: button.returnToApp"
+  },
+  "button.browseAll": {
+    "message": "Просмотреть все коннекторы",
+    "description": "connection: button.browseAll"
+  },
+  "button.rebindBrowserDevice": {
+    "message": "Сменить устройство",
+    "description": "connection: button.rebindBrowserDevice"
+  },
+  "button.stopBrowserSessions": {
+    "message": "Остановить сессии",
+    "description": "connection: button.stopBrowserSessions"
+  },
+  "button.addAccount": {
+    "message": "Добавить аккаунт",
+    "description": "connection: button.addAccount"
+  },
+  "button.setDefault": {
+    "message": "Установить по умолчанию",
+    "description": "connection: button.setDefault"
+  },
+  "button.rename": {
+    "message": "Переименовать",
+    "description": "connection: button.rename"
+  },
+  "button.isDefault": {
+    "message": "Текущий по умолчанию",
+    "description": "connection: button.isDefault"
+  },
+  "button.manageAccounts": {
+    "message": "Управлять",
+    "description": "connection: button.manageAccounts"
+  },
+  "label.mcpServer": {
+    "message": "MCP сервер",
+    "description": "Метка для обозначения MCP сервера."
+  },
+  "label.advancedSettings": {
+    "message": "Расширенные настройки",
+    "description": "Метка для раздела с расширенными настройками."
+  },
+  "label.noScopes": {
+    "message": "Нет разрешений",
+    "description": "Сообщение, указывающее, что нет доступных разрешений."
+  },
+  "label.noTools": {
+    "message": "Этот сервис не предоставляет никаких инструментов",
+    "description": "Сообщение, указывающее, что сервис не предлагает инструменты."
+  },
+  "label.never": {
+    "message": "Никогда",
+    "description": "Текст, указывающий на отсутствие событий."
+  },
+  "label.defaultAccount": {
+    "message": "По умолчанию",
+    "description": "connection: label.defaultAccount"
+  },
+  "label.custom": {
+    "message": "Пользовательский",
+    "description": "Метка для обозначения пользовательских настроек."
+  },
+  "label.authMethod": {
+    "message": "Метод аутентификации",
+    "description": "Метка для выбора метода аутентификации."
+  },
+  "label.credentials": {
+    "message": "Учетные данные",
+    "description": "Метка для ввода учетных данных."
+  },
+  "label.official": {
+    "message": "Официальный",
+    "description": "Метка для обозначения официальных соединителей."
+  },
+  "label.partner": {
+    "message": "Партнер",
+    "description": "Метка для обозначения партнерских соединителей."
+  },
+  "label.community": {
+    "message": "Сообщество",
+    "description": "Метка для обозначения соединителей сообщества."
+  },
+  "label.featured": {
+    "message": "Рекомендуемые",
+    "description": "Метка для обозначения рекомендуемых соединителей."
+  },
+  "label.new": {
+    "message": "Новые",
+    "description": "Метка для обозначения новых соединителей."
+  },
+  "label.trending": {
+    "message": "Популярные",
+    "description": "Метка для обозначения популярных соединителей."
+  },
+  "label.all": {
+    "message": "Все",
+    "description": "Метка для обозначения всех соединителей."
+  },
+  "label.notConnected": {
+    "message": "Не подключено",
+    "description": "connection: label.notConnected"
+  },
+  "label.toolsConnectFirst": {
+    "message": "Подключитесь, чтобы увидеть инструменты, предлагаемые этой службой",
+    "description": "connection: label.toolsConnectFirst"
+  },
+  "category.all": {
+    "message": "Все",
+    "description": "Категория для отображения всех соединителей."
+  },
+  "category.creative": {
+    "message": "Креатив и медиа",
+    "description": "Категория для креативных и медийных соединителей."
+  },
+  "category.search": {
+    "message": "Поиск и веб",
+    "description": "Категория для соединителей, связанных с поиском и вебом."
+  },
+  "category.developer": {
+    "message": "Инструменты разработчика",
+    "description": "Категория для инструментов разработчика."
+  },
+  "category.productivity": {
+    "message": "Продуктивность и документация",
+    "description": "Категория для соединителей, связанных с продуктивностью."
+  },
+  "category.communication": {
+    "message": "Связь",
+    "description": "Категория для соединителей, связанных с коммуникацией."
+  },
+  "category.data": {
+    "message": "Данные и аналитика",
+    "description": "Категория для соединителей, связанных с данными и аналитикой."
+  },
+  "category.commerce": {
+    "message": "Коммерция и финансы",
+    "description": "Категория для соединителей, связанных с коммерцией и финансами."
+  },
+  "category.automation": {
+    "message": "Автоматизация",
+    "description": "Категория для соединителей, связанных с автоматизацией."
+  },
+  "category.uncategorized": {
+    "message": "Прочее",
+    "description": "Категория для соединителей, которые не попадают в другие категории."
+  },
+  "placeholder.name": {
+    "message": "Имя",
+    "description": "Заполнитель для ввода имени."
+  },
+  "placeholder.serverUrl": {
+    "message": "URL удаленного MCP сервера",
+    "description": "Заполнитель для ввода URL удаленного MCP сервера."
+  },
+  "placeholder.clientId": {
+    "message": "OAuth Client ID (необязательно)",
+    "description": "Заполнитель для ввода идентификатора клиента OAuth."
+  },
+  "placeholder.clientSecret": {
+    "message": "OAuth Client Secret (необязательно)",
+    "description": "Заполнитель для ввода секрета клиента OAuth."
+  },
+  "placeholder.search": {
+    "message": "Поиск соединителей",
+    "description": "Заполнитель для поиска соединителей."
+  },
+  "message.pageDescription": {
+    "message": "Управляйте вашими подключенными сторонними сервисами. Эти соединения позволяют приложению AceDataCloud выполнять действия от вашего имени.",
+    "description": "Описание страницы для управления подключениями."
+  },
+  "message.noConnections": {
+    "message": "Нет соединителей",
+    "description": "Сообщение, указывающее, что нет доступных соединителей."
+  },
+  "message.noConnectionsHint": {
+    "message": "Подключите сервис, чтобы получить более богатый опыт в приложениях, таких как ChatGPT, Claude и т.д.",
+    "description": "Подсказка о том, как улучшить опыт пользователя."
+  },
+  "message.connectConfirm": {
+    "message": "Вы будете перенаправлены на {provider} для авторизации.",
+    "description": "Сообщение, подтверждающее переход к провайдеру для авторизации."
+  },
+  "message.selectScopes": {
+    "message": "Выберите разрешения {provider}",
+    "description": "Сообщение для выбора разрешений у провайдера."
+  },
+  "message.selectScopesHint": {
+    "message": "Выберите разрешения, которые вы хотите предоставить. Можно выбрать несколько, по умолчанию предоставляются только основные данные для входа.",
+    "description": "Подсказка о том, как выбрать разрешения."
+  },
+  "message.disconnectConfirm": {
+    "message": "Вы уверены, что хотите отключить соединение с {provider}?",
+    "description": "Подтверждение отключения соединения с провайдером."
+  },
+  "message.disconnected": {
+    "message": "Отключено от {provider}",
+    "description": "Сообщение, указывающее, что соединение было отключено."
+  },
+  "message.refreshed": {
+    "message": "Соединение обновлено",
+    "description": "Сообщение, указывающее, что соединение было обновлено."
+  },
+  "message.refreshFailed": {
+    "message": "Не удалось обновить соединение",
+    "description": "Сообщение об ошибке при обновлении соединения."
+  },
+  "message.customConnectorHint": {
+    "message": "Соединение поддерживает удаленный MCP сервер с OAuth.",
+    "description": "Подсказка о поддержке OAuth для пользовательского соединителя."
+  },
+  "message.customConnectorTrust": {
+    "message": "Добавляйте только те соединители, которым вы доверяете. Разрешения на инструменты и данные, предоставляемые соединителем, контролируются соответствующим сервисом.",
+    "description": "Предупреждение о доверии к пользовательским соединителям."
+  },
+  "message.callbackMissingParams": {
+    "message": "Вызов авторизации отсутствует необходимые параметры, пожалуйста, повторите попытку подключения.",
+    "description": "Сообщение об ошибке при отсутствии необходимых параметров."
+  },
+  "message.callbackFailed": {
+    "message": "Авторизация соединения не удалась, пожалуйста, попробуйте позже.",
+    "description": "Сообщение об ошибке при авторизации соединения."
+  },
+  "message.selectConnector": {
+    "message": "Выберите соединитель слева для просмотра деталей",
+    "description": "Подсказка о выборе соединителя для просмотра."
+  },
+  "message.noMatch": {
+    "message": "Нет подходящих соединителей",
+    "description": "Сообщение, указывающее, что нет подходящих соединителей."
+  },
+  "message.toolsLoading": {
+    "message": "Загрузка инструментов, предоставляемых сервером…",
+    "description": "Сообщение о загрузке инструментов."
+  },
+  "message.browseHint": {
+    "message": "Просмотрите избранные соединители и добавьте их в ваш рабочий пространство одним нажатием.",
+    "description": "Подсказка о просмотре избранных соединителей."
+  },
+  "message.browseEmpty": {
+    "message": "Не найдено подходящих соединителей, попробуйте изменить ключевое слово или отрегулировать фильтры.",
+    "description": "Сообщение о том, что не найдено подходящих соединителей."
+  },
+  "message.installFailed": {
+    "message": "Не удалось добавить, пожалуйста, попробуйте позже.",
+    "description": "Сообщение об ошибке при добавлении соединителя."
+  },
+  "message.installed": {
+    "message": "Добавлено {name}",
+    "description": "Сообщение о том, что соединитель был добавлен."
+  },
+  "message.tryItHint": {
+    "message": "Нажмите на подсказку ниже, чтобы продолжить в чате Studio.",
+    "description": "connection: message.tryItHint"
+  },
+  "message.installBYOCUnsupported": {
+    "message": "Этот коннектор требует ручного ввода учетных данных в списке коннекторов.",
+    "description": "connection: message.installBYOCUnsupported"
+  },
+  "message.installInvalidReturnTo": {
+    "message": "Возвратный адрес не доверен, переход отклонен.",
+    "description": "connection: message.installInvalidReturnTo"
+  },
+  "message.installMissingId": {
+    "message": "Не указан коннектор для добавления.",
+    "description": "connection: message.installMissingId"
+  },
+  "message.installRedirecting": {
+    "message": "Перенаправление на страницу авторизации…",
+    "description": "connection: message.installRedirecting"
+  },
+  "message.notConnectedYet": {
+    "message": "Еще не подключено, нажмите, чтобы начать авторизацию",
+    "description": "connection: message.notConnectedYet"
+  },
+  "message.tryItConnectFirst": {
+    "message": "Подключитесь, чтобы использовать эти примеры подсказок",
+    "description": "connection: message.tryItConnectFirst"
+  },
+  "message.browserSessionPairingOnly": {
+    "message": "Этот коннектор использует локальные браузерные сессии. Пожалуйста, сначала спарьте ACE Browser Agent; здесь не будут собираться никакие учетные данные.",
+    "description": "connection: message.browserSessionPairingOnly"
+  },
+  "message.browserSessionPairedNotInstalled": {
+    "message": "Устройство спарено. Этот коннектор недоступен до включения исполняющей стороны браузерной сессии; не создано никаких облачных разрешений.",
+    "description": "connection: message.browserSessionPairedNotInstalled"
+  },
+  "message.selectBrowserDevice": {
+    "message": "Выберите устройство браузера",
+    "description": "connection: message.selectBrowserDevice"
+  },
+  "message.browserAllowedSites": {
+    "message": "Разрешенные сайты",
+    "description": "connection: message.browserAllowedSites"
+  },
+  "message.browserMissingCapabilities": {
+    "message": "Missing capabilities",
+    "description": "connection: message.browserMissingCapabilities"
+  },
+  "message.browserPairedIncompatible": {
+    "message": "Устройство v{version} все еще несовместимо, отсутствуют: {capabilities}. Пожалуйста, обновите агент браузера или спарьте другое устройство.",
+    "description": "connection: message.browserPairedIncompatible"
+  },
+  "message.browserOnline": {
+    "message": "Онлайн",
+    "description": "connection: message.browserOnline"
+  },
+  "message.browserOffline": {
+    "message": "Оффлайн",
+    "description": "connection: message.browserOffline"
+  },
+  "message.browserCompatible": {
+    "message": "Онлайн и совместим",
+    "description": "connection: message.browserCompatible"
+  },
+  "message.browserActiveSessions": {
+    "message": "{count} активных сессий",
+    "description": "connection: message.browserActiveSessions"
+  },
+  "message.browserHighPrivilegeDisclosure": {
+    "message": "Этот коннектор может читать страницы на заявленных сайтах через выбранный локальный браузер и выполнять клики, ввод, загрузку, скачивание и публикацию. Пожалуйста, выбирайте только устройства, которые вы контролируете.",
+    "description": "connection: message.browserHighPrivilegeDisclosure"
+  },
+  "message.browserIncompatibility.device_inactive": {
+    "message": "Это устройство отключено или отозвано.",
+    "description": "connection: message.browserIncompatibility.device_inactive"
+  },
+  "message.browserIncompatibility.wire_contract_mismatch": {
+    "message": "Агент браузера использует другой исполняемый контракт, пожалуйста, обновите расширение.",
+    "description": "connection: message.browserIncompatibility.wire_contract_mismatch"
+  },
+  "message.browserIncompatibility.extension_too_old": {
+    "message": "Версия агента браузера устарела, пожалуйста, обновите расширение.",
+    "description": "connection: message.browserIncompatibility.extension_too_old"
+  },
+  "message.browserIncompatibility.device_offline": {
+    "message": "Агент браузера в данный момент оффлайн, пожалуйста, откройте расширение на этом устройстве.",
+    "description": "connection: message.browserIncompatibility.device_offline"
+  },
+  "message.browserRebindSuccess": {
+    "message": "Устройство браузера было изменено. Существующие сессии остановлены, требуется повторное подтверждение для привязки старой версии временного браузерного разрешения.",
+    "description": "connection: message.browserRebindSuccess"
+  },
+  "message.browserSessionsStopped": {
+    "message": "Остановлено {count} сессий браузера.",
+    "description": "connection: message.browserSessionsStopped"
+  },
+  "message.browserSessionStopFailed": {
+    "message": "Не удалось остановить сессию браузера.",
+    "description": "connection: message.browserSessionStopFailed"
+  },
+  "message.defaultUpdated": {
+    "message": "Аккаунт по умолчанию обновлен",
+    "description": "connection: message.defaultUpdated"
+  },
+  "message.defaultUpdateFailed": {
+    "message": "Не удалось установить аккаунт по умолчанию",
+    "description": "connection: message.defaultUpdateFailed"
+  },
+  "message.renamePrompt": {
+    "message": "Дайте этому аккаунту имя (несколько аккаунтов под одним коннектором различаются по нему)",
+    "description": "connection: message.renamePrompt"
+  },
+  "message.renameTooLong": {
+    "message": "Имя не может превышать 64 символа",
+    "description": "connection: message.renameTooLong"
+  },
+  "message.renameFailed": {
+    "message": "Не удалось переименовать",
+    "description": "connection: message.renameFailed"
+  },
+  "message.connectedAccounts": {
+    "message": "{name} — Подключенные аккаунты: {count}",
+    "description": "connection: message.connectedAccounts"
+  },
+  "message.manageUnavailable": {
+    "message": "Не удалось открыть аккаунт этого соединителя, пожалуйста, обновите и попробуйте снова.",
+    "description": "connection: message.manageUnavailable"
+  },
+  "byoc.dialogTitle": {
+    "message": "Добавить учетные данные {name}",
+    "description": "Заголовок диалогового окна для добавления учетных данных."
+  },
+  "byoc.intro": {
+    "message": "Пожалуйста, введите ключ доступа, полученный в консоли этого сервиса. Эти учетные данные используются только для вызова соответствующего облачного / SaaS API от вашего имени.",
+    "description": "Введение о том, как использовать учетные данные."
+  },
+  "byoc.submit": {
+    "message": "Сохранить и активировать",
+    "description": "Кнопка для сохранения и активации учетных данных."
+  },
+  "byoc.required": {
+    "message": "Это поле обязательно для заполнения",
+    "description": "Сообщение о том, что поле обязательно для заполнения."
+  },
+  "byoc.disclaimer": {
+    "message": "Учетные данные шифруются с использованием AES-256-GCM; при выполнении Skill они временно расшифровываются в памяти песочницы и никогда не записываются в базу данных в открытом виде / в логах / в ответах API. Вы можете отключить их в любое время на этой странице, чтобы они стали недействительными.",
+    "description": "connection: byoc.disclaimer"
+  },
+  "byoc.extensionCapture": {
+    "message": "Собрать и подключить",
+    "description": "connection: byoc.extensionCapture"
+  },
+  "byoc.extensionIntro": {
+    "message": "Используйте плагин браузера ACE для захвата вашей сессии входа без пароля или токена.",
+    "description": "connection: byoc.extensionIntro"
+  },
+  "byoc.extensionMissing": {
+    "message": "Плагин браузера ACE не обнаружен, пожалуйста, установите его и попробуйте снова.",
+    "description": "connection: byoc.extensionMissing"
+  },
+  "byoc.extensionNoCookies": {
+    "message": "Не удалось захватить Cookie для входа, пожалуйста, убедитесь, что вы вошли на платформу в другой вкладке.",
+    "description": "connection: byoc.extensionNoCookies"
+  },
+  "byoc.extensionOpenLogin": {
+    "message": "Открыть страницу входа",
+    "description": "connection: byoc.extensionOpenLogin"
+  },
+  "byoc.extensionStepCapture": {
+    "message": "Нажмите «Собрать и подключить» ниже, плагин ACE прочитает Cookie для входа и завершит подключение.",
+    "description": "connection: byoc.extensionStepCapture"
+  },
+  "byoc.extensionStepLogin": {
+    "message": "Войдите на платформу в новой вкладке.",
+    "description": "connection: byoc.extensionStepLogin"
+  },
+  "byoc.extensionGuide": {
+    "message": "Посмотреть руководство по установке",
+    "description": "connection: byoc.extensionGuide"
+  },
+  "byoc.extensionMissingBody": {
+    "message": "Подключение использует плагин ACE для захвата вашего состояния входа, без необходимости ввода пароля или токена. Пожалуйста, сначала установите плагин, а затем вернитесь сюда.",
+    "description": "connection: byoc.extensionMissingBody"
+  },
+  "byoc.extensionMissingTitle": {
+    "message": "Необходимо сначала установить плагин ACE для браузера",
+    "description": "connection: byoc.extensionMissingTitle"
+  },
+  "byoc.extensionRecheck": {
+    "message": "Я установил, повторно проверить",
+    "description": "connection: byoc.extensionRecheck"
+  }
+}
