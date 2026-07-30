@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 04:12:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 30 Jul 2026 05:04:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.343.4
+
+Thu, 30 Jul 2026 05:04:51 GMT
+
+### Patches
+
+- openaiimage: raise the reference-image ceiling from 5 to 16 to match the upstream limit (dev@acedata.cloud)
 
 ## 3.343.3
 
