@@ -533,10 +533,12 @@ export default defineComponent({
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
-/* Same tokens as <el-card>, which every console page uses. */
+/* Global tokens. `--el-card-*` is scoped inside Element Plus's `.el-card`
+   rule, so a non-card element never inherits it and falls back to a square
+   border-radius and `currentColor` border. */
 .directory-card {
-  border: 1px solid var(--el-card-border-color);
-  border-radius: var(--el-card-border-radius);
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--adc-radius-control);
   padding: 14px 16px;
   background: var(--el-card-bg-color);
   cursor: pointer;

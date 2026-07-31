@@ -1,9 +1,9 @@
 <template>
-  <div class="page-shell">
-    <div class="page-heading">
-      <h2 class="page-title">{{ $t('connection.title.connections') }}</h2>
-      <p class="page-subtitle">{{ $t('connection.message.pageDescription') }}</p>
-    </div>
+  <div class="connectors-page">
+    <console-page-header
+      :title="$t('connection.title.connections')"
+      :subtitle="$t('connection.message.pageDescription')"
+    />
     <div class="connectors-shell">
       <!-- Left pane -->
       <aside class="connectors-list">
@@ -653,6 +653,7 @@ import {
 } from '@/operators/connection';
 import BrowseConnectors from '@/components/connections/BrowseConnectors.vue';
 import ByocCredentialsDialog from '@/components/connections/ByocCredentialsDialog.vue';
+import ConsolePageHeader from '@/components/console/PageHeader.vue';
 import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicker.vue';
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
@@ -806,6 +807,7 @@ interface IData {
 export default defineComponent({
   name: 'UserConnections',
   components: {
+    ConsolePageHeader,
     ElButton,
     ElTag,
     ElAvatar,
@@ -2042,40 +2044,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-// Inlined from AuthFrontend's <page-shell variant="workspace"> — the two-pane
-// layout needs a viewport-height flex column, which Console's scrolling
-// `.panel` doesn't give us.
-.page-shell {
-  height: 100%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.page-heading {
-  margin-bottom: 16px;
-}
-
-.page-title {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--el-text-color-primary);
-  margin: 0;
-}
-
-.page-subtitle {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: var(--el-text-color-secondary);
-}
-
-@media screen and (max-width: 767px) {
-  // On phones let the page grow and scroll instead of trapping content
-  // inside a viewport-height flex column.
-  .page-shell {
-    height: auto;
-  }
+// The full-height flex column comes from the layout (`.panel--workspace`,
+// selected by this route's `meta.layout`), so the page only lays out its
+// own content.
+.connectors-page {
+  display: contents;
 }
 
 .connectors-shell {
@@ -2084,12 +2057,13 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 0;
-  // Match <el-card>, which every other console page uses: same border token,
-  // same 4px radius, same elevation. `--page-card-radius` used to be here —
-  // an AuthFrontend variable that doesn't exist in Nexior, so the frame
-  // silently rendered square.
-  border: 1px solid var(--el-card-border-color);
-  border-radius: var(--el-card-border-radius);
+  // `--adc-radius-card` / `--app-border-subtle` are global tokens (see
+  // @acedatacloud/core styles.css and _common.scss). The previous
+  // `--el-card-border-radius` was scoped *inside* Element Plus's `.el-card`
+  // rule, so this non-card element never inherited it and silently rendered
+  // square — same failure as the `--page-card-radius` it replaced.
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--adc-radius-card);
   background: var(--el-card-bg-color);
   overflow: hidden;
   box-shadow: var(--app-shadow-xs);
