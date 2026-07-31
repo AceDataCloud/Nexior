@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 31 Jul 2026 03:02:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 31 Jul 2026 03:03:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.349.2
+
+Fri, 31 Jul 2026 03:03:23 GMT
+
+### Patches
+
+- fix(console): 弹窗收口视口、断点对齐、搜索框换 el-input (dev@acedata.cloud)
 
 ## 3.350.0
 
