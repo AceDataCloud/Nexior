@@ -31,5 +31,6 @@ export * from './webextrator';
 export * from './fish';
 export * from './surface';
 export * from './mobile';
+export * from './extension';
 export * from './setting';
 export * from './codingBridge';

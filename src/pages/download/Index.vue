@@ -45,6 +45,13 @@
             <font-awesome-icon :icon="faApple" class="btn-icon" />
             {{ $t('common.button.getOnAppStore') }}
           </el-button>
+          <el-button round size="large" tag="a" :href="extensionDownloadUrl" target="_blank">
+            <span class="btn-icons">
+              <font-awesome-icon :icon="faChrome" />
+              <font-awesome-icon :icon="faEdge" />
+            </span>
+            {{ $t('common.button.downloadBrowserExtension') }}
+          </el-button>
           <el-button round size="large" class="btn-ghost" @click="openSupport">
             {{ $t('common.nav.support') }}
           </el-button>
@@ -273,9 +280,10 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faAndroid, faApple, faGooglePlay, faWindows } from '@fortawesome/free-brands-svg-icons';
+import { faAndroid, faApple, faChrome, faEdge, faGooglePlay, faWindows } from '@fortawesome/free-brands-svg-icons';
 import defaultLogo from '@/assets/images/logo.png';
 import {
+  BROWSER_EXTENSION_DOWNLOAD_URL,
   DESKTOP_RELEASES_URL,
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_ANDROID_PLAY_STORE_URL,
@@ -298,6 +306,8 @@ export default defineComponent({
     return {
       faAndroid,
       faApple,
+      faChrome,
+      faEdge,
       faGooglePlay,
       faWindows
     };
@@ -326,6 +336,9 @@ export default defineComponent({
     },
     hasAppStore() {
       return !!MOBILE_IOS_APP_STORE_URL;
+    },
+    extensionDownloadUrl() {
+      return BROWSER_EXTENSION_DOWNLOAD_URL;
     },
     iosDownloadUrl() {
       return MOBILE_IOS_DOWNLOAD_URL;
@@ -507,6 +520,13 @@ export default defineComponent({
 }
 
 .btn-icon {
+  margin-right: 8px;
+}
+
+.btn-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-right: 8px;
 }
 
@@ -811,6 +831,12 @@ html.dark .qr__img {
   .hero__actions :deep(.el-button) {
     width: 100%;
     margin-left: 0;
+    // el-button is nowrap by default, which clips the longest translations
+    // (Greek "Κατεβάστε την επέκταση…") on a phone-width row.
+    height: auto;
+    min-height: 40px;
+    padding-block: 8px;
+    white-space: normal;
   }
 }
 </style>
