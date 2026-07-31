@@ -7,7 +7,7 @@ import path from 'node:path';
 const state = vi.hoisted(() => ({ userData: '' }));
 vi.mock('electron', () => ({ app: { getPath: () => state.userData } }));
 
-import { load } from './config';
+import { load, getWorkingDir, rootsWithWorkingDir, mergeConfigSave } from './config';
 
 describe('local-tools config load', () => {
   const dirs: string[] = [];
@@ -58,5 +58,84 @@ describe('local-tools config load', () => {
     expect(load()).toEqual({ roots: [], mcp: [], grants: [], computerUse: false });
     writeFileSync(path.join(d, 'local-tools.json'), '{ not json');
     expect(load()).toEqual({ roots: [], mcp: [], grants: [], computerUse: false });
+  });
+});
+
+describe('working directory', () => {
+  const dirs: string[] = [];
+  function tmpUserData(): string {
+    const d = mkdtempSync(path.join(os.tmpdir(), 'nx-wd-'));
+    dirs.push(d);
+    state.userData = d;
+    return d;
+  }
+  afterEach(() => {
+    for (const d of dirs.splice(0)) rmSync(d, { recursive: true, force: true });
+  });
+
+  // Regression guard: `load()` builds its result field-by-field, so a field
+  // missing from that list is silently dropped on every read→write round trip.
+  it('survives a load round trip', () => {
+    const d = tmpUserData();
+    writeFileSync(path.join(d, 'local-tools.json'), JSON.stringify({ roots: ['/tmp/a'], mcp: [], workingDir: '/tmp/proj' }));
+    expect(load().workingDir).toBe('/tmp/proj');
+    expect(getWorkingDir()).toBe('/tmp/proj');
+  });
+
+  it('reports undefined — not an empty string — when unset', () => {
+    const d = tmpUserData();
+    writeFileSync(path.join(d, 'local-tools.json'), JSON.stringify({ roots: [], mcp: [], workingDir: '' }));
+    expect(getWorkingDir()).toBeUndefined();
+  });
+
+  it('is undefined when the config is missing entirely', () => {
+    tmpUserData();
+    expect(getWorkingDir()).toBeUndefined();
+  });
+
+  describe('rootsWithWorkingDir', () => {
+    it('authorizes the working directory alongside the explicit roots', () => {
+      // Picking a project folder must make it readable; otherwise the user
+      // chooses a folder and then finds the AI cannot open anything in it.
+      expect(rootsWithWorkingDir(['/a'], '/proj')).toEqual(['/a', '/proj']);
+    });
+
+    it('does not duplicate a working directory already listed as a root', () => {
+      expect(rootsWithWorkingDir(['/a', '/proj'], '/proj')).toEqual(['/a', '/proj']);
+    });
+
+    it('is a no-op when no working directory is set', () => {
+      expect(rootsWithWorkingDir(['/a'], undefined)).toEqual(['/a']);
+    });
+  });
+
+  // The renderer has four read-modify-write save paths and none of them sends
+  // `workingDir`. Every one of them must leave it alone.
+  describe('mergeConfigSave', () => {
+    const stored = {
+      roots: ['/a'],
+      mcp: [],
+      grants: ['fs.read_file'],
+      computerUse: true,
+      workingDir: '/proj'
+    };
+
+    it('preserves the working directory when the payload omits it', () => {
+      // This is the "save MCP servers wipes the project folder" regression.
+      const next = mergeConfigSave(stored, { roots: ['/a'], mcp: [{ id: 'x', command: 'y', args: [] }] });
+      expect(next.workingDir).toBe('/proj');
+      expect(next.grants).toEqual(['fs.read_file']);
+      expect(next.computerUse).toBe(true);
+    });
+
+    it('applies a new working directory when the payload sets one', () => {
+      const next = mergeConfigSave(stored, { roots: ['/a'], mcp: [], workingDir: '/other' });
+      expect(next.workingDir).toBe('/other');
+    });
+
+    it('still lets roots and mcp be replaced wholesale', () => {
+      const next = mergeConfigSave(stored, { roots: ['/b'], mcp: [] });
+      expect(next.roots).toEqual(['/b']);
+    });
   });
 });
