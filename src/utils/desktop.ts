@@ -18,6 +18,14 @@ export interface DesktopBridge {
   onAuthExpired(cb: () => void): () => void;
   /** Open an external https link (payment Page, docs) in the system browser. */
   openExternal(url: string): Promise<void>;
+  /**
+   * Open a connector's OAuth consent page in the system browser.
+   *
+   * Optional: an older desktop shell has no such handler, and falling back to
+   * `window.open` there is a silent no-op (provider hosts aren't on the
+   * external-open allowlist), so callers must check before offering the flow.
+   */
+  openAuthorizeConnector?(url: string): Promise<void>;
   /** Subscribe to native window fullscreen changes (macOS). Fires immediately
    * with the current state, then on every enter/leave. Returns an unsubscribe. */
   onFullscreenChange(cb: (isFullscreen: boolean) => void): () => void;

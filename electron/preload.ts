@@ -35,6 +35,13 @@ contextBridge.exposeInMainWorld('desktop', {
   // Open an external https link (payment Page, docs) in the system browser.
   openExternal: (url: string): Promise<void> => ipcRenderer.invoke('shell:openExternal', url),
 
+  // Open a connector's OAuth consent page in the system browser. Separate from
+  // openExternal because the host is a third-party provider, which must not be
+  // added to the external-open allowlist (that set also governs the navigation
+  // guard). Nothing returns through this bridge — the user comes back to the
+  // window and the renderer refetches.
+  openAuthorizeConnector: (url: string): Promise<void> => ipcRenderer.invoke('connections:openAuthorize', url),
+
   // Subscribe to native window fullscreen changes (macOS green button /
   // setFullScreen). Emits the current state immediately, then on every change.
   // In fullscreen the traffic lights are hidden, so the UI drops its inset.

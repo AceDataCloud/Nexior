@@ -657,7 +657,8 @@ import ConsolePageHeader from '@/components/console/PageHeader.vue';
 import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicker.vue';
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
-import { openAuthorizePopup, popupReturnUrl } from '@/utils/connections/authorizePopup';
+import { popupReturnUrl } from '@/utils/connections/authorizePopup';
+import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import type { IBrowserDevice } from '@/models/browserDevice';
 
 /** One row of the connection detail overflow menu. */
@@ -1677,18 +1678,23 @@ export default defineComponent({
       }
     },
     /**
-     * Run the consent flow in a popup so this page keeps its state, then
-     * refresh. Falls back to a full-page navigation when the popup is
-     * blocked. We refetch on every outcome — the popup closing is all we
-     * learn, so the server is the authority on what actually connected.
+     * Run the consent flow on this surface, then refresh. Web gets a popup,
+     * native the in-app browser, desktop the system browser — all three
+     * resolve on "the flow ended", and the server is the authority on what
+     * actually connected, so we always refetch.
      */
     async runAuthorizePopup(authorizationUrl: string) {
-      const pending = openAuthorizePopup(authorizationUrl);
-      if (!pending) {
-        window.location.href = authorizationUrl;
+      try {
+        await openAuthorizeFlow(authorizationUrl);
+      } catch (error: any) {
+        this.pendingCreateNew = false;
+        ElMessage.error(
+          error?.message === 'desktop-authorize-unsupported'
+            ? (this.$t('connection.message.desktopUpdateRequired') as string)
+            : error?.message || (this.$t('connection.message.installFailed') as string)
+        );
         return;
       }
-      await pending;
       this.pendingCreateNew = false;
       await this.fetchConnections();
     },

@@ -207,7 +207,8 @@ import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicke
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
 import type { IBrowserDevice } from '@/models/browserDevice';
-import { openAuthorizePopup, popupReturnUrl } from '@/utils/connections/authorizePopup';
+import { popupReturnUrl } from '@/utils/connections/authorizePopup';
+import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 
 interface ISourceOption {
   key: 'all' | ConnectorSource | 'featured';
@@ -547,14 +548,9 @@ export default defineComponent({
           method_id: method.id
         });
         if (data.type === 'redirect') {
-          // Popup keeps this dialog (and the page behind it) alive; a
-          // blocked popup falls back to the old full-page navigation.
-          const pending = openAuthorizePopup(data.authorization_url);
-          if (!pending) {
-            window.location.href = data.authorization_url;
-            return;
-          }
-          await pending;
+          // Popup (web) / in-app browser (native) / system browser (desktop)
+          // all keep this dialog and the page behind it alive.
+          await openAuthorizeFlow(data.authorization_url);
           this.$emit('installed');
           await this.fetchItems();
           return;
@@ -574,7 +570,11 @@ export default defineComponent({
         ElMessage.success(this.$t('connection.message.installed', { name: item.name }) as string);
         this.$emit('installed', { item, connection_id: data.connection_id });
       } catch (error: any) {
-        ElMessage.error(error?.response?.data?.detail || this.$t('connection.message.installFailed'));
+        ElMessage.error(
+          error?.message === 'desktop-authorize-unsupported'
+            ? (this.$t('connection.message.desktopUpdateRequired') as string)
+            : error?.response?.data?.detail || this.$t('connection.message.installFailed')
+        );
       } finally {
         this.installingId = null;
       }
