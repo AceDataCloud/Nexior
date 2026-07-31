@@ -1,7 +1,13 @@
-import { afterEach, describe, expect, it } from 'vitest';
-import { mkdtempSync, mkdirSync, writeFileSync, realpathSync } from 'node:fs';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { mkdtempSync, mkdirSync, writeFileSync, realpathSync, rmSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+
+// shellSession reads the working directory from config.ts, which reads
+// `app.getPath('userData')`; point it at a per-test temp dir.
+const state = vi.hoisted(() => ({ userData: '' }));
+vi.mock('electron', () => ({ app: { getPath: () => state.userData } }));
+
 import { setRoots, _resetRootsForTesting } from './fs';
 import { shell_exec, set_working_dir, currentWorkingDir, endSession, _resetSessionsForTesting } from './shellSession';
 
@@ -22,8 +28,9 @@ describe.skipIf(WIN)('shell.exec persistent session', () => {
 
   it('keeps the working directory across calls (cd persists)', async () => {
     const base = rooted();
-    await shell_exec({ command: `cd ${base}`, sessionId: 's1' });
-    await shell_exec({ command: 'cd sub', sessionId: 's1' });
+    // The first call must name a cwd (or a working directory must be
+    // configured) — a shell is never spawned in an unauthorized folder.
+    await shell_exec({ command: 'cd sub', cwd: base, sessionId: 's1' });
     const res = await shell_exec({ command: 'pwd', sessionId: 's1' });
     expect(res.output).toContain(path.join(base, 'sub'));
   });
@@ -183,5 +190,82 @@ describe.skipIf(WIN)('project.load_context defaults to the working directory', (
     const { load_project_context } = await import('./context');
     const res = await load_project_context({ sessionId: 'ctx3' });
     expect(res.output).toContain('ONLY RULES');
+  });
+});
+
+// The configured working directory is what the user picked in the app. These
+// cover the config → tool wiring, which is the whole point of this change.
+describe.skipIf(WIN)('configured working directory', () => {
+  const userDataDirs: string[] = [];
+
+  /** Point config.ts at a temp userData dir holding the given working dir. */
+  function configureWorkingDir(dir: string): void {
+    const d = mkdtempSync(path.join(os.tmpdir(), 'nx-wdcfg-'));
+    userDataDirs.push(d);
+    state.userData = d;
+    writeFileSync(path.join(d, 'local-tools.json'), JSON.stringify({ roots: [], mcp: [], workingDir: dir }));
+  }
+
+  afterEach(() => {
+    _resetSessionsForTesting();
+    _resetRootsForTesting();
+    for (const d of userDataDirs.splice(0)) rmSync(d, { recursive: true, force: true });
+    state.userData = '';
+  });
+
+  it('is where a shell starts when the model passes no cwd', async () => {
+    const base = rooted();
+    configureWorkingDir(base);
+    const res = await shell_exec({ command: 'pwd', sessionId: 'cw1' });
+    expect(res.output).toContain(base);
+  });
+
+  // Regression: the fallback used to be `os.homedir()`, which ALSO bypassed the
+  // roots check — a shell could be spawned in a folder that was never
+  // authorized. It must fail loudly instead.
+  it('refuses to start a shell when none is set, rather than falling back to $HOME', async () => {
+    rooted();
+    configureWorkingDir(''); // config present, but no working directory
+    await expect(shell_exec({ command: 'pwd', sessionId: 'cw2' })).rejects.toThrow('no working directory set');
+  });
+
+  it('still enforces the roots boundary on the configured directory', async () => {
+    rooted(); // authorizes some OTHER folder
+    const outside = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-out-')));
+    configureWorkingDir(outside);
+    await expect(shell_exec({ command: 'pwd', sessionId: 'cw3' })).rejects.toThrow('path outside allowed roots');
+  });
+
+  it('is reported by set_working_dir before any shell has started', async () => {
+    const base = rooted();
+    configureWorkingDir(base);
+    const res = await set_working_dir({ sessionId: 'cw4' });
+    expect(res.output).toBe(base);
+  });
+
+  it('is where project.load_context looks when the session has no shell yet', async () => {
+    const base = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-ctxcfg-')));
+    writeFileSync(path.join(base, 'AGENTS.md'), 'CONFIGURED PROJECT RULES\n');
+    const other = realpathSync(mkdtempSync(path.join(os.tmpdir(), 'nx-other-')));
+    writeFileSync(path.join(other, 'AGENTS.md'), 'OTHER RULES\n');
+    // Two authorized roots — ambiguous without a working directory.
+    setRoots([other, base]);
+    configureWorkingDir(base);
+    const { load_project_context } = await import('./context');
+    const res = await load_project_context({ sessionId: 'cw5' });
+    expect(res.output).toContain('CONFIGURED PROJECT RULES');
+    expect(res.output).not.toContain('OTHER RULES');
+  });
+
+  it('yields to the session shell once the model has cd\'d elsewhere', async () => {
+    const base = rooted();
+    writeFileSync(path.join(base, 'AGENTS.md'), 'ROOT RULES\n');
+    writeFileSync(path.join(base, 'sub', 'AGENTS.md'), 'SUB RULES\n');
+    configureWorkingDir(base);
+    await set_working_dir({ path: path.join(base, 'sub'), sessionId: 'cw6' });
+    const { load_project_context } = await import('./context');
+    const res = await load_project_context({ sessionId: 'cw6' });
+    // Both appear (conventions cascade), but the live session dir is the leaf.
+    expect(res.output).toContain('SUB RULES');
   });
 });

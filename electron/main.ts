@@ -7,7 +7,7 @@ import { initUpdater } from './updater';
 import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
-import { load as loadLocalConfig } from './local/config';
+import { load as loadLocalConfig, rootsWithWorkingDir } from './local/config';
 import { daemon } from './scheduler/daemon';
 import { initTray, refreshTray, setOpenAtLogin, isOpenAtLogin } from './scheduler/tray';
 import {
@@ -109,7 +109,7 @@ if (!gotLock) {
     initUpdater(() => mainWindow);
     // Local tool execution: load authorized roots, boot MCP servers, wire IPC.
     const localCfg = loadLocalConfig();
-    setRoots(localCfg.roots);
+    setRoots(rootsWithWorkingDir(localCfg.roots, localCfg.workingDir));
     registry.setComputerUse(localCfg.computerUse === true); // opt-in, default off
     void registry.boot(localCfg.mcp);
     registerLocalExec(() => mainWindow);

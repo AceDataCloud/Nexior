@@ -1,8 +1,8 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
-import os from 'node:os';
 import path from 'node:path';
 import { resolveEnhancedPath } from './env';
 import { assertInRoots, expandHome } from './fs';
+import { getWorkingDir } from './config';
 import type { ToolResult } from './types';
 
 // A persistent shell per conversation, so `cd`, activated virtualenvs, exported
@@ -107,6 +107,16 @@ function resolveCwd(dir: string): string {
   return assertInRoots(expandHome(dir));
 }
 
+/** The configured working directory, or a clear error. The desktop chat page
+ *  blocks sending until one is chosen, so this should be unreachable in
+ *  practice — it exists so a tool call can never silently open a shell
+ *  somewhere the user did not choose. */
+function requireWorkingDir(): string {
+  const wd = getWorkingDir();
+  if (!wd) throw new Error('no working directory set — choose a project folder first');
+  return wd;
+}
+
 async function getSession(key: string, cwd?: string): Promise<Session> {
   const existing = sessions.get(key);
   if (existing && !existing.proc.killed) {
@@ -120,9 +130,10 @@ async function getSession(key: string, cwd?: string): Promise<Session> {
     touch(key, existing);
     return existing;
   }
-  // No explicit cwd and no session yet: start in the user's home rather than
-  // wherever Electron happened to be launched from (a Dock launch gives `/`).
-  const start = cwd ? resolveCwd(cwd) : os.homedir();
+  // No explicit cwd: start in the user's chosen working directory. It used to
+  // fall back to `os.homedir()`, which BYPASSED resolveCwd — so a shell could
+  // be spawned in a folder that was never authorized (home usually isn't).
+  const start = resolveCwd(cwd ?? requireWorkingDir());
   const s = await spawnSession(start);
   sessions.set(key, s);
   touch(key, s);
@@ -255,8 +266,10 @@ export async function shell_exec(i: {
 export async function set_working_dir(i: { path?: string; sessionId?: string }): Promise<ToolResult> {
   const key = i.sessionId || 'default';
   if (!i.path) {
+    // No live shell yet → report the configured project directory rather than
+    // the home dir, which is what the next `shell.exec` would actually use.
     const s = sessions.get(key);
-    return { output: s ? s.cwd : os.homedir() };
+    return { output: s ? s.cwd : (getWorkingDir() ?? '(no working directory set)') };
   }
   const target = resolveCwd(i.path);
   const s = await getSession(key, target);

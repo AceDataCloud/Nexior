@@ -55,4 +55,11 @@ export interface LocalConfig {
   // Opt-in Computer Use (screen capture + mouse/keyboard control). Default
   // false; while false the `computer.*` tools are not advertised or invokable.
   computerUse?: boolean;
+  // The user's current project directory. Chosen in the chat page (which
+  // blocks sending until one is picked) or in Settings. It is the default cwd
+  // for the persistent shell and where `project.load_context` looks for
+  // AGENTS.md — so the model no longer has to guess which project it is in.
+  // Authorized implicitly: it is folded into ROOTS alongside `roots`, without
+  // appearing as a row in the "authorized folders" list.
+  workingDir?: string;
 }

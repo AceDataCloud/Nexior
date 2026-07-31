@@ -110,6 +110,8 @@ export interface LocalExecBridge {
       enabled?: boolean;
     }[];
     computerUse?: boolean;
+    /** The user's chosen project directory (desktop only). */
+    workingDir?: string;
   }>;
   saveConfig(cfg: {
     roots: string[];
@@ -122,6 +124,8 @@ export interface LocalExecBridge {
       enabled?: boolean;
     }[];
     computerUse?: boolean;
+    /** Omit to leave the stored working directory untouched. */
+    workingDir?: string;
   }): Promise<boolean>;
   /** Per-server MCP connection status + targeted reconnect (desktop only). */
   mcp?: {

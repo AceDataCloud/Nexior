@@ -2,7 +2,7 @@ import { ipcMain, BrowserWindow, dialog } from 'electron';
 import { APP_ORIGIN } from '../protocol';
 import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent, grantComputerTools, grantToolsWide } from './consent';
 import { registry } from './registry';
-import { load, save } from './config';
+import { load, save, rootsWithWorkingDir, mergeConfigSave } from './config';
 import { setRoots } from './fs';
 import { status, openPane, askMedia, promptAccessibility, ensureScreenPermission, type PaneKey } from './permissions';
 import type { LocalConfig, ToolInvoke } from './types';
@@ -39,19 +39,18 @@ export function disableComputerUse(): boolean {
 let configSaveChain: Promise<boolean> = Promise.resolve(true);
 
 async function applyConfigSave(cfg: LocalConfig): Promise<boolean> {
-  // Preserve persistent consent grants — the renderer's save payload only
-  // carries roots + mcp (+ optional computerUse), so merge to avoid wiping
-  // the "always allow" list. `computerUse` falls back to the current value
-  // when the renderer omits it.
+  // The renderer's payload only carries the slice each UI path owns, so the
+  // merge (grants, computerUse, workingDir) lives in `mergeConfigSave` — pure
+  // and unit-tested, since a field dropped there is silently lost.
   const cur = load();
-  const computerUse = cfg.computerUse ?? cur.computerUse ?? false;
+  const next = mergeConfigSave(cur, cfg);
   // Only re-spawn MCP servers when their config actually changed — a folder /
   // Computer-Use save shouldn't tear down healthy MCP connections.
   const mcpChanged = JSON.stringify(cur.mcp ?? []) !== JSON.stringify(cfg.mcp ?? []);
-  save({ ...cur, roots: cfg.roots, mcp: cfg.mcp, computerUse });
-  setRoots(cfg.roots); // hot-apply roots
-  registry.setComputerUse(computerUse); // hot-apply the Computer Use toggle
-  if (!computerUse) resetComputerSessionConsent(); // turning it off clears session grants
+  save(next);
+  setRoots(rootsWithWorkingDir(next.roots, next.workingDir)); // hot-apply roots
+  registry.setComputerUse(next.computerUse === true); // hot-apply the Computer Use toggle
+  if (!next.computerUse) resetComputerSessionConsent(); // turning it off clears session grants
   // Hot-apply MCP servers: stop the old ones and boot the new set so their
   // tools appear/disappear from the next `client_tools` payload without a
   // restart. `reboot` swallows per-server failures, so save never rejects.

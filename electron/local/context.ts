@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { ToolResult } from './types';
 import { assertInRoots, expandHome, listRoots } from './fs';
 import { currentWorkingDir } from './shellSession';
+import { getWorkingDir } from './config';
 
 // Project context: the convention files a coding agent is expected to obey
 // (AGENTS.md / CLAUDE.md and friends) plus the project's own slash commands.
@@ -114,25 +115,30 @@ export async function load_project_context(i: { path?: string; sessionId?: strin
   if (i.path) {
     start = assertInRoots(expandHome(i.path));
   } else {
-    // Default to the session's working directory — the conversation's "current
-    // project". Falling back to an arbitrary entry of the roots list (whichever
-    // the user happened to add first) would load the wrong project's rules, or
-    // none at all, without the model ever noticing.
-    const wd = currentWorkingDir(i.sessionId);
+    // Resolution order, narrowest first:
+    //   1. the session's live shell cwd (the model may have cd'd elsewhere)
+    //   2. the user's configured project directory
+    // Falling back to an arbitrary entry of the roots list (whichever the user
+    // happened to add first) would load the WRONG project's rules without the
+    // model ever noticing — that mistake is why the first attempt at this tool
+    // was withdrawn.
+    const wd = currentWorkingDir(i.sessionId) ?? getWorkingDir();
     if (!wd) {
       const roots = listRoots();
+      // A single authorized folder is unambiguous, so use it rather than
+      // failing on a technicality.
       if (roots.length === 1) {
-        start = roots[0]; // unambiguous: exactly one authorized project
+        start = roots[0];
       } else if (!roots.length) {
-        throw new Error('no authorized roots; add a folder in Settings → Local Tools');
+        throw new Error('no authorized roots; choose a project folder first');
       } else {
         throw new Error(
           `no working directory set and ${roots.length} folders are authorized — ` +
-            `call shell.set_working_dir first, or pass an explicit path. Authorized: ${roots.join(', ')}`
+            `choose a project folder first, or pass an explicit path. Authorized: ${roots.join(', ')}`
         );
       }
     } else {
-      start = assertInRoots(wd);
+      start = assertInRoots(expandHome(wd));
     }
   }
   // A file path is a natural thing for a model to pass ("what rules apply to
