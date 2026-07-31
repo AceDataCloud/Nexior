@@ -351,6 +351,17 @@ export interface IChatConversationRequest {
   // Names must be OpenAI-valid (^[a-zA-Z0-9_-]+$) — the desktop sends sanitized
   // wire names and maps them back locally.
   client_tools?: { name: string; displayName?: string; description: string; inputSchema: Record<string, unknown> }[];
+  // Desktop local MCP servers, sent as one summary each instead of inlining
+  // every tool schema into `client_tools`. The model calls
+  // `load_mcp_server({server: <id>})` to pull one server's tools into the
+  // registry for the rest of the conversation — the same deferral the cloud
+  // remote-MCP path uses. Without it a single server (e.g. Playwright: 24
+  // tools, ~16 KB) costs ~4k tokens on EVERY turn, relevant or not.
+  local_mcp_servers?: {
+    id: string;
+    displayName?: string;
+    tools: { name: string; displayName?: string; description: string; inputSchema: Record<string, unknown> }[];
+  }[];
   connectors?: string[];
   skills?: string[];
   // Resume payload for a paused conversation. When present, the conversation

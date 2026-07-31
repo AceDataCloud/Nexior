@@ -112,6 +112,7 @@ import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { BASE_URL_API } from '@/constants/endpoint';
 import {
   IChatMessageState,
   IChatConversationResponse,
@@ -182,6 +183,13 @@ export interface IData {
   // worker as `client_tools` so the model can call them; the worker pauses with
   // execution:'client' and the desktop runs them. Empty on web/native.
   localTools: LocalToolSpec[];
+  // Whether the worker understands `local_mcp_servers` (deferred local MCP
+  // loading). Probed once from /health; until confirmed we ALSO inline the MCP
+  // schemas in `client_tools`, because an older worker ignores unknown body
+  // fields silently and the tools would just vanish.
+  localMcpDeferSupported: boolean;
+  // Whether the /health probe already ran this session.
+  localMcpProbed: boolean;
   // A desktop client tool the model called this turn, deferred until the paused
   // stream finalizes (so the conversation id + route are settled and the
   // `answering` flag isn't cleared mid-resume). At most one per turn — the
@@ -221,6 +229,8 @@ export default defineComponent({
       question: '',
       references: [],
       localTools: [],
+      localMcpDeferSupported: false,
+      localMcpProbed: false,
       pendingClientTools: [],
       clientToolRunId: 0,
       upload: false,
@@ -370,9 +380,34 @@ export default defineComponent({
     this.onApplyQueryFromUrl();
     if (supportsClientTools()) {
       this.localTools = (await localExec()?.listTools()) ?? [];
+      void this.onProbeWorkerFeatures();
     }
   },
   methods: {
+    /**
+     * Ask the worker which optional body fields it understands. Only gates the
+     * `local_mcp_servers` optimization: a worker without it silently ignores
+     * the field, so we keep inlining MCP schemas in `client_tools` until the
+     * probe succeeds. Any failure leaves the safe (eager) behaviour in place.
+     *
+     * Skipped entirely unless a local MCP server actually exists to defer —
+     * with only builtin tools the answer changes nothing, and a request nobody
+     * needs is a real cost (it also surfaces as a console error wherever the
+     * endpoint isn't reachable). Runs at most once per session.
+     */
+    async onProbeWorkerFeatures() {
+      if (this.localMcpProbed || this.localMcpDeferSupported) return;
+      if (!this.localTools.some((t) => t.source === 'mcp')) return;
+      this.localMcpProbed = true;
+      try {
+        const res = await fetch(`${BASE_URL_API}/aichat2/health`);
+        if (!res.ok) return;
+        const body = (await res.json()) as { features?: unknown };
+        this.localMcpDeferSupported = Array.isArray(body?.features) && body.features.includes('local_mcp_servers');
+      } catch {
+        /* offline / old worker / blocked — keep sending schemas eagerly */
+      }
+    },
     resetConversation() {
       this.restoringConversationId = undefined;
       this.messages = [];
@@ -775,6 +810,9 @@ export default defineComponent({
       // prompt tokens — until the chat remounts.
       if (supportsClientTools()) {
         this.localTools = (await localExec()?.listTools()) ?? [];
+        // Re-checked here, not just on mount: an MCP server added in Settings
+        // mid-session is the first moment a probe is worth making.
+        await this.onProbeWorkerFeatures();
       }
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
@@ -937,6 +975,15 @@ export default defineComponent({
      * with execution:'client', and {@link _runClientTools} runs it via
      * `localExec().invoke` then resumes with `tool_results`.
      *
+     * Builtin tools (fs.*, shell.*, computer.*) ship their schemas eagerly in
+     * `client_tools` — there are at most ten and the model needs them for the
+     * "my machine" routing to work at all. Local MCP tools do NOT: they go out
+     * as one `local_mcp_servers` summary per server, and the worker pulls a
+     * server's schemas into the registry only when the model calls
+     * `load_mcp_server`. One real server is enough to justify this —
+     * `@playwright/mcp` exposes 24 tools whose specs are ~16 KB (~4k tokens),
+     * which used to be re-sent on every turn AND every tool-result resume.
+     *
      * Local tool names are dotted (`fs.list_dir`, `mcp.srv.tool`), but OpenAI
      * function names must match `^[a-zA-Z0-9_-]+$` (no dots) or the upstream
      * 400s. So we send a sanitized wire name to the model and map it back to
@@ -949,19 +996,56 @@ export default defineComponent({
         description: string;
         inputSchema: Record<string, unknown>;
       }[];
+      local_mcp_servers?: {
+        id: string;
+        displayName?: string;
+        tools: { name: string; displayName?: string; description: string; inputSchema: Record<string, unknown> }[];
+      }[];
       working_directory?: string;
     } {
       if (!supportsClientTools() || !this.localTools.length) return {};
       const workingDirectory = this.$store.state.chat?.workingDirectory;
+      const wired = this._wiredTools();
+      const asSpec = ({ spec, wire }: { spec: LocalToolSpec; wire: string }) => ({
+        name: wire,
+        displayName: spec.name,
+        description: spec.description,
+        inputSchema: spec.input_schema
+      });
+      const builtins = wired.filter((w) => w.spec.source !== 'mcp');
+      const mcp = wired.filter((w) => w.spec.source === 'mcp');
+      // Group MCP tools by their server id — the middle segment of
+      // `mcp.<serverId>.<tool>`. The server id is constrained to [A-Za-z0-9_-]
+      // by the Settings UI, so splitting at the first dot after `mcp.` is safe
+      // even when the tool name itself contains dots.
+      const byServer = new Map<string, typeof wired>();
+      for (const w of mcp) {
+        const rest = w.spec.name.slice('mcp.'.length);
+        const dot = rest.indexOf('.');
+        const id = dot < 0 ? rest : rest.slice(0, dot);
+        if (!id) continue;
+        const bucket = byServer.get(id);
+        if (bucket) bucket.push(w);
+        else byServer.set(id, [w]);
+      }
+      // A worker that predates `local_mcp_servers` ignores unknown body fields
+      // silently (no schema validation), so sending ONLY the summaries would
+      // make local MCP tools vanish with no error — the user would just see
+      // their MCP server stop working. Until `localMcpDeferSupported` is
+      // confirmed, keep the schemas in `client_tools` as well; the summaries
+      // are cheap, and a worker that understands them registers each tool
+      // exactly once either way (ToolRegistry is keyed by name).
+      const mcpSpecs = mcp.map(asSpec);
+      const eager = this.localMcpDeferSupported ? builtins.map(asSpec) : [...builtins.map(asSpec), ...mcpSpecs];
       return {
-        client_tools: this._wiredTools().map(({ spec, wire }) => ({
-          name: wire,
-          displayName: spec.name,
-          description: spec.description,
-          inputSchema: spec.input_schema
-        })),
+        ...(eager.length ? { client_tools: eager } : {}),
+        ...(byServer.size
+          ? {
+              local_mcp_servers: [...byServer].map(([id, tools]) => ({ id, tools: tools.map(asSpec) }))
+            }
+          : {}),
         // Tells the model which project it is in, so it stops guessing paths.
-        // Sent alongside client_tools (never on its own) because the worker
+        // Sent alongside the tool payload (never on its own) because the worker
         // renders it inside the <local_environment> block, which only exists
         // when local tools are present.
         ...(workingDirectory ? { working_directory: workingDirectory } : {})
