@@ -1274,6 +1274,58 @@
     "message": "A conversa não existe",
     "description": "Mensagem de erro indicando que a conversa alvo não existe durante a operação."
   },
+  "scheduledTasks.form.execution": {
+    "message": "Local de execução",
+    "description": "Escolha se a tarefa será executada na nuvem ou localmente"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Nuvem",
+    "description": "Modo de execução na nuvem"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Este dispositivo",
+    "description": "Modo de execução local"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Este dispositivo ({device})",
+    "description": "Modo de execução local com nome do dispositivo"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Acionado pelo sistema no horário programado, continuará a executar mesmo com o computador desligado.",
+    "description": "Descrição do modo de nuvem"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Acionado por este dispositivo no horário programado, pode ler e gravar arquivos locais e executar comandos locais. Não será executado se o dispositivo estiver desligado ou se o aplicativo for fechado, e as execuções perdidas serão apenas registradas, sem reexecução.",
+    "description": "Descrição do modo local"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Execução local não suportada em dispositivos móveis",
+    "description": "Razão pela qual a execução local não é suportada na versão móvel"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Execução local requer aplicativo de desktop",
+    "description": "Razão pela qual a execução local não é suportada na versão web"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Não foi possível obter informações do dispositivo local, reinicie o aplicativo e tente novamente",
+    "description": "Informações do dispositivo na versão desktop não estão disponíveis"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Autorização de ferramentas locais",
+    "description": "Campo de autorização para ferramentas locais"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Selecione as ferramentas locais que este tarefa pode usar",
+    "description": "Placeholder para seleção de ferramentas locais"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Durante a execução não supervisionada, não aparecerá confirmação de autorização; apenas as ferramentas marcadas aqui estarão disponíveis.",
+    "description": "Descrição da autorização de ferramentas locais"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Ignorado",
+    "description": "Estado da execução: dispositivo estava offline no momento, não foi executado"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Nome do modelo do serviço, ou seja, Claude Opus 4.7"

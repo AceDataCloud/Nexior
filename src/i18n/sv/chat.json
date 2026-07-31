@@ -1121,7 +1121,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Typ av produktion - video"
+    "description": "Utgångstyp - Video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "Konversationen finns inte",
     "description": "Felmeddelande när den angivna konversationen inte finns."
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Körningsplats",
+    "description": "Välj om uppgiften ska köras i molnet eller lokalt"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Moln",
+    "description": "Molnbaserad körningsläge"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Denna enhet",
+    "description": "Lokal körningsläge"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Denna enhet ({device})",
+    "description": "Lokal körningsläge med enhetsnamn"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Utlöses av plattformen i tid, körs även om datorn är avstängd.",
+    "description": "Förklaring av molnbaserat läge"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Utlöses av denna enhet i tid, kan läsa och skriva lokala filer, köra lokala kommandon. Körs inte om enheten stängs av eller applikationen avslutas, missade körningar registreras men körs inte om.",
+    "description": "Förklaring av lokalt läge"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Mobilversionen stöder för närvarande inte lokal körning",
+    "description": "Anledningen till att mobilversionen inte stöder lokal körning"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Lokal körning kräver skrivbordsversionen av applikationen",
+    "description": "Anledningen till att webbversionen inte stöder lokal körning"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Kan inte hämta lokal information, vänligen starta om applikationen och försök igen",
+    "description": "Information om skrivbordsenhet är inte tillgänglig"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Lokal verktygsbehörighet",
+    "description": "Fält för lokal verktygsbehörighet"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Välj vilka lokala verktyg som denna uppgift får använda",
+    "description": "Platsinnehåll för val av lokala verktyg"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Ingen användare kommer att bekräfta behörighet under obevakad körning, endast verktyg som är markerade här kommer att vara tillgängliga.",
+    "description": "Förklaring av lokal verktygsbehörighet"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Har hoppats över",
+    "description": "Körstatus: Enheten var inte online vid den tidpunkten, kördes inte"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

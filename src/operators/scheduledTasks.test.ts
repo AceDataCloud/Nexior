@@ -44,10 +44,18 @@ describe('operators/scheduledTasks', () => {
       expect(isRunWorthPolling(at('failed'), NOW)).toBe(false);
     });
 
-    // The worker's reaper only sweeps queued/running, so a run parked awaiting
-    // input has no guaranteed terminal transition to wait for.
-    it('leaves needs_user_input alone, which the reaper never settles', () => {
-      expect(isRunWorthPolling(at('needs_user_input'), NOW)).toBe(false);
+    // `indeterminate` is what the worker actually sends when the judge
+    // abstains. The type used to say `needs_user_input`, which no backend
+    // ever emits — a drift that made this test assert on a status that
+    // could not occur.
+    it('leaves indeterminate alone — terminal, and not a failure', () => {
+      expect(isRunWorthPolling(at('indeterminate'), NOW)).toBe(false);
+    });
+
+    // A local task's tick that passed while the device was off. Terminal by
+    // construction: nothing is going to run it later.
+    it('leaves skipped alone', () => {
+      expect(isRunWorthPolling(at('skipped'), NOW)).toBe(false);
     });
 
     it('gives up once a pending run outlives the reaper window', () => {

@@ -1274,6 +1274,58 @@
     "message": "회사가 존재하지 않습니다",
     "description": "회사가 작업 중 목표 회사가 존재하지 않을 때의 오류 메시지"
   },
+  "scheduledTasks.form.execution": {
+    "message": "실행 위치",
+    "description": "작업이 클라우드에서 실행될지 로컬에서 실행될지를 선택"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "클라우드",
+    "description": "클라우드 실행 모드"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "이 장치",
+    "description": "로컬 실행 모드"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "이 장치({device})",
+    "description": "로컬 실행 모드, 장치 이름 포함"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "플랫폼에서 정기적으로 트리거되며, 컴퓨터를 꺼도 계속 실행됩니다.",
+    "description": "클라우드 모드 설명"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "이 장치에서 정기적으로 트리거되며, 로컬 파일을 읽고 쓸 수 있고, 로컬 명령을 실행할 수 있습니다. 장치가 꺼지거나 애플리케이션을 종료하면 실행되지 않으며, 놓친 횟수는 기록만 되고 보완 실행되지 않습니다.",
+    "description": "로컬 모드 설명"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "모바일에서는 로컬 실행이 지원되지 않습니다.",
+    "description": "모바일에서 로컬 실행이 지원되지 않는 이유"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "로컬 실행을 위해서는 데스크탑 애플리케이션이 필요합니다.",
+    "description": "웹에서 로컬 실행이 지원되지 않는 이유"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "로컬 정보에 접근할 수 없습니다. 애플리케이션을 재시작한 후 다시 시도하십시오.",
+    "description": "데스크탑 장치 정보가 사용 불가능함"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "로컬 도구 권한",
+    "description": "로컬 도구 권한 필드"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "이 작업에서 사용할 수 있는 로컬 도구 선택",
+    "description": "로컬 도구 선택 자리 표시자"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "무인 실행 시 권한 확인 팝업이 나타나지 않으며, 여기에서 선택한 도구만 사용할 수 있습니다.",
+    "description": "로컬 도구 권한 설명"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "건너뛰었습니다",
+    "description": "실행 상태: 장치가 온라인이 아니어서 실행되지 않음"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "서비스의 모델 이름, 즉 Claude Opus 4.7"

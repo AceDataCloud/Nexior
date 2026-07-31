@@ -810,7 +810,7 @@
   },
   "scheduledTasks.run.reason.error": {
     "message": "Error",
-    "description": "Se produjo un error durante la ejecución"
+    "description": "Error en la ejecución"
   },
   "scheduledTasks.run.reason.unknown": {
     "message": "Error desconocido"
@@ -1122,11 +1122,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo de artefacto - Video"
+    "description": "Tipo de salida - Video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo de artefacto - Audio"
+    "description": "Tipo de salida - Audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1274,6 +1274,58 @@
   "actions.conversationMissing": {
     "message": "La conversación no existe",
     "description": "Mensaje de error cuando la conversación objetivo no existe durante la operación de conversación"
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Ubicación de ejecución",
+    "description": "Selecciona si la tarea se ejecuta en la nube o localmente"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Nube",
+    "description": "Modo de ejecución en la nube"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Este dispositivo",
+    "description": "Modo de ejecución local"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Este dispositivo ({device})",
+    "description": "Modo de ejecución local, con nombre del dispositivo"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Activado por la plataforma a tiempo, seguirá funcionando aunque apagues la computadora.",
+    "description": "Descripción del modo en la nube"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Activado por este dispositivo a tiempo, puede leer y escribir archivos locales y ejecutar comandos locales. No se ejecutará si el dispositivo está apagado o la aplicación cerrada; las veces perdidas solo se registrarán, no se volverán a ejecutar.",
+    "description": "Descripción del modo local"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "La ejecución local no está soportada en dispositivos móviles",
+    "description": "Razón por la cual la ejecución local no es soportada en móviles"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "La ejecución local requiere la aplicación de escritorio",
+    "description": "Razón por la cual la ejecución local no es soportada en la web"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "No se puede obtener información del dispositivo local, reinicia la aplicación y vuelve a intentarlo",
+    "description": "Información del dispositivo de escritorio no disponible"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Autorización de herramientas locales",
+    "description": "Campo de autorización de herramientas locales"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Selecciona las herramientas locales que este tarea puede usar",
+    "description": "Marcador de posición para la selección de herramientas locales"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "No se mostrará la confirmación de autorización durante la ejecución desatendida; solo las herramientas marcadas aquí estarán disponibles.",
+    "description": "Descripción de la autorización de herramientas locales"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Saltado",
+    "description": "Estado de ejecución: el dispositivo no estaba en línea en ese momento, no se ejecutó"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

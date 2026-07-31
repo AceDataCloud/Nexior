@@ -922,7 +922,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Menschlich lesbar: Roh-Cron"
+    "description": "Menschenlesbar: Roh-Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Einmalig um {time}",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "Gespräch existiert nicht",
     "description": "Fehlermeldung, wenn das Zielgespräch bei der Gesprächsaktion nicht vorhanden ist"
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Ausführungsort",
+    "description": "Wählen Sie, ob die Aufgabe in der Cloud oder lokal ausgeführt werden soll"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Cloud",
+    "description": "Cloud-Betriebsmodus"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Dieses Gerät",
+    "description": "Lokaler Betriebsmodus"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Dieses Gerät ({device})",
+    "description": "Lokaler Betriebsmodus mit Gerätenamen"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Wird planmäßig von der Plattform ausgelöst, läuft auch wenn der Computer ausgeschaltet ist.",
+    "description": "Erklärung zum Cloud-Modus"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Wird planmäßig von diesem Gerät ausgelöst, kann lokale Dateien lesen und schreiben sowie lokale Befehle ausführen. Bei ausgeschaltetem Gerät oder Beenden der Anwendung wird nicht ausgeführt, versäumte Ausführungen werden nur protokolliert und nicht nachgeholt.",
+    "description": "Erklärung zum lokalen Modus"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Die mobile Version unterstützt derzeit keine lokale Ausführung",
+    "description": "Grund, warum die mobile Version lokale Ausführung nicht unterstützt"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Lokale Ausführung erfordert die Desktop-Anwendung",
+    "description": "Grund, warum die Webversion lokale Ausführung nicht unterstützt"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Kann keine lokalen Informationen abrufen, bitte starten Sie die Anwendung neu und versuchen Sie es erneut",
+    "description": "Geräteinformationen auf dem Desktop sind nicht verfügbar"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Lokale Tool-Berechtigung",
+    "description": "Feld für lokale Tool-Berechtigungen"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Wählen Sie die lokalen Tools, die für diese Aufgabe verwendet werden dürfen",
+    "description": "Platzhalter für die Auswahl lokaler Tools"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Bei unbetreutem Betrieb wird keine Berechtigungsbestätigung angezeigt, nur die hier ausgewählten Tools sind verfügbar.",
+    "description": "Erklärung zur lokalen Tool-Berechtigung"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Übersprungen",
+    "description": "Ausführungsstatus: Gerät war zu diesem Zeitpunkt nicht online, wurde nicht ausgeführt"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

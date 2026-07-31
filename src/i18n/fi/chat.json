@@ -1235,6 +1235,58 @@
     "message": "Keskustelua ei ole olemassa",
     "description": "Virheilmoitus, kun kohdekeskustelua ei ole keskustelutoiminnassa."
   },
+  "scheduledTasks.form.execution": {
+    "message": "Suorituspaikka",
+    "description": "Valitse, suoritetaan tehtävä pilvessä vai paikallisesti"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Pilvessä",
+    "description": "Pilvipohjainen suoritusmoodi"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Tällä laitteella",
+    "description": "Paikallinen suoritusmoodi"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Tällä laitteella ({device})",
+    "description": "Paikallinen suoritusmoodi, laitenimellä"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Alustalta laukaistaan ajallaan, tietokoneen sulkeminen ei vaikuta suoritukseen.",
+    "description": "Pilvimoodin selitys"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Tämä laite laukaisee ajallaan, voi lukea ja kirjoittaa paikallisia tiedostoja, suorittaa paikallisia komentoja. Laitteen sammutus tai sovelluksesta poistuminen keskeyttää suorituksen, menetetyt suoritukset kirjataan, mutta niitä ei toisteta.",
+    "description": "Paikallisen tilan selitys"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Mobiililaitteet eivät tue paikallista suoritusta",
+    "description": "Syyt, miksi mobiililaitteet eivät tue paikallista suoritusta"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Paikallinen suoritus vaatii työpöytäsovelluksen",
+    "description": "Syyt, miksi verkkosivusto ei tue paikallista suoritusta"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Paikallisen tiedon saaminen epäonnistui, käynnistä sovellus uudelleen ja yritä uudelleen",
+    "description": "Työpöytälaitteen tiedot eivät ole saatavilla"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Paikallisten työkalujen valtuutus",
+    "description": "Paikallisten työkalujen valtuutuskenttä"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Valitse paikalliset työkalut, joita tämä tehtävä voi käyttää",
+    "description": "Paikallisten työkalujen valinta paikkamerkki"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Automaattisesti suoritettuna valtuutusta ei kysytä, vain täällä valitut työkalut ovat käytettävissä.",
+    "description": "Paikallisten työkalujen valtuutuksen selitys"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Ohitettu",
+    "description": "Suoritusstatus: laite ei ollut online, ei suoritettu"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Palvelun mallin nimi, eli Claude Opus 4.7"

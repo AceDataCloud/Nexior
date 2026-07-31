@@ -413,7 +413,7 @@
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "Titre sur la page web, indiquant que cette section concerne les limitations techniques du service"
+    "description": "Titre dans la page web, indique que cette section concerne les limitations techniques du service"
   },
   "title.complexQuestion": {
     "message": "Répondre à des questions complexes",
@@ -1113,11 +1113,11 @@
   },
   "artifacts.kind.article": {
     "message": "Article",
-    "description": "Type de production - Article"
+    "description": "Type de production - article"
   },
   "artifacts.kind.image": {
     "message": "Image",
-    "description": "Type de production - Image"
+    "description": "Type de production - image"
   },
   "artifacts.kind.video": {
     "message": "Vidéo",
@@ -1125,11 +1125,11 @@
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Type de production - Audio"
+    "description": "Type de production - audio"
   },
   "artifacts.kind.document": {
     "message": "Document",
-    "description": "Type de production - Document"
+    "description": "Type de production - document"
   },
   "artifacts.kind.email": {
     "message": "E-mail",
@@ -1137,7 +1137,7 @@
   },
   "artifacts.kind.message": {
     "message": "Message",
-    "description": "Type de production - Message"
+    "description": "Type de production - message"
   },
   "artifacts.kind.dataset": {
     "message": "Données",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "La conversation n'existe pas",
     "description": "Message d'erreur indiquant que la conversation cible n'existe pas lors de l'opération de conversation."
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Emplacement d'exécution",
+    "description": "Choisissez si la tâche s'exécute dans le cloud ou sur l'appareil local"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Cloud",
+    "description": "Mode d'exécution dans le cloud"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Cet appareil",
+    "description": "Mode d'exécution local"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Cet appareil ({device})",
+    "description": "Mode d'exécution local avec nom de l'appareil"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Déclenché à temps par la plateforme, fonctionnera même si l'ordinateur est éteint.",
+    "description": "Explication du mode cloud"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Déclenché à temps par cet appareil, peut lire et écrire des fichiers locaux, exécuter des commandes locales. Ne s'exécutera pas si l'appareil est éteint ou si l'application est quittée, les occurrences manquées ne seront que notées, pas de reprise.",
+    "description": "Explication du mode local"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "L'exécution locale n'est pas prise en charge sur mobile",
+    "description": "Raison pour laquelle l'exécution locale n'est pas prise en charge sur mobile"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "L'exécution locale nécessite l'application de bureau",
+    "description": "Raison pour laquelle l'exécution locale n'est pas prise en charge sur le web"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Impossible d'obtenir les informations de l'appareil local, veuillez redémarrer l'application et réessayer",
+    "description": "Informations sur l'appareil de bureau non disponibles"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Autorisation des outils locaux",
+    "description": "Champ d'autorisation des outils locaux"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Sélectionnez les outils locaux autorisés pour cette tâche",
+    "description": "Placeholder pour la sélection des outils locaux"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Aucune confirmation d'autorisation ne s'affichera lors de l'exécution sans surveillance, seuls les outils sélectionnés ici seront disponibles.",
+    "description": "Explication de l'autorisation des outils locaux"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Sauté",
+    "description": "État d'exécution : l'appareil n'était pas en ligne à ce moment-là, n'a pas été exécuté"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

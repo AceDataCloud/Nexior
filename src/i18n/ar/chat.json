@@ -1274,6 +1274,58 @@
     "message": "المحادثة غير موجودة",
     "description": "رسالة خطأ تشير إلى أن المحادثة المستهدفة غير موجودة أثناء إجراء العملية."
   },
+  "scheduledTasks.form.execution": {
+    "message": "مكان التشغيل",
+    "description": "اختر ما إذا كان يجب تشغيل المهمة في السحابة أو محليًا"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "السحابة",
+    "description": "وضع التشغيل السحابي"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "هذا الجهاز",
+    "description": "وضع التشغيل المحلي"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "هذا الجهاز ({device})",
+    "description": "وضع التشغيل المحلي مع اسم الجهاز"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "يتم تشغيله في الوقت المحدد بواسطة النظام، وسيستمر في العمل حتى لو تم إيقاف تشغيل الكمبيوتر.",
+    "description": "شرح وضع السحابة"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "يتم تشغيله في الوقت المحدد بواسطة هذا الجهاز، ويمكنه قراءة وكتابة الملفات المحلية، وتنفيذ الأوامر المحلية. لن يعمل عند إيقاف تشغيل الجهاز أو الخروج من التطبيق، وسيتم تسجيل المحاولات الفائتة دون إعادة التشغيل.",
+    "description": "شرح وضع التشغيل المحلي"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "لا يدعم الهاتف المحمول التشغيل المحلي حاليًا",
+    "description": "سبب عدم دعم التنفيذ المحلي على الأجهزة المحمولة"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "يتطلب التشغيل المحلي تطبيق سطح المكتب",
+    "description": "سبب عدم دعم التنفيذ المحلي على الويب"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "تعذر الحصول على معلومات الجهاز المحلي، يرجى إعادة تشغيل التطبيق والمحاولة مرة أخرى",
+    "description": "معلومات الجهاز على سطح المكتب غير متاحة"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "تفويض أدوات محلية",
+    "description": "حقل تفويض الأدوات المحلية"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "اختر الأدوات المحلية التي يُسمح لهذه المهمة باستخدامها",
+    "description": "نموذج اختيار الأدوات المحلية"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "لن تظهر تأكيدات التفويض أثناء التشغيل غير المراقب، فقط الأدوات المحددة هنا ستكون متاحة.",
+    "description": "شرح تفويض الأدوات المحلية"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "تم تخطيه",
+    "description": "حالة التشغيل: الجهاز لم يكن متصلًا في ذلك الوقت، ولم يتم التشغيل"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "اسم النموذج للخدمة، أي Claude Opus 4.7"

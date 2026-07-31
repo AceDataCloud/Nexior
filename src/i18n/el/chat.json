@@ -922,7 +922,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Αναγνώσιμο από ανθρώπους: Ακατέργαστο Cron"
+    "description": "Αναγνώσιμο από άνθρωπο: Ακατέργαστο Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Μία φορά {time}",
@@ -1132,8 +1132,8 @@
     "description": "Τύπος παραγωγής - έγγραφο"
   },
   "artifacts.kind.email": {
-    "message": "Email",
-    "description": "Τύπος παραγωγής - Email."
+    "message": "Ηλεκτρονικό ταχυδρομείο",
+    "description": "Τύπος παραγωγής - Ηλεκτρονικό ταχυδρομείο"
   },
   "artifacts.kind.message": {
     "message": "Μήνυμα",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "Η συνομιλία δεν υπάρχει",
     "description": "Σφάλμα που υποδεικνύει ότι η στοχοθετημένη συνομιλία δεν υπάρχει κατά τη διάρκεια της λειτουργίας συνομιλίας."
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Θέση εκτέλεσης",
+    "description": "Επιλέξτε αν η εργασία θα εκτελείται στο σύννεφο ή τοπικά"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Σύννεφο",
+    "description": "Λειτουργία εκτέλεσης στο σύννεφο"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Αυτή η συσκευή",
+    "description": "Λειτουργία εκτέλεσης τοπικά"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Αυτή η συσκευή ({device})",
+    "description": "Λειτουργία εκτέλεσης τοπικά, με όνομα συσκευής"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Θα ενεργοποιηθεί εγκαίρως από την πλατφόρμα, θα συνεχίσει να εκτελείται και αν κλείσετε τον υπολογιστή.",
+    "description": "Εξήγηση λειτουργίας στο σύννεφο"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Θα ενεργοποιηθεί εγκαίρως από αυτή τη συσκευή, μπορεί να διαβάσει και να γράψει αρχεία τοπικά, να εκτελεί εντολές τοπικά. Δεν θα εκτελείται όταν η συσκευή είναι κλειστή ή η εφαρμογή είναι κλειστή, οι χαμένες εκτελέσεις θα καταγράφονται αλλά δεν θα αναπληρώνονται.",
+    "description": "Εξήγηση λειτουργίας τοπικά"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Η εκτέλεση τοπικά δεν υποστηρίζεται σε κινητές συσκευές",
+    "description": "Αιτία που η κινητή εφαρμογή δεν υποστηρίζει τοπική εκτέλεση"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Η τοπική εκτέλεση απαιτεί επιτραπέζια εφαρμογή",
+    "description": "Αιτία που η διαδικτυακή εφαρμογή δεν υποστηρίζει τοπική εκτέλεση"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Δεν είναι δυνατή η λήψη πληροφοριών από τη συσκευή, παρακαλώ επανεκκινήστε την εφαρμογή και δοκιμάστε ξανά",
+    "description": "Πληροφορίες συσκευής επιτραπέζιου υπολογιστή δεν είναι διαθέσιμες"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Εξουσιοδότηση τοπικών εργαλείων",
+    "description": "Πεδίο εξουσιοδότησης τοπικών εργαλείων"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Επιλέξτε τα τοπικά εργαλεία που επιτρέπεται να χρησιμοποιήσει αυτή η εργασία",
+    "description": "Placeholder επιλογής τοπικών εργαλείων"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Κατά την εκτέλεση χωρίς επίβλεψη δεν θα εμφανιστεί επιβεβαίωση εξουσιοδότησης, μόνο τα εργαλεία που επισημαίνονται εδώ θα είναι διαθέσιμα.",
+    "description": "Εξήγηση εξουσιοδότησης τοπικών εργαλείων"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Παραλείφθηκε",
+    "description": "Κατάσταση εκτέλεσης: Η συσκευή δεν ήταν online τη στιγμή εκείνη, δεν εκτελέστηκε"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

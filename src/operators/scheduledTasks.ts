@@ -23,6 +23,15 @@ export interface IScheduledTask {
   name: string;
   description?: string;
   state: 'enabled' | 'disabled' | 'error';
+  /** Where runs fire from. Absent on tasks created before local mode — they
+   *  are all cloud tasks, which is why this is optional rather than migrated. */
+  execution?: IScheduledExecution;
+  /** Which device fires a `local` task. Absent for cloud tasks. */
+  device_id?: string;
+  device_name?: string;
+  /** Which client created the task. Display only — it never affects behaviour
+   *  (that is `execution`'s job); a desktop-created task may well be cloud. */
+  created_surface?: IScheduledSurface;
   schedule: IScheduleSpec;
   template: {
     model: string;
@@ -39,11 +48,21 @@ export interface IScheduledTask {
   updated_at: number;
 }
 
+/** `cloud` = platform-scheduler fires it. `local` = the user's own desktop app
+ *  does, which is what makes that machine's tools reachable. */
+export type IScheduledExecution = 'cloud' | 'local';
+
+export type IScheduledSurface = 'web' | 'desktop' | 'ios' | 'android';
+
 export interface IScheduledRun {
   id: string;
   task_id: string;
   task_name?: string;
-  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input';
+  status: IScheduledRunStatus;
+  /** Where this run fired from, and on which machine if local. */
+  execution?: IScheduledExecution;
+  device_id?: string;
+  device_name?: string;
   scheduled_at: number;
   llm_started_at?: number;
   llm_finished_at?: number;
@@ -75,8 +94,13 @@ export interface IRunConnectionAccount {
 
 /** `indeterminate` = the outcome judge abstained. Terminal, but NOT a failure —
  *  the run may well have succeeded, we just could not prove it from tool
- *  evidence, so it must not render in the failure style. */
-export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed' | 'indeterminate';
+ *  evidence, so it must not render in the failure style.
+ *
+ *  `skipped` = a local task's tick passed while its device was off. Also
+ *  terminal and also not a failure: the task is fine, the machine was asleep.
+ *  Recorded so a gap in the history is distinguishable from a run that
+ *  produced nothing. Never back-filled with a late run. */
+export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed' | 'indeterminate' | 'skipped';
 
 /** Give up on a pending run this long after it was scheduled. The worker's
  *  reaper force-fails abandoned runs 45 min in, sweeping every 5 min, so
@@ -88,9 +112,9 @@ export const RUN_PENDING_MAX_AGE_SECONDS = 55 * 60;
  *  `conversation_id` — the worker backfills it only once the agent loop
  *  returns — so the UI polls while any of these are on screen.
  *
- *  `needs_user_input` is deliberately excluded: the reaper only sweeps
- *  `queued`/`running`, so a run parked awaiting input has no guaranteed
- *  terminal transition.
+ *  Every other status is terminal — `indeterminate` (the judge abstained) and
+ *  `skipped` (the device was off) included. Neither will ever change on its
+ *  own, so polling them would never end.
  *
  *  Anchored to the run's own age rather than to a wall-clock deadline held in
  *  the component, so leaving and returning to the page can't extend polling on
@@ -121,6 +145,12 @@ export interface IScheduledTaskUnattendedPolicy {
    *  what silently blanked the edit dialog when the two drifted apart. */
   allowed_skills: string[];
   allowed_mcp_servers?: string[];
+  /** Local (client-executed) tools this task may use — `fs.*`, `shell.*`,
+   *  `computer.*`, `mcp.<server>.<tool>`. Same rule as the lists above: the
+   *  list IS the authorization. Only meaningful for `execution: 'local'`;
+   *  nobody is watching an unattended run, so an unlisted tool is never
+   *  offered to the model rather than prompting a machine with no one at it. */
+  allowed_local_tools?: string[];
   browser_connections?: IScheduledBrowserBinding[];
   /** Which account of each connector this task runs as. Omit to use the
    *  connector's default account (what interactive chat always does). */
@@ -242,6 +272,14 @@ export type ScheduledTaskPayload = {
   schedule: IScheduleSpec;
   template: IScheduledTask['template'];
   unattended_policy?: IScheduledTaskUnattendedPolicy;
+  /** Omit for a normal cloud task. `local` also requires `device_id`; the
+   *  backend rejects the pair otherwise, since a local task nothing is bound
+   *  to would never fire. */
+  execution?: IScheduledExecution;
+  device_id?: string;
+  device_name?: string;
+  /** Which client is creating this. Display/telemetry only. */
+  created_surface?: IScheduledSurface;
 };
 
 class ScheduledTasksOperator {

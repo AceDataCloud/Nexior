@@ -1125,7 +1125,7 @@
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Typ wytworu - audio"
+    "description": "Typ artefaktu - audio"
   },
   "artifacts.kind.document": {
     "message": "Dokument",
@@ -1145,7 +1145,7 @@
   },
   "artifacts.kind.link": {
     "message": "Link",
-    "description": "Typ wytworu - link"
+    "description": "Typ artefaktu - link"
   },
   "artifacts.kind.other": {
     "message": "Inne",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "Konwersacja nie istnieje",
     "description": "Komunikat o błędzie, gdy docelowa konwersacja nie istnieje podczas operacji konwersacji."
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Miejsce wykonania",
+    "description": "Wybierz, czy zadanie ma być wykonane w chmurze czy lokalnie"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Chmura",
+    "description": "Tryb wykonania w chmurze"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "To urządzenie",
+    "description": "Tryb wykonania lokalnego"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "To urządzenie ({device})",
+    "description": "Tryb wykonania lokalnego z nazwą urządzenia"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Uruchamiane przez platformę na czas, nawet jeśli komputer jest wyłączony.",
+    "description": "Opis trybu chmurowego"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Uruchamiane przez to urządzenie na czas, może odczytywać i zapisywać pliki lokalne, uruchamiać polecenia lokalne. Nie będzie działać, gdy urządzenie jest wyłączone lub aplikacja jest zamknięta, a pominięte uruchomienia będą tylko rejestrowane, nie będą ponownie uruchamiane.",
+    "description": "Opis trybu lokalnego"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Obsługa lokalnego wykonania na urządzeniach mobilnych jest obecnie niedostępna",
+    "description": "Powód, dla którego mobilna wersja nie obsługuje lokalnego wykonania"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Lokalne wykonanie wymaga aplikacji na komputer",
+    "description": "Powód, dla którego wersja internetowa nie obsługuje lokalnego wykonania"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Nie można uzyskać informacji o urządzeniu lokalnym, proszę zrestartować aplikację i spróbować ponownie",
+    "description": "Informacje o urządzeniu na komputerze nie są dostępne"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Autoryzacja narzędzi lokalnych",
+    "description": "Pole autoryzacji narzędzi lokalnych"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Wybierz narzędzia lokalne, które mogą być używane przez to zadanie",
+    "description": "Placeholder dla wyboru narzędzi lokalnych"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Podczas uruchamiania bez nadzoru nie pojawi się potwierdzenie autoryzacji, tylko narzędzia zaznaczone tutaj będą dostępne.",
+    "description": "Opis autoryzacji narzędzi lokalnych"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Pominięto",
+    "description": "Stan wykonania: urządzenie było w tym czasie offline, nie zostało uruchomione"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
