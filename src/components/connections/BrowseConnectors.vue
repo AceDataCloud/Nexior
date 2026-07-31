@@ -748,9 +748,11 @@ export default defineComponent({
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  // Same tokens as <el-card>, which every console page uses.
-  border: 1px solid var(--el-card-border-color);
-  border-radius: var(--el-card-border-radius);
+  // Global tokens. `--el-card-*` is scoped inside Element Plus's `.el-card`
+  // rule, so a non-card element never inherits it and falls back to a square
+  // border-radius and `currentColor` border.
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--adc-radius-control);
   background: var(--el-card-bg-color);
   transition:
     border-color 0.1s,

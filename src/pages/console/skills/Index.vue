@@ -1,9 +1,6 @@
 <template>
-  <div class="page-shell">
-    <div class="page-heading">
-      <h2 class="page-title">{{ $t('skill.title.skills') }}</h2>
-      <p class="page-subtitle">{{ $t('skill.message.pageDescription') }}</p>
-    </div>
+  <div class="skills-page">
+    <console-page-header :title="$t('skill.title.skills')" :subtitle="$t('skill.message.pageDescription')" />
     <div class="skills-shell">
       <!-- Left pane: skill list -->
       <aside class="left-pane">
@@ -278,6 +275,7 @@ import {
 } from '@acedatacloud/core/icons/components';
 import { ISkill, skillOperator } from '@/operators/skill';
 import BrowseSkillsDialog from '@/components/skill/BrowseSkillsDialog.vue';
+import ConsolePageHeader from '@/components/console/PageHeader.vue';
 import SkillFilePreview from '@/components/skill/SkillFilePreview.vue';
 import SkillRow from '@/components/skill/SkillRow.vue';
 import UploadSkillDialog from '@/components/skill/UploadSkillDialog.vue';
@@ -306,6 +304,7 @@ interface IData {
 export default defineComponent({
   name: 'UserSkills',
   components: {
+    ConsolePageHeader,
     ElInput,
     ElSwitch,
     ElTag,
@@ -532,49 +531,23 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Inlined from AuthFrontend's <page-shell variant="workspace"> — the two-pane
-   layout needs a viewport-height flex column, which Console's scrolling
-   `.panel` doesn't provide. */
-.page-shell {
-  height: 100%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.page-heading {
-  margin-bottom: 16px;
-}
-
-.page-title {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--el-text-color-primary);
-  margin: 0;
-}
-
-.page-subtitle {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: var(--el-text-color-secondary);
-}
-
-@media screen and (max-width: 767px) {
-  .page-shell {
-    height: auto;
-  }
+/* The full-height flex column comes from the layout (`.panel--workspace`,
+   selected by this route's `meta.layout`), so the page only lays out its
+   own content. */
+.skills-page {
+  display: contents;
 }
 
 .skills-shell {
   flex: 1 1 auto;
   min-height: 0;
   display: flex;
-  /* Match <el-card>, which every other console page uses. `--page-card-radius`
-     used to be here — an AuthFrontend variable that doesn't exist in Nexior,
-     so the frame silently rendered square. */
-  border: 1px solid var(--el-card-border-color);
-  border-radius: var(--el-card-border-radius);
+  /* `--adc-radius-card` / `--app-border-subtle` are global tokens. The
+     previous `--el-card-border-radius` was scoped inside Element Plus's
+     `.el-card` rule, so this non-card element never inherited it and
+     silently rendered square. */
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--adc-radius-card);
   background: var(--el-card-bg-color);
   overflow: hidden;
   box-shadow: var(--app-shadow-xs);

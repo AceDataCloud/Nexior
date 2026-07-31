@@ -61,6 +61,7 @@ export default {
     {
       path: 'connectors',
       name: ROUTE_CONSOLE_CONNECTORS,
+      meta: { layout: 'workspace' },
       component: () => import('@/pages/console/connectors/Index.vue')
     },
     // Agent Skills, same deal — ported UI, same flag, AuthFrontend's page
@@ -68,6 +69,7 @@ export default {
     {
       path: 'skills',
       name: ROUTE_CONSOLE_SKILLS,
+      meta: { layout: 'workspace' },
       component: () => import('@/pages/console/skills/Index.vue')
     }
   ]

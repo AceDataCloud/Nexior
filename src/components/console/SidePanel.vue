@@ -20,7 +20,6 @@
             focusable="false"
           />
         </span>
-        <span class="suffix"> </span>
       </a>
     </div>
   </div>
@@ -56,7 +55,7 @@ interface ILink {
 }
 
 export default defineComponent({
-  name: 'Navigator',
+  name: 'ConsoleSidePanel',
   components: {
     ExternalLinkIcon
   },
@@ -136,17 +135,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$width: 220px;
-$padding-left: 12px;
 .side {
-  padding-left: $padding-left;
-  width: $width;
+  // Width comes from the layout (`--console-side-width` on `.console`) so the
+  // sidebar has exactly one source of truth. The fallback keeps this component
+  // usable if it is ever mounted outside the console layout.
+  width: var(--console-side-width, 220px);
+  padding-left: 12px;
   padding-top: 50px;
   height: 100%;
+  box-sizing: border-box;
+  background-color: var(--app-sidebar-bg);
 }
 
 .links {
-  width: $width - $padding-left;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -157,45 +159,57 @@ $padding-left: 12px;
   .link {
     $height: 40px;
     height: $height;
-    display: block;
+    // Grid instead of a block box with absolutely-positioned bits: the text
+    // column is `minmax(0, 1fr)`, so a long label compresses rather than
+    // pushing the row past the sidebar. Overflow is prevented structurally,
+    // not hidden by an ancestor's `overflow-x`.
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 10px;
     width: 100%;
     border-radius: 10px;
     cursor: pointer;
     position: relative;
     color: var(--el-text-color-primary);
-    line-height: $height;
-    padding-left: 12px;
+    line-height: 1.2;
+    padding: 0 12px;
     transition: background-color 0.15s ease;
-    .suffix {
-      width: 3px;
-      height: $height;
-      position: absolute;
-      right: -5px;
-      margin-right: 5px;
-      border-radius: 3px;
-      display: inline-block;
-    }
     .icon {
       width: 16px;
       height: 16px;
-      // Center the SVG in its own box and reset the inherited tall line-height,
-      // otherwise the icon renders against the link's 36/40px line box and drops
-      // well below the label.
       display: inline-flex;
       align-items: center;
       justify-content: center;
       line-height: 1;
-      vertical-align: middle;
-      margin-right: 10px;
     }
     .text {
       font-size: 14px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .outer {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
     }
     &.active {
       background-color: var(--el-color-primary-light-9);
       color: var(--el-color-primary);
       font-weight: 500;
-      .suffix {
+      // Indicator drawn inside the row's own box. It used to be a `.suffix`
+      // span at `right: -5px`, which pushed 5px outside the sidebar and was
+      // only invisible because some pages' root element clipped it.
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: $height;
+        border-radius: 3px;
         background-color: var(--el-color-primary);
       }
     }
@@ -223,18 +237,16 @@ $padding-left: 12px;
       flex: 1 0 max-content;
       min-width: 96px;
       height: 36px;
-      line-height: 36px;
+      // Center icon + label as a pair; the desktop 3-column grid would
+      // stretch them across the full pill width.
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 6px;
       padding: 0 12px;
       white-space: nowrap;
 
-      .icon {
-        margin-right: 6px;
-      }
-
-      .suffix {
+      &.active::after {
         display: none;
       }
     }
