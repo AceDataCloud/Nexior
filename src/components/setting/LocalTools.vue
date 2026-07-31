@@ -605,6 +605,17 @@ export default defineComponent({
           toolWide[k] = true;
           continue;
         }
+        // Directory-scoped grant: `dir:<tool.name>:<folder>` — "this tool,
+        // anywhere under this folder". Split at the FIRST colon after the
+        // prefix; a Windows folder contains one (`C:\…`), a tool name never does.
+        if (k.startsWith('dir:')) {
+          const rest = k.slice(4);
+          const i = rest.indexOf(':');
+          if (i > 0) {
+            rows.push({ key: k, name: rest.slice(0, i), input: `📁 ${rest.slice(i + 1)}` });
+            continue;
+          }
+        }
         // key shape: `<tool.name>:<json input>`. The input is always JSON, so
         // split at the first `:{` (object) — robust even if a tool name ever
         // contained a colon. Fall back to the first `:` for non-object inputs.

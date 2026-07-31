@@ -1,9 +1,10 @@
 import { dialog, BrowserWindow } from 'electron';
 import { realpathSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { dirname, join, sep } from 'node:path';
 import type { ToolInvoke } from './types';
 import { load, save } from './config';
+import { dirGrantCovers, dirGrantKey, invocationDir } from './dirGrants';
 import { authorizeConsentedPath, revokeOnceRoot } from './fs';
 
 // No OS sandbox by design — consent is the control. Three tiers:
@@ -111,7 +112,7 @@ function consentScopeDir(inv: ToolInvoke): string | null {
 // whole file) is summarized — it would otherwise push the buttons off screen.
 // For fs.* the granted FOLDER is stated explicitly, because approving grants
 // read+write across that folder, not just the one path in the input.
-function consentDetail(inv: ToolInvoke, scopeDir: string | null): string {
+function consentDetail(inv: ToolInvoke, scopeDir: string | null, dirTarget: string | null): string {
   const input = (inv.input ?? {}) as Record<string, unknown>;
   const shown: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(input)) {
@@ -128,6 +129,12 @@ function consentDetail(inv: ToolInvoke, scopeDir: string | null): string {
     '',
     '"Allow for session" and "Always allow" re-run this exact call without asking again — if it sends, posts or deletes something, that can happen again.'
   );
+  if (dirTarget) {
+    lines.push(
+      '',
+      `"Always allow in …" is broader: ANY ${inv.name} call under ${dirTarget} runs without asking, including commands you have not seen yet. It stays limited to that folder.`
+    );
+  }
   return lines.join('\n');
 }
 
@@ -141,6 +148,14 @@ const NO_RELEASE = (): void => undefined;
 export interface ConsentDecision {
   ok: boolean;
   release: () => void;
+}
+
+// Keep the button label readable: a deep path would be truncated by the OS
+// dialog anyway, and the full folder is spelled out in the detail text.
+function shortDir(dir: string): string {
+  const home = homedir();
+  const shown = dir === home || dir.startsWith(home + sep) ? '~' + dir.slice(home.length) : dir;
+  return shown.length > 40 ? '…' + shown.slice(-39) : shown;
 }
 
 export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null): Promise<ConsentDecision> {
@@ -169,20 +184,39 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null): Pro
   // the button dead for shell/write/MCP: it cached a grant that was then never
   // honored, so those tools prompted on every single call.
   if (sessionGranted.has(sessionKey(inv))) return { ok: true, release: NO_RELEASE };
+  // Directory-scoped grant: "this tool, anywhere under this folder". The middle
+  // tier between an input-bound grant (re-prompts on every new command) and a
+  // bare tool-wide one (unrestricted). See dirGrants.ts.
+  if (dirGrantCovers(load().grants ?? [], inv)) return { ok: true, release: NO_RELEASE };
   const scopeDir = consentScopeDir(inv);
-  const buttons = ['Allow once', 'Allow for session', 'Always allow', 'Deny'];
+  // Offer the directory tier only when the call actually names a directory —
+  // otherwise the button would grant something the user can't see.
+  const dirTarget = invocationDir(inv);
+  const buttons = dirTarget
+    ? ['Allow once', 'Allow for session', `Always allow in ${shortDir(dirTarget)}`, 'Always allow (any path)', 'Deny']
+    : ['Allow once', 'Allow for session', 'Always allow', 'Deny'];
   const denyId = buttons.length - 1;
+  const dirBtn = dirTarget ? 2 : -1;
+  const alwaysBtn = dirTarget ? 3 : 2;
   const opts = {
     type: 'warning' as const,
     buttons,
     defaultId: 0,
     cancelId: denyId,
     message: `Run local tool: ${inv.name}?`,
-    detail: consentDetail(inv, scopeDir)
+    detail: consentDetail(inv, scopeDir, dirTarget)
   };
   const { response } = win ? await dialog.showMessageBox(win, opts) : await dialog.showMessageBox(opts);
   if (response === 1) sessionGranted.add(sessionKey(inv));
-  if (response === 2) {
+  if (response === dirBtn && dirTarget) {
+    // Directory-scoped: persist `dir:<tool>:<dir>`, NOT the input-bound key —
+    // the whole point is that a different command in the same folder is covered.
+    const cfg = load();
+    const grants = new Set(cfg.grants ?? []);
+    grants.add(dirGrantKey(inv.name, dirTarget));
+    save({ ...cfg, grants: [...grants] });
+  }
+  if (response === alwaysBtn) {
     const cfg = load();
     const grants = new Set(cfg.grants ?? []);
     grants.add(gk);
@@ -191,10 +225,11 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null): Pro
   // Authorize the approved path's FOLDER (fs.* tools), bound to its realpath AT
   // APPROVAL TIME — the subsequent read/list/write re-realpaths and re-checks
   // inRootDir, so a symlink swapped between here and the call is still caught.
-  // Only "Always allow" (response 2) persists the canonical dir as a root.
+  // Both persistent tiers (directory-scoped and always) persist the canonical
+  // dir as a root; "once"/"session" authorize in memory only.
   if (response === denyId) return { ok: false, release: NO_RELEASE };
   const once = response === 0;
-  const granted = grantPathAccess(inv, response === 2, once);
+  const granted = grantPathAccess(inv, response === alwaysBtn || response === dirBtn, once);
   // "Allow once" means once: the caller releases this specific hold after the
   // call. The handle is per-invocation (not a shared queue), so a parallel call
   // approved for the same folder keeps its own reference-counted grant.
