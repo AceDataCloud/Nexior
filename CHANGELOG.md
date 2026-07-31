@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 31 Jul 2026 02:55:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 31 Jul 2026 02:57:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.346.0
+
+Fri, 31 Jul 2026 02:57:17 GMT
+
+### Minor changes
+
+- desktop: run locally-executed scheduled tasks from the main process — tray residency, start-at-login, and the client-tool loop without a window (dev@acedata.cloud)
 
 ## 3.345.2
 
