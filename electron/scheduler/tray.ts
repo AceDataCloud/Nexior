@@ -15,10 +15,16 @@ import { getDeviceName } from './credentials';
 let tray: Tray | null = null;
 
 function trayIcon(): Electron.NativeImage {
-  // The template image is monochrome so macOS can invert it for dark menu bars;
-  // Windows/Linux take it as-is.
+  // Loaded from `electron/dist/assets/` (populated by scripts/copy-tray-assets.js),
+  // NOT from `build/`: that directory is buildResources, read at package time and
+  // never shipped, so a runtime path into it resolves to nothing inside the .app
+  // and Tray silently renders an empty image — a resident app with no menu-bar
+  // icon and no reachable Quit item.
+  //
+  // The macOS image is a black-on-transparent template so the system can invert
+  // it for dark menu bars; Windows/Linux take the colour icon as-is.
   const file = process.platform === 'darwin' ? 'trayTemplate.png' : 'icon.png';
-  const img = nativeImage.createFromPath(path.join(__dirname, '..', '..', 'build', file));
+  const img = nativeImage.createFromPath(path.join(__dirname, '..', 'assets', file));
   if (process.platform === 'darwin') img.setTemplateImage(true);
   return img.isEmpty() ? nativeImage.createEmpty() : img;
 }
