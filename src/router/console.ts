@@ -10,6 +10,15 @@ import {
   ROUTE_CONSOLE_USAGE_LIST
 } from './constants';
 
+// Which shape of `.panel` the layout gives a page. There is no single mode
+// that serves both: `document` lets the panel scroll (a workspace page would
+// then stretch to its content and its panes would never scroll), while
+// `workspace` clips the panel so each pane scrolls itself (a document page
+// would then have unreachable overflow). Every route states its own, so
+// adding a page is a deliberate choice rather than an inherited default.
+const DOCUMENT = { layout: 'document' };
+const WORKSPACE = { layout: 'workspace' };
+
 export default {
   path: '/console',
   meta: {
@@ -27,31 +36,37 @@ export default {
     {
       path: 'orders',
       name: ROUTE_CONSOLE_ORDER_LIST,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/order/List.vue')
     },
     {
       path: 'orders/:id',
       name: ROUTE_CONSOLE_ORDER_DETAIL,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/order/Detail.vue')
     },
     {
       path: 'applications',
       name: ROUTE_CONSOLE_APPLICATION_LIST,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/application/List.vue')
     },
     {
       path: 'applications/:id/extra',
       name: ROUTE_CONSOLE_APPLICATION_EXTRA,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/application/Extra.vue')
     },
     {
       path: 'applications/:id/subscribe',
       name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/application/Subscribe.vue')
     },
     {
       path: 'usages',
       name: ROUTE_CONSOLE_USAGE_LIST,
+      meta: DOCUMENT,
       component: () => import('@/pages/console/usage/List.vue')
     },
     // Connector management, ported from auth.acedata.cloud/user/connections.
@@ -61,7 +76,7 @@ export default {
     {
       path: 'connectors',
       name: ROUTE_CONSOLE_CONNECTORS,
-      meta: { layout: 'workspace' },
+      meta: WORKSPACE,
       component: () => import('@/pages/console/connectors/Index.vue')
     },
     // Agent Skills, same deal — ported UI, same flag, AuthFrontend's page
@@ -69,7 +84,7 @@ export default {
     {
       path: 'skills',
       name: ROUTE_CONSOLE_SKILLS,
-      meta: { layout: 'workspace' },
+      meta: WORKSPACE,
       component: () => import('@/pages/console/skills/Index.vue')
     }
   ]

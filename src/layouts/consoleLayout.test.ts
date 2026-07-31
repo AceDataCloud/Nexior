@@ -89,6 +89,20 @@ describe('console layout contract', () => {
     expect(layout).toMatch(/panelVariant/);
   });
 
+  it('makes every console route declare its panel shape', () => {
+    const routes = source('src/router/console.ts');
+    // Every child page must pick a shape. Leaving it implicit is how the two
+    // page types drifted apart in the first place: a new page inherits
+    // whatever the default happens to be and nobody sees the choice. The
+    // parent `/console` record is excluded — it mounts the layout itself and
+    // renders no panel.
+    const children = routes.slice(routes.indexOf('children:'));
+    const entries = children.match(/{\s*path: '[^']*',[\s\S]*?component:/g) || [];
+    expect(entries.length).toBe(8);
+    const undeclared = entries.filter((entry) => !/meta:\s*(DOCUMENT|WORKSPACE)/.test(entry));
+    expect(undeclared).toEqual([]);
+  });
+
   it('keeps workspace pages free of their own full-height wrapper', () => {
     // These two pages used to inline an identical 40-line `.page-shell` block
     // to fight `.panel`; the layout now supplies it via `meta.layout`.
@@ -96,8 +110,8 @@ describe('console layout contract', () => {
       expect(source(page)).not.toContain('page-shell');
     }
     const routes = source('src/router/console.ts');
-    expect(routes).toMatch(/connectors[\s\S]*?meta:\s*{\s*layout:\s*'workspace'\s*}/);
-    expect(routes).toMatch(/skills[\s\S]*?meta:\s*{\s*layout:\s*'workspace'\s*}/);
+    expect(routes).toMatch(/connectors[\s\S]*?meta:\s*WORKSPACE/);
+    expect(routes).toMatch(/skills[\s\S]*?meta:\s*WORKSPACE/);
   });
 
   it('shares one page header component across console pages', () => {
