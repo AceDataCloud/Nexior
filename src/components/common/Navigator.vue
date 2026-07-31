@@ -1,74 +1,90 @@
 <template>
   <div
     :direction="direction"
-    :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() && !isFullscreen }]"
+    :class="[
+      'navigator',
+      { collapsed: direction === 'column', 'is-mac': isMacOS() && !isFullscreen, 'dock-collapsed': dockCollapsed }
+    ]"
   >
+    <button
+      v-if="direction === 'row'"
+      type="button"
+      class="dock-handle"
+      :aria-expanded="!dockCollapsed"
+      :aria-label="dockCollapsed ? $t('common.nav.expandDock') : $t('common.nav.collapseDock')"
+      :title="dockCollapsed ? $t('common.nav.expandDock') : $t('common.nav.collapseDock')"
+      @click="onToggleDock"
+    >
+      <span class="dock-handle-grip" />
+    </button>
     <div v-if="direction === 'column'" class="brand">
       <logo collapsed @click.stop="onHome" />
     </div>
-    <div class="top">
-      <div ref="linksContainer" class="links">
-        <div
-          v-for="(link, linkIndex) in visibleLinks"
-          :key="linkIndex"
-          :class="{ link: true, active: link.routes.includes($route.name as string) }"
-        >
-          <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
-            <el-image
-              v-if="link.logo"
-              :src="link.logo"
-              class="avatar"
-              @error="onCapabilityIconError(link)"
-              @click="$router.push(link.route)"
-            />
-          </el-tooltip>
-        </div>
-        <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
-          <el-popover
-            v-model:visible="showOverflow"
-            :placement="direction === 'row' ? 'top' : 'right-start'"
-            :width="180"
-            trigger="click"
-            :show-arrow="false"
-            popper-class="navigator-overflow-popover"
+    <div class="dock-body">
+      <div class="top">
+        <div ref="linksContainer" class="links">
+          <div
+            v-for="(link, linkIndex) in visibleLinks"
+            :key="linkIndex"
+            :class="{ link: true, active: link.routes.includes($route.name as string) }"
           >
-            <template #reference>
-              <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
-                <div class="folder-preview">
+            <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
+              <el-image
+                v-if="link.logo"
+                :src="link.logo"
+                class="avatar"
+                @error="onCapabilityIconError(link)"
+                @click="$router.push(link.route)"
+              />
+            </el-tooltip>
+          </div>
+          <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
+            <el-popover
+              v-model:visible="showOverflow"
+              :placement="direction === 'row' ? 'top' : 'right-start'"
+              :width="180"
+              trigger="click"
+              :show-arrow="false"
+              popper-class="navigator-overflow-popover"
+            >
+              <template #reference>
+                <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
+                  <div class="folder-preview">
+                    <el-image
+                      v-for="(link, i) in overflowPreviewLinks"
+                      :key="i"
+                      :src="link.logo"
+                      class="folder-icon"
+                      fit="cover"
+                      @error="onCapabilityIconError(link)"
+                    />
+                  </div>
+                </div>
+              </template>
+              <div class="overflow-menu">
+                <div
+                  v-for="(link, linkIndex) in overflowLinks"
+                  :key="linkIndex"
+                  :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
+                  @click="onOverflowItemClick(link)"
+                >
                   <el-image
-                    v-for="(link, i) in overflowPreviewLinks"
-                    :key="i"
+                    v-if="link.logo"
                     :src="link.logo"
-                    class="folder-icon"
+                    class="overflow-avatar"
                     fit="cover"
                     @error="onCapabilityIconError(link)"
                   />
+                  <span class="overflow-name">{{ link.displayName }}</span>
                 </div>
               </div>
-            </template>
-            <div class="overflow-menu">
-              <div
-                v-for="(link, linkIndex) in overflowLinks"
-                :key="linkIndex"
-                :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
-                @click="onOverflowItemClick(link)"
-              >
-                <el-image
-                  v-if="link.logo"
-                  :src="link.logo"
-                  class="overflow-avatar"
-                  fit="cover"
-                  @error="onCapabilityIconError(link)"
-                />
-                <span class="overflow-name">{{ link.displayName }}</span>
-              </div>
-            </div>
-          </el-popover>
+            </el-popover>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="bottom">
-      <user-center />
+      <div class="bottom">
+        <user-center />
+      </div>
     </div>
   </div>
 </template>
@@ -560,11 +576,22 @@ export default defineComponent({
     isOverflowActive(): boolean {
       const routeName = this.$route.name as string;
       return this.overflowLinks.some((link: { routes: string[] }) => link.routes.includes(routeName));
+    },
+    // Mobile-only. Persisted via the root `setting` slot, which is already in
+    // the vuex-persistedstate paths — the choice survives reloads.
+    dockCollapsed(): boolean {
+      return this.direction === 'row' && !!this.$store.state.setting?.dockCollapsed;
     }
   },
   watch: {
     $route() {
       this.showOverflow = false;
+    },
+    dockCollapsed: {
+      immediate: true,
+      handler(value: boolean) {
+        this.syncDockClass(value);
+      }
     }
   },
   mounted() {
@@ -594,8 +621,19 @@ export default defineComponent({
       this.offFullscreen();
       this.offFullscreen = null;
     }
+    this.syncDockClass(false);
   },
   methods: {
+    // The layouts reserve the dock's height with `var(--app-dock-height)`.
+    // Publishing the collapsed state on <html> keeps that single source of
+    // truth instead of threading a prop through Main/Console/Poivelle.
+    syncDockClass(collapsed: boolean): void {
+      if (typeof document === 'undefined') return;
+      document.documentElement.classList.toggle('dock-collapsed', collapsed);
+    },
+    onToggleDock(): void {
+      this.$store.commit('setSetting', { dockCollapsed: !this.$store.state.setting?.dockCollapsed });
+    },
     onCapabilityIconError(link: NavLink): void {
       if (link.capability && link.defaultLogo && link.logo !== link.defaultLogo) {
         this.failedCapabilityIcons[link.capability] = true;
@@ -617,6 +655,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+// Height of the mobile collapse handle. Mirrors `--app-dock-handle-height`
+// in _common.scss, which the layouts use to size the bar. It reserves its own
+// strip rather than overlaying the icons, so enlarging the touch target here
+// never steals taps from the first row of icons.
+$dock-handle-height: 22px;
+
 .navigator {
   display: flex;
   align-items: center;
@@ -644,9 +688,22 @@ export default defineComponent({
     overflow-x: scroll;
     border-right: none;
     border-top: 1px solid var(--app-border-subtle);
+    // The handle is absolutely positioned against the bar, so it must not
+    // scroll away with the (horizontally scrollable) icon strip.
+    position: relative;
+    padding-top: $dock-handle-height;
+    overflow-y: hidden;
 
     .brand {
       display: none;
+    }
+    .dock-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+      transition: opacity 0.18s ease;
     }
     .top {
       padding-left: 10px;
@@ -678,11 +735,60 @@ export default defineComponent({
       flex: 1;
       justify-content: flex-end;
     }
+
+    &.dock-collapsed {
+      overflow-x: hidden;
+
+      .dock-body {
+        // Kept in the DOM (not v-if) so expanding never re-mounts the icon
+        // strip or the user dropdown; inert so it can't be tabbed into.
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  // Thin always-visible grab bar. Sits above the icon strip so the dock can
+  // shrink to just this handle instead of disappearing entirely.
+  .dock-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $dock-handle-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+
+    .dock-handle-grip {
+      display: block;
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--el-text-color-placeholder);
+      opacity: 0.55;
+      transition: opacity 0.18s ease;
+    }
+
+    &:active .dock-handle-grip {
+      opacity: 0.9;
+    }
   }
 
   &[direction='column'] {
     flex-direction: column;
     width: 60px;
+
+    // Column mode keeps the original flat layout: the wrapper must not become
+    // a flex box of its own or `.top`/`.bottom` lose their column sizing.
+    .dock-body {
+      display: contents;
+    }
 
     .brand {
       display: flex;

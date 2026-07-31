@@ -1,5 +1,5 @@
 import { IApplication, IUser } from '@/models';
-import { IRootState } from './models';
+import { IRootState, ISetting } from './models';
 
 export const setUser = (state: IRootState, payload: IUser): void => {
   state.user = {
@@ -65,6 +65,13 @@ export const setApplications = (state: IRootState, payload: IApplication[]): voi
   state.applications = payload;
 };
 
+export const setSetting = (state: IRootState, payload: Partial<ISetting>): void => {
+  state.setting = {
+    ...state.setting,
+    ...payload
+  };
+};
+
 export default {
   setUser,
   setSite,
@@ -77,5 +84,6 @@ export default {
   setToken,
   resetToken,
   resetSite,
-  setApplications
+  setApplications,
+  setSetting
 };
