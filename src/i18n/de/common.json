@@ -101,7 +101,7 @@
   },
   "player.pause": {
     "message": "Pause",
-    "description": "Zugängliches Label für die Pause-Schaltfläche des Players"
+    "description": "Barrierefreies Label für die Pause-Schaltfläche des Players"
   },
   "player.next": {
     "message": "Nächster Titel",
@@ -265,7 +265,7 @@
   },
   "entity.status": {
     "message": "Status",
-    "description": "Status der Entität"
+    "description": "Der Status der Entität"
   },
   "status.loading": {
     "message": "Wird geladen...",
@@ -281,7 +281,7 @@
   },
   "entity.operation": {
     "message": "Operation",
-    "description": "Operation des Entitätsobjekts"
+    "description": "Die Operation des Entität"
   },
   "entity.description": {
     "message": "Beschreibung",
@@ -625,7 +625,7 @@
   },
   "nav.grokvideo": {
     "message": "Grok Video",
-    "description": "Text in der Navigationsleiste der Website, um die Grok Imagine Video-Seite anzuzeigen"
+    "description": "Text in der Navigationsleiste der Website, der zur Anzeige der Grok Imagine Video-Seite dient"
   },
   "nav.luma": {
     "message": "Luma",
@@ -681,7 +681,7 @@
   },
   "nav.video": {
     "message": "Video",
-    "description": "Text in der Navigationsleiste der Website, um die Videoseite anzuzeigen"
+    "description": "Text in der Navigationsleiste der Website, der zur Anzeige der Video-Seite dient"
   },
   "nav.distribution": {
     "message": "Empfohlene Einnahmen",
@@ -845,7 +845,7 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Name des Systemthemas, das anzeigt, dass das Thema automatisch basierend auf den Systemeinstellungen gewechselt wird"
+    "description": "Der Name des Systemthemas, das anzeigt, dass das Thema basierend auf den Systemeinstellungen automatisch gewechselt wird"
   },
   "settings.general": {
     "message": "Allgemeine Einstellungen",
@@ -1053,7 +1053,7 @@
   },
   "customers.name1": {
     "message": "Mark Du",
-    "description": "Name des Kunden"
+    "description": "Der Name des Kunden"
   },
   "customers.job1": {
     "message": "Software-Ingenieur",
@@ -1065,7 +1065,7 @@
   },
   "customers.name2": {
     "message": "Jacob Williams",
-    "description": "Name des Kunden"
+    "description": "Der Name des Kunden"
   },
   "customers.job2": {
     "message": "Produktmanager",
@@ -1077,11 +1077,11 @@
   },
   "customers.name3": {
     "message": "Larry Henry",
-    "description": "Name des Kunden"
+    "description": "Der Name des Kunden"
   },
   "customers.job3": {
     "message": "Designer",
-    "description": "Beruf des Kunden"
+    "description": "Der Beruf des Kunden"
   },
   "customers.comment3": {
     "message": "Ich liebe den Service von Ace Data Cloud, er ist benutzerfreundlich und preiswert. Ich hoffe, es wird immer besser!",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Werkzeuge, die von dem verbundenen MCP-Server bereitgestellt werden. Nach dem Aktivieren wird die KI nicht mehr nacheinander fragen. Der MCP-Server ist ein Drittanbieterprogramm und unterliegt nicht den Einschränkungen autorisierter Ordner – als „Vollzugriff“ gekennzeichnete Werkzeuge können Daten ändern oder veröffentlichen, bitte vorsichtig aktivieren.",
     "description": "Erläuterungstext für den MCP-Werkzeugblock, der auf Drittanbieter-Risiken hinweist"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Arbeitsverzeichnis",
+    "description": "Bereichsüberschrift in den lokalen Tool-Einstellungen: Projektordner, in dem die KI derzeit arbeitet"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "Die KI arbeitet standardmäßig in diesem Projekt: Terminalbefehle werden hier ausgeführt, Projektvereinbarungen (AGENTS.md / CLAUDE.md) werden ebenfalls hier gelesen. Nach der Auswahl erhält dieser Ordner automatisch Lese- und Schreibberechtigungen, ohne dass eine erneute Hinzufügung erforderlich ist.",
+    "description": "Erläuterung zum Arbeitsverzeichnisbereich"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Noch nicht ausgewählt",
+    "description": "Leerer Status, wenn kein Arbeitsverzeichnis festgelegt ist"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Ändern",
+    "description": "Schaltfläche zum Ändern des Arbeitsverzeichnisses"
   }
 }

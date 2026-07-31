@@ -1450,7 +1450,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Näyttönimi WeChat-kontaktityypille"
+    "description": "Näyttönimi WeChat-yhteystyypille"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Etiketti (valinnainen), esim. Myynti",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Yhdistetyt työkalut MCP-palvelimelta. Kun avaat sen, AI ei enää kysy niitä yksi kerrallaan. MCP-palvelin on kolmannen osapuolen ohjelma, eikä se ole rajoitettu valtuutettuihin kansioihin - 'täydellinen pääsy' -työkalut voivat muuttaa tai julkaista tietoja, käytä varovaisuutta.",
     "description": "MCP-työkalublokin selitysteksti, joka korostaa kolmannen osapuolen riskejä"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Työhakemisto",
+    "description": "Paikallisten työkalujen asetusten osion otsikko: AI:n tällä hetkellä käyttämä projektikansio"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AI työskentelee oletusarvoisesti tässä projektissa: terminaalikomennot suoritetaan täältä, projektisopimukset (AGENTS.md / CLAUDE.md) luetaan myös täältä. Valitsemisen jälkeen tämä kansio saa automaattisesti luku- ja kirjoitusoikeudet, eikä sitä tarvitse lisätä uudelleen.",
+    "description": "Työhakemiston osion selitysteksti"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Ei ole valittu",
+    "description": "Työhakemistoa ei ole asetettu, tyhjätila"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Muuta",
+    "description": "Työhakemiston vaihtamisen painike"
   }
 }

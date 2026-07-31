@@ -810,7 +810,7 @@
   },
   "scheduledTasks.run.reason.error": {
     "message": "Error",
-    "description": "Error en la ejecución"
+    "description": "Se produjo un error durante la ejecución"
   },
   "scheduledTasks.run.reason.unknown": {
     "message": "Error desconocido"
@@ -1122,11 +1122,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo de salida - Video"
+    "description": "Tipo de artefacto - Video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo de salida - Audio"
+    "description": "Tipo de artefacto - Audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1326,6 +1326,14 @@
   "scheduledTasks.run.skipped": {
     "message": "Saltado",
     "description": "Estado de ejecución: el dispositivo no estaba en línea en ese momento, no se ejecutó"
+  },
+  "workingDir.choose": {
+    "message": "Seleccionar directorio de trabajo",
+    "description": "Botón sobre el cuadro de entrada de chat en el escritorio: seleccionar la carpeta del proyecto para la operación de IA; no se pueden enviar mensajes antes de seleccionar"
+  },
+  "workingDir.switchHint": {
+    "message": "Haga clic para cambiar el directorio de trabajo",
+    "description": "Sugerencia emergente del cápsula de ruta cuando ya se ha seleccionado un directorio de trabajo"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

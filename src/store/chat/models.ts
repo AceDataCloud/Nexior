@@ -9,6 +9,12 @@ export interface IChatState {
   conversations: IChatConversation[] | undefined;
   credential: ICredential | undefined;
   memoryEnabled: boolean;
+  /** The desktop app's current project directory — a mirror of the value the
+   *  Electron main process owns (`local-tools.json`). Held here only so the
+   *  composer and the picker can render reactively; the main process remains
+   *  the source of truth and is what actually authorizes the folder.
+   *  Always empty on web/mobile. */
+  workingDirectory: string;
   /** Composer text that should survive a route-level remount, e.g.
    *  the user clicks ChatGPT in the sidebar while editing a draft
    *  in the Claude page. The Conversation page mirrors

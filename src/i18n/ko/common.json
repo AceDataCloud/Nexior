@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "MCP 서버에서 제공하는 도구에 연결되었습니다. 열면 AI가 이를 호출할 때 더 이상 순차적으로 질문하지 않습니다. MCP 서버는 제3자 프로그램으로, 허가된 폴더의 제한을 받지 않습니다. '완전 접근'으로 표시된 도구는 데이터를 수정하거나 게시할 수 있으니 주의해서 열어주세요.",
     "description": "MCP 도구 블록의 설명 텍스트로, 제3자 위험을 강조합니다."
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "작업 디렉토리",
+    "description": "로컬 도구 설정의 구역 제목: AI가 현재 작업하는 프로젝트 폴더"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AI는 이 프로젝트에서 작업합니다: 터미널 명령은 여기서 실행되며, 프로젝트 규약(AGENTS.md / CLAUDE.md)도 여기서 읽어옵니다. 선택하면 해당 폴더에 자동으로 읽기 및 쓰기 권한이 부여되어 다시 추가할 필요가 없습니다.",
+    "description": "작업 디렉토리 구역에 대한 설명 텍스트"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "아직 선택되지 않음",
+    "description": "작업 디렉토리가 설정되지 않았을 때의 빈 상태"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "변경",
+    "description": "작업 디렉토리를 변경하는 버튼"
   }
 }

@@ -673,7 +673,7 @@
   },
   "nav.image": {
     "message": "Image",
-    "description": "Texte dans la barre de navigation du site pour afficher la page d'image"
+    "description": "Texte dans la barre de navigation du site pour afficher la page des images"
   },
   "nav.music": {
     "message": "Musique",
@@ -1434,7 +1434,7 @@
   },
   "settings.contactType": {
     "message": "Type",
-    "description": "Placeholder pour le sélecteur de type de contact dans l'éditeur"
+    "description": "Espace réservé pour le sélecteur de type de contact dans l'éditeur"
   },
   "settings.contactType_phone": {
     "message": "Téléphone",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Outils fournis par le serveur MCP connecté. Une fois activé, l'IA ne posera plus de questions une par une. Le serveur MCP est un programme tiers, sans restrictions des dossiers autorisés - les outils marqués comme « accès complet » peuvent modifier ou publier des données, veuillez activer avec prudence.",
     "description": "Texte explicatif pour le bloc d'outils MCP, soulignant les risques tiers"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Répertoire de travail",
+    "description": "Titre de la section dans les paramètres des outils locaux : dossier de projet sur lequel l'IA travaille actuellement"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "L'IA travaille par défaut dans ce projet : les commandes du terminal commencent ici, et les conventions du projet (AGENTS.md / CLAUDE.md) sont également lues à partir d'ici. Une fois sélectionné, ce dossier obtiendra automatiquement des autorisations de lecture et d'écriture, sans avoir besoin d'ajouter à nouveau.",
+    "description": "Texte explicatif pour la section du répertoire de travail"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Non sélectionné",
+    "description": "État vide lorsque le répertoire de travail n'est pas défini"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Changer",
+    "description": "Bouton pour changer le répertoire de travail"
   }
 }

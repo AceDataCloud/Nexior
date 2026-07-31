@@ -85,7 +85,10 @@
           />
         </div>
         <div class="starter">
-          <div class="composer-connectors"><connector-strip /></div>
+          <div class="composer-connectors">
+            <working-directory-bar />
+            <connector-strip />
+          </div>
           <composer
             v-model:question="question"
             :answering="answering"
@@ -125,9 +128,10 @@ import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from 
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
+import WorkingDirectoryBar from '@/components/chat/WorkingDirectoryBar.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { supportsClientTools } from '@/utils/surface';
+import { supportsClientTools, isDesktop } from '@/utils/surface';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
@@ -199,6 +203,7 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ConnectorStrip,
+    WorkingDirectoryBar,
     ModelSelector,
     'byok-badge': BYOKBadge,
     ConversationActions,
@@ -269,6 +274,14 @@ export default defineComponent({
     initializing() {
       return this.$store.state.chat.status.getApplications === Status.Request;
     },
+    /** Desktop only: the user must choose the project the AI will work in
+     *  before sending anything. Local tools operate on real files, so "which
+     *  project?" cannot be inferred — and a wrong guess edits the wrong repo.
+     *  Constant false on web/mobile (`isDesktop()` is compile-time), so their
+     *  send flow is unchanged. */
+    needsWorkingDirectory(): boolean {
+      return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
+    },
     ready(): boolean {
       if (this.restoringConversation) return false;
       // Guests may compose & "send" — the submit handler triggers login
@@ -276,6 +289,7 @@ export default defineComponent({
       if (!this.$store.getters.authenticated) {
         return true;
       }
+      if (this.needsWorkingDirectory) return false;
       // Disable sending until token/application/credential are all initialized,
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
@@ -701,6 +715,9 @@ export default defineComponent({
     },
     async onSubmit() {
       if (this.restoringConversation) return;
+      // Belt-and-braces: `ready` already disables the composer, but onDraft /
+      // deep-links call onSubmit directly and would bypass it.
+      if (this.needsWorkingDirectory) return;
       // Deferred auth: a guest hitting send is sent to login here, before we
       // mutate `messages`, so they return to a clean composer post-login.
       if (!ensureLoggedIn()) {
@@ -932,15 +949,22 @@ export default defineComponent({
         description: string;
         inputSchema: Record<string, unknown>;
       }[];
+      working_directory?: string;
     } {
       if (!supportsClientTools() || !this.localTools.length) return {};
+      const workingDirectory = this.$store.state.chat?.workingDirectory;
       return {
         client_tools: this._wiredTools().map(({ spec, wire }) => ({
           name: wire,
           displayName: spec.name,
           description: spec.description,
           inputSchema: spec.input_schema
-        }))
+        })),
+        // Tells the model which project it is in, so it stops guessing paths.
+        // Sent alongside client_tools (never on its own) because the worker
+        // renders it inside the <local_environment> block, which only exists
+        // when local tools are present.
+        ...(workingDirectory ? { working_directory: workingDirectory } : {})
       };
     },
     /**
