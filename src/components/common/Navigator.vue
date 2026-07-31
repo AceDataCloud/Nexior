@@ -20,7 +20,7 @@
     <div v-if="direction === 'column'" class="brand">
       <logo collapsed @click.stop="onHome" />
     </div>
-    <div class="dock-body">
+    <div class="dock-body" :inert="dockCollapsed || undefined">
       <div class="top">
         <div ref="linksContainer" class="links">
           <div
@@ -621,7 +621,10 @@ export default defineComponent({
       this.offFullscreen();
       this.offFullscreen = null;
     }
-    this.syncDockClass(false);
+    // Deliberately NOT clearing `dock-collapsed` here: navigating between
+    // service pages unmounts this Navigator before the next (lazy-loaded) one
+    // mounts, so clearing would flash the dock open mid-navigation. The class
+    // tracks persisted store state, and the incoming Navigator re-syncs it.
   },
   methods: {
     // The layouts reserve the dock's height with `var(--app-dock-height)`.
@@ -685,14 +688,15 @@ $dock-handle-height: 22px;
 
   &[direction='row'] {
     flex-direction: row;
-    overflow-x: scroll;
     border-right: none;
     border-top: 1px solid var(--app-border-subtle);
-    // The handle is absolutely positioned against the bar, so it must not
-    // scroll away with the (horizontally scrollable) icon strip.
+    // The handle is absolutely positioned against this box. The horizontal
+    // scrolling therefore has to live on .dock-body — an abspos child of a
+    // scroll container is placed against its *content* box, so keeping
+    // overflow-x here would let the handle scroll off-screen with the icons.
     position: relative;
     padding-top: $dock-handle-height;
-    overflow-y: hidden;
+    overflow: hidden;
 
     .brand {
       display: none;
@@ -712,6 +716,13 @@ $dock-handle-height: 22px;
       align-items: center;
       gap: 10px;
       justify-content: space-evenly;
+      // Only the icon strip scrolls. Keeping the scroll off .dock-body leaves
+      // the user avatar in .bottom pinned to the right edge instead of
+      // sliding out of view with the icons.
+      flex: 1;
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
       .links {
         display: flex;
         flex-direction: row;
@@ -732,13 +743,11 @@ $dock-handle-height: 22px;
     .bottom {
       padding: 0 10px;
       display: flex;
-      flex: 1;
+      flex: none;
       justify-content: flex-end;
     }
 
     &.dock-collapsed {
-      overflow-x: hidden;
-
       .dock-body {
         // Kept in the DOM (not v-if) so expanding never re-mounts the icon
         // strip or the user dropdown; inert so it can't be tabbed into.
