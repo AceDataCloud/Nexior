@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Povezani alati koje pruža MCP server. Kada se otvore, AI ih neće više pitati jedan po jedan. MCP server je treća strana program i nije ograničen na autorizovane foldere - alati označeni kao „potpuni pristup“ mogu menjati ili objavljivati podatke, budite oprezni prilikom otvaranja.",
     "description": "Opisni tekst za MCP alat u podešavanjima, naglašava rizike trećih strana."
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Радни директорijum",
+    "description": "naslov sekcije u podešavanjima lokalnih alata: folder projekta u kojem AI trenutno radi"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AI подразумевано ради у овом пројекту: терминалске команде се овде извршавају, а пројектне конвенције (AGENTS.md / CLAUDE.md) се такође читају отсуд. Када се изабере, овај фолдер ће автоматски добити дозволу за читање и писање, без потребе за додатним додавањем.",
+    "description": "opisni tekst za radni direktorijum"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Није изабрано",
+    "description": "prazno stanje kada radni direktorijum nije podešen"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Промени",
+    "description": " dugme za promenu radnog direktorijuma"
   }
 }

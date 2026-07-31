@@ -265,7 +265,7 @@
   },
   "entity.status": {
     "message": "Status",
-    "description": "Entitetens status"
+    "description": "Status för entiteten"
   },
   "status.loading": {
     "message": "Laddar...",
@@ -625,7 +625,7 @@
   },
   "nav.grokvideo": {
     "message": "Grok Video",
-    "description": "Texten i webbplatsens navigeringsfält som visar Grok Imagine videopage"
+    "description": "Text i webbplatsens navigeringsfält för att visa Grok Imagine videopage"
   },
   "nav.luma": {
     "message": "Luma",
@@ -681,7 +681,7 @@
   },
   "nav.video": {
     "message": "Video",
-    "description": "Texten i webbplatsens navigeringsfält som visar videopage"
+    "description": "Text i webbplatsens navigeringsfält för att visa videopage"
   },
   "nav.distribution": {
     "message": "Rekommenderad inkomst",
@@ -845,7 +845,7 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Namnet på systemtemat, vilket indikerar att temat automatiskt växlar baserat på systeminställningar."
+    "description": "Namn på systemtemat, vilket innebär att temat automatiskt växlar baserat på systeminställningarna"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
@@ -1450,7 +1450,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Visningsnamn för WeChat kontakt typ"
+    "description": "Visningsnamn för WeChat kontakttyp"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Anteckning (valfritt), t.ex.: Försäljning",
@@ -1657,7 +1657,7 @@
   },
   "nav.omni": {
     "message": "Omni Video",
-    "description": "Navigeringstagg för Omni videomodulen"
+    "description": "Navigeringsflik för Omni videomodulen"
   },
   "settings.localToolsMcpToolsTitle": {
     "message": "MCP Verktyg",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Verktyg som tillhandahålls av den anslutna MCP-servern. När det är aktiverat kommer AI-anropet inte längre att fråga en och en. MCP-servern är ett tredjepartsprogram och är inte begränsat av auktoriserade mappar - verktyg som är markerade som 'fullständig åtkomst' kan ändra eller publicera data, var försiktig med att aktivera.",
     "description": "Beskrivningstext för MCP-verktygsblock, betonar tredjepartsrisker"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Arbetskatalog",
+    "description": "Partitionstitel i inställningarna för lokala verktyg: projektmappen som AI för närvarande arbetar med"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AI arbetar som standard i detta projekt: terminalkommandon körs härifrån, projektkonventioner (AGENTS.md / CLAUDE.md) läses också härifrån. När den väljs får den här mappen automatiskt läs- och skrivbehörighet, så det behövs ingen ytterligare tillägg.",
+    "description": "Beskrivningstext för arbetskatalogpartitionen"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Inte valt än",
+    "description": "Tomt tillstånd när arbetskatalogen inte är inställd"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Ändra",
+    "description": "Knapp för att byta arbetskatalog"
   }
 }

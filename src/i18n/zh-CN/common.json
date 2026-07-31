@@ -1667,5 +1667,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "已连接 MCP 服务器提供的工具。打开后，AI 调用它将不再逐次询问。MCP 服务器是第三方程序，不受已授权文件夹的限制——标记为「完全访问」的工具可能会修改或发布数据，请谨慎开启。",
     "description": "MCP 工具区块的说明文字，强调第三方风险"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "工作目录",
+    "description": "本地工具设置中的分区标题：AI 当前操作的项目文件夹"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AI 默认在这个项目里工作：终端命令从这里开始执行，项目约定（AGENTS.md / CLAUDE.md）也从这里读取。选定后该文件夹会自动获得读写授权，无需再添加一次。",
+    "description": "工作目录分区的说明文字"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "尚未选择",
+    "description": "未设置工作目录时的空状态"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "更改",
+    "description": "更换工作目录的按钮"
   }
 }

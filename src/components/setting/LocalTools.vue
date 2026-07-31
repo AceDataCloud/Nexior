@@ -54,6 +54,29 @@
         </p>
       </section>
 
+      <!-- Working directory: the project the AI operates in. Also chosen in the
+           chat page (which blocks sending until one is set); this is where it
+           can be changed later. -->
+      <section v-if="!android">
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsWorkingDirTitle') }}</h3>
+          <el-button size="small" type="primary" :loading="pickingWorkingDir" @click="chooseWorkingDir">
+            <folder-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{
+              workingDir ? $t('common.settings.localToolsWorkingDirChange') : $t('common.settings.localToolsAddFolder')
+            }}
+          </el-button>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsWorkingDirHint') }}</p>
+        <ul class="rows">
+          <li v-if="workingDir" class="row">
+            <folder-icon class="row-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <span class="path">{{ workingDir }}</span>
+          </li>
+          <li v-else class="row muted empty">{{ $t('common.settings.localToolsWorkingDirNone') }}</li>
+        </ul>
+      </section>
+
       <!-- MCP servers (local stdio, Claude-Desktop style) -->
       <section>
         <div class="section-head">
@@ -405,6 +428,10 @@ export default defineComponent({
   data() {
     return {
       roots: [] as string[],
+      // The project directory the AI operates in (chat page blocks sending
+      // until it is set; this panel is where it can be changed).
+      workingDir: '',
+      pickingWorkingDir: false,
       tools: [] as string[],
       // Editable MCP server drafts (loaded from config, parsed back on save).
       mcpServers: [] as McpDraft[],
@@ -470,6 +497,7 @@ export default defineComponent({
     if (!ex) return;
     const cfg = await ex.getConfig();
     this.roots = cfg.roots;
+    this.workingDir = cfg.workingDir ?? '';
     this.computerUse = cfg.computerUse === true;
     this.mcpServers = (cfg.mcp ?? []).map((m) => ({
       _uid: this.mcpUid++,
@@ -626,6 +654,29 @@ export default defineComponent({
       this.computerGrants = cuGrants;
       this.toolGrants = toolWide;
       this.grants = rows;
+    },
+    /** Pick (or change) the project directory the AI operates in. Saved
+     *  immediately — unlike the roots list there is no separate Save button,
+     *  because the chat page's send gate reads this value straight away.
+     *  Picking it also authorizes the folder (the main process folds it into
+     *  ROOTS), so the user does not have to add the same path twice. */
+    async chooseWorkingDir() {
+      if (this.pickingWorkingDir) return;
+      this.pickingWorkingDir = true;
+      try {
+        const dir = await localExec()?.pickFolder();
+        if (!dir) return;
+        const cur = await localExec()?.getConfig();
+        await localExec()?.saveConfig({
+          roots: cur?.roots ?? this.roots,
+          mcp: cur?.mcp ?? [],
+          computerUse: this.computerUse,
+          workingDir: dir
+        });
+        this.workingDir = dir;
+      } finally {
+        this.pickingWorkingDir = false;
+      }
     },
     async addFolder() {
       const p = await localExec()?.pickFolder();

@@ -16,5 +16,8 @@ export default [
   // for a real group switch by `SidePanel`'s watcher — which clobbered
   // `/<group>/conversations/<id>` back to `/<group>/conversations`.
   'chat.model',
-  'chat.memoryEnabled'
+  'chat.memoryEnabled',
+  // Mirrors the desktop main process's choice so the composer isn't blocked
+  // for a frame on every reload while the bridge is queried.
+  'chat.workingDirectory'
 ];

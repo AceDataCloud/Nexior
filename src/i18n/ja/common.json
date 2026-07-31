@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "MCP サーバーが提供するツールに接続されました。開くと、AI はそれを逐次的に尋ねることはなくなります。MCP サーバーは第三者のプログラムであり、承認されたフォルダーの制限を受けません。「完全アクセス」としてマークされたツールはデータを変更または公開する可能性があるため、注意して開いてください。",
     "description": "MCP ツールセクションの説明文で、第三者のリスクを強調しています。"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "作業ディレクトリ",
+    "description": "ローカルツール設定のセクションタイトル：AIが現在操作しているプロジェクトフォルダー"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "AIはこのプロジェクトで作業します：ターミナルコマンドはここから実行され、プロジェクトの規約（AGENTS.md / CLAUDE.md）もここから読み取られます。選択すると、このフォルダーは自動的に読み書き権限を取得し、再度追加する必要はありません。",
+    "description": "作業ディレクトリの説明文"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "未選択",
+    "description": "作業ディレクトリが設定されていないときの空の状態"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "変更",
+    "description": "作業ディレクトリを変更するためのボタン"
   }
 }

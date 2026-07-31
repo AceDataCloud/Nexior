@@ -681,7 +681,7 @@
   },
   "nav.video": {
     "message": "Video",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina dei video"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina video"
   },
   "nav.distribution": {
     "message": "Guadagni da referral",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Strumenti forniti dal server MCP connesso. Una volta aperti, l'AI non chiederà più uno per uno. Il server MCP è un programma di terze parti, non soggetto ai limiti delle cartelle autorizzate - gli strumenti contrassegnati come 'accesso completo' potrebbero modificare o pubblicare dati, si prega di aprirli con cautela.",
     "description": "Testo descrittivo per il blocco degli strumenti MCP, evidenziando i rischi di terze parti"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Directory di lavoro",
+    "description": "Titolo della sezione nelle impostazioni degli strumenti locali: cartella di progetto su cui l'AI sta attualmente operando"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "L'AI lavora di default in questo progetto: i comandi del terminale iniziano qui, e le convenzioni del progetto (AGENTS.md / CLAUDE.md) vengono lette da qui. Una volta selezionata, questa cartella riceverà automaticamente autorizzazioni di lettura e scrittura, senza necessità di aggiungerle nuovamente.",
+    "description": "Testo esplicativo per la sezione della directory di lavoro"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Non ancora selezionato",
+    "description": "Stato vuoto quando la directory di lavoro non è impostata"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Cambia",
+    "description": "Pulsante per cambiare la directory di lavoro"
   }
 }

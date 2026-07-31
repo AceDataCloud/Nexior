@@ -1450,7 +1450,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Nombre de visualización para el tipo de contacto WeChat"
+    "description": "Nombre para mostrar del tipo de contacto WeChat"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Etiqueta (opcional), p. ej. Ventas",
@@ -1666,5 +1666,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Herramientas proporcionadas por el servidor MCP conectado. Una vez habilitadas, la IA no preguntará de forma secuencial. El servidor MCP es un programa de terceros, no sujeto a las restricciones de las carpetas autorizadas; las herramientas marcadas como 'acceso completo' pueden modificar o publicar datos, por favor actívelas con precaución.",
     "description": "Texto explicativo en la sección de herramientas MCP, enfatizando el riesgo de terceros"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Directorio de trabajo",
+    "description": "Título de la partición en la configuración de herramientas locales: carpeta del proyecto en la que la IA está operando actualmente"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "La IA trabaja por defecto en este proyecto: los comandos de terminal se ejecutan desde aquí y las convenciones del proyecto (AGENTS.md / CLAUDE.md) también se leen desde aquí. Una vez seleccionado, esta carpeta obtendrá automáticamente permisos de lectura y escritura, sin necesidad de añadirlos nuevamente.",
+    "description": "Texto explicativo para la partición del directorio de trabajo"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "No seleccionado",
+    "description": "Estado vacío cuando no se ha configurado un directorio de trabajo"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Cambiar",
+    "description": "Botón para cambiar el directorio de trabajo"
   }
 }

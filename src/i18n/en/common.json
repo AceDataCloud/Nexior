@@ -1667,5 +1667,21 @@
   "settings.localToolsMcpToolsHint": {
     "message": "Tools provided by your connected MCP servers. Turn one on to let the AI run it without asking each time. MCP servers are third-party programs and are not limited to your authorized folders — tools marked \"Full access\" may change or publish data, so enable them deliberately.",
     "description": "Explanatory copy for the MCP tools section, stressing third-party risk"
+  },
+  "settings.localToolsWorkingDirTitle": {
+    "message": "Working directory",
+    "description": "Local tools settings section title: the project folder the AI currently operates in"
+  },
+  "settings.localToolsWorkingDirHint": {
+    "message": "The AI works in this project by default: shell commands start here, and project conventions (AGENTS.md / CLAUDE.md) are read from here. Choosing a folder also grants read and write access to it, so you do not need to add it again.",
+    "description": "Explanatory text for the working directory section"
+  },
+  "settings.localToolsWorkingDirNone": {
+    "message": "Not chosen yet",
+    "description": "Empty state when no working directory is set"
+  },
+  "settings.localToolsWorkingDirChange": {
+    "message": "Change",
+    "description": "Button to switch the working directory"
   }
 }
