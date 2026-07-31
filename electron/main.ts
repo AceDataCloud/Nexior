@@ -313,6 +313,32 @@ ipcMain.handle('shell:openExternal', (_e, url: string) => {
   if (allowedExternal(url)) return shell.openExternal(url);
 });
 
+/**
+ * Open a connector's OAuth consent page in the system browser.
+ *
+ * Separate from `shell:openExternal` because the destination is a *provider*
+ * host — accounts.google.com, slack.com, api.notion.com — and those can never
+ * go on `EXTERNAL_HOSTS`: that set also governs `setWindowOpenHandler` and the
+ * navigation guard, so widening it would loosen the whole window's policy for
+ * the sake of one button. Without this handler the connect click is a silent
+ * no-op (deny, then the fallback navigation gets preventDefault'd).
+ *
+ * The URL is not host-checked, because a legitimate one points at an
+ * arbitrary third party. What bounds it instead: it is only ever the
+ * `authorization_url` our own backend just returned, it must be https, and
+ * `shell.openExternal` hands it to the browser rather than to this app. No
+ * `state` is minted here — unlike login, nothing comes back through the
+ * renderer for us to bind it to.
+ */
+ipcMain.handle('connections:openAuthorize', (_e, url: string) => {
+  try {
+    if (new URL(url).protocol !== 'https:') return;
+  } catch {
+    return;
+  }
+  return shell.openExternal(url);
+});
+
 // Current native fullscreen state, so a renderer that subscribes after the
 // window already entered fullscreen still gets the right initial value.
 ipcMain.handle('window:isFullscreen', () => mainWindow?.isFullScreen() ?? false);

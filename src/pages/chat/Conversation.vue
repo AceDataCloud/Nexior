@@ -132,7 +132,8 @@ import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
 import WorkingDirectoryBar from '@/components/chat/WorkingDirectoryBar.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { supportsClientTools, isDesktop } from '@/utils/surface';
+import { supportsClientTools, isDesktop, isWeb } from '@/utils/surface';
+import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
@@ -147,7 +148,7 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
   drawer: boolean;
@@ -1264,7 +1265,7 @@ export default defineComponent({
      * deliberately and the rest of the conversation is persisted
      * server-side and restored on return.
      */
-    onAuthorizeConnector(payload: { tool_use_id: string; entry: { connector: string; install_url?: string } }) {
+    async onAuthorizeConnector(payload: { tool_use_id: string; entry: { connector: string; install_url?: string } }) {
       const url = payload.entry?.install_url;
       if (!url) {
         console.warn('authorize click with no install_url', payload);
@@ -1275,7 +1276,26 @@ export default defineComponent({
       // there 404s. Rewrite it to the current group's real conversation
       // route before handing off to AuthFrontend.
       const prefix = this.$route.matched[0]?.path ?? '';
-      window.location.href = repairInstallReturnToUrl(url, prefix);
+      const target = repairInstallReturnToUrl(url, prefix);
+      if (isWeb()) {
+        // `return_to` navigates the tab back here, so a full-page hop is
+        // still the right shape on web.
+        window.location.href = target;
+        return;
+      }
+      // On native/desktop that same hop leaves the app shell for good: the
+      // return lands on studio.acedata.cloud in a browser, not in the app.
+      // Send it outward instead and stay put — `consentReturn` already
+      // resumes the paused tool_use when the connection shows up.
+      try {
+        await openAuthorizeFlow(target);
+      } catch (error: any) {
+        ElMessage.error(
+          error?.message === 'desktop-authorize-unsupported'
+            ? (this.$t('connection.message.desktopUpdateRequired') as string)
+            : error?.message || (this.$t('connection.message.installFailed') as string)
+        );
+      }
     },
     /**
      * Stash any ``?consent=<rid>&connector=<id>`` pair on
