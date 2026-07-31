@@ -263,7 +263,7 @@
               <span ref="attachmentUploadTrigger" class="block h-0 w-0" aria-hidden="true"></span>
             </el-upload>
 
-            <div class="cb-actions mt-1.5 flex items-center gap-1.5">
+            <div class="mt-1.5 flex items-center gap-1.5">
               <button
                 type="button"
                 class="cb-icon-btn"
@@ -274,7 +274,7 @@
                 <attachment-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               </button>
 
-              <div class="cb-pills flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+              <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
                 <!-- Provider is chosen at start and locked once a session is running. -->
                 <el-dropdown v-if="isNewSession" trigger="click" @command="provider = $event">
                   <button type="button" class="cb-pill">
@@ -338,161 +338,112 @@
                   <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
                 </span>
 
-                <!-- Secondary controls. On a phone the composer row can't hold
-                     five pills, so they collapse behind one "…" toggle and drop
-                     onto their own line; `display: contents` on desktop keeps
-                     them inline exactly as before. -->
+                <!-- Secondary controls. The composer row can't hold five pills
+                     on a phone, so there they collapse behind this button and
+                     open in a dialog; `display: contents` on desktop keeps them
+                     inline in the row exactly as before. -->
                 <button
                   type="button"
                   class="cb-icon-btn cb-more-btn"
-                  :class="{ 'cb-more-btn--open': moreOpen }"
                   :title="$t('codingBridge.session.settings')"
                   :aria-label="$t('codingBridge.session.settings')"
-                  :aria-expanded="moreOpen"
-                  @click="moreOpen = !moreOpen"
+                  @click="moreOpen = true"
                 >
                   <more-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 </button>
 
-                <div class="cb-more" :class="{ 'cb-more--open': moreOpen }">
-                  <!-- Model can be switched any time, including mid-session. -->
-                  <el-popover ref="modelPopover" trigger="click" placement="top-start" :width="260">
-                    <template #reference>
-                      <button type="button" class="cb-pill">
-                        <ai-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                        <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
-                        <expand-down-icon
-                          class="cb-pill__caret"
-                          :size="'1em' as any"
-                          aria-hidden="true"
-                          focusable="false"
-                        />
-                      </button>
-                    </template>
-                    <div class="cb-model-menu">
-                      <button type="button" class="cb-model-option" @click="selectModel('')">
-                        <confirm-icon
-                          class="cb-model-option__check"
-                          :class="!model ? 'opacity-100' : 'opacity-0'"
-                          :size="'1em' as any"
-                          aria-hidden="true"
-                          focusable="false"
-                        />
-                        <span class="truncate">{{ $t('codingBridge.session.modelDefault') }}</span>
-                      </button>
-                      <button
-                        v-for="opt in modelOptions"
-                        :key="opt.value"
-                        type="button"
-                        class="cb-model-option"
-                        @click="selectModel(opt.value)"
-                      >
-                        <confirm-icon
-                          class="cb-model-option__check"
-                          :class="opt.value === model ? 'opacity-100' : 'opacity-0'"
-                          :size="'1em' as any"
-                          aria-hidden="true"
-                          focusable="false"
-                        />
-                        <span class="truncate">{{ opt.label }}</span>
-                      </button>
-                      <div v-if="allowCustomModel" class="cb-model-custom">
-                        <el-input
-                          v-model="customModelDraft"
-                          size="small"
-                          :placeholder="$t('codingBridge.session.modelPlaceholder')"
-                          @keyup.enter="applyCustomModel"
+                <composer-settings v-model:open="moreOpen" :dialog="mobileSettings">
+                  <!-- Each control carries its own label so the dialog rows can't
+                       drift out of sync with the (conditionally rendered) set of
+                       controls. The label is hidden while inline. -->
+                  <div class="cb-setting" :class="{ 'cb-setting--row': mobileSettings }">
+                    <span v-if="mobileSettings" class="cb-setting__label">
+                      {{ $t('chat.scheduledTasks.form.model') }}
+                    </span>
+                    <!-- Model can be switched any time, including mid-session. -->
+                    <el-popover ref="modelPopover" trigger="click" placement="top-start" :width="260">
+                      <template #reference>
+                        <button type="button" class="cb-pill">
+                          <ai-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                          <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
+                          <expand-down-icon
+                            class="cb-pill__caret"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                        </button>
+                      </template>
+                      <div class="cb-model-menu">
+                        <button type="button" class="cb-model-option" @click="selectModel('')">
+                          <confirm-icon
+                            class="cb-model-option__check"
+                            :class="!model ? 'opacity-100' : 'opacity-0'"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                          <span class="truncate">{{ $t('codingBridge.session.modelDefault') }}</span>
+                        </button>
+                        <button
+                          v-for="opt in modelOptions"
+                          :key="opt.value"
+                          type="button"
+                          class="cb-model-option"
+                          @click="selectModel(opt.value)"
                         >
-                          <template #append>
-                            <el-button
-                              :disabled="!customModelDraft.trim()"
-                              :aria-label="$t('common.button.confirm')"
-                              :title="$t('common.button.confirm')"
-                              @click="applyCustomModel"
-                            >
-                              <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-                            </el-button>
-                          </template>
-                        </el-input>
+                          <confirm-icon
+                            class="cb-model-option__check"
+                            :class="opt.value === model ? 'opacity-100' : 'opacity-0'"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                          <span class="truncate">{{ opt.label }}</span>
+                        </button>
+                        <div v-if="allowCustomModel" class="cb-model-custom">
+                          <el-input
+                            v-model="customModelDraft"
+                            size="small"
+                            :placeholder="$t('codingBridge.session.modelPlaceholder')"
+                            @keyup.enter="applyCustomModel"
+                          >
+                            <template #append>
+                              <el-button
+                                :disabled="!customModelDraft.trim()"
+                                :aria-label="$t('common.button.confirm')"
+                                :title="$t('common.button.confirm')"
+                                @click="applyCustomModel"
+                              >
+                                <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                              </el-button>
+                            </template>
+                          </el-input>
+                        </div>
                       </div>
-                    </div>
-                  </el-popover>
+                    </el-popover>
+                  </div>
 
                   <!-- Effort and permission/edit mode stay editable every turn: the
                        node applies whatever the composer carries on each send, so a
                        resumed conversation can change them per query. -->
-                  <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
-                    <button type="button" class="cb-pill">
-                      <performance-icon
-                        class="cb-pill__icon"
-                        :size="'1em' as any"
-                        aria-hidden="true"
-                        focusable="false"
-                      />
-                      <span class="truncate">{{ effortLabel(effort) }}</span>
-                      <expand-down-icon
-                        class="cb-pill__caret"
-                        :size="'1em' as any"
-                        aria-hidden="true"
-                        focusable="false"
-                      />
-                    </button>
-                    <template #dropdown>
-                      <el-dropdown-menu>
-                        <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
-                          <confirm-icon
-                            class="mr-2"
-                            :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
-                            :size="'1em' as any"
-                            aria-hidden="true"
-                            focusable="false"
-                          />
-                          {{ opt.label }}
-                        </el-dropdown-item>
-                      </el-dropdown-menu>
-                    </template>
-                  </el-dropdown>
-
-                  <el-dropdown trigger="click" @command="permissionMode = $event">
-                    <button type="button" class="cb-pill">
-                      <security-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                      <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
-                      <expand-down-icon
-                        class="cb-pill__caret"
-                        :size="'1em' as any"
-                        aria-hidden="true"
-                        focusable="false"
-                      />
-                    </button>
-                    <template #dropdown>
-                      <el-dropdown-menu>
-                        <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
-                          <confirm-icon
-                            class="mr-2"
-                            :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
-                            :size="'1em' as any"
-                            aria-hidden="true"
-                            focusable="false"
-                          />
-                          {{ opt.label }}
-                        </el-dropdown-item>
-                      </el-dropdown-menu>
-                    </template>
-                  </el-dropdown>
-
-                  <!-- Working directory: editable for a new or resumed-but-not-yet
-                     -continued session (its first send is a fresh start that
-                     applies the cwd); read-only once a live turn pins it. -->
-                  <el-popover v-if="canPickCwd" trigger="click" placement="top-start" :width="320">
-                    <template #reference>
+                  <div
+                    v-if="effortOptions.length > 1"
+                    class="cb-setting"
+                    :class="{ 'cb-setting--row': mobileSettings }"
+                  >
+                    <span v-if="mobileSettings" class="cb-setting__label">
+                      {{ $t('codingBridge.session.effortLabel') }}
+                    </span>
+                    <el-dropdown trigger="click" @command="effort = $event">
                       <button type="button" class="cb-pill">
-                        <folder-open-icon
+                        <performance-icon
                           class="cb-pill__icon"
                           :size="'1em' as any"
                           aria-hidden="true"
                           focusable="false"
                         />
-                        <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
+                        <span class="truncate">{{ effortLabel(effort) }}</span>
                         <expand-down-icon
                           class="cb-pill__caret"
                           :size="'1em' as any"
@@ -500,35 +451,123 @@
                           focusable="false"
                         />
                       </button>
-                    </template>
-                    <el-input
-                      v-model="cwd"
-                      size="small"
-                      clearable
-                      class="cb-cwd-input"
-                      :placeholder="$t('codingBridge.session.cwdPlaceholder')"
-                    >
-                      <template #suffix>
-                        <span
-                          class="cb-cwd-browse"
-                          role="button"
-                          tabindex="0"
-                          :title="$t('codingBridge.directory.title')"
-                          :aria-label="$t('codingBridge.directory.title')"
-                          @click="openDirectory"
-                          @keydown.enter.prevent="openDirectory"
-                          @keydown.space.prevent="openDirectory"
-                        >
-                          <folder-open-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-                        </span>
+                      <template #dropdown>
+                        <el-dropdown-menu>
+                          <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
+                            <confirm-icon
+                              class="mr-2"
+                              :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
+                              :size="'1em' as any"
+                              aria-hidden="true"
+                              focusable="false"
+                            />
+                            {{ opt.label }}
+                          </el-dropdown-item>
+                        </el-dropdown-menu>
                       </template>
-                    </el-input>
-                  </el-popover>
-                  <span v-else-if="currentSession?.cwd" class="cb-pill cb-pill--static">
-                    <folder-open-icon class="cb-pill__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                    <span class="truncate">{{ currentSession?.cwd }}</span>
-                  </span>
-                </div>
+                    </el-dropdown>
+                  </div>
+
+                  <div class="cb-setting" :class="{ 'cb-setting--row': mobileSettings }">
+                    <span v-if="mobileSettings" class="cb-setting__label">
+                      {{ $t('codingBridge.session.permissionModeLabel') }}
+                    </span>
+                    <el-dropdown trigger="click" @command="permissionMode = $event">
+                      <button type="button" class="cb-pill">
+                        <security-icon
+                          class="cb-pill__icon"
+                          :size="'1em' as any"
+                          aria-hidden="true"
+                          focusable="false"
+                        />
+                        <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
+                        <expand-down-icon
+                          class="cb-pill__caret"
+                          :size="'1em' as any"
+                          aria-hidden="true"
+                          focusable="false"
+                        />
+                      </button>
+                      <template #dropdown>
+                        <el-dropdown-menu>
+                          <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
+                            <confirm-icon
+                              class="mr-2"
+                              :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
+                              :size="'1em' as any"
+                              aria-hidden="true"
+                              focusable="false"
+                            />
+                            {{ opt.label }}
+                          </el-dropdown-item>
+                        </el-dropdown-menu>
+                      </template>
+                    </el-dropdown>
+                  </div>
+
+                  <!-- Working directory: editable for a new or resumed-but-not-yet
+                     -continued session (its first send is a fresh start that
+                     applies the cwd); read-only once a live turn pins it. -->
+                  <div
+                    v-if="canPickCwd || currentSession?.cwd"
+                    class="cb-setting"
+                    :class="{ 'cb-setting--row': mobileSettings }"
+                  >
+                    <span v-if="mobileSettings" class="cb-setting__label">
+                      {{ $t('common.settings.localToolsWorkingDirTitle') }}
+                    </span>
+                    <el-popover v-if="canPickCwd" trigger="click" placement="top-start" :width="320">
+                      <template #reference>
+                        <button type="button" class="cb-pill">
+                          <folder-open-icon
+                            class="cb-pill__icon"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                          <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
+                          <expand-down-icon
+                            class="cb-pill__caret"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                        </button>
+                      </template>
+                      <el-input
+                        v-model="cwd"
+                        size="small"
+                        clearable
+                        class="cb-cwd-input"
+                        :placeholder="$t('codingBridge.session.cwdPlaceholder')"
+                      >
+                        <template #suffix>
+                          <span
+                            class="cb-cwd-browse"
+                            role="button"
+                            tabindex="0"
+                            :title="$t('codingBridge.directory.title')"
+                            :aria-label="$t('codingBridge.directory.title')"
+                            @click="openDirectory"
+                            @keydown.enter.prevent="openDirectory"
+                            @keydown.space.prevent="openDirectory"
+                          >
+                            <folder-open-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                          </span>
+                        </template>
+                      </el-input>
+                    </el-popover>
+                    <span v-else class="cb-pill cb-pill--static">
+                      <folder-open-icon
+                        class="cb-pill__icon"
+                        :size="'1em' as any"
+                        aria-hidden="true"
+                        focusable="false"
+                      />
+                      <span class="truncate">{{ currentSession?.cwd }}</span>
+                    </span>
+                  </div>
+                </composer-settings>
               </div>
 
               <el-button
@@ -596,6 +635,7 @@ import {
 } from 'element-plus';
 import TranscriptItem from './TranscriptItem.vue';
 import ThinkingIndicator from './ThinkingIndicator.vue';
+import ComposerSettings from './ComposerSettings.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
 import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
 import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
@@ -673,6 +713,7 @@ export default defineComponent({
     ElSkeletonItem,
     TranscriptItem,
     ThinkingIndicator,
+    ComposerSettings,
     DirectoryDialog,
     AskUserQuestionCard,
     CopyToClipboard
@@ -692,10 +733,15 @@ export default defineComponent({
       provider: 'claude',
       effort: '',
       directoryVisible: false,
-      // Mobile only: whether the collapsed secondary pills (model / effort /
-      // permission / cwd) are expanded. Ignored at md+ where they're always
-      // inline.
+      // Mobile only: whether the settings dialog holding the secondary controls
+      // (model / effort / permission / cwd) is open. Ignored at md+, where they
+      // render inline in the composer row.
       moreOpen: false,
+      // Whether those controls belong in a dialog. This is a structural choice
+      // (dialog vs inline), not styling, so it can't live in a media query —
+      // tracked here and kept in sync by a matchMedia listener.
+      mobileSettings: false,
+      settingsMql: undefined as MediaQueryList | undefined,
       slashMenuOpen: false,
       slashActiveIndex: 0,
       // Id of the prompt event being edited; when set, sending rewinds the
@@ -1084,6 +1130,7 @@ export default defineComponent({
     // its events in the store, so no watcher fires — open it at the newest turn.
     this.scrollToBottom();
     this.observeTranscript();
+    this.watchSettingsBreakpoint();
   },
   updated() {
     // The transcript is behind `v-if="currentNode"`, so on a reload it appears
@@ -1094,8 +1141,28 @@ export default defineComponent({
     this.transcriptObserver?.disconnect();
     this.transcriptObserver = undefined;
     this.observedTranscript = undefined;
+    this.settingsMql?.removeEventListener('change', this.onSettingsBreakpoint);
+    this.settingsMql = undefined;
   },
   methods: {
+    // Matches the `md` breakpoint the composer styles use. Below it the
+    // secondary controls open in a dialog instead of crowding the row.
+    watchSettingsBreakpoint() {
+      if (typeof window === 'undefined' || !window.matchMedia) {
+        return;
+      }
+      this.settingsMql = window.matchMedia('(max-width: 767px)');
+      this.mobileSettings = this.settingsMql.matches;
+      this.settingsMql.addEventListener('change', this.onSettingsBreakpoint);
+    },
+    onSettingsBreakpoint(event: MediaQueryListEvent) {
+      this.mobileSettings = event.matches;
+      // Rotating a phone to landscape (or resizing a desktop window down) must
+      // not leave a dialog-only flag set while the controls render inline.
+      if (!event.matches) {
+        this.moreOpen = false;
+      }
+    },
     requestCapabilities() {
       if (this.currentNodeId) {
         this.$store.dispatch('codingBridge/getCapabilities', this.currentNodeId);
@@ -1752,71 +1819,55 @@ export default defineComponent({
   }
 }
 
-// Secondary composer controls. At md+ this wrapper is invisible to layout
-// (`display: contents`), so its pills stay inline in the same flex row as
-// before. On a phone it becomes a full-width line that collapses behind the
-// "…" toggle, leaving only the backend pill on the main row.
-.cb-more {
+// One secondary control. Inline (desktop) the wrapper is invisible to layout so
+// the pill stays a flex item of the composer row; in the mobile dialog it
+// becomes a labelled, full-width row.
+.cb-setting {
   display: contents;
+
+  &--row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: var(--app-text-subtle);
+  }
+
+  // The control is sometimes the pill itself, sometimes an el-dropdown /
+  // el-popover wrapper around one — stretch whichever it is.
+  &--row > *:not(&__label) {
+    width: 100%;
+  }
+
+  &--row .cb-pill {
+    width: 100%;
+    max-width: none;
+    height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+    justify-content: flex-start;
+  }
+
+  // Right-align every chevron so the rows read as one list.
+  &--row .cb-pill__caret {
+    margin-left: auto;
+  }
 }
 
-// The "…" toggle only exists on phones. Tailwind's `md:hidden` can't do this
-// here: `.cb-icon-btn[data-v-*]` (0,2,0) outranks `.md\:hidden` (0,1,0), so the
-// button would stay visible on desktop — the same reason `.cb-devices-btn`
-// above sets its own breakpoint rule.
+// The settings button only exists on phones. Tailwind's `md:hidden` can't do
+// this here: `.cb-icon-btn[data-v-*]` (0,2,0) outranks `.md\:hidden` (0,1,0),
+// so the button would stay visible on desktop — the same reason
+// `.cb-devices-btn` above sets its own breakpoint rule.
 .cb-more-btn {
   display: none;
 }
 
 @media (max-width: 767px) {
-  // Let the action row wrap so the expanded panel can claim a line of its own
-  // at the composer's full width. `cb-pills` steps out of the layout so its
-  // children become direct flex items of that wrapping row — otherwise the
-  // panel stays trapped in the narrow middle column (which shares a nowrap row
-  // with the attach and Send buttons) and every pill lands on its own line.
-  .cb-actions {
-    flex-wrap: wrap;
-  }
-
-  .cb-pills {
-    display: contents;
-  }
-
-  .cb-more {
-    display: none;
-    order: 1;
-    flex: 1 0 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px;
-
-    &--open {
-      display: flex;
-    }
-
-    // The panel is only ~340px wide, so let each control shrink to share a line
-    // rather than keeping its natural width and claiming one of its own. Some
-    // children are the pill itself, others an el-dropdown/el-popover wrapper
-    // around it — hence the direct-child selector. `0 1` (not `1 1`): growing
-    // would let the first pill swallow the whole line.
-    > * {
-      flex: 0 1 auto;
-      min-width: 0;
-    }
-
-    .cb-pill {
-      max-width: 100%;
-      justify-content: flex-start;
-    }
-  }
-
   .cb-more-btn {
     display: inline-flex;
-
-    &--open {
-      color: var(--el-color-primary);
-      border-color: var(--el-color-primary-light-5);
-    }
   }
 }
 

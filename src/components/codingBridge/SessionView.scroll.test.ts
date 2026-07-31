@@ -58,6 +58,8 @@ const ctx = (overrides: Partial<Ctx> = {}): Ctx => {
     $nextTick: (fn: () => void) => fn(),
     requestCapabilities: () => {},
     syncSessionSettings: () => {},
+    // Unrelated to scrolling, and jsdom has no matchMedia by default.
+    watchSettingsBreakpoint: () => {},
     ...overrides
   } as unknown as Ctx;
   self.scrollToBottom = SessionView.methods.scrollToBottom.bind(self) as () => void;
