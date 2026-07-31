@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 31 Jul 2026 03:00:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 31 Jul 2026 03:01:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.349.0
+
+Fri, 31 Jul 2026 03:01:34 GMT
+
+### Minor changes
+
+- feat(local-tools): 新增目录级授权档，填补精确绑定与完全放开之间的空白 (dev@acedata.cloud)
 
 ## 3.348.0
 
