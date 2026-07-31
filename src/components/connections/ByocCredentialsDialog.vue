@@ -1,5 +1,12 @@
 <template>
-  <el-dialog v-model="visible" :title="dialogTitle" width="520px" append-to-body destroy-on-close @close="onClose">
+  <el-dialog
+    v-model="visible"
+    :title="dialogTitle"
+    width="min(520px, 94vw)"
+    append-to-body
+    destroy-on-close
+    @close="onClose"
+  >
     <!-- Extension cookie-capture path (metadata.credential_source === 'extension') -->
     <template v-if="isExtension">
       <!-- A) extension not detected → install guidance -->

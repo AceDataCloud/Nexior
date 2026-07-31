@@ -63,14 +63,18 @@
 
         <!-- Inline search field -->
         <div v-if="searchOpen" class="search-row">
-          <search-icon class="search-icon" :size="13" aria-hidden="true" focusable="false" />
-          <input
+          <el-input
             ref="searchInput"
             v-model="searchQuery"
             class="search-input"
+            size="default"
             :placeholder="$t('skill.placeholder.search')"
             @keydown.escape="closeSearch"
-          />
+          >
+            <template #prefix>
+              <search-icon :size="13" aria-hidden="true" focusable="false" />
+            </template>
+          </el-input>
           <button
             class="icon-btn icon-btn-sm"
             :aria-label="$t('common.button.close')"
@@ -246,6 +250,7 @@
 <script lang="ts">
 import { defineComponent, nextTick } from 'vue';
 import {
+  ElInput,
   ElSwitch,
   ElTag,
   ElTooltip,
@@ -301,6 +306,7 @@ interface IData {
 export default defineComponent({
   name: 'UserSkills',
   components: {
+    ElInput,
     ElSwitch,
     ElTag,
     ElTooltip,
@@ -431,8 +437,8 @@ export default defineComponent({
     openSearch() {
       this.searchOpen = true;
       nextTick(() => {
-        const input = this.$refs.searchInput as HTMLInputElement | undefined;
-        input?.focus();
+        const input = this.$refs.searchInput as { focus?: () => void } | undefined;
+        input?.focus?.();
       });
     },
 
@@ -554,7 +560,7 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .page-shell {
     height: auto;
   }
@@ -637,25 +643,10 @@ html.dark .skills-shell {
   padding: 0 12px 8px;
 }
 
-.search-icon {
-  color: var(--el-text-color-secondary);
-  font-size: 13px;
-}
-
+/* Styling comes from the global `.el-input__wrapper` rules in _common.scss,
+   so the field matches every other input in the console. */
 .search-input {
   flex: 1;
-  border: 1px solid var(--el-border-color);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 13px;
-  outline: none;
-  background: var(--el-fill-color-lighter);
-  color: var(--el-text-color-primary);
-}
-
-.search-input:focus {
-  border-color: var(--el-color-primary);
-  background: var(--el-bg-color);
 }
 
 .left-body {
@@ -862,7 +853,7 @@ html.dark .skills-shell {
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .skills-shell {
     flex-direction: column;
   }
