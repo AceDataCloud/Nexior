@@ -2,15 +2,21 @@
   <!-- The conversation's working directory — the project the AI operates in.
        Desktop only; renders nothing everywhere else. Two states:
          • not chosen  → a call to action; the composer is disabled until it is
-         • chosen      → a compact pill that switches project on click
+         • chosen      → a quiet footer link that switches project on click
        Self-contained + placement-agnostic, like <connector-strip>. -->
-  <div v-if="supported" class="working-dir">
+  <div v-if="supported" class="working-dir" :class="{ 'working-dir--unset': !workingDirectory }">
     <el-button v-if="!workingDirectory" size="small" type="primary" :loading="picking" @click="onPick">
       <folder-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       {{ $t('chat.workingDir.choose') }}
     </el-button>
-    <el-tooltip v-else effect="dark" :content="$t('chat.workingDir.switchHint')" placement="top">
-      <span class="working-dir-pill" role="button" tabindex="0" @click="onPick" @keydown.enter="onPick">
+    <el-tooltip v-else effect="dark" placement="top">
+      <template #content>
+        <div class="working-dir-tip">
+          <div>{{ workingDirectory }}</div>
+          <div class="working-dir-tip__hint">{{ $t('chat.workingDir.switchHint') }}</div>
+        </div>
+      </template>
+      <span class="working-dir-link" role="button" tabindex="0" @click="onPick" @keydown.enter="onPick">
         <folder-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="working-dir-path">{{ displayPath }}</span>
       </span>
@@ -103,20 +109,37 @@ export default defineComponent({
 .working-dir {
   display: flex;
   align-items: center;
+  // Sits in the composer's footer row, left of the centered disclaimer.
+  // Absolute so a long path can never shove the disclaimer off-center.
+  position: absolute;
+  left: 0;
+  max-width: 45%;
 }
-.working-dir-pill {
+// The call-to-action state is a full button, not a text chip. Keeping it in
+// normal flow lets it share the row with the disclaimer instead of overlapping
+// it; the row is centered, so the two sit together under the composer.
+.working-dir--unset {
+  position: static;
+  max-width: none;
+}
+.working-dir-tip__hint {
+  margin-top: 2px;
+  opacity: 0.7;
+}
+// Deliberately understated: this is ambient status, not an action to draw the
+// eye. Matches the disclaimer's size/color so the footer reads as one line.
+.working-dir-link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  max-width: 320px;
-  padding: 2px 8px;
-  border-radius: 999px;
+  min-width: 0;
   font-size: 12px;
-  color: var(--el-text-color-regular);
-  background: var(--el-fill-color-light);
+  color: var(--el-text-color-secondary);
   cursor: pointer;
-  &:hover {
-    background: var(--el-fill-color);
+  transition: color 0.15s;
+  &:hover,
+  &:focus-visible {
+    color: var(--el-text-color-regular);
   }
 }
 .working-dir-path {
