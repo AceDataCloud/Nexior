@@ -2,6 +2,8 @@ import { McpHost } from './mcp';
 import * as fsTool from './fs';
 import * as search from './search';
 import { run_command } from './shell';
+import * as shellSession from './shellSession';
+import * as projectContext from './context';
 import * as computer from './computer';
 import type { McpServerConf, McpServerStatus, ToolInvoke, ToolResult, ToolSpec } from './types';
 
@@ -12,7 +14,10 @@ const BUILTIN: ToolSpec[] = [
   { name: 'fs.edit_file', description: 'Replace an exact string in an existing file inside an authorized root. old_string must match exactly (including indentation) and be unique unless replace_all is set. Preferred over fs.write_file for editing — no need to resend the whole file.', input_schema: { type: 'object', properties: { path: { type: 'string' }, old_string: { type: 'string' }, new_string: { type: 'string' }, replace_all: { type: 'boolean' } }, required: ['path', 'old_string', 'new_string'] }, source: 'builtin', mutates: true },
   { name: 'fs.glob', description: 'Find files by name pattern inside the authorized roots (e.g. "**/*.ts", "src/**/index.*"). Searches every root when path is omitted. Skips node_modules/.git/dist and similar. Prefer this over crawling with fs.list_dir.', input_schema: { type: 'object', properties: { pattern: { type: 'string' }, path: { type: 'string' }, hidden: { type: 'boolean' }, case_insensitive: { type: 'boolean' } }, required: ['pattern'] }, source: 'builtin', mutates: false },
   { name: 'fs.grep', description: 'Search file CONTENT by regular expression inside the authorized roots, returning "path:line: text". Optionally restrict to files matching a glob. Skips binaries and node_modules/.git/dist. Use this to locate code instead of reading files one by one.', input_schema: { type: 'object', properties: { pattern: { type: 'string' }, path: { type: 'string' }, glob: { type: 'string' }, case_insensitive: { type: 'boolean' }, hidden: { type: 'boolean' }, max_results: { type: 'number' } }, required: ['pattern'] }, source: 'builtin', mutates: false },
-  { name: 'shell.run_command', description: 'Run a local command (argv form)', input_schema: { type: 'object', properties: { cmd: { type: 'string' }, args: { type: 'array', items: { type: 'string' } }, cwd: { type: 'string' } }, required: ['cmd'] }, source: 'builtin', mutates: true }
+  { name: 'shell.run_command', description: 'Run a single local command (argv form) in a throwaway process. For anything stateful — cd, activating a venv, exporting vars, starting a dev server — use shell.exec instead.', input_schema: { type: 'object', properties: { cmd: { type: 'string' }, args: { type: 'array', items: { type: 'string' } }, cwd: { type: 'string' } }, required: ['cmd'] }, source: 'builtin', mutates: true },
+  { name: 'shell.exec', description: "Run a shell command in this conversation's PERSISTENT shell. State survives between calls: cd, exported vars, activated virtualenvs and background processes all persist. The working directory is also the session's current project. Prefer this over shell.run_command for multi-step work.", input_schema: { type: 'object', properties: { command: { type: 'string' }, cwd: { type: 'string' }, timeout_ms: { type: 'number' } }, required: ['command'] }, source: 'builtin', mutates: true },
+  { name: 'shell.set_working_dir', description: "Set (or read, when path is omitted) the conversation's working directory — the current project. Other tools default to it, notably project.load_context. Must be inside an authorized root.", input_schema: { type: 'object', properties: { path: { type: 'string' } } }, source: 'builtin', mutates: false },
+  { name: 'project.load_context', description: "Load the current project's convention files (AGENTS.md / CLAUDE.md / CONVENTIONS.md / .cursorrules) and its slash commands (.claude/commands). ALWAYS call this before writing or modifying code — these conventions override your defaults. Defaults to the session working directory; pass path to target another project.", input_schema: { type: 'object', properties: { path: { type: 'string' } } }, source: 'builtin', mutates: false }
 ];
 
 // Computer-use POC: see + control the GUI on the user's own machine. Kept in a
@@ -278,6 +283,15 @@ export class Registry {
         }
       );
     if (inv.name === 'shell.run_command') return run_command(inv.input as { cmd: string; args?: string[]; cwd?: string });
+    if (inv.name === 'shell.exec')
+      return shellSession.shell_exec({
+        ...(inv.input as { command: string; cwd?: string; timeout_ms?: number }),
+        sessionId: inv.sessionId
+      });
+    if (inv.name === 'shell.set_working_dir')
+      return shellSession.set_working_dir({ ...(inv.input as { path?: string }), sessionId: inv.sessionId });
+    if (inv.name === 'project.load_context')
+      return projectContext.load_project_context({ ...(inv.input as { path?: string }), sessionId: inv.sessionId });
     if (inv.name === 'computer.screenshot') return computer.screenshot();
     if (inv.name === 'computer.click') return computer.click(inv.input as { x: number; y: number; button?: 'left' | 'right' | 'middle' });
     if (inv.name === 'computer.move') return computer.move(inv.input as { x: number; y: number });
