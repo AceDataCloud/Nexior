@@ -1295,6 +1295,22 @@
     "message": "點擊切換工作目錄",
     "description": "已選工作目錄時，路徑膠囊的懸浮提示"
   },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "這是本機任務，只能在綁定的那台設備的桌面版裡手動運行",
+    "description": "本機任務在非綁定設備上無法手動觸發"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "這個任務綁定在另一台設備上",
+    "description": "本機任務不屬於當前設備"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "本機調度未登入，請重新登入後重試",
+    "description": "daemon 未持有憑據"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "這個任務正在運行中",
+    "description": "任務已在執行"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "服務的模型名稱，即 Claude Opus 4.7"

@@ -894,7 +894,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Читљиво за људе: оригинални Cron"
+    "description": "Čitljivo za ljude: originalni Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "једном у {time}",
@@ -1287,14 +1287,6 @@
     "message": "Прескочено",
     "description": "Статус извршавања: уређај није био онлајн у том тренутку, није извршено"
   },
-  "model.claudeOpus47": {
-    "message": "claude-opus-4.7",
-    "description": "Naziv modela usluge, tj. Claude Opus 4.7"
-  },
-  "model.claudeOpus47Description": {
-    "message": "Trenutno najnapredniji model",
-    "description": "Opis Claude Opus 4.7 modela"
-  },
   "workingDir.choose": {
     "message": "Izaberite radni direktorijum",
     "description": "Dugme iznad okvira za unos chat-a na desktopu: izaberite folder sa projektom za AI operacije; ne možete slati poruke pre nego što izaberete"
@@ -1302,5 +1294,29 @@
   "workingDir.switchHint": {
     "message": "Kliknite za promenu radnog direktorijuma",
     "description": "Kada je radni direktorijum izabran, prikazuje se saveti u obliku kapsule sa putanjom"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Ovo je lokalni zadatak, može se ručno pokrenuti samo na povezanoj uređaju putem desktop verzije",
+    "description": "Lokalni zadatak se ne može ručno pokrenuti na nepovezanim uređajima"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Ovaj zadatak je vezan za drugi uređaj",
+    "description": "Lokalni zadatak ne pripada trenutnom uređaju"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Lokalno zakazivanje nije prijavljeno, molimo prijavite se ponovo i pokušajte ponovo",
+    "description": "daemon nema sačuvane akreditive"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Ova zadatak se već izvršava",
+    "description": "Zadatak je već u toku"
+  },
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "Naziv modela usluge, tj. Claude Opus 4.7"
+  },
+  "model.claudeOpus47Description": {
+    "message": "Trenutno najnapredniji model",
+    "description": "Opis Claude Opus 4.7 modela"
   }
 }

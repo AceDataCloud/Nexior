@@ -393,6 +393,17 @@ ipcMain.handle('scheduler:setOpenAtLogin', (_e, enabled: boolean) => {
 
 ipcMain.handle('scheduler:status', () => ({ ...daemon.getState(), schedule: daemon.getSchedule() }));
 
+// "Run now" for a task bound to THIS device. The cloud's own trigger action
+// runs the agent loop through a server-side loopback with no client attached,
+// so a local task fired that way reaches the model with none of its authorized
+// local tools — it can only reply that it cannot see the machine.
+ipcMain.handle('scheduler:runNow', async (_e, taskId: string) => {
+  if (typeof taskId !== 'string' || !taskId) return { ok: false, reason: 'bad_task_id' };
+  const result = await daemon.runNow(taskId);
+  refreshTray(() => focusWindow());
+  return result;
+});
+
 /** A name the user will recognize in a task list without being asked to invent
  *  one: their machine's hostname, which is what other devices already show. */
 function defaultDeviceName(): string {

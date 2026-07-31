@@ -1334,6 +1334,22 @@
     "message": "Clique para mudar o diretório de trabalho",
     "description": "Dica de flutuação do caminho quando um diretório de trabalho está selecionado"
   },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Esta é uma tarefa local, que só pode ser executada manualmente na versão desktop do dispositivo vinculado",
+    "description": "Tarefas locais não podem ser acionadas manualmente em dispositivos não vinculados"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Esta tarefa está vinculada a outro dispositivo",
+    "description": "A tarefa local não pertence ao dispositivo atual"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Agendamento local não está conectado, por favor, faça login novamente e tente novamente",
+    "description": "O daemon não possui credenciais"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Esta tarefa está em execução",
+    "description": "A tarefa já está sendo executada"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Nome do modelo do serviço, ou seja, Claude Opus 4.7"

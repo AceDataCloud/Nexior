@@ -204,6 +204,39 @@ export class SchedulerDaemon {
   hasTasks(): boolean {
     return this.tracked.size > 0;
   }
+
+  /** Is this task one this device is responsible for? Lets the UI decide
+   *  whether "run now" belongs here or in the cloud. */
+  owns(taskId: string): boolean {
+    return this.tracked.has(taskId);
+  }
+
+  /**
+   * "Run now" for a task bound to this device.
+   *
+   * Must exist separately from the cloud's `trigger` action: that one runs the
+   * agent loop through a server-side loopback, which has no client to execute
+   * local tools on, so a local task fired that way reaches the model with none
+   * of its authorized tools and can only answer that it cannot see the machine.
+   *
+   * Refreshes first so a task created moments ago — before the next poll — is
+   * already known here.
+   */
+  async runNow(taskId: string): Promise<{ ok: boolean; reason?: string }> {
+    if (!getToken()) return { ok: false, reason: 'signed_out' };
+    if (!this.tracked.has(taskId)) {
+      try {
+        await this.refreshTasks();
+      } catch {
+        return { ok: false, reason: 'refresh_failed' };
+      }
+    }
+    const entry = this.tracked.get(taskId);
+    if (!entry) return { ok: false, reason: 'not_on_this_device' };
+    if (this.inFlight.has(taskId)) return { ok: false, reason: 'already_running' };
+    void this.runOne(entry.task, nowSec(), true);
+    return { ok: true };
+  }
 }
 
 export const daemon = new SchedulerDaemon();

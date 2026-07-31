@@ -749,7 +749,7 @@
   },
   "scheduledTasks.jitterHint": {
     "message": "±60s jitter",
-    "description": "Förklaring av tidsjitter"
+    "description": "Förklaring av körningstidens jitter"
   },
   "scheduledTasks.runCount": {
     "message": "Har körts {count} gånger",
@@ -922,7 +922,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Mänskligt läsbart: Ursprunglig Cron"
+    "description": "Mänskligt läsbart: original Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Engångs {time}",
@@ -942,7 +942,7 @@
   },
   "scheduledTasks.form.prompt": {
     "message": "Prompt",
-    "description": "Fält för prompt"
+    "description": "Prompt fält"
   },
   "scheduledTasks.form.promptPlaceholder": {
     "message": "Ange frågan eller kommandot som ska köras schemalagt, stöder {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variabler",
@@ -1121,7 +1121,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Typ av artefakt - Video"
+    "description": "Utdata typ - video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",
@@ -1333,6 +1333,22 @@
   "workingDir.switchHint": {
     "message": "Klicka för att byta arbetskatalog",
     "description": "Svävande tips för den valda arbetskatalogen, visar sökvägen"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Detta är en lokal uppgift och kan endast köras manuellt i skrivbordsversionen på den bundna enheten",
+    "description": "Lokal uppgift kan inte utlösas manuellt på en icke-bunden enhet"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Denna uppgift är bunden till en annan enhet",
+    "description": "Lokal uppgift tillhör inte den aktuella enheten"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Lokal schemaläggning är inte inloggad, vänligen logga in igen och försök",
+    "description": "Daemon har inte några autentiseringsuppgifter"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Denna uppgift körs redan",
+    "description": "Uppgiften är redan i utförande"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

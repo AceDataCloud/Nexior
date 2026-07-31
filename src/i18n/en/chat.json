@@ -1259,5 +1259,21 @@
   "workingDir.switchHint": {
     "message": "Click to switch working directory",
     "description": "Tooltip on the path pill once a working directory is set"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "This task runs on a specific device — open the desktop app on that machine to run it now",
+    "description": "Local task cannot be triggered from here"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "This task is bound to another device",
+    "description": "Local task belongs to a different device"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Local scheduling is signed out — sign in again and retry",
+    "description": "Daemon holds no credential"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "This task is already running",
+    "description": "Task run in flight"
   }
 }

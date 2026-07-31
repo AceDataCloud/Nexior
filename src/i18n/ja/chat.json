@@ -1295,6 +1295,22 @@
     "message": "作業ディレクトリを切り替える",
     "description": "作業ディレクトリが選択されているとき、パスカプセルのホバーツールチップ"
   },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "これはローカルタスクで、バインドされたデバイスのデスクトップ版でのみ手動実行できます",
+    "description": "ローカルタスクは非バインドデバイスで手動でトリガーできません"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "このタスクは別のデバイスにバインドされています",
+    "description": "ローカルタスクは現在のデバイスに属していません"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "ローカルスケジュールに未ログインです。再ログインしてから再試行してください",
+    "description": "daemonは資格情報を保持していません"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "このタスクは実行中です",
+    "description": "タスクはすでに実行されています"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "サービスのモデル名、すなわち Claude Opus 4.7"

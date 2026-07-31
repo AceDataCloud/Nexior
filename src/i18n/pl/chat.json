@@ -1125,7 +1125,7 @@
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Rodzaj artefaktu - audio"
+    "description": "Typ artefaktu - audio"
   },
   "artifacts.kind.document": {
     "message": "Dokument",
@@ -1145,7 +1145,7 @@
   },
   "artifacts.kind.link": {
     "message": "Link",
-    "description": "Rodzaj artefaktu - link"
+    "description": "Typ artefaktu - link"
   },
   "artifacts.kind.other": {
     "message": "Inne",
@@ -1333,6 +1333,22 @@
   "workingDir.switchHint": {
     "message": "Kliknij, aby przełączyć katalog roboczy",
     "description": "Wskazówka wyświetlana po najechaniu na kapsułę ścieżki, gdy katalog roboczy jest już wybrany"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "To jest lokalne zadanie, można je uruchomić ręcznie tylko w wersji desktopowej na powiązanym urządzeniu",
+    "description": "Lokalne zadanie nie może być ręcznie uruchomione na niepowiązanym urządzeniu"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "To zadanie jest powiązane z innym urządzeniem",
+    "description": "Lokalne zadanie nie należy do bieżącego urządzenia"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Lokalne harmonogramowanie wymaga zalogowania, proszę zalogować się ponownie i spróbować",
+    "description": "Demon nie posiada poświadczeń"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "To zadanie jest już uruchomione",
+    "description": "Zadanie jest w trakcie wykonywania"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

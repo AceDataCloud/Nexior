@@ -810,7 +810,7 @@
   },
   "scheduledTasks.run.reason.error": {
     "message": "Error",
-    "description": "Se produjo un error durante la ejecución"
+    "description": "Error al ejecutar"
   },
   "scheduledTasks.run.reason.unknown": {
     "message": "Error desconocido"
@@ -1122,11 +1122,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo de artefacto - Video"
+    "description": "Tipo de salida - Video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo de artefacto - Audio"
+    "description": "Tipo de salida - Audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1334,6 +1334,22 @@
   "workingDir.switchHint": {
     "message": "Haga clic para cambiar el directorio de trabajo",
     "description": "Sugerencia emergente del cápsula de ruta cuando ya se ha seleccionado un directorio de trabajo"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Esta es una tarea local, solo se puede ejecutar manualmente en la versión de escritorio de la máquina vinculada",
+    "description": "La tarea local no se puede activar manualmente en un dispositivo no vinculado"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Esta tarea está vinculada a otro dispositivo",
+    "description": "La tarea local no pertenece al dispositivo actual"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "La programación local no está iniciada sesión, por favor inicie sesión nuevamente y vuelva a intentarlo",
+    "description": "El daemon no tiene credenciales"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Esta tarea ya se está ejecutando",
+    "description": "La tarea ya está en ejecución"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
