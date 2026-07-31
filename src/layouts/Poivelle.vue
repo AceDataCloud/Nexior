@@ -47,9 +47,8 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateViewport));
 
   .poivelle-navigator {
     order: 1;
-    // Must be bound to the shared dock variable, otherwise collapsing hides
-    // the icons but keeps the bar's full height — navigation lost, no space
-    // gained.
+    /* Must track the shared dock variable, or collapsing hides the icons
+       while the bar keeps its full height. */
     height: calc(var(--app-dock-height) + var(--app-safe-area-bottom));
     padding-bottom: var(--app-safe-area-bottom);
     transition: height 0.18s ease;
