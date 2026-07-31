@@ -1235,6 +1235,58 @@
     "message": "会話が存在しません",
     "description": "会話操作時に対象の会話が存在しないエラーメッセージ"
   },
+  "scheduledTasks.form.execution": {
+    "message": "実行場所",
+    "description": "タスクをクラウドまたはローカルで実行する場所を選択"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "クラウド",
+    "description": "クラウド実行モード"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "このデバイス",
+    "description": "ローカル実行モード"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "このデバイス（{device}）",
+    "description": "ローカル実行モード、デバイス名付き"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "プラットフォームが定期的にトリガーし、コンピュータをオフにしても実行されます。",
+    "description": "クラウドモードの説明"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "このデバイスが定期的にトリガーし、ローカルファイルを読み書きし、ローカルコマンドを実行できます。デバイスがシャットダウンまたはアプリを終了すると実行されず、逃した回数は記録されますが、補完実行はありません。",
+    "description": "ローカルモードの説明"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "モバイルではローカル実行がサポートされていません",
+    "description": "モバイル端末でローカル実行がサポートされていない理由"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "ローカル実行にはデスクトップアプリが必要です",
+    "description": "ウェブ版でローカル実行がサポートされていない理由"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "ローカル情報を取得できません。アプリを再起動して再試行してください。",
+    "description": "デスクトップデバイス情報が利用できない"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "ローカルツールの承認",
+    "description": "ローカルツールの承認フィールド"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "このタスクで使用を許可するローカルツールを選択",
+    "description": "ローカルツール選択のプレースホルダー"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "無人運転時には承認確認が表示されず、ここでチェックしたツールのみが使用可能です。",
+    "description": "ローカルツール承認の説明"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "スキップされました",
+    "description": "実行状態：デバイスがその時オンラインでなく、実行されなかった"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "サービスのモデル名、すなわち Claude Opus 4.7"

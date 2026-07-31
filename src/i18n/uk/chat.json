@@ -1274,6 +1274,58 @@
     "message": "Розмова не існує",
     "description": "Помилка, що вказує на те, що цільова розмова не існує під час операцій з розмовою"
   },
+  "scheduledTasks.form.execution": {
+    "message": "Місце виконання",
+    "description": "Виберіть, чи виконувати завдання в хмарі чи на локальному пристрої"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Хмарний",
+    "description": "Режим виконання в хмарі"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Цей пристрій",
+    "description": "Режим виконання на локальному пристрої"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Цей пристрій ({device})",
+    "description": "Режим виконання на локальному пристрої з назвою пристрою"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Запускається платформою вчасно, навіть якщо комп'ютер вимкнено.",
+    "description": "Опис режиму виконання в хмарі"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Запускається цим пристроєм вчасно, може читати та записувати локальні файли, виконувати команди на локальному пристрої. Якщо пристрій вимкнено або додаток закрито, виконання не відбудеться, пропущені запуски лише фіксуються, але не виконуються повторно.",
+    "description": "Опис режиму виконання на локальному пристрої"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "На мобільному пристрої локальне виконання наразі не підтримується",
+    "description": "Причина, чому мобільний додаток не підтримує локальне виконання"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Локальне виконання потребує настільного додатку",
+    "description": "Причина, чому веб-версія не підтримує локальне виконання"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Не вдалося отримати інформацію про локальний пристрій, будь ласка, перезапустіть додаток і спробуйте ще раз",
+    "description": "Інформація про пристрій на настільному комп'ютері недоступна"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Авторизація локальних інструментів",
+    "description": "Поле авторизації локальних інструментів"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Виберіть локальні інструменти, які дозволено використовувати для цього завдання",
+    "description": "Плейсхолдер для вибору локальних інструментів"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Під час безлюдного виконання не з'явиться підтвердження авторизації, лише інструменти, вибрані тут, будуть доступні.",
+    "description": "Опис авторизації локальних інструментів"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Пропущено",
+    "description": "Статус виконання: пристрій був офлайн, виконання не відбулося"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Назва моделі сервісу, тобто Claude Opus 4.7"

@@ -108,6 +108,9 @@
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ task.template.model }}
                 </span>
+                <span v-if="task.execution === 'local'" class="meta-chip">
+                  {{ task.device_name || $t('chat.scheduledTasks.execution.local') }}
+                </span>
               </div>
               <div class="task-prompt">{{ task.template.question }}</div>
               <div v-if="task.last_output_snippet" class="task-last-output">
@@ -176,6 +179,9 @@
                 <div class="run-sub">
                   <el-tag v-if="run.task_name" size="small" type="info" round class="run-task-tag">
                     {{ run.task_name }}
+                  </el-tag>
+                  <el-tag v-if="run.execution === 'local'" size="small" type="info" round class="run-task-tag">
+                    {{ run.device_name || $t('chat.scheduledTasks.execution.local') }}
                   </el-tag>
                   <el-tag
                     v-for="(account, index) in run.run_accounts"
@@ -333,6 +339,45 @@
               <el-option v-for="m in g.models" :key="m.name" :label="m.getDisplayName()" :value="m.name" />
             </el-option-group>
           </el-select>
+        </el-form-item>
+
+        <el-form-item :label="$t('chat.scheduledTasks.form.execution')">
+          <el-radio-group v-model="form.execution">
+            <el-radio value="cloud">{{ $t('chat.scheduledTasks.execution.cloud') }}</el-radio>
+            <el-tooltip :content="localUnavailableReason" :disabled="canRunLocally" placement="top">
+              <span class="inline-block">
+                <el-radio value="local" :disabled="!canRunLocally">
+                  {{
+                    deviceIdentity
+                      ? $t('chat.scheduledTasks.execution.localNamed', { device: deviceIdentity.device_name })
+                      : $t('chat.scheduledTasks.execution.local')
+                  }}
+                </el-radio>
+              </span>
+            </el-tooltip>
+          </el-radio-group>
+          <div class="hint">
+            {{
+              form.execution === 'local'
+                ? $t('chat.scheduledTasks.form.executionLocalHint')
+                : $t('chat.scheduledTasks.form.executionCloudHint')
+            }}
+          </div>
+        </el-form-item>
+
+        <el-form-item v-if="form.execution === 'local'" :label="$t('chat.scheduledTasks.form.localTools')">
+          <el-select
+            v-model="form.authorizedLocalTools"
+            multiple
+            filterable
+            style="width: 100%"
+            :placeholder="$t('chat.scheduledTasks.form.localToolsPlaceholder')"
+          >
+            <el-option v-for="spec in localToolSpecs" :key="spec.name" :label="spec.name" :value="spec.name">
+              <span>{{ spec.name }}</span>
+            </el-option>
+          </el-select>
+          <div class="hint">{{ $t('chat.scheduledTasks.form.localToolsHint') }}</div>
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.schedule')">
@@ -562,9 +607,12 @@ import type {
   IAuthorizableBrowserConnection,
   IAuthorizableConnectionAccount,
   IRunConnectionAccount,
-  IScheduledBrowserBinding
+  IScheduledBrowserBinding,
+  IScheduledExecution
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
+import { getSurface, isDesktop } from '@/utils/surface';
+import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import { IChatModelGroup } from '@/models';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
@@ -605,6 +653,13 @@ interface TaskForm {
   connectionAccounts: Record<string, string>;
   authorizationExpiresAt: number;
   maxTurns: number;
+  /** Where the task runs. `local` is only offered on desktop — see
+   *  `canRunLocally`. */
+  execution: IScheduledExecution;
+  /** Local tool names this task may use when running unattended. Nobody is at
+   *  the machine to answer a consent prompt, so authorization is granted here,
+   *  up front, or not at all. */
+  authorizedLocalTools: string[];
 }
 
 export default defineComponent({
@@ -647,7 +702,7 @@ export default defineComponent({
       runs: [] as IScheduledRun[],
       activeTab: 'tasks' as ScheduledTab,
       tabs: ['tasks', 'runs'] as ScheduledTab[],
-      statusFilters: ['all', 'success', 'failed', 'indeterminate', 'running', 'queued'] as RunStatusFilter[],
+      statusFilters: ['all', 'success', 'failed', 'indeterminate', 'skipped', 'running', 'queued'] as RunStatusFilter[],
       allRuns: [] as IScheduledRun[],
       allRunsCount: 0,
       allRunsLoading: false,
@@ -687,10 +742,37 @@ export default defineComponent({
       // Bumped per drawer request so a stale response can't clear the skeleton
       // or overwrite rows belonging to a task the user has since moved on from.
       runsRequestId: 0,
-      form: this.emptyForm() as TaskForm
+      form: this.emptyForm() as TaskForm,
+      // Desktop identity + local tool inventory, loaded once when the dialog
+      // opens on desktop. Both stay null elsewhere, which is what disables the
+      // "this device" option.
+      deviceIdentity: null as null | { device_id: string; device_name: string; open_at_login: boolean },
+      localToolSpecs: [] as LocalToolSpec[]
     };
   },
   computed: {
+    /**
+     * Can this client run a task on the machine it is on?
+     *
+     * Desktop only, for now. iOS cannot: it has no background execution mode,
+     * so a task could only run while the user was already looking at the app.
+     * Android could in principle but needs a scheduler we have not built. Both
+     * are offered the cloud, which is what they use today.
+     */
+    canRunLocally(): boolean {
+      return isDesktop() && !!this.deviceIdentity;
+    },
+    /** Why the local option is unavailable, if it is. Shown as a tooltip so the
+     *  disabled radio explains itself instead of just being dead. */
+    localUnavailableReason(): string {
+      if (this.canRunLocally) return '';
+      const surface = getSurface();
+      if (surface === 'ios' || surface === 'android') {
+        return this.$t('chat.scheduledTasks.form.executionMobileUnsupported') as string;
+      }
+      if (surface === 'web') return this.$t('chat.scheduledTasks.form.executionWebUnsupported') as string;
+      return this.$t('chat.scheduledTasks.form.executionDeviceUnavailable') as string;
+    },
     token(): string | undefined {
       return this.$store.state.chat?.credential?.token;
     },
@@ -806,7 +888,9 @@ export default defineComponent({
         browserConnectionId: '',
         connectionAccounts: {},
         authorizationExpiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
-        maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
+        maxTurns: DEFAULT_SCHEDULED_MAX_TURNS,
+        execution: 'cloud',
+        authorizedLocalTools: []
       };
     },
     // Fallback label when the user leaves the name field blank — derive from the prompt.
@@ -999,6 +1083,30 @@ export default defineComponent({
       this.editingTask = null;
       this.form = this.emptyForm();
       this.showCreateDialog = true;
+      void this.loadDesktopContext();
+    },
+    /**
+     * Load this machine's identity and local tool inventory.
+     *
+     * Both come from the Electron bridge, so on web/mobile this is a no-op and
+     * `canRunLocally` stays false. Failures are swallowed: not being able to
+     * offer local execution is a missing option, not an error worth a toast.
+     */
+    async loadDesktopContext() {
+      if (!isDesktop()) return;
+      const scheduler = desktopBridge()?.scheduler;
+      if (scheduler) {
+        try {
+          this.deviceIdentity = await scheduler.identity();
+        } catch {
+          this.deviceIdentity = null;
+        }
+      }
+      try {
+        this.localToolSpecs = ((await localExec()?.listTools()) ?? []) as LocalToolSpec[];
+      } catch {
+        this.localToolSpecs = [];
+      }
     },
     closeTaskDialog() {
       if (this.saving) return;
@@ -1063,7 +1171,10 @@ export default defineComponent({
           (task.unattended_policy?.connection_bindings ?? []).map((b) => [b.connector_identifier, b.connection_id])
         ),
         authorizationExpiresAt: task.unattended_policy?.expires_at ?? Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
-        maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
+        maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS,
+        // Absent on tasks created before local mode — they are all cloud tasks.
+        execution: task.execution === 'local' ? 'local' : 'cloud',
+        authorizedLocalTools: task.unattended_policy?.allowed_local_tools || []
       };
     },
     openEdit(task: IScheduledTask) {
@@ -1071,6 +1182,7 @@ export default defineComponent({
       this.form = this.taskToForm(task);
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
+      void this.loadDesktopContext();
     },
     // Prefill the create form from an existing task. Deliberately opens the
     // dialog instead of creating straight away: the backend forces new tasks to
@@ -1090,6 +1202,7 @@ export default defineComponent({
       };
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
+      void this.loadDesktopContext();
     },
     // "Report" → "Report 2", skipping names already taken so duplicating the
     // same task twice doesn't produce two identical labels. The suffix is always
@@ -1219,6 +1332,7 @@ export default defineComponent({
               .find((choice) => choice.identifier === binding.connector_identifier)
               ?.accounts.some((account) => account.connection_id === binding.connection_id)
         );
+      const authorizedLocalTools = this.form.execution === 'local' ? [...this.form.authorizedLocalTools] : [];
       const payload: ScheduledTaskPayload = {
         name: this.form.name.trim() || this.deriveName(this.form.question),
         schedule: this.buildSchedule(),
@@ -1229,11 +1343,23 @@ export default defineComponent({
           mcp_servers: authorizedMcpServers,
           max_turns: this.form.maxTurns
         },
+        // Display-only provenance; the backend also defaults it, but sending it
+        // means a task created on desktop is labelled as such even when it runs
+        // in the cloud.
+        created_surface: getSurface(),
+        ...(this.form.execution === 'local' && this.deviceIdentity
+          ? {
+              execution: 'local' as const,
+              device_id: this.deviceIdentity.device_id,
+              device_name: this.deviceIdentity.device_name
+            }
+          : {}),
         unattended_policy:
-          authorizedSkills.length || authorizedMcpServers.length
+          authorizedSkills.length || authorizedMcpServers.length || authorizedLocalTools.length
             ? {
                 allowed_skills: authorizedSkills,
                 allowed_mcp_servers: authorizedMcpServers,
+                ...(authorizedLocalTools.length ? { allowed_local_tools: authorizedLocalTools } : {}),
                 browser_connections: browserConnections,
                 connection_bindings: connectionBindings.length ? connectionBindings : undefined,
                 expires_at: this.form.authorizationExpiresAt
@@ -1427,9 +1553,12 @@ export default defineComponent({
     runTagType(status: string) {
       // `indeterminate` is not a failure — the judge only failed to prove the
       // outcome. Rendering it red made four live-published runs read as broken.
+      // `skipped` likewise: the machine was off, which says nothing about the
+      // task's health.
       if (status === 'success') return 'success';
       if (status === 'failed') return 'danger';
       if (status === 'indeterminate') return 'info';
+      if (status === 'skipped') return 'info';
       return 'warning';
     },
     // Which account the run posted as, e.g. `zhihu · Germey`. The name half is

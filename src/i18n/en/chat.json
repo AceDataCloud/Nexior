@@ -1199,5 +1199,57 @@
   "actions.conversationMissing": {
     "message": "Conversation not found",
     "description": "Error shown when the target conversation is missing"
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Runs on",
+    "description": "Where the task runs"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Cloud",
+    "description": "Cloud execution mode"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "This device",
+    "description": "Local execution mode"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "This device ({device})",
+    "description": "Local execution mode with device name"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "The platform runs it on schedule, whether or not your computer is on.",
+    "description": "Cloud mode explanation"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "This device runs it on schedule, so it can read your files and run local commands. It won't run while the device is off or the app is closed; missed runs are recorded, not run late.",
+    "description": "Local mode explanation"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Running on the device isn't supported on mobile yet",
+    "description": "Why local execution is unavailable on mobile"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Running on the device requires the desktop app",
+    "description": "Why local execution is unavailable on web"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Couldn't read this device's details — restart the app and try again",
+    "description": "Desktop identity unavailable"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Local tool access",
+    "description": "Local tool authorization field"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Choose which local tools this task may use",
+    "description": "Local tools select placeholder"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Unattended runs can't ask for permission, so only the tools you select here are available.",
+    "description": "Local tool authorization explanation"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Skipped",
+    "description": "Run status: the device was offline, so it didn't run"
   }
 }

@@ -1121,11 +1121,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo di artefatto - Video"
+    "description": "Tipo di output - video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo di artefatto - Audio"
+    "description": "Tipo di output - audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1133,7 +1133,7 @@
   },
   "artifacts.kind.email": {
     "message": "Email",
-    "description": "Tipo di artefatto - Email"
+    "description": "Tipo di output - email"
   },
   "artifacts.kind.message": {
     "message": "Messaggio",
@@ -1145,7 +1145,7 @@
   },
   "artifacts.kind.link": {
     "message": "Link",
-    "description": "Tipo di artefatto - Link"
+    "description": "Tipo di output - link"
   },
   "artifacts.kind.other": {
     "message": "Altro",
@@ -1273,6 +1273,58 @@
   "actions.conversationMissing": {
     "message": "La conversazione non esiste",
     "description": "Messaggio di errore quando la conversazione target non esiste durante l'operazione."
+  },
+  "scheduledTasks.form.execution": {
+    "message": "Posizione di esecuzione",
+    "description": "Seleziona se il compito deve essere eseguito nel cloud o localmente"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Cloud",
+    "description": "Modalità di esecuzione cloud"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Questo dispositivo",
+    "description": "Modalità di esecuzione locale"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Questo dispositivo ({device})",
+    "description": "Modalità di esecuzione locale con nome del dispositivo"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Attivato dalla piattaforma in tempo, continuerà a funzionare anche se il computer è spento.",
+    "description": "Descrizione della modalità cloud"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Attivato da questo dispositivo in tempo, può leggere e scrivere file locali e eseguire comandi locali. Non verrà eseguito quando il dispositivo è spento o l'app è chiusa, le occorrenze perse verranno solo registrate e non verranno ripetute.",
+    "description": "Descrizione della modalità locale"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "L'esecuzione locale non è attualmente supportata su dispositivi mobili",
+    "description": "Motivo per cui l'esecuzione locale non è supportata su dispositivi mobili"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "L'esecuzione locale richiede l'applicazione desktop",
+    "description": "Motivo per cui l'esecuzione locale non è supportata sul web"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Impossibile ottenere informazioni sul dispositivo, riavvia l'app e riprova",
+    "description": "Informazioni sul dispositivo desktop non disponibili"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Autorizzazione strumenti locali",
+    "description": "Campo di autorizzazione per strumenti locali"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Seleziona gli strumenti locali consentiti per questo compito",
+    "description": "Segnaposto per la selezione degli strumenti locali"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Durante l'esecuzione non presidiata non verrà visualizzata alcuna conferma di autorizzazione, solo gli strumenti selezionati qui saranno disponibili.",
+    "description": "Descrizione dell'autorizzazione per strumenti locali"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Saltato",
+    "description": "Stato di esecuzione: il dispositivo non era online al momento, non è stato eseguito"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

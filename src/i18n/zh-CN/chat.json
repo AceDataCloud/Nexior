@@ -1267,5 +1267,57 @@
   "actions.conversationMissing": {
     "message": "会话不存在",
     "description": "会话操作时目标会话不存在的错误提示"
+  },
+  "scheduledTasks.form.execution": {
+    "message": "运行位置",
+    "description": "选择任务在云端还是本机运行"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "云端",
+    "description": "云端运行模式"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "这台设备",
+    "description": "本机运行模式"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "这台设备（{device}）",
+    "description": "本机运行模式，带设备名"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "由平台按时触发，关掉电脑也会照常运行。",
+    "description": "云端模式说明"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "由这台设备按时触发，可以读写本机文件、跑本机命令。设备关机或退出应用时不会运行，错过的次数只做记录，不会补跑。",
+    "description": "本机模式说明"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "手机端暂不支持本机运行",
+    "description": "移动端不支持本地执行的原因"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "本机运行需要桌面版应用",
+    "description": "网页端不支持本地执行的原因"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "无法获取本机信息，请重启应用后重试",
+    "description": "桌面端设备信息不可用"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "本机工具授权",
+    "description": "本地工具授权字段"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "选择允许这个任务使用的本机工具",
+    "description": "本地工具选择占位符"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "无人值守运行时不会弹出授权确认，只有在这里勾选的工具才可用。",
+    "description": "本地工具授权说明"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "已跳过",
+    "description": "运行状态：设备当时不在线，未运行"
   }
 }

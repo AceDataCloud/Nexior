@@ -34,6 +34,10 @@ export interface DesktopBridge {
    * which is why it needs its own copy of the token: it must keep running after
    * the window closes. The token only ever travels INWARD — nothing here hands
    * it back to the renderer.
+   *
+   * Optional because the renderer must keep working against a desktop build
+   * that predates the daemon — an older shell simply has no `scheduler`, which
+   * is what `canRunLocally` checks before offering local execution.
    */
   scheduler?: SchedulerBridge;
 }

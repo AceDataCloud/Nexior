@@ -18,6 +18,25 @@ import ScheduledTasks from './ScheduledTasks.vue';
 const copyToClipboard = vi.hoisted(() => vi.fn());
 vi.mock('copy-to-clipboard', () => ({ default: copyToClipboard }));
 
+// Surface + desktop bridge are module-level singletons, so local-execution
+// behaviour can only be exercised by mocking them.
+const surfaceMocks = vi.hoisted(() => ({ isDesktop: vi.fn(() => false), getSurface: vi.fn(() => 'web') }));
+vi.mock('@/utils/surface', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/utils/surface')>()),
+  isDesktop: surfaceMocks.isDesktop,
+  getSurface: surfaceMocks.getSurface
+}));
+
+const desktopMocks = vi.hoisted(() => ({
+  desktopBridge: vi.fn(() => undefined as any),
+  localExec: vi.fn(() => undefined as any)
+}));
+vi.mock('@/utils/desktop', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/utils/desktop')>()),
+  desktopBridge: desktopMocks.desktopBridge,
+  localExec: desktopMocks.localExec
+}));
+
 const editedTask: IScheduledTask = {
   id: 'task-1',
   name: 'Existing task',
@@ -72,6 +91,91 @@ const mountComponent = (credential: { token: string } | null = null, extraStubs:
       }
     }
   });
+
+describe('chat/ScheduledTasks — local execution', () => {
+  const IDENTITY = { device_id: 'dev-1', device_name: "Qingcai's MacBook", open_at_login: false };
+  const asDesktop = (tools: { name: string; description: string }[] = []) => {
+    surfaceMocks.isDesktop.mockReturnValue(true);
+    surfaceMocks.getSurface.mockReturnValue('desktop');
+    desktopMocks.desktopBridge.mockReturnValue({ scheduler: { identity: vi.fn().mockResolvedValue(IDENTITY) } });
+    desktopMocks.localExec.mockReturnValue({ listTools: vi.fn().mockResolvedValue(tools) });
+  };
+
+  afterEach(() => {
+    surfaceMocks.isDesktop.mockReturnValue(false);
+    surfaceMocks.getSurface.mockReturnValue('web');
+    desktopMocks.desktopBridge.mockReturnValue(undefined);
+    desktopMocks.localExec.mockReturnValue(undefined);
+    vi.restoreAllMocks();
+  });
+
+  const vmOf = (wrapper: ReturnType<typeof mountComponent>) =>
+    wrapper.vm as unknown as {
+      openCreate: () => void;
+      canRunLocally: boolean;
+      localUnavailableReason: string;
+      deviceIdentity: typeof IDENTITY | null;
+      localToolSpecs: { name: string }[];
+      form: Record<string, unknown>;
+    };
+
+  it('does not offer local execution on web', async () => {
+    const wrapper = mountComponent();
+    const vm = vmOf(wrapper);
+    vm.openCreate();
+    await flushPromises();
+    // No bridge, so nothing could fire the task even if the user picked it.
+    expect(vm.canRunLocally).toBe(false);
+    expect(vm.deviceIdentity).toBeNull();
+    expect(vm.localUnavailableReason).toBe('chat.scheduledTasks.form.executionWebUnsupported');
+  });
+
+  it('explains that mobile cannot run tasks locally', async () => {
+    surfaceMocks.getSurface.mockReturnValue('ios');
+    const wrapper = mountComponent();
+    const vm = vmOf(wrapper);
+    vm.openCreate();
+    await flushPromises();
+    expect(vm.localUnavailableReason).toBe('chat.scheduledTasks.form.executionMobileUnsupported');
+  });
+
+  it('loads this device and its tools when the dialog opens on desktop', async () => {
+    asDesktop([{ name: 'fs.read_file', description: 'Read a file' }]);
+    const wrapper = mountComponent();
+    const vm = vmOf(wrapper);
+    vm.openCreate();
+    await flushPromises();
+    expect(vm.canRunLocally).toBe(true);
+    expect(vm.deviceIdentity).toEqual(IDENTITY);
+    expect(vm.localToolSpecs).toEqual([{ name: 'fs.read_file', description: 'Read a file' }]);
+  });
+
+  it('still offers the cloud when the desktop bridge fails', async () => {
+    asDesktop();
+    desktopMocks.desktopBridge.mockReturnValue({
+      scheduler: { identity: vi.fn().mockRejectedValue(new Error('ipc down')) }
+    });
+    const wrapper = mountComponent();
+    const vm = vmOf(wrapper);
+    vm.openCreate();
+    await flushPromises();
+    // A broken bridge removes an option; it must not break task creation.
+    expect(vm.canRunLocally).toBe(false);
+    expect(vm.form.execution).toBe('cloud');
+  });
+
+  it('defaults a new task to the cloud', async () => {
+    asDesktop();
+    const wrapper = mountComponent();
+    const vm = vmOf(wrapper);
+    vm.openCreate();
+    await flushPromises();
+    // Local is opt-in: it only fires while this machine is awake, which is not
+    // what someone clicking "new scheduled task" expects by default.
+    expect(vm.form.execution).toBe('cloud');
+    expect(vm.form.authorizedLocalTools).toEqual([]);
+  });
+});
 
 describe('chat/ScheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
@@ -182,6 +286,8 @@ describe('chat/ScheduledTasks', () => {
       authorizedMcpServers: [],
       browserConnectionId: '',
       connectionAccounts: {},
+      execution: 'cloud',
+      authorizedLocalTools: [],
       authorizationExpiresAt: expect.any(Number),
       maxTurns: 50
     });

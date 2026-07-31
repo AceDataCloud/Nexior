@@ -1235,6 +1235,58 @@
     "message": "會話不存在",
     "description": "會話操作時目標會話不存在的錯誤提示"
   },
+  "scheduledTasks.form.execution": {
+    "message": "運行位置",
+    "description": "選擇任務在雲端還是本機運行"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "雲端",
+    "description": "雲端運行模式"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "這台設備",
+    "description": "本機運行模式"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "這台設備（{device}）",
+    "description": "本機運行模式，帶設備名"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "由平台按時觸發，關掉電腦也會照常運行。",
+    "description": "雲端模式說明"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "由這台設備按時觸發，可以讀寫本機文件、跑本機命令。設備關機或退出應用時不會運行，錯過的次數只做記錄，不會補跑。",
+    "description": "本機模式說明"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "手機端暫不支持本機運行",
+    "description": "移動端不支持本地執行的原因"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "本機運行需要桌面版應用",
+    "description": "網頁端不支持本地執行的原因"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "無法獲取本機信息，請重啟應用後重試",
+    "description": "桌面端設備信息不可用"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "本機工具授權",
+    "description": "本地工具授權字段"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "選擇允許這個任務使用的本機工具",
+    "description": "本地工具選擇佔位符"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "無人值守運行時不會彈出授權確認，只有在這裡勾選的工具才可用。",
+    "description": "本地工具授權說明"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "已跳過",
+    "description": "運行狀態：設備當時不在線，未運行"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "服務的模型名稱，即 Claude Opus 4.7"

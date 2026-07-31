@@ -1235,6 +1235,58 @@
     "message": "Разговор не постоји",
     "description": "Грешка која указује да циљани разговор не постоји током операције разговора."
   },
+  "scheduledTasks.form.execution": {
+    "message": "Локација извршавања",
+    "description": "Изаберите да ли ће задатак радити у облаку или локално"
+  },
+  "scheduledTasks.execution.cloud": {
+    "message": "Облак",
+    "description": "Режим рада у облаку"
+  },
+  "scheduledTasks.execution.local": {
+    "message": "Овај уређај",
+    "description": "Режим локалног рада"
+  },
+  "scheduledTasks.execution.localNamed": {
+    "message": "Овај уређај ({device})",
+    "description": "Режим локалног рада, са именом уређаја"
+  },
+  "scheduledTasks.form.executionCloudHint": {
+    "message": "Покреће платформа на време, радиће и ако искључите рачунар.",
+    "description": "Објашњење режима облака"
+  },
+  "scheduledTasks.form.executionLocalHint": {
+    "message": "Покреће овај уређај на време, може читати и писати локалне фајлове, извршавати локалне команде. Неће се извршавати ако је уређај искључен или ако се изађе из апликације, пропуштени покушаји ће бити забележени, али неће бити поновљени.",
+    "description": "Објашњење локалног режима"
+  },
+  "scheduledTasks.form.executionMobileUnsupported": {
+    "message": "Мобилна верзија тренутно не подржава локално извршавање",
+    "description": "Разлог зашто мобилна верзија не подржава локално извршавање"
+  },
+  "scheduledTasks.form.executionWebUnsupported": {
+    "message": "Локално извршавање захтева десктоп верзију апликације",
+    "description": "Разлог зашто веб верзија не подржава локално извршавање"
+  },
+  "scheduledTasks.form.executionDeviceUnavailable": {
+    "message": "Није могуће добити информације о локалном уређају, молимо поново покрените апликацију и покушајте поново",
+    "description": "Информације о уређају на десктопу нису доступне"
+  },
+  "scheduledTasks.form.localTools": {
+    "message": "Локална алатка овлашћења",
+    "description": "Поље за овлашћење локалних алатки"
+  },
+  "scheduledTasks.form.localToolsPlaceholder": {
+    "message": "Изаберите локалне алатке које овај задатак може користити",
+    "description": "Плацехолдер за избор локалних алатки"
+  },
+  "scheduledTasks.form.localToolsHint": {
+    "message": "Током неконтролисаног рада неће се појавити потврда о овлашћењу, само алатке које су овде означене ће бити доступне.",
+    "description": "Објашњење овлашћења локалних алатки"
+  },
+  "scheduledTasks.run.skipped": {
+    "message": "Прескочено",
+    "description": "Статус извршавања: уређај није био онлајн у том тренутку, није извршено"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Naziv modela usluge, tj. Claude Opus 4.7"
