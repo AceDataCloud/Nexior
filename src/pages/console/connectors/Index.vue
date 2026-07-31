@@ -1677,9 +1677,8 @@ export default defineComponent({
     /**
      * Run the consent flow in a popup so this page keeps its state, then
      * refresh. Falls back to a full-page navigation when the popup is
-     * blocked. We refetch on every outcome — including a manually closed
-     * popup — because the connection may have landed server-side even if
-     * we never got the message.
+     * blocked. We refetch on every outcome — the popup closing is all we
+     * learn, so the server is the authority on what actually connected.
      */
     async runAuthorizePopup(authorizationUrl: string) {
       const pending = openAuthorizePopup(authorizationUrl);
@@ -1823,15 +1822,11 @@ export default defineComponent({
           client_id: this.customClientId || undefined,
           client_secret: this.customClientSecret || undefined,
           provider: 'mcp',
-          // Custom MCP (DCR) returns through AuthFrontend's
-          // /user/connections/callback, which does the token exchange
-          // client-side before honouring return_url — a different flow from
-          // the preset-provider popup. Keep it on the full-page path until
-          // that callback learns to emit the popup message too.
-          return_url: window.location.href
+          return_url: popupReturnUrl()
         });
         if (data?.authorization_url) {
-          window.location.href = data.authorization_url;
+          this.customDialogVisible = false;
+          await this.runAuthorizePopup(data.authorization_url);
         }
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to start authorization');
