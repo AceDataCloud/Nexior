@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 31 Jul 2026 02:57:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 31 Jul 2026 02:59:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.347.0
+
+Fri, 31 Jul 2026 02:59:56 GMT
+
+### Minor changes
+
+- feat(local-tools): 持久 shell、会话工作目录与项目约定加载 (dev@acedata.cloud)
 
 ## 3.346.0
 
