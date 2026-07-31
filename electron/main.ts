@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain, shell, Menu, Notification, globalShortcut } from 'electron';
 import path from 'node:path';
+import os from 'node:os';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
 import { initUpdater } from './updater';
@@ -7,6 +8,15 @@ import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
 import { load as loadLocalConfig } from './local/config';
+import { daemon } from './scheduler/daemon';
+import { initTray, refreshTray, setOpenAtLogin, isOpenAtLogin } from './scheduler/tray';
+import {
+  getDeviceId,
+  getDeviceName,
+  setDeviceName,
+  setCredentials,
+  clearCredentials
+} from './scheduler/credentials';
 
 const DESKTOP_SCHEME = 'acedata-desktop';
 
@@ -104,13 +114,29 @@ if (!gotLock) {
     void registry.boot(localCfg.mcp);
     registerLocalExec(() => mainWindow);
     registerPanicStop();
+    // Scheduled-task daemon: holds the schedules for tasks bound to this
+    // device and fires them from THIS process. It lives in main, not the
+    // renderer, because Chromium throttles a hidden window's timers to about
+    // once a minute — a "every 5 minutes" task would fire whenever the user
+    // happened to look at it.
+    initTray(() => focusWindow());
+    daemon.start();
+    void daemon.reportMissedSinceLastRun();
     // Windows cold-start protocol activation: URL is in this instance's argv.
     const coldUrl = process.argv.find((a) => a.startsWith(`${DESKTOP_SCHEME}://`));
     if (coldUrl) handleDeepLink(coldUrl);
   });
 
   app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit();
+    // Staying resident is what makes a local scheduled task fire at 7am with
+    // no window open. Only do it when this device actually holds one —
+    // otherwise closing the last window still quits, as it always did.
+    if (process.platform === 'darwin') return;
+    if (daemon.hasTasks()) {
+      refreshTray(() => focusWindow());
+      return;
+    }
+    app.quit();
   });
   app.on('will-quit', () => globalShortcut.unregisterAll());
   app.on('activate', () => {
@@ -237,7 +263,14 @@ function handleDeepLink(rawUrl: string): void {
 }
 
 function focusWindow(): void {
-  if (!mainWindow) return;
+  // Once the app can outlive its window (tray residency), "focus" may have to
+  // recreate it — otherwise clicking the tray icon after closing the window
+  // would do nothing at all.
+  if (!mainWindow || mainWindow.isDestroyed()) {
+    createWindow();
+    return;
+  }
+  if (mainWindow.isMinimized()) mainWindow.restore();
   mainWindow.show();
   mainWindow.focus();
 }
@@ -293,8 +326,59 @@ ipcMain.handle('notify:show', (_e, { title, body }: { title: string; body: strin
   n.show();
 });
 
+// --- Scheduled-task daemon IPC ---
+//
+// The daemon needs a Bearer token that outlives the window, so the renderer
+// hands it over on sign-in and main persists it (OS-encrypted, 0600). Nothing
+// here reads the token back out to the renderer — it only ever goes inward.
+
+ipcMain.handle('scheduler:identity', () => ({
+  device_id: getDeviceId(),
+  device_name: getDeviceName() ?? defaultDeviceName(),
+  open_at_login: isOpenAtLogin()
+}));
+
+ipcMain.handle('scheduler:setCredentials', (_e, { token, siteOrigin }: { token: string; siteOrigin?: string }) => {
+  if (typeof token !== 'string' || !token) return false;
+  setCredentials(token, typeof siteOrigin === 'string' ? siteOrigin : undefined);
+  daemon.start();
+  refreshTray(() => focusWindow());
+  return true;
+});
+
+ipcMain.handle('scheduler:clearCredentials', () => {
+  clearCredentials();
+  refreshTray(() => focusWindow());
+  return true;
+});
+
+ipcMain.handle('scheduler:setDeviceName', (_e, name: string) => {
+  if (typeof name !== 'string' || !name.trim()) return false;
+  setDeviceName(name.trim());
+  refreshTray(() => focusWindow());
+  return true;
+});
+
+ipcMain.handle('scheduler:setOpenAtLogin', (_e, enabled: boolean) => {
+  setOpenAtLogin(enabled === true);
+  refreshTray(() => focusWindow());
+  return isOpenAtLogin();
+});
+
+ipcMain.handle('scheduler:status', () => ({ ...daemon.getState(), schedule: daemon.getSchedule() }));
+
+/** A name the user will recognize in a task list without being asked to invent
+ *  one: their machine's hostname, which is what other devices already show. */
+function defaultDeviceName(): string {
+  const platform = process.platform === 'darwin' ? 'Mac' : 'PC';
+  try {
+    return os.hostname().replace(/\.local$/, '') || platform;
+  } catch {
+    return platform;
+  }
+}
+
 // Cross-platform menu. The Edit role is REQUIRED for clipboard accelerators
-// (Cmd/Ctrl+C/V/X/A, undo/redo) to work in inputs; without it they are dead.
 function setupAppMenu(): void {
   const isMac = process.platform === 'darwin';
   const nav = (dir: 'back' | 'forward') => {

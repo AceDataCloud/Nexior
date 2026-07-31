@@ -27,6 +27,32 @@ export interface DesktopBridge {
   setSiteOrigin(origin: string): void;
   /** Show an OS notification via the main process (reliable when window hidden). */
   notify(title: string, body: string): Promise<void>;
+  /**
+   * Scheduled-task daemon controls.
+   *
+   * The daemon fires locally-executed scheduled tasks from the main process,
+   * which is why it needs its own copy of the token: it must keep running after
+   * the window closes. The token only ever travels INWARD — nothing here hands
+   * it back to the renderer.
+   */
+  scheduler?: SchedulerBridge;
+}
+
+export interface SchedulerBridge {
+  /** This installation's device id + display name + autostart state. */
+  identity(): Promise<{ device_id: string; device_name: string; open_at_login: boolean }>;
+  /** Hand main the Bearer token to persist (OS-encrypted, 0600). */
+  setCredentials(token: string, siteOrigin?: string): Promise<boolean>;
+  /** Sign-out. Keeps the device id so tasks bound to this machine survive. */
+  clearCredentials(): Promise<boolean>;
+  setDeviceName(name: string): Promise<boolean>;
+  setOpenAtLogin(enabled: boolean): Promise<boolean>;
+  status(): Promise<{
+    state: 'stopped' | 'running' | 'signed_out';
+    error?: string;
+    taskCount: number;
+    schedule: { id: string; name: string; nextAt: number | null }[];
+  }>;
 }
 
 declare global {

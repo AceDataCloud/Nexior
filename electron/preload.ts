@@ -55,7 +55,26 @@ contextBridge.exposeInMainWorld('desktop', {
 
   // Show an OS notification via the main process (reliable when the window is
   // hidden/minimized, unlike Web Notification). Resolves after dispatch.
-  notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body })
+  notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body }),
+
+  // Scheduled-task daemon. The token is handed INWARD only — main persists it
+  // (OS-encrypted, 0600) so tasks keep firing after the window closes, and
+  // never hands it back out.
+  scheduler: {
+    identity: (): Promise<{ device_id: string; device_name: string; open_at_login: boolean }> =>
+      ipcRenderer.invoke('scheduler:identity'),
+    setCredentials: (token: string, siteOrigin?: string): Promise<boolean> =>
+      ipcRenderer.invoke('scheduler:setCredentials', { token, siteOrigin }),
+    clearCredentials: (): Promise<boolean> => ipcRenderer.invoke('scheduler:clearCredentials'),
+    setDeviceName: (name: string): Promise<boolean> => ipcRenderer.invoke('scheduler:setDeviceName', name),
+    setOpenAtLogin: (enabled: boolean): Promise<boolean> => ipcRenderer.invoke('scheduler:setOpenAtLogin', enabled),
+    status: (): Promise<{
+      state: 'stopped' | 'running' | 'signed_out';
+      error?: string;
+      taskCount: number;
+      schedule: { id: string; name: string; nextAt: number | null }[];
+    }> => ipcRenderer.invoke('scheduler:status')
+  }
 });
 
 // Local tool execution (desktop only): list authorized local tools and invoke
