@@ -119,14 +119,15 @@ export default defineComponent({
     padding-top: var(--console-safe-top);
     .navigator {
       width: 100%;
-      height: calc(60px + var(--console-safe-bottom));
+      height: calc(var(--app-dock-height) + var(--console-safe-bottom));
       padding-bottom: var(--console-safe-bottom);
       position: fixed;
       bottom: 0;
       z-index: 10000;
+      transition: height 0.18s ease;
     }
     .main {
-      height: calc(100% - 60px - var(--console-safe-bottom) - var(--console-safe-top));
+      height: calc(100% - var(--app-dock-height) - var(--console-safe-bottom) - var(--console-safe-top));
       width: 100%;
       flex: 1;
       display: flex;
@@ -137,7 +138,7 @@ export default defineComponent({
         width: 100%;
         padding: 12px;
         background-color: var(--el-bg-color-page);
-        padding-bottom: calc(80px + var(--console-safe-bottom));
+        padding-bottom: calc(var(--app-dock-height) + 20px + var(--console-safe-bottom));
         box-sizing: border-box;
         min-height: 0;
         overflow-x: auto;

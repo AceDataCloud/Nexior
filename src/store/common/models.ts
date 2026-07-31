@@ -27,7 +27,10 @@ import { IFishState } from '../fish/models';
 import { IWebextratorState } from '../webextrator/models';
 import { ICodingBridgeState } from '../codingBridge/models';
 
-export interface ISetting {}
+export interface ISetting {
+  // Mobile-only: the bottom app dock is collapsed to a thin handle.
+  dockCollapsed?: boolean;
+}
 
 export interface ICommonState {
   token: IToken;

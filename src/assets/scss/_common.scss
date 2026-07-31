@@ -50,6 +50,14 @@ html:root {
   --app-safe-area-top: env(safe-area-inset-top, 0px);
   --app-safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
+  /* Mobile bottom app dock. `--app-dock-height` is what the layouts reserve;
+     collapsing shrinks it to just the grab handle (see html.dock-collapsed).
+     The expanded height is unchanged from before the handle existed — the
+     28px icons fit under it with room to spare. Keep --app-dock-handle-height
+     in sync with $dock-handle-height in Navigator.vue. */
+  --app-dock-handle-height: 22px;
+  --app-dock-height: 60px;
+
   /* WalletConnect (Reown AppKit/Web3Modal) overlay stacking */
   --w3m-z-index: var(--adc-layer-third-party);
   --apkt-z-index: var(--adc-layer-third-party);
@@ -105,6 +113,13 @@ html:root {
 html.surface-android {
   --app-safe-area-top: max(env(safe-area-inset-top, 0px), 24px);
   --app-safe-area-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+}
+
+// Collapsed mobile dock: the bar shrinks to its grab handle and the layouts,
+// which all size the navigator off --app-dock-height, hand the space back to
+// the page content.
+html.dock-collapsed {
+  --app-dock-height: var(--app-dock-handle-height);
 }
 
 html.dark {

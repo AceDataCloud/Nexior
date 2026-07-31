@@ -264,14 +264,15 @@ html.surface-desktop .status-floating {
     // the layout wrapper so every routed service page inherits it.
     padding-top: var(--app-safe-area-top);
     .main {
-      height: calc(100% - 60px - var(--app-safe-area-bottom) - var(--app-safe-area-top));
+      height: calc(100% - var(--app-dock-height) - var(--app-safe-area-bottom) - var(--app-safe-area-top));
       width: 100%;
       flex: 1;
     }
     .navigator {
       width: 100%;
-      height: calc(60px + var(--app-safe-area-bottom));
+      height: calc(var(--app-dock-height) + var(--app-safe-area-bottom));
       padding-bottom: var(--app-safe-area-bottom);
+      transition: height 0.18s ease;
     }
   }
 }
