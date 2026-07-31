@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 30 Jul 2026 10:21:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 31 Jul 2026 02:55:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.345.2
+
+Fri, 31 Jul 2026 02:55:17 GMT
+
+### Patches
+
+- share: center the brand in the shared-conversation header, drop the duplicate site title, and make the logo dark-mode aware (dev@acedata.cloud)
 
 ## 3.345.1
 
