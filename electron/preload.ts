@@ -73,7 +73,11 @@ contextBridge.exposeInMainWorld('desktop', {
       error?: string;
       taskCount: number;
       schedule: { id: string; name: string; nextAt: number | null }[];
-    }> => ipcRenderer.invoke('scheduler:status')
+    }> => ipcRenderer.invoke('scheduler:status'),
+    // "Run now" for a task bound to this device — the cloud's trigger action
+    // cannot execute local tools.
+    runNow: (taskId: string): Promise<{ ok: boolean; reason?: string }> =>
+      ipcRenderer.invoke('scheduler:runNow', taskId)
   }
 });
 

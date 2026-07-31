@@ -1327,5 +1327,21 @@
   "workingDir.switchHint": {
     "message": "点击切换工作目录",
     "description": "已选工作目录时，路径胶囊的悬浮提示"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "这是本机任务，只能在绑定的那台设备的桌面版里手动运行",
+    "description": "本机任务在非绑定设备上无法手动触发"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "这个任务绑定在另一台设备上",
+    "description": "本机任务不属于当前设备"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "本机调度未登录，请重新登录后重试",
+    "description": "daemon 未持有凭据"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "这个任务正在运行中",
+    "description": "任务已在执行"
   }
 }

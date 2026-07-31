@@ -164,6 +164,72 @@ describe('chat/ScheduledTasks — local execution', () => {
     expect(vm.form.execution).toBe('cloud');
   });
 
+  describe('run now routing', () => {
+    const localTask: IScheduledTask = { ...editedTask, id: 'local-1', execution: 'local', device_id: 'dev-1' };
+
+    it('runs a LOCAL task through the daemon, never the cloud trigger', async () => {
+      // The bug this guards, seen in production: the cloud's `trigger` action
+      // runs the agent loop through a server-side loopback with no client
+      // attached, so a local task fired that way reaches the model with none of
+      // its authorized local tools. It answered "I can't access your folder"
+      // and the judge recorded a failure — for a correctly configured task.
+      asDesktop();
+      const runNow = vi.fn().mockResolvedValue({ ok: true });
+      desktopMocks.desktopBridge.mockReturnValue({
+        scheduler: { identity: vi.fn().mockResolvedValue(IDENTITY), runNow }
+      });
+      const triggerTask = vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue(undefined as never);
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(localTask);
+
+      expect(runNow).toHaveBeenCalledWith('local-1');
+      expect(triggerTask).not.toHaveBeenCalled();
+    });
+
+    it('still uses the cloud trigger for a cloud task', async () => {
+      asDesktop();
+      const runNow = vi.fn().mockResolvedValue({ ok: true });
+      desktopMocks.desktopBridge.mockReturnValue({
+        scheduler: { identity: vi.fn().mockResolvedValue(IDENTITY), runNow }
+      });
+      const triggerTask = vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue(undefined as never);
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(editedTask);
+
+      expect(triggerTask).toHaveBeenCalledWith('tok', editedTask.id);
+      expect(runNow).not.toHaveBeenCalled();
+    });
+
+    it('refuses rather than running a local task from the wrong machine', async () => {
+      // No desktop bridge: a web tab, or another Mac. Falling back to the cloud
+      // here would reproduce the exact failure above.
+      const triggerTask = vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue(undefined as never);
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(localTask);
+
+      expect(triggerTask).not.toHaveBeenCalled();
+    });
+
+    it('surfaces the daemon refusing, without falling back to the cloud', async () => {
+      asDesktop();
+      desktopMocks.desktopBridge.mockReturnValue({
+        scheduler: {
+          identity: vi.fn().mockResolvedValue(IDENTITY),
+          runNow: vi.fn().mockResolvedValue({ ok: false, reason: 'not_on_this_device' })
+        }
+      });
+      const triggerTask = vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue(undefined as never);
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(localTask);
+
+      expect(triggerTask).not.toHaveBeenCalled();
+    });
+  });
+
   it('defaults a new task to the cloud', async () => {
     asDesktop();
     const wrapper = mountComponent();

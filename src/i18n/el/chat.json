@@ -922,7 +922,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Αναγνώσιμο από άνθρωπο: Ακατέργαστο Cron"
+    "description": "Ανθρώπινα αναγνώσιμο: Αρχικό Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Μία φορά {time}",
@@ -1326,14 +1326,6 @@
     "message": "Παραλείφθηκε",
     "description": "Κατάσταση εκτέλεσης: Η συσκευή δεν ήταν online τη στιγμή εκείνη, δεν εκτελέστηκε"
   },
-  "model.claudeOpus47": {
-    "message": "claude-opus-4.7",
-    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή Claude Opus 4.7"
-  },
-  "model.claudeOpus47Description": {
-    "message": "Το πιο προηγμένο μοντέλο αυτή τη στιγμή",
-    "description": "Περιγραφή του μοντέλου Claude Opus 4.7"
-  },
   "workingDir.choose": {
     "message": "Επιλέξτε τον φάκελο εργασίας",
     "description": "Κουμπί πάνω από το πεδίο εισόδου συνομιλίας στην επιφάνεια εργασίας: Επιλέξτε τον φάκελο έργου που θα χρησιμοποιήσει η AI. Δεν μπορείτε να στείλετε μήνυμα πριν την επιλογή."
@@ -1341,5 +1333,29 @@
   "workingDir.switchHint": {
     "message": "Κάντε κλικ για να αλλάξετε τον φάκελο εργασίας",
     "description": "Όταν έχει επιλεγεί φάκελος εργασίας, εμφανίζεται μια αναδυόμενη υπόδειξη για την διαδρομή."
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Αυτή είναι μια τοπική εργασία, μπορεί να εκτελείται χειροκίνητα μόνο στην επιφάνεια εργασίας της συνδεδεμένης συσκευής",
+    "description": "Η τοπική εργασία δεν μπορεί να ενεργοποιηθεί χειροκίνητα σε μη συνδεδεμένες συσκευές"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Αυτή η εργασία είναι συνδεδεμένη σε άλλη συσκευή",
+    "description": "Η τοπική εργασία δεν ανήκει στη τρέχουσα συσκευή"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Η τοπική προγραμματισμένη εργασία δεν είναι συνδεδεμένη, παρακαλώ συνδεθείτε ξανά και δοκιμάστε",
+    "description": "Ο daemon δεν έχει έγκυρα διαπιστευτήρια"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Αυτή η εργασία εκτελείται ήδη",
+    "description": "Η εργασία είναι ήδη σε εκτέλεση"
+  },
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή Claude Opus 4.7"
+  },
+  "model.claudeOpus47Description": {
+    "message": "Το πιο προηγμένο μοντέλο αυτή τη στιγμή",
+    "description": "Περιγραφή του μοντέλου Claude Opus 4.7"
   }
 }

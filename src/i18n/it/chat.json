@@ -1121,11 +1121,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo di output - Video"
+    "description": "Tipo di output - video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo di output - Audio"
+    "description": "Tipo di output - audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1133,7 +1133,7 @@
   },
   "artifacts.kind.email": {
     "message": "Email",
-    "description": "Tipo di output - Email"
+    "description": "Tipo di output - email"
   },
   "artifacts.kind.message": {
     "message": "Messaggio",
@@ -1145,7 +1145,7 @@
   },
   "artifacts.kind.link": {
     "message": "Link",
-    "description": "Tipo di output - Link"
+    "description": "Tipo di output - link"
   },
   "artifacts.kind.other": {
     "message": "Altro",
@@ -1280,7 +1280,7 @@
   },
   "scheduledTasks.execution.cloud": {
     "message": "Cloud",
-    "description": "Modalità di esecuzione nel cloud"
+    "description": "Modalità di esecuzione cloud"
   },
   "scheduledTasks.execution.local": {
     "message": "Questo dispositivo",
@@ -1333,6 +1333,22 @@
   "workingDir.switchHint": {
     "message": "Clicca per cambiare la directory di lavoro",
     "description": "Suggerimento a comparsa per il percorso quando è stata selezionata una directory di lavoro"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Questo è un compito locale, può essere eseguito manualmente solo nella versione desktop del dispositivo associato",
+    "description": "Il compito locale non può essere attivato manualmente su dispositivi non associati"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Questo compito è associato a un altro dispositivo",
+    "description": "Il compito locale non appartiene al dispositivo attuale"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Pianificazione locale non effettuata, si prega di accedere di nuovo e riprovare",
+    "description": "Il daemon non ha le credenziali"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Questo compito è già in esecuzione",
+    "description": "Il compito è attualmente in esecuzione"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

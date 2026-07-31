@@ -922,7 +922,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Читаемое человеком: исходный Cron"
+    "description": "Читаемый человеком: исходный Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "один раз в {time}",
@@ -1333,6 +1333,22 @@
   "workingDir.switchHint": {
     "message": "Нажмите, чтобы переключить рабочую директорию",
     "description": "Подсказка при наведении на путь, когда рабочая директория выбрана"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Это локальная задача, ее можно запустить вручную только на привязанном устройстве в настольной версии",
+    "description": "Локальная задача не может быть запущена вручную на неподключенном устройстве"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Эта задача привязана к другому устройству",
+    "description": "Локальная задача не принадлежит текущему устройству"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Локальный планировщик не вошел в систему, пожалуйста, войдите и попробуйте снова",
+    "description": "демон не имеет учетных данных"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Эта задача уже выполняется",
+    "description": "Задача уже в процессе выполнения"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",

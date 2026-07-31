@@ -1334,6 +1334,22 @@
     "message": "작업 디렉토리 전환 클릭",
     "description": "작업 디렉토리를 선택한 경우, 경로 캡슐의 툴팁"
   },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "이것은 로컬 작업으로, 연결된 장치의 데스크톱 버전에서만 수동으로 실행할 수 있습니다",
+    "description": "로컬 작업은 연결되지 않은 장치에서 수동으로 트리거할 수 없습니다"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "이 작업은 다른 장치에 연결되어 있습니다",
+    "description": "로컬 작업은 현재 장치에 속하지 않습니다"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "로컬 스케줄링에 로그인하지 않았습니다. 다시 로그인한 후 재시도하십시오",
+    "description": "데몬이 자격 증명을 보유하고 있지 않습니다"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "이 작업은 이미 실행 중입니다",
+    "description": "작업이 이미 실행되고 있습니다"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "서비스의 모델 이름, 즉 Claude Opus 4.7"

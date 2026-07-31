@@ -1500,11 +1500,43 @@ export default defineComponent({
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       }
     },
+    /**
+     * Run a task now.
+     *
+     * A local task MUST go through this device's daemon. The cloud's `trigger`
+     * action runs the agent loop through a server-side loopback with no client
+     * attached, so a local task fired that way reaches the model with none of
+     * its authorized local tools — it can only answer that it cannot see the
+     * machine, and the outcome judge (correctly) records a failure.
+     */
     async triggerNow(task: IScheduledTask) {
       if (this.triggeringId) return;
       this.triggeringId = task.id;
       try {
-        await scheduledTasksOperator.triggerTask(this.token!, task.id);
+        if (task.execution === 'local') {
+          const runNow = desktopBridge()?.scheduler?.runNow;
+          if (!runNow) {
+            // Right task, wrong machine (or a web tab): the cloud cannot stand
+            // in for the device here, so say so rather than run it wrongly.
+            ElMessage.warning(this.$t('chat.scheduledTasks.triggerLocalUnavailable') as string);
+            return;
+          }
+          const result = await runNow(task.id);
+          if (!result?.ok) {
+            const key =
+              result?.reason === 'not_on_this_device'
+                ? 'chat.scheduledTasks.triggerWrongDevice'
+                : result?.reason === 'signed_out'
+                  ? 'chat.scheduledTasks.triggerSignedOut'
+                  : result?.reason === 'already_running'
+                    ? 'chat.scheduledTasks.triggerAlreadyRunning'
+                    : 'chat.scheduledTasks.triggerError';
+            ElMessage.warning(this.$t(key) as string);
+            return;
+          }
+        } else {
+          await scheduledTasksOperator.triggerTask(this.token!, task.id);
+        }
         ElMessage.success(this.$t('chat.scheduledTasks.triggerSuccess') as string);
         // If the run-history drawer is open on this task, refresh it so the
         // freshly-queued run shows up right away.

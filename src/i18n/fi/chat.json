@@ -1295,6 +1295,22 @@
     "message": "Klikkaa vaihtaaksesi työskentelyhakemistoa",
     "description": "Kun työskentelyhakemisto on valittu, polku kapselin liukuhälytys"
   },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "Tämä on paikallinen tehtävä, jota voidaan suorittaa manuaalisesti vain sidotulla laitteella",
+    "description": "Paikallista tehtävää ei voi käynnistää manuaalisesti ei-sidotuilla laitteilla"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Tämä tehtävä on sidottu toiseen laitteeseen",
+    "description": "Paikallinen tehtävä ei kuulu nykyiselle laitteelle"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "Paikallinen ajo ei ole kirjautunut sisään, kirjaudu uudelleen ja yritä uudelleen",
+    "description": "demon ei ole voimassa olevia todisteita"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Tämä tehtävä on jo käynnissä",
+    "description": "Tehtävä on jo suorituksessa"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Palvelun mallin nimi, eli Claude Opus 4.7"

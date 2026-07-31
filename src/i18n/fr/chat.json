@@ -1113,11 +1113,11 @@
   },
   "artifacts.kind.article": {
     "message": "Article",
-    "description": "Type de produit - Article"
+    "description": "Type de production - Article"
   },
   "artifacts.kind.image": {
     "message": "Image",
-    "description": "Type de produit - Image"
+    "description": "Type de production - Image"
   },
   "artifacts.kind.video": {
     "message": "Vidéo",
@@ -1125,11 +1125,11 @@
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Type de produit - Audio"
+    "description": "Type de production - Audio"
   },
   "artifacts.kind.document": {
     "message": "Document",
-    "description": "Type de produit - Document"
+    "description": "Type de production - Document"
   },
   "artifacts.kind.email": {
     "message": "E-mail",
@@ -1137,7 +1137,7 @@
   },
   "artifacts.kind.message": {
     "message": "Message",
-    "description": "Type de produit - Message"
+    "description": "Type de production - Message"
   },
   "artifacts.kind.dataset": {
     "message": "Données",
@@ -1333,6 +1333,22 @@
   "workingDir.switchHint": {
     "message": "Cliquez pour changer le répertoire de travail",
     "description": "Astuce flottante pour le chemin lorsque le répertoire de travail est sélectionné"
+  },
+  "scheduledTasks.triggerLocalUnavailable": {
+    "message": "C'est une tâche locale, elle ne peut être exécutée manuellement que sur la version de bureau de l'appareil lié",
+    "description": "La tâche locale ne peut pas être déclenchée manuellement sur un appareil non lié"
+  },
+  "scheduledTasks.triggerWrongDevice": {
+    "message": "Cette tâche est liée à un autre appareil",
+    "description": "La tâche locale n'appartient pas à l'appareil actuel"
+  },
+  "scheduledTasks.triggerSignedOut": {
+    "message": "La planification locale n'est pas connectée, veuillez vous reconnecter et réessayer",
+    "description": "Le daemon ne détient pas de jeton d'authentification"
+  },
+  "scheduledTasks.triggerAlreadyRunning": {
+    "message": "Cette tâche est en cours d'exécution",
+    "description": "La tâche est déjà en cours d'exécution"
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
