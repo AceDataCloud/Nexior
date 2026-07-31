@@ -67,13 +67,22 @@ describe('WorkingDirectoryBar', () => {
     bridge.value = makeBridge();
     const { wrapper } = mountBar('');
     expect(wrapper.text()).toContain('chat.workingDir.choose');
-    expect(wrapper.find('.working-dir-pill').exists()).toBe(false);
+    expect(wrapper.find('.working-dir-link').exists()).toBe(false);
   });
 
-  it('shows the chosen directory as a pill', () => {
+  it('shows the chosen directory as a quiet footer link', () => {
     bridge.value = makeBridge();
     const { wrapper } = mountBar('/Users/me/proj');
-    expect(wrapper.find('.working-dir-pill').exists()).toBe(true);
+    expect(wrapper.find('.working-dir-link').exists()).toBe(true);
+  });
+
+  // Placement: the chosen state is absolutely positioned so a long path can
+  // never push the centered disclaimer off-center; the call-to-action state
+  // stays in flow so the button doesn't overlap it.
+  it('only takes the row out of flow once a directory is chosen', () => {
+    bridge.value = makeBridge();
+    expect(mountBar('').wrapper.find('.working-dir').classes()).toContain('working-dir--unset');
+    expect(mountBar('/Users/me/proj').wrapper.find('.working-dir').classes()).not.toContain('working-dir--unset');
   });
 
   it('shortens a deep path so it cannot dominate the composer row', () => {

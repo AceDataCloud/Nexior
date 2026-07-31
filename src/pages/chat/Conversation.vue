@@ -85,10 +85,7 @@
           />
         </div>
         <div class="starter">
-          <div class="composer-connectors">
-            <working-directory-bar />
-            <connector-strip />
-          </div>
+          <div class="composer-connectors"><connector-strip /></div>
           <composer
             v-model:question="question"
             :answering="answering"
@@ -98,7 +95,10 @@
             @submit="onSubmit"
             @stop="onStop"
           />
-          <disclaimer class="composer-disclaimer" />
+          <div class="composer-footer">
+            <working-directory-bar />
+            <disclaimer class="composer-disclaimer" />
+          </div>
         </div>
       </div>
     </template>
@@ -1776,6 +1776,21 @@ export default defineComponent({
       display: none;
     }
   }
+  // Footer row under the composer: working directory on the left, disclaimer
+  // centered. The disclaimer stays optically centered on the composer because
+  // it is the flex item that grows; the directory chip is absolutely
+  // positioned so its width can't push the text off-center.
+  .composer-footer {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 8px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    gap: 8px;
+  }
   .composer-disclaimer {
     width: 100%;
     max-width: 800px;
@@ -1783,6 +1798,10 @@ export default defineComponent({
     text-align: center;
     font-size: 12px;
     color: var(--el-text-color-secondary);
+  }
+  // Inside the footer the outer margin/width are already applied by the row.
+  .composer-footer .composer-disclaimer {
+    margin: 0;
   }
   &.empty {
     position: relative;
