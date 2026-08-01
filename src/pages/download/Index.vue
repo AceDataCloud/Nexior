@@ -45,13 +45,6 @@
             <font-awesome-icon :icon="faApple" class="btn-icon" />
             {{ $t('common.button.getOnAppStore') }}
           </el-button>
-          <el-button round size="large" tag="a" :href="extensionDownloadUrl" target="_blank">
-            <span class="btn-icons">
-              <font-awesome-icon :icon="faChrome" />
-              <font-awesome-icon :icon="faEdge" />
-            </span>
-            {{ $t('common.button.downloadBrowserExtension') }}
-          </el-button>
           <el-button round size="large" class="btn-ghost" @click="openSupport">
             {{ $t('common.nav.support') }}
           </el-button>
@@ -60,6 +53,36 @@
 
       <!-- Platform download cards -->
       <section class="platforms">
+        <article class="platform platform--extension">
+          <div class="platform__head">
+            <span class="platform__os">
+              <span class="platform__os-icons">
+                <font-awesome-icon :icon="faChrome" class="platform__os-icon" />
+                <font-awesome-icon :icon="faEdge" class="platform__os-icon" />
+              </span>
+              Chrome &amp; Edge
+            </span>
+            <span class="chip chip--live">
+              <span class="chip__dot"></span>{{ $t('common.message.extensionAvailableNow') }}
+            </span>
+          </div>
+          <h2 class="platform__title">{{ $t('common.button.downloadBrowserExtension') }}</h2>
+          <p class="platform__text">{{ $t('common.message.extensionHint') }}</p>
+
+          <div class="platform__foot platform__foot--extension">
+            <el-button type="primary" round size="large" tag="a" :href="extensionDownloadUrl" target="_blank">
+              <span class="btn-icons">
+                <font-awesome-icon :icon="faChrome" />
+                <font-awesome-icon :icon="faEdge" />
+              </span>
+              {{ $t('common.button.downloadBrowserExtension') }}
+            </el-button>
+            <el-button round tag="a" :href="extensionGuideUrl" target="_blank" class="btn-ghost">
+              {{ $t('common.button.viewExtensionGuide') }}
+            </el-button>
+          </div>
+        </article>
+
         <article class="platform platform--android">
           <div class="platform__head">
             <span class="platform__os">
@@ -284,6 +307,7 @@ import { faAndroid, faApple, faChrome, faEdge, faGooglePlay, faWindows } from '@
 import defaultLogo from '@/assets/images/logo.png';
 import {
   BROWSER_EXTENSION_DOWNLOAD_URL,
+  BROWSER_EXTENSION_GUIDE_URL,
   DESKTOP_RELEASES_URL,
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_ANDROID_PLAY_STORE_URL,
@@ -339,6 +363,9 @@ export default defineComponent({
     },
     extensionDownloadUrl() {
       return BROWSER_EXTENSION_DOWNLOAD_URL;
+    },
+    extensionGuideUrl() {
+      return BROWSER_EXTENSION_GUIDE_URL;
     },
     iosDownloadUrl() {
       return MOBILE_IOS_DOWNLOAD_URL;
@@ -712,6 +739,24 @@ export default defineComponent({
   gap: 12px;
 }
 
+// The extension card spans both columns, so its buttons sit side by side and
+// hug the left edge instead of being pushed apart across the full width.
+.platform__foot--extension {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.platform--extension {
+  grid-column: 1 / -1;
+}
+
+.platform__os-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -831,8 +876,8 @@ html.dark .qr__img {
   .hero__actions :deep(.el-button) {
     width: 100%;
     margin-left: 0;
-    // el-button is nowrap by default, which clips the longest translations
-    // (Greek "Κατεβάστε την επέκταση…") on a phone-width row.
+    // el-button is nowrap by default, which clips long translations on a
+    // phone-width row.
     height: auto;
     min-height: 40px;
     padding-block: 8px;
