@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 16:28:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 17:24:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.5
+
+Sat, 01 Aug 2026 17:24:35 GMT
+
+### Patches
+
+- 优化生成任务预览间距并恢复口播文本展示 (dev@acedata.cloud)
 
 ## 3.351.4
 
