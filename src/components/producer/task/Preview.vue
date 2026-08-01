@@ -145,6 +145,10 @@
                 <code-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onReport(audio)">
+                <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ $t('common.button.report') }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -156,6 +160,12 @@
       :path="apiCodePath"
       :body="apiCodeBody"
       :token="$store.state.producer?.credential?.token || ''"
+    />
+    <report-dialog
+      v-model:visible="reportVisible"
+      service="producer"
+      :target-id="reportTargetId"
+      :snapshot="reportSnapshot"
     />
   </div>
 </template>
@@ -191,6 +201,7 @@ import { IProducerVideoRequest, IProducerAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import ReportDialog from '@/components/common/ReportDialog.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
 
@@ -215,6 +226,7 @@ export default defineComponent({
     ElDropdownItem,
     Loading,
     ApiCodeDialog,
+    ReportDialog,
     CopyToClipboard
   },
   props: {
@@ -228,6 +240,9 @@ export default defineComponent({
       isFetchingVideoUrl: false,
       isFetchingWav: false,
       apiCodeVisible: false,
+      reportVisible: false,
+      reportTargetId: '',
+      reportSnapshot: undefined as Record<string, unknown> | undefined,
       apiCodePath: '/producer/audios',
       apiCodeBody: {} as Record<string, unknown>
     };
@@ -274,6 +289,11 @@ export default defineComponent({
     }
   },
   methods: {
+    onReport(audio: any) {
+      this.reportTargetId = audio?.id || '';
+      this.reportSnapshot = { prompt: audio?.prompt, title: audio?.title };
+      this.reportVisible = true;
+    },
     useFormatDuring,
     onViewCode() {
       const request = (this.modelValue?.request || {}) as Record<string, unknown>;

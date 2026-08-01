@@ -117,6 +117,11 @@
             {{ $t('maestro.button.remix') }}
           </el-button>
           <api-code-button path="/maestro/videos" :body="modelValue?.request" />
+          <report-button
+            service="maestro"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p
@@ -206,6 +211,7 @@ import { MAESTRO_ACTION_REMIX } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
@@ -243,6 +249,7 @@ export default defineComponent({
     VideoPlayer,
     ElButton,
     ApiCodeButton,
+    ReportButton,
     ImagePreview,
     AudioPreview,
     VideoPreview,

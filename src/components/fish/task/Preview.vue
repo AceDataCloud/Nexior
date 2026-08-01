@@ -35,6 +35,7 @@
             {{ $t('fish.button.download') }}
           </el-button>
           <api-code-button path="/fish/tts" :body="modelValue?.request" />
+          <report-button service="fish" :target-id="modelValue?.id" :snapshot="{ text: modelValue?.request?.text }" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -115,6 +116,7 @@ import { ElAlert, ElButton, ElMessageBox, ElMessage, ElTooltip } from 'element-p
 import { IFishTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 import { humanizeFishError } from '@/utils/fish';
 
 export default defineComponent({
@@ -132,7 +134,8 @@ export default defineComponent({
     CopyToClipboard,
     ElAlert,
     ElButton,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {

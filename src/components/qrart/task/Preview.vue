@@ -46,6 +46,11 @@
         />
         <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
           <api-code-button path="/qrart/generate" :body="modelValue?.request" />
+          <report-button
+            service="qrart"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
@@ -161,6 +166,7 @@ import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -179,7 +185,8 @@ export default defineComponent({
     ElAlert,
     ElTooltip,
     ImageWrapper,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {
