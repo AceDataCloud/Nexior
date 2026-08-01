@@ -699,6 +699,9 @@ export default defineComponent({
     :deep(.report-entry) {
       min-height: 0;
       margin-bottom: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
     }
     :deep(.btn-report) {
       padding: 0;
@@ -707,12 +710,24 @@ export default defineComponent({
     }
   }
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     .operations {
       color: var(--el-text-color-regular);
       .btn-edit {
         visibility: visible;
       }
+      :deep(.report-entry) {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  @media (hover: none) {
+    .operations :deep(.report-entry) {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }
