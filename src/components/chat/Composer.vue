@@ -435,14 +435,10 @@ export default defineComponent({
       });
     },
     onOpenSkills() {
-      // Routes to Studio's own skills page when `connections-in-studio` is
-      // on, else opens auth.acedata.cloud in a new tab (today's behaviour).
       openSkillsManager(this.$router);
     },
     onOpenConnections() {
-      // Routes to Studio's own connector page when `connections-in-studio`
-      // is on, else opens auth.acedata.cloud in a new tab (the historical
-      // behaviour). Either way auth stays the OAuth broker + vault.
+      // auth.acedata.cloud stays the OAuth broker + vault; only the UI is here.
       openConnectionsManager(undefined, this.$router);
     }
   }
