@@ -19,30 +19,6 @@
     "message": "Fehlerursache",
     "description": "Grund für den Fehler"
   },
-  "name.face": {
-    "message": "Gesichtsquelle",
-    "description": "Feld für die Gesichtsquelle"
-  },
-  "name.faceVideo": {
-    "message": "Video",
-    "description": "Option für das Gesichtsvideo"
-  },
-  "name.facePhoto": {
-    "message": "Foto",
-    "description": "Option für das Gesichtsfoto"
-  },
-  "name.voice": {
-    "message": "Stimme",
-    "description": "Feld für die Sprachquelle"
-  },
-  "name.voiceAudio": {
-    "message": "Audio",
-    "description": "Audio-gesteuerte Sprachoption"
-  },
-  "name.voiceText": {
-    "message": "Text",
-    "description": "Text-gesteuerte Sprachoption"
-  },
   "name.audioDriven": {
     "message": "Audiogesteuert",
     "description": "Bezeichnung für audiogesteuert"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "Textgesteuert",
     "description": "Bezeichnung für textgesteuert"
-  },
-  "name.engine": {
-    "message": "Engine",
-    "description": "Feld für den Lip-Sync-Engine"
-  },
-  "name.resolution": {
-    "message": "Auflösung",
-    "description": "Feld für die Ausgabeauflösung"
-  },
-  "name.voiceReady": {
-    "message": "Stimme bereit",
-    "description": "Bezeichnung für geklonte, einsatzbereite Stimme"
-  },
-  "placeholder.text": {
-    "message": "Eingeben, was der Avatar sagen soll…",
-    "description": "Platzhalter für gesprochenen Text"
-  },
-  "description.face": {
-    "message": "Ein klares, frontal ausgerichtetes Gesichtsvideo (bevorzugt) oder ein Einzelfoto hochladen, um den sprechenden Kopf zu steuern.",
-    "description": "Hilfetext für das Gesichtsfeld"
-  },
-  "description.voiceClone": {
-    "message": "Eine saubere 10–20-sekündige Stimmprobe hochladen, um eine Stimme zu klonen, und sie dann zur Sprachausgabe verwenden.",
-    "description": "Hilfetext zum Stimmenklonen"
   },
   "status.pending": {
     "message": "Ausstehend",
@@ -91,37 +43,13 @@
     "message": "Fehlgeschlagen",
     "description": "Fehlgeschlagen"
   },
-  "button.generate": {
-    "message": "Video generieren",
-    "description": "Schaltfläche zum Generieren"
-  },
   "button.download": {
     "message": "Video herunterladen",
     "description": "Schaltfläche zum Herunterladen des Videos"
   },
-  "button.uploadVideo": {
-    "message": "Gesichtsvideo hochladen",
-    "description": "Schaltfläche zum Hochladen eines Gesichtsvideos"
-  },
-  "button.uploadPhoto": {
-    "message": "Gesichtsfoto hochladen",
-    "description": "Schaltfläche zum Hochladen eines Gesichtsfotos"
-  },
-  "button.uploadAudio": {
-    "message": "Audio hochladen",
-    "description": "Schaltfläche zum Hochladen des Steuer-Audios"
-  },
   "button.uploadSample": {
     "message": "Muster hochladen",
     "description": "Schaltfläche zum Hochladen einer Stimmprobe"
-  },
-  "button.clone": {
-    "message": "Stimme klonen",
-    "description": "Schaltfläche zum Klonen der Stimme"
-  },
-  "button.cloning": {
-    "message": "Klonen läuft…",
-    "description": "Schaltfläche während des Klonens"
   },
   "message.startingTask": {
     "message": "Videoaufgabe wird übermittelt…",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "Stimme klonen fehlgeschlagen. Bitte verwenden Sie eine sauberere Aufnahme.",
     "description": "Hinweis bei fehlgeschlagenem Stimmenklonen"
+  },
+  "name.step1": {
+    "message": "Wer spricht",
+    "description": "Schritt 1 Titel: das Gesicht"
+  },
+  "name.step2": {
+    "message": "Was gesagt wird",
+    "description": "Schritt 2 Titel: die Stimme"
+  },
+  "name.required": {
+    "message": "Pflichtfeld",
+    "description": "Abzeichen für Pflichtfeld"
+  },
+  "name.faceModeVideo": {
+    "message": "Videoausschnitt",
+    "description": "Gesichtmodus: Video"
+  },
+  "name.faceModePhoto": {
+    "message": "Ein Foto",
+    "description": "Gesichtmodus: Foto"
+  },
+  "name.voiceModeText": {
+    "message": "Dieser Text wird vorgelesen",
+    "description": "Stimmenmodus: Text-zu-Sprache"
+  },
+  "name.voiceModeAudio": {
+    "message": "Mit meiner Aufnahme",
+    "description": "Stimmenmodus: Audio hochladen"
+  },
+  "name.speech": {
+    "message": "Gesprochener Text",
+    "description": "Titel des Textfeldes für gesprochene Sprache"
+  },
+  "name.timbre": {
+    "message": "Klangfarbe",
+    "description": "Feld für geklonte Stimme"
+  },
+  "name.advanced": {
+    "message": "Erweiterte Optionen",
+    "description": "Erweiterter Abschnitt"
+  },
+  "name.speed": {
+    "message": "Sprechgeschwindigkeit",
+    "description": "Feld für Sprechgeschwindigkeit"
+  },
+  "name.cloneVoice": {
+    "message": "Stimme klonen",
+    "description": "Titel des Dialogs zum Klonen von Stimmen"
+  },
+  "name.voiceName": {
+    "message": "Stimmenname",
+    "description": "Feld für den Spitznamen der Stimme"
+  },
+  "name.voiceLang": {
+    "message": "Sprache",
+    "description": "Feld für Sprachoption der Stimme"
+  },
+  "name.myVoice": {
+    "message": "Meine Stimme",
+    "description": "Standardname der geklonten Stimme"
+  },
+  "name.lang_zh": {
+    "message": "Chinesisch",
+    "description": "Chinesische Sprachoption"
+  },
+  "name.lang_en": {
+    "message": "Englisch",
+    "description": "Englische Sprachoption"
+  },
+  "description.step1": {
+    "message": "Lade ein klares, frontal aufgenommenes Video von mindestens 5 Sekunden Länge hoch; alternativ kann auch ein Gesichtsfoto verwendet werden.",
+    "description": "Hilfe für das Gesichtsfeld"
+  },
+  "description.step2": {
+    "message": "Gib den Text ein, der vorgelesen werden soll, und wähle eine Stimme aus, oder lade direkt eine vorhandene Aufnahme hoch.",
+    "description": "Hilfe für das Stimmenfeld"
+  },
+  "description.speed": {
+    "message": "1.0 ist die Originalgeschwindigkeit, kann zwischen 0.5 und 2.0 angepasst werden.",
+    "description": "Hilfe zur Sprechgeschwindigkeit"
+  },
+  "placeholder.speech": {
+    "message": "Geben Sie den Text ein, den der digitale Mensch vorlesen soll...",
+    "description": "Platzhalter für das Skript"
+  },
+  "placeholder.pickTimbre": {
+    "message": "Wählen Sie eine Klangfarbe",
+    "description": "Platzhalter für die Stimmenauswahl"
+  },
+  "placeholder.voiceName": {
+    "message": "Geben Sie dieser Klangfarbe einen Namen",
+    "description": "Platzhalter für den Namen der Stimme"
+  },
+  "button.uploadFaceVideo": {
+    "message": "Gesichtsvideo hochladen",
+    "description": "Button zum Hochladen eines Gesichtsvideos"
+  },
+  "button.uploadFacePhoto": {
+    "message": "Gesichtsfoto hochladen",
+    "description": "Button zum Hochladen eines Gesichtsfotos"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "Aufnahme hochladen",
+    "description": "Button zum Hochladen einer Sprachaufnahme"
+  },
+  "button.cloneNewVoice": {
+    "message": "Neue Stimme klonen",
+    "description": "Öffne den Dialog zum Klonen von Stimmen"
+  },
+  "button.startClone": {
+    "message": "Klonen starten",
+    "description": "Voice-Klonen starten"
+  },
+  "button.replace": {
+    "message": "Ersetzen",
+    "description": "Eine hochgeladene Datei ersetzen"
+  },
+  "button.generateVideo": {
+    "message": "Video generieren",
+    "description": "Generieren-Button"
+  },
+  "message.faceVideoHint": {
+    "message": "Unterstützt MP4 / MOV / WEBM",
+    "description": "Hinweis zu akzeptierten Gesichtsvideoformaten"
+  },
+  "message.facePhotoHint": {
+    "message": "Unterstützt PNG / JPG / WEBP",
+    "description": "Hinweis zu akzeptierten Gesichtsfotoformaten"
+  },
+  "message.audioHint": {
+    "message": "Unterstützt WAV / MP3 / M4A",
+    "description": "Hinweis zur akzeptierten Audioformaten"
+  },
+  "message.missingFace": {
+    "message": "Fehlt: Lade ein Gesichtsvideo oder -foto hoch",
+    "description": "Fehlendes Gesicht"
+  },
+  "message.missingText": {
+    "message": "Fehlt: Gib den zu lesenden Text ein",
+    "description": "Fehlendes Skript"
+  },
+  "message.missingTimbre": {
+    "message": "Fehlt: Wähle oder klone eine Stimme",
+    "description": "Fehlende Stimme"
+  },
+  "message.missingAudio": {
+    "message": "Fehlt: Lade eine Sprachaufnahme hoch",
+    "description": "Fehlende Audioaufnahme"
+  },
+  "message.eta": {
+    "message": "Die Generierung dauert normalerweise 30–45 Minuten, du kannst in der Zwischenzeit etwas anderes machen",
+    "description": "Hinweis zur geschätzten Zeit bis zur Fertigstellung"
+  },
+  "message.voiceCloneHint": {
+    "message": "Lade 10–20 Sekunden saubere Sprache hoch, je ruhiger der Hintergrund, desto besser das Ergebnis",
+    "description": "Hinweis zur Sprachprobe"
+  },
+  "message.voiceCloneRunning": {
+    "message": "Wird geklont, dauert normalerweise 1–2 Minuten…",
+    "description": "Voice-Klonen im Gange"
+  },
+  "message.voiceStoredLocally": {
+    "message": "Die Stimme wird im aktuellen Browser gespeichert, beim Wechsel des Geräts oder Löschen der Daten muss sie erneut geklont werden",
+    "description": "Stimmenbuch ist browserlokal"
+  },
+  "message.noVoiceYet": {
+    "message": "Es gibt noch keine Stimme, klone zuerst eine",
+    "description": "Leere Stimmenliste"
+  },
+  "name.etaLabel": {
+    "message": "Geschätzte verbleibende Zeit",
+    "description": "Geschätzte Zeit, die noch verbleibt"
+  },
+  "name.duration": {
+    "message": "Videolänge",
+    "description": "Gerenderte Videolänge"
+  },
+  "name.outputSize": {
+    "message": "Bildgröße",
+    "description": "Gerenderte Bildgröße"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Trace-ID für den Support"
+  },
+  "message.etaRemaining": {
+    "message": "Ungefähr {minutes} Minuten",
+    "description": "Verbleibende Minuten"
+  },
+  "message.etaAlmostDone": {
+    "message": "Fast fertig",
+    "description": "Beinahe abgeschlossen"
+  },
+  "name.faceVideo": {
+    "message": "Video",
+    "description": "Bezeichnung für das Gesichtsvideo auf einer Aufgabenkarte"
+  },
+  "name.facePhoto": {
+    "message": "Foto",
+    "description": "Option für das Gesichtsfoto"
+  },
+  "name.face": {
+    "message": "Gesichtsquelle",
+    "description": "Feld für die Gesichtsquelle"
+  },
+  "name.voice": {
+    "message": "Stimme",
+    "description": "Feld für die Sprachquelle"
+  },
+  "name.voiceAudio": {
+    "message": "Audio",
+    "description": "Audio-gesteuerte Sprachoption"
+  },
+  "name.voiceText": {
+    "message": "Text",
+    "description": "Text-gesteuerte Sprachoption"
+  },
+  "name.engine": {
+    "message": "Engine",
+    "description": "Feld für den Lip-Sync-Engine"
+  },
+  "name.resolution": {
+    "message": "Auflösung",
+    "description": "Feld für die Ausgabeauflösung"
+  },
+  "name.voiceReady": {
+    "message": "Stimme bereit",
+    "description": "Bezeichnung für geklonte, einsatzbereite Stimme"
+  },
+  "placeholder.text": {
+    "message": "Eingeben, was der Avatar sagen soll…",
+    "description": "Platzhalter für gesprochenen Text"
+  },
+  "description.face": {
+    "message": "Ein klares, frontal ausgerichtetes Gesichtsvideo (bevorzugt) oder ein Einzelfoto hochladen, um den sprechenden Kopf zu steuern.",
+    "description": "Hilfetext für das Gesichtsfeld"
+  },
+  "description.voiceClone": {
+    "message": "Eine saubere 10–20-sekündige Stimmprobe hochladen, um eine Stimme zu klonen, und sie dann zur Sprachausgabe verwenden.",
+    "description": "Hilfetext zum Stimmenklonen"
+  },
+  "button.generate": {
+    "message": "Video generieren",
+    "description": "Schaltfläche zum Generieren"
+  },
+  "button.uploadVideo": {
+    "message": "Gesichtsvideo hochladen",
+    "description": "Schaltfläche zum Hochladen eines Gesichtsvideos"
+  },
+  "button.uploadPhoto": {
+    "message": "Gesichtsfoto hochladen",
+    "description": "Schaltfläche zum Hochladen eines Gesichtsfotos"
+  },
+  "button.uploadAudio": {
+    "message": "Audio hochladen",
+    "description": "Schaltfläche zum Hochladen des Steuer-Audios"
+  },
+  "button.clone": {
+    "message": "Stimme klonen",
+    "description": "Schaltfläche zum Klonen der Stimme"
+  },
+  "button.cloning": {
+    "message": "Klonen läuft…",
+    "description": "Schaltfläche während des Klonens"
   }
 }

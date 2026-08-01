@@ -19,30 +19,6 @@
     "message": "سبب الفشل",
     "description": "سبب الفشل"
   },
-  "name.face": {
-    "message": "مصدر الوجه",
-    "description": "حقل مصدر الوجه"
-  },
-  "name.faceVideo": {
-    "message": "فيديو",
-    "description": "خيار فيديو الوجه"
-  },
-  "name.facePhoto": {
-    "message": "صورة",
-    "description": "خيار صورة الوجه"
-  },
-  "name.voice": {
-    "message": "الصوت",
-    "description": "حقل مصدر الصوت"
-  },
-  "name.voiceAudio": {
-    "message": "الصوت",
-    "description": "خيار صوت مدفوع بالصوت"
-  },
-  "name.voiceText": {
-    "message": "النص",
-    "description": "خيار صوت مدفوع بالنص"
-  },
   "name.audioDriven": {
     "message": "مدفوع بالصوت",
     "description": "تسمية مدفوعة بالصوت"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "مدفوع بالنص",
     "description": "تسمية مدفوعة بالنص"
-  },
-  "name.engine": {
-    "message": "المحرك",
-    "description": "حقل محرك مزامنة الشفاه"
-  },
-  "name.resolution": {
-    "message": "الدقة",
-    "description": "حقل دقة الإخراج"
-  },
-  "name.voiceReady": {
-    "message": "الصوت جاهز",
-    "description": "تسمية الصوت المستنسخ الجاهز"
-  },
-  "placeholder.text": {
-    "message": "أدخل المحتوى الذي يجب أن يقوله الرقم الرقمي...",
-    "description": "نص العنصر النائب للنص المنطوق"
-  },
-  "description.face": {
-    "message": "قم برفع فيديو واضح للوجه (موصى به) أو صورة واحدة لتشغيل الشخصية الرقمية.",
-    "description": "مساعدة حقل الوجه"
-  },
-  "description.voiceClone": {
-    "message": "قم برفع عينة صوتية نظيفة تتراوح مدتها بين 10-20 ثانية لاستنساخ الصوت، ثم استخدمها لقراءة نصك.",
-    "description": "مساعدة استنساخ الصوت"
   },
   "status.pending": {
     "message": "قيد الانتظار",
@@ -91,37 +43,13 @@
     "message": "فشل",
     "description": "فشل"
   },
-  "button.generate": {
-    "message": "إنشاء فيديو",
-    "description": "زر الإنشاء"
-  },
   "button.download": {
     "message": "تحميل الفيديو",
     "description": "زر تحميل الفيديو"
   },
-  "button.uploadVideo": {
-    "message": "رفع فيديو الوجه",
-    "description": "زر رفع فيديو الوجه"
-  },
-  "button.uploadPhoto": {
-    "message": "رفع صورة الوجه",
-    "description": "زر رفع صورة الوجه"
-  },
-  "button.uploadAudio": {
-    "message": "رفع الصوت",
-    "description": "زر رفع الصوت"
-  },
   "button.uploadSample": {
     "message": "رفع عينة الصوت",
     "description": "زر رفع عينة الصوت"
-  },
-  "button.clone": {
-    "message": "استنساخ الصوت",
-    "description": "زر استنساخ الصوت"
-  },
-  "button.cloning": {
-    "message": "جارٍ الاستنساخ...",
-    "description": "زر الاستنساخ قيد التقدم"
   },
   "message.startingTask": {
     "message": "جارٍ تقديم مهمة الفيديو...",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "فشل استنساخ الصوت، يرجى استخدام عينة أنظف.",
     "description": "فشل استنساخ الصوت"
+  },
+  "name.step1": {
+    "message": "من سيتحدث",
+    "description": "عنوان الخطوة 1: الوجه"
+  },
+  "name.step2": {
+    "message": "ما الذي ستقوله",
+    "description": "عنوان الخطوة 2: الصوت"
+  },
+  "name.required": {
+    "message": "مطلوب",
+    "description": "شارة الحقل المطلوب"
+  },
+  "name.faceModeVideo": {
+    "message": "مقطع فيديو",
+    "description": "وضع الوجه: فيديو"
+  },
+  "name.faceModePhoto": {
+    "message": "صورة واحدة",
+    "description": "وضع الوجه: صورة"
+  },
+  "name.voiceModeText": {
+    "message": "اقرأ هذا النص",
+    "description": "وضع الصوت: تحويل النص إلى كلام"
+  },
+  "name.voiceModeAudio": {
+    "message": "باستخدام تسجيلاتي",
+    "description": "وضع الصوت: رفع الصوت"
+  },
+  "name.speech": {
+    "message": "نص الكلام",
+    "description": "عنوان حقل النص المنطوق"
+  },
+  "name.timbre": {
+    "message": "نغمة الصوت",
+    "description": "حقل الصوت المستنسخ"
+  },
+  "name.advanced": {
+    "message": "خيارات متقدمة",
+    "description": "قسم الخيارات المتقدمة"
+  },
+  "name.speed": {
+    "message": "سرعة الكلام",
+    "description": "حقل سرعة الكلام"
+  },
+  "name.cloneVoice": {
+    "message": "استنساخ الصوت",
+    "description": "عنوان حوار استنساخ الصوت"
+  },
+  "name.voiceName": {
+    "message": "اسم الصوت",
+    "description": "حقل لقب الصوت"
+  },
+  "name.voiceLang": {
+    "message": "اللغة",
+    "description": "حقل لغة الصوت"
+  },
+  "name.myVoice": {
+    "message": "صوتي",
+    "description": "اسم الصوت المستنسخ الافتراضي"
+  },
+  "name.lang_zh": {
+    "message": "الصينية",
+    "description": "خيار اللغة الصينية"
+  },
+  "name.lang_en": {
+    "message": "الإنجليزية",
+    "description": "خيار اللغة الإنجليزية"
+  },
+  "description.step1": {
+    "message": "رفع فيديو واضح من الأمام، مدة الحديث أكثر من 5 ثوانٍ هو الأفضل؛ يمكن استخدام صورة وجه واحدة فقط.",
+    "description": "مساعدة حقل الوجه"
+  },
+  "description.step2": {
+    "message": "أدخل النص الذي تريد قراءته واختر صوتًا، أو ارفع تسجيلًا جاهزًا.",
+    "description": "مساعدة حقل الصوت"
+  },
+  "description.speed": {
+    "message": "1.0 هي السرعة الأصلية، يمكن تعديلها بين 0.5–2.0.",
+    "description": "مساعدة سرعة الكلام"
+  },
+  "placeholder.speech": {
+    "message": "أدخل المحتوى الذي يجب أن يقرأه الرقم...",
+    "description": "نموذج النص"
+  },
+  "placeholder.pickTimbre": {
+    "message": "اختر نغمة صوت",
+    "description": "نموذج اختيار الصوت"
+  },
+  "placeholder.voiceName": {
+    "message": "أعطِ هذه النغمة اسمًا",
+    "description": "نموذج اسم الصوت"
+  },
+  "button.uploadFaceVideo": {
+    "message": "رفع فيديو الوجه",
+    "description": "زر رفع فيديو الوجه"
+  },
+  "button.uploadFacePhoto": {
+    "message": "رفع صورة الوجه",
+    "description": "زر رفع صورة الوجه"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "رفع تسجيل صوتي",
+    "description": "زر رفع تسجيل صوتي"
+  },
+  "button.cloneNewVoice": {
+    "message": "استنساخ صوت جديد",
+    "description": "فتح حوار استنساخ الصوت"
+  },
+  "button.startClone": {
+    "message": "بدء الاستنساخ",
+    "description": "بدء استنساخ الصوت"
+  },
+  "button.replace": {
+    "message": "استبدال",
+    "description": "استبدال ملف تم رفعه"
+  },
+  "button.generateVideo": {
+    "message": "إنشاء فيديو",
+    "description": "زر الإنشاء"
+  },
+  "message.faceVideoHint": {
+    "message": "يدعم MP4 / MOV / WEBM",
+    "description": "تلميح قبول فيديو الوجه"
+  },
+  "message.facePhotoHint": {
+    "message": "يدعم PNG / JPG / WEBP",
+    "description": "تلميح قبول صورة الوجه"
+  },
+  "message.audioHint": {
+    "message": "يدعم WAV / MP3 / M4A",
+    "description": "تلميح قبول الصوت"
+  },
+  "message.missingFace": {
+    "message": "ينقص: رفع فيديو أو صورة للوجه",
+    "description": "الوجه المفقود"
+  },
+  "message.missingText": {
+    "message": "ينقص: إدخال النص الذي تريد قراءته",
+    "description": "النص المفقود"
+  },
+  "message.missingTimbre": {
+    "message": "ينقص: اختيار أو استنساخ صوت",
+    "description": "الصوت المفقود"
+  },
+  "message.missingAudio": {
+    "message": "ينقص: رفع تسجيل صوتي",
+    "description": "الصوت المفقود"
+  },
+  "message.eta": {
+    "message": "الإنشاء عادةً يستغرق 30–45 دقيقة، يمكنك الانشغال بشيء آخر",
+    "description": "تلميح ETA للإنشاء"
+  },
+  "message.voiceCloneHint": {
+    "message": "رفع صوت بشري نظيف لمدة 10–20 ثانية، كلما كانت الخلفية أكثر هدوءًا كانت النتيجة أفضل",
+    "description": "تلميح عينة الصوت"
+  },
+  "message.voiceCloneRunning": {
+    "message": "يتم الاستنساخ، عادةً يستغرق 1–2 دقيقة...",
+    "description": "الاستنساخ الصوتي قيد التقدم"
+  },
+  "message.voiceStoredLocally": {
+    "message": "تم حفظ الصوت في المتصفح الحالي، يجب استنساخه مرة أخرى عند تغيير الجهاز أو مسح البيانات",
+    "description": "كتاب الصوت محلي في المتصفح"
+  },
+  "message.noVoiceYet": {
+    "message": "لا يوجد صوت بعد، استنسخ واحدًا أولاً",
+    "description": "قائمة الصوت فارغة"
+  },
+  "name.etaLabel": {
+    "message": "الوقت المتبقي المتوقع",
+    "description": "الوقت المقدر المتبقي"
+  },
+  "name.duration": {
+    "message": "مدة الفيديو",
+    "description": "مدة الفيديو المعروض"
+  },
+  "name.outputSize": {
+    "message": "حجم الإطار",
+    "description": "حجم الإطار المعروض"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للدعم"
+  },
+  "message.etaRemaining": {
+    "message": "حوالي {minutes} دقيقة",
+    "description": "الدقائق المتبقية"
+  },
+  "message.etaAlmostDone": {
+    "message": "على وشك الانتهاء",
+    "description": "قريب من الانتهاء"
+  },
+  "name.faceVideo": {
+    "message": "فيديو",
+    "description": "خيار فيديو الوجه"
+  },
+  "name.facePhoto": {
+    "message": "صورة",
+    "description": "خيار صورة الوجه"
+  },
+  "name.face": {
+    "message": "مصدر الوجه",
+    "description": "حقل مصدر الوجه"
+  },
+  "name.voice": {
+    "message": "الصوت",
+    "description": "حقل مصدر الصوت"
+  },
+  "name.voiceAudio": {
+    "message": "الصوت",
+    "description": "خيار صوت مدفوع بالصوت"
+  },
+  "name.voiceText": {
+    "message": "النص",
+    "description": "خيار صوت مدفوع بالنص"
+  },
+  "name.engine": {
+    "message": "المحرك",
+    "description": "حقل محرك مزامنة الشفاه"
+  },
+  "name.resolution": {
+    "message": "الدقة",
+    "description": "حقل دقة الإخراج"
+  },
+  "name.voiceReady": {
+    "message": "الصوت جاهز",
+    "description": "تسمية الصوت المستنسخ الجاهز"
+  },
+  "placeholder.text": {
+    "message": "أدخل المحتوى الذي يجب أن يقوله الرقم الرقمي...",
+    "description": "نص العنصر النائب للنص المنطوق"
+  },
+  "description.face": {
+    "message": "قم برفع فيديو واضح للوجه (موصى به) أو صورة واحدة لتشغيل الشخصية الرقمية.",
+    "description": "مساعدة حقل الوجه"
+  },
+  "description.voiceClone": {
+    "message": "قم برفع عينة صوتية نظيفة تتراوح مدتها بين 10-20 ثانية لاستنساخ الصوت، ثم استخدمها لقراءة نصك.",
+    "description": "مساعدة استنساخ الصوت"
+  },
+  "button.generate": {
+    "message": "إنشاء فيديو",
+    "description": "زر الإنشاء"
+  },
+  "button.uploadVideo": {
+    "message": "رفع فيديو الوجه",
+    "description": "زر رفع فيديو الوجه"
+  },
+  "button.uploadPhoto": {
+    "message": "رفع صورة الوجه",
+    "description": "زر رفع صورة الوجه"
+  },
+  "button.uploadAudio": {
+    "message": "رفع الصوت",
+    "description": "زر رفع الصوت"
+  },
+  "button.clone": {
+    "message": "استنساخ الصوت",
+    "description": "زر استنساخ الصوت"
+  },
+  "button.cloning": {
+    "message": "جارٍ الاستنساخ...",
+    "description": "زر الاستنساخ قيد التقدم"
   }
 }

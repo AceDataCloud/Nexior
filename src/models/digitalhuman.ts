@@ -11,7 +11,9 @@ export interface IDigitalHumanConfig {
   text?: string;
   voice_id?: string;
   // options
+  /** @deprecated no longer sent; kept so historical task requests still type-check */
   engine?: IDigitalHumanEngine;
+  /** @deprecated no longer sent; the API always renders at 720p */
   resolution?: IDigitalHumanResolution;
   speed?: number;
   callback_url?: string;
@@ -24,7 +26,9 @@ export type IDigitalHumanGenerateRequest = {
   audio_url?: string;
   text?: string;
   voice_id?: string;
+  /** @deprecated no longer sent; kept so historical task requests still type-check */
   engine?: IDigitalHumanEngine;
+  /** @deprecated no longer sent; the API always renders at 720p */
   resolution?: IDigitalHumanResolution;
   speed?: number;
   callback_url?: string;

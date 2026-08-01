@@ -19,30 +19,6 @@
     "message": "Αιτία αποτυχίας",
     "description": "Αιτία αποτυχίας"
   },
-  "name.face": {
-    "message": "Πηγή προσώπου",
-    "description": "Πεδίο πηγής προσώπου"
-  },
-  "name.faceVideo": {
-    "message": "Βίντεο",
-    "description": "Επιλογή βίντεο προσώπου"
-  },
-  "name.facePhoto": {
-    "message": "Φωτογραφία",
-    "description": "Επιλογή φωτογραφίας προσώπου"
-  },
-  "name.voice": {
-    "message": "Φωνή",
-    "description": "Πεδίο πηγής φωνής"
-  },
-  "name.voiceAudio": {
-    "message": "Ήχος",
-    "description": "Επιλογή φωνής με βάση ήχο"
-  },
-  "name.voiceText": {
-    "message": "Κείμενο",
-    "description": "Επιλογή φωνής με βάση κείμενο"
-  },
   "name.audioDriven": {
     "message": "Οδηγούμενος από ήχο",
     "description": "Ετικέτα οδηγούμενου από ήχο"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "Κείμενο-οδηγούμενο",
     "description": "Ετικέτα κειμένου-οδηγούμενου"
-  },
-  "name.engine": {
-    "message": "Μηχανή",
-    "description": "Πεδίο μηχανής συγχρονισμού χειλιών"
-  },
-  "name.resolution": {
-    "message": "Ανάλυση",
-    "description": "Πεδίο ανάλυσης εξόδου"
-  },
-  "name.voiceReady": {
-    "message": "Η φωνή είναι έτοιμη",
-    "description": "Ετικέτα έτοιμης κλωνοποιημένης φωνής"
-  },
-  "placeholder.text": {
-    "message": "Εισάγετε το περιεχόμενο που πρέπει να πει ο ψηφιακός άνθρωπος...",
-    "description": "Placeholder κειμένου ομιλίας"
-  },
-  "description.face": {
-    "message": "Ανέβασμα καθαρού βίντεο προσώπου (συνιστάται) ή μιας φωτογραφίας για να οδηγήσετε τον ψηφιακό άνθρωπο.",
-    "description": "Βοήθεια πεδίου προσώπου"
-  },
-  "description.voiceClone": {
-    "message": "Ανέβασμα ενός καθαρού δείγματος ανθρώπινης φωνής 10–20 δευτερολέπτων για κλωνοποίηση φωνής, και μετά χρησιμοποιήστε το για να διαβάσετε το κείμενό σας.",
-    "description": "Βοήθεια κλωνοποίησης φωνής"
   },
   "status.pending": {
     "message": "Σε αναμονή",
@@ -91,37 +43,13 @@
     "message": "Αποτυχία",
     "description": "Αποτυχία"
   },
-  "button.generate": {
-    "message": "Δημιουργία βίντεο",
-    "description": "Κουμπί δημιουργίας"
-  },
   "button.download": {
     "message": "Λήψη βίντεο",
     "description": "Κουμπί λήψης βίντεο"
   },
-  "button.uploadVideo": {
-    "message": "Ανέβασμα βίντεο προσώπου",
-    "description": "Κουμπί ανέβασματος βίντεο προσώπου"
-  },
-  "button.uploadPhoto": {
-    "message": "Ανέβασμα φωτογραφίας προσώπου",
-    "description": "Κουμπί ανέβασματος φωτογραφίας προσώπου"
-  },
-  "button.uploadAudio": {
-    "message": "Ανέβασμα ήχου",
-    "description": "Κουμπί ανέβασματος ήχου"
-  },
   "button.uploadSample": {
     "message": "Ανέβασμα δείγματος",
     "description": "Κουμπί ανέβασματος δείγματος φωνής"
-  },
-  "button.clone": {
-    "message": "Κλωνοποίηση φωνής",
-    "description": "Κουμπί κλωνοποίησης φωνής"
-  },
-  "button.cloning": {
-    "message": "Κλωνοποίηση σε εξέλιξη……",
-    "description": "Κουμπί κλωνοποίησης σε εξέλιξη"
   },
   "message.startingTask": {
     "message": "Υποβολή εργασίας βίντεο……",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "Η κλωνοποίηση φωνής απέτυχε, παρακαλώ δοκιμάστε με ένα καθαρότερο δείγμα.",
     "description": "Αποτυχία κλωνοποίησης φωνής"
+  },
+  "name.step1": {
+    "message": "Ποιος θα μιλήσει",
+    "description": "Τίτλος βήματος 1: το πρόσωπο"
+  },
+  "name.step2": {
+    "message": "Τι θα πει",
+    "description": "Τίτλος βήματος 2: η φωνή"
+  },
+  "name.required": {
+    "message": "Υποχρεωτικό",
+    "description": "Σήμα υποχρεωτικού πεδίου"
+  },
+  "name.faceModeVideo": {
+    "message": "Αποσπασμα βίντεο",
+    "description": "Λειτουργία προσώπου: βίντεο"
+  },
+  "name.faceModePhoto": {
+    "message": "Μια φωτογραφία",
+    "description": "Λειτουργία προσώπου: φωτογραφία"
+  },
+  "name.voiceModeText": {
+    "message": "Διαβάστε αυτό το κείμενο",
+    "description": "Λειτουργία φωνής: κείμενο σε ομιλία"
+  },
+  "name.voiceModeAudio": {
+    "message": "Χρησιμοποιήστε την ηχογράφηση μου",
+    "description": "Λειτουργία φωνής: ανέβασμα ήχου"
+  },
+  "name.speech": {
+    "message": "Κείμενο",
+    "description": "Τίτλος πεδίου ομιλίας"
+  },
+  "name.timbre": {
+    "message": "Χροιά",
+    "description": "Πεδίο κλωνοποιημένης φωνής"
+  },
+  "name.advanced": {
+    "message": "Προχωρημένες επιλογές",
+    "description": "Προχωρημένη ενότητα"
+  },
+  "name.speed": {
+    "message": "Ταχύτητα ομιλίας",
+    "description": "Πεδίο ταχύτητας ομιλίας"
+  },
+  "name.cloneVoice": {
+    "message": "Κλωνοποίηση φωνής",
+    "description": "Τίτλος διαλόγου κλωνοποίησης φωνής"
+  },
+  "name.voiceName": {
+    "message": "Όνομα φωνής",
+    "description": "Πεδίο ψευδώνυμου φωνής"
+  },
+  "name.voiceLang": {
+    "message": "Γλώσσα",
+    "description": "Πεδίο γλώσσας φωνής"
+  },
+  "name.myVoice": {
+    "message": "Η φωνή μου",
+    "description": "Όνομα προεπιλεγμένης κλωνοποιημένης φωνής"
+  },
+  "name.lang_zh": {
+    "message": "Κινέζικα",
+    "description": "Επιλογή γλώσσας Κινέζικα"
+  },
+  "name.lang_en": {
+    "message": "Αγγλικά",
+    "description": "Επιλογή γλώσσας Αγγλικά"
+  },
+  "description.step1": {
+    "message": "Ανεβάστε ένα καθαρό βίντεο προσώπου που να διαρκεί πάνω από 5 δευτερόλεπτα; Μπορείτε επίσης να χρησιμοποιήσετε μόνο μια φωτογραφία του προσώπου.",
+    "description": "Βοήθεια πεδίου προσώπου"
+  },
+  "description.step2": {
+    "message": "Εισάγετε το κείμενο που θέλετε να διαβαστεί και επιλέξτε μια φωνή, ή ανεβάστε μια έτοιμη ηχογράφηση.",
+    "description": "Βοήθεια πεδίου φωνής"
+  },
+  "description.speed": {
+    "message": "1.0 για κανονική ταχύτητα, μπορεί να ρυθμιστεί μεταξύ 0.5–2.0.",
+    "description": "Βοήθεια ταχύτητας ομιλίας"
+  },
+  "placeholder.speech": {
+    "message": "Εισάγετε το περιεχόμενο που θα διαβάσει ο ψηφιακός άνθρωπος...",
+    "description": "Placeholder σεναρίου"
+  },
+  "placeholder.pickTimbre": {
+    "message": "Επιλέξτε μια χροιά",
+    "description": "Placeholder επιλογής φωνής"
+  },
+  "placeholder.voiceName": {
+    "message": "Δώστε ένα όνομα σε αυτή τη χροιά",
+    "description": "Placeholder ονόματος φωνής"
+  },
+  "button.uploadFaceVideo": {
+    "message": "Ανέβασμα βίντεο προσώπου",
+    "description": "Κουμπί ανέβασμα βίντεο προσώπου"
+  },
+  "button.uploadFacePhoto": {
+    "message": "Ανέβασμα φωτογραφίας προσώπου",
+    "description": "Κουμπί ανέβασμα φωτογραφίας προσώπου"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "Ανέβασμα ηχογράφησης",
+    "description": "Κουμπί ανέβασμα ηχογράφησης"
+  },
+  "button.cloneNewVoice": {
+    "message": "Κλωνοποίηση νέας φωνής",
+    "description": "Άνοιγμα διαλόγου κλωνοποίησης φωνής"
+  },
+  "button.startClone": {
+    "message": "Έναρξη κλωνοποίησης",
+    "description": "Έναρξη κλωνοποίησης φωνής"
+  },
+  "button.replace": {
+    "message": "Αντικατάσταση",
+    "description": "Αντικατάσταση ενός ανεβασμένου αρχείου"
+  },
+  "button.generateVideo": {
+    "message": "Δημιουργία βίντεο",
+    "description": "Κουμπί δημιουργίας"
+  },
+  "message.faceVideoHint": {
+    "message": "Υποστηρίζει MP4 / MOV / WEBM",
+    "description": "Υπόδειξη αποδοχής βίντεο προσώπου"
+  },
+  "message.facePhotoHint": {
+    "message": "Υποστηρίζει PNG / JPG / WEBP",
+    "description": "Υπόδειξη αποδοχής φωτογραφίας προσώπου"
+  },
+  "message.audioHint": {
+    "message": "Υποστηρίζει WAV / MP3 / M4A",
+    "description": "Υπόδειξη αποδοχής ήχου"
+  },
+  "message.missingFace": {
+    "message": "Λείπει: ανέβασμα ενός βίντεο ή φωτογραφίας προσώπου",
+    "description": "Λείπει πρόσωπο"
+  },
+  "message.missingText": {
+    "message": "Λείπει: εισάγετε το κείμενο που θέλετε να διαβαστεί",
+    "description": "Λείπει σενάριο"
+  },
+  "message.missingTimbre": {
+    "message": "Λείπει: επιλέξτε ή κλωνοποιήστε μια φωνή",
+    "description": "Λείπει φωνή"
+  },
+  "message.missingAudio": {
+    "message": "Λείπει: ανέβασμα μιας ηχογράφησης",
+    "description": "Λείπει ήχος"
+  },
+  "message.eta": {
+    "message": "Η δημιουργία συνήθως χρειάζεται 30–45 λεπτά, μπορείτε να πάτε να κάνετε κάτι άλλο",
+    "description": "Υπόδειξη ETA δημιουργίας"
+  },
+  "message.voiceCloneHint": {
+    "message": "Ανεβάστε 10–20 δευτερόλεπτα καθαρής ανθρώπινης φωνής, όσο πιο ήσυχο το περιβάλλον τόσο καλύτερα",
+    "description": "Υπόδειξη δείγματος φωνής"
+  },
+  "message.voiceCloneRunning": {
+    "message": "Κλωνοποιείται, συνήθως χρειάζεται 1–2 λεπτά……",
+    "description": "Κλωνοποίηση φωνής σε εξέλιξη"
+  },
+  "message.voiceStoredLocally": {
+    "message": "Η φωνή αποθηκεύεται στον τρέχοντα περιηγητή, θα χρειαστεί να κλωνοποιηθεί ξανά αν αλλάξετε συσκευή ή διαγράψετε δεδομένα",
+    "description": "Η βιβλιοθήκη φωνών είναι τοπική στον περιηγητή"
+  },
+  "message.noVoiceYet": {
+    "message": "Δεν υπάρχει φωνή, κλωνοποιήστε μία πρώτα",
+    "description": "Κενή λίστα φωνών"
+  },
+  "name.etaLabel": {
+    "message": "Εκτιμώμενος χρόνος υπολειπόμενος",
+    "description": "Εκτιμώμενος χρόνος που απομένει"
+  },
+  "name.duration": {
+    "message": "Διάρκεια βίντεο",
+    "description": "Διάρκεια του παραγόμενου βίντεο"
+  },
+  "name.outputSize": {
+    "message": "Μέγεθος εικόνας",
+    "description": "Μέγεθος του παραγόμενου καρέ"
+  },
+  "name.traceId": {
+    "message": "ID παρακολούθησης",
+    "description": "ID παρακολούθησης για υποστήριξη"
+  },
+  "message.etaRemaining": {
+    "message": "Περίπου {minutes} λεπτά",
+    "description": "Υπολειπόμενα λεπτά"
+  },
+  "message.etaAlmostDone": {
+    "message": "Σχεδόν ολοκληρώθηκε",
+    "description": "Σχεδόν ολοκληρωμένο"
+  },
+  "name.faceVideo": {
+    "message": "Βίντεο",
+    "description": "Επιλογή βίντεο προσώπου"
+  },
+  "name.facePhoto": {
+    "message": "Φωτογραφία",
+    "description": "Επιλογή φωτογραφίας προσώπου"
+  },
+  "name.face": {
+    "message": "Πηγή προσώπου",
+    "description": "Πεδίο πηγής προσώπου"
+  },
+  "name.voice": {
+    "message": "Φωνή",
+    "description": "Πεδίο πηγής φωνής"
+  },
+  "name.voiceAudio": {
+    "message": "Ήχος",
+    "description": "Επιλογή φωνής με βάση ήχο"
+  },
+  "name.voiceText": {
+    "message": "Κείμενο",
+    "description": "Επιλογή φωνής με βάση κείμενο"
+  },
+  "name.engine": {
+    "message": "Μηχανή",
+    "description": "Πεδίο μηχανής συγχρονισμού χειλιών"
+  },
+  "name.resolution": {
+    "message": "Ανάλυση",
+    "description": "Πεδίο ανάλυσης εξόδου"
+  },
+  "name.voiceReady": {
+    "message": "Η φωνή είναι έτοιμη",
+    "description": "Ετικέτα έτοιμης κλωνοποιημένης φωνής"
+  },
+  "placeholder.text": {
+    "message": "Εισάγετε το περιεχόμενο που πρέπει να πει ο ψηφιακός άνθρωπος...",
+    "description": "Placeholder κειμένου ομιλίας"
+  },
+  "description.face": {
+    "message": "Ανέβασμα καθαρού βίντεο προσώπου (συνιστάται) ή μιας φωτογραφίας για να οδηγήσετε τον ψηφιακό άνθρωπο.",
+    "description": "Βοήθεια πεδίου προσώπου"
+  },
+  "description.voiceClone": {
+    "message": "Ανέβασμα ενός καθαρού δείγματος ανθρώπινης φωνής 10–20 δευτερολέπτων για κλωνοποίηση φωνής, και μετά χρησιμοποιήστε το για να διαβάσετε το κείμενό σας.",
+    "description": "Βοήθεια κλωνοποίησης φωνής"
+  },
+  "button.generate": {
+    "message": "Δημιουργία βίντεο",
+    "description": "Κουμπί δημιουργίας"
+  },
+  "button.uploadVideo": {
+    "message": "Ανέβασμα βίντεο προσώπου",
+    "description": "Κουμπί ανέβασματος βίντεο προσώπου"
+  },
+  "button.uploadPhoto": {
+    "message": "Ανέβασμα φωτογραφίας προσώπου",
+    "description": "Κουμπί ανέβασματος φωτογραφίας προσώπου"
+  },
+  "button.uploadAudio": {
+    "message": "Ανέβασμα ήχου",
+    "description": "Κουμπί ανέβασματος ήχου"
+  },
+  "button.clone": {
+    "message": "Κλωνοποίηση φωνής",
+    "description": "Κουμπί κλωνοποίησης φωνής"
+  },
+  "button.cloning": {
+    "message": "Κλωνοποίηση σε εξέλιξη……",
+    "description": "Κουμπί κλωνοποίησης σε εξέλιξη"
   }
 }
