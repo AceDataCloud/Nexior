@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 17:34:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 18:10:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.353.1
+
+Sat, 01 Aug 2026 18:10:00 GMT
+
+### Patches
+
+- show the chat report action only while hovering or focusing the full message row (dev@acedata.cloud)
 
 ## 3.353.0
 
