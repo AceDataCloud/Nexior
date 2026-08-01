@@ -308,6 +308,12 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
+          # Play refuses to auto-send an edit for review while the app is under
+          # a policy rejection ("Changes cannot be sent for review
+          # automatically"), which rolls back the whole edit and loses the
+          # upload. Committing without review lands the bundle as a draft; it
+          # is then submitted from the Play Console UI.
+          changesNotSentForReview: true
 
   promote:
     name: Promote to Production
@@ -409,7 +415,13 @@ jobs:
                   print(f'::error::production track update failed: {r.status_code} {r.text}')
                   r.raise_for_status()
 
-              c = requests.post(f'{base}/edits/{edit_id}:commit', headers=h, timeout=60)
+              # Same policy-rejection caveat as the upload job: while the app
+              # is under review/rejection Play refuses to auto-send an edit for
+              # review and rolls the whole edit back. Commit without review and
+              # submit from the Console UI.
+              c = requests.post(f'{base}/edits/{edit_id}:commit',
+                                params={'changesNotSentForReview': 'true'},
+                                headers=h, timeout=60)
               if c.status_code >= 400:
                   print(f'::error::commit failed: {c.status_code} {c.text}')
                   c.raise_for_status()
