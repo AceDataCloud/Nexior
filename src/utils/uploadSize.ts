@@ -9,12 +9,19 @@
  * element-plus leaves the file `status: 'uploading'` forever, any send button
  * gated on "no upload in flight" greys out permanently.
  *
- * So the browser must refuse oversized files itself. Keep `MAX_UPLOAD_BYTES`
- * at or below the backend's `COS_MAX_UPLOAD_BYTES`, which in turn stays under
- * the nginx limit.
+ * So the browser must refuse oversized files itself. The invariant across the
+ * whole stack, which must never collapse into equality:
+ *
+ *   MAX_UPLOAD_BYTES  ==  COS_MAX_UPLOAD_BYTES (100MB)   ← the user-facing limit
+ *                      <  client_max_body_size / proxy-body-size (300m)
+ *
+ * The last step must be a strict `<` with real headroom: the multipart envelope
+ * adds ~212 bytes, so if the ceiling equalled the limit, a file of exactly
+ * 100MB would trip the nginx reject — reviving the hang at the very size users
+ * are most likely to hit.
  */
 
-/** Mirrors PlatformBackend `COS_MAX_UPLOAD_BYTES`. */
+/** Mirrors PlatformBackend `COS_MAX_UPLOAD_BYTES`. The user-facing limit. */
 export const MAX_UPLOAD_BYTES = 100 * 1024 * 1024;
 
 /** Render a byte count as a short human string ("28.4 MB", "900 KB"). */
