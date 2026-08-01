@@ -13,5 +13,7 @@ RUN npm run build:ssg && node scripts/ssg-shell.mjs
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Included by nginx.conf from every location that sets its own add_header.
+COPY security-headers.conf /etc/nginx/security-headers.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
