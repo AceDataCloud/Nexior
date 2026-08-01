@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 14:03:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 16:28:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.4
+
+Sat, 01 Aug 2026 16:28:13 GMT
+
+### Patches
+
+- 管理分站时优先打开已生效的绑定域名 (dev@acedata.cloud)
 
 ## 3.351.3
 
