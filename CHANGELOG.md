@@ -1,8 +1,46 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 31 Jul 2026 03:03:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 07:57:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.0
+
+Sat, 01 Aug 2026 07:57:44 GMT
+
+### Minor changes
+
+- scheduled tasks: choose whether a task runs in the cloud or on this device, authorize the local tools it may use, and show where each run fired from (dev@acedata.cloud)
+- mobile: collapse the bottom app bar to a thin handle to free up screen space, and remember the choice (dev@acedata.cloud)
+- connectors, skills and browser devices are now managed in Studio for everyone (dev@acedata.cloud)
+- console: manage paired browser devices in Studio, matching the connector and skill pages (dev@acedata.cloud)
+- 新增 AI 生成内容举报入口：22 个生成结果卡片与聊天回复均可举报不良内容（Google Play AI 内容政策要求） (dev@acedata.cloud)
+- feat(local-tools): 工作目录持久化到主进程配置，并作为 shell 与项目约定的默认目录 (dev@acedata.cloud)
+- feat(chat): 桌面端发消息前必须先选工作目录，设置里可随时更改 (dev@acedata.cloud)
+
+### Patches
+
+- 托盘图标收小一档：18pt → 16pt (dev@acedata.cloud)
+- 托盘图标加粗提亮：先二值化再缩放，按高度铺满画布 (dev@acedata.cloud)
+- 桌面端修复：聊天顶栏的模型选择器等控件被窗口拖拽区吞掉、无法点击 (dev@acedata.cloud)
+- desktop: defer local MCP tool schemas behind load_mcp_server instead of re-sending them every turn (dev@acedata.cloud)
+- 举报按钮与相邻操作按钮垂直对齐，颜色改用次级文字色 (dev@acedata.cloud)
+- nginx: send security headers on every route and serve /auth/ variants uniformly (CASA remediation) (dev@acedata.cloud)
+- console: unify the sidebar and page layout — one source of truth for the sidebar width, nav rows that cannot overflow, and rounded workspace panels (dev@acedata.cloud)
+- build: strip comments from built HTML so scanners stop flagging them (CASA #6) (dev@acedata.cloud)
+- connectors: the authorization popup now closes itself on every outcome, including custom MCP servers, instead of leaving a window open that has to be dismissed by hand (dev@acedata.cloud)
+- skills: show the search field permanently and match the connector page's toolbar, instead of hiding it behind a magnifier toggle (dev@acedata.cloud)
+- coding bridge: collapse the secondary composer controls behind a compact toggle on mobile so only the backend picker stays on the main row (dev@acedata.cloud)
+- 桌面 CI 触发路径补上托盘图标 (dev@acedata.cloud)
+- 上传超过大小上限时立即提示，不再卡在进度条上导致发送按钮永久变灰 (dev@acedata.cloud)
+- connectors: connecting a service now works on desktop, iOS and Android — the consent page opens in the right browser for each and the list refreshes when you come back, instead of the click doing nothing (desktop) or leaving the screen stuck (mobile) (dev@acedata.cloud)
+- 上传体积天花板抬到 300m，消除超过上限时的残留卡死 (dev@acedata.cloud)
+- 下载页浏览器扩展改为通栏卡片 (dev@acedata.cloud)
+- coding bridge: open the secondary composer controls in a settings dialog on mobile instead of expanding them inline (dev@acedata.cloud)
+- desktop: ship the tray icon inside the app bundle so the menu-bar item is actually visible (dev@acedata.cloud)
+- fix(chat): 工作目录入口移到输入框下方，改为低调的页脚样式 (dev@acedata.cloud)
+- scheduled tasks: run a device-bound task through its own daemon so it can actually reach local tools, and make the tray icon legible at menu-bar size (dev@acedata.cloud)
+- 下载页新增浏览器扩展入口（Chrome / Edge 双图标） (dev@acedata.cloud)
 
 ## 3.349.2
 

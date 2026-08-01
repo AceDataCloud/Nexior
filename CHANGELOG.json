@@ -2,6 +2,185 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sat, 01 Aug 2026 07:57:44 GMT",
+      "version": "3.351.0",
+      "tag": "@acedatacloud/nexior_v3.351.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "托盘图标收小一档：18pt → 16pt"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "托盘图标加粗提亮：先二值化再缩放，按高度铺满画布"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "桌面端修复：聊天顶栏的模型选择器等控件被窗口拖拽区吞掉、无法点击"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "desktop: defer local MCP tool schemas behind load_mcp_server instead of re-sending them every turn"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "举报按钮与相邻操作按钮垂直对齐，颜色改用次级文字色"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "nginx: send security headers on every route and serve /auth/ variants uniformly (CASA remediation)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "console: unify the sidebar and page layout — one source of truth for the sidebar width, nav rows that cannot overflow, and rounded workspace panels"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "build: strip comments from built HTML so scanners stop flagging them (CASA #6)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "connectors: the authorization popup now closes itself on every outcome, including custom MCP servers, instead of leaving a window open that has to be dismissed by hand"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "skills: show the search field permanently and match the connector page's toolbar, instead of hiding it behind a magnifier toggle"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "coding bridge: collapse the secondary composer controls behind a compact toggle on mobile so only the backend picker stays on the main row"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "桌面 CI 触发路径补上托盘图标"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "上传超过大小上限时立即提示，不再卡在进度条上导致发送按钮永久变灰"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "connectors: connecting a service now works on desktop, iOS and Android — the consent page opens in the right browser for each and the list refreshes when you come back, instead of the click doing nothing (desktop) or leaving the screen stuck (mobile)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "上传体积天花板抬到 300m，消除超过上限时的残留卡死"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "下载页浏览器扩展改为通栏卡片"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "coding bridge: open the secondary composer controls in a settings dialog on mobile instead of expanding them inline"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "desktop: ship the tray icon inside the app bundle so the menu-bar item is actually visible"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "fix(chat): 工作目录入口移到输入框下方，改为低调的页脚样式"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "scheduled tasks: run a device-bound task through its own daemon so it can actually reach local tools, and make the tray icon legible at menu-bar size"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "下载页新增浏览器扩展入口（Chrome / Edge 双图标）"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "scheduled tasks: choose whether a task runs in the cloud or on this device, authorize the local tools it may use, and show where each run fired from"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "mobile: collapse the bottom app bar to a thin handle to free up screen space, and remember the choice"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "connectors, skills and browser devices are now managed in Studio for everyone"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "console: manage paired browser devices in Studio, matching the connector and skill pages"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "新增 AI 生成内容举报入口：22 个生成结果卡片与聊天回复均可举报不良内容（Google Play AI 内容政策要求）"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "feat(local-tools): 工作目录持久化到主进程配置，并作为 shell 与项目约定的默认目录"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1b7274947db2aced3f5428d4aa4af72c6e90ce2c",
+            "comment": "feat(chat): 桌面端发消息前必须先选工作目录，设置里可随时更改"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jul 2026 03:03:23 GMT",
       "version": "3.349.2",
       "tag": "@acedatacloud/nexior_v3.349.2",
