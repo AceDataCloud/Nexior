@@ -1620,6 +1620,10 @@
     "message": "参照ファイルのアップロードがまだ進行中です。少々お待ちください。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.uploadTooLarge": {
+    "message": "ファイルサイズ {size} が上限 {max} を超えています。圧縮して再試行してください。",
+    "description": "ユーザーが選択したファイルがアップロードサイズの上限を超えたときに表示されるメッセージで、現在のファイルサイズと許可されている上限を説明します。"
+  },
   "message.dropToUpload": {
     "message": "ここにドラッグしてアップロード",
     "description": "ファイルをアップロードコントロールの上にドラッグしたときに、一時的にそのコントロール上に表示されるヒントテキスト。ユーザーに手を離すとアップロードされることを知らせます。"

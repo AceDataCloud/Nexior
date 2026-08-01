@@ -14,6 +14,7 @@
       :limit="1"
       class="upload-wrapper"
       :multiple="false"
+      :before-upload="beforeUploadSizeGuard"
       :action="uploadUrl"
       list-type="picture"
       :on-exceed="onExceed"
@@ -42,7 +43,13 @@
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin, uploadTrackerMixin } from '@/utils';
+import {
+  getBaseUrlPlatform,
+  pasteUploadMixin,
+  dropUploadMixin,
+  uploadTrackerMixin,
+  uploadSizeGuardMixin
+} from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -60,7 +67,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
   data(): IData {
     return {
       fileList: [],

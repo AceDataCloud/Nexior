@@ -16,6 +16,8 @@ export * from './pasteUploadMixin';
 export * from './dropUpload';
 export * from './dropUploadMixin';
 export * from './uploadTrackerMixin';
+export * from './uploadSize';
+export * from './uploadSizeGuardMixin';
 export * from './connections';
 export * from './featureFlag';
 export * from './loginMethod';

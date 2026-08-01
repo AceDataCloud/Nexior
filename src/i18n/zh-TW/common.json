@@ -1620,6 +1620,10 @@
     "message": "參考檔案仍在上傳，請稍候再生成。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.uploadTooLarge": {
+    "message": "文件大小 {size} 超過上限 {max}，請壓縮後重試",
+    "description": "使用者選擇的文件超過上傳大小上限時彈出的提示，說明當前文件大小和允許的上限。"
+  },
   "message.dropToUpload": {
     "message": "拖放到此處上傳",
     "description": "拖拽文件到某個上傳控件上方時，臨時浮現在該控件上的提示層文字，告訴用戶鬆手即可上傳。"

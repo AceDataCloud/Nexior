@@ -311,6 +311,10 @@
     "message": "Przesyłanie pliku nie powiodło się, spróbuj ponownie później",
     "description": "Wiadomość na stronie, informująca użytkownika, że przesyłanie pliku nie powiodło się, spróbuj ponownie później"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "Rozmiar pliku {size} przekracza limit {max}, proszę skompresować i spróbować ponownie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że plik przekracza maksymalny rozmiar do przesłania i należy go skompresować przed ponowną próbą"
+  },
   "message.notApplied": {
     "message": "Nie ubiegałeś się jeszcze o tę usługę, najpierw złóż wniosek",
     "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, najpierw złóż wniosek"
@@ -922,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Czytelny dla ludzi: surowy Cron"
+    "description": "Czytelna dla ludzi: oryginalny Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Jednorazowo {time}",

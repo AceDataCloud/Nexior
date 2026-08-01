@@ -311,6 +311,10 @@
     "message": "Falha ao enviar o arquivo, por favor, tente novamente mais tarde",
     "description": "Mensagem na página que informa ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "O arquivo de tamanho {size} excede o limite máximo {max}, por favor compacte e tente novamente",
+    "description": "Mensagem na página informando ao usuário que o arquivo ultrapassou o limite máximo de upload e precisa ser compactado para tentar novamente"
+  },
   "message.notApplied": {
     "message": "Você ainda não solicitou este serviço, por favor, faça isso primeiro",
     "description": "Mensagem na página que informa ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
@@ -922,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Legível por humanos: Cron original"
+    "description": "Formato legível para humanos: Cron original"
   },
   "scheduledTasks.humanize.once": {
     "message": "Uma vez {time}",

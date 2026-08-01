@@ -641,7 +641,7 @@
   },
   "nav.grokvideo": {
     "message": "Grok Video",
-    "description": "Texto en la barra de navegación del sitio web que muestra la página de videos de Grok Imagine"
+    "description": "Texto en la barra de navegación del sitio, utilizado para mostrar la página de videos de Grok Imagine"
   },
   "nav.luma": {
     "message": "Luma",
@@ -1474,7 +1474,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Nombre para mostrar del tipo de contacto WeChat"
+    "description": "Nombre que se muestra para el tipo de contacto WeChat"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Etiqueta (opcional), p. ej. Ventas",
@@ -1619,6 +1619,10 @@
   "message.uploadInProgress": {
     "message": "Las cargas de referencia aún están en curso; espera un momento.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
+  },
+  "message.uploadTooLarge": {
+    "message": "El tamaño del archivo {size} excede el límite {max}, por favor, comprímelo y vuelve a intentarlo",
+    "description": "Mensaje que aparece cuando el archivo seleccionado por el usuario excede el límite de tamaño de carga, indicando el tamaño actual del archivo y el límite permitido."
   },
   "message.dropToUpload": {
     "message": "Arrastre y suelte aquí para subir",

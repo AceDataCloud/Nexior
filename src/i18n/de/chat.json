@@ -311,6 +311,10 @@
     "message": "Datei-Upload fehlgeschlagen, bitte später erneut versuchen",
     "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass der Datei-Upload fehlgeschlagen ist, bitte später erneut versuchen"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "Dateigröße {size} überschreitet das Limit {max}, bitte komprimieren und erneut versuchen",
+    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass die Datei die maximale Uploadgröße überschreitet und komprimiert werden muss, um es erneut zu versuchen."
+  },
   "message.notApplied": {
     "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst",
     "description": "Nachricht auf der Webseite, die den Benutzer darauf hinweist, dass er diesen Dienst noch nicht beantragt hat"
@@ -1280,7 +1284,7 @@
   },
   "scheduledTasks.execution.cloud": {
     "message": "Cloud",
-    "description": "Cloud-Ausführungsmodus"
+    "description": "Cloud-Betriebsmodus"
   },
   "scheduledTasks.execution.local": {
     "message": "Dieses Gerät",

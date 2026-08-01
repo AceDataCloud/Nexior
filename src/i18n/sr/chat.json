@@ -311,6 +311,10 @@
     "message": "Otpremanje datoteke nije uspelo, pokušajte ponovo kasnije",
     "description": "Poruka na vebu koja obaveštava korisnika da otpremanje datoteke nije uspelo, pokušajte ponovo kasnije"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "Величина датотеке {size} превазилази максималну величину {max}, молимо смањите и покушајте поново",
+    "description": "Порука на веб страници која обавештава корисника да датотека превазилази лимит величине за отпремање, потребно је смањити величину и покушати поново"
+  },
   "message.notApplied": {
     "message": "Niste zatražili ovu uslugu, molimo vas da prvo zatražite",
     "description": "Poruka na vebu koja obaveštava korisnika da nije zatražio ovu uslugu, molimo vas da prvo zatražite"
@@ -894,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Čitljivo za ljude: originalni Cron"
+    "description": "Читљиво за људе: оригинални Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "једном у {time}",

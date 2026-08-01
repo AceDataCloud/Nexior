@@ -776,7 +776,7 @@
     "description": "表单字段标签：Omni 视频编辑的参考/待编辑视频"
   },
   "description.omniReferenceVideo": {
-    "message": "适用于 Kling O1 和 V3 Omni。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频，提示词会自动添加 <<<video_1>>>。",
+    "message": "适用于 Kling O1 和 V3 Omni。上传一个 MP4/MOV（720–2160px、3–10 秒、≤100MB）用于编辑或参考已有视频，提示词会自动添加 <<<video_1>>>。",
     "description": "Omni 参考视频上传的帮助文字"
   },
   "name.referenceImages": {
@@ -840,7 +840,7 @@
     "description": "参考视频格式不是 MP4/MOV 时的错误提示"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "上传的文件大小不能超过 200MB！",
-    "description": "参考视频超过 200MB 时的错误提示"
+    "message": "上传的文件大小不能超过 {max}！",
+    "description": "参考视频超过上传大小上限时的错误提示"
   }
 }

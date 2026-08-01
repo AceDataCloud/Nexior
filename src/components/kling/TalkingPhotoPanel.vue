@@ -18,6 +18,7 @@
           :limit="1"
           class="upload-wrapper"
           :multiple="false"
+          :before-upload="beforeUploadSizeGuard"
           :action="uploadUrl"
           list-type="picture"
           :headers="headers"
@@ -55,6 +56,7 @@
           :limit="1"
           class="upload-wrapper"
           :multiple="false"
+          :before-upload="beforeUploadSizeGuard"
           :action="uploadUrl"
           :headers="headers"
           :on-exceed="onAudioExceed"
@@ -106,7 +108,7 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ModelSelector from './talking-photo/ModelSelector.vue';
 import ModeSelector from './talking-photo/ModeSelector.vue';
-import { getBaseUrlPlatform, getConsumption, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, getConsumption, uploadTrackerMixin, uploadSizeGuardMixin } from '@/utils';
 import { IKlingTalkingPhotoConfig } from '@/models';
 
 interface IData {
@@ -129,7 +131,7 @@ export default defineComponent({
     ModelSelector,
     ModeSelector
   },
-  mixins: [uploadTrackerMixin],
+  mixins: [uploadTrackerMixin, uploadSizeGuardMixin],
   emits: ['generate'],
   data(): IData {
     return {

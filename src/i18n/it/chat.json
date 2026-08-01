@@ -311,6 +311,10 @@
     "message": "Caricamento del file fallito, riprova più tardi",
     "description": "Messaggio nella pagina web che informa l'utente che il caricamento del file è fallito, riprova più tardi"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "La dimensione del file {size} supera il limite {max}, si prega di comprimere e riprovare",
+    "description": "Messaggio nella pagina web che informa l'utente che il file supera il limite di dimensione per il caricamento e deve essere compresso prima di riprovare."
+  },
   "message.notApplied": {
     "message": "Non hai ancora richiesto questo servizio, richiedilo prima",
     "description": "Messaggio nella pagina web che informa l'utente che non ha ancora richiesto questo servizio, richiedilo prima"
@@ -922,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Leggibile dall'uomo: Cron originale"
+    "description": "Formato leggibile dall'uomo: Cron originale"
   },
   "scheduledTasks.humanize.once": {
     "message": "Una sola volta {time}",
@@ -1121,11 +1125,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo di output - video"
+    "description": "Tipo di output - Video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo di output - audio"
+    "description": "Tipo di output - Audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1133,7 +1137,7 @@
   },
   "artifacts.kind.email": {
     "message": "Email",
-    "description": "Tipo di output - email"
+    "description": "Tipo di output - Email"
   },
   "artifacts.kind.message": {
     "message": "Messaggio",
@@ -1145,7 +1149,7 @@
   },
   "artifacts.kind.link": {
     "message": "Link",
-    "description": "Tipo di output - link"
+    "description": "Tipo di output - Link"
   },
   "artifacts.kind.other": {
     "message": "Altro",
@@ -1280,7 +1284,7 @@
   },
   "scheduledTasks.execution.cloud": {
     "message": "Cloud",
-    "description": "Modalità di esecuzione cloud"
+    "description": "Modalità di esecuzione nel cloud"
   },
   "scheduledTasks.execution.local": {
     "message": "Questo dispositivo",
