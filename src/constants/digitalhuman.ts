@@ -1,6 +1,6 @@
 export const DIGITALHUMAN_SERVICE_ID = '5b132265-40e8-4a79-9582-589f8eea4733';
 
-export const DIGITALHUMAN_LOGO = 'https://cdn.acedata.cloud/6f9197d1a9.svg';
+export const DIGITALHUMAN_LOGO = 'https://cdn.acedata.cloud/uploads/b47b3899-d41a-4295-93b9-20686ac98598';
 
 export const DIGITALHUMAN_DEFAULT_ENGINE = 'latentsync';
 export const DIGITALHUMAN_DEFAULT_RESOLUTION = '720p';
