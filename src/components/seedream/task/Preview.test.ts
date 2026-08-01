@@ -31,7 +31,7 @@ describe('seedream/task/Preview', () => {
     });
   });
 
-  it('adds request-context spacing only when a failed task has no prompt', () => {
+  it('uses the same spaced content container whether a failed task has a prompt or not', () => {
     const mountFailure = (prompt?: string | null) =>
       shallowMount(Preview, {
         props: {
@@ -50,9 +50,9 @@ describe('seedream/task/Preview', () => {
         }
       });
 
-    expect(mountFailure().find('.content').classes()).toContain('mt-[15px]');
-    expect(mountFailure(null).find('.content').classes()).toContain('mt-[15px]');
-    expect(mountFailure('').find('.content').classes()).toContain('mt-[15px]');
-    expect(mountFailure('A lighthouse').find('.content').classes()).not.toContain('mt-[15px]');
+    expect(mountFailure().find('.content').classes()).toEqual(['content']);
+    expect(mountFailure(null).find('.content').classes()).toEqual(['content']);
+    expect(mountFailure('').find('.content').classes()).toEqual(['content']);
+    expect(mountFailure('A lighthouse').find('.content').classes()).toEqual(['content']);
   });
 });

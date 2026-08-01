@@ -21,10 +21,13 @@
           </button>
         </el-tooltip>
       </div>
-      <div class="info">
+      <div
+        v-if="referenceImages.length > 0 || referenceVideos.length > 0 || referenceAudios.length > 0 || displayText"
+        class="info"
+      >
         <div
           v-if="referenceImages.length > 0 || referenceVideos.length > 0 || referenceAudios.length > 0"
-          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+          class="request-media flex justify-start items-center gap-2 w-full overflow-x-auto"
         >
           <image-preview
             v-for="(image, idx) in referenceImages"
@@ -46,8 +49,8 @@
             :name="audio.name"
           />
         </div>
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
+        <p v-if="displayText" class="prompt">
+          {{ displayText }}
           <span v-if="!modelValue?.response"> - ({{ $t('kling.status.pending') }}) </span>
           <span v-else-if="isWaiting"> - ({{ $t('kling.status.processing') }}) </span>
         </p>
@@ -70,11 +73,7 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/kling/videos" :body="modelValue?.request" />
-          <report-button
-            service="kling"
-            :target-id="modelValue?.id"
-            :snapshot="{ prompt: modelValue?.request?.prompt }"
-          />
+          <report-button service="kling" :target-id="modelValue?.id" :snapshot="{ prompt: displayText }" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -219,6 +218,9 @@ export default defineComponent({
     config() {
       return this.$store.state.kling?.config;
     },
+    displayText(): string {
+      return this.modelValue?.request?.prompt?.trim() || this.modelValue?.request?.text?.trim() || '';
+    },
     referenceImages(): { url: string; name: string }[] {
       const images: { url: string; name: string }[] = [];
       const startImageUrl = this.modelValue?.request?.start_image_url;
@@ -356,12 +358,16 @@ $left-width: 70px;
     }
 
     .info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
       overflow: hidden;
       .prompt {
         font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
-        margin-bottom: 10px;
+        margin: 0;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
@@ -369,6 +375,7 @@ $left-width: 70px;
     }
 
     .content {
+      margin-top: 8px;
       word-break: break-word;
       overflow-wrap: anywhere;
       .el-alert {

@@ -65,6 +65,12 @@ export interface IKlingTalkingPhotoConfig {
 export interface IKlingTalkingPhotoRequest {
   image_url: string;
   audio_url: string;
+  video_url?: string;
+  text?: string;
+  voice_id?: string;
+  voice_speed?: number;
+  voice_language?: string;
+  audio_type?: string;
   prompt?: string;
   model?: string;
   duration?: number;
