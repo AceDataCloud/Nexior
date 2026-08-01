@@ -26,12 +26,16 @@ SRC = os.path.join(
 )
 OUT_DIR = os.path.join(ROOT, "build")
 
-# 16pt is the macOS menu-bar convention; @2x covers Retina.
-SIZES = [("trayTemplate.png", 16), ("trayTemplate@2x.png", 32)]
+# 18pt canvas, @2x for Retina. NOT 16 — that was undersized against the rest of
+# the menu bar. Measured neighbours: ChatGPT ships an 18x18 glyph filling an
+# 18x18 canvas, Claude an 18x18 glyph in a 24x24 one. A 16pt canvas minus
+# padding left our mark at 14pt, ~22% smaller than either.
+SIZES = [("trayTemplate.png", 18), ("trayTemplate@2x.png", 36)]
 
 # The brand icon is a coloured mark on a WHITE ground, so the mark is what's
 # DARK. Anything at/above this luma is background and becomes transparent.
-LUMA_BACKGROUND = 230
+# Used for both the silhouette and the bbox, so the crop matches the shape.
+LUMA_BACKGROUND = 200
 
 # The source is an app icon: the mark occupies ~58% of a square canvas, the rest
 # is padding sized for a rounded-rect app tile. Downscaling that whole canvas to
@@ -39,16 +43,24 @@ LUMA_BACKGROUND = 230
 # the mark first, then rescale so it fills the menu-bar slot the way every other
 # icon up there does.
 #
-# 1px of breathing room top/bottom, per Apple's menu-bar guidance — enough to
-# not collide with the bar edges, small enough that the glyph still reads.
-PADDING = 1
+# The mark is wider than it is tall, so height is the binding dimension: fitting
+# it into a square box by its width would leave the glyph short and floating.
+# It's scaled to fill the canvas HEIGHT (minus padding) and allowed to run the
+# full width, which is what makes it read at menu-bar size.
+#
+# No padding: macOS already insets the tray image within the menu-bar item, so
+# padding baked into the PNG shrinks the glyph twice. ChatGPT's 18x18 template
+# is 18x18 of actual mark, edge to edge — matching that is what makes ours read
+# at the same size as its neighbours instead of one notch smaller.
+PADDING = 0
 
-# Anti-aliased downscaling turns a solid mark into mostly-translucent pixels,
-# which the menu bar renders as grey mush. The source mark is also a light
-# gradient (mint/teal), so raw luma-derived alpha never approaches opaque. The
-# coverage map is therefore normalized — the mark's own darkest pixel becomes
-# fully opaque — giving a 16px glyph the weight a hand-drawn one would have.
-GAMMA = 0.65
+# Anti-aliasing is applied ONCE, by the final downscale — never to the alpha
+# afterwards. Thresholding at full resolution first makes the mark a hard
+# silhouette, so shrinking it leaves solid black inside and softens only the
+# outline. The previous approach scaled first and derived alpha from the
+# result's luma: since the brand mark is a light mint/teal gradient, that never
+# reached opaque anywhere, and the menu bar rendered the whole glyph as grey
+# mush (mean alpha 174/255, 3 of 77 pixels actually solid).
 
 
 def mark_bbox(img: Image.Image) -> tuple[int, int, int, int]:
@@ -71,17 +83,20 @@ def mark_bbox(img: Image.Image) -> tuple[int, int, int, int]:
     return min_x, min_y, max_x + 1, max_y + 1
 
 
-def coverage(img: Image.Image) -> list[float]:
-    """Per-pixel 'how much mark is here', 0..1, before normalization."""
+def silhouette(img: Image.Image) -> Image.Image:
+    """Hard black-on-transparent mask of the mark, at the source's resolution."""
     px = img.load()
     w, h = img.size
-    out = []
+    mask = Image.new("L", (w, h), 0)
+    mask_px = mask.load()
     for y in range(h):
         for x in range(w):
             r, g, b, a = px[x, y]
-            luma = int(0.299 * r + 0.587 * g + 0.114 * b)
-            out.append(0.0 if a == 0 or luma >= LUMA_BACKGROUND else (a / 255) * (1 - luma / LUMA_BACKGROUND))
-    return out
+            if a == 0:
+                continue
+            if int(0.299 * r + 0.587 * g + 0.114 * b) < LUMA_BACKGROUND:
+                mask_px[x, y] = 255
+    return mask
 
 
 def main() -> int:
@@ -90,35 +105,36 @@ def main() -> int:
         return 1
 
     src = Image.open(SRC).convert("RGBA")
-    # Crop to the mark, then pad back to a square so the aspect ratio survives
-    # the resize (a non-square crop scaled into a square box would stretch it).
-    mark = src.crop(mark_bbox(src))
-    side = max(mark.size)
-    square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
-    square.paste(mark, ((side - mark.width) // 2, (side - mark.height) // 2))
+    # Threshold BEFORE scaling: a hard silhouette downscales to solid black with
+    # an anti-aliased edge, whereas scaling first and thresholding after leaves
+    # every pixel semi-transparent.
+    mask = silhouette(src).crop(mark_bbox(src))
 
     for name, size in SIZES:
-        scale = size // 16
-        inner = size - 2 * PADDING * scale
-        icon = square.resize((inner, inner), Image.LANCZOS)
-        cov = coverage(icon)
-        peak = max(cov) or 1.0
+        inner_h = size - 2 * PADDING
+        # Height-bound: preserve the aspect ratio, let the width fall where it
+        # may (the mark is wider than tall, and the extra width is what gives it
+        # presence next to neighbouring menu-bar icons).
+        inner_w = max(1, round(mask.width * inner_h / mask.height))
+        if inner_w > size:  # never overflow the canvas
+            inner_w, inner_h = size, max(1, round(mask.height * size / mask.width))
+        alpha = mask.resize((inner_w, inner_h), Image.LANCZOS)
+        # LANCZOS rings: it overshoots at hard edges, leaving a halo of alpha
+        # 1-27 a pixel or two outside the glyph. Invisible on white, a grey
+        # smudge on a dark menu bar. Anything under ~10% coverage isn't edge
+        # anti-aliasing, it's ringing.
+        alpha = alpha.point(lambda p: 0 if p < 26 else p)
 
         out = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-        out_px = out.load()
-        offset = (size - inner) // 2
-        for i, c in enumerate(cov):
-            if c <= 0:
-                continue
-            # Normalize to the mark's own peak, then gamma-lift so mid-coverage
-            # edge pixels stay legible instead of fading to grey.
-            alpha = min(255, int(255 * ((c / peak) ** GAMMA)))
-            out_px[i % inner + offset, i // inner + offset] = (0, 0, 0, alpha)
+        # Colour is always black; the mask alone carries the shape, so macOS can
+        # tint it for light/dark menu bars.
+        out.paste(Image.new("RGBA", (inner_w, inner_h), (0, 0, 0, 255)), ((size - inner_w) // 2, (size - inner_h) // 2), alpha)
 
         path = os.path.join(OUT_DIR, name)
         out.save(path)
-        solid = sum(1 for i, c in enumerate(cov) if c > 0 and (c / peak) ** GAMMA > 0.78)
-        print(f"wrote {path} ({size}x{size}, mark {inner}px, {solid} solid px)")
+        vals = [p for p in alpha.getdata() if p > 0]
+        solid = sum(1 for p in vals if p >= 250)
+        print(f"wrote {path} ({size}x{size}, mark {inner_w}x{inner_h}px, {solid}/{len(vals)} solid px)")
     return 0
 
 
