@@ -21,6 +21,8 @@ export const I18N_SUPPORTED_LOCALES = [
   { value: 'sr', label: 'Српски' }
 ];
 
+export type I18nLocaleOption = (typeof I18N_SUPPORTED_LOCALES)[number];
+
 export const I18N_SCOPES = [
   'index',
   'api',

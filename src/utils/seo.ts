@@ -1,5 +1,5 @@
-import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import store from '@/store';
+import { getSiteLocaleOptions } from '@/utils/siteLocales';
 
 // Resolve the current site origin at runtime so that the same bundle can be
 // served independently from multiple official hostnames (e.g. hub.acedata.cloud,
@@ -112,7 +112,7 @@ function removeJsonLd(id: string) {
 function setHreflang(url: string) {
   removeHreflang();
   const baseUrl = new URL(url);
-  for (const { value: locale } of I18N_SUPPORTED_LOCALES) {
+  for (const { value: locale } of getSiteLocaleOptions(store.state.site?.supported_locales)) {
     const hreflang = HREFLANG_MAP[locale];
     if (!hreflang) continue;
     const link = document.createElement('link');
