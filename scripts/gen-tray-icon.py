@@ -26,8 +26,11 @@ SRC = os.path.join(
 )
 OUT_DIR = os.path.join(ROOT, "build")
 
-# 16pt is the macOS menu-bar convention; @2x covers Retina.
-SIZES = [("trayTemplate.png", 16), ("trayTemplate@2x.png", 32)]
+# 18pt canvas, @2x for Retina. NOT 16 — that was undersized against the rest of
+# the menu bar. Measured neighbours: ChatGPT ships an 18x18 glyph filling an
+# 18x18 canvas, Claude an 18x18 glyph in a 24x24 one. A 16pt canvas minus
+# padding left our mark at 14pt, ~22% smaller than either.
+SIZES = [("trayTemplate.png", 18), ("trayTemplate@2x.png", 36)]
 
 # The brand icon is a coloured mark on a WHITE ground, so the mark is what's
 # DARK. Anything at/above this luma is background and becomes transparent.
@@ -45,9 +48,11 @@ LUMA_BACKGROUND = 200
 # It's scaled to fill the canvas HEIGHT (minus padding) and allowed to run the
 # full width, which is what makes it read at menu-bar size.
 #
-# 1px of breathing room top/bottom, per Apple's menu-bar guidance — enough to
-# not collide with the bar edges, small enough that the glyph still reads.
-PADDING = 1
+# No padding: macOS already insets the tray image within the menu-bar item, so
+# padding baked into the PNG shrinks the glyph twice. ChatGPT's 18x18 template
+# is 18x18 of actual mark, edge to edge — matching that is what makes ours read
+# at the same size as its neighbours instead of one notch smaller.
+PADDING = 0
 
 # Anti-aliasing is applied ONCE, by the final downscale — never to the alpha
 # afterwards. Thresholding at full resolution first makes the mark a hard
@@ -106,8 +111,7 @@ def main() -> int:
     mask = silhouette(src).crop(mark_bbox(src))
 
     for name, size in SIZES:
-        scale = size // 16
-        inner_h = size - 2 * PADDING * scale
+        inner_h = size - 2 * PADDING
         # Height-bound: preserve the aspect ratio, let the width fall where it
         # may (the mark is wider than tall, and the extra width is what gives it
         # presence next to neighbouring menu-bar icons).
