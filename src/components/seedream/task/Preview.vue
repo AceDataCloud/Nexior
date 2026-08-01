@@ -109,10 +109,7 @@
           </p>
         </el-alert>
       </div>
-      <div
-        v-else-if="modelValue?.response?.success === false"
-        :class="{ content: true, 'mt-[15px]': !modelValue?.request?.prompt }"
-      >
+      <div v-else-if="modelValue?.response?.success === false" class="content">
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -357,7 +354,7 @@ $left-width: 70px;
         font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
-        margin-bottom: 15px;
+        margin-bottom: 0;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
@@ -365,6 +362,7 @@ $left-width: 70px;
     }
 
     .content {
+      margin-top: 8px;
       word-break: break-word;
       overflow-wrap: anywhere;
       .el-alert {

@@ -286,7 +286,7 @@ $left-width: 70px;
         font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
-        margin-bottom: 15px;
+        margin-bottom: 0;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
@@ -294,6 +294,7 @@ $left-width: 70px;
     }
 
     .content {
+      margin-top: 8px;
       word-break: break-word;
       overflow-wrap: anywhere;
       .el-alert {
