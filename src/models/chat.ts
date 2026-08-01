@@ -159,6 +159,11 @@ export interface IChatMessageContentItem {
   // render `<ConnectorConsentCard>`; on resume the resume detector strips it
   // and folds `output` (the user's authorize/skip JSON) into the block.
   pending_consent_request?: IConsentRequestPayload;
+  // Present iff `status === 'awaiting_input'` and the pause was driven by
+  // `request_action_confirmation`. Carries the confirmation payload so the
+  // frontend can render `<ActionConfirmationCard>`; on resume the block
+  // folds `output` (the user's confirm/cancel + edited values) back in.
+  pending_action_confirmation?: IActionConfirmationPayload;
   // Rich-output entity card (type='card') — payload mirrors the
   // worker's `CardData` SSE event. `type` inside `card` is open-ended:
   // 'audio' | 'video' | 'image' | 'file' today, with room for future
@@ -249,6 +254,92 @@ export interface IConsentRequestPayload {
   /** All requirements, satisfied and unsatisfied, so the card can show
    *  "✓ already connected" rows alongside the action rows. */
   requirements: IConsentRequestRequirement[];
+}
+
+// ===== request_action_confirmation tool payload =====
+// Gate for an irreversible external action (publish a post, transfer
+// funds, delete a file). Distinct from `request_user_consent`, which asks
+// "do you have permission?" once per connector — this asks "should I do
+// this, this time?" and fires before every such action.
+//
+// `kind` is a discriminant: the card renders a kind-specific body when it
+// knows the kind, else a generic field list. Treat it as OPEN — the worker
+// may ship a new kind before the frontend does, so unknown values MUST
+// fall back rather than render blank.
+
+/** Known kinds; open-ended by design (see note above). */
+export type IActionConfirmationKind = 'generic' | 'tiktok.publish' | string;
+
+export interface IActionConfirmationField {
+  label: string;
+  value: string;
+}
+
+export interface IActionConfirmationPreview {
+  type: 'video' | 'image';
+  url: string;
+  /** Media duration, when known — lets a kind body check it against a cap. */
+  duration_sec?: number;
+}
+
+export interface IActionConfirmationPayload {
+  /** Stable id of the form `actconf_<uuid>`, echoed back on resume. */
+  action_confirmation_id: string;
+  /** Selects the body renderer. Unknown values fall back to generic. */
+  kind: IActionConfirmationKind;
+  /** Action title, e.g. "发布到 TikTok". */
+  title: string;
+  /** One sentence on what happens if confirmed (< 200 chars). */
+  summary?: string;
+  /** Drives button styling; `destructive` for deletions and the like. */
+  severity?: 'normal' | 'destructive';
+  /** Generic body content. Optional when a kind body supplies its own. */
+  fields?: IActionConfirmationField[];
+  /** Media to preview above the body. */
+  preview?: IActionConfirmationPreview;
+  /** Kind-specific data. The generic body ignores it. */
+  detail?: Record<string, unknown>;
+  /** Confirm button label; falls back to a localized default. */
+  confirm_label?: string;
+}
+
+/** Resume payload — `JSON.stringify`d into `tool_results[0].output`.
+ *  Unlike consent (which only reports authorized/skipped), this carries
+ *  the values the user edited in the card. */
+export interface IActionConfirmationResult {
+  action_confirmation_id: string;
+  confirmed: boolean;
+  /** Present when confirmed and the kind body collects input. */
+  values?: Record<string, unknown>;
+}
+
+// ===== tiktok.publish kind =====
+
+/** `detail` for `kind === 'tiktok.publish'` — mirrors the fields TikTok's
+ *  `creator_info/query` returns. The card MUST drive its privacy dropdown
+ *  and interaction toggles from these; hardcoding options is a TikTok
+ *  guideline violation, not just a bug. */
+export interface ITikTokPublishDetail {
+  creator_nickname: string;
+  /** Exact options to offer. Never render a value outside this list. */
+  privacy_level_options: string[];
+  comment_disabled: boolean;
+  duet_disabled: boolean;
+  stitch_disabled: boolean;
+  max_video_post_duration_sec: number;
+  /** Photo posts have no duet/stitch — show only "allow comment". */
+  is_photo_post?: boolean;
+}
+
+/** `values` the tiktok.publish body submits. */
+export interface ITikTokPublishValues {
+  title: string;
+  privacy_level: string;
+  disable_comment: boolean;
+  disable_duet: boolean;
+  disable_stitch: boolean;
+  brand_organic_toggle?: boolean;
+  brand_content_toggle?: boolean;
 }
 
 /**

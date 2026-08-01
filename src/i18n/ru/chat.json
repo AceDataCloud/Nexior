@@ -1354,6 +1354,110 @@
     "message": "Эта задача уже выполняется",
     "description": "Задача уже в процессе выполнения"
   },
+  "actionConfirmation.confirm": {
+    "message": "Подтвердить",
+    "description": "Кнопка подтверждения в карточке подтверждения перед выполнением"
+  },
+  "actionConfirmation.cancel": {
+    "message": "Отмена",
+    "description": "Кнопка отмены в карточке подтверждения перед выполнением"
+  },
+  "actionConfirmation.resolvedConfirmed": {
+    "message": "Подтверждено для выполнения",
+    "description": "Подсказка о сворачивании после подтверждения пользователем в карточке подтверждения перед выполнением"
+  },
+  "actionConfirmation.resolvedCancelled": {
+    "message": "Отменено",
+    "description": "Подсказка о сворачивании после отмены пользователем в карточке подтверждения перед выполнением"
+  },
+  "actionConfirmation.tiktok.postingTo": {
+    "message": "Публикация в",
+    "description": "Метка аккаунта в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.caption": {
+    "message": "Подпись",
+    "description": "Метка поля ввода подписи в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.captionPlaceholder": {
+    "message": "Введите подпись, можно использовать #тему и @пользователя",
+    "description": "Заполнитель подписи в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.privacy": {
+    "message": "Кто может видеть",
+    "description": "Метка выпадающего списка области видимости в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.privacyPlaceholder": {
+    "message": "Пожалуйста, выберите…",
+    "description": "Заполнитель области видимости в подтверждении публикации TikTok, не может иметь значения по умолчанию согласно требованиям TikTok"
+  },
+  "actionConfirmation.tiktok.privacyPublic": {
+    "message": "Все",
+    "description": "Область видимости TikTok: публичная"
+  },
+  "actionConfirmation.tiktok.privacyFriends": {
+    "message": "Взаимные друзья",
+    "description": "Область видимости TikTok: видимость для взаимных друзей"
+  },
+  "actionConfirmation.tiktok.privacyFollowers": {
+    "message": "Мои подписчики",
+    "description": "Область видимости TikTok: видимость для подписчиков"
+  },
+  "actionConfirmation.tiktok.privacySelf": {
+    "message": "Только я",
+    "description": "Область видимости TikTok: видимость только для себя"
+  },
+  "actionConfirmation.tiktok.interactions": {
+    "message": "Разрешить взаимодействие",
+    "description": "Метка группы переключателей взаимодействия в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.allowComment": {
+    "message": "Комментарии",
+    "description": "Переключатель взаимодействия TikTok: разрешить комментарии"
+  },
+  "actionConfirmation.tiktok.allowDuet": {
+    "message": "Дуэт",
+    "description": "Переключатель взаимодействия TikTok: разрешить дуэты"
+  },
+  "actionConfirmation.tiktok.allowStitch": {
+    "message": "Сшивание",
+    "description": "Переключатель взаимодействия TikTok: разрешить сшивание"
+  },
+  "actionConfirmation.tiktok.commercial": {
+    "message": "Это коммерческий контент",
+    "description": "Переключатель раскрытия коммерческого контента в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.yourBrand": {
+    "message": "Ваш бренд",
+    "description": "Коммерческий контент TikTok: продвижение собственного бизнеса"
+  },
+  "actionConfirmation.tiktok.brandedContent": {
+    "message": "Брендированный контент",
+    "description": "Коммерческий контент TikTok: платное сотрудничество"
+  },
+  "actionConfirmation.tiktok.labelPromotional": {
+    "message": "Видео будет помечено как «рекламный контент»",
+    "description": "Подсказка о маркировке после выбора вашего бренда в коммерческом контенте TikTok"
+  },
+  "actionConfirmation.tiktok.labelPaidPartnership": {
+    "message": "Видео будет помечено как «платное сотрудничество»",
+    "description": "Подсказка о маркировке после выбора брендированного контента в коммерческом контенте TikTok"
+  },
+  "actionConfirmation.tiktok.brandedNotPrivate": {
+    "message": "Область видимости брендированного контента не может быть установлена на «только я»",
+    "description": "Подсказка подтверждения публикации TikTok: конфликт между брендированным контентом и видимостью только для себя"
+  },
+  "actionConfirmation.tiktok.tooLong": {
+    "message": "Видео превышает лимит времени для этого аккаунта ({max} секунд)",
+    "description": "Ошибка превышения длины видео в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.music": {
+    "message": "Публикация означает, что вы соглашаетесь с «Подтверждением использования музыки» TikTok",
+    "description": "Заявление о использовании музыки в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.musicBranded": {
+    "message": "Публикация означает, что вы соглашаетесь с «Политикой брендированного контента» и «Подтверждением использования музыки» TikTok",
+    "description": "Заявление после выбора брендированного контента в подтверждении публикации TikTok"
+  },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
     "description": "Название модели сервиса, то есть Claude Opus 4.7"
