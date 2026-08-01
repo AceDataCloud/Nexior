@@ -1705,6 +1705,15 @@ export default defineComponent({
   justify-content: space-between;
   padding: 0 16px;
   z-index: 100;
+
+  // The desktop drag bar covers the top 32px and its hit-test beats z-index
+  // and `pointer-events`, so controls under it must opt out or they can't be
+  // clicked at all (same fix as the Credits pill in application/Status.vue).
+  .selector,
+  .byok-badge,
+  .toolbar-more {
+    -webkit-app-region: no-drag;
+  }
 }
 
 .selector {
