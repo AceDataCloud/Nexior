@@ -128,6 +128,23 @@ describe('kling/task/Preview', () => {
     expect(wrapper.find('.info + .content').exists()).toBe(true);
   });
 
+  it('keeps media-only request context visible when no prompt or speech text was stored', () => {
+    const wrapper = mountPreview({
+      ...task,
+      request: { video_url: 'https://cdn.example.com/speaker.mp4' },
+      response: {
+        success: false,
+        task_id: 'kling-task',
+        error: { message: 'Generation failed' }
+      }
+    });
+
+    expect(wrapper.find('.info').exists()).toBe(true);
+    expect(wrapper.find('.request-media').exists()).toBe(true);
+    expect(wrapper.find('.prompt').exists()).toBe(false);
+    expect(wrapper.find('.info + .content').exists()).toBe(true);
+  });
+
   it.each([
     { state: 'failed', error: { message: 'Generation failed' } },
     { error: { message: 'Provider rejected the task' } }
