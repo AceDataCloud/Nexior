@@ -79,6 +79,7 @@
             @answer-ask-user-question="onAnswerAskUserQuestion"
             @skip-ask-user-question="onSkipAskUserQuestion"
             @respond-connector-consent="onRespondConnectorConsent"
+            @respond-action-confirmation="onRespondActionConfirmation"
             @authorize-connector="onAuthorizeConnector"
             @stop-browser-session="onStopBrowserSession"
             @browser-recovery="onBrowserRecovery"
@@ -137,7 +138,13 @@ import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
-import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
+import {
+  IActionConfirmationPayload,
+  IActionConfirmationResult,
+  IAskUserQuestionPayload,
+  IChatMessageContentItem,
+  IConsentRequestPayload
+} from '@/models';
 import {
   buildAuthorizedConsentOutput,
   findPendingConsentBlock,
@@ -1251,6 +1258,50 @@ export default defineComponent({
       );
     },
     /**
+     * Resume after the user confirms or cancels an irreversible action.
+     * Same fold-then-resume shape as `onRespondConnectorConsent`; the
+     * result object is what the worker re-validates before acting.
+     */
+    async onRespondActionConfirmation(payload: { tool_use_id: string; result: IActionConfirmationResult }) {
+      const token = this.credential?.token;
+      if (!token || !this.conversationId) {
+        console.error('cannot resume: no token or no conversation id');
+        return;
+      }
+      const output = JSON.stringify(payload.result);
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (lastAssistant && Array.isArray(lastAssistant.content)) {
+        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+        );
+        if (block) {
+          block.status = 'done';
+          block.output = output;
+          // Keep `pending_action_confirmation` so the resolved card can
+          // still render its preview and title.
+        }
+      }
+      this.messages.push({
+        content: '',
+        role: ROLE_ASSISTANT,
+        state: IChatMessageState.PENDING
+      });
+      this.onScrollDown();
+      this.answering = true;
+      this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          id: this.conversationId,
+          model: this.model.name,
+          stateful: true,
+          tool_results: [{ tool_use_id: payload.tool_use_id, output }],
+          ...this._localToolInjection()
+        },
+        token,
+        this.conversationId
+      );
+    },
+    /**
      * Open the connector's OAuth install URL. PR-6: navigate the
      * current tab to the AuthFrontend deep-link install page rather
      * than popping a new window. AuthFrontend completes the OAuth
@@ -1527,6 +1578,14 @@ export default defineComponent({
               if (toolItem) {
                 toolItem.status = 'awaiting_input';
                 toolItem.pending_consent_request = response.payload as IConsentRequestPayload;
+              }
+            } else if (response.type === 'action_confirmation' && response.tool_id && response.payload) {
+              // Same pause protocol as `consent_request`, but per action:
+              // the renderer swaps in <ActionConfirmationCard>.
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.status = 'awaiting_input';
+                toolItem.pending_action_confirmation = response.payload as IActionConfirmationPayload;
               }
             } else if (response.type === 'artifact' && response.artifact) {
               if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {

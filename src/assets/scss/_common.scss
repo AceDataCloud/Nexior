@@ -366,8 +366,8 @@ html.dark .el-card {
 }
 
 // Mobile clamp: most dialogs in the codebase pass a fixed pixel width
-// (e.g. PaypalPay/StripePay/AliPay/WechatPay use 500px, Status 450px,
-// chat ConfirmationDialog 480px). On a 360px phone these overflow the
+// (e.g. PaypalPay/StripePay/AliPay/WechatPay use 500px, Status 450px).
+// On a 360px phone these overflow the
 // viewport horizontally and clip their content. We let those values
 // stand on tablet/desktop and only constrain on small screens.
 //
