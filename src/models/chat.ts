@@ -509,8 +509,9 @@ export interface IChatConversationResponse {
   // pauses the turn and asks the user one or more multi-choice questions; the
   // payload is rendered as a card (see AskUserQuestionCard.vue).
   // Also used for `type === 'consent_request'` SSE events, which carry a
-  // `IConsentRequestPayload` rendered by ConnectorConsentCard.vue.
-  payload?: IAskUserQuestionPayload | IConsentRequestPayload;
+  // `IConsentRequestPayload` rendered by ConnectorConsentCard.vue, and for
+  // `type === 'action_confirmation'`, rendered by ActionConfirmationCard.vue.
+  payload?: IAskUserQuestionPayload | IConsentRequestPayload | IActionConfirmationPayload;
 }
 
 export interface IChatConversationsResponse {

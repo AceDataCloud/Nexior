@@ -126,6 +126,28 @@
                 :resolved="true"
                 :previous-output="item.output || ''"
               />
+              <action-confirmation-card
+                v-if="
+                  item.type === 'tool_use' &&
+                  item.tool_name === 'request_action_confirmation' &&
+                  item.status === 'awaiting_input' &&
+                  item.pending_action_confirmation
+                "
+                :payload="item.pending_action_confirmation"
+                :resolved="false"
+                @submit="onActionConfirmationSubmit(item, $event)"
+              />
+              <action-confirmation-card
+                v-if="
+                  item.type === 'tool_use' &&
+                  item.tool_name === 'request_action_confirmation' &&
+                  item.status === 'done' &&
+                  actionConfirmationPayloadFromBlock(item)
+                "
+                :payload="actionConfirmationPayloadFromBlock(item)!"
+                :resolved="true"
+                :previous-output="item.output || ''"
+              />
               <entity-card v-if="item.type === 'card' && item.card" :card="item.card" />
             </div>
           </div>
@@ -212,7 +234,13 @@ import copy from 'copy-to-clipboard';
 import { ElButton, ElImage, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState, IChatModelGroup } from '@/models';
-import type { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
+import type {
+  IActionConfirmationPayload,
+  IActionConfirmationResult,
+  IAskUserQuestionPayload,
+  IChatMessageContentItem,
+  IConsentRequestPayload
+} from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
 import ReportButton from '@/components/common/ReportButton.vue';
@@ -224,6 +252,7 @@ import EntityCard from './EntityCard.vue';
 import ThinkingBlock from './ThinkingBlock.vue';
 import AskUserQuestionCard from './AskUserQuestionCard.vue';
 import ConnectorConsentCard from './ConnectorConsentCard.vue';
+import ActionConfirmationCard from './ActionConfirmationCard.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -264,6 +293,7 @@ export default defineComponent({
     ThinkingBlock,
     AskUserQuestionCard,
     ConnectorConsentCard,
+    ActionConfirmationCard,
     ElButton,
     ElImage,
     ElInput
@@ -309,6 +339,7 @@ export default defineComponent({
     'answerAskUserQuestion',
     'skipAskUserQuestion',
     'respondConnectorConsent',
+    'respondActionConfirmation',
     'authorizeConnector',
     'stopBrowserSession',
     'browserRecovery'
@@ -464,6 +495,12 @@ export default defineComponent({
       // so if it's already been stripped we return null and the template
       // suppresses the collapsed card.
       return item.pending_consent_request ?? null;
+    },
+    onActionConfirmationSubmit(item: IChatMessageContentItem, result: IActionConfirmationResult) {
+      this.$emit('respondActionConfirmation', { tool_use_id: item.tool_id || '', result });
+    },
+    actionConfirmationPayloadFromBlock(item: IChatMessageContentItem): IActionConfirmationPayload | null {
+      return item.pending_action_confirmation ?? null;
     }
   }
 });
