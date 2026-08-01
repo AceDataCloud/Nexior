@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 07:57:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 13:02:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.1
+
+Sat, 01 Aug 2026 13:02:07 GMT
+
+### Patches
+
+- 数字人：修好被吞掉的 API token、失效的 favicon 路径与上传中就能点生成，并换上新服务图标 (dev@acedata.cloud)
 
 ## 3.351.0
 
