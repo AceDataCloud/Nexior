@@ -5,82 +5,63 @@
       <!-- Left pane: skill list -->
       <aside class="left-pane">
         <header class="left-header">
-          <div class="left-actions">
-            <button
-              v-if="!searchOpen"
-              class="icon-btn"
-              :aria-label="$t('skill.button.search')"
-              :title="$t('skill.button.search')"
-              @click="openSearch"
-            >
-              <search-icon :size="16" aria-hidden="true" focusable="false" />
-            </button>
-
-            <el-dropdown trigger="click" placement="bottom-end" :hide-on-click="false">
-              <button class="icon-btn" :aria-label="$t('skill.button.add')" :title="$t('skill.button.add')">
-                <add-icon :size="16" aria-hidden="true" focusable="false" />
-              </button>
-              <template #dropdown>
-                <el-dropdown-menu class="add-menu">
-                  <el-dropdown-item @click="onBrowse">
-                    <marketplace-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                    {{ $t('skill.menu.browse') }}
-                  </el-dropdown-item>
-                  <el-dropdown-item divided>
-                    <el-dropdown trigger="hover" placement="left-start" :hide-on-click="true">
-                      <span class="submenu-trigger">
-                        <add-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                        {{ $t('skill.menu.create') }}
-                        <expand-right-icon class="submenu-arrow" :size="14" aria-hidden="true" focusable="false" />
-                      </span>
-                      <template #dropdown>
-                        <el-dropdown-menu class="add-menu">
-                          <el-dropdown-item disabled>
-                            <ai-create-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                            {{ $t('skill.menu.createWithClaude') }}
-                            <span class="badge-soon">{{ $t('skill.menu.soon') }}</span>
-                          </el-dropdown-item>
-                          <el-dropdown-item @click="openWrite">
-                            <write-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                            {{ $t('skill.menu.write') }}
-                          </el-dropdown-item>
-                          <el-dropdown-item @click="openUpload">
-                            <upload-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                            {{ $t('skill.menu.upload') }}
-                          </el-dropdown-item>
-                        </el-dropdown-menu>
-                      </template>
-                    </el-dropdown>
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </div>
-        </header>
-
-        <!-- Inline search field -->
-        <div v-if="searchOpen" class="search-row">
           <el-input
-            ref="searchInput"
             v-model="searchQuery"
             class="search-input"
             size="default"
+            clearable
             :placeholder="$t('skill.placeholder.search')"
-            @keydown.escape="closeSearch"
           >
             <template #prefix>
-              <search-icon :size="13" aria-hidden="true" focusable="false" />
+              <search-icon :size="14" aria-hidden="true" focusable="false" />
             </template>
           </el-input>
-          <button
-            class="icon-btn icon-btn-sm"
-            :aria-label="$t('common.button.close')"
-            :title="$t('common.button.close')"
-            @click="closeSearch"
-          >
-            <close-icon :size="14" aria-hidden="true" focusable="false" />
-          </button>
-        </div>
+
+          <el-dropdown trigger="click" placement="bottom-end" :hide-on-click="false">
+            <button
+              type="button"
+              class="add-button"
+              :aria-label="$t('skill.button.add')"
+              :title="$t('skill.button.add')"
+            >
+              <add-icon :size="16" aria-hidden="true" focusable="false" />
+            </button>
+            <template #dropdown>
+              <el-dropdown-menu class="add-menu">
+                <el-dropdown-item @click="onBrowse">
+                  <marketplace-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
+                  {{ $t('skill.menu.browse') }}
+                </el-dropdown-item>
+                <el-dropdown-item divided>
+                  <el-dropdown trigger="hover" placement="left-start" :hide-on-click="true">
+                    <span class="submenu-trigger">
+                      <add-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
+                      {{ $t('skill.menu.create') }}
+                      <expand-right-icon class="submenu-arrow" :size="14" aria-hidden="true" focusable="false" />
+                    </span>
+                    <template #dropdown>
+                      <el-dropdown-menu class="add-menu">
+                        <el-dropdown-item disabled>
+                          <ai-create-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
+                          {{ $t('skill.menu.createWithClaude') }}
+                          <span class="badge-soon">{{ $t('skill.menu.soon') }}</span>
+                        </el-dropdown-item>
+                        <el-dropdown-item @click="openWrite">
+                          <write-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
+                          {{ $t('skill.menu.write') }}
+                        </el-dropdown-item>
+                        <el-dropdown-item @click="openUpload">
+                          <upload-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
+                          {{ $t('skill.menu.upload') }}
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </header>
 
         <!-- Sections -->
         <div v-loading="loading" class="left-body">
@@ -245,7 +226,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick } from 'vue';
+import { defineComponent } from 'vue';
 import {
   ElInput,
   ElSwitch,
@@ -261,7 +242,6 @@ import {
 import {
   AddIcon,
   AiCreateIcon,
-  CloseIcon,
   DeleteIcon,
   ExpandDownIcon,
   ExpandRightIcon,
@@ -293,7 +273,6 @@ interface IData {
   personalOpen: boolean;
   globalsOpen: boolean;
 
-  searchOpen: boolean;
   searchQuery: string;
 
   uploadVisible: boolean;
@@ -314,7 +293,6 @@ export default defineComponent({
     ElDropdownItem,
     AddIcon,
     AiCreateIcon,
-    CloseIcon,
     DeleteIcon,
     ExpandDownIcon,
     ExpandRightIcon,
@@ -345,7 +323,6 @@ export default defineComponent({
       personalOpen: true,
       globalsOpen: true,
 
-      searchOpen: false,
       searchQuery: '',
 
       uploadVisible: false,
@@ -431,19 +408,6 @@ export default defineComponent({
       } else {
         this.expandedSkillIds.push(skill.id);
       }
-    },
-
-    openSearch() {
-      this.searchOpen = true;
-      nextTick(() => {
-        const input = this.$refs.searchInput as { focus?: () => void } | undefined;
-        input?.focus?.();
-      });
-    },
-
-    closeSearch() {
-      this.searchOpen = false;
-      this.searchQuery = '';
     },
 
     openUpload() {
@@ -574,14 +538,30 @@ html.dark .skills-shell {
 .left-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 16px 16px 8px;
+  gap: 8px;
+  padding: 14px 14px 12px;
 }
 
-.left-actions {
+/* Matches the connector page's toolbar button so the two console pages read
+   as one surface. */
+.add-button {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 8px;
+  background: var(--el-bg-color);
+  color: var(--el-text-color-regular);
+  cursor: pointer;
   display: flex;
-  gap: 4px;
   align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: var(--el-color-primary);
+    color: var(--el-color-primary);
+  }
 }
 
 .icon-btn {
@@ -603,23 +583,10 @@ html.dark .skills-shell {
   background: var(--el-fill-color);
 }
 
-.icon-btn-sm {
-  width: 26px;
-  height: 26px;
-  font-size: 12px;
-}
-
-.search-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px 8px;
-}
-
 /* Styling comes from the global `.el-input__wrapper` rules in _common.scss,
    so the field matches every other input in the console. */
 .search-input {
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .left-body {
