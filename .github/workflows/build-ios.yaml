@@ -172,7 +172,7 @@ jobs:
       # cache restored after it would miss the dominant install. Key on the
       # committed Podfile.lock; pod install reconciles if cap sync regenerates it.
       - name: Cache CocoaPods
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ios/App/Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
