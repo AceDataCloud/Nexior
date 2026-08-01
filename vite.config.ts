@@ -10,6 +10,31 @@ const pkg = createRequire(import.meta.url)('./package.json') as { version: strin
 
 const normalizeModuleId = (id: string) => id.replace(/\\/g, '/');
 
+// Strip comments from the built HTML. They are useful in source but a scanner
+// flags any containing words like FROM/QUERY/USER as information disclosure
+// (CASA 2026-07-20 #6 — it matched `// Priority: query …` and `// Resolve the
+// user's …` inside our inline boot scripts, not just HTML comments).
+// Conditional comments are preserved; `//` lines are only dropped when the
+// whole line is a comment, so URLs and regex literals are untouched.
+const stripHtmlComments = () => ({
+  name: 'strip-html-comments',
+  enforce: 'post' as const,
+  transformIndexHtml: {
+    order: 'post' as const,
+    handler: (html: string) =>
+      html
+        .replace(/<!--(?!\[if|<!)(?:(?!-->)[\s\S])*-->\n?\s*/g, '')
+        .replace(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/g, (match, attrs, body) => {
+          if (/\btype=["']?(application\/(ld\+)?json|importmap)/i.test(attrs)) return match;
+          const stripped = body
+            .split('\n')
+            .filter((line: string) => !/^\s*\/\//.test(line))
+            .join('\n');
+          return `<script${attrs}>${stripped}</script>`;
+        })
+  }
+});
+
 const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string) => boolean]> = [
   // NOTE: We deliberately do NOT define a `vendor-web3` chunk here. Forcing
   // every Web3 dependency into one giant chunk causes Rollup to hoist shared
@@ -72,7 +97,8 @@ export default defineConfig((config: ConfigEnv) => {
       vue(),
       replace({
         preventAssignment: true
-      })
+      }),
+      stripHtmlComments()
     ],
     // Inject the package version as a plain global for ALL surfaces. Read via
     // `__APP_VERSION__` (telemetry release tag + desktop version gate). Do NOT
