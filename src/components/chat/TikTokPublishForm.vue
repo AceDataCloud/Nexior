@@ -17,7 +17,8 @@
         type="textarea"
         :rows="3"
         :maxlength="2200"
-        show-word-limit
+        :show-word-limit="!disabled"
+        :disabled="disabled"
         :placeholder="$t('chat.actionConfirmation.tiktok.captionPlaceholder')"
       />
     </div>
@@ -33,6 +34,7 @@
         id="tpf-privacy"
         v-model="form.privacy_level"
         :placeholder="$t('chat.actionConfirmation.tiktok.privacyPlaceholder')"
+        :disabled="disabled"
         class="tpf-select"
       >
         <el-option
@@ -51,15 +53,15 @@
     <div class="tpf-field">
       <span class="tpf-label">{{ $t('chat.actionConfirmation.tiktok.interactions') }}</span>
       <div class="tpf-checks">
-        <el-checkbox v-model="form.allow_comment" :disabled="detail.comment_disabled">
+        <el-checkbox v-model="form.allow_comment" :disabled="disabled || detail.comment_disabled">
           {{ $t('chat.actionConfirmation.tiktok.allowComment') }}
         </el-checkbox>
         <!-- Duet and Stitch do not apply to photo posts. -->
         <template v-if="!detail.is_photo_post">
-          <el-checkbox v-model="form.allow_duet" :disabled="detail.duet_disabled">
+          <el-checkbox v-model="form.allow_duet" :disabled="disabled || detail.duet_disabled">
             {{ $t('chat.actionConfirmation.tiktok.allowDuet') }}
           </el-checkbox>
-          <el-checkbox v-model="form.allow_stitch" :disabled="detail.stitch_disabled">
+          <el-checkbox v-model="form.allow_stitch" :disabled="disabled || detail.stitch_disabled">
             {{ $t('chat.actionConfirmation.tiktok.allowStitch') }}
           </el-checkbox>
         </template>
@@ -67,14 +69,14 @@
     </div>
 
     <div class="tpf-field">
-      <el-checkbox v-model="form.commercial">
+      <el-checkbox v-model="form.commercial" :disabled="disabled">
         {{ $t('chat.actionConfirmation.tiktok.commercial') }}
       </el-checkbox>
       <div v-if="form.commercial" class="tpf-checks tpf-indent">
-        <el-checkbox v-model="form.brand_organic_toggle">
+        <el-checkbox v-model="form.brand_organic_toggle" :disabled="disabled">
           {{ $t('chat.actionConfirmation.tiktok.yourBrand') }}
         </el-checkbox>
-        <el-checkbox v-model="form.brand_content_toggle" :disabled="brandedContentBlocked">
+        <el-checkbox v-model="form.brand_content_toggle" :disabled="disabled || brandedContentBlocked">
           {{ $t('chat.actionConfirmation.tiktok.brandedContent') }}
         </el-checkbox>
         <p v-if="commercialLabel" class="tpf-hint">{{ commercialLabel }}</p>
@@ -129,20 +131,31 @@ export default defineComponent({
     durationSec: {
       type: Number,
       default: 0
+    },
+    /** Resolved replay: freeze every control so history stays read-only. */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /** Values the user actually submitted, replayed from the tool output. */
+    initialValues: {
+      type: Object as PropType<ITikTokPublishValues | null>,
+      default: null
     }
   },
   emits: ['validity-change'],
   data(): { form: IForm } {
+    const submitted = this.initialValues;
     return {
       form: {
-        title: this.initialTitle,
-        privacy_level: '',
-        allow_comment: false,
-        allow_duet: false,
-        allow_stitch: false,
-        commercial: false,
-        brand_organic_toggle: false,
-        brand_content_toggle: false
+        title: submitted?.title ?? this.initialTitle,
+        privacy_level: submitted?.privacy_level ?? '',
+        allow_comment: submitted ? !submitted.disable_comment : false,
+        allow_duet: submitted ? !submitted.disable_duet : false,
+        allow_stitch: submitted ? !submitted.disable_stitch : false,
+        commercial: Boolean(submitted?.brand_organic_toggle || submitted?.brand_content_toggle),
+        brand_organic_toggle: Boolean(submitted?.brand_organic_toggle),
+        brand_content_toggle: Boolean(submitted?.brand_content_toggle)
       }
     };
   },

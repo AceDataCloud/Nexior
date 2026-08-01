@@ -71,6 +71,10 @@
                   !(
                     item.tool_name === 'request_user_consent' &&
                     (item.status === 'awaiting_input' || item.status === 'done')
+                  ) &&
+                  !(
+                    item.tool_name === 'request_action_confirmation' &&
+                    (item.status === 'awaiting_input' || item.status === 'done')
                   )
                 "
                 :item="item"

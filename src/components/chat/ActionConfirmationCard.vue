@@ -29,6 +29,8 @@
         :detail="payload.detail as any"
         :initial-title="initialTitle"
         :duration-sec="payload.preview?.duration_sec ?? 0"
+        :disabled="resolved"
+        :initial-values="submittedValues"
         @validity-change="onValidityChange"
       />
       <GenericFieldList v-else :summary="payload.summary" :fields="payload.fields ?? []" />
@@ -59,7 +61,7 @@ import { ConfirmIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import GenericFieldList from './GenericFieldList.vue';
 import TikTokPublishForm from './TikTokPublishForm.vue';
-import type { IActionConfirmationPayload, IActionConfirmationResult } from '@/models';
+import type { IActionConfirmationPayload, IActionConfirmationResult, ITikTokPublishValues } from '@/models';
 
 interface IData {
   submitting: boolean;
@@ -113,6 +115,16 @@ export default defineComponent({
     initialTitle(): string {
       const detail = this.payload?.detail as Record<string, unknown> | undefined;
       return typeof detail?.suggested_title === 'string' ? detail.suggested_title : '';
+    },
+    /** What the user actually submitted, so a resolved card replays it. */
+    submittedValues(): ITikTokPublishValues | null {
+      if (!this.resolved || !this.previousOutput) return null;
+      try {
+        const parsed = JSON.parse(this.previousOutput) as IActionConfirmationResult;
+        return (parsed?.values as unknown as ITikTokPublishValues) ?? null;
+      } catch {
+        return null;
+      }
     },
     isDestructive(): boolean {
       return this.payload?.severity === 'destructive';
@@ -186,35 +198,48 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+// Shape, shadow and enter animation deliberately mirror
+// `<ConnectorConsentCard>` — the two cards sit in the same transcript and a
+// different radius/elevation reads as a different product.
 .action-confirmation-card {
-  border: 1px solid var(--el-border-color);
-  border-radius: 10px;
-  padding: 14px 16px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 16px;
+  padding: 16px 18px 14px;
   margin: 8px 0;
+  max-width: 100%;
+  font-size: 14px;
   background: var(--el-bg-color);
+  box-shadow:
+    0 4px 16px -8px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  animation: actionConfirmationEnter 280ms cubic-bezier(0.16, 1, 0.3, 1);
 
   &.is-destructive {
     border-color: var(--el-color-danger-light-5);
   }
 
   &.is-resolved {
-    opacity: 0.72;
+    background: var(--el-fill-color-light);
+    box-shadow: none;
+    animation: none;
   }
 
   .acc-header {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     .header-icon {
       color: var(--el-color-primary);
+      font-size: 16px;
       flex-shrink: 0;
     }
 
     .header-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--el-text-color-primary);
       min-width: 0;
       word-break: break-word;
@@ -228,7 +253,7 @@ export default defineComponent({
   .acc-preview {
     position: relative;
     margin-bottom: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     background: var(--el-fill-color-light);
     max-width: 240px;
@@ -256,13 +281,31 @@ export default defineComponent({
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    margin-top: 14px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--el-border-color-lighter);
   }
 
   .acc-resolved-banner {
-    margin-top: 12px;
-    font-size: 12px;
-    color: var(--el-text-color-secondary);
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--el-color-info-light-9);
+    color: var(--el-text-color-regular);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@keyframes actionConfirmationEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 </style>
