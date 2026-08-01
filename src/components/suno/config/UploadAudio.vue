@@ -34,6 +34,7 @@
               name="file"
               :limit="1"
               class="upload-wrapper"
+              :before-upload="beforeUploadSizeGuard"
               :action="uploadUrl"
               accept=".mp3,.wav,.m4a,audio/*"
               :show-file-list="true"
@@ -114,7 +115,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin, uploadSizeGuardMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { ISunoUploadRequest } from '@/models';
 import { sunoOperator } from '@/operators';
@@ -153,7 +154,7 @@ export default defineComponent({
     ElRadioGroup,
     ElRadioButton
   },
-  mixins: [uploadTrackerMixin],
+  mixins: [uploadTrackerMixin, uploadSizeGuardMixin],
   emits: ['change'],
   data(): IData {
     return {

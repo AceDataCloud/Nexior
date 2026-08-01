@@ -776,7 +776,7 @@
     "description": "Form field label: reference/editable video for Omni video editing"
   },
   "description.omniReferenceVideo": {
-    "message": "For Kling O1 and V3 Omni. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>.",
+    "message": "For Kling O1 and V3 Omni. Upload one MP4/MOV (720-2160px, 3-10s, <=100MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>.",
     "description": "Help text for the Omni reference video uploader"
   },
   "name.referenceImages": {
@@ -840,7 +840,7 @@
     "description": "Error when the reference video is not MP4/MOV"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Uploaded file size cannot exceed {max}!",
+    "description": "Error when the reference video exceeds the upload size limit"
   }
 }

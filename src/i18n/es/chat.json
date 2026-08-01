@@ -311,6 +311,10 @@
     "message": "Error al subir el archivo, por favor intente de nuevo más tarde",
     "description": "Mensaje en la página que indica al usuario que hubo un error al subir el archivo, por favor intente de nuevo más tarde"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "El tamaño del archivo {size} supera el límite {max}, por favor, comprímelo y vuelve a intentarlo",
+    "description": "Mensaje en la página web que informa al usuario que el archivo excede el límite de tamaño de carga y necesita ser comprimido antes de volver a intentarlo"
+  },
   "message.notApplied": {
     "message": "No ha solicitado este servicio, por favor hágalo primero",
     "description": "Mensaje en la página que indica al usuario que no ha solicitado este servicio, por favor hágalo primero"
@@ -923,7 +927,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Legible para humanos: Cron original"
+    "description": "Legible por humanos: Cron original"
   },
   "scheduledTasks.humanize.once": {
     "message": "Una vez a las {time}",
@@ -1122,11 +1126,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo de salida - Video"
+    "description": "Tipo de artefacto - Video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo de salida - Audio"
+    "description": "Tipo de artefacto - Audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",

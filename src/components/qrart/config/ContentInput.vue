@@ -25,6 +25,7 @@
       :limit="1"
       :multiple="false"
       list-type="picture"
+      :before-upload="beforeUploadSizeGuard"
       :action="uploadUrl"
       :on-exceed="onExceed"
       :on-error="onError"
@@ -55,7 +56,13 @@ import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElRadioGroup, ElRadioButton, ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import ImagePreview from '@/components/common/ImagePreview.vue';
-import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin, uploadTrackerMixin } from '@/utils';
+import {
+  getBaseUrlPlatform,
+  pasteUploadMixin,
+  dropUploadMixin,
+  uploadTrackerMixin,
+  uploadSizeGuardMixin
+} from '@/utils';
 
 export const DEFAULT_CONTENT = '';
 
@@ -76,7 +83,7 @@ export default defineComponent({
     ElRadioButton,
     ImagePreview
   },
-  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
   data(): IData {
     return {
       inputWay: 'input',

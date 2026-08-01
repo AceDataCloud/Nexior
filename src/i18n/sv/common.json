@@ -273,7 +273,7 @@
   },
   "entity.status": {
     "message": "Status",
-    "description": "Status för entiteten"
+    "description": "Entitetens status"
   },
   "status.loading": {
     "message": "Laddar...",
@@ -869,7 +869,7 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Namn på systemtemat, vilket innebär att temat automatiskt växlar baserat på systeminställningarna"
+    "description": "Namnet på systemtemat, indikerar att temat automatiskt växlar baserat på systeminställningar"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
@@ -1474,7 +1474,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Visningsnamn för WeChat kontakttyp"
+    "description": "Visningsnamn för WeChat kontakt typ"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Anteckning (valfritt), t.ex.: Försäljning",
@@ -1620,6 +1620,10 @@
     "message": "Referensuppladdningarna pågår fortfarande – vänta ett ögonblick.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.uploadTooLarge": {
+    "message": "Filstorlek {size} överskrider gränsen {max}, vänligen komprimera och försök igen",
+    "description": "Meddelande som visas när den valda filen överskrider den tillåtna uppladdningsstorleken, anger aktuell filstorlek och tillåten gräns."
+  },
   "message.dropToUpload": {
     "message": "Dra och släpp hit för att ladda upp",
     "description": "Text som tillfälligt visas ovanför ett uppladdningskontroll när en fil dras över det, vilket informerar användaren att släppa för att ladda upp."
@@ -1681,7 +1685,7 @@
   },
   "nav.omni": {
     "message": "Omni Video",
-    "description": "Navigeringsflik för Omni videomodulen"
+    "description": "Navigeringsflik för Omni videomodul"
   },
   "settings.localToolsMcpToolsTitle": {
     "message": "MCP Verktyg",

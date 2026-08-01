@@ -7,6 +7,7 @@
       name="file"
       class="w-full"
       :limit="1"
+      :before-upload="beforeUploadSizeGuard"
       :action="uploadUrl"
       :headers="headers"
       :on-exceed="onExceed"
@@ -48,7 +49,7 @@
 import { ImageIcon, MicrophoneIcon, MusicIcon, UploadIcon, VideoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile, UploadInstance } from 'element-plus';
-import { getBaseUrlPlatform, dropUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, dropUploadMixin, uploadSizeGuardMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -66,7 +67,7 @@ export default defineComponent({
     UploadIcon,
     VideoIcon
   },
-  mixins: [dropUploadMixin],
+  mixins: [dropUploadMixin, uploadSizeGuardMixin],
   props: {
     accept: {
       type: String,

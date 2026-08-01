@@ -101,7 +101,7 @@
   },
   "player.pause": {
     "message": "Pause",
-    "description": "Barrierefreies Label für die Pause-Schaltfläche des Players"
+    "description": "Der barrierefreie Label für die Pausentaste des Players"
   },
   "player.next": {
     "message": "Nächster Titel",
@@ -289,7 +289,7 @@
   },
   "entity.operation": {
     "message": "Operation",
-    "description": "Die Operation des Entität"
+    "description": "Die Operation des Entitäts"
   },
   "entity.description": {
     "message": "Beschreibung",
@@ -641,7 +641,7 @@
   },
   "nav.grokvideo": {
     "message": "Grok Video",
-    "description": "Text in der Navigationsleiste der Website, der zur Anzeige der Grok Imagine Video-Seite dient"
+    "description": "Der Text in der Navigationsleiste der Website, der die Grok Imagine Video-Seite anzeigt"
   },
   "nav.luma": {
     "message": "Luma",
@@ -697,7 +697,7 @@
   },
   "nav.video": {
     "message": "Video",
-    "description": "Text in der Navigationsleiste der Website, der zur Anzeige der Video-Seite dient"
+    "description": "Der Text in der Navigationsleiste der Website, der die Videoseite anzeigt"
   },
   "nav.distribution": {
     "message": "Empfohlene Einnahmen",
@@ -1620,6 +1620,10 @@
     "message": "Referenz-Uploads sind noch in Bearbeitung – bitte warten Sie einen Moment.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.uploadTooLarge": {
+    "message": "Die Dateigröße {size} überschreitet das Limit {max}. Bitte komprimieren Sie die Datei und versuchen Sie es erneut.",
+    "description": "Die Meldung, die angezeigt wird, wenn die vom Benutzer ausgewählte Datei die maximale Uploadgröße überschreitet, einschließlich der aktuellen Dateigröße und des erlaubten Limits."
+  },
   "message.dropToUpload": {
     "message": "Hierher ziehen, um hochzuladen",
     "description": "Hinweistext, der erscheint, wenn Dateien über ein Upload-Element gezogen werden, um den Benutzer darauf hinzuweisen, dass er loslassen kann, um hochzuladen."
@@ -1681,7 +1685,7 @@
   },
   "nav.omni": {
     "message": "Omni Video",
-    "description": "Navigationslabel für das Omni Video-Modul"
+    "description": "Das Navigationslabel für das Omni Video-Modul"
   },
   "settings.localToolsMcpToolsTitle": {
     "message": "MCP Werkzeuge",

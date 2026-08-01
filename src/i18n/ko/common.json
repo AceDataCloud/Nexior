@@ -1620,6 +1620,10 @@
     "message": "참조 파일을 아직 업로드하는 중입니다. 잠시만 기다려 주세요.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "message.uploadTooLarge": {
+    "message": "파일 크기 {size}가 최대 크기 {max}를 초과했습니다. 압축 후 다시 시도해 주세요.",
+    "description": "사용자가 선택한 파일이 업로드 크기 제한을 초과할 때 표시되는 알림으로, 현재 파일 크기와 허용된 최대 크기를 설명합니다."
+  },
   "message.dropToUpload": {
     "message": "여기로 드래그하여 업로드",
     "description": "파일을 특정 업로드 컨트롤 위로 드래그할 때 해당 컨트롤 위에 임시로 표시되는 텍스트로, 사용자가 손을 떼면 업로드된다는 것을 알립니다."

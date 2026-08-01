@@ -65,7 +65,14 @@ import {
   UploadFile,
   UploadFiles
 } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin } from '@/utils';
+import {
+  getBaseUrlPlatform,
+  uploadTrackerMixin,
+  dropUploadMixin,
+  isUploadSizeAllowed,
+  formatBytes,
+  MAX_UPLOAD_BYTES
+} from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import { IKlingReferenceVideo } from '@/models';
@@ -145,13 +152,15 @@ export default defineComponent({
         return false;
       }
       const isMP4orMOV = file.type === 'video/mp4' || file.type === 'video/quicktime';
-      const isLt200M = file.size / 1024 / 1024 < 200;
+      // Capped at the platform upload limit: a larger file cannot reach COS at
+      // all, and the request hangs rather than failing. See utils/uploadSize.ts.
+      const withinLimit = isUploadSizeAllowed(file.size);
       if (!isMP4orMOV) {
         ElMessage.error(this.$t('kling.message.referenceVideoTypeFailed'));
         return false;
       }
-      if (!isLt200M) {
-        ElMessage.error(this.$t('kling.message.referenceVideoSizeExceed'));
+      if (!withinLimit) {
+        ElMessage.error(this.$t('kling.message.referenceVideoSizeExceed', { max: formatBytes(MAX_UPLOAD_BYTES) }));
         return false;
       }
       return true;

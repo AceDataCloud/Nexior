@@ -1474,7 +1474,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Näyttönimi WeChat-yhteystyypille"
+    "description": "Näyttönimi WeChat-kontaktityypille"
   },
   "settings.contactLabelPlaceholder": {
     "message": "Etiketti (valinnainen), esim. Myynti",
@@ -1619,6 +1619,10 @@
   "message.uploadInProgress": {
     "message": "Viiteaineistojen lataus on yhä käynnissä – odota hetki.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
+  },
+  "message.uploadTooLarge": {
+    "message": "Tiedoston koko {size} ylittää rajan {max}, yritä pakata se ja yritä uudelleen",
+    "description": "Ilmoitus, joka näkyy, kun käyttäjän valitsema tiedosto ylittää latauskokorajan, selittää nykyisen tiedoston koon ja sallitun rajan."
   },
   "message.dropToUpload": {
     "message": "Vedä ja pudota tänne ladataksesi",

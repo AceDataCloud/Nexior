@@ -15,6 +15,7 @@
       :multiple="true"
       :action="uploadUrl"
       :show-file-list="false"
+      :before-upload="onBeforeUpload"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-progress="onProgress"
@@ -171,7 +172,10 @@ import {
   openConnectionsManager,
   pasteUploadMixin,
   dropUploadMixin,
-  uploadTrackerMixin
+  uploadTrackerMixin,
+  formatBytes,
+  isUploadSizeAllowed,
+  MAX_UPLOAD_BYTES
 } from '@/utils';
 import { getSendShortcut } from '@/utils/composer';
 import { openSkillsManager } from '@/utils/skills/openSkillsManager';
@@ -392,6 +396,21 @@ export default defineComponent({
     },
     onProgress(event: UploadProgressEvent, uploadFile: UploadFile) {
       console.debug('File upload progress:', uploadFile.name, event.loaded, event.total, uploadFile.percentage);
+    },
+    onBeforeUpload(file: File) {
+      // Refuse oversized files here: past the nginx limit the request hangs
+      // instead of erroring, and the file stays `uploading` forever, which
+      // permanently greys out the send button. See utils/uploadSize.ts.
+      if (!isUploadSizeAllowed(file.size)) {
+        ElMessage.error(
+          this.$t('chat.message.uploadReferencesTooLarge', {
+            size: formatBytes(file.size),
+            max: formatBytes(MAX_UPLOAD_BYTES)
+          })
+        );
+        return false;
+      }
+      return true;
     },
     onExceed() {
       ElMessage.warning(this.$t('chat.message.uploadReferencesExceed'));

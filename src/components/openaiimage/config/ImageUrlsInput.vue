@@ -14,6 +14,7 @@
         :limit="maxImages"
         :multiple="true"
         :show-file-list="false"
+        :before-upload="beforeUploadSizeGuard"
         :action="uploadUrl"
         :on-exceed="onExceed"
         :on-error="onError"
@@ -45,7 +46,7 @@
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin, uploadSizeGuardMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { pasteUploadMixin, dropUploadMixin } from '@/utils';
@@ -66,7 +67,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin],
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
   data(): IData {
     return {
       fileList: [],

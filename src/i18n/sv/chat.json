@@ -311,6 +311,10 @@
     "message": "Filuppladdning misslyckades, försök igen senare",
     "description": "Meddelande på webbsidan som informerar användaren om att filuppladdning misslyckades, försök igen senare"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "Filstorlek {size} överstiger gränsen {max}, vänligen komprimera och försök igen",
+    "description": "Meddelande på webben som informerar användaren om att filen överskrider den maximala uppladdningsstorleken och att den behöver komprimeras innan den kan laddas upp igen."
+  },
   "message.notApplied": {
     "message": "Du har inte ansökt om denna tjänst, vänligen ansök först",
     "description": "Meddelande på webbsidan som informerar användaren om att de inte har ansökt om denna tjänst, vänligen ansök först"
@@ -749,7 +753,7 @@
   },
   "scheduledTasks.jitterHint": {
     "message": "±60s jitter",
-    "description": "Förklaring av körningstidens jitter"
+    "description": "Förklaring av tidsjitter"
   },
   "scheduledTasks.runCount": {
     "message": "Har körts {count} gånger",
@@ -922,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Mänskligt läsbart: original Cron"
+    "description": "Mänskligt läsbart: Ursprunglig Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Engångs {time}",
@@ -1121,7 +1125,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Utdata typ - video"
+    "description": "Utdata typ - Video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",

@@ -8,6 +8,7 @@
       class="w-full"
       :limit="MAESTRO_FILE_LIMIT"
       :multiple="true"
+      :before-upload="beforeUploadSizeGuard"
       :action="uploadUrl"
       :headers="headers"
       :on-exceed="onExceed"
@@ -27,7 +28,7 @@
 import { AttachmentIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { getBaseUrlPlatform, dropUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, dropUploadMixin, uploadSizeGuardMixin } from '@/utils';
 import { MAESTRO_FILE_ACCEPT, MAESTRO_FILE_LIMIT } from '@/constants';
 
 interface IData {
@@ -44,7 +45,7 @@ export default defineComponent({
     ElUpload,
     ElButton
   },
-  mixins: [dropUploadMixin],
+  mixins: [dropUploadMixin, uploadSizeGuardMixin],
   data(): IData {
     return {
       fileList: [],

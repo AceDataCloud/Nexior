@@ -11,6 +11,7 @@
         name="file"
         :limit="1"
         class="upload-wrapper inline-upload"
+        :before-upload="beforeUploadSizeGuard"
         :action="uploadUrl"
         accept=".mp3,.wav,.m4a,audio/*"
         :show-file-list="false"
@@ -41,7 +42,7 @@
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElRadioGroup, ElRadioButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin, uploadSizeGuardMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IProducerUploadRequest } from '@/models';
 import { producerOperator } from '@/operators';
@@ -63,7 +64,7 @@ export default defineComponent({
     ElRadioButton,
     InfoIcon
   },
-  mixins: [dropUploadMixin, uploadTrackerMixin],
+  mixins: [dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
   emits: ['change'],
   data(): IData {
     return {

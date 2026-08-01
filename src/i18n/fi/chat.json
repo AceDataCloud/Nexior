@@ -311,6 +311,10 @@
     "message": "Tiedoston lataus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle tiedoston lataus epäonnistui, yritä myöhemmin uudelleen"
   },
+  "message.uploadReferencesTooLarge": {
+    "message": "Tiedoston koko {size} ylittää rajan {max}, pakkaa se ja yritä uudelleen",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että tiedosto ylittää latauskoko rajan ja että se on pakattava ennen uudelleen yrittämistä"
+  },
   "message.notApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae ensin",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle et ole vielä hakenut tätä palvelua, hae ensin"
@@ -894,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Ihmisen luettavissa: alkuperäinen Cron"
+    "description": "Ihmisten luettavissa oleva muoto: alkuperäinen Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "kerran klo {time}",
