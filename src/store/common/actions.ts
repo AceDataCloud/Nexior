@@ -122,7 +122,7 @@ export const getExchangeRate = async (
   }
 };
 
-export const initializeSite = async ({ state, commit, dispatch }: ActionContext<IRootState, IRootState>) => {
+export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   console.debug('start to initialize site');
   const origin = getSiteOrigin(state?.site);
   try {
@@ -131,7 +131,10 @@ export const initializeSite = async ({ state, commit, dispatch }: ActionContext<
     console.debug('initialize site success', data);
   } catch (error) {
     console.error('initialize site failed', error);
-    dispatch('login');
+    // No `dispatch('login')` here: with `state.site` still empty,
+    // `isIframeLoginEnabled()` reads undefined and silently falls back to the
+    // full-page redirect — so an iframe-login site would bounce users to
+    // auth.acedata.cloud purely because this bootstrap call failed.
   }
 };
 
