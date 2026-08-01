@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 13:52:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 14:03:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.3
+
+Sat, 01 Aug 2026 14:03:22 GMT
+
+### Patches
+
+- 数字人结果卡片：回显素材、补齐尺寸与追踪信息、给等待中的任务一个剩余时间 (dev@acedata.cloud)
 
 ## 3.351.2
 
