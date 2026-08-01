@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 18:10:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 18:40:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.353.2
+
+Sat, 01 Aug 2026 18:40:32 GMT
+
+### Patches
+
+- fix iframe-login sites falling back to a full-page redirect (dev@acedata.cloud)
 
 ## 3.353.1
 
