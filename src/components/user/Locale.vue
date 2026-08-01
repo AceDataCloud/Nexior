@@ -21,8 +21,8 @@ import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus
 
 import { setCookie } from 'typescript-cookie';
 import { getDomain } from '@/utils';
-import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import { setI18nLanguage } from '@/i18n';
+import { getSiteLocaleOptions, resolveSiteLocale } from '@/utils/siteLocales';
 
 export default defineComponent({
   name: 'Locale',
@@ -33,12 +33,13 @@ export default defineComponent({
     ElIcon,
     ArrowDown
   },
-  data() {
-    return {
-      locales: I18N_SUPPORTED_LOCALES
-    };
-  },
   computed: {
+    site() {
+      return this.$store.getters.site;
+    },
+    locales() {
+      return getSiteLocaleOptions(this.site?.supported_locales);
+    },
     value(): string {
       return this.$i18n.locale;
     },
@@ -47,9 +48,25 @@ export default defineComponent({
       return found ? found.label : this.value;
     }
   },
+  watch: {
+    locales: {
+      immediate: true,
+      handler() {
+        this.ensureAllowedLocale();
+      }
+    }
+  },
   methods: {
+    async ensureAllowedLocale() {
+      const locale = resolveSiteLocale(this.value, this.site);
+      if (locale === this.value) return;
+      await this.applyLocale(locale);
+    },
     async onSelectLocale(locale: string) {
       this.$router.push({ query: { ...this.$route.query, locale: undefined } });
+      await this.applyLocale(locale);
+    },
+    async applyLocale(locale: string) {
       await setI18nLanguage(locale);
       setCookie('LOCALE', locale, {
         path: '/',

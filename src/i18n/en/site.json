@@ -27,6 +27,10 @@
     "message": "Primary Color",
     "description": "Displayed as the title in the editing box"
   },
+  "field.supportedLocales": {
+    "message": "Site Languages",
+    "description": "Interface languages visitors can select on this site"
+  },
   "field.qr": {
     "message": "QR Code",
     "description": "Displayed as the title in the editing box"
@@ -550,6 +554,26 @@
   "message.primaryColorTip": {
     "message": "Primary brand colour for the site. Applies to buttons, links, highlights, and accent gradients across the entire UI.",
     "description": "Tip for the per-site primary colour picker"
+  },
+  "message.supportedLocalesTip": {
+    "message": "Choose the interface languages available to visitors. All languages are supported by default.",
+    "description": "Tip for the site language selection"
+  },
+  "message.allLocales": {
+    "message": "All languages",
+    "description": "Summary shown when the site does not restrict languages"
+  },
+  "message.atLeastOneLocale": {
+    "message": "Keep at least one language",
+    "description": "Validation shown when the site language selection is empty"
+  },
+  "placeholder.supportedLocales": {
+    "message": "Select site languages",
+    "description": "Placeholder for the site language multi-select"
+  },
+  "title.editSupportedLocales": {
+    "message": "Edit Site Languages",
+    "description": "Title of the site language editor"
   },
   "message.adminsTip": {
     "message": "Site admin IDs, by default, the user who first creates the site will become an admin. Only site admins can manage the site.",

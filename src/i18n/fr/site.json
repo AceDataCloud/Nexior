@@ -27,6 +27,10 @@
     "message": "Couleur du thème",
     "description": "Titre affiché dans le champ d'édition"
   },
+  "field.supportedLocales": {
+    "message": "Langue du site",
+    "description": "Langue de l'interface que les visiteurs peuvent choisir dans les paramètres du site."
+  },
   "field.qr": {
     "message": "Code QR",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -550,6 +554,26 @@
   "message.primaryColorTip": {
     "message": "Couleur de marque du thème du site, utilisée pour les boutons, les liens, les surlignages et les dégradés de couleur de marque sur tout le site.",
     "description": "Astuce pour le sélecteur de couleur du thème du site"
+  },
+  "message.supportedLocalesTip": {
+    "message": "Choisissez la langue de l'interface que ce site propose aux visiteurs, toutes les langues sont prises en charge par défaut.",
+    "description": "Astuce pour les paramètres de langue disponibles sur le site."
+  },
+  "message.allLocales": {
+    "message": "Toutes les langues",
+    "description": "Résumé lorsque le site n'a pas de restrictions sur les langues disponibles."
+  },
+  "message.atLeastOneLocale": {
+    "message": "Veuillez conserver au moins une langue",
+    "description": "Message de validation lorsque la sélection de langues du site est vide."
+  },
+  "placeholder.supportedLocales": {
+    "message": "Choisir la langue du site",
+    "description": "Texte d'espace réservé pour le champ de sélection des langues du site."
+  },
+  "title.editSupportedLocales": {
+    "message": "Modifier la langue du site",
+    "description": "Titre de la fenêtre contextuelle pour l'édition des langues du site."
   },
   "message.adminsTip": {
     "message": "ID des administrateurs du site. Par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur. Seuls les administrateurs du site peuvent gérer le site.",

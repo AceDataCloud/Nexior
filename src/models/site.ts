@@ -175,6 +175,8 @@ export interface ISite {
   title?: string;
   logo?: string;
   favicon?: string;
+  language?: string;
+  supported_locales?: string[] | null;
   keywords?: string[];
   admins?: string[];
   description?: string;

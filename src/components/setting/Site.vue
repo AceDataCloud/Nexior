@@ -105,6 +105,23 @@
 
     <section class="settings-item">
       <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.supportedLocales') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.supportedLocalesTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <span class="settings-value">{{ supportedLocalesSummary }}</span>
+        <edit-locales
+          :model-value="supportedLocaleValues"
+          :title="$t('site.title.editSupportedLocales')"
+          @confirm="onSaveSupportedLocales"
+        />
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.admins') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.adminsTip') }}
@@ -160,6 +177,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
+import EditLocales from '@/components/site/EditLocales.vue';
 import EditContacts from '@/components/site/EditContacts.vue';
 import UserChip from '@/components/site/UserChip.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
@@ -169,6 +187,7 @@ import { getBrandContacts, hasBrandContacts, toWritableSitePayload } from '@/uti
 import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
+import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 
 // A small curated palette to make picking a "good" colour easy. The picker
 // still accepts any hex via its colour wheel; these are just shortcuts.
@@ -191,6 +210,7 @@ export default defineComponent({
     EditText,
     EditImage,
     EditUsers,
+    EditLocales,
     EditContacts,
     UserChip,
     AutoTranslateToggle,
@@ -230,6 +250,18 @@ export default defineComponent({
     hasCustomPrimaryColor(): boolean {
       const c = this.storedPrimaryColor;
       return !!c && c.toLowerCase() !== DEFAULT_PRIMARY_COLOR.toLowerCase();
+    },
+    supportedLocaleValues(): string[] {
+      return this.site?.supported_locales?.length
+        ? [...this.site.supported_locales]
+        : I18N_SUPPORTED_LOCALES.map((locale) => locale.value);
+    },
+    supportedLocalesSummary(): string {
+      if (!this.site?.supported_locales?.length) return this.$t('site.message.allLocales') as string;
+      const selected = new Set(this.site.supported_locales);
+      return I18N_SUPPORTED_LOCALES.filter((locale) => selected.has(locale.value))
+        .map((locale) => locale.label)
+        .join('、');
     },
     contacts(): ISiteContact[] {
       return getBrandContacts(this.site);
@@ -274,6 +306,10 @@ export default defineComponent({
         delete branding.contacts;
       }
       this.onSave({ branding });
+    },
+    onSaveSupportedLocales(locales: string[]) {
+      const supportedLocales = locales.length === I18N_SUPPORTED_LOCALES.length ? null : locales;
+      this.onSave({ supported_locales: supportedLocales });
     },
     onTranslationChanged() {
       // Toggle endpoints mutate the row server-side; refresh so the
