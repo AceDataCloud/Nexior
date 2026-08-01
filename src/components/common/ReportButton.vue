@@ -74,17 +74,29 @@ export default defineComponent({
 <style lang="scss" scoped>
 .report-entry {
   display: inline-flex;
+  // Sibling action chips are 24px tall el-buttons and the row is
+  // `align-items: baseline`; a bare icon has no text baseline to align on, so
+  // it floated ~3px high. Match their box height and center within it instead.
+  align-self: center;
+  align-items: center;
+  min-height: 24px;
+  // Siblings carry this so the row stays even once it wraps.
+  margin-bottom: 10px;
 }
 .btn-report {
   display: inline-flex;
   align-items: center;
-  padding: 0;
+  padding: 0 2px;
   border: 0;
   background: transparent;
   margin-left: 5px;
   cursor: pointer;
-  color: inherit;
+  // `inherit` picked up the card's pale body color; use the same secondary
+  // token the other muted controls (delete, copy) use.
+  color: var(--el-text-color-secondary);
   line-height: 1;
+  font-size: 15px;
+  transition: color 0.15s ease;
   &:hover {
     color: var(--el-color-danger);
   }

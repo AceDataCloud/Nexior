@@ -653,8 +653,20 @@ export default defineComponent({
     // source of truth for spacing and the icons line up cleanly.
     :deep(.icon-copy),
     :deep(.icon-check),
-    :deep(.icon-sync) {
+    :deep(.icon-sync),
+    :deep(.btn-report) {
       margin-left: 0;
+    }
+    // ReportButton is sized for the 24px action chips on result cards; here
+    // the row is icon-only, so drop that sizing and inherit this row's.
+    :deep(.report-entry) {
+      min-height: 0;
+      margin-bottom: 0;
+    }
+    :deep(.btn-report) {
+      padding: 0;
+      font-size: inherit;
+      color: inherit;
     }
   }
 
