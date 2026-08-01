@@ -19,30 +19,6 @@
     "message": "실패 원인",
     "description": "실패 원인"
   },
-  "name.face": {
-    "message": "얼굴 소스",
-    "description": "얼굴 소스 필드"
-  },
-  "name.faceVideo": {
-    "message": "비디오",
-    "description": "얼굴 비디오 옵션"
-  },
-  "name.facePhoto": {
-    "message": "사진",
-    "description": "얼굴 사진 옵션"
-  },
-  "name.voice": {
-    "message": "음성",
-    "description": "음성 소스 필드"
-  },
-  "name.voiceAudio": {
-    "message": "오디오",
-    "description": "오디오 기반 음성 옵션"
-  },
-  "name.voiceText": {
-    "message": "텍스트",
-    "description": "텍스트 기반 음성 옵션"
-  },
   "name.audioDriven": {
     "message": "오디오 기반",
     "description": "오디오 기반 레이블"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "텍스트 기반",
     "description": "텍스트 기반 레이블"
-  },
-  "name.engine": {
-    "message": "엔진",
-    "description": "립싱크 엔진 필드"
-  },
-  "name.resolution": {
-    "message": "해상도",
-    "description": "출력 해상도 필드"
-  },
-  "name.voiceReady": {
-    "message": "음성 준비됨",
-    "description": "복제된 음성 준비 레이블"
-  },
-  "placeholder.text": {
-    "message": "아바타가 말할 내용을 입력하세요…",
-    "description": "말할 텍스트 자리 표시자"
-  },
-  "description.face": {
-    "message": "말하는 아바타를 구동할 정면 얼굴 비디오(권장) 또는 사진 한 장을 업로드하세요.",
-    "description": "얼굴 필드 도움말"
-  },
-  "description.voiceClone": {
-    "message": "음성을 복제할 깨끗한 10–20초 음성 샘플을 업로드하고, 이를 재사용하여 텍스트를 말하게 하세요.",
-    "description": "음성 복제 도움말"
   },
   "status.pending": {
     "message": "대기 중",
@@ -91,37 +43,13 @@
     "message": "실패",
     "description": "실패"
   },
-  "button.generate": {
-    "message": "비디오 생성",
-    "description": "생성 버튼"
-  },
   "button.download": {
     "message": "비디오 다운로드",
     "description": "비디오 다운로드 버튼"
   },
-  "button.uploadVideo": {
-    "message": "얼굴 비디오 업로드",
-    "description": "얼굴 비디오 업로드 버튼"
-  },
-  "button.uploadPhoto": {
-    "message": "얼굴 사진 업로드",
-    "description": "얼굴 사진 업로드 버튼"
-  },
-  "button.uploadAudio": {
-    "message": "오디오 업로드",
-    "description": "구동 오디오 업로드 버튼"
-  },
   "button.uploadSample": {
     "message": "샘플 업로드",
     "description": "음성 샘플 업로드 버튼"
-  },
-  "button.clone": {
-    "message": "음성 복제",
-    "description": "음성 복제 버튼"
-  },
-  "button.cloning": {
-    "message": "복제 중…",
-    "description": "복제 진행 중 버튼"
   },
   "message.startingTask": {
     "message": "비디오 작업을 제출하는 중…",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "음성 복제에 실패했습니다. 더 깨끗한 샘플을 시도해 주세요.",
     "description": "음성 복제 실패"
+  },
+  "name.step1": {
+    "message": "누가 말할까요",
+    "description": "1단계 제목: 얼굴"
+  },
+  "name.step2": {
+    "message": "무엇을 말할까요",
+    "description": "2단계 제목: 목소리"
+  },
+  "name.required": {
+    "message": "필수",
+    "description": "필수 필드 배지"
+  },
+  "name.faceModeVideo": {
+    "message": "비디오 클립",
+    "description": "페이스 모드: 비디오"
+  },
+  "name.faceModePhoto": {
+    "message": "사진 한 장",
+    "description": "페이스 모드: 사진"
+  },
+  "name.voiceModeText": {
+    "message": "이 텍스트 읽기",
+    "description": "음성 모드: 텍스트 음성 변환"
+  },
+  "name.voiceModeAudio": {
+    "message": "내 녹음 사용",
+    "description": "음성 모드: 오디오 업로드"
+  },
+  "name.speech": {
+    "message": "말할 내용",
+    "description": "구술 텍스트 필드 제목"
+  },
+  "name.timbre": {
+    "message": "음색",
+    "description": "클론 음성 필드"
+  },
+  "name.advanced": {
+    "message": "고급 옵션",
+    "description": "고급 섹션입니다."
+  },
+  "name.speed": {
+    "message": "속도",
+    "description": "말하기 속도 필드"
+  },
+  "name.cloneVoice": {
+    "message": "음색 복제",
+    "description": "음성 복제 대화상자 제목입니다."
+  },
+  "name.voiceName": {
+    "message": "음성 이름",
+    "description": "음성 별명 필드"
+  },
+  "name.voiceLang": {
+    "message": "언어",
+    "description": "음성 언어 필드"
+  },
+  "name.myVoice": {
+    "message": "내 음색",
+    "description": "기본 클론 음성 이름"
+  },
+  "name.lang_zh": {
+    "message": "중국어",
+    "description": "중국어 언어 옵션"
+  },
+  "name.lang_en": {
+    "message": "영어",
+    "description": "영어 언어 옵션"
+  },
+  "description.step1": {
+    "message": "정면에서 선명하게 촬영된 5초 이상의 비디오를 업로드하는 것이 가장 좋습니다. 정면 사진만 사용해도 됩니다.",
+    "description": "얼굴 필드 도움말입니다."
+  },
+  "description.step2": {
+    "message": "읽을 텍스트를 입력하고 음색을 선택하거나 기존의 녹음을 직접 업로드합니다.",
+    "description": "음성 필드 도움말입니다."
+  },
+  "description.speed": {
+    "message": "1.0은 원속이며, 0.5–2.0 사이에서 조정할 수 있습니다.",
+    "description": "음성 속도 도움말입니다."
+  },
+  "placeholder.speech": {
+    "message": "디지털 사람이 읽을 내용을 입력하세요...",
+    "description": "스크립트 플레이스홀더"
+  },
+  "placeholder.pickTimbre": {
+    "message": "음색 선택",
+    "description": "음성 선택 플레이스홀더"
+  },
+  "placeholder.voiceName": {
+    "message": "이 음색에 이름을 붙이세요",
+    "description": "음성 이름 플레이스홀더"
+  },
+  "button.uploadFaceVideo": {
+    "message": "얼굴 비디오 업로드",
+    "description": "얼굴 비디오 업로드 버튼입니다."
+  },
+  "button.uploadFacePhoto": {
+    "message": "얼굴 사진 업로드",
+    "description": "얼굴 사진 업로드 버튼입니다."
+  },
+  "button.uploadSpeechAudio": {
+    "message": "녹음 업로드",
+    "description": "음성 녹음 업로드 버튼입니다."
+  },
+  "button.cloneNewVoice": {
+    "message": "새 음색 복제",
+    "description": "음성 복제 대화상자를 엽니다."
+  },
+  "button.startClone": {
+    "message": "복제 시작",
+    "description": "음성 복제를 시작합니다."
+  },
+  "button.replace": {
+    "message": "교체",
+    "description": "업로드된 파일을 교체합니다."
+  },
+  "button.generateVideo": {
+    "message": "비디오 생성",
+    "description": "생성 버튼입니다."
+  },
+  "message.faceVideoHint": {
+    "message": "MP4 / MOV / WEBM 지원",
+    "description": "얼굴 비디오 수용 힌트입니다."
+  },
+  "message.facePhotoHint": {
+    "message": "PNG / JPG / WEBP 지원",
+    "description": "얼굴 사진 수용 힌트입니다."
+  },
+  "message.audioHint": {
+    "message": "WAV / MP3 / M4A 지원",
+    "description": "오디오 수용 힌트입니다."
+  },
+  "message.missingFace": {
+    "message": "아직 부족합니다: 얼굴 비디오 또는 사진을 업로드하세요.",
+    "description": "얼굴이 부족합니다."
+  },
+  "message.missingText": {
+    "message": "아직 부족합니다: 읽을 텍스트를 입력하세요.",
+    "description": "스크립트가 부족합니다."
+  },
+  "message.missingTimbre": {
+    "message": "아직 부족합니다: 음색을 선택하거나 복제하세요.",
+    "description": "음성이 부족합니다."
+  },
+  "message.missingAudio": {
+    "message": "아직 부족합니다: 녹음을 업로드하세요.",
+    "description": "오디오가 부족합니다."
+  },
+  "message.eta": {
+    "message": "생성에는 보통 30–45분이 소요되며, 다른 일을 할 수 있습니다.",
+    "description": "생성 예상 소요 시간 힌트입니다."
+  },
+  "message.voiceCloneHint": {
+    "message": "10–20초의 깨끗한 사람 목소리를 업로드하세요. 배경이 조용할수록 효과가 좋습니다.",
+    "description": "음성 샘플 힌트입니다."
+  },
+  "message.voiceCloneRunning": {
+    "message": "복제 중입니다. 보통 1–2분이 소요됩니다...",
+    "description": "음성 복제 진행 중입니다."
+  },
+  "message.voiceStoredLocally": {
+    "message": "음색이 현재 브라우저에 저장됩니다. 다른 장치로 변경하거나 데이터를 지우면 다시 복제해야 합니다.",
+    "description": "음성 데이터가 브라우저에 로컬 저장됩니다."
+  },
+  "message.noVoiceYet": {
+    "message": "아직 음색이 없습니다. 먼저 복제하세요.",
+    "description": "음성 목록이 비어 있습니다."
+  },
+  "name.etaLabel": {
+    "message": "예상 남은 시간",
+    "description": "남은 시간의 예상"
+  },
+  "name.duration": {
+    "message": "비디오 길이",
+    "description": "렌더링된 비디오의 길이"
+  },
+  "name.outputSize": {
+    "message": "화면 크기",
+    "description": "렌더링된 프레임의 크기"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "지원용 추적 ID"
+  },
+  "message.etaRemaining": {
+    "message": "약 {minutes} 분",
+    "description": "남은 분 수"
+  },
+  "message.etaAlmostDone": {
+    "message": "거의 완료됨",
+    "description": "거의 완료된 상태"
+  },
+  "name.faceVideo": {
+    "message": "비디오",
+    "description": "얼굴 비디오 옵션"
+  },
+  "name.facePhoto": {
+    "message": "사진",
+    "description": "얼굴 사진 옵션"
+  },
+  "name.face": {
+    "message": "얼굴 소스",
+    "description": "얼굴 소스 필드"
+  },
+  "name.voice": {
+    "message": "음성",
+    "description": "음성 소스 필드"
+  },
+  "name.voiceAudio": {
+    "message": "오디오",
+    "description": "오디오 기반 음성 옵션"
+  },
+  "name.voiceText": {
+    "message": "텍스트",
+    "description": "텍스트 기반 음성 옵션"
+  },
+  "name.engine": {
+    "message": "엔진",
+    "description": "립싱크 엔진 필드"
+  },
+  "name.resolution": {
+    "message": "해상도",
+    "description": "출력 해상도 필드"
+  },
+  "name.voiceReady": {
+    "message": "음성 준비됨",
+    "description": "복제된 음성 준비 레이블"
+  },
+  "placeholder.text": {
+    "message": "아바타가 말할 내용을 입력하세요…",
+    "description": "말할 텍스트 자리 표시자"
+  },
+  "description.face": {
+    "message": "말하는 아바타를 구동할 정면 얼굴 비디오(권장) 또는 사진 한 장을 업로드하세요.",
+    "description": "얼굴 필드 도움말"
+  },
+  "description.voiceClone": {
+    "message": "음성을 복제할 깨끗한 10–20초 음성 샘플을 업로드하고, 이를 재사용하여 텍스트를 말하게 하세요.",
+    "description": "음성 복제 도움말"
+  },
+  "button.generate": {
+    "message": "비디오 생성",
+    "description": "생성 버튼"
+  },
+  "button.uploadVideo": {
+    "message": "얼굴 비디오 업로드",
+    "description": "얼굴 비디오 업로드 버튼"
+  },
+  "button.uploadPhoto": {
+    "message": "얼굴 사진 업로드",
+    "description": "얼굴 사진 업로드 버튼"
+  },
+  "button.uploadAudio": {
+    "message": "오디오 업로드",
+    "description": "구동 오디오 업로드 버튼"
+  },
+  "button.clone": {
+    "message": "음성 복제",
+    "description": "음성 복제 버튼"
+  },
+  "button.cloning": {
+    "message": "복제 중…",
+    "description": "복제 진행 중 버튼"
   }
 }

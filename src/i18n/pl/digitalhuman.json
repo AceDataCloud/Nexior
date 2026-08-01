@@ -19,30 +19,6 @@
     "message": "Powód niepowodzenia",
     "description": "Powód niepowodzenia"
   },
-  "name.face": {
-    "message": "Źródło twarzy",
-    "description": "Pole źródła twarzy"
-  },
-  "name.faceVideo": {
-    "message": "Wideo",
-    "description": "Opcja wideo twarzy"
-  },
-  "name.facePhoto": {
-    "message": "Zdjęcie",
-    "description": "Opcja zdjęcia twarzy"
-  },
-  "name.voice": {
-    "message": "Głos",
-    "description": "Pole źródła głosu"
-  },
-  "name.voiceAudio": {
-    "message": "Audio",
-    "description": "Opcja głosowa oparta na dźwięku"
-  },
-  "name.voiceText": {
-    "message": "Tekst",
-    "description": "Opcja głosu napędzana tekstem"
-  },
   "name.audioDriven": {
     "message": "Napędzany audio",
     "description": "Etykieta napędzana audio"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "Napędzany tekstem",
     "description": "Etykieta napędzana tekstem"
-  },
-  "name.engine": {
-    "message": "Silnik",
-    "description": "Pole silnika synchronizacji ust"
-  },
-  "name.resolution": {
-    "message": "Rozdzielczość",
-    "description": "Pole rozdzielczości wyjściowej"
-  },
-  "name.voiceReady": {
-    "message": "Głos gotowy",
-    "description": "Etykieta gotowego sklonowanego głosu"
-  },
-  "placeholder.text": {
-    "message": "Wprowadź treść, którą ma powiedzieć cyfrowa postać...",
-    "description": "Placeholder dla tekstu mówionego"
-  },
-  "description.face": {
-    "message": "Prześlij wyraźne wideo twarzy (zalecane) lub zdjęcie, aby napędzić cyfrową osobę.",
-    "description": "Pomoc dotycząca pola twarzy"
-  },
-  "description.voiceClone": {
-    "message": "Prześlij czysty 10–20 sekundowy próbkę głosu, aby sklonować głos, a następnie użyj go do przeczytania swojego tekstu.",
-    "description": "Pomoc dotycząca klonowania głosu"
   },
   "status.pending": {
     "message": "Oczekiwanie",
@@ -91,37 +43,13 @@
     "message": "Niepowodzenie",
     "description": "Niepowodzenie"
   },
-  "button.generate": {
-    "message": "Generuj",
-    "description": "Przycisk generowania"
-  },
   "button.download": {
     "message": "Pobierz wideo",
     "description": "Przycisk pobierania wideo"
   },
-  "button.uploadVideo": {
-    "message": "Prześlij wideo twarzy",
-    "description": "Przycisk przesyłania wideo twarzy"
-  },
-  "button.uploadPhoto": {
-    "message": "Prześlij zdjęcie twarzy",
-    "description": "Przycisk przesyłania zdjęcia twarzy"
-  },
-  "button.uploadAudio": {
-    "message": "Prześlij audio",
-    "description": "Przycisk przesyłania audio"
-  },
   "button.uploadSample": {
     "message": "Prześlij próbkę głosu",
     "description": "Przycisk przesyłania próbki głosu"
-  },
-  "button.clone": {
-    "message": "Klonuj głos",
-    "description": "Przycisk klonowania głosu"
-  },
-  "button.cloning": {
-    "message": "Klonowanie w toku...",
-    "description": "Przycisk informujący o trwającym klonowaniu"
   },
   "message.startingTask": {
     "message": "Zgłaszanie zadania wideo...",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "Klonowanie głosu nie powiodło się, spróbuj z czystszą próbką.",
     "description": "Błąd klonowania głosu"
+  },
+  "name.step1": {
+    "message": "Kto mówi",
+    "description": "Krok 1: twarz"
+  },
+  "name.step2": {
+    "message": "Co powiedzieć",
+    "description": "Krok 2: głos"
+  },
+  "name.required": {
+    "message": "Wymagane",
+    "description": "Odznaka pola wymagane"
+  },
+  "name.faceModeVideo": {
+    "message": "Fragment wideo",
+    "description": "Tryb twarzy: wideo"
+  },
+  "name.faceModePhoto": {
+    "message": "Zdjęcie",
+    "description": "Tryb twarzy: zdjęcie"
+  },
+  "name.voiceModeText": {
+    "message": "Przeczytaj ten tekst",
+    "description": "Tryb głosu: tekst na mowę"
+  },
+  "name.voiceModeAudio": {
+    "message": "Użyj mojego nagrania",
+    "description": "Tryb głosu: przesyłanie audio"
+  },
+  "name.speech": {
+    "message": "Tekst mówiony",
+    "description": "Tytuł pola tekstu mówionego"
+  },
+  "name.timbre": {
+    "message": "Barwa",
+    "description": "Pole sklonowanego głosu"
+  },
+  "name.advanced": {
+    "message": "Opcje zaawansowane",
+    "description": "Sekcja zaawansowana"
+  },
+  "name.speed": {
+    "message": "Szybkość mowy",
+    "description": "Pole szybkości mowy"
+  },
+  "name.cloneVoice": {
+    "message": "Klonuj głos",
+    "description": "Tytuł okna dialogowego klonowania głosu"
+  },
+  "name.voiceName": {
+    "message": "Nazwa głosu",
+    "description": "Pole z nazwą głosu"
+  },
+  "name.voiceLang": {
+    "message": "Język",
+    "description": "Pole języka głosu"
+  },
+  "name.myVoice": {
+    "message": "Mój głos",
+    "description": "Domyślna nazwa sklonowanego głosu"
+  },
+  "name.lang_zh": {
+    "message": "Chiński",
+    "description": "Opcja języka chińskiego"
+  },
+  "name.lang_en": {
+    "message": "Angielski",
+    "description": "Opcja języka angielskiego"
+  },
+  "description.step1": {
+    "message": "Prześlij wyraźne wideo z przodu, najlepiej trwające ponad 5 sekund; można również użyć tylko jednego zdjęcia twarzy.",
+    "description": "Pomoc dotycząca pola twarzy"
+  },
+  "description.step2": {
+    "message": "Wprowadź tekst do przeczytania i wybierz głos, lub bezpośrednio prześlij gotowe nagranie.",
+    "description": "Pomoc dotycząca pola głosu"
+  },
+  "description.speed": {
+    "message": "1.0 to prędkość normalna, można dostosować w zakresie 0.5–2.0.",
+    "description": "Pomoc dotycząca prędkości mowy"
+  },
+  "placeholder.speech": {
+    "message": "Wprowadź treść do przeczytania przez cyfrową postać...",
+    "description": "Placeholder skryptu"
+  },
+  "placeholder.pickTimbre": {
+    "message": "Wybierz barwę",
+    "description": "Placeholder wyboru głosu"
+  },
+  "placeholder.voiceName": {
+    "message": "Nadaj temu głosowi nazwę",
+    "description": "Placeholder nazwy głosu"
+  },
+  "button.uploadFaceVideo": {
+    "message": "Prześlij wideo twarzy",
+    "description": "Przycisk przesyłania wideo twarzy"
+  },
+  "button.uploadFacePhoto": {
+    "message": "Prześlij zdjęcie twarzy",
+    "description": "Przycisk przesyłania zdjęcia twarzy"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "Prześlij nagranie",
+    "description": "Przycisk przesyłania nagrania dźwiękowego"
+  },
+  "button.cloneNewVoice": {
+    "message": "Klonuj nowy głos",
+    "description": "Otwórz okno dialogowe klonowania głosu"
+  },
+  "button.startClone": {
+    "message": "Rozpocznij klonowanie",
+    "description": "Rozpocznij klonowanie głosu"
+  },
+  "button.replace": {
+    "message": "Zamień",
+    "description": "Zamień przesłany plik"
+  },
+  "button.generateVideo": {
+    "message": "Generuj wideo",
+    "description": "Przycisk generowania"
+  },
+  "message.faceVideoHint": {
+    "message": "Obsługiwane formaty: MP4 / MOV / WEBM",
+    "description": "Wskazówka dotycząca akceptowanych formatów wideo twarzy"
+  },
+  "message.facePhotoHint": {
+    "message": "Obsługiwane formaty: PNG / JPG / WEBP",
+    "description": "Wskazówka dotycząca akceptowanych formatów zdjęć twarzy"
+  },
+  "message.audioHint": {
+    "message": "Obsługiwane formaty: WAV / MP3 / M4A",
+    "description": "Wskazówka dotycząca akceptowanych formatów audio"
+  },
+  "message.missingFace": {
+    "message": "Brakuje: prześlij wideo lub zdjęcie twarzy",
+    "description": "Brakująca twarz"
+  },
+  "message.missingText": {
+    "message": "Brakuje: wprowadź tekst do przeczytania",
+    "description": "Brakujący skrypt"
+  },
+  "message.missingTimbre": {
+    "message": "Brakuje: wybierz lub sklonuj głos",
+    "description": "Brakujący głos"
+  },
+  "message.missingAudio": {
+    "message": "Brakuje: prześlij nagranie",
+    "description": "Brakujący dźwięk"
+  },
+  "message.eta": {
+    "message": "Generowanie zazwyczaj zajmuje 30–45 minut, możesz zająć się czymś innym",
+    "description": "Wskazówka dotycząca czasu oczekiwania na generowanie"
+  },
+  "message.voiceCloneHint": {
+    "message": "Prześlij czysty głos trwający 10–20 sekund, im cichsze tło, tym lepiej",
+    "description": "Wskazówka dotycząca próbki głosu"
+  },
+  "message.voiceCloneRunning": {
+    "message": "Klonowanie w toku, zazwyczaj zajmuje 1–2 minuty…",
+    "description": "Klonowanie głosu w trakcie"
+  },
+  "message.voiceStoredLocally": {
+    "message": "Głos zapisany w bieżącej przeglądarce, po zmianie urządzenia lub usunięciu danych należy ponownie sklonować",
+    "description": "Książka głosów jest lokalna dla przeglądarki"
+  },
+  "message.noVoiceYet": {
+    "message": "Nie ma jeszcze głosu, najpierw sklonuj jeden",
+    "description": "Pusta lista głosów"
+  },
+  "name.etaLabel": {
+    "message": "Szacowany czas pozostały",
+    "description": "Szacowany czas pozostały"
+  },
+  "name.duration": {
+    "message": "Czas trwania wideo",
+    "description": "Czas trwania renderowanego wideo"
+  },
+  "name.outputSize": {
+    "message": "Rozmiar obrazu",
+    "description": "Rozmiar renderowanej klatki"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia dla wsparcia"
+  },
+  "message.etaRemaining": {
+    "message": "Około {minutes} minut",
+    "description": "Pozostałe minuty"
+  },
+  "message.etaAlmostDone": {
+    "message": "Prawie gotowe",
+    "description": "Prawie zakończone"
+  },
+  "name.faceVideo": {
+    "message": "Wideo",
+    "description": "Opcja wideo twarzy"
+  },
+  "name.facePhoto": {
+    "message": "Zdjęcie",
+    "description": "Opcja zdjęcia twarzy"
+  },
+  "name.face": {
+    "message": "Źródło twarzy",
+    "description": "Pole źródła twarzy"
+  },
+  "name.voice": {
+    "message": "Głos",
+    "description": "Pole źródła głosu"
+  },
+  "name.voiceAudio": {
+    "message": "Audio",
+    "description": "Opcja głosowa oparta na dźwięku"
+  },
+  "name.voiceText": {
+    "message": "Tekst",
+    "description": "Opcja głosu napędzana tekstem"
+  },
+  "name.engine": {
+    "message": "Silnik",
+    "description": "Pole silnika synchronizacji ust"
+  },
+  "name.resolution": {
+    "message": "Rozdzielczość",
+    "description": "Pole rozdzielczości wyjściowej"
+  },
+  "name.voiceReady": {
+    "message": "Głos gotowy",
+    "description": "Etykieta gotowego sklonowanego głosu"
+  },
+  "placeholder.text": {
+    "message": "Wprowadź treść, którą ma powiedzieć cyfrowa postać...",
+    "description": "Placeholder dla tekstu mówionego"
+  },
+  "description.face": {
+    "message": "Prześlij wyraźne wideo twarzy (zalecane) lub zdjęcie, aby napędzić cyfrową osobę.",
+    "description": "Pomoc dotycząca pola twarzy"
+  },
+  "description.voiceClone": {
+    "message": "Prześlij czysty 10–20 sekundowy próbkę głosu, aby sklonować głos, a następnie użyj go do przeczytania swojego tekstu.",
+    "description": "Pomoc dotycząca klonowania głosu"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Przycisk generowania"
+  },
+  "button.uploadVideo": {
+    "message": "Prześlij wideo twarzy",
+    "description": "Przycisk przesyłania wideo twarzy"
+  },
+  "button.uploadPhoto": {
+    "message": "Prześlij zdjęcie twarzy",
+    "description": "Przycisk przesyłania zdjęcia twarzy"
+  },
+  "button.uploadAudio": {
+    "message": "Prześlij audio",
+    "description": "Przycisk przesyłania audio"
+  },
+  "button.clone": {
+    "message": "Klonuj głos",
+    "description": "Przycisk klonowania głosu"
+  },
+  "button.cloning": {
+    "message": "Klonowanie w toku...",
+    "description": "Przycisk informujący o trwającym klonowaniu"
   }
 }

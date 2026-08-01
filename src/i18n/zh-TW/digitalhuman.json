@@ -19,30 +19,6 @@
     "message": "失敗原因",
     "description": "Failure reason"
   },
-  "name.face": {
-    "message": "臉部來源",
-    "description": "Face source field"
-  },
-  "name.faceVideo": {
-    "message": "影片",
-    "description": "Face video option"
-  },
-  "name.facePhoto": {
-    "message": "照片",
-    "description": "Face photo option"
-  },
-  "name.voice": {
-    "message": "聲音",
-    "description": "Voice source field"
-  },
-  "name.voiceAudio": {
-    "message": "音訊",
-    "description": "Audio-driven voice option"
-  },
-  "name.voiceText": {
-    "message": "文字",
-    "description": "Text-driven voice option"
-  },
   "name.audioDriven": {
     "message": "音訊驅動",
     "description": "Audio-driven label"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "文字驅動",
     "description": "Text-driven label"
-  },
-  "name.engine": {
-    "message": "引擎",
-    "description": "Lip-sync engine field"
-  },
-  "name.resolution": {
-    "message": "解析度",
-    "description": "Output resolution field"
-  },
-  "name.voiceReady": {
-    "message": "音色已就緒",
-    "description": "Cloned voice ready label"
-  },
-  "placeholder.text": {
-    "message": "輸入數位人要說的內容……",
-    "description": "Spoken text placeholder"
-  },
-  "description.face": {
-    "message": "上傳清晰的正臉影片（推薦）或一張照片來驅動口播數位人。",
-    "description": "Face field help"
-  },
-  "description.voiceClone": {
-    "message": "上傳一段乾淨的 10–20 秒人聲樣本克隆音色，再用它朗讀您的文字。",
-    "description": "Voice clone help"
   },
   "status.pending": {
     "message": "排隊中",
@@ -91,37 +43,13 @@
     "message": "失敗",
     "description": "Failed"
   },
-  "button.generate": {
-    "message": "生成影片",
-    "description": "Generate button"
-  },
   "button.download": {
     "message": "下載影片",
     "description": "Download video button"
   },
-  "button.uploadVideo": {
-    "message": "上傳面部影片",
-    "description": "Upload face video button"
-  },
-  "button.uploadPhoto": {
-    "message": "上傳面部照片",
-    "description": "Upload face photo button"
-  },
-  "button.uploadAudio": {
-    "message": "上傳音訊",
-    "description": "Upload driving audio button"
-  },
   "button.uploadSample": {
     "message": "上傳樣本",
     "description": "Upload voice sample button"
-  },
-  "button.clone": {
-    "message": "克隆音色",
-    "description": "Clone voice button"
-  },
-  "button.cloning": {
-    "message": "克隆中……",
-    "description": "Cloning in progress button"
   },
   "message.startingTask": {
     "message": "正在提交影片任務……",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "音色克隆失敗，請換一段更乾淨的樣本。",
     "description": "Voice clone fail"
+  },
+  "name.step1": {
+    "message": "誰來說",
+    "description": "步驟 1 標題：面部"
+  },
+  "name.step2": {
+    "message": "說什麼",
+    "description": "步驟 2 標題：聲音"
+  },
+  "name.required": {
+    "message": "必填",
+    "description": "必填欄位標籤"
+  },
+  "name.faceModeVideo": {
+    "message": "視頻片段",
+    "description": "面部模式：視頻"
+  },
+  "name.faceModePhoto": {
+    "message": "一張照片",
+    "description": "面部模式：照片"
+  },
+  "name.voiceModeText": {
+    "message": "念這段文字",
+    "description": "聲音模式：文字轉語音"
+  },
+  "name.voiceModeAudio": {
+    "message": "用我的錄音",
+    "description": "聲音模式：上傳音頻"
+  },
+  "name.speech": {
+    "message": "講稿",
+    "description": "口語文本欄位標題"
+  },
+  "name.timbre": {
+    "message": "音色",
+    "description": "克隆音色欄位"
+  },
+  "name.advanced": {
+    "message": "高級選項",
+    "description": "高級部分"
+  },
+  "name.speed": {
+    "message": "語速",
+    "description": "語音速度欄位"
+  },
+  "name.cloneVoice": {
+    "message": "克隆音色",
+    "description": "音色克隆對話框標題"
+  },
+  "name.voiceName": {
+    "message": "音色名稱",
+    "description": "音色暱稱欄位"
+  },
+  "name.voiceLang": {
+    "message": "語言",
+    "description": "聲音語言欄位"
+  },
+  "name.myVoice": {
+    "message": "我的音色",
+    "description": "預設克隆音色名稱"
+  },
+  "name.lang_zh": {
+    "message": "中文",
+    "description": "中文語言選項"
+  },
+  "name.lang_en": {
+    "message": "英文",
+    "description": "英文語言選項"
+  },
+  "description.step1": {
+    "message": "上傳一段正面清晰、說話時長 5 秒以上的視頻效果最好；也可以只用一張正臉照片。",
+    "description": "面部字段幫助"
+  },
+  "description.step2": {
+    "message": "輸入要念的文字並選一個音色，或直接上傳一段現成的錄音。",
+    "description": "音色字段幫助"
+  },
+  "description.speed": {
+    "message": "1.0 為原速，可在 0.5–2.0 之間調整。",
+    "description": "語音速度幫助"
+  },
+  "placeholder.speech": {
+    "message": "輸入數字人要念的內容……",
+    "description": "講稿佔位符"
+  },
+  "placeholder.pickTimbre": {
+    "message": "選擇一個音色",
+    "description": "聲音選擇佔位符"
+  },
+  "placeholder.voiceName": {
+    "message": "給這個音色起個名字",
+    "description": "聲音名稱佔位符"
+  },
+  "button.uploadFaceVideo": {
+    "message": "上傳面部視頻",
+    "description": "上傳面部視頻按鈕"
+  },
+  "button.uploadFacePhoto": {
+    "message": "上傳面部照片",
+    "description": "上傳面部照片按鈕"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "上傳錄音",
+    "description": "上傳錄音按鈕"
+  },
+  "button.cloneNewVoice": {
+    "message": "克隆新音色",
+    "description": "打開音色克隆對話框"
+  },
+  "button.startClone": {
+    "message": "開始克隆",
+    "description": "開始音色克隆"
+  },
+  "button.replace": {
+    "message": "更換",
+    "description": "更換已上傳的文件"
+  },
+  "button.generateVideo": {
+    "message": "生成視頻",
+    "description": "生成按鈕"
+  },
+  "message.faceVideoHint": {
+    "message": "支持 MP4 / MOV / WEBM",
+    "description": "面部視頻接受提示"
+  },
+  "message.facePhotoHint": {
+    "message": "支持 PNG / JPG / WEBP",
+    "description": "面部照片接受提示"
+  },
+  "message.audioHint": {
+    "message": "支持 WAV / MP3 / M4A",
+    "description": "音頻接受提示"
+  },
+  "message.missingFace": {
+    "message": "還差：上傳一段面部視頻或照片",
+    "description": "缺少面部"
+  },
+  "message.missingText": {
+    "message": "還差：輸入要念的文字",
+    "description": "缺少文本"
+  },
+  "message.missingTimbre": {
+    "message": "還差：選擇或克隆一個音色",
+    "description": "缺少音色"
+  },
+  "message.missingAudio": {
+    "message": "還差：上傳一段錄音",
+    "description": "缺少音頻"
+  },
+  "message.eta": {
+    "message": "生成通常需要 30–45 分鐘，可以先去忙別的",
+    "description": "生成預計時間提示"
+  },
+  "message.voiceCloneHint": {
+    "message": "上傳 10–20 秒乾淨的人聲，背景越安靜效果越好",
+    "description": "音色樣本提示"
+  },
+  "message.voiceCloneRunning": {
+    "message": "正在克隆，通常需要 1–2 分鐘……",
+    "description": "音色克隆進行中"
+  },
+  "message.voiceStoredLocally": {
+    "message": "音色保存在當前瀏覽器，換設備或清除數據後需要重新克隆",
+    "description": "音色資料庫是瀏覽器本地的"
+  },
+  "message.noVoiceYet": {
+    "message": "還沒有音色，先克隆一個吧",
+    "description": "音色列表為空"
+  },
+  "name.etaLabel": {
+    "message": "預計剩餘",
+    "description": "預估的剩餘時間"
+  },
+  "name.duration": {
+    "message": "視頻時長",
+    "description": "渲染後的視頻時長"
+  },
+  "name.outputSize": {
+    "message": "畫面尺寸",
+    "description": "渲染後的畫面尺寸"
+  },
+  "name.traceId": {
+    "message": "追蹤 ID",
+    "description": "用於支援的追蹤 ID"
+  },
+  "message.etaRemaining": {
+    "message": "約 {minutes} 分鐘",
+    "description": "剩餘的分鐘數"
+  },
+  "message.etaAlmostDone": {
+    "message": "即將完成",
+    "description": "幾乎完成"
+  },
+  "name.faceVideo": {
+    "message": "影片",
+    "description": "Face video option"
+  },
+  "name.facePhoto": {
+    "message": "照片",
+    "description": "Face photo option"
+  },
+  "name.face": {
+    "message": "臉部來源",
+    "description": "Face source field"
+  },
+  "name.voice": {
+    "message": "聲音",
+    "description": "Voice source field"
+  },
+  "name.voiceAudio": {
+    "message": "音訊",
+    "description": "Audio-driven voice option"
+  },
+  "name.voiceText": {
+    "message": "文字",
+    "description": "Text-driven voice option"
+  },
+  "name.engine": {
+    "message": "引擎",
+    "description": "Lip-sync engine field"
+  },
+  "name.resolution": {
+    "message": "解析度",
+    "description": "Output resolution field"
+  },
+  "name.voiceReady": {
+    "message": "音色已就緒",
+    "description": "Cloned voice ready label"
+  },
+  "placeholder.text": {
+    "message": "輸入數位人要說的內容……",
+    "description": "Spoken text placeholder"
+  },
+  "description.face": {
+    "message": "上傳清晰的正臉影片（推薦）或一張照片來驅動口播數位人。",
+    "description": "Face field help"
+  },
+  "description.voiceClone": {
+    "message": "上傳一段乾淨的 10–20 秒人聲樣本克隆音色，再用它朗讀您的文字。",
+    "description": "Voice clone help"
+  },
+  "button.generate": {
+    "message": "生成影片",
+    "description": "Generate button"
+  },
+  "button.uploadVideo": {
+    "message": "上傳面部影片",
+    "description": "Upload face video button"
+  },
+  "button.uploadPhoto": {
+    "message": "上傳面部照片",
+    "description": "Upload face photo button"
+  },
+  "button.uploadAudio": {
+    "message": "上傳音訊",
+    "description": "Upload driving audio button"
+  },
+  "button.clone": {
+    "message": "克隆音色",
+    "description": "Clone voice button"
+  },
+  "button.cloning": {
+    "message": "克隆中……",
+    "description": "Cloning in progress button"
   }
 }

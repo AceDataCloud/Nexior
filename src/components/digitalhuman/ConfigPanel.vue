@@ -1,117 +1,136 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
-      <!-- Face source -->
-      <div class="field-block mb-5">
+      <!-- Step 1 — the face that will do the talking -->
+      <section ref="face" class="field-block mb-6">
         <div class="field-head">
-          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.face') }}</h2>
-          <info-icon :content="$t('digitalhuman.description.face')" class="ml-1" />
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.step1') }}</h2>
+          <span v-if="isMissing('face')" class="required-badge">{{ $t('digitalhuman.name.required') }}</span>
+          <info-icon :content="$t('digitalhuman.description.step1')" class="ml-1" />
         </div>
-        <el-radio-group v-model="faceMode" class="w-full mb-2" @change="onFaceModeChange">
-          <el-radio-button value="video">{{ $t('digitalhuman.name.faceVideo') }}</el-radio-button>
-          <el-radio-button value="photo">{{ $t('digitalhuman.name.facePhoto') }}</el-radio-button>
+        <el-radio-group v-model="faceMode" class="mode-switch mb-3" @change="onFaceModeChange">
+          <el-radio-button value="video">{{ $t('digitalhuman.name.faceModeVideo') }}</el-radio-button>
+          <el-radio-button value="photo">{{ $t('digitalhuman.name.faceModePhoto') }}</el-radio-button>
         </el-radio-group>
-        <file-input
+        <media-input
           v-if="faceMode === 'video'"
+          kind="video"
           :accept="DIGITALHUMAN_VIDEO_ACCEPT"
-          :button-text="$t('digitalhuman.button.uploadVideo')"
-          icon="video"
+          :button-text="$t('digitalhuman.button.uploadFaceVideo')"
+          :hint="$t('digitalhuman.message.faceVideoHint')"
           @change="onFaceVideoChange"
         />
-        <file-input
+        <media-input
           v-else
+          kind="image"
           :accept="DIGITALHUMAN_IMAGE_ACCEPT"
-          :button-text="$t('digitalhuman.button.uploadPhoto')"
-          icon="image"
+          :button-text="$t('digitalhuman.button.uploadFacePhoto')"
+          :hint="$t('digitalhuman.message.facePhotoHint')"
           @change="onFacePhotoChange"
         />
-      </div>
+      </section>
 
-      <!-- Voice source -->
-      <div class="field-block mb-5">
+      <!-- Step 2 — the voice that face will speak with -->
+      <section ref="voice" class="field-block mb-6">
         <div class="field-head">
-          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.voice') }}</h2>
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.step2') }}</h2>
+          <span v-if="isMissing('text') || isMissing('timbre') || isMissing('audio')" class="required-badge">
+            {{ $t('digitalhuman.name.required') }}
+          </span>
+          <info-icon :content="$t('digitalhuman.description.step2')" class="ml-1" />
         </div>
-        <el-radio-group v-model="voiceMode" class="w-full mb-2" @change="onVoiceModeChange">
-          <el-radio-button value="audio">{{ $t('digitalhuman.name.voiceAudio') }}</el-radio-button>
-          <el-radio-button value="text">{{ $t('digitalhuman.name.voiceText') }}</el-radio-button>
+        <el-radio-group v-model="voiceMode" class="mode-switch mb-3" @change="onVoiceModeChange">
+          <el-radio-button value="text">{{ $t('digitalhuman.name.voiceModeText') }}</el-radio-button>
+          <el-radio-button value="audio">{{ $t('digitalhuman.name.voiceModeAudio') }}</el-radio-button>
         </el-radio-group>
 
-        <file-input
-          v-if="voiceMode === 'audio'"
+        <template v-if="voiceMode === 'text'">
+          <prompt-textarea
+            v-model="text"
+            class="mb-3"
+            :title="$t('digitalhuman.name.speech')"
+            :placeholder="$t('digitalhuman.placeholder.speech')"
+            :min-rows="5"
+            :max-rows="14"
+          />
+          <timbre-selector v-model="voiceId" />
+        </template>
+        <media-input
+          v-else
+          kind="audio"
           :accept="DIGITALHUMAN_AUDIO_ACCEPT"
-          :button-text="$t('digitalhuman.button.uploadAudio')"
-          icon="music"
+          :button-text="$t('digitalhuman.button.uploadSpeechAudio')"
+          :hint="$t('digitalhuman.message.audioHint')"
           @change="onAudioChange"
         />
-        <template v-else>
-          <el-input
-            v-model="text"
-            type="textarea"
-            :rows="4"
-            :placeholder="$t('digitalhuman.placeholder.text')"
-            class="mb-2"
-          />
-          <voice-clone />
-        </template>
-      </div>
+      </section>
 
-      <!-- Engine -->
-      <div class="field-block mb-5">
-        <div class="field-head">
-          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.engine') }}</h2>
-        </div>
-        <el-radio-group v-model="engine" class="w-full">
-          <el-radio-button v-for="e in DIGITALHUMAN_ALLOWED_ENGINES" :key="e" :value="e">{{ e }}</el-radio-button>
-        </el-radio-group>
-      </div>
-
-      <!-- Resolution -->
-      <div class="field-block">
-        <div class="field-head">
-          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.resolution') }}</h2>
-        </div>
-        <el-radio-group v-model="resolution" class="w-full">
-          <el-radio-button v-for="r in DIGITALHUMAN_ALLOWED_RESOLUTIONS" :key="r" :value="r">{{ r }}</el-radio-button>
-        </el-radio-group>
-      </div>
+      <el-collapse v-model="advancedOpen" class="advanced">
+        <el-collapse-item name="advanced" :title="$t('digitalhuman.name.advanced')">
+          <div class="field-row">
+            <div class="field-head">
+              <h2 class="field-title font-bold">{{ $t('digitalhuman.name.speed') }}</h2>
+              <info-icon :content="$t('digitalhuman.description.speed')" class="ml-1" />
+            </div>
+            <el-input-number
+              v-model="speed"
+              class="field-control"
+              :min="0.5"
+              :max="2"
+              :step="0.1"
+              :precision="1"
+              controls-position="right"
+            />
+          </div>
+        </el-collapse-item>
+      </el-collapse>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
+      <p v-if="missing.length > 0" class="hint-missing">
+        <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ missing[0].message }}
+      </p>
       <consumption :value="consumption" :service="service" />
-      <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
-        <user-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('digitalhuman.button.generate') }}
+      <el-button type="primary" class="btn w-full" round @click="onGenerate">
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('digitalhuman.button.generateVideo') }}
       </el-button>
+      <p class="hint-eta">{{ $t('digitalhuman.message.eta') }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { UserIcon } from '@acedatacloud/core/icons/components';
+import { MagicIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElRadioGroup, ElRadioButton } from 'element-plus';
+import {
+  ElButton,
+  ElCollapse,
+  ElCollapseItem,
+  ElInputNumber,
+  ElMessage,
+  ElRadioButton,
+  ElRadioGroup
+} from 'element-plus';
 import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import FileInput from './config/FileInput.vue';
-import VoiceClone from './config/VoiceClone.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
+import MediaInput from './config/MediaInput.vue';
+import TimbreSelector from './config/TimbreSelector.vue';
 import { getConsumption } from '@/utils';
-import {
-  DIGITALHUMAN_ALLOWED_ENGINES,
-  DIGITALHUMAN_ALLOWED_RESOLUTIONS,
-  DIGITALHUMAN_VIDEO_ACCEPT,
-  DIGITALHUMAN_IMAGE_ACCEPT,
-  DIGITALHUMAN_AUDIO_ACCEPT,
-  DIGITALHUMAN_DEFAULT_ENGINE,
-  DIGITALHUMAN_DEFAULT_RESOLUTION
-} from '@/constants';
+import { DIGITALHUMAN_AUDIO_ACCEPT, DIGITALHUMAN_IMAGE_ACCEPT, DIGITALHUMAN_VIDEO_ACCEPT } from '@/constants';
 import { IDigitalHumanConfig, IDigitalHumanGenerateRequest } from '@/models';
+
+interface IMissing {
+  key: string;
+  message: string;
+}
 
 interface IData {
   faceMode: 'video' | 'photo';
   voiceMode: 'audio' | 'text';
-  DIGITALHUMAN_ALLOWED_ENGINES: string[];
-  DIGITALHUMAN_ALLOWED_RESOLUTIONS: string[];
+  advancedOpen: string[];
   DIGITALHUMAN_VIDEO_ACCEPT: string;
   DIGITALHUMAN_IMAGE_ACCEPT: string;
   DIGITALHUMAN_AUDIO_ACCEPT: string;
@@ -120,23 +139,26 @@ interface IData {
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
-    UserIcon,
-    ElButton,
-    ElInput,
-    ElRadioGroup,
-    ElRadioButton,
     Consumption,
+    ElButton,
+    ElCollapse,
+    ElCollapseItem,
+    ElInputNumber,
+    ElRadioButton,
+    ElRadioGroup,
     InfoIcon,
-    FileInput,
-    VoiceClone
+    MagicIcon,
+    MediaInput,
+    PromptTextarea,
+    TimbreSelector,
+    WarningIcon
   },
   emits: ['generate'],
   data(): IData {
     return {
       faceMode: 'video',
-      voiceMode: 'audio',
-      DIGITALHUMAN_ALLOWED_ENGINES,
-      DIGITALHUMAN_ALLOWED_RESOLUTIONS,
+      voiceMode: 'text',
+      advancedOpen: [],
       DIGITALHUMAN_VIDEO_ACCEPT,
       DIGITALHUMAN_IMAGE_ACCEPT,
       DIGITALHUMAN_AUDIO_ACCEPT
@@ -152,11 +174,28 @@ export default defineComponent({
     consumption() {
       return getConsumption(this.config, this.service?.cost);
     },
-    canGenerate(): boolean {
+    /**
+     * Everything still standing between the user and a generation, in the
+     * order they should fix it. A plain boolean cannot say WHAT is missing,
+     * which is the whole problem with a silently disabled button.
+     */
+    missing(): IMissing[] {
+      const out: IMissing[] = [];
       const faceOk = this.faceMode === 'video' ? !!this.config?.video_url : !!this.config?.image_url;
-      const voiceOk =
-        this.voiceMode === 'audio' ? !!this.config?.audio_url : !!this.config?.text?.trim() && !!this.config?.voice_id;
-      return faceOk && voiceOk;
+      if (!faceOk) {
+        out.push({ key: 'face', message: this.$t('digitalhuman.message.missingFace') as string });
+      }
+      if (this.voiceMode === 'text') {
+        if (!this.config?.text?.trim()) {
+          out.push({ key: 'text', message: this.$t('digitalhuman.message.missingText') as string });
+        }
+        if (!this.config?.voice_id) {
+          out.push({ key: 'timbre', message: this.$t('digitalhuman.message.missingTimbre') as string });
+        }
+      } else if (!this.config?.audio_url) {
+        out.push({ key: 'audio', message: this.$t('digitalhuman.message.missingAudio') as string });
+      }
+      return out;
     },
     text: {
       get(): string | undefined {
@@ -166,37 +205,36 @@ export default defineComponent({
         this.update({ text: val });
       }
     },
-    engine: {
+    voiceId: {
       get(): string | undefined {
-        return this.config?.engine;
+        return this.config?.voice_id;
       },
-      set(val: string) {
-        this.update({ engine: val as IDigitalHumanConfig['engine'] });
+      set(val: string | undefined) {
+        this.update({ voice_id: val });
       }
     },
-    resolution: {
-      get(): string | undefined {
-        return this.config?.resolution;
+    speed: {
+      get(): number {
+        return this.config?.speed ?? 1;
       },
-      set(val: string) {
-        this.update({ resolution: val as IDigitalHumanConfig['resolution'] });
+      set(val: number) {
+        this.update({ speed: val });
       }
     }
   },
   mounted() {
-    // restore the UI mode from any persisted config, then seed option defaults
+    // restore the UI mode from any persisted config
     if (this.config?.image_url && !this.config?.video_url) {
       this.faceMode = 'photo';
     }
-    if (this.config?.text || this.config?.voice_id) {
-      this.voiceMode = 'text';
+    if (this.config?.audio_url) {
+      this.voiceMode = 'audio';
     }
-    this.update({
-      engine: this.config?.engine ?? (DIGITALHUMAN_DEFAULT_ENGINE as IDigitalHumanConfig['engine']),
-      resolution: this.config?.resolution ?? (DIGITALHUMAN_DEFAULT_RESOLUTION as IDigitalHumanConfig['resolution'])
-    });
   },
   methods: {
+    isMissing(key: string): boolean {
+      return this.missing.some((item) => item.key === key);
+    },
     update(patch: Partial<IDigitalHumanConfig>) {
       this.$store.commit('digitalhuman/setConfig', {
         ...this.config,
@@ -220,23 +258,30 @@ export default defineComponent({
       this.update({ audio_url: url });
     },
     onGenerate() {
-      // build a clean request from the active modes only — never leak the
-      // inactive face/voice fields into the payload
+      const blocker = this.missing[0];
+      if (blocker) {
+        // A disabled button cannot answer "why?" — say what is missing and
+        // take the user to it.
+        ElMessage.warning(blocker.message);
+        const anchor = blocker.key === 'face' ? 'face' : 'voice';
+        (this.$refs[anchor] as HTMLElement | undefined)?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      // Build a clean request from the active modes only — never leak the
+      // inactive face/voice fields into the payload. A photo travels in
+      // video_url: that is the single face field the API reads.
       const c = this.config || {};
       const request: IDigitalHumanGenerateRequest = {
-        engine: c.engine,
-        resolution: c.resolution
+        video_url: this.faceMode === 'video' ? c.video_url : c.image_url
       };
-      if (this.faceMode === 'video') {
-        request.video_url = c.video_url;
-      } else {
-        request.image_url = c.image_url;
-      }
       if (this.voiceMode === 'audio') {
         request.audio_url = c.audio_url;
       } else {
         request.text = c.text;
         request.voice_id = c.voice_id;
+      }
+      if (c.speed && c.speed !== 1) {
+        request.speed = c.speed;
       }
       this.$emit('generate', request);
     }
@@ -249,10 +294,76 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 8px;
 }
 .field-title {
   font-size: 14px;
   margin: 0;
+}
+.field-block > .field-head {
+  margin-bottom: 8px;
+}
+.field-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.field-control {
+  width: 140px;
+}
+
+// Equal-width halves so the pair reads as one either/or control.
+.mode-switch {
+  display: flex;
+  width: 100%;
+  :deep(.el-radio-button) {
+    flex: 1;
+  }
+  :deep(.el-radio-button__inner) {
+    width: 100%;
+  }
+}
+
+.required-badge {
+  margin-left: 6px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 16px;
+  border-radius: 8px;
+  color: var(--el-color-warning);
+  background-color: var(--el-color-warning-light-9);
+  border: 1px solid var(--el-color-warning-light-7);
+}
+
+.hint-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--el-color-warning);
+}
+
+.hint-eta {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--el-text-color-secondary);
+}
+
+.advanced {
+  border-top: none;
+  border-bottom: none;
+  :deep(.el-collapse-item__header) {
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: none;
+  }
+  :deep(.el-collapse-item__wrap) {
+    border-bottom: none;
+  }
 }
 </style>

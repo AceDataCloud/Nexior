@@ -19,30 +19,6 @@
     "message": "Причина сбоя",
     "description": "Причина сбоя"
   },
-  "name.face": {
-    "message": "Источник лица",
-    "description": "Поле источника лица"
-  },
-  "name.faceVideo": {
-    "message": "Видео",
-    "description": "Опция видео лица"
-  },
-  "name.facePhoto": {
-    "message": "Фото",
-    "description": "Опция фото лица"
-  },
-  "name.voice": {
-    "message": "Голос",
-    "description": "Поле источника голоса"
-  },
-  "name.voiceAudio": {
-    "message": "Аудио",
-    "description": "Опция голоса на основе аудио"
-  },
-  "name.voiceText": {
-    "message": "Текст",
-    "description": "Опция голоса на основе текста"
-  },
   "name.audioDriven": {
     "message": "Аудио управление",
     "description": "Метка аудио управления"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "Текстовый ввод",
     "description": "Метка текстового ввода"
-  },
-  "name.engine": {
-    "message": "Движок",
-    "description": "Поле движка синхронизации губ"
-  },
-  "name.resolution": {
-    "message": "Разрешение",
-    "description": "Поле разрешения вывода"
-  },
-  "name.voiceReady": {
-    "message": "Голос готов",
-    "description": "Метка готовности клонированного голоса"
-  },
-  "placeholder.text": {
-    "message": "Введите текст, который должен сказать цифровой человек……",
-    "description": "Заполнитель для произносимого текста"
-  },
-  "description.face": {
-    "message": "Загрузите четкое видео анфас (рекомендуется) или фото для управления цифровым человеком.",
-    "description": "Помощь по полю лица"
-  },
-  "description.voiceClone": {
-    "message": "Загрузите чистый образец человеческого голоса длительностью 10–20 секунд для клонирования голоса, затем используйте его для чтения вашего текста.",
-    "description": "Помощь по клонированию голоса"
   },
   "status.pending": {
     "message": "В очереди",
@@ -91,37 +43,13 @@
     "message": "Неудача",
     "description": "Не удалось"
   },
-  "button.generate": {
-    "message": "Сгенерировать видео",
-    "description": "Кнопка генерации"
-  },
   "button.download": {
     "message": "Скачать видео",
     "description": "Кнопка скачивания видео"
   },
-  "button.uploadVideo": {
-    "message": "Загрузить видео лица",
-    "description": "Кнопка загрузки видео лица"
-  },
-  "button.uploadPhoto": {
-    "message": "Загрузить фото лица",
-    "description": "Кнопка загрузки фото лица"
-  },
-  "button.uploadAudio": {
-    "message": "Загрузить аудио",
-    "description": "Кнопка загрузки аудио"
-  },
   "button.uploadSample": {
     "message": "Загрузить образец",
     "description": "Кнопка загрузки образца голоса"
-  },
-  "button.clone": {
-    "message": "Клонировать голос",
-    "description": "Кнопка клонирования голоса"
-  },
-  "button.cloning": {
-    "message": "Клонирование...",
-    "description": "Кнопка процесса клонирования"
   },
   "message.startingTask": {
     "message": "Отправка видео задачи...",
@@ -150,5 +78,269 @@
   "message.voiceCloneFailed": {
     "message": "Не удалось клонировать голос, попробуйте загрузить более чистый образец.",
     "description": "Ошибка клонирования голоса"
+  },
+  "name.step1": {
+    "message": "Кто говорит",
+    "description": "Заголовок шага 1: лицо"
+  },
+  "name.step2": {
+    "message": "Что сказать",
+    "description": "Заголовок шага 2: голос"
+  },
+  "name.required": {
+    "message": "Обязательно",
+    "description": "Значок обязательного поля"
+  },
+  "name.faceModeVideo": {
+    "message": "Видеофрагмент",
+    "description": "Режим лица: видео"
+  },
+  "name.faceModePhoto": {
+    "message": "Фото",
+    "description": "Режим лица: фото"
+  },
+  "name.voiceModeText": {
+    "message": "Прочитать этот текст",
+    "description": "Режим голоса: текст в речь"
+  },
+  "name.voiceModeAudio": {
+    "message": "Использовать мою запись",
+    "description": "Режим голоса: загрузить аудио"
+  },
+  "name.speech": {
+    "message": "Текст",
+    "description": "Название поля для произнесенного текста"
+  },
+  "name.timbre": {
+    "message": "Тембр",
+    "description": "Поле клонированного голоса"
+  },
+  "name.advanced": {
+    "message": "Расширенные настройки",
+    "description": "Раздел с расширенными настройками"
+  },
+  "name.speed": {
+    "message": "Скорость речи",
+    "description": "Поле скорости речи"
+  },
+  "name.cloneVoice": {
+    "message": "Клонировать голос",
+    "description": "Заголовок диалога клонирования голоса"
+  },
+  "name.voiceName": {
+    "message": "Название голоса",
+    "description": "Поле для никнейма голоса"
+  },
+  "name.voiceLang": {
+    "message": "Язык",
+    "description": "Поле языка голоса"
+  },
+  "name.myVoice": {
+    "message": "Мой голос",
+    "description": "Имя по умолчанию клонированного голоса"
+  },
+  "name.lang_zh": {
+    "message": "Китайский",
+    "description": "Опция китайского языка"
+  },
+  "name.lang_en": {
+    "message": "Английский",
+    "description": "Опция английского языка"
+  },
+  "description.step1": {
+    "message": "Загрузите четкое видео с лицом, длительностью более 5 секунд; также можно использовать одно фото лица.",
+    "description": "Помощь по полю лица"
+  },
+  "description.step2": {
+    "message": "Введите текст для озвучивания и выберите голос, или загрузите готовое аудио.",
+    "description": "Помощь по полю голоса"
+  },
+  "description.speed": {
+    "message": "1.0 — это оригинальная скорость, можно регулировать от 0.5 до 2.0.",
+    "description": "Помощь по скорости речи"
+  },
+  "placeholder.speech": {
+    "message": "Введите текст, который должен произнести цифровой человек……",
+    "description": "Заполнитель для сценария"
+  },
+  "placeholder.pickTimbre": {
+    "message": "Выберите тембр",
+    "description": "Заполнитель для выбора голоса"
+  },
+  "placeholder.voiceName": {
+    "message": "Дайте этому тембру имя",
+    "description": "Заполнитель для имени голоса"
+  },
+  "button.uploadFaceVideo": {
+    "message": "Загрузить видео лица",
+    "description": "Кнопка загрузки видео лица"
+  },
+  "button.uploadFacePhoto": {
+    "message": "Загрузить фото лица",
+    "description": "Кнопка загрузки фото лица"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "Загрузить аудио",
+    "description": "Кнопка загрузки аудио"
+  },
+  "button.cloneNewVoice": {
+    "message": "Клонировать новый голос",
+    "description": "Открыть диалог клонирования голоса"
+  },
+  "button.startClone": {
+    "message": "Начать клонирование",
+    "description": "Начать клонирование голоса"
+  },
+  "button.replace": {
+    "message": "Заменить",
+    "description": "Заменить загруженный файл"
+  },
+  "button.generateVideo": {
+    "message": "Сгенерировать видео",
+    "description": "Кнопка генерации"
+  },
+  "message.faceVideoHint": {
+    "message": "Поддерживаются MP4 / MOV / WEBM",
+    "description": "Подсказка по принятым видео лица"
+  },
+  "message.facePhotoHint": {
+    "message": "Поддерживаются PNG / JPG / WEBP",
+    "description": "Подсказка по принятым фото лица"
+  },
+  "message.audioHint": {
+    "message": "Поддерживаются WAV / MP3 / M4A",
+    "description": "Подсказка по принятым аудио"
+  },
+  "message.missingFace": {
+    "message": "Не хватает: загрузите видео или фото лица",
+    "description": "Отсутствующее лицо"
+  },
+  "message.missingText": {
+    "message": "Не хватает: введите текст для озвучивания",
+    "description": "Отсутствующий сценарий"
+  },
+  "message.missingTimbre": {
+    "message": "Не хватает: выберите или клонируйте голос",
+    "description": "Отсутствующий голос"
+  },
+  "message.missingAudio": {
+    "message": "Не хватает: загрузите аудио",
+    "description": "Отсутствующее аудио"
+  },
+  "message.eta": {
+    "message": "Генерация обычно занимает 30–45 минут, можете заняться чем-то другим",
+    "description": "Подсказка по времени ожидания генерации"
+  },
+  "message.voiceCloneHint": {
+    "message": "Загрузите чистый голос длительностью 10–20 секунд, чем тише фон, тем лучше результат",
+    "description": "Подсказка по образцу голоса"
+  },
+  "message.voiceCloneRunning": {
+    "message": "Клонирование в процессе, обычно занимает 1–2 минуты...",
+    "description": "Клонирование голоса в процессе"
+  },
+  "message.voiceStoredLocally": {
+    "message": "Голос сохранен в текущем браузере, при смене устройства или очистке данных потребуется повторное клонирование",
+    "description": "Голос хранится локально в браузере"
+  },
+  "message.noVoiceYet": {
+    "message": "Голоса еще нет, сначала клонируйте один",
+    "description": "Пустой список голосов"
+  },
+  "name.etaLabel": {
+    "message": "Ожидаемое время осталось",
+    "description": "Оценка оставшегося времени"
+  },
+  "name.duration": {
+    "message": "Длительность видео",
+    "description": "Длительность рендеренного видео"
+  },
+  "name.outputSize": {
+    "message": "Размер кадра",
+    "description": "Размер рендеренного кадра"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "ID отслеживания для поддержки"
+  },
+  "message.etaRemaining": {
+    "message": "Около {minutes} минут",
+    "description": "Оставшиеся минуты"
+  },
+  "message.etaAlmostDone": {
+    "message": "Почти завершено",
+    "description": "Почти завершено"
+  },
+  "name.faceVideo": {
+    "message": "Видео",
+    "description": "Опция видео лица"
+  },
+  "name.facePhoto": {
+    "message": "Фото",
+    "description": "Опция фото лица"
+  },
+  "name.face": {
+    "message": "Источник лица",
+    "description": "Поле источника лица"
+  },
+  "name.voice": {
+    "message": "Голос",
+    "description": "Поле источника голоса"
+  },
+  "name.voiceAudio": {
+    "message": "Аудио",
+    "description": "Опция голоса на основе аудио"
+  },
+  "name.voiceText": {
+    "message": "Текст",
+    "description": "Опция голоса на основе текста"
+  },
+  "name.engine": {
+    "message": "Движок",
+    "description": "Поле движка синхронизации губ"
+  },
+  "name.resolution": {
+    "message": "Разрешение",
+    "description": "Поле разрешения вывода"
+  },
+  "name.voiceReady": {
+    "message": "Голос готов",
+    "description": "Метка готовности клонированного голоса"
+  },
+  "placeholder.text": {
+    "message": "Введите текст, который должен сказать цифровой человек……",
+    "description": "Заполнитель для произносимого текста"
+  },
+  "description.face": {
+    "message": "Загрузите четкое видео анфас (рекомендуется) или фото для управления цифровым человеком.",
+    "description": "Помощь по полю лица"
+  },
+  "description.voiceClone": {
+    "message": "Загрузите чистый образец человеческого голоса длительностью 10–20 секунд для клонирования голоса, затем используйте его для чтения вашего текста.",
+    "description": "Помощь по клонированию голоса"
+  },
+  "button.generate": {
+    "message": "Сгенерировать видео",
+    "description": "Кнопка генерации"
+  },
+  "button.uploadVideo": {
+    "message": "Загрузить видео лица",
+    "description": "Кнопка загрузки видео лица"
+  },
+  "button.uploadPhoto": {
+    "message": "Загрузить фото лица",
+    "description": "Кнопка загрузки фото лица"
+  },
+  "button.uploadAudio": {
+    "message": "Загрузить аудио",
+    "description": "Кнопка загрузки аудио"
+  },
+  "button.clone": {
+    "message": "Клонировать голос",
+    "description": "Кнопка клонирования голоса"
+  },
+  "button.cloning": {
+    "message": "Клонирование...",
+    "description": "Кнопка процесса клонирования"
   }
 }

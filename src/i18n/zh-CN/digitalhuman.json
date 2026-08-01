@@ -19,30 +19,6 @@
     "message": "失败原因",
     "description": "Failure reason"
   },
-  "name.face": {
-    "message": "面部来源",
-    "description": "Face source field"
-  },
-  "name.faceVideo": {
-    "message": "视频",
-    "description": "Face video option"
-  },
-  "name.facePhoto": {
-    "message": "照片",
-    "description": "Face photo option"
-  },
-  "name.voice": {
-    "message": "声音",
-    "description": "Voice source field"
-  },
-  "name.voiceAudio": {
-    "message": "音频",
-    "description": "Audio-driven voice option"
-  },
-  "name.voiceText": {
-    "message": "文本",
-    "description": "Text-driven voice option"
-  },
   "name.audioDriven": {
     "message": "音频驱动",
     "description": "Audio-driven label"
@@ -50,30 +26,6 @@
   "name.textDriven": {
     "message": "文本驱动",
     "description": "Text-driven label"
-  },
-  "name.engine": {
-    "message": "引擎",
-    "description": "Lip-sync engine field"
-  },
-  "name.resolution": {
-    "message": "分辨率",
-    "description": "Output resolution field"
-  },
-  "name.voiceReady": {
-    "message": "音色已就绪",
-    "description": "Cloned voice ready label"
-  },
-  "placeholder.text": {
-    "message": "输入数字人要说的内容……",
-    "description": "Spoken text placeholder"
-  },
-  "description.face": {
-    "message": "上传清晰的正脸视频（推荐）或一张照片来驱动口播数字人。",
-    "description": "Face field help"
-  },
-  "description.voiceClone": {
-    "message": "上传一段干净的 10–20 秒人声样本克隆音色，再用它朗读你的文本。",
-    "description": "Voice clone help"
   },
   "status.pending": {
     "message": "排队中",
@@ -91,37 +43,13 @@
     "message": "失败",
     "description": "Failed"
   },
-  "button.generate": {
-    "message": "生成视频",
-    "description": "Generate button"
-  },
   "button.download": {
     "message": "下载视频",
     "description": "Download video button"
   },
-  "button.uploadVideo": {
-    "message": "上传面部视频",
-    "description": "Upload face video button"
-  },
-  "button.uploadPhoto": {
-    "message": "上传面部照片",
-    "description": "Upload face photo button"
-  },
-  "button.uploadAudio": {
-    "message": "上传音频",
-    "description": "Upload driving audio button"
-  },
   "button.uploadSample": {
     "message": "上传样本",
     "description": "Upload voice sample button"
-  },
-  "button.clone": {
-    "message": "克隆音色",
-    "description": "Clone voice button"
-  },
-  "button.cloning": {
-    "message": "克隆中……",
-    "description": "Cloning in progress button"
   },
   "message.startingTask": {
     "message": "正在提交视频任务……",
@@ -150,5 +78,205 @@
   "message.voiceCloneFailed": {
     "message": "音色克隆失败，请换一段更干净的样本。",
     "description": "Voice clone fail"
+  },
+  "name.step1": {
+    "message": "谁来说",
+    "description": "Step 1 title: the face"
+  },
+  "name.step2": {
+    "message": "说什么",
+    "description": "Step 2 title: the voice"
+  },
+  "name.required": {
+    "message": "必填",
+    "description": "Required field badge"
+  },
+  "name.faceModeVideo": {
+    "message": "视频片段",
+    "description": "Face mode: video"
+  },
+  "name.faceModePhoto": {
+    "message": "一张照片",
+    "description": "Face mode: photo"
+  },
+  "name.voiceModeText": {
+    "message": "念这段文字",
+    "description": "Voice mode: text to speech"
+  },
+  "name.voiceModeAudio": {
+    "message": "用我的录音",
+    "description": "Voice mode: upload audio"
+  },
+  "name.speech": {
+    "message": "讲稿",
+    "description": "Spoken text field title"
+  },
+  "name.timbre": {
+    "message": "音色",
+    "description": "Cloned voice field"
+  },
+  "name.advanced": {
+    "message": "高级选项",
+    "description": "Advanced section"
+  },
+  "name.speed": {
+    "message": "语速",
+    "description": "Speech speed field"
+  },
+  "name.cloneVoice": {
+    "message": "克隆音色",
+    "description": "Voice clone dialog title"
+  },
+  "name.voiceName": {
+    "message": "音色名称",
+    "description": "Voice nickname field"
+  },
+  "name.voiceLang": {
+    "message": "语言",
+    "description": "Voice language field"
+  },
+  "name.myVoice": {
+    "message": "我的音色",
+    "description": "Default cloned voice name"
+  },
+  "name.lang_zh": {
+    "message": "中文",
+    "description": "Chinese language option"
+  },
+  "name.lang_en": {
+    "message": "英文",
+    "description": "English language option"
+  },
+  "description.step1": {
+    "message": "上传一段正面清晰、说话时长 5 秒以上的视频效果最好；也可以只用一张正脸照片。",
+    "description": "Face field help"
+  },
+  "description.step2": {
+    "message": "输入要念的文字并选一个音色，或直接上传一段现成的录音。",
+    "description": "Voice field help"
+  },
+  "description.speed": {
+    "message": "1.0 为原速，可在 0.5–2.0 之间调整。",
+    "description": "Speech speed help"
+  },
+  "placeholder.speech": {
+    "message": "输入数字人要念的内容……",
+    "description": "Script placeholder"
+  },
+  "placeholder.pickTimbre": {
+    "message": "选择一个音色",
+    "description": "Voice select placeholder"
+  },
+  "placeholder.voiceName": {
+    "message": "给这个音色起个名字",
+    "description": "Voice name placeholder"
+  },
+  "button.uploadFaceVideo": {
+    "message": "上传面部视频",
+    "description": "Upload face video button"
+  },
+  "button.uploadFacePhoto": {
+    "message": "上传面部照片",
+    "description": "Upload face photo button"
+  },
+  "button.uploadSpeechAudio": {
+    "message": "上传录音",
+    "description": "Upload driving audio button"
+  },
+  "button.cloneNewVoice": {
+    "message": "克隆新音色",
+    "description": "Open voice clone dialog"
+  },
+  "button.startClone": {
+    "message": "开始克隆",
+    "description": "Start voice cloning"
+  },
+  "button.replace": {
+    "message": "更换",
+    "description": "Replace an uploaded file"
+  },
+  "button.generateVideo": {
+    "message": "生成视频",
+    "description": "Generate button"
+  },
+  "message.faceVideoHint": {
+    "message": "支持 MP4 / MOV / WEBM",
+    "description": "Face video accept hint"
+  },
+  "message.facePhotoHint": {
+    "message": "支持 PNG / JPG / WEBP",
+    "description": "Face photo accept hint"
+  },
+  "message.audioHint": {
+    "message": "支持 WAV / MP3 / M4A",
+    "description": "Audio accept hint"
+  },
+  "message.missingFace": {
+    "message": "还差：上传一段面部视频或照片",
+    "description": "Missing face"
+  },
+  "message.missingText": {
+    "message": "还差：输入要念的文字",
+    "description": "Missing script"
+  },
+  "message.missingTimbre": {
+    "message": "还差：选择或克隆一个音色",
+    "description": "Missing voice"
+  },
+  "message.missingAudio": {
+    "message": "还差：上传一段录音",
+    "description": "Missing audio"
+  },
+  "message.eta": {
+    "message": "生成通常需要 30–45 分钟，可以先去忙别的",
+    "description": "Generation ETA hint"
+  },
+  "message.voiceCloneHint": {
+    "message": "上传 10–20 秒干净的人声，背景越安静效果越好",
+    "description": "Voice sample hint"
+  },
+  "message.voiceCloneRunning": {
+    "message": "正在克隆，通常需要 1–2 分钟……",
+    "description": "Voice clone in progress"
+  },
+  "message.voiceStoredLocally": {
+    "message": "音色保存在当前浏览器，换设备或清除数据后需要重新克隆",
+    "description": "Voice book is browser-local"
+  },
+  "message.noVoiceYet": {
+    "message": "还没有音色，先克隆一个吧",
+    "description": "Empty voice list"
+  },
+  "name.etaLabel": {
+    "message": "预计剩余",
+    "description": "Estimated time remaining"
+  },
+  "name.duration": {
+    "message": "视频时长",
+    "description": "Rendered video duration"
+  },
+  "name.outputSize": {
+    "message": "画面尺寸",
+    "description": "Rendered frame size"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "Trace id for support"
+  },
+  "message.etaRemaining": {
+    "message": "约 {minutes} 分钟",
+    "description": "Remaining minutes"
+  },
+  "message.etaAlmostDone": {
+    "message": "即将完成",
+    "description": "Nearly finished"
+  },
+  "name.faceVideo": {
+    "message": "视频",
+    "description": "Face kind label on a task card"
+  },
+  "name.facePhoto": {
+    "message": "照片",
+    "description": "Face kind label on a task card"
   }
 }
