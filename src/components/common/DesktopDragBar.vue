@@ -57,8 +57,10 @@ export default defineComponent({
   height: 32px;
   z-index: 100; // below status-floating(200), above router-view content
   -webkit-app-region: drag;
-  // Do NOT eat clicks — underlying UI (credits pill, nav rail, close/max/min)
-  // still gets pointer events. Only the window-drag hit-test uses this element.
+  // `pointer-events: none` does NOT let clicks through to what's underneath:
+  // the drag hit-test happens in the compositor, before pointer-events and
+  // regardless of z-index. Anything this bar overlaps must opt out itself with
+  // `-webkit-app-region: no-drag`.
   pointer-events: none;
 }
 
