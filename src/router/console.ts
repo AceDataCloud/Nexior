@@ -2,6 +2,7 @@ import {
   ROUTE_CONSOLE_APPLICATION_EXTRA,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+  ROUTE_CONSOLE_BROWSER_DEVICES,
   ROUTE_CONSOLE_CONNECTORS,
   ROUTE_CONSOLE_ORDER_DETAIL,
   ROUTE_CONSOLE_ORDER_LIST,
@@ -86,6 +87,15 @@ export default {
       name: ROUTE_CONSOLE_SKILLS,
       meta: WORKSPACE,
       component: () => import('@/pages/console/skills/Index.vue')
+    },
+    // Browser devices — the extensions paired to run browser work locally.
+    // Ported from auth.acedata.cloud/user/browser-devices; a plain scrolling
+    // list, so DOCUMENT rather than the connector/skill WORKSPACE layout.
+    {
+      path: 'browser-devices',
+      name: ROUTE_CONSOLE_BROWSER_DEVICES,
+      meta: DOCUMENT,
+      component: () => import('@/pages/console/browserDevices/Index.vue')
     }
   ]
 };

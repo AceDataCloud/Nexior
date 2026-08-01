@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "注册时间",
     "description": "用户注册时间"
+  },
+  "browserDevice.title": {
+    "message": "浏览器设备",
+    "description": "user: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "配对并管理在本地执行浏览器任务的 Ace Data Cloud 浏览器扩展。",
+    "description": "user: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "配对 Ace Data Cloud",
+    "description": "user: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "配对设备",
+    "description": "user: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "打开 Ace Data Cloud 浏览器扩展并输入此一次性配对码。扩展提交设备身份前请保持此窗口打开。",
+    "description": "user: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "配对仅信任这台本地浏览器设备，不会批准任何浏览器操作，也不会把 Cookie 或登录态上传到云端。",
+    "description": "user: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "配对码将在 {seconds} 秒后过期",
+    "description": "user: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "正在等待 Ace Data Cloud 浏览器扩展提交设备身份…",
+    "description": "user: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "核对这台设备的确切身份",
+    "description": "user: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "确认前请在 Ace Data Cloud 浏览器扩展中逐项核对以下信息。如有任何异常，请拒绝请求。",
+    "description": "user: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "密钥指纹",
+    "description": "user: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "平台",
+    "description": "user: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Agent 版本",
+    "description": "user: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "来源",
+    "description": "user: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "设备名称（可选）",
+    "description": "user: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "确认此设备",
+    "description": "user: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "拒绝请求",
+    "description": "user: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "生成新配对码",
+    "description": "user: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "浏览器设备配对暂不可用，请稍后重试。",
+    "description": "user: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "无法检查配对请求，请生成新配对码后重试。",
+    "description": "user: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "配对码已过期，请生成新配对码继续。",
+    "description": "user: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "无法完成配对决定，请重试。",
+    "description": "user: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "浏览器设备已配对。",
+    "description": "user: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "已拒绝配对请求。",
+    "description": "user: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "暂无已配对的浏览器设备。",
+    "description": "user: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "加载浏览器设备失败。",
+    "description": "user: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "最近在线",
+    "description": "user: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "从未",
+    "description": "user: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "能力",
+    "description": "user: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "连接状态",
+    "description": "user: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "活动会话",
+    "description": "user: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "执行合同",
+    "description": "user: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "管理会话",
+    "description": "user: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "重命名浏览器设备",
+    "description": "user: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "为这台浏览器设备输入一个易识别的名称：",
+    "description": "user: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "请输入设备名称。",
+    "description": "user: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "撤销",
+    "description": "user: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "撤销浏览器设备",
+    "description": "user: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "确定撤销 {name} 吗？其 {count} 个活动会话将立即停止，连接器绑定会失效，审计历史将被保留。",
+    "description": "user: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "浏览器设备已撤销。",
+    "description": "user: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "撤销浏览器设备失败。",
+    "description": "user: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "待激活",
+    "description": "user: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "已激活",
+    "description": "user: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "已暂停",
+    "description": "user: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "已隔离",
+    "description": "user: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "已撤销",
+    "description": "user: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "重命名",
+    "description": "user: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "浏览器设备已重命名。",
+    "description": "user: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "重命名浏览器设备失败。",
+    "description": "user: browserDevice.renameFailed"
   }
 }

@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Fecha de registro",
     "description": "La fecha en que el usuario se registró"
+  },
+  "browserDevice.title": {
+    "message": "Dispositivos del navegador",
+    "description": "usuario: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Empareje y gestione la extensión del navegador Ace Data Cloud que ejecuta tareas localmente.",
+    "description": "usuario: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Emparejar Ace Data Cloud",
+    "description": "usuario: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Emparejar dispositivo",
+    "description": "usuario: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Abre la extensión del navegador Ace Data Cloud e ingresa este código de emparejamiento de un solo uso. Mantén esta ventana abierta antes de que la extensión envíe la identidad del dispositivo.",
+    "description": "usuario: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "El emparejamiento solo confía en este dispositivo de navegador local, no aprobará ninguna operación del navegador ni subirá cookies o estado de inicio de sesión a la nube.",
+    "description": "usuario: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "El código de emparejamiento expirará en {seconds} segundos",
+    "description": "usuario: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Esperando que la extensión del navegador Ace Data Cloud envíe la identidad del dispositivo…",
+    "description": "usuario: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Verificar la identidad exacta de este dispositivo",
+    "description": "usuario: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Antes de confirmar, verifique cada detalle en la extensión del navegador Ace Data Cloud. Si algo no coincide, rechace la solicitud.",
+    "description": "usuario: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Huella digital de la clave",
+    "description": "usuario: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Plataforma",
+    "description": "usuario: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Versión del agente",
+    "description": "usuario: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Origen",
+    "description": "usuario: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Nombre del dispositivo (opcional)",
+    "description": "usuario: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Confirmar este dispositivo",
+    "description": "usuario: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Rechazar solicitud",
+    "description": "usuario: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Generar nuevo código de emparejamiento",
+    "description": "usuario: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "El emparejamiento del dispositivo del navegador no está disponible, por favor intente más tarde.",
+    "description": "usuario: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "No se pudo verificar la solicitud de emparejamiento, genere un nuevo código y vuelva a intentarlo.",
+    "description": "usuario: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "El código de emparejamiento ha expirado, por favor genera un nuevo código para continuar.",
+    "description": "usuario: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "No se pudo completar la decisión de emparejamiento, por favor intenta de nuevo.",
+    "description": "usuario: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Dispositivo del navegador emparejado.",
+    "description": "usuario: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Solicitud de emparejamiento rechazada.",
+    "description": "usuario: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "No hay dispositivos de navegador emparejados.",
+    "description": "usuario: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Falló la carga del dispositivo del navegador.",
+    "description": "usuario: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Última vez en línea",
+    "description": "usuario: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Nunca",
+    "description": "usuario: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Capacidades",
+    "description": "usuario: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Estado de conexión",
+    "description": "usuario: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Sesiones activas",
+    "description": "usuario: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Ejecutar contrato",
+    "description": "usuario: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Administrar sesiones",
+    "description": "usuario: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Renombrar dispositivo del navegador",
+    "description": "usuario: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Ingrese un nombre identificable para este dispositivo del navegador:",
+    "description": "usuario: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Por favor ingresa el nombre del dispositivo.",
+    "description": "usuario: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Revocar",
+    "description": "usuario: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Revocar dispositivo del navegador",
+    "description": "usuario: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "¿Estás seguro de que deseas revocar {name}? Sus {count} sesiones activas se detendrán inmediatamente, el vínculo del conector se invalidará y el historial de auditoría se conservará.",
+    "description": "usuario: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "El dispositivo del navegador ha sido revocado.",
+    "description": "usuario: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Falló la revocación del dispositivo del navegador.",
+    "description": "usuario: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Pendiente",
+    "description": "usuario: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Activo",
+    "description": "usuario: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Suspendido",
+    "description": "usuario: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "En cuarentena",
+    "description": "usuario: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Revocado",
+    "description": "usuario: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Renombrar",
+    "description": "usuario: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Dispositivo del navegador renombrado.",
+    "description": "usuario: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Error al renombrar el dispositivo del navegador.",
+    "description": "usuario: browserDevice.renameFailed"
   }
 }

@@ -247,7 +247,7 @@ export default defineComponent({
         await navigator.clipboard.writeText(this.challenge.code);
         ElMessage.success(this.$t('common.message.copied'));
       } catch {
-        ElMessage.error(this.$t('common.message.updateFailed'));
+        ElMessage.error(this.$t('common.message.copyFailed'));
       }
     },
     async confirm() {

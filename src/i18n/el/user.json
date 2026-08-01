@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Ημερομηνία Εγγραφής",
     "description": "Η ημερομηνία που εγγράφηκε ο χρήστης"
+  },
+  "browserDevice.title": {
+    "message": "Συσκευή προγράμματος περιήγησης",
+    "description": "χρήστης: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Ζευγαρώστε και διαχειριστείτε την επέκταση προγράμματος περιήγησης Ace Data Cloud που εκτελεί εργασίες τοπικά.",
+    "description": "χρήστης: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Ζευγάρωμα Ace Data Cloud",
+    "description": "χρήστης: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Ζευγάρωμα συσκευής",
+    "description": "χρήστης: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Ανοίξτε την επέκταση περιηγητή Ace Data Cloud και εισάγετε αυτόν τον μοναδικό κωδικό ζευγαρώματος. Διατηρήστε αυτό το παράθυρο ανοιχτό μέχρι η επέκταση να υποβάλει την ταυτότητα της συσκευής.",
+    "description": "χρήστης: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Η ζευγαρώση εμπιστεύεται μόνο αυτή τη τοπική συσκευή περιηγητή, δεν θα εγκρίνει καμία ενέργεια περιηγητή και δεν θα ανεβάσει cookies ή κατάσταση σύνδεσης στο cloud.",
+    "description": "χρήστης: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Ο κωδικός ζευγαρώματος θα λήξει σε {seconds} δευτερόλεπτα",
+    "description": "χρήστης: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Περιμένει την υποβολή της ταυτότητας της συσκευής από την επέκταση προγράμματος περιήγησης Ace Data Cloud...",
+    "description": "χρήστης: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Επιβεβαίωση της ακριβούς ταυτότητας αυτής της συσκευής",
+    "description": "χρήστης: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Πριν επιβεβαιώσετε, ελέγξτε προσεκτικά τις παρακάτω πληροφορίες στην επέκταση προγράμματος περιήγησης Ace Data Cloud. Εάν υπάρχουν ανωμαλίες, παρακαλώ απορρίψτε το αίτημα.",
+    "description": "χρήστης: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Δακτυλικό αποτύπωμα κλειδιού",
+    "description": "χρήστης: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Πλατφόρμα",
+    "description": "χρήστης: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Έκδοση Agent",
+    "description": "χρήστης: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Προέλευση",
+    "description": "χρήστης: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Όνομα συσκευής (προαιρετικό)",
+    "description": "χρήστης: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Επιβεβαίωση αυτής της συσκευής",
+    "description": "χρήστης: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Απόρριψη αιτήματος",
+    "description": "χρήστης: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Δημιουργία νέου κωδικού ζευγαρώματος",
+    "description": "χρήστης: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Η ζευγαρώση της συσκευής του προγράμματος περιήγησης δεν είναι διαθέσιμη, παρακαλώ δοκιμάστε ξανά αργότερα.",
+    "description": "χρήστης: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Αδυναμία ελέγχου του αιτήματος ζευγαρώματος, παρακαλώ δημιουργήστε νέο κωδικό ζευγαρώματος και δοκιμάστε ξανά.",
+    "description": "χρήστης: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Ο κωδικός ζευγαρώματος έχει λήξει, παρακαλώ δημιουργήστε νέο κωδικό ζευγαρώματος για να συνεχίσετε.",
+    "description": "χρήστης: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Αποτυχία ολοκλήρωσης της απόφασης ζευγαρώματος, παρακαλώ δοκιμάστε ξανά.",
+    "description": "χρήστης: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Η συσκευή του προγράμματος περιήγησης έχει ζευγαρωθεί.",
+    "description": "χρήστης: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Η αίτηση ζευγαρώματος έχει απορριφθεί.",
+    "description": "χρήστης: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Δεν υπάρχουν ζευγαρωμένες συσκευές περιηγητή.",
+    "description": "χρήστης: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Αποτυχία φόρτωσης της συσκευής περιηγητή.",
+    "description": "χρήστης: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Τελευταία online",
+    "description": "χρήστης: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Ποτέ",
+    "description": "χρήστης: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Δυνατότητες",
+    "description": "χρήστης: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Κατάσταση σύνδεσης",
+    "description": "χρήστης: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Ενεργές συνεδρίες",
+    "description": "χρήστης: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Εκτέλεση σύμβασης",
+    "description": "χρήστης: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Διαχείριση συνεδριών",
+    "description": "χρήστης: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Μετονομασία συσκευής προγράμματος περιήγησης",
+    "description": "χρήστης: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Εισάγετε ένα εύκολα αναγνωρίσιμο όνομα για αυτή τη συσκευή του προγράμματος περιήγησης:",
+    "description": "χρήστης: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Παρακαλώ εισάγετε το όνομα της συσκευής.",
+    "description": "χρήστης: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Αναίρεση",
+    "description": "χρήστης: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Αναίρεση συσκευής περιηγητή",
+    "description": "χρήστης: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Είστε σίγουροι ότι θέλετε να αναιρέσετε το {name}; Οι {count} ενεργές συνεδρίες θα σταματήσουν αμέσως, η σύνδεση θα ακυρωθεί και το ιστορικό ελέγχου θα διατηρηθεί.",
+    "description": "χρήστης: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Η συσκευή περιηγητή έχει αναιρεθεί.",
+    "description": "χρήστης: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Αποτυχία αναίρεσης της συσκευής περιηγητή.",
+    "description": "χρήστης: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Αναμονή ενεργοποίησης",
+    "description": "χρήστης: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Ενεργοποιημένο",
+    "description": "χρήστης: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Ανασταλμένο",
+    "description": "χρήστης: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Απομονωμένο",
+    "description": "χρήστης: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Ανακληθέν",
+    "description": "χρήστης: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Μετονομασία",
+    "description": "χρήστης: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Η συσκευή του προγράμματος περιήγησης έχει μετονομαστεί.",
+    "description": "χρήστης: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Αποτυχία μετονομασίας της συσκευής του προγράμματος περιήγησης.",
+    "description": "χρήστης: browserDevice.renameFailed"
   }
 }

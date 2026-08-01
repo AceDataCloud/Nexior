@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "登録日",
     "description": "ユーザーの登録日"
+  },
+  "browserDevice.title": {
+    "message": "ブラウザデバイス",
+    "description": "ユーザー: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "ローカルで実行されるブラウザタスクを管理するためのAce Data Cloudブラウザ拡張機能とペアリングします。",
+    "description": "ユーザー: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Ace Data Cloudとペアリング",
+    "description": "ユーザー: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "デバイスをペアリング",
+    "description": "user: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Ace Data Cloudブラウザ拡張を開き、この一回限りのペアリングコードを入力してください。拡張がデバイスの身元を送信する前に、このウィンドウを開いたままにしてください。",
+    "description": "user: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "ペアリングはこのローカルブラウザデバイスのみを信頼し、他のブラウザ操作は承認せず、Cookieやログイン状態をクラウドにアップロードしません。",
+    "description": "user: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "{seconds} 秒後にペアリングコードが期限切れになります",
+    "description": "user: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Ace Data Cloudブラウザ拡張機能がデバイスの身元を提出するのを待っています…",
+    "description": "ユーザー: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "このデバイスの正確な身元を確認",
+    "description": "ユーザー: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "確認する前に、Ace Data Cloudブラウザ拡張機能で以下の情報を一つずつ確認してください。異常があればリクエストを拒否してください。",
+    "description": "ユーザー: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "キー指紋",
+    "description": "user: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "プラットフォーム",
+    "description": "ユーザー: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "エージェントバージョン",
+    "description": "user: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "起源",
+    "description": "user: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "デバイス名（任意）",
+    "description": "user: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "このデバイスを確認",
+    "description": "user: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "リクエストを拒否",
+    "description": "ユーザー: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "新しいペアリングコードを生成",
+    "description": "ユーザー: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "ブラウザデバイスのペアリングは現在利用できません。後で再試行してください。",
+    "description": "ユーザー: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "ペアリングリクエストを確認できませんでした。新しいペアリングコードを生成して再試行してください。",
+    "description": "ユーザー: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "ペアリングコードが期限切れです。新しいペアリングコードを生成して続行してください。",
+    "description": "user: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "ペアリングの決定を完了できませんでした。再試行してください。",
+    "description": "user: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "ブラウザデバイスがペアリングされました。",
+    "description": "ユーザー: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "ペアリングリクエストを拒否しました。",
+    "description": "ユーザー: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "ペアリングされたブラウザデバイスはありません。",
+    "description": "user: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "ブラウザデバイスの読み込みに失敗しました。",
+    "description": "user: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "最近オンライン",
+    "description": "user: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "未見",
+    "description": "user: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "機能",
+    "description": "user: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "接続状態",
+    "description": "user: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "アクティブセッション",
+    "description": "user: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "契約を実行",
+    "description": "ユーザー: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "セッションを管理",
+    "description": "user: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "ブラウザデバイスの名前を変更",
+    "description": "ユーザー: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "このブラウザデバイスのわかりやすい名前を入力してください：",
+    "description": "ユーザー: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "デバイス名を入力してください。",
+    "description": "user: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "取り消し",
+    "description": "user: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "ブラウザデバイスの取り消し",
+    "description": "user: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "{name} を取り消してもよろしいですか？その {count} のアクティブセッションは直ちに停止し、コネクタのバインディングは無効になり、監査履歴は保持されます。",
+    "description": "user: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "ブラウザデバイスが取り消されました。",
+    "description": "user: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "ブラウザデバイスの取り消しに失敗しました。",
+    "description": "user: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "待機中",
+    "description": "ユーザー: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "アクティブ",
+    "description": "ユーザー: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "一時停止中",
+    "description": "ユーザー: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "隔離されています",
+    "description": "ユーザー: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "取り消されました",
+    "description": "ユーザー: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "名前を変更",
+    "description": "ユーザー: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "ブラウザデバイスの名前が変更されました。",
+    "description": "ユーザー: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "ブラウザデバイスの名前変更に失敗しました。",
+    "description": "ユーザー: browserDevice.renameFailed"
   }
 }
