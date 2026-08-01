@@ -26,11 +26,12 @@ SRC = os.path.join(
 )
 OUT_DIR = os.path.join(ROOT, "build")
 
-# 18pt canvas, @2x for Retina. NOT 16 — that was undersized against the rest of
-# the menu bar. Measured neighbours: ChatGPT ships an 18x18 glyph filling an
-# 18x18 canvas, Claude an 18x18 glyph in a 24x24 one. A 16pt canvas minus
-# padding left our mark at 14pt, ~22% smaller than either.
-SIZES = [("trayTemplate.png", 18), ("trayTemplate@2x.png", 36)]
+# 16pt canvas, @2x for Retina. The mark fills it edge to edge (PADDING = 0), so
+# 16pt here is a 16pt glyph — not the 14pt one an earlier 16pt canvas produced
+# by also reserving padding. Neighbours run 18pt (ChatGPT, Claude); this sits a
+# notch under them on purpose, because the wide 「∧」 reads bigger than a round
+# or square glyph of the same nominal height.
+SIZES = [("trayTemplate.png", 16), ("trayTemplate@2x.png", 32)]
 
 # The brand icon is a coloured mark on a WHITE ground, so the mark is what's
 # DARK. Anything at/above this luma is background and becomes transparent.
@@ -49,9 +50,9 @@ LUMA_BACKGROUND = 200
 # full width, which is what makes it read at menu-bar size.
 #
 # No padding: macOS already insets the tray image within the menu-bar item, so
-# padding baked into the PNG shrinks the glyph twice. ChatGPT's 18x18 template
-# is 18x18 of actual mark, edge to edge — matching that is what makes ours read
-# at the same size as its neighbours instead of one notch smaller.
+# padding baked into the PNG shrinks the glyph twice — which is how a 16pt
+# canvas used to yield a 14pt mark. Sizing is controlled by the canvas alone
+# (see SIZES), never by padding.
 PADDING = 0
 
 # Anti-aliasing is applied ONCE, by the final downscale — never to the alpha
