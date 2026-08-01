@@ -20,7 +20,10 @@ function rooted() {
   return base;
 }
 
-describe.skipIf(WIN)('shell.exec persistent session', () => {
+// Each case spawns a real shell and waits for round-trips, so these are
+// sensitive to machine load when the full suite runs in parallel. 5s (the
+// vitest default) is not enough headroom on a busy CI box.
+describe.skipIf(WIN)('shell.exec persistent session', { timeout: 20_000 }, () => {
   afterEach(() => {
     _resetSessionsForTesting();
     _resetRootsForTesting();

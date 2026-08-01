@@ -45,7 +45,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { isFeatureEnabled, isOfficial } from '@/utils';
+import { isOfficial } from '@/utils';
 
 interface ILink {
   key: string;
@@ -72,7 +72,7 @@ export default defineComponent({
       return this.$store.getters.user;
     },
     links(): ILink[] {
-      let links: ILink[] = [
+      const links: ILink[] = [
         {
           key: 'application-list',
           text: this.$t('console.menu.applicationList'),
@@ -90,31 +90,26 @@ export default defineComponent({
           text: this.$t('console.menu.usageList'),
           name: ROUTE_CONSOLE_USAGE_LIST,
           icon: HistoryIcon
-        }
-      ];
-
-      // Connector + skill management are still rolling out; until the flag
-      // is on everywhere, both are managed at auth.acedata.cloud.
-      if (isFeatureEnabled('connections-in-studio')) {
-        links.push({
+        },
+        {
           key: 'connectors',
           text: this.$t('console.menu.connectors'),
           name: ROUTE_CONSOLE_CONNECTORS,
           icon: ConnectionIcon
-        });
-        links.push({
+        },
+        {
           key: 'skills',
           text: this.$t('console.menu.skills'),
           name: ROUTE_CONSOLE_SKILLS,
           icon: SkillIcon
-        });
-        links.push({
+        },
+        {
           key: 'browser-devices',
           text: this.$t('console.menu.browserDevices'),
           name: ROUTE_CONSOLE_BROWSER_DEVICES,
           icon: DesktopIcon
-        });
-      }
+        }
+      ];
 
       // Order history stays visible on iOS — purchases now happen in-app via
       // Apple IAP, so users should see their orders.

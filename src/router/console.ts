@@ -70,18 +70,16 @@ export default {
       meta: DOCUMENT,
       component: () => import('@/pages/console/usage/List.vue')
     },
-    // Connector management, ported from auth.acedata.cloud/user/connections.
-    // The route always exists (so a deep link works for testers); the sidebar
-    // entry and the in-app links are gated on the `connections-in-studio`
-    // feature flag. AuthFrontend's page stays live for PlatformFrontend/Dify.
+    // Connector management. auth.acedata.cloud stays the OAuth broker and
+    // credential vault; its page also stays live because PlatformFrontend
+    // links to it and ~28 MCP servers register it as an OAuth redirect_uri.
     {
       path: 'connectors',
       name: ROUTE_CONSOLE_CONNECTORS,
       meta: WORKSPACE,
       component: () => import('@/pages/console/connectors/Index.vue')
     },
-    // Agent Skills, same deal — ported UI, same flag, AuthFrontend's page
-    // stays live.
+    // Agent Skills — same split: UI here, data still owned by AuthBackend.
     {
       path: 'skills',
       name: ROUTE_CONSOLE_SKILLS,
