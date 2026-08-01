@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 13:02:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 01 Aug 2026 13:52:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.351.2
+
+Sat, 01 Aug 2026 13:52:37 GMT
+
+### Patches
+
+- 数字人配置面板重做：两步式输入、上传预览、音色簿，并收起引擎与分辨率参数 (dev@acedata.cloud)
 
 ## 3.351.1
 
