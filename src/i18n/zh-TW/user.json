@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "註冊時間",
     "description": "使用者註冊時間"
+  },
+  "browserDevice.title": {
+    "message": "瀏覽器設備",
+    "description": "user: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "配對並管理在本地執行瀏覽器任務的 Ace Data Cloud 瀏覽器擴展。",
+    "description": "user: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "配對 Ace Data Cloud",
+    "description": "user: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "配對設備",
+    "description": "用戶：browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "打開 Ace Data Cloud 瀏覽器擴展並輸入此一次性配對碼。擴展提交設備身份前請保持此窗口打開。",
+    "description": "用戶：browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "配對僅信任這台本地瀏覽器設備，不會批准任何瀏覽器操作，也不會把 Cookie 或登錄態上傳到雲端。",
+    "description": "用戶：browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "配對碼將在 {seconds} 秒後過期",
+    "description": "用戶：browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "正在等待 Ace Data Cloud 瀏覽器擴展提交設備身份…",
+    "description": "user: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "核對這台設備的確切身份",
+    "description": "user: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "確認前請在 Ace Data Cloud 瀏覽器擴展中逐項核對以下信息。如有任何異常，請拒絕請求。",
+    "description": "user: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "密鑰指紋",
+    "description": "用戶：browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "平台",
+    "description": "user: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Agent 版本",
+    "description": "用戶：browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "來源",
+    "description": "用戶：browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "設備名稱（可選）",
+    "description": "用戶：browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "確認此設備",
+    "description": "用戶：browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "拒絕請求",
+    "description": "user: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "生成新配對碼",
+    "description": "user: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "瀏覽器設備配對暫不可用，請稍後重試。",
+    "description": "user: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "無法檢查配對請求，請生成新配對碼後重試。",
+    "description": "user: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "配對碼已過期，請生成新配對碼繼續。",
+    "description": "用戶：browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "無法完成配對決定，請重試。",
+    "description": "用戶：browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "瀏覽器設備已配對。",
+    "description": "user: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "已拒絕配對請求。",
+    "description": "user: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "暫無已配對的瀏覽器設備。",
+    "description": "用戶：browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "加載瀏覽器設備失敗。",
+    "description": "用戶：browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "最近在線",
+    "description": "用戶：browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "從未",
+    "description": "用戶：browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "能力",
+    "description": "用戶：browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "連接狀態",
+    "description": "用戶：browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "活動會話",
+    "description": "用戶：browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "執行合同",
+    "description": "user: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "管理會話",
+    "description": "用戶：browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "重命名瀏覽器設備",
+    "description": "user: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "為這台瀏覽器設備輸入一個易識別的名稱：",
+    "description": "user: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "請輸入設備名稱。",
+    "description": "用戶：browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "撤銷",
+    "description": "用戶：browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "撤銷瀏覽器設備",
+    "description": "用戶：browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "確定撤銷 {name} 嗎？其 {count} 個活動會話將立即停止，連接器綁定會失效，審計歷史將被保留。",
+    "description": "用戶：browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "瀏覽器設備已撤銷。",
+    "description": "用戶：browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "撤銷瀏覽器設備失敗。",
+    "description": "用戶：browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "待激活",
+    "description": "user: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "已激活",
+    "description": "user: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "已暫停",
+    "description": "user: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "已隔離",
+    "description": "user: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "已撤銷",
+    "description": "user: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "重命名",
+    "description": "user: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "瀏覽器設備已重命名。",
+    "description": "user: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "重命名瀏覽器設備失敗。",
+    "description": "user: browserDevice.renameFailed"
   }
 }

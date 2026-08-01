@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Data rejestracji",
     "description": "Data rejestracji użytkownika"
+  },
+  "browserDevice.title": {
+    "message": "Urządzenia przeglądarki",
+    "description": "użytkownik: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Sparuj i zarządzaj rozszerzeniem przeglądarki Ace Data Cloud wykonującym zadania lokalne.",
+    "description": "użytkownik: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Sparuj Ace Data Cloud",
+    "description": "użytkownik: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Sparuj urządzenie",
+    "description": "użytkownik: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Otwórz rozszerzenie przeglądarki Ace Data Cloud i wprowadź ten jednorazowy kod parowania. Proszę utrzymać to okno otwarte, zanim rozszerzenie prześle tożsamość urządzenia.",
+    "description": "użytkownik: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Parowanie tylko z zaufanym lokalnym urządzeniem przeglądarki, nie zatwierdzi żadnych operacji przeglądarki ani nie przesyła ciasteczek ani stanu logowania do chmury.",
+    "description": "użytkownik: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Kod parowania wygaśnie za {seconds} sekund",
+    "description": "użytkownik: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Oczekiwanie na przesłanie tożsamości urządzenia przez rozszerzenie przeglądarki Ace Data Cloud...",
+    "description": "użytkownik: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Sprawdź dokładną tożsamość tego urządzenia",
+    "description": "użytkownik: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Przed potwierdzeniem sprawdź szczegółowo poniższe informacje w rozszerzeniu przeglądarki Ace Data Cloud. W przypadku jakichkolwiek nieprawidłowości, odrzuć żądanie.",
+    "description": "użytkownik: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Odcisk klucza",
+    "description": "użytkownik: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Platforma",
+    "description": "użytkownik: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Wersja agenta",
+    "description": "użytkownik: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Źródło",
+    "description": "użytkownik: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Nazwa urządzenia (opcjonalnie)",
+    "description": "użytkownik: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Potwierdź to urządzenie",
+    "description": "użytkownik: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Odrzuć żądanie",
+    "description": "użytkownik: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Wygeneruj nowy kod sparowania",
+    "description": "użytkownik: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Sparowanie urządzenia przeglądarki jest obecnie niedostępne, spróbuj ponownie później.",
+    "description": "użytkownik: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Nie można sprawdzić żądania sparowania, wygeneruj nowy kod sparowania i spróbuj ponownie.",
+    "description": "użytkownik: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Kod parowania wygasł, wygeneruj nowy kod parowania, aby kontynuować.",
+    "description": "użytkownik: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Nie można zakończyć decyzji parowania, spróbuj ponownie.",
+    "description": "użytkownik: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Urządzenie przeglądarki zostało sparowane.",
+    "description": "użytkownik: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Żądanie sparowania zostało odrzucone.",
+    "description": "użytkownik: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Brak sparowanych urządzeń przeglądarki.",
+    "description": "użytkownik: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Nie udało się załadować urządzenia przeglądarki.",
+    "description": "użytkownik: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Ostatnio widziany",
+    "description": "użytkownik: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Nigdy",
+    "description": "użytkownik: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Możliwości",
+    "description": "użytkownik: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Status połączenia",
+    "description": "użytkownik: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Aktywne sesje",
+    "description": "użytkownik: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Wykonaj umowę",
+    "description": "użytkownik: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Zarządzaj sesjami",
+    "description": "użytkownik: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Zmień nazwę urządzenia przeglądarki",
+    "description": "użytkownik: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Wprowadź łatwą do rozpoznania nazwę dla tego urządzenia przeglądarki:",
+    "description": "użytkownik: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Proszę wpisać nazwę urządzenia.",
+    "description": "użytkownik: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Cofnij",
+    "description": "użytkownik: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Cofnij urządzenie przeglądarki",
+    "description": "użytkownik: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Czy na pewno chcesz cofnąć {name}? {count} aktywnych sesji zostanie natychmiast zakończonych, powiązanie z konektorem wygasnie, a historia audytu zostanie zachowana.",
+    "description": "użytkownik: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Urządzenie przeglądarki zostało cofnięte.",
+    "description": "użytkownik: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Cofnięcie urządzenia przeglądarki nie powiodło się.",
+    "description": "użytkownik: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Oczekujące na aktywację",
+    "description": "użytkownik: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Aktywne",
+    "description": "użytkownik: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Zawieszone",
+    "description": "użytkownik: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Izolowane",
+    "description": "użytkownik: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Cofnięte",
+    "description": "użytkownik: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Zmień nazwę",
+    "description": "użytkownik: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Urządzenie przeglądarki zostało przemianowane.",
+    "description": "użytkownik: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Nie udało się zmienić nazwy urządzenia przeglądarki.",
+    "description": "użytkownik: browserDevice.renameFailed"
   }
 }

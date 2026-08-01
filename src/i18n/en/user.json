@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Registration Date",
     "description": "User's registration date"
+  },
+  "browserDevice.title": {
+    "message": "Browser Devices",
+    "description": "user: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Pair and manage Ace Data Cloud browser extensions that can execute browser work locally.",
+    "description": "user: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Pair Ace Data Cloud",
+    "description": "user: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Pair device",
+    "description": "user: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Open the Ace Data Cloud extension and enter this one-time code. Keep this dialog open while the extension submits its device identity.",
+    "description": "user: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Pairing trusts this local browser installation. It does not approve any browser action and does not upload your cookies or login session to the cloud.",
+    "description": "user: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Code expires in {seconds} seconds",
+    "description": "user: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Waiting for the Ace Data Cloud extension to submit its identity…",
+    "description": "user: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Verify this exact device",
+    "description": "user: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Compare these values with the Ace Data Cloud extension before confirming. Reject the request if any value is unexpected.",
+    "description": "user: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Key fingerprint",
+    "description": "user: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Platform",
+    "description": "user: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Agent version",
+    "description": "user: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Origin",
+    "description": "user: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Device name (optional)",
+    "description": "user: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Confirm exact device",
+    "description": "user: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Reject request",
+    "description": "user: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Create a new code",
+    "description": "user: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Browser-device pairing is unavailable. Please try again later.",
+    "description": "user: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Couldn't check the pairing request. Create a new code and try again.",
+    "description": "user: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "This pairing code expired. Create a new code to continue.",
+    "description": "user: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Couldn't complete the pairing decision. Please try again.",
+    "description": "user: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Browser device paired.",
+    "description": "user: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Pairing request rejected.",
+    "description": "user: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "No browser devices are paired.",
+    "description": "user: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Couldn't load browser devices.",
+    "description": "user: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Last seen",
+    "description": "user: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Never",
+    "description": "user: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Capabilities",
+    "description": "user: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Connection",
+    "description": "user: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Active sessions",
+    "description": "user: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Execution contract",
+    "description": "user: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Manage sessions",
+    "description": "user: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Rename browser device",
+    "description": "user: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Enter a recognizable name for this browser device:",
+    "description": "user: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Enter a device name.",
+    "description": "user: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Revoke",
+    "description": "user: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Revoke browser device",
+    "description": "user: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Revoke {name}? Its {count} active sessions will stop immediately, connector bindings will be revoked, and audit history will be retained.",
+    "description": "user: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Browser device revoked.",
+    "description": "user: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Couldn't revoke the browser device.",
+    "description": "user: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Pending",
+    "description": "user: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Active",
+    "description": "user: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Suspended",
+    "description": "user: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Quarantined",
+    "description": "user: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Revoked",
+    "description": "user: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Rename",
+    "description": "user: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Browser device renamed.",
+    "description": "user: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Couldn't rename the browser device.",
+    "description": "user: browserDevice.renameFailed"
   }
 }

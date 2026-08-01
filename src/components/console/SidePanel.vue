@@ -29,6 +29,7 @@
 import {
   ApplicationIcon,
   ConnectionIcon,
+  DesktopIcon,
   ExternalLinkIcon,
   HistoryIcon,
   SkillIcon,
@@ -37,6 +38,7 @@ import {
 import { defineComponent, type Component } from 'vue';
 import {
   ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_BROWSER_DEVICES,
   ROUTE_CONSOLE_CONNECTORS,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_SKILLS,
@@ -105,6 +107,12 @@ export default defineComponent({
           text: this.$t('console.menu.skills'),
           name: ROUTE_CONSOLE_SKILLS,
           icon: SkillIcon
+        });
+        links.push({
+          key: 'browser-devices',
+          text: this.$t('console.menu.browserDevices'),
+          name: ROUTE_CONSOLE_BROWSER_DEVICES,
+          icon: DesktopIcon
         });
       }
 

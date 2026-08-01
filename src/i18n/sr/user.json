@@ -8,8 +8,8 @@
     "description": "Oznaka koja pokazuje da li je korisnik verifikovan na osnovu pravih informacija"
   },
   "field.email": {
-    "message": "Email",
-    "description": "Korisnikov email"
+    "message": "Е-пошта",
+    "description": "Корисникова е-пошта"
   },
   "field.nickname": {
     "message": "Nadimak",
@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Datum registracije",
     "description": "Datum kada je korisnik registrovan"
+  },
+  "browserDevice.title": {
+    "message": "Уређаји прегледача",
+    "description": "корисник: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Повеже и управља уређајима прегледача који извршавају задатке локално у Ace Data Cloud.",
+    "description": "корисник: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Повеži Ace Data Cloud",
+    "description": "корисник: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Upari uređaj",
+    "description": "korisnik: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Otvorite Ace Data Cloud ekstenziju pregledača i unesite ovaj jednokratni kod za uparivanje. Držite ovaj prozor otvoren dok ekstenzija ne pošalje identitet uređaja.",
+    "description": "korisnik: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Uparivanje samo sa ovim lokalnim uređajem pregledača, neće odobriti nijednu akciju pregledača, niti će preneti kolačiće ili prijavljene sesije u oblak.",
+    "description": "korisnik: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Kod za uparivanje će isteći za {seconds} sekundi",
+    "description": "korisnik: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Чека се да Ace Data Cloud екстензија прегледача преда идентификацију уређаја…",
+    "description": "корисник: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Проверите тачну идентификацију овог уређаја",
+    "description": "корисник: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Пре него што потврдите, проверите следеће информације у Ace Data Cloud екстензији прегледача. Ако приметите било какве неправилности, одбијте захтев.",
+    "description": "корисник: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Otisak ključa",
+    "description": "korisnik: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Платформа",
+    "description": "корисник: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Verzija agenta",
+    "description": "korisnik: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Izvor",
+    "description": "korisnik: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Naziv uređaja (opciono)",
+    "description": "korisnik: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Potvrdi ovaj uređaj",
+    "description": "korisnik: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Одбиј захтев",
+    "description": "корисник: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Генериши нови код за повезивање",
+    "description": "корисник: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Повезање уређаја прегледача тренутно није доступно, покушајте поново касније.",
+    "description": "корисник: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Није могуће проверити захтев за повезивање, генеришите нови код за повезивање и покушајте поново.",
+    "description": "корисник: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Kod za uparivanje je istekao, molimo generišite novi kod za nastavak.",
+    "description": "korisnik: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Nije moguće završiti odluku o uparivanju, molimo pokušajte ponovo.",
+    "description": "korisnik: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Уређај прегледача је успешно повезан.",
+    "description": "корисник: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Захтев за повезивање је одбијен.",
+    "description": "корисник: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Nema uparenih uređaja pregledača.",
+    "description": "korisnik: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Učitavanje uređaja pregledača nije uspelo.",
+    "description": "korisnik: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Poslednji put viđeno",
+    "description": "korisnik: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Nikada",
+    "description": "korisnik: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Sposobnosti",
+    "description": "korisnik: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Status veze",
+    "description": "korisnik: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Aktivne sesije",
+    "description": "korisnik: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Изврши уговор",
+    "description": "корисник: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Upravljanje sesijama",
+    "description": "korisnik: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Преименовање уређаја прегледача",
+    "description": "корисник: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Унесите лако препознатљиво име за овај уређај прегледача:",
+    "description": "корисник: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Molimo unesite naziv uređaja.",
+    "description": "korisnik: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Poništi",
+    "description": "korisnik: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Poništi uređaj pregledača",
+    "description": "korisnik: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Da li ste sigurni da želite da poništite {name}? Njegovih {count} aktivnih sesija će odmah prestati, veza će biti nevažeća, a istorija revizije će biti sačuvana.",
+    "description": "korisnik: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Uređaj pregledača je poništen.",
+    "description": "korisnik: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Poništavanje uređaja pregledača nije uspelo.",
+    "description": "korisnik: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Чека на активацију",
+    "description": "корисник: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Активан",
+    "description": "корисник: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Обустављен",
+    "description": "корисник: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Изолован",
+    "description": "корисник: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Одузет",
+    "description": "корисник: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Преименуј",
+    "description": "корисник: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Уређај прегледача је успешно преименован.",
+    "description": "корисник: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Неуспела промена имена уређаја прегледача.",
+    "description": "корисник: browserDevice.renameFailed"
   }
 }

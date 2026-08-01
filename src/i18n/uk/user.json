@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Дата реєстрації",
     "description": "Час реєстрації користувача"
+  },
+  "browserDevice.title": {
+    "message": "Браузерні пристрої",
+    "description": "користувач: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Спарюйте та керуйте браузерними завданнями, виконуваними локально, за допомогою розширення браузера Ace Data Cloud.",
+    "description": "користувач: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Спарити Ace Data Cloud",
+    "description": "користувач: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Парувати пристрій",
+    "description": "користувач: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Відкрийте розширення браузера Ace Data Cloud і введіть цей одноразовий код пари. Залиште це вікно відкритим, поки розширення не надішле ідентифікацію пристрою.",
+    "description": "користувач: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Парування лише з цим локальним браузерним пристроєм, не буде схвалено жодних браузерних дій, а також не буде завантажено файли cookie або стан входу в хмару.",
+    "description": "користувач: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Код пари втрачає чинність через {seconds} секунд",
+    "description": "користувач: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Очікування, поки розширення браузера Ace Data Cloud надішле ідентичність пристрою…",
+    "description": "користувач: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Перевірте точну ідентичність цього пристрою",
+    "description": "користувач: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Перед підтвердженням, будь ласка, перевірте наступну інформацію в розширенні браузера Ace Data Cloud. Якщо є будь-які аномалії, відхиліть запит.",
+    "description": "користувач: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Відбиток ключа",
+    "description": "користувач: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Платформа",
+    "description": "користувач: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Версія агента",
+    "description": "користувач: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Походження",
+    "description": "користувач: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Назва пристрою (необов'язково)",
+    "description": "користувач: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Підтвердити цей пристрій",
+    "description": "користувач: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Відхилити запит",
+    "description": "користувач: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Згенерувати новий код спарювання",
+    "description": "користувач: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Спарювання браузерного пристрою наразі недоступне, будь ласка, спробуйте пізніше.",
+    "description": "користувач: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Не вдалося перевірити запит на спарювання, будь ласка, згенеруйте новий код спарювання та спробуйте знову.",
+    "description": "користувач: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Код пари втратив чинність, будь ласка, згенеруйте новий код пари для продовження.",
+    "description": "користувач: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Не вдалося завершити рішення про пару, будь ласка, спробуйте ще раз.",
+    "description": "користувач: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Браузерний пристрій успішно спарено.",
+    "description": "користувач: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Запит на спарювання відхилено.",
+    "description": "користувач: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Немає підключених браузерних пристроїв.",
+    "description": "користувач: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Не вдалося завантажити браузерний пристрій.",
+    "description": "користувач: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Останній раз в мережі",
+    "description": "користувач: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Ніколи",
+    "description": "користувач: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Можливості",
+    "description": "користувач: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Статус з'єднання",
+    "description": "користувач: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Активні сесії",
+    "description": "користувач: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Виконати контракт",
+    "description": "користувач: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Управління сесіями",
+    "description": "користувач: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Перейменування браузерного пристрою",
+    "description": "користувач: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Введіть впізнаване ім'я для цього браузерного пристрою:",
+    "description": "користувач: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Будь ласка, введіть назву пристрою.",
+    "description": "користувач: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Скасувати",
+    "description": "користувач: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Скасування браузерного пристрою",
+    "description": "користувач: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Ви впевнені, що хочете скасувати {name}? Його {count} активних сесій будуть негайно зупинені, зв'язок буде втрачено, історія аудиту буде збережена.",
+    "description": "користувач: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Браузерний пристрій скасовано.",
+    "description": "користувач: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Не вдалося скасувати браузерний пристрій.",
+    "description": "користувач: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Очікує активації",
+    "description": "користувач: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Активовано",
+    "description": "користувач: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Призупинено",
+    "description": "користувач: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Карантин",
+    "description": "користувач: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Відкликано",
+    "description": "користувач: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Перейменувати",
+    "description": "користувач: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Браузерний пристрій успішно перейменовано.",
+    "description": "користувач: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Не вдалося перейменувати браузерний пристрій.",
+    "description": "користувач: browserDevice.renameFailed"
   }
 }

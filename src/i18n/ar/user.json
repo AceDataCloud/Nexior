@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "تاريخ التسجيل",
     "description": "تاريخ تسجيل المستخدم"
+  },
+  "browserDevice.title": {
+    "message": "جهاز المتصفح",
+    "description": "المستخدم: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "قم بمزامنة وإدارة مهام المتصفح التي يتم تنفيذها محليًا باستخدام ملحق Ace Data Cloud للمتصفح.",
+    "description": "المستخدم: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "مزامنة Ace Data Cloud",
+    "description": "المستخدم: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "اقتران الجهاز",
+    "description": "المستخدم: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "افتح ملحق متصفح Ace Data Cloud وأدخل رمز الاقتران لمرة واحدة. يرجى الحفاظ على فتح هذه النافذة قبل أن يقدم الملحق هوية الجهاز.",
+    "description": "المستخدم: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "الاقتران موثوق فقط بهذا الجهاز المحلي، لن يتم الموافقة على أي عمليات متصفح، ولن يتم رفع ملفات تعريف الارتباط أو حالة تسجيل الدخول إلى السحابة.",
+    "description": "المستخدم: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "سينتهي رمز الاقتران في {seconds} ثانية",
+    "description": "المستخدم: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "في انتظار ملحق Ace Data Cloud للمتصفح لتقديم هوية الجهاز...",
+    "description": "المستخدم: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "تحقق من الهوية الدقيقة لهذا الجهاز",
+    "description": "المستخدم: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "قبل التأكيد، تحقق من المعلومات التالية في ملحق Ace Data Cloud للمتصفح. إذا كان هناك أي استثناء، يرجى رفض الطلب.",
+    "description": "المستخدم: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "بصمة المفتاح",
+    "description": "المستخدم: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "المنصة",
+    "description": "المستخدم: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "إصدار الوكيل",
+    "description": "المستخدم: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "المصدر",
+    "description": "المستخدم: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "اسم الجهاز (اختياري)",
+    "description": "المستخدم: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "تأكيد هذا الجهاز",
+    "description": "المستخدم: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "رفض الطلب",
+    "description": "المستخدم: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "إنشاء رمز مزامنة جديد",
+    "description": "المستخدم: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "مزامنة جهاز المتصفح غير متاحة حالياً، يرجى المحاولة لاحقاً.",
+    "description": "المستخدم: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "تعذر التحقق من طلب المزامنة، يرجى إنشاء رمز مزامنة جديد والمحاولة مرة أخرى.",
+    "description": "المستخدم: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "رمز الاقتران قد انتهت صلاحيته، يرجى إنشاء رمز اقتران جديد للمتابعة.",
+    "description": "المستخدم: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "تعذر إكمال قرار الاقتران، يرجى المحاولة مرة أخرى.",
+    "description": "المستخدم: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "تمت مزامنة جهاز المتصفح بنجاح.",
+    "description": "المستخدم: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "تم رفض طلب المزامنة.",
+    "description": "المستخدم: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "لا توجد أجهزة متصفح مقترنة حالياً.",
+    "description": "المستخدم: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "فشل تحميل جهاز المتصفح.",
+    "description": "المستخدم: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "آخر ظهور",
+    "description": "المستخدم: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "لم يسبق له أن",
+    "description": "المستخدم: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "القدرات",
+    "description": "المستخدم: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "حالة الاتصال",
+    "description": "المستخدم: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "الجلسات النشطة",
+    "description": "المستخدم: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "تنفيذ العقد",
+    "description": "المستخدم: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "إدارة الجلسات",
+    "description": "المستخدم: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "إعادة تسمية جهاز المتصفح",
+    "description": "المستخدم: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "أدخل اسمًا سهل التعرف عليه لجهاز المتصفح هذا:",
+    "description": "المستخدم: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "يرجى إدخال اسم الجهاز.",
+    "description": "المستخدم: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "إلغاء",
+    "description": "المستخدم: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "إلغاء جهاز المتصفح",
+    "description": "المستخدم: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "هل أنت متأكد أنك تريد إلغاء {name}؟ ستتوقف {count} جلسات نشطة على الفور، وستفقد روابط الاقتران، وسيتم الاحتفاظ بسجل التدقيق.",
+    "description": "المستخدم: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "تم إلغاء جهاز المتصفح.",
+    "description": "المستخدم: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "فشل إلغاء جهاز المتصفح.",
+    "description": "المستخدم: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "قيد التفعيل",
+    "description": "المستخدم: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "مفعل",
+    "description": "المستخدم: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "معلق",
+    "description": "المستخدم: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "معزول",
+    "description": "المستخدم: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "ملغى",
+    "description": "المستخدم: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "إعادة تسمية",
+    "description": "المستخدم: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "تمت إعادة تسمية جهاز المتصفح.",
+    "description": "المستخدم: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "فشل في إعادة تسمية جهاز المتصفح.",
+    "description": "المستخدم: browserDevice.renameFailed"
   }
 }

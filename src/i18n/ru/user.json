@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Дата регистрации",
     "description": "Дата регистрации пользователя"
+  },
+  "browserDevice.title": {
+    "message": "Устройство браузера",
+    "description": "пользователь: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Спарьте и управляйте расширением браузера Ace Data Cloud для выполнения задач в локальном режиме.",
+    "description": "пользователь: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Спарить Ace Data Cloud",
+    "description": "пользователь: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Сопряжение устройства",
+    "description": "пользователь: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Откройте расширение браузера Ace Data Cloud и введите этот одноразовый код пары. Пожалуйста, держите это окно открытым, пока расширение не отправит идентификацию устройства.",
+    "description": "пользователь: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Парное соединение только с этим локальным устройством браузера, не будет одобрено никаких операций браузера и куки или состояние входа не будут загружены в облако.",
+    "description": "пользователь: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Код пары истечет через {seconds} секунд",
+    "description": "пользователь: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Ожидание отправки идентификации устройства расширением браузера Ace Data Cloud…",
+    "description": "пользователь: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Проверьте точную идентичность этого устройства",
+    "description": "пользователь: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Перед подтверждением проверьте следующую информацию в расширении браузера Ace Data Cloud. Если есть какие-либо отклонения, отклоните запрос.",
+    "description": "пользователь: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Отпечаток ключа",
+    "description": "пользователь: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Платформа",
+    "description": "пользователь: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Версия агента",
+    "description": "пользователь: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Источник",
+    "description": "пользователь: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Имя устройства (необязательно)",
+    "description": "пользователь: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Подтвердите это устройство",
+    "description": "пользователь: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Отклонить запрос",
+    "description": "пользователь: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Сгенерировать новый код спаривания",
+    "description": "пользователь: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Спаривание устройства браузера временно недоступно, пожалуйста, попробуйте позже.",
+    "description": "пользователь: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Не удалось проверить запрос на спаривание, пожалуйста, сгенерируйте новый код спаривания и попробуйте снова.",
+    "description": "пользователь: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Код пары истек, пожалуйста, создайте новый код пары для продолжения.",
+    "description": "пользователь: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Не удалось завершить решение о паре, пожалуйста, попробуйте снова.",
+    "description": "пользователь: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Устройство браузера успешно спарено.",
+    "description": "пользователь: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Запрос на спаривание отклонён.",
+    "description": "пользователь: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Нет подключенных устройств браузера.",
+    "description": "пользователь: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Не удалось загрузить устройство браузера.",
+    "description": "пользователь: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Последний раз в сети",
+    "description": "пользователь: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Никогда",
+    "description": "пользователь: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Возможности",
+    "description": "пользователь: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Статус подключения",
+    "description": "пользователь: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Активные сессии",
+    "description": "пользователь: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Исполнить контракт",
+    "description": "пользователь: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Управление сессиями",
+    "description": "пользователь: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Переименовать устройство браузера",
+    "description": "пользователь: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Введите легко узнаваемое имя для этого устройства браузера:",
+    "description": "пользователь: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Пожалуйста, введите имя устройства.",
+    "description": "пользователь: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Отменить",
+    "description": "пользователь: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Отмена устройства браузера",
+    "description": "пользователь: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Вы уверены, что хотите отменить {name}? {count} активных сессий будут немедленно остановлены, связь с устройством будет потеряна, история аудита будет сохранена.",
+    "description": "пользователь: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Устройство браузера отменено.",
+    "description": "пользователь: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Не удалось отменить устройство браузера.",
+    "description": "пользователь: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "Ожидает активации",
+    "description": "пользователь: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Активировано",
+    "description": "пользователь: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Приостановлено",
+    "description": "пользователь: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "Изолировано",
+    "description": "пользователь: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Отменено",
+    "description": "пользователь: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Переименовать",
+    "description": "пользователь: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Устройство браузера переименовано.",
+    "description": "пользователь: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Не удалось переименовать устройство браузера.",
+    "description": "пользователь: browserDevice.renameFailed"
   }
 }

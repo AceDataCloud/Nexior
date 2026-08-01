@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "가입 날짜",
     "description": "사용자의 가입 날짜"
+  },
+  "browserDevice.title": {
+    "message": "브라우저 장치",
+    "description": "사용자: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "로컬에서 브라우저 작업을 실행하는 Ace Data Cloud 브라우저 확장을 연결하고 관리합니다.",
+    "description": "사용자: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Ace Data Cloud 연결",
+    "description": "사용자: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "장치 페어링",
+    "description": "사용자: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Ace Data Cloud 브라우저 확장을 열고 이 일회용 페어링 코드를 입력하십시오. 확장이 장치 신원을 제출하기 전에 이 창을 열어 두십시오.",
+    "description": "사용자: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "페어링은 이 로컬 브라우저 장치만 신뢰하며, 다른 브라우저 작업을 승인하지 않으며, 쿠키나 로그인 상태를 클라우드에 업로드하지 않습니다.",
+    "description": "사용자: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "페어링 코드는 {seconds} 초 후에 만료됩니다.",
+    "description": "사용자: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "Ace Data Cloud 브라우저 확장이 장치 신원을 제출할 때까지 기다리는 중…",
+    "description": "사용자: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "이 장치의 정확한 신원 확인",
+    "description": "사용자: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "확인 전에 Ace Data Cloud 브라우저 확장에서 다음 정보를 하나씩 확인하세요. 이상이 있을 경우 요청을 거부하세요.",
+    "description": "사용자: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "키 지문",
+    "description": "사용자: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "플랫폼",
+    "description": "사용자: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "에이전트 버전",
+    "description": "사용자: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "출처",
+    "description": "사용자: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "장치 이름(선택 사항)",
+    "description": "사용자: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "이 장치를 확인합니다.",
+    "description": "사용자: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "요청 거부",
+    "description": "사용자: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "새 연결 코드 생성",
+    "description": "사용자: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "브라우저 장치 연결이 현재 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
+    "description": "사용자: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "연결 요청을 확인할 수 없습니다. 새 연결 코드를 생성한 후 다시 시도해 주세요.",
+    "description": "사용자: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "페어링 코드가 만료되었습니다. 새 페어링 코드를 생성하여 계속 진행하십시오.",
+    "description": "사용자: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "페어링 결정을 완료할 수 없습니다. 다시 시도하십시오.",
+    "description": "사용자: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "브라우저 장치가 연결되었습니다.",
+    "description": "사용자: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "연결 요청이 거부되었습니다.",
+    "description": "사용자: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "페어링된 브라우저 장치가 없습니다.",
+    "description": "사용자: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "브라우저 장치 로드에 실패했습니다.",
+    "description": "사용자: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "최근 온라인",
+    "description": "사용자: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "한 번도 본 적 없음",
+    "description": "사용자: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "기능",
+    "description": "사용자: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "연결 상태",
+    "description": "사용자: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "활동 세션",
+    "description": "사용자: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "계약 실행",
+    "description": "사용자: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "세션 관리",
+    "description": "사용자: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "브라우저 장치 이름 변경",
+    "description": "사용자: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "이 브라우저 장치에 쉽게 인식할 수 있는 이름을 입력하세요:",
+    "description": "사용자: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "장치 이름을 입력하십시오.",
+    "description": "사용자: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "철회",
+    "description": "사용자: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "브라우저 장치 철회",
+    "description": "사용자: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "{name}을(를) 철회하시겠습니까? {count} 개의 활동 세션이 즉시 중지되며, 연결이 해제되고 감사 기록이 보존됩니다.",
+    "description": "사용자: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "브라우저 장치가 철회되었습니다.",
+    "description": "사용자: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "브라우저 장치 철회에 실패했습니다.",
+    "description": "사용자: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "활성화 대기 중",
+    "description": "사용자: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "활성화됨",
+    "description": "사용자: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "일시 중지됨",
+    "description": "사용자: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "격리됨",
+    "description": "사용자: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "취소됨",
+    "description": "사용자: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "이름 변경",
+    "description": "사용자: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "브라우저 장치의 이름이 변경되었습니다.",
+    "description": "사용자: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "브라우저 장치 이름 변경에 실패했습니다.",
+    "description": "사용자: browserDevice.renameFailed"
   }
 }

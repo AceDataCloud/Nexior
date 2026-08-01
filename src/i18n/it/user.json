@@ -9,7 +9,7 @@
   },
   "field.email": {
     "message": "Email",
-    "description": "L'email dell'utente"
+    "description": "Email dell'utente"
   },
   "field.nickname": {
     "message": "Soprannome",
@@ -22,5 +22,201 @@
   "field.dateJoined": {
     "message": "Data di registrazione",
     "description": "Data di registrazione dell'utente"
+  },
+  "browserDevice.title": {
+    "message": "Dispositivo del browser",
+    "description": "utente: browserDevice.title"
+  },
+  "browserDevice.subtitle": {
+    "message": "Accoppia e gestisci le estensioni del browser Ace Data Cloud che eseguono attività localmente.",
+    "description": "utente: browserDevice.subtitle"
+  },
+  "browserDevice.pairTitle": {
+    "message": "Accoppia Ace Data Cloud",
+    "description": "utente: browserDevice.pairTitle"
+  },
+  "browserDevice.pairButton": {
+    "message": "Accoppia dispositivo",
+    "description": "utente: browserDevice.pairButton"
+  },
+  "browserDevice.pairInstructions": {
+    "message": "Apri l'estensione del browser Ace Data Cloud e inserisci questo codice di accoppiamento monouso. Mantieni aperta questa finestra fino a quando l'estensione non invia l'identità del dispositivo.",
+    "description": "utente: browserDevice.pairInstructions"
+  },
+  "browserDevice.localApprovalOnly": {
+    "message": "Accoppiamento solo per questo dispositivo browser locale, non verranno approvate operazioni browser e non verranno caricati cookie o stati di accesso nel cloud.",
+    "description": "utente: browserDevice.localApprovalOnly"
+  },
+  "browserDevice.codeExpiresIn": {
+    "message": "Il codice di accoppiamento scadrà tra {seconds} secondi",
+    "description": "utente: browserDevice.codeExpiresIn"
+  },
+  "browserDevice.waitingForAgent": {
+    "message": "In attesa che l'estensione del browser Ace Data Cloud invii l'identità del dispositivo…",
+    "description": "utente: browserDevice.waitingForAgent"
+  },
+  "browserDevice.verifyClaimTitle": {
+    "message": "Verifica l'identità esatta di questo dispositivo",
+    "description": "utente: browserDevice.verifyClaimTitle"
+  },
+  "browserDevice.verifyClaimHint": {
+    "message": "Controlla attentamente le informazioni seguenti nell'estensione del browser Ace Data Cloud prima di confermare. Se ci sono anomalie, rifiuta la richiesta.",
+    "description": "utente: browserDevice.verifyClaimHint"
+  },
+  "browserDevice.keyFingerprint": {
+    "message": "Impronta della chiave",
+    "description": "utente: browserDevice.keyFingerprint"
+  },
+  "browserDevice.platform": {
+    "message": "Piattaforma",
+    "description": "utente: browserDevice.platform"
+  },
+  "browserDevice.extensionVersion": {
+    "message": "Versione dell'Agente",
+    "description": "utente: browserDevice.extensionVersion"
+  },
+  "browserDevice.origin": {
+    "message": "Origine",
+    "description": "utente: browserDevice.origin"
+  },
+  "browserDevice.namePlaceholder": {
+    "message": "Nome del dispositivo (opzionale)",
+    "description": "utente: browserDevice.namePlaceholder"
+  },
+  "browserDevice.confirmClaim": {
+    "message": "Conferma questo dispositivo",
+    "description": "utente: browserDevice.confirmClaim"
+  },
+  "browserDevice.rejectClaim": {
+    "message": "Rifiuta richiesta",
+    "description": "utente: browserDevice.rejectClaim"
+  },
+  "browserDevice.tryAgain": {
+    "message": "Genera un nuovo codice di accoppiamento",
+    "description": "utente: browserDevice.tryAgain"
+  },
+  "browserDevice.pairUnavailable": {
+    "message": "Accoppiamento del dispositivo del browser non disponibile, riprova più tardi.",
+    "description": "utente: browserDevice.pairUnavailable"
+  },
+  "browserDevice.pollFailed": {
+    "message": "Impossibile controllare la richiesta di accoppiamento, genera un nuovo codice di accoppiamento e riprova.",
+    "description": "utente: browserDevice.pollFailed"
+  },
+  "browserDevice.codeExpired": {
+    "message": "Il codice di accoppiamento è scaduto, generare un nuovo codice per continuare.",
+    "description": "utente: browserDevice.codeExpired"
+  },
+  "browserDevice.decisionFailed": {
+    "message": "Impossibile completare la decisione di accoppiamento, riprovare.",
+    "description": "utente: browserDevice.decisionFailed"
+  },
+  "browserDevice.pairSuccess": {
+    "message": "Dispositivo del browser accoppiato.",
+    "description": "utente: browserDevice.pairSuccess"
+  },
+  "browserDevice.rejectSuccess": {
+    "message": "Richiesta di accoppiamento rifiutata.",
+    "description": "utente: browserDevice.rejectSuccess"
+  },
+  "browserDevice.empty": {
+    "message": "Nessun dispositivo browser accoppiato disponibile.",
+    "description": "utente: browserDevice.empty"
+  },
+  "browserDevice.loadFailed": {
+    "message": "Caricamento del dispositivo browser non riuscito.",
+    "description": "utente: browserDevice.loadFailed"
+  },
+  "browserDevice.lastSeen": {
+    "message": "Ultima volta online",
+    "description": "utente: browserDevice.lastSeen"
+  },
+  "browserDevice.neverSeen": {
+    "message": "Mai",
+    "description": "utente: browserDevice.neverSeen"
+  },
+  "browserDevice.capabilities": {
+    "message": "Capacità",
+    "description": "utente: browserDevice.capabilities"
+  },
+  "browserDevice.onlineStatus": {
+    "message": "Stato di connessione",
+    "description": "utente: browserDevice.onlineStatus"
+  },
+  "browserDevice.activeSessions": {
+    "message": "Sessioni attive",
+    "description": "utente: browserDevice.activeSessions"
+  },
+  "browserDevice.wireContractDigest": {
+    "message": "Esegui contratto",
+    "description": "utente: browserDevice.wireContractDigest"
+  },
+  "browserDevice.manageSessions": {
+    "message": "Gestisci sessioni",
+    "description": "utente: browserDevice.manageSessions"
+  },
+  "browserDevice.renameTitle": {
+    "message": "Rinomina dispositivo del browser",
+    "description": "utente: browserDevice.renameTitle"
+  },
+  "browserDevice.renamePrompt": {
+    "message": "Inserisci un nome facilmente riconoscibile per questo dispositivo del browser:",
+    "description": "utente: browserDevice.renamePrompt"
+  },
+  "browserDevice.nameRequired": {
+    "message": "Inserisci il nome del dispositivo.",
+    "description": "utente: browserDevice.nameRequired"
+  },
+  "browserDevice.delete": {
+    "message": "Annulla",
+    "description": "utente: browserDevice.delete"
+  },
+  "browserDevice.deleteTitle": {
+    "message": "Annulla dispositivo browser",
+    "description": "utente: browserDevice.deleteTitle"
+  },
+  "browserDevice.deleteConfirm": {
+    "message": "Sei sicuro di voler annullare {name}? Le {count} sessioni attive verranno immediatamente interrotte, il collegamento sarà disattivato e la cronologia di audit sarà conservata.",
+    "description": "utente: browserDevice.deleteConfirm"
+  },
+  "browserDevice.deleteSuccess": {
+    "message": "Dispositivo browser annullato.",
+    "description": "utente: browserDevice.deleteSuccess"
+  },
+  "browserDevice.deleteFailed": {
+    "message": "Annullamento del dispositivo browser non riuscito.",
+    "description": "utente: browserDevice.deleteFailed"
+  },
+  "browserDevice.status.pending": {
+    "message": "In attesa di attivazione",
+    "description": "utente: browserDevice.status.pending"
+  },
+  "browserDevice.status.active": {
+    "message": "Attivato",
+    "description": "utente: browserDevice.status.active"
+  },
+  "browserDevice.status.suspended": {
+    "message": "Sospeso",
+    "description": "utente: browserDevice.status.suspended"
+  },
+  "browserDevice.status.quarantined": {
+    "message": "In quarantena",
+    "description": "utente: browserDevice.status.quarantined"
+  },
+  "browserDevice.status.revoked": {
+    "message": "Revocato",
+    "description": "utente: browserDevice.status.revoked"
+  },
+  "browserDevice.rename": {
+    "message": "Rinomina",
+    "description": "utente: browserDevice.rename"
+  },
+  "browserDevice.renameSuccess": {
+    "message": "Dispositivo del browser rinominato.",
+    "description": "utente: browserDevice.renameSuccess"
+  },
+  "browserDevice.renameFailed": {
+    "message": "Rinomina del dispositivo del browser fallita.",
+    "description": "utente: browserDevice.renameFailed"
   }
 }
