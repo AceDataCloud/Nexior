@@ -437,6 +437,10 @@ export default defineComponent({
     },
     onManageSite(row: ISite) {
       if (!row.origin) return;
+      const activeDomain = this.customDomainsFor(row).find(
+        (domain) => domain.status === SiteDomainStatus.Active && domain.hostname
+      );
+      const hostname = activeDomain?.hostname || row.origin;
       // Open the subsite at its root and signal the user-settings dialog
       // to auto-open via the `?dialog=settings` query flag. The root
       // route still redirects to whatever the subsite's default landing
@@ -445,7 +449,7 @@ export default defineComponent({
       // pops the settings dialog. This avoids the blank `/settings`
       // page race where SettingsIndex dispatches `open-user-settings`
       // before UserCenter's listener is registered.
-      window.open(`https://${row.origin}/?dialog=settings`, '_blank', 'noopener');
+      window.open(`https://${hostname}/?dialog=settings`, '_blank', 'noopener');
     },
     async onDeleteSite(row: ISite) {
       if (!row.id || !row.origin) return;
