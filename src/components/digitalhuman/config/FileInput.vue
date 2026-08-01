@@ -49,7 +49,7 @@
 import { ImageIcon, MicrophoneIcon, MusicIcon, UploadIcon, VideoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile, UploadInstance } from 'element-plus';
-import { getBaseUrlPlatform, dropUploadMixin, uploadSizeGuardMixin } from '@/utils';
+import { getBaseUrlPlatform, dropUploadMixin, uploadSizeGuardMixin, uploadTrackerMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -67,7 +67,7 @@ export default defineComponent({
     UploadIcon,
     VideoIcon
   },
-  mixins: [dropUploadMixin, uploadSizeGuardMixin],
+  mixins: [dropUploadMixin, uploadSizeGuardMixin, uploadTrackerMixin],
   props: {
     accept: {
       type: String,

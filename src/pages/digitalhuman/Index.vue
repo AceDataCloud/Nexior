@@ -15,7 +15,7 @@ import Layout from '@/layouts/DigitalHuman.vue';
 import ConfigPanel from '@/components/digitalhuman/ConfigPanel.vue';
 import RecentPanel from '@/components/digitalhuman/RecentPanel.vue';
 import { digitalHumanOperator } from '@/operators';
-import { ensureLoggedIn } from '@/utils';
+import { ensureLoggedIn, ensureNoPendingUpload, uploadTrackerProviderMixin } from '@/utils';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IDigitalHumanGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -35,6 +35,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -116,6 +117,15 @@ export default defineComponent({
       }
     },
     async onGenerate(request: IDigitalHumanGenerateRequest) {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       if (!ensureLoggedIn()) {
         return;
       }
