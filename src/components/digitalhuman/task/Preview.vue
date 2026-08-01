@@ -22,36 +22,35 @@
         </el-tooltip>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.text" class="prompt mt-2">
-          {{ modelValue?.request?.text }}
+        <div v-if="faceUrl || audioUrl" class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto">
+          <image-preview v-if="faceUrl && isPhotoFace" :url="faceUrl" name="face" :closable="false" />
+          <video-preview v-else-if="faceUrl" :url="faceUrl" name="face" />
+          <audio-preview v-if="audioUrl" :url="audioUrl" name="audio" />
+        </div>
+        <p class="prompt mt-2">
+          {{ modelValue?.request?.text || voiceLabel }}
           <span v-if="!isTerminal"> - ({{ statusLabel }}) </span>
-        </p>
-        <p v-else class="prompt mt-2">
-          {{ voiceLabel }}
-          <span v-if="!isTerminal"> - ({{ statusLabel }}) </span>
-        </p>
-        <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">
-          <image-icon
-            v-if="modelValue?.request?.image_url"
-            class="mr-1"
-            :size="'1em' as any"
-            aria-hidden="true"
-            focusable="false"
-          />
-          <video-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-          {{ faceLabel }}
-          <span class="ml-2"
-            ><controls-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />{{
-              engineLabel
-            }}</span
-          >
         </p>
       </div>
 
-      <!-- in-progress: status + percentage -->
+      <!-- in-progress: a 40-minute render needs an ETA, not just a bar -->
       <div v-if="!isTerminal" class="content">
-        <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">{{ statusLabel }}</p>
-        <el-progress :percentage="progressPct" :stroke-width="6" />
+        <el-alert :closable="false" class="info-state">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ statusLabel }}
+          </p>
+          <el-progress :percentage="progressPct" :stroke-width="6" class="mb-2" />
+          <p v-if="etaText" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.etaLabel') }}: {{ etaText }}
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.taskId') }}: {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+        </el-alert>
       </div>
 
       <!-- success: the talking-head video -->
@@ -69,14 +68,27 @@
           />
         </div>
         <el-alert :closable="false" class="mt-2 success">
+          <p v-if="modelValue?.response?.duration" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.duration') }}: {{ modelValue?.response?.duration?.toFixed(1) }}s
+          </p>
+          <p v-if="outputSize" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <fullscreen-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.outputSize') }}: {{ outputSize }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <user-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -89,13 +101,23 @@
             {{ $t('digitalhuman.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <user-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('digitalhuman.name.failureReason') }}: {{ failureReason }}
+            <copy-to-clipboard :content="failureReason" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('digitalhuman.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -105,13 +127,12 @@
 
 <script lang="ts">
 import {
-  ControlsIcon,
+  ChannelIcon,
   DeleteIcon,
-  ImageIcon,
+  FullscreenIcon,
   InfoIcon,
+  MagicIcon,
   TimeIcon,
-  UserIcon,
-  VideoIcon,
   WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
@@ -121,26 +142,36 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import ReportButton from '@/components/common/ReportButton.vue';
+import AudioPreview from '@/components/common/AudioPreview.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
+import VideoPreview from '@/components/common/VideoPreview.vue';
+import { DIGITALHUMAN_ETA_SECONDS } from '@/constants';
+
+// A photo now travels in `video_url` like a clip does, so the extension is the
+// only thing that still tells the two apart (same test the worker applies).
+const IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.bmp', '.gif'];
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    DeleteIcon,
-    ElTooltip,
-    ControlsIcon,
-    ImageIcon,
-    InfoIcon,
-    TimeIcon,
-    UserIcon,
-    VideoIcon,
-    WarningIcon,
-    CopyToClipboard,
-    ElAlert,
-    ElProgress,
-    VideoPlayer,
-    ElButton,
     ApiCodeButton,
-    ReportButton
+    AudioPreview,
+    ChannelIcon,
+    CopyToClipboard,
+    DeleteIcon,
+    ElAlert,
+    ElButton,
+    ElProgress,
+    ElTooltip,
+    FullscreenIcon,
+    ImagePreview,
+    InfoIcon,
+    MagicIcon,
+    ReportButton,
+    TimeIcon,
+    VideoPlayer,
+    VideoPreview,
+    WarningIcon
   },
   props: {
     modelValue: {
@@ -175,13 +206,34 @@ export default defineComponent({
         ? (this.$t('digitalhuman.name.audioDriven') as string)
         : (this.$t('digitalhuman.name.textDriven') as string);
     },
-    faceLabel(): string {
-      return this.modelValue?.request?.image_url
-        ? (this.$t('digitalhuman.name.facePhoto') as string)
-        : (this.$t('digitalhuman.name.faceVideo') as string);
+    faceUrl(): string | undefined {
+      return this.modelValue?.request?.video_url || this.modelValue?.request?.image_url;
     },
-    engineLabel(): string {
-      return this.modelValue?.request?.engine || this.modelValue?.response?.engine || 'latentsync';
+    isPhotoFace(): boolean {
+      if (this.modelValue?.request?.image_url) return true;
+      const path = (this.faceUrl || '').split('?')[0].toLowerCase();
+      return IMAGE_EXTS.some((ext) => path.endsWith(ext));
+    },
+    audioUrl(): string | undefined {
+      return this.modelValue?.request?.audio_url;
+    },
+    outputSize(): string | undefined {
+      const { width, height } = this.modelValue?.response || {};
+      return width && height ? `${width}×${height}` : undefined;
+    },
+    /**
+     * Rough time remaining. The progress bar alone cannot carry expectations
+     * here: it jumps between a handful of fixed checkpoints and then sits
+     * still for many minutes.
+     */
+    etaText(): string | undefined {
+      const startedAt = parseFloat((this.modelValue?.created_at || '').toString());
+      if (!startedAt) return undefined;
+      const remaining = DIGITALHUMAN_ETA_SECONDS - (Date.now() / 1000 - startedAt);
+      if (remaining <= 60) {
+        return this.$t('digitalhuman.message.etaAlmostDone') as string;
+      }
+      return this.$t('digitalhuman.message.etaRemaining', { minutes: Math.ceil(remaining / 60) }) as string;
     },
     statusLabel(): string {
       const s = this.status;
@@ -314,6 +366,9 @@ $left-width: 70px;
         }
         &.success {
           border-color: var(--el-color-success);
+        }
+        &.info-state {
+          border-color: var(--el-color-info);
         }
         :deep(p:last-child) {
           margin-bottom: 0;
