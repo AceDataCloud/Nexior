@@ -1710,5 +1710,69 @@
   "settings.localToolsWorkingDirChange": {
     "message": "変更",
     "description": "作業ディレクトリを変更するためのボタン"
+  },
+  "button.report": {
+    "message": "報告",
+    "description": "不適切なAI生成コンテンツを報告するためのボタンのテキスト"
+  },
+  "title.reportContent": {
+    "message": "コンテンツの報告",
+    "description": "不適切なAI生成コンテンツを報告するためのダイアログのタイトル"
+  },
+  "message.reportIntro": {
+    "message": "報告理由を選択してください。内容フィルタの改善のために迅速に審査します。",
+    "description": "コンテンツ報告ダイアログの導入メッセージ"
+  },
+  "message.reportDetailPlaceholder": {
+    "message": "詳細説明（任意）",
+    "description": "コンテンツ報告ダイアログのオプションの詳細テキストエリアのプレースホルダー"
+  },
+  "message.reportSuccess": {
+    "message": "報告が送信されました。フィードバックありがとうございます。",
+    "description": "コンテンツ報告が正常に送信された後に表示されるメッセージ"
+  },
+  "message.reportFailed": {
+    "message": "報告の送信に失敗しました。後でもう一度お試しください。",
+    "description": "コンテンツ報告の送信が失敗したときに表示されるメッセージ"
+  },
+  "message.reportReasonRequired": {
+    "message": "報告理由を選択してください。",
+    "description": "報告理由が選択されていないときのバリデーションメッセージ"
+  },
+  "reportReason.sexual": {
+    "message": "性的または性暗示的なコンテンツ",
+    "description": "コンテンツ報告理由：性的コンテンツ"
+  },
+  "reportReason.violence": {
+    "message": "暴力的または血なまぐさいコンテンツ",
+    "description": "コンテンツ報告理由：暴力または流血"
+  },
+  "reportReason.hate": {
+    "message": "ヘイトスピーチまたは嫌がらせ",
+    "description": "コンテンツ報告理由：ヘイトスピーチまたは嫌がらせ"
+  },
+  "reportReason.child_safety": {
+    "message": "未成年者への危害",
+    "description": "コンテンツ報告理由：子供の安全"
+  },
+  "reportReason.self_harm": {
+    "message": "自傷または危険な行為",
+    "description": "コンテンツ報告理由：自傷または危険な行為"
+  },
+  "reportReason.deception": {
+    "message": "虚偽または誤解を招く情報",
+    "description": "コンテンツ報告理由：欺瞞的または誤解を招くコンテンツ"
+  },
+  "reportReason.illegal": {
+    "message": "違法または不正なコンテンツ",
+    "description": "コンテンツ報告理由：違法行為"
+  },
+  "reportReason.ip": {
+    "message": "知的財産権の侵害",
+    "description": "コンテンツ報告理由：知的財産権の侵害"
+  },
+  "reportReason.other": {
+    "message": "その他",
+    "description": "コンテンツ報告理由：その他"
   }
 }

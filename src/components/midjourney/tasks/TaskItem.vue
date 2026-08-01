@@ -88,6 +88,11 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/midjourney/imagine" :body="modelValue?.request" />
+          <report-button
+            service="midjourney"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -242,6 +247,11 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/midjourney/videos" :body="modelValue?.request" />
+          <report-button
+            service="midjourney"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -393,6 +403,11 @@
         </div>
         <div :class="{ operations: true, 'mt-2': true, 'mb-2': true, full }">
           <api-code-button path="/midjourney/describe" :body="modelValue?.request" />
+          <report-button
+            service="midjourney"
+            :target-id="modelValue?.id"
+            :snapshot="{ image_url: modelValue?.request?.image_url }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -451,6 +466,7 @@ import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 import { getConsumption } from '@/utils';
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -478,7 +494,8 @@ export default defineComponent({
     ElTag,
     CopyToClipboard,
     VideoPlayer,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {

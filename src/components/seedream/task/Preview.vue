@@ -69,6 +69,11 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/seedream/images" :body="apiRequest" />
+          <report-button
+            service="seedream"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -195,6 +200,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 import { getSeedreamShortModel } from '@/constants';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
 
@@ -216,7 +222,8 @@ export default defineComponent({
     ElButton,
     ElTooltip,
     ImagePreview,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {

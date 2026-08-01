@@ -70,6 +70,11 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/kling/videos" :body="modelValue?.request" />
+          <report-button
+            service="kling"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -163,6 +168,7 @@ import ImagePreview from '@/components/common/ImagePreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import AudioPreview from '@/components/common/AudioPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -181,7 +187,8 @@ export default defineComponent({
     ImagePreview,
     VideoPreview,
     AudioPreview,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {

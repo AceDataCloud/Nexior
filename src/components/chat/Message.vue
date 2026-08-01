@@ -180,6 +180,16 @@
           :messages="messages"
           @restart="onRestart"
         />
+        <report-button
+          v-if="
+            message.role === 'assistant' &&
+            message.state !== messageState.PENDING &&
+            message.state !== messageState.ANSWERING
+          "
+          class="btn-report"
+          service="chat"
+          :snapshot="{ answer: copyableText }"
+        />
       </div>
     </div>
     <div v-else class="error-card">
@@ -205,6 +215,7 @@ import { IApplication, IChatMessage, IChatMessageState, IChatModelGroup } from '
 import type { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
@@ -243,6 +254,7 @@ export default defineComponent({
     EditMessage,
     CopyToClipboard,
     RestartToGenerate,
+    ReportButton,
     AnsweringMark,
     MarkdownRenderer,
     FilePreview,

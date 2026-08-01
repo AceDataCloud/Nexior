@@ -264,6 +264,12 @@
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
 
+              <el-dropdown-item v-if="audio?.id" @click.stop="onReport(audio)">
+                <warning-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+
+                {{ $t('common.button.report') }}
+              </el-dropdown-item>
+
               <!-- Delete group -->
               <div class="menu-divider" />
               <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
@@ -281,6 +287,12 @@
       :path="apiCodePath"
       :body="apiCodeBody"
       :token="$store.state.suno?.credential?.token || ''"
+    />
+    <report-dialog
+      v-model:visible="reportVisible"
+      service="suno"
+      :target-id="reportTargetId"
+      :snapshot="reportSnapshot"
     />
   </div>
 </template>
@@ -336,6 +348,7 @@ import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import ReportDialog from '@/components/common/ReportDialog.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
 export default defineComponent({
@@ -379,6 +392,7 @@ export default defineComponent({
     ElAlert,
     Loading,
     ApiCodeDialog,
+    ReportDialog,
     CopyToClipboard
   },
   props: {
@@ -395,6 +409,9 @@ export default defineComponent({
       editingAudioId: null as string | null,
       editingTitle: '',
       apiCodeVisible: false,
+      reportVisible: false,
+      reportTargetId: '',
+      reportSnapshot: undefined as Record<string, unknown> | undefined,
       apiCodePath: '/suno/audios',
       apiCodeBody: {} as Record<string, unknown>
     };
@@ -447,6 +464,11 @@ export default defineComponent({
     }
   },
   methods: {
+    onReport(audio: any) {
+      this.reportTargetId = audio?.id || '';
+      this.reportSnapshot = { prompt: audio?.prompt, title: audio?.title };
+      this.reportVisible = true;
+    },
     useFormatDuring,
     shortModel(audio: ISunoAudio): string {
       // "chirp-v5-5" -> "v5.5", "chirp-v3-0" -> "v3" (matches the model selector labels)

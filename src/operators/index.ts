@@ -46,3 +46,4 @@ export * from './config';
 export * from './byokCredential';
 export * from './appVersion';
 export * from './codingBridge';
+export * from './contentReport';

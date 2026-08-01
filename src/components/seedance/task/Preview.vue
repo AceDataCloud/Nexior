@@ -87,6 +87,11 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/seedance/videos" :body="apiCodeBody" />
+          <report-button
+            service="seedance"
+            :target-id="modelValue?.id"
+            :snapshot="{ prompt: modelValue?.request?.prompt }"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -204,6 +209,7 @@ import ImagePreview from '@/components/common/ImagePreview.vue';
 import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ReportButton from '@/components/common/ReportButton.vue';
 
 export default defineComponent({
   name: 'SeedanceTaskPreview',
@@ -226,7 +232,8 @@ export default defineComponent({
     ImagePreview,
     AudioPreview,
     VideoPreview,
-    ApiCodeButton
+    ApiCodeButton,
+    ReportButton
   },
   props: {
     modelValue: {
