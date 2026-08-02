@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 02 Aug 2026 01:16:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 02 Aug 2026 04:06:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.353.4
+
+Sun, 02 Aug 2026 04:06:33 GMT
+
+### Patches
+
+- register the Element Plus components each chat card actually uses, so the action confirmation and TikTok publish forms render real inputs, selects, checkboxes and buttons instead of bare text (dev@acedata.cloud)
 
 ## 3.353.3
 
