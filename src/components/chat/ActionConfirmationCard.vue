@@ -58,6 +58,7 @@
 
 <script lang="ts">
 import { ConfirmIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import { ElButton } from 'element-plus';
 import { defineComponent, type PropType } from 'vue';
 import GenericFieldList from './GenericFieldList.vue';
 import TikTokPublishForm from './TikTokPublishForm.vue';
@@ -81,7 +82,7 @@ interface IData {
  */
 export default defineComponent({
   name: 'ActionConfirmationCard',
-  components: { GenericFieldList, TikTokPublishForm, ConfirmIcon, WarningIcon },
+  components: { GenericFieldList, TikTokPublishForm, ConfirmIcon, WarningIcon, ElButton },
   props: {
     payload: {
       type: Object as PropType<IActionConfirmationPayload>,

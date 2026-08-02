@@ -38,6 +38,7 @@ import {
   ErrorIcon as CircleCloseFilled,
   ExpandRightIcon as ArrowRight
 } from '@acedatacloud/core/icons/components';
+import { ElIcon } from 'element-plus';
 import { defineComponent, PropType } from 'vue';
 import { IChatMessageContentItem } from '@/models';
 
@@ -51,7 +52,7 @@ const TOOL_LABELS: Record<string, string> = {
 
 export default defineComponent({
   name: 'ToolActivity',
-  components: { Loading, CircleCheckFilled, CircleCloseFilled, ArrowRight },
+  components: { Loading, CircleCheckFilled, CircleCloseFilled, ArrowRight, ElIcon },
   props: {
     item: {
       type: Object as PropType<IChatMessageContentItem>,

@@ -46,7 +46,7 @@
 <script lang="ts">
 import { ExpandDownIcon as ArrowDown, FastIcon, LightningIcon, RelaxIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
-import { ElDropdown, ElDropdownItem, ElButton, ElIcon } from 'element-plus';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElButton, ElIcon } from 'element-plus';
 
 export const DEFAULT_MODE = 'fast';
 
@@ -55,6 +55,7 @@ export default defineComponent({
   components: {
     ElButton,
     ElDropdown,
+    ElDropdownMenu,
     ArrowDown,
     ElIcon,
     ElDropdownItem

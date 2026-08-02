@@ -54,6 +54,7 @@ import {
   ErrorIcon as CircleClose,
   ExpandDownIcon as ArrowDown
 } from '@acedatacloud/core/icons/components';
+import { ElIcon } from 'element-plus';
 import { defineComponent, ref, type PropType } from 'vue';
 
 import ArtifactBlock from './ArtifactBlock.vue';
@@ -61,7 +62,7 @@ import type { IChatToolCall } from '@/models';
 
 export default defineComponent({
   name: 'ToolCallBlock',
-  components: { Loading, CircleCheck, CircleClose, ArrowDown, ArtifactBlock },
+  components: { Loading, CircleCheck, CircleClose, ArrowDown, ArtifactBlock, ElIcon },
   props: {
     toolCall: {
       type: Object as PropType<IChatToolCall>,

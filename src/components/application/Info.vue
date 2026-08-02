@@ -60,7 +60,7 @@
 <script lang="ts">
 import { IApplication } from '@/models';
 import { defineComponent } from 'vue';
-import { ElButton, ElIcon } from 'element-plus';
+import { ElButton, ElIcon, ElTag } from 'element-plus';
 import { AnalyticsIcon, ConfirmIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isIOS, isRechargeDisabled } from '@/utils';
@@ -73,6 +73,7 @@ export default defineComponent({
     CreditsIcon,
     ElButton,
     ElIcon,
+    ElTag,
     CopyToClipboard,
     WalletIcon
   },
