@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 01 Aug 2026 18:40:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 02 Aug 2026 01:16:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.353.3
+
+Sun, 02 Aug 2026 01:16:08 GMT
+
+### Patches
+
+- polish the action confirmation card: match the connector consent card's house style, drop the duplicate tool row above it, and replay the submitted TikTok form read-only once resolved (dev@acedata.cloud)
 
 ## 3.353.2
 
