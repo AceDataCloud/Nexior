@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 02 Aug 2026 04:06:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 02 Aug 2026 10:20:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.353.5
+
+Sun, 02 Aug 2026 10:20:15 GMT
+
+### Patches
+
+- 修复刷新后界面语言被重置为英文 (dev@acedata.cloud)
 
 ## 3.353.4
 
