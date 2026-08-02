@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
-import { getSiteLocaleOptions, resolveSiteLocale } from './siteLocales';
+import { getSiteLocaleOptions, resolveBootLocale, resolveSiteLocale } from './siteLocales';
 
 describe('site locale policy', () => {
   it('supports every locale when the site has no explicit selection', () => {
@@ -20,5 +20,21 @@ describe('site locale policy', () => {
 
   it('fails open when a legacy payload contains no recognized locale', () => {
     expect(getSiteLocaleOptions(['xx'])).toEqual(I18N_SUPPORTED_LOCALES);
+  });
+});
+
+describe('boot locale', () => {
+  it('keeps the saved locale when the site allows it', () => {
+    expect(resolveBootLocale('zh-CN', {})).toBe('zh-CN');
+    expect(resolveBootLocale('zh-CN', { language: 'en' })).toBe('zh-CN');
+    expect(resolveBootLocale('ja', { supported_locales: ['en', 'ja'] })).toBe('ja');
+  });
+
+  it('falls back to the default when no locale was saved', () => {
+    expect(resolveBootLocale(undefined, {})).toBe('en');
+  });
+
+  it('overrides a saved locale the site no longer offers', () => {
+    expect(resolveBootLocale('zh-CN', { language: 'ja', supported_locales: ['en', 'ja'] })).toBe('ja');
   });
 });
