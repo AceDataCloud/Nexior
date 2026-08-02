@@ -16,3 +16,11 @@ export const resolveSiteLocale = (currentLocale: string, site?: ISite | null): s
   if (allowed.has(I18N_DEFAULT_LOCALE)) return I18N_DEFAULT_LOCALE;
   return options[0].value;
 };
+
+/**
+ * Boot-time locale decision. Must be driven by the saved LOCALE cookie, never
+ * by `i18n.global.locale` — at boot the router guard that applies the cookie
+ * has not run yet, so the live locale is still the vue-i18n default.
+ */
+export const resolveBootLocale = (savedLocale: string | undefined, site?: ISite | null): string =>
+  resolveSiteLocale(savedLocale || I18N_DEFAULT_LOCALE, site);
