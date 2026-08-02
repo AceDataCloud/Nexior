@@ -17,13 +17,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSlider } from 'element-plus';
+import { ElInputNumber, ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { MIDJOURNEY_DEFAULT_IMAGE_WEIGHT } from '@/constants';
 
 export default defineComponent({
   name: 'ImageWeightSelector',
   components: {
+    ElInputNumber,
     ElSlider,
     InfoIcon
   },

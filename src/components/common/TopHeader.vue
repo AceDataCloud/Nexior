@@ -74,7 +74,17 @@ import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth, withCurrentUserIdAndSite, isMainOfficial } from '@/utils';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
-import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
+import {
+  ElCol,
+  ElRow,
+  ElDropdown,
+  ElDropdownMenu,
+  ElMenu,
+  ElSubMenu,
+  ElMenuItem,
+  ElDropdownItem,
+  ElButton
+} from 'element-plus';
 import Logo from './Logo.vue';
 import { Browser } from '@capacitor/browser';
 import { isNative, isDesktop, isMacOS } from '@/utils/surface';
@@ -86,6 +96,7 @@ export default defineComponent({
     Logo,
     ElRow,
     ElDropdown,
+    ElDropdownMenu,
     ElMenu,
     ElMenuItem,
     ElDropdownItem,

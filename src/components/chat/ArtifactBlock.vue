@@ -38,6 +38,7 @@
 
 <script lang="ts">
 import { DocumentIcon as Document } from '@acedatacloud/core/icons/components';
+import { ElIcon, ElImage } from 'element-plus';
 import { defineComponent, type PropType } from 'vue';
 
 import type { IChatArtifact } from '@/models';
@@ -48,7 +49,7 @@ interface IData {
 
 export default defineComponent({
   name: 'ArtifactBlock',
-  components: { Document },
+  components: { Document, ElIcon, ElImage },
   props: {
     artifact: {
       type: Object as PropType<IChatArtifact>,

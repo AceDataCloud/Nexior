@@ -91,6 +91,7 @@
 </template>
 
 <script lang="ts">
+import { ElCheckbox, ElInput, ElOption, ElSelect } from 'element-plus';
 import { defineComponent, type PropType } from 'vue';
 import type { ITikTokPublishDetail, ITikTokPublishValues } from '@/models';
 
@@ -117,6 +118,7 @@ const SELF_ONLY = 'SELF_ONLY';
  */
 export default defineComponent({
   name: 'TikTokPublishForm',
+  components: { ElCheckbox, ElInput, ElOption, ElSelect },
   props: {
     detail: {
       type: Object as PropType<ITikTokPublishDetail>,
