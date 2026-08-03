@@ -8,7 +8,20 @@ export const getSiteLocaleOptions = (supportedLocales?: string[] | null): I18nLo
   return options.length > 0 ? options : I18N_SUPPORTED_LOCALES;
 };
 
+/**
+ * The site pins every visitor to one language. Unset means auto-detect.
+ * Ignores values we ship no bundle for, so a stale row can't strand the UI
+ * on a locale that would render as raw keys.
+ */
+export const getForcedLocale = (site?: ISite | null): string | undefined => {
+  const forced = site?.forced_locale;
+  if (!forced) return undefined;
+  return I18N_SUPPORTED_LOCALES.some((locale) => locale.value === forced) ? forced : undefined;
+};
+
 export const resolveSiteLocale = (currentLocale: string, site?: ISite | null): string => {
+  const forced = getForcedLocale(site);
+  if (forced) return forced;
   const options = getSiteLocaleOptions(site?.supported_locales);
   const allowed = new Set(options.map((locale) => locale.value));
   if (allowed.has(currentLocale)) return currentLocale;

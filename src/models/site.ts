@@ -177,6 +177,12 @@ export interface ISite {
   favicon?: string;
   language?: string;
   supported_locales?: string[] | null;
+  /**
+   * Pins the UI language for every visitor. Unset means auto-detect. Distinct
+   * from `language`, which PlatformBackend backfills to "en" and so is never
+   * empty — see PlatformBackend `app/utils/site_defaults.py`.
+   */
+  forced_locale?: string | null;
   keywords?: string[];
   admins?: string[];
   description?: string;

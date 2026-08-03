@@ -122,6 +122,31 @@
 
     <section class="settings-item">
       <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.forcedLocale') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.forcedLocaleTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <el-select
+          :model-value="forcedLocaleValue"
+          class="forced-locale-select"
+          clearable
+          :placeholder="$t('site.placeholder.autoDetectLocale')"
+          @update:model-value="onSaveForcedLocale"
+        >
+          <el-option
+            v-for="locale in forcedLocaleOptions"
+            :key="locale.value"
+            :label="locale.label"
+            :value="locale.value"
+          />
+        </el-select>
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.admins') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.adminsTip') }}
@@ -172,7 +197,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElColorPicker, ElImage, ElTag } from 'element-plus';
+import { ElButton, ElColorPicker, ElImage, ElOption, ElSelect, ElTag } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
@@ -188,6 +213,7 @@ import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome }
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
+import { getSiteLocaleOptions } from '@/utils/siteLocales';
 
 // A small curated palette to make picking a "good" colour easy. The picker
 // still accepts any hex via its colour wheel; these are just shortcuts.
@@ -217,6 +243,8 @@ export default defineComponent({
     ElButton,
     ElColorPicker,
     ElImage,
+    ElOption,
+    ElSelect,
     ElTag,
     FontAwesomeIcon,
     SectionNotice
@@ -266,6 +294,14 @@ export default defineComponent({
     contacts(): ISiteContact[] {
       return getBrandContacts(this.site);
     },
+    forcedLocaleValue(): string {
+      return this.site?.forced_locale || '';
+    },
+    forcedLocaleOptions() {
+      // Only languages the site actually offers — the backend rejects pinning
+      // one that isn't in supported_locales.
+      return getSiteLocaleOptions(this.site?.supported_locales);
+    },
     hasContacts(): boolean {
       return hasBrandContacts(this.site);
     }
@@ -309,7 +345,17 @@ export default defineComponent({
     },
     onSaveSupportedLocales(locales: string[]) {
       const supportedLocales = locales.length === I18N_SUPPORTED_LOCALES.length ? null : locales;
-      this.onSave({ supported_locales: supportedLocales });
+      const payload: Record<string, unknown> = { supported_locales: supportedLocales };
+      // Dropping the pinned language from the offered set would fail the
+      // backend's cross-field check, so clear the pin along with it.
+      const forced = this.site?.forced_locale;
+      if (forced && supportedLocales && !supportedLocales.includes(forced)) {
+        payload.forced_locale = null;
+      }
+      this.onSave(payload);
+    },
+    onSaveForcedLocale(locale: string | null) {
+      this.onSave({ forced_locale: locale || null });
     },
     onTranslationChanged() {
       // Toggle endpoints mutate the row server-side; refresh so the
@@ -405,6 +451,11 @@ export default defineComponent({
     color: var(--el-text-color-regular);
     text-transform: uppercase;
   }
+}
+
+.forced-locale-select {
+  width: 200px;
+  max-width: 100%;
 }
 
 @media (max-width: 640px) {
