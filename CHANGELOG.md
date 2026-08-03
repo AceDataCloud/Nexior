@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 03 Aug 2026 02:14:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 03 Aug 2026 17:39:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.354.4
+
+Mon, 03 Aug 2026 17:39:11 GMT
+
+### Patches
+
+- Send size=auto explicitly for OpenAI Image instead of omitting the field, and give the option its own i18n key (dev@acedata.cloud)
 
 ## 3.354.3
 
