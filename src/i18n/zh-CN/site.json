@@ -31,6 +31,14 @@
     "message": "站点语言",
     "description": "站点设置中允许访客选择的界面语言"
   },
+  "field.forcedLocale": {
+    "message": "强制语言",
+    "description": "站点设置中固定全站界面语言的选项"
+  },
+  "placeholder.autoDetectLocale": {
+    "message": "自动检测",
+    "description": "强制语言未设置时的占位文案"
+  },
   "field.qr": {
     "message": "二维码",
     "description": "展示在编辑框的标题"
@@ -558,6 +566,10 @@
   "message.supportedLocalesTip": {
     "message": "选择本站向访客提供的界面语言，默认支持全部语言。",
     "description": "站点可选语言设置的提示"
+  },
+  "message.forcedLocaleTip": {
+    "message": "固定全站访客的界面语言，设置后访客无法自行切换。留空则自动检测。",
+    "description": "站点强制语言设置的提示"
   },
   "message.allLocales": {
     "message": "全部语言",

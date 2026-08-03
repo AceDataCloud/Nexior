@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
-import { getSiteLocaleOptions, resolveBootLocale, resolveSiteLocale } from './siteLocales';
+import { getSiteLocaleOptions, getForcedLocale, resolveBootLocale, resolveSiteLocale } from './siteLocales';
 
 describe('site locale policy', () => {
   it('supports every locale when the site has no explicit selection', () => {
@@ -36,5 +36,29 @@ describe('boot locale', () => {
 
   it('overrides a saved locale the site no longer offers', () => {
     expect(resolveBootLocale('zh-CN', { language: 'ja', supported_locales: ['en', 'ja'] })).toBe('ja');
+  });
+});
+
+describe('forced locale', () => {
+  it('is unset by default', () => {
+    expect(getForcedLocale({})).toBeUndefined();
+    expect(getForcedLocale({ language: 'ja' })).toBeUndefined();
+    expect(getForcedLocale(null)).toBeUndefined();
+  });
+
+  it('ignores a locale we ship no bundle for', () => {
+    expect(getForcedLocale({ forced_locale: 'xx' })).toBeUndefined();
+  });
+
+  it('outranks the saved locale at boot', () => {
+    expect(resolveBootLocale('zh-CN', { forced_locale: 'ja' })).toBe('ja');
+  });
+
+  it('outranks the user choice and the site default', () => {
+    expect(resolveSiteLocale('zh-CN', { forced_locale: 'ja', language: 'en' })).toBe('ja');
+  });
+
+  it('falls back to normal resolution when the pin is unusable', () => {
+    expect(resolveSiteLocale('zh-CN', { forced_locale: 'xx' })).toBe('zh-CN');
   });
 });

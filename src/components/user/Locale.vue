@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown trigger="click" @command="onSelectLocale">
+  <el-dropdown v-if="!isForced" trigger="click" @command="onSelectLocale">
     <span class="el-dropdown-link">
       {{ currentLabel }}
       <el-icon class="el-icon--right"><arrow-down :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
@@ -22,7 +22,7 @@ import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus
 import { setCookie } from 'typescript-cookie';
 import { getDomain } from '@/utils';
 import { setI18nLanguage } from '@/i18n';
-import { getSiteLocaleOptions, resolveSiteLocale } from '@/utils/siteLocales';
+import { getForcedLocale, getSiteLocaleOptions, resolveSiteLocale } from '@/utils/siteLocales';
 
 export default defineComponent({
   name: 'Locale',
@@ -40,6 +40,9 @@ export default defineComponent({
     locales() {
       return getSiteLocaleOptions(this.site?.supported_locales);
     },
+    isForced(): boolean {
+      return !!getForcedLocale(this.site);
+    },
     value(): string {
       return this.$i18n.locale;
     },
@@ -54,6 +57,10 @@ export default defineComponent({
       handler() {
         this.ensureAllowedLocale();
       }
+    },
+    // `locales` can stay identical while the pin changes, so watch it too.
+    isForced() {
+      this.ensureAllowedLocale();
     }
   },
   methods: {

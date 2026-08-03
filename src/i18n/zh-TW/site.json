@@ -31,6 +31,14 @@
     "message": "站點語言",
     "description": "站點設定中允許訪客選擇的介面語言"
   },
+  "field.forcedLocale": {
+    "message": "強制語言",
+    "description": "站點設定中固定全站介面語言的選項"
+  },
+  "placeholder.autoDetectLocale": {
+    "message": "自動檢測",
+    "description": "強制語言未設定時的佔位文案"
+  },
   "field.qr": {
     "message": "二維碼",
     "description": "展示在編輯框的標題"
@@ -558,6 +566,10 @@
   "message.supportedLocalesTip": {
     "message": "選擇本站向訪客提供的介面語言，預設支持全部語言。",
     "description": "站點可選語言設定的提示"
+  },
+  "message.forcedLocaleTip": {
+    "message": "固定全站訪客的介面語言，設定後訪客無法自行切換。留空則自動檢測。",
+    "description": "站點強制語言設定的提示"
   },
   "message.allLocales": {
     "message": "全部語言",

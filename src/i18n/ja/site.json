@@ -31,6 +31,14 @@
     "message": "サイト言語",
     "description": "サイト設定で訪問者が選択できるインターフェース言語"
   },
+  "field.forcedLocale": {
+    "message": "強制言語",
+    "description": "サイト設定で全体のインターフェース言語を固定するオプション"
+  },
+  "placeholder.autoDetectLocale": {
+    "message": "自動検出",
+    "description": "強制言語が設定されていない時のプレースホルダー文"
+  },
   "field.qr": {
     "message": "QRコード",
     "description": "編集ボックスに表示されるタイトル"
@@ -558,6 +566,10 @@
   "message.supportedLocalesTip": {
     "message": "訪問者に提供するサイトのインターフェース言語を選択します。デフォルトではすべての言語がサポートされています。",
     "description": "サイトで選択可能な言語設定のヒント"
+  },
+  "message.forcedLocaleTip": {
+    "message": "全ての訪問者のインターフェース言語を固定し、設定後は訪問者が切り替えできません。空白の場合は自動検出されます。",
+    "description": "サイトの強制言語設定に関するヒント"
   },
   "message.allLocales": {
     "message": "すべての言語",

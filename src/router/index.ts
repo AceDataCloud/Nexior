@@ -76,6 +76,7 @@ import {
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
+import { getForcedLocale } from '@/utils/siteLocales';
 import { isIframeLoginEnabled } from '@/utils/loginMethod';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
 import { ensureStoreModule } from '@/store/lazy';
@@ -434,7 +435,11 @@ export function setupRouterGuards(router: Router) {
     if (import.meta.env.SSR) {
       return next();
     }
-    const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
+    // A site-wide pin outranks the cookie (and therefore `?lang=`, which only
+    // ever writes the cookie). Applied here rather than at boot because the
+    // guard re-reads the cookie on every navigation.
+    const forcedLocale = getForcedLocale(store.state.site);
+    const locale = forcedLocale ?? getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
     await setI18nLanguage(locale);
 
     // Cross-site identity guard: handle `?user_id=<id>` query param attached by

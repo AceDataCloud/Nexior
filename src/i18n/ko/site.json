@@ -31,6 +31,14 @@
     "message": "사이트 언어",
     "description": "사이트 설정에서 방문자가 선택할 수 있는 인터페이스 언어"
   },
+  "field.forcedLocale": {
+    "message": "강제 언어",
+    "description": "사이트 설정에서 전체 사이트 인터페이스 언어를 고정하는 옵션"
+  },
+  "placeholder.autoDetectLocale": {
+    "message": "자동 감지",
+    "description": "강제 언어가 설정되지 않았을 때의 자리 표시자 문구"
+  },
   "field.qr": {
     "message": "QR 코드",
     "description": "편집 상자에 표시되는 제목"
@@ -558,6 +566,10 @@
   "message.supportedLocalesTip": {
     "message": "방문자에게 제공할 인터페이스 언어를 선택하세요. 기본적으로 모든 언어를 지원합니다.",
     "description": "사이트에서 선택 가능한 언어 설정에 대한 팁"
+  },
+  "message.forcedLocaleTip": {
+    "message": "전체 사이트 방문자의 인터페이스 언어를 고정합니다. 설정 후 방문자는 직접 전환할 수 없습니다. 비워두면 자동으로 감지됩니다.",
+    "description": "사이트 강제 언어 설정에 대한 팁"
   },
   "message.allLocales": {
     "message": "모든 언어",
