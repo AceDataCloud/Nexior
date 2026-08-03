@@ -296,6 +296,18 @@ export default defineComponent({
       if (event.data.name === 'logout') {
         this.$store.commit('setAuth', { action: 'login', visible: true });
       }
+      if (event.data.name === 'wechatMobileRedirect') {
+        // WeChat's mobile authorize URL is an empty shell that only works when
+        // the WeChat client sees the TOP window navigate to it — inside the
+        // login iframe it renders blank. So the iframe hands us the URL and we
+        // navigate ourselves. Returns via ?code= on the redirect we passed in.
+        const url = event.data.data?.url;
+        if (typeof url === 'string' && url.startsWith('https://open.weixin.qq.com/')) {
+          window.location.href = url;
+        } else {
+          console.warn('ignored wechatMobileRedirect with unexpected url', url);
+        }
+      }
       if (event.data.name === 'show_qr') {
         const data = event.data.data;
         this.qrLink = data.qrLink;
