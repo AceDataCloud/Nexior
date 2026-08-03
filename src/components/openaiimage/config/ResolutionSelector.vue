@@ -13,7 +13,7 @@
         :placeholder="$t('openaiimage.placeholder.select')"
         :disabled="useCustom"
       >
-        <el-option :label="$t('suno.gender.auto')" :value="emptySizeValue" />
+        <el-option :label="$t('openaiimage.size.auto')" :value="autoSizeValue" />
         <el-option-group v-for="group in presetGroups" :key="group.label" :label="group.label">
           <el-option v-for="item in group.options" :key="item" :label="item" :value="item" />
         </el-option-group>
@@ -71,13 +71,13 @@ import {
   OPENAIIMAGE_CUSTOM_SIZE_MODELS,
   OPENAIIMAGE_CUSTOM_SIZE_MULTIPLE,
   OPENAIIMAGE_DEFAULT_MODEL,
-  OPENAIIMAGE_DEFAULT_SIZE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
   OPENAIIMAGE_MODEL_SIZES,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K,
-  OPENAIIMAGE_SIZES_GPT_IMAGE_2_4K
+  OPENAIIMAGE_SIZES_GPT_IMAGE_2_4K,
+  OPENAIIMAGE_SIZE_AUTO
 } from '@/constants';
 
 interface IGroup {
@@ -122,8 +122,8 @@ export default defineComponent({
     storedSize(): string | undefined {
       return this.$store.state.openaiimage?.config?.size;
     },
-    emptySizeValue(): string {
-      return OPENAIIMAGE_DEFAULT_SIZE;
+    autoSizeValue(): string {
+      return OPENAIIMAGE_SIZE_AUTO;
     },
     customSupported(): boolean {
       return OPENAIIMAGE_CUSTOM_SIZE_MODELS.includes(this.model);
@@ -152,7 +152,7 @@ export default defineComponent({
           if (this.customError) return;
           this.commitSize(`${this.customWidth}x${this.customHeight}`);
         } else {
-          this.commitSize();
+          this.commitSize(OPENAIIMAGE_SIZE_AUTO);
         }
       }
     },
@@ -160,7 +160,7 @@ export default defineComponent({
       get(): string {
         const size = this.storedSize;
         if (size && this.presets.includes(size)) return size;
-        return this.emptySizeValue;
+        return this.autoSizeValue;
       },
       set(val: string) {
         this.customMode = false;
@@ -207,7 +207,7 @@ export default defineComponent({
           this.customMode = false;
         }
         const size = this.storedSize;
-        if (!size || this.presets.includes(size)) return;
+        if (!size || size === OPENAIIMAGE_SIZE_AUTO || this.presets.includes(size)) return;
         const parsed = parseSize(size);
         if (parsed && this.customSupported) {
           this.customMode = true;
@@ -215,11 +215,11 @@ export default defineComponent({
           this.customHeight = parsed.h;
           if (!this.customError) return;
         }
-        this.commitSize();
+        this.commitSize(OPENAIIMAGE_SIZE_AUTO);
       }
     },
     storedSize(size: string | undefined) {
-      if (!size) {
+      if (!size || size === OPENAIIMAGE_SIZE_AUTO) {
         this.customMode = false;
         return;
       }

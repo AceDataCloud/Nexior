@@ -16,6 +16,10 @@ export const OPENAIIMAGE_DEFAULT_MODEL = OPENAIIMAGE_MODEL_GPT_IMAGE_2;
 // (and what our OpenAPI documents), not a UI-side preference.
 export const OPENAIIMAGE_MAX_REFERENCE_IMAGES = 16;
 
+// Let the model pick the ratio from the prompt. Sent explicitly (not omitted):
+// only the upstream sees the prompt when choosing dimensions.
+export const OPENAIIMAGE_SIZE_AUTO = 'auto';
+
 // Common 1K presets (shared across all models)
 export const OPENAIIMAGE_SIZE_1024 = '1024x1024';
 export const OPENAIIMAGE_SIZE_1536_1024 = '1536x1024';
@@ -39,7 +43,7 @@ export const OPENAIIMAGE_SIZE_2448_3264 = '2448x3264';
 export const OPENAIIMAGE_SIZE_3840_2160 = '3840x2160';
 export const OPENAIIMAGE_SIZE_2160_3840 = '2160x3840';
 
-export const OPENAIIMAGE_DEFAULT_SIZE = '';
+export const OPENAIIMAGE_DEFAULT_SIZE = OPENAIIMAGE_SIZE_AUTO;
 
 // Per-model preset lists. Mirrors the OpenAPI `size` description on
 // `/openai/images/generations` and `/openai/images/edits`.
