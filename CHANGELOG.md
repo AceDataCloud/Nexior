@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 03 Aug 2026 01:03:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 03 Aug 2026 02:14:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.354.3
+
+Mon, 03 Aug 2026 02:14:09 GMT
+
+### Patches
+
+- fix(chat): 输入框加号菜单的技能/连接不再显示外链图标（已是站内页面） (dev@acedata.cloud)
 
 ## 3.354.2
 
