@@ -732,6 +732,7 @@ export default defineComponent({
         style_influence: req.style_influence,
         variation_category: req.variation_category,
         audio_weight: req.audio_weight,
+        duration: req.duration,
         persona_id: req.persona_id,
         // reset to a fresh generation
         action: undefined,
