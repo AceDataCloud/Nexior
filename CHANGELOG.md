@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 03 Aug 2026 00:51:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 03 Aug 2026 01:03:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.354.2
+
+Mon, 03 Aug 2026 01:03:10 GMT
+
+### Patches
+
+- fix(auth): 微信内置浏览器里内嵌登录选微信登录不再白屏 (dev@acedata.cloud)
 
 ## 3.354.1
 
