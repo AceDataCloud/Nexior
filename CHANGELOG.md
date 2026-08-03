@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 03 Aug 2026 00:41:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 03 Aug 2026 00:51:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.354.1
+
+Mon, 03 Aug 2026 00:51:24 GMT
+
+### Patches
+
+- fix(white-label): 子站首帧不再闪现 Ace Data Cloud 品牌 (dev@acedata.cloud)
 
 ## 3.354.0
 
