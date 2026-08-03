@@ -1,0 +1,720 @@
+<template>
+  <div class="intro">
+    <section class="hero">
+      <div class="hero__grid" />
+      <div class="container hero__content">
+        <span class="eyebrow">{{ $t('intro.badge.hero') }}</span>
+        <h1>{{ $t('intro.title.hero') }}</h1>
+        <p class="hero__summary">{{ $t('intro.subtitle.hero') }}</p>
+        <div class="hero__actions">
+          <el-button type="primary" size="large" @click="onStart">
+            {{ $t('common.button.startForFree') }}
+          </el-button>
+          <el-button size="large" @click="scrollTo('chat')">
+            {{ $t('intro.button.explore') }}
+          </el-button>
+        </div>
+        <dl class="hero__stats">
+          <div v-for="stat in heroStats" :key="stat.labelKey">
+            <dt>{{ stat.value }}</dt>
+            <dd>{{ $t(stat.labelKey) }}</dd>
+          </div>
+        </dl>
+        <div class="hero__screens">
+          <div class="macbook-frame hero__desktop" aria-hidden="true">
+            <div class="macbook-frame__lid">
+              <span class="macbook-frame__camera" />
+              <div class="macbook-frame__viewport"><img :src="heroDesktop" alt="" /></div>
+              <div class="macbook-frame__chin" />
+            </div>
+            <div class="macbook-frame__base"><span /></div>
+          </div>
+          <div class="phone-device hero__mobile" aria-hidden="true">
+            <span class="phone-device__speaker" />
+            <div class="phone-device__screen">
+              <span class="phone-device__island" />
+              <img :src="heroMobile" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      v-for="(section, index) in sections"
+      :id="section.key"
+      :key="section.key"
+      class="section capability"
+      :class="{ 'capability--alt': index % 2 === 1 }"
+    >
+      <div class="container">
+        <div class="capability__head">
+          <span class="eyebrow eyebrow--light">{{ $t(section.eyebrowKey) }}</span>
+          <h2>{{ $t(section.titleKey) }}</h2>
+          <p>{{ $t(section.subtitleKey) }}</p>
+        </div>
+
+        <div class="capability__body" :class="{ 'capability__body--reverse': index % 2 === 1 }">
+          <div class="screen-pair" :class="{ 'screen-pair--with-phone': section.mobile }">
+            <div class="macbook-frame screen-pair__desktop">
+              <div class="macbook-frame__lid">
+                <span class="macbook-frame__camera" aria-hidden="true" />
+                <div class="macbook-frame__viewport">
+                  <img :src="section.desktop" :alt="$t(section.titleKey)" loading="lazy" />
+                </div>
+                <div class="macbook-frame__chin" />
+              </div>
+              <div class="macbook-frame__base"><span /></div>
+            </div>
+            <div v-if="section.mobile" class="phone-device screen-pair__mobile">
+              <span class="phone-device__speaker" aria-hidden="true" />
+              <div class="phone-device__screen">
+                <span class="phone-device__island" aria-hidden="true" />
+                <img :src="section.mobile" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <div class="capability__copy">
+            <ul class="feature-points">
+              <li v-for="bulletKey in section.bulletKeys" :key="bulletKey">
+                <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                <span>{{ $t(bulletKey) }}</span>
+              </li>
+            </ul>
+            <el-button type="primary" plain @click="open(section.path)">
+              {{ $t('intro.button.try') }}
+              <next-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <article v-for="entry in section.entries" :key="entry.name" class="model-card">
+            <h3>{{ entry.name }}</h3>
+            <p>{{ $t(entry.descriptionKey) }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section connector-section">
+      <div class="container">
+        <div class="capability__head">
+          <span class="eyebrow eyebrow--light">{{ $t('intro.eyebrow.connector') }}</span>
+          <h2>{{ $t('intro.title.connector') }}</h2>
+          <p>{{ $t('intro.subtitle.connector') }}</p>
+        </div>
+        <div class="capability__body">
+          <div class="screen-pair">
+            <div class="macbook-frame screen-pair__desktop">
+              <div class="macbook-frame__lid">
+                <span class="macbook-frame__camera" aria-hidden="true" />
+                <div class="macbook-frame__viewport">
+                  <img :src="connectorShot" :alt="$t('intro.title.connector')" loading="lazy" />
+                </div>
+                <div class="macbook-frame__chin" />
+              </div>
+              <div class="macbook-frame__base"><span /></div>
+            </div>
+          </div>
+          <div class="capability__copy">
+            <ul class="feature-points">
+              <li v-for="bulletKey in connectorBullets" :key="bulletKey">
+                <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                <span>{{ $t(bulletKey) }}</span>
+              </li>
+            </ul>
+            <el-button type="primary" plain @click="open('/console/connectors')">
+              {{ $t('intro.button.try') }}
+              <next-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta__content">
+        <div>
+          <p class="story-kicker">{{ $t('intro.eyebrow.cta') }}</p>
+          <h2>{{ $t('intro.title.cta') }}</h2>
+          <p>{{ $t('intro.subtitle.cta') }}</p>
+        </div>
+        <div class="final-cta__actions">
+          <el-button type="primary" size="large" @click="onStart">
+            {{ $t('common.button.startForFree') }}
+          </el-button>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script lang="ts">
+import { ConfirmIcon, NextIcon } from '@acedatacloud/core/icons/components';
+import { defineComponent } from 'vue';
+import { ElButton } from 'element-plus';
+import { CAPABILITY_KEYS } from '@/constants/capabilities';
+import { getDefaultRoute } from '@/router';
+import { INTRO_SECTIONS, INTRO_SHOTS, type ILocalizedImage } from './data';
+
+const CONNECTOR_BULLETS = [
+  'intro.bullet.connector.catalog',
+  'intro.bullet.connector.modes',
+  'intro.bullet.connector.security'
+];
+
+export default defineComponent({
+  name: 'Intro',
+  components: {
+    ElButton,
+    ConfirmIcon,
+    NextIcon
+  },
+  data() {
+    return {
+      connectorBullets: CONNECTOR_BULLETS
+    };
+  },
+  computed: {
+    isChineseLocale(): boolean {
+      return String(this.$i18n.locale).toLowerCase().startsWith('zh');
+    },
+    heroStats() {
+      return [
+        { value: `${CAPABILITY_KEYS.length}+`, labelKey: 'intro.stat.capabilities' },
+        { value: '20+', labelKey: 'intro.stat.models' },
+        { value: '80+', labelKey: 'intro.stat.connectors' }
+      ];
+    },
+    sections() {
+      return INTRO_SECTIONS.map((section) => ({
+        ...section,
+        desktop: this.pick(section.desktop),
+        mobile: section.mobile ? this.pick(section.mobile) : undefined
+      }));
+    },
+    heroDesktop(): string {
+      return this.pick(INTRO_SHOTS.chatDesktop);
+    },
+    heroMobile(): string {
+      return this.pick(INTRO_SHOTS.chatMobile);
+    },
+    connectorShot(): string {
+      return this.pick(INTRO_SHOTS.connectorsDesktop);
+    }
+  },
+  methods: {
+    pick(source: ILocalizedImage): string {
+      return this.isChineseLocale ? source.zh : source.en;
+    },
+    onStart() {
+      this.$router.push(getDefaultRoute());
+    },
+    open(path: string) {
+      this.$router.push(path);
+    },
+    scrollTo(id: string) {
+      const app = document.getElementById('app');
+      const target = document.getElementById(id);
+      if (!app || !target) return;
+      const headerHeight = document.querySelector<HTMLElement>('.header')?.offsetHeight ?? 0;
+      app.scrollTop = target.offsetTop - headerHeight;
+    }
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.intro {
+  --intro-ink: var(--el-text-color-primary);
+  --intro-muted: var(--el-text-color-secondary);
+  --intro-accent: var(--el-color-primary);
+  color: var(--intro-ink);
+  background: var(--el-bg-color);
+}
+
+.container {
+  width: min(1220px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.macbook-frame {
+  position: relative;
+  padding: 0 3.5%;
+  filter: drop-shadow(0 24px 28px rgba(5, 12, 20, 0.24));
+
+  &__lid {
+    position: relative;
+    z-index: 1;
+    padding: 2.6% 2.2% 0;
+    border: 1px solid #3c434d;
+    border-radius: 18px 18px 3px 3px;
+    background: linear-gradient(145deg, #11161d 0%, #050709 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 -14px 22px rgba(0, 0, 0, 0.35);
+  }
+
+  &__camera {
+    position: absolute;
+    top: 1.2%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1b2730;
+    box-shadow: 0 0 0 1px #020304;
+    transform: translateX(-50%);
+  }
+
+  &__viewport {
+    overflow: hidden;
+    border-radius: 11px 11px 2px 2px;
+    background: #05070a;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 0;
+      background: transparent;
+      object-fit: contain;
+    }
+  }
+
+  &__chin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12px;
+  }
+
+  &__base {
+    position: relative;
+    z-index: 2;
+    width: 107.5%;
+    height: 18px;
+    margin-top: -1px;
+    margin-left: -3.75%;
+    border-radius: 2px 2px 14px 14px;
+    background: linear-gradient(180deg, #d7d9dc 0%, #9ca1a7 38%, #575e66 72%, #c9ccd0 100%);
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.85),
+      0 5px 8px rgba(0, 0, 0, 0.24);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 18%;
+      height: 46%;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(180deg, #737a82, #b8bcc1);
+      transform: translateX(-50%);
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 16%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.5);
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.phone-device {
+  position: relative;
+  padding: 9px 7px 12px;
+  border: 1px solid #3d4248;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #151a20, #030405);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 22px 48px rgba(5, 12, 20, 0.34);
+
+  &__speaker {
+    position: absolute;
+    z-index: 3;
+    top: 5px;
+    left: 50%;
+    width: 18%;
+    height: 3px;
+    border-radius: 9999px;
+    background: #272d34;
+    transform: translateX(-50%);
+  }
+
+  &__screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    background: #05070a;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 0;
+      background: transparent;
+      object-fit: contain;
+    }
+  }
+
+  &__island {
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    left: 50%;
+    width: 34%;
+    height: 13px;
+    border-radius: 9999px;
+    background: #020304;
+    transform: translateX(-50%);
+  }
+}
+
+.eyebrow,
+.story-kicker {
+  color: var(--intro-accent);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+
+  &--light {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--intro-accent);
+  }
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--app-gradient-hero);
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, #000 20%, transparent 92%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: 84px 0 0;
+    text-align: center;
+  }
+
+  h1 {
+    max-width: 940px;
+    margin: 20px auto 16px;
+    font-size: 60px;
+    line-height: 1.08;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #fff 0%, #93b8c3 52%, #689caa 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__summary {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    .el-button:not(.el-button--primary) {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 56px;
+    margin: 48px 0 0;
+
+    dt {
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    dd {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 13px;
+    }
+  }
+
+  &__screens {
+    position: relative;
+    max-width: 940px;
+    margin: 60px auto 0;
+    padding-bottom: 40px;
+  }
+
+  &__mobile {
+    position: absolute;
+    z-index: 3;
+    right: -12px;
+    bottom: 0;
+    width: 17%;
+  }
+}
+
+.section {
+  padding: 104px 0;
+  scroll-margin-top: 76px;
+}
+
+.capability {
+  &--alt {
+    background: var(--app-bg-surface);
+  }
+
+  &__head {
+    max-width: 820px;
+    margin: 0 auto 56px;
+    text-align: center;
+
+    h2 {
+      margin: 12px 0 16px;
+      font-size: 40px;
+      line-height: 1.18;
+    }
+
+    p {
+      margin: 0;
+      color: var(--intro-muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+    align-items: center;
+    gap: 56px;
+
+    &--reverse {
+      grid-template-columns: minmax(260px, 0.6fr) minmax(0, 1.4fr);
+
+      .capability__copy {
+        order: -1;
+      }
+    }
+  }
+
+  &__copy {
+    .el-button {
+      margin-top: 8px;
+    }
+  }
+}
+
+.screen-pair {
+  position: relative;
+
+  &--with-phone {
+    padding-right: 6%;
+  }
+
+  &__mobile {
+    position: absolute;
+    z-index: 3;
+    right: -2%;
+    bottom: -6%;
+    width: 19%;
+  }
+}
+
+.feature-points {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: var(--intro-muted);
+    font-size: 15px;
+    line-height: 1.7;
+
+    svg {
+      flex: none;
+      margin-top: 5px;
+      color: var(--intro-accent);
+    }
+  }
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 64px;
+}
+
+.model-card {
+  min-width: 0;
+  padding: 22px 24px;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: 14px;
+  background: var(--el-bg-color);
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    color: var(--intro-muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+.connector-section {
+  background: var(--app-bg-surface);
+}
+
+.final-cta {
+  padding: 96px 0;
+  background: var(--app-gradient-hero);
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    h2 {
+      margin: 12px 0 14px;
+      font-size: 38px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    p {
+      margin: 0;
+      max-width: 620px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+  }
+
+  .story-kicker {
+    color: #fff;
+    opacity: 0.75;
+  }
+}
+
+@media (max-width: 1100px) {
+  .capability__body,
+  .capability__body--reverse {
+    grid-template-columns: minmax(0, 1fr);
+
+    .capability__copy {
+      order: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .hero {
+    &__content {
+      padding-top: 56px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    &__summary {
+      font-size: 16px;
+    }
+
+    &__stats {
+      gap: 28px;
+
+      dt {
+        font-size: 24px;
+      }
+    }
+
+    &__mobile {
+      display: none;
+    }
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .capability__head h2 {
+    font-size: 28px;
+  }
+
+  .screen-pair__mobile {
+    display: none;
+  }
+
+  .screen-pair--with-phone {
+    padding-right: 0;
+  }
+
+  .model-grid {
+    margin-top: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .final-cta h2 {
+    font-size: 28px;
+  }
+}
+</style>
