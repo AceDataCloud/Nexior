@@ -81,12 +81,10 @@
             <el-dropdown-item @click="onOpenSkills">
               <magic-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               <span>{{ $t('chat.composer.skills') }}</span>
-              <external-link-icon class="menu-external" :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-dropdown-item>
             <el-dropdown-item @click="onOpenConnections">
               <connection-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               <span>{{ $t('chat.composer.connections') }}</span>
-              <external-link-icon class="menu-external" :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -146,7 +144,6 @@
 import {
   AddIcon,
   ConnectionIcon,
-  ExternalLinkIcon,
   FileTextIcon,
   MagicIcon,
   MicrophoneIcon,
@@ -188,7 +185,6 @@ export default defineComponent({
   components: {
     AddIcon,
     ConnectionIcon,
-    ExternalLinkIcon,
     FileTextIcon,
     MagicIcon,
     MicrophoneIcon,
@@ -488,11 +484,6 @@ html:root body textarea.input:focus-visible {
     width: 16px;
     margin-right: 8px;
     color: var(--el-text-color-regular);
-  }
-  .menu-external {
-    margin-left: 8px;
-    font-size: 11px;
-    color: var(--el-text-color-secondary);
   }
 }
 </style>
