@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 02 Aug 2026 10:20:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 03 Aug 2026 00:41:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.354.0
+
+Mon, 03 Aug 2026 00:41:07 GMT
+
+### Minor changes
+
+- 站点设置新增强制语言：设定后全站访客界面语言被固定，不设置则自动检测 (dev@acedata.cloud)
 
 ## 3.353.5
 
