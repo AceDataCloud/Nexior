@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 03 Aug 2026 17:39:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 04 Aug 2026 07:13:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.355.0
+
+Tue, 04 Aug 2026 07:13:48 GMT
+
+### Minor changes
+
+- Add a track-length control to Suno advanced params for custom-mode generations (dev@acedata.cloud)
 
 ## 3.354.4
 
