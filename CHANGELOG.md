@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 04 Aug 2026 15:00:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 04 Aug 2026 17:08:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.1
+
+Tue, 04 Aug 2026 17:08:26 GMT
+
+### Patches
+
+- gate /intro capability sections and model cards by the site's enabled features (dev@acedata.cloud)
 
 ## 3.356.0
 
