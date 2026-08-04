@@ -33,12 +33,12 @@ export const INTRO_SHOTS = {
     'https://cdn.acedata.cloud/uploads/6358331d-acf7-4784-b4f0-4f15189f9876'
   ),
   seedreamDesktop: image(
-    'https://cdn.acedata.cloud/uploads/abb6b06f-392e-4e20-972c-07c3d3be513a',
-    'https://cdn.acedata.cloud/uploads/b3123841-e68e-4a1f-aee2-0a6f9d5edf3f'
+    'https://cdn.acedata.cloud/uploads/7e45490e-8b41-48e9-9d31-dfae7072a7fa',
+    'https://cdn.acedata.cloud/uploads/91c96b92-31ff-4e99-bdd7-5314d1781246'
   ),
   fluxDesktop: image(
-    'https://cdn.acedata.cloud/uploads/75d058f3-88d7-41ec-b929-6f37f99dda5a',
-    'https://cdn.acedata.cloud/uploads/5057a9d4-a7e1-476b-a44d-2f074a33d816'
+    'https://cdn.acedata.cloud/uploads/7f7caa8d-5d61-4c03-9b14-14ddc865be5a',
+    'https://cdn.acedata.cloud/uploads/63e300df-a3c1-43c7-b170-6fd3fdfe15b5'
   ),
   sunoDesktop: image(
     'https://cdn.acedata.cloud/uploads/5ab7f19e-2047-4c62-a228-ae4170ca58b0',
@@ -53,20 +53,20 @@ export const INTRO_SHOTS = {
     'https://cdn.acedata.cloud/uploads/d50b6bcd-e6a3-4863-a964-c68f259c4ae0'
   ),
   klingDesktop: image(
-    'https://cdn.acedata.cloud/uploads/d38ed1b1-5746-474f-8c96-5d09f0be4d07',
-    'https://cdn.acedata.cloud/uploads/0afda31c-dcf3-47ff-9176-792904e83643'
+    'https://cdn.acedata.cloud/uploads/fd38b6c8-9794-4414-884c-9ca9619c7da6',
+    'https://cdn.acedata.cloud/uploads/3531e27b-58d8-4c65-9010-148b7c785560'
   ),
   klingMobile: image(
-    'https://cdn.acedata.cloud/uploads/347aa27d-32ae-431e-8f3b-e0b71093295d',
-    'https://cdn.acedata.cloud/uploads/ad0d7161-0177-456c-bf9b-c2e6fb80f2f1'
+    'https://cdn.acedata.cloud/uploads/3abfa61f-d735-4a1d-b983-8b09a9c9e5f0',
+    'https://cdn.acedata.cloud/uploads/c3cb4afb-f554-4031-8f8b-c91359906f18'
   ),
   veoDesktop: image(
-    'https://cdn.acedata.cloud/uploads/84ee7664-491a-4f36-a1fa-4fc36b58e961',
-    'https://cdn.acedata.cloud/uploads/52f3d0a9-bef1-4b8a-b8c5-2420b1ffc32c'
+    'https://cdn.acedata.cloud/uploads/e8291d40-e2d1-465e-88b6-3febbbba9a9b',
+    'https://cdn.acedata.cloud/uploads/efc32760-db07-439d-beff-ceaef735c3b4'
   ),
   seedanceDesktop: image(
-    'https://cdn.acedata.cloud/uploads/99a7f66a-c4e8-476f-b460-0cff1bcb18d4',
-    'https://cdn.acedata.cloud/uploads/ed200f23-df39-4be6-8788-1894d0a704d3'
+    'https://cdn.acedata.cloud/uploads/26a91d87-e267-4e39-9bbd-a2c5c8ec0cdc',
+    'https://cdn.acedata.cloud/uploads/8fd9cdc3-41f8-4d2f-9f32-60d083683307'
   ),
   maestroDesktop: image(
     'https://cdn.acedata.cloud/uploads/e20d1a42-7824-4803-b6b6-8d121a7eb713',

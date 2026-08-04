@@ -585,14 +585,21 @@ export default defineComponent({
   }
 }
 
+// Flex + centered wrapping rather than a grid: card counts (3, 6, 7, 10) rarely
+// divide evenly into the column count, and an auto-fill grid leaves the last row
+// with a single orphaned card. Centering makes a short last row look deliberate.
 .model-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
   margin-top: 64px;
 }
 
 .model-card {
+  // grow: 0 keeps a lone last-row card the same size as its siblings instead of
+  // stretching it across the full row.
+  flex: 0 1 clamp(240px, calc(25% - 16px), 300px);
   min-width: 0;
   padding: 22px 24px;
   border: 1px solid var(--app-border-subtle);
@@ -710,7 +717,12 @@ export default defineComponent({
 
   .model-grid {
     margin-top: 40px;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .model-card {
+    flex-basis: calc(50% - 6px);
+    padding: 16px 18px;
   }
 
   .final-cta h2 {
