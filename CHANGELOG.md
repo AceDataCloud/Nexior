@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 04 Aug 2026 07:13:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 04 Aug 2026 15:00:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.0
+
+Tue, 04 Aug 2026 15:00:18 GMT
+
+### Minor changes
+
+- add a capability-first /intro product tour covering chat, image, video, music, production, tools, and connectors, with localized desktop and mobile screenshots (dev@acedata.cloud)
 
 ## 3.355.0
 
