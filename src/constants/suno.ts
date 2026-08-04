@@ -6,6 +6,8 @@ export const SUNO_DEFAULT_QRW = 2;
 export const SUNO_DEFAULT_STEPS = 20;
 export const SUNO_DEFAULT_PRESET = '';
 export const SUNO_DEFAULT_MODEL = 'chirp-v5-5';
+// Target track length in seconds; the API owns the valid range per model.
+export const SUNO_DEFAULT_DURATION = 120;
 export const SUNO_DEFAULT_ASPECT_RATIO = '1:1';
 export const SUNO_DEFAULT_ADVANCED = false;
 export const SUNO_DEFAULT_RAWURL = true;

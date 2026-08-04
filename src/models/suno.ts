@@ -75,6 +75,7 @@ export interface ISunoConfig {
   style_influence?: number;
   variation_category?: string;
   audio_weight?: number;
+  duration?: number;
   persona_id?: string;
   replace_section_start?: number;
   replace_section_end?: number;
@@ -102,6 +103,7 @@ export interface ISunoAudioRequest {
   style_influence?: number;
   variation_category?: string;
   audio_weight?: number;
+  duration?: number;
   persona_id?: string;
   audio_id?: string;
   mashup_audio_ids?: string[];
