@@ -3,6 +3,8 @@ export interface ILocalizedImage {
   en: string;
 }
 
+import type { CapabilityKey } from '@/constants/capabilities';
+
 const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
 
 // Captured from the live product (desktop + mobile, zh + en) and uploaded to the
@@ -102,10 +104,17 @@ export interface IIntroEntry {
   /** Public product / model name. Never an upstream provider name. */
   name: string;
   descriptionKey: string;
+  /** Site feature flag gating this entry; omitted entries are always shown. */
+  featureKey?: CapabilityKey;
+  /** Route for this entry, used to retarget the section CTA when the section's
+   *  default destination is disabled for the site. */
+  path?: string;
 }
 
 export interface IIntroSection {
   key: string;
+  /** Section is hidden when none of these features are enabled for the site. */
+  featureKeys: CapabilityKey[];
   eyebrowKey: string;
   titleKey: string;
   subtitleKey: string;
@@ -119,18 +128,21 @@ export interface IIntroSection {
 export const INTRO_SECTIONS: IIntroSection[] = [
   {
     key: 'chat',
+    featureKeys: ['chatgpt', 'claude', 'gemini', 'grok', 'deepseek', 'kimi'],
     eyebrowKey: 'intro.eyebrow.chat',
     titleKey: 'intro.title.chat',
     subtitleKey: 'intro.subtitle.chat',
     bulletKeys: ['intro.bullet.chat.models', 'intro.bullet.chat.multimodal', 'intro.bullet.chat.agentic'],
     entries: [
-      { name: 'ChatGPT', descriptionKey: 'intro.model.chatgpt' },
-      { name: 'Claude', descriptionKey: 'intro.model.claude' },
-      { name: 'Gemini', descriptionKey: 'intro.model.gemini' },
-      { name: 'Grok', descriptionKey: 'intro.model.grok' },
-      { name: 'DeepSeek', descriptionKey: 'intro.model.deepseek' },
-      { name: 'Kimi', descriptionKey: 'intro.model.kimi' },
-      { name: 'GLM', descriptionKey: 'intro.model.glm' }
+      { name: 'ChatGPT', descriptionKey: 'intro.model.chatgpt', featureKey: 'chatgpt', path: '/chatgpt' },
+      { name: 'Claude', descriptionKey: 'intro.model.claude', featureKey: 'claude', path: '/claude' },
+      { name: 'Gemini', descriptionKey: 'intro.model.gemini', featureKey: 'gemini', path: '/gemini' },
+      { name: 'Grok', descriptionKey: 'intro.model.grok', featureKey: 'grok', path: '/grok' },
+      { name: 'DeepSeek', descriptionKey: 'intro.model.deepseek', featureKey: 'deepseek', path: '/deepseek' },
+      { name: 'Kimi', descriptionKey: 'intro.model.kimi', featureKey: 'kimi', path: '/kimi' },
+      // GLM has no capability key of its own; it rides the ChatGPT surface, so
+      // gate it on that rather than letting it survive a chat-less subsite.
+      { name: 'GLM', descriptionKey: 'intro.model.glm', featureKey: 'chatgpt', path: '/chatgpt' }
     ],
     path: '/chatgpt',
     desktop: INTRO_SHOTS.chatDesktop,
@@ -138,17 +150,18 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'image',
+    featureKeys: ['midjourney', 'nanobanana', 'openaiimage', 'seedream', 'flux', 'qrart'],
     eyebrowKey: 'intro.eyebrow.image',
     titleKey: 'intro.title.image',
     subtitleKey: 'intro.subtitle.image',
     bulletKeys: ['intro.bullet.image.models', 'intro.bullet.image.editing', 'intro.bullet.image.resolution'],
     entries: [
-      { name: 'Midjourney', descriptionKey: 'intro.model.midjourney' },
-      { name: 'Nano Banana', descriptionKey: 'intro.model.nanobanana' },
-      { name: 'GPT Image', descriptionKey: 'intro.model.gptimage' },
-      { name: 'Seedream', descriptionKey: 'intro.model.seedream' },
-      { name: 'Flux', descriptionKey: 'intro.model.flux' },
-      { name: 'QR Art', descriptionKey: 'intro.model.qrart' }
+      { name: 'Midjourney', descriptionKey: 'intro.model.midjourney', featureKey: 'midjourney', path: '/midjourney' },
+      { name: 'Nano Banana', descriptionKey: 'intro.model.nanobanana', featureKey: 'nanobanana', path: '/nanobanana' },
+      { name: 'GPT Image', descriptionKey: 'intro.model.gptimage', featureKey: 'openaiimage', path: '/openaiimage' },
+      { name: 'Seedream', descriptionKey: 'intro.model.seedream', featureKey: 'seedream', path: '/seedream' },
+      { name: 'Flux', descriptionKey: 'intro.model.flux', featureKey: 'flux', path: '/flux' },
+      { name: 'QR Art', descriptionKey: 'intro.model.qrart', featureKey: 'qrart', path: '/qrart' }
     ],
     path: '/nanobanana',
     desktop: INTRO_SHOTS.midjourneyDesktop,
@@ -156,21 +169,22 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'video',
+    featureKeys: ['kling', 'veo', 'sora', 'seedance', 'hailuo', 'luma', 'wan', 'pixverse', 'grokvideo', 'omni'],
     eyebrowKey: 'intro.eyebrow.video',
     titleKey: 'intro.title.video',
     subtitleKey: 'intro.subtitle.video',
     bulletKeys: ['intro.bullet.video.models', 'intro.bullet.video.control', 'intro.bullet.video.quality'],
     entries: [
-      { name: 'Kling', descriptionKey: 'intro.model.kling' },
-      { name: 'Veo', descriptionKey: 'intro.model.veo' },
-      { name: 'Sora', descriptionKey: 'intro.model.sora' },
-      { name: 'Seedance', descriptionKey: 'intro.model.seedance' },
-      { name: 'Hailuo', descriptionKey: 'intro.model.hailuo' },
-      { name: 'Luma', descriptionKey: 'intro.model.luma' },
-      { name: 'Wan', descriptionKey: 'intro.model.wan' },
-      { name: 'Pixverse', descriptionKey: 'intro.model.pixverse' },
-      { name: 'Grok Imagine', descriptionKey: 'intro.model.grokvideo' },
-      { name: 'Omni', descriptionKey: 'intro.model.omni' }
+      { name: 'Kling', descriptionKey: 'intro.model.kling', featureKey: 'kling', path: '/kling' },
+      { name: 'Veo', descriptionKey: 'intro.model.veo', featureKey: 'veo', path: '/veo' },
+      { name: 'Sora', descriptionKey: 'intro.model.sora', featureKey: 'sora', path: '/sora' },
+      { name: 'Seedance', descriptionKey: 'intro.model.seedance', featureKey: 'seedance', path: '/seedance' },
+      { name: 'Hailuo', descriptionKey: 'intro.model.hailuo', featureKey: 'hailuo', path: '/hailuo' },
+      { name: 'Luma', descriptionKey: 'intro.model.luma', featureKey: 'luma', path: '/luma' },
+      { name: 'Wan', descriptionKey: 'intro.model.wan', featureKey: 'wan', path: '/wan' },
+      { name: 'Pixverse', descriptionKey: 'intro.model.pixverse', featureKey: 'pixverse', path: '/pixverse' },
+      { name: 'Grok Imagine', descriptionKey: 'intro.model.grokvideo', featureKey: 'grokvideo', path: '/grokvideo' },
+      { name: 'Omni', descriptionKey: 'intro.model.omni', featureKey: 'omni', path: '/omni' }
     ],
     path: '/kling',
     desktop: INTRO_SHOTS.klingDesktop,
@@ -178,14 +192,15 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'music',
+    featureKeys: ['suno', 'producer', 'fish'],
     eyebrowKey: 'intro.eyebrow.music',
     titleKey: 'intro.title.music',
     subtitleKey: 'intro.subtitle.music',
     bulletKeys: ['intro.bullet.music.models', 'intro.bullet.music.control', 'intro.bullet.music.voice'],
     entries: [
-      { name: 'Suno', descriptionKey: 'intro.model.suno' },
-      { name: 'Producer', descriptionKey: 'intro.model.producer' },
-      { name: 'Fish Audio', descriptionKey: 'intro.model.fish' }
+      { name: 'Suno', descriptionKey: 'intro.model.suno', featureKey: 'suno', path: '/suno' },
+      { name: 'Producer', descriptionKey: 'intro.model.producer', featureKey: 'producer', path: '/producer' },
+      { name: 'Fish Audio', descriptionKey: 'intro.model.fish', featureKey: 'fish', path: '/fish' }
     ],
     path: '/suno',
     desktop: INTRO_SHOTS.sunoDesktop,
@@ -193,6 +208,7 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'production',
+    featureKeys: ['maestro', 'digitalhuman', 'poivelle'],
     eyebrowKey: 'intro.eyebrow.production',
     titleKey: 'intro.title.production',
     subtitleKey: 'intro.subtitle.production',
@@ -202,9 +218,14 @@ export const INTRO_SECTIONS: IIntroSection[] = [
       'intro.bullet.production.languages'
     ],
     entries: [
-      { name: 'Maestro', descriptionKey: 'intro.model.maestro' },
-      { name: 'Digital Human', descriptionKey: 'intro.model.digitalhuman' },
-      { name: 'Poivelle', descriptionKey: 'intro.model.poivelle' }
+      { name: 'Maestro', descriptionKey: 'intro.model.maestro', featureKey: 'maestro', path: '/maestro' },
+      {
+        name: 'Digital Human',
+        descriptionKey: 'intro.model.digitalhuman',
+        featureKey: 'digitalhuman',
+        path: '/digital-human'
+      },
+      { name: 'Poivelle', descriptionKey: 'intro.model.poivelle', featureKey: 'poivelle', path: '/poivelle' }
     ],
     path: '/maestro',
     desktop: INTRO_SHOTS.maestroDesktop,
@@ -212,14 +233,25 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'tools',
+    featureKeys: ['serp', 'webextrator', 'codingBridge'],
     eyebrowKey: 'intro.eyebrow.tools',
     titleKey: 'intro.title.tools',
     subtitleKey: 'intro.subtitle.tools',
     bulletKeys: ['intro.bullet.tools.search', 'intro.bullet.tools.extract', 'intro.bullet.tools.coding'],
     entries: [
-      { name: 'SERP', descriptionKey: 'intro.model.serp' },
-      { name: 'WebExtrator', descriptionKey: 'intro.model.webextrator' },
-      { name: 'Coding Bridge', descriptionKey: 'intro.model.codingbridge' }
+      { name: 'SERP', descriptionKey: 'intro.model.serp', featureKey: 'serp', path: '/serp' },
+      {
+        name: 'WebExtrator',
+        descriptionKey: 'intro.model.webextrator',
+        featureKey: 'webextrator',
+        path: '/webextrator'
+      },
+      {
+        name: 'Coding Bridge',
+        descriptionKey: 'intro.model.codingbridge',
+        featureKey: 'codingBridge',
+        path: '/coding-bridge'
+      }
     ],
     path: '/serp',
     desktop: INTRO_SHOTS.serpDesktop

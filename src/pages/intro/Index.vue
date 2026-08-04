@@ -10,7 +10,7 @@
           <el-button type="primary" size="large" @click="onStart">
             {{ $t('common.button.startForFree') }}
           </el-button>
-          <el-button size="large" @click="scrollTo('chat')">
+          <el-button v-if="firstSectionKey" size="large" @click="scrollTo(firstSectionKey)">
             {{ $t('intro.button.explore') }}
           </el-button>
         </div>
@@ -155,8 +155,9 @@
 import { ConfirmIcon, NextIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { CAPABILITY_KEYS } from '@/constants/capabilities';
+import { CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { getDefaultRoute } from '@/router';
+import { isMainOfficial } from '@/utils';
 import { INTRO_SECTIONS, INTRO_SHOTS, type ILocalizedImage } from './data';
 
 const CONNECTOR_BULLETS = [
@@ -178,28 +179,71 @@ export default defineComponent({
     };
   },
   computed: {
+    site() {
+      return this.$store.state.site;
+    },
+    enabledFeatures(): Record<string, { enabled?: boolean } | undefined> {
+      return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
+    },
+    isMainSite(): boolean {
+      return this.site?.origin === 'studio.acedata.cloud' || isMainOfficial();
+    },
+    // Only filter once a site has actually declared a capability set. Before the
+    // site config resolves — and in local dev, where there is none — every key
+    // counts as available, so the page never collapses to a stray card.
+    hasFeatureConfig(): boolean {
+      return CAPABILITY_KEYS.some((key) => this.enabledFeatures[key] !== undefined);
+    },
     isChineseLocale(): boolean {
       return String(this.$i18n.locale).toLowerCase().startsWith('zh');
     },
+    // A white-label subsite only advertises what it actually turned on.
+    availableKeys(): CapabilityKey[] {
+      if (this.isMainSite || !this.hasFeatureConfig) return [...CAPABILITY_KEYS];
+      return CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled);
+    },
     heroStats() {
       return [
-        { value: `${CAPABILITY_KEYS.length}+`, labelKey: 'intro.stat.capabilities' },
-        { value: '20+', labelKey: 'intro.stat.models' },
+        { value: `${this.availableKeys.length}+`, labelKey: 'intro.stat.capabilities' },
+        { value: `${this.visibleEntryCount}+`, labelKey: 'intro.stat.models' },
         { value: '80+', labelKey: 'intro.stat.connectors' }
       ];
     },
+    visibleEntryCount(): number {
+      return this.sections.reduce((n, s) => n + s.entries.length, 0);
+    },
     sections() {
+      const enabled = new Set<string>(this.availableKeys);
       return INTRO_SECTIONS.map((section) => ({
         ...section,
+        entries: section.entries.filter((entry) => !entry.featureKey || enabled.has(entry.featureKey)),
         desktop: this.pick(section.desktop),
         mobile: section.mobile ? this.pick(section.mobile) : undefined
-      }));
+      }))
+        .filter((section) => section.entries.length > 0)
+        .map((section) => ({
+          ...section,
+          // The section's default destination may itself be disabled; fall back
+          // to the first entry that survived filtering.
+          path: section.entries.some((e) => e.path === section.path)
+            ? section.path
+            : (section.entries.find((e) => e.path)?.path ?? section.path)
+        }));
     },
+    firstSectionKey(): string | undefined {
+      return this.sections[0]?.key;
+    },
+    // Lead with chat when the site has it; otherwise borrow the first surviving
+    // section's shot so a subsite never opens on a capability it disabled.
     heroDesktop(): string {
-      return this.pick(INTRO_SHOTS.chatDesktop);
+      const chat = this.sections.find((s) => s.key === 'chat');
+      return chat
+        ? this.pick(INTRO_SHOTS.chatDesktop)
+        : (this.sections[0]?.desktop ?? this.pick(INTRO_SHOTS.chatDesktop));
     },
     heroMobile(): string {
-      return this.pick(INTRO_SHOTS.chatMobile);
+      const chat = this.sections.find((s) => s.key === 'chat');
+      return chat ? this.pick(INTRO_SHOTS.chatMobile) : (this.sections[0]?.mobile ?? this.pick(INTRO_SHOTS.chatMobile));
     },
     connectorShot(): string {
       return this.pick(INTRO_SHOTS.connectorsDesktop);
