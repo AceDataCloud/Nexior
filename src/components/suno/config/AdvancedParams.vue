@@ -55,14 +55,14 @@
         </div>
         <el-slider v-model="audioWeight" :min="0" :max="1" :step="0.01" />
       </div>
-      <!-- Duration (custom mode, chirp-v5-5 only) -->
-      <div v-if="supportsDuration" class="mb-3">
+      <!-- Duration -->
+      <div v-if="config?.custom" class="mb-3">
         <div class="flex items-center justify-between mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.duration') }}</span>
           <el-switch v-model="durationEnabled" size="small" />
         </div>
         <template v-if="durationEnabled">
-          <el-slider v-model="duration" :min="10" :max="360" :step="5" show-input :show-input-controls="false" />
+          <el-input-number v-model="duration" size="small" :step="10" :precision="0" class="w-full" />
           <div class="text-xs text-[var(--el-text-color-secondary)]">{{ $t('suno.description.duration') }}</div>
         </template>
       </div>
@@ -83,7 +83,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElCollapse, ElCollapseItem, ElInput, ElSlider, ElRadioGroup, ElRadioButton, ElSwitch } from 'element-plus';
+import {
+  ElCollapse,
+  ElCollapseItem,
+  ElInput,
+  ElInputNumber,
+  ElSlider,
+  ElRadioGroup,
+  ElRadioButton,
+  ElSwitch
+} from 'element-plus';
 import { SUNO_DEFAULT_DURATION } from '@/constants/suno';
 
 export default defineComponent({
@@ -92,6 +101,7 @@ export default defineComponent({
     ElCollapse,
     ElCollapseItem,
     ElInput,
+    ElInputNumber,
     ElSlider,
     ElRadioGroup,
     ElRadioButton,
@@ -109,11 +119,6 @@ export default defineComponent({
     isV5OrAbove() {
       const model = this.config?.model || '';
       return ['chirp-v5', 'chirp-v5-5'].includes(model);
-    },
-    // Mirrors the API contract exactly: generate + custom mode + chirp-v5-5.
-    supportsDuration() {
-      const action = this.config?.action || 'generate';
-      return action === 'generate' && !!this.config?.custom && this.config?.model === 'chirp-v5-5';
     },
     durationEnabled: {
       get() {
