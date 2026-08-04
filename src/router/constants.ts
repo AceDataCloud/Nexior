@@ -1,4 +1,5 @@
 export const ROUTE_INDEX = 'index';
+export const ROUTE_INTRO = 'intro';
 export const ROUTE_DOWNLOAD = 'download';
 
 export const ROUTE_SHARE_CONVERSATION = 'share-conversation';
