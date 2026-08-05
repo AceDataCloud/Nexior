@@ -1,11 +1,11 @@
 <template>
-  <div class="intro">
+  <div v-if="siteLoaded" class="intro">
     <section class="hero">
       <div class="hero__grid" />
       <div class="container hero__content">
         <span class="eyebrow">{{ $t('intro.badge.hero') }}</span>
-        <h1>{{ $t('intro.title.hero') }}</h1>
-        <p class="hero__summary">{{ $t('intro.subtitle.hero') }}</p>
+        <h1>{{ heroTitle }}</h1>
+        <p class="hero__summary">{{ heroSubtitle }}</p>
         <div class="hero__actions">
           <el-button type="primary" size="large" @click="onStart">
             {{ $t('common.button.startForFree') }}
@@ -20,7 +20,7 @@
             <dd>{{ $t(stat.labelKey) }}</dd>
           </div>
         </dl>
-        <div class="hero__screens">
+        <div v-if="heroDesktop" class="hero__screens">
           <div class="macbook-frame hero__desktop" aria-hidden="true">
             <div class="macbook-frame__lid">
               <span class="macbook-frame__camera" />
@@ -29,7 +29,7 @@
             </div>
             <div class="macbook-frame__base"><span /></div>
           </div>
-          <div class="phone-device hero__mobile" aria-hidden="true">
+          <div v-if="heroMobile" class="phone-device hero__mobile" aria-hidden="true">
             <span class="phone-device__speaker" />
             <div class="phone-device__screen">
               <span class="phone-device__island" />
@@ -50,12 +50,18 @@
       <div class="container">
         <div class="capability__head">
           <span class="eyebrow eyebrow--light">{{ $t(section.eyebrowKey) }}</span>
-          <h2>{{ $t(section.titleKey) }}</h2>
-          <p>{{ $t(section.subtitleKey) }}</p>
+          <h2>{{ $t(section.displayTitleKey) }}</h2>
+          <p>{{ section.subtitle }}</p>
         </div>
 
-        <div class="capability__body" :class="{ 'capability__body--reverse': index % 2 === 1 }">
-          <div class="screen-pair" :class="{ 'screen-pair--with-phone': section.mobile }">
+        <div
+          class="capability__body"
+          :class="{
+            'capability__body--reverse': index % 2 === 1 && section.desktop,
+            'capability__body--copy-only': !section.desktop
+          }"
+        >
+          <div v-if="section.desktop" class="screen-pair" :class="{ 'screen-pair--with-phone': section.mobile }">
             <div class="macbook-frame screen-pair__desktop">
               <div class="macbook-frame__lid">
                 <span class="macbook-frame__camera" aria-hidden="true" />
@@ -149,6 +155,9 @@
       </div>
     </section>
   </div>
+  <div v-else class="intro-loading" role="status" :aria-label="$t('common.status.loading')">
+    <span class="intro-loading__pulse" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -157,8 +166,7 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { getDefaultRoute } from '@/router';
-import { isMainOfficial } from '@/utils';
-import { INTRO_SECTIONS, INTRO_SHOTS, type ILocalizedImage } from './data';
+import { INTRO_SECTIONS, INTRO_SHOTS, type IIntroScreenshot, type ILocalizedImage } from './data';
 
 const CONNECTOR_BULLETS = [
   'intro.bullet.connector.catalog',
@@ -185,27 +193,31 @@ export default defineComponent({
     enabledFeatures(): Record<string, { enabled?: boolean } | undefined> {
       return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
     },
-    isMainSite(): boolean {
-      return this.site?.origin === 'studio.acedata.cloud' || isMainOfficial();
-    },
-    // Only filter once a site has actually declared a capability set. Before the
-    // site config resolves — and in local dev, where there is none — every key
-    // counts as available, so the page never collapses to a stray card.
-    hasFeatureConfig(): boolean {
-      return CAPABILITY_KEYS.some((key) => this.enabledFeatures[key] !== undefined);
+    // Wait for the site record before rendering the catalog. Otherwise the
+    // initial empty store would briefly expose every disabled capability.
+    siteLoaded(): boolean {
+      return Boolean(this.site?.id);
     },
     isChineseLocale(): boolean {
       return String(this.$i18n.locale).toLowerCase().startsWith('zh');
     },
-    // A white-label subsite only advertises what it actually turned on.
+    // Every site — including studio.acedata.cloud — advertises only what its
+    // feature configuration enabled. Keep the directory empty until the site
+    // object arrives so disabled capabilities never flash during bootstrap.
     availableKeys(): CapabilityKey[] {
-      if (this.isMainSite || !this.hasFeatureConfig) return [...CAPABILITY_KEYS];
+      if (!this.siteLoaded) return [];
       return CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled);
+    },
+    heroTitle(): string {
+      return this.siteLoaded ? this.$t('intro.title.site') : this.$t('intro.title.hero');
+    },
+    heroSubtitle(): string {
+      return this.siteLoaded ? this.$t('intro.subtitle.site') : this.$t('intro.subtitle.hero');
     },
     heroStats() {
       return [
-        { value: `${this.availableKeys.length}+`, labelKey: 'intro.stat.capabilities' },
-        { value: `${this.visibleEntryCount}+`, labelKey: 'intro.stat.models' },
+        { value: `${this.availableKeys.length}`, labelKey: 'intro.stat.capabilities' },
+        { value: `${this.visibleEntryCount}`, labelKey: 'intro.stat.products' },
         { value: '80+', labelKey: 'intro.stat.connectors' }
       ];
     },
@@ -213,13 +225,25 @@ export default defineComponent({
       return this.sections.reduce((n, s) => n + s.entries.length, 0);
     },
     sections() {
-      const enabled = new Set<string>(this.availableKeys);
-      return INTRO_SECTIONS.map((section) => ({
-        ...section,
-        entries: section.entries.filter((entry) => !entry.featureKey || enabled.has(entry.featureKey)),
-        desktop: this.pick(section.desktop),
-        mobile: section.mobile ? this.pick(section.mobile) : undefined
-      }))
+      const enabled = new Set<CapabilityKey>(this.availableKeys);
+      return INTRO_SECTIONS.map((section) => {
+        const entries = section.entries.filter((entry) => !entry.featureKey || enabled.has(entry.featureKey));
+        const screenshot = this.sectionScreenshot(section.screenshots, enabled);
+        return {
+          ...section,
+          displayTitleKey: this.siteLoaded ? section.siteTitleKey : section.titleKey,
+          entries,
+          subtitle: this.siteLoaded ? entries.map((entry) => entry.name).join(' · ') : this.$t(section.subtitleKey),
+          bulletKeys: section.bullets
+            .filter((bullet) => {
+              if (bullet.catalogOnly && this.siteLoaded) return false;
+              return !bullet.featureKeys || bullet.featureKeys.some((key) => enabled.has(key));
+            })
+            .map((bullet) => bullet.key),
+          desktop: screenshot ? this.pick(screenshot.desktop) : undefined,
+          mobile: screenshot?.mobile ? this.pick(screenshot.mobile) : undefined
+        };
+      })
         .filter((section) => section.entries.length > 0)
         .map((section) => ({
           ...section,
@@ -234,16 +258,12 @@ export default defineComponent({
       return this.sections[0]?.key;
     },
     // Lead with chat when the site has it; otherwise borrow the first surviving
-    // section's shot so a subsite never opens on a capability it disabled.
-    heroDesktop(): string {
-      const chat = this.sections.find((s) => s.key === 'chat');
-      return chat
-        ? this.pick(INTRO_SHOTS.chatDesktop)
-        : (this.sections[0]?.desktop ?? this.pick(INTRO_SHOTS.chatDesktop));
+    // section's matching shot. Never fall back to a disabled capability.
+    heroDesktop(): string | undefined {
+      return this.sections.find((s) => s.key === 'chat')?.desktop ?? this.sections.find((s) => s.desktop)?.desktop;
     },
-    heroMobile(): string {
-      const chat = this.sections.find((s) => s.key === 'chat');
-      return chat ? this.pick(INTRO_SHOTS.chatMobile) : (this.sections[0]?.mobile ?? this.pick(INTRO_SHOTS.chatMobile));
+    heroMobile(): string | undefined {
+      return this.sections.find((s) => s.key === 'chat')?.mobile ?? this.sections.find((s) => s.mobile)?.mobile;
     },
     connectorShot(): string {
       return this.pick(INTRO_SHOTS.connectorsDesktop);
@@ -252,6 +272,15 @@ export default defineComponent({
   methods: {
     pick(source: ILocalizedImage): string {
       return this.isChineseLocale ? source.zh : source.en;
+    },
+    sectionScreenshot(
+      screenshots: Partial<Record<CapabilityKey, IIntroScreenshot>>,
+      enabled: Set<CapabilityKey>
+    ): IIntroScreenshot | undefined {
+      for (const key of CAPABILITY_KEYS) {
+        if (enabled.has(key) && screenshots[key]) return screenshots[key];
+      }
+      return undefined;
     },
     onStart() {
       this.$router.push(getDefaultRoute());
@@ -277,6 +306,28 @@ export default defineComponent({
   --intro-accent: var(--el-color-primary);
   color: var(--intro-ink);
   background: var(--el-bg-color);
+}
+
+.intro-loading {
+  min-height: calc(100vh - 140px);
+  display: grid;
+  place-items: center;
+  background: var(--app-gradient-hero);
+
+  &__pulse {
+    width: 42px;
+    height: 42px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    animation: intro-spin 0.9s linear infinite;
+  }
+}
+
+@keyframes intro-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .container {
@@ -580,6 +631,21 @@ export default defineComponent({
 
       .capability__copy {
         order: -1;
+      }
+    }
+
+    &--copy-only {
+      display: block;
+
+      .capability__copy {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .feature-points {
+        display: inline-block;
+        text-align: left;
       }
     }
   }
