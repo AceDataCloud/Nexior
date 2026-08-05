@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 13:53:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 14:01:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.5
+
+Wed, 05 Aug 2026 14:01:47 GMT
+
+### Patches
+
+- give /intro a logo-only presentation header, circular product marks, and balanced responsive card rows (dev@acedata.cloud)
 
 ## 3.356.4
 
