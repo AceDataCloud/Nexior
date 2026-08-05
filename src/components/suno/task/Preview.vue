@@ -710,7 +710,14 @@ export default defineComponent({
     onReusePrompt(audio: ISunoAudio) {
       const req = (this.modelValue?.request ?? {}) as ISunoAudioRequest;
       const hasContent =
-        req.prompt || req.lyric || req.style || req.title || req.lyric_prompt || req.style_negative || req.persona_id;
+        req.prompt ||
+        req.lyric ||
+        req.style ||
+        req.title ||
+        req.lyric_prompt ||
+        req.negative_tags ||
+        req.style_negative ||
+        req.persona_id;
       if (!hasContent) {
         ElMessage.warning(this.$t('suno.message.reusePromptEmpty'));
         return;
@@ -726,7 +733,7 @@ export default defineComponent({
         lyrics_mode: req.lyrics_mode ?? 'manual',
         title: req.title ?? '',
         style: req.style ?? '',
-        style_negative: req.style_negative ?? '',
+        negative_tags: req.negative_tags ?? req.style_negative ?? '',
         vocal_gender: req.vocal_gender,
         weirdness: req.weirdness,
         style_influence: req.style_influence,
