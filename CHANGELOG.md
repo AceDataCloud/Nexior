@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 15:00:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 15:22:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.7
+
+Wed, 05 Aug 2026 15:22:50 GMT
+
+### Patches
+
+- send Suno excluded styles through the canonical negative_tags API field while preserving prompt reuse from older tasks (dev@acedata.cloud)
 
 ## 3.356.6
 
