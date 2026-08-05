@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Читаемая человеком версия: оригинальный Cron"
+    "description": "Читаемый человеком: оригинальный Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "один раз в {time}",
@@ -1370,9 +1370,57 @@
     "message": "Отменено",
     "description": "Подсказка о сворачивании после отмены пользователем в карточке подтверждения перед выполнением"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Загрузка медиа-превью...",
+    "description": "Подтверждение перед выполнением: статус загрузки медиа"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Невозможно воспроизвести превью здесь",
+    "description": "Подтверждение перед выполнением: заголовок ошибки воспроизведения медиа"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Ссылка на медиа могла устареть, или текущий браузер не поддерживает этот формат. Пожалуйста, откройте оригинальный файл для проверки перед публикацией.",
+    "description": "Подтверждение перед выполнением: объяснение ошибки воспроизведения медиа"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Открыть оригинальный файл",
+    "description": "Подтверждение перед выполнением: открыть ссылку на медиа"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Подтверждение перед публикацией",
+    "description": "Статус карточки подтверждения публикации в TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Публикация в",
     "description": "Метка аккаунта в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Подключено",
+    "description": "Подтверждение публикации в TikTok: статус подключения аккаунта"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Информация об аккаунте недоступна",
+    "description": "Подтверждение публикации в TikTok: текст-заполнитель при отсутствии ника аккаунта"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Настройки публикации еще не готовы",
+    "description": "Подтверждение публикации в TikTok: заголовок отсутствующей информации о создателе"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Не удалось получить доступ к видимости, поддерживаемой этим аккаунтом. Пожалуйста, отмените и позвольте помощнику заново получить настройки публикации TikTok.",
+    "description": "Подтверждение публикации в TikTok: объяснение отсутствующей информации о создателе"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Длительность видео не соответствует ограничению аккаунта",
+    "description": "Подтверждение публикации TikTok: заголовок для слишком длинного видео"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Содержимое публикации",
+    "description": "Подтверждение публикации в TikTok: заголовок группы настроек контента"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Обязательно",
+    "description": "Подтверждение публикации в TikTok: объяснение обязательных полей"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Подпись",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Пожалуйста, выберите…",
     "description": "Заполнитель области видимости в подтверждении публикации TikTok, не может иметь значения по умолчанию согласно требованиям TikTok"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Не удалось получить доступные параметры видимости, публикация временно невозможна",
+    "description": "Подтверждение публикации в TikTok: отсутствие видимости"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Все",
@@ -1410,6 +1462,14 @@
     "message": "Разрешить взаимодействие",
     "description": "Метка группы переключателей взаимодействия в подтверждении публикации TikTok"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Можно включить только те способы взаимодействия, которые в данный момент разрешены для этого аккаунта; по умолчанию все отключены.",
+    "description": "Подтверждение публикации в TikTok: объяснение переключателя взаимодействия"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Этот аккаунт отключен: {list}",
+    "description": "Подтверждение публикации в TikTok: отключенные возможности взаимодействия аккаунта"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Комментарии",
     "description": "Переключатель взаимодействия TikTok: разрешить комментарии"
@@ -1422,17 +1482,33 @@
     "message": "Сшивание",
     "description": "Переключатель взаимодействия TikTok: разрешить сшивание"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Раскрытие контента",
+    "description": "Подтверждение публикации в TikTok: заголовок группы коммерческого контента"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Это коммерческий контент",
     "description": "Переключатель раскрытия коммерческого контента в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Если контент продвигает бренд, продукт или услугу, пожалуйста, раскройте информацию в соответствии с фактической ситуацией.",
+    "description": "Подтверждение публикации в TikTok: объяснение раскрытия коммерческого контента"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Ваш бренд",
     "description": "Коммерческий контент TikTok: продвижение собственного бизнеса"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Продвигайте себя или свой бизнес",
+    "description": "Коммерческий контент TikTok: объяснение продвижения собственного бизнеса"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Брендированный контент",
     "description": "Коммерческий контент TikTok: платное сотрудничество"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Продвижение третьей стороны за счет оплаты, подарков или других выгод",
+    "description": "Коммерческое содержание TikTok: объяснение платного сотрудничества"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Видео будет помечено как «рекламный контент»",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Видео превышает лимит времени для этого аккаунта ({max} секунд)",
     "description": "Ошибка превышения длины видео в подтверждении публикации TikTok"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Пожалуйста, подтвердите перед публикацией",
+    "description": "Подтверждение публикации в TikTok: заголовок политики"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Нажимая «Опубликовать», вы подтверждаете, что обладаете правами на использование контента и музыки, и соглашаетесь с условиями использования музыки TikTok.",
+    "description": "Подтверждение публикации в TikTok: объяснение политики обычного контента"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Нажимая «Опубликовать», вы подтверждаете, что информация о раскрытии точна, и соглашаетесь с политикой брендированного контента и условиями использования музыки TikTok.",
+    "description": "Подтверждение публикации в TikTok: объяснение политики брендированного контента"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Посмотреть «Подтверждение использования музыки»",
+    "description": "Подтверждение публикации в TikTok: ссылка на подтверждение использования музыки"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Посмотреть «Политику брендированного контента»",
+    "description": "Подтверждение публикации в TikTok: ссылка на политику брендированного контента"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Информация о публикации неполная, пожалуйста, отмените и создайте подтверждение заново",
+    "description": "Подтверждение публикации в TikTok: причина отключения кнопки при отсутствии деталей"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Пожалуйста, используйте видео, соответствующее ограничению по времени для этого аккаунта",
+    "description": "Подтверждение публикации TikTok: причина отключения кнопки из-за слишком длинного видео"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Пожалуйста, выберите, кто может видеть это видео",
+    "description": "Подтверждение публикации в TikTok: причина отключения кнопки при отсутствии выбора видимости"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Пожалуйста, выберите тип коммерческого контента",
+    "description": "Подтверждение публикации в TikTok: причина отключения кнопки при отсутствии выбора типа раскрытия"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Публикация означает, что вы соглашаетесь с «Подтверждением использования музыки» TikTok",

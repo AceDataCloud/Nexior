@@ -1,53 +1,108 @@
 <template>
-  <div class="action-confirmation-card" :class="{ 'is-resolved': resolved, 'is-destructive': isDestructive }">
+  <div
+    class="action-confirmation-card"
+    :class="{
+      'is-resolved': resolved,
+      'is-destructive': isDestructive,
+      'is-tiktok': isTikTokPublish
+    }"
+  >
     <div class="acc-header">
-      <component :is="headerIcon" class="header-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-      <span class="header-title">{{ payload.title }}</span>
-    </div>
-
-    <div v-if="payload.preview" class="acc-preview">
-      <video
-        v-if="payload.preview.type === 'video'"
-        class="preview-media"
-        :src="payload.preview.url"
-        controls
-        preload="metadata"
-      />
-      <img v-else class="preview-media" :src="payload.preview.url" :alt="payload.title" />
-      <span v-if="payload.preview.duration_sec" class="preview-duration">
-        {{ formattedDuration }}
+      <div class="acc-heading">
+        <span v-if="isTikTokPublish" class="acc-brand-mark" aria-hidden="true">♪</span>
+        <component
+          :is="headerIcon"
+          v-else
+          class="header-icon"
+          :size="'1em' as any"
+          aria-hidden="true"
+          focusable="false"
+        />
+        <div class="acc-heading-copy">
+          <span v-if="isTikTokPublish" class="acc-eyebrow">TikTok</span>
+          <span class="header-title">{{ payload.title }}</span>
+        </div>
+      </div>
+      <span v-if="isTikTokPublish && !resolved" class="acc-review-badge">
+        {{ $t('chat.actionConfirmation.tiktok.reviewBadge') }}
       </span>
     </div>
 
-    <div class="acc-body">
-      <!-- Kind-specific bodies register here. Unknown kinds fall through to
-           the generic list so a worker that ships a new kind first still
-           renders something actionable. -->
-      <TikTokPublishForm
-        v-if="isTikTokPublish"
-        ref="tiktokForm"
-        :detail="payload.detail as any"
-        :initial-title="initialTitle"
-        :duration-sec="payload.preview?.duration_sec ?? 0"
-        :disabled="resolved"
-        :initial-values="submittedValues"
-        @validity-change="onValidityChange"
-      />
-      <GenericFieldList v-else :summary="payload.summary" :fields="payload.fields ?? []" />
+    <p v-if="payload.summary" class="acc-summary">{{ payload.summary }}</p>
+
+    <div class="acc-content" :class="{ 'has-tiktok-layout': isTikTokPublish }">
+      <div v-if="payload.preview" class="acc-preview" :class="{ 'has-error': mediaFailed }">
+        <div v-if="!mediaReady && !mediaFailed" class="preview-loading" aria-live="polite">
+          <span class="preview-spinner" />
+          <span>{{ $t('chat.actionConfirmation.mediaLoading') }}</span>
+        </div>
+        <video
+          v-if="payload.preview.type === 'video' && !mediaFailed"
+          class="preview-media"
+          :class="{ 'is-ready': mediaReady }"
+          :src="payload.preview.url"
+          controls
+          playsinline
+          preload="metadata"
+          @loadedmetadata="onMediaReady"
+          @canplay="onMediaReady"
+          @error="onMediaError"
+        />
+        <img
+          v-else-if="payload.preview.type === 'image' && !mediaFailed"
+          class="preview-media"
+          :class="{ 'is-ready': mediaReady }"
+          :src="payload.preview.url"
+          :alt="payload.title"
+          @load="onMediaReady"
+          @error="onMediaError"
+        />
+        <div v-else class="preview-fallback" role="alert">
+          <span class="fallback-icon">!</span>
+          <strong>{{ $t('chat.actionConfirmation.mediaUnavailable') }}</strong>
+          <span>{{ $t('chat.actionConfirmation.mediaUnavailableHint') }}</span>
+          <a :href="payload.preview.url" target="_blank" rel="noopener noreferrer">
+            {{ $t('chat.actionConfirmation.openMedia') }}
+            <external-link-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </a>
+        </div>
+        <span v-if="formattedDuration && !mediaFailed" class="preview-duration">
+          {{ formattedDuration }}
+        </span>
+      </div>
+
+      <div class="acc-body">
+        <TikTokPublishForm
+          v-if="isTikTokPublish"
+          ref="tiktokForm"
+          :detail="(payload.detail ?? {}) as any"
+          :initial-title="initialTitle"
+          :duration-sec="payload.preview?.duration_sec ?? 0"
+          :disabled="resolved"
+          :initial-values="submittedValues"
+          @validity-change="onValidityChange"
+        />
+        <GenericFieldList v-else :summary="payload.summary" :fields="payload.fields ?? []" />
+      </div>
     </div>
 
     <div v-if="!resolved" class="acc-actions">
-      <el-button text :disabled="submitting" @click="onCancel">
-        {{ $t('chat.actionConfirmation.cancel') }}
-      </el-button>
-      <el-button
-        :type="isDestructive ? 'danger' : 'primary'"
-        :loading="submitting"
-        :disabled="!bodyValid"
-        @click="onConfirm"
-      >
-        {{ confirmLabel }}
-      </el-button>
+      <p v-if="!bodyValid && validationReason" class="acc-validation" role="status">
+        {{ validationReason }}
+      </p>
+      <div class="acc-buttons">
+        <el-button text :disabled="submitting" @click="onCancel">
+          {{ $t('chat.actionConfirmation.cancel') }}
+        </el-button>
+        <el-button
+          :type="isDestructive ? 'danger' : 'primary'"
+          :loading="submitting"
+          :disabled="!bodyValid"
+          @click="onConfirm"
+        >
+          {{ confirmLabel }}
+        </el-button>
+      </div>
     </div>
 
     <div v-else class="acc-resolved-banner">
@@ -57,7 +112,7 @@
 </template>
 
 <script lang="ts">
-import { ConfirmIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import { ConfirmIcon, ExternalLinkIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { ElButton } from 'element-plus';
 import { defineComponent, type PropType } from 'vue';
 import GenericFieldList from './GenericFieldList.vue';
@@ -68,21 +123,14 @@ interface IData {
   submitting: boolean;
   resolvedConfirmed: boolean | null;
   bodyValid: boolean;
+  validationReason: string;
+  mediaReady: boolean;
+  mediaFailed: boolean;
 }
 
-/**
- * Gate for an irreversible external action. Rendered inline on a
- * `tool_use` block paused with `pending_action_confirmation`.
- *
- * Not to be confused with `<ConnectorConsentCard>`: that one asks "do you
- * have permission for this connector?" once, when the capability is
- * missing. This asks "should I do this, this time?" and fires before
- * every such action — a user with TikTok already connected still gets
- * this card for each video.
- */
 export default defineComponent({
   name: 'ActionConfirmationCard',
-  components: { GenericFieldList, TikTokPublishForm, ConfirmIcon, WarningIcon, ElButton },
+  components: { GenericFieldList, TikTokPublishForm, ConfirmIcon, ExternalLinkIcon, WarningIcon, ElButton },
   props: {
     payload: {
       type: Object as PropType<IActionConfirmationPayload>,
@@ -92,7 +140,6 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    /** Prior `output` JSON when replaying a resolved block from history. */
     previousOutput: {
       type: String,
       default: ''
@@ -103,21 +150,20 @@ export default defineComponent({
     return {
       submitting: false,
       resolvedConfirmed: null,
-      // Kind bodies that collect input flip this via `validity-change`;
-      // bodies without input leave it true so the button stays enabled.
-      bodyValid: true
+      bodyValid: true,
+      validationReason: '',
+      mediaReady: false,
+      mediaFailed: false
     };
   },
   computed: {
     isTikTokPublish(): boolean {
-      return this.payload?.kind === 'tiktok.publish' && !!this.payload?.detail;
+      return this.payload?.kind === 'tiktok.publish';
     },
-    /** Model-suggested caption, editable by the user in the kind body. */
     initialTitle(): string {
       const detail = this.payload?.detail as Record<string, unknown> | undefined;
       return typeof detail?.suggested_title === 'string' ? detail.suggested_title : '';
     },
-    /** What the user actually submitted, so a resolved card replays it. */
     submittedValues(): ITikTokPublishValues | null {
       if (!this.resolved || !this.previousOutput) return null;
       try {
@@ -137,7 +183,9 @@ export default defineComponent({
       return this.payload?.confirm_label || (this.$t('chat.actionConfirmation.confirm') as string);
     },
     formattedDuration(): string {
-      const total = Math.round(this.payload?.preview?.duration_sec ?? 0);
+      const value = this.payload?.preview?.duration_sec;
+      if (!value || !Number.isFinite(value)) return '';
+      const total = Math.round(value);
       const mm = Math.floor(total / 60);
       const ss = total % 60;
       return `${mm}:${String(ss).padStart(2, '0')}`;
@@ -157,10 +205,13 @@ export default defineComponent({
         this.submitting = false;
         this.resolvedConfirmed = this.parsePreviousConfirmed();
       }
+    },
+    'payload.preview.url'() {
+      this.mediaReady = false;
+      this.mediaFailed = false;
     }
   },
   methods: {
-    /** Recover the confirm/cancel outcome when re-rendering history. */
     parsePreviousConfirmed(): boolean {
       if (!this.previousOutput) return false;
       try {
@@ -180,10 +231,18 @@ export default defineComponent({
       if (confirmed && values) result.values = values;
       this.$emit('submit', result);
     },
-    onValidityChange(valid: boolean): void {
+    onValidityChange(valid: boolean, reason = ''): void {
       this.bodyValid = valid;
+      this.validationReason = reason;
     },
-    /** Pull the edited values out of the active kind body, if any. */
+    onMediaReady(): void {
+      this.mediaReady = true;
+      this.mediaFailed = false;
+    },
+    onMediaError(): void {
+      this.mediaReady = false;
+      this.mediaFailed = true;
+    },
     collectValues(): Record<string, unknown> | undefined {
       const form = this.$refs.tiktokForm as { collect?: () => Record<string, unknown> } | undefined;
       return form?.collect ? form.collect() : undefined;
@@ -199,21 +258,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-// Shape, shadow and enter animation deliberately mirror
-// `<ConnectorConsentCard>` — the two cards sit in the same transcript and a
-// different radius/elevation reads as a different product.
 .action-confirmation-card {
+  width: min(100%, 760px);
   border: 1px solid var(--el-border-color-lighter);
-  border-radius: 16px;
-  padding: 16px 18px 14px;
-  margin: 8px 0;
-  max-width: 100%;
+  border-radius: 18px;
+  padding: 18px;
+  margin: 10px 0;
   font-size: 14px;
   background: var(--el-bg-color);
-  box-shadow:
-    0 4px 16px -8px rgba(0, 0, 0, 0.08),
-    0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 14px 40px -28px rgb(0 0 0 / 45%);
   animation: actionConfirmationEnter 280ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.is-tiktok {
+    border-color: color-mix(in srgb, var(--el-border-color) 72%, #25f4ee 28%);
+  }
 
   &.is-destructive {
     border-color: var(--el-color-danger-light-5);
@@ -224,77 +282,254 @@ export default defineComponent({
     box-shadow: none;
     animation: none;
   }
+}
 
-  .acc-header {
-    display: flex;
+.acc-header,
+.acc-heading,
+.acc-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.acc-header {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.acc-heading {
+  gap: 10px;
+  min-width: 0;
+}
+
+.header-icon {
+  color: var(--el-color-primary);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.acc-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 11px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  background: #111;
+  box-shadow:
+    -2px 0 #25f4ee,
+    2px 0 #fe2c55;
+}
+
+.acc-heading-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.acc-eyebrow {
+  color: var(--el-text-color-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header-title {
+  color: var(--el-text-color-primary);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.acc-review-badge {
+  padding: 4px 9px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  color: var(--el-color-warning-dark-2);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--el-color-warning-light-9);
+}
+
+.acc-summary {
+  margin: 12px 0 0;
+  color: var(--el-text-color-regular);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.acc-content {
+  margin-top: 14px;
+
+  &.has-tiktok-layout {
+    display: grid;
+    grid-template-columns: minmax(190px, 0.72fr) minmax(300px, 1.28fr);
+    gap: 18px;
+    align-items: start;
+  }
+}
+
+.acc-preview {
+  position: relative;
+  min-height: 270px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgb(37 244 238 / 8%), rgb(254 44 85 / 7%)), #0d0f12;
+
+  .preview-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    max-height: 440px;
+    opacity: 0;
+    object-fit: contain;
+    transition: opacity 180ms ease;
+
+    &.is-ready {
+      opacity: 1;
+    }
+  }
+}
+
+.preview-loading,
+.preview-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  color: rgb(255 255 255 / 68%);
+  text-align: center;
+  font-size: 12px;
+}
+
+.preview-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgb(255 255 255 / 20%);
+  border-top-color: #25f4ee;
+  border-radius: 50%;
+  animation: previewSpin 700ms linear infinite;
+}
+
+.preview-fallback {
+  position: relative;
+  min-height: 270px;
+
+  strong {
+    color: #fff;
+    font-size: 14px;
+  }
+
+  a {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 5px;
+    margin-top: 4px;
+    color: #25f4ee;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
 
-    .header-icon {
-      color: var(--el-color-primary);
-      font-size: 16px;
-      flex-shrink: 0;
-    }
+.fallback-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+}
 
-    .header-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--el-text-color-primary);
-      min-width: 0;
-      word-break: break-word;
-    }
+.preview-duration {
+  position: absolute;
+  right: 9px;
+  bottom: 9px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 11px;
+  background: rgb(0 0 0 / 70%);
+  backdrop-filter: blur(8px);
+}
+
+.acc-body {
+  min-width: 0;
+}
+
+.acc-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--el-border-color-lighter);
+}
+
+.acc-validation {
+  margin: 0;
+  color: var(--el-color-warning-dark-2);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.acc-buttons {
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.acc-resolved-banner {
+  margin-top: 12px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: var(--el-color-info-light-9);
+  color: var(--el-text-color-regular);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 680px) {
+  .action-confirmation-card {
+    padding: 15px;
+    border-radius: 16px;
   }
 
-  &.is-destructive .acc-header .header-icon {
-    color: var(--el-color-danger);
+  .acc-content.has-tiktok-layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .acc-preview {
-    position: relative;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--el-fill-color-light);
-    max-width: 240px;
-
-    .preview-media {
-      display: block;
-      width: 100%;
-      max-height: 320px;
-      object-fit: contain;
-    }
-
-    .preview-duration {
-      position: absolute;
-      right: 6px;
-      bottom: 6px;
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 11px;
-      color: #fff;
-      background: rgb(0 0 0 / 60%);
-    }
+  .acc-preview,
+  .acc-preview .preview-media,
+  .preview-fallback {
+    min-height: 220px;
+    max-height: 360px;
   }
 
   .acc-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px solid var(--el-border-color-lighter);
+    align-items: stretch;
+    flex-direction: column;
   }
 
-  .acc-resolved-banner {
-    margin-top: 10px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: var(--el-color-info-light-9);
-    color: var(--el-text-color-regular);
-    font-size: 13px;
-    line-height: 1.5;
+  .acc-buttons {
+    width: 100%;
+
+    :deep(.el-button) {
+      flex: 1;
+    }
   }
 }
 
@@ -307,6 +542,12 @@ export default defineComponent({
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes previewSpin {
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

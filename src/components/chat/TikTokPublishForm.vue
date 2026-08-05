@@ -1,92 +1,141 @@
 <template>
   <div class="tiktok-publish-form">
-    <p class="tpf-account">
-      {{ $t('chat.actionConfirmation.tiktok.postingTo') }}
-      <strong>{{ detail.creator_nickname }}</strong>
-    </p>
-
-    <p v-if="tooLong" class="tpf-error">
-      {{ $t('chat.actionConfirmation.tiktok.tooLong', { max: detail.max_video_post_duration_sec }) }}
-    </p>
-
-    <div class="tpf-field">
-      <label class="tpf-label" for="tpf-caption">{{ $t('chat.actionConfirmation.tiktok.caption') }}</label>
-      <el-input
-        id="tpf-caption"
-        v-model="form.title"
-        type="textarea"
-        :rows="3"
-        :maxlength="2200"
-        :show-word-limit="!disabled"
-        :disabled="disabled"
-        :placeholder="$t('chat.actionConfirmation.tiktok.captionPlaceholder')"
-      />
+    <div class="tpf-account" :class="{ 'is-missing': !hasCreator }">
+      <img v-if="detail.creator_avatar_url" class="tpf-avatar" :src="detail.creator_avatar_url" alt="" />
+      <span v-else class="tpf-avatar tpf-avatar-fallback" aria-hidden="true">
+        {{ creatorInitial }}
+      </span>
+      <div class="tpf-account-copy">
+        <span>{{ $t('chat.actionConfirmation.tiktok.postingTo') }}</span>
+        <strong>{{ creatorName }}</strong>
+      </div>
+      <span v-if="hasCreator" class="tpf-connected">{{ $t('chat.actionConfirmation.tiktok.connected') }}</span>
     </div>
 
-    <!-- No default value: TikTok's guidelines require the user to pick the
-         privacy level manually from the exact options creator_info returned. -->
-    <div class="tpf-field">
-      <label class="tpf-label" for="tpf-privacy">
-        {{ $t('chat.actionConfirmation.tiktok.privacy') }}
-        <span class="tpf-required">*</span>
-      </label>
-      <el-select
-        id="tpf-privacy"
-        v-model="form.privacy_level"
-        :placeholder="$t('chat.actionConfirmation.tiktok.privacyPlaceholder')"
-        :disabled="disabled"
-        class="tpf-select"
-      >
-        <el-option
-          v-for="opt in privacyOptions"
-          :key="opt"
-          :label="privacyLabel(opt)"
-          :value="opt"
-          :disabled="isPrivacyDisabled(opt)"
+    <div v-if="metadataMissing" class="tpf-blocking-error" role="alert">
+      <strong>{{ $t('chat.actionConfirmation.tiktok.detailsUnavailable') }}</strong>
+      <span>{{ $t('chat.actionConfirmation.tiktok.detailsUnavailableHint') }}</span>
+    </div>
+
+    <div v-if="tooLong" class="tpf-blocking-error" role="alert">
+      <strong>{{ $t('chat.actionConfirmation.tiktok.videoTooLongTitle') }}</strong>
+      <span>{{ $t('chat.actionConfirmation.tiktok.tooLong', { max: detail.max_video_post_duration_sec }) }}</span>
+    </div>
+
+    <section class="tpf-section">
+      <div class="tpf-section-heading">
+        <span>{{ $t('chat.actionConfirmation.tiktok.postDetails') }}</span>
+        <span class="tpf-required-note">{{ $t('chat.actionConfirmation.tiktok.requiredNote') }}</span>
+      </div>
+
+      <div class="tpf-field">
+        <label class="tpf-label" for="tpf-caption">{{ $t('chat.actionConfirmation.tiktok.caption') }}</label>
+        <el-input
+          id="tpf-caption"
+          v-model="form.title"
+          type="textarea"
+          :rows="3"
+          :maxlength="2200"
+          :show-word-limit="!disabled"
+          :disabled="disabled || metadataMissing"
+          resize="none"
+          :placeholder="$t('chat.actionConfirmation.tiktok.captionPlaceholder')"
         />
-      </el-select>
-      <p v-if="selfOnlyBlocked" class="tpf-hint">
-        {{ $t('chat.actionConfirmation.tiktok.brandedNotPrivate') }}
-      </p>
-    </div>
+      </div>
 
-    <div class="tpf-field">
-      <span class="tpf-label">{{ $t('chat.actionConfirmation.tiktok.interactions') }}</span>
+      <div class="tpf-field">
+        <label class="tpf-label" for="tpf-privacy">
+          {{ $t('chat.actionConfirmation.tiktok.privacy') }}
+          <span class="tpf-required">*</span>
+        </label>
+        <el-select
+          v-if="hasPrivacyOptions"
+          id="tpf-privacy"
+          v-model="form.privacy_level"
+          :placeholder="$t('chat.actionConfirmation.tiktok.privacyPlaceholder')"
+          :disabled="disabled"
+          class="tpf-select"
+          popper-class="tiktok-privacy-popper"
+        >
+          <el-option
+            v-for="opt in privacyOptions"
+            :key="opt"
+            :label="privacyLabel(opt)"
+            :value="opt"
+            :disabled="isPrivacyDisabled(opt)"
+          />
+        </el-select>
+        <div v-else class="tpf-empty-control">
+          {{ $t('chat.actionConfirmation.tiktok.noPrivacyOptions') }}
+        </div>
+        <p v-if="selfOnlyBlocked" class="tpf-hint is-warning">
+          {{ $t('chat.actionConfirmation.tiktok.brandedNotPrivate') }}
+        </p>
+      </div>
+    </section>
+
+    <section class="tpf-section">
+      <div class="tpf-section-heading">{{ $t('chat.actionConfirmation.tiktok.interactions') }}</div>
+      <p class="tpf-section-description">{{ $t('chat.actionConfirmation.tiktok.interactionsHint') }}</p>
       <div class="tpf-checks">
-        <el-checkbox v-model="form.allow_comment" :disabled="disabled || detail.comment_disabled">
+        <el-checkbox v-model="form.allow_comment" :disabled="disabled || metadataMissing || detail.comment_disabled">
           {{ $t('chat.actionConfirmation.tiktok.allowComment') }}
         </el-checkbox>
-        <!-- Duet and Stitch do not apply to photo posts. -->
         <template v-if="!detail.is_photo_post">
-          <el-checkbox v-model="form.allow_duet" :disabled="disabled || detail.duet_disabled">
+          <el-checkbox v-model="form.allow_duet" :disabled="disabled || metadataMissing || detail.duet_disabled">
             {{ $t('chat.actionConfirmation.tiktok.allowDuet') }}
           </el-checkbox>
-          <el-checkbox v-model="form.allow_stitch" :disabled="disabled || detail.stitch_disabled">
+          <el-checkbox v-model="form.allow_stitch" :disabled="disabled || metadataMissing || detail.stitch_disabled">
             {{ $t('chat.actionConfirmation.tiktok.allowStitch') }}
           </el-checkbox>
         </template>
       </div>
-    </div>
+      <p v-if="disabledInteractions" class="tpf-hint">
+        {{ $t('chat.actionConfirmation.tiktok.disabledByAccount', { list: disabledInteractions }) }}
+      </p>
+    </section>
 
-    <div class="tpf-field">
-      <el-checkbox v-model="form.commercial" :disabled="disabled">
+    <section class="tpf-section">
+      <div class="tpf-section-heading">{{ $t('chat.actionConfirmation.tiktok.disclosure') }}</div>
+      <el-checkbox v-model="form.commercial" :disabled="disabled || metadataMissing">
         {{ $t('chat.actionConfirmation.tiktok.commercial') }}
       </el-checkbox>
-      <div v-if="form.commercial" class="tpf-checks tpf-indent">
+      <p class="tpf-section-description">{{ $t('chat.actionConfirmation.tiktok.commercialHint') }}</p>
+      <div v-if="form.commercial" class="tpf-commercial-options">
         <el-checkbox v-model="form.brand_organic_toggle" :disabled="disabled">
-          {{ $t('chat.actionConfirmation.tiktok.yourBrand') }}
+          <span class="tpf-option-copy">
+            <strong>{{ $t('chat.actionConfirmation.tiktok.yourBrand') }}</strong>
+            <small>{{ $t('chat.actionConfirmation.tiktok.yourBrandHint') }}</small>
+          </span>
         </el-checkbox>
         <el-checkbox v-model="form.brand_content_toggle" :disabled="disabled || brandedContentBlocked">
-          {{ $t('chat.actionConfirmation.tiktok.brandedContent') }}
+          <span class="tpf-option-copy">
+            <strong>{{ $t('chat.actionConfirmation.tiktok.brandedContent') }}</strong>
+            <small>{{ $t('chat.actionConfirmation.tiktok.brandedContentHint') }}</small>
+          </span>
         </el-checkbox>
-        <p v-if="commercialLabel" class="tpf-hint">{{ commercialLabel }}</p>
-        <p v-if="brandedContentBlocked" class="tpf-hint">
+        <p v-if="commercialLabel" class="tpf-hint is-info">{{ commercialLabel }}</p>
+        <p v-if="brandedContentBlocked" class="tpf-hint is-warning">
           {{ $t('chat.actionConfirmation.tiktok.brandedNotPrivate') }}
         </p>
       </div>
-    </div>
+    </section>
 
-    <p class="tpf-declaration">{{ musicDeclaration }}</p>
+    <aside class="tpf-policy">
+      <div class="tpf-policy-icon" aria-hidden="true">✓</div>
+      <div>
+        <strong>{{ $t('chat.actionConfirmation.tiktok.beforePublishing') }}</strong>
+        <p>{{ policyIntro }}</p>
+        <div class="tpf-policy-links">
+          <a :href="musicUsageUrl" target="_blank" rel="noopener noreferrer">
+            {{ $t('chat.actionConfirmation.tiktok.musicUsageLink') }}
+          </a>
+          <a v-if="form.brand_content_toggle" :href="brandedContentUrl" target="_blank" rel="noopener noreferrer">
+            {{ $t('chat.actionConfirmation.tiktok.brandedPolicyLink') }}
+          </a>
+        </div>
+      </div>
+    </aside>
   </div>
 </template>
 
@@ -107,15 +156,9 @@ interface IForm {
 }
 
 const SELF_ONLY = 'SELF_ONLY';
+const MUSIC_USAGE_URL = 'https://www.tiktok.com/legal/page/global/music-usage-confirmation/en';
+const BRANDED_CONTENT_URL = 'https://www.tiktok.com/legal/page/global/bc-policy/en';
 
-/**
- * `kind === 'tiktok.publish'` body for `<ActionConfirmationCard>`.
- *
- * The constraints here are TikTok guideline requirements, not preferences:
- * privacy options come from `creator_info` with no default, interaction
- * toggles start unchecked and grey out when the creator disabled them, and
- * branded content cannot be combined with a private post.
- */
 export default defineComponent({
   name: 'TikTokPublishForm',
   components: { ElCheckbox, ElInput, ElOption, ElSelect },
@@ -124,22 +167,18 @@ export default defineComponent({
       type: Object as PropType<ITikTokPublishDetail>,
       required: true
     },
-    /** Suggested caption from the model; the user can edit it. */
     initialTitle: {
       type: String,
       default: ''
     },
-    /** Video length, checked against `max_video_post_duration_sec`. */
     durationSec: {
       type: Number,
       default: 0
     },
-    /** Resolved replay: freeze every control so history stays read-only. */
     disabled: {
       type: Boolean,
       default: false
     },
-    /** Values the user actually submitted, replayed from the tool output. */
     initialValues: {
       type: Object as PropType<ITikTokPublishValues | null>,
       default: null
@@ -163,17 +202,34 @@ export default defineComponent({
   },
   computed: {
     privacyOptions(): string[] {
-      return this.detail?.privacy_level_options ?? [];
+      return Array.isArray(this.detail?.privacy_level_options)
+        ? this.detail.privacy_level_options.filter((option): option is string => typeof option === 'string' && !!option)
+        : [];
+    },
+    hasPrivacyOptions(): boolean {
+      return this.privacyOptions.length > 0;
+    },
+    hasCreator(): boolean {
+      return typeof this.detail?.creator_nickname === 'string' && !!this.detail.creator_nickname.trim();
+    },
+    creatorName(): string {
+      return this.hasCreator
+        ? this.detail.creator_nickname
+        : (this.$t('chat.actionConfirmation.tiktok.unknownAccount') as string);
+    },
+    creatorInitial(): string {
+      return this.hasCreator ? this.detail.creator_nickname.trim().charAt(0).toUpperCase() : '?';
+    },
+    metadataMissing(): boolean {
+      return !this.hasCreator || !this.hasPrivacyOptions;
     },
     tooLong(): boolean {
       const max = this.detail?.max_video_post_duration_sec ?? 0;
       return max > 0 && this.durationSec > max;
     },
-    /** Branded content may not be private, so block it while SELF_ONLY. */
     brandedContentBlocked(): boolean {
       return this.form.privacy_level === SELF_ONLY;
     },
-    /** …and symmetrically, block SELF_ONLY once branded content is on. */
     selfOnlyBlocked(): boolean {
       return this.form.commercial && this.form.brand_content_toggle;
     },
@@ -186,20 +242,40 @@ export default defineComponent({
       }
       return '';
     },
-    /** Two strings only — "branded content" and "both" share one. */
-    musicDeclaration(): string {
-      const branded = this.form.commercial && this.form.brand_content_toggle;
-      const key = branded ? 'chat.actionConfirmation.tiktok.musicBranded' : 'chat.actionConfirmation.tiktok.music';
+    disabledInteractions(): string {
+      const labels: string[] = [];
+      if (this.detail?.comment_disabled) labels.push(this.$t('chat.actionConfirmation.tiktok.allowComment') as string);
+      if (!this.detail?.is_photo_post && this.detail?.duet_disabled) {
+        labels.push(this.$t('chat.actionConfirmation.tiktok.allowDuet') as string);
+      }
+      if (!this.detail?.is_photo_post && this.detail?.stitch_disabled) {
+        labels.push(this.$t('chat.actionConfirmation.tiktok.allowStitch') as string);
+      }
+      return labels.join('、');
+    },
+    policyIntro(): string {
+      const key = this.form.brand_content_toggle
+        ? 'chat.actionConfirmation.tiktok.policyIntroBranded'
+        : 'chat.actionConfirmation.tiktok.policyIntro';
       return this.$t(key) as string;
     },
-    isValid(): boolean {
-      if (!this.form.privacy_level) return false;
-      if (this.tooLong) return false;
-      // Disclosure on ⇒ at least one of the two must be picked.
+    musicUsageUrl(): string {
+      return MUSIC_USAGE_URL;
+    },
+    brandedContentUrl(): string {
+      return BRANDED_CONTENT_URL;
+    },
+    validationReason(): string {
+      if (this.metadataMissing) return this.$t('chat.actionConfirmation.tiktok.fixDetailsFirst') as string;
+      if (this.tooLong) return this.$t('chat.actionConfirmation.tiktok.useShorterVideo') as string;
+      if (!this.form.privacy_level) return this.$t('chat.actionConfirmation.tiktok.selectPrivacyFirst') as string;
       if (this.form.commercial && !this.form.brand_organic_toggle && !this.form.brand_content_toggle) {
-        return false;
+        return this.$t('chat.actionConfirmation.tiktok.selectDisclosureType') as string;
       }
-      return true;
+      return '';
+    },
+    isValid(): boolean {
+      return !this.validationReason;
     },
     values(): ITikTokPublishValues {
       return {
@@ -214,10 +290,10 @@ export default defineComponent({
     }
   },
   watch: {
-    isValid: {
+    validationReason: {
       immediate: true,
-      handler(valid: boolean) {
-        this.$emit('validity-change', valid);
+      handler(reason: string) {
+        this.$emit('validity-change', !reason, reason);
       }
     },
     'form.privacy_level'(level: string) {
@@ -241,11 +317,8 @@ export default defineComponent({
         FOLLOWER_OF_CREATOR: 'chat.actionConfirmation.tiktok.privacyFollowers',
         SELF_ONLY: 'chat.actionConfirmation.tiktok.privacySelf'
       };
-      // Unknown option: show the raw value rather than dropping it — the
-      // list must mirror what creator_info returned.
       return known[option] ? (this.$t(known[option]) as string) : option;
     },
-    /** Read by the parent card on confirm. */
     collect(): ITikTokPublishValues {
       return this.values;
     }
@@ -258,64 +331,246 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
 
-  .tpf-account {
-    margin: 0;
+.tpf-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 12px;
+  background: var(--el-fill-color-extra-light);
+
+  &.is-missing {
+    border-color: var(--el-color-danger-light-5);
+  }
+}
+
+.tpf-avatar {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tpf-avatar-fallback {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(135deg, #25f4ee, #111 48%, #fe2c55);
+}
+
+.tpf-account-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+
+  span {
+    color: var(--el-text-color-secondary);
+    font-size: 11px;
+  }
+
+  strong {
+    overflow: hidden;
+    color: var(--el-text-color-primary);
     font-size: 13px;
-    color: var(--el-text-color-regular);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+}
 
-  .tpf-error {
-    margin: 0;
+.tpf-connected {
+  color: var(--el-color-success);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tpf-blocking-error {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--el-color-danger-light-5);
+  border-radius: 10px;
+  color: var(--el-color-danger);
+  font-size: 12px;
+  line-height: 1.45;
+  background: var(--el-color-danger-light-9);
+}
+
+.tpf-section {
+  padding: 12px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--el-bg-color) 92%, var(--el-fill-color-light) 8%);
+}
+
+.tpf-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--el-text-color-primary);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.tpf-required-note,
+.tpf-section-description {
+  color: var(--el-text-color-secondary);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.tpf-section-description {
+  margin: -5px 0 9px;
+  line-height: 1.45;
+}
+
+.tpf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+
+  & + & {
+    margin-top: 11px;
+  }
+}
+
+.tpf-label {
+  color: var(--el-text-color-regular);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tpf-required {
+  color: var(--el-color-danger);
+}
+
+.tpf-select {
+  width: 100%;
+  min-width: 0;
+}
+
+.tpf-empty-control {
+  padding: 10px 12px;
+  border: 1px dashed var(--el-color-danger-light-5);
+  border-radius: 8px;
+  color: var(--el-color-danger);
+  font-size: 12px;
+  background: var(--el-color-danger-light-9);
+}
+
+.tpf-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+
+.tpf-commercial-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 9px;
+  background: var(--el-fill-color-light);
+}
+
+.tpf-option-copy {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+
+  strong {
+    color: var(--el-text-color-primary);
     font-size: 12px;
-    color: var(--el-color-danger);
+    font-weight: 550;
   }
 
-  .tpf-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 0;
+  small {
+    color: var(--el-text-color-secondary);
+    font-size: 10px;
+  }
+}
+
+.tpf-hint {
+  margin: 5px 0 0;
+  color: var(--el-text-color-secondary);
+  font-size: 10px;
+  line-height: 1.4;
+
+  &.is-warning {
+    color: var(--el-color-warning-dark-2);
   }
 
-  .tpf-label {
+  &.is-info {
+    color: var(--el-color-primary);
+  }
+}
+
+.tpf-policy {
+  display: flex;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  color: var(--el-text-color-regular);
+  background: var(--el-color-info-light-9);
+
+  strong {
+    color: var(--el-text-color-primary);
     font-size: 12px;
-    color: var(--el-text-color-secondary);
   }
 
-  .tpf-required {
-    color: var(--el-color-danger);
+  p {
+    margin: 3px 0 6px;
+    font-size: 10px;
+    line-height: 1.5;
   }
+}
 
-  .tpf-select {
-    width: 100%;
-    min-width: 0;
-  }
+.tpf-policy-icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--el-color-primary);
+}
 
-  .tpf-checks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+.tpf-policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
 
-  .tpf-indent {
-    margin-top: 6px;
-    padding-left: 20px;
-    flex-direction: column;
-    gap: 6px;
-  }
+  a {
+    color: var(--el-color-primary);
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
 
-  .tpf-hint {
-    margin: 0;
-    font-size: 11px;
-    color: var(--el-text-color-secondary);
+    &:hover {
+      text-decoration: underline;
+    }
   }
+}
 
-  .tpf-declaration {
-    margin: 0;
-    font-size: 11px;
-    line-height: 1.6;
-    color: var(--el-text-color-secondary);
-  }
+:deep(.el-textarea__inner),
+:deep(.el-select__wrapper) {
+  border-radius: 9px;
+}
+
+:deep(.el-checkbox) {
+  height: auto;
+  margin-right: 0;
 }
 </style>

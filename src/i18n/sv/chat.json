@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Mänskligt läsbart: Ursprunglig Cron"
+    "description": "Mänskligt läsbart: Original Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Engångs {time}",
@@ -945,8 +945,8 @@
     "description": "Val av modell"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt",
-    "description": "Prompt fält"
+    "message": "Promptord",
+    "description": "Fält för promptord"
   },
   "scheduledTasks.form.promptPlaceholder": {
     "message": "Ange frågan eller kommandot som ska köras schemalagt, stöder {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variabler",
@@ -1125,7 +1125,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Utdata typ - Video"
+    "description": "Typ av utdata - video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",
@@ -1370,9 +1370,57 @@
     "message": "Avbruten",
     "description": "Bekräftelsekort: Meddelande efter att användaren har avbrutit"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Laddar mediavisning...",
+    "description": "Bekräftelsekort före åtgärd: Medialaddningsstatus"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Kan inte spela förhandsvisning här",
+    "description": "Bekräftelsekort före åtgärd: Titel för misslyckad medieuppspelning"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Medielänken kan ha gått ut, eller så stöder den aktuella webbläsaren inte detta format. Vänligen öppna originalfilen för att bekräfta innan publicering.",
+    "description": "Bekräftelsekort före åtgärd: Förklaring till misslyckad medieuppspelning"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Öppna originalfil",
+    "description": "Bekräftelsekort före åtgärd: Öppna medielänk"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Bekräfta före publicering",
+    "description": "TikTok publiceringsbekräftelsekortets statusetikett"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Publicera till",
     "description": "TikTok publiceringsbekräftelse: Kontot etikett"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Ansluten",
+    "description": "TikTok publiceringsbekräftelse: Kontoinformation om anslutningsstatus"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Kontoinformation är inte tillgänglig",
+    "description": "TikTok publiceringsbekräftelse: Platshållartext vid saknad kontonamn"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Publiceringsinställningar är inte klara",
+    "description": "TikTok publiceringsbekräftelse: Titel för saknad skaparinformation"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Det gick inte att läsa den synlighet som kontot stöder. Vänligen avbryt och låt assistenten hämta TikTok publiceringsinställningar på nytt.",
+    "description": "TikTok publiceringsbekräftelse: Förklaring till saknad skaparinformation"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Videons längd uppfyller inte kontots begränsning",
+    "description": "TikTok publiceringsbekräftelse: Titel för videor som är för långa"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Publicera innehåll",
+    "description": "TikTok publiceringsbekräftelse: Titel för innehållsinställningar"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Obligatoriskt fält",
+    "description": "TikTok publiceringsbekräftelse: Förklaring till obligatoriska fält"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Text",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Vänligen välj…",
     "description": "TikTok publiceringsbekräftelse: Platshållare för synlighetsinställningar, enligt TikToks krav får det inte finnas något standardvärde"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Ingen tillgänglig synlighet har erhållits, publicering kan för närvarande inte göras",
+    "description": "TikTok publiceringsbekräftelse: Ingen synlighet tillgänglig"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Alla",
@@ -1410,6 +1462,14 @@
     "message": "Tillåt interaktioner",
     "description": "TikTok publiceringsbekräftelse: Gruppetikett för interaktionsinställningar"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Endast de interaktionssätt som kontot för närvarande tillåter kan aktiveras; som standard är alla avstängda.",
+    "description": "TikTok publiceringsbekräftelse: Förklaring till interaktionsinställningar"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Detta konto har stängts av: {list}",
+    "description": "TikTok publiceringsbekräftelse: Interaktionsmöjligheter för ett avstängt konto"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Kommentarer",
     "description": "TikTok interaktionsinställning: Tillåt kommentarer"
@@ -1422,17 +1482,33 @@
     "message": "Sammanfogning",
     "description": "TikTok interaktionsinställning: Tillåt stitch"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Innehållsavslöjande",
+    "description": "TikTok publiceringsbekräftelse: Titel för kommersiellt innehåll"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Detta är kommersiellt innehåll",
     "description": "TikTok publiceringsbekräftelse: Avslöjande för kommersiellt innehåll"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Om innehållet främjar ett varumärke, produkt eller tjänst, vänligen avslöja det korrekt.",
+    "description": "TikTok publiceringsbekräftelse: Beskrivning av kommersiell innehållsavslöjande"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "ditt varumärke",
     "description": "TikTok kommersiellt innehåll: marknadsför ditt eget företag"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Marknadsför dig själv eller ditt företag",
+    "description": "TikTok kommersiellt innehåll: Förklaring för att marknadsföra eget företag"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Märkesinnehåll",
     "description": "TikTok kommersiellt innehåll: Betald samarbeten"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Främja en tredje part för betalning, gåvor eller andra fördelar",
+    "description": "TikTok kommersiellt innehåll: Beskrivning av betald samverkan"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Videon kommer att märkas som 'Reklaminnehåll'",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Videon överskrider kontots tidsgräns ({max} sekunder)",
     "description": "TikTok publiceringsbekräftelse: Felmeddelande för för lång video"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Vänligen bekräfta före publicering",
+    "description": "TikTok publiceringsbekräftelse: Policybeskrivningstext"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Genom att klicka på \"Publicera\" bekräftar du att du har rätt att använda innehållet och musiken samt godkänner TikToks villkor för musikbruk.",
+    "description": "TikTok publiceringsbekräftelse: Beskrivning av allmänna innehållspolicy"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Genom att klicka på \"Publicera\" bekräftar du att informationen om avslöjande är korrekt och godkänner TikToks policy för varumärkesinnehåll och villkor för musikbruk.",
+    "description": "TikTok publiceringsbekräftelse: Beskrivning av policy för varumärkesinnehåll"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Se \"Bekräftelse av musikbruk\"",
+    "description": "TikTok publiceringsbekräftelse: Länk till bekräftelse av musikbruk"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Se \"Policy för varumärkesinnehåll\"",
+    "description": "TikTok publiceringsbekräftelse: Länk till policy för varumärkesinnehåll"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Publiceringsinformation är ofullständig, vänligen avbryt och generera bekräftelsekortet igen",
+    "description": "TikTok publiceringsbekräftelse: Orsak till inaktivering av knapp vid saknade detaljer"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Vänligen använd en video som uppfyller kontots tidsbegränsning",
+    "description": "TikTok publiceringsbekräftelse: Anledningen till att knappen är inaktiverad för videor som är för långa"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Vänligen välj vem som kan se denna video",
+    "description": "TikTok publiceringsbekräftelse: Orsak till inaktivering av knapp vid ej vald synlighet"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Vänligen välj typ av kommersiellt innehåll",
+    "description": "TikTok publiceringsbekräftelse: Orsak till inaktivering av knapp vid ej vald typ av avslöjande"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Publicering innebär att du godkänner TikToks 'Musikanvändningsbekräftelse'",

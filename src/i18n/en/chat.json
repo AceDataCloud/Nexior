@@ -1296,9 +1296,57 @@
     "message": "Cancelled",
     "description": "Collapsed banner after the user cancels the action"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Loading media preview…",
+    "description": "Media loading state on the action confirmation card"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Preview cannot play here",
+    "description": "Media playback failure title on the action confirmation card"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "The media link may have expired, or this browser may not support its format. Open the original before publishing.",
+    "description": "Media playback failure explanation on the action confirmation card"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Open original",
+    "description": "Link to open confirmation media"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Review before posting",
+    "description": "TikTok confirmation card status badge"
+  },
   "actionConfirmation.tiktok.postingTo": {
-    "message": "Posting to",
+    "message": "Posting to this account",
     "description": "TikTok publish confirmation: account label"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Connected",
+    "description": "TikTok publish confirmation: account connection status"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Account unavailable",
+    "description": "TikTok publish confirmation: missing account placeholder"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Publishing settings are not ready",
+    "description": "TikTok publish confirmation: missing creator details title"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "The available visibility settings could not be read. Cancel and ask the assistant to reload your TikTok publishing settings.",
+    "description": "TikTok publish confirmation: missing creator details explanation"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "This video exceeds the account limit",
+    "description": "TikTok publish confirmation: video duration error title"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Post details",
+    "description": "TikTok publish confirmation: post settings section title"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Required",
+    "description": "TikTok publish confirmation: required fields note"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Caption",
@@ -1313,8 +1361,12 @@
     "description": "TikTok publish confirmation: privacy dropdown label"
   },
   "actionConfirmation.tiktok.privacyPlaceholder": {
-    "message": "Select…",
+    "message": "Select who can view",
     "description": "TikTok publish confirmation: privacy placeholder; TikTok forbids a default value"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "No visibility options were returned, so this post cannot be published yet",
+    "description": "TikTok publish confirmation: privacy options missing"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Everyone",
@@ -1333,8 +1385,16 @@
     "description": "TikTok privacy level: self only"
   },
   "actionConfirmation.tiktok.interactions": {
-    "message": "Allow interactions",
+    "message": "Interaction permissions",
     "description": "TikTok publish confirmation: interaction toggles group label"
+  },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Only interactions currently available on this account can be enabled. All start off.",
+    "description": "TikTok publish confirmation: interaction settings explanation"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Disabled by this account: {list}",
+    "description": "TikTok publish confirmation: interactions disabled by the account"
   },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Comment",
@@ -1348,17 +1408,33 @@
     "message": "Stitch",
     "description": "TikTok interaction toggle: allow stitch"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Content disclosure",
+    "description": "TikTok publish confirmation: commercial disclosure section title"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "This is commercial content",
     "description": "TikTok publish confirmation: commercial disclosure toggle"
   },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Disclose content that promotes a brand, product, or service.",
+    "description": "TikTok publish confirmation: commercial disclosure explanation"
+  },
   "actionConfirmation.tiktok.yourBrand": {
-    "message": "Your brand",
+    "message": "Promoting your own brand",
     "description": "TikTok commercial content: promoting own business"
+  },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Promotes you or a business you operate",
+    "description": "TikTok commercial content: own brand explanation"
   },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Branded content",
     "description": "TikTok commercial content: paid partnership"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Promotes a third party in exchange for payment, gifts, or another incentive",
+    "description": "TikTok commercial content: paid partnership explanation"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Your video will be labeled as 'Promotional content'",
@@ -1376,12 +1452,40 @@
     "message": "This video exceeds the account limit of {max} seconds",
     "description": "TikTok publish confirmation: video too long error"
   },
-  "actionConfirmation.tiktok.music": {
-    "message": "By posting, you agree to TikTok's Music Usage Confirmation",
-    "description": "TikTok publish confirmation: music usage declaration"
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Before you publish",
+    "description": "TikTok publish confirmation: policy notice title"
   },
-  "actionConfirmation.tiktok.musicBranded": {
-    "message": "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation",
-    "description": "TikTok publish confirmation: declaration when branded content is checked"
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "By clicking Publish, you confirm that you have the rights to the content and music and agree to TikTok's music terms.",
+    "description": "TikTok publish confirmation: standard policy notice"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "By clicking Publish, you confirm that the disclosure is accurate and agree to TikTok's branded content and music terms.",
+    "description": "TikTok publish confirmation: branded policy notice"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Read Music Usage Confirmation",
+    "description": "TikTok publish confirmation: music usage link"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Read Branded Content Policy",
+    "description": "TikTok publish confirmation: branded content policy link"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Publishing details are incomplete — cancel and regenerate this confirmation",
+    "description": "TikTok publish confirmation: disabled button reason for missing details"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Choose a video within this account's duration limit",
+    "description": "TikTok publish confirmation: disabled button reason for long video"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Choose who can view this video",
+    "description": "TikTok publish confirmation: disabled button reason for missing privacy"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Choose a commercial content type",
+    "description": "TikTok publish confirmation: disabled button reason for missing disclosure type"
   }
 }

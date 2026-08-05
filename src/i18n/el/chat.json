@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Ανθρώπινα αναγνώσιμο: Αρχικό Cron"
+    "description": "Ανθρώπινα αναγνώσιμο: Ακατέργαστο Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Μία φορά {time}",
@@ -1370,9 +1370,57 @@
     "message": "Έχει ακυρωθεί",
     "description": "Κάρτα επιβεβαίωσης πριν από την εκτέλεση: Υπόδειξη μετά την ακύρωση από τον χρήστη"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Φορτώνει την προεπισκόπηση πολυμέσων…",
+    "description": "Επιβεβαίωση πριν από την εκτέλεση: κατάσταση φόρτωσης πολυμέσων"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Δεν είναι δυνατή η αναπαραγωγή προεπισκόπησης εδώ",
+    "description": "Επιβεβαίωση πριν από την εκτέλεση: τίτλος αποτυχίας αναπαραγωγής πολυμέσων"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Ο σύνδεσμος πολυμέσων μπορεί να έχει λήξει ή ο τρέχων περιηγητής δεν υποστηρίζει αυτή τη μορφή. Παρακαλώ ανοίξτε το αρχικό αρχείο πριν από την δημοσίευση.",
+    "description": "Επιβεβαίωση πριν από την εκτέλεση: περιγραφή αποτυχίας αναπαραγωγής πολυμέσων"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Άνοιγμα αρχικού αρχείου",
+    "description": "Επιβεβαίωση πριν από την εκτέλεση: άνοιγμα συνδέσμου πολυμέσων"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Επιβεβαίωση πριν από την δημοσίευση",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: ετικέτα κατάστασης κάρτας"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Δημοσίευση σε",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Ετικέτα λογαριασμού"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Συνδεδεμένο",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: κατάσταση σύνδεσης λογαριασμού"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Πληροφορίες λογαριασμού μη διαθέσιμες",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: κείμενο κράτησης θέσης όταν λείπει το ψευδώνυμο λογαριασμού"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Οι ρυθμίσεις δημοσίευσης δεν είναι έτοιμες",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: τίτλος έλλειψης πληροφοριών δημιουργού"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Δεν ήταν δυνατή η ανάγνωση της ορατότητας που υποστηρίζει αυτός ο λογαριασμός. Παρακαλώ ακυρώστε και αφήστε τον βοηθό να ανακτήσει ξανά τις ρυθμίσεις δημοσίευσης TikTok.",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή έλλειψης πληροφοριών δημιουργού"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Η διάρκεια του βίντεο δεν πληροί τους περιορισμούς του λογαριασμού",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: Τίτλος υπερβολικής διάρκειας βίντεο"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Περιεχόμενο δημοσίευσης",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: τίτλος ομάδας ρυθμίσεων περιεχομένου"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Υποχρεωτικό",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή υποχρεωτικών πεδίων"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Κείμενο",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Επιλέξτε…",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Θέση κράτησης για την ορατότητα, σύμφωνα με τις απαιτήσεις του TikTok δεν μπορεί να έχει προεπιλεγμένη τιμή"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Δεν ελήφθη διαθέσιμη ορατότητα, δεν μπορεί να δημοσιευθεί προς το παρόν",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: ορατότητα κενή"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Όλοι",
@@ -1410,6 +1462,14 @@
     "message": "Επιτρέπεται η αλληλεπίδραση",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Ετικέτα ομάδας διακόπτη αλληλεπίδρασης"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Μπορείτε να ενεργοποιήσετε μόνο τους τρέχοντες επιτρεπόμενους τρόπους αλληλεπίδρασης αυτού του λογαριασμού; προεπιλογή όλα κλειστά.",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή διακόπτη αλληλεπίδρασης"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Αυτός ο λογαριασμός έχει απενεργοποιηθεί: {list}",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: αλληλεπιδραστικές δυνατότητες απενεργοποιημένες"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Σχόλια",
     "description": "Διακόπτης αλληλεπίδρασης TikTok: Επιτρέπεται η σχόλια"
@@ -1422,17 +1482,33 @@
     "message": "Ράψιμο",
     "description": "Διακόπτης αλληλεπίδρασης TikTok: Επιτρέπεται το ράψιμο"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Αποκάλυψη περιεχομένου",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: τίτλος ομάδας εμπορικού περιεχομένου"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Αυτό είναι εμπορικό περιεχόμενο",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Διακόπτης αποκάλυψης εμπορικού περιεχομένου"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Εάν το περιεχόμενο προωθεί μια μάρκα, προϊόν ή υπηρεσία, παρακαλώ αποκαλύψτε την πραγματική κατάσταση.",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή αποκάλυψης εμπορικού περιεχομένου"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Η μάρκα σας",
     "description": "Περιεχόμενο TikTok για επιχειρήσεις: Προώθηση της δικής σας επιχείρησης"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Προωθήστε τον εαυτό σας ή την επιχείρησή σας",
+    "description": "Εμπορικό περιεχόμενο TikTok: Περιγραφή προώθησης της δικής σας επιχείρησης"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Περιεχόμενο μάρκας",
     "description": "Εμπορικό περιεχόμενο TikTok: Πληρωμένη συνεργασία"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Προώθηση τρίτου μέρους λόγω πληρωμής, δώρων ή άλλων ωφελημάτων",
+    "description": "Εμπορικό περιεχόμενο TikTok: περιγραφή πληρωμένης συνεργασίας"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Το βίντεο θα επισημανθεί ως «προωθητικό περιεχόμενο»",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Το βίντεο υπερβαίνει το όριο διάρκειας αυτού του λογαριασμού ({max} δευτερόλεπτα)",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Σφάλμα υπερβολικής διάρκειας βίντεο"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Παρακαλώ επιβεβαιώστε πριν από την δημοσίευση",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: τίτλος πολιτικής"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Κάνοντας κλικ στο «Δημοσίευση» επιβεβαιώνετε ότι έχετε τα δικαιώματα χρήσης του περιεχομένου και της μουσικής και συμφωνείτε με τους όρους χρήσης μουσικής του TikTok.",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή πολιτικής κανονικού περιεχομένου"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Κάνοντας κλικ στο «Δημοσίευση» επιβεβαιώνετε ότι οι πληροφορίες αποκάλυψης είναι ακριβείς και συμφωνείτε με την πολιτική εμπορικού περιεχομένου και τους όρους χρήσης μουσικής του TikTok.",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: περιγραφή πολιτικής εμπορικού περιεχομένου"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Δείτε την «Επιβεβαίωση Χρήσης Μουσικής»",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: σύνδεσμος επιβεβαίωσης χρήσης μουσικής"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Δείτε την «Πολιτική Εμπορικού Περιεχομένου»",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: σύνδεσμος πολιτικής εμπορικού περιεχομένου"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Οι πληροφορίες δημοσίευσης είναι ελλιπείς, παρακαλώ ακυρώστε και ξαναδημιουργήστε την κάρτα επιβεβαίωσης",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: λόγος απενεργοποίησης κουμπιού λόγω έλλειψης λεπτομερειών"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Παρακαλώ χρησιμοποιήστε ένα βίντεο που να πληροί τους περιορισμούς διάρκειας αυτού του λογαριασμού",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: Λόγος απενεργοποίησης κουμπιού λόγω υπερβολικής διάρκειας βίντεο"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Παρακαλώ επιλέξτε ποιος μπορεί να δει αυτό το βίντεο",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: λόγος απενεργοποίησης κουμπιού λόγω μη επιλογής ορατότητας"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Παρακαλώ επιλέξτε τύπο εμπορικής αποκάλυψης",
+    "description": "Επιβεβαίωση δημοσίευσης TikTok: λόγος απενεργοποίησης κουμπιού λόγω μη επιλογής τύπου αποκάλυψης"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Η δημοσίευση σημαίνει ότι συμφωνείτε με την «Επιβεβαίωση Χρήσης Μουσικής» του TikTok",

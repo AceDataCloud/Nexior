@@ -321,12 +321,14 @@ export interface IActionConfirmationResult {
  *  guideline violation, not just a bug. */
 export interface ITikTokPublishDetail {
   creator_nickname: string;
+  creator_avatar_url?: string;
   /** Exact options to offer. Never render a value outside this list. */
   privacy_level_options: string[];
   comment_disabled: boolean;
   duet_disabled: boolean;
   stitch_disabled: boolean;
   max_video_post_duration_sec: number;
+  suggested_title?: string;
   /** Photo posts have no duet/stitch — show only "allow comment". */
   is_photo_post?: boolean;
 }

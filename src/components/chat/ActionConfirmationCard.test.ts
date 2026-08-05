@@ -11,6 +11,7 @@ const global = {
   },
   stubs: {
     FontAwesomeIcon: { template: '<i />' },
+    ExternalLinkIcon: { template: '<i />' },
     'el-button': {
       props: ['type', 'loading', 'disabled', 'text'],
       emits: ['click'],
@@ -114,5 +115,33 @@ describe('ActionConfirmationCard', () => {
       preview: { type: 'video', url: 'https://x/v.mp4', duration_sec: 95 }
     });
     expect(wrapper.text()).toContain('1:35');
+  });
+
+  it('uses an inline video player and replaces it with a safe fallback on error', async () => {
+    const wrapper = mountCard({
+      ...BASE,
+      preview: { type: 'video', url: 'https://cdn.example.com/video.mp4', duration_sec: 10 }
+    });
+    const video = wrapper.find('video');
+    expect(video.attributes('playsinline')).toBeDefined();
+    await video.trigger('error');
+    expect(wrapper.find('video').exists()).toBe(false);
+    const link = wrapper.find('.preview-fallback a');
+    expect(link.attributes('href')).toBe('https://cdn.example.com/video.mp4');
+    expect(link.attributes('target')).toBe('_blank');
+    expect(link.attributes('rel')).toBe('noopener noreferrer');
+  });
+
+  it('renders malformed TikTok history as a blocked TikTok form instead of a generic blank card', () => {
+    const wrapper = mountCard({
+      action_confirmation_id: 'actconf_tiktok',
+      kind: 'tiktok.publish',
+      title: '发布到 TikTok',
+      preview: { type: 'video', url: 'https://cdn.example.com/video.mp4' },
+      detail: {}
+    });
+    expect(wrapper.findComponent({ name: 'TikTokPublishForm' }).exists()).toBe(true);
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.detailsUnavailable');
+    expect((wrapper.vm as any).bodyValid).toBe(false);
   });
 });

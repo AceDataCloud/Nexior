@@ -1370,9 +1370,57 @@
     "message": "취소됨",
     "description": "실행 전 확인 카드: 사용자가 취소한 후의 접기 알림"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "미디어 미리보기를 로딩 중입니다…",
+    "description": "실행 전 확인 카드: 미디어 로딩 상태"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "여기서 미리보기를 재생할 수 없습니다",
+    "description": "실행 전 확인 카드: 미디어 재생 실패 제목"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "미디어 링크가 만료되었거나 현재 브라우저가 해당 형식을 지원하지 않을 수 있습니다. 게시 전에 원본 파일을 열어 확인하세요.",
+    "description": "실행 전 확인 카드: 미디어 재생 실패 설명"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "원본 파일 열기",
+    "description": "실행 전 확인 카드: 미디어 링크 열기"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "게시 전 확인",
+    "description": "TikTok 게시 확인 카드 상태 태그"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "게시 대상",
     "description": "TikTok 게시 확인: 계정 레이블"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "연결됨",
+    "description": "TikTok 게시 확인: 계정 연결 상태"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "계정 정보가 사용할 수 없습니다",
+    "description": "TikTok 게시 확인: 계정 닉네임이 누락되었을 때의 자리 표시자 문구"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "게시 설정이 준비되지 않았습니다",
+    "description": "TikTok 게시 확인: 크리에이터 정보 누락 제목"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "해당 계정이 지원하는 가시 범위를 읽을 수 없습니다. 취소하고 도우미에게 TikTok 게시 설정을 다시 가져오도록 하세요.",
+    "description": "TikTok 게시 확인: 크리에이터 정보 누락 설명"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "비디오 길이가 계정 제한에 맞지 않습니다.",
+    "description": "TikTok 게시 확인: 비디오가 너무 긴 제목"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "게시 내용",
+    "description": "TikTok 게시 확인: 내용 설정 그룹 제목"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* 필수",
+    "description": "TikTok 게시 확인: 필수 설명"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "캡션",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "선택하세요…",
     "description": "TikTok 게시 확인: 가시 범위 자리 표시자, TikTok 요구 사항에 따라 기본값이 없어야 함"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "사용 가능한 가시 범위를 가져오지 못했습니다. 현재 게시할 수 없습니다",
+    "description": "TikTok 게시 확인: 가시 범위 없음"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "모두",
@@ -1410,6 +1462,14 @@
     "message": "상호작용 허용",
     "description": "TikTok 게시 확인: 상호작용 스위치 그룹 레이블"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "현재 계정에서 허용된 상호작용 방식만 활성화할 수 있습니다; 기본적으로 모두 비활성화되어 있습니다.",
+    "description": "TikTok 게시 확인: 상호작용 스위치 설명"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "이 계정은 비활성화되었습니다: {list}",
+    "description": "TikTok 게시 확인: 계정 비활성화된 상호작용 기능"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "댓글 허용",
     "description": "TikTok 상호작용 스위치: 댓글 허용"
@@ -1422,17 +1482,33 @@
     "message": "스티치 허용",
     "description": "TikTok 상호작용 스위치: 스티치 허용"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "내용 공개",
+    "description": "TikTok 게시 확인: 상업 콘텐츠 그룹 제목"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "이것은 상업적 콘텐츠입니다.",
     "description": "TikTok 게시 확인: 상업적 콘텐츠 공개 스위치"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "내용이 브랜드, 제품 또는 서비스를 홍보하는 경우 실제 상황을 공개하세요.",
+    "description": "TikTok 게시 확인: 상업 콘텐츠 공개 설명"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "당신의 브랜드",
     "description": "TikTok 비즈니스 콘텐츠: 자사 비즈니스를 홍보"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "본인 또는 운영하는 비즈니스를 홍보하세요.",
+    "description": "TikTok 상업 콘텐츠: 자사 비즈니스 홍보 설명"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "브랜드 콘텐츠",
     "description": "TikTok 상업적 콘텐츠: 유료 협력"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "지불, 선물 또는 기타 이익을 위해 제3자를 홍보합니다",
+    "description": "TikTok 상업 콘텐츠: 유료 협력 설명"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "비디오는 '프로모션 콘텐츠'로 표시됩니다.",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "비디오가 해당 계정의 길이 제한({max}초)을 초과했습니다.",
     "description": "TikTok 게시 확인: 비디오 길이 초과 오류"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "게시 전에 확인하세요",
+    "description": "TikTok 게시 확인: 정책 설명 제목"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "‘게시’ 버튼을 클릭하면 콘텐츠와 음악 사용 권한이 있음을 확인하고 TikTok의 음악 사용 약관에 동의하는 것입니다.",
+    "description": "TikTok 게시 확인: 일반 콘텐츠 정책 설명"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "‘게시’ 버튼을 클릭하면 공개 정보가 정확함을 확인하고 TikTok의 브랜드 콘텐츠 정책 및 음악 사용 약관에 동의하는 것입니다.",
+    "description": "TikTok 게시 확인: 브랜드 콘텐츠 정책 설명"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "《음악 사용 확인》 보기",
+    "description": "TikTok 게시 확인: 음악 사용 확인 링크"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "《브랜드 콘텐츠 정책》 보기",
+    "description": "TikTok 게시 확인: 브랜드 콘텐츠 정책 링크"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "게시 정보가 불완전합니다. 취소 후 확인 카드를 다시 생성하세요.",
+    "description": "TikTok 게시 확인: 세부 정보 누락 시 버튼 비활성화 이유"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "해당 계정의 시간 제한에 맞는 비디오로 변경하세요.",
+    "description": "TikTok 게시 확인: 비디오가 너무 길 때 버튼 비활성화 이유"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "누가 이 비디오를 볼 수 있는지 선택하세요",
+    "description": "TikTok 게시 확인: 가시 범위가 선택되지 않았을 때 버튼 비활성화 이유"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "상업 콘텐츠 유형을 선택하세요",
+    "description": "TikTok 게시 확인: 상업 공개 유형이 선택되지 않았을 때 버튼 비활성화 이유"
   },
   "actionConfirmation.tiktok.music": {
     "message": "게시함으로써 TikTok의 '음악 사용 확인'에 동의합니다.",

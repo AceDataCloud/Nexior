@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Людською мовою: оригінальний Cron"
+    "description": "Людське читання: оригінальний Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Одноразово {time}",
@@ -1370,9 +1370,57 @@
     "message": "Скасовано",
     "description": "Картка підтвердження перед виконанням: повідомлення після скасування користувачем"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Завантаження медіа-прев'ю...",
+    "description": "Підтвердження перед виконанням: статус завантаження медіа"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Неможливо відтворити прев'ю тут",
+    "description": "Підтвердження перед виконанням: заголовок помилки відтворення медіа"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Посилання на медіа могло втратити актуальність, або поточний браузер не підтримує цей формат. Будь ласка, відкрийте оригінальний файл для підтвердження перед публікацією.",
+    "description": "Підтвердження перед виконанням: пояснення помилки відтворення медіа"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Відкрити оригінальний файл",
+    "description": "Підтвердження перед виконанням: відкриття медіа-посилання"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Підтвердження перед публікацією",
+    "description": "Статус картки підтвердження публікації TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Публікація до",
     "description": "Підтвердження публікації TikTok: мітка облікового запису"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Підключено",
+    "description": "Підтвердження публікації TikTok: статус підключення аккаунта"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Інформація про аккаунт недоступна",
+    "description": "Підтвердження публікації TikTok: заповнювальний текст при відсутності ніку аккаунта"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Налаштування публікації ще не готові",
+    "description": "Підтвердження публікації TikTok: заголовок відсутньої інформації про творця"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Не вдалося отримати видимість, підтримувану цим аккаунтом. Будь ласка, скасуйте та дайте помічнику повторно отримати налаштування публікації TikTok.",
+    "description": "Підтвердження публікації TikTok: пояснення відсутньої інформації про творця"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Тривалість відео не відповідає обмеженням акаунта",
+    "description": "TikTok підтвердження дії: заголовок для надто довгого відео"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Контент публікації",
+    "description": "Підтвердження публікації TikTok: заголовок налаштувань контенту"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Обов'язково",
+    "description": "Підтвердження публікації TikTok: пояснення обов'язкових полів"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Опис",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Будь ласка, виберіть…",
     "description": "Підтвердження публікації TikTok: заповнювач для видимості, не може мати значення за замовчуванням згідно з вимогами TikTok"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Не вдалося отримати доступні параметри видимості, наразі публікацію не можна здійснити",
+    "description": "Підтвердження публікації TikTok: відсутність видимості"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Усі",
@@ -1410,6 +1462,14 @@
     "message": "Дозволити взаємодію",
     "description": "Підтвердження публікації TikTok: мітка групи перемикачів взаємодії"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Можна активувати лише ті способи взаємодії, які наразі дозволені для цього аккаунта; за замовчуванням всі вимкнені.",
+    "description": "Підтвердження публікації TikTok: пояснення перемикача взаємодії"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Цей аккаунт вимкнено: {list}",
+    "description": "Підтвердження публікації TikTok: взаємодії, які заборонені для вимкненого аккаунта"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Коментарі",
     "description": "Перемикач взаємодії TikTok: дозволити коментарі"
@@ -1422,17 +1482,33 @@
     "message": "Склеювання",
     "description": "Перемикач взаємодії TikTok: дозволити склеювання"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Розкриття контенту",
+    "description": "Підтвердження публікації TikTok: заголовок групи комерційного контенту"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Це комерційний контент",
     "description": "Підтвердження публікації TikTok: перемикач розкриття комерційного контенту"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Якщо контент просуває бренд, продукт або послугу, будь ласка, розкрийте інформацію відповідно до реальності.",
+    "description": "Підтвердження публікації TikTok: пояснення розкриття комерційного контенту"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Ваш бренд",
     "description": "TikTok комерційний контент: просування власного бізнесу"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Рекламуйте себе або свій бізнес",
+    "description": "TikTok комерційний контент: пояснення щодо реклами власного бізнесу"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Брендований контент",
     "description": "Комерційний контент TikTok: платне співробітництво"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Просування третьої сторони за рахунок оплати, подарунків або інших вигод",
+    "description": "TikTok комерційний контент: пояснення платного співробітництва"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Відео буде позначено як «рекламний контент»",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Відео перевищує максимальний ліміт тривалості для цього облікового запису ({max} секунд)",
     "description": "Підтвердження публікації TikTok: помилка перевищення тривалості відео"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Будь ласка, підтверджте перед публікацією",
+    "description": "Підтвердження публікації TikTok: заголовок пояснення політики"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Натискаючи «Опублікувати», ви підтверджуєте, що маєте право на використання контенту та музики, і погоджуєтеся з умовами використання музики TikTok.",
+    "description": "Підтвердження публікації TikTok: пояснення загальної політики контенту"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Натискаючи «Опублікувати», ви підтверджуєте, що інформація про розкриття є точною, і погоджуєтеся з політикою брендового контенту та умовами використання музики TikTok.",
+    "description": "Підтвердження публікації TikTok: пояснення політики брендових контентів"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Переглянути «Підтвердження використання музики»",
+    "description": "Підтвердження публікації TikTok: посилання на підтвердження використання музики"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Переглянути «Політику брендового контенту»",
+    "description": "Підтвердження публікації TikTok: посилання на політику брендових контентів"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Інформація про публікацію неповна, будь ласка, скасуйте та згенеруйте підтверджувальну картку знову",
+    "description": "Підтвердження публікації TikTok: причина відключення кнопки при відсутності деталей"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Будь ласка, використайте відео, що відповідає обмеженням по тривалості для цього акаунта",
+    "description": "TikTok підтвердження дії: причина, чому кнопка вимкнена через надто довге відео"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Будь ласка, виберіть, хто може бачити це відео",
+    "description": "Підтвердження публікації TikTok: причина відключення кнопки при відсутності вибору видимості"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Будь ласка, виберіть тип комерційного контенту",
+    "description": "Підтвердження публікації TikTok: причина відключення кнопки при відсутності вибору типу розкриття"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Публікація означає, що ви погоджуєтеся з «Підтвердженням використання музики» TikTok",

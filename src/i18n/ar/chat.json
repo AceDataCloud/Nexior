@@ -1370,9 +1370,57 @@
     "message": "تم الإلغاء",
     "description": "بطاقة تأكيد التنفيذ: رسالة الانهيار بعد إلغاء المستخدم"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "جارٍ تحميل معاينة الوسائط...",
+    "description": "تأكيد قبل التنفيذ: حالة تحميل الوسائط"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "لا يمكن تشغيل المعاينة هنا",
+    "description": "تأكيد قبل التنفيذ: عنوان فشل تشغيل الوسائط"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "قد تكون روابط الوسائط قد انتهت صلاحيتها، أو أن المتصفح الحالي لا يدعم هذا التنسيق. يرجى فتح الملف الأصلي للتأكيد قبل النشر.",
+    "description": "تأكيد قبل التنفيذ: وصف فشل تشغيل الوسائط"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "فتح الملف الأصلي",
+    "description": "تأكيد قبل التنفيذ: فتح رابط الوسائط"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "تأكيد قبل النشر",
+    "description": "تأكيد نشر TikTok: علامة حالة بطاقة التأكيد"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "نشر إلى",
     "description": "تأكيد نشر TikTok: علامة الحساب"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "متصل",
+    "description": "تأكيد نشر TikTok: حالة اتصال الحساب"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "معلومات الحساب غير متاحة",
+    "description": "تأكيد نشر TikTok: نص موضع عند نقص اسم الحساب"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "إعدادات النشر غير جاهزة بعد",
+    "description": "تأكيد نشر TikTok: عنوان نقص معلومات المنشئ"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "فشل في قراءة نطاق الرؤية المدعوم من هذا الحساب. يرجى إلغاء الطلب والسماح للمساعد بإعادة الحصول على إعدادات نشر TikTok.",
+    "description": "تأكيد نشر TikTok: وصف نقص معلومات المنشئ"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "مدة الفيديو لا تتوافق مع حد الحساب",
+    "description": "تأكيد نشر TikTok: عنوان الفيديو الطويل"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "محتوى النشر",
+    "description": "تأكيد نشر TikTok: عنوان مجموعة إعدادات المحتوى"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* مطلوب",
+    "description": "تأكيد نشر TikTok: وصف الحقول المطلوبة"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "نص",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "يرجى الاختيار…",
     "description": "تأكيد نشر TikTok: نص العنصر النائب للنطاق المرئي، لا يمكن أن يكون له قيمة افتراضية حسب متطلبات TikTok"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "لم يتم الحصول على نطاق رؤية متاح، لا يمكن النشر حالياً",
+    "description": "تأكيد نشر TikTok: نطاق الرؤية فارغ"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "الجميع",
@@ -1410,6 +1462,14 @@
     "message": "السماح بالتفاعلات",
     "description": "تأكيد نشر TikTok: علامة مجموعة زر التفاعل"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "يمكن فقط تفعيل طرق التفاعل المسموح بها حالياً لهذا الحساب؛ بشكل افتراضي جميعها مغلقة.",
+    "description": "تأكيد نشر TikTok: وصف مفتاح التفاعل"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "تم تعطيل هذا الحساب: {list}",
+    "description": "تأكيد نشر TikTok: قدرة التفاعل المعطلة للحساب"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "تعليق",
     "description": "زر التفاعل في TikTok: السماح بالتعليقات"
@@ -1422,17 +1482,33 @@
     "message": "تجميع",
     "description": "زر التفاعل في TikTok: السماح بالتجميع"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "الإفصاح عن المحتوى",
+    "description": "تأكيد نشر TikTok: عنوان مجموعة المحتوى التجاري"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "هذا محتوى تجاري",
     "description": "تأكيد نشر TikTok: زر الكشف عن المحتوى التجاري"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "إذا كان المحتوى يروج لعلامة تجارية أو منتج أو خدمة، يرجى الإفصاح حسب الواقع.",
+    "description": "تأكيد نشر TikTok: وصف الإفصاح عن المحتوى التجاري"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "علامتك التجارية",
     "description": "محتوى تجاري على تيك توك: ترويج للأعمال الخاصة بك"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "قم بالترويج لنفسك أو للعمل الذي تديره",
+    "description": "محتوى تجاري على TikTok: توضيح لترويج الأعمال الخاصة"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "محتوى العلامة التجارية",
     "description": "محتوى تجاري في TikTok: تعاون مدفوع"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "الترويج لطرف ثالث مقابل الدفع أو الهدايا أو فوائد أخرى",
+    "description": "محتوى تجاري TikTok: شرح التعاون المدفوع"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "سيتم وضع علامة على الفيديو كـ \"محتوى ترويجي\"",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "الفيديو يتجاوز الحد الأقصى للمدة لهذا الحساب ({max} ثانية)",
     "description": "تأكيد نشر TikTok: خطأ طول الفيديو الزائد"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "يرجى التأكيد قبل النشر",
+    "description": "تأكيد نشر TikTok: عنوان شرح السياسة"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "بالنقر على \"نشر\"، فإنك تؤكد أنك تمتلك حقوق استخدام المحتوى والموسيقى، وتوافق على شروط استخدام الموسيقى الخاصة بـ TikTok.",
+    "description": "تأكيد نشر TikTok: شرح سياسة المحتوى العادي"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "بالنقر على \"نشر\"، فإنك تؤكد أن المعلومات التي تم الإفصاح عنها دقيقة، وتوافق على سياسة المحتوى العلامة التجارية وشروط استخدام الموسيقى الخاصة بـ TikTok.",
+    "description": "تأكيد نشر TikTok: شرح سياسة المحتوى العلامة التجارية"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "عرض \"تأكيد استخدام الموسيقى\"",
+    "description": "تأكيد نشر TikTok: رابط تأكيد استخدام الموسيقى"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "عرض \"سياسة المحتوى العلامة التجارية\"",
+    "description": "تأكيد نشر TikTok: رابط سياسة المحتوى العلامة التجارية"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "معلومات النشر غير مكتملة، يرجى إلغاء الطلب وإعادة إنشاء بطاقة التأكيد",
+    "description": "تأكيد نشر TikTok: سبب تعطيل الزر عند نقص التفاصيل"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "يرجى استخدام فيديو يتوافق مع حد الطول لهذا الحساب",
+    "description": "تأكيد نشر TikTok: سبب تعطيل الزر بسبب طول الفيديو الزائد"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "يرجى اختيار من يمكنه رؤية هذا الفيديو",
+    "description": "تأكيد نشر TikTok: سبب تعطيل الزر عند عدم اختيار نطاق الرؤية"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "يرجى اختيار نوع المحتوى التجاري",
+    "description": "تأكيد نشر TikTok: سبب تعطيل الزر عند عدم اختيار نوع الإفصاح التجاري"
   },
   "actionConfirmation.tiktok.music": {
     "message": "نشر يعني أنك توافق على \"تأكيد استخدام الموسيقى\" من TikTok",

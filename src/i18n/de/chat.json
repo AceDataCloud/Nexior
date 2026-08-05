@@ -1370,9 +1370,57 @@
     "message": "Abgebrochen",
     "description": "Hinweis nach Abbruch der Aktion durch den Benutzer im Bestätigungsfeld"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Lade Medienvorschau…",
+    "description": "Bestätigungs-Karte vor der Ausführung: Status des Medienladens"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Vorschau kann hier nicht abgespielt werden",
+    "description": "Bestätigungs-Karte vor der Ausführung: Titel für fehlgeschlagenes Medienabspielen"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Der Medienlink könnte abgelaufen sein oder der aktuelle Browser unterstützt dieses Format nicht. Bitte öffnen Sie die Originaldatei zur Bestätigung vor der Veröffentlichung.",
+    "description": "Bestätigungs-Karte vor der Ausführung: Erklärung für fehlgeschlagenes Medienabspielen"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Originaldatei öffnen",
+    "description": "Bestätigungs-Karte vor der Ausführung: Medienlink öffnen"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Bestätigung vor der Veröffentlichung",
+    "description": "TikTok Veröffentlichungsbestätigung: Statuslabel der Karte"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Veröffentlichen an",
     "description": "Bestätigungsfeld für TikTok: Kontolabel"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Verbunden",
+    "description": "TikTok Veröffentlichungsbestätigung: Status der Kontoverbindung"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Kontoinformationen nicht verfügbar",
+    "description": "TikTok Veröffentlichungsbestätigung: Platzhaltertext bei fehlendem Kontonamen"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Veröffentlichungseinstellungen sind noch nicht bereit",
+    "description": "TikTok Veröffentlichungsbestätigung: Titel für fehlende Creator-Informationen"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Die unterstützten Sichtbarkeitsbereiche des Kontos konnten nicht abgerufen werden. Bitte brechen Sie ab und lassen Sie den Assistenten die TikTok Veröffentlichungseinstellungen erneut abrufen.",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung für fehlende Creator-Informationen"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Videolänge entspricht nicht den Kontobeschränkungen",
+    "description": "TikTok Veröffentlichungsbestätigung: Titel für zu langes Video"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Veröffentlichungsinhalt",
+    "description": "TikTok Veröffentlichungsbestätigung: Titel für die Inhaltseinstellungen"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Pflichtfeld",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung für Pflichtfelder"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Bildunterschrift",
@@ -1389,6 +1437,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Bitte auswählen…",
     "description": "Bestätigungsfeld für TikTok: Platzhalter für Sichtbarkeit, darf laut TikTok keine Standardwerte haben"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Es konnten keine verfügbaren Sichtbarkeitsbereiche abgerufen werden, Veröffentlichung ist derzeit nicht möglich",
+    "description": "TikTok Veröffentlichungsbestätigung: Sichtbarkeitsbereich ist leer"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Alle",
@@ -1410,6 +1462,14 @@
     "message": "Interaktionen erlauben",
     "description": "Bestätigungsfeld für TikTok: Gruppierungslabel für Interaktionsschalter"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Nur die derzeit erlaubten Interaktionsmöglichkeiten dieses Kontos können aktiviert werden; standardmäßig sind alle deaktiviert.",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung zu den Interaktionsschaltern"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Dieses Konto ist deaktiviert: {list}",
+    "description": "TikTok Veröffentlichungsbestätigung: Interaktionsfähigkeiten des deaktivierten Kontos"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Kommentare",
     "description": "TikTok Interaktionsschalter: Kommentare erlauben"
@@ -1422,17 +1482,33 @@
     "message": "Zusammenfügen",
     "description": "TikTok Interaktionsschalter: Stitch erlauben"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Inhalte offenlegen",
+    "description": "TikTok Veröffentlichungsbestätigung: Titel für kommerzielle Inhalte"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Dies ist kommerzieller Inhalt",
     "description": "Bestätigungsfeld für TikTok: Offenlegungsschalter für kommerziellen Inhalt"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Bitte legen Sie offen, wenn Inhalte eine Marke, ein Produkt oder eine Dienstleistung fördern.",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung zur Offenlegung kommerzieller Inhalte"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Ihre Marke",
     "description": "TikTok Geschäftsinhalte: Förderung des eigenen Unternehmens"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Bewerben Sie sich selbst oder Ihr Unternehmen",
+    "description": "TikTok Geschäftsinhalte: Erklärung zur Bewerbung des eigenen Unternehmens"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Markeninhalt",
     "description": "TikTok kommerzieller Inhalt: bezahlte Partnerschaft"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Förderung Dritter aufgrund von Zahlungen, Geschenken oder anderen Vorteilen",
+    "description": "TikTok kommerzielle Inhalte: Beschreibung für bezahlte Kooperation"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Video wird als „Werbeinhalte“ gekennzeichnet",
@@ -1449,6 +1525,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Video überschreitet die maximale Dauer dieses Kontos ({max} Sekunden)",
     "description": "Bestätigungsfeld für TikTok: Fehler bei zu langem Video"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Bitte bestätigen Sie vor der Veröffentlichung",
+    "description": "TikTok Veröffentlichungsbestätigung: Titel der Richtlinienbeschreibung"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Durch Klicken auf „Veröffentlichen“ bestätigen Sie, dass Sie die Nutzungsrechte an den Inhalten und der Musik besitzen und den Nutzungsbedingungen von TikTok zustimmen.",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung zu den allgemeinen Inhaltsrichtlinien"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Durch Klicken auf „Veröffentlichen“ bestätigen Sie, dass die Offenlegungsinformationen korrekt sind und Sie den Richtlinien für Markeninhalte und den Nutzungsbedingungen von TikTok zustimmen.",
+    "description": "TikTok Veröffentlichungsbestätigung: Erklärung zu den Richtlinien für Markeninhalte"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Musiknutzungsbestätigung ansehen",
+    "description": "TikTok Veröffentlichungsbestätigung: Link zur Musiknutzungsbestätigung"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Markeninhalt-Richtlinien ansehen",
+    "description": "TikTok Veröffentlichungsbestätigung: Link zu den Markeninhalt-Richtlinien"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Veröffentlichungsinformationen unvollständig, bitte abbrechen und die Bestätigungskarte neu generieren",
+    "description": "TikTok Veröffentlichungsbestätigung: Grund für die Deaktivierung des Buttons bei fehlenden Details"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Bitte verwenden Sie ein Video, das den Zeitbeschränkungen dieses Kontos entspricht",
+    "description": "TikTok Veröffentlichungsbestätigung: Grund für die Deaktivierung des Buttons bei zu langen Videos"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Bitte wählen Sie, wer dieses Video sehen kann",
+    "description": "TikTok Veröffentlichungsbestätigung: Grund für die Deaktivierung des Buttons bei nicht ausgewähltem Sichtbarkeitsbereich"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Bitte wählen Sie den Typ des kommerziellen Inhalts",
+    "description": "TikTok Veröffentlichungsbestätigung: Grund für die Deaktivierung des Buttons bei nicht ausgewähltem Offenlegungstyp"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Mit der Veröffentlichung stimmen Sie der TikTok „Musiknutzungsbestätigung“ zu",

@@ -814,7 +814,7 @@
   },
   "scheduledTasks.run.reason.error": {
     "message": "Error",
-    "description": "Error al ejecutar"
+    "description": "Se produjo un error durante la ejecución"
   },
   "scheduledTasks.run.reason.unknown": {
     "message": "Error desconocido"
@@ -927,7 +927,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Legible por humanos: Cron original"
+    "description": "Legible para humanos: Cron original"
   },
   "scheduledTasks.humanize.once": {
     "message": "Una vez a las {time}",
@@ -1371,9 +1371,57 @@
     "message": "Cancelado",
     "description": "Tarjeta de confirmación antes de ejecutar: mensaje colapsado después de que el usuario cancela"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Cargando vista previa del medio...",
+    "description": "Confirmación previa a la acción: estado de carga del medio"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "No se puede reproducir la vista previa aquí",
+    "description": "Confirmación previa a la acción: título de fallo en la reproducción del medio"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "El enlace del medio puede haber expirado, o el navegador actual no soporta este formato. Por favor, abre el archivo original para confirmarlo antes de publicar.",
+    "description": "Confirmación previa a la acción: explicación del fallo en la reproducción del medio"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Abrir archivo original",
+    "description": "Confirmación previa a la acción: abrir enlace del medio"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Confirmar antes de publicar",
+    "description": "Etiqueta de estado de tarjeta de confirmación de TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Publicar en",
     "description": "Confirmación de publicación de TikTok: etiqueta de cuenta"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Conectado",
+    "description": "Confirmación de publicación de TikTok: estado de conexión de la cuenta"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Información de la cuenta no disponible",
+    "description": "Confirmación de publicación de TikTok: texto de marcador de posición cuando falta el apodo de la cuenta"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "La configuración de publicación no está lista",
+    "description": "Confirmación de publicación de TikTok: título de falta de información del creador"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "No se pudo leer el alcance visible soportado por esta cuenta. Por favor, cancela y permite que el asistente vuelva a obtener la configuración de publicación de TikTok.",
+    "description": "Confirmación de publicación de TikTok: explicación de falta de información del creador"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "La duración del video no cumple con el límite de la cuenta",
+    "description": "Confirmación de publicación en TikTok: título para video demasiado largo"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Contenido de publicación",
+    "description": "Confirmación de publicación de TikTok: título de grupo de configuración de contenido"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Requerido",
+    "description": "Confirmación de publicación de TikTok: explicación de campos obligatorios"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Texto",
@@ -1390,6 +1438,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Por favor selecciona…",
     "description": "Confirmación de publicación de TikTok: marcador de posición de visibilidad, no puede tener un valor predeterminado según los requisitos de TikTok"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "No se obtuvo un alcance visible disponible, no se puede publicar por el momento",
+    "description": "Confirmación de publicación de TikTok: alcance visible vacío"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Todos",
@@ -1411,6 +1463,14 @@
     "message": "Permitir interacciones",
     "description": "Confirmación de publicación de TikTok: etiqueta de grupo para el interruptor de interacciones"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Solo se pueden activar los métodos de interacción actualmente permitidos por esta cuenta; por defecto, todos están desactivados.",
+    "description": "Confirmación de publicación de TikTok: explicación del interruptor de interacción"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Esta cuenta ha sido desactivada: {list}",
+    "description": "Confirmación de publicación de TikTok: capacidades de interacción deshabilitadas de la cuenta"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Comentarios",
     "description": "Interruptor de interacción de TikTok: permite comentarios"
@@ -1423,17 +1483,33 @@
     "message": "Combinar",
     "description": "Interruptor de interacción de TikTok: permite stitching"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Divulgación de contenido",
+    "description": "Confirmación de publicación de TikTok: título de grupo de contenido comercial"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Este es contenido comercial",
     "description": "Confirmación de publicación de TikTok: interruptor de divulgación de contenido comercial"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Si el contenido promociona una marca, producto o servicio, por favor, divulga según corresponda.",
+    "description": "Confirmación de publicación de TikTok: explicación de divulgación de contenido comercial"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "tu marca",
     "description": "Contenido comercial de TikTok: promociona tu propio negocio"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Promocione su propio negocio o el que usted gestiona",
+    "description": "Contenido comercial de TikTok: explicación sobre la promoción de negocios propios"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Contenido de marca",
     "description": "Contenido comercial de TikTok: colaboración pagada"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Promocionar a terceros por pago, regalos u otros beneficios",
+    "description": "Contenido comercial de TikTok: explicación de colaboraciones pagadas"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "El video será etiquetado como 'contenido promocional'",
@@ -1450,6 +1526,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "El video excede el límite de duración de esta cuenta ({max} segundos)",
     "description": "Confirmación de publicación de TikTok: error de duración excesiva del video"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Por favor, confirma antes de publicar",
+    "description": "Confirmación de publicación de TikTok: título de explicación de políticas"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Al hacer clic en 'Publicar', confirmas que tienes derechos sobre el contenido y la música, y aceptas los términos de uso de música de TikTok.",
+    "description": "Confirmación de publicación de TikTok: explicación de políticas de contenido general"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Al hacer clic en 'Publicar', confirmas que la información de divulgación es precisa y aceptas las políticas de contenido de marca y los términos de uso de música de TikTok.",
+    "description": "Confirmación de publicación de TikTok: explicación de políticas de contenido de marca"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Ver Confirmación de Uso de Música",
+    "description": "Confirmación de publicación de TikTok: enlace a la confirmación de uso de música"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Ver Política de Contenido de Marca",
+    "description": "Confirmación de publicación de TikTok: enlace a la política de contenido de marca"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "La información de publicación está incompleta, por favor cancela y vuelve a generar la tarjeta de confirmación",
+    "description": "Confirmación de publicación de TikTok: razón para deshabilitar el botón cuando faltan detalles"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Por favor, use un video que cumpla con la duración permitida para esta cuenta",
+    "description": "Confirmación de publicación en TikTok: razón por la que el botón está deshabilitado debido a que el video es demasiado largo"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Por favor, selecciona quién puede ver este video",
+    "description": "Confirmación de publicación de TikTok: razón para deshabilitar el botón cuando no se selecciona el alcance visible"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Por favor, selecciona el tipo de contenido comercial",
+    "description": "Confirmación de publicación de TikTok: razón para deshabilitar el botón cuando no se selecciona el tipo de divulgación comercial"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Publicar significa que aceptas el 'Acuerdo de uso de música' de TikTok",

@@ -1364,9 +1364,57 @@
     "message": "已取消",
     "description": "执行前确认卡片：用户取消后的折叠提示"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "正在加载媒体预览…",
+    "description": "执行前确认卡片：媒体加载状态"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "无法在此处播放预览",
+    "description": "执行前确认卡片：媒体播放失败标题"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "媒体链接可能已过期，或当前浏览器不支持该格式。发布前请先打开原文件确认。",
+    "description": "执行前确认卡片：媒体播放失败说明"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "打开原文件",
+    "description": "执行前确认卡片：打开媒体链接"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "发布前确认",
+    "description": "TikTok 发布确认卡片状态标签"
+  },
   "actionConfirmation.tiktok.postingTo": {
-    "message": "发布至",
+    "message": "发布到此账号",
     "description": "TikTok 发布确认：账号标签"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "已连接",
+    "description": "TikTok 发布确认：账号连接状态"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "账号信息不可用",
+    "description": "TikTok 发布确认：缺少账号昵称时的占位文案"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "发布设置尚未准备好",
+    "description": "TikTok 发布确认：创作者信息缺失标题"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "未能读取该账号支持的可见范围。请取消并让助手重新获取 TikTok 发布设置。",
+    "description": "TikTok 发布确认：创作者信息缺失说明"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "视频时长不符合账号限制",
+    "description": "TikTok 发布确认：视频超长标题"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "发布内容",
+    "description": "TikTok 发布确认：内容设置分组标题"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* 必填",
+    "description": "TikTok 发布确认：必填说明"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "文案",
@@ -1381,8 +1429,12 @@
     "description": "TikTok 发布确认：可见范围下拉标签"
   },
   "actionConfirmation.tiktok.privacyPlaceholder": {
-    "message": "请选择…",
+    "message": "请选择可见范围",
     "description": "TikTok 发布确认：可见范围占位符，按 TikTok 要求不能有默认值"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "未获取到可用的可见范围，暂不能发布",
+    "description": "TikTok 发布确认：可见范围为空"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "所有人",
@@ -1401,8 +1453,16 @@
     "description": "TikTok 可见范围：仅自己可见"
   },
   "actionConfirmation.tiktok.interactions": {
-    "message": "允许互动",
+    "message": "互动权限",
     "description": "TikTok 发布确认：互动开关分组标签"
+  },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "仅可开启该账号当前允许的互动方式；默认全部关闭。",
+    "description": "TikTok 发布确认：互动开关说明"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "此账号已关闭：{list}",
+    "description": "TikTok 发布确认：账号禁用的互动能力"
   },
   "actionConfirmation.tiktok.allowComment": {
     "message": "评论",
@@ -1416,17 +1476,33 @@
     "message": "拼接",
     "description": "TikTok 互动开关：允许拼接"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "内容披露",
+    "description": "TikTok 发布确认：商业内容分组标题"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "这是商业内容",
     "description": "TikTok 发布确认：商业内容披露开关"
   },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "如果内容推广品牌、产品或服务，请按实际情况披露。",
+    "description": "TikTok 发布确认：商业内容披露说明"
+  },
   "actionConfirmation.tiktok.yourBrand": {
-    "message": "你的品牌",
+    "message": "推广自己的品牌",
     "description": "TikTok 商业内容：推广自有业务"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "推广您本人或您经营的业务",
+    "description": "TikTok 商业内容：推广自有业务说明"
+  },
   "actionConfirmation.tiktok.brandedContent": {
-    "message": "品牌内容",
+    "message": "品牌合作内容",
     "description": "TikTok 商业内容：付费合作"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "因付款、赠品或其他利益而推广第三方",
+    "description": "TikTok 商业内容：付费合作说明"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "视频将被标记为「推广内容」",
@@ -1444,12 +1520,40 @@
     "message": "视频超过该账号的时长上限（{max} 秒）",
     "description": "TikTok 发布确认：视频超长错误"
   },
-  "actionConfirmation.tiktok.music": {
-    "message": "发布即表示您同意 TikTok 的《音乐使用确认》",
-    "description": "TikTok 发布确认：音乐使用声明"
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "发布前请确认",
+    "description": "TikTok 发布确认：政策说明标题"
   },
-  "actionConfirmation.tiktok.musicBranded": {
-    "message": "发布即表示您同意 TikTok 的《品牌内容政策》和《音乐使用确认》",
-    "description": "TikTok 发布确认：勾选品牌内容后的声明"
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "点击“发布”即表示您确认拥有内容与音乐的使用权，并同意 TikTok 的音乐使用条款。",
+    "description": "TikTok 发布确认：普通内容政策说明"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "点击“发布”即表示您确认披露信息准确，并同意 TikTok 的品牌内容政策与音乐使用条款。",
+    "description": "TikTok 发布确认：品牌内容政策说明"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "查看《音乐使用确认》",
+    "description": "TikTok 发布确认：音乐使用确认链接"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "查看《品牌内容政策》",
+    "description": "TikTok 发布确认：品牌内容政策链接"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "发布信息不完整，请取消后重新生成确认卡",
+    "description": "TikTok 发布确认：详情缺失时的按钮禁用原因"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "请换用符合该账号时长限制的视频",
+    "description": "TikTok 发布确认：视频超长时的按钮禁用原因"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "请选择谁可以看此视频",
+    "description": "TikTok 发布确认：未选可见范围时的按钮禁用原因"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "请选择商业内容类型",
+    "description": "TikTok 发布确认：未选商业披露类型时的按钮禁用原因"
   }
 }
