@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 20:43:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 21:40:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.9
+
+Wed, 05 Aug 2026 21:40:18 GMT
+
+### Patches
+
+- use each initialized Site's title and description as the /home and /intro hero copy, with default marketing text only as a fallback (dev@acedata.cloud)
 
 ## 3.356.8
 
