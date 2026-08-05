@@ -15,7 +15,6 @@
 import logoMark from '@/assets/images/logos/acedata-mark.png';
 import logoWordmarkMask from '@/assets/images/logos/acedata-wordmark-mask.png';
 import { defineComponent } from 'vue';
-import { isOfficial } from '@/utils/is';
 
 export default defineComponent({
   props: {
@@ -32,16 +31,14 @@ export default defineComponent({
     siteTitle() {
       return this.$store.state.site?.title || 'AceData';
     },
-    // Official hosts render the built-in wordmark (mask + currentColor) so it
-    // flips with dark mode; white-label tenants keep their own raster logo.
+    // Site branding is authoritative on every host. The built-in mark is only
+    // a final fallback when the initialized Site has no logo or favicon.
     tenantLogo(): string {
-      if (isOfficial()) return '';
       const site = this.$store.state.site;
-      const fallback = 'https://platform.acedata.cloud/favicon.ico';
       if (this.collapsed) {
-        return site?.favicon || site?.logo || fallback;
+        return site?.favicon || site?.logo || '';
       }
-      return site?.logo || site?.favicon || fallback;
+      return site?.logo || site?.favicon || '';
     },
     wordmarkStyle() {
       return { '--logo-wordmark-mask': `url(${logoWordmarkMask})` };
