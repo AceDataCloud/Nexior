@@ -132,6 +132,32 @@ describe('ActionConfirmationCard', () => {
     expect(link.attributes('rel')).toBe('noopener noreferrer');
   });
 
+  it('uses the TikTok brand icon and localizes fixed publish copy', () => {
+    const wrapper = mountCard({
+      action_confirmation_id: 'actconf_tiktok',
+      kind: 'tiktok.publish',
+      title: '模型生成的标题',
+      summary: '模型生成的摘要',
+      confirm_label: '模型生成的按钮',
+      preview: { type: 'video', url: 'https://cdn.example.com/video.mp4' },
+      detail: {
+        creator_nickname: 'Creator',
+        privacy_level_options: ['SELF_ONLY'],
+        comment_disabled: false,
+        duet_disabled: false,
+        stitch_disabled: false,
+        max_video_post_duration_sec: 600
+      }
+    });
+
+    expect(wrapper.find('.acc-brand-mark i').exists()).toBe(true);
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.publishTitle');
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.publishSummary');
+    expect(wrapper.findAll('button')[1].text()).toBe('chat.actionConfirmation.tiktok.publishButton');
+    expect(wrapper.text()).not.toContain('模型生成的标题');
+    expect(wrapper.text()).not.toContain('模型生成的摘要');
+  });
+
   it('renders malformed TikTok history as a blocked TikTok form instead of a generic blank card', () => {
     const wrapper = mountCard({
       action_confirmation_id: 'actconf_tiktok',
