@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 15:22:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 20:43:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.8
+
+Wed, 05 Aug 2026 20:43:54 GMT
+
+### Patches
+
+- Turn TikTok publishing confirmation into a complete review screen with reliable media fallback, validated account settings, clear disabled reasons, and linked policy guidance. (dev@acedata.cloud)
 
 ## 3.356.7
 
