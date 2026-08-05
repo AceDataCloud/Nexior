@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 04 Aug 2026 17:08:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 08:42:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.2
+
+Wed, 05 Aug 2026 08:42:10 GMT
+
+### Patches
+
+- make /intro honor the enabled capability set on every site, including studio.acedata.cloud, and select matching screenshots and copy (dev@acedata.cloud)
 
 ## 3.356.1
 
