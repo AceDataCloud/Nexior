@@ -9,7 +9,9 @@
   >
     <div class="acc-header">
       <div class="acc-heading">
-        <span v-if="isTikTokPublish" class="acc-brand-mark" aria-hidden="true">♪</span>
+        <span v-if="isTikTokPublish" class="acc-brand-mark" aria-hidden="true">
+          <font-awesome-icon :icon="faTiktok" />
+        </span>
         <component
           :is="headerIcon"
           v-else
@@ -20,7 +22,7 @@
         />
         <div class="acc-heading-copy">
           <span v-if="isTikTokPublish" class="acc-eyebrow">TikTok</span>
-          <span class="header-title">{{ payload.title }}</span>
+          <span class="header-title">{{ headerTitle }}</span>
         </div>
       </div>
       <span v-if="isTikTokPublish && !resolved" class="acc-review-badge">
@@ -28,7 +30,7 @@
       </span>
     </div>
 
-    <p v-if="payload.summary" class="acc-summary">{{ payload.summary }}</p>
+    <p v-if="summary" class="acc-summary">{{ summary }}</p>
 
     <div class="acc-content" :class="{ 'has-tiktok-layout': isTikTokPublish }">
       <div v-if="payload.preview" class="acc-preview" :class="{ 'has-error': mediaFailed }">
@@ -113,6 +115,8 @@
 
 <script lang="ts">
 import { ConfirmIcon, ExternalLinkIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import { faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElButton } from 'element-plus';
 import { defineComponent, type PropType } from 'vue';
 import GenericFieldList from './GenericFieldList.vue';
@@ -130,7 +134,15 @@ interface IData {
 
 export default defineComponent({
   name: 'ActionConfirmationCard',
-  components: { GenericFieldList, TikTokPublishForm, ConfirmIcon, ExternalLinkIcon, WarningIcon, ElButton },
+  components: {
+    GenericFieldList,
+    TikTokPublishForm,
+    ConfirmIcon,
+    ExternalLinkIcon,
+    WarningIcon,
+    FontAwesomeIcon,
+    ElButton
+  },
   props: {
     payload: {
       type: Object as PropType<IActionConfirmationPayload>,
@@ -157,8 +169,21 @@ export default defineComponent({
     };
   },
   computed: {
+    faTiktok() {
+      return faTiktok;
+    },
     isTikTokPublish(): boolean {
       return this.payload?.kind === 'tiktok.publish';
+    },
+    headerTitle(): string {
+      return this.isTikTokPublish
+        ? (this.$t('chat.actionConfirmation.tiktok.publishTitle') as string)
+        : this.payload.title;
+    },
+    summary(): string {
+      return this.isTikTokPublish
+        ? (this.$t('chat.actionConfirmation.tiktok.publishSummary') as string)
+        : this.payload.summary || '';
     },
     initialTitle(): string {
       const detail = this.payload?.detail as Record<string, unknown> | undefined;
@@ -180,6 +205,7 @@ export default defineComponent({
       return this.isDestructive ? WarningIcon : ConfirmIcon;
     },
     confirmLabel(): string {
+      if (this.isTikTokPublish) return this.$t('chat.actionConfirmation.tiktok.publishButton') as string;
       return this.payload?.confirm_label || (this.$t('chat.actionConfirmation.confirm') as string);
     },
     formattedDuration(): string {
