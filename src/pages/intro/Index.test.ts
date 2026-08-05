@@ -121,6 +121,28 @@ describe('/intro site capability filtering', () => {
     expect(wrapper.find('.model-grid').attributes('style')).toContain('--model-grid-columns: 5');
   });
 
+  it('uses Site title and description as the presentation hero copy', () => {
+    const wrapper = mountIntro({
+      id: 'studio',
+      origin: 'brand.studio.acedata.cloud',
+      title: 'Seedance AI Video Generator',
+      description: 'Create cinematic AI videos from text, images, and reference clips.',
+      features: studioFeatures
+    });
+
+    expect(wrapper.get('h1').text()).toBe('Seedance AI Video Generator');
+    expect(wrapper.get('.hero__summary').text()).toBe(
+      'Create cinematic AI videos from text, images, and reference clips.'
+    );
+  });
+
+  it('falls back to default hero copy when Site branding text is empty', () => {
+    const wrapper = mountIntro({ id: 'studio', title: '  ', description: '', features: studioFeatures });
+
+    expect(wrapper.get('h1').text()).toBe('intro.title.hero');
+    expect(wrapper.get('.hero__summary').text()).toBe('intro.subtitle.hero');
+  });
+
   it('uses outward-facing campaign headlines instead of configuration labels', () => {
     const copy = Object.values(zhIntro)
       .map((entry) => entry.message)

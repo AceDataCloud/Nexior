@@ -221,10 +221,10 @@ export default defineComponent({
       return CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled);
     },
     heroTitle(): string {
-      return this.siteLoaded ? this.$t('intro.title.site') : this.$t('intro.title.hero');
+      return this.site?.title?.trim() || this.$t('intro.title.hero');
     },
     heroSubtitle(): string {
-      return this.siteLoaded ? this.$t('intro.subtitle.site') : this.$t('intro.subtitle.hero');
+      return this.site?.description?.trim() || this.$t('intro.subtitle.hero');
     },
     heroStats() {
       return [
