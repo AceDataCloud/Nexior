@@ -95,7 +95,14 @@
           </div>
         </div>
 
-        <div class="model-grid">
+        <div
+          class="model-grid"
+          :style="{
+            '--model-grid-columns': Math.min(section.entries.length, 5),
+            '--model-grid-columns-tablet': Math.min(section.entries.length, 3),
+            '--model-grid-columns-mobile': Math.min(section.entries.length, 2)
+          }"
+        >
           <article v-for="entry in section.entries" :key="entry.name" class="model-card">
             <div class="model-card__heading">
               <span class="model-card__logo" aria-hidden="true">
@@ -707,21 +714,26 @@ export default defineComponent({
 // divide evenly into the column count, and an auto-fill grid leaves the last row
 // with a single orphaned card. Centering makes a short last row look deliberate.
 .model-grid {
+  --model-grid-active-columns: var(--model-grid-columns);
+  --model-grid-gap: 18px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
-  margin-top: 64px;
+  gap: var(--model-grid-gap);
+  width: 100%;
+  max-width: calc(
+    var(--model-grid-active-columns) * 228px + (var(--model-grid-active-columns) - 1) * var(--model-grid-gap)
+  );
+  margin: 64px auto 0;
 }
 
 .model-card {
-  // grow: 0 keeps a lone last-row card the same size as its siblings instead of
-  // stretching it across the full row.
-  flex: 0 1 clamp(240px, calc(25% - 16px), 300px);
+  flex: 0 1
+    calc((100% - (var(--model-grid-active-columns) - 1) * var(--model-grid-gap)) / var(--model-grid-active-columns));
   min-width: 0;
   padding: 24px;
   border: 1px solid var(--app-border-subtle);
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--el-bg-color);
   box-shadow: 0 8px 24px rgba(8, 18, 28, 0.04);
   transition:
@@ -746,18 +758,21 @@ export default defineComponent({
     flex: none;
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     overflow: hidden;
-    border: 1px solid var(--app-border-subtle);
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--el-bg-color) 84%, var(--intro-accent));
+    border: 1px solid color-mix(in srgb, var(--intro-accent) 20%, var(--app-border-subtle));
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--el-bg-color) 90%, var(--intro-accent));
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 5px 14px rgba(5, 14, 24, 0.12);
 
     img {
       display: block;
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -822,6 +837,10 @@ export default defineComponent({
       order: 0;
     }
   }
+
+  .model-grid {
+    --model-grid-active-columns: var(--model-grid-columns-tablet);
+  }
 }
 
 @media (max-width: 768px) {
@@ -872,13 +891,25 @@ export default defineComponent({
   }
 
   .model-grid {
+    --model-grid-active-columns: var(--model-grid-columns-mobile);
+    --model-grid-gap: 12px;
+    max-width: 100%;
     margin-top: 40px;
-    gap: 12px;
   }
 
   .model-card {
-    flex-basis: calc(50% - 6px);
-    padding: 16px 18px;
+    padding: 18px;
+
+    &__heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &__logo {
+      width: 42px;
+      height: 42px;
+    }
   }
 
   .final-cta h2 {

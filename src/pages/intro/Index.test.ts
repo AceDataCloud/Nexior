@@ -118,6 +118,7 @@ describe('/intro site capability filtering', () => {
     expect(logos).toHaveLength(cards.length);
     expect(logos.every((logo) => Boolean(logo.attributes('src')))).toBe(true);
     expect(logos.some((logo) => logo.attributes('src') === CHAT_MODEL_ICON_GLM)).toBe(true);
+    expect(wrapper.find('.model-grid').attributes('style')).toContain('--model-grid-columns: 5');
   });
 
   it('uses outward-facing campaign headlines instead of configuration labels', () => {
