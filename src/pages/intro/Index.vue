@@ -97,7 +97,12 @@
 
         <div class="model-grid">
           <article v-for="entry in section.entries" :key="entry.name" class="model-card">
-            <h3>{{ entry.name }}</h3>
+            <div class="model-card__heading">
+              <span class="model-card__logo" aria-hidden="true">
+                <img :src="entry.icon" alt="" loading="lazy" />
+              </span>
+              <h3>{{ entry.name }}</h3>
+            </div>
             <p>{{ $t(entry.descriptionKey) }}</p>
           </article>
         </div>
@@ -164,7 +169,7 @@
 import { ConfirmIcon, NextIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
+import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { getDefaultRoute } from '@/router';
 import { INTRO_SECTIONS, INTRO_SHOTS, type IIntroScreenshot, type ILocalizedImage } from './data';
 
@@ -232,7 +237,10 @@ export default defineComponent({
         return {
           ...section,
           displayTitleKey: this.siteLoaded ? section.siteTitleKey : section.titleKey,
-          entries,
+          entries: entries.map((entry) => ({
+            ...entry,
+            icon: entry.icon ?? (entry.featureKey ? CAPABILITY_ICONS[entry.featureKey] : undefined)
+          })),
           subtitle: this.siteLoaded ? entries.map((entry) => entry.name).join(' · ') : this.$t(section.subtitleKey),
           bulletKeys: section.bullets
             .filter((bullet) => {
@@ -711,15 +719,53 @@ export default defineComponent({
   // stretching it across the full row.
   flex: 0 1 clamp(240px, calc(25% - 16px), 300px);
   min-width: 0;
-  padding: 22px 24px;
+  padding: 24px;
   border: 1px solid var(--app-border-subtle);
-  border-radius: 14px;
+  border-radius: 16px;
   background: var(--el-bg-color);
+  box-shadow: 0 8px 24px rgba(8, 18, 28, 0.04);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--intro-accent) 36%, var(--app-border-subtle));
+    box-shadow: 0 16px 36px rgba(8, 18, 28, 0.1);
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 14px;
+  }
+
+  &__logo {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    border: 1px solid var(--app-border-subtle);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--el-bg-color) 84%, var(--intro-accent));
+
+    img {
+      display: block;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+  }
 
   h3 {
-    margin: 0 0 8px;
+    margin: 0;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 750;
+    line-height: 1.25;
   }
 
   p {
