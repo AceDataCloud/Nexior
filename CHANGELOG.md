@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 13:17:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 13:53:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.4
+
+Wed, 05 Aug 2026 13:53:00 GMT
+
+### Patches
+
+- Remove unavailable Seedream 3.0 models and migrate persisted selections to a supported model. (dev@acedata.cloud)
 
 ## 3.356.3
 
