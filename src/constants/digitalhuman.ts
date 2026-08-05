@@ -1,6 +1,6 @@
 export const DIGITALHUMAN_SERVICE_ID = '5b132265-40e8-4a79-9582-589f8eea4733';
 
-export const DIGITALHUMAN_LOGO = 'https://cdn.acedata.cloud/uploads/b47b3899-d41a-4295-93b9-20686ac98598';
+export const DIGITALHUMAN_LOGO = '/digitalhuman-logo.svg';
 
 export const DIGITALHUMAN_DEFAULT_LANG = 'zh';
 export const DIGITALHUMAN_ALLOWED_LANGS = ['zh', 'en'];
