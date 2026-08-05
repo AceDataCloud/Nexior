@@ -64,7 +64,7 @@ export interface ISunoConfig {
   instrumental?: boolean;
   title?: string;
   style?: string;
-  style_negative?: string;
+  negative_tags?: string;
   action?: string;
   audio?: ISunoAudio | undefined;
   audio_id?: string;
@@ -97,6 +97,8 @@ export interface ISunoAudioRequest {
   custom?: boolean;
   title?: string;
   style?: string;
+  negative_tags?: string;
+  /** @deprecated Read only for reusing tasks created before negative_tags. */
   style_negative?: string;
   vocal_gender?: string;
   weirdness?: number;

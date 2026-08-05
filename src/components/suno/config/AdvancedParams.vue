@@ -144,12 +144,12 @@ export default defineComponent({
     },
     styleNegative: {
       get() {
-        return this.$store.state.suno?.config?.style_negative || '';
+        return this.$store.state.suno?.config?.negative_tags || '';
       },
       set(val: string) {
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          style_negative: val || undefined
+          negative_tags: val || undefined
         });
       }
     },
