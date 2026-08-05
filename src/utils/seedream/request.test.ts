@@ -17,9 +17,9 @@ describe('buildSeedreamRequest', () => {
     });
   });
 
-  it('normalizes actions for text-only and edit-only models', () => {
-    expect(getCompatibleSeedreamAction('edit', 'doubao-seedream-3-0-t2i-250415')).toBe('generate');
-    expect(getCompatibleSeedreamAction('generate', 'doubao-seededit-3-0-i2i-250628')).toBe('edit');
+  it('preserves explicit actions for supported models', () => {
+    expect(getCompatibleSeedreamAction('edit', 'doubao-seedream-4-5-251128')).toBe('edit');
+    expect(getCompatibleSeedreamAction('generate', 'doubao-seedream-4-5-251128')).toBe('generate');
   });
 
   it('removes group options when group generation is inactive', () => {
@@ -39,7 +39,5 @@ describe('buildSeedreamRequest', () => {
     const image = ['one.png', 'two.png'];
     expect(getSeedreamAction('doubao-seedream-4-5-251128', [])).toBe('generate');
     expect(getSeedreamAction('doubao-seedream-4-5-251128', image)).toBe('edit');
-    expect(getSeedreamAction('doubao-seededit-3-0-i2i-250628', [])).toBe('edit');
-    expect(getSeedreamAction('doubao-seedream-3-0-t2i-250415', image)).toBe('generate');
   });
 });
