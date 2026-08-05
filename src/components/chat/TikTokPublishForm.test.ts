@@ -72,13 +72,16 @@ describe('TikTokPublishForm', () => {
   it('starts with NO privacy selected — TikTok forbids a default', () => {
     const wrapper = mountForm();
     expect((wrapper.vm as any).form.privacy_level).toBe('');
-    expect(wrapper.emitted('validity-change')?.[0]).toEqual([false]);
+    expect(wrapper.emitted('validity-change')?.[0]).toEqual([
+      false,
+      'chat.actionConfirmation.tiktok.selectPrivacyFirst'
+    ]);
   });
 
   it('becomes valid once a privacy level is chosen', async () => {
     const wrapper = mountForm();
     await wrapper.find('select').setValue('PUBLIC_TO_EVERYONE');
-    expect(wrapper.emitted('validity-change')?.at(-1)).toEqual([true]);
+    expect(wrapper.emitted('validity-change')?.at(-1)).toEqual([true, '']);
   });
 
   it('leaves every interaction toggle unchecked by default', () => {
@@ -105,7 +108,7 @@ describe('TikTokPublishForm', () => {
   it('rejects a video longer than the account cap', () => {
     const wrapper = mountForm({ max_video_post_duration_sec: 60 }, { durationSec: 90 });
     expect(wrapper.text()).toContain('tooLong');
-    expect(wrapper.emitted('validity-change')?.[0]).toEqual([false]);
+    expect(wrapper.emitted('validity-change')?.[0]).toEqual([false, 'chat.actionConfirmation.tiktok.useShorterVideo']);
   });
 
   it('blocks branded content while the post is private', async () => {
@@ -132,19 +135,45 @@ describe('TikTokPublishForm', () => {
     const vm = wrapper.vm as any;
     vm.form.commercial = true;
     await wrapper.vm.$nextTick();
-    expect(wrapper.emitted('validity-change')?.at(-1)).toEqual([false]);
+    expect(wrapper.emitted('validity-change')?.at(-1)).toEqual([
+      false,
+      'chat.actionConfirmation.tiktok.selectDisclosureType'
+    ]);
   });
 
-  it('uses the same declaration for branded-only and both — there are only two strings', async () => {
+  it('shows official music and branded-content policy links', async () => {
     const wrapper = mountForm();
+    expect(wrapper.findAll('.tpf-policy-links a')).toHaveLength(1);
+    expect(wrapper.find('.tpf-policy-links a').attributes('href')).toContain('music-usage-confirmation');
+    expect(wrapper.find('.tpf-policy-links a').attributes('rel')).toBe('noopener noreferrer');
+
     const vm = wrapper.vm as any;
     vm.form.commercial = true;
     vm.form.brand_content_toggle = true;
     await wrapper.vm.$nextTick();
-    const brandedOnly = vm.musicDeclaration;
-    vm.form.brand_organic_toggle = true;
-    await wrapper.vm.$nextTick();
-    expect(vm.musicDeclaration).toBe(brandedOnly);
+    const links = wrapper.findAll('.tpf-policy-links a');
+    expect(links).toHaveLength(2);
+    expect(links[1].attributes('href')).toContain('bc-policy');
+  });
+
+  it('blocks publishing and replaces the empty dropdown when creator info is incomplete', () => {
+    const wrapper = mount(TikTokPublishForm, {
+      props: {
+        detail: {
+          creator_nickname: '',
+          privacy_level_options: [],
+          comment_disabled: false,
+          duet_disabled: false,
+          stitch_disabled: false,
+          max_video_post_duration_sec: 600
+        }
+      },
+      global
+    });
+    expect(wrapper.find('select').exists()).toBe(false);
+    expect(wrapper.text()).toContain('detailsUnavailable');
+    expect(wrapper.text()).toContain('noPrivacyOptions');
+    expect(wrapper.emitted('validity-change')?.[0]).toEqual([false, 'chat.actionConfirmation.tiktok.fixDetailsFirst']);
   });
 
   it('inverts allow_* into the API disable_* fields', async () => {

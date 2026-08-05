@@ -1331,9 +1331,57 @@
     "message": "已取消",
     "description": "執行前確認卡片：用戶取消後的折疊提示"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "正在加載媒體預覽…",
+    "description": "執行前確認卡片：媒體加載狀態"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "無法在此處播放預覽",
+    "description": "執行前確認卡片：媒體播放失敗標題"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "媒體鏈接可能已過期，或當前瀏覽器不支持該格式。發布前請先打開原文件確認。",
+    "description": "執行前確認卡片：媒體播放失敗說明"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "打開原文件",
+    "description": "執行前確認卡片：打開媒體鏈接"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "發布前確認",
+    "description": "TikTok 發布確認卡片狀態標籤"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "發布至",
     "description": "TikTok 發布確認：帳號標籤"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "已連接",
+    "description": "TikTok 發布確認：帳號連接狀態"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "帳號信息不可用",
+    "description": "TikTok 發布確認：缺少帳號暱稱時的佔位文案"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "發布設置尚未準備好",
+    "description": "TikTok 發布確認：創作者信息缺失標題"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "未能讀取該帳號支持的可見範圍。請取消並讓助手重新獲取 TikTok 發布設置。",
+    "description": "TikTok 發布確認：創作者信息缺失說明"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "影片時長不符合帳號限制",
+    "description": "TikTok 發布確認：影片超長標題"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "發布內容",
+    "description": "TikTok 發布確認：內容設置分組標題"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* 必填",
+    "description": "TikTok 發布確認：必填說明"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "文案",
@@ -1350,6 +1398,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "請選擇…",
     "description": "TikTok 發布確認：可見範圍占位符，按 TikTok 要求不能有默認值"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "未獲取到可用的可見範圍，暫不能發布",
+    "description": "TikTok 發布確認：可見範圍為空"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "所有人",
@@ -1371,6 +1423,14 @@
     "message": "允許互動",
     "description": "TikTok 發布確認：互動開關分組標籤"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "僅可開啟該帳號當前允許的互動方式；默認全部關閉。",
+    "description": "TikTok 發布確認：互動開關說明"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "此帳號已關閉：{list}",
+    "description": "TikTok 發布確認：帳號禁用的互動能力"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "評論",
     "description": "TikTok 互動開關：允許評論"
@@ -1383,17 +1443,33 @@
     "message": "拼接",
     "description": "TikTok 互動開關：允許拼接"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "內容披露",
+    "description": "TikTok 發布確認：商業內容分組標題"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "這是商業內容",
     "description": "TikTok 發布確認：商業內容披露開關"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "如果內容推廣品牌、產品或服務，請按實際情況披露。",
+    "description": "TikTok 發布確認：商業內容披露說明"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "你的品牌",
     "description": "TikTok 商業內容：推廣自有業務"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "推廣您本人或您經營的業務",
+    "description": "TikTok 商業內容：推廣自有業務說明"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "品牌內容",
     "description": "TikTok 商業內容：付費合作"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "因付款、贈品或其他利益而推廣第三方",
+    "description": "TikTok 商業內容：付費合作說明"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "視頻將被標記為「推廣內容」",
@@ -1410,6 +1486,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "視頻超過該帳號的時長上限（{max} 秒）",
     "description": "TikTok 發布確認：視頻超長錯誤"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "發布前請確認",
+    "description": "TikTok 發布確認：政策說明標題"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "點擊“發布”即表示您確認擁有內容與音樂的使用權，並同意 TikTok 的音樂使用條款。",
+    "description": "TikTok 發布確認：普通內容政策說明"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "點擊“發布”即表示您確認披露信息準確，並同意 TikTok 的品牌內容政策與音樂使用條款。",
+    "description": "TikTok 發布確認：品牌內容政策說明"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "查看《音樂使用確認》",
+    "description": "TikTok 發布確認：音樂使用確認鏈接"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "查看《品牌內容政策》",
+    "description": "TikTok 發布確認：品牌內容政策鏈接"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "發布信息不完整，請取消後重新生成確認卡",
+    "description": "TikTok 發布確認：詳情缺失時的按鈕禁用原因"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "請換用符合該帳號時長限制的影片",
+    "description": "TikTok 發布確認：影片超長時的按鈕禁用原因"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "請選擇誰可以看此視頻",
+    "description": "TikTok 發布確認：未選可見範圍時的按鈕禁用原因"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "請選擇商業內容類型",
+    "description": "TikTok 發布確認：未選商業披露類型時的按鈕禁用原因"
   },
   "actionConfirmation.tiktok.music": {
     "message": "發布即表示您同意 TikTok 的《音樂使用確認》",

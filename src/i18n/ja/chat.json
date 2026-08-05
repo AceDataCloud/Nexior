@@ -1315,14 +1315,6 @@
     "message": "このタスクは実行中です",
     "description": "タスクはすでに実行されています"
   },
-  "model.claudeOpus47": {
-    "message": "claude-opus-4.7",
-    "description": "サービスのモデル名、すなわち Claude Opus 4.7"
-  },
-  "model.claudeOpus47Description": {
-    "message": "現在最も先進的なモデル",
-    "description": "Claude Opus 4.7モデルの説明"
-  },
   "actionConfirmation.confirm": {
     "message": "確認",
     "description": "执行前确认卡片的确认按钮"
@@ -1339,9 +1331,57 @@
     "message": "キャンセルしました",
     "description": "执行前确认卡片：用户取消后的折叠提示"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "メディアプレビューを読み込んでいます…",
+    "description": "実行前確認カード：メディアの読み込み状態"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "ここでプレビューを再生できません",
+    "description": "実行前確認カード：メディア再生失敗のタイトル"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "メディアリンクが期限切れの可能性があります。または、現在のブラウザがその形式をサポートしていません。公開前に元のファイルを開いて確認してください。",
+    "description": "実行前確認カード：メディア再生失敗の説明"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "元のファイルを開く",
+    "description": "実行前確認カード：メディアリンクを開く"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "公開前に確認",
+    "description": "TikTok 公開確認カードの状態ラベル"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "投稿先",
     "description": "TikTok 发布确认：账号标签"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "接続済み",
+    "description": "TikTok 公開確認：アカウント接続状態"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "アカウント情報が利用できません",
+    "description": "TikTok 公開確認：アカウントのニックネームが欠けている時のプレースホルダ文"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "公開設定がまだ準備できていません",
+    "description": "TikTok 公開確認：クリエイター情報が欠けているタイトル"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "そのアカウントがサポートする可視範囲を読み取れませんでした。キャンセルして、アシスタントにTikTok公開設定を再取得させてください。",
+    "description": "TikTok 公開確認：クリエイター情報が欠けている説明"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "動画の長さがアカウントの制限に合っていません",
+    "description": "TikTok 発表確認：動画が長すぎるタイトル"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "公開コンテンツ",
+    "description": "TikTok 公開確認：コンテンツ設定のグループタイトル"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* 必須",
+    "description": "TikTok 公開確認：必須の説明"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "キャプション",
@@ -1358,6 +1398,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "選択してください…",
     "description": "TikTok 发布确认：可见范围占位符，按 TikTok 要求不能有默认值"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "利用可能な可視範囲が取得できず、現在公開できません",
+    "description": "TikTok 公開確認：可視範囲が空"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "全員",
@@ -1379,6 +1423,14 @@
     "message": "インタラクションを許可",
     "description": "TikTok 发布确认：互动开关分组标签"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "このアカウントで現在許可されているインタラクション方法のみを有効にできます。デフォルトではすべて無効です。",
+    "description": "TikTok 公開確認：インタラクションスイッチの説明"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "このアカウントは無効です：{list}",
+    "description": "TikTok 公開確認：アカウントの無効なインタラクション機能"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "コメント",
     "description": "TikTok 互动开关：允许评论"
@@ -1391,17 +1443,33 @@
     "message": "リミックス",
     "description": "TikTok 互动开关：允许拼接"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "コンテンツの開示",
+    "description": "TikTok 公開確認：商業コンテンツのグループタイトル"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "これは商用コンテンツです",
     "description": "TikTok 发布确认：商业内容披露开关"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "コンテンツがブランド、製品、またはサービスを宣伝する場合は、実際の状況を開示してください。",
+    "description": "TikTok 公開確認：商業コンテンツの開示説明"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "自分のブランド",
     "description": "TikTok 商业内容：推广自有业务"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "あなた自身またはあなたのビジネスを宣伝する",
+    "description": "TikTok 商業コンテンツ：自社ビジネスの宣伝に関する説明"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "ブランドコンテンツ",
     "description": "TikTok 商业内容：付费合作"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "支払い、贈り物、またはその他の利益のために第三者を宣伝する",
+    "description": "TikTok 商業コンテンツ：有料コラボレーションの説明"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "動画は「プロモーションコンテンツ」として表示されます",
@@ -1418,6 +1486,50 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "動画がアカウントの上限（{max} 秒）を超えています",
     "description": "TikTok 发布确认：视频超长错误"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "公開前に確認してください",
+    "description": "TikTok 公開確認：ポリシー説明のタイトル"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "「公開」をクリックすることで、コンテンツと音楽の使用権を確認し、TikTokの音楽使用規約に同意したことになります。",
+    "description": "TikTok 公開確認：一般的なコンテンツポリシーの説明"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "「公開」をクリックすることで、開示情報が正確であることを確認し、TikTokのブランドコンテンツポリシーと音楽使用規約に同意したことになります。",
+    "description": "TikTok 公開確認：ブランドコンテンツポリシーの説明"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "「音楽使用確認」を確認する",
+    "description": "TikTok 公開確認：音楽使用確認のリンク"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "「ブランドコンテンツポリシー」を確認する",
+    "description": "TikTok 公開確認：ブランドコンテンツポリシーのリンク"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "公開情報が不完全です。キャンセルしてから確認カードを再生成してください。",
+    "description": "TikTok 公開確認：詳細が欠けている時のボタン無効の理由"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "このアカウントの時間制限に合った短い動画を使用してください",
+    "description": "TikTok 発表確認：動画が長すぎるためボタンが無効になっています"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "この動画を誰が見ることができるかを選択してください",
+    "description": "TikTok 公開確認：可視範囲が選択されていない時のボタン無効の理由"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "商業コンテンツの種類を選択してください",
+    "description": "TikTok 公開確認：商業開示タイプが選択されていない時のボタン無効の理由"
+  },
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "サービスのモデル名、すなわち Claude Opus 4.7"
+  },
+  "model.claudeOpus47Description": {
+    "message": "現在最も先進的なモデル",
+    "description": "Claude Opus 4.7モデルの説明"
   },
   "actionConfirmation.tiktok.music": {
     "message": "投稿すると、TikTok の音楽利用確認に同意したことになります",

@@ -898,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Ihmisten luettavissa oleva muoto: alkuperäinen Cron"
+    "description": "Ihmisluettava: alkuperäinen Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "kerran klo {time}",
@@ -1086,7 +1086,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tuotetyyppi - video"
+    "description": "Tuotetyyppi – video"
   },
   "artifacts.kind.audio": {
     "message": "Ääni",
@@ -1331,9 +1331,57 @@
     "message": "Peruttu",
     "description": "Vahvistuskortti: käyttäjän peruutuksen jälkeen näkyvä viesti"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Ladataan mediasisältöä…",
+    "description": "Vahvistuskortti ennen toimintoa: median lataustila"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Esikatselua ei voi toistaa täällä",
+    "description": "Vahvistuskortti ennen toimintoa: median toistamisen epäonnistumisen otsikko"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Median linkki saattaa olla vanhentunut tai nykyinen selain ei tue tätä formaattia. Tarkista alkuperäinen tiedosto ennen julkaisua.",
+    "description": "Vahvistuskortti ennen toimintoa: median toistamisen epäonnistumisen selitys"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Avaa alkuperäinen tiedosto",
+    "description": "Vahvistuskortti ennen toimintoa: avaa median linkki"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Vahvista ennen julkaisua",
+    "description": "TikTok julkaisuvahvistuskortin tila"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Julkaise",
     "description": "TikTok julkaisu vahvistus: tilin etiketti"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Yhdistetty",
+    "description": "TikTok julkaisuvahvistus: tilin yhdistämisen tila"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Tilin tiedot eivät ole saatavilla",
+    "description": "TikTok julkaisuvahvistus: paikkamerkki, kun tilin lempinimi puuttuu"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Julkaisun asetukset eivät ole valmiit",
+    "description": "TikTok julkaisuvahvistus: luojan tietojen puuttumisen otsikko"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Tilin tukemaa näkyvyyttä ei voitu lukea. Peruuta ja anna avustajan hankkia TikTok julkaisuasetukset uudelleen.",
+    "description": "TikTok julkaisuvahvistus: luojan tietojen puuttumisen selitys"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Videon pituus ei täytä tilin rajoituksia",
+    "description": "TikTok-julkaisun vahvistuksen otsikko: video on liian pitkä"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Julkaisusisältö",
+    "description": "TikTok julkaisuvahvistus: sisällön asetusten ryhmittelyotsikko"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Pakollinen",
+    "description": "TikTok julkaisuvahvistus: pakollisten kenttien selitys"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Kuvateksti",
@@ -1350,6 +1398,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Valitse…",
     "description": "TikTok julkaisu vahvistus: näkyvyys paikkamerkki, TikTokin vaatimusten mukaan ei voi olla oletusarvoa"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Saatavilla olevia näkyvyysvaihtoehtoja ei saatu, julkaisu ei ole mahdollinen",
+    "description": "TikTok julkaisuvahvistus: näkyvyyden puuttuminen"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Kaikki",
@@ -1371,6 +1423,14 @@
     "message": "Salli vuorovaikutus",
     "description": "TikTok julkaisu vahvistus: vuorovaikutuskytkimen ryhmäetiketti"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Voit vain avata tilin tällä hetkellä sallitut vuorovaikutustavat; oletuksena kaikki on suljettu.",
+    "description": "TikTok julkaisuvahvistus: vuorovaikutuksen kytkentäselitys"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Tämä tili on suljettu: {list}",
+    "description": "TikTok julkaisuvahvistus: tilin käytön rajoitukset"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Kommentit",
     "description": "TikTok vuorovaikutuksen kytkin: salli kommentit"
@@ -1383,17 +1443,33 @@
     "message": "Leikkaus",
     "description": "TikTok vuorovaikutuksen kytkin: salli leikkaus"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Sisällön paljastaminen",
+    "description": "TikTok julkaisuvahvistus: kaupallisen sisällön ryhmittelyotsikko"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Tämä on kaupallinen sisältö",
     "description": "TikTok julkaisu vahvistus: kaupallisen sisällön ilmoitus"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Jos sisältö mainostaa brändiä, tuotetta tai palvelua, paljasta se tosiasioiden mukaan.",
+    "description": "TikTok julkaisuvahvistus: kaupallisen sisällön paljastamisen selitys"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Brändisi",
     "description": "TikTok liiketoimintasisältö: oman liiketoiminnan mainostaminen"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Mainosta omaa tai yrityksesi toimintaa",
+    "description": "TikTok-liiketoimintasisältö: omaa liiketoimintaa koskeva mainosohje"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Brändisisältö",
     "description": "TikTok kaupallinen sisältö: maksullinen yhteistyö"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Kolmannen osapuolen mainostaminen maksua, lahjoja tai muita etuja vastaan",
+    "description": "TikTok kaupallinen sisältö: maksetun yhteistyön selitys"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Video merkitään 'mainos sisällöksi'",
@@ -1410,6 +1486,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Video ylittää tämän tilin aikarajan ({max} sekuntia)",
     "description": "TikTok julkaisu vahvistus: videon pituusvirhe"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Vahvista ennen julkaisua",
+    "description": "TikTok julkaisuvahvistus: käytäntöjen selitysotsikko"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Klikkaamalla 'Julkaise' vahvistat, että sinulla on oikeus käyttää sisältöä ja musiikkia sekä hyväksyt TikTokin musiikin käyttöehdot.",
+    "description": "TikTok julkaisuvahvistus: yleisten sisältöpolitiikkojen selitys"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Klikkaamalla 'Julkaise' vahvistat, että paljastamasi tiedot ovat tarkkoja ja hyväksyt TikTokin brändisisältöpolitiikan ja musiikin käyttöehdot.",
+    "description": "TikTok julkaisuvahvistus: brändisisältöpolitiikan selitys"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Katso 'Musiikin käyttövahvistus'",
+    "description": "TikTok julkaisuvahvistus: musiikin käyttövahvistuksen linkki"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Katso 'Brändisisältöpolitiikka'",
+    "description": "TikTok julkaisuvahvistus: brändisisältöpolitiikan linkki"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Julkaisutiedot ovat puutteelliset, peruuta ja luo vahvistuskortti uudelleen",
+    "description": "TikTok julkaisuvahvistus: syiden selitys, miksi tiedot puuttuvat"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Käytä videota, joka täyttää tilin pituusrajoituksen",
+    "description": "TikTok-julkaisun vahvistus: painikkeen poiskytkentä syynä videon liian pitkä kesto"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Valitse, kuka voi nähdä tämän videon",
+    "description": "TikTok julkaisuvahvistus: syiden selitys, miksi näkyvyys ei ole valittu"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Valitse kaupallisen sisällön tyyppi",
+    "description": "TikTok julkaisuvahvistus: syiden selitys, miksi kaupallista paljastustyyppiä ei ole valittu"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Julkaisemalla hyväksyt TikTokin 'Musiikin käyttö vahvistus'",

@@ -898,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Читљиво за људе: оригинални Cron"
+    "description": "Лако читљиво: оригинални Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "једном у {time}",
@@ -1331,9 +1331,57 @@
     "message": "Отказано",
     "description": "Картица за потврду пре извршења: обавештење након отказа од стране корисника"
   },
+  "actionConfirmation.mediaLoading": {
+    "message": "Učitavanje medijske pregleda…",
+    "description": "Potvrda pre akcije: Status učitavanja medija"
+  },
+  "actionConfirmation.mediaUnavailable": {
+    "message": "Nije moguće reprodukovati pregled ovde",
+    "description": "Potvrda pre akcije: Naslov greške pri reprodukciji medija"
+  },
+  "actionConfirmation.mediaUnavailableHint": {
+    "message": "Veza do medija možda je istekao, ili trenutni pregledač ne podržava ovaj format. Molimo vas da prvo otvorite izvorni fajl za potvrdu.",
+    "description": "Potvrda pre akcije: Objašnjenje greške pri reprodukciji medija"
+  },
+  "actionConfirmation.openMedia": {
+    "message": "Otvorite izvorni fajl",
+    "description": "Potvrda pre akcije: Otvorite vezu do medija"
+  },
+  "actionConfirmation.tiktok.reviewBadge": {
+    "message": "Potvrda pre objavljivanja",
+    "description": "TikTok potvrda pre objavljivanja: Status oznake potvrde"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Објављује се на",
     "description": "TikTok потврда објављивања: ознака налога"
+  },
+  "actionConfirmation.tiktok.connected": {
+    "message": "Povezano",
+    "description": "TikTok potvrda pre objavljivanja: Status povezivanja naloga"
+  },
+  "actionConfirmation.tiktok.unknownAccount": {
+    "message": "Informacije o nalogu nisu dostupne",
+    "description": "TikTok potvrda pre objavljivanja: Tekst za zauzeto mesto kada nedostaje nadimak naloga"
+  },
+  "actionConfirmation.tiktok.detailsUnavailable": {
+    "message": "Podešavanja za objavljivanje još nisu spremna",
+    "description": "TikTok potvrda pre objavljivanja: Naslov nedostajućih informacija o kreatoru"
+  },
+  "actionConfirmation.tiktok.detailsUnavailableHint": {
+    "message": "Nije moguće pročitati dostupne opsege za ovaj nalog. Molimo vas da otkažete i ponovo zatražite TikTok podešavanja za objavljivanje.",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje nedostajućih informacija o kreatoru"
+  },
+  "actionConfirmation.tiktok.videoTooLongTitle": {
+    "message": "Дужина видеа не испуњава ограничење налога",
+    "description": "TikTok потврда акције: наслов за видео који је превише дуг"
+  },
+  "actionConfirmation.tiktok.postDetails": {
+    "message": "Objavi sadržaj",
+    "description": "TikTok potvrda pre objavljivanja: Naslov grupe podešavanja sadržaja"
+  },
+  "actionConfirmation.tiktok.requiredNote": {
+    "message": "* Obavezno",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje obaveznih informacija"
   },
   "actionConfirmation.tiktok.caption": {
     "message": "Наслов",
@@ -1350,6 +1398,10 @@
   "actionConfirmation.tiktok.privacyPlaceholder": {
     "message": "Изаберите…",
     "description": "TikTok потврда објављивања: место за унос видљивости, према захтевима TikTok не може имати подразумевану вредност"
+  },
+  "actionConfirmation.tiktok.noPrivacyOptions": {
+    "message": "Nije dostupna vidljivost, trenutno ne može da se objavi",
+    "description": "TikTok potvrda pre objavljivanja: Vidljivost je prazna"
   },
   "actionConfirmation.tiktok.privacyPublic": {
     "message": "Сви",
@@ -1371,6 +1423,14 @@
     "message": "Дозволи интеракције",
     "description": "TikTok потврда објављивања: ознака групе за прекидач интеракција"
   },
+  "actionConfirmation.tiktok.interactionsHint": {
+    "message": "Možete omogućiti samo načine interakcije koje trenutni nalog dozvoljava; podrazumevano su svi isključeni.",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje prekidača za interakciju"
+  },
+  "actionConfirmation.tiktok.disabledByAccount": {
+    "message": "Ovaj nalog je onemogućen: {list}",
+    "description": "TikTok potvrda pre objavljivanja: Interaktivne mogućnosti onemogućenog naloga"
+  },
   "actionConfirmation.tiktok.allowComment": {
     "message": "Коментари",
     "description": "TikTok интеракција: дозвољава коментаре"
@@ -1383,17 +1443,33 @@
     "message": "Спој",
     "description": "TikTok интеракција: дозвољава спајање"
   },
+  "actionConfirmation.tiktok.disclosure": {
+    "message": "Otkrivanje sadržaja",
+    "description": "TikTok potvrda pre objavljivanja: Naslov grupe komercijalnog sadržaja"
+  },
   "actionConfirmation.tiktok.commercial": {
     "message": "Ово је комерцијални садржај",
     "description": "TikTok потврда објављивања: прекидач за откривање комерцијалног садржаја"
+  },
+  "actionConfirmation.tiktok.commercialHint": {
+    "message": "Ako sadržaj promoviše brend, proizvod ili uslugu, molimo vas da to otkrijete prema stvarnoj situaciji.",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje otkrivanja komercijalnog sadržaja"
   },
   "actionConfirmation.tiktok.yourBrand": {
     "message": "Vaš brend",
     "description": "TikTok poslovni sadržaj: promocija vlastitog biznisa"
   },
+  "actionConfirmation.tiktok.yourBrandHint": {
+    "message": "Промовишите себе или свој посао",
+    "description": "TikTok комерцијални садржај: објашњење за промоцију сопственог посла"
+  },
   "actionConfirmation.tiktok.brandedContent": {
     "message": "Брендирани садржај",
     "description": "TikTok комерцијални садржај: плаћена сарадња"
+  },
+  "actionConfirmation.tiktok.brandedContentHint": {
+    "message": "Promocija treće strane zbog plaćanja, poklona ili drugih koristi",
+    "description": "TikTok komercijalni sadržaj: Objašnjenje plaćenih saradnji"
   },
   "actionConfirmation.tiktok.labelPromotional": {
     "message": "Видео ће бити обележен као „промотивни садржај“",
@@ -1410,6 +1486,42 @@
   "actionConfirmation.tiktok.tooLong": {
     "message": "Видео прелази максимално време налога ({max} секунди)",
     "description": "TikTok потврда објављивања: грешка због превеликог трајања видеа"
+  },
+  "actionConfirmation.tiktok.beforePublishing": {
+    "message": "Molimo vas da potvrdite pre objavljivanja",
+    "description": "TikTok potvrda pre objavljivanja: Naslov objašnjenja politike"
+  },
+  "actionConfirmation.tiktok.policyIntro": {
+    "message": "Klikom na 'Objavi' potvrđujete da imate prava na korišćenje sadržaja i muzike, i slažete se sa uslovima korišćenja muzike TikTok-a.",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje politike za običan sadržaj"
+  },
+  "actionConfirmation.tiktok.policyIntroBranded": {
+    "message": "Klikom na 'Objavi' potvrđujete da su informacije o otkrivanju tačne i slažete se sa politikom brendiranog sadržaja i uslovima korišćenja muzike TikTok-a.",
+    "description": "TikTok potvrda pre objavljivanja: Objašnjenje politike za brendirani sadržaj"
+  },
+  "actionConfirmation.tiktok.musicUsageLink": {
+    "message": "Pogledajte 'Potvrdu o korišćenju muzike'",
+    "description": "TikTok potvrda pre objavljivanja: Link ka potvrdi o korišćenju muzike"
+  },
+  "actionConfirmation.tiktok.brandedPolicyLink": {
+    "message": "Pogledajte 'Politiku brendiranog sadržaja'",
+    "description": "TikTok potvrda pre objavljivanja: Link ka politici brendiranog sadržaja"
+  },
+  "actionConfirmation.tiktok.fixDetailsFirst": {
+    "message": "Informacije o objavljivanju nisu potpune, molimo vas da otkažete i ponovo generišete potvrdu",
+    "description": "TikTok potvrda pre objavljivanja: Razlog onemogućavanja dugmeta kada nedostaju detalji"
+  },
+  "actionConfirmation.tiktok.useShorterVideo": {
+    "message": "Молимо вас да користите видео које испуњава ограничење трајања за овај налог",
+    "description": "TikTok потврда акције: разлог за онемогућавање дугмета када је видео превише дуг"
+  },
+  "actionConfirmation.tiktok.selectPrivacyFirst": {
+    "message": "Molimo vas da odaberete ko može da vidi ovaj video",
+    "description": "TikTok potvrda pre objavljivanja: Razlog onemogućavanja dugmeta kada nije odabran opseg vidljivosti"
+  },
+  "actionConfirmation.tiktok.selectDisclosureType": {
+    "message": "Molimo vas da odaberete tip komercijalnog sadržaja",
+    "description": "TikTok potvrda pre objavljivanja: Razlog onemogućavanja dugmeta kada nije odabran tip otkrivanja"
   },
   "actionConfirmation.tiktok.music": {
     "message": "Објављивањем потврђујете да се слажете са TikTok-овом „Потврдом о коришћењу музике“",
