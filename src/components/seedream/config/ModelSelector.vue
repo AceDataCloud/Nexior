@@ -24,12 +24,10 @@ import { ElSelect, ElOption, ElMessage, ElMessageBox } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   SEEDREAM_DEFAULT_MODEL,
-  SEEDREAM_MODEL_3_0_T2I,
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
   SEEDREAM_MODEL_5_0,
-  SEEDREAM_MODEL_5_0_PRO,
-  SEEDREAM_MODEL_SEEDEDIT_3_0_I2I
+  SEEDREAM_MODEL_5_0_PRO
 } from '@/constants';
 import { findSeedreamConflicts, clearSeedreamConflicts } from '@/utils/seedream/capabilities';
 
@@ -49,9 +47,7 @@ export default defineComponent({
         { value: SEEDREAM_MODEL_5_0_PRO, label: this.$t('seedream.model.seedream50pro') },
         { value: SEEDREAM_MODEL_5_0, label: this.$t('seedream.model.seedream50') },
         { value: SEEDREAM_MODEL_4_5, label: this.$t('seedream.model.seedream45') },
-        { value: SEEDREAM_MODEL_4_0, label: this.$t('seedream.model.seedream40') },
-        { value: SEEDREAM_MODEL_3_0_T2I, label: this.$t('seedream.model.seedream30t2i') },
-        { value: SEEDREAM_MODEL_SEEDEDIT_3_0_I2I, label: this.$t('seedream.model.seededit30i2i') }
+        { value: SEEDREAM_MODEL_4_0, label: this.$t('seedream.model.seedream40') }
       ]
     };
   },
@@ -61,9 +57,14 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (!this.value) {
-      this.applyModel(SEEDREAM_DEFAULT_MODEL);
-    }
+    if (this.value && this.options.some((option) => option.value === this.value)) return;
+
+    const config = { ...(this.$store.state.seedream?.config || {}), model: SEEDREAM_DEFAULT_MODEL };
+    const conflicts = findSeedreamConflicts(config, { model: SEEDREAM_DEFAULT_MODEL });
+    this.$store.commit(
+      'seedream/setConfig',
+      clearSeedreamConflicts(config, conflicts, { model: SEEDREAM_DEFAULT_MODEL })
+    );
   },
   methods: {
     async onChange(val: string) {

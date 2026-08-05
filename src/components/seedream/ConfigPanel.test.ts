@@ -49,9 +49,6 @@ describe('seedream/ConfigPanel', () => {
     expect(wrapper.html()).not.toContain('watermark');
     expect(wrapper.findComponent(ImageInput).exists()).toBe(true);
     expect(wrapper.findComponent(ModelSelector).exists()).toBe(true);
-
-    const { wrapper: textOnlyWrapper } = mountPanel([], 'doubao-seedream-3-0-t2i-250415');
-    expect(textOnlyWrapper.findComponent(ImageInput).exists()).toBe(false);
   });
 
   it('automatically switches billing mode when references change', async () => {

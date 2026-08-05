@@ -11,13 +11,10 @@
 //     supported (image upload, custom seed, group generation, etc.)
 
 import {
-  SEEDREAM_GUIDANCE_SCALE_DEFAULTS,
-  SEEDREAM_MODEL_3_0_T2I,
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
   SEEDREAM_MODEL_5_0,
   SEEDREAM_MODEL_5_0_PRO,
-  SEEDREAM_MODEL_SEEDEDIT_3_0_I2I,
   SEEDREAM_SIZE_1K,
   SEEDREAM_SIZE_2K,
   SEEDREAM_SIZE_3K,
@@ -126,41 +123,6 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
         groupGeneration: true,
         seed: false,
         guidanceScale: false,
-        outputFormat: false,
-        tools: false
-      };
-    case SEEDREAM_MODEL_3_0_T2I:
-      // 3.0-t2i: text-to-image only, pixel-only sizes.
-      return {
-        image: false,
-        imageRequired: false,
-        sizeTiers: [],
-        sizeAdaptive: false,
-        sizePixel: true,
-        sizePixelDefault: '1024x1024',
-        groupGeneration: false,
-        seed: true,
-        guidanceScale: true,
-        guidanceScaleDefault: SEEDREAM_GUIDANCE_SCALE_DEFAULTS[SEEDREAM_MODEL_3_0_T2I],
-        outputFormat: false,
-        tools: false
-      };
-    case SEEDREAM_MODEL_SEEDEDIT_3_0_I2I:
-      // seededit-3.0-i2i: image-to-image only, pixel-only sizes.
-      // Note: official Volcengine docs limit `seed` to 3.0-t2i only — our
-      // worker is permissive but upstream Volcengine rejects seed on
-      // seededit-3.0-i2i. Keep seed=false here.
-      return {
-        image: true,
-        imageRequired: true,
-        sizeTiers: [],
-        sizeAdaptive: false,
-        sizePixel: true,
-        sizePixelDefault: '1024x1024',
-        groupGeneration: false,
-        seed: false,
-        guidanceScale: true,
-        guidanceScaleDefault: SEEDREAM_GUIDANCE_SCALE_DEFAULTS[SEEDREAM_MODEL_SEEDEDIT_3_0_I2I],
         outputFormat: false,
         tools: false
       };
