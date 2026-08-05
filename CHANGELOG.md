@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 14:01:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 15:00:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.6
+
+Wed, 05 Aug 2026 15:00:28 GMT
+
+### Patches
+
+- render each white-label Site's configured logo on tenant subdomains and custom domains while keeping the built-in wordmark on exact official hosts (dev@acedata.cloud)
 
 ## 3.356.5
 
