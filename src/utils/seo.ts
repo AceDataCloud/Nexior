@@ -18,7 +18,10 @@ function getCurrentOrigin(): string {
 // so subsites can fully white-label their <title>, og:*, JSON-LD, etc.
 const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Hub';
 const FALLBACK_BRAND_NAME = 'Ace Data Cloud';
-const FALLBACK_IMAGE = 'https://cdn.acedata.cloud/fdc04a4248.png';
+function getShareImage(): string {
+  const host = typeof window !== 'undefined' ? window.location.hostname : 'studio.acedata.cloud';
+  return `https://platform.acedata.cloud/api/v1/og/${host}.png`;
+}
 const FALLBACK_DESCRIPTION =
   'AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek.';
 
@@ -26,16 +29,15 @@ const FALLBACK_DESCRIPTION =
 // the AceDataCloud defaults so first-party origins keep working unchanged.
 function brand() {
   const site = (store.state as { site?: Record<string, unknown> } | undefined)?.site as
-    | { title?: string; description?: string; logo?: string }
+    | { title?: string; description?: string }
     | undefined;
   const title = (site?.title || '').trim();
   const description = (site?.description || '').trim();
-  const logo = (site?.logo || '').trim();
   return {
     siteName: title || FALLBACK_SITE_NAME,
     brandName: title || FALLBACK_BRAND_NAME,
     description: description || FALLBACK_DESCRIPTION,
-    image: logo || FALLBACK_IMAGE
+    image: getShareImage()
   };
 }
 
