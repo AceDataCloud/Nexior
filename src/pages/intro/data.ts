@@ -3,6 +3,7 @@ export interface ILocalizedImage {
   en: string;
 }
 
+import { CHAT_MODEL_ICON_GLM } from '@/constants/chat';
 import type { CapabilityKey } from '@/constants/capabilities';
 
 const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
@@ -106,6 +107,8 @@ export interface IIntroEntry {
   descriptionKey: string;
   /** Site feature flag gating this entry; omitted entries are always shown. */
   featureKey?: CapabilityKey;
+  /** Override when the product does not have its own capability key (for example GLM). */
+  icon?: string;
   /** Route for this entry, used to retarget the section CTA when the section's
    *  default destination is disabled for the site. */
   path?: string;
@@ -162,7 +165,13 @@ export const INTRO_SECTIONS: IIntroSection[] = [
       { name: 'Kimi', descriptionKey: 'intro.model.kimi', featureKey: 'kimi', path: '/kimi' },
       // GLM has no capability key of its own; it rides the ChatGPT surface, so
       // gate it on that rather than letting it survive a chat-less subsite.
-      { name: 'GLM', descriptionKey: 'intro.model.glm', featureKey: 'chatgpt', path: '/chatgpt' }
+      {
+        name: 'GLM',
+        descriptionKey: 'intro.model.glm',
+        featureKey: 'chatgpt',
+        icon: CHAT_MODEL_ICON_GLM,
+        path: '/chatgpt'
+      }
     ],
     path: '/chatgpt',
     screenshots: {
