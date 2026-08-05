@@ -6,7 +6,7 @@
         <div class="hero__copy">
           <span class="eyebrow">{{ $t('index.badge.hero') }}</span>
           <h1>{{ site?.title }}</h1>
-          <p class="hero__headline">{{ $t('index.subtitle.banner') }}</p>
+          <p class="hero__headline">{{ heroHeadline }}</p>
           <p class="hero__summary">{{ $t('index.subtitle.hero') }}</p>
           <div class="hero__actions">
             <el-button type="primary" size="large" @click="onStart">
@@ -375,6 +375,9 @@ export default defineComponent({
   computed: {
     site() {
       return this.$store.state.site;
+    },
+    heroHeadline(): string {
+      return this.site?.description?.trim() || this.$t('index.subtitle.banner');
     },
     enabledFeatures(): Record<string, { enabled?: boolean } | undefined> {
       return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
