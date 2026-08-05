@@ -348,6 +348,7 @@ describe('chat/ScheduledTasks', () => {
       dailyTime: '09:00',
       weekday: 1,
       cronExpr: '0 9 * * *',
+      timezone: expect.any(String),
       authorizedSkills: [],
       authorizedMcpServers: [],
       browserConnectionId: '',
@@ -357,6 +358,26 @@ describe('chat/ScheduledTasks', () => {
       authorizationExpiresAt: expect.any(Number),
       maxTurns: 50
     });
+  });
+
+  it('keeps the saved time zone when editing instead of replacing it with this device zone', () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openEdit: (task: IScheduledTask) => void;
+      form: { timezone: string };
+      buildSchedule: () => IScheduledTask['schedule'];
+      scheduleLabel: (schedule: IScheduledTask['schedule']) => string;
+    };
+    const losAngeles = {
+      ...editedTask,
+      schedule: { type: 'cron', cron: '0 22 * * *', tz: 'America/Los_Angeles' } as const
+    };
+
+    vm.openEdit(losAngeles);
+
+    expect(vm.form.timezone).toBe('America/Los_Angeles');
+    expect(vm.buildSchedule()).toMatchObject({ type: 'cron', tz: 'America/Los_Angeles' });
+    expect(vm.scheduleLabel(losAngeles.schedule)).toContain('America/Los_Angeles');
   });
 
   it('prefills the create form from an existing task, with a numbered name', async () => {
@@ -381,6 +402,7 @@ describe('chat/ScheduledTasks', () => {
       scheduleType: 'interval',
       intervalValue: 6,
       intervalUnit: 'hour',
+      timezone: 'Asia/Shanghai',
       authorizedSkills: ['hashnode'],
       authorizedMcpServers: ['publishing'],
       maxTurns: 12

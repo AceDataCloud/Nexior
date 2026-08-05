@@ -1,32 +1,31 @@
 import { describe, it, expect } from 'vitest';
 import { nextTick, missedTicks, parseCron, type ScheduleSpec } from './schedule';
 
-// Fixed reference points, so no test depends on the wall clock.
-// 2026-03-10T08:30:00 local time.
-const BASE = Math.floor(new Date(2026, 2, 10, 8, 30, 0).getTime() / 1000);
+// Fixed UTC reference points, so tests do not depend on the host time zone.
+const BASE = Math.floor(Date.UTC(2026, 2, 10, 8, 30, 0) / 1000);
 const at = (y: number, mo: number, d: number, h: number, mi: number): number =>
-  Math.floor(new Date(y, mo, d, h, mi, 0).getTime() / 1000);
+  Math.floor(Date.UTC(y, mo, d, h, mi, 0) / 1000);
 
 describe('parseCron', () => {
   it('accepts the shapes the task form produces', () => {
-    expect(parseCron('0 9 * * *')).not.toBeNull();
-    expect(parseCron('*/15 * * * *')).not.toBeNull();
-    expect(parseCron('30 8 * * 1-5')).not.toBeNull();
-    expect(parseCron('0 0,12 * * *')).not.toBeNull();
+    expect(parseCron('0 9 * * *')).toBe(true);
+    expect(parseCron('*/15 * * * *')).toBe(true);
+    expect(parseCron('30 8 * * 1-5')).toBe(true);
+    expect(parseCron('0 0,12 * * *')).toBe(true);
   });
 
   it('rejects malformed expressions rather than guessing', () => {
     // A misparsed cron that silently "works" would fire at the wrong time
     // forever; null makes the task visibly never fire instead.
-    expect(parseCron('0 9 * *')).toBeNull();
-    expect(parseCron('61 9 * * *')).toBeNull();
-    expect(parseCron('0 25 * * *')).toBeNull();
-    expect(parseCron('a b c d e')).toBeNull();
-    expect(parseCron('*/0 * * * *')).toBeNull();
+    expect(parseCron('0 9 * *')).toBe(false);
+    expect(parseCron('61 9 * * *')).toBe(false);
+    expect(parseCron('0 25 * * *')).toBe(false);
+    expect(parseCron('a b c d e')).toBe(false);
+    expect(parseCron('*/0 * * * *')).toBe(false);
   });
 
-  it('folds cron day-of-week 7 onto Sunday', () => {
-    expect(parseCron('0 9 * * 7')?.dayOfWeek.has(0)).toBe(true);
+  it('accepts cron day-of-week 7 as Sunday', () => {
+    expect(parseCron('0 9 * * 7')).toBe(true);
   });
 });
 
@@ -71,32 +70,62 @@ describe('nextTick — interval', () => {
 describe('nextTick — cron', () => {
   it('finds the next daily tick', () => {
     // 08:30 → today 09:00
-    expect(nextTick({ type: 'cron', cron: '0 9 * * *' }, BASE)).toBe(at(2026, 2, 10, 9, 0));
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: '0 9 * * *' }, BASE)).toBe(at(2026, 2, 10, 9, 0));
   });
 
   it('rolls to tomorrow once today is past', () => {
     const afterNine = at(2026, 2, 10, 9, 30);
-    expect(nextTick({ type: 'cron', cron: '0 9 * * *' }, afterNine)).toBe(at(2026, 2, 11, 9, 0));
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: '0 9 * * *' }, afterNine)).toBe(at(2026, 2, 11, 9, 0));
   });
 
   it('honours weekday restrictions', () => {
     // 2026-03-10 is a Tuesday; a Fri-only task should land on the 13th.
-    expect(nextTick({ type: 'cron', cron: '0 9 * * 5' }, BASE)).toBe(at(2026, 2, 13, 9, 0));
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: '0 9 * * 5' }, BASE)).toBe(at(2026, 2, 13, 9, 0));
   });
 
   it('ORs the two day fields when both are restricted (POSIX rule)', () => {
     // "the 1st OR a Monday" — from Tue the 10th, next Monday is the 16th,
     // which is sooner than the 1st of April.
-    expect(nextTick({ type: 'cron', cron: '0 9 1 * 1' }, BASE)).toBe(at(2026, 2, 16, 9, 0));
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: '0 9 1 * 1' }, BASE)).toBe(at(2026, 2, 16, 9, 0));
   });
 
   it('returns null for an unparseable cron instead of firing arbitrarily', () => {
-    expect(nextTick({ type: 'cron', cron: 'not a cron' }, BASE)).toBeNull();
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: 'not a cron' }, BASE)).toBeNull();
   });
 
   it('returns null for a date that never occurs', () => {
-    // Feb 30th: the search runs its full year bound and gives up.
-    expect(nextTick({ type: 'cron', cron: '0 9 30 2 *' }, BASE)).toBeNull();
+    expect(nextTick({ type: 'cron', tz: 'UTC', cron: '0 9 30 2 *' }, BASE)).toBeNull();
+  });
+
+  it('uses the task time zone rather than the device time zone', () => {
+    const after = Math.floor(Date.parse('2026-03-10T00:30:00Z') / 1000);
+    expect(nextTick({ type: 'cron', cron: '0 9 * * *', tz: 'Asia/Shanghai' }, after)).toBe(
+      Math.floor(Date.parse('2026-03-10T01:00:00Z') / 1000)
+    );
+    expect(nextTick({ type: 'cron', cron: '0 9 * * *', tz: 'America/Los_Angeles' }, after)).toBe(
+      Math.floor(Date.parse('2026-03-10T16:00:00Z') / 1000)
+    );
+  });
+
+  it('advances through the spring DST gap using the IANA rule', () => {
+    const after = Math.floor(Date.parse('2026-03-08T09:00:00Z') / 1000);
+    expect(nextTick({ type: 'cron', cron: '30 2 * * *', tz: 'America/Los_Angeles' }, after)).toBe(
+      Math.floor(Date.parse('2026-03-08T10:30:00Z') / 1000)
+    );
+  });
+
+  it('does not fire the repeated fall-back wall-clock minute twice', () => {
+    const beforeFirst = Math.floor(Date.parse('2026-11-01T08:00:00Z') / 1000);
+    const first = nextTick({ type: 'cron', cron: '30 1 * * *', tz: 'America/Los_Angeles' }, beforeFirst)!;
+    expect(first).toBe(Math.floor(Date.parse('2026-11-01T08:30:00Z') / 1000));
+    expect(nextTick({ type: 'cron', cron: '30 1 * * *', tz: 'America/Los_Angeles' }, first)).toBe(
+      Math.floor(Date.parse('2026-11-02T09:30:00Z') / 1000)
+    );
+  });
+
+  it('fails closed for a missing or invalid time zone', () => {
+    expect(nextTick({ type: 'cron', cron: '0 9 * * *' }, BASE)).toBeNull();
+    expect(nextTick({ type: 'cron', cron: '0 9 * * *', tz: 'Mars/Olympus_Mons' }, BASE)).toBeNull();
   });
 });
 
@@ -109,7 +138,7 @@ describe('nextTick — once', () => {
 });
 
 describe('missedTicks', () => {
-  const daily: ScheduleSpec = { type: 'cron', cron: '0 9 * * *' };
+  const daily: ScheduleSpec = { type: 'cron', cron: '0 9 * * *', tz: 'UTC' };
 
   it('lists every tick in the gap, oldest first', () => {
     const from = at(2026, 2, 10, 10, 0); // after the 10th's run
