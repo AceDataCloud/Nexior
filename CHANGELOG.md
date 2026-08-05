@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 21:40:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 05 Aug 2026 23:28:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.10
+
+Wed, 05 Aug 2026 23:28:09 GMT
+
+### Patches
+
+- Use the official TikTok brand icon and localize the publish confirmation title, summary, and action label from the active Studio locale. (dev@acedata.cloud)
 
 ## 3.356.9
 
