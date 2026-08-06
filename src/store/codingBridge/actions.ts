@@ -187,6 +187,7 @@ export const applyNodeEvent = (
         status: 'running',
         cwd: payload.cwd,
         model: payload.model,
+        resolved_model: payload.resolved_model,
         // The node now echoes effort/permission_mode too; only apply when present
         // so an older node that omits them doesn't wipe the session's values.
         ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
@@ -388,13 +389,15 @@ export const applyNodeEvent = (
       // opening their history entry reattaches with the running state intact —
       // this is how a reload recovers the Stop button and the typewriter.
       for (const item of payload.sessions ?? []) {
+        const selector = item.model;
         commit('upsertSession', {
           session_id: item.session_id,
           node_id: fromNode,
           status: item.status ?? 'running',
           started: true,
           cwd: item.cwd,
-          model: item.model,
+          model: selector,
+          resolved_model: item.resolved_model,
           ...(item.effort !== undefined ? { effort: item.effort } : {}),
           ...(item.permission_mode !== undefined ? { permission_mode: item.permission_mode } : {})
         });
@@ -468,12 +471,17 @@ const applyHistoryDetail = (
   // its per-session sidecar. Fall back to a live value, then this device's last
   // composer setup, so a restore never silently resets to defaults.
   const prefs = state.lastComposer?.[fromNode] ?? {};
+  // New nodes send both fields; old nodes sent a resolved model in `model`.
+  // Therefore `resolved_model` is also the provenance signal for trusting `model`.
+  const historicalModel = payload.resolved_model !== undefined ? payload.model : undefined;
+  const selector = historicalModel ?? live?.model;
   commit('upsertSession', {
     session_id: sessionId,
     node_id: fromNode,
     status: isLive ? live!.status : 'idle',
     cwd: payload.cwd ?? live?.cwd ?? prefs.cwd,
-    model: payload.model ?? live?.model ?? prefs.model,
+    model: selector,
+    resolved_model: payload.resolved_model ?? live?.resolved_model,
     effort: payload.effort ?? live?.effort ?? prefs.effort,
     permission_mode: payload.permission_mode ?? live?.permission_mode ?? prefs.permissionMode,
     provider,

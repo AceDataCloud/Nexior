@@ -81,7 +81,10 @@ export interface ICodingBridgeSession {
   node_id: string;
   status: ICodingBridgeSessionStatus;
   cwd?: string;
+  /** Exact client selector used to launch/switch the agent, e.g. `opus[1m]`. */
   model?: string;
+  /** Provider-reported identity for display/audit; never used to resume. */
+  resolved_model?: string;
   // Reasoning-effort tier and permission/edit mode the session is running with.
   // Transcripts don't record these, so a history replay seeds them from the
   // node's last composer prefs; a sent turn keeps them current. Both stay
@@ -127,7 +130,9 @@ export interface ICodingBridgeHistoryDetail {
   title?: string;
   cwd?: string;
   git_branch?: string;
+  /** Exact launch model restored from the versioned node sidecar. */
   model?: string;
+  resolved_model?: string;
   events: Array<Partial<ICodingBridgeEvent> & { kind: ICodingBridgeEventKind }>;
 }
 
