@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 04:54:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 22:20:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.357.1
+
+Thu, 06 Aug 2026 22:20:15 GMT
+
+### Patches
+
+- serve dynamic white-label Open Graph cards (dev@acedata.cloud)
+- Open scheduled template deep links in the requested category. (dev@acedata.cloud)
 
 ## 3.357.0
 
