@@ -360,7 +360,7 @@ const CREATION_SHOWCASES: IShowcase[] = [
 ];
 
 export default defineComponent({
-  name: 'Index',
+  name: 'Business',
   components: {
     ElButton,
     ConfirmIcon,

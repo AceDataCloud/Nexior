@@ -12,7 +12,7 @@ describe('Headshots Nexior shutdown', () => {
     expect(source('router/index.ts')).not.toContain("import headshots from './headshots'");
     expect(source('router/index.ts')).not.toMatch(/^\s+headshots,\s*$/m);
     expect(source('components/common/TopHeader.vue')).not.toContain('features?.headshots');
-    expect(source('pages/index/Index.vue')).not.toContain('features?.headshots');
+    expect(source('pages/business/Index.vue')).not.toContain('features?.headshots');
     expect(source('store/lazy.ts')).not.toContain("headshots: () => import('./headshots')");
     expect(source('models/site.ts')).not.toContain('headshots?:');
     expect(source('../public/robots.txt')).not.toContain('/headshots');
