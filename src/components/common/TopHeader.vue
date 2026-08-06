@@ -13,7 +13,7 @@
       <el-menu :default-active="active" mode="horizontal" class="menu" :ellipsis="true" @select="onSelect">
         <el-sub-menu :index="products">
           <template #title>{{ $t('common.nav.products') }}</template>
-          <el-menu-item v-t="'intro.nav.overview'" index="/intro"></el-menu-item>
+          <el-menu-item v-t="'intro.nav.overview'" index="/home"></el-menu-item>
           <el-menu-item v-if="site?.features?.chatgpt?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
           <el-menu-item
             v-if="site?.features?.midjourney?.enabled"
@@ -24,6 +24,7 @@
           <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
           <el-menu-item v-if="site?.features?.luma?.enabled" v-t="'index.title.luma'" index="/luma"></el-menu-item>
         </el-sub-menu>
+        <el-menu-item v-t="'index.nav.business'" index="/business"></el-menu-item>
         <el-menu-item
           v-if="isMainOfficialHost"
           v-t="'common.nav.mobileApp'"
@@ -77,7 +78,7 @@
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth, withCurrentUserIdAndSite, isMainOfficial } from '@/utils';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX, ROUTE_INTRO } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import {
   ElCol,
   ElRow,
@@ -124,7 +125,7 @@ export default defineComponent({
       return this.$route.matched?.[0]?.path;
     },
     isMinimalHeader() {
-      return this.$route.name === ROUTE_INDEX || this.$route.name === ROUTE_INTRO;
+      return this.$route.name === ROUTE_INDEX;
     },
     user() {
       return this.$store.getters?.user;

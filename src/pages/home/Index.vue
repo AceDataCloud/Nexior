@@ -187,7 +187,7 @@ const CONNECTOR_BULLETS = [
 ];
 
 export default defineComponent({
-  name: 'Intro',
+  name: 'ProductHome',
   components: {
     ElButton,
     ConfirmIcon,

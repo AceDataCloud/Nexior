@@ -58,7 +58,7 @@ const mountIntro = (site: Record<string, unknown>) =>
     }
   });
 
-describe('/intro site capability filtering', () => {
+describe('/home site capability filtering', () => {
   it('renders only Studio-enabled capabilities and matching screenshots', () => {
     const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
     const text = wrapper.text();

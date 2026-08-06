@@ -8,7 +8,7 @@ const heroHeadline = (site: Record<string, unknown>, fallback = 'Default marketi
     $t: () => fallback
   });
 
-describe('/home Site subtitle', () => {
+describe('/business Site subtitle', () => {
   it('uses the configured Site description', () => {
     expect(
       heroHeadline({

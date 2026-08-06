@@ -3,7 +3,7 @@ import store from '@/store';
 import auth from './auth';
 import console from './console';
 import home from './home';
-import intro from './intro';
+import business from './business';
 import grok from './grok';
 import gemini from './gemini';
 import claude from './claude';
@@ -369,7 +369,7 @@ export const routes = [
     redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
   },
   home,
-  intro,
+  business,
   order,
   console,
   auth,
