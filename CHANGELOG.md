@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 03:03:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 03:48:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.13
+
+Thu, 06 Aug 2026 03:48:34 GMT
+
+### Patches
+
+- Clarify that confirming an external action starts execution rather than proving it succeeded, and preserve structured continuation errors. (dev@acedata.cloud)
 
 ## 3.356.12
 
