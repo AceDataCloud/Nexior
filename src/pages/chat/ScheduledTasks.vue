@@ -394,6 +394,15 @@
           </div>
         </el-form-item>
 
+        <el-form-item :label="$t('chat.scheduledTasks.form.timezone')" required>
+          <el-select v-model="form.timezone" filterable style="width: 100%">
+            <el-option v-for="tz in timezoneOptions" :key="tz" :label="timeZoneLabel(tz)" :value="tz" />
+          </el-select>
+          <div class="hint">
+            {{ $t('chat.scheduledTasks.form.timezoneHint', { timezone: detectedTimezoneLabel }) }}
+          </div>
+        </el-form-item>
+
         <el-form-item v-if="form.scheduleType === 'interval'" :label="$t('chat.scheduledTasks.scheduleType.interval')">
           <el-input-number
             v-model="form.intervalValue"
@@ -614,8 +623,9 @@ import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import { IChatModelGroup } from '@/models';
+import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
 
-const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
+const USER_TZ = detectedTimeZone();
 
 type ScheduledTab = 'tasks' | 'runs';
 type RunStatusFilter = 'all' | IScheduledRunStatus;
@@ -645,6 +655,7 @@ interface TaskForm {
   dailyTime: string;
   weekday: number;
   cronExpr: string;
+  timezone: string;
   authorizedSkills: string[];
   authorizedMcpServers: string[];
   browserConnectionId: string;
@@ -798,10 +809,16 @@ export default defineComponent({
     // Live human-readable summary of the schedule the form currently builds.
     schedulePreview(): string {
       try {
-        return this.humanizeSchedule(this.buildSchedule());
+        return this.scheduleLabel(this.buildSchedule());
       } catch {
         return '';
       }
+    },
+    timezoneOptions(): string[] {
+      return listTimeZones(USER_TZ, this.form.timezone);
+    },
+    detectedTimezoneLabel(): string {
+      return timeZoneLabel(USER_TZ);
     },
     selectedBrowserConnections(): IAuthorizableBrowserConnection[] {
       const selected = new Set(this.form.authorizedSkills);
@@ -883,6 +900,7 @@ export default defineComponent({
         dailyTime: '09:00',
         weekday: 1,
         cronExpr: '0 9 * * *',
+        timezone: USER_TZ,
         authorizedSkills: [],
         authorizedMcpServers: [],
         browserConnectionId: '',
@@ -1164,6 +1182,7 @@ export default defineComponent({
         dailyTime,
         weekday,
         cronExpr,
+        timezone: s.tz || USER_TZ,
         authorizedSkills: task.unattended_policy?.allowed_skills || [],
         authorizedMcpServers: task.unattended_policy?.allowed_mcp_servers || [],
         browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
@@ -1234,30 +1253,35 @@ export default defineComponent({
       return build(n);
     },
     buildSchedule(): IScheduleSpec {
-      const { scheduleType, intervalValue, intervalUnit, hourlyMinute, dailyTime, weekday, cronExpr } = this.form;
+      const { scheduleType, intervalValue, intervalUnit, hourlyMinute, dailyTime, weekday, cronExpr, timezone } =
+        this.form;
       if (scheduleType === 'interval') {
         const unitSeconds = intervalUnit === 'day' ? 86400 : intervalUnit === 'hour' ? 3600 : 60;
         // Scheduler's finest cadence is 60s; guard against sub-minute intervals.
         const seconds = Math.max(60, Math.round(intervalValue) * unitSeconds);
-        return { type: 'interval', interval_seconds: seconds, tz: USER_TZ };
+        return { type: 'interval', interval_seconds: seconds, tz: timezone };
       }
       if (scheduleType === 'hourly') {
         const m = Math.min(59, Math.max(0, Math.round(hourlyMinute)));
-        return { type: 'cron', cron: `${m} * * * *`, tz: USER_TZ };
+        return { type: 'cron', cron: `${m} * * * *`, tz: timezone };
       }
       if (scheduleType === 'daily') {
         const [h, m] = dailyTime.split(':');
-        return { type: 'cron', cron: `${m} ${h} * * *`, tz: USER_TZ };
+        return { type: 'cron', cron: `${m} ${h} * * *`, tz: timezone };
       }
       if (scheduleType === 'weekly') {
         const [h, m] = dailyTime.split(':');
-        return { type: 'cron', cron: `${m} ${h} * * ${weekday}`, tz: USER_TZ };
+        return { type: 'cron', cron: `${m} ${h} * * ${weekday}`, tz: timezone };
       }
-      return { type: 'cron', cron: cronExpr, tz: USER_TZ };
+      return { type: 'cron', cron: cronExpr, tz: timezone };
     },
     async saveTask() {
       if (!this.form.question.trim()) {
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
+        return;
+      }
+      if (!isValidTimeZone(this.form.timezone)) {
+        ElMessage.warning(this.$t('chat.scheduledTasks.form.timezoneInvalid') as string);
         return;
       }
       // Connection/browser bindings below are rebuilt from authorizableSkills;
@@ -1650,7 +1674,10 @@ export default defineComponent({
       return t('once', { time: new Date(s.at * 1000).toLocaleString() });
     },
     scheduleLabel(s: IScheduleSpec) {
-      return this.humanizeSchedule(s);
+      return `${this.humanizeSchedule(s)} · ${timeZoneLabel(s.tz)}`;
+    },
+    timeZoneLabel(timeZone: string) {
+      return timeZoneLabel(timeZone);
     },
     formatTime(ts: number) {
       return new Date(ts * 1000).toLocaleString();

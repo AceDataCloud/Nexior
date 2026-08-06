@@ -1,3 +1,5 @@
+import cronParser from 'cron-parser';
+
 /**
  * When a locally-executed scheduled task should next fire.
  *
@@ -16,8 +18,6 @@ export type ScheduleSpec =
 
 /** Seconds, matching the wire format (the backend speaks epoch seconds). */
 export type Epoch = number;
-
-const MINUTE = 60;
 
 /**
  * Parse one field of a 5-field cron expression into the set of values it
@@ -54,57 +54,17 @@ function parseField(field: string, min: number, max: number): Set<number> | null
   return values.size ? values : null;
 }
 
-interface CronFields {
-  minute: Set<number>;
-  hour: Set<number>;
-  dayOfMonth: Set<number>;
-  month: Set<number>;
-  dayOfWeek: Set<number>;
-  /** Cron's day fields are OR'd when both are restricted — the POSIX rule. */
-  dayOfMonthRestricted: boolean;
-  dayOfWeekRestricted: boolean;
-}
-
-export function parseCron(expr: string): CronFields | null {
+export function parseCron(expr: string): boolean {
   const parts = expr.trim().split(/\s+/);
-  if (parts.length !== 5) return null;
-  const minute = parseField(parts[0], 0, 59);
-  const hour = parseField(parts[1], 0, 23);
-  const dayOfMonth = parseField(parts[2], 1, 31);
-  const month = parseField(parts[3], 1, 12);
-  // Accept 7 as Sunday (crontab convention) and fold it onto 0.
-  const dayOfWeekRaw = parseField(parts[4], 0, 7);
-  if (!minute || !hour || !dayOfMonth || !month || !dayOfWeekRaw) return null;
-  const dayOfWeek = new Set([...dayOfWeekRaw].map((d) => (d === 7 ? 0 : d)));
-  return {
-    minute,
-    hour,
-    dayOfMonth,
-    month,
-    dayOfWeek,
-    dayOfMonthRestricted: parts[2] !== '*',
-    dayOfWeekRestricted: parts[4] !== '*'
-  };
+  if (parts.length !== 5) return false;
+  return (
+    parseField(parts[0], 0, 59) !== null &&
+    parseField(parts[1], 0, 23) !== null &&
+    parseField(parts[2], 1, 31) !== null &&
+    parseField(parts[3], 1, 12) !== null &&
+    parseField(parts[4], 0, 7) !== null
+  );
 }
-
-function matchesCron(fields: CronFields, date: Date): boolean {
-  if (!fields.minute.has(date.getMinutes())) return false;
-  if (!fields.hour.has(date.getHours())) return false;
-  if (!fields.month.has(date.getMonth() + 1)) return false;
-  const domMatch = fields.dayOfMonth.has(date.getDate());
-  const dowMatch = fields.dayOfWeek.has(date.getDay());
-  // POSIX: when BOTH day fields are restricted, a match on either one fires.
-  // When only one is, that one must match.
-  if (fields.dayOfMonthRestricted && fields.dayOfWeekRestricted) return domMatch || dowMatch;
-  if (fields.dayOfMonthRestricted) return domMatch;
-  if (fields.dayOfWeekRestricted) return dowMatch;
-  return true;
-}
-
-/** A year of minutes — the search bound for a cron that may never match (e.g.
- *  Feb 30). Cheap: the loop is integer maths over at most ~525k steps, and only
- *  a pathological expression ever runs it to completion. */
-const CRON_SEARCH_LIMIT_MINUTES = 366 * 24 * 60;
 
 /**
  * The first tick strictly after `after`.
@@ -113,10 +73,8 @@ const CRON_SEARCH_LIMIT_MINUTES = 366 * 24 * 60;
  * expired `ends_at`, an unparseable or impossible cron). Callers treat null as
  * "this task is done", never as "fire now".
  *
- * All cron maths runs in the host's LOCAL time. The task's `tz` is deliberately
- * ignored here: a local task fires on the machine the user is sitting at, and
- * "9am" means 9am where that machine is. A cloud task keeps using the
- * scheduler's tz handling.
+ * Cron uses the task's saved IANA time zone, matching platform-scheduler. The
+ * binding to a device controls where it fires, not what "9am" means.
  */
 export function nextTick(schedule: ScheduleSpec, after: Epoch): Epoch | null {
   const endsAt = schedule.type === 'once' ? undefined : schedule.ends_at;
@@ -143,16 +101,17 @@ function computeRawNext(schedule: ScheduleSpec, after: Epoch): Epoch | null {
     return anchor + (Math.floor(elapsed / period) + 1) * period;
   }
 
-  const fields = parseCron(schedule.cron);
-  if (!fields) return null;
+  if (!parseCron(schedule.cron) || !schedule.tz) return null;
   const start = schedule.starts_at !== undefined && schedule.starts_at > after ? schedule.starts_at : after;
-  // Cron has minute resolution: begin at the next whole minute after `start`.
-  const cursor = new Date((Math.floor(start / MINUTE) + 1) * MINUTE * 1000);
-  for (let i = 0; i < CRON_SEARCH_LIMIT_MINUTES; i += 1) {
-    if (matchesCron(fields, cursor)) return Math.floor(cursor.getTime() / 1000);
-    cursor.setMinutes(cursor.getMinutes() + 1);
+  try {
+    const iter = cronParser.parseExpression(schedule.cron, {
+      currentDate: new Date(start * 1000),
+      tz: schedule.tz
+    });
+    return Math.floor(iter.next().toDate().getTime() / 1000);
+  } catch {
+    return null;
   }
-  return null;
 }
 
 /**
