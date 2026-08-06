@@ -245,6 +245,25 @@ describe('chat/ScheduledTasks — local execution', () => {
 
 describe('chat/ScheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
+
+  it('opens the template wizard automatically for a categorized deep link', async () => {
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    const wrapper = shallowMount(ScheduledTasks, {
+      global: {
+        stubs: { ScheduledTemplateWizard: true },
+        mocks: {
+          $t: (key: string) => key,
+          $te: () => false,
+          $route: { query: { template_category: 'marketing' } },
+          $store: { state: { chat: { credential: { token: 'tok' } }, site: { features: {} } } }
+        }
+      }
+    });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as { showTemplateWizard: boolean; templateInitialCategory: string };
+    expect(vm.showTemplateWizard).toBe(true);
+    expect(vm.templateInitialCategory).toBe('marketing');
+  });
   const browserSkill: IAuthorizableSkill = {
     slug: 'xiaohongshu',
     name: 'Xiaohongshu',
