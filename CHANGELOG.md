@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 03:48:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 04:52:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.14
+
+Thu, 06 Aug 2026 04:52:05 GMT
+
+### Patches
+
+- Preserve the exact Claude model selector when resuming Coding Bridge sessions so selector-only context profiles are not replaced by resolved model IDs. (dev@acedata.cloud)
 
 ## 3.356.13
 
