@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Mänskligt läsbart: Original Cron"
+    "description": "Mänskligt läsbart: rå Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Engångs {time}",
@@ -1125,7 +1125,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Typ av utdata - video"
+    "description": "Utdata typ - video"
   },
   "artifacts.kind.audio": {
     "message": "Ljud",
@@ -1390,18 +1390,18 @@
     "message": "Bekräfta före publicering",
     "description": "TikTok publiceringsbekräftelsekortets statusetikett"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Publicera på TikTok",
-      "description": "Titel för TikTok publiceringsbekräftelsekort"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Bekräfta för att publicera denna video på ditt TikTok-konto.",
-      "description": "Sammanfattning av TikTok publiceringsbekräftelsekort"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Publicera",
-      "description": "TikTok publiceringsbekräftelsekortets inlämningsknapp"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Publicera på TikTok",
+    "description": "Titel för TikTok publiceringsbekräftelsekort"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Bekräfta för att publicera denna video på ditt TikTok-konto.",
+    "description": "Sammanfattning av TikTok publiceringsbekräftelsekort"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Publicera",
+    "description": "TikTok publiceringsbekräftelsekortets inlämningsknapp"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Publicera till",
     "description": "TikTok publiceringsbekräftelse: Kontot etikett"
@@ -1574,6 +1574,186 @@
     "message": "Vänligen välj typ av kommersiellt innehåll",
     "description": "TikTok publiceringsbekräftelse: Orsak till inaktivering av knapp vid ej vald typ av avslöjande"
   },
+  "scheduledTemplates.title": {
+    "message": "Automatiseringsmallar",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Skapa nytt från mall",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Anpassad skapelse",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Låt AI slutföra arbetet i tid",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Välj en officiell mall, anslut nödvändiga konton, och när testkörningen är framgångsrik kan den automatiskt utföras.",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Bläddra bland mallar",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Välj mall",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Enkel konfiguration",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Anslut konto",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Kör test",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Bekräfta aktivering",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.search": {
+    "message": "Sök mallar",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Rekommenderat",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Tillgänglig för användning",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Behöver ansluta {count} objekt",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Körtid",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Förbered nödvändig anslutning",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Ingen anslutning till andra konton behövs",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Ansluten",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Inte ansluten än",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Välj konto",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Gå till anslutning",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Kör ett test först",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Uppgiften kommer att förbli avstängd. Testkörningen måste lyckas och bekräftas innan den börjar köras periodiskt.",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Generera och kör test",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Uppdatera resultat",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Testkörning pågår, vänligen uppdatera senare",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Testkörning lyckades",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Testkörning misslyckades, kontrollera konfiguration eller anslutning",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Bekräfta aktivering av automatisering",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.template": {
+    "message": "Mall",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Behörighetskapacitet",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.none": {
+    "message": "Ingen",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "När aktiverad kommer uppgiften att automatiskt utföras vid angiven tid; du kan pausa när som helst.",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Aktivera automatisering",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Automatisering har aktiverats",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Kan ännu inte aktiveras, vänligen bekräfta att testkörningen har lyckats",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Misslyckades med att ladda mallar, försök igen senare",
+    "description": "Kopiering av schemalagd uppgift mall centrum"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Alla",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Marknadsföringstillväxt",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Innehållsskapande",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Arbetseffektivitet",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Intelligens och forskning",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Utveckling och drift",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Personlig assistent",
+    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Publicering innebär att du godkänner TikToks 'Musikanvändningsbekräftelse'",
     "description": "TikTok publiceringsbekräftelse: Utsaga om musikanvändning"
@@ -1599,5 +1779,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Välj en giltig IANA-tidszon"
   }
-
 }

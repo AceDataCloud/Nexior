@@ -1390,18 +1390,18 @@
     "message": "게시 전 확인",
     "description": "TikTok 게시 확인 카드 상태 태그"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "TikTok에 게시",
-      "description": "TikTok 게시 확인 카드 제목"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "확인하면 이 동영상이 귀하의 TikTok 계정에 게시됩니다.",
-      "description": "TikTok 게시 확인 카드 요약"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "게시",
-      "description": "TikTok 게시 확인 카드의 제출 버튼"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "TikTok에 게시",
+    "description": "TikTok 게시 확인 카드 제목"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "확인하면 이 동영상이 귀하의 TikTok 계정에 게시됩니다.",
+    "description": "TikTok 게시 확인 카드 요약"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "게시",
+    "description": "TikTok 게시 확인 카드의 제출 버튼"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "게시 대상",
     "description": "TikTok 게시 확인: 계정 레이블"
@@ -1574,6 +1574,186 @@
     "message": "상업 콘텐츠 유형을 선택하세요",
     "description": "TikTok 게시 확인: 상업 공개 유형이 선택되지 않았을 때 버튼 비활성화 이유"
   },
+  "scheduledTemplates.title": {
+    "message": "자동화 템플릿",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "템플릿에서 새로 만들기",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "사용자 정의 생성",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "AI가 정시에 작업을 완료하도록 하세요",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "공식 템플릿을 선택하고 필요한 계정을 연결한 후, 테스트 실행이 성공하면 자동으로 실행됩니다.",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.browse": {
+    "message": "템플릿 탐색",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "템플릿 선택",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "간단한 설정",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "계정 연결",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "테스트 실행",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "활성화 확인",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.search": {
+    "message": "템플릿 검색",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.featured": {
+    "message": "추천",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.ready": {
+    "message": "즉시 사용 가능",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "{count} 항목을 연결해야 합니다",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "실행 시간",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "필요한 연결 준비",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "다른 계정을 연결할 필요가 없습니다",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.connected": {
+    "message": "연결됨",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "연결되지 않음",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "계정 선택",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.connect": {
+    "message": "연결하러 가기",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "먼저 테스트 실행하기",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "작업은 먼저 비활성 상태로 유지됩니다. 테스트 실행이 성공하고 확인된 후 주기적으로 실행됩니다.",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "생성 및 테스트 실행",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "결과 새로 고침",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "테스트 실행 중, 잠시 후 새로 고침하세요",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "테스트 실행 성공",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "테스트 실행 실패, 설정 또는 연결을 확인하세요",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "자동화 활성화 확인",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.template": {
+    "message": "템플릿",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "권한 부여",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.none": {
+    "message": "없음",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "활성화 후 작업은 설정된 시간에 자동으로 실행됩니다. 언제든지 일시 중지할 수 있습니다.",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.enable": {
+    "message": "자동화 활성화",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "자동화가 활성화되었습니다",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "아직 활성화할 수 없습니다. 테스트 실행이 성공했는지 확인하세요.",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "템플릿 로드 실패, 나중에 다시 시도하세요",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "전체",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "마케팅 성장",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "콘텐츠 제작",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "업무 효율",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "정보 및 연구",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "개발 및 운영",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "개인 비서",
+    "description": "예약된 작업 템플릿 센터 복사"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "게시함으로써 TikTok의 '음악 사용 확인'에 동의합니다.",
     "description": "TikTok 게시 확인: 음악 사용 선언"
@@ -1599,5 +1779,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "유효한 IANA 시간대를 선택하세요"
   }
-
 }

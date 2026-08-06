@@ -333,7 +333,7 @@ describe('chat/ScheduledTasks', () => {
       authorizedMcpServers: ['publishing']
     });
 
-    await wrapper.find('.header el-button-stub').trigger('click');
+    vm.openCreate();
 
     expect(vm.editingTask).toBeNull();
     expect(vm.showCreateDialog).toBe(true);
@@ -567,8 +567,9 @@ describe('chat/ScheduledTasks', () => {
     };
     await wrapper.setData({ saving: true, showCreateDialog: true });
 
-    const newButton = wrapper.find('.header el-button-stub');
-    const dialog = wrapper.findComponent({ name: 'ElDialog' });
+    const newButton = wrapper.find('.header el-dropdown-stub');
+    const dialogs = wrapper.findAllComponents({ name: 'ElDialog' });
+    const dialog = dialogs[dialogs.length - 1];
 
     expect(newButton.attributes('disabled')).toBe('true');
     expect(dialog.props('showClose')).toBe(false);

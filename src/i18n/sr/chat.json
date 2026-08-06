@@ -898,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Лако читљиво: оригинални Cron"
+    "description": "Čitljiv za ljude: originalni Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "једном у {time}",
@@ -1351,18 +1351,18 @@
     "message": "Potvrda pre objavljivanja",
     "description": "TikTok potvrda pre objavljivanja: Status oznake potvrde"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Objavi na TikTok",
-      "description": "Naslov potvrde za objavljivanje na TikTok-u."
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Potvrdom će se ovaj video objaviti na tvom TikTok nalogu.",
-      "description": "Sažetak potvrde za objavljivanje na TikTok-u."
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Objavi",
-      "description": "Dugme za potvrdu objavljivanja na TikTok-u."
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Objavi na TikTok",
+    "description": "Naslov potvrde za objavljivanje na TikTok-u."
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Potvrdom će se ovaj video objaviti na tvom TikTok nalogu.",
+    "description": "Sažetak potvrde za objavljivanje na TikTok-u."
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Objavi",
+    "description": "Dugme za potvrdu objavljivanja na TikTok-u."
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Објављује се на",
     "description": "TikTok потврда објављивања: ознака налога"
@@ -1535,6 +1535,186 @@
     "message": "Molimo vas da odaberete tip komercijalnog sadržaja",
     "description": "TikTok potvrda pre objavljivanja: Razlog onemogućavanja dugmeta kada nije odabran tip otkrivanja"
   },
+  "scheduledTemplates.title": {
+    "message": "Шаблони аутоматизације",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Napravi iz šablona",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Prilagođeno kreiranje",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Neka AI na vreme završi posao za tebe",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Izaberi zvanični šablon, poveži potrebne naloge, i nakon uspešnog testiranja, automatski će se izvršavati.",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Pregledaj šablone",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Изабери шаблон",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Једноставна конфигурација",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Повежи налог",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Тестирај",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Потврди активирање",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.search": {
+    "message": "Претрага шаблона",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Preporučeno",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Спремно за употребу",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Potrebno je povezati {count} stavki",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Време извршења",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Priprema potrebnih veza",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Нема потребе за повезивањем других налога",
+    "description": "Копија центра за шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Povezano",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Није повезано",
+    "description": "Копија centra za шабlone zakazanih zadataka"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Izaberi nalog",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Poveži se",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Прво тестирај",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Задатак ће остати искључен. Започеће периодично извршавање тек након успешног тестирања и потврде.",
+    "description": "Копија centra za шабlоне zakazanih zadataka"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Генериши и тестирај",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Освежи резултате",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Тестирање у току, молимо сачекајте",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Тестирање успешно",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Тестирање није успело, провери конфигурацију или повезивање",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Potvrdi omogućavanje automatizacije",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.template": {
+    "message": "Шаблон",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Овлашћења",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.none": {
+    "message": "Нема",
+    "description": "Копија centra za шаблоне zakazanih zadataka"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "Nakon omogućavanja, zadaci će se automatski izvršavati u zakazano vreme; možeš ih uvek pauzirati.",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Omogući automatizaciju",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Automatizacija je omogućena",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Još uvek ne može da se omogući, molimo proverite da li je testiranje uspešno",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Greška pri učitavanju šablona, molimo pokušajte ponovo kasnije",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Sve",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Marketing i rast",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Kreiranje sadržaja",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Produktivnost",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Obaveštavanje i istraživanje",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Razvoj i održavanje",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Lični asistent",
+    "description": "Kopija centra za šablone zakazanih zadataka"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Објављивањем потврђујете да се слажете са TikTok-овом „Потврдом о коришћењу музике“",
     "description": "TikTok потврда објављивања: изјава о коришћењу музике"
@@ -1560,5 +1740,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Изаберите важећу IANA временску зону"
   }
-
 }

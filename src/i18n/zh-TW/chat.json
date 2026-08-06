@@ -1351,18 +1351,18 @@
     "message": "發布前確認",
     "description": "TikTok 發布確認卡片狀態標籤"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "發佈到 TikTok",
-      "description": "TikTok 發佈確認卡片標題"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "確認後將把此影片發佈到你的 TikTok 帳號。",
-      "description": "TikTok 發佈確認卡片摘要"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "發佈",
-      "description": "TikTok 發佈確認卡片的提交按鈕"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "發佈到 TikTok",
+    "description": "TikTok 發佈確認卡片標題"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "確認後將把此影片發佈到你的 TikTok 帳號。",
+    "description": "TikTok 發佈確認卡片摘要"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "發佈",
+    "description": "TikTok 發佈確認卡片的提交按鈕"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "發布至",
     "description": "TikTok 發布確認：帳號標籤"
@@ -1535,6 +1535,186 @@
     "message": "請選擇商業內容類型",
     "description": "TikTok 發布確認：未選商業披露類型時的按鈕禁用原因"
   },
+  "scheduledTemplates.title": {
+    "message": "自動化模板",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "從模板新建",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "自訂創建",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "讓 AI 按時替你完成工作",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "選擇一個官方模板，連接需要的帳號，試運行成功後即可自動執行。",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.browse": {
+    "message": "瀏覽模板",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "選擇模板",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "簡單配置",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "連接帳號",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "試運行",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "確認啟用",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.search": {
+    "message": "搜索模板",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.featured": {
+    "message": "推薦",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.ready": {
+    "message": "可立即使用",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "需要連接 {count} 項",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "執行時間",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "準備所需連接",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "無需連接其他帳號",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.connected": {
+    "message": "已連接",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "尚未連接",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "選擇帳號",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.connect": {
+    "message": "去連接",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "先試運行一次",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "任務會先保持關閉。試運行成功並確認後才開始按周期執行。",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "生成並試運行",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "刷新結果",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "試運行中，請稍後刷新",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "試運行成功",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "試運行失敗，請檢查配置或連接",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "確認啟用自動化",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.template": {
+    "message": "模板",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "授權能力",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.none": {
+    "message": "無",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "啟用後任務將按設定時間自動執行；你可以隨時暫停。",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.enable": {
+    "message": "啟用自動化",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "自動化已啟用",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "尚不能啟用，請確認試運行已成功",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "模板加載失敗，請稍後重試",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "全部",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "行銷增長",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "內容創作",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "工作效率",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "情報與研究",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "開發與運維",
+    "description": "排程任務模板中心的文字"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "個人助理",
+    "description": "排程任務模板中心的文字"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "發布即表示您同意 TikTok 的《音樂使用確認》",
     "description": "TikTok 發布確認：音樂使用聲明"
@@ -1560,5 +1740,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "請選擇有效的 IANA 時區"
   }
-
 }

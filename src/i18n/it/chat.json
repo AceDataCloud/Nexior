@@ -926,7 +926,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Leggibile dall'uomo: Cron originale"
+    "description": "Leggibile da umani: Cron originale"
   },
   "scheduledTasks.humanize.once": {
     "message": "Una sola volta {time}",
@@ -1284,7 +1284,7 @@
   },
   "scheduledTasks.execution.cloud": {
     "message": "Cloud",
-    "description": "Modalità di esecuzione nel cloud"
+    "description": "Modalità di esecuzione cloud"
   },
   "scheduledTasks.execution.local": {
     "message": "Questo dispositivo",
@@ -1390,18 +1390,18 @@
     "message": "Conferma prima della pubblicazione",
     "description": "Etichetta di stato della scheda di conferma TikTok"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Pubblica su TikTok",
-      "description": "Titolo della scheda di conferma pubblicazione di TikTok"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Dopo la conferma, questo video sarà pubblicato sul tuo account TikTok.",
-      "description": "Sommario della scheda di conferma pubblicazione di TikTok"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Pubblica",
-      "description": "Pulsante di invio per la scheda di conferma pubblicazione di TikTok"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Pubblica su TikTok",
+    "description": "Titolo della scheda di conferma pubblicazione di TikTok"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Dopo la conferma, questo video sarà pubblicato sul tuo account TikTok.",
+    "description": "Sommario della scheda di conferma pubblicazione di TikTok"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Pubblica",
+    "description": "Pulsante di invio per la scheda di conferma pubblicazione di TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Pubblica su",
     "description": "Conferma di pubblicazione TikTok: etichetta dell'account"
@@ -1574,6 +1574,186 @@
     "message": "Seleziona il tipo di contenuto commerciale",
     "description": "Conferma di pubblicazione TikTok: motivo per cui il pulsante è disabilitato quando non è selezionato il tipo di divulgazione commerciale"
   },
+  "scheduledTemplates.title": {
+    "message": "Modelli di automazione",
+    "description": "Copia del centro dei modelli di attività pianificata"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Crea da modello",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Crea personalizzato",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Fai completare il lavoro in tempo da AI",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Scegli un modello ufficiale, collega gli account necessari e, dopo un'esecuzione di prova riuscita, verrà eseguito automaticamente.",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Sfoglia modelli",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Scegli un modello",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Configurazione semplice",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Collega account",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Prova l'esecuzione",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Conferma attivazione",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.search": {
+    "message": "Cerca modelli",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Consigliato",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Pronto all'uso",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "È necessario collegare {count} elementi",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Orario di esecuzione",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Preparare le connessioni necessarie",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Nessun collegamento ad altri account necessario",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Collegato",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Non ancora collegato",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Scegli un account",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Collegati",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Esegui un test",
+    "description": "Copia del centro dei modelli di attività pianificata"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Il compito rimarrà chiuso. Inizierà a essere eseguito periodicamente solo dopo una prova riuscita e confermata.",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Genera e prova l'esecuzione",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Aggiorna i risultati",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Prova l'esecuzione in corso, aggiorna più tardi",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Test eseguito con successo",
+    "description": "Copia del centro dei modelli di attività pianificata"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Prova l'esecuzione fallita, controlla la configurazione o il collegamento",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Conferma attivazione dell'automazione",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.template": {
+    "message": "Modello",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Autorizzazioni",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.none": {
+    "message": "Nessuno",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "Una volta abilitato, il compito verrà eseguito automaticamente all'orario impostato; puoi mettere in pausa in qualsiasi momento.",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Abilita automazione",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Automazione attivata",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Non può essere abilitato, verifica che l'esecuzione di prova sia riuscita",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Caricamento del modello fallito, riprova più tardi",
+    "description": "Testo del centro dei modelli di attività pianificate"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Tutti",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Crescita del marketing",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Creazione di contenuti",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Produttività",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Intelligence e ricerca",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Sviluppo e operazioni",
+    "description": "Testo del centro modelli per attività programmate"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Assistente personale",
+    "description": "Testo del centro modelli per attività programmate"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Pubblicando, accetti la 'Conferma di utilizzo della musica' di TikTok",
     "description": "Conferma di pubblicazione TikTok: dichiarazione sull'uso della musica"
@@ -1599,5 +1779,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Seleziona un fuso orario IANA valido"
   }
-
 }
