@@ -4,6 +4,17 @@ on:
   push:
     tags:
       - 'android-v*'
+  workflow_call:
+    inputs:
+      release_tag:
+        description: 'Existing draft Release to receive the sideload APK.'
+        required: true
+        type: string
+      upload_to_play:
+        description: 'Upload the AAB to Google Play.'
+        required: false
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
       track:
@@ -51,7 +62,7 @@ jobs:
     name: Preflight (skip if Play already has this versionCode)
     runs-on: ubuntu-latest
     outputs:
-      should-build: ${{ steps.check.outputs.should-build }}
+      should-build: ${{ steps.package_only.outputs.should-build || steps.check.outputs.should-build }}
       version-name: ${{ steps.version.outputs.name }}
       version-code: ${{ steps.version.outputs.code }}
       track: ${{ steps.track.outputs.track }}
@@ -75,7 +86,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "track=${{ inputs.track }}" >> "$GITHUB_OUTPUT"
           else
-            # Tag push (android-v*) defaults to Open testing (beta) and then promotes to production.
+            # Tag and reusable release builds use beta metadata by default.
             echo "track=beta" >> "$GITHUB_OUTPUT"
           fi
 
@@ -84,8 +95,14 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Build without Play preflight
+        if: github.event_name == 'workflow_call' && !inputs.upload_to_play
+        run: echo "should-build=true" >> "$GITHUB_OUTPUT"
+        id: package_only
+
       - name: Check Play Console for existing AAB/APK
         id: check
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         env:
           FORCE: ${{ inputs.force }}
           SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -207,12 +224,14 @@ jobs:
           mv android/app/src/main/assets/public android/app/src/full/assets/public
 
       - name: Build web assets (play flavor, Computer Use OFF, tree-shaken)
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           VITE_COMPUTER_USE: 'false'
         run: npm run build:android
 
       - name: Stage play-flavor web assets
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         # The Play web bundle is compiled with no Local Tools entry and no
         # Computer Use / AccessibilityService adapter code; it lives only in the
         # `play` flavor. cap copy re-processes dist into the main source set the
@@ -238,6 +257,7 @@ jobs:
         shell: bash
 
       - name: Build Play AAB (play flavor, no Computer Use)
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         working-directory: android
         run: |
           chmod +x gradlew
@@ -263,44 +283,38 @@ jobs:
           path: android/app/build/outputs/apk/full/release/app-full-release.apk
 
       - name: Upload AAB artifact
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
 
-      # Attach the sideloadable APK to the matching GitHub Release
-      # (@acedatacloud/nexior_v<version>, created by github-release.yaml). Only
-      # attach when that release ALREADY EXISTS, so a manual `android-v*` /
-      # workflow_dispatch run can never create a spurious release. action-gh-
-      # release is idempotent: it updates the existing release and adds the asset.
-      - name: Check release exists
-        id: rel
+      - name: Verify draft Release exists
+        if: github.event_name == 'workflow_call'
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          REL_TAG: '@acedatacloud/nexior_v${{ needs.preflight.outputs.version-name }}'
+          REL_TAG: ${{ inputs.release_tag }}
         run: |
-          if gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "::warning::release $REL_TAG not found — skipping APK attach."
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+          IS_DRAFT=$(gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
+          test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
 
       - name: Stage versioned APK
-        if: steps.rel.outputs.exists == 'true'
+        if: github.event_name == 'workflow_call'
         run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
 
-      - name: Attach APK to GitHub Release
-        if: steps.rel.outputs.exists == 'true'
+      - name: Attach APK to draft GitHub Release
+        if: github.event_name == 'workflow_call'
         uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
         with:
-          tag_name: '@acedatacloud/nexior_v${{ needs.preflight.outputs.version-name }}'
+          tag_name: ${{ inputs.release_tag }}
+          draft: true
           files: nexior-${{ needs.preflight.outputs.version-name }}.apk
           fail_on_unmatched_files: true
 
       - name: Upload to Play Store
+        if: github.event_name != 'workflow_call' || inputs.upload_to_play
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -325,6 +339,7 @@ jobs:
       always()
       && needs.preflight.result == 'success'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
+      && github.event_name != 'workflow_call'
       && needs.preflight.outputs.track != 'production'
       && (github.event_name != 'workflow_dispatch' || inputs.promote_to_production)
     runs-on: ubuntu-latest

@@ -46,16 +46,22 @@ manifest** (artifacts are immutable, never deleted).
 
 ## Cutting a release
 
-- **Beta (works today, signed or not):** Actions → **Desktop** → _Run workflow_ → channel `beta`.
-- **Stable (requires the signing certs above):** push a `desktop-v*` tag
-  (e.g. `desktop-v3.282.4`) **or** run the workflow with channel `latest`.
+The normal product release is aggregated once per day. Actions → **publish**
+runs Beachball against the accumulated change files, publishes npm, creates a
+draft GitHub Release, and calls this workflow to attach Windows and both macOS
+installers. The Release becomes public only after Web dist, APK, EXE, x64 DMG,
+and arm64 DMG all exist. Run **publish** manually for an urgent full release.
 
-Flow: `e2e` smoke (Linux/xvfb) → wait for **admin approval** → `build` matrix
-(Windows + macOS): `build:electron` → `compile:electron` → `copy-renderer` →
-`electron-builder` (signs when a cert is present; macOS notarizes via the API
-key + staples, verified by `stapler validate`) → upload artifacts → publish to COS.
+Desktop auto-update feeds remain separate:
 
-`workflow_dispatch` has a `dry_run` toggle (build + sign, skip the COS upload).
+- **Beta (signed or unsigned):** Actions → **Desktop** → _Run workflow_ → channel `beta`.
+- **Stable (requires signing certs):** push a `desktop-v*` tag or run **Desktop**
+  with channel `latest`.
+
+Flow: `e2e` smoke → `build` matrix → `electron-builder` → workflow artifacts.
+A daily product release attaches installers to its draft GitHub Release without
+changing the COS feed. A direct Desktop release publishes to COS behind the
+`desktop-release` approval gate. `dry_run` skips that COS publish.
 
 ## Cross-repo prerequisites for desktop login
 

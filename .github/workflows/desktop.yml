@@ -5,17 +5,12 @@ name: Desktop
 #
 # Triggers:
 #   - pull_request (desktop paths)        → E2E smoke only
-#   - schedule (daily 04:07 Beijing)      → E2E + build .exe/.dmg beta artifacts
-#                                           (30-day retention; NO release attach,
-#                                            NO COS publish). Daily — not per merge —
-#                                            because the macOS leg bills at 10x.
+#   - workflow_call (daily release)       → E2E + build + attach installers
 #   - push tag `desktop-v*`               → E2E + build + PUBLISH to `latest`
 #   - workflow_dispatch (channel/dry_run) → E2E + build + (optional) PUBLISH
 #
-# The macOS/Windows build used to fire on every beachball release tag
-# (@acedatacloud/nexior_v*), i.e. almost every merge — the single biggest
-# desktop Actions cost. It's now a once-daily beta build; the live auto-update
-# feed (COS) is still an admin-gated `desktop-v*` release, untouched.
+# Product releases call this workflow once after the day's Beachball aggregation.
+# The live auto-update feed (COS) remains an independent, admin-gated release.
 #
 # Required repo secrets:
 #   TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY        COS upload
@@ -45,10 +40,17 @@ on:
       - 'scripts/gen-tray-icon.py'
       - 'scripts/publish_desktop_release.py'
       - '.github/workflows/desktop.yml'
-  schedule:
-    # 04:07 Beijing time (UTC 20:07), off the top of the hour to dodge cron
-    # congestion. Daily beta build of the desktop installers.
-    - cron: '7 20 * * *'
+  workflow_call:
+    inputs:
+      release_tag:
+        description: 'Existing draft Release to receive the installers.'
+        required: true
+        type: string
+      channel:
+        description: 'electron-builder channel for the packaged metadata.'
+        required: false
+        default: 'beta'
+        type: string
   push:
     tags:
       - 'desktop-v*'
@@ -72,7 +74,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.release_tag || inputs.channel || 'smoke' }}
   cancel-in-progress: true
 
 env:
@@ -108,7 +110,7 @@ jobs:
   # Resolve the channel and whether this run publishes to the live feed.
   #   tag desktop-v*  → latest, publish
   #   workflow_dispatch → chosen channel, publish unless dry_run
-  #   push to main    → beta, build artifacts only (no publish)
+  #   workflow_call   → beta, attach to the aggregate draft (no COS publish)
   # --------------------------------------------------------------------------
   resolve:
     name: Resolve channel
@@ -119,19 +121,26 @@ jobs:
       publish: ${{ steps.c.outputs.publish }}
     steps:
       - id: c
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          INPUT_CHANNEL: ${{ inputs.channel }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          GIT_REF: ${{ github.ref }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "channel=${{ inputs.channel }}" >> "$GITHUB_OUTPUT"
-            if [ "${{ inputs.dry_run }}" = "true" ]; then
+          if [ -n "$RELEASE_TAG" ]; then
+            echo "channel=$INPUT_CHANNEL" >> "$GITHUB_OUTPUT"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          elif [ -n "$INPUT_CHANNEL" ]; then
+            echo "channel=$INPUT_CHANNEL" >> "$GITHUB_OUTPUT"
+            if [ "$DRY_RUN" = "true" ]; then
               echo "publish=false" >> "$GITHUB_OUTPUT"
             else
               echo "publish=true" >> "$GITHUB_OUTPUT"
             fi
-          elif [[ "${{ github.ref }}" == refs/tags/desktop-v* ]]; then
+          elif [[ "$GIT_REF" == refs/tags/desktop-v* ]]; then
             echo "channel=latest" >> "$GITHUB_OUTPUT"
             echo "publish=true" >> "$GITHUB_OUTPUT"
           else
-            # push to main → auto-build beta installers as artifacts, no publish
             echo "channel=beta" >> "$GITHUB_OUTPUT"
             echo "publish=false" >> "$GITHUB_OUTPUT"
           fi
@@ -253,36 +262,24 @@ jobs:
           retention-days: 30
           if-no-files-found: error
 
-      # Attach this OS's installer to the GitHub Release for the version
-      # currently on main (@acedatacloud/nexior_v<package.json version>, created
-      # by github-release.yaml on the beachball tag). We gate on the release
-      # ALREADY EXISTING (mirroring build-android.yaml) rather than on a tag ref,
-      # so the daily scheduled build still attaches to the day's release. A
-      # manual desktop-v* / workflow_dispatch run never creates a bare release.
-      - name: Resolve release tag from package.json
-        id: rel
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-        shell: bash
+      - name: Verify draft Release exists
+        if: github.event_name == 'workflow_call'
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          REL_TAG: ${{ inputs.release_tag }}
+        shell: bash
         run: |
-          VERSION=$(node -p "require('./package.json').version")
-          REL_TAG="@acedatacloud/nexior_v${VERSION}"
-          echo "tag=$REL_TAG" >> "$GITHUB_OUTPUT"
-          if gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "::warning::release $REL_TAG not found — skipping installer attach (artifacts still uploaded)."
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+          IS_DRAFT=$(gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
+          test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
 
-      - name: Attach installer to GitHub Release
-        if: steps.rel.outputs.exists == 'true'
+      - name: Attach installer to draft GitHub Release
+        if: github.event_name == 'workflow_call'
         uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
         with:
-          tag_name: ${{ steps.rel.outputs.tag }}
+          tag_name: ${{ inputs.release_tag }}
+          draft: true
           files: ${{ runner.os == 'Windows' && 'release/*.exe' || 'release/*.dmg' }}
           fail_on_unmatched_files: true
 

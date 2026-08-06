@@ -1,21 +1,33 @@
 name: github-release
 
-"on":
-  push:
-    tags:
-      - '@acedatacloud/nexior_v*'
-      - 'v*'
+# Assemble one complete, public Release from the daily Beachball version. The
+# Release stays draft until every downloadable platform asset is present.
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Beachball tag to assemble (for example @acedatacloud/nexior_v3.356.14).'
+        required: true
+        type: string
 
 permissions:
   contents: write
 
+concurrency:
+  group: github-release-${{ inputs.release_tag }}
+  cancel-in-progress: false
+
 jobs:
-  release:
+  prepare:
+    name: Build web dist and create draft
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
     steps:
-      - name: Checkout
+      - name: Checkout release tag
         uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.release_tag }}
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -27,66 +39,131 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Validate release metadata
+        id: meta
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./package.json').version")
+          EXPECTED="@acedatacloud/nexior_v${VERSION}"
+          test "$RELEASE_TAG" = "$EXPECTED" || {
+            echo "::error::release tag $RELEASE_TAG does not match package version $EXPECTED"
+            exit 1
+          }
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build web dist
         run: npm run build
 
-      - name: Prepare metadata
-        id: meta
-        shell: bash
+      - name: Package web dist
         env:
-          # Optional override; falls back to the canonical URL shipped in the app.
-          IOS_APP_STORE_URL_OVERRIDE: ${{ vars.IOS_APP_STORE_URL }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          TAG="${GITHUB_REF_NAME}"
-          SAFE_TAG="${TAG//\//-}"
-          if [[ "$TAG" == *"_v"* ]]; then
-            VERSION="${TAG##*_v}"
-          else
-            VERSION="${TAG#v}"
-          fi
-          # iOS store link: prefer the repo-variable override, else the canonical
-          # URL the app already ships with (single source of truth in mobile.ts).
-          IOS_URL="${IOS_APP_STORE_URL_OVERRIDE:-}"
-          if [ -z "$IOS_URL" ]; then
-            IOS_URL=$(sed -nE "s/.*MOBILE_IOS_APP_STORE_URL *= *'([^']+)'.*/\1/p" src/constants/mobile.ts | head -n1)
-          fi
-          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          echo "safe_tag=${SAFE_TAG}" >> "$GITHUB_OUTPUT"
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-          echo "ios_url=${IOS_URL}" >> "$GITHUB_OUTPUT"
-
-      - name: Package dist
-        shell: bash
-        run: |
-          ASSET="nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz"
+          SAFE_TAG=${RELEASE_TAG//\//-}
+          ASSET="nexior-dist-${SAFE_TAG}.tar.gz"
           tar -czf "$ASSET" dist
           sha256sum "$ASSET" > "${ASSET}.sha256"
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3
+      - name: Create draft Release with web assets
         env:
-          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          set -euo pipefail
+          if gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            IS_DRAFT=$(gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
+            test "$IS_DRAFT" = "true" || {
+              echo "::error::$RELEASE_TAG is already public; refusing to replace it"
+              exit 1
+            }
+          else
+            gh release create "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
+              --verify-tag --draft --generate-notes --title "v$VERSION"
+          fi
+          gh release upload "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
+            nexior-dist-*.tar.gz nexior-dist-*.tar.gz.sha256 --clobber
+
+  desktop:
+    name: Build desktop installers
+    needs: prepare
+    uses: ./.github/workflows/desktop.yml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+      channel: beta
+    secrets: inherit
+
+  android:
+    name: Build Android sideload package
+    needs: prepare
+    uses: ./.github/workflows/build-android.yaml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+      upload_to_play: false
+    secrets: inherit
+
+  publish:
+    name: Verify assets and publish Release
+    needs: [prepare, desktop, android]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v4
         with:
-          tag_name: ${{ steps.meta.outputs.tag }}
-          name: v${{ steps.meta.outputs.version }}
-          generate_release_notes: true
-          # The platform installers themselves are attached by the per-platform
-          # workflows (build-android.yaml / desktop.yml) which finish on their own
-          # runners; this block just documents where each lives. append_body keeps
-          # the auto-generated changelog above this table.
-          append_body: true
-          body: |
-            ## 📦 Downloads
+          ref: ${{ inputs.release_tag }}
 
-            | Platform | How to get it |
-            |----------|---------------|
-            | 🍎 **macOS** | The `.dmg` in Assets below (`x64` for Intel, `arm64` for Apple Silicon) |
-            | 🪟 **Windows** | The `.exe` installer in Assets below |
-            | 🤖 **Android** | The `.apk` in Assets below (sideload), or [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
-            | 📱 **iOS** | ${{ steps.meta.outputs.ios_url != '' && format('[App Store]({0})', steps.meta.outputs.ios_url) || 'TestFlight beta (coming soon)' }} |
-            | 🌐 **Web** | The `nexior-dist-*.tar.gz` below (self-host) |
+      - name: Verify complete asset set
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          ASSETS=$(gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+          printf '%s\n' "$ASSETS"
 
-            > ⚠️ The desktop apps are currently an **unsigned beta**: on macOS, right-click → Open to bypass Gatekeeper; on Windows, click "Run anyway" on the SmartScreen prompt. They switch to signed builds automatically once the signing certificates are configured.
-          files: |
-            nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz
-            nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz.sha256
+          require_count() {
+            PATTERN=$1
+            EXPECTED=$2
+            COUNT=$(printf '%s\n' "$ASSETS" | grep -Ec "$PATTERN" || true)
+            if [ "$COUNT" -ne "$EXPECTED" ]; then
+              echo "::error::expected $EXPECTED asset(s) matching $PATTERN, found $COUNT"
+              exit 1
+            fi
+          }
+
+          require_count '^nexior-dist-.*\.tar\.gz$' 1
+          require_count '^nexior-dist-.*\.tar\.gz\.sha256$' 1
+          require_count '^nexior-[0-9]+\.[0-9]+\.[0-9]+\.apk$' 1
+          require_count '^AceData\.Setup\..*\.exe$' 1
+          require_count '^AceData-[0-9]+\.[0-9]+\.[0-9]+\.dmg$' 1
+          require_count '^AceData-[0-9]+\.[0-9]+\.[0-9]+-arm64\.dmg$' 1
+
+      - name: Publish completed Release
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          IOS_APP_STORE_URL_OVERRIDE: ${{ vars.IOS_APP_STORE_URL }}
+        run: |
+          set -euo pipefail
+          IOS_URL=${IOS_APP_STORE_URL_OVERRIDE:-}
+          if [ -z "$IOS_URL" ]; then
+            IOS_URL=$(sed -nE "s/.*MOBILE_IOS_APP_STORE_URL *= *'([^']+)'.*/\1/p" src/constants/mobile.ts | head -n1)
+          fi
+          gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json body --jq .body > release-notes.md
+          cat >> release-notes.md <<EOF
+
+          ## 📦 Downloads
+
+          | Platform | How to get it |
+          |----------|---------------|
+          | 🍎 **macOS** | The \`.dmg\` in Assets below (plain name for Intel, \`arm64\` for Apple Silicon) |
+          | 🪟 **Windows** | The \`.exe\` installer in Assets below |
+          | 🤖 **Android** | The \`.apk\` in Assets below (sideload), or [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
+          | 📱 **iOS** | [App Store](${IOS_URL}) |
+          | 🌐 **Web** | The \`nexior-dist-*.tar.gz\` below (self-host) |
+
+          > ⚠️ Desktop signing depends on the configured platform certificates. If an OS warns about an unsigned beta, use macOS right-click → Open or Windows "Run anyway".
+          EOF
+          gh release edit "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
+            --notes-file release-notes.md --draft=false --latest

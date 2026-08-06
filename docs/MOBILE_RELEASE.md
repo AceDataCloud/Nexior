@@ -5,18 +5,21 @@ Android (Google Play Store) 和 iOS (App Store) 的 CI/CD 构建与发布指南�
 ## 架构概览
 
 ```
-package.json (版本源)
-    ↓  npm run sync-version
-android/app/build.gradle  +  ios/App/App.xcodeproj/project.pbxproj
-    ↓  git tag android-v* / ios-v*
-GitHub Actions
-    ↓
-Google Play Store (AAB)  /  TestFlight (IPA)
+PR merge → main ──→ Web 自动部署
+                 └→ 每日 publish 聚合 Beachball 版本
+                      ├→ GitHub Release：Web dist + APK + EXE + DMG
+                      └→ npm package
+
+独立移动渠道工作流 → Google Play (AAB) / TestFlight (IPA)
 ```
 
+- **聚合版本 workflow**: `.github/workflows/publish.yaml`
+- **完整 GitHub Release workflow**: `.github/workflows/github-release.yaml`
 - **Android workflow**: `.github/workflows/build-android.yaml`
 - **iOS workflow**: `.github/workflows/build-ios.yaml`
 - **版本同步脚本**: `scripts/sync-native-version.js`
+
+GitHub Release 出包不会上传 Play 或提交 App Store；测试渠道与正式商店仍由独立工作流和 review-state gate 控制。
 
 ---
 
@@ -171,21 +174,13 @@ git tag ios-v3.29.5 && git push origin ios-v3.29.5
 
 ## 三、日常发版流程
 
-```bash
-# 1. 更新 package.json 版本号（通过 beachball 或手动修改）
+1. PR 必须带 Beachball change 文件；合并到 `main` 后 Web 仍立即自动部署。
+2. 每天北京时间 04:07，`publish` 把当天 change 文件聚合成一个版本，发布 npm，并组装完整 GitHub Release。
+3. 需要提前出包时，在 Actions 手动运行 **publish**；它与定时任务共享 concurrency，不会并发发两个版本。
+4. 需要手动重新部署 Web 时，运行 **deploy**。部署不会创建产品 Release。
+5. GitHub Release 只构建可下载 APK，不上传 Play。Android/iOS 测试渠道在聚合发布后独立运行，正式商店继续由 **Auto Production Mobile** 或 **Release Mobile** 的门禁控制。
 
-# 2. 同步版本到 Android + iOS native 项目
-npm run sync-version
-
-# 3. 提交版本变更
-git add -A && git commit -m "chore: bump version to x.y.z"
-
-# 4. 打 tag 触发 CI
-git tag android-vX.Y.Z && git tag ios-vX.Y.Z
-git push origin android-vX.Y.Z ios-vX.Y.Z
-```
-
-Android 可通过 GitHub Actions 手动选择 track 逐步放量：`internal → alpha → beta → production`。
+Android 可通过 GitHub Actions 手动选择 track 逐步放量：`internal → alpha → beta → production`。旧的 `android-v*` / `ios-v*` 触发方式仍保留用于明确的商店构建。
 
 ---
 
