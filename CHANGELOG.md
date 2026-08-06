@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 05 Aug 2026 23:28:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 00:30:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.11
+
+Thu, 06 Aug 2026 00:30:10 GMT
+
+### Patches
+
+- move the capability-first product presentation from /intro to /home and move the white-label business presentation from /home to /business (dev@acedata.cloud)
 
 ## 3.356.10
 
