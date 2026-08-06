@@ -927,6 +927,7 @@ export default defineComponent({
   async mounted() {
     document.addEventListener('visibilitychange', this.onVisibilityChange);
     await this.loadTasks();
+    if (this.$route?.query?.template_category) this.openTemplateGallery();
   },
   unmounted() {
     document.removeEventListener('visibilitychange', this.onVisibilityChange);
