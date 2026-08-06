@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Altro",
     "description": "Motivo per la segnalazione di contenuti: altro"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Metodo di pagamento",
+    "description": "Etichetta per scegliere i punti o il portafoglio Solana USDC nel contesto della generazione di immagini."
+  },
+  "x402Scenario.credits": {
+    "message": "Punti",
+    "description": "Opzione di pagamento con punti nella generazione di scenari."
+  },
+  "x402Scenario.wallet": {
+    "message": "Portafoglio USDC",
+    "description": "Opzione di pagamento con portafoglio Solana USDC nella generazione di scenari."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Il prezzo USDC esatto fornito dal server verrà mostrato prima della firma del portafoglio.",
+    "description": "Indicazione che il server fornirà un preventivo ufficiale in modalità di pagamento con portafoglio."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Collegare prima il portafoglio Solana prima di generare.",
+    "description": "Messaggio di avviso quando si sceglie la modalità portafoglio ma non si è ancora collegato."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Confermi di pagare {amount} USDC (Solana) per questa generazione?",
+    "description": "Conferma di pagamento dopo aver ricevuto la sfida x402; {amount} è il preventivo esatto fornito dal server."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Pagamento del portafoglio fallito.",
+    "description": "Prefisso per il messaggio di errore in caso di fallimento della generazione in modalità portafoglio."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Il pagamento con portafoglio attualmente supporta solo la generazione di immagini GPT; per modificare l'immagine di riferimento, passare ai punti.",
+    "description": "Messaggio per gli utenti nella fase MVP che tentano di modificare un'immagine di riferimento GPT in modalità portafoglio."
   }
 }

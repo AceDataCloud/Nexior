@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Inne",
     "description": "Powód zgłoszenia treści: inne"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Metoda płatności",
+    "description": "Etykieta wyboru punktów lub portfela Solana USDC w scenariuszu generowania obrazów."
+  },
+  "x402Scenario.credits": {
+    "message": "Punkty",
+    "description": "Opcja płatności punktami w scenariuszu generowania."
+  },
+  "x402Scenario.wallet": {
+    "message": "Portfel USDC",
+    "description": "Opcja płatności portfelem Solana USDC w scenariuszu generowania."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Przed podpisaniem portfela wyświetli się dokładna cena USDC podana przez serwer.",
+    "description": "Wskazówka, że w trybie płatności portfelem serwer dostarczy autorytatywną wycenę."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Proszę najpierw połączyć portfel Solana przed generowaniem.",
+    "description": "Wskazówka, gdy wybrano tryb portfela, ale portfel nie został jeszcze połączony."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Czy potwierdzasz płatność za generowanie w wysokości {amount} USDC (Solana)?",
+    "description": "Potwierdzenie płatności po otrzymaniu wyzwania x402; {amount} to dokładna wycena serwera."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Płatność portfelem nie powiodła się.",
+    "description": "Prefiks komunikatu o niepowodzeniu w generowaniu w trybie portfela."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Płatność portfelem obecnie wspiera tylko generowanie obrazów GPT; aby edytować obraz referencyjny, przełącz się na punkty.",
+    "description": "Wskazówka dla użytkowników MVP, którzy próbują edytować obraz referencyjny w trybie portfela."
   }
 }

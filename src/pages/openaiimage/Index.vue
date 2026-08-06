@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <config-panel @generate="onGenerate" @payment-mode-change="onPaymentModeChange" />
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
@@ -16,12 +16,23 @@ import ConfigPanel from '@/components/openaiimage/ConfigPanel.vue';
 import { openaiimageOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IOpenAIImageEditRequest, IOpenAIImageGenerateRequest, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
+import { mergeAndSortLists } from '@/utils/merge';
+import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import {
+  listWalletTasks,
+  rememberWalletTask,
+  ScenarioPaymentCancelledError,
+  submitOpenAIImageWithX402,
+  walletTaskIds,
+  type ScenarioPaymentQuote,
+  type ScenarioWalletContext
+} from '@/utils/x402/scenarioClient';
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -63,6 +74,12 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.openaiimage?.tasks;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
+    },
+    walletAddress(): string | undefined {
+      return (this as any).$wallet?.publicKey?.value?.toBase58?.();
     }
   },
   watch: {
@@ -129,9 +146,23 @@ export default defineComponent({
         console.debug('loading');
         return;
       }
-      console.debug('start onGetTasks', payload);
       const { limit = 20, createdAtMin, createdAtMax } = payload || {};
-      console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
+      if (this.walletMode) {
+        if (!this.walletAddress) return;
+        const response = await listWalletTasks<IOpenAIImageTask>(
+          'openai',
+          walletTaskIds('openai', this.walletAddress),
+          {
+            limit,
+            createdAtMin,
+            createdAtMax
+          }
+        );
+        const existing = this.tasks?.items || [];
+        this.$store.commit('openaiimage/setTasksItems', mergeAndSortLists(existing, response.items));
+        this.$store.commit('openaiimage/setTasksTotal', response.count);
+        return;
+      }
       await this.$store.dispatch('openaiimage/getTasks', {
         limit,
         createdAtMin,
@@ -179,37 +210,46 @@ export default defineComponent({
         async: true
       } as IOpenAIImageEditRequest;
 
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
+      let operation: Promise<unknown>;
+      if (this.walletMode) {
+        if (hasReferenceImages) {
+          ElMessage.info(this.$t('common.x402Scenario.gptEditCreditsOnly'));
+          return;
+        }
+        const wallet = this.getWalletContext();
+        if (!wallet) {
+          ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+          return;
+        }
+        operation = submitOpenAIImageWithX402(generateRequest, wallet, (quote) => this.confirmWalletPayment(quote));
+      } else {
+        if (!ensureLoggedIn()) return;
+        const token = this.credential?.token;
+        if (!token) {
+          console.error('no token specified');
+          return;
+        }
+        operation = hasReferenceImages
+          ? openaiimageOperator.edit(editRequest, { token })
+          : openaiimageOperator.generate(generateRequest, { token });
       }
 
       ElMessage.info(this.$t('openaiimage.message.startingTask'));
-
-      const request = instrumentGeneration(
-        'openaiimage',
-        hasReferenceImages
-          ? openaiimageOperator.edit(editRequest, {
-              token
-            })
-          : openaiimageOperator.generate(generateRequest, {
-              token
-            })
-      );
-
-      request
-        .then((response) => {
-          console.debug('task accepted', response.data?.task_id);
+      instrumentGeneration('openaiimage', operation)
+        .then((response: any) => {
+          console.debug('task accepted', response?.data?.task_id || response?.taskId);
+          if (this.walletMode && this.walletAddress && response?.taskId) {
+            rememberWalletTask('openai', this.walletAddress, response.taskId);
+          }
           ElMessage.success(this.$t('openaiimage.message.startTaskSuccess'));
         })
         .catch((error) => {
+          if (error instanceof ScenarioPaymentCancelledError) return;
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('openaiimage.message.usedUp'));
+          } else if (this.walletMode) {
+            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('openaiimage.message.startTaskFailed') + (response?.error?.message || ''));
           }
@@ -220,6 +260,34 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    async onPaymentModeChange() {
+      this.$store.commit('openaiimage/setTasks', undefined);
+      await this.onGetTasks();
+      await this.onScrollDown();
+    },
+    getWalletContext(): ScenarioWalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return {
+        publicKey,
+        signTransaction: adapter.signTransaction.bind(adapter)
+      };
+    },
+    async confirmWalletPayment(quote: ScenarioPaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;

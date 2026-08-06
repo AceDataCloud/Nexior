@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "기타",
     "description": "콘텐츠 신고 사유: 기타"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "지불 방법",
+    "description": "이미지 생성 시나리오에서 포인트 또는 Solana USDC 지갑을 선택하는 레이블입니다."
+  },
+  "x402Scenario.credits": {
+    "message": "포인트",
+    "description": "생성 시나리오에서 포인트 지불 옵션입니다."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC 지갑",
+    "description": "생성 시나리오에서 Solana USDC 지갑 지불 옵션입니다."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "지갑 서명 전에 서버에서 제공하는 정확한 USDC 가격이 표시됩니다.",
+    "description": "지갑 지불 모드에서 서버가 권위 있는 견적을 제공할 것이라는 안내입니다."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "먼저 Solana 지갑을 연결한 후 생성해 주세요.",
+    "description": "지갑 모드를 선택했지만 지갑이 연결되지 않았을 때의 안내입니다."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "이번 생성에 대해 {amount} USDC(솔라나) 지불을 확인하시겠습니까?",
+    "description": "x402 챌린지를 받은 후의 지불 확인; {amount}는 서버에서 제공한 정확한 견적입니다."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "지갑 지불에 실패했습니다.",
+    "description": "지갑 모드에서 생성 실패 시의 안내입니다."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "현재 지갑 지불은 GPT 이미지 생성만 지원합니다; 참고 이미지를 편집하려면 포인트로 전환해 주세요.",
+    "description": "MVP 단계에서 사용자가 지갑 모드로 GPT 이미지 참고 이미지 편집을 시도할 때의 안내입니다."
   }
 }

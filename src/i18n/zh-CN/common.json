@@ -1632,6 +1632,38 @@
     "message": "拖放到此处上传",
     "description": "拖拽文件到某个上传控件上方时，临时浮现在该控件上的提示层文字，告诉用户松手即可上传。"
   },
+  "x402Scenario.paymentMethod": {
+    "message": "支付方式",
+    "description": "图片生成场景中选择积分或 Solana USDC 钱包的标签。"
+  },
+  "x402Scenario.credits": {
+    "message": "积分",
+    "description": "生成场景中的积分支付选项。"
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC 钱包",
+    "description": "生成场景中的 Solana USDC 钱包支付选项。"
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "钱包签名前会显示服务端给出的准确 USDC 价格。",
+    "description": "钱包支付模式下说明服务端会提供权威报价的提示。"
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "请先连接 Solana 钱包再生成。",
+    "description": "选择钱包模式但尚未连接钱包时的提示。"
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "确认为本次生成支付 {amount} USDC（Solana）？",
+    "description": "收到 x402 challenge 后的付款确认；{amount} 为服务端准确报价。"
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "钱包支付失败。",
+    "description": "钱包模式生成失败提示的前缀。"
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "钱包支付当前仅支持 GPT Image 图片生成；如需编辑参考图，请切换到积分。",
+    "description": "MVP 阶段用户在钱包模式尝试 GPT Image 参考图编辑时的提示。"
+  },
   "appUpgrade.title": {
     "message": "需要升级",
     "description": "原生 App 启动时的版本闸门弹窗标题。当客户端版本低于服务端要求时显示，告知用户需要升级 App。"

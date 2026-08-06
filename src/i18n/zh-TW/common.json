@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "其他",
     "description": "舉報原因：其他"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "支付方式",
+    "description": "在圖片生成場景中選擇積分或 Solana USDC 錢包的標籤。"
+  },
+  "x402Scenario.credits": {
+    "message": "積分",
+    "description": "生成場景中的積分支付選項。"
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC 錢包",
+    "description": "生成場景中的 Solana USDC 錢包支付選項。"
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "錢包簽名前會顯示服務端給出的準確 USDC 價格。",
+    "description": "錢包支付模式下說明服務端會提供權威報價的提示。"
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "請先連接 Solana 錢包再生成。",
+    "description": "選擇錢包模式但尚未連接錢包時的提示。"
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "確認為本次生成支付 {amount} USDC（Solana）？",
+    "description": "收到 x402 challenge 後的付款確認；{amount} 為服務端準確報價。"
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "錢包支付失敗。",
+    "description": "錢包模式生成失敗提示的前綴。"
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "錢包支付當前僅支持 GPT Image 圖片生成；如需編輯參考圖，請切換到積分。",
+    "description": "MVP 階段用戶在錢包模式嘗試 GPT Image 參考圖編輯時的提示。"
   }
 }

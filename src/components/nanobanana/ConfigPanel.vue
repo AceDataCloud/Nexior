@@ -8,7 +8,8 @@
       <image-urls-input class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
+      <scenario-payment-mode @change="$emit('payment-mode-change', $event)" />
+      <consumption v-if="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('nanobanana.button.generate') }}
@@ -28,6 +29,8 @@ import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
+import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
+import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -39,9 +42,10 @@ export default defineComponent({
     ImageUrlsInput,
     AspectRatioSelector,
     ModelSelector,
-    ResolutionSelector
+    ResolutionSelector,
+    ScenarioPaymentMode
   },
-  emits: ['generate'],
+  emits: ['generate', 'payment-mode-change'],
   computed: {
     config() {
       return this.$store.state.nanobanana?.config;
@@ -59,6 +63,9 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.nanobanana?.service;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
     }
   },
   methods: {

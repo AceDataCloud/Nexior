@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Muu",
     "description": "Sisältöilmoituksen syy: muu"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Maksutapa",
+    "description": "Kuvagenerointitilanteessa valitaan pisteet tai Solana USDC -lompakon etiketti."
+  },
+  "x402Scenario.credits": {
+    "message": "Pisteet",
+    "description": "Kuvageneroinnissa käytettävä pisteiden maksuvaihtoehto."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC-lompakko",
+    "description": "Kuvageneroinnissa käytettävä Solana USDC -lompakon maksuvaihtoehto."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Lompakon allekirjoittamista ennen näytetään palvelimen antama tarkka USDC-hinta.",
+    "description": "Lompakkosovelluksen maksutilassa ilmoitus, että palvelin tarjoaa virallisen tarjouksen."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Yhdistä ensin Solana-lompakko ennen generointia.",
+    "description": "Ilmoitus, kun lompakkotila on valittu mutta lompakkoa ei ole vielä yhdistetty."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Vahvista maksaminen {amount} USDC (Solana) tälle generoinnille?",
+    "description": "Maksun vahvistus x402-haasteen vastaanottamisen jälkeen; {amount} on palvelimen tarkka tarjous."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Lompakkosovelluksen maksu epäonnistui.",
+    "description": "Ilmoitus lompakkotilan generoinnin epäonnistumisesta."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Lompakkosovelluksen maksaminen tukee tällä hetkellä vain GPT Image -kuvagenerointia; jos tarvitset viittauskuvan muokkaamista, vaihda pisteisiin.",
+    "description": "MVP-vaiheessa käyttäjille, jotka yrittävät muokata GPT Image -viittauskuvaa lompakkotilassa."
   }
 }

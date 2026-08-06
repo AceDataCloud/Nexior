@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <config-panel @generate="onGenerate" @payment-mode-change="onPaymentModeChange" />
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
@@ -16,7 +16,7 @@ import ConfigPanel from '@/components/nanobanana/ConfigPanel.vue';
 import { nanobananaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { INanobananaGenerateRequest, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import {
   ERROR_CODE_USED_UP,
   NANOBANANA_DEFAULT_RESOLUTION,
@@ -27,6 +27,17 @@ import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { mergeAndSortLists } from '@/utils/merge';
+import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import {
+  listWalletTasks,
+  rememberWalletTask,
+  ScenarioPaymentCancelledError,
+  submitNanoWithX402,
+  walletTaskIds,
+  type ScenarioPaymentQuote,
+  type ScenarioWalletContext
+} from '@/utils/x402/scenarioClient';
 
 interface IData {
   task: INanobananaTask | undefined;
@@ -68,6 +79,12 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.nanobanana?.tasks;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
+    },
+    walletAddress(): string | undefined {
+      return (this as any).$wallet?.publicKey?.value?.toBase58?.();
     }
   },
   watch: {
@@ -134,9 +151,23 @@ export default defineComponent({
         console.debug('loading');
         return;
       }
-      console.debug('start onGetTasks', payload);
       const { limit = 20, createdAtMin, createdAtMax } = payload || {};
-      console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
+      if (this.walletMode) {
+        if (!this.walletAddress) return;
+        const response = await listWalletTasks<INanobananaTask>(
+          'nano-banana',
+          walletTaskIds('nano-banana', this.walletAddress),
+          {
+            limit,
+            createdAtMin,
+            createdAtMax
+          }
+        );
+        const existing = this.tasks?.items || [];
+        this.$store.commit('nanobanana/setTasksItems', mergeAndSortLists(existing, response.items));
+        this.$store.commit('nanobanana/setTasksTotal', response.count);
+        return;
+      }
       await this.$store.dispatch('nanobanana/getTasks', {
         limit,
         createdAtMin,
@@ -176,23 +207,39 @@ export default defineComponent({
         action: hasReferenceImages ? 'edit' : 'generate',
         async: true
       } as INanobananaGenerateRequest;
-      if (!ensureLoggedIn()) {
-        return;
+      let operation: Promise<unknown>;
+      if (this.walletMode) {
+        const wallet = this.getWalletContext();
+        if (!wallet) {
+          ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+          return;
+        }
+        operation = submitNanoWithX402(request, wallet, (quote) => this.confirmWalletPayment(quote));
+      } else {
+        if (!ensureLoggedIn()) return;
+        const token = this.credential?.token;
+        if (!token) {
+          console.error('no token specified');
+          return;
+        }
+        operation = nanobananaOperator.generate(request, { token });
       }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
+
       ElMessage.info(this.$t('nanobanana.message.startingTask'));
-      instrumentGeneration('nanobanana', nanobananaOperator.generate(request, { token }))
-        .then(() => {
+      instrumentGeneration('nanobanana', operation)
+        .then((response: any) => {
+          if (this.walletMode && this.walletAddress && response?.taskId) {
+            rememberWalletTask('nano-banana', this.walletAddress, response.taskId);
+          }
           ElMessage.success(this.$t('nanobanana.message.startTaskSuccess'));
         })
         .catch((error) => {
+          if (error instanceof ScenarioPaymentCancelledError) return;
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('nanobanana.message.usedUp'));
+          } else if (this.walletMode) {
+            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('nanobanana.message.startTaskFailed') + (response?.error?.message || ''));
           }
@@ -203,6 +250,34 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    async onPaymentModeChange() {
+      this.$store.commit('nanobanana/setTasks', undefined);
+      await this.onGetTasks();
+      await this.onScrollDown();
+    },
+    getWalletContext(): ScenarioWalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return {
+        publicKey,
+        signTransaction: adapter.signTransaction.bind(adapter)
+      };
+    },
+    async confirmWalletPayment(quote: ScenarioPaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;
