@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "モデル",
+    "description": "動画生成モデル"
+  },
+  "name.prompt": {
+    "message": "プロンプト",
+    "description": "動画の内容、アクション、ショットとスタイルの説明"
+  },
+  "name.imageUrls": {
+    "message": "参考画像 URL",
+    "description": "各行に1つの参考画像 URL"
+  },
+  "name.audioUrls": {
+    "message": "参考音声 URL",
+    "description": "各行に1つの参考音声 URL"
+  },
+  "name.ratio": {
+    "message": "アスペクト比",
+    "description": "出力動画のアスペクト比"
+  },
+  "name.duration": {
+    "message": "長さ（秒）",
+    "description": "出力動画の長さ"
+  },
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの識別子"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "リクエストのトレース識別子"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗状態"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスクの失敗理由"
+  },
+  "placeholder.prompt": {
+    "message": "シーン、アクション、ショット、スタイルを説明；画像や音声を提供する場合はオプション",
+    "description": "プロンプトのプレースホルダー"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... 各行に1つ、最大9枚",
+    "description": "参考画像URLのプレースホルダー"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... 各行に1つ、最大3つ",
+    "description": "参考音声URLのプレースホルダー"
+  },
+  "description.imageUrls": {
+    "message": "1〜9件の公開画像を入力できます。画像があり音声がない場合は自動的に画像から動画を生成します。",
+    "description": "参考画像の説明"
+  },
+  "description.audioUrls": {
+    "message": "1〜3件の公開音声を入力できます。音声がある場合は自動的に音声ガイドモードを使用します。",
+    "description": "参考音声の説明"
+  },
+  "description.mode": {
+    "message": "現在のモード：{mode} · 公開価格 $0.25/秒",
+    "description": "派生モードと価格の説明"
+  },
+  "mode.text_to_video": {
+    "message": "テキストから動画",
+    "description": "テキスト生成動画モード"
+  },
+  "mode.image_to_video": {
+    "message": "画像から動画",
+    "description": "画像生成動画モード"
+  },
+  "mode.audio_guided": {
+    "message": "音声ガイド動画",
+    "description": "音声ガイド動画モード"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの保留状態"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "タスクの処理状態"
+  },
+  "button.generate": {
+    "message": "動画を生成",
+    "description": "生成ボタン"
+  },
+  "button.download": {
+    "message": "動画をダウンロード",
+    "description": "ダウンロードボタン"
+  },
+  "message.startingTask": {
+    "message": "タスクを起動しています...",
+    "description": "タスク開始のヒント"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクの提出に成功しました"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの開始に失敗しました。後でもう一度お試しください",
+    "description": "タスクの提出に失敗しました"
+  },
+  "message.usedUp": {
+    "message": "残高が不足しています。チャージしてから続行してください",
+    "description": "残高不足のヒント"
+  },
+  "message.downloadVideo": {
+    "message": "この動画をダウンロード",
+    "description": "動画ダウンロードのヒント"
+  },
+  "message.inputRequired": {
+    "message": "プロンプト、参考画像、または参考音声のいずれかを少なくとも入力してください",
+    "description": "入力が不足しています"
+  },
+  "message.imageLimit": {
+    "message": "参考画像は最大9件まで",
+    "description": "画像の数が制限を超えています"
+  },
+  "message.audioLimit": {
+    "message": "参考音声は最大3件まで",
+    "description": "音声の数が制限を超えています"
+  }
+}

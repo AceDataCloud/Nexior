@@ -24,6 +24,7 @@ export interface ISiteFeatures {
   digitalhuman?: any;
   pixverse?: any;
   hailuo?: any;
+  minimax?: any;
   suno?: any;
   nanobanana?: any;
   openaiimage?: any;

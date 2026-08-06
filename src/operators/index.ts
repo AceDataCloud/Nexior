@@ -23,6 +23,7 @@ export * from './digitalhuman';
 export * from './pixverse';
 export * from './flux';
 export * from './hailuo';
+export * from './minimax';
 export * from './site';
 export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';

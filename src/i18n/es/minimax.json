@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Modelo",
+    "description": "Modelo de generación de video"
+  },
+  "name.prompt": {
+    "message": "Palabra clave",
+    "description": "Descripción del contenido, acción, toma y estilo del video"
+  },
+  "name.imageUrls": {
+    "message": "URL de imagen de referencia",
+    "description": "Una URL de imagen de referencia por línea"
+  },
+  "name.audioUrls": {
+    "message": "URL de audio de referencia",
+    "description": "Una URL de audio de referencia por línea"
+  },
+  "name.ratio": {
+    "message": "Relación de aspecto",
+    "description": "Relación de aspecto del video de salida"
+  },
+  "name.duration": {
+    "message": "Duración (segundos)",
+    "description": "Duración del video de salida"
+  },
+  "name.taskId": {
+    "message": "ID de tarea",
+    "description": "Identificador de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de seguimiento",
+    "description": "Identificador de seguimiento de la solicitud"
+  },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo que tomó la tarea"
+  },
+  "name.failure": {
+    "message": "Fallido",
+    "description": "Estado de falla de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Razón de la falla",
+    "description": "Razón de la falla de la tarea"
+  },
+  "placeholder.prompt": {
+    "message": "Describe la escena, acción, toma y estilo; opcional al proporcionar imágenes o audio",
+    "description": "Texto de marcador de posición para las palabras clave"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... uno por línea, máximo 9",
+    "description": "Texto de marcador de posición para URL de imagen de referencia"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... uno por línea, máximo 3",
+    "description": "Texto de marcador de posición para URL de audio de referencia"
+  },
+  "description.imageUrls": {
+    "message": "Se pueden ingresar de 1 a 9 imágenes públicas; se activará automáticamente el modo de video generado por imágenes si hay imágenes y no hay audio.",
+    "description": "Descripción de la imagen de referencia"
+  },
+  "description.audioUrls": {
+    "message": "Se pueden ingresar de 1 a 3 audios públicos; se activará automáticamente el modo guiado por audio si hay audio disponible.",
+    "description": "Descripción del audio de referencia"
+  },
+  "description.mode": {
+    "message": "Modo actual: {mode} · Precio público $0.25/segundo",
+    "description": "Descripción del modo derivado y precios"
+  },
+  "mode.text_to_video": {
+    "message": "Video generado por texto",
+    "description": "Modo de video generado a partir de texto"
+  },
+  "mode.image_to_video": {
+    "message": "Video generado por imágenes",
+    "description": "Modo de video generado a partir de imágenes"
+  },
+  "mode.audio_guided": {
+    "message": "Video guiado por audio",
+    "description": "Modo de video guiado por audio"
+  },
+  "status.pending": {
+    "message": "En espera",
+    "description": "Estado de espera de la tarea"
+  },
+  "status.processing": {
+    "message": "En procesamiento",
+    "description": "Estado de procesamiento de la tarea"
+  },
+  "button.generate": {
+    "message": "Generar video",
+    "description": "Botón de generación"
+  },
+  "button.download": {
+    "message": "Descargar video",
+    "description": "Botón de descarga"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarea...",
+    "description": "Sugerencia para comenzar la tarea"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Éxito en la presentación de la tarea"
+  },
+  "message.startTaskFailed": {
+    "message": "Error al iniciar la tarea, por favor intente de nuevo más tarde",
+    "description": "Error en la presentación de la tarea"
+  },
+  "message.usedUp": {
+    "message": "Saldo insuficiente, por favor recargue para continuar usando",
+    "description": "Aviso de saldo insuficiente"
+  },
+  "message.downloadVideo": {
+    "message": "Descargar este video",
+    "description": "Sugerencia para descargar el video"
+  },
+  "message.inputRequired": {
+    "message": "Por favor, complete al menos uno de los campos: palabra clave, imagen de referencia o audio de referencia",
+    "description": "Falta de entrada de aviso"
+  },
+  "message.imageLimit": {
+    "message": "Máximo de 9 imágenes de referencia",
+    "description": "Límite de cantidad de imágenes excedido"
+  },
+  "message.audioLimit": {
+    "message": "Máximo de 3 audios de referencia",
+    "description": "Límite de cantidad de audio excedido"
+  }
+}

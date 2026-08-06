@@ -13,6 +13,7 @@ import { IDigitalHumanState } from '../digitalhuman/models';
 import { IPixverseState } from '../pixverse/models';
 import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
+import { IMinimaxState } from '../minimax/models';
 import { ISunoState } from '../suno/models';
 import { IProducerState } from '../producer/models';
 import { INanobananaState } from '../nanobanana/models';
@@ -76,6 +77,7 @@ export interface IAppState {
   pixverse: IPixverseState;
   flux: IFluxState;
   hailuo: IHailuoState;
+  minimax: IMinimaxState;
   suno: ISunoState;
   producer: IProducerState;
   nanobanana: INanobananaState;

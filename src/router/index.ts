@@ -26,6 +26,7 @@ import digitalhuman from './digitalhuman';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
+import minimax from './minimax';
 import suno from './suno';
 import producer from './producer';
 import nanobanana from './nanobanana';
@@ -61,6 +62,7 @@ import {
   ROUTE_OMNI_INDEX,
   ROUTE_LUMA_INDEX,
   ROUTE_HAILUO_INDEX,
+  ROUTE_MINIMAX_INDEX,
   ROUTE_KLING_INDEX,
   ROUTE_VEO_INDEX,
   ROUTE_SORA_INDEX,
@@ -234,6 +236,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Hailuo', 'MiniMax', 'AI Video', 'Video Generation'],
     category: 'AI Video Generation'
   },
+  minimax: {
+    title: 'MiniMax H3',
+    description: 'Generate MiniMax H3 videos from text, up to nine images, or up to three audio references.',
+    keywords: ['MiniMax H3', 'AI Video', 'Text to Video', 'Image to Video', 'Audio Guided Video'],
+    category: 'AI Video Generation'
+  },
   seedance: {
     title: 'Seedance',
     description: 'Generate AI dance videos with Seedance — AI-powered dance video generation by ByteDance.',
@@ -339,6 +347,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['kling', ROUTE_KLING_INDEX],
   ['luma', ROUTE_LUMA_INDEX],
   ['hailuo', ROUTE_HAILUO_INDEX],
+  ['minimax', ROUTE_MINIMAX_INDEX],
   ['seedance', ROUTE_SEEDANCE_INDEX],
   ['grokvideo', ROUTE_GROKVIDEO_INDEX],
   ['omni', ROUTE_OMNI_INDEX],
@@ -391,6 +400,7 @@ export const routes = [
   pixverse,
   flux,
   hailuo,
+  minimax,
   suno,
   producer,
   nanobanana,

@@ -17,6 +17,7 @@ export * from './digitalhuman';
 export * from './pixverse';
 export * from './flux';
 export * from './hailuo';
+export * from './minimax';
 export * from './suno';
 export * from './producer';
 export * from './nanobanana';

@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Modell",
+    "description": "Videogenereringsmodell"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Beskrivning av videoinnehåll, handling, kameravinklar och stil"
+  },
+  "name.imageUrls": {
+    "message": "Referens bild-URL",
+    "description": "En referens bild-URL per rad"
+  },
+  "name.audioUrls": {
+    "message": "Referens ljud-URL",
+    "description": "En referens ljud-URL per rad"
+  },
+  "name.ratio": {
+    "message": "Bildförhållande",
+    "description": "Utdata video bildförhållande"
+  },
+  "name.duration": {
+    "message": "Längd (sekunder)",
+    "description": "Utdata video längd"
+  },
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Identifiering av uppgiften"
+  },
+  "name.traceId": {
+    "message": "Spårnings ID",
+    "description": "Identifiering för begärans spårning"
+  },
+  "name.elapsed": {
+    "message": "Tidsåtgång",
+    "description": "Tid som uppgiften tog"
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens misslyckandestatus"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Orsak till uppgiftens misslyckande"
+  },
+  "placeholder.prompt": {
+    "message": "Beskriv scenen, handlingen, kameravinklar och stil; valfritt att inkludera bilder eller ljud",
+    "description": "Platshållartext för uppmaning"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... en per rad, max 9 bilder",
+    "description": "Platshållartext för bild-URL:er"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... en per rad, max 3 stycken",
+    "description": "Platshållartext för ljud-URL:er"
+  },
+  "description.imageUrls": {
+    "message": "Du kan ange 1–9 offentliga bilder; bilder används automatiskt för att generera video när det finns bilder och inget ljud.",
+    "description": "Referens bildbeskrivning"
+  },
+  "description.audioUrls": {
+    "message": "Du kan ange 1–3 offentliga ljudfiler; ljud används automatiskt i ljudguide-läge när det finns ljud.",
+    "description": "Referens ljudbeskrivning"
+  },
+  "description.mode": {
+    "message": "Aktuellt läge: {mode} · Offentligt pris $0.25/sek",
+    "description": "Beskrivning av derivatläge och priser"
+  },
+  "mode.text_to_video": {
+    "message": "Text till video",
+    "description": "Textgenerering av video"
+  },
+  "mode.image_to_video": {
+    "message": "Bild till video",
+    "description": "Bildgenerering av video"
+  },
+  "mode.audio_guided": {
+    "message": "Ljudguide-video",
+    "description": "Ljudguide videoläge"
+  },
+  "status.pending": {
+    "message": "Väntar",
+    "description": "Uppgiftens väntande status"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Uppgiftens bearbetande status"
+  },
+  "button.generate": {
+    "message": "Generera video",
+    "description": "Genereringsknapp"
+  },
+  "button.download": {
+    "message": "Ladda ner video",
+    "description": "Nedladdningsknapp"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgiften...",
+    "description": "Tips för att påbörja uppgiften"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift för generering startad framgångsrikt",
+    "description": "Framgång vid uppgiftsinlämning"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgiften, försök igen senare",
+    "description": "Misslyckande vid uppgiftsinlämning"
+  },
+  "message.usedUp": {
+    "message": "Otillräcklig balans, vänligen ladda på för att fortsätta använda",
+    "description": "Tips om otillräcklig balans"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner denna video",
+    "description": "Tips för videonedladdning"
+  },
+  "message.inputRequired": {
+    "message": "Fyll i minst ett av följande: prompt, referensbild eller referensljud",
+    "description": "Saknar inmatningstips"
+  },
+  "message.imageLimit": {
+    "message": "Max 9 referensbilder",
+    "description": "Överskridande av bildantal"
+  },
+  "message.audioLimit": {
+    "message": "Max 3 referensljud",
+    "description": "Överskridande av ljudantal"
+  }
+}

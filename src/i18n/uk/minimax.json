@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Модель",
+    "description": "Модель для генерації відео"
+  },
+  "name.prompt": {
+    "message": "Підказка",
+    "description": "Опис вмісту відео, дій, кадрів та стилю"
+  },
+  "name.imageUrls": {
+    "message": "Посилання на зображення",
+    "description": "Одне посилання на зображення в рядку"
+  },
+  "name.audioUrls": {
+    "message": "Посилання на аудіо",
+    "description": "Одне посилання на аудіо в рядку"
+  },
+  "name.ratio": {
+    "message": "Співвідношення сторін",
+    "description": "Співвідношення сторін вихідного відео"
+  },
+  "name.duration": {
+    "message": "Тривалість (секунди)",
+    "description": "Тривалість вихідного відео"
+  },
+  "name.taskId": {
+    "message": "ID завдання",
+    "description": "Ідентифікатор завдання"
+  },
+  "name.traceId": {
+    "message": "ID трасування",
+    "description": "Ідентифікатор трасування запиту"
+  },
+  "name.elapsed": {
+    "message": "Час виконання",
+    "description": "Час, витрачений на завдання"
+  },
+  "name.failure": {
+    "message": "Не вдалося",
+    "description": "Статус невдачі завдання"
+  },
+  "name.failureReason": {
+    "message": "Причина невдачі",
+    "description": "Причина, чому завдання не вдалося"
+  },
+  "placeholder.prompt": {
+    "message": "Описати сцену, дії, кадри та стиль; необов'язково при наданні зображень або аудіо",
+    "description": "Текст-заповнювач для підказок"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... по одному в рядку, максимум 9",
+    "description": "Текст-заповнювач для URL зображень"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... по одному в рядку, максимум 3",
+    "description": "Текст-заповнювач для URL аудіо"
+  },
+  "description.imageUrls": {
+    "message": "Можна ввести 1–9 публічних зображень; при наявності зображень і відсутності аудіо автоматично використовується режим генерування відео з зображень.",
+    "description": "Опис зображень для посилання"
+  },
+  "description.audioUrls": {
+    "message": "Можна ввести 1–3 публічних аудіофайли; при наявності аудіо автоматично використовується режим аудіо-ведення.",
+    "description": "Опис аудіо для посилання"
+  },
+  "description.mode": {
+    "message": "Поточний режим: {mode} · Публічна ціна $0.25/секунду",
+    "description": "Опис режиму та ціни"
+  },
+  "mode.text_to_video": {
+    "message": "Генерація відео з тексту",
+    "description": "Режим генерації відео з тексту"
+  },
+  "mode.image_to_video": {
+    "message": "Генерація відео з зображень",
+    "description": "Режим генерації відео з зображень"
+  },
+  "mode.audio_guided": {
+    "message": "Відео з аудіо-веденням",
+    "description": "Режим відео з аудіо-веденням"
+  },
+  "status.pending": {
+    "message": "В очікуванні",
+    "description": "Стан очікування завдання"
+  },
+  "status.processing": {
+    "message": "В обробці",
+    "description": "Стан обробки завдання"
+  },
+  "button.generate": {
+    "message": "Генерувати відео",
+    "description": "Кнопка для генерації"
+  },
+  "button.download": {
+    "message": "Завантажити відео",
+    "description": "Кнопка для завантаження"
+  },
+  "message.startingTask": {
+    "message": "Запуск завдання...",
+    "description": "Підказка для початку завдання"
+  },
+  "message.startTaskSuccess": {
+    "message": "Завдання на генерацію успішно розпочато",
+    "description": "Завдання успішно надіслано"
+  },
+  "message.startTaskFailed": {
+    "message": "Не вдалося розпочати завдання, будь ласка, спробуйте ще раз пізніше",
+    "description": "Не вдалося надіслати завдання"
+  },
+  "message.usedUp": {
+    "message": "Недостатньо коштів, будь ласка, поповніть рахунок для продовження використання",
+    "description": "Підказка про недостатність коштів"
+  },
+  "message.downloadVideo": {
+    "message": "Завантажити це відео",
+    "description": "Підказка для завантаження відео"
+  },
+  "message.inputRequired": {
+    "message": "Будь ласка, заповніть принаймні одне поле: підказка, посилання на зображення або посилання на аудіо",
+    "description": "Відсутня вхідна підказка"
+  },
+  "message.imageLimit": {
+    "message": "Максимум 9 посилань на зображення",
+    "description": "Перевищено ліміт кількості зображень"
+  },
+  "message.audioLimit": {
+    "message": "Максимум 3 посилання на аудіо",
+    "description": "Перевищено ліміт кількості аудіо"
+  }
+}

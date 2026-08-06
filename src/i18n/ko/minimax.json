@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "모델",
+    "description": "비디오 생성 모델"
+  },
+  "name.prompt": {
+    "message": "프롬프트",
+    "description": "비디오 내용, 동작, 장면 및 스타일 설명"
+  },
+  "name.imageUrls": {
+    "message": "참조 이미지 URL",
+    "description": "각 줄에 하나의 참조 이미지 URL"
+  },
+  "name.audioUrls": {
+    "message": "참조 오디오 URL",
+    "description": "각 줄에 하나의 참조 오디오 URL"
+  },
+  "name.ratio": {
+    "message": "가로 세로 비율",
+    "description": "출력 비디오 가로 세로 비율"
+  },
+  "name.duration": {
+    "message": "길이(초)",
+    "description": "출력 비디오 길이"
+  },
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업 식별자"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "요청 추적 식별자"
+  },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "작업 소요 시간"
+  },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업 실패 상태"
+  },
+  "name.failureReason": {
+    "message": "실패 원인",
+    "description": "작업 실패 원인"
+  },
+  "placeholder.prompt": {
+    "message": "장면, 동작, 샷 및 스타일 설명; 이미지 또는 오디오 제공 시 선택 사항",
+    "description": "프롬프트 자리 표시자 텍스트"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... 한 줄에 하나, 최대 9장",
+    "description": "참조 이미지 URL 자리 표시자 텍스트"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... 한 줄에 하나, 최대 3개",
+    "description": "참조 오디오 URL 자리 표시자 텍스트"
+  },
+  "description.imageUrls": {
+    "message": "1–9개의 공개 이미지를 입력할 수 있습니다; 이미지가 존재하고 오디오가 없을 경우 자동으로 이미지에서 비디오가 생성됩니다.",
+    "description": "이미지 설명 참조"
+  },
+  "description.audioUrls": {
+    "message": "1–3개의 공개 오디오를 입력할 수 있습니다; 오디오가 있을 경우 자동으로 오디오 안내 모드가 사용됩니다.",
+    "description": "오디오 설명 참조"
+  },
+  "description.mode": {
+    "message": "현재 모드: {mode} · 공개 가격 $0.25/초",
+    "description": "파생 모드 및 가격 설명"
+  },
+  "mode.text_to_video": {
+    "message": "텍스트에서 비디오 생성",
+    "description": "텍스트 생성 비디오 모드"
+  },
+  "mode.image_to_video": {
+    "message": "이미지에서 비디오 생성",
+    "description": "이미지 생성 비디오 모드"
+  },
+  "mode.audio_guided": {
+    "message": "오디오 안내 비디오",
+    "description": "오디오 안내 비디오 모드"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "작업 대기 상태"
+  },
+  "status.processing": {
+    "message": "처리 중",
+    "description": "작업 처리 상태"
+  },
+  "button.generate": {
+    "message": "비디오 생성",
+    "description": "생성 버튼"
+  },
+  "button.download": {
+    "message": "비디오 다운로드",
+    "description": "다운로드 버튼"
+  },
+  "message.startingTask": {
+    "message": "작업 시작 중...",
+    "description": "작업 시작 안내"
+  },
+  "message.startTaskSuccess": {
+    "message": "생성 작업을 성공적으로 시작했습니다",
+    "description": "작업 제출 성공"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 시작 실패, 나중에 다시 시도하세요",
+    "description": "작업 제출 실패"
+  },
+  "message.usedUp": {
+    "message": "잔액이 부족합니다, 충전 후 계속 사용하세요",
+    "description": "잔액 부족 안내"
+  },
+  "message.downloadVideo": {
+    "message": "이 비디오 다운로드",
+    "description": "비디오 다운로드 안내"
+  },
+  "message.inputRequired": {
+    "message": "최소한 하나의 프롬프트, 참조 이미지 또는 참조 오디오를 입력해야 합니다.",
+    "description": "입력 안내 부족"
+  },
+  "message.imageLimit": {
+    "message": "최대 9개의 이미지 참조",
+    "description": "이미지 수량 초과"
+  },
+  "message.audioLimit": {
+    "message": "최대 3개의 오디오 참조",
+    "description": "오디오 수량 초과"
+  }
+}

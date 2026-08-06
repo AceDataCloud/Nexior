@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Malli",
+    "description": "Videon luontimalli"
+  },
+  "name.prompt": {
+    "message": "Ohjeet",
+    "description": "Videon sisältö, toiminnot, kuvakulmat ja tyylin kuvaus"
+  },
+  "name.imageUrls": {
+    "message": "Viittauskuvan URL",
+    "description": "Yksi viittauskuvan URL per rivi"
+  },
+  "name.audioUrls": {
+    "message": "Viittausäänen URL",
+    "description": "Yksi viittausäänen URL per rivi"
+  },
+  "name.ratio": {
+    "message": "Kuvasuhde",
+    "description": "Luodun videon kuvasuhde"
+  },
+  "name.duration": {
+    "message": "Kesto (sekuntia)",
+    "description": "Luo videon kesto"
+  },
+  "name.taskId": {
+    "message": "Tehtävä ID",
+    "description": "Tehtävän tunnistus"
+  },
+  "name.traceId": {
+    "message": "Seuranta ID",
+    "description": "Pyyntöjen seurannan tunnistus"
+  },
+  "name.elapsed": {
+    "message": "Kulunut aika",
+    "description": "Tehtävän kesto"
+  },
+  "name.failure": {
+    "message": "Epäonnistuminen",
+    "description": "Tehtävän epäonnistumistila"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Tehtävän epäonnistumisen syy"
+  },
+  "placeholder.prompt": {
+    "message": "Kuvaa kohtaus, toiminta, kuvakulma ja tyyli; kuvan tai äänen tarjoaminen on valinnaista",
+    "description": "Vihjeiden paikkamerkki"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... jokaisella rivillä yksi, enintään 9 kuvaa",
+    "description": "Viittauskuvien URL-osoitteiden paikkamerkki"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... jokaisella rivillä yksi, enintään 3 kappaletta",
+    "description": "Viittausäänitiedostojen URL-osoitteiden paikkamerkki"
+  },
+  "description.imageUrls": {
+    "message": "Voit syöttää 1–9 julkista kuvaa; kuvien ollessa saatavilla ja ilman ääntä käytetään automaattisesti kuvasta videoksi -tilaa.",
+    "description": "Viittauskuvien selitys"
+  },
+  "description.audioUrls": {
+    "message": "Voit syöttää 1–3 julkista äänitiedostoa; äänen ollessa saatavilla käytetään automaattisesti ääniohjattua tilaa.",
+    "description": "Viittausäänien selitys"
+  },
+  "description.mode": {
+    "message": "Nykyinen tila: {mode} · Julkinen hinta $0.25/sekunti",
+    "description": "Johdannaistilan ja hinnan selitys"
+  },
+  "mode.text_to_video": {
+    "message": "Tekstistä videoksi",
+    "description": "Tekstistä videoita luova malli"
+  },
+  "mode.image_to_video": {
+    "message": "Kuvasta videoksi",
+    "description": "Kuvista videoita luova malli"
+  },
+  "mode.audio_guided": {
+    "message": "Ääniohjattu video",
+    "description": "Ääniohjattu videomoodi"
+  },
+  "status.pending": {
+    "message": "Odottaa",
+    "description": "Tehtävän odotustila"
+  },
+  "status.processing": {
+    "message": "Käsittelyssä",
+    "description": "Tehtävän käsittelytila"
+  },
+  "button.generate": {
+    "message": "Luo video",
+    "description": "Luontipainike"
+  },
+  "button.download": {
+    "message": "Lataa video",
+    "description": "Latauspainike"
+  },
+  "message.startingTask": {
+    "message": "Tehtävää käynnistetään...",
+    "description": "Tehtävän aloitusvinkki"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävä luotiin onnistuneesti",
+    "description": "Tehtävän lähettämisen onnistuminen"
+  },
+  "message.startTaskFailed": {
+    "message": "Tehtävän käynnistäminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Tehtävän lähettämisen epäonnistuminen"
+  },
+  "message.usedUp": {
+    "message": "Saldo loppu, lataa lisää jatkaaksesi käyttöä",
+    "description": "Saldo loppu -vinkki"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa tämä video",
+    "description": "Videon latausvinkki"
+  },
+  "message.inputRequired": {
+    "message": "Syötä vähintään yksi: ohjeet, viittauskuva tai viittausääni",
+    "description": "Syöttöpuutevinkki"
+  },
+  "message.imageLimit": {
+    "message": "Viittauskuvia enintään 9 kappaletta",
+    "description": "Kuvamäärä ylittää rajan"
+  },
+  "message.audioLimit": {
+    "message": "Viittausääniä enintään 3 kappaletta",
+    "description": "Äänimäärä ylittää rajan"
+  }
+}
