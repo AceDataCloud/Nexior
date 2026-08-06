@@ -103,37 +103,64 @@
     </section>
 
     <section v-else-if="step === 2 && selected" class="wizard-body">
-      <h3>{{ $t('chat.scheduledTemplates.connectionTitle') }}</h3>
-      <div v-if="!selected.requirements.connections.length" class="requirement-row ready">
-        <success-icon :size="18" /> {{ $t('chat.scheduledTemplates.noConnections') }}
-      </div>
-      <div v-for="connection in selected.requirements.connections" :key="connection" class="requirement-row">
+      <div class="requirement-heading">
         <div>
-          <strong>{{ connection }}</strong>
-          <p>
-            {{
-              connectionReady(connection)
-                ? $t('chat.scheduledTemplates.connected')
-                : $t('chat.scheduledTemplates.notConnected')
-            }}
-          </p>
+          <h3>{{ $t('chat.scheduledTemplates.connectionTitle') }}</h3>
+          <p>{{ $t('chat.scheduledTemplates.connectionDescription') }}</p>
         </div>
-        <el-select
-          v-if="connectionAccounts(connection).length > 1"
-          v-model="connectionBindings[connection]"
-          :placeholder="$t('chat.scheduledTemplates.chooseAccount')"
+        <el-tag type="info" round>{{ selected.requirements.connections.length }}</el-tag>
+      </div>
+      <div v-if="!selected.requirements.connections.length" class="requirement-empty ready">
+        <success-icon :size="20" />
+        <div>
+          <strong>{{ $t('chat.scheduledTemplates.noConnections') }}</strong>
+          <p>{{ $t('chat.scheduledTemplates.noConnectionsHint') }}</p>
+        </div>
+      </div>
+      <div class="requirement-list">
+        <article
+          v-for="connection in selected.requirements.connections"
+          :key="connection"
+          :class="['requirement-card', { ready: connectionReady(connection) }]"
         >
-          <el-option
-            v-for="account in connectionAccounts(connection)"
-            :key="account.connection_id"
-            :label="account.label || account.account_name"
-            :value="account.connection_id"
-          />
-        </el-select>
-        <el-button v-else-if="!connectionReady(connection)" type="primary" plain @click="browseConnections = true">
-          {{ $t('chat.scheduledTemplates.connect') }}
-        </el-button>
-        <success-icon v-else class="success" :size="20" />
+          <div class="requirement-icon">
+            <connection-icon :size="22" aria-hidden="true" focusable="false" />
+          </div>
+          <div class="requirement-content">
+            <div class="requirement-title-row">
+              <strong>{{ connectionName(connection) }}</strong>
+              <el-tag :type="connectionReady(connection) ? 'success' : 'warning'" size="small" round>
+                {{
+                  connectionReady(connection)
+                    ? $t('chat.scheduledTemplates.connected')
+                    : $t('chat.scheduledTemplates.notConnected')
+                }}
+              </el-tag>
+            </div>
+            <p>{{ connectionDescription(connection) }}</p>
+            <div v-if="connectionReady(connection)" class="account-summary">
+              {{ connectionAccountSummary(connection) }}
+            </div>
+          </div>
+          <div class="requirement-action">
+            <el-select
+              v-if="bindableAccounts(connection).length > 1"
+              v-model="connectionBindings[connection]"
+              :placeholder="$t('chat.scheduledTemplates.chooseAccount')"
+            >
+              <el-option
+                v-for="account in bindableAccounts(connection)"
+                :key="account.connection_id"
+                :label="account.label || account.account_name"
+                :value="account.connection_id"
+              />
+            </el-select>
+            <el-button v-else-if="!connectionReady(connection)" type="primary" plain @click="browseConnections = true">
+              {{ $t('chat.scheduledTemplates.connect') }}
+            </el-button>
+            <success-icon v-else class="success" :size="22" />
+          </div>
+        </article>
       </div>
       <browse-connectors v-model="browseConnections" @installed="reloadTemplates" />
     </section>
@@ -142,7 +169,16 @@
       <h3>{{ $t('chat.scheduledTemplates.testTitle') }}</h3>
       <p>{{ $t('chat.scheduledTemplates.testHint') }}</p>
       <el-input v-if="preview" :model-value="preview" type="textarea" :rows="9" readonly />
-      <div v-if="testTask" class="test-status">
+      <div v-if="testError" class="test-status">
+        <el-alert
+          :title="$t('chat.scheduledTemplates.testFailed')"
+          :description="testError"
+          type="error"
+          :closable="false"
+          show-icon
+        />
+      </div>
+      <div v-else-if="testTask" class="test-status">
         <el-alert
           :title="
             testSucceeded ? $t('chat.scheduledTemplates.testSucceeded') : $t('chat.scheduledTemplates.testRunning')
@@ -179,15 +215,15 @@
     </section>
 
     <template #footer>
-      <el-button v-if="step > 0 && step < 4" :disabled="working" @click="step -= 1">{{
-        $t('common.button.previous')
-      }}</el-button>
-      <el-button v-if="step < 3" type="primary" :disabled="!canContinue" @click="step += 1">{{
-        $t('common.button.next')
-      }}</el-button>
-      <el-button v-if="step === 3 && testSucceeded" type="primary" @click="step = 4">{{
-        $t('common.button.next')
-      }}</el-button>
+      <el-button v-if="step > 0 && step < 4" :disabled="working" @click="step -= 1">
+        {{ $t('chat.scheduledTemplates.previous') }}
+      </el-button>
+      <el-button v-if="step < 3" type="primary" :disabled="!canContinue" @click="step += 1">
+        {{ $t('chat.scheduledTemplates.next') }}
+      </el-button>
+      <el-button v-if="step === 3 && testSucceeded" type="primary" @click="step = 4">
+        {{ $t('chat.scheduledTemplates.next') }}
+      </el-button>
       <el-button v-if="step === 4" type="primary" :loading="working" @click="enableTask">
         {{ $t('chat.scheduledTemplates.enable') }}
       </el-button>
@@ -213,7 +249,7 @@ import {
   ElTag,
   ElTimePicker
 } from 'element-plus';
-import { SuccessIcon } from '@acedatacloud/core/icons/components';
+import { ConnectionIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import BrowseConnectors from '@/components/connections/BrowseConnectors.vue';
 import {
   scheduledTasksOperator,
@@ -228,6 +264,7 @@ export default defineComponent({
   name: 'ScheduledTemplateWizard',
   components: {
     BrowseConnectors,
+    ConnectionIcon,
     ElAlert,
     ElButton,
     ElDialog,
@@ -266,7 +303,8 @@ export default defineComponent({
       browseConnections: false,
       preview: '',
       testTask: null as IScheduledTask | null,
-      testRun: null as IScheduledRun | null
+      testRun: null as IScheduledRun | null,
+      testError: ''
     };
   },
   computed: {
@@ -326,7 +364,7 @@ export default defineComponent({
       this.scheduleTime = this.scheduleTimeFromSpec(template.defaults.schedule);
       this.connectionBindings = {};
       for (const connection of template.requirements.connections) {
-        const accounts = this.connectionAccounts(connection);
+        const accounts = this.bindableAccounts(connection);
         const account = accounts.find((item) => item.is_default) ?? accounts[0];
         if (account) this.connectionBindings[connection] = account.connection_id;
       }
@@ -334,9 +372,32 @@ export default defineComponent({
     connectionAccounts(connection: string): IAuthorizableConnectionAccount[] {
       return this.selected?.connection_accounts?.[connection] ?? [];
     },
+    bindableAccounts(connection: string): IAuthorizableConnectionAccount[] {
+      return this.connectionAccounts(connection).filter((account) => account.supports_task_binding);
+    },
     connectionReady(connection: string): boolean {
       const accounts = this.connectionAccounts(connection);
-      return accounts.length === 1 || !!this.connectionBindings[connection];
+      const bindable = accounts.filter((account) => account.supports_task_binding);
+      if (!accounts.length) return false;
+      if (!bindable.length) return true;
+      return bindable.length === 1 || !!this.connectionBindings[connection];
+    },
+    connectionName(connection: string): string {
+      const account = this.connectionAccounts(connection)[0];
+      return account?.account_name || account?.label || connection.split('/').pop() || connection;
+    },
+    connectionDescription(connection: string): string {
+      const accounts = this.connectionAccounts(connection);
+      if (!accounts.length) return this.$t('chat.scheduledTemplates.connectionMissingHint') as string;
+      return accounts[0].supports_task_binding
+        ? (this.$t('chat.scheduledTemplates.connectionBoundHint') as string)
+        : (this.$t('chat.scheduledTemplates.connectionMcpHint') as string);
+    },
+    connectionAccountSummary(connection: string): string {
+      const accounts = this.connectionAccounts(connection);
+      const selectedId = this.connectionBindings[connection];
+      const selected = accounts.find((account) => account.connection_id === selectedId) ?? accounts[0];
+      return selected?.label || selected?.account_name || this.$t('chat.scheduledTemplates.connected');
     },
     async reloadTemplates() {
       this.browseConnections = false;
@@ -355,7 +416,7 @@ export default defineComponent({
     bindings() {
       if (!this.selected) return [];
       return this.selected.requirements.connections.flatMap((connection) => {
-        const accounts = this.connectionAccounts(connection);
+        const accounts = this.bindableAccounts(connection);
         const id = this.connectionBindings[connection] || accounts[0]?.connection_id;
         const account = accounts.find((item) => item.connection_id === id);
         return account
@@ -363,9 +424,19 @@ export default defineComponent({
           : [];
       });
     },
+    errorMessage(error: unknown): string {
+      const response = (error as { response?: { data?: { message?: string; error?: string } } })?.response?.data;
+      return (
+        response?.message ||
+        response?.error ||
+        (error as Error)?.message ||
+        String(this.$t('chat.scheduledTemplates.testFailed'))
+      );
+    },
     async runTest() {
       if (!this.selected) return;
       this.working = true;
+      this.testError = '';
       try {
         const preview = await scheduledTasksOperator.previewTemplate(
           this.token,
@@ -374,6 +445,13 @@ export default defineComponent({
           this.inputs
         );
         this.preview = preview.question;
+      } catch (error) {
+        this.testError = this.errorMessage(error);
+        ElMessage.error(this.testError);
+        this.working = false;
+        return;
+      }
+      try {
         this.testTask = await scheduledTasksOperator.instantiateTemplate(this.token, {
           template_id: this.selected.id,
           version: this.selected.version,
@@ -381,10 +459,18 @@ export default defineComponent({
           schedule: this.buildSchedule(),
           connection_bindings: this.bindings()
         });
+      } catch (error) {
+        this.testError = this.errorMessage(error);
+        ElMessage.error(this.testError);
+        this.working = false;
+        return;
+      }
+      try {
         await scheduledTasksOperator.triggerTask(this.token, this.testTask.id);
         await this.refreshTest();
-      } catch {
-        ElMessage.error(this.$t('chat.scheduledTemplates.testFailed') as string);
+      } catch (error) {
+        this.testError = this.errorMessage(error);
+        ElMessage.error(this.testError);
       } finally {
         this.working = false;
       }
@@ -392,9 +478,15 @@ export default defineComponent({
     async refreshTest() {
       if (!this.testTask) return;
       this.working = true;
+      this.testError = '';
       try {
         const runs = await scheduledTasksOperator.listRuns(this.token, this.testTask.id);
         this.testRun = runs[0] ?? null;
+        if (this.testRun?.status === 'failed') {
+          this.testError = this.testRun.error_message || this.testRun.outcome_reason || this.testRun.error_code || '';
+        }
+      } catch (error) {
+        this.testError = this.errorMessage(error);
       } finally {
         this.working = false;
       }
@@ -459,7 +551,9 @@ export default defineComponent({
   gap: 8px;
 }
 .template-card p,
-.requirement-row p {
+.requirement-card p,
+.requirement-heading p,
+.requirement-empty p {
   color: var(--el-text-color-secondary);
   margin: 8px 0;
 }
@@ -480,13 +574,61 @@ export default defineComponent({
 .template-intro {
   margin-bottom: 22px;
 }
-.requirement-row {
+.requirement-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.requirement-heading h3 {
+  margin: 0;
+}
+.requirement-list {
+  display: grid;
+  gap: 12px;
+}
+.requirement-card,
+.requirement-empty {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 14px;
+  background: var(--el-fill-color-blank);
+}
+.requirement-card.ready {
+  border-color: var(--el-color-success-light-5);
+  background: var(--el-color-success-light-9);
+}
+.requirement-empty {
+  grid-template-columns: auto 1fr;
+}
+.requirement-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9);
+}
+.requirement-title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px;
-  border-bottom: 1px solid var(--el-border-color-lighter);
+  gap: 10px;
+}
+.account-summary {
+  color: var(--el-text-color-regular);
+  font-size: 13px;
+}
+.requirement-action {
+  min-width: 160px;
+  text-align: right;
+}
+.requirement-action .el-select {
+  width: 200px;
 }
 .test-step > .el-button,
 .test-status {
@@ -508,6 +650,17 @@ dd {
   .template-grid,
   .template-toolbar {
     grid-template-columns: 1fr;
+  }
+  .requirement-card {
+    grid-template-columns: auto 1fr;
+  }
+  .requirement-action {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .requirement-action .el-select,
+  .requirement-action .el-button {
+    width: 100%;
   }
 }
 </style>

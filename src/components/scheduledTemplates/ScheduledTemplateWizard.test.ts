@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { scheduledTasksOperator } from '@/operators/scheduledTasks';
 import ScheduledTemplateWizard from './ScheduledTemplateWizard.vue';
@@ -35,6 +35,62 @@ const mountWizard = () =>
   });
 
 describe('ScheduledTemplateWizard', () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  it('does not bind remote MCP connections as skill accounts', () => {
+    const mcpTemplate = {
+      ...template,
+      requirements: {
+        skills: [],
+        mcp_servers: ['AceDataCloud'],
+        connections: ['acedatacloud/acedatacloud'],
+        local_tools: []
+      },
+      connection_accounts: {
+        'acedatacloud/acedatacloud': [
+          {
+            connection_id: 'mcp-1',
+            connector_identifier: 'acedatacloud/acedatacloud',
+            label: 'AceDataCloud',
+            is_default: true,
+            account_name: 'AceDataCloud',
+            execution_type: 'remote_mcp',
+            supports_task_binding: false
+          }
+        ]
+      }
+    };
+    const wrapper = mountWizard();
+    const vm = wrapper.vm as unknown as {
+      selectTemplate: (value: typeof mcpTemplate) => void;
+      connectionReady: (identifier: string) => boolean;
+      bindings: () => unknown[];
+    };
+    vm.selectTemplate(mcpTemplate);
+    expect(vm.connectionReady('acedatacloud/acedatacloud')).toBe(true);
+    expect(vm.bindings()).toEqual([]);
+  });
+
+  it('shows the backend message when template instantiation fails', async () => {
+    vi.spyOn(scheduledTasksOperator, 'previewTemplate').mockResolvedValue({ question: 'Preview' });
+    vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockRejectedValue({
+      response: { data: { message: 'remote MCP connectors cannot be account-bound' } }
+    });
+    const trigger = vi.spyOn(scheduledTasksOperator, 'triggerTask');
+    const wrapper = mountWizard();
+    const vm = wrapper.vm as unknown as {
+      selectTemplate: (value: typeof template) => void;
+      inputs: Record<string, string>;
+      runTest: () => Promise<void>;
+      testError: string;
+    };
+    vm.selectTemplate(template);
+    vm.inputs = { topic: 'AI', audience: 'developers' };
+    await vm.runTest();
+    expect(vm.testError).toBe('remote MCP connectors cannot be account-bound');
+    expect(trigger).not.toHaveBeenCalled();
+  });
+
   it('requires declared inputs without adding growth-specific state', async () => {
     vi.spyOn(scheduledTasksOperator, 'listTemplates').mockResolvedValue({
       items: [template],
