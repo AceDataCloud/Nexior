@@ -121,6 +121,46 @@ describe('coding bridge session identity (integration)', () => {
     expect(h.state.events['real-2'][0].text).toBe('live output');
   });
 
+  it('keeps selector provenance separate from the resolved Claude model', () => {
+    const h = harness();
+    h.feed({
+      event: 'history.detail',
+      session_id: 'one-million',
+      provider: 'claude',
+      model: 'opus[1m]',
+      resolved_model: 'claude-opus-5',
+      events: []
+    });
+    expect(h.state.sessions['one-million'].model).toBe('opus[1m]');
+    expect(h.state.sessions['one-million'].resolved_model).toBe('claude-opus-5');
+  });
+
+  it('does not promote a legacy resolved Claude id to a resume selector', () => {
+    const h = harness();
+    h.state.lastComposer[NODE] = { model: 'opus[1m]' };
+    h.feed({
+      event: 'history.detail',
+      session_id: 'legacy-polluted',
+      provider: 'claude',
+      model: 'claude-opus-5',
+      events: []
+    });
+    expect(h.state.sessions['legacy-polluted'].model).toBeUndefined();
+    expect(h.state.sessions['legacy-polluted'].resolved_model).toBeUndefined();
+  });
+
+  it('ignores the retired compatibility model field', () => {
+    const h = harness();
+    h.feed({
+      event: 'history.detail',
+      session_id: 'retired-field',
+      provider: 'claude',
+      model: 'custom-selector',
+      events: []
+    });
+    expect(h.state.sessions['retired-field'].model).toBeUndefined();
+  });
+
   it('restores a dead transcript as a resumable idle session', () => {
     const h = harness();
     h.feed({
