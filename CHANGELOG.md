@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 04:52:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 04:54:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.357.0
+
+Thu, 06 Aug 2026 04:54:04 GMT
+
+### Minor changes
+
+- Add guided scheduled-task templates and referral automation onboarding. (dev@acedata.cloud)
 
 ## 3.356.14
 
