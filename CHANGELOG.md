@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 00:30:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 06 Aug 2026 03:03:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.356.12
+
+Thu, 06 Aug 2026 03:03:39 GMT
+
+### Patches
+
+- Let scheduled tasks select and display an IANA time zone, and make desktop-local schedules honor the saved zone across daylight-saving changes. (dev@acedata.cloud)
 
 ## 3.356.11
 
