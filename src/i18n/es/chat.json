@@ -814,7 +814,7 @@
   },
   "scheduledTasks.run.reason.error": {
     "message": "Error",
-    "description": "Se produjo un error durante la ejecución"
+    "description": "Error en la ejecución"
   },
   "scheduledTasks.run.reason.unknown": {
     "message": "Error desconocido"
@@ -1126,11 +1126,11 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tipo de artefacto - Video"
+    "description": "Tipo de producción - video"
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Tipo de artefacto - Audio"
+    "description": "Tipo de producción - audio"
   },
   "artifacts.kind.document": {
     "message": "Documento",
@@ -1391,18 +1391,18 @@
     "message": "Confirmar antes de publicar",
     "description": "Etiqueta de estado de tarjeta de confirmación de TikTok"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Publicar en TikTok",
-      "description": "Título de la tarjeta de confirmación de publicación de TikTok"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Al confirmar, este video se publicará en tu cuenta de TikTok.",
-      "description": "Resumen de la tarjeta de confirmación de publicación de TikTok"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Publicar",
-      "description": "Botón de envío de la tarjeta de confirmación de publicación de TikTok"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Publicar en TikTok",
+    "description": "Título de la tarjeta de confirmación de publicación de TikTok"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Al confirmar, este video se publicará en tu cuenta de TikTok.",
+    "description": "Resumen de la tarjeta de confirmación de publicación de TikTok"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Publicar",
+    "description": "Botón de envío de la tarjeta de confirmación de publicación de TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Publicar en",
     "description": "Confirmación de publicación de TikTok: etiqueta de cuenta"
@@ -1575,6 +1575,186 @@
     "message": "Por favor, selecciona el tipo de contenido comercial",
     "description": "Confirmación de publicación de TikTok: razón para deshabilitar el botón cuando no se selecciona el tipo de divulgación comercial"
   },
+  "scheduledTemplates.title": {
+    "message": "Plantilla de automatización",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Crear desde plantilla",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Crear personalizado",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Deja que la IA complete el trabajo a tiempo",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Selecciona una plantilla oficial, conecta la cuenta necesaria y, tras una ejecución exitosa, se ejecutará automáticamente.",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Explorar plantillas",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Seleccionar plantilla",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Configuración sencilla",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Conectar cuenta",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Ejecutar prueba",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Confirmar habilitación",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.search": {
+    "message": "Buscar plantilla",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Destacado",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Listo para usar",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Se necesita conectar {count} elementos",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Hora de ejecución",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Preparar conexiones necesarias",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "No es necesario conectar otras cuentas",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Conectado",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Aún no conectado",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Seleccionar cuenta",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Conectar",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Prueba una vez",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "La tarea permanecerá desactivada. Solo comenzará a ejecutarse periódicamente después de que la prueba sea exitosa y confirmada.",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Generar y ejecutar prueba",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Actualizar resultados",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Ejecutando prueba, por favor actualice más tarde",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Prueba exitosa",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "La prueba falló, por favor revise la configuración o la conexión",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Confirmar habilitación de automatización",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.template": {
+    "message": "Plantilla",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Capacidades de autorización",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.none": {
+    "message": "Ninguno",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "Una vez habilitado, la tarea se ejecutará automáticamente a la hora programada; puedes pausar en cualquier momento.",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Habilitar automatización",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "La automatización está habilitada",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "No se puede habilitar aún, por favor confirma que la ejecución de prueba fue exitosa",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Error al cargar la plantilla, por favor inténtelo de nuevo más tarde",
+    "description": "Copia del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Todo",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Crecimiento de marketing",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Creación de contenido",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Eficiencia laboral",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Inteligencia e investigación",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Desarrollo y operaciones",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Asistente personal",
+    "description": "Texto del centro de plantillas de tareas programadas"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Publicar significa que aceptas el 'Acuerdo de uso de música' de TikTok",
     "description": "Confirmación de publicación de TikTok: declaración sobre el uso de música"
@@ -1600,5 +1780,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Selecciona una zona horaria IANA válida"
   }
-
 }

@@ -925,7 +925,7 @@
     "description": "Человекочитаемое описание: еженедельно в указанный день и время."
   },
   "scheduledTasks.humanize.cronRaw": {
-    "message": "Cron: {cron}",
+    "message": "Cron：{cron}",
     "description": "Читаемый человеком: оригинальный Cron"
   },
   "scheduledTasks.humanize.once": {
@@ -1390,18 +1390,18 @@
     "message": "Подтверждение перед публикацией",
     "description": "Статус карточки подтверждения публикации в TikTok"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Публикация в TikTok",
-      "description": "Заголовок подтверждения публикации на TikTok"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "После подтверждения это видео будет опубликовано в вашем аккаунте TikTok.",
-      "description": "Сводка подтверждения публикации на TikTok"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Опубликовать",
-      "description": "Кнопка подтверждения публикации на TikTok"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Публикация в TikTok",
+    "description": "Заголовок подтверждения публикации на TikTok"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "После подтверждения это видео будет опубликовано в вашем аккаунте TikTok.",
+    "description": "Сводка подтверждения публикации на TikTok"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Опубликовать",
+    "description": "Кнопка подтверждения публикации на TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Публикация в",
     "description": "Метка аккаунта в подтверждении публикации TikTok"
@@ -1574,6 +1574,186 @@
     "message": "Пожалуйста, выберите тип коммерческого контента",
     "description": "Подтверждение публикации в TikTok: причина отключения кнопки при отсутствии выбора типа раскрытия"
   },
+  "scheduledTemplates.title": {
+    "message": "Шаблоны автоматизации",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Создать из шаблона",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Создать настраиваемый",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Позвольте ИИ выполнять вашу работу вовремя",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Выберите официальный шаблон, подключите необходимые аккаунты, и после успешного тестового запуска он будет выполняться автоматически.",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Просмотреть шаблоны",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Выберите шаблон",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Простая настройка",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Подключить аккаунт",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Тестовый запуск",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Подтвердите активацию",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.search": {
+    "message": "Поиск шаблонов",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Рекомендуемые",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Готово к использованию",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Необходимо подключить {count} элементов",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Время выполнения",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Подготовка необходимых подключений",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Нет необходимости подключать другие аккаунты",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Подключено",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Еще не подключено",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Выберите аккаунт",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Подключиться",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Сначала протестируйте",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Задача будет оставаться отключенной. Запуск по расписанию начнется только после успешного тестового запуска и подтверждения.",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Создать и протестировать",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Обновить результаты",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Тестовый запуск в процессе, пожалуйста, обновите позже",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Тестовый запуск успешен",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Тестовый запуск не удался, проверьте настройки или соединение",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Подтвердите включение автоматизации",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.template": {
+    "message": "Шаблон",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Разрешения",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.none": {
+    "message": "Нет",
+    "description": "Копия центра шаблонов запланированных задач"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "После включения задачи будут автоматически выполняться в установленное время; вы можете приостановить в любое время.",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Включить автоматизацию",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Автоматизация включена",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Не удалось включить, пожалуйста, убедитесь, что тестовый запуск прошел успешно",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Ошибка загрузки шаблона, пожалуйста, попробуйте позже",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Все",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Маркетинг и рост",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Создание контента",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Рабочая эффективность",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Разведка и исследования",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Разработка и эксплуатация",
+    "description": "Центр шаблонов запланированных задач"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Личный помощник",
+    "description": "Центр шаблонов запланированных задач"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Публикация означает, что вы соглашаетесь с «Подтверждением использования музыки» TikTok",
     "description": "Заявление о использовании музыки в подтверждении публикации TikTok"
@@ -1599,5 +1779,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Выберите допустимый часовой пояс IANA"
   }
-
 }

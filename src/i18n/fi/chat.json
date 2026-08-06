@@ -898,7 +898,7 @@
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Ihmisluettava: alkuperäinen Cron"
+    "description": "Ihmisten luettavissa: alkuperäinen Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "kerran klo {time}",
@@ -1086,7 +1086,7 @@
   },
   "artifacts.kind.video": {
     "message": "Video",
-    "description": "Tuotetyyppi – video"
+    "description": "Tuotetyyppi - video"
   },
   "artifacts.kind.audio": {
     "message": "Ääni",
@@ -1351,18 +1351,18 @@
     "message": "Vahvista ennen julkaisua",
     "description": "TikTok julkaisuvahvistuskortin tila"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Julkaise TikTokiin",
-      "description": "TikTok julkaisu vahvistusikkunan otsikko"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Vahvistuksen jälkeen tämä video julkaistaan TikTok-tilillesi.",
-      "description": "TikTok julkaisu vahvistusikkunan yhteenveto"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Julkaise",
-      "description": "TikTok julkaisu vahvistusikkunan lähetyspainike"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Julkaise TikTokiin",
+    "description": "TikTok julkaisu vahvistusikkunan otsikko"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Vahvistuksen jälkeen tämä video julkaistaan TikTok-tilillesi.",
+    "description": "TikTok julkaisu vahvistusikkunan yhteenveto"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Julkaise",
+    "description": "TikTok julkaisu vahvistusikkunan lähetyspainike"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Julkaise",
     "description": "TikTok julkaisu vahvistus: tilin etiketti"
@@ -1535,6 +1535,186 @@
     "message": "Valitse kaupallisen sisällön tyyppi",
     "description": "TikTok julkaisuvahvistus: syiden selitys, miksi kaupallista paljastustyyppiä ei ole valittu"
   },
+  "scheduledTemplates.title": {
+    "message": "Automaatiomallit",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Luo mallista",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Mukautettu luonti",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Anna AI:n hoitaa työsi ajallaan",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Valitse virallinen malli, yhdistä tarvittava tili, ja kokeilu onnistuu, se voidaan suorittaa automaattisesti.",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Selaa malleja",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Valitse malli",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Yksinkertainen konfigurointi",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Yhdistä tili",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Koeajo",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Vahvista aktivointi",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.search": {
+    "message": "Etsi mallia",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Suositellut",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Valmis käytettäväksi",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Tarvitsee yhdistää {count} kohdetta",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Suoritusajankohta",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Valmistellaan tarvittavaa yhteyttä",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Ei tarvitse yhdistää muita tilejä",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Yhdistetty",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Ei ole vielä yhdistetty",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Valitse tili",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Yhdistä",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Koeajo ensin",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Tehtävä pysyy ensin suljettuna. Koeajo onnistuu ja vahvistetaan ennen kuin se alkaa suorittaa aikajaksoittain.",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Luo ja kokeile",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Päivitä tulokset",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Koeajo käynnissä, päivitä myöhemmin",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Koeajo onnistui",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Koeajo epäonnistui, tarkista konfigurointi tai yhteys",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Vahvista automaation käyttöönotto",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.template": {
+    "message": "Malli",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Valtuutusoikeudet",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.none": {
+    "message": "Ei mitään",
+    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "Kun otat käyttöön, tehtävät suoritetaan automaattisesti asetetun ajan mukaan; voit keskeyttää milloin tahansa.",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Ota automaatio käyttöön",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Automaatio on otettu käyttöön",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Ei voida ottaa käyttöön, varmista että kokeilu on onnistunut",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Mallin lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Kaikki",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Markkinointi ja kasvu",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Sisällöntuotanto",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Työtehokkuus",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Tieto ja tutkimus",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Kehitys ja ylläpito",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Henkilökohtainen avustaja",
+    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Julkaisemalla hyväksyt TikTokin 'Musiikin käyttö vahvistus'",
     "description": "TikTok julkaisu vahvistus: musiikin käyttöilmoitus"
@@ -1560,5 +1740,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Valitse kelvollinen IANA-aikavyöhyke"
   }
-
 }

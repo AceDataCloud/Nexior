@@ -925,8 +925,8 @@
     "description": "Αναγνώσιμο από ανθρώπους: Κάθε εβδομάδα σε συγκεκριμένη ημέρα και ώρα"
   },
   "scheduledTasks.humanize.cronRaw": {
-    "message": "Cron: {cron}",
-    "description": "Ανθρώπινα αναγνώσιμο: Ακατέργαστο Cron"
+    "message": "Cron：{cron}",
+    "description": "Ανθρώπινα αναγνώσιμο: Αρχικό Cron"
   },
   "scheduledTasks.humanize.once": {
     "message": "Μία φορά {time}",
@@ -1390,18 +1390,18 @@
     "message": "Επιβεβαίωση πριν από την δημοσίευση",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: ετικέτα κατάστασης κάρτας"
   },
-    "actionConfirmation.tiktok.publishTitle": {
-      "message": "Δημοσίευση στο TikTok",
-      "description": "Τίτλος της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
-    },
-    "actionConfirmation.tiktok.publishSummary": {
-      "message": "Μετά την επιβεβαίωση, αυτό το βίντεο θα δημοσιευτεί στον λογαριασμό σας TikTok.",
-      "description": "Περίληψη της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
-    },
-    "actionConfirmation.tiktok.publishButton": {
-      "message": "Δημοσίευση",
-      "description": "Το κουμπί υποβολής της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
-    },
+  "actionConfirmation.tiktok.publishTitle": {
+    "message": "Δημοσίευση στο TikTok",
+    "description": "Τίτλος της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
+  },
+  "actionConfirmation.tiktok.publishSummary": {
+    "message": "Μετά την επιβεβαίωση, αυτό το βίντεο θα δημοσιευτεί στον λογαριασμό σας TikTok.",
+    "description": "Περίληψη της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
+  },
+  "actionConfirmation.tiktok.publishButton": {
+    "message": "Δημοσίευση",
+    "description": "Το κουμπί υποβολής της κάρτας επιβεβαίωσης δημοσίευσης TikTok"
+  },
   "actionConfirmation.tiktok.postingTo": {
     "message": "Δημοσίευση σε",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Ετικέτα λογαριασμού"
@@ -1574,6 +1574,186 @@
     "message": "Παρακαλώ επιλέξτε τύπο εμπορικής αποκάλυψης",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: λόγος απενεργοποίησης κουμπιού λόγω μη επιλογής τύπου αποκάλυψης"
   },
+  "scheduledTemplates.title": {
+    "message": "Πρότυπα αυτοματισμού",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.createFromTemplate": {
+    "message": "Δημιουργία από πρότυπο",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.createCustom": {
+    "message": "Δημιουργία προσαρμοσμένου",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.emptyTitle": {
+    "message": "Αφήστε την AI να ολοκληρώνει τις εργασίες σας εγκαίρως",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.emptyDescription": {
+    "message": "Επιλέξτε ένα επίσημο πρότυπο, συνδέστε τους απαραίτητους λογαριασμούς και μετά από επιτυχημένη δοκιμαστική εκτέλεση, θα εκτελείται αυτόματα.",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.browse": {
+    "message": "Περιήγηση σε πρότυπα",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.step.choose": {
+    "message": "Επιλέξτε πρότυπο",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.step.configure": {
+    "message": "Απλή ρύθμιση",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.step.connect": {
+    "message": "Σύνδεση λογαριασμού",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.step.test": {
+    "message": "Δοκιμή εκτέλεσης",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.step.enable": {
+    "message": "Επιβεβαίωση ενεργοποίησης",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.search": {
+    "message": "Αναζήτηση προτύπων",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.featured": {
+    "message": "Προτεινόμενα",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.ready": {
+    "message": "Διαθέσιμο προς χρήση",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.missingCount": {
+    "message": "Χρειάζονται σύνδεση {count} στοιχείων",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.schedule": {
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.connectionTitle": {
+    "message": "Ετοιμάστε τις απαραίτητες συνδέσεις",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.noConnections": {
+    "message": "Δεν απαιτείται σύνδεση με άλλους λογαριασμούς",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.connected": {
+    "message": "Συνδεδεμένο",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.notConnected": {
+    "message": "Δεν έχει συνδεθεί ακόμα",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.chooseAccount": {
+    "message": "Επιλέξτε λογαριασμό",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.connect": {
+    "message": "Συνδεθείτε",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.testTitle": {
+    "message": "Δοκιμάστε πρώτα μία φορά",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.testHint": {
+    "message": "Η εργασία θα παραμείνει κλειστή. Θα αρχίσει να εκτελείται περιοδικά μόνο μετά την επιτυχία της δοκιμής και την επιβεβαίωση.",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.runTest": {
+    "message": "Δημιουργία και δοκιμή εκτέλεσης",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.refreshTest": {
+    "message": "Ανανέωση αποτελεσμάτων",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.testRunning": {
+    "message": "Δοκιμή εκτέλεσης σε εξέλιξη, παρακαλώ περιμένετε να ανανεώσετε",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.testSucceeded": {
+    "message": "Η δοκιμή εκτέλεσης ήταν επιτυχής",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.testFailed": {
+    "message": "Η δοκιμή εκτέλεσης απέτυχε, παρακαλώ ελέγξτε τη ρύθμιση ή τη σύνδεση",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.enableTitle": {
+    "message": "Επιβεβαίωση ενεργοποίησης αυτοματοποίησης",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.template": {
+    "message": "Πρότυπο",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.permissions": {
+    "message": "Δικαιώματα πρόσβασης",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.none": {
+    "message": "Κανένα",
+    "description": "Κείμενο κέντρου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.enableHint": {
+    "message": "Αφού ενεργοποιηθεί, οι εργασίες θα εκτελούνται αυτόματα σύμφωνα με τον καθορισμένο χρόνο. Μπορείτε να τις παύσετε οποιαδήποτε στιγμή.",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.enable": {
+    "message": "Ενεργοποίηση αυτοματοποίησης",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.enabled": {
+    "message": "Η αυτοματοποίηση έχει ενεργοποιηθεί",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.enableFailed": {
+    "message": "Δεν μπορεί να ενεργοποιηθεί, παρακαλώ επιβεβαιώστε ότι η δοκιμαστική εκτέλεση ήταν επιτυχής",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.loadError": {
+    "message": "Αποτυχία φόρτωσης προτύπου, παρακαλώ δοκιμάστε ξανά αργότερα",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.all": {
+    "message": "Όλα",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.marketing": {
+    "message": "Μάρκετινγκ και Ανάπτυξη",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.content": {
+    "message": "Δημιουργία περιεχομένου",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.productivity": {
+    "message": "Αποτελεσματικότητα εργασίας",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.research": {
+    "message": "Πληροφορίες και Έρευνα",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.development": {
+    "message": "Ανάπτυξη και Συντήρηση",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
+  "scheduledTemplates.category.personal": {
+    "message": "Προσωπικός Βοηθός",
+    "description": "Κέντρο αντιγράφου προτύπων προγραμματισμένων εργασιών"
+  },
   "actionConfirmation.tiktok.music": {
     "message": "Η δημοσίευση σημαίνει ότι συμφωνείτε με την «Επιβεβαίωση Χρήσης Μουσικής» του TikTok",
     "description": "Επιβεβαίωση δημοσίευσης TikTok: Δήλωση χρήσης μουσικής"
@@ -1599,5 +1779,4 @@
   "scheduledTasks.form.timezoneInvalid": {
     "message": "Επιλέξτε έγκυρη ζώνη ώρας IANA"
   }
-
 }

@@ -3,10 +3,25 @@
     <div class="inner">
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
-        <el-button v-if="activeTab === 'tasks'" type="primary" round :disabled="saving" @click="openCreate">
+        <el-dropdown
+          v-if="activeTab === 'tasks'"
+          split-button
+          type="primary"
+          :disabled="saving"
+          @click="openTemplateGallery"
+          @command="onCreateCommand"
+        >
           <add-icon :size="16" class="icon" aria-hidden="true" focusable="false" />
           {{ $t('chat.scheduledTasks.create') }}
-        </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="template">{{
+                $t('chat.scheduledTemplates.createFromTemplate')
+              }}</el-dropdown-item>
+              <el-dropdown-item command="custom">{{ $t('chat.scheduledTemplates.createCustom') }}</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
 
       <div class="tabs" role="tablist" :aria-label="$t('chat.scheduledTasks.title')">
@@ -27,7 +42,16 @@
       <template v-if="activeTab === 'tasks'">
         <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
 
-        <el-empty v-else-if="!tasks.length" :description="$t('chat.scheduledTasks.empty')" class="empty" />
+        <div v-else-if="!tasks.length" class="template-empty">
+          <h3>{{ $t('chat.scheduledTemplates.emptyTitle') }}</h3>
+          <p>{{ $t('chat.scheduledTemplates.emptyDescription') }}</p>
+          <div class="template-empty-actions">
+            <el-button type="primary" round @click="openTemplateGallery">
+              {{ $t('chat.scheduledTemplates.browse') }}
+            </el-button>
+            <el-button round @click="openCreate">{{ $t('chat.scheduledTemplates.createCustom') }}</el-button>
+          </div>
+        </div>
 
         <template v-else>
           <div class="task-list">
@@ -97,6 +121,9 @@
                 </div>
               </div>
               <div class="task-meta">
+                <el-tag v-if="task.template_source" size="small" type="primary" round>
+                  {{ task.template_source.snapshot.title }}
+                </el-tag>
                 <el-tag size="small" :type="stateTagType(task.state)" effect="dark" round>
                   {{ $t(`chat.scheduledTasks.state.${task.state}`) }}
                 </el-tag>
@@ -227,6 +254,14 @@
         </template>
       </template>
     </div>
+
+    <scheduled-template-wizard
+      v-if="token"
+      v-model="showTemplateWizard"
+      :token="token"
+      :initial-category="templateInitialCategory"
+      @created="onTemplateCreated"
+    />
 
     <!-- Run history drawer -->
     <el-drawer
@@ -591,7 +626,10 @@ import {
   ElTimePicker,
   ElInputNumber,
   ElMessage,
-  ElMessageBox
+  ElMessageBox,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem
 } from 'element-plus';
 import { Pagination } from '@acedatacloud/core/components';
 import { AddIcon } from '@acedatacloud/core/icons/add';
@@ -624,6 +662,7 @@ import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import { IChatModelGroup } from '@/models';
 import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
+import ScheduledTemplateWizard from '@/components/scheduledTemplates/ScheduledTemplateWizard.vue';
 
 const USER_TZ = detectedTimeZone();
 
@@ -704,8 +743,12 @@ export default defineComponent({
     ElRadio,
     ElTimePicker,
     ElInputNumber,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem,
     Pagination,
-    CopyToClipboard
+    CopyToClipboard,
+    ScheduledTemplateWizard
   },
   data() {
     return {
@@ -729,6 +772,8 @@ export default defineComponent({
       skillsInflight: null as Promise<boolean> | null,
       saving: false,
       showCreateDialog: false,
+      showTemplateWizard: false,
+      templateInitialCategory: '',
       showRunHistory: false,
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
@@ -1095,6 +1140,19 @@ export default defineComponent({
         // timer disarmed with no path back.
         this.syncRunPolling();
       }
+    },
+    openTemplateGallery() {
+      if (this.saving) return;
+      this.templateInitialCategory = String(this.$route.query.template_category ?? '');
+      this.showTemplateWizard = true;
+    },
+    onCreateCommand(command: string) {
+      if (command === 'custom') this.openCreate();
+      else this.openTemplateGallery();
+    },
+    onTemplateCreated(task: IScheduledTask) {
+      this.tasks = [task, ...this.tasks.filter((item) => item.id !== task.id)];
+      this.page = 1;
     },
     openCreate() {
       if (this.saving) return;
@@ -1926,6 +1984,29 @@ export default defineComponent({
   gap: 5px;
   color: var(--el-color-primary);
   flex-shrink: 0;
+}
+.template-empty {
+  margin-top: 20px;
+  padding: 64px 24px;
+  text-align: center;
+  border: 1px dashed var(--el-border-color);
+  border-radius: 18px;
+  background: var(--el-bg-color);
+}
+.template-empty h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+.template-empty p {
+  max-width: 520px;
+  margin: 0 auto 22px;
+  color: var(--el-text-color-secondary);
+  line-height: 1.6;
+}
+.template-empty-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 .empty {
   padding: 60px 0;

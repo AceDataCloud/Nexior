@@ -75,6 +75,19 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row :gutter="15" class="mb-4">
+        <el-col :span="24">
+          <el-card shadow="hover" class="automation-card">
+            <div>
+              <h3>{{ $t('distribution.title.promotionAutomation') }}</h3>
+              <p>{{ $t('distribution.message.promotionAutomation') }}</p>
+            </div>
+            <el-button type="primary" round @click="goPromotionTemplates">
+              {{ $t('distribution.button.browseTemplates') }}
+            </el-button>
+          </el-card>
+        </el-col>
+      </el-row>
       <el-row :gutter="15">
         <el-col :md="12" :xs="24">
           <el-card shadow="hover" class="level-info mb-4">
@@ -198,7 +211,7 @@ import {
 import { distributionLevelOperator, distributionStatusOperator, shortUrlOperator } from '@/operators';
 import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
-import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
+import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
 import { getPriceString, isOfficial } from '@/utils';
 
@@ -276,6 +289,9 @@ export default defineComponent({
   },
   methods: {
     getPriceString,
+    goPromotionTemplates() {
+      this.$router.push({ name: ROUTE_CHAT_SCHEDULED_TASKS, query: { template_category: 'marketing' } });
+    },
     goHistory() {
       this.$router.push({
         name: ROUTE_DISTRIBUTION_HISTORY
@@ -398,6 +414,23 @@ export default defineComponent({
     color: var(--el-text-color-regular);
     font-size: 14px;
     margin-bottom: 5px;
+  }
+}
+
+.automation-card {
+  :deep(.el-card__body) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  h3 {
+    margin: 0 0 6px;
+    color: var(--el-text-color-primary);
+  }
+  p {
+    margin: 0;
+    color: var(--el-text-color-secondary);
   }
 }
 

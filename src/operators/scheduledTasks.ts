@@ -33,6 +33,17 @@ export interface IScheduledTask {
    *  (that is `execution`'s job); a desktop-created task may well be cloud. */
   created_surface?: IScheduledSurface;
   schedule: IScheduleSpec;
+  template_source?: {
+    id: string;
+    version: number;
+    inputs: Record<string, string | number | boolean>;
+    snapshot: {
+      title: string;
+      categories: string[];
+    };
+    customized?: boolean;
+  };
+  template_tested_at?: number;
   template: {
     model: string;
     question: string;
@@ -266,6 +277,43 @@ export function extractSkillNotActive(error: unknown): IScheduledTaskCapabilityD
   return data.detail ?? { kind: 'skill', slug: '', reason: 'not_active' };
 }
 
+export interface IScheduledTemplateFieldOption {
+  value: string;
+  label: string;
+}
+
+export interface IScheduledTemplateField {
+  key: string;
+  type: 'text' | 'textarea' | 'select' | 'boolean' | 'time';
+  label: string;
+  required: boolean;
+  default?: string | boolean;
+  options?: IScheduledTemplateFieldOption[];
+}
+
+export interface IScheduledTaskTemplateDefinition {
+  id: string;
+  version: number;
+  title: string;
+  summary: string;
+  description: string;
+  categories: string[];
+  tags: string[];
+  featured: boolean;
+  form_schema: IScheduledTemplateField[];
+  requirements: {
+    skills: string[];
+    mcp_servers: string[];
+    connections: string[];
+    local_tools: string[];
+  };
+  defaults: { model: string; schedule: IScheduleSpec; max_turns: number };
+  test_strategy: { mode: 'preview_only' | 'controlled_delivery' };
+  available: boolean;
+  missing_connections: string[];
+  connection_accounts?: Record<string, IAuthorizableConnectionAccount[]>;
+}
+
 export type ScheduledTaskPayload = {
   name: string;
   description?: string;
@@ -344,6 +392,56 @@ class ScheduledTasksOperator {
       { headers: headers(token), timeout: RUN_REQUEST_TIMEOUT_MS }
     );
     return { items: data?.items ?? [], count: data?.count ?? 0 };
+  }
+
+  async listTemplates(
+    token: string,
+    filter: { category?: string; query?: string } = {}
+  ): Promise<{ items: IScheduledTaskTemplateDefinition[]; categories: string[] }> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'retrieve_template_batch', ...filter },
+      { headers: headers(token) }
+    );
+    return { items: data?.items ?? [], categories: data?.categories ?? [] };
+  }
+
+  async previewTemplate(
+    token: string,
+    templateId: string,
+    version: number,
+    inputs: Record<string, string | number | boolean>
+  ): Promise<{ question: string }> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'preview_template', template_id: templateId, version, inputs },
+      { headers: headers(token) }
+    );
+    return data;
+  }
+
+  async instantiateTemplate(
+    token: string,
+    payload: {
+      template_id: string;
+      version: number;
+      name?: string;
+      inputs: Record<string, string | number | boolean>;
+      schedule?: IScheduleSpec;
+      connection_bindings?: IScheduledConnectionBinding[];
+    }
+  ): Promise<IScheduledTask> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'instantiate_template', ...payload },
+      { headers: headers(token) }
+    );
+    return data;
+  }
+
+  async enableTemplateTask(token: string, id: string): Promise<IScheduledTask> {
+    const { data } = await axios.post(BASE, { action: 'enable', id }, { headers: headers(token) });
+    return data;
   }
 
   async listAuthorizableSkills(token: string): Promise<IAuthorizableSkill[]> {
