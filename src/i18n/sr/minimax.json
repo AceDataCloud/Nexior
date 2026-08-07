@@ -23,6 +23,14 @@
     "message": "Трајање (секунде)",
     "description": "Трајање генерисаног видео записа"
   },
+  "name.resolution": {
+    "message": "Rezolucija",
+    "description": "Izlazna rezolucija videa"
+  },
+  "name.watermark": {
+    "message": "AIGC vodeni žig",
+    "description": "Da li dodati AIGC identifikacioni vodeni žig"
+  },
   "name.taskId": {
     "message": "ID zadatka",
     "description": "Identifikator zadatka"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Молимо вас да унесете најмање један од следећих: упутство, референтна слика или референтни аудио",
     "description": "Недостаје улазна порука"
+  },
+  "message.promptRequired": {
+    "message": "Svi generativni režimi moraju imati unete ključne reči",
+    "description": "Nedostaju ključne reči"
+  },
+  "message.audioImageRequired": {
+    "message": "Kada koristite referentni audio, morate pružiti najmanje jednu referentnu sliku",
+    "description": "Audio režim nedostaje slika"
   },
   "message.imageLimit": {
     "message": "Максимално 9 референтних слика",

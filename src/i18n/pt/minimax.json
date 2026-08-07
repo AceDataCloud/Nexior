@@ -23,6 +23,14 @@
     "message": "Duração (segundos)",
     "description": "Duração do vídeo gerado"
   },
+  "name.resolution": {
+    "message": "Resolução",
+    "description": "Resolução do vídeo de saída"
+  },
+  "name.watermark": {
+    "message": "Marca d'água AIGC",
+    "description": "Se deve adicionar a marca d'água de identificação AIGC"
+  },
   "name.taskId": {
     "message": "ID da tarefa",
     "description": "Identificação da tarefa"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Por favor, preencha pelo menos uma das opções: palavra-chave, imagem de referência ou áudio de referência",
     "description": "Falta de entrada"
+  },
+  "message.promptRequired": {
+    "message": "Todos os modos de geração devem ter um prompt preenchido",
+    "description": "Falta o prompt"
+  },
+  "message.audioImageRequired": {
+    "message": "É necessário fornecer pelo menos uma imagem de referência ao usar áudio de referência",
+    "description": "Modo de áudio sem imagem"
   },
   "message.imageLimit": {
     "message": "Máximo de 9 imagens de referência",

@@ -23,6 +23,14 @@
     "message": "المدة (ثانية)",
     "description": "مدة الفيديو الناتج"
   },
+  "name.resolution": {
+    "message": "الدقة",
+    "description": "دقة الفيديو الناتج"
+  },
+  "name.watermark": {
+    "message": "علامة مائية AIGC",
+    "description": "ما إذا كان يجب إضافة علامة مائية لعلامة AIGC"
+  },
   "name.taskId": {
     "message": "معرف المهمة",
     "description": "معرف المهمة"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "يرجى ملء عنصر واحد على الأقل من الكلمات المفتاحية، الصور المرجعية أو الصوتيات المرجعية",
     "description": "إشعار نقص المدخلات"
+  },
+  "message.promptRequired": {
+    "message": "يجب ملء جميع أوضاع التوليد بكلمة تحفيزية",
+    "description": "نقص كلمة التحفيز"
+  },
+  "message.audioImageRequired": {
+    "message": "عند استخدام الصوت المرجعي، يجب توفير صورة مرجعية واحدة على الأقل",
+    "description": "نقص الصورة في وضع الصوت"
   },
   "message.imageLimit": {
     "message": "يمكن إدخال 9 صور كحد أقصى",
