@@ -47,7 +47,7 @@
       </div>
       <div class="mb-4">
         <field-title :title="$t('minimax.name.ratio')" :description="$t('minimax.description.ratio')" />
-        <div class="option-grid">
+        <div class="ratio-options">
           <button
             v-for="ratio in ratios"
             :key="ratio.value"
@@ -57,14 +57,18 @@
             :aria-pressed="form.ratio === ratio.value"
             @click="form.ratio = ratio.value"
           >
-            <span class="ratio-preview" :style="{ width: ratio.width, height: ratio.height }" aria-hidden="true" />
+            <span class="ratio-preview">
+              <span :style="{ width: ratio.width, height: ratio.height }" aria-hidden="true" />
+            </span>
             <span>{{ ratio.value }}</span>
           </button>
         </div>
       </div>
       <div class="setting-row mb-4">
         <field-title inline :title="$t('minimax.name.duration')" :description="$t('minimax.description.duration')" />
-        <el-input-number v-model="form.duration" :min="4" :max="15" :step="1" controls-position="right" />
+        <el-select v-model="form.duration" class="setting-value">
+          <el-option v-for="duration in durations" :key="duration" :label="`${duration}s`" :value="duration" />
+        </el-select>
       </div>
       <div class="setting-row">
         <field-title inline :title="$t('minimax.name.watermark')" :description="$t('minimax.description.watermark')" />
@@ -84,7 +88,7 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElInputNumber, ElMessage, ElSwitch } from 'element-plus';
+import { ElButton, ElInput, ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
@@ -100,7 +104,8 @@ export default defineComponent({
     Consumption,
     ElButton,
     ElInput,
-    ElInputNumber,
+    ElOption,
+    ElSelect,
     ElSwitch,
     FieldTitle,
     PromptTextarea,
@@ -120,9 +125,10 @@ export default defineComponent({
       },
       resolutions: ['768P', '2K'] as const,
       ratios: [
-        { value: '16:9' as const, width: '32px', height: '18px' },
-        { value: '9:16' as const, width: '18px', height: '32px' }
-      ]
+        { value: '16:9' as const, width: '25px', height: '13px' },
+        { value: '9:16' as const, width: '13px', height: '25px' }
+      ],
+      durations: Array.from({ length: 12 }, (_, index) => index + 4)
     };
   },
   computed: {
@@ -174,8 +180,7 @@ export default defineComponent({
   gap: 8px;
 }
 
-.option-button,
-.ratio-button {
+.option-button {
   min-height: 36px;
   color: var(--el-text-color-regular);
   font-size: 13px;
@@ -203,19 +208,49 @@ export default defineComponent({
   background: var(--el-color-primary-light-9);
 }
 
+.ratio-options {
+  display: flex;
+  gap: 10px;
+}
+
 .ratio-button {
   display: flex;
-  min-height: 64px;
+  width: 48px;
+  height: 65px;
+  padding: 0;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  justify-content: flex-start;
+  color: var(--el-text-color-primary);
+  font-size: 12px;
+  border: 1px solid var(--el-border-color);
+  border-radius: var(--el-border-radius-base);
+  background: var(--el-fill-color-lighter);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .ratio-preview {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratio-preview > span {
   display: block;
-  border: 1.5px solid currentColor;
+  border: 1px solid var(--el-border-color-lighter);
   border-radius: 2px;
+}
+
+.ratio-button.active .ratio-preview > span {
+  border-color: var(--el-color-primary);
 }
 
 .setting-row {
@@ -226,7 +261,7 @@ export default defineComponent({
   gap: 16px;
 }
 
-.setting-row :deep(.el-input-number) {
-  width: 100px;
+.setting-value {
+  width: 120px;
 }
 </style>
