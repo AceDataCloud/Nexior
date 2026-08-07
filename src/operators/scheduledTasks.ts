@@ -185,6 +185,8 @@ export interface IAuthorizableConnectionAccount {
   label: string;
   is_default: boolean;
   account_name: string;
+  execution_type: string;
+  supports_task_binding: boolean;
 }
 
 export interface IScheduledBrowserBinding {
