@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "أخرى",
     "description": "سبب الإبلاغ عن المحتوى: أخرى"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "طريقة الدفع",
+    "description": "علامة اختيار النقاط أو محفظة Solana USDC في سيناريو توليد الصور."
+  },
+  "x402Scenario.credits": {
+    "message": "نقاط",
+    "description": "خيار الدفع بالنقاط في سيناريو التوليد."
+  },
+  "x402Scenario.wallet": {
+    "message": "محفظة USDC",
+    "description": "خيار الدفع بمحفظة Solana USDC في سيناريو التوليد."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "سيتم عرض السعر الدقيق لـ USDC المقدم من الخادم قبل توقيع المحفظة.",
+    "description": "تذكير بأن وضع الدفع بالمحفظة سيقدم عرض أسعار موثوق من الخادم."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "يرجى توصيل محفظة Solana أولاً قبل التوليد.",
+    "description": "تذكير عند اختيار وضع المحفظة ولكن لم يتم توصيل المحفظة بعد."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "هل تؤكد الدفع بمبلغ {amount} USDC (Solana) لهذه العملية؟",
+    "description": "تأكيد الدفع بعد استلام تحدي x402؛ {amount} هو السعر الدقيق من الخادم."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "فشل الدفع عبر المحفظة.",
+    "description": "بادئة رسالة فشل التوليد في وضع المحفظة."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "الدفع عبر المحفظة يدعم حالياً فقط توليد صور GPT Image؛ إذا كنت بحاجة لتحرير الصورة المرجعية، يرجى التبديل إلى النقاط.",
+    "description": "تذكير للمستخدمين في مرحلة MVP عند محاولة تحرير صورة مرجعية باستخدام وضع المحفظة."
   }
 }

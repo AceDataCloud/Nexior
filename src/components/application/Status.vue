@@ -1,7 +1,12 @@
 <template>
   <div class="status">
     <el-dialog v-model="visible" class="mt-12" width="450px">
-      <div v-if="application">
+      <el-tabs v-if="x402Enabled" v-model="paymentMode" class="payment-tabs">
+        <el-tab-pane :label="$t('common.x402Scenario.credits')" name="credits" />
+        <el-tab-pane :label="$t('common.x402Scenario.wallet')" name="wallet" />
+      </el-tabs>
+
+      <div v-if="paymentMode === 'credits' && application">
         <p class="text-center mb-4">
           {{ $t('application.message.applicationSelection') }}
         </p>
@@ -21,7 +26,27 @@
           />
         </div>
       </div>
+
+      <div v-else-if="paymentMode === 'wallet'" class="wallet-mode">
+        <template v-if="solanaConnected && solanaAddress">
+          <div class="wallet-connected">
+            <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+            <span class="wallet-address">{{ shortSolanaAddress }}</span>
+          </div>
+          <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
+        </template>
+        <el-button v-else type="primary" @click="walletPickerVisible = true">
+          {{ $t('order.message.x402ConnectWallet') }}
+        </el-button>
+        <p class="wallet-hint">{{ $t('common.x402Scenario.quoteBeforeSigning') }}</p>
+      </div>
     </el-dialog>
+    <solana-wallet-picker-dialog
+      v-model="walletPickerVisible"
+      :wallets="solanaWallets"
+      :connecting="walletConnecting"
+      @select="connectSolanaWallet"
+    />
     <button type="button" class="entry" :title="balanceTitle" @click="visible = true">
       <wallet-icon class="entry-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="entry-amount">{{ balanceText }}</span>
@@ -32,14 +57,23 @@
 
 <script lang="ts">
 import { WalletIcon } from '@acedatacloud/core/icons/components';
-import { defineComponent } from 'vue';
-import { ElDialog } from 'element-plus';
+import { defineComponent, nextTick } from 'vue';
+import { ElButton, ElDialog, ElMessage, ElTabPane, ElTabs, ElTag } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
+import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { isNative } from '@/utils';
+import {
+  isScenarioX402Enabled,
+  scenarioPaymentState,
+  setScenarioPaymentMode,
+  type ScenarioPaymentMode
+} from '@/utils/x402/scenarioPayment';
 export interface IData {
   visible: boolean;
+  walletPickerVisible: boolean;
+  walletConnecting: boolean;
   applicationType: typeof IApplicationType;
 }
 
@@ -47,13 +81,18 @@ export default defineComponent({
   name: 'ApplicationStatus',
   components: {
     WalletIcon,
+    ElButton,
     ElDialog,
-    ApplicationInfo
+    ElTabPane,
+    ElTabs,
+    ElTag,
+    ApplicationInfo,
+    SolanaWalletPickerDialog
   },
   props: {
     application: {
       type: Object as () => IApplication | undefined,
-      required: true
+      default: undefined
     },
     applications: {
       type: Array as () => IApplication[] | undefined,
@@ -62,16 +101,50 @@ export default defineComponent({
     service: {
       type: Object as () => IService | undefined,
       required: true
+    },
+    scenario: {
+      type: String,
+      default: undefined
     }
   },
   emits: ['select'],
   data(): IData {
     return {
       visible: false,
+      walletPickerVisible: false,
+      walletConnecting: false,
       applicationType: IApplicationType
     };
   },
   computed: {
+    x402Enabled(): boolean {
+      return Boolean(this.scenario) && isScenarioX402Enabled();
+    },
+    paymentMode: {
+      get(): ScenarioPaymentMode {
+        return this.scenario ? scenarioPaymentState(this.scenario).mode : 'credits';
+      },
+      set(value: ScenarioPaymentMode) {
+        if (!this.scenario) return;
+        setScenarioPaymentMode(this.scenario, value);
+        if (value === 'wallet' && !this.solanaConnected) this.walletPickerVisible = true;
+      }
+    },
+    solanaConnected(): boolean {
+      return Boolean((this as any).$wallet?.connected?.value);
+    },
+    solanaAddress(): string | undefined {
+      return (this as any).$wallet?.publicKey?.value?.toBase58?.();
+    },
+    shortSolanaAddress(): string {
+      const address = this.solanaAddress || '';
+      return address ? `${address.slice(0, 6)}…${address.slice(-6)}` : '';
+    },
+    solanaWallets(): any[] {
+      const wallets = (this as any).$wallet?.wallets?.value || [];
+      const weight = (state: string) => (state === 'Installed' ? 0 : state === 'Loadable' ? 1 : 2);
+      return [...wallets].sort((a, b) => weight(a.readyState) - weight(b.readyState));
+    },
     authenticated() {
       return !!this.$store.state.token.access;
     },
@@ -82,11 +155,13 @@ export default defineComponent({
       return Number(this.application?.remaining_amount ?? 0);
     },
     balanceUnit(): string {
+      if (this.paymentMode === 'wallet') return this.solanaConnected ? '' : this.$t('common.x402Scenario.wallet');
       const unit = this.application?.service?.unit || 'credit';
       const key = `service.unit.${unit}` + (this.balanceAmount === 1 ? '' : 's');
       return this.$t(key);
     },
     balanceText(): string {
+      if (this.paymentMode === 'wallet') return this.solanaConnected ? this.shortSolanaAddress : '';
       const value = this.balanceAmount;
       if (!Number.isFinite(value)) return '0';
       if (value >= 1000) return Math.round(value).toLocaleString();
@@ -94,10 +169,30 @@ export default defineComponent({
       return value.toFixed(2);
     },
     balanceTitle(): string {
-      return `${this.balanceText} ${this.balanceUnit}`;
+      return `${this.balanceText} ${this.balanceUnit}`.trim();
     }
   },
   methods: {
+    async connectSolanaWallet(wallet: any) {
+      const walletApi = (this as any).$wallet;
+      const adapterName = wallet?.adapter?.name;
+      if (!walletApi || !adapterName || this.walletConnecting) return;
+      this.walletConnecting = true;
+      try {
+        walletApi.select(adapterName);
+        await nextTick();
+        await walletApi.connect();
+        this.walletPickerVisible = false;
+      } catch (error) {
+        console.warn('wallet connect failed', error);
+        ElMessage.error(String(this.$t('coin.message.connectError')));
+      } finally {
+        this.walletConnecting = false;
+      }
+    },
+    async disconnectSolanaWallet() {
+      await (this as any).$wallet?.disconnect?.();
+    },
     onGoUsage(application: IApplication) {
       const target = { name: ROUTE_CONSOLE_USAGE_LIST, query: { application_id: application.id } };
       // window.open('_blank') is a no-op inside the iOS/Android webview; navigate in-app.
@@ -126,6 +221,37 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.payment-tabs {
+  margin-top: -12px;
+}
+
+.wallet-mode {
+  display: flex;
+  min-height: 160px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.wallet-connected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wallet-address {
+  color: var(--el-text-color-regular);
+  font-family: monospace;
+}
+
+.wallet-hint {
+  margin: 0;
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+  text-align: center;
+}
+
 .entry {
   display: inline-flex;
   align-items: center;

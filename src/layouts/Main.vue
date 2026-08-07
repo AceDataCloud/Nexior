@@ -3,13 +3,14 @@
     <router-view class="main" />
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
-      v-if="application"
+      v-if="application || x402ScenarioEnabled"
       class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
       :show-price="false"
       :authenticated="!!$store.state.token.access"
       :service="service"
+      :scenario="appName"
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
     />
     <application-confirm v-model.visible="applying" @apply="onApply" />
@@ -27,6 +28,7 @@ import { applicationOperator } from '@/operators';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getFinalApplication } from '@/utils';
+import { isScenarioX402Enabled } from '@/utils/x402/scenarioPayment';
 
 // How often the floating Credits pill re-syncs the selected application's
 // balance. Generations spend credits server-side at task-creation time, so
@@ -57,6 +59,9 @@ export default defineComponent({
   computed: {
     appName(): keyof IAppState {
       return this.$route.meta.appName as keyof IAppState;
+    },
+    x402ScenarioEnabled(): boolean {
+      return ['nanobanana', 'openaiimage'].includes(String(this.appName)) && isScenarioX402Enabled();
     },
     application() {
       // Global application and individual application can be used here

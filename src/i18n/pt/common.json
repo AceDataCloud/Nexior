@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Outro",
     "description": "Motivo da denúncia de conteúdo: outro"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Método de pagamento",
+    "description": "Rótulo para selecionar pontos ou carteira Solana USDC no cenário de geração de imagens."
+  },
+  "x402Scenario.credits": {
+    "message": "Pontos",
+    "description": "Opção de pagamento com pontos no cenário de geração."
+  },
+  "x402Scenario.wallet": {
+    "message": "Carteira USDC",
+    "description": "Opção de pagamento com carteira Solana USDC no cenário de geração."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "O preço exato em USDC será exibido antes da assinatura da carteira.",
+    "description": "Indicação de que o servidor fornecerá uma cotação oficial no modo de pagamento por carteira."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Por favor, conecte a carteira Solana antes de gerar.",
+    "description": "Mensagem exibida quando o modo de carteira é selecionado, mas a carteira ainda não está conectada."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Confirmar pagamento de {amount} USDC (Solana) para esta geração?",
+    "description": "Confirmação de pagamento após receber o desafio x402; {amount} é a cotação precisa do servidor."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Pagamento da carteira falhou.",
+    "description": "Prefixo para mensagem de falha na geração no modo de carteira."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "O pagamento por carteira atualmente suporta apenas geração de imagens GPT; para editar a imagem de referência, mude para pontos.",
+    "description": "Mensagem exibida quando usuários na fase MVP tentam editar a imagem de referência no modo de carteira."
   }
 }

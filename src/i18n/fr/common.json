@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Autre",
     "description": "Raison de signalement de contenu : autre"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Méthode de paiement",
+    "description": "Étiquette pour choisir les points ou le portefeuille Solana USDC dans le scénario de génération d'images."
+  },
+  "x402Scenario.credits": {
+    "message": "Points",
+    "description": "Option de paiement par points dans le scénario de génération."
+  },
+  "x402Scenario.wallet": {
+    "message": "Portefeuille USDC",
+    "description": "Option de paiement par portefeuille Solana USDC dans le scénario de génération."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Le prix exact en USDC sera affiché avant la signature du portefeuille.",
+    "description": "Indication que le serveur fournira un devis autorisé en mode de paiement par portefeuille."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Veuillez d'abord connecter le portefeuille Solana avant de générer.",
+    "description": "Indication lorsque le mode portefeuille est sélectionné mais que le portefeuille n'est pas encore connecté."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Confirmez le paiement de {amount} USDC (Solana) pour cette génération ?",
+    "description": "Confirmation de paiement après réception du défi x402 ; {amount} est le devis précis du serveur."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Échec du paiement par portefeuille.",
+    "description": "Préfixe pour l'indication d'échec de génération en mode portefeuille."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Le paiement par portefeuille ne prend actuellement en charge que la génération d'images GPT ; pour éditer l'image de référence, veuillez passer aux points.",
+    "description": "Indication pour les utilisateurs en phase MVP essayant d'éditer une image de référence GPT en mode portefeuille."
   }
 }

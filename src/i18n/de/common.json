@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Sonstiges",
     "description": "Grund für die Inhaltsmeldung: andere"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Zahlungsmethode",
+    "description": "Label zur Auswahl von Punkten oder Solana USDC Wallet im Bildgenerierungsszenario."
+  },
+  "x402Scenario.credits": {
+    "message": "Punkte",
+    "description": "Zahlungsoption für Punkte im Generierungsszenario."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC Geldbörse",
+    "description": "Solana USDC Geldbörse Zahlungsmodus-Option in einem Generierungsszenario."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Der genaue USDC-Preis, der vom Server bereitgestellt wird, wird vor der Wallet-Signatur angezeigt.",
+    "description": "Hinweis, dass der Server eine autoritative Preisangabe im Wallet-Zahlungsmodus bereitstellt."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Bitte verbinden Sie zuerst das Solana Wallet, bevor Sie generieren.",
+    "description": "Hinweis, wenn der Wallet-Modus ausgewählt, aber das Wallet noch nicht verbunden ist."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Bestätigen Sie die Zahlung von {amount} USDC (Solana) für diese Generierung?",
+    "description": "Zahlungsbestätigung nach Erhalt der x402-Herausforderung; {amount} ist das genaue Angebot des Servers."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Wallet-Zahlung fehlgeschlagen.",
+    "description": "Präfix für die Fehlermeldung bei der Generierung im Wallet-Modus."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Wallet-Zahlung unterstützt derzeit nur die Generierung von GPT-Bildern; für die Bearbeitung von Referenzbildern wechseln Sie bitte zu Punkten.",
+    "description": "Hinweis für Benutzer in der MVP-Phase, die im Wallet-Modus versuchen, GPT-Bildreferenzbilder zu bearbeiten."
   }
 }

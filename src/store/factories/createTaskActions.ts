@@ -4,6 +4,7 @@ import { Status } from '@/models/common';
 import { applicationOperator, credentialOperator, serviceOperator } from '@/operators';
 import { mergeAndSortLists } from '@/utils/merge';
 import { IRootState } from '../common/models';
+import type { OperatorRequestOptions, PaymentMode } from '@/operators/x402';
 
 /**
  * Generic state shape every per-service Vuex module conforms to.
@@ -36,7 +37,7 @@ export interface ITaskServiceState<TConfig, TTask> {
 export interface ITaskOperator<TFilter, TTask> {
   tasks(
     filter: TFilter,
-    options: { token: string }
+    options: OperatorRequestOptions
   ): Promise<{ data: { items: TTask[]; count?: number; total?: number } }>;
   delete?(
     id: string,
@@ -50,6 +51,8 @@ export interface IGetTasksArgs {
   limit?: number;
   createdAtMin?: number;
   createdAtMax?: number;
+  ids?: string[];
+  mode?: PaymentMode;
 }
 
 /**
@@ -187,12 +190,25 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     { commit, state, rootState }: ActionContext<S, IRootState>,
     args: IGetTasksArgs = {}
   ): Promise<TTask[]> => {
-    const credential = state.credential;
-    const token = credential?.token;
-    if (!token) {
-      throw new Error('no token');
+    const token = state.credential?.token;
+    const mode = args.mode || 'credits';
+    if (mode === 'credits' && !token) throw new Error('no token');
+    if (mode === 'x402' && !args.ids?.length) {
+      commit('setTasksItems', []);
+      commit('setTasksTotal', 0);
+      return [];
     }
-    const response = await opts.operator.tasks(buildFilter(rootState, args), { token });
+    const filter =
+      mode === 'x402'
+        ? ({
+            ids: args.ids,
+            offset: args.offset,
+            limit: args.limit,
+            createdAtMin: args.createdAtMin,
+            createdAtMax: args.createdAtMax
+          } as unknown as TFilter)
+        : buildFilter(rootState, args);
+    const response = await opts.operator.tasks(filter, { token, mode });
     const existingItems = state?.tasks?.items || [];
     const newItems = response.data.items || [];
     const mergedItems = mergeAndSortLists(existingItems, newItems);

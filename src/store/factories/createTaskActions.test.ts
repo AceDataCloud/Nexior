@@ -101,3 +101,48 @@ describe('createTaskActions/deleteTask', () => {
     expect(commits).toEqual([]);
   });
 });
+
+describe('createTaskActions/getTasks payment mode', () => {
+  it('queries known task IDs without a Credential in x402 mode', async () => {
+    const tasks = vi.fn().mockResolvedValue({ data: { items: [{ id: 'wallet-task' }], count: 1 } });
+    const actions: any = makeActions({ tasks });
+    const commits: Array<[string, unknown]> = [];
+
+    await invoke(
+      actions.getTasks,
+      { state: { tasks: undefined }, rootState: {}, commits },
+      {
+        mode: 'x402',
+        ids: ['wallet-task'],
+        limit: 20
+      }
+    );
+
+    expect(tasks).toHaveBeenCalledWith(expect.objectContaining({ ids: ['wallet-task'], limit: 20 }), {
+      token: undefined,
+      mode: 'x402'
+    });
+    expect(commits).toContainEqual(['setTasksItems', [{ id: 'wallet-task' }]]);
+  });
+
+  it('does not query an unscoped wallet history when no task IDs are known', async () => {
+    const tasks = vi.fn();
+    const actions: any = makeActions({ tasks });
+    const commits: Array<[string, unknown]> = [];
+
+    await invoke(
+      actions.getTasks,
+      { state: { tasks: undefined }, rootState: {}, commits },
+      {
+        mode: 'x402',
+        ids: []
+      }
+    );
+
+    expect(tasks).not.toHaveBeenCalled();
+    expect(commits).toEqual([
+      ['setTasksItems', []],
+      ['setTasksTotal', 0]
+    ]);
+  });
+});

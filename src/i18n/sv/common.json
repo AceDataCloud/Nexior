@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Annat",
     "description": "Rapporteringsorsak för innehåll: annat"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Betalningsmetod",
+    "description": "Etiketten för att välja poäng eller Solana USDC plånbok i bildgenereringsscenariot."
+  },
+  "x402Scenario.credits": {
+    "message": "Poäng",
+    "description": "Betalningsalternativet med poäng i bildgenereringsscenariot."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC plånbok",
+    "description": "Betalningsalternativet med Solana USDC plånbok i bildgenereringsscenariot."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Det exakta USDC-priset från servern visas innan plånboken signeras.",
+    "description": "En indikation på att servern kommer att tillhandahålla ett auktoritativt pris innan betalning i plånboksbetalningsläge."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Vänligen anslut Solana plånbok innan du genererar.",
+    "description": "En uppmaning när plånboksmetoden valts men plånboken inte är ansluten."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Bekräfta betalningen av {amount} USDC (Solana) för denna generation?",
+    "description": "Betalningsbekräftelse efter att ha mottagit x402-utmaningen; {amount} är det exakta priset från servern."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Plånboksbetalning misslyckades.",
+    "description": "Prefix för meddelandet när bildgenereringen misslyckas i plånboksmetoden."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Plånboksbetalning stöder för närvarande endast GPT Image bildgenerering; för att redigera referensbilden, vänligen väx till poäng.",
+    "description": "En uppmaning till MVP-användare som försöker redigera referensbilder i plånboksmetoden."
   }
 }

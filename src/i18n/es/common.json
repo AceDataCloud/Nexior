@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Otro",
     "description": "Motivo del reporte de contenido: otro"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Método de pago",
+    "description": "Etiqueta para seleccionar puntos o billetera Solana USDC en el escenario de generación de imágenes."
+  },
+  "x402Scenario.credits": {
+    "message": "Puntos",
+    "description": "Opción de pago con puntos en el escenario de generación."
+  },
+  "x402Scenario.wallet": {
+    "message": "Billetera USDC",
+    "description": "Opción de pago con billetera Solana USDC en el escenario de generación."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Se mostrará el precio exacto en USDC proporcionado por el servidor antes de firmar con la billetera.",
+    "description": "Indicación de que el servidor proporcionará una cotización autorizada en el modo de pago con billetera."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Por favor, conecta primero tu billetera Solana antes de generar.",
+    "description": "Mensaje cuando se selecciona el modo de billetera pero aún no se ha conectado."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "¿Confirmar el pago de {amount} USDC (Solana) para esta generación?",
+    "description": "Confirmación de pago después de recibir el desafío x402; {amount} es la cotización exacta del servidor."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Pago con billetera fallido.",
+    "description": "Prefijo para el mensaje de error en caso de fallo en la generación en modo billetera."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "El pago con billetera actualmente solo admite la generación de imágenes GPT; si necesitas editar la imagen de referencia, cambia a puntos.",
+    "description": "Mensaje para usuarios en la fase MVP que intentan editar una imagen de referencia GPT en modo billetera."
   }
 }

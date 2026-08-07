@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "その他",
     "description": "コンテンツ報告理由：その他"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "支払い方法",
+    "description": "画像生成シーンでポイントまたはSolana USDCウォレットを選択するためのラベル。"
+  },
+  "x402Scenario.credits": {
+    "message": "ポイント",
+    "description": "生成シーンにおけるポイント支払いオプション。"
+  },
+  "x402Scenario.wallet": {
+    "message": "USDCウォレット",
+    "description": "生成シーンにおけるSolana USDCウォレット支払いオプション。"
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "ウォレット署名前にサーバーからの正確なUSDC価格が表示されます。",
+    "description": "ウォレット支払いモードでサーバーが提供する権威ある見積もりの提示。"
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "生成する前にSolanaウォレットを接続してください。",
+    "description": "ウォレットモードを選択したがまだウォレットが接続されていない時の提示。"
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "今回の生成支払いは{amount} USDC（Solana）でよろしいですか？",
+    "description": "x402チャレンジを受け取った後の支払い確認；{amount}はサーバーの正確な見積もり。"
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "ウォレット支払いに失敗しました。",
+    "description": "ウォレットモードでの生成失敗提示のプレフィックス。"
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "ウォレット支払いは現在GPT Image画像生成のみをサポートしています；参考画像の編集が必要な場合はポイントに切り替えてください。",
+    "description": "MVP段階のユーザーがウォレットモードでGPT Image参考画像の編集を試みた際の提示。"
   }
 }

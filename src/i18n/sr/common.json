@@ -1778,5 +1778,37 @@
   "reportReason.other": {
     "message": "Друго",
     "description": "Разлог за пријаву садржаја: друго"
+  },
+  "x402Scenario.paymentMethod": {
+    "message": "Način plaćanja",
+    "description": "Oznaka za izbor bodova ili Solana USDC novčanika u scenariju generisanja slika."
+  },
+  "x402Scenario.credits": {
+    "message": "Bodovi",
+    "description": "Opcija plaćanja bodovima u scenariju generisanja."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC novčanik",
+    "description": "Opcija plaćanja Solana USDC novčanikom u scenariju generisanja."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "Tačna USDC cena koju daje server biće prikazana pre potpisivanja novčanika.",
+    "description": "Obaveštenje da će server pružiti zvaničnu ponudu u režimu plaćanja novčanikom."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Prvo povežite Solana novčanik pre generisanja.",
+    "description": "Obaveštenje kada je izabran režim novčanika, ali novčanik još nije povezan."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Potvrđujete da plaćate {amount} USDC (Solana) za ovu generaciju?",
+    "description": "Potvrda plaćanja nakon primanja x402 izazova; {amount} je tačna ponuda servera."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Plaćanje novčanikom je neuspešno.",
+    "description": "Prefiks za obaveštenje o neuspehu generisanja u režimu novčanika."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Plaćanje novčanikom trenutno podržava samo generisanje GPT Image slika; za uređivanje referentne slike, molimo prebacite se na bodove.",
+    "description": "Obaveštenje za korisnike u MVP fazi koji pokušavaju da uređuju referentne slike u režimu novčanika."
   }
 }

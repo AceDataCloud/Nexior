@@ -1612,6 +1612,38 @@
     "message": "Drop to upload",
     "description": "Text on the transient overlay that appears over an uploader while a file is being dragged onto it, telling the user to release to upload."
   },
+  "x402Scenario.paymentMethod": {
+    "message": "Payment",
+    "description": "Label for choosing Credits or a Solana USDC wallet on an image generation scenario."
+  },
+  "x402Scenario.credits": {
+    "message": "Credits",
+    "description": "Credits payment-mode option on a generation scenario."
+  },
+  "x402Scenario.wallet": {
+    "message": "USDC Wallet",
+    "description": "Solana USDC wallet payment-mode option on a generation scenario."
+  },
+  "x402Scenario.quoteBeforeSigning": {
+    "message": "The exact USDC price is shown before your wallet signs.",
+    "description": "Note under the wallet payment mode explaining that the server provides the authoritative quote."
+  },
+  "x402Scenario.connectWalletFirst": {
+    "message": "Connect a Solana wallet before generating.",
+    "description": "Warning shown when wallet mode is selected without a connected wallet."
+  },
+  "x402Scenario.confirmPayment": {
+    "message": "Pay {amount} USDC on Solana for this generation?",
+    "description": "Confirmation shown after the x402 challenge; {amount} is the exact server-quoted USDC amount."
+  },
+  "x402Scenario.paymentFailed": {
+    "message": "Wallet payment failed.",
+    "description": "Prefix for wallet-mode generation errors."
+  },
+  "x402Scenario.gptEditCreditsOnly": {
+    "message": "Wallet payment currently supports GPT Image generation only. Switch to Credits to edit reference images.",
+    "description": "MVP notice when a user tries GPT Image reference-image editing in wallet mode."
+  },
   "appUpgrade.title": {
     "message": "Update required",
     "description": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports."

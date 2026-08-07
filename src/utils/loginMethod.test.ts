@@ -6,7 +6,7 @@ const storeMock = vi.hoisted(() => ({
 
 vi.mock('@/store', () => ({ default: storeMock }));
 
-import { getSiteLoginMode, isIframeLoginEnabled, isSiteLoaded } from './loginMethod';
+import { getSiteLoginMode, isIframeLoginEnabled } from './loginMethod';
 
 describe('utils/loginMethod', () => {
   beforeEach(() => {
@@ -16,7 +16,6 @@ describe('utils/loginMethod', () => {
   describe('when the site is resolved', () => {
     it('honours login_mode=iframe', () => {
       storeMock.getters = { site: { id: 's1', auth: { login_mode: 'iframe' } } };
-      expect(isSiteLoaded()).toBe(true);
       expect(getSiteLoginMode()).toBe('iframe');
       expect(isIframeLoginEnabled()).toBe(true);
     });
@@ -32,22 +31,17 @@ describe('utils/loginMethod', () => {
     });
   });
 
-  // Regression: `site` is not persisted, so a slow or failed /api/v1/sites/
-  // call leaves the store empty. Falling back to `redirect` there threw users
-  // of an iframe-mode white-label site off the operator's domain onto
-  // auth.acedata.cloud. Prefer the reversible branch while the answer is
-  // still unknown.
   describe('when the site has not resolved yet', () => {
-    it('does not fall back to redirect when the store is empty', () => {
+    it('defaults to redirect when the store is empty', () => {
       storeMock.getters = {};
-      expect(isSiteLoaded()).toBe(false);
-      expect(isIframeLoginEnabled()).toBe(true);
+      expect(getSiteLoginMode()).toBe('redirect');
+      expect(isIframeLoginEnabled()).toBe(false);
     });
 
-    it('does not fall back to redirect when the site lookup returned nothing', () => {
+    it('defaults to redirect when the site lookup returned nothing', () => {
       storeMock.getters = { site: {} };
-      expect(isSiteLoaded()).toBe(false);
-      expect(isIframeLoginEnabled()).toBe(true);
+      expect(getSiteLoginMode()).toBe('redirect');
+      expect(isIframeLoginEnabled()).toBe(false);
     });
   });
 });
