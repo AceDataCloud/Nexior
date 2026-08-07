@@ -1,17 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
+  get: vi.fn(),
   post: vi.fn(),
-  signer: vi.fn(async () => ({ headers: { 'PAYMENT-SIGNATURE': 'signed' } }))
+  buildSolanaPayment: vi.fn(async (requirement: unknown) => ({
+    x402Version: 2,
+    accepted: requirement,
+    payload: { transaction: 'signed-transaction' }
+  }))
 }));
 
 vi.mock('axios', () => ({
   default: {
+    get: mocks.get,
     post: mocks.post,
     isAxiosError: (error: any) => error?.isAxiosError === true
   }
 }));
-vi.mock('@acedatacloud/x402-client', () => ({ createX402PaymentHandler: () => mocks.signer }));
+vi.mock('@acedatacloud/x402-client/solana', () => ({ buildSolanaPayment: mocks.buildSolanaPayment }));
 
 import { formatAtomicUsdc, postWithX402, X402PaymentCancelledError } from './x402';
 
@@ -46,6 +52,7 @@ function challengeError(withHeader = false) {
 describe('postWithX402', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mocks.get.mockResolvedValue({ data: { blockhash: 'fresh-blockhash' } });
   });
 
   it('formats atomic USDC without floating point rounding', () => {
@@ -70,11 +77,12 @@ describe('postWithX402', () => {
         }
       )
     ).rejects.toBeInstanceOf(X402PaymentCancelledError);
-    expect(mocks.signer).not.toHaveBeenCalled();
+    expect(mocks.get).not.toHaveBeenCalled();
+    expect(mocks.buildSolanaPayment).not.toHaveBeenCalled();
     expect(mocks.post).toHaveBeenCalledTimes(1);
   });
 
-  it('decodes UTF-8 challenge headers, signs once, and retries once', async () => {
+  it('uses the server blockhash, signs once, and retries once', async () => {
     mocks.post.mockRejectedValueOnce(challengeError(true)).mockResolvedValueOnce({ data: { task_id: 'task-1' } });
 
     const response = await postWithX402<{ task_id: string }>(
@@ -84,18 +92,19 @@ describe('postWithX402', () => {
     );
 
     expect(response.data.task_id).toBe('task-1');
-    expect(mocks.signer).toHaveBeenCalledWith(
-      expect.objectContaining({ accepts: [expect.objectContaining({ description: '图片生成测试' })] })
+    expect(mocks.get).toHaveBeenCalledWith('/api/v1/x402/solana/latest-blockhash/', {
+      baseURL: 'https://platform.acedata.cloud',
+      params: { network: requirement.network }
+    });
+    expect(mocks.buildSolanaPayment).toHaveBeenCalledWith(
+      expect.objectContaining({ description: '图片生成测试' }),
+      wallet,
+      'fresh-blockhash'
     );
+    const retryConfig = mocks.post.mock.calls[1][2];
+    const envelope = JSON.parse(Buffer.from(retryConfig.headers['PAYMENT-SIGNATURE'], 'base64').toString('utf8'));
+    expect(envelope).toEqual(expect.objectContaining({ x402Version: 2, accepted: requirement }));
     expect(mocks.post).toHaveBeenCalledTimes(2);
-    expect(mocks.post).toHaveBeenLastCalledWith(
-      '/nano-banana/images',
-      expect.objectContaining({ async: true }),
-      expect.objectContaining({
-        baseURL: 'https://x402.acedata.cloud',
-        headers: expect.objectContaining({ 'PAYMENT-SIGNATURE': 'signed' })
-      })
-    );
   });
 
   it('uses the 402 body when browsers cannot expose PAYMENT-REQUIRED', async () => {
@@ -110,6 +119,6 @@ describe('postWithX402', () => {
       }
     );
 
-    expect(mocks.signer).toHaveBeenCalledTimes(1);
+    expect(mocks.buildSolanaPayment).toHaveBeenCalledTimes(1);
   });
 });

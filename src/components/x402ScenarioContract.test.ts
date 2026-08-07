@@ -33,8 +33,9 @@ describe('x402 image scenario contract', () => {
 
   it('keeps payment generic and never broadcasts before service delivery', () => {
     const operator = source('operators/x402.ts');
-    expect(operator).toContain('createX402PaymentHandler');
-    expect(operator).toContain("preferScheme: 'exact'");
+    expect(operator).toContain('buildSolanaPayment');
+    expect(operator).toContain('latest-blockhash');
+    expect(operator).not.toContain('signSolanaPayment');
     expect(operator).not.toContain('signAndSendTransaction');
     expect(operator).not.toContain('localStorage');
   });

@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import type { PaymentRequirement } from '@acedatacloud/x402-client';
-import { BASE_URL_X402 } from '@/constants';
+import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
 
 const SOLANA_NETWORK = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
 const USDC_DECIMALS = 6;
@@ -64,6 +64,15 @@ function paymentRequired(error: unknown): { accepts: PaymentRequirement[] } {
   return error.response.data as { accepts: PaymentRequirement[] };
 }
 
+async function fetchSolanaBlockhash(network: string): Promise<string> {
+  const response = await axios.get<{ blockhash?: string }>('/api/v1/x402/solana/latest-blockhash/', {
+    baseURL: BASE_URL_PLATFORM,
+    params: { network }
+  });
+  if (!response.data.blockhash) throw new Error('Invalid Solana blockhash response');
+  return response.data.blockhash;
+}
+
 export async function postWithX402<T>(
   path: string,
   data: unknown,
@@ -86,25 +95,17 @@ export async function postWithX402<T>(
     });
     if (!approved) throw new X402PaymentCancelledError();
 
-    const [{ Buffer }, { createX402PaymentHandler }] = await Promise.all([
+    const [{ Buffer }, { buildSolanaPayment }] = await Promise.all([
       import('buffer'),
-      import('@acedatacloud/x402-client')
+      import('@acedatacloud/x402-client/solana')
     ]);
     if (!(globalThis as any).Buffer) (globalThis as any).Buffer = Buffer;
-    const signer = createX402PaymentHandler({
-      network: 'solana',
-      preferScheme: 'exact',
-      solanaWallet: options.wallet
-    });
-    const signed = await signer({
-      url: `${BASE_URL_X402}${path}`,
-      method: 'POST',
-      body: data,
-      accepts: challenge.accepts
-    });
+    const blockhash = await fetchSolanaBlockhash(requirement.network);
+    const envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
+    const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
     return axios.post<T>(path, data, {
       baseURL: BASE_URL_X402,
-      headers: { ...headers, ...signed.headers }
+      headers: { ...headers, 'PAYMENT-SIGNATURE': paymentSignature }
     });
   }
 }

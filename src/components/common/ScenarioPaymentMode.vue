@@ -10,7 +10,10 @@
 
     <div v-if="mode === 'wallet'" class="scenario-wallet-row">
       <template v-if="connected && address">
-        <span class="scenario-wallet-address">{{ shortAddress }}</span>
+        <div class="scenario-wallet-status">
+          <el-tag type="success" size="small">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+          <span class="scenario-wallet-address">{{ shortAddress }}</span>
+        </div>
         <el-button link size="small" @click="disconnect">{{ $t('coin.button.disconnect') }}</el-button>
       </template>
       <el-button v-else link type="primary" size="small" @click="walletModalVisible = true">
@@ -32,13 +35,13 @@
 
 <script lang="ts">
 import { defineComponent, nextTick } from 'vue';
-import { ElButton, ElMessage, ElRadioButton, ElRadioGroup } from 'element-plus';
+import { ElButton, ElMessage, ElRadioButton, ElRadioGroup, ElTag } from 'element-plus';
 import SolanaWalletPickerDialog from './SolanaWalletPickerDialog.vue';
 import { isScenarioX402Enabled, scenarioPaymentMode, type ScenarioPaymentMode } from '@/utils/x402/scenarioPayment';
 
 export default defineComponent({
   name: 'ScenarioPaymentMode',
-  components: { ElButton, ElRadioButton, ElRadioGroup, SolanaWalletPickerDialog },
+  components: { ElButton, ElRadioButton, ElRadioGroup, ElTag, SolanaWalletPickerDialog },
   emits: ['change'],
   data() {
     return {
@@ -128,6 +131,12 @@ export default defineComponent({
 
 .scenario-wallet-row {
   margin-top: 8px;
+}
+
+.scenario-wallet-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .scenario-wallet-address {

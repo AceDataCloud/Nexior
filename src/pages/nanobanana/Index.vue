@@ -28,6 +28,7 @@ import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import { syncedX402TaskIds, syncX402TaskId } from '@/utils/x402/taskSync';
 import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
 
 interface IData {
@@ -90,6 +91,7 @@ export default defineComponent({
       async handler(newValue) {
         if (newValue) {
           console.debug('layout initialized');
+          this.loadSyncedWalletTasks();
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
@@ -207,9 +209,7 @@ export default defineComponent({
       instrumentGeneration('nanobanana', operation)
         .then((response: any) => {
           const taskId = response?.data?.task_id;
-          if (this.walletMode && taskId && !this.walletTaskIds.includes(taskId)) {
-            this.walletTaskIds.unshift(taskId);
-          }
+          if (this.walletMode && taskId) void this.rememberWalletTask(taskId);
           ElMessage.success(this.$t('nanobanana.message.startTaskSuccess'));
         })
         .catch((error) => {
@@ -231,9 +231,24 @@ export default defineComponent({
         });
     },
     async onPaymentModeChange() {
+      if (this.walletMode) this.loadSyncedWalletTasks();
       this.$store.commit('nanobanana/setTasks', undefined);
       await this.onGetTasks();
       await this.onScrollDown();
+    },
+    loadSyncedWalletTasks() {
+      this.walletTaskIds = syncedX402TaskIds(this.$store.state.user, 'nanobanana');
+    },
+    async rememberWalletTask(taskId: string) {
+      if (!this.walletTaskIds.includes(taskId)) this.walletTaskIds.unshift(taskId);
+      if (!this.$store.state.user?.id) return;
+      try {
+        const user = await syncX402TaskId('nanobanana', taskId);
+        await this.$store.dispatch('setUser', user);
+        this.walletTaskIds = syncedX402TaskIds(user, 'nanobanana');
+      } catch (error) {
+        console.warn('failed to sync x402 task history', error);
+      }
     },
     getWalletContext(): X402WalletContext | undefined {
       const walletApi = (this as any).$wallet;

@@ -10,6 +10,7 @@ export interface IUser {
   province?: string;
   country?: string;
   avatar?: string;
+  metadata?: Record<string, unknown>;
 }
 
 export interface IUserListResponse {
