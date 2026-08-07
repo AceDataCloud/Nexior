@@ -1,8 +1,30 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 06 Aug 2026 22:20:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 07 Aug 2026 20:23:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.358.0
+
+Fri, 07 Aug 2026 20:23:40 GMT
+
+### Minor changes
+
+- Add the MiniMax H3 multimodal video creation workspace. (dev@acedata.cloud)
+- Add feature-gated Solana x402 payments to Nano Banana and GPT Image 2 generation. (dev@acedata.cloud)
+
+### Patches
+
+- Improve template connection guidance, translations, and actionable test errors. (dev@acedata.cloud)
+- Keep chat and accent-tinted surfaces readable with custom site colours in dark mode. (dev@acedata.cloud)
+- Default unresolved site login flows to a full-page redirect instead of an embedded popup. (dev@acedata.cloud)
+- Wrap MiniMax aspect ratio options into a balanced two-row layout. (dev@acedata.cloud)
+- Align MiniMax H3 requests, task responses, controls, and translations with the official V2 API contract. (dev@acedata.cloud)
+- Add MiniMax H3 resolution pricing and watermark controls. (dev@acedata.cloud)
+- Align the MiniMax H3 workspace with standard media uploads, help text, and video controls. (dev@acedata.cloud)
+- Align MiniMax resolution, aspect ratio, and duration controls with the compact video workspace UI. (dev@acedata.cloud)
+- Polish the scheduled template wizard with a compact layout, primary-colour steps, and clearer test-run spacing. (dev@acedata.cloud)
+- Use each site's own brand and copyright in the public footer. (dev@acedata.cloud)
 
 ## 3.357.1
 
