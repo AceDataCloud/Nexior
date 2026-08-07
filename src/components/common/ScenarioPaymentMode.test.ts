@@ -1,63 +1,63 @@
 // @vitest-environment jsdom
 
 import { shallowMount } from '@vue/test-utils';
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const gate = vi.hoisted(() => ({
   enabled: false,
-  paymentMode: { value: 'credits' as 'credits' | 'wallet' }
+  states: {} as Record<string, { mode: 'credits' | 'wallet'; quoteUsdc?: string; quoteLoading: boolean }>
 }));
 
 vi.mock('@/utils/x402/scenarioPayment', () => ({
   isScenarioX402Enabled: () => gate.enabled,
-  scenarioPaymentMode: gate.paymentMode
+  scenarioPaymentState: (scenario: string) => {
+    if (!gate.states[scenario]) gate.states[scenario] = reactive({ mode: 'credits', quoteLoading: false });
+    return gate.states[scenario];
+  }
 }));
 
 import ScenarioPaymentMode from './ScenarioPaymentMode.vue';
 
-function mountComponent() {
+function mountComponent(scenario = 'nanobanana') {
   return shallowMount(ScenarioPaymentMode, {
-    global: {
-      mocks: {
-        $t: (key: string) => key,
-        $wallet: {
-          connected: ref(false),
-          publicKey: ref(null),
-          wallet: ref(null),
-          wallets: ref([])
-        }
-      },
-      stubs: {
-        ElButton: true,
-        ElDialog: true,
-        ElRadioButton: true,
-        ElRadioGroup: true
-      }
-    }
+    props: { scenario },
+    global: { mocks: { $t: (key: string) => key } }
   });
 }
 
 describe('ScenarioPaymentMode', () => {
   beforeEach(() => {
     gate.enabled = false;
-    gate.paymentMode.value = 'credits';
+    gate.states = {};
   });
 
-  it('renders nothing while the x402 feature is disabled', () => {
-    expect(mountComponent().find('.scenario-payment').exists()).toBe(false);
+  it('renders nothing while x402 or wallet mode is disabled', () => {
+    expect(mountComponent().find('.scenario-wallet-price').exists()).toBe(false);
+    gate.enabled = true;
+    expect(mountComponent().find('.scenario-wallet-price').exists()).toBe(false);
   });
 
-  it('defaults to Credits and switches only after the feature is enabled', async () => {
+  it('shows only the authoritative USDC quote in wallet mode', async () => {
     gate.enabled = true;
     const wrapper = mountComponent();
-    expect(wrapper.find('.scenario-payment').exists()).toBe(true);
-    expect((wrapper.vm as any).mode).toBe('credits');
-
-    (wrapper.vm as any).mode = 'wallet';
+    gate.states.nanobanana.mode = 'wallet';
+    gate.states.nanobanana.quoteUsdc = '0.095215';
     await wrapper.vm.$nextTick();
 
-    expect(gate.paymentMode.value).toBe('wallet');
-    expect(wrapper.emitted('change')?.[0]).toEqual(['wallet']);
+    expect(wrapper.text()).toContain('0.095215 USDC');
+    expect(wrapper.find('button').exists()).toBe(false);
+  });
+
+  it('reads quote state for its own scenario only', async () => {
+    gate.enabled = true;
+    const nano = mountComponent('nanobanana');
+    const openAI = mountComponent('openaiimage');
+    gate.states.nanobanana.mode = 'wallet';
+    gate.states.nanobanana.quoteUsdc = '0.1';
+    await nano.vm.$nextTick();
+
+    expect(nano.text()).toContain('0.1 USDC');
+    expect(openAI.text()).not.toContain('USDC');
   });
 });

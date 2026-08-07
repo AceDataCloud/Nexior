@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
-import { postWithX402 } from './x402';
+import { postWithX402, quoteX402 } from './x402';
 import type { OperatorRequestOptions } from './x402';
 
 /**
@@ -135,6 +135,10 @@ export class BaseTaskOperator<
             headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }
           }
     );
+  }
+
+  async quote(data: TGenerateRequest) {
+    return quoteX402(this.generatePath, data, X402_GENERATE_HEADERS);
   }
 
   async generate(data: TGenerateRequest, options: OperatorRequestOptions): Promise<AxiosResponse<TGenerateResponse>> {

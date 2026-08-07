@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" @payment-mode-change="onPaymentModeChange" />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
@@ -15,15 +15,16 @@ import Layout from '@/layouts/OpenAIImage.vue';
 import ConfigPanel from '@/components/openaiimage/ConfigPanel.vue';
 import { openaiimageOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IOpenAIImageEditRequest, IOpenAIImageGenerateRequest, Status } from '@/models';
+import { IOpenAIImageEditRequest, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
-import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
+import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -69,10 +70,18 @@ export default defineComponent({
       return this.$store.state.openaiimage?.tasks;
     },
     walletMode(): boolean {
-      return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
+      return isScenarioX402Enabled() && scenarioPaymentState('openaiimage').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('openaiimage/setTasks', undefined);
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         if (value?.items?.length > oldValue?.items?.length) {
@@ -170,11 +179,7 @@ export default defineComponent({
         delete cfg.size;
       }
 
-      const generateRequest = {
-        ...cfg,
-        action: 'generate',
-        async: true
-      } as IOpenAIImageGenerateRequest;
+      const generateRequest = buildOpenAIImageGenerateRequest(cfg);
 
       const editRequest = {
         action: 'edit',
@@ -243,11 +248,6 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
-    },
-    async onPaymentModeChange() {
-      this.$store.commit('openaiimage/setTasks', undefined);
-      await this.onGetTasks();
-      await this.onScrollDown();
     },
     getWalletContext(): X402WalletContext | undefined {
       const walletApi = (this as any).$wallet;

@@ -5,27 +5,35 @@ import { describe, expect, it } from 'vitest';
 const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cwd(), 'src', relativePath), 'utf8');
 
 describe('x402 image scenario contract', () => {
-  it('keeps the wallet selector feature-gated and shared by both scenarios', () => {
+  it('moves scenario-specific payment selection into the top-right status dialog', () => {
+    const status = source('components/application/Status.vue');
     const selector = source('components/common/ScenarioPaymentMode.vue');
-    expect(selector).toContain('isScenarioX402Enabled()');
-    expect(selector).toContain('scenarioPaymentMode.value = value');
-    expect(source('components/nanobanana/ConfigPanel.vue')).toContain('<scenario-payment-mode');
-    expect(source('components/openaiimage/ConfigPanel.vue')).toContain('<scenario-payment-mode');
+    expect(status).toContain('scenarioPaymentState(this.scenario)');
+    expect(status).toContain('setScenarioPaymentMode(this.scenario, value)');
+    expect(status).toContain('solana-wallet-picker-dialog');
+    expect(source('components/order/X402Pay.vue')).toContain('solana-wallet-picker-dialog');
+    expect(selector).not.toContain('solana-wallet-picker-dialog');
+    expect(selector).not.toContain('el-radio');
   });
 
-  it('reuses the same Solana wallet picker as order payments', () => {
-    const picker = 'solana-wallet-picker-dialog';
-    expect(source('components/common/ScenarioPaymentMode.vue')).toContain(picker);
-    expect(source('components/order/X402Pay.vue')).toContain(picker);
+  it('keeps a lightweight server-quoted price row in both config panels', () => {
+    const selector = source('components/common/ScenarioPaymentMode.vue');
+    const nano = source('components/nanobanana/ConfigPanel.vue');
+    const openAI = source('components/openaiimage/ConfigPanel.vue');
+    expect(selector).toContain('state.quoteUsdc');
+    expect(nano).toContain('<scenario-payment-mode scenario="nanobanana"');
+    expect(nano).toContain('nanobananaOperator.quote(buildNanobananaRequest(this.config))');
+    expect(openAI).toContain('<scenario-payment-mode scenario="openaiimage"');
+    expect(openAI).toContain('openaiimageOperator.quote(buildOpenAIImageGenerateRequest(this.config))');
   });
 
   it('keeps both submissions async and routes both modes through existing operators', () => {
+    const requests = source('utils/x402/imageRequests.ts');
     const nano = source('pages/nanobanana/Index.vue');
     const openAI = source('pages/openaiimage/Index.vue');
-    expect(nano).toContain('async: true');
+    expect(requests).toContain('async: true');
     expect(nano).toContain('nanobananaOperator.generate(request');
     expect(nano).toContain("mode: 'x402'");
-    expect(openAI).toContain('async: true');
     expect(openAI).toContain('openaiimageOperator.generate(generateRequest');
     expect(openAI).toContain("mode: 'x402'");
     expect(openAI).toContain('gptEditCreditsOnly');

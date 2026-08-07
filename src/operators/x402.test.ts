@@ -19,7 +19,7 @@ vi.mock('axios', () => ({
 }));
 vi.mock('@acedatacloud/x402-client/solana', () => ({ buildSolanaPayment: mocks.buildSolanaPayment }));
 
-import { formatAtomicUsdc, postWithX402, X402PaymentCancelledError } from './x402';
+import { formatAtomicUsdc, postWithX402, quoteX402, X402PaymentCancelledError } from './x402';
 
 const requirement = {
   scheme: 'exact',
@@ -59,6 +59,18 @@ describe('postWithX402', () => {
     expect(formatAtomicUsdc('95215')).toBe('0.095215');
     expect(formatAtomicUsdc('1000000')).toBe('1');
     expect(formatAtomicUsdc('1200000')).toBe('1.2');
+  });
+
+  it('fetches an authoritative quote without signing or retrying', async () => {
+    mocks.post.mockRejectedValueOnce(challengeError(true));
+
+    const quote = await quoteX402('/nano-banana/images', { action: 'generate', prompt: 'banana', async: true });
+
+    expect(quote.amountUsdc).toBe('0.095215');
+    expect(quote.requirement).toEqual(requirement);
+    expect(mocks.get).not.toHaveBeenCalled();
+    expect(mocks.buildSolanaPayment).not.toHaveBeenCalled();
+    expect(mocks.post).toHaveBeenCalledTimes(1);
   });
 
   it('does not sign or retry when the user cancels the authoritative quote', async () => {

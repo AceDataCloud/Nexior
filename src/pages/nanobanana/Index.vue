@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" @payment-mode-change="onPaymentModeChange" />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
@@ -15,20 +15,16 @@ import Layout from '@/layouts/Nanobanana.vue';
 import ConfigPanel from '@/components/nanobanana/ConfigPanel.vue';
 import { nanobananaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { INanobananaGenerateRequest, Status } from '@/models';
+import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import {
-  ERROR_CODE_USED_UP,
-  NANOBANANA_DEFAULT_RESOLUTION,
-  NANOBANANA_MODEL_NANO_BANANA_2,
-  NANOBANANA_MODEL_NANO_BANANA_PRO
-} from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
-import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
+import { buildNanobananaRequest } from '@/utils/x402/imageRequests';
 
 interface IData {
   task: INanobananaTask | undefined;
@@ -74,10 +70,18 @@ export default defineComponent({
       return this.$store.state.nanobanana?.tasks;
     },
     walletMode(): boolean {
-      return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
+      return isScenarioX402Enabled() && scenarioPaymentState('nanobanana').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('nanobanana/setTasks', undefined);
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         if (value?.items?.length > oldValue?.items?.length) {
@@ -159,29 +163,7 @@ export default defineComponent({
       ) {
         return;
       }
-      const cfg: any = { ...(this.config || {}) };
-      const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
-      delete cfg.action;
-      // If creating new images, omit reference images from payload
-      if (!hasReferenceImages && 'image_urls' in cfg) {
-        delete cfg.image_urls;
-      }
-      if (!cfg?.aspect_ratio) {
-        delete cfg.aspect_ratio;
-      }
-      const supportsResolution =
-        cfg?.model === NANOBANANA_MODEL_NANO_BANANA_2 || cfg?.model === NANOBANANA_MODEL_NANO_BANANA_PRO;
-      if (!supportsResolution && 'resolution' in cfg) {
-        delete cfg.resolution;
-      }
-      if (supportsResolution && !cfg?.resolution) {
-        cfg.resolution = NANOBANANA_DEFAULT_RESOLUTION;
-      }
-      const request = {
-        ...cfg,
-        action: hasReferenceImages ? 'edit' : 'generate',
-        async: true
-      } as INanobananaGenerateRequest;
+      const request = buildNanobananaRequest(this.config);
       let operation: Promise<unknown>;
       if (this.walletMode) {
         const wallet = this.getWalletContext();
@@ -233,11 +215,6 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
-    },
-    async onPaymentModeChange() {
-      this.$store.commit('nanobanana/setTasks', undefined);
-      await this.onGetTasks();
-      await this.onScrollDown();
     },
     getWalletContext(): X402WalletContext | undefined {
       const walletApi = (this as any).$wallet;

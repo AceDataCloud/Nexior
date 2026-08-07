@@ -65,6 +65,31 @@ function paymentRequired(error: unknown): { accepts: PaymentRequirement[] } {
   return error.response.data as { accepts: PaymentRequirement[] };
 }
 
+function quoteFromChallenge(challenge: { accepts: PaymentRequirement[] }): X402PaymentQuote {
+  const requirement = selectSolanaExact(challenge.accepts || []);
+  const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
+  if (!requirement || !amountAtomic) throw new Error('No Solana exact payment option is available');
+  return {
+    amountAtomic,
+    amountUsdc: formatAtomicUsdc(amountAtomic),
+    network: requirement.network,
+    requirement
+  };
+}
+
+export async function quoteX402(
+  path: string,
+  data: unknown,
+  headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' }
+): Promise<X402PaymentQuote> {
+  try {
+    await axios.post(path, data, { baseURL: BASE_URL_X402, headers });
+    throw new Error('x402 endpoint did not return a payment requirement');
+  } catch (error) {
+    return quoteFromChallenge(paymentRequired(error));
+  }
+}
+
 async function fetchSolanaBlockhash(network: string): Promise<string> {
   const response = await axios.get<{ blockhash?: string }>('/api/v1/x402/solana/latest-blockhash/', {
     baseURL: BASE_URL_PLATFORM,
@@ -83,17 +108,10 @@ export async function postWithX402<T>(
   try {
     return await axios.post<T>(path, data, { baseURL: BASE_URL_X402, headers });
   } catch (error) {
-    const challenge = paymentRequired(error);
-    const requirement = selectSolanaExact(challenge.accepts || []);
-    const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
-    if (!requirement || !amountAtomic) throw new Error('No Solana exact payment option is available');
+    const quote = quoteFromChallenge(paymentRequired(error));
+    const { requirement } = quote;
 
-    const approved = await options.confirm({
-      amountAtomic,
-      amountUsdc: formatAtomicUsdc(amountAtomic),
-      network: requirement.network,
-      requirement
-    });
+    const approved = await options.confirm(quote);
     if (!approved) throw new X402PaymentCancelledError();
 
     const [{ Buffer }, { buildSolanaPayment }] = await Promise.all([
