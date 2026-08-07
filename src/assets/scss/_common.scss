@@ -33,7 +33,9 @@ html:root {
   --el-color-primary-light-5: #93b8c3;
   --el-color-primary-light-7: #bed4db;
   --el-color-primary-light-8: #d4e3e7;
-  --el-color-primary-light-9: #e9f1f3;
+  --app-brand-bg-light: #e9f1f3;
+  --app-brand-bg-dark: #0e2a33;
+  --el-color-primary-light-9: var(--app-brand-bg-light);
   --el-color-primary-dark-2: #1f5a6b;
   // Channel + hex form of the brand colour. Use `rgba(var(--app-brand-rgb), …)`
   // for translucent fills / glows so they automatically follow the picked
@@ -130,12 +132,9 @@ html.dark {
   // a slight cool undertone, but the canvas itself is GitHub-style cool-gray
   // (#0d1117 / #161b22) and the brand stays as accent only (`primary-light-9`,
   // hero gradient, glows).
-  // NOTE: in dark mode we override `--el-color-primary-light-9` to a darker
-  // teal so it works as a code-block / inline-token background. This is
-  // intentionally NOT runtime-driven from the picked accent colour, because
-  // the dark-mode tinted background relies on the relative-luminance contrast
-  // with #0d1117 which an unconstrained user-picked hex would break.
-  --el-color-primary-light-9: #0e2a33;
+  // Keep light-9 semantic: runtime accent colours provide a dark-surface tint
+  // separately from their near-white light-mode derivative.
+  --el-color-primary-light-9: var(--app-brand-bg-dark);
   --el-bg-color: #0d1117;
   --el-bg-color-page: #08090c;
   --el-card-bg-color: #161b22;

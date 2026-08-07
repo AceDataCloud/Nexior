@@ -75,6 +75,8 @@ const PRIMARY_VAR_KEYS = [
   '--el-color-primary-light-8',
   '--el-color-primary-light-9',
   '--el-color-primary-dark-2',
+  '--app-brand-bg-light',
+  '--app-brand-bg-dark',
   '--app-brand-rgb',
   '--app-brand-hex',
   '--app-brand-hex-dark-2',
@@ -128,6 +130,7 @@ function mix(base: RGB, mixin: RGB, weight: number): RGB {
 
 const WHITE: RGB = { r: 255, g: 255, b: 255 };
 const BLACK: RGB = { r: 0, g: 0, b: 0 };
+const DARK_SURFACE: RGB = { r: 13, g: 17, b: 23 };
 
 /**
  * Apply an accent colour at runtime. Pass `null` / `undefined` /
@@ -153,14 +156,18 @@ export function applyAccentColor(hex?: string | null): void {
   const l9 = mix(rgb, WHITE, 0.9);
   // Dark derivative — mix with black at 20 %.
   const d2 = mix(rgb, BLACK, 0.2);
+  // Dark surfaces need a brand tint, not a near-white Element Plus light-N.
+  const darkBg = mix(DARK_SURFACE, rgb, 0.18);
 
   root.setProperty('--el-color-primary', rgbToHex(rgb));
   root.setProperty('--el-color-primary-light-3', rgbToHex(l3));
   root.setProperty('--el-color-primary-light-5', rgbToHex(l5));
   root.setProperty('--el-color-primary-light-7', rgbToHex(l7));
   root.setProperty('--el-color-primary-light-8', rgbToHex(l8));
-  root.setProperty('--el-color-primary-light-9', rgbToHex(l9));
+  root.removeProperty('--el-color-primary-light-9');
   root.setProperty('--el-color-primary-dark-2', rgbToHex(d2));
+  root.setProperty('--app-brand-bg-light', rgbToHex(l9));
+  root.setProperty('--app-brand-bg-dark', rgbToHex(darkBg));
 
   // Channel-only form for `rgba(var(--app-brand-rgb), 0.x)` consumers in
   // _common.scss + various pages' scoped styles.
