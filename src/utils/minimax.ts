@@ -14,9 +14,10 @@ export const deriveMinimaxMode = (imageUrls: string[], audioUrls: string[]): IMi
 
 export const validateMinimaxConfig = (
   config: IMinimaxConfig
-): 'inputRequired' | 'imageLimit' | 'audioLimit' | undefined => {
-  if (!config.prompt && !config.image_urls?.length && !config.audio_urls?.length) return 'inputRequired';
+): 'promptRequired' | 'imageLimit' | 'audioLimit' | 'audioImageRequired' | undefined => {
+  if (!config.prompt?.trim()) return 'promptRequired';
   if ((config.image_urls?.length || 0) > 9) return 'imageLimit';
   if ((config.audio_urls?.length || 0) > 3) return 'audioLimit';
+  if (config.audio_urls?.length && !config.image_urls?.length) return 'audioImageRequired';
   return undefined;
 };

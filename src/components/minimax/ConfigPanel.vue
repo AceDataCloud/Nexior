@@ -27,18 +27,29 @@
           <div class="hint">{{ $t('minimax.description.audioUrls') }}</div>
         </el-form-item>
         <div class="grid grid-cols-2 gap-3">
+          <el-form-item :label="$t('minimax.name.resolution')">
+            <el-select v-model="form.resolution" class="w-full">
+              <el-option label="768P" value="768P" />
+              <el-option label="2K" value="2K" />
+            </el-select>
+          </el-form-item>
           <el-form-item :label="$t('minimax.name.ratio')">
             <el-select v-model="form.ratio" class="w-full">
               <el-option label="16:9" value="16:9" />
               <el-option label="9:16" value="9:16" />
             </el-select>
           </el-form-item>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
           <el-form-item :label="$t('minimax.name.duration')">
             <el-input-number v-model="form.duration" :min="4" :max="15" :step="1" class="w-full" />
           </el-form-item>
+          <el-form-item :label="$t('minimax.name.watermark')">
+            <el-switch v-model="form.aigcWatermark" />
+          </el-form-item>
         </div>
         <el-alert :closable="false" type="info" show-icon>
-          {{ $t('minimax.description.mode', { mode: $t(`minimax.mode.${mode}`) }) }}
+          {{ $t('minimax.description.mode', { mode: $t(`minimax.mode.${mode}`), price: publicPrice }) }}
         </el-alert>
       </el-form>
     </div>
@@ -64,7 +75,8 @@ import {
   ElInputNumber,
   ElMessage,
   ElOption,
-  ElSelect
+  ElSelect,
+  ElSwitch
 } from 'element-plus';
 import Consumption from '../common/Consumption.vue';
 import { IMinimaxConfig, IMinimaxMode } from '@/models';
@@ -83,12 +95,21 @@ export default defineComponent({
     ElInput,
     ElInputNumber,
     ElOption,
-    ElSelect
+    ElSelect,
+    ElSwitch
   },
   emits: ['generate'],
   data() {
     return {
-      form: { prompt: '', imageText: '', audioText: '', ratio: '16:9' as const, duration: 4 }
+      form: {
+        prompt: '',
+        imageText: '',
+        audioText: '',
+        resolution: '2K' as '768P' | '2K',
+        ratio: '16:9' as const,
+        duration: 4,
+        aigcWatermark: false
+      }
     };
   },
   computed: {
@@ -107,9 +128,14 @@ export default defineComponent({
         prompt: this.form.prompt.trim() || undefined,
         image_urls: this.imageUrls.length ? this.imageUrls : undefined,
         audio_urls: this.audioUrls.length ? this.audioUrls : undefined,
+        resolution: this.form.resolution,
         ratio: this.form.ratio,
-        duration: this.form.duration
+        duration: this.form.duration,
+        aigc_watermark: this.form.aigcWatermark
       };
+    },
+    publicPrice(): string {
+      return this.form.resolution === '768P' ? '$0.057143/s' : '$0.091429/s';
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);

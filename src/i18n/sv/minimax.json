@@ -23,6 +23,14 @@
     "message": "Längd (sekunder)",
     "description": "Utdata video längd"
   },
+  "name.resolution": {
+    "message": "Upplösning",
+    "description": "Utdata video upplösning"
+  },
+  "name.watermark": {
+    "message": "AIGC vattenstämpel",
+    "description": "Om AIGC-logotyp vattenstämpel ska läggas till"
+  },
   "name.taskId": {
     "message": "Uppgift ID",
     "description": "Identifiering av uppgiften"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Fyll i minst ett av följande: prompt, referensbild eller referensljud",
     "description": "Saknar inmatningstips"
+  },
+  "message.promptRequired": {
+    "message": "Alla genereringslägen måste ha en uppmaning",
+    "description": "Saknar uppmaning"
+  },
+  "message.audioImageRequired": {
+    "message": "När du använder referensljud måste du samtidigt tillhandahålla minst en referensbild",
+    "description": "Ljudläget saknar bild"
   },
   "message.imageLimit": {
     "message": "Max 9 referensbilder",

@@ -23,6 +23,14 @@
     "message": "時長（秒）",
     "description": "輸出視頻時長"
   },
+  "name.resolution": {
+    "message": "解析度",
+    "description": "輸出視頻解析度"
+  },
+  "name.watermark": {
+    "message": "AIGC 水印",
+    "description": "是否添加 AIGC 標識水印"
+  },
   "name.taskId": {
     "message": "任務 ID",
     "description": "任務標識"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "請至少填寫提示詞、參考圖片或參考音頻中的一項",
     "description": "缺少輸入提示"
+  },
+  "message.promptRequired": {
+    "message": "所有生成模式都必須填寫提示詞",
+    "description": "缺少提示詞"
+  },
+  "message.audioImageRequired": {
+    "message": "使用參考音頻時必須同時提供至少一張參考圖片",
+    "description": "音頻模式缺少圖片"
   },
   "message.imageLimit": {
     "message": "參考圖片最多 9 張",

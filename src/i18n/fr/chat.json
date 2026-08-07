@@ -417,7 +417,7 @@
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "Titre sur la page web, indiquant que cette section concerne les limitations techniques du service"
+    "description": "Titre dans la page web, indiquant que cette section concerne les limitations techniques du service"
   },
   "title.complexQuestion": {
     "message": "Répondre à des questions complexes",
@@ -964,6 +964,15 @@
     "message": "Heure d'exécution",
     "description": "Champ pour l'heure"
   },
+  "scheduledTasks.form.timezone": {
+    "message": "Fuseau horaire"
+  },
+  "scheduledTasks.form.timezoneHint": {
+    "message": "Les nouvelles tâches utilisent par défaut le fuseau horaire de cet appareil : {timezone}. Une fois enregistré, il reste associé à la tâche."
+  },
+  "scheduledTasks.form.timezoneInvalid": {
+    "message": "Sélectionnez un fuseau horaire IANA valide"
+  },
   "scheduledTasks.form.weekday": {
     "message": "Jour de la semaine",
     "description": "Champ pour le jour de la semaine"
@@ -1117,11 +1126,11 @@
   },
   "artifacts.kind.article": {
     "message": "Article",
-    "description": "Type de production - article"
+    "description": "Type de production - Article"
   },
   "artifacts.kind.image": {
     "message": "Image",
-    "description": "Type de production - image"
+    "description": "Type de production - Image"
   },
   "artifacts.kind.video": {
     "message": "Vidéo",
@@ -1129,11 +1138,11 @@
   },
   "artifacts.kind.audio": {
     "message": "Audio",
-    "description": "Type de production - audio"
+    "description": "Type de production - Audio"
   },
   "artifacts.kind.document": {
     "message": "Document",
-    "description": "Type de production - document"
+    "description": "Type de production - Document"
   },
   "artifacts.kind.email": {
     "message": "E-mail",
@@ -1141,7 +1150,7 @@
   },
   "artifacts.kind.message": {
     "message": "Message",
-    "description": "Type de production - message"
+    "description": "Type de production - Message"
   },
   "artifacts.kind.dataset": {
     "message": "Données",
@@ -1754,31 +1763,6 @@
     "message": "Assistant personnel",
     "description": "Copie du centre de modèles de tâches planifiées"
   },
-  "actionConfirmation.tiktok.music": {
-    "message": "La publication signifie que vous acceptez la « confirmation d'utilisation de la musique » de TikTok",
-    "description": "Confirmation de publication TikTok : déclaration sur l'utilisation de la musique."
-  },
-  "actionConfirmation.tiktok.musicBranded": {
-    "message": "La publication signifie que vous acceptez la « politique de contenu de marque » et la « confirmation d'utilisation de la musique » de TikTok",
-    "description": "Confirmation de publication TikTok : déclaration après avoir coché le contenu de marque."
-  },
-  "model.claudeOpus47": {
-    "message": "claude-opus-4.7",
-    "description": "Nom du modèle du service, c'est-à-dire Claude Opus 4.7"
-  },
-  "model.claudeOpus47Description": {
-    "message": "Modèle le plus avancé actuellement",
-    "description": "Description du modèle Claude Opus 4.7"
-  },
-  "scheduledTasks.form.timezone": {
-    "message": "Fuseau horaire"
-  },
-  "scheduledTasks.form.timezoneHint": {
-    "message": "Les nouvelles tâches utilisent par défaut le fuseau horaire de cet appareil : {timezone}. Une fois enregistré, il reste associé à la tâche."
-  },
-  "scheduledTasks.form.timezoneInvalid": {
-    "message": "Sélectionnez un fuseau horaire IANA valide"
-  },
   "scheduledTemplates.previous": {
     "message": "Précédent",
     "description": "Navigation dans l'assistant de modèle programmé et conseils de connexion"
@@ -1806,5 +1790,21 @@
   "scheduledTemplates.connectionMcpHint": {
     "message": "Exécutez via une connexion MCP autorisée, sans besoin de lier un compte supplémentaire.",
     "description": "Navigation dans l'assistant de modèle programmé et conseils de connexion"
+  },
+  "actionConfirmation.tiktok.music": {
+    "message": "La publication signifie que vous acceptez la « confirmation d'utilisation de la musique » de TikTok",
+    "description": "Confirmation de publication TikTok : déclaration sur l'utilisation de la musique."
+  },
+  "actionConfirmation.tiktok.musicBranded": {
+    "message": "La publication signifie que vous acceptez la « politique de contenu de marque » et la « confirmation d'utilisation de la musique » de TikTok",
+    "description": "Confirmation de publication TikTok : déclaration après avoir coché le contenu de marque."
+  },
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "Nom du modèle du service, c'est-à-dire Claude Opus 4.7"
+  },
+  "model.claudeOpus47Description": {
+    "message": "Modèle le plus avancé actuellement",
+    "description": "Description du modèle Claude Opus 4.7"
   }
 }

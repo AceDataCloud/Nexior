@@ -23,6 +23,14 @@
     "message": "Dauer (Sekunden)",
     "description": "Dauer des ausgegebenen Videos"
   },
+  "name.resolution": {
+    "message": "Auflösung",
+    "description": "Ausgabevideoauflösung."
+  },
+  "name.watermark": {
+    "message": "AIGC Wasserzeichen",
+    "description": "Ob das AIGC-Logo als Wasserzeichen hinzugefügt werden soll."
+  },
   "name.taskId": {
     "message": "Aufgaben-ID",
     "description": "Aufgabenidentifikation"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Bitte füllen Sie mindestens eines der folgenden Felder aus: Stichwort, Referenzbild oder Referenzaudio",
     "description": "Eingabeaufforderung fehlt"
+  },
+  "message.promptRequired": {
+    "message": "Alle Generierungsmodi müssen mit einem Eingabetext ausgefüllt werden.",
+    "description": "Eingabetext fehlt."
+  },
+  "message.audioImageRequired": {
+    "message": "Beim Verwenden von Referenzaudio muss mindestens ein Referenzbild bereitgestellt werden.",
+    "description": "Das Audio-Modus benötigt ein Bild."
   },
   "message.imageLimit": {
     "message": "Maximal 9 Referenz-Bilder",

@@ -23,6 +23,14 @@
     "message": "長さ（秒）",
     "description": "出力動画の長さ"
   },
+  "name.resolution": {
+    "message": "解像度",
+    "description": "出力動画の解像度"
+  },
+  "name.watermark": {
+    "message": "AIGC ウォーターマーク",
+    "description": "AIGC ロゴのウォーターマークを追加するかどうか"
+  },
   "name.taskId": {
     "message": "タスク ID",
     "description": "タスクの識別子"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "プロンプト、参考画像、または参考音声のいずれかを少なくとも入力してください",
     "description": "入力が不足しています"
+  },
+  "message.promptRequired": {
+    "message": "すべての生成モードにプロンプトを入力する必要があります",
+    "description": "プロンプトが不足しています"
+  },
+  "message.audioImageRequired": {
+    "message": "使用参考音声時は、少なくとも1枚の参考画像を提供する必要があります",
+    "description": "音声モードに画像が不足しています"
   },
   "message.imageLimit": {
     "message": "参考画像は最大9件まで",

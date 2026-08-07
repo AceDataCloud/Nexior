@@ -23,6 +23,14 @@
     "message": "Durata (secondi)",
     "description": "Durata del video in output"
   },
+  "name.resolution": {
+    "message": "Risoluzione",
+    "description": "Risoluzione del video in output"
+  },
+  "name.watermark": {
+    "message": "Watermark AIGC",
+    "description": "Se aggiungere un watermark di identificazione AIGC"
+  },
   "name.taskId": {
     "message": "ID attività",
     "description": "Identificatore dell'attività"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Devi compilare almeno un campo tra parole chiave, immagini di riferimento o audio di riferimento",
     "description": "Messaggio di input mancante"
+  },
+  "message.promptRequired": {
+    "message": "È necessario inserire un prompt per tutte le modalità di generazione",
+    "description": "Manca un prompt"
+  },
+  "message.audioImageRequired": {
+    "message": "È necessario fornire almeno un'immagine di riferimento quando si utilizza l'audio di riferimento",
+    "description": "Manca un'immagine per la modalità audio"
   },
   "message.imageLimit": {
     "message": "Massimo 9 immagini di riferimento",

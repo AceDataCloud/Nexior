@@ -23,6 +23,14 @@
     "message": "Durée (secondes)",
     "description": "Durée de la vidéo produite"
   },
+  "name.resolution": {
+    "message": "Résolution",
+    "description": "Résolution de la vidéo de sortie."
+  },
+  "name.watermark": {
+    "message": "Filigrane AIGC",
+    "description": "Indique si un filigrane AIGC doit être ajouté."
+  },
   "name.taskId": {
     "message": "ID de la tâche",
     "description": "Identifiant de la tâche"
@@ -118,6 +126,14 @@
   "message.inputRequired": {
     "message": "Veuillez remplir au moins un élément parmi les mots-clés, les images de référence ou les audio de référence",
     "description": "Alerte d'entrée manquante"
+  },
+  "message.promptRequired": {
+    "message": "Tous les modes de génération doivent avoir un mot-clé.",
+    "description": "Il manque un mot-clé."
+  },
+  "message.audioImageRequired": {
+    "message": "Lorsque vous utilisez un audio de référence, vous devez fournir au moins une image de référence.",
+    "description": "Le mode audio manque d'image."
   },
   "message.imageLimit": {
     "message": "Maximum de 9 images de référence",

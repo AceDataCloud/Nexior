@@ -5,8 +5,10 @@ export interface IMinimaxConfig {
   prompt?: string;
   image_urls?: string[];
   audio_urls?: string[];
+  resolution: '768P' | '2K';
   ratio: '16:9' | '9:16';
   duration: number;
+  aigc_watermark: boolean;
   callback_url?: string;
   async?: boolean;
 }
@@ -21,6 +23,7 @@ export interface IMinimaxVideo {
   state?: string;
   duration?: number;
   ratio?: string;
+  resolution?: string;
 }
 
 export interface IMinimaxGenerateResponse {
