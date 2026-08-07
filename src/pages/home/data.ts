@@ -208,7 +208,19 @@ export const INTRO_SECTIONS: IIntroSection[] = [
   },
   {
     key: 'video',
-    featureKeys: ['kling', 'veo', 'sora', 'seedance', 'hailuo', 'luma', 'wan', 'pixverse', 'grokvideo', 'omni'],
+    featureKeys: [
+      'kling',
+      'veo',
+      'sora',
+      'seedance',
+      'hailuo',
+      'minimax',
+      'luma',
+      'wan',
+      'pixverse',
+      'grokvideo',
+      'omni'
+    ],
     eyebrowKey: 'intro.eyebrow.video',
     titleKey: 'intro.title.video',
     siteTitleKey: 'intro.title.site.video',
@@ -224,6 +236,7 @@ export const INTRO_SECTIONS: IIntroSection[] = [
       { name: 'Sora', descriptionKey: 'intro.model.sora', featureKey: 'sora', path: '/sora' },
       { name: 'Seedance', descriptionKey: 'intro.model.seedance', featureKey: 'seedance', path: '/seedance' },
       { name: 'Hailuo', descriptionKey: 'intro.model.hailuo', featureKey: 'hailuo', path: '/hailuo' },
+      { name: 'MiniMax H3', descriptionKey: 'intro.model.minimax', featureKey: 'minimax', path: '/minimax' },
       { name: 'Luma', descriptionKey: 'intro.model.luma', featureKey: 'luma', path: '/luma' },
       { name: 'Wan', descriptionKey: 'intro.model.wan', featureKey: 'wan', path: '/wan' },
       { name: 'Pixverse', descriptionKey: 'intro.model.pixverse', featureKey: 'pixverse', path: '/pixverse' },

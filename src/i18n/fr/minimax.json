@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Modèle",
+    "description": "Modèle de génération de vidéo"
+  },
+  "name.prompt": {
+    "message": "Mots-clés",
+    "description": "Description du contenu, des actions, des plans et du style de la vidéo"
+  },
+  "name.imageUrls": {
+    "message": "URL d'image de référence",
+    "description": "Une URL d'image de référence par ligne"
+  },
+  "name.audioUrls": {
+    "message": "URL audio de référence",
+    "description": "Une URL audio de référence par ligne"
+  },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "Ratio de la vidéo produite"
+  },
+  "name.duration": {
+    "message": "Durée (secondes)",
+    "description": "Durée de la vidéo produite"
+  },
+  "name.taskId": {
+    "message": "ID de la tâche",
+    "description": "Identifiant de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de suivi",
+    "description": "Identifiant de suivi de la demande"
+  },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps pris par la tâche"
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "État d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec de la tâche"
+  },
+  "placeholder.prompt": {
+    "message": "Décrivez la scène, l'action, le plan et le style ; optionnel si vous fournissez des images ou des audio",
+    "description": "Texte de remplacement pour les mots-clés"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... Un par ligne, maximum 9",
+    "description": "Texte de remplacement pour les URL d'image de référence"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... Un par ligne, maximum 3",
+    "description": "Texte de remplacement pour les URL audio de référence"
+  },
+  "description.imageUrls": {
+    "message": "Vous pouvez entrer de 1 à 9 URL d'images publiques ; le mode vidéo à partir d'images sera utilisé automatiquement en cas d'images sans audio.",
+    "description": "Description des images de référence"
+  },
+  "description.audioUrls": {
+    "message": "Vous pouvez entrer de 1 à 3 URL audio publiques ; le mode guidé par audio sera utilisé automatiquement en cas d'audio.",
+    "description": "Description des audio de référence"
+  },
+  "description.mode": {
+    "message": "Mode actuel : {mode} · Prix public $0.25/seconde",
+    "description": "Description du mode dérivé et des prix"
+  },
+  "mode.text_to_video": {
+    "message": "Vidéo à partir de texte",
+    "description": "Mode vidéo générée à partir de texte"
+  },
+  "mode.image_to_video": {
+    "message": "Vidéo à partir d'images",
+    "description": "Mode vidéo générée à partir d'images"
+  },
+  "mode.audio_guided": {
+    "message": "Vidéo guidée par audio",
+    "description": "Mode vidéo guidée par audio"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "État d'attente de la tâche"
+  },
+  "status.processing": {
+    "message": "En cours de traitement",
+    "description": "État de traitement de la tâche"
+  },
+  "button.generate": {
+    "message": "Générer la vidéo",
+    "description": "Bouton de génération"
+  },
+  "button.download": {
+    "message": "Télécharger la vidéo",
+    "description": "Bouton de téléchargement"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Alerte de début de tâche"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Soumission de la tâche réussie"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du démarrage de la tâche, veuillez réessayer plus tard",
+    "description": "Échec de la soumission de la tâche"
+  },
+  "message.usedUp": {
+    "message": "Solde insuffisant, veuillez recharger pour continuer",
+    "description": "Alerte de solde insuffisant"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger cette vidéo",
+    "description": "Alerte de téléchargement de vidéo"
+  },
+  "message.inputRequired": {
+    "message": "Veuillez remplir au moins un élément parmi les mots-clés, les images de référence ou les audio de référence",
+    "description": "Alerte d'entrée manquante"
+  },
+  "message.imageLimit": {
+    "message": "Maximum de 9 images de référence",
+    "description": "Limite de nombre d'images dépassée"
+  },
+  "message.audioLimit": {
+    "message": "Maximum de 3 audio de référence",
+    "description": "Limite de nombre d'audio dépassée"
+  }
+}

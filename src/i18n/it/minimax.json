@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Modello",
+    "description": "Modello per la generazione video"
+  },
+  "name.prompt": {
+    "message": "Parole chiave",
+    "description": "Descrizione del contenuto, azioni, inquadrature e stile del video"
+  },
+  "name.imageUrls": {
+    "message": "URL immagine di riferimento",
+    "description": "Un URL immagine di riferimento per riga"
+  },
+  "name.audioUrls": {
+    "message": "URL audio di riferimento",
+    "description": "Un URL audio di riferimento per riga"
+  },
+  "name.ratio": {
+    "message": "Rapporto d'aspetto",
+    "description": "Rapporto d'aspetto del video in output"
+  },
+  "name.duration": {
+    "message": "Durata (secondi)",
+    "description": "Durata del video in output"
+  },
+  "name.taskId": {
+    "message": "ID attività",
+    "description": "Identificatore dell'attività"
+  },
+  "name.traceId": {
+    "message": "ID tracciamento",
+    "description": "Identificatore per il tracciamento delle richieste"
+  },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo impiegato per il compito"
+  },
+  "name.failure": {
+    "message": "Fallito",
+    "description": "Stato di fallimento del compito"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Motivo del fallimento del compito"
+  },
+  "placeholder.prompt": {
+    "message": "Descrivi scena, azioni, inquadrature e stile; opzionale se fornisci immagini o audio",
+    "description": "Testo segnaposto per suggerimenti"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... uno per riga, massimo 9 immagini",
+    "description": "Testo segnaposto per URL immagine di riferimento"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... uno per riga, massimo 3",
+    "description": "Testo segnaposto per URL audio di riferimento"
+  },
+  "description.imageUrls": {
+    "message": "Puoi inserire da 1 a 9 immagini pubbliche; quando sono presenti immagini e non ci sono audio, si utilizza automaticamente la modalità immagine per video.",
+    "description": "Descrizione immagine di riferimento"
+  },
+  "description.audioUrls": {
+    "message": "Puoi inserire da 1 a 3 audio pubblici; quando è presente audio, si utilizza automaticamente la modalità guidata da audio.",
+    "description": "Descrizione audio di riferimento"
+  },
+  "description.mode": {
+    "message": "Modalità attuale: {mode} · Prezzo pubblico $0.25/secondo",
+    "description": "Descrizione della modalità e del prezzo"
+  },
+  "mode.text_to_video": {
+    "message": "Testo a video",
+    "description": "Modalità video generata da testo"
+  },
+  "mode.image_to_video": {
+    "message": "Immagine a video",
+    "description": "Modalità video generata da immagini"
+  },
+  "mode.audio_guided": {
+    "message": "Video guidato da audio",
+    "description": "Modalità video guidata da audio"
+  },
+  "status.pending": {
+    "message": "In attesa",
+    "description": "Stato di attesa dell'attività"
+  },
+  "status.processing": {
+    "message": "In elaborazione",
+    "description": "Stato di elaborazione dell'attività"
+  },
+  "button.generate": {
+    "message": "Genera video",
+    "description": "Pulsante per generare"
+  },
+  "button.download": {
+    "message": "Scarica video",
+    "description": "Pulsante per scaricare"
+  },
+  "message.startingTask": {
+    "message": "Avvio del compito in corso...",
+    "description": "Messaggio di avvio del compito"
+  },
+  "message.startTaskSuccess": {
+    "message": "Compito di generazione avviato con successo",
+    "description": "Compito inviato con successo"
+  },
+  "message.startTaskFailed": {
+    "message": "Avvio del compito fallito, riprova più tardi",
+    "description": "Errore nell'invio del compito"
+  },
+  "message.usedUp": {
+    "message": "Credito insufficiente, ricarica per continuare a usare",
+    "description": "Messaggio di credito insufficiente"
+  },
+  "message.downloadVideo": {
+    "message": "Scarica questo video",
+    "description": "Messaggio di download video"
+  },
+  "message.inputRequired": {
+    "message": "Devi compilare almeno un campo tra parole chiave, immagini di riferimento o audio di riferimento",
+    "description": "Messaggio di input mancante"
+  },
+  "message.imageLimit": {
+    "message": "Massimo 9 immagini di riferimento",
+    "description": "Limite sul numero di immagini"
+  },
+  "message.audioLimit": {
+    "message": "Massimo 3 audio di riferimento",
+    "description": "Limite sul numero di audio"
+  }
+}

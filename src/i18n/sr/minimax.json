@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Модел",
+    "description": "Модел за генерисање видео записа"
+  },
+  "name.prompt": {
+    "message": "Упутство",
+    "description": "Опис садржаја видео записа, акција, кадрова и стила"
+  },
+  "name.imageUrls": {
+    "message": "URL референтне слике",
+    "description": "Једна референтна слика URL по реду"
+  },
+  "name.audioUrls": {
+    "message": "URL референтног аудио записа",
+    "description": "Један референтни аудио URL по реду"
+  },
+  "name.ratio": {
+    "message": "Однос ширине и висине",
+    "description": "Однос ширине и висине генерисаног видео записа"
+  },
+  "name.duration": {
+    "message": "Трајање (секунде)",
+    "description": "Трајање генерисаног видео записа"
+  },
+  "name.taskId": {
+    "message": "ID zadatka",
+    "description": "Identifikator zadatka"
+  },
+  "name.traceId": {
+    "message": "ID praćenja",
+    "description": "Identifikator za praćenje zahteva"
+  },
+  "name.elapsed": {
+    "message": "Прошло време",
+    "description": "Време потребно за извршење задатка"
+  },
+  "name.failure": {
+    "message": "Неуспех",
+    "description": "Статус неуспеха задатка"
+  },
+  "name.failureReason": {
+    "message": "Разлог неуспеха",
+    "description": "Разлог за неуспех задатка"
+  },
+  "placeholder.prompt": {
+    "message": "Opišite scenu, akciju, kadar i stil; opcionalno kada pružate slike ili audio",
+    "description": "Tekstualni prostor za prompt"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... Svaka linija jedan, najviše 9 slika",
+    "description": "Tekstualni prostor za URL-ove referentnih slika"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... Svaka linija jedan, najviše 3",
+    "description": "Tekstualni prostor za URL-ove referentnih audio zapisa"
+  },
+  "description.imageUrls": {
+    "message": "Можете унети 1–9 јавних слика; ако постоје слике и нема аудио записа, аутоматски се користи режим генерисања видео записа из слика.",
+    "description": "Објашњење за референтне слике"
+  },
+  "description.audioUrls": {
+    "message": "Можете унети 1–3 јавна аудио записа; ако постоји аудио, аутоматски се користи режим вођен аудиом.",
+    "description": "Објашњење за референтне аудио записе"
+  },
+  "description.mode": {
+    "message": "Тренутни режим: {mode} · Јавна цена $0.25/секунд",
+    "description": "Објашњење за режим и цену"
+  },
+  "mode.text_to_video": {
+    "message": "Генерисање видео записа из текста",
+    "description": "Режим генерисања видео записа из текста"
+  },
+  "mode.image_to_video": {
+    "message": "Генерисање видео записа из слика",
+    "description": "Режим генерисања видео записа из слика"
+  },
+  "mode.audio_guided": {
+    "message": "Видео вођен аудиом",
+    "description": "Режим видео записа вођен аудиом"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Status čekanja zadatka"
+  },
+  "status.processing": {
+    "message": "Obrada",
+    "description": "Status obrade zadatka"
+  },
+  "button.generate": {
+    "message": "Генериши видео",
+    "description": " dugme za generisanje"
+  },
+  "button.download": {
+    "message": "Преузми видео",
+    "description": " dugme za preuzimanje"
+  },
+  "message.startingTask": {
+    "message": "Покреће се задатак...",
+    "description": "Упозорење о почетку задатка"
+  },
+  "message.startTaskSuccess": {
+    "message": "Успешно покренут задатак за генерисање",
+    "description": "Успешно подношење задатка"
+  },
+  "message.startTaskFailed": {
+    "message": "Неуспешно покретање задатка, покушајте поново касније",
+    "description": "Неуспех при подношењу задатка"
+  },
+  "message.usedUp": {
+    "message": "Недостатак средстава, молимо вас да допуните рачун",
+    "description": "Упозорење о недостатку средстава"
+  },
+  "message.downloadVideo": {
+    "message": "Преузми ово видео",
+    "description": "Упозорење за преузимање видео записа"
+  },
+  "message.inputRequired": {
+    "message": "Молимо вас да унесете најмање један од следећих: упутство, референтна слика или референтни аудио",
+    "description": "Недостаје улазна порука"
+  },
+  "message.imageLimit": {
+    "message": "Максимално 9 референтних слика",
+    "description": "Превазиђен број слика"
+  },
+  "message.audioLimit": {
+    "message": "Максимално 3 референтна аудио записа",
+    "description": "Превазиђен број аудио записа"
+  }
+}

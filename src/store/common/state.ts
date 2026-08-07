@@ -12,6 +12,7 @@ import digitalhumanState from '../digitalhuman/state';
 import pixverseState from '../pixverse/state';
 import fluxState from '../flux/state';
 import hailuoState from '../hailuo/state';
+import minimaxState from '../minimax/state';
 import sunoState from '../suno/state';
 import producerState from '../producer/state';
 import nanobananaState from '../nanobanana/state';
@@ -64,6 +65,7 @@ export default (): IRootState => {
     pixverse: pixverseState(),
     flux: fluxState(),
     hailuo: hailuoState(),
+    minimax: minimaxState(),
     suno: sunoState(),
     producer: producerState(),
     nanobanana: nanobananaState(),

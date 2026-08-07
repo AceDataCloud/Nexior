@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Model",
+    "description": "Model generowania wideo"
+  },
+  "name.prompt": {
+    "message": "Słowo kluczowe",
+    "description": "Opis treści wideo, akcji, ujęć i stylu"
+  },
+  "name.imageUrls": {
+    "message": "Adresy obrazów referencyjnych",
+    "description": "Jeden adres obrazu na linię"
+  },
+  "name.audioUrls": {
+    "message": "Adresy audio referencyjne",
+    "description": "Jeden adres audio na linię"
+  },
+  "name.ratio": {
+    "message": "Proporcje",
+    "description": "Proporcje wygenerowanego wideo"
+  },
+  "name.duration": {
+    "message": "Czas trwania (sekundy)",
+    "description": "Czas trwania wygenerowanego wideo"
+  },
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "Identyfikator zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "Identyfikator śledzenia żądania"
+  },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas potrzebny na wykonanie zadania"
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Stan niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Przyczyna niepowodzenia zadania"
+  },
+  "placeholder.prompt": {
+    "message": "Opisz scenę, akcję, ujęcia i styl; opcjonalnie przy podawaniu obrazów lub audio",
+    "description": "Tekst zastępczy dla podpowiedzi"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... jeden na linię, maksymalnie 9",
+    "description": "Tekst zastępczy dla URL-i obrazów"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... jeden na linię, maksymalnie 3",
+    "description": "Tekst zastępczy dla URL-i audio"
+  },
+  "description.imageUrls": {
+    "message": "Możesz wprowadzić 1–9 publicznych obrazów; w przypadku istnienia obrazów i braku audio automatycznie użyje trybu generowania wideo z obrazów.",
+    "description": "Opis adresów obrazów"
+  },
+  "description.audioUrls": {
+    "message": "Możesz wprowadzić 1–3 publiczne adresy audio; w przypadku istnienia audio automatycznie użyje trybu prowadzenia audio.",
+    "description": "Opis adresów audio"
+  },
+  "description.mode": {
+    "message": "Aktualny tryb: {mode} · Cena publiczna $0.25/sekundę",
+    "description": "Opis trybu i ceny"
+  },
+  "mode.text_to_video": {
+    "message": "Generowanie wideo z tekstu",
+    "description": "Tryb generowania wideo z tekstu"
+  },
+  "mode.image_to_video": {
+    "message": "Generowanie wideo z obrazów",
+    "description": "Tryb generowania wideo z obrazów"
+  },
+  "mode.audio_guided": {
+    "message": "Wideo prowadzone audio",
+    "description": "Tryb wideo prowadzonego przez audio"
+  },
+  "status.pending": {
+    "message": "Oczekiwanie",
+    "description": "Stan oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "W trakcie przetwarzania",
+    "description": "Stan przetwarzania zadania"
+  },
+  "button.generate": {
+    "message": "Generuj wideo",
+    "description": "Przycisk do generowania"
+  },
+  "button.download": {
+    "message": "Pobierz wideo",
+    "description": "Przycisk do pobierania"
+  },
+  "message.startingTask": {
+    "message": "Rozpoczynam zadanie...",
+    "description": "Wskazówka dotycząca rozpoczęcia zadania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "description": "Sukces w przesyłaniu zadania"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się rozpocząć zadania, spróbuj ponownie później",
+    "description": "Niepowodzenie w przesyłaniu zadania"
+  },
+  "message.usedUp": {
+    "message": "Niewystarczające saldo, proszę doładować, aby kontynuować korzystanie",
+    "description": "Wskazówka o niewystarczającym saldzie"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz to wideo",
+    "description": "Wskazówka dotycząca pobierania wideo"
+  },
+  "message.inputRequired": {
+    "message": "Proszę wypełnić przynajmniej jedno z: słowo kluczowe, adres obrazu lub adres audio",
+    "description": "Brak wymaganych danych wejściowych"
+  },
+  "message.imageLimit": {
+    "message": "Maksymalnie 9 obrazów",
+    "description": "Przekroczono limit liczby obrazów"
+  },
+  "message.audioLimit": {
+    "message": "Maksymalnie 3 adresy audio",
+    "description": "Przekroczono limit liczby audio"
+  }
+}

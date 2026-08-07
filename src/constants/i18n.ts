@@ -46,6 +46,7 @@ export const I18N_SCOPES = [
   'grokvideo',
   'omni',
   'hailuo',
+  'minimax',
   'wan',
   'suno',
   'producer',

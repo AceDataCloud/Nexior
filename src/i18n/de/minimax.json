@@ -1,0 +1,130 @@
+{
+  "name.model": {
+    "message": "Modell",
+    "description": "Modell zur Videoerstellung"
+  },
+  "name.prompt": {
+    "message": "Stichwort",
+    "description": "Beschreibung des Videoinhalts, der Aktionen, der Szenen und des Stils"
+  },
+  "name.imageUrls": {
+    "message": "Referenz-Bild-URL",
+    "description": "Eine Referenz-Bild-URL pro Zeile"
+  },
+  "name.audioUrls": {
+    "message": "Referenz-Audio-URL",
+    "description": "Eine Referenz-Audio-URL pro Zeile"
+  },
+  "name.ratio": {
+    "message": "Seitenverhältnis",
+    "description": "Seitenverhältnis des ausgegebenen Videos"
+  },
+  "name.duration": {
+    "message": "Dauer (Sekunden)",
+    "description": "Dauer des ausgegebenen Videos"
+  },
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "Aufgabenidentifikation"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Anforderungsverfolgungsidentifikation"
+  },
+  "name.elapsed": {
+    "message": "Verstrichene Zeit",
+    "description": "Verstrichene Zeit der Aufgabe"
+  },
+  "name.failure": {
+    "message": "Fehlgeschlagen",
+    "description": "Status der fehlgeschlagenen Aufgabe"
+  },
+  "name.failureReason": {
+    "message": "Fehlermeldung",
+    "description": "Grund für das Scheitern der Aufgabe"
+  },
+  "placeholder.prompt": {
+    "message": "Beschreiben Sie die Szene, Aktionen, Einstellungen und den Stil; optional bei Bereitstellung von Bildern oder Audio",
+    "description": "Platzhaltertext für Eingabeaufforderungen"
+  },
+  "placeholder.imageUrls": {
+    "message": "https://... jede Zeile eine, maximal 9",
+    "description": "Platzhaltertext für Bild-URLs"
+  },
+  "placeholder.audioUrls": {
+    "message": "https://... jede Zeile eine, maximal 3",
+    "description": "Platzhaltertext für Audio-URLs"
+  },
+  "description.imageUrls": {
+    "message": "Es können 1–9 öffentliche Bild-URLs eingegeben werden; bei vorhandenen Bildern und ohne Audio wird automatisch der Bild-zu-Video-Modus verwendet.",
+    "description": "Hinweis zu den Bild-Referenzen"
+  },
+  "description.audioUrls": {
+    "message": "Es können 1–3 öffentliche Audio-URLs eingegeben werden; bei vorhandenem Audio wird automatisch der Audio-Guide-Modus verwendet.",
+    "description": "Hinweis zu den Audio-Referenzen"
+  },
+  "description.mode": {
+    "message": "Aktueller Modus: {mode} · Öffentlicher Preis $0.25/Sekunde",
+    "description": "Erklärung zu den Modi und Preisen"
+  },
+  "mode.text_to_video": {
+    "message": "Text zu Video",
+    "description": "Modus für die Erstellung von Videos aus Text"
+  },
+  "mode.image_to_video": {
+    "message": "Bild zu Video",
+    "description": "Modus für die Erstellung von Videos aus Bildern"
+  },
+  "mode.audio_guided": {
+    "message": "Audio-geführtes Video",
+    "description": "Modus für audio-geführte Videos"
+  },
+  "status.pending": {
+    "message": "Warten",
+    "description": "Wartezustand der Aufgabe"
+  },
+  "status.processing": {
+    "message": "Wird bearbeitet",
+    "description": "Bearbeitungszustand der Aufgabe"
+  },
+  "button.generate": {
+    "message": "Video generieren",
+    "description": "Generieren-Button"
+  },
+  "button.download": {
+    "message": "Video herunterladen",
+    "description": "Herunterladen-Button"
+  },
+  "message.startingTask": {
+    "message": "Aufgabe wird gestartet...",
+    "description": "Hinweis zum Start der Aufgabe"
+  },
+  "message.startTaskSuccess": {
+    "message": "Aufgabe erfolgreich gestartet",
+    "description": "Aufgabenübermittlung erfolgreich"
+  },
+  "message.startTaskFailed": {
+    "message": "Aufgabe konnte nicht gestartet werden, bitte später erneut versuchen",
+    "description": "Aufgabenübermittlung fehlgeschlagen"
+  },
+  "message.usedUp": {
+    "message": "Guthaben unzureichend, bitte aufladen und weiter verwenden",
+    "description": "Hinweis auf unzureichendes Guthaben"
+  },
+  "message.downloadVideo": {
+    "message": "Dieses Video herunterladen",
+    "description": "Hinweis zum Video-Download"
+  },
+  "message.inputRequired": {
+    "message": "Bitte füllen Sie mindestens eines der folgenden Felder aus: Stichwort, Referenzbild oder Referenzaudio",
+    "description": "Eingabeaufforderung fehlt"
+  },
+  "message.imageLimit": {
+    "message": "Maximal 9 Referenz-Bilder",
+    "description": "Bildanzahl überschritten"
+  },
+  "message.audioLimit": {
+    "message": "Maximal 3 Referenz-Audios",
+    "description": "Audioanzahl überschritten"
+  }
+}
