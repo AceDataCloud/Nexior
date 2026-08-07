@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
-import { BASE_URL_API } from '@/constants';
+import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
+import { postWithX402 } from './x402';
+import type { OperatorRequestOptions } from './x402';
 
 /**
  * Filter shape accepted by every `*Operator.tasks(filter)` call.
@@ -38,6 +40,11 @@ const TASK_HEADERS = {
 /** Headers specific to generate endpoints. */
 const GENERATE_HEADERS = {
   authorization: '',
+  'content-type': 'application/json',
+  accept: 'application/x-ndjson'
+};
+
+const X402_GENERATE_HEADERS = {
   'content-type': 'application/json',
   accept: 'application/x-ndjson'
 };
@@ -103,30 +110,38 @@ export class BaseTaskOperator<
     this.generatePath = paths.generatePath;
   }
 
-  async task(id: string, options: { token: string; signal?: AbortSignal }): Promise<AxiosResponse<TTaskResponse>> {
+  async task(id: string, options: OperatorRequestOptions): Promise<AxiosResponse<TTaskResponse>> {
     return axios.post(
       this.tasksPath,
       { action: 'retrieve', id },
-      {
-        baseURL: BASE_URL_API,
-        headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` },
-        signal: options.signal
-      }
+      options.mode === 'x402'
+        ? { baseURL: BASE_URL_X402, headers: COMMON_HEADERS, signal: options.signal }
+        : {
+            baseURL: BASE_URL_API,
+            headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` },
+            signal: options.signal
+          }
     );
   }
 
-  async tasks(filter: TFilter, options: { token: string }): Promise<AxiosResponse<TTasksResponse>> {
+  async tasks(filter: TFilter, options: OperatorRequestOptions): Promise<AxiosResponse<TTasksResponse>> {
     return axios.post(
       this.tasksPath,
       { action: 'retrieve_batch', ...toRequestBody(filter as Record<string, unknown>) },
-      {
-        baseURL: BASE_URL_API,
-        headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }
-      }
+      options.mode === 'x402'
+        ? { baseURL: BASE_URL_X402, headers: COMMON_HEADERS }
+        : {
+            baseURL: BASE_URL_API,
+            headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }
+          }
     );
   }
 
-  async generate(data: TGenerateRequest, options: { token: string }): Promise<AxiosResponse<TGenerateResponse>> {
+  async generate(data: TGenerateRequest, options: OperatorRequestOptions): Promise<AxiosResponse<TGenerateResponse>> {
+    if (options.mode === 'x402') {
+      if (!options.x402) throw new Error('x402 payment options are required');
+      return postWithX402<TGenerateResponse>(this.generatePath, data, options.x402, X402_GENERATE_HEADERS);
+    }
     return axios.post(this.generatePath, data, {
       baseURL: BASE_URL_API,
       headers: { ...GENERATE_HEADERS, authorization: `Bearer ${options.token}` }

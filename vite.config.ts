@@ -83,11 +83,6 @@ export default defineConfig((config: ConfigEnv) => {
           target: process.env.VITE_BASE_URL_AUTH,
           changeOrigin: true
         },
-        '/x402-api': {
-          target: process.env.VITE_BASE_URL_X402 || 'https://x402.acedata.cloud',
-          changeOrigin: true,
-          rewrite: (requestPath) => requestPath.replace(/^\/x402-api/, '')
-        },
         '/api': {
           target: process.env.VITE_BASE_URL_PLATFORM,
           changeOrigin: true

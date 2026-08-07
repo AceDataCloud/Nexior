@@ -27,22 +27,14 @@ import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
-import { mergeAndSortLists } from '@/utils/merge';
 import { isScenarioX402Enabled, scenarioPaymentMode } from '@/utils/x402/scenarioPayment';
-import {
-  listWalletTasks,
-  rememberWalletTask,
-  ScenarioPaymentCancelledError,
-  submitNanoWithX402,
-  walletTaskIds,
-  type ScenarioPaymentQuote,
-  type ScenarioWalletContext
-} from '@/utils/x402/scenarioClient';
+import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
 
 interface IData {
   task: INanobananaTask | undefined;
   job: number;
   loading: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -58,7 +50,8 @@ export default defineComponent({
     return {
       task: undefined,
       job: 0,
-      loading: false
+      loading: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -82,9 +75,6 @@ export default defineComponent({
     },
     walletMode(): boolean {
       return isScenarioX402Enabled() && scenarioPaymentMode.value === 'wallet';
-    },
-    walletAddress(): string | undefined {
-      return (this as any).$wallet?.publicKey?.value?.toBase58?.();
     }
   },
   watch: {
@@ -152,26 +142,11 @@ export default defineComponent({
         return;
       }
       const { limit = 20, createdAtMin, createdAtMax } = payload || {};
-      if (this.walletMode) {
-        if (!this.walletAddress) return;
-        const response = await listWalletTasks<INanobananaTask>(
-          'nano-banana',
-          walletTaskIds('nano-banana', this.walletAddress),
-          {
-            limit,
-            createdAtMin,
-            createdAtMax
-          }
-        );
-        const existing = this.tasks?.items || [];
-        this.$store.commit('nanobanana/setTasksItems', mergeAndSortLists(existing, response.items));
-        this.$store.commit('nanobanana/setTasksTotal', response.count);
-        return;
-      }
       await this.$store.dispatch('nanobanana/getTasks', {
         limit,
         createdAtMin,
-        createdAtMax
+        createdAtMax,
+        ...(this.walletMode ? { mode: 'x402', ids: this.walletTaskIds } : {})
       });
     },
     async onGenerate() {
@@ -214,7 +189,10 @@ export default defineComponent({
           ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
           return;
         }
-        operation = submitNanoWithX402(request, wallet, (quote) => this.confirmWalletPayment(quote));
+        operation = nanobananaOperator.generate(request, {
+          mode: 'x402',
+          x402: { wallet, confirm: (quote) => this.confirmWalletPayment(quote) }
+        });
       } else {
         if (!ensureLoggedIn()) return;
         const token = this.credential?.token;
@@ -228,13 +206,14 @@ export default defineComponent({
       ElMessage.info(this.$t('nanobanana.message.startingTask'));
       instrumentGeneration('nanobanana', operation)
         .then((response: any) => {
-          if (this.walletMode && this.walletAddress && response?.taskId) {
-            rememberWalletTask('nano-banana', this.walletAddress, response.taskId);
+          const taskId = response?.data?.task_id;
+          if (this.walletMode && taskId && !this.walletTaskIds.includes(taskId)) {
+            this.walletTaskIds.unshift(taskId);
           }
           ElMessage.success(this.$t('nanobanana.message.startTaskSuccess'));
         })
         .catch((error) => {
-          if (error instanceof ScenarioPaymentCancelledError) return;
+          if (error instanceof X402PaymentCancelledError) return;
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('nanobanana.message.usedUp'));
@@ -256,7 +235,7 @@ export default defineComponent({
       await this.onGetTasks();
       await this.onScrollDown();
     },
-    getWalletContext(): ScenarioWalletContext | undefined {
+    getWalletContext(): X402WalletContext | undefined {
       const walletApi = (this as any).$wallet;
       const publicKey = walletApi?.publicKey?.value;
       const adapter = walletApi?.wallet?.value?.adapter;
@@ -266,7 +245,7 @@ export default defineComponent({
         signTransaction: adapter.signTransaction.bind(adapter)
       };
     },
-    async confirmWalletPayment(quote: ScenarioPaymentQuote): Promise<boolean> {
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
       return ElMessageBox.confirm(
         this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
         this.$t('order.message.x402ConfirmTitle'),
