@@ -21,22 +21,13 @@
           </button>
         </el-tooltip>
       </div>
-      <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('minimax.status.pending') }}) </span>
-          <span v-if="modelValue?.response && isWaiting"> - ({{ $t('minimax.status.processing') }}) </span>
-        </p>
-      </div>
+      <div class="info" />
       <!-- Display success message -->
-      <div
-        v-if="modelValue?.response?.success === true && !isFailure && !isWaiting"
-        :class="{ content: true, failed: true }"
-      >
-        <div v-if="video?.video_url" class="mb-4">
-          <video-player :src="video?.video_url" />
+      <div v-if="modelValue?.status === 'succeeded'" :class="{ content: true, failed: true }">
+        <div v-if="modelValue?.content?.url" class="mb-4">
+          <video-player :src="modelValue.content.url" />
         </div>
-        <div v-if="video" :class="{ operations: true, 'mt-2': true }">
+        <div v-if="modelValue?.content?.url" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip
             class="box-item"
             effect="dark"
@@ -44,27 +35,26 @@
             placement="top-start"
           >
             <el-button
-              v-if="video?.video_url"
+              v-if="modelValue?.content?.url"
               type="info"
               size="small"
               class="mb-2"
-              @click.stop="onDownload(video?.video_url)"
+              @click.stop="onDownload(modelValue.content.url)"
             >
               {{ $t('minimax.button.download') }}
             </el-button>
           </el-tooltip>
-          <api-code-button path="/minimax/videos" :body="modelValue?.request" />
           <report-button
             service="minimax"
             :target-id="modelValue?.id"
-            :snapshot="{ prompt: modelValue?.request?.prompt }"
+            :snapshot="{ model: modelValue?.model, task_id: modelValue?.id }"
           />
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="modelValue?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('minimax.name.model') }}:
-            {{ modelValue?.request?.model }}
+            {{ modelValue?.model }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -72,10 +62,6 @@
             {{ $t('minimax.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
-          </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('minimax.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
       </div>
@@ -95,18 +81,8 @@
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('minimax.name.failureReason') }}:
-            {{ modelValue?.response?.error?.message }}
-            <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
-          </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('minimax.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
-          </p>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('minimax.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+            {{ modelValue?.error?.message }}
+            <copy-to-clipboard :content="modelValue?.error?.message!" />
           </p>
         </el-alert>
       </div>
@@ -115,7 +91,7 @@
         <el-alert :closable="false" class="info">
           <template #template>
             <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t(modelValue?.response ? 'minimax.status.processing' : 'minimax.status.pending') }}
+            {{ $t(modelValue?.status === 'queued' ? 'minimax.status.pending' : 'minimax.status.processing') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -140,10 +116,9 @@ import {
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton, ElTooltip, ElMessageBox, ElMessage } from 'element-plus';
-import { IMinimaxTask, IMinimaxVideo } from '@/models';
+import { IMinimaxVideoTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
-import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import ReportButton from '@/components/common/ReportButton.vue';
 
 export default defineComponent({
@@ -160,40 +135,26 @@ export default defineComponent({
     VideoPlayer,
     ElTooltip,
     ElButton,
-    ApiCodeButton,
     ReportButton
   },
   props: {
     modelValue: {
-      type: Object as () => IMinimaxTask | undefined,
+      type: Object as () => IMinimaxVideoTask | undefined,
       required: true
     }
   },
   computed: {
     isFailure(): boolean {
-      const response = this.modelValue?.response;
-      return (
-        response?.success === false ||
-        !!response?.error ||
-        this.video?.state === 'failed' ||
-        this.video?.state === 'cancelled'
-      );
+      return this.modelValue?.status === 'failed' || this.modelValue?.status === 'cancelled';
     },
     isWaiting(): boolean {
-      const response = this.modelValue?.response;
-      return (
-        !response ||
-        (!this.isFailure && ['queued', 'pending', 'processing', 'running'].includes(this.video?.state || ''))
-      );
+      return this.modelValue?.status === 'queued' || this.modelValue?.status === 'running';
     },
     application() {
       return this.$store.state.minimax?.application;
     },
     config() {
       return this.$store.state.minimax?.config;
-    },
-    video(): IMinimaxVideo | undefined {
-      return this.modelValue?.response?.data?.[0];
     }
   },
   methods: {
@@ -321,8 +282,6 @@ $left-width: 70px;
         &.info {
           border-color: var(--el-color-info);
         }
-        // Drop the trailing `mb-2` on whichever `<p>` ends up rendered
-        // last (trace_id / elapsed are conditional — e.g. pending tasks).
         :deep(p:last-child) {
           margin-bottom: 0;
         }

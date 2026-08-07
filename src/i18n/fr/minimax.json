@@ -35,14 +35,6 @@
     "message": "ID de la tâche",
     "description": "Identifiant de la tâche"
   },
-  "name.traceId": {
-    "message": "ID de suivi",
-    "description": "Identifiant de suivi de la demande"
-  },
-  "name.elapsed": {
-    "message": "Temps écoulé",
-    "description": "Temps pris par la tâche"
-  },
   "name.failure": {
     "message": "Échec",
     "description": "État d'échec de la tâche"
@@ -127,17 +119,13 @@
     "message": "Télécharger cette vidéo",
     "description": "Alerte de téléchargement de vidéo"
   },
-  "message.inputRequired": {
-    "message": "Veuillez remplir au moins un élément parmi les mots-clés, les images de référence ou les audio de référence",
-    "description": "Alerte d'entrée manquante"
-  },
   "message.promptRequired": {
     "message": "Tous les modes de génération doivent avoir un mot-clé.",
     "description": "Il manque un mot-clé."
   },
-  "message.audioImageRequired": {
-    "message": "Lorsque vous utilisez un audio de référence, vous devez fournir au moins une image de référence.",
-    "description": "Le mode audio manque d'image."
+  "message.textRatioRequired": {
+    "message": "Le ratio de texte doit être un rapport largeur/hauteur spécifique autre que 'adaptatif'",
+    "description": "Le ratio de texte est invalide."
   },
   "message.imageLimit": {
     "message": "Maximum de 9 images de référence",

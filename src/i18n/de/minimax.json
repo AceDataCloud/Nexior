@@ -35,14 +35,6 @@
     "message": "Aufgaben-ID",
     "description": "Aufgabenidentifikation"
   },
-  "name.traceId": {
-    "message": "Verfolgungs-ID",
-    "description": "Anforderungsverfolgungsidentifikation"
-  },
-  "name.elapsed": {
-    "message": "Verstrichene Zeit",
-    "description": "Verstrichene Zeit der Aufgabe"
-  },
   "name.failure": {
     "message": "Fehlgeschlagen",
     "description": "Status der fehlgeschlagenen Aufgabe"
@@ -127,17 +119,13 @@
     "message": "Dieses Video herunterladen",
     "description": "Hinweis zum Video-Download"
   },
-  "message.inputRequired": {
-    "message": "Bitte füllen Sie mindestens eines der folgenden Felder aus: Stichwort, Referenzbild oder Referenzaudio",
-    "description": "Eingabeaufforderung fehlt"
-  },
   "message.promptRequired": {
     "message": "Alle Generierungsmodi müssen mit einem Eingabetext ausgefüllt werden.",
     "description": "Eingabetext fehlt."
   },
-  "message.audioImageRequired": {
-    "message": "Beim Verwenden von Referenzaudio muss mindestens ein Referenzbild bereitgestellt werden.",
-    "description": "Das Audio-Modus benötigt ein Bild."
+  "message.textRatioRequired": {
+    "message": "Das Seitenverhältnis für generierte Videos muss ein spezifisches Verhältnis außer 'adaptive' wählen",
+    "description": "Das Seitenverhältnis für generierte Videos ist ungültig"
   },
   "message.imageLimit": {
     "message": "Maximal 9 Referenz-Bilder",

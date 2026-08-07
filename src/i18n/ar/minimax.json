@@ -35,14 +35,6 @@
     "message": "معرف المهمة",
     "description": "معرف المهمة"
   },
-  "name.traceId": {
-    "message": "معرف التتبع",
-    "description": "معرف تتبع الطلب"
-  },
-  "name.elapsed": {
-    "message": "الوقت المستغرق",
-    "description": "الوقت المستغرق للمهمة"
-  },
   "name.failure": {
     "message": "فشل",
     "description": "حالة فشل المهمة"
@@ -127,17 +119,13 @@
     "message": "تحميل هذا الفيديو",
     "description": "إشعار تحميل الفيديو"
   },
-  "message.inputRequired": {
-    "message": "يرجى ملء عنصر واحد على الأقل من الكلمات المفتاحية، الصور المرجعية أو الصوتيات المرجعية",
-    "description": "إشعار نقص المدخلات"
-  },
   "message.promptRequired": {
     "message": "يجب ملء جميع أوضاع التوليد بكلمة تحفيزية",
     "description": "نقص كلمة التحفيز"
   },
-  "message.audioImageRequired": {
-    "message": "عند استخدام الصوت المرجعي، يجب توفير صورة مرجعية واحدة على الأقل",
-    "description": "نقص الصورة في وضع الصوت"
+  "message.textRatioRequired": {
+    "message": "يجب اختيار نسبة عرض إلى ارتفاع محددة غير متوافقة",
+    "description": "نسبة عرض إلى ارتفاع الفيديو غير صالحة"
   },
   "message.imageLimit": {
     "message": "يمكن إدخال 9 صور كحد أقصى",

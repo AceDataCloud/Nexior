@@ -163,8 +163,7 @@ export default defineComponent({
         return;
       }
       const request = {
-        ...this.config,
-        async: true
+        ...this.config
       } as IMinimaxGenerateRequest;
       if (!ensureLoggedIn()) {
         return;

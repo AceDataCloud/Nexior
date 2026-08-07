@@ -35,14 +35,6 @@
     "message": "ID da tarefa",
     "description": "Identificação da tarefa"
   },
-  "name.traceId": {
-    "message": "ID de rastreamento",
-    "description": "Identificação de rastreamento da solicitação"
-  },
-  "name.elapsed": {
-    "message": "Tempo gasto",
-    "description": "Tempo gasto na tarefa"
-  },
   "name.failure": {
     "message": "Falha",
     "description": "Estado de falha da tarefa"
@@ -127,17 +119,13 @@
     "message": "Baixar este vídeo",
     "description": "Dica para download de vídeo"
   },
-  "message.inputRequired": {
-    "message": "Por favor, preencha pelo menos uma das opções: palavra-chave, imagem de referência ou áudio de referência",
-    "description": "Falta de entrada"
-  },
   "message.promptRequired": {
     "message": "Todos os modos de geração devem ter um prompt preenchido",
     "description": "Falta o prompt"
   },
-  "message.audioImageRequired": {
-    "message": "É necessário fornecer pelo menos uma imagem de referência ao usar áudio de referência",
-    "description": "Modo de áudio sem imagem"
+  "message.textRatioRequired": {
+    "message": "A proporção de vídeo gerada deve escolher uma proporção específica diferente de adaptativa",
+    "description": "A proporção do vídeo gerado é inválida"
   },
   "message.imageLimit": {
     "message": "Máximo de 9 imagens de referência",

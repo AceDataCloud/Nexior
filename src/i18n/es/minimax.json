@@ -35,14 +35,6 @@
     "message": "ID de tarea",
     "description": "Identificador de la tarea"
   },
-  "name.traceId": {
-    "message": "ID de seguimiento",
-    "description": "Identificador de seguimiento de la solicitud"
-  },
-  "name.elapsed": {
-    "message": "Tiempo transcurrido",
-    "description": "Tiempo que tomó la tarea"
-  },
   "name.failure": {
     "message": "Fallido",
     "description": "Estado de falla de la tarea"
@@ -127,17 +119,13 @@
     "message": "Descargar este video",
     "description": "Sugerencia para descargar el video"
   },
-  "message.inputRequired": {
-    "message": "Por favor, complete al menos uno de los campos: palabra clave, imagen de referencia o audio de referencia",
-    "description": "Falta de entrada de aviso"
-  },
   "message.promptRequired": {
     "message": "Se debe completar el campo de indicaciones para todos los modos de generación",
     "description": "Falta el campo de indicaciones"
   },
-  "message.audioImageRequired": {
-    "message": "Se debe proporcionar al menos una imagen de referencia al usar audio de referencia",
-    "description": "Falta una imagen en el modo de audio"
+  "message.textRatioRequired": {
+    "message": "El video generado debe seleccionar una relación de aspecto específica diferente a 'adaptativa'",
+    "description": "La relación de aspecto del video generado es inválida"
   },
   "message.imageLimit": {
     "message": "Máximo de 9 imágenes de referencia",

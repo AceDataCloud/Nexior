@@ -34,7 +34,10 @@ export interface ITaskServiceState<TConfig, TTask> {
 
 /** Minimal contract every per-service operator must satisfy. */
 export interface ITaskOperator<TFilter, TTask> {
-  tasks(filter: TFilter, options: { token: string }): Promise<{ data: { items: TTask[]; count?: number } }>;
+  tasks(
+    filter: TFilter,
+    options: { token: string }
+  ): Promise<{ data: { items: TTask[]; count?: number; total?: number } }>;
   delete?(
     id: string,
     options: { token: string; userId?: string; applicationId?: string }
@@ -194,8 +197,9 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     const newItems = response.data.items || [];
     const mergedItems = mergeAndSortLists(existingItems, newItems);
     commit('setTasksItems', mergedItems);
-    if (response.data.count !== undefined) {
-      commit('setTasksTotal', response.data.count);
+    const total = response.data.count ?? response.data.total;
+    if (total !== undefined) {
+      commit('setTasksTotal', total);
     }
     return response.data.items;
   };
