@@ -7,6 +7,8 @@ import {
   getApplicationCallerOrderDiscountRate,
   applyMarkup,
   isBrandingHidden,
+  getBrandName,
+  getBrandCopyright,
   getBrandSupportUrl,
   getBrandContacts,
   hasBrandContacts
@@ -145,6 +147,20 @@ describe('isBrandingHidden', () => {
     expect(isBrandingHidden({ branding: { hide_powered_by: true } } as never, 'powered_by')).toBe(true);
     expect(isBrandingHidden({ branding: { hide_powered_by: false } } as never, 'powered_by')).toBe(false);
     expect(isBrandingHidden({ branding: { hide_powered_by: 1 } } as never, 'powered_by')).toBe(false);
+  });
+});
+
+describe('brand footer values', () => {
+  it('uses the site title and falls back to the platform brand', () => {
+    expect(getBrandName({ title: '  turboclaw  ' } as never)).toBe('turboclaw');
+    expect(getBrandName({ title: '   ' } as never)).toBe('Ace Data Cloud');
+    expect(getBrandName(null)).toBe('Ace Data Cloud');
+  });
+
+  it('returns only a non-empty custom copyright', () => {
+    expect(getBrandCopyright({ branding: { copyright: '  © TurboClaw  ' } } as never)).toBe('© TurboClaw');
+    expect(getBrandCopyright({ branding: { copyright: '   ' } } as never)).toBeUndefined();
+    expect(getBrandCopyright(null)).toBeUndefined();
   });
 });
 

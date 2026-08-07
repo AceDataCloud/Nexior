@@ -86,6 +86,14 @@ export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_b
   return false;
 };
 
+export const getBrandName = (site?: ISite | null): string => {
+  return site?.title?.trim() || 'Ace Data Cloud';
+};
+
+export const getBrandCopyright = (site?: ISite | null): string | undefined => {
+  return site?.branding?.copyright?.trim() || undefined;
+};
+
 /**
  * Resolve the reseller's support URL: `branding.links.support` first, then
  * the legacy `metadata.support_url`. Returns '' when neither is set so
