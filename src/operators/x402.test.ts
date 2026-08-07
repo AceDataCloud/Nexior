@@ -88,7 +88,7 @@ describe('postWithX402', () => {
     const response = await postWithX402<{ task_id: string }>(
       '/nano-banana/images',
       { action: 'generate', prompt: 'banana', async: true },
-      { wallet, confirm: async () => true }
+      { wallet, confirm: async () => true, identityToken: 'identity-token' }
     );
 
     expect(response.data.task_id).toBe('task-1');
@@ -101,7 +101,10 @@ describe('postWithX402', () => {
       wallet,
       'fresh-blockhash'
     );
+    const initialConfig = mocks.post.mock.calls[0][2];
+    expect(initialConfig.headers).not.toHaveProperty('authorization');
     const retryConfig = mocks.post.mock.calls[1][2];
+    expect(retryConfig.headers.authorization).toBe('Bearer identity-token');
     const envelope = JSON.parse(Buffer.from(retryConfig.headers['PAYMENT-SIGNATURE'], 'base64').toString('utf8'));
     expect(envelope).toEqual(expect.objectContaining({ x402Version: 2, accepted: requirement }));
     expect(mocks.post).toHaveBeenCalledTimes(2);

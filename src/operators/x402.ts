@@ -22,6 +22,7 @@ export interface X402PaymentQuote {
 export interface X402PaymentOptions {
   wallet: X402WalletContext;
   confirm(quote: X402PaymentQuote): Promise<boolean>;
+  identityToken?: string;
 }
 
 export interface OperatorRequestOptions {
@@ -105,7 +106,11 @@ export async function postWithX402<T>(
     const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
     return axios.post<T>(path, data, {
       baseURL: BASE_URL_X402,
-      headers: { ...headers, 'PAYMENT-SIGNATURE': paymentSignature }
+      headers: {
+        ...headers,
+        'PAYMENT-SIGNATURE': paymentSignature,
+        ...(options.identityToken ? { authorization: `Bearer ${options.identityToken}` } : {})
+      }
     });
   }
 }

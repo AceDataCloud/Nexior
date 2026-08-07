@@ -40,6 +40,17 @@ describe('x402 image scenario contract', () => {
     expect(operator).not.toContain('localStorage');
   });
 
+  it('attaches platform identity only to the signed retry', () => {
+    const operator = source('operators/x402.ts');
+    const nano = source('pages/nanobanana/Index.vue');
+    const openAI = source('pages/openaiimage/Index.vue');
+    expect(operator).toContain('options.identityToken');
+    expect(nano).toContain('identityToken: this.credential?.token');
+    expect(openAI).toContain('identityToken: this.credential?.token');
+    expect(nano).toContain('this.walletMode && !this.credential?.token');
+    expect(openAI).toContain('this.walletMode && !this.credential?.token');
+  });
+
   it('calls the dedicated x402 host directly without a frontend proxy', () => {
     expect(source('constants/endpoint.ts')).toContain("BASE_URL_X402 = 'https://x402.acedata.cloud'");
   });
