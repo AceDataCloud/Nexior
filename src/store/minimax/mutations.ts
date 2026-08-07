@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IMinimaxConfig, IMinimaxTask, IService } from '@/models';
+import { IApplication, ICredential, IMinimaxConfig, IMinimaxVideoTask, IService } from '@/models';
 import initialState from './state';
 import { IMinimaxState } from './models';
 
@@ -26,7 +26,7 @@ export const setConfig = (state: IMinimaxState, payload: IMinimaxConfig): void =
   state.config = payload;
 };
 
-export const setTasksItems = (state: IMinimaxState, payload: IMinimaxTask[]): void => {
+export const setTasksItems = (state: IMinimaxState, payload: IMinimaxVideoTask[]): void => {
   const newPayload = {
     ...state.tasks,
     items: payload
@@ -42,7 +42,7 @@ export const setTasksTotal = (state: IMinimaxState, payload: number): void => {
   state.tasks = newPayload;
 };
 
-export const setTasksActive = (state: IMinimaxState, payload: IMinimaxTask): void => {
+export const setTasksActive = (state: IMinimaxState, payload: IMinimaxVideoTask): void => {
   const newPayload = {
     ...state.tasks,
     active: payload

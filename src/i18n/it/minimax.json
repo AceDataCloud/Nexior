@@ -35,14 +35,6 @@
     "message": "ID attività",
     "description": "Identificatore dell'attività"
   },
-  "name.traceId": {
-    "message": "ID tracciamento",
-    "description": "Identificatore per il tracciamento delle richieste"
-  },
-  "name.elapsed": {
-    "message": "Tempo trascorso",
-    "description": "Tempo impiegato per il compito"
-  },
   "name.failure": {
     "message": "Fallito",
     "description": "Stato di fallimento del compito"
@@ -127,17 +119,13 @@
     "message": "Scarica questo video",
     "description": "Messaggio di download video"
   },
-  "message.inputRequired": {
-    "message": "Devi compilare almeno un campo tra parole chiave, immagini di riferimento o audio di riferimento",
-    "description": "Messaggio di input mancante"
-  },
   "message.promptRequired": {
     "message": "È necessario inserire un prompt per tutte le modalità di generazione",
     "description": "Manca un prompt"
   },
-  "message.audioImageRequired": {
-    "message": "È necessario fornire almeno un'immagine di riferimento quando si utilizza l'audio di riferimento",
-    "description": "Manca un'immagine per la modalità audio"
+  "message.textRatioRequired": {
+    "message": "Il rapporto di aspetto del video generato deve essere un rapporto di larghezza e altezza specifico diverso da adaptive",
+    "description": "Il rapporto di aspetto del video generato è invalido"
   },
   "message.imageLimit": {
     "message": "Massimo 9 immagini di riferimento",

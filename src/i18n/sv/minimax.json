@@ -35,14 +35,6 @@
     "message": "Uppgift ID",
     "description": "Identifiering av uppgiften"
   },
-  "name.traceId": {
-    "message": "Spårnings ID",
-    "description": "Identifiering för begärans spårning"
-  },
-  "name.elapsed": {
-    "message": "Tidsåtgång",
-    "description": "Tid som uppgiften tog"
-  },
   "name.failure": {
     "message": "Misslyckande",
     "description": "Uppgiftens misslyckandestatus"
@@ -127,17 +119,13 @@
     "message": "Ladda ner denna video",
     "description": "Tips för videonedladdning"
   },
-  "message.inputRequired": {
-    "message": "Fyll i minst ett av följande: prompt, referensbild eller referensljud",
-    "description": "Saknar inmatningstips"
-  },
   "message.promptRequired": {
     "message": "Alla genereringslägen måste ha en uppmaning",
     "description": "Saknar uppmaning"
   },
-  "message.audioImageRequired": {
-    "message": "När du använder referensljud måste du samtidigt tillhandahålla minst en referensbild",
-    "description": "Ljudläget saknar bild"
+  "message.textRatioRequired": {
+    "message": "Videon måste ha ett specifikt bildförhållande som inte är adaptivt",
+    "description": "Detta meddelande indikerar att det valda bildförhållandet för videon är ogiltigt."
   },
   "message.imageLimit": {
     "message": "Max 9 referensbilder",

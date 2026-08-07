@@ -1,49 +1,62 @@
-export type IMinimaxMode = 'text_to_video' | 'image_to_video' | 'audio_guided';
+export type IMinimaxRatio = 'adaptive' | '21:9' | '16:9' | '4:3' | '1:1' | '3:4' | '9:16';
+export type IMinimaxMediaRole =
+  | 'first_frame'
+  | 'last_frame'
+  | 'reference_image'
+  | 'reference_video'
+  | 'reference_audio';
+
+export type IMinimaxContentItem =
+  | { type: 'text'; text: string }
+  | { type: 'image_url'; image_url: { url: string }; role?: IMinimaxMediaRole }
+  | { type: 'video_url'; video_url: { url: string }; role: 'reference_video' }
+  | { type: 'audio_url'; audio_url: { url: string }; role: 'reference_audio' };
 
 export interface IMinimaxConfig {
-  model: 'minimax-h3';
-  prompt?: string;
-  image_urls?: string[];
-  audio_urls?: string[];
+  model: 'MiniMax-H3';
+  content: IMinimaxContentItem[];
   resolution: '768P' | '2K';
-  ratio: '16:9' | '9:16';
+  ratio?: IMinimaxRatio;
   duration: number;
-  aigc_watermark: boolean;
+  aigc_watermark?: boolean;
   callback_url?: string;
-  async?: boolean;
 }
 
 export type IMinimaxGenerateRequest = IMinimaxConfig;
 
-export interface IMinimaxVideo {
-  id?: string;
-  video_url?: string;
-  model?: string;
-  mode?: IMinimaxMode;
-  state?: string;
-  duration?: number;
-  ratio?: string;
-  resolution?: string;
+export interface IMinimaxGenerateResponse {
+  task_id: string;
 }
 
-export interface IMinimaxGenerateResponse {
-  success: boolean;
-  task_id: string;
-  trace_id: string;
-  data?: IMinimaxVideo[];
+export interface IMinimaxTaskUsage {
+  total_seconds?: number;
+  input_seconds?: number;
+  output_seconds?: number;
+  input_image_count?: number;
+}
+
+export interface IMinimaxVideoTask {
+  id: string;
+  model: 'MiniMax-H3';
+  status: 'queued' | 'running' | 'succeeded' | 'failed' | 'cancelled';
   error?: { code?: string; message?: string };
+  created_at?: number;
+  updated_at?: number;
+  content?: { url?: string };
+  resolution?: '768P' | '2K';
+  duration?: number;
+  usage?: IMinimaxTaskUsage;
+  ratio?: string;
+  task_type: 'generation';
+  modality: 'video';
 }
 
 export interface IMinimaxTask {
-  id: string;
-  created_at?: number;
-  elapsed?: number;
-  request?: IMinimaxGenerateRequest;
-  response?: IMinimaxGenerateResponse;
+  task: IMinimaxVideoTask;
 }
 
 export type IMinimaxTaskResponse = IMinimaxTask;
 export interface IMinimaxTasksResponse {
-  count: number;
-  items: IMinimaxTask[];
+  total: number;
+  items: IMinimaxVideoTask[];
 }

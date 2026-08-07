@@ -35,14 +35,6 @@
     "message": "任務 ID",
     "description": "任務標識"
   },
-  "name.traceId": {
-    "message": "追蹤 ID",
-    "description": "請求追蹤標識"
-  },
-  "name.elapsed": {
-    "message": "耗時",
-    "description": "任務耗時"
-  },
   "name.failure": {
     "message": "失敗",
     "description": "任務失敗狀態"
@@ -127,17 +119,13 @@
     "message": "下載此視頻",
     "description": "視頻下載提示"
   },
-  "message.inputRequired": {
-    "message": "請至少填寫提示詞、參考圖片或參考音頻中的一項",
-    "description": "缺少輸入提示"
-  },
   "message.promptRequired": {
     "message": "所有生成模式都必須填寫提示詞",
     "description": "缺少提示詞"
   },
-  "message.audioImageRequired": {
-    "message": "使用參考音頻時必須同時提供至少一張參考圖片",
-    "description": "音頻模式缺少圖片"
+  "message.textRatioRequired": {
+    "message": "文生視頻必須選擇 adaptive 以外的具體寬高比",
+    "description": "文生視頻比例無效"
   },
   "message.imageLimit": {
     "message": "參考圖片最多 9 張",

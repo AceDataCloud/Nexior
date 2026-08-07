@@ -35,14 +35,6 @@
     "message": "ID zadania",
     "description": "Identyfikator zadania"
   },
-  "name.traceId": {
-    "message": "ID śledzenia",
-    "description": "Identyfikator śledzenia żądania"
-  },
-  "name.elapsed": {
-    "message": "Czas trwania",
-    "description": "Czas potrzebny na wykonanie zadania"
-  },
   "name.failure": {
     "message": "Niepowodzenie",
     "description": "Stan niepowodzenia zadania"
@@ -127,17 +119,13 @@
     "message": "Pobierz to wideo",
     "description": "Wskazówka dotycząca pobierania wideo"
   },
-  "message.inputRequired": {
-    "message": "Proszę wypełnić przynajmniej jedno z: słowo kluczowe, adres obrazu lub adres audio",
-    "description": "Brak wymaganych danych wejściowych"
-  },
   "message.promptRequired": {
     "message": "Wszystkie tryby generacji muszą mieć wypełniony prompt.",
     "description": "Brak promptu."
   },
-  "message.audioImageRequired": {
-    "message": "Podczas korzystania z referencyjnego audio należy dostarczyć przynajmniej jeden obraz referencyjny.",
-    "description": "Brak obrazu w trybie audio."
+  "message.textRatioRequired": {
+    "message": "Wideo generowane przez AI musi mieć wybrany konkretny współczynnik proporcji inny niż adaptive",
+    "description": "Współczynnik proporcji wideo generowanego przez AI jest niewłaściwy"
   },
   "message.imageLimit": {
     "message": "Maksymalnie 9 obrazów",

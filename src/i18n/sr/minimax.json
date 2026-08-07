@@ -35,14 +35,6 @@
     "message": "ID zadatka",
     "description": "Identifikator zadatka"
   },
-  "name.traceId": {
-    "message": "ID praćenja",
-    "description": "Identifikator za praćenje zahteva"
-  },
-  "name.elapsed": {
-    "message": "Прошло време",
-    "description": "Време потребно за извршење задатка"
-  },
   "name.failure": {
     "message": "Неуспех",
     "description": "Статус неуспеха задатка"
@@ -127,17 +119,13 @@
     "message": "Преузми ово видео",
     "description": "Упозорење за преузимање видео записа"
   },
-  "message.inputRequired": {
-    "message": "Молимо вас да унесете најмање један од следећих: упутство, референтна слика или референтни аудио",
-    "description": "Недостаје улазна порука"
-  },
   "message.promptRequired": {
     "message": "Svi generativni režimi moraju imati unete ključne reči",
     "description": "Nedostaju ključne reči"
   },
-  "message.audioImageRequired": {
-    "message": "Kada koristite referentni audio, morate pružiti najmanje jednu referentnu sliku",
-    "description": "Audio režim nedostaje slika"
+  "message.textRatioRequired": {
+    "message": "Za video generisan tekstom mora biti izabran konkretan odnos širine i visine osim adaptivnog",
+    "description": "Odnos širine i visine za video generisan tekstom je nevažeći"
   },
   "message.imageLimit": {
     "message": "Максимално 9 референтних слика",

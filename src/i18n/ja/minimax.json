@@ -35,14 +35,6 @@
     "message": "タスク ID",
     "description": "タスクの識別子"
   },
-  "name.traceId": {
-    "message": "トレース ID",
-    "description": "リクエストのトレース識別子"
-  },
-  "name.elapsed": {
-    "message": "経過時間",
-    "description": "タスクの経過時間"
-  },
   "name.failure": {
     "message": "失敗",
     "description": "タスクの失敗状態"
@@ -127,17 +119,13 @@
     "message": "この動画をダウンロード",
     "description": "動画ダウンロードのヒント"
   },
-  "message.inputRequired": {
-    "message": "プロンプト、参考画像、または参考音声のいずれかを少なくとも入力してください",
-    "description": "入力が不足しています"
-  },
   "message.promptRequired": {
     "message": "すべての生成モードにプロンプトを入力する必要があります",
     "description": "プロンプトが不足しています"
   },
-  "message.audioImageRequired": {
-    "message": "使用参考音声時は、少なくとも1枚の参考画像を提供する必要があります",
-    "description": "音声モードに画像が不足しています"
+  "message.textRatioRequired": {
+    "message": "文生動画は、adaptive以外の具体的なアスペクト比を選択する必要があります",
+    "description": "文生動画の比率が無効です"
   },
   "message.imageLimit": {
     "message": "参考画像は最大9件まで",

@@ -1,5 +1,5 @@
 import { IApplication, ICredential, IService, Status } from '@/models';
-import { IMinimaxConfig, IMinimaxTask } from '@/models';
+import { IMinimaxConfig, IMinimaxVideoTask } from '@/models';
 
 export interface IMinimaxState {
   application: IApplication | undefined;
@@ -9,9 +9,9 @@ export interface IMinimaxState {
   config: IMinimaxConfig | undefined;
   tasks:
     | {
-        items: IMinimaxTask[] | undefined;
+        items: IMinimaxVideoTask[] | undefined;
         total: number | undefined;
-        active: IMinimaxTask | undefined;
+        active: IMinimaxVideoTask | undefined;
       }
     | undefined;
   status: {

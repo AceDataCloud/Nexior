@@ -3,7 +3,7 @@
     <div class="flex-1 overflow-y-auto p-5">
       <div class="mb-4">
         <field-title :title="$t('minimax.name.model')" :description="$t('minimax.description.model')" />
-        <el-input model-value="minimax-h3" disabled />
+        <el-input model-value="MiniMax-H3" disabled />
       </div>
       <prompt-textarea
         v-model="form.prompt"
@@ -93,7 +93,7 @@ import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
 import Consumption from '../common/Consumption.vue';
-import { IMinimaxConfig } from '@/models';
+import { IMinimaxConfig, IMinimaxContentItem, IMinimaxRatio } from '@/models';
 import { getConsumption } from '@/utils';
 import { validateMinimaxConfig } from '@/utils/minimax';
 
@@ -119,13 +119,18 @@ export default defineComponent({
         imageUrls: [] as string[],
         audioUrls: [] as string[],
         resolution: '2K' as '768P' | '2K',
-        ratio: '16:9' as '16:9' | '9:16',
+        ratio: '16:9' as IMinimaxRatio,
         duration: 4,
         aigcWatermark: false
       },
       resolutions: ['768P', '2K'] as const,
       ratios: [
+        { value: 'adaptive' as const, width: '21px', height: '21px' },
+        { value: '21:9' as const, width: '28px', height: '12px' },
         { value: '16:9' as const, width: '25px', height: '13px' },
+        { value: '4:3' as const, width: '22px', height: '17px' },
+        { value: '1:1' as const, width: '19px', height: '19px' },
+        { value: '3:4' as const, width: '17px', height: '22px' },
         { value: '9:16' as const, width: '13px', height: '25px' }
       ],
       durations: Array.from({ length: 12 }, (_, index) => index + 4)
@@ -133,13 +138,25 @@ export default defineComponent({
   },
   computed: {
     config(): IMinimaxConfig {
+      const content: IMinimaxContentItem[] = [];
+      const prompt = this.form.prompt.trim();
+      if (prompt) content.push({ type: 'text', text: prompt });
+      const referenceMode = this.form.imageUrls.length > 1 || this.form.audioUrls.length > 0;
+      this.form.imageUrls.forEach((url) => {
+        content.push({
+          type: 'image_url',
+          image_url: { url },
+          role: referenceMode ? 'reference_image' : 'first_frame'
+        });
+      });
+      this.form.audioUrls.forEach((url) => {
+        content.push({ type: 'audio_url', audio_url: { url }, role: 'reference_audio' });
+      });
       return {
-        model: 'minimax-h3',
-        prompt: this.form.prompt.trim() || undefined,
-        image_urls: this.form.imageUrls.length ? this.form.imageUrls : undefined,
-        audio_urls: this.form.audioUrls.length ? this.form.audioUrls : undefined,
+        model: 'MiniMax-H3',
+        content,
         resolution: this.form.resolution,
-        ratio: this.form.ratio,
+        ratio: this.form.imageUrls.length === 1 && !this.form.audioUrls.length ? 'adaptive' : this.form.ratio,
         duration: this.form.duration,
         aigc_watermark: this.form.aigcWatermark
       };
