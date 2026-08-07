@@ -2,11 +2,12 @@
   <el-dialog
     v-model="visible"
     :title="$t('chat.scheduledTemplates.title')"
-    width="min(980px, 94vw)"
-    top="4vh"
+    width="min(820px, 94vw)"
+    top="6vh"
     :close-on-click-modal="false"
+    class="scheduled-template-wizard"
   >
-    <el-steps :active="step" finish-status="success" align-center class="wizard-steps">
+    <el-steps :active="step" finish-status="finish" align-center class="wizard-steps">
       <el-step :title="$t('chat.scheduledTemplates.step.choose')" />
       <el-step :title="$t('chat.scheduledTemplates.step.configure')" />
       <el-step :title="$t('chat.scheduledTemplates.step.connect')" />
@@ -510,12 +511,43 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.scheduled-template-wizard) {
+  .el-dialog__header {
+    padding-bottom: 14px;
+  }
+  .el-dialog__body {
+    padding-top: 8px;
+  }
+  .el-dialog__footer {
+    padding-top: 14px;
+  }
+}
 .wizard-steps {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+
+  :deep(.el-step__head.is-finish) {
+    color: var(--el-color-primary);
+    border-color: var(--el-color-primary);
+  }
+  :deep(.el-step__title.is-finish) {
+    color: var(--el-color-primary);
+  }
+  :deep(.el-step__line) {
+    top: 13px;
+  }
+  :deep(.el-step__icon) {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  :deep(.el-step__title) {
+    font-size: 14px;
+    line-height: 28px;
+  }
 }
 .wizard-body {
-  min-height: 420px;
-  max-height: 66vh;
+  min-height: 340px;
+  max-height: 62vh;
   overflow-y: auto;
   padding: 4px;
 }
@@ -630,9 +662,19 @@ export default defineComponent({
 .requirement-action .el-select {
   width: 200px;
 }
-.test-step > .el-button,
-.test-status {
-  margin-top: 16px;
+.test-step {
+  h3 {
+    margin: 0;
+  }
+  > p {
+    margin: 6px 0 18px;
+    color: var(--el-text-color-secondary);
+    line-height: 1.6;
+  }
+  > .el-button,
+  .test-status {
+    margin-top: 14px;
+  }
 }
 dl > div {
   display: grid;
