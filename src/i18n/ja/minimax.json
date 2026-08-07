@@ -7,13 +7,13 @@
     "message": "プロンプト",
     "description": "動画の内容、アクション、ショットとスタイルの説明"
   },
-  "name.imageUrls": {
-    "message": "参考画像 URL",
-    "description": "各行に1つの参考画像 URL"
+  "name.referenceImages": {
+    "message": "参考画像",
+    "description": "参考画像アップロードフィールド"
   },
-  "name.audioUrls": {
-    "message": "参考音声 URL",
-    "description": "各行に1つの参考音声 URL"
+  "name.referenceAudios": {
+    "message": "参考音声",
+    "description": "参考音声アップロードフィールド"
   },
   "name.ratio": {
     "message": "アスペクト比",
@@ -52,40 +52,40 @@
     "description": "タスクの失敗理由"
   },
   "placeholder.prompt": {
-    "message": "シーン、アクション、ショット、スタイルを説明；画像や音声を提供する場合はオプション",
-    "description": "プロンプトのプレースホルダー"
+    "message": "シーン、アクション、ショット、スタイルを説明してください（参考素材をアップロードするかどうかに関わらず、プロンプトは必須です）",
+    "description": "プロンプトのプレースホルダーテキスト"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... 各行に1つ、最大9枚",
-    "description": "参考画像URLのプレースホルダー"
+  "description.model": {
+    "message": "MiniMax H3動画生成モデル。",
+    "description": "モデルの説明"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... 各行に1つ、最大3つ",
-    "description": "参考音声URLのプレースホルダー"
+  "description.prompt": {
+    "message": "動画のシーン、アクション、カメラワーク、スタイルを説明してください。すべての生成モードで記入が必要です。",
+    "description": "プロンプトの説明"
   },
-  "description.imageUrls": {
-    "message": "1〜9件の公開画像を入力できます。画像があり音声がない場合は自動的に画像から動画を生成します。",
+  "description.referenceImages": {
+    "message": "1〜9の画像をアップロードします。単一画像は初フレームとして、多数の画像は参考画像として使用されます。",
     "description": "参考画像の説明"
   },
-  "description.audioUrls": {
-    "message": "1〜3件の公開音声を入力できます。音声がある場合は自動的に音声ガイドモードを使用します。",
+  "description.referenceAudios": {
+    "message": "1〜3の音声をアップロードします。参考音声を使用する場合は、少なくとも1つの参考画像を同時にアップロードする必要があります。",
     "description": "参考音声の説明"
   },
-  "description.mode": {
-    "message": "現在のモード：{mode} · 公開価格 $0.25/秒",
-    "description": "派生モードと価格の説明"
+  "description.resolution": {
+    "message": "出力動画の解像度を選択します。",
+    "description": "解像度の説明"
   },
-  "mode.text_to_video": {
-    "message": "テキストから動画",
-    "description": "テキスト生成動画モード"
+  "description.ratio": {
+    "message": "横向きまたは縦向きのアスペクト比を選択します。",
+    "description": "アスペクト比の説明"
   },
-  "mode.image_to_video": {
-    "message": "画像から動画",
-    "description": "画像生成動画モード"
+  "description.duration": {
+    "message": "4〜15秒の動画の長さを設定します。",
+    "description": "長さの説明"
   },
-  "mode.audio_guided": {
-    "message": "音声ガイド動画",
-    "description": "音声ガイド動画モード"
+  "description.watermark": {
+    "message": "動画にAIGCのロゴウォーターマークを追加します。",
+    "description": "ウォーターマークの説明"
   },
   "status.pending": {
     "message": "保留中",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "動画を生成",
     "description": "生成ボタン"
+  },
+  "button.upload": {
+    "message": "アップロード",
+    "description": "素材アップロードボタン"
   },
   "button.download": {
     "message": "動画をダウンロード",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "参考音声は最大3件まで",
     "description": "音声の数が制限を超えています"
+  },
+  "message.uploadError": {
+    "message": "アップロードに失敗しました。後でもう一度お試しください。",
+    "description": "素材アップロード失敗の提示"
   }
 }

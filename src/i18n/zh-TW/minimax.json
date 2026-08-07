@@ -7,13 +7,13 @@
     "message": "提示詞",
     "description": "視頻內容、動作、鏡頭與風格描述"
   },
-  "name.imageUrls": {
-    "message": "參考圖片 URL",
-    "description": "每行一個參考圖片 URL"
+  "name.referenceImages": {
+    "message": "參考圖片",
+    "description": "參考圖片上傳字段"
   },
-  "name.audioUrls": {
-    "message": "參考音頻 URL",
-    "description": "每行一個參考音頻 URL"
+  "name.referenceAudios": {
+    "message": "參考音頻",
+    "description": "參考音頻上傳字段"
   },
   "name.ratio": {
     "message": "寬高比",
@@ -52,40 +52,40 @@
     "description": "任務失敗原因"
   },
   "placeholder.prompt": {
-    "message": "描述場景、動作、鏡頭和風格；提供圖片或音頻時可選",
-    "description": "提示詞占位文本"
+    "message": "描述場景、動作、鏡頭和風格（無論是否上傳參考素材，提示詞都必填）",
+    "description": "提示詞佔位文本"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... 每行一個，最多 9 張",
-    "description": "參考圖片 URL 占位文本"
+  "description.model": {
+    "message": "MiniMax H3 視頻生成模型。",
+    "description": "模型說明"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... 每行一個，最多 3 條",
-    "description": "參考音頻 URL 占位文本"
+  "description.prompt": {
+    "message": "描述視頻中的場景、動作、鏡頭和風格，所有生成模式均需填寫。",
+    "description": "提示詞說明"
   },
-  "description.imageUrls": {
-    "message": "可輸入 1–9 張公網圖片；存在圖片且沒有音頻時自動使用圖生視頻。",
+  "description.referenceImages": {
+    "message": "上傳 1–9 張圖片。單圖作為首幀，多圖作為參考圖。",
     "description": "參考圖片說明"
   },
-  "description.audioUrls": {
-    "message": "可輸入 1–3 條公網音頻；存在音頻時自動使用音頻引導模式。",
+  "description.referenceAudios": {
+    "message": "上傳 1–3 條音頻。使用參考音頻時，需同時上傳至少一張參考圖片。",
     "description": "參考音頻說明"
   },
-  "description.mode": {
-    "message": "當前模式：{mode} · 公开价格 $0.25/秒",
-    "description": "派生模式和價格說明"
+  "description.resolution": {
+    "message": "選擇輸出視頻的清晰度。",
+    "description": "分辨率說明"
   },
-  "mode.text_to_video": {
-    "message": "文生視頻",
-    "description": "文本生成視頻模式"
+  "description.ratio": {
+    "message": "選擇橫屏或豎屏畫幅。",
+    "description": "寬高比說明"
   },
-  "mode.image_to_video": {
-    "message": "圖生視頻",
-    "description": "圖片生成視頻模式"
+  "description.duration": {
+    "message": "設定 4–15 秒的視頻時長。",
+    "description": "時長說明"
   },
-  "mode.audio_guided": {
-    "message": "音頻引導視頻",
-    "description": "音頻引導視頻模式"
+  "description.watermark": {
+    "message": "在視頻中添加 AIGC 標識水印。",
+    "description": "水印說明"
   },
   "status.pending": {
     "message": "等待中",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "生成視頻",
     "description": "生成按鈕"
+  },
+  "button.upload": {
+    "message": "上傳",
+    "description": "素材上傳按鈕"
   },
   "button.download": {
     "message": "下載視頻",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "參考音頻最多 3 條",
     "description": "音頻數量超限"
+  },
+  "message.uploadError": {
+    "message": "上傳失敗，請稍後重試",
+    "description": "素材上傳失敗提示"
   }
 }

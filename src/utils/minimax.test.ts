@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { deriveMinimaxMode, parseMinimaxUrls, validateMinimaxConfig } from './minimax';
+import { validateMinimaxConfig } from './minimax';
 
 const base = {
   model: 'minimax-h3' as const,
@@ -10,20 +10,6 @@ const base = {
 };
 
 describe('MiniMax request helpers', () => {
-  it('parses comma and newline separated media URLs', () => {
-    expect(parseMinimaxUrls(' https://a.test/1.png,https://a.test/2.png\n\nhttps://a.test/3.png ')).toEqual([
-      'https://a.test/1.png',
-      'https://a.test/2.png',
-      'https://a.test/3.png'
-    ]);
-  });
-
-  it('derives audio before image before text mode', () => {
-    expect(deriveMinimaxMode([], [])).toBe('text_to_video');
-    expect(deriveMinimaxMode(['image'], [])).toBe('image_to_video');
-    expect(deriveMinimaxMode(['image'], ['audio'])).toBe('audio_guided');
-  });
-
   it('validates required input and media limits', () => {
     expect(validateMinimaxConfig(base)).toBe('promptRequired');
     expect(validateMinimaxConfig({ ...base, prompt: 'fox' })).toBeUndefined();

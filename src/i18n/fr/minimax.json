@@ -7,13 +7,13 @@
     "message": "Mots-clés",
     "description": "Description du contenu, des actions, des plans et du style de la vidéo"
   },
-  "name.imageUrls": {
-    "message": "URL d'image de référence",
-    "description": "Une URL d'image de référence par ligne"
+  "name.referenceImages": {
+    "message": "Images de référence",
+    "description": "Champ de téléchargement d'images de référence"
   },
-  "name.audioUrls": {
-    "message": "URL audio de référence",
-    "description": "Une URL audio de référence par ligne"
+  "name.referenceAudios": {
+    "message": "Audio de référence",
+    "description": "Champ de téléchargement d'audio de référence"
   },
   "name.ratio": {
     "message": "Ratio",
@@ -52,40 +52,40 @@
     "description": "Raison de l'échec de la tâche"
   },
   "placeholder.prompt": {
-    "message": "Décrivez la scène, l'action, le plan et le style ; optionnel si vous fournissez des images ou des audio",
-    "description": "Texte de remplacement pour les mots-clés"
+    "message": "Décrivez la scène, l'action, le plan et le style (les mots-clés sont obligatoires, que vous téléchargiez ou non des matériaux de référence)",
+    "description": "Texte d'espace réservé pour les mots-clés"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... Un par ligne, maximum 9",
-    "description": "Texte de remplacement pour les URL d'image de référence"
+  "description.model": {
+    "message": "Modèle de génération vidéo MiniMax H3.",
+    "description": "Explication du modèle"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... Un par ligne, maximum 3",
-    "description": "Texte de remplacement pour les URL audio de référence"
+  "description.prompt": {
+    "message": "Décrivez les scènes, actions, plans et styles de la vidéo, tous les modes de génération doivent être remplis.",
+    "description": "Explication des mots-clés"
   },
-  "description.imageUrls": {
-    "message": "Vous pouvez entrer de 1 à 9 URL d'images publiques ; le mode vidéo à partir d'images sera utilisé automatiquement en cas d'images sans audio.",
-    "description": "Description des images de référence"
+  "description.referenceImages": {
+    "message": "Téléchargez de 1 à 9 images. Une seule image comme première image, plusieurs images comme images de référence.",
+    "description": "Explication des images de référence"
   },
-  "description.audioUrls": {
-    "message": "Vous pouvez entrer de 1 à 3 URL audio publiques ; le mode guidé par audio sera utilisé automatiquement en cas d'audio.",
-    "description": "Description des audio de référence"
+  "description.referenceAudios": {
+    "message": "Téléchargez de 1 à 3 fichiers audio. Lors de l'utilisation d'audios de référence, téléchargez également au moins une image de référence.",
+    "description": "Explication des audios de référence"
   },
-  "description.mode": {
-    "message": "Mode actuel : {mode} · Prix public $0.25/seconde",
-    "description": "Description du mode dérivé et des prix"
+  "description.resolution": {
+    "message": "Choisissez la clarté de la vidéo de sortie.",
+    "description": "Explication de la résolution"
   },
-  "mode.text_to_video": {
-    "message": "Vidéo à partir de texte",
-    "description": "Mode vidéo générée à partir de texte"
+  "description.ratio": {
+    "message": "Choisissez un format paysage ou portrait.",
+    "description": "Explication du rapport hauteur/largeur"
   },
-  "mode.image_to_video": {
-    "message": "Vidéo à partir d'images",
-    "description": "Mode vidéo générée à partir d'images"
+  "description.duration": {
+    "message": "Définir la durée de la vidéo entre 4 et 15 secondes.",
+    "description": "Explication de la durée"
   },
-  "mode.audio_guided": {
-    "message": "Vidéo guidée par audio",
-    "description": "Mode vidéo guidée par audio"
+  "description.watermark": {
+    "message": "Ajoutez un filigrane AIGC dans la vidéo.",
+    "description": "Explication du filigrane"
   },
   "status.pending": {
     "message": "En attente",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "Générer la vidéo",
     "description": "Bouton de génération"
+  },
+  "button.upload": {
+    "message": "Télécharger",
+    "description": "Bouton de téléchargement de matériel"
   },
   "button.download": {
     "message": "Télécharger la vidéo",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "Maximum de 3 audio de référence",
     "description": "Limite de nombre d'audio dépassée"
+  },
+  "message.uploadError": {
+    "message": "Échec du téléchargement, veuillez réessayer plus tard",
+    "description": "Message d'échec de téléchargement de matériel"
   }
 }

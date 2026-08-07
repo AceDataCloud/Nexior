@@ -7,13 +7,13 @@
     "message": "Palabra clave",
     "description": "Descripción del contenido, acción, toma y estilo del video"
   },
-  "name.imageUrls": {
-    "message": "URL de imagen de referencia",
-    "description": "Una URL de imagen de referencia por línea"
+  "name.referenceImages": {
+    "message": "Imágenes de referencia",
+    "description": "Campo para subir imágenes de referencia"
   },
-  "name.audioUrls": {
-    "message": "URL de audio de referencia",
-    "description": "Una URL de audio de referencia por línea"
+  "name.referenceAudios": {
+    "message": "Audios de referencia",
+    "description": "Campo para subir audios de referencia"
   },
   "name.ratio": {
     "message": "Relación de aspecto",
@@ -52,40 +52,40 @@
     "description": "Razón de la falla de la tarea"
   },
   "placeholder.prompt": {
-    "message": "Describe la escena, acción, toma y estilo; opcional al proporcionar imágenes o audio",
-    "description": "Texto de marcador de posición para las palabras clave"
+    "message": "Describe la escena, acción, toma y estilo (se requiere texto de aviso, ya sea que se suban materiales de referencia o no)",
+    "description": "Texto de aviso para el campo de entrada"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... uno por línea, máximo 9",
-    "description": "Texto de marcador de posición para URL de imagen de referencia"
+  "description.model": {
+    "message": "Modelo de generación de video MiniMax H3.",
+    "description": "Descripción del modelo"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... uno por línea, máximo 3",
-    "description": "Texto de marcador de posición para URL de audio de referencia"
+  "description.prompt": {
+    "message": "Describe las escenas, acciones, tomas y estilos del video; todos los modos de generación deben completarse.",
+    "description": "Descripción del aviso"
   },
-  "description.imageUrls": {
-    "message": "Se pueden ingresar de 1 a 9 imágenes públicas; se activará automáticamente el modo de video generado por imágenes si hay imágenes y no hay audio.",
-    "description": "Descripción de la imagen de referencia"
+  "description.referenceImages": {
+    "message": "Sube de 1 a 9 imágenes. Una imagen como primer fotograma, varias imágenes como imágenes de referencia.",
+    "description": "Descripción de las imágenes de referencia"
   },
-  "description.audioUrls": {
-    "message": "Se pueden ingresar de 1 a 3 audios públicos; se activará automáticamente el modo guiado por audio si hay audio disponible.",
-    "description": "Descripción del audio de referencia"
+  "description.referenceAudios": {
+    "message": "Sube de 1 a 3 audios. Al usar audios de referencia, debes subir al menos una imagen de referencia al mismo tiempo.",
+    "description": "Descripción de los audios de referencia"
   },
-  "description.mode": {
-    "message": "Modo actual: {mode} · Precio público $0.25/segundo",
-    "description": "Descripción del modo derivado y precios"
+  "description.resolution": {
+    "message": "Selecciona la claridad del video de salida.",
+    "description": "Descripción de la resolución"
   },
-  "mode.text_to_video": {
-    "message": "Video generado por texto",
-    "description": "Modo de video generado a partir de texto"
+  "description.ratio": {
+    "message": "Selecciona el formato horizontal o vertical.",
+    "description": "Descripción de la relación de aspecto"
   },
-  "mode.image_to_video": {
-    "message": "Video generado por imágenes",
-    "description": "Modo de video generado a partir de imágenes"
+  "description.duration": {
+    "message": "Establecer una duración de video de 4 a 15 segundos.",
+    "description": "Descripción de la duración"
   },
-  "mode.audio_guided": {
-    "message": "Video guiado por audio",
-    "description": "Modo de video guiado por audio"
+  "description.watermark": {
+    "message": "Añadir una marca de agua de identificación AIGC en el video.",
+    "description": "Descripción de la marca de agua"
   },
   "status.pending": {
     "message": "En espera",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "Generar video",
     "description": "Botón de generación"
+  },
+  "button.upload": {
+    "message": "Subir",
+    "description": "Botón para subir materiales"
   },
   "button.download": {
     "message": "Descargar video",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "Máximo de 3 audios de referencia",
     "description": "Límite de cantidad de audio excedido"
+  },
+  "message.uploadError": {
+    "message": "Error al subir, por favor intenta de nuevo más tarde",
+    "description": "Mensaje de error al fallar la subida de materiales"
   }
 }

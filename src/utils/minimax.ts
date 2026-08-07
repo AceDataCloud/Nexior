@@ -1,16 +1,4 @@
-import { IMinimaxConfig, IMinimaxMode } from '@/models';
-
-export const parseMinimaxUrls = (value: string): string[] =>
-  value
-    .split(/[,\n]/)
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-export const deriveMinimaxMode = (imageUrls: string[], audioUrls: string[]): IMinimaxMode => {
-  if (audioUrls.length) return 'audio_guided';
-  if (imageUrls.length) return 'image_to_video';
-  return 'text_to_video';
-};
+import { IMinimaxConfig } from '@/models';
 
 export const validateMinimaxConfig = (
   config: IMinimaxConfig

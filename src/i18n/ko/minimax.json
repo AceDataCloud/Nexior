@@ -7,13 +7,13 @@
     "message": "프롬프트",
     "description": "비디오 내용, 동작, 장면 및 스타일 설명"
   },
-  "name.imageUrls": {
-    "message": "참조 이미지 URL",
-    "description": "각 줄에 하나의 참조 이미지 URL"
+  "name.referenceImages": {
+    "message": "참고 이미지",
+    "description": "참고 이미지 업로드 필드"
   },
-  "name.audioUrls": {
-    "message": "참조 오디오 URL",
-    "description": "각 줄에 하나의 참조 오디오 URL"
+  "name.referenceAudios": {
+    "message": "참고 오디오",
+    "description": "참고 오디오 업로드 필드"
   },
   "name.ratio": {
     "message": "가로 세로 비율",
@@ -52,40 +52,40 @@
     "description": "작업 실패 원인"
   },
   "placeholder.prompt": {
-    "message": "장면, 동작, 샷 및 스타일 설명; 이미지 또는 오디오 제공 시 선택 사항",
+    "message": "장면, 동작, 샷 및 스타일 설명(참조 자료를 업로드 여부와 관계없이 프롬프트는 필수입니다)",
     "description": "프롬프트 자리 표시자 텍스트"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... 한 줄에 하나, 최대 9장",
-    "description": "참조 이미지 URL 자리 표시자 텍스트"
+  "description.model": {
+    "message": "MiniMax H3 비디오 생성 모델.",
+    "description": "모델 설명"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... 한 줄에 하나, 최대 3개",
-    "description": "참조 오디오 URL 자리 표시자 텍스트"
+  "description.prompt": {
+    "message": "비디오의 장면, 동작, 촬영 및 스타일을 설명하세요. 모든 생성 모드에 입력해야 합니다.",
+    "description": "프롬프트 설명"
   },
-  "description.imageUrls": {
-    "message": "1–9개의 공개 이미지를 입력할 수 있습니다; 이미지가 존재하고 오디오가 없을 경우 자동으로 이미지에서 비디오가 생성됩니다.",
-    "description": "이미지 설명 참조"
+  "description.referenceImages": {
+    "message": "1–9개의 이미지를 업로드하세요. 단일 이미지는 첫 프레임으로, 여러 이미지는 참고 이미지로 사용됩니다.",
+    "description": "참고 이미지 설명"
   },
-  "description.audioUrls": {
-    "message": "1–3개의 공개 오디오를 입력할 수 있습니다; 오디오가 있을 경우 자동으로 오디오 안내 모드가 사용됩니다.",
-    "description": "오디오 설명 참조"
+  "description.referenceAudios": {
+    "message": "1–3개의 오디오를 업로드하세요. 참고 오디오를 사용할 때는 최소 하나의 참고 이미지를 동시에 업로드해야 합니다.",
+    "description": "참고 오디오 설명"
   },
-  "description.mode": {
-    "message": "현재 모드: {mode} · 공개 가격 $0.25/초",
-    "description": "파생 모드 및 가격 설명"
+  "description.resolution": {
+    "message": "출력 비디오의 해상도를 선택하세요.",
+    "description": "해상도 설명"
   },
-  "mode.text_to_video": {
-    "message": "텍스트에서 비디오 생성",
-    "description": "텍스트 생성 비디오 모드"
+  "description.ratio": {
+    "message": "가로 또는 세로 비율을 선택하세요.",
+    "description": "가로 세로 비율 설명"
   },
-  "mode.image_to_video": {
-    "message": "이미지에서 비디오 생성",
-    "description": "이미지 생성 비디오 모드"
+  "description.duration": {
+    "message": "비디오 길이를 4–15초로 설정하세요.",
+    "description": "길이 설명"
   },
-  "mode.audio_guided": {
-    "message": "오디오 안내 비디오",
-    "description": "오디오 안내 비디오 모드"
+  "description.watermark": {
+    "message": "비디오에 AIGC 로고 워터마크를 추가하세요.",
+    "description": "워터마크 설명"
   },
   "status.pending": {
     "message": "대기 중",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "비디오 생성",
     "description": "생성 버튼"
+  },
+  "button.upload": {
+    "message": "업로드",
+    "description": "소재 업로드 버튼"
   },
   "button.download": {
     "message": "비디오 다운로드",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "최대 3개의 오디오 참조",
     "description": "오디오 수량 초과"
+  },
+  "message.uploadError": {
+    "message": "업로드 실패, 나중에 다시 시도하세요.",
+    "description": "소재 업로드 실패 알림"
   }
 }

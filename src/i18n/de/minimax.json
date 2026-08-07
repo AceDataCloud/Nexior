@@ -7,13 +7,13 @@
     "message": "Stichwort",
     "description": "Beschreibung des Videoinhalts, der Aktionen, der Szenen und des Stils"
   },
-  "name.imageUrls": {
-    "message": "Referenz-Bild-URL",
-    "description": "Eine Referenz-Bild-URL pro Zeile"
+  "name.referenceImages": {
+    "message": "Referenzbilder",
+    "description": "Feld zum Hochladen von Referenzbildern"
   },
-  "name.audioUrls": {
-    "message": "Referenz-Audio-URL",
-    "description": "Eine Referenz-Audio-URL pro Zeile"
+  "name.referenceAudios": {
+    "message": "Referenz-Audios",
+    "description": "Feld zum Hochladen von Referenz-Audios"
   },
   "name.ratio": {
     "message": "Seitenverhältnis",
@@ -52,40 +52,40 @@
     "description": "Grund für das Scheitern der Aufgabe"
   },
   "placeholder.prompt": {
-    "message": "Beschreiben Sie die Szene, Aktionen, Einstellungen und den Stil; optional bei Bereitstellung von Bildern oder Audio",
+    "message": "Beschreiben Sie die Szene, Aktionen, Einstellungen und den Stil (Hinweis: Die Eingabe ist erforderlich, unabhängig davon, ob Referenzmaterial hochgeladen wird)",
     "description": "Platzhaltertext für Eingabeaufforderungen"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... jede Zeile eine, maximal 9",
-    "description": "Platzhaltertext für Bild-URLs"
+  "description.model": {
+    "message": "MiniMax H3 Video-Generierungsmodell.",
+    "description": "Erläuterung zum Modell"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... jede Zeile eine, maximal 3",
-    "description": "Platzhaltertext für Audio-URLs"
+  "description.prompt": {
+    "message": "Beschreiben Sie die Szenen, Aktionen, Aufnahmen und Stile im Video. Alle Generierungsmodi müssen ausgefüllt werden.",
+    "description": "Erläuterung zu den Eingabeaufforderungen"
   },
-  "description.imageUrls": {
-    "message": "Es können 1–9 öffentliche Bild-URLs eingegeben werden; bei vorhandenen Bildern und ohne Audio wird automatisch der Bild-zu-Video-Modus verwendet.",
-    "description": "Hinweis zu den Bild-Referenzen"
+  "description.referenceImages": {
+    "message": "Laden Sie 1–9 Bilder hoch. Ein Bild als erstes Frame, mehrere Bilder als Referenzbilder.",
+    "description": "Erläuterung zu Referenzbildern"
   },
-  "description.audioUrls": {
-    "message": "Es können 1–3 öffentliche Audio-URLs eingegeben werden; bei vorhandenem Audio wird automatisch der Audio-Guide-Modus verwendet.",
-    "description": "Hinweis zu den Audio-Referenzen"
+  "description.referenceAudios": {
+    "message": "Laden Sie 1–3 Audiodateien hoch. Bei Verwendung von Referenz-Audios muss gleichzeitig mindestens ein Referenzbild hochgeladen werden.",
+    "description": "Erläuterung zu Referenz-Audios"
   },
-  "description.mode": {
-    "message": "Aktueller Modus: {mode} · Öffentlicher Preis $0.25/Sekunde",
-    "description": "Erklärung zu den Modi und Preisen"
+  "description.resolution": {
+    "message": "Wählen Sie die Auflösung des ausgegebenen Videos.",
+    "description": "Erläuterung zur Auflösung"
   },
-  "mode.text_to_video": {
-    "message": "Text zu Video",
-    "description": "Modus für die Erstellung von Videos aus Text"
+  "description.ratio": {
+    "message": "Wählen Sie das Seitenverhältnis für Quer- oder Hochformat.",
+    "description": "Erläuterung zum Seitenverhältnis"
   },
-  "mode.image_to_video": {
-    "message": "Bild zu Video",
-    "description": "Modus für die Erstellung von Videos aus Bildern"
+  "description.duration": {
+    "message": "Setzen Sie die Videolänge auf 4–15 Sekunden.",
+    "description": "Erläuterung zur Dauer"
   },
-  "mode.audio_guided": {
-    "message": "Audio-geführtes Video",
-    "description": "Modus für audio-geführte Videos"
+  "description.watermark": {
+    "message": "Fügen Sie ein AIGC-Logo-Wasserzeichen im Video hinzu.",
+    "description": "Erläuterung zum Wasserzeichen"
   },
   "status.pending": {
     "message": "Warten",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "Video generieren",
     "description": "Generieren-Button"
+  },
+  "button.upload": {
+    "message": "Hochladen",
+    "description": "Button zum Hochladen von Materialien"
   },
   "button.download": {
     "message": "Video herunterladen",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "Maximal 3 Referenz-Audios",
     "description": "Audioanzahl überschritten"
+  },
+  "message.uploadError": {
+    "message": "Upload fehlgeschlagen, bitte versuchen Sie es später erneut",
+    "description": "Hinweis bei fehlgeschlagenem Material-Upload"
   }
 }
