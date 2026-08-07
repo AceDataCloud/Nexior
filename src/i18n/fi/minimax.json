@@ -7,13 +7,13 @@
     "message": "Ohjeet",
     "description": "Videon sisältö, toiminnot, kuvakulmat ja tyylin kuvaus"
   },
-  "name.imageUrls": {
-    "message": "Viittauskuvan URL",
-    "description": "Yksi viittauskuvan URL per rivi"
+  "name.referenceImages": {
+    "message": "Viitekuvat",
+    "description": "Viitekuvien latauskenttä"
   },
-  "name.audioUrls": {
-    "message": "Viittausäänen URL",
-    "description": "Yksi viittausäänen URL per rivi"
+  "name.referenceAudios": {
+    "message": "Viiteäänet",
+    "description": "Viiteäänien latauskenttä"
   },
   "name.ratio": {
     "message": "Kuvasuhde",
@@ -52,40 +52,40 @@
     "description": "Tehtävän epäonnistumisen syy"
   },
   "placeholder.prompt": {
-    "message": "Kuvaa kohtaus, toiminta, kuvakulma ja tyyli; kuvan tai äänen tarjoaminen on valinnaista",
+    "message": "Kuvaile kohtauksia, toimintoja, otoksia ja tyyliä (viittausmateriaalia ei tarvitse ladata, mutta vihjeet ovat pakollisia)",
     "description": "Vihjeiden paikkamerkki"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... jokaisella rivillä yksi, enintään 9 kuvaa",
-    "description": "Viittauskuvien URL-osoitteiden paikkamerkki"
+  "description.model": {
+    "message": "MiniMax H3 videon luontimalli.",
+    "description": "Mallin selitys"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... jokaisella rivillä yksi, enintään 3 kappaletta",
-    "description": "Viittausäänitiedostojen URL-osoitteiden paikkamerkki"
+  "description.prompt": {
+    "message": "Kuvaa videon kohtauksia, toimintoja, kuvakulmia ja tyyliä, kaikki luontitavat vaativat täytön.",
+    "description": "Vihjeen selitys"
   },
-  "description.imageUrls": {
-    "message": "Voit syöttää 1–9 julkista kuvaa; kuvien ollessa saatavilla ja ilman ääntä käytetään automaattisesti kuvasta videoksi -tilaa.",
-    "description": "Viittauskuvien selitys"
+  "description.referenceImages": {
+    "message": "Lataa 1–9 kuvaa. Yksi kuva ensimmäiseksi kehykseksi, useampi kuva viitekuviksi.",
+    "description": "Viitekuvien selitys"
   },
-  "description.audioUrls": {
-    "message": "Voit syöttää 1–3 julkista äänitiedostoa; äänen ollessa saatavilla käytetään automaattisesti ääniohjattua tilaa.",
-    "description": "Viittausäänien selitys"
+  "description.referenceAudios": {
+    "message": "Lataa 1–3 äänitiedostoa. Käytä viiteäänitiedostoja, lataa samalla vähintään yksi viitekuva.",
+    "description": "Viiteäänien selitys"
   },
-  "description.mode": {
-    "message": "Nykyinen tila: {mode} · Julkinen hinta $0.25/sekunti",
-    "description": "Johdannaistilan ja hinnan selitys"
+  "description.resolution": {
+    "message": "Valitse videon tarkkuus.",
+    "description": "Tarkkuuden selitys"
   },
-  "mode.text_to_video": {
-    "message": "Tekstistä videoksi",
-    "description": "Tekstistä videoita luova malli"
+  "description.ratio": {
+    "message": "Valitse vaaka- tai pystysuuntainen kuvasuhde.",
+    "description": "Kuvasuhteen selitys"
   },
-  "mode.image_to_video": {
-    "message": "Kuvasta videoksi",
-    "description": "Kuvista videoita luova malli"
+  "description.duration": {
+    "message": "Aseta videon kesto 4–15 sekuntiin.",
+    "description": "Keston selitys"
   },
-  "mode.audio_guided": {
-    "message": "Ääniohjattu video",
-    "description": "Ääniohjattu videomoodi"
+  "description.watermark": {
+    "message": "Lisää AIGC-tunnus vesileima videoon.",
+    "description": "Vesileiman selitys"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "Luo video",
     "description": "Luontipainike"
+  },
+  "button.upload": {
+    "message": "Lataa",
+    "description": "Materiaalin latauspainike"
   },
   "button.download": {
     "message": "Lataa video",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "Viittausääniä enintään 3 kappaletta",
     "description": "Äänimäärä ylittää rajan"
+  },
+  "message.uploadError": {
+    "message": "Lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Materiaalin lataamisen epäonnistumisen ilmoitus"
   }
 }

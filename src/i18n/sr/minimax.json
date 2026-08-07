@@ -7,13 +7,13 @@
     "message": "Упутство",
     "description": "Опис садржаја видео записа, акција, кадрова и стила"
   },
-  "name.imageUrls": {
-    "message": "URL референтне слике",
-    "description": "Једна референтна слика URL по реду"
+  "name.referenceImages": {
+    "message": "Referentne slike",
+    "description": "Polje za otpremanje referentnih slika"
   },
-  "name.audioUrls": {
-    "message": "URL референтног аудио записа",
-    "description": "Један референтни аудио URL по реду"
+  "name.referenceAudios": {
+    "message": "Referentni audio",
+    "description": "Polje za otpremanje referentnih audio zapisa"
   },
   "name.ratio": {
     "message": "Однос ширине и висине",
@@ -52,40 +52,40 @@
     "description": "Разлог за неуспех задатка"
   },
   "placeholder.prompt": {
-    "message": "Opišite scenu, akciju, kadar i stil; opcionalno kada pružate slike ili audio",
-    "description": "Tekstualni prostor za prompt"
+    "message": "Опишите сцену, акције, кадрове и стил (без обзира на то да ли сте отпремили референтни материјал, упутства су обавезна)",
+    "description": "Текст упутства за унос"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... Svaka linija jedan, najviše 9 slika",
-    "description": "Tekstualni prostor za URL-ove referentnih slika"
+  "description.model": {
+    "message": "MiniMax H3 model za generisanje videa.",
+    "description": "Objašnjenje modela"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... Svaka linija jedan, najviše 3",
-    "description": "Tekstualni prostor za URL-ove referentnih audio zapisa"
+  "description.prompt": {
+    "message": "Opišite scene, akcije, kadrove i stil u videu, svi generativni modusi moraju biti popunjeni.",
+    "description": "Objašnjenje za prompt"
   },
-  "description.imageUrls": {
-    "message": "Можете унети 1–9 јавних слика; ако постоје слике и нема аудио записа, аутоматски се користи режим генерисања видео записа из слика.",
-    "description": "Објашњење за референтне слике"
+  "description.referenceImages": {
+    "message": "Otpremite 1–9 slika. Jedna slika kao prva sličica, više slika kao referentne slike.",
+    "description": "Objašnjenje referentnih slika"
   },
-  "description.audioUrls": {
-    "message": "Можете унети 1–3 јавна аудио записа; ако постоји аудио, аутоматски се користи режим вођен аудиом.",
-    "description": "Објашњење за референтне аудио записе"
+  "description.referenceAudios": {
+    "message": "Otpremite 1–3 audio zapisa. Kada koristite referentne audio zapise, morate istovremeno otpremiti najmanje jednu referentnu sliku.",
+    "description": "Objašnjenje referentnih audio zapisa"
   },
-  "description.mode": {
-    "message": "Тренутни режим: {mode} · Јавна цена $0.25/секунд",
-    "description": "Објашњење за режим и цену"
+  "description.resolution": {
+    "message": "Izaberite kvalitet izlaznog videa.",
+    "description": "Objašnjenje rezolucije"
   },
-  "mode.text_to_video": {
-    "message": "Генерисање видео записа из текста",
-    "description": "Режим генерисања видео записа из текста"
+  "description.ratio": {
+    "message": "Izaberite pejzažni ili portretni format.",
+    "description": "Objašnjenje odnosa širine i visine"
   },
-  "mode.image_to_video": {
-    "message": "Генерисање видео записа из слика",
-    "description": "Режим генерисања видео записа из слика"
+  "description.duration": {
+    "message": "Postavite trajanje videa od 4 do 15 sekundi.",
+    "description": "Objašnjenje trajanja"
   },
-  "mode.audio_guided": {
-    "message": "Видео вођен аудиом",
-    "description": "Режим видео записа вођен аудиом"
+  "description.watermark": {
+    "message": "Dodajte AIGC oznaku kao vodeni žig u video.",
+    "description": "Objašnjenje vodenog žiga"
   },
   "status.pending": {
     "message": "Na čekanju",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "Генериши видео",
     "description": " dugme za generisanje"
+  },
+  "button.upload": {
+    "message": "Otpremi",
+    "description": "Dugme za otpremanje materijala"
   },
   "button.download": {
     "message": "Преузми видео",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "Максимално 3 референтна аудио записа",
     "description": "Превазиђен број аудио записа"
+  },
+  "message.uploadError": {
+    "message": "Otpremanje nije uspelo, pokušajte ponovo kasnije",
+    "description": "Poruka o grešci prilikom otpremanja materijala"
   }
 }

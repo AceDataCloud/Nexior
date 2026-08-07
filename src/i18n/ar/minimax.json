@@ -7,13 +7,13 @@
     "message": "الكلمات المفتاحية",
     "description": "وصف محتوى الفيديو، الحركة، اللقطات والأسلوب"
   },
-  "name.imageUrls": {
-    "message": "رابط الصورة المرجعية",
-    "description": "رابط صورة مرجعية لكل سطر"
+  "name.referenceImages": {
+    "message": "الصورة المرجعية",
+    "description": "حقل رفع الصورة المرجعية"
   },
-  "name.audioUrls": {
-    "message": "رابط الصوت المرجعي",
-    "description": "رابط صوت مرجعي لكل سطر"
+  "name.referenceAudios": {
+    "message": "الصوت المرجعي",
+    "description": "حقل رفع الصوت المرجعي"
   },
   "name.ratio": {
     "message": "نسبة العرض إلى الارتفاع",
@@ -52,40 +52,40 @@
     "description": "سبب فشل المهمة"
   },
   "placeholder.prompt": {
-    "message": "وصف المشهد، الحركة، اللقطة والأسلوب؛ اختياري عند تقديم الصور أو الصوت",
-    "description": "نص مكان للكلمات الدالة"
+    "message": "وصف المشهد، الحركة، اللقطة والأسلوب (سواء قمت بتحميل مواد مرجعية أم لا، يجب ملء الكلمات الدلالية)",
+    "description": "نص مكان لملء الكلمات الدلالية"
   },
-  "placeholder.imageUrls": {
-    "message": "https://... كل سطر واحد، بحد أقصى 9 صور",
-    "description": "نص مكان لعنوان URL الصورة المرجعية"
+  "description.model": {
+    "message": "نموذج توليد الفيديو MiniMax H3.",
+    "description": "وصف النموذج"
   },
-  "placeholder.audioUrls": {
-    "message": "https://... كل سطر واحد، بحد أقصى 3",
-    "description": "نص مكان لعنوان URL الصوتي المرجعي"
+  "description.prompt": {
+    "message": "وصف المشاهد، الحركات، اللقطات والأسلوب في الفيديو، يجب ملء جميع أوضاع التوليد.",
+    "description": "وصف الكلمات التوجيهية"
   },
-  "description.imageUrls": {
-    "message": "يمكن إدخال 1–9 صور عامة؛ عند وجود صور وعدم وجود صوت، يتم استخدام وضع تحويل الصورة إلى فيديو تلقائيًا.",
-    "description": "شرح روابط الصور"
+  "description.referenceImages": {
+    "message": "رفع 1-9 صور. صورة واحدة كإطار أول، وصور متعددة كصور مرجعية.",
+    "description": "وصف الصور المرجعية"
   },
-  "description.audioUrls": {
-    "message": "يمكن إدخال 1–3 روابط صوتية عامة؛ عند وجود صوت، يتم استخدام وضع الإرشاد الصوتي تلقائيًا.",
-    "description": "شرح روابط الصوت"
+  "description.referenceAudios": {
+    "message": "رفع 1-3 مقاطع صوتية. عند استخدام الصوت المرجعي، يجب رفع صورة مرجعية واحدة على الأقل.",
+    "description": "وصف الصوت المرجعي"
   },
-  "description.mode": {
-    "message": "الوضع الحالي: {mode} · السعر العام $0.25/ثانية",
-    "description": "شرح الوضع والأسعار"
+  "description.resolution": {
+    "message": "اختر دقة الفيديو الناتج.",
+    "description": "وصف الدقة"
   },
-  "mode.text_to_video": {
-    "message": "تحويل النص إلى فيديو",
-    "description": "وضع تحويل النص إلى فيديو"
+  "description.ratio": {
+    "message": "اختر نسبة العرض إلى الارتفاع الأفقية أو العمودية.",
+    "description": "وصف نسبة العرض إلى الارتفاع"
   },
-  "mode.image_to_video": {
-    "message": "تحويل الصورة إلى فيديو",
-    "description": "وضع تحويل الصورة إلى فيديو"
+  "description.duration": {
+    "message": "حدد مدة الفيديو من 4 إلى 15 ثانية.",
+    "description": "وصف المدة"
   },
-  "mode.audio_guided": {
-    "message": "فيديو موجه بالصوت",
-    "description": "وضع الفيديو الموجه بالصوت"
+  "description.watermark": {
+    "message": "إضافة علامة مائية AIGC إلى الفيديو.",
+    "description": "وصف العلامة المائية"
   },
   "status.pending": {
     "message": "قيد الانتظار",
@@ -98,6 +98,10 @@
   "button.generate": {
     "message": "إنشاء فيديو",
     "description": "زر الإنشاء"
+  },
+  "button.upload": {
+    "message": "رفع",
+    "description": "زر رفع المواد"
   },
   "button.download": {
     "message": "تحميل الفيديو",
@@ -142,5 +146,9 @@
   "message.audioLimit": {
     "message": "يمكن إدخال 3 روابط صوتية كحد أقصى",
     "description": "تجاوز الحد الأقصى لعدد الصوتيات"
+  },
+  "message.uploadError": {
+    "message": "فشل الرفع، يرجى المحاولة لاحقًا",
+    "description": "تنبيه فشل رفع المواد"
   }
 }
