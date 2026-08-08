@@ -17,7 +17,8 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <summary-chip />
-      <consumption :value="consumption" :service="service" />
+      <scenario-payment-mode scenario="kling" />
+      <consumption v-if="!walletMode" :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
         type="primary"
@@ -59,6 +60,9 @@ import InspirationDrawer from './inspiration/InspirationDrawer.vue';
 import SummaryChip from './SummaryChip.vue';
 import { getConsumption } from '@/utils';
 import { getKlingCapabilities } from '@/utils/kling/capabilities';
+import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { buildKlingVideoRequest, klingOperator } from '@/operators/kling';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -80,12 +84,15 @@ export default defineComponent({
     SummaryChip,
     EndImage,
     ReferenceImages,
-    ReferenceVideo
+    ReferenceVideo,
+    ScenarioPaymentMode
   },
   emits: ['generate'],
   data() {
     return {
-      inspirationOpen: false
+      inspirationOpen: false,
+      quoteTimer: 0,
+      quoteRunId: 0
     };
   },
   computed: {
@@ -105,9 +112,48 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.kling?.service;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('kling').mode === 'wallet';
     }
   },
+  watch: {
+    walletMode: {
+      handler(enabled: boolean) {
+        if (enabled) this.scheduleQuote();
+      },
+      immediate: true
+    },
+    config: {
+      handler() {
+        if (this.walletMode) this.scheduleQuote();
+      },
+      deep: true
+    }
+  },
+  beforeUnmount() {
+    window.clearTimeout(this.quoteTimer);
+    this.quoteRunId += 1;
+  },
   methods: {
+    scheduleQuote() {
+      window.clearTimeout(this.quoteTimer);
+      this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
+    },
+    async refreshQuote() {
+      const state = scenarioPaymentState('kling');
+      const runId = ++this.quoteRunId;
+      state.quoteLoading = true;
+      state.quoteUsdc = undefined;
+      try {
+        const quote = await klingOperator.quote(buildKlingVideoRequest(this.config));
+        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+      } catch (error) {
+        console.warn('x402 quote failed', error);
+      } finally {
+        if (runId === this.quoteRunId) state.quoteLoading = false;
+      }
+    },
     onGenerate() {
       this.$emit('generate');
     }
