@@ -33,14 +33,15 @@ export interface IQrartGenerateRequest {
   seed?: number;
   rawurl?: boolean;
   padding_level?: number;
-  aspect_ratio?: number;
+  aspect_ratio?: string;
   position?: string;
   pixel_style?: string;
   marker_shape?: string;
   sub_marker?: string;
   rotate?: number;
   ecl?: string;
-  padding_nose?: number;
+  padding_noise?: number;
+  async?: boolean;
 }
 
 export interface IQrartGenerateResponse {

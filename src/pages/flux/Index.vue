@@ -13,21 +13,24 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Flux.vue';
 import ConfigPanel from '@/components/flux/ConfigPanel.vue';
-import { fluxOperator } from '@/operators';
+import { buildFluxRequest, fluxOperator } from '@/operators/flux';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IFluxGenerateRequest, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { Status } from '@/models';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/flux/RecentPanel.vue';
 import { IFluxTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
 
 interface IData {
   task: IFluxTask | undefined;
   job: number;
   loadingMore: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -44,7 +47,8 @@ export default defineComponent({
       task: undefined,
       job: 0,
       loadingMore: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -65,9 +69,20 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.flux?.tasks;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('flux').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('flux/setTasks', undefined);
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         // scroll down if new tasks are added
@@ -144,7 +159,8 @@ export default defineComponent({
         await this.$store.dispatch('flux/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
@@ -160,29 +176,46 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = {
-        ...this.config,
-        async: true
-      } as IFluxGenerateRequest;
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
+      const request = buildFluxRequest(this.config);
+      let operation: Promise<unknown>;
+      if (this.walletMode) {
+        const wallet = this.getWalletContext();
+        if (!wallet) {
+          ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+          return;
+        }
+        operation = fluxOperator.generate(request, {
+          mode: 'x402',
+          x402: {
+            wallet,
+            confirm: (quote) => this.confirmWalletPayment(quote),
+            identityToken: this.credential?.token
+          }
+        });
+      } else {
+        if (!ensureLoggedIn()) return;
+        const token = this.credential?.token;
+        if (!token) return;
+        operation = fluxOperator.generate(request, { token });
       }
       ElMessage.info(this.$t('flux.message.startingTask'));
-      instrumentGeneration('flux', fluxOperator.generate(request, { token }))
-        .then(() => {
+      instrumentGeneration('flux', operation)
+        .then((response: any) => {
+          const taskId = response?.data?.task_id;
+          if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+            this.walletTaskIds.unshift(taskId);
+          }
           ElMessage.success(this.$t('flux.message.startTaskSuccess'));
         })
         .catch((error) => {
+          if (error instanceof X402PaymentCancelledError) return;
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('flux.message.usedUp'));
+          } else if (this.walletMode) {
+            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
-            ElMessage.error(this.$t('flux.message.startTaskFailed') + response?.error?.message);
+            ElMessage.error(this.$t('flux.message.startTaskFailed') + (response?.error?.message || ''));
           }
         })
         .finally(async () => {
@@ -191,6 +224,26 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;

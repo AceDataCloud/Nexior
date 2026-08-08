@@ -20,6 +20,8 @@ export interface IFluxGenerateRequest {
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;
+  count?: number;
+  quality?: number;
 }
 export interface IFluxImage {
   image_url?: string;
