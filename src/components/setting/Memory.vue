@@ -56,7 +56,17 @@
       <div class="import-step">
         <div class="import-step-title">{{ $t('common.settings.memoryImportExportStep') }}</div>
         <el-input :model-value="importPrompt" type="textarea" :rows="7" readonly resize="none" />
-        <el-button size="small" @click="copyImportPrompt">{{ $t('common.settings.memoryImportCopy') }}</el-button>
+        <el-button
+          size="small"
+          :aria-label="
+            importPromptCopied ? $t('common.settings.memoryImportCopied') : $t('common.settings.memoryImportCopy')
+          "
+          @click="copyImportPrompt"
+        >
+          <success-icon v-if="importPromptCopied" class="mr-1" size="1em" aria-hidden="true" focusable="false" />
+          <copy-icon v-else class="mr-1" size="1em" aria-hidden="true" focusable="false" />
+          {{ importPromptCopied ? $t('common.settings.memoryImportCopied') : $t('common.settings.memoryImportCopy') }}
+        </el-button>
       </div>
       <div class="import-step">
         <div class="import-step-title">{{ $t('common.settings.memoryImportPasteStep') }}</div>
@@ -80,7 +90,7 @@
 </template>
 
 <script lang="ts">
-import { IdeaIcon } from '@acedatacloud/core/icons/components';
+import { CopyIcon, IdeaIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import copy from 'copy-to-clipboard';
 import { ElButton, ElDialog, ElEmpty, ElInput, ElMessage, ElMessageBox, ElSwitch, vLoading } from 'element-plus';
@@ -90,7 +100,7 @@ import { ensureStoreModule } from '@/store/lazy';
 
 export default defineComponent({
   name: 'MemorySetting',
-  components: { ElButton, ElDialog, ElEmpty, ElInput, ElSwitch, IdeaIcon },
+  components: { CopyIcon, ElButton, ElDialog, ElEmpty, ElInput, ElSwitch, IdeaIcon, SuccessIcon },
   directives: { loading: vLoading },
   data() {
     return {
@@ -103,7 +113,9 @@ export default defineComponent({
       importing: false,
       importText: '',
       importController: null as AbortController | null,
-      entries: [] as IMemoryEntry[]
+      entries: [] as IMemoryEntry[],
+      importPromptCopied: false,
+      importPromptCopiedTimer: undefined as number | undefined
     };
   },
   computed: {
@@ -138,22 +150,38 @@ export default defineComponent({
   },
   beforeUnmount() {
     this.importController?.abort();
+    if (this.importPromptCopiedTimer !== undefined) window.clearTimeout(this.importPromptCopiedTimer);
   },
   methods: {
     openImport() {
+      this.importPromptCopied = false;
+      if (this.importPromptCopiedTimer !== undefined) {
+        window.clearTimeout(this.importPromptCopiedTimer);
+        this.importPromptCopiedTimer = undefined;
+      }
       this.importText = '';
       this.importVisible = true;
     },
     closeImport() {
       if (this.importing) return;
       this.importVisible = false;
+      this.importPromptCopied = false;
+      if (this.importPromptCopiedTimer !== undefined) {
+        window.clearTimeout(this.importPromptCopiedTimer);
+        this.importPromptCopiedTimer = undefined;
+      }
       this.importController?.abort();
       this.importController = null;
     },
     async copyImportPrompt() {
       try {
         if (await copy(this.importPrompt)) {
-          ElMessage.success(this.$t('common.settings.memoryImportCopied'));
+          this.importPromptCopied = true;
+          if (this.importPromptCopiedTimer !== undefined) window.clearTimeout(this.importPromptCopiedTimer);
+          this.importPromptCopiedTimer = window.setTimeout(() => {
+            this.importPromptCopied = false;
+            this.importPromptCopiedTimer = undefined;
+          }, 3000);
           return;
         }
       } catch (error) {

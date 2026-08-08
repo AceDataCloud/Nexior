@@ -234,7 +234,6 @@
 import { ErrorIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
-import copy from 'copy-to-clipboard';
 import { ElButton, ElImage, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState, IChatModelGroup } from '@/models';
@@ -274,7 +273,6 @@ import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
 import { isIOS, isRechargeDisabled } from '@/utils';
 
 interface IData {
-  copied: boolean;
   isEditing: boolean;
   questionValue: string;
   messageState: typeof IChatMessageState;
@@ -350,7 +348,6 @@ export default defineComponent({
   ],
   data(): IData {
     return {
-      copied: false,
       isEditing: false,
       questionValue: this.message.content as string,
       messageState: IChatMessageState
@@ -453,15 +450,6 @@ export default defineComponent({
     },
     onSubmit() {
       this.$emit('edit', this.message, this.questionValue);
-    },
-    onCopy() {
-      copy(this.message.content!.toString(), {
-        debug: true
-      });
-      this.copied = true;
-      setTimeout(() => {
-        this.copied = false;
-      }, 3000);
     },
     onBuyMore() {
       this.$router.push({

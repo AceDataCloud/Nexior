@@ -200,6 +200,45 @@ w3m-modal {
   border-radius: var(--adc-radius-card);
 }
 
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(24, 24, 27, 0.88);
+  color: #f4f4f5;
+  cursor: pointer;
+  transition:
+    background-color var(--adc-motion-duration-fast),
+    color var(--adc-motion-duration-fast);
+
+  &:hover {
+    background: #3f3f46;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: var(--adc-focus-outline);
+    outline-offset: var(--adc-focus-outline-offset);
+  }
+
+  &.is-copied {
+    color: var(--el-color-success);
+  }
+
+  svg {
+    display: block;
+  }
+}
+
 .el-main {
   padding: 0 !important;
 }
