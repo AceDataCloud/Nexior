@@ -401,7 +401,7 @@ describe('chat/ScheduledTasks', () => {
 
     expect(wrapper.find('.task-id-text').text()).toBe('common.entity.id: task-1');
 
-    await wrapper.find('.task-id .icon-copy').trigger('click');
+    await wrapper.get('.task-id button[aria-label="common.button.copy"]').trigger('click');
 
     expect(copyToClipboard).toHaveBeenCalledWith('task-1', expect.anything());
     expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
