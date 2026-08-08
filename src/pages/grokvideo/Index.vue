@@ -14,19 +14,22 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/GrokVideo.vue';
 import ConfigPanel from '@/components/grokvideo/ConfigPanel.vue';
 import RecentPanel from '@/components/grokvideo/RecentPanel.vue';
-import { grokvideoOperator } from '@/operators';
+import { buildGrokVideoRequest, grokvideoOperator } from '@/operators/grokvideo';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IGrokVideoGenerateRequest, IGrokVideoTask, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { IGrokVideoTask, Status } from '@/models';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP, isGrokVideoImageOnlyModel } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
 
 interface IData {
   task: IGrokVideoTask | undefined;
   job: number;
   loadingMore: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -43,7 +46,8 @@ export default defineComponent({
       task: undefined,
       job: 0,
       loadingMore: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -61,17 +65,33 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.grokvideo?.tasks;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('grokvideo').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('grokvideo/setTasks', undefined);
+        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (!value && !this.credential?.token) {
+          window.clearInterval(this.job);
+          this.job = 0;
+          await this.onScrollDown();
+          return;
+        }
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     initialized: {
       async handler(newValue) {
         if (newValue) {
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = window.setInterval(() => {
-            this.onGetTasks();
-          }, 5000);
+          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
         }
       },
       immediate: true
@@ -117,7 +137,8 @@ export default defineComponent({
         await this.$store.dispatch('grokvideo/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
@@ -133,57 +154,56 @@ export default defineComponent({
       ) {
         return;
       }
-      const cfg: any = { ...(this.config || {}) };
-      if (typeof cfg?.prompt === 'string') {
-        cfg.prompt = cfg.prompt.trim();
-        if (!cfg.prompt) delete cfg.prompt;
-      }
-      if (typeof cfg?.image_url === 'string' && !cfg.image_url.trim()) {
-        delete cfg.image_url;
-      }
-      // Drop stale reference images (e.g. uploaded then switched to an
-      // image-only model) and empty arrays.
-      if (
-        isGrokVideoImageOnlyModel(cfg?.model) ||
-        !(Array.isArray(cfg?.reference_image_urls) && cfg.reference_image_urls.length)
-      ) {
-        delete cfg.reference_image_urls;
-      }
-
-      const hasImage = !!cfg?.image_url;
+      const request = buildGrokVideoRequest(this.config);
+      const hasImage = !!request.image_url;
       // grok-imagine-video-1.5:official is image-to-video only.
-      if (isGrokVideoImageOnlyModel(cfg?.model) && !hasImage) {
+      if (isGrokVideoImageOnlyModel(request.model) && !hasImage) {
         ElMessage.warning(this.$t('grokvideo.message.modelRequiresImage'));
         return;
       }
       // Text-to-video needs a prompt when no image is provided.
-      if (!hasImage && !cfg?.prompt) {
+      if (!hasImage && !request.prompt) {
         ElMessage.warning(this.$t('grokvideo.message.promptOrImageRequired'));
         return;
       }
 
-      const request = {
-        ...cfg,
-        async: true
-      } as IGrokVideoGenerateRequest;
-
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
+      let operation: Promise<unknown>;
+      if (this.walletMode) {
+        const wallet = this.getWalletContext();
+        if (!wallet) {
+          ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+          return;
+        }
+        operation = grokvideoOperator.generate(request, {
+          mode: 'x402',
+          x402: {
+            wallet,
+            confirm: (quote) => this.confirmWalletPayment(quote),
+            identityToken: this.credential?.token
+          }
+        });
+      } else {
+        if (!ensureLoggedIn()) return;
+        const token = this.credential?.token;
+        if (!token) return;
+        operation = grokvideoOperator.generate(request, { token });
       }
       ElMessage.info(this.$t('grokvideo.message.startingTask'));
-      instrumentGeneration('grokvideo', grokvideoOperator.generate(request, { token }))
-        .then(() => {
+      instrumentGeneration('grokvideo', operation)
+        .then((response: any) => {
+          const taskId = response?.data?.task_id;
+          if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+            this.walletTaskIds.unshift(taskId);
+          }
           ElMessage.success(this.$t('grokvideo.message.startTaskSuccess'));
         })
         .catch((error) => {
           const response = error?.response?.data;
+          if (error instanceof X402PaymentCancelledError) return;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('grokvideo.message.usedUp'));
+          } else if (this.walletMode) {
+            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('grokvideo.message.startTaskFailed') + (response?.error?.message || ''));
           }
@@ -194,6 +214,26 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;

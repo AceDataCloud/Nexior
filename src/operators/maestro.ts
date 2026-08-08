@@ -1,10 +1,16 @@
 import {
+  IMaestroConfig,
   IMaestroGenerateRequest,
   IMaestroGenerateResponse,
   IMaestroTaskResponse,
   IMaestroTasksResponse
 } from '@/models';
+import { buildMaestroGenerateRequest } from '@/utils/maestro';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildMaestroRequest(config?: IMaestroConfig): IMaestroGenerateRequest {
+  return buildMaestroGenerateRequest(config);
+}
 
 class MaestroOperator extends BaseTaskOperator<
   IMaestroGenerateRequest,

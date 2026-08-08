@@ -1,5 +1,15 @@
-import { IPikaGenerateRequest, IPikaGenerateResponse, IPikaTaskResponse, IPikaTasksResponse } from '@/models';
+import {
+  IPikaConfig,
+  IPikaGenerateRequest,
+  IPikaGenerateResponse,
+  IPikaTaskResponse,
+  IPikaTasksResponse
+} from '@/models';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildPikaRequest(config?: IPikaConfig): IPikaGenerateRequest {
+  return { ...(config || {}), async: true } as IPikaGenerateRequest;
+}
 
 class PikaOperator extends BaseTaskOperator<
   IPikaGenerateRequest,
