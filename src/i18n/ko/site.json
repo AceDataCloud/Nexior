@@ -503,6 +503,74 @@
     "message": "이미지 업로드 실패.",
     "description": "이미지 크로퍼 업로드 실패 오류"
   },
+  "logoStudio.analysisReady": {
+    "message": "이미지 검사가 완료되었습니다.",
+    "description": "브랜드 이미지 스마트 처리 두 번째 단계의 상단 상태 제목"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · 배경 신뢰도 {confidence}%",
+    "description": "이미지 검사 결과의 크기와 배경 신뢰도"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "단색 배경이 감지되었습니다.",
+    "description": "이미지 주변 배경이 충분히 일관될 때의 상태 레이블"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "투명 또는 복잡한 배경",
+    "description": "이미지가 투명하거나 배경이 자동 제거에 적합하지 않을 때의 상태 레이블"
+  },
+  "logoStudio.removeBackground": {
+    "message": "자동 배경 제거",
+    "description": "브랜드 이미지 배경 제거 스위치 레이블"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "배경색",
+    "description": "브랜드 이미지 배경 제거 목표 색상 레이블"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "가장자리 허용 오차",
+    "description": "브랜드 이미지 배경 제거 허용 오차 슬라이더 레이블"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "미리보기 업데이트",
+    "description": "새 배경 제거 매개변수를 사용하여 이미지를 다시 처리하는 버튼"
+  },
+  "logoStudio.modeBrand": {
+    "message": "브랜드 색상 유지",
+    "description": "밝고 어두운 테마 모두에서 컬러 로고를 사용하는 표시 모드"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "스마트 적응",
+    "description": "밝은 색상은 브랜드 색상을 유지하고, 어두운 색상은 흰색 로고를 사용하는 추천 모드"
+  },
+  "logoStudio.modeMono": {
+    "message": "흑백 모드",
+    "description": "밝은 색상은 검은색, 어두운 색상은 흰색 로고를 사용하는 표시 모드"
+  },
+  "logoStudio.lightTheme": {
+    "message": "밝은 테마",
+    "description": "브랜드 이미지 밝은 배경 미리보기 레이블"
+  },
+  "logoStudio.darkTheme": {
+    "message": "어두운 테마",
+    "description": "브랜드 이미지 어두운 배경 미리보기 레이블"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "매개변수가 변경되었습니다. 미리보기를 업데이트한 후 적용해 주세요.",
+    "description": "처리 매개변수와 현재 미리보기가 일치하지 않을 때의 안내"
+  },
+  "logoStudio.back": {
+    "message": "크롭으로 돌아가기",
+    "description": "처리 미리보기에서 크롭 단계로 돌아가는 버튼"
+  },
+  "logoStudio.analyze": {
+    "message": "검사 및 미리보기",
+    "description": "크롭을 완료하고 스마트 처리 단계로 들어가는 버튼"
+  },
+  "logoStudio.apply": {
+    "message": "이미지 적용",
+    "description": "브랜드 이미지 처리 결과를 확인하는 버튼"
+  },
   "message.editLogoTip": {
     "message": "권장 크기: 200*60px",
     "description": "이미지 업로드에 대한 안내"

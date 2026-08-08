@@ -503,6 +503,74 @@
     "message": "画像のアップロードに失敗しました。",
     "description": "画像クロッパーのアップロード失敗エラー"
   },
+  "logoStudio.analysisReady": {
+    "message": "画像検出完了",
+    "description": "ブランド画像のスマート処理の第二ステップのトップステータスタイトル"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · 背景信頼度 {confidence}%",
+    "description": "画像検出結果のサイズと背景信頼度"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "単色背景が検出されました",
+    "description": "画像の周囲の背景が十分に統一されている時のステータスラベル"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "透明または複雑な背景",
+    "description": "画像が透明または背景が自動除去に適さない時のステータスラベル"
+  },
+  "logoStudio.removeBackground": {
+    "message": "自動背景除去",
+    "description": "ブランド画像の背景除去スイッチラベル"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "背景色",
+    "description": "ブランド画像の背景除去対象色のラベル"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "エッジ許容度",
+    "description": "ブランド画像の背景除去許容度スライダーラベル"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "プレビューを更新",
+    "description": "新しい背景除去パラメータを使用して画像を再処理するボタン"
+  },
+  "logoStudio.modeBrand": {
+    "message": "ブランドカラーを保持",
+    "description": "ライトとダークテーマの両方でカラーロゴを表示するモード"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "スマート適応",
+    "description": "ライトではブランドカラーを保持し、ダークでは白いロゴを使用する推奨モード"
+  },
+  "logoStudio.modeMono": {
+    "message": "モノクロモード",
+    "description": "ライトでは黒いロゴ、ダークでは白いロゴを使用するモード"
+  },
+  "logoStudio.lightTheme": {
+    "message": "ライトテーマ",
+    "description": "ブランド画像のライト背景プレビューラベル"
+  },
+  "logoStudio.darkTheme": {
+    "message": "ダークテーマ",
+    "description": "ブランド画像のダーク背景プレビューラベル"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "パラメータが変更されました。プレビューを更新してから適用してください。",
+    "description": "処理パラメータが現在のプレビューと一致しない時の通知"
+  },
+  "logoStudio.back": {
+    "message": "裁断に戻る",
+    "description": "処理プレビューから裁断ステップに戻るボタン"
+  },
+  "logoStudio.analyze": {
+    "message": "検出してプレビュー",
+    "description": "裁断を完了し、スマート処理ステップに進むボタン"
+  },
+  "logoStudio.apply": {
+    "message": "画像を適用",
+    "description": "ブランド画像の処理結果を確認するボタン"
+  },
   "message.editLogoTip": {
     "message": "推奨サイズ：200*60px",
     "description": "画像アップロードのヒント"

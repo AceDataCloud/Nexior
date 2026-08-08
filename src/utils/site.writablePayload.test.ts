@@ -7,6 +7,9 @@ describe('toWritableSitePayload', () => {
       toWritableSitePayload({
         id: 'site-1',
         title: 'Demo',
+        logo: 'color.png',
+        logo_light: 'light.png',
+        logo_dark: 'dark.png',
         title_source: '源标题',
         description_source: '源描述',
         auto_translated_fields: ['title'],
@@ -18,6 +21,9 @@ describe('toWritableSitePayload', () => {
     ).toEqual({
       id: 'site-1',
       title: 'Demo',
+      logo: 'color.png',
+      logo_light: 'light.png',
+      logo_dark: 'dark.png',
       features: { chatgpt: { enabled: true } }
     });
   });

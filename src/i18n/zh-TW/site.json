@@ -503,6 +503,74 @@
     "message": "圖片上傳失敗。",
     "description": "圖片裁切器上傳失敗錯誤"
   },
+  "logoStudio.analysisReady": {
+    "message": "圖片檢測完成",
+    "description": "品牌圖片智能處理第二步頂部狀態標題"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · 背景置信度 {confidence}%",
+    "description": "圖片檢測結果中的尺寸與背景置信度"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "檢測到純色背景",
+    "description": "圖片四周背景足夠統一時的狀態標籤"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "透明或複雜背景",
+    "description": "圖片已透明或背景不適合自動移除時的狀態標籤"
+  },
+  "logoStudio.removeBackground": {
+    "message": "自動去除背景",
+    "description": "品牌圖片背景移除開關標籤"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "背景色",
+    "description": "品牌圖片背景移除目標顏色標籤"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "邊緣容差",
+    "description": "品牌圖片去底色容差滑桿標籤"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "更新預覽",
+    "description": "使用新去底參數重新處理圖片的按鈕"
+  },
+  "logoStudio.modeBrand": {
+    "message": "保留品牌色",
+    "description": "亮暗主題都使用彩色 Logo 的顯示模式"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "智能適配",
+    "description": "亮色保留品牌色、暗色使用白色 Logo 的推薦模式"
+  },
+  "logoStudio.modeMono": {
+    "message": "黑白模式",
+    "description": "亮色使用黑色、暗色使用白色 Logo 的顯示模式"
+  },
+  "logoStudio.lightTheme": {
+    "message": "亮色主題",
+    "description": "品牌圖片亮色背景預覽標籤"
+  },
+  "logoStudio.darkTheme": {
+    "message": "暗色主題",
+    "description": "品牌圖片暗色背景預覽標籤"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "參數已改變，請更新預覽後再應用。",
+    "description": "處理參數與當前預覽不一致時的提示"
+  },
+  "logoStudio.back": {
+    "message": "返回裁剪",
+    "description": "從處理預覽返回裁剪步驟的按鈕"
+  },
+  "logoStudio.analyze": {
+    "message": "檢測並預覽",
+    "description": "完成裁剪並進入智能處理步驟的按鈕"
+  },
+  "logoStudio.apply": {
+    "message": "應用圖片",
+    "description": "確認品牌圖片處理結果的按鈕"
+  },
   "message.editLogoTip": {
     "message": "建議尺寸：200*60px",
     "description": "上傳圖片的提示文字言"

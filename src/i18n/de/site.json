@@ -503,6 +503,74 @@
     "message": "Bild-Upload fehlgeschlagen.",
     "description": "Fehler beim Hochladen im Bild-Zuschneider"
   },
+  "logoStudio.analysisReady": {
+    "message": "Bildanalyse abgeschlossen",
+    "description": "Statusüberschrift oben im zweiten Schritt der intelligenten Markenbildverarbeitung"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · Hintergrundvertrauen {confidence}%",
+    "description": "Größe und Hintergrundvertrauenswert im Bildanalyseergebnis"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Einfarbiger Hintergrund erkannt",
+    "description": "Statusanzeige, wenn der Rand des Bildes einen ausreichend einheitlichen Hintergrund hat"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Transparenter oder komplexer Hintergrund",
+    "description": "Statusanzeige, wenn das Bild bereits transparent ist oder der Hintergrund nicht automatisch entfernt werden kann"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Hintergrund automatisch entfernen",
+    "description": "Schalterbeschriftung zum Entfernen des Markenbild-Hintergrunds"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Hintergrundfarbe",
+    "description": "Farbkennzeichnung für das Entfernen des Markenbild-Hintergrunds"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Kantentoleranz",
+    "description": "Beschriftung des Schiebereglers für die Toleranz beim Entfernen des Hintergrunds"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Vorschau aktualisieren",
+    "description": "Button zum erneuten Verarbeiten des Bildes mit neuen Hintergrundentfernungsparametern"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Markenfarben beibehalten",
+    "description": "Anzeigemodus, bei dem das farbige Logo in hellem und dunklem Thema verwendet wird"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Intelligente Anpassung",
+    "description": "Empfohlener Modus, der bei hellem Hintergrund Markenfarben erhält und bei dunklem weißen Logo verwendet"
+  },
+  "logoStudio.modeMono": {
+    "message": "Schwarzweiß-Modus",
+    "description": "Anzeigemodus, bei dem im hellen Thema schwarzes und im dunklen weißes Logo verwendet wird"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Helles Thema",
+    "description": "Vorschau-Label für Markenbild mit hellem Hintergrund"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Dunkles Thema",
+    "description": "Vorschau-Label für Markenbild mit dunklem Hintergrund"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Parameter wurden geändert. Bitte Vorschau aktualisieren, bevor Sie anwenden.",
+    "description": "Hinweis, wenn die Verarbeitungsparameter nicht mit der aktuellen Vorschau übereinstimmen"
+  },
+  "logoStudio.back": {
+    "message": "Zum Zuschneiden zurück",
+    "description": "Button zum Zurückkehren vom Verarbeitungs-Vorschau-Schritt zum Zuschneiden"
+  },
+  "logoStudio.analyze": {
+    "message": "Erkennen und Vorschau",
+    "description": "Button zum Abschließen des Zuschneidens und zum Fortfahren mit der intelligenten Verarbeitung"
+  },
+  "logoStudio.apply": {
+    "message": "Bild anwenden",
+    "description": "Button zur Bestätigung des Ergebnisses der Markenbildverarbeitung"
+  },
   "message.editLogoTip": {
     "message": "Empfohlene Größe: 200*60px",
     "description": "Hinweis zur Bildgröße beim Hochladen"

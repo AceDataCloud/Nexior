@@ -503,6 +503,74 @@
     "message": "Error al subir la imagen.",
     "description": "Error de subida fallida en el recortador de imágenes."
   },
+  "logoStudio.analysisReady": {
+    "message": "Detección de imagen completada",
+    "description": "Título de estado en la parte superior del segundo paso de procesamiento inteligente de imágenes de marca"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · Confianza de fondo {confidence}%",
+    "description": "Dimensiones y confianza de fondo en los resultados de detección de imágenes"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Fondo de color sólido detectado",
+    "description": "Etiqueta de estado cuando el fondo alrededor de la imagen es lo suficientemente uniforme"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Fondo transparente o complejo",
+    "description": "Etiqueta de estado cuando la imagen es transparente o el fondo no es adecuado para eliminar automáticamente"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Eliminar fondo automáticamente",
+    "description": "Etiqueta del interruptor para eliminar el fondo de la imagen de marca"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Color de fondo",
+    "description": "Etiqueta del color objetivo para eliminar el fondo de la imagen de marca"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Tolerancia de borde",
+    "description": "Etiqueta del control deslizante de tolerancia para eliminar el fondo de la imagen de marca"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Actualizar vista previa",
+    "description": "Botón para reprocesar la imagen con nuevos parámetros de eliminación de fondo"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Mantener color de marca",
+    "description": "Modo de visualización que utiliza el logo en color tanto en temas claros como oscuros"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Adaptación inteligente",
+    "description": "Modo recomendado que mantiene el color de la marca en el fondo claro y usa el logo blanco en el fondo oscuro"
+  },
+  "logoStudio.modeMono": {
+    "message": "Modo monocromo",
+    "description": "Modo de visualización que usa el logo negro en el fondo claro y el logo blanco en el fondo oscuro"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Tema claro",
+    "description": "Etiqueta de vista previa del fondo claro de la imagen de marca"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Tema oscuro",
+    "description": "Etiqueta de vista previa del fondo oscuro de la imagen de marca"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Los parámetros han cambiado, actualice la vista previa antes de aplicar.",
+    "description": "Mensaje cuando los parámetros de procesamiento no coinciden con la vista previa actual"
+  },
+  "logoStudio.back": {
+    "message": "Regresar al recorte",
+    "description": "Botón para volver al paso de recorte desde la vista previa del procesamiento"
+  },
+  "logoStudio.analyze": {
+    "message": "Detectar y previsualizar",
+    "description": "Botón para completar el recorte y entrar en el paso de procesamiento inteligente"
+  },
+  "logoStudio.apply": {
+    "message": "Aplicar imagen",
+    "description": "Botón para confirmar los resultados del procesamiento de la imagen de marca"
+  },
   "message.editLogoTip": {
     "message": "Tamaño recomendado: 200*60px",
     "description": "Texto de sugerencia para la carga de imágenes"
