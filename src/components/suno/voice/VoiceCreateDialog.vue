@@ -44,7 +44,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDialog, ElForm, ElFormItem, ElInput, ElButton, ElRadioGroup, ElRadio, ElMessage } from 'element-plus';
-import { sunoOperator } from '@/operators';
+import { sunoOperator } from '@/operators/suno';
+import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { X402PaymentCancelledError } from '@/operators/x402';
 
 export default defineComponent({
   name: 'VoiceCreateDialog',
@@ -105,7 +107,8 @@ export default defineComponent({
       this.sourceType = 'song';
     },
     async onSubmit() {
-      if (!this.token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       this.loading = true;
       try {
         if (this.sourceType === 'song') {
@@ -115,7 +118,7 @@ export default defineComponent({
               name: this.form.name,
               description: this.form.description
             },
-            { token: this.token }
+            options
           );
         } else {
           await sunoOperator.voices(
@@ -124,13 +127,14 @@ export default defineComponent({
               name: this.form.name,
               description: this.form.description
             },
-            { token: this.token }
+            options
           );
         }
         ElMessage.success(this.$t('suno.voice.createSuccess'));
         this.$emit('created');
         this.onClose();
-      } catch {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         ElMessage.error(this.$t('suno.voice.createFailed'));
       } finally {
         this.loading = false;

@@ -22,27 +22,32 @@ import {
   ISunoVoicesResponse,
   ISunoMashupLyricsRequest,
   ISunoMashupLyricsResponse,
-  ISunoPersonasListResponse
+  ISunoPersonasListResponse,
+  ISunoConfig
 } from '@/models';
-import { BASE_URL_API } from '@/constants';
+import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
+import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
+
+const HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
+const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
+
+export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
+  const request = { ...(config || {}), audio: undefined, async: true } as ISunoAudioRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
+  return request;
+}
 
 class SunoOperator {
-  async task(id: string, options: { token: string }): Promise<AxiosResponse<ISunoTaskResponse>> {
+  async task(id: string, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoTaskResponse>> {
     return await axios.post(
       `/suno/tasks`,
       {
         action: 'retrieve',
         id: id
       },
-      {
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
+      options.mode === 'x402'
+        ? { headers: TASK_HEADERS, baseURL: BASE_URL_X402 }
+        : { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
     );
   }
 
@@ -57,7 +62,7 @@ class SunoOperator {
       createdAtMax?: number;
       createdAtMin?: number;
     },
-    options: { token: string }
+    options: OperatorRequestOptions
   ): Promise<AxiosResponse<ISunoTasksResponse>> {
     return await axios.post(
       `/suno/tasks`,
@@ -104,46 +109,38 @@ class SunoOperator {
             }
           : {})
       },
-      {
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
+      options.mode === 'x402'
+        ? { headers: TASK_HEADERS, baseURL: BASE_URL_X402 }
+        : { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
     );
   }
-  // 生成歌曲
-  async audio(
-    data: ISunoAudioRequest,
-    options: {
-      token: string;
+  async quoteAudio(data: ISunoAudioRequest) {
+    return quoteX402('/suno/audios', data, HEADERS);
+  }
+
+  private async submitExact<T>(
+    path: string,
+    data: unknown,
+    options: OperatorRequestOptions
+  ): Promise<AxiosResponse<T>> {
+    if (options.mode === 'x402') {
+      if (!options.x402) throw new Error('x402 payment options are required');
+      return postWithX402<T>(path, data, options.x402, HEADERS);
     }
-  ): Promise<AxiosResponse<ISunoAudioResponse>> {
-    return await axios.post('/suno/audios', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
+    return axios.post(path, data, {
+      headers: { ...HEADERS, authorization: `Bearer ${options.token}` },
       baseURL: BASE_URL_API
     });
   }
+
+  // 生成歌曲
+  async audio(data: ISunoAudioRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoAudioResponse>> {
+    return this.submitExact<ISunoAudioResponse>('/suno/audios', data, options);
+  }
+
   // 生成歌曲歌词
-  async lyric(
-    data: ISunoLyricRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<ISunoLyricResponse>> {
-    return await axios.post('/suno/lyrics', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async lyric(data: ISunoLyricRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoLyricResponse>> {
+    return this.submitExact<ISunoLyricResponse>('/suno/lyrics', data, options);
   }
 
   // suno/upload
@@ -179,35 +176,16 @@ class SunoOperator {
   }
 
   // suno/style - optimize style description
-  async style(
-    data: ISunoStyleRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<ISunoStyleResponse>> {
-    return await axios.post('/suno/style', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async style(data: ISunoStyleRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoStyleResponse>> {
+    return this.submitExact<ISunoStyleResponse>('/suno/style', data, options);
   }
 
   // suno/wav - get WAV format. Worker returns `data: [{ file_url }]`.
   async wav(
     data: { audio_id: string },
-    options: {
-      token: string;
-    }
+    options: OperatorRequestOptions
   ): Promise<AxiosResponse<{ data: Array<{ file_url: string }> }>> {
-    return await axios.post('/suno/wav', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+    return this.submitExact<{ data: Array<{ file_url: string }> }>('/suno/wav', data, options);
   }
 
   // suno/midi - get structured MIDI note data. Worker returns
@@ -215,9 +193,7 @@ class SunoOperator {
   // No URL — the caller is expected to assemble a .mid file client-side.
   async midi(
     data: { audio_id: string },
-    options: {
-      token: string;
-    }
+    options: OperatorRequestOptions
   ): Promise<
     AxiosResponse<{
       data: Array<{
@@ -229,77 +205,38 @@ class SunoOperator {
       }>;
     }>
   > {
-    return await axios.post('/suno/midi', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+    return this.submitExact<{
+      data: Array<{
+        state?: string;
+        instruments: Array<{
+          name?: string;
+          notes: Array<{ pitch: number; start: number; end: number; velocity: number }>;
+        }>;
+      }>;
+    }>('/suno/midi', data, options);
   }
 
   // suno/persona - create vocal persona
   async persona(
     data: ISunoPersonaRequest,
-    options: {
-      token: string;
-    }
+    options: OperatorRequestOptions
   ): Promise<AxiosResponse<ISunoPersonaResponse>> {
-    return await axios.post('/suno/persona', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+    return this.submitExact<ISunoPersonaResponse>('/suno/persona', data, options);
   }
 
   // suno/vox - extract vocals
-  async vox(
-    data: ISunoVoxRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<ISunoVoxResponse>> {
-    return await axios.post('/suno/vox', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async vox(data: ISunoVoxRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoVoxResponse>> {
+    return this.submitExact<ISunoVoxResponse>('/suno/vox', data, options);
   }
 
   // suno/timing - get timing data
-  async timing(
-    data: ISunoTimingRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<ISunoTimingResponse>> {
-    return await axios.post('/suno/timing', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async timing(data: ISunoTimingRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoTimingResponse>> {
+    return this.submitExact<ISunoTimingResponse>('/suno/timing', data, options);
   }
 
   // suno/voices - create custom voice
-  async voices(
-    data: ISunoVoicesRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<ISunoVoicesResponse>> {
-    return await axios.post('/suno/voices', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async voices(data: ISunoVoicesRequest, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoVoicesResponse>> {
+    return this.submitExact<ISunoVoicesResponse>('/suno/voices', data, options);
   }
 
   // suno/mashup-lyrics - generate mashup lyrics

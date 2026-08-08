@@ -173,7 +173,9 @@ import { ClearIcon, FullscreenIcon, MagicIcon, UndoIcon } from '@acedatacloud/co
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElMessage, ElMessageBox, ElTooltip, ElDialog } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { sunoOperator } from '@/operators';
+import { sunoOperator } from '@/operators/suno';
+import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { X402PaymentCancelledError } from '@/operators/x402';
 
 export const DEFAULT_LYRIC = '';
 
@@ -241,30 +243,31 @@ export default defineComponent({
       this.lyric = '';
     },
     async onEnhanceLyrics() {
-      const token = this.credential?.token;
-      if (!token || !this.lyric || !this.enhancePrompt) return;
+      const options = sunoPaymentOptions(this);
+      if (!options || !this.lyric || !this.enhancePrompt) return;
 
       this.pushHistory();
       this.enhancingLyrics = true;
       ElMessage.info(this.$t('suno.message.enhancingLyrics'));
       try {
         const prompt = `${this.enhancePrompt}\n\nOriginal lyrics:\n${this.lyric}`;
-        const response = await sunoOperator.lyric({ prompt }, { token });
+        const response = await sunoOperator.lyric({ prompt }, options);
         const data = response.data?.data;
         if (data?.text) {
           this.lyric = data.text;
           this.enhancePrompt = '';
           ElMessage.success(this.$t('suno.message.enhanceLyricsSuccess'));
         }
-      } catch {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         ElMessage.error(this.$t('suno.message.enhanceLyricsFailed'));
       } finally {
         this.enhancingLyrics = false;
       }
     },
     async onGenerateLyrics() {
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
 
       let theme: string;
       try {
@@ -292,7 +295,7 @@ export default defineComponent({
       ElMessage.info(this.$t('suno.message.generatingLyrics'));
 
       try {
-        const response = await sunoOperator.lyric({ prompt: theme }, { token });
+        const response = await sunoOperator.lyric({ prompt: theme }, options);
         const data = response.data?.data;
         if (data?.text) {
           this.lyric = data.text;
@@ -305,7 +308,8 @@ export default defineComponent({
           }
           ElMessage.success(this.$t('suno.message.generateLyricsSuccess'));
         }
-      } catch {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         ElMessage.error(this.$t('suno.message.generateLyricsFailed'));
       } finally {
         this.generatingLyrics = false;

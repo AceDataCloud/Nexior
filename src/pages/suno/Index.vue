@@ -10,6 +10,7 @@
         :loading="loadingMore || loadingAll"
         @reach-top="onReachTop"
         @load-all="onLoadAll"
+        @wallet-task="onWalletTask"
       />
     </template>
     <template #preview>
@@ -21,9 +22,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Suno.vue';
-import { applicationOperator, sunoOperator } from '@/operators';
+import { applicationOperator } from '@/operators';
+import { buildSunoAudioRequest, sunoOperator } from '@/operators/suno';
 import { IApplicationDetailResponse, ISunoAudioRequest, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ISunoTask } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { instrumentGeneration } from '@/plugins/telemetry';
@@ -32,6 +34,13 @@ import RecentPanel from '@/components/suno/RecentPanel.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  X402PaymentCancelledError,
+  type OperatorRequestOptions,
+  type X402PaymentQuote,
+  type X402WalletContext
+} from '@/operators/x402';
 
 interface IData {
   task: ISunoTask | undefined;
@@ -39,6 +48,7 @@ interface IData {
   loadingMore: boolean;
   loadingAll: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -57,7 +67,8 @@ export default defineComponent({
       job: 0,
       loadingMore: false,
       loadingAll: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -90,9 +101,27 @@ export default defineComponent({
     },
     applications() {
       return this.$store.state.suno.applications;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('suno').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('suno/setTasks', undefined);
+        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (!value && !this.credential?.token) {
+          window.clearInterval(this.job);
+          this.job = 0;
+          await this.onScrollDown();
+          return;
+        }
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         // scroll down if new tasks are added
@@ -107,9 +136,7 @@ export default defineComponent({
         if (newValue) {
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = window.setInterval(() => {
-            this.onGetTasks();
-          }, 5000);
+          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
         }
       },
       immediate: true
@@ -140,6 +167,7 @@ export default defineComponent({
     // search/filter cover everything, not just the loaded pages. Triggered
     // once when the user first searches/filters.
     async onLoadAll() {
+      if (this.walletMode && !this.credential?.token) return;
       if (this.loadingAll) {
         return;
       }
@@ -213,7 +241,8 @@ export default defineComponent({
         await this.$store.dispatch('suno/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
@@ -229,10 +258,7 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = {
-        ...this.config,
-        async: true
-      } as ISunoAudioRequest;
+      const request = buildSunoAudioRequest(this.config);
       if (!this.hasSunoInput(request)) {
         ElMessage.error(this.$t('suno.message.promptRequired'));
         return;
@@ -240,28 +266,64 @@ export default defineComponent({
       if (this.hasText(request.prompt)) {
         request.prompt = request.prompt.trim();
       }
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
+      const operation = this.createPaymentOperation((options) => sunoOperator.audio(request, options));
+      if (!operation) return;
       ElMessage.info(this.$t('suno.message.startingTask'));
-      instrumentGeneration('suno', sunoOperator.audio(request, { token }))
-        .then(() => {
-          ElMessage.success(this.$t('suno.message.startTaskSuccess'));
-        })
-        .catch((error) => {
-          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
-        })
-        .finally(async () => {
-          setTimeout(async () => {
-            await this.onGetTasks();
-            await this.onScrollDown();
-          }, 1000);
-        });
+      try {
+        const response = await instrumentGeneration('suno', operation);
+        this.onWalletTask(response?.data?.task_id);
+        ElMessage.success(this.$t('suno.message.startTaskSuccess'));
+      } catch (error: any) {
+        if (error instanceof X402PaymentCancelledError) return;
+        if (this.walletMode)
+          ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+        else ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
+      } finally {
+        setTimeout(async () => {
+          await this.onGetTasks();
+          await this.onScrollDown();
+        }, 1000);
+      }
+    },
+    createPaymentOperation(submit: (options: OperatorRequestOptions) => Promise<any>): Promise<any> | undefined {
+      if (!this.walletMode) {
+        if (!ensureLoggedIn()) return undefined;
+        const token = this.credential?.token;
+        return token ? submit({ token }) : undefined;
+      }
+      const wallet = this.getWalletContext();
+      if (!wallet) {
+        ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+        return undefined;
+      }
+      return submit({
+        mode: 'x402',
+        x402: { wallet, confirm: (quote) => this.confirmWalletPayment(quote), identityToken: this.credential?.token }
+      });
+    },
+    onWalletTask(taskId: string | undefined) {
+      if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId))
+        this.walletTaskIds.unshift(taskId);
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;

@@ -36,7 +36,9 @@ import { MagicIcon, RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElMessage } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { sunoOperator } from '@/operators';
+import { sunoOperator } from '@/operators/suno';
+import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { X402PaymentCancelledError } from '@/operators/x402';
 
 const ALL_STYLE_TAGS = [
   'Pop',
@@ -146,19 +148,20 @@ export default defineComponent({
       this.shuffledTags = shuffleArray(ALL_STYLE_TAGS);
     },
     async onOptimizeStyle() {
-      const token = this.credential?.token;
-      if (!token || !this.style) return;
+      const options = sunoPaymentOptions(this);
+      if (!options || !this.style) return;
 
       this.optimizing = true;
       ElMessage.info(this.$t('suno.message.optimizingStyle'));
       try {
-        const response = await sunoOperator.style({ prompt: this.style }, { token });
+        const response = await sunoOperator.style({ prompt: this.style }, options);
         const text = response.data?.text || (response.data as any)?.data?.text;
         if (text) {
           this.style = text;
           ElMessage.success(this.$t('suno.message.optimizeStyleSuccess'));
         }
-      } catch {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         ElMessage.error(this.$t('suno.message.optimizeStyleFailed'));
       } finally {
         this.optimizing = false;
