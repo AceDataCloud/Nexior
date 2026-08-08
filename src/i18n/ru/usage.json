@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Не удалось экспортировать. Сузьте диапазон дат и повторите попытку.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Сумма оплаты",
+    "description": "Фактическая сумма, урегулированная при онлайновой оплате."
+  },
+  "field.network": {
+    "message": "Сетевая оплата",
+    "description": "Сеть, используемая для онлайновой оплаты."
+  },
+  "field.transaction": {
+    "message": "ID транзакции",
+    "description": "Хэш или подпись транзакции для онлайновой оплаты."
+  },
+  "field.payer": {
+    "message": "Адрес плательщика",
+    "description": "Адрес кошелька, инициировавшего онлайновую оплату."
+  },
+  "button.viewTransaction": {
+    "message": "Просмотреть транзакцию",
+    "description": "Просмотр транзакции в доверенном блокчейн-обозревателе."
+  },
+  "dialog.payment": {
+    "message": "Оплата",
+    "description": "Используйте вкладку информации о платеже в всплывающем окне."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Не применимо (онлайновая оплата)",
+    "description": "Отображается, когда для онлайновой оплаты не используется баланс платформенных очков."
+  },
+  "value.paymentUnavailable": {
+    "message": "Информация о платеже недоступна",
+    "description": "Отображается, когда отсутствует достоверная информация о платеже в истории или при неподтвержденном урегулировании."
+  },
+  "value.paymentSettled": {
+    "message": "Расчет завершен",
+    "description": "Расчет на блокчейне подтвержден."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Ожидает подтверждения",
+    "description": "Оплата на блокчейне возвращена как успешная, но фактический расчет все еще требует сверки."
+  },
+  "value.paymentFailed": {
+    "message": "Оплата не удалась",
+    "description": "Неудача или пропуск расчета на блокчейне."
+  },
+  "value.attemptTransaction": {
+    "message": "Попробовать транзакцию",
+    "description": "Попытка транзакции, которая еще не подтверждена как успешная."
   }
 }

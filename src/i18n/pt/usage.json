@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Falha na exportação. Reduza o intervalo de datas e tente novamente.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Valor Pago",
+    "description": "O valor efetivamente liquidado no pagamento na blockchain."
+  },
+  "field.network": {
+    "message": "Rede de Pagamento",
+    "description": "A rede utilizada para pagamentos na blockchain."
+  },
+  "field.transaction": {
+    "message": "ID da Transação",
+    "description": "O hash ou assinatura da transação do pagamento na blockchain."
+  },
+  "field.payer": {
+    "message": "Endereço do Pagador",
+    "description": "O endereço da carteira que iniciou o pagamento na blockchain."
+  },
+  "button.viewTransaction": {
+    "message": "Ver Transação",
+    "description": "Visualizar a transação em um explorador de blocos confiável."
+  },
+  "dialog.payment": {
+    "message": "Pagamento",
+    "description": "Usar a aba de informações de pagamento na janela de detalhes."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Não Aplicável (Pagamento na Blockchain)",
+    "description": "Exibido quando o pagamento na blockchain não utiliza o saldo de pontos da plataforma."
+  },
+  "value.paymentUnavailable": {
+    "message": "Informações de Pagamento Indisponíveis",
+    "description": "Exibido quando informações de pagamento confiáveis estão ausentes em registros históricos ou liquidações não confirmadas."
+  },
+  "value.paymentSettled": {
+    "message": "Liquidado",
+    "description": "O pagamento na blockchain foi confirmado como liquidado."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Aguardando confirmação",
+    "description": "O pagamento na blockchain foi retornado como bem-sucedido, mas a liquidação ainda precisa ser reconciliada."
+  },
+  "value.paymentFailed": {
+    "message": "Pagamento falhou",
+    "description": "O pagamento na blockchain falhou ou foi pulado."
+  },
+  "value.attemptTransaction": {
+    "message": "Tentar transação",
+    "description": "Tentativa de transação de liquidação que ainda não foi confirmada como bem-sucedida."
   }
 }

@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Vienti epäonnistui. Rajaa aikaväliä ja yritä uudelleen.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Maksettu summa",
+    "description": "Lohkoketjussa todellisuudessa maksettu summa."
+  },
+  "field.network": {
+    "message": "Maksuverkko",
+    "description": "Verkko, jota käytetään lohkoketjussa maksamiseen."
+  },
+  "field.transaction": {
+    "message": "Tapahtuma ID",
+    "description": "Lohkoketjussa maksun tapahtuman hash tai allekirjoitus."
+  },
+  "field.payer": {
+    "message": "Maksajan osoite",
+    "description": "Lohkoketjussa maksun aloittaneen lompakon osoite."
+  },
+  "button.viewTransaction": {
+    "message": "Näytä tapahtuma",
+    "description": "Näyttää tapahtuman luotettavassa lohkoketjun selaimessa."
+  },
+  "dialog.payment": {
+    "message": "Maksaa",
+    "description": "Käytä maksutietojen välilehteä yksityiskohtien pop-upissa."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Ei sovellettavissa (lohkoketjumaksu)",
+    "description": "Näytetään, kun lohkoketjumaksu ei käytä alustan pisteiden saldoa."
+  },
+  "value.paymentUnavailable": {
+    "message": "Maksutiedot eivät ole saatavilla",
+    "description": "Näytetään, kun historiatiedoista tai vahvistamattomasta maksusta puuttuu luotettavat maksutiedot."
+  },
+  "value.paymentSettled": {
+    "message": "Maksu on vahvistettu",
+    "description": "Ketjussa maksutapahtuma on vahvistettu."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Vahvistusta odotetaan",
+    "description": "Ketjussa maksu on palautettu onnistuneena, mutta maksutapahtuma tarvitsee vielä tarkistuksen."
+  },
+  "value.paymentFailed": {
+    "message": "Maksu epäonnistui",
+    "description": "Ketjussa maksutapahtuma epäonnistui tai ohitettiin."
+  },
+  "value.attemptTransaction": {
+    "message": "Yritä tapahtumaa",
+    "description": "Vielä vahvistamaton onnistunut maksuyritys."
   }
 }

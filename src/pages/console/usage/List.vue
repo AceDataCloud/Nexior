@@ -211,7 +211,13 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <div v-if="getDeductedAmount(scope.row) === getOriginalAmount(scope.row)">
+                  <div v-if="isX402Usage(scope.row)" class="space-y-1">
+                    <strong v-if="getX402Payment(scope.row)">
+                      {{ getX402Payment(scope.row)?.amount }} {{ getX402Payment(scope.row)?.currency }}
+                    </strong>
+                    <span v-else class="text-gray-400">{{ $t('usage.value.paymentUnavailable') }}</span>
+                  </div>
+                  <div v-else-if="getDeductedAmount(scope.row) === getOriginalAmount(scope.row)">
                     <span>{{ getDeductedAmount(scope.row) }}</span>
                   </div>
                   <div v-else>
@@ -232,7 +238,8 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <span>{{ getRemainingAmount(scope.row) }}</span>
+                  <span v-if="isX402Usage(scope.row)">{{ $t('usage.value.balanceNotApplicable') }}</span>
+                  <span v-else>{{ getRemainingAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -244,7 +251,11 @@
                 <template #default="scope">
                   <div class="flex flex-wrap gap-2">
                     <el-tag
-                      v-if="scope.row.original_amount > scope.row.deducted_amount && scope.row.original_amount > 0"
+                      v-if="
+                        !isX402Usage(scope.row) &&
+                        scope.row.original_amount > scope.row.deducted_amount &&
+                        scope.row.original_amount > 0
+                      "
                       type="success"
                       :style="{
                         textWrap: 'wrap',
@@ -260,6 +271,29 @@
                         ).toFixed(0) + '% OFF'
                       }}
                     </el-tag>
+                    <div v-if="isX402Usage(scope.row)" class="flex min-w-0 items-center gap-1">
+                      <el-tag :type="getX402StatusType(scope.row)">{{ $t(getX402StatusKey(scope.row)) }}</el-tag>
+                      <a
+                        v-if="getX402Payment(scope.row)?.explorerUrl"
+                        :href="getX402Payment(scope.row)?.explorerUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="truncate text-primary"
+                      >
+                        {{ $t('usage.button.viewTransaction') }}
+                        <external-link-icon class="ml-1 inline-block h-3.5 w-3.5" />
+                      </a>
+                      <span v-else-if="getX402Transaction(scope.row)" class="key truncate">
+                        {{
+                          scope.row.metadata?.x402_settle_attempt_tx ? `${$t('usage.value.attemptTransaction')}: ` : ''
+                        }}{{ shortTransaction(getX402Transaction(scope.row)) }}
+                      </span>
+                      <copy-to-clipboard
+                        v-if="getX402Transaction(scope.row)"
+                        :content="getX402Transaction(scope.row)"
+                        class="inline-block shrink-0"
+                      />
+                    </div>
                     <el-tag
                       v-for="(name, key) in getSimpleMetadata(scope.row.metadata)"
                       :key="key"
@@ -409,6 +443,52 @@
         destroy-on-close
       >
         <el-tabs v-model="detailActiveTab">
+          <el-tab-pane v-if="detailRow && isX402Usage(detailRow)" :label="$t('usage.dialog.payment')" name="payment">
+            <el-skeleton v-if="detailLoading" :rows="6" animated />
+            <dl v-else class="payment-details">
+              <dt>{{ $t('usage.field.status') }}</dt>
+              <dd>
+                <el-tag :type="getX402StatusType(detailRow)">{{ $t(getX402StatusKey(detailRow)) }}</el-tag>
+                <span v-if="detailRow.metadata?.x402_settle_error" class="ml-2 text-danger">
+                  {{ detailRow.metadata.x402_settle_error }}
+                </span>
+              </dd>
+              <dt>{{ $t('usage.field.paidAmount') }}</dt>
+              <dd v-if="getX402Payment(detailRow)">
+                {{ getX402Payment(detailRow)?.amount }} {{ getX402Payment(detailRow)?.currency }}
+              </dd>
+              <dd v-else>{{ $t('usage.value.paymentUnavailable') }}</dd>
+              <dt>{{ $t('usage.field.network') }}</dt>
+              <dd>{{ detailRow.metadata?.x402_network || '-' }}</dd>
+              <dt>{{ $t('usage.field.payer') }}</dt>
+              <dd class="break-all">{{ detailRow.metadata?.x402_payer || '-' }}</dd>
+              <dt>
+                {{
+                  detailRow.metadata?.x402_settle_attempt_tx
+                    ? $t('usage.value.attemptTransaction')
+                    : $t('usage.field.transaction')
+                }}
+              </dt>
+              <dd class="break-all">
+                {{ getX402Transaction(detailRow) || '-' }}
+                <copy-to-clipboard
+                  v-if="getX402Transaction(detailRow)"
+                  :content="getX402Transaction(detailRow)"
+                  class="inline-block"
+                />
+                <a
+                  v-if="getX402Payment(detailRow)?.explorerUrl"
+                  :href="getX402Payment(detailRow)?.explorerUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="ml-2 text-primary"
+                >
+                  {{ $t('usage.button.viewTransaction') }}
+                  <external-link-icon class="ml-1 inline-block h-3.5 w-3.5" />
+                </a>
+              </dd>
+            </dl>
+          </el-tab-pane>
           <el-tab-pane :label="$t('usage.dialog.request')" name="request">
             <el-skeleton v-if="detailLoading" :rows="6" animated />
             <pre v-else-if="detailRow?.metadata?.request" class="detail-json">{{
@@ -437,7 +517,7 @@
 </template>
 
 <script lang="ts">
-import { ApplicationsIcon, ExportIcon } from '@acedatacloud/core/icons/components';
+import { ApplicationsIcon, ExportIcon, ExternalLinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   IApi,
@@ -479,6 +559,7 @@ import {
 import qs from 'qs';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { getBaseUrlPlatform } from '@/utils';
+import { getX402CopyableTransaction, getX402UsagePayment, isX402Usage, omitX402Metadata } from '@/utils/usagePayment';
 import { Bar as BarChart, Doughnut as DoughnutChart } from 'vue-chartjs';
 import {
   Chart as ChartJS,
@@ -576,6 +657,7 @@ export default defineComponent({
   components: {
     ApplicationsIcon,
     ExportIcon,
+    ExternalLinkIcon,
     Pagination,
     ElTag,
     ElDatePicker,
@@ -1038,15 +1120,27 @@ export default defineComponent({
       }
       return `${elapsed.toFixed(2)} s`;
     },
-    getSimpleMetadata(metadata: Record<string, any> | undefined) {
-      if (!metadata) return {};
-      const result: Record<string, any> = {};
-      for (const [key, value] of Object.entries(metadata)) {
-        if (key === 'request' || key === 'response') continue;
-        if (typeof value === 'object' && value !== null) continue;
-        result[key] = value;
-      }
-      return result;
+    isX402Usage,
+    getX402Payment: getX402UsagePayment,
+    getX402Transaction: getX402CopyableTransaction,
+    getX402StatusType(usage: IApiUsage) {
+      if (getX402UsagePayment(usage)) return 'success';
+      if (usage.metadata?.x402_settlement_status === 'unconfirmed') return 'warning';
+      if (usage.metadata?.x402_settle_error || usage.metadata?.x402_skipped) return 'danger';
+      return 'info';
+    },
+    getX402StatusKey(usage: IApiUsage) {
+      if (getX402UsagePayment(usage)) return 'usage.value.paymentSettled';
+      if (usage.metadata?.x402_settlement_status === 'unconfirmed') return 'usage.value.paymentUnconfirmed';
+      if (usage.metadata?.x402_settle_error || usage.metadata?.x402_skipped) return 'usage.value.paymentFailed';
+      return 'usage.value.paymentUnavailable';
+    },
+    shortTransaction(transaction?: string) {
+      if (!transaction || transaction.length <= 16) return transaction || '';
+      return `${transaction.slice(0, 8)}…${transaction.slice(-6)}`;
+    },
+    getSimpleMetadata(metadata: IApiUsage['metadata']) {
+      return omitX402Metadata(metadata);
     },
     getCredentialLabel(usage: IApiUsage | IProxyUsage) {
       const name = usage.credential?.name?.trim();
@@ -1055,18 +1149,19 @@ export default defineComponent({
       return usage.credential?.id || usage.credential_id || '-';
     },
     onShowDetail(row: IApiUsage) {
-      this.detailRow = { ...row, metadata: undefined };
-      this.detailActiveTab = 'request';
+      this.detailRow = { ...row, metadata: row.metadata ? { ...row.metadata } : undefined };
+      this.detailActiveTab = isX402Usage(row) ? 'payment' : 'request';
       this.detailDialogVisible = true;
       this.detailLoading = true;
       if (row.id) {
+        const requestedId = row.id;
         apiUsageOperator
-          .get(row.id)
+          .get(requestedId)
           .then((response) => {
-            this.detailRow = response.data;
+            if (this.detailRow?.id === requestedId) this.detailRow = response.data;
           })
           .finally(() => {
-            this.detailLoading = false;
+            if (this.detailRow?.id === requestedId) this.detailLoading = false;
           });
       }
     },
@@ -1401,6 +1496,18 @@ export default defineComponent({
   font-variant-numeric: tabular-nums;
   color: var(--el-text-color-regular);
   font-size: 12px;
+}
+.payment-details {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+  gap: 12px 16px;
+}
+.payment-details dt {
+  color: var(--el-text-color-secondary);
+}
+.payment-details dd {
+  min-width: 0;
+  margin: 0;
 }
 .detail-json {
   background: var(--el-bg-color-page);

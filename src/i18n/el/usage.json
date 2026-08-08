@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Η εξαγωγή απέτυχε. Περιορίστε το εύρος ημερομηνιών και δοκιμάστε ξανά.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Ποσό που έχει πληρωθεί",
+    "description": "Το ποσό που έχει διακανονιστεί στην πληρωμή στο blockchain."
+  },
+  "field.network": {
+    "message": "Δίκτυο πληρωμής",
+    "description": "Το δίκτυο που χρησιμοποιείται για την πληρωμή στο blockchain."
+  },
+  "field.transaction": {
+    "message": "ID συναλλαγής",
+    "description": "Το hash ή η υπογραφή της συναλλαγής πληρωμής στο blockchain."
+  },
+  "field.payer": {
+    "message": "Διεύθυνση πληρωμής",
+    "description": "Η διεύθυνση πορτοφολιού που ξεκινά την πληρωμή στο blockchain."
+  },
+  "button.viewTransaction": {
+    "message": "Δείτε τη συναλλαγή",
+    "description": "Δείτε τη συναλλαγή σε έναν αξιόπιστο μπλοκ εξερευνητή."
+  },
+  "dialog.payment": {
+    "message": "Πληρωμή",
+    "description": "Χρησιμοποιήστε την καρτέλα πληροφοριών πληρωμής στο αναδυόμενο παράθυρο."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Μη εφαρμόσιμο (πληρωμή στο blockchain)",
+    "description": "Εμφανίζεται όταν η πληρωμή στο blockchain δεν χρησιμοποιεί το υπόλοιπο πόντων της πλατφόρμας."
+  },
+  "value.paymentUnavailable": {
+    "message": "Πληροφορίες πληρωμής μη διαθέσιμες",
+    "description": "Εμφανίζεται όταν οι πληροφορίες πληρωμής δεν είναι αξιόπιστες λόγω ιστορικού ή μη επιβεβαιωμένου διακανονισμού."
+  },
+  "value.paymentSettled": {
+    "message": "Επιβεβαιωμένο",
+    "description": "Η πληρωμή μέσω blockchain έχει επιβεβαιωθεί."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Σε Αναμονή Επιβεβαίωσης",
+    "description": "Η πληρωμή μέσω blockchain έχει επιστραφεί ως επιτυχής, αλλά η πραγματική εκκαθάριση χρειάζεται έλεγχο."
+  },
+  "value.paymentFailed": {
+    "message": "Αποτυχία Πληρωμής",
+    "description": "Η πληρωμή μέσω blockchain απέτυχε ή παραλείφθηκε."
+  },
+  "value.attemptTransaction": {
+    "message": "Προσπάθεια Συναλλαγής",
+    "description": "Μια προσπάθεια συναλλαγής που δεν έχει επιβεβαιωθεί ως επιτυχής."
   }
 }

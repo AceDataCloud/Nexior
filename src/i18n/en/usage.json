@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Export failed. Please narrow the date range and try again.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Amount Paid",
+    "description": "The amount actually settled by the on-chain payment."
+  },
+  "field.network": {
+    "message": "Payment Network",
+    "description": "The network used for the on-chain payment."
+  },
+  "field.transaction": {
+    "message": "Transaction ID",
+    "description": "The transaction hash or signature for the on-chain payment."
+  },
+  "field.payer": {
+    "message": "Payer Address",
+    "description": "The wallet address that made the on-chain payment."
+  },
+  "button.viewTransaction": {
+    "message": "View Transaction",
+    "description": "Open the transaction in a trusted block explorer."
+  },
+  "dialog.payment": {
+    "message": "Payment",
+    "description": "Payment information tab in the usage detail dialog."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Not applicable (on-chain payment)",
+    "description": "Shown when an on-chain payment does not use the platform credit balance."
+  },
+  "value.paymentUnavailable": {
+    "message": "Payment details unavailable",
+    "description": "Shown when a legacy or unconfirmed record lacks trusted payment details."
+  },
+  "value.paymentSettled": {
+    "message": "Settled",
+    "description": "The on-chain payment settlement is confirmed."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Unconfirmed",
+    "description": "The payment returned success but its settlement facts still require reconciliation."
+  },
+  "value.paymentFailed": {
+    "message": "Payment failed",
+    "description": "The on-chain payment settlement failed or was skipped."
+  },
+  "value.attemptTransaction": {
+    "message": "Attempt transaction",
+    "description": "A settlement attempt transaction that is not confirmed as successful."
   }
 }

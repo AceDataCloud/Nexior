@@ -149,7 +149,7 @@
   },
   "view.trend": {
     "message": "Trend",
-    "description": "Der Ansichtsschalter für die Analysekarte: Zeigt die gestapelten Säulendiagramme des API-Verbrauchs über die Zeit."
+    "description": "Der Ansichtsschalter für die Analyse-Karten: zeigt gestapelte Säulendiagramme des API-Verbrauchs über die Zeit."
   },
   "view.distribution": {
     "message": "Anteil",
@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Export fehlgeschlagen. Bitte grenzen Sie den Zeitraum ein und versuchen Sie es erneut.",
     "description": "Fehlerhinweis, wenn die Anfrage zum CSV-Export fehlschlägt (Netzwerk- oder Serverfehler)."
+  },
+  "field.paidAmount": {
+    "message": "Bezahlt Betrag",
+    "description": "Der Betrag, der tatsächlich für die On-Chain-Zahlung abgerechnet wurde."
+  },
+  "field.network": {
+    "message": "Zahlungsnetzwerk",
+    "description": "Das Netzwerk, das für die On-Chain-Zahlung verwendet wird."
+  },
+  "field.transaction": {
+    "message": "Transaktions-ID",
+    "description": "Der Transaktions-Hash oder die Signatur der On-Chain-Zahlung."
+  },
+  "field.payer": {
+    "message": "Zahlungsadresse",
+    "description": "Die Wallet-Adresse, die die On-Chain-Zahlung initiiert."
+  },
+  "button.viewTransaction": {
+    "message": "Transaktion anzeigen",
+    "description": "Zeigt die Transaktion in einem vertrauenswürdigen Block-Explorer an."
+  },
+  "dialog.payment": {
+    "message": "Zahlung",
+    "description": "Verwendet den Zahlungsinformationen-Tab im Detail-Popup."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Nicht anwendbar (On-Chain-Zahlung)",
+    "description": "Wird angezeigt, wenn bei der On-Chain-Zahlung kein Plattform-Punkte-Guthaben verwendet wird."
+  },
+  "value.paymentUnavailable": {
+    "message": "Zahlungsinformationen nicht verfügbar",
+    "description": "Wird angezeigt, wenn vertrauenswürdige Zahlungsinformationen in der Historie oder bei unbestätigten Abrechnungen fehlen."
+  },
+  "value.paymentSettled": {
+    "message": "Abgeschlossen",
+    "description": "Die Zahlung auf der Blockchain wurde erfolgreich abgeschlossen."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Ausstehende Bestätigung",
+    "description": "Die Zahlung auf der Blockchain wurde als erfolgreich zurückgegeben, aber die Abrechnung muss noch abgeglichen werden."
+  },
+  "value.paymentFailed": {
+    "message": "Zahlung fehlgeschlagen",
+    "description": "Die Zahlung auf der Blockchain ist fehlgeschlagen oder wurde übersprungen."
+  },
+  "value.attemptTransaction": {
+    "message": "Transaktion versuchen",
+    "description": "Versuche einer Transaktion, die noch nicht erfolgreich bestätigt wurden."
   }
 }

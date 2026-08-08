@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "エクスポートに失敗しました。期間を絞って再試行してください。",
     "description": "CSVエクスポートリクエストが失敗した場合のエラートースト"
+  },
+  "field.paidAmount": {
+    "message": "支払済み金額",
+    "description": "オンチェーン支払いで実際に決済された金額です。"
+  },
+  "field.network": {
+    "message": "支払いネットワーク",
+    "description": "オンチェーン支払いに使用されるネットワークです。"
+  },
+  "field.transaction": {
+    "message": "取引 ID",
+    "description": "オンチェーン支払いの取引ハッシュまたは署名です。"
+  },
+  "field.payer": {
+    "message": "支払いアドレス",
+    "description": "オンチェーン支払いを開始するウォレットアドレスです。"
+  },
+  "button.viewTransaction": {
+    "message": "取引を表示",
+    "description": "信頼できるブロックエクスプローラーで取引を表示します。"
+  },
+  "dialog.payment": {
+    "message": "支払い",
+    "description": "詳細ポップアップの支払い情報タブを使用します。"
+  },
+  "value.balanceNotApplicable": {
+    "message": "該当なし（オンチェーン支払い）",
+    "description": "オンチェーン支払いでプラットフォームのポイント残高が使用されない場合に表示されます。"
+  },
+  "value.paymentUnavailable": {
+    "message": "支払い情報が利用できません",
+    "description": "履歴または未確認の決済に信頼できる支払い情報が欠けている場合に表示されます。"
+  },
+  "value.paymentSettled": {
+    "message": "決済済み",
+    "description": "ブロックチェーン上の支払いが確認されました。"
+  },
+  "value.paymentUnconfirmed": {
+    "message": "未確認",
+    "description": "ブロックチェーン上の支払いが成功として返されましたが、決済の事実はまだ照合が必要です。"
+  },
+  "value.paymentFailed": {
+    "message": "支払いに失敗しました",
+    "description": "ブロックチェーン上の支払い決済が失敗したか、スキップされました。"
+  },
+  "value.attemptTransaction": {
+    "message": "取引を試みる",
+    "description": "まだ成功が確認されていない決済の試みです。"
   }
 }

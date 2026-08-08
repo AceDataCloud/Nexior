@@ -5,6 +5,20 @@ export interface IUsageCredential {
   name?: string;
 }
 
+export interface IX402UsageMetadata extends Record<string, unknown> {
+  x402?: boolean;
+  x402_settlement_status?: 'settled' | 'unconfirmed';
+  x402_amount_atomic?: string;
+  x402_decimals?: number;
+  x402_currency?: string;
+  x402_network?: string;
+  x402_tx?: string;
+  x402_payer?: string;
+  x402_settle_error?: string;
+  x402_settle_attempt_tx?: string;
+  x402_skipped?: boolean;
+}
+
 export interface IApiUsage {
   id?: string;
   api_id?: string;
@@ -18,7 +32,7 @@ export interface IApiUsage {
   used_amount?: number;
   deducted_amount?: number;
   original_amount?: number;
-  metadata?: Record<string, any>;
+  metadata?: IX402UsageMetadata;
   service?: IService;
 }
 

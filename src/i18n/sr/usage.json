@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Извоз није успео. Сузите опсег датума и покушајте поново.",
     "description": "Порука о грешци када захтев за извоз CSV-а не успе (мрежна или серверска грешка)."
+  },
+  "field.paidAmount": {
+    "message": "Iznos plaćen",
+    "description": "Iznos koji je stvarno obračunat za onlajn plaćanje."
+  },
+  "field.network": {
+    "message": "Mreža plaćanja",
+    "description": "Mreža koja se koristi za onlajn plaćanje."
+  },
+  "field.transaction": {
+    "message": "ID transakcije",
+    "description": "Hash ili potpis transakcije za onlajn plaćanje."
+  },
+  "field.payer": {
+    "message": "Adresa platioca",
+    "description": "Novčanik adresa koja inicira onlajn plaćanje."
+  },
+  "button.viewTransaction": {
+    "message": "Pogledaj transakciju",
+    "description": "Pogledajte transakciju u pouzdanom blok pregledniku."
+  },
+  "dialog.payment": {
+    "message": "Plaćanje",
+    "description": "Koristite karticu sa informacijama o plaćanju u dijalogu."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Nije primenljivo (onlajn plaćanje)",
+    "description": "Prikazuje se kada onlajn plaćanje ne koristi saldo platforme."
+  },
+  "value.paymentUnavailable": {
+    "message": "Informacije o plaćanju nisu dostupne",
+    "description": "Prikazuje se kada nedostaju pouzdane informacije o plaćanju u istoriji ili nepotvrđenim obračunima."
+  },
+  "value.paymentSettled": {
+    "message": "Plaćeno",
+    "description": "Onlajn uplata je potvrđena kao završena."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Na čekanju",
+    "description": "Onlajn uplata je vraćena kao uspešna, ali se još uvek mora uskladiti."
+  },
+  "value.paymentFailed": {
+    "message": "Plaćanje nije uspelo",
+    "description": "Neuspešna ili preskočena onlajn uplata."
+  },
+  "value.attemptTransaction": {
+    "message": "Pokušaj transakcije",
+    "description": "Pokušaj transakcije koji još nije potvrđen kao uspešan."
   }
 }
