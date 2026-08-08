@@ -3,14 +3,14 @@
     <router-view class="main" />
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
-      v-if="application || x402ScenarioEnabled"
+      v-if="application || x402Scenario"
       class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
       :show-price="false"
       :authenticated="!!$store.state.token.access"
       :service="service"
-      :scenario="appName"
+      :scenario="x402Scenario"
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
     />
     <application-confirm v-model.visible="applying" @apply="onApply" />
@@ -60,6 +60,10 @@ export default defineComponent({
     appName(): keyof IAppState {
       return this.$route.meta.appName as keyof IAppState;
     },
+    x402Scenario(): string | undefined {
+      if (this.appName === 'kling' && this.$store.state.kling?.taskType === 'motion') return undefined;
+      return this.x402ScenarioEnabled ? String(this.appName) : undefined;
+    },
     x402ScenarioEnabled(): boolean {
       return (
         [
@@ -78,7 +82,9 @@ export default defineComponent({
           'omni',
           'grokvideo',
           'minimax',
-          'maestro'
+          'maestro',
+          'kling',
+          'digitalhuman'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },

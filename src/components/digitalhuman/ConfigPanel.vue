@@ -91,7 +91,8 @@
         <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ missing[0].message }}
       </p>
-      <consumption :value="consumption" :service="service" />
+      <scenario-payment-mode scenario="digitalhuman" />
+      <consumption v-if="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('digitalhuman.button.generateVideo') }}
@@ -120,7 +121,10 @@ import MediaInput from './config/MediaInput.vue';
 import TimbreSelector from './config/TimbreSelector.vue';
 import { getConsumption } from '@/utils';
 import { DIGITALHUMAN_AUDIO_ACCEPT, DIGITALHUMAN_IMAGE_ACCEPT, DIGITALHUMAN_VIDEO_ACCEPT } from '@/constants';
-import { IDigitalHumanConfig, IDigitalHumanGenerateRequest } from '@/models';
+import { IDigitalHumanConfig } from '@/models';
+import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { buildDigitalHumanVideoRequest, digitalHumanOperator } from '@/operators/digitalhuman';
 
 interface IMissing {
   key: string;
@@ -134,6 +138,8 @@ interface IData {
   DIGITALHUMAN_VIDEO_ACCEPT: string;
   DIGITALHUMAN_IMAGE_ACCEPT: string;
   DIGITALHUMAN_AUDIO_ACCEPT: string;
+  quoteTimer: number;
+  quoteRunId: number;
 }
 
 export default defineComponent({
@@ -151,7 +157,8 @@ export default defineComponent({
     MediaInput,
     PromptTextarea,
     TimbreSelector,
-    WarningIcon
+    WarningIcon,
+    ScenarioPaymentMode
   },
   emits: ['generate'],
   data(): IData {
@@ -161,7 +168,9 @@ export default defineComponent({
       advancedOpen: [],
       DIGITALHUMAN_VIDEO_ACCEPT,
       DIGITALHUMAN_IMAGE_ACCEPT,
-      DIGITALHUMAN_AUDIO_ACCEPT
+      DIGITALHUMAN_AUDIO_ACCEPT,
+      quoteTimer: 0,
+      quoteRunId: 0
     };
   },
   computed: {
@@ -220,6 +229,29 @@ export default defineComponent({
       set(val: number) {
         this.update({ speed: val });
       }
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('digitalhuman').mode === 'wallet';
+    }
+  },
+  watch: {
+    walletMode: {
+      handler(enabled: boolean) {
+        if (enabled) this.scheduleQuote();
+      },
+      immediate: true
+    },
+    config: {
+      handler() {
+        if (this.walletMode) this.scheduleQuote();
+      },
+      deep: true
+    },
+    faceMode() {
+      if (this.walletMode) this.scheduleQuote();
+    },
+    voiceMode() {
+      if (this.walletMode) this.scheduleQuote();
     }
   },
   mounted() {
@@ -231,7 +263,30 @@ export default defineComponent({
       this.voiceMode = 'audio';
     }
   },
+  beforeUnmount() {
+    window.clearTimeout(this.quoteTimer);
+    this.quoteRunId += 1;
+  },
   methods: {
+    scheduleQuote() {
+      window.clearTimeout(this.quoteTimer);
+      this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
+    },
+    async refreshQuote() {
+      const state = scenarioPaymentState('digitalhuman');
+      const runId = ++this.quoteRunId;
+      state.quoteLoading = true;
+      state.quoteUsdc = undefined;
+      try {
+        const request = buildDigitalHumanVideoRequest(this.config, this.faceMode, this.voiceMode);
+        const quote = await digitalHumanOperator.quote(request);
+        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+      } catch (error) {
+        console.warn('x402 quote failed', error);
+      } finally {
+        if (runId === this.quoteRunId) state.quoteLoading = false;
+      }
+    },
     isMissing(key: string): boolean {
       return this.missing.some((item) => item.key === key);
     },
@@ -267,23 +322,7 @@ export default defineComponent({
         (this.$refs[anchor] as HTMLElement | undefined)?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
         return;
       }
-      // Build a clean request from the active modes only — never leak the
-      // inactive face/voice fields into the payload. A photo travels in
-      // video_url: that is the single face field the API reads.
-      const c = this.config || {};
-      const request: IDigitalHumanGenerateRequest = {
-        video_url: this.faceMode === 'video' ? c.video_url : c.image_url
-      };
-      if (this.voiceMode === 'audio') {
-        request.audio_url = c.audio_url;
-      } else {
-        request.text = c.text;
-        request.voice_id = c.voice_id;
-      }
-      if (c.speed && c.speed !== 1) {
-        request.speed = c.speed;
-      }
-      this.$emit('generate', request);
+      this.$emit('generate', buildDigitalHumanVideoRequest(this.config, this.faceMode, this.voiceMode));
     }
   }
 });

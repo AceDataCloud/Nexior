@@ -43,7 +43,16 @@
 
     <template #footer>
       <div class="footer">
-        <consumption :value="DIGITALHUMAN_VOICE_CLONE_CONSUMPTION" :service="service" class="cost" />
+        <span v-if="walletMode" class="cost text-xs text-[var(--el-text-color-secondary)]">
+          {{
+            voiceQuoteLoading
+              ? '…'
+              : voiceQuoteUsdc
+                ? `${voiceQuoteUsdc} USDC`
+                : $t('common.x402Scenario.quoteBeforeSigning')
+          }}
+        </span>
+        <consumption v-else :value="DIGITALHUMAN_VOICE_CLONE_CONSUMPTION" :service="service" class="cost" />
         <div>
           <el-button :disabled="cloning" @click="onVisible(false)">{{ $t('common.button.cancel') }}</el-button>
           <el-button type="primary" :loading="cloning" :disabled="!sampleUrl || cloning" @click="onClone">
@@ -57,10 +66,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElAlert, ElButton, ElDialog, ElInput, ElMessage, ElRadioButton, ElRadioGroup } from 'element-plus';
+import {
+  ElAlert,
+  ElButton,
+  ElDialog,
+  ElInput,
+  ElMessage,
+  ElMessageBox,
+  ElRadioButton,
+  ElRadioGroup
+} from 'element-plus';
 import Consumption from '@/components/common/Consumption.vue';
 import MediaInput from './MediaInput.vue';
-import { digitalHumanOperator } from '@/operators';
+import { buildDigitalHumanVoiceRequest, digitalHumanOperator } from '@/operators/digitalhuman';
 import {
   DIGITALHUMAN_ALLOWED_LANGS,
   DIGITALHUMAN_AUDIO_ACCEPT,
@@ -68,6 +86,13 @@ import {
   DIGITALHUMAN_VOICE_CLONE_CONSUMPTION
 } from '@/constants';
 import { addVoice, nextVoiceName } from '@/utils/digitalhumanVoices';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  X402PaymentCancelledError,
+  type OperatorRequestOptions,
+  type X402PaymentQuote,
+  type X402WalletContext
+} from '@/operators/x402';
 import { IDigitalHumanLang } from '@/models';
 
 const POLL_INTERVAL = 3000;
@@ -82,6 +107,9 @@ interface IData {
   runId: number;
   DIGITALHUMAN_AUDIO_ACCEPT: string;
   DIGITALHUMAN_VOICE_CLONE_CONSUMPTION: number;
+  voiceQuoteUsdc: string | undefined;
+  voiceQuoteLoading: boolean;
+  quoteRunId: number;
 }
 
 export default defineComponent({
@@ -112,7 +140,10 @@ export default defineComponent({
       destroyed: false,
       runId: 0,
       DIGITALHUMAN_AUDIO_ACCEPT,
-      DIGITALHUMAN_VOICE_CLONE_CONSUMPTION
+      DIGITALHUMAN_VOICE_CLONE_CONSUMPTION,
+      voiceQuoteUsdc: undefined,
+      voiceQuoteLoading: false,
+      quoteRunId: 0
     };
   },
   computed: {
@@ -122,6 +153,9 @@ export default defineComponent({
     credentialToken(): string | undefined {
       return this.$store.state.digitalhuman?.credential?.token;
     },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('digitalhuman').mode === 'wallet';
+    },
     langOptions(): { value: string; label: string }[] {
       return DIGITALHUMAN_ALLOWED_LANGS.map((value) => ({
         value,
@@ -130,6 +164,10 @@ export default defineComponent({
     }
   },
   watch: {
+    walletMode(enabled: boolean) {
+      this.voiceQuoteUsdc = undefined;
+      if (enabled && this.visible && this.sampleUrl) this.refreshVoiceQuote();
+    },
     visible(open: boolean) {
       if (open) {
         this.sampleUrl = undefined;
@@ -138,13 +176,16 @@ export default defineComponent({
       } else {
         // abandon any in-flight poll so a reopened dialog never adopts it
         this.runId++;
+        this.quoteRunId++;
         this.cloning = false;
+        this.voiceQuoteLoading = false;
       }
     }
   },
   beforeUnmount() {
     this.destroyed = true;
     this.runId++;
+    this.quoteRunId++;
   },
   methods: {
     onVisible(open: boolean) {
@@ -155,6 +196,8 @@ export default defineComponent({
     },
     onSampleChange(url: string | undefined) {
       this.sampleUrl = url;
+      this.voiceQuoteUsdc = undefined;
+      if (url && this.walletMode) this.refreshVoiceQuote();
     },
     isStale(runId: number): boolean {
       return this.destroyed || runId !== this.runId;
@@ -162,18 +205,50 @@ export default defineComponent({
     sleep(ms: number): Promise<void> {
       return new Promise((resolve) => setTimeout(resolve, ms));
     },
-    async onClone() {
-      const token = this.credentialToken;
-      if (!this.sampleUrl || !token) {
-        return;
+    async refreshVoiceQuote() {
+      if (!this.sampleUrl) return;
+      const runId = ++this.quoteRunId;
+      this.voiceQuoteLoading = true;
+      try {
+        const quote = await digitalHumanOperator.quoteVoice(this.voiceRequest());
+        if (runId === this.quoteRunId && this.walletMode) this.voiceQuoteUsdc = quote.amountUsdc;
+      } catch (error) {
+        console.warn('x402 voice quote failed', error);
+      } finally {
+        if (runId === this.quoteRunId) this.voiceQuoteLoading = false;
       }
+    },
+    voiceRequest() {
+      return buildDigitalHumanVoiceRequest({
+        audio_url: this.sampleUrl || '',
+        lang: this.lang,
+        name: this.name || undefined
+      });
+    },
+    paymentOptions(): OperatorRequestOptions | undefined {
+      if (!this.walletMode) return this.credentialToken ? { token: this.credentialToken } : undefined;
+      const wallet = this.getWalletContext();
+      if (!wallet) {
+        ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+        return undefined;
+      }
+      return {
+        mode: 'x402',
+        x402: {
+          wallet,
+          confirm: (quote) => this.confirmWalletPayment(quote),
+          identityToken: this.credentialToken
+        }
+      };
+    },
+    async onClone() {
+      if (!this.sampleUrl) return;
+      const options = this.paymentOptions();
+      if (!options) return;
       const runId = ++this.runId;
       this.cloning = true;
       try {
-        const { data } = await digitalHumanOperator.cloneVoice(
-          { audio_url: this.sampleUrl, lang: this.lang, name: this.name || undefined },
-          { token }
-        );
+        const { data } = await digitalHumanOperator.cloneVoice(this.voiceRequest(), options);
         if (this.isStale(runId)) {
           return;
         }
@@ -182,11 +257,12 @@ export default defineComponent({
           return;
         }
         if (data?.task_id) {
-          await this.pollVoice(data.task_id, token, runId);
+          await this.pollVoice(data.task_id, runId);
         } else {
           throw new Error('no task');
         }
-      } catch (_e) {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         if (!this.isStale(runId)) {
           ElMessage.error(this.$t('digitalhuman.message.voiceCloneFailed'));
         }
@@ -196,7 +272,7 @@ export default defineComponent({
         }
       }
     },
-    async pollVoice(taskId: string, token: string, runId: number) {
+    async pollVoice(taskId: string, runId: number) {
       for (let i = 0; i < POLL_MAX; i++) {
         if (this.isStale(runId)) {
           return;
@@ -205,7 +281,8 @@ export default defineComponent({
         if (this.isStale(runId)) {
           return;
         }
-        const { data } = await digitalHumanOperator.pollTask(taskId, { token });
+        const token = this.credentialToken;
+        const { data } = await digitalHumanOperator.pollTask(taskId, token ? { token } : { mode: 'x402' });
         if (this.isStale(runId)) {
           return;
         }
@@ -218,6 +295,26 @@ export default defineComponent({
         }
       }
       throw new Error('timeout');
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     onCloned(voiceId: string) {
       addVoice({
