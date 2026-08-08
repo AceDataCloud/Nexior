@@ -9,7 +9,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :md="4" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
+        <el-col v-show="false" :md="4" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <span> {{ $t('application.field.type') }} </span>
           <el-radio-group v-model="type">
             <el-radio-button :value="serviceType.API" :label="$t('application.field.api')" />
@@ -682,7 +682,7 @@ export default defineComponent({
           }
         }
       ],
-      type: this.$route.query.type?.toString() || IServiceType.API,
+      type: IServiceType.API,
       loading: false,
       total: undefined,
       limit: 15,
@@ -1102,7 +1102,7 @@ export default defineComponent({
           ordering: '-created_at'
         })
         .then(({ data: data }: { data: IApiListResponse }) => {
-          this.apis = data.items;
+          this.apis = data.items.filter((api: IApi) => api.service?.type === IServiceType.API);
         })
         .catch(() => {})
         .finally(() => {
