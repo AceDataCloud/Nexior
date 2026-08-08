@@ -346,7 +346,9 @@ import {
 import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/core/icons/components';
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
-import { sunoOperator } from '@/operators';
+import { sunoOperator } from '@/operators/suno';
+import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { X402PaymentCancelledError } from '@/operators/x402';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import ReportDialog from '@/components/common/ReportDialog.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -401,6 +403,7 @@ export default defineComponent({
       required: true
     }
   },
+  emits: ['wallet-task'],
   data() {
     return {
       isFetchingVideoUrl: false,
@@ -760,15 +763,18 @@ export default defineComponent({
       ElMessage.success(this.$t('suno.message.reusePromptSuccess'));
     },
     async onExtractVocals(audioId: string) {
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       ElMessage.info(this.$t('suno.message.extractingVocals'));
       sunoOperator
-        .vox({ audio_id: audioId, async: true }, { token })
-        .then(() => {
+        .vox({ audio_id: audioId, async: true }, options)
+        .then((response) => {
+          const taskId = response?.data?.task_id;
+          if (taskId) this.$emit('wallet-task', taskId);
           ElMessage.success(this.$t('suno.message.extractVocalsSuccess'));
         })
         .catch((error) => {
+          if (error instanceof X402PaymentCancelledError) return;
           ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.extractVocalsFailed'));
         })
         .finally(async () => {
@@ -777,26 +783,27 @@ export default defineComponent({
         });
     },
     async onGetTiming(audioId: string) {
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       ElMessage.info(this.$t('suno.message.fetchingTiming'));
       sunoOperator
-        .timing({ audio_id: audioId }, { token })
+        .timing({ audio_id: audioId }, options)
         .then(() => {
           ElMessage.success(this.$t('suno.message.fetchTimingSuccess'));
         })
         .catch((error) => {
+          if (error instanceof X402PaymentCancelledError) return;
           ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.fetchTimingFailed'));
         });
     },
     async handleWavDownload(audio: ISunoAudio) {
       if (!audio?.id || this.isFetchingWav) return;
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       try {
         this.isFetchingWav = true;
         ElMessage.info(this.$t('suno.message.fetchingWav'));
-        const response = await sunoOperator.wav({ audio_id: audio.id }, { token });
+        const response = await sunoOperator.wav({ audio_id: audio.id }, options);
         // Worker returns `data: [{ file_url }]` (array, not an object).
         const wavUrl = response.data?.data?.[0]?.file_url;
         if (wavUrl) {
@@ -805,6 +812,7 @@ export default defineComponent({
           ElMessage.error(this.$t('suno.message.fetchWavFailed'));
         }
       } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
           ?.message;
         ElMessage.error(message || this.$t('suno.message.fetchWavFailed'));
@@ -814,12 +822,12 @@ export default defineComponent({
     },
     async handleMidiDownload(audio: ISunoAudio) {
       if (!audio?.id || this.isFetchingMidi) return;
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       try {
         this.isFetchingMidi = true;
         ElMessage.info(this.$t('suno.message.fetchingMidi'));
-        const response = await sunoOperator.midi({ audio_id: audio.id }, { token });
+        const response = await sunoOperator.midi({ audio_id: audio.id }, options);
         // Worker returns structured note data, no URL — save raw JSON for the user.
         const data = response.data?.data;
         if (!data?.length) {
@@ -830,6 +838,7 @@ export default defineComponent({
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         saveAs(blob, filename);
       } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
           ?.message;
         ElMessage.error(message || this.$t('suno.message.fetchMidiFailed'));
@@ -843,20 +852,18 @@ export default defineComponent({
         audio_id: audioId,
         async: true
       } as ISunoAudioRequest;
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
+      const options = sunoPaymentOptions(this);
+      if (!options) return;
       ElMessage.info(this.$t('suno.message.startingTask'));
       sunoOperator
-        .audio(request, {
-          token
-        })
-        .then(() => {
+        .audio(request, options)
+        .then((response) => {
+          const taskId = response?.data?.task_id;
+          if (taskId) this.$emit('wallet-task', taskId);
           ElMessage.success(this.$t('suno.message.startTaskSuccess'));
         })
         .catch((error) => {
+          if (error instanceof X402PaymentCancelledError) return;
           ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
         })
         .finally(async () => {

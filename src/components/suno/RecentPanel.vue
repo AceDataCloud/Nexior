@@ -104,7 +104,13 @@
       :loading="loading"
       @reach-top="$emit('reach-top')"
     >
-      <task-preview v-for="(task, taskId) in filteredTasks" :key="taskId" :model-value="task" class="preview" />
+      <task-preview
+        v-for="(task, taskId) in filteredTasks"
+        :key="taskId"
+        :model-value="task"
+        class="preview"
+        @wallet-task="$emit('wallet-task', $event)"
+      />
     </scroll-list>
     <div
       v-else-if="!loading && searchQuery && tasks?.items?.length > 0"
@@ -189,7 +195,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['reach-top', 'load-all'],
+  emits: ['reach-top', 'load-all', 'wallet-task'],
   data() {
     return {
       job: 0,

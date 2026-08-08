@@ -85,7 +85,8 @@ export default defineComponent({
           'maestro',
           'kling',
           'digitalhuman',
-          'serp'
+          'serp',
+          'suno'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },
