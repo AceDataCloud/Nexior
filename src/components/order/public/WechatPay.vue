@@ -141,7 +141,7 @@ export default defineComponent({
         if (this.copiedTimer) clearTimeout(this.copiedTimer);
         this.copiedTimer = window.setTimeout(() => {
           this.copied = false;
-        }, 2000);
+        }, 3000);
       } else {
         ElMessage.error(String(this.$t('common.message.copyFailed') || 'Copy failed'));
       }

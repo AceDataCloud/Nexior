@@ -21,16 +21,21 @@
         {{ $t('skill.button.save') }}
       </el-button>
 
-      <el-tooltip :content="$t('skill.preview.copy')" placement="bottom">
+      <el-tooltip
+        :visible="copied"
+        :content="copied ? $t('skill.preview.copied') : $t('skill.preview.copy')"
+        placement="top-start"
+      >
         <el-button
           size="small"
           circle
           :disabled="!textContent"
-          :aria-label="$t('skill.preview.copy')"
-          :title="$t('skill.preview.copy')"
+          :aria-label="copied ? $t('skill.preview.copied') : $t('skill.preview.copy')"
+          :title="copied ? $t('skill.preview.copied') : $t('skill.preview.copy')"
           @click="onCopy"
         >
-          <copy-icon :size="16" aria-hidden="true" focusable="false" />
+          <success-icon v-if="copied" :size="16" aria-hidden="true" focusable="false" />
+          <copy-icon v-else :size="16" aria-hidden="true" focusable="false" />
         </el-button>
       </el-tooltip>
     </div>
@@ -112,7 +117,15 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElTooltip, ElTabs, ElTabPane, ElMessage, vLoading } from 'element-plus';
-import { CodeIcon, CopyIcon, FileIcon, SaveIcon, ViewIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import {
+  CodeIcon,
+  CopyIcon,
+  FileIcon,
+  SaveIcon,
+  SuccessIcon,
+  ViewIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
 import hljs from 'highlight.js/lib/core';
 import bash from 'highlight.js/lib/languages/bash';
@@ -188,6 +201,7 @@ export default defineComponent({
     CopyIcon,
     FileIcon,
     SaveIcon,
+    SuccessIcon,
     ViewIcon,
     WarningIcon,
     VueMarkdown
@@ -224,7 +238,9 @@ export default defineComponent({
       truncated: false,
       viewMode: 'rendered' as 'rendered' | 'source',
       dirty: false,
-      saving: false
+      saving: false,
+      copied: false,
+      copiedTimer: undefined as number | undefined
     };
   },
   computed: {
@@ -252,6 +268,7 @@ export default defineComponent({
   },
   beforeUnmount() {
     if (this.imageUrl) URL.revokeObjectURL(this.imageUrl);
+    if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);
   },
   methods: {
     humanSize(bytes: number): string {
@@ -316,6 +333,12 @@ export default defineComponent({
       if (!this.textContent) return;
       try {
         await navigator.clipboard.writeText(this.textContent);
+        this.copied = true;
+        if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);
+        this.copiedTimer = window.setTimeout(() => {
+          this.copied = false;
+          this.copiedTimer = undefined;
+        }, 3000);
         ElMessage.success(this.$t('skill.preview.copied'));
       } catch {
         ElMessage.error(this.$t('skill.preview.copyFailed'));

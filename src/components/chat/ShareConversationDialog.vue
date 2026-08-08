@@ -64,7 +64,8 @@ export default defineComponent({
       localShareId: this.shareId,
       creating: false,
       disabling: false,
-      copied: false
+      copied: false,
+      copiedTimer: undefined as number | undefined
     };
   },
   computed: {
@@ -98,6 +99,9 @@ export default defineComponent({
       }
     }
   },
+  beforeUnmount() {
+    if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);
+  },
   methods: {
     selectAll(event: FocusEvent) {
       (event.target as HTMLInputElement)?.select?.();
@@ -127,12 +131,14 @@ export default defineComponent({
     },
     onCopy() {
       if (!this.shareUrl) return;
-      copy(this.shareUrl, { debug: false });
+      if (!copy(this.shareUrl, { debug: false })) return;
       this.copied = true;
       ElMessage.success(this.$t('chat.share.copied'));
-      setTimeout(() => {
+      if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);
+      this.copiedTimer = window.setTimeout(() => {
         this.copied = false;
-      }, 2500);
+        this.copiedTimer = undefined;
+      }, 3000);
     },
     async onDisable() {
       if (!this.token || !this.conversationId) {
