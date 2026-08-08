@@ -278,6 +278,11 @@ export default defineComponent({
     },
     async fetch() {
       if (!this.path) return;
+      this.copied = false;
+      if (this.copiedTimer !== undefined) {
+        window.clearTimeout(this.copiedTimer);
+        this.copiedTimer = undefined;
+      }
       this.loading = true;
       this.error = '';
       this.textContent = '';

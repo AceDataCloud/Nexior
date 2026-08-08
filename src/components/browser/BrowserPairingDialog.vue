@@ -24,10 +24,18 @@
       <p class="pairing-intro">{{ $t('user.browserDevice.pairInstructions') }}</p>
       <div class="pairing-code-row">
         <code class="pairing-code">{{ challenge.code }}</code>
-        <el-button size="small" @click="copyCode">
-          <copy-icon class="mr-1" size="1em" aria-hidden="true" focusable="false" />
-          {{ $t('common.button.copy') }}
+        <el-button
+          size="small"
+          :aria-label="codeCopied ? $t('common.message.copied') : $t('common.button.copy')"
+          @click="copyCode"
+        >
+          <success-icon v-if="codeCopied" class="mr-1" size="1em" aria-hidden="true" focusable="false" />
+          <copy-icon v-else class="mr-1" size="1em" aria-hidden="true" focusable="false" />
+          {{ codeCopied ? $t('common.message.copied') : $t('common.button.copy') }}
         </el-button>
+        <span class="sr-only" role="status" aria-live="polite">
+          {{ codeCopied ? $t('common.message.copied') : '' }}
+        </span>
       </div>
       <p class="pairing-expiry">
         {{ $t('user.browserDevice.codeExpiresIn', { seconds: secondsRemaining }) }}
@@ -106,7 +114,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { ElAlert, ElButton, ElDialog, ElDivider, ElInput, ElMessage, ElSkeleton } from 'element-plus';
-import { CopyIcon, LoadingIcon } from '@acedatacloud/core/icons/components';
+import { CopyIcon, LoadingIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { browserDeviceOperator } from '@/operators/browserDevice';
 import { IBrowserDevice, IBrowserPairingChallenge, IBrowserPairingClaim } from '@/models/browserDevice';
 
@@ -128,11 +136,13 @@ interface IData {
   clockTimer: number | null;
   decision: 'confirm' | 'reject' | null;
   requestGeneration: number;
+  codeCopied: boolean;
+  codeCopiedTimer: number | null;
 }
 
 export default defineComponent({
   name: 'BrowserPairingDialog',
-  components: { CopyIcon, ElAlert, ElButton, ElDialog, ElDivider, ElInput, ElSkeleton, LoadingIcon },
+  components: { CopyIcon, ElAlert, ElButton, ElDialog, ElDivider, ElInput, ElSkeleton, LoadingIcon, SuccessIcon },
   props: {
     modelValue: { type: Boolean as PropType<boolean>, default: false }
   },
@@ -150,7 +160,9 @@ export default defineComponent({
       pollTimer: null,
       clockTimer: null,
       decision: null,
-      requestGeneration: 0
+      requestGeneration: 0,
+      codeCopied: false,
+      codeCopiedTimer: null
     };
   },
   computed: {
@@ -183,6 +195,11 @@ export default defineComponent({
   methods: {
     async startPairing() {
       if (this.loading) return;
+      this.codeCopied = false;
+      if (this.codeCopiedTimer !== null) {
+        window.clearTimeout(this.codeCopiedTimer);
+        this.codeCopiedTimer = null;
+      }
       this.stopPolling();
       const generation = ++this.requestGeneration;
       this.loading = true;
@@ -245,7 +262,12 @@ export default defineComponent({
       if (!this.challenge) return;
       try {
         await navigator.clipboard.writeText(this.challenge.code);
-        ElMessage.success(this.$t('common.message.copied'));
+        this.codeCopied = true;
+        if (this.codeCopiedTimer !== null) window.clearTimeout(this.codeCopiedTimer);
+        this.codeCopiedTimer = window.setTimeout(() => {
+          this.codeCopied = false;
+          this.codeCopiedTimer = null;
+        }, 3000);
       } catch {
         ElMessage.error(this.$t('common.message.copyFailed'));
       }
@@ -325,6 +347,11 @@ export default defineComponent({
         window.clearInterval(this.clockTimer);
         this.clockTimer = null;
       }
+      if (this.codeCopiedTimer !== null) {
+        window.clearTimeout(this.codeCopiedTimer);
+        this.codeCopiedTimer = null;
+      }
+      this.codeCopied = false;
     },
     onClosed() {
       this.requestGeneration += 1;

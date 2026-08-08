@@ -5,7 +5,13 @@
     <div v-if="localShareId" class="share-linked">
       <div class="share-url-row">
         <el-input v-model="shareUrl" readonly class="share-url" @focus="selectAll" />
-        <el-button type="primary" @click="onCopy">
+        <el-button
+          type="primary"
+          :aria-label="copied ? $t('chat.share.copied') : $t('chat.share.copy')"
+          @click="onCopy"
+        >
+          <success-icon v-if="copied" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <copy-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ copied ? $t('chat.share.copied') : $t('chat.share.copy') }}
         </el-button>
       </div>
@@ -29,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { LinkIcon, UnlinkIcon } from '@acedatacloud/core/icons/components';
+import { CopyIcon, LinkIcon, SuccessIcon, UnlinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElInput, ElButton, ElMessage } from 'element-plus';
 import copy from 'copy-to-clipboard';
@@ -38,7 +44,9 @@ import { chatOperator } from '@/operators';
 export default defineComponent({
   name: 'ShareConversationDialog',
   components: {
+    CopyIcon,
     LinkIcon,
+    SuccessIcon,
     UnlinkIcon,
     ElDialog,
     ElInput,
@@ -137,7 +145,6 @@ export default defineComponent({
         return;
       }
       this.copied = true;
-      ElMessage.success(this.$t('chat.share.copied'));
       if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);
       this.copiedTimer = window.setTimeout(() => {
         this.copied = false;

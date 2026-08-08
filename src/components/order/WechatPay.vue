@@ -18,7 +18,16 @@
       <p class="text-[12px] text-gray-500 mb-4 leading-relaxed">
         {{ $t('order.message.wechatPayMobileHint') }}
       </p>
-      <el-button v-if="payPageUrl" size="default" round class="w-[220px]" @click="onCopyLink">
+      <el-button
+        v-if="payPageUrl"
+        size="default"
+        round
+        class="w-[220px]"
+        :aria-label="copied ? $t('common.message.copied') : $t('order.button.copyPayLink')"
+        @click="onCopyLink"
+      >
+        <success-icon v-if="copied" class="mr-1" size="1em" aria-hidden="true" focusable="false" />
+        <copy-icon v-else class="mr-1" size="1em" aria-hidden="true" focusable="false" />
         {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
       </el-button>
     </div>
@@ -76,6 +85,7 @@ import { defineComponent } from 'vue';
 import { ElDialog, ElRow, ElCol, ElButton, ElMessage } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import copy from 'copy-to-clipboard';
+import { CopyIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { isInWeChat, isMobileBrowser } from '@/utils/wechat';
 
@@ -90,9 +100,11 @@ export default defineComponent({
   components: {
     ElDialog,
     ElButton,
+    CopyIcon,
     QrCode,
     ElRow,
-    ElCol
+    ElCol,
+    SuccessIcon
   },
   props: {
     modelValue: {
