@@ -1,5 +1,15 @@
-import { ILumaGenerateRequest, ILumaGenerateResponse, ILumaTaskResponse, ILumaTasksResponse } from '@/models';
+import {
+  ILumaConfig,
+  ILumaGenerateRequest,
+  ILumaGenerateResponse,
+  ILumaTaskResponse,
+  ILumaTasksResponse
+} from '@/models';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildLumaRequest(config?: ILumaConfig): ILumaGenerateRequest {
+  return { ...(config || {}), async: true } as ILumaGenerateRequest;
+}
 
 class LumaOperator extends BaseTaskOperator<
   ILumaGenerateRequest,

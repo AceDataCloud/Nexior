@@ -1,10 +1,15 @@
 import {
+  IMinimaxConfig,
   IMinimaxGenerateRequest,
   IMinimaxGenerateResponse,
   IMinimaxTaskResponse,
   IMinimaxTasksResponse
 } from '@/models';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildMinimaxRequest(config?: IMinimaxConfig): IMinimaxGenerateRequest {
+  return { ...(config || {}) } as IMinimaxGenerateRequest;
+}
 
 class MinimaxOperator extends BaseTaskOperator<
   IMinimaxGenerateRequest,

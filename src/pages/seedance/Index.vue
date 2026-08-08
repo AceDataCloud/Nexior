@@ -14,21 +14,24 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedance.vue';
 import ConfigPanel from '@/components/seedance/ConfigPanel.vue';
 import RecentPanel from '@/components/seedance/RecentPanel.vue';
-import { seedanceOperator } from '@/operators';
+import { seedanceOperator } from '@/operators/seedance';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { normalizeSeedanceRequest } from '@/utils/seedance';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
 
 interface IData {
   task: ISeedanceTask | undefined;
   job: number;
   loadingMore: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -45,7 +48,8 @@ export default defineComponent({
       task: undefined,
       job: 0,
       loadingMore: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -63,17 +67,33 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.seedance?.tasks;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('seedance').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('seedance/setTasks', undefined);
+        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (!value && !this.credential?.token) {
+          window.clearInterval(this.job);
+          this.job = 0;
+          await this.onScrollDown();
+          return;
+        }
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     initialized: {
       async handler(newValue) {
         if (newValue) {
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = window.setInterval(() => {
-            this.onGetTasks();
-          }, 5000);
+          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
         }
       },
       immediate: true
@@ -119,7 +139,8 @@ export default defineComponent({
         await this.$store.dispatch('seedance/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
@@ -144,23 +165,43 @@ export default defineComponent({
         return;
       }
 
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
+      let operation: Promise<unknown>;
+      if (this.walletMode) {
+        const wallet = this.getWalletContext();
+        if (!wallet) {
+          ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+          return;
+        }
+        operation = seedanceOperator.generate(request, {
+          mode: 'x402',
+          x402: {
+            wallet,
+            confirm: (quote) => this.confirmWalletPayment(quote),
+            identityToken: this.credential?.token
+          }
+        });
+      } else {
+        if (!ensureLoggedIn()) return;
+        const token = this.credential?.token;
+        if (!token) return;
+        operation = seedanceOperator.generate(request, { token });
       }
       ElMessage.info(this.$t('seedance.message.startingTask'));
-      instrumentGeneration('seedance', seedanceOperator.generate(request, { token }))
-        .then(() => {
+      instrumentGeneration('seedance', operation)
+        .then((response: any) => {
+          const taskId = response?.data?.task_id;
+          if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+            this.walletTaskIds.unshift(taskId);
+          }
           ElMessage.success(this.$t('seedance.message.startTaskSuccess'));
         })
         .catch((error) => {
           const response = error?.response?.data;
+          if (error instanceof X402PaymentCancelledError) return;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('seedance.message.usedUp'));
+          } else if (this.walletMode) {
+            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('seedance.message.startTaskFailed') + (response?.error?.message || ''));
           }
@@ -171,6 +212,26 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;

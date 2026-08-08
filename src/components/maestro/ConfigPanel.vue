@@ -238,6 +238,7 @@
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
+      <scenario-payment-mode scenario="maestro" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('maestro.button.generate') }}
@@ -280,6 +281,9 @@ import {
   setMaestroPrimaryLanguage,
   type IMaestroLanguageOption
 } from '@/utils/maestroLanguages';
+import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { buildMaestroRequest, maestroOperator } from '@/operators/maestro';
 
 // Preview rectangle dimensions (px) for each aspect-ratio chip.
 const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
@@ -302,7 +306,8 @@ export default defineComponent({
     PauseIcon,
     PlayIcon,
     PromptTextarea,
-    FileUrlsInput
+    FileUrlsInput,
+    ScenarioPaymentMode
   },
   emits: ['generate'],
   data() {
@@ -315,7 +320,9 @@ export default defineComponent({
       MAESTRO_ALLOWED_STYLES,
       MAESTRO_ALLOWED_VOICES,
       playing: false,
-      audioEl: null as HTMLAudioElement | null
+      audioEl: null as HTMLAudioElement | null,
+      quoteTimer: 0,
+      quoteRunId: 0
     };
   },
   computed: {
@@ -466,9 +473,24 @@ export default defineComponent({
     },
     currentSample(): string | undefined {
       return MAESTRO_ALLOWED_VOICES.find((v) => v.key === this.voice)?.sample;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('maestro').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      handler(enabled: boolean) {
+        if (enabled) this.scheduleQuote();
+      },
+      immediate: true
+    },
+    config: {
+      handler() {
+        if (this.walletMode) this.scheduleQuote();
+      },
+      deep: true
+    },
     voiceCustomizationEnabled(enabled: boolean) {
       if (!enabled) this.stopSample();
     },
@@ -487,8 +509,28 @@ export default defineComponent({
   },
   beforeUnmount() {
     this.stopSample();
+    window.clearTimeout(this.quoteTimer);
+    this.quoteRunId += 1;
   },
   methods: {
+    scheduleQuote() {
+      window.clearTimeout(this.quoteTimer);
+      this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
+    },
+    async refreshQuote() {
+      const state = scenarioPaymentState('maestro');
+      const runId = ++this.quoteRunId;
+      state.quoteLoading = true;
+      state.quoteUsdc = undefined;
+      try {
+        const quote = await maestroOperator.quote(buildMaestroRequest(this.config));
+        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+      } catch (error) {
+        console.warn('x402 quote failed', error);
+      } finally {
+        if (runId === this.quoteRunId) state.quoteLoading = false;
+      }
+    },
     update(patch: Partial<IMaestroConfig>) {
       this.$store.commit('maestro/setConfig', {
         ...this.config,

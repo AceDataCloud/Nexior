@@ -1,5 +1,10 @@
-import { IVeoGenerateRequest, IVeoGenerateResponse, IVeoTaskResponse, IVeoTasksResponse } from '@/models';
+import { IVeoConfig, IVeoGenerateRequest, IVeoGenerateResponse, IVeoTaskResponse, IVeoTasksResponse } from '@/models';
+import { buildVeoGenerateRequest } from '@/utils/veo/config';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildVeoRequest(config?: IVeoConfig): IVeoGenerateRequest {
+  return buildVeoGenerateRequest(config);
+}
 
 class VeoOperator extends BaseTaskOperator<
   IVeoGenerateRequest,

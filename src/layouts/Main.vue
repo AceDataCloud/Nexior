@@ -61,7 +61,26 @@ export default defineComponent({
       return this.$route.meta.appName as keyof IAppState;
     },
     x402ScenarioEnabled(): boolean {
-      return ['nanobanana', 'openaiimage', 'flux', 'qrart'].includes(String(this.appName)) && isScenarioX402Enabled();
+      return (
+        [
+          'nanobanana',
+          'openaiimage',
+          'flux',
+          'qrart',
+          'luma',
+          'pika',
+          'pixverse',
+          'hailuo',
+          'veo',
+          'seedance',
+          'sora',
+          'wan',
+          'omni',
+          'grokvideo',
+          'minimax',
+          'maestro'
+        ].includes(String(this.appName)) && isScenarioX402Enabled()
+      );
     },
     application() {
       // Global application and individual application can be used here

@@ -1,5 +1,9 @@
-import { IWanGenerateRequest, IWanGenerateResponse, IWanTaskResponse, IWanTasksResponse } from '@/models';
+import { IWanConfig, IWanGenerateRequest, IWanGenerateResponse, IWanTaskResponse, IWanTasksResponse } from '@/models';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+
+export function buildWanRequest(config?: IWanConfig): IWanGenerateRequest {
+  return { ...(config || {}), async: true } as IWanGenerateRequest;
+}
 
 class WanOperator extends BaseTaskOperator<
   IWanGenerateRequest,

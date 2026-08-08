@@ -76,7 +76,8 @@
       </div>
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
+      <scenario-payment-mode scenario="minimax" />
+      <consumption v-if="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('minimax.button.generate') }}
@@ -96,6 +97,9 @@ import Consumption from '../common/Consumption.vue';
 import { IMinimaxConfig, IMinimaxContentItem, IMinimaxRatio } from '@/models';
 import { getConsumption } from '@/utils';
 import { validateMinimaxConfig } from '@/utils/minimax';
+import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { buildMinimaxRequest, minimaxOperator } from '@/operators/minimax';
 
 export default defineComponent({
   name: 'MinimaxConfigPanel',
@@ -109,7 +113,8 @@ export default defineComponent({
     ElSwitch,
     FieldTitle,
     PromptTextarea,
-    ReferenceMediaInput
+    ReferenceMediaInput,
+    ScenarioPaymentMode
   },
   emits: ['generate'],
   data() {
@@ -133,7 +138,9 @@ export default defineComponent({
         { value: '3:4' as const, width: '17px', height: '22px' },
         { value: '9:16' as const, width: '13px', height: '25px' }
       ],
-      durations: Array.from({ length: 12 }, (_, index) => index + 4)
+      durations: Array.from({ length: 12 }, (_, index) => index + 4),
+      quoteTimer: 0,
+      quoteRunId: 0
     };
   },
   computed: {
@@ -166,18 +173,50 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.minimax?.service;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('minimax').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      handler(enabled: boolean) {
+        if (enabled) this.scheduleQuote();
+      },
+      immediate: true
+    },
     config: {
       handler(value: IMinimaxConfig) {
         this.$store.commit('minimax/setConfig', value);
+        if (this.walletMode) this.scheduleQuote();
       },
       deep: true,
       immediate: true
     }
   },
+  beforeUnmount() {
+    window.clearTimeout(this.quoteTimer);
+    this.quoteRunId += 1;
+  },
   methods: {
+    scheduleQuote() {
+      window.clearTimeout(this.quoteTimer);
+      this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
+    },
+    async refreshQuote() {
+      const state = scenarioPaymentState('minimax');
+      const runId = ++this.quoteRunId;
+      state.quoteLoading = true;
+      state.quoteUsdc = undefined;
+      try {
+        const quote = await minimaxOperator.quote(buildMinimaxRequest(this.config));
+        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+      } catch (error) {
+        console.warn('x402 quote failed', error);
+      } finally {
+        if (runId === this.quoteRunId) state.quoteLoading = false;
+      }
+    },
     onGenerate() {
       const error = validateMinimaxConfig(this.config);
       if (error) {
