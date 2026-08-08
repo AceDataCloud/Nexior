@@ -10,7 +10,7 @@ describe('Midjourney V8.1 capability controls', () => {
   const versionSelector = source('./config/VersionSelector.vue');
   const modeSelector = source('./config/ModeSelector2.vue');
   const qualitySelector = source('./config/QualitySelector.vue');
-  const page = source('../../pages/midjourney/Index.vue');
+  const operator = source('../../operators/midjourney.ts');
 
   it('hides the unsupported Quality control', () => {
     expect(panel).toContain('<quality-selector v-if="config?.version !== \'8.1\'"');
@@ -32,8 +32,8 @@ describe('Midjourney V8.1 capability controls', () => {
   it('keeps video Turbo available and omits Quality from V8.1 requests', () => {
     expect(modeSelector).toContain("return this.$store.state.midjourney.config.type || 'imagine'");
     expect(qualitySelector).toContain("return this.version === '8'");
-    expect(page).toContain("this.config?.version !== '8.1' &&");
-    expect(page.match(/\.\.\.\(!isV81 \? \{ quality:/g)).toHaveLength(2);
-    expect(page).toContain('mode: isV81 ? MIDJOURNEY_DEFAULT_MODE : this.config?.mode || MIDJOURNEY_DEFAULT_MODE');
+    expect(operator).toContain("const isV81 = config.version === '8.1'");
+    expect(operator.match(/\.\.\.\(!isV81 \? \{ quality:/g)).toHaveLength(2);
+    expect(operator).toContain('mode: isV81 ? MIDJOURNEY_DEFAULT_MODE : config.mode || MIDJOURNEY_DEFAULT_MODE');
   });
 });
