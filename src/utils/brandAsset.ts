@@ -5,6 +5,7 @@ export interface BrandAssetUrls {
   color: string;
   light: string;
   dark: string;
+  adaptiveDark?: string;
 }
 
 export const defaultBrandAssetAppearance = (kind: BrandAssetKind): BrandAssetAppearance =>
@@ -18,5 +19,5 @@ export const selectBrandAssetUrls = (
   if (kind === 'favicon') return { light: assets.color, dark: assets.color };
   if (appearance === 'mono') return { light: assets.light, dark: assets.dark };
   if (appearance === 'brand') return { light: assets.color, dark: assets.color };
-  return { light: assets.color, dark: assets.dark };
+  return { light: assets.color, dark: assets.adaptiveDark || assets.dark };
 };

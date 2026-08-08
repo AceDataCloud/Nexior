@@ -204,6 +204,7 @@ interface ProcessedAssets {
   color: ProcessedAsset;
   light: ProcessedAsset;
   dark: ProcessedAsset;
+  adaptive_dark?: ProcessedAsset;
 }
 
 export interface BrandAssetStudioResult {
@@ -282,7 +283,8 @@ export default defineComponent({
       return selectBrandAssetUrls(this.kind, this.appearance as BrandAssetAppearance, {
         color: this.assets.color.url,
         light: this.assets.light.url,
-        dark: this.assets.dark.url
+        dark: this.assets.dark.url,
+        adaptiveDark: this.assets.adaptive_dark?.url
       });
     },
     analysisSummary(): string {
