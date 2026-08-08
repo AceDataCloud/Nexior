@@ -503,6 +503,74 @@
     "message": "Échec du téléchargement de l'image.",
     "description": "Erreur lors de l'échec du téléchargement dans le recadreur d'image"
   },
+  "logoStudio.analysisReady": {
+    "message": "Analyse d'image terminée",
+    "description": "Titre de l'état en haut de la deuxième étape de traitement intelligent de l'image de marque"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · Confiance de l'arrière-plan {confidence}%",
+    "description": "Dimensions et confiance de l'arrière-plan dans les résultats de l'analyse d'image"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Arrière-plan de couleur unie détecté",
+    "description": "Étiquette d'état lorsque l'arrière-plan autour de l'image est suffisamment uniforme"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Arrière-plan transparent ou complexe",
+    "description": "Étiquette d'état lorsque l'image est transparente ou que l'arrière-plan n'est pas adapté à une suppression automatique"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Suppression automatique de l'arrière-plan",
+    "description": "Étiquette du commutateur pour la suppression de l'arrière-plan de l'image de marque"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Couleur de fond",
+    "description": "Étiquette de couleur cible pour la suppression de l'arrière-plan de l'image de marque"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Tolérance des bords",
+    "description": "Étiquette du curseur de tolérance pour la suppression de l'arrière-plan de l'image de marque"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Mettre à jour l'aperçu",
+    "description": "Bouton pour traiter à nouveau l'image avec les nouveaux paramètres de suppression de fond"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Conserver la couleur de marque",
+    "description": "Mode d'affichage où le logo coloré est utilisé dans les thèmes clair et sombre"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Adaptation intelligente",
+    "description": "Mode recommandé où les couleurs de marque sont conservées en clair et le logo blanc est utilisé en sombre"
+  },
+  "logoStudio.modeMono": {
+    "message": "Mode monochrome",
+    "description": "Mode d'affichage où le noir est utilisé en clair et le blanc en sombre"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Thème clair",
+    "description": "Étiquette d'aperçu de l'image de marque avec un fond clair"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Thème sombre",
+    "description": "Étiquette d'aperçu de l'image de marque avec un fond sombre"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Les paramètres ont changé, veuillez mettre à jour l'aperçu avant d'appliquer.",
+    "description": "Alerte lorsque les paramètres de traitement ne correspondent pas à l'aperçu actuel"
+  },
+  "logoStudio.back": {
+    "message": "Retour au recadrage",
+    "description": "Bouton pour revenir à l'étape de recadrage depuis l'aperçu de traitement"
+  },
+  "logoStudio.analyze": {
+    "message": "Analyser et prévisualiser",
+    "description": "Bouton pour terminer le recadrage et entrer dans l'étape de traitement intelligent"
+  },
+  "logoStudio.apply": {
+    "message": "Appliquer l'image",
+    "description": "Bouton pour confirmer les résultats du traitement de l'image de marque"
+  },
   "message.editLogoTip": {
     "message": "Taille recommandée : 200*60px",
     "description": "Langage d'alerte pour le téléchargement d'image"

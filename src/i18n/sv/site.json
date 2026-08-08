@@ -503,6 +503,74 @@
     "message": "Bilduppladdning misslyckades.",
     "description": "Fel vid uppladdning i bildbeskäraren"
   },
+  "logoStudio.analysisReady": {
+    "message": "Bildanalys klar",
+    "description": "Översta statusrubriken för steg två av intelligent behandling av varumärkesbilder"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · Bakgrundsförtroende {confidence}%",
+    "description": "Mått och bakgrundsförtroende i bildanalysresultatet"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Enfärgad bakgrund upptäckt",
+    "description": "Statusmärkning när bakgrunden runt bilden är tillräckligt enhetlig"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Transparent eller komplex bakgrund",
+    "description": "Statusmärkning när bilden är transparent eller bakgrunden inte är lämplig för automatisk borttagning"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Automatiskt ta bort bakgrund",
+    "description": "Märket för växeln för att ta bort bakgrunden från varumärkesbilden"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Bakgrundsfärg",
+    "description": "Märket för mål färg för att ta bort bakgrunden från varumärkesbilden"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Kanttolerans",
+    "description": "Märket för reglaget för tolerans vid borttagning av bakgrund på varumärkesbilden"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Uppdatera förhandsgranskning",
+    "description": "Knappen för att bearbeta bilden igen med nya bakgrundsborttagningsparametrar"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Behåll varumärkesfärg",
+    "description": "Visningsläge där både ljusa och mörka teman använder färgglad logotyp"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Intelligent anpassning",
+    "description": "Rekommenderat läge där ljusa färger behåller varumärkesfärgen och mörka färger använder vit logotyp"
+  },
+  "logoStudio.modeMono": {
+    "message": "Svartvit läge",
+    "description": "Visningsläge där ljusa färger använder svart och mörka färger använder vit logotyp"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Ljust tema",
+    "description": "Märket för förhandsgranskning av varumärkesbild med ljus bakgrund"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Mörkt tema",
+    "description": "Märket för förhandsgranskning av varumärkesbild med mörk bakgrund"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Parametrar har ändrats, vänligen uppdatera förhandsgranskningen innan du tillämpar.",
+    "description": "Meddelande när behandlingsparametrarna inte stämmer överens med aktuell förhandsgranskning"
+  },
+  "logoStudio.back": {
+    "message": "Tillbaka till beskärning",
+    "description": "Knappen för att återgå till beskärningssteget från behandlingsförhandsgranskningen"
+  },
+  "logoStudio.analyze": {
+    "message": "Analysera och förhandsgranska",
+    "description": "Knappen för att slutföra beskärning och gå till det intelligenta behandlingssteget"
+  },
+  "logoStudio.apply": {
+    "message": "Tillämpa bild",
+    "description": "Knappen för att bekräfta resultatet av varumärkesbildens behandling"
+  },
   "message.editLogoTip": {
     "message": "Rekommenderad storlek: 200*60px",
     "description": "Tips för bilduppladdning"

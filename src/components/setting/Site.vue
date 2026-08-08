@@ -51,13 +51,13 @@
       </div>
       <div class="settings-content">
         <el-image :src="site.logo" class="settings-media" fit="contain" />
-        <edit-image
-          :model-value="site.logo"
+        <brand-asset-studio
+          kind="logo"
           :title="$t('site.title.editLogo')"
           :tip="$t('site.message.editLogoTip')"
           :width="240"
           :height="72"
-          @confirm="onSave({ logo: $event })"
+          @confirm="onLogoProcessed"
         />
       </div>
     </section>
@@ -71,13 +71,13 @@
       </div>
       <div class="settings-content">
         <el-image :src="site.favicon" class="settings-media favicon" fit="contain" />
-        <edit-image
-          :model-value="site.favicon"
+        <brand-asset-studio
+          kind="favicon"
           :title="$t('site.title.editFavicon')"
           :tip="$t('site.message.editFaviconTip')"
           :width="128"
           :height="128"
-          @confirm="onSave({ favicon: $event })"
+          @confirm="onFaviconProcessed"
         />
       </div>
     </section>
@@ -200,7 +200,7 @@ import { defineComponent } from 'vue';
 import { ElButton, ElColorPicker, ElImage, ElOption, ElSelect, ElTag } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
-import EditImage from '@/components/site/EditImage.vue';
+import BrandAssetStudio, { type BrandAssetStudioResult } from '@/components/site/BrandAssetStudio.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
 import EditLocales from '@/components/site/EditLocales.vue';
 import EditContacts from '@/components/site/EditContacts.vue';
@@ -234,7 +234,7 @@ export default defineComponent({
   name: 'SiteSetting',
   components: {
     EditText,
-    EditImage,
+    BrandAssetStudio,
     EditUsers,
     EditLocales,
     EditContacts,
@@ -320,6 +320,12 @@ export default defineComponent({
       if (brand) return brand;
       const key = contactTypeI18nKey(c.type);
       return key ? (this.$t(key) as string) : c.type;
+    },
+    onLogoProcessed(result: BrandAssetStudioResult) {
+      this.onSave({ logo: result.color, logo_light: result.light, logo_dark: result.dark });
+    },
+    onFaviconProcessed(result: BrandAssetStudioResult) {
+      this.onSave({ favicon: result.color });
     },
     onSave(data: any) {
       const payload = {

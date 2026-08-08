@@ -503,6 +503,74 @@
     "message": "Kuvan lataus epäonnistui.",
     "description": "Kuvankäsittelytyökalu latausvirhe"
   },
+  "logoStudio.analysisReady": {
+    "message": "Kuvan tarkistus valmis",
+    "description": "Brändikuvan älykkään käsittelyn toisen vaiheen yläreunan tilan otsikko"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · taustan luottamus {confidence}%",
+    "description": "Kuvan tarkistustuloksen mitat ja taustan luottamusarvo"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Yksivärinen tausta havaittu",
+    "description": "Tilan tunniste, kun kuvan reunojen tausta on riittävän yhtenäinen"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Läpinäkyvä tai monimutkainen tausta",
+    "description": "Tilan tunniste, kun kuva on jo läpinäkyvä tai tausta ei sovellu automaattiseen poistoon"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Poista tausta automaattisesti",
+    "description": "Brändikuvan taustanpoiston kytkimen tunniste"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Taustaväri",
+    "description": "Brändikuvan taustan poiston kohdevärin tunniste"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Reunojen toleranssi",
+    "description": "Brändikuvan taustanpoiston toleranssisäätimen tunniste"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Päivitä esikatselu",
+    "description": "Painike, jolla kuva käsitellään uudelleen uusilla taustanpoistoasetuksilla"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Säilytä brändivärit",
+    "description": "Näyttötila, jossa käytetään värillistä logoa sekä vaaleassa että tummassa teemassa"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Älykäs sovitus",
+    "description": "Suositeltu tila, jossa vaaleassa teemassa säilytetään brändivärit ja tummassa teemassa käytetään valkoista logoa"
+  },
+  "logoStudio.modeMono": {
+    "message": "Mustavalkoinen tila",
+    "description": "Näyttötila, jossa käytetään mustaa logoa vaaleassa teemassa ja valkoista logoa tummassa teemassa"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Vaalea teema",
+    "description": "Brändikuvan vaalean taustan esikatselutunniste"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Tumma teema",
+    "description": "Brändikuvan tumman taustan esikatselutunniste"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Parametreja on muutettu. Päivitä esikatselu ennen käyttöä.",
+    "description": "Ilmoitus, kun käsittelyparametrit eivät vastaa nykyistä esikatselua"
+  },
+  "logoStudio.back": {
+    "message": "Takaisin rajaukseen",
+    "description": "Painike, jolla palataan käsittelyesikatselusta rajausvaiheeseen"
+  },
+  "logoStudio.analyze": {
+    "message": "Tarkista ja esikatsele",
+    "description": "Painike, jolla rajaus viimeistellään ja siirrytään älykkään käsittelyn vaiheeseen"
+  },
+  "logoStudio.apply": {
+    "message": "Käytä kuvaa",
+    "description": "Painike, jolla vahvistetaan brändikuvan käsittelyn tulos"
+  },
   "message.editLogoTip": {
     "message": "Suositeltu koko: 200*60px",
     "description": "Kuvan lataamisen ohje"

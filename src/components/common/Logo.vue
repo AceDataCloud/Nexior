@@ -1,6 +1,9 @@
 <template>
   <button type="button" class="brand-logo" :aria-label="siteTitle" @click="$emit('click')">
-    <img v-if="tenantLogo" :src="tenantLogo" class="brand-logo__image" :alt="siteTitle" />
+    <template v-if="tenantLogoLight">
+      <img :src="tenantLogoLight" class="brand-logo__image brand-logo__image--light" :alt="siteTitle" />
+      <img :src="tenantLogoDark" class="brand-logo__image brand-logo__image--dark" :alt="siteTitle" />
+    </template>
     <img v-else-if="collapsed" :src="logoMark" class="brand-logo__mark" alt="" aria-hidden="true" />
     <span v-else class="brand-logo__wordmark">
       <span class="brand-logo__wordmark-inner">
@@ -33,12 +36,19 @@ export default defineComponent({
     },
     // Site branding is authoritative on every host. The built-in mark is only
     // a final fallback when the initialized Site has no logo or favicon.
-    tenantLogo(): string {
+    tenantLogoLight(): string {
       const site = this.$store.state.site;
       if (this.collapsed) {
         return site?.favicon || site?.logo || '';
       }
-      return site?.logo || site?.favicon || '';
+      return site?.logo_light || site?.logo || site?.favicon || '';
+    },
+    tenantLogoDark(): string {
+      const site = this.$store.state.site;
+      if (this.collapsed) {
+        return this.tenantLogoLight;
+      }
+      return site?.logo_dark || this.tenantLogoLight;
     },
     wordmarkStyle() {
       return { '--logo-wordmark-mask': `url(${logoWordmarkMask})` };
@@ -65,6 +75,10 @@ export default defineComponent({
     object-fit: contain;
     object-position: center;
     transition: height 0.2s ease;
+  }
+
+  &__image--dark {
+    display: none;
   }
 
   &__mark {
@@ -118,6 +132,14 @@ export default defineComponent({
 
 html.dark .brand-logo__wordmark {
   color: #ffffff;
+}
+
+html.dark .brand-logo__image--light {
+  display: none;
+}
+
+html.dark .brand-logo__image--dark {
+  display: block;
 }
 
 @media only screen and (max-width: 768px) {
