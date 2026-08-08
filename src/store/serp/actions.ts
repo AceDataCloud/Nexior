@@ -1,4 +1,6 @@
-import { applicationOperator, credentialOperator, serpOperator, serviceOperator } from '@/operators';
+import { applicationOperator, credentialOperator, serviceOperator } from '@/operators';
+import { buildSerpRequest, serpOperator } from '@/operators/serp';
+import type { OperatorRequestOptions } from '@/operators/x402';
 import { ISerpState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
@@ -113,38 +115,24 @@ export const setConfig = ({ commit }: any, payload: ISerpConfig) => {
   commit('setConfig', payload);
 };
 
-export const search = async ({ commit, state }: ActionContext<ISerpState, IRootState>): Promise<void> => {
-  const credential = state.credential;
-  const token = credential?.token;
-  if (!token) {
-    console.error('no token specified');
-    return;
-  }
-  const config = state.config;
-  if (!config?.query) {
-    console.error('no query specified');
-    return;
-  }
+export const search = async (
+  { commit, state }: ActionContext<ISerpState, IRootState>,
+  options?: OperatorRequestOptions
+): Promise<void> => {
+  const requestOptions = options || { token: state.credential?.token };
+  if (requestOptions.mode !== 'x402' && !requestOptions.token) throw new Error('no token specified');
+  const request = buildSerpRequest(state.config);
+  if (!request.query) throw new Error('no query specified');
   state.status.search = Status.Request;
   try {
-    const { data } = await serpOperator.search(
-      {
-        query: config.query,
-        type: config.type,
-        number: config.number,
-        page: config.page,
-        country: config.country,
-        language: config.language,
-        range: config.range
-      },
-      { token }
-    );
+    const { data } = await serpOperator.search(request, requestOptions);
     state.status.search = Status.Success;
     commit('setResults', data);
   } catch (error) {
     console.error('search failed', error);
     state.status.search = Status.Error;
     commit('setResults', undefined);
+    throw error;
   }
 };
 

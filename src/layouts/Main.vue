@@ -84,7 +84,8 @@ export default defineComponent({
           'minimax',
           'maestro',
           'kling',
-          'digitalhuman'
+          'digitalhuman',
+          'serp'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },
