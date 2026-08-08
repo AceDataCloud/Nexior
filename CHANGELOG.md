@@ -1,8 +1,30 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 07 Aug 2026 20:23:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 08 Aug 2026 16:15:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.359.0
+
+Sat, 08 Aug 2026 16:15:23 GMT
+
+### Minor changes
+
+- Add Solana x402 wallet payments to Flux and QR Art. (dev@acedata.cloud)
+- Add Solana x402 wallet payments to SERP search. (dev@acedata.cloud)
+- Add Solana x402 wallet payments to Kling and Digital Human exact-priced flows. (dev@acedata.cloud)
+- Add Solana x402 wallet payments to standard video scenarios. (dev@acedata.cloud)
+
+### Patches
+
+- Limit console usage filters and application usage actions to API services. (dev@acedata.cloud)
+- Prevent Android startup from waiting on remote initialization and acknowledge the native update watchdog immediately. (dev@acedata.cloud)
+- Add smart logo and favicon processing with transparent backgrounds and light/dark logo variants. (dev@acedata.cloud)
+- Simplify scheduled-template creation and enforce gated activation from task cards. (dev@acedata.cloud)
+- Unify copy controls and code blocks on consistent success icons, timing, and accessible feedback. (dev@acedata.cloud)
+- Keep the usage API filter visible while its options preload and show loading inside the dropdown. (dev@acedata.cloud)
+- Apply account usage discounts to x402 quotes and improve settlement history layout. (dev@acedata.cloud)
+- Show settled USDC amounts and transaction links in API usage history. (dev@acedata.cloud)
 
 ## 3.358.0
 
