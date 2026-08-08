@@ -25,7 +25,13 @@
     :loading="loading"
     @reach-top="$emit('reach-top')"
   >
-    <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
+    <task-preview
+      v-for="(task, taskId) in tasks?.items"
+      :key="taskId"
+      :model-value="task"
+      class="preview"
+      @wallet-task="$emit('wallet-task', $event)"
+    />
   </scroll-list>
   <div v-if="tasks?.items?.length === 0" class="w-full flex-1 flex items-center justify-center">
     <no-tasks />
@@ -59,7 +65,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['reach-top'],
+  emits: ['reach-top', 'wallet-task'],
   data() {
     return {
       job: 0
