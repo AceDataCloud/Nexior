@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 08 Aug 2026 16:15:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 08 Aug 2026 20:17:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.360.0
+
+Sat, 08 Aug 2026 20:17:59 GMT
+
+### Minor changes
+
+- Add Solana x402 wallet payments to Suno generation and exact-priced secondary actions. (dev@acedata.cloud)
+- Add Solana x402 wallet payments to Midjourney image, video, describe, and custom actions. (dev@acedata.cloud)
+- Add Solana x402 wallet payments to Producer audio, lyrics, video, and WAV actions. (dev@acedata.cloud)
+
+### Patches
+
+- Reuse shared coding-agent contracts and transcript helpers. (dev@acedata.cloud)
 
 ## 3.359.0
 
