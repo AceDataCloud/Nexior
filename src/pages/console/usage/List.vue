@@ -33,15 +33,10 @@
         </el-col>
         <el-col v-if="type === serviceType.API" :md="6" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <span class="inline-block"> {{ $t('usage.field.api') }} </span>
-          <el-skeleton v-if="apisLoading" animated class="w-full">
-            <template #template>
-              <el-skeleton-item variant="rect" style="height: 32px; border-radius: 4px" />
-            </template>
-          </el-skeleton>
           <el-select
-            v-else
             v-model="apiIds"
             :placeholder="$t('usage.field.api')"
+            :loading="apisLoading"
             clearable
             filterable
             multiple
@@ -547,7 +542,6 @@ import {
   ElRadioGroup,
   ElRadioButton,
   ElSkeleton,
-  ElSkeletonItem,
   ElDialog,
   ElTabs,
   ElTabPane,
@@ -672,7 +666,6 @@ export default defineComponent({
     ElRadioButton,
     ElRadioGroup,
     ElSkeleton,
-    ElSkeletonItem,
     ElDialog,
     ElTabs,
     ElTabPane,
