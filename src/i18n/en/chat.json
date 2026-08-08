@@ -1529,8 +1529,8 @@
     "description": "Scheduled task template center copy"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Choose an official template, connect the required accounts, and enable it after a successful test run.",
-    "description": "Scheduled task template center copy"
+    "message": "Choose an official template and connect the required accounts. You can run it from the task card after creation.",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.browse": {
     "message": "Browse templates",
@@ -1546,14 +1546,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Connect",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Test",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Enable",
     "description": "Scheduled task template center copy"
   },
   "scheduledTemplates.search": {
@@ -1600,65 +1592,21 @@
     "message": "Connect",
     "description": "Scheduled task template center copy"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Run a test first",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.create": {
+    "message": "Create task",
+    "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.testHint": {
-    "message": "The task stays disabled until the test succeeds and you confirm activation.",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.createFailed": {
+    "message": "Could not create the task; check the configuration or connections",
+    "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Create and test",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Refresh result",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Test running; refresh shortly",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Test succeeded",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Test failed; check the configuration or connection",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Confirm automation",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.template": {
-    "message": "Template",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Authorized capabilities",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.none": {
-    "message": "None",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "After activation the task runs on schedule. You can pause it at any time.",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Enable automation",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automation enabled",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Task created and kept disabled. Run it from the task card, then enable it after it succeeds.",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Cannot enable yet; make sure the test succeeded",
-    "description": "Scheduled task template center copy"
+    "message": "This task cannot be enabled yet. Run it successfully first; some templates also require the expected draft artifact.",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.loadError": {
     "message": "Could not load templates",
@@ -1705,8 +1653,8 @@
     "description": "Scheduled template wizard navigation and connection guidance"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "This template only uses built-in capabilities and is ready to test.",
-    "description": "Scheduled template wizard navigation and connection guidance"
+    "message": "This template only uses built-in capabilities and is ready to create.",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Connect this account to continue.",

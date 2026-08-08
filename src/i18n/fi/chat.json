@@ -1552,8 +1552,8 @@
     "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Valitse virallinen malli, yhdistä tarvittava tili, ja kokeilu onnistuu, se voidaan suorittaa automaattisesti.",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+    "message": "Valitse virallinen malli ja yhdistä tarvittava tili. Tehtävän luomisen jälkeen voit suorittaa sen heti kortilla.",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
   "scheduledTemplates.browse": {
     "message": "Selaa malleja",
@@ -1569,14 +1569,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Yhdistä tili",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Koeajo",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Vahvista aktivointi",
     "description": "Aikataulutetun tehtävämallin keskuskopio"
   },
   "scheduledTemplates.search": {
@@ -1623,65 +1615,21 @@
     "message": "Yhdistä",
     "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Koeajo ensin",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  "scheduledTemplates.create": {
+    "message": "Luo tehtävä",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Tehtävä pysyy ensin suljettuna. Koeajo onnistuu ja vahvistetaan ennen kuin se alkaa suorittaa aikajaksoittain.",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
+  "scheduledTemplates.createFailed": {
+    "message": "Tehtävän luominen epäonnistui, tarkista asetukset tai yhteys",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Luo ja kokeile",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Päivitä tulokset",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Koeajo käynnissä, päivitä myöhemmin",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Koeajo onnistui",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Koeajo epäonnistui, tarkista konfigurointi tai yhteys",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Vahvista automaation käyttöönotto",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
-  },
-  "scheduledTemplates.template": {
-    "message": "Malli",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Valtuutusoikeudet",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.none": {
-    "message": "Ei mitään",
-    "description": "Aikataulutetun tehtävämallin keskuskopio"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Kun otat käyttöön, tehtävät suoritetaan automaattisesti asetetun ajan mukaan; voit keskeyttää milloin tahansa.",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Ota automaatio käyttöön",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automaatio on otettu käyttöön",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Tehtävä on luotu ja se on pysynyt pois päältä. Suorita se ensin kortilla, ja aktivoi sen jälkeen onnistumisen jälkeen.",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Ei voida ottaa käyttöön, varmista että kokeilu on onnistunut",
-    "description": "Aikataulutettujen tehtävien mallikeskuksen teksti"
+    "message": "Aktivointi ei onnistu tällä hetkellä. Suorita tehtävä ensin ja varmista onnistuminen; osa malleista tarvitsee myös tietyn luonnoksen luomisen.",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
   "scheduledTemplates.loadError": {
     "message": "Mallin lataus epäonnistui, yritä myöhemmin uudelleen",
@@ -1753,8 +1701,8 @@
     "description": "Aikataulutetun mallin ohjauksen ja yhteyden navigointi"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Tämä malli käyttää vain sisäänrakennettuja ominaisuuksia, voit siirtyä suoraan kokeiluun.",
-    "description": "Aikataulutetun mallin ohjauksen ja yhteyden navigointi"
+    "message": "Tämä malli käyttää vain sisäänrakennettuja ominaisuuksia, voit luoda tehtävän suoraan.",
+    "description": "Aikataulutetun tehtäväpohjan luomisen ja aktivoinnin ohjeet"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Jatka, kun yhteys on valmis.",

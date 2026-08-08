@@ -1591,8 +1591,8 @@
     "description": "Kopia centrum szablonów zadań zaplanowanych"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Wybierz oficjalny szablon, połącz wymagane konto, a po udanym teście zadanie będzie automatycznie wykonywane.",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
+    "message": "Wybierz oficjalny szablon i połącz wymagane konto. Po utworzeniu zadania można je natychmiast uruchomić na karcie.",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
   "scheduledTemplates.browse": {
     "message": "Przeglądaj szablony",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Połącz konto",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Uruchom próbnie",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Potwierdź włączenie",
     "description": "Tekst w centrum szablonów zadań zaplanowanych"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "Połącz",
     "description": "Kopia centrum szablonów zadań zaplanowanych"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Najpierw uruchom próbnie",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
+  "scheduledTemplates.create": {
+    "message": "Utwórz zadanie",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Zadanie pozostanie wyłączone. Rozpocznie się cykliczne wykonywanie po udanym uruchomieniu próbnym i potwierdzeniu.",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
+  "scheduledTemplates.createFailed": {
+    "message": "Nie udało się utworzyć zadania, sprawdź konfigurację lub połączenie",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Generuj i uruchom próbnie",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Odśwież wyniki",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Uruchamianie próbne, odczekaj chwilę i odśwież",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Uruchomienie próbne zakończone sukcesem",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Uruchomienie próbne nie powiodło się, sprawdź konfigurację lub połączenie",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Potwierdź włączenie automatyzacji",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.template": {
-    "message": "Szablon",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Uprawnienia",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.none": {
-    "message": "Brak",
-    "description": "Tekst w centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Po włączeniu zadania będą automatycznie wykonywane o ustalonej porze; możesz w każdej chwili wstrzymać.",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Włącz automatyzację",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automatyzacja została włączona",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Zadanie zostało utworzone i pozostaje wyłączone. Najpierw uruchom je natychmiast na karcie, a po sukcesie włącz je.",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Nie można włączyć, upewnij się, że test został pomyślnie zakończony",
-    "description": "Kopia centrum szablonów zadań zaplanowanych"
+    "message": "Nie można tymczasowo włączyć. Najpierw uruchom zadanie natychmiast i potwierdź sukces; niektóre szablony wymagają również wygenerowania określonego szkicu.",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
   "scheduledTemplates.loadError": {
     "message": "Nie udało się załadować szablonów, spróbuj ponownie później",
@@ -1792,8 +1740,8 @@
     "description": "Nawigacja po kreatorze szablonów zaplanowanych i wskazówki dotyczące połączenia"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Ten szablon używa tylko wbudowanych możliwości, możesz od razu przejść do próbnego uruchomienia.",
-    "description": "Nawigacja po kreatorze szablonów zaplanowanych i wskazówki dotyczące połączenia"
+    "message": "Ten szablon korzysta tylko z wbudowanej funkcjonalności, można go bezpośrednio utworzyć.",
+    "description": "Wskazówki dotyczące tworzenia i aktywacji szablonu zadania zaplanowanego"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Możesz kontynuować po zakończeniu połączenia.",

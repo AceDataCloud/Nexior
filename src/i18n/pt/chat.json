@@ -1591,8 +1591,8 @@
     "description": "Cópia do centro de modelos de tarefas agendadas"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Escolha um modelo oficial, conecte a conta necessária e, após um teste bem-sucedido, poderá ser executado automaticamente.",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
+    "message": "Selecione um modelo oficial e conecte a conta necessária. A tarefa pode ser executada imediatamente no cartão após a criação.",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
   "scheduledTemplates.browse": {
     "message": "Navegar por modelos",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Conectar conta",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Testar",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Confirmar ativação",
     "description": "Cópia do centro de modelos de tarefas agendadas"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "Conectar",
     "description": "Cópia do centro de modelos de tarefas agendadas"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Teste uma vez primeiro",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
+  "scheduledTemplates.create": {
+    "message": "Criar tarefa",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
-  "scheduledTemplates.testHint": {
-    "message": "A tarefa permanecerá desligada. Somente começará a ser executada periodicamente após um teste bem-sucedido e confirmação.",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
+  "scheduledTemplates.createFailed": {
+    "message": "Falha ao criar tarefa, verifique a configuração ou a conexão",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Gerar e testar",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Atualizar resultados",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Teste em execução, por favor, aguarde para atualizar",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Teste bem-sucedido",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Teste falhou, verifique a configuração ou a conexão",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Confirmar Ativação da Automação",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.template": {
-    "message": "Modelo",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Capacidade de autorização",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.none": {
-    "message": "Nenhum",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Após ativar, as tarefas serão executadas automaticamente no horário definido; você pode pausar a qualquer momento.",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Ativar Automação",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automação Ativada",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Tarefa criada e mantida desativada. Execute imediatamente no cartão antes de ativar.",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Ainda não é possível ativar, por favor, confirme que o teste foi bem-sucedido",
-    "description": "Cópia do centro de modelos de tarefas agendadas"
+    "message": "Ativação temporariamente indisponível. Execute a tarefa imediatamente e confirme o sucesso; alguns modelos também precisam gerar um rascunho específico.",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
   "scheduledTemplates.loadError": {
     "message": "Falha ao carregar o modelo, por favor, tente novamente mais tarde",
@@ -1792,8 +1740,8 @@
     "description": "Navegação do assistente de template agendado e orientação de conexão"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Este template usa apenas capacidades integradas, você pode ir diretamente para a execução de teste.",
-    "description": "Navegação do assistente de template agendado e orientação de conexão"
+    "message": "Este modelo usa apenas capacidades integradas, podendo criar a tarefa diretamente.",
+    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Complete a conexão para continuar.",

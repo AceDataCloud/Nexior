@@ -1576,11 +1576,16 @@ export default defineComponent({
       // full-list reload / skeleton flash. Revert if the backend rejects it.
       if (idx !== -1) this.tasks[idx] = { ...task, state: nextState };
       try {
-        const updated = await scheduledTasksOperator.updateTask(this.token!, task.id, { state: nextState });
+        const updated =
+          enabled && task.template_source
+            ? await scheduledTasksOperator.enableTemplateTask(this.token!, task.id)
+            : await scheduledTasksOperator.updateTask(this.token!, task.id, { state: nextState });
         if (idx !== -1) this.tasks[idx] = updated;
       } catch {
         if (idx !== -1) this.tasks[idx] = { ...task, state: task.state };
-        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+        const key =
+          enabled && task.template_source ? 'chat.scheduledTemplates.enableFailed' : 'chat.scheduledTasks.loadError';
+        ElMessage.error(this.$t(key) as string);
       }
     },
     /**

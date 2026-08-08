@@ -1552,8 +1552,8 @@
     "description": "スケジュールされたタスクテンプレートセンターのコピー"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "公式テンプレートを選択し、必要なアカウントを接続してください。試運転が成功した後、自動実行されます。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
+    "message": "公式テンプレートを選択し、必要なアカウントを接続してください。タスク作成後はカード上で即座に実行できます。",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
   "scheduledTemplates.browse": {
     "message": "テンプレートをブラウズ",
@@ -1569,14 +1569,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "アカウントを接続",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "テスト実行",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "有効化を確認",
     "description": "スケジュールされたタスクテンプレートセンターのコピー"
   },
   "scheduledTemplates.search": {
@@ -1623,65 +1615,21 @@
     "message": "接続する",
     "description": "スケジュールされたタスクテンプレートセンターのコピー"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "まず一度テスト実行",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
+  "scheduledTemplates.create": {
+    "message": "タスクを作成",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
-  "scheduledTemplates.testHint": {
-    "message": "タスクは最初にオフのままです。テスト実行が成功し確認後に定期的に実行されます。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
+  "scheduledTemplates.createFailed": {
+    "message": "タスクの作成に失敗しました。設定または接続を確認してください。",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
-  "scheduledTemplates.runTest": {
-    "message": "生成してテスト実行",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "結果を更新",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "テスト実行中です。しばらくしてから更新してください。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "テスト実行に成功しました",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "テスト実行に失敗しました。設定または接続を確認してください。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "自動化を有効にすることを確認",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.template": {
-    "message": "テンプレート",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "権限の付与",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.none": {
-    "message": "なし",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "有効にすると、タスクは設定した時間に自動的に実行されます。いつでも一時停止できます。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.enable": {
-    "message": "自動化を有効にする",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "自動化が有効になりました",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
+  "scheduledTemplates.createdDisabled": {
+    "message": "タスクは作成されましたが、無効のままです。カード上で即座に実行し、成功した後に有効にしてください。",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "まだ有効にできません。試運転が成功したことを確認してください。",
-    "description": "スケジュールされたタスクテンプレートセンターのコピー"
+    "message": "一時的に有効にできません。タスクを即座に実行し、成功を確認してください；一部のテンプレートは指定されたドラフトを生成する必要があります。",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
   "scheduledTemplates.loadError": {
     "message": "テンプレートの読み込みに失敗しました。後でもう一度お試しください。",
@@ -1753,8 +1701,8 @@
     "description": "スケジュールされたテンプレートウィザードのナビゲーションと接続ガイダンス"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "このテンプレートは内蔵機能のみを使用し、直接試運転に進むことができます。",
-    "description": "スケジュールされたテンプレートウィザードのナビゲーションと接続ガイダンス"
+    "message": "このテンプレートは内蔵機能のみを使用しており、直接タスクを作成できます。",
+    "description": "スケジュールされたタスクテンプレートの作成とアクティベーションのガイダンス"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "接続を完了した後に続行できます。",

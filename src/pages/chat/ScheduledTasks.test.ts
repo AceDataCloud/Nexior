@@ -264,6 +264,81 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.showTemplateWizard).toBe(true);
     expect(vm.templateInitialCategory).toBe('marketing');
   });
+  describe('template activation', () => {
+    const templateTask: IScheduledTask = {
+      ...editedTask,
+      state: 'disabled',
+      template_source: {
+        id: 'daily-ai-promo-pack',
+        version: 1,
+        inputs: {},
+        snapshot: { title: 'Daily AI promotion pack', categories: ['marketing'] }
+      }
+    };
+
+    it('uses the gated enable action for a disabled template task', async () => {
+      const enabled = { ...templateTask, state: 'enabled' as const, updated_at: 2 };
+      const enable = vi.spyOn(scheduledTasksOperator, 'enableTemplateTask').mockResolvedValue(enabled);
+      const update = vi.spyOn(scheduledTasksOperator, 'updateTask');
+      const wrapper = mountComponent({ token: 'tok' });
+      await wrapper.setData({ tasks: [templateTask] });
+
+      await (
+        wrapper.vm as unknown as { toggleState: (task: IScheduledTask, enabled: boolean) => Promise<void> }
+      ).toggleState(templateTask, true);
+
+      expect(enable).toHaveBeenCalledWith('tok', templateTask.id);
+      expect(update).not.toHaveBeenCalled();
+      expect((wrapper.vm as unknown as { tasks: IScheduledTask[] }).tasks[0]).toEqual(enabled);
+    });
+
+    it('rolls back and explains the template gate when activation is rejected', async () => {
+      vi.spyOn(scheduledTasksOperator, 'enableTemplateTask').mockRejectedValue(new Error('test required'));
+      const error = vi.spyOn(ElMessage, 'error');
+      const wrapper = mountComponent({ token: 'tok' });
+      await wrapper.setData({ tasks: [templateTask] });
+
+      await (
+        wrapper.vm as unknown as { toggleState: (task: IScheduledTask, enabled: boolean) => Promise<void> }
+      ).toggleState(templateTask, true);
+
+      expect((wrapper.vm as unknown as { tasks: IScheduledTask[] }).tasks[0].state).toBe('disabled');
+      expect(error).toHaveBeenCalledWith('chat.scheduledTemplates.enableFailed');
+    });
+
+    it('uses the regular update action when disabling a template task', async () => {
+      const active = { ...templateTask, state: 'enabled' as const };
+      const updated = { ...active, state: 'disabled' as const, updated_at: 2 };
+      const update = vi.spyOn(scheduledTasksOperator, 'updateTask').mockResolvedValue(updated);
+      const enable = vi.spyOn(scheduledTasksOperator, 'enableTemplateTask');
+      const wrapper = mountComponent({ token: 'tok' });
+      await wrapper.setData({ tasks: [active] });
+
+      await (
+        wrapper.vm as unknown as { toggleState: (task: IScheduledTask, enabled: boolean) => Promise<void> }
+      ).toggleState(active, false);
+
+      expect(update).toHaveBeenCalledWith('tok', active.id, { state: 'disabled' });
+      expect(enable).not.toHaveBeenCalled();
+    });
+
+    it('keeps regular tasks on the update action when enabling', async () => {
+      const inactive = { ...editedTask, state: 'disabled' as const };
+      const updated = { ...inactive, state: 'enabled' as const, updated_at: 2 };
+      const update = vi.spyOn(scheduledTasksOperator, 'updateTask').mockResolvedValue(updated);
+      const enable = vi.spyOn(scheduledTasksOperator, 'enableTemplateTask');
+      const wrapper = mountComponent({ token: 'tok' });
+      await wrapper.setData({ tasks: [inactive] });
+
+      await (
+        wrapper.vm as unknown as { toggleState: (task: IScheduledTask, enabled: boolean) => Promise<void> }
+      ).toggleState(inactive, true);
+
+      expect(update).toHaveBeenCalledWith('tok', inactive.id, { state: 'enabled' });
+      expect(enable).not.toHaveBeenCalled();
+    });
+  });
+
   const browserSkill: IAuthorizableSkill = {
     slug: 'xiaohongshu',
     name: 'Xiaohongshu',

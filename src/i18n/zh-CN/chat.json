@@ -1597,8 +1597,8 @@
     "description": "Scheduled task template center copy"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "选择一个官方模板，连接需要的账号，试运行成功后即可自动执行。",
-    "description": "Scheduled task template center copy"
+    "message": "选择一个官方模板并连接所需账号。任务创建后可在卡片上立即运行。",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.browse": {
     "message": "浏览模板",
@@ -1614,14 +1614,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "连接账号",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "试运行",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "确认启用",
     "description": "Scheduled task template center copy"
   },
   "scheduledTemplates.search": {
@@ -1668,65 +1660,21 @@
     "message": "去连接",
     "description": "Scheduled task template center copy"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "先试运行一次",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.create": {
+    "message": "创建任务",
+    "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.testHint": {
-    "message": "任务会先保持关闭。试运行成功并确认后才开始按周期执行。",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.createFailed": {
+    "message": "任务创建失败，请检查配置或连接",
+    "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.runTest": {
-    "message": "生成并试运行",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "刷新结果",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "试运行中，请稍后刷新",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "试运行成功",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "试运行失败，请检查配置或连接",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "确认启用自动化",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.template": {
-    "message": "模板",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "授权能力",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.none": {
-    "message": "无",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "启用后任务将按设定时间自动执行；你可以随时暂停。",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enable": {
-    "message": "启用自动化",
-    "description": "Scheduled task template center copy"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "自动化已启用",
-    "description": "Scheduled task template center copy"
+  "scheduledTemplates.createdDisabled": {
+    "message": "任务已创建并保持关闭。请先在卡片上立即运行，成功后再启用。",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "尚不能启用，请确认试运行已成功",
-    "description": "Scheduled task template center copy"
+    "message": "暂时无法启用。请先立即运行任务并确认成功；部分模板还需要生成指定草稿。",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.loadError": {
     "message": "模板加载失败，请稍后重试",
@@ -1773,8 +1721,8 @@
     "description": "Scheduled template wizard navigation and connection guidance"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "此模板只使用内置能力，可以直接进入试运行。",
-    "description": "Scheduled template wizard navigation and connection guidance"
+    "message": "此模板只使用内置能力，可以直接创建任务。",
+    "description": "Scheduled task template creation and activation guidance"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "完成连接后即可继续。",
