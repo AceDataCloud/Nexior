@@ -86,7 +86,8 @@ export default defineComponent({
           'kling',
           'digitalhuman',
           'serp',
-          'suno'
+          'suno',
+          'midjourney'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },

@@ -138,27 +138,35 @@ export const getTasks = async (
     offset,
     limit,
     createdAtMin,
-    createdAtMax
-  }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
+    createdAtMax,
+    mode = 'credits',
+    ids
+  }: {
+    offset?: number;
+    limit?: number;
+    createdAtMin?: number;
+    createdAtMax?: number;
+    mode?: 'credits' | 'x402';
+    ids?: string[];
+  }
 ): Promise<IMidjourneyTask[]> => {
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit, createdAtMax, createdAtMin);
     const credential = state.credential;
     console.debug('current credential', credential);
     const token = credential?.token;
-    if (!token) {
-      return reject('no token');
+    if (mode === 'credits' && !token) return reject('no token');
+    if (mode === 'x402' && !ids?.length) {
+      commit('setTasksItems', []);
+      commit('setTasksTotal', 0);
+      return resolve([]);
     }
     midjourneyOperator
       .tasks(
-        {
-          userId: rootState?.user?.id,
-          createdAtMin,
-          createdAtMax
-        },
-        {
-          token
-        }
+        mode === 'x402'
+          ? { ids, createdAtMin, createdAtMax }
+          : { userId: rootState?.user?.id, createdAtMin, createdAtMax },
+        mode === 'x402' ? { mode: 'x402' } : { token }
       )
       .then((response) => {
         console.debug('get imagine tasks success', response.data.items);

@@ -13,8 +13,14 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
-import { ElMessage } from 'element-plus';
-import { midjourneyOperator } from '@/operators';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import {
+  buildMidjourneyCustomRequest,
+  buildMidjourneyDescribeRequest,
+  buildMidjourneyImagineRequest,
+  buildMidjourneyVideosRequest,
+  midjourneyOperator
+} from '@/operators/midjourney';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
@@ -25,22 +31,23 @@ import {
   MidjourneyImagineAction,
   IMidjourneyDescribeRequest
 } from '@/models';
-import {
-  MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
-  MIDJOURNEY_DEFAULT_RATIO,
-  MIDJOURNEY_DEFAULT_STYLIZE,
-  MIDJOURNEY_DEFAULT_WIRED,
-  MIDJOURNEY_DEFAULT_MODE,
-  MIDJOURNEY_DEFAULT_QUALITY
-} from '@/constants';
+
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  X402PaymentCancelledError,
+  type OperatorRequestOptions,
+  type X402PaymentQuote,
+  type X402WalletContext
+} from '@/operators/x402';
 
 interface IData {
   operating: boolean;
   job: number;
   loadingMore: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -57,7 +64,8 @@ export default defineComponent({
       operating: false,
       job: 0,
       loadingMore: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -79,87 +87,26 @@ export default defineComponent({
     application() {
       return this.$store.state.midjourney.application;
     },
-    finalPrompt(): string {
-      let content = '';
-      if (this.config.references && this.config.references?.length > 0) {
-        content += `${this.config.references.join(' ')} `;
-      }
-      if (this.config.prompt) {
-        content += this.config.prompt;
-      }
-      if (this.config.elements && this.config.elements.length > 0) {
-        content += ',' + this.config.elements.map((item) => item.value).join(',');
-      }
-      const isNiji = this.config?.model?.includes('niji');
-      if (this.config?.model && !content.includes(`--${this.config.model}`)) {
-        content += ` --${this.config.model}`;
-      }
-      // niji models carry their own version (e.g. `niji 5`) and reject --version
-      if (!isNiji && this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
-        content += ` --version ${this.config.version}`;
-      }
-      if (this.config?.chaos && this.config?.advanced && !content.includes(`--chaos `)) {
-        content += ` --chaos ${this.config.chaos}`;
-      }
-      if (
-        this.config?.version !== '8.1' &&
-        this.config?.quality &&
-        !content.includes(`--quality `) &&
-        !content.includes(`--q `) &&
-        this.config?.quality !== MIDJOURNEY_DEFAULT_QUALITY
-      ) {
-        content += ` --quality ${this.config.quality}`;
-      }
-      if (
-        this.config?.ratio &&
-        !content.includes(`--aspect `) &&
-        !content.includes(`--ar `) &&
-        this.config?.ratio !== MIDJOURNEY_DEFAULT_RATIO
-      ) {
-        content += ` --aspect ${this.config.ratio}`;
-      }
-      if (
-        this.config?.stylize &&
-        !content.includes(`--stylize `) &&
-        !content.includes(`--s `) &&
-        this.config?.advanced &&
-        this.config?.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
-      ) {
-        content += ` --stylize ${this.config?.stylize}`;
-      }
-      if (
-        this.config?.weird &&
-        !content.includes(`--weird `) &&
-        !content.includes(`--w `) &&
-        this.config?.advanced &&
-        this.config?.weird !== MIDJOURNEY_DEFAULT_WIRED
-      ) {
-        content += ` --weird ${this.config.weird}`;
-      }
-      if (this.config.ignore && !content.includes(`--no `)) {
-        content += ` --no ${this.config.ignore}`;
-      }
-      if (
-        this.config?.iw &&
-        !content.includes(`--iw `) &&
-        this.config?.advanced &&
-        this.config?.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
-      ) {
-        content += ` --iw ${this.config.iw}`;
-      }
-      if (this.config?.style && this.config?.advanced && !content.includes(`--style`)) {
-        content += ` --style ${this.config?.style}`;
-      }
-      // V8 --hd parameter (not supported by niji models)
-      if (!isNiji && this.config?.hd && !content.includes(`--hd`)) {
-        content += ` --hd`;
-      }
-      // remove `--fast`, `--relax`, `--turbo`
-      content = content.replace(/--(fast|relax|turbo) /g, '');
-      return this.config.prompt || (this.config.references && this.config.references?.length > 0) ? content : '';
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('midjourney').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('midjourney/setTasks', undefined);
+        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (!value && !this.credential?.token) {
+          window.clearInterval(this.job);
+          this.job = 0;
+          await this.onScrollDown();
+          return;
+        }
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         // scroll down if new tasks are added
@@ -176,9 +123,7 @@ export default defineComponent({
           console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = window.setInterval(() => {
-            this.onGetTasks();
-          }, 5000);
+          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
         }
       },
       immediate: true
@@ -217,49 +162,17 @@ export default defineComponent({
       await this.onGetTasks();
     },
     async onStartImagineTask(request: IMidjourneyImagineRequest) {
-      // Deferred auth: guests compose freely; hitting generate sends them to login.
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
       if (!request.prompt && request.action === MidjourneyImagineAction.GENERATE) {
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
-      ElMessage.info(this.$t('midjourney.message.startingTask'));
-      instrumentGeneration('midjourney', midjourneyOperator.imagine(request, { token }))
-        .then(() => {
-          ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
-        })
-        .catch((error) => {
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('midjourney.message.usedUp'));
-          } else {
-            ElMessage.error(this.$t('midjourney.message.startTaskFailed') + error.response?.data?.error?.message);
-          }
-        })
-        .finally(async () => {
-          setTimeout(async () => {
-            await this.onGetTasks();
-            await this.onScrollDown();
-          }, 1000);
-        });
+      await this.startPaidTask(
+        (options) => midjourneyOperator.imagine(request, options),
+        'midjourney.message.startTaskSuccess',
+        'midjourney.message.startTaskFailed'
+      );
     },
     async onStartVideosTask(request: IMidjourneyVideosRequest) {
-      // Deferred auth: guests compose freely; hitting generate sends them to login.
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
       if (!request.prompt) {
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
@@ -270,69 +183,21 @@ export default defineComponent({
         ElMessage.error(this.$t('midjourney.message.imageUrlRequired'));
         return;
       }
-      ElMessage.info(this.$t('midjourney.message.startingTask'));
-      instrumentGeneration('midjourney', midjourneyOperator.videos(request, { token }))
-        .then(() => {
-          ElMessage.success(this.$t('midjourney.message.startVideosTaskSuccess'));
-        })
-        .catch((error) => {
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('midjourney.message.usedUp'));
-          } else {
-            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed') + error.response?.data?.error?.message);
-          }
-        })
-        .finally(async () => {
-          setTimeout(async () => {
-            await this.onGetTasks();
-            await this.onScrollDown();
-          }, 1000);
-        });
+      await this.startPaidTask(
+        (options) => midjourneyOperator.videos(request, options),
+        'midjourney.message.startVideosTaskSuccess',
+        'midjourney.message.startVideosTaskFailed'
+      );
     },
     async onStartDescribeTask(request: IMidjourneyDescribeRequest) {
-      // Deferred auth: guests compose freely; hitting describe sends them to login.
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
-      ElMessage.info(this.$t('midjourney.message.startingTask'));
-      instrumentGeneration('midjourney', midjourneyOperator.describe(request, { token }))
-        .then(() => {
-          ElMessage.success(this.$t('midjourney.message.startDescribeTaskSuccess'));
-        })
-        .catch((error) => {
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('midjourney.message.usedUp'));
-          } else {
-            ElMessage.error(
-              this.$t('midjourney.message.startDescribeTaskFailed') + error.response?.data?.error?.message
-            );
-          }
-        })
-        .finally(async () => {
-          setTimeout(async () => {
-            await this.onGetTasks();
-            await this.onScrollDown();
-          }, 1000);
-        });
+      await this.startPaidTask(
+        (options) => midjourneyOperator.describe(request, options),
+        'midjourney.message.startDescribeTaskSuccess',
+        'midjourney.message.startDescribeTaskFailed'
+      );
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
-      const isV81 = this.config?.version === '8.1';
-      const request = {
-        image_id: payload.image_id,
-        action: payload.action,
-        mode: isV81 ? MIDJOURNEY_DEFAULT_MODE : this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-        async: true,
-        version: this.config?.version,
-        hd: this.config?.hd || false,
-        ...(!isV81 ? { quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY } : {})
-      };
+      const request = buildMidjourneyCustomRequest(this.config, payload);
       this.onStartImagineTask(request);
     },
     async onGenerate() {
@@ -347,47 +212,90 @@ export default defineComponent({
       }
       console.debug('onGenerate', this.config);
       if (this.config?.type === 'videos') {
-        const request = {
-          video_id: this.config?.video_id,
-          image_url: this.config?.image_url,
-          action: this.config?.action as MidjourneyVideosAction,
-          prompt: this.config?.prompt,
-          end_image_url: this.config?.end_image_url,
-          resolution: this.config?.resolution,
-          loop: this.config?.loop,
-          mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-          async: true
-        };
+        const request = buildMidjourneyVideosRequest(this.config);
         await this.onStartVideosTask(request);
       } else if (this.config?.type === 'imagine') {
-        const isV81 = this.config?.version === '8.1';
-        const isV8 = this.config?.version === '8' || this.config?.version === '8.1';
-        const hasSref = !!(this.finalPrompt && this.finalPrompt.includes('--sref'));
-        const hasMoodboard = !!(isV8 && this.config?.references && this.config.references.length > 0);
-        const request = {
-          mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-          prompt: this.finalPrompt,
-          action: MidjourneyImagineAction.GENERATE,
-          translation: this.config?.translation,
-          async: true,
-          version: this.config?.version,
-          hd: this.config?.hd || false,
-          ...(!isV81 ? { quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY } : {}),
-          style_reference: hasSref,
-          moodboard: hasMoodboard
-        };
+        const request = buildMidjourneyImagineRequest(this.config);
         await this.onStartImagineTask(request);
       } else if (this.config?.type === 'describe') {
         if (!this.config?.image_url) {
           ElMessage.error(this.$t('midjourney.message.imageUrlRequired'));
           return;
         }
-        const request = {
-          image_url: this.config?.image_url,
-          async: true
-        };
+        const request = buildMidjourneyDescribeRequest(this.config);
         await this.onStartDescribeTask(request);
       }
+    },
+    paymentOptions(): OperatorRequestOptions | undefined {
+      if (!this.walletMode) {
+        if (!ensureLoggedIn()) return undefined;
+        const token = this.credential?.token;
+        return token ? { token } : undefined;
+      }
+      const wallet = this.getWalletContext();
+      if (!wallet) {
+        ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+        return undefined;
+      }
+      return {
+        mode: 'x402',
+        x402: {
+          wallet,
+          confirm: (quote) => this.confirmWalletPayment(quote),
+          identityToken: this.credential?.token
+        }
+      };
+    },
+    async startPaidTask(
+      submit: (options: OperatorRequestOptions) => Promise<unknown>,
+      successKey: string,
+      failureKey: string
+    ) {
+      const options = this.paymentOptions();
+      if (!options) return;
+      ElMessage.info(this.$t('midjourney.message.startingTask'));
+      try {
+        const response: any = await instrumentGeneration('midjourney', submit(options));
+        const taskId = response?.data?.task_id;
+        if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+          this.walletTaskIds.unshift(taskId);
+        }
+        ElMessage.success(this.$t(successKey));
+      } catch (error: any) {
+        if (error instanceof X402PaymentCancelledError) return;
+        if (error?.response?.data?.error?.code === ERROR_CODE_USED_UP) {
+          ElMessage.error(this.$t('midjourney.message.usedUp'));
+        } else if (this.walletMode) {
+          ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+        } else {
+          ElMessage.error(this.$t(failureKey) + (error?.response?.data?.error?.message || ''));
+        }
+      } finally {
+        setTimeout(async () => {
+          await this.onGetTasks();
+          await this.onScrollDown();
+        }, 1000);
+      }
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     async onScrollDown() {
       await this.$nextTick();
@@ -409,7 +317,8 @@ export default defineComponent({
         await this.$store.dispatch('midjourney/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
