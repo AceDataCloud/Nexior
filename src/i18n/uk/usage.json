@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Не вдалося експортувати. Звузьте діапазон дат і повторіть спробу.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Сума платежу",
+    "description": "Сума, фактично зафіксована під час онлайнового платежу."
+  },
+  "field.network": {
+    "message": "Платіжна мережа",
+    "description": "Мережа, що використовується для онлайнових платежів."
+  },
+  "field.transaction": {
+    "message": "ID транзакції",
+    "description": "Хеш або підпис транзакції для онлайнового платежу."
+  },
+  "field.payer": {
+    "message": "Адреса платника",
+    "description": "Адреса гаманця, з якої ініціюється онлайновий платіж."
+  },
+  "button.viewTransaction": {
+    "message": "Переглянути транзакцію",
+    "description": "Перегляньте транзакцію у надійному блокчейн-браузері."
+  },
+  "dialog.payment": {
+    "message": "Оплата",
+    "description": "Використовуйте вкладку інформації про оплату у спливаючому вікні деталей."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Не застосовується (онлайновий платіж)",
+    "description": "Відображається, коли онлайновий платіж не використовує залишок балів платформи."
+  },
+  "value.paymentUnavailable": {
+    "message": "Інформація про оплату недоступна",
+    "description": "Відображається, коли в історії або при непідтвердженій угоді відсутня надійна інформація про оплату."
+  },
+  "value.paymentSettled": {
+    "message": "Вирішено",
+    "description": "Платіж на ланцюзі підтверджено як завершений."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Очікує підтвердження",
+    "description": "Платіж на ланцюзі повернувся успішно, але фактичне завершення ще потребує звірки."
+  },
+  "value.paymentFailed": {
+    "message": "Платіж не вдався",
+    "description": "Не вдалося завершити платіж на ланцюзі або він був пропущений."
+  },
+  "value.attemptTransaction": {
+    "message": "Спробувати транзакцію",
+    "description": "Спроба транзакції, яка ще не підтверджена як успішна."
   }
 }

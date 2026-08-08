@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Échec de l'exportation. Veuillez réduire la plage de dates et réessayer.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Montant payé",
+    "description": "Le montant effectivement réglé pour le paiement sur la chaîne."
+  },
+  "field.network": {
+    "message": "Réseau de paiement",
+    "description": "Le réseau utilisé pour le paiement sur la chaîne."
+  },
+  "field.transaction": {
+    "message": "ID de transaction",
+    "description": "Le hachage ou la signature de la transaction pour le paiement sur la chaîne."
+  },
+  "field.payer": {
+    "message": "Adresse de paiement",
+    "description": "L'adresse du portefeuille qui initie le paiement sur la chaîne."
+  },
+  "button.viewTransaction": {
+    "message": "Voir la transaction",
+    "description": "Afficher la transaction dans un explorateur de blocs de confiance."
+  },
+  "dialog.payment": {
+    "message": "Paiement",
+    "description": "Utilisez l'onglet des informations de paiement dans la fenêtre contextuelle."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Non applicable (paiement sur la chaîne)",
+    "description": "Affiché lorsque le paiement sur la chaîne n'utilise pas le solde de points de la plateforme."
+  },
+  "value.paymentUnavailable": {
+    "message": "Informations de paiement indisponibles",
+    "description": "Affiché lorsque les informations de paiement fiables manquent dans l'historique ou pour les règlements non confirmés."
+  },
+  "value.paymentSettled": {
+    "message": "Règlement effectué",
+    "description": "Le paiement sur la chaîne a été confirmé comme réglé."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "En attente de confirmation",
+    "description": "Le paiement sur la chaîne a été retourné comme réussi, mais le fait du règlement doit encore être vérifié."
+  },
+  "value.paymentFailed": {
+    "message": "Paiement échoué",
+    "description": "Échec du règlement du paiement sur la chaîne ou contourné."
+  },
+  "value.attemptTransaction": {
+    "message": "Essayer la transaction",
+    "description": "Tentative de transaction de règlement qui n'a pas encore été confirmée comme réussie."
   }
 }

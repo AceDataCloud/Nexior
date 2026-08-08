@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "فشل التصدير. يرجى تضييق النطاق الزمني والمحاولة مرة أخرى.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "المبلغ المدفوع",
+    "description": "المبلغ الذي تم تسويته فعليًا على السلسلة."
+  },
+  "field.network": {
+    "message": "شبكة الدفع",
+    "description": "الشبكة المستخدمة للدفع على السلسلة."
+  },
+  "field.transaction": {
+    "message": "معرّف المعاملة",
+    "description": "هاش المعاملة أو التوقيع للدفع على السلسلة."
+  },
+  "field.payer": {
+    "message": "عنوان الدفع",
+    "description": "عنوان المحفظة الذي بدأ الدفع على السلسلة."
+  },
+  "button.viewTransaction": {
+    "message": "عرض المعاملة",
+    "description": "عرض المعاملة في مستعرض الكتل الموثوق."
+  },
+  "dialog.payment": {
+    "message": "الدفع",
+    "description": "استخدم علامة تبويب معلومات الدفع في نافذة التفاصيل."
+  },
+  "value.balanceNotApplicable": {
+    "message": "غير قابل للتطبيق (الدفع على السلسلة)",
+    "description": "يظهر عندما لا يتم استخدام رصيد نقاط المنصة للدفع على السلسلة."
+  },
+  "value.paymentUnavailable": {
+    "message": "معلومات الدفع غير متاحة",
+    "description": "يظهر عندما تفتقر السجلات أو التسويات غير المؤكدة إلى معلومات دفع موثوقة."
+  },
+  "value.paymentSettled": {
+    "message": "تم التسوية",
+    "description": "تم تأكيد تسوية الدفع على السلسلة."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "في انتظار التأكيد",
+    "description": "تم إرجاع الدفع على السلسلة بنجاح ولكن لا يزال يتعين تسوية الحقائق."
+  },
+  "value.paymentFailed": {
+    "message": "فشل الدفع",
+    "description": "فشل تسوية الدفع على السلسلة أو تم تخطيها."
+  },
+  "value.attemptTransaction": {
+    "message": "محاولة المعاملة",
+    "description": "محاولة معاملة لم يتم تأكيد نجاحها بعد."
   }
 }

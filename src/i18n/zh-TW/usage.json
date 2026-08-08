@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "匯出失敗，請縮小時間範圍後重試。",
     "description": "CSV 匯出請求失敗（網路或服務端錯誤）時的錯誤提示"
+  },
+  "field.paidAmount": {
+    "message": "已支付金額",
+    "description": "鏈上支付實際結算的金額。"
+  },
+  "field.network": {
+    "message": "支付網絡",
+    "description": "鏈上支付所使用的網絡。"
+  },
+  "field.transaction": {
+    "message": "交易 ID",
+    "description": "鏈上支付的交易哈希或簽名。"
+  },
+  "field.payer": {
+    "message": "付款地址",
+    "description": "發起鏈上支付的錢包地址。"
+  },
+  "button.viewTransaction": {
+    "message": "查看交易",
+    "description": "在受信任的區塊瀏覽器中查看交易。"
+  },
+  "dialog.payment": {
+    "message": "支付",
+    "description": "使用詳情彈窗中的支付資訊標籤頁。"
+  },
+  "value.balanceNotApplicable": {
+    "message": "不適用（鏈上支付）",
+    "description": "鏈上支付不使用平台積分餘額時顯示。"
+  },
+  "value.paymentUnavailable": {
+    "message": "支付資訊不可用",
+    "description": "歷史記錄或未確認結算缺少可信支付資訊時顯示。"
+  },
+  "value.paymentSettled": {
+    "message": "已結算",
+    "description": "鏈上支付已確認結算。"
+  },
+  "value.paymentUnconfirmed": {
+    "message": "待確認",
+    "description": "鏈上支付已返回成功但結算事實仍需對賬。"
+  },
+  "value.paymentFailed": {
+    "message": "支付失敗",
+    "description": "鏈上支付結算失敗或被跳過。"
+  },
+  "value.attemptTransaction": {
+    "message": "嘗試交易",
+    "description": "尚未確認成功的結算嘗試交易。"
   }
 }

@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Esportazione non riuscita. Riduci l'intervallo di date e riprova.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Importo pagato",
+    "description": "L'importo effettivamente regolato per il pagamento sulla blockchain."
+  },
+  "field.network": {
+    "message": "Rete di pagamento",
+    "description": "La rete utilizzata per il pagamento sulla blockchain."
+  },
+  "field.transaction": {
+    "message": "ID transazione",
+    "description": "L'hash o la firma della transazione per il pagamento sulla blockchain."
+  },
+  "field.payer": {
+    "message": "Indirizzo del pagatore",
+    "description": "L'indirizzo del portafoglio che avvia il pagamento sulla blockchain."
+  },
+  "button.viewTransaction": {
+    "message": "Visualizza transazione",
+    "description": "Visualizza la transazione in un esploratore di blocchi affidabile."
+  },
+  "dialog.payment": {
+    "message": "Pagamento",
+    "description": "Utilizza la scheda delle informazioni di pagamento nella finestra di dialogo."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Non applicabile (pagamento sulla blockchain)",
+    "description": "Visualizzato quando il pagamento sulla blockchain non utilizza il saldo dei punti della piattaforma."
+  },
+  "value.paymentUnavailable": {
+    "message": "Informazioni sul pagamento non disponibili",
+    "description": "Visualizzato quando le informazioni di pagamento affidabili mancano nella cronologia o in una regolazione non confermata."
+  },
+  "value.paymentSettled": {
+    "message": "Pagamento regolato e confermato",
+    "description": "Il pagamento sulla blockchain è stato confermato e regolato."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "In attesa di conferma",
+    "description": "Il pagamento sulla blockchain è stato restituito come riuscito, ma il fatto della transazione deve ancora essere riconciliato."
+  },
+  "value.paymentFailed": {
+    "message": "Pagamento fallito",
+    "description": "Il pagamento sulla blockchain è fallito o è stato saltato."
+  },
+  "value.attemptTransaction": {
+    "message": "Tentativo di transazione",
+    "description": "Tentativo di transazione non ancora confermato come riuscito."
   }
 }

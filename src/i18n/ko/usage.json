@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "내보내기에 실패했습니다. 기간을 좁혀 다시 시도하세요.",
     "description": "CSV 내보내기 실패 시 표시되는 오류 토스트"
+  },
+  "field.paidAmount": {
+    "message": "지불 금액",
+    "description": "체인 상에서 실제로 정산된 금액입니다."
+  },
+  "field.network": {
+    "message": "지불 네트워크",
+    "description": "체인 상에서 지불에 사용되는 네트워크입니다."
+  },
+  "field.transaction": {
+    "message": "거래 ID",
+    "description": "체인 상 지불의 거래 해시 또는 서명입니다."
+  },
+  "field.payer": {
+    "message": "지불 주소",
+    "description": "체인 상 지불을 시작한 지갑 주소입니다."
+  },
+  "button.viewTransaction": {
+    "message": "거래 보기",
+    "description": "신뢰할 수 있는 블록 탐색기에서 거래를 확인합니다."
+  },
+  "dialog.payment": {
+    "message": "지불",
+    "description": "세부 정보 팝업의 지불 정보 탭을 사용합니다."
+  },
+  "value.balanceNotApplicable": {
+    "message": "해당 없음 (체인 상 지불)",
+    "description": "체인 상 지불에 플랫폼 포인트 잔액이 사용되지 않을 때 표시됩니다."
+  },
+  "value.paymentUnavailable": {
+    "message": "지불 정보 사용 불가",
+    "description": "기록 또는 미확인 정산에 신뢰할 수 있는 지불 정보가 없을 때 표시됩니다."
+  },
+  "value.paymentSettled": {
+    "message": "결제 완료",
+    "description": "체인 상에서 결제가 확인되었습니다."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "확인 대기",
+    "description": "체인 상에서 결제가 성공적으로 반환되었지만 결제 사실은 여전히 조정이 필요합니다."
+  },
+  "value.paymentFailed": {
+    "message": "결제 실패",
+    "description": "체인 상에서 결제가 실패했거나 건너뛰어졌습니다."
+  },
+  "value.attemptTransaction": {
+    "message": "거래 시도",
+    "description": "아직 성공적으로 확인되지 않은 결제 시도 거래."
   }
 }

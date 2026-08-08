@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "导出失败，请缩小时间范围后重试。",
     "description": "CSV 导出请求失败（网络或服务端错误）时的错误提示"
+  },
+  "field.paidAmount": {
+    "message": "已支付金额",
+    "description": "链上支付实际结算的金额。"
+  },
+  "field.network": {
+    "message": "支付网络",
+    "description": "链上支付所使用的网络。"
+  },
+  "field.transaction": {
+    "message": "交易 ID",
+    "description": "链上支付的交易哈希或签名。"
+  },
+  "field.payer": {
+    "message": "付款地址",
+    "description": "发起链上支付的钱包地址。"
+  },
+  "button.viewTransaction": {
+    "message": "查看交易",
+    "description": "在受信任的区块浏览器中查看交易。"
+  },
+  "dialog.payment": {
+    "message": "支付",
+    "description": "使用详情弹窗中的支付信息标签页。"
+  },
+  "value.balanceNotApplicable": {
+    "message": "不适用（链上支付）",
+    "description": "链上支付不使用平台积分余额时显示。"
+  },
+  "value.paymentUnavailable": {
+    "message": "支付信息不可用",
+    "description": "历史记录或未确认结算缺少可信支付信息时显示。"
+  },
+  "value.paymentSettled": {
+    "message": "已结算",
+    "description": "链上支付已确认结算。"
+  },
+  "value.paymentUnconfirmed": {
+    "message": "待确认",
+    "description": "链上支付已返回成功但结算事实仍需对账。"
+  },
+  "value.paymentFailed": {
+    "message": "支付失败",
+    "description": "链上支付结算失败或被跳过。"
+  },
+  "value.attemptTransaction": {
+    "message": "尝试交易",
+    "description": "尚未确认成功的结算尝试交易。"
   }
 }

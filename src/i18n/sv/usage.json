@@ -37,7 +37,7 @@
   },
   "field.metadata": {
     "message": "Metadata",
-    "description": "Använd metadata för registreringen."
+    "description": "Använd metadata för registrerade data."
   },
   "title.totalUsed": {
     "message": "Total användning (poäng)",
@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Exporten misslyckades. Begränsa datumintervallet och försök igen.",
     "description": "Error toast shown when the CSV export request fails (network or server error)."
+  },
+  "field.paidAmount": {
+    "message": "Betalt belopp",
+    "description": "Det belopp som faktiskt har avräknats för on-chain betalningar."
+  },
+  "field.network": {
+    "message": "Betalningsnätverk",
+    "description": "Nätverket som används för on-chain betalningar."
+  },
+  "field.transaction": {
+    "message": "Transaktions-ID",
+    "description": "Transaktionshash eller signatur för den on-chain betalningen."
+  },
+  "field.payer": {
+    "message": "Betalaradress",
+    "description": "Plånboksadressen som initierade den on-chain betalningen."
+  },
+  "button.viewTransaction": {
+    "message": "Visa transaktion",
+    "description": "Visa transaktionen i en betrodd blockutforskare."
+  },
+  "dialog.payment": {
+    "message": "Betala",
+    "description": "Använd betalningsinformationen i detaljdialogens flik."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Ej tillämpligt (on-chain betalning)",
+    "description": "Visas när plattformens poängsaldo inte används för on-chain betalningar."
+  },
+  "value.paymentUnavailable": {
+    "message": "Betalningsinformation inte tillgänglig",
+    "description": "Visas när historik eller obekräftad avräkning saknar pålitlig betalningsinformation."
+  },
+  "value.paymentSettled": {
+    "message": "Avslutad",
+    "description": "Betalning på kedjan har bekräftats som avslutad."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Väntar på bekräftelse",
+    "description": "Betalning på kedjan har returnerat som lyckad men avstämning krävs fortfarande."
+  },
+  "value.paymentFailed": {
+    "message": "Betalning misslyckades",
+    "description": "Betalning på kedjan misslyckades eller hoppades över."
+  },
+  "value.attemptTransaction": {
+    "message": "Försök transaktion",
+    "description": "Försök till transaktion som ännu inte bekräftats som lyckad."
   }
 }

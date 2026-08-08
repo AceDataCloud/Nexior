@@ -13,7 +13,7 @@
   },
   "field.status": {
     "message": "Status",
-    "description": "Status procesu aplikacji."
+    "description": "Status aplikacji."
   },
   "field.api": {
     "message": "API",
@@ -149,7 +149,7 @@
   },
   "view.trend": {
     "message": "Trend",
-    "description": "Przycisk przełączania widoku analizy: pokazuje skumulowany wykres słupkowy zużycia API w czasie."
+    "description": "Przycisk przełączania widoku analizy: wyświetla skumulowany wykres słupkowy zużycia API w czasie."
   },
   "view.distribution": {
     "message": "Udział",
@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Eksport nie powiódł się. Zawęź zakres dat i spróbuj ponownie.",
     "description": "Komunikat błędu wyświetlany, gdy eksport CSV się nie powiedzie (błąd sieci lub serwera)."
+  },
+  "field.paidAmount": {
+    "message": "Kwota zapłacona",
+    "description": "Kwota, która została rzeczywiście rozliczona w płatności na łańcuchu."
+  },
+  "field.network": {
+    "message": "Sieć płatności",
+    "description": "Sieć używana do płatności na łańcuchu."
+  },
+  "field.transaction": {
+    "message": "ID transakcji",
+    "description": "Hash lub podpis transakcji płatności na łańcuchu."
+  },
+  "field.payer": {
+    "message": "Adres płatnika",
+    "description": "Adres portfela, który inicjuje płatność na łańcuchu."
+  },
+  "button.viewTransaction": {
+    "message": "Zobacz transakcję",
+    "description": "Wyświetl transakcję w zaufanym eksploratorze bloków."
+  },
+  "dialog.payment": {
+    "message": "Płatność",
+    "description": "Użyj zakładki z informacjami o płatności w oknie dialogowym."
+  },
+  "value.balanceNotApplicable": {
+    "message": "Nie dotyczy (płatność na łańcuchu)",
+    "description": "Wyświetlane, gdy płatność na łańcuchu nie wykorzystuje salda punktów platformy."
+  },
+  "value.paymentUnavailable": {
+    "message": "Informacje o płatności niedostępne",
+    "description": "Wyświetlane, gdy brakuje wiarygodnych informacji o płatności w historii lub w przypadku niepotwierdzonego rozliczenia."
+  },
+  "value.paymentSettled": {
+    "message": "Zrealizowane",
+    "description": "Płatność na blockchainie została potwierdzona jako zrealizowana."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Do potwierdzenia",
+    "description": "Płatność na blockchainie została zwrócona jako udana, ale faktyczna realizacja wymaga jeszcze uzgodnienia."
+  },
+  "value.paymentFailed": {
+    "message": "Płatność nieudana",
+    "description": "Płatność na blockchainie nie powiodła się lub została pominięta."
+  },
+  "value.attemptTransaction": {
+    "message": "Próba transakcji",
+    "description": "Próba transakcji, która nie została jeszcze potwierdzona jako udana."
   }
 }

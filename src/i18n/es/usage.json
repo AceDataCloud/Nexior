@@ -162,5 +162,53 @@
   "message.exportFailed": {
     "message": "Error al exportar. Reduzca el rango de fechas e inténtelo de nuevo.",
     "description": "Notificación de error cuando la solicitud de exportación CSV falla (error de red o servidor)."
+  },
+  "field.paidAmount": {
+    "message": "Cantidad pagada",
+    "description": "La cantidad efectivamente liquidada en el pago en cadena."
+  },
+  "field.network": {
+    "message": "Red de pago",
+    "description": "La red utilizada para el pago en cadena."
+  },
+  "field.transaction": {
+    "message": "ID de transacción",
+    "description": "El hash o firma de la transacción del pago en cadena."
+  },
+  "field.payer": {
+    "message": "Dirección de pago",
+    "description": "La dirección de la billetera que inicia el pago en cadena."
+  },
+  "button.viewTransaction": {
+    "message": "Ver transacción",
+    "description": "Ver transacción en un explorador de bloques de confianza."
+  },
+  "dialog.payment": {
+    "message": "Pagar",
+    "description": "Usar la pestaña de información de pago en el cuadro de diálogo."
+  },
+  "value.balanceNotApplicable": {
+    "message": "No aplicable (pago en cadena)",
+    "description": "Se muestra cuando el pago en cadena no utiliza el saldo de puntos de la plataforma."
+  },
+  "value.paymentUnavailable": {
+    "message": "Información de pago no disponible",
+    "description": "Se muestra cuando faltan datos de pago confiables en el historial o en liquidaciones no confirmadas."
+  },
+  "value.paymentSettled": {
+    "message": "Pagado",
+    "description": "El pago en la cadena ha sido confirmado como liquidado."
+  },
+  "value.paymentUnconfirmed": {
+    "message": "Pendiente de confirmación",
+    "description": "El pago en la cadena ha sido devuelto como exitoso, pero los hechos de la liquidación aún necesitan ser conciliados."
+  },
+  "value.paymentFailed": {
+    "message": "Pago fallido",
+    "description": "El pago en la cadena ha fallado o ha sido omitido."
+  },
+  "value.attemptTransaction": {
+    "message": "Intentar transacción",
+    "description": "Intento de transacción que aún no ha sido confirmado como exitoso."
   }
 }
