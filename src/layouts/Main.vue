@@ -87,7 +87,8 @@ export default defineComponent({
           'digitalhuman',
           'serp',
           'suno',
-          'midjourney'
+          'midjourney',
+          'producer'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },

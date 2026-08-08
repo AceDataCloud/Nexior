@@ -194,12 +194,20 @@ import {
   ElDropdown,
   ElDropdownMenu,
   ElDropdownItem,
-  ElMessage
+  ElMessage,
+  ElMessageBox
 } from 'element-plus';
 
 import { IProducerVideoRequest, IProducerAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
-import { producerOperator } from '@/operators';
+import { producerOperator } from '@/operators/producer';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  X402PaymentCancelledError,
+  type OperatorRequestOptions,
+  type X402PaymentQuote,
+  type X402WalletContext
+} from '@/operators/x402';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import ReportDialog from '@/components/common/ReportDialog.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -235,6 +243,7 @@ export default defineComponent({
       required: true
     }
   },
+  emits: ['wallet-task'],
   data() {
     return {
       isFetchingVideoUrl: false,
@@ -256,6 +265,9 @@ export default defineComponent({
     },
     credential() {
       return this.$store.state.producer.credential;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('producer').mode === 'wallet';
     },
     config() {
       return this.$store.state.producer.config;
@@ -289,6 +301,45 @@ export default defineComponent({
     }
   },
   methods: {
+    paymentOptions(): OperatorRequestOptions | undefined {
+      if (!this.walletMode) {
+        const token = this.credential?.token;
+        return token ? { token } : undefined;
+      }
+      const wallet = this.getWalletContext();
+      if (!wallet) {
+        ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+        return undefined;
+      }
+      return {
+        mode: 'x402',
+        x402: {
+          wallet,
+          confirm: (quote) => this.confirmWalletPayment(quote),
+          identityToken: this.credential?.token
+        }
+      };
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
+    },
     onReport(audio: any) {
       this.reportTargetId = audio?.id || '';
       this.reportSnapshot = { prompt: audio?.prompt, title: audio?.title };
@@ -377,6 +428,7 @@ export default defineComponent({
         audio.video_url = videoUrl;
         this.onDownload(null, videoUrl);
       } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         console.error('get videoUrl failed:', error);
         ElMessage.error(this.$t('producer.message.getVideoUrlFailed'));
       } finally {
@@ -385,17 +437,11 @@ export default defineComponent({
     },
     async fetchVideoUrlFromApi(audioId: string): Promise<string> {
       return new Promise((resolve, reject) => {
-        const request = {
-          audio_id: audioId
-        } as IProducerVideoRequest;
-        const token = this.credential?.token;
-        if (!token) {
-          console.error('no token specified');
-          reject(new Error('No token specified'));
-          return;
-        }
+        const request = { audio_id: audioId } as IProducerVideoRequest;
+        const options = this.paymentOptions();
+        if (!options) return reject(new X402PaymentCancelledError());
         producerOperator
-          .video(request, { token })
+          .video(request, options)
           .then((response) => {
             const videoUrl = response.data?.data?.video_url;
             if (videoUrl) {
@@ -464,12 +510,12 @@ export default defineComponent({
     },
     async handleWavDownload(audio: IProducerAudio) {
       if (!audio?.id || this.isFetchingWav) return;
-      const token = this.credential?.token;
-      if (!token) return;
+      const options = this.paymentOptions();
+      if (!options) return;
       try {
         this.isFetchingWav = true;
         ElMessage.info(this.$t('producer.message.fetchingWav'));
-        const response = await producerOperator.wav({ audio_id: audio.id }, { token });
+        const response = await producerOperator.wav({ audio_id: audio.id }, options);
         // Upstream returns { data: [{ file_url }] } — read the first entry's file_url
         const data = response.data?.data;
         const wavUrl = Array.isArray(data) ? data[0]?.file_url : data?.file_url || data?.audio_url;
@@ -478,7 +524,8 @@ export default defineComponent({
         } else {
           ElMessage.error(this.$t('producer.message.fetchWavFailed'));
         }
-      } catch {
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
         ElMessage.error(this.$t('producer.message.fetchWavFailed'));
       } finally {
         this.isFetchingWav = false;
@@ -490,25 +537,19 @@ export default defineComponent({
         audio_id: audioId,
         async: true
       } as IProducerAudioRequest;
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
+      const options = this.paymentOptions();
+      if (!options) return;
       ElMessage.info(this.$t('producer.message.startingTask'));
       producerOperator
-        .audio(request, {
-          token
-        })
-        .then(() => {
+        .audio(request, options)
+        .then((response) => {
+          const taskId = response?.data?.task_id;
+          if (this.walletMode && !this.credential?.token && taskId) this.$emit('wallet-task', taskId);
           ElMessage.success(this.$t('producer.message.startTaskSuccess'));
         })
         .catch((error) => {
+          if (error instanceof X402PaymentCancelledError) return;
           ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startTaskFailed'));
-        })
-        .finally(async () => {
-          await this.onGetTasks();
-          await this.onScrollDown();
         });
     },
     async onScrollDown() {

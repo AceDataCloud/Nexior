@@ -2,34 +2,34 @@ import axios, { AxiosResponse } from 'axios';
 import {
   IProducerAudioRequest,
   IProducerAudioResponse,
+  IProducerConfig,
   IProducerLyricRequest,
   IProducerLyricResponse,
   IProducerTaskResponse,
   IProducerTasksResponse,
-  IProducerUploadResponse,
   IProducerUploadRequest,
+  IProducerUploadResponse,
   IProducerVideoRequest,
   IProducerVideoResponse
 } from '@/models';
-import { BASE_URL_API } from '@/constants';
+import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
+import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
+
+const HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
+const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
+
+export function buildProducerAudioRequest(config?: IProducerConfig): IProducerAudioRequest {
+  return { ...(config || {}), audio: undefined, async: true } as IProducerAudioRequest;
+}
 
 class ProducerOperator {
-  async task(id: string, options: { token: string }): Promise<AxiosResponse<IProducerTaskResponse>> {
-    return await axios.post(
-      `/producer/tasks`,
-      {
-        action: 'retrieve',
-        id: id
-      },
-      {
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
+  async task(id: string, options: OperatorRequestOptions): Promise<AxiosResponse<IProducerTaskResponse>> {
+    return axios.post(
+      '/producer/tasks',
+      { action: 'retrieve', id },
+      options.mode === 'x402'
+        ? { headers: TASK_HEADERS, baseURL: BASE_URL_X402 }
+        : { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
     );
   }
 
@@ -44,138 +44,77 @@ class ProducerOperator {
       createdAtMax?: number;
       createdAtMin?: number;
     },
-    options: { token: string }
+    options: OperatorRequestOptions
   ): Promise<AxiosResponse<IProducerTasksResponse>> {
-    return await axios.post(
-      `/producer/tasks`,
+    return axios.post(
+      '/producer/tasks',
       {
         action: 'retrieve_batch',
-        ...(filter.ids
-          ? {
-              ids: filter.ids
-            }
-          : {}),
-        ...(filter.userId
-          ? {
-              user_id: filter.userId
-            }
-          : {}),
-        ...(filter.type
-          ? {
-              type: filter.type
-            }
-          : {}),
-        ...(filter.applicationId
-          ? {
-              application_id: filter.applicationId
-            }
-          : {}),
-        ...(filter.limit !== undefined
-          ? {
-              limit: filter.limit
-            }
-          : {}),
-        ...(filter.offset !== undefined
-          ? {
-              offset: filter.offset
-            }
-          : {}),
-        ...(filter.createdAtMax !== undefined
-          ? {
-              created_at_max: filter.createdAtMax
-            }
-          : {}),
-        ...(filter.createdAtMin !== undefined
-          ? {
-              created_at_min: filter.createdAtMin
-            }
-          : {})
+        ...(filter.ids ? { ids: filter.ids } : {}),
+        ...(filter.userId ? { user_id: filter.userId } : {}),
+        ...(filter.type ? { type: filter.type } : {}),
+        ...(filter.applicationId ? { application_id: filter.applicationId } : {}),
+        ...(filter.limit !== undefined ? { limit: filter.limit } : {}),
+        ...(filter.offset !== undefined ? { offset: filter.offset } : {}),
+        ...(filter.createdAtMax !== undefined ? { created_at_max: filter.createdAtMax } : {}),
+        ...(filter.createdAtMin !== undefined ? { created_at_min: filter.createdAtMin } : {})
       },
-      {
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
+      options.mode === 'x402'
+        ? { headers: TASK_HEADERS, baseURL: BASE_URL_X402 }
+        : { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
     );
   }
 
-  async audio(
-    data: IProducerAudioRequest,
-    options: {
-      token: string;
+  async quoteAudio(data: IProducerAudioRequest) {
+    return quoteX402('/producer/audios', data, HEADERS);
+  }
+  async quoteLyric(data: IProducerLyricRequest) {
+    return quoteX402('/producer/lyrics', data, HEADERS);
+  }
+  async quoteWav(data: { audio_id: string }) {
+    return quoteX402('/producer/wav', data, HEADERS);
+  }
+  async quoteVideo(data: IProducerVideoRequest) {
+    return quoteX402('/producer/videos', data, HEADERS);
+  }
+
+  private async submit<T>(path: string, data: unknown, options: OperatorRequestOptions): Promise<AxiosResponse<T>> {
+    if (options.mode === 'x402') {
+      if (!options.x402) throw new Error('x402 payment options are required');
+      return postWithX402<T>(path, data, options.x402, HEADERS);
     }
-  ): Promise<AxiosResponse<IProducerAudioResponse>> {
-    return await axios.post('/producer/audios', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
+    return axios.post(path, data, {
+      headers: { ...HEADERS, authorization: `Bearer ${options.token}` },
       baseURL: BASE_URL_API
     });
   }
 
-  async lyric(
-    data: IProducerLyricRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<IProducerLyricResponse>> {
-    return await axios.post('/producer/lyrics', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async audio(data: IProducerAudioRequest, options: OperatorRequestOptions) {
+    return this.submit<IProducerAudioResponse>('/producer/audios', data, options);
+  }
+  async lyric(data: IProducerLyricRequest, options: OperatorRequestOptions) {
+    return this.submit<IProducerLyricResponse>('/producer/lyrics', data, options);
+  }
+  async wav(data: { audio_id: string }, options: OperatorRequestOptions) {
+    return this.submit<{ data: Array<{ file_url?: string }> | { file_url?: string; audio_url?: string } }>(
+      '/producer/wav',
+      data,
+      options
+    );
   }
 
   async upload(
     data: IProducerUploadRequest,
-    options: {
-      token: string;
-    }
+    options: { token: string }
   ): Promise<AxiosResponse<IProducerUploadResponse>> {
-    return await axios.post('/producer/upload', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
+    return axios.post('/producer/upload', data, {
+      headers: { ...HEADERS, authorization: `Bearer ${options.token}` },
       baseURL: BASE_URL_API
     });
   }
 
-  async video(
-    data: IProducerVideoRequest,
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<IProducerVideoResponse>> {
-    return await axios.post('/producer/videos', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
-  }
-
-  async wav(
-    data: { audio_id: string },
-    options: {
-      token: string;
-    }
-  ): Promise<AxiosResponse<{ data: Array<{ file_url?: string }> | { file_url?: string; audio_url?: string } }>> {
-    return await axios.post('/producer/wav', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API
-    });
+  async video(data: IProducerVideoRequest, options: OperatorRequestOptions) {
+    return this.submit<IProducerVideoResponse>('/producer/videos', data, options);
   }
 }
 

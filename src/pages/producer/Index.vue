@@ -4,7 +4,13 @@
       <config-panel @generate="onGenerateAudio" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" class="panel recent" :loading="loadingMore" @reach-top="onReachTop" />
+      <recent-panel
+        ref="recentPanel"
+        class="panel recent"
+        :loading="loadingMore"
+        @reach-top="onReachTop"
+        @wallet-task="onWalletTask"
+      />
     </template>
     <template #preview>
       <preview-panel />
@@ -15,10 +21,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Producer.vue';
-import { applicationOperator, producerOperator } from '@/operators';
+import { applicationOperator } from '@/operators';
+import { buildProducerAudioRequest, producerOperator } from '@/operators/producer';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IApplicationDetailResponse, IProducerAudioRequest, Status } from '@/models';
-import { ElMessage } from 'element-plus';
+import { IApplicationDetailResponse, Status } from '@/models';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { IProducerTask } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ConfigPanel from '@/components/producer/ConfigPanel.vue';
@@ -26,12 +33,20 @@ import RecentPanel from '@/components/producer/RecentPanel.vue';
 import PreviewPanel from '@/components/producer/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  X402PaymentCancelledError,
+  type OperatorRequestOptions,
+  type X402PaymentQuote,
+  type X402WalletContext
+} from '@/operators/x402';
 
 interface IData {
   task: IProducerTask | undefined;
   job: number;
   loadingMore: boolean;
   fetchingTasks: boolean;
+  walletTaskIds: string[];
 }
 
 export default defineComponent({
@@ -49,7 +64,8 @@ export default defineComponent({
       task: undefined,
       job: 0,
       loadingMore: false,
-      fetchingTasks: false
+      fetchingTasks: false,
+      walletTaskIds: []
     };
   },
   computed: {
@@ -82,9 +98,27 @@ export default defineComponent({
     },
     applications() {
       return this.$store.state.producer.applications;
+    },
+    walletMode(): boolean {
+      return isScenarioX402Enabled() && scenarioPaymentState('producer').mode === 'wallet';
     }
   },
   watch: {
+    walletMode: {
+      async handler(value: boolean, oldValue: boolean | undefined) {
+        if (oldValue === undefined || value === oldValue) return;
+        this.$store.commit('producer/setTasks', undefined);
+        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (!value && !this.credential?.token) {
+          window.clearInterval(this.job);
+          this.job = 0;
+          await this.onScrollDown();
+          return;
+        }
+        await this.onGetTasks();
+        await this.onScrollDown();
+      }
+    },
     tasks: {
       handler(value, oldValue) {
         if (value?.items?.length > oldValue?.items?.length) {
@@ -99,9 +133,7 @@ export default defineComponent({
           console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = window.setInterval(() => {
-            this.onGetTasks();
-          }, 5000);
+          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
         }
       },
       immediate: true
@@ -175,7 +207,8 @@ export default defineComponent({
         await this.$store.dispatch('producer/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {
         this.fetchingTasks = false;
@@ -191,32 +224,72 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = {
-        ...this.config,
-        async: true
-      } as IProducerAudioRequest;
-      if (!ensureLoggedIn()) {
-        return;
-      }
-      const token = this.credential?.token;
-      if (!token) {
-        console.error('no token specified');
-        return;
-      }
+      const request = buildProducerAudioRequest(this.config);
+      const operation = this.createPaymentOperation((options) => producerOperator.audio(request, options));
+      if (!operation) return;
       ElMessage.info(this.$t('producer.message.startingTask'));
-      instrumentGeneration('producer', producerOperator.audio(request, { token }))
-        .then(() => {
-          ElMessage.success(this.$t('producer.message.startTaskSuccess'));
-        })
-        .catch((error) => {
-          ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startTaskFailed'));
-        })
-        .finally(async () => {
-          setTimeout(async () => {
-            await this.onGetTasks();
-            await this.onScrollDown();
-          }, 1000);
-        });
+      try {
+        const response = await instrumentGeneration('producer', operation);
+        this.recordWalletTask(response);
+        ElMessage.success(this.$t('producer.message.startTaskSuccess'));
+      } catch (error) {
+        this.handlePaymentError(error);
+      } finally {
+        setTimeout(async () => {
+          await this.onGetTasks();
+          await this.onScrollDown();
+        }, 1000);
+      }
+    },
+    createPaymentOperation(submit: (options: OperatorRequestOptions) => Promise<any>): Promise<any> | undefined {
+      if (!this.walletMode) {
+        if (!ensureLoggedIn()) return undefined;
+        const token = this.credential?.token;
+        return token ? submit({ token }) : undefined;
+      }
+      const wallet = this.getWalletContext();
+      if (!wallet) {
+        ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
+        return undefined;
+      }
+      return submit({
+        mode: 'x402',
+        x402: { wallet, confirm: (quote) => this.confirmWalletPayment(quote), identityToken: this.credential?.token }
+      });
+    },
+    recordWalletTask(response: any) {
+      this.onWalletTask(response?.data?.task_id);
+    },
+    onWalletTask(taskId: string | undefined) {
+      if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+        this.walletTaskIds.unshift(taskId);
+      }
+    },
+    handlePaymentError(error: any) {
+      if (error instanceof X402PaymentCancelledError) return;
+      if (this.walletMode)
+        ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+      else ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startTaskFailed'));
+    },
+    getWalletContext(): X402WalletContext | undefined {
+      const walletApi = (this as any).$wallet;
+      const publicKey = walletApi?.publicKey?.value;
+      const adapter = walletApi?.wallet?.value?.adapter;
+      if (!publicKey || !adapter?.signTransaction) return undefined;
+      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+    },
+    async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
+      return ElMessageBox.confirm(
+        this.$t('common.x402Scenario.confirmPayment', { amount: quote.amountUsdc }),
+        this.$t('order.message.x402ConfirmTitle'),
+        {
+          confirmButtonText: this.$t('order.message.x402WalletPayCta'),
+          cancelButtonText: this.$t('common.button.cancel'),
+          type: 'warning'
+        }
+      )
+        .then(() => true)
+        .catch(() => false);
     },
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;
