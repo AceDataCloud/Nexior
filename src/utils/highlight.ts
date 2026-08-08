@@ -58,16 +58,23 @@ export const highlight = async (el: HTMLElement) => {
     btn.className = 'code-copy-btn';
     btn.setAttribute('aria-label', i18n.global.t('common.button.copy').toString());
     btn.innerHTML = COPY_SVG;
+    let resetTimer: number | undefined;
 
-    btn.addEventListener('click', () => {
-      if (!copyToClipboard(code.innerText)) return;
+    btn.addEventListener('click', async () => {
+      try {
+        if (!(await copyToClipboard(code.innerText))) return;
+      } catch {
+        return;
+      }
       btn.classList.add('is-copied');
       btn.setAttribute('aria-label', i18n.global.t('common.message.copied').toString());
       btn.innerHTML = CHECK_SVG;
-      window.setTimeout(() => {
+      if (resetTimer !== undefined) window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => {
         btn.classList.remove('is-copied');
         btn.setAttribute('aria-label', i18n.global.t('common.button.copy').toString());
         btn.innerHTML = COPY_SVG;
+        resetTimer = undefined;
       }, 3000);
     });
 

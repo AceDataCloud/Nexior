@@ -129,9 +129,13 @@ export default defineComponent({
         this.creating = false;
       }
     },
-    onCopy() {
+    async onCopy() {
       if (!this.shareUrl) return;
-      if (!copy(this.shareUrl, { debug: false })) return;
+      try {
+        if (!(await copy(this.shareUrl, { debug: false }))) return;
+      } catch {
+        return;
+      }
       this.copied = true;
       ElMessage.success(this.$t('chat.share.copied'));
       if (this.copiedTimer !== undefined) window.clearTimeout(this.copiedTimer);

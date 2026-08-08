@@ -29,7 +29,7 @@ describe('CopyToClipboard', () => {
 
   it('keeps the button and shows the shared success icon after copying', async () => {
     vi.useFakeTimers();
-    copy.mockReturnValue(true);
+    copy.mockResolvedValue(true);
     const wrapper = mountCopyControl();
     const button = wrapper.get('button');
 
@@ -51,7 +51,7 @@ describe('CopyToClipboard', () => {
   });
 
   it('does not report success when the clipboard helper fails', async () => {
-    copy.mockReturnValue(false);
+    copy.mockResolvedValue(false);
     const wrapper = mountCopyControl();
 
     await wrapper.get('button').trigger('click');
@@ -63,7 +63,7 @@ describe('CopyToClipboard', () => {
 
   it('restarts the reset timer after a repeated copy', async () => {
     vi.useFakeTimers();
-    copy.mockReturnValue(true);
+    copy.mockResolvedValue(true);
     const wrapper = mountCopyControl();
 
     await wrapper.get('button').trigger('click');

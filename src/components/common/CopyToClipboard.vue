@@ -45,9 +45,14 @@ export default defineComponent({
     if (this.resetTimer !== undefined) window.clearTimeout(this.resetTimer);
   },
   methods: {
-    onCopy() {
+    async onCopy() {
       const text = this.content.toString();
-      if (!text || !copy(text, { debug: true })) {
+      if (!text) {
+        return;
+      }
+      try {
+        if (!(await copy(text, { debug: true }))) return;
+      } catch {
         return;
       }
       this.copied = true;
