@@ -212,9 +212,17 @@
               >
                 <template #default="scope">
                   <div v-if="isX402Usage(scope.row)" class="space-y-1">
-                    <strong v-if="getX402Payment(scope.row)">
-                      {{ getX402Payment(scope.row)?.amount }} {{ getX402Payment(scope.row)?.currency }}
-                    </strong>
+                    <template v-if="getX402Payment(scope.row)">
+                      <span>{{ getX402Payment(scope.row)?.amount }} {{ getX402Payment(scope.row)?.currency }}</span>
+                      <div v-if="getX402Payment(scope.row)?.originalAmount">
+                        <del>
+                          {{ getX402Payment(scope.row)?.originalAmount }} {{ getX402Payment(scope.row)?.currency }}
+                        </del>
+                      </div>
+                      <el-tag v-if="getX402Payment(scope.row)?.discountPercent" type="success" size="small">
+                        {{ getX402DiscountLabel(scope.row) }}
+                      </el-tag>
+                    </template>
                     <span v-else class="text-gray-400">{{ $t('usage.value.paymentUnavailable') }}</span>
                   </div>
                   <div v-else-if="getDeductedAmount(scope.row) === getOriginalAmount(scope.row)">
@@ -234,11 +242,39 @@
               <el-table-column
                 prop="remaining_amount"
                 :label="$t('usage.field.balanceAfter')"
-                width="160px"
+                width="190px"
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <span v-if="isX402Usage(scope.row)">{{ $t('usage.value.balanceNotApplicable') }}</span>
+                  <div v-if="isX402Usage(scope.row)" class="space-y-1">
+                    <div class="flex min-w-0 items-center justify-center gap-1">
+                      <a
+                        v-if="getX402Payment(scope.row)?.explorerUrl"
+                        :href="getX402Payment(scope.row)?.explorerUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="truncate text-primary"
+                      >
+                        {{ $t('usage.button.viewTransaction') }}
+                        <external-link-icon class="ml-1 inline-block h-3.5 w-3.5" />
+                      </a>
+                      <span v-else-if="getX402Transaction(scope.row)" class="key truncate">
+                        {{
+                          scope.row.metadata?.x402_settle_attempt_tx ? `${$t('usage.value.attemptTransaction')}: ` : ''
+                        }}{{ shortTransaction(getX402Transaction(scope.row)) }}
+                      </span>
+                      <copy-to-clipboard
+                        v-if="getX402Transaction(scope.row)"
+                        :content="getX402Transaction(scope.row)"
+                        class="inline-block shrink-0"
+                      />
+                    </div>
+                    <div class="text-xs text-gray-400">
+                      {{
+                        $t(getX402Payment(scope.row) ? 'usage.value.onChainBalanceNote' : getX402StatusKey(scope.row))
+                      }}
+                    </div>
+                  </div>
                   <span v-else>{{ getRemainingAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
@@ -273,26 +309,6 @@
                     </el-tag>
                     <div v-if="isX402Usage(scope.row)" class="flex min-w-0 items-center gap-1">
                       <el-tag :type="getX402StatusType(scope.row)">{{ $t(getX402StatusKey(scope.row)) }}</el-tag>
-                      <a
-                        v-if="getX402Payment(scope.row)?.explorerUrl"
-                        :href="getX402Payment(scope.row)?.explorerUrl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="truncate text-primary"
-                      >
-                        {{ $t('usage.button.viewTransaction') }}
-                        <external-link-icon class="ml-1 inline-block h-3.5 w-3.5" />
-                      </a>
-                      <span v-else-if="getX402Transaction(scope.row)" class="key truncate">
-                        {{
-                          scope.row.metadata?.x402_settle_attempt_tx ? `${$t('usage.value.attemptTransaction')}: ` : ''
-                        }}{{ shortTransaction(getX402Transaction(scope.row)) }}
-                      </span>
-                      <copy-to-clipboard
-                        v-if="getX402Transaction(scope.row)"
-                        :content="getX402Transaction(scope.row)"
-                        class="inline-block shrink-0"
-                      />
                     </div>
                     <el-tag
                       v-for="(name, key) in getSimpleMetadata(scope.row.metadata)"
@@ -455,7 +471,13 @@
               </dd>
               <dt>{{ $t('usage.field.paidAmount') }}</dt>
               <dd v-if="getX402Payment(detailRow)">
-                {{ getX402Payment(detailRow)?.amount }} {{ getX402Payment(detailRow)?.currency }}
+                <span>{{ getX402Payment(detailRow)?.amount }} {{ getX402Payment(detailRow)?.currency }}</span>
+                <del v-if="getX402Payment(detailRow)?.originalAmount" class="ml-2">
+                  {{ getX402Payment(detailRow)?.originalAmount }} {{ getX402Payment(detailRow)?.currency }}
+                </del>
+                <el-tag v-if="getX402Payment(detailRow)?.discountPercent" type="success" size="small" class="ml-2">
+                  {{ getX402DiscountLabel(detailRow) }}
+                </el-tag>
               </dd>
               <dd v-else>{{ $t('usage.value.paymentUnavailable') }}</dd>
               <dt>{{ $t('usage.field.network') }}</dt>
@@ -1123,6 +1145,12 @@ export default defineComponent({
     isX402Usage,
     getX402Payment: getX402UsagePayment,
     getX402Transaction: getX402CopyableTransaction,
+    getX402DiscountLabel(usage: IApiUsage) {
+      const payment = getX402UsagePayment(usage);
+      if (!payment?.discountPercent) return '';
+      const key = payment.discountSource === 'ace' ? 'usage.value.aceDiscount' : 'usage.value.accountDiscount';
+      return this.$t(key, { percent: payment.discountPercent });
+    },
     getX402StatusType(usage: IApiUsage) {
       if (getX402UsagePayment(usage)) return 'success';
       if (usage.metadata?.x402_settlement_status === 'unconfirmed') return 'warning';

@@ -80,10 +80,14 @@ function quoteFromChallenge(challenge: { accepts: PaymentRequirement[] }): X402P
 export async function quoteX402(
   path: string,
   data: unknown,
-  headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' }
+  headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' },
+  identityToken?: string
 ): Promise<X402PaymentQuote> {
   try {
-    await axios.post(path, data, { baseURL: BASE_URL_X402, headers });
+    await axios.post(path, data, {
+      baseURL: BASE_URL_X402,
+      headers: { ...headers, ...(identityToken ? { authorization: `Bearer ${identityToken}` } : {}) }
+    });
     throw new Error('x402 endpoint did not return a payment requirement');
   } catch (error) {
     return quoteFromChallenge(paymentRequired(error));
@@ -106,7 +110,13 @@ export async function postWithX402<T>(
   headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' }
 ): Promise<AxiosResponse<T>> {
   try {
-    return await axios.post<T>(path, data, { baseURL: BASE_URL_X402, headers });
+    return await axios.post<T>(path, data, {
+      baseURL: BASE_URL_X402,
+      headers: {
+        ...headers,
+        ...(options.identityToken ? { authorization: `Bearer ${options.identityToken}` } : {})
+      }
+    });
   } catch (error) {
     const quote = quoteFromChallenge(paymentRequired(error));
     const { requirement } = quote;

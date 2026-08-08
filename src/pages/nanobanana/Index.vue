@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <config-panel :identity-token="credential?.token" @generate="onGenerate" />
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />

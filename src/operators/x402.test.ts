@@ -114,7 +114,7 @@ describe('postWithX402', () => {
       'fresh-blockhash'
     );
     const initialConfig = mocks.post.mock.calls[0][2];
-    expect(initialConfig.headers).not.toHaveProperty('authorization');
+    expect(initialConfig.headers.authorization).toBe('Bearer identity-token');
     const retryConfig = mocks.post.mock.calls[1][2];
     expect(retryConfig.headers.authorization).toBe('Bearer identity-token');
     const envelope = JSON.parse(Buffer.from(retryConfig.headers['PAYMENT-SIGNATURE'], 'base64').toString('utf8'));

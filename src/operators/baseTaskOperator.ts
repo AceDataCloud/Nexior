@@ -137,8 +137,8 @@ export class BaseTaskOperator<
     );
   }
 
-  async quote(data: TGenerateRequest) {
-    return quoteX402(this.generatePath, data, X402_GENERATE_HEADERS);
+  async quote(data: TGenerateRequest, identityToken?: string) {
+    return quoteX402(this.generatePath, data, X402_GENERATE_HEADERS, identityToken);
   }
 
   async generate(data: TGenerateRequest, options: OperatorRequestOptions): Promise<AxiosResponse<TGenerateResponse>> {
