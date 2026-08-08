@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="actions">
-      <el-button size="small" round @click.stop="$emit('usage', application)">
+      <el-button v-if="showUsage" size="small" round @click.stop="$emit('usage', application)">
         <analytics-icon class="mr-1 text-[11px]" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('application.button.usage') }}
       </el-button>
@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { IApplication } from '@/models';
+import { IApplication, IServiceType } from '@/models';
 import { defineComponent } from 'vue';
 import { ElButton, ElIcon, ElTag } from 'element-plus';
 import { AnalyticsIcon, ConfirmIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
@@ -93,6 +93,9 @@ export default defineComponent({
   },
   emits: ['buy', 'usage'],
   computed: {
+    showUsage(): boolean {
+      return !this.application?.service || this.application.service.type === IServiceType.API;
+    },
     // On iOS the only Apple-buyable entity is the global 积分 wallet, so show
     // "Top Up" for the global application (per-service apps have no Apple
     // products). Keyed on scope (always present) rather than packages, which

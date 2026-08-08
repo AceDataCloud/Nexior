@@ -165,7 +165,13 @@
               <el-table-column fixed="right" width="200px">
                 <template #default="scope">
                   <div class="flex flex-wrap items-center justify-end gap-1">
-                    <el-button class="!m-0 !px-2" size="small" round @click="onGoUsage(scope?.row)">
+                    <el-button
+                      v-if="scope.row?.service?.type === serviceType.API"
+                      class="!m-0 !px-2"
+                      size="small"
+                      round
+                      @click="onGoUsage(scope?.row)"
+                    >
                       <analytics-icon
                         class="mr-1 text-[12px]"
                         :size="'1em' as any"
@@ -241,7 +247,13 @@
                   />
                 </div>
                 <div class="flex items-center justify-end gap-2 mt-3">
-                  <el-button class="!m-0 !px-3" size="small" round @click="onGoUsage(app)">
+                  <el-button
+                    v-if="app?.service?.type === serviceType.API"
+                    class="!m-0 !px-3"
+                    size="small"
+                    round
+                    @click="onGoUsage(app)"
+                  >
                     <analytics-icon
                       class="mr-1 text-[12px]"
                       :size="'1em' as any"
@@ -431,8 +443,7 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_CONSOLE_USAGE_LIST,
         query: {
-          application_id: application.id,
-          type: application?.service?.type
+          application_id: application.id
         }
       });
     },
