@@ -1552,8 +1552,8 @@
     "description": "Kopija centra za šablone zakazanih zadataka"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Izaberi zvanični šablon, poveži potrebne naloge, i nakon uspešnog testiranja, automatski će se izvršavati.",
-    "description": "Kopija centra za šablone zakazanih zadataka"
+    "message": "Изаберите званични шаблон и повежите потребан налог. Након креирања задатка, можете одмах покренути на картици.",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
   "scheduledTemplates.browse": {
     "message": "Pregledaj šablone",
@@ -1569,14 +1569,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Повежи налог",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Тестирај",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Потврди активирање",
     "description": "Копија centra za шаблоне zakazanih zadataka"
   },
   "scheduledTemplates.search": {
@@ -1623,65 +1615,21 @@
     "message": "Poveži se",
     "description": "Kopija centra za šablone zakazanih zadataka"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Прво тестирај",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
+  "scheduledTemplates.create": {
+    "message": "Креирај задатак",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Задатак ће остати искључен. Започеће периодично извршавање тек након успешног тестирања и потврде.",
-    "description": "Копија centra za шабlоне zakazanih zadataka"
+  "scheduledTemplates.createFailed": {
+    "message": "Креирање задатка није успело, молимо проверите конфигурацију или везу",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Генериши и тестирај",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Освежи резултате",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Тестирање у току, молимо сачекајте",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Тестирање успешно",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Тестирање није успело, провери конфигурацију или повезивање",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Potvrdi omogućavanje automatizacije",
-    "description": "Kopija centra za šablone zakazanih zadataka"
-  },
-  "scheduledTemplates.template": {
-    "message": "Шаблон",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Овлашћења",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.none": {
-    "message": "Нема",
-    "description": "Копија centra za шаблоне zakazanih zadataka"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Nakon omogućavanja, zadaci će se automatski izvršavati u zakazano vreme; možeš ih uvek pauzirati.",
-    "description": "Kopija centra za šablone zakazanih zadataka"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Omogući automatizaciju",
-    "description": "Kopija centra za šablone zakazanih zadataka"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automatizacija je omogućena",
-    "description": "Kopija centra za šablone zakazanih zadataka"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Задатак је креиран и остаје искључен. Молимо прво покрените одмах на картици, а затим активирајте након успеха.",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Još uvek ne može da se omogući, molimo proverite da li je testiranje uspešno",
-    "description": "Kopija centra za šablone zakazanih zadataka"
+    "message": "Тренутно није могуће активирати. Молимо прво одмах покрените задатак и потврдите успех; неки шаблони такође захтевају генерисање одређеног нацрта.",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
   "scheduledTemplates.loadError": {
     "message": "Greška pri učitavanju šablona, molimo pokušajte ponovo kasnije",
@@ -1753,8 +1701,8 @@
     "description": "Navigacija kroz čarobnjaka za zakazane šablone i uputstva za povezivanje"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Ovaj šablon koristi samo ugrađene mogućnosti, možete odmah započeti probnu verziju.",
-    "description": "Navigacija kroz čarobnjaka za zakazane šablone i uputstva za povezivanje"
+    "message": "Овај шаблон користи само уграђене могућности, можете директно креирати задатак.",
+    "description": "Упутство за креирање и активирање шаблона за заказане задатке"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Nastavite nakon završetka povezivanja.",

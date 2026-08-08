@@ -1591,8 +1591,8 @@
     "description": "نسخة مركز قوالب المهام المجدولة"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "اختر قالبًا رسميًا، واتصل بالحسابات المطلوبة، وبعد نجاح التشغيل التجريبي سيتم التنفيذ تلقائيًا.",
-    "description": "نسخة مركز قوالب المهام المجدولة"
+    "message": "اختر نموذجًا رسميًا وقم بتوصيل الحساب المطلوب. يمكن تشغيل المهمة على البطاقة بعد إنشائها.",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
   "scheduledTemplates.browse": {
     "message": "تصفح القوالب",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "اتصل بالحساب",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "تشغيل تجريبي",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "تأكيد التفعيل",
     "description": "نسخة مركز قوالب المهام المجدولة"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "اذهب للاتصال",
     "description": "نسخة مركز قوالب المهام المجدولة"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "قم بتشغيل تجريبي أولاً",
-    "description": "نسخة مركز قوالب المهام المجدولة"
+  "scheduledTemplates.create": {
+    "message": "إنشاء مهمة",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
-  "scheduledTemplates.testHint": {
-    "message": "ستظل المهمة مغلقة. ستبدأ في التنفيذ الدوري فقط بعد نجاح التشغيل التجريبي والتأكيد.",
-    "description": "نسخة مركز قوالب المهام المجدولة"
+  "scheduledTemplates.createFailed": {
+    "message": "فشل إنشاء المهمة، يرجى التحقق من الإعدادات أو الاتصال",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
-  "scheduledTemplates.runTest": {
-    "message": "إنشاء وتشغيل تجريبي",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "تحديث النتائج",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "يتم التشغيل التجريبي، يرجى الانتظار وتحديث الصفحة",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "نجح التشغيل التجريبي",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "فشل التشغيل التجريبي، يرجى التحقق من التكوين أو الاتصال",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "تأكيد تفعيل الأتمتة",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.template": {
-    "message": "قالب",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "صلاحيات الوصول",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.none": {
-    "message": "لا شيء",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "بعد التفعيل، ستنفذ المهام تلقائيًا في الوقت المحدد؛ يمكنك إيقافها في أي وقت.",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.enable": {
-    "message": "تفعيل الأتمتة",
-    "description": "نسخة مركز قوالب المهام المجدولة"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "تم تفعيل الأتمتة",
-    "description": "نسخة مركز قوالب المهام المجدولة"
+  "scheduledTemplates.createdDisabled": {
+    "message": "تم إنشاء المهمة ولكنها تبقى مغلقة. يرجى تشغيلها على البطاقة أولاً، وبعد النجاح يمكن تفعيلها.",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "لا يمكن التفعيل بعد، يرجى التأكد من نجاح التشغيل التجريبي",
-    "description": "نسخة مركز قوالب المهام المجدولة"
+    "message": "لا يمكن التفعيل مؤقتًا. يرجى تشغيل المهمة على الفور والتأكد من نجاحها؛ بعض النماذج تحتاج أيضًا إلى إنشاء مسودة محددة.",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
   "scheduledTemplates.loadError": {
     "message": "فشل تحميل القالب، يرجى المحاولة لاحقًا",
@@ -1792,8 +1740,8 @@
     "description": "إرشادات التنقل في معالج القالب المجدول والاتصال"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "يستخدم هذا القالب فقط الإمكانيات المدمجة، يمكنك الدخول مباشرة في التشغيل التجريبي.",
-    "description": "إرشادات التنقل في معالج القالب المجدول والاتصال"
+    "message": "هذا النموذج يستخدم فقط القدرات المدمجة، ويمكن إنشاء المهمة مباشرة.",
+    "description": "إرشادات لإنشاء وتفعيل نموذج مهمة مجدولة"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "يمكنك المتابعة بعد إتمام الاتصال.",

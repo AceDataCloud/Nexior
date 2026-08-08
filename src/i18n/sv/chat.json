@@ -1591,8 +1591,8 @@
     "description": "Kopiering av schemalagd uppgiftsmall centrum"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Välj en officiell mall, anslut nödvändiga konton, och när testkörningen är framgångsrik kan den automatiskt utföras.",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+    "message": "Välj en officiell mall och koppla de nödvändiga kontona. Uppgiften kan köras omedelbart på kortet efter skapande.",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
   "scheduledTemplates.browse": {
     "message": "Bläddra bland mallar",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Anslut konto",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Kör test",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Bekräfta aktivering",
     "description": "Kopiering av schemalagd uppgift mall centrum"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "Gå till anslutning",
     "description": "Kopiering av schemalagd uppgiftsmall centrum"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Kör ett test först",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
+  "scheduledTemplates.create": {
+    "message": "Skapa uppgift",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Uppgiften kommer att förbli avstängd. Testkörningen måste lyckas och bekräftas innan den börjar köras periodiskt.",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
+  "scheduledTemplates.createFailed": {
+    "message": "Uppgiftsskapande misslyckades, vänligen kontrollera konfigurationen eller anslutningen",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Generera och kör test",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Uppdatera resultat",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Testkörning pågår, vänligen uppdatera senare",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Testkörning lyckades",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Testkörning misslyckades, kontrollera konfiguration eller anslutning",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Bekräfta aktivering av automatisering",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
-  },
-  "scheduledTemplates.template": {
-    "message": "Mall",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Behörighetskapacitet",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.none": {
-    "message": "Ingen",
-    "description": "Kopiering av schemalagd uppgift mall centrum"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "När aktiverad kommer uppgiften att automatiskt utföras vid angiven tid; du kan pausa när som helst.",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Aktivera automatisering",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automatisering har aktiverats",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Uppgiften har skapats och hålls avstängd. Vänligen kör den omedelbart på kortet först, aktivera först efter framgång.",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Kan ännu inte aktiveras, vänligen bekräfta att testkörningen har lyckats",
-    "description": "Kopiering av schemalagd uppgiftsmall centrum"
+    "message": "Kan inte aktiveras för tillfället. Vänligen kör uppgiften omedelbart och bekräfta framgång; vissa mallar kräver också att en specifik utkast skapas.",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
   "scheduledTemplates.loadError": {
     "message": "Misslyckades med att ladda mallar, försök igen senare",
@@ -1792,8 +1740,8 @@
     "description": "Navigering och anslutningsvägledning för schemalagda mallar"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Denna mall använder endast inbyggda funktioner, du kan gå direkt till testkörning.",
-    "description": "Navigering och anslutningsvägledning för schemalagda mallar"
+    "message": "Denna mall använder endast inbyggda funktioner och kan skapa uppgifter direkt.",
+    "description": "Vägledning för skapande och aktivering av schemalagda uppgiftsmallar"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Fortsätt efter att ha slutfört anslutningen.",

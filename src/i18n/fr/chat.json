@@ -1600,8 +1600,8 @@
     "description": "Copie du centre de modèles de tâches planifiées"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Choisissez un modèle officiel, connectez les comptes nécessaires, et après un essai réussi, il pourra s'exécuter automatiquement.",
-    "description": "Copie du centre de modèles de tâches planifiées"
+    "message": "Sélectionnez un modèle officiel et connectez le compte requis. La tâche peut être exécutée immédiatement sur la carte après sa création.",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
   "scheduledTemplates.browse": {
     "message": "Parcourir les modèles",
@@ -1617,14 +1617,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Connecter un compte",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Exécuter un test",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Confirmer l'activation",
     "description": "Copie du centre de modèles de tâches planifiées"
   },
   "scheduledTemplates.search": {
@@ -1671,65 +1663,21 @@
     "message": "Se connecter",
     "description": "Copie du centre de modèles de tâches planifiées"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Exécutez un test d'abord",
-    "description": "Texte du centre de modèles de tâches planifiées"
+  "scheduledTemplates.create": {
+    "message": "Créer une tâche",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
-  "scheduledTemplates.testHint": {
-    "message": "La tâche restera d'abord désactivée. Elle commencera à s'exécuter périodiquement uniquement après un test réussi et confirmé.",
-    "description": "Copie du centre de modèles de tâches planifiées"
+  "scheduledTemplates.createFailed": {
+    "message": "Échec de la création de la tâche, veuillez vérifier la configuration ou la connexion",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Générer et exécuter un test",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Rafraîchir les résultats",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Test en cours, veuillez rafraîchir plus tard",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Test réussi",
-    "description": "Texte du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Échec de l'exécution du test, veuillez vérifier la configuration ou la connexion",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Confirmer l'activation de l'automatisation",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.template": {
-    "message": "Modèle",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Autoriser les capacités",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.none": {
-    "message": "Aucun",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Une fois activé, les tâches s'exécuteront automatiquement à l'heure prévue ; vous pouvez les suspendre à tout moment.",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Activer l'automatisation",
-    "description": "Copie du centre de modèles de tâches planifiées"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "L'automatisation est activée",
-    "description": "Copie du centre de modèles de tâches planifiées"
+  "scheduledTemplates.createdDisabled": {
+    "message": "La tâche a été créée et reste désactivée. Veuillez d'abord l'exécuter immédiatement sur la carte, puis l'activer après le succès.",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Impossible d'activer, veuillez confirmer que l'essai a réussi",
-    "description": "Copie du centre de modèles de tâches planifiées"
+    "message": "Impossible de l'activer pour le moment. Veuillez d'abord exécuter la tâche immédiatement et confirmer le succès ; certains modèles nécessitent également la génération d'un brouillon spécifique.",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
   "scheduledTemplates.loadError": {
     "message": "Échec du chargement du modèle, veuillez réessayer plus tard",
@@ -1776,8 +1724,8 @@
     "description": "Navigation dans l'assistant de modèle programmé et conseils de connexion"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Ce modèle utilise uniquement des capacités intégrées, vous pouvez directement passer à l'exécution d'essai.",
-    "description": "Navigation dans l'assistant de modèle programmé et conseils de connexion"
+    "message": "Ce modèle utilise uniquement des capacités intégrées, vous pouvez créer la tâche directement.",
+    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Vous pouvez continuer après avoir terminé la connexion.",

@@ -1592,8 +1592,8 @@
     "description": "Texto del centro de plantillas de tareas programadas"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Selecciona una plantilla oficial, conecta la cuenta necesaria y, tras una ejecución exitosa, se ejecutará automáticamente.",
-    "description": "Texto del centro de plantillas de tareas programadas"
+    "message": "Selecciona una plantilla oficial y conecta la cuenta necesaria. La tarea se puede ejecutar inmediatamente en la tarjeta una vez creada.",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
   "scheduledTemplates.browse": {
     "message": "Explorar plantillas",
@@ -1609,14 +1609,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Conectar cuenta",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Ejecutar prueba",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Confirmar habilitación",
     "description": "Copia del centro de plantillas de tareas programadas"
   },
   "scheduledTemplates.search": {
@@ -1663,65 +1655,21 @@
     "message": "Conectar",
     "description": "Texto del centro de plantillas de tareas programadas"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Prueba una vez",
-    "description": "Copia del centro de plantillas de tareas programadas"
+  "scheduledTemplates.create": {
+    "message": "Crear tarea",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
-  "scheduledTemplates.testHint": {
-    "message": "La tarea permanecerá desactivada. Solo comenzará a ejecutarse periódicamente después de que la prueba sea exitosa y confirmada.",
-    "description": "Copia del centro de plantillas de tareas programadas"
+  "scheduledTemplates.createFailed": {
+    "message": "Error al crear la tarea, por favor verifica la configuración o la conexión.",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
-  "scheduledTemplates.runTest": {
-    "message": "Generar y ejecutar prueba",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Actualizar resultados",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Ejecutando prueba, por favor actualice más tarde",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Prueba exitosa",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "La prueba falló, por favor revise la configuración o la conexión",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Confirmar habilitación de automatización",
-    "description": "Texto del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.template": {
-    "message": "Plantilla",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Capacidades de autorización",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.none": {
-    "message": "Ninguno",
-    "description": "Copia del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Una vez habilitado, la tarea se ejecutará automáticamente a la hora programada; puedes pausar en cualquier momento.",
-    "description": "Texto del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Habilitar automatización",
-    "description": "Texto del centro de plantillas de tareas programadas"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "La automatización está habilitada",
-    "description": "Copia del centro de plantillas de tareas programadas"
+  "scheduledTemplates.createdDisabled": {
+    "message": "La tarea ha sido creada y permanece desactivada. Por favor, ejecútala inmediatamente en la tarjeta y actívala una vez que sea exitosa.",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
   "scheduledTemplates.enableFailed": {
-    "message": "No se puede habilitar aún, por favor confirma que la ejecución de prueba fue exitosa",
-    "description": "Texto del centro de plantillas de tareas programadas"
+    "message": "No se puede activar temporalmente. Por favor, ejecuta la tarea inmediatamente y confirma que fue exitosa; algunas plantillas también requieren generar un borrador específico.",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
   "scheduledTemplates.loadError": {
     "message": "Error al cargar la plantilla, por favor inténtelo de nuevo más tarde",
@@ -1793,8 +1741,8 @@
     "description": "Navegación y orientación de conexión en el asistente de plantillas programadas"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Esta plantilla solo utiliza capacidades integradas, puedes proceder directamente a la prueba.",
-    "description": "Navegación y orientación de conexión en el asistente de plantillas programadas"
+    "message": "Esta plantilla utiliza solo capacidades integradas, se puede crear la tarea directamente.",
+    "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Continúa una vez que completes la conexión.",

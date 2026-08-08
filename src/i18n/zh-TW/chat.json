@@ -1552,8 +1552,8 @@
     "description": "排程任務模板中心的文字"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "選擇一個官方模板，連接需要的帳號，試運行成功後即可自動執行。",
-    "description": "排程任務模板中心的文字"
+    "message": "選擇一個官方模板並連接所需帳號。任務創建後可在卡片上立即運行。",
+    "description": "排程任務模板的創建和啟用指導"
   },
   "scheduledTemplates.browse": {
     "message": "瀏覽模板",
@@ -1569,14 +1569,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "連接帳號",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "試運行",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "確認啟用",
     "description": "排程任務模板中心的文字"
   },
   "scheduledTemplates.search": {
@@ -1623,65 +1615,21 @@
     "message": "去連接",
     "description": "排程任務模板中心的文字"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "先試運行一次",
-    "description": "排程任務模板中心的文字"
+  "scheduledTemplates.create": {
+    "message": "創建任務",
+    "description": "排程任務模板的創建和啟用指導"
   },
-  "scheduledTemplates.testHint": {
-    "message": "任務會先保持關閉。試運行成功並確認後才開始按周期執行。",
-    "description": "排程任務模板中心的文字"
+  "scheduledTemplates.createFailed": {
+    "message": "任務創建失敗，請檢查配置或連接",
+    "description": "排程任務模板的創建和啟用指導"
   },
-  "scheduledTemplates.runTest": {
-    "message": "生成並試運行",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "刷新結果",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "試運行中，請稍後刷新",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "試運行成功",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "試運行失敗，請檢查配置或連接",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "確認啟用自動化",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.template": {
-    "message": "模板",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "授權能力",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.none": {
-    "message": "無",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "啟用後任務將按設定時間自動執行；你可以隨時暫停。",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.enable": {
-    "message": "啟用自動化",
-    "description": "排程任務模板中心的文字"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "自動化已啟用",
-    "description": "排程任務模板中心的文字"
+  "scheduledTemplates.createdDisabled": {
+    "message": "任務已創建並保持關閉。請先在卡片上立即運行，成功後再啟用。",
+    "description": "排程任務模板的創建和啟用指導"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "尚不能啟用，請確認試運行已成功",
-    "description": "排程任務模板中心的文字"
+    "message": "暫時無法啟用。請先立即運行任務並確認成功；部分模板還需要生成指定草稿。",
+    "description": "排程任務模板的創建和啟用指導"
   },
   "scheduledTemplates.loadError": {
     "message": "模板加載失敗，請稍後重試",
@@ -1753,8 +1701,8 @@
     "description": "排程模板向導的導航和連接指導"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "此模板只使用內建能力，可以直接進入試運行。",
-    "description": "排程模板向導的導航和連接指導"
+    "message": "此模板只使用內置能力，可以直接創建任務。",
+    "description": "排程任務模板的創建和啟用指導"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "完成連接後即可繼續。",

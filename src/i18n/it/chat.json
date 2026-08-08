@@ -1591,8 +1591,8 @@
     "description": "Testo del centro modelli per attività programmate"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Scegli un modello ufficiale, collega gli account necessari e, dopo un'esecuzione di prova riuscita, verrà eseguito automaticamente.",
-    "description": "Testo del centro modelli per attività programmate"
+    "message": "Seleziona un modello ufficiale e collega l'account necessario. L'attività può essere eseguita immediatamente sulla scheda dopo la creazione.",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
   "scheduledTemplates.browse": {
     "message": "Sfoglia modelli",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Collega account",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Prova l'esecuzione",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Conferma attivazione",
     "description": "Testo del centro dei modelli di attività pianificate"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "Collegati",
     "description": "Testo del centro modelli per attività programmate"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Esegui un test",
-    "description": "Copia del centro dei modelli di attività pianificata"
+  "scheduledTemplates.create": {
+    "message": "Crea attività",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Il compito rimarrà chiuso. Inizierà a essere eseguito periodicamente solo dopo una prova riuscita e confermata.",
-    "description": "Testo del centro dei modelli di attività pianificate"
+  "scheduledTemplates.createFailed": {
+    "message": "Creazione dell'attività fallita, controlla la configurazione o la connessione",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Genera e prova l'esecuzione",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Aggiorna i risultati",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Prova l'esecuzione in corso, aggiorna più tardi",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Test eseguito con successo",
-    "description": "Copia del centro dei modelli di attività pianificata"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Prova l'esecuzione fallita, controlla la configurazione o il collegamento",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Conferma attivazione dell'automazione",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.template": {
-    "message": "Modello",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Autorizzazioni",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.none": {
-    "message": "Nessuno",
-    "description": "Testo del centro dei modelli di attività pianificate"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Una volta abilitato, il compito verrà eseguito automaticamente all'orario impostato; puoi mettere in pausa in qualsiasi momento.",
-    "description": "Testo del centro modelli per attività programmate"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Abilita automazione",
-    "description": "Testo del centro modelli per attività programmate"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automazione attivata",
-    "description": "Testo del centro dei modelli di attività pianificate"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Attività creata e mantenuta disattivata. Esegui prima immediatamente sulla scheda, attivala solo dopo il successo.",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Non può essere abilitato, verifica che l'esecuzione di prova sia riuscita",
-    "description": "Testo del centro modelli per attività programmate"
+    "message": "Impossibile attivare temporaneamente. Esegui prima l'attività immediatamente e conferma il successo; alcuni modelli richiedono anche la generazione di una bozza specifica.",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
   "scheduledTemplates.loadError": {
     "message": "Caricamento del modello fallito, riprova più tardi",
@@ -1792,8 +1740,8 @@
     "description": "Navigazione e guida alla connessione del wizard dei modelli programmati"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Questo modello utilizza solo capacità integrate, puoi procedere direttamente alla prova.",
-    "description": "Navigazione e guida alla connessione del wizard dei modelli programmati"
+    "message": "Questo modello utilizza solo capacità integrate, puoi creare direttamente l'attività.",
+    "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Completa la connessione per continuare.",

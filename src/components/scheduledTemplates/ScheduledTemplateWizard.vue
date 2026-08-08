@@ -11,8 +11,6 @@
       <el-step :title="$t('chat.scheduledTemplates.step.choose')" />
       <el-step :title="$t('chat.scheduledTemplates.step.configure')" />
       <el-step :title="$t('chat.scheduledTemplates.step.connect')" />
-      <el-step :title="$t('chat.scheduledTemplates.step.test')" />
-      <el-step :title="$t('chat.scheduledTemplates.step.enable')" />
     </el-steps>
 
     <section v-if="step === 0" v-loading="loading" class="wizard-body">
@@ -166,67 +164,15 @@
       <browse-connectors v-model="browseConnections" @installed="reloadTemplates" />
     </section>
 
-    <section v-else-if="step === 3 && selected" class="wizard-body test-step">
-      <h3>{{ $t('chat.scheduledTemplates.testTitle') }}</h3>
-      <p>{{ $t('chat.scheduledTemplates.testHint') }}</p>
-      <el-input v-if="preview" :model-value="preview" type="textarea" :rows="9" readonly />
-      <div v-if="testError" class="test-status">
-        <el-alert
-          :title="$t('chat.scheduledTemplates.testFailed')"
-          :description="testError"
-          type="error"
-          :closable="false"
-          show-icon
-        />
-      </div>
-      <div v-else-if="testTask" class="test-status">
-        <el-alert
-          :title="
-            testSucceeded ? $t('chat.scheduledTemplates.testSucceeded') : $t('chat.scheduledTemplates.testRunning')
-          "
-          :type="testSucceeded ? 'success' : 'info'"
-          :closable="false"
-        />
-      </div>
-      <el-button v-if="!testTask" type="primary" :loading="working" @click="runTest">
-        {{ $t('chat.scheduledTemplates.runTest') }}
-      </el-button>
-      <el-button v-else-if="!testSucceeded" :loading="working" @click="refreshTest">
-        {{ $t('chat.scheduledTemplates.refreshTest') }}
-      </el-button>
-    </section>
-
-    <section v-else-if="step === 4 && selected && testTask" class="wizard-body enable-step">
-      <h3>{{ $t('chat.scheduledTemplates.enableTitle') }}</h3>
-      <dl>
-        <div>
-          <dt>{{ $t('chat.scheduledTemplates.template') }}</dt>
-          <dd>{{ selected.title }}</dd>
-        </div>
-        <div>
-          <dt>{{ $t('chat.scheduledTemplates.schedule') }}</dt>
-          <dd>{{ scheduleTime }}</dd>
-        </div>
-        <div>
-          <dt>{{ $t('chat.scheduledTemplates.permissions') }}</dt>
-          <dd>{{ selected.requirements.skills.join(', ') || $t('chat.scheduledTemplates.none') }}</dd>
-        </div>
-      </dl>
-      <el-alert :title="$t('chat.scheduledTemplates.enableHint')" type="warning" :closable="false" />
-    </section>
-
     <template #footer>
-      <el-button v-if="step > 0 && step < 4" :disabled="working" @click="step -= 1">
+      <el-button v-if="step > 0" :disabled="working" @click="step -= 1">
         {{ $t('chat.scheduledTemplates.previous') }}
       </el-button>
-      <el-button v-if="step < 3" type="primary" :disabled="!canContinue" @click="step += 1">
+      <el-button v-if="step < 2" type="primary" :disabled="!canContinue" @click="step += 1">
         {{ $t('chat.scheduledTemplates.next') }}
       </el-button>
-      <el-button v-if="step === 3 && testSucceeded" type="primary" @click="step = 4">
-        {{ $t('chat.scheduledTemplates.next') }}
-      </el-button>
-      <el-button v-if="step === 4" type="primary" :loading="working" @click="enableTask">
-        {{ $t('chat.scheduledTemplates.enable') }}
+      <el-button v-if="step === 2" type="primary" :loading="working" :disabled="!canContinue" @click="createTask">
+        {{ $t('chat.scheduledTemplates.create') }}
       </el-button>
     </template>
   </el-dialog>
@@ -235,7 +181,6 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import {
-  ElAlert,
   ElButton,
   ElDialog,
   ElForm,
@@ -255,8 +200,6 @@ import BrowseConnectors from '@/components/connections/BrowseConnectors.vue';
 import {
   scheduledTasksOperator,
   type IAuthorizableConnectionAccount,
-  type IScheduledRun,
-  type IScheduledTask,
   type IScheduledTaskTemplateDefinition,
   type IScheduleSpec
 } from '@/operators/scheduledTasks';
@@ -266,7 +209,6 @@ export default defineComponent({
   components: {
     BrowseConnectors,
     ConnectionIcon,
-    ElAlert,
     ElButton,
     ElDialog,
     ElForm,
@@ -301,17 +243,10 @@ export default defineComponent({
       inputs: {} as Record<string, string | number | boolean>,
       scheduleTime: '09:00',
       connectionBindings: {} as Record<string, string>,
-      browseConnections: false,
-      preview: '',
-      testTask: null as IScheduledTask | null,
-      testRun: null as IScheduledRun | null,
-      testError: ''
+      browseConnections: false
     };
   },
   computed: {
-    testSucceeded(): boolean {
-      return this.testRun?.status === 'success';
-    },
     canContinue(): boolean {
       if (this.step === 0) return !!this.selected;
       if (this.step === 1 && this.selected) {
@@ -431,77 +366,34 @@ export default defineComponent({
         response?.message ||
         response?.error ||
         (error as Error)?.message ||
-        String(this.$t('chat.scheduledTemplates.testFailed'))
+        String(this.$t('chat.scheduledTemplates.createFailed'))
       );
     },
-    async runTest() {
-      if (!this.selected) return;
+    resetWizard() {
+      this.step = 0;
+      this.selected = null;
+      this.inputs = {};
+      this.scheduleTime = '09:00';
+      this.connectionBindings = {};
+      this.browseConnections = false;
+    },
+    async createTask() {
+      if (!this.selected || !this.canContinue) return;
       this.working = true;
-      this.testError = '';
       try {
-        const preview = await scheduledTasksOperator.previewTemplate(
-          this.token,
-          this.selected.id,
-          this.selected.version,
-          this.inputs
-        );
-        this.preview = preview.question;
-      } catch (error) {
-        this.testError = this.errorMessage(error);
-        ElMessage.error(this.testError);
-        this.working = false;
-        return;
-      }
-      try {
-        this.testTask = await scheduledTasksOperator.instantiateTemplate(this.token, {
+        const task = await scheduledTasksOperator.instantiateTemplate(this.token, {
           template_id: this.selected.id,
           version: this.selected.version,
           inputs: this.inputs,
           schedule: this.buildSchedule(),
           connection_bindings: this.bindings()
         });
-      } catch (error) {
-        this.testError = this.errorMessage(error);
-        ElMessage.error(this.testError);
-        this.working = false;
-        return;
-      }
-      try {
-        await scheduledTasksOperator.triggerTask(this.token, this.testTask.id);
-        await this.refreshTest();
-      } catch (error) {
-        this.testError = this.errorMessage(error);
-        ElMessage.error(this.testError);
-      } finally {
-        this.working = false;
-      }
-    },
-    async refreshTest() {
-      if (!this.testTask) return;
-      this.working = true;
-      this.testError = '';
-      try {
-        const runs = await scheduledTasksOperator.listRuns(this.token, this.testTask.id);
-        this.testRun = runs[0] ?? null;
-        if (this.testRun?.status === 'failed') {
-          this.testError = this.testRun.error_message || this.testRun.outcome_reason || this.testRun.error_code || '';
-        }
-      } catch (error) {
-        this.testError = this.errorMessage(error);
-      } finally {
-        this.working = false;
-      }
-    },
-    async enableTask() {
-      if (!this.testTask) return;
-      this.working = true;
-      try {
-        const task = await scheduledTasksOperator.enableTemplateTask(this.token, this.testTask.id);
         this.$emit('created', task);
         this.visible = false;
-        ElMessage.success(this.$t('chat.scheduledTemplates.enabled') as string);
-      } catch {
-        ElMessage.error(this.$t('chat.scheduledTemplates.enableFailed') as string);
+        this.resetWizard();
+        ElMessage.success(this.$t('chat.scheduledTemplates.createdDisabled') as string);
+      } catch (error) {
+        ElMessage.error(this.errorMessage(error));
       } finally {
         this.working = false;
       }
@@ -661,32 +553,6 @@ export default defineComponent({
 }
 .requirement-action .el-select {
   width: 200px;
-}
-.test-step {
-  h3 {
-    margin: 0;
-  }
-  > p {
-    margin: 6px 0 18px;
-    color: var(--el-text-color-secondary);
-    line-height: 1.6;
-  }
-  > .el-button,
-  .test-status {
-    margin-top: 14px;
-  }
-}
-dl > div {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--el-border-color-lighter);
-}
-dt {
-  color: var(--el-text-color-secondary);
-}
-dd {
-  margin: 0;
 }
 @media (max-width: 720px) {
   .template-grid,

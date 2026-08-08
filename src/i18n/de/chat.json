@@ -1591,8 +1591,8 @@
     "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
   },
   "scheduledTemplates.emptyDescription": {
-    "message": "Wählen Sie eine offizielle Vorlage, verbinden Sie die benötigten Konten, und nach erfolgreichem Testlauf wird die Ausführung automatisch erfolgen.",
-    "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
+    "message": "Wählen Sie eine offizielle Vorlage aus und verbinden Sie das erforderliche Konto. Nach der Erstellung der Aufgabe kann diese sofort auf der Karte ausgeführt werden.",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
   "scheduledTemplates.browse": {
     "message": "Vorlagen durchsuchen",
@@ -1608,14 +1608,6 @@
   },
   "scheduledTemplates.step.connect": {
     "message": "Konto verbinden",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.step.test": {
-    "message": "Testlauf",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.step.enable": {
-    "message": "Aktivierung bestätigen",
     "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
   },
   "scheduledTemplates.search": {
@@ -1662,65 +1654,21 @@
     "message": "Verbinden",
     "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
   },
-  "scheduledTemplates.testTitle": {
-    "message": "Zuerst einmal testen",
-    "description": "Kopie des Zentrums für geplante Aufgaben-Vorlagen"
+  "scheduledTemplates.create": {
+    "message": "Aufgabe erstellen",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
-  "scheduledTemplates.testHint": {
-    "message": "Die Aufgabe bleibt zunächst deaktiviert. Der Testlauf muss erfolgreich sein und bestätigt werden, bevor die regelmäßige Ausführung beginnt.",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
+  "scheduledTemplates.createFailed": {
+    "message": "Aufgabe konnte nicht erstellt werden, bitte überprüfen Sie die Konfiguration oder Verbindung",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
-  "scheduledTemplates.runTest": {
-    "message": "Generieren und Testlauf durchführen",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.refreshTest": {
-    "message": "Ergebnisse aktualisieren",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.testRunning": {
-    "message": "Testlauf läuft, bitte später aktualisieren",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.testSucceeded": {
-    "message": "Testlauf erfolgreich",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.testFailed": {
-    "message": "Testlauf fehlgeschlagen, bitte Konfiguration oder Verbindung überprüfen",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.enableTitle": {
-    "message": "Automatisierung aktivieren bestätigen",
-    "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
-  },
-  "scheduledTemplates.template": {
-    "message": "Vorlage",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.permissions": {
-    "message": "Berechtigungen",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.none": {
-    "message": "Keine",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
-  },
-  "scheduledTemplates.enableHint": {
-    "message": "Nach der Aktivierung werden die Aufgaben zur festgelegten Zeit automatisch ausgeführt; Sie können jederzeit pausieren.",
-    "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
-  },
-  "scheduledTemplates.enable": {
-    "message": "Automatisierung aktivieren",
-    "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
-  },
-  "scheduledTemplates.enabled": {
-    "message": "Automatisierung ist aktiviert",
-    "description": "Kopie des Zentrums für geplante Aufgabenvorlagen"
+  "scheduledTemplates.createdDisabled": {
+    "message": "Aufgabe wurde erstellt und bleibt deaktiviert. Bitte führen Sie sie zuerst sofort auf der Karte aus und aktivieren Sie sie nach erfolgreichem Abschluss.",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Kann noch nicht aktiviert werden, bitte bestätigen Sie, dass der Testlauf erfolgreich war",
-    "description": "Kopie des Vorlagenzentrums für geplante Aufgaben"
+    "message": "Aktivierung vorübergehend nicht möglich. Bitte führen Sie die Aufgabe sofort aus und bestätigen Sie den Erfolg; einige Vorlagen erfordern auch die Erstellung eines bestimmten Entwurfs.",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
   "scheduledTemplates.loadError": {
     "message": "Vorlagen konnten nicht geladen werden, bitte später erneut versuchen",
@@ -1792,8 +1740,8 @@
     "description": "Navigation und Verbindungsanleitung für den geplanten Vorlagenassistenten"
   },
   "scheduledTemplates.noConnectionsHint": {
-    "message": "Diese Vorlage nutzt nur integrierte Funktionen und kann direkt in den Testlauf gehen.",
-    "description": "Navigation und Verbindungsanleitung für den geplanten Vorlagenassistenten"
+    "message": "Diese Vorlage nutzt nur integrierte Funktionen und kann direkt erstellt werden.",
+    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
   "scheduledTemplates.connectionMissingHint": {
     "message": "Fahre fort, nachdem die Verbindung hergestellt wurde.",
