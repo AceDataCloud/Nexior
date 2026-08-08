@@ -3,6 +3,9 @@ import { IApiUsage, IX402UsageMetadata } from '@/models/usage';
 
 export interface X402UsagePayment {
   amount: string;
+  originalAmount?: string;
+  discountPercent?: string;
+  discountSource?: 'ace' | 'manual';
   currency: string;
   network: string;
   transaction: string;
@@ -19,9 +22,26 @@ export function getX402UsagePayment(usage: IApiUsage): X402UsagePayment | undefi
   if (!isSettledMetadata(metadata)) return undefined;
 
   try {
-    const amount = formatAtomicTokenAmount(BigInt(metadata.x402_amount_atomic), metadata.x402_decimals);
+    const paidAtomic = BigInt(metadata.x402_amount_atomic);
+    const amount = formatAtomicTokenAmount(paidAtomic, metadata.x402_decimals);
+    let originalAmount: string | undefined;
+    let discountPercent: string | undefined;
+    let discountSource: 'ace' | 'manual' | undefined;
+    if (typeof metadata.x402_list_amount_atomic === 'string' && /^\d+$/.test(metadata.x402_list_amount_atomic)) {
+      const listAtomic = BigInt(metadata.x402_list_amount_atomic);
+      const percent = Number(metadata.x402_discount_percent);
+      if (listAtomic > paidAtomic && Number.isFinite(percent) && percent > 0 && percent < 1) {
+        originalAmount = formatAtomicTokenAmount(listAtomic, metadata.x402_decimals);
+        if (metadata.x402_discount_type === 'Coin' && metadata.x402_discount_coin_policy_id) discountSource = 'ace';
+        else if (metadata.x402_discount_type === 'Manual') discountSource = 'manual';
+        if (discountSource) discountPercent = Number((percent * 100).toFixed(2)).toString();
+      }
+    }
     return {
       amount,
+      originalAmount,
+      discountPercent,
+      discountSource,
       currency: metadata.x402_currency,
       network: metadata.x402_network,
       transaction: metadata.x402_tx,

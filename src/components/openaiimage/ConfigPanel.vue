@@ -46,6 +46,9 @@ export default defineComponent({
     ResolutionSelector,
     ScenarioPaymentMode
   },
+  props: {
+    identityToken: { type: String, default: undefined }
+  },
   emits: ['generate'],
   data() {
     return {
@@ -85,6 +88,10 @@ export default defineComponent({
         if (this.walletMode) this.scheduleQuote();
       },
       deep: true
+    },
+    identityToken() {
+      this.quoteRunId += 1;
+      if (this.walletMode) this.scheduleQuote();
     }
   },
   beforeUnmount() {
@@ -102,7 +109,7 @@ export default defineComponent({
       state.quoteLoading = true;
       state.quoteUsdc = undefined;
       try {
-        const quote = await openaiimageOperator.quote(buildOpenAIImageGenerateRequest(this.config));
+        const quote = await openaiimageOperator.quote(buildOpenAIImageGenerateRequest(this.config), this.identityToken);
         if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
       } catch (error) {
         console.warn('x402 quote failed', error);

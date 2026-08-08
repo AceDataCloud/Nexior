@@ -22,9 +22,13 @@ describe('x402 image scenario contract', () => {
     const openAI = source('components/openaiimage/ConfigPanel.vue');
     expect(selector).toContain('state.quoteUsdc');
     expect(nano).toContain('<scenario-payment-mode scenario="nanobanana"');
-    expect(nano).toContain('nanobananaOperator.quote(buildNanobananaRequest(this.config))');
+    expect(nano).toContain('nanobananaOperator.quote(');
+    expect(nano).toContain('this.identityToken');
+    expect(source('pages/nanobanana/Index.vue')).toContain(':identity-token="credential?.token"');
     expect(openAI).toContain('<scenario-payment-mode scenario="openaiimage"');
-    expect(openAI).toContain('openaiimageOperator.quote(buildOpenAIImageGenerateRequest(this.config))');
+    expect(openAI).toContain('openaiimageOperator.quote(');
+    expect(openAI).toContain('this.identityToken');
+    expect(source('pages/openaiimage/Index.vue')).toContain(':identity-token="credential?.token"');
   });
 
   it('keeps both submissions async and routes both modes through existing operators', () => {
