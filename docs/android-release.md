@@ -24,7 +24,7 @@ src/constants/mobile.ts        (MOBILE_APP_VERSION)
         │
         │  git tag android-v<version> && git push
         ▼
-.github/workflows/build-android.yaml
+.github/workflows/release-android.yaml
    ├── checkout
    ├── setup-node@v6  (Node 22)
    ├── setup-java@v5  (Temurin 21)            ← Capacitor 8 requires Java 21
@@ -65,11 +65,11 @@ gh pr create --base main --title "chore(release): bump version to x.y.z" --fill
 
 # 5. Squash-merge once CI is green + reviewed
 
-# 6. Tag the merged commit on main → CI auto-uploads to the internal track
+# 6. Tag the merged commit on main → CI auto-uploads to the beta track
 git checkout main && git pull --ff-only origin main
 git tag android-vX.Y.Z
 git push origin android-vX.Y.Z
-gh run list --workflow build-android.yaml --limit 1   # confirm run started
+gh run list --workflow release-android.yaml --limit 1   # confirm run started
 ```
 
 ### Promote internal → production
@@ -79,15 +79,13 @@ Two options:
 - **Manual (preferred for first releases)** — open Play Console,
   Release → Testing → Internal testing → "Promote release" → choose
   **Production** track → rollout %.
-- **Workflow dispatch** — re-run the pipeline pinned at any commit
-  with `track=production`:
+- **Workflow dispatch** — run **Release · Android** with `track=beta`,
+  `promote_to_production=true`, and the desired `rollout_percent`. For example:
   ```bash
-  gh workflow run build-android.yaml -R AceDataCloud/Nexior \
-    -f track=production -f release_status=draft
+  gh workflow run release-android.yaml -R AceDataCloud/Nexior \
+    -f track=beta -f promote_to_production=true -f rollout_percent=1.0
   ```
-  `release_status=draft` lets you review the rollout in Play Console
-  before publishing. Use `release_status=completed` for an
-  immediate 100 % rollout.
+  Use a value below `1.0` for a staged Production rollout.
 
 ## Versioning rules
 
@@ -122,7 +120,7 @@ Console uploads).
 
 Capacitor 8 hard-codes `JavaVersion.VERSION_21` into the auto-generated
 `android/app/capacitor.build.gradle`. The CI workflow must therefore
-use Java 21 (`JAVA_VERSION: '21'` in `build-android.yaml`). If you see
+use Java 21 (`JAVA_VERSION: '21'` in `release-android.yaml`). If you see
 this error, check that `actions/setup-java@v5` is pinned to 21 — never
 17.
 
@@ -178,7 +176,7 @@ the Gradle command line.
 ## What was validated on 2026-05-23
 
 - PR [#785](https://github.com/AceDataCloud/Nexior/pull/785) — Java
-  17 → 21 in `build-android.yaml` (Capacitor 8 hard requirement).
+  17 → 21 in `release-android.yaml` (Capacitor 8 hard requirement).
 - PR [#786](https://github.com/AceDataCloud/Nexior/pull/786) —
   three-source signing resolution in `android/app/build.gradle` +
   workflow migration from deprecated `track:` to `tracks:` input on

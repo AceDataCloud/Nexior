@@ -2,7 +2,7 @@
 
 The desktop client is the existing Vue/Vite app packaged with Electron. Build,
 sign/notarize, and publish are automated in
-[`.github/workflows/desktop.yml`](../.github/workflows/desktop.yml); auto-update
+[`.github/workflows/release-desktop.yaml`](../.github/workflows/release-desktop.yaml); auto-update
 is electron-updater against a COS-hosted feed.
 
 See the design + adversarial review under `plans/nexior-desktop` (Index repo).
@@ -46,21 +46,21 @@ manifest** (artifacts are immutable, never deleted).
 
 ## Cutting a release
 
-The normal product release is aggregated once per day. Actions → **publish**
+The normal product release is aggregated once per day. Actions → **Release · Daily**
 runs Beachball against the accumulated change files, publishes npm, creates a
 draft GitHub Release, and calls this workflow to attach Windows and both macOS
 installers. The Release becomes public only after Web dist, APK, EXE, x64 DMG,
-and arm64 DMG all exist. Run **publish** manually for an urgent full release.
+and arm64 DMG all exist. Run **Release · Daily** manually for an urgent full release.
 
 Desktop auto-update feeds remain separate:
 
-- **Beta (signed or unsigned):** Actions → **Desktop** → _Run workflow_ → channel `beta`.
-- **Stable (requires signing certs):** push a `desktop-v*` tag or run **Desktop**
+- **Beta (signed or unsigned):** Actions → **Release · Desktop** → _Run workflow_ → channel `beta`.
+- **Stable (requires signing certs):** push a `desktop-v*` tag or run **Release · Desktop**
   with channel `latest`.
 
 Flow: `e2e` smoke → `build` matrix → `electron-builder` → workflow artifacts.
 A daily product release attaches installers to its draft GitHub Release without
-changing the COS feed. A direct Desktop release publishes to COS behind the
+changing the COS feed. A direct `Release · Desktop` run publishes to COS behind the
 `desktop-release` approval gate. `dry_run` skips that COS publish.
 
 ## Cross-repo prerequisites for desktop login

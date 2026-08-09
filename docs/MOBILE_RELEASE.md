@@ -13,10 +13,10 @@ PR merge → main ──→ Web 自动部署
 独立移动渠道工作流 → Google Play (AAB) / TestFlight (IPA)
 ```
 
-- **聚合版本 workflow**: `.github/workflows/publish.yaml`
-- **完整 GitHub Release workflow**: `.github/workflows/github-release.yaml`
-- **Android workflow**: `.github/workflows/build-android.yaml`
-- **iOS workflow**: `.github/workflows/build-ios.yaml`
+- **聚合版本 workflow**: `.github/workflows/release-daily.yaml`
+- **完整 GitHub Release workflow**: `.github/workflows/release-assets.yaml`
+- **Android workflow**: `.github/workflows/release-android.yaml`
+- **iOS workflow**: `.github/workflows/release-ios.yaml`
 - **版本同步脚本**: `scripts/sync-native-version.js`
 
 GitHub Release 出包不会上传 Play 或提交 App Store；测试渠道与正式商店仍由独立工作流和 review-state gate 控制。
@@ -88,10 +88,10 @@ cd android && chmod +x gradlew && ./gradlew bundleRelease \
 ### 7. 触发 CI 构建
 
 ```bash
-# 方式 1：打 tag 自动触发（默认推到 internal track）
+# 方式 1：打 tag 自动触发（默认推到 beta / Open testing）
 git tag android-v3.29.5 && git push origin android-v3.29.5
 
-# 方式 2：GitHub Actions 页面 → Build Android → Run workflow → 选择 track
+# 方式 2：GitHub Actions 页面 → Release · Android → Run workflow → 选择 track
 #   internal  → 内部测试
 #   alpha     → 封闭测试
 #   beta      → 公开测试
@@ -165,7 +165,7 @@ base64 -i AuthKey_XXXXXXXXXX.p8 | tr -d '\n' > key.b64
 # 方式 1：打 tag 自动触发
 git tag ios-v3.29.5 && git push origin ios-v3.29.5
 
-# 方式 2：GitHub Actions 页面 → Build iOS → Run workflow
+# 方式 2：GitHub Actions 页面 → Release · iOS → Run workflow
 ```
 
 构建完成后 IPA 自动上传到 TestFlight，审核通过后可发布到 App Store。
@@ -175,10 +175,10 @@ git tag ios-v3.29.5 && git push origin ios-v3.29.5
 ## 三、日常发版流程
 
 1. PR 必须带 Beachball change 文件；合并到 `main` 后 Web 仍立即自动部署。
-2. 每天北京时间 04:07，`publish` 把当天 change 文件聚合成一个版本，发布 npm，并组装完整 GitHub Release。
-3. 需要提前出包时，在 Actions 手动运行 **publish**；它与定时任务共享 concurrency，不会并发发两个版本。
-4. 需要手动重新部署 Web 时，运行 **deploy**。部署不会创建产品 Release。
-5. GitHub Release 只构建可下载 APK，不上传 Play。Android/iOS 测试渠道在聚合发布后独立运行，正式商店继续由 **Auto Production Mobile** 或 **Release Mobile** 的门禁控制。
+2. 每天北京时间 04:07，`Release · Daily` 把当天 change 文件聚合成一个版本，发布 npm，并组装完整 GitHub Release。
+3. 需要提前出包时，在 Actions 手动运行 **Release · Daily**；它与定时任务共享 concurrency，不会并发发两个版本。
+4. 需要手动重新部署 Web 时，运行 **Deploy · Web**。部署不会创建产品 Release。
+5. GitHub Release 只构建可下载 APK，不上传 Play。Android/iOS 测试渠道在聚合发布后独立运行，正式商店继续由 **Release · Mobile production** 或 **Release · Mobile manual** 的门禁控制。
 
 Android 可通过 GitHub Actions 手动选择 track 逐步放量：`internal → alpha → beta → production`。旧的 `android-v*` / `ios-v*` 触发方式仍保留用于明确的商店构建。
 
@@ -208,7 +208,7 @@ Android 可通过 GitHub Actions 手动选择 track 逐步放量：`internal →
 
 App 通过 `@capgo/capacitor-updater` 从 COS 自托管的 manifest 拉新 `dist/` bundle，实现免商店审核的前端代码热更新（仅 JS/HTML/CSS，符合 Apple/Google 政策）。
 
-> **当前 PR**（feat/ota-client）只接入了客户端 SDK，发布流水线还未自动化。手动发布 OTA 流程见下文；CI 集成在后续 PR 中完成。
+> OTA 发布已通过 **Release · OTA** 工作流自动化，但客户端仍需由原生构建显式启用 `VITE_LIVE_UPDATE_ENABLED` 才会消费更新。
 
 ### 启用
 
@@ -263,11 +263,11 @@ acedatacloud2-1256437459/      # COS bucket
 | `checksum` | 是 | bundle zip 的 sha256 (base64 编码)。客户端激活前校验，不匹配则丢弃。 |
 | `min_native_version` | 否 | 兼容的最低原生壳版本。低于此版本的安装会跳过此 bundle（由 `app-version` 闸门处理强升）。 |
 
-### 发布一个 OTA（`publish-ota` 工作流）
+### 发布一个 OTA（`Release · OTA` 工作流）
 
-通过 `.github/workflows/publish-ota.yaml` 一键发布，iOS 和 Android 同步生效。
+通过 `.github/workflows/release-ota.yaml` 一键发布，iOS 和 Android 同步生效。
 
-**触发方式：** GitHub Actions → `publish-ota` → Run workflow。
+**触发方式：** GitHub Actions → `Release · OTA` → Run workflow。
 
 **参数：**
 

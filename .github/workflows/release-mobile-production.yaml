@@ -1,4 +1,4 @@
-name: Auto Production Mobile (daily)
+name: Release · Mobile production
 
 # Daily, fully-automatic production release for iOS and Android — but ONLY when
 # it is safe to do so. A "review-state gate" inspects each store BEFORE we touch
@@ -13,8 +13,8 @@ name: Auto Production Mobile (daily)
 #     - a release is inProgress / halted / draft    -> rollout in flight, don't stack
 #     - package.json versionCode is not newer        -> nothing to ship
 #
-# When the gate is clean it dispatches the proven build-ios.yaml /
-# build-android.yaml with production toggles ON:
+# When the gate is clean it dispatches the proven release-ios.yaml /
+# release-android.yaml with production toggles ON:
 #     - iOS      -> TestFlight + auto-submit for App Store review
 #     - Android  -> beta upload (dedup-skipped if already there) then promote
 #                   the same versionCode from beta -> Production at the rollout
@@ -61,8 +61,7 @@ on:
         type: string
 
 permissions:
-  actions: write
-  contents: read
+  contents: write
 
 # Never let two store-release runs overlap (a manual dispatch racing the daily
 # cron, etc.). Queue rather than cancel so an in-flight release is never killed.
@@ -274,66 +273,34 @@ jobs:
           PY
 
   ios:
-    name: Dispatch iOS production
+    name: iOS · App Store review
     needs: gate
     if: >-
       needs.gate.outputs.ios-ok == 'true'
       && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
       && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'ios')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Trigger build-ios.yaml (TestFlight + App Store review)
-        env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          GATE_REASON: ${{ needs.gate.outputs.ios-reason }}
-          VERSION: ${{ needs.gate.outputs.version }}
-        run: |
-          echo "::notice::iOS gate clean ($GATE_REASON) — submitting v$VERSION."
-          gh workflow run build-ios.yaml \
-            --ref "${{ github.ref_name }}" \
-            -f auto_distribute_external=true \
-            -f auto_submit_review=true \
-            -f force=false
+    uses: ./.github/workflows/release-ios.yaml
+    with:
+      auto_distribute_external: true
+      auto_submit_review: true
+      force: false
+    secrets: inherit
 
   android:
-    name: Dispatch Android production
+    name: Android · Play production
     needs: gate
     if: >-
       needs.gate.outputs.android-ok == 'true'
       && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
       && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'android')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Trigger build-android.yaml (Production track, full rollout)
-        env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          ROLLOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.android_rollout_percent || '1.0' }}
-          GATE_REASON: ${{ needs.gate.outputs.android-reason }}
-          VERSION: ${{ needs.gate.outputs.version }}
-        run: |
-          # ROLLOUT is a free-form workflow_dispatch input; force it to a bare
-          # decimal in [0,1] before it reaches gh / the Play API.
-          if ! printf '%s' "$ROLLOUT" | grep -Eq '^(0(\.[0-9]+)?|1(\.0+)?)$'; then
-            echo "::warning::Invalid rollout '$ROLLOUT' — defaulting to 1.0."
-            ROLLOUT='1.0'
-          fi
-          printf '%s\n' "::notice::Android gate clean ($GATE_REASON) — releasing v$VERSION at rollout=$ROLLOUT."
-          # Always beta → promote (even at 100%): build-android's dedup preflight
-          # is track-agnostic, so a direct track=production dispatch skips the
-          # build (the test pipeline already put this versionCode on beta) and
-          # promote never runs → nothing reaches production. The promote job runs
-          # on a skipped build and pushes the existing beta bundle to production
-          # (rollout >= 1.0 commits it as a completed 100% release).
-          gh workflow run build-android.yaml \
-            --ref "${{ github.ref_name }}" \
-            -f track=beta \
-            -f promote_to_production=true \
-            -f rollout_percent="$ROLLOUT" \
-            -f force=false
+    uses: ./.github/workflows/release-android.yaml
+    with:
+      upload_to_play: true
+      track: beta
+      promote_to_production: true
+      rollout_percent: ${{ github.event_name == 'workflow_dispatch' && inputs.android_rollout_percent || '1.0' }}
+      force: false
+    secrets: inherit
 
   summary:
     name: Gate summary

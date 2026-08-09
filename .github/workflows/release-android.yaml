@@ -1,4 +1,4 @@
-name: Build Android
+name: Release · Android
 
 on:
   push:
@@ -7,11 +7,32 @@ on:
   workflow_call:
     inputs:
       release_tag:
-        description: 'Existing draft Release to receive the sideload APK.'
-        required: true
+        description: 'Optional draft Release to receive the sideload APK.'
+        required: false
+        default: ''
         type: string
       upload_to_play:
         description: 'Upload the AAB to Google Play.'
+        required: false
+        default: false
+        type: boolean
+      track:
+        description: 'Initial Google Play track.'
+        required: false
+        default: 'beta'
+        type: string
+      promote_to_production:
+        description: 'Promote the version from the initial track to Production.'
+        required: false
+        default: false
+        type: boolean
+      rollout_percent:
+        description: 'Production staged rollout fraction (0.0–1.0).'
+        required: false
+        default: '1.0'
+        type: string
+      force:
+        description: 'Build even if this versionCode already exists on Google Play.'
         required: false
         default: false
         type: boolean
@@ -69,6 +90,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
 
       - name: Determine version from package.json
         id: version
@@ -82,13 +105,9 @@ jobs:
 
       - name: Determine Play Store track
         id: track
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "track=${{ inputs.track }}" >> "$GITHUB_OUTPUT"
-          else
-            # Tag and reusable release builds use beta metadata by default.
-            echo "track=beta" >> "$GITHUB_OUTPUT"
-          fi
+        env:
+          INPUT_TRACK: ${{ inputs.track }}
+        run: echo "track=${INPUT_TRACK:-beta}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -96,13 +115,13 @@ jobs:
           python-version: '3.12'
 
       - name: Build without Play preflight
-        if: github.event_name == 'workflow_call' && !inputs.upload_to_play
+        if: inputs.release_tag != '' && !inputs.upload_to_play
         run: echo "should-build=true" >> "$GITHUB_OUTPUT"
         id: package_only
 
       - name: Check Play Console for existing AAB/APK
         id: check
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         env:
           FORCE: ${{ inputs.force }}
           SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -189,6 +208,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
@@ -224,14 +245,14 @@ jobs:
           mv android/app/src/main/assets/public android/app/src/full/assets/public
 
       - name: Build web assets (play flavor, Computer Use OFF, tree-shaken)
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           VITE_COMPUTER_USE: 'false'
         run: npm run build:android
 
       - name: Stage play-flavor web assets
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         # The Play web bundle is compiled with no Local Tools entry and no
         # Computer Use / AccessibilityService adapter code; it lives only in the
         # `play` flavor. cap copy re-processes dist into the main source set the
@@ -257,7 +278,7 @@ jobs:
         shell: bash
 
       - name: Build Play AAB (play flavor, no Computer Use)
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         working-directory: android
         run: |
           chmod +x gradlew
@@ -283,14 +304,14 @@ jobs:
           path: android/app/build/outputs/apk/full/release/app-full-release.apk
 
       - name: Upload AAB artifact
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
 
       - name: Verify draft Release exists
-        if: github.event_name == 'workflow_call'
+        if: inputs.release_tag != ''
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
           REL_TAG: ${{ inputs.release_tag }}
@@ -299,11 +320,11 @@ jobs:
           test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
 
       - name: Stage versioned APK
-        if: github.event_name == 'workflow_call'
+        if: inputs.release_tag != ''
         run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
 
       - name: Attach APK to draft GitHub Release
-        if: github.event_name == 'workflow_call'
+        if: inputs.release_tag != ''
         uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
@@ -314,7 +335,7 @@ jobs:
           fail_on_unmatched_files: true
 
       - name: Upload to Play Store
-        if: github.event_name != 'workflow_call' || inputs.upload_to_play
+        if: inputs.upload_to_play || github.event_name != 'workflow_call'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -322,12 +343,6 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
-          # Play refuses to auto-send an edit for review while the app is under
-          # a policy rejection ("Changes cannot be sent for review
-          # automatically"), which rolls back the whole edit and loses the
-          # upload. Committing without review lands the bundle as a draft; it
-          # is then submitted from the Play Console UI.
-          changesNotSentForReview: true
 
   promote:
     name: Promote to Production
@@ -339,9 +354,8 @@ jobs:
       always()
       && needs.preflight.result == 'success'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
-      && github.event_name != 'workflow_call'
       && needs.preflight.outputs.track != 'production'
-      && (github.event_name != 'workflow_dispatch' || inputs.promote_to_production)
+      && (inputs.promote_to_production || github.event_name == 'push')
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
@@ -355,7 +369,7 @@ jobs:
           PACKAGE_NAME: com.acedatacloud.nexior
           VERSION_CODE: ${{ needs.preflight.outputs.version-code }}
           VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
-          ROLLOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.rollout_percent || '1.0' }}
+          ROLLOUT: ${{ inputs.rollout_percent || '1.0' }}
         # Creates a Play Console edit, points the production track at the same versionCode
         # uploaded in the previous job, and commits. Uses staged rollout when ROLLOUT < 1.
         run: |
@@ -430,13 +444,7 @@ jobs:
                   print(f'::error::production track update failed: {r.status_code} {r.text}')
                   r.raise_for_status()
 
-              # Same policy-rejection caveat as the upload job: while the app
-              # is under review/rejection Play refuses to auto-send an edit for
-              # review and rolls the whole edit back. Commit without review and
-              # submit from the Console UI.
-              c = requests.post(f'{base}/edits/{edit_id}:commit',
-                                params={'changesNotSentForReview': 'true'},
-                                headers=h, timeout=60)
+              c = requests.post(f'{base}/edits/{edit_id}:commit', headers=h, timeout=60)
               if c.status_code >= 400:
                   print(f'::error::commit failed: {c.status_code} {c.text}')
                   c.raise_for_status()
