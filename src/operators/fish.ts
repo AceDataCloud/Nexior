@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from 'axios';
 import { BASE_URL_API } from '@/constants';
 import {
   IFishModelListResponse,
-  IFishTask,
   IFishTaskResponse,
   IFishTasksResponse,
   IFishTtsRequest,
@@ -94,18 +93,14 @@ class FishOperator extends BaseTaskOperator<
     });
   }
 
-  /**
-   * POST /fish/model — create a voice clone. The platform's JSON-with-URL
-   * variant (`voices` is a single https URL pointing at the reference audio).
-   * Async-only when `callback_url` is supplied.
-   */
+  /** POST /fish/model — synchronously create and return a voice model. */
   async createModel(
     data: {
       title: string;
       voices: string;
       description?: string;
       cover_image?: string;
-      train_mode?: 'fast' | 'precise';
+      train_mode?: 'fast';
       type?: 'tts';
       visibility?: 'public' | 'unlist' | 'private';
       tags?: string[];
@@ -115,7 +110,7 @@ class FishOperator extends BaseTaskOperator<
       callback_url?: string;
     },
     options: { token: string }
-  ): Promise<AxiosResponse<IFishTask & { id?: string }>> {
+  ): Promise<AxiosResponse<IFishVoiceModel>> {
     return axios.post(
       '/fish/model',
       { type: 'tts', ...data },

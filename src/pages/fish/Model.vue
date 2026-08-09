@@ -68,22 +68,28 @@ export default defineComponent({
     async onGetVoices() {
       await this.$store.dispatch('fish/getVoices');
     },
-    async onCreate(payload: {
-      title: string;
-      voices: string;
-      description?: string;
-      visibility?: 'public' | 'unlist' | 'private';
-      train_mode?: 'fast' | 'precise';
-      texts?: string[];
-      enhance_audio_quality?: boolean;
-      generate_sample?: boolean;
-    }) {
+    async onCreate(
+      payload: {
+        title: string;
+        voices: string;
+        description?: string;
+        visibility?: 'public' | 'unlist' | 'private';
+        train_mode?: 'fast';
+        texts?: string[];
+        enhance_audio_quality?: boolean;
+        generate_sample?: boolean;
+      },
+      callbacks: { resolve: () => void; reject: (error?: unknown) => void }
+    ) {
       if (!ensureLoggedIn()) {
+        callbacks.reject();
         return;
       }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
+        ElMessage.error(this.$t('fish.message.createModelFailed'));
+        callbacks.reject();
         return;
       }
       this.loading = true;
@@ -91,8 +97,8 @@ export default defineComponent({
       try {
         await fishOperator.createModel(payload, { token });
         ElMessage.success(this.$t('fish.message.createModelSuccess'));
-        // Refresh the voice list so the new entry appears immediately.
         await this.onGetVoices();
+        callbacks.resolve();
       } catch (error: any) {
         const response = error?.response?.data;
         if (response?.error?.code === ERROR_CODE_USED_UP) {
@@ -100,6 +106,7 @@ export default defineComponent({
         } else {
           ElMessage.error(response?.error?.message || this.$t('fish.message.createModelFailed'));
         }
+        callbacks.reject(error);
       } finally {
         this.loading = false;
       }
