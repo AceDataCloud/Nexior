@@ -9,6 +9,8 @@
 #   * 80/443 LoadBalancer (separate public CLB; do NOT share with nginx-router)
 #   * Caddy 2 with `tls { on_demand }` and an `ask` callback that consults
 #     PlatformBackend (/api/v1/site-domains/check) before signing a cert.
+#   * A local HTML injector that resolves the Site by Host and writes tenant
+#     title, description, Open Graph, canonical, and favicon into raw HTML.
 #   * cbs PVC at /data so ACME account, certs, and locks survive pod restarts.
 #
 # Tenant flow:
@@ -59,9 +61,10 @@ data:
         on_demand
       }
 
-      # Reverse-proxy to studio-frontend with the original Host header
-      # preserved so Nexior's per-origin Site lookup keeps working.
-      reverse_proxy studio-frontend.acedatacloud.svc.cluster.local:8085 {
+      # The injector streams non-HTML responses unchanged and rewrites only
+      # successful HTML documents, so crawler-visible metadata is tenant-aware
+      # before Vue runs. The original Host remains the Site lookup key.
+      reverse_proxy localhost:3000 {
         header_up Host {host}
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-For {remote_host}
@@ -140,26 +143,28 @@ spec:
     metadata:
       labels:
         app: caddy-studio-proxy
+      annotations:
+        acedata.cloud/html-injector-sha: '${INJECTOR_SHA}'
     spec:
       containers:
         - name: caddy
           image: caddy:2.8-alpine
           imagePullPolicy: IfNotPresent
-          args: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+          args: ['caddy', 'run', '--config', '/etc/caddy/Caddyfile', '--adapter', 'caddyfile']
           ports:
-            - { name: http,  containerPort: 80,   protocol: TCP }
-            - { name: https, containerPort: 443,  protocol: TCP }
+            - { name: http, containerPort: 80, protocol: TCP }
+            - { name: https, containerPort: 443, protocol: TCP }
             - { name: admin, containerPort: 2019, protocol: TCP }
           env:
             # Caddy stores everything (ACME account, certs, locks) under
             # $XDG_DATA_HOME/caddy by default. Pin it to /data so the
             # PVC mount actually catches it.
-            - { name: XDG_DATA_HOME,   value: /data }
+            - { name: XDG_DATA_HOME, value: /data }
             - { name: XDG_CONFIG_HOME, value: /config }
           volumeMounts:
             - { name: caddyfile, mountPath: /etc/caddy }
-            - { name: data,      mountPath: /data }
-            - { name: config,    mountPath: /config }
+            - { name: data, mountPath: /data }
+            - { name: config, mountPath: /config }
           resources:
             requests:
               cpu: 100m
@@ -185,6 +190,35 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 30
             failureThreshold: 3
+        - name: html-injector
+          image: node:22-alpine
+          imagePullPolicy: IfNotPresent
+          command: ['node', '/app/server.mjs']
+          ports:
+            - { name: injector, containerPort: 3000, protocol: TCP }
+          env:
+            - { name: PORT, value: '3000' }
+            - { name: STUDIO_UPSTREAM, value: 'http://studio-frontend.acedatacloud.svc.cluster.local:8085' }
+            - { name: SITE_API, value: 'https://platform.acedata.cloud/api/v1/sites/' }
+          volumeMounts:
+            - { name: html-injector, mountPath: /app, readOnly: true }
+          resources:
+            requests:
+              cpu: 25m
+              memory: 48Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
       volumes:
         - name: caddyfile
           configMap:
@@ -197,6 +231,9 @@ spec:
             claimName: caddy-studio
         - name: config
           emptyDir: {}
+        - name: html-injector
+          configMap:
+            name: studio-html-injector
 ---
 apiVersion: v1
 kind: Service
@@ -210,12 +247,12 @@ metadata:
     # the nginx-router LB; that one already terminates 80/443 and would
     # collide). Postpaid traffic + standard accounting.
     service.kubernetes.io/qcloud-loadbalancer-internet-charge-type: TRAFFIC_POSTPAID_BY_HOUR
-    service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: "200"
+    service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: '200'
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   ports:
-    - { name: http,  port: 80,  targetPort: 80,  protocol: TCP }
+    - { name: http, port: 80, targetPort: 80, protocol: TCP }
     - { name: https, port: 443, targetPort: 443, protocol: TCP }
   selector:
     app: caddy-studio-proxy

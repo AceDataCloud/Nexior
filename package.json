@@ -30,6 +30,7 @@
     "lint:staged": "lint-staged",
     "test": "vitest",
     "test:run": "vitest run",
+    "test:studio-seo": "node --test scripts/check-studio-html-injector.mjs",
     "test:e2e:desktop": "playwright test",
     "prettier": "prettier --write .",
     "change": "beachball change --no-commit",

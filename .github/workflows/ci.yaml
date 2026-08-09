@@ -66,5 +66,8 @@ jobs:
       - name: Run tests
         run: npm run test:run
 
+      - name: Verify Studio raw HTML tenant metadata
+        run: npm run test:studio-seo
+
       - name: Build
         run: npm run build

@@ -9,4 +9,9 @@ kubectl apply -f deploy/production/studio-ingress.yaml
 # with on-demand Let's Encrypt TLS). Idempotent; safe to re-apply on every
 # deploy. The Service provisions a separate public CLB the first time it
 # runs; subsequent applies are no-ops on the LB.
-kubectl apply -f deploy/production/studio-proxy.yaml
+kubectl create configmap studio-html-injector \
+  --namespace acedatacloud \
+  --from-file=server.mjs=deploy/production/studio-html-injector.mjs \
+  --dry-run=client -o yaml | kubectl apply -f -
+injector_sha=$(sha256sum deploy/production/studio-html-injector.mjs | cut -d' ' -f1)
+sed 's/${INJECTOR_SHA}/'"$injector_sha"'/g' deploy/production/studio-proxy.yaml | kubectl apply -f -
