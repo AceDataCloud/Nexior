@@ -1,9 +1,26 @@
-name: Build iOS
+name: Release · iOS
 
 on:
   push:
     tags:
       - 'ios-v*'
+  workflow_call:
+    inputs:
+      force:
+        description: 'Build even if this version already exists in TestFlight.'
+        required: false
+        default: false
+        type: boolean
+      auto_distribute_external:
+        description: 'Add the build to every external TestFlight group.'
+        required: false
+        default: true
+        type: boolean
+      auto_submit_review:
+        description: 'Submit the build for App Store review.'
+        required: false
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
       force:
@@ -314,7 +331,7 @@ jobs:
       always()
       && needs.preflight.result == 'success'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
-      && (github.event_name != 'workflow_dispatch' || inputs.auto_distribute_external || inputs.auto_submit_review)
+      && (inputs.auto_distribute_external || github.event_name == 'push' || inputs.auto_submit_review)
     runs-on: ubuntu-latest
 
     steps:
@@ -416,7 +433,7 @@ jobs:
           PY
 
       - name: Submit build for Beta App Review (external testing)
-        if: ${{ steps.tf_wait.outputs.build-id != '' && (github.event_name != 'workflow_dispatch' || inputs.auto_distribute_external) }}
+        if: ${{ steps.tf_wait.outputs.build-id != '' && (inputs.auto_distribute_external || github.event_name == 'push') }}
         continue-on-error: true
         env:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
@@ -540,7 +557,7 @@ jobs:
           PY
 
       - name: Distribute to external TestFlight groups
-        if: ${{ steps.tf_wait.outputs.build-id != '' && (github.event_name != 'workflow_dispatch' || inputs.auto_distribute_external) }}
+        if: ${{ steps.tf_wait.outputs.build-id != '' && (inputs.auto_distribute_external || github.event_name == 'push') }}
         env:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
@@ -601,7 +618,7 @@ jobs:
           PY
 
       - name: Submit build for App Store review
-        if: ${{ steps.tf_wait.outputs.build-id != '' && (github.event_name != 'workflow_dispatch' || inputs.auto_submit_review) }}
+        if: ${{ steps.tf_wait.outputs.build-id != '' && (inputs.auto_submit_review || github.event_name == 'push') }}
         continue-on-error: true
         env:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}

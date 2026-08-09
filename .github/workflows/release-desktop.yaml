@@ -1,4 +1,4 @@
-name: Desktop
+name: Release · Desktop
 
 # Build the Nexior desktop client (Windows .exe + macOS .dmg) and, for releases,
 # publish to Tencent Cloud COS so electron-updater can pick it up.
@@ -39,7 +39,7 @@ on:
       - 'scripts/gen-windows-icon.py'
       - 'scripts/gen-tray-icon.py'
       - 'scripts/publish_desktop_release.py'
-      - '.github/workflows/desktop.yml'
+      - '.github/workflows/release-desktop.yaml'
   workflow_call:
     inputs:
       release_tag:
@@ -90,6 +90,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -166,6 +168,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -295,6 +299,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
       - name: Download built installers
         uses: actions/download-artifact@v7
         with:

@@ -1,5 +1,5 @@
 # electron-builder config for the Nexior desktop client.
-# Packaging/signing/notarization run in CI (see .github/workflows/desktop.yml);
+# Packaging/signing/notarization run in CI (see .github/workflows/release-desktop.yaml);
 # secrets come from CI env, never the repo.
 appId: com.acedatacloud.nexior.desktop
 productName: AceData
@@ -104,7 +104,7 @@ mac:
   #   3) APPLE_KEYCHAIN + APPLE_KEYCHAIN_PROFILE
   # If none are set electron-builder signs but SILENTLY skips notarization →
   # Gatekeeper blocks user machines, so CI must provide them (see
-  # .github/workflows/desktop.yml). The unsigned path overrides this to `false`
+  # .github/workflows/release-desktop.yaml). The unsigned path overrides this to `false`
   # via `--config.mac.notarize=false`.
   notarize: true
 

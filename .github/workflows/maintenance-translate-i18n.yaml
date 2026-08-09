@@ -1,4 +1,4 @@
-name: Translate i18n
+name: Maintenance · Translate i18n
 
 on:
   workflow_dispatch:
@@ -51,7 +51,7 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           # MUST be a PAT (not GITHUB_TOKEN), otherwise the resulting PR will not
-          # trigger any workflows (including ci.yaml's pull_request job).
+          # trigger any workflows (including check-pr.yaml's pull_request job).
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           commit-message: 'ci: auto-translate i18n from zh-CN'
           title: 'ci: auto-translate i18n from zh-CN'

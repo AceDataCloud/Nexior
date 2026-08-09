@@ -1,0 +1,36 @@
+name: Release · Mobile testing
+
+# Publish the current version to Google Play beta and external TestFlight once
+# per day. Reusable platform jobs are awaited, so failures propagate here.
+on:
+  schedule:
+    # 05:47 Beijing time (UTC 21:47), after the daily asset release window.
+    - cron: '47 21 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mobile-testing-release
+  cancel-in-progress: false
+
+jobs:
+  android:
+    name: Android · Play beta
+    uses: ./.github/workflows/release-android.yaml
+    with:
+      upload_to_play: true
+      track: beta
+      promote_to_production: false
+      force: false
+    secrets: inherit
+
+  ios:
+    name: iOS · External TestFlight
+    uses: ./.github/workflows/release-ios.yaml
+    with:
+      auto_distribute_external: true
+      auto_submit_review: false
+      force: false
+    secrets: inherit

@@ -1,0 +1,70 @@
+name: Release · Mobile manual
+
+# One-click orchestrator for Android and iOS store releases. Platform workflows
+# are reusable jobs, so this run waits for and reports their real result.
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Which platforms to release'
+        required: true
+        default: 'both'
+        type: choice
+        options: [both, android, ios]
+      android_track:
+        description: 'Initial Android Play Store track'
+        required: false
+        default: 'beta'
+        type: choice
+        options: [internal, alpha, beta, production]
+      android_promote_to_production:
+        description: 'Promote Android from the initial track to Production'
+        required: false
+        default: true
+        type: boolean
+      android_rollout_percent:
+        description: 'Production rollout fraction (0.0–1.0)'
+        required: false
+        default: '1.0'
+        type: string
+      ios_auto_distribute_external:
+        description: 'Distribute iOS to every external TestFlight group'
+        required: false
+        default: true
+        type: boolean
+      ios_auto_submit_review:
+        description: 'Submit iOS for App Store review'
+        required: false
+        default: true
+        type: boolean
+      force:
+        description: 'Rebuild even if this version already exists on the store'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  android:
+    name: Android
+    if: inputs.platforms == 'both' || inputs.platforms == 'android'
+    uses: ./.github/workflows/release-android.yaml
+    with:
+      upload_to_play: true
+      track: ${{ inputs.android_track }}
+      promote_to_production: ${{ inputs.android_promote_to_production }}
+      rollout_percent: ${{ inputs.android_rollout_percent }}
+      force: ${{ inputs.force }}
+    secrets: inherit
+
+  ios:
+    name: iOS
+    if: inputs.platforms == 'both' || inputs.platforms == 'ios'
+    uses: ./.github/workflows/release-ios.yaml
+    with:
+      auto_distribute_external: ${{ inputs.ios_auto_distribute_external }}
+      auto_submit_review: ${{ inputs.ios_auto_submit_review }}
+      force: ${{ inputs.force }}
+    secrets: inherit

@@ -1,0 +1,137 @@
+name: Release · Daily
+
+# Aggregate merged change files into one product version, then ensure the latest
+# npm/tag version has a complete cross-platform GitHub Release.
+on:
+  schedule:
+    # 04:07 Beijing time (UTC 20:07), after the day's changes have accumulated.
+    - cron: '7 20 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-product-release
+  cancel-in-progress: false
+
+jobs:
+  version:
+    name: Publish and reconcile version
+    runs-on: ubuntu-latest
+    outputs:
+      needs_release: ${{ steps.reconcile.outputs.needs_release }}
+      release_tag: ${{ steps.reconcile.outputs.release_tag }}
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Set git credentials
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git remote set-url origin "https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/AceDataCloud/Nexior"
+
+      - name: Sync package.json baseline to npm latest
+        run: |
+          set -euo pipefail
+          PKG=$(node -p "require('./package.json').name")
+          LOCAL=$(node -p "require('./package.json').version")
+          NPM_LATEST=$(npm view "$PKG" version 2>/dev/null || true)
+          if [ -z "$NPM_LATEST" ]; then
+            echo "::warning::Could not fetch npm latest for $PKG; skipping baseline sync."
+            exit 0
+          fi
+          HIGHER=$(node -e "const s=require('semver'); console.log(s.gt(process.argv[1], process.argv[2]) ? '1' : '0')" "$NPM_LATEST" "$LOCAL")
+          if [ "$HIGHER" = "1" ]; then
+            echo "::warning::Local package.json version ($LOCAL) is behind npm registry ($NPM_LATEST)."
+            npm pkg set "version=$NPM_LATEST"
+            rm -f package.json.bak
+          fi
+
+      - name: Publish aggregated package version
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run release
+
+      - name: Reconcile latest tag and Release
+        id: reconcile
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          PKG=$(node -p "require('./package.json').name")
+          NPM_LATEST=$(npm view "$PKG" version)
+          TAGS=$(git ls-remote --tags --refs origin 'refs/tags/@acedatacloud/nexior_v*' \
+            | sed 's#.*refs/tags/@acedatacloud/nexior_v##')
+          LATEST_TAG_VERSION=$(printf '%s\n' "$TAGS" | node -e '
+            const semver = require("semver")
+            const fs = require("fs")
+            const versions = fs.readFileSync(0, "utf8").trim().split(/\s+/).filter(semver.valid)
+            if (!versions.length) process.exit(1)
+            process.stdout.write(versions.sort(semver.rcompare)[0])
+          ')
+
+          if [ "$LATEST_TAG_VERSION" != "$NPM_LATEST" ]; then
+            HIGHER=$(node -e "const s=require('semver'); console.log(s.gt(process.argv[1], process.argv[2]) ? '1' : '0')" "$NPM_LATEST" "$LATEST_TAG_VERSION")
+            if [ "$HIGHER" != "1" ]; then
+              echo "::error::Latest Git tag ($LATEST_TAG_VERSION) is ahead of npm latest ($NPM_LATEST)."
+              exit 1
+            fi
+
+            VERSION_COMMIT=$(git log -n 1 --format=%H -G '\"version\": \"'"$NPM_LATEST"'\"' origin/main -- package.json)
+            if [ -z "$VERSION_COMMIT" ] || [ "$(git show "$VERSION_COMMIT:package.json" | node -p 'JSON.parse(require("fs").readFileSync(0, "utf8")).version')" != "$NPM_LATEST" ]; then
+              echo "::error::Could not find the npm $NPM_LATEST version commit on main."
+              exit 1
+            fi
+            RELEASE_TAG="@acedatacloud/nexior_v${NPM_LATEST}"
+            echo "::warning::npm $NPM_LATEST exists without its tag; restoring $RELEASE_TAG."
+            git tag "$RELEASE_TAG" "$VERSION_COMMIT"
+            git push origin "refs/tags/$RELEASE_TAG"
+            LATEST_TAG_VERSION=$NPM_LATEST
+          fi
+
+          RELEASE_TAG="@acedatacloud/nexior_v${LATEST_TAG_VERSION}"
+          echo "release_tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+          if gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            IS_DRAFT=$(gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
+            if [ "$IS_DRAFT" = "false" ]; then
+              echo "needs_release=false" >> "$GITHUB_OUTPUT"
+              echo "::notice::$RELEASE_TAG is already public; nothing to assemble."
+              exit 0
+            fi
+            echo "::notice::Resuming incomplete draft $RELEASE_TAG."
+          else
+            echo "::notice::Tag $RELEASE_TAG exists without a GitHub Release; assembling it now."
+          fi
+          echo "needs_release=true" >> "$GITHUB_OUTPUT"
+
+  assets:
+    name: Assemble release assets
+    needs: version
+    if: needs.version.outputs.needs_release == 'true'
+    uses: ./.github/workflows/release-assets.yaml
+    with:
+      release_tag: ${{ needs.version.outputs.release_tag }}
+    secrets: inherit

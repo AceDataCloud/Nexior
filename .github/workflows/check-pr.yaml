@@ -1,4 +1,4 @@
-name: check
+name: Check · Pull request
 
 on:
   pull_request:
@@ -37,11 +37,10 @@ jobs:
 
       - name: Verify change file present (beachball)
         # Fail any PR that touches publishable files but carries no change file.
-        # Without a change file beachball never bumps the version on merge to
-        # main, so publish.yaml prints "Nothing to bump", no
-        # @acedatacloud/nexior_v* tag is pushed, and the mobile auto-release
-        # (auto-release-mobile.yaml) never fires. Run `npm run change` to add
-        # one — use type "none" for changes that should not ship a new version
+        # Without a change file Beachball does not create a product version, so
+        # Release · Daily has no new tag/assets to publish and mobile store jobs
+        # skip the duplicate version. Run `npm run change` to add one — use type
+        # "none" for changes that should not ship a new version
         # (e.g. CI-only or tooling edits). This is the same `beachball check`
         # the local .husky/pre-push hook runs, enforced in CI so it can't be
         # bypassed with --no-verify or a web/squash merge.
@@ -51,6 +50,9 @@ jobs:
 
       - name: Run lint
         run: npm run lint
+
+      - name: Release workflow contract
+        run: python3 scripts/check_release_workflows.py
 
       - name: Set up Python
         uses: actions/setup-python@v6

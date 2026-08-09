@@ -13,7 +13,7 @@ Reviewers asked us to keep the per-platform manifest split anyway so we can
 later diverge bundle policy (e.g. iOS lagging on a problematic build) without
 changing the publish pipeline.
 
-Designed to run from the `publish-ota` GitHub Actions workflow. Reads COS
+Designed to run from the `Release · OTA` GitHub Actions workflow. Reads COS
 credentials from env vars `TENCENT_CLOUD_SECRET_ID` / `TENCENT_CLOUD_SECRET_KEY`.
 """
 
