@@ -18,7 +18,12 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import { ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
-import { X402PaymentCancelledError, type X402PaymentQuote, type X402WalletContext } from '@/operators/x402';
+import {
+  X402PaymentCancelledError,
+  type X402PaymentQuote,
+  type X402WalletContext,
+  resolveX402WalletContext
+} from '@/operators/x402';
 
 export default defineComponent({
   name: 'SerpIndex',
@@ -80,11 +85,7 @@ export default defineComponent({
       }
     },
     getWalletContext(): X402WalletContext | undefined {
-      const walletApi = (this as any).$wallet;
-      const publicKey = walletApi?.publicKey?.value;
-      const adapter = walletApi?.wallet?.value?.adapter;
-      if (!publicKey || !adapter?.signTransaction) return undefined;
-      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+      return resolveX402WalletContext((this as any).$wallet);
     },
     async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
       return ElMessageBox.confirm(

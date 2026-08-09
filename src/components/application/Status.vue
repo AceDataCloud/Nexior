@@ -28,17 +28,43 @@
       </div>
 
       <div v-else-if="paymentMode === 'wallet'" class="wallet-mode">
-        <template v-if="solanaConnected && solanaAddress">
-          <div class="wallet-connected">
-            <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
-            <span class="wallet-address">{{ shortSolanaAddress }}</span>
-          </div>
-          <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
+        <el-radio-group v-model="walletRail" size="small">
+          <el-radio-button value="base">Base</el-radio-button>
+          <el-radio-button value="solana">Solana</el-radio-button>
+        </el-radio-group>
+        <template v-if="walletRail === 'base'">
+          <template v-if="evmAddress">
+            <div class="wallet-connected">
+              <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+              <span class="wallet-address">{{ shortEvmAddress }}</span>
+            </div>
+            <el-button @click="disconnectEvmWallet">{{ $t('coin.button.disconnect') }}</el-button>
+          </template>
+          <el-button v-else type="primary" @click="openEvmWalletPicker">
+            {{ $t('order.message.x402ConnectWallet') }}
+          </el-button>
         </template>
-        <el-button v-else type="primary" @click="walletPickerVisible = true">
-          {{ $t('order.message.x402ConnectWallet') }}
-        </el-button>
+        <template v-else>
+          <template v-if="solanaConnected && solanaAddress">
+            <div class="wallet-connected">
+              <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+              <span class="wallet-address">{{ shortSolanaAddress }}</span>
+            </div>
+            <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
+          </template>
+          <el-button v-else type="primary" @click="walletPickerVisible = true">
+            {{ $t('order.message.x402ConnectWallet') }}
+          </el-button>
+        </template>
         <p class="wallet-hint">{{ $t('common.x402Scenario.quoteBeforeSigning') }}</p>
+      </div>
+    </el-dialog>
+    <el-dialog v-model="evmWalletPickerVisible" title="Base" width="420px">
+      <div class="flex flex-col gap-2">
+        <el-button v-for="wallet in evmWallets" :key="wallet.id" @click="connectEvmWallet(wallet)">
+          {{ wallet.name }}
+        </el-button>
+        <p v-if="!evmWallets.length" class="wallet-hint">{{ $t('order.message.x402ConnectWallet') }}</p>
       </div>
     </el-dialog>
     <solana-wallet-picker-dialog
@@ -58,7 +84,7 @@
 <script lang="ts">
 import { WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
-import { ElButton, ElDialog, ElMessage, ElTabPane, ElTabs, ElTag } from 'element-plus';
+import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs, ElTag } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
@@ -70,9 +96,20 @@ import {
   setScenarioPaymentMode,
   type ScenarioPaymentMode
 } from '@/utils/x402/scenarioPayment';
+import {
+  activeEvmWallet,
+  activeWalletRail,
+  connectBaseWallet,
+  discoverEvmWallets,
+  setActiveEvmWallet,
+  setActiveWalletRail,
+  type EvmWalletInfo
+} from '@/utils/x402/evmWallet';
 export interface IData {
   visible: boolean;
   walletPickerVisible: boolean;
+  evmWalletPickerVisible: boolean;
+  evmWallets: EvmWalletInfo[];
   walletConnecting: boolean;
   applicationType: typeof IApplicationType;
 }
@@ -83,6 +120,8 @@ export default defineComponent({
     WalletIcon,
     ElButton,
     ElDialog,
+    ElRadioButton,
+    ElRadioGroup,
     ElTabPane,
     ElTabs,
     ElTag,
@@ -112,6 +151,8 @@ export default defineComponent({
     return {
       visible: false,
       walletPickerVisible: false,
+      evmWalletPickerVisible: false,
+      evmWallets: [],
       walletConnecting: false,
       applicationType: IApplicationType
     };
@@ -127,8 +168,28 @@ export default defineComponent({
       set(value: ScenarioPaymentMode) {
         if (!this.scenario) return;
         setScenarioPaymentMode(this.scenario, value);
-        if (value === 'wallet' && !this.solanaConnected) this.walletPickerVisible = true;
+        if (value === 'wallet') setActiveWalletRail(this.walletRail);
+        if (value === 'wallet' && this.walletRail === 'base' && !this.evmAddress) void this.openEvmWalletPicker();
+        if (value === 'wallet' && this.walletRail === 'solana' && !this.solanaConnected)
+          this.walletPickerVisible = true;
       }
+    },
+    walletRail: {
+      get(): 'base' | 'solana' {
+        return activeWalletRail();
+      },
+      set(value: 'base' | 'solana') {
+        setActiveWalletRail(value);
+        if (value === 'base' && !this.evmAddress) void this.openEvmWalletPicker();
+        if (value === 'solana' && !this.solanaConnected) this.walletPickerVisible = true;
+      }
+    },
+    evmAddress(): string | undefined {
+      return activeEvmWallet()?.address;
+    },
+    shortEvmAddress(): string {
+      const address = this.evmAddress || '';
+      return address ? `${address.slice(0, 6)}…${address.slice(-4)}` : '';
     },
     solanaConnected(): boolean {
       return Boolean((this as any).$wallet?.connected?.value);
@@ -155,13 +216,18 @@ export default defineComponent({
       return Number(this.application?.remaining_amount ?? 0);
     },
     balanceUnit(): string {
-      if (this.paymentMode === 'wallet') return this.solanaConnected ? '' : this.$t('common.x402Scenario.wallet');
+      if (this.paymentMode === 'wallet') return this.walletConnected ? '' : this.$t('common.x402Scenario.wallet');
       const unit = this.application?.service?.unit || 'credit';
       const key = `service.unit.${unit}` + (this.balanceAmount === 1 ? '' : 's');
       return this.$t(key);
     },
+    walletConnected(): boolean {
+      return this.walletRail === 'base' ? Boolean(this.evmAddress) : this.solanaConnected;
+    },
     balanceText(): string {
-      if (this.paymentMode === 'wallet') return this.solanaConnected ? this.shortSolanaAddress : '';
+      if (this.paymentMode === 'wallet') {
+        return this.walletRail === 'base' ? this.shortEvmAddress : this.solanaConnected ? this.shortSolanaAddress : '';
+      }
       const value = this.balanceAmount;
       if (!Number.isFinite(value)) return '0';
       if (value >= 1000) return Math.round(value).toLocaleString();
@@ -173,6 +239,27 @@ export default defineComponent({
     }
   },
   methods: {
+    async openEvmWalletPicker() {
+      this.evmWallets = await discoverEvmWallets();
+      this.evmWalletPickerVisible = true;
+    },
+    async connectEvmWallet(wallet: EvmWalletInfo) {
+      if (this.walletConnecting) return;
+      this.walletConnecting = true;
+      try {
+        await connectBaseWallet(wallet.provider);
+        setActiveWalletRail('base');
+        this.evmWalletPickerVisible = false;
+      } catch (error) {
+        console.warn('Base wallet connect failed', error);
+        ElMessage.error(String(this.$t('coin.message.connectError')));
+      } finally {
+        this.walletConnecting = false;
+      }
+    },
+    disconnectEvmWallet() {
+      setActiveEvmWallet(undefined);
+    },
     async connectSolanaWallet(wallet: any) {
       const walletApi = (this as any).$wallet;
       const adapterName = wallet?.adapter?.name;
@@ -182,6 +269,7 @@ export default defineComponent({
         walletApi.select(adapterName);
         await nextTick();
         await walletApi.connect();
+        setActiveWalletRail('solana');
         this.walletPickerVisible = false;
       } catch (error) {
         console.warn('wallet connect failed', error);

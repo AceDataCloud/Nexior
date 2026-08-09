@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import type { PaymentRequirement } from '@acedatacloud/x402-client';
 import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
+import { activeEvmWallet, activeWalletRail } from '@/utils/x402/evmWallet';
 
+const BASE_NETWORK = 'eip155:8453';
 const SOLANA_NETWORK = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
 const USDC_DECIMALS = 6;
 
@@ -10,6 +12,23 @@ export type PaymentMode = 'credits' | 'x402';
 export interface X402WalletContext {
   publicKey: { toBase58(): string; toString(): string };
   signTransaction(tx: unknown): Promise<unknown>;
+}
+
+export function resolveX402WalletContext(walletApi: any): X402WalletContext | undefined {
+  if (activeWalletRail() === 'base') {
+    const evm = activeEvmWallet();
+    if (!evm) return undefined;
+    return {
+      publicKey: { toBase58: () => evm.address, toString: () => evm.address },
+      signTransaction: async () => {
+        throw new Error('Solana signing is unavailable while Base is selected');
+      }
+    };
+  }
+  const publicKey = walletApi?.publicKey?.value;
+  const adapter = walletApi?.wallet?.value?.adapter;
+  if (!publicKey || !adapter?.signTransaction) return undefined;
+  return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
 }
 
 export interface X402PaymentQuote {
@@ -39,8 +58,9 @@ export class X402PaymentCancelledError extends Error {
   }
 }
 
-function selectSolanaExact(accepts: PaymentRequirement[]): PaymentRequirement | undefined {
-  return accepts.find((item) => item.network === SOLANA_NETWORK && item.scheme === 'exact');
+function selectExact(accepts: PaymentRequirement[], rail: 'base' | 'solana' = 'base'): PaymentRequirement | undefined {
+  const network = rail === 'base' ? BASE_NETWORK : SOLANA_NETWORK;
+  return accepts.find((item) => item.network === network && item.scheme === 'exact');
 }
 
 export function formatAtomicUsdc(value: string, decimals = USDC_DECIMALS): string {
@@ -66,9 +86,9 @@ function paymentRequired(error: unknown): { accepts: PaymentRequirement[] } {
 }
 
 function quoteFromChallenge(challenge: { accepts: PaymentRequirement[] }): X402PaymentQuote {
-  const requirement = selectSolanaExact(challenge.accepts || []);
+  const requirement = selectExact(challenge.accepts || [], activeWalletRail());
   const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
-  if (!requirement || !amountAtomic) throw new Error('No Solana exact payment option is available');
+  if (!requirement || !amountAtomic) throw new Error('No supported exact payment option is available');
   return {
     amountAtomic,
     amountUsdc: formatAtomicUsdc(amountAtomic),
@@ -118,19 +138,34 @@ export async function postWithX402<T>(
       }
     });
   } catch (error) {
-    const quote = quoteFromChallenge(paymentRequired(error));
-    const { requirement } = quote;
+    const challenge = paymentRequired(error);
+    const evmWallet = activeEvmWallet();
+    const rail = activeWalletRail();
+    const requirement = selectExact(challenge.accepts || [], rail);
+    const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
+    if (!requirement || !amountAtomic) throw new Error('No supported exact payment option is available');
+    const quote: X402PaymentQuote = {
+      amountAtomic,
+      amountUsdc: formatAtomicUsdc(amountAtomic),
+      network: requirement.network,
+      requirement
+    };
 
     const approved = await options.confirm(quote);
     if (!approved) throw new X402PaymentCancelledError();
 
-    const [{ Buffer }, { buildSolanaPayment }] = await Promise.all([
-      import('buffer'),
-      import('@acedatacloud/x402-client/solana')
-    ]);
+    const { Buffer } = await import('buffer');
     if (!(globalThis as any).Buffer) (globalThis as any).Buffer = Buffer;
-    const blockhash = await fetchSolanaBlockhash(requirement.network);
-    const envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
+    let envelope: unknown;
+    if (rail === 'base') {
+      if (!evmWallet) throw new Error('Connect a Base wallet before signing');
+      const { signEVMPayment } = await import('@acedatacloud/x402-client');
+      envelope = await signEVMPayment(requirement, evmWallet.provider, evmWallet.address);
+    } else {
+      const { buildSolanaPayment } = await import('@acedatacloud/x402-client/solana');
+      const blockhash = await fetchSolanaBlockhash(requirement.network);
+      envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
+    }
     const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
     return axios.post<T>(path, data, {
       baseURL: BASE_URL_X402,
