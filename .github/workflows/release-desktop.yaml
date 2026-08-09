@@ -267,7 +267,7 @@ jobs:
           if-no-files-found: error
 
       - name: Verify draft Release exists
-        if: github.event_name == 'workflow_call'
+        if: inputs.release_tag != ''
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
           REL_TAG: ${{ inputs.release_tag }}
@@ -277,7 +277,7 @@ jobs:
           test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
 
       - name: Attach installer to draft GitHub Release
-        if: github.event_name == 'workflow_call'
+        if: inputs.release_tag != ''
         uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
