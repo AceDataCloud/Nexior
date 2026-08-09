@@ -2,6 +2,7 @@
 """Validate the release workflow names and call graph."""
 
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
@@ -74,11 +75,13 @@ def main() -> None:
         require("uses: ./.github/workflows/release-" in text, f"{parent} has no reusable workflow call")
 
     searchable = {".yaml", ".yml", ".md", ".py"}
+    tracked = subprocess.check_output(["git", "-C", ROOT, "ls-files", "-z"]).decode().split("\0")
     stale: list[str] = []
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or path.suffix not in searchable or ".git" in path.parts:
+    for relative in tracked:
+        if not relative:
             continue
-        if path.name.startswith("CHANGELOG") or path == Path(__file__).resolve():
+        path = ROOT / relative
+        if path.suffix not in searchable or path.name.startswith("CHANGELOG") or path == Path(__file__).resolve():
             continue
         text = path.read_text(errors="replace")
         for old in OLD:
