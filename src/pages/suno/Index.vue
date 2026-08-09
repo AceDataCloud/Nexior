@@ -39,7 +39,8 @@ import {
   X402PaymentCancelledError,
   type OperatorRequestOptions,
   type X402PaymentQuote,
-  type X402WalletContext
+  type X402WalletContext,
+  resolveX402WalletContext
 } from '@/operators/x402';
 
 interface IData {
@@ -306,11 +307,7 @@ export default defineComponent({
         this.walletTaskIds.unshift(taskId);
     },
     getWalletContext(): X402WalletContext | undefined {
-      const walletApi = (this as any).$wallet;
-      const publicKey = walletApi?.publicKey?.value;
-      const adapter = walletApi?.wallet?.value?.adapter;
-      if (!publicKey || !adapter?.signTransaction) return undefined;
-      return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+      return resolveX402WalletContext((this as any).$wallet);
     },
     async confirmWalletPayment(quote: X402PaymentQuote): Promise<boolean> {
       return ElMessageBox.confirm(

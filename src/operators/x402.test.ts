@@ -7,7 +7,14 @@ const mocks = vi.hoisted(() => ({
     x402Version: 2,
     accepted: requirement,
     payload: { transaction: 'signed-transaction' }
-  }))
+  })),
+  signEVMPayment: vi.fn(async (requirement: unknown) => ({
+    x402Version: 2,
+    accepted: requirement,
+    payload: { authorization: { from: '0xpayer' }, signature: '0xsigned' }
+  })),
+  activeEvmWallet: vi.fn(),
+  activeWalletRail: vi.fn()
 }));
 
 vi.mock('axios', () => ({
@@ -18,6 +25,11 @@ vi.mock('axios', () => ({
   }
 }));
 vi.mock('@acedatacloud/x402-client/solana', () => ({ buildSolanaPayment: mocks.buildSolanaPayment }));
+vi.mock('@acedatacloud/x402-client', () => ({ signEVMPayment: mocks.signEVMPayment }));
+vi.mock('@/utils/x402/evmWallet', () => ({
+  activeEvmWallet: mocks.activeEvmWallet,
+  activeWalletRail: mocks.activeWalletRail
+}));
 
 import { formatAtomicUsdc, postWithX402, quoteX402, X402PaymentCancelledError } from './x402';
 
@@ -37,8 +49,17 @@ const wallet = {
   signTransaction: vi.fn()
 };
 
-function challengeError(withHeader = false) {
-  const body = { x402Version: 2, accepts: [requirement], error: 'PAYMENT-SIGNATURE header is required' };
+const baseRequirement = {
+  ...requirement,
+  network: 'eip155:8453',
+  maxTimeoutSeconds: 3600,
+  payTo: '0x1111111111111111111111111111111111111111',
+  asset: '0x2222222222222222222222222222222222222222',
+  extra: { name: 'USD Coin', version: '2', chainId: 8453 }
+};
+
+function challengeError(withHeader = false, accepts = [requirement]) {
+  const body = { x402Version: 2, accepts, error: 'PAYMENT-SIGNATURE header is required' };
   return {
     isAxiosError: true,
     response: {
@@ -52,6 +73,8 @@ function challengeError(withHeader = false) {
 describe('postWithX402', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mocks.activeEvmWallet.mockReturnValue(undefined);
+    mocks.activeWalletRail.mockReturnValue('solana');
     mocks.get.mockResolvedValue({ data: { blockhash: 'fresh-blockhash' } });
   });
 
@@ -120,6 +143,29 @@ describe('postWithX402', () => {
     const envelope = JSON.parse(Buffer.from(retryConfig.headers['PAYMENT-SIGNATURE'], 'base64').toString('utf8'));
     expect(envelope).toEqual(expect.objectContaining({ x402Version: 2, accepted: requirement }));
     expect(mocks.post).toHaveBeenCalledTimes(2);
+  });
+
+  it('prefers Base exact when an EVM wallet is connected', async () => {
+    const provider = { request: vi.fn() };
+    mocks.activeWalletRail.mockReturnValue('base');
+    mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider });
+    mocks.post
+      .mockRejectedValueOnce(challengeError(true, [requirement, baseRequirement]))
+      .mockResolvedValueOnce({ data: { task_id: 'base-task' } });
+
+    const response = await postWithX402<{ task_id: string }>(
+      '/openai/images/generations',
+      { model: 'gpt-image-2', async: true },
+      { wallet, confirm: async () => true }
+    );
+
+    expect(response.data.task_id).toBe('base-task');
+    expect(mocks.signEVMPayment).toHaveBeenCalledWith(baseRequirement, provider, '0xpayer');
+    expect(mocks.buildSolanaPayment).not.toHaveBeenCalled();
+    expect(mocks.get).not.toHaveBeenCalled();
+    const retryConfig = mocks.post.mock.calls[1][2];
+    const envelope = JSON.parse(Buffer.from(retryConfig.headers['PAYMENT-SIGNATURE'], 'base64').toString('utf8'));
+    expect(envelope).toEqual(expect.objectContaining({ x402Version: 2, accepted: baseRequirement }));
   });
 
   it('uses the 402 body when browsers cannot expose PAYMENT-REQUIRED', async () => {

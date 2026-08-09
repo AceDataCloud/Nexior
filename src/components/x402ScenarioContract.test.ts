@@ -11,6 +11,9 @@ describe('x402 image scenario contract', () => {
     expect(status).toContain('scenarioPaymentState(this.scenario)');
     expect(status).toContain('setScenarioPaymentMode(this.scenario, value)');
     expect(status).toContain('solana-wallet-picker-dialog');
+    expect(status).toContain('value="base"');
+    expect(status).toContain('value="solana"');
+    expect(status).toContain('discoverEvmWallets');
     expect(source('components/order/X402Pay.vue')).toContain('solana-wallet-picker-dialog');
     expect(selector).not.toContain('solana-wallet-picker-dialog');
     expect(selector).not.toContain('el-radio');
@@ -50,6 +53,23 @@ describe('x402 image scenario contract', () => {
     expect(operator).not.toContain('signSolanaPayment');
     expect(operator).not.toContain('signAndSendTransaction');
     expect(operator).not.toContain('localStorage');
+  });
+
+  it('uses one shared wallet resolver and prefers Base EIP-3009', () => {
+    const operator = source('operators/x402.ts');
+    expect(operator).toContain('signEVMPayment');
+    expect(operator).toContain("BASE_NETWORK = 'eip155:8453'");
+    expect(operator).toContain('resolveX402WalletContext');
+    const roots = ['pages', 'components'];
+    const legacy = roots.flatMap((root) =>
+      fs
+        .readdirSync(path.resolve(process.cwd(), 'src', root), { recursive: true })
+        .filter((name) => String(name).endsWith('.vue'))
+        .map((name) => path.join(root, String(name)))
+        .filter((name) => source(name).includes('getWalletContext(): X402WalletContext'))
+    );
+    expect(legacy.length).toBeGreaterThan(0);
+    expect(legacy.every((name) => source(name).includes('resolveX402WalletContext'))).toBe(true);
   });
 
   it('attaches platform identity only to the signed retry', () => {
