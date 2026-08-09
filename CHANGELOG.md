@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 08 Aug 2026 20:17:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 09 Aug 2026 15:37:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.361.0
+
+Sun, 09 Aug 2026 15:37:44 GMT
+
+### Minor changes
+
+- Add reusable Solana wallet authorization for continuous x402 payments. (dev@acedata.cloud)
+
+### Patches
+
+- Keep Fish voice clone submissions pending until completion and preserve failed form input (dev@acedata.cloud)
+- Restore complete daily releases and align desktop and mobile workflow names (dev@acedata.cloud)
+- Restore pre-mount web authentication bootstrap so refreshes preserve valid sessions (dev@acedata.cloud)
+- Add Base wallet payments for x402 generation flows (dev@acedata.cloud)
 
 ## 3.360.0
 
