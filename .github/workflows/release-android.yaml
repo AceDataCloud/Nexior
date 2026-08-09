@@ -121,7 +121,7 @@ jobs:
 
       - name: Check Play Console for existing AAB/APK
         id: check
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         env:
           FORCE: ${{ inputs.force }}
           SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -196,7 +196,7 @@ jobs:
           PY
 
   build:
-    name: Build & Upload to Play Store
+    name: Build Android package
     needs: preflight
     if: needs.preflight.outputs.should-build == 'true'
     runs-on: ubuntu-latest
@@ -245,14 +245,14 @@ jobs:
           mv android/app/src/main/assets/public android/app/src/full/assets/public
 
       - name: Build web assets (play flavor, Computer Use OFF, tree-shaken)
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           VITE_COMPUTER_USE: 'false'
         run: npm run build:android
 
       - name: Stage play-flavor web assets
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         # The Play web bundle is compiled with no Local Tools entry and no
         # Computer Use / AccessibilityService adapter code; it lives only in the
         # `play` flavor. cap copy re-processes dist into the main source set the
@@ -278,7 +278,7 @@ jobs:
         shell: bash
 
       - name: Build Play AAB (play flavor, no Computer Use)
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         working-directory: android
         run: |
           chmod +x gradlew
@@ -304,7 +304,7 @@ jobs:
           path: android/app/build/outputs/apk/full/release/app-full-release.apk
 
       - name: Upload AAB artifact
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
@@ -335,7 +335,7 @@ jobs:
           fail_on_unmatched_files: true
 
       - name: Upload to Play Store
-        if: inputs.upload_to_play || github.event_name != 'workflow_call'
+        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -355,7 +355,7 @@ jobs:
       && needs.preflight.result == 'success'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
       && needs.preflight.outputs.track != 'production'
-      && (inputs.promote_to_production || github.event_name == 'push')
+      && (inputs.promote_to_production || startsWith(github.ref, 'refs/tags/android-v'))
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
