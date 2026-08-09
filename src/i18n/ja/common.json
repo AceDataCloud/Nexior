@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "ウォレット支払いは現在GPT Image画像生成のみをサポートしています；参考画像の編集が必要な場合はポイントに切り替えてください。",
     "description": "MVP段階のユーザーがウォレットモードでGPT Image参考画像の編集を試みた際の提示。"
+  },
+  "x402Scenario.payEachTime": {
+    "message": "毎回確認",
+    "description": "各ウォレット支払いの前にユーザーに確認を求めるオプション。"
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "連続支払い",
+    "description": "再利用可能な Solana USDC 支払いの承認オプションを使用します。"
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "スタジオが設定した日次上限内で、Solana USDC ウォレットから実際の使用量を支払うことを許可します。",
+    "description": "連続ウォレット支払いを有効にする前に表示される説明。"
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "日次支払い上限",
+    "description": "連続支払いで毎日使用できる USDC の上限。"
+  },
+  "x402Scenario.validUntil": {
+    "message": "有効期限",
+    "description": "連続支払いの承認の期限日。"
+  },
+  "x402Scenario.validDays": {
+    "message": "有効日数",
+    "description": "連続支払いの承認が期限切れになるまでの日数。"
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "連続支払いを有効化",
+    "description": "再利用可能な Solana 支払いの承認を作成するボタン。"
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "無効化",
+    "description": "連続支払いを停止しますが、オンチェーンの承認は撤回しないボタン。"
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "承認を撤回",
+    "description": "Solana 上で再利用可能な支払いの承認を撤回するボタン。"
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "連続支払いが有効になりました。",
+    "description": "ウォレットが支払い承認を成功裏に作成した後の通知。"
   }
 }

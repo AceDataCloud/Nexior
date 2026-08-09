@@ -51,6 +51,7 @@
               <span class="wallet-address">{{ shortSolanaAddress }}</span>
             </div>
             <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
+            <continuous-payment-card v-if="authenticated" :continuous-only="scenario === 'chat'" />
           </template>
           <el-button v-else type="primary" @click="walletPickerVisible = true">
             {{ $t('order.message.x402ConnectWallet') }}
@@ -88,6 +89,7 @@ import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, 
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
+import ContinuousPaymentCard from './ContinuousPaymentCard.vue';
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { isNative } from '@/utils';
 import {
@@ -96,6 +98,7 @@ import {
   setScenarioPaymentMode,
   type ScenarioPaymentMode
 } from '@/utils/x402/scenarioPayment';
+import { refreshContinuousPaymentAuthorization } from '@/utils/x402/continuousPayment';
 import {
   activeEvmWallet,
   activeWalletRail,
@@ -126,6 +129,7 @@ export default defineComponent({
     ElTabs,
     ElTag,
     ApplicationInfo,
+    ContinuousPaymentCard,
     SolanaWalletPickerDialog
   },
   props: {
@@ -236,6 +240,12 @@ export default defineComponent({
     },
     balanceTitle(): string {
       return `${this.balanceText} ${this.balanceUnit}`.trim();
+    }
+  },
+  watch: {
+    visible(value: boolean) {
+      if (value && this.authenticated)
+        void refreshContinuousPaymentAuthorization(this.$store.state.token.access).catch(() => undefined);
     }
   },
   methods: {

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Plaćanje novčanikom trenutno podržava samo generisanje GPT Image slika; za uređivanje referentne slike, molimo prebacite se na bodove.",
     "description": "Obaveštenje za korisnike u MVP fazi koji pokušavaju da uređuju referentne slike u režimu novčanika."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Svaki put potvrdi",
+    "description": "Opcija koja zahteva potvrdu korisnika pre svake transakcije iz novčanika."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Kontinuirana plaćanja",
+    "description": "Opcija za korišćenje ponovo upotrebljivih Solana USDC plaćanja."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Omogućava Studio da plaća stvarnu potrošnju iz Solana USDC novčanika unutar dnevnog limita koji ste postavili.",
+    "description": "Objašnjenje koje se prikazuje pre nego što se omoguće kontinuirana plaćanja iz novčanika."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Dnevni limit plaćanja",
+    "description": "Maksimalni iznos USDC koji se može koristiti za kontinuirana plaćanja dnevno."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Važi do",
+    "description": "Datum isteka autorizacije za kontinuirana plaćanja."
+  },
+  "x402Scenario.validDays": {
+    "message": "Važeći dani",
+    "description": "Broj dana do isteka autorizacije za kontinuirana plaćanja."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Omogući kontinuirana plaćanja",
+    "description": "Dugme za kreiranje ponovo upotrebljive Solana plaćanja autorizacije."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Onemogući",
+    "description": "Dugme za zaustavljanje korišćenja kontinuiranih plaćanja bez opozivanja autorizacije na lancu."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Poništi autorizaciju",
+    "description": "Dugme za opozivanje ponovo upotrebljive plaćanja autorizacije na Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Kontinuirana plaćanja su omogućena.",
+    "description": "Obaveštenje nakon uspešnog kreiranja plaćanja autorizacije u novčaniku."
   }
 }

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "الدفع عبر المحفظة يدعم حالياً فقط توليد صور GPT Image؛ إذا كنت بحاجة لتحرير الصورة المرجعية، يرجى التبديل إلى النقاط.",
     "description": "تذكير للمستخدمين في مرحلة MVP عند محاولة تحرير صورة مرجعية باستخدام وضع المحفظة."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "تأكيد في كل مرة",
+    "description": "خيار يتطلب تأكيد المستخدم قبل كل عملية دفع من المحفظة."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "الدفع المستمر",
+    "description": "استخدم خيار تفويض الدفع القابل لإعادة الاستخدام باستخدام Solana USDC."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "يسمح لـ Studio بالدفع من محفظة Solana USDC وفقًا للاستخدام الفعلي ضمن الحد اليومي الذي تحدده.",
+    "description": "وصف يظهر قبل تفعيل الدفع المستمر."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "حد الدفع اليومي",
+    "description": "الحد الأقصى لاستخدام USDC في الدفع المستمر يوميًا."
+  },
+  "x402Scenario.validUntil": {
+    "message": "صالح حتى",
+    "description": "تاريخ انتهاء صلاحية تفويض الدفع المستمر."
+  },
+  "x402Scenario.validDays": {
+    "message": "عدد الأيام الصالحة",
+    "description": "عدد الأيام المتبقية حتى انتهاء صلاحية تفويض الدفع المستمر."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "تفعيل الدفع المستمر",
+    "description": "زر لإنشاء تفويض دفع قابل لإعادة الاستخدام باستخدام Solana."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "تعطيل",
+    "description": "زر لإيقاف استخدام الدفع المستمر دون إلغاء التفويض على السلسلة."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "إلغاء التفويض",
+    "description": "زر لإلغاء تفويض الدفع القابل لإعادة الاستخدام على Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "تم تفعيل الدفع المستمر.",
+    "description": "إشعار بعد نجاح إنشاء تفويض الدفع في المحفظة."
   }
 }

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Plånboksbetalning stöder för närvarande endast GPT Image bildgenerering; för att redigera referensbilden, vänligen väx till poäng.",
     "description": "En uppmaning till MVP-användare som försöker redigera referensbilder i plånboksmetoden."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Bekräfta varje gång",
+    "description": "Alternativ som kräver att användaren bekräftar varje plånboksbetalning."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Kontinuerliga betalningar",
+    "description": "Alternativ för att använda återanvändbara Solana USDC betalningsautoriseringar."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Tillåter Studio att betala den faktiska användningen från Solana USDC plånbok inom den dagliga gränsen du ställt in.",
+    "description": "Beskrivning som visas innan kontinuerliga plånboksbetalningar aktiveras."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Dagligt betalningsgräns",
+    "description": "Maximalt belopp av USDC som kan användas för kontinuerliga betalningar per dag."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Giltig till",
+    "description": "Utgångsdatum för auktoriseringen för kontinuerliga betalningar."
+  },
+  "x402Scenario.validDays": {
+    "message": "Giltiga dagar",
+    "description": "Antal dagar innan auktoriseringen för kontinuerliga betalningar går ut."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Aktivera kontinuerliga betalningar",
+    "description": "Knapp för att skapa återanvändbara Solana betalningsautoriseringar."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Inaktivera",
+    "description": "Knapp för att stoppa användningen av kontinuerliga betalningar utan att återkalla on-chain auktorisering."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Återkalla auktorisering",
+    "description": "Knapp för att återkalla återanvändbara betalningsautoriseringar på Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Kontinuerliga betalningar är aktiverade.",
+    "description": "Meddelande efter att plånboken framgångsrikt har skapat betalningsautorisering."
   }
 }

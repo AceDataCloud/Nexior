@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "현재 지갑 지불은 GPT 이미지 생성만 지원합니다; 참고 이미지를 편집하려면 포인트로 전환해 주세요.",
     "description": "MVP 단계에서 사용자가 지갑 모드로 GPT 이미지 참고 이미지 편집을 시도할 때의 안내입니다."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "매번 확인",
+    "description": "각 지갑 결제 전에 사용자의 확인을 요구하는 옵션입니다."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "연속 결제",
+    "description": "재사용 가능한 Solana USDC 결제 권한 옵션을 사용합니다."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Studio가 설정한 일일 한도 내에서 Solana USDC 지갑에서 실제 사용량을 결제할 수 있습니다.",
+    "description": "연속 지갑 결제를 활성화하기 전에 표시되는 설명입니다."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "일일 결제 한도",
+    "description": "연속 결제에서 매일 사용할 수 있는 USDC 한도입니다."
+  },
+  "x402Scenario.validUntil": {
+    "message": "유효 기간까지",
+    "description": "연속 결제 권한의 만료 날짜입니다."
+  },
+  "x402Scenario.validDays": {
+    "message": "유효 일수",
+    "description": "연속 결제 권한이 만료되기 전의 일수입니다."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "연속 결제 활성화",
+    "description": "재사용 가능한 Solana 결제 권한을 생성하는 버튼입니다."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "비활성화",
+    "description": "연속 결제를 중지하지만 블록체인상의 권한은 철회하지 않는 버튼입니다."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "권한 철회",
+    "description": "Solana에서 재사용 가능한 결제 권한을 철회하는 버튼입니다."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "연속 결제가 활성화되었습니다.",
+    "description": "지갑이 결제 권한을 성공적으로 생성한 후의 알림입니다."
   }
 }

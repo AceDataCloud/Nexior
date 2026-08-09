@@ -1811,5 +1811,45 @@
   "reportReason.other": {
     "message": "其他",
     "description": "Content report reason: other"
+  },
+  "x402Scenario.payEachTime": {
+    "message": "每次确认",
+    "description": "每笔钱包支付前都要求用户确认的选项。"
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "连续支付",
+    "description": "使用可复用 Solana USDC 支付授权的选项。"
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "允许 Studio 在你设置的每日限额内，从 Solana USDC 钱包支付实际用量。",
+    "description": "开启连续钱包支付前显示的说明。"
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "每日支付上限",
+    "description": "连续支付每日可使用的 USDC 上限。"
+  },
+  "x402Scenario.validUntil": {
+    "message": "有效期至",
+    "description": "连续支付授权的到期日期。"
+  },
+  "x402Scenario.validDays": {
+    "message": "有效天数",
+    "description": "连续支付授权到期前的天数。"
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "开启连续支付",
+    "description": "创建可复用 Solana 支付授权的按钮。"
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "停用",
+    "description": "停止使用连续支付但不撤销链上授权的按钮。"
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "撤销授权",
+    "description": "在 Solana 上撤销可复用支付授权的按钮。"
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "连续支付已开启。",
+    "description": "钱包成功创建支付授权后的提示。"
   }
 }

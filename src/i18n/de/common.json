@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Wallet-Zahlung unterstützt derzeit nur die Generierung von GPT-Bildern; für die Bearbeitung von Referenzbildern wechseln Sie bitte zu Punkten.",
     "description": "Hinweis für Benutzer in der MVP-Phase, die im Wallet-Modus versuchen, GPT-Bildreferenzbilder zu bearbeiten."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Bei jeder Bestätigung",
+    "description": "Option, die den Benutzer vor jeder Wallet-Zahlung zur Bestätigung auffordert."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Kontinuierliche Zahlungen",
+    "description": "Option zur Verwendung der wiederverwendbaren Solana USDC-Zahlungsgenehmigung."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Erlaubt dem Studio, innerhalb des von dir festgelegten täglichen Limits aus dem Solana USDC-Wallet zu zahlen.",
+    "description": "Beschreibung, die vor der Aktivierung der kontinuierlichen Wallet-Zahlungen angezeigt wird."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Tägliches Zahlungslimit",
+    "description": "USDC-Obergrenze, die täglich für kontinuierliche Zahlungen verwendet werden kann."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Gültig bis",
+    "description": "Ablaufdatum der kontinuierlichen Zahlungsgenehmigung."
+  },
+  "x402Scenario.validDays": {
+    "message": "Gültige Tage",
+    "description": "Anzahl der Tage bis zum Ablauf der kontinuierlichen Zahlungsgenehmigung."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Kontinuierliche Zahlungen aktivieren",
+    "description": "Schaltfläche zum Erstellen einer wiederverwendbaren Solana-Zahlungsgenehmigung."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Deaktivieren",
+    "description": "Schaltfläche zum Stoppen der kontinuierlichen Zahlungen, ohne die On-Chain-Genehmigung zu widerrufen."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Genehmigung widerrufen",
+    "description": "Schaltfläche zum Widerrufen der wiederverwendbaren Zahlungsgenehmigung auf Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Kontinuierliche Zahlungen sind aktiviert.",
+    "description": "Hinweis nach erfolgreicher Erstellung der Zahlungsgenehmigung für das Wallet."
   }
 }

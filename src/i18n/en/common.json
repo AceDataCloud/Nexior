@@ -1811,5 +1811,45 @@
   "reportReason.other": {
     "message": "Other",
     "description": "Content report reason: other"
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Pay each time",
+    "description": "Wallet option that asks for approval before every payment."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Continuous payments",
+    "description": "Wallet option that uses a reusable Solana USDC payment authorization."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Let Studio pay actual usage from your Solana USDC wallet, within the daily limit you set.",
+    "description": "Explanation shown before enabling continuous wallet payments."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Daily payment limit",
+    "description": "Daily USDC limit for continuous payments."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Valid until",
+    "description": "Expiration date of a continuous payment authorization."
+  },
+  "x402Scenario.validDays": {
+    "message": "Valid days",
+    "description": "Number of days before a continuous payment authorization expires."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Enable continuous payments",
+    "description": "Button that creates a reusable Solana payment authorization."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Disable",
+    "description": "Button that stops using an existing continuous payment authorization without revoking it on-chain."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Revoke authorization",
+    "description": "Button that revokes the reusable payment authorization on Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Continuous payments enabled.",
+    "description": "Success toast after a wallet creates the payment authorization."
   }
 }

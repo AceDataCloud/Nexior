@@ -10,9 +10,16 @@ import {
   IChatConversationsResponse,
   IChatShareResponse
 } from '@/models';
-import { BASE_URL_API, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
+import { BASE_URL_API, BASE_URL_X402, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
 import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
+import { scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import {
+  continuousPaymentActive,
+  continuousPaymentHeaders,
+  refreshContinuousPaymentAuthorization,
+  selectContinuousPayment
+} from '@/utils/x402/continuousPayment';
 
 /**
  * Headers carrying the calling Site's bare host. Shared with
@@ -38,10 +45,18 @@ class ChatOperator {
   ): Promise<IChatConversationResponse> {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await fetch(`${BASE_URL_API}/aichat2/conversations`, {
+        const walletMode = scenarioPaymentState('chat').mode === 'wallet';
+        if (walletMode && !continuousPaymentActive()) {
+          await refreshContinuousPaymentAuthorization(options.token).catch(() => undefined);
+          selectContinuousPayment(true);
+        }
+        const continuous = walletMode && continuousPaymentActive();
+        if (walletMode && !continuous) throw new BaseError(402, 'payment_authorization_required', '');
+        const response = await fetch(`${continuous ? BASE_URL_X402 : BASE_URL_API}/aichat2/conversations`, {
           method: 'POST',
           headers: {
             authorization: `Bearer ${options.token}`,
+            ...(continuous ? continuousPaymentHeaders(options.token) : {}),
             'Content-Type': 'application/json',
             Accept: 'text/event-stream',
             ...siteHeaders()
