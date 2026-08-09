@@ -1,8 +1,7 @@
 import { ViteSSG } from 'vite-ssg';
 import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
-import { getDefaultRoute, routes, setupRouterGuards, setActiveRouter } from './router';
-import { ROUTE_CHATGPT_CONVERSATION_NEW } from './router/constants';
+import { routes, setupRouterGuards, setActiveRouter } from './router';
 import store from './store';
 import i18n, { setI18nLanguage, getLocale } from './i18n';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
@@ -26,7 +25,6 @@ import { resolveBootLocale } from '@/utils/siteLocales';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
-import { startPostMountBoot } from '@/utils/postMountBoot';
 import {
   initializeCookies,
   initializeDescription,
@@ -107,62 +105,41 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
     const { installMobileLocalExec } = await import('@/utils/mobileLocalExec');
     installMobileLocalExec();
   }
-  void initializeCookies();
-  // Capgo starts a 10-second readiness watchdog as soon as the native shell
-  // opens. A slow API must never make it reload the WebView during boot.
-  void runLiveUpdate();
-  initializeCurrency();
-  initializeTheme();
-  const bootedAtRoot = router.currentRoute.value.path === '/' || window.location.pathname === '/';
-
-  // The callback route immediately returns users to the protected destination
-  // from its mounted hook. Exchange its one-time SSO code before that hook
-  // gets a chance to run, while ordinary startup remains non-blocking.
-  const isSsoCallback =
-    window.location.pathname.endsWith('/auth/callback') && new URLSearchParams(window.location.search).has('code');
-  if (isSsoCallback) {
-    await initializeToken();
+  await initializeCookies();
+  await resolveDeferredInviterId();
+  await initializeToken();
+  await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
+  // Resolve against the saved LOCALE cookie, not `i18n.global.locale`: the
+  // router guard that applies the cookie runs after this hook, so the live
+  // locale is still the vue-i18n default and we'd clobber the user's choice.
+  const savedLocale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
+  const siteLocale = resolveBootLocale(savedLocale, store.state.site);
+  if (siteLocale !== savedLocale) {
+    await setI18nLanguage(siteLocale);
+    setCookie('LOCALE', siteLocale, { path: '/', domain: getDomain() });
   }
 
-  startPostMountBoot(
-    async () => {
-      await Promise.all([resolveDeferredInviterId(), isSsoCallback ? Promise.resolve() : initializeToken()]);
-      await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
+  if (isNative() || isDesktop()) {
+    const blocked = await runVersionGate();
+    if (blocked) return;
+  }
+  void runLiveUpdate();
 
-      // Root redirects run before the site request completes. Re-evaluate the
-      // fallback route once the site feature configuration arrives.
-      if (bootedAtRoot && router.currentRoute.value.name === ROUTE_CHATGPT_CONVERSATION_NEW) {
-        await router.replace({ ...getDefaultRoute(), query: router.currentRoute.value.query });
-      }
+  void initTelemetry({
+    uin: store.getters.user?.id,
+    // __APP_VERSION__ is injected by vite.config `define` for all surfaces.
+    // (Previously this read import.meta.env.VITE_APP_VERSION, which was never
+    // defined anywhere → the telemetry release tag was always undefined.)
+    release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
+  });
 
-      // Resolve against the saved LOCALE cookie, not `i18n.global.locale`: the
-      // router guard that applies the cookie runs after this hook, so the live
-      // locale is still the vue-i18n default and we'd clobber the user's choice.
-      const savedLocale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
-      const siteLocale = resolveBootLocale(savedLocale, store.state.site);
-      if (siteLocale !== savedLocale) {
-        await setI18nLanguage(siteLocale);
-        setCookie('LOCALE', siteLocale, { path: '/', domain: getDomain() });
-      }
-
-      if (isNative() || isDesktop()) {
-        await runVersionGate();
-      }
-
-      void initTelemetry({
-        uin: store.getters.user?.id,
-        release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
-      });
-
-      initializeTheme();
-      initializeExchangeRate();
-      initializeTitle();
-      initializeDescription();
-      initializeKeywords();
-      initializeFavicon();
-    },
-    (error) => captureError(error, { source: 'postMountBoot' })
-  );
+  initializeCurrency();
+  initializeTheme();
+  initializeExchangeRate();
+  initializeTitle();
+  initializeDescription();
+  initializeKeywords();
+  initializeFavicon();
 
   window.addEventListener('unhandledrejection', (event) => {
     captureError(event.reason, { source: 'unhandledrejection' });
