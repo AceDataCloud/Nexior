@@ -88,7 +88,8 @@ export default defineComponent({
           'serp',
           'suno',
           'midjourney',
-          'producer'
+          'producer',
+          'chat'
         ].includes(String(this.appName)) && isScenarioX402Enabled()
       );
     },

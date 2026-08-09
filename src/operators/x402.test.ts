@@ -14,7 +14,9 @@ const mocks = vi.hoisted(() => ({
     payload: { authorization: { from: '0xpayer' }, signature: '0xsigned' }
   })),
   activeEvmWallet: vi.fn(),
-  activeWalletRail: vi.fn()
+  activeWalletRail: vi.fn(),
+  continuousPaymentActive: vi.fn(),
+  continuousPaymentHeaders: vi.fn()
 }));
 
 vi.mock('axios', () => ({
@@ -29,6 +31,10 @@ vi.mock('@acedatacloud/x402-client', () => ({ signEVMPayment: mocks.signEVMPayme
 vi.mock('@/utils/x402/evmWallet', () => ({
   activeEvmWallet: mocks.activeEvmWallet,
   activeWalletRail: mocks.activeWalletRail
+}));
+vi.mock('@/utils/x402/continuousPayment', () => ({
+  continuousPaymentActive: mocks.continuousPaymentActive,
+  continuousPaymentHeaders: mocks.continuousPaymentHeaders
 }));
 
 import { formatAtomicUsdc, postWithX402, quoteX402, X402PaymentCancelledError } from './x402';
@@ -75,6 +81,11 @@ describe('postWithX402', () => {
     vi.clearAllMocks();
     mocks.activeEvmWallet.mockReturnValue(undefined);
     mocks.activeWalletRail.mockReturnValue('solana');
+    mocks.continuousPaymentActive.mockReturnValue(false);
+    mocks.continuousPaymentHeaders.mockReturnValue({
+      authorization: 'Bearer identity-token',
+      'X-X402-Authorization': 'solana-recurring-delegation-v1'
+    });
     mocks.get.mockResolvedValue({ data: { blockhash: 'fresh-blockhash' } });
   });
 
@@ -94,6 +105,28 @@ describe('postWithX402', () => {
     expect(mocks.get).not.toHaveBeenCalled();
     expect(mocks.buildSolanaPayment).not.toHaveBeenCalled();
     expect(mocks.post).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses a reusable Solana authorization without a quote or wallet signature', async () => {
+    mocks.continuousPaymentActive.mockReturnValue(true);
+    mocks.post.mockResolvedValueOnce({ data: { task_id: 'continuous-task' } });
+
+    const response = await postWithX402<{ task_id: string }>(
+      '/nano-banana/images',
+      { prompt: 'banana', async: true },
+      { wallet, confirm: async () => true, identityToken: 'identity-token' }
+    );
+
+    expect(response.data.task_id).toBe('continuous-task');
+    expect(mocks.post).toHaveBeenCalledTimes(1);
+    expect(mocks.post.mock.calls[0][2].headers).toEqual(
+      expect.objectContaining({
+        authorization: 'Bearer identity-token',
+        'X-X402-Authorization': 'solana-recurring-delegation-v1'
+      })
+    );
+    expect(mocks.buildSolanaPayment).not.toHaveBeenCalled();
+    expect(mocks.get).not.toHaveBeenCalled();
   });
 
   it('does not sign or retry when the user cancels the authoritative quote', async () => {

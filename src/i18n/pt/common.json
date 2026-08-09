@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "O pagamento por carteira atualmente suporta apenas geração de imagens GPT; para editar a imagem de referência, mude para pontos.",
     "description": "Mensagem exibida quando usuários na fase MVP tentam editar a imagem de referência no modo de carteira."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Confirmar a cada vez",
+    "description": "Opção que exige confirmação do usuário antes de cada pagamento da carteira."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Pagamentos contínuos",
+    "description": "Opção para usar autorização de pagamento reutilizável Solana USDC."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Permite que o Studio pague o uso real a partir da carteira Solana USDC dentro do limite diário que você definir.",
+    "description": "Descrição exibida antes de ativar os pagamentos contínuos."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Limite de pagamento diário",
+    "description": "Limite máximo de USDC que pode ser usado diariamente para pagamentos contínuos."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Válido até",
+    "description": "Data de expiração da autorização de pagamento contínuo."
+  },
+  "x402Scenario.validDays": {
+    "message": "Dias válidos",
+    "description": "Número de dias antes da expiração da autorização de pagamento contínuo."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Ativar pagamentos contínuos",
+    "description": "Botão para criar uma autorização de pagamento reutilizável Solana."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Desativar",
+    "description": "Botão para parar de usar pagamentos contínuos sem revogar a autorização na blockchain."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Revogar autorização",
+    "description": "Botão para revogar a autorização de pagamento reutilizável na Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Pagamentos contínuos ativados.",
+    "description": "Mensagem após a criação bem-sucedida da autorização de pagamento da carteira."
   }
 }

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Lompakkosovelluksen maksaminen tukee tällä hetkellä vain GPT Image -kuvagenerointia; jos tarvitset viittauskuvan muokkaamista, vaihda pisteisiin.",
     "description": "MVP-vaiheessa käyttäjille, jotka yrittävät muokata GPT Image -viittauskuvaa lompakkotilassa."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Vahvista jokaisella kerralla",
+    "description": "Vaihtoehto, joka vaatii käyttäjältä vahvistuksen jokaiselle lompakkomaksulle."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Jatkuvat maksut",
+    "description": "Vaihtoehto, joka käyttää uudelleenkäytettävää Solana USDC -maksuvaltuutusta."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Salli Studion maksaa todellinen käyttö Solana USDC -lompakosta asetetun päivittäisen rajan sisällä.",
+    "description": "Selitys, joka näytetään ennen jatkuvien lompakkomaksujen aktivointia."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Päivittäinen maksukatto",
+    "description": "Jatkuvien maksujen päivittäinen käytettävissä oleva USDC-katto."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Voimassa asti",
+    "description": "Päivämäärä, jolloin jatkuvien maksujen valtuutus vanhenee."
+  },
+  "x402Scenario.validDays": {
+    "message": "Voimassa olevat päivät",
+    "description": "Päivien määrä ennen jatkuvien maksujen valtuutuksen vanhentumista."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Ota jatkuvat maksut käyttöön",
+    "description": "Painike, joka luo uudelleenkäytettävän Solana-maksuvaltuutuksen."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Poista käytöstä",
+    "description": "Pysäyttää jatkuvien maksujen käytön, mutta ei peruuta ketjun valtuutusta."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Peruuta valtuutus",
+    "description": "Painike, joka peruuttaa uudelleenkäytettävän maksuvaltuutuksen Solanassa."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Jatkuvat maksut on aktivoitu.",
+    "description": "Vihje maksuvaltuutuksen onnistuneen luomisen jälkeen."
   }
 }

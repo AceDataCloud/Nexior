@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "El pago con billetera actualmente solo admite la generación de imágenes GPT; si necesitas editar la imagen de referencia, cambia a puntos.",
     "description": "Mensaje para usuarios en la fase MVP que intentan editar una imagen de referencia GPT en modo billetera."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Confirmar cada vez",
+    "description": "Opción que requiere que el usuario confirme antes de cada pago de billetera."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Pagos continuos",
+    "description": "Opción para usar autorizaciones de pago reutilizables de Solana USDC."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Permite que Studio pague el uso real desde la billetera Solana USDC dentro del límite diario que establezcas.",
+    "description": "Descripción que se muestra antes de habilitar los pagos continuos."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Límite de pago diario",
+    "description": "Límite máximo de USDC que se puede usar diariamente para pagos continuos."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Válido hasta",
+    "description": "Fecha de vencimiento de la autorización de pagos continuos."
+  },
+  "x402Scenario.validDays": {
+    "message": "Días válidos",
+    "description": "Número de días antes de que expire la autorización de pagos continuos."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Habilitar pagos continuos",
+    "description": "Botón para crear autorizaciones de pago reutilizables de Solana."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Deshabilitar",
+    "description": "Botón para detener el uso de pagos continuos sin revocar la autorización en la cadena."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Revocar autorización",
+    "description": "Botón para revocar autorizaciones de pago reutilizables en Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Los pagos continuos están habilitados.",
+    "description": "Mensaje que aparece después de que la billetera ha creado con éxito la autorización de pago."
   }
 }

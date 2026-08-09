@@ -6,7 +6,10 @@ import { ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 
 // currentSiteOrigin reads window/location; stub it so the operator can run
 // under the plain test environment without touching the DOM.
-vi.mock('@/utils', () => ({ currentSiteOrigin: () => '' }));
+vi.mock('@/utils', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/utils')>()),
+  currentSiteOrigin: () => ''
+}));
 
 function sseResponse(lines: string[]): Response {
   const encoder = new TextEncoder();

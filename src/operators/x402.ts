@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import type { PaymentRequirement } from '@acedatacloud/x402-client';
 import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
 import { activeEvmWallet, activeWalletRail } from '@/utils/x402/evmWallet';
+import { continuousPaymentActive, continuousPaymentHeaders } from '@/utils/x402/continuousPayment';
 
 const BASE_NETWORK = 'eip155:8453';
 const SOLANA_NETWORK = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
@@ -129,6 +130,12 @@ export async function postWithX402<T>(
   options: X402PaymentOptions,
   headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' }
 ): Promise<AxiosResponse<T>> {
+  if (activeWalletRail() === 'solana' && continuousPaymentActive() && options.identityToken) {
+    return axios.post<T>(path, data, {
+      baseURL: BASE_URL_X402,
+      headers: { ...headers, ...continuousPaymentHeaders(options.identityToken) }
+    });
+  }
   try {
     return await axios.post<T>(path, data, {
       baseURL: BASE_URL_X402,

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Le paiement par portefeuille ne prend actuellement en charge que la génération d'images GPT ; pour éditer l'image de référence, veuillez passer aux points.",
     "description": "Indication pour les utilisateurs en phase MVP essayant d'éditer une image de référence GPT en mode portefeuille."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Confirmer à chaque fois",
+    "description": "Option demandant à l'utilisateur de confirmer avant chaque paiement du portefeuille."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Paiements continus",
+    "description": "Option d'utilisation d'une autorisation de paiement Solana USDC réutilisable."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Permet à Studio de payer la consommation réelle depuis le portefeuille Solana USDC dans la limite quotidienne que vous avez définie.",
+    "description": "Description affichée avant d'activer les paiements continus."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Limite de paiement quotidienne",
+    "description": "Limite maximale d'USDC utilisable par jour pour les paiements continus."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Valide jusqu'au",
+    "description": "Date d'expiration de l'autorisation de paiement continu."
+  },
+  "x402Scenario.validDays": {
+    "message": "Jours valides",
+    "description": "Nombre de jours avant l'expiration de l'autorisation de paiement continu."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Activer les paiements continus",
+    "description": "Bouton pour créer une autorisation de paiement Solana réutilisable."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Désactiver",
+    "description": "Bouton pour arrêter l'utilisation des paiements continus sans annuler l'autorisation sur la chaîne."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Révoquer l'autorisation",
+    "description": "Bouton pour révoquer une autorisation de paiement réutilisable sur Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Les paiements continus sont activés.",
+    "description": "Message après la création réussie d'une autorisation de paiement pour le portefeuille."
   }
 }

@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "Płatność portfelem obecnie wspiera tylko generowanie obrazów GPT; aby edytować obraz referencyjny, przełącz się na punkty.",
     "description": "Wskazówka dla użytkowników MVP, którzy próbują edytować obraz referencyjny w trybie portfela."
+  },
+  "x402Scenario.payEachTime": {
+    "message": "Potwierdź za każdym razem",
+    "description": "Opcja wymagająca potwierdzenia użytkownika przed każdą płatnością z portfela."
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "Płatności cykliczne",
+    "description": "Opcja korzystania z autoryzacji płatności Solana USDC do ponownego użycia."
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "Pozwala Studio na płatność z portfela Solana USDC do rzeczywistego zużycia w ramach ustalonego dziennego limitu.",
+    "description": "Opis wyświetlany przed włączeniem płatności cyklicznych."
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "Dzienny limit płatności",
+    "description": "Maksymalna kwota USDC, którą można wykorzystać dziennie w płatnościach cyklicznych."
+  },
+  "x402Scenario.validUntil": {
+    "message": "Ważne do",
+    "description": "Data wygaśnięcia autoryzacji płatności cyklicznych."
+  },
+  "x402Scenario.validDays": {
+    "message": "Liczba dni ważności",
+    "description": "Liczba dni do wygaśnięcia autoryzacji płatności cyklicznych."
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "Włącz płatności cykliczne",
+    "description": "Przycisk do utworzenia autoryzacji płatności Solana do ponownego użycia."
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "Dezaktywuj",
+    "description": "Przycisk do zatrzymania korzystania z płatności cyklicznych bez unieważniania autoryzacji na blockchainie."
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "Cofnij autoryzację",
+    "description": "Przycisk do cofnięcia autoryzacji płatności do ponownego użycia na Solana."
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "Płatności cykliczne są włączone.",
+    "description": "Powiadomienie po pomyślnym utworzeniu autoryzacji płatności w portfelu."
   }
 }

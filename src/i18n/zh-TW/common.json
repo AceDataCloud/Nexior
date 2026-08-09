@@ -1810,5 +1810,45 @@
   "x402Scenario.gptEditCreditsOnly": {
     "message": "錢包支付當前僅支持 GPT Image 圖片生成；如需編輯參考圖，請切換到積分。",
     "description": "MVP 階段用戶在錢包模式嘗試 GPT Image 參考圖編輯時的提示。"
+  },
+  "x402Scenario.payEachTime": {
+    "message": "每次確認",
+    "description": "每筆錢包支付前都要求用戶確認的選項。"
+  },
+  "x402Scenario.continuousPayments": {
+    "message": "連續支付",
+    "description": "使用可重複的 Solana USDC 支付授權選項。"
+  },
+  "x402Scenario.continuousPaymentsDescription": {
+    "message": "允許 Studio 在你設定的每日限額內，從 Solana USDC 錢包支付實際用量。",
+    "description": "開啟連續錢包支付前顯示的說明。"
+  },
+  "x402Scenario.dailyPaymentLimit": {
+    "message": "每日支付上限",
+    "description": "連續支付每日可使用的 USDC 上限。"
+  },
+  "x402Scenario.validUntil": {
+    "message": "有效期至",
+    "description": "連續支付授權的到期日期。"
+  },
+  "x402Scenario.validDays": {
+    "message": "有效天數",
+    "description": "連續支付授權到期前的天數。"
+  },
+  "x402Scenario.enableContinuousPayments": {
+    "message": "開啟連續支付",
+    "description": "創建可重複的 Solana 支付授權的按鈕。"
+  },
+  "x402Scenario.disableContinuousPayments": {
+    "message": "停用",
+    "description": "停止使用連續支付但不撤銷鏈上授權的按鈕。"
+  },
+  "x402Scenario.revokeAuthorization": {
+    "message": "撤銷授權",
+    "description": "在 Solana 上撤銷可重複支付授權的按鈕。"
+  },
+  "x402Scenario.continuousPaymentsEnabled": {
+    "message": "連續支付已開啟。",
+    "description": "錢包成功創建支付授權後的提示。"
   }
 }
