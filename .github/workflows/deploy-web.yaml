@@ -1,59 +1,96 @@
 name: Deploy · Web
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - .gitignore
-      - README.md
-      - SECURITY.md
-      - LICENSE
-      - CHANGELOG.md
-      - CHANGELOG.json
-      - 'docs/**'
-      - '.vscode/**'
-      - '.github/ISSUE_TEMPLATE/**'
-  # Inherited from the now-deleted publish-dockerhub.yaml so we can still
-  # trigger a manual rebuild/republish of the Docker Hub `latest` tag.
+  schedule:
+    - cron: '47 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: nexior-web-production
+  cancel-in-progress: false
+
 permissions:
-  # `contents: write` is required by einaregilsson/build-number@v2 — it
-  # creates a `build-number-NNN` git ref via the REST API to track the
-  # monotonic counter. Tightening to `read` here gives 403
-  # "Resource not accessible by integration" on the very first step.
   contents: write
-  packages: write # for ghcr.io push
+  packages: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set Kubectl
+        uses: Azure/k8s-set-context@v5
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Check for deployable changes
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          hub_revision=$(kubectl get deployment hub-frontend -n acedatacloud \
+            -o jsonpath='{.metadata.annotations.acedata\.cloud/last-successful-revision}' 2>/dev/null || true)
+          studio_revision=$(kubectl get deployment studio-frontend -n acedatacloud \
+            -o jsonpath='{.metadata.annotations.acedata\.cloud/last-successful-revision}' 2>/dev/null || true)
+          if [ "$hub_revision" != "$studio_revision" ] || ! [[ "$hub_revision" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "No shared successful revision; deploying $GITHUB_SHA"
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          last_revision=$hub_revision
+          if [ "$last_revision" = "$GITHUB_SHA" ]; then
+            echo "No changes since successful deployment $last_revision"
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null; then
+            git fetch --no-tags origin "$last_revision" || true
+          fi
+          if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null || \
+             ! git merge-base --is-ancestor "$last_revision" "$GITHUB_SHA"; then
+            echo "Successful revision cannot be compared safely; deploying $GITHUB_SHA"
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          deploy=false
+          while IFS= read -r path; do
+            case "$path" in
+              .gitignore | README.md | SECURITY.md | LICENSE | CHANGELOG.md | CHANGELOG.json | docs/* | .vscode/* | .github/ISSUE_TEMPLATE/*) ;;
+              *) deploy=true; break ;;
+            esac
+          done < <(git diff --name-only "$last_revision" "$GITHUB_SHA")
+          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+          [ "$deploy" = true ] || echo "Only deploy-ignored files changed since $last_revision"
+
       - name: Generate Build Number
+        if: steps.changes.outputs.deploy == 'true'
         uses: einaregilsson/build-number@v2
         with:
           token: ${{ secrets.github_token }}
         env:
-          # build-number@v2 still uses the legacy ::set-env command, which is
-          # gated behind this insecure-commands flag. Required to populate
-          # $BUILD_NUMBER for the image tag + deploy/run.sh's ${TAG} sed.
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Compute Docker Hub version tag
+        if: steps.changes.outputs.deploy == 'true'
         id: docker_tag
-        # Mirrors the previous publish-dockerhub.yaml scheme: YYYY.M.D-<sha7>.
-        # Pushed alongside `:latest` for public DockerHub consumers.
-        run: |
-          echo "version=$(date +'%Y.%-m.%-d')-$(echo ${GITHUB_SHA} | cut -c1-7)" >> "$GITHUB_OUTPUT"
-
-      - name: Checkout
-        uses: actions/checkout@v4
+        run: echo "version=$(date +'%Y.%-m.%-d')-$(echo ${GITHUB_SHA} | cut -c1-7)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
+        if: steps.changes.outputs.deploy == 'true'
         uses: docker/setup-buildx-action@v3
 
       - name: Login to GHCR
+        if: steps.changes.outputs.deploy == 'true'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -61,18 +98,14 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to Docker Hub
+        if: steps.changes.outputs.deploy == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build & push image (GHCR + Docker Hub)
-        # Single buildx invocation: ONE image manifest, THREE tags across TWO
-        # registries. Replaces both the old docker-compose build/push step
-        # AND the entire publish-dockerhub.yaml workflow — eliminating one
-        # full Docker build per push to main (~140s × ~14 pushes/day ≈
-        # ~990 Ubuntu min/month saved). GHA layer cache makes subsequent
-        # unchanged-layer builds near-instant.
+        if: steps.changes.outputs.deploy == 'true'
         uses: docker/build-push-action@v7
         with:
           context: .
@@ -84,12 +117,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Set Kubectl
-        uses: Azure/k8s-set-context@v5
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-
       - name: Deploy
-        # Pulls ghcr.io/acedatacloud/hub-frontend:${BUILD_NUMBER} via the
-        # production manifests' ${TAG} substitution (see deploy/run.sh).
+        if: steps.changes.outputs.deploy == 'true'
         run: sh ./deploy/run.sh
