@@ -418,7 +418,7 @@ export default defineComponent({
     // A per-service app row shows "Buy More" on every surface, but on iOS
     // only when it has an Apple-buyable package (apple_product_id mapped).
     rowCanPay(application: IApplication): boolean {
-      if (isRechargeDisabled(this.$store.getters.site)) {
+      if (application.role === 'grantee' || isRechargeDisabled(this.$store.getters.site)) {
         return false;
       }
       if (!isIOS()) {

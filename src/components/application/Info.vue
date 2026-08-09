@@ -101,7 +101,7 @@ export default defineComponent({
     // products). Keyed on scope (always present) rather than packages, which
     // isn't serialized in every view.
     showPayment(): boolean {
-      if (isRechargeDisabled(this.$store.getters.site)) {
+      if (this.application.role === 'grantee' || isRechargeDisabled(this.$store.getters.site)) {
         return false;
       }
       if (!isIOS()) {

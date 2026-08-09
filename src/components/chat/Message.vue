@@ -414,7 +414,7 @@ export default defineComponent({
       // in-chat "Top Up" entry on iOS so it never routes to a payment page
       // that renders empty there (matches showPayment in the console pages).
       // Also hidden when the site admin disabled recharge entirely.
-      if (isRechargeDisabled(this.$store.getters.site)) {
+      if (this.application?.role === 'grantee' || isRechargeDisabled(this.$store.getters.site)) {
         return false;
       }
       return !isIOS() && this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
