@@ -247,6 +247,10 @@ export default defineComponent({
       this.loadFailed = false;
       try {
         await this.onFetchApplication();
+        if (this.application?.role === 'grantee') {
+          this.$router.replace({ name: ROUTE_CONSOLE_APPLICATION_LIST });
+          return;
+        }
         // Fetch or create the Period Application used by order creation.
         await this.onFetchApplication2();
         await this.onCreateApplications();

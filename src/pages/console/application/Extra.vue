@@ -308,6 +308,10 @@ export default defineComponent({
       applicationOperator
         .get(this.id)
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          if (data.role === 'grantee') {
+            this.$router.replace({ name: ROUTE_CONSOLE_APPLICATION_LIST });
+            return;
+          }
           this.application = data;
           this.loading = false;
           // by default select first packageId
