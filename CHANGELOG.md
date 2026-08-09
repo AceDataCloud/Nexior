@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 09 Aug 2026 15:37:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 09 Aug 2026 20:16:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.361.1
+
+Sun, 09 Aug 2026 20:16:39 GMT
+
+### Patches
+
+- Hide recharge actions for applications shared by another user (dev@acedata.cloud)
 
 ## 3.361.0
 
