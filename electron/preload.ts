@@ -64,6 +64,17 @@ contextBridge.exposeInMainWorld('desktop', {
   // hidden/minimized, unlike Web Notification). Resolves after dispatch.
   notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body }),
 
+  updater: {
+    getState: (): Promise<unknown> => ipcRenderer.invoke('updater:getState'),
+    check: (): Promise<unknown> => ipcRenderer.invoke('updater:check'),
+    install: (): Promise<boolean> => ipcRenderer.invoke('updater:install'),
+    onState: (cb: (state: unknown) => void): (() => void) => {
+      const handler = (_e: unknown, state: unknown): void => cb(state);
+      ipcRenderer.on('updater:state', handler);
+      return () => ipcRenderer.removeListener('updater:state', handler);
+    }
+  },
+
   // Scheduled-task daemon. The token is handed INWARD only — main persists it
   // (OS-encrypted, 0600) so tasks keep firing after the window closes, and
   // never hands it back out.
@@ -93,8 +104,11 @@ contextBridge.exposeInMainWorld('desktop', {
 contextBridge.exposeInMainWorld('localExec', {
   available: true,
   listTools: (): Promise<unknown[]> => ipcRenderer.invoke('local.tools.list'),
-  invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean; image?: string }> =>
-    ipcRenderer.invoke('local.tool.invoke', inv),
+  invoke: (inv: {
+    name: string;
+    input: object;
+    sessionId: string;
+  }): Promise<{ output: string; is_error?: boolean; image?: string }> => ipcRenderer.invoke('local.tool.invoke', inv),
   getConfig: (): Promise<{ roots: string[]; mcp: object[]; computerUse?: boolean; workingDir?: string }> =>
     ipcRenderer.invoke('local.config.get'),
   saveConfig: (cfg: { roots: string[]; mcp: object[]; computerUse?: boolean; workingDir?: string }): Promise<boolean> =>
@@ -103,7 +117,9 @@ contextBridge.exposeInMainWorld('localExec', {
   mcp: {
     status: (): Promise<{ id: string; status: string; toolCount: number; tools: string[]; error?: string }[]> =>
       ipcRenderer.invoke('local.mcp.status'),
-    reconnect: (id: string): Promise<{ id: string; status: string; toolCount: number; tools: string[]; error?: string } | null> =>
+    reconnect: (
+      id: string
+    ): Promise<{ id: string; status: string; toolCount: number; tools: string[]; error?: string } | null> =>
       ipcRenderer.invoke('local.mcp.reconnect', id)
   },
   pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder'),

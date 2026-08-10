@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import mimetypes
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Iterable
@@ -32,6 +33,36 @@ DEFAULT_CDN_BASE = "https://cdn.acedata.cloud/nexior/desktop"
 # blockmaps (needed for differential updates) and skip the rest.
 ARTIFACT_EXTS = {".exe", ".dmg", ".zip", ".blockmap", ".AppImage"}
 MANIFEST_EXTS = {".yml", ".yaml"}
+
+
+def require_update_set(files: list[Path], manifests: list[Path]) -> None:
+    names = {f.name for f in files}
+    manifest_names = {f.name for f in manifests}
+    channels = {
+        match.group("channel")
+        for name in manifest_names
+        if (match := re.fullmatch(r"(?P<channel>.+)-mac\.ya?ml", name))
+    }
+    if not channels:
+        raise ValueError("missing macOS manifest")
+    for channel in channels:
+        if f"{channel}.yml" not in manifest_names and f"{channel}.yaml" not in manifest_names:
+            raise ValueError(f"missing Windows manifest for channel {channel}")
+
+    if not any(name.endswith(".exe") for name in names):
+        raise ValueError("missing Windows NSIS installer")
+    if not any(name.endswith(".exe.blockmap") for name in names):
+        raise ValueError("missing Windows installer blockmap")
+    for arch in ("x64", "arm64"):
+        is_arch = lambda name, extension: name.endswith(extension) and (
+            ("-arm64" in name) == (arch == "arm64")
+        )
+        if not any(is_arch(name, ".dmg") for name in names):
+            raise ValueError(f"missing macOS {arch} DMG")
+        if not any(is_arch(name, ".zip") for name in names):
+            raise ValueError(f"missing macOS {arch} update ZIP")
+    if not any(name.endswith(".zip.blockmap") for name in names):
+        raise ValueError("missing macOS ZIP blockmap")
 
 
 def get_client(region: str):
@@ -104,6 +135,11 @@ def main(argv: Iterable[str]) -> int:
         return 2
     if not manifests:
         print(f"ERROR: no update manifest (latest*.yml) in {args.dist}", file=sys.stderr)
+        return 2
+    try:
+        require_update_set(artifacts, manifests)
+    except ValueError as error:
+        print(f"ERROR: incomplete desktop update set: {error}", file=sys.stderr)
         return 2
 
     print(f"Publishing {len(artifacts)} artifact(s) + {len(manifests)} manifest(s) to {args.cdn_base}")

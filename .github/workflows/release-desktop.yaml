@@ -1,6 +1,6 @@
 name: Release · Desktop
 
-# Build the Nexior desktop client (Windows .exe + macOS .dmg) and, for releases,
+# Build the Nexior desktop client (Windows .exe + macOS .dmg/.zip) and, for releases,
 # publish to Tencent Cloud COS so electron-updater can pick it up.
 #
 # Triggers:
@@ -164,7 +164,11 @@ jobs:
       matrix:
         include:
           - os: windows-latest
+            arch: x64
+          - os: macos-13
+            arch: x64
           - os: macos-14
+            arch: arm64
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -240,23 +244,48 @@ jobs:
           # `channel` lives under `publish`, not at the config root — override
           # the nested key. ${EXTRA[@]+...} guards against unbound-variable on an
           # empty array under `set -u` in bash 3.2 (the macOS runner's bash).
-          npx electron-builder --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          npx electron-builder --${{ matrix.arch }} --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
           echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
-      - name: Verify macOS notarization (stapled)
-        if: runner.os == 'macOS' && env.DESKTOP_SIGNED == 'true'
+      - name: Verify desktop update artifacts
+        shell: bash
+        env:
+          ELECTRON_BUILDER_CHANNEL: ${{ needs.resolve.outputs.channel }}
         run: |
           set -euo pipefail
-          APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1 || true)
-          if [ -n "$APP" ]; then
-            echo "Validating $APP"
-            xcrun stapler validate "$APP" || { echo "::error::stapler validate failed — app is not notarized"; exit 1; }
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            compgen -G 'release/*.exe' >/dev/null
+            compgen -G 'release/*.exe.blockmap' >/dev/null
+            test -f "release/${ELECTRON_BUILDER_CHANNEL}.yml"
+          else
+            test -f "release/${ELECTRON_BUILDER_CHANNEL}-mac.yml"
+            if [ "${{ matrix.arch }}" = arm64 ]; then
+              compgen -G 'release/*-arm64.zip' >/dev/null
+              compgen -G 'release/*-arm64.dmg' >/dev/null
+            else
+              compgen -G 'release/*-mac.zip' >/dev/null
+              compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
+            fi
+            compgen -G 'release/*.zip.blockmap' >/dev/null
+          fi
+
+      - name: Verify signed desktop package
+        if: env.DESKTOP_SIGNED == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            powershell.exe -NoProfile -Command '$files = Get-ChildItem release/*.exe; foreach ($file in $files) { if ((Get-AuthenticodeSignature $file).Status -ne "Valid") { exit 1 } }'
+          else
+            APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1)
+            codesign --verify --deep --strict --verbose=2 "$APP"
+            xcrun stapler validate "$APP"
           fi
 
       - name: Upload installers (.exe / .dmg) as artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: nexior-desktop-${{ matrix.os }}
+          name: nexior-desktop-${{ matrix.os }}-${{ matrix.arch }}
           path: |
             release/*.exe
             release/*.dmg

@@ -79,6 +79,11 @@ mac:
       arch:
         - x64
         - arm64
+    # electron-updater applies the ZIP payload; DMG remains the manual installer.
+    - target: zip
+      arch:
+        - x64
+        - arm64
   category: public.app-category.productivity
   hardenedRuntime: true
   gatekeeperAssess: false
