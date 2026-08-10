@@ -66,17 +66,16 @@ export default defineComponent({
       this.onState(await this.bridge.check());
     },
     onState(state: UpdaterState) {
-      const previous = this.state?.phase;
       this.state = state;
       if (state.phase === 'downloaded') {
         void this.promptInstall(state);
-      } else if (this.manualCheck && state.phase === 'up-to-date' && previous === 'checking') {
+      } else if (this.manualCheck && state.phase === 'up-to-date') {
         ElMessage.success(this.$t('common.update.upToDate', { version: state.currentVersion }).toString());
         this.manualCheck = false;
-      } else if (this.manualCheck && state.phase === 'unsupported' && previous !== 'unsupported') {
+      } else if (this.manualCheck && state.phase === 'unsupported') {
         ElMessage.info(this.$t('common.update.unsupported').toString());
         this.manualCheck = false;
-      } else if (this.manualCheck && state.phase === 'error' && previous !== 'error') {
+      } else if (this.manualCheck && state.phase === 'error') {
         ElMessage.error(this.errorMessage(state.errorCode));
         this.manualCheck = false;
       }

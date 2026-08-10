@@ -56,6 +56,17 @@ describe('UpdateMenuItem', () => {
     expect(updater.check).toHaveBeenCalledOnce();
   });
 
+  it('shows unsupported feedback after a manual development check', async () => {
+    const { ElMessage } = await import('element-plus');
+    updater.state = { phase: 'unsupported', currentVersion: '1.0.0' };
+    updater.check.mockResolvedValue(updater.state);
+    const wrapper = mountItem();
+    await flushPromises();
+    await wrapper.trigger('click');
+    await flushPromises();
+    expect(ElMessage.info).toHaveBeenCalledOnce();
+  });
+
   it('renders download progress from main-process events', async () => {
     const wrapper = mountItem();
     await flushPromises();
