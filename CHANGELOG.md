@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 09 Aug 2026 20:16:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 10 Aug 2026 20:22:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.0
+
+Mon, 10 Aug 2026 20:22:20 GMT
+
+### Minor changes
+
+- Add Gemini 3.6 Flash to the chat model picker. (dev@acedata.cloud)
+- Add profile-based desktop update checks and signed installer replacement flow. (dev@acedata.cloud)
+
+### Patches
+
+- Add Lite, Standard, and Pro Maestro SKU selection with tier-aware limits and pricing estimates (dev@acedata.cloud)
 
 ## 3.361.1
 
