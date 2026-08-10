@@ -20,6 +20,7 @@
             <settings-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.setting') }}
           </el-dropdown-item>
+          <update-menu-item />
           <el-dropdown-item class="py-2" @click="onDistribution">
             <credits-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.distribution') }}
@@ -59,6 +60,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
+import UpdateMenuItem from '@/components/user/UpdateMenuItem.vue';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
 import { isMainOfficial } from '@/utils';
@@ -78,6 +80,7 @@ export default defineComponent({
     UserAvatar,
     UserSetting,
     DeleteAccountDialog,
+    UpdateMenuItem,
     ElDivider,
     ElDropdownMenu,
     ElDropdownItem,

@@ -63,6 +63,19 @@ A daily product release attaches installers to its draft GitHub Release without
 changing the COS feed. A direct `Release · Desktop` run publishes to COS behind the
 `desktop-release` approval gate. `dry_run` skips that COS publish.
 
+The signed app exposes **Check for updates** in the user profile menu. It checks
+the channel manifest, downloads in the main process, shows progress in the menu,
+and only calls `quitAndInstall()` after the user confirms **Restart and install**.
+The renderer never receives an installer path or permission to change the feed.
+
+Before approving the first live feed publish, test a signed old → new round trip
+on Windows, Intel macOS, and Apple Silicon macOS. The build must contain the NSIS
+installer + blockmap, both macOS DMGs, both macOS ZIP update payloads + blockmaps,
+and the platform manifests. After restart, verify the app version actually
+changed and the login/local-task data survived. A download alone is not proof of
+a working update; unsigned macOS builds can download and then silently fail to
+replace the app.
+
 ## Cross-repo prerequisites for desktop login
 
 Desktop OAuth needs three changes outside this repo (tracked in the plan's

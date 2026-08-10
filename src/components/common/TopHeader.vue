@@ -65,6 +65,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
+              <update-menu-item />
               <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -91,6 +92,7 @@ import {
   ElButton
 } from 'element-plus';
 import Logo from './Logo.vue';
+import UpdateMenuItem from '@/components/user/UpdateMenuItem.vue';
 import { Browser } from '@capacitor/browser';
 import { isNative, isDesktop, isMacOS } from '@/utils/surface';
 
@@ -106,7 +108,8 @@ export default defineComponent({
     ElMenuItem,
     ElDropdownItem,
     ElButton,
-    ElSubMenu
+    ElSubMenu,
+    UpdateMenuItem
   },
   data() {
     return {
