@@ -187,6 +187,42 @@
     "message": "Enviar",
     "description": "Botón para enviar el mensaje"
   },
+  "session.voiceInput": {
+    "message": "Entrada de voz",
+    "description": "Comienza a convertir la voz en palabras clave"
+  },
+  "session.voiceStop": {
+    "message": "Detener entrada de voz",
+    "description": "Detener la transcripción de voz"
+  },
+  "session.voiceListening": {
+    "message": "Escuchando, puedes editar el texto después de detener.",
+    "description": "Mensaje en el cuadro de entrada durante el reconocimiento de voz"
+  },
+  "session.voiceStopping": {
+    "message": "Finalizando la transcripción de voz…",
+    "description": "Esperando la salida final del reconocimiento de voz"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Permiso de micrófono denegado, por favor permite en la configuración del sistema o del navegador y vuelve a intentarlo.",
+    "description": "El permiso de micrófono ha sido denegado"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "No se encontró o no se puede usar el micrófono.",
+    "description": "Micrófono no disponible"
+  },
+  "session.voiceNoSpeech": {
+    "message": "No se detectó voz, por favor intenta de nuevo.",
+    "description": "El reconocimiento de voz no detectó habla"
+  },
+  "session.voiceNetworkError": {
+    "message": "El servicio de reconocimiento de voz no está disponible temporalmente, por favor verifica la red y vuelve a intentarlo.",
+    "description": "Error de red en el reconocimiento de voz"
+  },
+  "session.voiceError": {
+    "message": "Error en la entrada de voz, por favor intenta de nuevo.",
+    "description": "Error general de reconocimiento de voz"
+  },
   "session.retry": {
     "message": "Reintentar",
     "description": "Re-run the last prompt after a failure"

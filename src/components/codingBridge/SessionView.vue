@@ -240,6 +240,7 @@
               :autosize="{ minRows: 2, maxRows: 12 }"
               resize="none"
               class="cb-composer__input"
+              :readonly="speechActive"
               :placeholder="$t('codingBridge.session.promptPlaceholder')"
               @keydown="onComposerKeydown"
             />
@@ -272,6 +273,20 @@
                 @click="onTriggerAttachmentUpload"
               >
                 <attachment-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+              </button>
+              <button
+                v-if="speechSupported"
+                type="button"
+                class="cb-icon-btn cb-voice-btn"
+                :class="{ 'cb-voice-btn--active': speechActive }"
+                :disabled="speechState === 'stopping'"
+                :title="$t(speechActive ? 'codingBridge.session.voiceStop' : 'codingBridge.session.voiceInput')"
+                :aria-label="$t(speechActive ? 'codingBridge.session.voiceStop' : 'codingBridge.session.voiceInput')"
+                :aria-pressed="speechActive"
+                @click="toggleSpeechRecognition"
+              >
+                <stop-icon v-if="speechActive" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                <microphone-icon v-else :size="'1em' as any" aria-hidden="true" focusable="false" />
               </button>
 
               <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
@@ -609,6 +624,7 @@ import {
   FileIcon,
   FolderOpenIcon,
   HistoryIcon,
+  MicrophoneIcon,
   MoreIcon,
   PerformanceIcon,
   RedoIcon,
@@ -639,7 +655,7 @@ import ComposerSettings from './ComposerSettings.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
 import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
 import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
-import { getBaseUrlPlatform, pasteUploadMixin, dropUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, getFinalApplication, pasteUploadMixin, dropUploadMixin } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
   Status,
@@ -656,6 +672,12 @@ import {
 import claudeIcon from '@/assets/images/logos/claude.svg';
 import openaiIcon from '@/assets/images/logos/openai.svg';
 import copilotIcon from '@/assets/images/logos/github-copilot.svg';
+import {
+  createSpeechRecognitionController,
+  type SpeechRecognitionController,
+  type SpeechRecognitionErrorCode,
+  type SpeechRecognitionSnapshot
+} from '@/utils/speechRecognition';
 
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
 const MAX_ATTACHMENTS = 10;
@@ -694,6 +716,7 @@ export default defineComponent({
     FileIcon,
     FolderOpenIcon,
     HistoryIcon,
+    MicrophoneIcon,
     MoreIcon,
     PerformanceIcon,
     RedoIcon,
@@ -761,7 +784,13 @@ export default defineComponent({
       // One tail-jump per frame, however many mutations the burst produced.
       scrollPending: false,
       transcriptObserver: undefined as MutationObserver | undefined,
-      observedTranscript: undefined as HTMLElement | undefined
+      observedTranscript: undefined as HTMLElement | undefined,
+      speechController: undefined as SpeechRecognitionController | undefined,
+      speechSupported: false,
+      speechState: 'idle' as 'idle' | 'listening' | 'stopping',
+      speechBasePrompt: '',
+      speechFinalText: '',
+      speechInterimText: ''
     };
   },
   computed: {
@@ -901,6 +930,9 @@ export default defineComponent({
     uploadingAttachments(): boolean {
       return (this.attachmentFileList || []).some((file: UploadFile) => this.isAttachmentUploading(file));
     },
+    speechActive(): boolean {
+      return this.speechState !== 'idle';
+    },
     canSend(): boolean {
       // Intentionally NOT gated on `currentProviderAvailable`: that flag comes
       // from the node's CLI probe, which false-negatives when the daemon's PATH
@@ -910,11 +942,18 @@ export default defineComponent({
       return (
         (!!this.prompt.trim() || this.attachments.length > 0) &&
         !this.uploadingAttachments &&
+        !this.speechActive &&
         this.connected &&
         this.nodeOnline
       );
     },
     composerHint(): string {
+      if (this.speechState === 'stopping') {
+        return this.$t('codingBridge.session.voiceStopping') as string;
+      }
+      if (this.speechState === 'listening') {
+        return this.$t('codingBridge.session.voiceListening') as string;
+      }
       if (this.uploadingAttachments) {
         return this.$t('codingBridge.session.uploadingAttachment') as string;
       }
@@ -1070,6 +1109,7 @@ export default defineComponent({
       this.scrollToBottom();
     },
     currentSessionId() {
+      void this.cancelSpeechRecognition?.();
       // A different conversation always opens pinned to its newest message.
       this.pinnedToBottom = true;
       this.scrollToBottom();
@@ -1082,12 +1122,18 @@ export default defineComponent({
       this.syncSessionSettings();
     },
     currentNodeId() {
+      void this.cancelSpeechRecognition?.();
       // Refresh capabilities when switching devices.
       this.requestCapabilities();
       // On a new session, swap the composer to the new device's last setup —
       // a folder / model from the previous device is meaningless here.
       if (this.isNewSession) {
         this.restoreComposerPrefs();
+      }
+    },
+    nodeOnline(value: boolean) {
+      if (!value) {
+        void this.cancelSpeechRecognition?.();
       }
     },
     providerCaps() {
@@ -1131,6 +1177,7 @@ export default defineComponent({
     this.scrollToBottom();
     this.observeTranscript();
     this.watchSettingsBreakpoint();
+    void this.initializeSpeechRecognition?.();
   },
   updated() {
     // The transcript is behind `v-if="currentNode"`, so on a reload it appears
@@ -1143,8 +1190,106 @@ export default defineComponent({
     this.observedTranscript = undefined;
     this.settingsMql?.removeEventListener('change', this.onSettingsBreakpoint);
     this.settingsMql = undefined;
+    void this.speechController?.dispose();
+    this.speechController = undefined;
   },
   methods: {
+    async initializeSpeechRecognition() {
+      const controller = createSpeechRecognitionController();
+      this.speechController = controller;
+      this.speechSupported = await controller.isSupported();
+    },
+    async toggleSpeechRecognition() {
+      if (this.speechState === 'listening') {
+        await this.stopSpeechRecognition();
+        return;
+      }
+      if (this.speechState === 'idle') {
+        await this.startSpeechRecognition();
+      }
+    },
+    async startSpeechRecognition() {
+      if (!this.speechController || !this.speechSupported) return;
+      const token = await this.ensureSpeechCredential();
+      if (!token) {
+        ElMessage.error(this.$t('codingBridge.session.voiceError') as string);
+        return;
+      }
+      this.speechBasePrompt = this.prompt;
+      this.speechFinalText = '';
+      this.speechInterimText = '';
+      this.speechState = 'listening';
+      try {
+        await this.speechController.start(this.$i18n.locale, token, {
+          onResult: this.applySpeechSnapshot,
+          onEnd: this.finishSpeechRecognition,
+          onError: this.handleSpeechError
+        });
+      } catch {
+        this.finishSpeechRecognition();
+      }
+    },
+    async ensureSpeechCredential(): Promise<string> {
+      let token = this.$store.state.openaiimage?.credential?.token as string | undefined;
+      if (token) return token;
+      await this.$store.dispatch('openaiimage/getService');
+      const applications = await this.$store.dispatch('openaiimage/getApplications');
+      const combined = [...(this.$store.state.applications ?? []), ...(applications ?? [])];
+      const application = getFinalApplication(combined, this.$store.state.openaiimage?.application);
+      if (application) await this.$store.dispatch('openaiimage/setApplication', application);
+      token = this.$store.state.openaiimage?.credential?.token as string | undefined;
+      return token ?? '';
+    },
+    async stopSpeechRecognition() {
+      if (!this.speechController || this.speechState !== 'listening') return;
+      this.speechState = 'stopping';
+      try {
+        await this.speechController.stop();
+      } catch {
+        this.handleSpeechError('unknown');
+        this.finishSpeechRecognition();
+      }
+    },
+    async cancelSpeechRecognition() {
+      if (!this.speechController || this.speechState === 'idle') return;
+      this.speechState = 'idle';
+      this.speechInterimText = '';
+      this.applySpeechPrompt();
+      await this.speechController.abort();
+    },
+    applySpeechSnapshot(snapshot: SpeechRecognitionSnapshot) {
+      if (this.speechState === 'idle') return;
+      this.speechFinalText = snapshot.finalText;
+      this.speechInterimText = snapshot.interimText;
+      this.applySpeechPrompt();
+    },
+    applySpeechPrompt() {
+      const speech = `${this.speechFinalText}${this.speechInterimText}`;
+      const separator = this.speechBasePrompt && speech ? '\n' : '';
+      this.prompt = `${this.speechBasePrompt}${separator}${speech}`;
+    },
+    finishSpeechRecognition() {
+      if (this.speechState === 'idle') return;
+      this.speechInterimText = '';
+      this.applySpeechPrompt();
+      this.speechState = 'idle';
+    },
+    handleSpeechError(code: SpeechRecognitionErrorCode) {
+      if (code === 'aborted') return;
+      const keys: Record<Exclude<SpeechRecognitionErrorCode, 'aborted'>, string> = {
+        'permission-denied': 'codingBridge.session.voicePermissionDenied',
+        'microphone-unavailable': 'codingBridge.session.voiceMicrophoneUnavailable',
+        'no-speech': 'codingBridge.session.voiceNoSpeech',
+        network: 'codingBridge.session.voiceNetworkError',
+        unknown: 'codingBridge.session.voiceError'
+      };
+      const message = this.$t(keys[code]) as string;
+      if (code === 'no-speech') {
+        ElMessage.warning(message);
+      } else {
+        ElMessage.error(message);
+      }
+    },
     // Matches the `md` breakpoint the composer styles use. Below it the
     // secondary controls open in a dialog instead of crowding the row.
     watchSettingsBreakpoint() {
@@ -1321,6 +1466,7 @@ export default defineComponent({
       if (!this.canSend) {
         return;
       }
+      void this.cancelSpeechRecognition?.();
       const attachments = this.attachments;
       // Editing a past prompt rewinds the conversation to that turn instead of
       // appending — so the original prompt and everything after leave context.
@@ -1363,7 +1509,11 @@ export default defineComponent({
     },
     // Clear the input, slash menu, attachments and any active edit state.
     resetComposer() {
+      void this.cancelSpeechRecognition?.();
       this.prompt = '';
+      this.speechBasePrompt = '';
+      this.speechFinalText = '';
+      this.speechInterimText = '';
       this.slashMenuOpen = false;
       this.slashActiveIndex = 0;
       this.editingEventId = '';
@@ -1477,6 +1627,7 @@ export default defineComponent({
       if (!this.canEdit) {
         return;
       }
+      void this.cancelSpeechRecognition?.();
       this.editingEventId = event.id;
       this.restoreCode = false;
       this.prompt = event.text ?? '';
@@ -1816,6 +1967,24 @@ export default defineComponent({
   &:hover {
     color: var(--el-color-primary);
     border-color: var(--el-color-primary-light-5);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.65;
+  }
+}
+
+.cb-voice-btn--active {
+  color: var(--el-color-danger);
+  border-color: var(--el-color-danger-light-5);
+  background: var(--el-color-danger-light-9);
+  animation: cb-voice-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes cb-voice-pulse {
+  50% {
+    box-shadow: 0 0 0 4px rgb(245 108 108 / 14%);
   }
 }
 

@@ -187,6 +187,42 @@
     "message": "送信",
     "description": "プロンプト送信ボタン"
   },
+  "session.voiceInput": {
+    "message": "音声入力",
+    "description": "音声をテキストに変換するための開始"
+  },
+  "session.voiceStop": {
+    "message": "音声入力を停止",
+    "description": "音声の転写を停止する"
+  },
+  "session.voiceListening": {
+    "message": "音声を聞き取っています。停止後にテキストを編集できます。",
+    "description": "音声認識が進行中であることを示す入力ボックスのヒント"
+  },
+  "session.voiceStopping": {
+    "message": "音声転写を完了しています…",
+    "description": "音声認識の最終結果を待っている"
+  },
+  "session.voicePermissionDenied": {
+    "message": "マイクの権限が拒否されました。システムまたはブラウザの設定で許可した後、再試行してください。",
+    "description": "マイクの権限が拒否されたことを示します。"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "マイクが見つからないか、使用できません。",
+    "description": "マイクが利用できない"
+  },
+  "session.voiceNoSpeech": {
+    "message": "音声が検出されませんでした。再試行してください。",
+    "description": "音声認識が話し声を検出できなかった"
+  },
+  "session.voiceNetworkError": {
+    "message": "音声認識サービスが一時的に利用できません。ネットワークを確認して再試行してください。",
+    "description": "音声認識のネットワークエラー"
+  },
+  "session.voiceError": {
+    "message": "音声入力に失敗しました。再試行してください。",
+    "description": "音声認識の一般的なエラー"
+  },
   "session.retry": {
     "message": "再試行",
     "description": "失敗後に最後のプロンプトを再実行する"

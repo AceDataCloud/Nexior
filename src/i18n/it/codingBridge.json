@@ -187,6 +187,42 @@
     "message": "Invia",
     "description": "Pulsante per inviare il messaggio"
   },
+  "session.voiceInput": {
+    "message": "Input vocale",
+    "description": "Inizia a convertire la voce in suggerimenti"
+  },
+  "session.voiceStop": {
+    "message": "Ferma input vocale",
+    "description": "Ferma la trascrizione vocale"
+  },
+  "session.voiceListening": {
+    "message": "In ascolto, puoi modificare il testo dopo aver fermato.",
+    "description": "Messaggio di input durante il riconoscimento vocale in corso"
+  },
+  "session.voiceStopping": {
+    "message": "Completando la trascrizione vocale…",
+    "description": "In attesa del risultato finale del riconoscimento vocale"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Permesso del microfono negato, consenti nelle impostazioni di sistema o del browser e riprova.",
+    "description": "Permesso del microfono negato"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "Microfono non trovato o non disponibile.",
+    "description": "Microfono non disponibile"
+  },
+  "session.voiceNoSpeech": {
+    "message": "Nessuna voce rilevata, riprova.",
+    "description": "Il riconoscimento vocale non ha rilevato alcuna parola"
+  },
+  "session.voiceNetworkError": {
+    "message": "Servizio di riconoscimento vocale temporaneamente non disponibile, controlla la rete e riprova.",
+    "description": "Errore di rete nel riconoscimento vocale"
+  },
+  "session.voiceError": {
+    "message": "Errore nell'input vocale, riprova.",
+    "description": "Errore generico nel riconoscimento vocale"
+  },
   "session.retry": {
     "message": "Riprova",
     "description": "Re-run the last prompt after a failure"
@@ -325,7 +361,7 @@
   },
   "session.providerLabel": {
     "message": "Backend",
-    "description": "Etichetta del selettore del backend dell'agente"
+    "description": "Etichetta per il selettore del backend dell'agente"
   },
   "session.providerClaude": {
     "message": "Claude Code",

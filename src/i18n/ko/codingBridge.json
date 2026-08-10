@@ -187,6 +187,42 @@
     "message": "전송",
     "description": "프롬프트 전송 버튼"
   },
+  "session.voiceInput": {
+    "message": "음성 입력",
+    "description": "음성을 텍스트로 변환하기 시작"
+  },
+  "session.voiceStop": {
+    "message": "음성 입력 중지",
+    "description": "음성 전사 중지"
+  },
+  "session.voiceListening": {
+    "message": "듣고 있습니다. 중지 후 텍스트를 편집할 수 있습니다.",
+    "description": "음성 인식 진행 중 입력창 안내"
+  },
+  "session.voiceStopping": {
+    "message": "음성 전사를 완료하고 있습니다…",
+    "description": "음성 인식 최종 결과 출력 대기"
+  },
+  "session.voicePermissionDenied": {
+    "message": "마이크 권한이 거부되었습니다. 시스템 또는 브라우저 설정에서 허용한 후 다시 시도하세요.",
+    "description": "마이크 권한이 거부된 경우에 대한 메시지입니다."
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "마이크를 찾을 수 없거나 사용할 수 없습니다.",
+    "description": "마이크가 사용 불가능함"
+  },
+  "session.voiceNoSpeech": {
+    "message": "음성이 감지되지 않았습니다. 다시 시도해 주세요.",
+    "description": "음성 인식이 말을 감지하지 못함"
+  },
+  "session.voiceNetworkError": {
+    "message": "음성 인식 서비스가 일시적으로 사용할 수 없습니다. 네트워크를 확인한 후 다시 시도해 주세요.",
+    "description": "음성 인식 네트워크 오류"
+  },
+  "session.voiceError": {
+    "message": "음성 입력 실패, 다시 시도해 주세요.",
+    "description": "음성 인식 일반 오류"
+  },
   "session.retry": {
     "message": "다시 시도",
     "description": "Re-run the last prompt after a failure"
