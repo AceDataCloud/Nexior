@@ -164,7 +164,11 @@ jobs:
       matrix:
         include:
           - os: windows-latest
+            arch: x64
+          - os: macos-13
+            arch: x64
           - os: macos-14
+            arch: arm64
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -240,7 +244,7 @@ jobs:
           # `channel` lives under `publish`, not at the config root — override
           # the nested key. ${EXTRA[@]+...} guards against unbound-variable on an
           # empty array under `set -u` in bash 3.2 (the macOS runner's bash).
-          npx electron-builder --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          npx electron-builder --${{ matrix.arch }} --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
           echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
       - name: Verify desktop update artifacts
@@ -255,14 +259,13 @@ jobs:
             test -f "release/${ELECTRON_BUILDER_CHANNEL}.yml"
           else
             test -f "release/${ELECTRON_BUILDER_CHANNEL}-mac.yml"
-            for arch in x64 arm64; do
-              compgen -G "release/*-${arch}.zip" >/dev/null || {
-                [ "$arch" = x64 ] && compgen -G 'release/AceData-[0-9]*.zip' >/dev/null
-              }
-              compgen -G "release/*-${arch}.dmg" >/dev/null || {
-                [ "$arch" = x64 ] && compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
-              }
-            done
+            if [ "${{ matrix.arch }}" = arm64 ]; then
+              compgen -G 'release/*-arm64.zip' >/dev/null
+              compgen -G 'release/*-arm64.dmg' >/dev/null
+            else
+              compgen -G 'release/*-mac.zip' >/dev/null
+              compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
+            fi
             compgen -G 'release/*.zip.blockmap' >/dev/null
           fi
 
@@ -282,7 +285,7 @@ jobs:
       - name: Upload installers (.exe / .dmg) as artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: nexior-desktop-${{ matrix.os }}
+          name: nexior-desktop-${{ matrix.os }}-${{ matrix.arch }}
           path: |
             release/*.exe
             release/*.dmg
