@@ -36,6 +36,9 @@ describe('Maestro SKU policy', () => {
   });
 
   it('estimates credits using public billing formula', () => {
+    expect(estimateMaestroCredits(5, 'lite')).toBe(6);
+    expect(estimateMaestroCredits(5, 'standard')).toBe(18);
+    expect(estimateMaestroCredits(5, 'pro')).toBe(36);
     expect(estimateMaestroCredits(30, 'lite')).toBe(6);
     expect(estimateMaestroCredits(30, 'standard', 'avatar', 2)).toBe(26.7);
     expect(estimateMaestroCredits(30, 'pro', 'drama')).toBe(48.6);

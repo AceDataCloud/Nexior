@@ -38,5 +38,8 @@ export function estimateMaestroCredits(
 ): number {
   const scenarioMultiplier = scenario === 'drama' ? 1.35 : scenario === 'avatar' ? 1.15 : 1;
   const languageSurcharge = Math.max(0, languageCount - 1) * 6;
-  return Number((duration * MAESTRO_SKU_POLICIES[sku].rate * scenarioMultiplier + languageSurcharge).toFixed(2));
+  const billableDuration = Math.max(30, duration);
+  return Number(
+    (billableDuration * MAESTRO_SKU_POLICIES[sku].rate * scenarioMultiplier + languageSurcharge).toFixed(2)
+  );
 }

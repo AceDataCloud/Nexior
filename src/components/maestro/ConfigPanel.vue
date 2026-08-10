@@ -141,6 +141,7 @@
           <span>{{ $t(`maestro.description.quality.${quality}`) }}</span>
           <strong>{{ $t('maestro.name.estimatedCredits', { credits: estimatedCredits }) }}</strong>
         </div>
+        <p class="sku-minimum">{{ $t('maestro.description.minimumCharge') }}</p>
       </div>
 
       <!-- Scenario (video type) -->
@@ -738,6 +739,11 @@ export default defineComponent({
     flex: 0 0 auto;
     color: var(--el-text-color-primary);
   }
+}
+.sku-minimum {
+  margin: 5px 0 0;
+  color: var(--el-text-color-placeholder);
+  font-size: 10px;
 }
 .custom-field {
   margin-top: 20px;
