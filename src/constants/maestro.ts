@@ -9,17 +9,50 @@ export const MAESTRO_ACTION_EXTEND = 'extend';
 
 export const MAESTRO_ALLOWED_ASPECTS = ['9:16', '16:9', '1:1'];
 export const MAESTRO_ALLOWED_LANGS = ['zh-cn', 'en', 'ja', 'ko', 'es', 'fr', 'de'];
-// Duration is billed per second (up to 10 min); the user types any value in this range.
-export const MAESTRO_MIN_DURATION = 1;
-export const MAESTRO_MAX_DURATION = 600;
-// Production tier (effort/price): draft = fast preview, standard = balanced, premium = richer.
-export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
-// Video type: an optional routing hint. Omitting the field lets the director pick.
-// Legacy values (general/explainer/product/website/changelog -> auto; slides/slideshow/motion -> auto)
-// are still accepted by the API but no longer offered here.
+export const MAESTRO_MIN_DURATION = 5;
+export const MAESTRO_MAX_DURATION = 300;
+
+export type IMaestroSku = 'lite' | 'standard' | 'pro';
+
+export interface IMaestroSkuPolicy {
+  rate: number;
+  maxDuration: number;
+  maxLanguages: number;
+  resolution: string;
+  fps: number;
+  scenarios: readonly string[];
+}
+
+export const MAESTRO_SKU_POLICIES: Record<IMaestroSku, IMaestroSkuPolicy> = {
+  lite: {
+    rate: 0.2,
+    maxDuration: 30,
+    maxLanguages: 1,
+    resolution: '720p',
+    fps: 24,
+    scenarios: ['auto', 'narrated', 'captions']
+  },
+  standard: {
+    rate: 0.6,
+    maxDuration: 120,
+    maxLanguages: 2,
+    resolution: '1080p',
+    fps: 30,
+    scenarios: ['auto', 'narrated', 'captions', 'avatar']
+  },
+  pro: {
+    rate: 1.2,
+    maxDuration: 300,
+    maxLanguages: 4,
+    resolution: '1080p',
+    fps: 30,
+    scenarios: ['auto', 'narrated', 'captions', 'avatar', 'drama']
+  }
+};
+export const MAESTRO_ALLOWED_QUALITIES = Object.keys(MAESTRO_SKU_POLICIES) as IMaestroSku[];
 export const MAESTRO_ALLOWED_SCENARIOS = ['narrated', 'drama', 'avatar', 'captions'];
 // `captions` post-processes an EXISTING talking-head video, so it requires an uploaded source clip.
-export const MAESTRO_UPLOAD_REQUIRED_SCENARIOS = ['captions'];
+export const MAESTRO_UPLOAD_REQUIRED_SCENARIOS = ['captions', 'avatar'];
 // Preview thumbnail per scenario — a cohesive set of purpose-made 3:4 portrait
 // thumbnails (subject/head in the upper frame) so each Video Type reads at a
 // glance in the compact vertical cards. Hosted on the CDN like MAESTRO_LOGO.

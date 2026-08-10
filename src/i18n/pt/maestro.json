@@ -103,17 +103,41 @@
     "message": "Qualidade",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Rascunho · pré-visualização rápida",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite Leve",
+    "description": "Opção SKU Lite"
   },
   "option.quality.standard": {
     "message": "Padrão · equilibrado",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Premium · mais detalhes",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro Profissional",
+    "description": "Opção SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "Criação rápida de vídeos curtos e simples, com animações leves e saída em um único idioma.",
+    "description": "Resumo do SKU Lite"
+  },
+  "description.quality.standard": {
+    "message": "Produção equilibrada em 1080p, suporta narração digital e até duas línguas.",
+    "description": "Resumo do SKU Standard"
+  },
+  "description.quality.pro": {
+    "message": "Suporta vídeos longos, curtas-metragens e a capacidade criativa mais completa.",
+    "description": "Resumo do SKU Pro"
+  },
+  "name.upToSeconds": {
+    "message": "Máximo de {seconds} segundos",
+    "description": "Duração máxima do SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Estimativa de {credits} créditos",
+    "description": "Créditos estimados para geração"
+  },
+  "name.requiresSku": {
+    "message": "Necessário {sku}",
+    "description": "SKU mínimo para um tipo de vídeo"
   },
   "name.remixing": {
     "message": "Remixando",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "As legendas cinéticas funcionam sobre um vídeo de locutor existente — envie um acima primeiro.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "A narração digital precisa de um retrato, por favor, faça o upload acima primeiro.",
+    "description": "Aviso exibido quando um vídeo de avatar é selecionado, mas nenhum retrato foi enviado"
   },
   "name.style": {
     "message": "Estilo visual",

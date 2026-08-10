@@ -103,17 +103,41 @@
     "message": "Качество",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Черновик · быстрый предпросмотр",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite легкий",
+    "description": "Опция Lite SKU"
   },
   "option.quality.standard": {
     "message": "Стандарт · сбалансированно",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Премиум · больше деталей",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro профессиональный",
+    "description": "Опция Pro SKU"
+  },
+  "description.quality.lite": {
+    "message": "Быстрое создание простых коротких видео, легкие эффекты, одноличный вывод.",
+    "description": "Резюме Lite SKU"
+  },
+  "description.quality.standard": {
+    "message": "Сбалансированное производство 1080p, поддержка цифрового озвучивания и до двух языков.",
+    "description": "Резюме Standard SKU"
+  },
+  "description.quality.pro": {
+    "message": "Поддержка длинных видео, коротких сериалов и самых полных возможностей креативного производства.",
+    "description": "Резюме Pro SKU"
+  },
+  "name.upToSeconds": {
+    "message": "Максимум {seconds} секунд",
+    "description": "Максимальная продолжительность SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Ожидается {credits} кредитов",
+    "description": "Оцененные кредиты на генерацию"
+  },
+  "name.requiresSku": {
+    "message": "Требуется {sku}",
+    "description": "Минимальный SKU для типа видео"
   },
   "name.remixing": {
     "message": "Ремикс",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Кинетические субтитры работают с уже существующим видео с говорящим — сначала загрузите его выше.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Цифровое озвучивание требует изображения персонажа, пожалуйста, загрузите его выше.",
+    "description": "Предупреждение, отображаемое при выборе видео с аватаром, но без загруженного портрета"
   },
   "name.style": {
     "message": "Визуальный стиль",

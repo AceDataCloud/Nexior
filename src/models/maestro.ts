@@ -1,3 +1,5 @@
+import type { IMaestroSku } from '@/constants/maestro';
+
 export type IMaestroAction = 'generate' | 'remix' | 'edit' | 'extend';
 
 export interface IMaestroConfig {
@@ -13,7 +15,7 @@ export interface IMaestroConfig {
   langs?: string[];
   aspect?: string; // '9:16' | '16:9' | '1:1'
   duration?: number;
-  quality?: string; // 'draft' | 'standard' | 'premium'
+  quality?: IMaestroSku;
   scenario?: string; // 'auto' | 'narrated' | 'drama' | 'avatar' | 'captions'
   style?: string; // freeform visual hint (e.g. 'auto' | 'cinematic' | 'minimal' | 'neon' | 'corporate'); orthogonal to scenario
   voice?: string; // narration timbre: 'auto' (director picks) | a preset key (constants) | a 32-hex Fish reference_id

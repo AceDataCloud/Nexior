@@ -36,7 +36,7 @@
     "description": "Επιλογή ενέργειας δημιουργίας"
   },
   "option.action.remix": {
-    "message": "Remix",
+    "message": "Δημιουργία remix",
     "description": "Επιλογή δράσης remix"
   },
   "option.action.edit": {
@@ -103,17 +103,41 @@
     "message": "Ποιότητα",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Πρόχειρο · γρήγορη προεπισκόπηση",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite Ελαφρύ",
+    "description": "Επιλογή SKU Lite"
   },
   "option.quality.standard": {
     "message": "Τυπικό · ισορροπημένο",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Premium · περισσότερες λεπτομέρειες",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro Επαγγελματικό",
+    "description": "Επιλογή SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "Γρήγορη δημιουργία απλών σύντομων βίντεο, ελαφριές κινήσεις, μονόγλωσση έξοδος.",
+    "description": "Περίληψη SKU Lite"
+  },
+  "description.quality.standard": {
+    "message": "Ισορροπημένη παραγωγή 1080p, υποστηρίζει ψηφιακή αφήγηση και έως δύο γλώσσες.",
+    "description": "Περίληψη SKU Standard"
+  },
+  "description.quality.pro": {
+    "message": "Υποστηρίζει μακροχρόνια βίντεο, σύντομες ταινίες και τις πιο ολοκληρωμένες δυνατότητες δημιουργίας.",
+    "description": "Περίληψη SKU Pro"
+  },
+  "name.upToSeconds": {
+    "message": "Μέχρι {seconds} δευτερόλεπτα",
+    "description": "Μέγιστη διάρκεια SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Εκτιμώμενα {credits} πιστώσεις",
+    "description": "Εκτιμώμενες πιστώσεις παραγωγής"
+  },
+  "name.requiresSku": {
+    "message": "Απαιτείται {sku}",
+    "description": "Ελάχιστο SKU για έναν τύπο βίντεο"
   },
   "name.remixing": {
     "message": "Επαναδημιουργία",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Οι κινητικοί υπότιτλοι εφαρμόζονται σε υπάρχον βίντεο ομιλητή — ανεβάστε πρώτα ένα παραπάνω.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Η ψηφιακή αφήγηση χρειάζεται μια εικόνα προσώπου, παρακαλώ ανεβάστε την παραπάνω.",
+    "description": "Προειδοποίηση που εμφανίζεται όταν έχει επιλεγεί βίντεο avatar αλλά δεν έχει ανέβει πορτραίτο"
   },
   "name.style": {
     "message": "Οπτικός στυλ",

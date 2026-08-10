@@ -83,6 +83,14 @@
     "message": "언어",
     "description": "출력 언어 필드"
   },
+  "name.primaryLanguage": {
+    "message": "주 언어",
+    "description": "주 출력 언어 필드"
+  },
+  "name.additionalLanguages": {
+    "message": "추가 언어 (선택 사항)",
+    "description": "추가 출력 언어 필드"
+  },
   "name.aspect": {
     "message": "화면 비율",
     "description": "화면 비율 필드"
@@ -95,17 +103,41 @@
     "message": "품질",
     "description": "제작 품질 등급 필드"
   },
-  "option.quality.draft": {
-    "message": "초안 · 빠른 미리보기",
-    "description": "초안 품질 옵션"
+  "option.quality.lite": {
+    "message": "Lite 경량",
+    "description": "Lite SKU 옵션"
   },
   "option.quality.standard": {
     "message": "표준 · 균형",
     "description": "표준 품질 옵션"
   },
-  "option.quality.premium": {
-    "message": "프리미엄 · 더 세밀함",
-    "description": "프리미엄 품질 옵션"
+  "option.quality.pro": {
+    "message": "Pro 전문",
+    "description": "Pro SKU 옵션"
+  },
+  "description.quality.lite": {
+    "message": "간편한 짧은 비디오 제작, 간단한 효과, 단일 언어 출력.",
+    "description": "Lite SKU 요약"
+  },
+  "description.quality.standard": {
+    "message": "균형 잡힌 1080p 제작, 디지털 내레이션 및 최대 두 가지 언어 지원.",
+    "description": "Standard SKU 요약"
+  },
+  "description.quality.pro": {
+    "message": "긴 비디오, 단편극 및 가장 완벽한 창작 능력을 지원합니다.",
+    "description": "Pro SKU 요약"
+  },
+  "name.upToSeconds": {
+    "message": "최대 {seconds} 초",
+    "description": "최대 SKU 지속 시간"
+  },
+  "name.estimatedCredits": {
+    "message": "예상 {credits} 크레딧",
+    "description": "예상 생성 크레딧"
+  },
+  "name.requiresSku": {
+    "message": "{sku} 필요",
+    "description": "비디오 유형에 대한 최소 SKU"
   },
   "name.remixing": {
     "message": "리믹스",
@@ -118,6 +150,10 @@
   "placeholder.select": {
     "message": "선택하세요",
     "description": "일반적인 선택 자리 표시자"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "출력 언어 추가",
+    "description": "추가 언어 자리 표시자"
   },
   "description.prompt": {
     "message": "원하는 내용을 간단히 설명하세요. 스크립트, 화면, 더빙, 편집은 Maestro에게 맡기세요.",
@@ -207,6 +243,30 @@
     "message": "아직 비디오가 없습니다 — 왼쪽에서 첫 번째 비디오를 생성하세요.",
     "description": "작업 없음"
   },
+  "name.customize": {
+    "message": "맞춤 설정",
+    "description": "선택적 크리에이티브 제어 토글"
+  },
+  "description.customize.auto": {
+    "message": "자동 · 동영상 유형, 시각적 스타일, 내레이터 음색은 Maestro가 결정합니다.",
+    "description": "사용자 지정 비활성화 상태"
+  },
+  "description.customize.manual": {
+    "message": "동영상 유형, 시각적 스타일, 내레이터 음색을 선택하세요.",
+    "description": "사용자 지정 활성화 상태"
+  },
+  "name.customizeScenario": {
+    "message": "동영상 유형 맞춤 설정",
+    "description": "비디오 유형 사용자 지정 토글"
+  },
+  "name.customizeStyle": {
+    "message": "시각적 스타일 맞춤 설정",
+    "description": "시각적 스타일 사용자 지정 토글"
+  },
+  "name.customizeVoice": {
+    "message": "내레이터 음색 맞춤 설정",
+    "description": "음성 음색 사용자 지정 토글"
+  },
   "name.scenario": {
     "message": "동영상 유형",
     "description": "비디오 유형 필드"
@@ -238,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "키네틱 자막은 기존 토킹헤드 영상에 적용됩니다. 먼저 위에서 영상을 업로드하세요.",
     "description": "자막 비디오 유형을 선택했으나 소스 비디오가 업로드되지 않은 경우 표시되는 경고"
+  },
+  "message.avatarNeedsImage": {
+    "message": "디지털 내레이션을 위해 인물 초상이 필요합니다. 위에서 먼저 업로드하세요.",
+    "description": "아바타 비디오가 선택되었지만 초상이 업로드되지 않았을 때 표시되는 경고"
   },
   "name.style": {
     "message": "시각적 스타일",
@@ -450,41 +514,5 @@
   "option.scenario.changelog": {
     "message": "변경 로그 (PR)",
     "description": "변경 이력 시나리오 옵션"
-  },
-  "name.customize": {
-    "message": "맞춤 설정",
-    "description": "선택적 크리에이티브 제어 토글"
-  },
-  "description.customize.auto": {
-    "message": "자동 · 동영상 유형, 시각적 스타일, 내레이터 음색은 Maestro가 결정합니다.",
-    "description": "사용자 지정 비활성화 상태"
-  },
-  "description.customize.manual": {
-    "message": "동영상 유형, 시각적 스타일, 내레이터 음색을 선택하세요.",
-    "description": "사용자 지정 활성화 상태"
-  },
-  "name.primaryLanguage": {
-    "message": "주 언어",
-    "description": "주 출력 언어 필드"
-  },
-  "name.additionalLanguages": {
-    "message": "추가 언어 (선택 사항)",
-    "description": "추가 출력 언어 필드"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "출력 언어 추가",
-    "description": "추가 언어 자리 표시자"
-  },
-  "name.customizeScenario": {
-    "message": "동영상 유형 맞춤 설정",
-    "description": "비디오 유형 사용자 지정 토글"
-  },
-  "name.customizeStyle": {
-    "message": "시각적 스타일 맞춤 설정",
-    "description": "시각적 스타일 사용자 지정 토글"
-  },
-  "name.customizeVoice": {
-    "message": "내레이터 음색 맞춤 설정",
-    "description": "음성 음색 사용자 지정 토글"
   }
 }

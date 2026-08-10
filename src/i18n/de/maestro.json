@@ -103,17 +103,41 @@
     "message": "Qualität",
     "description": "Feld für die Produktionsqualität"
   },
-  "option.quality.draft": {
-    "message": "Entwurf · schnelle Vorschau",
-    "description": "Option für Entwurfsqualität"
+  "option.quality.lite": {
+    "message": "Lite",
+    "description": "Lite SKU-Option"
   },
   "option.quality.standard": {
     "message": "Standard · ausgewogen",
     "description": "Option für Standardqualität"
   },
-  "option.quality.premium": {
-    "message": "Premium · mehr Details",
-    "description": "Option für Premiumqualität"
+  "option.quality.pro": {
+    "message": "Pro",
+    "description": "Pro SKU-Option"
+  },
+  "description.quality.lite": {
+    "message": "Schnelle Erstellung von einfachen Kurzvideos, leichte Effekte, einsprachige Ausgabe.",
+    "description": "Zusammenfassung des Lite SKU"
+  },
+  "description.quality.standard": {
+    "message": "Ausgewogene 1080p-Produktion, unterstützt digitale Sprachsynthese und bis zu zwei Sprachen.",
+    "description": "Zusammenfassung des Standard SKU"
+  },
+  "description.quality.pro": {
+    "message": "Unterstützt lange Videos, Kurzfilme und die umfassendsten kreativen Produktionsfähigkeiten.",
+    "description": "Zusammenfassung des Pro SKU"
+  },
+  "name.upToSeconds": {
+    "message": "Maximal {seconds} Sekunden",
+    "description": "Maximale SKU-Dauer"
+  },
+  "name.estimatedCredits": {
+    "message": "Geschätzte {credits} Credits",
+    "description": "Geschätzte Generierungsguthaben"
+  },
+  "name.requiresSku": {
+    "message": "Benötigt {sku}",
+    "description": "Minimales SKU für einen Videotyp"
   },
   "name.remixing": {
     "message": "Remix",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Kinetische Untertitel arbeiten mit einem vorhandenen Talking-Head-Video – lade oben zuerst eines hoch.",
     "description": "Warnung, wenn der Videotyp „Untertitel hinzufügen“ ausgewählt ist, aber kein Quellvideo hochgeladen wurde"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Für die digitale Sprachsynthese wird ein Porträt benötigt, bitte laden Sie es oben hoch.",
+    "description": "Warnung, die angezeigt wird, wenn ein Avatar-Video ausgewählt ist, aber kein Porträt hochgeladen wurde"
   },
   "name.style": {
     "message": "Visueller Stil",

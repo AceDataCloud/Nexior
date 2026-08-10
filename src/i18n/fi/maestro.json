@@ -103,17 +103,41 @@
     "message": "Laatu",
     "description": "Tuotantolaadun tasokenttä"
   },
-  "option.quality.draft": {
-    "message": "Luonnos · nopea esikatselu",
-    "description": "Luonnostason vaihtoehto"
+  "option.quality.lite": {
+    "message": "Lite",
+    "description": "Lite SKU vaihtoehto"
   },
   "option.quality.standard": {
     "message": "Vakio · tasapainoinen",
     "description": "Vakiotason vaihtoehto"
   },
-  "option.quality.premium": {
-    "message": "Premium · enemmän yksityiskohtia",
-    "description": "Premiumtason vaihtoehto"
+  "option.quality.pro": {
+    "message": "Pro",
+    "description": "Pro SKU vaihtoehto"
+  },
+  "description.quality.lite": {
+    "message": "Nopea ja yksinkertainen lyhytvideo, kevyet tehosteet, yksi kieli.",
+    "description": "Lite SKU yhteenveto"
+  },
+  "description.quality.standard": {
+    "message": "Tasapainoinen 1080p tuotanto, tukee digitaalista puhetta ja enintään kahta kieltä.",
+    "description": "Standard SKU yhteenveto"
+  },
+  "description.quality.pro": {
+    "message": "Tukee pitkiä videoita, lyhyitä esityksiä ja täydellisiä luovuusmahdollisuuksia.",
+    "description": "Pro SKU yhteenveto"
+  },
+  "name.upToSeconds": {
+    "message": "Enintään {seconds} sekuntia",
+    "description": "Maksimi SKU kesto"
+  },
+  "name.estimatedCredits": {
+    "message": "Arvioidut {credits} krediittiä",
+    "description": "Arvioidut tuotantokrediitit"
+  },
+  "name.requiresSku": {
+    "message": "Vaaditaan {sku}",
+    "description": "Vähimmäis SKU videotyypille"
   },
   "name.remixing": {
     "message": "Remix",
@@ -181,7 +205,7 @@
   },
   "button.remix": {
     "message": "Remix",
-    "description": "Remixaa tämä video"
+    "description": "Remixaa tämä video -painike"
   },
   "button.cancelRemix": {
     "message": "Peru remix",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Kineettiset tekstitykset toimivat olemassa olevaan puhujavideoon — lataa ensin video yllä.",
     "description": "Varoitus, kun tekstitysvideotyyppi on valittu mutta lähdevideota ei ole ladattu"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Digitaalinen puhe tarvitsee henkilöhahmon kuvan, lataa se ensin ylhäältä.",
+    "description": "Varoitus, joka näytetään, kun avatar-video on valittu mutta kuvaa ei ole ladattu"
   },
   "name.style": {
     "message": "Visuaalinen tyyli",
