@@ -83,6 +83,14 @@
     "message": "Језици",
     "description": "Поље за излазне језике"
   },
+  "name.primaryLanguage": {
+    "message": "Главни језик",
+    "description": "Поље главног излазног језика"
+  },
+  "name.additionalLanguages": {
+    "message": "Додатни језици (опционо)",
+    "description": "Поље додатних излазних језика"
+  },
   "name.aspect": {
     "message": "Odnos stranica",
     "description": "Polje za odnos stranica"
@@ -95,17 +103,41 @@
     "message": "Квалитет",
     "description": "Поље нивоа продукционог квалитета"
   },
-  "option.quality.draft": {
-    "message": "Нацрт · брзи преглед",
-    "description": "Опција квалитета нацрта"
+  "option.quality.lite": {
+    "message": "Lite lagani",
+    "description": "Opcija Lite SKU"
   },
   "option.quality.standard": {
     "message": "Стандард · уравнотежено",
     "description": "Опција стандардног квалитета"
   },
-  "option.quality.premium": {
-    "message": "Премијум · више детаља",
-    "description": "Опција Premium квалитета"
+  "option.quality.pro": {
+    "message": "Pro profesionalni",
+    "description": "Opcija Pro SKU"
+  },
+  "description.quality.lite": {
+    "message": "Brzo pravite jednostavne kratke video zapise, lagani efekti, izlaz na jednom jeziku.",
+    "description": "Sažetak Lite SKU"
+  },
+  "description.quality.standard": {
+    "message": "Izbalansirana 1080p produkcija, podržava digitalnu naraciju i do dva jezika.",
+    "description": "Sažetak Standard SKU"
+  },
+  "description.quality.pro": {
+    "message": "Podržava duge video zapise, kratke drame i najpotpunije mogućnosti kreativne produkcije.",
+    "description": "Sažetak Pro SKU"
+  },
+  "name.upToSeconds": {
+    "message": "Najduže {seconds} sekundi",
+    "description": "Maksimalna trajanje SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Procena {credits} kredita",
+    "description": "Procena generisanih kredita"
+  },
+  "name.requiresSku": {
+    "message": "Potrebno {sku}",
+    "description": "Minimalni SKU za tip video zapisa"
   },
   "name.remixing": {
     "message": "Ремиксовање",
@@ -118,6 +150,10 @@
   "placeholder.select": {
     "message": "Izaberite",
     "description": "Generički placeholder za izbor"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "Додај језике излаза",
+    "description": "Место за додатне језике"
   },
   "description.prompt": {
     "message": "Јасно изразите шта желите, сценарио, слике, глас, монтажу оставите Maestro-у.",
@@ -207,6 +243,30 @@
     "message": "Još nema videa — kreiraj svoj prvi sa leve strane.",
     "description": "Nema zadataka"
   },
+  "name.customize": {
+    "message": "Прилагоди",
+    "description": "Прекидач за опционе креативне контроле"
+  },
+  "description.customize.auto": {
+    "message": "Аутоматски · Maestro бира тип видеа, визуелни стил и тон гласа.",
+    "description": "Стање када је прилагођавање искључено"
+  },
+  "description.customize.manual": {
+    "message": "Изаберите тип видеа, визуелни стил и тон гласа.",
+    "description": "Стање када је прилагођавање укључено"
+  },
+  "name.customizeScenario": {
+    "message": "Прилагоди тип видеа",
+    "description": "Прекидач за прилагођавање типа видеа"
+  },
+  "name.customizeStyle": {
+    "message": "Прилагоди визуелни стил",
+    "description": "Прекидач за прилагођавање визуелног стила"
+  },
+  "name.customizeVoice": {
+    "message": "Прилагоди тон гласа",
+    "description": "Прекидач за прилагођавање боје гласа"
+  },
   "name.scenario": {
     "message": "Тип видеа",
     "description": "Поље типа видеа"
@@ -238,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Кинетички титлови раде на постојећем видеу говорника — прво отпремите један изнад.",
     "description": "Упозорење када је изабран тип видеа са титловима, а није отпремљен изворни видео"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Digitalna naracija zahteva sliku lica, molimo vas da je prvo otpremite gore.",
+    "description": "Upozorenje se prikazuje kada je izabran avatar video, ali nijedna slika nije otpremljena"
   },
   "name.style": {
     "message": "Визуелни стил",
@@ -450,41 +514,5 @@
   "option.scenario.changelog": {
     "message": "Списак измена (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "Прилагоди",
-    "description": "Прекидач за опционе креативне контроле"
-  },
-  "description.customize.auto": {
-    "message": "Аутоматски · Maestro бира тип видеа, визуелни стил и тон гласа.",
-    "description": "Стање када је прилагођавање искључено"
-  },
-  "description.customize.manual": {
-    "message": "Изаберите тип видеа, визуелни стил и тон гласа.",
-    "description": "Стање када је прилагођавање укључено"
-  },
-  "name.primaryLanguage": {
-    "message": "Главни језик",
-    "description": "Поље главног излазног језика"
-  },
-  "name.additionalLanguages": {
-    "message": "Додатни језици (опционо)",
-    "description": "Поље додатних излазних језика"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "Додај језике излаза",
-    "description": "Место за додатне језике"
-  },
-  "name.customizeScenario": {
-    "message": "Прилагоди тип видеа",
-    "description": "Прекидач за прилагођавање типа видеа"
-  },
-  "name.customizeStyle": {
-    "message": "Прилагоди визуелни стил",
-    "description": "Прекидач за прилагођавање визуелног стила"
-  },
-  "name.customizeVoice": {
-    "message": "Прилагоди тон гласа",
-    "description": "Прекидач за прилагођавање боје гласа"
   }
 }

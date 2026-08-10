@@ -103,17 +103,41 @@
     "message": "الجودة",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "مسودة · معاينة سريعة",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite خفيف",
+    "description": "خيار SKU Lite"
   },
   "option.quality.standard": {
     "message": "قياسي · متوازن",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "متميز · تفاصيل أكثر",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro محترف",
+    "description": "خيار SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "إنشاء مقاطع فيديو قصيرة بسيطة بسرعة، مع حركات خفيفة، وإخراج بلغة واحدة.",
+    "description": "ملخص SKU Lite"
+  },
+  "description.quality.standard": {
+    "message": "إنتاج متوازن بدقة 1080p، يدعم التعليق الصوتي الرقمي وما يصل إلى لغتين.",
+    "description": "ملخص SKU Standard"
+  },
+  "description.quality.pro": {
+    "message": "يدعم الفيديوهات الطويلة، والقصص القصيرة، وأكمل قدرات الإبداع.",
+    "description": "ملخص SKU Pro"
+  },
+  "name.upToSeconds": {
+    "message": "أقصى مدة {seconds} ثانية",
+    "description": "أقصى مدة SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "تقدير {credits} نقاط",
+    "description": "نقاط التوليد المقدرة"
+  },
+  "name.requiresSku": {
+    "message": "يتطلب {sku}",
+    "description": "الحد الأدنى من SKU لنوع الفيديو"
   },
   "name.remixing": {
     "message": "إعادة التعديل",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "تعمل التسميات الحركية على فيديو متحدث موجود — ارفع مقطعًا في الأعلى أولًا.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "يتطلب التعليق الصوتي الرقمي صورة شخصية، يرجى رفعها أعلاه أولاً.",
+    "description": "تحذير يظهر عند اختيار فيديو الصورة الرمزية ولكن لم يتم رفع صورة"
   },
   "name.style": {
     "message": "الأسلوب البصري",

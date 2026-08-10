@@ -103,17 +103,41 @@
     "message": "Kvalitet",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Utkast · snabb förhandsvisning",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite",
+    "description": "Alternativ för Lite SKU"
   },
   "option.quality.standard": {
     "message": "Standard · balanserad",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Premium · mer detaljer",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro",
+    "description": "Alternativ för Pro SKU"
+  },
+  "description.quality.lite": {
+    "message": "Snabbt skapa enkla korta videor, lätt animation, en språkversion.",
+    "description": "Sammanfattning av Lite SKU"
+  },
+  "description.quality.standard": {
+    "message": "Balanserad 1080p-produktion, stöd för digital röstuppläsning och upp till två språk.",
+    "description": "Sammanfattning av Standard SKU"
+  },
+  "description.quality.pro": {
+    "message": "Stöd för långa videor, korta serier och den mest kompletta kreativa produktionskapaciteten.",
+    "description": "Sammanfattning av Pro SKU"
+  },
+  "name.upToSeconds": {
+    "message": "Max {seconds} sekunder",
+    "description": "Maximal SKU-längd"
+  },
+  "name.estimatedCredits": {
+    "message": "Beräknade {credits} poäng",
+    "description": "Beräknade genereringspoäng"
+  },
+  "name.requiresSku": {
+    "message": "Kräver {sku}",
+    "description": "Minsta SKU för en videotyp"
   },
   "name.remixing": {
     "message": "Remix",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Kinetiska undertexter arbetar på en befintlig talande-huvud-video – ladda upp en ovan först.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Digital röstuppläsning kräver ett porträtt, vänligen ladda upp ovan.",
+    "description": "Varning som visas när avatarvideo är vald men inget porträtt har laddats upp"
   },
   "name.style": {
     "message": "Visuell stil",

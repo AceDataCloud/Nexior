@@ -103,17 +103,41 @@
     "message": "Якість",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Чернетка · швидкий перегляд",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite легкий",
+    "description": "Опція SKU Lite"
   },
   "option.quality.standard": {
     "message": "Стандарт · збалансовано",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Преміум · більше деталей",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro професійний",
+    "description": "Опція SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "Швидке створення простих коротких відео, легка анімація, однією мовою.",
+    "description": "Резюме SKU Lite"
+  },
+  "description.quality.standard": {
+    "message": "Збалансоване виробництво 1080p, підтримка цифрового озвучення та до двох мов.",
+    "description": "Резюме SKU Standard"
+  },
+  "description.quality.pro": {
+    "message": "Підтримка довгих відео, коротких п'єс та найповніших можливостей креативного виробництва.",
+    "description": "Резюме SKU Pro"
+  },
+  "name.upToSeconds": {
+    "message": "Максимум {seconds} секунд",
+    "description": "Максимальна тривалість SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Приблизно {credits} кредитів",
+    "description": "Оцінені кредити на генерацію"
+  },
+  "name.requiresSku": {
+    "message": "Потрібен {sku}",
+    "description": "Мінімальний SKU для типу відео"
   },
   "name.remixing": {
     "message": "Ремікс",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Кінетичні субтитри працюють із наявним відео з мовцем — спершу завантажте його вище.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "Цифрове озвучення потребує зображення персонажа, будь ласка, спочатку завантажте його вище.",
+    "description": "Попередження, яке з'являється, коли вибрано відео аватара, але портрет не завантажено"
   },
   "name.style": {
     "message": "Візуальний стиль",

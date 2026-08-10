@@ -83,6 +83,14 @@
     "message": "語言",
     "description": "輸出語言欄位"
   },
+  "name.primaryLanguage": {
+    "message": "主語言",
+    "description": "Primary output language field"
+  },
+  "name.additionalLanguages": {
+    "message": "其他語言（可選）",
+    "description": "Additional output languages field"
+  },
   "name.aspect": {
     "message": "畫面比例",
     "description": "畫面比例欄位"
@@ -95,17 +103,41 @@
     "message": "製作檔位",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "草稿 · 快速預覽",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite 輕量",
+    "description": "Lite SKU 選項"
   },
   "option.quality.standard": {
     "message": "標準 · 均衡",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "高階 · 更精細",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro 專業",
+    "description": "Pro SKU 選項"
+  },
+  "description.quality.lite": {
+    "message": "快速製作簡潔短影片，輕動效，單語言輸出。",
+    "description": "Lite SKU 總結"
+  },
+  "description.quality.standard": {
+    "message": "均衡的 1080p 製作，支持數位人口播和最多兩種語言。",
+    "description": "Standard SKU 總結"
+  },
+  "description.quality.pro": {
+    "message": "支持長影片、短劇和最完整的創意製作能力。",
+    "description": "Pro SKU 總結"
+  },
+  "name.upToSeconds": {
+    "message": "最長 {seconds} 秒",
+    "description": "最大 SKU 時長"
+  },
+  "name.estimatedCredits": {
+    "message": "預計 {credits} 積分",
+    "description": "預估的生成積分"
+  },
+  "name.requiresSku": {
+    "message": "需 {sku}",
+    "description": "影片類型的最低 SKU"
   },
   "name.remixing": {
     "message": "二次創作",
@@ -118,6 +150,10 @@
   "placeholder.select": {
     "message": "請選擇",
     "description": "通用選擇佔位符"
+  },
+  "placeholder.additionalLanguages": {
+    "message": "新增其他輸出語言",
+    "description": "Additional languages placeholder"
   },
   "description.prompt": {
     "message": "用大白話說清楚你想要什麼,指令碼、畫面、配音、剪輯都交給 Maestro。",
@@ -207,6 +243,30 @@
     "message": "還沒有影片 — 在左側建立你的第一個吧。",
     "description": "沒有任務"
   },
+  "name.customize": {
+    "message": "自訂",
+    "description": "Optional creative controls toggle"
+  },
+  "description.customize.auto": {
+    "message": "自動 · 由 Maestro 決定影片型別、視覺風格與配音音色。",
+    "description": "Customization disabled state"
+  },
+  "description.customize.manual": {
+    "message": "選擇影片型別、視覺風格與配音音色。",
+    "description": "Customization enabled state"
+  },
+  "name.customizeScenario": {
+    "message": "自訂影片型別",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "自訂視覺風格",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "自訂配音音色",
+    "description": "Voice timbre customization toggle"
+  },
   "name.scenario": {
     "message": "影片型別",
     "description": "Video type field"
@@ -238,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "字幕花字需要以既有的口播影片製作，請先在上方上傳一段影片。",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "數位人口播需要一張人物肖像，請先在上方上傳。",
+    "description": "當選擇了頭像影片但未上傳肖像時顯示的警告"
   },
   "name.style": {
     "message": "視覺風格",
@@ -450,41 +514,5 @@
   "option.scenario.changelog": {
     "message": "更新日誌 (PR)",
     "description": "Changelog scenario option"
-  },
-  "name.customize": {
-    "message": "自訂",
-    "description": "Optional creative controls toggle"
-  },
-  "description.customize.auto": {
-    "message": "自動 · 由 Maestro 決定影片型別、視覺風格與配音音色。",
-    "description": "Customization disabled state"
-  },
-  "description.customize.manual": {
-    "message": "選擇影片型別、視覺風格與配音音色。",
-    "description": "Customization enabled state"
-  },
-  "name.primaryLanguage": {
-    "message": "主語言",
-    "description": "Primary output language field"
-  },
-  "name.additionalLanguages": {
-    "message": "其他語言（可選）",
-    "description": "Additional output languages field"
-  },
-  "placeholder.additionalLanguages": {
-    "message": "新增其他輸出語言",
-    "description": "Additional languages placeholder"
-  },
-  "name.customizeScenario": {
-    "message": "自訂影片型別",
-    "description": "Video type customization toggle"
-  },
-  "name.customizeStyle": {
-    "message": "自訂視覺風格",
-    "description": "Visual style customization toggle"
-  },
-  "name.customizeVoice": {
-    "message": "自訂配音音色",
-    "description": "Voice timbre customization toggle"
   }
 }

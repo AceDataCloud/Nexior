@@ -103,17 +103,41 @@
     "message": "Qualité",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Brouillon · aperçu rapide",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite léger",
+    "description": "Option SKU Lite"
   },
   "option.quality.standard": {
     "message": "Standard · équilibré",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Premium · plus de détails",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro professionnel",
+    "description": "Option SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "Création rapide de vidéos courtes et simples, effets légers, sortie en une seule langue.",
+    "description": "Résumé de l'option Lite"
+  },
+  "description.quality.standard": {
+    "message": "Production équilibrée en 1080p, prise en charge de la narration numérique et de deux langues maximum.",
+    "description": "Résumé de l'option Standard"
+  },
+  "description.quality.pro": {
+    "message": "Prise en charge des vidéos longues, des courts métrages et des capacités de création les plus complètes.",
+    "description": "Résumé de l'option Pro"
+  },
+  "name.upToSeconds": {
+    "message": "Durée maximale de {seconds} secondes",
+    "description": "Durée maximale de l'option SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Crédits estimés {credits}",
+    "description": "Crédits de génération estimés"
+  },
+  "name.requiresSku": {
+    "message": "Nécessite {sku}",
+    "description": "SKU minimum pour un type de vidéo"
   },
   "name.remixing": {
     "message": "Remixage",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Les sous-titres cinétiques s'appliquent à une vidéo de présentateur existante — importez-en une ci-dessus d'abord.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "La narration numérique nécessite un portrait, veuillez d'abord le télécharger ci-dessus.",
+    "description": "Avertissement affiché lorsque la vidéo d'avatar est sélectionnée mais qu'aucun portrait n'est téléchargé"
   },
   "name.style": {
     "message": "Style visuel",

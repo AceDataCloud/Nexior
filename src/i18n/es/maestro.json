@@ -103,17 +103,41 @@
     "message": "Calidad",
     "description": "Production quality tier field"
   },
-  "option.quality.draft": {
-    "message": "Borrador · vista previa rápida",
-    "description": "Draft quality option"
+  "option.quality.lite": {
+    "message": "Lite ligero",
+    "description": "Opción del SKU Lite"
   },
   "option.quality.standard": {
     "message": "Estándar · equilibrado",
     "description": "Standard quality option"
   },
-  "option.quality.premium": {
-    "message": "Premium · más detalle",
-    "description": "Premium quality option"
+  "option.quality.pro": {
+    "message": "Pro profesional",
+    "description": "Opción del SKU Pro"
+  },
+  "description.quality.lite": {
+    "message": "Crea videos cortos y sencillos rápidamente, con animaciones ligeras y salida en un solo idioma.",
+    "description": "Resumen del SKU Lite"
+  },
+  "description.quality.standard": {
+    "message": "Producción equilibrada en 1080p, soporta locución digital y hasta dos idiomas.",
+    "description": "Resumen del SKU Standard"
+  },
+  "description.quality.pro": {
+    "message": "Soporta videos largos, cortometrajes y la capacidad de producción creativa más completa.",
+    "description": "Resumen del SKU Pro"
+  },
+  "name.upToSeconds": {
+    "message": "Máximo {seconds} segundos",
+    "description": "Duración máxima del SKU"
+  },
+  "name.estimatedCredits": {
+    "message": "Estimado {credits} créditos",
+    "description": "Créditos de generación estimados"
+  },
+  "name.requiresSku": {
+    "message": "Se requiere {sku}",
+    "description": "SKU mínimo para un tipo de video"
   },
   "name.remixing": {
     "message": "Rehacer",
@@ -274,6 +298,10 @@
   "message.captionsNeedVideo": {
     "message": "Los subtítulos cinéticos funcionan sobre un vídeo de locutor existente: sube uno arriba primero.",
     "description": "Warning shown when captions video type is selected but no source video is uploaded"
+  },
+  "message.avatarNeedsImage": {
+    "message": "La locución digital necesita un retrato, por favor súbelo arriba primero.",
+    "description": "Advertencia mostrada cuando se selecciona un video de avatar pero no se ha subido un retrato"
   },
   "name.style": {
     "message": "Estilo visual",
