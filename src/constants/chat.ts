@@ -17,6 +17,7 @@ export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
 export const CHAT_MODEL_NAME_GEMINI_3_1_PRO = 'gemini-3.1-pro';
 export const CHAT_MODEL_NAME_GEMINI_3_0_PRO = 'gemini-3.0-pro';
 export const CHAT_MODEL_NAME_GEMINI_3_5_FLASH = 'gemini-3.5-flash';
+export const CHAT_MODEL_NAME_GEMINI_3_6_FLASH = 'gemini-3.6-flash';
 export const CHAT_MODEL_NAME_GEMINI_2_5_PRO = 'gemini-2.5-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_FLASH = 'gemini-2.5-flash';
 export const CHAT_MODEL_NAME_CLAUDE_OPUS_5 = 'claude-opus-5';
@@ -154,6 +155,18 @@ export const CHAT_MODEL_GEMINI_3_0_PRO: IChatModel = {
   isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini30Pro'),
   getDescription: () => i18n.global.t('chat.model.gemini30ProDescription')
+};
+
+export const CHAT_MODEL_GEMINI_3_6_FLASH: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GEMINI_3_6_FLASH,
+  icon: CHAT_MODEL_ICON_GEMINI,
+  modelGroup: 'gemini',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.gemini36Flash'),
+  getDescription: () => i18n.global.t('chat.model.gemini36FlashDescription')
 };
 
 export const CHAT_MODEL_GEMINI_3_5_FLASH: IChatModel = {
@@ -348,6 +361,7 @@ export const CHAT_MODEL_GROUP_GEMINI: IChatModelGroup = {
   getDisplayName: () => i18n.global.t('chat.modelGroup.gemini'),
   getDescription: () => i18n.global.t('chat.modelGroup.geminiDescription'),
   models: [
+    CHAT_MODEL_GEMINI_3_6_FLASH,
     CHAT_MODEL_GEMINI_3_1_PRO,
     CHAT_MODEL_GEMINI_3_0_PRO,
     CHAT_MODEL_GEMINI_3_5_FLASH,
