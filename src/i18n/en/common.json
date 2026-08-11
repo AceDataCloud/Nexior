@@ -1907,5 +1907,9 @@
   "x402Scenario.continuousPaymentsEnabled": {
     "message": "Continuous payments enabled.",
     "description": "Success toast after a wallet creates the payment authorization."
+  },
+  "error.userRestricted": {
+    "message": "This account is currently restricted and cannot sign in. If you believe this is a mistake, please contact support.",
+    "description": "Shown when native iOS login identifies a quarantined account; never expose the internal restriction reason"
   }
 }
