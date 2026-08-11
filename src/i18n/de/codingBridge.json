@@ -61,11 +61,11 @@
   },
   "status.online": {
     "message": "Online",
-    "description": "Status des Geräts ist online"
+    "description": "Gerät ist online"
   },
   "status.offline": {
     "message": "Offline",
-    "description": "Status des Geräts ist offline"
+    "description": "Gerät ist offline"
   },
   "connection.disconnected": {
     "message": "Getrennt",
@@ -186,6 +186,42 @@
   "session.send": {
     "message": "Senden",
     "description": "Button zum Senden von Eingaben"
+  },
+  "session.voiceInput": {
+    "message": "Sprachinput",
+    "description": "Beginnen Sie, Sprache in Eingabewörter umzuwandeln"
+  },
+  "session.voiceStop": {
+    "message": "Sprachinput stoppen",
+    "description": "Stoppen der Sprachtranskription"
+  },
+  "session.voiceListening": {
+    "message": "Hörmodus aktiv, nach dem Stoppen kann der Text bearbeitet werden.",
+    "description": "Hinweis im Eingabefeld während der aktiven Spracherkennung"
+  },
+  "session.voiceStopping": {
+    "message": "Sprachtranskription wird abgeschlossen…",
+    "description": "Warten auf das endgültige Ergebnis der Spracherkennung"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Mikrofonberechtigung verweigert. Bitte erlauben Sie sie in den System- oder Browsereinstellungen und versuchen Sie es erneut.",
+    "description": "Mikrofonberechtigung wurde verweigert"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "Mikrofon nicht gefunden oder nicht verfügbar.",
+    "description": "Mikrofon ist nicht verfügbar"
+  },
+  "session.voiceNoSpeech": {
+    "message": "Keine Sprache erkannt, bitte erneut versuchen.",
+    "description": "Die Spracherkennung hat kein Sprechen erkannt"
+  },
+  "session.voiceNetworkError": {
+    "message": "Der Spracherkennungsdienst ist vorübergehend nicht verfügbar, bitte überprüfen Sie das Netzwerk und versuchen Sie es erneut.",
+    "description": "Netzwerkfehler bei der Spracherkennung"
+  },
+  "session.voiceError": {
+    "message": "Sprachinput fehlgeschlagen, bitte erneut versuchen.",
+    "description": "Allgemeiner Fehler bei der Spracherkennung"
   },
   "session.retry": {
     "message": "Erneut versuchen",

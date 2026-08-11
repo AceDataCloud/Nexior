@@ -187,6 +187,42 @@
     "message": "Send",
     "description": "Send prompt button"
   },
+  "session.voiceInput": {
+    "message": "Voice input",
+    "description": "Start turning speech into prompt text"
+  },
+  "session.voiceStop": {
+    "message": "Stop voice input",
+    "description": "Stop speech transcription"
+  },
+  "session.voiceListening": {
+    "message": "Listening… You can edit the text after stopping.",
+    "description": "Composer hint while speech recognition is active"
+  },
+  "session.voiceStopping": {
+    "message": "Finishing transcription…",
+    "description": "Waiting for the final speech recognition result"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Microphone access was denied. Allow it in your system or browser settings and try again.",
+    "description": "Microphone permission denied"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "No microphone was found or it could not be used.",
+    "description": "Microphone unavailable"
+  },
+  "session.voiceNoSpeech": {
+    "message": "No speech was detected. Try again.",
+    "description": "Speech recognition detected no speech"
+  },
+  "session.voiceNetworkError": {
+    "message": "Speech recognition is temporarily unavailable. Check your network and try again.",
+    "description": "Speech recognition network error"
+  },
+  "session.voiceError": {
+    "message": "Voice input failed. Try again.",
+    "description": "Generic speech recognition error"
+  },
   "session.retry": {
     "message": "Retry",
     "description": "Re-run the last prompt after a failure"

@@ -187,6 +187,42 @@
     "message": "Skicka",
     "description": "Knapp för att skicka meddelande"
   },
+  "session.voiceInput": {
+    "message": "Röstinmatning",
+    "description": "Börja omvandla röst till text"
+  },
+  "session.voiceStop": {
+    "message": "Stoppa röstinmatning",
+    "description": "Stoppa rösttranskribering"
+  },
+  "session.voiceListening": {
+    "message": "Lyssnar, stoppa för att redigera text.",
+    "description": "Indikator för att röstigenkänning pågår"
+  },
+  "session.voiceStopping": {
+    "message": "Avslutar rösttranskribering…",
+    "description": "Väntar på att röstigenkänning ska ge slutresultatet"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Mikrofonbehörighet nekad, vänligen tillåt det i system- eller webbläsarinställningarna och försök igen.",
+    "description": "Mikrofonbehörighet nekad"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "Mikrofonen hittades inte eller kan inte användas.",
+    "description": "Mikrofonen är inte tillgänglig"
+  },
+  "session.voiceNoSpeech": {
+    "message": "Ingen röst upptäcktes, försök igen.",
+    "description": "Röstigenkänning upptäckte inte något tal"
+  },
+  "session.voiceNetworkError": {
+    "message": "Röstigenkänningstjänsten är tillfälligt otillgänglig, kontrollera nätverket och försök igen.",
+    "description": "Nätverksfel för röstigenkänning"
+  },
+  "session.voiceError": {
+    "message": "Röstinmatning misslyckades, försök igen.",
+    "description": "Allmänt fel för röstigenkänning"
+  },
   "session.retry": {
     "message": "Försök igen",
     "description": "Re-run the last prompt after a failure"
@@ -325,7 +361,7 @@
   },
   "session.providerLabel": {
     "message": "Backend",
-    "description": "Etikett för agentens backend-val"
+    "description": "Etikett för agentbackend-väljare"
   },
   "session.providerClaude": {
     "message": "Claude Code",

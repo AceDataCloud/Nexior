@@ -187,6 +187,42 @@
     "message": "Enviar",
     "description": "Botão para enviar a mensagem"
   },
+  "session.voiceInput": {
+    "message": "Entrada de voz",
+    "description": "Iniciar a conversão de voz em texto"
+  },
+  "session.voiceStop": {
+    "message": "Parar entrada de voz",
+    "description": "Parar a transcrição de voz"
+  },
+  "session.voiceListening": {
+    "message": "Ouvindo, você pode editar o texto após parar.",
+    "description": "Mensagem de entrada enquanto o reconhecimento de voz está em andamento"
+  },
+  "session.voiceStopping": {
+    "message": "Finalizando a transcrição de voz…",
+    "description": "Aguardando a saída final do reconhecimento de voz"
+  },
+  "session.voicePermissionDenied": {
+    "message": "Permissão de microfone negada, por favor, permita nas configurações do sistema ou do navegador e tente novamente.",
+    "description": "Permissão de microfone foi negada"
+  },
+  "session.voiceMicrophoneUnavailable": {
+    "message": "Microfone não encontrado ou indisponível.",
+    "description": "Microfone não está disponível"
+  },
+  "session.voiceNoSpeech": {
+    "message": "Nenhuma fala detectada, por favor tente novamente.",
+    "description": "O reconhecimento de voz não detectou fala"
+  },
+  "session.voiceNetworkError": {
+    "message": "O serviço de reconhecimento de voz está temporariamente indisponível, por favor verifique a rede e tente novamente.",
+    "description": "Erro de rede no reconhecimento de voz"
+  },
+  "session.voiceError": {
+    "message": "Falha na entrada de voz, por favor tente novamente.",
+    "description": "Erro genérico de reconhecimento de voz"
+  },
   "session.retry": {
     "message": "Tentar novamente",
     "description": "Re-run the last prompt after a failure"
