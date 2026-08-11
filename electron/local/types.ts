@@ -48,9 +48,8 @@ export interface McpServerStatus {
 export interface LocalConfig {
   roots: string[];
   mcp: McpServerConf[];
-  // Persistent "always allow" consent grants. Each entry is a
-  // session-independent key `<tool.name>:<stable json input>` the user
-  // explicitly chose to always allow; matching invocations skip the prompt.
+  // Persistent consent grants: exact input (`<tool>:<json>`), directory scoped
+  // (`dir:<tool>:<path>`), or tool-wide (bare `<tool>`).
   grants?: string[];
   // Opt-in Computer Use (screen capture + mouse/keyboard control). Default
   // false; while false the `computer.*` tools are not advertised or invokable.
