@@ -56,6 +56,19 @@ import type { PluginListenerHandle } from '@capacitor/core';
 // accounts stay linked across native and web.
 const APPLE_NATIVE_CLIENT_ID = 'com.acedatacloud.nexior';
 
+type NativeAppleLoginError = 'canceled' | 'restricted' | 'failed';
+
+export function classifyNativeAppleLoginError(error: unknown): NativeAppleLoginError {
+  const detail = error instanceof Error ? error.message : String(error);
+  if (/\b100[01]\b/.test(detail) || /cancel/i.test(detail)) {
+    return 'canceled';
+  }
+  if (axios.isAxiosError(error) && error.response?.data?.code === 'user_restricted') {
+    return 'restricted';
+  }
+  return 'failed';
+}
+
 export default defineComponent({
   name: 'AuthPanel',
   components: {
@@ -222,14 +235,16 @@ export default defineComponent({
             // with Apple" capability) used to be swallowed too, leaving the
             // button looking dead — surface those to the user instead.
             const detail = error instanceof Error ? error.message : String(error);
-            const canceled = /\b100[01]\b/.test(detail) || /cancel/i.test(detail);
-            if (canceled) {
+            const errorType = classifyNativeAppleLoginError(error);
+            if (errorType === 'canceled') {
               track('apple_login_canceled', { action: 'native_ios' });
               console.debug('native apple sign in canceled by user', error);
             } else {
-              track('apple_login_failed', { action: 'native_ios', error: detail });
+              track('apple_login_failed', { action: 'native_ios', error: detail, error_type: errorType });
               console.warn('native apple sign in failed', error);
-              ElMessage.error(this.$t('common.error.appleSignInFailed').toString());
+              const messageKey =
+                errorType === 'restricted' ? 'common.error.userRestricted' : 'common.error.appleSignInFailed';
+              ElMessage.error(this.$t(messageKey).toString());
             }
           }
           return;

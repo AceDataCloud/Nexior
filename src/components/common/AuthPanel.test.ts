@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import AuthPanel from './AuthPanel.vue';
+import axios from 'axios';
+import AuthPanel, { classifyNativeAppleLoginError } from './AuthPanel.vue';
 
 const addBrowserListenerMock = vi.hoisted(() => vi.fn());
 
@@ -9,6 +10,28 @@ vi.mock('@capacitor/browser', () => ({
     addListener: addBrowserListenerMock
   }
 }));
+
+describe('classifyNativeAppleLoginError', () => {
+  it('recognizes a restricted API response', () => {
+    const error = new axios.AxiosError('Request failed', 'ERR_BAD_REQUEST', undefined, undefined, {
+      data: { code: 'user_restricted' },
+      status: 403,
+      statusText: 'Forbidden',
+      headers: {},
+      config: { headers: {} as any }
+    });
+
+    expect(classifyNativeAppleLoginError(error)).toBe('restricted');
+  });
+
+  it('keeps user cancellation silent', () => {
+    expect(classifyNativeAppleLoginError(new Error('ASAuthorizationError 1001 canceled'))).toBe('canceled');
+  });
+
+  it('classifies other failures as generic', () => {
+    expect(classifyNativeAppleLoginError(new Error('network unavailable'))).toBe('failed');
+  });
+});
 
 describe('AuthPanel message listener lifecycle', () => {
   afterEach(() => {
