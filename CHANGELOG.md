@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 10 Aug 2026 20:22:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 11 Aug 2026 20:27:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.1
+
+Tue, 11 Aug 2026 20:27:39 GMT
+
+### Patches
+
+- Show a clear support message when a restricted account cannot sign in (dev@acedata.cloud)
+- Add editable voice input to the Coding Bridge composer on web, iOS, and Android (dev@acedata.cloud)
 
 ## 3.362.0
 
