@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 11 Aug 2026 20:27:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 12 Aug 2026 20:34:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.2
+
+Wed, 12 Aug 2026 20:34:04 GMT
+
+### Patches
+
+- Fix desktop local-tool consent so Always allow (any path) applies to future invocations of the selected tool (dev@acedata.cloud)
+- Move Intel desktop builds to the supported macOS 15 Intel runner (dev@acedata.cloud)
+- Fix the desktop release pipeline to validate the generated Apple Silicon update ZIP (dev@acedata.cloud)
 
 ## 3.362.1
 

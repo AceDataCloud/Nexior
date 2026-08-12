@@ -2,6 +2,33 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2026 20:34:04 GMT",
+      "version": "3.362.2",
+      "tag": "@acedatacloud/nexior_v3.362.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "50e090e8b519ac777e565722414118df54e53f49",
+            "comment": "Fix desktop local-tool consent so Always allow (any path) applies to future invocations of the selected tool"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "89410f436c6148a4135cba5a74ae5c9270c58ece",
+            "comment": "Move Intel desktop builds to the supported macOS 15 Intel runner"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "02f243404dcae41fca03cf811736fe0350c86730",
+            "comment": "Fix the desktop release pipeline to validate the generated Apple Silicon update ZIP"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 20:27:39 GMT",
       "version": "3.362.1",
       "tag": "@acedatacloud/nexior_v3.362.1",
