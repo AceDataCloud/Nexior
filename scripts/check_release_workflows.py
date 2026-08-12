@@ -72,6 +72,8 @@ def main() -> None:
     require("github.event_name != 'workflow_call'" not in android, "Android mode must not depend on the caller event name")
     require("github.event_name == 'workflow_call'" not in desktop, "desktop attachment must use the explicit release tag")
     require("if: inputs.release_tag != ''" in desktop, "desktop installers must attach when a release tag is supplied")
+    require("release/*-arm64-mac.zip" in desktop, "desktop workflow must verify the electron-builder arm64 ZIP name")
+    require("release/*-arm64.zip" not in desktop, "desktop workflow still verifies the obsolete arm64 ZIP name")
     require("if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')" in android, "Play steps must require an explicit store release mode")
 
     for parent in ("release-mobile-testing.yaml", "release-mobile-production.yaml", "release-mobile-manual.yaml"):
