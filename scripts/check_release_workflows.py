@@ -74,6 +74,8 @@ def main() -> None:
     require("if: inputs.release_tag != ''" in desktop, "desktop installers must attach when a release tag is supplied")
     require("release/*-arm64-mac.zip" in desktop, "desktop workflow must verify the electron-builder arm64 ZIP name")
     require("release/*-arm64.zip" not in desktop, "desktop workflow still verifies the obsolete arm64 ZIP name")
+    require("os: macos-15-intel" in desktop, "desktop workflow must use the supported Intel macOS runner")
+    require("os: macos-13" not in desktop, "desktop workflow still uses the retired macOS 13 runner")
     require("if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')" in android, "Play steps must require an explicit store release mode")
 
     for parent in ("release-mobile-testing.yaml", "release-mobile-production.yaml", "release-mobile-manual.yaml"):
