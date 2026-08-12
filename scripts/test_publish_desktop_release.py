@@ -17,9 +17,9 @@ def complete_set() -> tuple[list[Path], list[Path]]:
             "AceData-1.2.3.dmg",
             "AceData-1.2.3-arm64.dmg",
             "AceData-1.2.3.zip",
-            "AceData-1.2.3-arm64.zip",
+            "AceData-1.2.3-arm64-mac.zip",
             "AceData-1.2.3.zip.blockmap",
-            "AceData-1.2.3-arm64.zip.blockmap",
+            "AceData-1.2.3-arm64-mac.zip.blockmap",
         ),
         paths("latest.yml", "latest-mac.yml"),
     )
@@ -38,7 +38,7 @@ def test_accepts_complete_cross_platform_update_set() -> None:
         ("AceData-1.2.3.exe.blockmap", "installer blockmap"),
         ("AceData-1.2.3-arm64.dmg", "arm64 DMG"),
         ("AceData-1.2.3.zip", "x64 update ZIP"),
-        ("AceData-1.2.3-arm64.zip", "arm64 update ZIP"),
+        ("AceData-1.2.3-arm64-mac.zip", "arm64 update ZIP"),
     ],
 )
 def test_rejects_incomplete_update_set(missing: str, message: str) -> None:

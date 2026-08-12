@@ -260,7 +260,7 @@ jobs:
           else
             test -f "release/${ELECTRON_BUILDER_CHANNEL}-mac.yml"
             if [ "${{ matrix.arch }}" = arm64 ]; then
-              compgen -G 'release/*-arm64.zip' >/dev/null
+              compgen -G 'release/*-arm64-mac.zip' >/dev/null
               compgen -G 'release/*-arm64.dmg' >/dev/null
             else
               compgen -G 'release/*-mac.zip' >/dev/null
