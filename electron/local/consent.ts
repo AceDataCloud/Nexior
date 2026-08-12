@@ -14,14 +14,13 @@ import { authorizeConsentedPath, revokeOnceRoot } from './fs';
 //                      Honored by EVERY tool, mutating included: the key is
 //                      input-bound (except computer.*), so it only skips the
 //                      prompt for a byte-identical repeat of what was approved.
-//   • Always allow   — persist a session-independent grant to disk so the call
-//                      never prompts again. Revocable from Settings.
-// fs/shell grants are bound to the EXACT input; computer.* grants are name-
-// scoped (their inputs — mouse coords, typed text — vary every call, so an
-// input-scoped grant would never match twice). A computer.* "Always allow" is
-// thus an explicit opt-in to prompt-less screen control; the panic hotkey still
-// hard-disables Computer Use regardless (the registry gate blocks every
-// computer.* call before consent runs).
+//   • Always allow   — persist a session-independent grant to disk. The plain
+//                      four-button form is input-bound; "any path" is tool-wide.
+// computer.* grants are name-scoped (their inputs — mouse coords, typed text —
+// vary every call, so an input-scoped grant would never match twice). A
+// computer.* "Always allow" is thus an explicit opt-in to prompt-less screen
+// control; the panic hotkey still hard-disables Computer Use regardless (the
+// registry gate blocks every computer.* call before consent runs).
 // For fs.* the approval authorizes the containing FOLDER (read + write), which
 // the dialog states outright — one file is rarely the useful unit of work, and
 // a file-scoped grant would re-prompt for every sibling.
@@ -59,9 +58,9 @@ function sessionKey(inv: ToolInvoke): string {
   return `${inv.sessionId}:${inv.name}:${stable(inv.input)}`;
 }
 
-// Session-independent key for persistent "Always allow" grants. fs/shell grants
-// are scoped to the EXACT tool + input, so always-allowing `ls /Desktop` never
-// auto-runs `rm`. computer.* grants are name-scoped (see file header).
+// Session-independent key for exact-input "Always allow" grants. The explicit
+// "any path" tier stores the bare tool name instead. computer.* grants are
+// always name-scoped (see file header).
 export function grantKey(inv: ToolInvoke): string {
   if (inv.name.startsWith('computer.')) return inv.name;
   return `${inv.name}:${stable(inv.input)}`;
@@ -122,18 +121,20 @@ function consentDetail(inv: ToolInvoke, scopeDir: string | null, dirTarget: stri
   if (scopeDir) {
     lines.push('', `Approving grants read + write access to this folder and everything inside it:\n${scopeDir}`);
   }
-  // Spell out the repeat semantics: a session/always grant re-runs this exact
-  // call without asking again, which for a non-idempotent tool (sending,
-  // posting, deleting) means the side effect can happen more than once.
   lines.push(
     '',
-    '"Allow for session" and "Always allow" re-run this exact call without asking again — if it sends, posts or deletes something, that can happen again.'
+    '"Allow for session" re-runs this exact call without asking again — if it sends, posts or deletes something, that can happen again.'
   );
   if (dirTarget) {
     lines.push(
       '',
-      `"Always allow in …" is broader: ANY ${inv.name} call under ${dirTarget} runs without asking, including commands you have not seen yet. It stays limited to that folder.`
+      `"Always allow in …" permits ANY ${inv.name} call under ${dirTarget}.`,
+      inv.name.startsWith('fs.')
+        ? '"Always allow (any path)" permits this tool in any folder you have authorized; other folders stay blocked.'
+        : `"Always allow (any path)" permits ANY ${inv.name} input without asking, in any folder.`
     );
+  } else {
+    lines.push('', '"Always allow" re-runs this exact call without asking again.');
   }
   return lines.join('\n');
 }
@@ -219,7 +220,9 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null): Pro
   if (response === alwaysBtn) {
     const cfg = load();
     const grants = new Set(cfg.grants ?? []);
-    grants.add(gk);
+    // The path-aware dialog explicitly promises tool-wide consent. The plain
+    // four-button "Always allow" remains bound to this exact input.
+    grants.add(dirTarget ? inv.name : gk);
     save({ ...cfg, grants: [...grants] });
   }
   // Authorize the approved path's FOLDER (fs.* tools), bound to its realpath AT
