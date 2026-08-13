@@ -6,8 +6,7 @@ const base = {
   content: [],
   resolution: '2K' as const,
   ratio: '16:9' as const,
-  duration: 4,
-  aigc_watermark: false
+  duration: 4
 };
 
 describe('MiniMax request helpers', () => {

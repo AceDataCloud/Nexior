@@ -18,7 +18,6 @@ export interface IMinimaxConfig {
   resolution: '768P' | '2K';
   ratio?: IMinimaxRatio;
   duration: number;
-  aigc_watermark?: boolean;
   callback_url?: string;
 }
 

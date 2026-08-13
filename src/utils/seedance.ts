@@ -98,8 +98,17 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
   // official combos are 图片+音频 / 视频+音频 / 图片+视频+音频 (纯音频 and 文本+音频
   // are rejected upstream). Require a paired image or video reference.
   const hasVideo = Array.isArray(cfg.videos) && cfg.videos.length > 0;
-  if (Array.isArray(cfg.audios) && cfg.audios.length > 0 && !hasImages && !hasVideo) {
+  if (Array.isArray(cfg.audios) && cfg.audios.length > 0 && !hasImages && !hasVideo && !cap.supportsAudioOnly) {
     return { reject: 'audioRequiresReference' };
+  }
+
+  if (!cap.taskTypes.includes(cfg.omni_reference_task_type)) delete cfg.omni_reference_task_type;
+  if (!cap.outputFormats.includes(cfg.output_format)) delete cfg.output_format;
+  if (cfg.omni_reference_task_type === 'edit') {
+    cfg.ratio = 'adaptive';
+    cfg.duration = -1;
+  } else if (cfg.omni_reference_task_type === 'extend') {
+    cfg.ratio = 'adaptive';
   }
 
   return { request: { ...cfg, async: true } as ISeedanceGenerateRequest };

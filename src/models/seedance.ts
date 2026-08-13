@@ -1,4 +1,6 @@
 export type SeedanceImageRole = 'first_frame' | 'last_frame' | 'reference_image';
+export type SeedanceTaskType = 'auto' | 'edit' | 'extend';
+export type SeedanceOutputFormat = 'mp4' | 'mov';
 
 export interface ISeedanceImageInput {
   url: string;
@@ -38,6 +40,9 @@ export interface ISeedanceConfig {
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
+  omni_reference_task_type?: SeedanceTaskType;
+  output_format?: SeedanceOutputFormat;
+  tools?: Record<string, unknown>[];
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;
@@ -59,6 +64,9 @@ export interface ISeedanceGenerateRequest {
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
+  omni_reference_task_type?: SeedanceTaskType;
+  output_format?: SeedanceOutputFormat;
+  tools?: Record<string, unknown>[];
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;
