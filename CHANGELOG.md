@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 12 Aug 2026 20:34:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 13 Aug 2026 20:21:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.3
+
+Thu, 13 Aug 2026 20:21:54 GMT
+
+### Patches
+
+- Distribute desktop installers through GitHub downloads without the unused COS update feed (dev@acedata.cloud)
 
 ## 3.362.2
 
