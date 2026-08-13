@@ -64,17 +64,6 @@ contextBridge.exposeInMainWorld('desktop', {
   // hidden/minimized, unlike Web Notification). Resolves after dispatch.
   notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body }),
 
-  updater: {
-    getState: (): Promise<unknown> => ipcRenderer.invoke('updater:getState'),
-    check: (): Promise<unknown> => ipcRenderer.invoke('updater:check'),
-    install: (): Promise<boolean> => ipcRenderer.invoke('updater:install'),
-    onState: (cb: (state: unknown) => void): (() => void) => {
-      const handler = (_e: unknown, state: unknown): void => cb(state);
-      ipcRenderer.on('updater:state', handler);
-      return () => ipcRenderer.removeListener('updater:state', handler);
-    }
-  },
-
   // Scheduled-task daemon. The token is handed INWARD only — main persists it
   // (OS-encrypted, 0600) so tasks keep firing after the window closes, and
   // never hands it back out.

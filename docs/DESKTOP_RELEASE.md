@@ -1,92 +1,82 @@
 # Desktop release (Windows + macOS)
 
 The desktop client is the existing Vue/Vite app packaged with Electron. Build,
-sign/notarize, and publish are automated in
-[`.github/workflows/release-desktop.yaml`](../.github/workflows/release-desktop.yaml); auto-update
-is electron-updater against a COS-hosted feed.
+signing, notarization, and GitHub distribution are automated in
+[`.github/workflows/release-desktop.yaml`](../.github/workflows/release-desktop.yaml).
 
 See the design + adversarial review under `plans/nexior-desktop` (Index repo).
 
-## Channels & feed
+## Download locations
 
-| Channel  | Manifest      | Audience            |
-| -------- | ------------- | ------------------- |
-| `latest` | `latest*.yml` | stable / production |
-| `beta`   | `beta*.yml`   | pre-release testers |
+Desktop releases are GitHub-only. There is no separate update feed and the app
+does not download or install updates automatically.
 
-Feed base: `https://cdn.acedata.cloud/nexior/desktop` (COS bucket
-`acedatacloud2-1256437459`, prefix `nexior/desktop`). electron-updater fetches
-`<base>/<channel>.yml`. Artifacts are uploaded **before** the manifest, so the
-feed never points at a missing file. **Rollback = re-upload the previous
-manifest** (artifacts are immutable, never deleted).
+| Source | Retention | Use |
+| --- | --- | --- |
+| **Release · Desktop** workflow artifacts | 30 days | Ad-hoc builds and manual testing |
+| GitHub Releases | Long-term | Public versioned downloads produced by the daily release |
 
-## One-time setup
+A manual workflow run produces three artifact bundles: Windows x64, macOS Intel,
+and macOS Apple Silicon. Open the completed run in GitHub Actions and download
+the required bundle from **Artifacts**.
 
-1. **Admin-approval gate** — in **Settings → Environments**, create
-   `desktop-release` and add the admins as **required reviewers**. The `build`
-   job references this environment, so every publish pauses for a human
-   approval before any signed artifact reaches the live feed.
-2. **Secrets** (repo or environment):
-   - `TENCENT_CLOUD_SECRET_ID` / `TENCENT_CLOUD_SECRET_KEY` — COS upload (already set org-wide for the OTA pipeline)
-   - `VITE_STRIPE_PUBLISHABLE_KEY` — renderer build (already set) ✅
-   - **Notarization (macOS)** reuses the iOS pipeline's existing App Store Connect
-     API-key secrets — **nothing new to add**: `APP_STORE_CONNECT_KEY_BASE64`,
-     `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, `IOS_TEAM_ID`. ✅
-   - **Code-signing certs — the only NEW secrets you must add** (and the only
-     blocker for a *stable* release):
-     - `WIN_CSC_LINK` / `WIN_CSC_KEY_PASSWORD` — Windows OV/EV `.pfx` (base64) + password
-     - `MAC_CSC_LINK` / `MAC_CSC_KEY_PASSWORD` — macOS **Developer ID Application** `.p12` (base64) + password
-       (the existing `IOS_P12` is an iOS *distribution* cert and will **not** work for a Developer ID DMG)
+## Required secrets
 
-   > **Beta runs without any signing cert.** When `WIN_CSC_LINK` / `MAC_CSC_LINK`
-   > are absent the `beta` channel builds **unsigned** so you can exercise the
-   > whole build → COS-publish path today. The `latest` (stable) channel
-   > **refuses** to build unsigned. Auto-update *apply* can only be validated on
-   > a signed build.
+- `VITE_STRIPE_PUBLISHABLE_KEY` — renderer build.
+- `WIN_CSC_LINK` / `WIN_CSC_KEY_PASSWORD` — Windows OV/EV `.pfx` and password.
+- `MAC_CSC_LINK` / `MAC_CSC_KEY_PASSWORD` — macOS Developer ID Application `.p12` and password.
+- `APP_STORE_CONNECT_KEY_BASE64`, `APP_STORE_CONNECT_KEY_ID`,
+  `APP_STORE_CONNECT_ISSUER_ID`, `IOS_TEAM_ID` — macOS notarization via the
+  existing App Store Connect API key.
 
-## Cutting a release
+When a platform certificate is absent, a manual build still produces an unsigned
+installer for testing. Public desktop releases should be signed and notarized
+before users download them.
 
-The normal product release is aggregated once per day. Actions → **Release · Daily**
-runs Beachball against the accumulated change files, publishes npm, creates a
-draft GitHub Release, and calls this workflow to attach Windows and both macOS
-installers. The Release becomes public only after Web dist, APK, EXE, x64 DMG,
-and arm64 DMG all exist. Run **Release · Daily** manually for an urgent full release.
+## Building installers manually
 
-Desktop auto-update feeds remain separate:
+In GitHub Actions, open **Release · Desktop**, choose **Run workflow**, and run it
+without parameters. The flow is:
 
-- **Beta (signed or unsigned):** Actions → **Release · Desktop** → _Run workflow_ → channel `beta`.
-- **Stable (requires signing certs):** push a `desktop-v*` tag or run **Release · Desktop**
-  with channel `latest`.
+`E2E smoke → Windows/macOS build matrix → installer verification → GitHub artifacts`
 
-Flow: `e2e` smoke → `build` matrix → `electron-builder` → workflow artifacts.
-A daily product release attaches installers to its draft GitHub Release without
-changing the COS feed. A direct `Release · Desktop` run publishes to COS behind the
-`desktop-release` approval gate. `dry_run` skips that COS publish.
+The workflow generates:
 
-The signed app exposes **Check for updates** in the user profile menu. It checks
-the channel manifest, downloads in the main process, shows progress in the menu,
-and only calls `quitAndInstall()` after the user confirms **Restart and install**.
-The renderer never receives an installer path or permission to change the feed.
+- Windows x64: NSIS `.exe`
+- macOS Intel: `.dmg`
+- macOS Apple Silicon: `-arm64.dmg`
 
-Before approving the first live feed publish, test a signed old → new round trip
-on Windows, Intel macOS, and Apple Silicon macOS. The build must contain the NSIS
-installer + blockmap, both macOS DMGs, both macOS ZIP update payloads + blockmaps,
-and the platform manifests. After restart, verify the app version actually
-changed and the login/local-task data survived. A download alone is not proof of
-a working update; unsigned macOS builds can download and then silently fail to
-replace the app.
+## Cutting a public release
+
+The normal product release is aggregated once per day. **Release · Daily** runs
+Beachball, creates a draft GitHub Release, and calls the desktop workflow to
+attach Windows and both macOS installers. The Release becomes public only after
+the web archive, Android APK, Windows EXE, Intel DMG, and Apple Silicon DMG all
+exist.
+
+Run **Release · Daily** manually for an urgent full release. Users upgrade by
+downloading the desired installer from the GitHub Release and running it.
+
+## Verification
+
+Before publishing a public Release:
+
+1. Confirm the E2E smoke and all three build jobs passed.
+2. Verify the Windows `.exe`, Intel `.dmg`, and Apple Silicon `-arm64.dmg` exist.
+3. Verify Auth, local tools, and scheduled tasks still work after installing over
+   the prior version.
+4. Confirm the installed app reports the new version and preserves user data.
 
 ## Cross-repo prerequisites for desktop login
 
 Desktop OAuth needs three changes outside this repo (tracked in the plan's
 Phase 0). Until they land, the shell + email/password may work but social login
-can't complete:
+cannot complete:
 
 1. **AuthBackend** — allow-list the `acedata-desktop` `native_redirect` scheme.
-2. **AuthBackend** — propagate `state` through to the `native_redirect` callback
-   (the desktop main process validates it; mobile never carried `state`).
+2. **AuthBackend** — propagate `state` through to the `native_redirect` callback.
 3. **AuthFrontend** — add `app://bundle` to the login page's CSP
-   `frame-ancestors` (and confirm the parent origin isn't normalized to `null`).
+   `frame-ancestors`.
 
 ## Local dev
 
@@ -96,7 +86,7 @@ npm run start:electron     # compile main + copy renderer + launch Electron
 npm run test:e2e:desktop   # Playwright boot smoke (needs a display)
 ```
 
-## Not yet wired (follow-ups)
+## Not yet wired
 
 - Desktop download entries on the Hub / marketing site (`src/constants/mobile.ts`
   has only mobile URLs today).

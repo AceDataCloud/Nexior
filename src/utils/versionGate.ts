@@ -131,7 +131,7 @@ async function showSoftUpgrade(storeUrl: string, customMessage: string): Promise
 }
 
 /**
- * Desktop (Electron) version gate. electron-updater has no server-side
+ * Desktop (Electron) version gate. Manual GitHub distribution has no store-side
  * hard-block, so this is the out-of-band kill switch — the desktop equivalent
  * of the mobile gate above. Fails open whenever the version is unknown or the
  * metadata fetch fails (never brick the app on infra problems).
