@@ -97,7 +97,6 @@ jobs:
     uses: ./.github/workflows/release-desktop.yaml
     with:
       release_tag: ${{ inputs.release_tag }}
-      channel: beta
     secrets: inherit
 
   android:

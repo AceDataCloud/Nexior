@@ -16,7 +16,7 @@ extraMetadata:
   main: electron/dist/main.js
 
 files:
-  - electron/dist/** # compiled main/preload/protocol/updater/auth-state
+  - electron/dist/** # compiled main/preload/protocol/auth-state
   - electron/renderer/** # copied dist-electron (the Vite build)
 
 # @nut-tree-fork/libnut-{win32,darwin,linux} ships a .node native addon that
@@ -71,16 +71,9 @@ mac:
   icon: build/icon.icns
   # Two separate DMGs — x64 (Intel) and arm64 (Apple Silicon). Preferred over a
   # `universal` build, which fails to lipo-merge native prebuilds shipped by the
-  # Solana/walletconnect deps (bufferutil/utf-8-validate). electron-updater's
-  # latest-mac.yml lists both, so auto-update picks the right one per machine;
-  # the download page offers "Intel" vs "Apple Silicon".
+  # Solana/walletconnect deps (bufferutil/utf-8-validate).
   target:
     - target: dmg
-      arch:
-        - x64
-        - arm64
-    # electron-updater applies the ZIP payload; DMG remains the manual installer.
-    - target: zip
       arch:
         - x64
         - arm64
@@ -112,11 +105,3 @@ mac:
   # .github/workflows/release-desktop.yaml). The unsigned path overrides this to `false`
   # via `--config.mac.notarize=false`.
   notarize: true
-
-publish:
-  provider: generic
-  # electron-builder does NOT interpolate ${channel} in `url`. Use a FIXED base
-  # url; channel selection is via the `channel` field + file naming
-  # (latest.yml vs beta.yml), resolved under this base.
-  url: https://cdn.acedata.cloud/nexior/desktop
-  channel: latest # CI overrides to `beta` for pre-release builds

@@ -72,10 +72,12 @@ def main() -> None:
     require("github.event_name != 'workflow_call'" not in android, "Android mode must not depend on the caller event name")
     require("github.event_name == 'workflow_call'" not in desktop, "desktop attachment must use the explicit release tag")
     require("if: inputs.release_tag != ''" in desktop, "desktop installers must attach when a release tag is supplied")
-    require("release/*-arm64-mac.zip" in desktop, "desktop workflow must verify the electron-builder arm64 ZIP name")
-    require("release/*-arm64.zip" not in desktop, "desktop workflow still verifies the obsolete arm64 ZIP name")
     require("os: macos-15-intel" in desktop, "desktop workflow must use the supported Intel macOS runner")
     require("os: macos-13" not in desktop, "desktop workflow still uses the retired macOS 13 runner")
+    require("Publish to COS" not in desktop, "desktop workflow must publish through GitHub only")
+    require("desktop-release" not in desktop, "desktop workflow still uses the retired COS approval environment")
+    require("publish_desktop_release" not in desktop, "desktop workflow still invokes the retired COS uploader")
+    require("dry_run" not in desktop and "inputs.channel" not in desktop, "desktop workflow still exposes feed inputs")
     require("if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')" in android, "Play steps must require an explicit store release mode")
 
     for parent in ("release-mobile-testing.yaml", "release-mobile-production.yaml", "release-mobile-manual.yaml"):
@@ -90,7 +92,12 @@ def main() -> None:
         if not relative:
             continue
         path = ROOT / relative
-        if path.suffix not in searchable or path.name.startswith("CHANGELOG") or path == Path(__file__).resolve():
+        if (
+            not path.is_file()
+            or path.suffix not in searchable
+            or path.name.startswith("CHANGELOG")
+            or path == Path(__file__).resolve()
+        ):
             continue
         text = path.read_text(errors="replace")
         for old in OLD:

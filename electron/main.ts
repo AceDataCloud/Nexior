@@ -3,7 +3,6 @@ import path from 'node:path';
 import os from 'node:os';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
-import { checkForUpdates, getUpdaterState, initUpdater, installDownloadedUpdate } from './updater';
 import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
@@ -100,7 +99,6 @@ if (!gotLock) {
     }
     createWindow();
     setupAppMenu();
-    initUpdater(() => mainWindow);
     // Local tool execution: load authorized roots, boot MCP servers, wire IPC.
     const localCfg = loadLocalConfig();
     setRoots(rootsWithWorkingDir(localCfg.roots, localCfg.workingDir));
@@ -338,12 +336,6 @@ ipcMain.handle('connections:openAuthorize', (_e, url: string) => {
 // Current native fullscreen state, so a renderer that subscribes after the
 // window already entered fullscreen still gets the right initial value.
 ipcMain.handle('window:isFullscreen', () => mainWindow?.isFullScreen() ?? false);
-
-// Desktop updates stay in main: the renderer can request a check/install and
-// observe sanitized state, but cannot change the feed or execute a local file.
-ipcMain.handle('updater:getState', () => getUpdaterState());
-ipcMain.handle('updater:check', () => checkForUpdates());
-ipcMain.handle('updater:install', () => installDownloadedUpdate());
 
 // Main-process desktop notification (Web Notification is unreliable when the
 // window is hidden/minimized). Clicking it refocuses the app.

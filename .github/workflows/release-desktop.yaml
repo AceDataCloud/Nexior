@@ -1,19 +1,11 @@
 name: Release · Desktop
 
-# Build the Nexior desktop client (Windows .exe + macOS .dmg/.zip) and, for releases,
-# publish to Tencent Cloud COS so electron-updater can pick it up.
-#
-# Triggers:
-#   - pull_request (desktop paths)        → E2E smoke only
-#   - workflow_call (daily release)       → E2E + build + attach installers
-#   - push tag `desktop-v*`               → E2E + build + PUBLISH to `latest`
-#   - workflow_dispatch (channel/dry_run) → E2E + build + (optional) PUBLISH
-#
-# Product releases call this workflow once after the day's Beachball aggregation.
-# The live auto-update feed (COS) remains an independent, admin-gated release.
+# Build the Nexior desktop client for GitHub downloads:
+#   - workflow_dispatch → E2E + Windows/macOS installers as Actions artifacts
+#   - workflow_call     → attach installers to the daily GitHub Release
+#   - pull_request      → E2E smoke only
 #
 # Required repo secrets:
-#   TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY        COS upload
 #   VITE_STRIPE_PUBLISHABLE_KEY                               renderer build
 #   WIN_CSC_LINK / WIN_CSC_KEY_PASSWORD                       Windows signing (optional)
 #   MAC_CSC_LINK / MAC_CSC_KEY_PASSWORD                       macOS Developer ID (optional)
@@ -38,7 +30,6 @@ on:
       - 'scripts/gen-desktop-icons.sh'
       - 'scripts/gen-windows-icon.py'
       - 'scripts/gen-tray-icon.py'
-      - 'scripts/publish_desktop_release.py'
       - '.github/workflows/release-desktop.yaml'
   workflow_call:
     inputs:
@@ -46,45 +37,19 @@ on:
         description: 'Existing draft Release to receive the installers.'
         required: true
         type: string
-      channel:
-        description: 'electron-builder channel for the packaged metadata.'
-        required: false
-        default: 'beta'
-        type: string
-  push:
-    tags:
-      - 'desktop-v*'
   workflow_dispatch:
-    inputs:
-      channel:
-        description: 'Release channel (latest = stable, beta = pre-release).'
-        required: true
-        default: 'beta'
-        type: choice
-        options:
-          - latest
-          - beta
-      dry_run:
-        description: 'Build but skip the COS publish.'
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.release_tag || inputs.channel || 'smoke' }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.release_tag || 'manual' }}
   cancel-in-progress: true
 
 env:
   NODE_VERSION: '22'
 
 jobs:
-  # --------------------------------------------------------------------------
-  # E2E smoke — runs on every event. Boots the real Electron app over
-  # app://bundle and asserts the SPA is served (catches the white-screen mode).
-  # --------------------------------------------------------------------------
   e2e:
     name: E2E smoke (Linux)
     runs-on: ubuntu-latest
@@ -108,55 +73,10 @@ jobs:
       - name: Run Electron E2E smoke (xvfb)
         run: xvfb-run --auto-servernum npm run test:e2e:desktop
 
-  # --------------------------------------------------------------------------
-  # Resolve the channel and whether this run publishes to the live feed.
-  #   tag desktop-v*  → latest, publish
-  #   workflow_dispatch → chosen channel, publish unless dry_run
-  #   workflow_call   → beta, attach to the aggregate draft (no COS publish)
-  # --------------------------------------------------------------------------
-  resolve:
-    name: Resolve channel
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    outputs:
-      channel: ${{ steps.c.outputs.channel }}
-      publish: ${{ steps.c.outputs.publish }}
-    steps:
-      - id: c
-        env:
-          RELEASE_TAG: ${{ inputs.release_tag }}
-          INPUT_CHANNEL: ${{ inputs.channel }}
-          DRY_RUN: ${{ inputs.dry_run }}
-          GIT_REF: ${{ github.ref }}
-        run: |
-          if [ -n "$RELEASE_TAG" ]; then
-            echo "channel=$INPUT_CHANNEL" >> "$GITHUB_OUTPUT"
-            echo "publish=false" >> "$GITHUB_OUTPUT"
-          elif [ -n "$INPUT_CHANNEL" ]; then
-            echo "channel=$INPUT_CHANNEL" >> "$GITHUB_OUTPUT"
-            if [ "$DRY_RUN" = "true" ]; then
-              echo "publish=false" >> "$GITHUB_OUTPUT"
-            else
-              echo "publish=true" >> "$GITHUB_OUTPUT"
-            fi
-          elif [[ "$GIT_REF" == refs/tags/desktop-v* ]]; then
-            echo "channel=latest" >> "$GITHUB_OUTPUT"
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "channel=beta" >> "$GITHUB_OUTPUT"
-            echo "publish=false" >> "$GITHUB_OUTPUT"
-          fi
-
-  # --------------------------------------------------------------------------
-  # Build the .exe + .dmg on every push (auto). NO approval gate here — the gate
-  # is on the publish job. Signs when certs are present; unsigned otherwise
-  # (refused only for the stable `latest` channel).
-  # --------------------------------------------------------------------------
   build:
     name: Build (${{ matrix.os }})
-    needs: [e2e, resolve]
-    # Only the build job needs write (to attach installers on the version tag);
-    # e2e (which runs PR-controlled npm scripts) and resolve stay read-only.
+    needs: e2e
+    if: github.event_name != 'pull_request'
     permissions:
       contents: write
     strategy:
@@ -183,13 +103,11 @@ jobs:
       - name: Package (sign + notarize when certs present)
         shell: bash
         env:
-          ELECTRON_BUILDER_CHANNEL: ${{ needs.resolve.outputs.channel }}
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
           MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
           MAC_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
-          # Notarization via the App Store Connect API key (reuses iOS secrets).
           APP_STORE_CONNECT_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_KEY_BASE64 }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
@@ -216,22 +134,11 @@ jobs:
           fi
 
           if [ "$SIGN" = false ]; then
-            # Unsigned is fine for beta/auto builds (artifacts for testing). A
-            # stable `latest` release must NEVER ship unsigned.
-            if [ "$ELECTRON_BUILDER_CHANNEL" = "latest" ]; then
-              echo "::error::refusing to build the 'latest' (stable) channel unsigned — provide signing secrets"
-              exit 1
-            fi
-            echo "::warning::no signing cert for ${{ runner.os }} — building UNSIGNED (auto-update apply not testable)"
+            echo "::warning::no signing cert for ${{ runner.os }} — building UNSIGNED"
             export CSC_IDENTITY_AUTO_DISCOVERY=false
             EXTRA+=(--config.mac.notarize=false)
           fi
 
-          # Rebuild @nut-tree-fork's native libnut prebuild against this
-          # runner's Electron ABI. Without this, `require('@nut-tree-fork/nut-js')`
-          # throws inside the packaged app and Computer Use silently falls back
-          # to INPUT_BACKEND_HINT. `-o` (--only) is a STRICT filter — unrelated
-          # native deps (bufferutil, utf-8-validate, …) keep their own prebuilds.
           if [ "${{ runner.os }}" = "Windows" ]; then
             npx electron-rebuild -f -o @nut-tree-fork/libnut-win32
           else
@@ -241,32 +148,19 @@ jobs:
           npm run build:electron
           npm run compile:electron
           node scripts/copy-renderer.js
-          # `channel` lives under `publish`, not at the config root — override
-          # the nested key. ${EXTRA[@]+...} guards against unbound-variable on an
-          # empty array under `set -u` in bash 3.2 (the macOS runner's bash).
-          npx electron-builder --${{ matrix.arch }} --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          npx electron-builder --${{ matrix.arch }} ${EXTRA[@]+"${EXTRA[@]}"} --publish never
           echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
-      - name: Verify desktop update artifacts
+      - name: Verify desktop installers
         shell: bash
-        env:
-          ELECTRON_BUILDER_CHANNEL: ${{ needs.resolve.outputs.channel }}
         run: |
           set -euo pipefail
           if [ "${{ runner.os }}" = "Windows" ]; then
             compgen -G 'release/*.exe' >/dev/null
-            compgen -G 'release/*.exe.blockmap' >/dev/null
-            test -f "release/${ELECTRON_BUILDER_CHANNEL}.yml"
+          elif [ "${{ matrix.arch }}" = arm64 ]; then
+            compgen -G 'release/*-arm64.dmg' >/dev/null
           else
-            test -f "release/${ELECTRON_BUILDER_CHANNEL}-mac.yml"
-            if [ "${{ matrix.arch }}" = arm64 ]; then
-              compgen -G 'release/*-arm64-mac.zip' >/dev/null
-              compgen -G 'release/*-arm64.dmg' >/dev/null
-            else
-              compgen -G 'release/*-mac.zip' >/dev/null
-              compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
-            fi
-            compgen -G 'release/*.zip.blockmap' >/dev/null
+            compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
           fi
 
       - name: Verify signed desktop package
@@ -275,6 +169,8 @@ jobs:
         run: |
           set -euo pipefail
           if [ "${{ runner.os }}" = "Windows" ]; then
+            # PowerShell expands $files/$file, not Bash.
+            # shellcheck disable=SC2016
             powershell.exe -NoProfile -Command '$files = Get-ChildItem release/*.exe; foreach ($file in $files) { if ((Get-AuthenticodeSignature $file).Status -ne "Valid") { exit 1 } }'
           else
             APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1)
@@ -282,16 +178,13 @@ jobs:
             xcrun stapler validate "$APP"
           fi
 
-      - name: Upload installers (.exe / .dmg) as artifacts
+      - name: Upload installers as workflow artifacts
         uses: actions/upload-artifact@v7
         with:
           name: nexior-desktop-${{ matrix.os }}-${{ matrix.arch }}
           path: |
             release/*.exe
             release/*.dmg
-            release/*.zip
-            release/*.blockmap
-            release/*.yml
           retention-days: 30
           if-no-files-found: error
 
@@ -315,34 +208,3 @@ jobs:
           draft: true
           files: ${{ runner.os == 'Windows' && 'release/*.exe' || 'release/*.dmg' }}
           fail_on_unmatched_files: true
-
-  # --------------------------------------------------------------------------
-  # Publish to the live COS update feed — RELEASES ONLY, behind the admin
-  # approval gate (`desktop-release` environment). Skipped for plain main pushes.
-  # --------------------------------------------------------------------------
-  publish:
-    name: Publish to COS feed
-    needs: [resolve, build]
-    if: needs.resolve.outputs.publish == 'true'
-    environment: desktop-release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.release_tag || github.sha }}
-      - name: Download built installers
-        uses: actions/download-artifact@v7
-        with:
-          path: release
-          pattern: nexior-desktop-*
-          merge-multiple: true
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-      - name: Publish to COS
-        env:
-          TENCENT_CLOUD_SECRET_ID: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
-          TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
-        run: |
-          python3 -m pip install --quiet cos-python-sdk-v5
-          python3 scripts/publish_desktop_release.py --dist release

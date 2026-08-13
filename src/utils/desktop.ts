@@ -35,8 +35,6 @@ export interface DesktopBridge {
   setSiteOrigin(origin: string): void;
   /** Show an OS notification via the main process (reliable when window hidden). */
   notify(title: string, body: string): Promise<void>;
-  /** Optional because older desktop shells predate the profile updater. */
-  updater?: UpdaterBridge;
   /**
    * Scheduled-task daemon controls.
    *
@@ -50,31 +48,6 @@ export interface DesktopBridge {
    * is what `canRunLocally` checks before offering local execution.
    */
   scheduler?: SchedulerBridge;
-}
-
-export type UpdaterPhase =
-  | 'idle'
-  | 'checking'
-  | 'available'
-  | 'downloading'
-  | 'downloaded'
-  | 'up-to-date'
-  | 'error'
-  | 'unsupported';
-
-export interface UpdaterState {
-  phase: UpdaterPhase;
-  currentVersion: string;
-  availableVersion?: string;
-  percent?: number;
-  errorCode?: 'feed_unavailable' | 'network_error' | 'update_failed';
-}
-
-export interface UpdaterBridge {
-  getState(): Promise<UpdaterState>;
-  check(): Promise<UpdaterState>;
-  install(): Promise<boolean>;
-  onState(cb: (state: UpdaterState) => void): () => void;
 }
 
 export interface SchedulerBridge {
