@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const siteOperatorMock = vi.hoisted(() => ({
-  getAll: vi.fn()
+  getAll: vi.fn(),
+  getManagedCurrent: vi.fn()
 }));
 
 vi.mock('@/operators', () => ({

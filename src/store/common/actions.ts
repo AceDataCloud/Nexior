@@ -142,7 +142,11 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
-    const site = (await siteOperator.resolvePublic(origin)).data;
+    const site = (
+      await siteOperator.getAll({
+        origin
+      })
+    )?.data?.items?.[0];
     commit('setSite', site);
     console.debug('get site success', site);
     return site;

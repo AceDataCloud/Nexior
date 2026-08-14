@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const siteOperatorMock = vi.hoisted(() => ({
   getAll: vi.fn(),
+  getManaged: vi.fn(),
   create: vi.fn(),
   delete: vi.fn()
 }));
@@ -50,7 +51,7 @@ const mountComponent = () =>
 describe('setting/Subsite', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    siteOperatorMock.getAll.mockResolvedValue({ data: { items: [] } });
+    siteOperatorMock.getManaged.mockResolvedValue({ data: { items: [] } });
     siteDomainOperatorMock.getAll.mockResolvedValue({ data: { items: [] } });
   });
 
@@ -69,7 +70,7 @@ describe('setting/Subsite', () => {
 
     (wrapper.vm as unknown as { onManageSite: (row: ISite) => void }).onManageSite(site);
 
-    expect(open).toHaveBeenCalledWith('https://studio.example.com/?dialog=settings', '_blank', 'noopener');
+    expect(open).toHaveBeenCalledWith('https://studio.example.com/?dialog=settings&tab=site', '_blank', 'noopener');
   });
 
   it('falls back to the default subdomain when no custom domain is active', async () => {
@@ -84,6 +85,10 @@ describe('setting/Subsite', () => {
 
     (wrapper.vm as unknown as { onManageSite: (row: ISite) => void }).onManageSite(site);
 
-    expect(open).toHaveBeenCalledWith('https://brand.studio.acedata.cloud/?dialog=settings', '_blank', 'noopener');
+    expect(open).toHaveBeenCalledWith(
+      'https://brand.studio.acedata.cloud/?dialog=settings&tab=site',
+      '_blank',
+      'noopener'
+    );
   });
 });

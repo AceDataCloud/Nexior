@@ -299,7 +299,8 @@ export default defineComponent({
       return this.visibleNavItems.some((item) => item.key === this.activeTab) ? this.activeTab : SETTING_TAB_GENERAL;
     },
     isSiteAdmin(): boolean {
-      return this.$store?.state?.site?.permissions?.manage === true;
+      const site = this.$store?.state?.site;
+      return site?.permissions?.manage === true || !!site?.admins?.includes(this.$store.getters.user?.id);
     },
     isMainOfficialHost(): boolean {
       return isMainOfficial();
@@ -345,11 +346,21 @@ export default defineComponent({
   watch: {
     // When the parent opens the dialog with an explicit `initialTab`,
     // respect that on each open. Default is back to the General tab.
-    async visible(open: boolean) {
+    visible(open: boolean) {
       if (open) {
-        await this.$store.dispatch('getManagedSite');
         this.activeTab = (this.initialTab as SettingTabKey) || SETTING_TAB_GENERAL;
         this.autoOpenCreateSubsite = false;
+        const requestedTab = this.activeTab;
+        const operatorTabs: SettingTabKey[] = [
+          SETTING_TAB_SITE,
+          SETTING_TAB_SITE_SERVICES,
+          SETTING_TAB_SEO,
+          SETTING_TAB_DISTRIBUTION,
+          SETTING_TAB_FUNCTION,
+          SETTING_TAB_AUTH,
+          SETTING_TAB_CUSTOM_DOMAIN
+        ];
+        if (operatorTabs.includes(requestedTab)) this.$store.dispatch('getManagedSite');
       }
     }
   },
