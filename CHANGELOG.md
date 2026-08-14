@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 13 Aug 2026 20:21:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 14 Aug 2026 20:18:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.4
+
+Fri, 14 Aug 2026 20:18:21 GMT
+
+### Patches
+
+- Route credit and subscription purchases to the matching application checkout. (dev@acedata.cloud)
+- Add Seedance 2.5 video generation, editing, extension, and localized controls; align MiniMax with its async contract. (dev@acedata.cloud)
 
 ## 3.362.3
 
