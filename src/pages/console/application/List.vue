@@ -315,8 +315,8 @@ import {
   ElEmpty,
   ElMessage
 } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
-import { isIOS, isRechargeDisabled } from '@/utils';
+import { ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
+import { getApplicationPurchaseRoute, isIOS, isRechargeDisabled } from '@/utils';
 import {
   IApplication,
   IApplicationListResponse,
@@ -448,13 +448,8 @@ export default defineComponent({
       });
     },
     onBuyMore(application: IApplication | undefined) {
-      if (!application?.id) return;
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: application.id
-        }
-      });
+      const target = getApplicationPurchaseRoute(application);
+      if (target) this.$router.push(target);
     },
     onPageChange(page: number) {
       this.$router.push({
