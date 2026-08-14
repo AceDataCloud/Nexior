@@ -115,6 +115,7 @@ import { applicationOperator, orderOperator, serviceOperator } from '@/operators
 import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 
 interface ISubscription {
@@ -285,8 +286,17 @@ export default defineComponent({
               type: IApplicationType.USAGE
             });
             this.usageApplication = data;
-          } catch {
-            await this.onFetchUsageApplication();
+          } catch (error: any) {
+            if (error?.response?.data?.code !== ERROR_CODE_DUPLICATION) {
+              ElMessage.error(this.$t('application.message.createFailed'));
+              return;
+            }
+            try {
+              await this.onFetchUsageApplication();
+            } catch {
+              ElMessage.error(this.$t('application.message.fetchFailed'));
+              return;
+            }
           }
         }
         if (!this.usageApplication?.id) {

@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 const readSource = (relativePath: string): string =>
   readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8');
 
+const infoSource = readSource('../../../components/application/Info.vue');
 const statusSource = readSource('../../../components/application/Status.vue');
 const listSource = readSource('./List.vue');
 const extraSource = readSource('./Extra.vue');
@@ -41,6 +42,9 @@ describe('application purchase routing contract', () => {
     expect(subscribeSource).toContain('void this.onFetchUsageApplication()');
     expect(subscribeSource).toContain('if (this.creatingUsageApplication) return;');
     expect(subscribeSource).toContain('await this.onFetchUsageApplication();');
+    expect(subscribeSource).toContain('error?.response?.data?.code !== ERROR_CODE_DUPLICATION');
+    expect(subscribeSource).toContain("$t('application.message.createFailed')");
+    expect(subscribeSource).toContain("$t('application.message.fetchFailed')");
     expect(subscribeSource).toContain('type: IApplicationType.USAGE');
     expect(subscribeSource).toContain('id: this.usageApplication.id');
     expect(subscribeSource).not.toContain('id: this.applicationId');
@@ -55,6 +59,7 @@ describe('application purchase routing contract', () => {
     expect(listSource).toContain('scope.row.type === applicationType.USAGE');
     expect(listSource).toContain('app.type === applicationType.USAGE');
     expect(listSource).toContain('if (application.type === IApplicationType.PERIOD)');
+    expect(infoSource).toContain('if (this.application.type === IApplicationType.PERIOD)');
   });
 
   it('keeps Suno application discovery untyped so Period subscriptions remain usable', () => {
