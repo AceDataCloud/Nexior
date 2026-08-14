@@ -124,6 +124,7 @@ interface ISubscription {
 interface IData {
   application: IApplication | undefined;
   application2: IApplication | undefined;
+  usageApplication: IApplication | undefined;
   services: IService[];
   type: string;
   loading: boolean;
@@ -150,6 +151,7 @@ export default defineComponent({
       application: undefined,
       // the application which used for subscription
       application2: undefined,
+      usageApplication: undefined,
       type: IApplicationType.PERIOD,
       services: [],
       loading: false,
@@ -252,7 +254,7 @@ export default defineComponent({
           return;
         }
         // Fetch or create the Period Application used by order creation.
-        await this.onFetchApplication2();
+        await Promise.all([this.onFetchApplication2(), this.onFetchUsageApplication()]);
         await this.onCreateApplications();
         this.subscription = this.subscriptions.find((item) => item.available);
       } catch {
@@ -262,11 +264,19 @@ export default defineComponent({
       }
     },
     getPriceString,
-    onBuyExtra() {
+    async onBuyExtra() {
+      if (!this.usageApplication?.id && this.service?.id) {
+        const { data } = await applicationOperator.create({
+          service_id: this.service.id,
+          type: IApplicationType.USAGE
+        });
+        this.usageApplication = data;
+      }
+      if (!this.usageApplication?.id) return;
       this.$router.push({
         name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
-          id: this.applicationId
+          id: this.usageApplication.id
         }
       });
     },
@@ -332,6 +342,17 @@ export default defineComponent({
       });
       this.application2 = data.items?.[0];
       console.debug('application2', this.application2);
+    },
+    async onFetchUsageApplication() {
+      const { data } = await applicationOperator.getAll({
+        limit: 1,
+        offset: 0,
+        user_id: this.$store.getters.user.id,
+        ordering: '-created_at',
+        service_id: this.serviceIds,
+        type: IApplicationType.USAGE
+      });
+      this.usageApplication = data.items?.[0];
     },
     onCreateOrder(subscription: ISubscription) {
       const packages = this.getPackages(subscription.duration);

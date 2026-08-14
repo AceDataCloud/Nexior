@@ -8,6 +8,7 @@ const readSource = (relativePath: string): string =>
 const statusSource = readSource('../../../components/application/Status.vue');
 const listSource = readSource('./List.vue');
 const extraSource = readSource('./Extra.vue');
+const subscribeSource = readSource('./Subscribe.vue');
 const sunoActionsSource = readSource('../../../store/suno/actions.ts');
 
 describe('application purchase routing contract', () => {
@@ -34,6 +35,20 @@ describe('application purchase routing contract', () => {
     expect(extraSource).toContain('params: { id: data.id }');
     expect(extraSource).toContain('this.$router.replace({');
     expect(guard).toBeLessThan(assignment);
+  });
+
+  it('uses the matching Usage application when leaving subscription checkout', () => {
+    expect(subscribeSource).toContain(
+      'await Promise.all([this.onFetchApplication2(), this.onFetchUsageApplication()])'
+    );
+    expect(subscribeSource).toContain('type: IApplicationType.USAGE');
+    expect(subscribeSource).toContain('id: this.usageApplication.id');
+    expect(subscribeSource).not.toContain('id: this.applicationId');
+  });
+
+  it('lists both application types for individual apps but keeps global apps Usage-only', () => {
+    expect(listSource).toContain('? [IApplicationType.USAGE, IApplicationType.PERIOD]');
+    expect(listSource).toContain(': IApplicationType.USAGE');
   });
 
   it('keeps Suno application discovery untyped so Period subscriptions remain usable', () => {

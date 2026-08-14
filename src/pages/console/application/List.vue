@@ -472,7 +472,10 @@ export default defineComponent({
               : {}),
             user_id: this.$store.getters.user.id,
             ordering: '-created_at',
-            type: IApplicationType.USAGE,
+            type:
+              scope === IApplicationScope.INDIVIDUAL
+                ? [IApplicationType.USAGE, IApplicationType.PERIOD]
+                : IApplicationType.USAGE,
             scope: scope
           })
           .then(({ data }: { data: IApplicationListResponse }) => {
