@@ -142,16 +142,27 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
-    const site = (
-      await siteOperator.getAll({
-        origin
-      })
-    )?.data?.items?.[0];
+    const site = (await siteOperator.resolvePublic(origin)).data;
     commit('setSite', site);
     console.debug('get site success', site);
     return site;
   } catch (error) {
     console.error('get site failed', error);
+    return undefined;
+  }
+};
+
+export const getManagedSite = async ({
+  state,
+  commit
+}: ActionContext<IRootState, IRootState>): Promise<ISite | undefined> => {
+  try {
+    const origin = getSiteOrigin(state?.site);
+    const { data } = await siteOperator.getManagedCurrent(origin);
+    commit('setSite', data);
+    return data;
+  } catch (error) {
+    console.error('get managed site failed', error);
     return undefined;
   }
 };

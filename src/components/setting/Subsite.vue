@@ -66,6 +66,7 @@
                 {{ $t('subsite.button.manage') }}
               </el-button>
               <el-button
+                v-if="row.permissions?.owner !== false"
                 size="small"
                 round
                 type="danger"
@@ -289,7 +290,7 @@ export default defineComponent({
         // (`<slug>.studio.acedata.cloud`). No `parent_site_id` needed —
         // the superuser fast path doesn't stamp `metadata.parent_site_id`
         // anyway, which is why the previous metadata filter hid rows.
-        const { data } = await siteOperator.getAll({
+        const { data } = await siteOperator.getManaged({
           user_id: userId,
           origin__endswith: `.${zone}`,
           ordering: '-created_at'
@@ -449,7 +450,7 @@ export default defineComponent({
       // pops the settings dialog. This avoids the blank `/settings`
       // page race where SettingsIndex dispatches `open-user-settings`
       // before UserCenter's listener is registered.
-      window.open(`https://${hostname}/?dialog=settings`, '_blank', 'noopener');
+      window.open(`https://${hostname}/?dialog=settings&tab=site`, '_blank', 'noopener');
     },
     async onDeleteSite(row: ISite) {
       if (!row.id || !row.origin) return;

@@ -170,6 +170,13 @@ export interface ISiteBranding {
   contacts?: ISiteContact[];
 }
 
+export type SiteRole = 'owner' | 'manager' | 'platform_admin';
+
+export interface ISitePermissions {
+  manage: boolean;
+  owner: boolean;
+}
+
 export interface ISite {
   id?: string;
   origin?: string;
@@ -209,6 +216,8 @@ export interface ISite {
   description_source?: string;
   auto_translated_fields?: string[];
   capability_overrides?: Partial<Record<CapabilityKey, ISiteCapabilityPresentation>>;
+  role?: SiteRole | null;
+  permissions?: ISitePermissions;
 }
 
 export interface ISiteListResponse {
