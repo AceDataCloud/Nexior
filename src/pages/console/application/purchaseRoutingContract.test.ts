@@ -38,9 +38,9 @@ describe('application purchase routing contract', () => {
   });
 
   it('uses the matching Usage application when leaving subscription checkout', () => {
-    expect(subscribeSource).toContain(
-      'await Promise.all([this.onFetchApplication2(), this.onFetchUsageApplication()])'
-    );
+    expect(subscribeSource).toContain('void this.onFetchUsageApplication()');
+    expect(subscribeSource).toContain('if (this.creatingUsageApplication) return;');
+    expect(subscribeSource).toContain('await this.onFetchUsageApplication();');
     expect(subscribeSource).toContain('type: IApplicationType.USAGE');
     expect(subscribeSource).toContain('id: this.usageApplication.id');
     expect(subscribeSource).not.toContain('id: this.applicationId');
@@ -49,6 +49,12 @@ describe('application purchase routing contract', () => {
   it('lists both application types for individual apps but keeps global apps Usage-only', () => {
     expect(listSource).toContain('? [IApplicationType.USAGE, IApplicationType.PERIOD]');
     expect(listSource).toContain(': IApplicationType.USAGE');
+  });
+
+  it('keeps Period-only controls off the Usage balance contract', () => {
+    expect(listSource).toContain('scope.row.type === applicationType.USAGE');
+    expect(listSource).toContain('app.type === applicationType.USAGE');
+    expect(listSource).toContain('if (application.type === IApplicationType.PERIOD)');
   });
 
   it('keeps Suno application discovery untyped so Period subscriptions remain usable', () => {

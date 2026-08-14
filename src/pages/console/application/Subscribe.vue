@@ -86,7 +86,14 @@
                 </el-row>
                 <div v-if="!loading && !loadFailed && showPayment" class="extra">
                   <span>{{ $t('console.message.doNotWantSubscribe') }}</span>
-                  <el-button type="primary" class="btn btn-extra" round size="small" @click="onBuyExtra">
+                  <el-button
+                    type="primary"
+                    class="btn btn-extra"
+                    round
+                    size="small"
+                    :loading="creatingUsageApplication"
+                    @click="onBuyExtra"
+                  >
                     {{ $t('console.message.buyExtra') }}
                   </el-button>
                 </div>
@@ -130,6 +137,7 @@ interface IData {
   loading: boolean;
   loadFailed: boolean;
   creating: boolean;
+  creatingUsageApplication: boolean;
   subscription: ISubscription | undefined;
 }
 
@@ -157,6 +165,7 @@ export default defineComponent({
       loading: false,
       loadFailed: false,
       creating: false,
+      creatingUsageApplication: false,
       subscription: undefined
     };
   },
@@ -254,7 +263,8 @@ export default defineComponent({
           return;
         }
         // Fetch or create the Period Application used by order creation.
-        await Promise.all([this.onFetchApplication2(), this.onFetchUsageApplication()]);
+        await this.onFetchApplication2();
+        void this.onFetchUsageApplication();
         await this.onCreateApplications();
         this.subscription = this.subscriptions.find((item) => item.available);
       } catch {
@@ -265,20 +275,33 @@ export default defineComponent({
     },
     getPriceString,
     async onBuyExtra() {
-      if (!this.usageApplication?.id && this.service?.id) {
-        const { data } = await applicationOperator.create({
-          service_id: this.service.id,
-          type: IApplicationType.USAGE
-        });
-        this.usageApplication = data;
-      }
-      if (!this.usageApplication?.id) return;
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: this.usageApplication.id
+      if (this.creatingUsageApplication) return;
+      this.creatingUsageApplication = true;
+      try {
+        if (!this.usageApplication?.id && this.service?.id) {
+          try {
+            const { data } = await applicationOperator.create({
+              service_id: this.service.id,
+              type: IApplicationType.USAGE
+            });
+            this.usageApplication = data;
+          } catch {
+            await this.onFetchUsageApplication();
+          }
         }
-      });
+        if (!this.usageApplication?.id) {
+          ElMessage.error(this.$t('console.message.applicationNotFound'));
+          return;
+        }
+        this.$router.push({
+          name: ROUTE_CONSOLE_APPLICATION_EXTRA,
+          params: {
+            id: this.usageApplication.id
+          }
+        });
+      } finally {
+        this.creatingUsageApplication = false;
+      }
     },
     getPackages(duration: number): IPackage[] {
       let result = [];

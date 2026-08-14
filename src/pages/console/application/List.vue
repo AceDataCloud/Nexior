@@ -144,7 +144,7 @@
               >
                 <template #default="scope">
                   <el-switch
-                    v-if="scope.row.service?.type === serviceType.API"
+                    v-if="scope.row.service?.type === serviceType.API && scope.row.type === applicationType.USAGE"
                     v-model="scope.row.allow_consume_global"
                     :active-value="true"
                     :inactive-value="false"
@@ -237,7 +237,10 @@
                   <span class="label">{{ $t('application.field.expiredAt') }}</span>
                   <span class="value">{{ $dayjs.format(app.expired_at) }}</span>
                 </div>
-                <div v-if="app.service?.type === serviceType.API" class="application-card__row">
+                <div
+                  v-if="app.service?.type === serviceType.API && app.type === applicationType.USAGE"
+                  class="application-card__row"
+                >
                   <span class="label">{{ $t('application.field.allowConsumeGlobal') }}</span>
                   <el-switch
                     v-model="app.allow_consume_global"
@@ -323,6 +326,7 @@ import {
   IApplicationScope,
   IApplicationType,
   ICredentialType,
+  IPackageType,
   IService,
   IServiceType
 } from '@/models';
@@ -335,6 +339,7 @@ interface IData {
   globalApplicationsTotal: number | undefined;
   limit: number;
   buying: boolean;
+  applicationType: typeof IApplicationType;
   form: {
     amount: number | undefined;
   };
@@ -370,6 +375,7 @@ export default defineComponent({
     return {
       credentialType: ICredentialType,
       serviceType: IServiceType,
+      applicationType: IApplicationType,
       individualApplications: [],
       globalApplications: [],
       individualApplicationsTotal: undefined,
@@ -424,7 +430,12 @@ export default defineComponent({
       if (!isIOS()) {
         return true;
       }
-      return ((application as any)?.packages || []).some((p: any) => p?.metadata?.apple_product_id);
+      if (application.type === IApplicationType.PERIOD) {
+        return false;
+      }
+      return ((application as any)?.packages || []).some(
+        (p: any) => p.type === IPackageType.USAGE && p?.metadata?.apple_product_id
+      );
     },
     updateAllowConsumeGlobal(application: IApplication, value: any) {
       if (!application || !application.id) {
