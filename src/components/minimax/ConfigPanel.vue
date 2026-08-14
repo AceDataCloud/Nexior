@@ -70,10 +70,6 @@
           <el-option v-for="duration in durations" :key="duration" :label="`${duration}s`" :value="duration" />
         </el-select>
       </div>
-      <div class="setting-row">
-        <field-title inline :title="$t('minimax.name.watermark')" :description="$t('minimax.description.watermark')" />
-        <el-switch v-model="form.aigcWatermark" />
-      </div>
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="minimax" />
@@ -89,7 +85,7 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
+import { ElButton, ElInput, ElMessage, ElOption, ElSelect } from 'element-plus';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
@@ -110,7 +106,6 @@ export default defineComponent({
     ElInput,
     ElOption,
     ElSelect,
-    ElSwitch,
     FieldTitle,
     PromptTextarea,
     ReferenceMediaInput,
@@ -125,8 +120,7 @@ export default defineComponent({
         audioUrls: [] as string[],
         resolution: '2K' as '768P' | '2K',
         ratio: '16:9' as IMinimaxRatio,
-        duration: 4,
-        aigcWatermark: false
+        duration: 4
       },
       resolutions: ['768P', '2K'] as const,
       ratios: [
@@ -164,8 +158,7 @@ export default defineComponent({
         content,
         resolution: this.form.resolution,
         ratio: this.form.imageUrls.length === 1 && !this.form.audioUrls.length ? 'adaptive' : this.form.ratio,
-        duration: this.form.duration,
-        aigc_watermark: this.form.aigcWatermark
+        duration: this.form.duration
       };
     },
     consumption() {

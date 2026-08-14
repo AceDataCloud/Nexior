@@ -23,6 +23,7 @@ import {
   SEEDANCE_MODEL_1_0_PRO,
   SEEDANCE_MODEL_1_0_PRO_FAST,
   SEEDANCE_MODEL_1_5_PRO,
+  SEEDANCE_MODEL_2_5,
   SEEDANCE_MODEL_2_0,
   SEEDANCE_MODEL_2_0_FAST,
   SEEDANCE_MODEL_2_0_MINI
@@ -38,6 +39,7 @@ export default defineComponent({
   data() {
     return {
       options: [
+        { value: SEEDANCE_MODEL_2_5, label: this.$t('seedance.model.seedance25') },
         { value: SEEDANCE_MODEL_2_0, label: this.$t('seedance.model.seedance20') },
         { value: SEEDANCE_MODEL_2_0_FAST, label: this.$t('seedance.model.seedance20Fast') },
         { value: SEEDANCE_MODEL_2_0_MINI, label: this.$t('seedance.model.seedance20Mini') },

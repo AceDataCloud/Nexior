@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { normalizeSeedanceRequest } from './seedance';
 import {
   SEEDANCE_MODEL_1_0_PRO,
+  SEEDANCE_MODEL_2_5,
   SEEDANCE_MODEL_2_0_FAST,
   SEEDANCE_MODEL_1_0_LITE_T2V,
   SEEDANCE_MODEL_1_0_LITE_I2V
@@ -81,6 +82,43 @@ describe('normalizeSeedanceRequest', () => {
     });
     expect(reject).toBeUndefined();
     expect(request?.audios).toEqual([{ url: 'https://cdn.example.com/voice.mp3' }]);
+  });
+
+  it('accepts pure reference audio for Seedance 2.5', () => {
+    const { request, reject } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_5,
+      prompt: 'follow the rhythm',
+      audios: [{ url: 'https://cdn.example.com/voice.mp3' }],
+      duration: 30,
+      output_format: 'mov'
+    });
+    expect(reject).toBeUndefined();
+    expect(request?.duration).toBe(30);
+    expect(request?.output_format).toBe('mov');
+  });
+
+  it('enforces Seedance 2.5 edit request constraints', () => {
+    const { request } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_5,
+      prompt: 'replace the sky',
+      videos: [{ url: 'https://cdn.example.com/input.mp4' }],
+      ratio: '16:9',
+      duration: 10,
+      omni_reference_task_type: 'edit'
+    });
+    expect(request?.ratio).toBe('adaptive');
+    expect(request?.duration).toBe(-1);
+  });
+
+  it('strips Seedance 2.5-only options from 2.0', () => {
+    const { request } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_0_FAST,
+      prompt: 'a cat',
+      output_format: 'mov',
+      omni_reference_task_type: 'auto'
+    });
+    expect(request).not.toHaveProperty('output_format');
+    expect(request).not.toHaveProperty('omni_reference_task_type');
   });
 
   it('never sends the flex service tier', () => {

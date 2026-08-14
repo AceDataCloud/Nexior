@@ -282,5 +282,33 @@
   "message.audioRequiresReference": {
     "message": "Reference audio can’t be used on its own — please also upload a reference image or a reference video.",
     "description": "Warning when reference audio has no paired image/video"
+  },
+  "model.seedance25": {
+    "message": "doubao-seedance-2.5",
+    "description": "Seedance 2.5 model"
+  },
+  "name.taskType": {
+    "message": "Task Type",
+    "description": "Seedance 2.5 task type"
+  },
+  "description.taskType": {
+    "message": "Auto-detect, edit a reference video, or extend a reference video. Edit and extend require a reference video.",
+    "description": "Task type guidance"
+  },
+  "taskType.auto": {
+    "message": "Auto",
+    "description": "Infer the task type"
+  },
+  "taskType.edit": {
+    "message": "Edit Video",
+    "description": "Edit a reference video"
+  },
+  "taskType.extend": {
+    "message": "Extend Video",
+    "description": "Extend a reference video"
+  },
+  "name.outputFormat": {
+    "message": "Output Format",
+    "description": "Video container format"
   }
 }

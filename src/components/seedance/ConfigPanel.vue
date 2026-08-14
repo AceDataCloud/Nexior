@@ -9,6 +9,7 @@
       <generate-audio-switch class="mb-4" />
       <camera-fixed-switch class="mb-4" />
       <return-last-frame-switch class="mb-4" />
+      <advanced25-settings class="mb-4" />
       <seed-input class="mb-4" />
       <first-frame-image class="mb-4" />
       <last-frame-image class="mb-4" />
@@ -44,6 +45,7 @@ import ReferenceImage from './config/ReferenceImage.vue';
 import ReferenceAudio from './config/ReferenceAudio.vue';
 import ReferenceVideo from './config/ReferenceVideo.vue';
 import ReturnLastFrameSwitch from './config/ReturnLastFrameSwitch.vue';
+import Advanced25Settings from './config/Advanced25Settings.vue';
 import SeedInput from './config/SeedInput.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
@@ -65,6 +67,7 @@ export default defineComponent({
     GenerateAudioSwitch,
     CameraFixedSwitch,
     ReturnLastFrameSwitch,
+    Advanced25Settings,
     SeedInput,
     FirstFrameImage,
     LastFrameImage,
