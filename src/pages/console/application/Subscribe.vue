@@ -86,7 +86,14 @@
                 </el-row>
                 <div v-if="!loading && !loadFailed && showPayment" class="extra">
                   <span>{{ $t('console.message.doNotWantSubscribe') }}</span>
-                  <el-button type="primary" class="btn btn-extra" round size="small" @click="onBuyExtra">
+                  <el-button
+                    type="primary"
+                    class="btn btn-extra"
+                    round
+                    size="small"
+                    :loading="creatingUsageApplication"
+                    @click="onBuyExtra"
+                  >
                     {{ $t('console.message.buyExtra') }}
                   </el-button>
                 </div>
@@ -108,6 +115,7 @@ import { applicationOperator, orderOperator, serviceOperator } from '@/operators
 import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 
 interface ISubscription {
@@ -124,11 +132,13 @@ interface ISubscription {
 interface IData {
   application: IApplication | undefined;
   application2: IApplication | undefined;
+  usageApplication: IApplication | undefined;
   services: IService[];
   type: string;
   loading: boolean;
   loadFailed: boolean;
   creating: boolean;
+  creatingUsageApplication: boolean;
   subscription: ISubscription | undefined;
 }
 
@@ -150,11 +160,13 @@ export default defineComponent({
       application: undefined,
       // the application which used for subscription
       application2: undefined,
+      usageApplication: undefined,
       type: IApplicationType.PERIOD,
       services: [],
       loading: false,
       loadFailed: false,
       creating: false,
+      creatingUsageApplication: false,
       subscription: undefined
     };
   },
@@ -253,6 +265,7 @@ export default defineComponent({
         }
         // Fetch or create the Period Application used by order creation.
         await this.onFetchApplication2();
+        void this.onFetchUsageApplication();
         await this.onCreateApplications();
         this.subscription = this.subscriptions.find((item) => item.available);
       } catch {
@@ -262,13 +275,43 @@ export default defineComponent({
       }
     },
     getPriceString,
-    onBuyExtra() {
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: this.applicationId
+    async onBuyExtra() {
+      if (this.creatingUsageApplication) return;
+      this.creatingUsageApplication = true;
+      try {
+        if (!this.usageApplication?.id && this.service?.id) {
+          try {
+            const { data } = await applicationOperator.create({
+              service_id: this.service.id,
+              type: IApplicationType.USAGE
+            });
+            this.usageApplication = data;
+          } catch (error: any) {
+            if (error?.response?.data?.code !== ERROR_CODE_DUPLICATION) {
+              ElMessage.error(this.$t('application.message.createFailed'));
+              return;
+            }
+            try {
+              await this.onFetchUsageApplication();
+            } catch {
+              ElMessage.error(this.$t('application.message.fetchFailed'));
+              return;
+            }
+          }
         }
-      });
+        if (!this.usageApplication?.id) {
+          ElMessage.error(this.$t('console.message.applicationNotFound'));
+          return;
+        }
+        this.$router.push({
+          name: ROUTE_CONSOLE_APPLICATION_EXTRA,
+          params: {
+            id: this.usageApplication.id
+          }
+        });
+      } finally {
+        this.creatingUsageApplication = false;
+      }
     },
     getPackages(duration: number): IPackage[] {
       let result = [];
@@ -332,6 +375,17 @@ export default defineComponent({
       });
       this.application2 = data.items?.[0];
       console.debug('application2', this.application2);
+    },
+    async onFetchUsageApplication() {
+      const { data } = await applicationOperator.getAll({
+        limit: 1,
+        offset: 0,
+        user_id: this.$store.getters.user.id,
+        ordering: '-created_at',
+        service_id: this.serviceIds,
+        type: IApplicationType.USAGE
+      });
+      this.usageApplication = data.items?.[0];
     },
     onCreateOrder(subscription: ISubscription) {
       const packages = this.getPackages(subscription.duration);

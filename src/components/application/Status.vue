@@ -87,11 +87,11 @@ import { WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
 import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs, ElTag } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
+import { ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
 import ContinuousPaymentCard from './ContinuousPaymentCard.vue';
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
-import { isNative } from '@/utils';
+import { getApplicationPurchaseRoute, isNative } from '@/utils';
 import {
   isScenarioX402Enabled,
   scenarioPaymentState,
@@ -302,7 +302,8 @@ export default defineComponent({
       window.open(this.$router.resolve(target).href, '_blank');
     },
     onBuyMore(application: IApplication) {
-      const target = { name: ROUTE_CONSOLE_APPLICATION_EXTRA, params: { id: application.id } };
+      const target = getApplicationPurchaseRoute(application);
+      if (!target) return;
       // window.open('_blank') is a no-op inside the iOS/Android webview; navigate in-app.
       if (isNative()) {
         this.visible = false;

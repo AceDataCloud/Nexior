@@ -144,7 +144,7 @@
               >
                 <template #default="scope">
                   <el-switch
-                    v-if="scope.row.service?.type === serviceType.API"
+                    v-if="scope.row.service?.type === serviceType.API && scope.row.type === applicationType.USAGE"
                     v-model="scope.row.allow_consume_global"
                     :active-value="true"
                     :inactive-value="false"
@@ -237,7 +237,10 @@
                   <span class="label">{{ $t('application.field.expiredAt') }}</span>
                   <span class="value">{{ $dayjs.format(app.expired_at) }}</span>
                 </div>
-                <div v-if="app.service?.type === serviceType.API" class="application-card__row">
+                <div
+                  v-if="app.service?.type === serviceType.API && app.type === applicationType.USAGE"
+                  class="application-card__row"
+                >
                   <span class="label">{{ $t('application.field.allowConsumeGlobal') }}</span>
                   <el-switch
                     v-model="app.allow_consume_global"
@@ -315,14 +318,15 @@ import {
   ElEmpty,
   ElMessage
 } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
-import { isIOS, isRechargeDisabled } from '@/utils';
+import { ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
+import { getApplicationPurchaseRoute, isIOS, isRechargeDisabled } from '@/utils';
 import {
   IApplication,
   IApplicationListResponse,
   IApplicationScope,
   IApplicationType,
   ICredentialType,
+  IPackageType,
   IService,
   IServiceType
 } from '@/models';
@@ -335,6 +339,7 @@ interface IData {
   globalApplicationsTotal: number | undefined;
   limit: number;
   buying: boolean;
+  applicationType: typeof IApplicationType;
   form: {
     amount: number | undefined;
   };
@@ -370,6 +375,7 @@ export default defineComponent({
     return {
       credentialType: ICredentialType,
       serviceType: IServiceType,
+      applicationType: IApplicationType,
       individualApplications: [],
       globalApplications: [],
       individualApplicationsTotal: undefined,
@@ -424,7 +430,12 @@ export default defineComponent({
       if (!isIOS()) {
         return true;
       }
-      return ((application as any)?.packages || []).some((p: any) => p?.metadata?.apple_product_id);
+      if (application.type === IApplicationType.PERIOD) {
+        return false;
+      }
+      return ((application as any)?.packages || []).some(
+        (p: any) => p.type === IPackageType.USAGE && p?.metadata?.apple_product_id
+      );
     },
     updateAllowConsumeGlobal(application: IApplication, value: any) {
       if (!application || !application.id) {
@@ -448,13 +459,8 @@ export default defineComponent({
       });
     },
     onBuyMore(application: IApplication | undefined) {
-      if (!application?.id) return;
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: application.id
-        }
-      });
+      const target = getApplicationPurchaseRoute(application);
+      if (target) this.$router.push(target);
     },
     onPageChange(page: number) {
       this.$router.push({
@@ -477,7 +483,10 @@ export default defineComponent({
               : {}),
             user_id: this.$store.getters.user.id,
             ordering: '-created_at',
-            type: IApplicationType.USAGE,
+            type:
+              scope === IApplicationScope.INDIVIDUAL
+                ? [IApplicationType.USAGE, IApplicationType.PERIOD]
+                : IApplicationType.USAGE,
             scope: scope
           })
           .then(({ data }: { data: IApplicationListResponse }) => {

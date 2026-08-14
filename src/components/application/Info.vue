@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { IApplication, IServiceType } from '@/models';
+import { IApplication, IApplicationType, IServiceType, IPackageType } from '@/models';
 import { defineComponent } from 'vue';
 import { ElButton, ElIcon, ElTag } from 'element-plus';
 import { AnalyticsIcon, ConfirmIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
@@ -110,7 +110,12 @@ export default defineComponent({
       if (this.application?.scope === 'Global') {
         return true;
       }
-      return (this.application?.packages || []).some((p) => p?.metadata?.apple_product_id);
+      if (this.application.type === IApplicationType.PERIOD) {
+        return false;
+      }
+      return (this.application?.packages || []).some(
+        (p) => p.type === IPackageType.USAGE && p?.metadata?.apple_product_id
+      );
     },
     remainingAmountText(): string {
       const amount = Number(this.application?.remaining_amount ?? 0);

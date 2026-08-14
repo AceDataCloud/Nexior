@@ -114,7 +114,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApplication, IApplicationDetailResponse, IOrderDetailResponse, IPackageType } from '@/models';
+import {
+  IApplication,
+  IApplicationDetailResponse,
+  IApplicationType,
+  IOrderDetailResponse,
+  IPackageType
+} from '@/models';
 import {
   ElRow,
   ElCol,
@@ -310,6 +316,13 @@ export default defineComponent({
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           if (data.role === 'grantee') {
             this.$router.replace({ name: ROUTE_CONSOLE_APPLICATION_LIST });
+            return;
+          }
+          if (data.type === IApplicationType.PERIOD) {
+            this.$router.replace({
+              name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+              params: { id: data.id }
+            });
             return;
           }
           this.application = data;
