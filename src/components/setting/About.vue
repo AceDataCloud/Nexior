@@ -62,7 +62,7 @@
         <p class="settings-tip">{{ $t('common.settings.contactSupportTip') }}</p>
       </div>
       <div class="settings-content contacts-content">
-        <div v-for="(c, i) in contacts" :key="i" class="contact-entry">
+        <div v-for="(c, i) in contacts" :key="c.id || i" class="contact-entry">
           <a v-if="contactHref(c)" :href="contactHref(c)" v-bind="linkAttrs(c)" class="about-link">
             <font-awesome-icon v-if="contactUsesFontAwesome(c.type)" :icon="contactIconFor(c.type)" class="icon" />
             <component
