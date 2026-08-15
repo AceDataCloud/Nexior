@@ -117,8 +117,8 @@ Vue 3.5 · Vite 7 · TypeScript · Vuex 4 (per-service namespaced modules) · El
 If Nexior saved you a weekend of wiring AI providers together, give it a ⭐.
 Stars don't pay rent — but they tell the next builder, the next agent, and the next contributor that this is worth their attention. One click, three seconds, a real signal.
 
-<a href="https://star-history.com/#AceDataCloud/Nexior&Date">
-  <img alt="Nexior star history" src="https://api.star-history.com/svg?repos=AceDataCloud/Nexior&type=Date" width="70%" />
+<a href="https://star-history.dera.page/#AceDataCloud/Nexior&Date">
+  <img alt="Nexior star history" src="https://star-history.dera.page/svg?repos=AceDataCloud/Nexior&type=Date" width="70%" />
 </a>
 
 ---
