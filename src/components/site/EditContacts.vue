@@ -2,7 +2,7 @@
   <el-dialog v-model="editing" :title="title" width="560px" class="edit-contacts-dialog" append-to-body>
     <p class="hint">{{ $t('common.settings.contactEditorHint') }}</p>
     <div class="rows">
-      <div v-for="(row, idx) in rows" :key="idx" class="contact-row">
+      <div v-for="(row, idx) in rows" :key="row.id" class="contact-row">
         <div class="row-head">
           <font-awesome-icon v-if="contactUsesFontAwesome(row.type)" :icon="rowIcon(row.type)" class="row-icon" />
           <component
@@ -19,9 +19,25 @@
             allow-create
             default-first-option
             class="type-select"
+            popper-class="contact-type-options"
             :placeholder="$t('common.settings.contactType')"
+            @change="row.type = normalizeType(row.type)"
           >
-            <el-option v-for="opt in typeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+            <el-option v-for="opt in typeOptions" :key="opt.value" :label="opt.label" :value="opt.value">
+              <span class="type-option">
+                <font-awesome-icon v-if="opt.fontAwesome" :icon="opt.icon" class="type-option__icon" />
+                <component
+                  :is="opt.icon"
+                  v-else
+                  class="type-option__icon"
+                  :size="'1em' as any"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+                <span>{{ opt.label }}</span>
+                <code>{{ opt.value }}</code>
+              </span>
+            </el-option>
           </el-select>
           <el-button link type="danger" @click="removeRow(idx)">
             <delete :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -33,18 +49,23 @@
         <el-input v-model="row.url" class="row-field" placeholder="https://..." />
         <div class="qr-row">
           <span class="qr-label">{{ $t('common.settings.contactQr') }}</span>
-          <el-image v-if="row.qr" :src="row.qr" class="qr-thumb" fit="contain" />
-          <edit-image
-            :model-value="row.qr"
-            :title="$t('common.settings.contactQr')"
-            :tip="$t('common.settings.contactQrTip')"
-            :width="200"
-            :height="200"
-            @confirm="row.qr = $event"
+          <el-image
+            v-if="row.qr"
+            :src="row.qr"
+            :preview-src-list="[row.qr]"
+            :preview-teleported="true"
+            class="qr-thumb"
+            fit="contain"
           />
-          <el-button v-if="row.qr" link type="danger" @click="row.qr = ''">
-            {{ $t('common.button.delete') }}
-          </el-button>
+          <span v-else class="qr-empty">{{ $t('common.settings.contactQrEmpty') }}</span>
+          <div class="qr-actions">
+            <el-button plain round size="small" @click="openQrUploader(row.id)">
+              {{ $t(row.qr ? 'common.settings.contactQrReplace' : 'common.settings.contactQrUpload') }}
+            </el-button>
+            <el-button v-if="row.qr" plain round size="small" type="danger" @click="row.qr = ''">
+              {{ $t('common.settings.contactQrClear') }}
+            </el-button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +80,17 @@
       </span>
     </template>
   </el-dialog>
+  <image-cropper
+    v-model="qrCropperVisible"
+    :title="$t('common.settings.contactQrDialogTitle')"
+    :format-hint="$t('common.settings.contactQrTip')"
+    :aspect-ratio="1"
+    :output-width="512"
+    dialog-width="min(640px, calc(100vw - 24px))"
+    accept="image/png,image/jpeg,image/webp"
+    shape="rectangle"
+    @uploaded="onQrUploaded"
+  />
   <span
     class="edit"
     role="button"
@@ -77,11 +109,12 @@
 
 <script lang="ts">
 import { EditIcon as Edit, AddIcon as Plus, DeleteIcon as Delete } from '@acedatacloud/core/icons/components';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, type Component } from 'vue';
 import { ElDialog, ElInput, ElButton, ElIcon, ElImage, ElSelect, ElOption, ElMessage } from 'element-plus';
-
+import { v4 as uuidv4 } from 'uuid';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import EditImage from '@/components/site/EditImage.vue';
+import ImageCropper from '@/components/common/ImageCropper.vue';
 import {
   contactIcon,
   contactBrand,
@@ -105,6 +138,7 @@ const MAX_LABEL_LEN = 100;
 const MAX_CONTACTS = 30;
 
 interface ContactRow {
+  id: string;
   type: string;
   label: string;
   value: string;
@@ -125,7 +159,7 @@ export default defineComponent({
     Edit,
     Plus,
     Delete,
-    EditImage,
+    ImageCropper,
     FontAwesomeIcon
   },
   props: {
@@ -144,21 +178,31 @@ export default defineComponent({
       Plus,
       Delete,
       editing: false,
-      rows: this.toRows(this.modelValue)
+      rows: this.toRows(this.modelValue),
+      qrCropperVisible: false,
+      activeQrContactId: null as string | null
     };
   },
   computed: {
-    typeOptions(): { value: string; label: string }[] {
-      // Presets plus any custom type already present in a row, so a saved
-      // custom channel (e.g. "zhihu") still renders its label on reopen
-      // instead of showing a blank el-select.
+    typeOptions(): {
+      value: string;
+      label: string;
+      icon: IconDefinition | Component;
+      fontAwesome: boolean;
+    }[] {
+      const buildOption = (value: string) => ({
+        value,
+        label: this.typeLabel(value),
+        icon: contactIcon(value),
+        fontAwesome: contactUsesFontAwesome(value)
+      });
       const seen = new Set(CONTACT_TYPE_PRESETS);
-      const options = CONTACT_TYPE_PRESETS.map((value) => ({ value, label: this.typeLabel(value) }));
+      const options = CONTACT_TYPE_PRESETS.map(buildOption);
       for (const row of this.rows) {
         const t = (row.type || '').trim().toLowerCase();
         if (t && !seen.has(t)) {
           seen.add(t);
-          options.push({ value: t, label: this.typeLabel(t) });
+          options.push(buildOption(t));
         }
       }
       return options;
@@ -176,8 +220,12 @@ export default defineComponent({
   },
   methods: {
     contactUsesFontAwesome,
+    normalizeType(type?: string): string {
+      return (type || '').trim().toLowerCase().slice(0, 32);
+    },
     toRows(list?: ISiteContact[]): ContactRow[] {
       return (list || []).map((c) => ({
+        id: c.id || uuidv4(),
         type: c.type || '',
         label: c.label || '',
         value: c.value || '',
@@ -210,13 +258,26 @@ export default defineComponent({
     },
     onCancel() {
       this.editing = false;
+      this.qrCropperVisible = false;
+      this.activeQrContactId = null;
       this.$emit('cancel');
     },
     addRow() {
-      this.rows.push({ type: '', label: '', value: '', url: '', qr: '' });
+      this.rows.push({ id: uuidv4(), type: '', label: '', value: '', url: '', qr: '' });
     },
     removeRow(idx: number) {
       this.rows.splice(idx, 1);
+    },
+    openQrUploader(contactId: string) {
+      this.activeQrContactId = contactId;
+      this.qrCropperVisible = true;
+    },
+    onQrUploaded(url: string) {
+      const value = url.trim();
+      if (!this.activeQrContactId || !HTTP_URL_RE.test(value)) return;
+      const row = this.rows.find((item: ContactRow) => item.id === this.activeQrContactId);
+      if (row) row.qr = value;
+      this.activeQrContactId = null;
     },
     isBlankRow(r: ContactRow): boolean {
       return !r.type.trim() && !r.label.trim() && !r.value.trim() && !r.url.trim() && !r.qr.trim();
@@ -255,7 +316,7 @@ export default defineComponent({
       return this.rows
         .filter((r: ContactRow) => !this.isBlankRow(r))
         .map((r: ContactRow) => {
-          const contact: ISiteContact = { type: r.type.trim().toLowerCase() };
+          const contact: ISiteContact = { id: r.id, type: this.normalizeType(r.type) };
           if (r.label.trim()) contact.label = r.label.trim();
           if (r.value.trim()) contact.value = r.value.trim();
           if (r.url.trim()) contact.url = r.url.trim();
@@ -325,6 +386,7 @@ export default defineComponent({
 
     .type-select {
       flex: 1;
+      min-width: 0;
     }
   }
 
@@ -332,6 +394,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 
     .qr-label {
       font-size: 13px;
@@ -339,10 +402,26 @@ export default defineComponent({
     }
 
     .qr-thumb {
+      flex: none;
       width: 56px;
       height: 56px;
       border-radius: 8px;
       border: 1px solid var(--el-border-color-lighter);
+      background: #fff;
+      cursor: zoom-in;
+    }
+
+    .qr-empty {
+      flex: 1;
+      min-width: 100px;
+      color: var(--el-text-color-placeholder);
+      font-size: 13px;
+    }
+
+    .qr-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
   }
 }
@@ -355,5 +434,50 @@ export default defineComponent({
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .contact-row .row-head {
+    flex-wrap: wrap;
+
+    .type-select {
+      flex-basis: calc(100% - 44px);
+    }
+  }
+
+  .contact-row .qr-row {
+    align-items: flex-start;
+
+    .qr-label {
+      flex-basis: 100%;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.edit-contacts-dialog {
+  max-width: calc(100vw - 24px);
+}
+
+.contact-type-options .type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+
+  .type-option__icon {
+    flex: none;
+    width: 18px;
+    text-align: center;
+  }
+
+  code {
+    margin-left: auto;
+    color: var(--el-text-color-secondary);
+    font-size: 12px;
+  }
 }
 </style>

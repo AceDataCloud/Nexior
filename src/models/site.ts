@@ -155,6 +155,7 @@ export interface ISiteBrandingLinks {
 // to multiple phones/emails, a QR on any channel, and new channel types
 // with no schema change. Backend validator: ``app/utils/site_branding.py``.
 export interface ISiteContact {
+  id?: string;
   type: string;
   label?: string;
   value?: string;
