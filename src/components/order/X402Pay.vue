@@ -290,9 +290,9 @@ export default defineComponent({
     paymentRequirements(): Record<string, any> | undefined {
       const s = this.session?.payment_requirements || this.session?.paymentRequirements;
       if (s && typeof s === 'object') return s as Record<string, any>;
-      const m = this.orderMetadata?.payment_requirements || this.orderMetadata?.paymentRequirements;
-      if (m && typeof m === 'object') return m as Record<string, any>;
-      return undefined;
+      const x402 = this.orderMetadata?.x402;
+      const requirements = x402 && typeof x402 === 'object' ? x402.payment_requirements : undefined;
+      return requirements && typeof requirements === 'object' ? (requirements as Record<string, any>) : undefined;
     },
     expectedNetwork(): string | undefined {
       return this.selectedNetworkResolved;

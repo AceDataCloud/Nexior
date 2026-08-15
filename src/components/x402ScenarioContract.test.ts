@@ -55,6 +55,12 @@ describe('x402 image scenario contract', () => {
     expect(operator).not.toContain('localStorage');
   });
 
+  it('reads order requirements only from x402 metadata', () => {
+    const payment = source('components/order/X402Pay.vue');
+    expect(payment).toContain('x402.payment_requirements');
+    expect(payment).not.toContain('this.orderMetadata?.payment_requirements');
+  });
+
   it('uses one shared wallet resolver and prefers Base EIP-3009', () => {
     const operator = source('operators/x402.ts');
     expect(operator).toContain('signEVMPayment');
