@@ -1,17 +1,37 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CAPABILITY_ICONS } from '@/constants/capabilities';
+import { showcaseOperator } from '@/operators';
 import Home from './Index.vue';
-import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES, HOME_POPULAR } from './data';
+import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
+
+vi.mock('@/operators', () => ({ showcaseOperator: { list: vi.fn() } }));
 
 const studioFeatures = Object.fromEntries(HOME_CAPABILITY_KEYS.map((key) => [key, { enabled: true }]));
+const showcase = {
+  id: '196387e7-f217-453f-a678-ed1165e0cbd9',
+  service: 'seedance',
+  task_id: 'task-1',
+  data: {
+    type: 'videos',
+    request: { prompt: 'Paper fox' },
+    response: {
+      success: true,
+      data: {
+        video_url: 'https://cdn.acedata.cloud/video',
+        last_frame_url: 'https://cdn.acedata.cloud/poster'
+      }
+    }
+  }
+};
 
 const mountHome = (site: Record<string, unknown>) =>
   shallowMount(Home, {
     global: {
       mocks: {
         $t: (key: string) => key,
+        $i18n: { locale: 'en' },
         $router: { push: vi.fn() },
         $route: { name: 'index' },
         $store: { state: { site } }
@@ -20,83 +40,82 @@ const mountHome = (site: Record<string, unknown>) =>
   });
 
 describe('Studio workbench home', () => {
+  beforeEach(() => vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any));
+
   it('does not expose capabilities before site configuration loads', () => {
     const wrapper = mountHome({});
-
     expect(wrapper.find('.studio-home').exists()).toBe(false);
     expect(wrapper.find('.home-loading').exists()).toBe(true);
+    expect(showcaseOperator.list).not.toHaveBeenCalled();
   });
 
   it('covers all Studio capabilities through named-route destinations', () => {
-    const destinations = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates), ...HOME_POPULAR];
+    const destinations = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates)];
     expect(HOME_BANNERS).toHaveLength(3);
     expect(HOME_CATEGORIES).toHaveLength(4);
-    expect(HOME_POPULAR.length).toBeGreaterThanOrEqual(8);
     expect(new Set(HOME_CAPABILITY_KEYS).size).toBeGreaterThanOrEqual(15);
     expect(destinations.every((item) => item.routeName)).toBe(true);
     expect(destinations.some((item) => 'path' in item)).toBe(false);
   });
 
-  it('passes all enabled Studio entries to the three dashboard sections', () => {
+  it('passes every enabled child into the four category groups', () => {
     const wrapper = mountHome({ id: 'studio', features: studioFeatures });
-
     expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')).toHaveLength(3);
-    expect(wrapper.getComponent({ name: 'CategoryTiles' }).props('items')).toHaveLength(4);
-    expect(wrapper.getComponent({ name: 'PopularCapabilityGrid' }).props('items').length).toBeGreaterThanOrEqual(8);
+    const categories = wrapper.getComponent({ name: 'CategoryTiles' }).props('items');
+    expect(categories).toHaveLength(4);
+    expect(categories.find((item: any) => item.id === 'chat').items.map((item: any) => item.capability)).toEqual([
+      'chatgpt',
+      'claude',
+      'gemini',
+      'grok',
+      'deepseek'
+    ]);
+    expect(wrapper.findComponent({ name: 'PopularCapabilityGrid' }).exists()).toBe(false);
   });
 
-  it('filters every section to the current site feature set', () => {
+  it('filters showcase items to the site feature set', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
     const wrapper = mountHome({
       id: 'video-only',
       features: { seedance: { enabled: true }, veo: { enabled: true }, kling: { enabled: false } }
     });
-
-    expect(
-      wrapper
-        .getComponent({ name: 'HomeCarousel' })
-        .props('slides')
-        .map((item: any) => item.capability)
-    ).toEqual(['seedance']);
-    expect(
-      wrapper
-        .getComponent({ name: 'CategoryTiles' })
-        .props('items')
-        .map((item: any) => item.capability)
-    ).toEqual(['seedance']);
-    expect(
-      wrapper
-        .getComponent({ name: 'PopularCapabilityGrid' })
-        .props('items')
-        .map((item: any) => item.capability)
-    ).toEqual(['veo']);
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith());
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
   });
 
-  it('applies white-label names and icons with bundled fallback', async () => {
+  it('applies white-label names and icons to child and showcase cards', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
     const wrapper = mountHome({
       id: 'brand',
-      features: { claude: { enabled: true } },
+      features: { seedance: { enabled: true } },
       capability_overrides: {
-        claude: { display_name: 'Brand Writer', icon_url: 'https://cdn.example.com/writer.png' }
+        seedance: { display_name: 'Brand Motion', icon_url: 'https://cdn.example.com/motion.png' }
       }
     });
-    const grid = wrapper.getComponent({ name: 'PopularCapabilityGrid' });
-    expect(grid.props('items')[0]).toMatchObject({
-      name: 'Brand Writer',
-      icon: 'https://cdn.example.com/writer.png',
-      defaultIcon: CAPABILITY_ICONS.claude
+    await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    const gallery = wrapper.getComponent({ name: 'ShowcaseGrid' });
+    expect(gallery.props('items')[0]).toMatchObject({
+      name: 'Brand Motion',
+      icon: 'https://cdn.example.com/motion.png',
+      defaultIcon: CAPABILITY_ICONS.seedance
     });
-
-    grid.vm.$emit('icon-error', grid.props('items')[0]);
+    gallery.vm.$emit('icon-error', gallery.props('items')[0]);
     await wrapper.vm.$nextTick();
-    expect(wrapper.getComponent({ name: 'PopularCapabilityGrid' }).props('items')[0].icon).toBe(
-      CAPABILITY_ICONS.claude
-    );
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].icon).toBe(CAPABILITY_ICONS.seedance);
+  });
+
+  it('hides only the showcase section when the anonymous list is empty', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalled());
+    expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'CategoryTiles' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(false);
   });
 
   it('removes a failed visual without exposing a broken URL', async () => {
     const wrapper = mountHome({ id: 'studio', features: { maestro: { enabled: true } } });
     const carousel = wrapper.getComponent({ name: 'HomeCarousel' });
-
     carousel.vm.$emit('image-error', carousel.props('slides')[0]);
     await wrapper.vm.$nextTick();
     expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')[0].imageUrl).toBe('');

@@ -59,9 +59,13 @@ export interface ResolvedHomeBanner extends ResolvedHomeCapability {
   title: string;
 }
 
-export interface ResolvedHomeCategory extends ResolvedHomeCapability {
+export interface ResolvedHomeCategory {
   id: string;
   title: string;
+  description: string;
+  imageUrl: string;
+  focalPoint?: string;
+  items: ResolvedHomeCapability[];
 }
 
 const capability = (
@@ -169,75 +173,15 @@ export const HOME_CATEGORIES: HomeCategory[] = [
   }
 ];
 
-export const HOME_POPULAR: HomeCapability[] = [
-  capability(
-    'claude',
-    ROUTE_CLAUDE_CONVERSATION_NEW,
-    'Claude',
-    'intro.model.claude',
-    'https://cdn.acedata.cloud/uploads/b9c16d55-092f-4ef8-ba31-e2145eac4b9f',
-    'center 35%'
-  ),
-  capability(
-    'gemini',
-    ROUTE_GEMINI_CONVERSATION_NEW,
-    'Gemini',
-    'intro.model.gemini',
-    'https://cdn.acedata.cloud/uploads/e0c2483b-b956-4bee-ba8a-881c7952a556',
-    'center 48%'
-  ),
-  capability(
-    'grok',
-    ROUTE_GROK_CONVERSATION_NEW,
-    'Grok',
-    'intro.model.grok',
-    'https://cdn.acedata.cloud/uploads/d3ab1243-be28-4b84-9f9d-0905a33e78d6',
-    'center 45%'
-  ),
-  capability(
-    'seedream',
-    ROUTE_SEEDREAM_INDEX,
-    'Seedream',
-    'intro.model.seedream',
-    'https://cdn.acedata.cloud/uploads/5bd2be6a-b0b4-423c-8c17-9dd331eefc15',
-    'center 35%'
-  ),
-  capability(
-    'veo',
-    ROUTE_VEO_INDEX,
-    'Veo',
-    'intro.model.veo',
-    'https://cdn.acedata.cloud/uploads/2ef6ec94-68ce-446a-8d8c-33468b8ee136',
-    'center 45%'
-  ),
-  capability(
-    'kling',
-    ROUTE_KLING_INDEX,
-    'Kling',
-    'intro.model.kling',
-    'https://cdn.acedata.cloud/uploads/4f0aa7f3-f452-4a77-8111-fd882e305709',
-    'center 35%'
-  ),
-  capability(
-    'grokvideo',
-    ROUTE_GROKVIDEO_INDEX,
-    'Grok Imagine Video',
-    'intro.model.grokvideo',
-    'https://cdn.acedata.cloud/uploads/62e53a52-4768-48a7-8b35-99f2306df6c3',
-    'center 48%'
-  ),
-  capability(
-    'fish',
-    ROUTE_FISH_TTS_INDEX,
-    'Fish Audio',
-    'intro.model.fish',
-    'https://cdn.acedata.cloud/uploads/2549da05-04ba-4947-a51c-b09c5c0588cd',
-    'center 42%'
-  )
-];
+export const HOME_CAPABILITY_DEFINITIONS = new Map<CapabilityKey, HomeCapability>(
+  HOME_CATEGORIES.flatMap((category) => category.candidates.map((item) => [item.capability, item] as const))
+);
+
+export const HOME_CAPABILITY_ROUTES = new Map<CapabilityKey, string>(
+  [...HOME_CAPABILITY_DEFINITIONS].map(([key, item]) => [key, item.routeName])
+);
 
 export const HOME_CAPABILITY_KEYS = [
   ...HOME_BANNERS.map((item) => item.capability),
-  ...HOME_CATEGORIES.flatMap((item) => item.candidates.map((candidate) => candidate.capability)),
-  ...HOME_POPULAR.map((item) => item.capability)
+  ...HOME_CATEGORIES.flatMap((item) => item.candidates.map((candidate) => candidate.capability))
 ];

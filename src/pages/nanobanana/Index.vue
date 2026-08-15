@@ -30,6 +30,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { buildNanobananaRequest } from '@/utils/x402/imageRequests';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: INanobananaTask | undefined;
@@ -45,7 +46,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('nanobanana')],
   inject: ['initialized'],
   data(): IData {
     return {

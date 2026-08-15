@@ -59,6 +59,9 @@ test.beforeEach(async () => {
 
   app = await electron.launch({ args: [MAIN, `--user-data-dir=${userDataDir}`] });
   win = await app.firstWindow();
+  await win.route('**/api/v1/showcases/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: '[]' })
+  );
   win.on('pageerror', (e) => errors.push(`pageerror: ${e.message}\n${e.stack ?? ''}`));
   win.on('console', (m) => {
     if (m.type() === 'error') errors.push(`console.error: ${m.text()}`);

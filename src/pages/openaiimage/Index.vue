@@ -30,6 +30,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -45,7 +46,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('openaiimage')],
   inject: ['initialized'],
   data(): IData {
     return {

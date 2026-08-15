@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="brand-logo" :aria-label="siteTitle" @click="$emit('click')">
+  <button type="button" class="brand-logo" :aria-label="siteTitle" @click="$emit('click', $event)">
     <template v-if="tenantLogoLight">
       <img :src="tenantLogoLight" class="brand-logo__image brand-logo__image--light" :alt="siteTitle" />
       <img :src="tenantLogoDark" class="brand-logo__image brand-logo__image--dark" :alt="siteTitle" />

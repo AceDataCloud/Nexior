@@ -24,6 +24,7 @@ import RecentPanel from '@/components/seedream/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { ISeedreamTask } from '@/models';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -38,7 +39,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedream')],
   inject: ['initialized'],
   data(): IData {
     return {

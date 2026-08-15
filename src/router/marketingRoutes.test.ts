@@ -12,7 +12,7 @@ import grokvideo from './grokvideo';
 import home, { homeCompatibilityRoute } from './home';
 import openaiimage from './openaiimage';
 import fish from './fish';
-import { HOME_BANNERS, HOME_CATEGORIES, HOME_POPULAR } from '@/pages/home/data';
+import { HOME_BANNERS, HOME_CATEGORIES } from '@/pages/home/data';
 
 const child = (route: any) => route.children[0];
 
@@ -36,7 +36,7 @@ describe('public Studio routes', () => {
       history: createMemoryHistory(),
       routes: [home as any, openaiimage as any, grokvideo as any, fish as any]
     });
-    const items = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates), ...HOME_POPULAR];
+    const items = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates)];
     const registered = router.getRoutes().map((route) => route.name);
 
     for (const item of items) {

@@ -1,5 +1,5 @@
 <template>
-  <section class="dashboard-section" aria-labelledby="home-categories-title">
+  <section class="dashboard-section" aria-labelledby="home-categories-title" @keydown.esc="closePanel">
     <div class="section-heading">
       <div>
         <span>{{ $t('intro.home.quick.eyebrow') }}</span>
@@ -8,7 +8,16 @@
       <p>{{ $t('intro.home.quick.subtitle') }}</p>
     </div>
     <div class="category-grid">
-      <router-link v-for="item in items" :key="item.id" :to="{ name: item.routeName }" class="category-card">
+      <button
+        v-for="item in items"
+        :key="item.id"
+        :ref="(element) => rememberButton(item.id, element)"
+        type="button"
+        class="category-card"
+        :aria-expanded="openId === item.id"
+        :aria-controls="`home-category-panel-${item.id}`"
+        @click="toggle(item.id)"
+      >
         <img
           v-if="item.imageUrl"
           :src="item.imageUrl"
@@ -16,32 +25,75 @@
           loading="lazy"
           decoding="async"
           :style="{ objectPosition: item.focalPoint || 'center' }"
-          @error="$emit('image-error', item)"
+          @error="$emit('category-image-error', item.id)"
         />
-        <span v-else class="image-fallback"><img :src="item.icon" alt="" /></span>
         <span class="shade" />
         <span class="category-copy">
-          <span class="capability">
-            <img :src="item.icon" alt="" @error="$emit('icon-error', item)" />
-            {{ item.name }}
-          </span>
           <strong>{{ item.title }}</strong>
           <span>{{ item.description }}</span>
-          <b>{{ $t('intro.home.createNow') }} →</b>
+          <b>{{ $t(openId === item.id ? 'intro.home.quick.close' : 'intro.home.quick.explore') }} ↓</b>
         </span>
-      </router-link>
+      </button>
     </div>
+
+    <transition name="panel">
+      <div
+        v-if="activeCategory"
+        :id="`home-category-panel-${activeCategory.id}`"
+        class="capability-panel"
+        role="region"
+        :aria-label="$t('intro.home.quick.panelLabel', { category: activeCategory.title })"
+      >
+        <router-link
+          v-for="item in activeCategory.items"
+          :key="item.capability"
+          :to="{ name: item.routeName }"
+          class="capability-card"
+        >
+          <img :src="item.icon" alt="" @error="$emit('icon-error', item)" />
+          <span>
+            <strong>{{ item.name }}</strong>
+            <small>{{ item.description }}</small>
+          </span>
+          <b>{{ $t('intro.home.createNow') }} <span aria-hidden="true">→</span></b>
+        </router-link>
+      </div>
+    </transition>
   </section>
 </template>
 
 <script setup lang="ts">
-import type { ResolvedHomeCategory } from '../data';
+import { computed, ref } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
+import type { ResolvedHomeCapability, ResolvedHomeCategory } from '../data';
 
-defineProps<{ items: ResolvedHomeCategory[] }>();
+const props = defineProps<{ items: ResolvedHomeCategory[] }>();
 defineEmits<{
-  'image-error': [item: ResolvedHomeCategory];
-  'icon-error': [item: ResolvedHomeCategory];
+  'category-image-error': [id: string];
+  'icon-error': [item: ResolvedHomeCapability];
 }>();
+
+const openId = ref<string>();
+const buttons = new Map<string, HTMLButtonElement>();
+const activeCategory = computed(() => props.items.find((item) => item.id === openId.value));
+
+function rememberButton(id: string, element: Element | ComponentPublicInstance | null): void {
+  if (element instanceof HTMLButtonElement) buttons.set(id, element);
+  else buttons.delete(id);
+}
+
+function toggle(id: string): void {
+  openId.value = openId.value === id ? undefined : id;
+}
+
+function closePanel(): void {
+  if (!openId.value) return;
+  const button = buttons.get(openId.value);
+  openId.value = undefined;
+  button?.focus();
+}
+
+defineExpose({ openId, activeCategory, toggle, closePanel });
 </script>
 
 <style lang="scss" scoped>
@@ -90,18 +142,20 @@ defineEmits<{
   min-width: 0;
   min-height: 205px;
   overflow: hidden;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 15px;
   color: #fff;
   background: #0d131d;
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  text-align: left;
   transition:
     transform 0.22s ease,
     border-color 0.22s ease,
     box-shadow 0.22s ease;
 
   > img,
-  .image-fallback,
   .shade {
     position: absolute;
     inset: 0;
@@ -114,24 +168,12 @@ defineEmits<{
     transition: transform 0.4s ease;
   }
 
-  .image-fallback {
-    display: grid;
-    place-items: center;
-    background: radial-gradient(circle, rgba(var(--app-brand-rgb), 0.2), transparent 45%), #0d131d;
-
-    img {
-      width: 66px;
-      height: 66px;
-      border-radius: 18px;
-      object-fit: cover;
-    }
-  }
-
   .shade {
     background: linear-gradient(180deg, rgba(4, 8, 15, 0.02) 15%, rgba(4, 8, 15, 0.92) 100%);
   }
 
-  &:hover {
+  &:hover,
+  &[aria-expanded='true'] {
     transform: translateY(-3px);
     border-color: color-mix(in srgb, var(--el-color-primary) 44%, transparent);
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
@@ -159,12 +201,12 @@ defineEmits<{
   gap: 5px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.72);
 
-  > strong {
+  strong {
     font-size: 22px;
     line-height: 1.15;
   }
 
-  > span:not(.capability) {
+  > span {
     display: -webkit-box;
     overflow: hidden;
     color: rgba(255, 255, 255, 0.7);
@@ -180,24 +222,101 @@ defineEmits<{
   }
 }
 
-.capability {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  font-weight: 750;
+.capability-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 13px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(13, 19, 29, 0.9);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.23);
+  backdrop-filter: blur(18px);
+}
 
-  img {
-    width: 24px;
-    height: 24px;
-    border-radius: 7px;
-    background: rgba(255, 255, 255, 0.9);
+.capability-card {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 13px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  > img {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
     object-fit: cover;
+  }
+
+  > span {
+    min-width: 0;
+  }
+
+  strong,
+  small {
+    display: block;
+  }
+
+  strong {
+    font-size: 14px;
+  }
+
+  small {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 11px;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  > b {
+    grid-column: 2;
+    color: color-mix(in srgb, var(--el-color-primary) 65%, #fff);
+    font-size: 11px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--app-brand-rgb), 0.35);
+    background: rgba(var(--app-brand-rgb), 0.08);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--el-color-primary);
+    outline-offset: 2px;
   }
 }
 
+.panel-enter-active,
+.panel-leave-active {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.panel-enter-from,
+.panel-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
 @media (max-width: 1120px) {
-  .category-grid {
+  .category-grid,
+  .capability-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -215,7 +334,8 @@ defineEmits<{
     }
   }
 
-  .category-grid {
+  .category-grid,
+  .capability-panel {
     gap: 10px;
   }
 
@@ -229,26 +349,35 @@ defineEmits<{
     bottom: 13px;
     left: 13px;
 
-    > strong {
+    strong {
       font-size: 17px;
     }
   }
+
+  .capability-panel {
+    padding: 10px;
+  }
 }
 
-@media (max-width: 380px) {
-  .category-grid {
+@media (max-width: 430px) {
+  .category-grid,
+  .capability-panel {
     grid-template-columns: 1fr;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .category-card,
-  .category-card > img {
+  .category-card > img,
+  .capability-card,
+  .panel-enter-active,
+  .panel-leave-active {
     transition: none;
   }
 
   .category-card:hover,
-  .category-card:hover > img {
+  .category-card:hover > img,
+  .capability-card:hover {
     transform: none;
   }
 }

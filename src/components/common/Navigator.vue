@@ -870,6 +870,7 @@ $dock-handle-height: 22px;
       align-items: center;
       padding: 10px 0 10px;
       width: 100%;
+      -webkit-app-region: no-drag;
     }
 
     // Frameless macOS desktop: inset the brand below the window traffic lights

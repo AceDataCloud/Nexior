@@ -22,6 +22,7 @@ import RecentPanel from '@/components/veo/RecentPanel.vue';
 import { IVeoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -45,7 +46,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('veo')],
   inject: ['initialized'],
   data(): IData {
     return {

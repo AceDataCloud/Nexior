@@ -57,6 +57,13 @@ describe('Logo Site branding', () => {
     expect(wrapper.find('.brand-logo__wordmark').exists()).toBe(true);
   });
 
+  it('forwards the DOM event with its click emission', async () => {
+    const wrapper = mountLogo({ title: 'Customer AI' }, true);
+    await wrapper.get('.brand-logo').trigger('click');
+    expect(wrapper.emitted('click')).toHaveLength(1);
+    expect(wrapper.emitted('click')?.[0]?.[0]).toBeInstanceOf(Event);
+  });
+
   it('uses the built-in mark for an unbranded collapsed header', () => {
     const wrapper = mountLogo({ title: 'Unbranded Site' }, true);
 

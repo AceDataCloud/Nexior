@@ -27,6 +27,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: IFishTask | undefined;
@@ -43,7 +44,7 @@ export default defineComponent({
     RecentPanel,
     TabSwitcher
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('fish')],
   inject: ['initialized'],
   data(): IData {
     return {

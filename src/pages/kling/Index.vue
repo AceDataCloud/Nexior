@@ -32,6 +32,7 @@ import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { isScenarioX402Enabled, scenarioPaymentState, setScenarioPaymentMode } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -59,7 +60,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('kling')],
   inject: ['initialized'],
   data(): IData {
     return {
