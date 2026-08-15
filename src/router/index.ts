@@ -74,6 +74,7 @@ import {
   ROUTE_SERP_INDEX,
   ROUTE_FISH_TTS_INDEX,
   ROUTE_WEBEXTRATOR_INDEX,
+  ROUTE_INDEX,
   ROUTE_NOT_FOUND
 } from './constants';
 import { getCookie } from 'typescript-cookie';
@@ -358,6 +359,9 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['webextrator', ROUTE_WEBEXTRATOR_INDEX]
 ];
 
+export const shouldRedirectDesktopHome = (desktop: boolean, routeName: unknown): boolean =>
+  desktop && routeName === ROUTE_INDEX;
+
 export const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
   for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
@@ -444,6 +448,11 @@ export function setupRouterGuards(router: Router) {
     // then, so skip the client-only guard body and just proceed.
     if (import.meta.env.SSR) {
       return next();
+    }
+    // Desktop keeps its app-shell landing because always-mounted controls such
+    // as UserCenter and Local Tools live there. The public web surface owns `/`.
+    if (shouldRedirectDesktopHome(isDesktop(), to.name)) {
+      return next({ ...getDefaultRoute(), query: to.query, hash: to.hash, replace: true });
     }
     // A site-wide pin outranks the cookie (and therefore `?lang=`, which only
     // ever writes the cookie). Applied here rather than at boot because the

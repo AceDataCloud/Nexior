@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import business from './business';
 import { ROUTE_BUSINESS, ROUTE_INDEX } from './constants';
 import home, { homeCompatibilityRoute } from './home';
+import { shouldRedirectDesktopHome } from './index';
 
 const child = (route: any) => route.children[0];
 
@@ -19,6 +20,12 @@ describe('public marketing routes', () => {
 
     expect(homeCompatibilityRoute.path).toBe('/home');
     expect(target).toEqual({ name: ROUTE_INDEX, query: { lang: 'zh-CN' }, hash: '#featured', replace: true });
+  });
+
+  it('keeps desktop in its app shell while web renders the creative home', () => {
+    expect(shouldRedirectDesktopHome(true, ROUTE_INDEX)).toBe(true);
+    expect(shouldRedirectDesktopHome(false, ROUTE_INDEX)).toBe(false);
+    expect(shouldRedirectDesktopHome(true, ROUTE_BUSINESS)).toBe(false);
   });
 
   it('serves the white-label business page at /business', () => {
