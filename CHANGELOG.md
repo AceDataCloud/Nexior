@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 14 Aug 2026 20:18:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 15 Aug 2026 20:15:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.5
+
+Sat, 15 Aug 2026 20:15:21 GMT
+
+### Patches
+
+- Clarify support-channel presets and QR upload controls while preserving stable contact identities. (dev@acedata.cloud)
+- Read x402 order payment requirements from their namespaced metadata. (dev@acedata.cloud)
 
 ## 3.362.4
 
