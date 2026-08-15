@@ -13,8 +13,8 @@
       <el-menu :default-active="active" mode="horizontal" class="menu" :ellipsis="true" @select="onSelect">
         <el-sub-menu :index="products">
           <template #title>{{ $t('common.nav.products') }}</template>
-          <el-menu-item v-t="'intro.nav.overview'" index="/home"></el-menu-item>
-          <el-menu-item v-if="site?.features?.chatgpt?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
+          <el-menu-item v-t="'intro.nav.overview'" index="home"></el-menu-item>
+          <el-menu-item v-if="site?.features?.chatgpt?.enabled" v-t="'index.title.chat'" index="chatgpt"></el-menu-item>
           <el-menu-item
             v-if="site?.features?.midjourney?.enabled"
             v-t="'index.title.midjourney'"
@@ -78,7 +78,7 @@
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth, withCurrentUserIdAndSite, isMainOfficial } from '@/utils';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
+import { ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import {
   ElCol,
   ElRow,
@@ -163,9 +163,15 @@ export default defineComponent({
       window.open(url, '_blank');
     },
     onSelect(val: string | undefined) {
-      if (val) {
-        this.$router.push(val);
+      if (val === 'home') {
+        this.$router.push({ name: ROUTE_INDEX });
+        return;
       }
+      if (val === 'chatgpt') {
+        this.$router.push({ name: ROUTE_CHATGPT_CONVERSATION_NEW });
+        return;
+      }
+      if (val) this.$router.push(val);
     },
     onHome() {
       this.$router.push({

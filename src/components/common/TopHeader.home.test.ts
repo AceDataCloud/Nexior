@@ -2,7 +2,7 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 
-import { ROUTE_BUSINESS, ROUTE_INDEX } from '@/router';
+import { ROUTE_BUSINESS, ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_INDEX } from '@/router';
 import TopHeader from './TopHeader.vue';
 
 const mountHeader = (routeName: string, path: string) =>
@@ -32,8 +32,8 @@ const mountHeader = (routeName: string, path: string) =>
   });
 
 describe('TopHeader product home presentation mode', () => {
-  it('renders only the centered brand logo on /home', () => {
-    const wrapper = mountHeader(ROUTE_INDEX, '/home');
+  it('renders only the centered brand logo on /', () => {
+    const wrapper = mountHeader(ROUTE_INDEX, '/');
 
     expect(wrapper.classes()).toContain('minimal-only');
     expect(wrapper.findAll('.logo-stub')).toHaveLength(1);
@@ -48,5 +48,16 @@ describe('TopHeader product home presentation mode', () => {
 
     expect(wrapper.classes()).not.toContain('minimal-only');
     expect(wrapper.find('.menu-stub').exists()).toBe(true);
+  });
+
+  it('routes overview and chat through their canonical route names', () => {
+    const wrapper = mountHeader(ROUTE_BUSINESS, '/business');
+    const vm = wrapper.vm as any;
+
+    vm.onSelect('home');
+    vm.onSelect('chatgpt');
+
+    expect(vm.$router.push).toHaveBeenNthCalledWith(1, { name: ROUTE_INDEX });
+    expect(vm.$router.push).toHaveBeenNthCalledWith(2, { name: ROUTE_CHATGPT_CONVERSATION_NEW });
   });
 });

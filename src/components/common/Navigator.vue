@@ -22,6 +22,13 @@
     </div>
     <div class="dock-body" :inert="dockCollapsed || undefined">
       <div class="top">
+        <div v-if="direction === 'row'" :class="{ link: true, active: isHome }">
+          <el-tooltip effect="dark" :content="$t('common.nav.home')" placement="top">
+            <button type="button" class="home-button" :aria-label="$t('common.nav.home')" @click="onHome">
+              <span aria-hidden="true">⌂</span>
+            </button>
+          </el-tooltip>
+        </div>
         <div ref="linksContainer" class="links">
           <div
             v-for="(link, linkIndex) in visibleLinks"
@@ -125,9 +132,12 @@ import {
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
+  ROUTE_QRART_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_GROKVIDEO_INDEX,
+  ROUTE_PIKA_INDEX,
+  ROUTE_MINIMAX_INDEX,
   ROUTE_OMNI_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
@@ -175,7 +185,7 @@ import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 import { isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
-import { type CapabilityKey } from '@/constants/capabilities';
+import { CAPABILITY_ICONS, type CapabilityKey } from '@/constants/capabilities';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 
 interface NavLink {
@@ -200,12 +210,15 @@ const NAV_CAPABILITY_BY_ROUTE: Partial<Record<string, CapabilityKey>> = {
   [ROUTE_FLUX_INDEX]: 'flux',
   [ROUTE_NANOBANANA_INDEX]: 'nanobanana',
   [ROUTE_OPENAIIMAGE_INDEX]: 'openaiimage',
+  [ROUTE_QRART_INDEX]: 'qrart',
   [ROUTE_SEEDREAM_INDEX]: 'seedream',
   [ROUTE_SUNO_INDEX]: 'suno',
   [ROUTE_PRODUCER_INDEX]: 'producer',
   [ROUTE_FISH_TTS_INDEX]: 'fish',
   [ROUTE_SEEDANCE_INDEX]: 'seedance',
   [ROUTE_GROKVIDEO_INDEX]: 'grokvideo',
+  [ROUTE_PIKA_INDEX]: 'pika',
+  [ROUTE_MINIMAX_INDEX]: 'minimax',
   [ROUTE_OMNI_INDEX]: 'omni',
   [ROUTE_LUMA_INDEX]: 'luma',
   [ROUTE_HAILUO_INDEX]: 'hailuo',
@@ -358,6 +371,15 @@ export default defineComponent({
           category: 'image'
         });
       }
+      if (this.$store?.state?.site?.features?.qrart?.enabled) {
+        result.push({
+          route: { name: ROUTE_QRART_INDEX },
+          displayName: this.$t('common.nav.qrart'),
+          logo: CAPABILITY_ICONS.qrart,
+          routes: [ROUTE_QRART_INDEX],
+          category: 'image'
+        });
+      }
       // Music category
       if (this.$store?.state?.site?.features?.suno?.enabled) {
         result.push({
@@ -393,6 +415,24 @@ export default defineComponent({
           displayName: this.$t('common.nav.seedance'),
           logo: SEEDANCE_LOGO,
           routes: [ROUTE_SEEDANCE_INDEX],
+          category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.pika?.enabled) {
+        result.push({
+          route: { name: ROUTE_PIKA_INDEX },
+          displayName: this.$t('common.nav.pika'),
+          logo: CAPABILITY_ICONS.pika,
+          routes: [ROUTE_PIKA_INDEX],
+          category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.minimax?.enabled) {
+        result.push({
+          route: { name: ROUTE_MINIMAX_INDEX },
+          displayName: this.$t('common.nav.minimax'),
+          logo: CAPABILITY_ICONS.minimax,
+          routes: [ROUTE_MINIMAX_INDEX],
           category: 'video'
         });
       }
@@ -555,6 +595,9 @@ export default defineComponent({
     },
     authenticated() {
       return !!this.$store.state.token.access;
+    },
+    isHome(): boolean {
+      return this.$route.name === ROUTE_INDEX;
     },
     maxVisibleItems(): number {
       if (this.direction === 'row') return this.links.length;
@@ -723,6 +766,28 @@ $dock-handle-height: 22px;
       min-width: 0;
       overflow-x: auto;
       overflow-y: hidden;
+      .home-button {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        flex: none;
+        border: 1px solid var(--app-border-subtle);
+        border-radius: 50%;
+        color: var(--el-text-color-primary);
+        background: var(--el-bg-color);
+        cursor: pointer;
+        font-size: 22px;
+
+        &:focus-visible {
+          outline: 2px solid var(--el-color-primary);
+          outline-offset: 2px;
+        }
+      }
+      > .link.active .home-button {
+        color: var(--el-color-primary);
+        border-color: var(--el-color-primary);
+      }
       .links {
         display: flex;
         flex-direction: row;

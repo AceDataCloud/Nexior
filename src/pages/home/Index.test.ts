@@ -2,175 +2,153 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 
-import { CHAT_MODEL_ICON_GLM } from '@/constants/chat';
-import zhIntro from '@/i18n/zh-CN/intro.json';
-import Intro from './Index.vue';
-import { INTRO_SHOTS } from './data';
+import { CAPABILITY_ICONS } from '@/constants/capabilities';
+import Home from './Index.vue';
+import { HOME_SHOTS } from './data';
 
-const studioFeatures = {
+const features = {
   chatgpt: { enabled: true },
   claude: { enabled: true },
-  gemini: { enabled: true },
-  grok: { enabled: true },
-  deepseek: { enabled: false },
-  kimi: { enabled: false },
-  midjourney: { enabled: false },
   nanobanana: { enabled: true },
   openaiimage: { enabled: true },
   seedream: { enabled: true },
-  flux: { enabled: false },
   qrart: { enabled: false },
+  pika: { enabled: false },
+  minimax: { enabled: false },
   kling: { enabled: true },
   veo: { enabled: true },
   seedance: { enabled: true },
-  grokvideo: { enabled: true },
-  sora: { enabled: false },
-  hailuo: { enabled: false },
-  luma: { enabled: false },
-  pixverse: { enabled: false },
-  omni: { enabled: false },
   suno: { enabled: true },
-  fish: { enabled: true },
-  producer: { enabled: false },
   maestro: { enabled: true },
-  digitalhuman: { enabled: false },
-  serp: { enabled: false },
-  webextrator: { enabled: false },
   codingBridge: { enabled: true }
 };
 
-const t = (key: string) => key;
-
-const mountIntro = (site: Record<string, unknown>) =>
-  shallowMount(Intro, {
+const mountHome = (site: Record<string, unknown>, locale = 'zh-CN') =>
+  shallowMount(Home, {
     global: {
-      stubs: {
-        ElButton: { template: '<button><slot /></button>' },
-        ConfirmIcon: true,
-        NextIcon: true
-      },
       mocks: {
-        $t: t,
-        $i18n: { locale: 'zh-CN' },
+        $t: (key: string) => key,
+        $i18n: { locale },
         $router: { push: vi.fn() },
         $store: { state: { site } }
       }
     }
   });
 
-describe('/home site capability filtering', () => {
-  it('renders only Studio-enabled capabilities and matching screenshots', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const text = wrapper.text();
+describe('creative home', () => {
+  it('does not expose capabilities before site configuration loads', () => {
+    const wrapper = mountHome({});
 
-    for (const enabled of [
-      'ChatGPT',
-      'Claude',
-      'Gemini',
-      'Grok',
-      'Nano Banana',
-      'GPT Image',
-      'Seedream',
-      'Kling',
-      'Veo',
-      'Seedance',
-      'Grok Imagine',
-      'Suno',
-      'Fish Audio',
-      'Maestro',
-      'Coding Bridge'
-    ]) {
-      expect(text).toContain(enabled);
-    }
-    for (const disabled of [
-      'DeepSeek',
-      'Kimi',
-      'Midjourney',
-      'Flux',
-      'QR Art',
-      'Sora',
-      'Hailuo',
-      'Luma',
-      'Pixverse',
-      'Omni',
-      'Producer',
-      'Digital Human',
-      'SERP',
-      'WebExtrator'
-    ]) {
-      expect(text).not.toContain(disabled);
-    }
-
-    const images = wrapper.findAll('img').map((image) => image.attributes('src'));
-    expect(images).toContain(INTRO_SHOTS.nanobananaDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.midjourneyDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.serpDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.webextratorDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.digitalHumanDesktop.zh);
+    expect(wrapper.find('.creative-home').exists()).toBe(false);
+    expect(wrapper.find('.home-loading').exists()).toBe(true);
+    expect(wrapper.text()).not.toContain('Nano Banana');
   });
 
-  it('gives every visible product card a recognizable logo', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const cards = wrapper.findAll('.model-card');
-    const logos = wrapper.findAll('.model-card__logo img');
+  it('filters every home section to enabled capabilities', () => {
+    const wrapper = mountHome({ id: 'studio', features });
+    const hero = wrapper.getComponent({ name: 'WorkbenchHero' });
+    const quick = wrapper.getComponent({ name: 'QuickCreateIntents' });
+    const featured = wrapper.getComponent({ name: 'CapabilityRail' });
+    const inspiration = wrapper.getComponent({ name: 'InspirationGallery' });
 
-    expect(cards).toHaveLength(16);
-    expect(logos).toHaveLength(cards.length);
-    expect(logos.every((logo) => Boolean(logo.attributes('src')))).toBe(true);
-    expect(logos.some((logo) => logo.attributes('src') === CHAT_MODEL_ICON_GLM)).toBe(true);
-    expect(wrapper.find('.model-grid').attributes('style')).toContain('--model-grid-columns: 5');
+    expect(hero.props('banners').map((item: any) => item.path)).toEqual(['/maestro', '/seedance', '/nanobanana']);
+    expect(quick.props('items').map((item: any) => item.path)).toEqual([
+      '/chatgpt',
+      '/openaiimage',
+      '/seedance',
+      '/suno',
+      '/maestro',
+      '/coding-bridge'
+    ]);
+    expect(featured.props('items').map((item: any) => item.capability)).not.toContain('pika');
+    expect(featured.props('items').map((item: any) => item.capability)).not.toContain('qrart');
+    expect(
+      inspiration.props('items').every((item: any) => features[item.capability as keyof typeof features]?.enabled)
+    ).toBe(true);
   });
 
-  it('uses Site title and description as the presentation hero copy', () => {
-    const wrapper = mountIntro({
-      id: 'studio',
-      origin: 'brand.studio.acedata.cloud',
-      title: 'Seedance AI Video Generator',
-      description: 'Create cinematic AI videos from text, images, and reference clips.',
-      features: studioFeatures
+  it('falls back to the first enabled destination for each creative intent', () => {
+    const wrapper = mountHome({
+      id: 'single-video',
+      features: { seedance: { enabled: false }, kling: { enabled: false }, minimax: { enabled: true } }
+    });
+    const items = wrapper.getComponent({ name: 'QuickCreateIntents' }).props('items');
+
+    expect(items).toHaveLength(1);
+    expect(items[0]).toMatchObject({ id: 'video', path: '/minimax' });
+  });
+
+  it('makes newly restored capabilities discoverable when enabled', () => {
+    const wrapper = mountHome({
+      id: 'catalog',
+      features: { qrart: { enabled: true }, pika: { enabled: true }, minimax: { enabled: true } }
+    });
+    const items = wrapper.getComponent({ name: 'CapabilityRail' }).props('items');
+
+    expect(items.map((item: any) => item.capability)).toEqual(['qrart', 'pika', 'minimax']);
+    expect(items.map((item: any) => item.path)).toEqual(['/qrart', '/pika', '/minimax']);
+  });
+
+  it('applies white-label names and icons with bundled fallbacks', async () => {
+    const wrapper = mountHome({
+      id: 'brand',
+      features: { nanobanana: { enabled: true } },
+      capability_overrides: {
+        nanobanana: { display_name: 'Brand Image', icon_url: 'https://cdn.example.com/image.png' }
+      }
+    });
+    const rail = wrapper.getComponent({ name: 'CapabilityRail' });
+
+    expect(rail.props('items')[0]).toMatchObject({
+      name: 'Brand Image',
+      icon: 'https://cdn.example.com/image.png',
+      defaultIcon: CAPABILITY_ICONS.nanobanana
     });
 
-    expect(wrapper.get('h1').text()).toBe('Seedance AI Video Generator');
-    expect(wrapper.get('.hero__summary').text()).toBe(
-      'Create cinematic AI videos from text, images, and reference clips.'
-    );
+    rail.vm.$emit('icon-error', rail.props('items')[0]);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'CapabilityRail' }).props('items')[0].icon).toBe(CAPABILITY_ICONS.nanobanana);
   });
 
-  it('falls back to default hero copy when Site branding text is empty', () => {
-    const wrapper = mountIntro({ id: 'studio', title: '  ', description: '', features: studioFeatures });
+  it('uses site branding and locale-appropriate owned imagery', () => {
+    const site = {
+      id: 'brand',
+      origin: 'brand.example.com',
+      title: 'Brand Studio',
+      description: 'Make something new.',
+      features
+    };
+    const zh = mountHome(site, 'zh-CN').getComponent({ name: 'WorkbenchHero' });
+    const en = mountHome(site, 'en').getComponent({ name: 'WorkbenchHero' });
 
-    expect(wrapper.get('h1').text()).toBe('intro.title.hero');
-    expect(wrapper.get('.hero__summary').text()).toBe('intro.subtitle.hero');
+    expect(zh.props()).toMatchObject({ title: 'Brand Studio', subtitle: 'Make something new.' });
+    expect(zh.props('banners')[0].image).toBe(HOME_SHOTS.maestroNarrated.zh);
+    expect(en.props('banners')[0].image).toBe(HOME_SHOTS.maestroNarrated.en);
   });
 
-  it('uses outward-facing campaign headlines instead of configuration labels', () => {
-    const copy = Object.values(zhIntro)
-      .map((entry) => entry.message)
-      .join('\n');
+  it('uses creative copy for the official Studio instead of its legacy site description', () => {
+    const hero = mountHome({
+      id: 'studio',
+      origin: 'studio.acedata.cloud',
+      title: 'Ace Data Cloud',
+      description: 'Easily creating your own AI websites and earning money.',
+      features
+    }).getComponent({ name: 'WorkbenchHero' });
 
-    expect(copy).not.toContain('这个站点可用的');
-    expect(copy).not.toContain('已经为你准备好这些 AI 能力');
-    expect(zhIntro['title.site.video'].message).toBe('让每个想法，都成为一段好作品');
-    expect(zhIntro['title.connector'].message).toBe('连接你的数字世界，让 AI 真正行动起来');
+    expect(hero.props()).toMatchObject({ title: 'intro.home.title', subtitle: 'intro.home.subtitle' });
   });
 
-  it('filters fixed catalog claims and bullets for disabled tools', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const text = wrapper.text();
+  it('falls back to the creative-home copy when white-label branding is empty', () => {
+    const hero = mountHome({
+      id: 'brand',
+      origin: 'brand.example.com',
+      title: ' ',
+      description: '',
+      features
+    }).getComponent({
+      name: 'WorkbenchHero'
+    });
 
-    expect(text).not.toContain('intro.bullet.chat.models');
-    expect(text).not.toContain('intro.bullet.image.models');
-    expect(text).not.toContain('intro.bullet.video.models');
-    expect(text).not.toContain('intro.bullet.tools.search');
-    expect(text).not.toContain('intro.bullet.tools.extract');
-    expect(text).toContain('intro.bullet.tools.coding');
-  });
-
-  it('does not flash the full catalog before site configuration loads', () => {
-    const wrapper = mountIntro({});
-
-    expect(wrapper.find('.intro').exists()).toBe(false);
-    expect(wrapper.find('.intro-loading').exists()).toBe(true);
-    expect(wrapper.text()).not.toContain('Midjourney');
+    expect(hero.props()).toMatchObject({ title: 'intro.home.title', subtitle: 'intro.home.subtitle' });
   });
 });
