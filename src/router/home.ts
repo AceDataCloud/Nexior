@@ -3,7 +3,7 @@ import { ROUTE_INDEX } from './constants';
 
 export default {
   path: '/',
-  component: () => import('@/layouts/Index.vue'),
+  component: () => import('@/layouts/Main.vue'),
   children: [
     {
       path: '',

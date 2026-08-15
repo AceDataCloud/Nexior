@@ -31,23 +31,12 @@ const mountHeader = (routeName: string, path: string) =>
     }
   });
 
-describe('TopHeader product home presentation mode', () => {
-  it('renders only the centered brand logo on /', () => {
-    const wrapper = mountHeader(ROUTE_INDEX, '/');
-
-    expect(wrapper.classes()).toContain('minimal-only');
-    expect(wrapper.findAll('.logo-stub')).toHaveLength(1);
-    expect(wrapper.find('.menu-stub').exists()).toBe(false);
-    expect(wrapper.find('.login-stub').exists()).toBe(false);
-    expect(wrapper.find('.avatar').exists()).toBe(false);
-    expect(wrapper.find('.console').exists()).toBe(false);
-  });
-
+describe('TopHeader navigation', () => {
   it('keeps the standard header on /business', () => {
     const wrapper = mountHeader(ROUTE_BUSINESS, '/business');
 
-    expect(wrapper.classes()).not.toContain('minimal-only');
     expect(wrapper.find('.menu-stub').exists()).toBe(true);
+    expect(wrapper.findAll('.logo-stub')).toHaveLength(1);
   });
 
   it('routes overview and chat through their canonical route names', () => {
