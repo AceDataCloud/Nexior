@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 15 Aug 2026 20:15:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 16 Aug 2026 20:14:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.362.6
+
+Sun, 16 Aug 2026 20:14:49 GMT
+
+### Patches
+
+- Fix per-call Base wallet discovery with WalletConnect and install fallbacks. (dev@acedata.cloud)
 
 ## 3.362.5
 
