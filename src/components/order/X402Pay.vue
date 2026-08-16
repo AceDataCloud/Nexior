@@ -189,13 +189,9 @@ import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
+import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
 
-interface IEvmWalletInfo {
-  id: string;
-  name: string;
-  icon?: string;
-  provider: any;
-}
+type IEvmWalletInfo = EvmWalletInfo;
 
 interface IData {
   signing: boolean;
@@ -545,58 +541,17 @@ export default defineComponent({
       void this.refreshEvmWallets();
     },
     async refreshEvmWallets() {
-      if (typeof window === 'undefined') return;
-
-      const collected = new Map<string, IEvmWalletInfo>();
-      const handler = (event: any) => {
-        const detail = event?.detail;
-        const info = detail?.info;
-        const provider = detail?.provider;
-        if (!info || !provider) return;
-        const id = String(info.uuid || info.rdns || info.name || '');
-        if (!id) return;
-        if (!collected.has(id)) {
-          collected.set(id, {
-            id,
-            name: String(info.name || 'Wallet'),
-            icon: typeof info.icon === 'string' ? info.icon : undefined,
-            provider
-          });
-        }
-      };
-
-      try {
-        window.addEventListener('eip6963:announceProvider', handler as any);
-        window.dispatchEvent(new Event('eip6963:requestProvider'));
-        await new Promise((resolve) => window.setTimeout(resolve, 120));
-      } finally {
-        window.removeEventListener('eip6963:announceProvider', handler as any);
-      }
-
-      if (collected.size === 0) {
-        const eth: any = (window as any).ethereum;
-        const providers: any[] = Array.isArray(eth?.providers) ? eth.providers : eth ? [eth] : [];
-        providers.forEach((p: any, index: number) => {
-          if (!p) return;
-          let name = 'Injected';
-          if (p.isMetaMask) name = 'MetaMask';
-          else if (p.isCoinbaseWallet) name = 'Coinbase Wallet';
-          else if (p.isBraveWallet) name = 'Brave Wallet';
-          else if (p.isRabby) name = 'Rabby';
-          else if (p.isPhantom) name = 'Phantom';
-          const id = `injected:${name}:${index}`;
-          collected.set(id, { id, name, icon: undefined, provider: p });
-        });
-      }
-
-      this.evmWallets = Array.from(collected.values());
+      this.evmWallets = (await discoverEvmWallets()).filter(
+        (wallet): wallet is IEvmWalletInfo & { provider: NonNullable<IEvmWalletInfo['provider']> } =>
+          wallet.readyState === 'Detected' && wallet.kind === 'injected' && Boolean(wallet.provider)
+      );
     },
     async onSelectEvmWallet(wallet: IEvmWalletInfo) {
-      if (!wallet?.provider) return;
+      if (!wallet.provider) return;
       this.evmWalletModalVisible = false;
       this.evmWalletConnecting = true;
       try {
-        const accounts: string[] = await wallet.provider.request({ method: 'eth_requestAccounts' });
+        const accounts = (await wallet.provider.request({ method: 'eth_requestAccounts' })) as string[];
         const address = Array.isArray(accounts) ? accounts[0] : undefined;
         if (!address) {
           throw new Error('No account returned from wallet');
