@@ -18,6 +18,8 @@ describe('x402 image scenario contract', () => {
     expect(status).toContain("wallet.kind === 'walletconnect'");
     expect(status).toContain("wallet.readyState === 'Detected'");
     expect(status).toContain('order.message.x402NoWalletDesc');
+    expect(status).toContain('<copy-to-clipboard :content="walletConnectUri"');
+    expect(status).toContain('shortWalletConnectUri');
     expect(source('components/order/X402Pay.vue')).toContain('solana-wallet-picker-dialog');
     expect(source('components/order/X402Pay.vue')).toContain('discoverEvmWallets');
     expect(selector).not.toContain('solana-wallet-picker-dialog');

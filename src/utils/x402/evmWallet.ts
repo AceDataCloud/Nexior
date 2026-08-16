@@ -139,9 +139,11 @@ function watchProvider(provider: Eip1193Provider, kind: EvmWalletConnection['kin
   provider.on('chainChanged', (...args: any[]) => {
     if (String(args[0]).toLowerCase() !== BASE_CHAIN_ID) connection.value = undefined;
   });
-  provider.on('disconnect', () => {
+  const clearConnection = () => {
     if (connection.value?.provider === provider) connection.value = undefined;
-  });
+  };
+  provider.on('disconnect', clearConnection);
+  if (kind === 'walletconnect') provider.on('session_delete', clearConnection);
 }
 
 export async function connectBaseWallet(provider: Eip1193Provider): Promise<EvmWalletConnection> {
@@ -192,7 +194,10 @@ export async function connectBaseWalletConnect(onUri: (uri: string) => void): Pr
       eip155: {
         methods: ['eth_accounts', 'eth_chainId', 'eth_signTypedData_v4'],
         chains: [BASE_CAIP_CHAIN],
-        events: ['accountsChanged', 'chainChanged']
+        events: ['accountsChanged', 'chainChanged'],
+        rpcMap: {
+          8453: `https://rpc.walletconnect.org?chainId=${BASE_CAIP_CHAIN}&projectId=${WALLETCONNECT_PROJECT_ID}`
+        }
       }
     }
   });

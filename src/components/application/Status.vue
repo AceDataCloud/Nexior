@@ -97,9 +97,15 @@
           />
         </div>
         <p v-else class="wallet-hint">{{ $t('order.message.x402WalletConnectPreparing') }}</p>
-        <el-button v-if="walletConnectUri && mobileDevice" type="primary" @click="openWalletConnectUri">
-          {{ $t('order.message.x402WalletConnectOpenWallet') }}
-        </el-button>
+        <div v-if="walletConnectUri" class="wallet-connect-actions">
+          <el-button v-if="mobileDevice" type="primary" @click="openWalletConnectUri">
+            {{ $t('order.message.x402WalletConnectOpenWallet') }}
+          </el-button>
+          <span class="wallet-connect-uri">
+            {{ shortWalletConnectUri }}
+            <copy-to-clipboard :content="walletConnectUri" />
+          </span>
+        </div>
         <p class="wallet-hint">{{ $t('order.message.x402WalletConnectScanHint') }}</p>
       </div>
     </el-dialog>
@@ -126,6 +132,7 @@ import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
 import ContinuousPaymentCard from './ContinuousPaymentCard.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { getApplicationPurchaseRoute, isNative } from '@/utils';
 import {
@@ -170,6 +177,7 @@ export default defineComponent({
     ElTag,
     ApplicationInfo,
     ContinuousPaymentCard,
+    CopyToClipboard,
     SolanaWalletPickerDialog
   },
   props: {
@@ -254,6 +262,10 @@ export default defineComponent({
     },
     mobileDevice(): boolean {
       return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
+    shortWalletConnectUri(): string {
+      const uri = this.walletConnectUri || '';
+      return uri.length > 32 ? `${uri.slice(0, 18)}…${uri.slice(-10)}` : uri;
     },
     authenticated() {
       return !!this.$store.state.token.access;
@@ -422,6 +434,26 @@ export default defineComponent({
 
 .wallet-connect-panel {
   align-items: center;
+}
+
+.wallet-connect-actions,
+.wallet-connect-uri {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wallet-connect-actions {
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wallet-connect-uri {
+  min-width: 0;
+  color: var(--el-text-color-secondary);
+  font-family: monospace;
+  font-size: 12px;
 }
 
 .wallet-connect-qr {

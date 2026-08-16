@@ -110,11 +110,17 @@ describe('Base EVM wallet', () => {
     expect(onUri).toHaveBeenCalledWith('wc:test-uri');
     expect(walletConnect.provider.connect).toHaveBeenCalledWith({
       namespaces: {
-        eip155: expect.objectContaining({ chains: ['eip155:8453'] })
+        eip155: expect.objectContaining({
+          chains: ['eip155:8453'],
+          rpcMap: { 8453: expect.stringContaining('chainId=eip155:8453') }
+        })
       }
     });
     expect(connected).toMatchObject({ address: '0xwalletconnect', kind: 'walletconnect' });
     expect(activeEvmWallet()?.provider).toBe(walletConnect.provider);
+
+    walletConnect.listeners.session_delete();
+    expect(activeEvmWallet()).toBeUndefined();
   });
 
   it('disconnects the active WalletConnect provider', async () => {
