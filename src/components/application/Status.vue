@@ -61,11 +61,46 @@
       </div>
     </el-dialog>
     <el-dialog v-model="evmWalletPickerVisible" title="Base" width="420px">
-      <div class="flex flex-col gap-2">
-        <el-button v-for="wallet in evmWallets" :key="wallet.id" @click="connectEvmWallet(wallet)">
-          {{ wallet.name }}
+      <div class="wallet-list">
+        <button
+          v-for="wallet in evmWallets"
+          :key="wallet.id"
+          class="wallet-list-item"
+          :disabled="walletConnecting"
+          @click="connectEvmWallet(wallet)"
+        >
+          <img v-if="wallet.icon" class="wallet-list-icon" :src="wallet.icon" :alt="wallet.name" />
+          <span class="wallet-list-name">{{ wallet.name }}</span>
+          <span class="wallet-list-status">
+            {{
+              $t(
+                wallet.kind === 'walletconnect'
+                  ? 'order.message.x402WalletStatusQr'
+                  : wallet.readyState === 'Detected'
+                    ? 'order.message.x402WalletStatusDetected'
+                    : 'order.message.x402WalletStatusInstall'
+              )
+            }}
+          </span>
+        </button>
+        <p v-if="!evmWallets.length" class="wallet-hint">{{ $t('order.message.x402NoWalletDesc') }}</p>
+      </div>
+    </el-dialog>
+    <el-dialog v-model="walletConnectVisible" :title="$t('order.message.x402WalletConnectTitle')" width="420px">
+      <div class="wallet-connect-panel">
+        <div v-if="walletConnectUri" class="wallet-connect-qr">
+          <qr-code
+            :value="walletConnectUri"
+            :size="260"
+            :type="'image/png'"
+            :color="{ dark: '#000000', light: '#ffffff' }"
+          />
+        </div>
+        <p v-else class="wallet-hint">{{ $t('order.message.x402WalletConnectPreparing') }}</p>
+        <el-button v-if="walletConnectUri && mobileDevice" type="primary" @click="openWalletConnectUri">
+          {{ $t('order.message.x402WalletConnectOpenWallet') }}
         </el-button>
-        <p v-if="!evmWallets.length" class="wallet-hint">{{ $t('order.message.x402ConnectWallet') }}</p>
+        <p class="wallet-hint">{{ $t('order.message.x402WalletConnectScanHint') }}</p>
       </div>
     </el-dialog>
     <solana-wallet-picker-dialog
@@ -85,6 +120,7 @@
 <script lang="ts">
 import { WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
+import QrCode from 'vue-qrcode';
 import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs, ElTag } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_USAGE_LIST } from '@/router';
@@ -103,8 +139,9 @@ import {
   activeEvmWallet,
   activeWalletRail,
   connectBaseWallet,
+  connectBaseWalletConnect,
+  disconnectBaseWallet,
   discoverEvmWallets,
-  setActiveEvmWallet,
   setActiveWalletRail,
   type EvmWalletInfo
 } from '@/utils/x402/evmWallet';
@@ -113,6 +150,8 @@ export interface IData {
   walletPickerVisible: boolean;
   evmWalletPickerVisible: boolean;
   evmWallets: EvmWalletInfo[];
+  walletConnectVisible: boolean;
+  walletConnectUri?: string;
   walletConnecting: boolean;
   applicationType: typeof IApplicationType;
 }
@@ -121,6 +160,7 @@ export default defineComponent({
   name: 'ApplicationStatus',
   components: {
     WalletIcon,
+    QrCode,
     ElButton,
     ElDialog,
     ElRadioButton,
@@ -157,6 +197,8 @@ export default defineComponent({
       walletPickerVisible: false,
       evmWalletPickerVisible: false,
       evmWallets: [],
+      walletConnectVisible: false,
+      walletConnectUri: undefined,
       walletConnecting: false,
       applicationType: IApplicationType
     };
@@ -210,6 +252,9 @@ export default defineComponent({
       const weight = (state: string) => (state === 'Installed' ? 0 : state === 'Loadable' ? 1 : 2);
       return [...wallets].sort((a, b) => weight(a.readyState) - weight(b.readyState));
     },
+    mobileDevice(): boolean {
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
     authenticated() {
       return !!this.$store.state.token.access;
     },
@@ -255,9 +300,23 @@ export default defineComponent({
     },
     async connectEvmWallet(wallet: EvmWalletInfo) {
       if (this.walletConnecting) return;
+      if (wallet.installUrl && !wallet.provider) {
+        window.open(wallet.installUrl, '_blank', 'noopener,noreferrer');
+        return;
+      }
       this.walletConnecting = true;
       try {
-        await connectBaseWallet(wallet.provider);
+        if (wallet.kind === 'walletconnect') {
+          this.walletConnectUri = undefined;
+          this.walletConnectVisible = true;
+          await connectBaseWalletConnect((uri) => {
+            this.walletConnectUri = uri;
+          });
+          this.walletConnectVisible = false;
+        } else {
+          if (!wallet.provider) return;
+          await connectBaseWallet(wallet.provider);
+        }
         setActiveWalletRail('base');
         this.evmWalletPickerVisible = false;
       } catch (error) {
@@ -267,8 +326,11 @@ export default defineComponent({
         this.walletConnecting = false;
       }
     },
-    disconnectEvmWallet() {
-      setActiveEvmWallet(undefined);
+    openWalletConnectUri() {
+      if (this.walletConnectUri) window.location.href = this.walletConnectUri;
+    },
+    async disconnectEvmWallet() {
+      await disconnectBaseWallet();
     },
     async connectSolanaWallet(wallet: any) {
       const walletApi = (this as any).$wallet;
@@ -349,6 +411,62 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
   font-size: 12px;
   text-align: center;
+}
+
+.wallet-list,
+.wallet-connect-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wallet-connect-panel {
+  align-items: center;
+}
+
+.wallet-connect-qr {
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.wallet-list-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-primary);
+  cursor: pointer;
+}
+
+.wallet-list-item:hover:not(:disabled) {
+  background: var(--el-fill-color);
+}
+
+.wallet-list-item:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.wallet-list-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.wallet-list-name {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+}
+
+.wallet-list-status {
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
 }
 
 .entry {
