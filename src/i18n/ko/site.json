@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "앱 사용자 지정 불러오기 실패",
     "description": "기능 재정의 관리 행을 불러올 수 없을 때 표시되는 오류"
+  },
+  "analytics": {
+    "title": "웹사이트 분석",
+    "securityNotice": "승인된 분석 제공자만 지원됩니다. 원시 JavaScript 및 HTML을 삽입할 수 없습니다.",
+    "enabled": "활성화됨",
+    "required": "저장하기 전에 제공자 ID를 입력하세요.",
+    "invalidId": "유효한 제공자 ID를 입력하세요.",
+    "saveFailed": "웹사이트 분석 설정을 저장하지 못했습니다.",
+    "ga4": {
+      "description": "GA4 측정 ID로 방문 및 전환을 측정합니다.",
+      "measurementId": "측정 ID"
+    },
+    "baidu": {
+      "title": "바이두 웹사이트 분석",
+      "description": "바이두 분석으로 웹사이트 트래픽을 측정합니다.",
+      "siteId": "사이트 ID"
+    },
+    "clarity": {
+      "description": "Microsoft Clarity로 세션 및 행동을 이해합니다.",
+      "projectId": "프로젝트 ID"
+    },
+    "umami": {
+      "description": "Umami를 통해 개인 정보 보호 중심의 웹사이트 분석을 사용합니다.",
+      "websiteId": "웹사이트 ID",
+      "serverUrl": "서버 URL",
+      "serverUrlHelp": "Umami Cloud는 기본적으로 제공됩니다. 자체 호스팅된 출처는 먼저 플랫폼 관리자에 의해 승인되어야 합니다."
+    }
   }
 }

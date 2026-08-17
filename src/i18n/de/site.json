@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Laden der benutzerdefinierten Anwendung fehlgeschlagen",
     "description": "Fehler beim Lesen der Verwaltungsaufzeichnungen der Anwendungsüberschreibung"
+  },
+  "analytics": {
+    "title": "Website-Analyse",
+    "securityNotice": "Nur genehmigte Analyseanbieter werden unterstützt. Rohes JavaScript und HTML können nicht eingefügt werden.",
+    "enabled": "Aktiviert",
+    "required": "Geben Sie die Anbieter-ID vor dem Speichern ein.",
+    "invalidId": "Geben Sie eine gültige Anbieter-ID ein.",
+    "saveFailed": "Speichern der Website-Analyse-Einstellungen fehlgeschlagen.",
+    "ga4": {
+      "description": "Besuche und Conversions mit einer GA4 Measurement ID messen.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Baidu-Website-Analyse",
+      "description": "Website-Traffic mit Baidu-Analyse messen.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Sitzungen und Verhalten mit Microsoft Clarity verstehen.",
+      "projectId": "Projekt-ID"
+    },
+    "umami": {
+      "description": "Verwenden Sie datenschutzorientierte Website-Analyse über Umami.",
+      "websiteId": "Website-ID",
+      "serverUrl": "Server-URL",
+      "serverUrlHelp": "Umami Cloud ist standardmäßig verfügbar. Selbstgehostete Ursprünge müssen zuerst vom Plattformadministrator genehmigt werden."
+    }
   }
 }

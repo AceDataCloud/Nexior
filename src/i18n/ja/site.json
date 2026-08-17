@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "アプリのカスタマイズの読み込みに失敗しました",
     "description": "機能オーバーライド管理行の読み込みに失敗した場合のエラー"
+  },
+  "analytics": {
+    "title": "ウェブサイト分析",
+    "securityNotice": "承認された分析プロバイダーのみがサポートされています。生のJavaScriptおよびHTMLは挿入できません。",
+    "enabled": "有効",
+    "required": "保存する前にプロバイダーIDを入力してください。",
+    "invalidId": "有効なプロバイダーIDを入力してください。",
+    "saveFailed": "ウェブサイト分析設定の保存に失敗しました。",
+    "ga4": {
+      "description": "GA4 Measurement IDを使用して訪問とコンバージョンを測定します。",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Baiduウェブサイト分析",
+      "description": "Baidu分析を使用してウェブサイトのトラフィックを測定します。",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Microsoft Clarityを使用してセッションと行動を理解します。",
+      "projectId": "Project ID"
+    },
+    "umami": {
+      "description": "Umamiを通じてプライバシー重視のウェブサイト分析を使用します。",
+      "websiteId": "Website ID",
+      "serverUrl": "サーバーURL",
+      "serverUrlHelp": "Umami Cloudはデフォルトで利用可能です。自己ホストされたオリジンは、まずプラットフォーム管理者によって承認される必要があります。"
+    }
   }
 }

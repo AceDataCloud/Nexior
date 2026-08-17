@@ -56,6 +56,9 @@
         <div v-else-if="currentTab === SETTING_TAB_SEO && isSiteConfigVisible">
           <seo-setting />
         </div>
+        <div v-else-if="currentTab === SETTING_TAB_ANALYTICS && isSiteConfigVisible">
+          <analytics-setting />
+        </div>
         <div v-else-if="currentTab === SETTING_TAB_DISTRIBUTION && isSiteConfigVisible">
           <distribution-setting />
         </div>
@@ -85,6 +88,7 @@
 <script lang="ts">
 import {
   AdminIcon,
+  AnalyticsIcon,
   AnnouncementIcon,
   ContinueIcon,
   CredentialIcon,
@@ -106,6 +110,7 @@ import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
+import AnalyticsSetting from '@/components/setting/Analytics.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
 import SubsiteSetting from '@/components/setting/Subsite.vue';
@@ -118,6 +123,7 @@ import {
   SETTING_TAB_MEMORY,
   SETTING_TAB_AUTH,
   SETTING_TAB_DISTRIBUTION,
+  SETTING_TAB_ANALYTICS,
   SETTING_TAB_FUNCTION,
   SETTING_TAB_GENERAL,
   SETTING_TAB_SEO,
@@ -144,6 +150,7 @@ export default defineComponent({
     SiteSetting,
     SiteServicesSetting,
     SeoSetting,
+    AnalyticsSetting,
     DistributionSetting,
     FunctionSetting,
     SubsiteSetting,
@@ -177,6 +184,7 @@ export default defineComponent({
       SETTING_TAB_SITE,
       SETTING_TAB_SITE_SERVICES,
       SETTING_TAB_SEO,
+      SETTING_TAB_ANALYTICS,
       SETTING_TAB_DISTRIBUTION,
       SETTING_TAB_FUNCTION,
       SETTING_TAB_AUTH,
@@ -228,6 +236,12 @@ export default defineComponent({
           key: SETTING_TAB_SEO,
           label: this.$t('common.settings.seo'),
           icon: markRaw(AdminIcon),
+          visible: this.isSiteConfigVisible
+        },
+        {
+          key: SETTING_TAB_ANALYTICS,
+          label: this.$t('site.analytics.title'),
+          icon: markRaw(AnalyticsIcon),
           visible: this.isSiteConfigVisible
         },
         {

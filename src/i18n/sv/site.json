@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Misslyckades med att ladda applikationens anpassningar",
     "description": "Fel när man inte kan läsa kapabilitetsapplikationens överskrivningshanteringsposter"
+  },
+  "analytics": {
+    "title": "Webbplatsanalys",
+    "securityNotice": "Endast godkända analysleverantörer stöds. Rå JavaScript och HTML kan inte infogas.",
+    "enabled": "Aktiverad",
+    "required": "Ange leverantörens ID innan du sparar.",
+    "invalidId": "Ange ett giltigt leverantörs-ID.",
+    "saveFailed": "Misslyckades med att spara inställningarna för webbplatsanalys.",
+    "ga4": {
+      "description": "Mät besök och konverteringar med en GA4 Measurement ID.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Baidu webbplatsanalys",
+      "description": "Mät webbplatstrafik med Baidu-analys.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Förstå sessioner och beteende med Microsoft Clarity.",
+      "projectId": "Projekt-ID"
+    },
+    "umami": {
+      "description": "Använd integritetsfokuserad webbplatsanalys genom Umami.",
+      "websiteId": "Webbplats-ID",
+      "serverUrl": "Server-URL",
+      "serverUrlHelp": "Umami Cloud är tillgänglig som standard. Självhostade ursprung måste först godkännas av plattformens administratör."
+    }
   }
 }

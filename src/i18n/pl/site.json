@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Nie udało się wczytać dostosowań aplikacji",
     "description": "Błąd wyświetlany, gdy nie można wczytać wierszy zarządzania nadpisaniami aplikacji funkcji"
+  },
+  "analytics": {
+    "title": "Analiza Strony Internetowej",
+    "securityNotice": "Obsługiwani są tylko zatwierdzeni dostawcy analityki. Surowy JavaScript i HTML nie mogą być wstawiane.",
+    "enabled": "Włączone",
+    "required": "Wprowadź identyfikator dostawcy przed zapisaniem.",
+    "invalidId": "Wprowadź prawidłowy identyfikator dostawcy.",
+    "saveFailed": "Nie udało się zapisać ustawień analityki strony internetowej.",
+    "ga4": {
+      "description": "Mierz wizyty i konwersje za pomocą identyfikatora pomiaru GA4.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Analityka strony Baidu",
+      "description": "Mierz ruch na stronie internetowej za pomocą analityki Baidu.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Zrozum sesje i zachowanie za pomocą Microsoft Clarity.",
+      "projectId": "Project ID"
+    },
+    "umami": {
+      "description": "Korzystaj z analityki strony internetowej skoncentrowanej na prywatności za pomocą Umami.",
+      "websiteId": "Website ID",
+      "serverUrl": "Adres URL serwera",
+      "serverUrlHelp": "Umami Cloud jest dostępny domyślnie. Samodzielnie hostowane źródła muszą najpierw zostać zatwierdzone przez administratora platformy."
+    }
   }
 }
