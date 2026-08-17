@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 16 Aug 2026 20:14:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 17 Aug 2026 20:15:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.363.0
+
+Mon, 17 Aug 2026 20:15:34 GMT
+
+### Minor changes
+
+- Add configurable website analytics for white-label web sites (41898282+github-actions[bot]@users.noreply.github.com)
 
 ## 3.362.6
 
