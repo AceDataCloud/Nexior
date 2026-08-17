@@ -22,25 +22,27 @@
         />
       </section>
       <aside class="detail-copy">
-        <div class="service">
-          <img :src="item.icon" alt="" />
-          <span>{{ item.name }}</span>
-          <span v-if="item.model" class="model">{{ item.model }}</span>
+        <div class="detail-scroll">
+          <div class="service">
+            <img :src="item.icon" alt="" />
+            <span>{{ item.name }}</span>
+            <span v-if="item.model" class="model">{{ item.model }}</span>
+          </div>
+          <h2>{{ item.title }}</h2>
+          <section v-if="item.prompt" class="prompt">
+            <h3>{{ $t('intro.inspiration.prompt') }}</h3>
+            <p>{{ item.prompt }}</p>
+          </section>
+          <section v-if="item.parameters.length" class="parameters">
+            <h3>{{ $t('intro.inspiration.parameters') }}</h3>
+            <dl>
+              <template v-for="parameter in item.parameters" :key="parameter.key">
+                <dt>{{ parameterLabel(parameter.key) }}</dt>
+                <dd>{{ parameter.value }}</dd>
+              </template>
+            </dl>
+          </section>
         </div>
-        <h2>{{ item.title }}</h2>
-        <section v-if="item.prompt" class="prompt">
-          <h3>{{ $t('intro.inspiration.prompt') }}</h3>
-          <p>{{ item.prompt }}</p>
-        </section>
-        <section v-if="item.parameters.length" class="parameters">
-          <h3>{{ $t('intro.inspiration.parameters') }}</h3>
-          <dl>
-            <template v-for="parameter in item.parameters" :key="parameter.key">
-              <dt>{{ parameterLabel(parameter.key) }}</dt>
-              <dd>{{ parameter.value }}</dd>
-            </template>
-          </dl>
-        </section>
         <router-link :to="{ name: item.routeName, query: { showcase: item.id } }" class="create-similar">
           {{ $t('intro.home.showcase.createSimilar') }} <span aria-hidden="true">→</span>
         </router-link>
@@ -123,9 +125,6 @@ function parameterLabel(key: string): string {
   display: flex;
   min-height: 0;
   flex-direction: column;
-  gap: 22px;
-  overflow-y: auto;
-  padding: 34px 28px 26px;
   color: var(--el-text-color-primary);
   background: var(--el-bg-color);
 
@@ -141,6 +140,16 @@ function parameterLabel(key: string): string {
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
+}
+
+.detail-scroll {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+  padding: 34px 28px 22px;
 }
 
 .service {
@@ -195,7 +204,8 @@ function parameterLabel(key: string): string {
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
+  flex: none;
+  margin: 0 28px 26px;
   border-radius: 999px;
   color: #fff;
   background: var(--el-color-primary);
@@ -225,7 +235,20 @@ function parameterLabel(key: string): string {
 
   .detail-copy {
     overflow: visible;
-    padding: 24px 20px calc(20px + env(safe-area-inset-bottom));
+  }
+
+  .detail-scroll {
+    overflow: visible;
+    padding: 24px 20px;
+  }
+
+  .create-similar {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-radius: 0;
   }
 }
 </style>
