@@ -112,8 +112,43 @@ function stringValue(...values: unknown[]): string {
   return values.find((value): value is string => typeof value === 'string' && value.length > 0) || '';
 }
 
+function deriveLayout(request: Record<string, unknown>): ShowcaseLayout {
+  const ratio = stringValue(request.aspect_ratio, request.ratio);
+  const size = stringValue(request.size);
+  const match = ratio.match(/^(\d+):(\d+)$/) || size.match(/^(\d+)x(\d+)$/);
+  if (!match) return 'Square';
+  const width = Number(match[1]);
+  const height = Number(match[2]);
+  if (width > height * 1.15) return 'Landscape';
+  if (height > width * 1.15) return 'Portrait';
+  return 'Square';
+}
+
+const PARAMETER_KEYS = [
+  'model',
+  'size',
+  'aspect_ratio',
+  'ratio',
+  'resolution',
+  'duration',
+  'output_format',
+  'seed',
+  'instrumental',
+  'custom',
+  'style'
+];
+
+function deriveParameters(request: Record<string, unknown>): Array<{ key: string; value: string }> {
+  return PARAMETER_KEYS.flatMap((key) => {
+    const value = request[key];
+    if (value == null || value === '' || typeof value === 'object') return [];
+    return [{ key, value: String(value) }];
+  });
+}
+
 function deriveMedia(
   type: unknown,
+  request: Record<string, unknown>,
   result: Record<string, unknown>
 ): {
   mediaType: ShowcaseMediaType;
@@ -126,7 +161,7 @@ function deriveMedia(
       mediaType: 'Video',
       posterUrl: stringValue(result.last_frame_url, result.cover_url),
       previewUrl: stringValue(result.video_url),
-      layout: 'Landscape'
+      layout: deriveLayout(request) === 'Square' ? 'Landscape' : deriveLayout(request)
     };
   }
   if (type === 'audios' || result.audio_url || result.file_url) {
@@ -141,7 +176,7 @@ function deriveMedia(
     mediaType: 'Image',
     posterUrl: stringValue(result.image_url, result.url),
     previewUrl: '',
-    layout: 'Square'
+    layout: deriveLayout(request)
   };
 }
 
@@ -151,11 +186,11 @@ export function resolveShowcase(item: IShowcase, site: ISite, _locale: string): 
   const request = objectValue(item.data.request);
   const response = objectValue(item.data.response);
   const result = firstResult(response);
-  const media = deriveMedia(item.data.type, result);
+  const media = deriveMedia(item.data.type, request, result);
   if (!media.posterUrl) return undefined;
   const defaultIcon = CAPABILITY_ICONS[definition.capability];
   const presentation = resolveCapabilityPresentation(site, definition.capability, definition.defaultName, defaultIcon);
-  const prompt = stringValue(request.prompt, request.text);
+  const prompt = stringValue(request.prompt, request.text, request.lyric);
   const title = stringValue(result.title, presentation.displayName);
   return {
     id: item.id,
@@ -168,6 +203,9 @@ export function resolveShowcase(item: IShowcase, site: ISite, _locale: string): 
     defaultIcon,
     title,
     altText: title || prompt || presentation.displayName,
+    prompt,
+    model: stringValue(request.model, result.model),
+    parameters: deriveParameters(request),
     ...media
   };
 }

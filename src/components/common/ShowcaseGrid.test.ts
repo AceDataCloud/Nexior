@@ -19,7 +19,10 @@ const items: ResolvedShowcase[] = [
     previewUrl: 'preview.mp4',
     layout: 'Landscape',
     icon: 'seedance.png',
-    defaultIcon: 'seedance.png'
+    defaultIcon: 'seedance.png',
+    prompt: 'A paper fox follows light.',
+    model: 'seedance-2.0',
+    parameters: [{ key: 'duration', value: '5' }]
   },
   {
     id: 'audio-id',
@@ -35,7 +38,10 @@ const items: ResolvedShowcase[] = [
     previewUrl: 'preview.mp3',
     layout: 'Square',
     icon: 'suno.png',
-    defaultIcon: 'suno.png'
+    defaultIcon: 'suno.png',
+    prompt: 'A cinematic nocturne.',
+    model: 'suno-v4.5',
+    parameters: [{ key: 'instrumental', value: 'true' }]
   }
 ];
 

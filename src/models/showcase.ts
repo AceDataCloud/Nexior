@@ -36,4 +36,7 @@ export interface ResolvedShowcase {
   posterUrl: string;
   previewUrl: string;
   layout: ShowcaseLayout;
+  prompt: string;
+  model: string;
+  parameters: Array<{ key: string; value: string }>;
 }

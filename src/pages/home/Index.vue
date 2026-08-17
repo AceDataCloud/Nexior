@@ -1,6 +1,7 @@
 <template>
   <main v-if="siteLoaded" class="studio-home">
     <div class="dashboard">
+      <public-section-nav />
       <home-carousel v-if="banners.length" :slides="banners" @image-error="onImageError" />
       <category-tiles
         v-if="categories.length"
@@ -32,6 +33,7 @@ import { showcaseOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
+import PublicSectionNav from '@/components/common/PublicSectionNav.vue';
 import CategoryTiles from './components/CategoryTiles.vue';
 import HomeCarousel from './components/HomeCarousel.vue';
 import {
@@ -47,6 +49,7 @@ export default defineComponent({
   name: 'StudioHome',
   components: {
     CategoryTiles,
+    PublicSectionNav,
     ShowcaseGrid,
     HomeCarousel
   },

@@ -25,7 +25,12 @@ const item = (capability: string, request: Record<string, unknown>, service = SE
   service,
   task_id: null,
   data: {
-    type: service === 'suno' || service === 'producer' || service === 'fish' ? 'audios' : 'videos',
+    type:
+      service === 'suno' || service === 'producer' || service === 'fish'
+        ? 'audios'
+        : ['nano-banana', 'openai', 'seedream'].includes(service)
+          ? 'images'
+          : 'videos',
     request,
     response: {}
   }
@@ -83,6 +88,28 @@ describe('showcase recreate consumer', () => {
       expect(replace).toHaveBeenCalledWith({ path: `/${capability}`, query: { locale: 'en' }, hash: '#form' });
     }
   );
+
+  it('maps curated image references into the Nano Banana form contract', async () => {
+    const request = { prompt: 'Restyle this', images: ['https://cdn.acedata.cloud/reference.png'] };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('nanobanana', request)] } as any);
+    const { options, commit } = context('nanobanana');
+    await consumeShowcase(options);
+    expect(commit).toHaveBeenCalledWith(
+      'nanobanana/setConfig',
+      expect.objectContaining({ image_urls: ['https://cdn.acedata.cloud/reference.png'] })
+    );
+  });
+
+  it('preserves the task-shaped lyric field for a Suno vocal', async () => {
+    const request = { title: 'Open Window', lyric: '[Verse]\nMorning light', style: 'Warm indie pop', custom: true };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('suno', request)] } as any);
+    const { options, commit } = context('suno');
+    await consumeShowcase(options);
+    expect(commit).toHaveBeenCalledWith(
+      'suno/setConfig',
+      expect.objectContaining({ title: 'Open Window', lyric: '[Verse]\nMorning light' })
+    );
+  });
 
   it('chooses Veo image-to-video when curated images are present', async () => {
     const request = { prompt: 'Animate this', images: ['https://cdn.acedata.cloud/reference.png'] };

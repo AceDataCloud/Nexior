@@ -112,7 +112,7 @@ const videoAllowed = new Set([
   'translation',
   'cfg_scale'
 ]);
-const musicAllowed = new Set(['prompt', 'lyrics', 'style', 'title', 'instrumental', 'custom', 'model']);
+const musicAllowed = new Set(['prompt', 'lyric', 'style', 'title', 'instrumental', 'custom', 'model']);
 
 const adapters: Partial<Record<CapabilityKey, Adapter>> = {
   nanobanana: {
@@ -241,7 +241,7 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
       compact({
         action: 'generate',
         prompt: text(c.prompt, 'prompt'),
-        lyric: text(c.lyrics, 'lyrics'),
+        lyric: text(c.lyric, 'lyric'),
         style: text(c.style, 'style', 1000),
         title: text(c.title, 'title', 200),
         instrumental: boolean(c.instrumental, 'instrumental'),
@@ -257,7 +257,7 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
       compact({
         action: 'generate',
         prompt: text(c.prompt, 'prompt'),
-        lyric: text(c.lyrics, 'lyrics'),
+        lyric: text(c.lyric, 'lyric'),
         style: text(c.style, 'style', 1000),
         title: text(c.title, 'title', 200),
         instrumental: boolean(c.instrumental, 'instrumental'),

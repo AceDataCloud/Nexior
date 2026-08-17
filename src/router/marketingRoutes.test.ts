@@ -5,11 +5,16 @@ import {
   ROUTE_BUSINESS,
   ROUTE_GROKVIDEO_INDEX,
   ROUTE_INDEX,
+  ROUTE_INSPIRATION_ALL,
+  ROUTE_INSPIRATION_IMAGES,
+  ROUTE_INSPIRATION_MUSIC,
+  ROUTE_INSPIRATION_VIDEOS,
   ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_FISH_TTS_INDEX
 } from './constants';
 import grokvideo from './grokvideo';
 import home, { homeCompatibilityRoute } from './home';
+import inspiration from './inspiration';
 import openaiimage from './openaiimage';
 import fish from './fish';
 import { HOME_BANNERS, HOME_CATEGORIES } from '@/pages/home/data';
@@ -46,6 +51,19 @@ describe('public Studio routes', () => {
     expect(router.resolve({ name: ROUTE_OPENAIIMAGE_INDEX }).path).toBe('/openai-image');
     expect(router.resolve({ name: ROUTE_GROKVIDEO_INDEX }).path).toBe('/grok-video');
     expect(router.resolve({ name: ROUTE_FISH_TTS_INDEX }).path).toBe('/fish/tts');
+  });
+
+  it('serves route-backed Inspiration categories in the Main shell without app bootstrap', () => {
+    expect(inspiration.path).toBe('/inspiration');
+    expect(String(inspiration.component)).toContain('layouts/Main.vue');
+    expect(inspiration.children.map((route) => route.name)).toEqual([
+      ROUTE_INSPIRATION_ALL,
+      ROUTE_INSPIRATION_IMAGES,
+      ROUTE_INSPIRATION_VIDEOS,
+      ROUTE_INSPIRATION_MUSIC
+    ]);
+    expect(inspiration.children.map((route) => route.path)).toEqual(['', 'images', 'videos', 'music']);
+    expect(inspiration.children.every((route) => route.meta.auth === false && !('appName' in route.meta))).toBe(true);
   });
 
   it('serves the white-label business page at /business', () => {

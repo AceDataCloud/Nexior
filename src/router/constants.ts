@@ -1,4 +1,8 @@
 export const ROUTE_INDEX = 'index';
+export const ROUTE_INSPIRATION_ALL = 'inspiration-all';
+export const ROUTE_INSPIRATION_IMAGES = 'inspiration-images';
+export const ROUTE_INSPIRATION_VIDEOS = 'inspiration-videos';
+export const ROUTE_INSPIRATION_MUSIC = 'inspiration-music';
 export const ROUTE_BUSINESS = 'business';
 export const ROUTE_DOWNLOAD = 'download';
 
