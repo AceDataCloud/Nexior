@@ -1039,5 +1039,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Failed to load app customizations",
     "description": "Error shown when capability override management rows cannot be loaded"
+  },
+  "analytics": {
+    "title": "Website Analytics",
+    "securityNotice": "Only approved analytics providers are supported. Raw JavaScript and HTML cannot be inserted.",
+    "enabled": "Enabled",
+    "required": "Enter the provider ID before saving.",
+    "invalidId": "Enter a valid provider ID.",
+    "saveFailed": "Failed to save website analytics settings.",
+    "ga4": {
+      "description": "Measure visits and conversions with a GA4 Measurement ID.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Baidu website analytics",
+      "description": "Measure website traffic with Baidu analytics.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Understand sessions and behavior with Microsoft Clarity.",
+      "projectId": "Project ID"
+    },
+    "umami": {
+      "description": "Use privacy-focused website analytics through Umami.",
+      "websiteId": "Website ID",
+      "serverUrl": "Server URL",
+      "serverUrlHelp": "Umami Cloud is available by default. Self-hosted origins must first be approved by the platform administrator."
+    }
   }
 }

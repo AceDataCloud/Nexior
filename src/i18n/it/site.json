@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Caricamento personalizzazione app fallito",
     "description": "Errore quando non è possibile leggere i record di gestione delle sovrascritture delle app di capacità"
+  },
+  "analytics": {
+    "title": "Analisi del Sito Web",
+    "securityNotice": "Sono supportati solo i fornitori di analisi approvati. JavaScript e HTML grezzi non possono essere inseriti.",
+    "enabled": "Abilitato",
+    "required": "Inserisci l'ID del fornitore prima di salvare.",
+    "invalidId": "Inserisci un ID del fornitore valido.",
+    "saveFailed": "Salvataggio delle impostazioni di analisi del sito web non riuscito.",
+    "ga4": {
+      "description": "Misura le visite e le conversioni con un ID di Misurazione GA4.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Analisi del sito web Baidu",
+      "description": "Misura il traffico del sito web con le analisi di Baidu.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Comprendi le sessioni e il comportamento con Microsoft Clarity.",
+      "projectId": "Project ID"
+    },
+    "umami": {
+      "description": "Utilizza analisi del sito web incentrate sulla privacy tramite Umami.",
+      "websiteId": "Website ID",
+      "serverUrl": "URL del server",
+      "serverUrlHelp": "Umami Cloud è disponibile per impostazione predefinita. Le origini auto-ospitate devono prima essere approvate dall'amministratore della piattaforma."
+    }
   }
 }

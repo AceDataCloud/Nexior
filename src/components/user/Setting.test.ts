@@ -15,6 +15,7 @@ import Setting from './Setting.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
+import AnalyticsSetting from '@/components/setting/Analytics.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
 import AuthSetting from '@/components/setting/Auth.vue';
@@ -33,6 +34,7 @@ const ALL_OPERATOR_TABS = [
   'site',
   'siteServices',
   'seo',
+  'analytics',
   'distribution',
   'function',
   'auth',
@@ -44,6 +46,7 @@ const OPERATOR_CONTENT = {
   site: SiteSetting,
   siteServices: SiteServicesSetting,
   seo: SeoSetting,
+  analytics: AnalyticsSetting,
   distribution: DistributionSetting,
   function: FunctionSetting,
   auth: AuthSetting,
@@ -85,7 +88,16 @@ describe('user/Setting surface gating', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     hostState.official = false;
     const keys = tabKeys(mountSetting());
-    for (const tab of ['site', 'siteServices', 'seo', 'distribution', 'function', 'auth', 'customDomain']) {
+    for (const tab of [
+      'site',
+      'siteServices',
+      'seo',
+      'analytics',
+      'distribution',
+      'function',
+      'auth',
+      'customDomain'
+    ]) {
       expect(keys).toContain(tab);
     }
     expect(keys).not.toContain('subsites'); // Subsites is main-official-host only
@@ -96,7 +108,7 @@ describe('user/Setting surface gating', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     hostState.official = true;
     const keys = tabKeys(mountSetting());
-    for (const tab of ['site', 'siteServices', 'seo', 'distribution', 'function', 'auth', 'subsites']) {
+    for (const tab of ['site', 'siteServices', 'seo', 'analytics', 'distribution', 'function', 'auth', 'subsites']) {
       expect(keys).toContain(tab);
     }
     expect(keys).not.toContain('customDomain'); // main host never binds extra domains

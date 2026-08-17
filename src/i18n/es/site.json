@@ -1090,5 +1090,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Error al cargar la personalización de la aplicación",
     "description": "Error al intentar leer los registros de gestión de sobrecarga de la aplicación de capacidades"
+  },
+  "analytics": {
+    "title": "Análisis de Sitios Web",
+    "securityNotice": "Solo se admiten proveedores de análisis aprobados. No se pueden insertar JavaScript y HTML en bruto.",
+    "enabled": "Habilitado",
+    "required": "Ingrese el ID del proveedor antes de guardar.",
+    "invalidId": "Ingrese un ID de proveedor válido.",
+    "saveFailed": "Error al guardar la configuración de análisis del sitio web.",
+    "ga4": {
+      "description": "Mida visitas y conversiones con un ID de Medición de GA4.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Análisis de sitios web de Baidu",
+      "description": "Mida el tráfico del sitio web con el análisis de Baidu.",
+      "siteId": "Site ID"
+    },
+    "clarity": {
+      "description": "Comprenda las sesiones y el comportamiento con Microsoft Clarity.",
+      "projectId": "Project ID"
+    },
+    "umami": {
+      "description": "Utilice análisis de sitios web enfocados en la privacidad a través de Umami.",
+      "websiteId": "Website ID",
+      "serverUrl": "URL del servidor",
+      "serverUrlHelp": "Umami Cloud está disponible por defecto. Los orígenes autoalojados deben ser aprobados primero por el administrador de la plataforma."
+    }
   }
 }

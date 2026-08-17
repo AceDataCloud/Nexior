@@ -1089,5 +1089,32 @@
   "capabilityOverride.fetchFailed": {
     "message": "Sovelluksen mukautusten lataaminen epäonnistui",
     "description": "Virhe, joka näytetään, kun kyvykkyyden korvauksen hallintarivejä ei voida ladata"
+  },
+  "analytics": {
+    "title": "Verkkosivuston analytiikka",
+    "securityNotice": "Vain hyväksytyt analytiikkapalvelut ovat tuettuja. Raakajavascriptia ja HTML:ää ei voi lisätä.",
+    "enabled": "Oma käytössä",
+    "required": "Syötä palveluntarjoajan ID ennen tallentamista.",
+    "invalidId": "Syötä voimassa oleva palveluntarjoajan ID.",
+    "saveFailed": "Verkkosivuston analytiikka-asetusten tallentaminen epäonnistui.",
+    "ga4": {
+      "description": "Mittaa vierailuja ja konversioita GA4 Measurement ID:llä.",
+      "measurementId": "Measurement ID"
+    },
+    "baidu": {
+      "title": "Baidu verkkosivuston analytiikka",
+      "description": "Mittaa verkkosivuston liikennettä Baidu-analytiikan avulla.",
+      "siteId": "Verkkosivuston ID"
+    },
+    "clarity": {
+      "description": "Ymmärrä istunnot ja käyttäytyminen Microsoft Clarityn avulla.",
+      "projectId": "Projektin ID"
+    },
+    "umami": {
+      "description": "Käytä yksityisyyttä kunnioittavaa verkkosivuston analytiikkaa Umamin kautta.",
+      "websiteId": "Verkkosivuston ID",
+      "serverUrl": "Palvelimen URL",
+      "serverUrlHelp": "Umami Cloud on oletusarvoisesti käytettävissä. Itse isännöidyt lähteet on ensin hyväksyttävä alustan ylläpitäjän toimesta."
+    }
   }
 }

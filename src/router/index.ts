@@ -87,6 +87,7 @@ import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
 import { handleChunkLoadError } from '@/utils/chunkLoadError';
 import { loginRedirect } from '@/utils/login';
 import { isNative, isDesktop } from '@/utils/surface';
+import { trackSitePageView } from '@/utils/siteAnalytics';
 
 // Sections that require a logged-in user — guests hitting these are sent to the
 // login flow (web: redirect preserving the target; native/desktop: in-app
@@ -507,6 +508,7 @@ export function setupRouterGuards(router: Router) {
     if (import.meta.env.SSR) {
       return;
     }
+    trackSitePageView(to.fullPath);
     // Determine the route prefix (e.g., /chatgpt/conversations/123 → chatgpt)
     const prefix = to.path.split('/').filter(Boolean)[0] || '';
     const seoData = ROUTE_SEO[prefix];

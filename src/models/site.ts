@@ -171,6 +171,13 @@ export interface ISiteBranding {
   contacts?: ISiteContact[];
 }
 
+export interface ISiteAnalytics {
+  ga4?: { enabled: boolean; measurement_id: string };
+  baidu?: { enabled: boolean; site_id: string };
+  clarity?: { enabled: boolean; project_id: string };
+  umami?: { enabled: boolean; website_id: string; server_url: string };
+}
+
 export interface ISite {
   id?: string;
   origin?: string;
@@ -198,6 +205,9 @@ export interface ISite {
   metadata?: ISiteMetadata;
   theme?: ISiteTheme | null;
   branding?: ISiteBranding;
+  analytics?: ISiteAnalytics;
+  // Verified Page-domain bindings where browser integrations may execute.
+  active_page_hosts?: string[];
   tags?: string[];
   // Server-derived metadata for the per-field auto-translate toggle
   // (PlatformBackend PR #511/#513). When a field is in

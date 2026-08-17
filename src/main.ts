@@ -23,6 +23,7 @@ import { resolveDeferredInviterId } from '@/utils/attribution';
 import { getDomain } from '@/utils';
 import { resolveBootLocale } from '@/utils/siteLocales';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
+import { initializeSiteAnalytics } from '@/utils/siteAnalytics';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
 import {
@@ -124,6 +125,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
     if (blocked) return;
   }
   void runLiveUpdate();
+  initializeSiteAnalytics(store.state.site || undefined);
 
   void initTelemetry({
     uin: store.getters.user?.id,
