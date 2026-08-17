@@ -117,6 +117,23 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy
+      - name: Apply manifests
         if: steps.changes.outputs.deploy == 'true'
         run: sh ./deploy/run.sh
+
+      - name: Verify rollouts and images
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          kubectl -n acedatacloud rollout status deployment/hub-frontend --timeout=10m
+          kubectl -n acedatacloud rollout status deployment/studio-frontend --timeout=10m
+          expected="ghcr.io/acedatacloud/hub-frontend:$BUILD_NUMBER"
+          test "$(kubectl -n acedatacloud get deployment hub-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
+          test "$(kubectl -n acedatacloud get deployment studio-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
+
+      - name: Record successful revision
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          for deployment in hub-frontend studio-frontend; do
+            kubectl -n acedatacloud annotate deployment "$deployment" \
+              "acedata.cloud/last-successful-revision=$GITHUB_SHA" --overwrite
+          done
