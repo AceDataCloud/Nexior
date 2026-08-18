@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
-const DEFAULT_VERSION = '8.1';
+const DEFAULT_VERSION = '8.2';
 
 export default defineComponent({
   name: 'VersionSelector',
@@ -29,6 +29,10 @@ export default defineComponent({
   data() {
     return {
       options: [
+        {
+          value: '8.2',
+          label: '8.2'
+        },
         {
           value: '8.1',
           label: '8.1'

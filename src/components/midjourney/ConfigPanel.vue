@@ -130,7 +130,7 @@ export default defineComponent({
       return this.$store.state.midjourney.config;
     },
     isV8(): boolean {
-      return this.config?.version === '8' || this.config?.version === '8.1';
+      return ['8', '8.1', '8.2'].includes(this.config?.version || '');
     },
     isNiji(): boolean {
       return !!this.config?.model?.includes('niji');
