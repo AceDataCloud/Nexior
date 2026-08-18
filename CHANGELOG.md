@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 17 Aug 2026 20:15:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 18 Aug 2026 20:15:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.364.0
+
+Tue, 18 Aug 2026 20:15:38 GMT
+
+### Minor changes
+
+- Add Midjourney 8.2 generation controls (dev@acedata.cloud)
+- Add DeepSeek V4 Pro to the chat model picker (dev@acedata.cloud)
+
+### Patches
+
+- Keep deployment scripts focused on applying manifests and expose rollout verification in CI (dev@acedata.cloud)
 
 ## 3.363.0
 
