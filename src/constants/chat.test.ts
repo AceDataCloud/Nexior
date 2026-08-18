@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  CHAT_MODEL_DEEPSEEK_V4_FLASH,
+  CHAT_MODEL_DEEPSEEK_V4_PRO,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GPT_5_6_SOL,
   CHAT_MODEL_GROUP_CHATGPT,
+  CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K3,
@@ -35,6 +38,15 @@ describe('chat models', () => {
     expect(CHAT_MODEL_GROUP_KIMI.models).toContain(CHAT_MODEL_KIMI_K2_6);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K3);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K2_6);
+  });
+
+  it('lists and registers both DeepSeek V4 tiers with Pro first', () => {
+    expect(CHAT_MODEL_GROUP_DEEPSEEK.models.slice(0, 2)).toEqual([
+      CHAT_MODEL_DEEPSEEK_V4_PRO,
+      CHAT_MODEL_DEEPSEEK_V4_FLASH
+    ]);
+    expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_PRO);
+    expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_FLASH);
   });
 
   it('advertises K3 multimodal and reasoning capabilities', () => {
