@@ -146,5 +146,141 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB oznacza gigabajt, jednostka przechowywania informacji cyfrowych."
+  },
+  "title.pricing": {
+    "message": "Ceny usług",
+    "description": "Tytuł okna dialogowego z cenami usług."
+  },
+  "title.pricingFor": {
+    "message": "Ceny dla {service}",
+    "description": "Tytuł okna dialogowego z cenami dla określonej usługi."
+  },
+  "field.conditions": {
+    "message": "Warunki zastosowania",
+    "description": "Nagłówek kolumny z warunkami dla wybranych zasad cenowych."
+  },
+  "field.billingMethod": {
+    "message": "Metoda rozliczenia",
+    "description": "Nagłówek kolumny z metodą obliczania zasad cenowych."
+  },
+  "field.remark": {
+    "message": "Uwagi",
+    "description": "Nagłówek kolumny z dodatkowymi informacjami o cenach."
+  },
+  "message.pricingDescription": {
+    "message": "Poniżej znajdują się zasady cenowe w punktach dla usług. Przewidywana liczba punktów dla tego żądania nadal jest wyświetlana obok przycisku generowania.",
+    "description": "Opis znajdujący się nad tabelą cen usług."
+  },
+  "message.noPricing": {
+    "message": "Brak publicznych zasad cenowych dla tej usługi.",
+    "description": "Stan pusty, gdy usługa nie ma widocznych zasad cenowych."
+  },
+  "message.allRequests": {
+    "message": "Wszystkie żądania",
+    "description": "Etykieta zasad cenowych bez warunków zastosowania."
+  },
+  "message.otherConfigurations": {
+    "message": "Inne konfiguracje",
+    "description": "Tekst zabezpieczający, gdy nie można ująć warunków cenowych."
+  },
+  "message.calculated": {
+    "message": "Obliczone na podstawie parametrów żądania",
+    "description": "Tekst zabezpieczający dla skomplikowanych formuł cenowych."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} punktów",
+    "description": "Stała cena wyrażona w punktach."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} punktów / {unit}",
+    "description": "Cena jednostkowa wyrażona w punktach."
+  },
+  "billing.free": {
+    "message": "Darmowe",
+    "description": "Etykieta metody rozliczenia dla zasad darmowych."
+  },
+  "billing.fixed": {
+    "message": "Cena stała",
+    "description": "Etykieta metody rozliczenia dla zasad cen stałych."
+  },
+  "billing.linear": {
+    "message": "Na podstawie zużycia",
+    "description": "Etykieta metody rozliczenia dla zasad jednostkowych."
+  },
+  "billing.calculated": {
+    "message": "Dynamicznie obliczane",
+    "description": "Etykieta metody rozliczenia dla skomplikowanych zasad."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Sformatowane warunki cenowe dla równości."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Sformatowane warunki cenowe dla wielu wartości do wyboru."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Sformatowane warunki cenowe z górnym limitem."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Sformatowane warunki cenowe bez górnego limitu."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Sformatowane warunki cenowe z dolnym limitem."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Sformatowane warunki cenowe bez dolnego limitu."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Sformatowane opcjonalne wartości dla tego samego pola cenowego."
+  },
+  "condition.model": {
+    "message": "Warunki modelu",
+    "description": "Pole dotyczące warunków cenowych dla modelu."
+  },
+  "condition.action": {
+    "message": "Akcja",
+    "description": "Pole warunków cenowych dla akcji."
+  },
+  "condition.scenario": {
+    "message": "Scenariusz",
+    "description": "Pole warunków cenowych dla scenariusza."
+  },
+  "condition.resolution": {
+    "message": "Rozdzielczość",
+    "description": "Pole warunków cenowych dla rozdzielczości."
+  },
+  "condition.duration": {
+    "message": "Czas trwania",
+    "description": "Pole warunków cenowych dla czasu trwania."
+  },
+  "condition.mode": {
+    "message": "Tryb",
+    "description": "Pole warunków cenowych dla trybu."
+  },
+  "condition.quality": {
+    "message": "Jakość",
+    "description": "Pole warunków cenowych dla jakości."
+  },
+  "condition.number": {
+    "message": "Liczba",
+    "description": "Pole warunków cenowych dla liczby żądań."
+  },
+  "condition.count": {
+    "message": "Liczba",
+    "description": "Pole warunków cenowych dla liczby elementów."
+  },
+  "unit.Second": {
+    "message": "sekunda",
+    "description": "Jednostka ceny za sekundę."
+  },
+  "unit.Token": {
+    "message": "Jednostka dostępu",
+    "description": "Cena za jednostkę dostępu."
   }
 }

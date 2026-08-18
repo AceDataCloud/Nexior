@@ -146,5 +146,141 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB 意味著千兆位元組，數字資訊儲存的單位。"
+  },
+  "title.pricing": {
+    "message": "服務價格",
+    "description": "服務價格彈窗的標題。"
+  },
+  "title.pricingFor": {
+    "message": "{service} 價格",
+    "description": "指定服務價格彈窗的標題。"
+  },
+  "field.conditions": {
+    "message": "適用條件",
+    "description": "選擇價格規則的請求條件列標題。"
+  },
+  "field.billingMethod": {
+    "message": "計費方式",
+    "description": "價格規則計算方式的列標題。"
+  },
+  "field.remark": {
+    "message": "備註",
+    "description": "價格補充說明的列標題。"
+  },
+  "message.pricingDescription": {
+    "message": "以下為服務的積分價格規則。本次請求的預計積分仍顯示在生成按鈕旁。",
+    "description": "服務價格表上方的說明。"
+  },
+  "message.noPricing": {
+    "message": "該服務暫無公開價格規則。",
+    "description": "服務沒有可見價格規則時的空狀態。"
+  },
+  "message.allRequests": {
+    "message": "所有請求",
+    "description": "沒有適用條件的價格規則標籤。"
+  },
+  "message.otherConfigurations": {
+    "message": "其他配置",
+    "description": "無法概括價格條件時的安全兜底文案。"
+  },
+  "message.calculated": {
+    "message": "根據請求參數計算",
+    "description": "複雜價格公式的安全兜底文案。"
+  },
+  "message.creditsAmount": {
+    "message": "{amount} 積分",
+    "description": "以積分表示的固定價格。"
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} 積分 / {unit}",
+    "description": "以每單位積分表示的用量價格。"
+  },
+  "billing.free": {
+    "message": "免費",
+    "description": "免費規則的計費方式標籤。"
+  },
+  "billing.fixed": {
+    "message": "固定價格",
+    "description": "固定價格規則的計費方式標籤。"
+  },
+  "billing.linear": {
+    "message": "按用量",
+    "description": "按單位規則的計費方式標籤。"
+  },
+  "billing.calculated": {
+    "message": "動態計算",
+    "description": "複雜規則的計費方式標籤。"
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "格式化等值價格條件。"
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "格式化多個可選值的價格條件。"
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "格式化包含上限的價格條件。"
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "格式化不包含上限的價格條件。"
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "格式化包含下限的價格條件。"
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "格式化不包含下限的價格條件。"
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "格式化同一價格字段的可選值。"
+  },
+  "condition.model": {
+    "message": "模型",
+    "description": "模型價格條件字段。"
+  },
+  "condition.action": {
+    "message": "操作",
+    "description": "操作價格條件字段。"
+  },
+  "condition.scenario": {
+    "message": "場景",
+    "description": "場景價格條件字段。"
+  },
+  "condition.resolution": {
+    "message": "分辨率",
+    "description": "分辨率價格條件字段。"
+  },
+  "condition.duration": {
+    "message": "時長",
+    "description": "時長價格條件字段。"
+  },
+  "condition.mode": {
+    "message": "模式",
+    "description": "模式價格條件字段。"
+  },
+  "condition.quality": {
+    "message": "質量",
+    "description": "質量價格條件字段。"
+  },
+  "condition.number": {
+    "message": "數量",
+    "description": "請求數量價格條件字段。"
+  },
+  "condition.count": {
+    "message": "數量",
+    "description": "項目數量價格條件字段。"
+  },
+  "unit.Second": {
+    "message": "秒",
+    "description": "每秒價格單位。"
+  },
+  "unit.Token": {
+    "message": "令牌",
+    "description": "每令牌價格單位。"
   }
 }

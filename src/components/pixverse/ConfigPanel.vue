@@ -13,7 +13,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="pixverse" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('pixverse.button.generate') }}
@@ -35,7 +35,7 @@ import DurationSelector from './config/DurationSelector.vue';
 import RatioSelector from './config/RatioSelector.vue';
 import StartImage from './config/StartImage.vue';
 import PromptInput from './config/PromptInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -55,7 +55,7 @@ export default defineComponent({
     StartImage,
     SeedSelector,
     RatioSelector,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['generate'],

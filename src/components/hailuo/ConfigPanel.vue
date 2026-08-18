@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="hailuo" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
         type="primary"
@@ -33,7 +33,7 @@ import { ElButton } from 'element-plus';
 import ModelSelector from './config/ModelSelector.vue';
 import StartImageUrlInput from './config/StartImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -47,7 +47,7 @@ export default defineComponent({
     PromptInput,
     StartImageUrlInput,
     ModelSelector,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['generate'],

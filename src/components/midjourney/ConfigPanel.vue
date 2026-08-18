@@ -41,7 +41,7 @@
     </div>
     <div class="flex flex-col px-5 pb-5">
       <scenario-payment-mode scenario="midjourney" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <div class="flex gap-1">
         <mode-selector v-if="type !== 'describe'" />
         <el-button v-if="config.action === 'extend'" type="primary" class="btn w-full" round @click="$emit('generate')">
@@ -79,7 +79,7 @@ import ModeSelector from './config/ModeSelector2.vue';
 import PromptInput from './config/PromptInput.vue';
 import ReferenceImage from './config/ReferenceImage.vue';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import { MIDJOURNEY_DEFAULT_TYPE } from '@/constants';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -115,7 +115,7 @@ export default defineComponent({
     LoopSelector,
     ResolutionSelector,
     ImageUrlInput2,
-    Consumption,
+    ServicePricingSummary,
     VideoFromInput,
     ElTabs,
     ElTabPane,

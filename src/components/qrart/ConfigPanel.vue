@@ -21,7 +21,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="qrart" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="$emit('generate')">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('qrart.button.generate') }}
@@ -51,7 +51,7 @@ import PresetSelector from './config/PresetSelector2.vue';
 import ContentInput from './config/ContentInput.vue';
 import PromptInput from './config/PromptInput.vue';
 import { ElButton } from 'element-plus';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -64,7 +64,7 @@ export default defineComponent({
   components: {
     MagicIcon,
     ElButton,
-    Consumption,
+    ServicePricingSummary,
     TypeSelector,
     PositionSelector,
     PixelStyleSelector,

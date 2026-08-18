@@ -40,7 +40,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2">
       <scenario-payment-mode scenario="suno" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <div class="flex gap-2 w-full">
         <el-button class="flex-1" @click="onClearAll">
           <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -75,7 +75,7 @@ import UnderpaintingInput from './config/UnderpaintingInput.vue';
 import SamplesInput from './config/SamplesInput.vue';
 import AdjustSpeedInput from './config/AdjustSpeedInput.vue';
 import PersonaInput from './config/PersonaInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -105,7 +105,7 @@ export default defineComponent({
     ElButton,
     ElTabs,
     ElTabPane,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['generate'],

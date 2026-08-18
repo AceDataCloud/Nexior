@@ -92,7 +92,7 @@
         {{ missing[0].message }}
       </p>
       <scenario-payment-mode scenario="digitalhuman" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('digitalhuman.button.generateVideo') }}
@@ -114,7 +114,7 @@ import {
   ElRadioButton,
   ElRadioGroup
 } from 'element-plus';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import MediaInput from './config/MediaInput.vue';
@@ -145,7 +145,7 @@ interface IData {
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
-    Consumption,
+    ServicePricingSummary,
     ElButton,
     ElCollapse,
     ElCollapseItem,

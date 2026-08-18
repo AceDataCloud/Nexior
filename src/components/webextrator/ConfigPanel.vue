@@ -10,7 +10,7 @@
       <advanced-options class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
+      <service-pricing-summary :value="consumption" :service="service" />
       <el-button type="primary" class="w-full" round :loading="running" :disabled="!canRun" @click="onRun">
         <lightning-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t(isExtract ? 'webextrator.button.extract' : 'webextrator.button.render') }}
@@ -28,7 +28,7 @@ import UrlInput from './config/UrlInput.vue';
 import ExpectedTypeSelector from './config/ExpectedTypeSelector.vue';
 import LlmToggle from './config/LlmToggle.vue';
 import AdvancedOptions from './config/AdvancedOptions.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import { Status } from '@/models';
 
@@ -42,7 +42,7 @@ export default defineComponent({
     ExpectedTypeSelector,
     LlmToggle,
     AdvancedOptions,
-    Consumption
+    ServicePricingSummary
   },
   emits: ['run'],
   computed: {

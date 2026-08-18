@@ -12,7 +12,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="luma" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
         type="primary"
@@ -44,7 +44,7 @@ import StartImageInput from './config/StartImageInput.vue';
 import UploadVideo from './config/UploadVideo.vue';
 import PromptInput from './config/PromptInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -63,7 +63,7 @@ export default defineComponent({
     ExtendFromInput,
     CustomSelector,
     UploadVideo,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['generate'],

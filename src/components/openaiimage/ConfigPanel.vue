@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="openaiimage" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('openaiimage.button.generate') }}
@@ -23,7 +23,7 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import PromptInput from './config/PromptInput.vue';
 import ImageUrlsInput from './config/ImageUrlsInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
@@ -40,7 +40,7 @@ export default defineComponent({
     MagicIcon,
     ElButton,
     PromptInput,
-    Consumption,
+    ServicePricingSummary,
     ImageUrlsInput,
     ModelSelector,
     ResolutionSelector,

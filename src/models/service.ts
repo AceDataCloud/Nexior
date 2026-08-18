@@ -1,3 +1,4 @@
+import type { ICostRule } from '@acedatacloud/core/pricing';
 import { IApi, IPackage } from './api';
 
 export enum IServiceType {
@@ -24,6 +25,13 @@ export interface IDataset {
   updated_at?: string;
 }
 
+export interface IServiceCostRule extends ICostRule {
+  unit?: string;
+  remark?: string | Record<string, string>;
+  official_price?: number | Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface IService {
   id: string;
   alias?: string;
@@ -35,7 +43,7 @@ export interface IService {
   applied_count?: number;
   applied?: boolean;
   type?: IServiceType;
-  cost?: any;
+  cost?: IServiceCostRule[];
   tags?: string[];
   metadata?: any;
   thumbnail?: string;

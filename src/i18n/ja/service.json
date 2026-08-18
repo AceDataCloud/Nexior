@@ -146,5 +146,141 @@
   "unit.GB": {
     "message": "GB",
     "description": "GBはギガバイトを意味し、デジタル情報の保存単位。"
+  },
+  "title.pricing": {
+    "message": "サービス価格",
+    "description": "サービス価格ポップアップのタイトル。"
+  },
+  "title.pricingFor": {
+    "message": "{service} 価格",
+    "description": "指定されたサービスの価格ポップアップのタイトル。"
+  },
+  "field.conditions": {
+    "message": "適用条件",
+    "description": "価格ルールを選択するための条件列のタイトル。"
+  },
+  "field.billingMethod": {
+    "message": "請求方法",
+    "description": "価格ルールの計算方法の列タイトル。"
+  },
+  "field.remark": {
+    "message": "備考",
+    "description": "価格に関する補足説明の列タイトル。"
+  },
+  "message.pricingDescription": {
+    "message": "以下はサービスのポイント価格ルールです。本リクエストの予想ポイントは生成ボタンの横に表示されます。",
+    "description": "サービス価格表の上部に表示される説明。"
+  },
+  "message.noPricing": {
+    "message": "このサービスには公開価格ルールがありません。",
+    "description": "サービスに可視の価格ルールがない場合の空の状態。"
+  },
+  "message.allRequests": {
+    "message": "すべてのリクエスト",
+    "description": "適用条件がない価格ルールのラベル。"
+  },
+  "message.otherConfigurations": {
+    "message": "その他の設定",
+    "description": "価格条件を要約できない場合の安全なフォールバック文。"
+  },
+  "message.calculated": {
+    "message": "リクエストパラメータに基づいて計算",
+    "description": "複雑な価格公式の安全なフォールバック文。"
+  },
+  "message.creditsAmount": {
+    "message": "{amount} ポイント",
+    "description": "ポイントで表された固定価格。"
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} ポイント / {unit}",
+    "description": "単位あたりのポイントで表された価格。"
+  },
+  "billing.free": {
+    "message": "無料",
+    "description": "無料ルールの請求方法ラベル。"
+  },
+  "billing.fixed": {
+    "message": "固定価格",
+    "description": "固定価格ルールの請求方法ラベル。"
+  },
+  "billing.linear": {
+    "message": "使用量に応じて",
+    "description": "単位ごとのルールの請求方法ラベル。"
+  },
+  "billing.calculated": {
+    "message": "動的計算",
+    "description": "複雑なルールの請求方法ラベル。"
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "等しい価格条件をフォーマット。"
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "複数の選択肢の価格条件をフォーマット。"
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "上限を含む価格条件をフォーマット。"
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "上限を含まない価格条件をフォーマット。"
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "下限を含む価格条件をフォーマット。"
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "下限を含まない価格条件をフォーマット。"
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "同じ価格フィールドの選択肢をフォーマット。"
+  },
+  "condition.model": {
+    "message": "モデル",
+    "description": "モデルの価格条件フィールド。"
+  },
+  "condition.action": {
+    "message": "アクション",
+    "description": "アクションの価格条件フィールド。"
+  },
+  "condition.scenario": {
+    "message": "シナリオ",
+    "description": "シナリオの価格条件フィールド。"
+  },
+  "condition.resolution": {
+    "message": "解像度",
+    "description": "解像度の価格条件フィールド。"
+  },
+  "condition.duration": {
+    "message": "期間",
+    "description": "期間の価格条件フィールド。"
+  },
+  "condition.mode": {
+    "message": "モード",
+    "description": "モードの価格条件フィールド。"
+  },
+  "condition.quality": {
+    "message": "品質",
+    "description": "品質の価格条件フィールド。"
+  },
+  "condition.number": {
+    "message": "数量",
+    "description": "リクエスト数量の価格条件フィールド。"
+  },
+  "condition.count": {
+    "message": "カウント",
+    "description": "アイテム数量の価格条件フィールド。"
+  },
+  "unit.Second": {
+    "message": "秒",
+    "description": "毎秒の価格単位。"
+  },
+  "unit.Token": {
+    "message": "トークン",
+    "description": "毎トークンの価格単位。"
   }
 }

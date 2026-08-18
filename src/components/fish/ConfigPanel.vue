@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
+      <service-pricing-summary :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('fish.button.generate') }}
@@ -26,7 +26,7 @@ import { ElButton, ElSlider } from 'element-plus';
 import TextInput from './config/TextInput.vue';
 import ModelSelector from './config/ModelSelector.vue';
 import VoicePicker from './config/VoicePicker.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import { FISH_DEFAULT_PROSODY_SPEED, FISH_DEFAULT_TTS_MODEL } from '@/constants';
 
@@ -39,7 +39,7 @@ export default defineComponent({
     TextInput,
     ModelSelector,
     VoicePicker,
-    Consumption
+    ServicePricingSummary
   },
   emits: ['generate'],
   computed: {

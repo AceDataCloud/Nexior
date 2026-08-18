@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="serp" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :loading="searching" @click="onSearch">
         <search-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('serp.button.search') }}
@@ -25,7 +25,7 @@ import QueryInput from './config/QueryInput.vue';
 import TypeSelector from './config/TypeSelector.vue';
 import CountryInput from './config/CountryInput.vue';
 import LanguageInput from './config/LanguageInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import { Status } from '@/models';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -41,7 +41,7 @@ export default defineComponent({
     TypeSelector,
     CountryInput,
     LanguageInput,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['search'],

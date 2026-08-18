@@ -73,7 +73,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="minimax" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('minimax.button.generate') }}
@@ -89,7 +89,7 @@ import { ElButton, ElInput, ElMessage, ElOption, ElSelect } from 'element-plus';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { IMinimaxConfig, IMinimaxContentItem, IMinimaxRatio } from '@/models';
 import { getConsumption } from '@/utils';
 import { validateMinimaxConfig } from '@/utils/minimax';
@@ -101,7 +101,7 @@ export default defineComponent({
   name: 'MinimaxConfigPanel',
   components: {
     MagicIcon,
-    Consumption,
+    ServicePricingSummary,
     ElButton,
     ElInput,
     ElOption,

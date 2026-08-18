@@ -146,5 +146,141 @@
   "unit.GB": {
     "message": "ГБ",
     "description": "ГБ означає гігабайт, одиниця зберігання цифрової інформації."
+  },
+  "title.pricing": {
+    "message": "Ціна послуг",
+    "description": "Заголовок вікна з цінами на послуги."
+  },
+  "title.pricingFor": {
+    "message": "Ціна для {service}",
+    "description": "Заголовок вікна з цінами для конкретної послуги."
+  },
+  "field.conditions": {
+    "message": "Умови застосування",
+    "description": "Заголовок стовпця з умовами для вибору цінових правил."
+  },
+  "field.billingMethod": {
+    "message": "Метод оплати",
+    "description": "Заголовок стовпця з методом розрахунку цінових правил."
+  },
+  "field.remark": {
+    "message": "Примітка",
+    "description": "Заголовок стовпця з додатковими поясненнями до цін."
+  },
+  "message.pricingDescription": {
+    "message": "Нижче наведені правила ціноутворення для послуг. Очікувана кількість балів для цього запиту все ще відображається поруч з кнопкою генерації.",
+    "description": "Опис над таблицею цін на послуги."
+  },
+  "message.noPricing": {
+    "message": "Для цієї послуги наразі немає публічних цінових правил.",
+    "description": "Стан, коли для послуги немає видимих цінових правил."
+  },
+  "message.allRequests": {
+    "message": "Всі запити",
+    "description": "Мітка цінового правила без умов застосування."
+  },
+  "message.otherConfigurations": {
+    "message": "Інші налаштування",
+    "description": "Текст для безпеки, коли неможливо узагальнити цінові умови."
+  },
+  "message.calculated": {
+    "message": "Розраховано на основі параметрів запиту",
+    "description": "Текст для безпеки для складних формул цін."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} балів",
+    "description": "Фіксована ціна, виражена в балах."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} балів / {unit}",
+    "description": "Ціна за використання, виражена в балах за одиницю."
+  },
+  "billing.free": {
+    "message": "Безкоштовно",
+    "description": "Мітка методу оплати для безкоштовних правил."
+  },
+  "billing.fixed": {
+    "message": "Фіксована ціна",
+    "description": "Мітка методу оплати для фіксованих цінових правил."
+  },
+  "billing.linear": {
+    "message": "За використання",
+    "description": "Мітка методу оплати для цінових правил за одиницю."
+  },
+  "billing.calculated": {
+    "message": "Динамічний розрахунок",
+    "description": "Мітка методу оплати для складних правил."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Форматування умов ціни для рівності."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Форматування умов ціни для кількох можливих значень."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Форматування умов ціни з верхньою межею."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Форматування умов ціни без верхньої межі."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Форматування умов ціни з нижньою межею."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Форматування умов ціни без нижньої межі."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Форматування можливих значень для одного й того ж поля ціни."
+  },
+  "condition.model": {
+    "message": "Модель",
+    "description": "Поле умов ціни для моделі."
+  },
+  "condition.action": {
+    "message": "Дія",
+    "description": "Поле умов ціни для дії."
+  },
+  "condition.scenario": {
+    "message": "Сценарій",
+    "description": "Поле умов ціни для сценарію."
+  },
+  "condition.resolution": {
+    "message": "Роздільна здатність",
+    "description": "Поле умов ціни для роздільної здатності."
+  },
+  "condition.duration": {
+    "message": "Тривалість",
+    "description": "Поле умов ціни для тривалості."
+  },
+  "condition.mode": {
+    "message": "Режим",
+    "description": "Поле умов ціни для режиму."
+  },
+  "condition.quality": {
+    "message": "Якість",
+    "description": "Поле умов ціни для якості."
+  },
+  "condition.number": {
+    "message": "Кількість",
+    "description": "Поле умов ціни для кількості запитів."
+  },
+  "condition.count": {
+    "message": "Кількість",
+    "description": "Поле умов ціни для кількості елементів."
+  },
+  "unit.Second": {
+    "message": "секунда",
+    "description": "Одиниця ціни за секунду."
+  },
+  "unit.Token": {
+    "message": "токен",
+    "description": "Одиниця ціни за токен."
   }
 }
