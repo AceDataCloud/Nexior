@@ -12,8 +12,10 @@ const translations: Record<string, string> = {
   'service.message.otherConfigurations': 'Other configurations',
   'service.message.free': 'Free',
   'service.message.calculated': 'Calculated from request parameters',
-  'service.message.creditsAmount': '0.14 Credits',
-  'service.message.creditsPerUnit': '1.46 Credits / second',
+  'service.message.creditsAmount': '{amount} Credits',
+  'service.message.creditsPerUnit': '{amount} Credits / {unit}',
+  'service.unit.Count': 'count',
+  'service.unit.Second': 'second',
   'service.billing.fixed': 'Fixed',
   'service.billing.free': 'Free',
   'service.billing.linear': 'Usage based',
@@ -27,7 +29,8 @@ function mountDialog(service: any) {
     props: { visible: true, service },
     global: {
       mocks: {
-        $t: (key: string) => translations[key] || key,
+        $t: (key: string, params: Record<string, string> = {}) =>
+          (translations[key] || key).replace(/\{(\w+)\}/g, (_, name) => params[name] || `{${name}}`),
         $te: (key: string) => key in translations
       },
       stubs: {
@@ -58,6 +61,16 @@ describe('ServicePricingDialog', () => {
     expect(vm.priceLabel(vm.rows[0])).toBe('0.14 Credits');
     expect(JSON.stringify(vm.rows)).not.toContain('99');
     expect(JSON.stringify(vm.rows)).not.toContain('\"var\"');
+  });
+
+  it('shows an explicit unit for fixed per-unit rules', () => {
+    const wrapper = mountDialog({
+      id: 'service-1',
+      title: 'Example',
+      cost: [{ conditions: {}, consumption: 0.01, unit: 'Count' }]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.priceLabel(vm.rows[0])).toBe('0.01 Credits / count');
   });
 
   it('shows loading and empty states', () => {

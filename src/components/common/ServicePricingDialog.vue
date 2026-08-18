@@ -117,7 +117,7 @@ export default defineComponent({
       }
       const amount = formatCredits(row.amount);
       const unit = this.unitLabel(row);
-      if (row.billingKind === 'linear') {
+      if (row.billingKind === 'linear' || unit) {
         return this.$t('service.message.creditsPerUnit', { amount, unit });
       }
       return this.$t('service.message.creditsAmount', { amount });
