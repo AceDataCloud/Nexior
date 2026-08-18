@@ -27,11 +27,20 @@ export default defineComponent({
     isV8(): boolean {
       return this.version === '8';
     },
+    isV82(): boolean {
+      return this.version === '8.2';
+    },
     options() {
       if (this.isV8) {
         return [
           { label: this.$t('midjourney.button.standard'), value: '1' },
           { label: this.$t('midjourney.button.ultra'), value: '4' }
+        ];
+      }
+      if (this.isV82) {
+        return [
+          { label: this.$t('midjourney.button.standard'), value: '1' },
+          { label: this.$t('midjourney.button.ultra'), value: '2' }
         ];
       }
       return [
@@ -53,6 +62,11 @@ export default defineComponent({
     }
   },
   watch: {
+    version() {
+      if (this.isV82 && !['1', '2'].includes(this.value || '')) {
+        this.value = MIDJOURNEY_DEFAULT_QUALITY;
+      }
+    },
     isV8(newVal) {
       if (newVal && this.value !== '1' && this.value !== '4') {
         this.value = MIDJOURNEY_DEFAULT_QUALITY;

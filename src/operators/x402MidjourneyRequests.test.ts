@@ -16,6 +16,17 @@ vi.mock('./x402', async (importOriginal) => ({
 }));
 
 describe('Midjourney x402 requests', () => {
+  it('builds V8.2 prompts with quality and structured metadata', () => {
+    expect(buildMidjourneyImagineRequest({ prompt: 'cat', version: '8.2', quality: '2', mode: 'turbo' })).toMatchObject(
+      {
+        prompt: expect.stringContaining('cat --version 8.2 --quality 2'),
+        version: '8.2',
+        quality: '2',
+        mode: 'turbo'
+      }
+    );
+  });
+
   it('builds one authoritative imagine prompt with V8 pricing flags', () => {
     expect(
       buildMidjourneyImagineRequest({
