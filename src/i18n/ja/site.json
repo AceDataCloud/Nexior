@@ -1090,31 +1090,55 @@
     "message": "アプリのカスタマイズの読み込みに失敗しました",
     "description": "機能オーバーライド管理行の読み込みに失敗した場合のエラー"
   },
-  "analytics": {
-    "title": "ウェブサイト分析",
-    "securityNotice": "承認された分析プロバイダーのみがサポートされています。生のJavaScriptおよびHTMLは挿入できません。",
-    "enabled": "有効",
-    "required": "保存する前にプロバイダーIDを入力してください。",
-    "invalidId": "有効なプロバイダーIDを入力してください。",
-    "saveFailed": "ウェブサイト分析設定の保存に失敗しました。",
-    "ga4": {
-      "description": "GA4 Measurement IDを使用して訪問とコンバージョンを測定します。",
-      "measurementId": "Measurement ID"
-    },
-    "baidu": {
-      "title": "Baiduウェブサイト分析",
-      "description": "Baidu分析を使用してウェブサイトのトラフィックを測定します。",
-      "siteId": "Site ID"
-    },
-    "clarity": {
-      "description": "Microsoft Clarityを使用してセッションと行動を理解します。",
-      "projectId": "Project ID"
-    },
-    "umami": {
-      "description": "Umamiを通じてプライバシー重視のウェブサイト分析を使用します。",
-      "websiteId": "Website ID",
-      "serverUrl": "サーバーURL",
-      "serverUrlHelp": "Umami Cloudはデフォルトで利用可能です。自己ホストされたオリジンは、まずプラットフォーム管理者によって承認される必要があります。"
-    }
+  "analytics.title": {
+    "message": "ウェブサイト分析"
+  },
+  "analytics.securityNotice": {
+    "message": "承認された分析プロバイダーのみがサポートされています。生のJavaScriptおよびHTMLは挿入できません。"
+  },
+  "analytics.enabled": {
+    "message": "有効"
+  },
+  "analytics.required": {
+    "message": "保存する前にプロバイダーIDを入力してください。"
+  },
+  "analytics.invalidId": {
+    "message": "有効なプロバイダーIDを入力してください。"
+  },
+  "analytics.saveFailed": {
+    "message": "ウェブサイト分析設定の保存に失敗しました。"
+  },
+  "analytics.ga4.description": {
+    "message": "GA4 Measurement IDを使用して訪問とコンバージョンを測定します。"
+  },
+  "analytics.ga4.measurementId": {
+    "message": "Measurement ID"
+  },
+  "analytics.baidu.title": {
+    "message": "Baiduウェブサイト分析"
+  },
+  "analytics.baidu.description": {
+    "message": "Baidu分析を使用してウェブサイトのトラフィックを測定します。"
+  },
+  "analytics.baidu.siteId": {
+    "message": "サイト ID"
+  },
+  "analytics.clarity.description": {
+    "message": "Microsoft Clarityを使用してセッションと行動を理解します。"
+  },
+  "analytics.clarity.projectId": {
+    "message": "プロジェクト ID"
+  },
+  "analytics.umami.description": {
+    "message": "Umamiを通じてプライバシー重視のウェブサイト分析を使用します。"
+  },
+  "analytics.umami.websiteId": {
+    "message": "Website ID"
+  },
+  "analytics.umami.serverUrl": {
+    "message": "サーバーURL"
+  },
+  "analytics.umami.serverUrlHelp": {
+    "message": "Umami Cloudはデフォルトで利用可能です。自己ホストされたオリジンは、まずプラットフォーム管理者によって承認される必要があります。"
   }
 }

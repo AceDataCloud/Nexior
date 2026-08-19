@@ -6,7 +6,7 @@
     @close="onClose"
   >
     <div :class="['settings', mobile ? 'flex flex-col' : 'flex h-[450px]']">
-      <aside :class="mobile ? 'border-b w-full' : 'h-full border-r'">
+      <aside :class="mobile ? 'border-b w-full' : 'h-full min-h-0 overflow-y-auto border-r'">
         <el-menu
           :class="['border-r-0 settings-menu', mobile ? 'is-mobile flex flex-row overflow-x-auto' : '']"
           :mode="mobile ? 'horizontal' : 'vertical'"
