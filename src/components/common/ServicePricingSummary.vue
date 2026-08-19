@@ -9,7 +9,13 @@
         :rate-unit="rateUnit"
         :note="''"
       />
-      <span v-if="showConsumption && value !== null && value !== undefined && showPricing" aria-hidden="true">·</span>
+      <span
+        v-if="showConsumption && value !== null && value !== undefined && showPricing"
+        class="pricing-summary__separator"
+        aria-hidden="true"
+      >
+        ·
+      </span>
       <button v-if="showPricing" type="button" class="pricing-summary__button" @click="dialogVisible = true">
         {{ $t('service.button.pricing') }}
       </button>
@@ -78,7 +84,18 @@ export default defineComponent({
 }
 
 .pricing-summary__consumption {
+  display: inline-flex;
+  align-items: center;
   margin-block-end: 0;
+  line-height: 20px;
+}
+
+.pricing-summary__consumption :deep(> span) {
+  line-height: 20px;
+}
+
+.pricing-summary__separator {
+  line-height: 20px;
 }
 
 .pricing-summary__button {
@@ -88,7 +105,7 @@ export default defineComponent({
   background: transparent;
   color: var(--el-color-primary);
   font: inherit;
-  line-height: inherit;
+  line-height: 20px;
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
