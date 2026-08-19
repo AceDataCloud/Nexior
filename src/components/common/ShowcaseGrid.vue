@@ -1,5 +1,5 @@
 <template>
-  <section class="dashboard-section showcase-section" :class="{ compact }" :aria-label="ariaLabel">
+  <section class="dashboard-section showcase-section" :class="{ compact, masonry }" :aria-label="ariaLabel">
     <slot name="heading">
       <div v-if="title" class="section-heading">
         <div>
@@ -83,8 +83,9 @@ withDefaults(
     ariaLabel?: string;
     showCapability?: boolean;
     compact?: boolean;
+    masonry?: boolean;
   }>(),
-  { title: '', eyebrow: '', subtitle: '', ariaLabel: '', showCapability: true, compact: false }
+  { title: '', eyebrow: '', subtitle: '', ariaLabel: '', showCapability: true, compact: false, masonry: false }
 );
 defineEmits<{ 'icon-error': [item: ResolvedShowcase] }>();
 
@@ -202,10 +203,31 @@ defineExpose({ playingId, startPreview, stopPreview, togglePreview, reducedMotio
   &.compact {
     padding-top: 0;
     padding-bottom: 18px;
+  }
 
+  &.masonry {
     .showcase-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 170px;
+      display: block;
+      columns: 300px;
+      column-gap: 13px;
+    }
+
+    .showcase-card {
+      width: 100%;
+      margin-bottom: 13px;
+      break-inside: avoid;
+
+      &.landscape {
+        aspect-ratio: 16 / 9;
+      }
+
+      &.square {
+        aspect-ratio: 1;
+      }
+
+      &.portrait {
+        aspect-ratio: 3 / 4;
+      }
     }
   }
 }

@@ -13,7 +13,11 @@ vi.mock('vue-i18n', async (importOriginal) => ({
   useI18n: () => ({ locale: { value: 'en' } })
 }));
 vi.mock('./ShowcaseGrid.vue', () => ({
-  default: { name: 'ShowcaseGrid', props: ['items'], template: '<div class="showcase-grid-stub" />' }
+  default: {
+    name: 'ShowcaseGrid',
+    props: { items: Array, compact: Boolean, masonry: Boolean },
+    template: '<div class="showcase-grid-stub" :data-compact="compact" :data-masonry="masonry" />'
+  }
 }));
 
 const ElTabsStub = {
@@ -65,6 +69,10 @@ describe('ShowcaseResultTabs', () => {
     (wrapper.vm as any).activeTab = 'gallery';
     await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith('nano-banana'));
     await vi.waitFor(() => expect((wrapper.vm as any).resolvedItems).toHaveLength(1));
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props()).toMatchObject({
+      compact: true,
+      masonry: true
+    });
     expect(wrapper.find('.task-sentinel').exists()).toBe(true);
     (wrapper.vm as any).activeTab = 'tasks';
     (wrapper.vm as any).activeTab = 'gallery';
