@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 18 Aug 2026 20:15:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 19 Aug 2026 20:15:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.364.1
+
+Wed, 19 Aug 2026 20:15:25 GMT
+
+### Patches
+
+- Add the Studio home, inspiration gallery, and generate-only Gallery tabs for Nano Banana, GPT Image, and Seedream with create-similar handoffs. (dev@acedata.cloud)
+- Fix website analytics labels in settings and keep the desktop settings navigation inside its scroll area. (dev@acedata.cloud)
 
 ## 3.364.0
 
