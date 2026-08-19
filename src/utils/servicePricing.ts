@@ -158,3 +158,83 @@ export function normalizeServicePricing(rules: unknown): ServicePricingRow[] {
     return [{ ...common, billingKind: 'calculated' }];
   });
 }
+
+interface ModelRuleMatch {
+  values: string[];
+  defaultValue?: string;
+}
+
+function getVariableDefault(value: unknown): string | undefined {
+  if (!isRecord(value) || !Array.isArray(value.var)) return undefined;
+  const fallback = value.var[1];
+  return typeof fallback === 'string' ? fallback : undefined;
+}
+
+function collectModelRuleMatches(value: unknown): ModelRuleMatch[] {
+  if (!isRecord(value)) return [];
+  const entries = Object.entries(value);
+  if (entries.length !== 1) return [];
+  const [operator, operands] = entries[0];
+  if (!Array.isArray(operands)) return [];
+  if (operator === 'and' || operator === 'or') return operands.flatMap(collectModelRuleMatches);
+  if (operator !== '==' && operator !== '===' && operator !== 'in') return [];
+  const variableIndex = operands.findIndex((operand) => getVariable(operand) === 'model');
+  if (variableIndex < 0) return [];
+  const literal = operands[variableIndex === 0 ? 1 : 0];
+  const values = Array.isArray(literal)
+    ? literal.filter((item): item is string => typeof item === 'string')
+    : typeof literal === 'string'
+      ? [literal]
+      : [];
+  return values.length ? [{ values, defaultValue: getVariableDefault(operands[variableIndex]) }] : [];
+}
+
+export function filterServicePricingRules(rules: unknown, models?: string[], modelDefault?: string): unknown[] {
+  if (!Array.isArray(rules) || !models?.length) return Array.isArray(rules) ? rules : [];
+  const allowed = new Set(models);
+  return rules.filter((rule) => {
+    if (!isRecord(rule)) return false;
+    const matches = collectModelRuleMatches(rule.conditions);
+    return matches.some(
+      (match) =>
+        (!modelDefault || match.defaultValue === modelDefault) && match.values.some((value) => allowed.has(value))
+    );
+  });
+}
+
+function filterModelCondition(condition: PricingCondition, allowed: Set<string>): PricingCondition | undefined {
+  if (condition.operator === 'anyOf') {
+    const options = (condition.options || [])
+      .map((option) => filterModelCondition(option, allowed))
+      .filter(Boolean) as PricingCondition[];
+    return options.length ? { ...condition, options } : undefined;
+  }
+  if (condition.field !== 'model' && condition.field !== 'model_name') return condition;
+  const values = condition.value.split(',').map((value) => value.trim());
+  const matched = values.filter((value) => allowed.has(value));
+  return matched.length ? { ...condition, value: matched.join(', ') } : undefined;
+}
+
+export function filterServicePricingRows(rows: ServicePricingRow[], models?: string[]): ServicePricingRow[] {
+  if (!models?.length) return rows;
+  const allowed = new Set(models);
+  return rows.flatMap((row): ServicePricingRow[] => {
+    const hasModelCondition = row.conditions.some(
+      (condition) =>
+        condition.field === 'model' ||
+        condition.field === 'model_name' ||
+        condition.options?.some((option) => option.field === 'model' || option.field === 'model_name')
+    );
+    if (!hasModelCondition) return [];
+    const conditions = row.conditions
+      .map((condition) => filterModelCondition(condition, allowed))
+      .filter(Boolean) as PricingCondition[];
+    const retainsModelCondition = conditions.some(
+      (condition) =>
+        condition.field === 'model' ||
+        condition.field === 'model_name' ||
+        condition.options?.some((option) => option.field === 'model' || option.field === 'model_name')
+    );
+    return retainsModelCondition ? [{ ...row, conditions }] : [];
+  });
+}

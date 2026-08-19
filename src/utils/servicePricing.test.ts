@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { formatCredits, normalizeServicePricing } from './servicePricing';
+import {
+  filterServicePricingRows,
+  filterServicePricingRules,
+  formatCredits,
+  normalizeServicePricing
+} from './servicePricing';
 
 describe('normalizeServicePricing', () => {
   it('returns no rows for invalid input and filters hidden rules', () => {
@@ -136,6 +141,50 @@ describe('normalizeServicePricing', () => {
     const snapshot = structuredClone(rules);
     normalizeServicePricing(rules);
     expect(rules).toEqual(snapshot);
+  });
+});
+
+describe('filterServicePricingRules', () => {
+  it('drops whole mismatched rules and respects the API model default context', () => {
+    const rules = [
+      {
+        conditions: {
+          and: [
+            { '==': [{ var: ['model', 'dall-e-3'] }, 'dall-e-3'] },
+            { '==': [{ var: ['quality', 'standard'] }, 'standard'] }
+          ]
+        },
+        consumption: 0.2
+      },
+      { conditions: { '==': [{ var: ['model', 'dall-e-3'] }, 'gpt-image-2'] }, consumption: 0.11 },
+      { conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-1'] }, consumption: 0.36 },
+      { conditions: { '==': [{ var: ['model', 'dall-e-3'] }, 'gpt-image-1'] }, consumption: 0.2 }
+    ];
+
+    const filtered = filterServicePricingRules(rules, ['gpt-image-1', 'gpt-image-2'], 'dall-e-3');
+    expect(filtered).toEqual([rules[1], rules[3]]);
+  });
+});
+
+describe('filterServicePricingRows', () => {
+  it('keeps only workspace models, narrows model lists, and drops catch-all rules', () => {
+    const rows = normalizeServicePricing([
+      { conditions: {}, consumption: 0 },
+      { conditions: { in: [{ var: ['model', ''] }, ['gpt-image-2', 'dall-e-3']] }, consumption: 0.11 },
+      {
+        conditions: {
+          and: [{ '==': [{ var: ['model', ''] }, 'whisper-1'] }, { '==': [{ var: ['quality', ''] }, 'hd'] }]
+        },
+        consumption: 0.01
+      },
+      { conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-1'] }, consumption: 0.2 }
+    ]);
+
+    const filtered = filterServicePricingRows(rows, ['gpt-image-1', 'gpt-image-2']);
+    expect(filtered).toHaveLength(2);
+    expect(filtered.map((row) => row.conditions[0].value)).toEqual(['gpt-image-2', 'gpt-image-1']);
+    expect(JSON.stringify(filtered)).not.toContain('dall-e-3');
+    expect(JSON.stringify(filtered)).not.toContain('whisper-1');
   });
 });
 

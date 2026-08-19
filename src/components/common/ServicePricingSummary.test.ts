@@ -42,6 +42,14 @@ describe('ServicePricingSummary', () => {
     expect(wrapper.find('button').exists()).toBe(true);
   });
 
+  it('hides pricing when workspace model filtering removes every rule', () => {
+    const wrapper = mountSummary({
+      service: { ...service, cost: [{ conditions: { '==': [{ var: ['model', ''] }, 'chat-model'] }, consumption: 1 }] },
+      pricingModels: ['image-model']
+    });
+    expect(wrapper.find('button').exists()).toBe(false);
+  });
+
   it('hides pricing when no visible rules exist', () => {
     const wrapper = mountSummary({ service: { ...service, cost: [{ hidden: true, conditions: {}, consumption: 1 }] } });
     expect(wrapper.find('button').exists()).toBe(false);

@@ -8,7 +8,14 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="openaiimage" />
-      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary
+        :show-consumption="!walletMode"
+        :value="consumption"
+        :service="service"
+        :pricing-models="OPENAIIMAGE_MODELS"
+        pricing-model-default="dall-e-3"
+        :pricing-unit-aliases="{ n: 'image' }"
+      />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('openaiimage.button.generate') }}
@@ -31,6 +38,7 @@ import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
 import { openaiimageOperator } from '@/operators';
+import { OPENAIIMAGE_MODELS } from '@/constants';
 
 const QUOTE_DEBOUNCE_MS = 350;
 
@@ -52,6 +60,7 @@ export default defineComponent({
   emits: ['generate'],
   data() {
     return {
+      OPENAIIMAGE_MODELS,
       quoteTimer: 0,
       quoteRunId: 0
     };

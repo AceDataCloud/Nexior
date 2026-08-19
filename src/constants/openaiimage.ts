@@ -12,6 +12,13 @@ export const OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL = 'gpt-image-2:official';
 
 export const OPENAIIMAGE_DEFAULT_MODEL = OPENAIIMAGE_MODEL_GPT_IMAGE_2;
 
+export const OPENAIIMAGE_MODELS = [
+  OPENAIIMAGE_MODEL_GPT_IMAGE_1,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_15,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
+];
+
 // Reference images accepted by /openai/images/edits. 16 is the upstream limit
 // (and what our OpenAPI documents), not a UI-side preference.
 export const OPENAIIMAGE_MAX_REFERENCE_IMAGES = 16;

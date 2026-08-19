@@ -17,6 +17,7 @@ const translations: Record<string, string> = {
   'service.message.required': 'Required',
   'service.unit.Count': 'count',
   'service.unit.Second': 'second',
+  'service.unit.image': 'image',
   'service.billing.fixed': 'Fixed',
   'service.billing.free': 'Free',
   'service.billing.linear': 'Usage based',
@@ -45,8 +46,7 @@ function mountDialog(service: any) {
         ElSkeleton: { template: '<div class="loading" />' },
         ElEmpty: { props: ['description'], template: '<div class="empty">{{ description }}</div>' },
         ElTable: { template: '<div class="table"><slot /></div>' },
-        ElTableColumn: true,
-        ElTag: { template: '<span><slot /></span>' }
+        ElTableColumn: true
       }
     }
   });
@@ -181,6 +181,86 @@ describe('ServicePricingDialog', () => {
     expect(vm.compactTable).toBe(false);
     expect(vm.tableMinWidth).toBe(660);
     expect(vm.dialogWidth).toContain('708px');
+  });
+
+  it('filters shared-service rows and localizes workspace unit aliases', () => {
+    const wrapper = mount(ServicePricingDialog, {
+      props: {
+        visible: true,
+        service: {
+          id: 'openai',
+          title: 'OpenAI',
+          cost: [
+            { conditions: { '==': [{ var: ['model', ''] }, 'chat-model'] }, consumption: 0 },
+            {
+              conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-2'] },
+              consumption: { '*': [0.11, { var: ['n', 1] }] }
+            }
+          ]
+        },
+        pricingModels: ['gpt-image-2'],
+        pricingUnitAliases: { n: 'image' }
+      },
+      global: {
+        mocks: {
+          $t: (key: string, params: Record<string, string> = {}) =>
+            (translations[key] || key).replace(/\{(\w+)\}/g, (_, name) => params[name] || `{${name}}`)
+        },
+        stubs: { ElDialog: { template: '<div><slot /></div>' }, ElTable: true, ElTableColumn: true }
+      }
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.rows).toHaveLength(1);
+    expect(vm.rows[0].conditions[0].value).toBe('gpt-image-2');
+    expect(vm.priceLabel(vm.rows[0])).toBe('0.11 Credits / image');
+  });
+
+  it('shows only OpenAI Image workspace models with a localized image unit', () => {
+    const wrapper = mount(ServicePricingDialog, {
+      props: {
+        visible: true,
+        service: {
+          id: 'openai',
+          title: 'OpenAI',
+          cost: [
+            {
+              conditions: {
+                and: [
+                  { '==': [{ var: ['model', 'dall-e-3'] }, 'dall-e-3'] },
+                  { '==': [{ var: ['quality', 'standard'] }, 'standard'] }
+                ]
+              },
+              consumption: { '*': [0.2, { var: ['n', 1] }] }
+            },
+            {
+              conditions: { '==': [{ var: ['model', 'dall-e-3'] }, 'gpt-image-2'] },
+              consumption: { '*': [0.11, { var: ['n', 1] }] }
+            },
+            { conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-1'] }, consumption: 0.36 },
+            {
+              conditions: { '==': [{ var: ['model', 'dall-e-3'] }, 'gpt-image-1'] },
+              consumption: { '*': [0.2, { var: ['n', 1] }] }
+            }
+          ]
+        },
+        pricingModels: ['gpt-image-1', 'gpt-image-2'],
+        pricingModelDefault: 'dall-e-3',
+        pricingUnitAliases: { n: 'image' }
+      },
+      global: {
+        mocks: {
+          $t: (key: string, params: Record<string, string> = {}) =>
+            (translations[key] || key).replace(/\{(\w+)\}/g, (_, name) => params[name] || `{${name}}`)
+        },
+        stubs: { ElDialog: { template: '<div><slot /></div>' }, ElTable: true, ElTableColumn: true }
+      }
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.rows).toHaveLength(2);
+    expect(vm.rows.map((row: any) => row.conditions[0].value)).toEqual(['gpt-image-2', 'gpt-image-1']);
+    expect(vm.rows.map((row: any) => vm.priceLabel(row))).toEqual(['0.11 Credits / image', '0.20 Credits / image']);
+    expect(JSON.stringify(vm.rows)).not.toContain('dall-e-3');
+    expect(JSON.stringify(vm.rows)).not.toContain('quality');
   });
 
   it('shows an explicit unit for fixed per-unit rules', () => {

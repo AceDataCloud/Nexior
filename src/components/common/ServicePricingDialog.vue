@@ -82,8 +82,10 @@ const CONDITION_FIELD_ALIASES: Record<string, string> = {
   prompt_tokens: 'promptTokens',
   character_orientation: 'characterOrientation'
 };
-const TRANSLATED_UNITS = new Set(['Credit', 'credits', 'Count', 'Second', 'Token', 'MB', 'GB']);
+const TRANSLATED_UNITS = new Set(['Credit', 'credits', 'Count', 'Second', 'Token', 'MB', 'GB', 'image']);
 import {
+  filterServicePricingRows,
+  filterServicePricingRules,
   formatCredits,
   normalizeServicePricing,
   type PricingCondition,
@@ -95,12 +97,16 @@ export default defineComponent({
   components: { ElDialog, ElEmpty, ElSkeleton, ElTable, ElTableColumn },
   props: {
     visible: { type: Boolean, required: true },
-    service: { type: Object as PropType<IService | undefined>, default: undefined }
+    service: { type: Object as PropType<IService | undefined>, default: undefined },
+    pricingModels: { type: Array as PropType<string[]>, default: undefined },
+    pricingModelDefault: { type: String, default: undefined },
+    pricingUnitAliases: { type: Object as PropType<Record<string, string>>, default: () => ({}) }
   },
   emits: ['update:visible'],
   computed: {
     rows(): ServicePricingRow[] {
-      return normalizeServicePricing(this.service?.cost);
+      const rules = filterServicePricingRules(this.service?.cost, this.pricingModels, this.pricingModelDefault);
+      return filterServicePricingRows(normalizeServicePricing(rules), this.pricingModels);
     },
     conditionColumns(): { key: string; label: string }[] {
       const fields: string[] = [];
@@ -197,7 +203,8 @@ export default defineComponent({
       return this.$t(`service.billing.${row.billingKind}`);
     },
     unitLabel(row: ServicePricingRow): string {
-      const unit = row.unit || row.rateField;
+      const rawUnit = row.unit || row.rateField;
+      const unit = rawUnit ? this.pricingUnitAliases[rawUnit] || rawUnit : '';
       if (!unit) return '';
       return TRANSLATED_UNITS.has(unit) ? this.$t(`service.unit.${unit}`) : unit.replaceAll('_', ' ');
     },

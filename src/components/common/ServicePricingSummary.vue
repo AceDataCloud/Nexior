@@ -15,14 +15,21 @@
       </button>
     </div>
     <div v-if="showConsumption && note" class="pricing-summary__note">{{ note }}</div>
-    <service-pricing-dialog v-if="showPricing" v-model:visible="dialogVisible" :service="service" />
+    <service-pricing-dialog
+      v-if="showPricing"
+      v-model:visible="dialogVisible"
+      :service="service"
+      :pricing-models="pricingModels"
+      :pricing-model-default="pricingModelDefault"
+      :pricing-unit-aliases="pricingUnitAliases"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import type { IService } from '@/models';
-import { normalizeServicePricing } from '@/utils/servicePricing';
+import { filterServicePricingRows, filterServicePricingRules, normalizeServicePricing } from '@/utils/servicePricing';
 import { isIOS } from '@/utils/surface';
 import Consumption from './Consumption.vue';
 import ServicePricingDialog from './ServicePricingDialog.vue';
@@ -35,14 +42,19 @@ export default defineComponent({
     service: { type: Object as PropType<IService | undefined>, default: undefined },
     showConsumption: { type: Boolean, default: true },
     rateUnit: { type: String, default: '' },
-    note: { type: String, default: '' }
+    note: { type: String, default: '' },
+    pricingModels: { type: Array as PropType<string[]>, default: undefined },
+    pricingModelDefault: { type: String, default: undefined },
+    pricingUnitAliases: { type: Object as PropType<Record<string, string>>, default: () => ({}) }
   },
   data() {
     return { dialogVisible: false };
   },
   computed: {
     showPricing(): boolean {
-      return !isIOS() && normalizeServicePricing(this.service?.cost).length > 0;
+      const rules = filterServicePricingRules(this.service?.cost, this.pricingModels, this.pricingModelDefault);
+      const rows = filterServicePricingRows(normalizeServicePricing(rules), this.pricingModels);
+      return !isIOS() && rows.length > 0;
     }
   }
 });
