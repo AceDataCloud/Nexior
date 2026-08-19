@@ -26,7 +26,10 @@ const translations: Record<string, string> = {
   'service.operator.oneOf': '{field}: {value}',
   'service.condition.model': 'Model',
   'service.condition.resolution': 'Resolution',
-  'service.condition.referenceVideo': 'Reference Video'
+  'service.condition.referenceVideo': 'Reference Video',
+  'service.condition.action': 'Action',
+  'service.condition.anyOf': 'Any of',
+  'service.condition.generateAudio': 'Generate Audio'
 };
 
 function mountDialog(service: any) {
@@ -93,6 +96,59 @@ describe('ServicePricingDialog', () => {
     expect(vm.showRemarks).toBe(false);
   });
 
+  it('projects condition fields into Platform-style columns and plain values', () => {
+    const wrapper = mountDialog({
+      id: 'suno',
+      title: 'Suno',
+      cost: [
+        {
+          conditions: {
+            and: [
+              { '==': [{ var: ['action', ''] }, 'generate'] },
+              { in: [{ var: ['model', ''] }, ['chirp-v5-5', 'chirp-v5', 'chirp-v4']] }
+            ]
+          },
+          consumption: 0.56
+        },
+        { conditions: { '==': [{ var: ['action', ''] }, 'extend'] }, consumption: 0.56 }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.conditionColumns).toEqual([
+      { key: 'action', label: 'Action' },
+      { key: 'model', label: 'Model' }
+    ]);
+    expect(vm.conditionValue(vm.rows[0], 'action')).toBe('generate');
+    expect(vm.conditionValue(vm.rows[0], 'model')).toBe('chirp-v5-5, chirp-v5, chirp-v4');
+    expect(vm.conditionValue(vm.rows[1], 'model')).toBe('-');
+    expect(vm.tableMinWidth).toBe(510);
+  });
+
+  it('maps internal snake-case fields to customer-facing columns', () => {
+    const wrapper = mountDialog({
+      id: 'video',
+      title: 'Video',
+      cost: [
+        {
+          conditions: {
+            and: [
+              { '==': [{ var: ['model_name', ''] }, 'video-v3'] },
+              { '==': [{ var: ['generate_audio', false] }, true] }
+            ]
+          },
+          consumption: 1
+        }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.conditionColumns).toEqual([
+      { key: 'model', label: 'Model' },
+      { key: 'generateAudio', label: 'Generate Audio' }
+    ]);
+    expect(vm.conditionValue(vm.rows[0], 'model')).toBe('video-v3');
+    expect(vm.conditionValue(vm.rows[0], 'generateAudio')).toBe('true');
+  });
+
   it('hides billing and notes columns when every row repeats the same empty values', () => {
     const wrapper = mountDialog({
       id: 'service-1',
@@ -106,7 +162,8 @@ describe('ServicePricingDialog', () => {
     expect(vm.showBillingMethod).toBe(false);
     expect(vm.showRemarks).toBe(false);
     expect(vm.compactTable).toBe(true);
-    expect(vm.dialogWidth).toContain('680px');
+    expect(vm.tableMinWidth).toBe(340);
+    expect(vm.dialogWidth).toContain('620px');
   });
 
   it('keeps informative columns when values differ or notes exist', () => {
@@ -122,7 +179,8 @@ describe('ServicePricingDialog', () => {
     expect(vm.showBillingMethod).toBe(true);
     expect(vm.showRemarks).toBe(true);
     expect(vm.compactTable).toBe(false);
-    expect(vm.dialogWidth).toContain('880px');
+    expect(vm.tableMinWidth).toBe(660);
+    expect(vm.dialogWidth).toContain('708px');
   });
 
   it('shows an explicit unit for fixed per-unit rules', () => {
