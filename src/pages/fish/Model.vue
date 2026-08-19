@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ModelConfigPanel from '@/components/fish/ModelConfigPanel.vue';
@@ -23,7 +24,6 @@ import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
 import { ensureLoggedIn } from '@/utils';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
 
 interface IData {
   loading: boolean;
@@ -101,9 +101,8 @@ export default defineComponent({
         callbacks.resolve();
       } catch (error: any) {
         const response = error?.response?.data;
-        if (response?.error?.code === ERROR_CODE_USED_UP) {
-          ElMessage.error(this.$t('fish.message.usedUp'));
-        } else {
+        const quotaHandled = showQuotaExhausted(error, 'fish');
+        if (!quotaHandled) {
           ElMessage.error(response?.error?.message || this.$t('fish.message.createModelFailed'));
         }
         callbacks.reject(error);

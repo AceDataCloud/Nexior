@@ -2,32 +2,32 @@
   <el-dialog
     :model-value="modelValue"
     class="quota-exhausted-dialog"
-    :title="$t('seedance.quotaDialog.title')"
+    :title="$t('common.quotaDialog.title')"
     :width="dialogWidth"
     append-to-body
     @update:model-value="$emit('update:modelValue', $event)"
   >
-    <p class="quota-message">{{ $t('seedance.quotaDialog.message') }}</p>
+    <p class="quota-message">{{ $t('common.quotaDialog.message') }}</p>
     <dl class="quota-details">
-      <div class="quota-row">
-        <dt>{{ $t('seedance.quotaDialog.estimatedConsumption') }}</dt>
+      <div v-if="hasEstimatedConsumption" class="quota-row">
+        <dt>{{ $t('common.quotaDialog.estimatedConsumption') }}</dt>
         <dd>{{ formatCredits(estimatedConsumption) }} {{ unitLabel }}</dd>
       </div>
       <div class="quota-row">
-        <dt>{{ $t('seedance.quotaDialog.availableCredits') }}</dt>
+        <dt>{{ $t('common.quotaDialog.availableCredits') }}</dt>
         <dd v-if="balanceState === 'refreshing'" class="quota-muted">
           <el-icon class="is-loading"><loading /></el-icon>
-          {{ $t('seedance.quotaDialog.refreshing') }}
+          {{ $t('common.quotaDialog.refreshing') }}
         </dd>
         <dd v-else-if="balanceState === 'current'">{{ formatCredits(availableCredits) }} {{ unitLabel }}</dd>
-        <dd v-else class="quota-muted">{{ $t('seedance.quotaDialog.unavailable') }}</dd>
+        <dd v-else class="quota-muted">{{ $t('common.quotaDialog.unavailable') }}</dd>
       </div>
     </dl>
     <template #footer>
       <div class="quota-actions">
         <el-button @click="$emit('update:modelValue', false)">{{ $t('common.button.cancel') }}</el-button>
         <el-button v-if="canTopUp" type="primary" @click="$emit('topUp')">
-          {{ $t('seedance.quotaDialog.topUp') }}
+          {{ $t('common.quotaDialog.topUp') }}
         </el-button>
       </div>
     </template>
@@ -42,7 +42,7 @@ import { Loading } from '@element-plus/icons-vue';
 export type QuotaBalanceState = 'refreshing' | 'current' | 'unavailable';
 
 export default defineComponent({
-  name: 'SeedanceQuotaExhaustedDialog',
+  name: 'QuotaExhaustedDialog',
   components: { ElButton, ElDialog, ElIcon, Loading },
   props: {
     modelValue: { type: Boolean, required: true },
@@ -56,6 +56,9 @@ export default defineComponent({
   computed: {
     dialogWidth(): string {
       return 'min(500px, 94vw)';
+    },
+    hasEstimatedConsumption(): boolean {
+      return Number.isFinite(this.estimatedConsumption);
     },
     unitLabel(): string {
       const unit = this.unit || 'credit';

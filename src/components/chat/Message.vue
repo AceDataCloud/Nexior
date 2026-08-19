@@ -269,8 +269,8 @@ import {
   ROLE_ASSISTANT,
   ERROR_CODE_BUSY
 } from '@/constants';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
-import { isIOS, isRechargeDisabled } from '@/utils';
+
+import { canPurchaseApplication, getApplicationPurchaseRoute, isIOS } from '@/utils';
 
 interface IData {
   isEditing: boolean;
@@ -414,10 +414,12 @@ export default defineComponent({
       // in-chat "Top Up" entry on iOS so it never routes to a payment page
       // that renders empty there (matches showPayment in the console pages).
       // Also hidden when the site admin disabled recharge entirely.
-      if (this.application?.role === 'grantee' || isRechargeDisabled(this.$store.getters.site)) {
-        return false;
-      }
-      return !isIOS() && this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
+      return (
+        !isIOS() &&
+        canPurchaseApplication(this.application, this.$store.getters.site) &&
+        this.message.role === ROLE_ASSISTANT &&
+        this.message.error?.code === ERROR_CODE_USED_UP
+      );
     }
   },
   watch: {},
@@ -452,12 +454,8 @@ export default defineComponent({
       this.$emit('edit', this.message, this.questionValue);
     },
     onBuyMore() {
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: this.application?.id
-        }
-      });
+      const target = getApplicationPurchaseRoute(this.application);
+      if (target) this.$router.push(target);
     },
     onAskUserQuestionSubmit(payload: { tool_use_id: string; output: string }) {
       this.$emit('answerAskUserQuestion', payload);

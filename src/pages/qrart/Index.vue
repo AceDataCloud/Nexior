@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Qrart.vue';
 import ConfigPanel from '@/components/qrart/ConfigPanel.vue';
@@ -28,7 +29,7 @@ import { buildQrartRequest, qrartOperator } from '@/operators/qrart';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
@@ -255,10 +256,8 @@ export default defineComponent({
         })
         .catch((error) => {
           if (error instanceof X402PaymentCancelledError) return;
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('qrart.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'qrart')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('qrart.message.startTaskFailed'));

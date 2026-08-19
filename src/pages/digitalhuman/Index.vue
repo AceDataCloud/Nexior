@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/DigitalHuman.vue';
 import ConfigPanel from '@/components/digitalhuman/ConfigPanel.vue';
@@ -19,7 +20,7 @@ import { ensureLoggedIn, ensureNoPendingUpload, uploadTrackerProviderMixin } fro
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IDigitalHumanGenerateRequest, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import { loadPreviousPage } from '@/utils/pagination';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
@@ -183,9 +184,8 @@ export default defineComponent({
         })
         .catch((error) => {
           if (error instanceof X402PaymentCancelledError) return;
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) ElMessage.error(this.$t('digitalhuman.message.usedUp'));
-          else if (this.walletMode)
+          if (showQuotaExhausted(error, 'digitalhuman')) return;
+          if (this.walletMode)
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           else ElMessage.error(this.$t('digitalhuman.message.startTaskFailed'));
         })

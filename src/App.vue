@@ -3,6 +3,16 @@
     <auth-panel v-if="authPopup" />
     <desktop-drag-bar />
     <router-view />
+    <quota-exhausted-dialog
+      :model-value="quotaState.visible"
+      :estimated-consumption="quotaState.estimatedConsumption"
+      :available-credits="quotaState.availableCredits"
+      :balance-state="quotaState.balanceState"
+      :unit="quotaState.unit"
+      :can-top-up="canTopUpQuota"
+      @update:model-value="onQuotaVisibility"
+      @top-up="onQuotaTopUp"
+    />
     <el-tag v-if="isTest" size="large" class="fixed bottom-4 right-4 z-50" type="warning">
       {{ $t('index.button.testEnv') }}
     </el-tag>
@@ -14,6 +24,7 @@ import { defineComponent } from 'vue';
 import { ElConfigProvider, ElTag } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
 import DesktopDragBar from './components/common/DesktopDragBar.vue';
+import QuotaExhaustedDialog from './components/common/QuotaExhaustedDialog.vue';
 import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
 import { App as CapApp } from '@capacitor/app';
@@ -24,6 +35,7 @@ import { desktopBridge } from '@/utils/desktop';
 import { currentSiteOrigin } from '@/utils';
 import { parseInviterFromDeepLink, writeInviterCookie } from '@/utils/attribution';
 import { exchangeSsoCode } from '@/utils/auth/exchangeSsoCode';
+import { canTopUpQuota, closeQuotaExhausted, getQuotaPurchaseRoute, quotaExhaustedState } from '@/utils/quotaExhausted';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
   en: () => import('element-plus/es/locale/lang/en'),
@@ -52,7 +64,8 @@ export default defineComponent({
     ElConfigProvider,
     ElTag,
     AuthPanel,
-    DesktopDragBar
+    DesktopDragBar,
+    QuotaExhaustedDialog
   },
   data() {
     return {
@@ -69,6 +82,12 @@ export default defineComponent({
     authPopup() {
       return this.$store.state.auth.flow === 'popup' && this.$store.state.auth.visible;
     },
+    quotaState() {
+      return quotaExhaustedState;
+    },
+    canTopUpQuota() {
+      return canTopUpQuota();
+    },
     currentLocale(): string {
       return getLocale(this.$i18n.locale as string);
     }
@@ -79,6 +98,9 @@ export default defineComponent({
       handler() {
         this.loadElementPlusLocale();
       }
+    },
+    '$route.fullPath'() {
+      closeQuotaExhausted();
     }
   },
   mounted() {
@@ -169,6 +191,15 @@ export default defineComponent({
     this.offCredentialWatch?.();
   },
   methods: {
+    onQuotaVisibility(visible: boolean) {
+      if (!visible) closeQuotaExhausted();
+    },
+    onQuotaTopUp() {
+      const target = getQuotaPurchaseRoute();
+      if (!target) return;
+      closeQuotaExhausted();
+      this.$router.push(target);
+    },
     async loadElementPlusLocale() {
       const localeCode = this.currentLocale;
       console.debug(`[i18n] Loading Element Plus locale for: ${localeCode}`);

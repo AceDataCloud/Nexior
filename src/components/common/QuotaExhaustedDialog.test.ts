@@ -25,19 +25,25 @@ const mountDialog = (props: Record<string, unknown> = {}) =>
     }
   });
 
-describe('SeedanceQuotaExhaustedDialog', () => {
+describe('QuotaExhaustedDialog', () => {
   it('shows the submitted estimate and refreshed available credits', () => {
     const wrapper = mountDialog();
     expect(wrapper.text()).toContain('8.40 service.unit.Credits');
     expect(wrapper.text()).toContain('2.00 service.unit.Credits');
   });
 
+  it('omits the estimate row when no reliable submission estimate exists', () => {
+    const wrapper = mountDialog({ estimatedConsumption: undefined });
+    expect(wrapper.text()).not.toContain('common.quotaDialog.estimatedConsumption');
+    expect(wrapper.text()).toContain('2.00 service.unit.Credits');
+  });
+
   it('shows refresh and unavailable states without stale values', () => {
     expect(mountDialog({ balanceState: 'refreshing', availableCredits: undefined }).text()).toContain(
-      'seedance.quotaDialog.refreshing'
+      'common.quotaDialog.refreshing'
     );
     const unavailable = mountDialog({ balanceState: 'unavailable', availableCredits: undefined });
-    expect(unavailable.text()).toContain('seedance.quotaDialog.unavailable');
+    expect(unavailable.text()).toContain('common.quotaDialog.unavailable');
     expect(unavailable.text()).not.toContain('2.00');
   });
 

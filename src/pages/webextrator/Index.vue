@@ -10,12 +10,13 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Webextrator.vue';
 import ConfigPanel from '@/components/webextrator/ConfigPanel.vue';
 import ResultPanel from '@/components/webextrator/ResultPanel.vue';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import { ensureLoggedIn } from '@/utils';
 
 export default defineComponent({
@@ -44,9 +45,8 @@ export default defineComponent({
         ElMessage.success(this.$t('webextrator.message.success'));
       } catch (error: any) {
         const code = error?.response?.data?.error?.code || error?.response?.data?.code;
-        if (code === ERROR_CODE_USED_UP) {
-          ElMessage.error(this.$t('webextrator.message.usedUp'));
-        } else if (code === 'too_many_requests') {
+        if (showQuotaExhausted(error, 'webextrator')) return;
+        if (code === 'too_many_requests') {
           ElMessage.error(this.$t('webextrator.message.busy'));
         } else if (code === 'timeout') {
           ElMessage.error(this.$t('webextrator.message.timeout'));

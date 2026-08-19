@@ -1644,6 +1644,34 @@
     "message": "參考檔案仍在上傳，請稍候再生成。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "quotaDialog.title": {
+    "message": "當前積分不足",
+    "description": "積分不足彈窗標題"
+  },
+  "quotaDialog.message": {
+    "message": "當前可用額度不足以完成本次生成，請充值後重試。",
+    "description": "生成任務因額度不足被攔截時的說明"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "本次預計消耗",
+    "description": "本次提交的生成費用預估標籤"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "當前可用積分",
+    "description": "刷新後可用積分標籤"
+  },
+  "quotaDialog.refreshing": {
+    "message": "正在刷新餘額…",
+    "description": "獲取最新餘額時的加載文案"
+  },
+  "quotaDialog.unavailable": {
+    "message": "暫時無法獲取最新餘額",
+    "description": "最新餘額獲取失敗時的降級文案"
+  },
+  "quotaDialog.topUp": {
+    "message": "去充值",
+    "description": "前往充值頁面的主操作"
+  },
   "message.uploadTooLarge": {
     "message": "文件大小 {size} 超過上限 {max}，請壓縮後重試",
     "description": "使用者選擇的文件超過上傳大小上限時彈出的提示，說明當前文件大小和允許的上限。"

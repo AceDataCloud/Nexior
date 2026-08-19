@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Omni.vue';
 import ConfigPanel from '@/components/omni/ConfigPanel.vue';
@@ -18,7 +19,7 @@ import { buildOmniRequest, omniOperator } from '@/operators/omni';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IOmniTask, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -204,9 +205,8 @@ export default defineComponent({
         .catch((error) => {
           const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('omni.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'omni')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('omni.message.startTaskFailed') + (response?.error?.message || ''));
