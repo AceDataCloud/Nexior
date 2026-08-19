@@ -1040,31 +1040,55 @@
     "message": "加载应用自定义失败",
     "description": "无法读取能力应用覆盖管理记录时的错误"
   },
-  "analytics": {
-    "title": "网站统计",
-    "securityNotice": "仅支持经过审核的统计平台，不允许插入原始 JavaScript 或 HTML。",
-    "enabled": "启用",
-    "required": "保存前请填写统计平台 ID。",
-    "invalidId": "请输入有效的统计平台 ID。",
-    "saveFailed": "网站统计设置保存失败。",
-    "ga4": {
-      "description": "通过 GA4 Measurement ID 统计访问与转化。",
-      "measurementId": "Measurement ID"
-    },
-    "baidu": {
-      "title": "百度统计",
-      "description": "通过百度统计了解网站流量。",
-      "siteId": "站点 ID"
-    },
-    "clarity": {
-      "description": "通过 Microsoft Clarity 了解会话和用户行为。",
-      "projectId": "项目 ID"
-    },
-    "umami": {
-      "description": "通过 Umami 使用注重隐私的网站统计。",
-      "websiteId": "Website ID",
-      "serverUrl": "服务地址",
-      "serverUrlHelp": "默认支持 Umami Cloud；自托管地址须先由平台管理员加入审核白名单。"
-    }
+  "analytics.title": {
+    "message": "网站统计"
+  },
+  "analytics.securityNotice": {
+    "message": "仅支持经过审核的统计平台，不允许插入原始 JavaScript 或 HTML。"
+  },
+  "analytics.enabled": {
+    "message": "启用"
+  },
+  "analytics.required": {
+    "message": "保存前请填写统计平台 ID。"
+  },
+  "analytics.invalidId": {
+    "message": "请输入有效的统计平台 ID。"
+  },
+  "analytics.saveFailed": {
+    "message": "网站统计设置保存失败。"
+  },
+  "analytics.ga4.description": {
+    "message": "通过 GA4 Measurement ID 统计访问与转化。"
+  },
+  "analytics.ga4.measurementId": {
+    "message": "Measurement ID"
+  },
+  "analytics.baidu.title": {
+    "message": "百度统计"
+  },
+  "analytics.baidu.description": {
+    "message": "通过百度统计了解网站流量。"
+  },
+  "analytics.baidu.siteId": {
+    "message": "站点 ID"
+  },
+  "analytics.clarity.description": {
+    "message": "通过 Microsoft Clarity 了解会话和用户行为。"
+  },
+  "analytics.clarity.projectId": {
+    "message": "项目 ID"
+  },
+  "analytics.umami.description": {
+    "message": "通过 Umami 使用注重隐私的网站统计。"
+  },
+  "analytics.umami.websiteId": {
+    "message": "Website ID"
+  },
+  "analytics.umami.serverUrl": {
+    "message": "服务地址"
+  },
+  "analytics.umami.serverUrlHelp": {
+    "message": "默认支持 Umami Cloud；自托管地址须先由平台管理员加入审核白名单。"
   }
 }

@@ -1090,31 +1090,55 @@
     "message": "載入應用自定義失敗",
     "description": "無法讀取能力應用覆蓋管理記錄時的錯誤"
   },
-  "analytics": {
-    "title": "網站分析",
-    "securityNotice": "僅支援經批准的分析提供者。無法插入原始 JavaScript 和 HTML。",
-    "enabled": "已啟用",
-    "required": "在保存之前請輸入提供者 ID。",
-    "invalidId": "請輸入有效的提供者 ID。",
-    "saveFailed": "保存網站分析設置失敗。",
-    "ga4": {
-      "description": "使用 GA4 測量 ID 測量訪問和轉換。",
-      "measurementId": "Measurement ID"
-    },
-    "baidu": {
-      "title": "百度網站分析",
-      "description": "使用百度分析測量網站流量。",
-      "siteId": "Site ID"
-    },
-    "clarity": {
-      "description": "使用 Microsoft Clarity 了解會話和行為。",
-      "projectId": "Project ID"
-    },
-    "umami": {
-      "description": "通過 Umami 使用以隱私為重點的網站分析。",
-      "websiteId": "Website ID",
-      "serverUrl": "伺服器 URL",
-      "serverUrlHelp": "Umami Cloud 默認可用。自託管來源必須先經平台管理員批准。"
-    }
+  "analytics.title": {
+    "message": "網站分析"
+  },
+  "analytics.securityNotice": {
+    "message": "僅支援經批准的分析提供者。無法插入原始 JavaScript 和 HTML。"
+  },
+  "analytics.enabled": {
+    "message": "已啟用"
+  },
+  "analytics.required": {
+    "message": "在保存之前請輸入提供者 ID。"
+  },
+  "analytics.invalidId": {
+    "message": "請輸入有效的提供者 ID。"
+  },
+  "analytics.saveFailed": {
+    "message": "保存網站分析設置失敗。"
+  },
+  "analytics.ga4.description": {
+    "message": "使用 GA4 測量 ID 測量訪問和轉換。"
+  },
+  "analytics.ga4.measurementId": {
+    "message": "Measurement ID"
+  },
+  "analytics.baidu.title": {
+    "message": "百度網站分析"
+  },
+  "analytics.baidu.description": {
+    "message": "使用百度分析測量網站流量。"
+  },
+  "analytics.baidu.siteId": {
+    "message": "站點 ID"
+  },
+  "analytics.clarity.description": {
+    "message": "使用 Microsoft Clarity 了解會話和行為。"
+  },
+  "analytics.clarity.projectId": {
+    "message": "專案 ID"
+  },
+  "analytics.umami.description": {
+    "message": "通過 Umami 使用以隱私為重點的網站分析。"
+  },
+  "analytics.umami.websiteId": {
+    "message": "Website ID"
+  },
+  "analytics.umami.serverUrl": {
+    "message": "伺服器 URL"
+  },
+  "analytics.umami.serverUrlHelp": {
+    "message": "Umami Cloud 默認可用。自託管來源必須先經平台管理員批准。"
   }
 }

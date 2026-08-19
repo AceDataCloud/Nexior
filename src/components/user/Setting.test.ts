@@ -76,6 +76,15 @@ const mountSetting = () =>
 const tabKeys = (wrapper: ReturnType<typeof mountSetting>): string[] =>
   (wrapper.vm as unknown as { visibleNavItems: { key: string }[] }).visibleNavItems.map((i) => i.key);
 
+describe('user/Setting layout', () => {
+  it('keeps the desktop navigation inside its scroll container', () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    const wrapper = mountSetting();
+    const aside = wrapper.find('aside');
+    expect(aside.classes()).toEqual(expect.arrayContaining(['h-full', 'min-h-0', 'overflow-y-auto']));
+  });
+});
+
 describe('user/Setting surface gating', () => {
   beforeEach(() => {
     hostState.official = false;
