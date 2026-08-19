@@ -12,7 +12,7 @@ describe('shared application payment contract', () => {
   const subscribeSource = readSource('../../pages/console/application/Subscribe.vue');
 
   it('hides payment actions for grantees in application selectors and lists', () => {
-    expect(infoSource).toContain("this.application.role === 'grantee' || isRechargeDisabled");
+    expect(infoSource).toContain('canPurchaseApplication(this.application');
     expect(listSource).toContain("application.role === 'grantee' || isRechargeDisabled");
   });
 

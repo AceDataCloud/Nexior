@@ -7,6 +7,16 @@
       <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
     </template>
   </layout>
+  <quota-exhausted-dialog
+    :model-value="quotaDialogVisible"
+    :estimated-consumption="quotaEstimatedConsumption"
+    :available-credits="quotaAvailableCredits"
+    :balance-state="quotaBalanceState"
+    :unit="service?.unit"
+    :can-top-up="canTopUp"
+    @update:model-value="onQuotaDialogVisibility"
+    @top-up="onTopUp"
+  />
 </template>
 
 <script lang="ts">
@@ -14,16 +24,25 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedance.vue';
 import ConfigPanel from '@/components/seedance/ConfigPanel.vue';
 import RecentPanel from '@/components/seedance/RecentPanel.vue';
+import QuotaExhaustedDialog, { type QuotaBalanceState } from '@/components/seedance/QuotaExhaustedDialog.vue';
 import { seedanceOperator } from '@/operators/seedance';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { Status } from '@/models';
+import { IApplication, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { normalizeSeedanceRequest } from '@/utils/seedance';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import {
+  canPurchaseApplication,
+  ensureLoggedIn,
+  ensureNoPendingUpload,
+  getEffectiveApplicationBalance,
+  getApplicationPurchaseRoute,
+  isIOS,
+  uploadTrackerProviderMixin
+} from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -38,6 +57,12 @@ interface IData {
   loadingMore: boolean;
   fetchingTasks: boolean;
   walletTaskIds: string[];
+  quotaDialogVisible: boolean;
+  quotaEstimatedConsumption: number | undefined;
+  quotaAvailableCredits: number | undefined;
+  quotaBalanceState: QuotaBalanceState;
+  quotaApplication: IApplication | undefined;
+  quotaRefreshRunId: number;
 }
 
 export default defineComponent({
@@ -45,6 +70,7 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
+    QuotaExhaustedDialog,
     RecentPanel
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedance')],
@@ -55,7 +81,13 @@ export default defineComponent({
       job: 0,
       loadingMore: false,
       fetchingTasks: false,
-      walletTaskIds: []
+      walletTaskIds: [],
+      quotaDialogVisible: false,
+      quotaEstimatedConsumption: undefined,
+      quotaAvailableCredits: undefined,
+      quotaBalanceState: 'unavailable',
+      quotaApplication: undefined,
+      quotaRefreshRunId: 0
     };
   },
   computed: {
@@ -70,6 +102,12 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.seedance?.config;
+    },
+    service() {
+      return this.$store.state.seedance?.service;
+    },
+    canTopUp(): boolean {
+      return canPurchaseApplication(this.quotaApplication, this.$store.getters.site, { ios: isIOS() });
     },
     tasks() {
       return this.$store.state.seedance?.tasks;
@@ -110,6 +148,7 @@ export default defineComponent({
   },
   async unmounted() {
     window.clearInterval(this.job);
+    this.quotaRefreshRunId += 1;
   },
   methods: {
     async onReachTop() {
@@ -152,7 +191,7 @@ export default defineComponent({
         this.fetchingTasks = false;
       }
     },
-    async onGenerate() {
+    async onGenerate(estimatedConsumption?: number) {
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -192,9 +231,10 @@ export default defineComponent({
         if (!token) return;
         operation = seedanceOperator.generate(request, { token });
       }
-      ElMessage.info(this.$t('seedance.message.startingTask'));
+      const startingMessage = ElMessage.info(this.$t('seedance.message.startingTask'));
       instrumentGeneration('seedance', operation)
         .then((response: any) => {
+          startingMessage.close();
           const taskId = response?.data?.task_id;
           if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
             this.walletTaskIds.unshift(taskId);
@@ -202,10 +242,11 @@ export default defineComponent({
           ElMessage.success(this.$t('seedance.message.startTaskSuccess'));
         })
         .catch((error) => {
+          startingMessage.close();
           const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('seedance.message.usedUp'));
+            void this.onQuotaExhausted(estimatedConsumption);
           } else if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
@@ -218,6 +259,49 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    async onQuotaExhausted(estimatedConsumption?: number) {
+      const selectedApplication = this.$store.state.seedance?.application as IApplication | undefined;
+      const runId = ++this.quotaRefreshRunId;
+      this.quotaEstimatedConsumption = estimatedConsumption;
+      this.quotaAvailableCredits = undefined;
+      this.quotaBalanceState = 'refreshing';
+      this.quotaApplication = selectedApplication;
+      this.quotaDialogVisible = true;
+
+      const [globalApplications, serviceApplications] = await Promise.all([
+        this.$store.dispatch('getApplications'),
+        this.$store.dispatch('seedance/getApplications')
+      ]);
+      if (runId !== this.quotaRefreshRunId) return;
+      if (!Array.isArray(globalApplications) || !Array.isArray(serviceApplications) || !selectedApplication?.id) {
+        this.quotaBalanceState = 'unavailable';
+        return;
+      }
+
+      const freshApplication = [...globalApplications, ...serviceApplications].find(
+        (application) => application.id === selectedApplication.id
+      );
+      if (!freshApplication) {
+        this.quotaBalanceState = 'unavailable';
+        return;
+      }
+
+      this.$store.commit('seedance/setApplication', freshApplication);
+      this.quotaApplication = freshApplication;
+      this.quotaAvailableCredits = getEffectiveApplicationBalance(freshApplication, globalApplications);
+      this.quotaBalanceState = 'current';
+    },
+    onQuotaDialogVisibility(visible: boolean) {
+      this.quotaDialogVisible = visible;
+      if (!visible) this.quotaRefreshRunId += 1;
+    },
+    onTopUp() {
+      if (!canPurchaseApplication(this.quotaApplication, this.$store.getters.site, { ios: isIOS() })) return;
+      const target = getApplicationPurchaseRoute(this.quotaApplication);
+      if (!target) return;
+      this.onQuotaDialogVisibility(false);
+      this.$router.push(target);
     },
     getWalletContext(): X402WalletContext | undefined {
       return resolveX402WalletContext((this as any).$wallet);

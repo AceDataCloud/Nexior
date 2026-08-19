@@ -135,7 +135,7 @@ export default defineComponent({
       }
     },
     onGenerate() {
-      this.$emit('generate');
+      this.$emit('generate', this.walletMode ? undefined : this.consumption);
     }
   }
 });

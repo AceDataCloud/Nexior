@@ -58,12 +58,12 @@
 </template>
 
 <script lang="ts">
-import { IApplication, IApplicationType, IServiceType, IPackageType } from '@/models';
+import { IApplication, IServiceType } from '@/models';
 import { defineComponent } from 'vue';
 import { ElButton, ElIcon, ElTag } from 'element-plus';
 import { AnalyticsIcon, ConfirmIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { isIOS, isRechargeDisabled } from '@/utils';
+import { canPurchaseApplication, isIOS } from '@/utils';
 
 export default defineComponent({
   name: 'ApplicationInfo',
@@ -96,26 +96,8 @@ export default defineComponent({
     showUsage(): boolean {
       return !this.application?.service || this.application.service.type === IServiceType.API;
     },
-    // On iOS the only Apple-buyable entity is the global 积分 wallet, so show
-    // "Top Up" for the global application (per-service apps have no Apple
-    // products). Keyed on scope (always present) rather than packages, which
-    // isn't serialized in every view.
     showPayment(): boolean {
-      if (this.application.role === 'grantee' || isRechargeDisabled(this.$store.getters.site)) {
-        return false;
-      }
-      if (!isIOS()) {
-        return true;
-      }
-      if (this.application?.scope === 'Global') {
-        return true;
-      }
-      if (this.application.type === IApplicationType.PERIOD) {
-        return false;
-      }
-      return (this.application?.packages || []).some(
-        (p) => p.type === IPackageType.USAGE && p?.metadata?.apple_product_id
-      );
+      return canPurchaseApplication(this.application, this.$store.getters.site, { ios: isIOS() });
     },
     remainingAmountText(): string {
       const amount = Number(this.application?.remaining_amount ?? 0);

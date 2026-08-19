@@ -11,6 +11,7 @@ export * from './site';
 export * from './price';
 export * from './application';
 export * from './applicationPurchase';
+export * from './applicationQuota';
 export * from './theme';
 export * from './pasteUpload';
 export * from './pasteUploadMixin';

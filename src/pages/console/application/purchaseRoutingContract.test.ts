@@ -11,6 +11,7 @@ const listSource = readSource('./List.vue');
 const extraSource = readSource('./Extra.vue');
 const subscribeSource = readSource('./Subscribe.vue');
 const sunoActionsSource = readSource('../../../store/suno/actions.ts');
+const purchaseHelperSource = readSource('../../../utils/applicationPurchase.ts');
 
 describe('application purchase routing contract', () => {
   it.each([
@@ -59,7 +60,8 @@ describe('application purchase routing contract', () => {
     expect(listSource).toContain('scope.row.type === applicationType.USAGE');
     expect(listSource).toContain('app.type === applicationType.USAGE');
     expect(listSource).toContain('if (application.type === IApplicationType.PERIOD)');
-    expect(infoSource).toContain('if (this.application.type === IApplicationType.PERIOD)');
+    expect(infoSource).toContain('canPurchaseApplication(this.application');
+    expect(purchaseHelperSource).toContain('application?.type === IApplicationType.PERIOD');
   });
 
   it('keeps Suno application discovery untyped so Period subscriptions remain usable', () => {
