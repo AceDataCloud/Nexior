@@ -71,7 +71,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
-import { getBaseUrlAuth, withCurrentUserIdAndSite, isMainOfficial } from '@/utils';
+import { isMainOfficial, openAuthAccountPage } from '@/utils';
 import { ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import {
   ElCol,
@@ -178,12 +178,10 @@ export default defineComponent({
       });
     },
     onProfile() {
-      const baseUrlAuth = getBaseUrlAuth();
-      this.openTab(withCurrentUserIdAndSite(`${baseUrlAuth}/user/profile`));
+      void openAuthAccountPage('/user/profile');
     },
     onVerify() {
-      const baseUrlAuth = getBaseUrlAuth();
-      this.openTab(withCurrentUserIdAndSite(`${baseUrlAuth}/user/verify`));
+      void openAuthAccountPage('/user/verify');
     },
     onConsole() {
       this.$router.push({

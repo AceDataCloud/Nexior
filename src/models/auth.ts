@@ -15,3 +15,8 @@ export interface IOAuthTokenResponse {
   expires_in: number;
   refresh_token: string;
 }
+
+export interface IAuthCodeResponse extends IOAuthTokenResponse {
+  code: string;
+  user_id: string;
+}
