@@ -51,6 +51,62 @@ describe('normalizeServicePricing', () => {
     ]);
   });
 
+  it('preserves cross-field OR conditions as one any-of group', () => {
+    const [row] = normalizeServicePricing([
+      {
+        conditions: {
+          and: [
+            { '==': [{ var: ['version', ''] }, '8'] },
+            {
+              or: [
+                { '==': [{ var: ['hd', false] }, true] },
+                { '==': [{ var: ['quality', '1'] }, '4'] },
+                { '==': [{ var: ['style_reference', false] }, true] },
+                { '==': [{ var: ['moodboard', false] }, true] }
+              ]
+            }
+          ]
+        },
+        consumption: 1.08
+      }
+    ]);
+
+    expect(row.conditions[0]).toEqual({ field: 'version', operator: 'equals', value: '8' });
+    expect(row.conditions[1]).toEqual({
+      field: '',
+      operator: 'anyOf',
+      value: '',
+      options: [
+        { field: 'hd', operator: 'equals', value: 'true' },
+        { field: 'quality', operator: 'equals', value: '4' },
+        { field: 'style_reference', operator: 'equals', value: 'true' },
+        { field: 'moodboard', operator: 'equals', value: 'true' }
+      ]
+    });
+  });
+
+  it('normalizes Seedance reference-video conditions without losing model and resolution', () => {
+    const [row] = normalizeServicePricing([
+      {
+        conditions: {
+          and: [
+            { in: ['doubao-seedance-2-0-mini', { var: ['model', ''] }] },
+            { '==': [{ var: ['resolution', '480p'] }, '480p'] },
+            { some: [{ var: ['content', []] }, { in: ['reference_video', { var: ['role', ''] }] }] }
+          ]
+        },
+        consumption: { '*': [0.95, { var: ['duration', 5] }] },
+        unit: 'Second'
+      }
+    ]);
+
+    expect(row.conditions).toEqual([
+      { field: 'model', operator: 'oneOf', value: 'doubao-seedance-2-0-mini' },
+      { field: 'resolution', operator: 'equals', value: '480p' },
+      { field: 'referenceVideo', operator: 'equals', value: 'required' }
+    ]);
+  });
+
   it('normalizes simple linear rates in either multiplication order', () => {
     const rows = normalizeServicePricing([
       { conditions: {}, consumption: { '*': [1.46, { var: ['duration', 5] }] }, unit: 'Second' },

@@ -180,8 +180,8 @@
     "description": "Oznaka pravila cena bez primenljivih uslova."
   },
   "message.otherConfigurations": {
-    "message": "Ostale konfiguracije",
-    "description": "Sigurna poruka kada nije moguće obuhvatiti uslove cena."
+    "message": "Sadrži dodatne uslove",
+    "description": "Prikazuje se kada pravilo cene sadrži uslove koji se ne mogu potpuno obuhvatiti."
   },
   "message.calculated": {
     "message": "Izračunato na osnovu zahteva",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "токен",
     "description": "Јединица цене по току."
+  },
+  "condition.referenceVideo": {
+    "message": "Referentni video",
+    "description": "Označava polje uslova cene koje koristi referentni video."
+  },
+  "message.required": {
+    "message": "Obavezno",
+    "description": "Vrednost koja se prikazuje kada uslov cene zahteva određenu funkciju ili unos."
+  },
+  "operator.anyOf": {
+    "message": "Bilo koji od: {options}",
+    "description": "Formatira uslove cena koji zadovoljavaju bilo koju od navedenih opcija."
+  },
+  "condition.version": {
+    "message": "Verzija",
+    "description": "Polje uslova cena za verziju modela."
+  },
+  "condition.hd": {
+    "message": "висока резолуција",
+    "description": "поље за услове цене за izlaz u visokoj rezoluciji."
+  },
+  "condition.styleReference": {
+    "message": "Referenca stila",
+    "description": "Polje uslova cena za unos reference stila."
+  },
+  "condition.moodboard": {
+    "message": "мудборд",
+    "description": "поље за услове цене za unos mudborda."
+  },
+  "condition.generateAudio": {
+    "message": "Generiši audio",
+    "description": "Polje uslova cena za generisanje audio sadržaja."
   }
 }

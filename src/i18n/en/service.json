@@ -180,8 +180,8 @@
     "description": "Label for a pricing rule without conditions."
   },
   "message.otherConfigurations": {
-    "message": "Other configurations",
-    "description": "Safe fallback for a pricing condition that cannot be summarized."
+    "message": "Additional conditions apply",
+    "description": "Safe fallback indicating that a pricing rule has conditions that cannot all be summarized."
   },
   "message.calculated": {
     "message": "Calculated from request parameters",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "token",
     "description": "Pricing unit for one token."
+  },
+  "condition.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Pricing condition field indicating that a reference video is used."
+  },
+  "message.required": {
+    "message": "Required",
+    "description": "Value shown when a pricing condition requires a feature or input."
+  },
+  "operator.anyOf": {
+    "message": "Any of: {options}",
+    "description": "Formats a pricing condition where any listed option can match."
+  },
+  "condition.version": {
+    "message": "Version",
+    "description": "Pricing condition field for the model version."
+  },
+  "condition.hd": {
+    "message": "HD",
+    "description": "Pricing condition field for high-definition output."
+  },
+  "condition.styleReference": {
+    "message": "Style Reference",
+    "description": "Pricing condition field for style reference input."
+  },
+  "condition.moodboard": {
+    "message": "Moodboard",
+    "description": "Pricing condition field for moodboard input."
+  },
+  "condition.generateAudio": {
+    "message": "Generate Audio",
+    "description": "Pricing condition field for audio generation."
   }
 }

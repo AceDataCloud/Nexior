@@ -180,8 +180,8 @@
     "description": "没有适用条件的价格规则标签。"
   },
   "message.otherConfigurations": {
-    "message": "其他配置",
-    "description": "无法概括价格条件时的安全兜底文案。"
+    "message": "含附加条件",
+    "description": "价格规则含有无法完整概括的条件时显示的安全兜底文案。"
   },
   "message.calculated": {
     "message": "根据请求参数计算",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "令牌",
     "description": "每令牌价格单位。"
+  },
+  "condition.referenceVideo": {
+    "message": "参考视频",
+    "description": "表示使用参考视频的价格条件字段。"
+  },
+  "message.required": {
+    "message": "需要",
+    "description": "价格条件要求某项功能或输入时显示的值。"
+  },
+  "operator.anyOf": {
+    "message": "任一满足：{options}",
+    "description": "格式化任一列出选项满足即可的价格条件。"
+  },
+  "condition.version": {
+    "message": "版本",
+    "description": "模型版本价格条件字段。"
+  },
+  "condition.hd": {
+    "message": "高清",
+    "description": "高清输出价格条件字段。"
+  },
+  "condition.styleReference": {
+    "message": "风格参考",
+    "description": "风格参考输入价格条件字段。"
+  },
+  "condition.moodboard": {
+    "message": "情绪板",
+    "description": "情绪板输入价格条件字段。"
+  },
+  "condition.generateAudio": {
+    "message": "生成音频",
+    "description": "音频生成价格条件字段。"
   }
 }

@@ -4,8 +4,9 @@ export type PricingBillingKind = 'free' | 'fixed' | 'linear' | 'calculated';
 
 export interface PricingCondition {
   field: string;
-  operator: 'equals' | 'oneOf' | 'atMost' | 'lessThan' | 'atLeast' | 'greaterThan' | 'either' | 'other';
+  operator: 'equals' | 'oneOf' | 'atMost' | 'lessThan' | 'atLeast' | 'greaterThan' | 'either' | 'anyOf' | 'other';
   value: string;
+  options?: PricingCondition[];
 }
 
 export interface ServicePricingRow {
@@ -61,6 +62,15 @@ function normalizeComparison(operator: string, operands: unknown[]): PricingCond
   return { field, operator: mapping[operator] || 'other', value };
 }
 
+function parseSpecialCondition(operator: string, operands: unknown[]): PricingCondition | undefined {
+  if (operator !== 'some' || operands.length !== 2) return undefined;
+  const [collection, predicate] = operands;
+  if (getVariable(collection) !== 'content' || !isRecord(predicate) || !Array.isArray(predicate.in)) return undefined;
+  const [role, roleVariable] = predicate.in;
+  if (role !== 'reference_video' || getVariable(roleVariable) !== 'role') return undefined;
+  return { field: 'referenceVideo', operator: 'equals', value: 'required' };
+}
+
 function parseConditions(value: unknown): PricingCondition[] | undefined {
   if (!isRecord(value) || Object.keys(value).length === 0) return [];
   const entries = Object.entries(value);
@@ -79,13 +89,18 @@ function parseConditions(value: unknown): PricingCondition[] | undefined {
     if (parsed.some((item) => !item || item.length !== 1)) return undefined;
     const conditions = parsed.flatMap((item) => item || []);
     const first = conditions[0];
-    if (!first || conditions.some((item) => item.field !== first.field)) return undefined;
-    return [{ field: first.field, operator: 'either', value: conditions.map((item) => item.value).join(', ') }];
+    if (!first) return undefined;
+    if (conditions.every((item) => item.field === first.field)) {
+      return [{ field: first.field, operator: 'either', value: conditions.map((item) => item.value).join(', ') }];
+    }
+    return [{ field: '', operator: 'anyOf', value: '', options: conditions }];
   }
 
-  return CONDITION_OPERATORS.has(operator)
-    ? ([normalizeComparison(operator, rawOperands)].filter(Boolean) as PricingCondition[])
-    : undefined;
+  if (CONDITION_OPERATORS.has(operator)) {
+    return [normalizeComparison(operator, rawOperands)].filter(Boolean) as PricingCondition[];
+  }
+  const special = parseSpecialCondition(operator, rawOperands);
+  return special ? [special] : [{ field: '', operator: 'other', value: '' }];
 }
 
 function parseLinearConsumption(value: unknown): { amount: number; rateField: string } | undefined {

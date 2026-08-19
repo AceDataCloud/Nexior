@@ -14,14 +14,19 @@ const translations: Record<string, string> = {
   'service.message.calculated': 'Calculated from request parameters',
   'service.message.creditsAmount': '{amount} Credits',
   'service.message.creditsPerUnit': '{amount} Credits / {unit}',
+  'service.message.required': 'Required',
   'service.unit.Count': 'count',
   'service.unit.Second': 'second',
   'service.billing.fixed': 'Fixed',
   'service.billing.free': 'Free',
   'service.billing.linear': 'Usage based',
   'service.billing.calculated': 'Calculated',
-  'service.operator.equals': 'Model: video-pro',
-  'service.condition.model': 'Model'
+  'service.operator.equals': '{field}: {value}',
+  'service.operator.anyOf': 'Any of: {options}',
+  'service.operator.oneOf': '{field}: {value}',
+  'service.condition.model': 'Model',
+  'service.condition.resolution': 'Resolution',
+  'service.condition.referenceVideo': 'Reference Video'
 };
 
 function mountDialog(service: any) {
@@ -30,8 +35,7 @@ function mountDialog(service: any) {
     global: {
       mocks: {
         $t: (key: string, params: Record<string, string> = {}) =>
-          (translations[key] || key).replace(/\{(\w+)\}/g, (_, name) => params[name] || `{${name}}`),
-        $te: (key: string) => key in translations
+          (translations[key] || key).replace(/\{(\w+)\}/g, (_, name) => params[name] || `{${name}}`)
       },
       stubs: {
         ElDialog: { template: '<div><slot /></div>' },
@@ -61,6 +65,64 @@ describe('ServicePricingDialog', () => {
     expect(vm.priceLabel(vm.rows[0])).toBe('0.14 Credits');
     expect(JSON.stringify(vm.rows)).not.toContain('99');
     expect(JSON.stringify(vm.rows)).not.toContain('\"var\"');
+  });
+
+  it('renders Seedance reference-video rules without generic fallback text', () => {
+    const wrapper = mountDialog({
+      id: 'seedance',
+      title: 'Seedance',
+      cost: [
+        {
+          conditions: {
+            and: [
+              { in: ['doubao-seedance-2-0-mini', { var: ['model', ''] }] },
+              { '==': [{ var: ['resolution', '480p'] }, '480p'] },
+              { some: [{ var: ['content', []] }, { in: ['reference_video', { var: ['role', ''] }] }] }
+            ]
+          },
+          consumption: { '*': [0.95, { var: ['duration', 5] }] },
+          unit: 'Second'
+        }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    const labels = vm.rows[0].conditions.map((condition: any) => vm.formatCondition(condition));
+    expect(labels).toEqual(['Model: doubao-seedance-2-0-mini', 'Resolution: 480p', 'Reference Video: Required']);
+    expect(labels.join(' ')).not.toContain('Other configurations');
+    expect(vm.showBillingMethod).toBe(false);
+    expect(vm.showRemarks).toBe(false);
+  });
+
+  it('hides billing and notes columns when every row repeats the same empty values', () => {
+    const wrapper = mountDialog({
+      id: 'service-1',
+      title: 'Example',
+      cost: [
+        { conditions: {}, consumption: { '*': [0.5, { var: ['duration', 5] }] }, unit: 'Second' },
+        { conditions: {}, consumption: { '*': [0.8, { var: ['duration', 5] }] }, unit: 'Second' }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.showBillingMethod).toBe(false);
+    expect(vm.showRemarks).toBe(false);
+    expect(vm.compactTable).toBe(true);
+    expect(vm.dialogWidth).toContain('680px');
+  });
+
+  it('keeps informative columns when values differ or notes exist', () => {
+    const wrapper = mountDialog({
+      id: 'service-1',
+      title: 'Example',
+      cost: [
+        { conditions: {}, consumption: 0, remark: 'Welcome tier' },
+        { conditions: {}, consumption: 1 }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.showBillingMethod).toBe(true);
+    expect(vm.showRemarks).toBe(true);
+    expect(vm.compactTable).toBe(false);
+    expect(vm.dialogWidth).toContain('880px');
   });
 
   it('shows an explicit unit for fixed per-unit rules', () => {

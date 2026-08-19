@@ -180,8 +180,8 @@
     "description": "Etiqueta para regras de preço sem condições aplicáveis."
   },
   "message.otherConfigurations": {
-    "message": "Outras Configurações",
-    "description": "Texto de segurança quando não é possível resumir as condições de preço."
+    "message": "Inclui condições adicionais",
+    "description": "Texto de segurança exibido quando as regras de preço contêm condições que não podem ser completamente resumidas."
   },
   "message.calculated": {
     "message": "Calculado com base nos parâmetros da solicitação",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Unidade de Acesso",
     "description": "Preço por unidade de acesso."
+  },
+  "condition.referenceVideo": {
+    "message": "Vídeo de referência",
+    "description": "Indica o campo de condição de preço que utiliza um vídeo de referência."
+  },
+  "message.required": {
+    "message": "Obrigatório",
+    "description": "Valor exibido quando uma funcionalidade ou entrada é exigida nas condições de preço."
+  },
+  "operator.anyOf": {
+    "message": "Qualquer um satisfaz: {options}",
+    "description": "Formata as condições de preço que podem ser atendidas por qualquer uma das opções listadas."
+  },
+  "condition.version": {
+    "message": "Versão",
+    "description": "Campo de condição de preço para a versão do modelo."
+  },
+  "condition.hd": {
+    "message": "modo de alta definição",
+    "description": "Campo de condição de preço para saída em alta definição."
+  },
+  "condition.styleReference": {
+    "message": "Referência de Estilo",
+    "description": "Campo de condição de preço para a entrada de referência de estilo."
+  },
+  "condition.moodboard": {
+    "message": "entrada de moodboard",
+    "description": "Campo de condição de preço para entrada de moodboard."
+  },
+  "condition.generateAudio": {
+    "message": "Gerar Áudio",
+    "description": "Campo de condição de preço para geração de áudio."
   }
 }

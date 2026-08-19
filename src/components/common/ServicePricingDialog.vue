@@ -2,7 +2,7 @@
   <el-dialog
     :model-value="visible"
     :title="dialogTitle"
-    width="min(880px, calc(100vw - 24px))"
+    :width="dialogWidth"
     append-to-body
     class="service-pricing-dialog"
     @close="$emit('update:visible', false)"
@@ -12,7 +12,7 @@
     <el-skeleton v-if="!service" :rows="4" animated />
     <el-empty v-else-if="!rows.length" :description="$t('service.message.noPricing')" />
     <div v-else class="pricing-table-wrap">
-      <el-table :data="rows" stripe class="pricing-table">
+      <el-table :data="rows" stripe :class="['pricing-table', { 'pricing-table--compact': compactTable }]">
         <el-table-column :label="$t('service.field.conditions')" min-width="250">
           <template #default="{ row }">
             <div v-if="row.conditions.length" class="condition-list">
@@ -29,7 +29,7 @@
             <span v-else class="muted">{{ $t('service.message.allRequests') }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('service.field.billingMethod')" min-width="130">
+        <el-table-column v-if="showBillingMethod" :label="$t('service.field.billingMethod')" min-width="130">
           <template #default="{ row }">{{ billingLabel(row) }}</template>
         </el-table-column>
         <el-table-column :label="$t('service.field.price')" min-width="150">
@@ -37,7 +37,7 @@
             <span class="price-value">{{ priceLabel(row) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('service.field.remark')" min-width="180">
+        <el-table-column v-if="showRemarks" :label="$t('service.field.remark')" min-width="180">
           <template #default="{ row }">
             <span class="remark">{{ row.remark || '—' }}</span>
           </template>
@@ -61,7 +61,13 @@ const TRANSLATED_CONDITION_FIELDS = new Set([
   'mode',
   'quality',
   'number',
-  'count'
+  'count',
+  'referenceVideo',
+  'version',
+  'hd',
+  'styleReference',
+  'moodboard',
+  'generateAudio'
 ]);
 const TRANSLATED_UNITS = new Set(['Credit', 'credits', 'Count', 'Second', 'Token', 'MB', 'GB']);
 import {
@@ -86,6 +92,18 @@ export default defineComponent({
     dialogTitle(): string {
       const title = this.service?.title;
       return title ? this.$t('service.title.pricingFor', { service: title }) : this.$t('service.title.pricing');
+    },
+    showBillingMethod(): boolean {
+      return new Set(this.rows.map((row) => row.billingKind)).size > 1;
+    },
+    showRemarks(): boolean {
+      return this.rows.some((row) => Boolean(row.remark));
+    },
+    compactTable(): boolean {
+      return !this.showBillingMethod && !this.showRemarks;
+    },
+    dialogWidth(): string {
+      return this.compactTable ? 'min(680px, calc(100vw - 24px))' : 'min(880px, calc(100vw - 24px))';
     }
   },
   methods: {
@@ -97,9 +115,14 @@ export default defineComponent({
     },
     formatCondition(condition: PricingCondition): string {
       if (condition.operator === 'other') return this.$t('service.message.otherConfigurations');
+      if (condition.operator === 'anyOf') {
+        return this.$t('service.operator.anyOf', {
+          options: (condition.options || []).map((option) => this.formatCondition(option)).join('; ')
+        });
+      }
       return this.$t(`service.operator.${condition.operator}`, {
         field: this.fieldLabel(condition.field),
-        value: condition.value
+        value: condition.value === 'required' ? this.$t('service.message.required') : condition.value
       });
     },
     billingLabel(row: ServicePricingRow): string {
@@ -140,6 +163,10 @@ export default defineComponent({
 
 .pricing-table {
   min-width: 720px;
+}
+
+.pricing-table--compact {
+  min-width: 480px;
 }
 
 .condition-list {

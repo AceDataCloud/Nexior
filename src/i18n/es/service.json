@@ -180,8 +180,8 @@
     "description": "Etiqueta para las reglas de precios sin condiciones aplicables."
   },
   "message.otherConfigurations": {
-    "message": "Otras configuraciones",
-    "description": "Texto de respaldo seguro cuando no se pueden resumir las condiciones de precios."
+    "message": "Incluye condiciones adicionales",
+    "description": "Texto de seguridad que se muestra cuando las reglas de precio contienen condiciones que no se pueden resumir completamente."
   },
   "message.calculated": {
     "message": "Calculado según los parámetros de solicitud",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Token",
     "description": "Precio por unidad de token."
+  },
+  "condition.referenceVideo": {
+    "message": "Video de referencia",
+    "description": "Indica el campo de condición de precio que utiliza un video de referencia."
+  },
+  "message.required": {
+    "message": "Requerido",
+    "description": "Valor que se muestra cuando una característica o entrada es necesaria para la condición de precio."
+  },
+  "operator.anyOf": {
+    "message": "Cualquiera que cumpla: {options}",
+    "description": "Formato para listar las condiciones de precio que pueden ser cumplidas por cualquiera de las opciones."
+  },
+  "condition.version": {
+    "message": "Versión",
+    "description": "Campo de condiciones de precio para la versión del modelo."
+  },
+  "condition.hd": {
+    "message": "modo de alta definición",
+    "description": "Campo de condición de precio para salida en alta definición."
+  },
+  "condition.styleReference": {
+    "message": "Referencia de estilo",
+    "description": "Campo de condiciones de precio para la entrada de referencia de estilo."
+  },
+  "condition.moodboard": {
+    "message": "Tablero de inspiración",
+    "description": "Campo de condiciones de precio para la entrada de tablero de inspiración."
+  },
+  "condition.generateAudio": {
+    "message": "Generar audio",
+    "description": "Campo de condiciones de precio para la generación de audio."
   }
 }

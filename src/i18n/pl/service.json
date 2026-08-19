@@ -180,8 +180,8 @@
     "description": "Etykieta zasad cenowych bez warunków zastosowania."
   },
   "message.otherConfigurations": {
-    "message": "Inne konfiguracje",
-    "description": "Tekst zabezpieczający, gdy nie można ująć warunków cenowych."
+    "message": "Zawiera dodatkowe warunki",
+    "description": "Bezpieczny tekst wyświetlany, gdy zasady cenowe zawierają warunki, które nie mogą być w pełni opisane."
   },
   "message.calculated": {
     "message": "Obliczone na podstawie parametrów żądania",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Jednostka dostępu",
     "description": "Cena za jednostkę dostępu."
+  },
+  "condition.referenceVideo": {
+    "message": "Film referencyjny",
+    "description": "Oznacza pole warunków cenowych używające filmu referencyjnego."
+  },
+  "message.required": {
+    "message": "Wymagane",
+    "description": "Wartość wyświetlana, gdy warunki cenowe wymagają określonej funkcji lub wprowadzenia."
+  },
+  "operator.anyOf": {
+    "message": "Dowolny z: {options}",
+    "description": "Sformatowane warunki cenowe, które spełniają dowolną z wymienionych opcji."
+  },
+  "condition.version": {
+    "message": "Wersja",
+    "description": "Pole warunkowe ceny dla wersji modelu."
+  },
+  "condition.hd": {
+    "message": "tryb wysokiej rozdzielczości",
+    "description": "Pole warunkowe ceny dla trybu wysokiej rozdzielczości."
+  },
+  "condition.styleReference": {
+    "message": "Referencja stylu",
+    "description": "Pole warunkowe ceny dla wejścia referencyjnego stylu."
+  },
+  "condition.moodboard": {
+    "message": "wejście tablicy nastrojów",
+    "description": "Pole warunkowe ceny dla wejścia tablicy nastrojów."
+  },
+  "condition.generateAudio": {
+    "message": "Generuj audio",
+    "description": "Pole warunkowe ceny dla generowania audio."
   }
 }

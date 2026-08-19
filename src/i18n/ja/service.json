@@ -180,8 +180,8 @@
     "description": "適用条件がない価格ルールのラベル。"
   },
   "message.otherConfigurations": {
-    "message": "その他の設定",
-    "description": "価格条件を要約できない場合の安全なフォールバック文。"
+    "message": "追加条件あり",
+    "description": "価格ルールに完全には説明できない条件が含まれている場合に表示される安全策の文言です。"
   },
   "message.calculated": {
     "message": "リクエストパラメータに基づいて計算",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "トークン",
     "description": "毎トークンの価格単位。"
+  },
+  "condition.referenceVideo": {
+    "message": "参考動画",
+    "description": "参考動画を使用する価格条件フィールドを示します。"
+  },
+  "message.required": {
+    "message": "必須",
+    "description": "価格条件が特定の機能や入力を要求する際に表示される値です。"
+  },
+  "operator.anyOf": {
+    "message": "任一満たす：{options}",
+    "description": "任意の列挙されたオプションを満たす価格条件をフォーマットします。"
+  },
+  "condition.version": {
+    "message": "バージョン",
+    "description": "モデルバージョンの価格条件フィールド。"
+  },
+  "condition.hd": {
+    "message": "高解像度",
+    "description": "高解像度出力の価格条件フィールドです。"
+  },
+  "condition.styleReference": {
+    "message": "スタイルリファレンス",
+    "description": "スタイルリファレンス入力の価格条件フィールド。"
+  },
+  "condition.moodboard": {
+    "message": "ムードボード",
+    "description": "ムードボード入力の価格条件フィールド。"
+  },
+  "condition.generateAudio": {
+    "message": "音声生成",
+    "description": "音声生成の価格条件フィールド。"
   }
 }

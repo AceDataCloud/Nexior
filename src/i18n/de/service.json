@@ -180,8 +180,8 @@
     "description": "Label für Preisregeln ohne anwendbare Bedingungen."
   },
   "message.otherConfigurations": {
-    "message": "Andere Konfigurationen",
-    "description": "Sicherheitsformulierung, wenn die Preisbedingungen nicht zusammengefasst werden können."
+    "message": "Enthält zusätzliche Bedingungen",
+    "description": "Sicherheitsformulierung, die angezeigt wird, wenn die Preisregel Bedingungen enthält, die nicht vollständig zusammengefasst werden können."
   },
   "message.calculated": {
     "message": "Basierend auf den Anfrageparametern berechnet",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Token",
     "description": "Preiseinheit pro Token."
+  },
+  "condition.referenceVideo": {
+    "message": "Referenzvideo",
+    "description": "Bezieht sich auf das Preisbedingungsfeld, das ein Referenzvideo verwendet."
+  },
+  "message.required": {
+    "message": "Erforderlich",
+    "description": "Wert, der angezeigt wird, wenn eine Funktion oder Eingabe für die Preisbedingungen erforderlich ist."
+  },
+  "operator.anyOf": {
+    "message": "Mindestens eines erfüllt: {options}",
+    "description": "Formatierung für Preisbedingungen, bei denen mindestens eine der aufgelisteten Optionen erfüllt sein muss."
+  },
+  "condition.version": {
+    "message": "Modellversion",
+    "description": "Preisbedingung für die Modellversion."
+  },
+  "condition.hd": {
+    "message": "hochauflösend",
+    "description": "Preisbedingung für hochauflösende Ausgabe."
+  },
+  "condition.styleReference": {
+    "message": "Stilreferenz",
+    "description": "Feld für Preisbedingungen der Stilreferenzeingabe."
+  },
+  "condition.moodboard": {
+    "message": "Stimmungsboard",
+    "description": "Feld für Preisbedingungen der Stimmungsboard-Eingabe."
+  },
+  "condition.generateAudio": {
+    "message": "Audio generieren",
+    "description": "Feld für Preisbedingungen der Audioerstellung."
   }
 }

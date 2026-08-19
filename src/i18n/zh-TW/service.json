@@ -180,8 +180,8 @@
     "description": "沒有適用條件的價格規則標籤。"
   },
   "message.otherConfigurations": {
-    "message": "其他配置",
-    "description": "無法概括價格條件時的安全兜底文案。"
+    "message": "含附加條件",
+    "description": "價格規則含有無法完整概括的條件時顯示的安全兜底文案。"
   },
   "message.calculated": {
     "message": "根據請求參數計算",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "令牌",
     "description": "每令牌價格單位。"
+  },
+  "condition.referenceVideo": {
+    "message": "參考視頻",
+    "description": "表示使用參考視頻的價格條件字段。"
+  },
+  "message.required": {
+    "message": "需要",
+    "description": "價格條件要求某項功能或輸入時顯示的值。"
+  },
+  "operator.anyOf": {
+    "message": "任一滿足：{options}",
+    "description": "格式化任一列出選項滿足即可的價格條件。"
+  },
+  "condition.version": {
+    "message": "版本",
+    "description": "模型版本價格條件字段。"
+  },
+  "condition.hd": {
+    "message": "高清",
+    "description": "高清輸出價格條件字段。"
+  },
+  "condition.styleReference": {
+    "message": "風格參考",
+    "description": "風格參考輸入價格條件字段。"
+  },
+  "condition.moodboard": {
+    "message": "情緒板",
+    "description": "情緒板輸入價格條件字段。"
+  },
+  "condition.generateAudio": {
+    "message": "生成音頻",
+    "description": "音頻生成價格條件字段。"
   }
 }

@@ -180,8 +180,8 @@
     "description": "علامة قواعد الأسعار التي لا تحتوي على شروط مطبقة."
   },
   "message.otherConfigurations": {
-    "message": "إعدادات أخرى",
-    "description": "نص أمان للتغطية عندما لا يمكن تلخيص شروط الأسعار."
+    "message": "يشمل شروط إضافية",
+    "description": "نص أمان يظهر عندما تحتوي قاعدة السعر على شروط لا يمكن تلخيصها بالكامل."
   },
   "message.calculated": {
     "message": "محسوب بناءً على معلمات الطلب",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "رمز",
     "description": "وحدة سعر لكل رمز."
+  },
+  "condition.referenceVideo": {
+    "message": "فيديو مرجعي",
+    "description": "يمثل حقل شرط السعر الذي يستخدم فيديو مرجعي."
+  },
+  "message.required": {
+    "message": "مطلوب",
+    "description": "القيمة المعروضة عند طلب ميزة أو إدخال معين في شرط السعر."
+  },
+  "operator.anyOf": {
+    "message": "أي مما يلي: {options}",
+    "description": "تنسيق شرط السعر الذي يمكن أن يتحقق من أي خيار مدرج."
+  },
+  "condition.version": {
+    "message": "الإصدار",
+    "description": "حقل شرط سعر إصدار النموذج."
+  },
+  "condition.hd": {
+    "message": "عالي الدقة",
+    "description": "حقل شرط سعر الإخراج عالي الدقة."
+  },
+  "condition.styleReference": {
+    "message": "مرجع النمط",
+    "description": "حقل شرط سعر إدخال مرجع النمط."
+  },
+  "condition.moodboard": {
+    "message": "لوحة المزاج",
+    "description": "حقل شرط سعر إدخال لوحة المزاج."
+  },
+  "condition.generateAudio": {
+    "message": "توليد الصوت",
+    "description": "حقل شرط سعر توليد الصوت."
   }
 }

@@ -180,8 +180,8 @@
     "description": "Hintaehdon etiketti, jolla ei ole soveltuvia ehtoja."
   },
   "message.otherConfigurations": {
-    "message": "Muut asetukset",
-    "description": "Kun hinnan ehtoja ei voida tiivistää."
+    "message": "Sisältää lisäehdot",
+    "description": "Turvateksti, joka näytetään, kun hintasäännöissä on ehtoja, joita ei voida täydellisesti tiivistää."
   },
   "message.calculated": {
     "message": "Lasketaan pyynnön parametrien mukaan",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Token",
     "description": "Hinta per token-yksikkö."
+  },
+  "condition.referenceVideo": {
+    "message": "Viitevideo",
+    "description": "Ilmaisee hintaehtokentän, jossa käytetään viitevideota."
+  },
+  "message.required": {
+    "message": "Vaaditaan",
+    "description": "Arvo, joka näytetään, kun hintaehto vaatii tietyn toiminnon tai syötteen."
+  },
+  "operator.anyOf": {
+    "message": "Mikä tahansa täyttää: {options}",
+    "description": "Muotoilee hinnan ehdon, jossa mikä tahansa luetelluista vaihtoehdoista täyttää vaatimukset."
+  },
+  "condition.version": {
+    "message": "Versio",
+    "description": "Mallin version hintaehtokenttä."
+  },
+  "condition.hd": {
+    "message": "Korkealaatuinen",
+    "description": "Korkealaatuinen tulostus hintaehdon kenttä."
+  },
+  "condition.styleReference": {
+    "message": "Tyyliviite",
+    "description": "Tyyliviitteen syöttöhintaehtokenttä."
+  },
+  "condition.moodboard": {
+    "message": "Tunnelmapaneeli",
+    "description": "Tunnelmapaneelin syöttöhintaehtokenttä."
+  },
+  "condition.generateAudio": {
+    "message": "Generoi ääni",
+    "description": "Äänigeneroinnin hintaehtokenttä."
   }
 }

@@ -180,8 +180,8 @@
     "description": "Étiquette pour les règles de prix sans conditions applicables."
   },
   "message.otherConfigurations": {
-    "message": "Autres configurations",
-    "description": "Texte de sécurité lorsque les conditions de prix ne peuvent pas être résumées."
+    "message": "Conditions supplémentaires incluses",
+    "description": "Texte de sécurité affiché lorsque la règle de prix contient des conditions qui ne peuvent pas être complètement résumées."
   },
   "message.calculated": {
     "message": "Calculé en fonction des paramètres de la demande",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "jeton",
     "description": "Unité de prix par jeton."
+  },
+  "condition.referenceVideo": {
+    "message": "Vidéo de référence",
+    "description": "Indique le champ de condition de prix utilisant une vidéo de référence."
+  },
+  "message.required": {
+    "message": "Requis",
+    "description": "Valeur affichée lorsque la condition de prix exige une fonctionnalité ou une saisie."
+  },
+  "operator.anyOf": {
+    "message": "Tout satisfait : {options}",
+    "description": "Format pour les conditions de prix où n'importe quelle option peut être satisfaite."
+  },
+  "condition.version": {
+    "message": "version du modèle",
+    "description": "Champ de condition de prix pour la version du modèle."
+  },
+  "condition.hd": {
+    "message": "mode haute définition",
+    "description": "Champ de condition de prix pour la sortie en haute définition."
+  },
+  "condition.styleReference": {
+    "message": "Référence de style",
+    "description": "Champ de condition de prix pour l'entrée de référence de style."
+  },
+  "condition.moodboard": {
+    "message": "entrée de moodboard",
+    "description": "Champ de condition de prix pour l'entrée de moodboard."
+  },
+  "condition.generateAudio": {
+    "message": "Générer de l'audio",
+    "description": "Champ de condition de prix pour la génération audio."
   }
 }

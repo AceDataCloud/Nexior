@@ -180,8 +180,8 @@
     "description": "Etikett för prisregler utan giltiga villkor."
   },
   "message.otherConfigurations": {
-    "message": "Övriga konfigurationer",
-    "description": "Säkerhetsformulering när prisvillkor inte kan sammanfattas."
+    "message": "Inkluderar ytterligare villkor",
+    "description": "Visas när prisregeln innehåller villkor som inte kan sammanfattas helt."
   },
   "message.calculated": {
     "message": "Beräknat utifrån begärningsparametrar",
@@ -282,5 +282,37 @@
   "unit.Token": {
     "message": "Token",
     "description": "Prisenhet per token."
+  },
+  "condition.referenceVideo": {
+    "message": "Referensvideo",
+    "description": "Anger prisvillkoret för att använda referensvideo."
+  },
+  "message.required": {
+    "message": "Obligatoriskt",
+    "description": "Värdet som visas när ett prisvillkor kräver en viss funktion eller inmatning."
+  },
+  "operator.anyOf": {
+    "message": "Någon av: {options}",
+    "description": "Formaterar ett prisvillkor som uppfyller någon av de listade alternativen."
+  },
+  "condition.version": {
+    "message": "Modellversion",
+    "description": "Modellversion prisvillkor fält."
+  },
+  "condition.hd": {
+    "message": "Högupplöst",
+    "description": "Högupplöst utdata prisvillkor fält."
+  },
+  "condition.styleReference": {
+    "message": "Stilreferens",
+    "description": "Fält för prisvillkor för stilreferens indata."
+  },
+  "condition.moodboard": {
+    "message": "Stämningsbräda",
+    "description": "Stämningsbräda inmatning prisvillkor fält."
+  },
+  "condition.generateAudio": {
+    "message": "Generera ljud",
+    "description": "Fält för prisvillkor för ljudgenerering."
   }
 }
