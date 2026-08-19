@@ -4,7 +4,11 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
+      <showcase-result-tabs service="seedream">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -21,9 +25,11 @@ import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { ISeedreamTask } from '@/models';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -36,9 +42,10 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedream')],
   inject: ['initialized'],
   data(): IData {
     return {

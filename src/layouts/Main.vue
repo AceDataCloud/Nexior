@@ -3,7 +3,7 @@
     <router-view class="main" />
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
-      v-if="application || x402Scenario"
+      v-if="hasApplicationContext && (application || x402Scenario)"
       class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
@@ -13,7 +13,7 @@
       :scenario="x402Scenario"
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
     />
-    <application-confirm v-model.visible="applying" @apply="onApply" />
+    <application-confirm v-if="hasApplicationContext" v-model.visible="applying" @apply="onApply" />
   </div>
 </template>
 
@@ -57,10 +57,15 @@ export default defineComponent({
     };
   },
   computed: {
-    appName(): keyof IAppState {
-      return this.$route.meta.appName as keyof IAppState;
+    appName(): keyof IAppState | undefined {
+      const appName = this.$route.meta.appName;
+      return typeof appName === 'string' && appName ? (appName as keyof IAppState) : undefined;
+    },
+    hasApplicationContext(): boolean {
+      return Boolean(this.appName);
     },
     x402Scenario(): string | undefined {
+      if (!this.appName) return undefined;
       if (this.appName === 'kling' && this.$store.state.kling?.taskType === 'motion') return undefined;
       return this.x402ScenarioEnabled ? String(this.appName) : undefined;
     },
@@ -94,30 +99,34 @@ export default defineComponent({
       );
     },
     application() {
+      if (!this.appName) return undefined;
       // Global application and individual application can be used here
       return this.$store.state[this.appName]?.application;
     },
     applications() {
       // Combine individual and global applications
-      const individualApplications = this.$store.state[this.appName]?.applications ?? [];
+      const individualApplications = this.appName ? (this.$store.state[this.appName]?.applications ?? []) : [];
       console.debug('individualApplications', individualApplications);
       const globalApplications = this.$store.state.applications ?? [];
       console.debug('globalApplications', globalApplications);
       return globalApplications.concat(individualApplications);
     },
     loading() {
-      return this.$store.state[this.appName]?.status?.getApplications === Status.Request;
+      return this.appName ? this.$store.state[this.appName]?.status?.getApplications === Status.Request : false;
     },
     service() {
-      return this.$store.state[this.appName]?.service;
+      return this.appName ? this.$store.state[this.appName]?.service : undefined;
     },
     userId() {
       return this.$store.state.user?.id;
     }
   },
   watch: {
-    appName() {
+    appName(newValue: keyof IAppState | undefined) {
+      window.clearInterval(this.balanceTimer);
+      this.balanceTimer = 0;
       this.initialize();
+      if (newValue) this.startBalanceRefresh();
     },
     userId(newValue: string | undefined, oldValue: string | undefined) {
       if (newValue && newValue !== oldValue) {
@@ -133,9 +142,8 @@ export default defineComponent({
     // service-page navigation, so the anonymous-arrow version was leaking
     // one listener per visit, all of which kept the mounted instance alive.
     window.addEventListener('resize', this.onResize);
-    // Keep the floating Credits pill live after generations spend balance:
-    // refresh on an interval and whenever the tab regains focus.
-    this.balanceTimer = window.setInterval(this.refreshBalances, BALANCE_REFRESH_INTERVAL_MS);
+    // Keep the floating Credits pill live only on application-owning routes.
+    if (this.hasApplicationContext) this.startBalanceRefresh();
     document.addEventListener('visibilitychange', this.onVisibility);
   },
   beforeUnmount() {
@@ -147,8 +155,12 @@ export default defineComponent({
     onResize() {
       this.mobile = window.innerWidth < 768;
     },
+    startBalanceRefresh() {
+      if (!this.appName || this.balanceTimer) return;
+      this.balanceTimer = window.setInterval(this.refreshBalances, BALANCE_REFRESH_INTERVAL_MS);
+    },
     onVisibility() {
-      if (typeof document !== 'undefined' && !document.hidden) {
+      if (this.appName && typeof document !== 'undefined' && !document.hidden) {
         this.refreshBalances();
       }
     },
@@ -176,6 +188,10 @@ export default defineComponent({
     async initialize() {
       const runId = ++this.initializeRunId;
       this.initialized = false;
+      if (!this.appName) {
+        this.initialized = true;
+        return;
+      }
       // Guests browse without an application/credential — defer all of that
       // (and login itself) until they actually start an operation. Skip the
       // whole bootstrap so we neither fire doomed authenticated requests nor

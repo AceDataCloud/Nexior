@@ -22,6 +22,7 @@ import { ERROR_CODE_USED_UP } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { normalizeSeedanceRequest } from '@/utils/seedance';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
@@ -46,7 +47,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedance')],
   inject: ['initialized'],
   data(): IData {
     return {

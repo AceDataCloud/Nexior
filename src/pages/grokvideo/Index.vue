@@ -21,6 +21,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP, isGrokVideoImageOnlyModel } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -44,7 +45,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('grokvideo')],
   inject: ['initialized'],
   data(): IData {
     return {

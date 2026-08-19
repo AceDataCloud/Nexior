@@ -379,8 +379,276 @@
     "message": "Ingen kortbindning, registrera dig för att prova plattformens AI-funktioner.",
     "description": "Undertext för handlingsuppmaning"
   },
+  "home.createNow": {
+    "message": "Skapa nu",
+    "description": "Startsida kort åtgärdstext"
+  },
+  "home.banner.video.eyebrow": {
+    "message": "AI-video",
+    "description": "Videobanner etikett"
+  },
+  "home.banner.video.title": {
+    "message": "Låt en idé bli en filmsekvens",
+    "description": "Videobanner titel"
+  },
+  "home.banner.video.description": {
+    "message": "Text, bilder och referensmaterial kan bli scener, enkelt skapa kortfilmer med filmkänsla.",
+    "description": "Videobanner beskrivning"
+  },
+  "home.banner.image.eyebrow": {
+    "message": "AI-bilder",
+    "description": "Bildbanner etikett"
+  },
+  "home.banner.image.title": {
+    "message": "Börja skapa med en beskrivning",
+    "description": "Bildbanner titel"
+  },
+  "home.banner.image.description": {
+    "message": "Skapa, redigera, förstora och stilöverföra för att exakt återge bilderna i ditt sinne.",
+    "description": "Bildbanner beskrivning"
+  },
+  "home.banner.production.eyebrow": {
+    "message": "Automatisk produktion",
+    "description": "Färdig video banner etikett"
+  },
+  "home.banner.production.title": {
+    "message": "Överlåt temat till AI, få direkt en färdig video",
+    "description": "Färdig video banner titel"
+  },
+  "home.banner.production.description": {
+    "message": "Manus, bilder, röstöverföring, undertexter och musik slutförs automatiskt, inspiration blir snabbt till verk.",
+    "description": "Färdig video banner beskrivning"
+  },
+  "home.quick.eyebrow": {
+    "message": "Snabbstart",
+    "description": "Etikett för snabb ingångsområde"
+  },
+  "home.quick.title": {
+    "message": "Vad vill du skapa idag?",
+    "description": "Titel för snabb ingångsområde"
+  },
+  "home.quick.subtitle": {
+    "message": "Ingen forskning av modeller behövs, börja direkt från dina skapelsemål.",
+    "description": "Beskrivning av snabb ingångsområde"
+  },
+  "home.quick.chat.title": {
+    "message": "Prata med AI",
+    "description": "Titel för snabb ingång för konversation"
+  },
+  "home.quick.chat.description": {
+    "message": "Skrivande, analys, lärande och inspirationskollision",
+    "description": "Beskrivning av snabb ingång för konversation"
+  },
+  "home.quick.image.title": {
+    "message": "Generera en bild",
+    "description": "Titel för snabb ingång för bilder"
+  },
+  "home.quick.image.description": {
+    "message": "Affischer, produktbilder, karaktärer och visuell design",
+    "description": "Beskrivning av snabb ingång för bilder"
+  },
+  "home.quick.music.title": {
+    "message": "Skapa en låt",
+    "description": "Titel för snabb ingång för musik"
+  },
+  "home.quick.music.description": {
+    "message": "Från stil och texter till fullständig musik",
+    "description": "Beskrivning av snabb ingång för musik"
+  },
+  "model.pika": {
+    "message": "Kreativ video- och specialeffektgenerator för socialt innehåll.",
+    "description": "Beskrivning av modellen"
+  },
   "nav.overview": {
     "message": "Översikt över funktioner",
     "description": "Ingången till översikten över funktioner i navigeringen"
+  },
+  "home.carousel.label": {
+    "message": "Utvalda skapelser rekommenderas",
+    "description": "Hemskärmskarusellens tillgänglighetsetikett"
+  },
+  "home.carousel.previous": {
+    "message": "Föregående rekommendation",
+    "description": "Hemskärmskarusellens föregående knapp"
+  },
+  "home.carousel.next": {
+    "message": "Nästa rekommendation",
+    "description": "Hemskärmskarusellens nästa knapp"
+  },
+  "home.carousel.goto": {
+    "message": "Visa nummer {number}: {title}",
+    "description": "Hemskärmskarusellens punktknapp"
+  },
+  "home.quick.video.title": {
+    "message": "Skapa en video",
+    "description": "Titel för snabbåtkomst till video"
+  },
+  "home.quick.video.description": {
+    "message": "Skapa video med text, skapa video med bilder och referensmaterial",
+    "description": "Beskrivning av snabbåtkomst till video"
+  },
+  "home.quick.explore": {
+    "message": "Visa verktyg",
+    "description": "Knapp för att visa kategorikort"
+  },
+  "home.quick.close": {
+    "message": "Dölj verktyg",
+    "description": "Knapp för att dölja kategorikort"
+  },
+  "home.quick.panelLabel": {
+    "message": "Tillgängliga verktyg för {category}",
+    "description": "Tillgänglighetsetikett för sekundär panel av kategorin"
+  },
+  "home.showcase.eyebrow": {
+    "message": "Utvalda verk",
+    "description": "Etikett för området med utvalda verk"
+  },
+  "home.showcase.title": {
+    "message": "Börja nästa skapelse med bra verk",
+    "description": "Titel för området med utvalda verk"
+  },
+  "home.showcase.subtitle": {
+    "message": "Förhandsvisa teamets utvalda verkliga resultat, du kan fortsätta justera liknande parametrar efter att du gått in i arbetsytan.",
+    "description": "Beskrivning för området med utvalda verk"
+  },
+  "home.showcase.preview": {
+    "message": "Förhandsvisning: {title}",
+    "description": "Tillgänglighetsetikett för förhandsvisning av utvalda verk"
+  },
+  "home.showcase.play": {
+    "message": "Spela: {title}",
+    "description": "Spela förhandsvisning av verk"
+  },
+  "home.showcase.pause": {
+    "message": "Pausa: {title}",
+    "description": "Pausa förhandsvisning av verk"
+  },
+  "home.showcase.createSimilar": {
+    "message": "Skapa liknande",
+    "description": "Knapp för att skapa liknande"
+  },
+  "home.showcase.unavailable": {
+    "message": "Detta utvalda verk är tillfälligt otillgängligt",
+    "description": "Meddelande om att läsa utvalda verk misslyckades"
+  },
+  "home.showcase.replaceTitle": {
+    "message": "Ersätta nuvarande inmatning?",
+    "description": "Bekräftelse titel för att skapa liknande och ersätta"
+  },
+  "home.showcase.replaceMessage": {
+    "message": "Du har redan fyllt i skapelseinnehållet. Att fortsätta kommer att ersätta nuvarande inmatning med parametrarna från det utvalda verket.",
+    "description": "Bekräftelsebeskrivning för att skapa liknande och ersätta"
+  },
+  "home.showcase.replace": {
+    "message": "Ersätt och fortsätt",
+    "description": "Bekräfta knapp för att skapa liknande och ersätta"
+  },
+  "home.showcase.cancel": {
+    "message": "Behåll nuvarande inmatning",
+    "description": "Avbryt knapp för att skapa liknande"
+  },
+  "inspiration.navigation": {
+    "message": "Offentlig sida navigering",
+    "description": "Hem och inspiration sida navigering tillgänglighets etikett"
+  },
+  "inspiration.home": {
+    "message": "Hem",
+    "description": "Offentlig sida hem navigering"
+  },
+  "inspiration.eyebrow": {
+    "message": "Inspiration galleria",
+    "description": "Inspiration sida topp etikett"
+  },
+  "inspiration.title": {
+    "message": "Inspiration",
+    "description": "Titeln på inspirationssidan och navigeringsnamnet"
+  },
+  "inspiration.subtitle": {
+    "message": "Bläddra bland teamets utvalda verkliga skapelser, se fullständig Prompt och parametrar, och börja skapa liknande verk från dina favoriter.",
+    "description": "Inspiration sida undertitel"
+  },
+  "inspiration.categories": {
+    "message": "Verktyper",
+    "description": "Media typ navigering tillgänglighets etikett"
+  },
+  "inspiration.models": {
+    "message": "Skapande modeller",
+    "description": "Modellfilter tillgänglighets etikett"
+  },
+  "inspiration.allModels": {
+    "message": "Alla modeller",
+    "description": "Rensa modellfilter"
+  },
+  "inspiration.all": {
+    "message": "Alla",
+    "description": "Alla verk kategorier"
+  },
+  "inspiration.images": {
+    "message": "Bilder",
+    "description": "Bildverk kategori"
+  },
+  "inspiration.videos": {
+    "message": "Video",
+    "description": "Videoverk kategori"
+  },
+  "inspiration.music": {
+    "message": "Musik",
+    "description": "Musikverk kategori"
+  },
+  "inspiration.video": {
+    "message": "Video",
+    "description": "Videokortstyp"
+  },
+  "inspiration.audio": {
+    "message": "Ljud",
+    "description": "Ljudkorttyp"
+  },
+  "inspiration.loading": {
+    "message": "Laddar utvalda verk…",
+    "description": "Inspiration sida laddningsstatus"
+  },
+  "inspiration.loadFailed": {
+    "message": "Misslyckades med att ladda utvalda verk, försök igen senare.",
+    "description": "Inspiration sida laddning misslyckades"
+  },
+  "inspiration.retry": {
+    "message": "Ladda om",
+    "description": "Inspiration sida försök igen knapp"
+  },
+  "inspiration.empty": {
+    "message": "Denna kategori har för närvarande inga verk.",
+    "description": "Inspiration sida tomt tillstånd"
+  },
+  "inspiration.prompt": {
+    "message": "Prompt",
+    "description": "Creation detail prompt heading"
+  },
+  "inspiration.parameters": {
+    "message": "Skapande parametrar",
+    "description": "Verk detaljer parameter titel"
+  },
+  "serviceGallery.currentTasks": {
+    "message": "Aktuella uppgifter",
+    "description": "Service Gallery och aktuella uppgiftflikar"
+  },
+  "serviceGallery.gallery": {
+    "message": "Galleri",
+    "description": "Service Gallery och aktuella uppgiftflikar"
+  },
+  "serviceGallery.loading": {
+    "message": "Laddar utvalda verk…",
+    "description": "Service Gallery och aktuella uppgiftflikar"
+  },
+  "serviceGallery.loadFailed": {
+    "message": "Misslyckades med att ladda galleriet, försök igen senare.",
+    "description": "Service Gallery och aktuella uppgiftflikar"
+  },
+  "serviceGallery.retry": {
+    "message": "Ladda om",
+    "description": "Service Gallery och aktuella uppgiftflikar"
+  },
+  "serviceGallery.empty": {
+    "message": "Inga utvalda verk för tillfället.",
+    "description": "Service Gallery och aktuella uppgiftflikar"
   }
 }

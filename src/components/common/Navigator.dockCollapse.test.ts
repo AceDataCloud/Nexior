@@ -1,5 +1,9 @@
 // @vitest-environment jsdom
+import { mount, shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { ROUTE_INDEX } from '@/router';
 import Navigator from './Navigator.vue';
 
 type DockCtx = {
@@ -20,6 +24,13 @@ function ctx(direction: string, dockCollapsed?: boolean): DockCtx {
 describe('Navigator mobile dock collapse', () => {
   beforeEach(() => {
     document.documentElement.classList.remove('dock-collapsed');
+    vi.stubGlobal(
+      'ResizeObserver',
+      class {
+        observe() {}
+        disconnect() {}
+      }
+    );
   });
 
   it('only collapses in row (mobile) mode', () => {
@@ -47,5 +58,67 @@ describe('Navigator mobile dock collapse', () => {
     expect(document.documentElement.classList.contains('dock-collapsed')).toBe(true);
     methods.syncDockClass(false);
     expect(document.documentElement.classList.contains('dock-collapsed')).toBe(false);
+  });
+
+  it('navigates home when the real desktop brand logo is clicked', async () => {
+    const push = vi.fn();
+    const wrapper = mount(Navigator, {
+      props: { direction: 'column' },
+      global: {
+        stubs: {
+          ElTooltip: { template: '<div><slot /></div>' },
+          ElImage: true,
+          ElPopover: true,
+          UserCenter: true
+        },
+        mocks: {
+          $t: (key: string) => key,
+          $route: { name: 'seedance-index' },
+          $router: { push },
+          $store: {
+            state: { token: {}, site: { title: 'AceData', features: {} }, setting: {} },
+            commit: vi.fn()
+          }
+        }
+      }
+    });
+
+    await wrapper.get('.brand-logo').trigger('click');
+    expect(push).toHaveBeenCalledWith({ name: ROUTE_INDEX });
+  });
+
+  it('keeps the desktop brand outside Electron drag hit-testing', () => {
+    const source = readFileSync(resolve(process.cwd(), 'src/components/common/Navigator.vue'), 'utf8');
+    expect(source).toContain('-webkit-app-region: no-drag;');
+  });
+
+  it('keeps a fixed Home action in the mobile dock', async () => {
+    const push = vi.fn();
+    const wrapper = shallowMount(Navigator, {
+      props: { direction: 'row' },
+      global: {
+        stubs: {
+          ElTooltip: { template: '<div><slot /></div>' },
+          ElImage: true,
+          ElPopover: true,
+          UserCenter: true,
+          Logo: true
+        },
+        mocks: {
+          $t: (key: string) => key,
+          $route: { name: 'chatgpt-conversation-new' },
+          $router: { push },
+          $store: {
+            state: { token: {}, site: { features: {} }, setting: { dockCollapsed: false } },
+            commit: vi.fn()
+          }
+        }
+      }
+    });
+
+    const button = wrapper.get('.home-button');
+    expect(button.attributes('aria-label')).toBe('common.nav.home');
+    await button.trigger('click');
+    expect(push).toHaveBeenCalledWith({ name: ROUTE_INDEX });
   });
 });

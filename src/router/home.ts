@@ -1,10 +1,9 @@
+import type { RouteLocationGeneric } from 'vue-router';
 import { ROUTE_INDEX } from './constants';
 
-// Capability-first public product home. Keep `/` reserved for returning users:
-// it still redirects to the first enabled service instead of a marketing page.
 export default {
-  path: '/home',
-  component: () => import('@/layouts/Index.vue'),
+  path: '/',
+  component: () => import('@/layouts/Main.vue'),
   children: [
     {
       path: '',
@@ -13,4 +12,9 @@ export default {
       meta: { auth: false }
     }
   ]
+};
+
+export const homeCompatibilityRoute = {
+  path: '/home',
+  redirect: (to: RouteLocationGeneric) => ({ name: ROUTE_INDEX, query: to.query, hash: to.hash, replace: true })
 };

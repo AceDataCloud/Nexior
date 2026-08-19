@@ -2,7 +2,7 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 
-import { ROUTE_BUSINESS, ROUTE_INDEX } from '@/router';
+import { ROUTE_BUSINESS, ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_INDEX } from '@/router';
 import TopHeader from './TopHeader.vue';
 
 const mountHeader = (routeName: string, path: string) =>
@@ -31,22 +31,22 @@ const mountHeader = (routeName: string, path: string) =>
     }
   });
 
-describe('TopHeader product home presentation mode', () => {
-  it('renders only the centered brand logo on /home', () => {
-    const wrapper = mountHeader(ROUTE_INDEX, '/home');
-
-    expect(wrapper.classes()).toContain('minimal-only');
-    expect(wrapper.findAll('.logo-stub')).toHaveLength(1);
-    expect(wrapper.find('.menu-stub').exists()).toBe(false);
-    expect(wrapper.find('.login-stub').exists()).toBe(false);
-    expect(wrapper.find('.avatar').exists()).toBe(false);
-    expect(wrapper.find('.console').exists()).toBe(false);
-  });
-
+describe('TopHeader navigation', () => {
   it('keeps the standard header on /business', () => {
     const wrapper = mountHeader(ROUTE_BUSINESS, '/business');
 
-    expect(wrapper.classes()).not.toContain('minimal-only');
     expect(wrapper.find('.menu-stub').exists()).toBe(true);
+    expect(wrapper.findAll('.logo-stub')).toHaveLength(1);
+  });
+
+  it('routes overview and chat through their canonical route names', () => {
+    const wrapper = mountHeader(ROUTE_BUSINESS, '/business');
+    const vm = wrapper.vm as any;
+
+    vm.onSelect('home');
+    vm.onSelect('chatgpt');
+
+    expect(vm.$router.push).toHaveBeenNthCalledWith(1, { name: ROUTE_INDEX });
+    expect(vm.$router.push).toHaveBeenNthCalledWith(2, { name: ROUTE_CHATGPT_CONVERSATION_NEW });
   });
 });

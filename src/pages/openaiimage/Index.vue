@@ -4,7 +4,11 @@
       <config-panel :identity-token="credential?.token" @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
+      <showcase-result-tabs service="openai">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -19,6 +23,7 @@ import { IOpenAIImageEditRequest, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
@@ -30,6 +35,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -43,9 +49,10 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('openaiimage')],
   inject: ['initialized'],
   data(): IData {
     return {

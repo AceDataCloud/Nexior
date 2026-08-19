@@ -1,176 +1,123 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { CAPABILITY_ICONS } from '@/constants/capabilities';
+import { showcaseOperator } from '@/operators';
+import Home from './Index.vue';
+import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
 
-import { CHAT_MODEL_ICON_GLM } from '@/constants/chat';
-import zhIntro from '@/i18n/zh-CN/intro.json';
-import Intro from './Index.vue';
-import { INTRO_SHOTS } from './data';
+vi.mock('@/operators', () => ({ showcaseOperator: { list: vi.fn() } }));
 
-const studioFeatures = {
-  chatgpt: { enabled: true },
-  claude: { enabled: true },
-  gemini: { enabled: true },
-  grok: { enabled: true },
-  deepseek: { enabled: false },
-  kimi: { enabled: false },
-  midjourney: { enabled: false },
-  nanobanana: { enabled: true },
-  openaiimage: { enabled: true },
-  seedream: { enabled: true },
-  flux: { enabled: false },
-  qrart: { enabled: false },
-  kling: { enabled: true },
-  veo: { enabled: true },
-  seedance: { enabled: true },
-  grokvideo: { enabled: true },
-  sora: { enabled: false },
-  hailuo: { enabled: false },
-  luma: { enabled: false },
-  pixverse: { enabled: false },
-  omni: { enabled: false },
-  suno: { enabled: true },
-  fish: { enabled: true },
-  producer: { enabled: false },
-  maestro: { enabled: true },
-  digitalhuman: { enabled: false },
-  serp: { enabled: false },
-  webextrator: { enabled: false },
-  codingBridge: { enabled: true }
+const studioFeatures = Object.fromEntries(HOME_CAPABILITY_KEYS.map((key) => [key, { enabled: true }]));
+const showcase = {
+  id: '196387e7-f217-453f-a678-ed1165e0cbd9',
+  service: 'seedance',
+  task_id: 'task-1',
+  data: {
+    type: 'videos',
+    request: { prompt: 'Paper fox' },
+    response: {
+      success: true,
+      data: {
+        video_url: 'https://cdn.acedata.cloud/video',
+        last_frame_url: 'https://cdn.acedata.cloud/poster'
+      }
+    }
+  }
 };
 
-const t = (key: string) => key;
-
-const mountIntro = (site: Record<string, unknown>) =>
-  shallowMount(Intro, {
+const mountHome = (site: Record<string, unknown>) =>
+  shallowMount(Home, {
     global: {
-      stubs: {
-        ElButton: { template: '<button><slot /></button>' },
-        ConfirmIcon: true,
-        NextIcon: true
-      },
       mocks: {
-        $t: t,
-        $i18n: { locale: 'zh-CN' },
+        $t: (key: string) => key,
+        $i18n: { locale: 'en' },
         $router: { push: vi.fn() },
+        $route: { name: 'index' },
         $store: { state: { site } }
       }
     }
   });
 
-describe('/home site capability filtering', () => {
-  it('renders only Studio-enabled capabilities and matching screenshots', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const text = wrapper.text();
+describe('Studio workbench home', () => {
+  beforeEach(() => vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any));
 
-    for (const enabled of [
-      'ChatGPT',
-      'Claude',
-      'Gemini',
-      'Grok',
-      'Nano Banana',
-      'GPT Image',
-      'Seedream',
-      'Kling',
-      'Veo',
-      'Seedance',
-      'Grok Imagine',
-      'Suno',
-      'Fish Audio',
-      'Maestro',
-      'Coding Bridge'
-    ]) {
-      expect(text).toContain(enabled);
-    }
-    for (const disabled of [
-      'DeepSeek',
-      'Kimi',
-      'Midjourney',
-      'Flux',
-      'QR Art',
-      'Sora',
-      'Hailuo',
-      'Luma',
-      'Pixverse',
-      'Omni',
-      'Producer',
-      'Digital Human',
-      'SERP',
-      'WebExtrator'
-    ]) {
-      expect(text).not.toContain(disabled);
-    }
-
-    const images = wrapper.findAll('img').map((image) => image.attributes('src'));
-    expect(images).toContain(INTRO_SHOTS.nanobananaDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.midjourneyDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.serpDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.webextratorDesktop.zh);
-    expect(images).not.toContain(INTRO_SHOTS.digitalHumanDesktop.zh);
+  it('does not expose capabilities before site configuration loads', () => {
+    const wrapper = mountHome({});
+    expect(wrapper.find('.studio-home').exists()).toBe(false);
+    expect(wrapper.find('.home-loading').exists()).toBe(true);
+    expect(showcaseOperator.list).not.toHaveBeenCalled();
   });
 
-  it('gives every visible product card a recognizable logo', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const cards = wrapper.findAll('.model-card');
-    const logos = wrapper.findAll('.model-card__logo img');
-
-    expect(cards).toHaveLength(16);
-    expect(logos).toHaveLength(cards.length);
-    expect(logos.every((logo) => Boolean(logo.attributes('src')))).toBe(true);
-    expect(logos.some((logo) => logo.attributes('src') === CHAT_MODEL_ICON_GLM)).toBe(true);
-    expect(wrapper.find('.model-grid').attributes('style')).toContain('--model-grid-columns: 5');
+  it('covers all Studio capabilities through named-route destinations', () => {
+    const destinations = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates)];
+    expect(HOME_BANNERS).toHaveLength(3);
+    expect(HOME_CATEGORIES).toHaveLength(4);
+    expect(new Set(HOME_CAPABILITY_KEYS).size).toBeGreaterThanOrEqual(15);
+    expect(destinations.every((item) => item.routeName)).toBe(true);
+    expect(destinations.some((item) => 'path' in item)).toBe(false);
   });
 
-  it('uses Site title and description as the presentation hero copy', () => {
-    const wrapper = mountIntro({
-      id: 'studio',
-      origin: 'brand.studio.acedata.cloud',
-      title: 'Seedance AI Video Generator',
-      description: 'Create cinematic AI videos from text, images, and reference clips.',
-      features: studioFeatures
+  it('passes every enabled child into the four category groups', () => {
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')).toHaveLength(3);
+    const categories = wrapper.getComponent({ name: 'CategoryTiles' }).props('items');
+    expect(categories).toHaveLength(4);
+    expect(categories.find((item: any) => item.id === 'chat').items.map((item: any) => item.capability)).toEqual([
+      'chatgpt',
+      'claude',
+      'gemini',
+      'grok',
+      'deepseek'
+    ]);
+    expect(wrapper.findComponent({ name: 'PopularCapabilityGrid' }).exists()).toBe(false);
+  });
+
+  it('filters showcase items to the site feature set', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
+    const wrapper = mountHome({
+      id: 'video-only',
+      features: { seedance: { enabled: true }, veo: { enabled: true }, kling: { enabled: false } }
     });
-
-    expect(wrapper.get('h1').text()).toBe('Seedance AI Video Generator');
-    expect(wrapper.get('.hero__summary').text()).toBe(
-      'Create cinematic AI videos from text, images, and reference clips.'
-    );
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith());
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
   });
 
-  it('falls back to default hero copy when Site branding text is empty', () => {
-    const wrapper = mountIntro({ id: 'studio', title: '  ', description: '', features: studioFeatures });
-
-    expect(wrapper.get('h1').text()).toBe('intro.title.hero');
-    expect(wrapper.get('.hero__summary').text()).toBe('intro.subtitle.hero');
+  it('applies white-label names and icons to child and showcase cards', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
+    const wrapper = mountHome({
+      id: 'brand',
+      features: { seedance: { enabled: true } },
+      capability_overrides: {
+        seedance: { display_name: 'Brand Motion', icon_url: 'https://cdn.example.com/motion.png' }
+      }
+    });
+    await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    const gallery = wrapper.getComponent({ name: 'ShowcaseGrid' });
+    expect(gallery.props('items')[0]).toMatchObject({
+      name: 'Brand Motion',
+      icon: 'https://cdn.example.com/motion.png',
+      defaultIcon: CAPABILITY_ICONS.seedance
+    });
+    gallery.vm.$emit('icon-error', gallery.props('items')[0]);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].icon).toBe(CAPABILITY_ICONS.seedance);
   });
 
-  it('uses outward-facing campaign headlines instead of configuration labels', () => {
-    const copy = Object.values(zhIntro)
-      .map((entry) => entry.message)
-      .join('\n');
-
-    expect(copy).not.toContain('这个站点可用的');
-    expect(copy).not.toContain('已经为你准备好这些 AI 能力');
-    expect(zhIntro['title.site.video'].message).toBe('让每个想法，都成为一段好作品');
-    expect(zhIntro['title.connector'].message).toBe('连接你的数字世界，让 AI 真正行动起来');
+  it('hides only the showcase section when the anonymous list is empty', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalled());
+    expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'CategoryTiles' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(false);
   });
 
-  it('filters fixed catalog claims and bullets for disabled tools', () => {
-    const wrapper = mountIntro({ id: 'studio', origin: 'studio.acedata.cloud', features: studioFeatures });
-    const text = wrapper.text();
-
-    expect(text).not.toContain('intro.bullet.chat.models');
-    expect(text).not.toContain('intro.bullet.image.models');
-    expect(text).not.toContain('intro.bullet.video.models');
-    expect(text).not.toContain('intro.bullet.tools.search');
-    expect(text).not.toContain('intro.bullet.tools.extract');
-    expect(text).toContain('intro.bullet.tools.coding');
-  });
-
-  it('does not flash the full catalog before site configuration loads', () => {
-    const wrapper = mountIntro({});
-
-    expect(wrapper.find('.intro').exists()).toBe(false);
-    expect(wrapper.find('.intro-loading').exists()).toBe(true);
-    expect(wrapper.text()).not.toContain('Midjourney');
+  it('removes a failed visual without exposing a broken URL', async () => {
+    const wrapper = mountHome({ id: 'studio', features: { maestro: { enabled: true } } });
+    const carousel = wrapper.getComponent({ name: 'HomeCarousel' });
+    carousel.vm.$emit('image-error', carousel.props('slides')[0]);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')[0].imageUrl).toBe('');
   });
 });
