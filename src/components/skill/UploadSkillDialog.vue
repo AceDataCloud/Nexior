@@ -45,7 +45,7 @@
     </div>
 
     <template #footer>
-      <el-button :disabled="uploading" @click="onClose">{{ $t('skill.button.cancel') }}</el-button>
+      <el-button :disabled="uploading" @click="onClose">{{ $t('common.button.cancel') }}</el-button>
       <el-button type="primary" :loading="uploading" :disabled="!file" @click="onSubmit">
         <cloud-upload-icon class="mr-1" :size="16" aria-hidden="true" focusable="false" />
         {{ $t('skill.button.create') }}

@@ -39,7 +39,7 @@
               :disabled="isBusy(d) && !isBusy(d, 'refresh')"
               @click="onRefresh(d)"
             >
-              {{ $t('subsite.button.refresh') }}
+              {{ $t('common.button.refresh') }}
             </el-button>
             <el-button
               size="small"

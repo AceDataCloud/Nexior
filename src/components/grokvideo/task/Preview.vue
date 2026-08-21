@@ -63,7 +63,7 @@
             placement="top-start"
           >
             <el-button type="info" size="small" class="btn-action" @click.stop="onDownload(video?.video_url)">
-              {{ $t('grokvideo.button.download') }}
+              {{ $t('common.button.download') }}
             </el-button>
           </el-tooltip>
           <api-code-button path="/grok/videos" :body="modelValue?.request" />

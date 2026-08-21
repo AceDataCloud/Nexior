@@ -69,7 +69,7 @@
       <div class="right">
         <el-dropdown>
           <span class="el-dropdown-link">
-            <el-tooltip effect="dark" :content="$t('producer.button.download')" placement="top">
+            <el-tooltip effect="dark" :content="$t('common.button.download')" placement="top">
               <download-icon
                 v-if="audio?.audio_url || audio?.video_url"
                 class="icon icon-download"

@@ -21,7 +21,7 @@
     />
 
     <template #footer>
-      <el-button :disabled="saving" @click="onClose">{{ $t('skill.button.cancel') }}</el-button>
+      <el-button :disabled="saving" @click="onClose">{{ $t('common.button.cancel') }}</el-button>
       <el-button type="primary" :loading="saving" :disabled="!content.trim()" @click="onSubmit">
         <cloud-upload-icon class="mr-1" :size="16" aria-hidden="true" focusable="false" />
         {{ $t('skill.button.create') }}

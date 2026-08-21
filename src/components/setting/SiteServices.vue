@@ -585,7 +585,7 @@ export default defineComponent({
         this.editingRow.display_title_source = payload.source;
         this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
       }
-      ElMessage.success(this.$t('site.services.message.saved'));
+      ElMessage.success(this.$t('common.message.saved'));
       // Refetch so the table renders the locale-resolved title, not the $t(...) ref.
       await this.onFetch();
     },
@@ -598,7 +598,7 @@ export default defineComponent({
         this.editingRow.display_title_source = value || null;
         this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
       }
-      ElMessage.success(this.$t('site.services.message.saved'));
+      ElMessage.success(this.$t('common.message.saved'));
       await this.onFetch();
     },
     async onDisplaySummaryEnabled(payload: { source: string; fieldValue: string }): Promise<void> {
@@ -609,7 +609,7 @@ export default defineComponent({
         this.editingRow.display_summary_source = payload.source;
         this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
       }
-      ElMessage.success(this.$t('site.services.message.saved'));
+      ElMessage.success(this.$t('common.message.saved'));
       await this.onFetch();
     },
     async onDisplaySummaryDisabled(payload: { fieldValue: string | null }): Promise<void> {
@@ -621,7 +621,7 @@ export default defineComponent({
         this.editingRow.display_summary_source = value || null;
         this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
       }
-      ElMessage.success(this.$t('site.services.message.saved'));
+      ElMessage.success(this.$t('common.message.saved'));
       await this.onFetch();
     },
     async onSubmit(): Promise<void> {
@@ -647,7 +647,7 @@ export default defineComponent({
           display_summary: this.form.displaySummary.trim() || null,
           sort_order: typeof this.form.sortOrder === 'number' ? this.form.sortOrder : 0
         });
-        ElMessage.success(this.$t('site.services.message.saved'));
+        ElMessage.success(this.$t('common.message.saved'));
         this.dialogVisible = false;
         await this.onFetch();
       } catch (err) {
@@ -668,7 +668,7 @@ export default defineComponent({
           display_summary: this.form.displaySummary.trim() || null,
           sort_order: typeof this.form.sortOrder === 'number' ? this.form.sortOrder : 0
         });
-        ElMessage.success(this.$t('site.services.message.saved'));
+        ElMessage.success(this.$t('common.message.saved'));
         this.dialogVisible = false;
         this.editingRow = null;
         await this.onFetch();

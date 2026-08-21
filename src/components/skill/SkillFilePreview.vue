@@ -18,7 +18,7 @@
         @click="onSave"
       >
         <save-icon class="mr-1" :size="16" aria-hidden="true" focusable="false" />
-        {{ $t('skill.button.save') }}
+        {{ $t('common.button.save') }}
       </el-button>
 
       <el-tooltip
