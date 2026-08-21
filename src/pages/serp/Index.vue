@@ -10,12 +10,13 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Serp.vue';
 import SearchPanel from '@/components/serp/SearchPanel.vue';
 import ResultPanel from '@/components/serp/ResultPanel.vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import { ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
@@ -77,9 +78,8 @@ export default defineComponent({
         ElMessage.success(this.$t('serp.message.searchSuccess'));
       } catch (error: any) {
         if (error instanceof X402PaymentCancelledError) return;
-        const response = error?.response?.data;
-        if (response?.error?.code === ERROR_CODE_USED_UP) ElMessage.error(this.$t('serp.message.usedUp'));
-        else if (this.walletMode) {
+        if (showQuotaExhausted(error, 'serp')) return;
+        if (this.walletMode) {
           ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
         } else ElMessage.error(this.$t('serp.message.searchFailed'));
       }

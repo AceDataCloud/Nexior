@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Nanobanana.vue';
 import ConfigPanel from '@/components/nanobanana/ConfigPanel.vue';
@@ -21,7 +22,7 @@ import { nanobananaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { INanobananaTask } from '@/models';
@@ -213,9 +214,8 @@ export default defineComponent({
         .catch((error) => {
           if (error instanceof X402PaymentCancelledError) return;
           const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('nanobanana.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'nanobanana')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('nanobanana.message.startTaskFailed') + (response?.error?.message || ''));

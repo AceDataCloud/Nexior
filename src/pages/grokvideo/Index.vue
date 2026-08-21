@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/GrokVideo.vue';
 import ConfigPanel from '@/components/grokvideo/ConfigPanel.vue';
@@ -18,7 +19,7 @@ import { buildGrokVideoRequest, grokvideoOperator } from '@/operators/grokvideo'
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IGrokVideoTask, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP, isGrokVideoImageOnlyModel } from '@/constants';
+import { isGrokVideoImageOnlyModel } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
@@ -206,9 +207,8 @@ export default defineComponent({
         .catch((error) => {
           const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('grokvideo.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'grokvideo')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('grokvideo.message.startTaskFailed') + (response?.error?.message || ''));

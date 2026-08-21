@@ -18,12 +18,12 @@ import { seedanceOperator } from '@/operators/seedance';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { normalizeSeedanceRequest } from '@/utils/seedance';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { ensureLoggedIn, ensureNoPendingUpload, uploadTrackerProviderMixin } from '@/utils';
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -152,7 +152,7 @@ export default defineComponent({
         this.fetchingTasks = false;
       }
     },
-    async onGenerate() {
+    async onGenerate(estimatedConsumption?: number) {
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -192,9 +192,10 @@ export default defineComponent({
         if (!token) return;
         operation = seedanceOperator.generate(request, { token });
       }
-      ElMessage.info(this.$t('seedance.message.startingTask'));
+      const startingMessage = ElMessage.info(this.$t('seedance.message.startingTask'));
       instrumentGeneration('seedance', operation)
         .then((response: any) => {
+          startingMessage.close();
           const taskId = response?.data?.task_id;
           if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
             this.walletTaskIds.unshift(taskId);
@@ -202,11 +203,11 @@ export default defineComponent({
           ElMessage.success(this.$t('seedance.message.startTaskSuccess'));
         })
         .catch((error) => {
+          startingMessage.close();
           const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('seedance.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'seedance', estimatedConsumption)) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('seedance.message.startTaskFailed') + (response?.error?.message || ''));

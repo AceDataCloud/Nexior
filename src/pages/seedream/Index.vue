@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedream.vue';
 import ConfigPanel from '@/components/seedream/ConfigPanel.vue';
@@ -23,7 +24,7 @@ import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -177,11 +178,8 @@ export default defineComponent({
         })
         .catch((error) => {
           const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('seedream.message.usedUp'));
-          } else {
-            ElMessage.error(this.$t('seedream.message.startTaskFailed') + (response?.error?.message || ''));
-          }
+          if (showQuotaExhausted(error, 'seedream')) return;
+          ElMessage.error(this.$t('seedream.message.startTaskFailed') + (response?.error?.message || ''));
         })
         .finally(async () => {
           setTimeout(async () => {

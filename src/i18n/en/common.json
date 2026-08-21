@@ -1624,6 +1624,34 @@
     "message": "Reference uploads are still in progress — please wait a moment.",
     "description": "Toast warning shown when the user clicks the Generate button while reference image / video / audio uploads are still in flight. Tells them to wait for the upload to finish before re-clicking Generate."
   },
+  "quotaDialog.title": {
+    "message": "Not enough credits",
+    "description": "Title for the insufficient-credit dialog"
+  },
+  "quotaDialog.message": {
+    "message": "Your current available quota cannot cover this generation. Top up and try again.",
+    "description": "Explanation shown when a generation is blocked by quota"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "Estimated for this generation",
+    "description": "Label for the submitted generation cost estimate"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "Currently available",
+    "description": "Label for the refreshed available credit balance"
+  },
+  "quotaDialog.refreshing": {
+    "message": "Refreshing balance…",
+    "description": "Loading text while fetching the latest balance"
+  },
+  "quotaDialog.unavailable": {
+    "message": "Latest balance unavailable",
+    "description": "Fallback text when the latest balance cannot be fetched"
+  },
+  "quotaDialog.topUp": {
+    "message": "Top up",
+    "description": "Primary action opening the purchase page"
+  },
   "message.uploadTooLarge": {
     "message": "The file is {size}, over the {max} limit. Please compress it and try again.",
     "description": "Toast shown when the user picks a file larger than the upload size limit, naming the file size and the allowed maximum."

@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Luma.vue';
 import ConfigPanel from '@/components/luma/ConfigPanel.vue';
@@ -17,7 +18,7 @@ import { buildLumaRequest, lumaOperator } from '@/operators/luma';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import RecentPanel from '@/components/luma/RecentPanel.vue';
 import { ILumaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -225,11 +226,9 @@ export default defineComponent({
           ElMessage.success(this.$t('luma.message.startTaskSuccess'));
         })
         .catch((error) => {
-          const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('luma.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'luma')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('luma.message.startTaskFailed'));

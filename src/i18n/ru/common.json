@@ -1644,6 +1644,34 @@
     "message": "Загрузка эталонных файлов ещё продолжается — пожалуйста, подождите.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "quotaDialog.title": {
+    "message": "Недостаточно баллов",
+    "description": "Заголовок окна с уведомлением о недостатке баллов"
+  },
+  "quotaDialog.message": {
+    "message": "Текущего доступного лимита недостаточно для завершения генерации, пожалуйста, пополните счет и попробуйте снова.",
+    "description": "Описание, когда задача генерации была остановлена из-за недостатка лимита"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "Ожидаемые расходы",
+    "description": "Этикетка для оценки стоимости генерации, отправленной в этот раз"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "Текущие доступные баллы",
+    "description": "Этикетка для доступных баллов после обновления"
+  },
+  "quotaDialog.refreshing": {
+    "message": "Обновление баланса…",
+    "description": "Текст загрузки при получении актуального баланса"
+  },
+  "quotaDialog.unavailable": {
+    "message": "Временно невозможно получить актуальный баланс",
+    "description": "Текст понижения уровня при неудаче получения актуального баланса"
+  },
+  "quotaDialog.topUp": {
+    "message": "Пополнить счет",
+    "description": "Основное действие для перехода на страницу пополнения счета"
+  },
   "message.uploadTooLarge": {
     "message": "Размер файла {size} превышает лимит {max}, пожалуйста, сожмите и попробуйте снова",
     "description": "Сообщение, которое появляется, когда выбранный пользователем файл превышает максимальный размер для загрузки, указывая текущий размер файла и допустимый лимит."

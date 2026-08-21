@@ -1644,6 +1644,34 @@
     "message": "Las cargas de referencia aún están en curso; espera un momento.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "quotaDialog.title": {
+    "message": "Créditos insuficientes",
+    "description": "Título del cuadro de diálogo de créditos insuficientes"
+  },
+  "quotaDialog.message": {
+    "message": "El saldo disponible no es suficiente para completar esta generación, por favor recarga y vuelve a intentarlo.",
+    "description": "Explicación cuando una tarea de generación es bloqueada por saldo insuficiente"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "Consumo estimado",
+    "description": "Etiqueta de estimación de costos para la generación enviada"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "Créditos disponibles",
+    "description": "Etiqueta de créditos disponibles después de la actualización"
+  },
+  "quotaDialog.refreshing": {
+    "message": "Actualizando saldo…",
+    "description": "Texto de carga al obtener el saldo más reciente"
+  },
+  "quotaDialog.unavailable": {
+    "message": "No se puede obtener el saldo más reciente en este momento",
+    "description": "Texto de degradación cuando falla la obtención del saldo más reciente"
+  },
+  "quotaDialog.topUp": {
+    "message": "Recargar",
+    "description": "Acción principal para ir a la página de recarga"
+  },
   "message.uploadTooLarge": {
     "message": "El tamaño del archivo {size} excede el límite {max}, por favor, comprímelo y vuelve a intentarlo",
     "description": "Mensaje que aparece cuando el archivo seleccionado por el usuario excede el límite de tamaño de carga, indicando el tamaño actual del archivo y el límite permitido."

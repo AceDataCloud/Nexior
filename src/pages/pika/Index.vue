@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Pika.vue';
 import ConfigPanel from '@/components/pika/ConfigPanel.vue';
@@ -18,7 +19,7 @@ import { buildPikaRequest, pikaOperator } from '@/operators/pika';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 import RecentPanel from '@/components/pika/RecentPanel.vue';
 import { IPikaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -250,11 +251,9 @@ export default defineComponent({
           });
         })
         .catch((error) => {
-          const response = error?.response?.data;
           if (error instanceof X402PaymentCancelledError) return;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('pika.message.usedUp'));
-          } else if (this.walletMode) {
+          if (showQuotaExhausted(error, 'pika')) return;
+          if (this.walletMode) {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('pika.message.startTaskFailed'));

@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Kling.vue';
 import ConfigPanel from '@/components/kling/ConfigPanel.vue';
@@ -27,7 +28,7 @@ import { buildKlingTalkingPhotoRequest, buildKlingVideoRequest, klingOperator } 
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IKlingMotionRequest, IKlingTaskType, Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -271,10 +272,8 @@ export default defineComponent({
     },
     handleGenerationError(error: any) {
       if (error instanceof X402PaymentCancelledError) return;
-      const response = error?.response?.data;
-      if (response?.error?.code === ERROR_CODE_USED_UP) {
-        ElMessage.error(this.$t('kling.message.usedUp'));
-      } else if (this.walletMode) {
+      if (showQuotaExhausted(error, 'kling')) return;
+      if (this.walletMode) {
         ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
       } else {
         ElMessage.error(this.$t('kling.message.startTaskFailed'));
@@ -347,12 +346,8 @@ export default defineComponent({
           ElMessage.success(this.$t('kling.message.startTaskSuccess'));
         })
         .catch((error) => {
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('kling.message.usedUp'));
-          } else {
-            ElMessage.error(this.$t('kling.message.startTaskFailed'));
-          }
+          if (showQuotaExhausted(error, 'kling')) return;
+          ElMessage.error(this.$t('kling.message.startTaskFailed'));
         })
         .finally(async () => {
           setTimeout(async () => {

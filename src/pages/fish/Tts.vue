@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/fish/ConfigPanel.vue';
@@ -24,7 +25,7 @@ import { fishOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IFishTask, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL } from '@/constants';
+import { FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
@@ -185,12 +186,8 @@ export default defineComponent({
           ElMessage.success(this.$t('fish.message.startTaskSuccess'));
         })
         .catch((error) => {
-          const response = error?.response?.data;
-          if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('fish.message.usedUp'));
-          } else {
-            ElMessage.error(this.$t('fish.message.startTaskFailed'));
-          }
+          if (showQuotaExhausted(error, 'fish')) return;
+          ElMessage.error(this.$t('fish.message.startTaskFailed'));
         })
         .finally(async () => {
           setTimeout(async () => {

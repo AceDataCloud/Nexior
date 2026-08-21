@@ -1644,6 +1644,34 @@
     "message": "参照ファイルのアップロードがまだ進行中です。少々お待ちください。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "quotaDialog.title": {
+    "message": "現在のポイントが不足しています",
+    "description": "ポイント不足ポップアップのタイトル"
+  },
+  "quotaDialog.message": {
+    "message": "現在の利用可能なクレジットでは、今回の生成を完了できません。チャージ後に再試行してください。",
+    "description": "生成タスクがクレジット不足で中断されたときの説明"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "今回の予想消費",
+    "description": "今回提出された生成費用の予想ラベル"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "現在の利用可能ポイント",
+    "description": "リフレッシュ後の利用可能ポイントラベル"
+  },
+  "quotaDialog.refreshing": {
+    "message": "残高を更新しています…",
+    "description": "最新の残高を取得しているときの読み込み文"
+  },
+  "quotaDialog.unavailable": {
+    "message": "最新の残高を取得できませんでした",
+    "description": "最新の残高取得に失敗したときのダウングレード文"
+  },
+  "quotaDialog.topUp": {
+    "message": "チャージする",
+    "description": "チャージページに移動する主な操作"
+  },
   "message.uploadTooLarge": {
     "message": "ファイルサイズ {size} が上限 {max} を超えています。圧縮して再試行してください。",
     "description": "ユーザーが選択したファイルがアップロードサイズの上限を超えたときに表示されるメッセージで、現在のファイルサイズと許可されている上限を説明します。"

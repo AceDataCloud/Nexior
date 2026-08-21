@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import { showQuotaExhausted } from '@/utils/quotaExhausted';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
@@ -23,7 +24,7 @@ import {
 } from '@/operators/midjourney';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
-import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
+
 import { MidjourneyVideosAction, Status } from '@/models';
 import {
   IMidjourneyImagineRequest,
@@ -264,9 +265,8 @@ export default defineComponent({
         ElMessage.success(this.$t(successKey));
       } catch (error: any) {
         if (error instanceof X402PaymentCancelledError) return;
-        if (error?.response?.data?.error?.code === ERROR_CODE_USED_UP) {
-          ElMessage.error(this.$t('midjourney.message.usedUp'));
-        } else if (this.walletMode) {
+        if (showQuotaExhausted(error, 'midjourney')) return;
+        if (this.walletMode) {
           ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
         } else {
           ElMessage.error(this.$t(failureKey) + (error?.response?.data?.error?.message || ''));

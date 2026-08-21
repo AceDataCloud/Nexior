@@ -1644,6 +1644,34 @@
     "message": "Les téléversements de référence sont toujours en cours — veuillez patienter un instant.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
+  "quotaDialog.title": {
+    "message": "Crédit insuffisant",
+    "description": "Titre de la fenêtre contextuelle indiquant que le crédit est insuffisant"
+  },
+  "quotaDialog.message": {
+    "message": "Le montant disponible est insuffisant pour compléter cette génération, veuillez recharger et réessayer.",
+    "description": "Explication lorsque la tâche de génération est bloquée en raison d'un crédit insuffisant"
+  },
+  "quotaDialog.estimatedConsumption": {
+    "message": "Consommation estimée",
+    "description": "Étiquette d'estimation des frais de génération pour la soumission actuelle"
+  },
+  "quotaDialog.availableCredits": {
+    "message": "Crédits disponibles",
+    "description": "Étiquette des crédits disponibles après actualisation"
+  },
+  "quotaDialog.refreshing": {
+    "message": "Actualisation du solde…",
+    "description": "Texte de chargement lors de l'obtention du dernier solde"
+  },
+  "quotaDialog.unavailable": {
+    "message": "Impossible d'obtenir le dernier solde pour le moment",
+    "description": "Texte de dégradé lorsque l'obtention du dernier solde échoue"
+  },
+  "quotaDialog.topUp": {
+    "message": "Recharger",
+    "description": "Action principale pour accéder à la page de recharge"
+  },
   "message.uploadTooLarge": {
     "message": "La taille du fichier {size} dépasse la limite {max}, veuillez compresser et réessayer",
     "description": "Alerte affichée lorsque le fichier sélectionné par l'utilisateur dépasse la limite de taille de téléchargement, indiquant la taille actuelle du fichier et la limite autorisée."

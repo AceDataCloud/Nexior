@@ -7,8 +7,11 @@ import Model from './Model.vue';
 
 const mocks = vi.hoisted(() => ({
   createModel: vi.fn(),
-  ensureLoggedIn: vi.fn(() => true)
+  ensureLoggedIn: vi.fn(() => true),
+  showQuota: vi.fn(() => false)
 }));
+
+vi.mock('@/utils/quotaExhausted', () => ({ showQuotaExhausted: mocks.showQuota }));
 
 vi.mock('@/operators', () => ({
   fishOperator: { createModel: mocks.createModel }
@@ -50,6 +53,7 @@ describe('fish/Model', () => {
     vi.clearAllMocks();
     mocks.ensureLoggedIn.mockReturnValue(true);
     mocks.createModel.mockResolvedValue({ data: { id: 'voice-id' } });
+    mocks.showQuota.mockReturnValue(false);
     vi.spyOn(ElMessage, 'info').mockImplementation(() => undefined as never);
     vi.spyOn(ElMessage, 'success').mockImplementation(() => undefined as never);
     vi.spyOn(ElMessage, 'error').mockImplementation(() => undefined as never);
@@ -104,15 +108,17 @@ describe('fish/Model', () => {
     expect(result.resolve).not.toHaveBeenCalled();
   });
 
-  it('keeps the dedicated balance error when credits are exhausted', async () => {
+  it('delegates exhausted credits to the shared quota dialog', async () => {
     const error = { response: { data: { error: { code: 'used_up' } } } };
     mocks.createModel.mockRejectedValue(error);
+    mocks.showQuota.mockReturnValue(true);
     const { wrapper } = mountPage();
     const result = callbacks();
 
     await (wrapper.vm as any).onCreate(payload, result);
 
-    expect(ElMessage.error).toHaveBeenCalledWith('fish.message.usedUp');
+    expect(mocks.showQuota).toHaveBeenCalledWith(error, 'fish');
+    expect(ElMessage.error).not.toHaveBeenCalled();
     expect(result.reject).toHaveBeenCalledWith(error);
   });
 });
