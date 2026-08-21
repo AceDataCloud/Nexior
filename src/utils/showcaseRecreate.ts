@@ -93,6 +93,8 @@ const imageAllowed = new Set([
   'guidance_scale',
   'output_format'
 ]);
+const nanoBananaAllowed = new Set([...imageAllowed, 'action']);
+const seedreamAllowed = new Set([...imageAllowed, 'watermark']);
 const videoAllowed = new Set([
   'prompt',
   'negative_prompt',
@@ -116,7 +118,7 @@ const musicAllowed = new Set(['prompt', 'lyric', 'style', 'title', 'instrumental
 
 const adapters: Partial<Record<CapabilityKey, Adapter>> = {
   nanobanana: {
-    allowed: imageAllowed,
+    allowed: nanoBananaAllowed,
     activeKeys: ['prompt', 'image_urls'],
     build: (c) =>
       compact({
@@ -151,7 +153,7 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
       })
   },
   seedream: {
-    allowed: imageAllowed,
+    allowed: seedreamAllowed,
     activeKeys: ['prompt', 'image'],
     build: (c) =>
       compact({
@@ -308,6 +310,10 @@ function validateItem(
   if (!request || typeof request !== 'object' || Array.isArray(request)) throw new Error('invalid config');
   const unknown = Object.keys(request).filter((key) => !adapter.allowed.has(key));
   if (unknown.length) throw new Error('unsupported fields');
+  if (adapter.allowed === nanoBananaAllowed && 'action' in request && request.action !== 'generate')
+    throw new Error('unsupported action');
+  if (capability === 'seedream' && 'watermark' in request && request.watermark !== false)
+    throw new Error('unsupported watermark');
   return { adapter, patch: adapter.build(request) };
 }
 

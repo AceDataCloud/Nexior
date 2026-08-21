@@ -14,6 +14,7 @@
         :items="resolvedItems"
         :show-capability="false"
         compact
+        masonry
         @icon-error="$emit('icon-error', $event)"
       />
       <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>

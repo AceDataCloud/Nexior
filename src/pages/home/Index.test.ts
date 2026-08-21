@@ -49,6 +49,11 @@ describe('Studio workbench home', () => {
     expect(showcaseOperator.list).not.toHaveBeenCalled();
   });
 
+  it('does not repeat the inspiration navigation above the home content', () => {
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    expect(wrapper.findComponent({ name: 'PublicSectionNav' }).exists()).toBe(false);
+  });
+
   it('covers all Studio capabilities through named-route destinations', () => {
     const destinations = [...HOME_BANNERS, ...HOME_CATEGORIES.flatMap((item) => item.candidates)];
     expect(HOME_BANNERS).toHaveLength(3);

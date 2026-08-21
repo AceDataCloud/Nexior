@@ -64,11 +64,18 @@ describe('showcase recreate consumer', () => {
   it.each([
     [
       'nanobanana',
-      { prompt: 'Portrait', images: ['https://cdn.acedata.cloud/ref'], aspect_ratio: '1:1' },
+      {
+        prompt: 'Portrait',
+        model: 'nano-banana-pro',
+        action: 'generate',
+        images: ['https://cdn.acedata.cloud/ref'],
+        aspect_ratio: '1:1',
+        resolution: '4K'
+      },
       'image_urls'
     ],
     ['openaiimage', { prompt: 'Editorial', size: '1536x1024' }, 'size'],
-    ['seedream', { prompt: 'Mist', max_images: 2, output_format: 'jpeg' }, 'output_format'],
+    ['seedream', { prompt: 'Mist', max_images: 2, output_format: 'jpeg', watermark: false }, 'output_format'],
     ['seedance', { prompt: 'Motion', duration: 4, ratio: '16:9' }, 'ratio'],
     ['kling', { prompt: 'Rain', mode: 'std' }, 'mode'],
     ['veo', { prompt: 'Flower', translation: false }, 'translation'],
@@ -88,6 +95,64 @@ describe('showcase recreate consumer', () => {
       expect(replace).toHaveBeenCalledWith({ path: `/${capability}`, query: { locale: 'en' }, hash: '#form' });
     }
   );
+
+  it('accepts the generate action used by production image snapshots', async () => {
+    const request = {
+      prompt: 'Original fragrance bottle',
+      model: 'nano-banana-pro',
+      action: 'generate',
+      resolution: '4K',
+      aspect_ratio: '4:3'
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('nanobanana', request)] } as any);
+    const { options, commit } = context('nanobanana');
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith(
+      'nanobanana/setConfig',
+      expect.objectContaining({
+        prompt: 'Original fragrance bottle',
+        model: 'nano-banana-pro',
+        resolution: '4K',
+        aspect_ratio: '4:3'
+      })
+    );
+  });
+
+  it('rejects non-generate image actions', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({
+      data: [item('nanobanana', { prompt: 'Restyle this', action: 'edit' })]
+    } as any);
+    const { options, commit } = context('nanobanana');
+    expect(await consumeShowcase(options)).toBe('failed');
+    expect(commit).not.toHaveBeenCalled();
+    expect(ElMessage.warning).toHaveBeenCalled();
+  });
+
+  it('accepts a disabled watermark from production Seedream snapshots', async () => {
+    const request = {
+      prompt: 'Mountain dawn',
+      model: 'doubao-seedream-5-0-pro-260628',
+      size: '2K',
+      output_format: 'jpeg',
+      watermark: false
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('seedream', request)] } as any);
+    const { options, commit } = context('seedream');
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith(
+      'seedream/setConfig',
+      expect.objectContaining({ prompt: 'Mountain dawn', output_format: 'jpeg' })
+    );
+  });
+
+  it('rejects an enabled watermark in Seedream snapshots', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({
+      data: [item('seedream', { prompt: 'Mountain dawn', watermark: true })]
+    } as any);
+    const { options, commit } = context('seedream');
+    expect(await consumeShowcase(options)).toBe('failed');
+    expect(commit).not.toHaveBeenCalled();
+  });
 
   it('maps curated image references into the Nano Banana form contract', async () => {
     const request = { prompt: 'Restyle this', images: ['https://cdn.acedata.cloud/reference.png'] };
