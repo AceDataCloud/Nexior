@@ -15,11 +15,14 @@
         :show-capability="false"
         compact
         masonry
+        detail-preview
+        @select="selectedItem = $event"
         @icon-error="$emit('icon-error', $event)"
       />
       <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>
     </el-tab-pane>
   </el-tabs>
+  <inspiration-detail-dialog :item="selectedItem" @close="selectedItem = undefined" />
 </template>
 
 <script setup lang="ts">
@@ -30,6 +33,7 @@ import { ElButton, ElTabPane, ElTabs } from 'element-plus';
 import type { IShowcase, ResolvedShowcase } from '@/models';
 import { showcaseOperator } from '@/operators';
 import { resolveShowcase } from '@/utils/showcase';
+import InspirationDetailDialog from '@/pages/inspiration/components/InspirationDetailDialog.vue';
 import ShowcaseGrid from './ShowcaseGrid.vue';
 
 const props = defineProps<{ service: string }>();
@@ -42,6 +46,7 @@ const items = ref<IShowcase[]>([]);
 const loading = ref(false);
 const error = ref(false);
 const loaded = ref(false);
+const selectedItem = ref<ResolvedShowcase>();
 
 const resolvedItems = computed(() =>
   items.value
@@ -68,7 +73,7 @@ watch(activeTab, (name) => {
   if (name === 'gallery' && !loaded.value) void load();
 });
 
-defineExpose({ activeTab, resolvedItems, loading, error, loaded, load });
+defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, load });
 </script>
 
 <style lang="scss" scoped>
