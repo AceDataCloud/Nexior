@@ -147,7 +147,7 @@
                   <el-dropdown-menu>
                     <el-dropdown-item @click="onDelete(selectedSkill!)">
                       <delete-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
-                      {{ $t('skill.button.delete') }}
+                      {{ $t('common.button.delete') }}
                     </el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
@@ -454,7 +454,7 @@ export default defineComponent({
       try {
         await ElMessageBox.confirm(
           this.$t('skill.message.deleteConfirm', { slug: skill.slug }) as string,
-          this.$t('skill.button.delete') as string,
+          this.$t('common.button.delete') as string,
           { type: 'warning' }
         );
       } catch {

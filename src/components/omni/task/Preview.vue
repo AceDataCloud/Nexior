@@ -58,7 +58,7 @@
         <div v-if="video?.video_url" :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('omni.message.downloadVideo')" placement="top-start">
             <el-button type="info" size="small" class="btn-action" @click.stop="onDownload(video?.video_url)">
-              {{ $t('omni.button.download') }}
+              {{ $t('common.button.download') }}
             </el-button>
           </el-tooltip>
           <api-code-button path="/gemini/videos" :body="modelValue?.request" />

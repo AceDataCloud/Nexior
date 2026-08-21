@@ -55,10 +55,10 @@
       <el-table-column :label="$t('common.field.operations')" width="160px" fixed="right">
         <template #default="scope">
           <el-button size="small" @click="onEdit(scope.row)">
-            {{ $t('byok.button.edit') }}
+            {{ $t('common.button.edit') }}
           </el-button>
           <el-button size="small" type="danger" plain @click="onDelete(scope.row)">
-            {{ $t('byok.button.delete') }}
+            {{ $t('common.button.delete') }}
           </el-button>
         </template>
       </el-table-column>

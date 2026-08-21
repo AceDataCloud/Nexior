@@ -82,12 +82,12 @@
     </div>
 
     <template #footer>
-      <el-button @click="onClose(false)">{{ $t('byok.button.cancel') }}</el-button>
+      <el-button @click="onClose(false)">{{ $t('common.button.cancel') }}</el-button>
       <el-button :loading="testing" :disabled="saving || !canTest" @click="onTest">
         {{ $t('byok.button.test') }}
       </el-button>
       <el-button type="primary" :loading="saving" @click="onSubmit">
-        {{ $t('byok.button.save') }}
+        {{ $t('common.button.save') }}
       </el-button>
     </template>
   </el-dialog>

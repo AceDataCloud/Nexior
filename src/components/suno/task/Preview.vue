@@ -129,7 +129,7 @@
         </el-tooltip>
         <el-dropdown>
           <span class="el-dropdown-link">
-            <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
+            <el-tooltip effect="dark" :content="$t('common.button.download')" placement="top">
               <download-icon
                 v-if="audio?.audio_url || audio?.video_url"
                 class="icon icon-download"
@@ -274,7 +274,7 @@
               <div class="menu-divider" />
               <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
                 <delete-icon class="menu-icon delete-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ $t('suno.button.delete') }}
+                {{ $t('common.button.delete') }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -931,7 +931,7 @@ export default defineComponent({
     async onDelete(audio: ISunoAudio) {
       try {
         await ElMessageBox.confirm(this.$t('suno.message.confirmDelete') as string, {
-          confirmButtonText: this.$t('suno.button.delete') as string,
+          confirmButtonText: this.$t('common.button.delete') as string,
           cancelButtonText: this.$t('common.button.cancel') as string,
           type: 'warning'
         });

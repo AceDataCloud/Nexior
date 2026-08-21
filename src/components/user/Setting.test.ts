@@ -54,7 +54,7 @@ const OPERATOR_CONTENT = {
   customDomain: CustomDomainSetting
 } as const;
 
-const mountSetting = () =>
+const mountSetting = (isAdmin = true) =>
   shallowMount(Setting, {
     props: { visible: true },
     global: {
@@ -63,7 +63,7 @@ const mountSetting = () =>
         // Make the current user a site admin so the admin-gated operator
         // tabs WOULD show if the surface allowed them — this isolates the
         // surface gate as the only thing hiding them off-web.
-        $store: { state: { site: { admins: ['u1'] } }, getters: { user: { id: 'u1' } } }
+        $store: { state: { site: { admins: isAdmin ? ['u1'] : [] } }, getters: { user: { id: 'u1' } } }
       },
       // shallowMount auto-stubs ElDialog without rendering its slot, which
       // would hide the <main> content branches and make the content-gating
@@ -91,6 +91,15 @@ describe('user/Setting surface gating', () => {
   });
   afterEach(() => {
     vi.unstubAllEnvs();
+  });
+
+  it('web regular user cannot see or force-open website analytics', async () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    const wrapper = mountSetting(false);
+    expect(tabKeys(wrapper)).not.toContain('analytics');
+
+    await wrapper.setData({ activeTab: 'analytics' });
+    expect(wrapper.findComponent(AnalyticsSetting).exists()).toBe(false);
   });
 
   it('web + subsite host: shows admin tabs and Custom Domain, hides Subsites', () => {

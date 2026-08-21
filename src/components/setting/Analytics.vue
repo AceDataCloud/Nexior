@@ -1,5 +1,6 @@
 <template>
   <div class="analytics-settings">
+    <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
     <el-alert type="info" :closable="false" show-icon :title="$t('site.analytics.securityNotice')" />
     <el-form ref="formRef" :model="form" label-position="top">
       <section v-for="provider in providers" :key="provider.key" class="provider-card">
@@ -31,6 +32,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElMessage, ElSwitch, type FormInstance } from 'element-plus';
 import { siteOperator } from '@/operators';
 import type { ISite, ISiteAnalytics } from '@/models';
@@ -66,7 +68,7 @@ function createForm(site?: ISite): ProviderForm {
 
 export default defineComponent({
   name: 'SiteAnalyticsSetting',
-  components: { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElSwitch },
+  components: { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElSwitch, SectionNotice },
   data() {
     return { form: createForm(this.$store.state.site), saving: false };
   },
@@ -150,7 +152,7 @@ export default defineComponent({
       try {
         await siteOperator.update(site.id, { ...toWritableSitePayload(site), analytics });
         await this.$store.dispatch('getSite');
-        ElMessage.success(this.$t('site.message.saved'));
+        ElMessage.success(this.$t('common.message.saved'));
       } catch {
         ElMessage.error(this.$t('site.analytics.saveFailed'));
       } finally {
