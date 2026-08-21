@@ -67,6 +67,7 @@ const { locale } = useI18n();
 const rawItems = ref<IShowcase[]>([]);
 const loading = ref(false);
 const error = ref(false);
+let loadGeneration = 0;
 
 const site = computed(() => store.state.site);
 const siteLoaded = computed(() => Boolean(site.value?.id));
@@ -79,7 +80,7 @@ const categories = [
 const resolvedItems = computed(() => {
   if (!site.value) return [];
   return rawItems.value
-    .map((item) => resolveShowcase(item, site.value, locale.value))
+    .map((item) => resolveShowcase(item, site.value))
     .filter((item): item is ResolvedShowcase => Boolean(item));
 });
 const categoryType = computed(() => {
@@ -110,16 +111,18 @@ const selectedItem = computed(() => {
 });
 
 async function load(): Promise<void> {
+  const generation = ++loadGeneration;
+  const requestLocale = locale.value;
   loading.value = true;
   error.value = false;
+  rawItems.value = [];
   try {
-    showcaseOperator.clearCache();
-    rawItems.value = (await showcaseOperator.list()).data;
+    const response = await showcaseOperator.list(undefined, requestLocale);
+    if (generation === loadGeneration && locale.value === requestLocale) rawItems.value = response.data;
   } catch {
-    error.value = true;
-    rawItems.value = [];
+    if (generation === loadGeneration) error.value = true;
   } finally {
-    loading.value = false;
+    if (generation === loadGeneration) loading.value = false;
   }
 }
 
@@ -149,6 +152,7 @@ watch([categoryType, availableServices], () => {
 watch([selectedItem, resolvedItems], () => {
   if (route.query.showcase && !loading.value && !selectedItem.value) closeItem();
 });
+watch(locale, () => void load());
 onMounted(() => void load());
 </script>
 

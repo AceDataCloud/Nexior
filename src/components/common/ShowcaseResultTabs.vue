@@ -47,30 +47,40 @@ const loading = ref(false);
 const error = ref(false);
 const loaded = ref(false);
 const selectedItem = ref<ResolvedShowcase>();
+let loadGeneration = 0;
 
 const resolvedItems = computed(() =>
   items.value
     .filter((item) => item.service === props.service)
-    .map((item) => resolveShowcase(item, store.state.site, locale.value))
+    .map((item) => resolveShowcase(item, store.state.site))
     .filter((item): item is ResolvedShowcase => Boolean(item))
 );
 
 async function load(): Promise<void> {
-  if (loading.value) return;
+  const generation = ++loadGeneration;
+  const requestLocale = locale.value;
   loading.value = true;
   error.value = false;
+  items.value = [];
+  selectedItem.value = undefined;
   try {
-    items.value = (await showcaseOperator.list(props.service)).data;
-    loaded.value = true;
+    const response = await showcaseOperator.list(props.service, requestLocale);
+    if (generation === loadGeneration && locale.value === requestLocale) {
+      items.value = response.data;
+      loaded.value = true;
+    }
   } catch {
-    error.value = true;
+    if (generation === loadGeneration) error.value = true;
   } finally {
-    loading.value = false;
+    if (generation === loadGeneration) loading.value = false;
   }
 }
 
 watch(activeTab, (name) => {
   if (name === 'gallery' && !loaded.value) void load();
+});
+watch(locale, () => {
+  if (loaded.value || activeTab.value === 'gallery') void load();
 });
 
 defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, load });

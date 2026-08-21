@@ -180,7 +180,7 @@ function deriveMedia(
   };
 }
 
-export function resolveShowcase(item: IShowcase, site: ISite, _locale: string): ResolvedShowcase | undefined {
+export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase | undefined {
   const definition = SHOWCASE_SERVICES.get(item.service);
   if (!definition || !site.features?.[definition.capability]?.enabled) return undefined;
   const request = objectValue(item.data.request);
@@ -189,20 +189,27 @@ export function resolveShowcase(item: IShowcase, site: ISite, _locale: string): 
   const media = deriveMedia(item.data.type, request, result);
   if (!media.posterUrl) return undefined;
   const defaultIcon = CAPABILITY_ICONS[definition.capability];
-  const presentation = resolveCapabilityPresentation(site, definition.capability, definition.defaultName, defaultIcon);
+  const capabilityPresentation = resolveCapabilityPresentation(
+    site,
+    definition.capability,
+    definition.defaultName,
+    defaultIcon
+  );
+  const localizedPresentation = objectValue(item.data.presentation);
   const prompt = stringValue(request.prompt, request.text, request.lyric);
-  const title = stringValue(result.title, presentation.displayName);
+  const title = stringValue(localizedPresentation.title, result.title, capabilityPresentation.displayName);
+  const description = stringValue(localizedPresentation.description, prompt);
   return {
     id: item.id,
     service: item.service,
     capability: definition.capability,
     routeName: definition.routeName,
-    name: presentation.displayName,
-    description: prompt,
-    icon: presentation.iconUrl,
+    name: capabilityPresentation.displayName,
+    description,
+    icon: capabilityPresentation.iconUrl,
     defaultIcon,
     title,
-    altText: title || prompt || presentation.displayName,
+    altText: title || description || capabilityPresentation.displayName,
     prompt,
     model: stringValue(request.model, result.model),
     parameters: deriveParameters(request),

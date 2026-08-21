@@ -84,7 +84,7 @@ describe('Studio workbench home', () => {
       id: 'video-only',
       features: { seedance: { enabled: true }, veo: { enabled: true }, kling: { enabled: false } }
     });
-    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith());
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith(undefined, 'en'));
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
   });
 

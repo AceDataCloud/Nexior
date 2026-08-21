@@ -23,6 +23,7 @@ export function showcaseRecreateMixin(capability: CapabilityKey) {
           router: this.$router,
           store: this.$store,
           site: this.$store.state.site,
+          locale: String(this.$i18n.locale || 'en'),
           t: (key, params) => this.$t(key, params || {}) as string
         });
       }

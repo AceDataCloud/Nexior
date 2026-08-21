@@ -3,8 +3,14 @@ import type { CapabilityKey } from '@/constants/capabilities';
 export type ShowcaseMediaType = 'Image' | 'Video' | 'Audio';
 export type ShowcaseLayout = 'Portrait' | 'Square' | 'Landscape';
 
+export interface IShowcasePresentation {
+  title?: string;
+  description?: string;
+}
+
 export interface IShowcaseTaskData {
   type?: string;
+  presentation?: IShowcasePresentation;
   request?: Record<string, unknown>;
   response?: Record<string, unknown>;
   created_at?: number;

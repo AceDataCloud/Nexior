@@ -18,11 +18,28 @@ const item = (service: string, type: string, request: Record<string, unknown>, r
 });
 
 describe('resolveShowcase', () => {
+  it('uses localized presentation without changing the raw replay prompt', () => {
+    const source = {
+      ...item('nano-banana', 'images', { prompt: 'Crystal garden' }, { data: [{ image_url: 'image.jpg' }] }),
+      data: {
+        type: 'images',
+        request: { prompt: 'Crystal garden' },
+        response: { data: [{ image_url: 'image.jpg' }] },
+        presentation: { title: '水晶花园', description: '透明晶体在柔光中构成宁静花园。' }
+      }
+    };
+    const result = resolveShowcase(source, site);
+    expect(result).toMatchObject({
+      title: '水晶花园',
+      description: '透明晶体在柔光中构成宁静花园。',
+      prompt: 'Crystal garden'
+    });
+  });
+
   it('derives an image card from a normal task response', () => {
     const result = resolveShowcase(
       item('nano-banana', 'images', { prompt: 'Crystal garden' }, { data: [{ image_url: 'image.jpg' }] }),
-      site,
-      'en'
+      site
     );
     expect(result).toMatchObject({
       mediaType: 'Image',
@@ -41,8 +58,7 @@ describe('resolveShowcase', () => {
         { prompt: 'Paper fox' },
         { data: { video_url: 'video.mp4', last_frame_url: 'poster.jpg' } }
       ),
-      site,
-      'en'
+      site
     );
     expect(result).toMatchObject({
       mediaType: 'Video',
@@ -60,8 +76,7 @@ describe('resolveShowcase', () => {
         { prompt: 'Nocturne' },
         { data: [{ title: 'Amber Nocturne', audio_url: 'audio.mp3', image_url: 'cover.jpg' }] }
       ),
-      site,
-      'en'
+      site
     );
     expect(result).toMatchObject({
       mediaType: 'Audio',
