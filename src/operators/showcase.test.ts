@@ -20,10 +20,21 @@ describe('showcaseOperator', () => {
   it('loads the complete list or exact service filter', async () => {
     get.mockResolvedValue({ data: [] });
     await showcaseOperator.list();
-    expect(get).toHaveBeenCalledWith('/showcases/', undefined);
+    expect(get).toHaveBeenCalledWith('/showcases/', { headers: { 'Accept-Language': 'en' }, params: undefined });
     showcaseOperator.clearCache();
-    await showcaseOperator.list('seedance');
-    expect(get).toHaveBeenLastCalledWith('/showcases/', { params: { service: 'seedance' } });
+    await showcaseOperator.list('seedance', 'zh-CN');
+    expect(get).toHaveBeenLastCalledWith('/showcases/', {
+      headers: { 'Accept-Language': 'zh-cn' },
+      params: { service: 'seedance' }
+    });
+  });
+
+  it('isolates cache entries by locale', async () => {
+    get.mockResolvedValue({ data: [] });
+    await showcaseOperator.list('seedance', 'en');
+    await showcaseOperator.list('seedance', 'zh-CN');
+    await showcaseOperator.list('seedance', 'en');
+    expect(get).toHaveBeenCalledTimes(2);
   });
 
   it('expires successful cache entries after the server cache window', async () => {

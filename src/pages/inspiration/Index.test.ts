@@ -6,6 +6,7 @@ import { ROUTE_INSPIRATION_IMAGES } from '@/router/constants';
 import Inspiration from './Index.vue';
 
 const mocks = vi.hoisted(() => ({
+  locale: { value: 'en', __v_isRef: true },
   push: vi.fn(),
   route: { name: 'inspiration-images', query: {} as Record<string, string> },
   store: {
@@ -30,7 +31,7 @@ vi.mock('vuex', async (importOriginal) => ({
 }));
 vi.mock('vue-i18n', async (importOriginal) => ({
   ...(await importOriginal<typeof import('vue-i18n')>()),
-  useI18n: () => ({ locale: { value: 'en' } })
+  useI18n: () => ({ locale: mocks.locale })
 }));
 vi.mock('./components/InspirationDetailDialog.vue', () => ({
   default: { name: 'InspirationDetailDialog', emits: ['close'], template: '<div />' }
@@ -92,8 +93,8 @@ describe('Inspiration gallery page', () => {
   it('loads the anonymous feed once and filters the image route without per-task requests', async () => {
     const { wrapper } = mountPage();
     await vi.waitFor(() => expect(wrapper.findComponent({ name: 'InspirationMasonry' }).exists()).toBe(true));
-    expect(showcaseOperator.list).toHaveBeenCalledWith();
-    expect(showcaseOperator.clearCache).toHaveBeenCalledOnce();
+    expect(showcaseOperator.list).toHaveBeenCalledWith(undefined, 'en');
+    expect(showcaseOperator.clearCache).not.toHaveBeenCalled();
     expect(wrapper.getComponent({ name: 'InspirationMasonry' }).props('items')).toHaveLength(1);
     expect(wrapper.getComponent({ name: 'InspirationMasonry' }).props('items')[0].service).toBe('nano-banana');
   });

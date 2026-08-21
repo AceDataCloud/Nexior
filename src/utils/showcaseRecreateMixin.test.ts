@@ -14,7 +14,7 @@ function mountWithQuery(showcase?: string) {
   const wrapper = shallowMount(Component, {
     global: {
       plugins: [createStore({ state: { site: { features: { seedance: { enabled: true } } } } })],
-      mocks: { $route: route, $router: { replace: vi.fn() }, $t: (key: string) => key }
+      mocks: { $route: route, $router: { replace: vi.fn() }, $i18n: { locale: 'en' }, $t: (key: string) => key }
     }
   });
   return { wrapper, route };

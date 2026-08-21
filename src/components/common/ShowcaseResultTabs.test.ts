@@ -4,13 +4,15 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { showcaseOperator } from '@/operators';
 import ShowcaseResultTabs from './ShowcaseResultTabs.vue';
 
+const mocks = vi.hoisted(() => ({ locale: { value: 'en', __v_isRef: true } }));
+
 vi.mock('@/operators', () => ({ showcaseOperator: { list: vi.fn() } }));
 vi.mock('vuex', () => ({
   useStore: () => ({ state: { site: { id: 'studio', features: { nanobanana: { enabled: true } } } } })
 }));
 vi.mock('vue-i18n', async (importOriginal) => ({
   ...(await importOriginal<typeof import('vue-i18n')>()),
-  useI18n: () => ({ locale: { value: 'en' } })
+  useI18n: () => ({ locale: mocks.locale })
 }));
 vi.mock('./ShowcaseGrid.vue', () => ({
   default: {
@@ -61,7 +63,10 @@ function mountTabs() {
 }
 
 describe('ShowcaseResultTabs', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mocks.locale.value = 'en';
+  });
 
   it('defaults to current tasks and does not fetch the gallery', () => {
     const wrapper = mountTabs();
@@ -76,7 +81,7 @@ describe('ShowcaseResultTabs', () => {
     } as any);
     const wrapper = mountTabs();
     (wrapper.vm as any).activeTab = 'gallery';
-    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith('nano-banana'));
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith('nano-banana', 'en'));
     await vi.waitFor(() => expect((wrapper.vm as any).resolvedItems).toHaveLength(1));
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props()).toMatchObject({
       compact: true,
@@ -110,6 +115,37 @@ describe('ShowcaseResultTabs', () => {
 
     await wrapper.get('.detail-dialog-stub').trigger('click');
     expect(dialog.props('item')).toBeUndefined();
+  });
+
+  it('discards a stale response after the locale changes', async () => {
+    let resolveEnglish: (value: any) => void = () => undefined;
+    const english = new Promise((resolve) => {
+      resolveEnglish = resolve;
+    });
+    const chinese = {
+      ...showcase,
+      data: {
+        ...showcase.data,
+        presentation: { title: '玻璃亭阁', description: '通透玻璃亭阁坐落于自然光影之间。' }
+      }
+    };
+    vi.mocked(showcaseOperator.list)
+      .mockReturnValueOnce(english as any)
+      .mockResolvedValueOnce({ data: [chinese] } as any);
+    const wrapper = mountTabs();
+
+    const first = (wrapper.vm as any).load();
+    mocks.locale.value = 'zh-CN';
+    const second = (wrapper.vm as any).load();
+    await second;
+    resolveEnglish({ data: [showcase] });
+    await first;
+
+    expect((wrapper.vm as any).resolvedItems[0]).toMatchObject({
+      title: '玻璃亭阁',
+      description: '通透玻璃亭阁坐落于自然光影之间。',
+      prompt: 'Original glass pavilion'
+    });
   });
 
   it('isolates gallery failure and retries without unmounting tasks', async () => {

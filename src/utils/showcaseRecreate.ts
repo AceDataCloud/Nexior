@@ -26,6 +26,7 @@ export interface ConsumeShowcaseOptions {
   router: Router;
   store: Store<any>;
   site: ISite | undefined;
+  locale: string;
   t: Translator;
 }
 
@@ -336,7 +337,7 @@ export async function consumeShowcase(options: ConsumeShowcaseOptions): Promise<
   try {
     const definition = SHOWCASE_CAPABILITIES.get(options.capability);
     if (!definition || !options.site?.features?.[options.capability]?.enabled) throw new Error('disabled capability');
-    const response = await showcaseOperator.list(definition.service);
+    const response = await showcaseOperator.list(definition.service, options.locale);
     const item = response.data.find((candidate) => candidate.id === id);
     if (!item) throw new Error('showcase not found');
     const { adapter, patch } = validateItem(item, options.capability, definition.service);

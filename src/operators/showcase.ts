@@ -16,12 +16,16 @@ interface CacheEntry {
 class ShowcaseOperator {
   private readonly cache = new Map<string, CacheEntry>();
 
-  list(service?: string): Promise<AxiosResponse<IShowcase[]>> {
-    const key = service || '*';
+  list(service?: string, locale = 'en'): Promise<AxiosResponse<IShowcase[]>> {
+    const normalizedLocale = locale.trim().toLowerCase() || 'en';
+    const key = `${normalizedLocale}:${service || '*'}`;
     const now = Date.now();
     const cached = this.cache.get(key);
     if (cached && cached.expiresAt > now) return cached.request;
-    const request = publicClient.get<IShowcase[]>('/showcases/', service ? { params: { service } } : undefined);
+    const request = publicClient.get<IShowcase[]>('/showcases/', {
+      headers: { 'Accept-Language': normalizedLocale },
+      params: service ? { service } : undefined
+    });
     this.cache.set(key, { expiresAt: now + CACHE_TTL_MS, request });
     request.catch(() => this.cache.delete(key));
     return request;

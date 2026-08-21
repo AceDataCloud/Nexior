@@ -56,7 +56,8 @@ export default defineComponent({
       failedImages: {} as Partial<Record<CapabilityKey, boolean>>,
       failedCategoryImages: {} as Record<string, boolean>,
       rawShowcases: [] as IShowcase[],
-      showcaseLoaded: false
+      showcaseLoaded: false,
+      showcaseLoadGeneration: 0
     };
   },
   computed: {
@@ -101,7 +102,7 @@ export default defineComponent({
       const site = this.site;
       if (!site) return [];
       return this.rawShowcases
-        .map((item) => resolveShowcase(item, site, String(this.$i18n.locale || 'en')))
+        .map((item) => resolveShowcase(item, site))
         .filter((item): item is ResolvedShowcase => Boolean(item))
         .map((item) => ({
           ...item,
@@ -115,6 +116,9 @@ export default defineComponent({
       handler(loaded: boolean) {
         if (loaded && !this.showcaseLoaded) void this.loadShowcases();
       }
+    },
+    '$i18n.locale'() {
+      if (this.siteLoaded) void this.loadShowcases();
     }
   },
   methods: {
@@ -133,12 +137,17 @@ export default defineComponent({
       };
     },
     async loadShowcases(): Promise<void> {
+      const generation = ++this.showcaseLoadGeneration;
+      const requestLocale = String(this.$i18n.locale || 'en');
       this.showcaseLoaded = true;
+      this.rawShowcases = [];
       try {
-        const response = await showcaseOperator.list();
-        this.rawShowcases = Array.isArray(response.data) ? response.data : [];
+        const response = await showcaseOperator.list(undefined, requestLocale);
+        if (generation === this.showcaseLoadGeneration && String(this.$i18n.locale || 'en') === requestLocale) {
+          this.rawShowcases = Array.isArray(response.data) ? response.data : [];
+        }
       } catch {
-        this.rawShowcases = [];
+        if (generation === this.showcaseLoadGeneration) this.rawShowcases = [];
       }
     },
     onIconError(item: ResolvedHomeCapability): void {

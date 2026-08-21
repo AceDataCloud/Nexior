@@ -47,6 +47,7 @@ function context(capability: string, config: Record<string, unknown> | undefined
       router: { replace } as any,
       store: { state: { site: {}, [capability]: { config } }, commit, dispatch } as any,
       site: { features: { [capability]: { enabled: true } } } as any,
+      locale: 'en',
       t: (key: string) => key
     },
     commit,
@@ -89,7 +90,7 @@ describe('showcase recreate consumer', () => {
       vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item(capability, request)] } as any);
       const { options, commit, dispatch, replace } = context(capability);
       expect(await consumeShowcase(options)).toBe('applied');
-      expect(showcaseOperator.list).toHaveBeenCalledWith(SERVICES[capability]);
+      expect(showcaseOperator.list).toHaveBeenCalledWith(SERVICES[capability], 'en');
       expect(commit.mock.calls.find(([type]) => type === `${capability}/setConfig`)?.[1]).toHaveProperty(expectedKey);
       expect(dispatch).not.toHaveBeenCalled();
       expect(replace).toHaveBeenCalledWith({ path: `/${capability}`, query: { locale: 'en' }, hash: '#form' });
