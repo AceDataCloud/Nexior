@@ -15,8 +15,17 @@ vi.mock('vue-i18n', async (importOriginal) => ({
 vi.mock('./ShowcaseGrid.vue', () => ({
   default: {
     name: 'ShowcaseGrid',
-    props: { items: Array, compact: Boolean, masonry: Boolean },
-    template: '<div class="showcase-grid-stub" :data-compact="compact" :data-masonry="masonry" />'
+    props: { items: Array, compact: Boolean, masonry: Boolean, detailPreview: Boolean },
+    emits: ['select'],
+    template: `<button class="showcase-grid-stub" :data-compact="compact" :data-masonry="masonry" :data-detail="detailPreview" @click="$emit('select', items[0])" />`
+  }
+}));
+vi.mock('@/pages/inspiration/components/InspirationDetailDialog.vue', () => ({
+  default: {
+    name: 'InspirationDetailDialog',
+    props: { item: Object },
+    emits: ['close'],
+    template: `<button class="detail-dialog-stub" @click="$emit('close')" />`
   }
 }));
 
@@ -71,13 +80,36 @@ describe('ShowcaseResultTabs', () => {
     await vi.waitFor(() => expect((wrapper.vm as any).resolvedItems).toHaveLength(1));
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props()).toMatchObject({
       compact: true,
-      masonry: true
+      masonry: true,
+      detailPreview: true
     });
     expect(wrapper.find('.task-sentinel').exists()).toBe(true);
     (wrapper.vm as any).activeTab = 'tasks';
     (wrapper.vm as any).activeTab = 'gallery';
     await wrapper.vm.$nextTick();
     expect(showcaseOperator.list).toHaveBeenCalledOnce();
+  });
+
+  it('opens the resolved showcase in the shared detail dialog and clears it on close', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
+    const wrapper = mountTabs();
+    (wrapper.vm as any).activeTab = 'gallery';
+    await vi.waitFor(() => expect((wrapper.vm as any).resolvedItems).toHaveLength(1));
+
+    await wrapper.get('.showcase-grid-stub').trigger('click');
+    const dialog = wrapper.getComponent({ name: 'InspirationDetailDialog' });
+    expect(dialog.props('item')).toMatchObject({
+      id: showcase.id,
+      prompt: 'Original glass pavilion',
+      model: 'nano-banana-pro',
+      parameters: expect.arrayContaining([
+        { key: 'model', value: 'nano-banana-pro' },
+        { key: 'aspect_ratio', value: '16:9' }
+      ])
+    });
+
+    await wrapper.get('.detail-dialog-stub').trigger('click');
+    expect(dialog.props('item')).toBeUndefined();
   });
 
   it('isolates gallery failure and retries without unmounting tasks', async () => {

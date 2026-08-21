@@ -45,17 +45,17 @@ const items: ResolvedShowcase[] = [
   }
 ];
 
-function mountGrid(reduced = false) {
+function mountGrid(reduced = false, detailPreview = false) {
   vi.stubGlobal('matchMedia', () => ({
     matches: reduced,
     addEventListener: vi.fn(),
     removeEventListener: vi.fn()
   }));
   const wrapper = mount(ShowcaseGrid, {
-    props: { items },
+    props: { items, detailPreview },
     global: {
       stubs: { RouterLink: { props: ['to'], template: '<a class="router-link"><slot /></a>' } },
-      mocks: { $t: (key: string) => key }
+      mocks: { $t: (key: string, params?: { title?: string }) => `${key}${params?.title ? ` ${params.title}` : ''}` }
     }
   });
   const video = wrapper.get('video').element as HTMLVideoElement;
@@ -77,6 +77,18 @@ describe('ShowcaseGrid', () => {
     expect((wrapper.get('video').element as HTMLVideoElement).muted).toBe(true);
     expect(wrapper.get('audio').attributes('preload')).toBe('metadata');
     expect(wrapper.findAll('.router-link')[0].text()).toContain('intro.home.showcase.createSimilar');
+    expect(wrapper.find('.detail-trigger').exists()).toBe(false);
+  });
+
+  it('uses a native button to select a card for detail preview', async () => {
+    const { wrapper } = mountGrid(false, true);
+    const triggers = wrapper.findAll('button.detail-trigger');
+    expect(triggers).toHaveLength(2);
+    expect(triggers[0].attributes('type')).toBe('button');
+    expect(triggers[0].attributes('aria-label')).toContain('Origami Fox');
+
+    await triggers[1].trigger('click');
+    expect(wrapper.emitted('select')).toEqual([[items[1]]]);
   });
 
   it('autoplays silent video, keeps audio explicit, and plays only one preview', async () => {
@@ -93,6 +105,7 @@ describe('ShowcaseGrid', () => {
     await Promise.resolve();
     expect(video.pause).toHaveBeenCalled();
     expect(audio.play).toHaveBeenCalled();
+    expect(wrapper.emitted('select')).toBeUndefined();
     await cards[0].trigger('mouseleave');
     expect(video.pause).toHaveBeenCalled();
   });
@@ -103,6 +116,8 @@ describe('ShowcaseGrid', () => {
     expect(wrapper.find('video').exists()).toBe(false);
     expect(wrapper.findAll('.showcase-card')).toHaveLength(2);
     expect(wrapper.findAll('.router-link')).toHaveLength(2);
+    await wrapper.findAll('.router-link')[0].trigger('click');
+    expect(wrapper.emitted('select')).toBeUndefined();
   });
 
   it('does not autoplay in reduced-motion mode but keeps an explicit control', async () => {

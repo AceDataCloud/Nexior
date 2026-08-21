@@ -43,6 +43,13 @@
         />
         <span class="shade" />
         <button
+          v-if="detailPreview"
+          type="button"
+          class="detail-trigger"
+          :aria-label="$t('intro.home.showcase.preview', { title: item.title })"
+          @click="$emit('select', item)"
+        />
+        <button
           v-if="item.mediaType === 'Audio' || reducedMotion"
           type="button"
           class="preview-button"
@@ -84,10 +91,20 @@ withDefaults(
     showCapability?: boolean;
     compact?: boolean;
     masonry?: boolean;
+    detailPreview?: boolean;
   }>(),
-  { title: '', eyebrow: '', subtitle: '', ariaLabel: '', showCapability: true, compact: false, masonry: false }
+  {
+    title: '',
+    eyebrow: '',
+    subtitle: '',
+    ariaLabel: '',
+    showCapability: true,
+    compact: false,
+    masonry: false,
+    detailPreview: false
+  }
 );
-defineEmits<{ 'icon-error': [item: ResolvedShowcase] }>();
+defineEmits<{ 'icon-error': [item: ResolvedShowcase]; select: [item: ResolvedShowcase] }>();
 
 const media = new Map<string, HTMLMediaElement>();
 const cards = new Map<string, HTMLElement>();
@@ -317,6 +334,21 @@ defineExpose({ playingId, startPreview, stopPreview, togglePreview, reducedMotio
   }
 }
 
+.detail-trigger {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: inset 0 0 0 3px var(--el-color-primary);
+  }
+}
+
 .preview-button {
   position: absolute;
   z-index: 2;
@@ -341,11 +373,12 @@ defineExpose({ playingId, startPreview, stopPreview, togglePreview, reducedMotio
 
 .showcase-copy {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   right: 16px;
   bottom: 15px;
   left: 16px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
 
   > strong {
     display: block;
@@ -382,12 +415,15 @@ defineExpose({ playingId, startPreview, stopPreview, togglePreview, reducedMotio
 }
 
 .create-link {
+  position: relative;
+  z-index: 3;
   display: inline-flex;
   min-height: 30px;
   align-items: center;
   color: #fff;
   font-size: 12px;
   font-weight: 800;
+  pointer-events: auto;
 
   &:focus-visible {
     outline: 3px solid var(--el-color-primary);
