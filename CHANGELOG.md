@@ -1,8 +1,25 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 19 Aug 2026 20:15:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 21 Aug 2026 20:15:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.365.0
+
+Fri, 21 Aug 2026 20:15:52 GMT
+
+### Minor changes
+
+- Add service pricing dialogs to generation scenarios (dev@acedata.cloud)
+
+### Patches
+
+- Keep users signed in when opening profile and verification pages after embedded login. (dev@acedata.cloud)
+- Restore accessible detail previews for service Gallery cards while keeping create-similar actions independent. (dev@acedata.cloud)
+- Fix create-similar hydration for production image showcases, remove the redundant home inspiration navigation, and balance service Gallery cards across wide screens. (dev@acedata.cloud)
+- Show a shared recovery dialog with refreshed balance and a top-up action whenever a credit-backed operation is blocked by insufficient quota. (dev@acedata.cloud)
+- Load localized Showcase presentation metadata per locale while preserving original replay prompts. (dev@acedata.cloud)
+- Localize analytics actions, clarify administrator-only access, and consolidate generic action labels under the shared common namespace. (dev@acedata.cloud)
 
 ## 3.364.1
 
