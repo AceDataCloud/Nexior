@@ -24,5 +24,5 @@ export * from './connections';
 export * from './featureFlag';
 export * from './loginMethod';
 export * from './iap';
-
 export * from './servicePricing';
+export * from './authAccount';

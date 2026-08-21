@@ -1,11 +1,15 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { ITokenResponse, IToken, IOAuthTokenRequest, IOAuthTokenResponse } from '@/models';
+import { IAuthCodeResponse, ITokenResponse, IToken, IOAuthTokenRequest, IOAuthTokenResponse } from '@/models';
 import { getBaseUrlAuth } from '@/utils';
 
 class AuthOperator {
   async refreshToken(payload: IToken): Promise<AxiosResponse<ITokenResponse>> {
     return httpClient.post('/auth/refresh/', payload);
+  }
+
+  async getCode(): Promise<AxiosResponse<IAuthCodeResponse>> {
+    return httpClient.post('/auth/code/', {});
   }
 }
 
