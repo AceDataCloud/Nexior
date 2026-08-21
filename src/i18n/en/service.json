@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB stands for gigabyte, a unit of digital information storage."
+  },
+  "title.pricing": {
+    "message": "Service Pricing",
+    "description": "Title of the service pricing dialog."
+  },
+  "title.pricingFor": {
+    "message": "{service} Pricing",
+    "description": "Title of the pricing dialog for a named service."
+  },
+  "field.conditions": {
+    "message": "Conditions",
+    "description": "Column label for the request conditions that select a pricing rule."
+  },
+  "field.billingMethod": {
+    "message": "Billing Method",
+    "description": "Column label for the way a pricing rule is calculated."
+  },
+  "field.remark": {
+    "message": "Notes",
+    "description": "Column label for additional pricing notes."
+  },
+  "message.pricingDescription": {
+    "message": "These are the service pricing rules in Credits. Your current request estimate appears next to the generate button.",
+    "description": "Explanation shown above the service pricing table."
+  },
+  "message.noPricing": {
+    "message": "No public pricing rules are available for this service.",
+    "description": "Empty state shown when a service has no visible pricing rules."
+  },
+  "message.allRequests": {
+    "message": "All requests",
+    "description": "Label for a pricing rule without conditions."
+  },
+  "message.otherConfigurations": {
+    "message": "Additional conditions apply",
+    "description": "Safe fallback indicating that a pricing rule has conditions that cannot all be summarized."
+  },
+  "message.calculated": {
+    "message": "Calculated from request parameters",
+    "description": "Safe fallback for a complex pricing formula."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} Credits",
+    "description": "A fixed price expressed in Credits."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} Credits / {unit}",
+    "description": "A usage-based price expressed in Credits per unit."
+  },
+  "billing.free": {
+    "message": "Free",
+    "description": "Billing method label for a free rule."
+  },
+  "billing.fixed": {
+    "message": "Fixed",
+    "description": "Billing method label for a fixed-price rule."
+  },
+  "billing.linear": {
+    "message": "Usage based",
+    "description": "Billing method label for a per-unit rule."
+  },
+  "billing.calculated": {
+    "message": "Calculated",
+    "description": "Billing method label for a complex rule."
+  },
+  "operator.equals": {
+    "message": "{field}: {value}",
+    "description": "Formats an equality pricing condition."
+  },
+  "operator.oneOf": {
+    "message": "{field}: {value}",
+    "description": "Formats a pricing condition with one of several values."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Formats an inclusive maximum pricing condition."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Formats an exclusive maximum pricing condition."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Formats an inclusive minimum pricing condition."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Formats an exclusive minimum pricing condition."
+  },
+  "operator.either": {
+    "message": "{field}: {value}",
+    "description": "Formats alternative values for one pricing field."
+  },
+  "condition.model": {
+    "message": "Model",
+    "description": "Pricing condition field for the model."
+  },
+  "condition.action": {
+    "message": "Action",
+    "description": "Pricing condition field for the action."
+  },
+  "condition.scenario": {
+    "message": "Scenario",
+    "description": "Pricing condition field for the scenario."
+  },
+  "condition.resolution": {
+    "message": "Resolution",
+    "description": "Pricing condition field for the resolution."
+  },
+  "condition.duration": {
+    "message": "Duration",
+    "description": "Pricing condition field for the duration."
+  },
+  "condition.mode": {
+    "message": "Mode",
+    "description": "Pricing condition field for the mode."
+  },
+  "condition.quality": {
+    "message": "Quality",
+    "description": "Pricing condition field for the quality."
+  },
+  "condition.number": {
+    "message": "Quantity",
+    "description": "Pricing condition field for the requested quantity."
+  },
+  "condition.count": {
+    "message": "Count",
+    "description": "Pricing condition field for the item count."
+  },
+  "unit.Second": {
+    "message": "second",
+    "description": "Pricing unit for one second."
+  },
+  "unit.Token": {
+    "message": "token",
+    "description": "Pricing unit for one token."
+  },
+  "condition.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Pricing condition field indicating that a reference video is used."
+  },
+  "message.required": {
+    "message": "Required",
+    "description": "Value shown when a pricing condition requires a feature or input."
+  },
+  "operator.anyOf": {
+    "message": "Any of: {options}",
+    "description": "Formats a pricing condition where any listed option can match."
+  },
+  "condition.version": {
+    "message": "Version",
+    "description": "Pricing condition field for the model version."
+  },
+  "condition.hd": {
+    "message": "HD",
+    "description": "Pricing condition field for high-definition output."
+  },
+  "condition.styleReference": {
+    "message": "Style Reference",
+    "description": "Pricing condition field for style reference input."
+  },
+  "condition.moodboard": {
+    "message": "Moodboard",
+    "description": "Pricing condition field for moodboard input."
+  },
+  "condition.generateAudio": {
+    "message": "Generate Audio",
+    "description": "Pricing condition column label for generate audio."
+  },
+  "condition.anyOf": {
+    "message": "Any of",
+    "description": "Column label for a pricing condition where any listed option can match."
+  },
+  "condition.motion": {
+    "message": "Motion",
+    "description": "Pricing condition column label for motion."
+  },
+  "condition.template": {
+    "message": "Template",
+    "description": "Pricing condition column label for template."
+  },
+  "condition.audio": {
+    "message": "Audio",
+    "description": "Pricing condition column label for audio."
+  },
+  "condition.type": {
+    "message": "Type",
+    "description": "Pricing condition column label for type."
+  },
+  "condition.size": {
+    "message": "Size",
+    "description": "Pricing condition column label for size."
+  },
+  "condition.promptTokens": {
+    "message": "Prompt Tokens",
+    "description": "Pricing condition column label for prompt tokens."
+  },
+  "condition.characterOrientation": {
+    "message": "Character Orientation",
+    "description": "Pricing condition column label for character orientation."
+  },
+  "unit.image": {
+    "message": "image",
+    "description": "Pricing unit for one generated image."
   }
 }

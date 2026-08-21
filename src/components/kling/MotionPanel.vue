@@ -10,7 +10,7 @@
       <keep-original-sound-selector class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption
+      <service-pricing-summary
         :value="consumption"
         :service="service"
         :rate-unit="$t('kling.name.perSecond')"
@@ -28,7 +28,7 @@
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import MotionImage from './motion/MotionImage.vue';
 import MotionVideo from './motion/MotionVideo.vue';
 import MotionPromptInput from './motion/MotionPromptInput.vue';
@@ -43,7 +43,7 @@ export default defineComponent({
   components: {
     MagicIcon,
     ElButton,
-    Consumption,
+    ServicePricingSummary,
     MotionImage,
     MotionVideo,
     MotionPromptInput,

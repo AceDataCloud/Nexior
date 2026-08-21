@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB tarkoittaa gigatavua, digitaalisen tiedon tallennusyksikkö."
+  },
+  "title.pricing": {
+    "message": "Palvelun hinnat",
+    "description": "Palvelun hinnat -ikkunan otsikko."
+  },
+  "title.pricingFor": {
+    "message": "{service} hinta",
+    "description": "Määritetyn palvelun hinnat -ikkunan otsikko."
+  },
+  "field.conditions": {
+    "message": "Soveltuvat ehdot",
+    "description": "Hintaehdon valintarivin otsikko."
+  },
+  "field.billingMethod": {
+    "message": "Laskutustapa",
+    "description": "Hintaehdon laskentatavan otsikko."
+  },
+  "field.remark": {
+    "message": "Huomautus",
+    "description": "Hinnan lisäselvityksen otsikko."
+  },
+  "message.pricingDescription": {
+    "message": "Alla on palvelun pistehintasäännöt. Tämän pyynnön arvioidut pisteet näkyvät edelleen luomispainikkeen vieressä.",
+    "description": "Palveluhintataulukon yläpuolella oleva selitys."
+  },
+  "message.noPricing": {
+    "message": "Tällä palvelulla ei ole julkisia hinnansääntöjä.",
+    "description": "Kun palvelulla ei ole näkyviä hinnansääntöjä."
+  },
+  "message.allRequests": {
+    "message": "Kaikki pyynnöt",
+    "description": "Hintaehdon etiketti, jolla ei ole soveltuvia ehtoja."
+  },
+  "message.otherConfigurations": {
+    "message": "Sisältää lisäehdot",
+    "description": "Turvateksti, joka näytetään, kun hintasäännöissä on ehtoja, joita ei voida täydellisesti tiivistää."
+  },
+  "message.calculated": {
+    "message": "Lasketaan pyynnön parametrien mukaan",
+    "description": "Monimutkaisten hinnan kaavojen varmistusteksti."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} pistettä",
+    "description": "Kiinteä hinta pisteinä."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} pistettä / {unit}",
+    "description": "Kulutushinta per yksikkö pisteinä."
+  },
+  "billing.free": {
+    "message": "Ilmainen",
+    "description": "Ilmaisten sääntöjen laskutustapaetiketti."
+  },
+  "billing.fixed": {
+    "message": "Kiinteä hinta",
+    "description": "Kiinteiden hintasääntöjen laskutustapaetiketti."
+  },
+  "billing.linear": {
+    "message": "Kulutuksen mukaan",
+    "description": "Yksikkökohtaisen säännön laskutustapaetiketti."
+  },
+  "billing.calculated": {
+    "message": "Dynaaminen laskenta",
+    "description": "Monimutkaisten sääntöjen laskutustapaetiketti."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Muotoiltu yhtä suurten hintaehtojen esitys."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Muotoiltu useista valinnaisista hintaehtojen esitys."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Muotoiltu ylärajan sisältävän hintaehtojen esitys."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Muotoiltu ylärajaa sisältämättömän hintaehtojen esitys."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Muotoiltu alarajan sisältävän hintaehtojen esitys."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Muotoiltu alarajaa sisältämättömän hintaehtojen esitys."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Muotoiltu saman hintakentän valinnaisten arvojen esitys."
+  },
+  "condition.model": {
+    "message": "Malli",
+    "description": "Mallin hintaehtokenttä."
+  },
+  "condition.action": {
+    "message": "Toiminto",
+    "description": "Toiminnon hintaehtokenttä."
+  },
+  "condition.scenario": {
+    "message": "Skenaario",
+    "description": "Skenaarion hintaehtokenttä."
+  },
+  "condition.resolution": {
+    "message": "Resoluutio",
+    "description": "Resoluutiohintaehtokenttä."
+  },
+  "condition.duration": {
+    "message": "Kesto",
+    "description": "Kestohintaehtokenttä."
+  },
+  "condition.mode": {
+    "message": "Tila",
+    "description": "Tilanhintaehtokenttä."
+  },
+  "condition.quality": {
+    "message": "Laatu",
+    "description": "Laatuhintaehtokenttä."
+  },
+  "condition.number": {
+    "message": "Määrä",
+    "description": "Pyyntömäärän hintaehtokenttä."
+  },
+  "condition.count": {
+    "message": "Määrä",
+    "description": "Kohdemäärän hintaehtokenttä."
+  },
+  "unit.Second": {
+    "message": "sekunti",
+    "description": "Hinta per sekunti."
+  },
+  "unit.Token": {
+    "message": "Token",
+    "description": "Hinta per token-yksikkö."
+  },
+  "condition.referenceVideo": {
+    "message": "Viitevideo",
+    "description": "Ilmaisee hintaehtokentän, jossa käytetään viitevideota."
+  },
+  "message.required": {
+    "message": "Vaaditaan",
+    "description": "Arvo, joka näytetään, kun hintaehto vaatii tietyn toiminnon tai syötteen."
+  },
+  "operator.anyOf": {
+    "message": "Mikä tahansa täyttää: {options}",
+    "description": "Muotoilee hinnan ehdon, jossa mikä tahansa luetelluista vaihtoehdoista täyttää vaatimukset."
+  },
+  "condition.version": {
+    "message": "Versio",
+    "description": "Mallin version hintaehtokenttä."
+  },
+  "condition.hd": {
+    "message": "Korkealaatuinen",
+    "description": "Korkealaatuinen tulostus hintaehdon kenttä."
+  },
+  "condition.styleReference": {
+    "message": "Tyyliviite",
+    "description": "Tyyliviitteen syöttöhintaehtokenttä."
+  },
+  "condition.moodboard": {
+    "message": "Tunnelmapaneeli",
+    "description": "Tunnelmapaneelin syöttöhintaehtokenttä."
+  },
+  "condition.generateAudio": {
+    "message": "Generoi ääni",
+    "description": "Äänigeneroinnin hintaehtokenttä."
+  },
+  "condition.anyOf": {
+    "message": "Mikä tahansa täyttää",
+    "description": "Hintaehdon sarakeotsikko, jossa riittää, että mikä tahansa luetelluista vaihtoehdoista täyttyy."
+  },
+  "condition.motion": {
+    "message": "Liike",
+    "description": "Liike-hintaehdon sarakeotsikko."
+  },
+  "condition.template": {
+    "message": "Malli",
+    "description": "Malli-hintaehdon sarakeotsikko."
+  },
+  "condition.audio": {
+    "message": "Ääni",
+    "description": "Ääni-hintaehdon sarakeotsikko."
+  },
+  "condition.type": {
+    "message": "Tyyppi",
+    "description": "Tyyppi-hintaehdon sarakeotsikko."
+  },
+  "condition.size": {
+    "message": "Koko",
+    "description": "Koko-hintaehdon sarakeotsikko."
+  },
+  "condition.promptTokens": {
+    "message": "Kehotus-tokenit",
+    "description": "Kehotus-tokenit-hintaehdon sarakeotsikko."
+  },
+  "condition.characterOrientation": {
+    "message": "Hahmon suunta",
+    "description": "Hahmon suunta-hintaehdon sarakeotsikko."
+  },
+  "unit.image": {
+    "message": "Kuva",
+    "description": "Hinta yhdelle luodulle kuvalle."
   }
 }

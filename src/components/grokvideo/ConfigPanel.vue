@@ -11,7 +11,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="grokvideo" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('grokvideo.button.generate') }}
@@ -31,7 +31,7 @@ import ResolutionSelector from './config/ResolutionSelector.vue';
 import RatioSelector from './config/RatioSelector.vue';
 import ImageInput from './config/ImageInput.vue';
 import ReferenceImagesInput from './config/ReferenceImagesInput.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -50,7 +50,7 @@ export default defineComponent({
     RatioSelector,
     ImageInput,
     ReferenceImagesInput,
-    Consumption,
+    ServicePricingSummary,
     ScenarioPaymentMode
   },
   emits: ['generate'],

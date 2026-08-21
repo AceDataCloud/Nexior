@@ -91,7 +91,7 @@
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="kling" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.generateTalkingPhoto') }}
@@ -104,7 +104,7 @@
 import { MagicIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElInput, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import ModelSelector from './talking-photo/ModelSelector.vue';
@@ -131,7 +131,7 @@ export default defineComponent({
     ElUpload,
     ElButton,
     ElInput,
-    Consumption,
+    ServicePricingSummary,
     InfoIcon,
     ImagePreview,
     ModelSelector,

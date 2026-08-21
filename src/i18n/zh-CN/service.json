@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB 意味着千兆字节，数字信息存储的单位。"
+  },
+  "title.pricing": {
+    "message": "服务价格",
+    "description": "服务价格弹窗的标题。"
+  },
+  "title.pricingFor": {
+    "message": "{service} 价格",
+    "description": "指定服务价格弹窗的标题。"
+  },
+  "field.conditions": {
+    "message": "适用条件",
+    "description": "选择价格规则的请求条件列标题。"
+  },
+  "field.billingMethod": {
+    "message": "计费方式",
+    "description": "价格规则计算方式的列标题。"
+  },
+  "field.remark": {
+    "message": "备注",
+    "description": "价格补充说明的列标题。"
+  },
+  "message.pricingDescription": {
+    "message": "以下为服务的积分价格规则。本次请求的预计积分仍显示在生成按钮旁。",
+    "description": "服务价格表上方的说明。"
+  },
+  "message.noPricing": {
+    "message": "该服务暂无公开价格规则。",
+    "description": "服务没有可见价格规则时的空状态。"
+  },
+  "message.allRequests": {
+    "message": "所有请求",
+    "description": "没有适用条件的价格规则标签。"
+  },
+  "message.otherConfigurations": {
+    "message": "含附加条件",
+    "description": "价格规则含有无法完整概括的条件时显示的安全兜底文案。"
+  },
+  "message.calculated": {
+    "message": "根据请求参数计算",
+    "description": "复杂价格公式的安全兜底文案。"
+  },
+  "message.creditsAmount": {
+    "message": "{amount} 积分",
+    "description": "以积分表示的固定价格。"
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} 积分 / {unit}",
+    "description": "以每单位积分表示的用量价格。"
+  },
+  "billing.free": {
+    "message": "免费",
+    "description": "免费规则的计费方式标签。"
+  },
+  "billing.fixed": {
+    "message": "固定价格",
+    "description": "固定价格规则的计费方式标签。"
+  },
+  "billing.linear": {
+    "message": "按用量",
+    "description": "按单位规则的计费方式标签。"
+  },
+  "billing.calculated": {
+    "message": "动态计算",
+    "description": "复杂规则的计费方式标签。"
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "格式化等值价格条件。"
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "格式化多个可选值的价格条件。"
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "格式化包含上限的价格条件。"
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "格式化不包含上限的价格条件。"
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "格式化包含下限的价格条件。"
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "格式化不包含下限的价格条件。"
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "格式化同一价格字段的可选值。"
+  },
+  "condition.model": {
+    "message": "模型",
+    "description": "模型价格条件字段。"
+  },
+  "condition.action": {
+    "message": "操作",
+    "description": "操作价格条件字段。"
+  },
+  "condition.scenario": {
+    "message": "场景",
+    "description": "场景价格条件字段。"
+  },
+  "condition.resolution": {
+    "message": "分辨率",
+    "description": "分辨率价格条件字段。"
+  },
+  "condition.duration": {
+    "message": "时长",
+    "description": "时长价格条件字段。"
+  },
+  "condition.mode": {
+    "message": "模式",
+    "description": "模式价格条件字段。"
+  },
+  "condition.quality": {
+    "message": "质量",
+    "description": "质量价格条件字段。"
+  },
+  "condition.number": {
+    "message": "数量",
+    "description": "请求数量价格条件字段。"
+  },
+  "condition.count": {
+    "message": "数量",
+    "description": "项目数量价格条件字段。"
+  },
+  "unit.Second": {
+    "message": "秒",
+    "description": "每秒价格单位。"
+  },
+  "unit.Token": {
+    "message": "令牌",
+    "description": "每令牌价格单位。"
+  },
+  "condition.referenceVideo": {
+    "message": "参考视频",
+    "description": "表示使用参考视频的价格条件字段。"
+  },
+  "message.required": {
+    "message": "需要",
+    "description": "价格条件要求某项功能或输入时显示的值。"
+  },
+  "operator.anyOf": {
+    "message": "任一满足：{options}",
+    "description": "格式化任一列出选项满足即可的价格条件。"
+  },
+  "condition.version": {
+    "message": "版本",
+    "description": "模型版本价格条件字段。"
+  },
+  "condition.hd": {
+    "message": "高清",
+    "description": "高清输出价格条件字段。"
+  },
+  "condition.styleReference": {
+    "message": "风格参考",
+    "description": "风格参考输入价格条件字段。"
+  },
+  "condition.moodboard": {
+    "message": "情绪板",
+    "description": "情绪板输入价格条件字段。"
+  },
+  "condition.generateAudio": {
+    "message": "生成音频",
+    "description": "生成音频 价格条件列标题。"
+  },
+  "condition.anyOf": {
+    "message": "任一满足",
+    "description": "任一列出选项满足即可的价格条件列标题。"
+  },
+  "condition.motion": {
+    "message": "运动",
+    "description": "运动 价格条件列标题。"
+  },
+  "condition.template": {
+    "message": "模板",
+    "description": "模板 价格条件列标题。"
+  },
+  "condition.audio": {
+    "message": "音频",
+    "description": "音频 价格条件列标题。"
+  },
+  "condition.type": {
+    "message": "类型",
+    "description": "类型 价格条件列标题。"
+  },
+  "condition.size": {
+    "message": "尺寸",
+    "description": "尺寸 价格条件列标题。"
+  },
+  "condition.promptTokens": {
+    "message": "提示词令牌",
+    "description": "提示词令牌 价格条件列标题。"
+  },
+  "condition.characterOrientation": {
+    "message": "角色方向",
+    "description": "角色方向 价格条件列标题。"
+  },
+  "unit.image": {
+    "message": "张",
+    "description": "生成一张图片的价格单位。"
   }
 }

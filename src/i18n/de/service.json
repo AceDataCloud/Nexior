@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB steht für Gigabyte, eine Einheit zur Speicherung digitaler Informationen."
+  },
+  "title.pricing": {
+    "message": "Preis der Dienstleistungen",
+    "description": "Titel des Pop-ups für die Preisgestaltung der Dienstleistungen."
+  },
+  "title.pricingFor": {
+    "message": "{service} Preis",
+    "description": "Titel des Pop-ups für den Preis einer bestimmten Dienstleistung."
+  },
+  "field.conditions": {
+    "message": "Anwendbare Bedingungen",
+    "description": "Spaltenüberschrift für die Bedingungen zur Auswahl der Preisregeln."
+  },
+  "field.billingMethod": {
+    "message": "Abrechnungsart",
+    "description": "Spaltenüberschrift für die Berechnungsmethode der Preisregeln."
+  },
+  "field.remark": {
+    "message": "Bemerkung",
+    "description": "Spaltenüberschrift für zusätzliche Erläuterungen zu den Preisen."
+  },
+  "message.pricingDescription": {
+    "message": "Hier sind die Preisregeln für die Dienstleistungen. Die voraussichtlichen Punkte für diese Anfrage werden weiterhin neben der Generierungsschaltfläche angezeigt.",
+    "description": "Erläuterung über der Preistabelle der Dienstleistungen."
+  },
+  "message.noPricing": {
+    "message": "Für diese Dienstleistung sind derzeit keine öffentlichen Preisregeln verfügbar.",
+    "description": "Leerer Status, wenn es keine sichtbaren Preisregeln für die Dienstleistung gibt."
+  },
+  "message.allRequests": {
+    "message": "Alle Anfragen",
+    "description": "Label für Preisregeln ohne anwendbare Bedingungen."
+  },
+  "message.otherConfigurations": {
+    "message": "Enthält zusätzliche Bedingungen",
+    "description": "Sicherheitsformulierung, die angezeigt wird, wenn die Preisregel Bedingungen enthält, die nicht vollständig zusammengefasst werden können."
+  },
+  "message.calculated": {
+    "message": "Basierend auf den Anfrageparametern berechnet",
+    "description": "Sicherheitsformulierung für komplexe Preisformeln."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} Punkte",
+    "description": "Fester Preis, der in Punkten angegeben ist."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} Punkte / {unit}",
+    "description": "Preise pro Einheit, die in Punkten angegeben sind."
+  },
+  "billing.free": {
+    "message": "Kostenlos",
+    "description": "Label für die Abrechnungsart bei kostenlosen Regeln."
+  },
+  "billing.fixed": {
+    "message": "Festpreis",
+    "description": "Label für die Abrechnungsart bei Festpreisregeln."
+  },
+  "billing.linear": {
+    "message": "Nach Verbrauch",
+    "description": "Label für die Abrechnungsart bei verbrauchsabhängigen Regeln."
+  },
+  "billing.calculated": {
+    "message": "Dynamisch berechnet",
+    "description": "Label für die Abrechnungsart bei komplexen Regeln."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Formatierung für Preisbedingungen mit Gleichwertigkeit."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Formatierung für Preisbedingungen mit mehreren wählbaren Werten."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Formatierung für Preisbedingungen mit einer Obergrenze."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Formatierung für Preisbedingungen ohne Obergrenze."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Formatierung für Preisbedingungen mit einer Untergrenze."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Formatierung für Preisbedingungen ohne Untergrenze."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Formatierung für wählbare Werte im gleichen Preisfeld."
+  },
+  "condition.model": {
+    "message": "Modell",
+    "description": "Feld für Preisbedingungen des Modells."
+  },
+  "condition.action": {
+    "message": "Aktion",
+    "description": "Feld für Preisbedingungen der Aktion."
+  },
+  "condition.scenario": {
+    "message": "Szenario",
+    "description": "Feld für Preisbedingungen des Szenarios."
+  },
+  "condition.resolution": {
+    "message": "Auflösung",
+    "description": "Feld für Preisbedingungen der Auflösung."
+  },
+  "condition.duration": {
+    "message": "Dauer",
+    "description": "Feld für Preisbedingungen der Dauer."
+  },
+  "condition.mode": {
+    "message": "Modus",
+    "description": "Feld für Preisbedingungen des Modus."
+  },
+  "condition.quality": {
+    "message": "Qualität",
+    "description": "Feld für Preisbedingungen der Qualität."
+  },
+  "condition.number": {
+    "message": "Anzahl",
+    "description": "Feld für Preisbedingungen der Anfrageanzahl."
+  },
+  "condition.count": {
+    "message": "Anzahl",
+    "description": "Feld für Preisbedingungen der Anzahl der Elemente."
+  },
+  "unit.Second": {
+    "message": "Sekunde",
+    "description": "Preiseinheit pro Sekunde."
+  },
+  "unit.Token": {
+    "message": "Token",
+    "description": "Preiseinheit pro Token."
+  },
+  "condition.referenceVideo": {
+    "message": "Referenzvideo",
+    "description": "Bezieht sich auf das Preisbedingungsfeld, das ein Referenzvideo verwendet."
+  },
+  "message.required": {
+    "message": "Erforderlich",
+    "description": "Wert, der angezeigt wird, wenn eine Funktion oder Eingabe für die Preisbedingungen erforderlich ist."
+  },
+  "operator.anyOf": {
+    "message": "Mindestens eines erfüllt: {options}",
+    "description": "Formatierung für Preisbedingungen, bei denen mindestens eine der aufgelisteten Optionen erfüllt sein muss."
+  },
+  "condition.version": {
+    "message": "Modellversion",
+    "description": "Preisbedingung für die Modellversion."
+  },
+  "condition.hd": {
+    "message": "hochauflösend",
+    "description": "Preisbedingung für hochauflösende Ausgabe."
+  },
+  "condition.styleReference": {
+    "message": "Stilreferenz",
+    "description": "Feld für Preisbedingungen der Stilreferenzeingabe."
+  },
+  "condition.moodboard": {
+    "message": "Stimmungsboard",
+    "description": "Feld für Preisbedingungen der Stimmungsboard-Eingabe."
+  },
+  "condition.generateAudio": {
+    "message": "Audio generieren",
+    "description": "Feld für Preisbedingungen der Audioerstellung."
+  },
+  "condition.anyOf": {
+    "message": "Mindestens eine erfüllt",
+    "description": "Der Titel der Preisbedingung, bei dem es ausreicht, wenn mindestens eine der aufgelisteten Optionen erfüllt ist."
+  },
+  "condition.motion": {
+    "message": "Bewegung",
+    "description": "Bewegung Preisbedingung Spaltenüberschrift."
+  },
+  "condition.template": {
+    "message": "Vorlage",
+    "description": "Vorlage Preisbedingung Spaltenüberschrift."
+  },
+  "condition.audio": {
+    "message": "Toninhalt",
+    "description": "Toninhalt Preisbedingung Spaltenüberschrift."
+  },
+  "condition.type": {
+    "message": "Typ",
+    "description": "Typ Preisbedingung Spaltenüberschrift."
+  },
+  "condition.size": {
+    "message": "Größe",
+    "description": "Größe Preisbedingung Spaltenüberschrift."
+  },
+  "condition.promptTokens": {
+    "message": "Eingabe-Token",
+    "description": "Eingabe-Token Preisbedingung Spaltenüberschrift."
+  },
+  "condition.characterOrientation": {
+    "message": "Charakterausrichtung",
+    "description": "Charakterausrichtung Preisbedingung Spaltenüberschrift."
+  },
+  "unit.image": {
+    "message": "Bild",
+    "description": "Preis Einheit für die Generierung eines Bildes."
   }
 }

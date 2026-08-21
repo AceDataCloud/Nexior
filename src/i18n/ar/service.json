@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "جيجابايت",
     "description": "جيجابايت تعني وحدة تخزين المعلومات الرقمية."
+  },
+  "title.pricing": {
+    "message": "أسعار الخدمة",
+    "description": "عنوان نافذة أسعار الخدمة."
+  },
+  "title.pricingFor": {
+    "message": "أسعار {service}",
+    "description": "عنوان نافذة أسعار الخدمة المحددة."
+  },
+  "field.conditions": {
+    "message": "الشروط المطبقة",
+    "description": "عنوان عمود شروط طلب قواعد الأسعار."
+  },
+  "field.billingMethod": {
+    "message": "طريقة الفوترة",
+    "description": "عنوان عمود طريقة حساب قواعد الأسعار."
+  },
+  "field.remark": {
+    "message": "ملاحظات",
+    "description": "عنوان عمود توضيحات الأسعار."
+  },
+  "message.pricingDescription": {
+    "message": "فيما يلي قواعد أسعار النقاط للخدمة. لا يزال من المتوقع أن تظهر النقاط المطلوبة بجوار زر التوليد.",
+    "description": "وصف فوق جدول أسعار الخدمة."
+  },
+  "message.noPricing": {
+    "message": "لا توجد قواعد أسعار عامة لهذه الخدمة.",
+    "description": "حالة فارغة عندما لا توجد قواعد أسعار مرئية للخدمة."
+  },
+  "message.allRequests": {
+    "message": "جميع الطلبات",
+    "description": "علامة قواعد الأسعار التي لا تحتوي على شروط مطبقة."
+  },
+  "message.otherConfigurations": {
+    "message": "يشمل شروط إضافية",
+    "description": "نص أمان يظهر عندما تحتوي قاعدة السعر على شروط لا يمكن تلخيصها بالكامل."
+  },
+  "message.calculated": {
+    "message": "محسوب بناءً على معلمات الطلب",
+    "description": "نص أمان لصيغ الأسعار المعقدة."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} نقطة",
+    "description": "سعر ثابت معبر عنه بالنقاط."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} نقطة / {unit}",
+    "description": "سعر الاستخدام معبر عنه بالنقاط لكل وحدة."
+  },
+  "billing.free": {
+    "message": "مجاني",
+    "description": "علامة طريقة الفوترة للقواعد المجانية."
+  },
+  "billing.fixed": {
+    "message": "سعر ثابت",
+    "description": "علامة طريقة الفوترة للقواعد ذات السعر الثابت."
+  },
+  "billing.linear": {
+    "message": "حسب الاستخدام",
+    "description": "علامة طريقة الفوترة للقواعد حسب الوحدة."
+  },
+  "billing.calculated": {
+    "message": "محسوب ديناميكيًا",
+    "description": "علامة طريقة الفوترة للقواعد المعقدة."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "تنسيق شروط الأسعار المتساوية."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "تنسيق شروط الأسعار مع قيم اختيارية متعددة."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "تنسيق شروط الأسعار مع حد أقصى."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "تنسيق شروط الأسعار بدون حد أقصى."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "تنسيق شروط الأسعار مع حد أدنى."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "تنسيق شروط الأسعار بدون حد أدنى."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "تنسيق القيم الاختيارية لنفس حقل السعر."
+  },
+  "condition.model": {
+    "message": "نموذج",
+    "description": "حقل شروط أسعار النموذج."
+  },
+  "condition.action": {
+    "message": "إجراء",
+    "description": "حقل شروط أسعار الإجراء."
+  },
+  "condition.scenario": {
+    "message": "سيناريو",
+    "description": "حقل شروط أسعار السيناريو."
+  },
+  "condition.resolution": {
+    "message": "دقة",
+    "description": "حقل شروط أسعار الدقة."
+  },
+  "condition.duration": {
+    "message": "مدة",
+    "description": "حقل شروط أسعار المدة."
+  },
+  "condition.mode": {
+    "message": "وضع",
+    "description": "حقل شروط أسعار الوضع."
+  },
+  "condition.quality": {
+    "message": "جودة",
+    "description": "حقل شروط أسعار الجودة."
+  },
+  "condition.number": {
+    "message": "عدد",
+    "description": "حقل شروط أسعار عدد الطلبات."
+  },
+  "condition.count": {
+    "message": "عدد",
+    "description": "حقل شروط أسعار عدد العناصر."
+  },
+  "unit.Second": {
+    "message": "ثانية",
+    "description": "وحدة سعر لكل ثانية."
+  },
+  "unit.Token": {
+    "message": "رمز",
+    "description": "وحدة سعر لكل رمز."
+  },
+  "condition.referenceVideo": {
+    "message": "فيديو مرجعي",
+    "description": "يمثل حقل شرط السعر الذي يستخدم فيديو مرجعي."
+  },
+  "message.required": {
+    "message": "مطلوب",
+    "description": "القيمة المعروضة عند طلب ميزة أو إدخال معين في شرط السعر."
+  },
+  "operator.anyOf": {
+    "message": "أي مما يلي: {options}",
+    "description": "تنسيق شرط السعر الذي يمكن أن يتحقق من أي خيار مدرج."
+  },
+  "condition.version": {
+    "message": "الإصدار",
+    "description": "حقل شرط سعر إصدار النموذج."
+  },
+  "condition.hd": {
+    "message": "عالي الدقة",
+    "description": "حقل شرط سعر الإخراج عالي الدقة."
+  },
+  "condition.styleReference": {
+    "message": "مرجع النمط",
+    "description": "حقل شرط سعر إدخال مرجع النمط."
+  },
+  "condition.moodboard": {
+    "message": "لوحة المزاج",
+    "description": "حقل شرط سعر إدخال لوحة المزاج."
+  },
+  "condition.generateAudio": {
+    "message": "توليد الصوت",
+    "description": "حقل شرط سعر توليد الصوت."
+  },
+  "condition.anyOf": {
+    "message": "أي من الشروط",
+    "description": "عنوان شرط السعر الذي يمكن أن يتحقق من أي من الخيارات المدرجة."
+  },
+  "condition.motion": {
+    "message": "الحركة",
+    "description": "عنوان عمود شروط الأسعار للحركة."
+  },
+  "condition.template": {
+    "message": "القالب",
+    "description": "عنوان عمود شروط الأسعار للقالب."
+  },
+  "condition.audio": {
+    "message": "الصوت",
+    "description": "عنوان عمود شروط الأسعار للصوت."
+  },
+  "condition.type": {
+    "message": "النوع",
+    "description": "عنوان عمود شروط الأسعار للنوع."
+  },
+  "condition.size": {
+    "message": "الحجم",
+    "description": "عنوان عمود شروط الأسعار للحجم."
+  },
+  "condition.promptTokens": {
+    "message": "رموز التلميح",
+    "description": "عنوان عمود شروط الأسعار لرموز التلميح."
+  },
+  "condition.characterOrientation": {
+    "message": "اتجاه الشخصية",
+    "description": "عنوان عمود شروط الأسعار لاتجاه الشخصية."
+  },
+  "unit.image": {
+    "message": "صورة",
+    "description": "وحدة سعر لإنشاء صورة واحدة."
   }
 }

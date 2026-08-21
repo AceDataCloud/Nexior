@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB는 기가바이트를 의미하며, 디지털 정보 저장 단위입니다."
+  },
+  "title.pricing": {
+    "message": "서비스 가격",
+    "description": "서비스 가격 팝업의 제목입니다."
+  },
+  "title.pricingFor": {
+    "message": "{service} 가격",
+    "description": "지정된 서비스 가격 팝업의 제목입니다."
+  },
+  "field.conditions": {
+    "message": "적용 조건",
+    "description": "가격 규칙을 선택하기 위한 요청 조건 열 제목입니다."
+  },
+  "field.billingMethod": {
+    "message": "청구 방식",
+    "description": "가격 규칙 계산 방식의 열 제목입니다."
+  },
+  "field.remark": {
+    "message": "비고",
+    "description": "가격 보충 설명의 열 제목입니다."
+  },
+  "message.pricingDescription": {
+    "message": "다음은 서비스의 포인트 가격 규칙입니다. 이번 요청의 예상 포인트는 생성 버튼 옆에 표시됩니다.",
+    "description": "서비스 가격표 상단의 설명입니다."
+  },
+  "message.noPricing": {
+    "message": "해당 서비스는 공개 가격 규칙이 없습니다.",
+    "description": "서비스에 가시적인 가격 규칙이 없을 때의 빈 상태입니다."
+  },
+  "message.allRequests": {
+    "message": "모든 요청",
+    "description": "적용 조건이 없는 가격 규칙 태그입니다."
+  },
+  "message.otherConfigurations": {
+    "message": "추가 조건 포함",
+    "description": "가격 규칙에 완전히 요약할 수 없는 조건이 있을 때 표시되는 안전한 문구입니다."
+  },
+  "message.calculated": {
+    "message": "요청 매개변수에 따라 계산됨",
+    "description": "복잡한 가격 공식의 안전한 문구입니다."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} 포인트",
+    "description": "포인트로 표시된 고정 가격입니다."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} 포인트 / {unit}",
+    "description": "단위당 포인트로 표시된 사용량 가격입니다."
+  },
+  "billing.free": {
+    "message": "무료",
+    "description": "무료 규칙의 청구 방식 태그입니다."
+  },
+  "billing.fixed": {
+    "message": "고정 가격",
+    "description": "고정 가격 규칙의 청구 방식 태그입니다."
+  },
+  "billing.linear": {
+    "message": "사용량 기준",
+    "description": "단위 기준의 청구 방식 태그입니다."
+  },
+  "billing.calculated": {
+    "message": "동적 계산",
+    "description": "복잡한 규칙의 청구 방식 태그입니다."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "형식화된 동등 가격 조건입니다."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "형식화된 여러 선택 값의 가격 조건입니다."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "형식화된 상한이 있는 가격 조건입니다."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "형식화된 상한이 없는 가격 조건입니다."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "형식화된 하한이 있는 가격 조건입니다."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "형식화된 하한이 없는 가격 조건입니다."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "형식화된 동일 가격 필드의 선택 값입니다."
+  },
+  "condition.model": {
+    "message": "모델",
+    "description": "모델 가격 조건 필드입니다."
+  },
+  "condition.action": {
+    "message": "작업",
+    "description": "작업 가격 조건 필드입니다."
+  },
+  "condition.scenario": {
+    "message": "시나리오",
+    "description": "시나리오 가격 조건 필드입니다."
+  },
+  "condition.resolution": {
+    "message": "해상도",
+    "description": "해상도 가격 조건 필드입니다."
+  },
+  "condition.duration": {
+    "message": "지속 시간",
+    "description": "지속 시간 가격 조건 필드입니다."
+  },
+  "condition.mode": {
+    "message": "모드",
+    "description": "모드 가격 조건 필드입니다."
+  },
+  "condition.quality": {
+    "message": "품질",
+    "description": "품질 가격 조건 필드입니다."
+  },
+  "condition.number": {
+    "message": "수량",
+    "description": "요청 수량 가격 조건 필드입니다."
+  },
+  "condition.count": {
+    "message": "수량",
+    "description": "항목 수량 가격 조건 필드입니다."
+  },
+  "unit.Second": {
+    "message": "초",
+    "description": "초당 가격 단위입니다."
+  },
+  "unit.Token": {
+    "message": "토큰",
+    "description": "토큰당 가격 단위입니다."
+  },
+  "condition.referenceVideo": {
+    "message": "참조 비디오",
+    "description": "참조 비디오를 사용하는 가격 조건 필드를 나타냅니다."
+  },
+  "message.required": {
+    "message": "필요",
+    "description": "가격 조건이 특정 기능이나 입력을 요구할 때 표시되는 값입니다."
+  },
+  "operator.anyOf": {
+    "message": "다음 중 하나: {options}",
+    "description": "나열된 옵션 중 하나가 일치할 수 있는 가격 조건을 형식화합니다."
+  },
+  "condition.version": {
+    "message": "버전",
+    "description": "모델 버전에 대한 가격 조건 필드입니다."
+  },
+  "condition.hd": {
+    "message": "고화질",
+    "description": "고화질 출력을 위한 가격 조건 필드입니다."
+  },
+  "condition.styleReference": {
+    "message": "스타일 참조",
+    "description": "스타일 참조 입력에 대한 가격 조건 필드입니다."
+  },
+  "condition.moodboard": {
+    "message": "무드보드",
+    "description": "무드보드 입력에 대한 가격 조건 필드입니다."
+  },
+  "condition.generateAudio": {
+    "message": "오디오 생성",
+    "description": "오디오 생성을 위한 가격 조건 필드입니다."
+  },
+  "condition.anyOf": {
+    "message": "어떤 것이든",
+    "description": "나열된 옵션 중 어떤 것이든 일치할 수 있는 가격 조건의 열 레이블입니다."
+  },
+  "condition.motion": {
+    "message": "모션",
+    "description": "모션에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.template": {
+    "message": "템플릿",
+    "description": "템플릿에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.audio": {
+    "message": "오디오",
+    "description": "오디오에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.type": {
+    "message": "유형",
+    "description": "유형에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.size": {
+    "message": "크기",
+    "description": "크기에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.promptTokens": {
+    "message": "프롬프트 토큰",
+    "description": "프롬프트 토큰에 대한 가격 조건 열 레이블입니다."
+  },
+  "condition.characterOrientation": {
+    "message": "캐릭터 방향",
+    "description": "캐릭터 방향에 대한 가격 조건 열 레이블입니다."
+  },
+  "unit.image": {
+    "message": "이미지",
+    "description": "생성된 이미지 하나에 대한 가격 단위입니다."
   }
 }

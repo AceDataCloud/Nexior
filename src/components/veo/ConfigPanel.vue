@@ -17,7 +17,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="veo" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('veo.button.generate') }}
@@ -35,7 +35,7 @@ import ActionSelector from './config/ActionSelector.vue';
 import TranslationSelector from './config/TranslationSelector.vue';
 import AspectRatioSelector from './config/AspectRatioSelector.vue';
 import StartEndImage from './config/StartEndImage.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import PromptInput from './config/PromptInput.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -47,7 +47,7 @@ export default defineComponent({
   components: {
     MagicIcon,
     ElButton,
-    Consumption,
+    ServicePricingSummary,
     PromptInput,
     ModelSelector,
     StartEndImage,

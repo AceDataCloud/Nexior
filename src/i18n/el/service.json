@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "Το GB σημαίνει gigabyte, μονάδα αποθήκευσης ψηφιακών πληροφοριών."
+  },
+  "title.pricing": {
+    "message": "Τιμές Υπηρεσιών",
+    "description": "Ο τίτλος του παραθύρου τιμών υπηρεσιών."
+  },
+  "title.pricingFor": {
+    "message": "Τιμή {service}",
+    "description": "Ο τίτλος του παραθύρου τιμών για συγκεκριμένη υπηρεσία."
+  },
+  "field.conditions": {
+    "message": "Εφαρμοσμένες Συνθήκες",
+    "description": "Ο τίτλος της στήλης για τις συνθήκες που ισχύουν για τους κανόνες τιμολόγησης."
+  },
+  "field.billingMethod": {
+    "message": "Μέθοδος Χρέωσης",
+    "description": "Ο τίτλος της στήλης για τον τρόπο υπολογισμού των κανόνων τιμολόγησης."
+  },
+  "field.remark": {
+    "message": "Σημείωση",
+    "description": "Ο τίτλος της στήλης για τις πρόσθετες πληροφορίες σχετικά με τις τιμές."
+  },
+  "message.pricingDescription": {
+    "message": "Ακολουθούν οι κανόνες τιμολόγησης με πόντους για την υπηρεσία. Οι αναμενόμενοι πόντοι για αυτήν την αίτηση εμφανίζονται δίπλα στο κουμπί δημιουργίας.",
+    "description": "Η περιγραφή πάνω από τον πίνακα τιμών υπηρεσιών."
+  },
+  "message.noPricing": {
+    "message": "Δεν υπάρχουν δημόσιοι κανόνες τιμολόγησης για αυτήν την υπηρεσία.",
+    "description": "Η κατάσταση κενής όταν δεν υπάρχουν ορατοί κανόνες τιμολόγησης για την υπηρεσία."
+  },
+  "message.allRequests": {
+    "message": "Όλες οι Αιτήσεις",
+    "description": "Ετικέτα κανόνων τιμολόγησης χωρίς εφαρμοσμένες συνθήκες."
+  },
+  "message.otherConfigurations": {
+    "message": "Περιλαμβάνει πρόσθετους όρους",
+    "description": "Εμφανίζεται όταν οι κανόνες τιμής περιλαμβάνουν όρους που δεν μπορούν να συνοψιστούν πλήρως."
+  },
+  "message.calculated": {
+    "message": "Υπολογισμένο με βάση τις παραμέτρους της αίτησης",
+    "description": "Κείμενο ασφαλείας για πολύπλοκους κανόνες τιμολόγησης."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} πόντοι",
+    "description": "Σταθερή τιμή εκφρασμένη σε πόντους."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} πόντοι / {unit}",
+    "description": "Τιμή κατανάλωσης εκφρασμένη σε πόντους ανά μονάδα."
+  },
+  "billing.free": {
+    "message": "Δωρεάν",
+    "description": "Ετικέτα για τη μέθοδο χρέωσης δωρεάν κανόνων."
+  },
+  "billing.fixed": {
+    "message": "Σταθερή Τιμή",
+    "description": "Ετικέτα για τη μέθοδο χρέωσης σταθερών τιμών."
+  },
+  "billing.linear": {
+    "message": "Κατά Χρήση",
+    "description": "Ετικέτα για τη μέθοδο χρέωσης κατά μονάδα."
+  },
+  "billing.calculated": {
+    "message": "Δυναμικός Υπολογισμός",
+    "description": "Ετικέτα για τη μέθοδο χρέωσης πολύπλοκων κανόνων."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης ίσων."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης με πολλές επιλογές."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης με ανώτατο όριο."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης χωρίς ανώτατο όριο."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης με κατώτατο όριο."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Μορφοποιημένη τιμή για συνθήκες τιμολόγησης χωρίς κατώτατο όριο."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Μορφοποιημένη τιμή για επιλογές του ίδιου πεδίου τιμολόγησης."
+  },
+  "condition.model": {
+    "message": "Μοντέλο",
+    "description": "Πεδίο συνθήκης τιμολόγησης για το μοντέλο."
+  },
+  "condition.action": {
+    "message": "Ενέργεια",
+    "description": "Πεδίο συνθήκης τιμολόγησης για την ενέργεια."
+  },
+  "condition.scenario": {
+    "message": "Σενάριο",
+    "description": "Πεδίο συνθήκης τιμολόγησης για το σενάριο."
+  },
+  "condition.resolution": {
+    "message": "Ανάλυση",
+    "description": "Πεδίο συνθήκης τιμολόγησης για την ανάλυση."
+  },
+  "condition.duration": {
+    "message": "Διάρκεια",
+    "description": "Πεδίο συνθήκης τιμολόγησης για τη διάρκεια."
+  },
+  "condition.mode": {
+    "message": "Λειτουργία",
+    "description": "Πεδίο συνθήκης τιμολόγησης για τη λειτουργία."
+  },
+  "condition.quality": {
+    "message": "Ποιότητα",
+    "description": "Πεδίο συνθήκης τιμολόγησης για την ποιότητα."
+  },
+  "condition.number": {
+    "message": "Πλήθος",
+    "description": "Πεδίο συνθήκης τιμολόγησης για τον αριθμό αιτήσεων."
+  },
+  "condition.count": {
+    "message": "Πλήθος",
+    "description": "Πεδίο συνθήκης τιμολόγησης για τον αριθμό στοιχείων."
+  },
+  "unit.Second": {
+    "message": "δευτερόλεπτο",
+    "description": "Μονάδα τιμολόγησης ανά δευτερόλεπτο."
+  },
+  "unit.Token": {
+    "message": "διακριτικό",
+    "description": "Μονάδα τιμολόγησης ανά διακριτικό."
+  },
+  "condition.referenceVideo": {
+    "message": "Βίντεο αναφοράς",
+    "description": "Αναφέρεται στο πεδίο τιμής που χρησιμοποιεί το βίντεο αναφοράς."
+  },
+  "message.required": {
+    "message": "Απαιτείται",
+    "description": "Η τιμή που εμφανίζεται όταν η τιμή απαιτεί μια συγκεκριμένη δυνατότητα ή είσοδο."
+  },
+  "operator.anyOf": {
+    "message": "Οποιοδήποτε από τα: {options}",
+    "description": "Μορφοποιεί μια τιμή που πληροί οποιαδήποτε από τις αναφερόμενες προϋποθέσεις."
+  },
+  "condition.version": {
+    "message": "Έκδοση",
+    "description": "Πεδίο τιμής για την έκδοση του μοντέλου."
+  },
+  "condition.hd": {
+    "message": "Υψηλής ανάλυσης",
+    "description": "Πεδίο τιμής για την κατάσταση υψηλής ανάλυσης."
+  },
+  "condition.styleReference": {
+    "message": "Αναφορά στυλ",
+    "description": "Πεδίο τιμής για την είσοδο αναφοράς στυλ."
+  },
+  "condition.moodboard": {
+    "message": "Πίνακας διάθεσης",
+    "description": "Πεδίο τιμής για την κατάσταση πίνακα διάθεσης."
+  },
+  "condition.generateAudio": {
+    "message": "Δημιουργία ήχου",
+    "description": "Πεδίο τιμής για την παραγωγή ήχου."
+  },
+  "condition.anyOf": {
+    "message": "Οποιοδήποτε από τα παρακάτω",
+    "description": "Τίτλος στήλης για τις τιμές που πληρούν οποιαδήποτε από τις παρακάτω προϋποθέσεις."
+  },
+  "condition.motion": {
+    "message": "Κίνηση",
+    "description": "Κίνηση Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.template": {
+    "message": "Πρότυπο",
+    "description": "Πρότυπο Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.audio": {
+    "message": "Ήχος",
+    "description": "Ήχος Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.type": {
+    "message": "Τύπος",
+    "description": "Τύπος Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.size": {
+    "message": "Μέγεθος",
+    "description": "Μέγεθος Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.promptTokens": {
+    "message": "Λέξεις-κλειδιά προτροπής",
+    "description": "Λέξεις-κλειδιά προτροπής Τίτλος στήλης τιμής συνθήκης."
+  },
+  "condition.characterOrientation": {
+    "message": "Κατεύθυνση χαρακτήρα",
+    "description": "Κατεύθυνση χαρακτήρα Τίτλος στήλης τιμής συνθήκης."
+  },
+  "unit.image": {
+    "message": "εικόνα",
+    "description": "Μονάδα τιμής για την παραγωγή μιας εικόνας."
   }
 }

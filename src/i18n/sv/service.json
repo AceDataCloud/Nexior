@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB står för gigabyte, en enhet för lagring av digital information."
+  },
+  "title.pricing": {
+    "message": "Tjänstepriser",
+    "description": "Titeln på popup-fönstret för tjänstepriser."
+  },
+  "title.pricingFor": {
+    "message": "{service} pris",
+    "description": "Titeln på popup-fönstret för det angivna tjänstepriset."
+  },
+  "field.conditions": {
+    "message": "Giltiga villkor",
+    "description": "Kolumnrubrik för begärningsvillkor för prisregler."
+  },
+  "field.billingMethod": {
+    "message": "Betalningsmetod",
+    "description": "Kolumnrubrik för hur prisregler beräknas."
+  },
+  "field.remark": {
+    "message": "Kommentar",
+    "description": "Kolumnrubrik för tilläggsinformation om priser."
+  },
+  "message.pricingDescription": {
+    "message": "Följande är poängpriser för tjänsten. Den förväntade poängen för denna begäran visas fortfarande bredvid knappen för att generera.",
+    "description": "Förklaringen ovanför tjänstepriserna."
+  },
+  "message.noPricing": {
+    "message": "Det finns inga offentliga prisregler för denna tjänst.",
+    "description": "Tomt tillstånd när tjänsten inte har synliga prisregler."
+  },
+  "message.allRequests": {
+    "message": "Alla begärningar",
+    "description": "Etikett för prisregler utan giltiga villkor."
+  },
+  "message.otherConfigurations": {
+    "message": "Inkluderar ytterligare villkor",
+    "description": "Visas när prisregeln innehåller villkor som inte kan sammanfattas helt."
+  },
+  "message.calculated": {
+    "message": "Beräknat utifrån begärningsparametrar",
+    "description": "Säkerhetsformulering för komplexa prisformler."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} poäng",
+    "description": "Fast pris uttryckt i poäng."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} poäng / {unit}",
+    "description": "Användningspris uttryckt i poäng per enhet."
+  },
+  "billing.free": {
+    "message": "Gratis",
+    "description": "Etikett för betalningsmetod för gratisregler."
+  },
+  "billing.fixed": {
+    "message": "Fast pris",
+    "description": "Etikett för betalningsmetod för fasta prisregler."
+  },
+  "billing.linear": {
+    "message": "Baserat på användning",
+    "description": "Etikett för betalningsmetod för enhetsbaserade regler."
+  },
+  "billing.calculated": {
+    "message": "Dynamiskt beräknat",
+    "description": "Etikett för betalningsmetod för komplexa regler."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Formaterar lika värdeprisvillkor."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Formaterar prisvillkor med flera val."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Formaterar prisvillkor med övre gräns."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Formaterar prisvillkor utan övre gräns."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Formaterar prisvillkor med nedre gräns."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Formaterar prisvillkor utan nedre gräns."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Formaterar valfria värden för samma prisfält."
+  },
+  "condition.model": {
+    "message": "Modell",
+    "description": "Fält för prisvillkor för modell."
+  },
+  "condition.action": {
+    "message": "Åtgärd",
+    "description": "Fält för prisvillkor för åtgärd."
+  },
+  "condition.scenario": {
+    "message": "Situationen",
+    "description": "Fält för priskriterier för situationen."
+  },
+  "condition.resolution": {
+    "message": "Upplösning",
+    "description": "Fält för prisvillkor för upplösning."
+  },
+  "condition.duration": {
+    "message": "Varaktighet",
+    "description": "Fält för prisvillkor för varaktighet."
+  },
+  "condition.mode": {
+    "message": "Läge",
+    "description": "Fält för prisvillkor för läge."
+  },
+  "condition.quality": {
+    "message": "Kvalitet",
+    "description": "Fält för prisvillkor för kvalitet."
+  },
+  "condition.number": {
+    "message": "Antal",
+    "description": "Fält för prisvillkor för begärd mängd."
+  },
+  "condition.count": {
+    "message": "Antal",
+    "description": "Fält för prisvillkor för antal objekt."
+  },
+  "unit.Second": {
+    "message": "Sekund",
+    "description": "Prisenhet per sekund."
+  },
+  "unit.Token": {
+    "message": "Token",
+    "description": "Prisenhet per token."
+  },
+  "condition.referenceVideo": {
+    "message": "Referensvideo",
+    "description": "Anger prisvillkoret för att använda referensvideo."
+  },
+  "message.required": {
+    "message": "Obligatoriskt",
+    "description": "Värdet som visas när ett prisvillkor kräver en viss funktion eller inmatning."
+  },
+  "operator.anyOf": {
+    "message": "Någon av: {options}",
+    "description": "Formaterar ett prisvillkor som uppfyller någon av de listade alternativen."
+  },
+  "condition.version": {
+    "message": "Modellversion",
+    "description": "Modellversion prisvillkor fält."
+  },
+  "condition.hd": {
+    "message": "Högupplöst",
+    "description": "Högupplöst utdata prisvillkor fält."
+  },
+  "condition.styleReference": {
+    "message": "Stilreferens",
+    "description": "Fält för prisvillkor för stilreferens indata."
+  },
+  "condition.moodboard": {
+    "message": "Stämningsbräda",
+    "description": "Stämningsbräda inmatning prisvillkor fält."
+  },
+  "condition.generateAudio": {
+    "message": "Generera ljud",
+    "description": "Fält för prisvillkor för ljudgenerering."
+  },
+  "condition.anyOf": {
+    "message": "Någon av",
+    "description": "Rubrik för priskriterier där vilken som helst av de angivna alternativen kan uppfyllas."
+  },
+  "condition.motion": {
+    "message": "Rörelse",
+    "description": "Rörelse är rubriken för priskriteriet."
+  },
+  "condition.template": {
+    "message": "Mall",
+    "description": "Mall är rubriken för priskriteriet."
+  },
+  "condition.audio": {
+    "message": "Ljud",
+    "description": "Ljud är rubriken för priskriteriet."
+  },
+  "condition.type": {
+    "message": "Typ",
+    "description": "Typ är rubriken för priskriteriet."
+  },
+  "condition.size": {
+    "message": "Storlek",
+    "description": "Storlek är rubriken för priskriteriet."
+  },
+  "condition.promptTokens": {
+    "message": "Prompt-token",
+    "description": "Prompt-token är rubriken för priskriteriet."
+  },
+  "condition.characterOrientation": {
+    "message": "Karaktärsorientering",
+    "description": "Karaktärsorientering är rubriken för priskriteriet."
+  },
+  "unit.image": {
+    "message": "Bild",
+    "description": "Prisenhet för att generera en bild."
   }
 }

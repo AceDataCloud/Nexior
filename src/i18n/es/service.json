@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB significa gigabyte, una unidad de almacenamiento de información digital."
+  },
+  "title.pricing": {
+    "message": "Precio del servicio",
+    "description": "Título del cuadro de diálogo de precios del servicio."
+  },
+  "title.pricingFor": {
+    "message": "Precio de {service}",
+    "description": "Título del cuadro de diálogo de precios para un servicio específico."
+  },
+  "field.conditions": {
+    "message": "Condiciones aplicables",
+    "description": "Título de la columna para las condiciones de solicitud de las reglas de precios."
+  },
+  "field.billingMethod": {
+    "message": "Método de facturación",
+    "description": "Título de la columna para el método de cálculo de las reglas de precios."
+  },
+  "field.remark": {
+    "message": "Observaciones",
+    "description": "Título de la columna para las explicaciones adicionales sobre los precios."
+  },
+  "message.pricingDescription": {
+    "message": "A continuación se presentan las reglas de precios en puntos del servicio. Los puntos estimados para esta solicitud aún se muestran junto al botón de generación.",
+    "description": "Descripción en la parte superior de la tabla de precios del servicio."
+  },
+  "message.noPricing": {
+    "message": "No hay reglas de precios públicas disponibles para este servicio.",
+    "description": "Estado vacío cuando no hay reglas de precios visibles para el servicio."
+  },
+  "message.allRequests": {
+    "message": "Todas las solicitudes",
+    "description": "Etiqueta para las reglas de precios sin condiciones aplicables."
+  },
+  "message.otherConfigurations": {
+    "message": "Incluye condiciones adicionales",
+    "description": "Texto de seguridad que se muestra cuando las reglas de precio contienen condiciones que no se pueden resumir completamente."
+  },
+  "message.calculated": {
+    "message": "Calculado según los parámetros de solicitud",
+    "description": "Texto de respaldo seguro para fórmulas de precios complejas."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} puntos",
+    "description": "Precio fijo expresado en puntos."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} puntos / {unit}",
+    "description": "Precio por uso expresado en puntos por unidad."
+  },
+  "billing.free": {
+    "message": "Gratis",
+    "description": "Etiqueta del método de facturación para reglas gratuitas."
+  },
+  "billing.fixed": {
+    "message": "Precio fijo",
+    "description": "Etiqueta del método de facturación para reglas de precio fijo."
+  },
+  "billing.linear": {
+    "message": "Por uso",
+    "description": "Etiqueta del método de facturación para reglas por unidad."
+  },
+  "billing.calculated": {
+    "message": "Cálculo dinámico",
+    "description": "Etiqueta del método de facturación para reglas complejas."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Formato para condiciones de precios de igualdad."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Formato para condiciones de precios con múltiples valores opcionales."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Formato para condiciones de precios que incluyen un límite superior."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Formato para condiciones de precios que no incluyen un límite superior."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Formato para condiciones de precios que incluyen un límite inferior."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Formato para condiciones de precios que no incluyen un límite inferior."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Formato para valores opcionales en el mismo campo de precio."
+  },
+  "condition.model": {
+    "message": "Modelo",
+    "description": "Campo de condiciones de precios para el modelo."
+  },
+  "condition.action": {
+    "message": "Acción",
+    "description": "Campo de condiciones de precios para la acción."
+  },
+  "condition.scenario": {
+    "message": "Escenario",
+    "description": "Campo de condiciones de precios para el escenario."
+  },
+  "condition.resolution": {
+    "message": "Resolución",
+    "description": "Campo de condiciones de precios para la resolución."
+  },
+  "condition.duration": {
+    "message": "Duración",
+    "description": "Campo de condiciones de precios para la duración."
+  },
+  "condition.mode": {
+    "message": "Modo",
+    "description": "Campo de condiciones de precios para el modo."
+  },
+  "condition.quality": {
+    "message": "Calidad",
+    "description": "Campo de condiciones de precios para la calidad."
+  },
+  "condition.number": {
+    "message": "Número",
+    "description": "Campo de condiciones de precios para la cantidad solicitada."
+  },
+  "condition.count": {
+    "message": "Cantidad",
+    "description": "Campo de condiciones de precios para el número de elementos."
+  },
+  "unit.Second": {
+    "message": "segundo",
+    "description": "Unidad de precio por segundo."
+  },
+  "unit.Token": {
+    "message": "Token",
+    "description": "Precio por unidad de token."
+  },
+  "condition.referenceVideo": {
+    "message": "Video de referencia",
+    "description": "Indica el campo de condición de precio que utiliza un video de referencia."
+  },
+  "message.required": {
+    "message": "Requerido",
+    "description": "Valor que se muestra cuando una característica o entrada es necesaria para la condición de precio."
+  },
+  "operator.anyOf": {
+    "message": "Cualquiera que cumpla: {options}",
+    "description": "Formato para listar las condiciones de precio que pueden ser cumplidas por cualquiera de las opciones."
+  },
+  "condition.version": {
+    "message": "Versión",
+    "description": "Campo de condiciones de precio para la versión del modelo."
+  },
+  "condition.hd": {
+    "message": "modo de alta definición",
+    "description": "Campo de condición de precio para salida en alta definición."
+  },
+  "condition.styleReference": {
+    "message": "Referencia de estilo",
+    "description": "Campo de condiciones de precio para la entrada de referencia de estilo."
+  },
+  "condition.moodboard": {
+    "message": "Tablero de inspiración",
+    "description": "Campo de condiciones de precio para la entrada de tablero de inspiración."
+  },
+  "condition.generateAudio": {
+    "message": "Generar audio",
+    "description": "Campo de condiciones de precio para la generación de audio."
+  },
+  "condition.anyOf": {
+    "message": "Cualquiera de los siguientes",
+    "description": "Título de la condición de precio que se cumple si cualquiera de las opciones enumeradas se cumple."
+  },
+  "condition.motion": {
+    "message": "Movimiento",
+    "description": "Movimiento Título de la columna de condiciones de precio."
+  },
+  "condition.template": {
+    "message": "Plantilla",
+    "description": "Plantilla Título de la columna de condiciones de precio."
+  },
+  "condition.audio": {
+    "message": "Contenido de sonido",
+    "description": "Título de la columna de condiciones de precio para el contenido de sonido."
+  },
+  "condition.type": {
+    "message": "Tipo",
+    "description": "Tipo Título de la columna de condiciones de precio."
+  },
+  "condition.size": {
+    "message": "Tamaño",
+    "description": "Tamaño Título de la columna de condiciones de precio."
+  },
+  "condition.promptTokens": {
+    "message": "Tokens de aviso",
+    "description": "Tokens de aviso Título de la columna de condiciones de precio."
+  },
+  "condition.characterOrientation": {
+    "message": "Orientación del personaje",
+    "description": "Orientación del personaje Título de la columna de condiciones de precio."
+  },
+  "unit.image": {
+    "message": "imagen",
+    "description": "Unidad de precio para generar una imagen."
   }
 }

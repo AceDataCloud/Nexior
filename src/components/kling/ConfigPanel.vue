@@ -18,7 +18,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <summary-chip />
       <scenario-payment-mode scenario="kling" />
-      <consumption v-if="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
         type="primary"
@@ -50,7 +50,7 @@ import StartImage from './config/StartImage.vue';
 import EndImage from './config/EndImage.vue';
 import ReferenceVideo from './config/ReferenceVideo.vue';
 import ReferenceImages from './config/ReferenceImages.vue';
-import Consumption from '../common/Consumption.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import CfgScaleSelector from './config/CfgScaleSelector.vue';
 import GenerateAudioSelector from './config/GenerateAudioSelector.vue';
 import CameraControlSelector from './config/CameraControlSelector.vue';
@@ -69,7 +69,7 @@ export default defineComponent({
   components: {
     MagicIcon,
     ElButton,
-    Consumption,
+    ServicePricingSummary,
     PromptInput,
     NegativePromptInput,
     ModelSelector,

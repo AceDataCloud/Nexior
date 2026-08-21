@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB označava gigabajt, jedinicu za skladištenje digitalnih informacija."
+  },
+  "title.pricing": {
+    "message": "Cena usluga",
+    "description": "Naslov prozora sa cenama usluga."
+  },
+  "title.pricingFor": {
+    "message": "Cena za {service}",
+    "description": "Naslov prozora sa cenom za određenu uslugu."
+  },
+  "field.conditions": {
+    "message": "Primenjivi uslovi",
+    "description": "Naslov kolone sa zahtevima za pravila cena."
+  },
+  "field.billingMethod": {
+    "message": "Metod naplate",
+    "description": "Naslov kolone sa načinom obračuna cena."
+  },
+  "field.remark": {
+    "message": "Napomena",
+    "description": "Naslov kolone za dodatna objašnjenja cena."
+  },
+  "message.pricingDescription": {
+    "message": "U nastavku su pravila cena za usluge. Očekivani bodovi za ovu zahtevanu uslugu i dalje su prikazani pored dugmeta za generisanje.",
+    "description": "Objašnjenje iznad tabele cena usluga."
+  },
+  "message.noPricing": {
+    "message": "Ova usluga trenutno nema javna pravila cena.",
+    "description": "Stanje kada usluga nema vidljiva pravila cena."
+  },
+  "message.allRequests": {
+    "message": "Svi zahtevi",
+    "description": "Oznaka pravila cena bez primenljivih uslova."
+  },
+  "message.otherConfigurations": {
+    "message": "Sadrži dodatne uslove",
+    "description": "Prikazuje se kada pravilo cene sadrži uslove koji se ne mogu potpuno obuhvatiti."
+  },
+  "message.calculated": {
+    "message": "Izračunato na osnovu zahteva",
+    "description": "Sigurna poruka za složene formule cena."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} bodova",
+    "description": "Fiksna cena izražena u bodovima."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} bodova / {unit}",
+    "description": "Cena po jedinici izražena u bodovima."
+  },
+  "billing.free": {
+    "message": "Besplatno",
+    "description": "Oznaka metode naplate za besplatna pravila."
+  },
+  "billing.fixed": {
+    "message": "Fiksna cena",
+    "description": "Oznaka metode naplate za fiksna pravila cena."
+  },
+  "billing.linear": {
+    "message": "Po potrošnji",
+    "description": "Oznaka metode naplate za pravila po jedinici."
+  },
+  "billing.calculated": {
+    "message": "Dinamički obračun",
+    "description": "Oznaka metode naplate za složena pravila."
+  },
+  "operator.equals": {
+    "message": "{field}: једнако {value}",
+    "description": "Форматирање условa цене за једнаке вредности."
+  },
+  "operator.oneOf": {
+    "message": "{field}: једна од опција {value}",
+    "description": "Форматирање услова цене за више опционих вредности."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Formatiranje uslova cena sa gornjom granicom."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Formatiranje uslova cena bez gornje granice."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Formatiranje uslova cena sa donjom granicom."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Formatiranje uslova cena bez donje granice."
+  },
+  "operator.either": {
+    "message": "{field}: опција {value}",
+    "description": "Форматирање опционе вредности за исто поље цене."
+  },
+  "condition.model": {
+    "message": "Модел",
+    "description": "Поље за услове цене модела."
+  },
+  "condition.action": {
+    "message": "Akcija",
+    "description": "Polje uslova cena za akciju."
+  },
+  "condition.scenario": {
+    "message": "Сценарио",
+    "description": "Поље за услове цене сценарија."
+  },
+  "condition.resolution": {
+    "message": "Rezolucija",
+    "description": "Polje uslova cena za rezoluciju."
+  },
+  "condition.duration": {
+    "message": "Trajanje",
+    "description": "Polje uslova cena za trajanje."
+  },
+  "condition.mode": {
+    "message": "Način",
+    "description": "Polje uslova cena za način."
+  },
+  "condition.quality": {
+    "message": "Kvalitet",
+    "description": "Polje uslova cena za kvalitet."
+  },
+  "condition.number": {
+    "message": "Količina",
+    "description": "Polje uslova cena za broj zahteva."
+  },
+  "condition.count": {
+    "message": "Količina",
+    "description": "Polje uslova cena za broj stavki."
+  },
+  "unit.Second": {
+    "message": "sekundi",
+    "description": "Jedinica cene po sekundi."
+  },
+  "unit.Token": {
+    "message": "токен",
+    "description": "Јединица цене по току."
+  },
+  "condition.referenceVideo": {
+    "message": "Referentni video",
+    "description": "Označava polje uslova cene koje koristi referentni video."
+  },
+  "message.required": {
+    "message": "Obavezno",
+    "description": "Vrednost koja se prikazuje kada uslov cene zahteva određenu funkciju ili unos."
+  },
+  "operator.anyOf": {
+    "message": "Bilo koji od: {options}",
+    "description": "Formatira uslove cena koji zadovoljavaju bilo koju od navedenih opcija."
+  },
+  "condition.version": {
+    "message": "Verzija",
+    "description": "Polje uslova cena za verziju modela."
+  },
+  "condition.hd": {
+    "message": "висока резолуција",
+    "description": "поље за услове цене за izlaz u visokoj rezoluciji."
+  },
+  "condition.styleReference": {
+    "message": "Referenca stila",
+    "description": "Polje uslova cena za unos reference stila."
+  },
+  "condition.moodboard": {
+    "message": "мудборд",
+    "description": "поље за услове цене za unos mudborda."
+  },
+  "condition.generateAudio": {
+    "message": "Generiši audio",
+    "description": "Polje uslova cena za generisanje audio sadržaja."
+  },
+  "condition.anyOf": {
+    "message": "Bilo koji od uslova",
+    "description": "Naslov kolone za uslove cene gde je dovoljno da bilo koji od navedenih uslova bude ispunjen."
+  },
+  "condition.motion": {
+    "message": "Покрет",
+    "description": "Покрет је заглавље колоне за услове цена."
+  },
+  "condition.template": {
+    "message": "Шаблон",
+    "description": "Шаблон је заглавље колоне за услове цена."
+  },
+  "condition.audio": {
+    "message": "Аудио",
+    "description": "Аудио је заглавље колоне за услове цена."
+  },
+  "condition.type": {
+    "message": "Тип",
+    "description": "Тип је заглавље колоне за услове цена."
+  },
+  "condition.size": {
+    "message": "Величина",
+    "description": "Величина је заглавље колоне за услове цена."
+  },
+  "condition.promptTokens": {
+    "message": "Токени упита",
+    "description": "Токени упита су заглавље колоне за услове цена."
+  },
+  "condition.characterOrientation": {
+    "message": "Оријентација карактера",
+    "description": "Оријентација карактера је заглавље колоне за услове цена."
+  },
+  "unit.image": {
+    "message": "слика",
+    "description": "Цена za generisanje jedne slike."
   }
 }

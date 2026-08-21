@@ -146,5 +146,209 @@
   "unit.GB": {
     "message": "ГБ",
     "description": "ГБ означает гигабайт, единица хранения цифровой информации."
+  },
+  "title.pricing": {
+    "message": "Цены на услуги",
+    "description": "Заголовок всплывающего окна с ценами на услуги."
+  },
+  "title.pricingFor": {
+    "message": "Цена за {service}",
+    "description": "Заголовок всплывающего окна с ценой для указанной услуги."
+  },
+  "field.conditions": {
+    "message": "Условия применения",
+    "description": "Заголовок столбца с условиями запроса для выбора правил цены."
+  },
+  "field.billingMethod": {
+    "message": "Метод оплаты",
+    "description": "Заголовок столбца с методом расчета правил цены."
+  },
+  "field.remark": {
+    "message": "Примечание",
+    "description": "Заголовок столбца с дополнительными пояснениями к цене."
+  },
+  "message.pricingDescription": {
+    "message": "Ниже представлены правила начисления баллов за услуги. Ожидаемое количество баллов для данного запроса все еще отображается рядом с кнопкой генерации.",
+    "description": "Описание над таблицей цен на услуги."
+  },
+  "message.noPricing": {
+    "message": "Для этой услуги в настоящее время нет открытых правил цен.",
+    "description": "Состояние пустоты, когда для услуги нет видимых правил цен."
+  },
+  "message.allRequests": {
+    "message": "Все запросы",
+    "description": "Метка для правил цен без условий применения."
+  },
+  "message.otherConfigurations": {
+    "message": "С дополнительными условиями",
+    "description": "Безопасный текст, отображаемый, когда правила цены содержат условия, которые невозможно полностью обобщить."
+  },
+  "message.calculated": {
+    "message": "Рассчитано на основе параметров запроса",
+    "description": "Текст безопасности для сложных формул цен."
+  },
+  "message.creditsAmount": {
+    "message": "{amount} баллов",
+    "description": "Фиксированная цена, выраженная в баллах."
+  },
+  "message.creditsPerUnit": {
+    "message": "{amount} баллов / {unit}",
+    "description": "Цена за использование, выраженная в баллах за единицу."
+  },
+  "billing.free": {
+    "message": "Бесплатно",
+    "description": "Метка метода оплаты для бесплатных правил."
+  },
+  "billing.fixed": {
+    "message": "Фиксированная цена",
+    "description": "Метка метода оплаты для фиксированных цен."
+  },
+  "billing.linear": {
+    "message": "По мере использования",
+    "description": "Метка метода оплаты для цен по единице."
+  },
+  "billing.calculated": {
+    "message": "Динамический расчет",
+    "description": "Метка метода оплаты для сложных правил."
+  },
+  "operator.equals": {
+    "message": "{field}：{value}",
+    "description": "Форматирование условий цены для равенства."
+  },
+  "operator.oneOf": {
+    "message": "{field}：{value}",
+    "description": "Форматирование условий цены для нескольких возможных значений."
+  },
+  "operator.atMost": {
+    "message": "{field} ≤ {value}",
+    "description": "Форматирование условий цены с верхним пределом."
+  },
+  "operator.lessThan": {
+    "message": "{field} < {value}",
+    "description": "Форматирование условий цены без верхнего предела."
+  },
+  "operator.atLeast": {
+    "message": "{field} ≥ {value}",
+    "description": "Форматирование условий цены с нижним пределом."
+  },
+  "operator.greaterThan": {
+    "message": "{field} > {value}",
+    "description": "Форматирование условий цены без нижнего предела."
+  },
+  "operator.either": {
+    "message": "{field}：{value}",
+    "description": "Форматирование возможных значений для одного и того же поля цены."
+  },
+  "condition.model": {
+    "message": "Модель",
+    "description": "Поле условий цены для модели."
+  },
+  "condition.action": {
+    "message": "Действие",
+    "description": "Поле условий цены для действия."
+  },
+  "condition.scenario": {
+    "message": "Сценарий",
+    "description": "Поле условий цены для сценария."
+  },
+  "condition.resolution": {
+    "message": "Разрешение",
+    "description": "Поле условий цены для разрешения."
+  },
+  "condition.duration": {
+    "message": "Длительность",
+    "description": "Поле условий цены для длительности."
+  },
+  "condition.mode": {
+    "message": "Режим",
+    "description": "Поле условий цены для режима."
+  },
+  "condition.quality": {
+    "message": "Качество",
+    "description": "Поле условий цены для качества."
+  },
+  "condition.number": {
+    "message": "Количество",
+    "description": "Поле условий цены для количества запросов."
+  },
+  "condition.count": {
+    "message": "Количество",
+    "description": "Поле условий цены для количества элементов."
+  },
+  "unit.Second": {
+    "message": "секунда",
+    "description": "Единица цены за каждую секунду."
+  },
+  "unit.Token": {
+    "message": "токен",
+    "description": "Единица цены за каждый токен."
+  },
+  "condition.referenceVideo": {
+    "message": "Справочное видео",
+    "description": "Указывает на поле условий цены, использующее справочное видео."
+  },
+  "message.required": {
+    "message": "Обязательно",
+    "description": "Значение, отображаемое, когда условия цены требуют определенной функции или ввода."
+  },
+  "operator.anyOf": {
+    "message": "Любое из: {options}",
+    "description": "Форматирует условие цены, которое удовлетворяет любому из перечисленных вариантов."
+  },
+  "condition.version": {
+    "message": "Версия",
+    "description": "Поле условия цены для версии модели."
+  },
+  "condition.hd": {
+    "message": "Высокое разрешение",
+    "description": "Поле условий цены для вывода с высоким разрешением."
+  },
+  "condition.styleReference": {
+    "message": "Ссылка на стиль",
+    "description": "Поле условия цены для ввода ссылки на стиль."
+  },
+  "condition.moodboard": {
+    "message": "Мудборд",
+    "description": "Поле условия цены для ввода мудборда."
+  },
+  "condition.generateAudio": {
+    "message": "Генерация аудио",
+    "description": "Поле условия цены для генерации аудио."
+  },
+  "condition.anyOf": {
+    "message": "Любое из",
+    "description": "Заголовок условия цены, который выполняется, если любое из перечисленных условий выполнено."
+  },
+  "condition.motion": {
+    "message": "Движение",
+    "description": "Движение Заголовок столбца условий цены."
+  },
+  "condition.template": {
+    "message": "Шаблон",
+    "description": "Шаблон Заголовок столбца условий цены."
+  },
+  "condition.audio": {
+    "message": "Аудио",
+    "description": "Аудио Заголовок столбца условий цены."
+  },
+  "condition.type": {
+    "message": "Тип",
+    "description": "Тип Заголовок столбца условий цены."
+  },
+  "condition.size": {
+    "message": "Размер",
+    "description": "Размер Заголовок столбца условий цены."
+  },
+  "condition.promptTokens": {
+    "message": "Токены подсказки",
+    "description": "Токены подсказки Заголовок столбца условий цены."
+  },
+  "condition.characterOrientation": {
+    "message": "Ориентация персонажа",
+    "description": "Ориентация персонажа Заголовок столбца условий цены."
+  },
+  "unit.image": {
+    "message": "изображение",
+    "description": "Единица цены за генерацию одного изображения."
   }
 }
