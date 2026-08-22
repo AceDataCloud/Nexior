@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { normalizeSeedanceRequest } from './seedance';
+import { buildSeedanceRequest } from '@/operators/seedance';
 import {
   SEEDANCE_MODEL_1_0_PRO,
   SEEDANCE_MODEL_2_5,
@@ -8,6 +9,16 @@ import {
   SEEDANCE_MODEL_1_0_LITE_T2V,
   SEEDANCE_MODEL_1_0_LITE_I2V
 } from '@/constants';
+
+describe('buildSeedanceRequest', () => {
+  it('adds required roles to reference audio and video', () => {
+    const request = buildSeedanceRequest({ audios: [{ url: 'a.mp3' }], videos: [{ url: 'v.mp4' }] });
+    expect(request.content).toEqual([
+      { type: 'audio_url', role: 'reference_audio', audio_url: { url: 'a.mp3' } },
+      { type: 'video_url', role: 'reference_video', video_url: { url: 'v.mp4' } }
+    ]);
+  });
+});
 
 describe('normalizeSeedanceRequest', () => {
   it('keeps a first_frame image as-is and sends async', () => {
@@ -27,6 +38,16 @@ describe('normalizeSeedanceRequest', () => {
       images: [{ url: 'https://cdn.example.com/a.jpg', role: 'last_frame' }]
     });
     expect(request?.images).toEqual([{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }]);
+  });
+
+  it('keeps a legal first frame for Seedance 1.0 Pro', () => {
+    const { request, reject } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_1_0_PRO,
+      prompt: 'animate',
+      images: [{ url: 'https://cdn.example.com/frame.jpg', role: 'first_frame' }]
+    });
+    expect(reject).toBeUndefined();
+    expect(request?.images).toHaveLength(1);
   });
 
   it('rejects an unknown model', () => {
@@ -110,6 +131,29 @@ describe('normalizeSeedanceRequest', () => {
     expect(request?.duration).toBe(-1);
   });
 
+  it('normalizes Seedance 2.5 frame, roles, and web search controls', () => {
+    const { request } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_5,
+      prompt: 'animate',
+      ratio: '16:9',
+      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }],
+      audios: [{ url: 'https://cdn.example.com/a.mp3' }],
+      videos: [{ url: 'https://cdn.example.com/v.mp4' }],
+      web_search: true
+    });
+    expect(request?.ratio).toBe('adaptive');
+    expect(request?.tools).toEqual([{ type: 'web_search' }]);
+  });
+
+  it('requires a reference video for Seedance 2.5 edit and extend', () => {
+    const { reject } = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_5,
+      prompt: 'edit this',
+      omni_reference_task_type: 'edit'
+    });
+    expect(reject).toBe('taskRequiresVideo');
+  });
+
   it('strips Seedance 2.5-only options from 2.0', () => {
     const { request } = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_2_0_FAST,
@@ -125,7 +169,7 @@ describe('normalizeSeedanceRequest', () => {
     const { request } = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_2_0_FAST,
       prompt: 'a cat',
-      service_tier: 'flex'
+      ...({ service_tier: 'flex' } as any)
     });
     expect(request).not.toHaveProperty('service_tier');
   });

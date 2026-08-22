@@ -22,8 +22,12 @@ export function buildSeedanceRequest(data: ISeedanceGenerateRequest): ISeedanceG
   (data.images ?? []).forEach((image) => {
     if (image?.url) content.push({ type: 'image_url', role: image.role, image_url: { url: image.url } });
   });
-  audios.forEach((audio) => content.push({ type: 'audio_url', audio_url: { url: audio.url } }));
-  videos.forEach((video) => content.push({ type: 'video_url', video_url: { url: video.url } }));
+  audios.forEach((audio) =>
+    content.push({ type: 'audio_url', role: 'reference_audio', audio_url: { url: audio.url } })
+  );
+  videos.forEach((video) =>
+    content.push({ type: 'video_url', role: 'reference_video', video_url: { url: video.url } })
+  );
   const { prompt: _prompt, images: _images, audios: _audios, videos: _videos, ...rest } = data;
   return { ...rest, content };
 }

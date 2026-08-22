@@ -310,5 +310,21 @@
   "name.outputFormat": {
     "message": "Output Format",
     "description": "Video container format"
+  },
+  "name.webSearch": {
+    "message": "Web Search",
+    "description": "Use web search while generating video"
+  },
+  "description.webSearch": {
+    "message": "Search current public information when the prompt needs it. This may increase generation time.",
+    "description": "Web search guidance"
+  },
+  "message.referenceMediaExceeded": {
+    "message": "The reference media count exceeds this model’s limit.",
+    "description": "Reference media limit exceeded"
+  },
+  "message.taskRequiresVideo": {
+    "message": "Video edit and extend require a reference video.",
+    "description": "Task missing a reference video"
   }
 }

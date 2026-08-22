@@ -343,7 +343,7 @@ export default defineComponent({
         : [];
       (request?.content ?? []).forEach((item) => {
         if (item?.type === 'image_url' && item?.image_url?.url) {
-          images.push({ url: item.image_url.url, role: item.role });
+          images.push({ url: item.image_url.url, role: item.role as SeedanceImageRole | undefined });
         }
       });
       return images;
