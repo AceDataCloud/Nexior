@@ -2,11 +2,14 @@
 import { shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CAPABILITY_ICONS } from '@/constants/capabilities';
-import { showcaseOperator } from '@/operators';
+import { showcaseOperator, siteBannerOperator } from '@/operators';
 import Home from './Index.vue';
 import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
 
-vi.mock('@/operators', () => ({ showcaseOperator: { list: vi.fn() } }));
+vi.mock('@/operators', () => ({
+  showcaseOperator: { list: vi.fn() },
+  siteBannerOperator: { getPublic: vi.fn() }
+}));
 vi.mock('@/components/showcase/ShowcaseDetailDialog.vue', () => ({
   default: {
     name: 'ShowcaseDetailDialog',
@@ -48,7 +51,10 @@ const mountHome = (site: Record<string, unknown>) =>
   });
 
 describe('Studio workbench home', () => {
-  beforeEach(() => vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any));
+  beforeEach(() => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
+    vi.mocked(siteBannerOperator.getPublic).mockResolvedValue({ data: [] } as any);
+  });
 
   it('does not expose capabilities before site configuration loads', () => {
     const wrapper = mountHome({});
@@ -143,6 +149,56 @@ describe('Studio workbench home', () => {
     expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(false);
   });
 
+  it('hides individual system banners without disabling their services', () => {
+    const wrapper = mountHome({
+      id: 'studio',
+      features: studioFeatures,
+      metadata: { nexior: { hidden_default_banner_ids: ['maestro', 'seedance'] } }
+    });
+    const slides = wrapper.getComponent({ name: 'HomeCarousel' }).props('slides');
+    expect(slides.map((item: any) => item.id)).toEqual(['gpt-image']);
+  });
+
+  it('appends tenant banners in public-feed order and resolves localized copy', async () => {
+    vi.mocked(siteBannerOperator.getPublic).mockResolvedValue({
+      data: [
+        {
+          id: 'custom-1',
+          image_url: 'https://cdn.example.com/custom.webp',
+          link_url: '/seedance',
+          title: { en: 'Custom launch', 'zh-CN': '自定义发布' },
+          subtitle: { en: 'Create now' },
+          sort_order: 1
+        }
+      ]
+    } as any);
+    const wrapper = mountHome({ id: 'tenant', origin: 'tenant.studio.acedata.cloud', features: studioFeatures });
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalledWith('tenant.studio.acedata.cloud'));
+    const slides = wrapper.getComponent({ name: 'HomeCarousel' }).props('slides');
+    expect(slides.at(-1)).toMatchObject({
+      id: 'custom-1',
+      title: 'Custom launch',
+      description: 'Create now',
+      target: { href: '/seedance' }
+    });
+  });
+
+  it('keeps default banners when the optional tenant feed fails', async () => {
+    vi.mocked(siteBannerOperator.getPublic).mockRejectedValue(new Error('offline'));
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalled());
+    expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')).toHaveLength(3);
+  });
+
+  it('hides the carousel when every system banner is hidden and no custom banner is active', async () => {
+    const wrapper = mountHome({
+      id: 'tenant',
+      features: studioFeatures,
+      metadata: { nexior: { hidden_default_banner_ids: ['maestro', 'gpt-image', 'seedance'] } }
+    });
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalled());
+    expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(false);
+  });
   it('removes a failed visual without exposing a broken URL', async () => {
     const wrapper = mountHome({ id: 'studio', features: { maestro: { enabled: true } } });
     const carousel = wrapper.getComponent({ name: 'HomeCarousel' });

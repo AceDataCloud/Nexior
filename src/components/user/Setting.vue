@@ -53,6 +53,9 @@
         <div v-else-if="currentTab === SETTING_TAB_SITE_SERVICES && isSiteConfigVisible">
           <site-services-setting />
         </div>
+        <div v-else-if="currentTab === SETTING_TAB_BANNERS && isSiteConfigVisible">
+          <banners-setting :site="$store.state.site" />
+        </div>
         <div v-else-if="currentTab === SETTING_TAB_SEO && isSiteConfigVisible">
           <seo-setting />
         </div>
@@ -96,6 +99,7 @@ import {
   GlobeIcon,
   InfoIcon,
   IntelligenceIcon,
+  ImageIcon,
   LabelIcon,
   MagicIcon,
   MoneyIcon,
@@ -109,6 +113,7 @@ import ByokSetting from '@/components/setting/Byok.vue';
 import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
+import BannersSetting from '@/components/setting/Banners.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import AnalyticsSetting from '@/components/setting/Analytics.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
@@ -121,6 +126,7 @@ import {
   SETTING_TAB_ABOUT,
   SETTING_TAB_API_KEY,
   SETTING_TAB_MEMORY,
+  SETTING_TAB_BANNERS,
   SETTING_TAB_AUTH,
   SETTING_TAB_DISTRIBUTION,
   SETTING_TAB_ANALYTICS,
@@ -149,6 +155,7 @@ export default defineComponent({
     MemorySetting,
     SiteSetting,
     SiteServicesSetting,
+    BannersSetting,
     SeoSetting,
     AnalyticsSetting,
     DistributionSetting,
@@ -183,6 +190,7 @@ export default defineComponent({
       SETTING_TAB_MEMORY,
       SETTING_TAB_SITE,
       SETTING_TAB_SITE_SERVICES,
+      SETTING_TAB_BANNERS,
       SETTING_TAB_SEO,
       SETTING_TAB_ANALYTICS,
       SETTING_TAB_DISTRIBUTION,
@@ -230,6 +238,12 @@ export default defineComponent({
           key: SETTING_TAB_SITE_SERVICES,
           label: this.$t('common.settings.siteServices'),
           icon: markRaw(LabelIcon),
+          visible: this.isSiteConfigVisible
+        },
+        {
+          key: SETTING_TAB_BANNERS,
+          label: this.$t('common.settings.banners'),
+          icon: markRaw(ImageIcon),
           visible: this.isSiteConfigVisible
         },
         {
@@ -351,6 +365,7 @@ export default defineComponent({
       // the default 50% dialog width on most laptops.
       return this.currentTab === SETTING_TAB_API_KEY ||
         this.currentTab === SETTING_TAB_SITE_SERVICES ||
+        this.currentTab === SETTING_TAB_BANNERS ||
         this.currentTab === SETTING_TAB_SUBSITES
         ? 'min(900px, 94vw)'
         : '50%';

@@ -1137,5 +1137,173 @@
   },
   "analytics.umami.serverUrlHelp": {
     "message": "Umami Cloud è disponibile per impostazione predefinita. Le origini auto-ospitate devono prima essere approvate dall'amministratore della piattaforma."
+  },
+  "banner.systemTitle": {
+    "message": "Banner di sistema",
+    "description": "Titolo del gruppo di Banner predefiniti della homepage."
+  },
+  "banner.systemTip": {
+    "message": "Seleziona il Banner di sistema da visualizzare nella homepage attuale. Disattivare il Banner non chiude il servizio corrispondente.",
+    "description": "Spiegazione che l'interruttore del Banner di sistema influisce solo sulla homepage."
+  },
+  "banner.serviceDisabled": {
+    "message": "Servizio corrispondente disabilitato",
+    "description": "Stato quando il servizio associato al Banner è chiuso."
+  },
+  "banner.toggleSystem": {
+    "message": "Attiva/disattiva il Banner di sistema “{title}”",
+    "description": "Etichetta accessibile per l'interruttore del Banner di sistema."
+  },
+  "banner.customTitle": {
+    "message": "Banner Personalizzato",
+    "description": "Titolo del gruppo di banner personalizzati per il webmaster."
+  },
+  "banner.customTip": {
+    "message": "Aggiungi immagini, titoli, sottotitoli e link di reindirizzamento esclusivi per il sito attuale.",
+    "description": "Descrizione della funzionalità del banner personalizzato."
+  },
+  "banner.add": {
+    "message": "Aggiungi Banner",
+    "description": "Pulsante per aggiungere un banner personalizzato."
+  },
+  "banner.empty": {
+    "message": "Nessun Banner personalizzato ancora",
+    "description": "Stato vuoto per i Banner personalizzati."
+  },
+  "banner.untitled": {
+    "message": "Banner senza titolo",
+    "description": "Nome di fallback quando il Banner non ha un titolo."
+  },
+  "banner.sortOrderValue": {
+    "message": "Ordinamento {value}",
+    "description": "Valore di ordinamento nella lista dei Banner."
+  },
+  "banner.toggleCustom": {
+    "message": "Attiva/disattiva il Banner personalizzato “{title}”",
+    "description": "Etichetta accessibile per l'interruttore del Banner personalizzato."
+  },
+  "banner.createTitle": {
+    "message": "Aggiungi Banner Home",
+    "description": "Titolo dell'editor per aggiungere un nuovo banner."
+  },
+  "banner.editTitle": {
+    "message": "Modifica Banner della homepage",
+    "description": "Titolo dell'editor per la modifica del Banner."
+  },
+  "banner.image": {
+    "message": "Immagine del Banner",
+    "description": "Etichetta del campo immagine del Banner."
+  },
+  "banner.replaceImage": {
+    "message": "Sostituisci immagine",
+    "description": "Pulsante per sostituire l'immagine del Banner."
+  },
+  "banner.uploadImage": {
+    "message": "Carica immagine",
+    "description": "Pulsante per caricare l'immagine del Banner."
+  },
+  "banner.clearImage": {
+    "message": "Rimuovi Immagine",
+    "description": "Pulsante per rimuovere l'immagine del banner."
+  },
+  "banner.imagePlaceholder": {
+    "message": "Inserisci l'URL dell'immagine, o usa il caricamento sopra",
+    "description": "Testo segnaposto per l'URL dell'immagine del Banner."
+  },
+  "banner.link": {
+    "message": "Link di reindirizzamento",
+    "description": "Etichetta del campo link del Banner."
+  },
+  "banner.linkPlaceholder": {
+    "message": "/seedance o https://example.com/activity",
+    "description": "Esempio di link per il Banner."
+  },
+  "banner.linkTip": {
+    "message": "Supporta percorsi che iniziano con / o link esterni HTTP(S); lascia vuoto per disabilitare il clic.",
+    "description": "Spiegazione del formato del link del Banner."
+  },
+  "banner.title": {
+    "message": "Titolo",
+    "description": "Etichetta del campo titolo del Banner."
+  },
+  "banner.titlePlaceholder": {
+    "message": "Inserisci il titolo del Banner",
+    "description": "Testo segnaposto per il titolo del Banner."
+  },
+  "banner.subtitle": {
+    "message": "Sottotitolo",
+    "description": "Etichetta del campo sottotitolo del Banner."
+  },
+  "banner.subtitlePlaceholder": {
+    "message": "Inserisci il sottotitolo del Banner",
+    "description": "Testo segnaposto per il sottotitolo del Banner."
+  },
+  "banner.startAt": {
+    "message": "Data di inizio visualizzazione",
+    "description": "Data di inizio della campagna del Banner."
+  },
+  "banner.endAt": {
+    "message": "Data di fine visualizzazione",
+    "description": "Data di fine della campagna del Banner."
+  },
+  "banner.sortOrder": {
+    "message": "Ordinamento",
+    "description": "Etichetta del campo di ordinamento del Banner."
+  },
+  "banner.visible": {
+    "message": "Mostra subito",
+    "description": "Etichetta del campo per l'interruttore di visualizzazione del Banner."
+  },
+  "banner.cropTitle": {
+    "message": "Ritaglia Immagine Banner",
+    "description": "Titolo del ritaglio dell'immagine del banner."
+  },
+  "banner.cropTip": {
+    "message": "Si consiglia di utilizzare immagini PNG, JPEG o WebP di 1600 × 500.",
+    "description": "Indicazioni sulle dimensioni dell'immagine del banner."
+  },
+  "banner.addLanguage": {
+    "message": "Aggiungi Lingua",
+    "description": "Pulsante per aggiungere una lingua al testo del banner multilingue."
+  },
+  "banner.scheduled": {
+    "message": "In attesa di visualizzazione",
+    "description": "Stato del Banner che non è ancora arrivato alla data di inizio."
+  },
+  "banner.expired": {
+    "message": "Scaduto",
+    "description": "Stato del Banner che ha superato la data di fine."
+  },
+  "banner.hidden": {
+    "message": "Nascosto",
+    "description": "Stato del Banner che è stato nascosto manualmente."
+  },
+  "banner.active": {
+    "message": "In mostra",
+    "description": "Stato attuale valido del banner."
+  },
+  "banner.loadFailed": {
+    "message": "Caricamento del Banner fallito",
+    "description": "Messaggio di errore per il caricamento della lista dei Banner."
+  },
+  "banner.updateFailed": {
+    "message": "Aggiornamento del Banner fallito",
+    "description": "Messaggio di errore per il fallimento dell'aggiornamento dell'interruttore del Banner."
+  },
+  "banner.invalidWindow": {
+    "message": "La data di fine deve essere successiva alla data di inizio",
+    "description": "Messaggio di errore per la validazione delle date del Banner."
+  },
+  "banner.saveFailed": {
+    "message": "Salvataggio del Banner fallito",
+    "description": "Messaggio di errore per il salvataggio del Banner."
+  },
+  "banner.deleteConfirm": {
+    "message": "Sei sicuro di voler eliminare “{title}”? ",
+    "description": "Testo di conferma per l'eliminazione del banner."
+  },
+  "banner.deleteFailed": {
+    "message": "Eliminazione del Banner fallita",
+    "description": "Messaggio di errore per l'eliminazione del Banner."
   }
 }

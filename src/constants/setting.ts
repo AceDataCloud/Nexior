@@ -10,6 +10,7 @@ export const SETTING_TAB_API_KEY = 'apiKey';
 export const SETTING_TAB_MEMORY = 'memory';
 export const SETTING_TAB_SITE = 'site';
 export const SETTING_TAB_SITE_SERVICES = 'siteServices';
+export const SETTING_TAB_BANNERS = 'banners';
 export const SETTING_TAB_SEO = 'seo';
 export const SETTING_TAB_ANALYTICS = 'analytics';
 export const SETTING_TAB_DISTRIBUTION = 'distribution';
@@ -26,6 +27,7 @@ export type SettingTabKey =
   | typeof SETTING_TAB_MEMORY
   | typeof SETTING_TAB_SITE
   | typeof SETTING_TAB_SITE_SERVICES
+  | typeof SETTING_TAB_BANNERS
   | typeof SETTING_TAB_SEO
   | typeof SETTING_TAB_ANALYTICS
   | typeof SETTING_TAB_DISTRIBUTION

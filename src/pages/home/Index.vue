@@ -30,10 +30,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
-import type { IShowcase, ResolvedShowcase } from '@/models';
-import { showcaseOperator } from '@/operators';
+import type { ISiteBanner, IShowcase, ResolvedShowcase } from '@/models';
+import { showcaseOperator, siteBannerOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
+import { getSiteOrigin } from '@/utils/site';
+import { getHiddenDefaultBannerIds, resolveSiteBannerText } from '@/utils/siteBanner';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
 import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 import CategoryTiles from './components/CategoryTiles.vue';
@@ -58,8 +60,10 @@ export default defineComponent({
   data() {
     return {
       failedIcons: {} as Partial<Record<CapabilityKey, boolean>>,
-      failedImages: {} as Partial<Record<CapabilityKey, boolean>>,
+      failedBannerImages: {} as Record<string, boolean>,
       failedCategoryImages: {} as Record<string, boolean>,
+      rawBanners: [] as ISiteBanner[],
+      bannerLoadGeneration: 0,
       rawShowcases: [] as IShowcase[],
       showcaseLoaded: false,
       showcaseLoadGeneration: 0,
@@ -79,12 +83,33 @@ export default defineComponent({
       return new Set(CAPABILITY_KEYS.filter((key) => features[key]?.enabled));
     },
     banners(): ResolvedHomeBanner[] {
-      return HOME_BANNERS.filter((item) => this.enabledKeys.has(item.capability)).map((item) => ({
+      const hiddenDefaults = getHiddenDefaultBannerIds(this.site);
+      const defaults = HOME_BANNERS.filter(
+        (item) => this.enabledKeys.has(item.capability) && !hiddenDefaults.has(item.id)
+      ).map((item) => ({
         ...this.resolve(item),
         id: item.id,
+        imageUrl: this.failedBannerImages[item.id] ? '' : item.imageUrl,
         eyebrow: this.$t(item.eyebrowKey),
-        title: this.$t(item.titleKey)
+        title: this.$t(item.titleKey),
+        target: { routeName: item.routeName }
       }));
+      const locale = String(this.$i18n.locale || 'en');
+      const custom = this.rawBanners.map((item) => {
+        const title = resolveSiteBannerText(item.title, locale);
+        return {
+          id: item.id || `custom-${item.sort_order || 0}`,
+          name: title,
+          eyebrow: '',
+          title,
+          description: resolveSiteBannerText(item.subtitle, locale),
+          icon: this.site?.logo || this.site?.favicon || '',
+          defaultIcon: this.site?.logo || this.site?.favicon || '',
+          imageUrl: this.failedBannerImages[item.id || ''] ? '' : item.image_url || '',
+          target: item.link_url ? { href: item.link_url } : null
+        } as ResolvedHomeBanner;
+      });
+      return [...defaults, ...custom];
     },
     categories(): ResolvedHomeCategory[] {
       const resolved: ResolvedHomeCategory[] = [];
@@ -121,6 +146,7 @@ export default defineComponent({
       immediate: true,
       handler(loaded: boolean) {
         if (loaded && !this.showcaseLoaded) void this.loadShowcases();
+        if (loaded) void this.loadBanners();
       }
     },
     '$i18n.locale'() {
@@ -138,9 +164,22 @@ export default defineComponent({
         description: item.descriptionKey ? this.$t(item.descriptionKey) : '',
         icon: this.failedIcons[item.capability] ? defaultIcon : presentation.iconUrl,
         defaultIcon,
-        imageUrl: this.failedImages[item.capability] ? '' : item.imageUrl,
+        imageUrl: item.imageUrl,
         focalPoint: item.focalPoint
       };
+    },
+    async loadBanners(): Promise<void> {
+      const generation = ++this.bannerLoadGeneration;
+      this.rawBanners = [];
+      try {
+        const origin = getSiteOrigin(this.site);
+        const response = await siteBannerOperator.getPublic(origin);
+        if (generation === this.bannerLoadGeneration) {
+          this.rawBanners = Array.isArray(response.data) ? response.data : [];
+        }
+      } catch {
+        if (generation === this.bannerLoadGeneration) this.rawBanners = [];
+      }
     },
     async loadShowcases(): Promise<void> {
       const generation = ++this.showcaseLoadGeneration;
@@ -163,8 +202,8 @@ export default defineComponent({
     onShowcaseIconError(item: ResolvedShowcase): void {
       if (item.icon !== item.defaultIcon) this.failedIcons[item.capability] = true;
     },
-    onImageError(item: ResolvedHomeCapability): void {
-      this.failedImages[item.capability] = true;
+    onImageError(item: ResolvedHomeBanner): void {
+      this.failedBannerImages[item.id] = true;
     },
     onCategoryImageError(id: string): void {
       this.failedCategoryImages[id] = true;

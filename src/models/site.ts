@@ -131,6 +131,7 @@ export interface ISiteMetadata {
   // keeps recharge enabled. Read via `isRechargeDisabled` in
   // `src/utils/site.ts`.
   disable_recharge?: boolean;
+  nexior?: { hidden_default_banner_ids?: string[]; [key: string]: unknown };
   [key: string]: unknown;
 }
 

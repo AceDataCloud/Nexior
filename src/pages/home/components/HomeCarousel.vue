@@ -10,14 +10,15 @@
     @touchend.passive="onTouchEnd"
   >
     <div class="slides">
-      <router-link
+      <component
+        :is="slideComponent(slide)"
         v-for="(slide, index) in slides"
         :key="slide.id"
-        :to="{ name: slide.routeName }"
+        v-bind="slideAttributes(slide)"
         class="slide"
-        :class="{ active: index === activeIndex }"
+        :class="{ active: index === activeIndex, static: !slide.target }"
         :aria-hidden="index !== activeIndex"
-        :tabindex="index === activeIndex ? 0 : -1"
+        :tabindex="index === activeIndex && slide.target ? 0 : -1"
       >
         <img
           v-if="slide.imageUrl"
@@ -29,15 +30,17 @@
           :style="{ objectPosition: slide.focalPoint || 'center' }"
           @error="$emit('image-error', slide)"
         />
-        <span v-else class="image-fallback"><img :src="slide.icon" alt="" /></span>
+        <span v-else class="image-fallback"><img v-if="slide.icon" :src="slide.icon" alt="" /></span>
         <span class="shade" />
         <span class="copy">
-          <span class="eyebrow">{{ slide.eyebrow }}</span>
-          <strong>{{ slide.title }}</strong>
+          <span v-if="slide.eyebrow" class="eyebrow">{{ slide.eyebrow }}</span>
+          <strong v-if="slide.title">{{ slide.title }}</strong>
           <span class="description">{{ slide.description }}</span>
-          <span class="action">{{ $t('intro.home.createNow') }} <span aria-hidden="true">→</span></span>
+          <span v-if="slide.target" class="action"
+            >{{ $t('intro.home.createNow') }} <span aria-hidden="true">→</span></span
+          >
         </span>
-      </router-link>
+      </component>
     </div>
 
     <template v-if="slides.length > 1">
@@ -64,6 +67,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { RouterLink } from 'vue-router';
 import type { ResolvedHomeBanner } from '../data';
 
 const props = defineProps<{ slides: ResolvedHomeBanner[] }>();
@@ -83,6 +87,20 @@ let motionQuery: MediaQueryList | undefined;
 const paused = computed(
   () => hovered.value || focused.value || hidden.value || reducedMotion.value || props.slides.length < 2
 );
+
+function slideComponent(slide: ResolvedHomeBanner) {
+  if (!slide.target) return 'div';
+  return 'href' in slide.target && /^https?:\/\//i.test(slide.target.href) ? 'a' : RouterLink;
+}
+
+function slideAttributes(slide: ResolvedHomeBanner): Record<string, unknown> {
+  if (!slide.target) return {};
+  if ('routeName' in slide.target) return { to: { name: slide.target.routeName } };
+  if (/^https?:\/\//i.test(slide.target.href)) {
+    return { href: slide.target.href, target: '_blank', rel: 'noopener noreferrer' };
+  }
+  return { to: slide.target.href };
+}
 
 function normalize(index: number): number {
   const count = props.slides.length;
@@ -202,6 +220,10 @@ defineExpose({ activeIndex, next, previous, goTo, hovered, focused });
 
   > img {
     object-fit: cover;
+  }
+
+  &.static {
+    cursor: default;
   }
 
   &:focus-visible {

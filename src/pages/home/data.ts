@@ -42,6 +42,8 @@ export interface HomeCategory {
   candidates: HomeCapability[];
 }
 
+export type HomeBannerTarget = { routeName: string } | { href: string } | null;
+
 export interface ResolvedHomeCapability {
   capability: CapabilityKey;
   routeName: string;
@@ -53,10 +55,17 @@ export interface ResolvedHomeCapability {
   focalPoint?: string;
 }
 
-export interface ResolvedHomeBanner extends ResolvedHomeCapability {
+export interface ResolvedHomeBanner {
   id: string;
+  name: string;
+  description: string;
+  icon: string;
+  defaultIcon: string;
+  imageUrl: string;
+  focalPoint?: string;
   eyebrow: string;
   title: string;
+  target: HomeBannerTarget;
 }
 
 export interface ResolvedHomeCategory {

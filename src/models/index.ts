@@ -36,6 +36,7 @@ export * from './wan';
 export * from './webextrator';
 export * from './fish';
 export * from './site';
+export * from './siteBanner';
 export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';
 export * from './site_domain';
