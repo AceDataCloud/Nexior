@@ -7,6 +7,9 @@ export interface ISiteBanner {
   link_url?: string | null;
   title?: ISiteBannerI18nMap;
   subtitle?: ISiteBannerI18nMap;
+  title_source?: string;
+  subtitle_source?: string;
+  auto_translated_fields?: string[];
   visible?: boolean;
   sort_order?: number;
   start_at?: string | null;

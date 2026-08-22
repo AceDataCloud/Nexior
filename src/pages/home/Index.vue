@@ -170,7 +170,10 @@ export default defineComponent({
       }
     },
     '$i18n.locale'() {
-      if (this.siteLoaded) void this.loadShowcases();
+      if (this.siteLoaded) {
+        void this.loadShowcases();
+        void this.loadBanners();
+      }
     },
     hasMoreShowcases() {
       this.$nextTick(() => this.observeShowcaseLoadMore());

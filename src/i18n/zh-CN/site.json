@@ -503,23 +503,74 @@
     "message": "图片上传失败。",
     "description": "图片裁切器上传失败错误"
   },
-  "logoStudio.analysisReady": { "message": "图片检测完成", "description": "品牌图片智能处理第二步顶部状态标题" },
-  "logoStudio.analysisSummary": { "message": "{width}×{height} px · 背景置信度 {confidence}%", "description": "图片检测结果中的尺寸与背景置信度" },
-  "logoStudio.backgroundDetected": { "message": "检测到纯色背景", "description": "图片四周背景足够统一时的状态标签" },
-  "logoStudio.transparentOrComplex": { "message": "透明或复杂背景", "description": "图片已透明或背景不适合自动移除时的状态标签" },
-  "logoStudio.removeBackground": { "message": "自动去除背景", "description": "品牌图片背景移除开关标签" },
-  "logoStudio.backgroundColor": { "message": "背景色", "description": "品牌图片背景移除目标颜色标签" },
-  "logoStudio.edgeTolerance": { "message": "边缘容差", "description": "品牌图片去底色容差滑杆标签" },
-  "logoStudio.refreshPreview": { "message": "更新预览", "description": "使用新去底参数重新处理图片的按钮" },
-  "logoStudio.modeBrand": { "message": "保留品牌色", "description": "亮暗主题都使用彩色 Logo 的显示模式" },
-  "logoStudio.modeBalanced": { "message": "智能适配", "description": "亮色保留品牌色、暗色使用白色 Logo 的推荐模式" },
-  "logoStudio.modeMono": { "message": "黑白模式", "description": "亮色使用黑色、暗色使用白色 Logo 的显示模式" },
-  "logoStudio.lightTheme": { "message": "亮色主题", "description": "品牌图片亮色背景预览标签" },
-  "logoStudio.darkTheme": { "message": "暗色主题", "description": "品牌图片暗色背景预览标签" },
-  "logoStudio.previewOutdated": { "message": "参数已改变，请更新预览后再应用。", "description": "处理参数与当前预览不一致时的提示" },
-  "logoStudio.back": { "message": "返回裁剪", "description": "从处理预览返回裁剪步骤的按钮" },
-  "logoStudio.analyze": { "message": "检测并预览", "description": "完成裁剪并进入智能处理步骤的按钮" },
-  "logoStudio.apply": { "message": "应用图片", "description": "确认品牌图片处理结果的按钮" },
+  "logoStudio.analysisReady": {
+    "message": "图片检测完成",
+    "description": "品牌图片智能处理第二步顶部状态标题"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · 背景置信度 {confidence}%",
+    "description": "图片检测结果中的尺寸与背景置信度"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "检测到纯色背景",
+    "description": "图片四周背景足够统一时的状态标签"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "透明或复杂背景",
+    "description": "图片已透明或背景不适合自动移除时的状态标签"
+  },
+  "logoStudio.removeBackground": {
+    "message": "自动去除背景",
+    "description": "品牌图片背景移除开关标签"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "背景色",
+    "description": "品牌图片背景移除目标颜色标签"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "边缘容差",
+    "description": "品牌图片去底色容差滑杆标签"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "更新预览",
+    "description": "使用新去底参数重新处理图片的按钮"
+  },
+  "logoStudio.modeBrand": {
+    "message": "保留品牌色",
+    "description": "亮暗主题都使用彩色 Logo 的显示模式"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "智能适配",
+    "description": "亮色保留品牌色、暗色使用白色 Logo 的推荐模式"
+  },
+  "logoStudio.modeMono": {
+    "message": "黑白模式",
+    "description": "亮色使用黑色、暗色使用白色 Logo 的显示模式"
+  },
+  "logoStudio.lightTheme": {
+    "message": "亮色主题",
+    "description": "品牌图片亮色背景预览标签"
+  },
+  "logoStudio.darkTheme": {
+    "message": "暗色主题",
+    "description": "品牌图片暗色背景预览标签"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "参数已改变，请更新预览后再应用。",
+    "description": "处理参数与当前预览不一致时的提示"
+  },
+  "logoStudio.back": {
+    "message": "返回裁剪",
+    "description": "从处理预览返回裁剪步骤的按钮"
+  },
+  "logoStudio.analyze": {
+    "message": "检测并预览",
+    "description": "完成裁剪并进入智能处理步骤的按钮"
+  },
+  "logoStudio.apply": {
+    "message": "应用图片",
+    "description": "确认品牌图片处理结果的按钮"
+  },
   "message.editLogoTip": {
     "message": "建议尺寸：200*60px",
     "description": "上传图片的提示语言"
@@ -1212,10 +1263,6 @@
     "message": "建议使用 1600 × 500 的 PNG、JPEG 或 WebP 图片。",
     "description": "Banner 图片尺寸说明。"
   },
-  "banner.addLanguage": {
-    "message": "添加语言",
-    "description": "多语言 Banner 文案新增语言按钮。"
-  },
   "banner.scheduled": {
     "message": "待展示",
     "description": "Banner 尚未到开始时间的状态。"
@@ -1255,5 +1302,17 @@
   "banner.deleteFailed": {
     "message": "删除 Banner 失败",
     "description": "Banner 删除失败提示。"
+  },
+  "banner.sourceTip": {
+    "message": "填写中文源文案；需要其他语言时，点击右侧地球按钮开启自动翻译。",
+    "description": "Banner 中文源文案和自动翻译说明。"
+  },
+  "banner.saveBeforeTranslate": {
+    "message": "请先保存 Banner，再开启自动翻译",
+    "description": "新 Banner 尚无 ID 时翻译按钮的禁用提示。"
+  },
+  "banner.savedEnableTranslation": {
+    "message": "已保存，现在可以为标题或副标题开启自动翻译",
+    "description": "首次保存 Banner 后提示站长使用地球按钮。"
   }
 }

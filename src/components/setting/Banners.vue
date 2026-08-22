@@ -98,10 +98,38 @@
         </el-form-item>
 
         <el-form-item :label="$t('site.banner.title')">
-          <locale-rows v-model="form.titleRows" :placeholder="$t('site.banner.titlePlaceholder')" />
+          <el-input v-model="form.titleSource" :placeholder="$t('site.banner.titlePlaceholder')" maxlength="500">
+            <template #suffix>
+              <auto-translate-toggle
+                model="site_banner"
+                field="title"
+                :object-id="editing?.id"
+                :enabled="translationEnabled('title')"
+                :current-value="form.titleSource"
+                :disabled-reason="$t('site.banner.saveBeforeTranslate')"
+                @enabled-success="onTranslationChanged('title', $event)"
+                @disabled-success="onTranslationChanged('title', $event)"
+              />
+            </template>
+          </el-input>
+          <span class="field-tip">{{ $t('site.banner.sourceTip') }}</span>
         </el-form-item>
         <el-form-item :label="$t('site.banner.subtitle')">
-          <locale-rows v-model="form.subtitleRows" :placeholder="$t('site.banner.subtitlePlaceholder')" />
+          <el-input v-model="form.subtitleSource" :placeholder="$t('site.banner.subtitlePlaceholder')" maxlength="500">
+            <template #suffix>
+              <auto-translate-toggle
+                model="site_banner"
+                field="subtitle"
+                :object-id="editing?.id"
+                :enabled="translationEnabled('subtitle')"
+                :current-value="form.subtitleSource"
+                :disabled-reason="$t('site.banner.saveBeforeTranslate')"
+                @enabled-success="onTranslationChanged('subtitle', $event)"
+                @disabled-success="onTranslationChanged('subtitle', $event)"
+              />
+            </template>
+          </el-input>
+          <span class="field-tip">{{ $t('site.banner.sourceTip') }}</span>
         </el-form-item>
 
         <div class="form-grid">
@@ -159,7 +187,7 @@ import {
 } from 'element-plus';
 import { AddIcon, ImageIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import ImageCropper from '@/components/common/ImageCropper.vue';
-import LocaleRows, { type ILocaleRow } from '@/components/setting/LocaleRows.vue';
+import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import { HOME_BANNERS } from '@/pages/home/data';
 import { siteBannerOperator, siteOperator } from '@/operators';
 import type { CapabilityKey } from '@/constants/capabilities';
@@ -170,8 +198,8 @@ import { toWritableSitePayload } from '@/utils/site';
 interface IBannerForm {
   imageUrl: string;
   linkUrl: string;
-  titleRows: ILocaleRow[];
-  subtitleRows: ILocaleRow[];
+  titleSource: string;
+  subtitleSource: string;
   visible: boolean;
   sortOrder: number;
   startAt: string;
@@ -181,23 +209,13 @@ interface IBannerForm {
 const emptyForm = (): IBannerForm => ({
   imageUrl: '',
   linkUrl: '',
-  titleRows: [],
-  subtitleRows: [],
+  titleSource: '',
+  subtitleSource: '',
   visible: true,
   sortOrder: 0,
   startAt: '',
   endAt: ''
 });
-
-const mapToRows = (map?: ISiteBannerI18nMap): ILocaleRow[] =>
-  map ? Object.entries(map).map(([locale, value]) => ({ locale, value })) : [];
-
-const rowsToMap = (rows: ILocaleRow[]): ISiteBannerI18nMap => {
-  const entries = rows
-    .map(({ locale, value }) => [locale.trim(), value.trim()])
-    .filter(([locale, value]) => locale && value);
-  return entries.length ? Object.fromEntries(entries) : null;
-};
 
 const toIso = (value: string): string | null => {
   if (!value) return null;
@@ -210,6 +228,7 @@ export default defineComponent({
   name: 'BannersSetting',
   components: {
     AddIcon,
+    AutoTranslateToggle,
     ElButton,
     ElDatePicker,
     ElDialog,
@@ -221,7 +240,6 @@ export default defineComponent({
     ElSwitch,
     ImageCropper,
     ImageIcon,
-    LocaleRows,
     UploadIcon
   },
   directives: { loading: vLoading },
@@ -322,7 +340,6 @@ export default defineComponent({
     openCreate() {
       this.editing = null;
       this.form = emptyForm();
-      this.form.titleRows = [{ locale: String(this.$i18n.locale || 'en'), value: '' }];
       this.editorVisible = true;
     },
     openEdit(row: ISiteBanner) {
@@ -330,8 +347,8 @@ export default defineComponent({
       this.form = {
         imageUrl: row.image_url || '',
         linkUrl: row.link_url || '',
-        titleRows: mapToRows(row.title),
-        subtitleRows: mapToRows(row.subtitle),
+        titleSource: row.title_source || this.bannerText(row.title),
+        subtitleSource: row.subtitle_source || this.bannerText(row.subtitle),
         visible: row.visible !== false,
         sortOrder: row.sort_order ?? 0,
         startAt: fromIso(row.start_at),
@@ -339,12 +356,23 @@ export default defineComponent({
       };
       this.editorVisible = true;
     },
+    translationEnabled(field: 'title' | 'subtitle'): boolean {
+      return this.editing?.auto_translated_fields?.includes(field) === true;
+    },
+    async onTranslationChanged(field: 'title' | 'subtitle', payload: { source?: string; fieldValue?: string | null }) {
+      if (field === 'title') this.form.titleSource = payload.source ?? payload.fieldValue ?? '';
+      else this.form.subtitleSource = payload.source ?? payload.fieldValue ?? '';
+      const id = this.editing?.id;
+      await this.fetchRows();
+      const refreshed = this.rows.find((row) => row.id === id);
+      if (refreshed) this.openEdit(refreshed);
+    },
     buildPayload() {
       return {
         image_url: this.form.imageUrl.trim() || null,
         link_url: this.form.linkUrl.trim() || null,
-        title: rowsToMap(this.form.titleRows),
-        subtitle: rowsToMap(this.form.subtitleRows),
+        title: this.form.titleSource.trim() ? { 'zh-CN': this.form.titleSource.trim() } : null,
+        subtitle: this.form.subtitleSource.trim() ? { 'zh-CN': this.form.subtitleSource.trim() } : null,
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),
@@ -359,13 +387,16 @@ export default defineComponent({
         ElMessage.error(this.$t('site.banner.invalidWindow'));
         return;
       }
+      const wasNew = !this.editing?.id;
       this.submitting = true;
       try {
-        if (this.editing?.id) await siteBannerOperator.update(this.editing.id, this.buildPayload());
-        else await siteBannerOperator.create({ site: this.site.id, ...this.buildPayload() });
-        this.editorVisible = false;
+        const response = this.editing?.id
+          ? await siteBannerOperator.update(this.editing.id, this.buildPayload())
+          : await siteBannerOperator.create({ site: this.site.id, ...this.buildPayload() });
         await this.fetchRows();
-        ElMessage.success(this.$t('common.message.saved'));
+        const refreshed = this.rows.find((row) => row.id === response.data.id) || response.data;
+        this.openEdit(refreshed);
+        ElMessage.success(this.$t(wasNew ? 'site.banner.savedEnableTranslation' : 'common.message.saved'));
       } catch (error: any) {
         const data = error?.response?.data;
         const detail = data && typeof data === 'object' ? Object.values(data).flat().join('; ') : '';
