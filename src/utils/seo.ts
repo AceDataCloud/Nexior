@@ -1,5 +1,6 @@
 import store from '@/store';
 import { getSiteLocaleOptions } from '@/utils/siteLocales';
+import { isMainOfficial } from '@/utils/is';
 
 // Resolve the current site origin at runtime so that the same bundle can be
 // served independently from multiple official hostnames (e.g. hub.acedata.cloud,
@@ -166,7 +167,9 @@ export function setOrganization() {
     url: getCurrentOrigin(),
     logo: image,
     description,
-    sameAs: ['https://github.com/AceDataCloud', 'https://x.com/AceDataCloud', 'https://hub.acedata.cloud']
+    ...(isMainOfficial()
+      ? { sameAs: ['https://github.com/AceDataCloud', 'https://x.com/AceDataCloud', 'https://hub.acedata.cloud'] }
+      : {})
   });
 }
 
