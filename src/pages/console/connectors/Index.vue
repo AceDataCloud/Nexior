@@ -525,12 +525,7 @@
 
     <!-- Multi-method picker: only opened when a connector exposes more
          than one connection method; single-method connectors skip it. -->
-    <connector-method-picker
-      v-model="pickerVisible"
-      :item="pickerCatalog"
-      @select="onMethodSelected"
-      @update:model-value="(v: boolean) => !v && clearCreateNewIntent()"
-    />
+    <connector-method-picker v-model="pickerVisible" :item="pickerCatalog" @select="onMethodSelected" />
     <browser-pairing-dialog v-model="pairingDialogVisible" @paired="onBrowserPaired" @closed="onBrowserPairingClosed" />
     <browser-device-picker
       ref="browserDevicePicker"
@@ -658,7 +653,9 @@ import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicke
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
 import { popupReturnUrl } from '@/utils/connections/authorizePopup';
-import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { getBaseUrlAuth } from '@/utils';
+import { isDesktop } from '@/utils/surface';
 import type { IBrowserDevice } from '@/models/browserDevice';
 
 /** One row of the connection detail overflow menu. */
@@ -803,6 +800,7 @@ interface IData {
   browserInstalling: boolean;
   browserRebindConnectionId: string | null;
   pairedBrowserDevice: IBrowserDevice | null;
+  offConnectorCallbackEvent: (() => void) | null;
 }
 
 export default defineComponent({
@@ -879,7 +877,8 @@ export default defineComponent({
       browserDialogMethod: null,
       browserInstalling: false,
       browserRebindConnectionId: null,
-      pairedBrowserDevice: null
+      pairedBrowserDevice: null,
+      offConnectorCallbackEvent: null
     };
   },
   computed: {
@@ -1291,6 +1290,10 @@ export default defineComponent({
     }
   },
   async mounted() {
+    const onConnectorCallback = () => void Promise.all([this.fetchConnections(), this.fetchCatalog()]);
+    window.addEventListener('acedata:connector-callback', onConnectorCallback);
+    this.offConnectorCallbackEvent = () =>
+      window.removeEventListener('acedata:connector-callback', onConnectorCallback);
     await Promise.all([this.fetchConnections(), this.fetchCatalog()]);
     this.firstLoadComplete = true;
     if (!this.selectedKey && this.orderedItems.length) {
@@ -1322,6 +1325,9 @@ export default defineComponent({
         }
       }
     }
+  },
+  beforeUnmount() {
+    this.offConnectorCallbackEvent?.();
   },
   methods: {
     onSelect(item: IListItem) {
@@ -1565,7 +1571,10 @@ export default defineComponent({
         return;
       }
       const method = resolveConnectorMethod(catalog);
-      if (!method) return;
+      if (!method) {
+        ElMessage.warning(this.$t('connection.message.methodUnavailable.generic') as string);
+        return;
+      }
       await this.connectWithMethod(catalog, method);
     },
     /** Drop a pending add-account intent. Called from every path that ends a
@@ -1590,6 +1599,21 @@ export default defineComponent({
       // redirect, so the OAuth-flavour "we'll bounce you to <provider>"
       // confirmation copy doesn't apply. The dialog reads the schema /
       // cookie domains / login url from the chosen method.
+      if (method.credential.type === 'cookie_jar' && isDesktop()) {
+        const createNew = this.pendingCreateNew;
+        try {
+          const prepared = await prepareAuthorizeFlow(catalog.identifier, popupReturnUrl());
+          const installUrl = new URL(`/connections/install/${catalog.id}`, getBaseUrlAuth());
+          installUrl.searchParams.set('return_to', prepared.returnUrl);
+          installUrl.searchParams.set('method_id', method.id);
+          if (createNew) installUrl.searchParams.set('create_new', 'true');
+          await this.runAuthorizePopup(installUrl.toString(), prepared.requestId);
+        } catch (error: any) {
+          this.pendingCreateNew = false;
+          ElMessage.error(error?.message || (this.$t('connection.message.installFailed') as string));
+        }
+        return;
+      }
       if (method.credential.type === 'user_secret' || method.credential.type === 'cookie_jar') {
         this.byocDialogCatalog = catalog;
         this.byocDialogMethod = method;
@@ -1646,9 +1670,10 @@ export default defineComponent({
       // stamped with ``connector_identifier`` and the right-pane join
       // picks up display fields from the catalog row.
       try {
+        const prepared = await prepareAuthorizeFlow(catalog.identifier, popupReturnUrl());
         const { data } = await connectionOperator.installFromCatalog(catalog.id, {
           scopes: scopes && scopes.length ? scopes : undefined,
-          return_url: popupReturnUrl(),
+          return_url: prepared.returnUrl,
           method_id: method.id,
           // Only set when the user explicitly chose "add another account";
           // omitting it keeps the backend on slot 0, i.e. re-authorizing
@@ -1667,7 +1692,7 @@ export default defineComponent({
           return;
         }
         if (data && (data as any).authorization_url) {
-          await this.runAuthorizePopup((data as any).authorization_url);
+          await this.runAuthorizePopup((data as any).authorization_url, prepared.requestId);
         } else if (data && (data as any).type === 'active') {
           // Zero-step flow (public) — refresh the list.
           await this.fetchConnections();
@@ -1683,9 +1708,12 @@ export default defineComponent({
      * resolve on "the flow ended", and the server is the authority on what
      * actually connected, so we always refetch.
      */
-    async runAuthorizePopup(authorizationUrl: string) {
+    async runAuthorizePopup(authorizationUrl: string, requestId?: string) {
       try {
-        await openAuthorizeFlow(authorizationUrl);
+        const result = await openAuthorizeFlow(authorizationUrl, requestId);
+        if (result.status === 'error') {
+          throw new Error(result.errorCode || 'connector-authorization-failed');
+        }
       } catch (error: any) {
         this.pendingCreateNew = false;
         ElMessage.error(
@@ -1824,17 +1852,18 @@ export default defineComponent({
       }
       this.customAuthorizing = true;
       try {
+        const prepared = await prepareAuthorizeFlow(`custom:${this.customServerUrl}`, popupReturnUrl());
         const { data } = await connectionOperator.authorizeCustom({
           name: this.customName || undefined,
           server_url: this.customServerUrl,
           client_id: this.customClientId || undefined,
           client_secret: this.customClientSecret || undefined,
           provider: 'mcp',
-          return_url: popupReturnUrl()
+          return_url: prepared.returnUrl
         });
         if (data?.authorization_url) {
           this.customDialogVisible = false;
-          await this.runAuthorizePopup(data.authorization_url);
+          await this.runAuthorizePopup(data.authorization_url, prepared.requestId);
         }
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to start authorization');

@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "インストール済み、再検出する",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "この接続方法は一時的に利用できません。",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "この認証方法はまだ設定されていません。他の接続方法を選択してください。",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "この接続方法を確認中です。後でもう一度お試しください。",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "接続状態を再確認する必要があります。後でもう一度お試しください。",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "この接続方法は一時的にアクセスできません。後でもう一度お試しください。",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "接続の認証が期限切れです。再試行してください。",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "ブラウザプラグインの更新が必要です",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "現在のプラグインバージョンは安全な接続プロトコルをサポートしていません。インストールガイドに従ってプラグインを更新してから再試行してください。",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

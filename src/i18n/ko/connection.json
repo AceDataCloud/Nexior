@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "설치했습니다. 다시 검사하기",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "이 연결 방식은 현재 사용할 수 없습니다.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "이 인증 방식은 아직 구성되지 않았습니다. 다른 연결 방식을 선택해 주세요.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "이 연결 방식을 확인 중입니다. 잠시 후 다시 시도해 주세요.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "연결 상태를 다시 확인해야 합니다. 잠시 후 다시 시도해 주세요.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "이 연결 방식에 접근할 수 없습니다. 잠시 후 다시 시도해 주세요.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "연결 권한이 만료되었습니다. 다시 시도해 주세요.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "브라우저 플러그인을 업데이트해야 합니다",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "현재 플러그인 버전이 보안 연결 프로토콜을 지원하지 않습니다. 설치 가이드를 따라 플러그인을 업데이트한 후 다시 시도하세요.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

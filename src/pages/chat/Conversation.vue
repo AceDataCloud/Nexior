@@ -134,7 +134,7 @@ import WorkingDirectoryBar from '@/components/chat/WorkingDirectoryBar.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { supportsClientTools, isDesktop, isWeb } from '@/utils/surface';
-import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import { withAuthFrontendSession } from '@/utils/authHandoff';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
@@ -153,6 +153,8 @@ import {
   repairInstallReturnToUrl,
   type IConsentReturn
 } from '@/components/chat/consentReturn';
+import { listMyConnections } from '@/components/chat/connectorCatalogCache';
+import { consumeConnectorCallback, peekConnectorCallback } from '@/utils/connections/connectorCallback';
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
@@ -188,6 +190,9 @@ export interface IData {
    * pending return (the common case).
    */
   pendingConsentReturn: IConsentReturn | null;
+  consumingBufferedConnectorReturn: boolean;
+  offConnectorCallbackEvent: (() => void) | null;
+  connectorCallbackRetries: Record<string, number>;
   // Full specs of the desktop local tools (from window.localExec). Sent to the
   // worker as `client_tools` so the model can call them; the worker pauses with
   // execution:'client' and the desktop runs them. Empty on web/native.
@@ -248,7 +253,10 @@ export default defineComponent({
       restoringConversationId: undefined,
       skipNextRestoreId: undefined,
       messages: [],
-      pendingConsentReturn: null
+      pendingConsentReturn: null,
+      consumingBufferedConnectorReturn: false,
+      offConnectorCallbackEvent: null,
+      connectorCallbackRetries: {}
     };
   },
   computed: {
@@ -370,13 +378,17 @@ export default defineComponent({
      */
     messages: {
       handler() {
-        if (!this.pendingConsentReturn) return;
-        this.onConsumePendingConsentReturn();
+        if (this.pendingConsentReturn) this.onConsumePendingConsentReturn();
+        void this.onConsumeBufferedConnectorReturn();
       },
       deep: false
     }
   },
   async mounted() {
+    const onConnectorCallback = () => void this.onConsumeBufferedConnectorReturn();
+    window.addEventListener('acedata:connector-callback', onConnectorCallback);
+    this.offConnectorCallbackEvent = () =>
+      window.removeEventListener('acedata:connector-callback', onConnectorCallback);
     // Stash the deep-link return params BEFORE anything else touches the
     // route — `onApplyQueryFromUrl` (further down) strips `connector` from
     // the URL as part of Studio's Try-It chip cleanup, so we have to grab
@@ -391,6 +403,9 @@ export default defineComponent({
       this.localTools = (await localExec()?.listTools()) ?? [];
       void this.onProbeWorkerFeatures();
     }
+  },
+  beforeUnmount() {
+    this.offConnectorCallbackEvent?.();
   },
   methods: {
     /**
@@ -1317,6 +1332,14 @@ export default defineComponent({
      * deliberately and the rest of the conversation is persisted
      * server-side and restored on return.
      */
+    pendingConsentRequestId(toolUseId: string): string {
+      const assistant = [...this.messages].reverse().find((message) => message.role === ROLE_ASSISTANT);
+      if (!assistant || !Array.isArray(assistant.content)) return '';
+      const block = (assistant.content as IChatMessageContentItem[]).find(
+        (item) => item.type === 'tool_use' && item.tool_id === toolUseId
+      );
+      return block?.pending_consent_request?.consent_request_id || '';
+    },
     async onAuthorizeConnector(payload: { tool_use_id: string; entry: { connector: string; install_url?: string } }) {
       const url = payload.entry?.install_url;
       if (!url) {
@@ -1335,12 +1358,18 @@ export default defineComponent({
         window.location.href = await withAuthFrontendSession(target);
         return;
       }
-      // On native/desktop that same hop leaves the app shell for good: the
-      // return lands on studio.acedata.cloud in a browser, not in the app.
-      // Send it outward instead and stay put — `consentReturn` already
-      // resumes the paused tool_use when the connection shows up.
+      // Native/desktop keep the app in place. AuthFrontend receives a verified
+      // desktop return URL, then this renderer confirms ACTIVE state before
+      // resuming the pending consent tool.
       try {
-        await openAuthorizeFlow(target);
+        const prepared = await prepareAuthorizeFlow(
+          payload.entry.connector,
+          window.location.href,
+          `${this.pendingConsentRequestId(payload.tool_use_id)}:${payload.tool_use_id}`
+        );
+        const installUrl = new URL(target);
+        installUrl.searchParams.set('return_to', prepared.returnUrl);
+        await openAuthorizeFlow(installUrl.toString(), prepared.requestId, false);
       } catch (error: any) {
         ElMessage.error(
           error?.message === 'desktop-authorize-unsupported'
@@ -1348,6 +1377,21 @@ export default defineComponent({
             : error?.message || (this.$t('connection.message.installFailed') as string)
         );
       }
+    },
+    async waitForConnectorConnection(identifier: string): Promise<boolean> {
+      for (const delay of [0, 400, 800, 1200, 2000]) {
+        if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
+        const connections = await listMyConnections();
+        if (
+          connections.some(
+            (connection) =>
+              connection.connector_identifier === identifier && String(connection.status).toLowerCase() === 'active'
+          )
+        ) {
+          return true;
+        }
+      }
+      return false;
     },
     /**
      * Stash any ``?consent=<rid>&connector=<id>`` pair on
@@ -1363,6 +1407,48 @@ export default defineComponent({
       );
       if (!parsed) return;
       this.pendingConsentReturn = parsed;
+    },
+    async onConsumeBufferedConnectorReturn() {
+      if (this.consumingBufferedConnectorReturn || this.messages.length === 0) return;
+      const lastAssistant = [...this.messages].reverse().find((message) => message.role === ROLE_ASSISTANT);
+      if (!lastAssistant || !Array.isArray(lastAssistant.content)) return;
+      const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+        (item) =>
+          item.type === 'tool_use' &&
+          item.tool_name === 'request_user_consent' &&
+          item.status === 'awaiting_input' &&
+          item.pending_consent_request
+      );
+      const payload = block?.pending_consent_request;
+      if (!block?.tool_id || !payload) return;
+      for (const requirement of payload.requirements) {
+        for (const entry of requirement.entries) {
+          const flowKey = `${payload.consent_request_id}:${block.tool_id}`;
+          const completed = peekConnectorCallback(flowKey);
+          if (!completed || completed.status !== 'success' || completed.connector !== entry.connector) continue;
+          this.consumingBufferedConnectorReturn = true;
+          try {
+            if (!(await this.waitForConnectorConnection(entry.connector))) {
+              const attempts = (this.connectorCallbackRetries[flowKey] || 0) + 1;
+              this.connectorCallbackRetries = { ...this.connectorCallbackRetries, [flowKey]: attempts };
+              if (attempts < 5) window.setTimeout(() => void this.onConsumeBufferedConnectorReturn(), 2000);
+              else consumeConnectorCallback(flowKey);
+              return;
+            }
+            consumeConnectorCallback(flowKey);
+            const nextRetries = { ...this.connectorCallbackRetries };
+            delete nextRetries[flowKey];
+            this.connectorCallbackRetries = nextRetries;
+            await this.onRespondConnectorConsent({
+              tool_use_id: block.tool_id,
+              output: buildAuthorizedConsentOutput(payload, entry.connector)
+            });
+          } finally {
+            this.consumingBufferedConnectorReturn = false;
+          }
+          return;
+        }
+      }
     },
     /**
      * Try to consume ``pendingConsentReturn`` by locating the matching

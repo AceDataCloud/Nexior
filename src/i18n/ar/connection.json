@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "لقد قمت بالتثبيت، إعادة الفحص",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "هذه الطريقة غير متاحة مؤقتًا.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "هذه الطريقة لم يتم تكوينها بعد، يرجى اختيار طريقة اتصال أخرى.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "يتم التحقق من هذه الطريقة، يرجى المحاولة لاحقًا.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "حالة الاتصال تحتاج إلى إعادة التحقق، يرجى المحاولة لاحقًا.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "هذه الطريقة غير متاحة حاليًا، يرجى المحاولة لاحقًا.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "انتهت صلاحية تفويض الاتصال، يرجى المحاولة مرة أخرى.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "يحتاج ملحق المتصفح إلى تحديث",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "إصدار الملحق الحالي لا يدعم بروتوكول الاتصال الآمن. يرجى تحديث الملحق وفقًا لدليل التثبيت ثم المحاولة مرة أخرى.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

@@ -208,7 +208,9 @@ import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue'
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
 import type { IBrowserDevice } from '@/models/browserDevice';
 import { popupReturnUrl } from '@/utils/connections/authorizePopup';
-import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { getBaseUrlAuth } from '@/utils';
+import { isDesktop } from '@/utils/surface';
 
 interface ISourceOption {
   key: 'all' | ConnectorSource | 'featured';
@@ -242,6 +244,7 @@ interface IData {
   browserDialogItem: IConnectorCatalogItem | null;
   browserDialogMethod: IConnectorConnectionMethod | null;
   browserInstalling: boolean;
+  offConnectorCallbackEvent: (() => void) | null;
 }
 
 function normalizeConnectorSearchText(value: unknown): string {
@@ -332,7 +335,8 @@ export default defineComponent({
       browserDevicePickerVisible: false,
       browserDialogItem: null,
       browserDialogMethod: null,
-      browserInstalling: false
+      browserInstalling: false,
+      offConnectorCallbackEvent: null
     };
   },
   computed: {
@@ -402,6 +406,15 @@ export default defineComponent({
     visible(val: boolean) {
       this.$emit('update:modelValue', val);
     }
+  },
+  mounted() {
+    const onConnectorCallback = () => void this.fetchItems();
+    window.addEventListener('acedata:connector-callback', onConnectorCallback);
+    this.offConnectorCallbackEvent = () =>
+      window.removeEventListener('acedata:connector-callback', onConnectorCallback);
+  },
+  beforeUnmount() {
+    this.offConnectorCallbackEvent?.();
   },
   methods: {
     onOpen() {
@@ -476,7 +489,7 @@ export default defineComponent({
       this.category = key;
       this.fetchItems();
     },
-    async fetchItems() {
+    async fetchItems(): Promise<boolean> {
       this.loading = true;
       try {
         // Fetch a generously large page; the catalog is small (tens of items).
@@ -492,11 +505,18 @@ export default defineComponent({
         }
         const { data } = await connectionOperator.listCatalog(params);
         this.items = data.items || [];
+        return true;
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to load directory');
+        return false;
       } finally {
         this.loading = false;
       }
+    },
+    async confirmInstalled(item: IConnectorCatalogItem): Promise<boolean> {
+      if (!(await this.fetchItems())) return false;
+      const refreshed = this.items.find((candidate) => candidate.id === item.id);
+      return Boolean(refreshed?.installed && this.accountCount(refreshed) > 0);
     },
     async fetchFacets() {
       try {
@@ -518,7 +538,10 @@ export default defineComponent({
         return;
       }
       const method = resolveConnectorMethod(item);
-      if (!method) return;
+      if (!method) {
+        ElMessage.warning(this.$t('connection.message.methodUnavailable.generic') as string);
+        return;
+      }
       await this.installWithMethod(item, method);
     },
     onMethodSelected(payload: { item: IConnectorCatalogItem; method: IConnectorConnectionMethod }) {
@@ -535,6 +558,24 @@ export default defineComponent({
       // BYOC methods collect credentials inline — no upstream redirect,
       // so open the credential dialog directly with the chosen method
       // (its schema / cookie domains / login url drive the dialog).
+      if (method.credential.type === 'cookie_jar' && isDesktop()) {
+        this.installingId = item.id;
+        try {
+          const prepared = await prepareAuthorizeFlow(item.identifier, popupReturnUrl());
+          const installUrl = new URL(`/connections/install/${item.id}`, getBaseUrlAuth());
+          installUrl.searchParams.set('return_to', prepared.returnUrl);
+          installUrl.searchParams.set('method_id', method.id);
+          const completed = await openAuthorizeFlow(installUrl.toString(), prepared.requestId);
+          if (completed.status === 'success' && (await this.confirmInstalled(item))) {
+            this.$emit('installed');
+          }
+        } catch (error: any) {
+          ElMessage.error(error?.message || (this.$t('connection.message.installFailed') as string));
+        } finally {
+          this.installingId = null;
+        }
+        return;
+      }
       if (method.credential.type === 'user_secret' || method.credential.type === 'cookie_jar') {
         this.byocDialogItem = item;
         this.byocDialogMethod = method;
@@ -543,16 +584,17 @@ export default defineComponent({
       }
       this.installingId = item.id;
       try {
+        const prepared = await prepareAuthorizeFlow(item.identifier, popupReturnUrl());
         const { data } = await connectionOperator.installFromCatalog(item.id, {
-          return_url: popupReturnUrl(),
+          return_url: prepared.returnUrl,
           method_id: method.id
         });
         if (data.type === 'redirect') {
           // Popup (web) / in-app browser (native) / system browser (desktop)
           // all keep this dialog and the page behind it alive.
-          await openAuthorizeFlow(data.authorization_url);
-          this.$emit('installed');
-          await this.fetchItems();
+          const completed = await openAuthorizeFlow(data.authorization_url, prepared.requestId);
+          if (completed.status === 'error' || completed.status === 'cancelled') return;
+          if (await this.confirmInstalled(item)) this.$emit('installed');
           return;
         }
         if (data.type === 'form') {

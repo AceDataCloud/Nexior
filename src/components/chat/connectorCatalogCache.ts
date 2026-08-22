@@ -27,6 +27,7 @@
 import { httpClient } from '@/operators/common';
 import { getBaseUrlAuth } from '@/utils';
 import type { AxiosResponse } from 'axios';
+import type { IConnectorConnectionMethod } from '@/operators/connection';
 
 /** Localized permission entry on a catalog row — mirrors AuthBackend's
  *  `IConnectorPermission` (server-side translated via Accept-Language). */
@@ -48,7 +49,8 @@ export interface IConnectorCatalogSummary {
   publisher: string;
   publisher_logo_url: string;
   permissions: IConnectorPermission[];
-  auth_mode: string;
+  connection_methods: IConnectorConnectionMethod[];
+  recommended_method_id?: string;
   /** `true` when the catalog row is in a state where the install endpoint
    *  will provision a connection (currently always `true` for visible
    *  rows, but the field is honored so a feature-flagged row doesn't
@@ -266,7 +268,7 @@ export async function listEnabledConnectors(
  */
 export async function installFromCatalog(
   catalogId: string,
-  payload: { scopes?: string[]; return_url: string }
+  payload: { scopes?: string[]; return_url: string; method_id?: string }
 ): Promise<IConnectorCatalogInstallResponse> {
   const response: AxiosResponse<IConnectorCatalogInstallResponse> = await httpClient.post(
     `/connectors/${catalogId}/install/`,

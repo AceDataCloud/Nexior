@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "Koppeln Sie den ACE Browser Agent; Browseraktionen werden lokal ausgeführt und erfordern weiterhin eine separate Genehmigung.",
     "description": "connection: method.desc.browser_session"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Diese Verbindungsart ist vorübergehend nicht verfügbar.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Diese Authentifizierungsmethode ist noch nicht konfiguriert, bitte wählen Sie eine andere Verbindungsart.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Diese Verbindungsart wird überprüft, bitte später erneut versuchen.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "Der Verbindungsstatus muss erneut überprüft werden, bitte später erneut versuchen.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Diese Verbindungsart ist vorübergehend nicht erreichbar, bitte später erneut versuchen.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "Die Verbindungsautorisierung ist abgelaufen, bitte versuchen Sie es erneut.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "Browser-Plugin muss aktualisiert werden",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "Die aktuelle Plugin-Version unterstützt das Sicherheitsverbindungsprotokoll nicht. Bitte aktualisieren Sie das Plugin gemäß der Installationsanleitung und versuchen Sie es erneut.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "配对 ACE Browser Agent；浏览器操作在本地执行，并且仍需单独明确批准。",
     "description": "connection: method.desc.browser_session"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "此连接方式暂时不可用。",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "此授权方式尚未配置，请选择其他连接方式。",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "正在验证此连接方式，请稍后重试。",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "连接状态需要重新验证，请稍后重试。",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "此连接方式暂时无法访问，请稍后重试。",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "连接授权已过期，请重试。",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "浏览器插件需要更新",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "当前插件版本不支持安全连接协议。请按安装指南更新插件后再试。",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

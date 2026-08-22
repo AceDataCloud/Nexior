@@ -13,8 +13,16 @@
       <div v-if="!extensionReady" class="byoc-missing">
         <warning-icon class="byoc-missing-icon" size="1em" aria-hidden="true" focusable="false" />
         <div class="byoc-missing-body">
-          <p class="byoc-missing-title">{{ $t('connection.byoc.extensionMissingTitle') }}</p>
-          <p class="byoc-missing-text">{{ $t('connection.byoc.extensionMissingBody') }}</p>
+          <p class="byoc-missing-title">
+            {{
+              $t(extensionDetected ? 'connection.byoc.extensionOutdatedTitle' : 'connection.byoc.extensionMissingTitle')
+            }}
+          </p>
+          <p class="byoc-missing-text">
+            {{
+              $t(extensionDetected ? 'connection.byoc.extensionOutdatedBody' : 'connection.byoc.extensionMissingBody')
+            }}
+          </p>
           <a class="byoc-doc-link" :href="ACE_EXTENSION_DOC" target="_blank" rel="noopener">
             {{ $t('connection.byoc.extensionGuide') }} →
           </a>
@@ -121,6 +129,7 @@ interface IData {
   submitting: boolean;
   detecting: boolean;
   extensionReady: boolean;
+  extensionDetected: boolean;
   formModel: Record<string, string>;
 }
 
@@ -128,12 +137,15 @@ interface IData {
 interface IExtensionCookieResponse {
   from?: string;
   action?: string;
-  cookies?: Array<Record<string, unknown>>;
+  request_id?: string;
+  status?: 'success' | 'error';
+  connection_id?: string;
+  connector_identifier?: string;
   error?: string;
 }
 
 // How long to wait for the extension to answer before assuming it isn't installed.
-const CAPTURE_TIMEOUT_MS = 10000;
+const CAPTURE_TIMEOUT_MS = 30000;
 // ACE extension setup / install guide.
 const ACE_EXTENSION_DOC = 'https://platform.acedata.cloud/documents/acedataext';
 
@@ -179,6 +191,7 @@ export default defineComponent({
       submitting: false,
       detecting: false,
       extensionReady: false,
+      extensionDetected: false,
       formModel: {}
     };
   },
@@ -205,11 +218,6 @@ export default defineComponent({
     },
     loginUrl(): string {
       return this.activeMethod?.credential.login_url || '';
-    },
-    /** Primary cookie domain to capture (extension matches subdomains). */
-    captureDomain(): string {
-      const domains = this.activeMethod?.credential.cookie_domains || [];
-      return (domains[0] || '').replace(/^\./, '');
     },
     dialogTitle(): string {
       const name = this.item?.name || '';
@@ -272,7 +280,9 @@ export default defineComponent({
     /** The ACE extension content script injects a ``#acedataext`` marker on
      *  this page when installed — presence = installed. */
     detectExtension(): boolean {
-      this.extensionReady = !!document.getElementById('acedataext');
+      const marker = document.getElementById('acedataext');
+      this.extensionDetected = !!marker;
+      this.extensionReady = marker?.dataset.protocol === '2';
       return this.extensionReady;
     },
     /** Poll a few times on open (the content script injects shortly after load). */
@@ -291,25 +301,35 @@ export default defineComponent({
         }
       }, 300);
     },
-    /** Ask the ACE extension content script (injected on this page) to
-     *  read the platform's cookie jar via chrome.cookies.getAll, then
-     *  store it as the connector's BYOC credential. */
-    captureCookies(): Promise<Array<Record<string, unknown>>> {
+    captureWithExtension(ticket: string, requestId: string): Promise<IExtensionCookieResponse> {
       return new Promise((resolve, reject) => {
-        // The content script injects this marker element when present.
-        if (!document.getElementById('acedataext')) {
+        const marker = document.getElementById('acedataext');
+        if (!marker) {
           reject(new Error('extension-missing'));
+          return;
+        }
+        if (marker.dataset.protocol !== '2') {
+          reject(new Error('extension-outdated'));
           return;
         }
         let settled = false;
         const onMessage = (event: MessageEvent) => {
+          if (event.source !== window || event.origin !== window.location.origin) return;
           const data = event.data as IExtensionCookieResponse;
-          if (!data || data.from !== 'EXTENSION' || data.action !== 'getCookies') return;
+          if (
+            !data ||
+            data.from !== 'EXTENSION' ||
+            data.action !== 'captureConnectorCookies' ||
+            data.request_id !== requestId
+          ) {
+            return;
+          }
           settled = true;
           window.removeEventListener('message', onMessage);
           window.clearTimeout(timer);
-          if (data.error) reject(new Error(data.error));
-          else resolve(data.cookies || []);
+          if (data.status !== 'success' || !data.connection_id) {
+            reject(new Error(data.error || 'cookie-capture-incomplete'));
+          } else resolve(data);
         };
         const timer = window.setTimeout(() => {
           if (settled) return;
@@ -318,8 +338,8 @@ export default defineComponent({
         }, CAPTURE_TIMEOUT_MS);
         window.addEventListener('message', onMessage);
         window.postMessage(
-          { action: 'getCookies', from: 'PAGE', domain: this.captureDomain, name: this.item?.slug },
-          '*'
+          { action: 'captureConnectorCookies', from: 'PAGE', ticket, request_id: requestId },
+          window.location.origin
         );
       });
     },
@@ -327,25 +347,20 @@ export default defineComponent({
       if (!this.item) return;
       this.submitting = true;
       try {
-        const cookies = await this.captureCookies();
-        if (!cookies.length) {
-          ElMessage.error(this.$t('connection.byoc.extensionNoCookies') as string);
-          return;
-        }
-        const { data } = await connectionOperator.submitCatalogCredentials(this.item.id, {
-          payload: { cookies },
+        const { data: ticket } = await connectionOperator.createCookieCaptureTicket(this.item.id, {
           method_id: this.activeMethod?.id,
           ...(this.createNew ? { create_new: true } : {})
         });
+        const completed = await this.captureWithExtension(ticket.ticket, ticket.request_id);
         ElMessage.success(this.$t('connection.message.installed', { name: this.item.name }) as string);
-        this.$emit('installed', { item: this.item, connection_id: data.connection_id });
+        this.$emit('installed', { item: this.item, connection_id: completed.connection_id });
         this.onClose();
       } catch (error: any) {
-        if (error?.message === 'extension-missing') {
+        if (error?.message === 'extension-missing' || error?.message === 'extension-outdated') {
           ElMessage.error(this.$t('connection.byoc.extensionMissing') as string);
         } else {
           const detail = formatErrorDetail(error?.response?.data?.detail);
-          ElMessage.error(detail || (this.$t('connection.message.installFailed') as string));
+          ElMessage.error(detail || error?.message || (this.$t('connection.message.installFailed') as string));
         }
       } finally {
         this.submitting = false;

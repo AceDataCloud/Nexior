@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "Ya lo he instalado, volver a verificar",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Este método de conexión no está disponible temporalmente.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Este método de autorización aún no está configurado, por favor elija otro método de conexión.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Se está validando este método de conexión, por favor inténtelo de nuevo más tarde.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "El estado de la conexión necesita ser revalidado, por favor inténtelo de nuevo más tarde.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Este método de conexión no está accesible temporalmente, por favor inténtelo de nuevo más tarde.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "La autorización de conexión ha expirado, por favor inténtelo de nuevo.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "El complemento del navegador necesita ser actualizado",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "La versión actual del complemento no es compatible con el protocolo de conexión segura. Actualice el complemento según la guía de instalación y vuelva a intentarlo.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

@@ -35,6 +35,40 @@ contextBridge.exposeInMainWorld('desktop', {
   // Open an external https link (payment Page, docs) in the system browser.
   openExternal: (url: string): Promise<void> => ipcRenderer.invoke('shell:openExternal', url),
 
+  createConnectorCallback: (
+    connector: string,
+    flowKey?: string
+  ): Promise<{ requestId: string; returnUrl: string } | null> =>
+    ipcRenderer.invoke('connections:createCallback', connector, flowKey),
+  onConnectorCallback: (
+    cb: (payload: {
+      requestId: string;
+      connector: string;
+      flowKey?: string;
+      status: 'success' | 'cancelled' | 'error';
+      connectionId?: string;
+      errorCode?: string;
+    }) => void
+  ): (() => void) => {
+    const handler = (
+      _e: unknown,
+      payload: {
+        requestId: string;
+        connector: string;
+        status: 'success' | 'cancelled' | 'error';
+        connectionId?: string;
+        errorCode?: string;
+      }
+    ) => cb(payload);
+    ipcRenderer.on('connections:callback', handler);
+    return () => ipcRenderer.removeListener('connections:callback', handler);
+  },
+  onConnectorExpired: (cb: () => void): (() => void) => {
+    const handler = () => cb();
+    ipcRenderer.on('connections:expired', handler);
+    return () => ipcRenderer.removeListener('connections:expired', handler);
+  },
+
   // Open a connector's OAuth consent page in the system browser. Separate from
   // openExternal because the host is a third-party provider, which must not be
   // added to the external-open allowlist (that set also governs the navigation

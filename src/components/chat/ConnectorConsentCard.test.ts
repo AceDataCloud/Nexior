@@ -13,10 +13,12 @@ vi.mock('./connectorCatalogCache', () => ({
 }));
 
 import ConnectorConsentCard from './ConnectorConsentCard.vue';
-import { listMyConnections } from './connectorCatalogCache';
+import { getCatalogItem, installFromCatalog, listMyConnections } from './connectorCatalogCache';
 import type { IConsentRequestPayload } from '@/models';
 
 const mockedListMyConnections = vi.mocked(listMyConnections);
+const mockedGetCatalogItem = vi.mocked(getCatalogItem);
+const mockedInstallFromCatalog = vi.mocked(installFromCatalog);
 
 // Minimal globals: stub $t to echo the key (+ list of params), and stub
 // FontAwesomeIcon so the test environment doesn't need the icon registry.
@@ -180,11 +182,32 @@ describe('ConnectorConsentCard', () => {
     expect(wrapper.find('.ccc-resolved-banner').text()).toBe('chat.consent.resolvedSkipped');
   });
 
-  it('forwards the authorize event from a child row with the entry payload', async () => {
+  it('forwards credential methods to the full install flow', async () => {
+    mockedGetCatalogItem.mockResolvedValue({
+      id: 'cat_gmail',
+      identifier: 'acedatacloud/gmail',
+      name: 'Gmail',
+      short_description: '',
+      icon_url: '',
+      publisher: '',
+      publisher_logo_url: '',
+      permissions: [],
+      installable: true,
+      connection_methods: [
+        {
+          id: 'token',
+          recommended: true,
+          available: true,
+          execution: { type: 'skill' },
+          credential: { type: 'user_secret', credential_schema: [{ key: 'token', label: 'Token', type: 'password' }] }
+        }
+      ]
+    });
     const wrapper = mount(ConnectorConsentCard, {
       props: { toolUseId: 'tu-1', payload: PAYLOAD_TWO_OPTIONS },
       global
     });
+    await flushPromises();
     const rows = wrapper.findAllComponents({ name: 'ConnectorEntryRow' });
     rows[0].vm.$emit('authorize', PAYLOAD_TWO_OPTIONS.requirements[0].entries[0]);
     const emitted = wrapper.emitted('authorize');
@@ -193,6 +216,41 @@ describe('ConnectorConsentCard', () => {
       tool_use_id: 'tu-1',
       entry: PAYLOAD_TWO_OPTIONS.requirements[0].entries[0]
     });
+  });
+
+  it('passes the canonical method id for a single OAuth install', async () => {
+    mockedGetCatalogItem.mockResolvedValue({
+      id: 'cat_gmail',
+      identifier: 'acedatacloud/gmail',
+      name: 'Gmail',
+      short_description: '',
+      icon_url: '',
+      publisher: '',
+      publisher_logo_url: '',
+      permissions: [],
+      installable: true,
+      connection_methods: [
+        {
+          id: 'oauth',
+          recommended: true,
+          available: true,
+          execution: { type: 'skill' },
+          credential: { type: 'oauth2', provider_id: 'google' }
+        }
+      ]
+    });
+    mockedInstallFromCatalog.mockResolvedValue({ type: 'active' });
+    const payload: IConsentRequestPayload = {
+      ...PAYLOAD_TWO_OPTIONS,
+      requirements: [
+        { ...PAYLOAD_TWO_OPTIONS.requirements[0], entries: [PAYLOAD_TWO_OPTIONS.requirements[0].entries[0]] }
+      ]
+    };
+    const wrapper = mount(ConnectorConsentCard, { props: { toolUseId: 'tu-1', payload }, global });
+    await flushPromises();
+    wrapper.findComponent({ name: 'ConnectorEntryRow' }).vm.$emit('authorize', payload.requirements[0].entries[0]);
+    await flushPromises();
+    expect(mockedInstallFromCatalog).toHaveBeenCalledWith('cat_gmail', expect.objectContaining({ method_id: 'oauth' }));
   });
 });
 
