@@ -25,7 +25,7 @@ import {
 import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
 
 const HEADERS = { 'content-type': 'application/json', accept: 'application/x-ndjson' };
-const TASK_HEADERS = { 'content-type': 'application/json', accept: 'application/json', 'x-record-exempt': 'true' };
+const TASK_HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
 
 function buildFinalPrompt(config: IMidjourneyConfig): string {
   let content = '';

@@ -74,12 +74,11 @@ class DigitalHumanOperator extends BaseTaskOperator<
       '/digital-human/tasks',
       { task_id: taskId },
       options.mode === 'x402'
-        ? { baseURL: BASE_URL_X402, headers: { ...VOICE_HEADERS, 'x-record-exempt': 'true' } }
+        ? { baseURL: BASE_URL_X402, headers: { ...VOICE_HEADERS } }
         : {
             baseURL: BASE_URL_API,
             headers: {
               ...VOICE_HEADERS,
-              'x-record-exempt': 'true',
               authorization: `Bearer ${options.token}`
             }
           }

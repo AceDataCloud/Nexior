@@ -16,7 +16,7 @@ import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
 import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
 
 const HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
-const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
+const TASK_HEADERS = { ...HEADERS };
 
 export function buildProducerAudioRequest(config?: IProducerConfig): IProducerAudioRequest {
   return { ...(config || {}), audio: undefined, async: true } as IProducerAudioRequest;

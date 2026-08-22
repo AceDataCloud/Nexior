@@ -20,6 +20,23 @@ describe('x402 continuous payment contract', () => {
     expect(helper).toContain("CONTINUOUS_PAYMENT_PROFILE = 'solana-recurring-delegation-v1'");
     expect(helper).not.toContain('localStorage');
     expect(helper).not.toContain('sessionStorage');
+    expect(helper).not.toContain('api.mainnet-beta.solana.com');
+    expect(helper).not.toContain('sendRawTransaction');
+    expect(helper).not.toContain('getAccountInfo');
+    expect(helper).not.toContain('wallet?.value?.adapter');
+    expect(helper).toContain('signTransaction?.value');
+    expect(helper).toContain('/transaction/prepare/');
+    expect(helper).toContain('/transaction/submit/');
+    expect(source('components/application/ContinuousPaymentCard.vue')).not.toContain('new Connection(');
+  });
+
+  it('keeps billing exemptions server-owned', () => {
+    const operators = fs
+      .readdirSync(path.resolve(process.cwd(), 'src/operators'))
+      .filter((name) => name.endsWith('.ts'))
+      .map((name) => source(`operators/${name}`))
+      .join('\n');
+    expect(operators).not.toContain('x-record-exempt');
   });
 
   it('routes active Chat through the existing x402 host and preserves SSE', () => {

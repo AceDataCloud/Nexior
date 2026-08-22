@@ -38,11 +38,10 @@ const ENDPOINT = '/aichat2/credentials';
 function authHeaders(token: string) {
   const headers: Record<string, string> = {
     'content-type': 'application/json',
-    authorization: `Bearer ${token}`,
+    authorization: `Bearer ${token}`
     // BYOK CRUD is metadata, not chat — skip the platform's billing
     // pre-check the same way `/aichat2/conversations` retrieve / update /
     // delete actions do.
-    'x-record-exempt': 'true'
   };
   // Tag the calling Site so the worker can scope BYOK rows per-Site
   // (see PlatformService aichat2 PR feat/byok-site-origin). The helper
