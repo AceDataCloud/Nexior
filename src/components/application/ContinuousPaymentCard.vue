@@ -44,7 +44,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Connection } from '@solana/web3.js';
 import { ElButton, ElInputNumber, ElMessage, ElRadioButton, ElRadioGroup } from 'element-plus';
 import { formatAtomicUsdc } from '@/operators/x402';
 import {
@@ -55,11 +54,6 @@ import {
   revokeContinuousPayment,
   selectContinuousPayment
 } from '@/utils/x402/continuousPayment';
-
-const connection = new Connection(
-  import.meta.env.VITE_SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com',
-  'confirmed'
-);
 
 export default defineComponent({
   name: 'ContinuousPaymentCard',
@@ -120,7 +114,6 @@ export default defineComponent({
         await enableContinuousPayment({
           token: this.token,
           walletApi,
-          connection,
           dailyLimitAtomic: String(Math.round(this.dailyLimit * 1_000_000)),
           expiryTs: Math.floor(Date.now() / 1000) + this.validDays * 86_400
         });
@@ -146,7 +139,7 @@ export default defineComponent({
       if (!this.token) return;
       this.busy = true;
       try {
-        await revokeContinuousPayment(this.token, walletApi, connection);
+        await revokeContinuousPayment(this.token, walletApi);
         this.method = 'confirm';
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || String(error));
