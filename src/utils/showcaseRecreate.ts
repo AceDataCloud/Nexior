@@ -115,7 +115,7 @@ const videoAllowed = new Set([
   'translation',
   'cfg_scale'
 ]);
-const musicAllowed = new Set(['prompt', 'lyric', 'style', 'title', 'instrumental', 'custom', 'model']);
+const musicAllowed = new Set(['action', 'prompt', 'lyric', 'style', 'title', 'instrumental', 'custom', 'model']);
 
 const adapters: Partial<Record<CapabilityKey, Adapter>> = {
   nanobanana: {
@@ -315,6 +315,8 @@ function validateItem(
     throw new Error('unsupported action');
   if (capability === 'seedream' && 'watermark' in request && request.watermark !== false)
     throw new Error('unsupported watermark');
+  if ((capability === 'suno' || capability === 'producer') && 'action' in request && request.action !== 'generate')
+    throw new Error('unsupported action');
   return { adapter, patch: adapter.build(request) };
 }
 
