@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "Associa ACE Browser Agent; le operazioni del browser vengono eseguite localmente e richiedono comunque un'approvazione esplicita separata.",
     "description": "connection: method.desc.browser_session"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Questo metodo di connessione non è disponibile al momento.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Questo metodo di autorizzazione non è stato configurato, seleziona un altro metodo di connessione.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Stiamo verificando questo metodo di connessione, riprova più tardi.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "Lo stato della connessione deve essere riconvalidato, riprova più tardi.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Questo metodo di connessione non è accessibile al momento, riprova più tardi.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "L'autorizzazione alla connessione è scaduta, riprova.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "Il plugin del browser deve essere aggiornato",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "La versione attuale del plugin non supporta il protocollo di connessione sicura. Si prega di aggiornare il plugin seguendo la guida all'installazione e riprovare.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

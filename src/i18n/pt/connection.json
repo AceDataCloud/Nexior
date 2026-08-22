@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "Emparelhe o ACE Browser Agent; as operações do navegador são executadas localmente e ainda precisam de aprovação explícita separada.",
     "description": "connection: method.desc.browser_session"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Este método de conexão está temporariamente indisponível.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Este método de autorização ainda não foi configurado, por favor escolha outro método de conexão.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Validando este método de conexão, por favor tente novamente mais tarde.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "O estado da conexão precisa ser revalidado, por favor tente novamente mais tarde.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Este método de conexão está temporariamente inacessível, por favor tente novamente mais tarde.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "A autorização de conexão expirou, por favor tente novamente.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "O plugin do navegador precisa ser atualizado",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "A versão atual do plugin não suporta o protocolo de conexão segura. Por favor, atualize o plugin conforme o guia de instalação e tente novamente.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

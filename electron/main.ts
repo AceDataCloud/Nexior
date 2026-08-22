@@ -3,6 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
+import { consumeConnectorState, isConsumedConnectorState, issueConnectorState } from './connector-state';
 import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
@@ -73,10 +74,7 @@ if (!gotLock) {
   app.on('second-instance', (_e, argv) => {
     const url = argv.find((a) => a.startsWith(`${DESKTOP_SCHEME}://`));
     if (url) handleDeepLink(url);
-    if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-    }
+    focusWindow();
   });
 
   // macOS: protocol activation arrives as an event — and CAN fire before
@@ -165,6 +163,7 @@ function registerPanicStop(): void {
 }
 
 function createWindow(): void {
+  rendererReady = false;
   const isMac = process.platform === 'darwin';
   mainWindow = new BrowserWindow({
     width: 1200,
@@ -195,6 +194,10 @@ function createWindow(): void {
   // root, not /index.html — Vue Router would match the literal /index.html path
   // to the catch-all and flash NotFound before redirecting.
   void mainWindow.loadURL(`${APP_ORIGIN}/`);
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+    rendererReady = false;
+  });
 
   // Re-arm the readiness handshake on every (re)navigation: the old renderer's
   // listeners detached; the new one hasn't subscribed yet. Without this,
@@ -242,21 +245,47 @@ function handleDeepLink(rawUrl: string): void {
   } catch {
     return;
   }
-  // acedata-desktop://auth/callback?code=...&state=...
-  if (url.host !== 'auth' || !url.pathname.startsWith('/callback')) return;
-  const code = url.searchParams.get('code');
-  if (!code) return;
-  if (!consumeState(url.searchParams.get('state'))) {
-    console.warn('[auth] deep link rejected: state mismatch/expired');
-    deliverOrQueue('auth:expired', {});
+  if (url.host === 'auth' && url.pathname.startsWith('/callback')) {
+    const code = url.searchParams.get('code');
+    if (!code) return;
+    if (!consumeState(url.searchParams.get('state'))) {
+      console.warn('[auth] deep link rejected: state mismatch/expired');
+      deliverOrQueue('auth:expired', {});
+      focusWindow();
+      return;
+    }
+    deliverOrQueue('auth:callback', { code });
     focusWindow();
     return;
   }
-  deliverOrQueue('auth:callback', { code });
-  focusWindow();
+  if (url.host === 'connections' && url.pathname.startsWith('/callback')) {
+    const state = url.searchParams.get('desktop_state');
+    const context = consumeConnectorState(state);
+    if (!context) {
+      if (!isConsumedConnectorState(state)) {
+        console.warn('[connections] deep link rejected: state mismatch/expired');
+        deliverOrQueue('connections:expired', {});
+      }
+      focusWindow();
+      return;
+    }
+    const rawStatus = url.searchParams.get('status');
+    const status = rawStatus === 'success' || rawStatus === 'cancelled' ? rawStatus : 'error';
+    deliverOrQueue('connections:callback', {
+      ...context,
+      status,
+      connectionId: url.searchParams.get('connection_id') || undefined,
+      errorCode: url.searchParams.get('error') || undefined
+    });
+    focusWindow();
+  }
 }
 
 function focusWindow(): void {
+  if (!app.isReady()) {
+    void app.whenReady().then(() => focusWindow());
+    return;
+  }
   // Once the app can outlive its window (tray residency), "focus" may have to
   // recreate it — otherwise clicking the tray icon after closing the window
   // would do nothing at all.
@@ -272,7 +301,7 @@ function focusWindow(): void {
 // Deliver only once the renderer has SUBSCRIBED (mounted + onAuthCallback
 // attached), signalled via 'renderer:ready'. Queue everything else.
 function deliverOrQueue(channel: string, payload: object): void {
-  if (mainWindow && rendererReady) {
+  if (mainWindow && !mainWindow.isDestroyed() && rendererReady) {
     mainWindow.webContents.send(channel, payload);
   } else {
     pendingDeepLinks.push({ channel, payload });
@@ -324,6 +353,17 @@ ipcMain.handle('shell:openExternal', (_e, url: string) => {
  * `state` is minted here — unlike login, nothing comes back through the
  * renderer for us to bind it to.
  */
+ipcMain.handle('connections:createCallback', (_e, connector: string, flowKey?: string) => {
+  if (typeof connector !== 'string' || !connector.trim()) return null;
+  const { state, context } = issueConnectorState(
+    connector.trim(),
+    typeof flowKey === 'string' && flowKey ? flowKey : undefined
+  );
+  const callback = new URL('https://auth.acedata.cloud/connections/popup-return');
+  callback.searchParams.set('desktop_state', state);
+  return { requestId: context.requestId, returnUrl: callback.toString() };
+});
+
 ipcMain.handle('connections:openAuthorize', (_e, url: string) => {
   try {
     if (new URL(url).protocol !== 'https:') return;

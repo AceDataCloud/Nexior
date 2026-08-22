@@ -18,7 +18,8 @@ vi.mock('../desktop', () => bridge);
 vi.mock('./authorizePopup', () => popup);
 vi.mock('../authHandoff', () => handoff);
 
-import { openAuthorizeFlow } from './authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from './authorizeFlow';
+import { clearConnectorCallbacks, publishConnectorCallback } from './connectorCallback';
 
 const URL_UNDER_TEST = 'https://accounts.google.com/o/oauth2/auth?client_id=x';
 const AUTH_URL_UNDER_TEST = 'https://auth.acedata.cloud/oauth2/authorize?client_id=serp';
@@ -37,6 +38,7 @@ function stubBrowserFinished() {
 describe('openAuthorizeFlow', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    clearConnectorCallbacks();
     surface.isNative.mockReturnValue(false);
     surface.isDesktop.mockReturnValue(false);
     handoff.isAuthFrontendUrl.mockImplementation((url: string) => new URL(url).origin === 'https://auth.acedata.cloud');
@@ -52,7 +54,7 @@ describe('openAuthorizeFlow', () => {
   describe('web', () => {
     it('resolves when the popup closes', async () => {
       popup.openAuthorizePopup.mockReturnValue(Promise.resolve());
-      await expect(openAuthorizeFlow(URL_UNDER_TEST)).resolves.toBeUndefined();
+      await expect(openAuthorizeFlow(URL_UNDER_TEST)).resolves.toEqual({ status: 'unknown' });
       expect(popup.openAuthorizePopup).toHaveBeenCalledWith(URL_UNDER_TEST);
     });
 
@@ -164,39 +166,63 @@ describe('openAuthorizeFlow', () => {
       capBrowser.open.mockRejectedValue(new Error('no browser'));
       // A rejection that swallowed the promise would leave the caller's
       // spinner up forever.
-      await expect(openAuthorizeFlow(URL_UNDER_TEST)).resolves.toBeUndefined();
+      await expect(openAuthorizeFlow(URL_UNDER_TEST)).resolves.toEqual({ status: 'unknown' });
     });
   });
 
   describe('desktop', () => {
     beforeEach(() => surface.isDesktop.mockReturnValue(true));
 
-    it('hands the url to the main process and resolves on window focus', async () => {
+    it('hands the url to main and resolves only on the matching verified callback', async () => {
       const openAuthorizeConnector = vi.fn().mockResolvedValue(undefined);
       bridge.desktopBridge.mockReturnValue({ openAuthorizeConnector });
 
       let settled = false;
-      void openAuthorizeFlow(URL_UNDER_TEST).then(() => {
+      const pending = openAuthorizeFlow(URL_UNDER_TEST, 'request-1').then((result) => {
         settled = true;
+        return result;
       });
       await vi.waitFor(() => expect(openAuthorizeConnector).toHaveBeenCalledWith(URL_UNDER_TEST));
+      publishConnectorCallback({ requestId: 'other', connector: 'google/drive', status: 'success' });
       expect(settled).toBe(false);
+      publishConnectorCallback({ requestId: 'request-1', connector: 'google/drive', status: 'success' });
+      await expect(pending).resolves.toMatchObject({ requestId: 'request-1', status: 'success' });
+    });
 
-      window.dispatchEvent(new Event('focus'));
-      await vi.waitFor(() => expect(settled).toBe(true));
+    it('times out without treating focus as a successful authorization', async () => {
+      vi.useFakeTimers();
+      const openAuthorizeConnector = vi.fn().mockResolvedValue(undefined);
+      bridge.desktopBridge.mockReturnValue({ openAuthorizeConnector });
+      const pending = openAuthorizeFlow(URL_UNDER_TEST, 'request-timeout');
+      const rejected = expect(pending).rejects.toThrow('desktop-authorize-expired');
+      await vi.advanceTimersByTimeAsync(10 * 60 * 1000);
+      await rejected;
+      vi.useRealTimers();
+    });
+
+    it('prepares a nonce-bound desktop return URL', async () => {
+      const createConnectorCallback = vi
+        .fn()
+        .mockResolvedValue({ requestId: 'request-1', returnUrl: 'https://auth.example/return' });
+      bridge.desktopBridge.mockReturnValue({ createConnectorCallback });
+      await expect(prepareAuthorizeFlow('google/drive', 'https://web.example/return')).resolves.toEqual({
+        requestId: 'request-1',
+        returnUrl: 'https://auth.example/return'
+      });
+      expect(createConnectorCallback).toHaveBeenCalledWith('google/drive', undefined);
     });
 
     it('hands Auth-hosted authorization through the white-label SSO login', async () => {
       const openAuthorizeConnector = vi.fn().mockResolvedValue(undefined);
       bridge.desktopBridge.mockReturnValue({ openAuthorizeConnector });
 
-      const pending = openAuthorizeFlow(AUTH_URL_UNDER_TEST);
+      const pending = openAuthorizeFlow(AUTH_URL_UNDER_TEST, 'request-sso');
       await vi.waitFor(() =>
         expect(openAuthorizeConnector).toHaveBeenCalledWith(expect.stringContaining('/auth/login/'))
       );
       expect(handoff.withAuthFrontendSession).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST);
-      window.dispatchEvent(new Event('focus'));
-      await pending;
+      publishConnectorCallback({ requestId: 'request-sso', connector: 'google/drive', status: 'success' });
+      await expect(pending).resolves.toMatchObject({ requestId: 'request-sso', status: 'success' });
     });
 
     it('throws on a desktop shell without the IPC instead of silently doing nothing', async () => {

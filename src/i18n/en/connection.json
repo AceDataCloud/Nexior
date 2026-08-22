@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "Pair ACE Browser Agent. Browser actions run locally and require their own explicit approval.",
     "description": "Description of the local browser-session method; pairing is not action approval."
+  },
+  "message.methodUnavailable.generic": {
+    "message": "This connection method is temporarily unavailable.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "This authorization method is not configured. Choose another method.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "This connection method is being verified. Try again shortly.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "This connection must be re-verified. Try again shortly.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "This connection method is temporarily unreachable. Try again later.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "The connector authorization expired. Please try again.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "Browser extension update required",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "This extension version does not support the secure connection protocol. Update it using the installation guide, then try again.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

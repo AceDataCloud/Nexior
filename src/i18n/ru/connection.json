@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "Я установил, повторно проверить",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Этот способ подключения временно недоступен.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Этот способ авторизации еще не настроен, пожалуйста, выберите другой способ подключения.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Проверка этого способа подключения в процессе, пожалуйста, попробуйте позже.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "Состояние подключения требует повторной проверки, пожалуйста, попробуйте позже.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Этот способ подключения временно недоступен, пожалуйста, попробуйте позже.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "Авторизация соединения истекла, пожалуйста, попробуйте снова.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "Плагин браузера требует обновления",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "Текущая версия плагина не поддерживает безопасный протокол соединения. Пожалуйста, обновите плагин согласно инструкции и попробуйте снова.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

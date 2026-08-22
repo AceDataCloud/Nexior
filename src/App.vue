@@ -32,6 +32,7 @@ import { Browser } from '@capacitor/browser';
 import { ElMessage } from 'element-plus';
 import { isNative, isDesktop } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
+import { publishConnectorCallback } from '@/utils/connections/connectorCallback';
 import { currentSiteOrigin } from '@/utils';
 import { parseInviterFromDeepLink, writeInviterCookie } from '@/utils/attribution';
 import { exchangeSsoCode } from '@/utils/auth/exchangeSsoCode';
@@ -74,6 +75,8 @@ export default defineComponent({
       // Desktop IPC listener detach handles (set in mounted on desktop only).
       offAuthCb: null as null | (() => void),
       offAuthExpired: null as null | (() => void),
+      offConnectorCb: null as null | (() => void),
+      offConnectorExpired: null as null | (() => void),
       offSiteWatch: null as null | (() => void),
       offCredentialWatch: null as null | (() => void)
     };
@@ -117,6 +120,32 @@ export default defineComponent({
         if (deepLinkInviter) {
           writeInviterCookie(deepLinkInviter);
         }
+        if (url.includes('connections/callback')) {
+          const callback = new URL(url);
+          const requestId = callback.searchParams.get('request_id');
+          const connector = callback.searchParams.get('connector');
+          if (requestId && connector) {
+            publishConnectorCallback({
+              requestId,
+              connector,
+              flowKey: callback.searchParams.get('flow_key') || undefined,
+              status:
+                callback.searchParams.get('status') === 'success'
+                  ? 'success'
+                  : callback.searchParams.get('status') === 'cancelled'
+                    ? 'cancelled'
+                    : 'error',
+              connectionId: callback.searchParams.get('connection_id') || undefined,
+              errorCode: callback.searchParams.get('error') || undefined
+            });
+            try {
+              await Browser.close();
+            } catch {
+              /* already closed */
+            }
+          }
+          return;
+        }
         // Expected format: com.acedatacloud.nexior://auth/callback?code=XXX
         if (url.includes('auth/callback')) {
           const code = new URL(url).searchParams.get('code');
@@ -146,6 +175,11 @@ export default defineComponent({
       this.offAuthExpired =
         bridge?.onAuthExpired(() => {
           ElMessage.error(this.$t('common.error.loginLinkExpired').toString());
+        }) ?? null;
+      this.offConnectorCb = bridge?.onConnectorCallback((payload) => publishConnectorCallback(payload)) ?? null;
+      this.offConnectorExpired =
+        bridge?.onConnectorExpired(() => {
+          ElMessage.error(this.$t('connection.message.desktopAuthorizeExpired').toString());
         }) ?? null;
       bridge?.signalReady();
       // Feed the signed-in site origin to main's external-open allowlist.
@@ -187,6 +221,8 @@ export default defineComponent({
     // Detach desktop IPC listeners + the site-origin watcher.
     this.offAuthCb?.();
     this.offAuthExpired?.();
+    this.offConnectorCb?.();
+    this.offConnectorExpired?.();
     this.offSiteWatch?.();
     this.offCredentialWatch?.();
   },

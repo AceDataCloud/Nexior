@@ -9,7 +9,7 @@
   >
     <p class="picker-intro">{{ $t('connection.method.heading') }}</p>
     <el-tabs v-model="selectedId" class="picker-tabs">
-      <el-tab-pane v-for="method in methods" :key="method.id" :name="method.id">
+      <el-tab-pane v-for="method in methods" :key="method.id" :name="method.id" :disabled="method.available === false">
         <template #label>
           <span class="picker-tab-label">
             {{ methodLabel(method) }}
@@ -19,12 +19,15 @@
           </span>
         </template>
         <p v-if="methodDesc(method)" class="picker-pane-desc">{{ methodDesc(method) }}</p>
+        <p v-if="method.available === false" class="picker-pane-unavailable">
+          {{ unavailableLabel(method) }}
+        </p>
       </el-tab-pane>
     </el-tabs>
 
     <template #footer>
       <el-button @click="onClose">{{ $t('common.button.cancel') }}</el-button>
-      <el-button type="primary" :disabled="!selectedId" @click="onConfirm">
+      <el-button type="primary" :disabled="!selectedId || selectedMethod?.available === false" @click="onConfirm">
         {{ $t('common.button.confirm') }}
       </el-button>
     </template>
@@ -66,6 +69,9 @@ export default defineComponent({
     methods(): IConnectorConnectionMethod[] {
       return getConnectorMethods(this.item);
     },
+    selectedMethod(): IConnectorConnectionMethod | undefined {
+      return this.methods.find((method) => method.id === this.selectedId);
+    },
     dialogTitle(): string {
       const name = this.item?.name || '';
       return this.$t('connection.method.dialogTitle', { name }) as string;
@@ -91,9 +97,15 @@ export default defineComponent({
     methodDesc(method: IConnectorConnectionMethod): string {
       return method.description || '';
     },
+    unavailableLabel(method: IConnectorConnectionMethod): string {
+      const reason = method.unavailable_reason || 'method_unavailable';
+      const key = `connection.message.methodUnavailable.${reason}`;
+      const translated = this.$t(key).toString();
+      return translated === key ? this.$t('connection.message.methodUnavailable.generic').toString() : translated;
+    },
     onConfirm() {
       const method = this.methods.find((m) => m.id === this.selectedId);
-      if (!method || !this.item) return;
+      if (!method || method.available === false || !this.item) return;
       this.$emit('select', { item: this.item, method });
       this.visible = false;
     },
@@ -137,6 +149,12 @@ export default defineComponent({
   background: var(--el-color-primary-light-9);
   border: 1px solid var(--el-color-primary-light-7);
   border-radius: 10px;
+}
+
+.picker-pane-unavailable {
+  margin: 8px 0 0;
+  color: var(--el-color-warning);
+  font-size: 12px;
 }
 
 .picker-pane-desc {

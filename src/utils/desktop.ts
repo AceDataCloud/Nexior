@@ -7,6 +7,15 @@
  * `electron/preload.ts`. `state` for the OAuth flow never crosses this bridge;
  * it lives entirely in the Electron main process.
  */
+export interface ConnectorCallbackResult {
+  requestId: string;
+  connector: string;
+  flowKey?: string;
+  status: 'success' | 'cancelled' | 'error';
+  connectionId?: string;
+  errorCode?: string;
+}
+
 export interface DesktopBridge {
   isDesktop: true;
   platform: 'win32' | 'darwin' | string;
@@ -16,6 +25,12 @@ export interface DesktopBridge {
   onAuthCallback(cb: (payload: { code: string }) => void): () => void;
   /** Subscribe to a dropped-callback signal (state mismatch/expired). */
   onAuthExpired(cb: () => void): () => void;
+  createConnectorCallback(
+    connector: string,
+    flowKey?: string
+  ): Promise<{ requestId: string; returnUrl: string } | null>;
+  onConnectorCallback(cb: (payload: ConnectorCallbackResult) => void): () => void;
+  onConnectorExpired(cb: () => void): () => void;
   /** Open an external https link (payment Page, docs) in the system browser. */
   openExternal(url: string): Promise<void>;
   /**

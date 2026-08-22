@@ -630,5 +630,37 @@
   "byoc.extensionRecheck": {
     "message": "我已安裝，重新檢測",
     "description": "connection: byoc.extensionRecheck"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "此連接方式暫時不可用。",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "此授權方式尚未配置，請選擇其他連接方式。",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "正在驗證此連接方式，請稍後重試。",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "連接狀態需要重新驗證，請稍後重試。",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "此連接方式暫時無法訪問，請稍後重試。",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "連接授權已過期，請重試。",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "瀏覽器插件需要更新",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "當前插件版本不支持安全連接協議。請按安裝指南更新插件後再試。",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

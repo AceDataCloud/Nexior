@@ -80,6 +80,8 @@
 <script lang="ts">
 import { SecurityIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
+import { isWeb } from '@/utils/surface';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, ElMessage } from 'element-plus';
 import type { IConsentRequestEntry, IConsentRequestPayload, IConsentRequestRequirement } from '@/models';
 import ConnectorEntryRow from './ConnectorEntryRow.vue';
@@ -100,7 +102,7 @@ interface IData {
   catalogs: Record<string, IConnectorCatalogSummary>;
   /** Scope-picker dialog state. The dialog opens when the user clicks
    *  Authorize on an entry whose catalog declares multiple permissions
-   *  and `auth_mode !== 'byoc'`. Mirrors AuthFrontend's
+   *  and the selected OAuth method exposes multiple permissions. Mirrors AuthFrontend's
    *  `pages/user/Connections.vue` flow so users see the same picker
    *  regardless of which surface they triggered it from. */
   scopeDialogVisible: boolean;
@@ -300,36 +302,38 @@ export default defineComponent({
       );
     },
     onAuthorize(entry: IConsentRequestEntry) {
-      // Decision tree (mirrors AuthFrontend's `pages/user/Connections.vue`
-      // so the picker UX is identical regardless of surface):
-      //
-      //   1. Catalog not yet loaded (or unknown id) → fall through to the
-      //      legacy `authorize` emit so the parent can use the
-      //      worker-provided `entry.install_url` as a hard fallback.
-      //   2. `auth_mode === 'byoc'` → emit; BYOC needs the AuthFrontend
-      //      credential form which Nexior does not host.
-      //   3. `installable === false` → emit; the catalog row is in a
-      //      state where AuthBackend would refuse the inline install
-      //      anyway, so let AuthFrontend render whatever copy it wants.
-      //   4. `permissions.length > 1` → open the scope picker.
-      //   5. Otherwise → install immediately with no `scopes` (server
-      //      picks the catalog default).
       const catalog = this.catalogFor(entry);
-      if (!catalog || catalog.auth_mode === 'byoc' || !catalog.installable) {
+      if (!catalog) {
         this.$emit('authorize', { tool_use_id: this.toolUseId, entry });
         return;
       }
-      const perms = catalog.permissions || [];
+      if (!catalog.installable) {
+        ElMessage.warning(this.$t('chat.consent.installFailed') as string);
+        return;
+      }
+      const methods = (catalog.connection_methods || []).filter((method) => method.available !== false);
+      if (methods.length !== 1) {
+        this.$emit('authorize', { tool_use_id: this.toolUseId, entry });
+        return;
+      }
+      const method = methods[0];
+      if (
+        method.execution.type === 'browser_device' ||
+        method.credential.type === 'user_secret' ||
+        method.credential.type === 'cookie_jar'
+      ) {
+        this.$emit('authorize', { tool_use_id: this.toolUseId, entry });
+        return;
+      }
+      const perms = method.permissions || catalog.permissions || [];
       if (perms.length > 1) {
         this.scopeDialogEntry = entry;
-        this.scopeDialogCatalog = catalog;
-        // Default-check every scope so the user has to opt OUT of perms
-        // rather than opt IN — matches AuthFrontend behavior.
-        this.selectedScopes = perms.map((p) => p.id);
+        this.scopeDialogCatalog = { ...catalog, permissions: perms };
+        this.selectedScopes = perms.map((permission) => permission.id);
         this.scopeDialogVisible = true;
         return;
       }
-      this.performInstall(entry, undefined);
+      this.performInstall(entry, method.id, undefined);
     },
     onConfirmScopes() {
       const entry = this.scopeDialogEntry;
@@ -339,7 +343,11 @@ export default defineComponent({
       }
       const scopes = [...this.selectedScopes];
       this.scopeDialogVisible = false;
-      this.performInstall(entry, scopes);
+      const method = (this.scopeDialogCatalog?.connection_methods || []).find(
+        (candidate) => candidate.available !== false
+      );
+      if (!method) return;
+      this.performInstall(entry, method.id, scopes);
     },
     /** POST to AuthBackend's catalog install endpoint and act on the
      *  response.
@@ -350,7 +358,7 @@ export default defineComponent({
      *  - `type === 'active'`: zero-step provider — emit so the parent
      *    can mark the entry connected on the next refresh.
      *  - Any error: toast + emit as a last-ditch fallback. */
-    async performInstall(entry: IConsentRequestEntry, scopes: string[] | undefined): Promise<void> {
+    async performInstall(entry: IConsentRequestEntry, methodId: string, scopes: string[] | undefined): Promise<void> {
       this.authorizingConnector = entry.connector;
       try {
         // Compose a return URL that brings the user back to the current
@@ -361,12 +369,27 @@ export default defineComponent({
         const returnUrl = new URL(window.location.href);
         returnUrl.searchParams.set('consent', this.payload.consent_request_id);
         returnUrl.searchParams.delete('connector');
+        const prepared = await prepareAuthorizeFlow(
+          entry.connector,
+          returnUrl.toString(),
+          `${this.payload.consent_request_id}:${this.toolUseId}`
+        );
         const result = await installFromCatalog(entry.catalog_id, {
           scopes,
-          return_url: returnUrl.toString()
+          return_url: prepared.returnUrl,
+          method_id: methodId
         });
         if (result.type === 'redirect' && result.authorization_url) {
-          window.location.href = result.authorization_url;
+          if (isWeb()) {
+            window.location.href = result.authorization_url;
+            return;
+          }
+          await openAuthorizeFlow(result.authorization_url, prepared.requestId, false);
+          return;
+        }
+        if (result.type === 'active') {
+          await this.refreshConnectionStatuses();
+          if (!this.hasUnsatisfied) this.onContinue();
           return;
         }
         // `form` (BYOC schema returned inline) or `active` (zero-step) —

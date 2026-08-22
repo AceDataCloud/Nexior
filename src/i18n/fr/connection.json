@@ -630,5 +630,37 @@
   "method.desc.browser_session": {
     "message": "Appairer l'ACE Browser Agent ; les actions du navigateur s'exécutent localement et nécessitent toujours une approbation explicite séparée.",
     "description": "connection: method.desc.browser_session"
+  },
+  "message.methodUnavailable.generic": {
+    "message": "Cette méthode de connexion est temporairement indisponible.",
+    "description": "connection: message.methodUnavailable.generic"
+  },
+  "message.methodUnavailable.oauth_not_configured": {
+    "message": "Cette méthode d'autorisation n'est pas encore configurée, veuillez choisir une autre méthode de connexion.",
+    "description": "connection: message.methodUnavailable.oauth_not_configured"
+  },
+  "message.methodUnavailable.health_not_checked": {
+    "message": "Vérification de cette méthode de connexion en cours, veuillez réessayer plus tard.",
+    "description": "connection: message.methodUnavailable.health_not_checked"
+  },
+  "message.methodUnavailable.health_check_stale": {
+    "message": "L'état de la connexion doit être vérifié à nouveau, veuillez réessayer plus tard.",
+    "description": "connection: message.methodUnavailable.health_check_stale"
+  },
+  "message.methodUnavailable.probe_failed": {
+    "message": "Cette méthode de connexion est temporairement inaccessible, veuillez réessayer plus tard.",
+    "description": "connection: message.methodUnavailable.probe_failed"
+  },
+  "message.desktopAuthorizeExpired": {
+    "message": "L'autorisation de connexion a expiré, veuillez réessayer.",
+    "description": "connection: message.desktopAuthorizeExpired"
+  },
+  "byoc.extensionOutdatedTitle": {
+    "message": "Le plugin du navigateur doit être mis à jour",
+    "description": "connection: byoc.extensionOutdatedTitle"
+  },
+  "byoc.extensionOutdatedBody": {
+    "message": "La version actuelle du plugin ne prend pas en charge le protocole de connexion sécurisé. Veuillez mettre à jour le plugin selon le guide d'installation et réessayer.",
+    "description": "connection: byoc.extensionOutdatedBody"
   }
 }

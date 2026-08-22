@@ -206,6 +206,9 @@ export interface IConnectorConnectionMethod {
   label?: string;
   description?: string;
   recommended?: boolean;
+  available?: boolean;
+  availability_status?: string;
+  unavailable_reason?: string;
   execution: {
     type: ConnectorExecutionType;
     server_url?: string;
@@ -353,6 +356,14 @@ export type IConnectorCatalogInstallResponse =
       installed_skills?: string[];
     };
 
+export interface IConnectorCookieCaptureTicketResponse {
+  ticket: string;
+  request_id: string;
+  expires_at: string;
+  cookie_domains: string[];
+  login_url: string;
+}
+
 export interface IConnectorCatalogCredentialsRequest {
   /** Flat ``{key: value}`` dict; keys must match the row's
    *  ``credential_schema[].key``. The backend validates against the
@@ -382,14 +393,14 @@ export function resolveConnectorMethod(
   const methods = getConnectorMethods(item);
   if (methods.length === 0) return undefined;
   if (methodId) {
-    const match = methods.find((m) => m.id === methodId);
-    if (match) return match;
+    return methods.find((method) => method.id === methodId && method.available !== false);
   }
+  const available = methods.filter((method) => method.available !== false);
   if (item?.recommended_method_id) {
-    const recommended = methods.find((m) => m.id === item.recommended_method_id);
+    const recommended = available.find((m) => m.id === item.recommended_method_id);
     if (recommended) return recommended;
   }
-  return methods.find((m) => m.recommended) || methods[0];
+  return available.find((m) => m.recommended) || available[0];
 }
 
 export function getConnectorMethods(item: IConnectorCatalogItem | null | undefined): IConnectorConnectionMethod[] {
@@ -474,6 +485,13 @@ class ConnectionOperator {
     payload: IConnectorCatalogInstallRequest = {}
   ): Promise<AxiosResponse<IConnectorCatalogInstallResponse>> {
     return httpClient.post(`/connectors/${id}/install/`, payload, authApi());
+  }
+
+  async createCookieCaptureTicket(
+    id: string,
+    payload: { method_id?: string; return_url?: string; create_new?: boolean }
+  ): Promise<AxiosResponse<IConnectorCookieCaptureTicketResponse>> {
+    return httpClient.post(`/connectors/${id}/cookie-capture-ticket/`, payload, authApi());
   }
 
   /** Step 2 of the ``byoc`` install: post the user-filled credential
