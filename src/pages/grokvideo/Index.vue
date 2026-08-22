@@ -4,7 +4,11 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <showcase-result-tabs service="grok">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -15,6 +19,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/GrokVideo.vue';
 import ConfigPanel from '@/components/grokvideo/ConfigPanel.vue';
 import RecentPanel from '@/components/grokvideo/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { buildGrokVideoRequest, grokvideoOperator } from '@/operators/grokvideo';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IGrokVideoTask, Status } from '@/models';
@@ -44,7 +49,8 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('grokvideo')],
   inject: ['initialized'],

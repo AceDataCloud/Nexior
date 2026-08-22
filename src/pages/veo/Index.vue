@@ -4,7 +4,11 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <showcase-result-tabs service="veo">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -20,6 +24,7 @@ import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
 import RecentPanel from '@/components/veo/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { IVeoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
@@ -45,7 +50,8 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('veo')],
   inject: ['initialized'],

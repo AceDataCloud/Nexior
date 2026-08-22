@@ -4,7 +4,11 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <showcase-result-tabs service="seedance">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -14,6 +18,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedance.vue';
 import ConfigPanel from '@/components/seedance/ConfigPanel.vue';
 import RecentPanel from '@/components/seedance/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { seedanceOperator } from '@/operators/seedance';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
@@ -45,7 +50,8 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedance')],
   inject: ['initialized'],
