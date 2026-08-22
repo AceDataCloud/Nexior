@@ -37,7 +37,7 @@
       <div v-else-if="!filteredItems.length" class="page-state">{{ $t('intro.inspiration.empty') }}</div>
       <inspiration-masonry v-else :items="filteredItems" @select="openItem" />
     </div>
-    <inspiration-detail-dialog :item="selectedItem" @close="closeItem" />
+    <showcase-detail-dialog :item="selectedItem" @close="closeItem" />
   </main>
   <div v-else class="page-state full" role="status">{{ $t('common.status.loading') }}</div>
 </template>
@@ -58,7 +58,7 @@ import {
 import { resolveShowcase, SHOWCASE_SERVICES } from '@/utils/showcase';
 import PublicSectionNav from '@/components/common/PublicSectionNav.vue';
 import InspirationMasonry from './components/InspirationMasonry.vue';
-import InspirationDetailDialog from './components/InspirationDetailDialog.vue';
+import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 
 const store = useStore();
 const route = useRoute();
