@@ -1,6 +1,6 @@
 <template>
   <div class="video max-w-[800px] max-h-[450px] rounded-[15px] overflow-hidden">
-    <vue-plyr v-if="!failed && safeSrc" :key="safeSrc" :options="mergedOptions">
+    <vue-plyr v-if="clientReady && !failed && safeSrc" :key="safeSrc" :options="mergedOptions">
       <video controls playsinline preload="metadata" class="w-full h-full aspect-[16/9]" @error="onError">
         <source size="1080" :src="safeSrc" type="video/mp4" />
       </video>
@@ -16,10 +16,9 @@
 
 <script lang="ts">
 import { ExternalLinkIcon } from '@acedatacloud/core/icons/components';
-import { defineComponent } from 'vue';
+import { defineAsyncComponent, defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-// @ts-ignore
-import VuePlyr from '@skjnldsv/vue-plyr';
+const VuePlyr = defineAsyncComponent(() => import('@skjnldsv/vue-plyr'));
 // @ts-ignore
 import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
 
@@ -40,6 +39,7 @@ export default defineComponent({
   data() {
     return {
       failed: false,
+      clientReady: false,
       mergedOptions: {
         controls: [
           'play-large',
@@ -68,6 +68,9 @@ export default defineComponent({
     safeSrc() {
       this.failed = false;
     }
+  },
+  mounted() {
+    this.clientReady = true;
   },
   methods: {
     onError() {
