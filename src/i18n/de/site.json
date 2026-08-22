@@ -1137,5 +1137,173 @@
   },
   "analytics.umami.serverUrlHelp": {
     "message": "Umami Cloud ist standardmäßig verfügbar. Selbstgehostete Ursprünge müssen zuerst vom Plattformadministrator genehmigt werden."
+  },
+  "banner.systemTitle": {
+    "message": "System-Banner",
+    "description": "Titel der Gruppe für die integrierten Startseiten-Banner."
+  },
+  "banner.systemTip": {
+    "message": "Wählen Sie das System-Banner aus, das auf der aktuellen Startseite angezeigt werden soll. Das Deaktivieren des Banners schaltet den entsprechenden Dienst nicht aus.",
+    "description": "Hinweis, dass der Schalter für das System-Banner nur die Startseite betrifft."
+  },
+  "banner.serviceDisabled": {
+    "message": "Entsprechender Dienst ist deaktiviert",
+    "description": "Status, wenn der Dienst, zu dem das System-Banner gehört, deaktiviert ist."
+  },
+  "banner.toggleSystem": {
+    "message": "Wechseln zu Systembanner „{title}“",
+    "description": "Barrierefreies Label für den Schalter des Systembanners."
+  },
+  "banner.customTitle": {
+    "message": "Benutzerdefinierter Banner",
+    "description": "Titel der Gruppe für benutzerdefinierte Banner des Website-Betreibers."
+  },
+  "banner.customTip": {
+    "message": "Fügen Sie ein Bild, einen Titel, einen Untertitel und einen Link hinzu, die speziell für die aktuelle Website sind.",
+    "description": "Beschreibung der Funktion für benutzerdefinierte Banner."
+  },
+  "banner.add": {
+    "message": "Banner hinzufügen",
+    "description": "Schaltfläche zum Hinzufügen eines benutzerdefinierten Banners."
+  },
+  "banner.empty": {
+    "message": "Noch kein benutzerdefinierter Banner",
+    "description": "Leerer Zustand für benutzerdefinierte Banner."
+  },
+  "banner.untitled": {
+    "message": "Unbenanntes Banner",
+    "description": "Fallback-Name für Banner, wenn der Titel fehlt."
+  },
+  "banner.sortOrderValue": {
+    "message": "Sortierung {value}",
+    "description": "Sortierungswert in der Banner-Liste."
+  },
+  "banner.toggleCustom": {
+    "message": "Wechseln zu benutzerdefiniertem Banner „{title}“",
+    "description": "Barrierefreies Label für den Schalter des benutzerdefinierten Banners."
+  },
+  "banner.createTitle": {
+    "message": "Homepage Banner hinzufügen",
+    "description": "Titel des Editors zum Hinzufügen eines neuen Banners."
+  },
+  "banner.editTitle": {
+    "message": "Banner auf der Startseite bearbeiten",
+    "description": "Titel des Banner-Bearbeitungswerkzeugs."
+  },
+  "banner.image": {
+    "message": "Banner-Bild",
+    "description": "Feldbezeichnung für das Banner-Bild."
+  },
+  "banner.replaceImage": {
+    "message": "Bild ersetzen",
+    "description": "Schaltfläche zum Ersetzen des Banner-Bildes."
+  },
+  "banner.uploadImage": {
+    "message": "Bild hochladen",
+    "description": "Button zum Hochladen von Bannerbildern."
+  },
+  "banner.clearImage": {
+    "message": "Bild löschen",
+    "description": "Schaltfläche zum Löschen des Bannerbildes."
+  },
+  "banner.imagePlaceholder": {
+    "message": "Bild-URL eingeben oder oben hochladen",
+    "description": "Platzhaltertext für die Banner-Bild-URL."
+  },
+  "banner.link": {
+    "message": "Weiterleitungslink",
+    "description": "Feldbezeichnung für den Banner-Link."
+  },
+  "banner.linkPlaceholder": {
+    "message": "/seedance oder https://example.com/activity",
+    "description": "Beispiel für einen Banner-Link."
+  },
+  "banner.linkTip": {
+    "message": "Unterstützt Pfade, die mit / beginnen, oder HTTP(S)-Externe Links; leer lassen bedeutet, dass der Link nicht klickbar ist.",
+    "description": "Hinweis zur Formatierung des Banner-Links."
+  },
+  "banner.title": {
+    "message": "Titel",
+    "description": "Feldbezeichnung für den Banner-Titel."
+  },
+  "banner.titlePlaceholder": {
+    "message": "Banner-Titel eingeben",
+    "description": "Platzhaltertext für den Banner-Titel."
+  },
+  "banner.subtitle": {
+    "message": "Untertitel",
+    "description": "Feldbezeichnung für den Banner-Untertitel."
+  },
+  "banner.subtitlePlaceholder": {
+    "message": "Banner-Untertitel eingeben",
+    "description": "Platzhaltertext für den Banner-Untertitel."
+  },
+  "banner.startAt": {
+    "message": "Startzeit der Anzeige",
+    "description": "Startzeit für die Banner-Schaltung."
+  },
+  "banner.endAt": {
+    "message": "Endzeit der Anzeige",
+    "description": "Endzeit für die Banner-Schaltung."
+  },
+  "banner.sortOrder": {
+    "message": "Sortierung",
+    "description": "Feldbezeichnung für die Banner-Sortierung."
+  },
+  "banner.visible": {
+    "message": "Sofort anzeigen",
+    "description": "Label für das Sichtbarkeitsschalterfeld des Banners."
+  },
+  "banner.cropTitle": {
+    "message": "Bannerbild zuschneiden",
+    "description": "Titel des Bildzuschneiders für Banner."
+  },
+  "banner.cropTip": {
+    "message": "Verwenden Sie Bilder im PNG-, JPEG- oder WebP-Format mit 1600 × 500 Pixeln.",
+    "description": "Hinweis zur Bildgröße für Banner."
+  },
+  "banner.addLanguage": {
+    "message": "Sprache hinzufügen",
+    "description": "Schaltfläche zum Hinzufügen einer Sprache für mehrsprachige Bannertexte."
+  },
+  "banner.scheduled": {
+    "message": "Geplant",
+    "description": "Status, wenn das Banner noch nicht zur Startzeit aktiv ist."
+  },
+  "banner.expired": {
+    "message": "Abgelaufen",
+    "description": "Status, wenn das Banner die Endzeit überschritten hat."
+  },
+  "banner.hidden": {
+    "message": "Versteckt",
+    "description": "Status, wenn das Banner manuell versteckt wurde."
+  },
+  "banner.active": {
+    "message": "Aktiv",
+    "description": "Aktueller gültiger Status des Banners."
+  },
+  "banner.loadFailed": {
+    "message": "Banner konnte nicht geladen werden",
+    "description": "Hinweis, wenn die Banner-Liste nicht geladen werden konnte."
+  },
+  "banner.updateFailed": {
+    "message": "Aktualisierung des Banners fehlgeschlagen",
+    "description": "Hinweis, wenn die Aktualisierung des Banner-Schalters fehlschlägt."
+  },
+  "banner.invalidWindow": {
+    "message": "Endzeit muss nach der Startzeit liegen",
+    "description": "Hinweis zur Überprüfung der Banner-Schaltzeiten."
+  },
+  "banner.saveFailed": {
+    "message": "Banner konnte nicht gespeichert werden",
+    "description": "Hinweis, wenn das Banner nicht gespeichert werden konnte."
+  },
+  "banner.deleteConfirm": {
+    "message": "Möchten Sie „{title}“ wirklich löschen?",
+    "description": "Bestätigungstext für das Löschen eines Banners."
+  },
+  "banner.deleteFailed": {
+    "message": "Löschen des Banners fehlgeschlagen",
+    "description": "Hinweis, dass das Löschen des Banners fehlgeschlagen ist."
   }
 }

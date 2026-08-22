@@ -1087,5 +1087,173 @@
   },
   "analytics.umami.serverUrlHelp": {
     "message": "Umami Cloud is available by default. Self-hosted origins must first be approved by the platform administrator."
+  },
+  "banner.systemTitle": {
+    "message": "System Banners",
+    "description": "Heading for built-in homepage banners."
+  },
+  "banner.systemTip": {
+    "message": "Choose which system banners appear on this site. Hiding a banner does not disable its service.",
+    "description": "Explains that system banner visibility is independent from service availability."
+  },
+  "banner.serviceDisabled": {
+    "message": "Service disabled",
+    "description": "State shown when the related service is disabled."
+  },
+  "banner.toggleSystem": {
+    "message": "Toggle system banner “{title}”",
+    "description": "Accessible label for a system banner switch."
+  },
+  "banner.customTitle": {
+    "message": "Custom Banners",
+    "description": "Heading for tenant-authored banners."
+  },
+  "banner.customTip": {
+    "message": "Add site-specific images, titles, subtitles, and destinations.",
+    "description": "Description of custom banner management."
+  },
+  "banner.add": {
+    "message": "Add Banner",
+    "description": "Button to create a custom banner."
+  },
+  "banner.empty": {
+    "message": "No custom banners yet",
+    "description": "Empty state for custom banners."
+  },
+  "banner.untitled": {
+    "message": "Untitled banner",
+    "description": "Fallback name for a banner without a title."
+  },
+  "banner.sortOrderValue": {
+    "message": "Order {value}",
+    "description": "Banner sort-order summary."
+  },
+  "banner.toggleCustom": {
+    "message": "Toggle custom banner “{title}”",
+    "description": "Accessible label for a custom banner switch."
+  },
+  "banner.createTitle": {
+    "message": "Add Homepage Banner",
+    "description": "Title of the create-banner editor."
+  },
+  "banner.editTitle": {
+    "message": "Edit Homepage Banner",
+    "description": "Title of the edit-banner editor."
+  },
+  "banner.image": {
+    "message": "Banner Image",
+    "description": "Label for the banner image field."
+  },
+  "banner.replaceImage": {
+    "message": "Replace Image",
+    "description": "Button to replace a banner image."
+  },
+  "banner.uploadImage": {
+    "message": "Upload Image",
+    "description": "Button to upload a banner image."
+  },
+  "banner.clearImage": {
+    "message": "Clear Image",
+    "description": "Button to clear a banner image."
+  },
+  "banner.imagePlaceholder": {
+    "message": "Enter an image URL or upload above",
+    "description": "Placeholder for the banner image URL."
+  },
+  "banner.link": {
+    "message": "Destination",
+    "description": "Label for the banner destination field."
+  },
+  "banner.linkPlaceholder": {
+    "message": "/seedance or https://example.com/activity",
+    "description": "Example banner destination."
+  },
+  "banner.linkTip": {
+    "message": "Use an internal path beginning with / or an HTTP(S) URL. Leave blank for a non-clickable banner.",
+    "description": "Supported banner destination formats."
+  },
+  "banner.title": {
+    "message": "Title",
+    "description": "Label for the banner title field."
+  },
+  "banner.titlePlaceholder": {
+    "message": "Enter a banner title",
+    "description": "Placeholder for the banner title."
+  },
+  "banner.subtitle": {
+    "message": "Subtitle",
+    "description": "Label for the banner subtitle field."
+  },
+  "banner.subtitlePlaceholder": {
+    "message": "Enter a banner subtitle",
+    "description": "Placeholder for the banner subtitle."
+  },
+  "banner.startAt": {
+    "message": "Starts At",
+    "description": "Banner schedule start label."
+  },
+  "banner.endAt": {
+    "message": "Ends At",
+    "description": "Banner schedule end label."
+  },
+  "banner.sortOrder": {
+    "message": "Sort Order",
+    "description": "Label for the banner sort order."
+  },
+  "banner.visible": {
+    "message": "Show Now",
+    "description": "Label for the banner visibility switch."
+  },
+  "banner.cropTitle": {
+    "message": "Crop Banner Image",
+    "description": "Title of the banner image cropper."
+  },
+  "banner.cropTip": {
+    "message": "Use a 1600 × 500 PNG, JPEG, or WebP image for best results.",
+    "description": "Recommended banner image dimensions."
+  },
+  "banner.addLanguage": {
+    "message": "Add Language",
+    "description": "Button to add a banner copy locale."
+  },
+  "banner.scheduled": {
+    "message": "Scheduled",
+    "description": "Banner has not reached its start time."
+  },
+  "banner.expired": {
+    "message": "Ended",
+    "description": "Banner is past its end time."
+  },
+  "banner.hidden": {
+    "message": "Hidden",
+    "description": "Banner is manually hidden."
+  },
+  "banner.active": {
+    "message": "Live",
+    "description": "Banner is currently active."
+  },
+  "banner.loadFailed": {
+    "message": "Failed to load banners",
+    "description": "Banner list load error."
+  },
+  "banner.updateFailed": {
+    "message": "Failed to update banner",
+    "description": "Banner visibility update error."
+  },
+  "banner.invalidWindow": {
+    "message": "End time must be later than start time",
+    "description": "Banner schedule validation error."
+  },
+  "banner.saveFailed": {
+    "message": "Failed to save banner",
+    "description": "Banner save error."
+  },
+  "banner.deleteConfirm": {
+    "message": "Delete “{title}”?",
+    "description": "Banner delete confirmation."
+  },
+  "banner.deleteFailed": {
+    "message": "Failed to delete banner",
+    "description": "Banner delete error."
   }
 }

@@ -1087,5 +1087,173 @@
   },
   "analytics.umami.serverUrlHelp": {
     "message": "默认支持 Umami Cloud；自托管地址须先由平台管理员加入审核白名单。"
+  },
+  "banner.systemTitle": {
+    "message": "系统 Banner",
+    "description": "系统内置首页 Banner 分组标题。"
+  },
+  "banner.systemTip": {
+    "message": "选择要在当前站点首页展示的系统 Banner。关闭 Banner 不会关闭对应服务。",
+    "description": "说明系统 Banner 开关仅影响首页。"
+  },
+  "banner.serviceDisabled": {
+    "message": "对应服务已关闭",
+    "description": "系统 Banner 所属服务关闭时的状态。"
+  },
+  "banner.toggleSystem": {
+    "message": "切换“{title}”系统 Banner",
+    "description": "系统 Banner 开关的无障碍标签。"
+  },
+  "banner.customTitle": {
+    "message": "自定义 Banner",
+    "description": "站长自定义 Banner 分组标题。"
+  },
+  "banner.customTip": {
+    "message": "添加当前站点专属的图片、标题、副标题和跳转链接。",
+    "description": "自定义 Banner 功能说明。"
+  },
+  "banner.add": {
+    "message": "添加 Banner",
+    "description": "新增自定义 Banner 按钮。"
+  },
+  "banner.empty": {
+    "message": "还没有自定义 Banner",
+    "description": "自定义 Banner 空状态。"
+  },
+  "banner.untitled": {
+    "message": "未命名 Banner",
+    "description": "Banner 缺少标题时的回退名称。"
+  },
+  "banner.sortOrderValue": {
+    "message": "排序 {value}",
+    "description": "Banner 列表中的排序值。"
+  },
+  "banner.toggleCustom": {
+    "message": "切换“{title}”自定义 Banner",
+    "description": "自定义 Banner 开关的无障碍标签。"
+  },
+  "banner.createTitle": {
+    "message": "添加首页 Banner",
+    "description": "新增 Banner 编辑器标题。"
+  },
+  "banner.editTitle": {
+    "message": "编辑首页 Banner",
+    "description": "编辑 Banner 编辑器标题。"
+  },
+  "banner.image": {
+    "message": "Banner 图片",
+    "description": "Banner 图片字段标签。"
+  },
+  "banner.replaceImage": {
+    "message": "替换图片",
+    "description": "替换 Banner 图片按钮。"
+  },
+  "banner.uploadImage": {
+    "message": "上传图片",
+    "description": "上传 Banner 图片按钮。"
+  },
+  "banner.clearImage": {
+    "message": "清除图片",
+    "description": "清除 Banner 图片按钮。"
+  },
+  "banner.imagePlaceholder": {
+    "message": "输入图片 URL，或使用上方上传",
+    "description": "Banner 图片 URL 占位文案。"
+  },
+  "banner.link": {
+    "message": "跳转链接",
+    "description": "Banner 链接字段标签。"
+  },
+  "banner.linkPlaceholder": {
+    "message": "/seedance 或 https://example.com/activity",
+    "description": "Banner 链接示例。"
+  },
+  "banner.linkTip": {
+    "message": "支持站内 / 开头的路径或 HTTP(S) 外部链接；留空则不可点击。",
+    "description": "Banner 链接格式说明。"
+  },
+  "banner.title": {
+    "message": "标题",
+    "description": "Banner 标题字段标签。"
+  },
+  "banner.titlePlaceholder": {
+    "message": "输入 Banner 标题",
+    "description": "Banner 标题占位文案。"
+  },
+  "banner.subtitle": {
+    "message": "副标题",
+    "description": "Banner 副标题字段标签。"
+  },
+  "banner.subtitlePlaceholder": {
+    "message": "输入 Banner 副标题",
+    "description": "Banner 副标题占位文案。"
+  },
+  "banner.startAt": {
+    "message": "开始展示时间",
+    "description": "Banner 投放开始时间。"
+  },
+  "banner.endAt": {
+    "message": "结束展示时间",
+    "description": "Banner 投放结束时间。"
+  },
+  "banner.sortOrder": {
+    "message": "排序",
+    "description": "Banner 排序字段标签。"
+  },
+  "banner.visible": {
+    "message": "立即显示",
+    "description": "Banner 显示开关字段标签。"
+  },
+  "banner.cropTitle": {
+    "message": "裁剪 Banner 图片",
+    "description": "Banner 图片裁剪器标题。"
+  },
+  "banner.cropTip": {
+    "message": "建议使用 1600 × 500 的 PNG、JPEG 或 WebP 图片。",
+    "description": "Banner 图片尺寸说明。"
+  },
+  "banner.addLanguage": {
+    "message": "添加语言",
+    "description": "多语言 Banner 文案新增语言按钮。"
+  },
+  "banner.scheduled": {
+    "message": "待展示",
+    "description": "Banner 尚未到开始时间的状态。"
+  },
+  "banner.expired": {
+    "message": "已结束",
+    "description": "Banner 已超过结束时间的状态。"
+  },
+  "banner.hidden": {
+    "message": "已隐藏",
+    "description": "Banner 手动隐藏状态。"
+  },
+  "banner.active": {
+    "message": "展示中",
+    "description": "Banner 当前有效状态。"
+  },
+  "banner.loadFailed": {
+    "message": "加载 Banner 失败",
+    "description": "Banner 列表加载失败提示。"
+  },
+  "banner.updateFailed": {
+    "message": "更新 Banner 失败",
+    "description": "Banner 开关更新失败提示。"
+  },
+  "banner.invalidWindow": {
+    "message": "结束时间必须晚于开始时间",
+    "description": "Banner 投放时间校验提示。"
+  },
+  "banner.saveFailed": {
+    "message": "保存 Banner 失败",
+    "description": "Banner 保存失败提示。"
+  },
+  "banner.deleteConfirm": {
+    "message": "确定删除“{title}”吗？",
+    "description": "Banner 删除确认文案。"
+  },
+  "banner.deleteFailed": {
+    "message": "删除 Banner 失败",
+    "description": "Banner 删除失败提示。"
   }
 }
