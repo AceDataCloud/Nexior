@@ -25,19 +25,19 @@
         <video
           v-if="item.mediaType === 'Video' && item.previewUrl && !failedMedia.has(item.id)"
           :ref="(element) => rememberMedia(item.id, element)"
-          :src="item.previewUrl"
+          :src="loadedMediaIds.has(item.id) ? item.previewUrl : undefined"
           muted
           loop
           playsinline
-          preload="metadata"
+          :preload="loadedMediaIds.has(item.id) ? 'metadata' : 'none'"
           :aria-label="$t('intro.home.showcase.preview', { title: item.title })"
           @error="onMediaError(item.id)"
         />
         <audio
           v-else-if="item.mediaType === 'Audio' && item.previewUrl && !failedMedia.has(item.id)"
           :ref="(element) => rememberMedia(item.id, element)"
-          :src="item.previewUrl"
-          preload="metadata"
+          :src="loadedMediaIds.has(item.id) ? item.previewUrl : undefined"
+          :preload="loadedMediaIds.has(item.id) ? 'metadata' : 'none'"
           loop
           @error="onMediaError(item.id)"
         />
@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import type { ResolvedShowcase } from '@/models';
 
@@ -109,7 +109,9 @@ defineEmits<{ 'icon-error': [item: ResolvedShowcase]; select: [item: ResolvedSho
 const media = new Map<string, HTMLMediaElement>();
 const cards = new Map<string, HTMLElement>();
 const failedMedia = ref(new Set<string>());
+const loadedMediaIds = ref(new Set<string>());
 const playingId = ref<string>();
+const requestedPlayingId = ref<string>();
 const reducedMotion = ref(false);
 let motionQuery: MediaQueryList | undefined;
 let observer: IntersectionObserver | undefined;
@@ -128,7 +130,16 @@ function rememberMedia(id: string, element: Element | ComponentPublicInstance | 
   else media.delete(id);
 }
 
+async function ensureMediaLoaded(id: string): Promise<HTMLMediaElement | undefined> {
+  if (!loadedMediaIds.value.has(id)) {
+    loadedMediaIds.value = new Set(loadedMediaIds.value).add(id);
+    await nextTick();
+  }
+  return media.get(id);
+}
+
 function stopAll(except?: string): void {
+  if (!except) requestedPlayingId.value = undefined;
   for (const [id, element] of media) {
     if (id === except) continue;
     element.pause();
@@ -139,18 +150,22 @@ function stopAll(except?: string): void {
 
 async function startPreview(id: string, force = false): Promise<void> {
   if (reducedMotion.value && !force) return;
-  const element = media.get(id);
-  if (!element) return;
+  requestedPlayingId.value = id;
+  const element = await ensureMediaLoaded(id);
+  if (!element || requestedPlayingId.value !== id) return;
   stopAll(id);
   try {
     await element.play();
-    playingId.value = id;
+    if (requestedPlayingId.value === id) playingId.value = id;
+    else element.pause();
   } catch {
+    if (requestedPlayingId.value === id) requestedPlayingId.value = undefined;
     playingId.value = undefined;
   }
 }
 
 function stopPreview(id: string): void {
+  if (requestedPlayingId.value === id) requestedPlayingId.value = undefined;
   const element = media.get(id);
   element?.pause();
   if (element instanceof HTMLVideoElement) element.currentTime = 0;
@@ -188,13 +203,17 @@ onMounted(() => {
   motionQuery.addEventListener('change', onMotionChange);
   document.addEventListener('visibilitychange', onVisibility);
   if ('IntersectionObserver' in window) {
-    observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) continue;
-        const id = [...cards].find(([, element]) => element === entry.target)?.[0];
-        if (id) stopPreview(id);
-      }
-    });
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = [...cards].find(([, element]) => element === entry.target)?.[0];
+          if (!id) continue;
+          if (entry.isIntersecting) loadedMediaIds.value = new Set(loadedMediaIds.value).add(id);
+          else stopPreview(id);
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
     for (const card of cards.values()) observer.observe(card);
   }
 });
@@ -206,7 +225,7 @@ onBeforeUnmount(() => {
   document.removeEventListener('visibilitychange', onVisibility);
 });
 
-defineExpose({ playingId, startPreview, stopPreview, togglePreview, reducedMotion });
+defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePreview, reducedMotion });
 </script>
 
 <style lang="scss" scoped>
