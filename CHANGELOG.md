@@ -1,8 +1,33 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 21 Aug 2026 20:15:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 22 Aug 2026 20:15:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.366.0
+
+Sat, 22 Aug 2026 20:15:35 GMT
+
+### Minor changes
+
+- Support Seedance auto duration billing and complete Seedance 2.5 controls. (dev@acedata.cloud)
+
+### Patches
+
+- Restore white-label sessions and branding before opening Auth-hosted Connector authorization pages. (dev@acedata.cloud)
+- Preserve direct Inspiration service filters until the Showcase feed finishes loading. (dev@acedata.cloud)
+- Remove six unused locales and align Studio with the 12-language Platform locale matrix. (dev@acedata.cloud)
+- Use the canonical x402 v2 payment envelope for wallet-funded orders. (dev@acedata.cloud)
+- Add service-scoped Showcase galleries to video, music, and speech generators with published examples. (dev@acedata.cloud)
+- Polish shared Showcase details with compact media layouts, prompt disclosure, and Home previews. (dev@acedata.cloud)
+- Load Home showcases progressively and defer audio and video requests until media approaches the viewport. (dev@acedata.cloud)
+- Accept validated generate actions when recreating curated Suno and Producer showcases. (dev@acedata.cloud)
+- Let white-label site admins manage homepage system and custom banners from Nexior settings. (dev@acedata.cloud)
+- Make Usage History service-first with operation drilldown and consistent filtering. (dev@acedata.cloud)
+- Use the shared product locale catalog for language options and hreflang metadata. (dev@acedata.cloud)
+- Load browser-only video players after mount so production SSG builds succeed. (dev@acedata.cloud)
+- Keep white-label branding and structured data separate from Ace Data Cloud identity. (dev@acedata.cloud)
+- Use the standard source-copy and automatic translation controls for homepage banners. (dev@acedata.cloud)
 
 ## 3.365.0
 
