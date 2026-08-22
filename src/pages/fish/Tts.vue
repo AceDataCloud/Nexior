@@ -9,7 +9,11 @@
       </div>
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <showcase-result-tabs service="fish">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -20,6 +24,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/fish/ConfigPanel.vue';
 import RecentPanel from '@/components/fish/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
@@ -43,6 +48,7 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     RecentPanel,
+    ShowcaseResultTabs,
     TabSwitcher
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('fish')],

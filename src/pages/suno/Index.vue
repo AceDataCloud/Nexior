@@ -4,14 +4,18 @@
       <config-panel @generate="onGenerateAudio" />
     </template>
     <template #result>
-      <recent-panel
-        ref="recentPanel"
-        class="panel recent"
-        :loading="loadingMore || loadingAll"
-        @reach-top="onReachTop"
-        @load-all="onLoadAll"
-        @wallet-task="onWalletTask"
-      />
+      <showcase-result-tabs service="suno">
+        <template #tasks>
+          <recent-panel
+            ref="recentPanel"
+            class="panel recent"
+            :loading="loadingMore || loadingAll"
+            @reach-top="onReachTop"
+            @load-all="onLoadAll"
+            @wallet-task="onWalletTask"
+          />
+        </template>
+      </showcase-result-tabs>
     </template>
     <template #preview>
       <preview-panel />
@@ -31,6 +35,7 @@ import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import ConfigPanel from '@/components/suno/ConfigPanel.vue';
 import RecentPanel from '@/components/suno/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
@@ -59,6 +64,7 @@ export default defineComponent({
     Layout,
     ConfigPanel,
     RecentPanel,
+    ShowcaseResultTabs,
     PreviewPanel
   },
   mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('suno')],
