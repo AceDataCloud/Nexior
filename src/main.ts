@@ -43,6 +43,14 @@ import {
   initializeFingerprint
 } from './utils/initializer';
 
+const applyBootLocale = async (site?: Parameters<typeof resolveBootLocaleCookie>[1]) => {
+  const savedLocale = getCookie('LOCALE');
+  const { locale, shouldPersist } = resolveBootLocaleCookie(savedLocale, site);
+  if (!shouldPersist) return;
+  await setI18nLanguage(locale);
+  setCookie('LOCALE', locale, { path: '/', domain: getDomain() });
+};
+
 // vite-ssg entry. At build it pre-renders the flag-allowlisted routes with
 // memory history; in the browser the same createApp hydrates/mounts the SPA.
 // Everything that used to run at module top-level / in main() now runs behind
@@ -107,18 +115,13 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
     installMobileLocalExec();
   }
   await initializeCookies();
+  // Normalize stale cookies before bootstrap requests use them as
+  // Accept-Language, then apply the site's locale policy after it loads.
+  await applyBootLocale();
   await resolveDeferredInviterId();
   await initializeToken();
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
-  // Resolve against the saved LOCALE cookie, not `i18n.global.locale`: the
-  // router guard that applies the cookie runs after this hook, so the live
-  // locale is still the vue-i18n default and we'd clobber the user's choice.
-  const savedLocale = getCookie('LOCALE');
-  const { locale: siteLocale, shouldPersist } = resolveBootLocaleCookie(savedLocale, store.state.site);
-  if (shouldPersist) {
-    await setI18nLanguage(siteLocale);
-    setCookie('LOCALE', siteLocale, { path: '/', domain: getDomain() });
-  }
+  await applyBootLocale(store.state.site);
 
   if (isNative() || isDesktop()) {
     const blocked = await runVersionGate();
