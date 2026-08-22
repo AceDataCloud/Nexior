@@ -135,6 +135,7 @@ import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { supportsClientTools, isDesktop, isWeb } from '@/utils/surface';
 import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { withAuthFrontendSession } from '@/utils/authHandoff';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
@@ -1331,7 +1332,7 @@ export default defineComponent({
       if (isWeb()) {
         // `return_to` navigates the tab back here, so a full-page hop is
         // still the right shape on web.
-        window.location.href = target;
+        window.location.href = await withAuthFrontendSession(target);
         return;
       }
       // On native/desktop that same hop leaves the app shell for good: the

@@ -26,3 +26,4 @@ export * from './loginMethod';
 export * from './iap';
 export * from './servicePricing';
 export * from './authAccount';
+export * from './authHandoff';

@@ -37,9 +37,17 @@ const POPUP_FEATURES = 'popup=yes,width=600,height=760,noopener=no,noreferrer=no
  * a full-page redirect. Otherwise the promise resolves when the flow ends,
  * whatever the outcome — callers refetch rather than branch on it.
  */
-export function openAuthorizePopup(authorizationUrl: string): Promise<void> | null {
-  const popup = window.open(authorizationUrl, 'acedata-connect', POPUP_FEATURES);
+export function openAuthorizePopup(authorizationUrl: string | Promise<string>): Promise<void> | null {
+  const initialUrl = typeof authorizationUrl === 'string' ? authorizationUrl : 'about:blank';
+  const popup = window.open(initialUrl, 'acedata-connect', POPUP_FEATURES);
   if (!popup) return null;
+
+  if (typeof authorizationUrl !== 'string') {
+    void authorizationUrl.then(
+      (url) => popup.location.replace(url),
+      () => popup.close()
+    );
+  }
 
   return new Promise<void>((resolve) => {
     const timer = window.setInterval(() => {
