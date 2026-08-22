@@ -1,7 +1,7 @@
 import type { ISite } from '@/models';
 import { I18N_DEFAULT_LOCALE, I18N_SUPPORTED_LOCALES, type I18nLocaleOption } from '@/constants/i18n';
 
-export const getSiteLocaleOptions = (supportedLocales?: string[] | null): I18nLocaleOption[] => {
+export const getSiteLocaleOptions = (supportedLocales?: string[] | null): readonly I18nLocaleOption[] => {
   if (!Array.isArray(supportedLocales) || supportedLocales.length === 0) return I18N_SUPPORTED_LOCALES;
   const selected = new Set(supportedLocales);
   const options = I18N_SUPPORTED_LOCALES.filter((locale) => selected.has(locale.value));
@@ -32,7 +32,7 @@ export const resolveSiteLocale = (currentLocale: string, site?: ISite | null): s
   const forced = getForcedLocale(site);
   if (forced) return forced;
   const options = getSiteLocaleOptions(site?.supported_locales);
-  const allowed = new Set(options.map((locale) => locale.value));
+  const allowed = new Set<string>(options.map((locale) => locale.value));
   if (allowed.has(currentLocale)) return currentLocale;
   if (site?.language && allowed.has(site.language)) return site.language;
   if (allowed.has(I18N_DEFAULT_LOCALE)) return I18N_DEFAULT_LOCALE;

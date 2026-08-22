@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n';
-import { makeGetLocale } from '@acedatacloud/core';
+import { getProductLocale } from '@acedatacloud/core/constants';
 import { makeFlatLoader, createSetI18nLanguage } from '@acedatacloud/core/i18n';
-import { I18N_DEFAULT_LOCALE, I18N_SCOPES, I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
+import { I18N_SCOPES } from '@/constants/i18n';
 import axios from 'axios';
 import type { ISite } from '@/models';
 import { replaceBrandName } from '@/utils/site';
@@ -17,12 +17,7 @@ export const i18n = createI18n({
   postTranslation: (value) => (typeof value === 'string' ? replaceBrandName(value, resolveBrandSite()) : value)
 });
 
-// Locale resolution now lives in @acedatacloud/core; the supported-locale list
-// and default stay owned here so Nexior keeps control of its locale matrix.
-export const getLocale = makeGetLocale({
-  supportedLocales: I18N_SUPPORTED_LOCALES,
-  defaultLocale: I18N_DEFAULT_LOCALE
-});
+export const getLocale = getProductLocale;
 
 const messageLoaders = import.meta.glob('./**/*.json');
 
