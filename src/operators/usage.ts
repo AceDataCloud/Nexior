@@ -7,6 +7,7 @@ export interface IApiUsageQuery {
   offset?: number;
   limit?: number;
   application_id?: string | string[];
+  service_id?: string | string[];
   api_id?: string | string[];
   ordering?: string;
   created_at_from?: string | Date;
@@ -27,6 +28,7 @@ class ApiUsageOperator {
   async getAggregate(query: {
     user_id?: string;
     application_id?: string | string[];
+    service_id?: string | string[];
     api_id?: string | string[];
     created_at_from?: string | Date;
     created_at_to?: string | Date;
@@ -48,6 +50,7 @@ class ApiUsageOperator {
   async getStatusCodes(query: {
     user_id?: string;
     application_id?: string | string[];
+    service_id?: string | string[];
     api_id?: string | string[];
     created_at_from?: string | Date;
     created_at_to?: string | Date;
