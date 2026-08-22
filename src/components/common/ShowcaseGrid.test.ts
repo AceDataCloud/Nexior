@@ -73,9 +73,11 @@ describe('ShowcaseGrid', () => {
   it('renders posters, metadata-only previews, and create-similar links', () => {
     const { wrapper } = mountGrid();
     expect(wrapper.findAll('.showcase-card')).toHaveLength(2);
-    expect(wrapper.get('video').attributes()).toMatchObject({ preload: 'metadata', loop: '' });
+    expect(wrapper.get('video').attributes()).toMatchObject({ preload: 'none', loop: '' });
+    expect(wrapper.get('video').attributes('src')).toBeUndefined();
     expect((wrapper.get('video').element as HTMLVideoElement).muted).toBe(true);
-    expect(wrapper.get('audio').attributes('preload')).toBe('metadata');
+    expect(wrapper.get('audio').attributes('preload')).toBe('none');
+    expect(wrapper.get('audio').attributes('src')).toBeUndefined();
     expect(wrapper.findAll('.router-link')[0].text()).toContain('intro.home.showcase.createSimilar');
     expect(wrapper.find('.detail-trigger').exists()).toBe(false);
   });
@@ -110,6 +112,44 @@ describe('ShowcaseGrid', () => {
     expect(video.pause).toHaveBeenCalled();
   });
 
+  it('binds media sources only when cards approach the viewport and keeps them after exit', async () => {
+    let callback: IntersectionObserverCallback = () => undefined;
+    const observe = vi.fn();
+    class MockIntersectionObserver {
+      constructor(handler: IntersectionObserverCallback) {
+        callback = handler;
+      }
+      observe = observe;
+      unobserve = vi.fn();
+      disconnect = vi.fn();
+    }
+    vi.stubGlobal('IntersectionObserver', MockIntersectionObserver);
+    const { wrapper } = mountGrid();
+    const cards = wrapper.findAll('.showcase-card');
+    const video = wrapper.get('video');
+    expect(video.attributes('src')).toBeUndefined();
+
+    callback([{ isIntersecting: true, target: cards[0].element } as IntersectionObserverEntry], {} as any);
+    await wrapper.vm.$nextTick();
+    expect(video.attributes('src')).toBe('preview.mp4');
+    expect(video.attributes('preload')).toBe('metadata');
+
+    callback([{ isIntersecting: false, target: cards[0].element } as IntersectionObserverEntry], {} as any);
+    await wrapper.vm.$nextTick();
+    expect(video.attributes('src')).toBe('preview.mp4');
+  });
+
+  it('does not start a lazy preview after the pointer has already left', async () => {
+    const { wrapper, video } = mountGrid();
+    const card = wrapper.findAll('.showcase-card')[0];
+    const entering = card.trigger('mouseenter');
+    await card.trigger('mouseleave');
+    await entering;
+    await wrapper.vm.$nextTick();
+    await Promise.resolve();
+    expect(video.play).not.toHaveBeenCalled();
+  });
+
   it('falls back to the poster without removing the create-similar action', async () => {
     const { wrapper } = mountGrid();
     await wrapper.get('video').trigger('error');
@@ -127,8 +167,7 @@ describe('ShowcaseGrid', () => {
     expect(wrapper.findAll('.preview-button').length).toBeGreaterThan(0);
 
     await wrapper.findAll('.preview-button')[0].trigger('click');
-    await Promise.resolve();
+    await vi.waitFor(() => expect(wrapper.findAll('.showcase-card')[0].classes()).toContain('preview-playing'));
     expect(video.play).toHaveBeenCalled();
-    expect(wrapper.findAll('.showcase-card')[0].classes()).toContain('preview-playing');
   });
 });

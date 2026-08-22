@@ -52,6 +52,7 @@ const mountHome = (site: Record<string, unknown>) =>
 
 describe('Studio workbench home', () => {
   beforeEach(() => {
+    vi.unstubAllGlobals();
     vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
     vi.mocked(siteBannerOperator.getPublic).mockResolvedValue({ data: [] } as any);
   });
@@ -100,6 +101,75 @@ describe('Studio workbench home', () => {
     });
     await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledWith(undefined, 'en'));
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
+  });
+
+  it('renders Showcases in twelve-item batches with an accessible fallback button', async () => {
+    const feed = Array.from({ length: 30 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(12);
+    const button = wrapper.get('button.showcase-load-more');
+    expect(button.attributes('type')).toBe('button');
+
+    await button.trigger('click');
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(24);
+    await wrapper.get('button.showcase-load-more').trigger('click');
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(30);
+    expect(wrapper.find('button.showcase-load-more').exists()).toBe(false);
+  });
+
+  it('keeps manual loading available without IntersectionObserver', async () => {
+    expect('IntersectionObserver' in window).toBe(false);
+    const feed = Array.from({ length: 18 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.find('button.showcase-load-more').exists()).toBe(true));
+
+    await wrapper.get('button.showcase-load-more').trigger('click');
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(18);
+  });
+
+  it('returns to the first batch when the Showcase feed reloads', async () => {
+    const feed = Array.from({ length: 30 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.find('button.showcase-load-more').exists()).toBe(true));
+    await wrapper.get('button.showcase-load-more').trigger('click');
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(24);
+
+    await (wrapper.vm as any).loadShowcases();
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(12);
+  });
+
+  it('automatically appends one batch per sentinel viewport entry', async () => {
+    let callback: IntersectionObserverCallback = () => undefined;
+    class MockIntersectionObserver {
+      constructor(handler: IntersectionObserverCallback) {
+        callback = handler;
+      }
+      observe = vi.fn();
+      unobserve = vi.fn();
+      disconnect = vi.fn();
+    }
+    vi.stubGlobal('IntersectionObserver', MockIntersectionObserver);
+    const feed = Array.from({ length: 30 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.find('button.showcase-load-more').exists()).toBe(true));
+    const target = wrapper.get('button.showcase-load-more').element;
+
+    await wrapper.get('button.showcase-load-more').trigger('click');
+    callback([{ isIntersecting: true, target } as IntersectionObserverEntry], {} as any);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(24);
+    callback([{ isIntersecting: true, target } as IntersectionObserverEntry], {} as any);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(24);
+    callback([{ isIntersecting: false, target } as IntersectionObserverEntry], {} as any);
+    callback([{ isIntersecting: true, target } as IntersectionObserverEntry], {} as any);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')).toHaveLength(30);
   });
 
   it('applies white-label names and icons to child and showcase cards', async () => {

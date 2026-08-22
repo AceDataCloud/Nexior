@@ -9,8 +9,8 @@
         @icon-error="onIconError"
       />
       <showcase-grid
-        v-if="showcases.length"
-        :items="showcases"
+        v-if="visibleShowcases.length"
+        :items="visibleShowcases"
         :eyebrow="$t('intro.home.showcase.eyebrow')"
         :title="$t('intro.home.showcase.title')"
         :subtitle="$t('intro.home.showcase.subtitle')"
@@ -19,6 +19,15 @@
         @select="selectedShowcase = $event"
         @icon-error="onShowcaseIconError"
       />
+      <button
+        v-if="hasMoreShowcases"
+        ref="showcaseLoadMore"
+        type="button"
+        class="showcase-load-more"
+        @click="onShowcaseLoadMoreClick"
+      >
+        {{ $t('intro.home.showcase.loadMore') }}
+      </button>
     </div>
     <showcase-detail-dialog :item="selectedShowcase" @close="selectedShowcase = undefined" />
   </main>
@@ -49,6 +58,8 @@ import {
   type ResolvedHomeCategory
 } from './data';
 
+const SHOWCASE_BATCH_SIZE = 12;
+
 export default defineComponent({
   name: 'StudioHome',
   components: {
@@ -67,6 +78,9 @@ export default defineComponent({
       rawShowcases: [] as IShowcase[],
       showcaseLoaded: false,
       showcaseLoadGeneration: 0,
+      visibleShowcaseCount: SHOWCASE_BATCH_SIZE,
+      showcaseLoadObserver: undefined as IntersectionObserver | undefined,
+      showcaseAutoLoadArmed: true,
       selectedShowcase: undefined as ResolvedShowcase | undefined
     };
   },
@@ -129,7 +143,7 @@ export default defineComponent({
       }
       return resolved;
     },
-    showcases(): ResolvedShowcase[] {
+    resolvedShowcases(): ResolvedShowcase[] {
       const site = this.site;
       if (!site) return [];
       return this.rawShowcases
@@ -139,6 +153,12 @@ export default defineComponent({
           ...item,
           icon: this.failedIcons[item.capability] ? item.defaultIcon : item.icon
         }));
+    },
+    visibleShowcases(): ResolvedShowcase[] {
+      return this.resolvedShowcases.slice(0, this.visibleShowcaseCount);
+    },
+    hasMoreShowcases(): boolean {
+      return this.visibleShowcaseCount < this.resolvedShowcases.length;
     }
   },
   watch: {
@@ -151,7 +171,16 @@ export default defineComponent({
     },
     '$i18n.locale'() {
       if (this.siteLoaded) void this.loadShowcases();
+    },
+    hasMoreShowcases() {
+      this.$nextTick(() => this.observeShowcaseLoadMore());
     }
+  },
+  mounted() {
+    this.setupShowcaseLoadObserver();
+  },
+  beforeUnmount() {
+    this.showcaseLoadObserver?.disconnect();
   },
   methods: {
     resolve(item: HomeCapability): ResolvedHomeCapability {
@@ -185,6 +214,8 @@ export default defineComponent({
       const generation = ++this.showcaseLoadGeneration;
       const requestLocale = String(this.$i18n.locale || 'en');
       this.showcaseLoaded = true;
+      this.visibleShowcaseCount = SHOWCASE_BATCH_SIZE;
+      this.showcaseAutoLoadArmed = true;
       this.rawShowcases = [];
       this.selectedShowcase = undefined;
       try {
@@ -195,6 +226,39 @@ export default defineComponent({
       } catch {
         if (generation === this.showcaseLoadGeneration) this.rawShowcases = [];
       }
+    },
+    loadMoreShowcases(): void {
+      this.visibleShowcaseCount = Math.min(
+        this.visibleShowcaseCount + SHOWCASE_BATCH_SIZE,
+        this.resolvedShowcases.length
+      );
+    },
+    onShowcaseLoadMoreClick(): void {
+      this.showcaseAutoLoadArmed = false;
+      this.loadMoreShowcases();
+    },
+    setupShowcaseLoadObserver(): void {
+      if (!('IntersectionObserver' in window)) return;
+      this.showcaseLoadObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) {
+              this.showcaseAutoLoadArmed = true;
+              continue;
+            }
+            if (!this.showcaseAutoLoadArmed) continue;
+            this.showcaseAutoLoadArmed = false;
+            this.loadMoreShowcases();
+          }
+        },
+        { root: this.$el as HTMLElement, rootMargin: '400px 0px' }
+      );
+      this.observeShowcaseLoadMore();
+    },
+    observeShowcaseLoadMore(): void {
+      this.showcaseLoadObserver?.disconnect();
+      const target = this.$refs.showcaseLoadMore;
+      if (target instanceof HTMLElement) this.showcaseLoadObserver?.observe(target);
     },
     onIconError(item: ResolvedHomeCapability): void {
       if (item.icon !== item.defaultIcon) this.failedIcons[item.capability] = true;
@@ -260,6 +324,26 @@ export default defineComponent({
 @media (prefers-reduced-motion: reduce) {
   .home-loading span {
     animation-duration: 1.8s;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.showcase-load-more {
+  display: block;
+  min-height: 44px;
+  margin: 4px auto 28px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 750;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 3px solid var(--el-color-primary);
+    outline-offset: 3px;
   }
 }
 </style>
