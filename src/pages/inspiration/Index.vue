@@ -67,6 +67,7 @@ const { locale } = useI18n();
 const rawItems = ref<IShowcase[]>([]);
 const loading = ref(false);
 const error = ref(false);
+const feedLoaded = ref(false);
 let loadGeneration = 0;
 
 const site = computed(() => store.state.site);
@@ -115,6 +116,7 @@ async function load(): Promise<void> {
   const requestLocale = locale.value;
   loading.value = true;
   error.value = false;
+  feedLoaded.value = false;
   rawItems.value = [];
   try {
     const response = await showcaseOperator.list(undefined, requestLocale);
@@ -122,7 +124,10 @@ async function load(): Promise<void> {
   } catch {
     if (generation === loadGeneration) error.value = true;
   } finally {
-    if (generation === loadGeneration) loading.value = false;
+    if (generation === loadGeneration) {
+      loading.value = false;
+      feedLoaded.value = true;
+    }
   }
 }
 
@@ -144,13 +149,17 @@ function closeItem(): void {
   void router.push({ name: route.name as string, query });
 }
 
-watch([categoryType, availableServices], () => {
-  if (selectedService.value && !availableServices.value.some((item) => item.service === selectedService.value)) {
+watch([categoryType, availableServices, feedLoaded], () => {
+  if (
+    feedLoaded.value &&
+    selectedService.value &&
+    !availableServices.value.some((item) => item.service === selectedService.value)
+  ) {
     setService();
   }
 });
 watch([selectedItem, resolvedItems], () => {
-  if (route.query.showcase && !loading.value && !selectedItem.value) closeItem();
+  if (route.query.showcase && feedLoaded.value && !selectedItem.value) closeItem();
 });
 watch(locale, () => void load());
 onMounted(() => void load());
