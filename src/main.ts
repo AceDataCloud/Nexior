@@ -26,6 +26,7 @@ import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { initializeSiteAnalytics } from '@/utils/siteAnalytics';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
+import { initializeLocalizedBootstrap } from '@/utils/localizedBootstrap';
 import {
   initializeCookies,
   initializeDescription,
@@ -46,9 +47,10 @@ import {
 const applyBootLocale = async (site?: Parameters<typeof resolveBootLocaleCookie>[1]) => {
   const savedLocale = getCookie('LOCALE');
   const { locale, shouldPersist } = resolveBootLocaleCookie(savedLocale, site);
-  if (!shouldPersist) return;
+  if (!shouldPersist) return false;
   await setI18nLanguage(locale);
   setCookie('LOCALE', locale, { path: '/', domain: getDomain() });
+  return true;
 };
 
 // vite-ssg entry. At build it pre-renders the flag-allowlisted routes with
@@ -120,8 +122,12 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   await applyBootLocale();
   await resolveDeferredInviterId();
   await initializeToken();
-  await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
-  await applyBootLocale(store.state.site);
+  await initializeLocalizedBootstrap({
+    initializeSite,
+    applySiteLocale: () => applyBootLocale(store.state.site),
+    initializeUser,
+    initializeConfig
+  });
 
   if (isNative() || isDesktop()) {
     const blocked = await runVersionGate();
