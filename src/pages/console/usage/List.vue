@@ -8,35 +8,31 @@
           </h2>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col v-show="false" :md="4" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
-          <span> {{ $t('application.field.type') }} </span>
-          <el-radio-group v-model="type">
-            <el-radio-button :value="serviceType.API" :label="$t('application.field.api')" />
-            <el-radio-button :value="serviceType.Proxy" :label="$t('application.field.proxy')" />
-          </el-radio-group>
-        </el-col>
-        <el-col v-show="false" :md="6" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
-          <span class="inline-block w-9"> {{ $t('usage.field.application') }} </span>
+      <el-row class="usage-filters">
+        <el-col v-if="type === serviceType.API" :lg="5" :md="12" :xs="24" class="usage-filter">
+          <span class="usage-filter-label">{{ $t('usage.field.service') }}</span>
           <el-select
-            v-model="applicationIds"
-            :placeholder="$t('usage.field.application')"
+            v-model="serviceIds"
+            :placeholder="$t('usage.option.allServices')"
+            :loading="servicesLoading"
             clearable
+            filterable
             multiple
             collapse-tags
             collapse-tags-tooltip
             class="w-full"
-            @change="onApplicationsChange"
+            @change="onServicesChange"
           >
-            <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id!" />
+            <el-option v-for="item in services" :key="item.id" :label="item.title" :value="item.id" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :md="6" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
-          <span class="inline-block"> {{ $t('usage.field.api') }} </span>
+        <el-col v-if="type === serviceType.API" :lg="5" :md="12" :xs="24" class="usage-filter">
+          <span class="usage-filter-label">{{ $t('usage.field.operation') }}</span>
           <el-select
             v-model="apiIds"
-            :placeholder="$t('usage.field.api')"
+            :placeholder="$t('usage.option.allOperations')"
             :loading="apisLoading"
+            :disabled="!serviceIds.length && !apiIds.length"
             clearable
             filterable
             multiple
@@ -45,10 +41,10 @@
             class="w-full"
             @change="onApisChange"
           >
-            <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id!" />
+            <el-option v-for="item in apis" :key="item.id" :label="item.title || item.id" :value="item.id" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :md="8" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
+        <el-col v-if="type === serviceType.API" :lg="7" :md="12" :xs="24" class="usage-filter">
           <el-date-picker
             v-model="createdAtRange"
             type="datetimerange"
@@ -63,7 +59,7 @@
         <!-- Status-code filter — narrow because values are 3-digit codes.
              `filterable` + `allow-create` lets the user pick from discovered
              codes or type an unseen one (e.g. a future 503). -->
-        <el-col v-if="type === serviceType.API" :md="3" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
+        <el-col v-if="type === serviceType.API" :lg="3" :md="6" :xs="24" class="usage-filter">
           <el-select
             v-model="statusCodeFilter"
             :placeholder="$t('usage.option.statusCodeAll')"
@@ -78,7 +74,7 @@
             <el-option v-for="code in statusCodeOptions" :key="code" :label="String(code)" :value="String(code)" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :md="3" :xs="24" class="mb-5 flex px-2 gap-2 items-center justify-end">
+        <el-col v-if="type === serviceType.API" :lg="4" :md="6" :xs="24" class="usage-filter usage-filter-export">
           <el-button type="primary" plain :loading="exporting" class="w-full whitespace-nowrap" @click="onExport">
             <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('usage.button.export') }}
@@ -138,7 +134,7 @@
                   </template>
                   <template v-else>
                     <el-table v-if="apiBreakdown.length" :data="apiBreakdown" size="small" height="300" class="w-full">
-                      <el-table-column :label="$t('usage.field.api')" min-width="160">
+                      <el-table-column :label="$t('usage.field.operation')" min-width="160">
                         <template #default="scope">
                           <span class="color-dot" :style="{ backgroundColor: scope.row.color }" />
                           <span>{{ scope.row.label }}</span>
@@ -183,9 +179,14 @@
               :empty-text="$t('common.message.noData')"
               class="min-h-[calc(100vh-350px)] mb-5"
             >
-              <el-table-column :label="$t('application.field.name')" width="160px">
+              <el-table-column :label="$t('usage.field.service')" width="180px">
                 <template #default="scope">
-                  <span>{{ scope.row?.api?.title }}</span>
+                  <span>{{ scope.row?.service?.title || '-' }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('usage.field.operation')" width="180px">
+                <template #default="scope">
+                  <span>{{ scope.row?.api?.title || '-' }}</span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('usage.field.statusCode')" width="120px">
@@ -538,18 +539,19 @@ import { ApplicationsIcon, ExportIcon, ExternalLinkIcon } from '@acedatacloud/co
 import { defineComponent } from 'vue';
 import {
   IApi,
-  IApiListResponse,
   IApplication,
   IApplicationListResponse,
   IApplicationType,
   ICredentialType,
+  IService,
+  IServiceListResponse,
   IServiceType,
   IApiUsage,
   IApiUsageListResponse,
   IProxyUsage,
   IProxyUsageListResponse
 } from '@/models';
-import { apiUsageOperator, applicationOperator, apiOperator, proxyUsageOperator } from '@/operators';
+import { apiUsageOperator, applicationOperator, apiOperator, proxyUsageOperator, serviceOperator } from '@/operators';
 import { Pagination } from '@acedatacloud/core/components';
 import {
   ElTable,
@@ -631,13 +633,16 @@ interface IData {
   total: number | undefined;
   shortcuts: { text: string; value: () => [Date, Date] }[];
   applications: IApplication[];
+  services: IService[];
+  serviceIds: string[];
+  servicesLoading: boolean;
   apis: IApi[];
   apisLoading: boolean;
   limit: number;
   createdAtRange: [Date | string, Date | string];
   credentialType: typeof ICredentialType;
-  applicationIds: string[] | undefined;
-  apiIds: string[] | undefined;
+  applicationIds: string[];
+  apiIds: string[];
   type: string | IServiceType;
   serviceType: typeof IServiceType;
   // aggregate
@@ -666,6 +671,7 @@ interface IData {
   autoRefresh: boolean;
   autoRefreshTimer: number | null;
   fetchSeq: number;
+  apiFetchSeq: number;
 }
 
 export default defineComponent({
@@ -704,6 +710,11 @@ export default defineComponent({
         : [],
       apiIds: this.$route.query.api_id?.toString() ? this.$route.query.api_id?.toString().split(',') : [],
       applications: [],
+      services: [],
+      serviceIds: this.$route.query.service_id?.toString()
+        ? this.$route.query.service_id.toString().split(',').filter(Boolean)
+        : [],
+      servicesLoading: false,
       apis: [],
       apisLoading: false,
       credentialType: ICredentialType,
@@ -807,7 +818,8 @@ export default defineComponent({
       statusCodeOptionsLoading: false,
       autoRefresh: true,
       autoRefreshTimer: null,
-      fetchSeq: 0
+      fetchSeq: 0,
+      apiFetchSeq: 0
     };
   },
   computed: {
@@ -933,9 +945,11 @@ export default defineComponent({
       handler() {
         // reset multi-selects when switching type
         this.applicationIds = [];
+        this.serviceIds = [];
         this.apiIds = [];
         this.onApplicationsChange(this.applicationIds);
         this.onFetchApplications();
+        this.onFetchServices();
         this.onFetchApis();
         this.onFetchUsages();
         this.onFetchAggregate();
@@ -952,9 +966,10 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
+  async mounted() {
     this.onFetchApplications();
-    this.onFetchApis();
+    await Promise.all([this.onFetchServices(), this.hydrateApiSelection()]);
+    await this.onFetchApis();
     this.onFetchUsages();
     this.onFetchAggregate();
     this.onFetchStatusCodeOptions();
@@ -987,6 +1002,23 @@ export default defineComponent({
         this.autoRefreshTimer = null;
       }
     },
+    async onServicesChange(serviceIds: string[]) {
+      if (!serviceIds.length) this.apiIds = [];
+      this.apis = [];
+      await this.onFetchApis();
+      await this.$router.push({
+        name: this.$route.name?.toString(),
+        query: {
+          ...this.$route.query,
+          service_id: serviceIds.length ? serviceIds.join(',') : undefined,
+          api_id: this.apiIds.length ? this.apiIds.join(',') : undefined,
+          page: undefined
+        }
+      });
+      this.onFetchApiUsages();
+      this.onFetchAggregate();
+      this.onFetchStatusCodeOptions();
+    },
     async onApiChange(apiId: string) {
       await this.$router.push({
         name: this.$route.name?.toString(),
@@ -1003,7 +1035,8 @@ export default defineComponent({
         name: this.$route.name?.toString(),
         query: {
           ...this.$route.query,
-          api_id: apiIds && apiIds.length ? apiIds.join(',') : ''
+          api_id: apiIds && apiIds.length ? apiIds.join(',') : undefined,
+          page: undefined
         }
       });
       this.onFetchApiUsages();
@@ -1113,7 +1146,8 @@ export default defineComponent({
         const { data } = await apiUsageOperator.getStatusCodes({
           user_id: this.$store.getters.user.id,
           ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
-          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+          ...(this.serviceIds.length ? { service_id: this.serviceIds } : {}),
+          ...(this.apiIds.length ? { api_id: this.apiIds } : {}),
           ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
           ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {})
         });
@@ -1209,21 +1243,62 @@ export default defineComponent({
         })
         .catch(() => {});
     },
-    onFetchApis() {
-      this.apisLoading = true;
-      apiOperator
-        .getAll({
+    async hydrateApiSelection() {
+      if (!this.apiIds.length) return;
+      const selected = await Promise.allSettled(this.apiIds.map((apiId) => apiOperator.get(apiId)));
+      const services = new Set(this.serviceIds);
+      const resolved = selected.filter((result) => result.status === 'fulfilled').map((result) => result.value);
+      resolved.forEach(({ data }) => {
+        const serviceId = data.service_id || data.service?.id;
+        if (serviceId) services.add(serviceId);
+      });
+      this.serviceIds = Array.from(services);
+      this.apis = resolved.map(({ data }) => data);
+    },
+    async onFetchServices() {
+      this.servicesLoading = true;
+      try {
+        const { data } = (await serviceOperator.getAll({
           limit: 1000,
           offset: 0,
-          ordering: '-created_at'
-        })
-        .then(({ data: data }: { data: IApiListResponse }) => {
-          this.apis = data.items.filter((api: IApi) => api.service?.type === IServiceType.API);
-        })
-        .catch(() => {})
-        .finally(() => {
-          this.apisLoading = false;
-        });
+          ordering: '-rank',
+          type: IServiceType.API
+        })) as { data: IServiceListResponse };
+        this.services = data.items;
+      } catch {
+        this.services = [];
+      } finally {
+        this.servicesLoading = false;
+      }
+    },
+    async onFetchApis() {
+      const seq = ++this.apiFetchSeq;
+      if (!this.serviceIds.length) {
+        this.apis = [];
+        this.apisLoading = false;
+        return;
+      }
+      this.apisLoading = true;
+      try {
+        const responses = await Promise.allSettled(
+          this.serviceIds.map((serviceId) =>
+            apiOperator.getAllForService(serviceId, { limit: 1000, offset: 0, ordering: '-created_at' })
+          )
+        );
+        if (seq !== this.apiFetchSeq) return;
+        const operations = new Map<string, IApi>();
+        this.apis.filter((api) => this.apiIds.includes(api.id)).forEach((api) => operations.set(api.id, api));
+        responses
+          .filter((result) => result.status === 'fulfilled')
+          .forEach((result) => result.value.data.items.forEach((api) => operations.set(api.id, api)));
+        this.apis = Array.from(operations.values());
+        if (this.apiIds.length) {
+          const available = new Set(this.apis.map((api) => api.id));
+          this.apiIds = this.apiIds.filter((apiId) => available.has(apiId));
+        }
+      } finally {
+        if (seq === this.apiFetchSeq) this.apisLoading = false;
+      }
     },
     onFetchApiUsages(silent = false) {
       if (!silent) this.loading = true;
@@ -1237,7 +1312,8 @@ export default defineComponent({
           ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
           ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {}),
           ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
-          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+          ...(this.serviceIds.length ? { service_id: this.serviceIds } : {}),
+          ...(this.apiIds.length ? { api_id: this.apiIds } : {}),
           ...(this.statusCodeFilter ? { status_code: this.statusCodeFilter } : {}),
           ...(this.traceId ? { trace_id: this.traceId } : {})
         })
@@ -1283,7 +1359,8 @@ export default defineComponent({
         ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
         ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {}),
         ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
-        ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+        ...(this.serviceIds.length ? { service_id: this.serviceIds } : {}),
+        ...(this.apiIds.length ? { api_id: this.apiIds } : {}),
         ...(this.statusCodeFilter ? { status_code: this.statusCodeFilter } : {})
       };
       // Absolute platform URL — raw fetch bypasses httpClient, and the relative
@@ -1344,7 +1421,8 @@ export default defineComponent({
       const params: any = {
         user_id: this.$store.getters.user.id,
         ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
-        ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+        ...(this.serviceIds.length ? { service_id: this.serviceIds } : {}),
+        ...(this.apiIds.length ? { api_id: this.apiIds } : {}),
         ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
         ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {}),
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -1444,6 +1522,33 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.usage-filters {
+  margin: 0 -8px 20px;
+  align-items: end;
+}
+.usage-filter {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px;
+}
+.usage-filter :deep(.el-date-editor) {
+  width: 100%;
+  min-width: 0;
+}
+.usage-filter-label {
+  color: var(--el-text-color-regular);
+  font-size: 13px;
+}
+.usage-filter-export {
+  justify-content: end;
+}
+@media (max-width: 767px) {
+  .usage-filter {
+    margin-bottom: 14px;
+  }
+}
 .summary-card {
   width: 25%;
   min-width: 260px;

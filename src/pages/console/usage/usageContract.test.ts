@@ -6,29 +6,48 @@ const readSource = (path: string): string => readFileSync(fileURLToPath(new URL(
 
 describe('API usage page contract', () => {
   const usageSource = readSource('./List.vue');
+  const usageOperatorSource = readSource('../../../operators/usage.ts');
   const applicationListSource = readSource('../application/List.vue');
   const applicationInfoSource = readSource('../../../components/application/Info.vue');
 
-  it('keeps the usage page in API mode and filters non-API services', () => {
-    expect(usageSource).toContain('<el-col v-show="false" :md="4"');
-    expect(usageSource).toContain('type: IServiceType.API,');
-    expect(usageSource).not.toContain('type: this.$route.query.type');
-    expect(usageSource).toContain('data.items.filter((api: IApi) => api.service?.type === IServiceType.API)');
+  it('uses a service-first filter with operation drilldown', () => {
+    expect(usageSource.indexOf("$t('usage.field.service')")).toBeLessThan(
+      usageSource.indexOf("$t('usage.field.operation')")
+    );
+    expect(usageSource).toContain('v-model="serviceIds"');
+    expect(usageSource).toContain(':disabled="!serviceIds.length && !apiIds.length"');
+    expect(usageSource).toContain('apiOperator.getAllForService(serviceId');
+    expect(usageSource).not.toContain(
+      "limit: 1000,\n          offset: 0,\n          ordering: '-created_at'\n        })\n        .then"
+    );
   });
 
-  it('retains the dormant proxy usage compatibility path', () => {
+  it('sends service_id through every usage data path', () => {
+    expect(usageOperatorSource.match(/service_id\?: string \| string\[\];/g)).toHaveLength(3);
+    expect(usageSource).toContain("service_id: serviceIds.length ? serviceIds.join(',') : undefined");
+    expect(usageSource.match(/\{ service_id: this\.serviceIds \}/g)?.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('preserves legacy api_id deep links and hydrates their services', () => {
+    expect(usageSource).toContain('async hydrateApiSelection()');
+    expect(usageSource).toContain('this.apiIds.map((apiId) => apiOperator.get(apiId))');
+    expect(usageSource).toContain('const services = new Set(this.serviceIds)');
+    expect(usageSource).toContain('if (serviceId) services.add(serviceId)');
+  });
+
+  it('shows service and operation as separate usage columns', () => {
+    expect(usageSource).toContain('<el-table-column :label="$t(\'usage.field.service\')"');
+    expect(usageSource).toContain('<el-table-column :label="$t(\'usage.field.operation\')"');
+    expect(usageSource).toContain("scope.row?.service?.title || '-'");
+    expect(usageSource).toContain("scope.row?.api?.title || '-'");
+  });
+
+  it('retains dormant proxy compatibility and API-only usage actions', () => {
+    expect(usageSource).toContain('type: IServiceType.API,');
     expect(usageSource).toContain('proxyUsageOperator');
     expect(usageSource).toContain('onFetchProxyUsages');
-  });
-
-  it('only exposes individual usage actions for API services', () => {
     expect(applicationListSource).toContain('v-if="scope.row?.service?.type === serviceType.API"');
     expect(applicationListSource).toContain('v-if="app?.service?.type === serviceType.API"');
-    expect(applicationListSource).not.toContain('type: application?.service?.type');
-  });
-
-  it('keeps global usage available while hiding non-API service usage', () => {
-    expect(applicationInfoSource).toContain('v-if="showUsage"');
     expect(applicationInfoSource).toContain(
       'return !this.application?.service || this.application.service.type === IServiceType.API;'
     );
