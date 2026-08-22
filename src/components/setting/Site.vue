@@ -213,7 +213,7 @@ import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome }
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
-import { getSiteLocaleOptions } from '@/utils/siteLocales';
+import { getSiteLocaleOptions, getSiteLocaleValues, serializeSiteLocales } from '@/utils/siteLocales';
 
 // A small curated palette to make picking a "good" colour easy. The picker
 // still accepts any hex via its colour wheel; these are just shortcuts.
@@ -280,9 +280,7 @@ export default defineComponent({
       return !!c && c.toLowerCase() !== DEFAULT_PRIMARY_COLOR.toLowerCase();
     },
     supportedLocaleValues(): string[] {
-      return this.site?.supported_locales?.length
-        ? [...this.site.supported_locales]
-        : I18N_SUPPORTED_LOCALES.map((locale) => locale.value);
+      return getSiteLocaleValues(this.site?.supported_locales);
     },
     supportedLocalesSummary(): string {
       if (!this.site?.supported_locales?.length) return this.$t('site.message.allLocales') as string;
@@ -350,12 +348,13 @@ export default defineComponent({
       this.onSave({ branding });
     },
     onSaveSupportedLocales(locales: string[]) {
-      const supportedLocales = locales.length === I18N_SUPPORTED_LOCALES.length ? null : locales;
+      const supportedLocales = serializeSiteLocales(locales);
       const payload: Record<string, unknown> = { supported_locales: supportedLocales };
       // Dropping the pinned language from the offered set would fail the
       // backend's cross-field check, so clear the pin along with it.
       const forced = this.site?.forced_locale;
-      if (forced && supportedLocales && !supportedLocales.includes(forced)) {
+      const offered = supportedLocales || I18N_SUPPORTED_LOCALES.map((locale) => locale.value);
+      if (forced && !offered.includes(forced)) {
         payload.forced_locale = null;
       }
       this.onSave(payload);

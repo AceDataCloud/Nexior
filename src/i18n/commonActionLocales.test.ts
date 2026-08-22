@@ -58,7 +58,7 @@ const loadMessages = async (locale: string) => {
 
 describe('common action locales', () => {
   it('resolves canonical action labels through the production flat loader in every locale', async () => {
-    expect(localePaths).toHaveLength(18);
+    expect(localePaths).toHaveLength(12);
     for (const path of localePaths) {
       const locale = path.split('/')[1];
       const messages = await loadMessages(locale);
@@ -76,7 +76,6 @@ describe('common action locales', () => {
   });
 
   it('preserves locale-preferred save terminology', async () => {
-    expect((await loadMessages('sr'))['common.button.save']).toBe('Sačuvaj');
     expect((await loadMessages('zh-TW'))['common.button.save']).toBe('儲存');
   });
 

@@ -54,13 +54,7 @@ const HREFLANG_MAP: Record<string, string> = {
   ko: 'ko',
   ja: 'ja',
   ru: 'ru',
-  pl: 'pl',
-  fi: 'fi',
-  sv: 'sv',
-  el: 'el',
-  uk: 'uk',
-  ar: 'ar',
-  sr: 'sr'
+  ar: 'ar'
 };
 
 interface SeoOptions {
