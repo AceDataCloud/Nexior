@@ -208,7 +208,7 @@ import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue'
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
 import type { IBrowserDevice } from '@/models/browserDevice';
 import { popupReturnUrl } from '@/utils/connections/authorizePopup';
-import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 
 interface ISourceOption {
   key: 'all' | ConnectorSource | 'featured';
@@ -543,14 +543,29 @@ export default defineComponent({
       }
       this.installingId = item.id;
       try {
+        const prepared =
+          method.credential.type === 'oauth2'
+            ? await prepareAuthorizeFlow(popupReturnUrl())
+            : { returnUrl: popupReturnUrl() };
         const { data } = await connectionOperator.installFromCatalog(item.id, {
-          return_url: popupReturnUrl(),
+          return_url: prepared.returnUrl,
           method_id: method.id
         });
         if (data.type === 'redirect') {
           // Popup (web) / in-app browser (native) / system browser (desktop)
           // all keep this dialog and the page behind it alive.
-          await openAuthorizeFlow(data.authorization_url, data.handoff_token);
+          const result = await openAuthorizeFlow(data.authorization_url, data.handoff_token, prepared.requestId);
+          if (result?.status === 'error' || result?.status === 'cancelled') return;
+          if (result?.status === 'success') {
+            const { data: connections } = await connectionOperator.list();
+            const active =
+              !!result.connectionId &&
+              connections.some(
+                (connection) =>
+                  connection.id === result.connectionId && String(connection.status).toLowerCase() === 'active'
+              );
+            if (!active) throw new Error(this.$t('connection.message.installFailed') as string);
+          }
           this.$emit('installed');
           await this.fetchItems();
           return;

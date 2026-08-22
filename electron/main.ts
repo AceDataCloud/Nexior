@@ -3,6 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
+import { consumeConnectorState, issueConnectorState } from './connector-state';
 import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
@@ -242,21 +243,38 @@ function handleDeepLink(rawUrl: string): void {
   } catch {
     return;
   }
-  // acedata-desktop://auth/callback?code=...&state=...
-  if (url.host !== 'auth' || !url.pathname.startsWith('/callback')) return;
-  const code = url.searchParams.get('code');
-  if (!code) return;
-  if (!consumeState(url.searchParams.get('state'))) {
-    console.warn('[auth] deep link rejected: state mismatch/expired');
-    deliverOrQueue('auth:expired', {});
+  if (url.host === 'auth' && url.pathname.startsWith('/callback')) {
+    const code = url.searchParams.get('code');
+    if (!code) return;
+    if (!consumeState(url.searchParams.get('state'))) {
+      console.warn('[auth] deep link rejected: state mismatch/expired');
+      deliverOrQueue('auth:expired', {});
+      focusWindow();
+      return;
+    }
+    deliverOrQueue('auth:callback', { code });
     focusWindow();
     return;
   }
-  deliverOrQueue('auth:callback', { code });
-  focusWindow();
+  if (url.host === 'connections' && url.pathname.startsWith('/callback')) {
+    const requestId = consumeConnectorState(url.searchParams.get('desktop_state'));
+    if (!requestId) return;
+    const rawStatus = url.searchParams.get('status');
+    deliverOrQueue('connections:callback', {
+      requestId,
+      status: rawStatus === 'success' || rawStatus === 'cancelled' ? rawStatus : 'error',
+      connectionId: url.searchParams.get('connection_id') || undefined,
+      errorCode: url.searchParams.get('error') || undefined
+    });
+    focusWindow();
+  }
 }
 
 function focusWindow(): void {
+  if (!app.isReady()) {
+    void app.whenReady().then(() => focusWindow());
+    return;
+  }
   // Once the app can outlive its window (tray residency), "focus" may have to
   // recreate it — otherwise clicking the tray icon after closing the window
   // would do nothing at all.
@@ -272,7 +290,7 @@ function focusWindow(): void {
 // Deliver only once the renderer has SUBSCRIBED (mounted + onAuthCallback
 // attached), signalled via 'renderer:ready'. Queue everything else.
 function deliverOrQueue(channel: string, payload: object): void {
-  if (mainWindow && rendererReady) {
+  if (mainWindow && !mainWindow.isDestroyed() && rendererReady) {
     mainWindow.webContents.send(channel, payload);
   } else {
     pendingDeepLinks.push({ channel, payload });
@@ -324,6 +342,13 @@ ipcMain.handle('shell:openExternal', (_e, url: string) => {
  * `state` is minted here — unlike login, nothing comes back through the
  * renderer for us to bind it to.
  */
+ipcMain.handle('connections:createCallback', () => {
+  const { state, requestId } = issueConnectorState();
+  const callback = new URL('https://auth.acedata.cloud/connections/popup-return');
+  callback.searchParams.set('desktop_state', state);
+  return { requestId, returnUrl: callback.toString() };
+});
+
 ipcMain.handle('connections:openAuthorize', (_e, url: string) => {
   try {
     if (new URL(url).protocol !== 'https:') return;

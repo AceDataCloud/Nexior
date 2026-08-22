@@ -16,6 +16,15 @@ export interface DesktopBridge {
   onAuthCallback(cb: (payload: { code: string }) => void): () => void;
   /** Subscribe to a dropped-callback signal (state mismatch/expired). */
   onAuthExpired(cb: () => void): () => void;
+  createConnectorCallback(): Promise<{ requestId: string; returnUrl: string }>;
+  onConnectorCallback(
+    cb: (payload: {
+      requestId: string;
+      status: 'success' | 'cancelled' | 'error';
+      connectionId?: string;
+      errorCode?: string;
+    }) => void
+  ): () => void;
   /** Open an external https link (payment Page, docs) in the system browser. */
   openExternal(url: string): Promise<void>;
   /**

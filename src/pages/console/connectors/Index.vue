@@ -658,7 +658,7 @@ import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicke
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
 import { popupReturnUrl } from '@/utils/connections/authorizePopup';
-import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import type { IBrowserDevice } from '@/models/browserDevice';
 
 /** One row of the connection detail overflow menu. */
@@ -1646,9 +1646,13 @@ export default defineComponent({
       // stamped with ``connector_identifier`` and the right-pane join
       // picks up display fields from the catalog row.
       try {
+        const prepared =
+          method.credential.type === 'oauth2'
+            ? await prepareAuthorizeFlow(popupReturnUrl())
+            : { returnUrl: popupReturnUrl() };
         const { data } = await connectionOperator.installFromCatalog(catalog.id, {
           scopes: scopes && scopes.length ? scopes : undefined,
-          return_url: popupReturnUrl(),
+          return_url: prepared.returnUrl,
           method_id: method.id,
           // Only set when the user explicitly chose "add another account";
           // omitting it keeps the backend on slot 0, i.e. re-authorizing
@@ -1667,7 +1671,7 @@ export default defineComponent({
           return;
         }
         if (data?.type === 'redirect' && data.authorization_url) {
-          await this.runAuthorizePopup(data.authorization_url, data.handoff_token);
+          await this.runAuthorizePopup(data.authorization_url, data.handoff_token, prepared.requestId);
         } else if (data && (data as any).type === 'active') {
           // Zero-step flow (public) — refresh the list.
           await this.fetchConnections();
@@ -1683,9 +1687,27 @@ export default defineComponent({
      * resolve on "the flow ended", and the server is the authority on what
      * actually connected, so we always refetch.
      */
-    async runAuthorizePopup(authorizationUrl: string, handoffToken?: string) {
+    async runAuthorizePopup(authorizationUrl: string, handoffToken?: string, requestId?: string) {
       try {
-        await openAuthorizeFlow(authorizationUrl, handoffToken);
+        const result = await openAuthorizeFlow(authorizationUrl, handoffToken, requestId);
+        if (result?.status === 'error') throw new Error(result.errorCode || 'connector-authorization-failed');
+        if (result?.status === 'cancelled') {
+          this.pendingCreateNew = false;
+          return;
+        }
+        this.pendingCreateNew = false;
+        await this.fetchConnections();
+        if (
+          result?.status === 'success' &&
+          (!result.connectionId ||
+            !this.connections.some(
+              (connection) =>
+                connection.id === result.connectionId && this.normalizedStatus(connection.status) === 'active'
+            ))
+        ) {
+          throw new Error(this.$t('connection.message.installFailed') as string);
+        }
+        return;
       } catch (error: any) {
         this.pendingCreateNew = false;
         ElMessage.error(
@@ -1695,8 +1717,6 @@ export default defineComponent({
         );
         return;
       }
-      this.pendingCreateNew = false;
-      await this.fetchConnections();
     },
     openCustomDialog() {
       this.customDialogVisible = true;
@@ -1824,17 +1844,18 @@ export default defineComponent({
       }
       this.customAuthorizing = true;
       try {
+        const prepared = await prepareAuthorizeFlow(popupReturnUrl());
         const { data } = await connectionOperator.authorizeCustom({
           name: this.customName || undefined,
           server_url: this.customServerUrl,
           client_id: this.customClientId || undefined,
           client_secret: this.customClientSecret || undefined,
           provider: 'mcp',
-          return_url: popupReturnUrl()
+          return_url: prepared.returnUrl
         });
         if (data?.authorization_url) {
           this.customDialogVisible = false;
-          await this.runAuthorizePopup(data.authorization_url, data.handoff_token);
+          await this.runAuthorizePopup(data.authorization_url, data.handoff_token, prepared.requestId);
         }
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to start authorization');
