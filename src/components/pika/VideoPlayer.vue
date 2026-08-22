@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-plyr :options="options" class="video">
+    <vue-plyr v-if="clientReady" :options="options" class="video">
       <video controls playsinline preload="metadata" :data-poster="modelValue?.image_url">
         <source size="1080" :src="modelValue?.video_url" type="video/mp4" />
       </video>
@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-// @ts-ignore
-import VuePlyr from '@skjnldsv/vue-plyr';
+import { defineAsyncComponent, defineComponent } from 'vue';
+const VuePlyr = defineAsyncComponent(() => import('@skjnldsv/vue-plyr'));
 // @ts-ignore
 import { IPikaVideo } from '@/models';
 import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
@@ -26,8 +25,12 @@ export default defineComponent({
   },
   data() {
     return {
+      clientReady: false,
       options: { quality: { default: 1080, options: [1080] } }
     };
+  },
+  mounted() {
+    this.clientReady = true;
   }
 });
 </script>
