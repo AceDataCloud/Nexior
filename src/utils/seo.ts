@@ -2,6 +2,7 @@ import store from '@/store';
 import { getSiteLocaleOptions } from '@/utils/siteLocales';
 import { isMainOfficial } from '@/utils/is';
 import { replaceBrandName } from '@/utils/site';
+import { PRODUCT_LOCALES } from '@acedatacloud/core/constants';
 
 // Resolve the current site origin at runtime so that the same bundle can be
 // served independently from multiple official hostnames (e.g. hub.acedata.cloud,
@@ -42,22 +43,6 @@ function brand() {
     image: getShareImage()
   };
 }
-
-// Locale code → hreflang value mapping (BCP 47)
-const HREFLANG_MAP: Record<string, string> = {
-  en: 'en',
-  de: 'de',
-  pt: 'pt',
-  es: 'es',
-  fr: 'fr',
-  'zh-CN': 'zh-Hans',
-  'zh-TW': 'zh-Hant',
-  it: 'it',
-  ko: 'ko',
-  ja: 'ja',
-  ru: 'ru',
-  ar: 'ar'
-};
 
 interface SeoOptions {
   title?: string;
@@ -111,7 +96,7 @@ function setHreflang(url: string) {
   removeHreflang();
   const baseUrl = new URL(url);
   for (const { value: locale } of getSiteLocaleOptions(store.state.site?.supported_locales)) {
-    const hreflang = HREFLANG_MAP[locale];
+    const hreflang = PRODUCT_LOCALES.find((option) => option.value === locale)?.hreflang;
     if (!hreflang) continue;
     const link = document.createElement('link');
     link.rel = 'alternate';

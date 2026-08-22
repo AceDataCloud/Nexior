@@ -1,20 +1,7 @@
-export const I18N_DEFAULT_LOCALE = 'en';
+import { DEFAULT_LOCALE, PRODUCT_LOCALES } from '@acedatacloud/core/constants';
 
-export const I18N_SUPPORTED_LOCALES = [
-  { value: 'en', label: 'English' },
-  { value: 'de', label: 'Deutsch' },
-  { value: 'pt', label: 'Português' },
-  { value: 'es', label: 'Español' },
-  { value: 'fr', label: 'Français' },
-  { value: 'zh-CN', label: '简体中文' },
-  { value: 'zh-TW', label: '繁體中文' },
-  { value: 'it', label: 'Italiano' },
-  { value: 'ko', label: '한국어' },
-  { value: 'ja', label: '日本語' },
-  { value: 'ru', label: 'Русский' },
-  { value: 'ar', label: 'العربية' }
-];
-
+export const I18N_DEFAULT_LOCALE = DEFAULT_LOCALE;
+export const I18N_SUPPORTED_LOCALES = PRODUCT_LOCALES;
 export type I18nLocaleOption = (typeof I18N_SUPPORTED_LOCALES)[number];
 
 export const I18N_SCOPES = [
