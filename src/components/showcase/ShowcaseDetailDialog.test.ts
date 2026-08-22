@@ -54,9 +54,9 @@ function mountDialog(item: ResolvedShowcase) {
       stubs: {
         ElDialog: {
           name: 'ElDialog',
-          props: ['modelValue', 'showClose', 'width'],
-          emits: ['close'],
-          template: '<div class="dialog-stub"><slot /></div>'
+          props: ['modelValue', 'showClose', 'width', 'title', 'id'],
+          emits: ['close', 'closed', 'update:modelValue'],
+          template: '<div v-if="modelValue" class="dialog-stub" :id="id"><slot /></div>'
         },
         RouterLink: {
           props: ['to'],
@@ -79,7 +79,8 @@ describe('ShowcaseDetailDialog', () => {
     expect(wrapper.get('.detail-layout').classes()).toContain('layout-portrait');
     expect(wrapper.get('.media-stage > img').attributes('src')).toBe('image.webp');
     expect(wrapper.get('.prompt').text()).toContain(baseItem.prompt);
-    expect(wrapper.get('.model').text()).toBe(baseItem.model);
+    expect(wrapper.get('.service-copy').find('.service-name').text()).toBe(baseItem.name);
+    expect(wrapper.get('.service-copy').find('.model').text()).toBe(baseItem.model);
     expect(wrapper.findAll('.parameters dt').map((node) => node.text())).toEqual(['Aspect ratio', 'Seed']);
     expect((wrapper.getComponent('.router-link') as any).props('to')).toEqual({
       name: 'nanobanana-index',
@@ -100,8 +101,9 @@ describe('ShowcaseDetailDialog', () => {
     expect(wrapper.emitted('close')).toHaveLength(2);
   });
 
-  it('shows long prompts collapsed and toggles the accessible disclosure', async () => {
-    const wrapper = mountDialog({ ...baseItem, prompt: 'Long prompt '.repeat(120) });
+  it('opens long prompts in an independently scrollable Dialog', async () => {
+    const longPrompt = 'Long prompt '.repeat(120);
+    const wrapper = mountDialog({ ...baseItem, prompt: longPrompt });
     const prompt = wrapper.get('.prompt p').element;
     Object.defineProperties(prompt, {
       scrollHeight: { configurable: true, value: 240 },
@@ -112,14 +114,40 @@ describe('ShowcaseDetailDialog', () => {
 
     const toggle = wrapper.get('.prompt-toggle');
     expect(wrapper.get('.prompt p').classes()).toContain('collapsed');
-    expect(toggle.attributes('aria-expanded')).toBe('false');
-    expect(toggle.attributes('aria-controls')).toBe(`showcase-prompt-${baseItem.id}`);
+    expect(toggle.attributes('aria-haspopup')).toBe('dialog');
+    expect(toggle.attributes('aria-controls')).toBe(`showcase-prompt-dialog-${baseItem.id}`);
+    expect(wrapper.find('.full-prompt').exists()).toBe(false);
 
-    await toggle.trigger('click');
-    expect(wrapper.get('.prompt p').classes()).not.toContain('collapsed');
-    expect(toggle.attributes('aria-expanded')).toBe('true');
+    const focus = vi.spyOn(toggle.element as HTMLButtonElement, 'focus');
     await toggle.trigger('click');
     expect(wrapper.get('.prompt p').classes()).toContain('collapsed');
+    expect(wrapper.get('.full-prompt').text()).toBe(longPrompt.trim());
+    expect(wrapper.findAll('.dialog-stub')).toHaveLength(2);
+
+    const promptDialog = wrapper.findAllComponents({ name: 'ElDialog' })[1];
+    promptDialog.vm.$emit('update:modelValue', false);
+    promptDialog.vm.$emit('closed');
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('.full-prompt').exists()).toBe(false);
+    expect(focus).toHaveBeenCalledOnce();
+    expect(wrapper.find('.detail-layout').exists()).toBe(true);
+  });
+
+  it('closes the full-prompt Dialog when the selected item changes', async () => {
+    const wrapper = mountDialog({ ...baseItem, prompt: 'Long prompt '.repeat(120) });
+    const prompt = wrapper.get('.prompt p').element;
+    Object.defineProperties(prompt, {
+      scrollHeight: { configurable: true, value: 240 },
+      clientHeight: { configurable: true, value: 120 }
+    });
+    resizeCallback([], {} as ResizeObserver);
+    await wrapper.vm.$nextTick();
+    await wrapper.get('.prompt-toggle').trigger('click');
+    expect(wrapper.find('.full-prompt').exists()).toBe(true);
+
+    await wrapper.setProps({ item: { ...baseItem, id: 'next-item', title: 'Next item' } });
+    expect(wrapper.find('.full-prompt').exists()).toBe(false);
+    expect(wrapper.find('.detail-layout').exists()).toBe(true);
   });
 
   it('does not show disclosure for a short prompt', async () => {

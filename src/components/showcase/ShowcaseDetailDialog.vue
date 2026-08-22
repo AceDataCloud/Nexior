@@ -38,24 +38,27 @@
         <div class="detail-scroll">
           <div class="service">
             <img :src="item.icon" alt="" />
-            <span>{{ item.name }}</span>
-            <span v-if="item.model" class="model">{{ item.model }}</span>
+            <div class="service-copy">
+              <span class="service-name">{{ item.name }}</span>
+              <span v-if="item.model" class="model">{{ item.model }}</span>
+            </div>
           </div>
           <h2>{{ item.title }}</h2>
           <section v-if="item.prompt" class="prompt">
             <h3>{{ $t('intro.inspiration.prompt') }}</h3>
-            <p :id="promptId" ref="promptElement" :class="{ collapsed: !promptExpanded }">
+            <p ref="promptElement" class="collapsed">
               {{ item.prompt }}
             </p>
             <button
-              v-if="promptOverflowing || promptExpanded"
+              v-if="promptOverflowing"
+              ref="promptToggle"
               type="button"
               class="prompt-toggle"
-              :aria-expanded="promptExpanded"
-              :aria-controls="promptId"
-              @click="promptExpanded = !promptExpanded"
+              aria-haspopup="dialog"
+              :aria-controls="promptDialogId"
+              @click="promptDialogVisible = true"
             >
-              {{ $t(promptExpanded ? 'intro.inspiration.showLess' : 'intro.inspiration.showMore') }}
+              {{ $t('intro.inspiration.showMore') }}
             </button>
           </section>
           <section v-if="item.parameters.length" class="parameters">
@@ -74,6 +77,18 @@
       </aside>
     </div>
   </el-dialog>
+  <el-dialog
+    :id="promptDialogId"
+    v-model="promptDialogVisible"
+    width="min(760px, calc(100vw - 24px))"
+    align-center
+    append-to-body
+    class="showcase-prompt-dialog"
+    :title="$t('intro.inspiration.prompt')"
+    @closed="restorePromptFocus"
+  >
+    <div class="full-prompt">{{ item?.prompt }}</div>
+  </el-dialog>
 </template>
 
 <script setup lang="ts">
@@ -87,11 +102,12 @@ import ShowcaseAudioPlayer from './ShowcaseAudioPlayer.vue';
 const props = defineProps<{ item?: ResolvedShowcase }>();
 const emit = defineEmits<{ close: [] }>();
 const promptElement = ref<HTMLElement>();
-const promptExpanded = ref(false);
+const promptToggle = ref<HTMLButtonElement>();
+const promptDialogVisible = ref(false);
 const promptOverflowing = ref(false);
 let resizeObserver: ResizeObserver | undefined;
 
-const promptId = computed(() => `showcase-prompt-${props.item?.id || 'empty'}`);
+const promptDialogId = computed(() => `showcase-prompt-dialog-${props.item?.id || 'empty'}`);
 const dialogWidth = computed(() => {
   if (!props.item) return 'min(1180px, calc(100vw - 32px))';
   if (props.item.mediaType === 'Audio') return 'min(920px, calc(100vw - 32px))';
@@ -102,7 +118,7 @@ const dialogWidth = computed(() => {
 
 function measurePrompt(): void {
   const element = promptElement.value;
-  if (!element || promptExpanded.value) return;
+  if (!element) return;
   promptOverflowing.value = element.scrollHeight > element.clientHeight + 1;
 }
 
@@ -117,7 +133,7 @@ function observePrompt(): void {
 watch(
   () => props.item?.id,
   async () => {
-    promptExpanded.value = false;
+    promptDialogVisible.value = false;
     promptOverflowing.value = false;
     await nextTick();
     measurePrompt();
@@ -127,6 +143,10 @@ watch(
 );
 
 onBeforeUnmount(() => resizeObserver?.disconnect());
+
+function restorePromptFocus(): void {
+  promptToggle.value?.focus();
+}
 
 function parameterLabel(key: string): string {
   const normalized = key.replaceAll('_', ' ');
@@ -146,6 +166,25 @@ function parameterLabel(key: string): string {
 
   .el-dialog__body {
     padding: 0;
+  }
+}
+
+.showcase-prompt-dialog {
+  display: flex;
+  max-height: calc(100dvh - 24px);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+
+  .el-dialog__header {
+    flex: none;
+    padding-right: 52px;
+  }
+
+  .el-dialog__body {
+    min-height: 0;
+    overflow: hidden;
+    padding-top: 8px;
   }
 }
 </style>
@@ -277,25 +316,39 @@ function parameterLabel(key: string): string {
 
 .service {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 9px;
   padding-right: 36px;
   color: var(--el-text-color-secondary);
   font-size: 13px;
-  font-weight: 750;
 
   img {
     width: 30px;
     height: 30px;
+    flex: none;
     border-radius: 8px;
     object-fit: cover;
   }
 
+  .service-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .service-name {
+    font-weight: 750;
+  }
+
   .model {
+    max-width: 100%;
     padding: 4px 8px;
     border-radius: 999px;
     background: var(--el-fill-color-light);
     font-size: 11px;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -311,6 +364,16 @@ function parameterLabel(key: string): string {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
   }
+}
+
+.full-prompt {
+  max-height: calc(100dvh - 156px);
+  overflow-y: auto;
+  padding-right: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.75;
+  overscroll-behavior: contain;
 }
 
 .prompt-toggle {
