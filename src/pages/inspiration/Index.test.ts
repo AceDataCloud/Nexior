@@ -117,6 +117,24 @@ describe('Inspiration gallery page', () => {
     });
   });
 
+  it('keeps a service deep link until the feed has finished loading', async () => {
+    let resolveFeed: (value: any) => void = () => undefined;
+    vi.mocked(showcaseOperator.list).mockReturnValue(
+      new Promise((resolve) => {
+        resolveFeed = resolve;
+      })
+    );
+    const { push } = mountPage({ service: 'nano-banana' });
+
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalled());
+    expect(push).not.toHaveBeenCalled();
+
+    resolveFeed({ data: [image, video] });
+    await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalledTimes(1));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(push).not.toHaveBeenCalled();
+  });
+
   it('clears an unavailable deep link after loading completes', async () => {
     const { push } = mountPage({ showcase: 'd4ee4644-1246-4d97-802b-384643eb2db2' });
     await vi.waitFor(() => expect(showcaseOperator.list).toHaveBeenCalled());
