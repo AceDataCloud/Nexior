@@ -3,7 +3,7 @@ import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
 import { routes, setupRouterGuards, setActiveRouter } from './router';
 import store from './store';
-import i18n, { setI18nLanguage, getLocale } from './i18n';
+import i18n, { setI18nLanguage } from './i18n';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
@@ -21,7 +21,7 @@ import CapabilityPresentation from '@/components/common/CapabilityPresentation.v
 import { getSurface, isNative, isDesktop, isMacOS, isWindows } from '@/utils/surface';
 import { resolveDeferredInviterId } from '@/utils/attribution';
 import { getDomain } from '@/utils';
-import { resolveBootLocale } from '@/utils/siteLocales';
+import { resolveBootLocaleCookie } from '@/utils/siteLocales';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { initializeSiteAnalytics } from '@/utils/siteAnalytics';
 import { runVersionGate } from '@/utils/versionGate';
@@ -113,9 +113,9 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   // Resolve against the saved LOCALE cookie, not `i18n.global.locale`: the
   // router guard that applies the cookie runs after this hook, so the live
   // locale is still the vue-i18n default and we'd clobber the user's choice.
-  const savedLocale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
-  const siteLocale = resolveBootLocale(savedLocale, store.state.site);
-  if (siteLocale !== savedLocale) {
+  const savedLocale = getCookie('LOCALE');
+  const { locale: siteLocale, shouldPersist } = resolveBootLocaleCookie(savedLocale, store.state.site);
+  if (shouldPersist) {
     await setI18nLanguage(siteLocale);
     setCookie('LOCALE', siteLocale, { path: '/', domain: getDomain() });
   }

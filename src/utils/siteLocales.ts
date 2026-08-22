@@ -8,6 +8,15 @@ export const getSiteLocaleOptions = (supportedLocales?: string[] | null): I18nLo
   return options.length > 0 ? options : I18N_SUPPORTED_LOCALES;
 };
 
+export const getSiteLocaleValues = (supportedLocales?: string[] | null): string[] =>
+  getSiteLocaleOptions(supportedLocales).map((locale) => locale.value);
+
+export const serializeSiteLocales = (locales: string[]): string[] | null => {
+  const selected = new Set(locales);
+  const supported = I18N_SUPPORTED_LOCALES.filter((locale) => selected.has(locale.value)).map((locale) => locale.value);
+  return supported.length === I18N_SUPPORTED_LOCALES.length ? null : supported;
+};
+
 /**
  * The site pins every visitor to one language. Unset means auto-detect.
  * Ignores values we ship no bundle for, so a stale row can't strand the UI
@@ -37,3 +46,8 @@ export const resolveSiteLocale = (currentLocale: string, site?: ISite | null): s
  */
 export const resolveBootLocale = (savedLocale: string | undefined, site?: ISite | null): string =>
   resolveSiteLocale(savedLocale || I18N_DEFAULT_LOCALE, site);
+
+export const resolveBootLocaleCookie = (savedLocale: string | undefined, site?: ISite | null) => {
+  const locale = resolveBootLocale(savedLocale, site);
+  return { locale, shouldPersist: locale !== savedLocale };
+};

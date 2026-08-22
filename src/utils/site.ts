@@ -2,6 +2,7 @@ import { IApplication, ISite, ISiteContact } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { BASE_HOST_HUB } from '@/constants/endpoint';
 import { isNative, isDesktop } from './surface';
+import { getSiteLocaleValues, serializeSiteLocales } from './siteLocales';
 
 /**
  * Resolve the origin we send to PlatformBackend's
@@ -36,6 +37,15 @@ export const toWritableSitePayload = (site: ISite): ISite => {
     auto_translated_fields: _autoTranslatedFields,
     ...writableSite
   } = site;
+  if ('supported_locales' in writableSite) {
+    writableSite.supported_locales = serializeSiteLocales(getSiteLocaleValues(writableSite.supported_locales));
+  }
+  if ('forced_locale' in writableSite) {
+    const offered = getSiteLocaleValues(writableSite.supported_locales);
+    if (!writableSite.forced_locale || !offered.includes(writableSite.forced_locale)) {
+      writableSite.forced_locale = null;
+    }
+  }
   return writableSite;
 };
 

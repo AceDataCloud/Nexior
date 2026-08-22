@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
-import { getSiteLocaleOptions, getForcedLocale, resolveBootLocale, resolveSiteLocale } from './siteLocales';
+import {
+  getSiteLocaleOptions,
+  getSiteLocaleValues,
+  getForcedLocale,
+  resolveBootLocale,
+  resolveBootLocaleCookie,
+  resolveSiteLocale,
+  serializeSiteLocales
+} from './siteLocales';
 
 describe('site locale policy', () => {
   it('supports every locale when the site has no explicit selection', () => {
@@ -21,6 +29,17 @@ describe('site locale policy', () => {
   it('fails open when a legacy payload contains only removed locales', () => {
     expect(getSiteLocaleOptions(['pl', 'fi', 'sv', 'el', 'uk', 'sr'])).toEqual(I18N_SUPPORTED_LOCALES);
   });
+
+  it('filters removed locales from mixed legacy payloads', () => {
+    expect(getSiteLocaleValues(['pl', 'en', 'ja', 'sr'])).toEqual(['en', 'ja']);
+  });
+
+  it('serializes only the canonical supported locale set', () => {
+    expect(
+      serializeSiteLocales(['pl', 'en', 'de', 'pt', 'es', 'fr', 'zh-CN', 'zh-TW', 'it', 'ko', 'ja', 'ru'])
+    ).toEqual(['en', 'de', 'pt', 'es', 'fr', 'zh-CN', 'zh-TW', 'it', 'ko', 'ja', 'ru']);
+    expect(serializeSiteLocales([...I18N_SUPPORTED_LOCALES.map((locale) => locale.value), 'pl', 'en'])).toBeNull();
+  });
 });
 
 describe('boot locale', () => {
@@ -32,6 +51,11 @@ describe('boot locale', () => {
 
   it('falls back to the default when no locale was saved', () => {
     expect(resolveBootLocale(undefined, {})).toBe('en');
+  });
+
+  it('persists the fallback over a removed locale cookie', () => {
+    expect(resolveBootLocaleCookie('pl', {})).toEqual({ locale: 'en', shouldPersist: true });
+    expect(resolveBootLocaleCookie('ja', {})).toEqual({ locale: 'ja', shouldPersist: false });
   });
 
   it('overrides a saved locale the site no longer offers', () => {

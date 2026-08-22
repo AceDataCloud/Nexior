@@ -27,4 +27,28 @@ describe('toWritableSitePayload', () => {
       features: { chatgpt: { enabled: true } }
     });
   });
+
+  it('normalizes removed locale values before any settings page resubmits the site', () => {
+    expect(
+      toWritableSitePayload({
+        supported_locales: ['pl', 'en', 'ja', 'sr'],
+        forced_locale: 'pl'
+      })
+    ).toEqual({
+      supported_locales: ['en', 'ja'],
+      forced_locale: null
+    });
+  });
+
+  it('uses null only when every current locale is selected', () => {
+    expect(
+      toWritableSitePayload({
+        supported_locales: ['pl', 'en', 'de', 'pt', 'es', 'fr', 'zh-CN', 'zh-TW', 'it', 'ko', 'ja', 'ru'],
+        forced_locale: 'ja'
+      })
+    ).toEqual({
+      supported_locales: ['en', 'de', 'pt', 'es', 'fr', 'zh-CN', 'zh-TW', 'it', 'ko', 'ja', 'ru'],
+      forced_locale: 'ja'
+    });
+  });
 });
