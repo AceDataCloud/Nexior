@@ -1,6 +1,7 @@
 import store from '@/store';
 import { getSiteLocaleOptions } from '@/utils/siteLocales';
 import { isMainOfficial } from '@/utils/is';
+import { replaceBrandName } from '@/utils/site';
 
 // Resolve the current site origin at runtime so that the same bundle can be
 // served independently from multiple official hostnames (e.g. hub.acedata.cloud,
@@ -137,11 +138,12 @@ function removeHreflang() {
 
 export function setWebApplicationSchema(options: { name: string; description: string; url: string; category: string }) {
   const { brandName } = brand();
+  const site = store.state.site;
   setJsonLd('seo-webapp-ld', {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: options.name,
-    description: options.description,
+    name: replaceBrandName(options.name, site),
+    description: replaceBrandName(options.description, site),
     url: options.url,
     applicationCategory: options.category,
     operatingSystem: 'Web',
@@ -177,8 +179,9 @@ export function setOrganization() {
 
 export function updateSeo(options: SeoOptions) {
   const { siteName, brandName, description: brandDescription, image: brandImage } = brand();
-  const title = options.title ? `${options.title} - ${siteName}` : siteName;
-  const description = options.description || brandDescription;
+  const authoredTitle = options.title ? replaceBrandName(options.title, store.state.site) : '';
+  const title = authoredTitle ? `${authoredTitle} - ${siteName}` : siteName;
+  const description = options.description ? replaceBrandName(options.description, store.state.site) : brandDescription;
   const url = options.url || `${getCurrentOrigin()}${window.location.pathname}`;
   const image = options.image || brandImage;
   const ogType = options.type || 'website';

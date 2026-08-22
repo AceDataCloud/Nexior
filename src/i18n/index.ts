@@ -3,9 +3,18 @@ import { makeGetLocale } from '@acedatacloud/core';
 import { makeFlatLoader, createSetI18nLanguage } from '@acedatacloud/core/i18n';
 import { I18N_DEFAULT_LOCALE, I18N_SCOPES, I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import axios from 'axios';
+import type { ISite } from '@/models';
+import { replaceBrandName } from '@/utils/site';
+
+let resolveBrandSite: () => ISite | null | undefined = () => undefined;
+
+export const setBrandSiteResolver = (resolver: () => ISite | null | undefined): void => {
+  resolveBrandSite = resolver;
+};
 
 export const i18n = createI18n({
-  legacy: true
+  legacy: true,
+  postTranslation: (value) => (typeof value === 'string' ? replaceBrandName(value, resolveBrandSite()) : value)
 });
 
 // Locale resolution now lives in @acedatacloud/core; the supported-locale list

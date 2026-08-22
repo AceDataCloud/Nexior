@@ -8,6 +8,7 @@ import {
   applyMarkup,
   isBrandingHidden,
   getBrandName,
+  replaceBrandName,
   getBrandCopyright,
   getBrandSupportUrl,
   getBrandContacts,
@@ -155,6 +156,12 @@ describe('brand footer values', () => {
     expect(getBrandName({ title: '  turboclaw  ' } as never)).toBe('turboclaw');
     expect(getBrandName({ title: '   ' } as never)).toBe('Ace Data Cloud');
     expect(getBrandName(null)).toBe('Ace Data Cloud');
+  });
+
+  it('rebrands translated copy without claiming technical identifiers', () => {
+    const site = { title: '知数云' } as never;
+    expect(replaceBrandName('我喜欢 Ace Data Cloud 的服务', site)).toBe('我喜欢知数云的服务');
+    expect(replaceBrandName('AceDataCloud on GitHub', site)).toBe('AceDataCloud on GitHub');
   });
 
   it('returns only a non-empty custom copyright', () => {

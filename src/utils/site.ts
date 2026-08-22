@@ -2,6 +2,7 @@ import { IApplication, ISite, ISiteContact } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { BASE_HOST_HUB } from '@/constants/endpoint';
 import { isNative, isDesktop } from './surface';
+import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
 import { getSiteLocaleValues, serializeSiteLocales } from './siteLocales';
 
 /**
@@ -98,6 +99,12 @@ export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_b
 
 export const getBrandName = (site?: ISite | null): string => {
   return site?.title?.trim() || 'Ace Data Cloud';
+};
+
+const BRAND_NAME_VARIANTS = ['Ace Data Cloud', 'AceData Cloud'] as const;
+
+export const replaceBrandName = (text: string, site?: ISite | null): string => {
+  return replaceBrandText(text, getBrandName(site), BRAND_NAME_VARIANTS);
 };
 
 export const getBrandCopyright = (site?: ISite | null): string | undefined => {
