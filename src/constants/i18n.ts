@@ -12,13 +12,7 @@ export const I18N_SUPPORTED_LOCALES = [
   { value: 'ko', label: '한국어' },
   { value: 'ja', label: '日本語' },
   { value: 'ru', label: 'Русский' },
-  { value: 'pl', label: 'Polski' },
-  { value: 'fi', label: 'Suomi' },
-  { value: 'sv', label: 'Svenska' },
-  { value: 'el', label: 'Ελληνικά' },
-  { value: 'uk', label: 'Українська' },
-  { value: 'ar', label: 'العربية' },
-  { value: 'sr', label: 'Српски' }
+  { value: 'ar', label: 'العربية' }
 ];
 
 export type I18nLocaleOption = (typeof I18N_SUPPORTED_LOCALES)[number];

@@ -18,8 +18,8 @@ describe('site locale policy', () => {
     expect(resolveSiteLocale('de', { supported_locales: ['zh-CN', 'ja'] })).toBe('zh-CN');
   });
 
-  it('fails open when a legacy payload contains no recognized locale', () => {
-    expect(getSiteLocaleOptions(['xx'])).toEqual(I18N_SUPPORTED_LOCALES);
+  it('fails open when a legacy payload contains only removed locales', () => {
+    expect(getSiteLocaleOptions(['pl', 'fi', 'sv', 'el', 'uk', 'sr'])).toEqual(I18N_SUPPORTED_LOCALES);
   });
 });
 
@@ -46,8 +46,10 @@ describe('forced locale', () => {
     expect(getForcedLocale(null)).toBeUndefined();
   });
 
-  it('ignores a locale we ship no bundle for', () => {
-    expect(getForcedLocale({ forced_locale: 'xx' })).toBeUndefined();
+  it('ignores locales we no longer ship bundles for', () => {
+    for (const locale of ['pl', 'fi', 'sv', 'el', 'uk', 'sr']) {
+      expect(getForcedLocale({ forced_locale: locale })).toBeUndefined();
+    }
   });
 
   it('outranks the saved locale at boot', () => {

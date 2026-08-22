@@ -71,13 +71,7 @@ TARGET_LOCALES = (
     "ko",
     "ja",
     "ru",
-    "pl",
-    "fi",
-    "sv",
-    "el",
-    "uk",
     "ar",
-    "sr",
 )
 LANGUAGE_NAMES = {
     "en": "English",
@@ -90,13 +84,7 @@ LANGUAGE_NAMES = {
     "ko": "Korean (한국어)",
     "ja": "Japanese (日本語)",
     "ru": "Russian (Русский)",
-    "pl": "Polish (Polski)",
-    "fi": "Finnish (Suomi)",
-    "sv": "Swedish (Svenska)",
-    "el": "Greek (Ελληνικά)",
-    "uk": "Ukrainian (Українська)",
     "ar": "Arabic (العربية)",
-    "sr": "Serbian (Српски)",
 }
 REPO_ROOT = Path(__file__).resolve().parent.parent
 I18N_ROOT = REPO_ROOT / "src" / "i18n"
