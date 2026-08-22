@@ -20,19 +20,26 @@
         <el-option value="mov" label="MOV" />
       </el-select>
     </div>
+    <div class="field">
+      <div class="label">
+        <h2 class="title font-bold">{{ $t('seedance.name.webSearch') }}</h2>
+        <info-icon :content="$t('seedance.description.webSearch')" class="info" />
+      </div>
+      <el-switch v-model="webSearch" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElOption, ElSelect } from 'element-plus';
+import { ElOption, ElSelect, ElSwitch } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { SEEDANCE_MODEL_2_5 } from '@/constants';
 import type { SeedanceOutputFormat, SeedanceTaskType } from '@/models';
 
 export default defineComponent({
   name: 'SeedanceAdvanced25Settings',
-  components: { ElOption, ElSelect, InfoIcon },
+  components: { ElOption, ElSelect, ElSwitch, InfoIcon },
   computed: {
     visible(): boolean {
       return this.$store.state.seedance?.config?.model === SEEDANCE_MODEL_2_5;
@@ -51,6 +58,14 @@ export default defineComponent({
       },
       set(value: SeedanceOutputFormat) {
         this.updateConfig({ output_format: value });
+      }
+    },
+    webSearch: {
+      get(): boolean {
+        return this.$store.state.seedance?.config?.web_search === true;
+      },
+      set(value: boolean) {
+        this.updateConfig({ web_search: value });
       }
     }
   },

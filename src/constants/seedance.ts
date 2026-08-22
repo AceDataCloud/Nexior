@@ -82,6 +82,11 @@ export interface ISeedanceModelCapability {
   acceptsReferenceVideo: boolean;
   /** Accepts reference audio without a paired image or video. */
   supportsAudioOnly: boolean;
+  /** Reference-media limits enforced before submission. */
+  maxReferenceImages: number;
+  maxReferenceVideos: number;
+  maxReferenceAudios: number;
+  maxReferenceMedia: number;
   /** Seedance 2.5 task types exposed by the studio. */
   taskTypes: readonly ('auto' | 'edit' | 'extend')[];
   /** Supported output containers. */
@@ -97,7 +102,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsAudio: true,
     acceptsReturnLastFrame: true,
     defaultResolution: SEEDANCE_RESOLUTION_720P,
-    maxResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_1080P,
     minDuration: 4,
     maxDuration: SEEDANCE_2_5_MAX_DURATION,
     supportsAutoDuration: true,
@@ -105,6 +110,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true,
     supportsAudioOnly: true,
+    maxReferenceImages: 30,
+    maxReferenceVideos: 10,
+    maxReferenceAudios: 10,
+    maxReferenceMedia: 50,
     taskTypes: ['auto', 'edit', 'extend'],
     outputFormats: ['mp4', 'mov']
   },
@@ -124,6 +133,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false,
     supportsAudioOnly: false,
+    maxReferenceImages: 0,
+    maxReferenceVideos: 0,
+    maxReferenceAudios: 0,
+    maxReferenceMedia: 0,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -143,6 +156,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false,
     supportsAudioOnly: false,
+    maxReferenceImages: 0,
+    maxReferenceVideos: 0,
+    maxReferenceAudios: 0,
+    maxReferenceMedia: 0,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -162,6 +179,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false,
     supportsAudioOnly: false,
+    maxReferenceImages: 0,
+    maxReferenceVideos: 0,
+    maxReferenceAudios: 0,
+    maxReferenceMedia: 0,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -181,6 +202,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true,
     supportsAudioOnly: false,
+    maxReferenceImages: 9,
+    maxReferenceVideos: 3,
+    maxReferenceAudios: 3,
+    maxReferenceMedia: 15,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -200,6 +225,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true,
     supportsAudioOnly: false,
+    maxReferenceImages: 9,
+    maxReferenceVideos: 3,
+    maxReferenceAudios: 3,
+    maxReferenceMedia: 15,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -219,6 +248,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true,
     supportsAudioOnly: false,
+    maxReferenceImages: 9,
+    maxReferenceVideos: 3,
+    maxReferenceAudios: 3,
+    maxReferenceMedia: 15,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -238,6 +271,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false,
     supportsAudioOnly: false,
+    maxReferenceImages: 0,
+    maxReferenceVideos: 0,
+    maxReferenceAudios: 0,
+    maxReferenceMedia: 0,
     taskTypes: [],
     outputFormats: ['mp4']
   },
@@ -257,6 +294,10 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false,
     supportsAudioOnly: false,
+    maxReferenceImages: 0,
+    maxReferenceVideos: 0,
+    maxReferenceAudios: 0,
+    maxReferenceMedia: 0,
     taskTypes: [],
     outputFormats: ['mp4']
   }

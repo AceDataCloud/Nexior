@@ -1,6 +1,9 @@
 export type SeedanceImageRole = 'first_frame' | 'last_frame' | 'reference_image';
 export type SeedanceTaskType = 'auto' | 'edit' | 'extend';
 export type SeedanceOutputFormat = 'mp4' | 'mov';
+export interface ISeedanceWebSearchTool {
+  type: 'web_search';
+}
 
 export interface ISeedanceImageInput {
   url: string;
@@ -16,7 +19,7 @@ export interface ISeedanceMediaInput {
 export interface ISeedanceContentItem {
   type: 'text' | 'image_url' | 'audio_url' | 'video_url';
   text?: string;
-  role?: SeedanceImageRole;
+  role?: SeedanceImageRole | 'reference_audio' | 'reference_video';
   image_url?: { url: string };
   audio_url?: { url: string };
   video_url?: { url: string };
@@ -37,12 +40,12 @@ export interface ISeedanceConfig {
   seed?: number;
   camerafixed?: boolean;
   generate_audio?: boolean;
-  service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
   omni_reference_task_type?: SeedanceTaskType;
   output_format?: SeedanceOutputFormat;
-  tools?: Record<string, unknown>[];
+  tools?: ISeedanceWebSearchTool[];
+  web_search?: boolean;
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;
@@ -61,12 +64,12 @@ export interface ISeedanceGenerateRequest {
   seed?: number;
   camerafixed?: boolean;
   generate_audio?: boolean;
-  service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
   omni_reference_task_type?: SeedanceTaskType;
   output_format?: SeedanceOutputFormat;
-  tools?: Record<string, unknown>[];
+  tools?: ISeedanceWebSearchTool[];
+  web_search?: boolean;
   callback_url?: string;
   async?: boolean;
   mirror?: boolean;

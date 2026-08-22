@@ -15,7 +15,9 @@ export type SeedanceRejectReason =
   | 'modelUnsupported'
   | 'modelRequiresImage'
   | 'modelRejectsImage'
-  | 'audioRequiresReference';
+  | 'audioRequiresReference'
+  | 'referenceMediaExceeded'
+  | 'taskRequiresVideo';
 
 export interface SeedanceNormalizeResult {
   request?: ISeedanceGenerateRequest;
@@ -98,12 +100,36 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
   // official combos are 图片+音频 / 视频+音频 / 图片+视频+音频 (纯音频 and 文本+音频
   // are rejected upstream). Require a paired image or video reference.
   const hasVideo = Array.isArray(cfg.videos) && cfg.videos.length > 0;
+  const referenceImageCount = (cfg.images || []).filter(
+    (img: ISeedanceImageInput) => img.role === 'reference_image'
+  ).length;
+  const mediaImageCount = cfg.model === 'doubao-seedance-2-5-260628' ? cfg.images?.length || 0 : referenceImageCount;
+  const videoCount = cfg.videos?.length || 0;
+  const audioCount = cfg.audios?.length || 0;
+  if (
+    referenceImageCount > cap.maxReferenceImages ||
+    videoCount > cap.maxReferenceVideos ||
+    audioCount > cap.maxReferenceAudios ||
+    mediaImageCount + videoCount + audioCount > cap.maxReferenceMedia
+  ) {
+    return { reject: 'referenceMediaExceeded' };
+  }
   if (Array.isArray(cfg.audios) && cfg.audios.length > 0 && !hasImages && !hasVideo && !cap.supportsAudioOnly) {
     return { reject: 'audioRequiresReference' };
   }
 
   if (!cap.taskTypes.includes(cfg.omni_reference_task_type)) delete cfg.omni_reference_task_type;
   if (!cap.outputFormats.includes(cfg.output_format)) delete cfg.output_format;
+  if (cfg.model === 'doubao-seedance-2-5-260628' && cfg.web_search === true) cfg.tools = [{ type: 'web_search' }];
+  else delete cfg.tools;
+  delete cfg.web_search;
+  if (
+    cfg.model === 'doubao-seedance-2-5-260628' &&
+    cfg.images?.some((img: ISeedanceImageInput) => img.role === 'first_frame' || img.role === 'last_frame')
+  )
+    cfg.ratio = 'adaptive';
+  if ((cfg.omni_reference_task_type === 'edit' || cfg.omni_reference_task_type === 'extend') && !hasVideo)
+    return { reject: 'taskRequiresVideo' };
   if (cfg.omni_reference_task_type === 'edit') {
     cfg.ratio = 'adaptive';
     cfg.duration = -1;
