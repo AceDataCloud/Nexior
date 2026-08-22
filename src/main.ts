@@ -3,7 +3,7 @@ import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
 import { routes, setupRouterGuards, setActiveRouter } from './router';
 import store from './store';
-import i18n, { setI18nLanguage } from './i18n';
+import i18n, { setBrandSiteResolver, setI18nLanguage } from './i18n';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
@@ -43,6 +43,8 @@ import {
   initializeRedirect,
   initializeFingerprint
 } from './utils/initializer';
+
+setBrandSiteResolver(() => store.state.site);
 
 const applyBootLocale = async (site?: Parameters<typeof resolveBootLocaleCookie>[1]) => {
   const savedLocale = getCookie('LOCALE');
