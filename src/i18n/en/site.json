@@ -503,23 +503,74 @@
     "message": "Image upload failed.",
     "description": "Error for failed upload in image cropper"
   },
-  "logoStudio.analysisReady": { "message": "Image analysis complete", "description": "Status heading in smart brand image processing" },
-  "logoStudio.analysisSummary": { "message": "{width}×{height} px · {confidence}% background confidence", "description": "Image dimensions and background confidence" },
-  "logoStudio.backgroundDetected": { "message": "Solid background detected", "description": "Status shown for a removable flat background" },
-  "logoStudio.transparentOrComplex": { "message": "Transparent or complex background", "description": "Status shown when automatic removal is not recommended" },
-  "logoStudio.removeBackground": { "message": "Remove background", "description": "Automatic background removal toggle" },
-  "logoStudio.backgroundColor": { "message": "Background color", "description": "Color targeted by background removal" },
-  "logoStudio.edgeTolerance": { "message": "Edge tolerance", "description": "Background-removal tolerance slider" },
-  "logoStudio.refreshPreview": { "message": "Update preview", "description": "Reprocess the image with changed settings" },
-  "logoStudio.modeBrand": { "message": "Brand colors", "description": "Use the color logo in both themes" },
-  "logoStudio.modeBalanced": { "message": "Smart adaptive", "description": "Use color on light and white on dark" },
-  "logoStudio.modeMono": { "message": "Monochrome", "description": "Use black on light and white on dark" },
-  "logoStudio.lightTheme": { "message": "Light theme", "description": "Light-background image preview label" },
-  "logoStudio.darkTheme": { "message": "Dark theme", "description": "Dark-background image preview label" },
-  "logoStudio.previewOutdated": { "message": "Settings changed. Update the preview before applying.", "description": "Warning when settings no longer match the preview" },
-  "logoStudio.back": { "message": "Back to crop", "description": "Return from preview to cropping" },
-  "logoStudio.analyze": { "message": "Analyze and preview", "description": "Start smart image processing" },
-  "logoStudio.apply": { "message": "Apply image", "description": "Confirm the processed brand image" },
+  "logoStudio.analysisReady": {
+    "message": "Image analysis complete",
+    "description": "Status heading in smart brand image processing"
+  },
+  "logoStudio.analysisSummary": {
+    "message": "{width}×{height} px · {confidence}% background confidence",
+    "description": "Image dimensions and background confidence"
+  },
+  "logoStudio.backgroundDetected": {
+    "message": "Solid background detected",
+    "description": "Status shown for a removable flat background"
+  },
+  "logoStudio.transparentOrComplex": {
+    "message": "Transparent or complex background",
+    "description": "Status shown when automatic removal is not recommended"
+  },
+  "logoStudio.removeBackground": {
+    "message": "Remove background",
+    "description": "Automatic background removal toggle"
+  },
+  "logoStudio.backgroundColor": {
+    "message": "Background color",
+    "description": "Color targeted by background removal"
+  },
+  "logoStudio.edgeTolerance": {
+    "message": "Edge tolerance",
+    "description": "Background-removal tolerance slider"
+  },
+  "logoStudio.refreshPreview": {
+    "message": "Update preview",
+    "description": "Reprocess the image with changed settings"
+  },
+  "logoStudio.modeBrand": {
+    "message": "Brand colors",
+    "description": "Use the color logo in both themes"
+  },
+  "logoStudio.modeBalanced": {
+    "message": "Smart adaptive",
+    "description": "Use color on light and white on dark"
+  },
+  "logoStudio.modeMono": {
+    "message": "Monochrome",
+    "description": "Use black on light and white on dark"
+  },
+  "logoStudio.lightTheme": {
+    "message": "Light theme",
+    "description": "Light-background image preview label"
+  },
+  "logoStudio.darkTheme": {
+    "message": "Dark theme",
+    "description": "Dark-background image preview label"
+  },
+  "logoStudio.previewOutdated": {
+    "message": "Settings changed. Update the preview before applying.",
+    "description": "Warning when settings no longer match the preview"
+  },
+  "logoStudio.back": {
+    "message": "Back to crop",
+    "description": "Return from preview to cropping"
+  },
+  "logoStudio.analyze": {
+    "message": "Analyze and preview",
+    "description": "Start smart image processing"
+  },
+  "logoStudio.apply": {
+    "message": "Apply image",
+    "description": "Confirm the processed brand image"
+  },
   "message.editLogoTip": {
     "message": "Recommended Size: 200*60px",
     "description": "Tip for uploading images"
@@ -1212,10 +1263,6 @@
     "message": "Use a 1600 × 500 PNG, JPEG, or WebP image for best results.",
     "description": "Recommended banner image dimensions."
   },
-  "banner.addLanguage": {
-    "message": "Add Language",
-    "description": "Button to add a banner copy locale."
-  },
   "banner.scheduled": {
     "message": "Scheduled",
     "description": "Banner has not reached its start time."
@@ -1255,5 +1302,17 @@
   "banner.deleteFailed": {
     "message": "Failed to delete banner",
     "description": "Banner delete error."
+  },
+  "banner.sourceTip": {
+    "message": "Write the Chinese source copy, then use the globe button to enable automatic translation.",
+    "description": "Explains Banner source authoring and automatic translation."
+  },
+  "banner.saveBeforeTranslate": {
+    "message": "Save the banner before enabling automatic translation",
+    "description": "Disabled tooltip before a new Banner has an ID."
+  },
+  "banner.savedEnableTranslation": {
+    "message": "Saved. You can now enable automatic translation for the title or subtitle.",
+    "description": "Prompt shown after first saving a Banner."
   }
 }

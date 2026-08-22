@@ -53,6 +53,7 @@ const mountHome = (site: Record<string, unknown>) =>
 describe('Studio workbench home', () => {
   beforeEach(() => {
     vi.unstubAllGlobals();
+    vi.clearAllMocks();
     vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
     vi.mocked(siteBannerOperator.getPublic).mockResolvedValue({ data: [] } as any);
   });
@@ -269,6 +270,14 @@ describe('Studio workbench home', () => {
     await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalled());
     expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(false);
   });
+  it('reloads localized banners when the UI locale changes', async () => {
+    const wrapper = mountHome({ id: 'studio', features: studioFeatures });
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalledTimes(1));
+    (wrapper.vm as any).$i18n.locale = 'zh-CN';
+    await (wrapper.vm as any).$options.watch['$i18n.locale'].call(wrapper.vm);
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalledTimes(2));
+  });
+
   it('removes a failed visual without exposing a broken URL', async () => {
     const wrapper = mountHome({ id: 'studio', features: { maestro: { enabled: true } } });
     const carousel = wrapper.getComponent({ name: 'HomeCarousel' });

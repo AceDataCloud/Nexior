@@ -20,8 +20,11 @@ const banner = {
   id: 'banner-1',
   site: 'site-1',
   image_url: 'https://cdn.example.com/banner.webp',
-  title: { en: 'Launch', 'zh-CN': '发布' },
-  subtitle: { en: 'Try it' },
+  title: { 'zh-CN': '发布' },
+  subtitle: { 'zh-CN': '试试看' },
+  title_source: '发布',
+  subtitle_source: '试试看',
+  auto_translated_fields: ['title'],
   visible: true,
   sort_order: 2
 };
@@ -34,6 +37,13 @@ function mountBanners() {
         $t: (key: string) => key,
         $i18n: { locale: 'en' },
         $store: { state: { site }, dispatch: vi.fn().mockResolvedValue(undefined) }
+      },
+      stubs: {
+        AutoTranslateToggle: {
+          name: 'AutoTranslateToggle',
+          props: ['model', 'field', 'objectId', 'enabled', 'currentValue'],
+          template: '<button class="translate-stub" />'
+        }
       }
     }
   });
@@ -84,8 +94,8 @@ describe('setting/Banners', () => {
       form: {
         imageUrl: 'https://cdn.example.com/new.webp',
         linkUrl: '/seedance',
-        titleRows: [{ locale: 'en', value: 'Create' }],
-        subtitleRows: [],
+        titleSource: '创建',
+        subtitleSource: '立即体验',
         visible: true,
         sortOrder: 3,
         startAt: '',
@@ -94,7 +104,35 @@ describe('setting/Banners', () => {
     });
     await (wrapper.vm as any).onSubmit();
     expect(siteBannerOperator.create).toHaveBeenCalledWith(
-      expect.objectContaining({ site: 'site-1', link_url: '/seedance', title: { en: 'Create' }, sort_order: 3 })
+      expect.objectContaining({
+        site: 'site-1',
+        link_url: '/seedance',
+        title: { 'zh-CN': '创建' },
+        subtitle: { 'zh-CN': '立即体验' },
+        sort_order: 3
+      })
     );
+  });
+
+  it('hydrates one source input and configures both translation toggles', async () => {
+    const wrapper = mountBanners();
+    await vi.waitFor(() => expect(siteBannerOperator.getAll).toHaveBeenCalled());
+    (wrapper.vm as any).openEdit(banner);
+    await wrapper.vm.$nextTick();
+    expect((wrapper.vm as any).form.titleSource).toBe('发布');
+    expect((wrapper.vm as any).form.subtitleSource).toBe('试试看');
+    expect((wrapper.vm as any).translationEnabled('title')).toBe(true);
+    expect((wrapper.vm as any).translationEnabled('subtitle')).toBe(false);
+    const source = (wrapper.vm as any).$options.template || '';
+    expect(source).not.toContain('locale-rows');
+  });
+
+  it('keeps the editor open on the saved record so translation can be enabled', async () => {
+    const wrapper = mountBanners();
+    (wrapper.vm as any).openCreate();
+    await wrapper.setData({ form: { ...(wrapper.vm as any).form, titleSource: '创建' } });
+    await (wrapper.vm as any).onSubmit();
+    expect((wrapper.vm as any).editorVisible).toBe(true);
+    expect((wrapper.vm as any).editing?.id).toBe('banner-1');
   });
 });
