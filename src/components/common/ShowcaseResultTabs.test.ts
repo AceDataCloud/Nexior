@@ -22,9 +22,9 @@ vi.mock('./ShowcaseGrid.vue', () => ({
     template: `<button class="showcase-grid-stub" :data-compact="compact" :data-masonry="masonry" :data-detail="detailPreview" @click="$emit('select', items[0])" />`
   }
 }));
-vi.mock('@/pages/inspiration/components/InspirationDetailDialog.vue', () => ({
+vi.mock('@/components/showcase/ShowcaseDetailDialog.vue', () => ({
   default: {
-    name: 'InspirationDetailDialog',
+    name: 'ShowcaseDetailDialog',
     props: { item: Object },
     emits: ['close'],
     template: `<button class="detail-dialog-stub" @click="$emit('close')" />`
@@ -102,7 +102,7 @@ describe('ShowcaseResultTabs', () => {
     await vi.waitFor(() => expect((wrapper.vm as any).resolvedItems).toHaveLength(1));
 
     await wrapper.get('.showcase-grid-stub').trigger('click');
-    const dialog = wrapper.getComponent({ name: 'InspirationDetailDialog' });
+    const dialog = wrapper.getComponent({ name: 'ShowcaseDetailDialog' });
     expect(dialog.props('item')).toMatchObject({
       id: showcase.id,
       prompt: 'Original glass pavilion',

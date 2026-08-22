@@ -15,9 +15,12 @@
         :title="$t('intro.home.showcase.title')"
         :subtitle="$t('intro.home.showcase.subtitle')"
         :aria-label="$t('intro.home.showcase.title')"
+        detail-preview
+        @select="selectedShowcase = $event"
         @icon-error="onShowcaseIconError"
       />
     </div>
+    <showcase-detail-dialog :item="selectedShowcase" @close="selectedShowcase = undefined" />
   </main>
   <div v-else class="home-loading" role="status" :aria-label="$t('common.status.loading')">
     <span />
@@ -32,6 +35,7 @@ import { showcaseOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
+import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 import CategoryTiles from './components/CategoryTiles.vue';
 import HomeCarousel from './components/HomeCarousel.vue';
 import {
@@ -48,6 +52,7 @@ export default defineComponent({
   components: {
     CategoryTiles,
     ShowcaseGrid,
+    ShowcaseDetailDialog,
     HomeCarousel
   },
   data() {
@@ -57,7 +62,8 @@ export default defineComponent({
       failedCategoryImages: {} as Record<string, boolean>,
       rawShowcases: [] as IShowcase[],
       showcaseLoaded: false,
-      showcaseLoadGeneration: 0
+      showcaseLoadGeneration: 0,
+      selectedShowcase: undefined as ResolvedShowcase | undefined
     };
   },
   computed: {
@@ -141,6 +147,7 @@ export default defineComponent({
       const requestLocale = String(this.$i18n.locale || 'en');
       this.showcaseLoaded = true;
       this.rawShowcases = [];
+      this.selectedShowcase = undefined;
       try {
         const response = await showcaseOperator.list(undefined, requestLocale);
         if (generation === this.showcaseLoadGeneration && String(this.$i18n.locale || 'en') === requestLocale) {

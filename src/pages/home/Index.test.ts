@@ -7,6 +7,14 @@ import Home from './Index.vue';
 import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
 
 vi.mock('@/operators', () => ({ showcaseOperator: { list: vi.fn() } }));
+vi.mock('@/components/showcase/ShowcaseDetailDialog.vue', () => ({
+  default: {
+    name: 'ShowcaseDetailDialog',
+    props: { item: Object },
+    emits: ['close'],
+    template: '<button class="detail-dialog-stub" @click="$emit(\'close\')" />'
+  }
+}));
 
 const studioFeatures = Object.fromEntries(HOME_CAPABILITY_KEYS.map((key) => [key, { enabled: true }]));
 const showcase = {
@@ -107,6 +115,23 @@ describe('Studio workbench home', () => {
     gallery.vm.$emit('icon-error', gallery.props('items')[0]);
     await wrapper.vm.$nextTick();
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].icon).toBe(CAPABILITY_ICONS.seedance);
+  });
+
+  it('opens and closes Showcase details from the Home gallery', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [showcase] } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    const gallery = wrapper.getComponent({ name: 'ShowcaseGrid' });
+    expect(gallery.props('detailPreview')).toBe(true);
+
+    gallery.vm.$emit('select', gallery.props('items')[0]);
+    await wrapper.vm.$nextTick();
+    const dialog = wrapper.getComponent({ name: 'ShowcaseDetailDialog' });
+    expect(dialog.props('item')).toMatchObject({ id: showcase.id, prompt: 'Paper fox' });
+
+    dialog.vm.$emit('close');
+    await wrapper.vm.$nextTick();
+    expect(dialog.props('item')).toBeUndefined();
   });
 
   it('hides only the showcase section when the anonymous list is empty', async () => {

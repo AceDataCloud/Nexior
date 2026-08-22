@@ -33,8 +33,8 @@ vi.mock('vue-i18n', async (importOriginal) => ({
   ...(await importOriginal<typeof import('vue-i18n')>()),
   useI18n: () => ({ locale: mocks.locale })
 }));
-vi.mock('./components/InspirationDetailDialog.vue', () => ({
-  default: { name: 'InspirationDetailDialog', emits: ['close'], template: '<div />' }
+vi.mock('@/components/showcase/ShowcaseDetailDialog.vue', () => ({
+  default: { name: 'ShowcaseDetailDialog', emits: ['close'], template: '<div />' }
 }));
 
 const image = {
@@ -76,7 +76,7 @@ function mountPage(query: Record<string, string> = {}) {
         RouterLink: { props: ['to'], template: '<a><slot /></a>' },
         PublicSectionNav: true,
         InspirationMasonry: true,
-        InspirationDetailDialog: true
+        ShowcaseDetailDialog: true
       }
     }
   });
@@ -110,7 +110,7 @@ describe('Inspiration gallery page', () => {
     });
 
     route.query = { service: 'nano-banana', showcase: image.id };
-    wrapper.getComponent({ name: 'InspirationDetailDialog' }).vm.$emit('close');
+    wrapper.getComponent({ name: 'ShowcaseDetailDialog' }).vm.$emit('close');
     expect(push).toHaveBeenLastCalledWith({
       name: ROUTE_INSPIRATION_IMAGES,
       query: { service: 'nano-banana' }

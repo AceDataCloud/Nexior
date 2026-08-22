@@ -22,7 +22,7 @@
       <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>
     </el-tab-pane>
   </el-tabs>
-  <inspiration-detail-dialog :item="selectedItem" @close="selectedItem = undefined" />
+  <showcase-detail-dialog :item="selectedItem" @close="selectedItem = undefined" />
 </template>
 
 <script setup lang="ts">
@@ -33,7 +33,7 @@ import { ElButton, ElTabPane, ElTabs } from 'element-plus';
 import type { IShowcase, ResolvedShowcase } from '@/models';
 import { showcaseOperator } from '@/operators';
 import { resolveShowcase } from '@/utils/showcase';
-import InspirationDetailDialog from '@/pages/inspiration/components/InspirationDetailDialog.vue';
+import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 import ShowcaseGrid from './ShowcaseGrid.vue';
 
 const props = defineProps<{ service: string }>();
