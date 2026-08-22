@@ -81,7 +81,7 @@ describe('showcase recreate consumer', () => {
     ['kling', { prompt: 'Rain', mode: 'std' }, 'mode'],
     ['veo', { prompt: 'Flower', translation: false }, 'translation'],
     ['grokvideo', { prompt: 'City', resolution: '720p' }, 'resolution'],
-    ['suno', { prompt: 'Nocturne', instrumental: true }, 'instrumental'],
+    ['suno', { action: 'generate', prompt: 'Nocturne', instrumental: true }, 'instrumental'],
     ['producer', { prompt: 'Dream pop', style: 'Dream pop' }, 'style'],
     ['fish', { text: 'Welcome', format: 'mp3', speed: 1 }, 'format']
   ])(
@@ -175,6 +175,16 @@ describe('showcase recreate consumer', () => {
       'suno/setConfig',
       expect.objectContaining({ title: 'Open Window', lyric: '[Verse]\nMorning light' })
     );
+  });
+
+  it('rejects non-generate music actions', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({
+      data: [item('suno', { action: 'extend', prompt: 'Continue this song' })]
+    } as any);
+    const { options, commit } = context('suno');
+    expect(await consumeShowcase(options)).toBe('failed');
+    expect(commit).not.toHaveBeenCalled();
+    expect(ElMessage.warning).toHaveBeenCalled();
   });
 
   it('chooses Veo image-to-video when curated images are present', async () => {
