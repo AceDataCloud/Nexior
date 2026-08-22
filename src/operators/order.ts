@@ -58,7 +58,7 @@ class OrderService {
   ): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/pay/`, data, {
       headers: {
-        'X-PAYMENT': xPaymentHeader
+        'PAYMENT-SIGNATURE': xPaymentHeader
       }
     });
   }

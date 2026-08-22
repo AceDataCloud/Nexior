@@ -906,9 +906,8 @@ export default defineComponent({
           nonce: authorization.nonce
         };
         const payload = {
-          x402Version: 1,
-          scheme: requirements.scheme || 'exact',
-          network: requirements.network || this.expectedNetwork || 'base',
+          x402Version: 2,
+          accepted: requirements,
           payload: { authorization: headerAuthorization, signature }
         };
         const header = btoa(JSON.stringify(payload));

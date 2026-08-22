@@ -68,6 +68,16 @@ describe('x402 image scenario contract', () => {
     expect(payment).not.toContain('this.orderMetadata?.payment_requirements');
   });
 
+  it('uses the canonical v2 payment header for order checkout', () => {
+    const payment = source('components/order/X402Pay.vue');
+    const order = source('operators/order.ts');
+    expect(payment).toContain('x402Version: 2');
+    expect(payment).toContain('accepted: requirements');
+    expect(payment).not.toContain('x402Version: 1');
+    expect(order).toContain("'PAYMENT-SIGNATURE': xPaymentHeader");
+    expect(order).not.toContain("'X-PAYMENT': xPaymentHeader");
+  });
+
   it('uses one shared wallet resolver and prefers Base EIP-3009', () => {
     const operator = source('operators/x402.ts');
     expect(operator).toContain('signEVMPayment');
