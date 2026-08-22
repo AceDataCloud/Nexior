@@ -36,6 +36,7 @@
 import { Browser } from '@capacitor/browser';
 import { isNative, isDesktop } from '../surface';
 import { desktopBridge } from '../desktop';
+import { isAuthFrontendUrl, withAuthFrontendSession } from '../authHandoff';
 import { openAuthorizePopup } from './authorizePopup';
 
 /**
@@ -53,11 +54,12 @@ export async function openAuthorizeFlow(authorizationUrl: string): Promise<void>
 
 /** Web: popup, falling back to a full-page navigation when it's blocked. */
 async function openOnWeb(authorizationUrl: string): Promise<void> {
-  const pending = openAuthorizePopup(authorizationUrl);
+  const target = isAuthFrontendUrl(authorizationUrl) ? withAuthFrontendSession(authorizationUrl) : authorizationUrl;
+  const pending = openAuthorizePopup(target);
   if (!pending) {
     // Navigating away — this page is about to be replaced, so there is
     // nothing left to refresh.
-    window.location.href = authorizationUrl;
+    window.location.href = await target;
     return;
   }
   await pending;
@@ -79,7 +81,10 @@ async function openOnNative(authorizationUrl: string): Promise<void> {
         handle = h;
       });
     });
-    await Browser.open({ url: authorizationUrl });
+    const target = isAuthFrontendUrl(authorizationUrl)
+      ? await withAuthFrontendSession(authorizationUrl)
+      : authorizationUrl;
+    await Browser.open({ url: target });
     await finished;
   } catch (error) {
     // A browser that never opened has nothing to wait for; resolving lets the
@@ -108,6 +113,9 @@ async function openOnDesktop(authorizationUrl: string): Promise<void> {
   const returned = new Promise<void>((resolve) => {
     window.addEventListener('focus', () => resolve(), { once: true });
   });
-  await bridge.openAuthorizeConnector(authorizationUrl);
+  const target = isAuthFrontendUrl(authorizationUrl)
+    ? await withAuthFrontendSession(authorizationUrl)
+    : authorizationUrl;
+  await bridge.openAuthorizeConnector(target);
   await returned;
 }
