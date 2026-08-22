@@ -29,7 +29,7 @@ import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
 import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
 
 const HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
-const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
+const TASK_HEADERS = { ...HEADERS };
 
 export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
   const request = { ...(config || {}), audio: undefined, async: true } as ISunoAudioRequest;
@@ -263,8 +263,7 @@ class SunoOperator {
     return await axios.get('/suno/persona', {
       params: data,
       headers: {
-        authorization: `Bearer ${options.token}`,
-        'x-record-exempt': 'true'
+        authorization: `Bearer ${options.token}`
       },
       baseURL: BASE_URL_API
     });
@@ -278,8 +277,7 @@ class SunoOperator {
     return await axios.delete('/suno/persona', {
       params: data,
       headers: {
-        authorization: `Bearer ${options.token}`,
-        'x-record-exempt': 'true'
+        authorization: `Bearer ${options.token}`
       },
       baseURL: BASE_URL_API
     });

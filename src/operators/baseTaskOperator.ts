@@ -33,8 +33,7 @@ const COMMON_HEADERS = {
 
 /** Headers specific to retrieve / retrieve_batch endpoints. */
 const TASK_HEADERS = {
-  ...COMMON_HEADERS,
-  'x-record-exempt': 'true'
+  ...COMMON_HEADERS
 };
 
 /** Headers specific to generate endpoints. */

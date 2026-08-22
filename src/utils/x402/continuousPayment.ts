@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import { PublicKey, SystemProgram, Transaction, TransactionInstruction, type Connection } from '@solana/web3.js';
+import { Transaction } from '@solana/web3.js';
 import { reactive } from 'vue';
 import { BASE_URL_PLATFORM } from '@/constants';
+import { track } from '@/plugins/telemetry';
 
 export const CONTINUOUS_PAYMENT_PROFILE = 'solana-recurring-delegation-v1';
 export const CONTINUOUS_PAYMENT_HEADER = 'X-X402-Authorization';
@@ -23,19 +24,25 @@ export interface ContinuousPaymentAuthorization {
 
 export interface SetupResponse {
   setup_token: string;
-  program_id: string;
-  asset: string;
-  token_program: string;
   wallet: string;
-  source_token_account: string;
-  subscription_authority: string;
-  delegatee: string;
-  nonce: string;
-  daily_limit_atomic: string;
-  period_seconds: number;
-  expiry_ts: number;
-  memo: string;
+  authority_init_id?: number | null;
+  transactions?: Partial<Record<TransactionAction, SubmittedTransaction>>;
 }
+
+interface PreparedTransaction {
+  action: TransactionAction;
+  transaction: string;
+  last_valid_block_height: number;
+  authority_init_id?: number | null;
+  delegation?: string | null;
+}
+
+interface SubmittedTransaction {
+  signature: string;
+  status: 'pending' | 'confirmed' | 'failed';
+}
+
+type TransactionAction = 'init_authority' | 'create_delegation' | 'revoke_delegation';
 
 const state = reactive<{ authorization?: ContinuousPaymentAuthorization; selected: boolean }>({ selected: false });
 
@@ -56,182 +63,205 @@ export function continuousPaymentHeaders(token?: string): Record<string, string>
   return { authorization: `Bearer ${token}`, [CONTINUOUS_PAYMENT_HEADER]: CONTINUOUS_PAYMENT_PROFILE };
 }
 
+function headers(token: string) {
+  return { authorization: `Bearer ${token}` };
+}
+
+function errorCode(error: any): string {
+  return String(error?.response?.data?.code || error?.response?.data?.detail || error?.name || 'unknown').slice(0, 120);
+}
+
+function traceId(error: any): string | undefined {
+  return error?.response?.data?.trace_id || error?.response?.headers?.['x-request-id'];
+}
+
+function event(name: string, action: string, error?: any) {
+  track(name, {
+    action,
+    ...(error ? { error: errorCode(error), trace_id: traceId(error) } : {})
+  });
+}
+
 export async function refreshContinuousPaymentAuthorization(token?: string) {
   const response = await axios.get<{ authorization?: ContinuousPaymentAuthorization }>(
     '/api/v1/x402/payment-authorization/',
-    { baseURL: BASE_URL_PLATFORM, headers: token ? { authorization: `Bearer ${token}` } : {} }
+    { baseURL: BASE_URL_PLATFORM, headers: token ? headers(token) : {} }
   );
   state.authorization = response.data.authorization;
   return state.authorization;
 }
 
-function instruction(
-  programId: string,
-  keys: Array<{ pubkey: string; isSigner: boolean; isWritable: boolean }>,
-  data: Uint8Array
+function walletSigner(walletApi: any) {
+  const wallet = walletApi?.publicKey?.value?.toBase58?.();
+  const signTransaction = walletApi?.signTransaction?.value;
+  if (!wallet || typeof signTransaction !== 'function') throw new Error('Connect a Solana wallet first');
+  return { wallet, signTransaction };
+}
+
+async function signPreparedTransaction(walletApi: any, encoded: string): Promise<string> {
+  const { signTransaction } = walletSigner(walletApi);
+  const transaction = Transaction.from(Buffer.from(encoded, 'base64'));
+  const signed = await signTransaction(transaction);
+  return Buffer.from(signed.serialize()).toString('base64');
+}
+
+async function prepare(token: string, setupToken: string, action: TransactionAction): Promise<PreparedTransaction> {
+  return (
+    await axios.post<PreparedTransaction>(
+      '/api/v1/x402/payment-authorization/transaction/prepare/',
+      { setup_token: setupToken, action },
+      { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
+    )
+  ).data;
+}
+
+async function submit(
+  token: string,
+  setupToken: string,
+  action: TransactionAction,
+  signedTransaction: string
+): Promise<SubmittedTransaction> {
+  return (
+    await axios.post<SubmittedTransaction>(
+      '/api/v1/x402/payment-authorization/transaction/submit/',
+      { setup_token: setupToken, action, signed_transaction: signedTransaction },
+      { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
+    )
+  ).data;
+}
+
+async function status(token: string, setupToken: string, action: TransactionAction): Promise<SubmittedTransaction> {
+  return (
+    await axios.post<SubmittedTransaction>(
+      '/api/v1/x402/payment-authorization/transaction/status/',
+      { setup_token: setupToken, action },
+      { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
+    )
+  ).data;
+}
+
+async function waitForConfirmation(
+  token: string,
+  setupToken: string,
+  action: TransactionAction,
+  initial: SubmittedTransaction
 ) {
-  return new TransactionInstruction({
-    programId: new PublicKey(programId),
-    keys: keys.map((key) => ({ ...key, pubkey: new PublicKey(key.pubkey) })),
-    data: Buffer.from(data)
-  });
+  let result = initial;
+  for (let attempt = 0; result.status === 'pending' && attempt < 30; attempt += 1) {
+    await new Promise((resolve) => globalThis.setTimeout(resolve, 2_000));
+    result = await status(token, setupToken, action);
+  }
+  if (result.status === 'confirmed') return result;
+  throw new Error(`Transaction ${result.status}; retry to resume setup`);
 }
 
-async function signAndSend(adapter: any, connection: Connection, transaction: Transaction) {
-  const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash('confirmed');
-  transaction.recentBlockhash = blockhash;
-  transaction.lastValidBlockHeight = lastValidBlockHeight;
-  transaction.feePayer = adapter.publicKey;
-  const signed = await adapter.signTransaction(transaction);
-  const signature = await connection.sendRawTransaction(signed.serialize());
-  await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
-  return signature;
-}
-
-function authorityInitId(data: Buffer) {
-  if (data.length < 106 || data[0] !== 0) throw new Error('Invalid subscription authority account');
-  return data.readBigInt64LE(98);
-}
-
-export function recurringDelegationData(setup: SetupResponse, initId: bigint) {
-  const data = Buffer.alloc(49);
-  data[0] = 2;
-  data.writeBigUInt64LE(BigInt(setup.nonce), 1);
-  data.writeBigUInt64LE(BigInt(setup.daily_limit_atomic), 9);
-  data.writeBigUInt64LE(BigInt(setup.period_seconds), 17);
-  data.writeBigInt64LE(0n, 25);
-  data.writeBigInt64LE(BigInt(setup.expiry_ts), 33);
-  data.writeBigInt64LE(initId, 41);
-  return data;
-}
-
-function memoInstruction(memo: string) {
-  return new TransactionInstruction({
-    programId: new PublicKey('MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr'),
-    keys: [],
-    data: Buffer.from(memo, 'utf8')
-  });
+async function signAndSubmit(
+  token: string,
+  setupToken: string,
+  action: TransactionAction,
+  walletApi: any,
+  existing?: SubmittedTransaction
+) {
+  if (existing) return waitForConfirmation(token, setupToken, action, existing);
+  event('x402_continuous_payment_submit', `${action}:prepare`);
+  const prepared = await prepare(token, setupToken, action);
+  event('x402_continuous_payment_submit', `${action}:sign`);
+  const signed = await signPreparedTransaction(walletApi, prepared.transaction);
+  event('x402_continuous_payment_submit', `${action}:submit`);
+  const result = await submit(token, setupToken, action, signed);
+  return waitForConfirmation(token, setupToken, action, result);
 }
 
 export async function enableContinuousPayment(options: {
   token: string;
   walletApi: any;
-  connection: Connection;
   dailyLimitAtomic: string;
   expiryTs: number;
 }) {
-  const adapter = options.walletApi?.wallet?.value?.adapter;
-  const wallet = options.walletApi?.publicKey?.value?.toBase58?.();
-  if (!adapter?.signTransaction || !adapter.publicKey || !wallet) throw new Error('Connect a Solana wallet first');
-  const setup = (
-    await axios.post<SetupResponse>(
-      '/api/v1/x402/payment-authorization/setup/',
-      { wallet, daily_limit_atomic: options.dailyLimitAtomic, expiry_ts: options.expiryTs },
-      { baseURL: BASE_URL_PLATFORM, headers: { authorization: `Bearer ${options.token}` } }
-    )
-  ).data;
-
-  let setupTx: string | undefined;
-  let authorityInfo = await options.connection.getAccountInfo(new PublicKey(setup.subscription_authority), 'confirmed');
-  if (!authorityInfo) {
-    const init = instruction(
-      setup.program_id,
-      [
-        { pubkey: setup.wallet, isSigner: true, isWritable: true },
-        { pubkey: setup.subscription_authority, isSigner: false, isWritable: true },
-        { pubkey: setup.asset, isSigner: false, isWritable: false },
-        { pubkey: setup.source_token_account, isSigner: false, isWritable: true },
-        { pubkey: SystemProgram.programId.toBase58(), isSigner: false, isWritable: false },
-        { pubkey: setup.token_program, isSigner: false, isWritable: false }
-      ],
-      Buffer.from([0])
+  const { wallet } = walletSigner(options.walletApi);
+  try {
+    event('x402_continuous_payment_submit', 'enable:setup');
+    const setup = (
+      await axios.post<SetupResponse>(
+        '/api/v1/x402/payment-authorization/setup/',
+        { wallet, daily_limit_atomic: options.dailyLimitAtomic, expiry_ts: options.expiryTs },
+        { baseURL: BASE_URL_PLATFORM, headers: headers(options.token) }
+      )
+    ).data;
+    if (setup.authority_init_id == null) {
+      await signAndSubmit(
+        options.token,
+        setup.setup_token,
+        'init_authority',
+        options.walletApi,
+        setup.transactions?.init_authority
+      );
+    }
+    await signAndSubmit(
+      options.token,
+      setup.setup_token,
+      'create_delegation',
+      options.walletApi,
+      setup.transactions?.create_delegation
     );
-    setupTx = await signAndSend(adapter, options.connection, new Transaction().add(init));
-    authorityInfo = await options.connection.getAccountInfo(new PublicKey(setup.subscription_authority), 'confirmed');
+    const confirmed = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
+      '/api/v1/x402/payment-authorization/confirm/',
+      { setup_token: setup.setup_token },
+      { baseURL: BASE_URL_PLATFORM, headers: headers(options.token) }
+    );
+    state.authorization = confirmed.data.authorization;
+    event('x402_continuous_payment_success', 'enable:confirm');
+    return state.authorization;
+  } catch (error) {
+    event('x402_continuous_payment_failed', 'enable', error);
+    throw error;
   }
-  if (!authorityInfo) throw new Error('Subscription authority was not created');
-  const initId = authorityInitId(authorityInfo.data);
-  const nonceBytes = Buffer.alloc(8);
-  nonceBytes.writeBigUInt64LE(BigInt(setup.nonce));
-  const [delegation] = PublicKey.findProgramAddressSync(
-    [
-      Buffer.from('delegation'),
-      new PublicKey(setup.subscription_authority).toBuffer(),
-      new PublicKey(setup.wallet).toBuffer(),
-      new PublicKey(setup.delegatee).toBuffer(),
-      nonceBytes
-    ],
-    new PublicKey(setup.program_id)
-  );
-  const data = recurringDelegationData(setup, initId);
-  const create = instruction(
-    setup.program_id,
-    [
-      { pubkey: setup.wallet, isSigner: true, isWritable: true },
-      { pubkey: setup.subscription_authority, isSigner: false, isWritable: false },
-      { pubkey: delegation.toBase58(), isSigner: false, isWritable: true },
-      { pubkey: setup.delegatee, isSigner: false, isWritable: false },
-      { pubkey: SystemProgram.programId.toBase58(), isSigner: false, isWritable: false }
-    ],
-    data
-  );
-  const delegationTx = await signAndSend(
-    adapter,
-    options.connection,
-    new Transaction().add(create, memoInstruction(setup.memo))
-  );
-  const confirmed = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
-    '/api/v1/x402/payment-authorization/confirm/',
-    {
-      setup_token: setup.setup_token,
-      setup_tx: setupTx,
-      delegation: delegation.toBase58(),
-      delegation_tx: delegationTx
-    },
-    { baseURL: BASE_URL_PLATFORM, headers: { authorization: `Bearer ${options.token}` } }
-  );
-  state.authorization = confirmed.data.authorization;
-  return state.authorization;
 }
 
 export async function enableExistingContinuousPayment(token: string) {
   const response = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
     '/api/v1/x402/payment-authorization/enable/',
     {},
-    { baseURL: BASE_URL_PLATFORM, headers: { authorization: `Bearer ${token}` } }
+    { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
   );
   state.authorization = response.data.authorization;
+  return state.authorization;
 }
 
 export async function disableContinuousPayment(token: string) {
   const response = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
     '/api/v1/x402/payment-authorization/disable/',
     {},
-    { baseURL: BASE_URL_PLATFORM, headers: { authorization: `Bearer ${token}` } }
+    { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
   );
   state.authorization = response.data.authorization;
+  return state.authorization;
 }
 
-export async function revokeContinuousPayment(token: string, walletApi: any, connection: Connection) {
-  if (!state.authorization) return;
-  const adapter = walletApi?.wallet?.value?.adapter;
-  if (!adapter?.signTransaction || !adapter.publicKey) throw new Error('Connect the authorized Solana wallet first');
-  if (adapter.publicKey.toBase58() !== state.authorization.wallet) {
+export async function revokeContinuousPayment(token: string, walletApi: any) {
+  const { wallet } = walletSigner(walletApi);
+  if (!state.authorization || wallet !== state.authorization.wallet) {
     throw new Error('Connect the wallet that created this authorization');
   }
-  const revoke = instruction(
-    'De1egAFMkMWZSN5rYXRj9CAdheBamobVNubTsi9avR44',
-    [
-      { pubkey: state.authorization.wallet, isSigner: true, isWritable: false },
-      { pubkey: state.authorization.delegation, isSigner: false, isWritable: true }
-    ],
-    Buffer.from([3])
-  );
-  const revokedTx = await signAndSend(adapter, connection, new Transaction().add(revoke));
-  const response = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
-    '/api/v1/x402/payment-authorization/revoke-confirm/',
-    { revoked_tx: revokedTx },
-    { baseURL: BASE_URL_PLATFORM, headers: { authorization: `Bearer ${token}` } }
-  );
-  state.authorization = response.data.authorization;
+  try {
+    const setup = (
+      await axios.post<SetupResponse>(
+        '/api/v1/x402/payment-authorization/revoke-setup/',
+        {},
+        { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
+      )
+    ).data;
+    await signAndSubmit(token, setup.setup_token, 'revoke_delegation', walletApi);
+    const response = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
+      '/api/v1/x402/payment-authorization/revoke-confirm/',
+      { setup_token: setup.setup_token },
+      { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
+    );
+    state.authorization = response.data.authorization;
+    event('x402_continuous_payment_success', 'revoke:confirm');
+    return state.authorization;
+  } catch (error) {
+    event('x402_continuous_payment_failed', 'revoke', error);
+    throw error;
+  }
 }

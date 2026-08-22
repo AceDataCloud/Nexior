@@ -19,8 +19,7 @@ class SeedreamOperator {
         headers: {
           accept: 'application/json',
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
@@ -89,8 +88,7 @@ class SeedreamOperator {
         headers: {
           accept: 'application/json',
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
