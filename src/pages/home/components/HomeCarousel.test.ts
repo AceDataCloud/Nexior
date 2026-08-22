@@ -14,14 +14,17 @@ const slides: ResolvedHomeBanner[] = [0, 1, 2].map((index) => ({
   description: `Description ${index}`,
   icon: 'icon.png',
   defaultIcon: 'icon.png',
-  imageUrl: `image-${index}.webp`
+  imageUrl: `image-${index}.webp`,
+  target: { routeName: `route-${index}` }
 }));
 
 function mountCarousel(items = slides) {
   return mount(HomeCarousel, {
     props: { slides: items },
     global: {
-      stubs: { RouterLink: { props: ['to'], template: '<a><slot /></a>' } },
+      stubs: {
+        RouterLink: { props: ['to'], template: `<a :href="typeof to === 'string' ? to : to.name"><slot /></a>` }
+      },
       mocks: { $t: (key: string, params?: Record<string, unknown>) => `${key}${params ? JSON.stringify(params) : ''}` }
     }
   });
@@ -93,5 +96,26 @@ describe('HomeCarousel', () => {
     const images = wrapper.findAll('.slide > img');
     expect(images[0].attributes()).toMatchObject({ loading: 'eager', fetchpriority: 'high' });
     expect(images[1].attributes()).toMatchObject({ loading: 'lazy', fetchpriority: 'auto' });
+  });
+  it('renders named routes, internal paths, external links, and static slides safely', () => {
+    const targets: ResolvedHomeBanner[] = [
+      { ...slides[0], id: 'named', target: { routeName: 'seedance' } },
+      { ...slides[1], id: 'internal', target: { href: '/seedance' } },
+      { ...slides[2], id: 'external', target: { href: 'https://example.com/activity' } },
+      { ...slides[0], id: 'static', target: null }
+    ];
+    const wrapper = mountCarousel(targets);
+    const rendered = wrapper.findAll('.slide');
+    expect(rendered[0].attributes('href')).toBe('seedance');
+    expect(rendered[1].attributes('href')).toBe('/seedance');
+    expect(rendered[2].element.tagName).toBe('A');
+    expect(rendered[2].attributes()).toMatchObject({
+      href: 'https://example.com/activity',
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    });
+    expect(rendered[3].element.tagName).toBe('DIV');
+    expect(rendered[3].classes()).toContain('static');
+    expect(rendered[3].find('.action').exists()).toBe(false);
   });
 });

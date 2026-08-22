@@ -25,6 +25,7 @@ export * from './flux';
 export * from './hailuo';
 export * from './minimax';
 export * from './site';
+export * from './siteBanner';
 export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';
 export * from './site_domain';

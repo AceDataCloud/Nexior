@@ -14,6 +14,7 @@ vi.mock('@/utils', async (importOriginal) => {
 import Setting from './Setting.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
+import BannersSetting from '@/components/setting/Banners.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import AnalyticsSetting from '@/components/setting/Analytics.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
@@ -33,6 +34,7 @@ const CONSUMER_TABS = ['general', 'apiKey', 'about'];
 const ALL_OPERATOR_TABS = [
   'site',
   'siteServices',
+  'banners',
   'seo',
   'analytics',
   'distribution',
@@ -45,6 +47,7 @@ const ALL_OPERATOR_TABS = [
 const OPERATOR_CONTENT = {
   site: SiteSetting,
   siteServices: SiteServicesSetting,
+  banners: BannersSetting,
   seo: SeoSetting,
   analytics: AnalyticsSetting,
   distribution: DistributionSetting,
@@ -109,6 +112,7 @@ describe('user/Setting surface gating', () => {
     for (const tab of [
       'site',
       'siteServices',
+      'banners',
       'seo',
       'analytics',
       'distribution',
@@ -126,7 +130,17 @@ describe('user/Setting surface gating', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     hostState.official = true;
     const keys = tabKeys(mountSetting());
-    for (const tab of ['site', 'siteServices', 'seo', 'analytics', 'distribution', 'function', 'auth', 'subsites']) {
+    for (const tab of [
+      'site',
+      'siteServices',
+      'banners',
+      'seo',
+      'analytics',
+      'distribution',
+      'function',
+      'auth',
+      'subsites'
+    ]) {
       expect(keys).toContain(tab);
     }
     expect(keys).not.toContain('customDomain'); // main host never binds extra domains
