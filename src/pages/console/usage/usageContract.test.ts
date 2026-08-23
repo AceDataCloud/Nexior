@@ -36,7 +36,8 @@ describe('API usage page contract', () => {
   it('preserves legacy api_id deep links and hydrates their services', () => {
     expect(usageSource).toContain('async hydrateApiSelection()');
     expect(usageSource).toContain('this.apiIds.map((apiId) => apiOperator.get(apiId))');
-    expect(usageSource).toContain('const services = new Set(this.serviceIds)');
+    expect(usageSource).toContain('if (!this.serviceIds.length)');
+    expect(usageSource).toContain('const services = new Set<string>()');
     expect(usageSource).toContain('if (serviceId) services.add(serviceId)');
   });
 

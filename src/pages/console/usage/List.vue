@@ -1268,13 +1268,15 @@ export default defineComponent({
     async hydrateApiSelection() {
       if (!this.apiIds.length) return;
       const selected = await Promise.allSettled(this.apiIds.map((apiId) => apiOperator.get(apiId)));
-      const services = new Set(this.serviceIds);
       const resolved = selected.filter((result) => result.status === 'fulfilled').map((result) => result.value);
-      resolved.forEach(({ data }) => {
-        const serviceId = data.service_id || data.service?.id;
-        if (serviceId) services.add(serviceId);
-      });
-      this.serviceIds = Array.from(services);
+      if (!this.serviceIds.length) {
+        const services = new Set<string>();
+        resolved.forEach(({ data }) => {
+          const serviceId = data.service_id || data.service?.id;
+          if (serviceId) services.add(serviceId);
+        });
+        this.serviceIds = Array.from(services);
+      }
       this.apis = resolved.map(({ data }) => data);
     },
     async onFetchServices() {
