@@ -3,6 +3,7 @@ import { IApi, IPackage } from './api';
 
 export enum IServiceType {
   API = 'Api',
+  Agent = 'Agent',
   Proxy = 'Proxy',
   Dataset = 'Dataset'
 }
