@@ -35,6 +35,14 @@ describe('API usage page contract', () => {
     expect(usageSource).toContain('if (serviceId) services.add(serviceId)');
   });
 
+  it('renders service icons in options, selected labels, and usage rows', () => {
+    expect(usageSource).toContain('<template #label="{ label, value }">');
+    expect(usageSource).toContain('serviceIcon(value)');
+    expect(usageSource).toContain('v-if="item.icon_url"');
+    expect(usageSource).toContain('scope.row?.service?.icon_url');
+    expect(usageSource).toContain("scope.row?.service?.title || '-'");
+  });
+
   it('shows service and operation as separate usage columns', () => {
     expect(usageSource).toContain('<el-table-column :label="$t(\'usage.field.service\')"');
     expect(usageSource).toContain('<el-table-column :label="$t(\'usage.field.operation\')"');

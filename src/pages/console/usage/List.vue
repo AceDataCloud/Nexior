@@ -23,7 +23,18 @@
             class="w-full"
             @change="onServicesChange"
           >
-            <el-option v-for="item in services" :key="item.id" :label="item.title" :value="item.id" />
+            <template #label="{ label, value }">
+              <span class="usage-service-label">
+                <img v-if="serviceIcon(value)" :src="serviceIcon(value)" class="usage-service-icon" alt="" />
+                <span>{{ label }}</span>
+              </span>
+            </template>
+            <el-option v-for="item in services" :key="item.id" :label="item.title" :value="item.id">
+              <span class="usage-service-label">
+                <img v-if="item.icon_url" :src="item.icon_url" class="usage-service-icon" alt="" />
+                <span>{{ item.title }}</span>
+              </span>
+            </el-option>
           </el-select>
         </el-col>
         <el-col v-if="type === serviceType.API" :lg="5" :md="12" :xs="24" class="usage-filter">
@@ -181,7 +192,15 @@
             >
               <el-table-column :label="$t('usage.field.service')" width="180px">
                 <template #default="scope">
-                  <span>{{ scope.row?.service?.title || '-' }}</span>
+                  <span class="usage-service-label">
+                    <img
+                      v-if="scope.row?.service?.icon_url"
+                      :src="scope.row.service.icon_url"
+                      class="usage-service-icon"
+                      alt=""
+                    />
+                    <span>{{ scope.row?.service?.title || '-' }}</span>
+                  </span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('usage.field.operation')" width="180px">
@@ -1002,6 +1021,9 @@ export default defineComponent({
         this.autoRefreshTimer = null;
       }
     },
+    serviceIcon(serviceId: unknown) {
+      return this.services.find((service) => service.id === serviceId)?.icon_url;
+    },
     async onServicesChange(serviceIds: string[]) {
       if (!serviceIds.length) this.apiIds = [];
       this.apis = [];
@@ -1522,6 +1544,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.usage-service-label {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+.usage-service-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: contain;
+}
 .usage-filters {
   margin: 0 -8px 20px;
   align-items: end;
