@@ -8,6 +8,7 @@ export interface IServiceQuery {
   ordering?: string;
   id?: string | string[];
   type?: string | string[];
+  private?: boolean;
 }
 
 class ServiceOperator extends BaseOperator<IService, IServiceListResponse, IServiceDetailResponse> {

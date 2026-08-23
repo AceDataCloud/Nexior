@@ -1287,13 +1287,16 @@ export default defineComponent({
             limit: 1000,
             offset: 0,
             ordering: '-rank',
-            type: [IServiceType.API, IServiceType.Agent]
+            type: [IServiceType.API, IServiceType.Agent],
+            private: false
           }) as Promise<{ data: IServiceListResponse }>,
           applicationOperator.getAll({ limit: 1000, offset: 0, ordering: '-created_at', user_id: 'me' })
         ]);
         const services = new Map(catalog.items.map((service) => [service.id, service]));
         applications.items.forEach((application) => {
-          if (application.service?.id) services.set(application.service.id, application.service);
+          if (application.service?.id && application.service.private !== true) {
+            services.set(application.service.id, application.service);
+          }
         });
         this.services = Array.from(services.values());
       } catch {
