@@ -27,9 +27,9 @@ export function resolveX402WalletContext(walletApi: any): X402WalletContext | un
     };
   }
   const publicKey = walletApi?.publicKey?.value;
-  const adapter = walletApi?.wallet?.value?.adapter;
-  if (!publicKey || !adapter?.signTransaction) return undefined;
-  return { publicKey, signTransaction: adapter.signTransaction.bind(adapter) };
+  const signTransaction = walletApi?.signTransaction?.value;
+  if (!publicKey || typeof signTransaction !== 'function') return undefined;
+  return { publicKey, signTransaction };
 }
 
 export interface X402PaymentQuote {

@@ -37,7 +37,7 @@ vi.mock('@/utils/x402/continuousPayment', () => ({
   continuousPaymentHeaders: mocks.continuousPaymentHeaders
 }));
 
-import { formatAtomicUsdc, postWithX402, quoteX402, X402PaymentCancelledError } from './x402';
+import { formatAtomicUsdc, postWithX402, quoteX402, resolveX402WalletContext, X402PaymentCancelledError } from './x402';
 
 const requirement = {
   scheme: 'exact',
@@ -75,6 +75,31 @@ function challengeError(withHeader = false, accepts = [requirement]) {
     }
   };
 }
+
+describe('resolveX402WalletContext', () => {
+  beforeEach(() => {
+    mocks.activeWalletRail.mockReturnValue('solana');
+  });
+
+  it('uses the top-level solana-wallets-vue signer ref', async () => {
+    const signTransaction = vi.fn(async (transaction) => transaction);
+    const context = resolveX402WalletContext({
+      publicKey: { value: wallet.publicKey },
+      signTransaction: { value: signTransaction },
+      wallet: { value: { adapter: { name: 'Phantom' } } }
+    });
+    const transaction = { id: 'transaction' };
+
+    expect(context?.publicKey).toBe(wallet.publicKey);
+    await expect(context?.signTransaction(transaction)).resolves.toBe(transaction);
+    expect(signTransaction).toHaveBeenCalledWith(transaction);
+  });
+
+  it('rejects an incomplete Solana wallet store', () => {
+    expect(resolveX402WalletContext({ signTransaction: { value: vi.fn() } })).toBeUndefined();
+    expect(resolveX402WalletContext({ publicKey: { value: wallet.publicKey } })).toBeUndefined();
+  });
+});
 
 describe('postWithX402', () => {
   beforeEach(() => {
