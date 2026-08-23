@@ -46,6 +46,7 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElInputNumber, ElMessage, ElRadioButton, ElRadioGroup } from 'element-plus';
 import { formatAtomicUsdc } from '@/operators/x402';
+import { continuousPaymentErrorMessage } from '@/utils/x402/error';
 import {
   continuousPaymentAuthorization,
   disableContinuousPayment,
@@ -119,7 +120,7 @@ export default defineComponent({
         });
         ElMessage.success(String(this.$t('common.x402Scenario.continuousPaymentsEnabled')));
       } catch (error: any) {
-        ElMessage.error(error?.response?.data?.detail || error?.message || String(error));
+        ElMessage.error(continuousPaymentErrorMessage(error, String(this.$t('order.message.x402PaymentFailed'))));
       } finally {
         this.busy = false;
       }
@@ -142,7 +143,7 @@ export default defineComponent({
         await revokeContinuousPayment(this.token, walletApi);
         this.method = 'confirm';
       } catch (error: any) {
-        ElMessage.error(error?.response?.data?.detail || error?.message || String(error));
+        ElMessage.error(continuousPaymentErrorMessage(error, String(this.$t('order.message.x402PaymentFailed'))));
       } finally {
         this.busy = false;
       }
