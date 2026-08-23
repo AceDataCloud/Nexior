@@ -66,3 +66,24 @@ describe('operators/scheduledTasks', () => {
     });
   });
 });
+
+describe('scheduled template catalog compatibility', () => {
+  it('deduplicates historical versions defensively and keeps the newest', async () => {
+    const post = vi.spyOn(axios, 'post').mockResolvedValue({
+      data: {
+        items: [
+          { id: 'spotlight', version: 1 },
+          { id: 'brief', version: 1 },
+          { id: 'spotlight', version: 11 }
+        ],
+        categories: ['video']
+      }
+    } as never);
+    const result = await scheduledTasksOperator.listTemplates('tok');
+    expect(result.items).toEqual([
+      { id: 'spotlight', version: 11 },
+      { id: 'brief', version: 1 }
+    ]);
+    expect(post).toHaveBeenCalled();
+  });
+});

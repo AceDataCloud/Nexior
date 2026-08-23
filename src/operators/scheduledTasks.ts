@@ -92,6 +92,9 @@ export interface IScheduledRun {
    *  started. Absent on runs that used each connector's default account, and
    *  on runs predating the snapshot. */
   run_accounts?: IRunConnectionAccount[];
+  config_fingerprint?: string;
+  config_revision?: number;
+  execution_guard?: { tool_actions: number; paid_actions: number; estimated_credits_upper_bound: number };
 }
 
 /** One connector account a run ran as. `label` / `account_name` are resolved at
@@ -303,6 +306,27 @@ export interface IScheduledTaskTemplateDefinition {
   tags: string[];
   featured: boolean;
   form_schema: IScheduledTemplateField[];
+  schema_version?: 2;
+  lifecycle?: { status: 'published' | 'superseded' | 'disabled' };
+  risk?: { level: 'low' | 'medium' | 'high'; unattended_eligible: boolean; reasons: string[] };
+  side_effects?: Array<'external_draft' | 'external_send' | 'external_publish' | 'paid_media'>;
+  output?: { kind: string; expected_status?: 'draft' | 'delivered'; max_items: number };
+  evidence?: { mode: 'run_success' | 'artifact'; artifacts: Array<{ kind: string; status: string; channel?: string }> };
+  budget?: {
+    unit: 'credits';
+    estimated_upper_bound: number;
+    basis: string;
+    max_tool_actions: number;
+    max_paid_actions: number;
+    exact_charge_available: false;
+  };
+  dependencies?: {
+    required: IScheduledTaskTemplateDefinition['requirements'];
+    optional: IScheduledTaskTemplateDefinition['requirements'];
+  };
+  availability?: 'ready' | 'degraded' | 'blocked';
+  missing_required_connections?: string[];
+  missing_optional_connections?: string[];
   requirements: {
     skills: string[];
     mcp_servers: string[];
@@ -314,6 +338,30 @@ export interface IScheduledTaskTemplateDefinition {
   available: boolean;
   missing_connections: string[];
   connection_accounts?: Record<string, IAuthorizableConnectionAccount[]>;
+}
+
+export interface IScheduledTemplateActivationStatus {
+  ready: boolean;
+  config_fingerprint?: string;
+  config_revision?: number;
+  tested_run_id?: string;
+  tested_at?: number;
+  blockers: Array<{ code: string; detail?: Record<string, unknown> }>;
+  evidence: {
+    mode: 'run_success' | 'artifact';
+    satisfied: boolean;
+    artifacts: Array<{ kind: string; status: string; channel?: string }>;
+  };
+  risk: { level: 'low' | 'medium' | 'high'; unattended_eligible: boolean; reasons: string[] };
+  side_effects: string[];
+  budget: {
+    unit: 'credits';
+    estimated_upper_bound: number;
+    basis: string;
+    max_tool_actions: number;
+    max_paid_actions: number;
+    exact_charge_available: false;
+  };
 }
 
 export type ScheduledTaskPayload = {
@@ -405,7 +453,12 @@ class ScheduledTasksOperator {
       { action: 'retrieve_template_batch', ...filter },
       { headers: headers(token) }
     );
-    return { items: data?.items ?? [], categories: data?.categories ?? [] };
+    const latest = new Map<string, IScheduledTaskTemplateDefinition>();
+    for (const item of (data?.items ?? []) as IScheduledTaskTemplateDefinition[]) {
+      const current = latest.get(item.id);
+      if (!current || item.version > current.version) latest.set(item.id, item);
+    }
+    return { items: [...latest.values()], categories: data?.categories ?? [] };
   }
 
   async previewTemplate(
@@ -436,6 +489,45 @@ class ScheduledTasksOperator {
     const { data } = await axios.post(
       BASE,
       { action: 'instantiate_template', ...payload },
+      { headers: headers(token) }
+    );
+    return data;
+  }
+
+  async retrieveRun(token: string, id: string, runId: string): Promise<IScheduledRun> {
+    try {
+      const { data } = await axios.post(
+        BASE,
+        { action: 'retrieve_run', id, run_id: runId },
+        { headers: headers(token), timeout: RUN_REQUEST_TIMEOUT_MS }
+      );
+      return data;
+    } catch (error) {
+      if ((error as { response?: { status?: number } }).response?.status !== 400) throw error;
+      const runs = await this.listRuns(token, id);
+      const run = runs.find((candidate) => candidate.id === runId);
+      if (!run) throw error;
+      return run;
+    }
+  }
+
+  async activationStatus(token: string, id: string): Promise<IScheduledTemplateActivationStatus> {
+    const { data } = await axios.post(BASE, { action: 'retrieve_activation_status', id }, { headers: headers(token) });
+    return data;
+  }
+
+  async reconfigureTemplate(
+    token: string,
+    id: string,
+    payload: {
+      inputs: Record<string, string | number | boolean>;
+      schedule: IScheduleSpec;
+      connection_bindings: IScheduledConnectionBinding[];
+    }
+  ): Promise<IScheduledTask> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'reconfigure_template', id, ...payload },
       { headers: headers(token) }
     );
     return data;

@@ -1,176 +1,165 @@
 // @vitest-environment jsdom
-import { shallowMount } from '@vue/test-utils';
-import { ElMessage } from 'element-plus';
+import { shallowMount, flushPromises } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-
 import { scheduledTasksOperator } from '@/operators/scheduledTasks';
 import ScheduledTemplateWizard from './ScheduledTemplateWizard.vue';
 
 const template = {
-  id: 'daily-ai-promo-pack',
-  version: 1,
-  title: 'Daily AI promotion pack',
-  summary: 'Three formats',
+  id: 'weekly-learning-plan',
+  version: 2,
+  title: 'Weekly learning plan',
+  summary: 'A safe plan',
   description: 'Description',
-  categories: ['marketing'],
+  categories: ['personal'],
   tags: [],
   featured: true,
-  form_schema: [
-    { key: 'topic', type: 'text' as const, label: 'Topic', required: true },
-    { key: 'audience', type: 'text' as const, label: 'Audience', required: true }
-  ],
+  form_schema: [{ key: 'topic', type: 'text' as const, label: 'Topic', required: true }],
   requirements: { skills: [], mcp_servers: [], connections: [], local_tools: [] },
-  defaults: { model: 'gpt-5.6-sol', schedule: { type: 'cron' as const, cron: '0 9 * * *', tz: 'UTC' }, max_turns: 50 },
+  dependencies: {
+    required: { skills: [], mcp_servers: [], connections: [], local_tools: [] },
+    optional: { skills: [], mcp_servers: [], connections: [], local_tools: [] }
+  },
+  defaults: { model: 'gpt-5.6-sol', schedule: { type: 'cron' as const, cron: '0 7 * * 1', tz: 'UTC' }, max_turns: 50 },
   test_strategy: { mode: 'preview_only' as const },
   available: true,
-  missing_connections: []
+  missing_connections: [],
+  risk: { level: 'low' as const, unattended_eligible: true, reasons: [] },
+  side_effects: [],
+  budget: {
+    unit: 'credits' as const,
+    estimated_upper_bound: 3,
+    basis: 'catalog_conservative_v1',
+    max_tool_actions: 12,
+    max_paid_actions: 0,
+    exact_charge_available: false as const
+  }
 };
-
-const disabledTask = {
+const task = {
   id: 'task-1',
-  name: 'Template',
+  name: 'Plan',
   state: 'disabled' as const,
   schedule: template.defaults.schedule,
-  template: { model: 'gpt-5.6-sol', question: 'Preview' },
+  template: { model: 'gpt-5.6-sol', question: 'Plan' },
   run_count: 0,
   created_at: 1,
   updated_at: 1
 };
+const terminalRun = {
+  id: 'manual-1',
+  task_id: task.id,
+  status: 'success' as const,
+  scheduled_at: Math.floor(Date.now() / 1000),
+  conversation_id: 'c1'
+};
 
-const mountWizard = () =>
-  shallowMount(ScheduledTemplateWizard, {
+function mountWizard() {
+  return shallowMount(ScheduledTemplateWizard, {
     props: { modelValue: true, token: 'tok' },
     global: {
       mocks: { $t: (key: string) => key },
       stubs: {
         BrowseConnectors: true,
-        ElDialog: { template: '<div><slot /><slot name="footer" /></div>' },
-        ElSteps: { template: '<div><slot /></div>' },
+        ElDialog: { template: '<div><slot/><slot name="footer"/></div>' },
+        ElSteps: { template: '<div><slot/></div>' },
         ElStep: { props: ['title'], template: '<span class="step-title">{{ title }}</span>' }
       }
     }
   });
+}
 
 describe('ScheduledTemplateWizard', () => {
-  afterEach(() => vi.restoreAllMocks());
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.useRealTimers();
+  });
 
-  it('renders only the choose, configure, and connect steps', () => {
-    const wrapper = mountWizard();
-    const titles = wrapper.findAll('.step-title').map((step) => step.text());
+  it('renders the complete five-step lifecycle', () => {
+    const titles = mountWizard()
+      .findAll('.step-title')
+      .map((node) => node.text());
     expect(titles).toEqual([
       'chat.scheduledTemplates.step.choose',
       'chat.scheduledTemplates.step.configure',
-      'chat.scheduledTemplates.step.connect'
+      'chat.scheduledTemplates.step.connect',
+      'chat.scheduledTemplates.step.test',
+      'chat.scheduledTemplates.step.enable'
     ]);
   });
 
-  it('does not bind remote MCP connections as skill accounts', () => {
-    const mcpTemplate = {
-      ...template,
-      requirements: {
-        skills: [],
-        mcp_servers: ['AceDataCloud'],
-        connections: ['acedatacloud/acedatacloud'],
-        local_tools: []
-      },
-      connection_accounts: {
-        'acedatacloud/acedatacloud': [
-          {
-            connection_id: 'mcp-1',
-            connector_identifier: 'acedatacloud/acedatacloud',
-            label: 'AceDataCloud',
-            is_default: true,
-            account_name: 'AceDataCloud',
-            execution_type: 'remote_mcp',
-            supports_task_binding: false
-          }
-        ]
-      }
-    };
+  it('preserves the weekly cadence when editing only wall-clock time', () => {
     const wrapper = mountWizard();
-    const vm = wrapper.vm as unknown as {
-      selectTemplate: (value: typeof mcpTemplate) => void;
-      connectionReady: (identifier: string) => boolean;
-      bindings: () => unknown[];
-    };
-    vm.selectTemplate(mcpTemplate);
-    expect(vm.connectionReady('acedatacloud/acedatacloud')).toBe(true);
-    expect(vm.bindings()).toEqual([]);
+    const vm = wrapper.vm as any;
+    vm.selectTemplate(template);
+    vm.scheduleTime = '08:25';
+    expect(vm.buildSchedule()).toMatchObject({ type: 'cron', cron: '25 08 * * 1' });
   });
 
-  it('shows the backend message and keeps the wizard open when creation fails', async () => {
-    vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockRejectedValue({
-      response: { data: { message: 'remote MCP connectors cannot be account-bound' } }
-    });
-    const error = vi.spyOn(ElMessage, 'error');
+  it('instantiates one disabled task and polls the exact returned run id', async () => {
+    vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockResolvedValue(task as any);
+    vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue({ run_id: 'manual-1' });
+    const retrieve = vi.spyOn(scheduledTasksOperator, 'retrieveRun').mockResolvedValue(terminalRun as any);
     const wrapper = mountWizard();
-    const vm = wrapper.vm as unknown as {
-      selectTemplate: (value: typeof template) => void;
-      inputs: Record<string, string>;
-      step: number;
-      visible: boolean;
-      createTask: () => Promise<void>;
-    };
+    const vm = wrapper.vm as any;
     vm.selectTemplate(template);
-    vm.inputs = { topic: 'AI', audience: 'developers' };
-    vm.step = 2;
-    await vm.createTask();
-    expect(error).toHaveBeenCalledWith('remote MCP connectors cannot be account-bound');
-    expect(vm.visible).toBe(true);
-    expect(wrapper.emitted('created')).toBeUndefined();
+    vm.inputs = { topic: 'TypeScript' };
+    vm.step = 3;
+    await vm.startTest();
+    expect(scheduledTasksOperator.instantiateTemplate).toHaveBeenCalledTimes(1);
+    expect(retrieve).toHaveBeenCalledWith('tok', task.id, 'manual-1');
+    expect(wrapper.emitted('created')?.[0]).toEqual([task]);
+    expect(vm.run.status).toBe('success');
+    await vm.retryTest();
+    expect(scheduledTasksOperator.instantiateTemplate).toHaveBeenCalledTimes(1);
+    expect(scheduledTasksOperator.triggerTask).toHaveBeenCalledTimes(2);
   });
 
-  it('requires declared inputs without adding growth-specific state', () => {
+  it('fails closed when activation readiness is unavailable', async () => {
+    vi.spyOn(scheduledTasksOperator, 'activationStatus').mockRejectedValue({ response: { status: 400 } });
     const wrapper = mountWizard();
-    const vm = wrapper.vm as unknown as {
-      selectTemplate: (value: typeof template) => void;
-      inputs: Record<string, string>;
-      step: number;
-      canContinue: boolean;
-    };
+    const vm = wrapper.vm as any;
     vm.selectTemplate(template);
-    vm.step = 1;
-    expect(Object.keys(wrapper.vm)).not.toContain('referral' + 'Enabled');
-    expect(vm.canContinue).toBe(false);
-    vm.inputs = { topic: 'AI', audience: 'developers' };
-    expect(vm.canContinue).toBe(true);
+    vm.task = task;
+    vm.run = terminalRun;
+    vm.step = 3;
+    await vm.prepareEnable();
+    expect(vm.step).toBe(4);
+    expect(vm.backendBlocked).toBe(true);
+    expect(vm.activation).toBeNull();
   });
 
-  it('creates a disabled task without previewing, running, or enabling it', async () => {
-    const instantiate = vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockResolvedValue(disabledTask);
-    const preview = vi.spyOn(scheduledTasksOperator, 'previewTemplate');
-    const trigger = vi.spyOn(scheduledTasksOperator, 'triggerTask');
-    const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns');
-    const enable = vi.spyOn(scheduledTasksOperator, 'enableTemplateTask');
+  it('enables only after the backend returns ready for the current config', async () => {
+    vi.spyOn(scheduledTasksOperator, 'activationStatus').mockResolvedValue({
+      ready: true,
+      blockers: [],
+      evidence: { mode: 'run_success', satisfied: true, artifacts: [] },
+      risk: template.risk,
+      side_effects: [],
+      budget: template.budget
+    } as any);
+    const enable = vi
+      .spyOn(scheduledTasksOperator, 'enableTemplateTask')
+      .mockResolvedValue({ ...task, state: 'enabled' } as any);
     const wrapper = mountWizard();
-    const vm = wrapper.vm as unknown as {
-      selectTemplate: (value: typeof template) => void;
-      inputs: Record<string, string>;
-      step: number;
-      visible: boolean;
-      selected: typeof template | null;
-      createTask: () => Promise<void>;
-    };
+    const vm = wrapper.vm as any;
     vm.selectTemplate(template);
-    vm.inputs = { topic: 'AI', audience: 'developers' };
-    vm.step = 2;
+    vm.task = task;
+    vm.run = terminalRun;
+    await vm.prepareEnable();
+    await vm.enableTask();
+    await flushPromises();
+    expect(enable).toHaveBeenCalledWith('tok', task.id);
+    expect(wrapper.emitted('created')?.at(-1)).toEqual([{ ...task, state: 'enabled' }]);
+  });
 
-    await vm.createTask();
-
-    expect(instantiate).toHaveBeenCalledWith('tok', {
-      template_id: template.id,
-      version: template.version,
-      inputs: { topic: 'AI', audience: 'developers' },
-      schedule: { type: 'cron', cron: '00 09 * * *', tz: expect.any(String) },
-      connection_bindings: []
-    });
-    expect(preview).not.toHaveBeenCalled();
-    expect(trigger).not.toHaveBeenCalled();
-    expect(listRuns).not.toHaveBeenCalled();
-    expect(enable).not.toHaveBeenCalled();
-    expect(wrapper.emitted('created')?.[0]).toEqual([disabledTask]);
-    expect(vm.visible).toBe(false);
-    expect(vm.step).toBe(0);
-    expect(vm.selected).toBeNull();
+  it('stops polling when the dialog closes', async () => {
+    vi.useFakeTimers();
+    const wrapper = mountWizard();
+    const vm = wrapper.vm as any;
+    vm.pollTimer = setTimeout(() => undefined, 1000);
+    const before = vm.pollGeneration;
+    await wrapper.setData({ visible: false });
+    await flushPromises();
+    expect(vm.pollTimer).toBeNull();
+    expect(vm.pollGeneration).toBeGreaterThan(before);
   });
 });
