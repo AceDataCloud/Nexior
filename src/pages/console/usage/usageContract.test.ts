@@ -16,6 +16,10 @@ describe('API usage page contract', () => {
     );
     expect(usageSource).toContain('v-model="serviceIds"');
     expect(usageSource).toContain('type: [IServiceType.API, IServiceType.Agent]');
+    expect(usageSource).toContain(
+      "applicationOperator.getAll({ limit: 1000, offset: 0, ordering: '-created_at', user_id: 'me' })"
+    );
+    expect(usageSource).toContain('const services = new Map(catalog.items.map((service) => [service.id, service]))');
     expect(usageSource).toContain(':disabled="!serviceIds.length && !apiIds.length"');
     expect(usageSource).toContain('apiOperator.getAllForService(serviceId');
     expect(usageSource).not.toContain(

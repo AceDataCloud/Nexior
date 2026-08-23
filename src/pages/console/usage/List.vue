@@ -1280,13 +1280,20 @@ export default defineComponent({
     async onFetchServices() {
       this.servicesLoading = true;
       try {
-        const { data } = (await serviceOperator.getAll({
-          limit: 1000,
-          offset: 0,
-          ordering: '-rank',
-          type: [IServiceType.API, IServiceType.Agent]
-        })) as { data: IServiceListResponse };
-        this.services = data.items;
+        const [{ data: catalog }, { data: applications }] = await Promise.all([
+          serviceOperator.getAll({
+            limit: 1000,
+            offset: 0,
+            ordering: '-rank',
+            type: [IServiceType.API, IServiceType.Agent]
+          }) as Promise<{ data: IServiceListResponse }>,
+          applicationOperator.getAll({ limit: 1000, offset: 0, ordering: '-created_at', user_id: 'me' })
+        ]);
+        const services = new Map(catalog.items.map((service) => [service.id, service]));
+        applications.items.forEach((application) => {
+          if (application.service?.id) services.set(application.service.id, application.service);
+        });
+        this.services = Array.from(services.values());
       } catch {
         this.services = [];
       } finally {
