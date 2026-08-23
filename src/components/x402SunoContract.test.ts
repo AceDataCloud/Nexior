@@ -6,7 +6,7 @@ const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cw
 
 describe('Suno x402 contract', () => {
   it('registers Suno and shares the audio builder between quote and submit', () => {
-    expect(source('layouts/Main.vue')).toContain("'suno'");
+    expect(source('utils/x402/scenarioPayment.ts')).toContain("'suno'");
     expect(source('components/suno/ConfigPanel.vue')).toContain(
       'sunoOperator.quoteAudio(buildSunoAudioRequest(this.config))'
     );

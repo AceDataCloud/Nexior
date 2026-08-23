@@ -28,7 +28,7 @@ import { applicationOperator } from '@/operators';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getFinalApplication } from '@/utils';
-import { isScenarioX402Enabled } from '@/utils/x402/scenarioPayment';
+import { isScenarioX402Supported, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 
 // How often the floating Credits pill re-syncs the selected application's
 // balance. Generations spend credits server-side at task-creation time, so
@@ -65,38 +65,8 @@ export default defineComponent({
       return Boolean(this.appName);
     },
     x402Scenario(): string | undefined {
-      if (!this.appName) return undefined;
-      if (this.appName === 'kling' && this.$store.state.kling?.taskType === 'motion') return undefined;
-      return this.x402ScenarioEnabled ? String(this.appName) : undefined;
-    },
-    x402ScenarioEnabled(): boolean {
-      return (
-        [
-          'nanobanana',
-          'openaiimage',
-          'flux',
-          'qrart',
-          'luma',
-          'pika',
-          'pixverse',
-          'hailuo',
-          'veo',
-          'seedance',
-          'sora',
-          'wan',
-          'omni',
-          'grokvideo',
-          'minimax',
-          'maestro',
-          'kling',
-          'digitalhuman',
-          'serp',
-          'suno',
-          'midjourney',
-          'producer',
-          'chat'
-        ].includes(String(this.appName)) && isScenarioX402Enabled()
-      );
+      if (!isScenarioX402Supported(this.appName)) return undefined;
+      return scenarioPaymentState(this.appName).walletAvailable ? this.appName : undefined;
     },
     application() {
       if (!this.appName) return undefined;

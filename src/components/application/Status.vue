@@ -1,7 +1,7 @@
 <template>
   <div class="status">
     <el-dialog v-model="visible" class="mt-12" width="450px">
-      <el-tabs v-if="x402Enabled" v-model="paymentMode" class="payment-tabs">
+      <el-tabs v-if="walletAvailable" v-model="paymentMode" class="payment-tabs">
         <el-tab-pane :label="$t('common.x402Scenario.credits')" name="credits" />
         <el-tab-pane :label="$t('common.x402Scenario.wallet')" name="wallet" />
       </el-tabs>
@@ -135,12 +135,7 @@ import ContinuousPaymentCard from './ContinuousPaymentCard.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { getApplicationPurchaseRoute, isNative } from '@/utils';
-import {
-  isScenarioX402Enabled,
-  scenarioPaymentState,
-  setScenarioPaymentMode,
-  type ScenarioPaymentMode
-} from '@/utils/x402/scenarioPayment';
+import { scenarioPaymentState, setPreferredPaymentMode, type ScenarioPaymentMode } from '@/utils/x402/scenarioPayment';
 import { refreshContinuousPaymentAuthorization } from '@/utils/x402/continuousPayment';
 import {
   activeEvmWallet,
@@ -212,8 +207,8 @@ export default defineComponent({
     };
   },
   computed: {
-    x402Enabled(): boolean {
-      return Boolean(this.scenario) && isScenarioX402Enabled();
+    walletAvailable(): boolean {
+      return Boolean(this.scenario) && scenarioPaymentState(this.scenario!).walletAvailable;
     },
     paymentMode: {
       get(): ScenarioPaymentMode {
@@ -221,7 +216,7 @@ export default defineComponent({
       },
       set(value: ScenarioPaymentMode) {
         if (!this.scenario) return;
-        setScenarioPaymentMode(this.scenario, value);
+        setPreferredPaymentMode(value);
         if (value === 'wallet') setActiveWalletRail(this.walletRail);
         if (value === 'wallet' && this.walletRail === 'base' && !this.evmAddress) void this.openEvmWalletPicker();
         if (value === 'wallet' && this.walletRail === 'solana' && !this.solanaConnected)

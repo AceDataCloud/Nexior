@@ -6,8 +6,10 @@ const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cw
 
 describe('Flux and QR Art x402 contract', () => {
   it('adds both scenarios to the existing floating payment selector', () => {
-    const main = source('layouts/Main.vue');
-    ['nanobanana', 'openaiimage', 'flux', 'qrart'].forEach((scenario) => expect(main).toContain(`'${scenario}'`));
+    const capabilities = source('utils/x402/scenarioPayment.ts');
+    ['nanobanana', 'openaiimage', 'flux', 'qrart'].forEach((scenario) =>
+      expect(capabilities).toContain(`'${scenario}'`)
+    );
   });
 
   it('quotes and submits each scenario through its own operator', () => {

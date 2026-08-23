@@ -9,11 +9,12 @@ describe('special video x402 contract', () => {
     const main = source('layouts/Main.vue');
     const klingPage = source('pages/kling/Index.vue');
 
-    expect(main).toContain("'kling'");
-    expect(main).toContain("'digitalhuman'");
-    expect(main).toContain("this.appName === 'kling'");
-    expect(main).toContain("taskType === 'motion'");
-    expect(klingPage).toContain("if (value === 'motion') setScenarioPaymentMode('kling', 'credits')");
+    expect(main).toContain('isScenarioX402Supported(this.appName)');
+    expect(main).not.toContain("this.appName === 'kling'");
+    expect(klingPage).toContain("setScenarioWalletAvailable('kling', value !== 'motion')");
+    expect(klingPage).toContain('taskType: {');
+    expect(klingPage).toContain('immediate: true');
+    expect(klingPage).not.toContain("setPreferredPaymentMode('credits')");
     expect(source('components/kling/MotionPanel.vue')).not.toContain('ScenarioPaymentMode');
     expect(klingPage).toContain('klingOperator.motion(request, { token })');
   });

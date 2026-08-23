@@ -89,12 +89,14 @@ export default defineComponent({
     walletMode: {
       handler(enabled: boolean) {
         if (enabled) this.scheduleQuote();
+        else this.cancelQuote();
       },
       immediate: true
     },
     config: {
       handler() {
         if (this.walletMode) this.scheduleQuote();
+        else this.cancelQuote();
       },
       deep: true
     },
@@ -111,6 +113,10 @@ export default defineComponent({
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
       this.quoteTimer = window.setTimeout(this.refreshQuote, QUOTE_DEBOUNCE_MS);
+    },
+    cancelQuote() {
+      window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
     },
     async refreshQuote() {
       const state = scenarioPaymentState('openaiimage');
