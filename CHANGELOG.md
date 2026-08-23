@@ -1,8 +1,28 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 22 Aug 2026 20:15:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 23 Aug 2026 20:14:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.366.1
+
+Sun, 23 Aug 2026 20:14:45 GMT
+
+### Patches
+
+- Fix Solana wallet signing for X402 generation across Studio scenarios. (dev@acedata.cloud)
+- Upgrade the X402 client so Base wallet signatures include the complete EIP-712 domain. (dev@acedata.cloud)
+- Hide service pricing links while USDC wallet payment is selected. (dev@acedata.cloud)
+- Preserve white-label sessions and branding across first-party MCP OAuth redirects. (dev@acedata.cloud)
+- Persist wallet payment mode globally and apply shared availability rules to credits-only operations. (dev@acedata.cloud)
+- Include Agent services such as Coding Plan in Usage History filtering. (dev@acedata.cloud)
+- Keep explicit Usage History Service filters authoritative over legacy API inference. (dev@acedata.cloud)
+- Include owned hidden services such as Coding Plan in Usage History filters. (dev@acedata.cloud)
+- Hide private services from the Usage History Service picker. (dev@acedata.cloud)
+- Show service favicons and resolved service names throughout Usage History. (dev@acedata.cloud)
+- Route Solana continuous-payment setup through the authenticated Backend relay. (dev@acedata.cloud)
+- Show actionable continuous-payment errors and trace IDs. (dev@acedata.cloud)
+- Return desktop connector authorization from the system browser to the AceData app. (dev@acedata.cloud)
 
 ## 3.366.0
 

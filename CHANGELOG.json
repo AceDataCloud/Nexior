@@ -2,6 +2,93 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 23 Aug 2026 20:14:45 GMT",
+      "version": "3.366.1",
+      "tag": "@acedatacloud/nexior_v3.366.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "11276f521f851434e82ae0a4f88a514b5d015e65",
+            "comment": "Fix Solana wallet signing for X402 generation across Studio scenarios."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "8310c0a9ca5eeffbb848286027fea13ddd6f6dcb",
+            "comment": "Upgrade the X402 client so Base wallet signatures include the complete EIP-712 domain."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "fb21bf591bf57cc6aa19f310ba0cfe1089a58ee8",
+            "comment": "Hide service pricing links while USDC wallet payment is selected."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "7548f59cff8685b9cf90c98f0f0b13bd5df08381",
+            "comment": "Preserve white-label sessions and branding across first-party MCP OAuth redirects."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "b0265a5bd2ddff40a16d1bd0af224fab4f6020da",
+            "comment": "Persist wallet payment mode globally and apply shared availability rules to credits-only operations."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "8ffee52ae5c591cad2bf0390e947f26fac821e9d",
+            "comment": "Include Agent services such as Coding Plan in Usage History filtering."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "054444e1c7327bfdc05089611938864d0843f692",
+            "comment": "Keep explicit Usage History Service filters authoritative over legacy API inference."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "aaea8f9c46ca03078fc3e9c034c59a50740463d2",
+            "comment": "Include owned hidden services such as Coding Plan in Usage History filters."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "6d81779ba5d00a4bbf7b87c06695109d6d038805",
+            "comment": "Hide private services from the Usage History Service picker."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "ae318a10fe7d35b6148274717e3cef63671d0e25",
+            "comment": "Show service favicons and resolved service names throughout Usage History."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f97daf940309ef7614154cb4c8791838acaa9ef2",
+            "comment": "Route Solana continuous-payment setup through the authenticated Backend relay."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "9db020addd5d6ca02347c2d851f0f79ff9d18b94",
+            "comment": "Show actionable continuous-payment errors and trace IDs."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "d3b2e26fd5ce83e181a0174437c3389e91c93cec",
+            "comment": "Return desktop connector authorization from the system browser to the AceData app."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 22 Aug 2026 20:15:35 GMT",
       "version": "3.366.0",
       "tag": "@acedatacloud/nexior_v3.366.0",
