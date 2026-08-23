@@ -39,6 +39,26 @@ import { desktopBridge } from '../desktop';
 import { isAuthFrontendUrl, prepareConnectorAuthorizationUrl } from '../authHandoff';
 import { openAuthorizePopup } from './authorizePopup';
 
+export interface DesktopConnectorCallback {
+  requestId: string;
+  status: 'success' | 'cancelled' | 'error';
+  connectionId?: string;
+  errorCode?: string;
+}
+
+export interface PreparedAuthorizeFlow {
+  returnUrl: string;
+  requestId?: string;
+}
+
+export async function prepareAuthorizeFlow(fallbackReturnUrl: string): Promise<PreparedAuthorizeFlow> {
+  if (!isDesktop()) return { returnUrl: fallbackReturnUrl };
+  const bridge = desktopBridge();
+  if (!bridge?.createConnectorCallback) throw new Error('desktop-authorize-unsupported');
+  const prepared = await bridge.createConnectorCallback();
+  return { returnUrl: prepared.returnUrl, requestId: prepared.requestId };
+}
+
 /**
  * Run the consent flow on whatever surface we are, and resolve once it ends.
  *
@@ -46,10 +66,18 @@ import { openAuthorizePopup } from './authorizePopup';
  * surface that cannot open the URL at all still resolves, so a spinner never
  * outlives the click.
  */
-export async function openAuthorizeFlow(authorizationUrl: string, handoffToken?: string): Promise<void> {
-  if (isDesktop()) return openOnDesktop(authorizationUrl, handoffToken);
-  if (isNative()) return openOnNative(authorizationUrl, handoffToken);
-  return openOnWeb(authorizationUrl, handoffToken);
+export async function openAuthorizeFlow(
+  authorizationUrl: string,
+  handoffToken?: string,
+  requestId?: string
+): Promise<DesktopConnectorCallback | undefined> {
+  if (isDesktop()) return openOnDesktop(authorizationUrl, handoffToken, requestId);
+  if (isNative()) {
+    await openOnNative(authorizationUrl, handoffToken);
+    return undefined;
+  }
+  await openOnWeb(authorizationUrl, handoffToken);
+  return undefined;
 }
 
 /** Web: popup, falling back to a full-page navigation when it's blocked. */
@@ -101,18 +129,29 @@ async function openOnNative(authorizationUrl: string, handoffToken?: string): Pr
  * next window `focus` — the user coming back is the signal. `visibilitychange`
  * would not do: the Electron window stays visible behind the browser.
  */
-async function openOnDesktop(authorizationUrl: string, handoffToken?: string): Promise<void> {
+async function openOnDesktop(
+  authorizationUrl: string,
+  handoffToken?: string,
+  requestId?: string
+): Promise<DesktopConnectorCallback | undefined> {
   const bridge = desktopBridge();
-  if (!bridge?.openAuthorizeConnector) {
-    // Desktop shell older than this IPC. Falling through to window.open would
-    // be a silent no-op (setWindowOpenHandler denies non-allowlisted hosts),
-    // so say so instead of pretending the click worked.
+  if (!bridge?.openAuthorizeConnector || !bridge.onConnectorCallback || !requestId) {
     throw new Error('desktop-authorize-unsupported');
   }
-  const returned = new Promise<void>((resolve) => {
-    window.addEventListener('focus', () => resolve(), { once: true });
-  });
   const target = await prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken);
-  await bridge.openAuthorizeConnector(target);
-  await returned;
+  let timer: number | undefined;
+  let off: (() => void) | undefined;
+  const callback = new Promise<DesktopConnectorCallback>((resolve, reject) => {
+    off = bridge.onConnectorCallback((result) => {
+      if (result.requestId === requestId) resolve(result);
+    });
+    timer = window.setTimeout(() => reject(new Error('desktop-authorize-expired')), 10 * 60 * 1000);
+  });
+  try {
+    await bridge.openAuthorizeConnector(target);
+    return await callback;
+  } finally {
+    off?.();
+    if (timer !== undefined) window.clearTimeout(timer);
+  }
 }

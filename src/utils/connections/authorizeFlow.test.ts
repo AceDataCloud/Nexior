@@ -20,7 +20,7 @@ vi.mock('../desktop', () => bridge);
 vi.mock('./authorizePopup', () => popup);
 vi.mock('../authHandoff', () => handoff);
 
-import { openAuthorizeFlow } from './authorizeFlow';
+import { openAuthorizeFlow, prepareAuthorizeFlow } from './authorizeFlow';
 
 const URL_UNDER_TEST = 'https://accounts.google.com/o/oauth2/auth?client_id=x';
 const MCP_URL_UNDER_TEST = 'https://serp.mcp.acedata.cloud/authorize?client_id=dynamic';
@@ -187,45 +187,66 @@ describe('openAuthorizeFlow', () => {
   describe('desktop', () => {
     beforeEach(() => surface.isDesktop.mockReturnValue(true));
 
-    it('hands the url to the main process and resolves on window focus', async () => {
-      const openAuthorizeConnector = vi.fn().mockResolvedValue(undefined);
-      bridge.desktopBridge.mockReturnValue({ openAuthorizeConnector });
+    function desktopCallbackBridge() {
+      let callback: ((result: any) => void) | undefined;
+      const off = vi.fn();
+      const value = {
+        createConnectorCallback: vi.fn().mockResolvedValue({
+          requestId: 'request-1',
+          returnUrl: 'https://auth.acedata.cloud/connections/popup-return?desktop_state=state-1'
+        }),
+        openAuthorizeConnector: vi.fn().mockResolvedValue(undefined),
+        onConnectorCallback: vi.fn((handler: (result: any) => void) => {
+          callback = handler;
+          return off;
+        })
+      };
+      bridge.desktopBridge.mockReturnValue(value);
+      return { value, off, send: (result: any) => callback?.(result) };
+    }
 
-      let settled = false;
-      void openAuthorizeFlow(URL_UNDER_TEST).then(() => {
-        settled = true;
+    it('prepares a nonce-bound desktop return URL', async () => {
+      const { value } = desktopCallbackBridge();
+      await expect(prepareAuthorizeFlow('https://studio.acedata.cloud/return')).resolves.toEqual({
+        requestId: 'request-1',
+        returnUrl: 'https://auth.acedata.cloud/connections/popup-return?desktop_state=state-1'
       });
-      await vi.waitFor(() => expect(openAuthorizeConnector).toHaveBeenCalledWith(URL_UNDER_TEST));
-      expect(settled).toBe(false);
-
-      window.dispatchEvent(new Event('focus'));
-      await vi.waitFor(() => expect(settled).toBe(true));
+      expect(value.createConnectorCallback).toHaveBeenCalledOnce();
     });
 
-    it('hands Auth-hosted authorization through the white-label SSO login', async () => {
-      const openAuthorizeConnector = vi.fn().mockResolvedValue(undefined);
-      bridge.desktopBridge.mockReturnValue({ openAuthorizeConnector });
-
-      const pending = openAuthorizeFlow(AUTH_URL_UNDER_TEST);
-      await vi.waitFor(() =>
-        expect(openAuthorizeConnector).toHaveBeenCalledWith(expect.stringContaining('/auth/login/'))
-      );
-      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST, undefined);
+    it('resolves only on the matching verified callback, not window focus', async () => {
+      const { value, off, send } = desktopCallbackBridge();
+      let settled = false;
+      const pending = openAuthorizeFlow(URL_UNDER_TEST, undefined, 'request-1').then((result) => {
+        settled = true;
+        return result;
+      });
+      await vi.waitFor(() => expect(value.openAuthorizeConnector).toHaveBeenCalledWith(URL_UNDER_TEST));
       window.dispatchEvent(new Event('focus'));
+      expect(settled).toBe(false);
+      send({ requestId: 'other', status: 'success' });
+      expect(settled).toBe(false);
+      send({ requestId: 'request-1', status: 'success', connectionId: 'connection-1' });
+      await expect(pending).resolves.toMatchObject({ status: 'success', connectionId: 'connection-1' });
+      expect(off).toHaveBeenCalledOnce();
+    });
+
+    it('keeps the white-label SSO handoff token separate from callback state', async () => {
+      const { value, send } = desktopCallbackBridge();
+      const pending = openAuthorizeFlow(AUTH_URL_UNDER_TEST, 'handoff-1', 'request-1');
+      await vi.waitFor(() =>
+        expect(value.openAuthorizeConnector).toHaveBeenCalledWith(expect.stringContaining('/auth/login/'))
+      );
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST, 'handoff-1');
+      send({ requestId: 'request-1', status: 'success' });
       await pending;
     });
 
-    it('throws on a desktop shell without the IPC instead of silently doing nothing', async () => {
-      // window.open on desktop is denied by setWindowOpenHandler for any host
-      // off EXTERNAL_HOSTS — which lists no OAuth provider — so a fallback
-      // would look identical to a dead click.
+    it('throws on a desktop shell without the callback IPC', async () => {
       bridge.desktopBridge.mockReturnValue({});
-      await expect(openAuthorizeFlow(URL_UNDER_TEST)).rejects.toThrow('desktop-authorize-unsupported');
-    });
-
-    it('never falls back to the web popup', async () => {
-      bridge.desktopBridge.mockReturnValue({});
-      await expect(openAuthorizeFlow(URL_UNDER_TEST)).rejects.toThrow();
+      await expect(prepareAuthorizeFlow('https://studio.acedata.cloud/return')).rejects.toThrow(
+        'desktop-authorize-unsupported'
+      );
       expect(popup.openAuthorizePopup).not.toHaveBeenCalled();
     });
   });
