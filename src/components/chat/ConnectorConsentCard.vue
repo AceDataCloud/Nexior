@@ -78,6 +78,7 @@
 </template>
 
 <script lang="ts">
+import { prepareConnectorAuthorizationUrl } from '@/utils/authHandoff';
 import { SecurityIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, ElMessage } from 'element-plus';
@@ -366,7 +367,7 @@ export default defineComponent({
           return_url: returnUrl.toString()
         });
         if (result.type === 'redirect' && result.authorization_url) {
-          window.location.href = result.authorization_url;
+          window.location.href = await prepareConnectorAuthorizationUrl(result.authorization_url, result.handoff_token);
           return;
         }
         // `form` (BYOC schema returned inline) or `active` (zero-step) —

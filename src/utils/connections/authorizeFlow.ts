@@ -36,7 +36,7 @@
 import { Browser } from '@capacitor/browser';
 import { isNative, isDesktop } from '../surface';
 import { desktopBridge } from '../desktop';
-import { isAuthFrontendUrl, withAuthFrontendSession } from '../authHandoff';
+import { isAuthFrontendUrl, prepareConnectorAuthorizationUrl } from '../authHandoff';
 import { openAuthorizePopup } from './authorizePopup';
 
 /**
@@ -46,15 +46,16 @@ import { openAuthorizePopup } from './authorizePopup';
  * surface that cannot open the URL at all still resolves, so a spinner never
  * outlives the click.
  */
-export async function openAuthorizeFlow(authorizationUrl: string): Promise<void> {
-  if (isDesktop()) return openOnDesktop(authorizationUrl);
-  if (isNative()) return openOnNative(authorizationUrl);
-  return openOnWeb(authorizationUrl);
+export async function openAuthorizeFlow(authorizationUrl: string, handoffToken?: string): Promise<void> {
+  if (isDesktop()) return openOnDesktop(authorizationUrl, handoffToken);
+  if (isNative()) return openOnNative(authorizationUrl, handoffToken);
+  return openOnWeb(authorizationUrl, handoffToken);
 }
 
 /** Web: popup, falling back to a full-page navigation when it's blocked. */
-async function openOnWeb(authorizationUrl: string): Promise<void> {
-  const target = isAuthFrontendUrl(authorizationUrl) ? withAuthFrontendSession(authorizationUrl) : authorizationUrl;
+async function openOnWeb(authorizationUrl: string, handoffToken?: string): Promise<void> {
+  const needsHandoff = !!handoffToken || isAuthFrontendUrl(authorizationUrl);
+  const target = needsHandoff ? prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken) : authorizationUrl;
   const pending = openAuthorizePopup(target);
   if (!pending) {
     // Navigating away — this page is about to be replaced, so there is
@@ -73,7 +74,7 @@ async function openOnWeb(authorizationUrl: string): Promise<void> {
  * `window.location.href` fallback: on Android that is a second top-level
  * navigation, which Capacitor hands to Chrome all over again.
  */
-async function openOnNative(authorizationUrl: string): Promise<void> {
+async function openOnNative(authorizationUrl: string, handoffToken?: string): Promise<void> {
   let handle: { remove: () => Promise<void> } | undefined;
   try {
     const finished = new Promise<void>((resolve) => {
@@ -81,9 +82,7 @@ async function openOnNative(authorizationUrl: string): Promise<void> {
         handle = h;
       });
     });
-    const target = isAuthFrontendUrl(authorizationUrl)
-      ? await withAuthFrontendSession(authorizationUrl)
-      : authorizationUrl;
+    const target = await prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken);
     await Browser.open({ url: target });
     await finished;
   } catch (error) {
@@ -102,7 +101,7 @@ async function openOnNative(authorizationUrl: string): Promise<void> {
  * next window `focus` — the user coming back is the signal. `visibilitychange`
  * would not do: the Electron window stays visible behind the browser.
  */
-async function openOnDesktop(authorizationUrl: string): Promise<void> {
+async function openOnDesktop(authorizationUrl: string, handoffToken?: string): Promise<void> {
   const bridge = desktopBridge();
   if (!bridge?.openAuthorizeConnector) {
     // Desktop shell older than this IPC. Falling through to window.open would
@@ -113,9 +112,7 @@ async function openOnDesktop(authorizationUrl: string): Promise<void> {
   const returned = new Promise<void>((resolve) => {
     window.addEventListener('focus', () => resolve(), { once: true });
   });
-  const target = isAuthFrontendUrl(authorizationUrl)
-    ? await withAuthFrontendSession(authorizationUrl)
-    : authorizationUrl;
+  const target = await prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken);
   await bridge.openAuthorizeConnector(target);
   await returned;
 }

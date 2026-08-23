@@ -550,7 +550,7 @@ export default defineComponent({
         if (data.type === 'redirect') {
           // Popup (web) / in-app browser (native) / system browser (desktop)
           // all keep this dialog and the page behind it alive.
-          await openAuthorizeFlow(data.authorization_url);
+          await openAuthorizeFlow(data.authorization_url, data.handoff_token);
           this.$emit('installed');
           await this.fetchItems();
           return;

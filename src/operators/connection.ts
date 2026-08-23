@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { getBaseUrlAuth } from '@/utils';
+import { getBaseUrlAuth } from '@/utils/baseUrl';
+import { getConnectorSiteOrigin } from '@/utils/authHandoff';
 import type { IBrowserDevice } from '@/models/browserDevice';
 
 /**
@@ -105,10 +106,12 @@ export interface IConnectionAuthorizeRequest {
    *  the adapter falls back to its ``default_scopes``. */
   scopes?: string[];
   return_url?: string;
+  site_origin?: string;
 }
 
 export interface IConnectionAuthorizeResponse {
   authorization_url: string;
+  handoff_token?: string;
 }
 
 export interface IConnectionAuthorizeCustomRequest {
@@ -117,12 +120,14 @@ export interface IConnectionAuthorizeCustomRequest {
   client_id?: string;
   client_secret?: string;
   return_url?: string;
+  site_origin?: string;
   provider?: 'mcp';
 }
 
 export interface IConnectionAuthorizeCustomResponse {
   authorization_url: string;
   connection_id: string;
+  handoff_token?: string;
 }
 
 export interface IConnectionExchangeCustomRequest {
@@ -316,6 +321,7 @@ export interface IConnectorCatalogCategoriesResponse {
 
 export interface IConnectorCatalogInstallRequest {
   return_url?: string;
+  site_origin?: string;
   /** Raw upstream OAuth scope strings to request at consent time
    *  (subset of the row's ``permissions[].id``). When omitted the
    *  preset adapter falls back to its ``default_scopes``. */
@@ -337,6 +343,7 @@ export type IConnectorCatalogInstallResponse =
   | {
       type: 'redirect';
       authorization_url: string;
+      handoff_token?: string;
       state: string;
       connection_id?: string;
     }
@@ -396,6 +403,11 @@ export function getConnectorMethods(item: IConnectorCatalogItem | null | undefin
   return item?.connection_methods || [];
 }
 
+function withSiteOrigin<T extends { site_origin?: string }>(payload: T): T {
+  const siteOrigin = getConnectorSiteOrigin();
+  return siteOrigin && !payload.site_origin ? { ...payload, site_origin: siteOrigin } : payload;
+}
+
 class ConnectionOperator {
   key = 'connections';
 
@@ -404,13 +416,13 @@ class ConnectionOperator {
   }
 
   async authorize(payload: IConnectionAuthorizeRequest): Promise<AxiosResponse<IConnectionAuthorizeResponse>> {
-    return httpClient.post(`/${this.key}/authorize/`, payload, authApi());
+    return httpClient.post(`/${this.key}/authorize/`, withSiteOrigin(payload), authApi());
   }
 
   async authorizeCustom(
     payload: IConnectionAuthorizeCustomRequest
   ): Promise<AxiosResponse<IConnectionAuthorizeCustomResponse>> {
-    return httpClient.post(`/${this.key}/authorize-custom/`, payload, authApi());
+    return httpClient.post(`/${this.key}/authorize-custom/`, withSiteOrigin(payload), authApi());
   }
 
   async exchangeCustom(
@@ -473,7 +485,7 @@ class ConnectionOperator {
     id: string,
     payload: IConnectorCatalogInstallRequest = {}
   ): Promise<AxiosResponse<IConnectorCatalogInstallResponse>> {
-    return httpClient.post(`/connectors/${id}/install/`, payload, authApi());
+    return httpClient.post(`/connectors/${id}/install/`, withSiteOrigin(payload), authApi());
   }
 
   /** Step 2 of the ``byoc`` install: post the user-filled credential

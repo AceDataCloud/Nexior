@@ -25,7 +25,8 @@
  * PlatformBackend for this single endpoint.
  */
 import { httpClient } from '@/operators/common';
-import { getBaseUrlAuth } from '@/utils';
+import { getBaseUrlAuth } from '@/utils/baseUrl';
+import { getConnectorSiteOrigin } from '@/utils/authHandoff';
 import type { AxiosResponse } from 'axios';
 
 /** Localized permission entry on a catalog row — mirrors AuthBackend's
@@ -67,6 +68,7 @@ export interface IConnectorCatalogInstallResponse {
   /** Present iff `type === 'redirect'` — the upstream provider's OAuth
    *  authorize URL the browser should navigate to. */
   authorization_url?: string;
+  handoff_token?: string;
   /** Present iff `type === 'form'` — credential schema the AuthFrontend
    *  BYOC dialog renders. The consent card does NOT handle this case
    *  inline; the parent emits the legacy `authorize` event and the user
@@ -266,11 +268,12 @@ export async function listEnabledConnectors(
  */
 export async function installFromCatalog(
   catalogId: string,
-  payload: { scopes?: string[]; return_url: string }
+  payload: { scopes?: string[]; return_url: string; site_origin?: string }
 ): Promise<IConnectorCatalogInstallResponse> {
+  const siteOrigin = getConnectorSiteOrigin();
   const response: AxiosResponse<IConnectorCatalogInstallResponse> = await httpClient.post(
     `/connectors/${catalogId}/install/`,
-    payload,
+    { ...payload, ...(siteOrigin ? { site_origin: siteOrigin } : {}) },
     { baseURL: `${getBaseUrlAuth()}/api/v1` }
   );
   return response.data;
