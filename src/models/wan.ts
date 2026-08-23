@@ -9,6 +9,11 @@ export interface IWanConfig {
   prompt_extend?: boolean;
   callback_url?: string;
   async?: boolean;
+  media?: Array<{ type: string; url: string }>;
+  media_text?: string;
+  ratio?: string;
+  seed?: number;
+  watermark?: boolean;
 }
 
 export interface IWanGenerateRequest {
@@ -23,6 +28,10 @@ export interface IWanGenerateRequest {
   negative_prompt?: string;
   callback_url?: string;
   async?: boolean;
+  media?: Array<{ type: string; url: string }>;
+  ratio?: string;
+  seed?: number;
+  watermark?: boolean;
 }
 
 export interface IWanVideo {

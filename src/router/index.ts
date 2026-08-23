@@ -33,6 +33,7 @@ import producer from './producer';
 import nanobanana from './nanobanana';
 import openaiimage from './openaiimage';
 import seedream from './seedream';
+import qwenimage from './qwenimage';
 import seedance from './seedance';
 import grokvideo from './grokvideo';
 import omni from './omni';
@@ -56,6 +57,7 @@ import {
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_SEEDREAM_INDEX,
+  ROUTE_QWENIMAGE_INDEX,
   ROUTE_SUNO_INDEX,
   ROUTE_PRODUCER_INDEX,
   ROUTE_SEEDANCE_INDEX,
@@ -167,6 +169,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'OpenAI Image',
     description: 'Generate and edit AI images with OpenAI image models including gpt-image-1.5 and gpt-image-2.',
     keywords: ['OpenAI Image', 'gpt-image-2', 'Image Editing', 'AI Image'],
+    category: 'AI Image Generation'
+  },
+  qwenimage: {
+    title: 'Qwen Image 3',
+    description: 'Generate and edit images with Qwen Image 3.',
+    keywords: ['Qwen Image', 'AI Image', 'Image Editing'],
     category: 'AI Image Generation'
   },
   seedream: {
@@ -337,6 +345,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['nanobanana', ROUTE_NANOBANANA_INDEX],
   ['flux', ROUTE_FLUX_INDEX],
   ['seedream', ROUTE_SEEDREAM_INDEX],
+  ['qwenimage', ROUTE_QWENIMAGE_INDEX],
   ['openaiimage', ROUTE_OPENAIIMAGE_INDEX],
   ['suno', ROUTE_SUNO_INDEX],
   ['producer', ROUTE_PRODUCER_INDEX],
@@ -406,6 +415,7 @@ export const routes = [
   nanobanana,
   openaiimage,
   seedream,
+  qwenimage,
   seedance,
   grokvideo,
   omni,

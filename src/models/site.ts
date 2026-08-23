@@ -29,6 +29,7 @@ export interface ISiteFeatures {
   nanobanana?: any;
   openaiimage?: any;
   seedream?: any;
+  qwenimage?: any;
   seedance?: any;
   grokvideo?: any;
   omni?: any;

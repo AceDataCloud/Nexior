@@ -1,0 +1,243 @@
+<template>
+  <div v-if="supported">
+    <div class="field">
+      <div class="label">
+        <div class="box">
+          <h2 class="title font-bold">{{ $t('qwenimage.name.imageUrls') }}</h2>
+          <info-icon :content="$t('qwenimage.description.imageUrls')" class="info" />
+        </div>
+      </div>
+      <div class="value">
+        <el-upload
+          ref="uploader"
+          v-model:file-list="fileList"
+          accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+          name="file"
+          :limit="14"
+          :multiple="true"
+          :show-file-list="false"
+          :before-upload="beforeUploadSizeGuard"
+          :action="uploadUrl"
+          :on-exceed="onExceed"
+          :on-error="onError"
+          :on-success="onSuccess"
+          :on-change="onChange"
+          :on-remove="onRemove"
+          :headers="headers"
+        >
+          <el-button size="small" type="primary" round>
+            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('qwenimage.button.uploadImageUrls') }}
+          </el-button>
+        </el-upload>
+      </div>
+    </div>
+    <div class="file-list mt-2 flex flex-wrap gap-[10px]">
+      <image-preview
+        v-for="(file, idx) in fileList"
+        :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
+        :url="(file as any).url || (file as any)?.response?.file_url"
+        :name="(file as any).name"
+        :percentage="(file as any).percentage"
+        @remove="onRemovePreview(idx, file)"
+      />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
+import { defineComponent } from 'vue';
+import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
+import {
+  getBaseUrlPlatform,
+  pasteUploadMixin,
+  dropUploadMixin,
+  uploadTrackerMixin,
+  uploadSizeGuardMixin
+} from '@/utils';
+import InfoIcon from '@/components/common/InfoIcon.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
+import { getQwenImageCapabilities } from '@/utils/qwenimage/capabilities';
+
+interface IData {
+  fileList: UploadFiles;
+  uploadUrl: string;
+  suppressWatch: boolean;
+}
+
+export default defineComponent({
+  name: 'QwenImageImageInput',
+  components: {
+    UploadIcon,
+    ElUpload,
+    ElButton,
+    InfoIcon,
+    ImagePreview
+  },
+  mixins: [pasteUploadMixin, dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
+  data(): IData {
+    return {
+      fileList: [],
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
+      // @ts-ignore
+      suppressWatch: false
+    };
+  },
+  computed: {
+    headers() {
+      return {
+        Authorization: `Bearer ${this.$store.state.token.access}`
+      };
+    },
+    urls(): string[] {
+      // @ts-ignore
+      return (
+        this.fileList
+          // @ts-ignore
+          .map((file: UploadFile) => file?.response?.file_url)
+          .filter((u: string | undefined) => !!u) as string[]
+      );
+    },
+    value(): string[] | undefined {
+      return this.$store.state.qwenimage?.config?.image;
+    },
+    model(): string | undefined {
+      return this.$store.state.qwenimage?.config?.model;
+    },
+    supported(): boolean {
+      return getQwenImageCapabilities(this.model).image;
+    }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler(newVal?: string[]) {
+        if (this.suppressWatch) return;
+        if (!newVal || newVal.length === 0) {
+          const uploading = (this.fileList || []).filter((f: any) => !f?.response?.file_url);
+          this.fileList = uploading.length ? uploading : [];
+          return;
+        }
+        const newFiles: UploadFiles = [];
+        newVal.forEach((url: string) => {
+          const existing = this.fileList.find(
+            (file) => (file as any)?.response?.file_url === url || (file as any)?.url === url
+          );
+          if (existing) {
+            newFiles.push(existing);
+          } else {
+            newFiles.push({
+              name: url.split('/').pop() || url,
+              url: url,
+              status: 'success',
+              percentage: 100,
+              response: { file_url: url }
+            } as UploadFile);
+          }
+        });
+        const uploading = (this.fileList || []).filter((f: any) => !f?.response?.file_url);
+        uploading.forEach((f: any) => {
+          const exists = newFiles.some(
+            (nf: any) => nf === f || nf?.url === f?.url || nf?.response?.file_url === f?.response?.file_url
+          );
+          if (!exists) newFiles.push(f);
+        });
+        this.fileList = newFiles;
+      }
+    }
+  },
+  methods: {
+    onChange(file: any) {
+      if (!file?.url && file?.raw) {
+        try {
+          file.url = URL.createObjectURL(file.raw);
+        } catch (e) {
+          // ignore
+        }
+      }
+    },
+    onRemove(file: any) {
+      if (file?.url && typeof file.url === 'string' && file.url.startsWith('blob:')) {
+        try {
+          URL.revokeObjectURL(file.url);
+        } catch (e) {
+          // ignore
+        }
+      }
+      this.onSetImages();
+    },
+    onExceed() {
+      ElMessage.warning(this.$t('qwenimage.message.uploadImageExceed'));
+    },
+    onError() {
+      ElMessage.error(this.$t('qwenimage.message.uploadImageError'));
+    },
+    onSetImages() {
+      const urls = this.urls;
+      this.suppressWatch = true;
+      this.$store.commit('qwenimage/setConfig', {
+        ...this.$store.state.qwenimage?.config,
+        image: urls
+      });
+      this.$nextTick(() => {
+        this.suppressWatch = false;
+      });
+    },
+    async onSuccess(response: any, file: any) {
+      if (response?.file_url) {
+        file.url = response.file_url;
+        file.response = response;
+      }
+      this.onSetImages();
+    },
+    onRemovePreview(idx: number, file: any) {
+      this.fileList.splice(idx, 1);
+      if (file?.url && typeof file.url === 'string' && file.url.startsWith('blob:')) {
+        try {
+          URL.revokeObjectURL(file.url);
+        } catch (e) {
+          // ignore
+        }
+      }
+      this.onSetImages();
+    }
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .label {
+    width: 30%;
+    display: flex;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .value {
+    width: 160px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+</style>

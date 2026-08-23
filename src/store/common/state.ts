@@ -18,6 +18,7 @@ import producerState from '../producer/state';
 import nanobananaState from '../nanobanana/state';
 import openaiimageState from '../openaiimage/state';
 import seedreamState from '../seedream/state';
+import qwenimageState from '../qwenimage/state';
 import seedanceState from '../seedance/state';
 import grokvideoState from '../grokvideo/state';
 import omniState from '../omni/state';
@@ -71,6 +72,7 @@ export default (): IRootState => {
     nanobanana: nanobananaState(),
     openaiimage: openaiimageState(),
     seedream: seedreamState(),
+    qwenimage: qwenimageState(),
     seedance: seedanceState(),
     grokvideo: grokvideoState(),
     omni: omniState(),

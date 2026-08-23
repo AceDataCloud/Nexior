@@ -19,6 +19,7 @@ import { IProducerState } from '../producer/models';
 import { INanobananaState } from '../nanobanana/models';
 import { IOpenAIImageState } from '../openaiimage/models';
 import { ISeedreamState } from '../seedream/models';
+import { IQwenImageState } from '../qwenimage/models';
 import { ISeedanceState } from '../seedance/models';
 import { IGrokVideoState } from '../grokvideo/models';
 import { IOmniState } from '../omni/models';
@@ -83,6 +84,7 @@ export interface IAppState {
   nanobanana: INanobananaState;
   openaiimage: IOpenAIImageState;
   seedream: ISeedreamState;
+  qwenimage: IQwenImageState;
   seedance: ISeedanceState;
   grokvideo: IGrokVideoState;
   omni: IOmniState;

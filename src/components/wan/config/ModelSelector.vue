@@ -41,6 +41,10 @@ export default defineComponent({
         {
           value: 'wan2.6-r2v',
           label: this.$t('wan.button.modelR2v')
+        },
+        {
+          value: 'wan3.0-video',
+          label: this.$t('wan.button.modelWan3')
         }
       ];
     },

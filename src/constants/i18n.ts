@@ -23,6 +23,7 @@ export const I18N_SCOPES = [
   'nanobanana',
   'openaiimage',
   'seedream',
+  'qwenimage',
   'seedance',
   'grokvideo',
   'omni',
