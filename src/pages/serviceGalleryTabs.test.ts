@@ -10,7 +10,8 @@ const galleryPages = [
   ['veo/Index.vue', 'veo'],
   ['grokvideo/Index.vue', 'grok'],
   ['suno/Index.vue', 'suno'],
-  ['fish/Tts.vue', 'fish']
+  ['fish/Tts.vue', 'fish'],
+  ['maestro/Index.vue', 'maestro']
 ] as const;
 
 function readPage(path: string): string {

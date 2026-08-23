@@ -18,7 +18,8 @@ const SERVICES: Record<string, string> = {
   grokvideo: 'grok',
   suno: 'suno',
   producer: 'producer',
-  fish: 'fish'
+  fish: 'fish',
+  maestro: 'maestro'
 };
 const item = (capability: string, request: Record<string, unknown>, service = SERVICES[capability]) => ({
   id: ID,
@@ -83,7 +84,23 @@ describe('showcase recreate consumer', () => {
     ['grokvideo', { prompt: 'City', resolution: '720p' }, 'resolution'],
     ['suno', { action: 'generate', prompt: 'Nocturne', instrumental: true }, 'instrumental'],
     ['producer', { prompt: 'Dream pop', style: 'Dream pop' }, 'style'],
-    ['fish', { text: 'Welcome', format: 'mp3', speed: 1 }, 'format']
+    ['fish', { text: 'Welcome', format: 'mp3', speed: 1 }, 'format'],
+    [
+      'maestro',
+      {
+        action: 'generate',
+        prompt: 'Explain aerodynamic downforce',
+        file_urls: [],
+        langs: ['en'],
+        aspect: '16:9',
+        duration: 30,
+        quality: 'standard',
+        scenario: 'narrated',
+        style: 'industrial',
+        voice: 'documentary-male'
+      },
+      'quality'
+    ]
   ])(
     'loads %s once by service and applies safe config without tasks or submit',
     async (capability, request, expectedKey) => {
@@ -241,5 +258,83 @@ describe('showcase recreate consumer', () => {
     const second = context('seedance', { prompt: 'Old prompt', duration: 5, resolution: '720p' });
     expect(await consumeShowcase(second.options)).toBe('applied');
     expect(second.commit).toHaveBeenCalledWith('seedance/setConfig', { prompt: 'New prompt' });
+  });
+
+  it('applies a safe Maestro generate config and never submits it', async () => {
+    const request = {
+      action: 'generate',
+      prompt: 'Original virtual presenter explains future mobility',
+      file_urls: ['https://cdn.acedata.cloud/synthetic-presenter.webp'],
+      langs: ['en'],
+      aspect: '9:16',
+      duration: 30,
+      quality: 'standard',
+      scenario: 'avatar',
+      style: 'modern',
+      voice: 'anchor-female'
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('maestro', request)] } as any);
+    const { options, commit, dispatch } = context('maestro');
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith(
+      'maestro/setConfig',
+      expect.objectContaining({
+        action: 'generate',
+        prompt: request.prompt,
+        file_urls: request.file_urls,
+        scenario_customization_enabled: true,
+        style_customization_enabled: true,
+        voice_customization_enabled: true,
+        scenario: 'avatar',
+        style: 'modern',
+        voice: 'anchor-female'
+      })
+    );
+    expect(dispatch).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    { action: 'remix' },
+    { action: 'generate', prompt: '   ' },
+    { action: 'generate', aspect: undefined },
+    { action: 'generate', duration: 20.5 },
+    { action: 'generate', style: undefined },
+    { action: 'generate', voice: undefined },
+    { action: 'generate', quality: 'lite', duration: 31 },
+    { action: 'generate', quality: 'lite', langs: ['zh-cn', 'en'] },
+    { action: 'generate', quality: 'standard', scenario: 'drama' },
+    { action: 'generate', quality: 'standard', scenario: 'avatar', file_urls: [] },
+    {
+      action: 'generate',
+      quality: 'standard',
+      scenario: 'captions',
+      file_urls: ['https://cdn.acedata.cloud/image.webp']
+    },
+    { action: 'generate', quality: 'standard', scenario: 'narrated', file_urls: ['https://example.com/private.mp4'] },
+    {
+      action: 'generate',
+      quality: 'standard',
+      scenario: 'narrated',
+      file_urls: ['https://cdn.acedata.cloud/source.mp4?signature=private']
+    },
+    { action: 'generate', quality: 'standard', scenario: 'narrated', internal_route: 'private' }
+  ])('rejects unsafe Maestro replay fields %#', async (patch) => {
+    const request = {
+      prompt: 'Safe prompt',
+      file_urls: [],
+      langs: ['en'],
+      aspect: '16:9',
+      duration: 30,
+      quality: 'standard',
+      scenario: 'narrated',
+      style: 'modern',
+      voice: 'anchor-female',
+      ...patch
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('maestro', request)] } as any);
+    const { options, commit, dispatch } = context('maestro');
+    expect(await consumeShowcase(options)).toBe('failed');
+    expect(commit).not.toHaveBeenCalled();
+    expect(dispatch).not.toHaveBeenCalled();
   });
 });
