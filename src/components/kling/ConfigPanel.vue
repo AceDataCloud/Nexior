@@ -18,7 +18,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <summary-chip />
       <scenario-payment-mode scenario="kling" />
-      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
         type="primary"

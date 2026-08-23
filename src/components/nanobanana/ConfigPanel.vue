@@ -10,7 +10,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="nanobanana" />
       <service-pricing-summary
-        :show-consumption="!walletMode"
+        v-if="!walletMode"
         :value="consumption"
         :service="service"
         :pricing-unit-aliases="{ count: 'image' }"

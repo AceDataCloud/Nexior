@@ -63,10 +63,10 @@ describe('service pricing scenario coverage', () => {
       const source = fs.readFileSync(path.join(COMPONENT_ROOT, relativePath), 'utf8');
       return source.includes('<scenario-payment-mode');
     })
-  )('%s keeps pricing available in wallet mode', (relativePath) => {
+  )('%s hides pricing in wallet mode', (relativePath) => {
     const source = fs.readFileSync(path.join(COMPONENT_ROOT, relativePath), 'utf8');
-    expect(source).toContain(':show-consumption="!walletMode"');
-    expect(source).not.toContain('<service-pricing-summary v-if="!walletMode"');
+    expect(source).toMatch(/<service-pricing-summary\s+(?:[^>]*\s)?v-if="!walletMode"/);
+    expect(source).not.toContain(':show-consumption="!walletMode"');
   });
 
   it('does not duplicate the scenario entry in nested or result components', () => {

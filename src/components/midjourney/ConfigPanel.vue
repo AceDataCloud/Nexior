@@ -41,7 +41,7 @@
     </div>
     <div class="flex flex-col px-5 pb-5">
       <scenario-payment-mode scenario="midjourney" />
-      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <div class="flex gap-1">
         <mode-selector v-if="type !== 'describe'" />
         <el-button v-if="config.action === 'extend'" type="primary" class="btn w-full" round @click="$emit('generate')">

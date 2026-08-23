@@ -258,7 +258,7 @@
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="maestro" />
-      <service-pricing-summary :value="estimatedCredits" :service="service" :show-consumption="!walletMode" />
+      <service-pricing-summary v-if="!walletMode" :value="estimatedCredits" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('maestro.button.generate') }}

@@ -31,7 +31,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2">
       <scenario-payment-mode scenario="producer" />
-      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <div class="flex gap-2 w-full">
         <el-button class="flex-1" @click="onClearAll">
           <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
