@@ -92,7 +92,7 @@
         {{ missing[0].message }}
       </p>
       <scenario-payment-mode scenario="digitalhuman" />
-      <service-pricing-summary :show-consumption="!walletMode" :value="consumption" :service="service" />
+      <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('digitalhuman.button.generateVideo') }}
