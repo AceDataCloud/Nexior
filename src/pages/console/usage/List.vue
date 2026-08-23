@@ -1284,7 +1284,7 @@ export default defineComponent({
           limit: 1000,
           offset: 0,
           ordering: '-rank',
-          type: IServiceType.API
+          type: [IServiceType.API, IServiceType.Agent]
         })) as { data: IServiceListResponse };
         this.services = data.items;
       } catch {

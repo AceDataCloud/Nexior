@@ -15,6 +15,7 @@ describe('API usage page contract', () => {
       usageSource.indexOf("$t('usage.field.operation')")
     );
     expect(usageSource).toContain('v-model="serviceIds"');
+    expect(usageSource).toContain('type: [IServiceType.API, IServiceType.Agent]');
     expect(usageSource).toContain(':disabled="!serviceIds.length && !apiIds.length"');
     expect(usageSource).toContain('apiOperator.getAllForService(serviceId');
     expect(usageSource).not.toContain(
