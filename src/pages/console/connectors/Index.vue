@@ -1655,7 +1655,7 @@ export default defineComponent({
           // overwrites the existing account instead of duplicating it.
           ...(this.pendingCreateNew ? { create_new: true } : {})
         });
-        if (data && (data as any).type === 'form') {
+        if (data?.type === 'form') {
           // Defensive: an OAuth/public method shouldn't return a form,
           // but if it does, open the credential dialog with the chosen
           // method (its schema drives the form). The dialog handles the
@@ -1666,8 +1666,8 @@ export default defineComponent({
           this.byocDialogVisible = true;
           return;
         }
-        if (data && (data as any).authorization_url) {
-          await this.runAuthorizePopup((data as any).authorization_url);
+        if (data?.type === 'redirect' && data.authorization_url) {
+          await this.runAuthorizePopup(data.authorization_url, data.handoff_token);
         } else if (data && (data as any).type === 'active') {
           // Zero-step flow (public) — refresh the list.
           await this.fetchConnections();
@@ -1683,9 +1683,9 @@ export default defineComponent({
      * resolve on "the flow ended", and the server is the authority on what
      * actually connected, so we always refetch.
      */
-    async runAuthorizePopup(authorizationUrl: string) {
+    async runAuthorizePopup(authorizationUrl: string, handoffToken?: string) {
       try {
-        await openAuthorizeFlow(authorizationUrl);
+        await openAuthorizeFlow(authorizationUrl, handoffToken);
       } catch (error: any) {
         this.pendingCreateNew = false;
         ElMessage.error(
@@ -1834,7 +1834,7 @@ export default defineComponent({
         });
         if (data?.authorization_url) {
           this.customDialogVisible = false;
-          await this.runAuthorizePopup(data.authorization_url);
+          await this.runAuthorizePopup(data.authorization_url, data.handoff_token);
         }
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to start authorization');

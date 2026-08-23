@@ -7,8 +7,10 @@ const bridge = vi.hoisted(() => ({ desktopBridge: vi.fn() }));
 const popup = vi.hoisted(() => ({ openAuthorizePopup: vi.fn() }));
 const handoff = vi.hoisted(() => ({
   isAuthFrontendUrl: vi.fn((url: string) => new URL(url).origin === 'https://auth.acedata.cloud'),
-  withAuthFrontendSession: vi.fn(
-    async (url: string) => `https://auth.acedata.cloud/auth/login/?redirect=${encodeURIComponent(url)}`
+  prepareConnectorAuthorizationUrl: vi.fn(async (url: string, token?: string) =>
+    token || new URL(url).origin === 'https://auth.acedata.cloud'
+      ? `https://auth.acedata.cloud/auth/login/?redirect=${encodeURIComponent(url)}`
+      : url
   )
 }));
 
@@ -21,6 +23,7 @@ vi.mock('../authHandoff', () => handoff);
 import { openAuthorizeFlow } from './authorizeFlow';
 
 const URL_UNDER_TEST = 'https://accounts.google.com/o/oauth2/auth?client_id=x';
+const MCP_URL_UNDER_TEST = 'https://serp.mcp.acedata.cloud/authorize?client_id=dynamic';
 const AUTH_URL_UNDER_TEST = 'https://auth.acedata.cloud/oauth2/authorize?client_id=serp';
 
 /** A resolved `browserFinished` subscription, plus the callback it captured. */
@@ -40,8 +43,10 @@ describe('openAuthorizeFlow', () => {
     surface.isNative.mockReturnValue(false);
     surface.isDesktop.mockReturnValue(false);
     handoff.isAuthFrontendUrl.mockImplementation((url: string) => new URL(url).origin === 'https://auth.acedata.cloud');
-    handoff.withAuthFrontendSession.mockImplementation(
-      async (url: string) => `https://auth.acedata.cloud/auth/login/?redirect=${encodeURIComponent(url)}`
+    handoff.prepareConnectorAuthorizationUrl.mockImplementation(async (url: string, token?: string) =>
+      token || new URL(url).origin === 'https://auth.acedata.cloud'
+        ? `https://auth.acedata.cloud/auth/login/?redirect=${encodeURIComponent(url)}`
+        : url
     );
   });
 
@@ -68,9 +73,20 @@ describe('openAuthorizeFlow', () => {
 
       const pending = openAuthorizeFlow(AUTH_URL_UNDER_TEST);
       expect(popup.openAuthorizePopup).toHaveBeenCalledOnce();
-      expect(handoff.withAuthFrontendSession).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST);
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST, undefined);
       resolvePopup();
       await pending;
+    });
+
+    it('prepares the same session handoff for a first-party MCP authorize endpoint', async () => {
+      popup.openAuthorizePopup.mockImplementation((target: Promise<string>) => {
+        void expect(target).resolves.toContain('/auth/login/');
+        return Promise.resolve();
+      });
+
+      await openAuthorizeFlow(MCP_URL_UNDER_TEST, 'signed-handoff');
+
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(MCP_URL_UNDER_TEST, 'signed-handoff');
     });
 
     it('does not prepare an AuthFrontend handoff for an external provider', async () => {
@@ -79,7 +95,7 @@ describe('openAuthorizeFlow', () => {
       await openAuthorizeFlow(URL_UNDER_TEST);
 
       expect(popup.openAuthorizePopup).toHaveBeenCalledWith(URL_UNDER_TEST);
-      expect(handoff.withAuthFrontendSession).not.toHaveBeenCalled();
+      expect(handoff.prepareConnectorAuthorizationUrl).not.toHaveBeenCalled();
     });
 
     it('falls back to a full-page navigation when the popup is blocked', async () => {
@@ -127,7 +143,7 @@ describe('openAuthorizeFlow', () => {
       await vi.waitFor(() =>
         expect(capBrowser.open).toHaveBeenCalledWith({ url: expect.stringContaining('/auth/login/') })
       );
-      expect(handoff.withAuthFrontendSession).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST);
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST, undefined);
       finish();
       await pending;
     });
@@ -194,7 +210,7 @@ describe('openAuthorizeFlow', () => {
       await vi.waitFor(() =>
         expect(openAuthorizeConnector).toHaveBeenCalledWith(expect.stringContaining('/auth/login/'))
       );
-      expect(handoff.withAuthFrontendSession).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST);
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(AUTH_URL_UNDER_TEST, undefined);
       window.dispatchEvent(new Event('focus'));
       await pending;
     });
