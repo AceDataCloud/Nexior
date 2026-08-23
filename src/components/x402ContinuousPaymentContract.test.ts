@@ -11,7 +11,7 @@ describe('x402 continuous payment contract', () => {
     expect(status).toContain('name="wallet"');
     expect(status).not.toContain('name="autopay"');
     expect(status).toContain(':continuous-only="scenario === \'chat\'"');
-    expect(source('layouts/Main.vue')).toContain("'chat'");
+    expect(source('utils/x402/scenarioPayment.ts')).toContain("'chat'");
   });
 
   it('uses the x402 authorization selector without storing payment material', () => {

@@ -6,9 +6,9 @@ const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cw
 
 describe('Midjourney x402 contract', () => {
   it('registers Midjourney and quotes each selected endpoint with its builder', () => {
-    const main = source('layouts/Main.vue');
+    const capabilities = source('utils/x402/scenarioPayment.ts');
     const panel = source('components/midjourney/ConfigPanel.vue');
-    expect(main).toContain("'midjourney'");
+    expect(capabilities).toContain("'midjourney'");
     expect(panel).toContain('quoteImagine(buildMidjourneyImagineRequest(this.config))');
     expect(panel).toContain('quoteVideos(buildMidjourneyVideosRequest(this.config))');
     expect(panel).toContain('quoteDescribe(buildMidjourneyDescribeRequest(this.config))');

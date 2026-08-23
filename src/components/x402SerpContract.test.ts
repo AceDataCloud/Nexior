@@ -6,7 +6,7 @@ const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cw
 
 describe('SERP x402 contract', () => {
   it('registers SERP and uses one request builder for quote and search', () => {
-    expect(source('layouts/Main.vue')).toContain("'serp'");
+    expect(source('utils/x402/scenarioPayment.ts')).toContain("'serp'");
     expect(source('components/serp/SearchPanel.vue')).toContain('serpOperator.quote(buildSerpRequest(this.config))');
     expect(source('store/serp/actions.ts')).toContain('const request = buildSerpRequest(state.config)');
   });

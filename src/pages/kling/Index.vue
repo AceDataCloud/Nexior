@@ -39,7 +39,7 @@ import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
-import { isScenarioX402Enabled, scenarioPaymentState, setScenarioPaymentMode } from '@/utils/x402/scenarioPayment';
+import { isScenarioX402Enabled, scenarioPaymentState, setScenarioWalletAvailable } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
   type OperatorRequestOptions,
@@ -108,6 +108,12 @@ export default defineComponent({
     }
   },
   watch: {
+    taskType: {
+      handler(value: IKlingTaskType) {
+        setScenarioWalletAvailable('kling', value !== 'motion');
+      },
+      immediate: true
+    },
     walletMode: {
       async handler(value: boolean, oldValue: boolean | undefined) {
         if (oldValue === undefined || value === oldValue) return;
@@ -307,7 +313,6 @@ export default defineComponent({
     },
     async onTabChange(value: IKlingTaskType) {
       if (value === this.taskType) return;
-      if (value === 'motion') setScenarioPaymentMode('kling', 'credits');
       await this.$store.dispatch('kling/setTaskType', value);
       // taskType change clears tasks; re-fetch.
       await this.onGetTasks();

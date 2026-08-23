@@ -28,7 +28,7 @@ import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
-import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { isScenarioX402Enabled, scenarioPaymentState, setScenarioWalletAvailable } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
   type X402PaymentQuote,
@@ -87,6 +87,14 @@ export default defineComponent({
     }
   },
   watch: {
+    config: {
+      handler(value) {
+        const hasReferenceImages = Array.isArray(value?.image_urls) && value.image_urls.length > 0;
+        setScenarioWalletAvailable('openaiimage', !hasReferenceImages);
+      },
+      deep: true,
+      immediate: true
+    },
     walletMode: {
       async handler(value: boolean, oldValue: boolean | undefined) {
         if (oldValue === undefined || value === oldValue) return;
@@ -178,6 +186,8 @@ export default defineComponent({
       }
       const cfg: any = { ...(this.config || {}) };
       const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
+      setScenarioWalletAvailable('openaiimage', !hasReferenceImages);
+      const paymentMode = scenarioPaymentState('openaiimage').mode;
 
       if (!this.hasText(cfg.prompt)) {
         ElMessage.error(this.$t('openaiimage.message.promptRequired'));
@@ -204,11 +214,7 @@ export default defineComponent({
       } as IOpenAIImageEditRequest;
 
       let operation: Promise<unknown>;
-      if (this.walletMode) {
-        if (hasReferenceImages) {
-          ElMessage.info(this.$t('common.x402Scenario.gptEditCreditsOnly'));
-          return;
-        }
+      if (paymentMode === 'wallet') {
         const wallet = this.getWalletContext();
         if (!wallet) {
           ElMessage.warning(this.$t('common.x402Scenario.connectWalletFirst'));
@@ -239,7 +245,7 @@ export default defineComponent({
         .then((response: any) => {
           const taskId = response?.data?.task_id;
           console.debug('task accepted', taskId);
-          if (this.walletMode && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
+          if (paymentMode === 'wallet' && !this.credential?.token && taskId && !this.walletTaskIds.includes(taskId)) {
             this.walletTaskIds.unshift(taskId);
           }
           ElMessage.success(this.$t('openaiimage.message.startTaskSuccess'));
@@ -248,7 +254,7 @@ export default defineComponent({
           if (error instanceof X402PaymentCancelledError) return;
           const response = error?.response?.data;
           if (showQuotaExhausted(error, 'openaiimage')) return;
-          if (this.walletMode) {
+          if (paymentMode === 'wallet') {
             ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
           } else {
             ElMessage.error(this.$t('openaiimage.message.startTaskFailed') + (response?.error?.message || ''));

@@ -6,7 +6,7 @@ const source = (relativePath: string) => fs.readFileSync(path.resolve(process.cw
 
 describe('Producer x402 contract', () => {
   it('registers Producer and shares the audio builder between quote and submit', () => {
-    expect(source('layouts/Main.vue')).toContain("'producer'");
+    expect(source('utils/x402/scenarioPayment.ts')).toContain("'producer'");
     expect(source('components/producer/ConfigPanel.vue')).toContain(
       'producerOperator.quoteAudio(buildProducerAudioRequest(this.config))'
     );

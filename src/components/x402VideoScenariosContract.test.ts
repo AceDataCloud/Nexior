@@ -36,8 +36,8 @@ const builders: Record<(typeof scenarios)[number], string> = {
 
 describe('standard video x402 contract', () => {
   it('registers every standard video scenario in the floating payment selector', () => {
-    const main = source('layouts/Main.vue');
-    scenarios.forEach((scenario) => expect(main).toContain(`'${scenario}'`));
+    const capabilities = source('utils/x402/scenarioPayment.ts');
+    scenarios.forEach((scenario) => expect(capabilities).toContain(`'${scenario}'`));
   });
 
   it.each(scenarios)('%s quotes and submits its scenario-owned request', (scenario) => {

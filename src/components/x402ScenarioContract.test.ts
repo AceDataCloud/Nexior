@@ -9,7 +9,8 @@ describe('x402 image scenario contract', () => {
     const status = source('components/application/Status.vue');
     const selector = source('components/common/ScenarioPaymentMode.vue');
     expect(status).toContain('scenarioPaymentState(this.scenario)');
-    expect(status).toContain('setScenarioPaymentMode(this.scenario, value)');
+    expect(status).toContain('setPreferredPaymentMode(value)');
+    expect(status).toContain('scenarioPaymentState(this.scenario!).walletAvailable');
     expect(status).toContain('solana-wallet-picker-dialog');
     expect(status).toContain('value="base"');
     expect(status).toContain('value="solana"');
@@ -50,7 +51,9 @@ describe('x402 image scenario contract', () => {
     expect(nano).toContain("mode: 'x402'");
     expect(openAI).toContain('openaiimageOperator.generate(generateRequest');
     expect(openAI).toContain("mode: 'x402'");
-    expect(openAI).toContain('gptEditCreditsOnly');
+    expect(openAI).not.toContain('gptEditCreditsOnly');
+    expect(openAI).toContain("setScenarioWalletAvailable('openaiimage', !hasReferenceImages)");
+    expect(source('components/openaiimage/ConfigPanel.vue')).toContain('else this.cancelQuote()');
   });
 
   it('keeps payment generic and never broadcasts before service delivery', () => {
