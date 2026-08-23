@@ -9,8 +9,17 @@
   >
     <!-- Extension cookie-capture path (metadata.credential_source === 'extension') -->
     <template v-if="isExtension">
+      <!-- Electron cannot inspect extensions installed in the system browser. -->
+      <div v-if="isDesktopExtension" class="byoc-missing">
+        <warning-icon class="byoc-missing-icon" size="1em" aria-hidden="true" focusable="false" />
+        <div class="byoc-missing-body">
+          <p class="byoc-missing-title">{{ $t('connection.byoc.desktopBrowserTitle') }}</p>
+          <p class="byoc-missing-text">{{ $t('connection.byoc.desktopBrowserBody') }}</p>
+        </div>
+      </div>
+
       <!-- A) extension not detected → install guidance -->
-      <div v-if="!extensionReady" class="byoc-missing">
+      <div v-else-if="!extensionReady" class="byoc-missing">
         <warning-icon class="byoc-missing-icon" size="1em" aria-hidden="true" focusable="false" />
         <div class="byoc-missing-body">
           <p class="byoc-missing-title">{{ $t('connection.byoc.extensionMissingTitle') }}</p>
@@ -89,7 +98,16 @@
     <template #footer>
       <el-button @click="onClose">{{ $t('common.button.cancel') }}</el-button>
       <template v-if="isExtension">
-        <el-button v-if="!extensionReady" type="primary" :loading="detecting" @click="recheckExtension">
+        <el-button
+          v-if="isDesktopExtension"
+          class="byoc-browser-open"
+          type="primary"
+          :loading="submitting"
+          @click="openInBrowser"
+        >
+          {{ $t('connection.byoc.desktopBrowserOpen') }}
+        </el-button>
+        <el-button v-else-if="!extensionReady" type="primary" :loading="detecting" @click="recheckExtension">
           {{ $t('connection.byoc.extensionRecheck') }}
         </el-button>
         <el-button v-else type="primary" :loading="submitting" @click="onCapture">
@@ -108,6 +126,9 @@ import { defineComponent, PropType } from 'vue';
 import { ElDialog, ElForm, ElFormItem, ElInput, ElSelect, ElOption, ElButton, ElMessage } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 import { SecurityIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import { desktopBridge } from '@/utils/desktop';
+import { getBaseUrlHub } from '@/utils/baseUrl';
+import { isDesktop } from '@/utils/surface';
 import {
   IConnectorConnectionMethod,
   IConnectorCatalogItem,
@@ -200,6 +221,9 @@ export default defineComponent({
     isExtension(): boolean {
       return this.activeMethod?.credential.source === 'extension';
     },
+    isDesktopExtension(): boolean {
+      return this.isExtension && isDesktop();
+    },
     ACE_EXTENSION_DOC(): string {
       return ACE_EXTENSION_DOC;
     },
@@ -230,8 +254,8 @@ export default defineComponent({
       this.visible = v;
       if (v) {
         this.resetForm();
-        // Content scripts inject ~after page load, so poll briefly on open.
-        if (this.isExtension) this.pollDetect(8);
+        // Content scripts inject ~after page load, so poll briefly on web.
+        if (this.isExtension && !this.isDesktopExtension) this.pollDetect(8);
       }
     },
     visible(v: boolean) {
@@ -268,6 +292,25 @@ export default defineComponent({
     },
     openLogin() {
       if (this.loginUrl) window.open(this.loginUrl, '_blank', 'noopener');
+    },
+    async openInBrowser() {
+      if (!this.item) return;
+      const bridge = desktopBridge();
+      if (!bridge?.openExternal) {
+        ElMessage.error(this.$t('connection.message.installFailed') as string);
+        return;
+      }
+      const target = new URL('/console/connectors', getBaseUrlHub());
+      target.searchParams.set('connect', this.item.identifier);
+      this.submitting = true;
+      try {
+        await bridge.openExternal(target.toString());
+        this.onClose();
+      } catch {
+        ElMessage.error(this.$t('connection.message.installFailed') as string);
+      } finally {
+        this.submitting = false;
+      }
     },
     /** The ACE extension content script injects a ``#acedataext`` marker on
      *  this page when installed — presence = installed. */
