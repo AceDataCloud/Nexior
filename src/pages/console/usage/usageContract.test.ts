@@ -16,6 +16,8 @@ describe('API usage page contract', () => {
     );
     expect(usageSource).toContain('v-model="serviceIds"');
     expect(usageSource).toContain('type: [IServiceType.API, IServiceType.Agent]');
+    expect(usageSource).toContain('private: false');
+    expect(usageSource).toContain('application.service.private !== true');
     expect(usageSource).toContain(
       "applicationOperator.getAll({ limit: 1000, offset: 0, ordering: '-created_at', user_id: 'me' })"
     );
