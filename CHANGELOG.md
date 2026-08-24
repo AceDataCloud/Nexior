@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 23 Aug 2026 20:14:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 20:16:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.367.0
+
+Mon, 24 Aug 2026 20:16:32 GMT
+
+### Minor changes
+
+- Add Qwen Image 3 Studio and Wan 3 all-in-one multimodal video controls. (dev@acedata.cloud)
+
+### Patches
+
+- Retire Hub URLs, branding, images, and workloads in favor of canonical Studio naming while keeping a legacy 301 redirect. (dev@acedata.cloud)
+- Show localized, persistent X402 payment errors without exposing wallet or facilitator diagnostics. (dev@acedata.cloud)
+- Guide desktop cookie connectors through the system browser instead of checking Electron for a browser extension. (dev@acedata.cloud)
 
 ## 3.366.1
 
