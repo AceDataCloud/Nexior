@@ -529,7 +529,7 @@ export function setupRouterGuards(router: Router) {
         keywords: seoData.keywords
       });
       // Use the current origin so the WebApplication schema URL reflects the
-      // hostname the visitor is actually on (studio.acedata.cloud, hub.acedata.cloud, etc.).
+      // hostname the visitor is actually on (studio.acedata.cloud and its white-label subdomains).
       const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://studio.acedata.cloud';
       setWebApplicationSchema({
         name: seoData.title,

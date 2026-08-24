@@ -4,14 +4,12 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const surface = vi.hoisted(() => ({ isDesktop: vi.fn(() => false) }));
 const bridge = vi.hoisted(() => ({ desktopBridge: vi.fn() }));
-const urls = vi.hoisted(() => ({ getBaseUrlHub: vi.fn(() => 'https://studio.acedata.cloud') }));
 
-vi.mock('@/utils/surface', () => surface);
-vi.mock('@/utils/desktop', () => bridge);
-vi.mock('@/utils/baseUrl', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('@/utils/baseUrl')>()),
-  getBaseUrlHub: urls.getBaseUrlHub
+vi.mock('@/utils/surface', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/utils/surface')>()),
+  isDesktop: surface.isDesktop
 }));
+vi.mock('@/utils/desktop', () => bridge);
 
 import type { IConnectorCatalogItem, IConnectorConnectionMethod } from '@/operators/connection';
 import ByocCredentialsDialog from './ByocCredentialsDialog.vue';

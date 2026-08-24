@@ -40,7 +40,7 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElDialog } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { getBaseUrlAuth, getBaseUrlHub, withCurrentSite } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlStudio, withCurrentSite } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SETTINGS_INDEX } from '@/router';
@@ -125,7 +125,7 @@ export default defineComponent({
         url.searchParams.set('embed_origin', window.location.origin);
         url.searchParams.set(
           'redirect',
-          `${getBaseUrlHub()}/auth/callback?${new URLSearchParams({
+          `${getBaseUrlStudio()}/auth/callback?${new URLSearchParams({
             redirect: this.redirect
           }).toString()}`
         );

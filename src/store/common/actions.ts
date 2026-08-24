@@ -12,7 +12,7 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, ISite, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlStudio, getInviterId, loginRedirect } from '@/utils';
 import { isIframeLoginEnabled } from '@/utils/loginMethod';
 import { isNative, isDesktop } from '@/utils/surface';
 
@@ -285,10 +285,10 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
     // `URLSearchParams.get('inviter_id')` returns null, breaking referral
     // binding for OAuth signups (especially WeChat) on custom-domain sites.
     const baseUrlAuth = getBaseUrlAuth();
-    const baseUrlHub = getBaseUrlHub();
+    const baseUrlStudio = getBaseUrlStudio();
     const site = window.location.origin;
     const inviterId = getInviterId();
-    const callbackUrl = `${baseUrlHub}/auth/callback?${new URLSearchParams({
+    const callbackUrl = `${baseUrlStudio}/auth/callback?${new URLSearchParams({
       redirect: window.location.pathname + window.location.search
     }).toString()}`;
     const loginQuery: Record<string, string> = {

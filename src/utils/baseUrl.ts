@@ -1,4 +1,4 @@
-import { BASE_URL_AUTH, BASE_URL_PLATFORM, BASE_URL_HUB } from '@/constants';
+import { BASE_URL_AUTH, BASE_URL_PLATFORM, BASE_URL_STUDIO } from '@/constants';
 import { isNative, isDesktop } from './surface';
 
 /**
@@ -13,20 +13,20 @@ export const getBaseUrlPlatform = () => {
 };
 
 /**
- * Get base url of hub app
+ * Get base URL of Studio
  * @returns
  */
-export const getBaseUrlHub = () => {
-  if (import.meta.env.VITE_BASE_URL_HUB) {
-    return import.meta.env.VITE_BASE_URL_HUB;
+export const getBaseUrlStudio = () => {
+  if (import.meta.env.VITE_BASE_URL_STUDIO) {
+    return import.meta.env.VITE_BASE_URL_STUDIO;
   }
   // On native platforms (Capacitor) window.location.origin is http://localhost,
-  // and on desktop (Electron) it is app://bundle — neither is the real hub URL,
+  // and on desktop (Electron) it is app://bundle — neither is the real Studio URL,
   // so use the hardcoded constant instead.
   if (isNative() || isDesktop()) {
-    return BASE_URL_HUB;
+    return BASE_URL_STUDIO;
   }
-  return window.location.origin || BASE_URL_HUB;
+  return window.location.origin || BASE_URL_STUDIO;
 };
 
 /**

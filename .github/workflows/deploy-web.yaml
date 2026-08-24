@@ -37,16 +37,13 @@ jobs:
             exit 0
           fi
 
-          hub_revision=$(kubectl get deployment hub-frontend -n acedatacloud \
+          last_revision=$(kubectl get deployment studio-frontend -n acedatacloud \
             -o jsonpath='{.metadata.annotations.acedata\.cloud/last-successful-revision}' 2>/dev/null || true)
-          studio_revision=$(kubectl get deployment studio-frontend -n acedatacloud \
-            -o jsonpath='{.metadata.annotations.acedata\.cloud/last-successful-revision}' 2>/dev/null || true)
-          if [ "$hub_revision" != "$studio_revision" ] || ! [[ "$hub_revision" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "No shared successful revision; deploying $GITHUB_SHA"
+          if ! [[ "$last_revision" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "No Studio successful revision; deploying $GITHUB_SHA"
             echo "deploy=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          last_revision=$hub_revision
           if [ "$last_revision" = "$GITHUB_SHA" ]; then
             echo "No changes since successful deployment $last_revision"
             echo "deploy=false" >> "$GITHUB_OUTPUT"
@@ -111,7 +108,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/acedatacloud/hub-frontend:${{ env.BUILD_NUMBER }}
+            ghcr.io/acedatacloud/studio-frontend:${{ env.BUILD_NUMBER }}
             acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}
             acedatacloud/nexior:latest
           cache-from: type=gha
@@ -124,16 +121,35 @@ jobs:
       - name: Verify rollouts and images
         if: steps.changes.outputs.deploy == 'true'
         run: |
-          kubectl -n acedatacloud rollout status deployment/hub-frontend --timeout=10m
           kubectl -n acedatacloud rollout status deployment/studio-frontend --timeout=10m
-          expected="ghcr.io/acedatacloud/hub-frontend:$BUILD_NUMBER"
-          test "$(kubectl -n acedatacloud get deployment hub-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
+          expected="ghcr.io/acedatacloud/studio-frontend:$BUILD_NUMBER"
           test "$(kubectl -n acedatacloud get deployment studio-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
+          test "$(kubectl -n acedatacloud get ingress legacy-hub-redirect -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.name}')" = "studio-frontend"
+          test "$(kubectl -n acedatacloud get ingress legacy-hub-redirect -o jsonpath='{.spec.rules[1].http.paths[0].backend.service.name}')" = "studio-frontend"
+          test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/health)" = "200" || \
+            test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/)" = "200"
+          location=$(curl -fsSI 'https://hub.acedata.cloud/retired-check?keep=1' | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
+          test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
+
+      - name: Remove retired Hub workloads
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          kubectl -n acedatacloud delete ingress hub-frontend --ignore-not-found
+          kubectl -n acedatacloud delete deployment hub-frontend --ignore-not-found
+          kubectl -n acedatacloud delete service hub-frontend --ignore-not-found
+
+      - name: Verify legacy redirect after cleanup
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          for legacy_url in \
+            'https://hub.acedata.cloud/retired-check?keep=1' \
+            'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do
+            location=$(curl -fsSI "$legacy_url" | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
+            test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
+          done
 
       - name: Record successful revision
         if: steps.changes.outputs.deploy == 'true'
         run: |
-          for deployment in hub-frontend studio-frontend; do
-            kubectl -n acedatacloud annotate deployment "$deployment" \
-              "acedata.cloud/last-successful-revision=$GITHUB_SHA" --overwrite
-          done
+          kubectl -n acedatacloud annotate deployment studio-frontend \
+            "acedata.cloud/last-successful-revision=$GITHUB_SHA" --overwrite

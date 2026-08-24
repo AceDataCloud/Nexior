@@ -17,7 +17,7 @@ spec:
         app: studio-frontend
     spec:
       containers:
-        - image: ghcr.io/acedatacloud/hub-frontend:${TAG}
+        - image: ghcr.io/acedatacloud/studio-frontend:${TAG}
           name: studio-frontend
           ports:
             - containerPort: 80

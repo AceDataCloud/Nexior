@@ -54,6 +54,9 @@ jobs:
       - name: Release workflow contract
         run: python3 scripts/check_release_workflows.py
 
+      - name: Retired Hub guard
+        run: python3 scripts/check_retired_hub.py
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:

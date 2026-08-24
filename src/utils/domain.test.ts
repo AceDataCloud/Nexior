@@ -18,19 +18,19 @@ describe('getDomain', () => {
     // across all subdomains. Behaviour is identical to the previous `psl`
     // implementation for every one of these.
     it.each([
-      ['hub.acedata.cloud', '.acedata.cloud'],
+      ['studio.acedata.cloud', '.acedata.cloud'],
       ['auth.acedata.cloud', '.acedata.cloud'],
       ['platform.acedata.cloud', '.acedata.cloud'],
       ['api.acedata.cloud', '.acedata.cloud'],
       ['studio.acedata.cloud', '.acedata.cloud'],
-      ['hub-test.acedata.cloud', '.acedata.cloud'],
+      ['studio-test.acedata.cloud', '.acedata.cloud'],
       ['dify.acedata.cloud', '.acedata.cloud'],
       ['docs.acedata.cloud', '.acedata.cloud'],
-      // Wechat-browser sub-domain detour (`<YYYYMMDD>.hub.acedata.cloud`).
-      ['20240802.hub.acedata.cloud', '.acedata.cloud'],
-      ['20260503.hub.acedata.cloud', '.acedata.cloud'],
+      // Wechat-browser sub-domain detour (`<YYYYMMDD>.studio.acedata.cloud`).
+      ['20240802.studio.acedata.cloud', '.acedata.cloud'],
+      ['20260503.studio.acedata.cloud', '.acedata.cloud'],
       // Hypothetical 4+ label case — still collapses to registrable.
-      ['dev.20240802.hub.acedata.cloud', '.acedata.cloud']
+      ['dev.20240802.studio.acedata.cloud', '.acedata.cloud']
     ])('%s → %s', (host, expected) => {
       expect(getDomain(host)).toBe(expected);
     });
@@ -46,7 +46,7 @@ describe('getDomain', () => {
       ['example.com'],
       ['google.com'],
       ['baidu.com'],
-      ['github.io'] // see "private suffixes" below for nuance
+      ['gitstudio.io'] // see "private suffixes" below for nuance
     ])('%s → unchanged', (host) => {
       expect(getDomain(host)).toBe(host);
     });
@@ -181,7 +181,7 @@ describe('getDomain', () => {
 
   describe('private/cloud hosting suffixes (documented fallback)', () => {
     // Hosting providers (`*.netlify.app`, `*.vercel.app`, `*.herokuapp.com`,
-    // `*.appspot.com`, `*.cloudfront.net`, `*.amazonaws.com`, `*.github.io`)
+    // `*.appspot.com`, `*.cloudfront.net`, `*.amazonaws.com`, `*.gitstudio.io`)
     // register their own zone on the PSL as a "private" suffix so each
     // tenant's deployment is treated as a registrable boundary.
     //
@@ -207,7 +207,7 @@ describe('getDomain', () => {
       ['my-app.appspot.com', '.appspot.com'],
       ['my-cdn.cloudfront.net', '.cloudfront.net'],
       ['my-bucket.s3.amazonaws.com', '.amazonaws.com'],
-      ['user.github.io', '.github.io']
+      ['user.gitstudio.io', '.gitstudio.io']
     ])('%s → %s (private suffix: not relevant for AceDataCloud production)', (host, expected) => {
       expect(getDomain(host)).toBe(expected);
     });
@@ -233,12 +233,12 @@ describe('getDomain', () => {
       const stubbed = (globalThis as unknown as { window?: unknown }).window === undefined;
       if (stubbed) {
         (globalThis as unknown as { window: { location: { hostname: string } } }).window = {
-          location: { hostname: 'hub.acedata.cloud' }
+          location: { hostname: 'studio.acedata.cloud' }
         };
       } else {
         // jsdom-like env: mutate the existing one.
         Object.defineProperty(window.location, 'hostname', {
-          value: 'hub.acedata.cloud',
+          value: 'studio.acedata.cloud',
           configurable: true
         });
       }
