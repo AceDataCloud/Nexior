@@ -77,6 +77,10 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
+      - name: Set release tag
+        if: steps.changes.outputs.deploy == 'true'
+        run: echo "RELEASE_TAG=${BUILD_NUMBER}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_ENV"
+
       - name: Compute Docker Hub version tag
         if: steps.changes.outputs.deploy == 'true'
         id: docker_tag
@@ -101,38 +105,48 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build & push image (GHCR + Docker Hub)
+      - name: Lock current production release
         if: steps.changes.outputs.deploy == 'true'
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          push: true
-          tags: |
-            ghcr.io/acedatacloud/studio-frontend:${{ env.BUILD_NUMBER }}
-            acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}
-            acedatacloud/nexior:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        env:
+          DEPLOYMENT: studio-frontend
+          SERVICE: studio-frontend
+          IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
+        run: bash deploy/preflight-release.sh
 
-      - name: Apply manifests
+      - name: Prepare previous release assets
         if: steps.changes.outputs.deploy == 'true'
-        run: sh ./deploy/run.sh
+        env:
+          MAX_RELEASE_FILES: '4000'
+          MAX_RELEASE_BYTES: '268435456'
+        run: bash deploy/prepare-previous-assets.sh
 
-      - name: Verify rollouts and images
+      - name: Build and push bridge and final images
         if: steps.changes.outputs.deploy == 'true'
         run: |
-          kubectl -n acedatacloud rollout status deployment/studio-frontend --timeout=10m
-          expected="ghcr.io/acedatacloud/studio-frontend:$BUILD_NUMBER"
-          test "$(kubectl -n acedatacloud get deployment studio-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
-          test "$(kubectl -n acedatacloud get ingress hub-frontend -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.name}')" = "studio-frontend"
-          test "$(kubectl -n acedatacloud get ingress hub-frontend -o jsonpath='{.spec.rules[1].http.paths[0].backend.service.name}')" = "studio-frontend"
-          test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/health)" = "200" || \
-            test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/)" = "200"
-          location=$(curl -fsSI 'https://hub.acedata.cloud/retired-check?keep=1' | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
-          test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
+          docker buildx build --target bridge --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
+            --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge" --push \
+            --cache-from type=gha --cache-to type=gha,mode=max .
+          docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
+            --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}" --push \
+            --cache-from type=gha .
 
-      - name: Record successful revision
+      - name: Apply and verify compatible rollout
+        if: steps.changes.outputs.deploy == 'true'
+        run: bash deploy/verify-cutover.sh
+
+      - name: Verify legacy Hub redirects
         if: steps.changes.outputs.deploy == 'true'
         run: |
-          kubectl -n acedatacloud annotate deployment studio-frontend \
-            "acedata.cloud/last-successful-revision=$GITHUB_SHA" --overwrite
+          for legacy_url in \
+            'https://hub.acedata.cloud/retired-check?keep=1' \
+            'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do
+            location=$(curl -fsSI "$legacy_url" | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
+            test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
+          done
+
+      - name: Publish verified final image to Docker Hub
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
+            --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
+            --tag acedatacloud/nexior:latest --push --cache-from type=gha .

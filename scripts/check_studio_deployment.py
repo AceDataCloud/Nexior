@@ -17,4 +17,20 @@ assert [rule['http']['paths'][0]['backend']['service']['name'] for rule in redir
 assert 'delete deployment hub-frontend' not in workflow
 assert 'delete service hub-frontend' not in workflow
 assert 'ghcr.io/acedatacloud/hub-frontend' not in workflow
+
+container = studio['spec']['template']['spec']['containers'][0]
+assert studio['spec']['strategy']['type'] == 'RollingUpdate'
+assert studio['spec']['strategy']['rollingUpdate'] == {'maxSurge': 1, 'maxUnavailable': 0}
+assert studio['spec']['minReadySeconds'] == 10
+assert container['readinessProbe']['httpGet']['path'] == '/index.html'
+cutover = (ROOT / 'deploy/verify-cutover.sh').read_text()
+dockerfile = (ROOT / 'Dockerfile').read_text()
+bridge = cutover.index('roll_stage "${RELEASE_TAG}-bridge"')
+final = cutover.index('roll_stage "$RELEASE_TAG"')
+verify = cutover.index('verify-html-assets.py')
+annotate = cutover.index('last-successful-revision')
+assert bridge < final < verify < annotate
+assert 'FROM ${PREVIOUS_IMAGE} AS bridge' in dockerfile
+assert 'FROM runtime-base AS final' in dockerfile
+assert workflow.index('preflight-release.sh') < workflow.index('--target bridge') < workflow.index('verify-cutover.sh')
 print('Studio deployment contract OK')
