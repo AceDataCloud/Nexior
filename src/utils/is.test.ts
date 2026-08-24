@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
-import { isMainOfficial, isOfficial, isSubOfficial } from './is';
+import { hasMeaningfulText, isMainOfficial, isOfficial, isSubOfficial } from './is';
 
 function setHost(host: string) {
   Object.defineProperty(window, 'location', {
@@ -22,5 +22,15 @@ describe('Studio host ownership', () => {
     expect(isOfficial()).toBe(official);
     expect(isSubOfficial()).toBe(sub);
     expect(isMainOfficial()).toBe(host === 'studio.acedata.cloud');
+  });
+});
+
+describe('meaningful text', () => {
+  it.each([undefined, null, 0, false, '', ' ', '\t\n'])('rejects %j', (value) => {
+    expect(hasMeaningfulText(value)).toBe(false);
+  });
+
+  it.each(['banana', '  banana  ', '香蕉提示词'])('accepts %j', (value) => {
+    expect(hasMeaningfulText(value)).toBe(true);
   });
 });

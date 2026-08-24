@@ -15,7 +15,7 @@
         :service="service"
         :pricing-unit-aliases="{ count: 'image' }"
       />
-      <el-button type="primary" class="btn w-full" round @click="onGenerate">
+      <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('nanobanana.button.generate') }}
       </el-button>
@@ -31,7 +31,7 @@ import PromptInput from './config/PromptInput.vue';
 import ImageUrlsInput from './config/ImageUrlsInput.vue';
 import AspectRatioSelector from './config/AspectRatioSelector.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
-import { getConsumption } from '@/utils';
+import { getConsumption, hasMeaningfulText } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -68,6 +68,9 @@ export default defineComponent({
     config() {
       return this.$store.state.nanobanana?.config;
     },
+    canGenerate(): boolean {
+      return hasMeaningfulText(this.config?.prompt);
+    },
     consumption() {
       const cfg: any = { ...(this.config || {}) };
       const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
@@ -90,6 +93,7 @@ export default defineComponent({
     walletMode: {
       handler(enabled: boolean) {
         if (enabled) this.scheduleQuote();
+        else this.clearQuote();
       },
       immediate: true
     },
@@ -100,27 +104,39 @@ export default defineComponent({
       deep: true
     },
     identityToken() {
-      this.quoteRunId += 1;
       if (this.walletMode) this.scheduleQuote();
     }
   },
   beforeUnmount() {
-    window.clearTimeout(this.quoteTimer);
-    this.quoteRunId += 1;
+    this.clearQuote();
   },
   methods: {
-    scheduleQuote() {
+    clearQuote() {
       window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
+      const state = scenarioPaymentState('nanobanana');
+      state.quoteUsdc = undefined;
+      state.quoteLoading = false;
+    },
+    scheduleQuote() {
+      this.clearQuote();
+      if (!this.walletMode || !this.canGenerate) return;
       this.quoteTimer = window.setTimeout(this.refreshQuote, QUOTE_DEBOUNCE_MS);
     },
     async refreshQuote() {
+      if (!this.walletMode || !this.canGenerate) {
+        this.clearQuote();
+        return;
+      }
       const state = scenarioPaymentState('nanobanana');
       const runId = ++this.quoteRunId;
       state.quoteLoading = true;
       state.quoteUsdc = undefined;
       try {
         const quote = await nanobananaOperator.quote(buildNanobananaRequest(this.config), this.identityToken);
-        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+        if (runId === this.quoteRunId && state.mode === 'wallet' && this.canGenerate) {
+          state.quoteUsdc = quote.amountUsdc;
+        }
       } catch (error) {
         console.warn('x402 quote failed', error);
       } finally {

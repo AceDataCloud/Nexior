@@ -12,6 +12,7 @@ import type {
 
 export function buildNanobananaRequest(config?: INanobananaConfig): INanobananaGenerateRequest {
   const request: INanobananaGenerateRequest = { ...(config || {}) };
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   const hasReferenceImages = Array.isArray(request.image_urls) && request.image_urls.length > 0;
   if (!hasReferenceImages) delete request.image_urls;
   if (!request.aspect_ratio) delete request.aspect_ratio;

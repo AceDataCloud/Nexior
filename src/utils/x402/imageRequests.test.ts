@@ -2,16 +2,16 @@ import { describe, expect, it } from 'vitest';
 import { buildNanobananaRequest, buildOpenAIImageGenerateRequest } from './imageRequests';
 
 describe('x402 image request builders', () => {
-  it('builds the same Nano Banana payload for quote and generation', () => {
-    expect(
-      buildNanobananaRequest({
-        model: 'nano-banana-2',
-        prompt: 'banana',
-        image_urls: [],
-        aspect_ratio: '',
-        resolution: ''
-      })
-    ).toEqual({
+  it('builds the same trimmed Nano Banana payload for quote and generation without mutating config', () => {
+    const config = {
+      model: 'nano-banana-2',
+      prompt: '  banana  ',
+      image_urls: [] as string[],
+      aspect_ratio: '',
+      resolution: ''
+    };
+
+    expect(buildNanobananaRequest(config)).toEqual({
       model: 'nano-banana-2',
       prompt: 'banana',
       resolution: '1K',
@@ -19,8 +19,17 @@ describe('x402 image request builders', () => {
       async: true
     });
 
-    expect(buildNanobananaRequest({ model: 'nano-banana-pro', image_urls: ['https://example.com/a.png'] })).toEqual({
+    expect(config.prompt).toBe('  banana  ');
+
+    expect(
+      buildNanobananaRequest({
+        model: 'nano-banana-pro',
+        prompt: '  edit the background  ',
+        image_urls: ['https://example.com/a.png']
+      })
+    ).toEqual({
       model: 'nano-banana-pro',
+      prompt: 'edit the background',
       image_urls: ['https://example.com/a.png'],
       resolution: '1K',
       action: 'edit',

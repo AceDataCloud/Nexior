@@ -4,6 +4,10 @@
 
 import { BASE_HOST_STUDIO } from '@/constants';
 
+export const hasMeaningfulText = (value: unknown): value is string => {
+  return typeof value === 'string' && value.trim().length > 0;
+};
+
 export const isJSONString = (str: string): boolean => {
   try {
     JSON.parse(str);
