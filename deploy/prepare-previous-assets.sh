@@ -15,7 +15,7 @@ fetch_manifest=
 if kubectl exec -n acedatacloud "$PREVIOUS_POD" -- test -f /opt/acedata/release-assets 2>/dev/null; then
   kubectl exec -n acedatacloud "$PREVIOUS_POD" -- cat /opt/acedata/release-assets > "$manifest_file"
   python3 deploy/release_assets.py check-list "$manifest_file" "$MAX_RELEASE_FILES"
-  fetch_manifest=--manifest
+  fetch_manifest="--manifest-path /opt/acedata/release-assets"
 else
   echo "Previous image has no release manifest; synthesizing one legacy release"
 fi

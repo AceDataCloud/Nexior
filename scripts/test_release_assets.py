@@ -24,6 +24,13 @@ class ReleaseAssetsTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("unsafe transfer token", result.stderr)
 
+    def test_transfer_rejects_untrusted_manifest_path(self) -> None:
+        result = self.run_helper(
+            "fetch", "pod", "/assets", "archive.tar", "token", "--manifest-path", "/tmp/evil"
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("invalid choice", result.stderr)
+
     def test_manifest_and_validate_happy_path(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "assets"

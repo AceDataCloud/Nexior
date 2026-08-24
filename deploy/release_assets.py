@@ -48,7 +48,7 @@ def command_fetch(args: argparse.Namespace) -> None:
         raise ValueError("unsafe transfer token")
     remote = f"/tmp/acedata-assets-{args.token}"
     directory = shlex.quote(args.directory)
-    tar_args = "-T /opt/acedata/release-assets" if args.manifest else "."
+    tar_args = f"-T {shlex.quote(args.manifest_path)}" if args.manifest_path else "."
     setup = (
         f"set -eu; rm -rf {remote}; mkdir -p {remote}; "
         f"cd {directory}; tar -cf - {tar_args} | gzip -c > {remote}/archive.tgz; "
@@ -145,7 +145,10 @@ def main() -> None:
     fetch.add_argument("directory")
     fetch.add_argument("output")
     fetch.add_argument("token")
-    fetch.add_argument("--manifest", action="store_true")
+    fetch.add_argument(
+        "--manifest-path",
+        choices=("/opt/acedata/release-assets", "/opt/acedata/ssr-client-release-assets"),
+    )
     fetch.add_argument("--namespace", default="acedatacloud")
     fetch.set_defaults(func=command_fetch)
     manifest = subparsers.add_parser("manifest")
