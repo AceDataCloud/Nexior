@@ -130,6 +130,16 @@ jobs:
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}" --push \
             --cache-from type=gha .
 
+      - name: Verify production stayed unchanged during build
+        if: steps.changes.outputs.deploy == 'true'
+        env:
+          EXPECTED_IMAGE: ${{ env.PREVIOUS_IMAGE }}
+          EXPECTED_TAGGED_IMAGE: ${{ env.PREVIOUS_TAGGED_IMAGE }}
+          DEPLOYMENT: studio-frontend
+          SERVICE: studio-frontend
+          IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
+        run: bash deploy/verify-release-unchanged.sh
+
       - name: Apply and verify compatible rollout
         if: steps.changes.outputs.deploy == 'true'
         run: bash deploy/verify-cutover.sh
