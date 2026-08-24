@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 import { isFeatureEnabled } from '@/utils/featureFlag';
 import { isWeb } from '@/utils/surface';
+import { clearAllScenarioPaymentErrors } from '@/utils/x402/paymentErrorState';
 
 export type ScenarioPaymentMode = 'credits' | 'wallet';
 
@@ -89,6 +90,7 @@ export function setPreferredPaymentMode(mode: ScenarioPaymentMode): void {
   persistPreferredMode(mode);
   if (mode === 'credits') {
     Object.values(states).forEach(clearScenarioQuote);
+    clearAllScenarioPaymentErrors();
   }
 }
 

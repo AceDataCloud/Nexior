@@ -574,5 +574,189 @@
   "field.allPayWays": {
     "message": "모든 결제 수단",
     "description": "특정 결제 수단이 선택되지 않았음을 나타내는 결제 수단 필터 드롭다운 자리 표시자"
+  },
+  "x402Errors.labels.technicalCode": {
+    "message": "기술 코드",
+    "description": "결제 오류의 저감 기술 코드 레이블입니다."
+  },
+  "x402Errors.safety.notCharged": {
+    "message": "이번 검증이 통과되지 않아 청구가 시작되지 않았습니다.",
+    "description": "백엔드에서 명확히 charged=false일 때만 표시됩니다."
+  },
+  "x402Errors.codes.payer_token_account_missing.title": {
+    "message": "Solana USDC 계좌가 준비되지 않았습니다.",
+    "description": "X402 payer_token_account_missing의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.payer_token_account_missing.description": {
+    "message": "현재 지갑에 이번 결제에 사용할 수 있는 Solana USDC 토큰 계좌가 없습니다.",
+    "description": "X402 payer_token_account_missing의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.payer_token_account_missing.nextStepOrder": {
+    "message": "해당 지갑에 USDC를 준비한 후 새 주문을 생성해 주세요.",
+    "description": "X402 payer_token_account_missing의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.payer_token_account_missing.nextStepRequest": {
+    "message": "해당 지갑에 USDC를 준비한 후 요청을 다시 시작해 주세요.",
+    "description": "X402 payer_token_account_missing의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.insufficient_token_balance.title": {
+    "message": "USDC 잔액 부족",
+    "description": "X402 insufficient_token_balance의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.insufficient_token_balance.description": {
+    "message": "현재 지갑의 USDC 잔액이 이번 결제를 완료하기에 부족합니다.",
+    "description": "X402 insufficient_token_balance의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.insufficient_token_balance.nextStepOrder": {
+    "message": "충분한 USDC를 충전한 후 새 주문을 생성해 주세요.",
+    "description": "X402 insufficient_token_balance의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.insufficient_token_balance.nextStepRequest": {
+    "message": "충분한 USDC를 충전한 후 요청을 다시 시작해 주세요.",
+    "description": "X402 insufficient_token_balance의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.authorization_expired.title": {
+    "message": "결제 권한이 만료되었습니다.",
+    "description": "X402 authorization_expired의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.authorization_expired.description": {
+    "message": "지갑 서명된 결제 권한이 유효 기간을 초과했습니다.",
+    "description": "X402 authorization_expired의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.authorization_expired.nextStepOrder": {
+    "message": "새 주문을 생성하고 다시 권한을 부여해 주세요.",
+    "description": "X402 authorization_expired의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.authorization_expired.nextStepRequest": {
+    "message": "요청을 다시 시작하고 다시 권한을 부여해 주세요.",
+    "description": "X402 authorization_expired의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.wallet_rejected.title": {
+    "message": "지갑 승인이 취소되었습니다",
+    "description": "X402 wallet_rejected의 title 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.wallet_rejected.description": {
+    "message": "지갑이 이번 결제 승인을 서명하지 않았습니다.",
+    "description": "X402 wallet_rejected의 description 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.wallet_rejected.nextStepOrder": {
+    "message": "계속하려면 결제를 다시 클릭하고 지갑에서 확인하세요.",
+    "description": "X402 wallet_rejected의 nextStepOrder 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.wallet_rejected.nextStepRequest": {
+    "message": "계속하려면 요청을 다시 시도하고 지갑에서 확인하세요.",
+    "description": "X402 wallet_rejected의 nextStepRequest 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.network_mismatch.title": {
+    "message": "지갑 네트워크 불일치",
+    "description": "X402 network_mismatch의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.network_mismatch.description": {
+    "message": "지갑이 현재 연결된 네트워크가 이번 결제 요구 사항과 일치하지 않습니다.",
+    "description": "X402 network_mismatch의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.network_mismatch.nextStepOrder": {
+    "message": "요구된 네트워크로 전환한 후 새 주문을 생성해 주세요.",
+    "description": "X402 network_mismatch의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.network_mismatch.nextStepRequest": {
+    "message": "요구된 네트워크로 전환한 후 요청을 다시 시작해 주세요.",
+    "description": "X402 network_mismatch의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.invalid_signature.title": {
+    "message": "결제 서명이 유효하지 않습니다.",
+    "description": "X402 invalid_signature의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.invalid_signature.description": {
+    "message": "지갑에서 반환된 서명을 검증할 수 없습니다.",
+    "description": "X402 invalid_signature의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.invalid_signature.nextStepOrder": {
+    "message": "지갑과 네트워크가 올바른지 확인한 후 새 주문을 생성해 주세요.",
+    "description": "X402 invalid_signature의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.invalid_signature.nextStepRequest": {
+    "message": "지갑과 네트워크가 올바른지 확인한 후 요청을 다시 시작해 주세요.",
+    "description": "X402 invalid_signature의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.payment_requirements_unavailable.title": {
+    "message": "결제 정보를 일시적으로 가져올 수 없습니다",
+    "description": "X402 payment_requirements_unavailable의 title 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_requirements_unavailable.description": {
+    "message": "이번 결제 요구 사항이 일시적으로 사용할 수 없습니다.",
+    "description": "X402 payment_requirements_unavailable의 description 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_requirements_unavailable.nextStepOrder": {
+    "message": "잠시 후 페이지를 새로 고치고 새 주문을 생성하세요.",
+    "description": "X402 payment_requirements_unavailable의 nextStepOrder 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_requirements_unavailable.nextStepRequest": {
+    "message": "잠시 후 요청을 다시 시도하세요.",
+    "description": "X402 payment_requirements_unavailable의 nextStepRequest 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.facilitator_unavailable.title": {
+    "message": "결제를 검증할 수 없습니다.",
+    "description": "X402 facilitator_unavailable의 title 현지화 문구입니다."
+  },
+  "x402Errors.codes.facilitator_unavailable.description": {
+    "message": "결제 검증 서비스가 현재 사용할 수 없으며, 이 오류만으로는 결제 상태를 확인할 수 없습니다.",
+    "description": "X402 facilitator_unavailable의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.facilitator_unavailable.nextStepOrder": {
+    "message": "주문 상태를 먼저 새로 고쳐 주세요; 여전히 실패하면 고객 지원에 문의해 주세요.",
+    "description": "X402 facilitator_unavailable의 nextStepOrder 현지화 문구입니다."
+  },
+  "x402Errors.codes.facilitator_unavailable.nextStepRequest": {
+    "message": "잠시 후 다시 시도해 주세요; 지갑에 결제가 표시되면 중복 결제를 하지 말고 고객 지원에 문의해 주세요.",
+    "description": "X402 facilitator_unavailable의 nextStepRequest 현지화 문구입니다."
+  },
+  "x402Errors.codes.settlement_pending.title": {
+    "message": "결제 결과 확인 대기 중",
+    "description": "X402 settlement_pending의 title 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_pending.description": {
+    "message": "결제 요청이 제출되었으나 현재 최종 정산 결과를 확인할 수 없습니다.",
+    "description": "X402 settlement_pending의 description 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_pending.nextStepOrder": {
+    "message": "결제를 반복하지 마세요. 먼저 주문 상태를 새로 고치고 여전히 업데이트되지 않으면 고객 지원에 문의하세요.",
+    "description": "X402 settlement_pending의 nextStepOrder 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_pending.nextStepRequest": {
+    "message": "결제를 반복하지 마세요. 먼저 체인 상태를 확인하거나 고객 지원에 문의하세요.",
+    "description": "X402 settlement_pending의 nextStepRequest 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_failed.title": {
+    "message": "결제 정산 실패",
+    "description": "X402 settlement_failed의 title 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_failed.description": {
+    "message": "결제 승인이 확인되었으나 정산이 완료되지 않았습니다.",
+    "description": "X402 settlement_failed의 description 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_failed.nextStepOrder": {
+    "message": "직접 결제를 반복하지 마세요; 주문 상태를 새로 고치거나 고객 지원에 문의하세요.",
+    "description": "X402 settlement_failed의 nextStepOrder 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.settlement_failed.nextStepRequest": {
+    "message": "직접 결제를 반복하지 마세요; 체인 상태를 확인하거나 고객 지원에 문의하세요.",
+    "description": "X402 settlement_failed의 nextStepRequest 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_failed.title": {
+    "message": "결제가 완료되지 않았습니다",
+    "description": "X402 payment_failed의 title 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_failed.description": {
+    "message": "이번 결제를 완료할 수 없으며, 보다 구체적인 보안 오류 정보를 얻지 못했습니다.",
+    "description": "X402 payment_failed의 description 현지화 문구입니다."
+  },
+  "x402Errors.codes.payment_failed.nextStepOrder": {
+    "message": "지갑과 네트워크를 확인한 후 새 주문을 생성하세요; 계속 실패할 경우 고객 지원에 문의하고 기술 코드를 제공하세요.",
+    "description": "X402 payment_failed의 nextStepOrder 로컬라이제이션 문구입니다."
+  },
+  "x402Errors.codes.payment_failed.nextStepRequest": {
+    "message": "지갑과 네트워크를 확인한 후 요청을 다시 시도하세요; 계속 실패할 경우 고객 지원에 문의하고 기술 코드를 제공하세요.",
+    "description": "X402 payment_failed의 nextStepRequest 로컬라이제이션 문구입니다."
   }
 }

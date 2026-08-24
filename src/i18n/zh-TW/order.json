@@ -574,5 +574,189 @@
   "field.allPayWays": {
     "message": "全部支付方式",
     "description": "支付方式篩選下拉的佔位符：表示不限定支付方式。"
+  },
+  "x402Errors.labels.technicalCode": {
+    "message": "技術代碼",
+    "description": "支付錯誤的低敏技術代碼標籤。"
+  },
+  "x402Errors.safety.notCharged": {
+    "message": "本次驗證未通過，未發起扣款。",
+    "description": "僅在後端明確 charged=false 時顯示。"
+  },
+  "x402Errors.codes.payer_token_account_missing.title": {
+    "message": "Solana USDC 賬戶尚未就緒",
+    "description": "X402 payer_token_account_missing 的 title 本地化文案。"
+  },
+  "x402Errors.codes.payer_token_account_missing.description": {
+    "message": "當前錢包沒有可用於本次支付的 Solana USDC 代幣賬戶。",
+    "description": "X402 payer_token_account_missing 的 description 本地化文案。"
+  },
+  "x402Errors.codes.payer_token_account_missing.nextStepOrder": {
+    "message": "請先為該錢包準備 USDC，再創建新訂單進行支付。",
+    "description": "X402 payer_token_account_missing 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.payer_token_account_missing.nextStepRequest": {
+    "message": "請先為該錢包準備 USDC，再重新發起請求。",
+    "description": "X402 payer_token_account_missing 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.insufficient_token_balance.title": {
+    "message": "USDC 餘額不足",
+    "description": "X402 insufficient_token_balance 的 title 本地化文案。"
+  },
+  "x402Errors.codes.insufficient_token_balance.description": {
+    "message": "當前錢包的 USDC 餘額不足以完成本次支付。",
+    "description": "X402 insufficient_token_balance 的 description 本地化文案。"
+  },
+  "x402Errors.codes.insufficient_token_balance.nextStepOrder": {
+    "message": "請充值足額 USDC 後創建新訂單。",
+    "description": "X402 insufficient_token_balance 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.insufficient_token_balance.nextStepRequest": {
+    "message": "請充值足額 USDC 後重新發起請求。",
+    "description": "X402 insufficient_token_balance 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.authorization_expired.title": {
+    "message": "支付授權已過期",
+    "description": "X402 authorization_expired 的 title 本地化文案。"
+  },
+  "x402Errors.codes.authorization_expired.description": {
+    "message": "錢包簽署的支付授權已超過有效期。",
+    "description": "X402 authorization_expired 的 description 本地化文案。"
+  },
+  "x402Errors.codes.authorization_expired.nextStepOrder": {
+    "message": "請創建新訂單並重新授權。",
+    "description": "X402 authorization_expired 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.authorization_expired.nextStepRequest": {
+    "message": "請重新發起請求並再次授權。",
+    "description": "X402 authorization_expired 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.wallet_rejected.title": {
+    "message": "已取消錢包授權",
+    "description": "X402 wallet_rejected 的 title 本地化文案。"
+  },
+  "x402Errors.codes.wallet_rejected.description": {
+    "message": "錢包沒有簽署本次支付授權。",
+    "description": "X402 wallet_rejected 的 description 本地化文案。"
+  },
+  "x402Errors.codes.wallet_rejected.nextStepOrder": {
+    "message": "如需繼續，請重新點擊支付並在錢包中確認。",
+    "description": "X402 wallet_rejected 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.wallet_rejected.nextStepRequest": {
+    "message": "如需繼續，請重新發起請求並在錢包中確認。",
+    "description": "X402 wallet_rejected 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.network_mismatch.title": {
+    "message": "錢包網絡不匹配",
+    "description": "X402 network_mismatch 的 title 本地化文案。"
+  },
+  "x402Errors.codes.network_mismatch.description": {
+    "message": "錢包當前連接的網絡與本次支付要求不一致。",
+    "description": "X402 network_mismatch 的 description 本地化文案。"
+  },
+  "x402Errors.codes.network_mismatch.nextStepOrder": {
+    "message": "請切換到要求的網絡後創建新訂單。",
+    "description": "X402 network_mismatch 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.network_mismatch.nextStepRequest": {
+    "message": "請切換到要求的網絡後重新發起請求。",
+    "description": "X402 network_mismatch 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.invalid_signature.title": {
+    "message": "支付簽名無效",
+    "description": "X402 invalid_signature 的 title 本地化文案。"
+  },
+  "x402Errors.codes.invalid_signature.description": {
+    "message": "錢包返回的簽名無法驗證。",
+    "description": "X402 invalid_signature 的 description 本地化文案。"
+  },
+  "x402Errors.codes.invalid_signature.nextStepOrder": {
+    "message": "請確認錢包和網絡正確，再創建新訂單。",
+    "description": "X402 invalid_signature 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.invalid_signature.nextStepRequest": {
+    "message": "請確認錢包和網絡正確，再重新發起請求。",
+    "description": "X402 invalid_signature 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.payment_requirements_unavailable.title": {
+    "message": "暫時無法獲取支付信息",
+    "description": "X402 payment_requirements_unavailable 的 title 本地化文案。"
+  },
+  "x402Errors.codes.payment_requirements_unavailable.description": {
+    "message": "本次支付要求暫時不可用。",
+    "description": "X402 payment_requirements_unavailable 的 description 本地化文案。"
+  },
+  "x402Errors.codes.payment_requirements_unavailable.nextStepOrder": {
+    "message": "請稍後刷新頁面並創建新訂單。",
+    "description": "X402 payment_requirements_unavailable 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.payment_requirements_unavailable.nextStepRequest": {
+    "message": "請稍後重新發起請求。",
+    "description": "X402 payment_requirements_unavailable 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.facilitator_unavailable.title": {
+    "message": "暫時無法驗證支付",
+    "description": "X402 facilitator_unavailable 的 title 本地化文案。"
+  },
+  "x402Errors.codes.facilitator_unavailable.description": {
+    "message": "支付驗證服務當前不可用，扣款狀態無法僅憑此錯誤確定。",
+    "description": "X402 facilitator_unavailable 的 description 本地化文案。"
+  },
+  "x402Errors.codes.facilitator_unavailable.nextStepOrder": {
+    "message": "請先刷新訂單狀態；如仍失敗，請聯繫客服。",
+    "description": "X402 facilitator_unavailable 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.facilitator_unavailable.nextStepRequest": {
+    "message": "請稍後重試；如錢包顯示扣款，請勿重複支付並聯繫客服。",
+    "description": "X402 facilitator_unavailable 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.settlement_pending.title": {
+    "message": "支付結果待確認",
+    "description": "X402 settlement_pending 的 title 本地化文案。"
+  },
+  "x402Errors.codes.settlement_pending.description": {
+    "message": "支付請求已提交，但當前無法確認最終結算結果。",
+    "description": "X402 settlement_pending 的 description 本地化文案。"
+  },
+  "x402Errors.codes.settlement_pending.nextStepOrder": {
+    "message": "請勿重複支付。請先刷新訂單狀態，仍未更新時聯繫客服。",
+    "description": "X402 settlement_pending 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.settlement_pending.nextStepRequest": {
+    "message": "請勿重複支付。請先檢查鏈上狀態或聯繫客服。",
+    "description": "X402 settlement_pending 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.settlement_failed.title": {
+    "message": "支付結算失敗",
+    "description": "X402 settlement_failed 的 title 本地化文案。"
+  },
+  "x402Errors.codes.settlement_failed.description": {
+    "message": "支付授權已驗證，但結算未能完成。",
+    "description": "X402 settlement_failed 的 description 本地化文案。"
+  },
+  "x402Errors.codes.settlement_failed.nextStepOrder": {
+    "message": "請勿直接重複支付；請刷新訂單狀態或聯繫客服。",
+    "description": "X402 settlement_failed 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.settlement_failed.nextStepRequest": {
+    "message": "請勿直接重複支付；請檢查鏈上狀態或聯繫客服。",
+    "description": "X402 settlement_failed 的 nextStepRequest 本地化文案。"
+  },
+  "x402Errors.codes.payment_failed.title": {
+    "message": "支付未完成",
+    "description": "X402 payment_failed 的 title 本地化文案。"
+  },
+  "x402Errors.codes.payment_failed.description": {
+    "message": "本次支付無法完成，未能獲得更具體的安全錯誤信息。",
+    "description": "X402 payment_failed 的 description 本地化文案。"
+  },
+  "x402Errors.codes.payment_failed.nextStepOrder": {
+    "message": "請檢查錢包和網路後創建新訂單；持續失敗時請聯繫客服並提供技術代碼。",
+    "description": "X402 payment_failed 的 nextStepOrder 本地化文案。"
+  },
+  "x402Errors.codes.payment_failed.nextStepRequest": {
+    "message": "請檢查錢包和網路後重新發起請求；持續失敗時請聯繫客服並提供技術代碼。",
+    "description": "X402 payment_failed 的 nextStepRequest 本地化文案。"
   }
 }

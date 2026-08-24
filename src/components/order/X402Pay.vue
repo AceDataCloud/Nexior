@@ -7,6 +7,22 @@
         /></el-icon>
         <p class="x402-intro-text">{{ $t('order.message.x402IntroShort') }}</p>
       </header>
+      <el-alert
+        v-if="paymentError"
+        :type="paymentError.severity"
+        :title="paymentError.title"
+        :closable="false"
+        show-icon
+        role="alert"
+        class="x402-alert x402-payment-error"
+      >
+        <template #default>
+          <p>{{ paymentError.description }}</p>
+          <p v-if="paymentError.safety" class="x402-error-safety">{{ paymentError.safety }}</p>
+          <p>{{ paymentError.nextStep }}</p>
+          <code class="x402-error-code">{{ paymentError.technicalCode }}</code>
+        </template>
+      </el-alert>
       <section class="x402-wallet">
         <div class="x402-wallet-head">
           <div class="x402-network">
@@ -190,6 +206,7 @@ import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
+import { resolveX402PaymentError, type X402ErrorPresentation } from '@/utils/x402/paymentError';
 
 type IEvmWalletInfo = EvmWalletInfo;
 
@@ -208,6 +225,7 @@ interface IData {
   requirementsLoading: boolean;
   runtimeRequirementsByNetwork: Record<string, Record<string, any> | undefined>;
   requirementsAttemptedByNetwork: Record<string, boolean>;
+  paymentError?: X402ErrorPresentation;
 }
 
 export default defineComponent({
@@ -244,7 +262,8 @@ export default defineComponent({
       evmAddress: undefined,
       requirementsLoading: false,
       runtimeRequirementsByNetwork: {},
-      requirementsAttemptedByNetwork: {}
+      requirementsAttemptedByNetwork: {},
+      paymentError: undefined
     };
   },
   computed: {
@@ -409,6 +428,7 @@ export default defineComponent({
   watch: {
     visible(value: boolean) {
       if (!value) {
+        this.paymentError = undefined;
         this.solanaWalletModalVisible = false;
         this.evmWalletModalVisible = false;
         return;
@@ -426,6 +446,7 @@ export default defineComponent({
       void this.maybeLoadRequirements();
     },
     selectedNetwork() {
+      this.paymentError = undefined;
       if (!this.visible) return;
       void this.maybeLoadRequirements();
     }
@@ -753,6 +774,7 @@ export default defineComponent({
         return;
       }
 
+      this.paymentError = undefined;
       this.signing = true;
       try {
         const ok = await this.confirmPay(this.expectedNetworkLabel);
@@ -827,9 +849,7 @@ export default defineComponent({
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
-        const data = err?.response?.data;
-        const message = (data as any)?.error || (data as any)?.detail || 'X402 wallet payment failed.';
-        ElMessage.error(String(message));
+        this.paymentError = resolveX402PaymentError(err, this.$t.bind(this), 'order');
       } finally {
         this.signing = false;
         this.paying = false;
@@ -854,6 +874,7 @@ export default defineComponent({
         return;
       }
 
+      this.paymentError = undefined;
       this.signing = true;
       try {
         // Always fetch fresh requirements from backend to avoid stale caps
@@ -916,22 +937,7 @@ export default defineComponent({
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
-        // try to surface backend 402 error body to session for UI
-        let message: string | undefined;
-        const data = err?.response?.data;
-        if (data) {
-          const msg = (data as any)?.error || (data as any)?.detail;
-          if (typeof msg === 'string') message = msg;
-        }
-        if (!message) {
-          message =
-            (this.$t && (this.$t('order.message.x402PaymentFailed') as string)) ||
-            'X402 wallet payment failed. Please try again later.';
-        }
-        try {
-          ElMessage.error(message);
-        } catch {}
-        // parent page handles order refresh
+        this.paymentError = resolveX402PaymentError(err, this.$t.bind(this), 'order');
       } finally {
         this.signing = false;
         this.paying = false;
@@ -1024,6 +1030,20 @@ export default defineComponent({
 
 .x402-alert {
   margin-top: 4px;
+}
+
+.x402-payment-error p {
+  margin: 0 0 6px;
+}
+
+.x402-error-safety {
+  color: var(--el-color-success);
+  font-weight: 600;
+}
+
+.x402-error-code {
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
 }
 
 .x402-requirements-actions {

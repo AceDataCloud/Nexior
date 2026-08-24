@@ -267,7 +267,7 @@ export default defineComponent({
         if (error instanceof X402PaymentCancelledError) return;
         if (showQuotaExhausted(error, 'midjourney')) return;
         if (this.walletMode) {
-          ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+          ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
         } else {
           ElMessage.error(this.$t(failureKey) + (error?.response?.data?.error?.message || ''));
         }

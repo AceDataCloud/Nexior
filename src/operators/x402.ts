@@ -3,6 +3,8 @@ import type { PaymentRequirement } from '@acedatacloud/x402-client';
 import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
 import { activeEvmWallet, activeWalletRail } from '@/utils/x402/evmWallet';
 import { continuousPaymentActive, continuousPaymentHeaders } from '@/utils/x402/continuousPayment';
+import { extractX402PaymentError, type CanonicalX402PaymentError } from '@/utils/x402/paymentError';
+import { clearScenarioPaymentError, setScenarioPaymentError } from '@/utils/x402/paymentErrorState';
 
 const BASE_NETWORK = 'eip155:8453';
 const SOLANA_NETWORK = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
@@ -50,6 +52,46 @@ export interface OperatorRequestOptions {
   mode?: PaymentMode;
   x402?: X402PaymentOptions;
   signal?: AbortSignal;
+}
+
+export class X402PaymentError extends Error {
+  readonly paymentError: CanonicalX402PaymentError;
+
+  constructor(paymentError: CanonicalX402PaymentError) {
+    super(`X402 payment failed (${paymentError.code})`);
+    this.name = 'X402PaymentError';
+    this.paymentError = paymentError;
+  }
+}
+
+const scenarioByPath: Array<[string, string]> = [
+  ['/nano-banana/', 'nanobanana'],
+  ['/openai/images/', 'openaiimage'],
+  ['/digital-human/', 'digitalhuman'],
+  ['/grok/', 'grokvideo'],
+  ['/midjourney/', 'midjourney'],
+  ['/producer/', 'producer'],
+  ['/seedance/', 'seedance'],
+  ['/minimax/', 'minimax'],
+  ['/serp/', 'serp'],
+  ['/suno/', 'suno'],
+  ['/kling/', 'kling'],
+  ['/maestro/', 'maestro'],
+  ['/flux/', 'flux'],
+  ['/qrart/', 'qrart'],
+  ['/luma/', 'luma'],
+  ['/pika/', 'pika'],
+  ['/pixverse/', 'pixverse'],
+  ['/hailuo/', 'hailuo'],
+  ['/veo/', 'veo'],
+  ['/sora/', 'sora'],
+  ['/wan/', 'wan'],
+  ['/omni/', 'omni'],
+  ['/gemini/videos', 'omni']
+];
+
+function scenarioForPath(path: string): string | undefined {
+  return scenarioByPath.find(([prefix]) => path.startsWith(prefix))?.[1];
 }
 
 export class X402PaymentCancelledError extends Error {
@@ -130,11 +172,21 @@ export async function postWithX402<T>(
   options: X402PaymentOptions,
   headers: Record<string, string> = { accept: 'application/json', 'content-type': 'application/json' }
 ): Promise<AxiosResponse<T>> {
+  const scenario = scenarioForPath(path);
+  if (scenario) clearScenarioPaymentError(scenario);
   if (activeWalletRail() === 'solana' && continuousPaymentActive() && options.identityToken) {
-    return axios.post<T>(path, data, {
-      baseURL: BASE_URL_X402,
-      headers: { ...headers, ...continuousPaymentHeaders(options.identityToken) }
-    });
+    try {
+      const response = await axios.post<T>(path, data, {
+        baseURL: BASE_URL_X402,
+        headers: { ...headers, ...continuousPaymentHeaders(options.identityToken) }
+      });
+      if (scenario) clearScenarioPaymentError(scenario);
+      return response;
+    } catch (paymentFailure) {
+      const canonical = extractX402PaymentError(paymentFailure);
+      if (scenario) setScenarioPaymentError(scenario, canonical);
+      throw new X402PaymentError(canonical);
+    }
   }
   try {
     return await axios.post<T>(path, data, {
@@ -161,26 +213,35 @@ export async function postWithX402<T>(
     const approved = await options.confirm(quote);
     if (!approved) throw new X402PaymentCancelledError();
 
-    const { Buffer } = await import('buffer');
-    if (!(globalThis as any).Buffer) (globalThis as any).Buffer = Buffer;
-    let envelope: unknown;
-    if (rail === 'base') {
-      if (!evmWallet) throw new Error('Connect a Base wallet before signing');
-      const { signEVMPayment } = await import('@acedatacloud/x402-client');
-      envelope = await signEVMPayment(requirement, evmWallet.provider, evmWallet.address);
-    } else {
-      const { buildSolanaPayment } = await import('@acedatacloud/x402-client/solana');
-      const blockhash = await fetchSolanaBlockhash(requirement.network);
-      envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
-    }
-    const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
-    return axios.post<T>(path, data, {
-      baseURL: BASE_URL_X402,
-      headers: {
-        ...headers,
-        'PAYMENT-SIGNATURE': paymentSignature,
-        ...(options.identityToken ? { authorization: `Bearer ${options.identityToken}` } : {})
+    try {
+      const { Buffer } = await import('buffer');
+      if (!(globalThis as any).Buffer) (globalThis as any).Buffer = Buffer;
+      let envelope: unknown;
+      if (rail === 'base') {
+        if (!evmWallet) throw { code: 'signer_unavailable' };
+        const { signEVMPayment } = await import('@acedatacloud/x402-client');
+        envelope = await signEVMPayment(requirement, evmWallet.provider, evmWallet.address);
+      } else {
+        const { buildSolanaPayment } = await import('@acedatacloud/x402-client/solana');
+        const blockhash = await fetchSolanaBlockhash(requirement.network);
+        envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
       }
-    });
+      const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
+      const response = await axios.post<T>(path, data, {
+        baseURL: BASE_URL_X402,
+        headers: {
+          ...headers,
+          'PAYMENT-SIGNATURE': paymentSignature,
+          ...(options.identityToken ? { authorization: `Bearer ${options.identityToken}` } : {})
+        }
+      });
+      if (scenario) clearScenarioPaymentError(scenario);
+      return response;
+    } catch (paymentFailure) {
+      const canonical = extractX402PaymentError(paymentFailure);
+      if (canonical.code === 'wallet_rejected') throw new X402PaymentCancelledError();
+      if (scenario) setScenarioPaymentError(scenario, canonical);
+      throw new X402PaymentError(canonical);
+    }
   }
 }
