@@ -89,6 +89,13 @@ if ! python3 deploy/verify-html-assets.py "https://studio.acedata.cloud/"; then
   rollback "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge"
   exit 1
 fi
+for legacy_url in \
+  'https://hub.acedata.cloud/retired-check?keep=1' \
+  'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do
+  location=$(curl -fsSI "$legacy_url" | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
+  test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
+done
+
 kubectl annotate deployment "$DEPLOYMENT" -n "$NAMESPACE" \
   "acedata.cloud/last-successful-revision=$GITHUB_SHA" \
   "acedata.cloud/release-id=$RELEASE_TAG" \

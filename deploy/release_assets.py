@@ -11,7 +11,6 @@ import shlex
 import re
 import subprocess
 import sys
-import tempfile
 
 
 def safe_path(value: str) -> PurePosixPath:
@@ -72,11 +71,7 @@ def command_fetch(args: argparse.Namespace) -> None:
         actual = hashlib.sha256(archive.read_bytes()).hexdigest()
         if actual != expected:
             raise ValueError(f"archive checksum mismatch: expected {expected}, got {actual}")
-        with tempfile.NamedTemporaryFile(delete=False) as raw:
-            raw.write(gzip.decompress(archive.read_bytes()))
-            raw_path = raw.name
-        Path(args.output).write_bytes(Path(raw_path).read_bytes())
-        Path(raw_path).unlink()
+        Path(args.output).write_bytes(gzip.decompress(archive.read_bytes()))
         print(f"archive_parts={len(parts)}")
         print(f"archive_sha256={actual}")
     finally:

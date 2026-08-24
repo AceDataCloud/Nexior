@@ -144,16 +144,6 @@ jobs:
         if: steps.changes.outputs.deploy == 'true'
         run: bash deploy/verify-cutover.sh
 
-      - name: Verify legacy Hub redirects
-        if: steps.changes.outputs.deploy == 'true'
-        run: |
-          for legacy_url in \
-            'https://hub.acedata.cloud/retired-check?keep=1' \
-            'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do
-            location=$(curl -fsSI "$legacy_url" | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
-            test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
-          done
-
       - name: Publish verified final image to Docker Hub
         if: steps.changes.outputs.deploy == 'true'
         run: |

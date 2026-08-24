@@ -27,8 +27,9 @@ docker build -q -t "$fixture_image" "$tmp_dir/fixture"
 printf '%s\n' 'console.log("old")' > .previous-assets/old.js
 printf '%s\n' 'old.js' > .previous-release-assets
 
-docker buildx build --load --target bridge --build-arg "PREVIOUS_IMAGE=$fixture_image" -t "$bridge_image" --cache-from type=gha .
-docker buildx build --load --target final --build-arg "PREVIOUS_IMAGE=$fixture_image" -t "$final_image" --cache-from type=gha .
+docker build -q -t "acedata/${app}:compat-default" .
+docker build -q --target bridge --build-arg "PREVIOUS_IMAGE=$fixture_image" -t "$bridge_image" .
+docker build -q --target final --build-arg "PREVIOUS_IMAGE=$fixture_image" -t "$final_image" .
 
 run_image() {
   local name=$1 image=$2

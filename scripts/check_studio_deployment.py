@@ -34,3 +34,5 @@ assert 'FROM ${PREVIOUS_IMAGE} AS bridge' in dockerfile
 assert 'FROM runtime-base AS final' in dockerfile
 assert workflow.index('preflight-release.sh') < workflow.index('--target bridge') < workflow.index('verify-release-unchanged.sh') < workflow.index('verify-cutover.sh')
 print('Studio deployment contract OK')
+ci = (ROOT / '.github/workflows/check-pr.yaml').read_text()
+assert 'test-compatible-images.sh studio-frontend' in ci
