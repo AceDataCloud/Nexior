@@ -275,8 +275,7 @@ export default defineComponent({
     },
     handlePaymentError(error: any) {
       if (error instanceof X402PaymentCancelledError) return;
-      if (this.walletMode)
-        ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
+      if (this.walletMode) ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
       else ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startTaskFailed'));
     },
     getWalletContext(): X402WalletContext | undefined {

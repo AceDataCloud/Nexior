@@ -185,8 +185,7 @@ export default defineComponent({
         .catch((error) => {
           if (error instanceof X402PaymentCancelledError) return;
           if (showQuotaExhausted(error, 'digitalhuman')) return;
-          if (this.walletMode)
-            ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
+          if (this.walletMode) ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
           else ElMessage.error(this.$t('digitalhuman.message.startTaskFailed'));
         })
         .finally(async () => {
