@@ -44,10 +44,17 @@
       <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <div class="flex gap-1">
         <mode-selector v-if="type !== 'describe'" />
-        <el-button v-if="config.action === 'extend'" type="primary" class="btn w-full" round @click="$emit('generate')">
+        <el-button
+          v-if="config.action === 'extend'"
+          type="primary"
+          class="btn w-full"
+          round
+          :disabled="!canGenerate"
+          @click="$emit('generate')"
+        >
           {{ $t('midjourney.button.extend') }}
         </el-button>
-        <el-button v-else type="primary" class="btn w-full" round @click="$emit('generate')">
+        <el-button v-else type="primary" class="btn w-full" round :disabled="!canGenerate" @click="$emit('generate')">
           {{ $t('midjourney.button.generate') }}
         </el-button>
       </div>
@@ -90,6 +97,7 @@ import {
   buildMidjourneyVideosRequest,
   midjourneyOperator
 } from '@/operators/midjourney';
+import { canSubmitGeneration } from '@/utils/generationInput';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -126,6 +134,13 @@ export default defineComponent({
     return { quoteTimer: 0, quoteRunId: 0 };
   },
   computed: {
+    canGenerate(): boolean {
+      if (this.type === 'describe') return Boolean(this.config?.image_url);
+      if (this.type === 'videos') {
+        return canSubmitGeneration('midjourney-videos', buildMidjourneyVideosRequest(this.config));
+      }
+      return canSubmitGeneration('midjourney-imagine', buildMidjourneyImagineRequest(this.config));
+    },
     config() {
       return this.$store.state.midjourney.config;
     },
@@ -181,9 +196,15 @@ export default defineComponent({
   methods: {
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
+      const state = scenarioPaymentState('midjourney');
+      state.quoteUsdc = undefined;
+      state.quoteLoading = false;
+      if (!this.canGenerate) return;
       this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
     },
     async refreshQuote() {
+      if (!this.canGenerate) return;
       const state = scenarioPaymentState('midjourney');
       const runId = ++this.quoteRunId;
       state.quoteLoading = true;
@@ -195,7 +216,8 @@ export default defineComponent({
             : this.type === 'describe'
               ? await midjourneyOperator.quoteDescribe(buildMidjourneyDescribeRequest(this.config))
               : await midjourneyOperator.quoteImagine(buildMidjourneyImagineRequest(this.config));
-        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+        if (runId === this.quoteRunId && state.mode === 'wallet' && this.canGenerate)
+          state.quoteUsdc = quote.amountUsdc;
       } catch (error) {
         console.warn('x402 quote failed', error);
       } finally {

@@ -168,7 +168,7 @@ export default defineComponent({
     },
     async onGenerate() {
       if (!hasMeaningfulText(this.config?.prompt)) {
-        ElMessage.error(this.$t('nanobanana.message.promptRequired'));
+        ElMessage.error(this.$t('common.message.promptRequired'));
         return;
       }
       if (

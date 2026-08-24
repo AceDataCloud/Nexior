@@ -164,7 +164,7 @@ export default defineComponent({
       await this.onGetTasks();
     },
     async onStartImagineTask(request: IMidjourneyImagineRequest) {
-      if (!request.prompt && request.action === MidjourneyImagineAction.GENERATE) {
+      if (!request.prompt?.trim() && request.action === MidjourneyImagineAction.GENERATE) {
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
@@ -175,7 +175,7 @@ export default defineComponent({
       );
     },
     async onStartVideosTask(request: IMidjourneyVideosRequest) {
-      if (!request.prompt) {
+      if (!request.prompt?.trim()) {
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }

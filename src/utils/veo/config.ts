@@ -50,6 +50,7 @@ export const buildVeoGenerateRequest = (config: IVeoConfig | undefined): IVeoGen
     ...normalizeVeoConfigForAction(config, action),
     async: true
   } as IVeoGenerateRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
 
   if (!request.image_urls?.length) {
     delete request.image_urls;

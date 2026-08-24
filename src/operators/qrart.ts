@@ -9,11 +9,12 @@ import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildQrartRequest(config?: IQrartConfig): IQrartGenerateRequest {
   const source = config || ({} as IQrartConfig);
+  const prompt = source.prompt?.trim();
   return {
     type: source.type,
     content: source.content,
     content_image_url: source.content_image_url,
-    prompt: source.prompt,
+    prompt,
     aspect_ratio: source.aspect_ratio,
     async: true,
     qrw: source.qrw,

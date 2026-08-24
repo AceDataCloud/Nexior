@@ -11,7 +11,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="flux" />
       <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
-      <el-button type="primary" class="btn w-full" round @click="onGenerate">
+      <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('flux.button.generate') }}
       </el-button>
@@ -34,6 +34,7 @@ import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildFluxRequest, fluxOperator } from '@/operators/flux';
+import { canSubmitGeneration } from '@/utils/generationInput';
 
 const QUOTE_DEBOUNCE_MS = 350;
 
@@ -56,6 +57,9 @@ export default defineComponent({
     return { quoteTimer: 0, quoteRunId: 0 };
   },
   computed: {
+    canGenerate(): boolean {
+      return canSubmitGeneration('flux', buildFluxRequest(this.config));
+    },
     config() {
       return this.$store.state.flux?.config;
     },
@@ -90,16 +94,23 @@ export default defineComponent({
   methods: {
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
+      const state = scenarioPaymentState('flux');
+      state.quoteUsdc = undefined;
+      state.quoteLoading = false;
+      if (!this.canGenerate) return;
       this.quoteTimer = window.setTimeout(this.refreshQuote, QUOTE_DEBOUNCE_MS);
     },
     async refreshQuote() {
+      if (!this.canGenerate) return;
       const state = scenarioPaymentState('flux');
       const runId = ++this.quoteRunId;
       state.quoteLoading = true;
       state.quoteUsdc = undefined;
       try {
         const quote = await fluxOperator.quote(buildFluxRequest(this.config));
-        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+        if (runId === this.quoteRunId && state.mode === 'wallet' && this.canGenerate)
+          state.quoteUsdc = quote.amountUsdc;
       } catch (error) {
         console.warn('x402 quote failed', error);
       } finally {

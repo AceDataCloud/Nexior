@@ -86,7 +86,7 @@ describe('Nano Banana prompt validation', () => {
 
     await (wrapper.vm as any).onGenerate();
 
-    expect(ElMessage.error).toHaveBeenCalledWith('nanobanana.message.promptRequired');
+    expect(ElMessage.error).toHaveBeenCalledWith('common.message.promptRequired');
     expect(mocks.ensureNoPendingUpload).not.toHaveBeenCalled();
     expect(mocks.ensureLoggedIn).not.toHaveBeenCalled();
     expect(mocks.resolveWallet).not.toHaveBeenCalled();
@@ -101,7 +101,7 @@ describe('Nano Banana prompt validation', () => {
     await (wrapper.vm as any).onGenerate();
 
     expect(mocks.generate).not.toHaveBeenCalled();
-    expect(ElMessage.error).toHaveBeenCalledWith('nanobanana.message.promptRequired');
+    expect(ElMessage.error).toHaveBeenCalledWith('common.message.promptRequired');
   });
 
   it('submits a trimmed credits request', async () => {

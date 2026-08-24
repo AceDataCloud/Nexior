@@ -97,3 +97,9 @@ describe('special video x402 requests', () => {
     );
   });
 });
+
+it('trims Kling video prompts without mutating config', () => {
+  const config = { prompt: '  video prompt  ' };
+  expect(buildKlingVideoRequest(config).prompt).toBe('video prompt');
+  expect(config.prompt).toBe('  video prompt  ');
+});

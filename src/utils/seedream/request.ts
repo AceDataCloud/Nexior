@@ -3,6 +3,7 @@ import { getSeedreamAction } from './capabilities';
 
 export const buildSeedreamRequest = (config?: ISeedreamConfig): ISeedreamGenerateRequest => {
   const request = { ...(config || {}) };
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   const action = getSeedreamAction(request.model, request.image);
   delete request.action;
   request.watermark = false;

@@ -17,7 +17,8 @@ export type SeedanceRejectReason =
   | 'modelRejectsImage'
   | 'audioRequiresReference'
   | 'referenceMediaExceeded'
-  | 'taskRequiresVideo';
+  | 'taskRequiresVideo'
+  | 'generationInputRequired';
 
 export interface SeedanceNormalizeResult {
   request?: ISeedanceGenerateRequest;
@@ -130,6 +131,10 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
     cfg.ratio = 'adaptive';
   if ((cfg.omni_reference_task_type === 'edit' || cfg.omni_reference_task_type === 'extend') && !hasVideo)
     return { reject: 'taskRequiresVideo' };
+  if (!cfg.prompt && !hasImages && !hasVideo && !Array.isArray(cfg.audios)) {
+    return { reject: 'generationInputRequired' };
+  }
+
   if (cfg.omni_reference_task_type === 'edit') {
     cfg.ratio = 'adaptive';
     cfg.duration = -1;

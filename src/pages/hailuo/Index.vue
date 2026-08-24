@@ -30,6 +30,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: IHailuoTask | undefined;
@@ -180,6 +181,12 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const request = buildHailuoRequest(this.config);
+      const inputError = getGenerationInputError('hailuo', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -189,7 +196,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildHailuoRequest(this.config);
       let operation: Promise<unknown>;
       if (this.walletMode) {
         const wallet = this.getWalletContext();

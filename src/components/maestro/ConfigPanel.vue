@@ -312,6 +312,7 @@ import {
   isMaestroScenarioAvailable,
   normalizeMaestroSku
 } from '@/utils/maestroSku';
+import { canSubmitGeneration } from '@/utils/generationInput';
 
 // Preview rectangle dimensions (px) for each aspect-ratio chip.
 const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
@@ -382,7 +383,7 @@ export default defineComponent({
       return scenario === 'captions' ? !urls.some((url) => isVideoUrl(url)) : !urls.some((url) => isImageUrl(url));
     },
     canGenerate(): boolean {
-      return !!this.prompt?.trim() && !this.needsRequiredUpload;
+      return canSubmitGeneration('maestro', buildMaestroRequest(this.config)) && !this.needsRequiredUpload;
     },
     prompt: {
       get(): string | undefined {
@@ -584,16 +585,23 @@ export default defineComponent({
     },
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
+      const state = scenarioPaymentState('maestro');
+      state.quoteUsdc = undefined;
+      state.quoteLoading = false;
+      if (!this.canGenerate) return;
       this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
     },
     async refreshQuote() {
+      if (!this.canGenerate) return;
       const state = scenarioPaymentState('maestro');
       const runId = ++this.quoteRunId;
       state.quoteLoading = true;
       state.quoteUsdc = undefined;
       try {
         const quote = await maestroOperator.quote(buildMaestroRequest(this.config));
-        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+        if (runId === this.quoteRunId && state.mode === 'wallet' && this.canGenerate)
+          state.quoteUsdc = quote.amountUsdc;
       } catch (error) {
         console.warn('x402 quote failed', error);
       } finally {

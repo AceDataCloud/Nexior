@@ -52,3 +52,9 @@ describe('buildVeoGenerateRequest', () => {
     });
   });
 });
+
+it('trims prompts without mutating config', () => {
+  const config = { prompt: '  video prompt  ' };
+  expect(buildVeoGenerateRequest(config).prompt).toBe('video prompt');
+  expect(config.prompt).toBe('  video prompt  ');
+});

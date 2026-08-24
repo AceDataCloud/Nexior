@@ -8,7 +8,9 @@ import {
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildPikaRequest(config?: IPikaConfig): IPikaGenerateRequest {
-  return { ...(config || {}), async: true } as IPikaGenerateRequest;
+  const request = { ...(config || {}), async: true } as IPikaGenerateRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
+  return request;
 }
 
 class PikaOperator extends BaseTaskOperator<
