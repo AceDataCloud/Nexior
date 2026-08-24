@@ -1,5 +1,6 @@
 import { ISeedanceConfig, ISeedanceGenerateRequest, ISeedanceImageInput } from '@/models';
 import { getSeedanceCapability, SEEDANCE_MODEL_CAPABILITIES } from '@/constants';
+import { hasMeaningfulText } from '@/utils/is';
 
 // Mirrors the keys of SEEDANCE_MODEL_CAPABILITIES for a cheap membership check.
 const KNOWN_MODELS = new Set(Object.keys(SEEDANCE_MODEL_CAPABILITIES));
@@ -26,7 +27,7 @@ export interface SeedanceNormalizeResult {
 }
 
 const cleanImages = (images: unknown): ISeedanceImageInput[] =>
-  Array.isArray(images) ? (images as ISeedanceImageInput[]).filter((img) => !!img?.url) : [];
+  Array.isArray(images) ? (images as ISeedanceImageInput[]).filter((img) => hasMeaningfulText(img?.url)) : [];
 
 export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNormalizeResult {
   const cfg: any = { ...(config || {}) };
@@ -74,13 +75,13 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
   // Reference media (Seedance 2.0 multimodal): keep valid urls, drop when the
   // model doesn't accept that reference type.
   if (cap.acceptsReferenceAudio && Array.isArray(cfg.audios)) {
-    cfg.audios = cfg.audios.filter((a: any) => a?.url);
+    cfg.audios = cfg.audios.filter((a: any) => hasMeaningfulText(a?.url));
   }
   if (!cap.acceptsReferenceAudio || !Array.isArray(cfg.audios) || cfg.audios.length === 0) {
     delete cfg.audios;
   }
   if (cap.acceptsReferenceVideo && Array.isArray(cfg.videos)) {
-    cfg.videos = cfg.videos.filter((v: any) => v?.url);
+    cfg.videos = cfg.videos.filter((v: any) => hasMeaningfulText(v?.url));
   }
   if (!cap.acceptsReferenceVideo || !Array.isArray(cfg.videos) || cfg.videos.length === 0) {
     delete cfg.videos;
