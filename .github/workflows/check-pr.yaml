@@ -57,6 +57,9 @@ jobs:
       - name: Studio deployment contract
         run: python3 scripts/check_studio_deployment.py
 
+      - name: Release asset manifest tests
+        run: python3 -m unittest scripts/test_release_assets.py
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -73,3 +76,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build compatible Docker targets
+        env:
+          IMAGE_NAME: studio-frontend
+        run: bash deploy/test-compatible-images.sh
