@@ -279,7 +279,7 @@ import { getPriceString } from '@/utils';
 import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { isX402Challenge, resolveX402PaymentError, type X402ErrorPresentation } from '@/utils/x402/paymentError';
+import { isX402Challenge, resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
 
 const POLL_INTERVAL_MS = 7000;
 const POLL_INITIAL_DELAY_MS = 2000;

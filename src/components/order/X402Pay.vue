@@ -206,7 +206,7 @@ import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
-import { resolveX402PaymentError, type X402ErrorPresentation } from '@/utils/x402/paymentError';
+import { resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
 
 type IEvmWalletInfo = EvmWalletInfo;
 

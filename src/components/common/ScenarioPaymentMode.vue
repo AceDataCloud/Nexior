@@ -26,7 +26,7 @@
 import { defineComponent } from 'vue';
 import { ElAlert } from 'element-plus';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
-import { resolveX402PaymentError, type X402ErrorPresentation } from '@/utils/x402/paymentError';
+import { resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
 import { scenarioPaymentError } from '@/utils/x402/paymentErrorState';
 
 export default defineComponent({

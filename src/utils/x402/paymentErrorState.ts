@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import type { CanonicalX402PaymentError } from './paymentError';
+import type { CanonicalX402PaymentError } from '@acedatacloud/core/x402';
 
 const errors = reactive<Record<string, CanonicalX402PaymentError | undefined>>({});
 

@@ -3,7 +3,7 @@ import type { PaymentRequirement } from '@acedatacloud/x402-client';
 import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
 import { activeEvmWallet, activeWalletRail } from '@/utils/x402/evmWallet';
 import { continuousPaymentActive, continuousPaymentHeaders } from '@/utils/x402/continuousPayment';
-import { extractX402PaymentError, type CanonicalX402PaymentError } from '@/utils/x402/paymentError';
+import { extractX402PaymentError, type CanonicalX402PaymentError } from '@acedatacloud/core/x402';
 import { clearScenarioPaymentError, setScenarioPaymentError } from '@/utils/x402/paymentErrorState';
 
 const BASE_NETWORK = 'eip155:8453';
