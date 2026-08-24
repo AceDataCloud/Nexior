@@ -44,6 +44,16 @@ describe('generation input contracts', () => {
     expect(canSubmitGeneration(service, {})).toBe(false);
   });
 
+  it.each([
+    ['veo', { action: 'image2video', image_urls: [''] }],
+    ['sora', { action: 'image2video', image_urls: ['  '] }],
+    ['pika', { image_url: [''] }],
+    ['wan', { media: [{ type: 'image', url: '' }] }],
+    ['seedance', { images: [{ url: '' }] }]
+  ] as const)('%s rejects media arrays without a meaningful URL', (service, request) => {
+    expect(getGenerationInputError(service, request)).toBe('generationInputRequired');
+  });
+
   it('requires Pika media for effect and ingredients modes', () => {
     expect(getGenerationInputError('pika', { effect: 'effect' })).toBe('generationInputRequired');
     expect(canSubmitGeneration('pika', { effect: 'effect', image_url: ['image'] })).toBe(true);
@@ -54,10 +64,16 @@ describe('generation input contracts', () => {
   it('requires prompts only for Kling text-to-video', () => {
     expect(getGenerationInputError('kling', { action: 'text2video' })).toBe('promptRequired');
     expect(canSubmitGeneration('kling', { action: 'text2video', prompt: 'video' })).toBe(true);
+    expect(getGenerationInputError('kling', { action: 'image2video' })).toBe('generationInputRequired');
     expect(canSubmitGeneration('kling', { action: 'image2video', start_image_url: 'image' })).toBe(true);
+    expect(getGenerationInputError('kling', { action: 'extend' })).toBe('generationInputRequired');
     expect(canSubmitGeneration('kling', { action: 'extend', video_id: 'video' })).toBe(true);
+    expect(canSubmitGeneration('kling', { action: 'extend', video_url: 'video' })).toBe(true);
     expect(canSubmitGeneration('kling', { action: 'text2video', image_list: [{ image_url: 'image' }] })).toBe(true);
     expect(canSubmitGeneration('kling', { action: 'text2video', video_list: [{ video_url: 'video' }] })).toBe(true);
+    expect(getGenerationInputError('kling', { action: 'text2video', image_list: [{ image_url: ' ' }] })).toBe(
+      'promptRequired'
+    );
   });
 
   it('accepts any normalized Seedance content but rejects an empty request', () => {

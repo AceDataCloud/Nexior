@@ -22,7 +22,15 @@ export type GenerationInputService =
 
 type RequestLike = Record<string, any>;
 
-const hasList = (value: unknown): boolean => Array.isArray(value) && value.length > 0;
+const MEDIA_URL_KEYS = ['url', 'image_url', 'video_url', 'audio_url'] as const;
+
+const hasMediaList = (value: unknown): boolean =>
+  Array.isArray(value) &&
+  value.some((item) => {
+    if (hasMeaningfulText(item)) return true;
+    if (!item || typeof item !== 'object') return false;
+    return MEDIA_URL_KEYS.some((key) => hasMeaningfulText((item as Record<string, unknown>)[key]));
+  });
 
 export function getGenerationInputError(
   service: GenerationInputService,
@@ -46,10 +54,10 @@ export function getGenerationInputError(
         : 'generationInputRequired';
     case 'veo':
       if ((request.action || 'text2video') === 'text2video') return hasPrompt ? undefined : 'promptRequired';
-      return hasList(request.image_urls) ? undefined : 'generationInputRequired';
+      return hasMediaList(request.image_urls) ? undefined : 'generationInputRequired';
     case 'sora':
       if ((request.action || 'text2video') === 'image2video') {
-        return hasList(request.image_urls) ? undefined : 'generationInputRequired';
+        return hasMediaList(request.image_urls) ? undefined : 'generationInputRequired';
       }
       return hasPrompt ? undefined : 'promptRequired';
     case 'hailuo':
@@ -59,16 +67,25 @@ export function getGenerationInputError(
     case 'pixverse':
       return hasPrompt || hasMeaningfulText(request.image_url) ? undefined : 'generationInputRequired';
     case 'pika':
-      return hasPrompt || hasList(request.image_url) ? undefined : 'generationInputRequired';
+      return hasPrompt || hasMediaList(request.image_url) ? undefined : 'generationInputRequired';
     case 'wan':
-      return hasPrompt || hasMeaningfulText(request.image_url) || hasList(request.media)
+      return hasPrompt || hasMeaningfulText(request.image_url) || hasMediaList(request.media)
         ? undefined
         : 'generationInputRequired';
     case 'kling':
-      if (request.action !== 'text2video') return undefined;
-      return hasPrompt || hasList(request.image_list) || hasList(request.video_list) ? undefined : 'promptRequired';
+      if (request.action === 'image2video') {
+        return hasMeaningfulText(request.start_image_url) ? undefined : 'generationInputRequired';
+      }
+      if (request.action === 'extend') {
+        return hasMeaningfulText(request.video_id) || hasMeaningfulText(request.video_url)
+          ? undefined
+          : 'generationInputRequired';
+      }
+      return hasPrompt || hasMediaList(request.image_list) || hasMediaList(request.video_list)
+        ? undefined
+        : 'promptRequired';
     case 'seedance':
-      return hasPrompt || hasList(request.images) || hasList(request.videos) || hasList(request.audios)
+      return hasPrompt || hasMediaList(request.images) || hasMediaList(request.videos) || hasMediaList(request.audios)
         ? undefined
         : 'generationInputRequired';
     case 'midjourney-imagine':

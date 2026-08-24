@@ -159,6 +159,15 @@ export default defineComponent({
       }
     },
     async onGenerate(estimatedConsumption?: number) {
+      const { request, reject } = normalizeSeedanceRequest(this.config);
+      if (reject) {
+        const key =
+          reject === 'generationInputRequired'
+            ? 'common.message.generationInputRequired'
+            : `seedance.message.${reject}`;
+        ElMessage.warning(this.$t(key));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -166,11 +175,6 @@ export default defineComponent({
           (m) => ElMessage.warning(m)
         )
       ) {
-        return;
-      }
-      const { request, reject } = normalizeSeedanceRequest(this.config);
-      if (reject) {
-        ElMessage.warning(this.$t(`seedance.message.${reject}`));
         return;
       }
       if (!request) {
