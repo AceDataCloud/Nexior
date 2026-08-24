@@ -33,4 +33,5 @@ assert bridge < final < verify < annotate
 assert 'FROM ${PREVIOUS_IMAGE} AS bridge' in dockerfile
 assert 'FROM runtime-base AS final' in dockerfile
 assert workflow.index('preflight-release.sh') < workflow.index('--target bridge') < workflow.index('verify-cutover.sh')
+assert 'test-compatible-images.sh' in (ROOT / '.github/workflows/check-pr.yaml').read_text()
 print('Studio deployment contract OK')
