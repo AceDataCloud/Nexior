@@ -1,8 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: legacy-hub-redirect
+  name: hub-frontend
   namespace: acedatacloud
+  labels:
+    acedata.cloud/role: legacy-redirect
   annotations:
     kubernetes.io/ingress.class: nginx-router
     kubernetes.io/ingress.rule-mix: 'true'

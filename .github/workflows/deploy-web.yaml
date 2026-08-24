@@ -124,29 +124,12 @@ jobs:
           kubectl -n acedatacloud rollout status deployment/studio-frontend --timeout=10m
           expected="ghcr.io/acedatacloud/studio-frontend:$BUILD_NUMBER"
           test "$(kubectl -n acedatacloud get deployment studio-frontend -o jsonpath='{.spec.template.spec.containers[0].image}')" = "$expected"
-          test "$(kubectl -n acedatacloud get ingress legacy-hub-redirect -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.name}')" = "studio-frontend"
-          test "$(kubectl -n acedatacloud get ingress legacy-hub-redirect -o jsonpath='{.spec.rules[1].http.paths[0].backend.service.name}')" = "studio-frontend"
+          test "$(kubectl -n acedatacloud get ingress hub-frontend -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.name}')" = "studio-frontend"
+          test "$(kubectl -n acedatacloud get ingress hub-frontend -o jsonpath='{.spec.rules[1].http.paths[0].backend.service.name}')" = "studio-frontend"
           test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/health)" = "200" || \
             test "$(curl -fsS -o /dev/null -w '%{http_code}' https://studio.acedata.cloud/)" = "200"
           location=$(curl -fsSI 'https://hub.acedata.cloud/retired-check?keep=1' | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
           test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
-
-      - name: Remove retired Hub workloads
-        if: steps.changes.outputs.deploy == 'true'
-        run: |
-          kubectl -n acedatacloud delete ingress hub-frontend --ignore-not-found
-          kubectl -n acedatacloud delete deployment hub-frontend --ignore-not-found
-          kubectl -n acedatacloud delete service hub-frontend --ignore-not-found
-
-      - name: Verify legacy redirect after cleanup
-        if: steps.changes.outputs.deploy == 'true'
-        run: |
-          for legacy_url in \
-            'https://hub.acedata.cloud/retired-check?keep=1' \
-            'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do
-            location=$(curl -fsSI "$legacy_url" | tr -d '\r' | awk 'tolower($1)=="location:" {print $2; exit}')
-            test "$location" = "https://studio.acedata.cloud/retired-check?keep=1"
-          done
 
       - name: Record successful revision
         if: steps.changes.outputs.deploy == 'true'
