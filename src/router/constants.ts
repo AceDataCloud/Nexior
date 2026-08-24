@@ -75,6 +75,7 @@ export const ROUTE_NANOBANANA_INDEX = 'nanobanana-index';
 export const ROUTE_OPENAIIMAGE_INDEX = 'openaiimage-index';
 
 export const ROUTE_SEEDREAM_INDEX = 'seedream-index';
+export const ROUTE_QWENIMAGE_INDEX = 'qwenimage-index';
 
 export const ROUTE_SEEDANCE_INDEX = 'seedance-index';
 export const ROUTE_GROKVIDEO_INDEX = 'grokvideo-index';

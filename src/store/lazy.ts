@@ -43,6 +43,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   nanobanana: () => import('./nanobanana'),
   openaiimage: () => import('./openaiimage'),
   seedream: () => import('./seedream'),
+  qwenimage: () => import('./qwenimage'),
   seedance: () => import('./seedance'),
   grokvideo: () => import('./grokvideo'),
   omni: () => import('./omni'),

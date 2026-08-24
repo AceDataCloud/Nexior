@@ -14,6 +14,7 @@ import {
   ROUTE_PRODUCER_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_SEEDREAM_INDEX,
+  ROUTE_QWENIMAGE_INDEX,
   ROUTE_SUNO_INDEX,
   ROUTE_VEO_INDEX
 } from '@/router/constants';
@@ -152,7 +153,8 @@ export const HOME_CATEGORIES: HomeCategory[] = [
     candidates: [
       capability('nanobanana', ROUTE_NANOBANANA_INDEX, 'Nano Banana', 'intro.model.nanobanana', ''),
       capability('openaiimage', ROUTE_OPENAIIMAGE_INDEX, 'GPT Image', 'intro.model.gptimage', ''),
-      capability('seedream', ROUTE_SEEDREAM_INDEX, 'Seedream', 'intro.model.seedream', '')
+      capability('seedream', ROUTE_SEEDREAM_INDEX, 'Seedream', 'intro.model.seedream', ''),
+      capability('qwenimage', ROUTE_QWENIMAGE_INDEX, 'Qwen Image 3', 'intro.model.seedream', '')
     ]
   },
   {

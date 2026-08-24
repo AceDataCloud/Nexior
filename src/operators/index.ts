@@ -37,6 +37,8 @@ export * from './exchange';
 export * from './nanobanana';
 export * from './openaiimage';
 export * from './seedream';
+export * from './qwenimage';
+
 export * from './seedance';
 export * from './grokvideo';
 export * from './omni';

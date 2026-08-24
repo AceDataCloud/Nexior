@@ -6,6 +6,8 @@
       <resolution-selector v-if="supportsResolution" class="mb-4" />
       <duration-selector v-if="supportsDuration" class="mb-4" />
       <image-url-input v-if="supportsImageUrl" class="mb-4" />
+      <media-input v-if="isWan3" class="mb-4" />
+      <wan3-options v-if="isWan3" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="wan" />
@@ -27,6 +29,8 @@ import ResolutionSelector from './config/ResolutionSelector.vue';
 import DurationSelector from './config/DurationSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
+import MediaInput from './config/MediaInput.vue';
+import Wan3Options from './config/Wan3Options.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -43,6 +47,8 @@ export default defineComponent({
     ModelSelector,
     ResolutionSelector,
     DurationSelector,
+    MediaInput,
+    Wan3Options,
     ServicePricingSummary,
     ScenarioPaymentMode
   },
@@ -62,10 +68,15 @@ export default defineComponent({
     },
     supportsResolution() {
       const model = this.config?.model;
-      return model === 'wan2.6-t2v' || model === 'wan2.6-i2v' || model === 'wan2.6-i2v-flash';
+      return (
+        model === 'wan2.6-t2v' || model === 'wan2.6-i2v' || model === 'wan2.6-i2v-flash' || model === 'wan3.0-video'
+      );
     },
     supportsDuration() {
       return this.config?.model === 'wan2.6-t2v';
+    },
+    isWan3() {
+      return this.config?.model === 'wan3.0-video';
     },
     supportsImageUrl() {
       const model = this.config?.model;
