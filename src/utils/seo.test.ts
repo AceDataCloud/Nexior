@@ -38,7 +38,7 @@ describe('Organization structured data ownership', () => {
     expect(organization().sameAs).toEqual([
       'https://github.com/AceDataCloud',
       'https://x.com/AceDataCloud',
-      'https://hub.acedata.cloud'
+      'https://studio.acedata.cloud'
     ]);
   });
 

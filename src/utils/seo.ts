@@ -5,21 +5,21 @@ import { replaceBrandName } from '@/utils/site';
 import { PRODUCT_LOCALES } from '@acedatacloud/core/constants';
 
 // Resolve the current site origin at runtime so that the same bundle can be
-// served independently from multiple official hostnames (e.g. hub.acedata.cloud,
-// studio.acedata.cloud, hub-test.acedata.cloud) without canonicalizing them all
+// served independently from multiple official hostnames (e.g. studio.acedata.cloud,
+// studio.acedata.cloud, studio-test.acedata.cloud) without canonicalizing them all
 // to a single URL.
 function getCurrentOrigin(): string {
   if (typeof window !== 'undefined' && window.location && window.location.origin) {
     return window.location.origin;
   }
-  return 'https://hub.acedata.cloud';
+  return 'https://studio.acedata.cloud';
 }
 
 // Hardcoded fallbacks used when the per-origin Site row hasn't loaded yet
 // (e.g. very early boot, or the /sites/ API call failed). Once `getSite`
 // finishes, every helper here prefers the live values from store.state.site
 // so subsites can fully white-label their <title>, og:*, JSON-LD, etc.
-const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Hub';
+const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Studio';
 const FALLBACK_BRAND_NAME = 'Ace Data Cloud';
 function getShareImage(): string {
   const host = typeof window !== 'undefined' ? window.location.hostname : 'studio.acedata.cloud';
@@ -155,7 +155,7 @@ export function setOrganization() {
     logo: image,
     description,
     ...(isMainOfficial()
-      ? { sameAs: ['https://github.com/AceDataCloud', 'https://x.com/AceDataCloud', 'https://hub.acedata.cloud'] }
+      ? { sameAs: ['https://github.com/AceDataCloud', 'https://x.com/AceDataCloud', 'https://studio.acedata.cloud'] }
       : {})
   });
 }

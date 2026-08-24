@@ -4,7 +4,7 @@ import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
-import { BASE_HOST_HUB } from '@/constants';
+import { BASE_HOST_STUDIO } from '@/constants';
 import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
 
@@ -243,9 +243,9 @@ export const initializeExchangeRate = async () => {
 export const initializeRedirect = async (): Promise<boolean> => {
   if (isOfficial() && !isSubOfficial() && isWechatBrowser()) {
     console.debug('redirect to sub domain with prefix');
-    // redirect from hub.acedata.cloud to dynamic date like 20240802.hub.acedata.cloud
+    // Isolate WeChat traffic on a dated Studio subdomain.
     const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
-    const newUrl = window.location.href.replace(BASE_HOST_HUB, `${date}.${BASE_HOST_HUB}`);
+    const newUrl = window.location.href.replace(BASE_HOST_STUDIO, `${date}.${BASE_HOST_STUDIO}`);
     console.debug('redirect to', newUrl);
     window.location.href = newUrl;
     return true;

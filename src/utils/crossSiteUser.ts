@@ -8,7 +8,7 @@ import { isIframeLoginEnabled } from './loginMethod';
  * Cross-site user-identity guard.
  *
  * Each AceDataCloud sub-site (auth.acedata.cloud, platform.acedata.cloud,
- * hub.acedata.cloud) keeps its own independent session in vuex-persistedstate /
+ * studio.acedata.cloud) keeps its own independent session in vuex-persistedstate /
  * localStorage — they don't share state. So it's possible for the user to be
  * logged in as user A on one site and user B (or nobody) on another.
  *

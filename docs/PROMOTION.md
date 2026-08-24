@@ -4,7 +4,7 @@
 
 Nexior 是一个开源的一站式 AI 消费平台，集成了当下最前沿的 AI 能力——聊天、绘画、音乐、视频、证件照、艺术二维码等 20+ 项服务。无需任何开发经验，无需采购 AI 账号，无需配置支付系统，只需几分钟即可部署属于你自己的 AI 应用，并通过内置的分销系统开始赚钱。
 
-🔗 **在线体验**：[https://hub.acedata.cloud](https://hub.acedata.cloud)
+🔗 **在线体验**：[https://studio.acedata.cloud](https://studio.acedata.cloud)
 📦 **GitHub 开源**：[https://github.com/AceDataCloud/Nexior](https://github.com/AceDataCloud/Nexior)
 
 ---

@@ -9,7 +9,7 @@
 一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,BYOK 或一键直用,MIT 协议。
 
 <p>
-  <a href="https://hub.acedata.cloud">🚀 Live Demo</a> ·
+  <a href="https://studio.acedata.cloud">🚀 Live Demo</a> ·
   <a href="#-quick-start">⚡ Deploy in minutes</a> ·
   <a href="https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior">🔑 Free API key</a> ·
   <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
@@ -38,7 +38,7 @@
 - 💸 **Turn it into a business (optional)** — built-in user accounts, payments, and a referral/distribution system. Zero extra config.
 - 📦 **MIT licensed** — fork it, brand it, ship it.
 
-> Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [hub.acedata.cloud](https://hub.acedata.cloud).
+> Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud).
 
 **Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用,几分钟上线。
 

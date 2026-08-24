@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: hub-frontend
-  name: hub-frontend
+    app: studio-frontend
+  name: studio-frontend
   namespace: acedatacloud-test
 spec:
   replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: hub-frontend
+      app: studio-frontend
   template:
     metadata:
       labels:
-        app: hub-frontend
+        app: studio-frontend
     spec:
       containers:
-        - image: ghcr.io/acedatacloud/hub-frontend:${TAG}
-          name: hub-frontend
+        - image: ghcr.io/acedatacloud/studio-frontend:${TAG}
+          name: studio-frontend
           ports:
             - containerPort: 80
           resources:

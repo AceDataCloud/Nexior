@@ -2,7 +2,7 @@
  * Js JSON string
  */
 
-import { BASE_HOST_HUB } from '@/constants';
+import { BASE_HOST_STUDIO } from '@/constants';
 
 export const isJSONString = (str: string): boolean => {
   try {
@@ -24,22 +24,19 @@ export const isWechatBrowser = (): boolean => {
 /**
  * isOfficial
  *
- * Returns true when the visitor is on one of the first-party Ace Data Cloud
- * hostnames. The Nexior bundle is also served from `studio.acedata.cloud`
- * (a separate ingress that runs the same image independently), so both hosts
- * must be treated as "official" — otherwise white-label / site-tenant logic
- * would incorrectly kick in on studio.acedata.cloud.
+ * Returns true only for Studio's apex and subdomains. Exact suffix matching
+ * avoids treating sibling domains such as `evil-studio.acedata.cloud` as official.
  */
 export const isOfficial = (): boolean => {
-  const host = window.location.host;
-  return host.includes(BASE_HOST_HUB) || host.includes('studio.acedata.cloud');
+  const host = window.location.hostname.toLowerCase();
+  return host === BASE_HOST_STUDIO || host.endsWith(`.${BASE_HOST_STUDIO}`);
 };
 
 /**
  * isSubOfficial
  */
 export const isSubOfficial = (): boolean => {
-  return isOfficial() && window.location.host !== BASE_HOST_HUB;
+  return isOfficial() && window.location.hostname.toLowerCase() !== BASE_HOST_STUDIO;
 };
 
 /**

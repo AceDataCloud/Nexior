@@ -1,8 +1,8 @@
 // No window during the SSG build — default to production endpoints there.
-export const isTest = typeof window !== 'undefined' && window.location.origin === 'https://hub-test.acedata.cloud';
+export const isTest = typeof window !== 'undefined' && window.location.origin === 'https://studio-test.acedata.cloud';
 
 export const BASE_URL_PLATFORM = isTest ? 'https://platform-test.acedata.cloud' : 'https://platform.acedata.cloud';
-export const BASE_URL_HUB = isTest ? 'https://hub-test.acedata.cloud' : 'https://hub.acedata.cloud';
+export const BASE_URL_STUDIO = isTest ? 'https://studio-test.acedata.cloud' : 'https://studio.acedata.cloud';
 export const BASE_URL_AUTH = isTest ? 'https://auth-test.acedata.cloud' : 'https://auth.acedata.cloud';
 export const BASE_URL_API = isTest ? 'https://api-test.acedata.cloud' : 'https://api.acedata.cloud';
 export const BASE_URL_X402 = 'https://x402.acedata.cloud';
@@ -25,6 +25,6 @@ export const WS_URL_CODING_BRIDGE = `${BASE_URL_CODING_BRIDGE.replace(/^http/, '
 export const WS_URL_REALTIME = 'wss://realtime.acedata.cloud/aichat2/realtime';
 
 export const BASE_HOST_PLATFORM = new URL(BASE_URL_PLATFORM).host;
-export const BASE_HOST_HUB = new URL(BASE_URL_HUB).host;
+export const BASE_HOST_STUDIO = new URL(BASE_URL_STUDIO).host;
 export const BASE_HOST_AUTH = new URL(BASE_URL_AUTH).host;
 export const BASE_HOST_API = new URL(BASE_URL_API).host;

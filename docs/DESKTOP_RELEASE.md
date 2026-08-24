@@ -88,7 +88,7 @@ npm run test:e2e:desktop   # Playwright boot smoke (needs a display)
 
 ## Not yet wired
 
-- Desktop download entries on the Hub / marketing site (`src/constants/mobile.ts`
+- Desktop download entries on the Studio / marketing site (`src/constants/mobile.ts`
   has only mobile URLs today).
 - A backend `desktop` platform row for the version gate
   (`appVersionOperator.get('nexior', 'desktop')`).

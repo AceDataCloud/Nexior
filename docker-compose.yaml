@@ -1,8 +1,8 @@
 version: '3'
 services:
-  acedatacloud-hub-frontend:
-    container_name: 'acedatacloud-hub-frontend'
+  acedatacloud-studio-frontend:
+    container_name: 'acedatacloud-studio-frontend'
     build: ./
-    image: 'ghcr.io/acedatacloud/hub-frontend:${BUILD_NUMBER}'
+    image: 'ghcr.io/acedatacloud/studio-frontend:${BUILD_NUMBER}'
     ports:
       - '8080:80'

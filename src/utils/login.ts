@@ -1,5 +1,5 @@
 import store from '@/store';
-import { getBaseUrlAuth, getBaseUrlHub } from './baseUrl';
+import { getBaseUrlAuth, getBaseUrlStudio } from './baseUrl';
 import { getCookie } from 'typescript-cookie';
 
 export const getInviterId = () => {
@@ -22,11 +22,11 @@ export const loginRedirect = ({
   redirect?: string;
   site?: string;
 }) => {
-  const hubBaseUrl = getBaseUrlHub();
+  const studioBaseUrl = getBaseUrlStudio();
   const authBaseUrl = getBaseUrlAuth();
   const inviterId = getInviterId();
   // callback url used to init access token and then redirect back of `redirect`
-  const callbackUrl = `${hubBaseUrl}/auth/callback?redirect=${redirect}`;
+  const callbackUrl = `${studioBaseUrl}/auth/callback?redirect=${redirect}`;
   // redirect to auth service to get access token then redirect back
   // Trailing slash is required: `/auth/login` 301-redirects to a cleartext
   // `http://.../auth/login/`, which iOS ATS blocks (white screen in the native

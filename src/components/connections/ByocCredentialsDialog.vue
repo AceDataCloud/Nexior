@@ -127,7 +127,7 @@ import { ElDialog, ElForm, ElFormItem, ElInput, ElSelect, ElOption, ElButton, El
 import type { FormInstance, FormRules } from 'element-plus';
 import { SecurityIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { desktopBridge } from '@/utils/desktop';
-import { getBaseUrlHub } from '@/utils/baseUrl';
+import { getBaseUrlStudio } from '@/utils/baseUrl';
 import { isDesktop } from '@/utils/surface';
 import {
   IConnectorConnectionMethod,
@@ -300,7 +300,7 @@ export default defineComponent({
         ElMessage.error(this.$t('connection.message.installFailed') as string);
         return;
       }
-      const target = new URL('/console/connectors', getBaseUrlHub());
+      const target = new URL('/console/connectors', getBaseUrlStudio());
       target.searchParams.set('connect', this.item.identifier);
       this.submitting = true;
       try {
