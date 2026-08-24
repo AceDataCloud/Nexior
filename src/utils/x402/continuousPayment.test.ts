@@ -205,6 +205,85 @@ describe('continuous payment Backend orchestration', () => {
     expect(wallet.signTransaction).not.toHaveBeenCalled();
   });
 
+  it('registers an uncertain broadcast after a provider timeout instead of replaying', async () => {
+    vi.useFakeTimers();
+    const wallet = walletApi();
+    const signAndSendTransaction = vi.fn().mockRejectedValue(new Error('RPC timeout'));
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: '', status: 'uncertain' } })
+      .mockResolvedValueOnce({ data: { signature: 'recovered-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    const pending = enableContinuousPayment({
+      token: 'token',
+      walletApi: wallet.api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+    await vi.runAllTimersAsync();
+    await pending;
+    vi.useRealTimers();
+
+    expect(signAndSendTransaction).toHaveBeenCalledTimes(1);
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+    expect(mockedAxios.post.mock.calls[2][1]).toEqual({
+      setup_token: 'setup',
+      action: 'create_delegation',
+      broadcast_uncertain: true
+    });
+    expect(track).toHaveBeenCalledWith('x402_continuous_payment_submit', {
+      action: 'create_delegation:uncertain'
+    });
+  });
+
+  it('does not mark an explicit wallet rejection as an uncertain broadcast', async () => {
+    const wallet = walletApi();
+    const rejected: any = new Error('User rejected the request');
+    rejected.code = 4001;
+    const signAndSendTransaction = vi.fn().mockRejectedValue(rejected);
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      });
+
+    await expect(
+      enableContinuousPayment({
+        token: 'token',
+        walletApi: wallet.api,
+        dailyLimitAtomic: '100000',
+        expiryTs: 1_900_000_000
+      })
+    ).rejects.toThrow('User rejected');
+
+    expect(mockedAxios.post).toHaveBeenCalledTimes(2);
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+  });
+
   it('does not use an installed provider for a different connected wallet', async () => {
     const wallet = walletApi();
     const signAndSendTransaction = vi.fn();
