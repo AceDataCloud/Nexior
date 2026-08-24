@@ -241,3 +241,76 @@ describe('postWithX402', () => {
     expect(mocks.buildSolanaPayment).toHaveBeenCalledTimes(1);
   });
 });
+
+it('exposes a canonical payment error instead of the Axios message', async () => {
+  mocks.post.mockRejectedValueOnce(challengeError(true, [baseRequirement])).mockRejectedValueOnce({
+    isAxiosError: true,
+    message: 'Request failed with status code 402',
+    response: {
+      status: 402,
+      data: {
+        error: 'raw facilitator message',
+        extensions: {
+          acedatacloud: {
+            paymentError: {
+              code: 'insufficient_token_balance',
+              params: { network: 'eip155:8453', payer: 'must-not-copy' },
+              stage: 'verify',
+              retryable: true,
+              charged: false
+            }
+          }
+        }
+      }
+    }
+  });
+  mocks.activeWalletRail.mockReturnValue('base');
+  mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider: { request: vi.fn() } });
+
+  await expect(
+    postWithX402('/openai/images/generations', {}, { wallet, confirm: async () => true })
+  ).rejects.toMatchObject({
+    name: 'X402PaymentError',
+    paymentError: {
+      code: 'insufficient_token_balance',
+      params: { network: 'eip155:8453' },
+      charged: false
+    }
+  });
+});
+
+it('treats a wallet rejection as cancellation without a terminal payment error', async () => {
+  mocks.post.mockRejectedValueOnce(challengeError(true, [baseRequirement]));
+  mocks.activeWalletRail.mockReturnValue('base');
+  mocks.activeEvmWallet.mockReturnValue({
+    address: '0xpayer',
+    provider: { request: vi.fn() }
+  });
+  mocks.signEVMPayment.mockRejectedValueOnce({ code: 4001 });
+
+  await expect(
+    postWithX402('/openai/images/generations', {}, { wallet, confirm: async () => true })
+  ).rejects.toBeInstanceOf(X402PaymentCancelledError);
+});
+
+it('stores canonical errors for the Omni Gemini path', async () => {
+  mocks.post.mockRejectedValueOnce(challengeError(true, [baseRequirement])).mockRejectedValueOnce({
+    isAxiosError: true,
+    response: {
+      status: 402,
+      data: {
+        extensions: {
+          acedatacloud: {
+            paymentError: { code: 'payment_failed', params: {}, stage: 'verify', retryable: false }
+          }
+        }
+      }
+    }
+  });
+  mocks.activeWalletRail.mockReturnValue('base');
+  mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider: { request: vi.fn() } });
+
+  await expect(postWithX402('/gemini/videos', {}, { wallet, confirm: async () => true })).rejects.toMatchObject({
+    name: 'X402PaymentError'
+  });
+});

@@ -91,12 +91,19 @@
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <el-alert
-                  :title="$t('order.state.failed')"
-                  :description="orderFailedReason"
-                  type="error"
+                  :title="orderPaymentError?.title || $t('order.state.failed')"
+                  :type="orderPaymentError?.severity || 'error'"
                   show-icon
                   :closable="false"
-                />
+                  role="alert"
+                >
+                  <template v-if="orderPaymentError" #default>
+                    <p>{{ orderPaymentError.description }}</p>
+                    <p v-if="orderPaymentError.safety" class="x402-error-safety">{{ orderPaymentError.safety }}</p>
+                    <p>{{ orderPaymentError.nextStep }}</p>
+                    <code class="x402-error-code">{{ orderPaymentError.technicalCode }}</code>
+                  </template>
+                </el-alert>
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PENDING">
@@ -272,6 +279,7 @@ import { getPriceString } from '@/utils';
 import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { isX402Challenge, resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
 
 const POLL_INTERVAL_MS = 7000;
 const POLL_INITIAL_DELAY_MS = 2000;
@@ -517,12 +525,9 @@ export default defineComponent({
         this.finalOriginalPrice > 0 || this.finalDiscountedPrice > 0 || this.hasAnyDiscount || this.pendingX402Preview
       );
     },
-    orderFailedReason(): string | undefined {
-      if (!this.order || this.order.state !== OrderState.FAILED) return undefined;
-      const metadata = (this.order.metadata || {}) as Record<string, any>;
-      const lastError = (metadata?.x402?.last_error || {}) as Record<string, any>;
-      const reason = typeof lastError.reason === 'string' ? lastError.reason.trim() : '';
-      return reason || undefined;
+    orderPaymentError(): X402ErrorPresentation | undefined {
+      if (!this.order || this.order.state !== OrderState.FAILED || this.order.pay_way !== PayWay.X402) return undefined;
+      return resolveX402PaymentError({ metadata: this.order.metadata || {} }, this.$t.bind(this), 'order');
     }
   },
   watch: {
@@ -684,7 +689,7 @@ export default defineComponent({
           }
           if (this.payWay === PayWay.X402 && data) {
             const sessionCandidate = data as unknown as Record<string, any>;
-            if (sessionCandidate.accepts) {
+            if (Array.isArray(sessionCandidate.accepts) && sessionCandidate.accepts.length > 0) {
               this.x402Session = sessionCandidate;
             }
           }
@@ -696,7 +701,7 @@ export default defineComponent({
         .catch((error: any) => {
           this.prepaying = false;
           const session = error?.response?.data;
-          if (this.payWay === PayWay.X402 && session) {
+          if (this.payWay === PayWay.X402 && isX402Challenge(error)) {
             this.x402Session = session;
             this.paying = true;
             this.startOrderPolling(POLL_INITIAL_DELAY_MS);

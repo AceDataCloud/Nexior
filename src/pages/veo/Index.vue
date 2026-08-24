@@ -236,7 +236,7 @@ export default defineComponent({
           if (error instanceof X402PaymentCancelledError) return;
           if (showQuotaExhausted(error, 'veo')) return;
           if (this.walletMode) {
-            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+            ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
           } else {
             ElMessage.error(this.$t('veo.message.startTaskFailed'));
           }

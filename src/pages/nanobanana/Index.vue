@@ -216,7 +216,7 @@ export default defineComponent({
           const response = error?.response?.data;
           if (showQuotaExhausted(error, 'nanobanana')) return;
           if (this.walletMode) {
-            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+            ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
           } else {
             ElMessage.error(this.$t('nanobanana.message.startTaskFailed') + (response?.error?.message || ''));
           }

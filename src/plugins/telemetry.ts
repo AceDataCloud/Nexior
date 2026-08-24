@@ -38,10 +38,13 @@ export function instrumentGeneration<T>(service: string, promise: Promise<T>): P
       return data;
     },
     (error) => {
-      track('generation_failed', {
+      const paymentError = error?.name === 'X402PaymentError' ? error?.paymentError : undefined;
+      track(paymentError ? 'x402_payment_failed' : 'generation_failed', {
         service,
         trace_id: error?.response?.data?.trace_id ?? error?.response?.headers?.['x-request-id'],
-        error: error?.response?.data?.error?.message ?? String(error)
+        ...(paymentError
+          ? { error: paymentError.code, stage: paymentError.stage, network: paymentError.params.network }
+          : { error: error?.response?.data?.error?.message ?? String(error) })
       });
       throw error;
     }

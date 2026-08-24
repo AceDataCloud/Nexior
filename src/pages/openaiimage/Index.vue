@@ -255,7 +255,7 @@ export default defineComponent({
           const response = error?.response?.data;
           if (showQuotaExhausted(error, 'openaiimage')) return;
           if (paymentMode === 'wallet') {
-            ElMessage.error(`${this.$t('common.x402Scenario.paymentFailed')} ${error?.message || ''}`.trim());
+            ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
           } else {
             ElMessage.error(this.$t('openaiimage.message.startTaskFailed') + (response?.error?.message || ''));
           }
