@@ -4,7 +4,11 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <showcase-result-tabs service="maestro">
+        <template #tasks>
+          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+        </template>
+      </showcase-result-tabs>
     </template>
   </layout>
 </template>
@@ -15,8 +19,10 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Maestro.vue';
 import ConfigPanel from '@/components/maestro/ConfigPanel.vue';
 import RecentPanel from '@/components/maestro/RecentPanel.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { buildMaestroRequest, maestroOperator } from '@/operators/maestro';
 import { ensureLoggedIn } from '@/utils';
+import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
@@ -43,8 +49,10 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    ShowcaseResultTabs
   },
+  mixins: [showcaseRecreateMixin('maestro')],
   inject: ['initialized'],
   data(): IData {
     return {

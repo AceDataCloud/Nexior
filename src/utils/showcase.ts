@@ -4,6 +4,7 @@ import {
   ROUTE_FISH_TTS_INDEX,
   ROUTE_GROKVIDEO_INDEX,
   ROUTE_KLING_INDEX,
+  ROUTE_MAESTRO_INDEX,
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_PRODUCER_INDEX,
@@ -92,6 +93,13 @@ const definitions: ShowcaseServiceDefinition[] = [
     routeName: ROUTE_FISH_TTS_INDEX,
     defaultName: 'Fish Audio',
     descriptionKey: 'intro.model.fish'
+  },
+  {
+    service: 'maestro',
+    capability: 'maestro',
+    routeName: ROUTE_MAESTRO_INDEX,
+    defaultName: 'Maestro',
+    descriptionKey: 'intro.home.banner.production.description'
   }
 ];
 
@@ -113,7 +121,7 @@ function stringValue(...values: unknown[]): string {
 }
 
 function deriveLayout(request: Record<string, unknown>): ShowcaseLayout {
-  const ratio = stringValue(request.aspect_ratio, request.ratio);
+  const ratio = stringValue(request.aspect_ratio, request.ratio, request.aspect);
   const size = stringValue(request.size);
   const match = ratio.match(/^(\d+):(\d+)$/) || size.match(/^(\d+)x(\d+)$/);
   if (!match) return 'Square';
@@ -129,7 +137,12 @@ const PARAMETER_KEYS = [
   'size',
   'aspect_ratio',
   'ratio',
+  'aspect',
   'resolution',
+  'quality',
+  'scenario',
+  'voice',
+  'langs',
   'duration',
   'output_format',
   'seed',
@@ -141,7 +154,10 @@ const PARAMETER_KEYS = [
 function deriveParameters(request: Record<string, unknown>): Array<{ key: string; value: string }> {
   return PARAMETER_KEYS.flatMap((key) => {
     const value = request[key];
-    if (value == null || value === '' || typeof value === 'object') return [];
+    if (value == null || value === '') return [];
+    if (key === 'langs' && Array.isArray(value) && value.every((item) => typeof item === 'string'))
+      return [{ key, value: value.join(', ') }];
+    if (typeof value === 'object') return [];
     return [{ key, value: String(value) }];
   });
 }
@@ -157,11 +173,13 @@ function deriveMedia(
   layout: ShowcaseLayout;
 } {
   if (type === 'videos' || result.video_url) {
+    const variants = Array.isArray(result.variants) ? result.variants.map(objectValue) : [];
+    const layout = deriveLayout(request);
     return {
       mediaType: 'Video',
       posterUrl: stringValue(result.last_frame_url, result.cover_url),
-      previewUrl: stringValue(result.video_url),
-      layout: deriveLayout(request) === 'Square' ? 'Landscape' : deriveLayout(request)
+      previewUrl: stringValue(result.video_url, variants[0]?.output_url),
+      layout: layout === 'Square' && !request.aspect ? 'Landscape' : layout
     };
   }
   if (type === 'audios' || result.audio_url || result.file_url) {
@@ -187,7 +205,7 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
   const response = objectValue(item.data.response);
   const result = firstResult(response);
   const media = deriveMedia(item.data.type, request, result);
-  if (!media.posterUrl) return undefined;
+  if (!media.posterUrl || (media.mediaType !== 'Image' && !media.previewUrl)) return undefined;
   const defaultIcon = CAPABILITY_ICONS[definition.capability];
   const capabilityPresentation = resolveCapabilityPresentation(
     site,

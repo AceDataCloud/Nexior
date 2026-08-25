@@ -6,7 +6,8 @@ const site = {
   features: {
     nanobanana: { enabled: true },
     seedance: { enabled: true },
-    suno: { enabled: true }
+    suno: { enabled: true },
+    maestro: { enabled: true }
   }
 } as any;
 
@@ -84,5 +85,93 @@ describe('resolveShowcase', () => {
       posterUrl: 'cover.jpg',
       previewUrl: 'audio.mp3'
     });
+  });
+
+  it('derives a Maestro video from variants, cover, aspect, and request metadata', () => {
+    const source = {
+      ...item(
+        'maestro',
+        'videos',
+        {
+          action: 'generate',
+          prompt: 'Explain aerodynamic downforce',
+          langs: ['en'],
+          aspect: '9:16',
+          duration: 20,
+          quality: 'lite',
+          scenario: 'narrated',
+          style: 'industrial',
+          voice: 'documentary-male'
+        },
+        {
+          success: true,
+          data: {
+            cover_url: 'poster.webp',
+            variants: [{ lang: 'en', aspect: '9:16', kind: 'video', output_url: 'video.mp4' }]
+          }
+        }
+      ),
+      data: {
+        type: 'videos',
+        request: {
+          action: 'generate',
+          prompt: 'Explain aerodynamic downforce',
+          langs: ['en'],
+          aspect: '9:16',
+          duration: 20,
+          quality: 'lite',
+          scenario: 'narrated',
+          style: 'industrial',
+          voice: 'documentary-male'
+        },
+        response: {
+          success: true,
+          data: {
+            cover_url: 'poster.webp',
+            variants: [{ lang: 'en', aspect: '9:16', kind: 'video', output_url: 'video.mp4' }]
+          }
+        },
+        presentation: { title: 'Air at Speed', description: 'A concise engineering explainer.' }
+      }
+    };
+    const result = resolveShowcase(source, site);
+    expect(result).toMatchObject({
+      capability: 'maestro',
+      routeName: 'maestro-index',
+      mediaType: 'Video',
+      posterUrl: 'poster.webp',
+      previewUrl: 'video.mp4',
+      layout: 'Portrait',
+      title: 'Air at Speed'
+    });
+    expect(result?.parameters).toEqual(
+      expect.arrayContaining([
+        { key: 'langs', value: 'en' },
+        { key: 'aspect', value: '9:16' },
+        { key: 'quality', value: 'lite' },
+        { key: 'scenario', value: 'narrated' },
+        { key: 'voice', value: 'documentary-male' }
+      ])
+    );
+  });
+
+  it('rejects Maestro videos without both a poster and a playable variant', () => {
+    expect(
+      resolveShowcase(
+        item('maestro', 'videos', { prompt: 'Missing video', aspect: '16:9' }, { data: { cover_url: 'poster.webp' } }),
+        site
+      )
+    ).toBeUndefined();
+    expect(
+      resolveShowcase(
+        item(
+          'maestro',
+          'videos',
+          { prompt: 'Missing poster', aspect: '16:9' },
+          { data: { variants: [{ output_url: 'video.mp4' }] } }
+        ),
+        site
+      )
+    ).toBeUndefined();
   });
 });
