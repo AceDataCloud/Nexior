@@ -75,6 +75,7 @@
 </template>
 
 <script lang="ts">
+import { ensureUploadAuthenticated } from '@/utils/uploadAuthGuard';
 import {
   ConfirmIcon,
   DocsIcon,
@@ -245,6 +246,7 @@ export default defineComponent({
         ElMessage.warning(this.$t('fish.message.recordingTooShort'));
         return;
       }
+      if (!ensureUploadAuthenticated()) return;
       this.uploading = true;
       try {
         const token = this.$store.state.token?.access;

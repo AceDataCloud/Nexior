@@ -1,6 +1,10 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
+
+const auth = vi.hoisted(() => ({ allowed: true, ensure: vi.fn(() => auth.allowed) }));
+
+vi.mock('@/utils/login', () => ({ ensureLoggedIn: auth.ensure }));
 import { mount } from '@vue/test-utils';
 import { ElUpload } from 'element-plus';
 import { dropUploadMixin } from './dropUploadMixin';
@@ -30,6 +34,8 @@ const Host = defineComponent({
 });
 
 afterEach(() => {
+  auth.allowed = true;
+  auth.ensure.mockClear();
   isDraggingFiles.value = false;
   activeDropTargetId.value = null;
   document.body.innerHTML = '';
@@ -101,6 +107,29 @@ describe('dropUploadMixin (mounted)', () => {
     const passed = spy.mock.calls[0][0] as File;
     expect(passed.name.endsWith('.png')).toBe(true);
 
+    wrapper.unmount();
+  });
+
+  it('starts login instead of forwarding a dropped file when signed out', async () => {
+    auth.allowed = false;
+    const wrapper = mount(Host, { attachTo: document.body });
+    await nextTick();
+    const uploader: any = (wrapper.vm as any).$refs.uploader;
+    const spy = vi.spyOn(uploader, 'handleStart');
+    const file = makeFile();
+    const event = new Event('drop', { bubbles: true, cancelable: true }) as any;
+    event.dataTransfer = {
+      types: ['Files'],
+      files: [file],
+      items: [{ kind: 'file', getAsFile: () => file }]
+    };
+    Object.defineProperty(event, 'target', { value: wrapper.element });
+
+    document.dispatchEvent(event);
+    await nextTick();
+
+    expect(auth.ensure).toHaveBeenCalledOnce();
+    expect(spy).not.toHaveBeenCalled();
     wrapper.unmount();
   });
 

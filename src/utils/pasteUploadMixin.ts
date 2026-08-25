@@ -13,6 +13,7 @@
 import type { ComponentPublicInstance } from 'vue';
 import { registerPasteUploadTarget } from '@/utils/pasteUpload';
 import { forwardFileToUploader } from '@/utils/uploadShared';
+import { ensureLoggedIn } from '@/utils/login';
 
 interface IPasteMixinThis extends ComponentPublicInstance {
   pasteAccept?: string;
@@ -34,6 +35,7 @@ export const pasteUploadMixin = {
       accept: this.pasteAccept,
       el,
       handleFile: (file: File) => {
+        if (!ensureLoggedIn()) return;
         forwardFileToUploader(this.$refs?.uploader, file);
       }
     });

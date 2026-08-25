@@ -101,6 +101,7 @@
 </template>
 
 <script lang="ts">
+import { ensureUploadAuthenticated } from '@/utils/uploadAuthGuard';
 import { MicrophoneIcon, StopIcon, SuccessIcon, UndoIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
@@ -323,6 +324,7 @@ export default defineComponent({
     },
     async uploadRecording() {
       if (!this.recordedBlob) return;
+      if (!ensureUploadAuthenticated()) return;
       this.uploadingRecord = true;
       try {
         const formData = new FormData();
