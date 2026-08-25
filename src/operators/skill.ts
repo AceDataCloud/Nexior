@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { httpClient, optionalHttpClient } from './common';
 import { getBaseUrlAuth } from '@/utils';
 
 /**
@@ -197,15 +197,15 @@ class SkillCatalogOperator {
   key = 'skills';
 
   async list(params: ISkillCatalogListParams = {}): Promise<AxiosResponse<ISkillCatalogPage>> {
-    return httpClient.get(`/${this.key}/`, { ...authApi(), params });
+    return optionalHttpClient.get(`/${this.key}/`, { ...authApi(), params });
   }
 
   async get(id: string): Promise<AxiosResponse<ISkillCatalogItem>> {
-    return httpClient.get(`/${this.key}/${id}/`, authApi());
+    return optionalHttpClient.get(`/${this.key}/${id}/`, authApi());
   }
 
   async categories(): Promise<AxiosResponse<{ namespaces: ISkillCatalogFacet[] }>> {
-    return httpClient.get(`/${this.key}/categories/`, authApi());
+    return optionalHttpClient.get(`/${this.key}/categories/`, authApi());
   }
 
   /**

@@ -26,6 +26,8 @@ import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { initializeSiteAnalytics } from '@/utils/siteAnalytics';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
+import { configureRequestAuth, installServiceRequestAuthGuard, isAuthTransitionError } from '@/utils/requestAuth';
+import { ensureLoggedIn } from '@/utils/login';
 import { initializeLocalizedBootstrap } from '@/utils/localizedBootstrap';
 import {
   initializeCookies,
@@ -81,6 +83,14 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   }
 
   // ---- client-only bootstrap (formerly module top-level + main()) ----
+  configureRequestAuth({
+    getAccountToken: () => store.state.token?.access,
+    isAuthenticated: () => store.getters.authenticated,
+    triggerLogin: () => {
+      ensureLoggedIn();
+    }
+  });
+  installServiceRequestAuthGuard();
   syncFeaturesFromUrl();
   initializeChunkLoadErrorHandler();
 
@@ -155,6 +165,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   initializeFavicon();
 
   window.addEventListener('unhandledrejection', (event) => {
+    if (isAuthTransitionError(event.reason)) return;
     captureError(event.reason, { source: 'unhandledrejection' });
   });
 

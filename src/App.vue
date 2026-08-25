@@ -32,7 +32,8 @@ import { Browser } from '@capacitor/browser';
 import { ElMessage } from 'element-plus';
 import { isNative, isDesktop } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
-import { currentSiteOrigin } from '@/utils';
+import { currentSiteOrigin, ensureLoggedIn } from '@/utils';
+import { installUploadAuthGuard } from '@/utils/uploadAuthGuard';
 import { parseInviterFromDeepLink, writeInviterCookie } from '@/utils/attribution';
 import { exchangeSsoCode } from '@/utils/auth/exchangeSsoCode';
 import { canTopUpQuota, closeQuotaExhausted, getQuotaPurchaseRoute, quotaExhaustedState } from '@/utils/quotaExhausted';
@@ -75,7 +76,8 @@ export default defineComponent({
       offAuthCb: null as null | (() => void),
       offAuthExpired: null as null | (() => void),
       offSiteWatch: null as null | (() => void),
-      offCredentialWatch: null as null | (() => void)
+      offCredentialWatch: null as null | (() => void),
+      offUploadAuthGuard: null as null | (() => void)
     };
   },
   computed: {
@@ -104,6 +106,8 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.offUploadAuthGuard = installUploadAuthGuard(document, ensureLoggedIn);
+
     // Listen for deep link callbacks from the native (Capacitor) OAuth flow.
     if (isNative()) {
       CapApp.addListener('appUrlOpen', async ({ url }) => {
@@ -189,6 +193,7 @@ export default defineComponent({
     this.offAuthExpired?.();
     this.offSiteWatch?.();
     this.offCredentialWatch?.();
+    this.offUploadAuthGuard?.();
   },
   methods: {
     onQuotaVisibility(visible: boolean) {

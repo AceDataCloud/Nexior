@@ -1,38 +1,42 @@
 import store from '@/store';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform } from '@/utils/baseUrl';
+import { ensureLoggedIn } from '@/utils/login';
+import { requireAccountToken } from '@/utils/requestAuth';
 import { trackApiFailure } from '@/plugins/telemetry';
 import { createHttpClient } from '@acedatacloud/core/http';
+import type { AxiosInstance } from 'axios';
 import qs from 'qs';
 import { getCookie } from 'typescript-cookie';
 import { v4 as uuidv4 } from 'uuid';
 
-// The axios instance + interceptor contract now lives in @acedatacloud/core;
-// this configures it with Nexior's token/fingerprint/user sources and 401
-// behavior. Header set (x-request-id / Authorization / accept-language /
-// x-fingerprint / x-user-id) and 4xx/5xx-to-RUM are handled inside the factory.
-const httpClient = createHttpClient({
-  baseURL: `${getBaseUrlPlatform()}/api/v1`,
-  // Without a timeout a stalled mobile connection leaves the promise pending
-  // forever (e.g. SSO code exchange / getUser after Apple login). Fail after
-  // 20s so the caller's catch runs and RUM captures it.
-  timeout: 20000,
-  getToken: () => store.getters.token?.access,
-  getUserId: () => store.getters.user?.id,
-  getFingerprint: () => store.getters.fingerprint,
-  getLocale: () => getCookie('LOCALE'),
-  paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }),
-  generateRequestId: () => uuidv4(),
-  // Fire-and-forget (not awaited) to preserve the original timing: the caller's
-  // rejection runs without waiting for logout to complete.
-  onUnauthorized: () => {
-    // Guests (no token) may browse freely — a 401 on a guest request is
-    // expected (passive catalog/bootstrap calls) and must NOT bounce them to
-    // the login page. Only a logged-in user whose token expired gets logged out.
-    if (store.getters.authenticated) {
-      store.dispatch('logout');
-    }
-  },
-  onApiFailure: trackApiFailure
-});
+type AuthMode = 'required' | 'optional' | 'none';
 
-export { httpClient };
+const createClient = (mode: AuthMode): AxiosInstance => {
+  const client = createHttpClient({
+    baseURL: `${getBaseUrlPlatform()}/api/v1`,
+    timeout: 20000,
+    getToken: () => (mode === 'none' ? undefined : store.getters.token?.access),
+    getUserId: () => (mode === 'none' ? undefined : store.getters.user?.id),
+    getFingerprint: () => store.getters.fingerprint,
+    getLocale: () => getCookie('LOCALE'),
+    paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }),
+    generateRequestId: () => uuidv4(),
+    onUnauthorized: () => {
+      if (mode !== 'required') return;
+      if (store.getters.authenticated) store.dispatch('logout');
+      else ensureLoggedIn();
+    },
+    onApiFailure: trackApiFailure
+  });
+  if (mode === 'required') {
+    client.interceptors.request.use((config) => {
+      requireAccountToken();
+      return config;
+    });
+  }
+  return client;
+};
+
+export const httpClient = createClient('required');
+export const optionalHttpClient = createClient('optional');
+export const anonymousHttpClient = createClient('none');

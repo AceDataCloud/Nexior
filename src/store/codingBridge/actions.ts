@@ -674,7 +674,7 @@ export const connect = ({
   }
   socket?.close();
   commit('setConnection', 'connecting');
-  socket = new CodingBridgeSocket(token, {
+  socket = new CodingBridgeSocket({
     onOpen: () => {
       commit('setConnection', 'connected');
       // A dropped socket is the only way the relay can have restarted (it is

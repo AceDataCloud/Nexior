@@ -138,8 +138,7 @@ export const evaluateUserIdGuard = (to: RouteLocationNormalized): UserIdGuardDec
 
   // Mismatch (or not logged in). Clear local session so the next render does
   // not flash the wrong identity, then bounce through the normal SSO flow.
-  store.dispatch('resetToken');
-  store.dispatch('resetUser');
+  store.dispatch('resetAll');
   const redirect = buildRedirectWithoutUserId(to);
   if (isIframeLoginEnabled()) {
     store.dispatch('login', { redirect });

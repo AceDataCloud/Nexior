@@ -16,9 +16,15 @@ import { getBaseUrlAuth, getBaseUrlStudio, getInviterId, loginRedirect } from '@
 import { isIframeLoginEnabled } from '@/utils/loginMethod';
 import { isNative, isDesktop } from '@/utils/surface';
 
-export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
+export const resetAll = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
   commit('resetUser');
+  commit('setApplications', undefined);
+
+  const { getRegisteredLazyModules } = await import('@/store/lazy');
+  for (const name of getRegisteredLazyModules()) {
+    await dispatch(`${name}/resetAll`);
+  }
 };
 
 export const resetUser = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -243,6 +249,7 @@ export const login = async (
   } else {
     commit('setAuth', {
       flow: 'redirect',
+      visible: true,
       redirect,
       action: 'login'
     });
@@ -257,15 +264,6 @@ export const login = async (
 
 export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
   await dispatch('resetAll');
-  // Per-app store modules are registered lazily (see `src/store/lazy.ts` and
-  // the router's `beforeEach` hook). Only fan out the reset to modules that
-  // are actually registered in the running session — there is nothing to
-  // reset for a module the user never opened, and dispatching to an
-  // unregistered module would emit a Vuex warning.
-  const { getRegisteredLazyModules } = await import('@/store/lazy');
-  for (const name of getRegisteredLazyModules()) {
-    await dispatch(`${name}/resetAll`);
-  }
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // On native AND desktop, show the in-app login popup instead of navigating
     // to an external auth URL (which on native opens Chrome → localhost, and on

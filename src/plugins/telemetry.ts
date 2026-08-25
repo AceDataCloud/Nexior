@@ -11,6 +11,7 @@
  *   App:     Ace Data Cloud (应用ID 154475, business system rum-vK9sZMBo)
  */
 import { createTelemetry } from '@acedatacloud/core/telemetry';
+import { isAuthTransitionError } from '@/utils/requestAuth';
 
 const PROJECT_ID = 'LlKeKIj1mDzkYrY6na';
 const HOST_URL = 'https://rumt-zh.com';
@@ -38,6 +39,7 @@ export function instrumentGeneration<T>(service: string, promise: Promise<T>): P
       return data;
     },
     (error) => {
+      if (isAuthTransitionError(error)) throw error;
       const paymentError = error?.name === 'X402PaymentError' ? error?.paymentError : undefined;
       track(paymentError ? 'x402_payment_failed' : 'generation_failed', {
         service,

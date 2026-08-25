@@ -90,17 +90,8 @@ import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
 import { handleChunkLoadError } from '@/utils/chunkLoadError';
 import { loginRedirect } from '@/utils/login';
 import { isNative, isDesktop } from '@/utils/surface';
+import { requiresLogin } from './authPolicy';
 import { trackSitePageView } from '@/utils/siteAnalytics';
-
-// Sections that require a logged-in user — guests hitting these are sent to the
-// login flow (web: redirect preserving the target; native/desktop: in-app
-// popup). Everything else (AI service pages, home) is browsable as a guest;
-// login is deferred until they actually start an operation. Keep this list in
-// sync when adding account/billing-style routes.
-const AUTH_REQUIRED_PREFIXES = ['/console', '/distribution', '/settings', '/coding-bridge', '/poivelle'];
-
-const requiresLogin = (path: string): boolean =>
-  AUTH_REQUIRED_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {

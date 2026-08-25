@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { httpClient, optionalHttpClient } from './common';
 import { ISite, ISiteDetailResponse, ISiteListResponse } from '@/models';
 
 export interface ISiteQuery {
@@ -15,17 +15,17 @@ class SiteService {
   key = 'sites';
 
   async initialize(data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
-    return await httpClient.post(`/${this.key}/initialize/`, data);
+    return await optionalHttpClient.post(`/${this.key}/initialize/`, data);
   }
 
   async getAll(query: ISiteQuery): Promise<AxiosResponse<ISiteListResponse>> {
-    return await httpClient.get(`/${this.key}/`, {
+    return await optionalHttpClient.get(`/${this.key}/`, {
       params: query
     });
   }
 
   async get(id: string): Promise<AxiosResponse<ISiteDetailResponse>> {
-    return await httpClient.get(`/${this.key}/${id}`);
+    return await optionalHttpClient.get(`/${this.key}/${id}`);
   }
 
   async create(data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {

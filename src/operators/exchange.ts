@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { anonymousHttpClient } from './common';
 import { IExchangeRateRequest, IExchangeRateResponse } from '@/models';
 
 class ExchangeOperator {
   async rate(payload: IExchangeRateRequest): Promise<AxiosResponse<IExchangeRateResponse>> {
-    return httpClient.post('/exchange-rate', payload);
+    return anonymousHttpClient.post('/exchange-rate', payload);
   }
 }
 

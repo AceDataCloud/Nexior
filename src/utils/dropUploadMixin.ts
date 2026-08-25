@@ -21,6 +21,7 @@
 import type { ComponentPublicInstance } from 'vue';
 import { watch, type WatchStopHandle } from 'vue';
 import { forwardFileToUploader, renameForDedup } from '@/utils/uploadShared';
+import { ensureLoggedIn } from '@/utils/login';
 import { activeDropTargetId, isDraggingFiles, registerDropUploadTarget } from '@/utils/dropUpload';
 import i18n from '@/i18n';
 
@@ -137,7 +138,7 @@ export const dropUploadMixin = {
         isDisabled: () => Boolean(this.dropDisabled),
         getEl: () => (this.$el instanceof HTMLElement ? this.$el : null),
         handleFile: (file: File) => {
-          if (this.dropDisabled) return;
+          if (this.dropDisabled || !ensureLoggedIn()) return;
           forwardFileToUploader(this.$refs?.uploader, renameForDedup(file));
         }
       });

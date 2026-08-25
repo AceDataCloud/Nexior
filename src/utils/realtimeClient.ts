@@ -1,4 +1,5 @@
 import { REALTIME_DEFAULT_VOICE, REALTIME_SAMPLE_RATE, WS_URL_REALTIME } from '@/constants';
+import { requireServiceToken } from './requestAuth';
 
 export type RealtimeStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
 
@@ -84,7 +85,7 @@ export class RealtimeClient {
     // sanitizer drops the required session.type and GA nests voice under audio.output.
     const url =
       `${WS_URL_REALTIME}?model=${encodeURIComponent(this.model)}` + `&voice=${encodeURIComponent(this.voice)}`;
-    this.ws = new WebSocket(url, ['realtime', `acedata-token.${this.token}`]);
+    this.ws = new WebSocket(url, ['realtime', `acedata-token.${requireServiceToken(this.token)}`]);
 
     this.ws.onopen = () => {
       if (this.disposed) {

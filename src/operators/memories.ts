@@ -2,11 +2,12 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { BASE_URL_API } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
+import { serviceAuthHeaders } from '@/utils/requestAuth';
 
 function headers(token: string) {
   const origin = currentSiteOrigin();
   return {
-    Authorization: `Bearer ${token}`,
+    ...serviceAuthHeaders(token),
     'Content-Type': 'application/json',
     ...(origin ? { 'x-site-origin': origin } : {})
   };

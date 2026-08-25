@@ -594,6 +594,7 @@ import {
   ElMessage
 } from 'element-plus';
 import qs from 'qs';
+import { requireAccountToken } from '@/utils/requestAuth';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { getBaseUrlPlatform } from '@/utils';
 import { getX402CopyableTransaction, getX402UsagePayment, isX402Usage, omitX402Metadata } from '@/utils/usagePayment';
@@ -1422,7 +1423,7 @@ export default defineComponent({
 
       this.exporting = true;
       try {
-        const response = await fetch(url, { headers: { authorization: `Bearer ${token}` } });
+        const response = await fetch(url, { headers: { authorization: `Bearer ${requireAccountToken()}` } });
         if (!response.ok || !response.body) {
           throw new Error(`export failed: ${response.status}`);
         }

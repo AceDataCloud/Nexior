@@ -12,6 +12,7 @@ import {
 } from '@/models';
 import { BASE_URL_API, BASE_URL_X402, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
+import { requireServiceToken } from '@/utils/requestAuth';
 import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
 import { scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
@@ -52,10 +53,11 @@ class ChatOperator {
         }
         const continuous = walletMode && continuousPaymentActive();
         if (walletMode && !continuous) throw new BaseError(402, 'payment_authorization_required', '');
+        const token = continuous ? options.token : requireServiceToken(options.token);
         const response = await fetch(`${continuous ? BASE_URL_X402 : BASE_URL_API}/aichat2/conversations`, {
           method: 'POST',
           headers: {
-            authorization: `Bearer ${options.token}`,
+            authorization: `Bearer ${token}`,
             ...(continuous ? continuousPaymentHeaders(options.token) : {}),
             'Content-Type': 'application/json',
             Accept: 'text/event-stream',

@@ -101,6 +101,8 @@
 </template>
 
 <script lang="ts">
+import { ensureUploadAuthenticated } from '@/utils/uploadAuthGuard';
+import { requireAccountToken } from '@/utils/requestAuth';
 import { MicrophoneIcon, StopIcon, SuccessIcon, UndoIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
@@ -323,6 +325,7 @@ export default defineComponent({
     },
     async uploadRecording() {
       if (!this.recordedBlob) return;
+      if (!ensureUploadAuthenticated()) return;
       this.uploadingRecord = true;
       try {
         const formData = new FormData();
@@ -331,7 +334,7 @@ export default defineComponent({
         const resp = await fetch(this.uploadUrl, {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${this.$store.state.token.access}`
+            Authorization: `Bearer ${requireAccountToken()}`
           },
           body: formData
         });

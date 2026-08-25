@@ -75,6 +75,8 @@
 </template>
 
 <script lang="ts">
+import { ensureUploadAuthenticated } from '@/utils/uploadAuthGuard';
+import { requireAccountToken } from '@/utils/requestAuth';
 import {
   ConfirmIcon,
   DocsIcon,
@@ -245,9 +247,10 @@ export default defineComponent({
         ElMessage.warning(this.$t('fish.message.recordingTooShort'));
         return;
       }
+      if (!ensureUploadAuthenticated()) return;
       this.uploading = true;
       try {
-        const token = this.$store.state.token?.access;
+        const token = requireAccountToken();
         const ext = this.extensionForMime(this.recordedBlob.type || '');
         const file = new File([this.recordedBlob], `recording-${Date.now()}.${ext}`, {
           type: this.recordedBlob.type || 'audio/webm'
