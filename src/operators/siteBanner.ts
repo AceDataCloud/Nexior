@@ -1,5 +1,5 @@
 import type { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { anonymousHttpClient, httpClient } from './common';
 import type {
   ISiteBanner,
   ISiteBannerCreateRequest,
@@ -24,7 +24,7 @@ class SiteBannerOperator {
   }
 
   async getPublic(origin: string): Promise<AxiosResponse<ISiteBanner[]>> {
-    return await httpClient.get(`/${this.key}/public/`, { params: { origin } });
+    return await anonymousHttpClient.get(`/${this.key}/public/`, { params: { origin } });
   }
 
   async create(data: ISiteBannerCreateRequest): Promise<AxiosResponse<ISiteBannerDetailResponse>> {

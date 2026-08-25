@@ -103,6 +103,7 @@
 </template>
 
 <script lang="ts">
+import { requireServiceToken } from '@/utils/requestAuth';
 import {
   CodeIcon,
   DocsIcon,
@@ -306,7 +307,7 @@ export default defineComponent({
         const res = await fetch(this.url, {
           method: (this.method || 'POST').toUpperCase(),
           headers: {
-            authorization: `Bearer ${this.token}`,
+            authorization: `Bearer ${requireServiceToken(this.token)}`,
             'content-type': 'application/json'
           },
           body: JSON.stringify(this.body || {})

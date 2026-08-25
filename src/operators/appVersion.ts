@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { anonymousHttpClient } from './common';
 
 export interface IAppVersionResponse {
   app: string;
@@ -12,7 +12,7 @@ export interface IAppVersionResponse {
 
 class AppVersionOperator {
   async get(app: string, platform: string): Promise<AxiosResponse<IAppVersionResponse>> {
-    return httpClient.get('/app-version/', {
+    return anonymousHttpClient.get('/app-version/', {
       params: { app, platform },
       timeout: 5000
     });

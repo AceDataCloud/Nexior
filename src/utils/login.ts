@@ -54,6 +54,8 @@ export const ensureLoggedIn = (): boolean => {
   if (store.getters.authenticated) {
     return true;
   }
-  store.dispatch('login');
+  if (!store.state.auth?.visible) {
+    store.dispatch('login');
+  }
   return false;
 };

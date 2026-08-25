@@ -249,6 +249,7 @@ export const login = async (
   } else {
     commit('setAuth', {
       flow: 'redirect',
+      visible: true,
       redirect,
       action: 'login'
     });

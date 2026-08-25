@@ -137,6 +137,7 @@ import { supportsClientTools, isDesktop, isWeb } from '@/utils/surface';
 import { openAuthorizeFlow } from '@/utils/connections/authorizeFlow';
 import { withAuthFrontendSession } from '@/utils/authHandoff';
 import { ensureLoggedIn } from '@/utils/login';
+import { requireAccountToken } from '@/utils/requestAuth';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
 import {
@@ -1169,8 +1170,7 @@ export default defineComponent({
      */
     async _hostToolResultImage(image: string): Promise<string | null> {
       if (!image || !image.startsWith('data:')) return image || null;
-      const accessToken = this.$store.getters.token?.access;
-      if (!accessToken) return null;
+      const accessToken = requireAccountToken();
       try {
         const blob = await (await fetch(image)).blob();
         const ext = (blob.type.split('/')[1] || 'png').split(';')[0];

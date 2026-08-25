@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
+import { anonymousHttpClient } from './common';
 
 export interface IAttributionResolveRequest {
   // Token round-tripped via Play Install Referrer (Android) or clipboard (iOS).
@@ -14,12 +14,12 @@ export interface IAttributionResolveResponse {
 
 class AttributionOperator {
   /**
-   * First-launch deferred-deep-link resolution. The shared httpClient already
+   * First-launch deferred-deep-link resolution. The shared anonymousHttpClient already
    * attaches `x-fingerprint`, so the backend can fall back to a probabilistic
    * IP/UA match when no `click_id` is available (iOS without clipboard token).
    */
   async resolve(payload: IAttributionResolveRequest): Promise<AxiosResponse<IAttributionResolveResponse>> {
-    return httpClient.post('/attribution/resolve/', payload);
+    return anonymousHttpClient.post('/attribution/resolve/', payload);
   }
 }
 

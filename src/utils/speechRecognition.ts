@@ -1,4 +1,5 @@
 import { BASE_URL_API } from '@/constants';
+import { requireServiceToken } from './requestAuth';
 
 export type SpeechRecognitionErrorCode =
   | 'permission-denied'
@@ -74,7 +75,7 @@ async function transcribeAudio(audio: Blob, fileName: string, language: string, 
 
   const response = await fetch(`${BASE_URL_API}/v1/audio/transcriptions`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${requireServiceToken(token)}` },
     body: form
   });
   if (!response.ok) throw new Error(`transcription request failed (${response.status})`);

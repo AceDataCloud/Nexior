@@ -11,6 +11,7 @@ import {
   CB_RECONNECT_MIN_MS,
   CB_RECONNECT_MAX_MS
 } from '@/constants';
+import { requireAccountToken } from './requestAuth';
 import { ICodingBridgeNode } from '@/models';
 
 export interface ICodingBridgeSocketHandlers {
@@ -74,8 +75,8 @@ export class CodingBridgeSocket {
   private reconnectTimer: ReturnType<typeof setTimeout> | undefined;
   private closedByUser = false;
 
-  constructor(token: string, handlers: ICodingBridgeSocketHandlers) {
-    this.token = token;
+  constructor(handlers: ICodingBridgeSocketHandlers) {
+    this.token = requireAccountToken();
     this.handlers = handlers;
   }
 

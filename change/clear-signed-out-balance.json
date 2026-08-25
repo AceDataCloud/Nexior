@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Clear persisted account state after sign-out and require login before protected guest operations such as uploads.",
+  "comment": "Keep signed-out account state consistent and enforce authentication at protected request boundaries.",
   "packageName": "@acedatacloud/nexior",
   "email": "dev@acedata.cloud",
   "dependentChangeType": "patch"
