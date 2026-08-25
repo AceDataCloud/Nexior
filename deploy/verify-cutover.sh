@@ -70,7 +70,8 @@ rollback() {
 }
 
 roll_stage() {
-  local tag=$1 fallback=$2 expected="$IMAGE_REPOSITORY:$tag"
+  local tag=$1 fallback=$2
+  local expected="$IMAGE_REPOSITORY:$tag"
   apply_stage "$tag"
   if ! wait_converged "$DEPLOYMENT" "$SERVICE" "$expected"; then
     rollback "$fallback"
