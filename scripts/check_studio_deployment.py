@@ -36,3 +36,7 @@ assert workflow.index('preflight-release.sh') < workflow.index('--target bridge'
 print('Studio deployment contract OK')
 ci = (ROOT / '.github/workflows/check-pr.yaml').read_text()
 assert 'test-compatible-images.sh studio-frontend' in ci
+
+prepare = (ROOT / 'deploy/prepare-previous-assets.sh').read_text()
+assert 'docker pull "$PREVIOUS_IMAGE"' in prepare
+assert 'kubectl exec' not in prepare
