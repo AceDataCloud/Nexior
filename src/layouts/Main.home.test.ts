@@ -3,7 +3,17 @@ import { shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Main from './Main.vue';
 
-const mountMain = (appName?: string) => {
+const scenario = vi.hoisted(() => ({ mode: 'credits' as 'credits' | 'wallet', walletAvailable: true }));
+
+vi.mock('@/utils/x402/scenarioPayment', () => ({
+  isScenarioX402Supported: () => true,
+  scenarioPaymentState: () => scenario
+}));
+
+const mountMain = (
+  appName?: string,
+  options: { access?: string; application?: { id: string; remaining_amount: number } } = {}
+) => {
   const dispatch = vi.fn();
   const wrapper = shallowMount(Main, {
     global: {
@@ -17,9 +27,17 @@ const mountMain = (appName?: string) => {
         $route: { meta: appName ? { appName } : {} },
         $store: {
           state: {
-            token: {},
+            token: { access: options.access },
             applications: [],
-            ...(appName ? { [appName]: { applications: [], status: {} } } : {})
+            ...(appName
+              ? {
+                  [appName]: {
+                    application: options.application,
+                    applications: options.application ? [options.application] : [],
+                    status: {}
+                  }
+                }
+              : {})
           },
           getters: { user: {} },
           dispatch,
@@ -35,6 +53,8 @@ const mountMain = (appName?: string) => {
 describe('Main layout shell-only home', () => {
   beforeEach(() => {
     vi.useFakeTimers();
+    scenario.mode = 'credits';
+    scenario.walletAvailable = true;
   });
 
   it('renders routed content and Navigator without application controls', async () => {
@@ -65,5 +85,34 @@ describe('Main layout shell-only home', () => {
     expect((wrapper.vm as any).hasApplicationContext).toBe(true);
     expect(dispatch).not.toHaveBeenCalledWith('undefined/getApplications');
     expect((wrapper.vm as any).balanceTimer).not.toBe(0);
+  });
+
+  it('does not show persisted credit balance to a signed-out visitor', async () => {
+    const { wrapper } = mountMain('nanobanana', {
+      application: { id: 'stale-app', remaining_amount: 44.79 }
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findComponent({ name: 'ApplicationStatus' }).exists()).toBe(false);
+  });
+
+  it('shows the current credit balance to an authenticated user', async () => {
+    const { wrapper } = mountMain('nanobanana', {
+      access: 'valid-access-token',
+      application: { id: 'current-app', remaining_amount: 44.79 }
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findComponent({ name: 'ApplicationStatus' }).exists()).toBe(true);
+  });
+
+  it('keeps the guest wallet entry available in wallet mode', async () => {
+    scenario.mode = 'wallet';
+    const { wrapper } = mountMain('nanobanana', {
+      application: { id: 'stale-app', remaining_amount: 44.79 }
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findComponent({ name: 'ApplicationStatus' }).exists()).toBe(true);
   });
 });

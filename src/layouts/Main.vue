@@ -3,7 +3,7 @@
     <router-view class="main" />
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
-      v-if="hasApplicationContext && (application || x402Scenario)"
+      v-if="showApplicationStatus"
       class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
@@ -67,6 +67,11 @@ export default defineComponent({
     x402Scenario(): string | undefined {
       if (!isScenarioX402Supported(this.appName)) return undefined;
       return scenarioPaymentState(this.appName).walletAvailable ? this.appName : undefined;
+    },
+    showApplicationStatus(): boolean {
+      if (!this.hasApplicationContext) return false;
+      if (this.$store.state.token?.access) return Boolean(this.application || this.x402Scenario);
+      return Boolean(this.x402Scenario && scenarioPaymentState(this.x402Scenario).mode === 'wallet');
     },
     application() {
       if (!this.appName) return undefined;

@@ -8,7 +8,11 @@ vi.mock('@/operators', () => ({
   siteOperator: siteOperatorMock
 }));
 
-import { getSite } from './actions';
+vi.mock('@/store/lazy', () => ({
+  getRegisteredLazyModules: () => ['nanobanana', 'chat']
+}));
+
+import { getSite, resetAll } from './actions';
 
 describe('store/common getSite', () => {
   const commit = vi.fn();
@@ -31,5 +35,20 @@ describe('store/common getSite', () => {
 
     await expect(getSite({ state, commit } as never)).resolves.toBeUndefined();
     expect(commit).not.toHaveBeenCalled();
+  });
+});
+
+describe('store/common resetAll', () => {
+  it('clears account-owned state from the root and registered app modules', async () => {
+    const commit = vi.fn();
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+
+    await resetAll({ commit, dispatch } as any);
+
+    expect(commit).toHaveBeenCalledWith('resetToken');
+    expect(commit).toHaveBeenCalledWith('resetUser');
+    expect(commit).toHaveBeenCalledWith('setApplications', undefined);
+    expect(dispatch).toHaveBeenCalledWith('nanobanana/resetAll');
+    expect(dispatch).toHaveBeenCalledWith('chat/resetAll');
   });
 });
