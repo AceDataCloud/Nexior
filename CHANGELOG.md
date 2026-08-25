@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 24 Aug 2026 20:16:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 25 Aug 2026 20:16:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.367.1
+
+Tue, 25 Aug 2026 20:16:03 GMT
+
+### Patches
+
+- Broadcast Solana continuous-payment setup transactions directly from the wallet before Backend verification so Phantom Lighthouse assertions remain fresh. (dev@acedata.cloud)
+- Add Maestro Showcase cards, service Gallery browsing, and safe Create similar configuration replay. (dev@acedata.cloud)
+- Reject empty generation inputs across image, video, and music services before quotes or task requests. (dev@acedata.cloud)
+- Use Qwen-specific description copy on the Studio home page. (dev@acedata.cloud)
+- Align wallet payment failures with Studio's compact status-card hierarchy across generation scenarios. (dev@acedata.cloud)
+- Fix Studio web cutover so strict Bash mode initializes the expected image after the release tag. (dev@acedata.cloud)
+- Keep signed-out account state consistent and enforce authentication at protected request boundaries. (dev@acedata.cloud)
 
 ## 3.367.0
 
