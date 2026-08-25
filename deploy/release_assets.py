@@ -2,14 +2,9 @@
 from __future__ import annotations
 
 import argparse
-import base64
-import gzip
 import hashlib
 from pathlib import Path, PurePosixPath
 import shutil
-import shlex
-import re
-import subprocess
 import sys
 
 
@@ -36,46 +31,6 @@ def load_manifest(path: Path, max_files: int) -> list[str]:
     for item in items:
         safe_path(item)
     return items
-
-
-def kubectl(*args: str, text: bool = False) -> subprocess.CompletedProcess:
-    return subprocess.run(["kubectl", *args], check=True, capture_output=True, text=text)
-
-
-def command_fetch(args: argparse.Namespace) -> None:
-    if not re.fullmatch(r"[A-Za-z0-9._-]+", args.token):
-        raise ValueError(f"unsafe archive token: {args.token!r}")
-    remote = f"/tmp/acedata-assets-{args.token}"
-    quoted_directory = shlex.quote(args.directory)
-    tar_args = "-T /opt/acedata/release-assets" if args.manifest else "."
-    setup = (
-        f"set -eu; rm -rf {remote}; mkdir -p {remote}; "
-        f"cd {quoted_directory}; tar -cf - {tar_args} | gzip -c > {remote}/archive.tgz; "
-        f"split -b 262144 -a 4 {remote}/archive.tgz {remote}/part-; "
-        f"sha256sum {remote}/archive.tgz | cut -d' ' -f1 > {remote}/sha256; "
-        f"find {remote} -name 'part-*' -type f | sort > {remote}/parts"
-    )
-    kubectl("exec", "-n", args.namespace, args.pod, "--", "sh", "-lc", setup)
-    try:
-        parts_output = kubectl("exec", "-n", args.namespace, args.pod, "--", "cat", f"{remote}/parts", text=True).stdout
-        parts = [part for part in parts_output.splitlines() if part]
-        if not parts or any(not part.startswith(f"{remote}/part-") for part in parts):
-            raise ValueError(f"invalid archive parts: {parts!r}")
-        expected = kubectl("exec", "-n", args.namespace, args.pod, "--", "cat", f"{remote}/sha256", text=True).stdout.strip()
-        archive = Path(args.output)
-        archive.write_bytes(b"")
-        for part in parts:
-            encoded = kubectl("exec", "-n", args.namespace, args.pod, "--", "base64", part).stdout
-            with archive.open("ab") as output:
-                output.write(base64.b64decode(encoded))
-        actual = hashlib.sha256(archive.read_bytes()).hexdigest()
-        if actual != expected:
-            raise ValueError(f"archive checksum mismatch: expected {expected}, got {actual}")
-        Path(args.output).write_bytes(gzip.decompress(archive.read_bytes()))
-        print(f"archive_parts={len(parts)}")
-        print(f"archive_sha256={actual}")
-    finally:
-        subprocess.run(["kubectl", "exec", "-n", args.namespace, args.pod, "--", "rm", "-rf", remote], check=False)
 
 
 def command_manifest(args: argparse.Namespace) -> None:
@@ -142,15 +97,6 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    fetch = subparsers.add_parser("fetch")
-    fetch.add_argument("pod")
-    fetch.add_argument("directory")
-    fetch.add_argument("--manifest", action="store_true")
-    fetch.add_argument("output")
-    fetch.add_argument("token")
-    fetch.add_argument("--namespace", default="acedatacloud")
-    fetch.set_defaults(func=command_fetch)
-
     manifest = subparsers.add_parser("manifest")
     manifest.add_argument("root")
     manifest.add_argument("output")
@@ -179,7 +125,7 @@ def main() -> None:
     args = parser.parse_args()
     try:
         args.func(args)
-    except (OSError, ValueError, subprocess.CalledProcessError) as error:
+    except (OSError, ValueError) as error:
         raise SystemExit(str(error)) from error
 
 
