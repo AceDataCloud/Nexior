@@ -8,6 +8,13 @@ metadata:
 spec:
   replicas: 2
   revisionHistoryLimit: 5
+  minReadySeconds: 10
+  progressDeadlineSeconds: 1200
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: studio-frontend
@@ -21,6 +28,14 @@ spec:
           name: studio-frontend
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 3
+            failureThreshold: 5
+            timeoutSeconds: 2
           livenessProbe:
             httpGet:
               path: /
