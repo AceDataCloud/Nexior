@@ -30,6 +30,8 @@ final = cutover.index('roll_stage "$RELEASE_TAG"')
 verify = cutover.index('verify-html-assets.py')
 annotate = cutover.index('last-successful-revision')
 assert bridge < final < verify < annotate
+assert 'local tag=$1 fallback=$2 expected=' not in cutover
+assert 'local tag=$1 fallback=$2\n  local expected="$IMAGE_REPOSITORY:$tag"' in cutover
 assert 'FROM ${PREVIOUS_IMAGE} AS bridge' in dockerfile
 assert 'FROM runtime-base AS final' in dockerfile
 assert workflow.index('preflight-release.sh') < workflow.index('--target bridge') < workflow.index('verify-release-unchanged.sh') < workflow.index('verify-cutover.sh')
