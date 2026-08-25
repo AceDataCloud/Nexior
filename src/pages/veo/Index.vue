@@ -36,6 +36,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: IVeoTask | undefined;
@@ -182,6 +183,12 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const request = buildVeoRequest(this.config);
+      const inputError = getGenerationInputError('veo', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -191,7 +198,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildVeoRequest(this.config);
       // image2video requires at least one image; otherwise the upstream rejects with
       // "image_urls is invalid when generate videos". Validate client-side so the user
       // gets an actionable message instead of the generic failure toast.

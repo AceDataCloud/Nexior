@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   generate: vi.fn(),
   normalize: vi.fn(),
   ensureLoggedIn: vi.fn(() => true),
+  ensureNoPendingUpload: vi.fn(() => true),
   instrument: vi.fn((_: string, operation: Promise<unknown>) => operation),
   showQuota: vi.fn()
 }));
@@ -28,6 +29,7 @@ vi.mock('@/utils/x402/scenarioPayment', () => ({
 vi.mock('@/utils', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/utils')>()),
   ensureLoggedIn: mocks.ensureLoggedIn,
+  ensureNoPendingUpload: mocks.ensureNoPendingUpload,
   showQuotaExhausted: mocks.showQuota
 }));
 
@@ -69,10 +71,22 @@ describe('Seedance quota handling', () => {
     closeStarting = vi.fn();
     mocks.normalize.mockReturnValue({ request: { prompt: 'a video', async: true } });
     mocks.ensureLoggedIn.mockReturnValue(true);
+    mocks.ensureNoPendingUpload.mockReturnValue(true);
     vi.spyOn(ElMessage, 'info').mockReturnValue({ close: closeStarting } as never);
     vi.spyOn(ElMessage, 'success').mockImplementation(() => undefined as never);
     vi.spyOn(ElMessage, 'error').mockImplementation(() => undefined as never);
     vi.spyOn(ElMessage, 'warning').mockImplementation(() => undefined as never);
+  });
+
+  it('uses the shared localized message before upload checks for empty input', async () => {
+    mocks.normalize.mockReturnValue({ reject: 'generationInputRequired' });
+    const wrapper = mountPage();
+
+    await (wrapper.vm as any).onGenerate();
+
+    expect(ElMessage.warning).toHaveBeenCalledWith('common.message.generationInputRequired');
+    expect(mocks.ensureNoPendingUpload).not.toHaveBeenCalled();
+    expect(mocks.generate).not.toHaveBeenCalled();
   });
 
   it('delegates used-up recovery and its submitted estimate to the shared controller', async () => {

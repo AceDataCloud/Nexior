@@ -25,6 +25,7 @@
         type="primary"
         class="w-full"
         round
+        :disabled="!canGenerate"
         @click="$emit('generate')"
         >{{ $t('qwenimage.button.generate') }}</el-button
       >
@@ -39,6 +40,7 @@ import ImageInput from './config/ImageInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import { buildQwenImageRequest } from '@/utils/qwenimage/request';
+import { canSubmitGeneration } from '@/utils/generationInput';
 export default defineComponent({
   name: 'QwenImageConfigPanel',
   components: {
@@ -54,6 +56,9 @@ export default defineComponent({
   },
   emits: ['generate'],
   computed: {
+    canGenerate(): boolean {
+      return canSubmitGeneration('qwenimage', buildQwenImageRequest(this.config));
+    },
     config() {
       return this.$store.state.qwenimage?.config;
     },

@@ -19,7 +19,11 @@ const HEADERS = { 'content-type': 'application/json', accept: 'application/json'
 const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
 
 export function buildProducerAudioRequest(config?: IProducerConfig): IProducerAudioRequest {
-  return { ...(config || {}), audio: undefined, async: true } as IProducerAudioRequest;
+  const request = { ...(config || {}), audio: undefined, async: true } as IProducerAudioRequest;
+  for (const key of ['prompt', 'lyric', 'lyric_prompt', 'style', 'title'] as const) {
+    if (typeof request[key] === 'string') request[key] = request[key]?.trim();
+  }
+  return request;
 }
 
 class ProducerOperator {

@@ -42,6 +42,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: IProducerTask | undefined;
@@ -217,6 +218,12 @@ export default defineComponent({
       }
     },
     async onGenerateAudio() {
+      const request = buildProducerAudioRequest(this.config);
+      const inputError = getGenerationInputError('producer', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -226,7 +233,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildProducerAudioRequest(this.config);
       const operation = this.createPaymentOperation((options) => producerOperator.audio(request, options));
       if (!operation) return;
       ElMessage.info(this.$t('producer.message.startingTask'));
@@ -269,8 +275,7 @@ export default defineComponent({
     },
     handlePaymentError(error: any) {
       if (error instanceof X402PaymentCancelledError) return;
-      if (this.walletMode)
-        ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
+      if (this.walletMode) ElMessage.error(this.$t('common.x402Scenario.paymentFailed'));
       else ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startTaskFailed'));
     },
     getWalletContext(): X402WalletContext | undefined {

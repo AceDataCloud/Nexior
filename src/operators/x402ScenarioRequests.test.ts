@@ -157,3 +157,16 @@ describe('scenario-owned x402 requests', () => {
     ).toMatchObject({ prompt: 'video', duration: 30, quality: 'pro', scenario: 'drama' });
   });
 });
+
+it.each([
+  ['flux', buildFluxRequest],
+  ['pika', buildPikaRequest],
+  ['pixverse', buildPixverseRequest],
+  ['hailuo', buildHailuoRequest],
+  ['sora', buildSoraRequest],
+  ['wan', buildWanRequest]
+] as const)('trims scenario prompts without mutating config: %s', (_service, builder) => {
+  const config = { prompt: '  video prompt  ' };
+  expect(builder(config as never).prompt).toBe('video prompt');
+  expect(config.prompt).toBe('  video prompt  ');
+});

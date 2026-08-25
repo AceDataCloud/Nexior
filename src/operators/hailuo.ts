@@ -8,7 +8,9 @@ import {
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildHailuoRequest(config?: IHailuoConfig): IHailuoGenerateRequest {
-  return { ...(config || {}), async: true } as IHailuoGenerateRequest;
+  const request = { ...(config || {}), async: true } as IHailuoGenerateRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
+  return request;
 }
 
 class HailuoOperator extends BaseTaskOperator<

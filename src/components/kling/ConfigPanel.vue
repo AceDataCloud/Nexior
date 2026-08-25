@@ -24,12 +24,13 @@
         type="primary"
         class="btn w-full"
         round
+        :disabled="!canGenerate"
         @click="onGenerate"
       >
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.extend') }}
       </el-button>
-      <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
+      <el-button v-else type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.generate') }}
       </el-button>
@@ -63,6 +64,7 @@ import { getKlingCapabilities } from '@/utils/kling/capabilities';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildKlingVideoRequest, klingOperator } from '@/operators/kling';
+import { canSubmitGeneration } from '@/utils/generationInput';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -96,6 +98,9 @@ export default defineComponent({
     };
   },
   computed: {
+    canGenerate(): boolean {
+      return canSubmitGeneration('kling', buildKlingVideoRequest(this.config));
+    },
     config() {
       return this.$store.state.kling?.config;
     },
@@ -138,16 +143,23 @@ export default defineComponent({
   methods: {
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
+      this.quoteRunId += 1;
+      const state = scenarioPaymentState('kling');
+      state.quoteUsdc = undefined;
+      state.quoteLoading = false;
+      if (!this.canGenerate) return;
       this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
     },
     async refreshQuote() {
+      if (!this.canGenerate) return;
       const state = scenarioPaymentState('kling');
       const runId = ++this.quoteRunId;
       state.quoteLoading = true;
       state.quoteUsdc = undefined;
       try {
         const quote = await klingOperator.quote(buildKlingVideoRequest(this.config));
-        if (runId === this.quoteRunId && state.mode === 'wallet') state.quoteUsdc = quote.amountUsdc;
+        if (runId === this.quoteRunId && state.mode === 'wallet' && this.canGenerate)
+          state.quoteUsdc = quote.amountUsdc;
       } catch (error) {
         console.warn('x402 quote failed', error);
       } finally {

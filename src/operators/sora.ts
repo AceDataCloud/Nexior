@@ -8,7 +8,9 @@ import {
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildSoraRequest(config?: ISoraConfig): ISoraGenerateRequest {
-  return { ...(config || {}), async: true } as ISoraGenerateRequest;
+  const request = { ...(config || {}), async: true } as ISoraGenerateRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
+  return request;
 }
 
 class SoraOperator extends BaseTaskOperator<

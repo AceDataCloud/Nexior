@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { showQuotaExhausted } from '@/utils/quotaExhausted';
+import { getGenerationInputError } from '@/utils/generationInput';
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Flux.vue';
 import ConfigPanel from '@/components/flux/ConfigPanel.vue';
@@ -173,6 +174,12 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const request = buildFluxRequest(this.config);
+      const inputError = getGenerationInputError('flux', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -182,7 +189,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildFluxRequest(this.config);
       let operation: Promise<unknown>;
       if (this.walletMode) {
         const wallet = this.getWalletContext();

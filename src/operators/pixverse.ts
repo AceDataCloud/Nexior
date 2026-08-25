@@ -8,7 +8,9 @@ import {
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildPixverseRequest(config?: IPixverseConfig): IPixverseGenerateRequest {
-  return { ...(config || {}), async: true } as IPixverseGenerateRequest;
+  const request = { ...(config || {}), async: true } as IPixverseGenerateRequest;
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
+  return request;
 }
 
 class PixverseOperator extends BaseTaskOperator<

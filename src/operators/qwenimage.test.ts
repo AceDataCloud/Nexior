@@ -10,3 +10,9 @@ describe('buildQwenImageRequest', () => {
     expect(result.watermark).toBe(false);
   });
 });
+
+it('trims prompts without mutating config', () => {
+  const config = { prompt: '  image prompt  ' };
+  expect(buildQwenImageRequest(config).prompt).toBe('image prompt');
+  expect(config.prompt).toBe('  image prompt  ');
+});

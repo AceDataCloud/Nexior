@@ -44,6 +44,7 @@ export function normalizeMaestroConfig(config?: IMaestroConfig): IMaestroConfig 
 
   return {
     ...rest,
+    ...(typeof rest.prompt === 'string' ? { prompt: rest.prompt.trim() } : {}),
     scenario_customization_enabled: scenarioEnabled,
     style_customization_enabled: styleEnabled,
     voice_customization_enabled: voiceEnabled,

@@ -102,3 +102,8 @@ describe('Midjourney x402 requests', () => {
     ]);
   });
 });
+
+it('does not turn whitespace-only prompts into model-parameter prompts', () => {
+  expect(buildMidjourneyImagineRequest({ prompt: '   ', model: 'niji', version: '8' }).prompt).toBe('');
+  expect(buildMidjourneyVideosRequest({ prompt: '  animate this  ' }).prompt).toBe('animate this');
+});

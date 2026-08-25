@@ -47,6 +47,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: IKlingTask | undefined;
@@ -210,6 +211,12 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const request = buildKlingVideoRequest(this.config);
+      const inputError = getGenerationInputError('kling', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -219,7 +226,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildKlingVideoRequest(this.config);
       const frameCount = Number(Boolean(request.start_image_url)) + Number(Boolean(request.end_image_url));
       const referenceImageCount = request.image_list?.length || 0;
       const maxReferenceImages = request.video_list?.length ? 4 : 7;

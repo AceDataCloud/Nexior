@@ -31,6 +31,7 @@ import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { ISeedreamTask } from '@/models';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -149,6 +150,12 @@ export default defineComponent({
       });
     },
     async onGenerate() {
+      const request = buildSeedreamRequest(this.config) as ISeedreamGenerateRequest;
+      const inputError = getGenerationInputError('seedream', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -162,7 +169,6 @@ export default defineComponent({
         ElMessage.warning(this.$t('seedream.message.referenceImageRequired'));
         return;
       }
-      const request = buildSeedreamRequest(this.config) as ISeedreamGenerateRequest;
       if (!ensureLoggedIn()) {
         return;
       }

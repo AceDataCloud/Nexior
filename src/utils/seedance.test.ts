@@ -174,3 +174,34 @@ describe('normalizeSeedanceRequest', () => {
     expect(request).not.toHaveProperty('service_tier');
   });
 });
+
+describe('generation input requirement', () => {
+  it('rejects a normalized request with neither prompt nor media', () => {
+    expect(normalizeSeedanceRequest({ model: 'doubao-seedance-2-0-260128' })).toEqual({
+      reject: 'generationInputRequired'
+    });
+  });
+
+  it('rejects whitespace-only media URLs after normalization', () => {
+    expect(
+      normalizeSeedanceRequest({
+        model: 'doubao-seedance-2-0-260128',
+        images: [{ url: '   ', role: 'first_frame' }],
+        videos: [{ url: '\t' }],
+        audios: [{ url: '\n' }]
+      })
+    ).toEqual({ reject: 'generationInputRequired' });
+  });
+
+  it('keeps valid prompt and media-only requests', () => {
+    expect(normalizeSeedanceRequest({ model: 'doubao-seedance-2-0-260128', prompt: ' video ' }).request?.prompt).toBe(
+      'video'
+    );
+    expect(
+      normalizeSeedanceRequest({
+        model: 'doubao-seedance-2-0-260128',
+        images: [{ url: 'https://cdn.example/frame.png', role: 'first_frame' }]
+      }).request?.images
+    ).toHaveLength(1);
+  });
+});

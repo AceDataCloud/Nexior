@@ -18,6 +18,7 @@ const X402_HEADERS = { 'content-type': 'application/json', accept: 'application/
 export function buildKlingVideoRequest(config?: IKlingConfig): IKlingGenerateRequest {
   const { camera_control, ...rest } = config || {};
   const request: IKlingGenerateRequest = { ...rest, async: true };
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   if (!request.action) {
     if (request.video_id || request.video_url) request.action = 'extend';
     else if (request.start_image_url) request.action = 'image2video';

@@ -58,3 +58,21 @@ describe('Producer x402 requests', () => {
     ]);
   });
 });
+
+it('trims all Producer text inputs without mutating config', () => {
+  const config = {
+    prompt: ' prompt ',
+    lyric: ' lyric ',
+    lyric_prompt: ' lyric prompt ',
+    style: ' style ',
+    title: ' title '
+  };
+  expect(buildProducerAudioRequest(config as never)).toMatchObject({
+    prompt: 'prompt',
+    lyric: 'lyric',
+    lyric_prompt: 'lyric prompt',
+    style: 'style',
+    title: 'title'
+  });
+  expect(config.prompt).toBe(' prompt ');
+});

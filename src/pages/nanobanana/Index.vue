@@ -27,7 +27,7 @@ import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn, hasMeaningfulText } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -167,6 +167,10 @@ export default defineComponent({
       });
     },
     async onGenerate() {
+      if (!hasMeaningfulText(this.config?.prompt)) {
+        ElMessage.error(this.$t('common.message.promptRequired'));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,

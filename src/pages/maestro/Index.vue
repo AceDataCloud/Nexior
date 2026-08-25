@@ -29,6 +29,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   job: number;
@@ -147,6 +148,11 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = buildMaestroRequest(this.config);
+      const inputError = getGenerationInputError('maestro', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       let operation: Promise<unknown>;
       if (this.walletMode) {
         const wallet = this.getWalletContext();

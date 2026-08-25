@@ -12,7 +12,7 @@
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <service-pricing-summary :value="consumption" :service="service" />
-      <el-button type="primary" class="btn w-full" round @click="onGenerate">
+      <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('seedream.button.generate') }}
       </el-button>
@@ -37,6 +37,7 @@ import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
 import { getSeedreamShortModel } from '@/constants';
 import { getSeedreamAction, getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
+import { canSubmitGeneration } from '@/utils/generationInput';
 
 export default defineComponent({
   name: 'SeedreamConfigPanel',
@@ -60,6 +61,9 @@ export default defineComponent({
     },
     capabilities() {
       return getSeedreamCapabilities(this.config?.model);
+    },
+    canGenerate(): boolean {
+      return canSubmitGeneration('seedream', buildSeedreamRequest(this.config));
     },
     config() {
       return this.$store.state.seedream?.config;

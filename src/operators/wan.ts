@@ -3,6 +3,7 @@ import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
 
 export function buildWanRequest(config?: IWanConfig): IWanGenerateRequest {
   const request = { ...(config || {}), async: true } as IWanGenerateRequest & { media_text?: string };
+  if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   if (request.model === 'wan3.0-video') {
     request.media = (request.media_text || '')
       .split('\n')

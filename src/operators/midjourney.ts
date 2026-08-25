@@ -28,9 +28,10 @@ const HEADERS = { 'content-type': 'application/json', accept: 'application/x-ndj
 const TASK_HEADERS = { 'content-type': 'application/json', accept: 'application/json', 'x-record-exempt': 'true' };
 
 function buildFinalPrompt(config: IMidjourneyConfig): string {
+  const textPrompt = config.prompt?.trim();
   let content = '';
   if (config.references?.length) content += `${config.references.join(' ')} `;
-  if (config.prompt) content += config.prompt;
+  if (textPrompt) content += textPrompt;
   if (config.elements?.length) content += `,${config.elements.map((item) => item.value).join(',')}`;
   const isNiji = config.model?.includes('niji');
   if (config.model && !content.includes(`--${config.model}`)) content += ` --${config.model}`;
@@ -80,7 +81,7 @@ function buildFinalPrompt(config: IMidjourneyConfig): string {
   if (config.style && config.advanced && !content.includes('--style')) content += ` --style ${config.style}`;
   if (!isNiji && config.hd && !content.includes('--hd')) content += ' --hd';
   content = content.replace(/--(fast|relax|turbo) /g, '');
-  return config.prompt || config.references?.length ? content : '';
+  return textPrompt || config.references?.length ? content : '';
 }
 
 export function buildMidjourneyImagineRequest(config: IMidjourneyConfig): IMidjourneyImagineRequest {
@@ -122,7 +123,7 @@ export function buildMidjourneyVideosRequest(config: IMidjourneyConfig): IMidjou
     video_id: config.video_id,
     image_url: config.image_url,
     action: config.action as MidjourneyVideosAction,
-    prompt: config.prompt,
+    prompt: config.prompt?.trim(),
     end_image_url: config.end_image_url,
     resolution: config.resolution,
     loop: config.loop,

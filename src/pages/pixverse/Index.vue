@@ -30,6 +30,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { getGenerationInputError } from '@/utils/generationInput';
 
 interface IData {
   task: IPixverseTask | undefined;
@@ -175,6 +176,12 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const request = buildPixverseRequest(this.config);
+      const inputError = getGenerationInputError('pixverse', request);
+      if (inputError) {
+        ElMessage.error(this.$t(`common.message.${inputError}`));
+        return;
+      }
       if (
         !ensureNoPendingUpload(
           this.uploadTracker,
@@ -184,7 +191,6 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = buildPixverseRequest(this.config);
       let operation: Promise<unknown>;
       if (this.walletMode) {
         const wallet = this.getWalletContext();

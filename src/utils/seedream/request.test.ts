@@ -41,3 +41,9 @@ describe('buildSeedreamRequest', () => {
     expect(getSeedreamAction('doubao-seedream-4-5-251128', image)).toBe('edit');
   });
 });
+
+it('trims prompts without mutating config', () => {
+  const config = { prompt: '  image prompt  ' };
+  expect(buildSeedreamRequest(config).prompt).toBe('image prompt');
+  expect(config.prompt).toBe('  image prompt  ');
+});
