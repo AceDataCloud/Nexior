@@ -21,7 +21,8 @@ function walletApi() {
     signTransaction,
     api: {
       publicKey: { value: keypair.publicKey },
-      signTransaction: { value: signTransaction }
+      signTransaction: { value: signTransaction },
+      wallet: { value: { adapter: { name: 'Phantom' } } }
     }
   };
 }
@@ -39,6 +40,7 @@ function unsignedTransaction(wallet: Keypair): string {
 describe('continuous payment Backend orchestration', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.stubGlobal('window', {});
   });
 
   it('uses the public wallet signer and submits Backend-prepared transactions in order', async () => {
@@ -72,7 +74,249 @@ describe('continuous payment Backend orchestration', () => {
       '/api/v1/x402/payment-authorization/transaction/submit/',
       '/api/v1/x402/payment-authorization/confirm/'
     ]);
+    expect(mockedAxios.post.mock.calls[2][1]).toEqual(
+      expect.objectContaining({
+        setup_token: 'setup',
+        action: 'init_authority',
+        signed_transaction: expect.any(String)
+      })
+    );
+    expect(mockedAxios.post.mock.calls[2][1]).not.toHaveProperty('signature');
     expect(track).toHaveBeenCalledWith('x402_continuous_payment_success', { action: 'enable:confirm' });
+  });
+
+  it('uses Phantom sign-and-send and registers only the returned signature', async () => {
+    const wallet = walletApi();
+    const signAndSendTransaction = vi.fn().mockResolvedValue({ signature: 'wallet-signature' });
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: 'wallet-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    await enableContinuousPayment({
+      token: 'token',
+      walletApi: wallet.api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+
+    expect(signAndSendTransaction).toHaveBeenCalledTimes(1);
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+    const submitCall = mockedAxios.post.mock.calls.find(
+      (call) => call[0] === '/api/v1/x402/payment-authorization/transaction/submit/'
+    );
+    expect(submitCall?.[1]).toEqual({
+      setup_token: 'setup',
+      action: 'create_delegation',
+      signature: 'wallet-signature'
+    });
+    expect(submitCall?.[1]).not.toHaveProperty('signed_transaction');
+    expect(track).toHaveBeenCalledWith('x402_continuous_payment_submit', {
+      action: 'create_delegation:wallet_send'
+    });
+    expect(track).toHaveBeenCalledWith('x402_continuous_payment_submit', {
+      action: 'create_delegation:register'
+    });
+  });
+
+  it('keeps legacy submission when Backend does not advertise wallet broadcast support', async () => {
+    const wallet = walletApi();
+    const signAndSendTransaction = vi.fn();
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: { setup_token: 'setup', wallet: wallet.keypair.publicKey.toBase58(), authority_init_id: 42 }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: 'legacy-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    await enableContinuousPayment({
+      token: 'token',
+      walletApi: wallet.api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+
+    expect(signAndSendTransaction).not.toHaveBeenCalled();
+    expect(wallet.signTransaction).toHaveBeenCalledTimes(1);
+    expect(mockedAxios.post.mock.calls[2][1]).toEqual(
+      expect.objectContaining({ signed_transaction: expect.any(String) })
+    );
+  });
+
+  it('uses the selected provider when Phantom and Solflare share an address', async () => {
+    const wallet = walletApi();
+    const phantomSend = vi.fn();
+    const solflareSend = vi.fn().mockResolvedValue({ signature: 'solflare-signature' });
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction: phantomSend }
+    };
+    (window as any).solflare = {
+      isSolflare: true,
+      publicKey: wallet.keypair.publicKey,
+      signAndSendTransaction: solflareSend
+    };
+    const api = {
+      ...wallet.api,
+      wallet: { value: { adapter: { name: 'Solflare' } } }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: 'solflare-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    await enableContinuousPayment({
+      token: 'token',
+      walletApi: api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+
+    expect(solflareSend).toHaveBeenCalledTimes(1);
+    expect(phantomSend).not.toHaveBeenCalled();
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+  });
+
+  it('registers an uncertain broadcast after a provider timeout instead of replaying', async () => {
+    vi.useFakeTimers();
+    const wallet = walletApi();
+    const signAndSendTransaction = vi.fn().mockRejectedValue(new Error('RPC timeout'));
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: '', status: 'uncertain' } })
+      .mockResolvedValueOnce({ data: { signature: 'recovered-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    const pending = enableContinuousPayment({
+      token: 'token',
+      walletApi: wallet.api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+    await vi.runAllTimersAsync();
+    await pending;
+    vi.useRealTimers();
+
+    expect(signAndSendTransaction).toHaveBeenCalledTimes(1);
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+    expect(mockedAxios.post.mock.calls[2][1]).toEqual({
+      setup_token: 'setup',
+      action: 'create_delegation',
+      broadcast_uncertain: true
+    });
+    expect(track).toHaveBeenCalledWith('x402_continuous_payment_submit', {
+      action: 'create_delegation:uncertain'
+    });
+  });
+
+  it('does not mark an explicit wallet rejection as an uncertain broadcast', async () => {
+    const wallet = walletApi();
+    const rejected: any = new Error('User rejected the request');
+    rejected.code = 4001;
+    const signAndSendTransaction = vi.fn().mockRejectedValue(rejected);
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: wallet.keypair.publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      });
+
+    await expect(
+      enableContinuousPayment({
+        token: 'token',
+        walletApi: wallet.api,
+        dailyLimitAtomic: '100000',
+        expiryTs: 1_900_000_000
+      })
+    ).rejects.toThrow('User rejected');
+
+    expect(mockedAxios.post).toHaveBeenCalledTimes(2);
+    expect(wallet.signTransaction).not.toHaveBeenCalled();
+  });
+
+  it('does not use an installed provider for a different connected wallet', async () => {
+    const wallet = walletApi();
+    const signAndSendTransaction = vi.fn();
+    (window as any).phantom = {
+      solana: { isPhantom: true, publicKey: Keypair.generate().publicKey, signAndSendTransaction }
+    };
+    mockedAxios.post
+      .mockResolvedValueOnce({
+        data: {
+          setup_token: 'setup',
+          wallet: wallet.keypair.publicKey.toBase58(),
+          authority_init_id: 42,
+          wallet_broadcast_supported: true
+        }
+      })
+      .mockResolvedValueOnce({
+        data: { action: 'create_delegation', transaction: unsignedTransaction(wallet.keypair) }
+      })
+      .mockResolvedValueOnce({ data: { signature: 'legacy-signature', status: 'confirmed' } })
+      .mockResolvedValueOnce({ data: { authorization: { id: 'auth', state: 'active' } } });
+
+    await enableContinuousPayment({
+      token: 'token',
+      walletApi: wallet.api,
+      dailyLimitAtomic: '100000',
+      expiryTs: 1_900_000_000
+    });
+
+    expect(signAndSendTransaction).not.toHaveBeenCalled();
+    expect(wallet.signTransaction).toHaveBeenCalledTimes(1);
+    expect(mockedAxios.post.mock.calls[2][1]).toEqual(
+      expect.objectContaining({ signed_transaction: expect.any(String) })
+    );
   });
 
   it('skips authority initialization when Backend reports an existing authority', async () => {

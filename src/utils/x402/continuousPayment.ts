@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Buffer } from 'buffer';
 import { Transaction } from '@solana/web3.js';
 import { reactive } from 'vue';
-import { BASE_URL_PLATFORM } from '@/constants';
+import { BASE_URL_PLATFORM } from '@/constants/endpoint';
 import { track } from '@/plugins/telemetry';
 
 export const CONTINUOUS_PAYMENT_PROFILE = 'solana-recurring-delegation-v1';
@@ -26,6 +26,7 @@ export interface SetupResponse {
   setup_token: string;
   wallet: string;
   authority_init_id?: number | null;
+  wallet_broadcast_supported?: boolean;
   transactions?: Partial<Record<TransactionAction, SubmittedTransaction>>;
 }
 
@@ -39,7 +40,8 @@ interface PreparedTransaction {
 
 interface SubmittedTransaction {
   signature: string;
-  status: 'pending' | 'confirmed' | 'failed';
+  status: 'pending' | 'confirmed' | 'failed' | 'uncertain';
+  broadcast_source?: 'wallet' | 'backend';
 }
 
 type TransactionAction = 'init_authority' | 'create_delegation' | 'revoke_delegation';
@@ -94,15 +96,55 @@ export async function refreshContinuousPaymentAuthorization(token?: string) {
 function walletSigner(walletApi: any) {
   const wallet = walletApi?.publicKey?.value?.toBase58?.();
   const signTransaction = walletApi?.signTransaction?.value;
-  if (!wallet || typeof signTransaction !== 'function') throw new Error('Connect a Solana wallet first');
+  if (!wallet) throw new Error('Connect a Solana wallet first');
   return { wallet, signTransaction };
+}
+
+function normalizeSignature(result: any): string {
+  const signature = typeof result === 'string' ? result : result?.signature || result?.txid || result?.transactionId;
+  if (!signature || typeof signature !== 'string') throw new Error('Wallet did not return a transaction signature');
+  return signature;
+}
+
+function walletBroadcaster(walletApi: any, wallet: string): ((transaction: Transaction) => Promise<any>) | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const selectedWallet = walletApi?.wallet?.value;
+  const selectedName = String(selectedWallet?.adapter?.name || '').toLowerCase();
+  const provider =
+    selectedName === 'phantom'
+      ? (window as any).phantom?.solana || ((window as any).solana?.isPhantom ? (window as any).solana : undefined)
+      : selectedName === 'solflare'
+        ? (window as any).solflare
+        : undefined;
+  if (provider?.publicKey?.toBase58?.() === wallet && typeof provider.signAndSendTransaction === 'function') {
+    return provider.signAndSendTransaction.bind(provider);
+  }
+  return undefined;
 }
 
 async function signPreparedTransaction(walletApi: any, encoded: string): Promise<string> {
   const { signTransaction } = walletSigner(walletApi);
+  if (typeof signTransaction !== 'function') throw new Error('Wallet does not support signing transactions');
   const transaction = Transaction.from(Buffer.from(encoded, 'base64'));
   const signed = await signTransaction(transaction);
   return Buffer.from(signed.serialize()).toString('base64');
+}
+
+function walletRejected(error: any): boolean {
+  const code = String(error?.code || error?.name || '').toLowerCase();
+  const message = String(error?.message || '').toLowerCase();
+  return (
+    code === '4001' || code.includes('reject') || message.includes('user rejected') || message.includes('declined')
+  );
+}
+
+async function broadcastPreparedTransaction(walletApi: any, encoded: string): Promise<string | undefined> {
+  const { wallet } = walletSigner(walletApi);
+  const broadcast = walletBroadcaster(walletApi, wallet);
+  if (!broadcast) return undefined;
+  const transaction = Transaction.from(Buffer.from(encoded, 'base64'));
+  // A provider error may happen after broadcast. Never auto-sign a replacement transaction.
+  return normalizeSignature(await broadcast(transaction));
 }
 
 async function prepare(token: string, setupToken: string, action: TransactionAction): Promise<PreparedTransaction> {
@@ -119,12 +161,12 @@ async function submit(
   token: string,
   setupToken: string,
   action: TransactionAction,
-  signedTransaction: string
+  transaction: { signature: string } | { signed_transaction: string } | { broadcast_uncertain: true }
 ): Promise<SubmittedTransaction> {
   return (
     await axios.post<SubmittedTransaction>(
       '/api/v1/x402/payment-authorization/transaction/submit/',
-      { setup_token: setupToken, action, signed_transaction: signedTransaction },
+      { setup_token: setupToken, action, ...transaction },
       { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
     )
   ).data;
@@ -147,7 +189,7 @@ async function waitForConfirmation(
   initial: SubmittedTransaction
 ) {
   let result = initial;
-  for (let attempt = 0; result.status === 'pending' && attempt < 30; attempt += 1) {
+  for (let attempt = 0; ['pending', 'uncertain'].includes(result.status) && attempt < 30; attempt += 1) {
     await new Promise((resolve) => globalThis.setTimeout(resolve, 2_000));
     result = await status(token, setupToken, action);
   }
@@ -160,15 +202,34 @@ async function signAndSubmit(
   setupToken: string,
   action: TransactionAction,
   walletApi: any,
-  existing?: SubmittedTransaction
+  existing?: SubmittedTransaction,
+  walletBroadcastSupported = false
 ) {
-  if (existing) return waitForConfirmation(token, setupToken, action, existing);
+  if (existing && existing.status !== 'failed') return waitForConfirmation(token, setupToken, action, existing);
   event('x402_continuous_payment_submit', `${action}:prepare`);
   const prepared = await prepare(token, setupToken, action);
-  event('x402_continuous_payment_submit', `${action}:sign`);
-  const signed = await signPreparedTransaction(walletApi, prepared.transaction);
-  event('x402_continuous_payment_submit', `${action}:submit`);
-  const result = await submit(token, setupToken, action, signed);
+  event('x402_continuous_payment_submit', `${action}:wallet_send`);
+  let signature: string | undefined;
+  if (walletBroadcastSupported) {
+    try {
+      signature = await broadcastPreparedTransaction(walletApi, prepared.transaction);
+    } catch (error) {
+      if (walletRejected(error)) throw error;
+      event('x402_continuous_payment_submit', `${action}:uncertain`);
+      const uncertain = await submit(token, setupToken, action, { broadcast_uncertain: true });
+      return waitForConfirmation(token, setupToken, action, uncertain);
+    }
+  }
+  let result: SubmittedTransaction;
+  if (signature) {
+    event('x402_continuous_payment_submit', `${action}:register`);
+    result = await submit(token, setupToken, action, { signature });
+  } else {
+    event('x402_continuous_payment_submit', `${action}:sign`);
+    const signed = await signPreparedTransaction(walletApi, prepared.transaction);
+    event('x402_continuous_payment_submit', `${action}:submit`);
+    result = await submit(token, setupToken, action, { signed_transaction: signed });
+  }
   return waitForConfirmation(token, setupToken, action, result);
 }
 
@@ -194,7 +255,8 @@ export async function enableContinuousPayment(options: {
         setup.setup_token,
         'init_authority',
         options.walletApi,
-        setup.transactions?.init_authority
+        setup.transactions?.init_authority,
+        setup.wallet_broadcast_supported === true
       );
     }
     await signAndSubmit(
@@ -202,7 +264,8 @@ export async function enableContinuousPayment(options: {
       setup.setup_token,
       'create_delegation',
       options.walletApi,
-      setup.transactions?.create_delegation
+      setup.transactions?.create_delegation,
+      setup.wallet_broadcast_supported === true
     );
     const confirmed = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
       '/api/v1/x402/payment-authorization/confirm/',
@@ -251,7 +314,14 @@ export async function revokeContinuousPayment(token: string, walletApi: any) {
         { baseURL: BASE_URL_PLATFORM, headers: headers(token) }
       )
     ).data;
-    await signAndSubmit(token, setup.setup_token, 'revoke_delegation', walletApi);
+    await signAndSubmit(
+      token,
+      setup.setup_token,
+      'revoke_delegation',
+      walletApi,
+      undefined,
+      setup.wallet_broadcast_supported === true
+    );
     const response = await axios.post<{ authorization: ContinuousPaymentAuthorization }>(
       '/api/v1/x402/payment-authorization/revoke-confirm/',
       { setup_token: setup.setup_token },
