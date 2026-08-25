@@ -79,6 +79,12 @@ describe('Studio workbench home', () => {
     expect(destinations.some((item) => 'path' in item)).toBe(false);
   });
 
+  it('uses Qwen-specific copy for the image capability', () => {
+    const image = HOME_CATEGORIES.find((item) => item.id === 'image');
+    const qwen = image?.candidates.find((item) => item.capability === 'qwenimage');
+    expect(qwen?.descriptionKey).toBe('intro.model.qwenimage');
+  });
+
   it('passes every enabled child into the four category groups', () => {
     const wrapper = mountHome({ id: 'studio', features: studioFeatures });
     expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')).toHaveLength(3);

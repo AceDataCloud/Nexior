@@ -154,7 +154,7 @@ export const HOME_CATEGORIES: HomeCategory[] = [
       capability('nanobanana', ROUTE_NANOBANANA_INDEX, 'Nano Banana', 'intro.model.nanobanana', ''),
       capability('openaiimage', ROUTE_OPENAIIMAGE_INDEX, 'GPT Image', 'intro.model.gptimage', ''),
       capability('seedream', ROUTE_SEEDREAM_INDEX, 'Seedream', 'intro.model.seedream', ''),
-      capability('qwenimage', ROUTE_QWENIMAGE_INDEX, 'Qwen Image 3', 'intro.model.seedream', '')
+      capability('qwenimage', ROUTE_QWENIMAGE_INDEX, 'Qwen Image 3', 'intro.model.qwenimage', '')
     ]
   },
   {
