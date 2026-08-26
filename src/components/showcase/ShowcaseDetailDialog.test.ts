@@ -47,7 +47,6 @@ const baseItem: ResolvedShowcase = {
   layout: 'Portrait',
   prompt: 'An origami orchard at dawn',
   model: 'gemini-2.5-flash-image',
-  canCreateSimilar: true,
   parameters: [
     { key: 'aspect_ratio', value: '3:4' },
     { key: 'seed', value: '42' }
@@ -101,14 +100,6 @@ describe('ShowcaseDetailDialog', () => {
       query: { showcase: baseItem.id }
     });
     expect(wrapper.emitted('close')).toHaveLength(1);
-  });
-
-  it('does not expose or execute Create similar for display-only items', async () => {
-    const wrapper = mountDialog({ ...baseItem, canCreateSimilar: false, prompt: '', parameters: [] });
-    expect(wrapper.find('.create-similar').exists()).toBe(false);
-    await (wrapper.vm as any).createSimilar();
-    expect(mocks.push).not.toHaveBeenCalled();
-    expect(wrapper.emitted('close')).toBeUndefined();
   });
 
   it('uses a lightweight custom close button while preserving the Dialog close event', async () => {

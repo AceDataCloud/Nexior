@@ -387,7 +387,6 @@ function validateItem(
   capability: CapabilityKey,
   service: string
 ): { adapter: Adapter; patch: Config } {
-  if (item.provenance !== 'native_generation') throw new Error('showcase is not replayable');
   if (item.service !== service) throw new Error('unsupported showcase');
   const adapter = adapters[capability];
   if (!adapter) throw new Error('unsupported capability');

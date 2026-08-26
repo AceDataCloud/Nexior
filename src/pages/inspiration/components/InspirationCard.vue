@@ -9,7 +9,7 @@
     <span class="copy">
       <span class="service"><img :src="item.icon" alt="" />{{ item.name }}</span>
       <strong>{{ item.title }}</strong>
-      <small v-if="item.prompt || item.description">{{ item.prompt || item.description }}</small>
+      <small>{{ item.prompt }}</small>
     </span>
   </button>
 </template>

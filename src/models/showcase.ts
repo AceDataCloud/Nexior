@@ -2,7 +2,6 @@ import type { CapabilityKey } from '@/constants/capabilities';
 
 export type ShowcaseMediaType = 'Image' | 'Video' | 'Audio';
 export type ShowcaseLayout = 'Portrait' | 'Square' | 'Landscape';
-export type ShowcaseProvenance = 'native_generation' | 'imported_master' | 'validation_delivery';
 
 export interface IShowcasePresentation {
   title?: string;
@@ -25,7 +24,6 @@ export interface IShowcase {
   id: string;
   service: string;
   task_id: string | null;
-  provenance?: ShowcaseProvenance | null;
   data: IShowcaseTaskData;
 }
 
@@ -47,5 +45,4 @@ export interface ResolvedShowcase {
   prompt: string;
   model: string;
   parameters: Array<{ key: string; value: string }>;
-  canCreateSimilar: boolean;
 }

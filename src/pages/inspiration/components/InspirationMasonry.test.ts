@@ -21,8 +21,7 @@ const item = (id: string): ResolvedShowcase => ({
   layout: 'Square',
   prompt: `Prompt ${id}`,
   model: 'gpt-image-2',
-  parameters: [],
-  canCreateSimilar: true
+  parameters: []
 });
 
 describe('InspirationMasonry', () => {
