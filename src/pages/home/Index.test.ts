@@ -210,7 +210,7 @@ describe('Studio workbench home', () => {
     gallery.vm.$emit('select', gallery.props('items')[0]);
     await wrapper.vm.$nextTick();
     const dialog = wrapper.getComponent({ name: 'ShowcaseDetailDialog' });
-    expect(dialog.props('item')).toMatchObject({ id: showcase.id, prompt: 'Paper fox' });
+    expect(dialog.props('item')).toMatchObject({ id: showcase.id, prompt: '', canCreateSimilar: false });
 
     dialog.vm.$emit('close');
     await wrapper.vm.$nextTick();
