@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 25 Aug 2026 20:16:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 26 Aug 2026 20:58:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.367.2
+
+Wed, 26 Aug 2026 20:58:44 GMT
+
+### Patches
+
+- Close Showcase details after Create similar fills the generation form. (dev@acedata.cloud)
 
 ## 3.367.1
 
