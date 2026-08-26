@@ -71,9 +71,9 @@
             </dl>
           </section>
         </div>
-        <router-link :to="{ name: item.routeName, query: { showcase: item.id } }" class="create-similar">
+        <button type="button" class="create-similar" @click="createSimilar">
           {{ $t('intro.home.showcase.createSimilar') }} <span aria-hidden="true">→</span>
-        </router-link>
+        </button>
       </aside>
     </div>
   </el-dialog>
@@ -93,6 +93,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { ElDialog } from 'element-plus';
 import { CloseIcon } from '@acedatacloud/core/icons/components';
 import type { ResolvedShowcase } from '@/models';
@@ -101,6 +102,7 @@ import ShowcaseAudioPlayer from './ShowcaseAudioPlayer.vue';
 
 const props = defineProps<{ item?: ResolvedShowcase }>();
 const emit = defineEmits<{ close: [] }>();
+const router = useRouter();
 const promptElement = ref<HTMLElement>();
 const promptToggle = ref<HTMLButtonElement>();
 const promptDialogVisible = ref(false);
@@ -146,6 +148,13 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
 
 function restorePromptFocus(): void {
   promptToggle.value?.focus();
+}
+
+async function createSimilar(): Promise<void> {
+  const item = props.item;
+  if (!item) return;
+  await router.push({ name: item.routeName, query: { showcase: item.id } });
+  emit('close');
 }
 
 function parameterLabel(key: string): string {
@@ -417,9 +426,12 @@ function parameterLabel(key: string): string {
   justify-content: center;
   flex: none;
   margin: 0 28px 26px;
+  border: 0;
   border-radius: 999px;
   color: #fff;
   background: var(--el-color-primary);
+  cursor: pointer;
+  font: inherit;
   font-weight: 800;
 
   &:focus-visible {

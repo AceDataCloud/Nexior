@@ -4,6 +4,12 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ResolvedShowcase } from '@/models';
 import ShowcaseDetailDialog from './ShowcaseDetailDialog.vue';
 
+const mocks = vi.hoisted(() => ({ push: vi.fn() }));
+
+vi.mock('vue-router', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('vue-router')>()),
+  useRouter: () => ({ push: mocks.push })
+}));
 vi.mock('@/components/common/VideoPlayer.vue', () => ({
   default: { props: ['src'], template: '<div class="video-player" />' }
 }));
@@ -58,10 +64,6 @@ function mountDialog(item: ResolvedShowcase) {
           emits: ['close', 'closed', 'update:modelValue'],
           template: '<div v-if="modelValue" class="dialog-stub" :id="id"><slot /></div>'
         },
-        RouterLink: {
-          props: ['to'],
-          template: '<a class="router-link"><slot /></a>'
-        },
         VideoPlayer: { props: ['src'], template: '<div class="video-player" />' },
         ShowcaseAudioPlayer: { props: ['src', 'cover', 'title'], template: '<div class="audio-player" />' }
       },
@@ -71,9 +73,13 @@ function mountDialog(item: ResolvedShowcase) {
 }
 
 describe('ShowcaseDetailDialog', () => {
-  beforeEach(() => vi.stubGlobal('ResizeObserver', ResizeObserverStub));
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mocks.push.mockResolvedValue(undefined);
+    vi.stubGlobal('ResizeObserver', ResizeObserverStub);
+  });
 
-  it('shows the image brief, layout, safe parameters, and create-similar destination', () => {
+  it('shows the image brief, layout, and safe parameters', () => {
     const wrapper = mountDialog(baseItem);
 
     expect(wrapper.get('.detail-layout').classes()).toContain('layout-portrait');
@@ -82,10 +88,18 @@ describe('ShowcaseDetailDialog', () => {
     expect(wrapper.get('.service-copy').find('.service-name').text()).toBe(baseItem.name);
     expect(wrapper.get('.service-copy').find('.model').text()).toBe(baseItem.model);
     expect(wrapper.findAll('.parameters dt').map((node) => node.text())).toEqual(['Aspect ratio', 'Seed']);
-    expect((wrapper.getComponent('.router-link') as any).props('to')).toEqual({
+  });
+
+  it('navigates to recreate the item and closes the detail Dialog', async () => {
+    const wrapper = mountDialog(baseItem);
+
+    await wrapper.get('.create-similar').trigger('click');
+
+    expect(mocks.push).toHaveBeenCalledWith({
       name: 'nanobanana-index',
       query: { showcase: baseItem.id }
     });
+    expect(wrapper.emitted('close')).toHaveLength(1);
   });
 
   it('uses a lightweight custom close button while preserving the Dialog close event', async () => {
