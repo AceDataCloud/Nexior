@@ -15,6 +15,7 @@ const item = (service: string, type: string, request: Record<string, unknown>, r
   id: 'showcase-id',
   service,
   task_id: 'task-id',
+  provenance: 'native_generation' as const,
   data: { type, request, response }
 });
 
@@ -154,6 +155,71 @@ describe('resolveShowcase', () => {
       ])
     );
   });
+
+  it.each([undefined, 'imported_master', 'validation_delivery'] as const)(
+    'keeps %s Showcase media visible but disables replay and hides wrapper details',
+    (provenance) => {
+      const source = {
+        ...item(
+          'maestro',
+          'videos',
+          { prompt: 'Validate and deliver this master', aspect: '16:9' },
+          {
+            success: true,
+            data: {
+              cover_url: 'poster.webp',
+              variants: [{ aspect: '16:9', output_url: 'video.mp4' }]
+            }
+          }
+        ),
+        provenance,
+        data: {
+          type: 'videos',
+          presentation: { title: 'Curated master', description: 'A reviewed finished film.' },
+          response: {
+            success: true,
+            data: {
+              cover_url: 'poster.webp',
+              variants: [{ aspect: '16:9', output_url: 'video.mp4' }]
+            }
+          }
+        }
+      };
+      expect(resolveShowcase(source, site)).toMatchObject({
+        mediaType: 'Video',
+        previewUrl: 'video.mp4',
+        layout: 'Landscape',
+        title: 'Curated master',
+        description: 'A reviewed finished film.',
+        prompt: '',
+        model: '',
+        parameters: [],
+        canCreateSimilar: false
+      });
+    }
+  );
+
+  it.each(['aspect', 'ratio', 'aspect_ratio'] as const)(
+    'preserves a redacted square video layout from variant %s',
+    (field) => {
+      const source = {
+        ...item('maestro', 'videos', {}, {}),
+        provenance: 'validation_delivery' as const,
+        data: {
+          type: 'videos',
+          presentation: { title: 'Square master' },
+          response: {
+            success: true,
+            data: {
+              cover_url: 'poster.webp',
+              variants: [{ [field]: '1:1', output_url: 'video.mp4' }]
+            }
+          }
+        }
+      };
+      expect(resolveShowcase(source, site)?.layout).toBe('Square');
+    }
+  );
 
   it('rejects Maestro videos without both a poster and a playable variant', () => {
     expect(

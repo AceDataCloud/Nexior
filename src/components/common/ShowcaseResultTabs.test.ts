@@ -44,6 +44,7 @@ const showcase = {
   id: '196387e7-f217-453f-a678-ed1165e0cbd9',
   service: 'nano-banana',
   task_id: null,
+  provenance: 'native_generation' as const,
   data: {
     type: 'images',
     request: { prompt: 'Original glass pavilion', model: 'nano-banana-pro', aspect_ratio: '16:9' },

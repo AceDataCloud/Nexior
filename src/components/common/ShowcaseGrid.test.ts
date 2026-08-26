@@ -22,7 +22,8 @@ const items: ResolvedShowcase[] = [
     defaultIcon: 'seedance.png',
     prompt: 'A paper fox follows light.',
     model: 'seedance-2.0',
-    parameters: [{ key: 'duration', value: '5' }]
+    parameters: [{ key: 'duration', value: '5' }],
+    canCreateSimilar: true
   },
   {
     id: 'audio-id',
@@ -41,7 +42,8 @@ const items: ResolvedShowcase[] = [
     defaultIcon: 'suno.png',
     prompt: 'A cinematic nocturne.',
     model: 'suno-v4.5',
-    parameters: [{ key: 'instrumental', value: 'true' }]
+    parameters: [{ key: 'instrumental', value: 'true' }],
+    canCreateSimilar: true
   }
 ];
 
@@ -91,6 +93,15 @@ describe('ShowcaseGrid', () => {
 
     await triggers[1].trigger('click');
     expect(wrapper.emitted('select')).toEqual([[items[1]]]);
+  });
+
+  it('keeps display-only media cards but hides their Create similar action', () => {
+    const original = items[1].canCreateSimilar;
+    items[1].canCreateSimilar = false;
+    const { wrapper } = mountGrid();
+    expect(wrapper.findAll('.showcase-card')).toHaveLength(2);
+    expect(wrapper.findAll('.router-link')).toHaveLength(1);
+    items[1].canCreateSimilar = original;
   });
 
   it('autoplays silent video, keeps audio explicit, and plays only one preview', async () => {

@@ -25,6 +25,7 @@ const item = (capability: string, request: Record<string, unknown>, service = SE
   id: ID,
   service,
   task_id: null,
+  provenance: 'native_generation' as const,
   data: {
     type:
       service === 'suno' || service === 'producer' || service === 'fish'
@@ -238,6 +239,21 @@ describe('showcase recreate consumer', () => {
     expect(replace).toHaveBeenCalled();
     expect(ElMessage.warning).toHaveBeenCalled();
   });
+
+  it.each([undefined, 'imported_master', 'validation_delivery'] as const)(
+    'rejects %s provenance before applying any replay config',
+    async (provenance) => {
+      vi.mocked(showcaseOperator.list).mockResolvedValue({
+        data: [{ ...item('seedance', { prompt: 'Do not replay' }), provenance }]
+      } as any);
+      const { options, commit, dispatch, replace } = context('seedance');
+      expect(await consumeShowcase(options)).toBe('failed');
+      expect(commit).not.toHaveBeenCalled();
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(replace).toHaveBeenCalled();
+      expect(ElMessage.warning).toHaveBeenCalled();
+    }
+  );
 
   it('does not fetch malformed IDs', async () => {
     const { options, replace } = context('seedance');

@@ -41,6 +41,7 @@ const image = {
   id: '196387e7-f217-453f-a678-ed1165e0cbd9',
   service: 'nano-banana',
   task_id: null,
+  provenance: 'native_generation' as const,
   data: {
     type: 'images',
     request: { prompt: 'Origami orchard', model: 'nano-banana-pro', aspect_ratio: '3:4' },
@@ -51,6 +52,7 @@ const video = {
   id: '425b90c1-681c-4395-ae55-777d73113489',
   service: 'seedance',
   task_id: null,
+  provenance: 'native_generation' as const,
   data: {
     type: 'videos',
     request: { prompt: 'Paper bird', model: 'seedance', ratio: '9:16' },

@@ -120,9 +120,16 @@ function stringValue(...values: unknown[]): string {
   return values.find((value): value is string => typeof value === 'string' && value.length > 0) || '';
 }
 
-function deriveLayout(request: Record<string, unknown>): ShowcaseLayout {
-  const ratio = stringValue(request.aspect_ratio, request.ratio, request.aspect);
-  const size = stringValue(request.size);
+function deriveLayout(request: Record<string, unknown>, fallback: Record<string, unknown> = {}): ShowcaseLayout {
+  const ratio = stringValue(
+    request.aspect_ratio,
+    request.ratio,
+    request.aspect,
+    fallback.aspect_ratio,
+    fallback.ratio,
+    fallback.aspect
+  );
+  const size = stringValue(request.size, fallback.size);
   const match = ratio.match(/^(\d+):(\d+)$/) || size.match(/^(\d+)x(\d+)$/);
   if (!match) return 'Square';
   const width = Number(match[1]);
@@ -174,12 +181,16 @@ function deriveMedia(
 } {
   if (type === 'videos' || result.video_url) {
     const variants = Array.isArray(result.variants) ? result.variants.map(objectValue) : [];
-    const layout = deriveLayout(request);
+    const variantAspect = stringValue(variants[0]?.aspect_ratio, variants[0]?.ratio, variants[0]?.aspect);
+    const layout = deriveLayout(request, variants[0]);
     return {
       mediaType: 'Video',
       posterUrl: stringValue(result.last_frame_url, result.cover_url),
       previewUrl: stringValue(result.video_url, variants[0]?.output_url),
-      layout: layout === 'Square' && !request.aspect ? 'Landscape' : layout
+      layout:
+        layout === 'Square' && !stringValue(request.aspect_ratio, request.ratio, request.aspect) && !variantAspect
+          ? 'Landscape'
+          : layout
     };
   }
   if (type === 'audios' || result.audio_url || result.file_url) {
@@ -214,7 +225,8 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     defaultIcon
   );
   const localizedPresentation = objectValue(item.data.presentation);
-  const prompt = stringValue(request.prompt, request.text, request.lyric);
+  const canCreateSimilar = item.provenance === 'native_generation';
+  const prompt = canCreateSimilar ? stringValue(request.prompt, request.text, request.lyric) : '';
   const title = stringValue(localizedPresentation.title, result.title, capabilityPresentation.displayName);
   const description = stringValue(localizedPresentation.description, prompt);
   return {
@@ -229,8 +241,9 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     title,
     altText: title || description || capabilityPresentation.displayName,
     prompt,
-    model: stringValue(request.model, result.model),
-    parameters: deriveParameters(request),
+    model: canCreateSimilar ? stringValue(request.model, result.model) : '',
+    parameters: canCreateSimilar ? deriveParameters(request) : [],
+    canCreateSimilar,
     ...media
   };
 }
