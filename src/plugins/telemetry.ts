@@ -25,6 +25,13 @@ export const captureError = telemetry.captureError;
 export const trackApiFailure = telemetry.trackApiFailure;
 export const isInitialized = telemetry.isInitialized;
 
+export type X402WalletRail = 'base' | 'solana';
+export type X402WalletEntrypoint = 'scenario_status' | 'order_checkout';
+
+export function trackWalletConnected(rail: X402WalletRail, entrypoint: X402WalletEntrypoint): void {
+  track('x402_wallet_connected', { provider: rail, id: entrypoint });
+}
+
 /**
  * Wrap a generation request with `generation_submit` / `generation_success` /
  * `generation_failed` events. Preserves the underlying promise's value and

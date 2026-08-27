@@ -203,6 +203,7 @@ import {
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
+import { trackWalletConnected } from '@/plugins/telemetry';
 import { isMobile } from '@/utils';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
@@ -545,6 +546,7 @@ export default defineComponent({
       try {
         await this.connectSolanaWalletWithRetry(wallet.adapter.name);
         this.solanaWalletModalVisible = false;
+        trackWalletConnected('solana', 'order_checkout');
       } catch (error) {
         console.warn('wallet connect failed', error);
         ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));
@@ -581,6 +583,7 @@ export default defineComponent({
         this.evmAddress = address;
         await this.refreshChainId();
         await this.ensureNetwork();
+        trackWalletConnected('base', 'order_checkout');
       } catch (error) {
         console.warn('EVM wallet connect failed', error);
         ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));

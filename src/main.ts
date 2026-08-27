@@ -148,7 +148,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   void runLiveUpdate();
   initializeSiteAnalytics(store.state.site || undefined);
 
-  void initTelemetry({
+  await initTelemetry({
     uin: store.getters.user?.id,
     // __APP_VERSION__ is injected by vite.config `define` for all surfaces.
     // (Previously this read import.meta.env.VITE_APP_VERSION, which was never
