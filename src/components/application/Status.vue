@@ -130,6 +130,7 @@ import QrCode from 'vue-qrcode';
 import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs, ElTag } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_USAGE_LIST } from '@/router';
+import { trackWalletConnected } from '@/plugins/telemetry';
 import ApplicationInfo from './Info.vue';
 import ContinuousPaymentCard from './ContinuousPaymentCard.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -326,6 +327,7 @@ export default defineComponent({
         }
         setActiveWalletRail('base');
         this.evmWalletPickerVisible = false;
+        trackWalletConnected('base', 'scenario_status');
       } catch (error) {
         console.warn('Base wallet connect failed', error);
         ElMessage.error(String(this.$t('coin.message.connectError')));
@@ -350,6 +352,7 @@ export default defineComponent({
         await walletApi.connect();
         setActiveWalletRail('solana');
         this.walletPickerVisible = false;
+        trackWalletConnected('solana', 'scenario_status');
       } catch (error) {
         console.warn('wallet connect failed', error);
         ElMessage.error(String(this.$t('coin.message.connectError')));
