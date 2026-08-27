@@ -67,7 +67,11 @@
           </span>
           <strong>{{ item.title }}</strong>
           <p>{{ item.description }}</p>
-          <router-link :to="{ name: item.routeName, query: { showcase: item.id } }" class="create-link">
+          <router-link
+            v-if="item.service !== 'maestro'"
+            :to="{ name: item.routeName, query: { showcase: item.id } }"
+            class="create-link"
+          >
             {{ $t('intro.home.showcase.createSimilar') }} <span aria-hidden="true">→</span>
           </router-link>
         </div>

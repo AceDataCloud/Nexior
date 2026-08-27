@@ -142,17 +142,11 @@ describe('resolveShowcase', () => {
       posterUrl: 'poster.webp',
       previewUrl: 'video.mp4',
       layout: 'Portrait',
-      title: 'Air at Speed'
+      title: 'Air at Speed',
+      prompt: '',
+      model: '',
+      parameters: []
     });
-    expect(result?.parameters).toEqual(
-      expect.arrayContaining([
-        { key: 'langs', value: 'en' },
-        { key: 'aspect', value: '9:16' },
-        { key: 'quality', value: 'lite' },
-        { key: 'scenario', value: 'narrated' },
-        { key: 'voice', value: 'documentary-male' }
-      ])
-    );
   });
 
   it('rejects Maestro videos without both a poster and a playable variant', () => {

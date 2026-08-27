@@ -71,7 +71,7 @@
             </dl>
           </section>
         </div>
-        <button type="button" class="create-similar" @click="createSimilar">
+        <button v-if="item.service !== 'maestro'" type="button" class="create-similar" @click="createSimilar">
           {{ $t('intro.home.showcase.createSimilar') }} <span aria-hidden="true">→</span>
         </button>
       </aside>
@@ -152,7 +152,7 @@ function restorePromptFocus(): void {
 
 async function createSimilar(): Promise<void> {
   const item = props.item;
-  if (!item) return;
+  if (!item || item.service === 'maestro') return;
   await router.push({ name: item.routeName, query: { showcase: item.id } });
   emit('close');
 }

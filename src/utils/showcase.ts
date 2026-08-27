@@ -214,7 +214,8 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     defaultIcon
   );
   const localizedPresentation = objectValue(item.data.presentation);
-  const prompt = stringValue(request.prompt, request.text, request.lyric);
+  const canCreateSimilar = item.service !== 'maestro';
+  const prompt = canCreateSimilar ? stringValue(request.prompt, request.text, request.lyric) : '';
   const title = stringValue(localizedPresentation.title, result.title, capabilityPresentation.displayName);
   const description = stringValue(localizedPresentation.description, prompt);
   return {
@@ -229,8 +230,8 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     title,
     altText: title || description || capabilityPresentation.displayName,
     prompt,
-    model: stringValue(request.model, result.model),
-    parameters: deriveParameters(request),
+    model: canCreateSimilar ? stringValue(request.model, result.model) : '',
+    parameters: canCreateSimilar ? deriveParameters(request) : [],
     ...media
   };
 }
