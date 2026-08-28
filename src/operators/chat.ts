@@ -86,11 +86,12 @@ class ChatOperator {
         let finalAnswer = '';
         let id: string | undefined;
         let buffer = '';
+        let terminalSeen = false;
 
         while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
+          buffer += done ? decoder.decode() : decoder.decode(value, { stream: true });
+          if (done && buffer) buffer += '\n';
 
           const lines = buffer.split('\n');
           buffer = lines.pop() || '';
@@ -102,6 +103,7 @@ class ChatOperator {
             if (trimmedLine.startsWith('data: ')) {
               const subValue = trimmedLine.substring(6).trim();
               if (subValue === '[DONE]') {
+                terminalSeen = true;
                 resolve({ answer: finalAnswer, delta_answer: '' });
                 return;
               }
@@ -169,6 +171,11 @@ class ChatOperator {
               }
             }
           }
+          if (done) break;
+        }
+        if (!terminalSeen) {
+          reject(normalizeChatError(500, 'stream_interrupted', 'The response stream ended before completion.'));
+          return;
         }
         resolve({ answer: finalAnswer, delta_answer: '' });
       } catch (error) {

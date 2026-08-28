@@ -1699,6 +1699,20 @@ export default defineComponent({
           this.handleRequestError(error, targetIndex);
         });
     },
+    settleInterruptedTools(message: IChatMessage | undefined, stoppedByUser: boolean) {
+      if (!message || !Array.isArray(message.content)) return;
+      for (const item of message.content) {
+        if (item.type !== 'tool_use' || item.status === 'done') continue;
+        item.status = 'done';
+        item.is_error = true;
+        item.duration_ms = item.duration_ms ?? 0;
+        if (item.execution === 'browser') {
+          item.execution_state = stoppedByUser ? 'stopped' : 'failed';
+        }
+        delete item.pending_question;
+        delete item.input_stream;
+      }
+    },
     async handleRequestError(error: any, targetIndex?: number) {
       console.error('error happened', error);
       // A turn that errored/aborted after emitting a client tool_use must NOT
@@ -1712,6 +1726,8 @@ export default defineComponent({
       if (msg) {
         msg.state = IChatMessageState.FAILED;
       }
+      const stoppedByUser = error.name === 'AbortError' || axios.isCancel(error);
+      this.settleInterruptedTools(msg, stoppedByUser);
       if (error.name === 'AbortError') {
         console.error('aborted');
         this.answering = false;

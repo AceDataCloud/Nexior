@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Status } from '@/models';
+import { BaseError, IChatMessageState, Status } from '@/models';
 import Conversation from './Conversation.vue';
 
 const mountComponent = ({ credentialToken }: { credentialToken?: string } = {}) => {
@@ -88,5 +88,81 @@ describe('chat/Conversation loading state', () => {
 
     expect(wrapper.find('.conversation-loading').exists()).toBe(false);
     expect(wrapper.get('.dialogue').classes()).toContain('empty');
+  });
+});
+
+describe('chat/Conversation interrupted tools', () => {
+  it('preserves partial content and settles unfinished tools on a service error', async () => {
+    const { wrapper } = mountComponent({ credentialToken: 'token' });
+    const vm = wrapper.vm as unknown as {
+      messages: any[];
+      handleRequestError: (error: unknown, targetIndex?: number) => Promise<void>;
+    };
+    vm.messages = [
+      {
+        role: 'assistant',
+        state: IChatMessageState.ANSWERING,
+        content: [
+          { type: 'text', text: 'Partial answer' },
+          {
+            type: 'tool_use',
+            tool_id: 'tool-1',
+            status: 'running',
+            pending_question: { questions: [] },
+            pending_consent_request: { consent_request_id: 'consent-1', requirements: [] },
+            pending_action_confirmation: { title: 'Publish', action: 'publish' }
+          }
+        ]
+      }
+    ];
+
+    await vm.handleRequestError(new BaseError(500, 'stream_interrupted', 'stream ended'), 0);
+
+    expect(vm.messages[0]).toMatchObject({
+      state: IChatMessageState.FAILED,
+      error: { code: 'stream_interrupted', message: 'stream ended' },
+      content: [
+        { type: 'text', text: 'Partial answer' },
+        {
+          type: 'tool_use',
+          status: 'done',
+          is_error: true
+        }
+      ]
+    });
+    expect(vm.messages[0].content[1]).not.toHaveProperty('pending_question');
+    expect(vm.messages[0].content[1]).toMatchObject({
+      pending_consent_request: { consent_request_id: 'consent-1' },
+      pending_action_confirmation: { title: 'Publish' }
+    });
+  });
+
+  it('settles a user-stopped browser tool without attaching a service error', async () => {
+    const { wrapper } = mountComponent({ credentialToken: 'token' });
+    const vm = wrapper.vm as unknown as {
+      messages: any[];
+      handleRequestError: (error: unknown, targetIndex?: number) => Promise<void>;
+    };
+    vm.messages = [
+      {
+        role: 'assistant',
+        state: IChatMessageState.ANSWERING,
+        content: [
+          { type: 'text', text: 'Partial answer' },
+          { type: 'tool_use', tool_id: 'tool-1', status: 'running', execution: 'browser' }
+        ]
+      }
+    ];
+
+    await vm.handleRequestError(new DOMException('Stopped', 'AbortError'), 0);
+
+    expect(vm.messages[0]).toMatchObject({
+      state: IChatMessageState.FAILED,
+      content: [
+        { type: 'text', text: 'Partial answer' },
+        { type: 'tool_use', status: 'done', is_error: true, execution_state: 'stopped' }
+      ]
+    });
+    expect(vm.messages[0].error).toBeUndefined();
   });
 });
