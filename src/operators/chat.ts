@@ -86,7 +86,6 @@ class ChatOperator {
         let finalAnswer = '';
         let id: string | undefined;
         let buffer = '';
-        let terminalSeen = false;
 
         while (true) {
           const { done, value } = await reader.read();
@@ -103,7 +102,6 @@ class ChatOperator {
             if (trimmedLine.startsWith('data: ')) {
               const subValue = trimmedLine.substring(6).trim();
               if (subValue === '[DONE]') {
-                terminalSeen = true;
                 resolve({ answer: finalAnswer, delta_answer: '' });
                 return;
               }
@@ -173,11 +171,7 @@ class ChatOperator {
           }
           if (done) break;
         }
-        if (!terminalSeen) {
-          reject(normalizeChatError(500, 'stream_interrupted', 'The response stream ended before completion.'));
-          return;
-        }
-        resolve({ answer: finalAnswer, delta_answer: '' });
+        reject(normalizeChatError(500, 'stream_interrupted', 'The response stream ended before completion.'));
       } catch (error) {
         console.error('Error:', error);
         reject(error);

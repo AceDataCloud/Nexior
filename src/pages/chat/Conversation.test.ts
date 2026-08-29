@@ -6,10 +6,17 @@ import { describe, expect, it, vi } from 'vitest';
 import { BaseError, IChatMessageState, Status } from '@/models';
 import Conversation from './Conversation.vue';
 
-const mountComponent = ({ credentialToken }: { credentialToken?: string } = {}) => {
+const mountComponent = ({
+  credentialToken,
+  fetchedConversation
+}: { credentialToken?: string; fetchedConversation?: Record<string, unknown> } = {}) => {
   const pendingConversation = new Promise(() => undefined);
   const dispatch = vi.fn((action: string) =>
-    action === 'chat/getConversation' ? pendingConversation : Promise.resolve(undefined)
+    action === 'chat/getConversation'
+      ? fetchedConversation
+        ? Promise.resolve(fetchedConversation)
+        : pendingConversation
+      : Promise.resolve(undefined)
   );
   return {
     dispatch,
@@ -88,6 +95,71 @@ describe('chat/Conversation loading state', () => {
 
     expect(wrapper.find('.conversation-loading').exists()).toBe(false);
     expect(wrapper.get('.dialogue').classes()).toContain('empty');
+  });
+
+  it('preserves a checkpointed awaiting-input pause for resume', async () => {
+    const pause = {
+      role: 'assistant',
+      state: IChatMessageState.ANSWERING,
+      content: [
+        {
+          type: 'tool_use',
+          tool_id: 'ask-1',
+          tool_name: 'ask_user_question',
+          status: 'awaiting_input',
+          pending_question: { questions: [] }
+        }
+      ]
+    };
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      fetchedConversation: { id: 'conversation-1', messages: [pause] }
+    });
+    const vm = wrapper.vm as unknown as {
+      messages: any[];
+      onRestoreConversation: (id: string) => Promise<void>;
+    };
+
+    await vm.onRestoreConversation('conversation-1');
+
+    expect(vm.messages[0]).toMatchObject({
+      state: IChatMessageState.ANSWERING,
+      content: [{ status: 'awaiting_input', pending_question: { questions: [] } }]
+    });
+  });
+
+  it('settles a checkpointed answering message when no live stream can resume it', async () => {
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      fetchedConversation: {
+        id: 'conversation-1',
+        messages: [
+          {
+            role: 'assistant',
+            state: IChatMessageState.ANSWERING,
+            content: [
+              { type: 'text', text: 'Recovered partial answer' },
+              { type: 'tool_use', tool_id: 'tool-1', status: 'running' }
+            ]
+          }
+        ]
+      }
+    });
+    const vm = wrapper.vm as unknown as {
+      messages: any[];
+      onRestoreConversation: (id: string) => Promise<void>;
+    };
+
+    await vm.onRestoreConversation('conversation-1');
+
+    expect(vm.messages[0]).toMatchObject({
+      state: IChatMessageState.FAILED,
+      error: { code: 'stream_interrupted' },
+      content: [
+        { type: 'text', text: 'Recovered partial answer' },
+        { type: 'tool_use', status: 'done', is_error: true }
+      ]
+    });
   });
 });
 

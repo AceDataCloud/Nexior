@@ -735,7 +735,25 @@ export default defineComponent({
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
         if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
         if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
-        this.messages = conversation?.messages || [];
+        this.messages = (conversation?.messages || []).map((message) => {
+          if (message.role !== ROLE_ASSISTANT || message.state !== IChatMessageState.ANSWERING) return message;
+          if (
+            Array.isArray(message.content) &&
+            message.content.some((item) => item.type === 'tool_use' && item.status === 'awaiting_input')
+          ) {
+            return message;
+          }
+          const interrupted = { ...message, state: IChatMessageState.FAILED };
+          interrupted.error = {
+            code: 'stream_interrupted',
+            message: this.$t('chat.message.responseInterrupted') as string
+          };
+          if (Array.isArray(interrupted.content)) {
+            interrupted.content = interrupted.content.map((item) => ({ ...item }));
+          }
+          this.settleInterruptedTools(interrupted, false);
+          return interrupted;
+        });
         this.onScrollDown();
       } finally {
         if (this.restoringConversationId === id) this.restoringConversationId = undefined;
