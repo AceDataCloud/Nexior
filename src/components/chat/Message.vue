@@ -9,7 +9,7 @@
     <div class="author">
       <el-image v-if="message.role === 'assistant'" :src="modelGroup?.icon" fit="cover" class="avatar" />
     </div>
-    <div v-if="!errorText" class="main">
+    <div v-if="!errorText || hasRenderableAssistantContent" class="main">
       <div
         v-motion
         :initial="{ opacity: 0, y: 5 }"
@@ -171,6 +171,13 @@
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
+        <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
+          <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <span>{{ partialErrorText }}</span>
+          <el-button v-if="showBuyMore && !readonly" round type="primary" size="small" @click="onBuyMore">
+            {{ $t('common.button.buyMore') }}
+          </el-button>
+        </div>
       </div>
       <div
         v-motion
@@ -377,6 +384,21 @@ export default defineComponent({
       }
       return '';
     },
+    hasRenderableAssistantContent(): boolean {
+      if (this.message.role !== ROLE_ASSISTANT) return false;
+      if (this.copyableText.trim() || this.message.thinking?.trim()) return true;
+      if (!Array.isArray(this.message.content)) return false;
+      return this.message.content.some((item) => ['image_url', 'file_url', 'tool_use', 'card'].includes(item.type));
+    },
+    partialErrorText(): string | undefined {
+      if (!this.errorText) return undefined;
+      const message = this.message.error?.message?.trim().toLowerCase();
+      const interrupted =
+        this.message.error?.code === 'stream_interrupted' ||
+        message === 'aborted' ||
+        message === 'llm stream ended without a terminal event';
+      return interrupted ? (this.$t('chat.message.responseInterrupted') as string) : this.errorText;
+    },
     errorText() {
       console.debug('error', this.message.error);
       if (!this.message.error || !this.message.error?.code) {
@@ -497,6 +519,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.partial-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--el-color-danger);
+  background-color: var(--el-color-danger-light-9);
+  border: 1px solid var(--el-color-danger-light-7);
+  font-size: 13px;
+  line-height: 1.5;
+
+  .error-icon {
+    flex-shrink: 0;
+  }
+}
+
 .error-card {
   display: flex;
   align-items: center;

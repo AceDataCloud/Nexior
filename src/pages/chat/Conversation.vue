@@ -735,7 +735,25 @@ export default defineComponent({
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
         if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
         if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
-        this.messages = conversation?.messages || [];
+        this.messages = (conversation?.messages || []).map((message) => {
+          if (message.role !== ROLE_ASSISTANT || message.state !== IChatMessageState.ANSWERING) return message;
+          if (
+            Array.isArray(message.content) &&
+            message.content.some((item) => item.type === 'tool_use' && item.status === 'awaiting_input')
+          ) {
+            return message;
+          }
+          const interrupted = { ...message, state: IChatMessageState.FAILED };
+          interrupted.error = {
+            code: 'stream_interrupted',
+            message: this.$t('chat.message.responseInterrupted') as string
+          };
+          if (Array.isArray(interrupted.content)) {
+            interrupted.content = interrupted.content.map((item) => ({ ...item }));
+          }
+          this.settleInterruptedTools(interrupted, false);
+          return interrupted;
+        });
         this.onScrollDown();
       } finally {
         if (this.restoringConversationId === id) this.restoringConversationId = undefined;
@@ -1699,6 +1717,20 @@ export default defineComponent({
           this.handleRequestError(error, targetIndex);
         });
     },
+    settleInterruptedTools(message: IChatMessage | undefined, stoppedByUser: boolean) {
+      if (!message || !Array.isArray(message.content)) return;
+      for (const item of message.content) {
+        if (item.type !== 'tool_use' || item.status === 'done') continue;
+        item.status = 'done';
+        item.is_error = true;
+        item.duration_ms = item.duration_ms ?? 0;
+        if (item.execution === 'browser') {
+          item.execution_state = stoppedByUser ? 'stopped' : 'failed';
+        }
+        delete item.pending_question;
+        delete item.input_stream;
+      }
+    },
     async handleRequestError(error: any, targetIndex?: number) {
       console.error('error happened', error);
       // A turn that errored/aborted after emitting a client tool_use must NOT
@@ -1712,6 +1744,8 @@ export default defineComponent({
       if (msg) {
         msg.state = IChatMessageState.FAILED;
       }
+      const stoppedByUser = error.name === 'AbortError' || axios.isCancel(error);
+      this.settleInterruptedTools(msg, stoppedByUser);
       if (error.name === 'AbortError') {
         console.error('aborted');
         this.answering = false;

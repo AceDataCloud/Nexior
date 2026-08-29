@@ -120,6 +120,32 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     expect(events[0].origin).toBeUndefined();
   });
 
+  it('accepts a DONE marker that is not followed by a newline', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(sseResponse(['data: [DONE]'])));
+
+    await expect(
+      chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'hello' } as never, { token: 't' })
+    ).resolves.toMatchObject({ answer: '', delta_answer: '' });
+  });
+
+  it('preserves delivered deltas but rejects a stream that closes without DONE', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(sseResponse(['data: {"type":"text_delta","delta_answer":"partial"}\n']))
+    );
+    const events: IChatConversationResponse[] = [];
+
+    await expect(
+      chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'write a spec' } as never, {
+        token: 't',
+        stream: (response) => events.push(response)
+      })
+    ).rejects.toMatchObject({ code: 'stream_interrupted' });
+
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({ answer: 'partial', delta_answer: 'partial' });
+  });
+
   it('normalizes streaming 413 request_entity_too_large errors for localized UI copy', async () => {
     vi.stubGlobal(
       'fetch',

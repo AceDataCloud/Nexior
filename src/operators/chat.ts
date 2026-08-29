@@ -89,8 +89,8 @@ class ChatOperator {
 
         while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
+          buffer += done ? decoder.decode() : decoder.decode(value, { stream: true });
+          if (done && buffer) buffer += '\n';
 
           const lines = buffer.split('\n');
           buffer = lines.pop() || '';
@@ -169,8 +169,9 @@ class ChatOperator {
               }
             }
           }
+          if (done) break;
         }
-        resolve({ answer: finalAnswer, delta_answer: '' });
+        reject(normalizeChatError(500, 'stream_interrupted', 'The response stream ended before completion.'));
       } catch (error) {
         console.error('Error:', error);
         reject(error);
