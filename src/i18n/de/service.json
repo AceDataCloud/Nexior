@@ -168,8 +168,8 @@
     "description": "Spaltenüberschrift für zusätzliche Erläuterungen zu den Preisen."
   },
   "message.pricingDescription": {
-    "message": "Hier sind die Preisregeln für die Dienstleistungen. Die voraussichtlichen Punkte für diese Anfrage werden weiterhin neben der Generierungsschaltfläche angezeigt.",
-    "description": "Erläuterung über der Preistabelle der Dienstleistungen."
+    "message": "Hier sind die Punktepreise und Abrechnungsregeln für den Dienst.",
+    "description": "Beschreibung oben in der Preisliste für den Dienst."
   },
   "message.noPricing": {
     "message": "Für diese Dienstleistung sind derzeit keine öffentlichen Preisregeln verfügbar.",
@@ -195,6 +195,14 @@
     "message": "{amount} Punkte / {unit}",
     "description": "Preise pro Einheit, die in Punkten angegeben sind."
   },
+  "message.imageTokenEstimate": {
+    "message": "Die Kosten werden basierend auf der tatsächlichen Nutzung von Text-, Bild- und Bildausgabe-Token berechnet.",
+    "description": "Erläuterung der Kosten, die neben dem Abrechnungsmodell für Bild-Token angezeigt wird."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Die endgültigen Kosten werden basierend auf dem tatsächlichen Verbrauch berechnet.",
+    "description": "Erläuterung der nutzungsabhängigen Preisgestaltung."
+  },
   "billing.free": {
     "message": "Kostenlos",
     "description": "Label für die Abrechnungsart bei kostenlosen Regeln."
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "Dynamisch berechnet",
     "description": "Label für die Abrechnungsart bei komplexen Regeln."
+  },
+  "billing.usageMetered": {
+    "message": "Nach tatsächlichem Verbrauch",
+    "description": "Label für die Abrechnungsart, die letztendlich nach dem tatsächlichen Verbrauch abgerechnet wird."
   },
   "operator.equals": {
     "message": "{field}：{value}",

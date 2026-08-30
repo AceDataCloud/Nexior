@@ -168,8 +168,8 @@
     "description": "Titre de la colonne pour les explications supplémentaires sur les prix."
   },
   "message.pricingDescription": {
-    "message": "Voici les règles de prix en points pour le service. Le montant estimé des points pour cette demande est toujours affiché à côté du bouton de génération.",
-    "description": "Explication au-dessus du tableau des prix des services."
+    "message": "Voici les prix des points et les règles de facturation du service.",
+    "description": "Description située au-dessus du tableau des prix du service."
   },
   "message.noPricing": {
     "message": "Aucune règle de prix publique disponible pour ce service.",
@@ -195,6 +195,14 @@
     "message": "{amount} points / {unit}",
     "description": "Prix d'utilisation exprimé en points par unité."
   },
+  "message.imageTokenEstimate": {
+    "message": "Les frais sont calculés en fonction de l'utilisation réelle des tokens d'entrée de texte, d'entrée d'image et de sortie d'image.",
+    "description": "Explication des frais affichée à côté du modèle de facturation des tokens d'image."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Les frais finaux sont calculés en fonction de l'utilisation réelle.",
+    "description": "Explication des tarifs de facturation à l'utilisation."
+  },
   "billing.free": {
     "message": "Gratuit",
     "description": "Étiquette de la méthode de facturation pour les règles gratuites."
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "Calcul dynamique",
     "description": "Étiquette de la méthode de facturation pour des règles complexes."
+  },
+  "billing.usageMetered": {
+    "message": "Facturation selon l'utilisation réelle",
+    "description": "Étiquette de méthode de facturation qui est finalement réglée en fonction de l'utilisation réelle."
   },
   "operator.equals": {
     "message": "{field} : {value}",

@@ -17,6 +17,8 @@ export interface ServicePricingRow {
   rateField?: string;
   unit?: string;
   remark?: string;
+  estimated: boolean;
+  usageMetered: boolean;
 }
 
 const CONDITION_OPERATORS = new Set(['==', '===', 'in', '<=', '<', '>=', '>']);
@@ -146,7 +148,9 @@ export function normalizeServicePricing(rules: unknown): ServicePricingRow[] {
       id: `pricing-rule-${index}`,
       conditions,
       unit: typeof rule.unit === 'string' ? rule.unit : undefined,
-      remark: typeof rule.remark === 'string' ? rule.remark : undefined
+      remark: typeof rule.remark === 'string' ? rule.remark : undefined,
+      estimated: rule.estimated === true,
+      usageMetered: rule.usage_metered === true
     };
 
     if (typeof rule.consumption === 'number' && Number.isFinite(rule.consumption)) {

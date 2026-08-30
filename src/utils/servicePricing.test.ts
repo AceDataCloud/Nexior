@@ -35,6 +35,16 @@ describe('normalizeServicePricing', () => {
     expect(rows[1].conditions).toEqual([]);
   });
 
+  it('preserves usage-metered estimate flags without marking ordinary prices', () => {
+    const rows = normalizeServicePricing([
+      { conditions: {}, consumption: 0.5, estimated: true, usage_metered: true },
+      { conditions: {}, consumption: 0.2 }
+    ]);
+
+    expect(rows[0]).toMatchObject({ estimated: true, usageMetered: true });
+    expect(rows[1]).toMatchObject({ estimated: false, usageMetered: false });
+  });
+
   it('normalizes membership, reversed comparisons, and same-field alternatives', () => {
     const [row] = normalizeServicePricing([
       {

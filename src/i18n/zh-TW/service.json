@@ -168,7 +168,7 @@
     "description": "價格補充說明的列標題。"
   },
   "message.pricingDescription": {
-    "message": "以下為服務的積分價格規則。本次請求的預計積分仍顯示在生成按鈕旁。",
+    "message": "以下為服務的積分價格與計費規則。",
     "description": "服務價格表上方的說明。"
   },
   "message.noPricing": {
@@ -195,6 +195,14 @@
     "message": "{amount} 積分 / {unit}",
     "description": "以每單位積分表示的用量價格。"
   },
+  "message.imageTokenEstimate": {
+    "message": "費用按實際文字輸入、圖片輸入和圖片輸出 Token 用量計算。",
+    "description": "圖片 Token 計費模型旁顯示的費用說明。"
+  },
+  "message.usageMeteredPricing": {
+    "message": "最終費用按實際用量結算。",
+    "description": "用量計費價格表的說明。"
+  },
   "billing.free": {
     "message": "免費",
     "description": "免費規則的計費方式標籤。"
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "動態計算",
     "description": "複雜規則的計費方式標籤。"
+  },
+  "billing.usageMetered": {
+    "message": "按實際用量",
+    "description": "最終按實際用量結算的計費方式標籤。"
   },
   "operator.equals": {
     "message": "{field}：{value}",

@@ -168,7 +168,7 @@
     "description": "价格补充说明的列标题。"
   },
   "message.pricingDescription": {
-    "message": "以下为服务的积分价格规则。本次请求的预计积分仍显示在生成按钮旁。",
+    "message": "以下为服务的积分价格与计费规则。",
     "description": "服务价格表上方的说明。"
   },
   "message.noPricing": {
@@ -195,6 +195,14 @@
     "message": "{amount} 积分 / {unit}",
     "description": "以每单位积分表示的用量价格。"
   },
+  "message.imageTokenEstimate": {
+    "message": "费用按实际文字输入、图片输入和图片输出 Token 用量计算。",
+    "description": "图片 Token 计费模型旁显示的费用说明。"
+  },
+  "message.usageMeteredPricing": {
+    "message": "最终费用按实际用量结算。",
+    "description": "用量计费价格表的说明。"
+  },
   "billing.free": {
     "message": "免费",
     "description": "免费规则的计费方式标签。"
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "动态计算",
     "description": "复杂规则的计费方式标签。"
+  },
+  "billing.usageMetered": {
+    "message": "按实际用量",
+    "description": "最终按实际用量结算的计费方式标签。"
   },
   "operator.equals": {
     "message": "{field}：{value}",

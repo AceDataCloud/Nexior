@@ -168,8 +168,8 @@
     "description": "Intestazione della colonna per le note aggiuntive sui prezzi."
   },
   "message.pricingDescription": {
-    "message": "Di seguito sono riportate le regole di prezzo in crediti per il servizio. I crediti stimati per questa richiesta sono ancora visualizzati accanto al pulsante di generazione.",
-    "description": "Descrizione sopra la tabella dei prezzi dei servizi."
+    "message": "Di seguito sono riportati i prezzi dei punti e le regole di fatturazione del servizio.",
+    "description": "Descrizione sopra la tabella dei prezzi del servizio."
   },
   "message.noPricing": {
     "message": "Non ci sono regole di prezzo pubbliche per questo servizio.",
@@ -195,6 +195,14 @@
     "message": "{amount} crediti / {unit}",
     "description": "Prezzo per unità espresso in crediti."
   },
+  "message.imageTokenEstimate": {
+    "message": "I costi sono calcolati in base all'uso effettivo di token di testo, input di immagini e output di immagini.",
+    "description": "Descrizione dei costi visualizzata accanto al modello di tariffazione dei token delle immagini."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Il costo finale è calcolato in base all'uso effettivo.",
+    "description": "Descrizione del piano tariffario basato sull'uso."
+  },
   "billing.free": {
     "message": "Gratuito",
     "description": "Etichetta del metodo di fatturazione per le regole gratuite."
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "Calcolo dinamico",
     "description": "Etichetta del metodo di fatturazione per regole complesse."
+  },
+  "billing.usageMetered": {
+    "message": "In base all'uso effettivo",
+    "description": "Etichetta per il metodo di fatturazione che si basa sull'uso effettivo."
   },
   "operator.equals": {
     "message": "{field}：{value}",

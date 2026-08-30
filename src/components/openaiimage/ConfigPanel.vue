@@ -10,8 +10,9 @@
       <scenario-payment-mode scenario="openaiimage" />
       <service-pricing-summary
         v-if="!walletMode"
-        :value="consumption"
+        :value="displayConsumption"
         :service="service"
+        :note="pricingNote"
         :pricing-models="OPENAIIMAGE_MODELS"
         pricing-model-default="dall-e-3"
         :pricing-unit-aliases="{ n: 'image' }"
@@ -38,7 +39,7 @@ import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
 import { openaiimageOperator } from '@/operators';
-import { OPENAIIMAGE_MODELS } from '@/constants';
+import { OPENAIIMAGE_MODELS, OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL } from '@/constants';
 
 const QUOTE_DEBOUNCE_MS = 350;
 
@@ -78,8 +79,16 @@ export default defineComponent({
         this.service?.cost
       );
     },
+    displayConsumption(): number | undefined {
+      return this.config?.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL ? undefined : this.consumption;
+    },
     service() {
       return this.$store.state.openaiimage?.service;
+    },
+    pricingNote(): string {
+      return this.config?.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
+        ? this.$t('service.message.imageTokenEstimate')
+        : '';
     },
     walletMode(): boolean {
       return isScenarioX402Enabled() && scenarioPaymentState('openaiimage').mode === 'wallet';

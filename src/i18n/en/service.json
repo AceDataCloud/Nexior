@@ -168,7 +168,7 @@
     "description": "Column label for additional pricing notes."
   },
   "message.pricingDescription": {
-    "message": "These are the service pricing rules in Credits. Your current request estimate appears next to the generate button.",
+    "message": "These are the service Credit prices and billing rules.",
     "description": "Explanation shown above the service pricing table."
   },
   "message.noPricing": {
@@ -195,6 +195,14 @@
     "message": "{amount} Credits / {unit}",
     "description": "A usage-based price expressed in Credits per unit."
   },
+  "message.imageTokenEstimate": {
+    "message": "Charges are based on actual text input, image input, and image output tokens.",
+    "description": "Cost note shown next to token-metered image models."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Final charges are based on actual usage.",
+    "description": "Explanation for usage-metered pricing tables."
+  },
   "billing.free": {
     "message": "Free",
     "description": "Billing method label for a free rule."
@@ -210,6 +218,10 @@
   "billing.calculated": {
     "message": "Calculated",
     "description": "Billing method label for a complex rule."
+  },
+  "billing.usageMetered": {
+    "message": "Actual usage",
+    "description": "Billing method label for prices settled from actual usage."
   },
   "operator.equals": {
     "message": "{field}: {value}",

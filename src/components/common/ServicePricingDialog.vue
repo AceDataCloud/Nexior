@@ -8,6 +8,9 @@
     @close="$emit('update:visible', false)"
   >
     <p class="pricing-description">{{ $t('service.message.pricingDescription') }}</p>
+    <p v-if="hasUsageMeteredPrices" class="pricing-usage-note">
+      {{ $t('service.message.usageMeteredPricing') }}
+    </p>
 
     <el-skeleton v-if="!service" :rows="4" animated />
     <el-empty v-else-if="!rows.length" :description="$t('service.message.noPricing')" />
@@ -126,6 +129,9 @@ export default defineComponent({
       const title = this.service?.title;
       return title ? this.$t('service.title.pricingFor', { service: title }) : this.$t('service.title.pricing');
     },
+    hasUsageMeteredPrices(): boolean {
+      return this.rows.some((row) => row.usageMetered);
+    },
     showBillingMethod(): boolean {
       return new Set(this.rows.map((row) => row.billingKind)).size > 1;
     },
@@ -200,7 +206,7 @@ export default defineComponent({
       });
     },
     billingLabel(row: ServicePricingRow): string {
-      return this.$t(`service.billing.${row.billingKind}`);
+      return row.usageMetered ? this.$t('service.billing.usageMetered') : this.$t(`service.billing.${row.billingKind}`);
     },
     unitLabel(row: ServicePricingRow): string {
       const rawUnit = row.unit || row.rateField;
@@ -209,16 +215,16 @@ export default defineComponent({
       return TRANSLATED_UNITS.has(unit) ? this.$t(`service.unit.${unit}`) : unit.replaceAll('_', ' ');
     },
     priceLabel(row: ServicePricingRow): string {
+      if (row.usageMetered) return this.$t('service.billing.usageMetered');
       if (row.billingKind === 'free') return this.$t('service.message.free');
       if (row.billingKind === 'calculated' || row.amount === undefined) {
         return this.$t('service.message.calculated');
       }
       const amount = formatCredits(row.amount);
       const unit = this.unitLabel(row);
-      if (row.billingKind === 'linear' || unit) {
-        return this.$t('service.message.creditsPerUnit', { amount, unit });
-      }
-      return this.$t('service.message.creditsAmount', { amount });
+      return row.billingKind === 'linear' || unit
+        ? this.$t('service.message.creditsPerUnit', { amount, unit })
+        : this.$t('service.message.creditsAmount', { amount });
     }
   }
 });
@@ -229,6 +235,13 @@ export default defineComponent({
   margin: 0 0 16px;
   color: var(--el-text-color-secondary);
   line-height: 1.6;
+}
+
+.pricing-usage-note {
+  margin: -8px 0 16px;
+  color: var(--el-color-warning-dark-2);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .pricing-table-wrap {
