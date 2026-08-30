@@ -168,7 +168,7 @@
     "description": "Column label for additional pricing notes."
   },
   "message.pricingDescription": {
-    "message": "These are the service pricing rules in Credits. Your current request estimate appears next to the generate button.",
+    "message": "These are the service Credit prices and billing rules.",
     "description": "Explanation shown above the service pricing table."
   },
   "message.noPricing": {
@@ -195,17 +195,13 @@
     "message": "{amount} Credits / {unit}",
     "description": "A usage-based price expressed in Credits per unit."
   },
-  "message.estimatedPrice": {
-    "message": "Estimated {price}",
-    "description": "Marks an estimated price that is settled from actual usage."
-  },
-  "message.usageMeteredEstimate": {
-    "message": "Estimated prices are for reference only. Final charges are based on actual usage.",
-    "description": "Explanation for usage-metered pricing tables."
-  },
   "message.imageTokenEstimate": {
-    "message": "Estimate only; final charges use actual text input, image input, and image output tokens.",
+    "message": "Charges are based on actual text input, image input, and image output tokens.",
     "description": "Cost note shown next to token-metered image models."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Final charges are based on actual usage.",
+    "description": "Explanation for usage-metered pricing tables."
   },
   "billing.free": {
     "message": "Free",

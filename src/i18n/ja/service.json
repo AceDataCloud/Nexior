@@ -168,8 +168,8 @@
     "description": "価格に関する補足説明の列タイトル。"
   },
   "message.pricingDescription": {
-    "message": "以下はサービスのポイント価格ルールです。本リクエストの予想ポイントは生成ボタンの横に表示されます。",
-    "description": "サービス価格表の上部に表示される説明。"
+    "message": "サービスのポイント価格と請求ルールは以下の通りです。",
+    "description": "サービス価格表の上部にある説明です。"
   },
   "message.noPricing": {
     "message": "このサービスには公開価格ルールがありません。",
@@ -195,17 +195,13 @@
     "message": "{amount} ポイント / {unit}",
     "description": "単位あたりのポイントで表された価格。"
   },
-  "message.estimatedPrice": {
-    "message": "予想 {price}",
-    "description": "実際の使用量に基づいて計算される予想価格を示します。"
-  },
-  "message.usageMeteredEstimate": {
-    "message": "予想価格は参考用であり、最終的な料金は実際の使用量に基づいて計算されます。",
-    "description": "使用量に基づく料金表の説明です。"
-  },
   "message.imageTokenEstimate": {
-    "message": "予想費用；最終的には実際のテキスト入力、画像入力、画像出力のトークン使用量に基づいて計算されます。",
-    "description": "画像トークン課金モデルの隣に表示される費用の説明です。"
+    "message": "料金は実際のテキスト入力、画像入力、画像出力のトークン使用量に基づいて計算されます。",
+    "description": "画像トークンの料金モデルの横に表示される料金の説明です。"
+  },
+  "message.usageMeteredPricing": {
+    "message": "最終的な料金は実際の使用量に基づいて計算されます。",
+    "description": "使用量に基づく料金体系の説明です。"
   },
   "billing.free": {
     "message": "無料",

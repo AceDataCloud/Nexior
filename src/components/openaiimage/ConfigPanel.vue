@@ -10,7 +10,7 @@
       <scenario-payment-mode scenario="openaiimage" />
       <service-pricing-summary
         v-if="!walletMode"
-        :value="consumption"
+        :value="displayConsumption"
         :service="service"
         :note="pricingNote"
         :pricing-models="OPENAIIMAGE_MODELS"
@@ -78,6 +78,9 @@ export default defineComponent({
         },
         this.service?.cost
       );
+    },
+    displayConsumption(): number | undefined {
+      return this.config?.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL ? undefined : this.consumption;
     },
     service() {
       return this.$store.state.openaiimage?.service;

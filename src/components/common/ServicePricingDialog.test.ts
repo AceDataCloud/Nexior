@@ -7,15 +7,14 @@ import ServicePricingDialog from './ServicePricingDialog.vue';
 const translations: Record<string, string> = {
   'service.title.pricing': 'Service pricing',
   'service.title.pricingFor': 'Example pricing',
-  'service.message.pricingDescription': 'Full visible pricing rules.',
+  'service.message.pricingDescription': 'Credit prices and billing rules.',
   'service.message.allRequests': 'All requests',
   'service.message.otherConfigurations': 'Other configurations',
   'service.message.free': 'Free',
   'service.message.calculated': 'Calculated from request parameters',
   'service.message.creditsAmount': '{amount} Credits',
   'service.message.creditsPerUnit': '{amount} Credits / {unit}',
-  'service.message.estimatedPrice': 'Estimated {price}',
-  'service.message.usageMeteredEstimate': 'Estimated prices are settled from actual usage.',
+  'service.message.usageMeteredPricing': 'Final charges are based on actual usage.',
   'service.message.required': 'Required',
   'service.unit.Count': 'count',
   'service.unit.Second': 'second',
@@ -90,11 +89,11 @@ describe('ServicePricingDialog', () => {
     const vm = wrapper.vm as any;
 
     expect(vm.priceLabel(vm.rows[0])).toBe('0.11 Credits');
-    expect(vm.priceLabel(vm.rows[1])).toBe('Estimated 0.45 Credits');
+    expect(vm.priceLabel(vm.rows[1])).toBe('Actual usage');
     expect(vm.billingLabel(vm.rows[0])).toBe('Fixed');
     expect(vm.billingLabel(vm.rows[1])).toBe('Actual usage');
-    expect(vm.hasUsageMeteredEstimates).toBe(true);
-    expect(wrapper.text()).toContain('Estimated prices are settled from actual usage.');
+    expect(vm.hasUsageMeteredPrices).toBe(true);
+    expect(wrapper.text()).toContain('Final charges are based on actual usage.');
   });
 
   it('renders Seedance reference-video rules without generic fallback text', () => {

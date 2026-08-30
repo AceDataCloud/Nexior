@@ -17,8 +17,7 @@ function mountPanel(model: string) {
             }
           }
         },
-        $t: (key: string) =>
-          key === 'service.message.imageTokenEstimate' ? 'Estimate only; final charges use actual tokens.' : key
+        $t: (key: string) => (key === 'service.message.imageTokenEstimate' ? 'Final charges use actual tokens.' : key)
       }
     }
   });
@@ -29,10 +28,12 @@ describe('OpenAI Image ConfigPanel pricing', () => {
     const official = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL);
     const standard = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2);
 
-    expect((official.vm as any).pricingNote).toBe('Estimate only; final charges use actual tokens.');
+    expect((official.vm as any).pricingNote).toBe('Final charges use actual tokens.');
     expect((standard.vm as any).pricingNote).toBe('');
+    expect((official.vm as any).displayConsumption).toBeUndefined();
+    expect((standard.vm as any).displayConsumption).toBe(0);
     expect(official.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe(
-      'Estimate only; final charges use actual tokens.'
+      'Final charges use actual tokens.'
     );
     expect(standard.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe('');
   });

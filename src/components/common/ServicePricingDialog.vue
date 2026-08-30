@@ -8,8 +8,8 @@
     @close="$emit('update:visible', false)"
   >
     <p class="pricing-description">{{ $t('service.message.pricingDescription') }}</p>
-    <p v-if="hasUsageMeteredEstimates" class="pricing-estimate-note">
-      {{ $t('service.message.usageMeteredEstimate') }}
+    <p v-if="hasUsageMeteredPrices" class="pricing-usage-note">
+      {{ $t('service.message.usageMeteredPricing') }}
     </p>
 
     <el-skeleton v-if="!service" :rows="4" animated />
@@ -129,8 +129,8 @@ export default defineComponent({
       const title = this.service?.title;
       return title ? this.$t('service.title.pricingFor', { service: title }) : this.$t('service.title.pricing');
     },
-    hasUsageMeteredEstimates(): boolean {
-      return this.rows.some((row) => row.estimated && row.usageMetered);
+    hasUsageMeteredPrices(): boolean {
+      return this.rows.some((row) => row.usageMetered);
     },
     showBillingMethod(): boolean {
       return new Set(this.rows.map((row) => row.billingKind)).size > 1;
@@ -215,17 +215,16 @@ export default defineComponent({
       return TRANSLATED_UNITS.has(unit) ? this.$t(`service.unit.${unit}`) : unit.replaceAll('_', ' ');
     },
     priceLabel(row: ServicePricingRow): string {
+      if (row.usageMetered) return this.$t('service.billing.usageMetered');
       if (row.billingKind === 'free') return this.$t('service.message.free');
       if (row.billingKind === 'calculated' || row.amount === undefined) {
         return this.$t('service.message.calculated');
       }
       const amount = formatCredits(row.amount);
       const unit = this.unitLabel(row);
-      const price =
-        row.billingKind === 'linear' || unit
-          ? this.$t('service.message.creditsPerUnit', { amount, unit })
-          : this.$t('service.message.creditsAmount', { amount });
-      return row.estimated && row.usageMetered ? this.$t('service.message.estimatedPrice', { price }) : price;
+      return row.billingKind === 'linear' || unit
+        ? this.$t('service.message.creditsPerUnit', { amount, unit })
+        : this.$t('service.message.creditsAmount', { amount });
     }
   }
 });
@@ -238,7 +237,7 @@ export default defineComponent({
   line-height: 1.6;
 }
 
-.pricing-estimate-note {
+.pricing-usage-note {
   margin: -8px 0 16px;
   color: var(--el-color-warning-dark-2);
   font-size: 13px;

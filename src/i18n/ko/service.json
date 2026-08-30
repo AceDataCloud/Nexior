@@ -168,7 +168,7 @@
     "description": "가격 보충 설명의 열 제목입니다."
   },
   "message.pricingDescription": {
-    "message": "다음은 서비스의 포인트 가격 규칙입니다. 이번 요청의 예상 포인트는 생성 버튼 옆에 표시됩니다.",
+    "message": "서비스의 포인트 가격 및 청구 규칙은 다음과 같습니다.",
     "description": "서비스 가격표 상단의 설명입니다."
   },
   "message.noPricing": {
@@ -195,17 +195,13 @@
     "message": "{amount} 포인트 / {unit}",
     "description": "단위당 포인트로 표시된 사용량 가격입니다."
   },
-  "message.estimatedPrice": {
-    "message": "예상 {price}",
-    "description": "실제 사용량에 따라 청구되는 예상 가격을 표시합니다."
-  },
-  "message.usageMeteredEstimate": {
-    "message": "예상 가격은 참고용이며, 최종 비용은 실제 사용량에 따라 청구됩니다.",
-    "description": "사용량 기반 요금표에 대한 설명입니다."
-  },
   "message.imageTokenEstimate": {
-    "message": "예상 비용; 최종 비용은 실제 텍스트 입력, 이미지 입력 및 이미지 출력 Token 사용량에 따라 청구됩니다.",
+    "message": "비용은 실제 텍스트 입력, 이미지 입력 및 이미지 출력 Token 사용량에 따라 계산됩니다.",
     "description": "이미지 Token 요금 모델 옆에 표시되는 비용 설명입니다."
+  },
+  "message.usageMeteredPricing": {
+    "message": "최종 비용은 실제 사용량에 따라 계산됩니다.",
+    "description": "사용량 기반 요금제에 대한 설명입니다."
   },
   "billing.free": {
     "message": "무료",

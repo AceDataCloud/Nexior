@@ -47,9 +47,17 @@ describe('service pricing scenario coverage', () => {
     '%s passes its current estimate to the shared summary',
     (relativePath) => {
       const source = fs.readFileSync(path.join(COMPONENT_ROOT, relativePath), 'utf8');
-      expect(source).toMatch(/:value="(?:consumption|estimatedCredits)"/);
+      const valueName =
+        relativePath === 'openaiimage/ConfigPanel.vue' ? 'displayConsumption' : '(?:consumption|estimatedCredits)';
+      expect(source).toMatch(new RegExp(`:value="${valueName}"`));
     }
   );
+
+  it('suppresses the unreliable OpenAI official estimate', () => {
+    const source = fs.readFileSync(path.join(COMPONENT_ROOT, 'openaiimage/ConfigPanel.vue'), 'utf8');
+    expect(source).toContain('displayConsumption(): number | undefined');
+    expect(source).toContain('OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL ? undefined : this.consumption');
+  });
 
   it('preserves the per-second Motion Control estimate', () => {
     const source = fs.readFileSync(path.join(COMPONENT_ROOT, 'kling/MotionPanel.vue'), 'utf8');

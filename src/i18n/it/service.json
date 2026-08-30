@@ -168,8 +168,8 @@
     "description": "Intestazione della colonna per le note aggiuntive sui prezzi."
   },
   "message.pricingDescription": {
-    "message": "Di seguito sono riportate le regole di prezzo in crediti per il servizio. I crediti stimati per questa richiesta sono ancora visualizzati accanto al pulsante di generazione.",
-    "description": "Descrizione sopra la tabella dei prezzi dei servizi."
+    "message": "Di seguito sono riportati i prezzi dei punti e le regole di fatturazione del servizio.",
+    "description": "Descrizione sopra la tabella dei prezzi del servizio."
   },
   "message.noPricing": {
     "message": "Non ci sono regole di prezzo pubbliche per questo servizio.",
@@ -195,17 +195,13 @@
     "message": "{amount} crediti / {unit}",
     "description": "Prezzo per unità espresso in crediti."
   },
-  "message.estimatedPrice": {
-    "message": "Prezzo stimato {price}",
-    "description": "Indica il prezzo stimato calcolato in base all'uso effettivo."
-  },
-  "message.usageMeteredEstimate": {
-    "message": "Il prezzo stimato è solo indicativo, il costo finale sarà calcolato in base all'uso effettivo.",
-    "description": "Spiegazione del prezzo per la fatturazione basata sull'uso."
-  },
   "message.imageTokenEstimate": {
-    "message": "Costo stimato; il costo finale sarà calcolato in base all'uso effettivo dei Token di input testo, input immagine e output immagine.",
-    "description": "Descrizione del costo visualizzata accanto al modello di fatturazione dei Token immagine."
+    "message": "I costi sono calcolati in base all'uso effettivo di token di testo, input di immagini e output di immagini.",
+    "description": "Descrizione dei costi visualizzata accanto al modello di tariffazione dei token delle immagini."
+  },
+  "message.usageMeteredPricing": {
+    "message": "Il costo finale è calcolato in base all'uso effettivo.",
+    "description": "Descrizione del piano tariffario basato sull'uso."
   },
   "billing.free": {
     "message": "Gratuito",

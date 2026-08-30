@@ -168,7 +168,7 @@
     "description": "Título da coluna para explicações adicionais sobre o preço."
   },
   "message.pricingDescription": {
-    "message": "Abaixo estão as regras de preço em pontos do serviço. O número estimado de pontos para esta solicitação ainda é exibido ao lado do botão de gerar.",
+    "message": "Abaixo estão os preços de pontos e as regras de cobrança do serviço.",
     "description": "Descrição acima da tabela de preços do serviço."
   },
   "message.noPricing": {
@@ -195,17 +195,13 @@
     "message": "{amount} pontos / {unit}",
     "description": "Preço por unidade expresso em pontos."
   },
-  "message.estimatedPrice": {
-    "message": "Preço estimado {price}",
-    "description": "Marcador que indica o preço estimado com base no uso real."
-  },
-  "message.usageMeteredEstimate": {
-    "message": "O preço estimado é apenas uma referência; os custos finais são baseados no uso real.",
-    "description": "Descrição do preço na tabela de cobrança por uso."
-  },
   "message.imageTokenEstimate": {
-    "message": "Custo estimado; o valor final é calculado com base no uso real de Tokens de entrada de texto, entrada de imagem e saída de imagem.",
-    "description": "Descrição do custo exibida ao lado do modelo de cobrança de Tokens de imagem."
+    "message": "Os custos são calculados com base no uso real de tokens de texto, entrada de imagem e saída de imagem.",
+    "description": "Explicação sobre os custos exibidos ao lado do modelo de cobrança de tokens de imagem."
+  },
+  "message.usageMeteredPricing": {
+    "message": "O custo final é calculado com base no uso real.",
+    "description": "Explicação sobre a tabela de preços com cobrança por uso."
   },
   "billing.free": {
     "message": "Gratuito",
