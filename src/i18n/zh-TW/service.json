@@ -195,6 +195,18 @@
     "message": "{amount} 積分 / {unit}",
     "description": "以每單位積分表示的用量價格。"
   },
+  "message.estimatedPrice": {
+    "message": "預計 {price}",
+    "description": "標記按實際用量結算的預計價格。"
+  },
+  "message.usageMeteredEstimate": {
+    "message": "預計價格僅供參考，最終費用按實際用量結算。",
+    "description": "用量計費價格表的說明。"
+  },
+  "message.imageTokenEstimate": {
+    "message": "預計費用；最終按實際文字輸入、圖片輸入和圖片輸出 Token 用量結算。",
+    "description": "圖片 Token 計費模型旁顯示的費用說明。"
+  },
   "billing.free": {
     "message": "免費",
     "description": "免費規則的計費方式標籤。"
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "動態計算",
     "description": "複雜規則的計費方式標籤。"
+  },
+  "billing.usageMetered": {
+    "message": "按實際用量",
+    "description": "最終按實際用量結算的計費方式標籤。"
   },
   "operator.equals": {
     "message": "{field}：{value}",

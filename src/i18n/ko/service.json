@@ -195,6 +195,18 @@
     "message": "{amount} 포인트 / {unit}",
     "description": "단위당 포인트로 표시된 사용량 가격입니다."
   },
+  "message.estimatedPrice": {
+    "message": "예상 {price}",
+    "description": "실제 사용량에 따라 청구되는 예상 가격을 표시합니다."
+  },
+  "message.usageMeteredEstimate": {
+    "message": "예상 가격은 참고용이며, 최종 비용은 실제 사용량에 따라 청구됩니다.",
+    "description": "사용량 기반 요금표에 대한 설명입니다."
+  },
+  "message.imageTokenEstimate": {
+    "message": "예상 비용; 최종 비용은 실제 텍스트 입력, 이미지 입력 및 이미지 출력 Token 사용량에 따라 청구됩니다.",
+    "description": "이미지 Token 요금 모델 옆에 표시되는 비용 설명입니다."
+  },
   "billing.free": {
     "message": "무료",
     "description": "무료 규칙의 청구 방식 태그입니다."
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "동적 계산",
     "description": "복잡한 규칙의 청구 방식 태그입니다."
+  },
+  "billing.usageMetered": {
+    "message": "실제 사용량 기준",
+    "description": "최종적으로 실제 사용량에 따라 정산되는 요금 방식의 레이블입니다."
   },
   "operator.equals": {
     "message": "{field}：{value}",

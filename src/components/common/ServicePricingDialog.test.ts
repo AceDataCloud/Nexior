@@ -14,6 +14,8 @@ const translations: Record<string, string> = {
   'service.message.calculated': 'Calculated from request parameters',
   'service.message.creditsAmount': '{amount} Credits',
   'service.message.creditsPerUnit': '{amount} Credits / {unit}',
+  'service.message.estimatedPrice': 'Estimated {price}',
+  'service.message.usageMeteredEstimate': 'Estimated prices are settled from actual usage.',
   'service.message.required': 'Required',
   'service.unit.Count': 'count',
   'service.unit.Second': 'second',
@@ -22,6 +24,7 @@ const translations: Record<string, string> = {
   'service.billing.free': 'Free',
   'service.billing.linear': 'Usage based',
   'service.billing.calculated': 'Calculated',
+  'service.billing.usageMetered': 'Actual usage',
   'service.operator.equals': '{field}: {value}',
   'service.operator.anyOf': 'Any of: {options}',
   'service.operator.oneOf': '{field}: {value}',
@@ -68,6 +71,30 @@ describe('ServicePricingDialog', () => {
     expect(vm.priceLabel(vm.rows[0])).toBe('0.14 Credits');
     expect(JSON.stringify(vm.rows)).not.toContain('99');
     expect(JSON.stringify(vm.rows)).not.toContain('\"var\"');
+  });
+
+  it('marks only usage-metered estimates and explains final settlement', () => {
+    const wrapper = mountDialog({
+      id: 'openai',
+      title: 'OpenAI',
+      cost: [
+        { conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-2'] }, consumption: 0.11 },
+        {
+          conditions: { '==': [{ var: ['model', ''] }, 'gpt-image-2:official'] },
+          consumption: 0.45,
+          estimated: true,
+          usage_metered: true
+        }
+      ]
+    });
+    const vm = wrapper.vm as any;
+
+    expect(vm.priceLabel(vm.rows[0])).toBe('0.11 Credits');
+    expect(vm.priceLabel(vm.rows[1])).toBe('Estimated 0.45 Credits');
+    expect(vm.billingLabel(vm.rows[0])).toBe('Fixed');
+    expect(vm.billingLabel(vm.rows[1])).toBe('Actual usage');
+    expect(vm.hasUsageMeteredEstimates).toBe(true);
+    expect(wrapper.text()).toContain('Estimated prices are settled from actual usage.');
   });
 
   it('renders Seedance reference-video rules without generic fallback text', () => {

@@ -195,6 +195,18 @@
     "message": "{amount} ポイント / {unit}",
     "description": "単位あたりのポイントで表された価格。"
   },
+  "message.estimatedPrice": {
+    "message": "予想 {price}",
+    "description": "実際の使用量に基づいて計算される予想価格を示します。"
+  },
+  "message.usageMeteredEstimate": {
+    "message": "予想価格は参考用であり、最終的な料金は実際の使用量に基づいて計算されます。",
+    "description": "使用量に基づく料金表の説明です。"
+  },
+  "message.imageTokenEstimate": {
+    "message": "予想費用；最終的には実際のテキスト入力、画像入力、画像出力のトークン使用量に基づいて計算されます。",
+    "description": "画像トークン課金モデルの隣に表示される費用の説明です。"
+  },
   "billing.free": {
     "message": "無料",
     "description": "無料ルールの請求方法ラベル。"
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "動的計算",
     "description": "複雑なルールの請求方法ラベル。"
+  },
+  "billing.usageMetered": {
+    "message": "実際の使用量に基づく",
+    "description": "最終的に実際の使用量に基づいて請求される料金方式のラベルです。"
   },
   "operator.equals": {
     "message": "{field}：{value}",

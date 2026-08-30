@@ -195,6 +195,18 @@
     "message": "{amount} Punkte / {unit}",
     "description": "Preise pro Einheit, die in Punkten angegeben sind."
   },
+  "message.estimatedPrice": {
+    "message": "Geschätzter Preis {price}",
+    "description": "Kennzeichnet den geschätzten Preis, der auf der tatsächlichen Nutzung basiert."
+  },
+  "message.usageMeteredEstimate": {
+    "message": "Der geschätzte Preis dient nur zur Orientierung, die endgültigen Kosten basieren auf der tatsächlichen Nutzung.",
+    "description": "Erläuterung der Preisgestaltung für nutzungsabhängige Abrechnung."
+  },
+  "message.imageTokenEstimate": {
+    "message": "Geschätzte Kosten; endgültig basierend auf der tatsächlichen Nutzung von Text-, Bild- und Bildausgabe-Token.",
+    "description": "Erläuterung der Kosten, die neben dem Abrechnungsmodell für Bild-Token angezeigt wird."
+  },
   "billing.free": {
     "message": "Kostenlos",
     "description": "Label für die Abrechnungsart bei kostenlosen Regeln."
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "Dynamisch berechnet",
     "description": "Label für die Abrechnungsart bei komplexen Regeln."
+  },
+  "billing.usageMetered": {
+    "message": "Nach tatsächlichem Verbrauch",
+    "description": "Label für die Abrechnungsart, die letztendlich nach dem tatsächlichen Verbrauch abgerechnet wird."
   },
   "operator.equals": {
     "message": "{field}：{value}",

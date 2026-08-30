@@ -195,6 +195,18 @@
     "message": "{amount} 积分 / {unit}",
     "description": "以每单位积分表示的用量价格。"
   },
+  "message.estimatedPrice": {
+    "message": "预计 {price}",
+    "description": "标记按实际用量结算的预计价格。"
+  },
+  "message.usageMeteredEstimate": {
+    "message": "预计价格仅供参考，最终费用按实际用量结算。",
+    "description": "用量计费价格表的说明。"
+  },
+  "message.imageTokenEstimate": {
+    "message": "预计费用；最终按实际文字输入、图片输入和图片输出 Token 用量结算。",
+    "description": "图片 Token 计费模型旁显示的费用说明。"
+  },
   "billing.free": {
     "message": "免费",
     "description": "免费规则的计费方式标签。"
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "动态计算",
     "description": "复杂规则的计费方式标签。"
+  },
+  "billing.usageMetered": {
+    "message": "按实际用量",
+    "description": "最终按实际用量结算的计费方式标签。"
   },
   "operator.equals": {
     "message": "{field}：{value}",

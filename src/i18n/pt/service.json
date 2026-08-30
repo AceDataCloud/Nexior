@@ -195,6 +195,18 @@
     "message": "{amount} pontos / {unit}",
     "description": "Preço por unidade expresso em pontos."
   },
+  "message.estimatedPrice": {
+    "message": "Preço estimado {price}",
+    "description": "Marcador que indica o preço estimado com base no uso real."
+  },
+  "message.usageMeteredEstimate": {
+    "message": "O preço estimado é apenas uma referência; os custos finais são baseados no uso real.",
+    "description": "Descrição do preço na tabela de cobrança por uso."
+  },
+  "message.imageTokenEstimate": {
+    "message": "Custo estimado; o valor final é calculado com base no uso real de Tokens de entrada de texto, entrada de imagem e saída de imagem.",
+    "description": "Descrição do custo exibida ao lado do modelo de cobrança de Tokens de imagem."
+  },
   "billing.free": {
     "message": "Gratuito",
     "description": "Etiqueta do método de cobrança para regras gratuitas."
@@ -210,6 +222,10 @@
   "billing.calculated": {
     "message": "Cálculo Dinâmico",
     "description": "Etiqueta do método de cobrança para regras complexas."
+  },
+  "billing.usageMetered": {
+    "message": "Cobrança por uso real",
+    "description": "Etiqueta do método de cobrança que é finalmente ajustado com base no uso real."
   },
   "operator.equals": {
     "message": "{field}：{value}",
