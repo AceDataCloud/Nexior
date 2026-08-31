@@ -1683,13 +1683,17 @@
     "message": "Échec de la création de la tâche, veuillez vérifier la configuration ou la connexion",
     "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "La tâche a été créée et reste désactivée. Veuillez d'abord l'exécuter immédiatement sur la carte, puis l'activer après le succès.",
-    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "La tâche a été créée et reste désactivée. Vous pouvez l'activer directement ou l'exécuter immédiatement pour vérifier les résultats.",
+    "description": "Conseils après la création d'une tâche programmée uniquement pour prévisualisation"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "La tâche a été créée et reste désactivée. Veuillez l'exécuter immédiatement, puis activez-la après avoir généré avec succès le brouillon requis.",
+    "description": "Conseils après la création d'une tâche programmée de livraison contrôlée"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Impossible de l'activer pour le moment. Veuillez d'abord exécuter la tâche immédiatement et confirmer le succès ; certains modèles nécessitent également la génération d'un brouillon spécifique.",
-    "description": "Guide pour la création et l'activation d'un modèle de tâche planifiée"
+    "message": "Impossible de l'activer temporairement. Veuillez vérifier la configuration de la tâche et la connexion au compte ; les modèles nécessitant une validation contrôlée doivent d'abord passer un essai.",
+    "description": "Échec de l'activation du modèle de tâche planifiée"
   },
   "scheduledTemplates.loadError": {
     "message": "Échec du chargement du modèle, veuillez réessayer plus tard",

@@ -1674,13 +1674,17 @@
     "message": "Creazione dell'attività fallita, controlla la configurazione o la connessione",
     "description": "Guida alla creazione e attivazione del modello di attività programmata"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "Attività creata e mantenuta disattivata. Esegui prima immediatamente sulla scheda, attivala solo dopo il successo.",
-    "description": "Guida alla creazione e attivazione del modello di attività programmata"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "Attività creata e mantenuta chiusa. Puoi attivarla direttamente o eseguirla subito per controllare i risultati.",
+    "description": "Indicazioni dopo aver creato un'attività programmata solo per anteprima"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "Attività creata e mantenuta chiusa. Esegui immediatamente per generare il draft richiesto prima di attivarla.",
+    "description": "Indicazioni dopo aver creato un'attività programmata di consegna controllata"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Impossibile attivare temporaneamente. Esegui prima l'attività immediatamente e conferma il successo; alcuni modelli richiedono anche la generazione di una bozza specifica.",
-    "description": "Guida alla creazione e attivazione del modello di attività programmata"
+    "message": "Attivazione temporaneamente non disponibile. Controlla la configurazione del compito e la connessione dell'account; i modelli che richiedono verifica controllata devono prima completare il test.",
+    "description": "Errore nell'attivazione del modello di attività pianificata"
   },
   "scheduledTemplates.loadError": {
     "message": "Caricamento del modello fallito, riprova più tardi",

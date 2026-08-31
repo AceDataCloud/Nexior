@@ -381,6 +381,7 @@ export default defineComponent({
       if (!this.selected || !this.canContinue) return;
       this.working = true;
       try {
+        const testMode = this.selected.test_strategy.mode;
         const task = await scheduledTasksOperator.instantiateTemplate(this.token, {
           template_id: this.selected.id,
           version: this.selected.version,
@@ -391,7 +392,11 @@ export default defineComponent({
         this.$emit('created', task);
         this.visible = false;
         this.resetWizard();
-        ElMessage.success(this.$t('chat.scheduledTemplates.createdDisabled') as string);
+        const messageKey =
+          testMode === 'preview_only'
+            ? 'chat.scheduledTemplates.createdPreviewOnly'
+            : 'chat.scheduledTemplates.createdControlledDelivery';
+        ElMessage.success(this.$t(messageKey) as string);
       } catch (error) {
         ElMessage.error(this.errorMessage(error));
       } finally {

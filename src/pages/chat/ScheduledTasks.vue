@@ -73,6 +73,8 @@
                 <div class="task-actions" @click.stop>
                   <el-switch
                     :model-value="task.state === 'enabled'"
+                    :loading="togglingIds.includes(task.id)"
+                    :disabled="togglingIds.includes(task.id)"
                     @change="(v: string | number | boolean) => toggleState(task, v === true)"
                   />
                   <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
@@ -779,6 +781,7 @@ export default defineComponent({
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
       authorizableMcpServers: [] as IAuthorizableMcpServer[],
+      togglingIds: [] as string[],
       triggeringId: '' as string,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
@@ -1570,6 +1573,8 @@ export default defineComponent({
       }) as string;
     },
     async toggleState(task: IScheduledTask, enabled: boolean) {
+      if (this.togglingIds.includes(task.id)) return;
+      this.togglingIds.push(task.id);
       const idx = this.tasks.findIndex((t) => t.id === task.id);
       const nextState = enabled ? 'enabled' : 'disabled';
       // Reflect the switch immediately and patch just this row in place — no
@@ -1586,6 +1591,8 @@ export default defineComponent({
         const key =
           enabled && task.template_source ? 'chat.scheduledTemplates.enableFailed' : 'chat.scheduledTasks.loadError';
         ElMessage.error(this.$t(key) as string);
+      } finally {
+        this.togglingIds = this.togglingIds.filter((id) => id !== task.id);
       }
     },
     /**

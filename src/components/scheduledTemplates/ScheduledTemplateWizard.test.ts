@@ -137,6 +137,7 @@ describe('ScheduledTemplateWizard', () => {
   });
 
   it('creates a disabled task without previewing, running, or enabling it', async () => {
+    const success = vi.spyOn(ElMessage, 'success');
     const instantiate = vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockResolvedValue(disabledTask);
     const preview = vi.spyOn(scheduledTasksOperator, 'previewTemplate');
     const trigger = vi.spyOn(scheduledTasksOperator, 'triggerTask');
@@ -172,5 +173,29 @@ describe('ScheduledTemplateWizard', () => {
     expect(vm.visible).toBe(false);
     expect(vm.step).toBe(0);
     expect(vm.selected).toBeNull();
+    expect(success).toHaveBeenCalledWith('chat.scheduledTemplates.createdPreviewOnly');
+  });
+
+  it('explains the validation requirement for controlled-delivery templates', async () => {
+    vi.spyOn(scheduledTasksOperator, 'instantiateTemplate').mockResolvedValue(disabledTask);
+    const success = vi.spyOn(ElMessage, 'success');
+    const controlledTemplate = {
+      ...template,
+      test_strategy: { mode: 'controlled_delivery' as const, evidence: { artifact_status: 'draft' as const } }
+    };
+    const wrapper = mountWizard();
+    const vm = wrapper.vm as unknown as {
+      selectTemplate: (value: typeof controlledTemplate) => void;
+      inputs: Record<string, string>;
+      step: number;
+      createTask: () => Promise<void>;
+    };
+    vm.selectTemplate(controlledTemplate);
+    vm.inputs = { topic: 'AI', audience: 'developers' };
+    vm.step = 2;
+
+    await vm.createTask();
+
+    expect(success).toHaveBeenCalledWith('chat.scheduledTemplates.createdControlledDelivery');
   });
 });
