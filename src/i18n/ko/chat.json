@@ -1674,13 +1674,17 @@
     "message": "작업 생성 실패, 설정이나 연결을 확인하세요",
     "description": "예약된 작업 템플릿 생성 및 활성화 안내"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "작업이 생성되었지만 비활성 상태입니다. 먼저 카드에서 즉시 실행한 후 성공하면 활성화하세요.",
-    "description": "예약된 작업 템플릿 생성 및 활성화 안내"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "작업이 생성되었으며 비활성 상태입니다. 바로 활성화하거나 먼저 즉시 실행하여 결과를 확인할 수 있습니다.",
+    "description": "미리보기 전용 예약 작업 생성 후 안내"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "작업이 생성되었으며 비활성 상태입니다. 먼저 즉시 실행하여 필요한 초안을 성공적으로 생성한 후 활성화하십시오.",
+    "description": "제어된 배달 예약 작업 생성 후 안내"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "일시적으로 활성화할 수 없습니다. 먼저 작업을 즉시 실행하고 성공을 확인하세요; 일부 템플릿은 지정된 초안 생성을 요구합니다.",
-    "description": "예약된 작업 템플릿 생성 및 활성화 안내"
+    "message": "일시적으로 활성화할 수 없습니다. 작업 구성 및 계정 연결을 확인하십시오; 제어된 검증이 필요한 템플릿은 먼저 시험 실행을 완료해야 합니다.",
+    "description": "예약된 작업 템플릿 활성화 실패"
   },
   "scheduledTemplates.loadError": {
     "message": "템플릿 로드 실패, 나중에 다시 시도하세요",

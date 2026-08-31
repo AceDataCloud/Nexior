@@ -1674,13 +1674,17 @@
     "message": "Falha ao criar tarefa, verifique a configuração ou a conexão",
     "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "Tarefa criada e mantida desativada. Execute imediatamente no cartão antes de ativar.",
-    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "A tarefa foi criada e permanece desativada. Você pode ativá-la diretamente ou executar imediatamente para verificar os resultados.",
+    "description": "Orientação após criar uma tarefa programada apenas para visualização"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "A tarefa foi criada e permanece desativada. Execute imediatamente para gerar o rascunho necessário antes de ativar.",
+    "description": "Orientação após criar uma tarefa programada de entrega controlada"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Ativação temporariamente indisponível. Execute a tarefa imediatamente e confirme o sucesso; alguns modelos também precisam gerar um rascunho específico.",
-    "description": "Orientação para criação e ativação de modelos de tarefas agendadas"
+    "message": "Não é possível ativar no momento. Verifique a configuração da tarefa e a conexão da conta; os modelos que precisam de validação controlada devem ser executados em teste primeiro.",
+    "description": "Falha na ativação do modelo de tarefa agendada"
   },
   "scheduledTemplates.loadError": {
     "message": "Falha ao carregar o modelo, por favor, tente novamente mais tarde",

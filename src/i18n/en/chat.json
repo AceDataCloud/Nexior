@@ -1612,13 +1612,17 @@
     "message": "Could not create the task; check the configuration or connections",
     "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "Task created and kept disabled. Run it from the task card, then enable it after it succeeds.",
-    "description": "Scheduled task template creation and activation guidance"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "Task created and kept disabled. You can enable it now, or run it first to review the result.",
+    "description": "Guidance after creating a preview-only scheduled task"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "Task created and kept disabled. Run it first and produce the required draft before enabling it.",
+    "description": "Guidance after creating a controlled-delivery scheduled task"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "This task cannot be enabled yet. Run it successfully first; some templates also require the expected draft artifact.",
-    "description": "Scheduled task template creation and activation guidance"
+    "message": "This task cannot be enabled yet. Check its configuration and account connections; controlled templates also require a successful test run.",
+    "description": "Scheduled task template activation failure"
   },
   "scheduledTemplates.loadError": {
     "message": "Could not load templates",

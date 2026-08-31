@@ -1675,13 +1675,17 @@
     "message": "Error al crear la tarea, por favor verifica la configuración o la conexión.",
     "description": "Guía para la creación y activación de plantillas de tareas programadas."
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "La tarea ha sido creada y permanece desactivada. Por favor, ejecútala inmediatamente en la tarjeta y actívala una vez que sea exitosa.",
-    "description": "Guía para la creación y activación de plantillas de tareas programadas."
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "La tarea ha sido creada y permanece cerrada. Puedes habilitarla directamente o ejecutarla primero para revisar los resultados.",
+    "description": "Orientación después de crear una tarea programada de solo vista previa"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "La tarea ha sido creada y permanece cerrada. Por favor, ejecútala inmediatamente y habilítala solo después de generar con éxito el borrador requerido.",
+    "description": "Orientación después de crear una tarea programada de entrega controlada"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "No se puede activar temporalmente. Por favor, ejecuta la tarea inmediatamente y confirma que fue exitosa; algunas plantillas también requieren generar un borrador específico.",
-    "description": "Guía para la creación y activación de plantillas de tareas programadas."
+    "message": "No se puede habilitar temporalmente. Verifique la configuración de la tarea y la conexión de la cuenta; los templates que requieren validación controlada deben completar primero la ejecución de prueba.",
+    "description": "Fallo en la activación del template de tarea programada."
   },
   "scheduledTemplates.loadError": {
     "message": "Error al cargar la plantilla, por favor inténtelo de nuevo más tarde",

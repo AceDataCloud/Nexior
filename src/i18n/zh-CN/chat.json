@@ -1680,13 +1680,17 @@
     "message": "任务创建失败，请检查配置或连接",
     "description": "Scheduled task template creation and activation guidance"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "任务已创建并保持关闭。请先在卡片上立即运行，成功后再启用。",
-    "description": "Scheduled task template creation and activation guidance"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "任务已创建并保持关闭。你可以直接启用，也可以先立即运行检查结果。",
+    "description": "Guidance after creating a preview-only scheduled task"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "任务已创建并保持关闭。请先立即运行，成功生成所需草稿后再启用。",
+    "description": "Guidance after creating a controlled-delivery scheduled task"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "暂时无法启用。请先立即运行任务并确认成功；部分模板还需要生成指定草稿。",
-    "description": "Scheduled task template creation and activation guidance"
+    "message": "暂时无法启用。请检查任务配置和账号连接；需要受控验证的模板还须先完成试运行。",
+    "description": "Scheduled task template activation failure"
   },
   "scheduledTemplates.loadError": {
     "message": "模板加载失败，请稍后重试",

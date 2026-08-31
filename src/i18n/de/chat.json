@@ -1674,13 +1674,17 @@
     "message": "Aufgabe konnte nicht erstellt werden, bitte überprüfen Sie die Konfiguration oder Verbindung",
     "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "Aufgabe wurde erstellt und bleibt deaktiviert. Bitte führen Sie sie zuerst sofort auf der Karte aus und aktivieren Sie sie nach erfolgreichem Abschluss.",
-    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "Aufgabe wurde erstellt und bleibt deaktiviert. Sie können sie direkt aktivieren oder zuerst sofort ausführen, um die Ergebnisse zu überprüfen.",
+    "description": "Anleitung nach der Erstellung einer geplanten Aufgabe nur für Vorschau"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "Aufgabe wurde erstellt und bleibt deaktiviert. Bitte zuerst sofort ausführen, bevor Sie aktivieren, nachdem der erforderliche Entwurf erfolgreich generiert wurde.",
+    "description": "Anleitung nach der Erstellung einer geplanten Aufgabe für kontrollierte Lieferung"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "Aktivierung vorübergehend nicht möglich. Bitte führen Sie die Aufgabe sofort aus und bestätigen Sie den Erfolg; einige Vorlagen erfordern auch die Erstellung eines bestimmten Entwurfs.",
-    "description": "Anleitung zur Erstellung und Aktivierung von geplanten Aufgaben-Vorlagen"
+    "message": "Kann vorübergehend nicht aktiviert werden. Bitte überprüfen Sie die Aufgaben-Konfiguration und die Kontoverbindung; Vorlagen, die einer kontrollierten Validierung bedürfen, müssen zuerst einen Testlauf abschließen.",
+    "description": "Fehler bei der Aktivierung der geplanten Aufgaben-Vorlage"
   },
   "scheduledTemplates.loadError": {
     "message": "Vorlagen konnten nicht geladen werden, bitte später erneut versuchen",

@@ -1635,13 +1635,17 @@
     "message": "任務創建失敗，請檢查配置或連接",
     "description": "排程任務模板的創建和啟用指導"
   },
-  "scheduledTemplates.createdDisabled": {
-    "message": "任務已創建並保持關閉。請先在卡片上立即運行，成功後再啟用。",
-    "description": "排程任務模板的創建和啟用指導"
+  "scheduledTemplates.createdPreviewOnly": {
+    "message": "任務已創建並保持關閉。你可以直接啟用，也可以先立即運行檢查結果。",
+    "description": "創建僅預覽排程任務後的指導"
+  },
+  "scheduledTemplates.createdControlledDelivery": {
+    "message": "任務已創建並保持關閉。請先立即運行，成功生成所需草稿後再啟用。",
+    "description": "創建受控交付排程任務後的指導"
   },
   "scheduledTemplates.enableFailed": {
-    "message": "暫時無法啟用。請先立即運行任務並確認成功；部分模板還需要生成指定草稿。",
-    "description": "排程任務模板的創建和啟用指導"
+    "message": "暫時無法啟用。請檢查任務配置和帳號連接；需要受控驗證的模板還須先完成試運行。",
+    "description": "排程任務模板啟用失敗"
   },
   "scheduledTemplates.loadError": {
     "message": "模板加載失敗，請稍後重試",
