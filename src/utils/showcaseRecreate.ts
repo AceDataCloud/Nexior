@@ -132,6 +132,7 @@ const maestroAllowed = new Set([
   'langs',
   'aspect',
   'duration',
+  'quality', // accepted from historical showcases but intentionally not replayed
   'scenario',
   'style',
   'voice'
