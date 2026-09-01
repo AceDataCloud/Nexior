@@ -16,7 +16,7 @@ const explicitValue = (value: string | undefined): string | undefined => {
 const FISH_REFERENCE_ID = /^[0-9a-f]{32}$/;
 
 export function normalizeMaestroConfig(config?: IMaestroConfig): IMaestroConfig {
-  const source = config ?? {};
+  const source: IMaestroConfig & { quality?: unknown } = config ?? {};
   const {
     customization_enabled: legacyCustomizationEnabled,
     scenario_customization_enabled: scenarioFlag,
@@ -25,6 +25,7 @@ export function normalizeMaestroConfig(config?: IMaestroConfig): IMaestroConfig 
     scenario: rawScenario,
     style: rawStyle,
     voice: rawVoice,
+    quality: _legacyQuality,
     ...rest
   } = source;
   const scenario = explicitValue(rawScenario)?.toLowerCase();

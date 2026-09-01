@@ -198,7 +198,6 @@ import {
   LanguageIcon,
   MagicIcon,
   PaletteIcon,
-  PerformanceIcon,
   RedoIcon,
   TimeIcon,
   VideoIcon,
@@ -363,13 +362,6 @@ export default defineComponent({
           icon: markRaw(PaletteIcon),
           label: this.$t('maestro.name.style') as string,
           value: this.optionLabel('maestro.option.style', req.style)
-        });
-      }
-      if (req.quality) {
-        out.push({
-          icon: markRaw(PerformanceIcon),
-          label: this.$t('maestro.name.quality') as string,
-          value: this.optionLabel('maestro.option.quality', req.quality)
         });
       }
       if (req.aspect) {
