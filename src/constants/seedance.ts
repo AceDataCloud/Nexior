@@ -88,7 +88,7 @@ export interface ISeedanceModelCapability {
   maxReferenceAudios: number;
   maxReferenceMedia: number;
   /** Seedance 2.5 task types exposed by the studio. */
-  taskTypes: readonly ('auto' | 'edit' | 'extend')[];
+  taskTypes: readonly ('auto' | 'reference' | 'edit' | 'extend')[];
   /** Supported output containers. */
   outputFormats: readonly ('mp4' | 'mov')[];
 }
@@ -114,7 +114,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxReferenceVideos: 10,
     maxReferenceAudios: 10,
     maxReferenceMedia: 50,
-    taskTypes: ['auto', 'edit', 'extend'],
+    taskTypes: ['auto', 'reference', 'edit', 'extend'],
     outputFormats: ['mp4', 'mov']
   },
   [SEEDANCE_MODEL_1_0_PRO]: {

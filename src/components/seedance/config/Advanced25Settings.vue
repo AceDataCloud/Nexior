@@ -7,6 +7,7 @@
       </div>
       <el-select v-model="taskType" class="value">
         <el-option value="auto" :label="$t('seedance.taskType.auto')" />
+        <el-option value="reference" :label="$t('seedance.taskType.reference')" />
         <el-option value="edit" :label="$t('seedance.taskType.edit')" />
         <el-option value="extend" :label="$t('seedance.taskType.extend')" />
       </el-select>

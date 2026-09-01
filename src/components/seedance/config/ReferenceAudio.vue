@@ -14,7 +14,7 @@
       :limit="capability.maxReferenceAudios"
       class="upload-wrapper"
       :multiple="capability.maxReferenceAudios > 1"
-      :before-upload="beforeUploadSizeGuard"
+      :before-upload="onBeforeUpload"
       :action="uploadUrl"
       list-type="text"
       :on-exceed="onExceed"
@@ -23,10 +23,14 @@
       :on-remove="onRemove"
       :headers="headers"
     >
-      <el-button round type="primary" size="small" class="btn btn-upload">
-        <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('seedance.button.upload') }}
-      </el-button>
+      <el-tooltip :content="uploadTooltip" :disabled="!uploadDisabled" placement="top">
+        <span>
+          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="uploadDisabled">
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('seedance.button.upload') }}
+          </el-button>
+        </span>
+      </el-tooltip>
     </el-upload>
   </div>
 </template>
@@ -34,10 +38,11 @@
 <script lang="ts">
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { getBaseUrlPlatform, uploadTrackerMixin, dropUploadMixin, uploadSizeGuardMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { getSeedanceCapability } from '@/constants';
+import { getSeedanceInputModes } from '@/utils/seedance';
 
 interface IData {
   fileList: UploadFiles;
@@ -50,6 +55,7 @@ export default defineComponent({
     UploadIcon,
     ElUpload,
     ElButton,
+    ElTooltip,
     InfoIcon
   },
   mixins: [dropUploadMixin, uploadTrackerMixin, uploadSizeGuardMixin],
@@ -71,6 +77,18 @@ export default defineComponent({
     capability() {
       return getSeedanceCapability(this.model);
     },
+    inputModes() {
+      return getSeedanceInputModes(this.$store.state.seedance?.config);
+    },
+    uploadDisabled(): boolean {
+      return this.inputModes.frame;
+    },
+    dropDisabled(): boolean {
+      return this.uploadDisabled;
+    },
+    uploadTooltip(): string {
+      return this.uploadDisabled ? this.$t('seedance.message.referenceUploadBlocked') : '';
+    },
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
@@ -85,6 +103,13 @@ export default defineComponent({
     }
   },
   methods: {
+    onBeforeUpload(file: File): boolean {
+      if (this.uploadDisabled) {
+        ElMessage.warning(this.$t('seedance.message.referenceUploadBlocked'));
+        return false;
+      }
+      return this.beforeUploadSizeGuard(file);
+    },
     onExceed() {
       ElMessage.warning(this.$t('seedance.message.uploadExceed'));
     },

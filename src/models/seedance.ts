@@ -1,5 +1,5 @@
 export type SeedanceImageRole = 'first_frame' | 'last_frame' | 'reference_image';
-export type SeedanceTaskType = 'auto' | 'edit' | 'extend';
+export type SeedanceTaskType = 'auto' | 'reference' | 'edit' | 'extend';
 export type SeedanceOutputFormat = 'mp4' | 'mov';
 export interface ISeedanceWebSearchTool {
   type: 'web_search';

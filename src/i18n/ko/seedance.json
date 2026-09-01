@@ -260,7 +260,7 @@
     "description": "참조 주체 이미지 업로드 태그(Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "비디오에서 캐릭터가 말하고 입 모양을 맞추게 하는 경로(내레이션 / 디지털 인물 우선, 캐릭터 이미지를 유지합니다). 캐릭터가 말하게 하려면 이미지를 여기 업로드하고, '첫 프레임 이미지'가 아님을 유의하세요. 프롬프트의 따옴표 대사 + '오디오 생성'과 함께 사용해야 합니다. 1~9장의 이미지를 업로드할 수 있습니다. Seedance 2.0 시리즈만 해당됩니다. 주의: '첫 프레임/마지막 프레임 이미지'와 동시에 사용할 수 없습니다.",
+    "message": "캐릭터, 주제, 장면 또는 스타일을 유지하는 데 사용됩니다. Seedance 2.0은 최대 9장, Seedance 2.5는 최대 30장입니다. 다중 모달 참조 모드에 속하며, 첫 프레임/마지막 프레임과 동시에 사용할 수 없습니다.",
     "description": "참조 이미지 설명"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "참조 오디오 업로드 태그(Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "생성된 비디오가 이 오디오의 음색이나 배경 음악을 사용할 수 있게 합니다(참조 이미지와 함께 캐릭터가 해당 음색으로 말하게 함). 참조 이미지 또는 참조 비디오와 함께 사용해야 하며, 오디오만 단독으로 업로드할 수 없습니다. 1~3개의 세그먼트를 업로드할 수 있습니다. Seedance 2.0 시리즈만 해당됩니다.",
+    "message": "음색, 배경 음악 또는 대화를 참조하는 데 사용됩니다. Seedance 2.0은 참조 이미지 또는 참조 비디오와 함께 사용해야 하며, 최대 3개 세그먼트; Seedance 2.5는 단독으로 사용 가능하며, 최대 10개 세그먼트입니다. 첫 프레임/마지막 프레임과 동시에 사용할 수 없습니다.",
     "description": "참조 오디오 설명"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "참고 비디오 업로드 태그(Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "모델이 이 비디오의 동작/촬영/스타일/음향 효과를 사용하여 새로운 비디오를 생성하게 합니다. 1~3개의 세그먼트를 업로드할 수 있습니다. Seedance 2.0 시리즈만 해당됩니다.",
+    "message": "동작, 카메라 움직임, 스타일 또는 편집 비디오를 참조하는 데 사용됩니다. Seedance 2.0은 최대 3개 세그먼트, Seedance 2.5는 최대 10개 세그먼트입니다. 다중 모달 참조 모드에 속하며, 첫 프레임/마지막 프레임과 동시에 사용할 수 없습니다.",
     "description": "참조 비디오 설명"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "비디오 편집 및 연장을 위해 참조 비디오를 업로드해야 합니다.",
     "description": "작업에 참조 비디오가 부족함"
+  },
+  "inputMode.frames": {
+    "message": "첫 번째 및 마지막 프레임 모드",
+    "description": "첫 번째 및 마지막 프레임 모드 제목"
+  },
+  "inputMode.reference": {
+    "message": "다중 모드 참조 모드",
+    "description": "다중 모드 참조 모드 제목"
+  },
+  "description.frameMode": {
+    "message": "첫 번째 프레임 또는 첫 번째 및 마지막 프레임을 사용하여 비디오 경계를 엄격하게 제어합니다. 참조 이미지, 참조 비디오 또는 참조 오디오를 동시에 업로드할 수 없습니다.",
+    "description": "첫 번째 및 마지막 프레임 모드 설명"
+  },
+  "description.referenceMode": {
+    "message": "참조 이미지, 참조 비디오 또는 참조 오디오를 사용하여 캐릭터, 동작, 스타일 및 음성을 제어합니다. 첫 번째 프레임을 지정하려면 프롬프트에 '이미지 1을 첫 번째 프레임으로'라고 작성하십시오.",
+    "description": "다중 모드 참조 모드 설명"
+  },
+  "message.frameReferenceConflict": {
+    "message": "첫 번째 및 마지막 프레임은 참조 이미지, 참조 비디오 또는 참조 오디오와 동시에 사용할 수 없습니다. 먼저 하나의 입력 모드를 제거하십시오.",
+    "description": "입력 모드 충돌 알림"
+  },
+  "message.frameUploadBlocked": {
+    "message": "다중 모드 참조 자료가 추가되었습니다. 먼저 참조 이미지, 참조 비디오 및 참조 오디오를 제거한 후 첫 번째 및 마지막 프레임을 업로드하십시오.",
+    "description": "첫 번째 및 마지막 프레임 업로드 금지 알림"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "첫 번째 프레임 또는 마지막 프레임이 추가되었습니다. 먼저 첫 번째 및 마지막 프레임을 제거한 후 다중 모드 참조 자료를 업로드하십시오.",
+    "description": "참조 자료 업로드 금지 알림"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "‘참조 생성’ 작업은 최소한 하나의 참조 이미지, 참조 비디오 또는 참조 오디오를 업로드해야 합니다.",
+    "description": "참조 작업 자료 부족 알림"
+  },
+  "taskType.reference": {
+    "message": "참조 생성",
+    "description": "참조 자료 생성 작업 유형"
   }
 }

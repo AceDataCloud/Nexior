@@ -260,7 +260,7 @@
     "description": "Label for reference subject image upload (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "The channel that makes the person in your image speak with lip-sync (best for talking-head / avatar; keeps the character’s look). To make a character talk, upload the image HERE, not to “First Frame”. Pair it with a quoted line in the prompt + “Generate Audio”. 1–9 images. Seedance 2.0 only. Note: cannot be combined with First/Last Frame images.",
+    "message": "Preserve a character, subject, composition, or style. Seedance 2.0 accepts up to 9 images; Seedance 2.5 accepts up to 30. This is multimodal reference mode and cannot be combined with first/last frames.",
     "description": "Instructions for reference image"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "Label for reference audio upload (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Makes the generated video borrow this clip’s voice timbre or background music (paired with a reference image so the character speaks in that voice). Must be used with a reference image or reference video — audio alone is not allowed. 1–3 clips. Seedance 2.0 only.",
+    "message": "Reference a voice, soundtrack, or dialogue. Seedance 2.0 requires a reference image or video and accepts up to 3 clips; Seedance 2.5 supports audio-only input and accepts up to 10. Cannot be combined with first/last frames.",
     "description": "Instructions for reference audio"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "Label for reference video upload (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Makes the model borrow the motion / camera work / style / sound effects from this video to generate a new one. 1–3 clips. Seedance 2.0 only.",
+    "message": "Reference motion, camera work, style, or edit a video. Seedance 2.0 accepts up to 3 videos; Seedance 2.5 accepts up to 10. This is multimodal reference mode and cannot be combined with first/last frames.",
     "description": "Instructions for reference video"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "Video edit and extend require a reference video.",
     "description": "Task missing a reference video"
+  },
+  "inputMode.frames": {
+    "message": "First/last-frame mode",
+    "description": "First/last-frame mode title"
+  },
+  "inputMode.reference": {
+    "message": "Multimodal reference mode",
+    "description": "Multimodal reference mode title"
+  },
+  "description.frameMode": {
+    "message": "Use a first frame or first and last frames to lock the video boundaries. Reference images, videos, and audio cannot be added at the same time.",
+    "description": "First/last-frame mode description"
+  },
+  "description.referenceMode": {
+    "message": "Use reference images, videos, or audio to guide characters, motion, style, and sound. To suggest a first frame, say “Use image 1 as the first frame” in the prompt.",
+    "description": "Multimodal reference mode description"
+  },
+  "message.frameReferenceConflict": {
+    "message": "First/last frames cannot be combined with reference images, videos, or audio. Remove one input mode to continue.",
+    "description": "Input mode conflict warning"
+  },
+  "message.frameUploadBlocked": {
+    "message": "Multimodal reference media is already added. Remove all reference images, videos, and audio before uploading first/last frames.",
+    "description": "Frame upload blocked warning"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "A first or last frame is already added. Remove the frame inputs before uploading multimodal reference media.",
+    "description": "Reference upload blocked warning"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "The Reference task requires at least one reference image, video, or audio file.",
+    "description": "Missing reference media warning"
+  },
+  "taskType.reference": {
+    "message": "Reference generation",
+    "description": "Reference generation task type"
   }
 }

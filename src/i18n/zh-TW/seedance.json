@@ -260,7 +260,7 @@
     "description": "參考主體圖片上傳標籤（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "讓圖中人物在視頻裡開口說話、對口型的通道（口播 / 數字人首選，會保留人物形象）。想讓角色說話就把圖傳到這裡，而不是「首幀圖片」。配合提示詞裡的引號台詞 +「生成音頻」一起用。可傳 1~9 張。僅 Seedance 2.0 系列。注意：不能與「首幀/尾幀圖片」同時使用。",
+    "message": "用於保持角色、主體、畫面或風格。Seedance 2.0 最多 9 張，Seedance 2.5 最多 30 張。屬於多模態參考模式，不能與首幀/尾幀同時使用。",
     "description": "參考圖片說明"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "參考音頻上傳標籤（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "讓生成視頻借用這段音頻的音色或背景音樂（配合參考圖片讓角色用該音色說話）。需搭配參考圖片或參考視頻一起用，不能單獨只傳音頻。可傳 1~3 段。僅 Seedance 2.0 系列。",
+    "message": "用於參考音色、配樂或對話。Seedance 2.0 需搭配參考圖或參考視頻，最多 3 段；Seedance 2.5 可單獨使用，最多 10 段。不能與首幀/尾幀同時使用。",
     "description": "參考音頻說明"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "參考影片上傳標籤（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "讓模型借用這段視頻的動作/運鏡/風格/音效，生成一段新視頻。可傳 1~3 段。僅 Seedance 2.0 系列。",
+    "message": "用於參考動作、運鏡、風格或編輯視頻。Seedance 2.0 最多 3 段，Seedance 2.5 最多 10 段。屬於多模態參考模式，不能與首幀/尾幀同時使用。",
     "description": "參考視頻說明"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "視頻編輯和延長必須上傳參考視頻。",
     "description": "任務缺少參考視頻"
+  },
+  "inputMode.frames": {
+    "message": "首尾幀模式",
+    "description": "首尾幀模式標題"
+  },
+  "inputMode.reference": {
+    "message": "多模態參考模式",
+    "description": "多模態參考模式標題"
+  },
+  "description.frameMode": {
+    "message": "使用首幀或首尾幀嚴格控制視頻邊界。不能同時上傳參考圖、參考視頻或參考音頻。",
+    "description": "首尾幀模式說明"
+  },
+  "description.referenceMode": {
+    "message": "使用參考圖、參考視頻或參考音頻控制角色、動作、風格和聲音。如需指定首幀，請在提示詞中寫“圖片 1 作為首幀”。",
+    "description": "多模態參考模式說明"
+  },
+  "message.frameReferenceConflict": {
+    "message": "首尾幀不能與參考圖、參考視頻或參考音頻同時使用，請先移除其中一種輸入模式。",
+    "description": "輸入模式衝突提示"
+  },
+  "message.frameUploadBlocked": {
+    "message": "已添加多模態參考素材，請先移除參考圖、參考視頻和參考音頻，再上傳首尾幀。",
+    "description": "首尾幀上傳禁用提示"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "已添加首幀或尾幀，請先移除首尾幀，再上傳多模態參考素材。",
+    "description": "參考素材上傳禁用提示"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "“參考生成”任務必須上傳至少一個參考圖、參考視頻或參考音頻。",
+    "description": "參考任務缺少素材提示"
+  },
+  "taskType.reference": {
+    "message": "參考生成",
+    "description": "參考素材生成任務類型"
   }
 }

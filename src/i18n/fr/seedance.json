@@ -260,24 +260,24 @@
     "description": "Étiquette de téléchargement de l'image de référence (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "Canal pour que le personnage dans l'image parle et synchronise ses lèvres (préféré pour la narration / les personnages numériques, conservera l'apparence du personnage). Pour que le personnage parle, téléchargez l'image ici, et non dans \"image de première frame\". Utilisé avec les dialogues entre guillemets dans les mots-clés + \"générer audio\". Vous pouvez télécharger de 1 à 9 images. Supporté uniquement par la série Seedance 2.0. Attention : ne peut pas être utilisé simultanément avec \"image de première/dernière frame\".",
-    "description": "Explication de l'image de référence"
+    "message": "Utilisé pour maintenir le personnage, le sujet, la scène ou le style. Seedance 2.0 jusqu'à 9 images, Seedance 2.5 jusqu'à 30 images. Fait partie du mode de référence multimodal, ne peut pas être utilisé avec la première/dernière image.",
+    "description": "Description de l'image de référence"
   },
   "name.referenceAudio": {
     "message": "Audio de référence (tonalité / musique de fond)",
     "description": "Étiquette de téléchargement de l'audio de référence (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Permet à la vidéo générée d'emprunter la tonalité ou la musique de fond de cet audio (avec l'image de référence pour que le personnage parle avec cette tonalité). Doit être utilisé avec une image de référence ou une vidéo de référence, ne peut pas être utilisé seul. Vous pouvez télécharger 1 à 3 segments. Supporté uniquement par la série Seedance 2.0.",
-    "description": "Explication de l'audio de référence"
+    "message": "Utilisé pour la tonalité de référence, la musique de fond ou le dialogue. Seedance 2.0 nécessite des images ou vidéos de référence, jusqu'à 3 segments ; Seedance 2.5 peut être utilisé seul, jusqu'à 10 segments. Ne peut pas être utilisé avec la première/dernière image.",
+    "description": "Description de l'audio de référence"
   },
   "name.referenceVideo": {
     "message": "Vidéo de référence",
     "description": "Étiquette de téléchargement pour la vidéo de référence (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Permet au modèle d'emprunter les mouvements / les angles de caméra / le style / les effets sonores de cette vidéo, pour générer une nouvelle vidéo. Vous pouvez télécharger 1 à 3 segments. Supporté uniquement par la série Seedance 2.0.",
-    "description": "Explication de la vidéo de référence"
+    "message": "Utilisé pour la référence de mouvement, de prise de vue, de style ou de montage vidéo. Seedance 2.0 jusqu'à 3 segments, Seedance 2.5 jusqu'à 10 segments. Fait partie du mode de référence multimodal, ne peut pas être utilisé avec la première/dernière image.",
+    "description": "Description de la vidéo de référence"
   },
   "message.audioRequiresReference": {
     "message": "L'audio de référence ne peut pas être utilisé seul, veuillez télécharger en même temps une image de référence ou une vidéo de référence.",
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "L'édition et l'extension vidéo nécessitent le téléchargement d'une vidéo de référence.",
     "description": "La tâche manque d'une vidéo de référence"
+  },
+  "inputMode.frames": {
+    "message": "Mode de cadre de début et de fin",
+    "description": "Titre du mode de cadre de début et de fin"
+  },
+  "inputMode.reference": {
+    "message": "Mode de référence multimodal",
+    "description": "Titre du mode de référence multimodal"
+  },
+  "description.frameMode": {
+    "message": "Utilisez le cadre de début ou le mode de cadre de début et de fin pour contrôler strictement les limites de la vidéo. Vous ne pouvez pas télécharger simultanément une image de référence, une vidéo de référence ou un audio de référence.",
+    "description": "Description du mode de cadre de début et de fin"
+  },
+  "description.referenceMode": {
+    "message": "Utilisez une image de référence, une vidéo de référence ou un audio de référence pour contrôler le personnage, l'action, le style et le son. Pour spécifier le cadre de début, écrivez dans l'invite 'image 1 comme cadre de début'.",
+    "description": "Description du mode de référence multimodal"
+  },
+  "message.frameReferenceConflict": {
+    "message": "Le cadre de début et de fin ne peut pas être utilisé avec une image de référence, une vidéo de référence ou un audio de référence en même temps. Veuillez d'abord supprimer l'un des modes d'entrée.",
+    "description": "Alerte de conflit de mode d'entrée"
+  },
+  "message.frameUploadBlocked": {
+    "message": "Des matériaux de référence multimodaux ont été ajoutés. Veuillez d'abord supprimer l'image de référence, la vidéo de référence et l'audio de référence avant de télécharger le cadre de début et de fin.",
+    "description": "Alerte de désactivation du téléchargement du cadre de début et de fin"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "Un cadre de début ou de fin a été ajouté. Veuillez d'abord supprimer le cadre de début et de fin avant de télécharger des matériaux de référence multimodaux.",
+    "description": "Alerte de désactivation du téléchargement des matériaux de référence"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "La tâche 'Génération de référence' doit télécharger au moins une image de référence, une vidéo de référence ou un audio de référence.",
+    "description": "Alerte de manque de matériel pour la tâche de référence"
+  },
+  "taskType.reference": {
+    "message": "Génération de référence",
+    "description": "Type de tâche de génération de matériel de référence"
   }
 }
