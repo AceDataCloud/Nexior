@@ -12,44 +12,6 @@ export const MAESTRO_ALLOWED_LANGS = ['zh-cn', 'en', 'ja', 'ko', 'es', 'fr', 'de
 export const MAESTRO_MIN_DURATION = 5;
 export const MAESTRO_MAX_DURATION = 300;
 
-export type IMaestroSku = 'lite' | 'standard' | 'pro';
-
-export interface IMaestroSkuPolicy {
-  rate: number;
-  maxDuration: number;
-  maxLanguages: number;
-  resolution: string;
-  fps: number;
-  scenarios: readonly string[];
-}
-
-export const MAESTRO_SKU_POLICIES: Record<IMaestroSku, IMaestroSkuPolicy> = {
-  lite: {
-    rate: 0.2,
-    maxDuration: 30,
-    maxLanguages: 1,
-    resolution: '720p',
-    fps: 24,
-    scenarios: ['auto', 'narrated', 'captions']
-  },
-  standard: {
-    rate: 0.6,
-    maxDuration: 120,
-    maxLanguages: 2,
-    resolution: '1080p',
-    fps: 30,
-    scenarios: ['auto', 'narrated', 'captions', 'avatar']
-  },
-  pro: {
-    rate: 1.2,
-    maxDuration: 300,
-    maxLanguages: 4,
-    resolution: '1080p',
-    fps: 30,
-    scenarios: ['auto', 'narrated', 'captions', 'avatar', 'drama']
-  }
-};
-export const MAESTRO_ALLOWED_QUALITIES = Object.keys(MAESTRO_SKU_POLICIES) as IMaestroSku[];
 export const MAESTRO_ALLOWED_SCENARIOS = ['narrated', 'drama', 'avatar', 'captions'];
 // `captions` post-processes an EXISTING talking-head video, so it requires an uploaded source clip.
 export const MAESTRO_UPLOAD_REQUIRED_SCENARIOS = ['captions', 'avatar'];
@@ -84,13 +46,12 @@ export const MAESTRO_ALLOWED_STYLES = [
 
 // Accepted reference media for file_urls (images / video / audio).
 export const MAESTRO_FILE_ACCEPT = '.png,.jpg,.jpeg,.gif,.bmp,.webp,.mp4,.mov,.webm,.mp3,.wav,.m4a';
-export const MAESTRO_FILE_LIMIT = 6;
+export const MAESTRO_FILE_LIMIT = 20;
 
 export const MAESTRO_DEFAULT_ACTION = MAESTRO_ACTION_GENERATE;
 export const MAESTRO_DEFAULT_LANGS = ['zh-cn'];
 export const MAESTRO_DEFAULT_ASPECT = '9:16';
 export const MAESTRO_DEFAULT_DURATION = 30;
-export const MAESTRO_DEFAULT_QUALITY = 'standard';
 export const MAESTRO_DEFAULT_SCENARIO = 'narrated';
 export const MAESTRO_DEFAULT_STYLE = 'cinematic';
 

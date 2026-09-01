@@ -150,11 +150,10 @@ describe('scenario-owned x402 requests', () => {
       buildMaestroRequest({
         prompt: 'video',
         duration: 30,
-        quality: 'pro',
         scenario_customization_enabled: true,
         scenario: 'drama'
       })
-    ).toMatchObject({ prompt: 'video', duration: 30, quality: 'pro', scenario: 'drama' });
+    ).toMatchObject({ prompt: 'video', duration: 30, scenario: 'drama' });
   });
 });
 

@@ -2,12 +2,10 @@ import type { CapabilityKey } from '@/constants/capabilities';
 import {
   MAESTRO_ALLOWED_ASPECTS,
   MAESTRO_ALLOWED_LANGS,
-  MAESTRO_ALLOWED_QUALITIES,
   MAESTRO_ALLOWED_SCENARIOS,
   MAESTRO_ALLOWED_STYLES,
   MAESTRO_ALLOWED_VOICES,
-  MAESTRO_FILE_LIMIT,
-  MAESTRO_SKU_POLICIES
+  MAESTRO_FILE_LIMIT
 } from '@/constants';
 import type { IShowcase, ISite } from '@/models';
 import { showcaseOperator } from '@/operators';
@@ -134,7 +132,7 @@ const maestroAllowed = new Set([
   'langs',
   'aspect',
   'duration',
-  'quality',
+  'quality', // accepted from historical showcases but intentionally not replayed
   'scenario',
   'style',
   'voice'
@@ -298,22 +296,17 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
     activeKeys: ['prompt', 'file_urls'],
     build: (c) => {
       if (c.action !== 'generate') throw new Error('action is invalid');
-      const quality = enumValue(c.quality, 'quality', MAESTRO_ALLOWED_QUALITIES) as
-        | keyof typeof MAESTRO_SKU_POLICIES
-        | undefined;
-      if (!quality) throw new Error('quality is invalid');
-      const policy = MAESTRO_SKU_POLICIES[quality];
       const langs = c.langs;
       if (
         !Array.isArray(langs) ||
         !langs.length ||
-        langs.length > policy.maxLanguages ||
+        langs.length > 4 ||
         new Set(langs).size !== langs.length ||
         !langs.every((lang) => typeof lang === 'string' && MAESTRO_ALLOWED_LANGS.includes(lang))
       )
         throw new Error('langs is invalid');
       const scenario = enumValue(c.scenario, 'scenario', ['auto', ...MAESTRO_ALLOWED_SCENARIOS]);
-      if (!scenario || !policy.scenarios.includes(scenario)) throw new Error('scenario is invalid');
+      if (!scenario) throw new Error('scenario is invalid');
       const fileUrls = c.file_urls == null ? [] : urls(c.file_urls, 'file_urls');
       if (!fileUrls || fileUrls.length > MAESTRO_FILE_LIMIT) throw new Error('file_urls is invalid');
       const paths = fileUrls.map((url) => new URL(url).pathname.toLowerCase());
@@ -325,7 +318,7 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
       if (!prompt?.trim()) throw new Error('prompt is invalid');
       const aspect = enumValue(c.aspect, 'aspect', MAESTRO_ALLOWED_ASPECTS);
       if (!aspect) throw new Error('aspect is invalid');
-      const duration = number(c.duration, 'duration', 5, policy.maxDuration);
+      const duration = number(c.duration, 'duration', 5, 300);
       if (duration == null || !Number.isInteger(duration)) throw new Error('duration is invalid');
       const style = enumValue(c.style, 'style', MAESTRO_ALLOWED_STYLES);
       if (!style) throw new Error('style is invalid');
@@ -342,7 +335,6 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
         langs: [...langs],
         aspect,
         duration,
-        quality,
         scenario_customization_enabled: scenario !== 'auto',
         style_customization_enabled: true,
         voice_customization_enabled: true,

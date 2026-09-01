@@ -106,41 +106,10 @@
           v-model="duration"
           class="field-control"
           :min="MAESTRO_MIN_DURATION"
-          :max="activeSkuPolicy.maxDuration"
+          :max="MAESTRO_MAX_DURATION"
           :step="5"
           controls-position="right"
         />
-      </div>
-
-      <!-- SKU -->
-      <div class="field-block sku-field">
-        <div class="field-head">
-          <h2 class="field-title font-bold">{{ $t('maestro.name.quality') }}</h2>
-          <info-icon :content="$t('maestro.description.quality')" class="ml-1" />
-        </div>
-        <div class="sku-cards" role="radiogroup" :aria-label="$t('maestro.name.quality')">
-          <button
-            v-for="sku in MAESTRO_ALLOWED_QUALITIES"
-            :key="sku"
-            type="button"
-            class="sku-card"
-            :class="{ active: quality === sku }"
-            role="radio"
-            :aria-checked="quality === sku"
-            @click="quality = sku"
-          >
-            <span class="sku-card-name">{{ $t(`maestro.option.quality.${sku}`) }}</span>
-            <strong class="sku-card-price">{{ MAESTRO_SKU_POLICIES[sku].rate }} Cr/s</strong>
-            <span class="sku-card-meta">
-              {{ MAESTRO_SKU_POLICIES[sku].resolution }} · {{ MAESTRO_SKU_POLICIES[sku].fps }} fps ·
-              {{ $t('maestro.name.upToSeconds', { seconds: MAESTRO_SKU_POLICIES[sku].maxDuration }) }}
-            </span>
-          </button>
-        </div>
-        <div class="sku-summary">
-          <span>{{ $t(`maestro.description.quality.${quality}`) }}</span>
-          <strong>{{ $t('maestro.name.estimatedCredits', { credits: estimatedCredits }) }}</strong>
-        </div>
       </div>
 
       <!-- Scenario (video type) -->
@@ -165,24 +134,21 @@
             class="scenario-card"
             :class="{
               active: scenarioCustomizationEnabled && scenario === s,
-              disabled: !scenarioCustomizationEnabled || !isScenarioAvailable(s)
+              disabled: !scenarioCustomizationEnabled
             }"
             role="radio"
             :aria-checked="scenarioCustomizationEnabled && scenario === s"
-            :aria-disabled="!scenarioCustomizationEnabled || !isScenarioAvailable(s)"
+            :aria-disabled="!scenarioCustomizationEnabled"
             :aria-label="$t(`maestro.option.scenario.${s}`)"
-            :tabindex="scenarioCustomizationEnabled && isScenarioAvailable(s) ? 0 : -1"
-            @click="scenarioCustomizationEnabled && isScenarioAvailable(s) && (scenario = s)"
-            @keydown.enter.prevent="scenarioCustomizationEnabled && isScenarioAvailable(s) && (scenario = s)"
-            @keydown.space.prevent="scenarioCustomizationEnabled && isScenarioAvailable(s) && (scenario = s)"
+            :tabindex="scenarioCustomizationEnabled ? 0 : -1"
+            @click="scenarioCustomizationEnabled && (scenario = s)"
+            @keydown.enter.prevent="scenarioCustomizationEnabled && (scenario = s)"
+            @keydown.space.prevent="scenarioCustomizationEnabled && (scenario = s)"
           >
             <div class="scenario-thumb">
               <img :src="MAESTRO_SCENARIO_THUMBNAILS[s]" :alt="$t(`maestro.option.scenario.${s}`)" loading="lazy" />
             </div>
             <p class="scenario-name">{{ $t(`maestro.option.scenario.${s}`) }}</p>
-            <span v-if="!isScenarioAvailable(s)" class="scenario-lock">
-              {{ $t('maestro.name.requiresSku', { sku: requiredSkuForScenario(s) }) }}
-            </span>
           </div>
         </div>
         <el-alert
@@ -277,13 +243,11 @@ import FileUrlsInput from './config/FileUrlsInput.vue';
 import {
   MAESTRO_ALLOWED_ASPECTS,
   MAESTRO_MIN_DURATION,
+  MAESTRO_MAX_DURATION,
   MAESTRO_DEFAULT_ACTION,
   MAESTRO_DEFAULT_LANGS,
   MAESTRO_DEFAULT_ASPECT,
   MAESTRO_DEFAULT_DURATION,
-  MAESTRO_ALLOWED_QUALITIES,
-  MAESTRO_SKU_POLICIES,
-  type IMaestroSku,
   MAESTRO_ALLOWED_SCENARIOS,
   MAESTRO_SCENARIO_THUMBNAILS,
   MAESTRO_UPLOAD_REQUIRED_SCENARIOS,
@@ -305,13 +269,7 @@ import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildMaestroRequest, maestroOperator } from '@/operators/maestro';
-import {
-  clampMaestroDuration,
-  clampMaestroLanguages,
-  estimateMaestroCredits,
-  isMaestroScenarioAvailable,
-  normalizeMaestroSku
-} from '@/utils/maestroSku';
+import { clampMaestroDuration, clampMaestroLanguages, estimateMaestroCredits } from '@/utils/maestroContract';
 import { canSubmitGeneration } from '@/utils/generationInput';
 
 // Preview rectangle dimensions (px) for each aspect-ratio chip.
@@ -343,8 +301,7 @@ export default defineComponent({
   data() {
     return {
       MAESTRO_MIN_DURATION,
-      MAESTRO_ALLOWED_QUALITIES,
-      MAESTRO_SKU_POLICIES,
+      MAESTRO_MAX_DURATION,
       MAESTRO_ALLOWED_SCENARIOS,
       MAESTRO_SCENARIO_THUMBNAILS,
       MAESTRO_ALLOWED_STYLES,
@@ -420,23 +377,15 @@ export default defineComponent({
         return this.langs.slice(1);
       },
       set(val: string[]) {
-        this.update({ langs: clampMaestroLanguages(setMaestroAdditionalLanguages(this.langs, val), this.quality) });
+        this.update({ langs: clampMaestroLanguages(setMaestroAdditionalLanguages(this.langs, val)) });
       }
     },
-    activeSkuPolicy() {
-      return MAESTRO_SKU_POLICIES[this.quality];
-    },
     additionalLanguageLimit(): number {
-      return Math.max(0, this.activeSkuPolicy.maxLanguages - 1);
+      return 3;
     },
     estimatedCredits(): number {
       const scenario = this.scenarioCustomizationEnabled ? this.scenario || 'auto' : 'auto';
-      return estimateMaestroCredits(
-        this.duration || MAESTRO_DEFAULT_DURATION,
-        this.quality,
-        scenario,
-        this.langs.length
-      );
+      return estimateMaestroCredits(this.duration || MAESTRO_DEFAULT_DURATION, scenario, this.langs.length);
     },
     aspect: {
       get(): string | undefined {
@@ -452,31 +401,7 @@ export default defineComponent({
       },
       set(val: number) {
         // el-input-number can emit null when cleared; clamp into [min, max] with the default as fallback.
-        this.update({ duration: clampMaestroDuration(val, this.quality) });
-      }
-    },
-    quality: {
-      get(): IMaestroSku {
-        return normalizeMaestroSku(this.config?.quality);
-      },
-      set(val: IMaestroSku) {
-        const patch: Partial<IMaestroConfig> = {
-          quality: val,
-          duration: clampMaestroDuration(this.duration, val),
-          langs: clampMaestroLanguages(this.langs, val)
-        };
-        if (this.scenarioCustomizationEnabled && !isMaestroScenarioAvailable(this.scenario || 'auto', val)) {
-          patch.scenario = 'narrated';
-        }
-        if (val === 'lite' && this.config?.action === 'remix') {
-          patch.action = MAESTRO_DEFAULT_ACTION;
-          patch.ref_task_id = undefined;
-        }
-        if (val !== 'pro' && this.config?.action === 'extend') {
-          patch.action = MAESTRO_DEFAULT_ACTION;
-          patch.ref_task_id = undefined;
-        }
-        this.update(patch);
+        this.update({ duration: clampMaestroDuration(val) });
       }
     },
     scenarioCustomizationEnabled: {
@@ -558,16 +483,13 @@ export default defineComponent({
     }
   },
   mounted() {
-    const quality = normalizeMaestroSku(this.config?.quality);
-    const langs = clampMaestroLanguages(normalizeMaestroLanguages(this.config?.langs), quality);
-    const scenario = this.config?.scenario || 'narrated';
+    const langs = clampMaestroLanguages(normalizeMaestroLanguages(this.config?.langs));
     this.update({
       action: this.config?.action ?? MAESTRO_DEFAULT_ACTION,
       langs,
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
-      duration: clampMaestroDuration(this.config?.duration, quality),
-      quality,
-      scenario: isMaestroScenarioAvailable(scenario, quality) ? scenario : 'narrated'
+      duration: clampMaestroDuration(this.config?.duration),
+      scenario: this.config?.scenario || 'narrated'
     });
   },
   beforeUnmount() {
@@ -576,13 +498,6 @@ export default defineComponent({
     this.quoteRunId += 1;
   },
   methods: {
-    isScenarioAvailable(scenario: string): boolean {
-      return isMaestroScenarioAvailable(scenario, this.quality);
-    },
-    requiredSkuForScenario(scenario: string): string {
-      if (isMaestroScenarioAvailable(scenario, 'standard')) return 'Standard';
-      return 'Pro';
-    },
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
       this.quoteRunId += 1;
@@ -677,78 +592,6 @@ export default defineComponent({
 }
 .field-control {
   width: 168px;
-}
-.sku-field {
-  margin-top: 20px;
-}
-.sku-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-.sku-card {
-  min-width: 0;
-  padding: 10px 8px;
-  border: 1px solid var(--el-border-color);
-  border-radius: 10px;
-  background: var(--el-fill-color-lighter);
-  color: var(--el-text-color-primary);
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-
-  &:hover,
-  &:focus-visible {
-    border-color: var(--el-color-primary-light-5);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--el-color-primary-light-7);
-  }
-
-  &.active {
-    border-color: var(--el-color-primary);
-    background: var(--el-color-primary-light-9);
-    box-shadow: 0 0 0 1px var(--el-color-primary);
-  }
-}
-.sku-card-name,
-.sku-card-price,
-.sku-card-meta {
-  display: block;
-}
-.sku-card-name {
-  font-size: 13px;
-  font-weight: 700;
-}
-.sku-card-price {
-  margin-top: 4px;
-  color: var(--el-color-primary);
-  font-size: 12px;
-}
-.sku-card-meta {
-  margin-top: 4px;
-  color: var(--el-text-color-secondary);
-  font-size: 10px;
-  line-height: 1.4;
-}
-.sku-summary {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 8px;
-  color: var(--el-text-color-secondary);
-  font-size: 11px;
-  line-height: 1.45;
-
-  strong {
-    flex: 0 0 auto;
-    color: var(--el-text-color-primary);
-  }
 }
 .custom-field {
   margin-top: 20px;
@@ -910,14 +753,6 @@ export default defineComponent({
   &.disabled {
     cursor: not-allowed;
     opacity: 0.55;
-  }
-
-  .scenario-lock {
-    display: block;
-    padding: 0 4px 5px;
-    color: var(--el-text-color-secondary);
-    font-size: 10px;
-    text-align: center;
   }
 
   &:focus-visible {

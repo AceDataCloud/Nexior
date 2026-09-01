@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { IMaestroConfig } from '@/models';
 import { MAESTRO_ALLOWED_SCENARIOS, MAESTRO_ALLOWED_STYLES, MAESTRO_ALLOWED_VOICES } from '@/constants';
 import { buildMaestroGenerateRequest, buildMaestroRemixConfig, normalizeMaestroConfig } from './maestro';
 
@@ -29,6 +30,12 @@ describe('buildMaestroGenerateRequest', () => {
       ).toEqual({ prompt: 'Launch video', ...expected });
     }
   );
+
+  it('drops retired quality from persisted configs and outgoing requests', () => {
+    expect(
+      buildMaestroGenerateRequest({ prompt: 'Video', quality: 'pro' } as IMaestroConfig & { quality: string })
+    ).toEqual({ prompt: 'Video' });
+  });
 
   it('replaces legacy auto values with real options when field toggles are explicitly enabled', () => {
     expect(

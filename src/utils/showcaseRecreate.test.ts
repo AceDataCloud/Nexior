@@ -99,7 +99,7 @@ describe('showcase recreate consumer', () => {
         style: 'industrial',
         voice: 'documentary-male'
       },
-      'quality'
+      'prompt'
     ]
   ])(
     'loads %s once by service and applies safe config without tasks or submit',
@@ -290,6 +290,7 @@ describe('showcase recreate consumer', () => {
         voice: 'anchor-female'
       })
     );
+    expect(commit.mock.calls[0]?.[1]).not.toHaveProperty('quality');
     expect(dispatch).not.toHaveBeenCalled();
   });
 
@@ -300,9 +301,6 @@ describe('showcase recreate consumer', () => {
     { action: 'generate', duration: 20.5 },
     { action: 'generate', style: undefined },
     { action: 'generate', voice: undefined },
-    { action: 'generate', quality: 'lite', duration: 31 },
-    { action: 'generate', quality: 'lite', langs: ['zh-cn', 'en'] },
-    { action: 'generate', quality: 'standard', scenario: 'drama' },
     { action: 'generate', quality: 'standard', scenario: 'avatar', file_urls: [] },
     {
       action: 'generate',
