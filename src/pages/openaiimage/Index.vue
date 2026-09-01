@@ -37,6 +37,7 @@ import {
 } from '@/operators/x402';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -53,7 +54,7 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('openaiimage')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('openaiimage'), taskPollingMixin('openaiimage')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -118,7 +119,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

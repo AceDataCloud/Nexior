@@ -31,6 +31,7 @@ import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } fro
 import { IQwenImageTask } from '@/models';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { getGenerationInputError } from '@/utils/generationInput';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IQwenImageTask | undefined;
@@ -46,7 +47,7 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('qwenimage')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('qwenimage'), taskPollingMixin('qwenimage')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -91,7 +92,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

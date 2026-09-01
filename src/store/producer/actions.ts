@@ -6,6 +6,7 @@ import { IApplication, ICredential, IProducerConfig, IProducerTask, IService } f
 import { Status } from '@/models/common';
 import { PRODUCER_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
+import { pendingUntilResponse, refreshPendingTaskItems } from '@/store/factories/taskPolling';
 
 export const resetAll = ({ commit }: ActionContext<IProducerState, IRootState>): void => {
   commit('resetAll');
@@ -190,7 +191,24 @@ export const getTasks = async (
   });
 };
 
+export const refreshPendingTasks = async (
+  { commit, state }: ActionContext<IProducerState, IRootState>,
+  args: { mode?: 'credits' | 'x402' } = {}
+): Promise<IProducerTask[]> => {
+  const token = state.credential?.token;
+  const mode = args.mode || 'credits';
+  if (mode === 'credits' && !token) throw new Error('no token');
+  const requestOptions = mode === 'x402' ? { mode: 'x402' as const } : { token };
+  return refreshPendingTaskItems({
+    getItems: () => state.tasks?.items || [],
+    isPending: pendingUntilResponse,
+    fetch: async (ids) => (await producerOperator.tasks({ ids, type: 'audios' }, requestOptions)).data.items || [],
+    commit: (items) => commit('setTasksItems', items)
+  });
+};
+
 export default {
+  refreshPendingTasks,
   setService,
   getService,
   resetAll,

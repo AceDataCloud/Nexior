@@ -6,6 +6,7 @@ import { IApplication, ICredential, IMidjourneyConfig, IMidjourneyTask, IService
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
+import { pendingUntilResponseOrTerminalStatus, refreshPendingTaskItems } from '@/store/factories/taskPolling';
 
 export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
   commit('resetAll');
@@ -187,7 +188,24 @@ export const getTasks = async (
   });
 };
 
+export const refreshPendingTasks = async (
+  { commit, state }: ActionContext<IMidjourneyState, IRootState>,
+  args: { mode?: 'credits' | 'x402' } = {}
+): Promise<IMidjourneyTask[]> => {
+  const token = state.credential?.token;
+  const mode = args.mode || 'credits';
+  if (mode === 'credits' && !token) throw new Error('no token');
+  const requestOptions = mode === 'x402' ? { mode: 'x402' as const } : { token };
+  return refreshPendingTaskItems({
+    getItems: () => state.tasks?.items || [],
+    isPending: pendingUntilResponseOrTerminalStatus,
+    fetch: async (ids) => (await midjourneyOperator.tasks({ ids }, requestOptions)).data.items || [],
+    commit: (items) => commit('setTasksItems', items)
+  });
+};
+
 export default {
+  refreshPendingTasks,
   setService,
   getService,
   resetAll,

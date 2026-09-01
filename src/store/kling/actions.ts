@@ -6,12 +6,14 @@ import { ITaskListFilter } from '@/operators/baseTaskOperator';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
 import { IKlingState } from './models';
+import { pendingUntilSuccessfulMedia } from '@/store/factories/taskPolling';
 
 type KlingTasksFilter = ITaskListFilter & { type?: IKlingTaskType };
 
 const baseActions = createTaskActions<IKlingConfig, IKlingTask, KlingTasksFilter>({
   serviceId: KLING_SERVICE_ID,
   operator: klingOperator,
+  isPending: pendingUntilSuccessfulMedia,
   buildFilter: (rootState, args: IGetTasksArgs): KlingTasksFilter => ({
     userId: rootState?.user?.id,
     createdAtMin: args.createdAtMin,

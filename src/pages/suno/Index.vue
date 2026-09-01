@@ -48,6 +48,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: ISunoTask | undefined;
@@ -67,7 +68,7 @@ export default defineComponent({
     ShowcaseResultTabs,
     PreviewPanel
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('suno')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('suno'), taskPollingMixin('suno')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -119,7 +120,7 @@ export default defineComponent({
       async handler(value: boolean, oldValue: boolean | undefined) {
         if (oldValue === undefined || value === oldValue) return;
         this.$store.commit('suno/setTasks', undefined);
-        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (value && !this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         if (!value && !this.credential?.token) {
           window.clearInterval(this.job);
           this.job = 0;
@@ -144,7 +145,7 @@ export default defineComponent({
         if (newValue) {
           await this.onGetTasks();
           await this.onScrollDown();
-          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+          if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
       },
       immediate: true

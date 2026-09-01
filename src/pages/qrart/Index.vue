@@ -43,6 +43,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { getGenerationInputError } from '@/utils/generationInput';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IQrartTask | undefined;
@@ -60,7 +61,7 @@ export default defineComponent({
     ApplicationStatus,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, taskPollingMixin('qrart')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -132,7 +133,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

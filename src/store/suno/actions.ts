@@ -6,6 +6,7 @@ import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoTask, IServi
 import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
+import { pendingUntilResponse, refreshPendingTaskItems } from '@/store/factories/taskPolling';
 
 export const resetAll = ({ commit }: ActionContext<ISunoState, IRootState>): void => {
   commit('resetAll');
@@ -235,7 +236,24 @@ export const deletePersona = async (
   }
 };
 
+export const refreshPendingTasks = async (
+  { commit, state }: ActionContext<ISunoState, IRootState>,
+  args: { mode?: 'credits' | 'x402' } = {}
+): Promise<ISunoTask[]> => {
+  const token = state.credential?.token;
+  const mode = args.mode || 'credits';
+  if (mode === 'credits' && !token) throw new Error('no token');
+  const requestOptions = mode === 'x402' ? { mode: 'x402' as const } : { token };
+  return refreshPendingTaskItems({
+    getItems: () => state.tasks?.items || [],
+    isPending: pendingUntilResponse,
+    fetch: async (ids) => (await sunoOperator.tasks({ ids, type: 'audios' }, requestOptions)).data.items || [],
+    commit: (items) => commit('setTasksItems', items)
+  });
+};
+
 export default {
+  refreshPendingTasks,
   setService,
   getService,
   resetAll,

@@ -102,6 +102,42 @@ describe('createTaskActions/deleteTask', () => {
   });
 });
 
+describe('createTaskActions/getTasks concurrency', () => {
+  it('coalesces identical requests but keeps different filters independent', async () => {
+    const tasks = vi.fn().mockResolvedValue({ data: { items: [] } });
+    const actions: any = makeActions({ tasks });
+    const state = { credential: { token: 'tok' }, tasks: undefined, status: { getTasks: 'None' } };
+    const context = { state, rootState: { user: { id: 'u' } }, commits: [] as Array<[string, unknown]> };
+
+    await Promise.all([
+      invoke(actions.getTasks, context, { limit: 20 }),
+      invoke(actions.getTasks, context, { limit: 20 }),
+      invoke(actions.getTasks, context, { limit: 20, createdAtMax: 10 })
+    ]);
+
+    expect(tasks).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not coalesce requests whose root-state filter changed', async () => {
+    const tasks = vi.fn().mockResolvedValue({ data: { items: [] } });
+    const actions: any = createTaskActions<unknown, { id: string }, { type?: string }>({
+      serviceId: 'svc-1',
+      operator: { tasks },
+      buildFilter: (rootState: any) => ({ type: rootState.taskType })
+    });
+    const state = { credential: { token: 'tok' }, tasks: undefined, status: { getTasks: 'None' } };
+    const rootState: any = { taskType: 'videos' };
+    const context = { state, rootState, commits: [] as Array<[string, unknown]> };
+
+    const first = invoke(actions.getTasks, context);
+    rootState.taskType = 'motion';
+    const second = invoke(actions.getTasks, context);
+    await Promise.all([first, second]);
+
+    expect(tasks).toHaveBeenCalledTimes(2);
+  });
+});
+
 describe('createTaskActions/getTasks payment mode', () => {
   it('queries known task IDs without a Credential in x402 mode', async () => {
     const tasks = vi.fn().mockResolvedValue({ data: { items: [{ id: 'wallet-task' }], count: 1 } });

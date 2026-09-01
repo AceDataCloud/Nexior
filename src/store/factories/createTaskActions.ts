@@ -5,6 +5,7 @@ import { applicationOperator, credentialOperator, serviceOperator } from '@/oper
 import { mergeAndSortLists } from '@/utils/merge';
 import { IRootState } from '../common/models';
 import type { OperatorRequestOptions, PaymentMode } from '@/operators/x402';
+import { refreshPendingTaskItems } from './taskPolling';
 
 /**
  * Generic state shape every per-service Vuex module conforms to.
@@ -72,7 +73,7 @@ export interface IGetTasksArgs {
  * from `rootState.kling.taskType`) can pass `opts.buildFilter` to take
  * over completely.
  */
-export function createTaskActions<TConfig, TTask, TFilter>(opts: {
+export function createTaskActions<TConfig, TTask extends { id?: string }, TFilter>(opts: {
   serviceId: string;
   operator: ITaskOperator<TFilter, TTask>;
   /** Pass through `offset` / `limit` from the dispatch arg. */
@@ -81,8 +82,11 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
   type?: string;
   /** Fully custom filter — when provided, `paginated` and `type` are ignored. */
   buildFilter?: (rootState: IRootState, args: IGetTasksArgs) => TFilter;
+  isPending?: (task: TTask) => boolean;
 }): ActionTree<ITaskServiceState<TConfig, TTask>, IRootState> {
   type S = ITaskServiceState<TConfig, TTask>;
+  const taskRequests = new Map<string, Promise<TTask[]>>();
+  let pendingRequest: Promise<TTask[]> | undefined;
   const buildFilter =
     opts.buildFilter ??
     ((rootState: IRootState, args: IGetTasksArgs): TFilter =>
@@ -186,17 +190,17 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     }
   };
 
-  const getTasks = async (
+  const getTasks = (
     { commit, state, rootState }: ActionContext<S, IRootState>,
     args: IGetTasksArgs = {}
   ): Promise<TTask[]> => {
     const token = state.credential?.token;
     const mode = args.mode || 'credits';
-    if (mode === 'credits' && !token) throw new Error('no token');
+    if (mode === 'credits' && !token) return Promise.reject(new Error('no token'));
     if (mode === 'x402' && !args.ids?.length) {
       commit('setTasksItems', []);
       commit('setTasksTotal', 0);
-      return [];
+      return Promise.resolve([]);
     }
     const filter =
       mode === 'x402'
@@ -205,19 +209,60 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
             offset: args.offset,
             limit: args.limit,
             createdAtMin: args.createdAtMin,
-            createdAtMax: args.createdAtMax
+            createdAtMax: args.createdAtMax,
+            ...(opts.type ? { type: opts.type } : {})
           } as unknown as TFilter)
         : buildFilter(rootState, args);
-    const response = await opts.operator.tasks(filter, { token, mode });
-    const existingItems = state?.tasks?.items || [];
-    const newItems = response.data.items || [];
-    const mergedItems = mergeAndSortLists(existingItems, newItems);
-    commit('setTasksItems', mergedItems);
-    const total = response.data.count ?? response.data.total;
-    if (total !== undefined) {
-      commit('setTasksTotal', total);
-    }
-    return response.data.items;
+    const requestKey = JSON.stringify([mode, token || '', filter]);
+    const activeRequest = taskRequests.get(requestKey);
+    if (activeRequest) return activeRequest;
+    const request = (async () => {
+      if (state.status) state.status.getTasks = Status.Request;
+      try {
+        const requestOptions: OperatorRequestOptions = mode === 'x402' ? { mode: 'x402' } : { token };
+        const response = await opts.operator.tasks(filter, requestOptions);
+        const existingItems = state?.tasks?.items || [];
+        const newItems = response.data.items || [];
+        commit('setTasksItems', mergeAndSortLists(existingItems, newItems));
+        const total = response.data.count ?? response.data.total;
+        if (total !== undefined) commit('setTasksTotal', total);
+        if (state.status) state.status.getTasks = Status.Success;
+        return newItems;
+      } catch (error) {
+        if (state.status) state.status.getTasks = Status.Error;
+        throw error;
+      }
+    })().finally(() => {
+      taskRequests.delete(requestKey);
+    });
+    taskRequests.set(requestKey, request);
+    return request;
+  };
+
+  const refreshPendingTasks = (
+    { commit, state }: ActionContext<S, IRootState>,
+    args: Pick<IGetTasksArgs, 'mode'> = {}
+  ): Promise<TTask[]> => {
+    if (!opts.isPending || pendingRequest) return pendingRequest || Promise.resolve([]);
+    const token = state.credential?.token;
+    const mode = args.mode || 'credits';
+    if (mode === 'credits' && !token) return Promise.reject(new Error('no token'));
+    const requestOptions: OperatorRequestOptions = mode === 'x402' ? { mode: 'x402' } : { token };
+    pendingRequest = refreshPendingTaskItems({
+      getItems: () => state.tasks?.items || [],
+      isPending: opts.isPending,
+      fetch: async (ids) => {
+        const response = await opts.operator.tasks(
+          { ids, ...(opts.type ? { type: opts.type } : {}) } as unknown as TFilter,
+          requestOptions
+        );
+        return response.data.items || [];
+      },
+      commit: (items) => commit('setTasksItems', items)
+    }).finally(() => {
+      pendingRequest = undefined;
+    });
+    return pendingRequest!;
   };
 
   // Hard-delete one of the caller's own tasks and drop it from the list.
@@ -292,6 +337,7 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     setTasksTotal,
     setTasksActive,
     getTasks,
+    refreshPendingTasks,
     deleteTask
   };
 }
