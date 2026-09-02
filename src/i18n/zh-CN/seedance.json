@@ -260,7 +260,7 @@
     "description": "参考主体图片上传标签（Seedance 2.0）"
   },
   "description.referenceImage": {
-    "message": "让图中人物在视频里开口说话、对口型的通道（口播 / 数字人首选，会保留人物形象）。想让角色说话就把图传到这里，而不是“首帧图片”。配合提示词里的引号台词 +“生成音频”一起用。可传 1~9 张。仅 Seedance 2.0 系列。注意：不能与“首帧/尾帧图片”同时使用。",
+    "message": "用于保持角色、主体、画面或风格。Seedance 2.0 最多 9 张，Seedance 2.5 最多 30 张。属于多模态参考模式，不能与首帧/尾帧同时使用。",
     "description": "参考图片说明"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "参考音频上传标签（Seedance 2.0）"
   },
   "description.referenceAudio": {
-    "message": "让生成视频借用这段音频的音色或背景音乐（配合参考图片让角色用该音色说话）。需搭配参考图片或参考视频一起用，不能单独只传音频。可传 1~3 段。仅 Seedance 2.0 系列。",
+    "message": "用于参考音色、配乐或对话。Seedance 2.0 需搭配参考图或参考视频，最多 3 段；Seedance 2.5 可单独使用，最多 10 段。不能与首帧/尾帧同时使用。",
     "description": "参考音频说明"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "参考视频上传标签（Seedance 2.0）"
   },
   "description.referenceVideo": {
-    "message": "让模型借用这段视频的动作/运镜/风格/音效，生成一段新视频。可传 1~3 段。仅 Seedance 2.0 系列。",
+    "message": "用于参考动作、运镜、风格或编辑视频。Seedance 2.0 最多 3 段，Seedance 2.5 最多 10 段。属于多模态参考模式，不能与首帧/尾帧同时使用。",
     "description": "参考视频说明"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "视频编辑和延长必须上传参考视频。",
     "description": "任务缺少参考视频"
+  },
+  "inputMode.frames": {
+    "message": "首尾帧模式",
+    "description": "首尾帧模式标题"
+  },
+  "inputMode.reference": {
+    "message": "多模态参考模式",
+    "description": "多模态参考模式标题"
+  },
+  "description.frameMode": {
+    "message": "使用首帧或首尾帧严格控制视频边界。不能同时上传参考图、参考视频或参考音频。",
+    "description": "首尾帧模式说明"
+  },
+  "description.referenceMode": {
+    "message": "使用参考图、参考视频或参考音频控制角色、动作、风格和声音。如需指定首帧，请在提示词中写“图片 1 作为首帧”。",
+    "description": "多模态参考模式说明"
+  },
+  "message.frameReferenceConflict": {
+    "message": "首尾帧不能与参考图、参考视频或参考音频同时使用，请先移除其中一种输入模式。",
+    "description": "输入模式冲突提示"
+  },
+  "message.frameUploadBlocked": {
+    "message": "已添加多模态参考素材，请先移除参考图、参考视频和参考音频，再上传首尾帧。",
+    "description": "首尾帧上传禁用提示"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "已添加首帧或尾帧，请先移除首尾帧，再上传多模态参考素材。",
+    "description": "参考素材上传禁用提示"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "“参考生成”任务必须上传至少一个参考图、参考视频或参考音频。",
+    "description": "参考任务缺少素材提示"
+  },
+  "taskType.reference": {
+    "message": "参考生成",
+    "description": "参考素材生成任务类型"
   }
 }

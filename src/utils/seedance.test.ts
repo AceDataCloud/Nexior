@@ -67,10 +67,12 @@ describe('normalizeSeedanceRequest', () => {
     const { request } = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_1_0_PRO,
       prompt: 'a cat',
-      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'reference_image' }]
+      images: [
+        { url: 'https://cdn.example.com/frame.jpg', role: 'first_frame' },
+        { url: 'https://cdn.example.com/a.jpg', role: 'reference_image' }
+      ]
     });
-    // 1.0 Pro has no multimodal reference; the stray reference_image is dropped.
-    expect(request?.images).toBeUndefined();
+    expect(request?.images).toEqual([{ url: 'https://cdn.example.com/frame.jpg', role: 'first_frame' }]);
   });
 
   it('rejects a required-image model when its only image is a stripped reference_image', () => {
@@ -131,18 +133,54 @@ describe('normalizeSeedanceRequest', () => {
     expect(request?.duration).toBe(-1);
   });
 
-  it('normalizes Seedance 2.5 frame, roles, and web search controls', () => {
-    const { request } = normalizeSeedanceRequest({
+  it('rejects boundary frames mixed with any reference media', () => {
+    const frame = { url: 'https://cdn.example.com/frame.jpg', role: 'first_frame' as const };
+    for (const config of [
+      { images: [frame, { url: 'https://cdn.example.com/ref.jpg', role: 'reference_image' as const }] },
+      { images: [frame], audios: [{ url: 'https://cdn.example.com/a.mp3' }] },
+      { images: [frame], videos: [{ url: 'https://cdn.example.com/v.mp4' }] }
+    ]) {
+      expect(normalizeSeedanceRequest({ model: SEEDANCE_MODEL_2_5, prompt: 'animate', ...config }).reject).toBe(
+        'frameReferenceConflict'
+      );
+    }
+  });
+
+  it('keeps legal boundary-frame and multimodal-reference modes', () => {
+    const frames = normalizeSeedanceRequest({
       model: SEEDANCE_MODEL_2_5,
       prompt: 'animate',
       ratio: '16:9',
-      images: [{ url: 'https://cdn.example.com/a.jpg', role: 'first_frame' }],
-      audios: [{ url: 'https://cdn.example.com/a.mp3' }],
-      videos: [{ url: 'https://cdn.example.com/v.mp4' }],
+      images: [
+        { url: 'https://cdn.example.com/first.jpg', role: 'first_frame' },
+        { url: 'https://cdn.example.com/last.jpg', role: 'last_frame' }
+      ],
       web_search: true
     });
-    expect(request?.ratio).toBe('adaptive');
-    expect(request?.tools).toEqual([{ type: 'web_search' }]);
+    expect(frames.reject).toBeUndefined();
+    expect(frames.request?.ratio).toBe('adaptive');
+    expect(frames.request?.tools).toEqual([{ type: 'web_search' }]);
+
+    const references = normalizeSeedanceRequest({
+      model: SEEDANCE_MODEL_2_5,
+      prompt: 'follow the references',
+      images: [{ url: 'https://cdn.example.com/ref.jpg', role: 'reference_image' }],
+      audios: [{ url: 'https://cdn.example.com/a.mp3' }],
+      videos: [{ url: 'https://cdn.example.com/v.mp4' }],
+      omni_reference_task_type: 'reference'
+    });
+    expect(references.reject).toBeUndefined();
+    expect(references.request?.omni_reference_task_type).toBe('reference');
+  });
+
+  it('requires reference media for the explicit reference task type', () => {
+    expect(
+      normalizeSeedanceRequest({
+        model: SEEDANCE_MODEL_2_5,
+        prompt: 'generate',
+        omni_reference_task_type: 'reference'
+      }).reject
+    ).toBe('taskRequiresReferenceMedia');
   });
 
   it('requires a reference video for Seedance 2.5 edit and extend', () => {

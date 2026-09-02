@@ -260,7 +260,7 @@
     "description": "Etiqueta para upload da imagem de referência (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "Canal para fazer o personagem na imagem falar e sincronizar os lábios (preferido para narração / personagens digitais, mantendo a imagem do personagem). Para que o personagem fale, envie a imagem aqui, e não na \"imagem inicial\". Deve ser usado junto com os diálogos entre aspas nas palavras-chave + \"gerar áudio\". É possível enviar de 1 a 9 imagens. Apenas na série Seedance 2.0. Atenção: não pode ser usado simultaneamente com \"imagem inicial/imagem final\".",
+    "message": "Usado para manter o personagem, sujeito, cena ou estilo. Seedance 2.0 permite até 9 imagens, Seedance 2.5 permite até 30 imagens. Pertence ao modo de referência multimodal, não pode ser usado com o primeiro quadro/último quadro ao mesmo tempo.",
     "description": "Descrição da imagem de referência"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "Etiqueta para upload do áudio de referência (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Permita que o vídeo gerado utilize o tom ou a música de fundo deste áudio (em combinação com a imagem de referência para que o personagem fale com esse tom). Deve ser usado junto com a imagem ou vídeo de referência, não pode ser enviado apenas o áudio. É possível enviar de 1 a 3 trechos. Apenas na série Seedance 2.0.",
+    "message": "Usado para referência de timbre, trilha sonora ou diálogo. Seedance 2.0 deve ser usado com imagem ou vídeo de referência, até 3 trechos; Seedance 2.5 pode ser usado sozinho, até 10 trechos. Não pode ser usado com o primeiro quadro/último quadro ao mesmo tempo.",
     "description": "Descrição do áudio de referência"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "Etiqueta de upload de vídeo de referência (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Permita que o modelo utilize os movimentos/estilos/efeitos sonoros deste vídeo para gerar um novo vídeo. É possível enviar de 1 a 3 trechos. Apenas na série Seedance 2.0.",
+    "message": "Usado para referência de ação, movimento de câmera, estilo ou edição de vídeo. Seedance 2.0 permite até 3 trechos, Seedance 2.5 permite até 10 trechos. Pertence ao modo de referência multimodal, não pode ser usado com o primeiro quadro/último quadro ao mesmo tempo.",
     "description": "Descrição do vídeo de referência"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "Edição de vídeo e extensão requerem o upload de um vídeo de referência.",
     "description": "A tarefa está faltando um vídeo de referência"
+  },
+  "inputMode.frames": {
+    "message": "Modo de quadro inicial e final",
+    "description": "Título do modo de quadro inicial e final"
+  },
+  "inputMode.reference": {
+    "message": "Modo de referência multimodal",
+    "description": "Título do modo de referência multimodal"
+  },
+  "description.frameMode": {
+    "message": "Use o quadro inicial ou o modo de quadro inicial e final para controlar rigorosamente as bordas do vídeo. Não é possível enviar simultaneamente imagens de referência, vídeos de referência ou áudios de referência.",
+    "description": "Descrição do modo de quadro inicial e final"
+  },
+  "description.referenceMode": {
+    "message": "Use imagens de referência, vídeos de referência ou áudios de referência para controlar personagens, ações, estilos e sons. Para especificar o quadro inicial, escreva 'imagem 1 como quadro inicial' na sugestão.",
+    "description": "Descrição do modo de referência multimodal"
+  },
+  "message.frameReferenceConflict": {
+    "message": "O quadro inicial e final não podem ser usados simultaneamente com imagens de referência, vídeos de referência ou áudios de referência. Por favor, remova um dos modos de entrada primeiro.",
+    "description": "Aviso de conflito de modos de entrada"
+  },
+  "message.frameUploadBlocked": {
+    "message": "Materiais de referência multimodal já foram adicionados. Por favor, remova as imagens de referência, vídeos de referência e áudios de referência antes de enviar o quadro inicial e final.",
+    "description": "Aviso de upload de quadro inicial e final desativado"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "Um quadro inicial ou final já foi adicionado. Por favor, remova o quadro inicial e final antes de enviar materiais de referência multimodal.",
+    "description": "Aviso de upload de materiais de referência desativado"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "A tarefa de 'geração de referência' deve ter pelo menos uma imagem de referência, um vídeo de referência ou um áudio de referência enviado.",
+    "description": "Aviso de falta de materiais para a tarefa de referência"
+  },
+  "taskType.reference": {
+    "message": "Geração de referência",
+    "description": "Tipo de tarefa de geração de materiais de referência"
   }
 }

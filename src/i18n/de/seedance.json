@@ -260,24 +260,24 @@
     "description": "Hochlade-Label für das Referenzbild (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "Ein Kanal, der es den Charakteren im Bild ermöglicht, im Video zu sprechen und Lippenbewegungen zu synchronisieren (bevorzugt für Sprachübertragungen / digitale Menschen, behält das Charakterbild bei). Wenn Sie möchten, dass die Charaktere sprechen, laden Sie das Bild hier hoch, nicht in das \"Erste Frame-Bild\". In Kombination mit den Dialogen in Anführungszeichen im Prompt + „Audio generieren“. Sie können 1-9 Bilder hochladen. Nur für die Seedance 2.0-Serie. Hinweis: Kann nicht gleichzeitig mit \"Erstes Frame/Bild des letzten Frames\" verwendet werden.",
-    "description": "Beschreibung des Referenzbildes"
+    "message": "Für die Beibehaltung von Charakteren, Motiven, Szenen oder Stilen. Seedance 2.0 maximal 9 Bilder, Seedance 2.5 maximal 30 Bilder. Gehört zum multimodalen Referenzmodus, kann nicht gleichzeitig mit dem ersten/letzten Frame verwendet werden.",
+    "description": "Beschreibung der Referenzbilder"
   },
   "name.referenceAudio": {
     "message": "Referenzaudio (Stimme/Musik)",
     "description": "Hochlade-Label für das Referenzaudio (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Lassen Sie das generierte Video diese Audiofarbe oder Hintergrundmusik verwenden (in Kombination mit dem Referenzbild, damit die Charaktere in dieser Farbe sprechen). Muss zusammen mit einem Referenzbild oder Referenzvideo verwendet werden, kann nicht nur Audio hochgeladen werden. Sie können 1-3 Abschnitte hochladen. Nur für die Seedance 2.0-Serie.",
-    "description": "Beschreibung des Referenz-Audios"
+    "message": "Für Referenzklänge, Musik oder Dialoge. Seedance 2.0 muss mit Referenzbildern oder Referenzvideos kombiniert werden, maximal 3 Abschnitte; Seedance 2.5 kann unabhängig verwendet werden, maximal 10 Abschnitte. Kann nicht gleichzeitig mit dem ersten/letzten Frame verwendet werden.",
+    "description": "Beschreibung der Referenzaudios"
   },
   "name.referenceVideo": {
     "message": "Referenzvideo",
     "description": "Hochladen-Label für Referenzvideo (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Lassen Sie das Modell diese Videoaktionen/Kamerafahrten/Stile/Soundeffekte verwenden, um ein neues Video zu generieren. Sie können 1-3 Abschnitte hochladen. Nur für die Seedance 2.0-Serie.",
-    "description": "Beschreibung des Referenzvideos"
+    "message": "Für Referenzbewegungen, Kameraführung, Stile oder bearbeitete Videos. Seedance 2.0 maximal 3 Abschnitte, Seedance 2.5 maximal 10 Abschnitte. Gehört zum multimodalen Referenzmodus, kann nicht gleichzeitig mit dem ersten/letzten Frame verwendet werden.",
+    "description": "Beschreibung der Referenzvideos"
   },
   "message.audioRequiresReference": {
     "message": "Referenzaudio kann nicht alleine verwendet werden, bitte laden Sie gleichzeitig ein Referenzbild oder ein Referenzvideo hoch.",
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "Für die Video-Bearbeitung und -Verlängerung muss ein Referenzvideo hochgeladen werden.",
     "description": "Fehlendes Referenzvideo für die Aufgabe"
+  },
+  "inputMode.frames": {
+    "message": "Anfangs- und Endrahmenmodus",
+    "description": "Titel des Anfangs- und Endrahmenmodus"
+  },
+  "inputMode.reference": {
+    "message": "Multimodaler Referenzmodus",
+    "description": "Titel des multimodalen Referenzmodus"
+  },
+  "description.frameMode": {
+    "message": "Verwendet den Anfangsrahmen oder den Anfangs- und Endrahmen, um die Video-Grenzen strikt zu kontrollieren. Es können nicht gleichzeitig Referenzbilder, Referenzvideos oder Referenzaudio hochgeladen werden.",
+    "description": "Beschreibung des Anfangs- und Endrahmenmodus"
+  },
+  "description.referenceMode": {
+    "message": "Verwendet Referenzbilder, Referenzvideos oder Referenzaudio, um Charaktere, Bewegungen, Stile und Klänge zu steuern. Um den Anfangsrahmen anzugeben, schreiben Sie im Prompt \"Bild 1 als Anfangsrahmen\".",
+    "description": "Beschreibung des multimodalen Referenzmodus"
+  },
+  "message.frameReferenceConflict": {
+    "message": "Anfangs- und Endrahmen können nicht gleichzeitig mit Referenzbildern, Referenzvideos oder Referenzaudio verwendet werden. Bitte entfernen Sie zuerst einen der Eingabemodi.",
+    "description": "Hinweis auf Konflikt der Eingabemodi"
+  },
+  "message.frameUploadBlocked": {
+    "message": "Multimodale Referenzmaterialien wurden hinzugefügt. Bitte entfernen Sie zuerst Referenzbilder, Referenzvideos und Referenzaudio, bevor Sie Anfangs- und Endrahmen hochladen.",
+    "description": "Hinweis zur Deaktivierung des Uploads von Anfangs- und Endrahmen"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "Anfangs- oder Endrahmen wurden hinzugefügt. Bitte entfernen Sie zuerst die Anfangs- und Endrahmen, bevor Sie multimodale Referenzmaterialien hochladen.",
+    "description": "Hinweis zur Deaktivierung des Uploads von Referenzmaterialien"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "Die Aufgabe \"Referenzgenerierung\" muss mindestens ein Referenzbild, Referenzvideo oder Referenzaudio hochladen.",
+    "description": "Hinweis auf fehlendes Material für die Referenzaufgabe"
+  },
+  "taskType.reference": {
+    "message": "Referenzgenerierung",
+    "description": "Aufgabentyp für die Generierung von Referenzmaterialien"
   }
 }

@@ -11,6 +11,22 @@
       <return-last-frame-switch class="mb-4" />
       <advanced25-settings class="mb-4" />
       <seed-input class="mb-4" />
+      <div v-if="capability.acceptsReferenceImage" class="input-mode-guide mb-4">
+        <div>
+          <strong>{{ $t('seedance.inputMode.frames') }}</strong> {{ $t('seedance.description.frameMode') }}
+        </div>
+        <div>
+          <strong>{{ $t('seedance.inputMode.reference') }}</strong> {{ $t('seedance.description.referenceMode') }}
+        </div>
+      </div>
+      <el-alert
+        v-if="inputModes.mixed"
+        class="mb-4"
+        type="warning"
+        :closable="false"
+        :title="$t('seedance.message.frameReferenceConflict')"
+        show-icon
+      />
       <first-frame-image class="mb-4" />
       <last-frame-image class="mb-4" />
       <reference-image class="mb-4" />
@@ -31,7 +47,7 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton } from 'element-plus';
+import { ElAlert, ElButton } from 'element-plus';
 import PromptInput from './config/PromptInput.vue';
 import ModelSelector from './config/ModelSelector.vue';
 import DurationSelector from './config/DurationSelector.vue';
@@ -49,7 +65,8 @@ import Advanced25Settings from './config/Advanced25Settings.vue';
 import SeedInput from './config/SeedInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
-import { normalizeSeedanceRequest } from '@/utils/seedance';
+import { getSeedanceInputModes, normalizeSeedanceRequest } from '@/utils/seedance';
+import { getSeedanceCapability } from '@/constants';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { seedanceOperator } from '@/operators/seedance';
@@ -59,6 +76,7 @@ export default defineComponent({
   name: 'SeedanceConfigPanel',
   components: {
     MagicIcon,
+    ElAlert,
     ElButton,
     PromptInput,
     ModelSelector,
@@ -89,6 +107,12 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.seedance?.config;
+    },
+    capability() {
+      return getSeedanceCapability(this.config?.model);
+    },
+    inputModes() {
+      return getSeedanceInputModes(this.config);
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);
@@ -152,3 +176,20 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.input-mode-guide {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-regular);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.input-mode-guide strong {
+  margin-right: 4px;
+  color: var(--el-text-color-primary);
+}
+</style>

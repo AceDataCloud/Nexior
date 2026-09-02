@@ -89,6 +89,17 @@ describe('Seedance quota handling', () => {
     expect(mocks.generate).not.toHaveBeenCalled();
   });
 
+  it('blocks mixed frame and reference media before upload or generation', async () => {
+    mocks.normalize.mockReturnValue({ reject: 'frameReferenceConflict' });
+    const wrapper = mountPage();
+
+    await (wrapper.vm as any).onGenerate();
+
+    expect(ElMessage.warning).toHaveBeenCalledWith('seedance.message.frameReferenceConflict');
+    expect(mocks.ensureNoPendingUpload).not.toHaveBeenCalled();
+    expect(mocks.generate).not.toHaveBeenCalled();
+  });
+
   it('delegates used-up recovery and its submitted estimate to the shared controller', async () => {
     const error = { response: { data: { error: { code: 'used_up' } } } };
     mocks.generate.mockRejectedValue(error);

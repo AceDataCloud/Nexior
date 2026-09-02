@@ -260,7 +260,7 @@
     "description": "Etichetta per il caricamento dell'immagine di riferimento (Seedance 2.0)"
   },
   "description.referenceImage": {
-    "message": "Canale per far parlare i personaggi nell'immagine nel video, sincronizzando i labiali (preferito per il parlato / personaggi digitali, manterrà l'aspetto del personaggio). Se vuoi che il personaggio parli, carica l'immagine qui, non in \"immagine di apertura\". Usalo insieme alle battute tra virgolette nel testo + \"generare audio\". Puoi caricare da 1 a 9 immagini. Solo serie Seedance 2.0. Nota: non può essere usato insieme a \"immagini di apertura/finali\".",
+    "message": "Utilizzato per mantenere il personaggio, il soggetto, l'immagine o lo stile. Seedance 2.0 massimo 9 immagini, Seedance 2.5 massimo 30 immagini. Appartiene alla modalità di riferimento multimodale, non può essere utilizzato con il primo/ultimo fotogramma.",
     "description": "Descrizione dell'immagine di riferimento"
   },
   "name.referenceAudio": {
@@ -268,7 +268,7 @@
     "description": "Etichetta per il caricamento dell'audio di riferimento (Seedance 2.0)"
   },
   "description.referenceAudio": {
-    "message": "Permette al video generato di utilizzare il timbro o la musica di sottofondo di questo audio (insieme all'immagine di riferimento per far parlare il personaggio con quel timbro). Deve essere utilizzato insieme a un'immagine o video di riferimento, non può essere caricato da solo. Puoi caricare da 1 a 3 clip. Solo serie Seedance 2.0.",
+    "message": "Utilizzato per il riferimento del timbro, della musica o del dialogo. Seedance 2.0 deve essere accompagnato da immagini o video di riferimento, massimo 3 segmenti; Seedance 2.5 può essere utilizzato da solo, massimo 10 segmenti. Non può essere utilizzato con il primo/ultimo fotogramma.",
     "description": "Descrizione dell'audio di riferimento"
   },
   "name.referenceVideo": {
@@ -276,7 +276,7 @@
     "description": "Etichetta di caricamento del video di riferimento (Seedance 2.0)"
   },
   "description.referenceVideo": {
-    "message": "Permette al modello di utilizzare i movimenti/angolazioni/stile/effetti sonori di questo video per generare un nuovo video. Puoi caricare da 1 a 3 clip. Solo serie Seedance 2.0.",
+    "message": "Utilizzato per il riferimento di azioni, movimenti di camera, stile o montaggio video. Seedance 2.0 massimo 3 segmenti, Seedance 2.5 massimo 10 segmenti. Appartiene alla modalità di riferimento multimodale, non può essere utilizzato con il primo/ultimo fotogramma.",
     "description": "Descrizione del video di riferimento"
   },
   "message.audioRequiresReference": {
@@ -326,5 +326,41 @@
   "message.taskRequiresVideo": {
     "message": "Per l'editing video e l'estensione è necessario caricare un video di riferimento.",
     "description": "Il compito manca di un video di riferimento"
+  },
+  "inputMode.frames": {
+    "message": "Modalità fotogramma iniziale e finale",
+    "description": "Titolo della modalità fotogramma iniziale e finale"
+  },
+  "inputMode.reference": {
+    "message": "Modalità di riferimento multimodale",
+    "description": "Titolo della modalità di riferimento multimodale"
+  },
+  "description.frameMode": {
+    "message": "Utilizza il fotogramma iniziale o la modalità fotogramma iniziale e finale per controllare rigorosamente i confini del video. Non è possibile caricare contemporaneamente immagini di riferimento, video di riferimento o audio di riferimento.",
+    "description": "Descrizione della modalità fotogramma iniziale e finale"
+  },
+  "description.referenceMode": {
+    "message": "Utilizza immagini di riferimento, video di riferimento o audio di riferimento per controllare i personaggi, le azioni, lo stile e il suono. Per specificare il fotogramma iniziale, scrivi 'immagine 1 come fotogramma iniziale' nel testo di richiesta.",
+    "description": "Descrizione della modalità di riferimento multimodale"
+  },
+  "message.frameReferenceConflict": {
+    "message": "La modalità fotogramma iniziale e finale non può essere utilizzata insieme a immagini di riferimento, video di riferimento o audio di riferimento. Rimuovi prima una delle modalità di input.",
+    "description": "Messaggio di conflitto delle modalità di input"
+  },
+  "message.frameUploadBlocked": {
+    "message": "Sono stati aggiunti materiali di riferimento multimodali. Rimuovi prima le immagini di riferimento, i video di riferimento e l'audio di riferimento, poi carica il fotogramma iniziale e finale.",
+    "description": "Messaggio di divieto di caricamento del fotogramma iniziale e finale"
+  },
+  "message.referenceUploadBlocked": {
+    "message": "È stato aggiunto un fotogramma iniziale o finale. Rimuovi prima il fotogramma iniziale e finale, poi carica i materiali di riferimento multimodali.",
+    "description": "Messaggio di divieto di caricamento dei materiali di riferimento"
+  },
+  "message.taskRequiresReferenceMedia": {
+    "message": "Il compito 'Generazione di riferimento' deve caricare almeno un'immagine di riferimento, un video di riferimento o un audio di riferimento.",
+    "description": "Messaggio di mancanza di materiali per il compito di riferimento"
+  },
+  "taskType.reference": {
+    "message": "Generazione di riferimento",
+    "description": "Tipo di compito per la generazione di materiali di riferimento"
   }
 }

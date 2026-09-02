@@ -17,8 +17,10 @@ export type SeedanceRejectReason =
   | 'modelRequiresImage'
   | 'modelRejectsImage'
   | 'audioRequiresReference'
+  | 'frameReferenceConflict'
   | 'referenceMediaExceeded'
   | 'taskRequiresVideo'
+  | 'taskRequiresReferenceMedia'
   | 'generationInputRequired';
 
 export interface SeedanceNormalizeResult {
@@ -28,6 +30,22 @@ export interface SeedanceNormalizeResult {
 
 const cleanImages = (images: unknown): ISeedanceImageInput[] =>
   Array.isArray(images) ? (images as ISeedanceImageInput[]).filter((img) => hasMeaningfulText(img?.url)) : [];
+
+export interface SeedanceInputModes {
+  frame: boolean;
+  reference: boolean;
+  mixed: boolean;
+}
+
+export function getSeedanceInputModes(config?: ISeedanceConfig): SeedanceInputModes {
+  const images = cleanImages(config?.images);
+  const frame = images.some((image) => !image.role || image.role === 'first_frame' || image.role === 'last_frame');
+  const reference =
+    images.some((image) => image.role === 'reference_image') ||
+    config?.audios?.some((audio) => hasMeaningfulText(audio?.url)) === true ||
+    config?.videos?.some((video) => hasMeaningfulText(video?.url)) === true;
+  return { frame, reference, mixed: frame && reference };
+}
 
 export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNormalizeResult {
   const cfg: any = { ...(config || {}) };
@@ -91,6 +109,7 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
     if (cfg.images.length === 0) delete cfg.images;
   }
   hasImages = Array.isArray(cfg.images) && cfg.images.length > 0;
+  if (getSeedanceInputModes(cfg).mixed) return { reject: 'frameReferenceConflict' };
 
   // Validate image presence only AFTER role stripping — an image the model can't
   // use (e.g. a stray reference_image) must not satisfy a hard image requirement,
@@ -121,6 +140,9 @@ export function normalizeSeedanceRequest(config?: ISeedanceConfig): SeedanceNorm
   }
 
   if (!cap.taskTypes.includes(cfg.omni_reference_task_type)) delete cfg.omni_reference_task_type;
+  if (cfg.omni_reference_task_type === 'reference' && !getSeedanceInputModes(cfg).reference) {
+    return { reject: 'taskRequiresReferenceMedia' };
+  }
   if (!cap.outputFormats.includes(cfg.output_format)) delete cfg.output_format;
   if (cfg.model === 'doubao-seedance-2-5-260628' && cfg.web_search === true) cfg.tools = [{ type: 'web_search' }];
   else delete cfg.tools;
