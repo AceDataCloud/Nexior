@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 
-const HISTORY_INTERVAL_MS = 60000;
+const HISTORY_INTERVAL_MS = 5000;
 
 export function taskPollingMixin(storeModule: string, targeted = true) {
   return defineComponent({

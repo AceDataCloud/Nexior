@@ -19,6 +19,24 @@ describe('taskPollingMixin', () => {
     await firstPoll;
   });
 
+  it('refreshes task history every five seconds', async () => {
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+    const onGetTasks = vi.fn().mockResolvedValue(undefined);
+    const now = Date.now();
+    const state: any = { taskPollRunning: false, taskHistoryPolledAt: now, $store: { dispatch }, onGetTasks };
+    const nowSpy = vi.spyOn(Date, 'now');
+
+    nowSpy.mockReturnValue(now + 4999);
+    await methods().onPollTasks.call(state);
+    expect(onGetTasks).not.toHaveBeenCalled();
+
+    nowSpy.mockReturnValue(now + 5000);
+    await methods().onPollTasks.call(state);
+    expect(onGetTasks).toHaveBeenCalledOnce();
+
+    nowSpy.mockRestore();
+  });
+
   it('runs due history independently when pending reconciliation fails', async () => {
     const dispatch = vi.fn().mockRejectedValue(new Error('pending failed'));
     const onGetTasks = vi.fn().mockResolvedValue(undefined);
