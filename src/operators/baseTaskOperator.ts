@@ -18,7 +18,7 @@ export interface ITaskListFilter {
   offset?: number;
   createdAtMax?: number;
   createdAtMin?: number;
-  countMode?: 'exact' | 'bounded' | 'none';
+  countMode?: 'exact' | 'none';
   /**
    * Service-specific filter keys may be passed via this index.
    * Camel-case keys are auto-converted to snake_case in the request body.

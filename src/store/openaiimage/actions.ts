@@ -9,7 +9,8 @@ const actions = createTaskActions<IOpenAIImageConfig, IOpenAIImageTask, Record<s
   operator: openaiimageOperator,
   isPending: pendingUntilResponse,
   paginated: true,
-  countMode: 'none'
+  countMode: 'none',
+  paginationMetadata: true
 });
 
 export default actions;

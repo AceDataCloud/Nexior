@@ -3,6 +3,7 @@ import { nextTick } from 'vue';
 type TasksLike = {
   items?: { created_at?: number }[];
   total?: number;
+  hasMore?: boolean;
 };
 
 export async function loadPreviousPage(options: {
@@ -40,7 +41,7 @@ export async function loadPreviousPage(options: {
 
   const total = currentTasks?.total;
   const currentLength = currentTasks?.items?.length || 0;
-  if (total !== undefined && total <= currentLength) {
+  if (currentTasks?.hasMore === false || (total !== undefined && total <= currentLength)) {
     return;
   }
 
@@ -64,7 +65,8 @@ export async function loadPreviousPage(options: {
     await nextTick();
     const latest = getTasks ? getTasks() : tasks;
     const newLength = latest?.items?.length || 0;
-    const hasMore = latest?.total !== undefined ? newLength < (latest.total || 0) : newLength > previousLength;
+    const hasMore =
+      latest?.hasMore ?? (latest?.total !== undefined ? newLength < (latest.total || 0) : newLength > previousLength);
     const scrollEl = getScrollElement?.();
     if (scrollEl) {
       // Preserve the user's visual position. These task lists are sorted

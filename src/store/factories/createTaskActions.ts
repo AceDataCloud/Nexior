@@ -83,7 +83,9 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
   /** Static upstream `type` discriminator, e.g. `'images'` / `'videos'`. */
   type?: string;
   /** Skip expensive exact history counts when pagination can use `has_more`. */
-  countMode?: 'exact' | 'bounded' | 'none';
+  countMode?: 'exact' | 'none';
+  /** Persist `has_more` in modules that expose pagination metadata. */
+  paginationMetadata?: boolean;
   /** Fully custom filter — when provided, `paginated` and `type` are ignored. */
   buildFilter?: (rootState: IRootState, args: IGetTasksArgs) => TFilter;
   isPending?: (task: TTask) => boolean;
@@ -231,6 +233,9 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
         commit('setTasksItems', mergeAndSortLists(existingItems, newItems));
         const total = response.data.count ?? response.data.total;
         if (total !== undefined && response.data.count_is_exact !== false) commit('setTasksTotal', total);
+        if (opts.paginationMetadata && response.data.has_more !== undefined) {
+          commit('setTasksHasMore', response.data.has_more);
+        }
         if (state.status) state.status.getTasks = Status.Success;
         return newItems;
       } catch (error) {

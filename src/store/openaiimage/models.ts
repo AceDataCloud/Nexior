@@ -12,6 +12,7 @@ export interface IOpenAIImageState {
         items: IOpenAIImageTask[] | undefined;
         total: number | undefined;
         active: IOpenAIImageTask | undefined;
+        hasMore?: boolean;
       }
     | undefined;
   status: {

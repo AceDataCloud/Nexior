@@ -5,7 +5,8 @@ import { IOpenAIImageState } from './models';
 const defaultTasks = {
   items: undefined,
   total: undefined,
-  active: undefined
+  active: undefined,
+  hasMore: undefined
 };
 
 export const resetAll = (state: IOpenAIImageState): void => {
@@ -48,6 +49,13 @@ export const setTasksTotal = (state: IOpenAIImageState, payload: number): void =
   state.tasks = newPayload;
 };
 
+export const setTasksHasMore = (state: IOpenAIImageState, payload: boolean): void => {
+  state.tasks = {
+    ...(state.tasks || defaultTasks),
+    hasMore: payload
+  } as typeof state.tasks;
+};
+
 export const setTasksActive = (state: IOpenAIImageState, payload: IOpenAIImageTask): void => {
   const newPayload = {
     ...(state.tasks || defaultTasks),
@@ -70,5 +78,6 @@ export default {
   setTasksActive,
   setTasksItems,
   setTasksTotal,
+  setTasksHasMore,
   resetAll
 };

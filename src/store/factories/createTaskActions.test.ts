@@ -182,3 +182,23 @@ describe('createTaskActions/getTasks payment mode', () => {
     ]);
   });
 });
+
+describe('createTaskActions/getTasks pagination metadata', () => {
+  it('persists has_more only when the module opts in', async () => {
+    const tasks = vi.fn().mockResolvedValue({ data: { items: [{ id: 'a' }], has_more: false } });
+    const actions: any = createTaskActions<unknown, { id: string }, Record<string, unknown>>({
+      serviceId: 'svc-1',
+      operator: { tasks },
+      paginationMetadata: true
+    });
+    const commits: Array<[string, unknown]> = [];
+
+    await invoke(actions.getTasks, {
+      state: { credential: { token: 'tok' }, tasks: undefined, status: { getTasks: 'None' } },
+      rootState: {},
+      commits
+    });
+
+    expect(commits).toContainEqual(['setTasksHasMore', false]);
+  });
+});
