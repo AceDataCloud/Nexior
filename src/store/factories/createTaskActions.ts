@@ -39,7 +39,9 @@ export interface ITaskOperator<TFilter, TTask> {
   tasks(
     filter: TFilter,
     options: OperatorRequestOptions
-  ): Promise<{ data: { items: TTask[]; count?: number; total?: number } }>;
+  ): Promise<{
+    data: { items: TTask[]; count?: number; total?: number; has_more?: boolean; count_is_exact?: boolean };
+  }>;
   delete?(
     id: string,
     options: { token: string; userId?: string; applicationId?: string }
@@ -80,6 +82,8 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
   paginated?: boolean;
   /** Static upstream `type` discriminator, e.g. `'images'` / `'videos'`. */
   type?: string;
+  /** Skip expensive exact history counts when pagination can use `has_more`. */
+  countMode?: 'exact' | 'bounded' | 'none';
   /** Fully custom filter — when provided, `paginated` and `type` are ignored. */
   buildFilter?: (rootState: IRootState, args: IGetTasksArgs) => TFilter;
   isPending?: (task: TTask) => boolean;
@@ -95,7 +99,8 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
         ...(opts.paginated ? { offset: args.offset, limit: args.limit } : {}),
         createdAtMin: args.createdAtMin,
         createdAtMax: args.createdAtMax,
-        ...(opts.type ? { type: opts.type } : {})
+        ...(opts.type ? { type: opts.type } : {}),
+        ...(opts.countMode ? { countMode: opts.countMode } : {})
       }) as unknown as TFilter);
 
   const setApplication = async (
@@ -225,7 +230,7 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
         const newItems = response.data.items || [];
         commit('setTasksItems', mergeAndSortLists(existingItems, newItems));
         const total = response.data.count ?? response.data.total;
-        if (total !== undefined) commit('setTasksTotal', total);
+        if (total !== undefined && response.data.count_is_exact !== false) commit('setTasksTotal', total);
         if (state.status) state.status.getTasks = Status.Success;
         return newItems;
       } catch (error) {

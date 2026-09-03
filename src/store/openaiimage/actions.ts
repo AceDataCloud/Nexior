@@ -8,7 +8,8 @@ const actions = createTaskActions<IOpenAIImageConfig, IOpenAIImageTask, Record<s
   serviceId: OPENAIIMAGE_SERVICE_ID,
   operator: openaiimageOperator,
   isPending: pendingUntilResponse,
-  paginated: true
+  paginated: true,
+  countMode: 'none'
 });
 
 export default actions;
