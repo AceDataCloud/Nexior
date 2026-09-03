@@ -6,10 +6,12 @@ import { createTaskActions } from '@/store/factories/createTaskActions';
 import { IFishTaskFilter } from '@/operators/fish';
 import { IRootState } from '@/store/common/models';
 import { IFishState } from './models';
+import { pendingUntilResponse } from '@/store/factories/taskPolling';
 
 const baseActions = createTaskActions<IFishTtsConfig, IFishTask, IFishTaskFilter>({
   serviceId: FISH_SERVICE_ID,
   operator: fishOperator,
+  isPending: pendingUntilResponse,
   // Default page (`/fish/tts`) lists fish_tts jobs. The /fish/model page
   // overrides via dispatching with a custom filter or — once added in
   // PR #2 — its own dedicated filter shape.

@@ -32,6 +32,7 @@ import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } fro
 import { ISeedreamTask } from '@/models';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { getGenerationInputError } from '@/utils/generationInput';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -47,7 +48,7 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedream')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('seedream'), taskPollingMixin('seedream')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -92,7 +93,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

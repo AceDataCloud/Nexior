@@ -6,6 +6,7 @@ import { IApplication, ICredential, ISeedreamConfig, ISeedreamTask, IService } f
 import { Status } from '@/models/common';
 import { SEEDREAM_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
+import { pendingUntilResponse, refreshPendingTaskItems } from '@/store/factories/taskPolling';
 
 export const resetAll = ({ commit }: ActionContext<ISeedreamState, IRootState>): void => {
   commit('resetAll');
@@ -182,7 +183,23 @@ export const getTasks = async (
   });
 };
 
+export const refreshPendingTasks = async ({
+  commit,
+  state
+}: ActionContext<ISeedreamState, IRootState>): Promise<ISeedreamTask[]> => {
+  const token = state.credential?.token;
+  if (!token) throw new Error('no token');
+  const requestOptions = { token };
+  return refreshPendingTaskItems({
+    getItems: () => state.tasks?.items || [],
+    isPending: pendingUntilResponse,
+    fetch: async (ids) => (await seedreamOperator.tasks({ ids, type: 'images' }, requestOptions)).data.items || [],
+    commit: (items) => commit('setTasksItems', items)
+  });
+};
+
 export default {
+  refreshPendingTasks,
   createCredential,
   setService,
   getService,

@@ -2,10 +2,12 @@ import { nanobananaOperator } from '@/operators';
 import { INanobananaConfig, INanobananaTask } from '@/models';
 import { NANOBANANA_SERVICE_ID } from '@/constants';
 import { createTaskActions } from '@/store/factories/createTaskActions';
+import { pendingUntilResponse } from '@/store/factories/taskPolling';
 
 const actions = createTaskActions<INanobananaConfig, INanobananaTask, Record<string, unknown>>({
   serviceId: NANOBANANA_SERVICE_ID,
   operator: nanobananaOperator,
+  isPending: pendingUntilResponse,
   paginated: true,
   type: 'images'
 });

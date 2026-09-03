@@ -43,6 +43,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { getGenerationInputError } from '@/utils/generationInput';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IProducerTask | undefined;
@@ -60,7 +61,7 @@ export default defineComponent({
     RecentPanel,
     PreviewPanel
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('producer')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('producer'), taskPollingMixin('producer')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -111,7 +112,7 @@ export default defineComponent({
       async handler(value: boolean, oldValue: boolean | undefined) {
         if (oldValue === undefined || value === oldValue) return;
         this.$store.commit('producer/setTasks', undefined);
-        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (value && !this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         if (!value && !this.credential?.token) {
           window.clearInterval(this.job);
           this.job = 0;
@@ -136,7 +137,7 @@ export default defineComponent({
           console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
-          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+          if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
       },
       immediate: true

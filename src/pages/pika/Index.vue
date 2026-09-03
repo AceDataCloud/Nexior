@@ -32,6 +32,7 @@ import {
   resolveX402WalletContext
 } from '@/operators/x402';
 import { getGenerationInputError } from '@/utils/generationInput';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IPikaTask | undefined;
@@ -48,7 +49,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, taskPollingMixin('pika')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -99,7 +100,7 @@ export default defineComponent({
       async handler(value: boolean, oldValue: boolean | undefined) {
         if (oldValue === undefined || value === oldValue) return;
         this.$store.commit('pika/setTasks', undefined);
-        if (value && !this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+        if (value && !this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         if (!value && !this.credential?.token) {
           window.clearInterval(this.job);
           this.job = 0;
@@ -126,7 +127,7 @@ export default defineComponent({
           console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
-          if (!this.job) this.job = window.setInterval(this.onGetTasks, 5000);
+          if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
       },
       immediate: true

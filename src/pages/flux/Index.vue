@@ -31,6 +31,7 @@ import {
   type X402WalletContext,
   resolveX402WalletContext
 } from '@/operators/x402';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IFluxTask | undefined;
@@ -47,7 +48,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin],
+  mixins: [uploadTrackerProviderMixin, taskPollingMixin('flux')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -107,7 +108,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

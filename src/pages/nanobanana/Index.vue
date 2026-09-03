@@ -37,6 +37,7 @@ import {
 } from '@/operators/x402';
 import { buildNanobananaRequest } from '@/utils/x402/imageRequests';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: INanobananaTask | undefined;
@@ -53,7 +54,7 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('nanobanana')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('nanobanana'), taskPollingMixin('nanobanana')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -110,7 +111,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },

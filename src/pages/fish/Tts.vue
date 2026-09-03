@@ -34,6 +34,7 @@ import { FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
+import { taskPollingMixin } from '@/utils/taskPollingMixin';
 
 interface IData {
   task: IFishTask | undefined;
@@ -51,7 +52,7 @@ export default defineComponent({
     ShowcaseResultTabs,
     TabSwitcher
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('fish')],
+  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('fish'), taskPollingMixin('fish')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -88,7 +89,7 @@ export default defineComponent({
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
-            this.onGetTasks();
+            void this.onPollTasks();
           }, 5000);
         }
       },
