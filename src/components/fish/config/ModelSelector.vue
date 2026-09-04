@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { FISH_DEFAULT_TTS_MODEL, FISH_TTS_MODEL_S1, FISH_TTS_MODEL_S2_PRO } from '@/constants';
+import { FISH_DEFAULT_TTS_MODEL, FISH_TTS_MODEL_S1, FISH_TTS_MODEL_S21_PRO, FISH_TTS_MODEL_S2_PRO } from '@/constants';
 import { IFishTtsModel } from '@/models';
 
 export default defineComponent({
@@ -22,6 +22,7 @@ export default defineComponent({
   computed: {
     options() {
       return [
+        { value: FISH_TTS_MODEL_S21_PRO, label: this.$t('fish.button.modelS21Pro') },
         { value: FISH_TTS_MODEL_S2_PRO, label: this.$t('fish.button.modelS2Pro') },
         { value: FISH_TTS_MODEL_S1, label: this.$t('fish.button.modelS1') }
       ];
