@@ -66,6 +66,8 @@ def main() -> None:
     require("workflow_call:" in android, "Android release must be reusable")
     require("workflow_call:" in ios, "iOS release must be reusable")
     require("changesNotSentForReview" not in android, "obsolete Google Play review parameter returned")
+    require("vars.ANDROID_POLICY_HOLD == 'cleared'" in android, "Play promotion must require explicit policy clearance")
+    require("Block direct production upload during policy remediation" in android, "direct Play production upload must remain blocked")
     desktop = read("release-desktop.yaml")
     require("ref: ${{ inputs.release_tag || github.sha }}" in android, "Android assets must checkout their release tag")
     require("ref: ${{ inputs.release_tag || github.sha }}" in desktop, "desktop assets must checkout their release tag")

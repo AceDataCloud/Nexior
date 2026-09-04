@@ -349,7 +349,6 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
-          changesNotSentForReview: true
 
   promote:
     name: Promote to Production
