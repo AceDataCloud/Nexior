@@ -10,17 +10,15 @@ export const SEEDREAM_MODEL_5_0_PRO = 'doubao-seedream-5-0-pro-260628';
 export const SEEDREAM_DEFAULT_MODEL = SEEDREAM_MODEL_4_5;
 
 export const SEEDREAM_SIZE_1K = '1K';
+export const SEEDREAM_SIZE_1_5K = '1.5K';
 export const SEEDREAM_SIZE_2K = '2K';
 export const SEEDREAM_SIZE_3K = '3K';
 export const SEEDREAM_SIZE_4K = '4K';
-export const SEEDREAM_SIZE_ADAPTIVE = 'adaptive';
 
 export const SEEDREAM_DEFAULT_SIZE = SEEDREAM_SIZE_2K;
 
 // Common explicit width×height presets (aspect ratio + pixel dimensions).
-// The Volcengine LAS API accepts any `<width>x<height>` string in addition to
-// the 1K-4K tier presets and `adaptive`. These cover the most useful aspect
-// ratios at 1K (~1MP) and 2K (~4MP).
+// Explicit dimensions remain available when they satisfy the selected model limits.
 export const SEEDREAM_PIXEL_PRESETS: { value: string; ratio: string }[] = [
   { value: '1024x1024', ratio: '1:1' },
   { value: '1280x720', ratio: '16:9' },

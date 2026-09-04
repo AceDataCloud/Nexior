@@ -22,12 +22,9 @@
         </el-tooltip>
       </div>
       <div class="info">
-        <div
-          v-if="Array.isArray(modelValue?.request?.image) && modelValue?.request?.image.length > 0"
-          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
-        >
+        <div v-if="requestImages.length > 0" class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto">
           <image-preview
-            v-for="(url, idx) in modelValue?.request?.image"
+            v-for="(url, idx) in requestImages"
             :key="idx"
             :url="url"
             :name="`image-${idx + 1}`"
@@ -54,13 +51,17 @@
         </el-alert>
       </div>
       <div v-else-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
-          <image-wrapper
-            v-for="(image, imageIndex) in images"
-            :key="imageIndex"
-            :src="image?.image_url!"
-            :raw-src="image?.image_url!"
-          />
+        <div class="layer-grid">
+          <article v-for="(image, imageIndex) in images" :key="imageIndex" class="layer-card">
+            <image-wrapper v-if="image?.image_url" :src="image.image_url" :raw-src="image.image_url" />
+            <div v-if="isLayerResult || image.error" class="layer-meta">
+              <strong>{{ layerTitle(image, imageIndex) }}</strong>
+              <span v-if="image.size">{{ image.size }} · {{ image.output_format?.toUpperCase() }}</span>
+              <span v-if="image.description">{{ image.description }}</span>
+              <code v-if="image.bounding_box?.absolute">{{ image.bounding_box.absolute.join(', ') }}</code>
+              <span v-if="image.error" class="layer-error">{{ image.error.message || image.error.code }}</span>
+            </div>
+          </article>
         </div>
         <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('common.button.edit')" placement="top-start">
@@ -232,18 +233,26 @@ export default defineComponent({
     apiRequest() {
       return buildSeedreamRequest(this.modelValue?.request);
     },
+    requestImages(): string[] {
+      const image = this.modelValue?.request?.image;
+      if (typeof image === 'string') return [image];
+      return Array.isArray(image) ? image : [];
+    },
     isEdit(): boolean {
       return Array.isArray(this.modelValue?.request?.image) && (this.modelValue?.request?.image?.length || 0) > 0;
     },
     images(): ISeedreamImage[] {
-      const result: ISeedreamImage[] = [];
-      // @ts-ignore
-      if (Array.isArray(this.modelValue?.response?.data)) {
-        this.modelValue?.response?.data?.forEach((item: any) => {
-          result.push(item as ISeedreamImage);
-        });
-      }
-      return result;
+      const data = this.modelValue?.response?.data;
+      if (!Array.isArray(data)) return [];
+      return [...data].sort(
+        (left, right) => (left.z_index ?? Number.MAX_SAFE_INTEGER) - (right.z_index ?? Number.MAX_SAFE_INTEGER)
+      );
+    },
+    isLayerResult(): boolean {
+      return (
+        this.modelValue?.request?.layer_decomposition === true ||
+        this.images.some((image) => image.z_index !== undefined)
+      );
     }
   },
   methods: {
@@ -269,6 +278,11 @@ export default defineComponent({
     },
     shortModel(model?: string) {
       return getSeedreamShortModel(model) || model;
+    },
+    layerTitle(image: ISeedreamImage, index: number): string {
+      if (image.error) return this.$t('seedream.name.failedLayer', { index: index + 1 });
+      if (image.z_index === 0) return this.$t('seedream.name.baseLayer');
+      return image.name || this.$t('seedream.name.layer', { index: image.z_index ?? index + 1 });
     },
     onEdit(imageUrl?: string) {
       if (!imageUrl) return;
@@ -385,6 +399,33 @@ $left-width: 70px;
       }
     }
 
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+      gap: 12px;
+      width: 100%;
+    }
+    .layer-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--el-border-color-light);
+      border-radius: 10px;
+      background: var(--el-bg-color);
+    }
+    .layer-meta {
+      display: grid;
+      gap: 4px;
+      padding: 10px;
+      font-size: 12px;
+      color: var(--el-text-color-secondary);
+      code {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+    .layer-error {
+      color: var(--el-color-danger);
+    }
     .operations {
       display: flex;
       justify-content: left;

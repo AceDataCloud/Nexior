@@ -16,13 +16,7 @@
     >
       <el-option-group v-if="capabilities.sizeTiers.length" :label="$t('seedream.size.group.tier')">
         <el-option v-for="item in capabilities.sizeTiers" :key="item" :label="item" :value="item" />
-      </el-option-group>
-      <el-option-group v-if="capabilities.sizeAdaptive" :label="$t('seedream.size.group.adaptive')">
-        <el-option
-          :key="SEEDREAM_SIZE_ADAPTIVE"
-          :label="$t('seedream.size.adaptive')"
-          :value="SEEDREAM_SIZE_ADAPTIVE"
-        />
+        <el-option v-if="layerDecomposition" label="AUTO" value="auto" />
       </el-option-group>
       <el-option-group :label="$t('seedream.size.group.pixel')">
         <el-option
@@ -40,7 +34,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElOptionGroup } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_DEFAULT_SIZE, SEEDREAM_PIXEL_PRESETS, SEEDREAM_SIZE_ADAPTIVE } from '@/constants';
+import { SEEDREAM_DEFAULT_SIZE, SEEDREAM_PIXEL_PRESETS } from '@/constants';
 import { getSeedreamCapabilities, ISeedreamCapability } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
@@ -53,7 +47,6 @@ export default defineComponent({
   },
   data() {
     return {
-      SEEDREAM_SIZE_ADAPTIVE,
       pixelOptions: SEEDREAM_PIXEL_PRESETS
     };
   },
@@ -63,6 +56,9 @@ export default defineComponent({
     },
     capabilities(): ISeedreamCapability {
       return getSeedreamCapabilities(this.model);
+    },
+    layerDecomposition(): boolean {
+      return this.$store.state.seedream?.config?.layer_decomposition === true;
     },
     value: {
       get(): string | undefined {
