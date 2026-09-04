@@ -7,7 +7,7 @@ export const SEEDREAM_MODEL_4_5 = 'doubao-seedream-4-5-251128';
 export const SEEDREAM_MODEL_5_0 = 'doubao-seedream-5-0-260128';
 export const SEEDREAM_MODEL_5_0_PRO = 'doubao-seedream-5-0-pro-260628';
 
-export const SEEDREAM_DEFAULT_MODEL = SEEDREAM_MODEL_4_5;
+export const SEEDREAM_DEFAULT_MODEL = SEEDREAM_MODEL_5_0;
 
 export const SEEDREAM_SIZE_1K = '1K';
 export const SEEDREAM_SIZE_1_5K = '1.5K';

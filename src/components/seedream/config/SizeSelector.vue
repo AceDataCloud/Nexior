@@ -47,7 +47,7 @@ export default defineComponent({
   },
   data() {
     return {
-      pixelOptions: SEEDREAM_PIXEL_PRESETS
+      allPixelOptions: SEEDREAM_PIXEL_PRESETS
     };
   },
   computed: {
@@ -56,6 +56,16 @@ export default defineComponent({
     },
     capabilities(): ISeedreamCapability {
       return getSeedreamCapabilities(this.model);
+    },
+    pixelOptions(): Array<{ value: string; ratio: string }> {
+      const minimumPixels =
+        this.model === 'doubao-seedream-5-0-260128' || this.model === 'doubao-seedream-4-5-251128'
+          ? 3_686_400
+          : 921_600;
+      return this.allPixelOptions.filter((item) => {
+        const [width, height] = item.value.split('x').map(Number);
+        return width * height >= minimumPixels;
+      });
     },
     layerDecomposition(): boolean {
       return this.$store.state.seedream?.config?.layer_decomposition === true;
