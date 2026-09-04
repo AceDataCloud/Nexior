@@ -334,8 +334,14 @@ jobs:
           files: nexior-${{ needs.preflight.outputs.version-name }}.apk
           fail_on_unmatched_files: true
 
+      - name: Block direct production upload during policy remediation
+        if: (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')) && needs.preflight.outputs.track == 'production'
+        run: |
+          echo '::error::Direct production upload is disabled during Google Play policy remediation. Upload to internal or beta, then submit manually.'
+          exit 1
+
       - name: Upload to Play Store
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')) && needs.preflight.outputs.track != 'production'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -343,6 +349,7 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
+          changesNotSentForReview: true
 
   promote:
     name: Promote to Production
@@ -355,6 +362,7 @@ jobs:
       && needs.preflight.result == 'success'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
       && needs.preflight.outputs.track != 'production'
+      && vars.ANDROID_POLICY_HOLD == 'cleared'
       && (inputs.promote_to_production || startsWith(github.ref, 'refs/tags/android-v'))
     runs-on: ubuntu-latest
     steps:

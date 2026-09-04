@@ -72,4 +72,45 @@ describe('nanobanana/task/Preview', () => {
     expect(wrapper.text()).not.toContain('nanobanana.status.pending');
     expect(wrapper.findComponent({ name: 'WarningIcon' }).exists()).toBe(true);
   });
+  it.each([
+    {
+      success: true,
+      task_id: 'task-1',
+      data: [{ image_url: 'https://cdn.example.com/unsafe.png' }],
+      error: { code: 'forbidden', message: 'blocked by safety filter' }
+    },
+    {
+      task_id: 'task-1',
+      data: [{ image_url: 'https://cdn.example.com/unsafe.png' }],
+      error: { code: 'forbidden', message: 'blocked by safety filter' }
+    },
+    {
+      success: false,
+      task_id: 'task-1',
+      data: [{ image_url: 'https://cdn.example.com/unsafe.png' }]
+    }
+  ] as INanobananaTask['response'][])('never renders media when a response declares failure', (response) => {
+    const wrapper = mountPreview(response);
+    expect(wrapper.text()).toContain('nanobanana.name.failure');
+    expect(wrapper.findComponent({ name: 'ImageWrapper' }).exists()).toBe(false);
+  });
+
+  it('keeps image-only legacy successes visible and reports complete evidence', () => {
+    const wrapper = mountPreview({
+      task_id: 'task-1',
+      trace_id: 'trace-1',
+      data: [{ image_url: 'https://cdn.example.com/safe.png' }]
+    } as INanobananaTask['response']);
+
+    expect(wrapper.findComponent({ name: 'ImageWrapper' }).exists()).toBe(true);
+    const report = wrapper.findComponent({ name: 'ReportButton' });
+    expect(report.props('showLabel')).toBe(true);
+    expect(report.props('snapshot')).toMatchObject({
+      prompt: 'A lighthouse',
+      image_urls: ['https://cdn.example.com/safe.png'],
+      model: 'nano-banana-pro',
+      task_id: 'task-1',
+      trace_id: 'trace-1'
+    });
+  });
 });

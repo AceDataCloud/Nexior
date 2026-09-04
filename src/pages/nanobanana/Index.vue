@@ -29,6 +29,7 @@ import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn, hasMeaningfulText } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { isAndroid } from '@/utils/surface';
 import {
   X402PaymentCancelledError,
   type X402PaymentQuote,
@@ -168,6 +169,7 @@ export default defineComponent({
       });
     },
     async onGenerate() {
+      if (isAndroid() && !ensureLoggedIn()) return;
       if (!hasMeaningfulText(this.config?.prompt)) {
         ElMessage.error(this.$t('common.message.promptRequired'));
         return;
