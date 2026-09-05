@@ -350,6 +350,9 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
+          # Policy-rejected apps cannot commit review submission through the API.
+          # Stage the edit; Play Console is the deliberate review boundary.
+          changesNotSentForReview: true
 
   promote:
     name: Promote to Production
