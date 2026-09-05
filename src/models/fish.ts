@@ -1,5 +1,5 @@
-export type IFishTtsModel = 's1' | 's2-pro';
-export type IFishTtsFormat = 'mp3' | 'wav' | 'opus';
+export type IFishTtsModel = 's1' | 's2-pro' | 's2.1-pro';
+export type IFishTtsFormat = 'mp3' | 'wav' | 'pcm';
 export type IFishTtsLatency = 'normal' | 'balanced';
 
 export interface IFishProsody {
@@ -8,9 +8,17 @@ export interface IFishProsody {
   normalize_loudness?: boolean;
 }
 
+export interface IFishReference {
+  audio: string;
+  text: string;
+}
+
+export type IFishVoiceMode = 'saved' | 'instant';
+
 export interface IFishTtsRequest {
   text?: string;
   reference_id?: string;
+  references?: IFishReference[];
   model?: IFishTtsModel;
   prosody?: IFishProsody;
   format?: IFishTtsFormat;
@@ -40,7 +48,9 @@ export interface IFishTtsResponse {
 
 export interface IFishTtsConfig {
   text?: string;
+  voiceMode?: IFishVoiceMode;
   reference_id?: string;
+  references?: IFishReference[];
   model?: IFishTtsModel;
   prosody?: IFishProsody;
   format?: IFishTtsFormat;

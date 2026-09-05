@@ -28,13 +28,25 @@ import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IFishTask, IFishTtsRequest, Status } from '@/models';
+import { IFishTask, IFishTtsConfig, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { taskPollingMixin } from '@/utils/taskPollingMixin';
+
+export function buildFishTtsRequest(config: IFishTtsConfig, text: string): IFishTtsRequest {
+  const request: IFishTtsRequest = { text, async: true };
+  if (config.voiceMode === 'instant' && config.references?.[0]) {
+    request.references = config.references;
+  } else if (config.reference_id) {
+    request.reference_id = config.reference_id;
+  }
+  if (config.format) request.format = config.format;
+  if (config.prosody && Object.keys(config.prosody).length > 0) request.prosody = config.prosody;
+  return request;
+}
 
 interface IData {
   task: IFishTask | undefined;
@@ -174,19 +186,7 @@ export default defineComponent({
         return;
       }
       const headerModel = (cfg.model || FISH_DEFAULT_TTS_MODEL) as string;
-      const request: IFishTtsRequest = {
-        text,
-        async: true
-      };
-      if (cfg.reference_id) {
-        request.reference_id = cfg.reference_id;
-      }
-      if (cfg.format) {
-        request.format = cfg.format;
-      }
-      if (cfg.prosody && Object.keys(cfg.prosody).length > 0) {
-        request.prosody = cfg.prosody;
-      }
+      const request = buildFishTtsRequest(cfg, text);
       ElMessage.info(this.$t('fish.message.startingTask'));
       instrumentGeneration('fish', fishOperator.generateTts(request, { token, model: headerModel }))
         .then(() => {

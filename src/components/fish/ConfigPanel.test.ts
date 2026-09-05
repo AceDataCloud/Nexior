@@ -42,3 +42,23 @@ describe('fish/ConfigPanel', () => {
     );
   });
 });
+
+it('requires both reference audio and transcript in instant mode', () => {
+  const make = (references?: Array<{ audio: string; text: string }>) =>
+    shallowMount(ConfigPanel, {
+      global: {
+        mocks: {
+          $t: (key: string) => key,
+          $store: {
+            state: { fish: { config: { text: 'Hello', voiceMode: 'instant', references }, service: { cost: [] } } }
+          }
+        }
+      }
+    });
+
+  expect((make().vm as any).canGenerate).toBe(false);
+  expect((make([{ audio: 'https://cdn.acedata.cloud/ref.mp3', text: '' }]).vm as any).canGenerate).toBe(false);
+  expect((make([{ audio: 'https://cdn.acedata.cloud/ref.mp3', text: 'Exact transcript' }]).vm as any).canGenerate).toBe(
+    true
+  );
+});
