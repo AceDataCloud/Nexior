@@ -95,3 +95,11 @@ export function getPaymentSurface(): 'pc' | 'wap' | 'ios' | 'android' {
   if (isDesktop()) return 'pc';
   return isMobile() ? 'wap' : 'pc';
 }
+
+export function isPlayBuild(): boolean {
+  return import.meta.env.VITE_PLAY_BUILD === 'true';
+}
+
+export function isCapabilityAvailableOnBuild(capability: string): boolean {
+  return !(isPlayBuild() && capability === 'nanobanana');
+}

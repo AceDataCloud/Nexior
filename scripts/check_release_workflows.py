@@ -66,6 +66,7 @@ def main() -> None:
     require("workflow_call:" in android, "Android release must be reusable")
     require("workflow_call:" in ios, "iOS release must be reusable")
     require("changesNotSentForReview" not in android, "obsolete Google Play review parameter returned")
+    require("VITE_PLAY_BUILD: 'true'" in android, "Play web bundle must compile out unqualified AI surfaces")
     require("vars.ANDROID_POLICY_HOLD == 'cleared'" in android, "Play promotion must require explicit policy clearance")
     require("Block direct production upload during policy remediation" in android, "direct Play production upload must remain blocked")
     desktop = read("release-desktop.yaml")

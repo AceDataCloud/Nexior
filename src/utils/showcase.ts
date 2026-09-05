@@ -14,6 +14,7 @@ import {
   ROUTE_VEO_INDEX
 } from '@/router/constants';
 import { resolveCapabilityPresentation } from './capabilityPresentation';
+import { isCapabilityAvailableOnBuild } from './surface';
 
 export interface ShowcaseServiceDefinition {
   service: string;
@@ -200,7 +201,12 @@ function deriveMedia(
 
 export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase | undefined {
   const definition = SHOWCASE_SERVICES.get(item.service);
-  if (!definition || !site.features?.[definition.capability]?.enabled) return undefined;
+  if (
+    !definition ||
+    !isCapabilityAvailableOnBuild(definition.capability) ||
+    !site.features?.[definition.capability]?.enabled
+  )
+    return undefined;
   const request = objectValue(item.data.request);
   const response = objectValue(item.data.response);
   const result = firstResult(response);

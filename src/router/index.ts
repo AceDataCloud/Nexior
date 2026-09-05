@@ -1,3 +1,4 @@
+import { isCapabilityAvailableOnBuild } from '@/utils/surface';
 import { type Router } from 'vue-router';
 import store from '@/store';
 import auth from './auth';
@@ -333,7 +334,9 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW],
   ['kimi', ROUTE_KIMI_CONVERSATION_NEW],
   ['midjourney', ROUTE_MIDJOURNEY_INDEX],
-  ['nanobanana', ROUTE_NANOBANANA_INDEX],
+  ...(isCapabilityAvailableOnBuild('nanobanana')
+    ? ([['nanobanana', ROUTE_NANOBANANA_INDEX]] as Array<[string, string]>)
+    : []),
   ['flux', ROUTE_FLUX_INDEX],
   ['seedream', ROUTE_SEEDREAM_INDEX],
   ['qwenimage', ROUTE_QWENIMAGE_INDEX],
@@ -403,7 +406,7 @@ export const routes = [
   minimax,
   suno,
   producer,
-  nanobanana,
+  ...(isCapabilityAvailableOnBuild('nanobanana') ? [nanobanana] : []),
   openaiimage,
   seedream,
   qwenimage,

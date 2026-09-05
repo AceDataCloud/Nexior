@@ -44,6 +44,7 @@ import { showcaseOperator, siteBannerOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
 import { getSiteOrigin } from '@/utils/site';
+import { isCapabilityAvailableOnBuild } from '@/utils/surface';
 import { getHiddenDefaultBannerIds, resolveSiteBannerText } from '@/utils/siteBanner';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
 import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
@@ -94,7 +95,7 @@ export default defineComponent({
     enabledKeys(): Set<CapabilityKey> {
       if (!this.siteLoaded) return new Set();
       const features = (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
-      return new Set(CAPABILITY_KEYS.filter((key) => features[key]?.enabled));
+      return new Set(CAPABILITY_KEYS.filter((key) => features[key]?.enabled && isCapabilityAvailableOnBuild(key)));
     },
     banners(): ResolvedHomeBanner[] {
       const hiddenDefaults = getHiddenDefaultBannerIds(this.site);

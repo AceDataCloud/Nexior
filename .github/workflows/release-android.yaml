@@ -249,6 +249,7 @@ jobs:
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           VITE_COMPUTER_USE: 'false'
+          VITE_PLAY_BUILD: 'true'
         run: npm run build:android
 
       - name: Stage play-flavor web assets
