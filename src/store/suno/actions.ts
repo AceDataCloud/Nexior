@@ -2,7 +2,7 @@ import { applicationOperator, sunoOperator, serviceOperator, credentialOperator 
 import { ISunoState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoTask, IService } from '@/models';
+import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoCustomModel, ISunoTask, IService } from '@/models';
 import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
@@ -236,6 +236,38 @@ export const deletePersona = async (
   }
 };
 
+export const getCustomModels = async ({
+  commit,
+  state
+}: ActionContext<ISunoState, IRootState>): Promise<ISunoCustomModel[]> => {
+  const token = state.credential?.token;
+  if (!token) return [];
+  try {
+    const { data } = await sunoOperator.customModelsList({}, { token });
+    commit('setCustomModels', data.data.items || []);
+    return data.data.items || [];
+  } catch (error) {
+    console.error('get custom models failed', error);
+    return [];
+  }
+};
+
+export const archiveCustomModel = async (
+  { state, dispatch }: ActionContext<ISunoState, IRootState>,
+  id: string
+): Promise<boolean> => {
+  const token = state.credential?.token;
+  if (!token) return false;
+  try {
+    await sunoOperator.customModelArchive(id, { token });
+    await dispatch('getCustomModels');
+    return true;
+  } catch (error) {
+    console.error('archive custom model failed', error);
+    return false;
+  }
+};
+
 export const refreshPendingTasks = async (
   { commit, state }: ActionContext<ISunoState, IRootState>,
   args: { mode?: 'credits' | 'x402' } = {}
@@ -269,6 +301,8 @@ export default {
   getTasks,
   setAudio,
   getPersonas,
+  getCustomModels,
+  archiveCustomModel,
   deletePersona,
   createCredential
 };

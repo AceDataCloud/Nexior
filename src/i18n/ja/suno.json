@@ -942,5 +942,129 @@
   "name.lyricsMode": {
     "message": "歌詞モード",
     "description": "歌詞モード選択器のラベル（手動 / 自動）"
+  },
+  "customModel.name": {
+    "message": "専用音楽モデル",
+    "description": "専用音楽モデル選択ラベル"
+  },
+  "customModel.description": {
+    "message": "6〜24曲のライセンス音声を使用して再利用可能な音楽モデルを作成",
+    "description": "専用音楽モデルの説明"
+  },
+  "customModel.manage": {
+    "message": "モデルを管理",
+    "description": "専用音楽モデル管理ボタン"
+  },
+  "customModel.placeholder": {
+    "message": "準備ができた専用モデルを選択",
+    "description": "専用モデル選択プレースホルダー"
+  },
+  "customModel.title": {
+    "message": "私の専用音楽モデル",
+    "description": "専用モデル管理タイトル"
+  },
+  "customModel.createTitle": {
+    "message": "専用音楽モデルを作成",
+    "description": "モデル作成ポップアップタイトル"
+  },
+  "customModel.modelName": {
+    "message": "モデル名",
+    "description": "モデル名フィールド"
+  },
+  "customModel.namePlaceholder": {
+    "message": "例：私のアルバムスタイル",
+    "description": "モデル名プレースホルダー"
+  },
+  "customModel.audioUrls": {
+    "message": "ライセンス音声のURL（1行1つ）",
+    "description": "トレーニング音声URLフィールド"
+  },
+  "customModel.urlsPlaceholder": {
+    "message": "6〜24個の重複しないHTTPS音声アドレスを入力、1行1つ",
+    "description": "トレーニング音声URLプレースホルダー"
+  },
+  "customModel.urlCount": {
+    "message": "現在{count}個、6〜24個を許可",
+    "description": "トレーニング音声の数量"
+  },
+  "customModel.rightsNotice": {
+    "message": "作成は有料の長いタスクです。使用権があり、モデル作成に許可された音声のみを提出してください。",
+    "description": "モデル権利通知"
+  },
+  "customModel.rightsConfirm": {
+    "message": "これらの音声のモデル作成および生成権を持っていることを確認します",
+    "description": "音声権利確認"
+  },
+  "customModel.createPrice": {
+    "message": "モデル作成成功後に5.6クレジット消費；失敗時は料金は発生しません。",
+    "description": "モデル作成価格通知"
+  },
+  "customModel.create": {
+    "message": "モデルを作成",
+    "description": "モデル作成ボタン"
+  },
+  "customModel.createAccepted": {
+    "message": "モデル作成タスクが提出されました",
+    "description": "モデル作成受理通知"
+  },
+  "customModel.createFailed": {
+    "message": "モデル作成に失敗しました",
+    "description": "モデル作成失敗通知"
+  },
+  "customModel.betaNotice": {
+    "message": "ベータ · 各アプリ最大3モデル",
+    "description": "専用モデルベータ制限"
+  },
+  "customModel.empty": {
+    "message": "専用音楽モデルはまだありません",
+    "description": "モデルリスト空状態"
+  },
+  "customModel.use": {
+    "message": "使用する",
+    "description": "専用モデル使用ボタン"
+  },
+  "customModel.archive": {
+    "message": "アーカイブ",
+    "description": "モデルアーカイブボタン"
+  },
+  "customModel.archiveConfirm": {
+    "message": "アーカイブ後は使用できなくなります；現在モデル容量の解放を約束しません。",
+    "description": "アーカイブ確認通知"
+  },
+  "customModel.archiveSuccess": {
+    "message": "モデルがアーカイブされました",
+    "description": "モデルアーカイブ成功"
+  },
+  "customModel.archiveFailed": {
+    "message": "モデルアーカイブに失敗しました",
+    "description": "モデルアーカイブ失敗"
+  },
+  "customModel.creditsOnly": {
+    "message": "専用モデルは現在クレジットモードのみサポートしています",
+    "description": "専用モデル支払い制限"
+  },
+  "customModel.status.queued": {
+    "message": "キュー中",
+    "description": "モデルキュー状態"
+  },
+  "customModel.status.uploading": {
+    "message": "素材をアップロード中",
+    "description": "モデルアップロード状態"
+  },
+  "customModel.status.training": {
+    "message": "トレーニング中",
+    "description": "モデルトレーニング状態"
+  },
+  "customModel.status.ready": {
+    "message": "使用可能",
+    "description": "モデル準備状態"
+  },
+  "customModel.status.failed": {
+    "message": "作成に失敗しました",
+    "description": "モデル失敗状態"
+  },
+  "customModel.status.archived": {
+    "message": "アーカイブ済み",
+    "description": "モデルアーカイブ状態"
   }
 }

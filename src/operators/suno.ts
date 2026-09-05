@@ -23,6 +23,11 @@ import {
   ISunoMashupLyricsRequest,
   ISunoMashupLyricsResponse,
   ISunoPersonasListResponse,
+  ISunoCustomModelCreateRequest,
+  ISunoCustomModelGenerateRequest,
+  ISunoCustomModelsResponse,
+  ISunoCustomModel,
+  ISunoAudio,
   ISunoConfig
 } from '@/models';
 import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
@@ -32,7 +37,10 @@ const HEADERS = { 'content-type': 'application/json', accept: 'application/json'
 const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
 
 export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
-  const request = { ...(config || {}), audio: undefined, async: true } as ISunoAudioRequest;
+  const request = { ...(config || {}), audio: undefined, async: true } as ISunoAudioRequest & {
+    custom_model_id?: string;
+  };
+  delete request.custom_model_id;
   if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   return request;
 }
@@ -253,6 +261,72 @@ class SunoOperator {
       },
       baseURL: BASE_URL_API
     });
+  }
+
+  async createCustomModel(
+    data: ISunoCustomModelCreateRequest,
+    options: { token: string; idempotencyKey: string }
+  ): Promise<AxiosResponse<{ success: boolean; id: string; task_id: string; status: string }>> {
+    return axios.post('/suno/custom-models', data, {
+      headers: {
+        ...HEADERS,
+        authorization: `Bearer ${options.token}`,
+        'Idempotency-Key': options.idempotencyKey
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  async generateWithCustomModel(
+    data: ISunoCustomModelGenerateRequest,
+    options: { token: string }
+  ): Promise<AxiosResponse<{ success?: boolean; task_id?: string; data?: ISunoAudio[] }>> {
+    return axios.post('/suno/custom-models', data, {
+      headers: { ...HEADERS, authorization: `Bearer ${options.token}` },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  async customModelsList(
+    data: { status?: string; limit?: number; offset?: number },
+    options: { token: string }
+  ): Promise<AxiosResponse<ISunoCustomModelsResponse>> {
+    return axios.post(
+      '/suno/custom-models',
+      { action: 'retrieve_batch', ...data },
+      {
+        headers: { ...HEADERS, authorization: `Bearer ${options.token}`, 'x-record-exempt': 'true' },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  async customModelRetrieve(
+    id: string,
+    options: { token: string }
+  ): Promise<AxiosResponse<{ success: boolean; data: ISunoCustomModel }>> {
+    return axios.post(
+      '/suno/custom-models',
+      { action: 'retrieve', id },
+      {
+        headers: { ...HEADERS, authorization: `Bearer ${options.token}`, 'x-record-exempt': 'true' },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  async customModelArchive(
+    id: string,
+    options: { token: string }
+  ): Promise<AxiosResponse<{ success: boolean; data: { id: string; status: 'archived'; capacity_released: false } }>> {
+    return axios.post(
+      '/suno/custom-models',
+      { action: 'delete', id },
+      {
+        headers: { ...HEADERS, authorization: `Bearer ${options.token}`, 'x-record-exempt': 'true' },
+        baseURL: BASE_URL_API
+      }
+    );
   }
 
   // GET /suno/persona - list user personas

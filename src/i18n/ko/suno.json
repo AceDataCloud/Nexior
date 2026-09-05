@@ -942,5 +942,129 @@
   "name.lyricsMode": {
     "message": "가사 모드",
     "description": "가사 모드 선택기 레이블(수동 / 자동)"
+  },
+  "customModel.name": {
+    "message": "전용 음악 모델",
+    "description": "전용 음악 모델 선택기 레이블"
+  },
+  "customModel.description": {
+    "message": "6에서 24개의 승인된 오디오를 사용하여 재사용 가능한 음악 모델을 생성합니다.",
+    "description": "전용 음악 모델 설명"
+  },
+  "customModel.manage": {
+    "message": "모델 관리",
+    "description": "전용 음악 모델 관리 버튼"
+  },
+  "customModel.placeholder": {
+    "message": "준비된 전용 모델 선택",
+    "description": "전용 모델 선택 자리 표시자"
+  },
+  "customModel.title": {
+    "message": "내 전용 음악 모델",
+    "description": "전용 모델 관리 제목"
+  },
+  "customModel.createTitle": {
+    "message": "전용 음악 모델 생성",
+    "description": "모델 생성 팝업 제목"
+  },
+  "customModel.modelName": {
+    "message": "모델 이름",
+    "description": "모델 이름 필드"
+  },
+  "customModel.namePlaceholder": {
+    "message": "예: 내 앨범 스타일",
+    "description": "모델 이름 자리 표시자"
+  },
+  "customModel.audioUrls": {
+    "message": "승인된 오디오 URL (각 줄마다 하나)",
+    "description": "훈련 오디오 URL 필드"
+  },
+  "customModel.urlsPlaceholder": {
+    "message": "6에서 24개의 중복되지 않는 HTTPS 오디오 주소를 입력하세요. 각 줄마다 하나",
+    "description": "훈련 오디오 URL 자리 표시자"
+  },
+  "customModel.urlCount": {
+    "message": "현재 {count}개, 6에서 24개 허용",
+    "description": "훈련 오디오 수"
+  },
+  "customModel.rightsNotice": {
+    "message": "생성은 유료의 긴 작업입니다. 모델 생성에 사용 권한이 있고 허가된 오디오만 제출하세요.",
+    "description": "모델 권리 알림"
+  },
+  "customModel.rightsConfirm": {
+    "message": "이 오디오의 모델 생성 및 생성 권한이 있음을 확인합니다.",
+    "description": "오디오 권리 확인"
+  },
+  "customModel.createPrice": {
+    "message": "모델 생성 성공 후 5.6 크레딧 소모; 실패 시 비용 없음.",
+    "description": "모델 생성 가격 알림"
+  },
+  "customModel.create": {
+    "message": "모델 생성",
+    "description": "모델 생성 버튼"
+  },
+  "customModel.createAccepted": {
+    "message": "모델 생성 작업이 제출되었습니다.",
+    "description": "모델 생성 수락 알림"
+  },
+  "customModel.createFailed": {
+    "message": "모델 생성 실패",
+    "description": "모델 생성 실패 알림"
+  },
+  "customModel.betaNotice": {
+    "message": "베타 · 각 애플리케이션당 최대 3개 모델",
+    "description": "전용 모델 베타 제한"
+  },
+  "customModel.empty": {
+    "message": "아직 전용 음악 모델이 없습니다.",
+    "description": "모델 목록 비어 있는 상태"
+  },
+  "customModel.use": {
+    "message": "사용",
+    "description": "전용 모델 사용 버튼"
+  },
+  "customModel.archive": {
+    "message": "보관",
+    "description": "모델 보관 버튼"
+  },
+  "customModel.archiveConfirm": {
+    "message": "보관 후에는 계속 사용할 수 없습니다; 현재 모델 용량 해제를 약속하지 않습니다.",
+    "description": "보관 확인 알림"
+  },
+  "customModel.archiveSuccess": {
+    "message": "모델이 보관되었습니다.",
+    "description": "모델 보관 성공"
+  },
+  "customModel.archiveFailed": {
+    "message": "모델 보관 실패",
+    "description": "모델 보관 실패"
+  },
+  "customModel.creditsOnly": {
+    "message": "전용 모델은 현재 크레딧 모드만 지원합니다.",
+    "description": "전용 모델 결제 제한"
+  },
+  "customModel.status.queued": {
+    "message": "대기 중",
+    "description": "모델 대기 상태"
+  },
+  "customModel.status.uploading": {
+    "message": "자료 업로드 중",
+    "description": "모델 업로드 상태"
+  },
+  "customModel.status.training": {
+    "message": "훈련 중",
+    "description": "모델 훈련 상태"
+  },
+  "customModel.status.ready": {
+    "message": "사용 가능",
+    "description": "모델 준비 상태"
+  },
+  "customModel.status.failed": {
+    "message": "생성 실패",
+    "description": "모델 실패 상태"
+  },
+  "customModel.status.archived": {
+    "message": "보관됨",
+    "description": "모델 보관 상태"
   }
 }
