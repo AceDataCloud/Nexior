@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import {
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
   CHAT_MODEL_DEEPSEEK_V4_PRO,
+  CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GPT_5_6_LUNA,
-  CHAT_MODEL_GPT_5_6_SOL,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_GROUP_KIMI,
@@ -15,8 +15,9 @@ import {
 } from './chat';
 
 describe('chat models', () => {
-  it('exposes only GPT 5.6 tiers and makes Luna free', () => {
+  it('exposes Astra before GPT 5.6 tiers and makes Luna free', () => {
     expect(CHAT_MODEL_GROUP_CHATGPT.models.map((model) => model.name)).toEqual([
+      'gpt-6-astra',
       'gpt-5.6-luna',
       'gpt-5.6-sol',
       'gpt-5.6-terra'
@@ -25,8 +26,17 @@ describe('chat models', () => {
     expect(CHAT_MODEL_GROUP_CHATGPT.models.filter((model) => model.isFree)).toEqual([CHAT_MODEL_GPT_5_6_LUNA]);
   });
 
-  it('defaults the ChatGPT group to Sol, not the first listed model', () => {
-    expect(getDefaultChatModel(CHAT_MODEL_GROUP_CHATGPT)).toBe(CHAT_MODEL_GPT_5_6_SOL);
+  it('defaults the ChatGPT group to Astra', () => {
+    expect(getDefaultChatModel(CHAT_MODEL_GROUP_CHATGPT)).toBe(CHAT_MODEL_GPT_6_ASTRA);
+  });
+
+  it('advertises Astra multimodal and reasoning capabilities', () => {
+    expect(CHAT_MODEL_GPT_6_ASTRA).toMatchObject({
+      isImageSupported: true,
+      isFileSupported: true,
+      isReasoningSupported: true
+    });
+    expect(CHAT_MODELS).toContain(CHAT_MODEL_GPT_6_ASTRA);
   });
 
   it('falls back to the first model for groups without an explicit default', () => {

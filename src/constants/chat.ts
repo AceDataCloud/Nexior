@@ -5,6 +5,7 @@ export const ROLE_SYSTEM = 'system';
 export const ROLE_ASSISTANT = 'assistant';
 export const ROLE_USER = 'user';
 
+export const CHAT_MODEL_NAME_GPT_6_ASTRA = 'gpt-6-astra';
 export const CHAT_MODEL_NAME_GPT_5_6_SOL = 'gpt-5.6-sol';
 export const CHAT_MODEL_NAME_GPT_5_6_TERRA = 'gpt-5.6-terra';
 export const CHAT_MODEL_NAME_GPT_5_6_LUNA = 'gpt-5.6-luna';
@@ -44,6 +45,18 @@ export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/57ebgy.png';
 export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
+
+export const CHAT_MODEL_GPT_6_ASTRA: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_6_ASTRA,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.astra'),
+  getDescription: () => i18n.global.t('chat.model.astraDescription')
+};
 
 export const CHAT_MODEL_GPT_5_6_SOL: IChatModel = {
   enabled: true,
@@ -339,8 +352,8 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [CHAT_MODEL_GPT_5_6_LUNA, CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GPT_5_6_TERRA],
-  defaultModel: CHAT_MODEL_GPT_5_6_SOL,
+  models: [CHAT_MODEL_GPT_6_ASTRA, CHAT_MODEL_GPT_5_6_LUNA, CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GPT_5_6_TERRA],
+  defaultModel: CHAT_MODEL_GPT_6_ASTRA,
   isVoiceCallSupported: true
 };
 
@@ -417,6 +430,7 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 };
 
 export const CHAT_MODELS: IChatModel[] = [
+  CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GPT_5_6_SOL,
   CHAT_MODEL_GPT_5_6_TERRA,
