@@ -56,3 +56,33 @@ describe('seedream/task/Preview', () => {
     expect(mountFailure('A lighthouse').find('.content').classes()).toEqual(['content']);
   });
 });
+
+it('sorts and labels layer decomposition results', () => {
+  const wrapper = shallowMount(Preview, {
+    props: {
+      modelValue: {
+        id: 'layer-task',
+        request: { layer_decomposition: true, image: ['input.png'] },
+        response: {
+          success: true,
+          task_id: 'layer-task',
+          data: [
+            { image_url: 'top.png', z_index: 2, name: 'Title', bounding_box: { absolute: [10, 20, 100, 200] } },
+            { image_url: 'base.jpg', z_index: 0, output_format: 'jpeg' }
+          ]
+        }
+      }
+    },
+    global: {
+      mocks: {
+        $t: (key: string) => key,
+        $dayjs: { format: () => '2026-09-05' },
+        $store: { state: { seedream: { config: {} } }, commit: () => undefined }
+      }
+    }
+  });
+  expect((wrapper.vm as any).images.map((image: any) => image.z_index)).toEqual([0, 2]);
+  expect(wrapper.text()).toContain('seedream.name.baseLayer');
+  expect(wrapper.text()).toContain('Title');
+  expect(wrapper.text()).toContain('10, 20, 100, 200');
+});

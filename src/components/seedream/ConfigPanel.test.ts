@@ -64,3 +64,9 @@ describe('seedream/ConfigPanel', () => {
     expect(getConsumptionMock.mock.lastCall?.[0]).toMatchObject({ action: 'edit', input_image_count: 1 });
   });
 });
+
+it('allows promptless Pro decomposition with one image', () => {
+  const { wrapper } = mountPanel(['one.png'], 'doubao-seedream-5-0-pro-260628');
+  Object.assign((wrapper.vm as any).config, { prompt: '', layer_decomposition: true });
+  expect((wrapper.vm as any).canGenerate).toBe(true);
+});

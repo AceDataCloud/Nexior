@@ -6,7 +6,11 @@ export interface ISeedreamConfig {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
-  image?: string[];
+  image?: string | string[];
+  layer_decomposition?: boolean;
+  background?: 'transparent' | 'opaque';
+  optimize_prompt_options?: { mode: 'standard' | 'fast' };
+  tools?: Array<{ type: 'web_search' }>;
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
@@ -23,7 +27,11 @@ export interface ISeedreamConfig {
 export interface ISeedreamGenerateRequest {
   model?: string;
   prompt?: string;
-  image?: string[];
+  image?: string | string[];
+  layer_decomposition?: boolean;
+  background?: 'transparent' | 'opaque';
+  optimize_prompt_options?: { mode: 'standard' | 'fast' };
+  tools?: Array<{ type: 'web_search' }>;
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
@@ -41,6 +49,16 @@ export interface ISeedreamImage {
   prompt?: string;
   size?: string;
   image_url?: string;
+  b64_json?: string;
+  output_format?: 'jpeg' | 'png';
+  z_index?: number;
+  name?: string;
+  description?: string;
+  bounding_box?: {
+    absolute?: [number, number, number, number];
+    normalized?: [number, number, number, number];
+  };
+  error?: { code?: string; message?: string };
 }
 
 export interface ISeedreamGenerateResponse {
@@ -48,6 +66,8 @@ export interface ISeedreamGenerateResponse {
   task_id: string;
   trace_id?: string;
   data?: ISeedreamImage[];
+  usage?: Record<string, unknown>;
+  tools?: Array<{ type: string }>;
   error?: {
     code?: string;
     message?: string;

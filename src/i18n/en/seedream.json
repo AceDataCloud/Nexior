@@ -68,7 +68,7 @@
     "description": "Description of the model parameter"
   },
   "description.size": {
-    "message": "Image size. Allowed tier presets vary by model: 5.0 supports 2K/3K/4K, 4.5/4.0 support 1K/2K/4K, and 3.0-t2i / seededit-3.0-i2i only accept explicit `<width>x<height>` pixel values (e.g. 1024x1024, 1280x720). On preset-supporting models you can also pick `adaptive` (match the reference image) or type any `<width>x<height>` directly into the dropdown.",
+    "message": "Sizes vary by model: 5.0 Pro supports 1K/1.5K/2K and auto for layers; 5.0 Lite supports 2K/3K/4K. Valid <width>x<height> values are also accepted.",
     "description": "Description of the size parameter (per-model)"
   },
   "description.watermark": {
@@ -76,7 +76,7 @@
     "description": "Description of the watermark parameter"
   },
   "description.imageUrls": {
-    "message": "Upload 1-14 reference images to enable image editing.",
+    "message": "Upload references: Pro accepts up to 10, layer decomposition exactly 1, and other current models up to 14.",
     "description": "Description of the image parameter"
   },
   "status.pending": {
@@ -128,7 +128,7 @@
     "description": "Exhausted credits message"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 14 images",
+    "message": "You can upload at most {count} images",
     "description": "Image count exceeds limit"
   },
   "message.uploadImageError": {
@@ -208,23 +208,63 @@
     "description": "output_format parameter label"
   },
   "description.outputFormat": {
-    "message": "File format of the generated image, jpeg or png. Default is jpeg. Only supported by doubao-seedream-5.0.",
+    "message": "Image format is jpeg or png on Seedream 5.0 Pro/Lite. Decomposed layers are always PNG.",
     "description": "Description of the output_format parameter"
   },
   "size.group.tier": {
     "message": "Resolution tier",
     "description": "Group label for the 1K-4K presets in the size dropdown"
   },
-  "size.group.adaptive": {
-    "message": "Adaptive",
-    "description": "Group label for the adaptive option in the size dropdown"
-  },
   "size.group.pixel": {
     "message": "Explicit dimensions",
     "description": "Group label for the pixel presets in the size dropdown"
   },
-  "size.adaptive": {
-    "message": "Adaptive (match reference)",
-    "description": "Label for the adaptive option"
+  "name.mode": {
+    "message": "Creation mode",
+    "description": "Image or layer decomposition mode"
+  },
+  "mode.image": {
+    "message": "Generate / edit image",
+    "description": "Regular image mode"
+  },
+  "mode.layers": {
+    "message": "Layer decomposition",
+    "description": "Layer decomposition mode"
+  },
+  "name.background": {
+    "message": "Background",
+    "description": "Transparent or opaque background"
+  },
+  "background.opaque": {
+    "message": "Solid background",
+    "description": "Regular opaque background"
+  },
+  "background.transparent": {
+    "message": "Transparent",
+    "description": "Transparent background mode"
+  },
+  "name.promptOptimization": {
+    "message": "Prompt optimization",
+    "description": "Prompt optimization mode"
+  },
+  "name.webSearch": {
+    "message": "Web search",
+    "description": "Enable web search"
+  },
+  "name.baseLayer": {
+    "message": "Base image",
+    "description": "Base image in layer decomposition"
+  },
+  "name.layer": {
+    "message": "Layer {index}",
+    "description": "Fallback layer name"
+  },
+  "name.failedLayer": {
+    "message": "Failed item {index}",
+    "description": "Failed layer item name"
+  },
+  "name.layerDecomposition": {
+    "message": "Layer decomposition",
+    "description": "Layer decomposition capability label"
   }
 }

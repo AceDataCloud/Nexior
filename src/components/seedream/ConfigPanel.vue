@@ -5,6 +5,7 @@
       <size-selector class="mb-4" />
       <max-images-selector class="mb-4" />
       <output-format-selector class="mb-4" />
+      <advanced-options class="mb-4" />
       <seed-input class="mb-4" />
       <guidance-scale-input class="mb-4" />
       <prompt-input class="mb-4" />
@@ -32,6 +33,7 @@ import ModelSelector from './config/ModelSelector.vue';
 import SizeSelector from './config/SizeSelector.vue';
 import MaxImagesSelector from './config/MaxImagesSelector.vue';
 import OutputFormatSelector from './config/OutputFormatSelector.vue';
+import AdvancedOptions from './config/AdvancedOptions.vue';
 import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
 import { getSeedreamShortModel } from '@/constants';
@@ -51,19 +53,23 @@ export default defineComponent({
     SizeSelector,
     MaxImagesSelector,
     OutputFormatSelector,
+    AdvancedOptions,
     SeedInput,
     GuidanceScaleInput
   },
   emits: ['generate'],
   computed: {
     action(): 'generate' | 'edit' {
-      return getSeedreamAction(this.config?.model, this.config?.image);
+      const image = this.config?.image;
+      return getSeedreamAction(this.config?.model, typeof image === 'string' ? [image] : image);
     },
     capabilities() {
       return getSeedreamCapabilities(this.config?.model);
     },
     canGenerate(): boolean {
-      return canSubmitGeneration('seedream', buildSeedreamRequest(this.config));
+      const request = buildSeedreamRequest(this.config);
+      if (request.layer_decomposition) return request.image?.length === 1;
+      return canSubmitGeneration('seedream', request);
     },
     config() {
       return this.$store.state.seedream?.config;
@@ -77,13 +83,27 @@ export default defineComponent({
         request.sequential_image_generation === 'auto'
           ? Math.max(1, Math.floor(request.sequential_image_generation_options?.max_images || 1))
           : 1;
+      const pixels =
+        typeof request.size === 'string' && /^\d+x\d+$/i.test(request.size)
+          ? request.size
+              .split('x')
+              .map(Number)
+              .reduce((width, height) => width * height)
+          : request.size === '2K'
+            ? 4_194_304
+            : 1_000_000;
+      const pro = request.model === 'doubao-seedream-5-0-pro-260628';
       return getConsumption(
         {
           ...request,
           action: this.action,
           model: getSeedreamShortModel(request.model),
-          input_image_count: request.image?.length || 0,
-          count: requestedCount
+          input_image_count: Array.isArray(request.image) ? request.image.length : request.image ? 1 : 0,
+          count: requestedCount,
+          layer_decomposition: request.layer_decomposition === true,
+          layer_low_count: request.layer_decomposition ? 1 : 0,
+          regular_low_count: pro && !request.layer_decomposition && pixels <= 2_610_000 ? 1 : 0,
+          regular_high_count: pro && !request.layer_decomposition && pixels > 2_610_000 ? 1 : 0
         },
         this.service?.cost
       );

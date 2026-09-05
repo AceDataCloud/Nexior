@@ -39,7 +39,7 @@ describe('seedream/ModelSelector', () => {
 
     expect(commit).toHaveBeenCalledWith(
       'seedream/setConfig',
-      expect.objectContaining({ model: 'doubao-seedream-4-5-251128' })
+      expect.objectContaining({ model: 'doubao-seedream-5-0-260128' })
     );
     const migrated = commit.mock.calls[0][1];
     expect(migrated).not.toHaveProperty('size');

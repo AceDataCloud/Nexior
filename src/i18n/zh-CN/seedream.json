@@ -68,7 +68,7 @@
     "description": "model 参数说明"
   },
   "description.size": {
-    "message": "图片尺寸。不同模型支持的预设不同：5.0 仅支持 2K/3K/4K，4.5/4.0 支持 1K/2K/4K，3.0-t2i 与 seededit-3.0-i2i 仅支持 `<宽>x<高>` 像素值（如 1024x1024、1280x720）。预设模型还可选择「自适应」（与参考图保持一致比例），也可在下拉框中直接输入任意 `<宽>x<高>`。",
+    "message": "不同模型支持的尺寸不同：5.0 Pro 支持 1K/1.5K/2K，图层拆分还支持 auto；5.0 Lite 支持 2K/3K/4K；也可输入符合模型限制的 <宽>x<高>。",
     "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
@@ -76,7 +76,7 @@
     "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "上传 1-14 张参考图片以启用图片编辑。",
+    "message": "上传参考图片；5.0 Pro 最多 10 张，图层拆分限 1 张，其他当前模型最多 14 张。",
     "description": "image 参数说明"
   },
   "status.pending": {
@@ -128,7 +128,7 @@
     "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "最多可上传 14 张图片",
+    "message": "最多可上传 {count} 张图片",
     "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
@@ -208,23 +208,63 @@
     "description": "output_format 参数标签"
   },
   "description.outputFormat": {
-    "message": "生成图片的文件格式，jpeg 或 png，默认 jpeg。仅 doubao-seedream-5.0 支持。",
+    "message": "图片格式为 jpeg 或 png。Seedream 5.0 Pro/Lite 支持；拆分图层固定为 PNG。",
     "description": "output_format 参数说明"
   },
   "size.group.tier": {
     "message": "分辨率档位",
     "description": "尺寸下拉的档位分组（1K-4K）"
   },
-  "size.group.adaptive": {
-    "message": "自适应",
-    "description": "尺寸下拉的自适应分组"
-  },
   "size.group.pixel": {
     "message": "具体像素尺寸",
     "description": "尺寸下拉的像素尺寸分组"
   },
-  "size.adaptive": {
-    "message": "自适应（与参考图一致）",
-    "description": "adaptive 选项标签"
+  "name.mode": {
+    "message": "创作模式",
+    "description": "普通图片或图层拆分模式"
+  },
+  "mode.image": {
+    "message": "图片生成 / 编辑",
+    "description": "普通图片模式"
+  },
+  "mode.layers": {
+    "message": "图层拆分",
+    "description": "图层拆分模式"
+  },
+  "name.background": {
+    "message": "背景模式",
+    "description": "透明或不透明背景"
+  },
+  "background.opaque": {
+    "message": "实体背景",
+    "description": "普通不透明背景"
+  },
+  "background.transparent": {
+    "message": "透明背景",
+    "description": "透明背景模式"
+  },
+  "name.promptOptimization": {
+    "message": "提示词优化",
+    "description": "提示词优化模式"
+  },
+  "name.webSearch": {
+    "message": "联网搜索",
+    "description": "是否启用联网搜索"
+  },
+  "name.baseLayer": {
+    "message": "底图",
+    "description": "图层拆分的底图"
+  },
+  "name.layer": {
+    "message": "图层 {index}",
+    "description": "图层名称回退"
+  },
+  "name.failedLayer": {
+    "message": "失败项 {index}",
+    "description": "失败图层名称"
+  },
+  "name.layerDecomposition": {
+    "message": "图层拆分",
+    "description": "图层拆分能力标签"
   }
 }

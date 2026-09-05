@@ -33,7 +33,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status der Aufgabe"
+    "description": "Aufgabenstatus"
   },
   "name.traceId": {
     "message": "Verfolgungs-ID",
@@ -215,16 +215,56 @@
     "message": "Auflösungsstufen",
     "description": "Gruppe für die Auflösungsstufen im Größen-Dropdown (1K-4K)"
   },
-  "size.group.adaptive": {
-    "message": "Anpassungsfähig",
-    "description": "Gruppe für die adaptive Auswahl im Größen-Dropdown"
-  },
   "size.group.pixel": {
     "message": "Spezifische Pixelgröße",
     "description": "Gruppe für die Pixelgrößen im Größen-Dropdown"
   },
-  "size.adaptive": {
-    "message": "Anpassungsfähig (entspricht Referenzbild)",
-    "description": "Label für die adaptive Option"
+  "name.mode": {
+    "message": "Modus",
+    "description": "Normaler Bildmodus oder Ebenenaufteilungsmodus"
+  },
+  "mode.image": {
+    "message": "Bild generieren / bearbeiten",
+    "description": "Normaler Bildmodus"
+  },
+  "mode.layers": {
+    "message": "Ebenenaufteilung",
+    "description": "Ebenenaufteilungsmodus"
+  },
+  "name.background": {
+    "message": "Hintergrundmodus",
+    "description": "Transparenter oder undurchsichtiger Hintergrund"
+  },
+  "background.opaque": {
+    "message": "Undurchsichtig",
+    "description": "Normale undurchsichtige Hintergrund"
+  },
+  "background.transparent": {
+    "message": "Transparenter Hintergrund",
+    "description": "Transparenter Hintergrundmodus"
+  },
+  "name.promptOptimization": {
+    "message": "Eingabeaufforderung Optimierung",
+    "description": "Modus zur Optimierung der Eingabeaufforderung"
+  },
+  "name.webSearch": {
+    "message": "Online-Suche",
+    "description": "Ob die Online-Suche aktiviert ist"
+  },
+  "name.baseLayer": {
+    "message": "Basisebene",
+    "description": "Basisebene der Ebenenaufteilung"
+  },
+  "name.layer": {
+    "message": "Ebene {index}",
+    "description": "Rückfallname der Ebene"
+  },
+  "name.failedLayer": {
+    "message": "Fehlerhaftes Element {index}",
+    "description": "Name der fehlerhaften Ebene"
+  },
+  "name.layerDecomposition": {
+    "message": "Ebenenaufteilung",
+    "description": "Label für die Fähigkeit zur Ebenenaufteilung"
   }
 }

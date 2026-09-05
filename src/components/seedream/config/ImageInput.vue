@@ -13,8 +13,8 @@
           v-model:file-list="fileList"
           accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
           name="file"
-          :limit="14"
-          :multiple="true"
+          :limit="limit"
+          :multiple="limit > 1"
           :show-file-list="false"
           :before-upload="beforeUploadSizeGuard"
           :action="uploadUrl"
@@ -100,13 +100,19 @@ export default defineComponent({
       );
     },
     value(): string[] | undefined {
-      return this.$store.state.seedream?.config?.image;
+      const image = this.$store.state.seedream?.config?.image;
+      if (typeof image === 'string') return [image];
+      return Array.isArray(image) ? image : undefined;
     },
     model(): string | undefined {
       return this.$store.state.seedream?.config?.model;
     },
     supported(): boolean {
       return getSeedreamCapabilities(this.model).image;
+    },
+    limit(): number {
+      const config = this.$store.state.seedream?.config || {};
+      return config.layer_decomposition ? 1 : getSeedreamCapabilities(this.model).maxInputImages;
     }
   },
   watch: {
@@ -168,7 +174,7 @@ export default defineComponent({
       this.onSetImages();
     },
     onExceed() {
-      ElMessage.warning(this.$t('seedream.message.uploadImageExceed'));
+      ElMessage.warning(this.$t('seedream.message.uploadImageExceed', { count: this.limit }));
     },
     onError() {
       ElMessage.error(this.$t('seedream.message.uploadImageError'));
