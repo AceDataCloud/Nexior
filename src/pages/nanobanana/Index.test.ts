@@ -10,7 +10,8 @@ const mocks = vi.hoisted(() => ({
   ensureNoPendingUpload: vi.fn(() => true),
   instrument: vi.fn((_: string, operation: Promise<unknown>) => operation),
   resolveWallet: vi.fn(() => ({ address: 'wallet' })),
-  walletMode: false
+  walletMode: false,
+  android: false
 }));
 
 vi.mock('@/operators', () => ({ nanobananaOperator: { generate: mocks.generate } }));
@@ -18,6 +19,7 @@ vi.mock('@/plugins/telemetry', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/plugins/telemetry')>()),
   instrumentGeneration: mocks.instrument
 }));
+vi.mock('@/utils/surface', () => ({ isAndroid: () => mocks.android }));
 vi.mock('@/utils/showcaseRecreateMixin', () => ({ showcaseRecreateMixin: () => ({}) }));
 vi.mock('@/utils/quotaExhausted', () => ({ showQuotaExhausted: vi.fn(() => false) }));
 vi.mock('@/utils/x402/scenarioPayment', () => ({
@@ -71,6 +73,7 @@ describe('Nano Banana prompt validation', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.walletMode = false;
+    mocks.android = false;
     mocks.ensureLoggedIn.mockReturnValue(true);
     mocks.ensureNoPendingUpload.mockReturnValue(true);
     mocks.resolveWallet.mockReturnValue({ address: 'wallet' });
@@ -145,5 +148,17 @@ describe('Nano Banana prompt validation', () => {
       }),
       expect.objectContaining({ mode: 'x402' })
     );
+  });
+  it('requires login before any Android generation flow', async () => {
+    mocks.android = true;
+    mocks.walletMode = true;
+    mocks.ensureLoggedIn.mockReturnValue(false);
+    const wrapper = mountPage('draw a safe landscape');
+
+    await (wrapper.vm as any).onGenerate();
+
+    expect(mocks.ensureLoggedIn).toHaveBeenCalledOnce();
+    expect(mocks.resolveWallet).not.toHaveBeenCalled();
+    expect(mocks.generate).not.toHaveBeenCalled();
   });
 });

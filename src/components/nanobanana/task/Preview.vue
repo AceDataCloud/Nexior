@@ -55,11 +55,7 @@
             </el-button>
           </el-tooltip>
           <api-code-button path="/nano-banana/images" :body="modelValue?.request" />
-          <report-button
-            service="nanobanana"
-            :target-id="modelValue?.id"
-            :snapshot="{ prompt: modelValue?.request?.prompt }"
-          />
+          <report-button service="nanobanana" :target-id="modelValue?.id" :snapshot="reportSnapshot" show-label />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -102,10 +98,7 @@
           </p>
         </el-alert>
       </div>
-      <div
-        v-else-if="modelValue?.response?.success === false || modelValue?.response?.error"
-        :class="{ content: true }"
-      >
+      <div v-else-if="isFailure" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -266,11 +259,25 @@ export default defineComponent({
     hasImages(): boolean {
       return this.images.some((image) => !!image?.image_url);
     },
+    isFailure(): boolean {
+      const response = this.modelValue?.response;
+      return response?.success === false || !!response?.error;
+    },
     showResult(): boolean {
       const response = this.modelValue?.response;
-      if (!response) return false;
-      if (response.success === true) return true;
-      return this.hasImages && response.success !== false;
+      if (!response || this.isFailure) return false;
+      if (response.success === true) return this.hasImages;
+      return this.hasImages;
+    },
+    reportSnapshot(): Record<string, unknown> {
+      return {
+        prompt: this.modelValue?.request?.prompt,
+        image_urls: this.images.map((image) => image.image_url).filter(Boolean),
+        model: this.modelValue?.request?.model,
+        action: this.modelValue?.request?.action,
+        task_id: this.modelValue?.id,
+        trace_id: this.modelValue?.response?.trace_id
+      };
     }
   },
   methods: {

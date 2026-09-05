@@ -11,6 +11,14 @@ the pipeline end-to-end on **2026-05-23 (run [26324168813][run-3351])**.
 
 [run-3351]: https://github.com/AceDataCloud/Nexior/actions/runs/26324168813
 
+## Google Play policy hold
+
+Automatic Play production promotion is currently fail-closed while the AI-generated content policy remediation is under review. Remediation builds may be uploaded only to an internal or testing track and are left unsent for review. Set the repository variable `ANDROID_POLICY_HOLD=cleared` only after the Play Console policy case is cleared for the new version code; production submission remains a deliberate manual action.
+
+The Google Play bundle compiles out Nano Banana navigation, routes, home cards, and showcases until its provider safety contract is deterministic. Web, iOS, desktop, and the full sideload Android APK remain unchanged.
+
+Before submitting a remediation build, verify that blocked AI results render no media, every visible generated result has an in-app Report action, and the content-report moderation queue is operational.
+
 ## Pipeline overview
 
 ```
@@ -94,11 +102,11 @@ This must be **strictly monotonically increasing** for the Play
 Store — that is the only constraint Google enforces.
 
 | package.json | versionName | versionCode |
-| --- | --- | --- |
-| `3.35.0` | `3.35.0` | `33500` |
-| `3.35.1` | `3.35.1` | `33501` |
-| `3.36.0` | `3.36.0` | `33600` |
-| `4.0.0`  | `4.0.0`  | `40000` |
+| ------------ | ----------- | ----------- |
+| `3.35.0`     | `3.35.0`    | `33500`     |
+| `3.35.1`     | `3.35.1`    | `33501`     |
+| `3.36.0`     | `3.36.0`    | `33600`     |
+| `4.0.0`      | `4.0.0`     | `40000`     |
 
 **Implication**: bumping the patch component gives you up to 99 builds
 before you have to bump the minor. If a code is consumed in any track
@@ -121,8 +129,7 @@ Console uploads).
 Capacitor 8 hard-codes `JavaVersion.VERSION_21` into the auto-generated
 `android/app/capacitor.build.gradle`. The CI workflow must therefore
 use Java 21 (`JAVA_VERSION: '21'` in `release-android.yaml`). If you see
-this error, check that `actions/setup-java@v5` is pinned to 21 — never
-17.
+this error, check that `actions/setup-java@v5` is pinned to 21 — never 17.
 
 ### 3. `Google Play Android Developer API has not been used in project … before or it is disabled`
 

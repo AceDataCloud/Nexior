@@ -27,7 +27,7 @@ export interface INanobananaImage {
 }
 
 export interface INanobananaGenerateResponse {
-  success: boolean;
+  success?: boolean;
   task_id: string;
   trace_id?: string;
   data?: INanobananaImage[];

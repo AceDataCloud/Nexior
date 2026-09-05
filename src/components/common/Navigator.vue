@@ -183,7 +183,7 @@ import {
 } from '@/constants';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
-import { isMacOS } from '@/utils/surface';
+import { isCapabilityAvailableOnBuild, isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
 import { CAPABILITY_ICONS, type CapabilityKey } from '@/constants/capabilities';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
@@ -344,7 +344,7 @@ export default defineComponent({
           category: 'image'
         });
       }
-      if (this.$store?.state?.site?.features?.nanobanana?.enabled) {
+      if (isCapabilityAvailableOnBuild('nanobanana') && this.$store?.state?.site?.features?.nanobanana?.enabled) {
         result.push({
           route: { name: ROUTE_NANOBANANA_INDEX },
           displayName: this.$t('common.nav.nanobanana'),

@@ -10,7 +10,9 @@ import {
   getPaymentSurface,
   getDesktopOS,
   isWindows,
-  isMacOS
+  isMacOS,
+  isPlayBuild,
+  isCapabilityAvailableOnBuild
 } from './surface';
 
 /**
@@ -117,6 +119,20 @@ describe('surface', () => {
       expect(getPaymentSurface()).toBe('ios');
       withSurface('android');
       expect(getPaymentSurface()).toBe('android');
+    });
+  });
+  describe('Play build capabilities', () => {
+    it('hides only Nano Banana from the Google Play bundle', () => {
+      vi.stubEnv('VITE_PLAY_BUILD', 'true');
+      expect(isPlayBuild()).toBe(true);
+      expect(isCapabilityAvailableOnBuild('nanobanana')).toBe(false);
+      expect(isCapabilityAvailableOnBuild('openaiimage')).toBe(true);
+    });
+
+    it('keeps Nano Banana on web, iOS, desktop, and sideload Android builds', () => {
+      vi.stubEnv('VITE_PLAY_BUILD', 'false');
+      expect(isPlayBuild()).toBe(false);
+      expect(isCapabilityAvailableOnBuild('nanobanana')).toBe(true);
     });
   });
 });

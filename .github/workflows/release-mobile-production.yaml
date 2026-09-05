@@ -290,7 +290,8 @@ jobs:
     name: Android · Play production
     needs: gate
     if: >-
-      needs.gate.outputs.android-ok == 'true'
+      vars.ANDROID_POLICY_HOLD == 'cleared'
+      && needs.gate.outputs.android-ok == 'true'
       && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
       && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'android')
     uses: ./.github/workflows/release-android.yaml
