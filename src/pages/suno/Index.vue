@@ -275,7 +275,12 @@ export default defineComponent({
       if (this.hasText(request.prompt)) {
         request.prompt = request.prompt.trim();
       }
-      const operation = this.createPaymentOperation((options) => sunoOperator.audio(request, options));
+      const customModelId = this.config?.custom_model_id;
+      const usesCustomModel =
+        !!this.config?.custom && !!customModelId && (!this.config?.action || this.config.action === 'generate');
+      const operation = usesCustomModel
+        ? this.createCustomModelOperation(customModelId, request)
+        : this.createPaymentOperation((options) => sunoOperator.audio(request, options));
       if (!operation) return;
       ElMessage.info(this.$t('suno.message.startingTask'));
       try {
@@ -292,6 +297,33 @@ export default defineComponent({
           await this.onScrollDown();
         }, 1000);
       }
+    },
+    createCustomModelOperation(customModelId: string, request: ISunoAudioRequest): Promise<any> | undefined {
+      if (this.walletMode) {
+        ElMessage.error(this.$t('suno.customModel.creditsOnly'));
+        return undefined;
+      }
+      if (!ensureLoggedIn()) return undefined;
+      const token = this.credential?.token;
+      if (!token) return undefined;
+      return sunoOperator.generateWithCustomModel(
+        {
+          action: 'generate',
+          id: customModelId,
+          lyric: request.lyric,
+          lyric_prompt: request.lyric_prompt,
+          style: request.style,
+          negative_tags: request.negative_tags,
+          title: request.title,
+          instrumental: request.instrumental,
+          vocal_gender: request.vocal_gender,
+          weirdness: request.weirdness,
+          style_influence: request.style_influence,
+          duration: request.duration,
+          async: true
+        },
+        { token }
+      );
     },
     createPaymentOperation(submit: (options: OperatorRequestOptions) => Promise<any>): Promise<any> | undefined {
       if (!this.walletMode) {

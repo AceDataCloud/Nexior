@@ -77,6 +77,7 @@ export interface ISunoConfig {
   audio_weight?: number;
   duration?: number;
   persona_id?: string;
+  custom_model_id?: string;
   replace_section_start?: number;
   replace_section_end?: number;
   overpainting_start?: number;
@@ -305,4 +306,46 @@ export type ISunoTaskResponse = ISunoTask;
 export interface ISunoTasksResponse {
   count: number;
   items: ISunoTask[];
+}
+
+export type SunoCustomModelStatus = 'queued' | 'uploading' | 'training' | 'ready' | 'failed' | 'archived';
+
+export interface ISunoCustomModel {
+  id: string;
+  task_id?: string;
+  name: string;
+  status: SunoCustomModelStatus;
+  source_count: number;
+  progress?: { stage?: string; uploaded?: number; total?: number };
+  created_at: number;
+  updated_at: number;
+}
+
+export interface ISunoCustomModelCreateRequest {
+  action: 'create';
+  name: string;
+  audio_urls: string[];
+  callback_url?: string;
+}
+
+export interface ISunoCustomModelGenerateRequest {
+  action: 'generate';
+  id: string;
+  lyric?: string;
+  lyric_prompt?: string;
+  style?: string;
+  negative_tags?: string;
+  title?: string;
+  instrumental?: boolean;
+  vocal_gender?: string;
+  weirdness?: number;
+  style_influence?: number;
+  duration?: number;
+  async?: boolean;
+  callback_url?: string;
+}
+
+export interface ISunoCustomModelsResponse {
+  success: boolean;
+  data: { items: ISunoCustomModel[]; count: number };
 }

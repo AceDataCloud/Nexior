@@ -25,7 +25,8 @@
             <style-input class="mb-4" />
             <title-input class="mb-4" />
             <vocal-gender-selector v-if="!config?.instrumental && supportsVocalGender" class="mb-4" />
-            <persona-input v-if="supportsPersona" class="mb-4" />
+            <custom-model-input v-if="supportsCustomModels" class="mb-4" />
+            <persona-input v-if="supportsPersona && !config?.custom_model_id" class="mb-4" />
             <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
             <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
             <replace-section-input v-if="config?.action === 'replace_section'" class="mb-4" />
@@ -75,6 +76,7 @@ import UnderpaintingInput from './config/UnderpaintingInput.vue';
 import SamplesInput from './config/SamplesInput.vue';
 import AdjustSpeedInput from './config/AdjustSpeedInput.vue';
 import PersonaInput from './config/PersonaInput.vue';
+import CustomModelInput from './config/CustomModelInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
@@ -102,6 +104,7 @@ export default defineComponent({
     SamplesInput,
     AdjustSpeedInput,
     PersonaInput,
+    CustomModelInput,
     ElButton,
     ElTabs,
     ElTabPane,
@@ -123,12 +126,14 @@ export default defineComponent({
       set(val: 'simple' | 'custom') {
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          custom: val === 'custom'
+          custom: val === 'custom',
+          custom_model_id: val === 'custom' ? this.$store.state.suno?.config?.custom_model_id : undefined
         });
       }
     },
     consumption() {
-      return getConsumption(this.config, this.service?.cost);
+      const pricingConfig = this.usesCustomModel ? { ...this.config, action: 'generate' } : this.config;
+      return getConsumption(pricingConfig, this.service?.cost);
     },
     service() {
       return this.$store.state.suno?.service;
@@ -143,6 +148,14 @@ export default defineComponent({
     supportsPersona() {
       const action = this.config?.action;
       return !action || action === 'generate' || action === 'artist_consistency' || action === 'artist_consistency_vox';
+    },
+    supportsCustomModels() {
+      const action = this.config?.action;
+      return !this.walletMode && (!action || action === 'generate');
+    },
+    usesCustomModel() {
+      const action = this.config?.action;
+      return !!this.config?.custom && !!this.config?.custom_model_id && (!action || action === 'generate');
     },
     generateButtonText() {
       const action = this.config?.action;
