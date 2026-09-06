@@ -13,7 +13,7 @@ the pipeline end-to-end on **2026-05-23 (run [26324168813][run-3351])**.
 
 ## Google Play policy hold
 
-Automatic Play production promotion is currently fail-closed while the AI-generated content policy remediation is under review. Remediation builds may be uploaded only to an internal or testing track and are left unsent for review. Set the repository variable `ANDROID_POLICY_HOLD=cleared` only after the Play Console policy case is cleared for the new version code; production submission remains a deliberate manual action.
+Automatic Play production promotion is currently fail-closed while the AI-generated content policy remediation is under review. Play uploads set `changesNotSentForReview: true` because Google rejects automatic review submission while a policy case is open; submit the staged edit manually in Play Console. Remediation builds may be uploaded only to an internal or testing track and are left unsent for review. Set the repository variable `ANDROID_POLICY_HOLD=cleared` only after the Play Console policy case is cleared for the new version code; production submission remains a deliberate manual action.
 
 The Google Play bundle compiles out Nano Banana navigation, routes, home cards, and showcases until its provider safety contract is deterministic. Web, iOS, desktop, and the full sideload Android APK remain unchanged.
 
