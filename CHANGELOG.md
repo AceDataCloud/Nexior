@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 05 Sep 2026 20:20:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 06 Sep 2026 20:21:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.368.1
+
+Sun, 06 Sep 2026 20:21:23 GMT
+
+### Patches
+
+- Keep wide white-label logos fully visible in Studio headers. (dev@acedata.cloud)
+- Stage Google Play uploads for manual review while the policy hold is active. (dev@acedata.cloud)
 
 ## 3.368.0
 
