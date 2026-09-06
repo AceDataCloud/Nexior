@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
 import Logo from './Logo.vue';
+import logoSource from './Logo.vue?raw';
 
 const mountLogo = (site: Record<string, unknown>, collapsed = false) =>
   mount(Logo, {
@@ -48,6 +49,13 @@ describe('Logo Site branding', () => {
 
     expect(wrapper.get('.brand-logo__image--light').attributes('src')).toContain('light.png');
     expect(wrapper.get('.brand-logo__image--dark').attributes('src')).toContain('dark.png');
+  });
+
+  it('keeps wide tenant logos inside the available header width', () => {
+    expect(logoSource).toMatch(/\.brand-logo\s*\{[\s\S]*max-width: 100%;[\s\S]*min-width: 0;/);
+    expect(logoSource).toMatch(
+      /&__image\s*\{[\s\S]*box-sizing: border-box;[\s\S]*width: min\(132px, 100%\);[\s\S]*padding: 2px;[\s\S]*object-fit: contain;/
+    );
   });
 
   it('uses the built-in wordmark only when Site branding is absent', () => {
