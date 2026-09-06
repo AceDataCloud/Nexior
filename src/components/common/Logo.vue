@@ -62,16 +62,19 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  min-width: 0;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
 
   &__image {
+    box-sizing: border-box;
     display: block;
-    width: auto;
-    max-width: 132px;
+    width: min(132px, 100%);
     height: 40px;
+    padding: 2px;
     object-fit: contain;
     object-position: center;
     transition: height 0.2s ease;
@@ -124,8 +127,8 @@ export default defineComponent({
 
   .collapsed & {
     &__image {
+      width: 35px;
       height: 35px;
-      max-width: 35px;
     }
   }
 }
@@ -144,7 +147,7 @@ html.dark .brand-logo__image--dark {
 
 @media only screen and (max-width: 768px) {
   .brand-logo__image {
-    max-width: 116px;
+    width: min(116px, 100%);
     height: 38px;
   }
 }
