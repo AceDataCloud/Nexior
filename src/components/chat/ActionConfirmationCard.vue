@@ -4,12 +4,12 @@
     :class="{
       'is-resolved': resolved,
       'is-destructive': isDestructive,
-      'is-tiktok': isTikTokPublish
+      'is-tiktok': isTikTok
     }"
   >
     <div class="acc-header">
       <div class="acc-heading">
-        <span v-if="isTikTokPublish" class="acc-brand-mark" aria-hidden="true">
+        <span v-if="isTikTok" class="acc-brand-mark" aria-hidden="true">
           <font-awesome-icon :icon="faTiktok" />
         </span>
         <component
@@ -21,13 +21,11 @@
           focusable="false"
         />
         <div class="acc-heading-copy">
-          <span v-if="isTikTokPublish" class="acc-eyebrow">TikTok</span>
+          <span v-if="isTikTok" class="acc-eyebrow">TikTok</span>
           <span class="header-title">{{ headerTitle }}</span>
         </div>
       </div>
-      <span v-if="isTikTokPublish && !resolved" class="acc-review-badge">
-        {{ $t('chat.actionConfirmation.tiktok.reviewBadge') }}
-      </span>
+      <span v-if="isTikTok && !resolved" class="acc-review-badge">{{ reviewBadge }}</span>
     </div>
 
     <p v-if="summary" class="acc-summary">{{ summary }}</p>
@@ -39,10 +37,10 @@
           <span>{{ $t('chat.actionConfirmation.mediaLoading') }}</span>
         </div>
         <video
-          v-if="payload.preview.type === 'video' && !mediaFailed"
+          v-if="payload.preview.type === 'video' && safePreviewUrl && !mediaFailed"
           class="preview-media"
           :class="{ 'is-ready': mediaReady }"
-          :src="payload.preview.url"
+          :src="safePreviewUrl"
           controls
           playsinline
           preload="metadata"
@@ -51,10 +49,10 @@
           @error="onMediaError"
         />
         <img
-          v-else-if="payload.preview.type === 'image' && !mediaFailed"
+          v-else-if="payload.preview.type === 'image' && safePreviewUrl && !mediaFailed"
           class="preview-media"
           :class="{ 'is-ready': mediaReady }"
-          :src="payload.preview.url"
+          :src="safePreviewUrl"
           :alt="payload.title"
           @load="onMediaReady"
           @error="onMediaError"
@@ -63,7 +61,7 @@
           <span class="fallback-icon">!</span>
           <strong>{{ $t('chat.actionConfirmation.mediaUnavailable') }}</strong>
           <span>{{ $t('chat.actionConfirmation.mediaUnavailableHint') }}</span>
-          <a :href="payload.preview.url" target="_blank" rel="noopener noreferrer">
+          <a v-if="safePreviewUrl" :href="safePreviewUrl" target="_blank" rel="noopener noreferrer">
             {{ $t('chat.actionConfirmation.openMedia') }}
             <external-link-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </a>
@@ -84,6 +82,10 @@
           :initial-values="submittedValues"
           @validity-change="onValidityChange"
         />
+        <div v-else-if="isTikTokDraftUpload" class="tiktok-draft-note">
+          <strong>{{ $t('chat.actionConfirmation.tiktok.uploadDraftNextStepTitle') }}</strong>
+          <p>{{ $t('chat.actionConfirmation.tiktok.uploadDraftNextStep') }}</p>
+        </div>
         <GenericFieldList v-else :summary="payload.summary" :fields="payload.fields ?? []" />
       </div>
     </div>
@@ -175,22 +177,34 @@ export default defineComponent({
     isTikTokPublish(): boolean {
       return this.payload?.kind === 'tiktok.publish';
     },
+    isTikTokDraftUpload(): boolean {
+      return this.payload?.kind === 'tiktok.upload_draft';
+    },
+    isTikTok(): boolean {
+      return this.isTikTokPublish || this.isTikTokDraftUpload;
+    },
     headerTitle(): string {
-      return this.isTikTokPublish
-        ? (this.$t('chat.actionConfirmation.tiktok.publishTitle') as string)
-        : this.payload.title;
+      if (this.isTikTokDraftUpload) return this.$t('chat.actionConfirmation.tiktok.uploadDraftTitle') as string;
+      if (this.isTikTokPublish) return this.$t('chat.actionConfirmation.tiktok.publishTitle') as string;
+      return this.payload.title;
     },
     summary(): string {
-      return this.isTikTokPublish
-        ? (this.$t('chat.actionConfirmation.tiktok.publishSummary') as string)
-        : this.payload.summary || '';
+      if (this.isTikTokDraftUpload) return this.$t('chat.actionConfirmation.tiktok.uploadDraftSummary') as string;
+      if (this.isTikTokPublish) return this.$t('chat.actionConfirmation.tiktok.publishSummary') as string;
+      return this.payload.summary || '';
+    },
+    reviewBadge(): string {
+      const key = this.isTikTokDraftUpload
+        ? 'chat.actionConfirmation.tiktok.uploadDraftReviewBadge'
+        : 'chat.actionConfirmation.tiktok.reviewBadge';
+      return this.$t(key) as string;
     },
     initialTitle(): string {
       const detail = this.payload?.detail as Record<string, unknown> | undefined;
       return typeof detail?.suggested_title === 'string' ? detail.suggested_title : '';
     },
     submittedValues(): ITikTokPublishValues | null {
-      if (!this.resolved || !this.previousOutput) return null;
+      if (!this.isTikTokPublish || !this.resolved || !this.previousOutput) return null;
       try {
         const parsed = JSON.parse(this.previousOutput) as IActionConfirmationResult;
         return (parsed?.values as unknown as ITikTokPublishValues) ?? null;
@@ -205,8 +219,26 @@ export default defineComponent({
       return this.isDestructive ? WarningIcon : ConfirmIcon;
     },
     confirmLabel(): string {
+      if (this.isTikTokDraftUpload) return this.$t('chat.actionConfirmation.tiktok.uploadDraftButton') as string;
       if (this.isTikTokPublish) return this.$t('chat.actionConfirmation.tiktok.publishButton') as string;
       return this.payload?.confirm_label || (this.$t('chat.actionConfirmation.confirm') as string);
+    },
+    safePreviewUrl(): string {
+      const value = this.payload?.preview?.url;
+      if (typeof value !== 'string' || !value || value.length > 2048) return '';
+      if (
+        Array.from(value).some((char) => {
+          const code = char.codePointAt(0) ?? 0;
+          return /\s/u.test(char) || code < 0x20 || code === 0x7f;
+        })
+      )
+        return '';
+      try {
+        const parsed = new URL(value);
+        return parsed.protocol === 'https:' && !parsed.username && !parsed.password ? value : '';
+      } catch {
+        return '';
+      }
     },
     formattedDuration(): string {
       const value = this.payload?.preview?.duration_sec;
@@ -232,7 +264,7 @@ export default defineComponent({
         this.resolvedConfirmed = this.parsePreviousConfirmed();
       }
     },
-    'payload.preview.url'() {
+    safePreviewUrl() {
       this.mediaReady = false;
       this.mediaFailed = false;
     }
@@ -270,6 +302,7 @@ export default defineComponent({
       this.mediaFailed = true;
     },
     collectValues(): Record<string, unknown> | undefined {
+      if (!this.isTikTokPublish) return undefined;
       const form = this.$refs.tiktokForm as { collect?: () => Record<string, unknown> } | undefined;
       return form?.collect ? form.collect() : undefined;
     },
@@ -492,6 +525,25 @@ export default defineComponent({
 
 .acc-body {
   min-width: 0;
+}
+
+.tiktok-draft-note {
+  padding: 13px 14px;
+  border: 1px solid color-mix(in srgb, var(--el-border-color) 72%, #25f4ee 28%);
+  border-radius: 12px;
+  background: var(--el-fill-color-extra-light);
+
+  strong {
+    color: var(--el-text-color-primary);
+    font-size: 13px;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: var(--el-text-color-regular);
+    font-size: 12px;
+    line-height: 1.55;
+  }
 }
 
 .acc-actions {

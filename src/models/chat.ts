@@ -274,7 +274,7 @@ export interface IConsentRequestPayload {
 // fall back rather than render blank.
 
 /** Known kinds; open-ended by design (see note above). */
-export type IActionConfirmationKind = 'generic' | 'tiktok.publish' | string;
+export type IActionConfirmationKind = 'generic' | 'tiktok.upload_draft' | 'tiktok.publish' | string;
 
 export interface IActionConfirmationField {
   label: string;
@@ -318,6 +318,9 @@ export interface IActionConfirmationResult {
   /** Present when confirmed and the kind body collects input. */
   values?: Record<string, unknown>;
 }
+
+// ===== TikTok action kinds =====
+// `tiktok.upload_draft` has no editable values; `tiktok.publish` is Direct Post.
 
 // ===== tiktok.publish kind =====
 

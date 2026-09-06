@@ -132,6 +132,7 @@
               />
               <action-confirmation-card
                 v-if="
+                  !readonly &&
                   item.type === 'tool_use' &&
                   item.tool_name === 'request_action_confirmation' &&
                   item.status === 'awaiting_input' &&

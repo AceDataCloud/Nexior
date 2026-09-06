@@ -132,6 +132,43 @@ describe('ActionConfirmationCard', () => {
     expect(link.attributes('rel')).toBe('noopener noreferrer');
   });
 
+  it('renders a truthful TikTok draft upload card without Direct Post controls', async () => {
+    const wrapper = mountCard({
+      action_confirmation_id: 'actconf_draft',
+      kind: 'tiktok.upload_draft',
+      title: '模型声称立即发布',
+      summary: '模型声称会公开发布',
+      confirm_label: '立即发布',
+      preview: { type: 'video', url: 'https://cdn.example.com/video.mp4', duration_sec: 30 }
+    });
+
+    expect(wrapper.find('.acc-brand-mark i').exists()).toBe(true);
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.uploadDraftTitle');
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.uploadDraftSummary');
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.uploadDraftReviewBadge');
+    expect(wrapper.text()).toContain('chat.actionConfirmation.tiktok.uploadDraftNextStep');
+    expect(wrapper.findAll('button')[1].text()).toBe('chat.actionConfirmation.tiktok.uploadDraftButton');
+    expect(wrapper.text()).not.toContain('模型声称立即发布');
+    expect(wrapper.text()).not.toContain('模型声称会公开发布');
+    expect(wrapper.findComponent({ name: 'TikTokPublishForm' }).exists()).toBe(false);
+
+    await wrapper.findAll('button')[1].trigger('click');
+    expect(wrapper.emitted('submit')?.[0][0]).toEqual({
+      action_confirmation_id: 'actconf_draft',
+      confirmed: true
+    });
+  });
+
+  it('does not bind unsafe preview URLs to media or fallback links', () => {
+    const wrapper = mountCard({
+      ...BASE,
+      preview: { type: 'video', url: 'javascript:alert(1)' }
+    });
+    expect(wrapper.find('video').exists()).toBe(false);
+    expect(wrapper.find('.preview-fallback a').exists()).toBe(false);
+    expect(wrapper.text()).toContain('chat.actionConfirmation.mediaUnavailable');
+  });
+
   it('uses the TikTok brand icon and localizes fixed publish copy', () => {
     const wrapper = mountCard({
       action_confirmation_id: 'actconf_tiktok',
