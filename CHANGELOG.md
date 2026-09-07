@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 06 Sep 2026 20:21:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 07 Sep 2026 20:21:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.368.2
+
+Mon, 07 Sep 2026 20:21:57 GMT
+
+### Patches
+
+- Load scheduled templates after chat credentials become available on deep links. (dev@acedata.cloud)
+- Localize sales and customer scheduled-template categories and preserve category deep links. (dev@acedata.cloud)
 
 ## 3.368.1
 
