@@ -4,7 +4,6 @@ import store from '@/store';
 import auth from './auth';
 import console from './console';
 import home, { homeCompatibilityRoute } from './home';
-import inspiration from './inspiration';
 import business from './business';
 import grok from './grok';
 import gemini from './gemini';
@@ -380,7 +379,6 @@ export const getDefaultRoute = (): { name: string } => {
 export const routes = [
   home,
   homeCompatibilityRoute,
-  inspiration,
   business,
   order,
   console,
