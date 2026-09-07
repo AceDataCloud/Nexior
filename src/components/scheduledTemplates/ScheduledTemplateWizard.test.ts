@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
 import { ElMessage } from 'element-plus';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { scheduledTasksOperator } from '@/operators/scheduledTasks';
 import ScheduledTemplateWizard from './ScheduledTemplateWizard.vue';
@@ -37,9 +37,12 @@ const disabledTask = {
   updated_at: 1
 };
 
-const mountWizard = (translate: (key: string) => string = (key) => key) =>
+const mountWizard = (
+  translate: (key: string) => string = (key) => key,
+  props: { modelValue?: boolean; token?: string; initialCategory?: string } = {}
+) =>
   shallowMount(ScheduledTemplateWizard, {
-    props: { modelValue: true, token: 'tok' },
+    props: { modelValue: true, token: 'tok', ...props },
     global: {
       mocks: { $t: translate },
       stubs: {
@@ -52,7 +55,49 @@ const mountWizard = (translate: (key: string) => string = (key) => key) =>
   });
 
 describe('ScheduledTemplateWizard', () => {
+  beforeEach(() => {
+    vi.spyOn(scheduledTasksOperator, 'listTemplates').mockResolvedValue({ items: [], categories: [] });
+  });
   afterEach(() => vi.restoreAllMocks());
+
+  it('loads templates once when mounted open with an initial category', async () => {
+    const listTemplates = vi.mocked(scheduledTasksOperator.listTemplates);
+    mountWizard(undefined, { initialCategory: 'sales' });
+
+    await vi.waitFor(() => expect(listTemplates).toHaveBeenCalledTimes(1));
+    expect(listTemplates).toHaveBeenCalledWith('tok', { category: 'sales', query: '' });
+  });
+
+  it('does not load templates while closed', async () => {
+    const listTemplates = vi.mocked(scheduledTasksOperator.listTemplates);
+    mountWizard(undefined, { modelValue: false });
+
+    await Promise.resolve();
+    expect(listTemplates).not.toHaveBeenCalled();
+  });
+
+  it('loads after a token arrives while visible', async () => {
+    const listTemplates = vi.mocked(scheduledTasksOperator.listTemplates);
+    const wrapper = mountWizard(undefined, { token: '' });
+    expect(listTemplates).not.toHaveBeenCalled();
+
+    await wrapper.setProps({ token: 'later-token' });
+
+    await vi.waitFor(() => expect(listTemplates).toHaveBeenCalledTimes(1));
+    expect(listTemplates).toHaveBeenCalledWith('later-token', { category: '', query: '' });
+  });
+
+  it('does not repeat a successful initial load when reopened', async () => {
+    const listTemplates = vi.mocked(scheduledTasksOperator.listTemplates);
+    const wrapper = mountWizard();
+    await vi.waitFor(() => expect(listTemplates).toHaveBeenCalledTimes(1));
+
+    await wrapper.setProps({ modelValue: false });
+    await wrapper.setProps({ modelValue: true });
+    await Promise.resolve();
+
+    expect(listTemplates).toHaveBeenCalledTimes(1);
+  });
 
   it('keeps backend categories dynamic and localizes known values with a slug fallback', async () => {
     vi.spyOn(scheduledTasksOperator, 'listTemplates').mockResolvedValue({
