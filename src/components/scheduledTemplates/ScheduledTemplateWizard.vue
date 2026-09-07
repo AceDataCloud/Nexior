@@ -234,6 +234,7 @@ export default defineComponent({
       visible: this.modelValue,
       step: 0,
       loading: false,
+      templatesLoaded: false,
       working: false,
       templates: [] as IScheduledTaskTemplateDefinition[],
       categories: [] as string[],
@@ -261,13 +262,23 @@ export default defineComponent({
   watch: {
     modelValue(value: boolean) {
       this.visible = value;
-      if (value) void this.loadTemplates();
+      if (value) void this.ensureTemplatesLoaded();
+    },
+    token: {
+      immediate: true,
+      handler() {
+        void this.ensureTemplatesLoaded();
+      }
     },
     visible(value: boolean) {
       this.$emit('update:modelValue', value);
     }
   },
   methods: {
+    async ensureTemplatesLoaded() {
+      if (!this.visible || !this.token || this.loading || this.templatesLoaded) return;
+      await this.loadTemplates();
+    },
     async loadTemplates() {
       this.loading = true;
       try {
@@ -277,6 +288,7 @@ export default defineComponent({
         });
         this.templates = data.items;
         this.categories = data.categories;
+        this.templatesLoaded = true;
         if (this.selected) this.selected = data.items.find((item) => item.id === this.selected?.id) ?? this.selected;
       } catch {
         ElMessage.error(this.$t('chat.scheduledTemplates.loadError') as string);
