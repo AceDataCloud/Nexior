@@ -37,11 +37,11 @@ const disabledTask = {
   updated_at: 1
 };
 
-const mountWizard = () =>
+const mountWizard = (translate: (key: string) => string = (key) => key) =>
   shallowMount(ScheduledTemplateWizard, {
     props: { modelValue: true, token: 'tok' },
     global: {
-      mocks: { $t: (key: string) => key },
+      mocks: { $t: translate },
       stubs: {
         BrowseConnectors: true,
         ElDialog: { template: '<div><slot /><slot name="footer" /></div>' },
@@ -53,6 +53,30 @@ const mountWizard = () =>
 
 describe('ScheduledTemplateWizard', () => {
   afterEach(() => vi.restoreAllMocks());
+
+  it('keeps backend categories dynamic and localizes known values with a slug fallback', async () => {
+    vi.spyOn(scheduledTasksOperator, 'listTemplates').mockResolvedValue({
+      items: [template],
+      categories: ['marketing', 'sales', 'customer', 'partner-ops']
+    });
+    const labels: Record<string, string> = {
+      'chat.scheduledTemplates.category.sales': 'Sales & leads',
+      'chat.scheduledTemplates.category.customer': 'Customer success'
+    };
+    const wrapper = mountWizard((key) => labels[key] ?? key);
+    const vm = wrapper.vm as unknown as {
+      categories: string[];
+      loadTemplates: () => Promise<void>;
+      categoryLabel: (category: string) => string;
+    };
+
+    await vm.loadTemplates();
+
+    expect(vm.categories).toEqual(['marketing', 'sales', 'customer', 'partner-ops']);
+    expect(vm.categoryLabel('sales')).toBe('Sales & leads');
+    expect(vm.categoryLabel('customer')).toBe('Customer success');
+    expect(vm.categoryLabel('partner-ops')).toBe('partner-ops');
+  });
 
   it('renders only the choose, configure, and connect steps', () => {
     const wrapper = mountWizard();
