@@ -1321,5 +1321,149 @@
   "message.featuresQwenimage": {
     "message": "Utilizza Qwen Image 3 versione standard e Pro per generare e modificare immagini.",
     "description": "Introduzione al servizio Qwen Image"
+  },
+  "field.authEmailTransport": {
+    "message": "Server email personalizzato",
+    "description": "Titolo della configurazione SMTP"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Usa il tuo server SMTP per inviare email di verifica. Salva e testa prima, attiva solo dopo il test riuscito.",
+    "description": "Istruzioni per la configurazione SMTP"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Sicurezza connessione",
+    "description": "Modalità TLS SMTP"
+  },
+  "field.authEmailTransportHost": {
+    "message": "Host SMTP",
+    "description": "Nome di dominio del server SMTP"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Nome utente",
+    "description": "Nome utente di accesso SMTP"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Password SMTP",
+    "description": "Password di accesso SMTP"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "Email del mittente",
+    "description": "Indirizzo email del mittente per l'email di verifica"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "Nome del mittente",
+    "description": "Nome visualizzato del mittente per l'email di verifica"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "Email di risposta",
+    "description": "Indirizzo di risposta opzionale"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Lascia vuoto per mantenere la password salvata",
+    "description": "Testo segnaposto per la password SMTP"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "La password è stata salvata, lasciare vuoto per mantenere invariato.",
+    "description": "Messaggio di password SMTP salvata"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "Configurazione del server di posta salvata",
+    "description": "Salvataggio SMTP riuscito"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "Il tuo server SMTP ha accettato l'email di test",
+    "description": "Test SMTP riuscito"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (porta 587)",
+    "description": "Opzione STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (porta 465)",
+    "description": "Opzione TLS implicita"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Salva configurazione",
+    "description": "Salva la bozza dell'SMTP"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Invia email di test",
+    "description": "Testa la configurazione SMTP salvata"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Abilita",
+    "description": "Abilita l'SMTP verificato"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "Eliminare il server email personalizzato?",
+    "description": "Titolo del popup di eliminazione SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "Le credenziali SMTP salvate verranno eliminate permanentemente.",
+    "description": "Conferma di eliminazione SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Salvataggio della configurazione del server email fallito",
+    "description": "Salvataggio SMTP fallito"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "Impossibile risolvere il nome host SMTP",
+    "description": "Errore DNS SMTP"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "Il server SMTP può risolvere solo indirizzi pubblici",
+    "description": "Errore della politica del target SMTP"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Timeout di connessione al server SMTP",
+    "description": "Timeout di connessione SMTP"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "Il server non supporta la modalità TLS selezionata",
+    "description": "Errore di richiesta TLS SMTP"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "Connessione TLS fallita",
+    "description": "Errore TLS SMTP"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "Certificato del server SMTP non valido",
+    "description": "Errore del certificato SMTP"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "Autenticazione SMTP fallita",
+    "description": "Errore di autenticazione SMTP"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "Il server SMTP ha rifiutato l'indirizzo del mittente",
+    "description": "Errore mittente SMTP"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "Il server SMTP ha rifiutato il destinatario di test",
+    "description": "Errore destinatario SMTP"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "Test SMTP fallito",
+    "description": "Errore di test generico SMTP"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "Impossibile connettersi al server SMTP",
+    "description": "Errore di trasporto SMTP"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "Il server SMTP ha rifiutato l'email di test",
+    "description": "Errore di trasporto SMTP"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "Impossibile leggere la password salvata, elimina la configurazione e reinseriscila",
+    "description": "Errore di trasporto SMTP"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "La configurazione SMTP salvata è incompleta o non valida",
+    "description": "Errore di trasporto SMTP"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Imposta prima un'email per l'account corrente, poi invia l'email di test",
+    "description": "Errore di trasporto SMTP"
   }
 }

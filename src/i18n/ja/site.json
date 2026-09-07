@@ -1321,5 +1321,149 @@
   "message.featuresQwenimage": {
     "message": "Qwen Image 3 のスタンダード版とプロ版を使用して画像を生成および編集します。",
     "description": "Qwen Image サービスの紹介"
+  },
+  "field.authEmailTransport": {
+    "message": "カスタムメールサーバー",
+    "description": "SMTP設定のタイトル"
+  },
+  "message.authEmailTransportTip": {
+    "message": "自分のSMTPサーバーを使用して確認コードメールを送信します。まず保存してテストし、テストが成功したら有効にしてください。",
+    "description": "SMTP設定の説明"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "接続のセキュリティ",
+    "description": "SMTPのTLSモード"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTPホスト",
+    "description": "SMTPサーバーのドメイン名"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "ユーザー名",
+    "description": "SMTPのログインユーザー名"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "パスワード",
+    "description": "SMTPのログインパスワード"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "送信者メールアドレス",
+    "description": "確認コードメールの送信者アドレス"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "送信者名",
+    "description": "確認コードメールの送信者表示名"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "返信メールアドレス",
+    "description": "オプションの返信アドレス"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "空白のままにすると保存されたパスワードが保持されます",
+    "description": "SMTPパスワードのプレースホルダ文"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "パスワードが保存されました。空白のままにすると変更されません。",
+    "description": "保存されたSMTPパスワードのヒント"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "メールサーバーの設定が保存されました。",
+    "description": "SMTP保存成功"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "SMTPサーバーがテストメールを受け入れました。",
+    "description": "SMTPテスト成功"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS（ポート587）",
+    "description": "STARTTLSオプション"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS（ポート465）",
+    "description": "暗黙のTLSオプション"
+  },
+  "button.authEmailTransportSave": {
+    "message": "設定を保存",
+    "description": "SMTPのドラフトを保存します"
+  },
+  "button.authEmailTransportTest": {
+    "message": "テストメールを送信",
+    "description": "保存されたSMTP設定をテストします"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "有効にする",
+    "description": "検証済みのSMTPを有効にします"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "カスタムメールサーバーを削除しますか？",
+    "description": "SMTP削除のポップアップタイトル"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "保存されたSMTP認証情報は永久に削除されます。",
+    "description": "SMTP削除確認"
+  },
+  "error.authEmailTransportSave": {
+    "message": "メールサーバー設定の保存に失敗しました",
+    "description": "SMTPの保存に失敗しました"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "SMTPホスト名を解決できません",
+    "description": "SMTPのDNSエラー"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "SMTPサーバーはパブリックアドレスのみ解決できます",
+    "description": "SMTPのターゲットポリシーエラー"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "SMTPサーバーへの接続がタイムアウトしました",
+    "description": "SMTPの接続がタイムアウトしました"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "サーバーが選択したTLSモードをサポートしていません",
+    "description": "SMTPのTLS要件エラー"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "TLS接続に失敗しました",
+    "description": "SMTPのTLSエラー"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "SMTPサーバーの証明書が無効です",
+    "description": "SMTPの証明書エラー"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "SMTP認証に失敗しました",
+    "description": "SMTPの認証エラー"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "SMTPサーバーが送信者アドレスを拒否しました",
+    "description": "SMTPの送信者エラー"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "SMTPサーバーがテスト受信者を拒否しました",
+    "description": "SMTPの受信者エラー"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "SMTPテストに失敗しました",
+    "description": "SMTPの一般的なテストエラー"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "SMTPサーバーに接続できません",
+    "description": "SMTPトランスポートエラー"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "SMTPサーバーがテストメールを拒否しました",
+    "description": "SMTPトランスポートエラー"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "保存されたパスワードを読み取れません。設定を削除して再入力してください",
+    "description": "SMTPトランスポートエラー"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "保存されたSMTP設定が不完全または無効です",
+    "description": "SMTPトランスポートエラー"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "現在のアカウントにメールアドレスを設定してから、テストメールを送信してください",
+    "description": "SMTPトランスポートエラー"
   }
 }

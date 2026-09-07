@@ -30,6 +30,7 @@ export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';
 export * from './site_domain';
 export * from './smsWebhook';
+export * from './siteEmailTransport';
 export * from './translation';
 export * from './suno';
 export * from './producer';

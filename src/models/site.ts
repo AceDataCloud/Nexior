@@ -67,6 +67,7 @@ export interface ISiteDistribution {
 // JSONField (see ``PlatformBackend/app/models/site.py``).
 export interface ISiteAuthProvider {
   enabled?: boolean;
+  smtp?: ISiteAuthEmailSmtp | null;
   [key: string]: unknown;
 }
 
@@ -90,6 +91,24 @@ export interface ISiteAuth {
   // read; blank on write keeps the stored value). See
   // ``plans/white-label/44-sms-delivery-webhook.md``.
   sms?: ISiteAuthSms;
+}
+
+export type SiteEmailTransportSecurity = 'starttls' | 'implicit_tls';
+
+export interface ISiteAuthEmailSmtp {
+  enabled: boolean;
+  host: string;
+  port: 465 | 587;
+  security: SiteEmailTransportSecurity;
+  username: string;
+  password?: string;
+  password_configured?: boolean;
+  verified?: boolean;
+  verified_at?: number | null;
+  test_proof?: string;
+  from_email: string;
+  from_name: string;
+  reply_to: string;
 }
 
 export interface ISiteAuthSms {

@@ -1321,5 +1321,149 @@
   "message.featuresQwenimage": {
     "message": "Qwen 이미지 3 표준판 및 프로판을 사용하여 이미지 생성 및 편집.",
     "description": "Qwen 이미지 서비스 소개"
+  },
+  "field.authEmailTransport": {
+    "message": "사용자 정의 메일 서버",
+    "description": "SMTP 구성 제목"
+  },
+  "message.authEmailTransportTip": {
+    "message": "자신의 SMTP 서버를 사용하여 인증 코드 메일을 전송하세요. 먼저 저장하고 테스트한 후, 테스트가 통과되면 활성화하세요.",
+    "description": "SMTP 구성 설명"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "연결 보안",
+    "description": "SMTP TLS 모드"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTP 호스트",
+    "description": "SMTP 서버 도메인"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "사용자 이름",
+    "description": "SMTP 로그인 사용자 이름"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "비밀번호",
+    "description": "SMTP 로그인 비밀번호"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "발신 이메일",
+    "description": "인증 코드 이메일 발신 주소"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "발신자 이름",
+    "description": "인증 코드 이메일 발신 표시 이름"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "회신 이메일",
+    "description": "선택적 회신 주소"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "비워두면 저장된 비밀번호가 유지됩니다.",
+    "description": "SMTP 비밀번호 자리 표시자 문구"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "비밀번호가 저장되었습니다. 비워두면 변경되지 않습니다.",
+    "description": "저장된 SMTP 비밀번호提示"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "메일 서버 설정이 저장되었습니다.",
+    "description": "SMTP 저장 성공"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "귀하의 SMTP 서버가 테스트 메일을 수신했습니다.",
+    "description": "SMTP 테스트 성공"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS(포트 587)",
+    "description": "STARTTLS 옵션"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS(포트 465)",
+    "description": "암시적 TLS 옵션"
+  },
+  "button.authEmailTransportSave": {
+    "message": "구성 저장",
+    "description": "SMTP 초안 저장"
+  },
+  "button.authEmailTransportTest": {
+    "message": "테스트 이메일 전송",
+    "description": "저장된 SMTP 구성 테스트"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "활성화",
+    "description": "검증된 SMTP 활성화"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "사용자 정의 메일 서버를 삭제하시겠습니까?",
+    "description": "SMTP 삭제 팝업 제목"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "저장된 SMTP 자격 증명이 영구적으로 삭제됩니다.",
+    "description": "SMTP 삭제 확인"
+  },
+  "error.authEmailTransportSave": {
+    "message": "메일 서버 구성 저장 실패",
+    "description": "SMTP 저장 실패"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "SMTP 호스트 이름을 확인할 수 없음",
+    "description": "SMTP DNS 오류"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "SMTP 서버는 공용 주소만 확인할 수 있음",
+    "description": "SMTP 대상 정책 오류"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "SMTP 서버 연결 시간 초과",
+    "description": "SMTP 연결 시간 초과"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "서버가 선택한 TLS 모드를 지원하지 않음",
+    "description": "SMTP TLS 요구 오류"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "TLS 연결 실패",
+    "description": "SMTP TLS 오류"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "SMTP 서버 인증서 유효하지 않음",
+    "description": "SMTP 인증서 오류"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "SMTP 인증 실패",
+    "description": "SMTP 인증 오류"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "SMTP 서버가 발신 주소를 거부함",
+    "description": "SMTP 발신자 오류"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "SMTP 서버가 테스트 수신자를 거부함",
+    "description": "SMTP 수신자 오류"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "SMTP 테스트 실패",
+    "description": "SMTP 일반 테스트 오류"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "SMTP 서버에 연결할 수 없습니다.",
+    "description": "SMTP 전송 오류"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "SMTP 서버가 테스트 이메일을 거부했습니다.",
+    "description": "SMTP 전송 오류"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "저장된 비밀번호를 읽을 수 없습니다. 구성을 삭제한 후 다시 입력하십시오.",
+    "description": "SMTP 전송 오류"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "저장된 SMTP 구성이 불완전하거나 유효하지 않습니다.",
+    "description": "SMTP 전송 오류"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "현재 계정에 이메일을 설정한 후 테스트 이메일을 보내십시오.",
+    "description": "SMTP 전송 오류"
   }
 }

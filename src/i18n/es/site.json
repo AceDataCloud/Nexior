@@ -1322,5 +1322,149 @@
   "message.featuresQwenimage": {
     "message": "Utiliza Qwen Image 3 versión estándar y Pro para generar y editar imágenes.",
     "description": "Introducción al servicio de Qwen Image"
+  },
+  "field.authEmailTransport": {
+    "message": "Servidor de correo personalizado",
+    "description": "Título de configuración del SMTP"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Utilice su propio servidor SMTP para enviar correos de verificación. Guarde y pruebe primero, habilite después de pasar la prueba.",
+    "description": "Instrucciones de configuración de SMTP"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Seguridad de conexión",
+    "description": "Modo TLS del SMTP"
+  },
+  "field.authEmailTransportHost": {
+    "message": "Host SMTP",
+    "description": "Nombre de dominio del servidor SMTP"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Nombre de usuario",
+    "description": "Nombre de usuario de inicio de sesión del SMTP"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Contraseña",
+    "description": "Contraseña de inicio de sesión del SMTP"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "Correo del remitente",
+    "description": "Dirección de correo del remitente del código de verificación"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "Nombre del remitente",
+    "description": "Nombre que se muestra del remitente del correo de verificación"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "Correo de respuesta",
+    "description": "Dirección de respuesta opcional"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Déjelo en blanco para mantener la contraseña guardada",
+    "description": "Texto de marcador de posición para la contraseña SMTP"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "La contraseña se ha guardado, déjela en blanco para mantenerla sin cambios.",
+    "description": "Aviso de contraseña SMTP guardada"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "La configuración del servidor de correo se ha guardado",
+    "description": "Éxito en la guardado de SMTP"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "Su servidor SMTP ha aceptado el correo de prueba",
+    "description": "Éxito en la prueba de SMTP"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (puerto 587)",
+    "description": "Opción de STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (puerto 465)",
+    "description": "Opción de TLS implícito"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Guardar configuración",
+    "description": "Guardar borrador de SMTP"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Enviar correo de prueba",
+    "description": "Probar la configuración de SMTP guardada"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Habilitar",
+    "description": "Habilitar SMTP verificado"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "¿Eliminar servidor de correo personalizado?",
+    "description": "Título del popup de eliminación del SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "Las credenciales SMTP guardadas se eliminarán permanentemente.",
+    "description": "Confirmación de eliminación de SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Error al guardar la configuración del servidor de correo",
+    "description": "Error al guardar el SMTP"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "No se puede resolver el nombre del host SMTP",
+    "description": "Error de DNS del SMTP"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "El servidor SMTP solo puede resolver a direcciones públicas",
+    "description": "Error en la política del objetivo del SMTP"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Tiempo de conexión al servidor SMTP agotado",
+    "description": "Tiempo de espera de conexión al SMTP"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "El servidor no soporta el modo TLS seleccionado",
+    "description": "Error de requisito de TLS del SMTP"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "Error de conexión TLS",
+    "description": "Error de TLS del SMTP"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "Certificado del servidor SMTP no válido",
+    "description": "Error en el certificado del SMTP"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "Error de autenticación SMTP",
+    "description": "Error en la autenticación del SMTP"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "El servidor SMTP rechazó la dirección del remitente",
+    "description": "Error en el remitente del SMTP"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "El servidor SMTP rechazó al destinatario de prueba",
+    "description": "Error en el destinatario del SMTP"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "Error en la prueba de SMTP",
+    "description": "Error general en la prueba del SMTP"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "No se pudo conectar al servidor SMTP",
+    "description": "Error de transporte SMTP"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "El servidor SMTP rechazó el correo de prueba",
+    "description": "Error de transporte SMTP"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "No se pudo leer la contraseña guardada, elimine la configuración y vuelva a ingresarla",
+    "description": "Error de transporte SMTP"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "La configuración SMTP guardada está incompleta o es inválida",
+    "description": "Error de transporte SMTP"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Por favor, configure primero un correo electrónico para la cuenta actual antes de enviar un correo de prueba",
+    "description": "Error de transporte SMTP"
   }
 }

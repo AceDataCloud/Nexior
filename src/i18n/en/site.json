@@ -1322,5 +1322,149 @@
   "message.featuresQwenimage": {
     "message": "Generate and edit images with Qwen Image 3 Standard and Pro.",
     "description": "Qwen Image service introduction"
+  },
+  "field.authEmailTransport": {
+    "message": "Custom email server",
+    "description": "SMTP transport setting title"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Send verification emails through your own SMTP server. Save and test the configuration before enabling it.",
+    "description": "SMTP transport help text"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Connection security",
+    "description": "SMTP TLS mode"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTP host",
+    "description": "SMTP server hostname"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Username",
+    "description": "SMTP login username"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Password",
+    "description": "SMTP login password"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "From email",
+    "description": "Verification email sender address"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "From name",
+    "description": "Verification email sender display name"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "Reply-to email",
+    "description": "Optional reply-to address"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Leave blank to keep the saved password",
+    "description": "Write-only SMTP password placeholder"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "A password is saved. Leave this field blank to keep it.",
+    "description": "Saved SMTP password hint"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "Email server configuration saved",
+    "description": "SMTP save success"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "The test email was accepted by your SMTP server",
+    "description": "SMTP test success"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (port 587)",
+    "description": "STARTTLS option"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (port 465)",
+    "description": "Implicit TLS option"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Save configuration",
+    "description": "Save SMTP draft"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Send test email",
+    "description": "Test saved SMTP configuration"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Enable",
+    "description": "Enable verified SMTP transport"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "Delete custom email server?",
+    "description": "SMTP delete dialog title"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "The saved SMTP credentials will be permanently deleted.",
+    "description": "SMTP delete confirmation"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Failed to save the email server configuration",
+    "description": "SMTP save error"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "The SMTP hostname could not be resolved",
+    "description": "SMTP DNS error"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "The SMTP server must resolve only to public addresses",
+    "description": "SMTP target policy error"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Connection to the SMTP server timed out",
+    "description": "SMTP timeout"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "The server does not support the required TLS mode",
+    "description": "SMTP TLS requirement error"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "The TLS connection failed",
+    "description": "SMTP TLS error"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "The SMTP server certificate is invalid",
+    "description": "SMTP certificate error"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "SMTP authentication failed",
+    "description": "SMTP authentication error"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "The SMTP server rejected the sender address",
+    "description": "SMTP sender error"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "The SMTP server rejected the test recipient",
+    "description": "SMTP recipient error"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "The SMTP test failed",
+    "description": "Generic SMTP test error"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "Could not connect to the SMTP server",
+    "description": "SMTP transport error"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "The SMTP server rejected the test message",
+    "description": "SMTP transport error"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "The saved password cannot be read; delete and re-enter the configuration",
+    "description": "SMTP transport error"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "The saved SMTP configuration is incomplete or invalid",
+    "description": "SMTP transport error"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Your account needs an email address before testing",
+    "description": "SMTP transport error"
   }
 }

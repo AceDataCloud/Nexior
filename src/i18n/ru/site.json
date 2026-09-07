@@ -1321,5 +1321,149 @@
   "message.featuresQwenimage": {
     "message": "Используйте стандартную и Pro версии Qwen Image 3 для создания и редактирования изображений.",
     "description": "Описание сервиса Qwen Image"
+  },
+  "field.authEmailTransport": {
+    "message": "Пользовательский почтовый сервер",
+    "description": "Заголовок настройки SMTP"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Используйте свой собственный SMTP сервер для отправки писем с кодом подтверждения. Сначала сохраните и протестируйте, после успешного теста включите.",
+    "description": "Описание настройки SMTP"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Безопасность соединения",
+    "description": "Режим TLS SMTP"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTP хост",
+    "description": "Доменное имя SMTP сервера"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Имя пользователя",
+    "description": "Имя пользователя для входа в SMTP"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Пароль",
+    "description": "Пароль для входа в SMTP"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "Email отправителя",
+    "description": "Адрес отправителя для писем с кодом подтверждения"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "Имя отправителя",
+    "description": "Отображаемое имя отправителя для писем с кодом подтверждения"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "Email для ответа",
+    "description": "Необязательный адрес для ответа"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Оставьте пустым, чтобы сохранить сохранённый пароль",
+    "description": "Текст заполнителя для SMTP пароля"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "Пароль сохранен, оставьте пустым, чтобы сохранить без изменений.",
+    "description": "Подсказка о сохраненном SMTP пароле"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "Настройки почтового сервера сохранены",
+    "description": "SMTP сохранен успешно"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "Ваш SMTP сервер принял тестовое письмо",
+    "description": "Тест SMTP прошел успешно"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (порт 587)",
+    "description": "Опция STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (порт 465)",
+    "description": "Опция неявного TLS"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Сохранить настройки",
+    "description": "Сохранить черновик SMTP"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Отправить тестовое письмо",
+    "description": "Проверить сохраненные настройки SMTP"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Включить",
+    "description": "Включить проверенный SMTP"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "Удалить пользовательский почтовый сервер?",
+    "description": "Заголовок всплывающего окна удаления SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "Сохраненные SMTP учетные данные будут удалены навсегда.",
+    "description": "Подтверждение удаления SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Не удалось сохранить настройки почтового сервера",
+    "description": "Ошибка сохранения SMTP"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "Не удалось разрешить имя хоста SMTP",
+    "description": "Ошибка DNS SMTP"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "SMTP сервер может разрешать только публичные адреса",
+    "description": "Ошибка политики целевого SMTP"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Таймаут подключения к SMTP серверу",
+    "description": "Таймаут подключения SMTP"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "Сервер не поддерживает выбранный режим TLS",
+    "description": "Ошибка требования TLS SMTP"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "Ошибка TLS подключения",
+    "description": "Ошибка TLS SMTP"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "Недействительный сертификат SMTP сервера",
+    "description": "Ошибка сертификата SMTP"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "Ошибка аутентификации SMTP",
+    "description": "Ошибка аутентификации SMTP"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "SMTP сервер отклонил адрес отправителя",
+    "description": "Ошибка отправителя SMTP"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "SMTP сервер отклонил тестового получателя",
+    "description": "Ошибка получателя SMTP"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "Тест SMTP не удался",
+    "description": "Общая ошибка тестирования SMTP"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "Не удалось подключиться к SMTP-серверу",
+    "description": "Ошибка транспортировки SMTP"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "SMTP сервер отклонил тестовое письмо",
+    "description": "Ошибка транспортировки SMTP"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "Не удалось прочитать сохраненный пароль, пожалуйста, удалите конфигурацию и заполните ее заново",
+    "description": "Ошибка транспортировки SMTP"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "Сохраненная конфигурация SMTP неполная или недействительна",
+    "description": "Ошибка транспортировки SMTP"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Сначала настройте электронную почту для текущей учетной записи, затем отправьте тестовое письмо",
+    "description": "Ошибка транспортировки SMTP"
   }
 }

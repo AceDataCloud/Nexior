@@ -139,6 +139,13 @@
       </div>
     </section>
 
+    <site-email-transport
+      v-if="isProviderEnabled('email') && site?.id"
+      :site-id="site.id"
+      :auth="auth"
+      :save-auth="persistAuth"
+    />
+
     <!-- Doc dialog: what the owner's webhook must accept / return. -->
     <el-dialog
       v-model="smsDocVisible"
@@ -220,6 +227,7 @@ import {
   ElTooltip
 } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
+import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
 import { siteOperator, smsWebhookOperator } from '@/operators';
 import type { ISiteAuth, ISiteAuthProvider } from '@/models';
 import { toWritableSitePayload } from '@/utils';
@@ -252,7 +260,8 @@ export default defineComponent({
     ElSelect,
     ElSwitch,
     ElTooltip,
-    SectionNotice
+    SectionNotice,
+    SiteEmailTransport
   },
   data() {
     return {
@@ -520,15 +529,14 @@ export default defineComponent({
         this.smsTesting = false;
       }
     },
-    persistAuth(nextAuth: ISiteAuth) {
+    async persistAuth(nextAuth: ISiteAuth): Promise<void> {
       const payload = {
         ...toWritableSitePayload(this.site),
         auth: nextAuth
       };
-      siteOperator.update(this.site?.id, payload).then(() => {
-        console.debug('getSite for id', this.site?.id);
-        this.$store.dispatch('getSite');
-      });
+      await siteOperator.update(this.site?.id, payload);
+      console.debug('getSite for id', this.site?.id);
+      await this.$store.dispatch('getSite');
     }
   }
 });
