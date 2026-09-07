@@ -50,6 +50,8 @@ export const SEEDREAM_MODEL_FULL_TO_SHORT: Record<string, string> = {
   [SEEDREAM_MODEL_4_0]: 'doubao-seedream-4.0'
 };
 
+export const SEEDREAM_PRICING_MODELS = Object.values(SEEDREAM_MODEL_FULL_TO_SHORT);
+
 export const getSeedreamShortModel = (model?: string): string | undefined => {
   if (!model) return undefined;
   return SEEDREAM_MODEL_FULL_TO_SHORT[model] || model;

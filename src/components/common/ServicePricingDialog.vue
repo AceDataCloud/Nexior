@@ -73,7 +73,8 @@ const TRANSLATED_CONDITION_FIELDS = new Set([
   'type',
   'size',
   'promptTokens',
-  'characterOrientation'
+  'characterOrientation',
+  'pricingScenario'
 ]);
 
 const CONDITION_FIELD_ALIASES: Record<string, string> = {
@@ -220,7 +221,7 @@ export default defineComponent({
       if (row.billingKind === 'calculated' || row.amount === undefined) {
         return this.$t('service.message.calculated');
       }
-      const amount = formatCredits(row.amount);
+      const amount = formatCredits(row.amount, row.precision);
       const unit = this.unitLabel(row);
       return row.billingKind === 'linear' || unit
         ? this.$t('service.message.creditsPerUnit', { amount, unit })

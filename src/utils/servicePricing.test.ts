@@ -132,18 +132,50 @@ describe('normalizeServicePricing', () => {
     expect(rows[1]).toMatchObject({ billingKind: 'linear', amount: 0.5, rateField: 'count' });
   });
 
-  it('uses safe fallbacks for unsupported conditions and formulas', () => {
-    const [row] = normalizeServicePricing([
+  it('expands declared breakdowns for complex formulas', () => {
+    const rows = normalizeServicePricing([
       {
-        conditions: { someOperator: [{ var: ['secret_internal_field', ''] }, 'value'] },
-        consumption: { if: [true, 1, 2] }
+        conditions: { in: ['image-pro', { var: ['model', ''] }] },
+        consumption: { '+': [{ '*': [0.51, { var: ['low_count', 0] }] }] },
+        pricing_breakdown: [
+          { label: 'Low resolution output', amount: 0.255, unit: 'image', precision: 3 },
+          { label: 'High resolution output', amount: 1.02, unit: 'image', remark: 'Settled per output' }
+        ]
       }
     ]);
 
-    expect(row.billingKind).toBe('calculated');
-    expect(row.conditions).toEqual([{ field: '', operator: 'other', value: '' }]);
-    expect(JSON.stringify(row)).not.toContain('someOperator');
-    expect(JSON.stringify(row)).not.toContain('secret_internal_field');
+    expect(rows).toHaveLength(2);
+    expect(rows[0]).toMatchObject({
+      id: 'pricing-rule-0-breakdown-0',
+      billingKind: 'linear',
+      amount: 0.255,
+      unit: 'image',
+      precision: 3,
+      conditions: [
+        { field: 'model', operator: 'oneOf', value: 'image-pro' },
+        { field: 'pricingScenario', operator: 'equals', value: 'Low resolution output' }
+      ]
+    });
+    expect(rows[1]).toMatchObject({ amount: 1.02, remark: 'Settled per output' });
+  });
+
+  it('uses safe fallbacks for unsupported formulas and invalid breakdowns', () => {
+    const rows = normalizeServicePricing([
+      {
+        conditions: { someOperator: [{ var: ['secret_internal_field', ''] }, 'value'] },
+        consumption: { if: [true, 1, 2] }
+      },
+      {
+        conditions: {},
+        consumption: { if: [true, 1, 2] },
+        pricing_breakdown: [{ label: 'Invalid', amount: -1 }]
+      }
+    ]);
+
+    expect(rows.map((row) => row.billingKind)).toEqual(['calculated', 'calculated']);
+    expect(rows[0].conditions).toEqual([{ field: '', operator: 'other', value: '' }]);
+    expect(JSON.stringify(rows)).not.toContain('someOperator');
+    expect(JSON.stringify(rows)).not.toContain('secret_internal_field');
   });
 
   it('does not mutate input rules', () => {
@@ -207,5 +239,9 @@ describe('formatCredits', () => {
     [2, '2.00']
   ])('formats %s as %s', (value, expected) => {
     expect(formatCredits(value)).toBe(expected);
+  });
+
+  it('honors an explicit precision for exact catalog rates', () => {
+    expect(formatCredits(0.255, 3)).toBe('0.255');
   });
 });

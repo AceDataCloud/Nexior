@@ -12,7 +12,12 @@
       <image-input v-if="capabilities.image" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <service-pricing-summary :value="consumption" :service="service" />
+      <service-pricing-summary
+        :value="consumption"
+        :service="service"
+        :pricing-models="pricingModels"
+        :pricing-unit-aliases="{ count: 'image' }"
+      />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('seedream.button.generate') }}
@@ -36,7 +41,7 @@ import OutputFormatSelector from './config/OutputFormatSelector.vue';
 import AdvancedOptions from './config/AdvancedOptions.vue';
 import SeedInput from './config/SeedInput.vue';
 import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
-import { getSeedreamShortModel } from '@/constants';
+import { getSeedreamShortModel, SEEDREAM_PRICING_MODELS } from '@/constants';
 import { getSeedreamAction, getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 import { buildSeedreamRequest } from '@/utils/seedream/request';
 import { canSubmitGeneration } from '@/utils/generationInput';
@@ -73,6 +78,9 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.seedream?.config;
+    },
+    pricingModels() {
+      return SEEDREAM_PRICING_MODELS;
     },
     consumption() {
       const request = buildSeedreamRequest(this.config);

@@ -32,7 +32,8 @@ const translations: Record<string, string> = {
   'service.condition.referenceVideo': 'Reference Video',
   'service.condition.action': 'Action',
   'service.condition.anyOf': 'Any of',
-  'service.condition.generateAudio': 'Generate Audio'
+  'service.condition.generateAudio': 'Generate Audio',
+  'service.condition.pricingScenario': 'Pricing Scenario'
 };
 
 function mountDialog(service: any) {
@@ -70,6 +71,33 @@ describe('ServicePricingDialog', () => {
     expect(vm.priceLabel(vm.rows[0])).toBe('0.14 Credits');
     expect(JSON.stringify(vm.rows)).not.toContain('99');
     expect(JSON.stringify(vm.rows)).not.toContain('\"var\"');
+  });
+
+  it('renders complex pricing breakdowns as explicit rows', () => {
+    const wrapper = mountDialog({
+      id: 'seedream',
+      title: 'Seedream',
+      cost: [
+        {
+          conditions: { in: ['doubao-seedream-5.0-pro', { var: ['model', ''] }] },
+          consumption: { '+': [{ '*': [0.51, { var: ['regular_low_count', 0] }] }] },
+          pricing_breakdown: [
+            { label: 'Regular output ≤ 2.61 MP', amount: 0.255, unit: 'image', precision: 3 },
+            { label: 'Regular output > 2.61 MP', amount: 1.02, unit: 'image' }
+          ]
+        }
+      ]
+    });
+    const vm = wrapper.vm as any;
+
+    expect(vm.rows).toHaveLength(2);
+    expect(vm.conditionColumns).toEqual([
+      { key: 'model', label: 'Model' },
+      { key: 'pricingScenario', label: 'Pricing Scenario' }
+    ]);
+    expect(vm.conditionValue(vm.rows[0], 'pricingScenario')).toBe('Regular output ≤ 2.61 MP');
+    expect(vm.rows.map((row: any) => vm.priceLabel(row))).toEqual(['0.255 Credits / image', '1.02 Credits / image']);
+    expect(vm.rows.map((row: any) => vm.billingLabel(row))).toEqual(['Usage based', 'Usage based']);
   });
 
   it('marks only usage-metered estimates and explains final settlement', () => {

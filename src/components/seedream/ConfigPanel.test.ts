@@ -6,6 +6,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ConfigPanel from './ConfigPanel.vue';
 import ImageInput from './config/ImageInput.vue';
 import ModelSelector from './config/ModelSelector.vue';
+import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 
 const getConsumptionMock = vi.hoisted(() => vi.fn((_request: Record<string, unknown>) => 1));
 
@@ -49,6 +50,19 @@ describe('seedream/ConfigPanel', () => {
     expect(wrapper.html()).not.toContain('watermark');
     expect(wrapper.findComponent(ImageInput).exists()).toBe(true);
     expect(wrapper.findComponent(ModelSelector).exists()).toBe(true);
+  });
+
+  it('filters pricing to the Studio model aliases', () => {
+    const { wrapper } = mountPanel();
+    const summary = wrapper.findComponent(ServicePricingSummary);
+
+    expect(summary.props('pricingModels')).toEqual([
+      'doubao-seedream-5.0-pro',
+      'doubao-seedream-5.0',
+      'doubao-seedream-4.5',
+      'doubao-seedream-4.0'
+    ]);
+    expect(summary.props('pricingUnitAliases')).toEqual({ count: 'image' });
   });
 
   it('automatically switches billing mode when references change', async () => {

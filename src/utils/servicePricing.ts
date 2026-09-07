@@ -17,6 +17,7 @@ export interface ServicePricingRow {
   rateField?: string;
   unit?: string;
   remark?: string;
+  precision?: number;
   estimated: boolean;
   usageMetered: boolean;
 }
@@ -127,7 +128,39 @@ function applyRemarkOverrides(conditions: PricingCondition[], remark: IServiceCo
   });
 }
 
-export function formatCredits(value: number): string {
+function normalizePricingBreakdown(
+  value: IServiceCostRule['pricing_breakdown'],
+  common: Omit<ServicePricingRow, 'billingKind' | 'amount'>
+): ServicePricingRow[] | undefined {
+  if (!Array.isArray(value) || !value.length) return undefined;
+
+  const rows: ServicePricingRow[] = [];
+  for (const [index, candidate] of value.entries()) {
+    if (!isRecord(candidate)) return undefined;
+    const { label, amount, unit, remark, precision } = candidate;
+    if (typeof label !== 'string' || !label || typeof amount !== 'number' || !Number.isFinite(amount) || amount < 0) {
+      return undefined;
+    }
+    if (unit !== undefined && typeof unit !== 'string') return undefined;
+    if (remark !== undefined && typeof remark !== 'string') return undefined;
+    if (precision !== undefined && (!Number.isInteger(precision) || precision < 0 || precision > 4)) return undefined;
+    const resolvedUnit = unit || common.unit;
+    rows.push({
+      ...common,
+      id: `${common.id}-breakdown-${index}`,
+      conditions: [...common.conditions, { field: 'pricingScenario', operator: 'equals', value: label }],
+      billingKind: amount === 0 ? 'free' : resolvedUnit ? 'linear' : 'fixed',
+      amount,
+      unit: resolvedUnit,
+      remark: remark || common.remark,
+      precision
+    });
+  }
+  return rows;
+}
+
+export function formatCredits(value: number, precision?: number): string {
+  if (precision !== undefined) return value.toFixed(precision);
   if (value > 0 && value < 0.0001) return '<0.0001';
   if (value < 0.01) return value.toFixed(4);
   return value.toFixed(2);
@@ -159,7 +192,7 @@ export function normalizeServicePricing(rules: unknown): ServicePricingRow[] {
 
     const linear = parseLinearConsumption(rule.consumption);
     if (linear) return [{ ...common, billingKind: 'linear', ...linear }];
-    return [{ ...common, billingKind: 'calculated' }];
+    return normalizePricingBreakdown(rule.pricing_breakdown, common) || [{ ...common, billingKind: 'calculated' }];
   });
 }
 

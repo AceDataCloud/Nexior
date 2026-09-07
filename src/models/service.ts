@@ -26,10 +26,19 @@ export interface IDataset {
   updated_at?: string;
 }
 
+export interface IServicePricingBreakdown {
+  label: string;
+  amount: number;
+  unit?: string;
+  remark?: string;
+  precision?: number;
+}
+
 export interface IServiceCostRule extends ICostRule {
   unit?: string;
   remark?: string | Record<string, string>;
   official_price?: number | Record<string, unknown>;
+  pricing_breakdown?: IServicePricingBreakdown[];
   [key: string]: unknown;
 }
 
