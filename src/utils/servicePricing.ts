@@ -130,7 +130,7 @@ function applyRemarkOverrides(conditions: PricingCondition[], remark: IServiceCo
 export function formatCredits(value: number): string {
   if (value > 0 && value < 0.0001) return '<0.0001';
   if (value < 0.01) return value.toFixed(4);
-  return value.toFixed(2);
+  return value.toFixed(4).replace(/0{1,2}$/, '');
 }
 
 export function normalizeServicePricing(rules: unknown): ServicePricingRow[] {

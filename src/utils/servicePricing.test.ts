@@ -204,6 +204,7 @@ describe('formatCredits', () => {
     [0.00001, '<0.0001'],
     [0.005, '0.0050'],
     [0.14, '0.14'],
+    [0.255, '0.255'],
     [2, '2.00']
   ])('formats %s as %s', (value, expected) => {
     expect(formatCredits(value)).toBe(expected);
