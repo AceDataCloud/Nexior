@@ -1466,5 +1466,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "Por favor, configure primero un correo electrónico para la cuenta actual antes de enviar un correo de prueba",
     "description": "Error de transporte SMTP"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "Entrega de plataforma",
+    "description": "Utilizar el servicio de entrega de códigos de verificación gestionado por la plataforma."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "SMTP personalizado",
+    "description": "Enviar correos electrónicos de códigos de verificación a través del servidor SMTP configurado en este sitio."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Webhook personalizado",
+    "description": "Enviar solicitudes de códigos de verificación de teléfono a un Webhook configurado y firmado en este sitio."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "Este método de inicio de sesión ha sido desactivado, pero aún se puede gestionar su configuración de entrega.",
+    "description": "Se permite gestionar la configuración de entrega incluso cuando el método de autenticación está desactivado."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "Esta configuración ha sido migrada desde un formato antiguo, actualmente sigue activa pero aún no ha sido reprobada; se recomienda completar las pruebas antes de modificarla.",
+    "description": "Mensaje de estado de migración de la configuración de entrega antigua."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "Se ha configurado la clave de firma de Webhook; dejar en blanco conservará la clave original.",
+    "description": "Estado de la clave de Webhook escrita."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "Volver a la entrega de la plataforma",
+    "description": "Conservar la configuración personalizada y volver a la entrega de la plataforma."
   }
 }

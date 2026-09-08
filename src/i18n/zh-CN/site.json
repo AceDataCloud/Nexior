@@ -1466,5 +1466,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "请先为当前账户设置邮箱，再发送测试邮件",
     "description": "SMTP transport error"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "平台投递",
+    "description": "使用平台托管的验证码投递服务。"
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "自定义 SMTP",
+    "description": "通过本站配置的 SMTP 服务器发送验证码邮件。"
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "自定义 Webhook",
+    "description": "将手机验证码请求发送到本站配置并签名的 Webhook。"
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "此登录方式已关闭，但仍可管理其投递配置。",
+    "description": "认证方式关闭时仍允许管理投递设置。"
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "此配置由旧格式迁移而来，目前仍生效但尚未重新测试；修改前建议先完成测试。",
+    "description": "旧投递配置迁移状态提示。"
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "已配置 Webhook 签名密钥；留空可保留原密钥。",
+    "description": "只写 Webhook 密钥状态。"
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "切回平台投递",
+    "description": "保留自定义配置并切回平台投递。"
   }
 }

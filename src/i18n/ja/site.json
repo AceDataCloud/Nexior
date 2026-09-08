@@ -1465,5 +1465,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "現在のアカウントにメールアドレスを設定してから、テストメールを送信してください",
     "description": "SMTPトランスポートエラー"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "プラットフォーム配信",
+    "description": "プラットフォームがホストする確認コード配信サービスを使用します。"
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "カスタムSMTP",
+    "description": "当サイトで設定されたSMTPサーバーを通じて確認コードメールを送信します。"
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "カスタムWebhook",
+    "description": "携帯電話の確認コードリクエストを当サイトで設定された署名付きWebhookに送信します。"
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "このログイン方法は無効になっていますが、配信設定を管理することはできます。",
+    "description": "認証方法が無効な場合でも、配信設定の管理が許可されていることを示します。"
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "この設定は旧形式から移行されました。現在も有効ですが、再テストは行われていません；変更前にテストを完了することをお勧めします。",
+    "description": "旧配信設定の移行状態を示すメッセージです。"
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "Webhook署名キーが設定されました；空白にすると元のキーが保持されます。",
+    "description": "Webhookキーの状態を示すメッセージです。"
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "プラットフォーム配信に切り替え",
+    "description": "カスタム設定を保持し、プラットフォーム配信に切り替えます。"
   }
 }

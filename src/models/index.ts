@@ -38,7 +38,6 @@ export * from './wan';
 export * from './webextrator';
 export * from './fish';
 export * from './site';
-export * from './siteEmailTransportTest';
 export * from './siteBanner';
 export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';

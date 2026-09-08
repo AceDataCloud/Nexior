@@ -1465,5 +1465,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "يرجى إعداد بريد إلكتروني للحساب الحالي قبل إرسال بريد اختبار",
     "description": "خطأ في نقل SMTP"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "تسليم المنصة",
+    "description": "استخدام خدمة تسليم رموز التحقق المستضافة على المنصة."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "SMTP مخصص",
+    "description": "إرسال رسائل البريد الإلكتروني لرموز التحقق عبر خادم SMTP المكون في الموقع."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Webhook مخصص",
+    "description": "إرسال طلبات رموز التحقق عبر الهاتف إلى Webhook المكون والموقع."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "تم إغلاق طريقة تسجيل الدخول هذه، ولكن لا يزال بإمكانك إدارة تكوين التسليم الخاص بها.",
+    "description": "يسمح بإدارة إعدادات التسليم حتى عند إغلاق طريقة المصادقة."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "تمت ترحيل هذا التكوين من التنسيق القديم، ولا يزال ساريًا ولكن لم يتم اختباره مرة أخرى؛ يُنصح بإجراء الاختبار قبل التعديل.",
+    "description": "إشعار حالة ترحيل تكوين التسليم القديم."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "تم تكوين مفتاح توقيع Webhook؛ يمكن تركه فارغًا للاحتفاظ بالمفتاح الأصلي.",
+    "description": "حالة مفتاح Webhook فقط."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "العودة إلى تسليم المنصة",
+    "description": "احتفظ بالتكوين المخصص وارجع إلى تسليم المنصة."
   }
 }

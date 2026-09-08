@@ -1,71 +1,81 @@
 <template>
-  <section class="settings-item email-transport">
+  <section class="settings-item email-delivery">
     <div class="settings-label">
       <p class="settings-title">{{ $t('site.field.authEmailTransport') }}</p>
       <p class="settings-tip">{{ $t('site.message.authEmailTransportTip') }}</p>
     </div>
-    <div class="settings-content email-transport__content">
-      <el-form label-position="top" class="email-transport__form">
+    <div class="settings-content email-delivery__content">
+      <el-alert
+        v-if="!providerEnabled"
+        :title="$t('site.message.authDeliveryProviderDisabled')"
+        type="info"
+        :closable="false"
+      />
+      <el-radio-group :model-value="delivery.type" :disabled="loading || changing" @change="changeType">
+        <el-radio-button value="platform">{{ $t('site.option.authDeliveryPlatform') }}</el-radio-button>
+        <el-radio-button value="smtp">{{ $t('site.option.authEmailDeliverySmtp') }}</el-radio-button>
+      </el-radio-group>
+      <el-alert
+        v-if="smtp?.verification_source === 'legacy_migration'"
+        :title="$t('site.message.authDeliveryMigrated')"
+        type="warning"
+        :closable="false"
+      />
+      <el-form label-position="top" class="email-delivery__form">
         <el-form-item :label="$t('site.field.authEmailTransportSecurity')">
-          <el-select v-model="draft.security" @change="onSecurityChange">
+          <el-select v-model="draft.security" :disabled="active" @change="onSecurityChange">
             <el-option value="starttls" :label="$t('site.option.authEmailTransportStarttls')" />
             <el-option value="implicit_tls" :label="$t('site.option.authEmailTransportImplicitTls')" />
           </el-select>
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportHost')">
-          <el-input v-model="draft.host" placeholder="smtp.example.com" />
+          <el-input v-model="draft.host" :disabled="active" placeholder="smtp.example.com" />
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportUsername')">
-          <el-input v-model="draft.username" />
+          <el-input v-model="draft.username" :disabled="active" />
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportPassword')">
-          <el-input
-            v-model="draft.password"
-            type="password"
-            show-password
-            :placeholder="$t('site.placeholder.authEmailTransportPassword')"
-          />
-          <span v-if="smtp?.password_configured" class="email-transport__hint">
+          <el-input v-model="draft.password" :disabled="active" type="password" show-password />
+          <span v-if="smtp?.password_configured" class="email-delivery__hint">
             {{ $t('site.message.authEmailTransportPasswordConfigured') }}
           </span>
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportFromEmail')">
-          <el-input v-model="draft.from_email" />
+          <el-input v-model="draft.from_email" :disabled="active" />
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportFromName')">
-          <el-input v-model="draft.from_name" />
+          <el-input v-model="draft.from_name" :disabled="active" />
         </el-form-item>
         <el-form-item :label="$t('site.field.authEmailTransportReplyTo')">
-          <el-input v-model="draft.reply_to" />
+          <el-input v-model="draft.reply_to" :disabled="active" />
         </el-form-item>
       </el-form>
-      <el-alert
-        v-if="resultMessage"
-        :title="resultMessage"
-        :type="resultOk ? 'success' : 'error'"
-        :closable="false"
-        show-icon
-      />
-      <div class="email-transport__actions">
-        <el-button type="primary" :loading="saving" :disabled="!canSave" @click="save">
+      <el-alert v-if="resultMessage" :title="resultMessage" :type="resultOk ? 'success' : 'error'" :closable="false" />
+      <div class="email-delivery__actions">
+        <el-button v-if="!active" type="primary" :loading="saving" :disabled="!canSave" @click="saveDraft">
           {{ $t('site.button.authEmailTransportSave') }}
         </el-button>
-        <el-button :loading="testing" :disabled="!smtp?.password_configured || dirty" @click="testTransport">
+        <el-button
+          v-if="!active"
+          :loading="testing"
+          :disabled="!smtp?.password_configured || dirty"
+          @click="testDelivery"
+        >
           {{ $t('site.button.authEmailTransportTest') }}
         </el-button>
         <el-button
-          v-if="smtp && !smtp.enabled"
+          v-if="!active"
           type="success"
           :loading="changing"
-          :disabled="dirty || (!testProof && !smtp.verified)"
-          @click="enable"
+          :disabled="dirty || (!testProof && !smtp?.verified)"
+          @click="activate"
         >
           {{ $t('site.button.authEmailTransportEnable') }}
         </el-button>
-        <el-button v-if="smtp?.enabled" :loading="changing" @click="disable">
+        <el-button v-if="active" :loading="changing" @click="switchToPlatform">
           {{ $t('site.button.authEmailTransportDisable') }}
         </el-button>
-        <el-button v-if="smtp" type="danger" plain :loading="deleting" @click="remove">
+        <el-button v-if="!active && smtp" type="danger" plain :loading="deleting" @click="remove">
           {{ $t('common.button.delete') }}
         </el-button>
       </div>
@@ -74,7 +84,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import { defineComponent } from 'vue';
 import {
   ElAlert,
   ElButton,
@@ -84,13 +94,14 @@ import {
   ElMessage,
   ElMessageBox,
   ElOption,
+  ElRadioButton,
+  ElRadioGroup,
   ElSelect
 } from 'element-plus';
-import type { ISiteAuth, ISiteAuthEmailSmtp, SiteEmailTransportSecurity } from '@/models/site';
-import { siteEmailTransportOperator } from '@/operators/siteEmailTransport';
+import type { ISiteAuthDelivery, ISiteAuthEmailSmtp, SiteEmailTransportSecurity } from '@/models/site';
+import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
 
-const emptyDraft = (): ISiteAuthEmailSmtp => ({
-  enabled: false,
+const emptySmtp = (): ISiteAuthEmailSmtp => ({
   host: '',
   port: 587,
   security: 'starttls',
@@ -103,28 +114,45 @@ const emptyDraft = (): ISiteAuthEmailSmtp => ({
 
 export default defineComponent({
   name: 'SiteEmailTransport',
-  components: { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElOption, ElSelect },
+  components: {
+    ElAlert,
+    ElButton,
+    ElForm,
+    ElFormItem,
+    ElInput,
+    ElOption,
+    ElRadioButton,
+    ElRadioGroup,
+    ElSelect
+  },
   props: {
-    siteId: { type: String as PropType<string>, required: true },
-    auth: { type: Object as PropType<ISiteAuth>, required: true },
-    saveAuth: { type: Function as PropType<(auth: ISiteAuth) => Promise<void>>, required: true }
+    siteId: { type: String, required: true },
+    providerEnabled: { type: Boolean, required: true }
   },
   data() {
     return {
-      draft: emptyDraft(),
+      delivery: { type: 'platform' } as ISiteAuthDelivery,
+      draft: emptySmtp(),
       savedSnapshot: '',
+      testProof: '',
+      resultMessage: '',
+      resultOk: false,
+      loading: false,
       saving: false,
       testing: false,
       changing: false,
-      deleting: false,
-      testProof: '',
-      resultMessage: '',
-      resultOk: false
+      deleting: false
     };
   },
   computed: {
     smtp(): ISiteAuthEmailSmtp | null {
-      return this.auth.providers?.email?.smtp || null;
+      return this.delivery.smtp || null;
+    },
+    active(): boolean {
+      return this.delivery.type === 'smtp';
+    },
+    dirty(): boolean {
+      return JSON.stringify(this.safeDraft()) !== this.savedSnapshot;
     },
     canSave(): boolean {
       return Boolean(
@@ -134,50 +162,45 @@ export default defineComponent({
         this.draft.from_email &&
         (this.draft.password || this.smtp?.password_configured)
       );
-    },
-    dirty(): boolean {
-      return JSON.stringify(this.safeDraft()) !== this.savedSnapshot;
     }
   },
-  watch: {
-    smtp: {
-      immediate: true,
-      deep: true,
-      handler(value: ISiteAuthEmailSmtp | null) {
-        this.applySmtp(value);
-      }
-    }
+  async mounted() {
+    await this.load();
   },
   methods: {
     safeDraft(): ISiteAuthEmailSmtp {
       const value = { ...this.draft };
       if (!value.password) delete value.password;
+      delete value.test_proof;
       return value;
     },
-    applySmtp(smtp: ISiteAuthEmailSmtp | null) {
-      this.draft = smtp ? { ...smtp, password: '' } : emptyDraft();
+    apply(delivery: ISiteAuthDelivery) {
+      this.delivery = delivery || { type: 'platform' };
+      this.draft = this.delivery.smtp ? { ...this.delivery.smtp, password: '' } : emptySmtp();
       this.savedSnapshot = JSON.stringify(this.safeDraft());
       this.testProof = '';
+    },
+    async load() {
+      this.loading = true;
+      try {
+        const { data } = await siteAuthDeliveryOperator.get(this.siteId);
+        this.apply(data.providers.email?.delivery || { type: 'platform' });
+      } finally {
+        this.loading = false;
+      }
     },
     onSecurityChange(value: SiteEmailTransportSecurity) {
       this.draft.port = value === 'implicit_tls' ? 465 : 587;
     },
-    async saveEmailSmtp(smtp: ISiteAuthEmailSmtp | null) {
-      const providers = { ...(this.auth.providers || {}) };
-      providers.email = { ...(providers.email || {}), smtp };
-      await this.saveAuth({ ...this.auth, providers });
+    async update(delivery: ISiteAuthDelivery) {
+      const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'email', delivery);
+      this.apply(data);
     },
-    async save() {
+    async saveDraft() {
       if (!this.canSave) return;
       this.saving = true;
-      this.resultMessage = '';
       try {
-        const saved = { ...this.safeDraft(), enabled: false, test_proof: undefined };
-        await this.saveEmailSmtp(saved);
-        this.draft.enabled = false;
-        this.draft.password = '';
-        this.testProof = '';
-        this.savedSnapshot = JSON.stringify({ ...saved, password: undefined });
+        await this.update({ type: 'platform', smtp: this.safeDraft() });
         ElMessage.success(this.$t('site.message.authEmailTransportSaved'));
       } catch {
         ElMessage.error(this.$t('site.error.authEmailTransportSave'));
@@ -185,47 +208,42 @@ export default defineComponent({
         this.saving = false;
       }
     },
-    async testTransport() {
+    async testDelivery() {
       this.testing = true;
-      this.resultMessage = '';
       try {
-        const { data } = await siteEmailTransportOperator.test(this.siteId);
+        const { data } = await siteAuthDeliveryOperator.testEmail(this.siteId);
         this.resultOk = data.success;
         this.testProof = data.success ? data.test_proof || '' : '';
         this.resultMessage = data.success
           ? this.$t('site.message.authEmailTransportTestOk')
           : this.$t(`site.error.authEmailTransport_${data.code || 'unknown'}`);
-      } catch (error: any) {
-        const code = error?.response?.data?.code || 'unknown';
-        this.resultOk = false;
-        this.testProof = '';
-        this.resultMessage = this.$t(`site.error.authEmailTransport_${code}`);
       } finally {
         this.testing = false;
       }
     },
-    async enable() {
-      if ((!this.testProof && !this.smtp?.verified) || this.dirty || !this.smtp) return;
+    async activate() {
+      if (this.dirty || (!this.testProof && !this.smtp?.verified) || !this.smtp) return;
       this.changing = true;
       try {
-        await this.saveEmailSmtp({
-          ...this.smtp,
-          enabled: true,
-          test_proof: this.testProof || undefined
+        await this.update({
+          type: 'smtp',
+          smtp: { ...this.smtp, test_proof: this.testProof || undefined }
         });
-        this.testProof = '';
       } finally {
         this.changing = false;
       }
     },
-    async disable() {
-      if (!this.smtp) return;
+    async switchToPlatform() {
       this.changing = true;
       try {
-        await this.saveEmailSmtp({ ...this.smtp, enabled: false });
+        await this.update({ type: 'platform', smtp: this.smtp });
       } finally {
         this.changing = false;
       }
+    },
+    async changeType(value: string | number | boolean | undefined) {
+      if (value === 'platform' && this.active) await this.switchToPlatform();
+      if (value === 'smtp' && !this.active) await this.activate();
     },
     async remove() {
       try {
@@ -239,8 +257,8 @@ export default defineComponent({
       }
       this.deleting = true;
       try {
-        await this.saveEmailSmtp(null);
-        this.applySmtp(null);
+        await siteAuthDeliveryOperator.remove(this.siteId, 'email');
+        this.apply({ type: 'platform', smtp: null });
       } finally {
         this.deleting = false;
       }
@@ -250,21 +268,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.email-transport__content {
+.email-delivery__content,
+.email-delivery__form {
   width: min(100%, 520px);
   align-items: stretch;
 }
-.email-transport__form {
-  width: 100%;
-}
-.email-transport__actions {
+.email-delivery__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.email-transport__hint {
+.email-delivery__hint {
   color: var(--el-text-color-secondary);
   font-size: 12px;
-  margin-top: 4px;
 }
 </style>

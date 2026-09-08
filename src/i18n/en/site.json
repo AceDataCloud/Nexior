@@ -1466,5 +1466,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "Your account needs an email address before testing",
     "description": "SMTP transport error"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "Platform delivery",
+    "description": "Use the platform-managed verification delivery service."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "Custom SMTP",
+    "description": "Send verification emails through this site’s SMTP server."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Custom webhook",
+    "description": "Send phone verification requests to this site’s signed webhook."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "This login method is disabled. You can still manage its delivery configuration.",
+    "description": "Delivery settings remain editable while the authentication provider is disabled."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "This active configuration was migrated from the previous format and has not been retested. Retest it before making changes.",
+    "description": "Legacy delivery migration status."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "A webhook signing secret is configured. Leave the field blank to keep it.",
+    "description": "Write-only webhook secret marker."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "Use platform delivery",
+    "description": "Switch back to platform delivery while retaining the custom configuration."
   }
 }

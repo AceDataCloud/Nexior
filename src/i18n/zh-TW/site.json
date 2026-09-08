@@ -1465,5 +1465,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "請先為當前帳戶設定郵箱，再發送測試郵件",
     "description": "SMTP 傳輸錯誤"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "平台投遞",
+    "description": "使用平台托管的驗證碼投遞服務。"
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "自定義 SMTP",
+    "description": "通過本站配置的 SMTP 伺服器發送驗證碼郵件。"
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "自定義 Webhook",
+    "description": "將手機驗證碼請求發送到本站配置並簽名的 Webhook。"
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "此登入方式已關閉，但仍可管理其投遞配置。",
+    "description": "認證方式關閉時仍允許管理投遞設置。"
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "此配置由舊格式遷移而來，目前仍生效但尚未重新測試；修改前建議先完成測試。",
+    "description": "舊投遞配置遷移狀態提示。"
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "已配置 Webhook 簽名密鑰；留空可保留原密鑰。",
+    "description": "只寫 Webhook 密鑰狀態。"
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "切回平台投遞",
+    "description": "保留自定義配置並切回平台投遞。"
   }
 }

@@ -1465,5 +1465,33 @@
   "error.authEmailTransport_account_email_required": {
     "message": "Сначала настройте электронную почту для текущей учетной записи, затем отправьте тестовое письмо",
     "description": "Ошибка транспортировки SMTP"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "Доставка через платформу",
+    "description": "Используйте сервис доставки кодов подтверждения, управляемый платформой."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "Пользовательский SMTP",
+    "description": "Отправка писем с кодами подтверждения через настроенный на сайте SMTP сервер."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Пользовательский Webhook",
+    "description": "Отправка запроса на код подтверждения на настроенный и подписанный Webhook."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "Этот способ входа отключен, но его настройки доставки все еще можно управлять.",
+    "description": "Позволяет управлять настройками доставки, даже когда метод аутентификации отключен."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "Эта конфигурация была перенесена из старого формата, она все еще активна, но не была протестирована заново; рекомендуется завершить тестирование перед внесением изменений.",
+    "description": "Уведомление о состоянии миграции старой конфигурации доставки."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "Секретный ключ Webhook настроен; оставьте пустым, чтобы сохранить оригинальный ключ.",
+    "description": "Только состояние ключа Webhook."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "Вернуться к доставке через платформу",
+    "description": "Сохраните пользовательские настройки и вернитесь к доставке через платформу."
   }
 }
