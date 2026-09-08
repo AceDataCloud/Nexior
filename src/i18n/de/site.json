@@ -176,8 +176,8 @@
     "description": "Überschrift: Antwortabschnitt der SMS-Webhook-Spezifikation"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Beliebige 2xx-Antworten bedeuten, dass der Empfang erfolgreich war; um eine klare Ablehnung zu signalisieren, geben Sie JSON {\"success\": false} zurück. Bitte antworten Sie schnell, warten Sie nicht auf asynchrone SMS-Statusbestätigungen.",
-    "description": "Beschreibt die erwartete Antwort des SMS-Webhooks"
+    "message": "Jede 2xx-Antwort bedeutet, dass der Empfang erfolgreich war; um eine klare Ablehnung zu signalisieren, geben Sie JSON zurück und setzen Sie das Feld success auf false. Bitte antworten Sie schnell, warten Sie nicht auf den asynchronen SMS-Statusbericht.",
+    "description": "Beschreibt die erwartete Antwort des SMS-Webhooks."
   },
   "field.authSmsWebhookTestTitle": {
     "message": "Benutzerdefinierte SMS-Absenderadresse testen",

@@ -176,8 +176,8 @@
     "description": "Cabeçalho: seção de resposta da especificação do webhook SMS"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Qualquer resposta 2xx indica sucesso no recebimento; para uma rejeição clara, retorne JSON {\"success\": false}. Responda rapidamente, não espere pela confirmação de status de SMS assíncrona.",
-    "description": "Descreve a resposta esperada do webhook de SMS"
+    "message": "Qualquer resposta 2xx indica sucesso no recebimento; para rejeitar explicitamente, retorne um JSON e defina o campo success como false. Responda rapidamente, não aguarde o recibo de status de SMS assíncrono.",
+    "description": "Descreve a resposta esperada do webhook de SMS."
   },
   "field.authSmsWebhookTestTitle": {
     "message": "Testar Endereço de Remetente SMS Personalizado",

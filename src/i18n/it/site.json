@@ -176,7 +176,7 @@
     "description": "Intestazione: sezione della risposta della specifica del webhook SMS"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Qualsiasi risposta 2xx indica ricezione riuscita; per un rifiuto esplicito, restituire JSON {\"success\": false}. Si prega di rispondere rapidamente, non attendere la ricevuta dello stato SMS asincrono.",
+    "message": "Qualsiasi risposta 2xx indica ricezione avvenuta con successo; per rifiutare esplicitamente, restituire JSON e impostare il campo success su false. Rispondere rapidamente, non attendere la ricevuta di stato SMS asincrona.",
     "description": "Descrive la risposta attesa del webhook SMS"
   },
   "field.authSmsWebhookTestTitle": {

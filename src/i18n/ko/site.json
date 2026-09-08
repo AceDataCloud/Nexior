@@ -176,8 +176,8 @@
     "description": "SMS 웹훅 사양의 응답 섹션 제목"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "임의의 2xx 응답은 수신 성공을 나타냅니다; 명확히 거부하려면 JSON {\"success\": false}를 반환하십시오. 빠르게 응답하고 비동기 문자 상태 영수증을 기다리지 마십시오.",
-    "description": "SMS 웹훅의 예상 응답을 설명합니다."
+    "message": "임의의 2xx 응답은 수신 성공을 나타냅니다; 명확히 거부하려면 JSON을 반환하고 success 필드를 false로 설정하십시오. 신속하게 응답하고 비동기 SMS 상태 영수증을 기다리지 마십시오.",
+    "description": "SMS 웹후크의 예상 응답을 설명합니다."
   },
   "field.authSmsWebhookTestTitle": {
     "message": "맞춤 SMS 발신자 테스트",

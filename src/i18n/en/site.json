@@ -176,7 +176,7 @@
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Any 2xx response accepts the delivery. To explicitly reject it, return JSON {\"success\": false}. Respond promptly instead of waiting for an asynchronous SMS status receipt.",
+    "message": "Any 2xx response accepts the delivery. To explicitly reject it, return JSON with the success field set to false. Respond promptly instead of waiting for an asynchronous SMS status receipt.",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {

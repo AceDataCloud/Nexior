@@ -176,8 +176,8 @@
     "description": "見出し：SMS webhook仕様のレスポンスセクション"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "任意の 2xx レスポンスは受信成功を示します。明示的に拒否する必要がある場合は、JSON {\"success\": false} を返してください。迅速に応答し、非同期の SMS ステータス受信を待たないでください。",
-    "description": "SMS webhook の期待されるレスポンスについて説明します"
+    "message": "任意の2xxレスポンスは受信成功を示します。明示的に拒否する場合は、JSONを返し、successフィールドをfalseに設定してください。迅速に応答し、非同期SMSステータスの受信を待たないでください。",
+    "description": "SMSウェブフックの期待される応答を説明します。"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "カスタムSMS送信者のテスト",

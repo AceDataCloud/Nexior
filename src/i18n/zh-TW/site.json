@@ -176,7 +176,7 @@
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "任意 2xx 響應表示接收成功；如需明確拒絕，請返回 JSON {\"success\": false}。請快速響應，不要等待異步短信狀態回執。",
+    "message": "任意 2xx 響應表示接收成功；如需明確拒絕，請返回 JSON，並將 success 欄位設為 false。請快速響應，不要等待異步短信狀態回執。",
     "description": "描述 SMS webhook 的預期響應"
   },
   "field.authSmsWebhookTestTitle": {
