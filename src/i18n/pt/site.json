@@ -1321,5 +1321,177 @@
   "message.featuresQwenimage": {
     "message": "Use o Qwen Image 3 versão padrão e Pro para gerar e editar imagens.",
     "description": "Introdução ao serviço Qwen Image"
+  },
+  "field.authEmailTransport": {
+    "message": "Servidor de e-mail personalizado",
+    "description": "Título da configuração do SMTP"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Use seu próprio servidor SMTP para enviar emails de verificação. Salve e teste primeiro, habilite após o teste ser bem-sucedido.",
+    "description": "Instruções de configuração do SMTP"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Segurança da conexão",
+    "description": "Modo TLS do SMTP"
+  },
+  "field.authEmailTransportHost": {
+    "message": "Host SMTP",
+    "description": "Nome do domínio do servidor SMTP"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Nome de usuário",
+    "description": "Nome de usuário de login do SMTP"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Senha",
+    "description": "Senha de login do SMTP"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "E-mail do remetente",
+    "description": "Endereço de e-mail do remetente para o código de verificação"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "Nome do remetente",
+    "description": "Nome exibido do remetente para o e-mail de verificação"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "E-mail de resposta",
+    "description": "Endereço de resposta opcional"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Deixe em branco para manter a senha salva",
+    "description": "Texto de espaço reservado apenas para a senha SMTP"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "A senha foi salva, deixe em branco para manter inalterada.",
+    "description": "Dica de senha SMTP salva"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "Configuração do servidor de email salva",
+    "description": "SMTP salvo com sucesso"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "Seu servidor SMTP aceitou o email de teste",
+    "description": "Teste SMTP bem-sucedido"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (porta 587)",
+    "description": "Opção STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (porta 465)",
+    "description": "Opção de TLS implícito"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Salvar configuração",
+    "description": "Salvar rascunho do SMTP"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Enviar e-mail de teste",
+    "description": "Testar configuração do SMTP salva"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Ativar",
+    "description": "Ativar SMTP verificado"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "Excluir servidor de e-mail personalizado?",
+    "description": "Título da janela pop-up de exclusão do SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "As credenciais SMTP salvas serão excluídas permanentemente.",
+    "description": "Confirmação de exclusão do SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Falha ao salvar configuração do servidor de e-mail",
+    "description": "Falha ao salvar o SMTP"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "Não foi possível resolver o nome do host SMTP",
+    "description": "Erro de DNS do SMTP"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "O servidor SMTP só pode resolver para endereços públicos",
+    "description": "Erro na política de destino do SMTP"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Tempo de conexão com o servidor SMTP esgotado",
+    "description": "Tempo limite de conexão SMTP"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "O servidor não suporta o modo TLS selecionado",
+    "description": "Erro de requisito de TLS do SMTP"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "Falha na conexão TLS",
+    "description": "Erro de TLS do SMTP"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "Certificado do servidor SMTP inválido",
+    "description": "Erro no certificado SMTP"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "Falha na autenticação SMTP",
+    "description": "Erro de autenticação SMTP"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "O servidor SMTP rejeitou o endereço do remetente",
+    "description": "Erro no remetente do SMTP"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "O servidor SMTP rejeitou o destinatário de teste",
+    "description": "Erro no destinatário do SMTP"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "Falha no teste SMTP",
+    "description": "Erro genérico de teste do SMTP"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "Não foi possível conectar ao servidor SMTP",
+    "description": "Erro de transporte SMTP"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "O servidor SMTP rejeitou o e-mail de teste",
+    "description": "Erro de transporte SMTP"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "Não foi possível ler a senha salva, por favor, exclua a configuração e preencha novamente",
+    "description": "Erro de transporte SMTP"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "A configuração SMTP salva está incompleta ou inválida",
+    "description": "Erro de transporte SMTP"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Por favor, configure um e-mail para a conta atual antes de enviar um e-mail de teste",
+    "description": "Erro de transporte SMTP"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "Entrega pela plataforma",
+    "description": "Usar o serviço de entrega de código de verificação hospedado pela plataforma."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "SMTP personalizado",
+    "description": "Enviar e-mails de código de verificação através do servidor SMTP configurado neste site."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Webhook personalizado",
+    "description": "Enviar solicitações de código de verificação para o Webhook configurado e assinado neste site."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "Este método de login foi desativado, mas ainda é possível gerenciar suas configurações de entrega.",
+    "description": "Permite gerenciar as configurações de entrega mesmo quando o método de autenticação está desativado."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "Esta configuração foi migrada do formato antigo, ainda está ativa, mas não foi testada novamente; recomenda-se concluir os testes antes de modificar.",
+    "description": "Mensagem de status da migração da configuração de entrega antiga."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "Chave de assinatura do Webhook configurada; deixar em branco mantém a chave original.",
+    "description": "Estado da chave do Webhook configurada."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "Voltar para entrega pela plataforma",
+    "description": "Manter configurações personalizadas e voltar para entrega pela plataforma."
   }
 }

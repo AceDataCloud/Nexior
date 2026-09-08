@@ -29,7 +29,7 @@ export * from './siteBanner';
 export * from './siteServiceOverride';
 export * from './siteCapabilityOverride';
 export * from './site_domain';
-export * from './smsWebhook';
+export * from './siteAuthDelivery';
 export * from './translation';
 export * from './suno';
 export * from './producer';

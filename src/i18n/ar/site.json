@@ -1321,5 +1321,177 @@
   "message.featuresQwenimage": {
     "message": "استخدم إصدار Qwen Image 3 القياسي و Pro لإنشاء وتحرير الصور.",
     "description": "مقدمة عن خدمة صورة Qwen"
+  },
+  "field.authEmailTransport": {
+    "message": "خادم البريد المخصص",
+    "description": "عنوان إعداد SMTP"
+  },
+  "message.authEmailTransportTip": {
+    "message": "استخدم خادم SMTP الخاص بك لإرسال رسائل التحقق. يرجى الحفظ والاختبار أولاً، ثم قم بالتفعيل بعد اجتياز الاختبار.",
+    "description": "إرشادات إعداد SMTP"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "أمان الاتصال",
+    "description": "وضع TLS لـ SMTP"
+  },
+  "field.authEmailTransportHost": {
+    "message": "مضيف SMTP",
+    "description": "اسم نطاق خادم SMTP"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "اسم المستخدم",
+    "description": "اسم مستخدم تسجيل دخول SMTP"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "كلمة المرور",
+    "description": "كلمة مرور تسجيل دخول SMTP"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "بريد المرسل",
+    "description": "عنوان البريد لإرسال رمز التحقق"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "اسم المرسل",
+    "description": "اسم العرض لرسالة البريد المرسل"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "بريد الرد",
+    "description": "عنوان الرد الاختياري"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "اتركه فارغًا للاحتفاظ بكلمة المرور المحفوظة",
+    "description": "نص مكان لكتابة كلمة مرور SMTP"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "تم حفظ كلمة المرور، اتركها فارغة للحفاظ على الوضع الحالي.",
+    "description": "إشعار كلمة مرور SMTP المحفوظة"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "تم حفظ إعدادات خادم البريد.",
+    "description": "تم حفظ SMTP بنجاح"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "لقد قبل خادم SMTP الخاص بك البريد الإلكتروني التجريبي.",
+    "description": "اختبار SMTP ناجح"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (المنفذ 587)",
+    "description": "خيار STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (المنفذ 465)",
+    "description": "خيار TLS الضمني"
+  },
+  "button.authEmailTransportSave": {
+    "message": "حفظ الإعدادات",
+    "description": "حفظ مسودة SMTP"
+  },
+  "button.authEmailTransportTest": {
+    "message": "إرسال بريد اختبار",
+    "description": "اختبار إعدادات SMTP المحفوظة"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "تفعيل",
+    "description": "تفعيل SMTP المصدق"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "هل تريد حذف خادم البريد المخصص؟",
+    "description": "عنوان نافذة حذف SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "ستتم إزالة بيانات اعتماد SMTP المحفوظة بشكل دائم.",
+    "description": "تأكيد حذف SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "فشل حفظ إعدادات خادم البريد",
+    "description": "فشل حفظ SMTP"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "تعذر حل اسم مضيف SMTP",
+    "description": "خطأ في DNS لـ SMTP"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "يمكن لخادم SMTP فقط حل العناوين العامة",
+    "description": "خطأ في سياسة الهدف لـ SMTP"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "انتهت مهلة الاتصال بخادم SMTP",
+    "description": "انتهاء مهلة الاتصال بـ SMTP"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "الخادم لا يدعم وضع TLS المحدد",
+    "description": "خطأ في متطلبات TLS لـ SMTP"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "فشل اتصال TLS",
+    "description": "خطأ في TLS لـ SMTP"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "شهادة خادم SMTP غير صالحة",
+    "description": "خطأ في شهادة SMTP"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "فشل مصادقة SMTP",
+    "description": "خطأ في مصادقة SMTP"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "رفض خادم SMTP عنوان المرسل",
+    "description": "خطأ في مرسل SMTP"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "رفض خادم SMTP المستلم للاختبار",
+    "description": "خطأ في مستلم SMTP"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "فشل اختبار SMTP",
+    "description": "خطأ عام في اختبار SMTP"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "تعذر الاتصال بخادم SMTP",
+    "description": "خطأ في نقل SMTP"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "رفض خادم SMTP بريد الاختبار",
+    "description": "خطأ في نقل SMTP"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "تعذر قراءة كلمة المرور المحفوظة، يرجى حذف الإعدادات وإعادة إدخالها",
+    "description": "خطأ في نقل SMTP"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "إعدادات SMTP المحفوظة غير كاملة أو غير صالحة",
+    "description": "خطأ في نقل SMTP"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "يرجى إعداد بريد إلكتروني للحساب الحالي قبل إرسال بريد اختبار",
+    "description": "خطأ في نقل SMTP"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "تسليم المنصة",
+    "description": "استخدام خدمة تسليم رموز التحقق المستضافة على المنصة."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "SMTP مخصص",
+    "description": "إرسال رسائل البريد الإلكتروني لرموز التحقق عبر خادم SMTP المكون في الموقع."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Webhook مخصص",
+    "description": "إرسال طلبات رموز التحقق عبر الهاتف إلى Webhook المكون والموقع."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "تم إغلاق طريقة تسجيل الدخول هذه، ولكن لا يزال بإمكانك إدارة تكوين التسليم الخاص بها.",
+    "description": "يسمح بإدارة إعدادات التسليم حتى عند إغلاق طريقة المصادقة."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "تمت ترحيل هذا التكوين من التنسيق القديم، ولا يزال ساريًا ولكن لم يتم اختباره مرة أخرى؛ يُنصح بإجراء الاختبار قبل التعديل.",
+    "description": "إشعار حالة ترحيل تكوين التسليم القديم."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "تم تكوين مفتاح توقيع Webhook؛ يمكن تركه فارغًا للاحتفاظ بالمفتاح الأصلي.",
+    "description": "حالة مفتاح Webhook فقط."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "العودة إلى تسليم المنصة",
+    "description": "احتفظ بالتكوين المخصص وارجع إلى تسليم المنصة."
   }
 }

@@ -1321,5 +1321,177 @@
   "message.featuresQwenimage": {
     "message": "使用 Qwen Image 3 標準版和 Pro 版生成與編輯圖片。",
     "description": "Qwen Image 服務介紹"
+  },
+  "field.authEmailTransport": {
+    "message": "自定義郵件伺服器",
+    "description": "SMTP 配置標題"
+  },
+  "message.authEmailTransportTip": {
+    "message": "使用您自己的 SMTP 伺服器發送驗證碼郵件。請先保存並測試，測試通過後再啟用。",
+    "description": "SMTP 配置說明"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "連接安全",
+    "description": "SMTP TLS 模式"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTP 主機",
+    "description": "SMTP 伺服器域名"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "用戶名",
+    "description": "SMTP 登錄用戶名"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "密碼",
+    "description": "SMTP 登錄密碼"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "發件郵箱",
+    "description": "驗證碼郵件發件地址"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "發件人名稱",
+    "description": "驗證碼郵件發件顯示名"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "回覆郵箱",
+    "description": "可選回覆地址"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "留空則保留已保存的密碼",
+    "description": "只寫 SMTP 密碼佔位文案"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "密碼已保存，留空即可保持不變。",
+    "description": "已保存 SMTP 密碼提示"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "郵件伺服器配置已保存",
+    "description": "SMTP 保存成功"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "您的 SMTP 伺服器已接受測試郵件",
+    "description": "SMTP 測試成功"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS（587 端口）",
+    "description": "STARTTLS 選項"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS（465 端口）",
+    "description": "隱式 TLS 選項"
+  },
+  "button.authEmailTransportSave": {
+    "message": "保存配置",
+    "description": "保存 SMTP 草稿"
+  },
+  "button.authEmailTransportTest": {
+    "message": "發送測試郵件",
+    "description": "測試已保存 SMTP 配置"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "啟用",
+    "description": "啟用已驗證 SMTP"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "刪除自定義郵件伺服器？",
+    "description": "SMTP 刪除彈窗標題"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "已保存的 SMTP 憑據將被永久刪除。",
+    "description": "SMTP 刪除確認"
+  },
+  "error.authEmailTransportSave": {
+    "message": "保存郵件伺服器配置失敗",
+    "description": "SMTP 保存失敗"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "無法解析 SMTP 主機名",
+    "description": "SMTP DNS 錯誤"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "SMTP 伺服器只能解析到公網地址",
+    "description": "SMTP 目標策略錯誤"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "連接 SMTP 伺服器超時",
+    "description": "SMTP 連接超時"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "伺服器不支持所選 TLS 模式",
+    "description": "SMTP TLS 要求錯誤"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "TLS 連接失敗",
+    "description": "SMTP TLS 錯誤"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "SMTP 伺服器證書無效",
+    "description": "SMTP 證書錯誤"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "SMTP 身份驗證失敗",
+    "description": "SMTP 身份驗證錯誤"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "SMTP 伺服器拒絕了發件地址",
+    "description": "SMTP 發件人錯誤"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "SMTP 伺服器拒絕了測試收件人",
+    "description": "SMTP 收件人錯誤"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "SMTP 測試失敗",
+    "description": "SMTP 通用測試錯誤"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "無法連接 SMTP 伺服器",
+    "description": "SMTP 傳輸錯誤"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "SMTP 伺服器拒絕了測試郵件",
+    "description": "SMTP 傳輸錯誤"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "無法讀取已保存的密碼，請刪除配置後重新填寫",
+    "description": "SMTP 傳輸錯誤"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "已保存的 SMTP 配置不完整或無效",
+    "description": "SMTP 傳輸錯誤"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "請先為當前帳戶設定郵箱，再發送測試郵件",
+    "description": "SMTP 傳輸錯誤"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "平台投遞",
+    "description": "使用平台托管的驗證碼投遞服務。"
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "自定義 SMTP",
+    "description": "通過本站配置的 SMTP 伺服器發送驗證碼郵件。"
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "自定義 Webhook",
+    "description": "將手機驗證碼請求發送到本站配置並簽名的 Webhook。"
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "此登入方式已關閉，但仍可管理其投遞配置。",
+    "description": "認證方式關閉時仍允許管理投遞設置。"
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "此配置由舊格式遷移而來，目前仍生效但尚未重新測試；修改前建議先完成測試。",
+    "description": "舊投遞配置遷移狀態提示。"
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "已配置 Webhook 簽名密鑰；留空可保留原密鑰。",
+    "description": "只寫 Webhook 密鑰狀態。"
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "切回平台投遞",
+    "description": "保留自定義配置並切回平台投遞。"
   }
 }

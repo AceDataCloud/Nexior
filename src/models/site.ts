@@ -65,36 +65,70 @@ export interface ISiteDistribution {
 // (``client_id``, ``scopes``, ``required_user_fields``, ...) can be
 // added without breaking the wire format. Backend stores this as a
 // JSONField (see ``PlatformBackend/app/models/site.py``).
+export type SiteEmailTransportSecurity = 'starttls' | 'implicit_tls';
+export type SiteAuthDeliveryType = 'platform' | 'smtp' | 'webhook';
+export type SiteAuthVerificationSource = 'saved_config_test' | 'legacy_migration';
+
+export interface ISiteAuthEmailSmtp {
+  host: string;
+  port: 465 | 587;
+  security: SiteEmailTransportSecurity;
+  username: string;
+  password?: string;
+  password_configured?: boolean;
+  verified?: boolean;
+  verified_at?: number | null;
+  verification_source?: SiteAuthVerificationSource | null;
+  test_proof?: string;
+  from_email: string;
+  from_name: string;
+  reply_to: string;
+}
+
+export interface ISiteAuthPhoneWebhook {
+  url: string;
+  secret?: string;
+  secret_configured?: boolean;
+  verified?: boolean;
+  verified_at?: number | null;
+  verification_source?: SiteAuthVerificationSource | null;
+  test_proof?: string;
+}
+
+export interface ISiteAuthDelivery {
+  type: SiteAuthDeliveryType;
+  smtp?: ISiteAuthEmailSmtp | null;
+  webhook?: ISiteAuthPhoneWebhook | null;
+}
+
 export interface ISiteAuthProvider {
   enabled?: boolean;
+  delivery?: ISiteAuthDelivery;
   [key: string]: unknown;
 }
 
-// Site-level authentication configuration. ``default_provider`` is the
-// provider key (``"email"`` / ``"google"`` / ...) the login page should
-// pre-select. ``providers`` is a sparse map keyed by provider ID — only
-// entries with ``enabled: true`` are shown on the login screen.
-// ``login_mode`` is how the login UI is launched on the web surface —
-// ``"redirect"`` (full-page redirect to the auth host, the default) or
-// ``"iframe"`` (embedded popup); native/desktop always use the iframe
-// regardless. The platform defaults live in
-// ``PlatformBackend/app/utils/site_defaults.py`` (``DEFAULT_AUTH_*``).
+export interface ISiteAuthDeliveryProviders {
+  email?: ISiteAuthProvider;
+  phone?: ISiteAuthProvider;
+  [key: string]: ISiteAuthProvider | undefined;
+}
+
 export interface ISiteAuth {
   default_provider?: string;
   login_mode?: 'iframe' | 'redirect';
   providers?: Record<string, ISiteAuthProvider>;
-  // Per-site white-label SMS delivery webhook. When ``webhook_url`` + a
-  // signing ``webhook_secret`` are set, AuthBackend delivers phone verification
-  // codes to the owner's endpoint (their signature) instead of the platform
-  // default. ``webhook_secret`` is write-only: never returned by the API (blank on
-  // read; blank on write keeps the stored value). See
-  // ``plans/white-label/44-sms-delivery-webhook.md``.
-  sms?: ISiteAuthSms;
 }
 
-export interface ISiteAuthSms {
-  webhook_url?: string;
-  webhook_secret?: string;
+export interface ISiteAuthDeliveryTestResponse {
+  success: boolean;
+  test_proof?: string;
+  code?: string;
+}
+
+export interface ISitePhoneDeliveryTestRequest {
+  receiver: string;
+  region: string;
+  locale: string;
 }
 
 export interface ISiteTheme {

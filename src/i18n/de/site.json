@@ -1321,5 +1321,177 @@
   "message.featuresQwenimage": {
     "message": "Erstellen und Bearbeiten von Bildern mit der Standard- und Pro-Version von Qwen Image 3.",
     "description": "Einführung in den Qwen Image Dienst"
+  },
+  "field.authEmailTransport": {
+    "message": "Benutzerdefinierter E-Mail-Server",
+    "description": "Titel der SMTP-Konfiguration"
+  },
+  "message.authEmailTransportTip": {
+    "message": "Verwenden Sie Ihren eigenen SMTP-Server, um Bestätigungsmails zu senden. Bitte zuerst speichern und testen, nach erfolgreichem Test aktivieren.",
+    "description": "Hinweis zur SMTP-Konfiguration"
+  },
+  "field.authEmailTransportSecurity": {
+    "message": "Verbindungssicherheit",
+    "description": "SMTP-TLS-Modus"
+  },
+  "field.authEmailTransportHost": {
+    "message": "SMTP-Host",
+    "description": "Domainname des SMTP-Servers"
+  },
+  "field.authEmailTransportUsername": {
+    "message": "Benutzername",
+    "description": "Benutzername für die SMTP-Anmeldung"
+  },
+  "field.authEmailTransportPassword": {
+    "message": "Passwort",
+    "description": "Passwort für die SMTP-Anmeldung"
+  },
+  "field.authEmailTransportFromEmail": {
+    "message": "Absender-E-Mail",
+    "description": "Absenderadresse für die Bestätigungsmail"
+  },
+  "field.authEmailTransportFromName": {
+    "message": "Absendername",
+    "description": "Angezeigter Name des Absenders in der Bestätigungsmail"
+  },
+  "field.authEmailTransportReplyTo": {
+    "message": "Antwort-E-Mail",
+    "description": "Optionaler Antwortadresse"
+  },
+  "placeholder.authEmailTransportPassword": {
+    "message": "Leer lassen, um das gespeicherte Passwort beizubehalten",
+    "description": "Platzhaltertext für das SMTP-Passwort"
+  },
+  "message.authEmailTransportPasswordConfigured": {
+    "message": "Das Passwort wurde gespeichert, lassen Sie es leer, um es unverändert zu lassen.",
+    "description": "Hinweis zum gespeicherten SMTP-Passwort"
+  },
+  "message.authEmailTransportSaved": {
+    "message": "Die Konfiguration des E-Mail-Servers wurde gespeichert",
+    "description": "SMTP erfolgreich gespeichert"
+  },
+  "message.authEmailTransportTestOk": {
+    "message": "Ihr SMTP-Server hat die Test-E-Mail akzeptiert",
+    "description": "SMTP-Test erfolgreich"
+  },
+  "option.authEmailTransportStarttls": {
+    "message": "STARTTLS (Port 587)",
+    "description": "Option für STARTTLS"
+  },
+  "option.authEmailTransportImplicitTls": {
+    "message": "TLS (Port 465)",
+    "description": "Option für implizites TLS"
+  },
+  "button.authEmailTransportSave": {
+    "message": "Konfiguration speichern",
+    "description": "Speichern des SMTP-Entwurfs"
+  },
+  "button.authEmailTransportTest": {
+    "message": "Test-E-Mail senden",
+    "description": "Test der gespeicherten SMTP-Konfiguration"
+  },
+  "button.authEmailTransportEnable": {
+    "message": "Aktivieren",
+    "description": "Aktivierung des verifizierten SMTP"
+  },
+  "field.authEmailTransportDeleteTitle": {
+    "message": "Benutzerdefinierten E-Mail-Server löschen?",
+    "description": "Titel des Pop-ups zum Löschen des SMTP"
+  },
+  "message.authEmailTransportDeleteConfirm": {
+    "message": "Die gespeicherten SMTP-Anmeldeinformationen werden dauerhaft gelöscht.",
+    "description": "Bestätigung zum Löschen von SMTP"
+  },
+  "error.authEmailTransportSave": {
+    "message": "Fehler beim Speichern der E-Mail-Serverkonfiguration",
+    "description": "Fehler beim Speichern des SMTP"
+  },
+  "error.authEmailTransport_dns_failed": {
+    "message": "Kann den SMTP-Hostnamen nicht auflösen",
+    "description": "Fehler im SMTP-DNS"
+  },
+  "error.authEmailTransport_target_not_public": {
+    "message": "SMTP-Server kann nur auf öffentliche Adressen auflösen",
+    "description": "Fehler in der SMTP-Zielrichtlinie"
+  },
+  "error.authEmailTransport_connect_timeout": {
+    "message": "Zeitüberschreitung beim Verbinden mit dem SMTP-Server",
+    "description": "Zeitüberschreitung bei der SMTP-Verbindung"
+  },
+  "error.authEmailTransport_tls_required": {
+    "message": "Server unterstützt den ausgewählten TLS-Modus nicht",
+    "description": "Fehler bei den SMTP-TLS-Anforderungen"
+  },
+  "error.authEmailTransport_tls_failed": {
+    "message": "TLS-Verbindung fehlgeschlagen",
+    "description": "Fehler im SMTP-TLS"
+  },
+  "error.authEmailTransport_certificate_failed": {
+    "message": "Ungültiges Zertifikat des SMTP-Servers",
+    "description": "Fehler im SMTP-Zertifikat"
+  },
+  "error.authEmailTransport_auth_failed": {
+    "message": "SMTP-Authentifizierung fehlgeschlagen",
+    "description": "Fehler bei der SMTP-Authentifizierung"
+  },
+  "error.authEmailTransport_sender_rejected": {
+    "message": "SMTP-Server hat die Absenderadresse abgelehnt",
+    "description": "Fehler beim SMTP-Absender"
+  },
+  "error.authEmailTransport_recipient_rejected": {
+    "message": "SMTP-Server hat den Testempfänger abgelehnt",
+    "description": "Fehler beim SMTP-Empfänger"
+  },
+  "error.authEmailTransport_unknown": {
+    "message": "SMTP-Test fehlgeschlagen",
+    "description": "Allgemeiner Fehler beim SMTP-Test"
+  },
+  "error.authEmailTransport_connect_failed": {
+    "message": "Verbindung zum SMTP-Server konnte nicht hergestellt werden.",
+    "description": "SMTP-Transportfehler"
+  },
+  "error.authEmailTransport_message_rejected": {
+    "message": "Der SMTP-Server hat die Test-E-Mail abgelehnt.",
+    "description": "SMTP-Transportfehler"
+  },
+  "error.authEmailTransport_credential_decrypt_failed": {
+    "message": "Das gespeicherte Passwort konnte nicht gelesen werden. Bitte löschen Sie die Konfiguration und füllen Sie sie erneut aus.",
+    "description": "SMTP-Transportfehler"
+  },
+  "error.authEmailTransport_configuration_invalid": {
+    "message": "Die gespeicherte SMTP-Konfiguration ist unvollständig oder ungültig.",
+    "description": "SMTP-Transportfehler"
+  },
+  "error.authEmailTransport_account_email_required": {
+    "message": "Bitte richten Sie zuerst eine E-Mail-Adresse für das aktuelle Konto ein, bevor Sie eine Test-E-Mail senden.",
+    "description": "SMTP-Transportfehler"
+  },
+  "site.option.authDeliveryPlatform": {
+    "message": "Plattformzustellung",
+    "description": "Verwendung des von der Plattform gehosteten Dienstes zur Zustellung von Bestätigungscodes."
+  },
+  "site.option.authEmailDeliverySmtp": {
+    "message": "Benutzerdefiniertes SMTP",
+    "description": "Versenden von Bestätigungsmails über den konfigurierten SMTP-Server der Website."
+  },
+  "site.option.authPhoneDeliveryWebhook": {
+    "message": "Benutzerdefinierter Webhook",
+    "description": "Senden von Anfragen für Mobiltelefon-Bestätigungscodes an den konfigurierten und signierten Webhook der Website."
+  },
+  "site.message.authDeliveryProviderDisabled": {
+    "message": "Diese Anmeldemethode wurde deaktiviert, aber die Zustellkonfiguration kann weiterhin verwaltet werden.",
+    "description": "Erlaubt die Verwaltung der Zustellkonfiguration, auch wenn die Authentifizierungsmethode deaktiviert ist."
+  },
+  "site.message.authDeliveryMigrated": {
+    "message": "Diese Konfiguration wurde aus dem alten Format migriert, ist derzeit weiterhin aktiv, wurde jedoch noch nicht erneut getestet; es wird empfohlen, die Tests vor Änderungen abzuschließen.",
+    "description": "Hinweis zum Status der Migration der alten Zustellkonfiguration."
+  },
+  "site.message.authSmsWebhookSecretConfigured": {
+    "message": "Webhook-Signaturschlüssel konfiguriert; Leer lassen, um den ursprünglichen Schlüssel beizubehalten.",
+    "description": "Status des Webhook-Schlüssels nur zum Schreiben."
+  },
+  "site.button.authEmailTransportDisable": {
+    "message": "Auf Plattformzustellung umschalten",
+    "description": "Behalten Sie die benutzerdefinierte Konfiguration bei und wechseln Sie zur Plattformzustellung."
   }
 }
