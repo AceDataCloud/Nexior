@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 07 Sep 2026 20:21:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 08 Sep 2026 20:22:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.368.3
+
+Tue, 08 Sep 2026 20:22:09 GMT
+
+### Patches
+
+- Add secure per-site Email and Phone delivery configuration, saved-config testing, and activation controls. (dev@acedata.cloud)
+- Remove the standalone Inspiration pages while keeping showcases in Home and service galleries. (dev@acedata.cloud)
+- Preserve exact fractional Credit prices in service pricing displays. (dev@acedata.cloud)
 
 ## 3.368.2
 
