@@ -160,7 +160,7 @@
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "方法为 POST，Content-Type 为 application/json。purpose 可能为 login / register / test（test 为连通性测试，可不实际下发短信）。请求体结构如下：",
+    "message": "方法为 POST，Content-Type 为 application/json。purpose 标识注册、登录或其他验证码场景；请按 data.code 和 data.ttl_seconds 发送验证码。测试请求的 purpose 为 test，且不会创建可登录的验证码记录。",
     "description": "Describes the request method and body of the SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
@@ -168,7 +168,7 @@
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "每次请求附带以下请求头，请用你的签名密钥按 Standard Webhooks 规范做 HMAC-SHA256 校验，并使用常量时间比较：",
+    "message": "请拼接 webhook-id、webhook-timestamp 与收到的原始请求体，并用签名密钥计算 HMAC-SHA256。请校验时间戳并使用常量时间比较，切勿先解析再重新序列化请求体：",
     "description": "Describes signature verification for the SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
@@ -176,7 +176,7 @@
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "下发成功请返回 2xx；如需显式表示失败，可返回 HTTP 200，且 body 中 success 字段为 false（见下方示例）。请在 5 秒内响应。",
+    "message": "任意 2xx 响应表示接收成功；如需明确拒绝，请返回 JSON {\"success\": false}。请快速响应，不要等待异步短信状态回执。",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
@@ -1467,31 +1467,31 @@
     "message": "请先为当前账户设置邮箱，再发送测试邮件",
     "description": "SMTP transport error"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "平台投递",
     "description": "使用平台托管的验证码投递服务。"
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "自定义 SMTP",
     "description": "通过本站配置的 SMTP 服务器发送验证码邮件。"
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "自定义 Webhook",
     "description": "将手机验证码请求发送到本站配置并签名的 Webhook。"
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "此登录方式已关闭，但仍可管理其投递配置。",
     "description": "认证方式关闭时仍允许管理投递设置。"
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "此配置由旧格式迁移而来，目前仍生效但尚未重新测试；修改前建议先完成测试。",
     "description": "旧投递配置迁移状态提示。"
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "已配置 Webhook 签名密钥；留空可保留原密钥。",
     "description": "只写 Webhook 密钥状态。"
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "切回平台投递",
     "description": "保留自定义配置并切回平台投递。"
   }

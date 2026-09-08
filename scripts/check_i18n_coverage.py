@@ -44,6 +44,7 @@ I18N_ROOT = REPO_ROOT / "src" / "i18n"
 BASE_LOCALE = "zh-CN"
 ENGLISH_LOCALE = "en"
 ALLOW_ENGLISH_FILE = I18N_ROOT / ".allow-english"
+FORBIDDEN_KEY_PREFIXES = {"site.json": "site."}
 REQUIRE_LOCALIZED_MESSAGES = {
     "maestro.json": {
         "name.customize",
@@ -204,6 +205,18 @@ def main() -> int:
 
             target_data = json.loads(target_path.read_text(encoding="utf-8"))
             target_keys = collect_keys(target_data)
+            forbidden_prefix = FORBIDDEN_KEY_PREFIXES.get(namespace)
+            duplicate_namespace = sorted(
+                key for key in target_keys if forbidden_prefix and key.startswith(forbidden_prefix)
+            )
+            if duplicate_namespace:
+                failures += 1
+                rel = target_path.relative_to(REPO_ROOT)
+                preview = ", ".join(duplicate_namespace[:5])
+                print(
+                    f"::error file={rel}::namespace key repeats '{forbidden_prefix}': {preview}"
+                )
+
             missing = sorted(zh_keys - target_keys)
             if missing:
                 failures += 1

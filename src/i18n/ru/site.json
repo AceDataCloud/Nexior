@@ -160,24 +160,24 @@
     "description": "Заголовок: раздел запроса спецификации SMS вебхука"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Метод POST, Content-Type application/json. purpose может быть login / register / test (test - для тестирования связи, SMS не обязательно отправлять). Структура тела запроса следующая:",
-    "description": "Описывает метод запроса и тело SMS вебхука"
+    "message": "Метод POST, Content-Type application/json. purpose обозначает регистрацию, вход в систему или другие сценарии с кодом подтверждения; пожалуйста, отправьте код подтверждения в соответствии с data.code и data.ttl_seconds. Цель тестового запроса - test, и он не создаст запись кода подтверждения для входа.",
+    "description": "Описание метода запроса и тела SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "Проверка подписи",
     "description": "Заголовок: раздел подписи спецификации вебхука SMS"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Каждый запрос должен содержать следующие заголовки. Пожалуйста, используйте ваш ключ подписи для проверки HMAC-SHA256 в соответствии со стандартом вебхуков и используйте сравнение с постоянным временем:",
-    "description": "Описывает проверку подписи для SMS вебхука"
+    "message": "Пожалуйста, соедините webhook-id, webhook-timestamp и полученное исходное тело запроса, а затем вычислите HMAC-SHA256 с помощью ключа подписи. Пожалуйста, проверьте временную метку и используйте сравнение с постоянным временем, не разбирайте и не сериализуйте тело запроса повторно:",
+    "description": "Описание проверки подписи для SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
     "message": "Ответ",
     "description": "Заголовок: раздел ответа спецификации SMS вебхука"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "При успешной отправке верните 2xx; для явного указания на ошибку можно вернуть HTTP 200, и поле success в теле должно быть false (см. пример ниже). Пожалуйста, ответьте в течение 5 секунд.",
-    "description": "Описывает ожидаемый ответ SMS вебхука"
+    "message": "Любой ответ 2xx означает успешное получение; для явного отказа верните JSON {\"success\": false}. Пожалуйста, отвечайте быстро, не ждите асинхронного статуса SMS.",
+    "description": "Описание ожидаемого ответа SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "Тестирование пользовательского адреса отправки SMS",
@@ -1466,31 +1466,31 @@
     "message": "Сначала настройте электронную почту для текущей учетной записи, затем отправьте тестовое письмо",
     "description": "Ошибка транспортировки SMTP"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "Доставка через платформу",
     "description": "Используйте сервис доставки кодов подтверждения, управляемый платформой."
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "Пользовательский SMTP",
     "description": "Отправка писем с кодами подтверждения через настроенный на сайте SMTP сервер."
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "Пользовательский Webhook",
     "description": "Отправка запроса на код подтверждения на настроенный и подписанный Webhook."
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "Этот способ входа отключен, но его настройки доставки все еще можно управлять.",
     "description": "Позволяет управлять настройками доставки, даже когда метод аутентификации отключен."
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "Эта конфигурация была перенесена из старого формата, она все еще активна, но не была протестирована заново; рекомендуется завершить тестирование перед внесением изменений.",
     "description": "Уведомление о состоянии миграции старой конфигурации доставки."
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "Секретный ключ Webhook настроен; оставьте пустым, чтобы сохранить оригинальный ключ.",
     "description": "Только состояние ключа Webhook."
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "Вернуться к доставке через платформу",
     "description": "Сохраните пользовательские настройки и вернитесь к доставке через платформу."
   }

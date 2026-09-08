@@ -44,11 +44,25 @@ describe('SiteEmailTransport', () => {
     expect((wrapper.vm as any).smtp.host).toBe('smtp.example.com');
     expect((wrapper.vm as any).draft.password).toBe('');
     expect((wrapper.vm as any).providerEnabled).toBe(false);
+    expect((wrapper.vm as any).viewMode).toBe('platform');
+  });
+
+  it('opens custom settings without changing the active transport', async () => {
+    const wrapper = mountComponent();
+    await flushPromises();
+    expect(wrapper.find('el-form-stub').exists()).toBe(false);
+
+    wrapper.findComponent({ name: 'ElRadioGroup' }).vm.$emit('update:modelValue', 'smtp');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('el-form-stub').exists()).toBe(true);
+    expect(api.update).not.toHaveBeenCalled();
   });
 
   it('saves a platform draft without echoing blank password', async () => {
     const wrapper = mountComponent();
     await flushPromises();
+    (wrapper.vm as any).viewMode = 'smtp';
     (wrapper.vm as any).draft.from_name = 'Updated';
     await (wrapper.vm as any).saveDraft();
     const delivery = api.update.mock.calls[0][2];
@@ -61,6 +75,7 @@ describe('SiteEmailTransport', () => {
     api.testEmail.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
     const wrapper = mountComponent();
     await flushPromises();
+    (wrapper.vm as any).viewMode = 'smtp';
     await (wrapper.vm as any).testDelivery();
     await (wrapper.vm as any).activate();
     expect(api.testEmail).toHaveBeenCalledWith('site-1');
@@ -77,6 +92,7 @@ describe('SiteEmailTransport', () => {
     const wrapper = mountComponent();
     await flushPromises();
     await (wrapper.vm as any).switchToPlatform();
+    expect((wrapper.vm as any).viewMode).toBe('smtp');
     expect(api.update.mock.calls[0][2]).toEqual({
       type: 'platform',
       smtp: expect.objectContaining({ host: 'smtp.example.com' })

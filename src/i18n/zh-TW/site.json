@@ -160,24 +160,24 @@
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "方法為 POST，Content-Type 為 application/json。purpose 可能為 login / register / test（test 為連通性測試，可不實際下發簡訊）。請求體結構如下：",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "方法為 POST，Content-Type 為 application/json。purpose 標識註冊、登錄或其他驗證碼場景；請按 data.code 和 data.ttl_seconds 發送驗證碼。測試請求的 purpose 為 test，且不會創建可登錄的驗證碼記錄。",
+    "description": "描述 SMS webhook 的請求方法和主體"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "簽名校驗",
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "每次請求附帶以下請求頭，請用你的簽名金鑰按 Standard Webhooks 規範做 HMAC-SHA256 校驗，並使用常量時間比較：",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "請拼接 webhook-id、webhook-timestamp 與收到的原始請求體，並用簽名密鑰計算 HMAC-SHA256。請校驗時間戳並使用常量時間比較，切勿先解析再重新序列化請求體：",
+    "description": "描述 SMS webhook 的簽名驗證"
   },
   "field.authSmsWebhookDocResponse": {
     "message": "響應",
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "下發成功請返回 2xx；如需顯式表示失敗，可返回 HTTP 200，且 body 中 success 欄位為 false（見下方示例）。請在 5 秒內響應。",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "任意 2xx 響應表示接收成功；如需明確拒絕，請返回 JSON {\"success\": false}。請快速響應，不要等待異步短信狀態回執。",
+    "description": "描述 SMS webhook 的預期響應"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "測試自定義簡訊發件地址",
@@ -1466,31 +1466,31 @@
     "message": "請先為當前帳戶設定郵箱，再發送測試郵件",
     "description": "SMTP 傳輸錯誤"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "平台投遞",
     "description": "使用平台托管的驗證碼投遞服務。"
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "自定義 SMTP",
     "description": "通過本站配置的 SMTP 伺服器發送驗證碼郵件。"
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "自定義 Webhook",
     "description": "將手機驗證碼請求發送到本站配置並簽名的 Webhook。"
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "此登入方式已關閉，但仍可管理其投遞配置。",
     "description": "認證方式關閉時仍允許管理投遞設置。"
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "此配置由舊格式遷移而來，目前仍生效但尚未重新測試；修改前建議先完成測試。",
     "description": "舊投遞配置遷移狀態提示。"
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "已配置 Webhook 簽名密鑰；留空可保留原密鑰。",
     "description": "只寫 Webhook 密鑰狀態。"
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "切回平台投遞",
     "description": "保留自定義配置並切回平台投遞。"
   }

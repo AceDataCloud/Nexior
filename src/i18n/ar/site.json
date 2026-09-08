@@ -160,24 +160,24 @@
     "description": "عنوان: قسم الطلبات لمواصفات واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "الطريقة هي POST، نوع المحتوى هو application/json. قد يكون الغرض login / register / test (test هو اختبار الاتصال، ولا يلزم إرسال رسالة نصية فعلية). هيكل جسم الطلب كما يلي:",
-    "description": "يصف طريقة الطلب وجسم واجهة برمجة تطبيقات SMS"
+    "message": "الطريقة هي POST، وContent-Type هو application/json. يحدد الغرض التسجيل أو تسجيل الدخول أو سيناريوهات رمز التحقق الأخرى؛ يرجى إرسال رمز التحقق وفقًا لـ data.code و data.ttl_seconds. الغرض من طلب الاختبار هو test، ولن يتم إنشاء سجل رمز تحقق يمكن تسجيل الدخول إليه.",
+    "description": "يصف طريقة الطلب وجسم SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "التحقق من التوقيع",
     "description": "عنوان: قسم التوقيع في مواصفات واجهة برمجة التطبيقات الخاصة بإرسال الرسائل النصية"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "يرجى إرفاق رؤوس الطلب التالية مع كل طلب، واستخدم مفتاح التوقيع الخاص بك للتحقق من HMAC-SHA256 وفقًا لمعايير واجهة برمجة التطبيقات القياسية، واستخدم مقارنة الوقت الثابت:",
-    "description": "يصف التحقق من التوقيع لواجهة برمجة تطبيقات SMS"
+    "message": "يرجى دمج webhook-id و webhook-timestamp مع جسم الطلب الأصلي المستلم، واستخدام مفتاح التوقيع لحساب HMAC-SHA256. يرجى التحقق من الطابع الزمني واستخدام مقارنة زمنية ثابتة، لا تقم بتحليل ثم إعادة تسلسل جسم الطلب:",
+    "description": "يصف التحقق من التوقيع لواجهة برمجة تطبيقات SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
     "message": "استجابة",
     "description": "عنوان: قسم الاستجابة لمواصفات واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "يرجى إرجاع 2xx عند النجاح؛ إذا كنت بحاجة إلى الإشارة بشكل صريح إلى الفشل، يمكنك إرجاع HTTP 200، ويجب أن يكون حقل success في الجسم false (انظر المثال أدناه). يرجى الرد خلال 5 ثوان.",
-    "description": "يصف الاستجابة المتوقعة لواجهة برمجة تطبيقات SMS"
+    "message": "أي استجابة 2xx تشير إلى نجاح الاستلام؛ إذا كنت بحاجة إلى رفض واضح، يرجى إرجاع JSON {\"success\": false}. يرجى الرد بسرعة، لا تنتظر إشعار حالة الرسالة النصية غير المتزامن.",
+    "description": "يصف الاستجابة المتوقعة لواجهة برمجة تطبيقات SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "اختبار عنوان مرسل الرسائل النصية المخصص",
@@ -1466,31 +1466,31 @@
     "message": "يرجى إعداد بريد إلكتروني للحساب الحالي قبل إرسال بريد اختبار",
     "description": "خطأ في نقل SMTP"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "تسليم المنصة",
     "description": "استخدام خدمة تسليم رموز التحقق المستضافة على المنصة."
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "SMTP مخصص",
     "description": "إرسال رسائل البريد الإلكتروني لرموز التحقق عبر خادم SMTP المكون في الموقع."
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "Webhook مخصص",
     "description": "إرسال طلبات رموز التحقق عبر الهاتف إلى Webhook المكون والموقع."
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "تم إغلاق طريقة تسجيل الدخول هذه، ولكن لا يزال بإمكانك إدارة تكوين التسليم الخاص بها.",
     "description": "يسمح بإدارة إعدادات التسليم حتى عند إغلاق طريقة المصادقة."
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "تمت ترحيل هذا التكوين من التنسيق القديم، ولا يزال ساريًا ولكن لم يتم اختباره مرة أخرى؛ يُنصح بإجراء الاختبار قبل التعديل.",
     "description": "إشعار حالة ترحيل تكوين التسليم القديم."
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "تم تكوين مفتاح توقيع Webhook؛ يمكن تركه فارغًا للاحتفاظ بالمفتاح الأصلي.",
     "description": "حالة مفتاح Webhook فقط."
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "العودة إلى تسليم المنصة",
     "description": "احتفظ بالتكوين المخصص وارجع إلى تسليم المنصة."
   }

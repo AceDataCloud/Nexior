@@ -160,7 +160,7 @@
     "description": "Heading: request section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+    "message": "Method POST, Content-Type application/json. purpose identifies registration, login, or another verification flow; send data.code before data.ttl_seconds expires. Test requests use purpose test and do not create a code that can sign in.",
     "description": "Describes the request method and body of the SMS webhook"
   },
   "field.authSmsWebhookDocHeaders": {
@@ -168,7 +168,7 @@
     "description": "Heading: signature section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
+    "message": "Join webhook-id, webhook-timestamp, and the raw request body, then calculate HMAC-SHA256 with the signing secret. Validate the timestamp and compare in constant time; do not parse and re-serialize the body first:",
     "description": "Describes signature verification for the SMS webhook"
   },
   "field.authSmsWebhookDocResponse": {
@@ -176,7 +176,7 @@
     "description": "Heading: response section of the SMS webhook spec"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+    "message": "Any 2xx response accepts the delivery. To explicitly reject it, return JSON {\"success\": false}. Respond promptly instead of waiting for an asynchronous SMS status receipt.",
     "description": "Describes the expected response of the SMS webhook"
   },
   "field.authSmsWebhookTestTitle": {
@@ -1467,31 +1467,31 @@
     "message": "Your account needs an email address before testing",
     "description": "SMTP transport error"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "Platform delivery",
     "description": "Use the platform-managed verification delivery service."
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "Custom SMTP",
     "description": "Send verification emails through this site’s SMTP server."
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "Custom webhook",
     "description": "Send phone verification requests to this site’s signed webhook."
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "This login method is disabled. You can still manage its delivery configuration.",
     "description": "Delivery settings remain editable while the authentication provider is disabled."
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "This active configuration was migrated from the previous format and has not been retested. Retest it before making changes.",
     "description": "Legacy delivery migration status."
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "A webhook signing secret is configured. Leave the field blank to keep it.",
     "description": "Write-only webhook secret marker."
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "Use platform delivery",
     "description": "Switch back to platform delivery while retaining the custom configuration."
   }
