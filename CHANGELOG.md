@@ -1,8 +1,19 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 08 Sep 2026 20:22:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 09 Sep 2026 20:22:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.368.4
+
+Wed, 09 Sep 2026 20:22:52 GMT
+
+### Patches
+
+- Replace authentication delivery tabs with persisted toggles while keeping custom SMTP and SMS webhook forms editable. (dev@acedata.cloud)
+- Add GPT Image 2.5 Flare and Sunburst to image generation and editing with shared size validation. (dev@acedata.cloud)
+- Add Suno v6, v6 Wild, and v6 Mini to the music model selector. (dev@acedata.cloud)
+- Fix authentication delivery tabs, hide custom fields during platform delivery, restore the SMS webhook guide, and repair delivery translations. (dev@acedata.cloud)
 
 ## 3.368.3
 
