@@ -1,4 +1,9 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+const trackGenerationTerminal = vi.hoisted(() => vi.fn());
+
+vi.mock('@/plugins/telemetry', () => ({ trackGenerationTerminal }));
+
 import {
   pendingByResponseState,
   pendingByTopLevelStatus,
@@ -11,6 +16,10 @@ import {
 type TestTask = { id?: string; response?: { success?: boolean } };
 
 describe('task polling predicates', () => {
+  beforeEach(() => {
+    trackGenerationTerminal.mockClear();
+  });
+
   it('recognizes wrapper, nested, media, and top-level terminal states', () => {
     expect(pendingUntilResponse({})).toBe(true);
     expect(pendingUntilResponse({ response: { success: true } })).toBe(false);
@@ -64,5 +73,37 @@ describe('task polling predicates', () => {
       commit
     });
     expect(commit).toHaveBeenCalledWith([{ id: 'before', response: { success: true } }, done]);
+    expect(trackGenerationTerminal).toHaveBeenCalledTimes(1);
+    expect(trackGenerationTerminal).toHaveBeenCalledWith('a', true);
+  });
+
+  it('reports explicit terminal failures without labeling them successful', async () => {
+    const commit = vi.fn();
+    await refreshPendingTaskItems<TestTask>({
+      getItems: () => [{ id: 'failed' }],
+      isPending: pendingUntilResponse,
+      fetch: async () => [{ id: 'failed', response: { success: false } }],
+      commit
+    });
+
+    expect(trackGenerationTerminal).toHaveBeenCalledWith('failed', false);
+  });
+
+  it('reports a fetched terminal transition even if history refresh wins the commit race', async () => {
+    const commit = vi.fn();
+    let current: TestTask[] = [{ id: 'race' }];
+    let release!: (items: TestTask[]) => void;
+    const request = refreshPendingTaskItems<TestTask>({
+      getItems: () => current,
+      isPending: pendingUntilResponse,
+      fetch: () => new Promise<TestTask[]>((resolve) => (release = resolve)),
+      commit
+    });
+    current = [{ id: 'race', response: { success: true } }];
+    release([{ id: 'race', response: { success: true } }]);
+    await request;
+
+    expect(commit).not.toHaveBeenCalled();
+    expect(trackGenerationTerminal).toHaveBeenCalledWith('race', true);
   });
 });

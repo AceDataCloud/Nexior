@@ -140,16 +140,16 @@
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst erfolgreich beantragt hat."
   },
   "message.applyFailed": {
-    "message": "Die Aktivierung der kostenlosen Testversion ist fehlgeschlagen. Bitte Seite aktualisieren und erneut versuchen.",
-    "description": "Hinweis, der angezeigt wird, wenn die automatische globale Antragstellung fehlschlägt."
+    "message": "Konto konnte nicht eingerichtet werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
+    "description": "Wird angezeigt, wenn die globale Anwendungserstellung fehlschlägt oder nach dem Neuladen nicht bestätigt werden kann."
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 Willkommen bei {brand}! Wir haben Ihnen {credits} Guthaben geschenkt, die Sie für alle Dienste der Plattform nutzen können.",
-    "description": "Willkommenshinweis, der nach erfolgreicher automatischer globaler Antragstellung oder beim ersten Betreten angezeigt wird. {credits} ist das verbleibende Guthaben des globalen Antrags."
+    "message": "🎉 Willkommen bei {brand}! Sie haben derzeit ein Guthaben von {credits} Credits, das Sie für die Dienste dieser Website verwenden können.",
+    "description": "Wird nur angezeigt, wenn die globale Anwendung serverseitig bestätigt wurde und das Guthaben größer als null ist. {credits} ist das nach der Bestätigung verbleibende Guthaben."
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 Willkommen bei {brand}! Ihr Konto ist einsatzbereit und Sie können alle Dienste der Plattform testen.",
-    "description": "Willkommenshinweis, der angezeigt wird, wenn keine kostenlosen Guthaben für den globalen Antrag verfügbar sind."
+    "message": "🎉 Willkommen bei {brand}! Ihr Konto ist bereit. Bitte prüfen Sie vor der Generierung die verfügbaren Dienste und aktuellen Preise.",
+    "description": "Wird nur angezeigt, wenn die globale Anwendung serverseitig bestätigt wurde und kein positives Guthaben vorhanden ist."
   },
   "message.notApplied": {
     "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn vor der Nutzung.",

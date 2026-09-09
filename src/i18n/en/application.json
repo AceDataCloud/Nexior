@@ -140,16 +140,16 @@
     "description": "Message displayed when the user successfully applies for this service."
   },
   "message.applyFailed": {
-    "message": "Failed to activate your free trial. Please refresh and try again.",
-    "description": "Toast shown when the silent global application creation fails."
+    "message": "We couldn't prepare your account. Please refresh and try again.",
+    "description": "Toast shown when the global application cannot be created or verified after a server refresh."
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 Welcome! We've credited your account with {credits} free credits — enjoy every service on {brand}.",
-    "description": "Welcome toast shown after the global application is created or on the first visit when one already exists. {credits} is the remaining balance of the global application."
+    "message": "🎉 Welcome to {brand}! Your current balance is {credits} credits, available across this site's services.",
+    "description": "Welcome toast shown only after a server refresh verifies a global application with a positive balance. {credits} is that verified remaining balance."
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 Welcome to {brand}! Your account is ready — feel free to explore every service.",
-    "description": "Welcome toast shown when the global application has no remaining free credits to highlight."
+    "message": "🎉 Welcome to {brand}! Your account is ready. Review available services and pricing before generating.",
+    "description": "Welcome toast shown only after a server refresh verifies a global application with no positive balance."
   },
   "message.notApplied": {
     "message": "You have not applied for this service, please apply before use.",

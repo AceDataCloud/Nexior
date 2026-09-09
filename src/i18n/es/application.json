@@ -140,16 +140,16 @@
     "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
   },
   "message.applyFailed": {
-    "message": "No se pudo activar la prueba gratuita. Por favor, actualice la página e intente nuevamente.",
-    "description": "Mensaje mostrado cuando falla la creación automática de la solicitud global."
+    "message": "No se pudo preparar la cuenta. Actualiza la página y vuelve a intentarlo.",
+    "description": "Mensaje que se muestra cuando falla la creación de la solicitud global o no se puede confirmar la solicitud global después de actualizar la página."
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 ¡Bienvenido a {brand}! Le hemos otorgado {credits} créditos para probar cualquier servicio del sitio.",
-    "description": "Mensaje de bienvenida mostrado después de que la solicitud global se crea exitosamente o al ingresar por primera vez. {credits} representa los créditos restantes de la solicitud global."
+    "message": "🎉 ¡Bienvenido a {brand}! Actualmente tienes un saldo de {credits} créditos que puedes usar para los servicios de este sitio.",
+    "description": "Solo se muestra después de que el servidor confirma la solicitud global mediante una actualización y el saldo es superior a cero. {credits} representa el saldo restante confirmado."
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 ¡Bienvenido a {brand}! Su cuenta está lista y puede disfrutar de cualquier servicio del sitio.",
-    "description": "Mensaje de bienvenida mostrado cuando no hay créditos gratuitos disponibles para la solicitud global."
+    "message": "🎉 ¡Bienvenido a {brand}! Tu cuenta está lista. Antes de generar, consulta los servicios disponibles y los precios actuales.",
+    "description": "Solo se muestra después de que el servidor confirma la solicitud global mediante una actualización y no hay saldo positivo."
   },
   "message.notApplied": {
     "message": "Aún no ha solicitado este servicio, por favor solicite el servicio antes de usarlo.",

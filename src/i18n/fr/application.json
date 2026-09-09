@@ -140,16 +140,16 @@
     "description": "Message affiché lorsque l'utilisateur a réussi à demander ce service."
   },
   "message.applyFailed": {
-    "message": "Échec de l'activation de l'essai gratuit, veuillez actualiser la page et réessayer.",
-    "description": "Message affiché lorsque la création automatique de la demande globale a échoué."
+    "message": "Échec de la préparation du compte. Veuillez actualiser la page, puis réessayer.",
+    "description": "Message affiché lorsque la création de la demande globale échoue ou qu’il est impossible de confirmer la demande globale après l’actualisation."
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 Bienvenue sur {brand} ! Nous vous avons offert {credits} crédits, utilisables sur tous les services.",
-    "description": "Message de bienvenue affiché après la réussite de la création automatique de la demande globale ou lors du premier accès. {credits} correspond au solde restant des crédits de la demande globale."
+    "message": "🎉 Bienvenue sur {brand} ! Vous disposez actuellement de {credits} crédits, utilisables pour les services de ce site.",
+    "description": "Affiché uniquement après confirmation côté serveur de la demande globale et lorsque le solde est supérieur à zéro. {credits} correspond au solde de crédits restant après confirmation."
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 Bienvenue sur {brand} ! Votre compte est prêt et vous pouvez accéder à tous les services.",
-    "description": "Message de bienvenue affiché lorsque la demande globale n'a aucun crédit gratuit disponible."
+    "message": "🎉 Bienvenue sur {brand} ! Votre compte est prêt. Avant de générer, consultez les services disponibles et les tarifs actuels.",
+    "description": "Affiché uniquement après confirmation côté serveur de la demande globale et lorsque le solde de crédits n’est pas positif."
   },
   "message.notApplied": {
     "message": "Vous n'avez pas encore demandé ce service, veuillez le demander avant de l'utiliser.",

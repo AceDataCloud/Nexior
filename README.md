@@ -11,7 +11,7 @@
 <p>
   <a href="https://studio.acedata.cloud">🚀 Live Demo</a> ·
   <a href="#-quick-start">⚡ Deploy in minutes</a> ·
-  <a href="https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior">🔑 Free API key</a> ·
+  <a href="https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior">🔑 Get an API key</a> ·
   <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
   <a href="#-star-us">⭐ Star us</a>
 </p>
@@ -53,7 +53,7 @@
 | 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS) |
 | 🎬 **AI Video** | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 
-All capabilities ship with a **free trial** — no credit card to try.
+AI usage is metered unless a capability is explicitly marked free. Check the current service pricing before generating.
 
 ---
 
@@ -78,7 +78,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Get a key (free quota) at **[platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)**. Full guides → [`docs/deploy/`](docs/deploy/).
+Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)**. Full guides → [`docs/deploy/`](docs/deploy/).
 
 ---
 
@@ -90,7 +90,7 @@ Nexior isn't just a client — it's a complete **AI-SaaS starter**. Every deploy
 - 💳 **Payments** — accept payments with zero extra config.
 - 🤝 **Referral / distribution** — registered users bind permanently to the site owner; their spend pays you a commission. Withdraw anytime.
 
-Deploy once, and `your-domain.com` is a revenue-ready AI product. Zero startup cost, zero AI accounts to manage.
+Deploy once, and `your-domain.com` is a revenue-ready AI product without separate provider accounts to manage. Hosting and AI usage costs depend on your deployment and selected services.
 
 > 本系统支持客源绑定机制:每个网站的注册用户可永久绑定为站长的下级客户,其在平台的所有消费按分销比例返还到你的账户,可随时提现。
 
@@ -125,7 +125,7 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 
 ## 🤝 Community & support
 
-- 🔑 Free API key & docs: [platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)
+- 🔑 API key, pricing & docs: [platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)
 - 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
 - 📧 Email: office@acedata.cloud

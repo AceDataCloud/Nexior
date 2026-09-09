@@ -21,7 +21,7 @@
 import { computed, defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { IApplicationScope, IApplicationType, Status } from '@/models';
+import { IApplicationScope, IApplicationType, Status, type IApplication } from '@/models';
 import { IAppState } from '@/store/common/models';
 import { ElMessage } from 'element-plus';
 import { applicationOperator } from '@/operators';
@@ -29,6 +29,7 @@ import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getFinalApplication } from '@/utils';
 import { isScenarioX402Supported, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
+import { track } from '@/plugins/telemetry';
 
 // How often the floating Credits pill re-syncs the selected application's
 // balance. Generations spend credits server-side at task-creation time, so
@@ -185,9 +186,7 @@ export default defineComponent({
       }
       console.debug('Fetched all applications', this.applications);
       // First-time users: silently create the global application. The welcome
-      // toast only fires inside onAutoApply(), so users who already had a
-      // global application (returning visitors, top-ups, multi-device logins)
-      // never see the credit-grant message.
+      // toast only appears after creation and a refresh verifies that application.
       if (this.$store.state.applications?.length === 0) {
         await this.onAutoApply();
       }
@@ -209,30 +208,45 @@ export default defineComponent({
       this.onAutoApply();
     },
     async onAutoApply() {
+      let created = false;
       try {
         await applicationOperator.create({
           type: IApplicationType.USAGE,
           scope: IApplicationScope.GLOBAL,
           user_id: this.$store.getters.user.id
         });
-        this.applying = false;
-        await this.$store.dispatch('getApplications');
-        this.showWelcomeToast();
+        created = true;
       } catch (error: any) {
-        if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-          // Backend already had the global app — refresh and continue silently.
-          await this.$store.dispatch('getApplications');
-        } else {
+        if (error?.response?.data?.code !== ERROR_CODE_DUPLICATION) {
           ElMessage.error(this.$t('application.message.applyFailed'));
+          this.applying = false;
+          return;
         }
       }
+
+      try {
+        const refreshed = (await this.$store.dispatch('getApplications')) as IApplication[] | undefined;
+        const globalApp = refreshed?.find(
+          (application) => application.id && application.scope === IApplicationScope.GLOBAL
+        );
+        if (!globalApp) {
+          ElMessage.error(this.$t('application.message.applyFailed'));
+          return;
+        }
+        const creditState = (globalApp.remaining_amount ?? 0) > 0 ? 'positive' : 'zero';
+        track('application_prepared', {
+          application_id: globalApp.id,
+          credit_state: creditState
+        });
+        if (created) this.showWelcomeToast(globalApp);
+      } catch {
+        ElMessage.error(this.$t('application.message.applyFailed'));
+      } finally {
+        this.applying = false;
+      }
     },
-    showWelcomeToast() {
-      // Called only after a successful applicationOperator.create() for a
-      // GLOBAL application — i.e. the user genuinely just got their first
-      // free-credit grant. No localStorage gate needed.
-      const globalApp = this.$store.state.applications?.[0];
-      const credits = Math.floor(globalApp?.remaining_amount ?? 0);
+    showWelcomeToast(globalApp: IApplication) {
+      const credits = Math.max(0, Math.floor(globalApp.remaining_amount ?? 0));
       const brand = this.$store.state.site?.title || 'AceData';
       const message =
         credits > 0
