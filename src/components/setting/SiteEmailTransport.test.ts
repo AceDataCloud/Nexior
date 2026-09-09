@@ -3,10 +3,11 @@ import { flushPromises, shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const api = vi.hoisted(() => ({ get: vi.fn(), update: vi.fn(), remove: vi.fn(), testEmail: vi.fn() }));
+const messages = vi.hoisted(() => ({ success: vi.fn(), error: vi.fn(), warning: vi.fn() }));
 vi.mock('@/operators/siteAuthDelivery', () => ({ siteAuthDeliveryOperator: api }));
 vi.mock('element-plus', async (importOriginal) => {
   const actual = await importOriginal<typeof import('element-plus')>();
-  return { ...actual, ElMessage: { success: vi.fn(), error: vi.fn() }, ElMessageBox: { confirm: vi.fn() } };
+  return { ...actual, ElMessage: messages, ElMessageBox: { confirm: vi.fn() } };
 });
 
 import SiteEmailTransport from './SiteEmailTransport.vue';
@@ -29,6 +30,9 @@ const mountComponent = (providerEnabled = false) =>
     global: { mocks: { $t: (key: string) => key } }
   });
 
+const switchValue = (wrapper: ReturnType<typeof mountComponent>) =>
+  wrapper.findComponent({ name: 'ElSwitch' }).props('modelValue');
+
 describe('SiteEmailTransport', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -37,65 +41,138 @@ describe('SiteEmailTransport', () => {
     api.remove.mockResolvedValue({});
   });
 
-  it('loads owner configuration and remains manageable when provider is disabled', async () => {
+  it('renders editable custom settings while the server transport remains platform', async () => {
     const wrapper = mountComponent(false);
     await flushPromises();
+
     expect(api.get).toHaveBeenCalledWith('site-1');
-    expect((wrapper.vm as any).smtp.host).toBe('smtp.example.com');
-    expect((wrapper.vm as any).draft.password).toBe('');
-    expect((wrapper.vm as any).providerEnabled).toBe(false);
-    expect((wrapper.vm as any).viewMode).toBe('platform');
-  });
-
-  it('opens custom settings without changing the active transport', async () => {
-    const wrapper = mountComponent();
-    await flushPromises();
-    expect(wrapper.find('el-form-stub').exists()).toBe(false);
-
-    wrapper.findComponent({ name: 'ElRadioGroup' }).vm.$emit('update:modelValue', 'smtp');
-    await wrapper.vm.$nextTick();
-
+    expect(switchValue(wrapper)).toBe(false);
     expect(wrapper.find('el-form-stub').exists()).toBe(true);
-    expect(api.update).not.toHaveBeenCalled();
+    expect((wrapper.vm as any).draft.password).toBe('');
+    expect(wrapper.findAll('el-input-stub').every((input) => input.attributes('disabled') === undefined)).toBe(true);
   });
 
-  it('saves a platform draft without echoing blank password', async () => {
+  it('does not enable an unsaved or unverified SMTP config', async () => {
     const wrapper = mountComponent();
     await flushPromises();
-    (wrapper.vm as any).viewMode = 'smtp';
-    (wrapper.vm as any).draft.from_name = 'Updated';
-    await (wrapper.vm as any).saveDraft();
-    const delivery = api.update.mock.calls[0][2];
-    expect(delivery.type).toBe('platform');
-    expect(delivery.smtp.from_name).toBe('Updated');
-    expect(delivery.smtp).not.toHaveProperty('password');
+
+    await (wrapper.vm as any).toggleDelivery(true);
+
+    expect(api.update).not.toHaveBeenCalled();
+    expect(switchValue(wrapper)).toBe(false);
+    expect(messages.warning).toHaveBeenCalledWith('site.message.authDeliveryEnableHelp');
   });
 
-  it('tests saved config and activates only with proof', async () => {
+  it('tests saved config then enables it with proof', async () => {
     api.testEmail.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
     const wrapper = mountComponent();
     await flushPromises();
-    (wrapper.vm as any).viewMode = 'smtp';
+
     await (wrapper.vm as any).testDelivery();
-    await (wrapper.vm as any).activate();
+    await (wrapper.vm as any).toggleDelivery(true);
+
     expect(api.testEmail).toHaveBeenCalledWith('site-1');
-    expect(api.update.mock.calls[0][2]).toMatchObject({
+    expect(api.update).toHaveBeenCalledWith('site-1', 'email', {
       type: 'smtp',
-      smtp: { test_proof: 'proof-1' }
+      smtp: expect.objectContaining({ test_proof: 'proof-1' })
     });
+    expect(switchValue(wrapper)).toBe(true);
   });
 
-  it('switches active SMTP to platform without deleting config', async () => {
+  it('turns active SMTP off in one saved update without deleting config', async () => {
     api.get.mockResolvedValue({
       data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
     });
     const wrapper = mountComponent();
     await flushPromises();
-    await (wrapper.vm as any).switchToPlatform();
-    expect((wrapper.vm as any).viewMode).toBe('smtp');
-    expect(api.update.mock.calls[0][2]).toEqual({
+
+    await (wrapper.vm as any).toggleDelivery(false);
+
+    expect(api.update).toHaveBeenCalledTimes(1);
+    expect(api.update).toHaveBeenCalledWith('site-1', 'email', {
       type: 'platform',
       smtp: expect.objectContaining({ host: 'smtp.example.com' })
     });
+    expect(switchValue(wrapper)).toBe(false);
+  });
+
+  it('turns active SMTP off without discarding unsaved form edits', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
+    });
+    const wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).draft.from_name = 'Unsaved';
+
+    await (wrapper.vm as any).toggleDelivery(false);
+
+    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).draft.from_name).toBe('Unsaved');
+    expect((wrapper.vm as any).dirty).toBe(true);
+  });
+
+  it('turns active SMTP off before saving an edited draft and omits a blank password', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
+    });
+    const wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).draft.from_name = 'Updated';
+
+    await (wrapper.vm as any).saveDraft();
+
+    expect(api.update).toHaveBeenCalledTimes(2);
+    expect(api.update.mock.calls[0][2]).toMatchObject({ type: 'platform' });
+    expect(api.update.mock.calls[1][2]).toMatchObject({ type: 'platform', smtp: { from_name: 'Updated' } });
+    expect(api.update.mock.calls[1][2].smtp).not.toHaveProperty('password');
+    expect(switchValue(wrapper)).toBe(false);
+  });
+
+  it('keeps an edited draft retryable when its second save step fails', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
+    });
+    api.update
+      .mockResolvedValueOnce({ data: { type: 'platform', smtp: { ...smtp, verified: true } } })
+      .mockRejectedValueOnce(new Error('failed'));
+    const wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).draft.from_name = 'Updated';
+
+    await (wrapper.vm as any).saveDraft();
+
+    expect(api.update).toHaveBeenCalledTimes(2);
+    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).draft.from_name).toBe('Updated');
+    expect((wrapper.vm as any).dirty).toBe(true);
+  });
+
+  it('stops before saving the draft when switching active SMTP to platform fails', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
+    });
+    api.update.mockRejectedValueOnce(new Error('failed'));
+    const wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).draft.from_name = 'Updated';
+
+    await (wrapper.vm as any).saveDraft();
+
+    expect(api.update).toHaveBeenCalledTimes(1);
+    expect(switchValue(wrapper)).toBe(true);
+  });
+
+  it('keeps the server-backed switch state when enabling fails', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'platform', smtp: { ...smtp, verified: true } } } } }
+    });
+    api.update.mockRejectedValueOnce(new Error('failed'));
+    const wrapper = mountComponent();
+    await flushPromises();
+
+    await (wrapper.vm as any).toggleDelivery(true);
+
+    expect(switchValue(wrapper)).toBe(false);
+    expect(messages.error).toHaveBeenCalledWith('site.error.authDeliveryChange');
   });
 });

@@ -11,79 +11,63 @@
         type="info"
         :closable="false"
       />
-      <el-radio-group v-model="viewMode" :disabled="loading">
-        <el-radio-button label="platform">{{ $t('site.option.authDeliveryPlatform') }}</el-radio-button>
-        <el-radio-button label="webhook">{{ $t('site.option.authPhoneDeliveryWebhook') }}</el-radio-button>
-      </el-radio-group>
-      <div v-if="viewMode === 'platform'" class="phone-delivery__panel">
-        <el-alert v-if="!active" :title="$t('site.option.authDeliveryPlatform')" type="success" :closable="false" />
-        <el-button v-if="active" type="primary" :loading="changing" @click="switchToPlatform">
-          {{ $t('site.button.authEmailTransportDisable') }}
-        </el-button>
-      </div>
-      <div v-else class="phone-delivery__panel">
-        <el-button link type="primary" class="phone-delivery__docs-link" @click="docsVisible = true">
-          {{ $t('site.field.authSmsWebhookDoc') }}
-        </el-button>
-        <el-alert
-          v-if="webhook?.verification_source === 'legacy_migration'"
-          :title="$t('site.message.authDeliveryMigrated')"
-          type="warning"
-          :closable="false"
-        />
-        <el-form label-position="top">
-          <el-form-item :label="$t('site.placeholder.authSmsWebhookUrl')">
-            <el-input v-model="draft.url" :disabled="active" />
+      <el-switch
+        :model-value="active"
+        :loading="changing"
+        :disabled="loading || saving || deleting"
+        :aria-label="$t('site.option.authPhoneDeliveryWebhook')"
+        @change="toggleDelivery"
+      />
+      <el-button link type="primary" class="phone-delivery__docs-link" @click="docsVisible = true">
+        {{ $t('site.field.authSmsWebhookDoc') }}
+      </el-button>
+      <el-alert
+        v-if="webhook?.verification_source === 'legacy_migration'"
+        :title="$t('site.message.authDeliveryMigrated')"
+        type="warning"
+        :closable="false"
+      />
+      <el-form label-position="top">
+        <el-form-item :label="$t('site.placeholder.authSmsWebhookUrl')">
+          <el-input v-model="draft.url" />
+        </el-form-item>
+        <el-form-item :label="$t('site.placeholder.authSmsWebhookSecret')">
+          <el-input v-model="draft.secret" type="password" show-password />
+          <span v-if="webhook?.secret_configured" class="phone-delivery__hint">
+            {{ $t('site.message.authSmsWebhookSecretConfigured') }}
+          </span>
+        </el-form-item>
+        <template v-if="webhook?.secret_configured && !dirty">
+          <el-form-item :label="$t('site.field.authSmsWebhookTestRegion')">
+            <el-input v-model="testTarget.region" placeholder="86" />
           </el-form-item>
-          <el-form-item :label="$t('site.placeholder.authSmsWebhookSecret')">
-            <el-input v-model="draft.secret" :disabled="active" type="password" show-password />
-            <span v-if="webhook?.secret_configured" class="phone-delivery__hint">
-              {{ $t('site.message.authSmsWebhookSecretConfigured') }}
-            </span>
+          <el-form-item :label="$t('site.field.authSmsWebhookTestNumber')">
+            <el-input v-model="testTarget.receiver" />
           </el-form-item>
-          <template v-if="!active && webhook?.secret_configured && !dirty">
-            <el-form-item :label="$t('site.field.authSmsWebhookTestRegion')">
-              <el-input v-model="testTarget.region" placeholder="86" />
-            </el-form-item>
-            <el-form-item :label="$t('site.field.authSmsWebhookTestNumber')">
-              <el-input v-model="testTarget.receiver" />
-            </el-form-item>
-          </template>
-        </el-form>
-        <el-alert
-          v-if="resultMessage"
-          :title="resultMessage"
-          :type="resultOk ? 'success' : 'error'"
-          :closable="false"
-        />
-        <div class="phone-delivery__actions">
-          <el-button v-if="!active" type="primary" :loading="saving" :disabled="!canSave" @click="saveDraft">
-            {{ $t('site.button.authEmailTransportSave') }}
-          </el-button>
-          <el-button
-            v-if="!active"
-            :loading="testing"
-            :disabled="dirty || !webhook?.secret_configured || !testTarget.receiver || !testTarget.region"
-            @click="testDelivery"
-          >
-            {{ $t('site.field.authSmsWebhookTest') }}
-          </el-button>
-          <el-button
-            v-if="!active"
-            type="success"
-            :loading="changing"
-            :disabled="dirty || (!testProof && !webhook?.verified)"
-            @click="activate"
-          >
-            {{ $t('site.button.authEmailTransportEnable') }}
-          </el-button>
-          <el-button v-if="active" :loading="changing" @click="switchToPlatform">
-            {{ $t('site.button.authEmailTransportDisable') }}
-          </el-button>
-          <el-button v-if="!active && webhook" type="danger" plain :loading="deleting" @click="remove">
-            {{ $t('common.button.delete') }}
-          </el-button>
-        </div>
+        </template>
+      </el-form>
+      <el-alert v-if="resultMessage" :title="resultMessage" :type="resultOk ? 'success' : 'error'" :closable="false" />
+      <div class="phone-delivery__actions">
+        <el-button type="primary" :loading="saving" :disabled="!canSave || changing" @click="saveDraft">
+          {{ $t('site.button.authEmailTransportSave') }}
+        </el-button>
+        <el-button
+          :loading="testing"
+          :disabled="dirty || !webhook?.secret_configured || !testTarget.receiver || !testTarget.region || changing"
+          @click="testDelivery"
+        >
+          {{ $t('site.field.authSmsWebhookTest') }}
+        </el-button>
+        <el-button
+          v-if="!active && webhook"
+          type="danger"
+          plain
+          :loading="deleting"
+          :disabled="changing"
+          @click="remove"
+        >
+          {{ $t('common.button.delete') }}
+        </el-button>
       </div>
       <el-dialog v-model="docsVisible" :title="$t('site.field.authSmsWebhookDocTitle')" width="min(640px, 90vw)">
         <div class="phone-delivery__docs">
@@ -118,8 +102,7 @@ import {
   ElInput,
   ElMessage,
   ElMessageBox,
-  ElRadioButton,
-  ElRadioGroup
+  ElSwitch
 } from 'element-plus';
 import type { ISiteAuthDelivery, ISiteAuthPhoneWebhook } from '@/models/site';
 import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
@@ -128,7 +111,7 @@ const emptyWebhook = (): ISiteAuthPhoneWebhook => ({ url: '', secret: '' });
 
 export default defineComponent({
   name: 'SitePhoneDelivery',
-  components: { ElAlert, ElButton, ElDialog, ElForm, ElFormItem, ElInput, ElRadioButton, ElRadioGroup },
+  components: { ElAlert, ElButton, ElDialog, ElForm, ElFormItem, ElInput, ElSwitch },
   props: {
     siteId: { type: String, required: true },
     providerEnabled: { type: Boolean, required: true }
@@ -136,7 +119,6 @@ export default defineComponent({
   data() {
     return {
       delivery: { type: 'platform' } as ISiteAuthDelivery,
-      viewMode: 'platform' as 'platform' | 'webhook',
       docsVisible: false,
       draft: emptyWebhook(),
       savedSnapshot: '',
@@ -200,18 +182,18 @@ export default defineComponent({
       delete value.test_proof;
       return value;
     },
-    apply(delivery: ISiteAuthDelivery, syncView = false) {
+    apply(delivery: ISiteAuthDelivery) {
       this.delivery = delivery || { type: 'platform' };
-      if (syncView) this.viewMode = this.delivery.type === 'webhook' ? 'webhook' : 'platform';
       this.draft = this.delivery.webhook ? { ...this.delivery.webhook, secret: '' } : emptyWebhook();
       this.savedSnapshot = JSON.stringify(this.safeDraft());
       this.testProof = '';
+      this.resultMessage = '';
     },
     async load() {
       this.loading = true;
       try {
         const { data } = await siteAuthDeliveryOperator.get(this.siteId);
-        this.apply(data.providers.phone?.delivery || { type: 'platform' }, true);
+        this.apply(data.providers.phone?.delivery || { type: 'platform' });
       } finally {
         this.loading = false;
       }
@@ -222,10 +204,22 @@ export default defineComponent({
     },
     async saveDraft() {
       if (!this.canSave) return;
+      const draft = this.safeDraft();
       this.saving = true;
       try {
-        await this.update({ type: 'platform', webhook: this.safeDraft() });
-        ElMessage.success(this.$t('site.message.authEmailTransportSaved'));
+        if (this.active) {
+          const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', {
+            type: 'platform',
+            webhook: this.webhook
+          });
+          this.delivery = data;
+          this.testProof = '';
+          this.resultMessage = '';
+        }
+        await this.update({ type: 'platform', webhook: draft });
+        ElMessage.success(this.$t('site.message.authDeliverySaved'));
+      } catch {
+        ElMessage.error(this.$t('site.error.authDeliverySave'));
       } finally {
         this.saving = false;
       }
@@ -243,22 +237,27 @@ export default defineComponent({
         this.testing = false;
       }
     },
-    async activate() {
-      if (this.dirty || (!this.testProof && !this.webhook?.verified) || !this.webhook) return;
-      this.changing = true;
-      try {
-        await this.update({
-          type: 'webhook',
-          webhook: { ...this.webhook, test_proof: this.testProof || undefined }
-        });
-      } finally {
-        this.changing = false;
+    async toggleDelivery(value: string | number | boolean) {
+      const enabled = value === true;
+      if (enabled && (this.dirty || (!this.testProof && !this.webhook?.verified) || !this.webhook)) {
+        ElMessage.warning(this.$t('site.message.authDeliveryEnableHelp'));
+        return;
       }
-    },
-    async switchToPlatform() {
+      const preserveDraft = !enabled && this.dirty;
+      const draft = { ...this.draft };
       this.changing = true;
       try {
-        await this.update({ type: 'platform', webhook: this.webhook });
+        const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', {
+          type: enabled ? 'webhook' : 'platform',
+          webhook: enabled ? { ...this.webhook!, test_proof: this.testProof || undefined } : this.webhook
+        });
+        this.apply(data);
+        if (preserveDraft) this.draft = draft;
+        ElMessage.success(
+          this.$t(enabled ? 'site.message.authDeliveryActivated' : 'site.message.authDeliveryPlatformActivated')
+        );
+      } catch {
+        ElMessage.error(this.$t('site.error.authDeliveryChange'));
       } finally {
         this.changing = false;
       }
@@ -289,11 +288,6 @@ export default defineComponent({
 .phone-delivery__content {
   width: min(100%, 520px);
   align-items: stretch;
-}
-.phone-delivery__panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 .phone-delivery__docs-link {
   align-self: flex-start;
