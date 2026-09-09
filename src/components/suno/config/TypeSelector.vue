@@ -59,6 +59,22 @@ export default defineComponent({
     return {
       options: [
         {
+          label: 'v6',
+          value: 'chirp-v6',
+          desc: this.$t('suno.model.v6desc')
+        },
+        {
+          label: 'v6 Wild',
+          value: 'chirp-v6-wild',
+          desc: this.$t('suno.model.v6wilddesc')
+        },
+        {
+          label: 'v6 Mini',
+          value: 'chirp-v6-mini',
+          desc: this.$t('suno.model.v6minidesc'),
+          dividerAfter: true
+        },
+        {
           label: 'v5.5',
           value: 'chirp-v5-5',
           desc: this.$t('suno.model.v55desc')
