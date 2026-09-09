@@ -56,7 +56,7 @@
     "description": "Size option: auto — the model picks the aspect ratio from your prompt"
   },
   "description.size": {
-    "message": "Output image size. Supported values vary by model: gpt-image-1 / gpt-image-1.5 only accept 1024x1024, 1536x1024, 1024x1536. gpt-image-2 additionally supports 1792x1024, 1024x1792 and 2K/4K presets, and allows custom dimensions.",
+    "message": "Output image size. gpt-image-1 / gpt-image-1.5 support three 1K presets. The GPT Image 2 family also supports more 1K, 2K/4K presets, and custom dimensions.",
     "description": "Size description"
   },
   "sizeGroup.standard1k": {
@@ -76,7 +76,7 @@
     "description": "Custom-size toggle label"
   },
   "description.customSize": {
-    "message": "Enable to set width and height freely (gpt-image-2 only). Each side must be a multiple of 16, the longer side ≤ 3840, and total pixels ≤ 8,294,400.",
+    "message": "The GPT Image 2 family supports custom dimensions. Each side must be a multiple of 16, the longer side ≤ 3840, total pixels 655,360–8,294,400, and aspect ratio no greater than 3:1.",
     "description": "Custom-size toggle description"
   },
   "name.width": {
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2 (Official)",
     "description": "gpt-image-2 official-relay model option"
+  },
+  "error.customSizeMinPixels": {
+    "message": "Total pixels must be at least {pixels}",
+    "description": "Custom-size minimum pixel-budget validation"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "Aspect ratio cannot exceed {ratio}:1",
+    "description": "Custom-size aspect-ratio validation"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (Fast)",
+    "description": "gpt-image-2.5-flare model option"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (High Fidelity)",
+    "description": "gpt-image-2.5-sunburst model option"
   }
 }

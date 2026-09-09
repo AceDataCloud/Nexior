@@ -56,8 +56,8 @@
     "description": "Größenauswahl: Automatisch, das Modell wählt das passende Seitenverhältnis basierend auf dem Eingabetext aus"
   },
   "description.size": {
-    "message": "Ausgabemaß für die Erstellung von Bildern, gängige Werte: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Größenbeschreibung"
+    "message": "Ausgabebildgröße. gpt-image-1 / gpt-image-1.5 unterstützen drei 1K-Voreinstellungen; die GPT Image 2-Serie unterstützt zusätzlich mehr 1K-, 2K/4K-Voreinstellungen und benutzerdefinierte Größen.",
+    "description": "Erläuterung zur Bildgröße"
   },
   "sizeGroup.standard1k": {
     "message": "1K Standard",
@@ -76,8 +76,8 @@
     "description": "Label für den Schalter der benutzerdefinierten Größe"
   },
   "description.customSize": {
-    "message": "Aktivieren Sie die freie Einstellung von Breite und Höhe (nur gpt-image-2 unterstützt). Muss ein Vielfaches von 16 sein, längste Seite ≤ 3840, Gesamtpixel ≤ 8.294.400.",
-    "description": "Beschreibung der benutzerdefinierten Größe"
+    "message": "Die GPT Image 2-Serie kann in Breite und Höhe frei eingestellt werden. Breite und Höhe müssen Vielfache von 16 sein, die längste Seite ≤ 3840, die Gesamtpixelzahl liegt zwischen 655.360 und 8.294.400, das Seitenverhältnis darf 3:1 nicht überschreiten.",
+    "description": "Erläuterung zu benutzerdefinierten Größen"
   },
   "name.width": {
     "message": "Breite",
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2 (Offiziell)",
     "description": "gpt-image-2 Modelloption (offizielles Relay)"
+  },
+  "error.customSizeMinPixels": {
+    "message": "Die Gesamtpixelanzahl darf nicht weniger als {pixels} sein",
+    "description": "Untergrenze für die Gesamtpixelanzahl bei benutzerdefinierten Größen"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "Das Seitenverhältnis darf {ratio}:1 nicht überschreiten",
+    "description": "Obergrenze für das benutzerdefinierte Größen-Seitenverhältnis"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (schnell)",
+    "description": "Modelloption gpt-image-2.5-flare"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (hohe Treue)",
+    "description": "Modelloption gpt-image-2.5-sunburst"
   }
 }

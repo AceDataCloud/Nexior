@@ -66,13 +66,14 @@ import { ElSelect, ElOption, ElOptionGroup, ElSwitch, ElInputNumber } from 'elem
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   OPENAIIMAGE_CUSTOM_SIZE_MAX,
+  OPENAIIMAGE_CUSTOM_SIZE_MAX_ASPECT_RATIO,
   OPENAIIMAGE_CUSTOM_SIZE_MAX_PIXELS,
   OPENAIIMAGE_CUSTOM_SIZE_MIN,
+  OPENAIIMAGE_CUSTOM_SIZE_MIN_PIXELS,
   OPENAIIMAGE_CUSTOM_SIZE_MODELS,
   OPENAIIMAGE_CUSTOM_SIZE_MULTIPLE,
   OPENAIIMAGE_DEFAULT_MODEL,
-  OPENAIIMAGE_MODEL_GPT_IMAGE_2,
-  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
+  OPENAIIMAGE_GPT_IMAGE_2_FAMILY_MODELS,
   OPENAIIMAGE_MODEL_SIZES,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K,
@@ -132,7 +133,7 @@ export default defineComponent({
       return OPENAIIMAGE_MODEL_SIZES[this.model] ?? OPENAIIMAGE_MODEL_SIZES[OPENAIIMAGE_DEFAULT_MODEL] ?? [];
     },
     presetGroups(): IGroup[] {
-      if (this.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2 || this.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL) {
+      if (OPENAIIMAGE_GPT_IMAGE_2_FAMILY_MODELS.includes(this.model)) {
         return [
           { label: this.$t('openaiimage.sizeGroup.standard1k'), options: OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K },
           { label: this.$t('openaiimage.sizeGroup.preset2k'), options: OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K },
@@ -191,9 +192,19 @@ export default defineComponent({
       if (Math.max(w, h) > this.maxSide) {
         return this.$t('openaiimage.error.customSizeMax', { max: this.maxSide }) as string;
       }
+      if (w * h < OPENAIIMAGE_CUSTOM_SIZE_MIN_PIXELS) {
+        return this.$t('openaiimage.error.customSizeMinPixels', {
+          pixels: OPENAIIMAGE_CUSTOM_SIZE_MIN_PIXELS.toLocaleString()
+        }) as string;
+      }
       if (w * h > OPENAIIMAGE_CUSTOM_SIZE_MAX_PIXELS) {
         return this.$t('openaiimage.error.customSizePixels', {
           pixels: OPENAIIMAGE_CUSTOM_SIZE_MAX_PIXELS.toLocaleString()
+        }) as string;
+      }
+      if (Math.max(w, h) / Math.min(w, h) > OPENAIIMAGE_CUSTOM_SIZE_MAX_ASPECT_RATIO) {
+        return this.$t('openaiimage.error.customSizeAspectRatio', {
+          ratio: OPENAIIMAGE_CUSTOM_SIZE_MAX_ASPECT_RATIO
         }) as string;
       }
       return '';

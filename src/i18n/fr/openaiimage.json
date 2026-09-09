@@ -51,9 +51,13 @@
     "message": "Taille",
     "description": "Taille de l'image générée"
   },
+  "size.auto": {
+    "message": "Automatique",
+    "description": "Option de taille : automatique — le modèle choisit le rapport d'aspect à partir de votre prompt"
+  },
   "description.size": {
-    "message": "La taille de sortie pour générer une image, tailles courantes : 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Description de la taille"
+    "message": "Dimensions de l'image de sortie. gpt-image-1 / gpt-image-1.5 prend en charge trois préréglages 1K ; la série GPT Image 2 prend également en charge davantage de préréglages 1K, 2K/4K et des dimensions personnalisées.",
+    "description": "Explication des dimensions"
   },
   "sizeGroup.standard1k": {
     "message": "Standard 1K",
@@ -72,8 +76,8 @@
     "description": "Étiquette du bouton ou du commutateur pour la taille personnalisée"
   },
   "description.customSize": {
-    "message": "Permet de définir librement la largeur et la hauteur (supporté uniquement par gpt-image-2). Doit être un multiple de 16, le côté le plus long ≤ 3840, et le total des pixels ≤ 8 294 400.",
-    "description": "Explication de la taille personnalisée"
+    "message": "La série GPT Image 2 permet de définir librement la largeur et la hauteur. La largeur et la hauteur doivent être des multiples de 16, la plus longue dimension ≤ 3840, le total des pixels étant compris entre 655 360 et 8 294 400, avec un rapport d'aspect ne dépassant pas 3:1.",
+    "description": "Explication des dimensions personnalisées"
   },
   "name.width": {
     "message": "Largeur",
@@ -183,8 +187,20 @@
     "message": "gpt-image-2 (Officiel)",
     "description": "Option de modèle gpt-image-2 (relais officiel)"
   },
-  "size.auto": {
-    "message": "Automatique",
-    "description": "Option de taille : automatique — le modèle choisit le rapport d'aspect à partir de votre prompt"
+  "error.customSizeMinPixels": {
+    "message": "Le nombre total de pixels ne peut pas être inférieur à {pixels}",
+    "description": "Limite inférieure du nombre total de pixels pour les tailles personnalisées"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "Le rapport hauteur/largeur ne peut pas dépasser {ratio}:1",
+    "description": "Limite supérieure du rapport hauteur/largeur pour les tailles personnalisées"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (rapide)",
+    "description": "Option de modèle gpt-image-2.5-flare"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (haute fidélité)",
+    "description": "Option de modèle gpt-image-2.5-sunburst"
   }
 }

@@ -51,8 +51,12 @@
     "message": "尺寸",
     "description": "輸出影象尺寸"
   },
+  "size.auto": {
+    "message": "自動",
+    "description": "尺寸選項：自動，由模型根據提示詞選擇合適的寬高比"
+  },
   "description.size": {
-    "message": "用於生成圖片的輸出尺寸，常用值：1024x1024、1536x1024、1024x1536。",
+    "message": "輸出圖像尺寸。gpt-image-1 / gpt-image-1.5 支援三個 1K 預設；GPT Image 2 系列還支援更多 1K、2K/4K 預設及自訂尺寸。",
     "description": "尺寸說明"
   },
   "sizeGroup.standard1k": {
@@ -72,7 +76,7 @@
     "description": "自訂尺寸開關標籤"
   },
   "description.customSize": {
-    "message": "啟用後可自由設定寬高（僅 gpt-image-2 支援）。需為 16 的倍數，最長邊 ≤ 3840，總畫素 ≤ 8,294,400。",
+    "message": "GPT Image 2 系列可自由設定寬高。寬高需為 16 的倍數，最長邊 ≤ 3840，總像素為 655,360–8,294,400，寬高比不超過 3:1。",
     "description": "自訂尺寸說明"
   },
   "name.width": {
@@ -183,8 +187,20 @@
     "message": "gpt-image-2（官方直連）",
     "description": "gpt-image-2 官方直連模型選項"
   },
-  "size.auto": {
-    "message": "自動",
-    "description": "尺寸選項：自動，由模型根據提示詞選擇合適的寬高比"
+  "error.customSizeMinPixels": {
+    "message": "總像素不能少於 {pixels}",
+    "description": "自訂尺寸總像素下限"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "寬高比不能超過 {ratio}:1",
+    "description": "自訂尺寸寬高比上限"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare（快速）",
+    "description": "gpt-image-2.5-flare 模型選項"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst（高保真）",
+    "description": "gpt-image-2.5-sunburst 模型選項"
   }
 }

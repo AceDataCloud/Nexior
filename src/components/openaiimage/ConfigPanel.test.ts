@@ -3,7 +3,12 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import ConfigPanel from './ConfigPanel.vue';
-import { OPENAIIMAGE_MODEL_GPT_IMAGE_2, OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL } from '@/constants';
+import {
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
+} from '@/constants';
 
 function mountPanel(model: string) {
   return shallowMount(ConfigPanel, {
@@ -37,4 +42,14 @@ describe('OpenAI Image ConfigPanel pricing', () => {
     );
     expect(standard.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe('');
   });
+
+  it.each([OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE, OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST])(
+    'uses fixed pricing display for %s',
+    (model) => {
+      const panel = mountPanel(model);
+
+      expect((panel.vm as any).pricingNote).toBe('');
+      expect((panel.vm as any).displayConsumption).toBe(0);
+    }
+  );
 });

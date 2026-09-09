@@ -56,8 +56,8 @@
     "description": "خيارات الحجم: تلقائي، يتم اختيار نسبة العرض إلى الارتفاع المناسبة بواسطة النموذج بناءً على نص التوجيه."
   },
   "description.size": {
-    "message": "حجم الإخراج المستخدم لإنشاء الصورة، القيم الشائعة: 1024x1024، 1536x1024، 1024x1536.",
-    "description": "وصف الحجم"
+    "message": "أبعاد الصورة الناتجة. تدعم gpt-image-1 / gpt-image-1.5 ثلاثة إعدادات مسبقة بدقة 1K؛ بينما تدعم سلسلة GPT Image 2 المزيد من الإعدادات المسبقة بدقة 1K و2K/4K بالإضافة إلى الأبعاد المخصصة.",
+    "description": "وصف الأبعاد"
   },
   "sizeGroup.standard1k": {
     "message": "الإعداد القياسي 1K",
@@ -76,8 +76,8 @@
     "description": "علامة تبديل الحجم المخصص"
   },
   "description.customSize": {
-    "message": "عند التفعيل، يمكنك ضبط العرض والارتفاع بحرية (يدعمه gpt-image-2 فقط). يجب أن يكون مضاعفًا للعدد 16، والجانب الأطول ≤ 3840، وإجمالي وحدات البكسل ≤ 8,294,400.",
-    "description": "وصف الحجم المخصص"
+    "message": "يمكن ضبط أبعاد سلسلة GPT Image 2 بحرية. يجب أن تكون الأبعاد مضاعفات 16، وأقصى طول ≤ 3840، وإجمالي عدد البكسلات بين 655,360 و 8,294,400، ونسبة العرض إلى الارتفاع لا تتجاوز 3:1.",
+    "description": "وصف الأبعاد المخصصة"
   },
   "name.width": {
     "message": "عرض",
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2 (رسمي)",
     "description": "خيار نموذج gpt-image-2 عبر التوصيل الرسمي"
+  },
+  "error.customSizeMinPixels": {
+    "message": "يجب ألا يقل إجمالي عدد البكسلات عن {pixels}",
+    "description": "الحد الأدنى لإجمالي عدد البكسلات للأبعاد المخصصة"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "لا يمكن أن تتجاوز نسبة العرض إلى الارتفاع {ratio}:1",
+    "description": "الحد الأقصى لنسبة العرض إلى الارتفاع للأبعاد المخصصة"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (سريع)",
+    "description": "خيار نموذج gpt-image-2.5-flare"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (عالي الدقة)",
+    "description": "خيار نموذج gpt-image-2.5-sunburst"
   }
 }

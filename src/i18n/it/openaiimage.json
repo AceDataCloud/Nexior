@@ -51,9 +51,13 @@
     "message": "Dimensione",
     "description": "Dimensione dell'immagine di output"
   },
+  "size.auto": {
+    "message": "Automatico",
+    "description": "Opzione dimensione: automatico — il modello sceglie le proporzioni dal tuo prompt"
+  },
   "description.size": {
-    "message": "Dimensione di output per generare l'immagine, valori comuni: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Descrizione della dimensione"
+    "message": "Dimensioni dell'immagine di output. gpt-image-1 / gpt-image-1.5 supportano tre preset 1K; la serie GPT Image 2 supporta anche più preset 1K, 2K/4K e dimensioni personalizzate.",
+    "description": "Descrizione delle dimensioni"
   },
   "sizeGroup.standard1k": {
     "message": "Standard 1K",
@@ -72,7 +76,7 @@
     "description": "Etichetta per l'interruttore delle dimensioni personalizzate"
   },
   "description.customSize": {
-    "message": "Abilitando, puoi impostare liberamente larghezza e altezza (solo gpt-image-2 supporta). Deve essere un multiplo di 16, lato massimo ≤ 3840, totale pixel ≤ 8.294.400.",
+    "message": "La serie GPT Image 2 consente di impostare liberamente larghezza e altezza. La larghezza e l'altezza devono essere multipli di 16, con il lato più lungo ≤ 3840, il numero totale di pixel compreso tra 655.360 e 8.294.400, e il rapporto d'aspetto non superiore a 3:1.",
     "description": "Descrizione delle dimensioni personalizzate"
   },
   "name.width": {
@@ -183,8 +187,20 @@
     "message": "gpt-image-2 (Ufficiale)",
     "description": "Opzione modello gpt-image-2 (relay ufficiale)"
   },
-  "size.auto": {
-    "message": "Automatico",
-    "description": "Opzione dimensione: automatico — il modello sceglie le proporzioni dal tuo prompt"
+  "error.customSizeMinPixels": {
+    "message": "Il numero totale di pixel non può essere inferiore a {pixels}",
+    "description": "Limite minimo del numero totale di pixel per le dimensioni personalizzate"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "Il rapporto d'aspetto non può superare {ratio}:1",
+    "description": "Limite massimo del rapporto d'aspetto per le dimensioni personalizzate"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (Veloce)",
+    "description": "Opzione del modello gpt-image-2.5-flare"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (Alta fedeltà)",
+    "description": "Opzione del modello gpt-image-2.5-sunburst"
   }
 }

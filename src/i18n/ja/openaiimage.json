@@ -56,8 +56,8 @@
     "description": "サイズオプション：自動、モデルがプロンプトに基づいて適切なアスペクト比を選択します"
   },
   "description.size": {
-    "message": "画像生成のための出力サイズ。一般的な値：1024x1024、1536x1024、1024x1536。",
-    "description": "サイズ説明"
+    "message": "出力画像サイズ。gpt-image-1 / gpt-image-1.5は3つの1Kプリセットをサポート；GPT Image 2シリーズはさらに多くの1K、2K/4Kプリセットおよびカスタムサイズをサポートします。",
+    "description": "サイズの説明"
   },
   "sizeGroup.standard1k": {
     "message": "1K 標準",
@@ -76,7 +76,7 @@
     "description": "カスタムサイズ切り替えラベル"
   },
   "description.customSize": {
-    "message": "幅と高さを自由に設定できます（gpt-image-2 のみ対応）。16 の倍数、長辺 ≤ 3840、総ピクセル数 ≤ 8,294,400 が必要です。",
+    "message": "GPT Image 2シリーズは自由に幅と高さを設定できます。幅と高さは16の倍数でなければならず、最長辺は3840以下、総ピクセル数は655,360〜8,294,400、アスペクト比は3:1を超えない必要があります。",
     "description": "カスタムサイズの説明"
   },
   "name.width": {
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2（公式）",
     "description": "gpt-image-2（公式リレー）モデルオプション"
+  },
+  "error.customSizeMinPixels": {
+    "message": "総ピクセル数は {pixels} 未満にできません",
+    "description": "カスタムサイズの総ピクセル数下限"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "アスペクト比は {ratio}:1 を超えることはできません",
+    "description": "カスタムサイズのアスペクト比上限"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare（高速）",
+    "description": "gpt-image-2.5-flare モデルの選択肢"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst（高忠実度）",
+    "description": "gpt-image-2.5-sunburst モデルの選択肢"
   }
 }

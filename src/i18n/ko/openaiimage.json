@@ -56,8 +56,8 @@
     "description": "크기 옵션: 자동, 모델이 프롬프트에 따라 적절한 가로 세로 비율을 선택합니다."
   },
   "description.size": {
-    "message": "이미지 생성을 위한 출력 크기, 일반적인 값: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "크기 설명"
+    "message": "출력 이미지 크기. gpt-image-1 / gpt-image-1.5는 세 가지 1K 프리셋을 지원하며, GPT 이미지 2 시리즈는 더 많은 1K, 2K/4K 프리셋 및 사용자 정의 크기를 지원합니다.",
+    "description": "이미지의 크기와 관련된 설명입니다."
   },
   "sizeGroup.standard1k": {
     "message": "1K 표준",
@@ -76,8 +76,8 @@
     "description": "사용자 지정 크기 토글 레이블"
   },
   "description.customSize": {
-    "message": "활성화하면 너비와 높이를 자유롭게 설정할 수 있습니다 (gpt-image-2만 지원). 16의 배수여야 하며, 긴 변 ≤ 3840, 총 픽셀 ≤ 8,294,400이어야 합니다.",
-    "description": "사용자 지정 크기 설명"
+    "message": "GPT 이미지 2 시리즈는 자유롭게 너비와 높이를 설정할 수 있습니다. 너비와 높이는 16의 배수여야 하며, 가장 긴 변은 ≤ 3840, 총 픽셀 수는 655,360–8,294,400, 가로 세로 비율은 3:1을 초과할 수 없습니다.",
+    "description": "사용자가 원하는 크기를 설정할 수 있는 방법에 대한 설명입니다."
   },
   "name.width": {
     "message": "너비",
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2 (공식)",
     "description": "gpt-image-2(공식 릴레이) 모델 옵션"
+  },
+  "error.customSizeMinPixels": {
+    "message": "총 픽셀 수는 {pixels}보다 적을 수 없습니다",
+    "description": "사용자 지정 크기의 총 픽셀 수 하한"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "가로세로 비율은 {ratio}:1을 초과할 수 없습니다",
+    "description": "사용자 지정 크기의 가로세로 비율 상한"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare（빠른 처리）",
+    "description": "gpt-image-2.5-flare 모델 옵션"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst（고화질）",
+    "description": "gpt-image-2.5-sunburst 모델 옵션"
   }
 }
