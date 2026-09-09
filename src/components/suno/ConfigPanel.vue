@@ -143,7 +143,9 @@ export default defineComponent({
     },
     supportsVocalGender() {
       const model = this.config?.model || '';
-      return ['chirp-v4-5-plus', 'chirp-v5', 'chirp-v5-5'].includes(model);
+      return ['chirp-v4-5-plus', 'chirp-v5', 'chirp-v5-5', 'chirp-v6', 'chirp-v6-wild', 'chirp-v6-mini'].includes(
+        model
+      );
     },
     supportsPersona() {
       const action = this.config?.action;
