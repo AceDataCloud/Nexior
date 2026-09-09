@@ -6,7 +6,7 @@
         <info-icon :content="modelDescription" class="info" />
       </div>
     </div>
-    <el-select v-model="value" class="value" :placeholder="$t('openaiimage.placeholder.select')">
+    <el-select v-model="value" class="value" :placeholder="$t('openaiimage.placeholder.select')" :title="value">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -20,6 +20,8 @@ import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_1,
   OPENAIIMAGE_MODEL_GPT_IMAGE_15,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -45,6 +47,14 @@ export default defineComponent({
         {
           value: OPENAIIMAGE_MODEL_GPT_IMAGE_2,
           label: this.$t('openaiimage.model.gptImage2')
+        },
+        {
+          value: OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+          label: this.$t('openaiimage.model.gptImage25Flare')
+        },
+        {
+          value: OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+          label: this.$t('openaiimage.model.gptImage25Sunburst')
         },
         {
           value: OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
@@ -107,6 +117,15 @@ export default defineComponent({
 
   .value {
     width: 160px;
+
+    :deep(.el-select__selected-item),
+    :deep(.el-select__selected-item span) {
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
 </style>

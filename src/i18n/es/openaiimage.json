@@ -56,8 +56,8 @@
     "description": "Opción de tamaño: automático, el modelo selecciona la proporción de ancho y alto adecuada según la indicación"
   },
   "description.size": {
-    "message": "Tamaño de salida para generar imágenes, valores comunes: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Descripción del tamaño"
+    "message": "Tamaño de la imagen de salida. gpt-image-1 / gpt-image-1.5 soporta tres preajustes de 1K; la serie GPT Image 2 también soporta más preajustes de 1K, 2K/4K y tamaños personalizados.",
+    "description": "Explicación sobre el tamaño"
   },
   "sizeGroup.standard1k": {
     "message": "Estándar 1K",
@@ -76,8 +76,8 @@
     "description": "Etiqueta del interruptor de tamaño personalizado"
   },
   "description.customSize": {
-    "message": "Al activarlo, puedes establecer libremente el ancho y alto (solo compatible con gpt-image-2). Debe ser múltiplo de 16, el lado más largo ≤ 3840, y el total de píxeles ≤ 8.294.400.",
-    "description": "Explicación del tamaño personalizado"
+    "message": "La serie GPT Image 2 permite establecer libremente el ancho y la altura. El ancho y la altura deben ser múltiplos de 16, el lado más largo ≤ 3840, el total de píxeles entre 655,360 y 8,294,400, y la relación de aspecto no debe exceder 3:1.",
+    "description": "Explicación sobre el tamaño personalizado"
   },
   "name.width": {
     "message": "Ancho",
@@ -186,5 +186,21 @@
   "model.gptImage2Official": {
     "message": "gpt-image-2 (Oficial)",
     "description": "Opción de modelo gpt-image-2 (relé oficial)"
+  },
+  "error.customSizeMinPixels": {
+    "message": "El total de píxeles no puede ser menor que {pixels}",
+    "description": "Límite inferior del total de píxeles para tamaños personalizados"
+  },
+  "error.customSizeAspectRatio": {
+    "message": "La relación de aspecto no puede exceder {ratio}:1",
+    "description": "Límite superior de la relación de aspecto para tamaños personalizados"
+  },
+  "model.gptImage25Flare": {
+    "message": "gpt-image-2.5-flare (rápido)",
+    "description": "Opción de modelo gpt-image-2.5-flare"
+  },
+  "model.gptImage25Sunburst": {
+    "message": "gpt-image-2.5-sunburst (alta fidelidad)",
+    "description": "Opción de modelo gpt-image-2.5-sunburst"
   }
 }

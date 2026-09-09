@@ -37,6 +37,25 @@ describe('x402 image request builders', () => {
     });
   });
 
+  it.each(['gpt-image-2.5-flare', 'gpt-image-2.5-sunburst'])(
+    'preserves the exact GPT Image 2.5 model in generation requests: %s',
+    (model) => {
+      expect(
+        buildOpenAIImageGenerateRequest({
+          model,
+          prompt: '  draw a cat  ',
+          size: '2048x1152'
+        })
+      ).toEqual({
+        model,
+        prompt: 'draw a cat',
+        size: '2048x1152',
+        action: 'generate',
+        async: true
+      });
+    }
+  );
+
   it('builds a trimmed GPT Image generation payload without edit images', () => {
     expect(
       buildOpenAIImageGenerateRequest({
