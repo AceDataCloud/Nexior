@@ -141,7 +141,7 @@
   },
   "field.authSmsWebhookTest": {
     "message": "Test",
-    "description": "Schaltfläche, die den Dialog zum Testen des SMS-Webhooks öffnet"
+    "description": "Schaltfläche, die den Testdialog für das SMS-Webhook öffnet"
   },
   "message.authSmsWebhookNeedsPhone": {
     "message": "Sie müssen die „Telefonnummer“-Anmeldemethode aktivieren, um die benutzerdefinierte SMS-Absenderadresse zu konfigurieren.",
@@ -160,15 +160,15 @@
     "description": "Überschrift: Anfrageabschnitt der SMS-Webhook-Spezifikation"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Die Methode ist POST, der Content-Type ist application/json. Der Zweck kann login / register / test sein (test ist ein Verbindungstest, SMS müssen nicht tatsächlich gesendet werden). Die Struktur des Anfragekörpers ist wie folgt:",
-    "description": "Beschreibt die Anfragemethode und den Körper des SMS-Webhook"
+    "message": "Die Methode ist POST, Content-Type ist application/json. Der Zweck identifiziert Registrierung, Anmeldung oder andere Szenarien für Bestätigungscodes; bitte senden Sie den Bestätigungscode gemäß data.code und data.ttl_seconds. Der Zweck der Testanfrage ist test und erstellt keine anmeldefähigen Bestätigungscode-Aufzeichnungen.",
+    "description": "Beschreibt die Anfragemethode und den Körper des SMS-Webhooks"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "Signaturprüfung",
     "description": "Überschrift: Signaturabschnitt der SMS-Webhook-Spezifikation"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Fügen Sie bei jeder Anfrage die folgenden Header hinzu. Bitte führen Sie die HMAC-SHA256-Überprüfung mit Ihrem Signaturschlüssel gemäß den Standard-Webhooks durch und verwenden Sie den konstanten Zeitvergleich:",
+    "message": "Bitte fügen Sie webhook-id, webhook-timestamp und den empfangenen ursprünglichen Anfragekörper zusammen und berechnen Sie HMAC-SHA256 mit dem Signaturschlüssel. Überprüfen Sie den Zeitstempel und verwenden Sie einen konstanten Zeitvergleich. Analysieren Sie den Anfragekörper nicht zuerst und serialisieren Sie ihn dann erneut:",
     "description": "Beschreibt die Signaturüberprüfung für das SMS-Webhook"
   },
   "field.authSmsWebhookDocResponse": {
@@ -176,8 +176,8 @@
     "description": "Überschrift: Antwortabschnitt der SMS-Webhook-Spezifikation"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Bei erfolgreichem Versand geben Sie 2xx zurück; um einen Fehler explizit anzuzeigen, können Sie HTTP 200 zurückgeben, wobei das Feld success im Body false ist (siehe Beispiel unten). Bitte antworten Sie innerhalb von 5 Sekunden.",
-    "description": "Beschreibt die erwartete Antwort des SMS-Webhook"
+    "message": "Jede 2xx-Antwort bedeutet, dass der Empfang erfolgreich war; um eine klare Ablehnung zu signalisieren, geben Sie JSON zurück und setzen Sie das Feld success auf false. Bitte antworten Sie schnell, warten Sie nicht auf den asynchronen SMS-Statusbericht.",
+    "description": "Beschreibt die erwartete Antwort des SMS-Webhooks."
   },
   "field.authSmsWebhookTestTitle": {
     "message": "Benutzerdefinierte SMS-Absenderadresse testen",
@@ -1466,31 +1466,31 @@
     "message": "Bitte richten Sie zuerst eine E-Mail-Adresse für das aktuelle Konto ein, bevor Sie eine Test-E-Mail senden.",
     "description": "SMTP-Transportfehler"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "Plattformzustellung",
     "description": "Verwendung des von der Plattform gehosteten Dienstes zur Zustellung von Bestätigungscodes."
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "Benutzerdefiniertes SMTP",
     "description": "Versenden von Bestätigungsmails über den konfigurierten SMTP-Server der Website."
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "Benutzerdefinierter Webhook",
     "description": "Senden von Anfragen für Mobiltelefon-Bestätigungscodes an den konfigurierten und signierten Webhook der Website."
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "Diese Anmeldemethode wurde deaktiviert, aber die Zustellkonfiguration kann weiterhin verwaltet werden.",
     "description": "Erlaubt die Verwaltung der Zustellkonfiguration, auch wenn die Authentifizierungsmethode deaktiviert ist."
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "Diese Konfiguration wurde aus dem alten Format migriert, ist derzeit weiterhin aktiv, wurde jedoch noch nicht erneut getestet; es wird empfohlen, die Tests vor Änderungen abzuschließen.",
     "description": "Hinweis zum Status der Migration der alten Zustellkonfiguration."
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "Webhook-Signaturschlüssel konfiguriert; Leer lassen, um den ursprünglichen Schlüssel beizubehalten.",
     "description": "Status des Webhook-Schlüssels nur zum Schreiben."
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "Auf Plattformzustellung umschalten",
     "description": "Behalten Sie die benutzerdefinierte Konfiguration bei und wechseln Sie zur Plattformzustellung."
   }

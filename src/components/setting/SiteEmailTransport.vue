@@ -11,73 +11,86 @@
         type="info"
         :closable="false"
       />
-      <el-radio-group :model-value="delivery.type" :disabled="loading || changing" @change="changeType">
-        <el-radio-button value="platform">{{ $t('site.option.authDeliveryPlatform') }}</el-radio-button>
-        <el-radio-button value="smtp">{{ $t('site.option.authEmailDeliverySmtp') }}</el-radio-button>
+      <el-radio-group v-model="viewMode" :disabled="loading">
+        <el-radio-button label="platform">{{ $t('site.option.authDeliveryPlatform') }}</el-radio-button>
+        <el-radio-button label="smtp">{{ $t('site.option.authEmailDeliverySmtp') }}</el-radio-button>
       </el-radio-group>
-      <el-alert
-        v-if="smtp?.verification_source === 'legacy_migration'"
-        :title="$t('site.message.authDeliveryMigrated')"
-        type="warning"
-        :closable="false"
-      />
-      <el-form label-position="top" class="email-delivery__form">
-        <el-form-item :label="$t('site.field.authEmailTransportSecurity')">
-          <el-select v-model="draft.security" :disabled="active" @change="onSecurityChange">
-            <el-option value="starttls" :label="$t('site.option.authEmailTransportStarttls')" />
-            <el-option value="implicit_tls" :label="$t('site.option.authEmailTransportImplicitTls')" />
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportHost')">
-          <el-input v-model="draft.host" :disabled="active" placeholder="smtp.example.com" />
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportUsername')">
-          <el-input v-model="draft.username" :disabled="active" />
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportPassword')">
-          <el-input v-model="draft.password" :disabled="active" type="password" show-password />
-          <span v-if="smtp?.password_configured" class="email-delivery__hint">
-            {{ $t('site.message.authEmailTransportPasswordConfigured') }}
-          </span>
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportFromEmail')">
-          <el-input v-model="draft.from_email" :disabled="active" />
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportFromName')">
-          <el-input v-model="draft.from_name" :disabled="active" />
-        </el-form-item>
-        <el-form-item :label="$t('site.field.authEmailTransportReplyTo')">
-          <el-input v-model="draft.reply_to" :disabled="active" />
-        </el-form-item>
-      </el-form>
-      <el-alert v-if="resultMessage" :title="resultMessage" :type="resultOk ? 'success' : 'error'" :closable="false" />
-      <div class="email-delivery__actions">
-        <el-button v-if="!active" type="primary" :loading="saving" :disabled="!canSave" @click="saveDraft">
-          {{ $t('site.button.authEmailTransportSave') }}
-        </el-button>
-        <el-button
-          v-if="!active"
-          :loading="testing"
-          :disabled="!smtp?.password_configured || dirty"
-          @click="testDelivery"
-        >
-          {{ $t('site.button.authEmailTransportTest') }}
-        </el-button>
-        <el-button
-          v-if="!active"
-          type="success"
-          :loading="changing"
-          :disabled="dirty || (!testProof && !smtp?.verified)"
-          @click="activate"
-        >
-          {{ $t('site.button.authEmailTransportEnable') }}
-        </el-button>
-        <el-button v-if="active" :loading="changing" @click="switchToPlatform">
+      <div v-if="viewMode === 'platform'" class="email-delivery__panel">
+        <el-alert v-if="!active" :title="$t('site.option.authDeliveryPlatform')" type="success" :closable="false" />
+        <el-button v-if="active" type="primary" :loading="changing" @click="switchToPlatform">
           {{ $t('site.button.authEmailTransportDisable') }}
         </el-button>
-        <el-button v-if="!active && smtp" type="danger" plain :loading="deleting" @click="remove">
-          {{ $t('common.button.delete') }}
-        </el-button>
+      </div>
+      <div v-else class="email-delivery__panel">
+        <el-alert
+          v-if="smtp?.verification_source === 'legacy_migration'"
+          :title="$t('site.message.authDeliveryMigrated')"
+          type="warning"
+          :closable="false"
+        />
+        <el-form label-position="top" class="email-delivery__form">
+          <el-form-item :label="$t('site.field.authEmailTransportSecurity')">
+            <el-select v-model="draft.security" :disabled="active" @change="onSecurityChange">
+              <el-option value="starttls" :label="$t('site.option.authEmailTransportStarttls')" />
+              <el-option value="implicit_tls" :label="$t('site.option.authEmailTransportImplicitTls')" />
+            </el-select>
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportHost')">
+            <el-input v-model="draft.host" :disabled="active" placeholder="smtp.example.com" />
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportUsername')">
+            <el-input v-model="draft.username" :disabled="active" />
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportPassword')">
+            <el-input v-model="draft.password" :disabled="active" type="password" show-password />
+            <span v-if="smtp?.password_configured" class="email-delivery__hint">
+              {{ $t('site.message.authEmailTransportPasswordConfigured') }}
+            </span>
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportFromEmail')">
+            <el-input v-model="draft.from_email" :disabled="active" />
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportFromName')">
+            <el-input v-model="draft.from_name" :disabled="active" />
+          </el-form-item>
+          <el-form-item :label="$t('site.field.authEmailTransportReplyTo')">
+            <el-input v-model="draft.reply_to" :disabled="active" />
+          </el-form-item>
+        </el-form>
+        <el-alert
+          v-if="resultMessage"
+          :title="resultMessage"
+          :type="resultOk ? 'success' : 'error'"
+          :closable="false"
+        />
+        <div class="email-delivery__actions">
+          <el-button v-if="!active" type="primary" :loading="saving" :disabled="!canSave" @click="saveDraft">
+            {{ $t('site.button.authEmailTransportSave') }}
+          </el-button>
+          <el-button
+            v-if="!active"
+            :loading="testing"
+            :disabled="!smtp?.password_configured || dirty"
+            @click="testDelivery"
+          >
+            {{ $t('site.button.authEmailTransportTest') }}
+          </el-button>
+          <el-button
+            v-if="!active"
+            type="success"
+            :loading="changing"
+            :disabled="dirty || (!testProof && !smtp?.verified)"
+            @click="activate"
+          >
+            {{ $t('site.button.authEmailTransportEnable') }}
+          </el-button>
+          <el-button v-if="active" :loading="changing" @click="switchToPlatform">
+            {{ $t('site.button.authEmailTransportDisable') }}
+          </el-button>
+          <el-button v-if="!active && smtp" type="danger" plain :loading="deleting" @click="remove">
+            {{ $t('common.button.delete') }}
+          </el-button>
+        </div>
       </div>
     </div>
   </section>
@@ -132,6 +145,7 @@ export default defineComponent({
   data() {
     return {
       delivery: { type: 'platform' } as ISiteAuthDelivery,
+      viewMode: 'platform' as 'platform' | 'smtp',
       draft: emptySmtp(),
       savedSnapshot: '',
       testProof: '',
@@ -174,8 +188,9 @@ export default defineComponent({
       delete value.test_proof;
       return value;
     },
-    apply(delivery: ISiteAuthDelivery) {
+    apply(delivery: ISiteAuthDelivery, syncView = false) {
       this.delivery = delivery || { type: 'platform' };
+      if (syncView) this.viewMode = this.delivery.type === 'smtp' ? 'smtp' : 'platform';
       this.draft = this.delivery.smtp ? { ...this.delivery.smtp, password: '' } : emptySmtp();
       this.savedSnapshot = JSON.stringify(this.safeDraft());
       this.testProof = '';
@@ -184,7 +199,7 @@ export default defineComponent({
       this.loading = true;
       try {
         const { data } = await siteAuthDeliveryOperator.get(this.siteId);
-        this.apply(data.providers.email?.delivery || { type: 'platform' });
+        this.apply(data.providers.email?.delivery || { type: 'platform' }, true);
       } finally {
         this.loading = false;
       }
@@ -241,10 +256,6 @@ export default defineComponent({
         this.changing = false;
       }
     },
-    async changeType(value: string | number | boolean | undefined) {
-      if (value === 'platform' && this.active) await this.switchToPlatform();
-      if (value === 'smtp' && !this.active) await this.activate();
-    },
     async remove() {
       try {
         await ElMessageBox.confirm(
@@ -272,6 +283,11 @@ export default defineComponent({
 .email-delivery__form {
   width: min(100%, 520px);
   align-items: stretch;
+}
+.email-delivery__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .email-delivery__actions {
   display: flex;

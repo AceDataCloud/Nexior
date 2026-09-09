@@ -160,24 +160,24 @@
     "description": "SMS 웹훅 사양의 요청 섹션 제목"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "메서드 POST, Content-Type application/json. purpose는 login / register / test 중 하나입니다 (test는 연결 프로브로, 실제 발송은 건너뛸 수 있습니다). 요청 본문 형식:",
-    "description": "SMS 웹훅의 요청 메서드 및 본문 설명"
+    "message": "메서드는 POST이며, Content-Type은 application/json입니다. purpose는 등록, 로그인 또는 기타 인증 코드 시나리오를 식별합니다; data.code 및 data.ttl_seconds에 따라 인증 코드를 전송하십시오. 테스트 요청의 purpose는 test이며, 로그인 가능한 인증 코드 기록을 생성하지 않습니다.",
+    "description": "SMS 웹훅의 요청 메서드와 본문을 설명합니다."
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "서명 확인",
     "description": "SMS 웹훅 사양의 서명 섹션 제목"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "각 요청에는 아래 헤더가 포함됩니다. Standard Webhooks 사양에 따라 HMAC-SHA256을 사용하여 서명 비밀키로 확인하고 상수 시간 비교를 하세요:",
-    "description": "SMS 웹훅 서명 확인 설명"
+    "message": "webhook-id, webhook-timestamp 및 수신한 원본 요청 본문을 연결한 후, 서명 키를 사용하여 HMAC-SHA256을 계산하십시오. 타임스탬프를 검증하고 상수 시간 비교를 사용하십시오. 요청 본문을 먼저 파싱한 후 다시 직렬화하지 마십시오:",
+    "description": "SMS 웹훅의 서명 검증을 설명합니다."
   },
   "field.authSmsWebhookDocResponse": {
     "message": "응답",
     "description": "SMS 웹훅 사양의 응답 섹션 제목"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "성공 시 2xx를 반환하세요. 실패를 명시적으로 알리려면 success 필드가 false인 JSON 본문과 함께 HTTP 200을 반환하세요 (아래 예시 참조). 5초 이내에 응답하세요.",
-    "description": "SMS 웹훅 예상 응답 설명"
+    "message": "임의의 2xx 응답은 수신 성공을 나타냅니다; 명확히 거부하려면 JSON을 반환하고 success 필드를 false로 설정하십시오. 신속하게 응답하고 비동기 SMS 상태 영수증을 기다리지 마십시오.",
+    "description": "SMS 웹후크의 예상 응답을 설명합니다."
   },
   "field.authSmsWebhookTestTitle": {
     "message": "맞춤 SMS 발신자 테스트",
@@ -1466,31 +1466,31 @@
     "message": "현재 계정에 이메일을 설정한 후 테스트 이메일을 보내십시오.",
     "description": "SMTP 전송 오류"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "플랫폼 전송",
     "description": "플랫폼에서 호스팅하는 인증 코드 전송 서비스를 사용합니다."
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "사용자 정의 SMTP",
     "description": "사이트에서 구성한 SMTP 서버를 통해 인증 코드 이메일을 전송합니다."
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "사용자 정의 Webhook",
     "description": "휴대폰 인증 코드 요청을 사이트에서 구성하고 서명한 Webhook으로 전송합니다."
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "이 로그인 방식은 비활성화되었지만 여전히 전송 구성을 관리할 수 있습니다.",
     "description": "인증 방식이 비활성화되었을 때 전송 설정을 관리할 수 있도록 허용합니다."
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "이 구성은 이전 형식에서 마이그레이션되었습니다. 현재 여전히 유효하지만 재테스트되지 않았습니다; 수정하기 전에 테스트를 완료하는 것이 좋습니다.",
     "description": "이전 전송 구성 마이그레이션 상태 알림입니다."
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "Webhook 서명 키가 구성되었습니다; 비워두면 원래 키를 유지할 수 있습니다.",
     "description": "Webhook 키 상태를 나타냅니다."
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "플랫폼 전송으로 전환",
     "description": "사용자 정의 구성을 유지하고 플랫폼 전송으로 전환합니다."
   }

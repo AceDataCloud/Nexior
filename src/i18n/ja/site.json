@@ -160,24 +160,24 @@
     "description": "見出し：SMS webhook仕様のリクエストセクション"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "メソッドPOST、Content-Type: application/json。purposeはlogin/register/resetのいずれかです。",
-    "description": "SMS Webhookのリクエストメソッドとボディを説明する"
+    "message": "メソッドは POST で、Content-Type は application/json です。purpose は登録、ログイン、またはその他の確認コードシナリオを示します。data.code と data.ttl_seconds に従って確認コードを送信してください。テストリクエストの purpose は test で、ログイン可能な確認コード記録は作成されません。",
+    "description": "SMS webhook のリクエストメソッドとボディについて説明します"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "署名検証",
     "description": "SMS Webhook仕様の署名セクションの見出し"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "各リクエストには以下のヘッダーが含まれています。署名シークレットを使用してHMAC-SHA256で検証してください。",
-    "description": "SMS Webhookの署名検証を説明する"
+    "message": "webhook-id、webhook-timestamp と受信した元のリクエストボディを連結し、署名キーを使用して HMAC-SHA256 を計算してください。タイムスタンプを検証し、定数時間比較を使用してください。リクエストボディを先に解析して再シリアル化しないでください：",
+    "description": "SMS webhook の署名検証について説明します"
   },
   "field.authSmsWebhookDocResponse": {
     "message": "レスポンス",
     "description": "見出し：SMS webhook仕様のレスポンスセクション"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "成功時は2xxを返してください。失敗を明示するには、HTTP 200とJSONレスポンスを返してください。",
-    "description": "SMS Webhookの期待されるレスポンスを説明する"
+    "message": "任意の2xxレスポンスは受信成功を示します。明示的に拒否する場合は、JSONを返し、successフィールドをfalseに設定してください。迅速に応答し、非同期SMSステータスの受信を待たないでください。",
+    "description": "SMSウェブフックの期待される応答を説明します。"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "カスタムSMS送信者のテスト",
@@ -1466,31 +1466,31 @@
     "message": "現在のアカウントにメールアドレスを設定してから、テストメールを送信してください",
     "description": "SMTPトランスポートエラー"
   },
-  "site.option.authDeliveryPlatform": {
+  "option.authDeliveryPlatform": {
     "message": "プラットフォーム配信",
     "description": "プラットフォームがホストする確認コード配信サービスを使用します。"
   },
-  "site.option.authEmailDeliverySmtp": {
+  "option.authEmailDeliverySmtp": {
     "message": "カスタムSMTP",
     "description": "当サイトで設定されたSMTPサーバーを通じて確認コードメールを送信します。"
   },
-  "site.option.authPhoneDeliveryWebhook": {
+  "option.authPhoneDeliveryWebhook": {
     "message": "カスタムWebhook",
     "description": "携帯電話の確認コードリクエストを当サイトで設定された署名付きWebhookに送信します。"
   },
-  "site.message.authDeliveryProviderDisabled": {
+  "message.authDeliveryProviderDisabled": {
     "message": "このログイン方法は無効になっていますが、配信設定を管理することはできます。",
     "description": "認証方法が無効な場合でも、配信設定の管理が許可されていることを示します。"
   },
-  "site.message.authDeliveryMigrated": {
+  "message.authDeliveryMigrated": {
     "message": "この設定は旧形式から移行されました。現在も有効ですが、再テストは行われていません；変更前にテストを完了することをお勧めします。",
     "description": "旧配信設定の移行状態を示すメッセージです。"
   },
-  "site.message.authSmsWebhookSecretConfigured": {
+  "message.authSmsWebhookSecretConfigured": {
     "message": "Webhook署名キーが設定されました；空白にすると元のキーが保持されます。",
     "description": "Webhookキーの状態を示すメッセージです。"
   },
-  "site.button.authEmailTransportDisable": {
+  "button.authEmailTransportDisable": {
     "message": "プラットフォーム配信に切り替え",
     "description": "カスタム設定を保持し、プラットフォーム配信に切り替えます。"
   }

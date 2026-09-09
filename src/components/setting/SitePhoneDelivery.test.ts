@@ -36,12 +36,26 @@ describe('SitePhoneDelivery', () => {
     await flushPromises();
     expect((wrapper.vm as any).webhook.verification_source).toBe('legacy_migration');
     expect((wrapper.vm as any).draft.secret).toBe('');
+    expect((wrapper.vm as any).viewMode).toBe('platform');
+  });
+
+  it('opens custom settings without changing the active transport', async () => {
+    const wrapper = mountComponent();
+    await flushPromises();
+    expect(wrapper.find('el-form-stub').exists()).toBe(false);
+
+    wrapper.findComponent({ name: 'ElRadioGroup' }).vm.$emit('update:modelValue', 'webhook');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('el-form-stub').exists()).toBe(true);
+    expect(api.update).not.toHaveBeenCalled();
   });
 
   it('saves the webhook draft then tests only recipient fields', async () => {
     api.testPhone.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
     const wrapper = mountComponent();
     await flushPromises();
+    (wrapper.vm as any).viewMode = 'webhook';
     (wrapper.vm as any).draft.url = 'https://sms.example.com/updated';
     (wrapper.vm as any).draft.secret = 'new-secret';
     await (wrapper.vm as any).saveDraft();
