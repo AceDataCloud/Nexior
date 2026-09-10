@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 09 Sep 2026 20:22:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 10 Sep 2026 20:20:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.369.0
+
+Thu, 10 Sep 2026 20:20:38 GMT
+
+### Minor changes
+
+- Add token-metered official variants for GPT Image 2.5 Flare and Sunburst. (dev@acedata.cloud)
+
+### Patches
+
+- Collapse custom authentication delivery settings while disabled and fix webhook documentation alignment. (dev@acedata.cloud)
+- Show the canonical Seedream 5.0 Lite model and migrate saved alias selections. (dev@acedata.cloud)
+- Make onboarding claims accurate and track only verifiable completion states. (office@acedata.cloud)
 
 ## 3.368.4
 
