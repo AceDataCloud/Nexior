@@ -120,8 +120,8 @@
     "description": "Impostazioni del sito / accesso: titolo per il webhook di invio codice di verifica SMS personalizzato del sito"
   },
   "message.authSmsWebhookTip": {
-    "message": "Una volta abilitato, gli SMS di verifica inviati dal sito saranno inviati tramite la tua interfaccia con la tua firma; se disabilitato, verrà utilizzata la firma predefinita della piattaforma. Devi prima abilitare il metodo di accesso 'numero di telefono'.",
-    "description": "Spiega il webhook del mittente SMS personalizzato"
+    "message": "Dopo aver attivato l'interruttore, configura e salva la tua interfaccia SMS; se il test ha successo, sarà attivata automaticamente, altrimenti verrà utilizzata la firma predefinita della piattaforma. È necessario attivare prima il metodo di accesso \"numero di telefono\".",
+    "description": "Spiega il webhook del mittente SMS personalizzato."
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://tuodominio/sms-webhook",
@@ -1327,8 +1327,8 @@
     "description": "Titolo della configurazione SMTP"
   },
   "message.authEmailTransportTip": {
-    "message": "Usa il tuo server SMTP per inviare email di verifica. Salva e testa prima, attiva solo dopo il test riuscito.",
-    "description": "Istruzioni per la configurazione SMTP"
+    "message": "Dopo aver attivato l'interruttore, configura e salva il tuo server SMTP; se il test ha successo, la consegna email personalizzata sarà attivata automaticamente.",
+    "description": "Istruzioni per la configurazione SMTP."
   },
   "field.authEmailTransportSecurity": {
     "message": "Sicurezza connessione",
@@ -1495,8 +1495,8 @@
     "description": "Mantieni la configurazione personalizzata e torna alla consegna della piattaforma."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Si prega di salvare e testare con successo la configurazione attuale prima di attivare la consegna personalizzata.",
-    "description": "Suggerimento sui requisiti preliminari per l'interruttore di consegna personalizzata."
+    "message": "Salva prima (se ci sono modifiche) e testa la configurazione attuale; se il test ha successo, la consegna personalizzata sarà attivata automaticamente.",
+    "description": "Messaggio di avviso per le condizioni preliminari dell'interruttore di consegna personalizzata."
   },
   "message.authDeliveryActivated": {
     "message": "Consegna personalizzata attivata",

@@ -120,8 +120,8 @@
     "description": "Configurações do site / login: título para o webhook de entrega de código de verificação SMS personalizado do site"
   },
   "message.authSmsWebhookTip": {
-    "message": "Ao ativar, os SMS de verificação enviados pelo site serão enviados pela sua própria interface com sua própria assinatura; ao desativar, será usada a assinatura padrão da plataforma. É necessário ativar o método de login por 'número de telefone'.",
-    "description": "Explica o webhook do remetente SMS personalizado"
+    "message": "Ative a opção, configure e salve sua própria interface de SMS; após o teste bem-sucedido, ela será ativada automaticamente. Ao desativá-la, será usada a assinatura padrão da plataforma. É necessário ativar primeiro o método de login por «número de celular».",
+    "description": "Explica o webhook personalizado para envio de SMS"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://seu-dominio/sms-webhook",
@@ -1327,7 +1327,7 @@
     "description": "Título da configuração do SMTP"
   },
   "message.authEmailTransportTip": {
-    "message": "Use seu próprio servidor SMTP para enviar emails de verificação. Salve e teste primeiro, habilite após o teste ser bem-sucedido.",
+    "message": "Ative a opção, configure e salve seu próprio servidor SMTP; após o teste bem-sucedido, a entrega personalizada de e-mails será ativada automaticamente.",
     "description": "Instruções de configuração do SMTP"
   },
   "field.authEmailTransportSecurity": {
@@ -1495,8 +1495,8 @@
     "description": "Manter configurações personalizadas e voltar para entrega pela plataforma."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Por favor, salve e teste a configuração atual com sucesso antes de ativar a entrega personalizada.",
-    "description": "Dica sobre as condições prévias para ativar a chave de entrega personalizada."
+    "message": "Salve primeiro (se houver alterações) e teste a configuração atual; após o teste bem-sucedido, a entrega personalizada será ativada automaticamente.",
+    "description": "Mensagem sobre os pré-requisitos para ativar a entrega personalizada."
   },
   "message.authDeliveryActivated": {
     "message": "Entrega personalizada ativada",

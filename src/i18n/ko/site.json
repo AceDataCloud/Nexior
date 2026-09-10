@@ -120,8 +120,8 @@
     "description": "사이트 설정 / 로그인: 사이트 자체 맞춤 SMS 발신자 설정 제목"
   },
   "message.authSmsWebhookTip": {
-    "message": "활성화하면 이 사이트의 전화 인증 코드가 귀하의 서명 아래 귀하의 엔드포인트를 통해 발송됩니다. 플랫폼 기본값을 사용하려면 비활성화하세요. 휴대폰 번호 로그인 방식이 활성화되어야 합니다.",
-    "description": "맞춤 SMS 발신자 웹훅 설명"
+    "message": "스위치를 켠 후 자신의 문자 메시지 인터페이스를 구성하고 저장하세요. 테스트가 성공하면 자동으로 활성화되며, 끄면 플랫폼 기본 서명을 사용합니다. 먼저 '휴대폰 번호' 로그인 방식을 활성화해야 합니다.",
+    "description": "사용자 정의 SMS 발신자 웹후크에 대한 설명"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://당신의도메인/sms-webhook",
@@ -1327,7 +1327,7 @@
     "description": "SMTP 구성 제목"
   },
   "message.authEmailTransportTip": {
-    "message": "자신의 SMTP 서버를 사용하여 인증 코드 메일을 전송하세요. 먼저 저장하고 테스트한 후, 테스트가 통과되면 활성화하세요.",
+    "message": "스위치를 켠 후 자신의 SMTP 서버를 구성하고 저장하세요. 테스트가 성공하면 사용자 정의 이메일 배달이 자동으로 활성화됩니다.",
     "description": "SMTP 구성 설명"
   },
   "field.authEmailTransportSecurity": {
@@ -1495,8 +1495,8 @@
     "description": "사용자 정의 구성을 유지하고 플랫폼 전송으로 전환합니다."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "먼저 현재 구성을 저장하고 성공적으로 테스트한 후 사용자 정의 전달을 활성화하십시오.",
-    "description": "사용자 정의 전달 스위치의 전제 조건提示."
+    "message": "변경 사항이 있으면 먼저 저장하고 현재 구성을 테스트하세요. 테스트가 성공하면 사용자 정의 배달이 자동으로 활성화됩니다.",
+    "description": "사용자 정의 배달 스위치의 전제 조건提示."
   },
   "message.authDeliveryActivated": {
     "message": "사용자 정의 전달이 활성화되었습니다",

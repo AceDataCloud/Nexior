@@ -120,8 +120,8 @@
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "開啟後，本站發出的手機驗證碼簡訊將由你自己的介面用你自己的簽名傳送；關閉則使用平臺預設簽名。需先啟用「手機號」登入方式。",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "打開開關後配置並保存你自己的簡訊介面；測試成功將自動啟用，關閉則使用平台預設簽名。需先啟用「手機號」登入方式。",
+    "description": "解釋自訂簡訊發送者的 webhook"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://你的域名/sms-webhook",
@@ -1327,7 +1327,7 @@
     "description": "SMTP 配置標題"
   },
   "message.authEmailTransportTip": {
-    "message": "使用您自己的 SMTP 伺服器發送驗證碼郵件。請先保存並測試，測試通過後再啟用。",
+    "message": "打開開關後配置並保存你自己的 SMTP 伺服器；測試成功將自動啟用自訂郵件投遞。",
     "description": "SMTP 配置說明"
   },
   "field.authEmailTransportSecurity": {
@@ -1495,8 +1495,8 @@
     "description": "保留自定義配置並切回平台投遞。"
   },
   "message.authDeliveryEnableHelp": {
-    "message": "請先保存並成功測試當前配置，再開啟自定義投遞。",
-    "description": "自定義投遞開關的前置條件提示。"
+    "message": "請先保存（如有修改）並測試當前配置；測試成功後將自動啟用自訂投遞。",
+    "description": "自訂投遞開關的前置條件提示。"
   },
   "message.authDeliveryActivated": {
     "message": "自定義投遞已啟用",

@@ -120,8 +120,8 @@
     "description": "Site-Einstellungen / Anmeldung: Titel für die eigene benutzerdefinierte SMS-Verifizierungscode-Zustell-Webhooks"
   },
   "message.authSmsWebhookTip": {
-    "message": "Nach der Aktivierung werden die von der Plattform gesendeten SMS-Bestätigungscodes von Ihrer eigenen Schnittstelle mit Ihrer eigenen Signatur gesendet; bei Deaktivierung wird die standardmäßige Signatur der Plattform verwendet. Sie müssen die „Telefonnummer“-Anmeldemethode aktivieren.",
-    "description": "Erklärt das benutzerdefinierte SMS-Absender-Webhook"
+    "message": "Aktivieren Sie den Schalter, konfigurieren und speichern Sie anschließend Ihre eigene SMS-Schnittstelle. Nach erfolgreichem Test wird sie automatisch aktiviert; beim Deaktivieren wird die Standardsignatur der Plattform verwendet. Die Anmeldemethode „Telefonnummer“ muss zuvor aktiviert werden.",
+    "description": "Erklärt den Webhook für den benutzerdefinierten SMS-Versand."
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://deinedomain/sms-webhook",
@@ -1327,8 +1327,8 @@
     "description": "Titel der SMTP-Konfiguration"
   },
   "message.authEmailTransportTip": {
-    "message": "Verwenden Sie Ihren eigenen SMTP-Server, um Bestätigungsmails zu senden. Bitte zuerst speichern und testen, nach erfolgreichem Test aktivieren.",
-    "description": "Hinweis zur SMTP-Konfiguration"
+    "message": "Aktivieren Sie den Schalter, konfigurieren und speichern Sie anschließend Ihren eigenen SMTP-Server. Nach erfolgreichem Test wird die benutzerdefinierte E-Mail-Zustellung automatisch aktiviert.",
+    "description": "Hinweis zur SMTP-Konfiguration."
   },
   "field.authEmailTransportSecurity": {
     "message": "Verbindungssicherheit",
@@ -1495,8 +1495,8 @@
     "description": "Behalten Sie die benutzerdefinierte Konfiguration bei und wechseln Sie zur Plattformzustellung."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Bitte speichern Sie zuerst die aktuelle Konfiguration und testen Sie sie erfolgreich, bevor Sie die benutzerdefinierte Lieferung aktivieren.",
-    "description": "Hinweis zu den Voraussetzungen für den benutzerdefinierten Lieferumschalter."
+    "message": "Bitte speichern Sie zunächst (falls Änderungen vorgenommen wurden) und testen Sie die aktuelle Konfiguration. Nach erfolgreichem Test wird die benutzerdefinierte Zustellung automatisch aktiviert.",
+    "description": "Hinweis zu den Voraussetzungen für den Schalter zur benutzerdefinierten Zustellung."
   },
   "message.authDeliveryActivated": {
     "message": "Benutzerdefinierte Lieferung aktiviert",
