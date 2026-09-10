@@ -13,11 +13,17 @@ describe('Seedream official capability matrix', () => {
   });
 
   it('models Lite group and web capabilities', () => {
-    const capabilities = getSeedreamCapabilities('doubao-seedream-5-0-260128');
+    const capabilities = getSeedreamCapabilities('doubao-seedream-5-0-lite-260128');
     expect(capabilities.sizeTiers).toEqual(['2K', '3K', '4K']);
     expect(capabilities.groupGeneration).toBe(true);
     expect(capabilities.webSearch).toBe(true);
     expect(capabilities.layerDecomposition).toBe(false);
     expect(capabilities.promptOptimization).toEqual(['standard']);
+  });
+
+  it('keeps the hidden legacy 5.0 id compatible with Lite capabilities', () => {
+    expect(getSeedreamCapabilities('doubao-seedream-5-0-260128')).toEqual(
+      getSeedreamCapabilities('doubao-seedream-5-0-lite-260128')
+    );
   });
 });

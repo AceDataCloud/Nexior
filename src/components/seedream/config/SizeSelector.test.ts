@@ -15,7 +15,7 @@ const mount = (model: string) =>
 
 describe('Seedream size options', () => {
   it('does not offer sub-2K pixel presets to Lite', () => {
-    const wrapper = mount('doubao-seedream-5-0-260128');
+    const wrapper = mount('doubao-seedream-5-0-lite-260128');
     const values = (wrapper.vm as any).pixelOptions.map((item: any) => item.value);
     expect(values).not.toContain('1024x1024');
     expect(values).toContain('2048x2048');

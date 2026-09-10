@@ -172,8 +172,8 @@
     "description": "Option für das SeeEdit 3.0 i2i Modell"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "Option für das SeeDream 5.0 Modell (unterstützt Gruppenbilder und Streaming-Ausgabe)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "Option für das SeeDream 5.0 Lite Modell (unterstützt Gruppenbilder und Streaming-Ausgabe)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "Anzahl der Bilder bei der Erstellung von Gruppenbildern (max_images)"
   },
   "description.maxImages": {
-    "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 ist es der Einzelbildmodus; bei mehr als 1 wird automatisch die Gruppenbildfunktion aktiviert (sequential_image_generation=auto), wobei Charakter, Stil und Details über die Bilder hinweg konsistent bleiben. Unterstützt nur doubao-seedream-5.0 / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
+    "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 ist es der Einzelbildmodus; bei mehr als 1 wird automatisch die Gruppenbildfunktion aktiviert (sequential_image_generation=auto), wobei Charakter, Stil und Details über die Bilder hinweg konsistent bleiben. Unterstützt nur doubao-seedream-5.0-lite / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
     "description": "Beschreibung des max_images Parameters"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "Label für den output_format Parameter"
   },
   "description.outputFormat": {
-    "message": "Dateiformat des generierten Bildes, jpeg oder png, Standard ist jpeg. Nur doubao-seedream-5.0 unterstützt.",
+    "message": "Dateiformat des generierten Bildes, jpeg oder png, Standard ist jpeg. Nur doubao-seedream-5.0-lite unterstützt.",
     "description": "Erläuterung des output_format Parameters"
   },
   "size.group.tier": {

@@ -34,7 +34,13 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElOptionGroup } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_DEFAULT_SIZE, SEEDREAM_PIXEL_PRESETS } from '@/constants';
+import {
+  SEEDREAM_DEFAULT_SIZE,
+  SEEDREAM_MODEL_4_5,
+  SEEDREAM_MODEL_5_0_LEGACY,
+  SEEDREAM_MODEL_5_0_LITE,
+  SEEDREAM_PIXEL_PRESETS
+} from '@/constants';
 import { getSeedreamCapabilities, ISeedreamCapability } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
@@ -59,7 +65,9 @@ export default defineComponent({
     },
     pixelOptions(): Array<{ value: string; ratio: string }> {
       const minimumPixels =
-        this.model === 'doubao-seedream-5-0-260128' || this.model === 'doubao-seedream-4-5-251128'
+        this.model === SEEDREAM_MODEL_5_0_LITE ||
+        this.model === SEEDREAM_MODEL_5_0_LEGACY ||
+        this.model === SEEDREAM_MODEL_4_5
           ? 3_686_400
           : 921_600;
       return this.allPixelOptions.filter((item) => {

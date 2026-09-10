@@ -172,8 +172,8 @@
     "description": "Opzione modello SeeEdit 3.0 i2i"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "Opzione modello SeeDream 5.0 (supporta output a gruppi e in streaming)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "Opzione modello SeeDream 5.0 Lite (supporta output a gruppi e in streaming)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "Numero di immagini generate in un gruppo (max_images)"
   },
   "description.maxImages": {
-    "message": "Numero di immagini generate in una singola richiesta (1-15). Impostato su 1 per la modalità singola; maggiore di 1 attiva automaticamente il gruppo (sequential_image_generation=auto), mantenendo coerenza di personaggi, stile e dettagli tra le immagini. Supporta solo doubao-seedream-5.0 / 4.5 / 4.0; se caricate immagini di riferimento, devono soddisfare (numero di immagini di riferimento + numero di generazione) ≤ 15. La fatturazione è basata sul numero effettivo di immagini generate.",
+    "message": "Numero di immagini generate in una singola richiesta (1-15). Impostato su 1 per la modalità singola; maggiore di 1 attiva automaticamente il gruppo (sequential_image_generation=auto), mantenendo coerenza di personaggi, stile e dettagli tra le immagini. Supporta solo doubao-seedream-5.0-lite / 4.5 / 4.0; se caricate immagini di riferimento, devono soddisfare (numero di immagini di riferimento + numero di generazione) ≤ 15. La fatturazione è basata sul numero effettivo di immagini generate.",
     "description": "Descrizione del parametro max_images"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "Etichetta del parametro output_format"
   },
   "description.outputFormat": {
-    "message": "Formato del file dell'immagine generata, jpeg o png, predefinito jpeg. Supportato solo da doubao-seedream-5.0.",
+    "message": "Formato del file dell'immagine generata, jpeg o png, predefinito jpeg. Supportato solo da doubao-seedream-5.0-lite.",
     "description": "Descrizione del parametro output_format"
   },
   "size.group.tier": {

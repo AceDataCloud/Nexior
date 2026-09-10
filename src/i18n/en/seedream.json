@@ -172,8 +172,8 @@
     "description": "SeeEdit 3.0 i2i model option"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 model option (supports image sets and streaming output)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "SeeDream 5.0 Lite model option (supports image sets, streaming output, and web search)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "Number of images for generating image sets (max_images)"
   },
   "description.maxImages": {
-    "message": "Number of images generated in a single request (1-15). Set to 1 for single image mode; greater than 1 automatically enables image sets (sequential_image_generation=auto), maintaining character, style, and detail consistency across images. Only supports doubao-seedream-5.0 / 4.5 / 4.0; if reference images are uploaded, must satisfy (number of reference images + number generated) ≤ 15. Billing is based on the actual number of images generated.",
+    "message": "Number of images generated in a single request (1-15). Set to 1 for single image mode; greater than 1 automatically enables image sets (sequential_image_generation=auto), maintaining character, style, and detail consistency across images. Only supports doubao-seedream-5.0-lite / 4.5 / 4.0; if reference images are uploaded, must satisfy (number of reference images + number generated) ≤ 15. Billing is based on the actual number of images generated.",
     "description": "Description of the max_images parameter"
   },
   "name.seed": {

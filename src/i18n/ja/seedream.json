@@ -172,8 +172,8 @@
     "description": "SeeEdit 3.0 i2i モデルオプション"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 モデルオプション（グループ画像とストリーミング出力をサポート）"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "SeeDream 5.0 Lite モデルオプション（グループ画像とストリーミング出力をサポート）"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "グループ画像生成の画像枚数（max_images）"
   },
   "description.maxImages": {
-    "message": "1 回のリクエストで生成する画像の数（1-15）。1 に設定すると単一画像モード；1 より大きい場合は自動的にグループ画像を有効にします（sequential_image_generation=auto）、画像間でキャラクター、スタイル、詳細を一貫させます。doubao-seedream-5.0 / 4.5 / 4.0 のみサポート；参考画像を同時にアップロードする場合、(参考画像数 + 生成数) ≤ 15 を満たす必要があります。請求は実際に生成された画像の枚数に基づきます。",
+    "message": "1 回のリクエストで生成する画像の数（1-15）。1 に設定すると単一画像モード；1 より大きい場合は自動的にグループ画像を有効にします（sequential_image_generation=auto）、画像間でキャラクター、スタイル、詳細を一貫させます。doubao-seedream-5.0-lite / 4.5 / 4.0 のみサポート；参考画像を同時にアップロードする場合、(参考画像数 + 生成数) ≤ 15 を満たす必要があります。請求は実際に生成された画像の枚数に基づきます。",
     "description": "max_images パラメータの説明"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "output_format パラメータのラベル"
   },
   "description.outputFormat": {
-    "message": "生成される画像のファイル形式、jpeg または png、デフォルトは jpeg。doubao-seedream-5.0 のみサポート。",
+    "message": "生成される画像のファイル形式、jpeg または png、デフォルトは jpeg。doubao-seedream-5.0-lite のみサポート。",
     "description": "output_format パラメータの説明"
   },
   "size.group.tier": {
