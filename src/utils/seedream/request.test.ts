@@ -37,7 +37,7 @@ describe('buildSeedreamRequest', () => {
     });
   });
 
-  it('disables watermarks for persisted legacy configurations', () => {
+  it('disables watermarks for persisted compatibility configurations', () => {
     expect(buildSeedreamRequest({ prompt: 'A lighthouse', watermark: true })).toMatchObject({ watermark: false });
   });
 
