@@ -7,7 +7,9 @@ import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_1,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
   OPENAIIMAGE_SIZE_AUTO
 } from '@/constants';
 
@@ -26,6 +28,13 @@ function mountSelector(config: Record<string, unknown>) {
 }
 
 const committedSize = (commit: ReturnType<typeof vi.fn>) => commit.mock.calls.at(-1)?.[1]?.size;
+
+const GPT_IMAGE_25_MODELS = [
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL
+];
 
 describe('OpenAIImageSizeSelector auto handling', () => {
   it('shows auto as the selected preset when the store holds auto', () => {
@@ -81,57 +90,54 @@ describe('OpenAIImageSizeSelector auto handling', () => {
   });
 });
 
-describe.each([OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE, OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST])(
-  'OpenAIImageSizeSelector %s contract',
-  (model) => {
-    it('shares GPT Image 2 presets and custom sizing', () => {
-      const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
+describe.each(GPT_IMAGE_25_MODELS)('OpenAIImageSizeSelector %s contract', (model) => {
+  it('shares GPT Image 2 presets and custom sizing', () => {
+    const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
 
-      expect((wrapper.vm as any).customSupported).toBe(true);
-      expect((wrapper.vm as any).presets).toContain('3840x2160');
-      expect((wrapper.vm as any).presetGroups).toHaveLength(3);
-    });
+    expect((wrapper.vm as any).customSupported).toBe(true);
+    expect((wrapper.vm as any).presets).toContain('3840x2160');
+    expect((wrapper.vm as any).presetGroups).toHaveLength(3);
+  });
 
-    it('accepts valid pixel and aspect-ratio boundaries', async () => {
-      const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
-      (wrapper.vm as any).customWidth = 640;
-      (wrapper.vm as any).customHeight = 1024;
-      await wrapper.vm.$nextTick();
+  it('accepts valid pixel and aspect-ratio boundaries', async () => {
+    const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
+    (wrapper.vm as any).customWidth = 640;
+    (wrapper.vm as any).customHeight = 1024;
+    await wrapper.vm.$nextTick();
 
-      expect((wrapper.vm as any).customError).toBe('');
+    expect((wrapper.vm as any).customError).toBe('');
 
-      (wrapper.vm as any).customWidth = 480;
-      (wrapper.vm as any).customHeight = 1440;
-      await wrapper.vm.$nextTick();
-      expect((wrapper.vm as any).customError).toBe('');
-    });
+    (wrapper.vm as any).customWidth = 480;
+    (wrapper.vm as any).customHeight = 1440;
+    await wrapper.vm.$nextTick();
+    expect((wrapper.vm as any).customError).toBe('');
+  });
 
-    it('rejects too few total pixels', async () => {
-      const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
-      (wrapper.vm as any).customWidth = 464;
-      (wrapper.vm as any).customHeight = 1392;
-      await wrapper.vm.$nextTick();
+  it('rejects too few total pixels', async () => {
+    const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
+    (wrapper.vm as any).customWidth = 464;
+    (wrapper.vm as any).customHeight = 1392;
+    await wrapper.vm.$nextTick();
 
-      expect((wrapper.vm as any).customError).toBe('openaiimage.error.customSizeMinPixels');
-    });
+    expect((wrapper.vm as any).customError).toBe('openaiimage.error.customSizeMinPixels');
+  });
 
-    it('rejects aspect ratios wider than 3:1', async () => {
-      const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
-      (wrapper.vm as any).customWidth = 480;
-      (wrapper.vm as any).customHeight = 1456;
-      await wrapper.vm.$nextTick();
+  it('rejects aspect ratios wider than 3:1', async () => {
+    const { wrapper } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
+    (wrapper.vm as any).customWidth = 480;
+    (wrapper.vm as any).customHeight = 1456;
+    await wrapper.vm.$nextTick();
 
-      expect((wrapper.vm as any).customError).toBe('openaiimage.error.customSizeAspectRatio');
-    });
+    expect((wrapper.vm as any).customError).toBe('openaiimage.error.customSizeAspectRatio');
+  });
 
-    it('does not commit an invalid custom size', async () => {
-      const { wrapper, commit } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
-      (wrapper.vm as any).customWidth = 480;
-      (wrapper.vm as any).customHeight = 1456;
-      await wrapper.vm.$nextTick();
-      (wrapper.vm as any).useCustom = true;
+  it('does not commit an invalid custom size', async () => {
+    const { wrapper, commit } = mountSelector({ model, size: OPENAIIMAGE_SIZE_AUTO });
+    (wrapper.vm as any).customWidth = 480;
+    (wrapper.vm as any).customHeight = 1456;
+    await wrapper.vm.$nextTick();
+    (wrapper.vm as any).useCustom = true;
 
-      expect(commit).not.toHaveBeenCalled();
-    });
-  }
-);
+    expect(commit).not.toHaveBeenCalled();
+  });
+});

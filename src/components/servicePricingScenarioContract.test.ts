@@ -53,10 +53,12 @@ describe('service pricing scenario coverage', () => {
     }
   );
 
-  it('suppresses the unreliable OpenAI official estimate', () => {
+  it('suppresses unreliable estimates for every OpenAI official image model', () => {
     const source = fs.readFileSync(path.join(COMPONENT_ROOT, 'openaiimage/ConfigPanel.vue'), 'utf8');
+    expect(source).toContain('import { isOpenAIImageOfficialModel, OPENAIIMAGE_MODELS }');
     expect(source).toContain('displayConsumption(): number | undefined');
-    expect(source).toContain('OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL ? undefined : this.consumption');
+    expect(source).toContain('isOpenAIImageOfficialModel(this.config?.model) ? undefined : this.consumption');
+    expect(source).toContain('isOpenAIImageOfficialModel(this.config?.model) ? this.$t');
   });
 
   it('preserves the per-second Motion Control estimate', () => {
