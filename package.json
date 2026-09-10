@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "dev": "vite --host",
+    "prebuild": "node --test scripts/check_ace_holder_center.mjs",
     "build": "npm run build:web",
     "build:web": "cross-env VITE_SURFACE=web vue-tsc -b && vite build",
     "build:android": "cross-env VITE_SURFACE=android vite build",

@@ -254,7 +254,7 @@ def translate_batch(
         }
 
     sys_prompt = SYSTEM_PROMPT_TEMPLATE.format(language=LANGUAGE_NAMES[locale])
-    user_prompt = json.dumps(payload_in, ensure_ascii=False)
+    user_prompt = "Translate this JSON object and return JSON only:\n" + json.dumps(payload_in, ensure_ascii=False)
 
     raw = chat_completion(
         api_key,

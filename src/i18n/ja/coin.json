@@ -6,5 +6,209 @@
   "message.connectError": {
     "message": "ウォレットの接続に失敗しました。",
     "description": "ウォレットの接続に失敗した際に表示されるエラーメッセージ。"
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "ACE保有者特典",
+    "description": "特典センターヘッダーのラベル。"
+  },
+  "holderCenter.title": {
+    "message": "あなたのACE Holder特典",
+    "description": "特典センターのメインタイトル。"
+  },
+  "holderCenter.description": {
+    "message": "現在のティア、解除済みの特典、限定コンテンツ、Operator申請状況を確認できます。",
+    "description": "特典センターの説明。"
+  },
+  "holderCenter.manageWallet": {
+    "message": "認証済みウォレットを管理",
+    "description": "プラットフォームのウォレット特典ページへ移動するボタン。"
+  },
+  "holderCenter.connectPrompt": {
+    "message": "まずAPI Platformに移動し、ACEを保有するSolanaウォレットを接続して認証してください。",
+    "description": "ウォレット未連携時の案内。"
+  },
+  "holderCenter.currentTier": {
+    "message": "現在のティア",
+    "description": "現在のACEティアのラベル。"
+  },
+  "holderCenter.holder": {
+    "message": "ACE Holder特典が有効です",
+    "description": "保有量の基準を満たしている状態。"
+  },
+  "holderCenter.notQualified": {
+    "message": "まだ100,000 ACEの基準に達していません",
+    "description": "最初のティアに達していない場合の状態。"
+  },
+  "holderCenter.toNext": {
+    "message": "{tier}まであと{amount} ACE",
+    "description": "次のレベルまでの進捗説明。"
+  },
+  "holderCenter.maxTier": {
+    "message": "最高ティアに到達しています。",
+    "description": "最高ティアに到達したことを示す案内。"
+  },
+  "holderCenter.monthlySavings": {
+    "message": "今月のAPI節約額",
+    "description": "当月のCredits節約額のラベル。"
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "認証済み特典",
+    "description": "特典一覧のラベル。"
+  },
+  "holderCenter.benefits": {
+    "message": "現在利用可能な特典",
+    "description": "特典一覧のタイトル。"
+  },
+  "holderCenter.loadError": {
+    "message": "ACE特典を読み込めません。しばらくしてからもう一度お試しください。",
+    "description": "特典センターの読み込みに失敗した状態。"
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "ACE Holder専用インスピレーション",
+    "description": "Holder専用ショーケースのタイトル。"
+  },
+  "holderLab.description": {
+    "message": "現在のレベルで利用できる厳選テンプレートとワークフロー。",
+    "description": "Holder専用ショーケースの説明。"
+  },
+  "benefitStatus.active": {
+    "message": "有効",
+    "description": "特典が有効になっている状態。"
+  },
+  "benefitStatus.eligible": {
+    "message": "利用可能",
+    "description": "特典を利用できる状態。"
+  },
+  "benefitStatus.coming_soon": {
+    "message": "近日公開",
+    "description": "特典が近日公開される状態。"
+  },
+  "benefitStatus.locked": {
+    "message": "未解除",
+    "description": "特典が解除されていない状態。"
+  },
+  "benefit.api_discount.title": {
+    "message": "API呼び出し割引",
+    "description": "ACE API割引特典のタイトル。"
+  },
+  "benefit.api_discount.description": {
+    "message": "対象のCredits APIおよびアカウントIDを識別できるx402呼び出しに、有効な割引が自動適用されます。",
+    "description": "ACE API割引特典の説明。"
+  },
+  "benefit.early_access.title": {
+    "message": "先行体験",
+    "description": "ACE早期アクセス特典のタイトル。"
+  },
+  "benefit.early_access.description": {
+    "message": "対象モデルと機能を正式公開の72時間前から体験できます。",
+    "description": "ACE早期アクセス特典の説明。"
+  },
+  "benefit.referral_bonus.title": {
+    "message": "紹介報酬ボーナス",
+    "description": "ACE紹介ボーナスのタイトル。"
+  },
+  "benefit.referral_bonus.description": {
+    "message": "基本紹介率に保有量に応じたポイントが加算され、最終紹介率は最大30%です。",
+    "description": "ACE紹介ボーナスの説明。"
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "Holder向けに厳選されたテンプレート、ワークフロー、機能にアクセスできます。",
+    "description": "Nexior Holder Lab特典の説明。"
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "Tier 4以上から申請可能。公開掲載とFeaturedには引き続き審査が必要です。",
+    "description": "ACE Operator特典の説明。"
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "ACE Operatorに申請",
+    "description": "Operatorセクションのタイトル。"
+  },
+  "operator.description": {
+    "message": "審査のため、公開プロフィールを送信してください。保有資格は申請資格を提供するだけで、Featuredやトラフィック露出を保証するものではありません。",
+    "description": "Operator申請の説明。"
+  },
+  "operator.tierRequired": {
+    "message": "Tier 4に到達するとACE Operatorに申請できます。",
+    "description": "Operatorのレベル要件に関する通知。"
+  },
+  "operator.displayName": {
+    "message": "公開名",
+    "description": "Operatorの公開名欄。"
+  },
+  "operator.bio": {
+    "message": "公開プロフィール",
+    "description": "Operatorの公開プロフィール欄。"
+  },
+  "operator.public": {
+    "message": "審査承認後にプロフィールを公開表示",
+    "description": "Operator公開設定の説明。"
+  },
+  "operator.apply": {
+    "message": "申請を送信",
+    "description": "Operator申請を送信するボタン。"
+  },
+  "operator.save": {
+    "message": "プロフィールを保存",
+    "description": "Operatorプロフィールを保存するボタン。"
+  },
+  "operator.applied": {
+    "message": "申請を送信しました。審査をお待ちください。",
+    "description": "Operator申請の成功通知。"
+  },
+  "operator.saved": {
+    "message": "Operatorプロフィールを保存しました。",
+    "description": "Operatorの保存成功通知。"
+  },
+  "operator.saveError": {
+    "message": "Operatorプロフィールを保存できません。後でもう一度お試しください。",
+    "description": "Operatorの保存失敗通知。"
+  },
+  "operator.nameRequired": {
+    "message": "公開名を入力してください。",
+    "description": "Operator名が空の場合の通知。"
+  },
+  "operator.featuredEligible": {
+    "message": "現在のレベルではFeatured審査に参加できます",
+    "description": "Featured候補であることを示す通知。"
+  },
+  "operator.featured": {
+    "message": "プラットフォームによりFeaturedに設定済み",
+    "description": "Featuredの審査済みステータス。"
+  },
+  "operator.featuredBadge": {
+    "message": "注目",
+    "description": "Showcaseカード内の審査済み「注目」バッジ。"
+  },
+  "operator.status.pending": {
+    "message": "審査待ち",
+    "description": "Operatorの審査待ちステータス。"
+  },
+  "operator.status.approved": {
+    "message": "承認済み",
+    "description": "Operatorの審査承認ステータス。"
+  },
+  "operator.status.suspended": {
+    "message": "停止中",
+    "description": "Operatorの停止ステータス。"
   }
 }

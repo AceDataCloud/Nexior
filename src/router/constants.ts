@@ -105,5 +105,6 @@ export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
 export const ROUTE_CONSOLE_CONNECTORS = 'console-connectors';
 export const ROUTE_CONSOLE_SKILLS = 'console-skills';
 export const ROUTE_CONSOLE_BROWSER_DEVICES = 'console-browser-devices';
+export const ROUTE_CONSOLE_ACE_HOLDER = 'console-ace-holder';
 
 export const ROUTE_NOT_FOUND = 'not-found';

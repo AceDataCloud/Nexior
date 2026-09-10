@@ -1,4 +1,5 @@
 import {
+  ROUTE_CONSOLE_ACE_HOLDER,
   ROUTE_CONSOLE_APPLICATION_EXTRA,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
@@ -10,6 +11,8 @@ import {
   ROUTE_CONSOLE_SKILLS,
   ROUTE_CONSOLE_USAGE_LIST
 } from './constants';
+import { isMainOfficial } from '@/utils';
+import { isNative } from '@/utils/surface';
 
 // Which shape of `.panel` the layout gives a page. There is no single mode
 // that serves both: `document` lets the panel scroll (a workspace page would
@@ -94,6 +97,13 @@ export default {
       name: ROUTE_CONSOLE_BROWSER_DEVICES,
       meta: DOCUMENT,
       component: () => import('@/pages/console/browserDevices/Index.vue')
+    },
+    {
+      path: 'holder',
+      name: ROUTE_CONSOLE_ACE_HOLDER,
+      meta: DOCUMENT,
+      beforeEnter: () => (isMainOfficial() || isNative() ? true : { name: ROUTE_CONSOLE_ROOT }),
+      component: () => import('@/pages/console/holder/Index.vue')
     }
   ]
 };

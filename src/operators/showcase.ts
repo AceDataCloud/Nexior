@@ -1,6 +1,8 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import type { IShowcase } from '@/models';
 import { getBaseUrlPlatform } from '@/utils/baseUrl';
+import store from '@/store';
+import { optionalHttpClient } from './common';
 
 const CACHE_TTL_MS = 60_000;
 const publicClient: AxiosInstance = axios.create({
@@ -18,11 +20,13 @@ class ShowcaseOperator {
 
   list(service?: string, locale = 'en'): Promise<AxiosResponse<IShowcase[]>> {
     const normalizedLocale = locale.trim().toLowerCase() || 'en';
-    const key = `${normalizedLocale}:${service || '*'}`;
+    const identity = store.getters.authenticated ? String(store.getters.user?.id || 'authenticated') : 'anonymous';
+    const key = `${identity}:${normalizedLocale}:${service || '*'}`;
     const now = Date.now();
     const cached = this.cache.get(key);
     if (cached && cached.expiresAt > now) return cached.request;
-    const request = publicClient.get<IShowcase[]>('/showcases/', {
+    const client = store.getters.authenticated ? optionalHttpClient : publicClient;
+    const request = client.get<IShowcase[]>('/showcases/', {
       headers: { 'Accept-Language': normalizedLocale },
       params: service ? { service } : undefined
     });

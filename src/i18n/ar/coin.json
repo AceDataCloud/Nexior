@@ -6,5 +6,209 @@
   "message.connectError": {
     "message": "فشل في الاتصال بالمحفظة.",
     "description": "رسالة الخطأ المعروضة عند فشل الاتصال بالمحفظة."
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "مزايا حاملي ACE",
+    "description": "تسمية رأس صفحة مركز المزايا."
+  },
+  "holderCenter.title": {
+    "message": "مزايا حامل ACE الخاصة بك",
+    "description": "العنوان الرئيسي لمركز المزايا."
+  },
+  "holderCenter.description": {
+    "message": "اطّلع على مستواك الحالي، والمزايا المُفعّلة، والمحتوى الحصري، وحالة طلب Operator.",
+    "description": "وصف مركز المزايا."
+  },
+  "holderCenter.manageWallet": {
+    "message": "إدارة محفظة التحقق",
+    "description": "زر للانتقال إلى صفحة محفظة المزايا على المنصة."
+  },
+  "holderCenter.connectPrompt": {
+    "message": "يرجى الانتقال أولًا إلى API Platform لربط محفظة Solana التي تحتوي على ACE والتحقق منها.",
+    "description": "تنبيه بشأن عدم ربط المحفظة."
+  },
+  "holderCenter.currentTier": {
+    "message": "المستوى الحالي",
+    "description": "تسمية مستوى ACE الحالي."
+  },
+  "holderCenter.holder": {
+    "message": "مزايا حامل ACE سارية",
+    "description": "حالة من بلغ حد حيازة التوكنات."
+  },
+  "holderCenter.notQualified": {
+    "message": "لم تبلغ حد 100,000 ACE بعد",
+    "description": "حالة من لم يبلغ المستوى الأول بعد."
+  },
+  "holderCenter.toNext": {
+    "message": "متبقي {amount} ACE للوصول إلى {tier}",
+    "description": "وصف التقدم نحو المستوى التالي."
+  },
+  "holderCenter.maxTier": {
+    "message": "لقد بلغت أعلى مستوى.",
+    "description": "تنبيه بلوغ أعلى مستوى."
+  },
+  "holderCenter.monthlySavings": {
+    "message": "التوفير في API هذا الشهر",
+    "description": "تسمية التوفير الشهري في Credits."
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "مزايا تم التحقق منها",
+    "description": "تسمية قائمة المزايا."
+  },
+  "holderCenter.benefits": {
+    "message": "المزايا المتاحة حاليًا",
+    "description": "عنوان قائمة المزايا."
+  },
+  "holderCenter.loadError": {
+    "message": "تعذّر تحميل مزايا ACE. يرجى المحاولة مرة أخرى لاحقًا.",
+    "description": "فشل تحميل مركز المزايا."
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "إلهام حصري لحاملي ACE",
+    "description": "عنوان Showcase الحصري لحاملي ACE."
+  },
+  "holderLab.description": {
+    "message": "قوالب وسير عمل مختارة متاحة للمستوى الحالي.",
+    "description": "وصف Showcase الحصري لحاملي ACE."
+  },
+  "benefitStatus.active": {
+    "message": "سارية",
+    "description": "حالة سريان الميزة."
+  },
+  "benefitStatus.eligible": {
+    "message": "متاحة للاستخدام",
+    "description": "حالة إتاحة الميزة للاستخدام."
+  },
+  "benefitStatus.coming_soon": {
+    "message": "قريبًا",
+    "description": "حالة ميزة ستتاح قريبًا."
+  },
+  "benefitStatus.locked": {
+    "message": "غير مُفعّلة",
+    "description": "حالة الميزة غير المُفعّلة."
+  },
+  "benefit.api_discount.title": {
+    "message": "خصم على استدعاءات API",
+    "description": "عنوان ميزة خصم ACE API."
+  },
+  "benefit.api_discount.description": {
+    "message": "يُطبَّق الخصم الساري تلقائيًا على واجهات Credits API المدعومة واستدعاءات x402 التي يمكنها تحديد هوية الحساب.",
+    "description": "شرح ميزة خصم ACE API."
+  },
+  "benefit.early_access.title": {
+    "message": "الوصول المبكر",
+    "description": "عنوان ميزة الوصول المبكر من ACE."
+  },
+  "benefit.early_access.description": {
+    "message": "يمكن تجربة نماذج وميزات محددة قبل إتاحتها رسميًا بـ72 ساعة.",
+    "description": "شرح ميزة الوصول المبكر من ACE."
+  },
+  "benefit.referral_bonus.title": {
+    "message": "زيادة عمولة الإحالة",
+    "description": "عنوان مكافأة الإحالة الإضافية من ACE."
+  },
+  "benefit.referral_bonus.description": {
+    "message": "إضافة نقاط مئوية إلى نسبة الإحالة الأساسية بناءً على حيازة التوكنات، لتصل النسبة النهائية إلى 30% كحد أقصى.",
+    "description": "شرح مكافأة الإحالة الإضافية من ACE."
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "الوصول إلى القوالب ومسارات العمل والميزات المختارة لحاملي Holder.",
+    "description": "شرح ميزة Nexior Holder Lab."
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "يمكن التقديم بدءًا من المستوى 4؛ ولا يزال العرض العام وFeatured يتطلبان المراجعة.",
+    "description": "شرح ميزة ACE Operator."
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "التقدم بطلب ACE Operator",
+    "description": "عنوان قسم Operator."
+  },
+  "operator.description": {
+    "message": "أرسل نبذتك العامة للمراجعة. يمنح امتلاك العملات أهلية التقديم فقط، ولا يضمن الظهور ضمن Featured أو الحصول على انتشار.",
+    "description": "وصف طلب Operator."
+  },
+  "operator.tierRequired": {
+    "message": "يمكنك التقدم بطلب ACE Operator بعد الوصول إلى Tier 4.",
+    "description": "إشعار بمتطلبات مستوى Operator."
+  },
+  "operator.displayName": {
+    "message": "الاسم العام",
+    "description": "حقل الاسم العام لـ Operator."
+  },
+  "operator.bio": {
+    "message": "النبذة العامة",
+    "description": "حقل النبذة العامة لـ Operator."
+  },
+  "operator.public": {
+    "message": "عرض الملف علنًا بعد اجتياز المراجعة",
+    "description": "وصف مفتاح العرض العام لـ Operator."
+  },
+  "operator.apply": {
+    "message": "إرسال الطلب",
+    "description": "زر إرسال طلب Operator."
+  },
+  "operator.save": {
+    "message": "حفظ الملف",
+    "description": "زر حفظ ملف Operator."
+  },
+  "operator.applied": {
+    "message": "تم إرسال الطلب، وهو في انتظار المراجعة.",
+    "description": "إشعار بنجاح تقديم طلب Operator."
+  },
+  "operator.saved": {
+    "message": "تم حفظ ملف Operator.",
+    "description": "إشعار بنجاح حفظ Operator."
+  },
+  "operator.saveError": {
+    "message": "تعذر حفظ ملف Operator، يرجى المحاولة لاحقًا.",
+    "description": "إشعار بفشل حفظ Operator."
+  },
+  "operator.nameRequired": {
+    "message": "يرجى إدخال اسم عام.",
+    "description": "إشعار يفيد بأن اسم Operator فارغ."
+  },
+  "operator.featuredEligible": {
+    "message": "يمكن لمستواك الحالي المشاركة في مراجعة Featured",
+    "description": "إشعار أهلية الترشح لـ Featured."
+  },
+  "operator.featured": {
+    "message": "تم تعيينه Featured من قِبل المنصة",
+    "description": "حالة مراجعة Featured المكتملة."
+  },
+  "operator.featuredBadge": {
+    "message": "مميّز",
+    "description": "شارة «مميّز» التي تمّت مراجعتها والمُستخدمة في بطاقة Showcase."
+  },
+  "operator.status.pending": {
+    "message": "قيد المراجعة",
+    "description": "حالة Operator قيد المراجعة."
+  },
+  "operator.status.approved": {
+    "message": "تمت الموافقة",
+    "description": "حالة اجتياز مراجعة Operator."
+  },
+  "operator.status.suspended": {
+    "message": "متوقف مؤقتًا",
+    "description": "حالة إيقاف Operator مؤقتًا."
   }
 }

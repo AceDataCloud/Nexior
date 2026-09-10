@@ -98,7 +98,7 @@ describe('console layout contract', () => {
     // renders no panel.
     const children = routes.slice(routes.indexOf('children:'));
     const entries = children.match(/{\s*path: '[^']*',[\s\S]*?component:/g) || [];
-    expect(entries.length).toBe(9);
+    expect(entries.length).toBe(10);
     const undeclared = entries.filter((entry) => !/meta:\s*(DOCUMENT|WORKSPACE)/.test(entry));
     expect(undeclared).toEqual([]);
   });

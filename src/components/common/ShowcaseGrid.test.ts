@@ -82,6 +82,27 @@ describe('ShowcaseGrid', () => {
     expect(wrapper.find('.detail-trigger').exists()).toBe(false);
   });
 
+  it('shows only server-approved operator attribution', () => {
+    const operatorItems = [
+      {
+        ...items[0],
+        operator: { display_name: 'Studio Builder', bio: 'Curated workflows', featured: true }
+      },
+      items[1]
+    ];
+    vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
+    const wrapper = mount(ShowcaseGrid, {
+      props: { items: operatorItems },
+      global: {
+        stubs: { RouterLink: { props: ['to'], template: '<a class="router-link"><slot /></a>' } },
+        mocks: { $t: (key: string) => key }
+      }
+    });
+    expect(wrapper.findAll('.operator-attribution')).toHaveLength(1);
+    expect(wrapper.get('.operator-attribution').text()).toContain('Studio Builder');
+    expect(wrapper.get('.operator-featured').text()).toBe('coin.operator.featuredBadge');
+  });
+
   it('uses a native button to select a card for detail preview', async () => {
     const { wrapper } = mountGrid(false, true);
     const triggers = wrapper.findAll('button.detail-trigger');

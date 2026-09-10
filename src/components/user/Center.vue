@@ -20,6 +20,10 @@
             <settings-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.setting') }}
           </el-dropdown-item>
+          <el-dropdown-item v-if="authenticated && showAceHolder" class="py-2" @click="onHolder">
+            <credits-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('coin.holderCenter.nav') }}
+          </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onDistribution">
             <credits-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.distribution') }}
@@ -59,7 +63,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { ROUTE_CONSOLE_ACE_HOLDER, ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
 import { isMainOfficial } from '@/utils';
 import { ElDivider } from 'element-plus';
@@ -105,6 +109,9 @@ export default defineComponent({
     isMainOfficialHost() {
       return isMainOfficial();
     },
+    showAceHolder() {
+      return this.isMainOfficialHost || this.isNative;
+    },
     isIOS() {
       return isIOSSurface();
     }
@@ -148,6 +155,9 @@ export default defineComponent({
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
+    },
+    onHolder() {
+      this.$router.push({ name: ROUTE_CONSOLE_ACE_HOLDER });
     },
     onDistribution() {
       this.$router.push({

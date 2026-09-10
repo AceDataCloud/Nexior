@@ -6,5 +6,209 @@
   "message.connectError": {
     "message": "Fehler beim Verbinden der Brieftasche.",
     "description": "Fehlermeldung, die angezeigt wird, wenn die Verbindung zur Brieftasche fehlschlägt."
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "ACE-Holder-Vorteile",
+    "description": "Label im Kopfbereich der Vorteilscenter-Seite."
+  },
+  "holderCenter.title": {
+    "message": "Deine ACE-Holder-Vorteile",
+    "description": "Haupttitel des Vorteilscenters."
+  },
+  "holderCenter.description": {
+    "message": "Sieh dir dein aktuelles Tier, freigeschaltete Vorteile, exklusive Inhalte und den Status deines Operator-Antrags an.",
+    "description": "Beschreibung des Vorteilscenters."
+  },
+  "holderCenter.manageWallet": {
+    "message": "Verifiziertes Wallet verwalten",
+    "description": "Schaltfläche zur Vorteilsseite für Wallets auf der Plattform."
+  },
+  "holderCenter.connectPrompt": {
+    "message": "Bitte verbinde und verifiziere zuerst ein Solana-Wallet mit ACE-Bestand auf der API Platform.",
+    "description": "Hinweis für ein nicht verbundenes Wallet."
+  },
+  "holderCenter.currentTier": {
+    "message": "Aktuelles Tier",
+    "description": "Label für das aktuelle ACE-Tier."
+  },
+  "holderCenter.holder": {
+    "message": "ACE-Holder-Vorteile sind aktiv",
+    "description": "Status für das Erreichen der erforderlichen Token-Menge."
+  },
+  "holderCenter.notQualified": {
+    "message": "Die Schwelle von 100.000 ACE ist noch nicht erreicht",
+    "description": "Status bei Nichterreichen der ersten Stufe."
+  },
+  "holderCenter.toNext": {
+    "message": "Noch {amount} ACE bis {tier}",
+    "description": "Fortschrittsanzeige bis zur nächsten Stufe."
+  },
+  "holderCenter.maxTier": {
+    "message": "Höchstes Tier erreicht.",
+    "description": "Hinweis zum Erreichen des höchsten Tiers."
+  },
+  "holderCenter.monthlySavings": {
+    "message": "Diesen Monat bei der API gespart",
+    "description": "Label für die monatlichen Einsparungen bei Credits."
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "Verifizierte Vorteile",
+    "description": "Label der Vorteilsliste."
+  },
+  "holderCenter.benefits": {
+    "message": "Derzeit verfügbare Vorteile",
+    "description": "Titel der Vorteilsliste."
+  },
+  "holderCenter.loadError": {
+    "message": "ACE-Vorteile konnten nicht geladen werden. Bitte versuche es später erneut.",
+    "description": "Fehler beim Laden des Vorteilscenters."
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "Exklusive Inspiration für ACE Holder",
+    "description": "Titel des exklusiven Holder-Showcase."
+  },
+  "holderLab.description": {
+    "message": "Ausgewählte Vorlagen und Workflows, die für die aktuelle Stufe verfügbar sind.",
+    "description": "Beschreibung des exklusiven Holder-Showcase."
+  },
+  "benefitStatus.active": {
+    "message": "Aktiv",
+    "description": "Status eines bereits aktivierten Vorteils."
+  },
+  "benefitStatus.eligible": {
+    "message": "Nutzbar",
+    "description": "Status eines nutzbaren Vorteils."
+  },
+  "benefitStatus.coming_soon": {
+    "message": "Demnächst verfügbar",
+    "description": "Status eines in Kürze verfügbaren Vorteils."
+  },
+  "benefitStatus.locked": {
+    "message": "Nicht freigeschaltet",
+    "description": "Status eines nicht freigeschalteten Vorteils."
+  },
+  "benefit.api_discount.title": {
+    "message": "API-Rabatt",
+    "description": "Titel des ACE-API-Rabattvorteils."
+  },
+  "benefit.api_discount.description": {
+    "message": "Für unterstützte Credits-API- und x402-Aufrufe mit erkennbarer Kontoidentität wird der gültige Rabatt automatisch angewendet.",
+    "description": "Beschreibung des ACE-API-Rabattvorteils."
+  },
+  "benefit.early_access.title": {
+    "message": "Früher Zugriff",
+    "description": "Titel des ACE-Vorteils für frühen Zugriff."
+  },
+  "benefit.early_access.description": {
+    "message": "Ausgewählte Modelle und Funktionen können 72 Stunden vor der offiziellen Freigabe getestet werden.",
+    "description": "Beschreibung des ACE-Vorteils für frühen Zugriff."
+  },
+  "benefit.referral_bonus.title": {
+    "message": "Empfehlungsprovisionsbonus",
+    "description": "Titel des ACE-Empfehlungsbonus."
+  },
+  "benefit.referral_bonus.description": {
+    "message": "Zusätzliche Prozentpunkte auf die Basis-Empfehlungsrate durch das Halten von Tokens; die endgültige Rate beträgt höchstens 30 %.",
+    "description": "Beschreibung des ACE-Empfehlungsbonus."
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "Zugriff auf für Holder kuratierte Vorlagen, Workflows und Funktionen.",
+    "description": "Beschreibung des Vorteils von Nexior Holder Lab."
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "Ab Tier 4 kann ein Antrag gestellt werden; die öffentliche Anzeige und Featured erfordern weiterhin eine Prüfung.",
+    "description": "Beschreibung des ACE-Operator-Vorteils."
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "Als ACE Operator bewerben",
+    "description": "Titel des Operator-Bereichs."
+  },
+  "operator.description": {
+    "message": "Reiche deine öffentliche Vorstellung zur Prüfung ein. Das Halten von ACE berechtigt nur zur Antragstellung und garantiert weder eine Aufnahme als Featured noch zusätzliche Sichtbarkeit.",
+    "description": "Beschreibung des Operator-Antrags."
+  },
+  "operator.tierRequired": {
+    "message": "Ab Tier 4 kannst du dich als ACE Operator bewerben.",
+    "description": "Hinweis zur erforderlichen Operator-Stufe."
+  },
+  "operator.displayName": {
+    "message": "Öffentlicher Name",
+    "description": "Feld für den öffentlichen Namen des Operators."
+  },
+  "operator.bio": {
+    "message": "Öffentliche Vorstellung",
+    "description": "Feld für die öffentliche Vorstellung des Operators."
+  },
+  "operator.public": {
+    "message": "Profil nach erfolgreicher Prüfung öffentlich anzeigen",
+    "description": "Beschreibung des Schalters für die öffentliche Anzeige des Operators."
+  },
+  "operator.apply": {
+    "message": "Antrag einreichen",
+    "description": "Schaltfläche zum Einreichen des Operator-Antrags."
+  },
+  "operator.save": {
+    "message": "Profil speichern",
+    "description": "Schaltfläche zum Speichern des Operator-Profils."
+  },
+  "operator.applied": {
+    "message": "Antrag eingereicht. Warten auf Prüfung.",
+    "description": "Erfolgsmeldung für den Operator-Antrag."
+  },
+  "operator.saved": {
+    "message": "Das Operator-Profil wurde gespeichert.",
+    "description": "Erfolgsmeldung beim Speichern des Operators."
+  },
+  "operator.saveError": {
+    "message": "Das Operator-Profil konnte nicht gespeichert werden. Bitte versuche es später erneut.",
+    "description": "Fehlermeldung beim Speichern des Operators."
+  },
+  "operator.nameRequired": {
+    "message": "Bitte gib einen öffentlichen Namen ein.",
+    "description": "Hinweis, wenn der Operator-Name leer ist."
+  },
+  "operator.featuredEligible": {
+    "message": "Die aktuelle Stufe berechtigt zur Teilnahme an der Featured-Prüfung",
+    "description": "Hinweis zur Featured-Kandidatur."
+  },
+  "operator.featured": {
+    "message": "Von der Plattform als Featured ausgewählt",
+    "description": "Status nach erfolgreicher Featured-Prüfung."
+  },
+  "operator.featuredBadge": {
+    "message": "Hervorgehoben",
+    "description": "Geprüftes „Hervorgehoben“-Label in der Showcase-Karte."
+  },
+  "operator.status.pending": {
+    "message": "Ausstehende Prüfung",
+    "description": "Status eines Operators, dessen Antrag noch geprüft wird."
+  },
+  "operator.status.approved": {
+    "message": "Genehmigt",
+    "description": "Status eines genehmigten Operator-Antrags."
+  },
+  "operator.status.suspended": {
+    "message": "Pausiert",
+    "description": "Status eines pausierten Operators."
   }
 }
