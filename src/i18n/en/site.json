@@ -120,7 +120,7 @@
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+    "message": "Turn on the switch to configure and save your SMS endpoint. A successful test enables it automatically; turn it off to use the platform default. Requires phone-number sign-in.",
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
@@ -1328,7 +1328,7 @@
     "description": "SMTP transport setting title"
   },
   "message.authEmailTransportTip": {
-    "message": "Send verification emails through your own SMTP server. Save and test the configuration before enabling it.",
+    "message": "Turn on the switch to configure and save your SMTP server. A successful test enables custom email delivery automatically.",
     "description": "SMTP transport help text"
   },
   "field.authEmailTransportSecurity": {
@@ -1496,7 +1496,7 @@
     "description": "Switch back to platform delivery while retaining the custom configuration."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Save and successfully test the current configuration before enabling custom delivery.",
+    "message": "Save any changes, then test the current configuration. A successful test enables custom delivery automatically.",
     "description": "Prerequisite shown when enabling custom delivery."
   },
   "message.authDeliveryActivated": {

@@ -10,6 +10,7 @@ vi.mock('element-plus', async (importOriginal) => {
   return { ...actual, ElMessage: messages, ElMessageBox: { confirm: vi.fn() } };
 });
 
+import phoneDeliverySource from './SitePhoneDelivery.vue?raw';
 import SitePhoneDelivery from './SitePhoneDelivery.vue';
 
 const webhook = {
@@ -28,6 +29,10 @@ const mountComponent = () =>
 const switchValue = (wrapper: ReturnType<typeof mountComponent>) =>
   wrapper.findComponent({ name: 'ElSwitch' }).props('modelValue');
 
+const formVisible = (wrapper: ReturnType<typeof mountComponent>) => wrapper.find('el-form-stub').exists();
+
+const docsVisible = (wrapper: ReturnType<typeof mountComponent>) => wrapper.find('.phone-delivery__docs-link').exists();
+
 describe('SitePhoneDelivery', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -36,39 +41,64 @@ describe('SitePhoneDelivery', () => {
     api.remove.mockResolvedValue({});
   });
 
-  it('always renders editable webhook settings while reflecting the server transport', async () => {
-    const wrapper = mountComponent();
-    await flushPromises();
-
-    expect(switchValue(wrapper)).toBe(false);
-    expect(wrapper.find('el-form-stub').exists()).toBe(true);
-    expect((wrapper.vm as any).webhook.verification_source).toBe('legacy_migration');
-    expect((wrapper.vm as any).draft.secret).toBe('');
-    expect(wrapper.findAll('el-input-stub').every((input) => input.attributes('disabled') === undefined)).toBe(true);
+  it('keeps webhook documentation prose logical and examples left-to-right', () => {
+    expect(phoneDeliverySource).toContain('class="phone-delivery__docs-dialog"');
+    expect(phoneDeliverySource.match(/<pre dir="ltr">/g)).toHaveLength(3);
+    expect(phoneDeliverySource).toMatch(/phone-delivery__docs-dialog \.el-dialog__header[\s\S]*text-align: start/);
+    expect(phoneDeliverySource).toMatch(/\.phone-delivery__docs \{[\s\S]*text-align: start/);
+    expect(phoneDeliverySource).toMatch(
+      /\.phone-delivery__docs pre \{[\s\S]*direction: ltr;[\s\S]*text-align: left;[\s\S]*unicode-bidi: isolate/
+    );
   });
 
-  it('does not enable an unsaved or unverified webhook', async () => {
+  it('keeps platform delivery compact until custom setup is opened', async () => {
     const wrapper = mountComponent();
     await flushPromises();
 
+    expect(switchValue(wrapper)).toBe(false);
+    expect(formVisible(wrapper)).toBe(false);
+    expect(docsVisible(wrapper)).toBe(false);
+    expect((wrapper.vm as any).draft.secret).toBe('');
+
     await (wrapper.vm as any).toggleDelivery(true);
+    await wrapper.vm.$nextTick();
 
     expect(api.update).not.toHaveBeenCalled();
-    expect(switchValue(wrapper)).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
+    expect(docsVisible(wrapper)).toBe(true);
     expect(messages.warning).toHaveBeenCalledWith('site.message.authDeliveryEnableHelp');
   });
 
-  it('saves, tests only recipient fields, then enables with proof', async () => {
+  it('collapses local setup and its docs without sending a platform update', async () => {
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as any).toggleDelivery(true);
+    (wrapper.vm as any).docsVisible = true;
+    (wrapper.vm as any).draft.url = 'https://sms.example.com/unsaved';
+
+    await (wrapper.vm as any).toggleDelivery(false);
+    await wrapper.vm.$nextTick();
+
+    expect(api.update).not.toHaveBeenCalled();
+    expect(switchValue(wrapper)).toBe(false);
+    expect(formVisible(wrapper)).toBe(false);
+    expect(docsVisible(wrapper)).toBe(false);
+    expect((wrapper.vm as any).docsVisible).toBe(false);
+    expect((wrapper.vm as any).draft.url).toBe('https://sms.example.com/unsaved');
+  });
+
+  it('saves, tests only recipient fields, and automatically enables with proof', async () => {
     api.testPhone.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
     const wrapper = mountComponent();
     await flushPromises();
+    await (wrapper.vm as any).toggleDelivery(true);
     (wrapper.vm as any).draft.url = 'https://sms.example.com/updated';
     (wrapper.vm as any).draft.secret = 'new-secret';
 
     await (wrapper.vm as any).saveDraft();
     (wrapper.vm as any).testTarget = { receiver: '138', region: '86', locale: 'zh-CN' };
     await (wrapper.vm as any).testDelivery();
-    await (wrapper.vm as any).toggleDelivery(true);
 
     expect(api.update.mock.calls[0][2]).toEqual({
       type: 'platform',
@@ -79,17 +109,50 @@ describe('SitePhoneDelivery', () => {
       type: 'webhook',
       webhook: { test_proof: 'proof-1' }
     });
+    expect((wrapper.vm as any).active).toBe(true);
     expect(switchValue(wrapper)).toBe(true);
   });
 
-  it('turns an active webhook off in one saved update', async () => {
+  it('does not reactivate when testing an already active webhook', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { phone: { delivery: { type: 'webhook', webhook: { ...webhook, verified: true } } } } }
+    });
+    api.testPhone.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
+    const wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).testTarget = { receiver: '138', region: '86', locale: 'zh-CN' };
+
+    await (wrapper.vm as any).testDelivery();
+
+    expect(api.testPhone).toHaveBeenCalledTimes(1);
+    expect(api.update).not.toHaveBeenCalled();
+  });
+
+  it('directly enables an existing verified webhook', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { phone: { delivery: { type: 'platform', webhook: { ...webhook, verified: true } } } } }
+    });
+    const wrapper = mountComponent();
+    await flushPromises();
+
+    await (wrapper.vm as any).toggleDelivery(true);
+
+    expect(api.update).toHaveBeenCalledTimes(1);
+    expect(api.update.mock.calls[0][2]).toMatchObject({ type: 'webhook' });
+    expect((wrapper.vm as any).active).toBe(true);
+    expect(switchValue(wrapper)).toBe(true);
+  });
+
+  it('turns an active webhook off in one saved update and collapses its docs', async () => {
     api.get.mockResolvedValue({
       data: { providers: { phone: { delivery: { type: 'webhook', webhook: { ...webhook, verified: true } } } } }
     });
     const wrapper = mountComponent();
     await flushPromises();
+    (wrapper.vm as any).docsVisible = true;
 
     await (wrapper.vm as any).toggleDelivery(false);
+    await wrapper.vm.$nextTick();
 
     expect(api.update).toHaveBeenCalledTimes(1);
     expect(api.update.mock.calls[0][2]).toEqual({
@@ -97,6 +160,8 @@ describe('SitePhoneDelivery', () => {
       webhook: expect.objectContaining({ url: 'https://sms.example.com/send' })
     });
     expect(switchValue(wrapper)).toBe(false);
+    expect(formVisible(wrapper)).toBe(false);
+    expect((wrapper.vm as any).docsVisible).toBe(false);
   });
 
   it('turns an active webhook off without discarding unsaved form edits', async () => {
@@ -114,7 +179,7 @@ describe('SitePhoneDelivery', () => {
     expect((wrapper.vm as any).dirty).toBe(true);
   });
 
-  it('turns an active webhook off before saving its edited draft without echoing a blank secret', async () => {
+  it('keeps setup expanded while saving an edited active webhook and omits a blank secret', async () => {
     api.get.mockResolvedValue({
       data: { providers: { phone: { delivery: { type: 'webhook', webhook: { ...webhook, verified: true } } } } }
     });
@@ -131,10 +196,12 @@ describe('SitePhoneDelivery', () => {
       webhook: { url: 'https://sms.example.com/new' }
     });
     expect(api.update.mock.calls[1][2].webhook).not.toHaveProperty('secret');
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
   });
 
-  it('keeps an edited webhook retryable when its second save step fails', async () => {
+  it('keeps an edited webhook expanded and retryable when its second save step fails', async () => {
     api.get.mockResolvedValue({
       data: { providers: { phone: { delivery: { type: 'webhook', webhook: { ...webhook, verified: true } } } } }
     });
@@ -148,7 +215,8 @@ describe('SitePhoneDelivery', () => {
     await (wrapper.vm as any).saveDraft();
 
     expect(api.update).toHaveBeenCalledTimes(2);
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
     expect((wrapper.vm as any).draft.url).toBe('https://sms.example.com/new');
     expect((wrapper.vm as any).dirty).toBe(true);
   });
@@ -165,10 +233,11 @@ describe('SitePhoneDelivery', () => {
     await (wrapper.vm as any).saveDraft();
 
     expect(api.update).toHaveBeenCalledTimes(1);
+    expect((wrapper.vm as any).active).toBe(true);
     expect(switchValue(wrapper)).toBe(true);
   });
 
-  it('keeps the switch off when an enable request fails', async () => {
+  it('keeps verified setup visible but server-inactive when enabling fails', async () => {
     api.get.mockResolvedValue({
       data: { providers: { phone: { delivery: { type: 'platform', webhook: { ...webhook, verified: true } } } } }
     });
@@ -177,8 +246,11 @@ describe('SitePhoneDelivery', () => {
     await flushPromises();
 
     await (wrapper.vm as any).toggleDelivery(true);
+    await wrapper.vm.$nextTick();
 
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
     expect(messages.error).toHaveBeenCalledWith('site.error.authDeliveryChange');
   });
 });

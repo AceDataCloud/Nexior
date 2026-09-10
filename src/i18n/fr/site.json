@@ -120,8 +120,8 @@
     "description": "Paramètres du site / connexion : titre pour le webhook de livraison de code de vérification SMS personnalisé du site"
   },
   "message.authSmsWebhookTip": {
-    "message": "Une fois activé, les SMS de vérification envoyés par le site seront envoyés par votre propre interface avec votre propre signature ; s'il est désactivé, la signature par défaut de la plateforme sera utilisée. Vous devez d'abord activer le mode de connexion par « numéro de téléphone ».",
-    "description": "Explique le webhook de l'expéditeur SMS personnalisé"
+    "message": "Après avoir activé l'interrupteur, configurez et enregistrez votre propre interface SMS ; si le test réussit, elle sera automatiquement activée, sinon, la signature par défaut de la plateforme sera utilisée. Vous devez d'abord activer la méthode de connexion par « numéro de téléphone ».",
+    "description": "Explique le webhook de l'expéditeur SMS personnalisé."
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://votredomaine/sms-webhook",
@@ -1330,8 +1330,8 @@
     "description": "Titre de la configuration SMTP"
   },
   "message.authEmailTransportTip": {
-    "message": "Utilisez votre propre serveur SMTP pour envoyer des emails de vérification. Veuillez d'abord enregistrer et tester, activez après un test réussi.",
-    "description": "Instructions de configuration SMTP"
+    "message": "Après avoir activé l'interrupteur, configurez et enregistrez votre propre serveur SMTP ; si le test réussit, la livraison d'e-mails personnalisée sera automatiquement activée.",
+    "description": "Instructions pour la configuration SMTP."
   },
   "field.authEmailTransportSecurity": {
     "message": "Sécurité de la connexion",
@@ -1498,8 +1498,8 @@
     "description": "Conservez la configuration personnalisée et revenez à la livraison sur la plateforme."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Veuillez d'abord enregistrer et tester avec succès la configuration actuelle, puis activez la livraison personnalisée.",
-    "description": "Alerte sur les conditions préalables à l'activation de l'interrupteur de livraison personnalisé."
+    "message": "Veuillez d'abord enregistrer (s'il y a des modifications) et tester la configuration actuelle ; si le test réussit, la livraison personnalisée sera automatiquement activée.",
+    "description": "Avertissement préalable pour activer la livraison personnalisée."
   },
   "message.authDeliveryActivated": {
     "message": "La livraison personnalisée est activée",

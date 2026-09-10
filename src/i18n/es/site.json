@@ -120,8 +120,8 @@
     "description": "Configuraciones del sitio / inicio de sesión: título para el webhook de entrega de código de verificación SMS personalizado del sitio"
   },
   "message.authSmsWebhookTip": {
-    "message": "Al habilitar, los SMS de verificación enviados por el sitio serán enviados por tu propia interfaz con tu propia firma; al desactivar, se utilizará la firma predeterminada de la plataforma. Debes habilitar el método de inicio de sesión con 'número de teléfono'.",
-    "description": "Explica el webhook de envío SMS personalizado"
+    "message": "Después de activar el interruptor, configura y guarda tu propia interfaz de SMS; si la prueba es exitosa, se habilitará automáticamente, y si se desactiva, se utilizará la firma predeterminada de la plataforma. Debes habilitar primero el método de inicio de sesión con 'número de teléfono'.",
+    "description": "Explica el webhook del remitente de SMS personalizado."
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://tu-dominio/sms-webhook",
@@ -1328,8 +1328,8 @@
     "description": "Título de configuración del SMTP"
   },
   "message.authEmailTransportTip": {
-    "message": "Utilice su propio servidor SMTP para enviar correos de verificación. Guarde y pruebe primero, habilite después de pasar la prueba.",
-    "description": "Instrucciones de configuración de SMTP"
+    "message": "Después de activar el interruptor, configura y guarda tu propio servidor SMTP; si la prueba es exitosa, se habilitará automáticamente la entrega de correos personalizada.",
+    "description": "Instrucciones para la configuración de SMTP."
   },
   "field.authEmailTransportSecurity": {
     "message": "Seguridad de conexión",
@@ -1496,8 +1496,8 @@
     "description": "Conservar la configuración personalizada y volver a la entrega de la plataforma."
   },
   "message.authDeliveryEnableHelp": {
-    "message": "Por favor, guarda y prueba con éxito la configuración actual antes de habilitar la entrega personalizada.",
-    "description": "Mensaje de advertencia sobre los requisitos previos para el interruptor de entrega personalizada."
+    "message": "Por favor, guarda (si hay cambios) y prueba la configuración actual; si la prueba es exitosa, se habilitará automáticamente la entrega personalizada.",
+    "description": "Mensaje que indica los requisitos previos para habilitar el interruptor de entrega personalizada."
   },
   "message.authDeliveryActivated": {
     "message": "Entrega personalizada habilitada",

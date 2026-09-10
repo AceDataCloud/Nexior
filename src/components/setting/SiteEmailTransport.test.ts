@@ -33,6 +33,8 @@ const mountComponent = (providerEnabled = false) =>
 const switchValue = (wrapper: ReturnType<typeof mountComponent>) =>
   wrapper.findComponent({ name: 'ElSwitch' }).props('modelValue');
 
+const formVisible = (wrapper: ReturnType<typeof mountComponent>) => wrapper.find('el-form-stub').exists();
+
 describe('SiteEmailTransport', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -41,45 +43,87 @@ describe('SiteEmailTransport', () => {
     api.remove.mockResolvedValue({});
   });
 
-  it('renders editable custom settings while the server transport remains platform', async () => {
+  it('keeps platform delivery compact until custom setup is opened', async () => {
     const wrapper = mountComponent(false);
     await flushPromises();
 
     expect(api.get).toHaveBeenCalledWith('site-1');
     expect(switchValue(wrapper)).toBe(false);
-    expect(wrapper.find('el-form-stub').exists()).toBe(true);
+    expect(formVisible(wrapper)).toBe(false);
     expect((wrapper.vm as any).draft.password).toBe('');
-    expect(wrapper.findAll('el-input-stub').every((input) => input.attributes('disabled') === undefined)).toBe(true);
-  });
-
-  it('does not enable an unsaved or unverified SMTP config', async () => {
-    const wrapper = mountComponent();
-    await flushPromises();
 
     await (wrapper.vm as any).toggleDelivery(true);
+    await wrapper.vm.$nextTick();
 
     expect(api.update).not.toHaveBeenCalled();
-    expect(switchValue(wrapper)).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
     expect(messages.warning).toHaveBeenCalledWith('site.message.authDeliveryEnableHelp');
   });
 
-  it('tests saved config then enables it with proof', async () => {
+  it('collapses local setup without sending a platform update', async () => {
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as any).toggleDelivery(true);
+    (wrapper.vm as any).draft.from_name = 'Unsaved';
+
+    await (wrapper.vm as any).toggleDelivery(false);
+    await wrapper.vm.$nextTick();
+
+    expect(api.update).not.toHaveBeenCalled();
+    expect(switchValue(wrapper)).toBe(false);
+    expect(formVisible(wrapper)).toBe(false);
+    expect((wrapper.vm as any).draft.from_name).toBe('Unsaved');
+  });
+
+  it('tests saved config and automatically enables it with proof', async () => {
+    api.testEmail.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as any).toggleDelivery(true);
+
+    await (wrapper.vm as any).testDelivery();
+
+    expect(api.testEmail).toHaveBeenCalledWith('site-1');
+    expect(api.update).toHaveBeenCalledTimes(1);
+    expect(api.update).toHaveBeenCalledWith('site-1', 'email', {
+      type: 'smtp',
+      smtp: expect.objectContaining({ test_proof: 'proof-1' })
+    });
+    expect((wrapper.vm as any).active).toBe(true);
+    expect(switchValue(wrapper)).toBe(true);
+  });
+
+  it('does not reactivate when testing an already active config', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
+    });
     api.testEmail.mockResolvedValue({ data: { success: true, test_proof: 'proof-1' } });
     const wrapper = mountComponent();
     await flushPromises();
 
     await (wrapper.vm as any).testDelivery();
-    await (wrapper.vm as any).toggleDelivery(true);
 
     expect(api.testEmail).toHaveBeenCalledWith('site-1');
-    expect(api.update).toHaveBeenCalledWith('site-1', 'email', {
-      type: 'smtp',
-      smtp: expect.objectContaining({ test_proof: 'proof-1' })
+    expect(api.update).not.toHaveBeenCalled();
+  });
+
+  it('directly enables an existing verified SMTP config', async () => {
+    api.get.mockResolvedValue({
+      data: { providers: { email: { delivery: { type: 'platform', smtp: { ...smtp, verified: true } } } } }
     });
+    const wrapper = mountComponent();
+    await flushPromises();
+
+    await (wrapper.vm as any).toggleDelivery(true);
+
+    expect(api.update).toHaveBeenCalledTimes(1);
+    expect(api.update.mock.calls[0][2]).toMatchObject({ type: 'smtp' });
+    expect((wrapper.vm as any).active).toBe(true);
     expect(switchValue(wrapper)).toBe(true);
   });
 
-  it('turns active SMTP off in one saved update without deleting config', async () => {
+  it('turns active SMTP off in one saved update and collapses without deleting config', async () => {
     api.get.mockResolvedValue({
       data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
     });
@@ -87,6 +131,7 @@ describe('SiteEmailTransport', () => {
     await flushPromises();
 
     await (wrapper.vm as any).toggleDelivery(false);
+    await wrapper.vm.$nextTick();
 
     expect(api.update).toHaveBeenCalledTimes(1);
     expect(api.update).toHaveBeenCalledWith('site-1', 'email', {
@@ -94,6 +139,7 @@ describe('SiteEmailTransport', () => {
       smtp: expect.objectContaining({ host: 'smtp.example.com' })
     });
     expect(switchValue(wrapper)).toBe(false);
+    expect(formVisible(wrapper)).toBe(false);
   });
 
   it('turns active SMTP off without discarding unsaved form edits', async () => {
@@ -111,7 +157,7 @@ describe('SiteEmailTransport', () => {
     expect((wrapper.vm as any).dirty).toBe(true);
   });
 
-  it('turns active SMTP off before saving an edited draft and omits a blank password', async () => {
+  it('keeps setup expanded while saving an edited active draft and omits a blank password', async () => {
     api.get.mockResolvedValue({
       data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
     });
@@ -125,10 +171,12 @@ describe('SiteEmailTransport', () => {
     expect(api.update.mock.calls[0][2]).toMatchObject({ type: 'platform' });
     expect(api.update.mock.calls[1][2]).toMatchObject({ type: 'platform', smtp: { from_name: 'Updated' } });
     expect(api.update.mock.calls[1][2].smtp).not.toHaveProperty('password');
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
   });
 
-  it('keeps an edited draft retryable when its second save step fails', async () => {
+  it('keeps an edited draft expanded and retryable when its second save step fails', async () => {
     api.get.mockResolvedValue({
       data: { providers: { email: { delivery: { type: 'smtp', smtp: { ...smtp, verified: true } } } } }
     });
@@ -142,7 +190,8 @@ describe('SiteEmailTransport', () => {
     await (wrapper.vm as any).saveDraft();
 
     expect(api.update).toHaveBeenCalledTimes(2);
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
     expect((wrapper.vm as any).draft.from_name).toBe('Updated');
     expect((wrapper.vm as any).dirty).toBe(true);
   });
@@ -159,10 +208,11 @@ describe('SiteEmailTransport', () => {
     await (wrapper.vm as any).saveDraft();
 
     expect(api.update).toHaveBeenCalledTimes(1);
+    expect((wrapper.vm as any).active).toBe(true);
     expect(switchValue(wrapper)).toBe(true);
   });
 
-  it('keeps the server-backed switch state when enabling fails', async () => {
+  it('keeps verified setup visible but server-inactive when enabling fails', async () => {
     api.get.mockResolvedValue({
       data: { providers: { email: { delivery: { type: 'platform', smtp: { ...smtp, verified: true } } } } }
     });
@@ -171,8 +221,11 @@ describe('SiteEmailTransport', () => {
     await flushPromises();
 
     await (wrapper.vm as any).toggleDelivery(true);
+    await wrapper.vm.$nextTick();
 
-    expect(switchValue(wrapper)).toBe(false);
+    expect((wrapper.vm as any).active).toBe(false);
+    expect(switchValue(wrapper)).toBe(true);
+    expect(formVisible(wrapper)).toBe(true);
     expect(messages.error).toHaveBeenCalledWith('site.error.authDeliveryChange');
   });
 });

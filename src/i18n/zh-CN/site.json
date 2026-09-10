@@ -120,7 +120,7 @@
     "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
   },
   "message.authSmsWebhookTip": {
-    "message": "开启后，本站发出的手机验证码短信将由你自己的接口用你自己的签名发送；关闭则使用平台默认签名。需先启用「手机号」登录方式。",
+    "message": "打开开关后配置并保存你自己的短信接口；测试成功将自动启用，关闭则使用平台默认签名。需先启用「手机号」登录方式。",
     "description": "Explains the custom SMS sender webhook"
   },
   "placeholder.authSmsWebhookUrl": {
@@ -1328,7 +1328,7 @@
     "description": "SMTP 配置标题"
   },
   "message.authEmailTransportTip": {
-    "message": "使用您自己的 SMTP 服务器发送验证码邮件。请先保存并测试，测试通过后再启用。",
+    "message": "打开开关后配置并保存你自己的 SMTP 服务器；测试成功将自动启用自定义邮件投递。",
     "description": "SMTP 配置说明"
   },
   "field.authEmailTransportSecurity": {
@@ -1496,7 +1496,7 @@
     "description": "保留自定义配置并切回平台投递。"
   },
   "message.authDeliveryEnableHelp": {
-    "message": "请先保存并成功测试当前配置，再开启自定义投递。",
+    "message": "请先保存（如有修改）并测试当前配置；测试成功后将自动启用自定义投递。",
     "description": "自定义投递开关的前置条件提示。"
   },
   "message.authDeliveryActivated": {

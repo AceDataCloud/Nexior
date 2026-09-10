@@ -120,8 +120,8 @@
     "description": "サイト設定/ログイン：カスタムSMS確認コード配信Webhookのタイトル"
   },
   "message.authSmsWebhookTip": {
-    "message": "有効にすると、このサイトの電話番号確認コードは独自のエンドポイントを通じて送信されます。",
-    "description": "カスタムSMS送信者Webhookの説明"
+    "message": "スイッチをオンにした後、自分のSMSインターフェースを設定して保存してください。テストが成功すると自動的に有効になり、オフにするとプラットフォームのデフォルト署名が使用されます。「電話番号」ログイン方式を先に有効にする必要があります。",
+    "description": "カスタムSMS送信者Webhookの説明。"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://あなたのドメイン/sms-webhook",
@@ -1327,8 +1327,8 @@
     "description": "SMTP設定のタイトル"
   },
   "message.authEmailTransportTip": {
-    "message": "自分のSMTPサーバーを使用して確認コードメールを送信します。まず保存してテストし、テストが成功したら有効にしてください。",
-    "description": "SMTP設定の説明"
+    "message": "スイッチをオンにした後、自分のSMTPサーバーを設定して保存してください。テストが成功すると、自動的にカスタムメール配信が有効になります。",
+    "description": "SMTP設定の説明。"
   },
   "field.authEmailTransportSecurity": {
     "message": "接続のセキュリティ",
@@ -1495,8 +1495,8 @@
     "description": "カスタム設定を保持し、プラットフォーム配信に切り替えます。"
   },
   "message.authDeliveryEnableHelp": {
-    "message": "まず現在の設定を保存し、テストに成功してからカスタム配信を有効にしてください。",
-    "description": "カスタム配信スイッチの前提条件に関するヒントです。"
+    "message": "変更がある場合は先に保存し、現在の設定をテストしてください。テストが成功すると、自動的にカスタム配信が有効になります。",
+    "description": "カスタム配信スイッチの前提条件のヒント。"
   },
   "message.authDeliveryActivated": {
     "message": "カスタム配信が有効になりました",
