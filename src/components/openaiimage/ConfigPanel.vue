@@ -39,7 +39,7 @@ import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
 import { openaiimageOperator } from '@/operators';
-import { OPENAIIMAGE_MODELS, OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL } from '@/constants';
+import { isOpenAIImageOfficialModel, OPENAIIMAGE_MODELS } from '@/constants';
 
 const QUOTE_DEBOUNCE_MS = 350;
 
@@ -80,15 +80,13 @@ export default defineComponent({
       );
     },
     displayConsumption(): number | undefined {
-      return this.config?.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL ? undefined : this.consumption;
+      return isOpenAIImageOfficialModel(this.config?.model) ? undefined : this.consumption;
     },
     service() {
       return this.$store.state.openaiimage?.service;
     },
     pricingNote(): string {
-      return this.config?.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
-        ? this.$t('service.message.imageTokenEstimate')
-        : '';
+      return isOpenAIImageOfficialModel(this.config?.model) ? this.$t('service.message.imageTokenEstimate') : '';
     },
     walletMode(): boolean {
       return isScenarioX402Enabled() && scenarioPaymentState('openaiimage').mode === 'wallet';

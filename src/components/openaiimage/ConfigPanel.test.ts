@@ -6,7 +6,9 @@ import ConfigPanel from './ConfigPanel.vue';
 import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 } from '@/constants';
 
@@ -29,17 +31,25 @@ function mountPanel(model: string) {
 }
 
 describe('OpenAI Image ConfigPanel pricing', () => {
-  it('shows the token-settlement note only for the official model', () => {
-    const official = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL);
-    const standard = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2);
+  it.each([
+    OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL
+  ])('shows the token-settlement note for official model %s', (model) => {
+    const official = mountPanel(model);
 
     expect((official.vm as any).pricingNote).toBe('Final charges use actual tokens.');
-    expect((standard.vm as any).pricingNote).toBe('');
     expect((official.vm as any).displayConsumption).toBeUndefined();
-    expect((standard.vm as any).displayConsumption).toBe(0);
     expect(official.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe(
       'Final charges use actual tokens.'
     );
+  });
+
+  it('keeps fixed pricing display for the default model', () => {
+    const standard = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2);
+
+    expect((standard.vm as any).pricingNote).toBe('');
+    expect((standard.vm as any).displayConsumption).toBe(0);
     expect(standard.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe('');
   });
 

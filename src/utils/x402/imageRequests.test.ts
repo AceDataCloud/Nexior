@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { buildNanobananaRequest, buildOpenAIImageGenerateRequest } from './imageRequests';
 
+const GPT_IMAGE_25_MODELS = [
+  'gpt-image-2.5-flare',
+  'gpt-image-2.5-flare:official',
+  'gpt-image-2.5-sunburst',
+  'gpt-image-2.5-sunburst:official'
+];
+
 describe('x402 image request builders', () => {
   it('builds the same trimmed Nano Banana payload for quote and generation without mutating config', () => {
     const config = {
@@ -37,24 +44,21 @@ describe('x402 image request builders', () => {
     });
   });
 
-  it.each(['gpt-image-2.5-flare', 'gpt-image-2.5-sunburst'])(
-    'preserves the exact GPT Image 2.5 model in generation requests: %s',
-    (model) => {
-      expect(
-        buildOpenAIImageGenerateRequest({
-          model,
-          prompt: '  draw a cat  ',
-          size: '2048x1152'
-        })
-      ).toEqual({
+  it.each(GPT_IMAGE_25_MODELS)('preserves the exact GPT Image 2.5 model in generation requests: %s', (model) => {
+    expect(
+      buildOpenAIImageGenerateRequest({
         model,
-        prompt: 'draw a cat',
-        size: '2048x1152',
-        action: 'generate',
-        async: true
-      });
-    }
-  );
+        prompt: '  draw a cat  ',
+        size: '2048x1152'
+      })
+    ).toEqual({
+      model,
+      prompt: 'draw a cat',
+      size: '2048x1152',
+      action: 'generate',
+      async: true
+    });
+  });
 
   it('builds a trimmed GPT Image generation payload without edit images', () => {
     expect(

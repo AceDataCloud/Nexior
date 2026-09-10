@@ -21,7 +21,9 @@ import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_15,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -53,8 +55,16 @@ export default defineComponent({
           label: this.$t('openaiimage.model.gptImage25Flare')
         },
         {
+          value: OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+          label: this.$t('openaiimage.model.gptImage25FlareOfficial')
+        },
+        {
           value: OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
           label: this.$t('openaiimage.model.gptImage25Sunburst')
+        },
+        {
+          value: OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+          label: this.$t('openaiimage.model.gptImage25SunburstOfficial')
         },
         {
           value: OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
