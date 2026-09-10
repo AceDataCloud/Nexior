@@ -26,7 +26,7 @@ import {
   SEEDREAM_DEFAULT_MODEL,
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
-  SEEDREAM_MODEL_5_0_LEGACY,
+  SEEDREAM_MODEL_5_0_ALIAS,
   SEEDREAM_MODEL_5_0_LITE,
   SEEDREAM_MODEL_5_0_PRO
 } from '@/constants';
@@ -58,7 +58,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    const currentModel = this.value === SEEDREAM_MODEL_5_0_LEGACY ? SEEDREAM_MODEL_5_0_LITE : this.value;
+    const currentModel = this.value === SEEDREAM_MODEL_5_0_ALIAS ? SEEDREAM_MODEL_5_0_LITE : this.value;
     if (currentModel && this.options.some((option) => option.value === currentModel)) {
       if (currentModel !== this.value) {
         this.$store.commit('seedream/setConfig', {

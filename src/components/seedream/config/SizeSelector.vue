@@ -37,7 +37,7 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   SEEDREAM_DEFAULT_SIZE,
   SEEDREAM_MODEL_4_5,
-  SEEDREAM_MODEL_5_0_LEGACY,
+  SEEDREAM_MODEL_5_0_ALIAS,
   SEEDREAM_MODEL_5_0_LITE,
   SEEDREAM_PIXEL_PRESETS
 } from '@/constants';
@@ -66,7 +66,7 @@ export default defineComponent({
     pixelOptions(): Array<{ value: string; ratio: string }> {
       const minimumPixels =
         this.model === SEEDREAM_MODEL_5_0_LITE ||
-        this.model === SEEDREAM_MODEL_5_0_LEGACY ||
+        this.model === SEEDREAM_MODEL_5_0_ALIAS ||
         this.model === SEEDREAM_MODEL_4_5
           ? 3_686_400
           : 921_600;

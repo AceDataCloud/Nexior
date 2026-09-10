@@ -5,7 +5,7 @@ export const SEEDREAM_LOGO = 'https://cdn.acedata.cloud/9egrbn.png';
 export const SEEDREAM_MODEL_4_0 = 'doubao-seedream-4-0-250828';
 export const SEEDREAM_MODEL_4_5 = 'doubao-seedream-4-5-251128';
 export const SEEDREAM_MODEL_5_0_LITE = 'doubao-seedream-5-0-lite-260128';
-export const SEEDREAM_MODEL_5_0_LEGACY = 'doubao-seedream-5-0-260128';
+export const SEEDREAM_MODEL_5_0_ALIAS = 'doubao-seedream-5-0-260128';
 export const SEEDREAM_MODEL_5_0_PRO = 'doubao-seedream-5-0-pro-260628';
 
 export const SEEDREAM_DEFAULT_MODEL = SEEDREAM_MODEL_5_0_LITE;
@@ -47,7 +47,7 @@ export const SEEDREAM_DEFAULT_MAX_IMAGES = 1;
 export const SEEDREAM_MODEL_FULL_TO_SHORT: Record<string, string> = {
   [SEEDREAM_MODEL_5_0_PRO]: 'doubao-seedream-5.0-pro',
   [SEEDREAM_MODEL_5_0_LITE]: 'doubao-seedream-5.0-lite',
-  [SEEDREAM_MODEL_5_0_LEGACY]: 'doubao-seedream-5.0',
+  [SEEDREAM_MODEL_5_0_ALIAS]: 'doubao-seedream-5.0',
   [SEEDREAM_MODEL_4_5]: 'doubao-seedream-4.5',
   [SEEDREAM_MODEL_4_0]: 'doubao-seedream-4.0'
 };

@@ -1,7 +1,7 @@
 import {
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
-  SEEDREAM_MODEL_5_0_LEGACY,
+  SEEDREAM_MODEL_5_0_ALIAS,
   SEEDREAM_MODEL_5_0_LITE,
   SEEDREAM_MODEL_5_0_PRO,
   SEEDREAM_SIZE_1_5K,
@@ -69,7 +69,7 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
         transparentBackground: true
       };
     case SEEDREAM_MODEL_5_0_LITE:
-    case SEEDREAM_MODEL_5_0_LEGACY:
+    case SEEDREAM_MODEL_5_0_ALIAS:
       return {
         image: true,
         imageRequired: false,

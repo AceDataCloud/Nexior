@@ -21,7 +21,7 @@ describe('Seedream official capability matrix', () => {
     expect(capabilities.promptOptimization).toEqual(['standard']);
   });
 
-  it('keeps the hidden legacy 5.0 id compatible with Lite capabilities', () => {
+  it('keeps the hidden 5.0 alias compatible with Lite capabilities', () => {
     expect(getSeedreamCapabilities('doubao-seedream-5-0-260128')).toEqual(
       getSeedreamCapabilities('doubao-seedream-5-0-lite-260128')
     );

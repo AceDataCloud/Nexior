@@ -29,7 +29,7 @@ describe('seedream/ModelSelector', () => {
     expect(options.map((option) => option.value)).not.toContain('doubao-seededit-3-0-i2i-250628');
   });
 
-  it('does not expose the legacy 5.0 model id', () => {
+  it('does not expose the 5.0 compatibility alias', () => {
     const { wrapper } = mountSelector({ model: 'doubao-seedream-5-0-lite-260128', size: '2K' });
     const options = (wrapper.vm as unknown as { options: Array<{ value: string }> }).options;
 
@@ -37,7 +37,7 @@ describe('seedream/ModelSelector', () => {
     expect(options.map((option) => option.value)).toContain('doubao-seedream-5-0-lite-260128');
   });
 
-  it('migrates a persisted legacy 5.0 model without clearing compatible settings', () => {
+  it('migrates a persisted 5.0 alias without clearing compatible settings', () => {
     const { commit } = mountSelector({ model: 'doubao-seedream-5-0-260128', size: '2K', stream: true });
 
     expect(commit).toHaveBeenCalledWith('seedream/setConfig', {
