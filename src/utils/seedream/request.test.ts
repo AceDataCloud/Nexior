@@ -25,19 +25,19 @@ describe('buildSeedreamRequest', () => {
   it('removes group options when group generation is inactive', () => {
     expect(
       buildSeedreamRequest({
-        model: 'doubao-seedream-5-0-260128',
+        model: 'doubao-seedream-5-0-lite-260128',
         sequential_image_generation: 'disabled',
         sequential_image_generation_options: { max_images: 4 }
       })
     ).toEqual({
-      model: 'doubao-seedream-5-0-260128',
+      model: 'doubao-seedream-5-0-lite-260128',
       sequential_image_generation: 'disabled',
       watermark: false,
       async: true
     });
   });
 
-  it('disables watermarks for persisted legacy configurations', () => {
+  it('disables watermarks for persisted compatibility configurations', () => {
     expect(buildSeedreamRequest({ prompt: 'A lighthouse', watermark: true })).toMatchObject({ watermark: false });
   });
 
@@ -89,7 +89,7 @@ it('keeps transparent Pro edits in PNG', () => {
 
 it('keeps Lite groups and web search but drops Pro-only fields', () => {
   const request = buildSeedreamRequest({
-    model: 'doubao-seedream-5-0-260128',
+    model: 'doubao-seedream-5-0-lite-260128',
     prompt: 'current city skyline',
     sequential_image_generation: 'auto',
     sequential_image_generation_options: { max_images: 3 },

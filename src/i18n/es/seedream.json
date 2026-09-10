@@ -172,8 +172,8 @@
     "description": "Opción de modelo SeeEdit 3.0 i2i"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "Opción de modelo SeeDream 5.0 (soporta generación de imágenes en grupo y salida en flujo)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "Opción de modelo SeeDream 5.0 Lite (soporta generación de imágenes en grupo y salida en flujo)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "Número de imágenes generadas en grupo (max_images)"
   },
   "description.maxImages": {
-    "message": "Número de imágenes generadas en una sola solicitud (1-15). Si se establece en 1, es modo de imagen única; si es mayor que 1, se activa automáticamente la generación de imágenes en grupo (sequential_image_generation=auto), manteniendo el personaje, estilo y detalles consistentes entre imágenes. Solo se admite doubao-seedream-5.0 / 4.5 / 4.0; si se suben imágenes de referencia, debe cumplirse (número de imágenes de referencia + número de generación) ≤ 15. La facturación se basa en el número real de imágenes generadas.",
+    "message": "Número de imágenes generadas en una sola solicitud (1-15). Si se establece en 1, es modo de imagen única; si es mayor que 1, se activa automáticamente la generación de imágenes en grupo (sequential_image_generation=auto), manteniendo el personaje, estilo y detalles consistentes entre imágenes. Solo se admite doubao-seedream-5.0-lite / 4.5 / 4.0; si se suben imágenes de referencia, debe cumplirse (número de imágenes de referencia + número de generación) ≤ 15. La facturación se basa en el número real de imágenes generadas.",
     "description": "Descripción del parámetro max_images"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "Etiqueta del parámetro output_format"
   },
   "description.outputFormat": {
-    "message": "Formato de archivo de la imagen generada, jpeg o png, por defecto jpeg. Solo soportado por doubao-seedream-5.0.",
+    "message": "Formato de archivo de la imagen generada, jpeg o png, por defecto jpeg. Solo soportado por doubao-seedream-5.0-lite.",
     "description": "Explicación del parámetro output_format"
   },
   "size.group.tier": {

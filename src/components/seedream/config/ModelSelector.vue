@@ -26,7 +26,8 @@ import {
   SEEDREAM_DEFAULT_MODEL,
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
-  SEEDREAM_MODEL_5_0,
+  SEEDREAM_MODEL_5_0_ALIAS,
+  SEEDREAM_MODEL_5_0_LITE,
   SEEDREAM_MODEL_5_0_PRO
 } from '@/constants';
 import { findSeedreamConflicts, clearSeedreamConflicts } from '@/utils/seedream/capabilities';
@@ -45,7 +46,7 @@ export default defineComponent({
       revertKey: 0,
       options: [
         { value: SEEDREAM_MODEL_5_0_PRO, label: this.$t('seedream.model.seedream50pro') },
-        { value: SEEDREAM_MODEL_5_0, label: this.$t('seedream.model.seedream50') },
+        { value: SEEDREAM_MODEL_5_0_LITE, label: this.$t('seedream.model.seedream50') },
         { value: SEEDREAM_MODEL_4_5, label: this.$t('seedream.model.seedream45') },
         { value: SEEDREAM_MODEL_4_0, label: this.$t('seedream.model.seedream40') }
       ]
@@ -57,7 +58,16 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (this.value && this.options.some((option) => option.value === this.value)) return;
+    const currentModel = this.value === SEEDREAM_MODEL_5_0_ALIAS ? SEEDREAM_MODEL_5_0_LITE : this.value;
+    if (currentModel && this.options.some((option) => option.value === currentModel)) {
+      if (currentModel !== this.value) {
+        this.$store.commit('seedream/setConfig', {
+          ...this.$store.state.seedream?.config,
+          model: currentModel
+        });
+      }
+      return;
+    }
 
     const config = { ...(this.$store.state.seedream?.config || {}), model: SEEDREAM_DEFAULT_MODEL };
     const conflicts = findSeedreamConflicts(config, { model: SEEDREAM_DEFAULT_MODEL });

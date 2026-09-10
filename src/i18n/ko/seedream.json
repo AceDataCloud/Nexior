@@ -172,8 +172,8 @@
     "description": "SeeEdit 3.0 i2i 모델 옵션"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 모델 옵션 (그룹 이미지 및 스트리밍 출력 지원)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "SeeDream 5.0 Lite 모델 옵션 (그룹 이미지 및 스트리밍 출력 지원)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "그룹 이미지 생성의 이미지 수 (max_images)"
   },
   "description.maxImages": {
-    "message": "한 번의 요청으로 생성할 수 있는 이미지 수 (1-15). 1로 설정하면 단일 이미지 모드; 1보다 크면 자동으로 그룹 이미지 활성화 (sequential_image_generation=auto), 이미지 간 캐릭터, 스타일 및 세부 사항 일관성 유지. doubao-seedream-5.0 / 4.5 / 4.0만 지원; 참조 이미지를 동시에 업로드할 경우 (참조 이미지 수 + 생성 수) ≤ 15를 충족해야 합니다. 실제 생성된 이미지 수에 따라 요금이 부과됩니다.",
+    "message": "한 번의 요청으로 생성할 수 있는 이미지 수 (1-15). 1로 설정하면 단일 이미지 모드; 1보다 크면 자동으로 그룹 이미지 활성화 (sequential_image_generation=auto), 이미지 간 캐릭터, 스타일 및 세부 사항 일관성 유지. doubao-seedream-5.0-lite / 4.5 / 4.0만 지원; 참조 이미지를 동시에 업로드할 경우 (참조 이미지 수 + 생성 수) ≤ 15를 충족해야 합니다. 실제 생성된 이미지 수에 따라 요금이 부과됩니다.",
     "description": "max_images 매개변수 설명"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "output_format 매개변수 라벨"
   },
   "description.outputFormat": {
-    "message": "생성 이미지 파일 형식, jpeg 또는 png, 기본값 jpeg. doubao-seedream-5.0만 지원.",
+    "message": "생성 이미지 파일 형식, jpeg 또는 png, 기본값 jpeg. doubao-seedream-5.0-lite만 지원.",
     "description": "output_format 매개변수 설명"
   },
   "size.group.tier": {

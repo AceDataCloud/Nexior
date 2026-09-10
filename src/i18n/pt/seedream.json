@@ -172,8 +172,8 @@
     "description": "Opção de modelo SeeEdit 3.0 i2i"
   },
   "model.seedream50": {
-    "message": "doubao-seedream-5.0",
-    "description": "Opção de modelo SeeDream 5.0 (suporta geração de imagens em grupo e saída contínua)"
+    "message": "doubao-seedream-5.0-lite",
+    "description": "Opção de modelo SeeDream 5.0 Lite (suporta geração de imagens em grupo e saída contínua)"
   },
   "model.seedream50pro": {
     "message": "doubao-seedream-5.0-pro",
@@ -184,7 +184,7 @@
     "description": "Número de imagens geradas em grupo (max_images)"
   },
   "description.maxImages": {
-    "message": "Número de imagens geradas em uma única solicitação (1-15). Definido como 1 para modo de imagem única; maior que 1 ativa automaticamente a geração de imagens em grupo (sequential_image_generation=auto), mantendo personagens, estilo e detalhes consistentes entre as imagens. Suporta apenas doubao-seedream-5.0 / 4.5 / 4.0; se imagens de referência forem enviadas, deve-se atender a (número de imagens de referência + número gerado) ≤ 15. A cobrança é feita com base no número real de imagens geradas.",
+    "message": "Número de imagens geradas em uma única solicitação (1-15). Definido como 1 para modo de imagem única; maior que 1 ativa automaticamente a geração de imagens em grupo (sequential_image_generation=auto), mantendo personagens, estilo e detalhes consistentes entre as imagens. Suporta apenas doubao-seedream-5.0-lite / 4.5 / 4.0; se imagens de referência forem enviadas, deve-se atender a (número de imagens de referência + número gerado) ≤ 15. A cobrança é feita com base no número real de imagens geradas.",
     "description": "Descrição do parâmetro max_images"
   },
   "name.seed": {
@@ -208,7 +208,7 @@
     "description": "Etiqueta do parâmetro output_format"
   },
   "description.outputFormat": {
-    "message": "Formato do arquivo da imagem gerada, jpeg ou png, padrão jpeg. Suportado apenas pelo doubao-seedream-5.0.",
+    "message": "Formato do arquivo da imagem gerada, jpeg ou png, padrão jpeg. Suportado apenas pelo doubao-seedream-5.0-lite.",
     "description": "Descrição do parâmetro output_format"
   },
   "size.group.tier": {
