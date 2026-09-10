@@ -1,3 +1,5 @@
+import { trackGenerationTerminal } from '@/plugins/telemetry';
+
 type TaskLike = {
   response?: { success?: boolean; error?: unknown; state?: string; video_url?: string; data?: unknown };
   status?: string;
@@ -14,9 +16,28 @@ const TERMINAL = new Set([
   'failure',
   'failed',
   'cancelled',
+  'canceled',
   'dead'
 ]);
+const FAILED = new Set(['failure', 'failed', 'cancelled', 'canceled', 'dead', 'error']);
 const value = (input: unknown) => String(input || '').toLowerCase();
+
+export const hasExplicitTaskFailure = (task: TaskLike): boolean => {
+  const responseData = Array.isArray(task.response?.data) ? task.response.data[0] : task.response?.data;
+  const states = [
+    task.status,
+    task.state,
+    task.response?.state,
+    (responseData as { status?: string; state?: string } | undefined)?.status,
+    (responseData as { status?: string; state?: string } | undefined)?.state
+  ];
+  const error = task.response?.error;
+  return (
+    task.response?.success === false ||
+    (error !== undefined && error !== null && error !== false && error !== '') ||
+    states.some((state) => FAILED.has(value(state)))
+  );
+};
 
 export const pendingUntilResponse = (task: TaskLike) => !task.response;
 
@@ -46,7 +67,7 @@ type PendingRefreshOptions<T> = {
   commit: (items: T[]) => void;
 };
 
-export async function refreshPendingTaskItems<T extends { id?: string }>({
+export async function refreshPendingTaskItems<T extends TaskLike & { id?: string }>({
   getItems,
   isPending,
   fetch,
@@ -58,8 +79,14 @@ export async function refreshPendingTaskItems<T extends { id?: string }>({
     .map((task) => task.id)
     .filter((id): id is string => Boolean(id));
   if (!ids.length) return [];
+  const pendingIds = new Set(ids);
   const result = await fetch(ids);
   const updates = new Map(result.map((task) => [task.id, task]));
+  updates.forEach((task, id) => {
+    if (id && pendingIds.has(id) && !isPending(task)) {
+      trackGenerationTerminal(id, !hasExplicitTaskFailure(task));
+    }
+  });
   let changed = false;
   const next = getItems().map((task) => {
     const update = updates.get(task.id);

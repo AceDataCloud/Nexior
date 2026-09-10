@@ -140,16 +140,16 @@
     "description": "當使用者成功申請了此服務時向使用者顯示的訊息。"
   },
   "message.applyFailed": {
-    "message": "開通免費試用失敗，請重新整理頁面後重試。",
-    "description": "自動建立全域性申請失敗時顯示的提示。"
+    "message": "帳戶準備失敗，請重新整理頁面後再試。",
+    "description": "建立全域申請失敗，或重新整理後無法確認全域申請時顯示的提示。"
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 歡迎使用 {brand}！我們已為您贈送 {credits} 積分，可在全站任意服務中體驗。",
-    "description": "自動建立全域性申請成功後或首次進入時顯示的歡迎提示。{credits} 為全域性申請的剩餘額度。"
+    "message": "🎉 歡迎使用 {brand}！您目前有 {credits} 點餘額，可用於本站服務。",
+    "description": "僅在服務端重新整理確認全域申請且餘額大於零後顯示。{credits} 為確認後的剩餘額度。"
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 歡迎使用 {brand}！您的帳戶已就緒，可以體驗全站任意服務。",
-    "description": "全域性申請沒有可用免費額度時顯示的歡迎提示。"
+    "message": "🎉 歡迎使用 {brand}！您的帳戶已就緒，產生前請查看可用服務與目前價格。",
+    "description": "僅在服務端重新整理確認全域申請且沒有正餘額後顯示。"
   },
   "message.notApplied": {
     "message": "您尚未申請此服務，請在使用之前申請該服務",

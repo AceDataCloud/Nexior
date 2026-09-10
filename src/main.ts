@@ -7,7 +7,7 @@ import i18n, { setBrandSiteResolver, setI18nLanguage } from './i18n';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
-import { initTelemetry, setUser, captureError } from './plugins/telemetry';
+import { initTelemetry, setUser, captureError, trackVerifiedSubsiteLoaded } from './plugins/telemetry';
 import '@acedatacloud/core/styles.css';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
@@ -155,6 +155,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
     // defined anywhere → the telemetry release tag was always undefined.)
     release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
   });
+  trackVerifiedSubsiteLoaded(store.state.site, window.location.hostname);
 
   initializeCurrency();
   initializeTheme();

@@ -155,6 +155,7 @@ import {
 import { siteOperator, siteDomainOperator } from '@/operators';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { SiteDomainStatus, type ISite, type ISiteDomain } from '@/models';
+import { track } from '@/plugins/telemetry';
 
 const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
 
@@ -356,8 +357,12 @@ export default defineComponent({
         ElMessage.success(this.$t('subsite.message.created'));
         this.creating.visible = false;
         this.items = [data, ...this.items];
+        const createdOrigin = data?.origin || origin;
+        if (data?.id) {
+          track('subsite_create_success', { site_id: data.id, site_origin: createdOrigin });
+        }
         ElMessageBox.confirm(
-          this.$t('subsite.message.openNowConfirm', { origin }) as string,
+          this.$t('subsite.message.openNowConfirm', { origin: createdOrigin }) as string,
           this.$t('subsite.title.openNow') as string,
           {
             confirmButtonText: this.$t('subsite.button.open') as string,
@@ -365,7 +370,10 @@ export default defineComponent({
             type: 'success'
           }
         )
-          .then(() => window.open(`https://${origin}/`, '_blank', 'noopener'))
+          .then(() => {
+            track('subsite_launch_attempt', { site_id: data?.id, site_origin: createdOrigin });
+            window.open(`https://${createdOrigin}/`, '_blank', 'noopener');
+          })
           .catch(() => {
             /* user dismissed */
           });
