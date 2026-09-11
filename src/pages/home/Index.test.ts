@@ -105,6 +105,17 @@ describe('Studio workbench home', () => {
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
   });
 
+  it('separates holder-only showcases from the public gallery', async () => {
+    vi.mocked(showcaseOperator.list).mockResolvedValue({
+      data: [showcase, { ...showcase, id: 'holder-item', minimum_ace_tier: 1 }]
+    } as any);
+    const wrapper = mountHome({ id: 'studio', features: { seedance: { enabled: true } } });
+    await vi.waitFor(() => expect(wrapper.findAllComponents({ name: 'ShowcaseGrid' })).toHaveLength(2));
+    const galleries = wrapper.findAllComponents({ name: 'ShowcaseGrid' });
+    expect(galleries[0].props('items').map((item: any) => item.id)).toEqual(['holder-item']);
+    expect(galleries[1].props('items').map((item: any) => item.id)).toEqual([showcase.id]);
+  });
+
   it('renders Showcases in twelve-item batches with an accessible fallback button', async () => {
     const feed = Array.from({ length: 30 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
     vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);

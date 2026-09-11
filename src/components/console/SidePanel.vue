@@ -29,6 +29,7 @@
 import {
   ApplicationIcon,
   ConnectionIcon,
+  CreditsIcon,
   DesktopIcon,
   ExternalLinkIcon,
   HistoryIcon,
@@ -37,6 +38,7 @@ import {
 } from '@acedatacloud/core/icons/components';
 import { defineComponent, type Component } from 'vue';
 import {
+  ROUTE_CONSOLE_ACE_HOLDER,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_BROWSER_DEVICES,
   ROUTE_CONSOLE_CONNECTORS,
@@ -45,7 +47,8 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { isOfficial } from '@/utils';
+import { isMainOfficial } from '@/utils';
+import { isNative } from '@/utils/surface';
 
 interface ILink {
   key: string;
@@ -62,8 +65,8 @@ export default defineComponent({
     ExternalLinkIcon
   },
   computed: {
-    isOfficial() {
-      return isOfficial();
+    showAceHolder() {
+      return isMainOfficial() || isNative();
     },
     active() {
       return this.$route.matched[0].path;
@@ -110,6 +113,15 @@ export default defineComponent({
           icon: DesktopIcon
         }
       ];
+
+      if (this.showAceHolder) {
+        links.splice(5, 0, {
+          key: 'ace-holder',
+          text: this.$t('coin.holderCenter.nav'),
+          name: ROUTE_CONSOLE_ACE_HOLDER,
+          icon: CreditsIcon
+        });
+      }
 
       // Order history stays visible on iOS — purchases now happen in-app via
       // Apple IAP, so users should see their orders.

@@ -5,6 +5,210 @@
   },
   "message.connectError": {
     "message": "Wallet connection failed.",
-    "description": "Error message displayed when the wallet connection fails."
+    "description": "Error message displayed when wallet connection fails."
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "ACE holder benefits",
+    "description": "Eyebrow for the holder center."
+  },
+  "holderCenter.title": {
+    "message": "Your ACE Holder Benefits",
+    "description": "Main title for the holder center."
+  },
+  "holderCenter.description": {
+    "message": "See your tier, active benefits, holder content, and Operator application status.",
+    "description": "Holder center description."
+  },
+  "holderCenter.manageWallet": {
+    "message": "Manage Verified Wallet",
+    "description": "Link to the platform wallet benefits page."
+  },
+  "holderCenter.connectPrompt": {
+    "message": "Connect and verify the Solana wallet holding ACE in API Platform first.",
+    "description": "Prompt shown when no wallet is bound."
+  },
+  "holderCenter.currentTier": {
+    "message": "Current tier",
+    "description": "Current ACE tier label."
+  },
+  "holderCenter.holder": {
+    "message": "ACE Holder benefits are active",
+    "description": "State shown when the holder threshold is met."
+  },
+  "holderCenter.notQualified": {
+    "message": "The 100,000 ACE threshold has not been reached",
+    "description": "State shown below the first tier."
+  },
+  "holderCenter.toNext": {
+    "message": "Hold {amount} more ACE to reach {tier}",
+    "description": "Progress toward the next tier."
+  },
+  "holderCenter.maxTier": {
+    "message": "You have reached the highest tier.",
+    "description": "Highest tier message."
+  },
+  "holderCenter.monthlySavings": {
+    "message": "API savings this month",
+    "description": "Monthly Credits savings label."
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "Verified benefits",
+    "description": "Benefits section eyebrow."
+  },
+  "holderCenter.benefits": {
+    "message": "Benefits available now",
+    "description": "Benefits section title."
+  },
+  "holderCenter.loadError": {
+    "message": "ACE benefits could not be loaded. Try again later.",
+    "description": "Holder center load error."
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "Ideas for ACE Holders",
+    "description": "Holder-only showcase title."
+  },
+  "holderLab.description": {
+    "message": "Curated templates and workflows available to your current tier.",
+    "description": "Holder-only showcase description."
+  },
+  "benefitStatus.active": {
+    "message": "Active",
+    "description": "Active benefit status."
+  },
+  "benefitStatus.eligible": {
+    "message": "Available",
+    "description": "Eligible benefit status."
+  },
+  "benefitStatus.coming_soon": {
+    "message": "Coming soon",
+    "description": "Upcoming benefit status."
+  },
+  "benefitStatus.locked": {
+    "message": "Locked",
+    "description": "Locked benefit status."
+  },
+  "benefit.api_discount.title": {
+    "message": "API usage discount",
+    "description": "ACE API discount title."
+  },
+  "benefit.api_discount.description": {
+    "message": "Supported Credits APIs and identified x402 calls automatically use your valid discount.",
+    "description": "ACE API discount description."
+  },
+  "benefit.early_access.title": {
+    "message": "Early access",
+    "description": "ACE early-access title."
+  },
+  "benefit.early_access.description": {
+    "message": "Use selected models and features 72 hours before general availability.",
+    "description": "ACE early-access description."
+  },
+  "benefit.referral_bonus.title": {
+    "message": "Referral bonus",
+    "description": "ACE referral bonus title."
+  },
+  "benefit.referral_bonus.description": {
+    "message": "Add holder percentage points to your base referral rate, capped at 30% total.",
+    "description": "ACE referral bonus description."
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "Access templates, workflows, and features curated for holders.",
+    "description": "Nexior Holder Lab benefit description."
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "Apply from Tier 4; public placement and Featured status still require review.",
+    "description": "ACE Operator benefit description."
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "Apply to Be an ACE Operator",
+    "description": "Operator section title."
+  },
+  "operator.description": {
+    "message": "Submit a public introduction for review. Holding ACE makes you eligible to apply; it does not guarantee Featured placement or traffic.",
+    "description": "Operator application explanation."
+  },
+  "operator.tierRequired": {
+    "message": "Reach Tier 4 to apply as an ACE Operator.",
+    "description": "Operator tier requirement."
+  },
+  "operator.displayName": {
+    "message": "Public name",
+    "description": "Operator public display name field."
+  },
+  "operator.bio": {
+    "message": "Public introduction",
+    "description": "Operator public bio field."
+  },
+  "operator.public": {
+    "message": "Show my profile after approval",
+    "description": "Operator profile visibility control."
+  },
+  "operator.apply": {
+    "message": "Submit Application",
+    "description": "Operator application action."
+  },
+  "operator.save": {
+    "message": "Save Profile",
+    "description": "Save Operator profile action."
+  },
+  "operator.applied": {
+    "message": "Application submitted for review.",
+    "description": "Operator application success message."
+  },
+  "operator.saved": {
+    "message": "Operator profile saved.",
+    "description": "Operator profile save success message."
+  },
+  "operator.saveError": {
+    "message": "The Operator profile could not be saved. Try again later.",
+    "description": "Operator profile save error."
+  },
+  "operator.nameRequired": {
+    "message": "Enter a public name.",
+    "description": "Operator display name validation."
+  },
+  "operator.featuredEligible": {
+    "message": "Your current tier is eligible for Featured review",
+    "description": "Featured eligibility message."
+  },
+  "operator.featured": {
+    "message": "Featured by the platform",
+    "description": "Approved Featured status."
+  },
+  "operator.featuredBadge": {
+    "message": "Featured",
+    "description": "Reviewed Featured badge shown on a Showcase card."
+  },
+  "operator.status.pending": {
+    "message": "Pending review",
+    "description": "Pending Operator status."
+  },
+  "operator.status.approved": {
+    "message": "Approved",
+    "description": "Approved Operator status."
+  },
+  "operator.status.suspended": {
+    "message": "Suspended",
+    "description": "Suspended Operator status."
   }
 }

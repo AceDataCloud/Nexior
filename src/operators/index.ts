@@ -52,3 +52,4 @@ export * from './appVersion';
 export * from './codingBridge';
 export * from './contentReport';
 export * from './showcase';
+export * from './ace';

@@ -25,6 +25,12 @@ export interface IShowcase {
   service: string;
   task_id: string | null;
   data: IShowcaseTaskData;
+  minimum_ace_tier?: number | null;
+  operator?: {
+    display_name: string;
+    bio: string;
+    featured: boolean;
+  } | null;
 }
 
 export interface ResolvedShowcase {
@@ -45,4 +51,6 @@ export interface ResolvedShowcase {
   prompt: string;
   model: string;
   parameters: Array<{ key: string; value: string }>;
+  minimumAceTier?: number | null;
+  operator?: IShowcase['operator'];
 }

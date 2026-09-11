@@ -237,6 +237,8 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     prompt,
     model: stringValue(request.model, result.model),
     parameters: deriveParameters(request),
+    minimumAceTier: item.minimum_ace_tier,
+    operator: item.operator,
     ...media
   };
 }

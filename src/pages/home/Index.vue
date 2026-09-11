@@ -9,6 +9,17 @@
         @icon-error="onIconError"
       />
       <showcase-grid
+        v-if="visibleHolderShowcases.length"
+        :items="visibleHolderShowcases"
+        :eyebrow="$t('coin.holderLab.eyebrow')"
+        :title="$t('coin.holderLab.title')"
+        :subtitle="$t('coin.holderLab.description')"
+        :aria-label="$t('coin.holderLab.title')"
+        detail-preview
+        @select="selectedShowcase = $event"
+        @icon-error="onShowcaseIconError"
+      />
+      <showcase-grid
         v-if="visibleShowcases.length"
         :items="visibleShowcases"
         :eyebrow="$t('intro.home.showcase.eyebrow')"
@@ -155,11 +166,20 @@ export default defineComponent({
           icon: this.failedIcons[item.capability] ? item.defaultIcon : item.icon
         }));
     },
+    holderShowcases(): ResolvedShowcase[] {
+      return this.resolvedShowcases.filter((item) => Number(item.minimumAceTier || 0) > 0);
+    },
+    publicShowcases(): ResolvedShowcase[] {
+      return this.resolvedShowcases.filter((item) => !item.minimumAceTier);
+    },
+    visibleHolderShowcases(): ResolvedShowcase[] {
+      return this.holderShowcases.slice(0, SHOWCASE_BATCH_SIZE);
+    },
     visibleShowcases(): ResolvedShowcase[] {
-      return this.resolvedShowcases.slice(0, this.visibleShowcaseCount);
+      return this.publicShowcases.slice(0, this.visibleShowcaseCount);
     },
     hasMoreShowcases(): boolean {
-      return this.visibleShowcaseCount < this.resolvedShowcases.length;
+      return this.visibleShowcaseCount < this.publicShowcases.length;
     }
   },
   watch: {

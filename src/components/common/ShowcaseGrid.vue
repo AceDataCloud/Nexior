@@ -66,6 +66,10 @@
             {{ item.name }}
           </span>
           <strong>{{ item.title }}</strong>
+          <span v-if="item.operator" class="operator-attribution">
+            {{ item.operator.display_name }}
+            <span v-if="item.operator.featured" class="operator-featured">{{ $t('coin.operator.featuredBadge') }}</span>
+          </span>
           <p>{{ item.description }}</p>
           <router-link :to="{ name: item.routeName, query: { showcase: item.id } }" class="create-link">
             {{ $t('intro.home.showcase.createSimilar') }} <span aria-hidden="true">→</span>
@@ -415,6 +419,22 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
+}
+
+.operator-attribution {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+}
+
+.operator-featured {
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  font-weight: 700;
 }
 
 .capability {

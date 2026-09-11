@@ -6,6 +6,209 @@
   "message.connectError": {
     "message": "钱包连接失败。",
     "description": "连接钱包失败时显示的错误提示。"
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "ACE 持币权益中心导航名称。"
+  },
+  "holderCenter.eyebrow": {
+    "message": "ACE 持币权益",
+    "description": "权益中心页眉标签。"
+  },
+  "holderCenter.title": {
+    "message": "你的 ACE Holder 权益",
+    "description": "权益中心主标题。"
+  },
+  "holderCenter.description": {
+    "message": "查看当前等级、已解锁权益、专属内容和 Operator 申请状态。",
+    "description": "权益中心说明。"
+  },
+  "holderCenter.manageWallet": {
+    "message": "管理验证钱包",
+    "description": "跳转平台钱包权益页的按钮。"
+  },
+  "holderCenter.connectPrompt": {
+    "message": "请先前往 API Platform 连接并验证持有 ACE 的 Solana 钱包。",
+    "description": "未绑定钱包提示。"
+  },
+  "holderCenter.currentTier": {
+    "message": "当前等级",
+    "description": "当前 ACE 等级标签。"
+  },
+  "holderCenter.holder": {
+    "message": "ACE Holder 权益已生效",
+    "description": "已达到持币门槛的状态。"
+  },
+  "holderCenter.notQualified": {
+    "message": "尚未达到 100,000 ACE 门槛",
+    "description": "未达到首档时的状态。"
+  },
+  "holderCenter.toNext": {
+    "message": "距离 {tier} 还需 {amount} ACE",
+    "description": "下一等级进度说明。"
+  },
+  "holderCenter.maxTier": {
+    "message": "已达到最高等级。",
+    "description": "最高等级提示。"
+  },
+  "holderCenter.monthlySavings": {
+    "message": "本月 API 已节省",
+    "description": "当月 Credits 节省标签。"
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "已验证权益",
+    "description": "权益列表标签。"
+  },
+  "holderCenter.benefits": {
+    "message": "当前可用权益",
+    "description": "权益列表标题。"
+  },
+  "holderCenter.loadError": {
+    "message": "无法加载 ACE 权益，请稍后重试。",
+    "description": "权益中心加载失败。"
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder 专属内容区标签。"
+  },
+  "holderLab.title": {
+    "message": "ACE Holder 专属灵感",
+    "description": "Holder 专属 Showcase 标题。"
+  },
+  "holderLab.description": {
+    "message": "为当前等级开放的精选模板和工作流。",
+    "description": "Holder 专属 Showcase 说明。"
+  },
+  "benefitStatus.active": {
+    "message": "已生效",
+    "description": "权益已生效状态。"
+  },
+  "benefitStatus.eligible": {
+    "message": "可使用",
+    "description": "权益可使用状态。"
+  },
+  "benefitStatus.coming_soon": {
+    "message": "即将开放",
+    "description": "权益即将开放状态。"
+  },
+  "benefitStatus.locked": {
+    "message": "未解锁",
+    "description": "权益未解锁状态。"
+  },
+  "benefit.api_discount.title": {
+    "message": "API 调用折扣",
+    "description": "ACE API 折扣权益标题。"
+  },
+  "benefit.api_discount.description": {
+    "message": "支持的 Credits API 与可识别账户身份的 x402 调用自动应用有效折扣。",
+    "description": "ACE API 折扣权益说明。"
+  },
+  "benefit.early_access.title": {
+    "message": "提前体验",
+    "description": "ACE 早鸟权益标题。"
+  },
+  "benefit.early_access.description": {
+    "message": "指定模型和功能可在正式开放前 72 小时体验。",
+    "description": "ACE 早鸟权益说明。"
+  },
+  "benefit.referral_bonus.title": {
+    "message": "推荐佣金加成",
+    "description": "ACE 推荐加成标题。"
+  },
+  "benefit.referral_bonus.description": {
+    "message": "在基础推荐比例上增加持币百分点，最终比例最高 30%。",
+    "description": "ACE 推荐加成说明。"
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab 权益标题。"
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "访问为 Holder 精选的模板、工作流和功能。",
+    "description": "Nexior Holder Lab 权益说明。"
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator 权益标题。"
+  },
+  "benefit.ace_operator.description": {
+    "message": "Tier 4 起可申请；公开展示和 Featured 仍需审核。",
+    "description": "ACE Operator 权益说明。"
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator 区域标签。"
+  },
+  "operator.title": {
+    "message": "申请 ACE Operator",
+    "description": "Operator 区域标题。"
+  },
+  "operator.description": {
+    "message": "提交你的公开介绍供审核。持币只提供申请资格，不保证 Featured 或流量曝光。",
+    "description": "Operator 申请说明。"
+  },
+  "operator.tierRequired": {
+    "message": "达到 Tier 4 后可以申请 ACE Operator。",
+    "description": "Operator 等级门槛提示。"
+  },
+  "operator.displayName": {
+    "message": "公开名称",
+    "description": "Operator 公开名称字段。"
+  },
+  "operator.bio": {
+    "message": "公开介绍",
+    "description": "Operator 公开介绍字段。"
+  },
+  "operator.public": {
+    "message": "审核通过后公开展示资料",
+    "description": "Operator 公开开关说明。"
+  },
+  "operator.apply": {
+    "message": "提交申请",
+    "description": "提交 Operator 申请按钮。"
+  },
+  "operator.save": {
+    "message": "保存资料",
+    "description": "保存 Operator 资料按钮。"
+  },
+  "operator.applied": {
+    "message": "申请已提交，等待审核。",
+    "description": "Operator 申请成功提示。"
+  },
+  "operator.saved": {
+    "message": "Operator 资料已保存。",
+    "description": "Operator 保存成功提示。"
+  },
+  "operator.saveError": {
+    "message": "无法保存 Operator 资料，请稍后重试。",
+    "description": "Operator 保存失败提示。"
+  },
+  "operator.nameRequired": {
+    "message": "请填写公开名称。",
+    "description": "Operator 名称为空提示。"
+  },
+  "operator.featuredEligible": {
+    "message": "当前等级可参与 Featured 评审",
+    "description": "Featured 候选提示。"
+  },
+  "operator.featured": {
+    "message": "已由平台设为 Featured",
+    "description": "Featured 已审核状态。"
+  },
+  "operator.featuredBadge": {
+    "message": "精选",
+    "description": "Showcase 卡片中的已审核 Featured 标记。"
+  },
+  "operator.status.pending": {
+    "message": "待审核",
+    "description": "Operator 待审核状态。"
+  },
+  "operator.status.approved": {
+    "message": "已通过",
+    "description": "Operator 审核通过状态。"
+  },
+  "operator.status.suspended": {
+    "message": "已暂停",
+    "description": "Operator 暂停状态。"
   }
 }
-

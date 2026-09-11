@@ -6,5 +6,209 @@
   "message.connectError": {
     "message": "Ошибка подключения кошелька.",
     "description": "Сообщение об ошибке, отображаемое при неудачном подключении кошелька."
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "Привилегии держателя ACE",
+    "description": "Метка в заголовке страницы центра привилегий."
+  },
+  "holderCenter.title": {
+    "message": "Ваши привилегии ACE Holder",
+    "description": "Основной заголовок центра привилегий."
+  },
+  "holderCenter.description": {
+    "message": "Просматривайте текущий уровень, разблокированные привилегии, эксклюзивный контент и статус заявки Operator.",
+    "description": "Описание центра привилегий."
+  },
+  "holderCenter.manageWallet": {
+    "message": "Управление подтверждённым кошельком",
+    "description": "Кнопка перехода на страницу управления кошельком и привилегиями на платформе."
+  },
+  "holderCenter.connectPrompt": {
+    "message": "Сначала перейдите на API Platform, чтобы подключить и подтвердить Solana-кошелёк с ACE.",
+    "description": "Подсказка о неподключённом кошельке."
+  },
+  "holderCenter.currentTier": {
+    "message": "Текущий уровень",
+    "description": "Метка текущего уровня ACE."
+  },
+  "holderCenter.holder": {
+    "message": "Привилегии ACE Holder активированы",
+    "description": "Статус достижения порога владения токенами."
+  },
+  "holderCenter.notQualified": {
+    "message": "Порог в 100 000 ACE ещё не достигнут",
+    "description": "Статус при недостижении первого уровня."
+  },
+  "holderCenter.toNext": {
+    "message": "До {tier} осталось {amount} ACE",
+    "description": "Описание прогресса до следующего уровня."
+  },
+  "holderCenter.maxTier": {
+    "message": "Достигнут максимальный уровень.",
+    "description": "Уведомление о достижении максимального уровня."
+  },
+  "holderCenter.monthlySavings": {
+    "message": "Экономия на API за этот месяц",
+    "description": "Метка экономии Credits за текущий месяц."
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "Подтверждённые привилегии",
+    "description": "Метка списка привилегий."
+  },
+  "holderCenter.benefits": {
+    "message": "Доступные привилегии",
+    "description": "Заголовок списка привилегий."
+  },
+  "holderCenter.loadError": {
+    "message": "Не удалось загрузить привилегии ACE. Повторите попытку позже.",
+    "description": "Ошибка загрузки центра привилегий."
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "Эксклюзивное вдохновение для ACE Holder",
+    "description": "Заголовок эксклюзивного Showcase для Holder."
+  },
+  "holderLab.description": {
+    "message": "Избранные шаблоны и рабочие процессы, доступные на текущем уровне.",
+    "description": "Описание эксклюзивного Showcase для Holder."
+  },
+  "benefitStatus.active": {
+    "message": "Активна",
+    "description": "Статус активированной привилегии."
+  },
+  "benefitStatus.eligible": {
+    "message": "Доступна",
+    "description": "Статус доступной привилегии."
+  },
+  "benefitStatus.coming_soon": {
+    "message": "Скоро доступна",
+    "description": "Статус привилегии, которая скоро станет доступна."
+  },
+  "benefitStatus.locked": {
+    "message": "Не разблокирована",
+    "description": "Статус заблокированной привилегии."
+  },
+  "benefit.api_discount.title": {
+    "message": "Скидка на вызовы API",
+    "description": "Заголовок привилегии ACE API Discount."
+  },
+  "benefit.api_discount.description": {
+    "message": "Действующая скидка автоматически применяется к поддерживаемым вызовам Credits API и x402, если можно идентифицировать аккаунт.",
+    "description": "Описание привилегии ACE API Discount."
+  },
+  "benefit.early_access.title": {
+    "message": "Ранний доступ",
+    "description": "Заголовок привилегии ACE Early Access."
+  },
+  "benefit.early_access.description": {
+    "message": "Доступ к выбранным моделям и функциям за 72 часа до официального запуска.",
+    "description": "Описание привилегии ACE Early Access."
+  },
+  "benefit.referral_bonus.title": {
+    "message": "Бонус к реферальной комиссии",
+    "description": "Заголовок бонуса ACE за рекомендации."
+  },
+  "benefit.referral_bonus.description": {
+    "message": "Дополнительные процентные пункты за владение токенами к базовой ставке реферальной программы; итоговая ставка — до 30%.",
+    "description": "Описание бонуса ACE за рекомендации."
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "Доступ к шаблонам, рабочим процессам и функциям, отобранным для Holder.",
+    "description": "Описание привилегии Nexior Holder Lab."
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "Подача заявки доступна начиная с 4-го уровня; публичное размещение и статус Featured по-прежнему требуют проверки.",
+    "description": "Описание привилегии ACE Operator."
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "Подать заявку на ACE Operator",
+    "description": "Заголовок раздела Operator."
+  },
+  "operator.description": {
+    "message": "Отправьте своё публичное описание на проверку. Владение токенами даёт право подать заявку, но не гарантирует статус Featured или продвижение.",
+    "description": "Описание заявки Operator."
+  },
+  "operator.tierRequired": {
+    "message": "Подать заявку на ACE Operator можно после достижения Tier 4.",
+    "description": "Уведомление о требуемом уровне для Operator."
+  },
+  "operator.displayName": {
+    "message": "Публичное имя",
+    "description": "Поле публичного имени Operator."
+  },
+  "operator.bio": {
+    "message": "Публичное описание",
+    "description": "Поле публичного описания Operator."
+  },
+  "operator.public": {
+    "message": "Профиль будет опубликован после одобрения",
+    "description": "Описание настройки публичности Operator."
+  },
+  "operator.apply": {
+    "message": "Подать заявку",
+    "description": "Кнопка подачи заявки Operator."
+  },
+  "operator.save": {
+    "message": "Сохранить профиль",
+    "description": "Кнопка сохранения профиля Operator."
+  },
+  "operator.applied": {
+    "message": "Заявка отправлена и ожидает проверки.",
+    "description": "Уведомление об успешной подаче заявки Operator."
+  },
+  "operator.saved": {
+    "message": "Профиль Operator сохранён.",
+    "description": "Уведомление об успешном сохранении профиля Operator."
+  },
+  "operator.saveError": {
+    "message": "Не удалось сохранить профиль Operator. Повторите попытку позже.",
+    "description": "Уведомление об ошибке сохранения профиля Operator."
+  },
+  "operator.nameRequired": {
+    "message": "Укажите публичное имя.",
+    "description": "Уведомление о пустом имени Operator."
+  },
+  "operator.featuredEligible": {
+    "message": "Текущий уровень позволяет участвовать в отборе Featured",
+    "description": "Уведомление о возможности стать кандидатом на Featured."
+  },
+  "operator.featured": {
+    "message": "Платформа присвоила статус Featured",
+    "description": "Статус после одобрения Featured."
+  },
+  "operator.featuredBadge": {
+    "message": "Избранное",
+    "description": "Проверенный значок «Избранное» в карточках Showcase."
+  },
+  "operator.status.pending": {
+    "message": "На проверке",
+    "description": "Статус заявки Operator, ожидающей проверки."
+  },
+  "operator.status.approved": {
+    "message": "Одобрено",
+    "description": "Статус одобренной заявки Operator."
+  },
+  "operator.status.suspended": {
+    "message": "Приостановлено",
+    "description": "Статус приостановленного Operator."
   }
 }

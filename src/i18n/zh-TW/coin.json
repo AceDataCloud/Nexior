@@ -6,5 +6,209 @@
   "message.connectError": {
     "message": "錢包連線失敗。",
     "description": "連線錢包失敗時顯示的錯誤提示。"
+  },
+  "holderCenter.nav": {
+    "message": "ACE Holder",
+    "description": "Navigation label for the ACE holder center."
+  },
+  "holderCenter.eyebrow": {
+    "message": "ACE 持幣權益",
+    "description": "權益中心頁首標籤。"
+  },
+  "holderCenter.title": {
+    "message": "你的 ACE Holder 權益",
+    "description": "權益中心主標題。"
+  },
+  "holderCenter.description": {
+    "message": "查看目前等級、已解鎖權益、專屬內容和 Operator 申請狀態。",
+    "description": "權益中心說明。"
+  },
+  "holderCenter.manageWallet": {
+    "message": "管理驗證錢包",
+    "description": "跳轉至平台錢包權益頁面的按鈕。"
+  },
+  "holderCenter.connectPrompt": {
+    "message": "請先前往 API Platform 連線並驗證持有 ACE 的 Solana 錢包。",
+    "description": "未綁定錢包提示。"
+  },
+  "holderCenter.currentTier": {
+    "message": "目前等級",
+    "description": "目前 ACE 等級標籤。"
+  },
+  "holderCenter.holder": {
+    "message": "ACE Holder 權益已生效",
+    "description": "已達到持幣門檻的狀態。"
+  },
+  "holderCenter.notQualified": {
+    "message": "尚未達到 100,000 ACE 門檻",
+    "description": "未達到首檔時的狀態。"
+  },
+  "holderCenter.toNext": {
+    "message": "距離 {tier} 還需 {amount} ACE",
+    "description": "下一等級進度說明。"
+  },
+  "holderCenter.maxTier": {
+    "message": "已達到最高等級。",
+    "description": "最高等級提示。"
+  },
+  "holderCenter.monthlySavings": {
+    "message": "本月 API 已節省",
+    "description": "當月 Credits 節省標籤。"
+  },
+  "holderCenter.benefitsEyebrow": {
+    "message": "已驗證權益",
+    "description": "權益清單標籤。"
+  },
+  "holderCenter.benefits": {
+    "message": "目前可用權益",
+    "description": "權益清單標題。"
+  },
+  "holderCenter.loadError": {
+    "message": "無法載入 ACE 權益，請稍後再試。",
+    "description": "權益中心載入失敗。"
+  },
+  "holderLab.eyebrow": {
+    "message": "Holder Lab",
+    "description": "Holder-only showcase eyebrow."
+  },
+  "holderLab.title": {
+    "message": "ACE Holder 專屬靈感",
+    "description": "Holder 專屬 Showcase 標題。"
+  },
+  "holderLab.description": {
+    "message": "為當前等級開放的精選範本和工作流程。",
+    "description": "Holder 專屬 Showcase 說明。"
+  },
+  "benefitStatus.active": {
+    "message": "已生效",
+    "description": "權益已生效狀態。"
+  },
+  "benefitStatus.eligible": {
+    "message": "可使用",
+    "description": "權益可使用狀態。"
+  },
+  "benefitStatus.coming_soon": {
+    "message": "即將開放",
+    "description": "權益即將開放狀態。"
+  },
+  "benefitStatus.locked": {
+    "message": "未解鎖",
+    "description": "權益未解鎖狀態。"
+  },
+  "benefit.api_discount.title": {
+    "message": "API 呼叫折扣",
+    "description": "ACE API 折扣權益標題。"
+  },
+  "benefit.api_discount.description": {
+    "message": "支援的 Credits API 與可識別帳戶身分的 x402 呼叫會自動套用有效折扣。",
+    "description": "ACE API 折扣權益說明。"
+  },
+  "benefit.early_access.title": {
+    "message": "提前體驗",
+    "description": "ACE 早鳥權益標題。"
+  },
+  "benefit.early_access.description": {
+    "message": "指定模型和功能可在正式開放前 72 小時體驗。",
+    "description": "ACE 早鳥權益說明。"
+  },
+  "benefit.referral_bonus.title": {
+    "message": "推薦佣金加成",
+    "description": "ACE 推薦加成標題。"
+  },
+  "benefit.referral_bonus.description": {
+    "message": "在基礎推薦比例上增加持幣百分點，最終比例最高 30%。",
+    "description": "ACE 推薦加成說明。"
+  },
+  "benefit.nexior_holder_lab.title": {
+    "message": "Holder Lab",
+    "description": "Nexior Holder Lab benefit title."
+  },
+  "benefit.nexior_holder_lab.description": {
+    "message": "存取為 Holder 精選的範本、工作流程和功能。",
+    "description": "Nexior Holder Lab 權益說明。"
+  },
+  "benefit.ace_operator.title": {
+    "message": "ACE Operator",
+    "description": "ACE Operator benefit title."
+  },
+  "benefit.ace_operator.description": {
+    "message": "Tier 4 起即可申請；公開展示和 Featured 仍需審核。",
+    "description": "ACE Operator 權益說明。"
+  },
+  "operator.eyebrow": {
+    "message": "Operator",
+    "description": "Operator section eyebrow."
+  },
+  "operator.title": {
+    "message": "申請 ACE Operator",
+    "description": "Operator 區域標題。"
+  },
+  "operator.description": {
+    "message": "提交你的公開介紹供審核。持幣只提供申請資格，不保證 Featured 或流量曝光。",
+    "description": "Operator 申請說明。"
+  },
+  "operator.tierRequired": {
+    "message": "達到 Tier 4 後可以申請 ACE Operator。",
+    "description": "Operator 等級門檻提示。"
+  },
+  "operator.displayName": {
+    "message": "公開名稱",
+    "description": "Operator 公開名稱欄位。"
+  },
+  "operator.bio": {
+    "message": "公開介紹",
+    "description": "Operator 公開介紹欄位。"
+  },
+  "operator.public": {
+    "message": "審核通過後公開展示資料",
+    "description": "Operator 公開開關說明。"
+  },
+  "operator.apply": {
+    "message": "提交申請",
+    "description": "提交 Operator 申請按鈕。"
+  },
+  "operator.save": {
+    "message": "儲存資料",
+    "description": "儲存 Operator 資料按鈕。"
+  },
+  "operator.applied": {
+    "message": "申請已提交，等待審核。",
+    "description": "Operator 申請成功提示。"
+  },
+  "operator.saved": {
+    "message": "Operator 資料已儲存。",
+    "description": "Operator 儲存成功提示。"
+  },
+  "operator.saveError": {
+    "message": "無法儲存 Operator 資料，請稍後重試。",
+    "description": "Operator 儲存失敗提示。"
+  },
+  "operator.nameRequired": {
+    "message": "請填寫公開名稱。",
+    "description": "Operator 名稱為空提示。"
+  },
+  "operator.featuredEligible": {
+    "message": "當前等級可參與 Featured 評審",
+    "description": "Featured 候選提示。"
+  },
+  "operator.featured": {
+    "message": "已由平台設為 Featured",
+    "description": "Featured 已審核狀態。"
+  },
+  "operator.featuredBadge": {
+    "message": "精選",
+    "description": "Showcase 卡片中的已審核 Featured 標記。"
+  },
+  "operator.status.pending": {
+    "message": "待審核",
+    "description": "Operator 待審核狀態。"
+  },
+  "operator.status.approved": {
+    "message": "已通過",
+    "description": "Operator 審核通過狀態。"
+  },
+  "operator.status.suspended": {
+    "message": "已暫停",
+    "description": "Operator 暫停狀態。"
   }
 }
