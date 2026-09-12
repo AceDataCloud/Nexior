@@ -12,7 +12,8 @@ import {
   getBrandCopyright,
   getBrandSupportUrl,
   getBrandContacts,
-  hasBrandContacts
+  hasBrandContacts,
+  isReferralEntryVisible
 } from './site';
 
 /**
@@ -213,5 +214,25 @@ describe('hasBrandContacts', () => {
 
   it('is true when at least one entry is present', () => {
     expect(hasBrandContacts({ branding: { contacts: [{ type: 'phone', value: '12345' }] } } as never)).toBe(true);
+  });
+});
+
+describe('isReferralEntryVisible', () => {
+  const hiddenSite = { features: { referral: { enabled: false } }, admins: ['admin-1'] } as never;
+
+  it('keeps legacy and explicitly enabled sites visible', () => {
+    expect(isReferralEntryVisible()).toBe(true);
+    expect(isReferralEntryVisible({ features: {} } as never)).toBe(true);
+    expect(isReferralEntryVisible({ features: { referral: { enabled: true } } } as never)).toBe(true);
+  });
+
+  it('hides an explicitly disabled site from visitors and regular users', () => {
+    expect(isReferralEntryVisible(hiddenSite)).toBe(false);
+    expect(isReferralEntryVisible(hiddenSite, { id: 'user-1' })).toBe(false);
+  });
+
+  it('keeps the entry visible for site admins and superusers', () => {
+    expect(isReferralEntryVisible(hiddenSite, { id: 'admin-1' })).toBe(true);
+    expect(isReferralEntryVisible(hiddenSite, { id: 'root', is_superuser: true })).toBe(true);
   });
 });

@@ -10,6 +10,7 @@ export interface IUser {
   province?: string;
   country?: string;
   avatar?: string;
+  is_superuser?: boolean;
 }
 
 export interface IUserListResponse {

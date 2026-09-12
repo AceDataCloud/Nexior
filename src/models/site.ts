@@ -41,6 +41,7 @@ export interface ISiteFeatures {
   webextrator?: any;
   codingBridge?: any;
   support?: any;
+  referral?: ISiteCapabilityFeature;
   subsite?: ISiteSubsiteFeature;
 }
 

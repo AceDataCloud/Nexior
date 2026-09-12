@@ -3,6 +3,23 @@
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
     <section class="settings-item">
       <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.referralEntryEnabled') }}</p>
+        <p class="settings-tip">{{ $t('site.message.referralEntryEnabledTip') }}</p>
+      </div>
+      <div class="settings-content">
+        <el-switch
+          :model-value="referralEntryEnabled"
+          inline-prompt
+          :loading="referralEntrySaving"
+          :disabled="referralEntrySaving || !site.id"
+          :active-text="$t('site.button.enabled')"
+          :inactive-text="$t('site.button.disabled')"
+          @update:model-value="onToggleReferralEntry($event as boolean)"
+        />
+      </div>
+    </section>
+    <section class="settings-item">
+      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.distributionDefaultInviterId') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.distributionDefaultInviterIdTip') }}
@@ -53,10 +70,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElMessage, ElSwitch } from 'element-plus';
 import EditUser from '@/components/site/EditUser.vue';
 import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
+import type { ISite } from '@/models';
 import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
@@ -64,20 +83,51 @@ export default defineComponent({
   components: {
     EditUser,
     UserChip,
-    SectionNotice
+    SectionNotice,
+    ElSwitch
+  },
+  data() {
+    return {
+      referralEntrySaving: false
+    };
   },
   computed: {
-    site() {
+    site(): ISite {
       return this.$store.getters.site || { distribution: {} };
+    },
+    referralEntryEnabled(): boolean {
+      return this.site.features?.referral?.enabled !== false;
     }
   },
   methods: {
+    async onToggleReferralEntry(enabled: boolean): Promise<void> {
+      if (!this.site.id || this.referralEntrySaving) return;
+      this.referralEntrySaving = true;
+      try {
+        await siteOperator.update(this.site.id, {
+          ...toWritableSitePayload(this.site),
+          features: {
+            ...this.site.features,
+            referral: {
+              ...this.site.features?.referral,
+              enabled
+            }
+          }
+        });
+        await this.$store.dispatch('getSite');
+      } catch {
+        ElMessage.error(this.$t('site.services.message.saveFailed'));
+      } finally {
+        this.referralEntrySaving = false;
+      }
+    },
     onSave(data: any) {
+      if (!this.site.id) return;
       const payload = {
         ...toWritableSitePayload(this.site),
         ...data
       };
-      siteOperator.update(this.site?.id, payload).then(() => {
+      siteOperator.update(this.site.id, payload).then(() => {
         console.debug('getSite for id', this.site?.id);
         this.$store.dispatch('getSite');
       });

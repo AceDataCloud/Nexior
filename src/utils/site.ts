@@ -1,4 +1,4 @@
-import { IApplication, ISite, ISiteContact } from '@/models';
+import { IApplication, ISite, ISiteContact, IUser } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { isNative, isDesktop } from './surface';
 import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
@@ -125,6 +125,12 @@ export const MARKUP_RATIO_MAX = 5;
  */
 export const isRechargeDisabled = (site?: ISite | null): boolean => {
   return site?.metadata?.disable_recharge === true;
+};
+
+export const isReferralEntryVisible = (site?: ISite | null, user?: IUser | null): boolean => {
+  const isAdmin =
+    user?.is_superuser === true || (!!user?.id && Array.isArray(site?.admins) && site.admins.includes(user.id));
+  return isAdmin || site?.features?.referral?.enabled !== false;
 };
 
 /**

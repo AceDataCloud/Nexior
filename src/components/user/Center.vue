@@ -20,7 +20,7 @@
             <settings-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.setting') }}
           </el-dropdown-item>
-          <el-dropdown-item class="py-2" @click="onDistribution">
+          <el-dropdown-item v-if="referralEntryVisible" class="py-2" @click="onDistribution">
             <credits-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
@@ -61,7 +61,7 @@ import UserSetting from '@/components/user/Setting.vue';
 import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
-import { isMainOfficial } from '@/utils';
+import { isMainOfficial, isReferralEntryVisible } from '@/utils';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -97,6 +97,9 @@ export default defineComponent({
     },
     authenticated() {
       return this.$store.getters?.authenticated;
+    },
+    referralEntryVisible(): boolean {
+      return isReferralEntryVisible(this.$store.getters?.site || this.$store.state?.site, this.user);
     },
     isNative() {
       return isNativeSurface();
