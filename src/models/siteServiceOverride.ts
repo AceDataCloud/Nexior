@@ -11,7 +11,7 @@
  *
  * - ``visible``       optional bool, default true.
  * - ``markup_ratio``  optional float in [0, 5] (= +0..+500%). Null falls
- *                     back to ``site.metadata.pricing.markup_ratio`` then 0.
+ *                     back to ``site.commerce.pricing.markup_ratio`` then 0.
  * - ``display_title`` optional string, trimmed, max 120 chars. Empty/null
  *                     = use catalog Service.title.
  * - ``display_summary`` optional text. Empty/null = use catalog description.

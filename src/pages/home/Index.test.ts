@@ -225,7 +225,7 @@ describe('Studio workbench home', () => {
     const wrapper = mountHome({
       id: 'studio',
       features: studioFeatures,
-      metadata: { nexior: { hidden_default_banner_ids: ['maestro', 'seedance'] } }
+      home: { sections: { banner: { disabled_item_ids: ['maestro', 'seedance'] } } }
     });
     const slides = wrapper.getComponent({ name: 'HomeCarousel' }).props('slides');
     expect(slides.map((item: any) => item.id)).toEqual(['gpt-image']);
@@ -266,7 +266,7 @@ describe('Studio workbench home', () => {
     const wrapper = mountHome({
       id: 'tenant',
       features: studioFeatures,
-      metadata: { nexior: { hidden_default_banner_ids: ['maestro', 'gpt-image', 'seedance'] } }
+      home: { sections: { banner: { disabled_item_ids: ['maestro', 'gpt-image', 'seedance'] } } }
     });
     await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalled());
     expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(false);
@@ -275,7 +275,10 @@ describe('Studio workbench home', () => {
     const wrapper = mountHome({ id: 'studio', features: studioFeatures });
     await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalledTimes(1));
     (wrapper.vm as any).$i18n.locale = 'zh-CN';
-    await (wrapper.vm as any).$options.watch['$i18n.locale'].call(wrapper.vm);
+    await (wrapper.vm as any).$options.watch.bannerRequestKey.handler.call(
+      wrapper.vm,
+      (wrapper.vm as any).bannerRequestKey
+    );
     await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalledTimes(2));
   });
 
@@ -285,5 +288,47 @@ describe('Studio workbench home', () => {
     carousel.vm.$emit('image-error', carousel.props('slides')[0]);
     await wrapper.vm.$nextTick();
     expect(wrapper.getComponent({ name: 'HomeCarousel' }).props('slides')[0].imageUrl).toBe('');
+  });
+  it('does not request or render disabled banner and showcase sections', async () => {
+    const wrapper = mountHome({
+      id: 'quiet',
+      features: studioFeatures,
+      home: { sections: { banner: { enabled: false }, showcase: { enabled: false } } }
+    });
+    await wrapper.vm.$nextTick();
+    expect(siteBannerOperator.getPublic).not.toHaveBeenCalled();
+    expect(showcaseOperator.list).not.toHaveBeenCalled();
+    expect(wrapper.findComponent({ name: 'HomeCarousel' }).exists()).toBe(false);
+    expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(false);
+    expect(wrapper.findComponent({ name: 'CategoryTiles' }).exists()).toBe(true);
+  });
+
+  it('filters hidden category groups without disabling their capabilities', () => {
+    const wrapper = mountHome({
+      id: 'focused',
+      features: studioFeatures,
+      home: { sections: { categories: { disabled_item_ids: ['music', 'video'] } } }
+    });
+    expect(
+      wrapper
+        .getComponent({ name: 'CategoryTiles' })
+        .props('items')
+        .map((item: any) => item.id)
+    ).toEqual(['chat', 'image']);
+  });
+
+  it('invalidates a banner response when the section is disabled in flight', async () => {
+    let resolveRequest: (value: any) => void = () => undefined;
+    vi.mocked(siteBannerOperator.getPublic).mockImplementation(
+      () => new Promise((resolve) => (resolveRequest = resolve)) as any
+    );
+    const wrapper = mountHome({ id: 'tenant', origin: 'tenant.example', features: studioFeatures });
+    await vi.waitFor(() => expect(siteBannerOperator.getPublic).toHaveBeenCalled());
+    (wrapper.vm as any).$store.state.site.home = { sections: { banner: { enabled: false } } };
+    await (wrapper.vm as any).$options.watch.bannerRequestKey.handler.call(wrapper.vm, '');
+    resolveRequest({ data: [{ id: 'late', title: { en: 'Late' } }] });
+    await Promise.resolve();
+    await wrapper.vm.$nextTick();
+    expect((wrapper.vm as any).rawBanners).toEqual([]);
   });
 });

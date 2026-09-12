@@ -208,7 +208,7 @@ import UserChip from '@/components/site/UserChip.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
-import { getBrandContacts, hasBrandContacts, toWritableSitePayload } from '@/utils';
+import { getBrandContacts, hasBrandContacts } from '@/utils';
 import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
@@ -327,7 +327,6 @@ export default defineComponent({
     },
     onSave(data: any) {
       const payload = {
-        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site?.id, payload).then(() => {

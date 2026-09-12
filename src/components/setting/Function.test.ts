@@ -15,10 +15,9 @@ vi.mock('@/operators', () => ({
 import FunctionSetting from './Function.vue';
 
 describe('FunctionSetting', () => {
-  it('does not echo the read-only capability override mapping in Site PUTs', async () => {
+  it('patches only the owned features field', async () => {
     const site = {
       id: 'site-1',
-      title: 'Demo',
       features: { chatgpt: { enabled: true } },
       capability_overrides: {
         chatgpt: { display_name: 'Custom Chat', icon_url: 'https://cdn.example.com/chat.png' }
@@ -51,8 +50,6 @@ describe('FunctionSetting', () => {
     await Promise.resolve();
 
     expect(mocks.updateSite).toHaveBeenCalledWith('site-1', {
-      id: 'site-1',
-      title: 'Demo',
       features: { chatgpt: { enabled: false } }
     });
     expect(dispatch).toHaveBeenCalledWith('getSite');
