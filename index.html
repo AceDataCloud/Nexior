@@ -100,12 +100,11 @@
     <meta name="twitter:image" content="https://platform.acedata.cloud/api/v1/og/__OG_HOST__.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <!--
-      White-label first paint. This bundle is byte-identical across every host
-      (studio.acedata.cloud and each tenant domain via the Caddy studio-proxy),
-      so the static tags above are OUR brand and would otherwise show on a
-      tenant domain until getSite() resolves (~230ms measured on juheai.ai).
-      Crawlers, which never run this, are out of scope — see plans/white-label/19.
+      White-label first paint. Nginx resolves the icon and manifest paths by
+      request host, so browsers and crawlers receive tenant assets before the
+      application bootstrap. Other static metadata waits for getSite().
     -->
     <script>
       (function () {
@@ -123,9 +122,6 @@
             /(^|\.)localhost$/.test(host);
           if (official) return;
 
-          document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]').forEach(function (el) {
-            el.parentNode.removeChild(el);
-          });
           [
             'meta[name="description"]',
             'meta[name="keywords"]',
