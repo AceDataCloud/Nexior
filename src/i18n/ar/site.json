@@ -1565,5 +1565,157 @@
   "homeLayout.updateFailed": {
     "message": "تعذر حفظ تخطيط الصفحة الرئيسية",
     "description": "إشعار بفشل حفظ إعدادات تخطيط الصفحة الرئيسية."
+  },
+  "homeSections.title": {
+    "message": "الأقسام المخصصة",
+    "description": "عنوان إعدادات الأقسام المخصصة في الصفحة الرئيسية."
+  },
+  "homeSections.tip": {
+    "message": "أضف أقسامًا مُدارة للصور والنصوص أو أزرار الإجراءات أو مداخل الميزات أو النصوص المنسقة.",
+    "description": "وصف إعدادات الأقسام المخصصة."
+  },
+  "homeSections.add": {
+    "message": "إضافة قسم",
+    "description": "زر إضافة قسم إلى الصفحة الرئيسية."
+  },
+  "homeSections.empty": {
+    "message": "لا توجد أقسام مخصصة بعد",
+    "description": "حالة عدم وجود أقسام مخصصة."
+  },
+  "homeSections.kind.image_text": {
+    "message": "قسم صورة ونص",
+    "description": "اسم نوع قسم الصورة والنص."
+  },
+  "homeSections.kind.cta": {
+    "message": "زر إجراء",
+    "description": "اسم نوع قسم زر الإجراء."
+  },
+  "homeSections.kind.capability_grid": {
+    "message": "مداخل الميزات",
+    "description": "اسم نوع قسم مداخل الميزات."
+  },
+  "homeSections.kind.rich_text": {
+    "message": "نص منسق",
+    "description": "اسم نوع قسم النص المنسق بتنسيق Markdown."
+  },
+  "homeSections.edit": {
+    "message": "تعديل القسم المخصص",
+    "description": "عنوان نافذة تعديل القسم."
+  },
+  "homeSections.create": {
+    "message": "إنشاء قسم مخصص",
+    "description": "عنوان نافذة إنشاء القسم."
+  },
+  "homeSections.kindLabel": {
+    "message": "نوع القسم",
+    "description": "تسمية حقل نوع القسم."
+  },
+  "homeSections.field.title": {
+    "message": "العنوان",
+    "description": "حقل عنوان القسم."
+  },
+  "homeSections.field.subtitle": {
+    "message": "العنوان الفرعي",
+    "description": "حقل العنوان الفرعي للقسم."
+  },
+  "homeSections.field.body": {
+    "message": "النص الأساسي",
+    "description": "حقل النص الأساسي للقسم."
+  },
+  "homeSections.field.image": {
+    "message": "الصورة",
+    "description": "حقل صورة القسم."
+  },
+  "homeSections.field.buttonLabel": {
+    "message": "نص الزر",
+    "description": "حقل نص زر القسم."
+  },
+  "homeSections.field.buttonUrl": {
+    "message": "رابط الزر",
+    "description": "حقل رابط زر القسم."
+  },
+  "homeSections.field.capabilities": {
+    "message": "عرض الميزات",
+    "description": "حقل اختيار مداخل الميزات."
+  },
+  "homeSections.field.startAt": {
+    "message": "وقت البدء",
+    "description": "وقت بدء عرض القسم."
+  },
+  "homeSections.field.endAt": {
+    "message": "وقت الانتهاء",
+    "description": "وقت توقف عرض القسم."
+  },
+  "homeSections.field.order": {
+    "message": "قيمة الترتيب",
+    "description": "حقل قيمة ترتيب القسم."
+  },
+  "homeSections.field.visible": {
+    "message": "عرض الآن",
+    "description": "حقل مستوى ظهور القسم."
+  },
+  "homeSections.uploadImage": {
+    "message": "رفع صورة",
+    "description": "زر رفع صورة القسم."
+  },
+  "homeSections.markdownTip": {
+    "message": "يدعم Markdown، ولا يُسمح بمحتوى HTML أو البرامج النصية أو المحتوى المضمّن.",
+    "description": "تنبيه أمان للنصوص المنسقة."
+  },
+  "homeSections.urlTip": {
+    "message": "يُسمح فقط بالمسار الداخلي /path أو بروابط HTTPS",
+    "description": "تنبيه حول تنسيق الروابط الآمن."
+  },
+  "homeSections.scheduled": {
+    "message": "مجدول",
+    "description": "حالة جدولة القسم."
+  },
+  "homeSections.expired": {
+    "message": "منتهي الصلاحية",
+    "description": "حالة جدولة القسم."
+  },
+  "homeSections.hidden": {
+    "message": "مخفي",
+    "description": "حالة ظهور القسم."
+  },
+  "homeSections.active": {
+    "message": "معروض",
+    "description": "حالة ظهور القسم."
+  },
+  "homeSections.loadFailed": {
+    "message": "فشل تحميل الأقسام المخصصة",
+    "description": "تنبيه بفشل تحميل قائمة الأقسام."
+  },
+  "homeSections.saveFailed": {
+    "message": "فشل حفظ القسم المخصص",
+    "description": "تنبيه بفشل حفظ القسم."
+  },
+  "homeSections.invalidWindow": {
+    "message": "يجب أن يكون وقت الانتهاء بعد وقت البدء",
+    "description": "تنبيه بجدولة غير صالحة."
+  },
+  "homeSections.reorderFailed": {
+    "message": "فشل تغيير ترتيب الأقسام",
+    "description": "تنبيه بفشل ترتيب الأقسام."
+  },
+  "homeSections.deleteConfirm": {
+    "message": "هل تريد بالتأكيد حذف هذا القسم المخصص؟",
+    "description": "رسالة تأكيد حذف القسم."
+  },
+  "homeSections.deleteFailed": {
+    "message": "فشل حذف القسم المخصص",
+    "description": "تنبيه بفشل حذف القسم."
+  },
+  "homeSections.moveUp": {
+    "message": "نقل لأعلى",
+    "description": "تسمية وصول لتحريك القسم لأعلى."
+  },
+  "homeSections.moveDown": {
+    "message": "نقل لأسفل",
+    "description": "تسمية وصول لتحريك القسم لأسفل."
+  },
+  "homeSections.saveBeforeTranslate": {
+    "message": "يرجى حفظ القسم أولًا قبل تفعيل الترجمة التلقائية.",
+    "description": "تنبيه الترجمة للقسم غير المحفوظ."
   }
 }

@@ -1565,5 +1565,157 @@
   "homeLayout.updateFailed": {
     "message": "홈 레이아웃 저장 실패",
     "description": "홈 페이지 레이아웃 구성 저장 실패 알림입니다."
+  },
+  "homeSections.title": {
+    "message": "사용자 지정 섹션",
+    "description": "홈페이지 사용자 지정 섹션 설정 제목입니다."
+  },
+  "homeSections.tip": {
+    "message": "관리되는 이미지·텍스트, 행동 버튼, 기능 바로가기 또는 서식 있는 텍스트 섹션을 추가하세요.",
+    "description": "사용자 지정 섹션 설정 안내입니다."
+  },
+  "homeSections.add": {
+    "message": "섹션 추가",
+    "description": "홈페이지 섹션 추가 버튼입니다."
+  },
+  "homeSections.empty": {
+    "message": "아직 사용자 지정 섹션이 없습니다",
+    "description": "사용자 지정 섹션의 빈 상태입니다."
+  },
+  "homeSections.kind.image_text": {
+    "message": "이미지·텍스트 섹션",
+    "description": "이미지·텍스트 섹션 유형 이름입니다."
+  },
+  "homeSections.kind.cta": {
+    "message": "행동 버튼",
+    "description": "행동 버튼 섹션 유형 이름입니다."
+  },
+  "homeSections.kind.capability_grid": {
+    "message": "기능 바로가기",
+    "description": "기능 바로가기 섹션 유형 이름입니다."
+  },
+  "homeSections.kind.rich_text": {
+    "message": "서식 있는 텍스트",
+    "description": "Markdown 서식 있는 텍스트 섹션 유형 이름입니다."
+  },
+  "homeSections.edit": {
+    "message": "사용자 지정 섹션 편집",
+    "description": "섹션 편집 팝업 제목입니다."
+  },
+  "homeSections.create": {
+    "message": "사용자 지정 섹션 만들기",
+    "description": "섹션 만들기 팝업 제목입니다."
+  },
+  "homeSections.kindLabel": {
+    "message": "섹션 유형",
+    "description": "섹션 유형 필드 레이블입니다."
+  },
+  "homeSections.field.title": {
+    "message": "제목",
+    "description": "섹션 제목 필드입니다."
+  },
+  "homeSections.field.subtitle": {
+    "message": "부제목",
+    "description": "섹션 부제목 필드입니다."
+  },
+  "homeSections.field.body": {
+    "message": "본문",
+    "description": "섹션 본문 필드입니다."
+  },
+  "homeSections.field.image": {
+    "message": "이미지",
+    "description": "섹션 이미지 필드입니다."
+  },
+  "homeSections.field.buttonLabel": {
+    "message": "버튼 텍스트",
+    "description": "섹션 버튼 텍스트 필드입니다."
+  },
+  "homeSections.field.buttonUrl": {
+    "message": "버튼 링크",
+    "description": "섹션 버튼 링크 필드입니다."
+  },
+  "homeSections.field.capabilities": {
+    "message": "표시할 기능",
+    "description": "기능 바로가기 선택 필드입니다."
+  },
+  "homeSections.field.startAt": {
+    "message": "시작 시간",
+    "description": "섹션 표시 시작 시간입니다."
+  },
+  "homeSections.field.endAt": {
+    "message": "종료 시간",
+    "description": "섹션 표시 종료 시간입니다."
+  },
+  "homeSections.field.order": {
+    "message": "정렬 값",
+    "description": "섹션 정렬 값 필드입니다."
+  },
+  "homeSections.field.visible": {
+    "message": "즉시 표시",
+    "description": "섹션 공개 여부 필드입니다."
+  },
+  "homeSections.uploadImage": {
+    "message": "이미지 업로드",
+    "description": "섹션 이미지 업로드 버튼입니다."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown을 지원하며 HTML, 스크립트 또는 삽입 콘텐츠는 허용되지 않습니다.",
+    "description": "서식 있는 텍스트의 보안 안내입니다."
+  },
+  "homeSections.urlTip": {
+    "message": "사이트 내 /path 또는 HTTPS 링크만 지원됩니다",
+    "description": "안전한 링크 형식 안내입니다."
+  },
+  "homeSections.scheduled": {
+    "message": "적용 예정",
+    "description": "섹션 예약 상태입니다."
+  },
+  "homeSections.expired": {
+    "message": "만료됨",
+    "description": "섹션 예약 상태입니다."
+  },
+  "homeSections.hidden": {
+    "message": "숨김",
+    "description": "섹션 공개 상태입니다."
+  },
+  "homeSections.active": {
+    "message": "표시 중",
+    "description": "섹션 공개 상태입니다."
+  },
+  "homeSections.loadFailed": {
+    "message": "사용자 지정 섹션을 불러오지 못했습니다",
+    "description": "섹션 목록 로드 실패 알림입니다."
+  },
+  "homeSections.saveFailed": {
+    "message": "사용자 지정 섹션을 저장하지 못했습니다",
+    "description": "섹션 저장 실패 알림입니다."
+  },
+  "homeSections.invalidWindow": {
+    "message": "종료 시간은 시작 시간보다 늦어야 합니다",
+    "description": "잘못된 예약 일정 알림입니다."
+  },
+  "homeSections.reorderFailed": {
+    "message": "섹션 순서를 변경하지 못했습니다",
+    "description": "섹션 정렬 실패 알림입니다."
+  },
+  "homeSections.deleteConfirm": {
+    "message": "이 사용자 지정 섹션을 삭제하시겠습니까?",
+    "description": "섹션 삭제 확인 알림입니다."
+  },
+  "homeSections.deleteFailed": {
+    "message": "사용자 지정 섹션을 삭제하지 못했습니다",
+    "description": "섹션 삭제 실패 알림입니다."
+  },
+  "homeSections.moveUp": {
+    "message": "위로 이동",
+    "description": "섹션을 위로 이동하는 접근성 레이블입니다."
+  },
+  "homeSections.moveDown": {
+    "message": "아래로 이동",
+    "description": "섹션을 아래로 이동하는 접근성 레이블입니다."
+  },
+  "homeSections.saveBeforeTranslate": {
+    "message": "자동 번역을 시작하기 전에 먼저 섹션을 저장하세요.",
+    "description": "저장되지 않은 섹션에 대한 번역 안내입니다."
   }
 }

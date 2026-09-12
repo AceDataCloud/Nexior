@@ -1565,5 +1565,157 @@
   "homeLayout.updateFailed": {
     "message": "Не удалось сохранить макет главной страницы",
     "description": "Уведомление об ошибке сохранения настроек макета главной страницы."
+  },
+  "homeSections.title": {
+    "message": "Пользовательские блоки",
+    "description": "Заголовок настроек пользовательских блоков на главной странице."
+  },
+  "homeSections.tip": {
+    "message": "Добавляйте управляемые блоки с изображением и текстом, кнопкой действия, входами в функции или форматированным текстом.",
+    "description": "Описание настроек пользовательских блоков."
+  },
+  "homeSections.add": {
+    "message": "Добавить блок",
+    "description": "Кнопка добавления блока на главную страницу."
+  },
+  "homeSections.empty": {
+    "message": "Пользовательских блоков пока нет",
+    "description": "Пустое состояние списка пользовательских блоков."
+  },
+  "homeSections.kind.image_text": {
+    "message": "Блок с изображением и текстом",
+    "description": "Название типа блока с изображением и текстом."
+  },
+  "homeSections.kind.cta": {
+    "message": "Кнопка действия",
+    "description": "Название типа блока с кнопкой действия."
+  },
+  "homeSections.kind.capability_grid": {
+    "message": "Входы в функции",
+    "description": "Название типа блока со входами в функции."
+  },
+  "homeSections.kind.rich_text": {
+    "message": "Форматированный текст",
+    "description": "Название типа блока с форматированным текстом Markdown."
+  },
+  "homeSections.edit": {
+    "message": "Редактировать пользовательский блок",
+    "description": "Заголовок диалогового окна редактирования блока."
+  },
+  "homeSections.create": {
+    "message": "Создать пользовательский блок",
+    "description": "Заголовок диалогового окна создания блока."
+  },
+  "homeSections.kindLabel": {
+    "message": "Тип блока",
+    "description": "Метка поля типа блока."
+  },
+  "homeSections.field.title": {
+    "message": "Заголовок",
+    "description": "Поле заголовка блока."
+  },
+  "homeSections.field.subtitle": {
+    "message": "Подзаголовок",
+    "description": "Поле подзаголовка блока."
+  },
+  "homeSections.field.body": {
+    "message": "Основной текст",
+    "description": "Поле основного текста блока."
+  },
+  "homeSections.field.image": {
+    "message": "Изображение",
+    "description": "Поле изображения блока."
+  },
+  "homeSections.field.buttonLabel": {
+    "message": "Текст кнопки",
+    "description": "Поле текста кнопки блока."
+  },
+  "homeSections.field.buttonUrl": {
+    "message": "Ссылка кнопки",
+    "description": "Поле ссылки кнопки блока."
+  },
+  "homeSections.field.capabilities": {
+    "message": "Отображаемые функции",
+    "description": "Поле выбора входов в функции."
+  },
+  "homeSections.field.startAt": {
+    "message": "Время начала",
+    "description": "Время начала отображения блока."
+  },
+  "homeSections.field.endAt": {
+    "message": "Время окончания",
+    "description": "Время прекращения отображения блока."
+  },
+  "homeSections.field.order": {
+    "message": "Порядок сортировки",
+    "description": "Поле значения сортировки блока."
+  },
+  "homeSections.field.visible": {
+    "message": "Показывать сразу",
+    "description": "Поле видимости блока."
+  },
+  "homeSections.uploadImage": {
+    "message": "Загрузить изображение",
+    "description": "Кнопка загрузки изображения блока."
+  },
+  "homeSections.markdownTip": {
+    "message": "Поддерживается Markdown; HTML, скрипты и встраиваемый контент запрещены.",
+    "description": "Предупреждение о безопасности форматированного текста."
+  },
+  "homeSections.urlTip": {
+    "message": "Поддерживаются только ссылки на сайт вида /path или HTTPS-ссылки",
+    "description": "Подсказка о безопасном формате ссылок."
+  },
+  "homeSections.scheduled": {
+    "message": "Ожидает активации",
+    "description": "Статус расписания отображения блока."
+  },
+  "homeSections.expired": {
+    "message": "Истёк",
+    "description": "Статус расписания отображения блока."
+  },
+  "homeSections.hidden": {
+    "message": "Скрыт",
+    "description": "Статус видимости блока."
+  },
+  "homeSections.active": {
+    "message": "Отображается",
+    "description": "Статус видимости блока."
+  },
+  "homeSections.loadFailed": {
+    "message": "Не удалось загрузить пользовательские блоки",
+    "description": "Уведомление об ошибке загрузки списка блоков."
+  },
+  "homeSections.saveFailed": {
+    "message": "Не удалось сохранить пользовательский блок",
+    "description": "Уведомление об ошибке сохранения блока."
+  },
+  "homeSections.invalidWindow": {
+    "message": "Время окончания должно быть позже времени начала",
+    "description": "Уведомление о недопустимом расписании."
+  },
+  "homeSections.reorderFailed": {
+    "message": "Не удалось изменить порядок блоков",
+    "description": "Уведомление об ошибке сортировки блоков."
+  },
+  "homeSections.deleteConfirm": {
+    "message": "Удалить этот пользовательский блок?",
+    "description": "Запрос подтверждения удаления блока."
+  },
+  "homeSections.deleteFailed": {
+    "message": "Не удалось удалить пользовательский блок",
+    "description": "Уведомление об ошибке удаления блока."
+  },
+  "homeSections.moveUp": {
+    "message": "Переместить вверх",
+    "description": "Метка доступности для перемещения блока вверх."
+  },
+  "homeSections.moveDown": {
+    "message": "Переместить вниз",
+    "description": "Метка доступности для перемещения блока вниз."
+  },
+  "homeSections.saveBeforeTranslate": {
+    "message": "Сначала сохраните блок, затем включите автоматический перевод.",
+    "description": "Подсказка о необходимости сохранить блок перед переводом."
   }
 }
