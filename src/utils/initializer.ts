@@ -116,16 +116,21 @@ export const initializeKeywords = async () => {
  * Initialize favicon.
  */
 export const initializeFavicon = async () => {
-  // by default use favicon which imported
-  // if faviconUrl is set, use it instead
   const favIconUrl = store.state.site?.favicon || '';
-  let faviconElement = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-  if (!faviconElement) {
-    faviconElement = document.createElement('link');
-    faviconElement.rel = 'icon';
-    document.head.appendChild(faviconElement);
-  }
-  faviconElement.href = favIconUrl || favicon;
+  const assets = [
+    { rel: 'icon', href: favIconUrl || favicon },
+    { rel: 'apple-touch-icon', href: favIconUrl || '/apple-touch-icon.png' }
+  ];
+
+  assets.forEach(({ rel, href }) => {
+    let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
+    if (!element) {
+      element = document.createElement('link');
+      element.rel = rel;
+      document.head.appendChild(element);
+    }
+    element.href = href;
+  });
 };
 
 /**
