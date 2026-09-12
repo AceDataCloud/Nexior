@@ -8,6 +8,7 @@
         @category-image-error="onCategoryImageError"
         @icon-error="onIconError"
       />
+      <home-custom-sections v-if="rawHomeSections.length" :sections="rawHomeSections" :site="site" />
       <showcase-grid
         v-if="showcaseEnabled && visibleShowcases.length"
         :items="visibleShowcases"
@@ -39,18 +40,19 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
-import type { ISiteBanner, IShowcase, ResolvedShowcase } from '@/models';
-import { showcaseOperator, siteBannerOperator } from '@/operators';
+import type { ISiteBanner, ISiteHomeSection, IShowcase, ResolvedShowcase } from '@/models';
+import { showcaseOperator, siteBannerOperator, siteHomeSectionOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
 import { getSiteOrigin } from '@/utils/site';
-import { isCapabilityAvailableOnBuild } from '@/utils/surface';
+import { isCapabilityAvailableOnBuild, isWeb } from '@/utils/surface';
 import { resolveSiteBannerText } from '@/utils/siteBanner';
 import { getHiddenCategoryIds, getHiddenDefaultBannerIds, isHomeSectionEnabled } from '@/utils/siteHome';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
 import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 import CategoryTiles from './components/CategoryTiles.vue';
 import HomeCarousel from './components/HomeCarousel.vue';
+import HomeCustomSections from './components/HomeCustomSections.vue';
 import {
   HOME_BANNERS,
   HOME_CATEGORIES,
@@ -68,7 +70,8 @@ export default defineComponent({
     CategoryTiles,
     ShowcaseGrid,
     ShowcaseDetailDialog,
-    HomeCarousel
+    HomeCarousel,
+    HomeCustomSections
   },
   data() {
     return {
@@ -78,6 +81,8 @@ export default defineComponent({
       rawBanners: [] as ISiteBanner[],
       bannerLoadGeneration: 0,
       rawShowcases: [] as IShowcase[],
+      rawHomeSections: [] as ISiteHomeSection[],
+      homeSectionLoadGeneration: 0,
       showcaseLoadGeneration: 0,
       visibleShowcaseCount: SHOWCASE_BATCH_SIZE,
       showcaseLoadObserver: undefined as IntersectionObserver | undefined,
@@ -108,6 +113,10 @@ export default defineComponent({
     showcaseRequestKey(): string {
       if (!this.siteLoaded || !this.showcaseEnabled) return '';
       return `${this.site?.id || ''}|${String(this.$i18n.locale || 'en')}`;
+    },
+    homeSectionRequestKey(): string {
+      if (!this.siteLoaded || !isWeb()) return '';
+      return `${this.site?.id || ''}|${getSiteOrigin(this.site)}|${String(this.$i18n.locale || 'en')}`;
     },
     enabledKeys(): Set<CapabilityKey> {
       if (!this.siteLoaded) return new Set();
@@ -193,6 +202,16 @@ export default defineComponent({
         }
       }
     },
+    homeSectionRequestKey: {
+      immediate: true,
+      handler(key: string) {
+        if (key) void this.loadHomeSections();
+        else {
+          this.homeSectionLoadGeneration += 1;
+          this.rawHomeSections = [];
+        }
+      }
+    },
     showcaseRequestKey: {
       immediate: true,
       handler(key: string) {
@@ -214,6 +233,7 @@ export default defineComponent({
   },
   beforeUnmount() {
     this.bannerLoadGeneration += 1;
+    this.homeSectionLoadGeneration += 1;
     this.showcaseLoadGeneration += 1;
     this.showcaseLoadObserver?.disconnect();
   },
@@ -244,6 +264,25 @@ export default defineComponent({
         }
       } catch {
         if (generation === this.bannerLoadGeneration && requestKey === this.bannerRequestKey) this.rawBanners = [];
+      }
+    },
+    async loadHomeSections(): Promise<void> {
+      if (!this.homeSectionRequestKey) return;
+      const requestKey = this.homeSectionRequestKey;
+      const generation = ++this.homeSectionLoadGeneration;
+      this.rawHomeSections = [];
+      try {
+        const response = await siteHomeSectionOperator.getPublic(
+          getSiteOrigin(this.site),
+          String(this.$i18n.locale || 'en')
+        );
+        if (generation === this.homeSectionLoadGeneration && requestKey === this.homeSectionRequestKey) {
+          this.rawHomeSections = Array.isArray(response.data) ? response.data : [];
+        }
+      } catch {
+        if (generation === this.homeSectionLoadGeneration && requestKey === this.homeSectionRequestKey) {
+          this.rawHomeSections = [];
+        }
       }
     },
     async loadShowcases(): Promise<void> {

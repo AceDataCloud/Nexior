@@ -2,13 +2,14 @@
 import { shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CAPABILITY_ICONS } from '@/constants/capabilities';
-import { showcaseOperator, siteBannerOperator } from '@/operators';
+import { showcaseOperator, siteBannerOperator, siteHomeSectionOperator } from '@/operators';
 import Home from './Index.vue';
 import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
 
 vi.mock('@/operators', () => ({
   showcaseOperator: { list: vi.fn() },
-  siteBannerOperator: { getPublic: vi.fn() }
+  siteBannerOperator: { getPublic: vi.fn() },
+  siteHomeSectionOperator: { getPublic: vi.fn() }
 }));
 vi.mock('@/components/showcase/ShowcaseDetailDialog.vue', () => ({
   default: {
@@ -56,6 +57,7 @@ describe('Studio workbench home', () => {
     vi.clearAllMocks();
     vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [] } as any);
     vi.mocked(siteBannerOperator.getPublic).mockResolvedValue({ data: [] } as any);
+    vi.mocked(siteHomeSectionOperator.getPublic).mockResolvedValue({ data: [] } as any);
   });
 
   it('does not expose capabilities before site configuration loads', () => {
@@ -330,5 +332,26 @@ describe('Studio workbench home', () => {
     await Promise.resolve();
     await wrapper.vm.$nextTick();
     expect((wrapper.vm as any).rawBanners).toEqual([]);
+  });
+  it('loads custom sections by tenant and locale between categories and showcases', async () => {
+    vi.mocked(siteHomeSectionOperator.getPublic).mockResolvedValue({
+      data: [{ id: 'custom-1', kind: 'cta', title: 'Launch', button_label: 'Start', button_url: '/seedance' }]
+    } as any);
+    const wrapper = mountHome({ id: 'tenant', origin: 'tenant.example', features: studioFeatures });
+    await vi.waitFor(() => expect(siteHomeSectionOperator.getPublic).toHaveBeenCalledWith('tenant.example', 'en'));
+    const custom = wrapper.getComponent({ name: 'HomeCustomSections' });
+    expect(custom.props('sections')).toHaveLength(1);
+    const children = wrapper.get('.dashboard').element.children;
+    const categoryIndex = Array.from(children).indexOf(wrapper.getComponent({ name: 'CategoryTiles' }).element);
+    const customIndex = Array.from(children).indexOf(custom.element);
+    expect(customIndex).toBeGreaterThan(categoryIndex);
+  });
+
+  it('keeps the standard homepage alive when custom sections fail', async () => {
+    vi.mocked(siteHomeSectionOperator.getPublic).mockRejectedValue(new Error('offline'));
+    const wrapper = mountHome({ id: 'tenant', origin: 'tenant.example', features: studioFeatures });
+    await vi.waitFor(() => expect(siteHomeSectionOperator.getPublic).toHaveBeenCalled());
+    expect(wrapper.findComponent({ name: 'HomeCustomSections' }).exists()).toBe(false);
+    expect(wrapper.findComponent({ name: 'CategoryTiles' }).exists()).toBe(true);
   });
 });
