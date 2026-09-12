@@ -25,7 +25,7 @@
               <dt>5 min</dt>
               <dd>{{ $t('index.stat.subsite') }}</dd>
             </div>
-            <div>
+            <div v-if="referralEntryVisible">
               <dt>24%</dt>
               <dd>{{ $t('index.stat.commission') }}</dd>
             </div>
@@ -207,7 +207,7 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { getDefaultRoute } from '@/router';
-import { isMainOfficial } from '@/utils';
+import { isMainOfficial, isReferralEntryVisible } from '@/utils';
 
 interface ILocalizedImage {
   zh: string;
@@ -379,6 +379,9 @@ export default defineComponent({
     heroHeadline(): string {
       return this.site?.description?.trim() || this.$t('index.subtitle.banner');
     },
+    referralEntryVisible(): boolean {
+      return isReferralEntryVisible(this.site, this.$store.getters?.user);
+    },
     enabledFeatures(): Record<string, { enabled?: boolean } | undefined> {
       return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
     },
@@ -404,9 +407,10 @@ export default defineComponent({
       return this.localizedImage(SCREENSHOTS.klingMobile);
     },
     businessShowcases(): IResolvedShowcase[] {
-      return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite).map((item) =>
-        this.resolveShowcase(item)
-      );
+      return BUSINESS_SHOWCASES.filter(
+        (item) =>
+          (item.key !== 'subsites' || this.isMainSite) && (item.key !== 'distribution' || this.referralEntryVisible)
+      ).map((item) => this.resolveShowcase(item));
     },
     creationShowcases(): IResolvedShowcase[] {
       const showcases = this.isMainSite

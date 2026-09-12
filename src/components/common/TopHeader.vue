@@ -36,6 +36,7 @@
           @click="openTab('https://platform.acedata.cloud/support')"
         ></el-menu-item>
         <el-menu-item
+          v-if="referralEntryVisible"
           v-t="'common.nav.referral'"
           @route="undefined"
           @click="openTab('https://platform.acedata.cloud/earning')"
@@ -71,7 +72,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
-import { isMainOfficial, openAuthAccountPage } from '@/utils';
+import { isMainOfficial, isReferralEntryVisible, openAuthAccountPage } from '@/utils';
 import { ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import {
   ElCol,
@@ -123,6 +124,9 @@ export default defineComponent({
     },
     authenticated() {
       return this.$store.getters?.authenticated;
+    },
+    referralEntryVisible(): boolean {
+      return isReferralEntryVisible(this.site, this.user);
     },
     // The mobile-app download page only exists on the official main host.
     isMainOfficialHost() {

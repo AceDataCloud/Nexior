@@ -75,6 +75,10 @@
     "message": "When enabled, all recharge/top-up buttons are hidden on this site and users can no longer top up their balance.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "Show referral entry",
+    "description": "Site setting: control whether regular users and visitors can see referral entry points"
+  },
   "field.distributionDefaultInviterId": {
     "message": "Default Inviter ID",
     "description": "Displayed as the title in the editing box"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "At Least One Admin Must Remain",
     "description": "Prompt for retaining at least one admin"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "When disabled, referral entry points and promotions are hidden from regular users and signed-out visitors. Site administrators can still view and restore them. Invitation attribution and commissions are unaffected.",
+    "description": "Help text for the referral-entry toggle"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "User ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
