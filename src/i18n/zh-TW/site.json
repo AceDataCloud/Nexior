@@ -1525,5 +1525,81 @@
   "message.referralEntryEnabledTip": {
     "message": "關閉後，一般使用者和未登入訪客將看不到本站的分銷入口和推廣內容；網站管理員仍可查看並恢復。邀請歸因與返傭不受影響。",
     "description": "分銷入口開關的說明文字"
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "為本站登入使用平台預設配置，或填寫你自己的 GitHub OAuth App。",
+    "description": "網站 GitHub OAuth 配置說明"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "GitHub 登入目前已關閉，你仍可預先配置 OAuth App 後再啟用。",
+    "description": "GitHub 登入關閉提示"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "本站正在使用平台預設 GitHub OAuth App。",
+    "description": "平台預設配置狀態"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "本站正在使用自訂 GitHub OAuth App。",
+    "description": "自訂配置狀態"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "留白則保留已儲存的密鑰",
+    "description": "僅寫 Client Secret 佔位提示"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Client Secret 已儲存，留白即可保持不變。",
+    "description": "密鑰已儲存提示"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "請將此完整位址新增至 GitHub OAuth App 的回呼設定中。",
+    "description": "GitHub 回呼配置提示"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "恢復平台預設配置",
+    "description": "刪除自訂 GitHub OAuth App 按鈕"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App 已儲存",
+    "description": "儲存成功提示"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "儲存 GitHub OAuth App 失敗",
+    "description": "儲存失敗提示"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "載入 GitHub OAuth App 失敗",
+    "description": "載入失敗提示"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "恢復平台預設 GitHub OAuth App？",
+    "description": "恢復預設確認標題"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "已儲存的 Client ID 和 Client Secret 將被永久刪除。",
+    "description": "恢復預設確認內容"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "已恢復平台預設 GitHub OAuth App",
+    "description": "恢復預設成功提示"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "恢復平台預設 GitHub OAuth App 失敗",
+    "description": "恢復預設失敗提示"
   }
 }

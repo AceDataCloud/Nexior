@@ -79,6 +79,7 @@
       </div>
     </section>
 
+    <site-github-o-auth-app v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('github')" />
     <site-email-transport v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('email')" />
     <site-phone-delivery v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('phone')" />
   </div>
@@ -89,6 +90,7 @@ import { defineComponent } from 'vue';
 import { ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
+import SiteGithubOAuthApp from '@/components/setting/SiteGithubOAuthApp.vue';
 import SitePhoneDelivery from '@/components/setting/SitePhoneDelivery.vue';
 import { siteOperator } from '@/operators';
 import type { ISiteAuth, ISiteAuthProvider } from '@/models';
@@ -117,6 +119,7 @@ export default defineComponent({
     ElSwitch,
     SectionNotice,
     SiteEmailTransport,
+    SiteGithubOAuthApp,
     SitePhoneDelivery
   },
   computed: {
