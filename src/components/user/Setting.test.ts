@@ -86,6 +86,18 @@ describe('user/Setting layout', () => {
     const aside = wrapper.find('aside');
     expect(aside.classes()).toEqual(expect.arrayContaining(['h-full', 'min-h-0', 'overflow-y-auto']));
   });
+
+  it('opens Auth at the wide desktop width and keeps the mobile width priority', async () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    const wrapper = mountSetting();
+    await wrapper.setData({ activeTab: 'auth' });
+
+    expect(wrapper.findComponent(AuthSetting).exists()).toBe(true);
+    expect((wrapper.vm as unknown as { dialogWidth: string }).dialogWidth).toBe('min(900px, 94vw)');
+
+    await wrapper.setData({ mobile: true });
+    expect((wrapper.vm as unknown as { dialogWidth: string }).dialogWidth).toBe('94vw');
+  });
 });
 
 describe('user/Setting surface gating', () => {
