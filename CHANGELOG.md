@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 10 Sep 2026 20:20:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 12 Sep 2026 20:21:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.370.0
+
+Sat, 12 Sep 2026 20:21:44 GMT
+
+### Minor changes
+
+- add a site-admin switch for referral entry visibility (dev@acedata.cloud)
+
+### Patches
+
+- Make the site authentication settings responsive so labels and delivery controls stay readable at desktop, tablet, and mobile widths. (dev@acedata.cloud)
+- serve tenant favicons on stable browser discovery paths (dev@acedata.cloud)
 
 ## 3.369.0
 
