@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list">
+  <div class="settings-list auth-settings">
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
 
     <!--
@@ -247,47 +247,33 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-// The settings row uses ``display:flex; justify-content:space-between``
-// from the parent ``user/Setting.vue`` (``:deep(.settings-item)``). Its
-// ``.settings-label`` ships without ``min-width: 0``, so when an inner
-// ``.settings-tip`` carries ``max-width: 440px`` the label's flex
-// preferred size resolves to ~440px. On the 50%-dialog the available
-// content width can be as little as ~400px, which pushes the right
-// switch column past the gutter and visually overlaps the tip text
-// with the provider labels (邮箱 / Google / GitHub / 手机号 / 微信).
-//
-// Force the label column to share the row by:
-//   * letting it grow into all remaining space (``flex: 1 1 0``)
-//   * unlocking flex-shrink below intrinsic min-content (``min-width:0``)
-//
-// And lock the right column to its content size so it never gets
-// squeezed below the toggle width either.
-:deep(.settings-item) {
-  .settings-label {
-    flex: 1 1 0;
+.auth-settings {
+  container: auth-settings / inline-size;
+}
+
+// Auth controls have intrinsic widths, so size these rows against the content pane rather than the viewport.
+.auth-settings :deep(.settings-item) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  .settings-label,
+  .settings-content {
     min-width: 0;
+  }
+
+  .settings-content {
+    width: 100%;
   }
 }
 
-.auth-providers-content {
-  // Let the switch list stretch the full content column so each
-  // row aligns its label and toggle in a single visual gutter, and
-  // pin the column to its intrinsic width so it never collides with
-  // the tip text on narrow viewports.
-  align-items: stretch;
-  flex: 0 0 auto;
-}
-
 .auth-providers-list {
+  width: min(100%, 220px);
+  min-width: 0;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  // 220px is enough to render the longest provider label (``GitHub``)
-  // plus the el-switch comfortably; the earlier 240px was wide enough
-  // to monopolise the row on a 50%-width dialog and starve the tip.
-  min-width: 220px;
 }
 
 .auth-providers-row {
@@ -307,7 +293,8 @@ export default defineComponent({
 }
 
 .auth-default-provider-select {
-  min-width: 240px;
+  width: min(100%, 240px);
+  min-width: 0;
 }
 
 .auth-sms-content {
@@ -369,5 +356,16 @@ export default defineComponent({
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+@container auth-settings (max-width: 560px) {
+  .auth-settings :deep(.settings-item) {
+    grid-template-columns: minmax(0, 1fr);
+
+    .settings-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
 }
 </style>

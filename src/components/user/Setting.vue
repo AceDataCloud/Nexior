@@ -366,6 +366,7 @@ export default defineComponent({
       return this.currentTab === SETTING_TAB_API_KEY ||
         this.currentTab === SETTING_TAB_SITE_SERVICES ||
         this.currentTab === SETTING_TAB_BANNERS ||
+        this.currentTab === SETTING_TAB_AUTH ||
         this.currentTab === SETTING_TAB_SUBSITES
         ? 'min(900px, 94vw)'
         : '50%';
