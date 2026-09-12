@@ -100,11 +100,10 @@
     <meta name="twitter:image" content="https://platform.acedata.cloud/api/v1/og/__OG_HOST__.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
     <!--
-      White-label first paint. Nginx resolves the icon and manifest paths by
-      request host, so browsers and crawlers receive tenant assets before the
-      application bootstrap. Other static metadata waits for getSite().
+      White-label first paint. Nginx resolves icon paths by request host, so
+      browsers and crawlers receive tenant assets before application bootstrap.
+      Other static metadata waits for getSite().
     -->
     <script>
       (function () {
