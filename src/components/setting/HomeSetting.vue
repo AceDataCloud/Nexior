@@ -34,6 +34,7 @@
       </div>
     </section>
     <banners-setting :site="site" />
+    <home-sections-setting :site="site" />
   </div>
 </template>
 
@@ -41,6 +42,7 @@
 import { defineComponent } from 'vue';
 import { ElCheckbox, ElMessage, ElSwitch } from 'element-plus';
 import BannersSetting from './Banners.vue';
+import HomeSectionsSetting from './HomeSections.vue';
 import { HOME_CATEGORIES } from '@/pages/home/data';
 import { siteOperator } from '@/operators';
 import {
@@ -60,7 +62,7 @@ const SECTIONS: Array<{ key: HomeSectionKey; titleKey: string; tipKey: string }>
 
 export default defineComponent({
   name: 'HomeSetting',
-  components: { BannersSetting, ElCheckbox, ElSwitch },
+  components: { BannersSetting, ElCheckbox, ElSwitch, HomeSectionsSetting },
   data() {
     return { HOME_CATEGORIES, sections: SECTIONS, busyKey: '' };
   },
