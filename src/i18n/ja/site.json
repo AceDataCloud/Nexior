@@ -1565,5 +1565,81 @@
   "homeLayout.updateFailed": {
     "message": "ホームページレイアウトの保存に失敗しました",
     "description": "ホームページレイアウト設定の保存に失敗したことを示すメッセージ。"
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "このサイトへのログインにプラットフォームのデフォルト設定を使用するか、独自の GitHub OAuth App を入力してください。",
+    "description": "サイトの GitHub OAuth 設定に関する説明"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "現在、GitHub ログインは無効です。OAuth App を事前に設定しておけば、後から有効にできます。",
+    "description": "GitHub ログインが無効であることを示す案内"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "このサイトではプラットフォームのデフォルト GitHub OAuth App を使用しています。",
+    "description": "プラットフォームのデフォルト設定の状態"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "このサイトではカスタム GitHub OAuth App を使用しています。",
+    "description": "カスタム設定の状態"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "空欄にすると保存済みの秘密鍵を保持します",
+    "description": "Client Secret のみを入力する欄のプレースホルダー案内"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Client Secret は保存済みです。空欄にすると変更されません。",
+    "description": "秘密鍵が保存済みであることを示す案内"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "この完全な URL を GitHub OAuth App のコールバック設定に追加してください。",
+    "description": "GitHub のコールバック設定に関する案内"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "プラットフォームのデフォルト設定に戻す",
+    "description": "カスタム GitHub OAuth App を削除するボタン"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App を保存しました",
+    "description": "保存に成功したことを示すメッセージ"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "GitHub OAuth App の保存に失敗しました",
+    "description": "保存に失敗したことを示すメッセージ"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "GitHub OAuth App の読み込みに失敗しました",
+    "description": "読み込みに失敗したことを示すメッセージ"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "プラットフォームのデフォルト GitHub OAuth App に戻しますか？",
+    "description": "デフォルト設定への復元を確認するタイトル"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "保存済みの Client ID と Client Secret は完全に削除されます。",
+    "description": "デフォルト設定への復元を確認する内容"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "プラットフォームのデフォルト GitHub OAuth App に戻しました",
+    "description": "デフォルト設定への復元に成功したことを示すメッセージ"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "プラットフォームのデフォルト GitHub OAuth App に戻せませんでした",
+    "description": "デフォルト設定への復元に失敗したことを示すメッセージ"
   }
 }

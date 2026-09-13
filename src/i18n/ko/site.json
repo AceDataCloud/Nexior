@@ -1565,5 +1565,81 @@
   "homeLayout.updateFailed": {
     "message": "홈 레이아웃 저장 실패",
     "description": "홈 페이지 레이아웃 구성 저장 실패 알림입니다."
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "사이트 로그인에 플랫폼 기본 설정을 사용하거나, 직접 GitHub OAuth App을 입력하세요.",
+    "description": "사이트 GitHub OAuth 설정 안내"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "현재 GitHub 로그인이 비활성화되어 있습니다. OAuth App을 미리 구성한 후 다시 활성화할 수 있습니다.",
+    "description": "GitHub 로그인 비활성화 안내"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "사이트에서 플랫폼 기본 GitHub OAuth App을 사용하고 있습니다.",
+    "description": "플랫폼 기본 설정 상태"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "사이트에서 사용자 지정 GitHub OAuth App을 사용하고 있습니다.",
+    "description": "사용자 지정 설정 상태"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "비워 두면 저장된 키 유지",
+    "description": "Client Secret 전용 입력란 안내"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Client Secret이 저장되었습니다. 변경하지 않으려면 비워 두세요.",
+    "description": "키 저장 안내"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "이 전체 주소를 GitHub OAuth App의 콜백 설정에 추가하세요.",
+    "description": "GitHub 콜백 설정 안내"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "플랫폼 기본 설정으로 복원",
+    "description": "사용자 지정 GitHub OAuth App 삭제 버튼"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App을 저장했습니다",
+    "description": "저장 성공 안내"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "GitHub OAuth App을 저장하지 못했습니다",
+    "description": "저장 실패 안내"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "GitHub OAuth App을 불러오지 못했습니다",
+    "description": "불러오기 실패 안내"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "플랫폼 기본 GitHub OAuth App으로 복원하시겠습니까?",
+    "description": "기본 설정 복원 확인 제목"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "저장된 Client ID와 Client Secret이 영구적으로 삭제됩니다.",
+    "description": "기본 설정 복원 확인 내용"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "플랫폼 기본 GitHub OAuth App으로 복원했습니다",
+    "description": "기본 설정 복원 성공 안내"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "플랫폼 기본 GitHub OAuth App으로 복원하지 못했습니다",
+    "description": "기본 설정 복원 실패 안내"
   }
 }

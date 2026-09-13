@@ -1566,5 +1566,81 @@
   "homeLayout.updateFailed": {
     "message": "Could not save the home layout",
     "description": "Homepage layout save failure message."
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "Use the platform app or your own GitHub OAuth App for sign-in on this site.",
+    "description": "Explains per-site GitHub OAuth configuration"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "GitHub sign-in is disabled. You can still configure the OAuth App before enabling it.",
+    "description": "Shown when the GitHub login provider is disabled"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "This site uses the platform GitHub OAuth App.",
+    "description": "Platform OAuth App status"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "This site uses its own GitHub OAuth App.",
+    "description": "Custom OAuth App status"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "Leave blank to keep the saved secret",
+    "description": "Write-only Client Secret placeholder"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "A Client Secret is saved. Leave this field blank to keep it.",
+    "description": "Saved secret hint"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "Add this exact URL to the OAuth App settings on GitHub.",
+    "description": "GitHub callback setup hint"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "Restore platform default",
+    "description": "Delete custom GitHub OAuth App button"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App saved",
+    "description": "Save success message"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "Failed to save the GitHub OAuth App",
+    "description": "Save failure message"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "Failed to load the GitHub OAuth App",
+    "description": "Load failure message"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "Restore the platform GitHub OAuth App?",
+    "description": "Reset confirmation title"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "The saved Client ID and Client Secret will be permanently deleted.",
+    "description": "Reset confirmation body"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "Platform GitHub OAuth App restored",
+    "description": "Reset success message"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "Failed to restore the platform GitHub OAuth App",
+    "description": "Reset failure message"
   }
 }

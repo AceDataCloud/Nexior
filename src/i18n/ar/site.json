@@ -1565,5 +1565,81 @@
   "homeLayout.updateFailed": {
     "message": "تعذر حفظ تخطيط الصفحة الرئيسية",
     "description": "إشعار بفشل حفظ إعدادات تخطيط الصفحة الرئيسية."
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "استخدم إعدادات المنصة الافتراضية لتسجيل الدخول إلى هذا الموقع، أو أدخل تطبيق GitHub OAuth الخاص بك.",
+    "description": "شرح إعداد GitHub OAuth للموقع"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "تسجيل الدخول عبر GitHub مغلق حاليًا، ولكن يمكنك إعداد تطبيق OAuth مسبقًا ثم تفعيله لاحقًا.",
+    "description": "تنبيه إغلاق تسجيل الدخول عبر GitHub"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "يستخدم هذا الموقع تطبيق GitHub OAuth الافتراضي للمنصة.",
+    "description": "حالة الإعداد الافتراضي للمنصة"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "يستخدم هذا الموقع تطبيق GitHub OAuth مخصصًا.",
+    "description": "حالة الإعداد المخصص"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "اتركه فارغًا للإبقاء على المفتاح السري المحفوظ",
+    "description": "نص إرشادي لحقل Client Secret فقط"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "تم حفظ Client Secret، واتركه فارغًا للإبقاء عليه دون تغيير.",
+    "description": "تنبيه حفظ المفتاح السري"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "أضف هذا العنوان الكامل إلى إعدادات الاستدعاء في تطبيق GitHub OAuth.",
+    "description": "تنبيه إعداد استدعاء GitHub"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "استعادة إعدادات المنصة الافتراضية",
+    "description": "زر حذف تطبيق GitHub OAuth المخصص"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "تم حفظ تطبيق GitHub OAuth",
+    "description": "رسالة نجاح الحفظ"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "تعذّر حفظ تطبيق GitHub OAuth",
+    "description": "رسالة فشل الحفظ"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "تعذّر تحميل تطبيق GitHub OAuth",
+    "description": "رسالة فشل التحميل"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "هل تريد استعادة تطبيق GitHub OAuth الافتراضي للمنصة؟",
+    "description": "عنوان تأكيد استعادة الإعدادات الافتراضية"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "سيتم حذف Client ID وClient Secret المحفوظَين نهائيًا.",
+    "description": "محتوى تأكيد استعادة الإعدادات الافتراضية"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "تمت استعادة تطبيق GitHub OAuth الافتراضي للمنصة",
+    "description": "رسالة نجاح استعادة الإعدادات الافتراضية"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "تعذّرت استعادة تطبيق GitHub OAuth الافتراضي للمنصة",
+    "description": "رسالة فشل استعادة الإعدادات الافتراضية"
   }
 }
