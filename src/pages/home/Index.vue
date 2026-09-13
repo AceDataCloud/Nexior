@@ -1,15 +1,15 @@
 <template>
   <main v-if="siteLoaded" class="studio-home">
     <div class="dashboard">
-      <home-carousel v-if="banners.length" :slides="banners" @image-error="onImageError" />
+      <home-carousel v-if="bannerEnabled && banners.length" :slides="banners" @image-error="onImageError" />
       <category-tiles
-        v-if="categories.length"
+        v-if="categoriesEnabled && categories.length"
         :items="categories"
         @category-image-error="onCategoryImageError"
         @icon-error="onIconError"
       />
       <showcase-grid
-        v-if="visibleShowcases.length"
+        v-if="showcaseEnabled && visibleShowcases.length"
         :items="visibleShowcases"
         :eyebrow="$t('intro.home.showcase.eyebrow')"
         :title="$t('intro.home.showcase.title')"
@@ -20,7 +20,7 @@
         @icon-error="onShowcaseIconError"
       />
       <button
-        v-if="hasMoreShowcases"
+        v-if="showcaseEnabled && hasMoreShowcases"
         ref="showcaseLoadMore"
         type="button"
         class="showcase-load-more"
@@ -45,7 +45,8 @@ import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { resolveShowcase } from '@/utils/showcase';
 import { getSiteOrigin } from '@/utils/site';
 import { isCapabilityAvailableOnBuild } from '@/utils/surface';
-import { getHiddenDefaultBannerIds, resolveSiteBannerText } from '@/utils/siteBanner';
+import { resolveSiteBannerText } from '@/utils/siteBanner';
+import { getHiddenCategoryIds, getHiddenDefaultBannerIds, isHomeSectionEnabled } from '@/utils/siteHome';
 import ShowcaseGrid from '@/components/common/ShowcaseGrid.vue';
 import ShowcaseDetailDialog from '@/components/showcase/ShowcaseDetailDialog.vue';
 import CategoryTiles from './components/CategoryTiles.vue';
@@ -77,7 +78,6 @@ export default defineComponent({
       rawBanners: [] as ISiteBanner[],
       bannerLoadGeneration: 0,
       rawShowcases: [] as IShowcase[],
-      showcaseLoaded: false,
       showcaseLoadGeneration: 0,
       visibleShowcaseCount: SHOWCASE_BATCH_SIZE,
       showcaseLoadObserver: undefined as IntersectionObserver | undefined,
@@ -91,6 +91,23 @@ export default defineComponent({
     },
     siteLoaded(): boolean {
       return Boolean(this.site?.id);
+    },
+    bannerEnabled(): boolean {
+      return isHomeSectionEnabled(this.site, 'banner');
+    },
+    categoriesEnabled(): boolean {
+      return isHomeSectionEnabled(this.site, 'categories');
+    },
+    showcaseEnabled(): boolean {
+      return isHomeSectionEnabled(this.site, 'showcase');
+    },
+    bannerRequestKey(): string {
+      if (!this.siteLoaded || !this.bannerEnabled) return '';
+      return `${this.site?.id || ''}|${getSiteOrigin(this.site)}|${String(this.$i18n.locale || 'en')}`;
+    },
+    showcaseRequestKey(): string {
+      if (!this.siteLoaded || !this.showcaseEnabled) return '';
+      return `${this.site?.id || ''}|${String(this.$i18n.locale || 'en')}`;
     },
     enabledKeys(): Set<CapabilityKey> {
       if (!this.siteLoaded) return new Set();
@@ -128,7 +145,9 @@ export default defineComponent({
     },
     categories(): ResolvedHomeCategory[] {
       const resolved: ResolvedHomeCategory[] = [];
+      const hiddenCategories = getHiddenCategoryIds(this.site);
       for (const category of HOME_CATEGORIES) {
+        if (hiddenCategories.has(category.id as any)) continue;
         const items = category.candidates
           .filter((item) => this.enabledKeys.has(item.capability))
           .map((item) => this.resolve(item));
@@ -163,17 +182,27 @@ export default defineComponent({
     }
   },
   watch: {
-    siteLoaded: {
+    bannerRequestKey: {
       immediate: true,
-      handler(loaded: boolean) {
-        if (loaded && !this.showcaseLoaded) void this.loadShowcases();
-        if (loaded) void this.loadBanners();
+      handler(key: string) {
+        if (key) void this.loadBanners();
+        else {
+          this.bannerLoadGeneration += 1;
+          this.rawBanners = [];
+          this.failedBannerImages = {};
+        }
       }
     },
-    '$i18n.locale'() {
-      if (this.siteLoaded) {
-        void this.loadShowcases();
-        void this.loadBanners();
+    showcaseRequestKey: {
+      immediate: true,
+      handler(key: string) {
+        if (key) void this.loadShowcases();
+        else {
+          this.showcaseLoadGeneration += 1;
+          this.rawShowcases = [];
+          this.visibleShowcaseCount = SHOWCASE_BATCH_SIZE;
+          this.selectedShowcase = undefined;
+        }
       }
     },
     hasMoreShowcases() {
@@ -184,6 +213,8 @@ export default defineComponent({
     this.setupShowcaseLoadObserver();
   },
   beforeUnmount() {
+    this.bannerLoadGeneration += 1;
+    this.showcaseLoadGeneration += 1;
     this.showcaseLoadObserver?.disconnect();
   },
   methods: {
@@ -202,33 +233,36 @@ export default defineComponent({
       };
     },
     async loadBanners(): Promise<void> {
+      if (!this.bannerRequestKey) return;
+      const requestKey = this.bannerRequestKey;
       const generation = ++this.bannerLoadGeneration;
       this.rawBanners = [];
       try {
-        const origin = getSiteOrigin(this.site);
-        const response = await siteBannerOperator.getPublic(origin);
-        if (generation === this.bannerLoadGeneration) {
+        const response = await siteBannerOperator.getPublic(getSiteOrigin(this.site));
+        if (generation === this.bannerLoadGeneration && requestKey === this.bannerRequestKey) {
           this.rawBanners = Array.isArray(response.data) ? response.data : [];
         }
       } catch {
-        if (generation === this.bannerLoadGeneration) this.rawBanners = [];
+        if (generation === this.bannerLoadGeneration && requestKey === this.bannerRequestKey) this.rawBanners = [];
       }
     },
     async loadShowcases(): Promise<void> {
+      if (!this.showcaseRequestKey) return;
+      const requestKey = this.showcaseRequestKey;
       const generation = ++this.showcaseLoadGeneration;
       const requestLocale = String(this.$i18n.locale || 'en');
-      this.showcaseLoaded = true;
       this.visibleShowcaseCount = SHOWCASE_BATCH_SIZE;
       this.showcaseAutoLoadArmed = true;
       this.rawShowcases = [];
       this.selectedShowcase = undefined;
       try {
         const response = await showcaseOperator.list(undefined, requestLocale);
-        if (generation === this.showcaseLoadGeneration && String(this.$i18n.locale || 'en') === requestLocale) {
+        if (generation === this.showcaseLoadGeneration && requestKey === this.showcaseRequestKey) {
           this.rawShowcases = Array.isArray(response.data) ? response.data : [];
         }
       } catch {
-        if (generation === this.showcaseLoadGeneration) this.rawShowcases = [];
+        if (generation === this.showcaseLoadGeneration && requestKey === this.showcaseRequestKey)
+          this.rawShowcases = [];
       }
     },
     loadMoreShowcases(): void {

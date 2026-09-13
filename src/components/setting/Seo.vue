@@ -58,7 +58,6 @@ import EditArray from '@/components/site/EditArray.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
-import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
   name: 'SettingSeo',
@@ -85,7 +84,6 @@ export default defineComponent({
   methods: {
     onSave(data: any) {
       const payload = {
-        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site?.id, payload).then(() => {

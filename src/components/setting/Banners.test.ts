@@ -13,7 +13,7 @@ const site = {
   id: 'site-1',
   admins: ['u1'],
   features: { maestro: { enabled: true }, openaiimage: { enabled: true }, seedance: { enabled: true } },
-  metadata: { pricing: { markup_ratio: 1 }, nexior: { keep: true } }
+  commerce: { pricing: { markup_ratio: 1 } }
 };
 
 const banner = {
@@ -70,15 +70,12 @@ describe('setting/Banners', () => {
     expect((wrapper.vm as any).rows).toEqual([banner]);
   });
 
-  it('hides one system banner without disabling its capability or clobbering metadata', async () => {
+  it('patches only canonical home without disabling its capability', async () => {
     const wrapper = mountBanners();
     await (wrapper.vm as any).onToggleDefault('maestro', false);
     const payload = vi.mocked(siteOperator.update).mock.calls[0][1] as any;
-    expect(payload.features.maestro.enabled).toBe(true);
-    expect(payload.metadata).toEqual({
-      pricing: { markup_ratio: 1 },
-      nexior: { keep: true, hidden_default_banner_ids: ['maestro'] }
-    });
+    expect(payload).toEqual({ home: { sections: { banner: { disabled_item_ids: ['maestro'] } } } });
+    expect(site.features.maestro.enabled).toBe(true);
   });
 
   it('patches only custom visibility', async () => {

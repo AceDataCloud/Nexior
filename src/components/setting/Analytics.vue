@@ -36,7 +36,6 @@ import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElMessage, ElSwitch, type FormInstance } from 'element-plus';
 import { siteOperator } from '@/operators';
 import type { ISite, ISiteAnalytics } from '@/models';
-import { toWritableSitePayload } from '@/utils/site';
 
 type ProviderKey = 'ga4' | 'baidu' | 'clarity' | 'umami';
 
@@ -150,7 +149,7 @@ export default defineComponent({
       if (this.form.umami.website_id) analytics.umami = { ...this.form.umami };
       this.saving = true;
       try {
-        await siteOperator.update(site.id, { ...toWritableSitePayload(site), analytics });
+        await siteOperator.update(site.id, { analytics });
         await this.$store.dispatch('getSite');
         ElMessage.success(this.$t('common.message.saved'));
       } catch {
