@@ -103,6 +103,7 @@ import {
 } from 'element-plus';
 import type { ISiteAuthDelivery, ISiteAuthEmailSmtp, SiteEmailTransportSecurity } from '@/models/site';
 import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
+import { siteOperator } from '@/operators/site';
 
 const emptySmtp = (): ISiteAuthEmailSmtp => ({
   host: '',
@@ -144,7 +145,8 @@ export default defineComponent({
       saving: false,
       testing: false,
       changing: false,
-      deleting: false
+      deleting: false,
+      configurationRevision: undefined as number | undefined
     };
   },
   computed: {
@@ -193,8 +195,9 @@ export default defineComponent({
     async load() {
       this.loading = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.get(this.siteId);
-        this.apply(data.providers.email?.delivery || { type: 'platform' });
+        const { data } = await siteOperator.get(this.siteId);
+        this.configurationRevision = data.configuration_revision;
+        this.apply(data.auth?.providers?.email?.delivery || { type: 'platform' });
       } finally {
         this.loading = false;
       }
@@ -203,8 +206,13 @@ export default defineComponent({
       this.draft.port = value === 'implicit_tls' ? 465 : 587;
     },
     async update(delivery: ISiteAuthDelivery) {
-      const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'email', delivery);
-      this.apply(data);
+      const { data } = await siteOperator.update(
+        this.siteId,
+        { auth: { providers: { email: { delivery } } } },
+        this.configurationRevision
+      );
+      this.configurationRevision = data.configuration_revision;
+      this.apply(data.auth?.providers?.email?.delivery || { type: 'platform' });
     },
     async saveDraft() {
       if (!this.canSave) return;
@@ -213,11 +221,10 @@ export default defineComponent({
       this.saving = true;
       try {
         if (this.active) {
-          const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'email', {
+          await this.update({
             type: 'platform',
             smtp: this.smtp
           });
-          this.delivery = data;
           this.testProof = '';
           this.resultMessage = '';
         }
@@ -234,11 +241,10 @@ export default defineComponent({
       if (!smtp) return;
       this.changing = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'email', {
+        await this.update({
           type: 'smtp',
           smtp: { ...smtp, test_proof: this.testProof || undefined }
         });
-        this.apply(data);
         this.configuring = false;
         ElMessage.success(this.$t('site.message.authDeliveryActivated'));
       } catch {
@@ -283,11 +289,10 @@ export default defineComponent({
       const draft = { ...this.draft };
       this.changing = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'email', {
+        await this.update({
           type: 'platform',
           smtp: this.smtp
         });
-        this.apply(data);
         if (preserveDraft) this.draft = draft;
         this.configuring = false;
         ElMessage.success(this.$t('site.message.authDeliveryPlatformActivated'));
@@ -309,8 +314,7 @@ export default defineComponent({
       }
       this.deleting = true;
       try {
-        await siteAuthDeliveryOperator.remove(this.siteId, 'email');
-        this.apply({ type: 'platform', smtp: null });
+        await this.update({ type: 'platform', smtp: null });
         this.configuring = false;
       } finally {
         this.deleting = false;
