@@ -76,7 +76,6 @@ import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import type { ISite } from '@/models';
-import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
   name: 'DistributionSetting',
@@ -105,7 +104,6 @@ export default defineComponent({
       this.referralEntrySaving = true;
       try {
         await siteOperator.update(this.site.id, {
-          ...toWritableSitePayload(this.site),
           features: {
             ...this.site.features,
             referral: {
@@ -124,7 +122,6 @@ export default defineComponent({
     onSave(data: any) {
       if (!this.site.id) return;
       const payload = {
-        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site.id, payload).then(() => {

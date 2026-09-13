@@ -32,8 +32,8 @@ class SiteService {
     return await httpClient.post(`/${this.key}/`, data);
   }
 
-  async update(id: string, data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
-    return await httpClient.put(`/${this.key}/${id}`, data);
+  async update(id: string, data: Partial<ISite>): Promise<AxiosResponse<ISiteDetailResponse>> {
+    return await httpClient.patch(`/${this.key}/${id}`, data);
   }
 
   async delete(id: string): Promise<AxiosResponse<void>> {

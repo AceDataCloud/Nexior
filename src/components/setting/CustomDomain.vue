@@ -340,7 +340,7 @@ export default defineComponent({
     buildDnsInstructions(domain: ISiteDomain): ISiteDomainDnsInstructions | null {
       if (domain.status === 'Active') return null;
       const hostname = (domain.hostname || '').trim();
-      const recordValue = (domain.proxy_cname || this.site?.metadata?.proxy_cname || '').trim();
+      const recordValue = (domain.proxy_cname || '').trim();
       if (!hostname || !recordValue) return null;
       return {
         step: 'cname',

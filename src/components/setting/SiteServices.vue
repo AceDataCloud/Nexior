@@ -258,7 +258,7 @@ import { serviceOperator, siteOperator, siteServiceOverrideOperator } from '@/op
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
-import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX, toWritableSitePayload } from '@/utils';
+import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX } from '@/utils';
 
 // Pre-fetch the whole catalog once so each override row can show the
 // service title/alias without an N+1 per-row GET. If a tenant ever
@@ -422,12 +422,10 @@ export default defineComponent({
       if (!this.siteId || this.disableRechargeSaving) return;
       this.disableRechargeSaving = true;
       try {
-        const metadata = (this.site.metadata || {}) as Record<string, unknown>;
         await siteOperator.update(this.siteId, {
-          ...toWritableSitePayload(this.site),
-          metadata: {
-            ...metadata,
-            disable_recharge: enabled
+          commerce: {
+            ...(this.site.commerce || {}),
+            recharge: { enabled: !enabled }
           }
         });
         await this.$store.dispatch('getSite');
@@ -453,13 +451,11 @@ export default defineComponent({
           this.pendingSiteMarkupPercent = undefined;
           const siteId = this.siteId;
           if (!siteId) break;
-          const metadata = (this.site.metadata || {}) as Record<string, unknown>;
           await siteOperator.update(siteId, {
-            ...toWritableSitePayload(this.site),
-            metadata: {
-              ...metadata,
+            commerce: {
+              ...(this.site.commerce || {}),
               pricing: {
-                ...((metadata.pricing as Record<string, unknown>) || {}),
+                ...(this.site.commerce?.pricing || {}),
                 markup_ratio: nextPercent / 100
               }
             }

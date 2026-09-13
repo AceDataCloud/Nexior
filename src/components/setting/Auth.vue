@@ -92,7 +92,6 @@ import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
 import SitePhoneDelivery from '@/components/setting/SitePhoneDelivery.vue';
 import { siteOperator } from '@/operators';
 import type { ISiteAuth, ISiteAuthProvider } from '@/models';
-import { toWritableSitePayload } from '@/utils';
 
 // Provider IDs we surface in this tab. The IDs match
 // ``IUserPublicRegistrationMethod`` in ``src/models/user.ts`` so the
@@ -235,7 +234,6 @@ export default defineComponent({
     },
     async persistAuth(nextAuth: ISiteAuth): Promise<void> {
       const payload = {
-        ...toWritableSitePayload(this.site),
         auth: nextAuth
       };
       await siteOperator.update(this.site?.id, payload);

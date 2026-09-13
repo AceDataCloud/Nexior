@@ -54,7 +54,7 @@
           <site-services-setting />
         </div>
         <div v-else-if="currentTab === SETTING_TAB_BANNERS && isSiteConfigVisible">
-          <banners-setting :site="$store.state.site" />
+          <home-setting />
         </div>
         <div v-else-if="currentTab === SETTING_TAB_SEO && isSiteConfigVisible">
           <seo-setting />
@@ -113,7 +113,7 @@ import ByokSetting from '@/components/setting/Byok.vue';
 import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
-import BannersSetting from '@/components/setting/Banners.vue';
+import HomeSetting from '@/components/setting/HomeSetting.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import AnalyticsSetting from '@/components/setting/Analytics.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
@@ -155,7 +155,7 @@ export default defineComponent({
     MemorySetting,
     SiteSetting,
     SiteServicesSetting,
-    BannersSetting,
+    HomeSetting,
     SeoSetting,
     AnalyticsSetting,
     DistributionSetting,
