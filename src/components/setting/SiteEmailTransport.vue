@@ -225,6 +225,7 @@ export default defineComponent({
             type: 'platform',
             smtp: this.smtp
           });
+          this.draft = draft;
           this.testProof = '';
           this.resultMessage = '';
         }

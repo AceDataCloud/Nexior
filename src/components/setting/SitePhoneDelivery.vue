@@ -240,6 +240,7 @@ export default defineComponent({
             type: 'platform',
             webhook: this.webhook
           });
+          this.draft = draft;
           this.testProof = '';
           this.resultMessage = '';
         }
