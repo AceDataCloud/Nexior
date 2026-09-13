@@ -1565,5 +1565,157 @@
   "homeLayout.updateFailed": {
     "message": "ホームページレイアウトの保存に失敗しました",
     "description": "ホームページレイアウト設定の保存に失敗したことを示すメッセージ。"
+  },
+  "homeSections.title": {
+    "message": "カスタムセクション",
+    "description": "ホームページのカスタムセクション設定のタイトル。"
+  },
+  "homeSections.tip": {
+    "message": "管理された画像とテキスト、行動喚起ボタン、機能への入口、またはリッチテキストのセクションを追加します。",
+    "description": "カスタムセクション設定の説明。"
+  },
+  "homeSections.add": {
+    "message": "セクションを追加",
+    "description": "ホームページにセクションを追加するボタン。"
+  },
+  "homeSections.empty": {
+    "message": "カスタムセクションはまだありません",
+    "description": "カスタムセクションの空状態。"
+  },
+  "homeSections.kind.image_text": {
+    "message": "画像とテキスト",
+    "description": "画像とテキストのセクションタイプ名。"
+  },
+  "homeSections.kind.cta": {
+    "message": "行動喚起ボタン",
+    "description": "行動喚起ボタンのセクションタイプ名。"
+  },
+  "homeSections.kind.capability_grid": {
+    "message": "機能への入口",
+    "description": "機能への入口のセクションタイプ名。"
+  },
+  "homeSections.kind.rich_text": {
+    "message": "リッチテキスト",
+    "description": "Markdownリッチテキストのセクションタイプ名。"
+  },
+  "homeSections.edit": {
+    "message": "カスタムセクションを編集",
+    "description": "セクション編集ダイアログのタイトル。"
+  },
+  "homeSections.create": {
+    "message": "カスタムセクションを作成",
+    "description": "セクション作成ダイアログのタイトル。"
+  },
+  "homeSections.kindLabel": {
+    "message": "セクションタイプ",
+    "description": "セクションタイプ項目のラベル。"
+  },
+  "homeSections.field.title": {
+    "message": "タイトル",
+    "description": "セクションタイトルの項目。"
+  },
+  "homeSections.field.subtitle": {
+    "message": "サブタイトル",
+    "description": "セクションのサブタイトル項目。"
+  },
+  "homeSections.field.body": {
+    "message": "本文",
+    "description": "セクション本文の項目。"
+  },
+  "homeSections.field.image": {
+    "message": "画像",
+    "description": "セクション画像の項目。"
+  },
+  "homeSections.field.buttonLabel": {
+    "message": "ボタンのテキスト",
+    "description": "セクションボタンのテキスト項目。"
+  },
+  "homeSections.field.buttonUrl": {
+    "message": "ボタンのリンク",
+    "description": "セクションボタンのリンク項目。"
+  },
+  "homeSections.field.capabilities": {
+    "message": "表示する機能",
+    "description": "機能への入口を選択する項目。"
+  },
+  "homeSections.field.startAt": {
+    "message": "開始日時",
+    "description": "セクションの表示開始日時。"
+  },
+  "homeSections.field.endAt": {
+    "message": "終了日時",
+    "description": "セクションの表示終了日時。"
+  },
+  "homeSections.field.order": {
+    "message": "並び順",
+    "description": "セクションの並び順の項目。"
+  },
+  "homeSections.field.visible": {
+    "message": "今すぐ表示",
+    "description": "セクションの表示設定項目。"
+  },
+  "homeSections.uploadImage": {
+    "message": "画像をアップロード",
+    "description": "セクション画像をアップロードするボタン。"
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdownに対応しています。HTML、スクリプト、埋め込みコンテンツは使用できません。",
+    "description": "リッチテキストの安全に関する注意書き。"
+  },
+  "homeSections.urlTip": {
+    "message": "サイト内の /path または HTTPS リンクのみ対応しています",
+    "description": "安全なリンク形式に関する注意書き。"
+  },
+  "homeSections.scheduled": {
+    "message": "適用待ち",
+    "description": "セクションのスケジュール状態。"
+  },
+  "homeSections.expired": {
+    "message": "期限切れ",
+    "description": "セクションのスケジュール状態。"
+  },
+  "homeSections.hidden": {
+    "message": "非表示",
+    "description": "セクションの表示状態。"
+  },
+  "homeSections.active": {
+    "message": "表示中",
+    "description": "セクションの表示状態。"
+  },
+  "homeSections.loadFailed": {
+    "message": "カスタムセクションの読み込みに失敗しました",
+    "description": "セクション一覧の読み込みに失敗した場合のメッセージ。"
+  },
+  "homeSections.saveFailed": {
+    "message": "カスタムセクションの保存に失敗しました",
+    "description": "セクションの保存に失敗した場合のメッセージ。"
+  },
+  "homeSections.invalidWindow": {
+    "message": "終了日時は開始日時より後に設定してください",
+    "description": "無効なスケジュールに関するメッセージ。"
+  },
+  "homeSections.reorderFailed": {
+    "message": "セクションの並び順の変更に失敗しました",
+    "description": "セクションの並べ替えに失敗した場合のメッセージ。"
+  },
+  "homeSections.deleteConfirm": {
+    "message": "このカスタムセクションを削除しますか？",
+    "description": "セクション削除の確認メッセージ。"
+  },
+  "homeSections.deleteFailed": {
+    "message": "カスタムセクションの削除に失敗しました",
+    "description": "セクションの削除に失敗した場合のメッセージ。"
+  },
+  "homeSections.moveUp": {
+    "message": "上へ移動",
+    "description": "セクションを上へ移動するためのアクセシビリティラベル。"
+  },
+  "homeSections.moveDown": {
+    "message": "下へ移動",
+    "description": "セクションを下へ移動するためのアクセシビリティラベル。"
+  },
+  "homeSections.saveBeforeTranslate": {
+    "message": "自動翻訳を有効にする前に、セクションを保存してください。",
+    "description": "未保存のセクションに関する翻訳の注意書き。"
   }
 }

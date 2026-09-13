@@ -1566,5 +1566,157 @@
   "homeLayout.updateFailed": {
     "message": "No se pudo guardar el diseño de la página de inicio",
     "description": "Aviso de error al guardar la configuración del diseño de la página de inicio."
+  },
+  "homeSections.title": {
+    "message": "Secciones personalizadas",
+    "description": "Título de la configuración de las secciones personalizadas de la página de inicio."
+  },
+  "homeSections.tip": {
+    "message": "Añade secciones controladas de imagen y texto, botones de acción, accesos a funciones o texto enriquecido.",
+    "description": "Descripción de la configuración de las secciones personalizadas."
+  },
+  "homeSections.add": {
+    "message": "Añadir sección",
+    "description": "Botón para añadir una sección a la página de inicio."
+  },
+  "homeSections.empty": {
+    "message": "Aún no hay secciones personalizadas",
+    "description": "Estado vacío de las secciones personalizadas."
+  },
+  "homeSections.kind.image_text": {
+    "message": "Sección de imagen y texto",
+    "description": "Nombre del tipo de sección de imagen y texto."
+  },
+  "homeSections.kind.cta": {
+    "message": "Botón de acción",
+    "description": "Nombre del tipo de sección de botón de acción."
+  },
+  "homeSections.kind.capability_grid": {
+    "message": "Accesos a funciones",
+    "description": "Nombre del tipo de sección de accesos a funciones."
+  },
+  "homeSections.kind.rich_text": {
+    "message": "Texto enriquecido",
+    "description": "Nombre del tipo de sección de texto enriquecido en Markdown."
+  },
+  "homeSections.edit": {
+    "message": "Editar sección personalizada",
+    "description": "Título del cuadro de diálogo para editar una sección."
+  },
+  "homeSections.create": {
+    "message": "Crear sección personalizada",
+    "description": "Título del cuadro de diálogo para crear una sección."
+  },
+  "homeSections.kindLabel": {
+    "message": "Tipo de sección",
+    "description": "Etiqueta del campo de tipo de sección."
+  },
+  "homeSections.field.title": {
+    "message": "Título",
+    "description": "Campo de título de la sección."
+  },
+  "homeSections.field.subtitle": {
+    "message": "Subtítulo",
+    "description": "Campo de subtítulo de la sección."
+  },
+  "homeSections.field.body": {
+    "message": "Cuerpo",
+    "description": "Campo de cuerpo de la sección."
+  },
+  "homeSections.field.image": {
+    "message": "Imagen",
+    "description": "Campo de imagen de la sección."
+  },
+  "homeSections.field.buttonLabel": {
+    "message": "Texto del botón",
+    "description": "Campo de texto del botón de la sección."
+  },
+  "homeSections.field.buttonUrl": {
+    "message": "Enlace del botón",
+    "description": "Campo de enlace del botón de la sección."
+  },
+  "homeSections.field.capabilities": {
+    "message": "Funciones mostradas",
+    "description": "Campo de selección de accesos a funciones."
+  },
+  "homeSections.field.startAt": {
+    "message": "Hora de inicio",
+    "description": "Hora a partir de la cual se muestra la sección."
+  },
+  "homeSections.field.endAt": {
+    "message": "Hora de finalización",
+    "description": "Hora a partir de la cual la sección deja de mostrarse."
+  },
+  "homeSections.field.order": {
+    "message": "Valor de orden",
+    "description": "Campo del valor de orden de la sección."
+  },
+  "homeSections.field.visible": {
+    "message": "Mostrar ahora",
+    "description": "Campo de visibilidad de la sección."
+  },
+  "homeSections.uploadImage": {
+    "message": "Subir imagen",
+    "description": "Botón para subir una imagen de la sección."
+  },
+  "homeSections.markdownTip": {
+    "message": "Admite Markdown; no se permiten HTML, scripts ni contenido incrustado.",
+    "description": "Aviso de seguridad del texto enriquecido."
+  },
+  "homeSections.urlTip": {
+    "message": "Solo se admiten /path internos o enlaces HTTPS",
+    "description": "Aviso sobre el formato seguro de los enlaces."
+  },
+  "homeSections.scheduled": {
+    "message": "Pendiente de activación",
+    "description": "Estado de programación de la sección."
+  },
+  "homeSections.expired": {
+    "message": "Caducada",
+    "description": "Estado de programación de la sección."
+  },
+  "homeSections.hidden": {
+    "message": "Oculta",
+    "description": "Estado de visibilidad de la sección."
+  },
+  "homeSections.active": {
+    "message": "Visible",
+    "description": "Estado de visibilidad de la sección."
+  },
+  "homeSections.loadFailed": {
+    "message": "No se han podido cargar las secciones personalizadas",
+    "description": "Aviso de error al cargar la lista de secciones."
+  },
+  "homeSections.saveFailed": {
+    "message": "No se ha podido guardar la sección personalizada",
+    "description": "Aviso de error al guardar la sección."
+  },
+  "homeSections.invalidWindow": {
+    "message": "La hora de finalización debe ser posterior a la hora de inicio",
+    "description": "Aviso de programación no válida."
+  },
+  "homeSections.reorderFailed": {
+    "message": "No se ha podido cambiar el orden de las secciones",
+    "description": "Aviso de error al ordenar las secciones."
+  },
+  "homeSections.deleteConfirm": {
+    "message": "¿Seguro que quieres eliminar esta sección personalizada?",
+    "description": "Aviso de confirmación para eliminar una sección."
+  },
+  "homeSections.deleteFailed": {
+    "message": "No se ha podido eliminar la sección personalizada",
+    "description": "Aviso de error al eliminar la sección."
+  },
+  "homeSections.moveUp": {
+    "message": "Subir",
+    "description": "Etiqueta de accesibilidad para subir una sección."
+  },
+  "homeSections.moveDown": {
+    "message": "Bajar",
+    "description": "Etiqueta de accesibilidad para bajar una sección."
+  },
+  "homeSections.saveBeforeTranslate": {
+    "message": "Guarda primero la sección antes de activar la traducción automática.",
+    "description": "Aviso de traducción para una sección que no se ha guardado."
   }
 }
