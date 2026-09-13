@@ -1565,5 +1565,81 @@
   "homeLayout.updateFailed": {
     "message": "Не удалось сохранить макет главной страницы",
     "description": "Уведомление об ошибке сохранения настроек макета главной страницы."
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "Используйте настройки платформы по умолчанию для входа на этот сайт или укажите собственный GitHub OAuth App.",
+    "description": "Описание настройки GitHub OAuth для сайта"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "Вход через GitHub сейчас отключён. Вы всё равно можете заранее настроить OAuth App и включить его позже.",
+    "description": "Сообщение об отключённом входе через GitHub"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "Этот сайт использует GitHub OAuth App платформы по умолчанию.",
+    "description": "Состояние конфигурации платформы по умолчанию"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "Этот сайт использует пользовательский GitHub OAuth App.",
+    "description": "Состояние пользовательской конфигурации"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "Оставьте пустым, чтобы сохранить сохранённый секрет",
+    "description": "Подсказка в поле Client Secret"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Client Secret сохранён. Оставьте поле пустым, чтобы сохранить текущее значение.",
+    "description": "Подсказка о сохранённом секрете"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "Добавьте этот полный адрес в настройки обратного вызова GitHub OAuth App.",
+    "description": "Подсказка по настройке обратного вызова GitHub"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "Восстановить настройки платформы по умолчанию",
+    "description": "Кнопка удаления пользовательского GitHub OAuth App"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App сохранён",
+    "description": "Сообщение об успешном сохранении"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "Не удалось сохранить GitHub OAuth App",
+    "description": "Сообщение о сбое сохранения"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "Не удалось загрузить GitHub OAuth App",
+    "description": "Сообщение о сбое загрузки"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "Восстановить GitHub OAuth App платформы по умолчанию?",
+    "description": "Заголовок подтверждения восстановления настроек по умолчанию"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "Сохранённые Client ID и Client Secret будут удалены навсегда.",
+    "description": "Текст подтверждения восстановления настроек по умолчанию"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "Восстановлен GitHub OAuth App платформы по умолчанию",
+    "description": "Сообщение об успешном восстановлении настроек по умолчанию"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "Не удалось восстановить GitHub OAuth App платформы по умолчанию",
+    "description": "Сообщение о сбое восстановления настроек по умолчанию"
   }
 }

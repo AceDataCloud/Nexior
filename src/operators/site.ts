@@ -32,8 +32,14 @@ class SiteService {
     return await httpClient.post(`/${this.key}/`, data);
   }
 
-  async update(id: string, data: Partial<ISite>): Promise<AxiosResponse<ISiteDetailResponse>> {
-    return await httpClient.patch(`/${this.key}/${id}`, data);
+  async update(
+    id: string,
+    data: Partial<ISite>,
+    configurationRevision?: number
+  ): Promise<AxiosResponse<ISiteDetailResponse>> {
+    return await httpClient.patch(`/${this.key}/${id}`, data, {
+      headers: configurationRevision === undefined ? undefined : { 'If-Match': String(configurationRevision) }
+    });
   }
 
   async delete(id: string): Promise<AxiosResponse<void>> {

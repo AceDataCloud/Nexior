@@ -38,7 +38,8 @@
     "release": "beachball publish --access public",
     "prepare": "husky",
     "analyze": "vite-bundle-visualizer",
-    "build:ssg": "cross-env VITE_SURFACE=web vite-ssg build"
+    "build:ssg": "cross-env VITE_SURFACE=web vite-ssg build",
+    "prebuild": "node --test scripts/check_site_auth_management_ui.mjs"
   },
   "dependencies": {
     "@acedatacloud/core": "0.22.0",

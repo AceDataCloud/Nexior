@@ -1565,5 +1565,81 @@
   "homeLayout.updateFailed": {
     "message": "Falha ao salvar o layout da página inicial",
     "description": "Mensagem exibida quando não é possível salvar a configuração do layout da página inicial."
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "Use a configuração padrão da plataforma para o login neste site ou preencha seu próprio GitHub OAuth App.",
+    "description": "Instrução sobre a configuração do GitHub OAuth no site"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "O login com GitHub está desativado no momento. Você ainda pode configurar previamente o OAuth App e ativá-lo depois.",
+    "description": "Aviso de que o login com GitHub está desativado"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "Este site está usando o GitHub OAuth App padrão da plataforma.",
+    "description": "Status da configuração padrão da plataforma"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "Este site está usando um GitHub OAuth App personalizado.",
+    "description": "Status da configuração personalizada"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "Deixe em branco para manter o segredo salvo",
+    "description": "Texto de espaço reservado para o Client Secret"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Client Secret salvo. Deixe em branco para mantê-lo inalterado.",
+    "description": "Aviso de que o segredo foi salvo"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "Adicione este endereço completo às configurações de callback do GitHub OAuth App.",
+    "description": "Instrução para configurar o callback do GitHub"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "Restaurar configuração padrão da plataforma",
+    "description": "Botão para excluir o GitHub OAuth App personalizado"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "GitHub OAuth App salvo",
+    "description": "Mensagem de sucesso ao salvar"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "Falha ao salvar o GitHub OAuth App",
+    "description": "Mensagem de falha ao salvar"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "Falha ao carregar o GitHub OAuth App",
+    "description": "Mensagem de falha ao carregar"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "Restaurar o GitHub OAuth App padrão da plataforma?",
+    "description": "Título da confirmação para restaurar o padrão"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "O Client ID e o Client Secret salvos serão excluídos permanentemente.",
+    "description": "Conteúdo da confirmação para restaurar o padrão"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "GitHub OAuth App padrão da plataforma restaurado",
+    "description": "Mensagem de sucesso ao restaurar o padrão"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "Falha ao restaurar o GitHub OAuth App padrão da plataforma",
+    "description": "Mensagem de falha ao restaurar o padrão"
   }
 }
