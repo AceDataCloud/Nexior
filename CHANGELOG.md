@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 12 Sep 2026 20:21:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 13 Sep 2026 20:21:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.0
+
+Sun, 13 Sep 2026 20:21:04 GMT
+
+### Minor changes
+
+- Manage Site GitHub OAuth credentials through one concurrency-safe Site update. (dev@acedata.cloud)
+
+### Patches
+
+- add tenant homepage section visibility controls (dev@acedata.cloud)
+- add controlled custom homepage sections for tenant sites (dev@acedata.cloud)
 
 ## 3.370.0
 
