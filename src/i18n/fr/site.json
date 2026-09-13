@@ -1528,5 +1528,81 @@
   "message.referralEntryEnabledTip": {
     "message": "Après désactivation, les utilisateurs standard et les visiteurs non connectés ne verront plus l’accès à l’affiliation ni les contenus promotionnels du site. Les administrateurs du site peuvent toujours les consulter et les réactiver. L’attribution des invitations et les commissions ne sont pas affectées.",
     "description": "Texte explicatif du bouton d’activation de l’accès à l’affiliation"
+  },
+  "field.authGithubOAuthApp": {
+    "message": "GitHub OAuth App",
+    "description": "Title for per-site GitHub OAuth App settings"
+  },
+  "message.authGithubOAuthAppTip": {
+    "message": "Utilisez la configuration par défaut de la plateforme pour la connexion à ce site, ou renseignez votre propre application GitHub OAuth.",
+    "description": "Explication de la configuration GitHub OAuth du site"
+  },
+  "message.authGithubOAuthProviderDisabled": {
+    "message": "La connexion avec GitHub est actuellement désactivée. Vous pouvez néanmoins configurer à l’avance une application OAuth, puis l’activer ultérieurement.",
+    "description": "Message indiquant que la connexion avec GitHub est désactivée"
+  },
+  "message.authGithubOAuthUsingPlatform": {
+    "message": "Ce site utilise l’application GitHub OAuth par défaut de la plateforme.",
+    "description": "État de la configuration par défaut de la plateforme"
+  },
+  "message.authGithubOAuthUsingCustom": {
+    "message": "Ce site utilise une application GitHub OAuth personnalisée.",
+    "description": "État de la configuration personnalisée"
+  },
+  "field.authGithubOAuthClientId": {
+    "message": "Client ID",
+    "description": "GitHub OAuth App client ID label"
+  },
+  "field.authGithubOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "GitHub OAuth App client secret label"
+  },
+  "placeholder.authGithubOAuthClientSecret": {
+    "message": "Laissez vide pour conserver le secret enregistré",
+    "description": "Indication d’espace réservé pour le champ Client Secret"
+  },
+  "message.authGithubOAuthSecretConfigured": {
+    "message": "Le Client Secret a été enregistré. Laissez ce champ vide pour le conserver.",
+    "description": "Indication signalant que le secret a été enregistré"
+  },
+  "field.authGithubOAuthCallbackUrl": {
+    "message": "Authorization callback URL",
+    "description": "GitHub OAuth callback URL label"
+  },
+  "message.authGithubOAuthCallbackTip": {
+    "message": "Ajoutez cette adresse complète aux paramètres de rappel de l’application GitHub OAuth.",
+    "description": "Indication de configuration du rappel GitHub"
+  },
+  "button.authGithubOAuthRestoreDefault": {
+    "message": "Rétablir la configuration par défaut de la plateforme",
+    "description": "Bouton permettant de supprimer l’application GitHub OAuth personnalisée"
+  },
+  "message.authGithubOAuthSaved": {
+    "message": "L’application GitHub OAuth a été enregistrée",
+    "description": "Message de réussite de l’enregistrement"
+  },
+  "error.authGithubOAuthSave": {
+    "message": "Échec de l’enregistrement de l’application GitHub OAuth",
+    "description": "Message d’échec de l’enregistrement"
+  },
+  "error.authGithubOAuthLoad": {
+    "message": "Échec du chargement de l’application GitHub OAuth",
+    "description": "Message d’échec du chargement"
+  },
+  "field.authGithubOAuthDeleteTitle": {
+    "message": "Rétablir l’application GitHub OAuth par défaut de la plateforme ?",
+    "description": "Titre de confirmation du rétablissement de la configuration par défaut"
+  },
+  "message.authGithubOAuthDeleteConfirm": {
+    "message": "Le Client ID et le Client Secret enregistrés seront définitivement supprimés.",
+    "description": "Contenu de la confirmation du rétablissement de la configuration par défaut"
+  },
+  "message.authGithubOAuthDeleted": {
+    "message": "L’application GitHub OAuth par défaut de la plateforme a été rétablie",
+    "description": "Message de réussite du rétablissement de la configuration par défaut"
+  },
+  "error.authGithubOAuthDelete": {
+    "message": "Échec du rétablissement de l’application GitHub OAuth par défaut de la plateforme",
+    "description": "Message d’échec du rétablissement de la configuration par défaut"
   }
 }

@@ -79,20 +79,31 @@
       </div>
     </section>
 
+    <site-github-o-auth-app
+      v-if="site?.id"
+      :credentials="githubCredentials"
+      :provider-enabled="isProviderEnabled('github')"
+      @change="onGithubCredentialsChange"
+    />
     <site-email-transport v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('email')" />
     <site-phone-delivery v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('phone')" />
+    <div class="auth-save-actions">
+      <el-button type="primary" :loading="saving" :disabled="!dirty" @click="save">
+        {{ $t('common.button.save') }}
+      </el-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
+import { ElButton, ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
+import SiteGithubOAuthApp, { type GithubCredentialsDraft } from '@/components/setting/SiteGithubOAuthApp.vue';
 import SitePhoneDelivery from '@/components/setting/SitePhoneDelivery.vue';
 import { siteOperator } from '@/operators';
-import type { ISiteAuth, ISiteAuthProvider } from '@/models';
-import { toWritableSitePayload } from '@/utils';
+import type { ISiteAuth, ISiteAuthProvider, ISiteGithubCredentials } from '@/models';
 
 // Provider IDs we surface in this tab. The IDs match
 // ``IUserPublicRegistrationMethod`` in ``src/models/user.ts`` so the
@@ -112,19 +123,37 @@ interface ProviderOption {
 export default defineComponent({
   name: 'AuthSetting',
   components: {
+    ElButton,
     ElOption,
     ElSelect,
     ElSwitch,
     SectionNotice,
     SiteEmailTransport,
+    SiteGithubOAuthApp,
     SitePhoneDelivery
+  },
+  data() {
+    return {
+      authDraft: undefined as ISiteAuth | undefined,
+      githubCredentialsDraft: undefined as GithubCredentialsDraft | undefined,
+      saving: false
+    };
   },
   computed: {
     site() {
       return this.$store.getters.site || {};
     },
     auth(): ISiteAuth {
-      return (this.site?.auth as ISiteAuth) || {};
+      return this.authDraft || (this.site?.auth as ISiteAuth) || {};
+    },
+    githubCredentials(): ISiteGithubCredentials {
+      return this.site?.auth?.providers?.github?.credentials || { mode: 'platform' };
+    },
+    dirty(): boolean {
+      return (
+        JSON.stringify(this.authDraft || {}) !== JSON.stringify(this.site?.auth || {}) ||
+        this.githubCredentialsDraft !== undefined
+      );
     },
     providers(): Record<string, ISiteAuthProvider> {
       return this.auth.providers || {};
@@ -159,6 +188,15 @@ export default defineComponent({
       // even render on the login page.
       const enabled = new Set(this.enabledProviders);
       return this.providerOptions.filter((opt) => enabled.has(opt.value));
+    }
+  },
+  watch: {
+    'site.auth': {
+      immediate: true,
+      deep: true,
+      handler(value: ISiteAuth) {
+        if (!this.saving) this.authDraft = JSON.parse(JSON.stringify(value || {}));
+      }
     }
   },
   methods: {
@@ -202,7 +240,7 @@ export default defineComponent({
       if (!nextDefault || !nextEnabled.has(nextDefault as ProviderId)) {
         nextDefault = PROVIDER_IDS.find((pid) => nextEnabled.has(pid)) || id;
       }
-      this.persistAuth({
+      this.stageAuth({
         ...this.auth,
         providers: nextProviders,
         default_provider: nextDefault
@@ -221,26 +259,45 @@ export default defineComponent({
           enabled: id === value ? true : nextProviders[id]?.enabled === true
         };
       }
-      this.persistAuth({
+      this.stageAuth({
         ...this.auth,
         providers: nextProviders,
         default_provider: value
       });
     },
     onLoginModeChange(value: 'iframe' | 'redirect') {
-      this.persistAuth({
+      this.stageAuth({
         ...this.auth,
         login_mode: value
       });
     },
-    async persistAuth(nextAuth: ISiteAuth): Promise<void> {
-      const payload = {
-        ...toWritableSitePayload(this.site),
-        auth: nextAuth
-      };
-      await siteOperator.update(this.site?.id, payload);
-      console.debug('getSite for id', this.site?.id);
-      await this.$store.dispatch('getSite');
+    stageAuth(nextAuth: ISiteAuth): void {
+      this.authDraft = nextAuth;
+    },
+    onGithubCredentialsChange(credentials: GithubCredentialsDraft): void {
+      this.githubCredentialsDraft = credentials;
+    },
+    async save(): Promise<void> {
+      if (!this.site?.id || !this.dirty || this.saving) return;
+      this.saving = true;
+      try {
+        const auth = JSON.parse(JSON.stringify(this.authDraft || this.site.auth || {}));
+        if (this.githubCredentialsDraft) {
+          auth.providers = auth.providers || {};
+          auth.providers.github = {
+            ...(auth.providers.github || {}),
+            credentials: this.githubCredentialsDraft
+          };
+        }
+        await siteOperator.update(this.site.id, { auth }, this.site.configuration_revision);
+        await this.$store.dispatch('getSite');
+        this.githubCredentialsDraft = undefined;
+        ElMessage.success(this.$t('site.message.saved'));
+      } catch {
+        ElMessage.error(this.$t('site.error.save'));
+      } finally {
+        this.saving = false;
+      }
     }
   }
 });
@@ -249,6 +306,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .auth-settings {
   container: auth-settings / inline-size;
+}
+
+.auth-save-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 // Auth controls have intrinsic widths, so size these rows against the content pane rather than the viewport.

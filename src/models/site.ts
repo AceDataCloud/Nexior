@@ -102,8 +102,16 @@ export interface ISiteAuthDelivery {
   webhook?: ISiteAuthPhoneWebhook | null;
 }
 
+export interface ISiteGithubCredentials {
+  mode: 'platform' | 'custom';
+  config?: { client_id: string };
+  secret_status?: { client_secret?: { configured: boolean; updated_at?: string | null } };
+  callback?: { path: string };
+}
+
 export interface ISiteAuthProvider {
   enabled?: boolean;
+  credentials?: ISiteGithubCredentials;
   delivery?: ISiteAuthDelivery;
   [key: string]: unknown;
 }
@@ -216,6 +224,7 @@ export interface ISiteAnalytics {
 }
 
 export interface ISite {
+  configuration_revision?: number;
   id?: string;
   origin?: string;
   title?: string;
