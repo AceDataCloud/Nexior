@@ -141,42 +141,31 @@ export interface ISitePhoneDeliveryTestRequest {
 }
 
 export interface ISiteTheme {
-  // Hex colour like ``#277186`` (or shorthand ``#abc``). Drives the
-  // Element Plus ``--el-color-primary`` CSS variable at runtime via
-  // ``src/utils/initializer.ts``. Backend validator lives in
-  // PlatformBackend ``app/utils/site_theme.py`` and rejects unknown
-  // keys, so the shape here intentionally stays narrow.
   primary_color?: string;
 }
 
-/**
- * `metadata.pricing` — the site-wide markup a 站长/affiliate applies to the
- * platform's official price. Backend validates it in
- * `SiteDetailSerializer.validate_metadata` (`app/utils/site_pricing.py`):
- *   markup_ratio  number in [0, 5] (= +0..+500%)   default 0
- *   currency      ISO-4217 3-letter code           default 'USD'
- *   applies_to    'all' (v1 only)                  default 'all'
- * Markup only resizes what end users see/pay; the affiliate commission ratio
- * is unchanged (earnings still flow through DistributionLevel.percentage).
- */
 export interface ISitePricing {
   markup_ratio?: number;
   currency?: string;
   applies_to?: 'all';
 }
 
-export interface ISiteMetadata {
+export interface ISiteCommerce {
   pricing?: ISitePricing;
-  support_url?: string;
-  icp?: string;
-  proxy_cname?: string;
-  // When true, hide every top-up / recharge entry on the site so end
-  // users can't buy more credit. Default (unset / not exactly `true`)
-  // keeps recharge enabled. Read via `isRechargeDisabled` in
-  // `src/utils/site.ts`.
-  disable_recharge?: boolean;
-  nexior?: { hidden_default_banner_ids?: string[]; [key: string]: unknown };
-  [key: string]: unknown;
+  recharge?: { enabled?: boolean };
+}
+
+export interface ISiteHomeSectionConfig {
+  enabled?: boolean;
+  disabled_item_ids?: string[];
+}
+
+export interface ISiteHome {
+  sections?: {
+    banner?: ISiteHomeSectionConfig;
+    categories?: ISiteHomeSectionConfig;
+    showcase?: Pick<ISiteHomeSectionConfig, 'enabled'>;
+  };
 }
 
 // White-label brand chrome (PlatformBackend ``Site.branding`` column,
@@ -187,6 +176,7 @@ export interface ISiteMetadata {
 // ``isBrandingHidden`` / ``getBrandSupportUrl`` in ``src/utils/site.ts``.
 export interface ISiteBrandingLinks {
   support?: string;
+  studio?: string;
   docs?: string;
   tos?: string;
   privacy?: string;
@@ -211,6 +201,7 @@ export interface ISiteContact {
 export interface ISiteBranding {
   company?: string;
   copyright?: string;
+  icp?: string;
   hide_powered_by?: boolean;
   links?: ISiteBrandingLinks;
   contacts?: ISiteContact[];
@@ -248,7 +239,8 @@ export interface ISite {
   auth?: ISiteAuth;
   created_at?: string;
   updated_at?: string;
-  metadata?: ISiteMetadata;
+  commerce?: ISiteCommerce | null;
+  home?: ISiteHome | null;
   theme?: ISiteTheme | null;
   branding?: ISiteBranding;
   analytics?: ISiteAnalytics;

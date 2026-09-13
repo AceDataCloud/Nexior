@@ -2,33 +2,12 @@ import { IApplication, ISite, ISiteContact, IUser } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { isNative, isDesktop } from './surface';
 import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
-import { getSiteLocaleValues, serializeSiteLocales } from './siteLocales';
 
 /**
  * Resolve the bare hostname used for PlatformBackend Site lookup. Native
  * shells cannot provide a public origin, so they use canonical Studio.
  */
 const STUDIO_HOST = 'studio.acedata.cloud';
-
-export const toWritableSitePayload = (site: ISite): ISite => {
-  const {
-    capability_overrides: _capabilityOverrides,
-    title_source: _titleSource,
-    description_source: _descriptionSource,
-    auto_translated_fields: _autoTranslatedFields,
-    ...writableSite
-  } = site;
-  if ('supported_locales' in writableSite) {
-    writableSite.supported_locales = serializeSiteLocales(getSiteLocaleValues(writableSite.supported_locales));
-  }
-  if ('forced_locale' in writableSite) {
-    const offered = getSiteLocaleValues(writableSite.supported_locales);
-    if (!writableSite.forced_locale || !offered.includes(writableSite.forced_locale)) {
-      writableSite.forced_locale = null;
-    }
-  }
-  return writableSite;
-};
 
 export const getSiteOrigin = (site?: ISite) => {
   // If we already have a Site row, trust its stored origin.
@@ -86,12 +65,12 @@ export const getBrandCopyright = (site?: ISite | null): string | undefined => {
 };
 
 /**
- * Resolve the reseller's support URL: `branding.links.support` first, then
- * the legacy `metadata.support_url`. Returns '' when neither is set so
+ * Resolve the reseller's support URL: `branding.links.support`
+ * Returns '' when neither is set so
  * callers can hide the entry instead of leaking our own domain.
  */
 export const getBrandSupportUrl = (site?: ISite | null): string => {
-  return site?.branding?.links?.support || site?.metadata?.support_url || '';
+  return site?.branding?.links?.support || '';
 };
 
 /**
@@ -119,12 +98,12 @@ export const MARKUP_RATIO_MAX = 5;
 
 /**
  * White-label switch to hide every top-up / recharge entry. Reads
- * `site.metadata.disable_recharge` (PlatformBackend passes unknown
+ * `site.commerce.recharge.enabled` (PlatformBackend passes unknown
  * `metadata` keys through verbatim). Default — unset or not exactly
  * `true` — is `false`, i.e. recharge stays enabled.
  */
 export const isRechargeDisabled = (site?: ISite | null): boolean => {
-  return site?.metadata?.disable_recharge === true;
+  return site?.commerce?.recharge?.enabled === false;
 };
 
 export const isReferralEntryVisible = (site?: ISite | null, user?: IUser | null): boolean => {
@@ -134,13 +113,13 @@ export const isReferralEntryVisible = (site?: ISite | null, user?: IUser | null)
 };
 
 /**
- * Read the site-wide markup ratio from `site.metadata.pricing.markup_ratio`
+ * Read the site-wide markup ratio from `site.commerce.pricing.markup_ratio`
  * defensively. Mirrors the backend `extract_markup_ratio`: any missing /
  * malformed / out-of-range value collapses to 0, values above the ceiling are
  * clamped, and only `applies_to === 'all'` (the v1 default) is honored.
  */
 export const getSiteMarkupRatio = (site?: ISite | null): number => {
-  const pricing = site?.metadata?.pricing;
+  const pricing = site?.commerce?.pricing;
   if (!pricing) return 0;
   if (pricing.applies_to !== undefined && pricing.applies_to !== 'all') return 0;
   const raw = pricing.markup_ratio;

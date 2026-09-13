@@ -192,8 +192,8 @@ import { HOME_BANNERS } from '@/pages/home/data';
 import { siteBannerOperator, siteOperator } from '@/operators';
 import type { CapabilityKey } from '@/constants/capabilities';
 import type { ISite, ISiteBanner, ISiteBannerI18nMap } from '@/models';
-import { getHiddenDefaultBannerIds, resolveSiteBannerText, withHiddenDefaultBannerIds } from '@/utils/siteBanner';
-import { toWritableSitePayload } from '@/utils/site';
+import { resolveSiteBannerText } from '@/utils/siteBanner';
+import { getHiddenDefaultBannerIds, withHiddenDefaultBannerIds } from '@/utils/siteHome';
 
 interface IBannerForm {
   imageUrl: string;
@@ -315,9 +315,7 @@ export default defineComponent({
       else hidden.add(id);
       this.savingDefaultId = id;
       try {
-        const payload = toWritableSitePayload(this.site);
-        payload.metadata = withHiddenDefaultBannerIds(this.site.metadata, hidden);
-        await siteOperator.update(this.site.id, payload);
+        await siteOperator.update(this.site.id, { home: withHiddenDefaultBannerIds(this.site, hidden) });
         await this.$store.dispatch('getSite');
       } catch {
         ElMessage.error(this.$t('site.banner.updateFailed'));

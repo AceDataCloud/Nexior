@@ -49,28 +49,28 @@ describe('getSiteMarkupRatio', () => {
     expect(getSiteMarkupRatio(null)).toBe(0);
     expect(getSiteMarkupRatio({} as never)).toBe(0);
     expect(getSiteMarkupRatio({ metadata: {} } as never)).toBe(0);
-    expect(getSiteMarkupRatio({ metadata: { pricing: {} } } as never)).toBe(0);
+    expect(getSiteMarkupRatio({ commerce: { pricing: {} } } as never)).toBe(0);
   });
 
   it('reads a valid ratio', () => {
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 0.3 } } } as never)).toBe(0.3);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: 0.3 } } } as never)).toBe(0.3);
   });
 
   it('clamps above the ceiling and floors below zero / garbage to 0', () => {
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 9 } } } as never)).toBe(5);
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: -1 } } } as never)).toBe(0);
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 'x' } } } as never)).toBe(0);
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: NaN } } } as never)).toBe(0);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: 9 } } } as never)).toBe(5);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: -1 } } } as never)).toBe(0);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: 'x' } } } as never)).toBe(0);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: NaN } } } as never)).toBe(0);
   });
 
   it('ignores a non-"all" applies_to (only v1 "all" is honored)', () => {
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 0.3, applies_to: 'foo' } } } as never)).toBe(0);
-    expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 0.3, applies_to: 'all' } } } as never)).toBe(0.3);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: 0.3, applies_to: 'foo' } } } as never)).toBe(0);
+    expect(getSiteMarkupRatio({ commerce: { pricing: { markup_ratio: 0.3, applies_to: 'all' } } } as never)).toBe(0.3);
   });
 });
 
 describe('getApplicationMarkupRatio', () => {
-  const site = { id: 'site-1', metadata: { pricing: { markup_ratio: 0.1 } } } as never;
+  const site = { id: 'site-1', commerce: { pricing: { markup_ratio: 0.1 } } } as never;
 
   it('prefers the backend-resolved service markup', () => {
     expect(getApplicationMarkupRatio({ effective_markup_ratio: 0.3 }, site)).toBe(0.3);
@@ -173,15 +173,9 @@ describe('brand footer values', () => {
 });
 
 describe('getBrandSupportUrl', () => {
-  it('prefers branding.links.support, then metadata.support_url, else empty', () => {
-    expect(
-      getBrandSupportUrl({
-        branding: { links: { support: 'https://a.com' } },
-        metadata: { support_url: 'https://b.com' }
-      } as never)
-    ).toBe('https://a.com');
-    expect(getBrandSupportUrl({ metadata: { support_url: 'https://b.com' } } as never)).toBe('https://b.com');
-    expect(getBrandSupportUrl({} as never)).toBe('');
+  it('uses only branding.links.support', () => {
+    expect(getBrandSupportUrl({ branding: { links: { support: 'https://a.com' } } } as never)).toBe('https://a.com');
+    expect(getBrandSupportUrl({ metadata: { support_url: 'https://legacy.com' } } as never)).toBe('');
     expect(getBrandSupportUrl(null)).toBe('');
   });
 });

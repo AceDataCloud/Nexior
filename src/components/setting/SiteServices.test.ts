@@ -35,8 +35,7 @@ import SiteServicesSetting from './SiteServices.vue';
 
 const site = {
   id: 'site-1',
-  metadata: {
-    support_url: 'https://support.example.com',
+  commerce: {
     pricing: {
       applies_to: 'all',
       markup_ratio: 0.1234
@@ -118,16 +117,14 @@ describe('setting/SiteServices pricing', () => {
     expect(wrapper.text()).not.toContain('site.message.markupExample');
   });
 
-  it('saves a precise site-wide markup while preserving other metadata', async () => {
+  it('saves a precise site-wide markup while preserving commerce siblings', async () => {
     const wrapper = mountComponent();
     await flushPromises();
 
     await (wrapper.vm as unknown as { onSaveSiteMarkup: (percent: number) => Promise<void> }).onSaveSiteMarkup(12.34);
 
     expect(operatorMocks.updateSite).toHaveBeenCalledWith('site-1', {
-      ...site,
-      metadata: {
-        support_url: 'https://support.example.com',
+      commerce: {
         pricing: {
           applies_to: 'all',
           markup_ratio: 0.1234
@@ -147,7 +144,7 @@ describe('setting/SiteServices pricing', () => {
     await Promise.all([firstSave, latestSave]);
 
     expect(operatorMocks.updateSite).toHaveBeenCalledTimes(2);
-    expect(operatorMocks.updateSite.mock.calls.map((call) => call[1].metadata.pricing.markup_ratio)).toEqual([
+    expect(operatorMocks.updateSite.mock.calls.map((call) => call[1].commerce.pricing.markup_ratio)).toEqual([
       0.2, 0.3
     ]);
     expect(dispatch).toHaveBeenCalledTimes(1);

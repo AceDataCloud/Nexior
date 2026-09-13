@@ -32,7 +32,7 @@ describe('application purchase routing', () => {
 
   it('blocks grantees and recharge-disabled sites', () => {
     expect(canPurchaseApplication({ ...usageApplication, role: 'grantee' }, { features: {} })).toBe(false);
-    expect(canPurchaseApplication(usageApplication, { metadata: { disable_recharge: true } })).toBe(false);
+    expect(canPurchaseApplication(usageApplication, { commerce: { recharge: { enabled: false } } })).toBe(false);
   });
 
   it('applies the existing iOS purchase availability rules', () => {

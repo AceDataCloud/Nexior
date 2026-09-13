@@ -54,7 +54,6 @@ import { siteCapabilityOverrideOperator, siteOperator } from '@/operators';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import type { ISiteCapabilityOverride } from '@/models';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
-import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
   name: 'FunctionSetting',
@@ -148,7 +147,6 @@ export default defineComponent({
     },
     onSave(data: any) {
       const payload = {
-        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site?.id, payload).then(() => {
