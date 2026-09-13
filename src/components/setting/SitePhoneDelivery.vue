@@ -118,6 +118,7 @@ import {
 } from 'element-plus';
 import type { ISiteAuthDelivery, ISiteAuthPhoneWebhook } from '@/models/site';
 import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
+import { siteOperator } from '@/operators/site';
 
 const emptyWebhook = (): ISiteAuthPhoneWebhook => ({ url: '', secret: '' });
 
@@ -143,7 +144,8 @@ export default defineComponent({
       saving: false,
       testing: false,
       changing: false,
-      deleting: false
+      deleting: false,
+      configurationRevision: undefined as number | undefined
     };
   },
   computed: {
@@ -211,15 +213,21 @@ export default defineComponent({
     async load() {
       this.loading = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.get(this.siteId);
-        this.apply(data.providers.phone?.delivery || { type: 'platform' });
+        const { data } = await siteOperator.get(this.siteId);
+        this.configurationRevision = data.configuration_revision;
+        this.apply(data.auth?.providers?.phone?.delivery || { type: 'platform' });
       } finally {
         this.loading = false;
       }
     },
     async update(delivery: ISiteAuthDelivery) {
-      const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', delivery);
-      this.apply(data);
+      const { data } = await siteOperator.update(
+        this.siteId,
+        { auth: { providers: { phone: { delivery } } } },
+        this.configurationRevision
+      );
+      this.configurationRevision = data.configuration_revision;
+      this.apply(data.auth?.providers?.phone?.delivery || { type: 'platform' });
     },
     async saveDraft() {
       if (!this.canSave) return;
@@ -228,11 +236,10 @@ export default defineComponent({
       this.saving = true;
       try {
         if (this.active) {
-          const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', {
+          await this.update({
             type: 'platform',
             webhook: this.webhook
           });
-          this.delivery = data;
           this.testProof = '';
           this.resultMessage = '';
         }
@@ -249,11 +256,10 @@ export default defineComponent({
       if (!webhook) return;
       this.changing = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', {
+        await this.update({
           type: 'webhook',
           webhook: { ...webhook, test_proof: this.testProof || undefined }
         });
-        this.apply(data);
         this.configuring = false;
         ElMessage.success(this.$t('site.message.authDeliveryActivated'));
       } catch {
@@ -299,11 +305,10 @@ export default defineComponent({
       const draft = { ...this.draft };
       this.changing = true;
       try {
-        const { data } = await siteAuthDeliveryOperator.update(this.siteId, 'phone', {
+        await this.update({
           type: 'platform',
           webhook: this.webhook
         });
-        this.apply(data);
         if (preserveDraft) this.draft = draft;
         this.configuring = false;
         this.docsVisible = false;
@@ -326,8 +331,7 @@ export default defineComponent({
       }
       this.deleting = true;
       try {
-        await siteAuthDeliveryOperator.remove(this.siteId, 'phone');
-        this.apply({ type: 'platform', webhook: null });
+        await this.update({ type: 'platform', webhook: null });
         this.configuring = false;
         this.docsVisible = false;
       } finally {

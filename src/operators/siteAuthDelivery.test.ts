@@ -9,17 +9,6 @@ import { siteAuthDeliveryOperator } from './siteAuthDelivery';
 describe('siteAuthDeliveryOperator', () => {
   beforeEach(() => vi.clearAllMocks());
 
-  it('uses PlatformBackend for owner configuration management', async () => {
-    await siteAuthDeliveryOperator.get('site-1');
-    await siteAuthDeliveryOperator.update('site-1', 'email', { type: 'platform' });
-    await siteAuthDeliveryOperator.remove('site-1', 'phone');
-    expect(http.get).toHaveBeenCalledWith('/sites/site-1/auth-deliveries/');
-    expect(http.patch).toHaveBeenCalledWith('/sites/site-1/auth-deliveries/email/', {
-      delivery: { type: 'platform' }
-    });
-    expect(http.delete).toHaveBeenCalledWith('/sites/site-1/auth-deliveries/phone/');
-  });
-
   it('tests only saved configurations through AuthBackend', async () => {
     await siteAuthDeliveryOperator.testEmail('site-1');
     await siteAuthDeliveryOperator.testPhone('site-1', { receiver: '138', region: '86', locale: 'zh-CN' });
