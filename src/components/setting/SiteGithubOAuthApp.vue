@@ -50,7 +50,7 @@
         </el-form-item>
       </el-form>
       <div v-if="customVisible" class="github-oauth__actions">
-        <el-button type="primary" :disabled="!canSave" @click="save">
+        <el-button type="primary" :loading="saving" :disabled="!canSave || saving" @click="save">
           {{ $t('common.button.save') }}
         </el-button>
       </div>
@@ -76,7 +76,8 @@ export default defineComponent({
   components: { CopyToClipboard, ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElSwitch },
   props: {
     credentials: { type: Object, default: () => ({ mode: 'platform' }) },
-    providerEnabled: { type: Boolean, required: true }
+    providerEnabled: { type: Boolean, required: true },
+    saving: { type: Boolean, default: false }
   },
   emits: ['change'],
   data() {
@@ -85,6 +86,7 @@ export default defineComponent({
       draft: { clientId: credentials.config?.client_id || '', clientSecret: '' },
       callbackUrl: CALLBACK_URL,
       mode: credentials.mode === 'custom' ? 'custom' : 'platform',
+      loadedClientId: credentials.config?.client_id || '',
       configuring: false
     };
   },
@@ -99,10 +101,28 @@ export default defineComponent({
       return this.mode === 'custom' || this.configuring;
     },
     canSave(): boolean {
-      return Boolean(this.draft.clientId && (this.draft.clientSecret || this.configured));
+      const canReuseSecret = this.configured && this.draft.clientId === this.loadedClientId;
+      return Boolean(this.draft.clientId && (this.draft.clientSecret || canReuseSecret));
+    }
+  },
+  watch: {
+    credentials: {
+      immediate: true,
+      deep: true,
+      handler(value: unknown) {
+        this.applyCredentials(value);
+      }
     }
   },
   methods: {
+    applyCredentials(value: unknown): void {
+      const credentials = (value || { mode: 'platform' }) as any;
+      const clientId = credentials.config?.client_id || '';
+      this.mode = credentials.mode === 'custom' ? 'custom' : 'platform';
+      this.loadedClientId = clientId;
+      this.draft = { clientId, clientSecret: '' };
+      this.configuring = false;
+    },
     save(): void {
       if (!this.canSave) return;
       this.mode = 'custom';
@@ -111,7 +131,6 @@ export default defineComponent({
         config: { client_id: this.draft.clientId },
         ...(this.draft.clientSecret ? { secret_values: { client_secret: this.draft.clientSecret } } : {})
       } as GithubCredentialsDraft);
-      this.draft.clientSecret = '';
     },
     async toggleCustomApp(value: string | number | boolean): Promise<void> {
       if (value === true) {
@@ -132,9 +151,6 @@ export default defineComponent({
       } catch {
         return;
       }
-      this.mode = 'platform';
-      this.configuring = false;
-      this.draft = { clientId: '', clientSecret: '' };
       this.$emit('change', { mode: 'platform' } as GithubCredentialsDraft);
     }
   }

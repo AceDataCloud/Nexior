@@ -5,7 +5,9 @@ const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf
 test('Site auth saves one PATCH with If-Match', () => {
   const auth = read('src/components/setting/Auth.vue');
   const operator = read('src/operators/site.ts');
-  assert.match(auth, /siteOperator\.update\(this\.site\.id, \{ auth \}, this\.site\.configuration_revision\)/);
+  assert.match(auth, /siteOperator\.get\(siteId\)/);
+  assert.match(auth, /this\.configurationRevision/);
+  assert.match(auth, /siteOperator\.update/);
   assert.doesNotMatch(auth, /toWritableSitePayload/);
   assert.match(operator, /httpClient\.patch/);
   assert.match(operator, /If-Match/);
