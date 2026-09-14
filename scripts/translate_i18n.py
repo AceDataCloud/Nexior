@@ -221,7 +221,7 @@ SYSTEM_PROMPT_TEMPLATE = (
     "{language}. Use the `description` to disambiguate the meaning of the "
     "`message`. "
     "Do NOT add or remove any keys. "
-    "Output strict JSON: an object whose keys are exactly the same as the "
+    "Return a strict json object whose keys are exactly the same as the "
     "input keys and whose values are objects with `message` and "
     "`description` string fields. "
     "Preserve placeholders like {{name}}, {{date}}, %s, HTML tags <a>, <b>, "
@@ -254,7 +254,10 @@ def translate_batch(
         }
 
     sys_prompt = SYSTEM_PROMPT_TEMPLATE.format(language=LANGUAGE_NAMES[locale])
-    user_prompt = json.dumps(payload_in, ensure_ascii=False)
+    user_prompt = "Return a json object for these entries:\n" + json.dumps(
+        payload_in,
+        ensure_ascii=False,
+    )
 
     raw = chat_completion(
         api_key,

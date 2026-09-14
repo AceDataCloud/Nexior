@@ -1,7 +1,7 @@
 <template>
-  <article class="tenant-home-block tenant-home-rich-text">
-    <h2 v-if="section.title">{{ section.title }}</h2>
-    <vue-markdown :source="section.body || ''" sanitize />
+  <article class="tenant-home-block tenant-home-markdown">
+    <h2>{{ section.title }}</h2>
+    <vue-markdown class="tenant-home-content" :source="section.body" sanitize />
   </article>
 </template>
 

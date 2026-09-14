@@ -1642,10 +1642,6 @@
     "message": "Sezioni personalizzate",
     "description": "Titolo delle impostazioni delle sezioni personalizzate della home page."
   },
-  "homeSections.tip": {
-    "message": "Aggiungi sezioni gestite con immagini e testo, pulsanti di invito all'azione, accessi alle funzionalità o testo formattato.",
-    "description": "Descrizione delle impostazioni delle sezioni personalizzate."
-  },
   "homeSections.add": {
     "message": "Aggiungi sezione",
     "description": "Pulsante per aggiungere una sezione alla home page."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "Nessuna sezione personalizzata",
     "description": "Stato vuoto delle sezioni personalizzate."
-  },
-  "homeSections.kind.image_text": {
-    "message": "Sezione immagine e testo",
-    "description": "Nome del tipo di sezione con immagine e testo."
-  },
-  "homeSections.kind.cta": {
-    "message": "Pulsante di invito all'azione",
-    "description": "Nome del tipo di sezione con pulsante di invito all'azione."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "Accessi alle funzionalità",
-    "description": "Nome del tipo di sezione con accessi alle funzionalità."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "Testo formattato",
-    "description": "Nome del tipo di sezione con testo formattato Markdown."
   },
   "homeSections.edit": {
     "message": "Modifica sezione personalizzata",
@@ -1686,29 +1666,9 @@
     "message": "Titolo",
     "description": "Campo del titolo della sezione."
   },
-  "homeSections.field.subtitle": {
-    "message": "Sottotitolo",
-    "description": "Campo del sottotitolo della sezione."
-  },
   "homeSections.field.body": {
     "message": "Testo principale",
     "description": "Campo del testo principale della sezione."
-  },
-  "homeSections.field.image": {
-    "message": "Immagine",
-    "description": "Campo dell'immagine della sezione."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "Testo del pulsante",
-    "description": "Campo del testo del pulsante della sezione."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "Link del pulsante",
-    "description": "Campo del link del pulsante della sezione."
-  },
-  "homeSections.field.capabilities": {
-    "message": "Funzionalità da mostrare",
-    "description": "Campo per selezionare le funzionalità da mostrare."
   },
   "homeSections.field.startAt": {
     "message": "Data di inizio",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "Mostra subito",
     "description": "Campo della visibilità della sezione."
-  },
-  "homeSections.uploadImage": {
-    "message": "Carica immagine",
-    "description": "Pulsante per caricare l'immagine della sezione."
-  },
-  "homeSections.markdownTip": {
-    "message": "Supporta Markdown; HTML, script e contenuti incorporati non sono consentiti.",
-    "description": "Avviso di sicurezza per il testo formattato."
-  },
-  "homeSections.urlTip": {
-    "message": "Sono supportati solo /path interni o link HTTPS",
-    "description": "Avviso sul formato dei link sicuri."
   },
   "homeSections.scheduled": {
     "message": "In attesa di attivazione",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "Salva prima la sezione, quindi attiva la traduzione automatica.",
     "description": "Avviso relativo a una sezione non salvata prima della traduzione."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Nome del tipo di sezione Markdown."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "Nome del tipo di sezione HTML."
+  },
+  "homeSections.htmlTip": {
+    "message": "L'HTML sarà scritto direttamente dal webmaster e visualizzato così com'è.",
+    "description": "Suggerimento sul formato HTML."
+  },
+  "homeSections.tip": {
+    "message": "Aggiungi una sezione Markdown o HTML personalizzato.",
+    "description": "Istruzioni per la configurazione delle sezioni personalizzate."
+  },
+  "homeSections.markdownTip": {
+    "message": "Supporta Markdown; HTML grezzo, script e contenuti incorporati non sono consentiti.",
+    "description": "Suggerimento sul formato Markdown."
   }
 }

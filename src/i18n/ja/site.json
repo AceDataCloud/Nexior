@@ -1642,10 +1642,6 @@
     "message": "カスタムセクション",
     "description": "ホームページのカスタムセクション設定のタイトル。"
   },
-  "homeSections.tip": {
-    "message": "管理された画像とテキスト、行動喚起ボタン、機能への入口、またはリッチテキストのセクションを追加します。",
-    "description": "カスタムセクション設定の説明。"
-  },
   "homeSections.add": {
     "message": "セクションを追加",
     "description": "ホームページにセクションを追加するボタン。"
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "カスタムセクションはまだありません",
     "description": "カスタムセクションの空状態。"
-  },
-  "homeSections.kind.image_text": {
-    "message": "画像とテキスト",
-    "description": "画像とテキストのセクションタイプ名。"
-  },
-  "homeSections.kind.cta": {
-    "message": "行動喚起ボタン",
-    "description": "行動喚起ボタンのセクションタイプ名。"
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "機能への入口",
-    "description": "機能への入口のセクションタイプ名。"
-  },
-  "homeSections.kind.rich_text": {
-    "message": "リッチテキスト",
-    "description": "Markdownリッチテキストのセクションタイプ名。"
   },
   "homeSections.edit": {
     "message": "カスタムセクションを編集",
@@ -1686,29 +1666,9 @@
     "message": "タイトル",
     "description": "セクションタイトルの項目。"
   },
-  "homeSections.field.subtitle": {
-    "message": "サブタイトル",
-    "description": "セクションのサブタイトル項目。"
-  },
   "homeSections.field.body": {
     "message": "本文",
     "description": "セクション本文の項目。"
-  },
-  "homeSections.field.image": {
-    "message": "画像",
-    "description": "セクション画像の項目。"
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "ボタンのテキスト",
-    "description": "セクションボタンのテキスト項目。"
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "ボタンのリンク",
-    "description": "セクションボタンのリンク項目。"
-  },
-  "homeSections.field.capabilities": {
-    "message": "表示する機能",
-    "description": "機能への入口を選択する項目。"
   },
   "homeSections.field.startAt": {
     "message": "開始日時",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "今すぐ表示",
     "description": "セクションの表示設定項目。"
-  },
-  "homeSections.uploadImage": {
-    "message": "画像をアップロード",
-    "description": "セクション画像をアップロードするボタン。"
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdownに対応しています。HTML、スクリプト、埋め込みコンテンツは使用できません。",
-    "description": "リッチテキストの安全に関する注意書き。"
-  },
-  "homeSections.urlTip": {
-    "message": "サイト内の /path または HTTPS リンクのみ対応しています",
-    "description": "安全なリンク形式に関する注意書き。"
   },
   "homeSections.scheduled": {
     "message": "適用待ち",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "自動翻訳を有効にする前に、セクションを保存してください。",
     "description": "未保存のセクションに関する翻訳の注意書き。"
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Markdown ブロックの種類名。"
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "HTML ブロックの種類名。"
+  },
+  "homeSections.htmlTip": {
+    "message": "HTML はサイト管理者が直接記述し、そのまま表示されます。",
+    "description": "HTML 形式に関するヒント。"
+  },
+  "homeSections.tip": {
+    "message": "Markdown またはカスタム HTML ブロックを追加します。",
+    "description": "カスタムブロックの設定に関する説明。"
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown に対応しています。生の HTML、スクリプト、埋め込みコンテンツは使用できません。",
+    "description": "Markdown 形式に関するヒント。"
   }
 }

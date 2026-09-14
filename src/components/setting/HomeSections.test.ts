@@ -29,25 +29,33 @@ const mountSetting = () =>
 describe('setting/HomeSections', () => {
   beforeEach(() => vi.clearAllMocks());
 
-  it('clears fields that are forbidden by the selected kind', () => {
+  it('offers exactly Markdown and HTML and defaults to Markdown', () => {
+    const wrapper = mountSetting();
+
+    expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html']);
+    expect((wrapper.vm as any).form.kind).toBe('markdown');
+  });
+
+  it('builds a payload with only content and operational fields', () => {
     const wrapper = mountSetting();
     Object.assign((wrapper.vm as any).form, {
-      kind: 'capability_grid',
-      title: 'Tools',
-      body: 'old',
-      imageUrl: 'https://example.com/x.png',
-      buttonLabel: 'old',
-      buttonUrl: '/old',
-      capabilityKeys: ['chatgpt']
+      kind: 'html',
+      title: 'Custom HTML',
+      body: '<section data-kind="custom">Body</section>',
+      visible: false,
+      sortOrder: 9,
+      startAt: '2026-09-14T08:00:00',
+      endAt: '2026-09-15T08:00:00'
     });
-    expect((wrapper.vm as any).buildPayload()).toMatchObject({
-      kind: 'capability_grid',
-      title: 'Tools',
-      body: null,
-      image_url: null,
-      button_label: null,
-      button_url: null,
-      capability_keys: ['chatgpt']
+
+    expect((wrapper.vm as any).buildPayload()).toEqual({
+      kind: 'html',
+      title: 'Custom HTML',
+      body: '<section data-kind="custom">Body</section>',
+      visible: false,
+      sort_order: 9,
+      start_at: '2026-09-14T08:00:00Z',
+      end_at: '2026-09-15T08:00:00Z'
     });
   });
 
@@ -56,44 +64,47 @@ describe('setting/HomeSections', () => {
     vi.mocked(siteHomeSectionOperator.create).mockRejectedValue({
       response: {
         data: {
-          detail: { detail: 'rich_text body must not contain raw HTML' },
+          detail: { detail: 'markdown body must not contain raw HTML' },
           code: 'invalid',
           trace_id: traceId
         }
       }
     });
     const wrapper = mountSetting();
-    Object.assign((wrapper.vm as any).form, { kind: 'rich_text', body: '<p>hello</p>' });
+    Object.assign((wrapper.vm as any).form, {
+      kind: 'markdown',
+      title: 'Markdown',
+      body: '<p>hello</p>'
+    });
 
     await (wrapper.vm as any).submit();
 
-    expect(messages.error).toHaveBeenCalledWith('rich_text body must not contain raw HTML');
+    expect(messages.error).toHaveBeenCalledWith('markdown body must not contain raw HTML');
     const rendered = String(messages.error.mock.calls[0]?.[0]);
     expect(rendered).not.toContain('[object Object]');
     expect(rendered).not.toContain('invalid');
     expect(rendered).not.toContain(traceId);
   });
 
-  it('creates a section for the current site', async () => {
+  it('creates raw HTML for the current site without rewriting it', async () => {
+    const body = '  \n<iframe src="https://example.com"></iframe><img onerror="run()">\n  ';
     vi.mocked(siteHomeSectionOperator.create).mockResolvedValue({
-      data: { id: 'new', kind: 'cta', title: 'Launch', button_label: 'Start', button_url: '/start' }
+      data: { id: 'new', kind: 'html', title: 'Custom HTML', body }
     } as any);
     const wrapper = mountSetting();
-    Object.assign((wrapper.vm as any).form, {
-      kind: 'cta',
-      title: 'Launch',
-      buttonLabel: 'Start',
-      buttonUrl: '/start'
-    });
+    Object.assign((wrapper.vm as any).form, { kind: 'html', title: 'Custom HTML', body });
+
     await (wrapper.vm as any).submit();
-    expect(siteHomeSectionOperator.create).toHaveBeenCalledWith(
-      expect.objectContaining({
-        site: 'site-1',
-        kind: 'cta',
-        title: 'Launch',
-        button_label: 'Start',
-        button_url: '/start'
-      })
-    );
+
+    expect(siteHomeSectionOperator.create).toHaveBeenCalledWith({
+      site: 'site-1',
+      kind: 'html',
+      title: 'Custom HTML',
+      body,
+      visible: true,
+      sort_order: 0,
+      start_at: null,
+      end_at: null
+    });
   });
 });

@@ -1645,10 +1645,6 @@
     "message": "Sections personnalisées",
     "description": "Titre des paramètres des sections personnalisées de la page d’accueil."
   },
-  "homeSections.tip": {
-    "message": "Ajoutez des sections contrôlées avec image et texte, boutons d’action, accès aux fonctionnalités ou texte enrichi.",
-    "description": "Description des paramètres des sections personnalisées."
-  },
   "homeSections.add": {
     "message": "Ajouter une section",
     "description": "Bouton d’ajout d’une section à la page d’accueil."
@@ -1656,22 +1652,6 @@
   "homeSections.empty": {
     "message": "Aucune section personnalisée pour le moment",
     "description": "État vide des sections personnalisées."
-  },
-  "homeSections.kind.image_text": {
-    "message": "Section image et texte",
-    "description": "Nom du type de section image et texte."
-  },
-  "homeSections.kind.cta": {
-    "message": "Bouton d’action",
-    "description": "Nom du type de section de bouton d’action."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "Accès aux fonctionnalités",
-    "description": "Nom du type de section d’accès aux fonctionnalités."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "Texte enrichi",
-    "description": "Nom du type de section de texte enrichi Markdown."
   },
   "homeSections.edit": {
     "message": "Modifier la section personnalisée",
@@ -1689,29 +1669,9 @@
     "message": "Titre",
     "description": "Champ du titre de la section."
   },
-  "homeSections.field.subtitle": {
-    "message": "Sous-titre",
-    "description": "Champ du sous-titre de la section."
-  },
   "homeSections.field.body": {
     "message": "Corps du texte",
     "description": "Champ du corps du texte de la section."
-  },
-  "homeSections.field.image": {
-    "message": "Visuel",
-    "description": "Champ image du bloc."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "Texte du bouton",
-    "description": "Champ du texte du bouton de la section."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "Lien du bouton",
-    "description": "Champ du lien du bouton de la section."
-  },
-  "homeSections.field.capabilities": {
-    "message": "Fonctionnalités à afficher",
-    "description": "Champ de sélection des fonctionnalités à afficher."
   },
   "homeSections.field.startAt": {
     "message": "Date de début",
@@ -1728,18 +1688,6 @@
   "homeSections.field.visible": {
     "message": "Afficher immédiatement",
     "description": "Champ de visibilité de la section."
-  },
-  "homeSections.uploadImage": {
-    "message": "Téléverser une image",
-    "description": "Bouton de téléversement de l’image de la section."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown est pris en charge ; le HTML, les scripts et le contenu intégré sont interdits.",
-    "description": "Message de sécurité pour le texte enrichi."
-  },
-  "homeSections.urlTip": {
-    "message": "Seuls les chemins internes /path ou les liens HTTPS sont pris en charge",
-    "description": "Message concernant le format sécurisé des liens."
   },
   "homeSections.scheduled": {
     "message": "À venir",
@@ -1792,5 +1740,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "Veuillez d’abord enregistrer la section avant d’activer la traduction automatique.",
     "description": "Message de traduction pour une section non enregistrée."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Nom du type de section Markdown."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "Nom du type de section HTML."
+  },
+  "homeSections.htmlTip": {
+    "message": "Le HTML est rédigé directement par l’administrateur du site et affiché tel quel.",
+    "description": "Indication sur le format HTML."
+  },
+  "homeSections.tip": {
+    "message": "Ajoutez une section Markdown ou HTML personnalisée.",
+    "description": "Explication des paramètres des sections personnalisées."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown est pris en charge, mais le HTML brut, les scripts et le contenu intégré sont interdits.",
+    "description": "Indication sur le format Markdown."
   }
 }

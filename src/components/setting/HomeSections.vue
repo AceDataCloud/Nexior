@@ -74,29 +74,8 @@
             /></template>
           </el-input>
         </el-form-item>
-        <el-form-item v-if="form.kind !== 'rich_text'" :label="$t('site.homeSections.field.subtitle')">
-          <el-input v-model="form.subtitle" maxlength="300">
-            <template #suffix
-              ><auto-translate-toggle
-                model="site_home_section"
-                field="subtitle"
-                :object-id="editing?.id"
-                :enabled="translationEnabled('subtitle')"
-                :current-value="form.subtitle"
-                :disabled-reason="$t('site.homeSections.saveBeforeTranslate')"
-                @enabled-success="onTranslationChanged()"
-                @disabled-success="onTranslationChanged()"
-            /></template>
-          </el-input>
-        </el-form-item>
-        <el-form-item v-if="form.kind !== 'capability_grid'" :label="$t('site.homeSections.field.body')">
-          <el-input
-            v-model="form.body"
-            type="textarea"
-            :rows="form.kind === 'rich_text' ? 8 : 4"
-            :maxlength="form.kind === 'rich_text' ? 12000 : 2000"
-            show-word-limit
-          />
+        <el-form-item :label="$t('site.homeSections.field.body')">
+          <el-input v-model="form.body" type="textarea" :rows="10" :maxlength="12000" show-word-limit />
           <auto-translate-toggle
             class="translation-below"
             model="site_home_section"
@@ -108,44 +87,7 @@
             @enabled-success="onTranslationChanged()"
             @disabled-success="onTranslationChanged()"
           />
-          <span v-if="form.kind === 'rich_text'" class="field-tip">{{ $t('site.homeSections.markdownTip') }}</span>
-        </el-form-item>
-
-        <template v-if="form.kind === 'image_text'">
-          <el-form-item :label="$t('site.homeSections.field.image')">
-            <div class="image-row">
-              <img v-if="form.imageUrl" :src="form.imageUrl" alt="" />
-              <el-button @click="cropperVisible = true">{{ $t('site.homeSections.uploadImage') }}</el-button>
-            </div>
-            <el-input v-model="form.imageUrl" clearable />
-          </el-form-item>
-        </template>
-
-        <template v-if="form.kind === 'image_text' || form.kind === 'cta'">
-          <el-form-item :label="$t('site.homeSections.field.buttonLabel')">
-            <el-input v-model="form.buttonLabel" maxlength="80">
-              <template #suffix
-                ><auto-translate-toggle
-                  model="site_home_section"
-                  field="button_label"
-                  :object-id="editing?.id"
-                  :enabled="translationEnabled('button_label')"
-                  :current-value="form.buttonLabel"
-                  :disabled-reason="$t('site.homeSections.saveBeforeTranslate')"
-                  @enabled-success="onTranslationChanged()"
-                  @disabled-success="onTranslationChanged()"
-              /></template>
-            </el-input>
-          </el-form-item>
-          <el-form-item :label="$t('site.homeSections.field.buttonUrl')">
-            <el-input v-model="form.buttonUrl" :placeholder="$t('site.homeSections.urlTip')" />
-          </el-form-item>
-        </template>
-
-        <el-form-item v-if="form.kind === 'capability_grid'" :label="$t('site.homeSections.field.capabilities')">
-          <el-select v-model="form.capabilityKeys" multiple filterable class="full-width" :multiple-limit="12">
-            <el-option v-for="item in capabilityOptions" :key="item.key" :label="item.name" :value="item.key" />
-          </el-select>
+          <span class="field-tip">{{ $t(`site.homeSections.${form.kind}Tip`) }}</span>
         </el-form-item>
 
         <div class="form-grid">
@@ -170,16 +112,6 @@
         <el-button type="primary" :loading="submitting" @click="submit">{{ $t('common.button.confirm') }}</el-button>
       </template>
     </el-dialog>
-
-    <image-cropper
-      v-model="cropperVisible"
-      :title="$t('site.homeSections.uploadImage')"
-      :aspect-ratio="16 / 9"
-      :output-width="1280"
-      accept="image/png,image/jpeg,image/webp"
-      shape="rectangle"
-      @uploaded="form.imageUrl = $event"
-    />
   </section>
 </template>
 
@@ -203,37 +135,25 @@ import {
 } from 'element-plus';
 import { AddIcon } from '@acedatacloud/core/icons/components';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
-import ImageCropper from '@/components/common/ImageCropper.vue';
 import type { ISite, ISiteHomeSection, SiteHomeSectionKind } from '@/models';
 import { siteHomeSectionOperator } from '@/operators';
-import { HOME_CAPABILITY_DEFINITIONS } from '@/pages/home/data';
 import { extractApiErrorMessage } from '@/utils/apiError';
 
 interface SectionForm {
   kind: SiteHomeSectionKind;
   title: string;
-  subtitle: string;
   body: string;
-  buttonLabel: string;
-  buttonUrl: string;
-  imageUrl: string;
-  capabilityKeys: string[];
   visible: boolean;
   sortOrder: number;
   startAt: string;
   endAt: string;
 }
 
-const kinds: SiteHomeSectionKind[] = ['image_text', 'cta', 'capability_grid', 'rich_text'];
+const kinds: SiteHomeSectionKind[] = ['markdown', 'html'];
 const emptyForm = (): SectionForm => ({
-  kind: 'image_text',
+  kind: 'markdown',
   title: '',
-  subtitle: '',
   body: '',
-  buttonLabel: '',
-  buttonUrl: '',
-  imageUrl: '',
-  capabilityKeys: [],
   visible: true,
   sortOrder: 0,
   startAt: '',
@@ -242,7 +162,7 @@ const emptyForm = (): SectionForm => ({
 const toIso = (value: string): string | null =>
   !value ? null : /[zZ]|[+-]\d{2}:?\d{2}$/.test(value) ? value : `${value}Z`;
 const fromIso = (value?: string | null): string => (value ? value.replace(/(Z|[+-]\d{2}:?\d{2})$/, '') : '');
-const text = (value: string): string | null => value.trim() || null;
+const title = (value: string): string => value.trim();
 
 export default defineComponent({
   name: 'HomeSectionsSetting',
@@ -259,8 +179,7 @@ export default defineComponent({
     AutoTranslateToggle,
     ElOption,
     ElSelect,
-    ElSwitch,
-    ImageCropper
+    ElSwitch
   },
   directives: { loading: vLoading },
   props: { site: { type: Object as PropType<ISite | undefined>, default: undefined } },
@@ -272,16 +191,10 @@ export default defineComponent({
       busyId: '',
       deletingId: '',
       editorVisible: false,
-      cropperVisible: false,
       submitting: false,
       editing: null as ISiteHomeSection | null,
       form: emptyForm()
     };
-  },
-  computed: {
-    capabilityOptions(): Array<{ key: string; name: string }> {
-      return [...HOME_CAPABILITY_DEFINITIONS].map(([key, item]) => ({ key, name: item.defaultName }));
-    }
   },
   watch: {
     'site.id': {
@@ -293,8 +206,8 @@ export default defineComponent({
     }
   },
   methods: {
-    source(row: ISiteHomeSection, field: 'title' | 'subtitle' | 'body' | 'button_label'): string {
-      return (row[`${field}_source` as keyof ISiteHomeSection] as string) || row[field] || '';
+    source(row: ISiteHomeSection, field: 'title' | 'body'): string {
+      return row[`${field}_source`] || row[field] || '';
     },
     statusLabel(row: ISiteHomeSection): string {
       const now = Date.now();
@@ -328,12 +241,7 @@ export default defineComponent({
       this.form = {
         kind: row.kind,
         title: this.source(row, 'title'),
-        subtitle: this.source(row, 'subtitle'),
         body: this.source(row, 'body'),
-        buttonLabel: this.source(row, 'button_label'),
-        buttonUrl: row.button_url || '',
-        imageUrl: row.image_url || '',
-        capabilityKeys: [...(row.capability_keys || [])],
         visible: row.visible !== false,
         sortOrder: row.sort_order ?? 0,
         startAt: fromIso(row.start_at),
@@ -351,21 +259,15 @@ export default defineComponent({
       if (refreshed) this.openEdit(refreshed);
     },
     buildPayload() {
-      const common = {
+      return {
         kind: this.form.kind,
-        title: text(this.form.title),
-        subtitle: this.form.kind === 'rich_text' ? null : text(this.form.subtitle),
-        body: ['image_text', 'cta', 'rich_text'].includes(this.form.kind) ? text(this.form.body) : null,
-        button_label: ['image_text', 'cta'].includes(this.form.kind) ? text(this.form.buttonLabel) : null,
-        button_url: ['image_text', 'cta'].includes(this.form.kind) ? text(this.form.buttonUrl) : null,
-        image_url: this.form.kind === 'image_text' ? text(this.form.imageUrl) : null,
-        capability_keys: this.form.kind === 'capability_grid' ? this.form.capabilityKeys : [],
+        title: title(this.form.title),
+        body: this.form.body,
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),
         end_at: toIso(this.form.endAt)
       };
-      return common;
     },
     async submit(): Promise<void> {
       if (!this.site?.id) return;
@@ -495,19 +397,6 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-}
-.image-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  margin-bottom: 8px;
-}
-.image-row img {
-  width: 180px;
-  height: 100px;
-  border-radius: 8px;
-  object-fit: cover;
 }
 .translation-below {
   margin-top: 6px;
