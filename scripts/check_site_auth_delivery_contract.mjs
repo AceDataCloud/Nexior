@@ -12,3 +12,10 @@ test('delivery config uses Site API while test actions remain', () => {
   assert.match(components, /siteOperator\.update/);
   assert.doesNotMatch(components, /siteAuthDeliveryOperator\.(get|update|remove)/);
 });
+
+test('Site auth delivery exposes only derived verification state', () => {
+  const models = read('src/models/site.ts');
+  const components =
+    read('src/components/setting/SiteEmailTransport.vue') + read('src/components/setting/SitePhoneDelivery.vue');
+  assert.doesNotMatch(models + components, /verification_source|saved_config_test|legacy_migration/);
+});

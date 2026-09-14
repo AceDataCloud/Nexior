@@ -19,12 +19,6 @@
         @change="toggleDelivery"
       />
       <template v-if="customVisible">
-        <el-alert
-          v-if="smtp?.verification_source === 'legacy_migration'"
-          :title="$t('site.message.authDeliveryMigrated')"
-          type="warning"
-          :closable="false"
-        />
         <el-form label-position="top" class="email-delivery__form">
           <el-form-item :label="$t('site.field.authEmailTransportSecurity')">
             <el-select v-model="draft.security" @change="onSecurityChange">
