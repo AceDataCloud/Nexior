@@ -192,6 +192,7 @@ import { HOME_BANNERS } from '@/pages/home/data';
 import { siteBannerOperator, siteOperator } from '@/operators';
 import type { CapabilityKey } from '@/constants/capabilities';
 import type { ISite, ISiteBanner, ISiteBannerI18nMap } from '@/models';
+import { extractApiErrorMessage } from '@/utils/apiError';
 import { resolveSiteBannerText } from '@/utils/siteBanner';
 import { getHiddenDefaultBannerIds, withHiddenDefaultBannerIds } from '@/utils/siteHome';
 
@@ -395,10 +396,8 @@ export default defineComponent({
         const refreshed = this.rows.find((row) => row.id === response.data.id) || response.data;
         this.openEdit(refreshed);
         ElMessage.success(this.$t(wasNew ? 'site.banner.savedEnableTranslation' : 'common.message.saved'));
-      } catch (error: any) {
-        const data = error?.response?.data;
-        const detail = data && typeof data === 'object' ? Object.values(data).flat().join('; ') : '';
-        ElMessage.error(detail || this.$t('site.banner.saveFailed'));
+      } catch (error: unknown) {
+        ElMessage.error(extractApiErrorMessage(error) || this.$t('site.banner.saveFailed'));
       } finally {
         this.submitting = false;
       }

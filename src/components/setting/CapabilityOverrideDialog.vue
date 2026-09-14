@@ -83,6 +83,7 @@ import ImageCropper from '@/components/common/ImageCropper.vue';
 import { siteCapabilityOverrideOperator } from '@/operators';
 import type { ISiteCapabilityOverride } from '@/models';
 import type { CapabilityKey } from '@/constants/capabilities';
+import { extractApiErrorMessage } from '@/utils/apiError';
 
 export default defineComponent({
   name: 'CapabilityOverrideDialog',
@@ -149,14 +150,7 @@ export default defineComponent({
       this.iconEditorVisible = false;
     },
     extractError(error: unknown): string {
-      const data = (error as { response?: { data?: Record<string, unknown> } })?.response?.data;
-      if (!data) return '';
-      const detail = data.detail;
-      if (typeof detail === 'string') return detail;
-      return Object.values(data)
-        .flat()
-        .filter((value) => typeof value === 'string')
-        .join(' ');
+      return extractApiErrorMessage(error);
     },
     async onSave(): Promise<void> {
       const displayName = this.displayName.trim() || null;

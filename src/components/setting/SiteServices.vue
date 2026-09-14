@@ -259,6 +259,7 @@ import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX } from '@/utils';
+import { extractApiErrorMessage } from '@/utils/apiError';
 
 // Pre-fetch the whole catalog once so each override row can show the
 // service title/alias without an N+1 per-row GET. If a tenant ever
@@ -702,11 +703,7 @@ export default defineComponent({
       }
     },
     extractError(err: unknown): string {
-      const detail = (err as { response?: { data?: Record<string, unknown> } })?.response?.data;
-      if (detail && typeof detail === 'object') {
-        return Object.values(detail).flat().filter(Boolean).join('; ');
-      }
-      return '';
+      return extractApiErrorMessage(err);
     }
   }
 });

@@ -4,6 +4,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Banners from './Banners.vue';
 import { siteBannerOperator, siteOperator } from '@/operators';
 
+const messages = vi.hoisted(() => ({ success: vi.fn(), error: vi.fn() }));
+
+vi.mock('element-plus', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('element-plus')>();
+  return { ...actual, ElMessage: messages };
+});
+
 vi.mock('@/operators', () => ({
   siteBannerOperator: { getAll: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
   siteOperator: { update: vi.fn() }
@@ -109,6 +116,19 @@ describe('setting/Banners', () => {
         sort_order: 3
       })
     );
+  });
+
+  it('shows nested API errors without envelope metadata', async () => {
+    vi.mocked(siteBannerOperator.create).mockRejectedValue({
+      response: { data: { detail: { detail: 'Actionable message' }, code: 'invalid', trace_id: 'request-id' } }
+    });
+    const wrapper = mountBanners();
+    (wrapper.vm as any).openCreate();
+    await wrapper.setData({ form: { ...(wrapper.vm as any).form, imageUrl: 'https://cdn.example.com/new.webp' } });
+
+    await (wrapper.vm as any).onSubmit();
+
+    expect(messages.error).toHaveBeenCalledWith('Actionable message');
   });
 
   it('hydrates one source input and configures both translation toggles', async () => {

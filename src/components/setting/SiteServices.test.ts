@@ -192,4 +192,13 @@ describe('setting/SiteServices pricing', () => {
     expect(vm.siteMarkupDraftPercent).toBe(45);
     expect(vm.siteMarkupConfirmedPercent).toBe(45);
   });
+
+  it('extracts nested API errors without envelope metadata', () => {
+    const wrapper = mountComponent();
+    const message = (wrapper.vm as any).extractError({
+      response: { data: { detail: { detail: 'Actionable message' }, code: 'invalid', trace_id: 'request-id' } }
+    });
+
+    expect(message).toBe('Actionable message');
+  });
 });
