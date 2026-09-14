@@ -1642,10 +1642,6 @@
     "message": "Benutzerdefinierte Bereiche",
     "description": "Titel der Einstellungen für benutzerdefinierte Bereiche auf der Startseite."
   },
-  "homeSections.tip": {
-    "message": "Fügen Sie verwaltete Bild-Text-, Call-to-Action-, Funktionszugangs- oder Rich-Text-Bereiche hinzu.",
-    "description": "Hinweis zu den Einstellungen für benutzerdefinierte Bereiche."
-  },
   "homeSections.add": {
     "message": "Bereich hinzufügen",
     "description": "Schaltfläche zum Hinzufügen eines Startseitenbereichs."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "Noch keine benutzerdefinierten Bereiche",
     "description": "Leerzustand für benutzerdefinierte Bereiche."
-  },
-  "homeSections.kind.image_text": {
-    "message": "Bild-Text-Bereich",
-    "description": "Bezeichnung des Bereichstyps für Bild und Text."
-  },
-  "homeSections.kind.cta": {
-    "message": "Call-to-Action",
-    "description": "Bezeichnung des Bereichstyps für eine Handlungsaufforderung."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "Funktionszugang",
-    "description": "Bezeichnung des Bereichstyps für Funktionszugänge."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "Rich Text",
-    "description": "Bezeichnung des Markdown-Rich-Text-Bereichstyps."
   },
   "homeSections.edit": {
     "message": "Benutzerdefinierten Bereich bearbeiten",
@@ -1686,29 +1666,9 @@
     "message": "Titel",
     "description": "Titelfeld des Bereichs."
   },
-  "homeSections.field.subtitle": {
-    "message": "Untertitel",
-    "description": "Untertitelfeld des Bereichs."
-  },
   "homeSections.field.body": {
     "message": "Text",
     "description": "Textfeld des Bereichs."
-  },
-  "homeSections.field.image": {
-    "message": "Bild",
-    "description": "Bildfeld des Bereichs."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "Schaltflächentext",
-    "description": "Feld für den Schaltflächentext des Bereichs."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "Schaltflächenlink",
-    "description": "Feld für den Link der Bereichsschaltfläche."
-  },
-  "homeSections.field.capabilities": {
-    "message": "Funktionen anzeigen",
-    "description": "Auswahlfeld für Funktionszugänge."
   },
   "homeSections.field.startAt": {
     "message": "Startzeit",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "Sofort anzeigen",
     "description": "Feld für die Sichtbarkeit des Bereichs."
-  },
-  "homeSections.uploadImage": {
-    "message": "Bild hochladen",
-    "description": "Schaltfläche zum Hochladen eines Bereichsbildes."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown wird unterstützt; HTML, Skripte und eingebettete Inhalte sind nicht zulässig.",
-    "description": "Sicherheitshinweis für Rich Text."
-  },
-  "homeSections.urlTip": {
-    "message": "Nur interne /path- oder HTTPS-Links werden unterstützt",
-    "description": "Hinweis zum sicheren Linkformat."
   },
   "homeSections.scheduled": {
     "message": "Ausstehend",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "Speichern Sie den Bereich zuerst, bevor Sie die automatische Übersetzung aktivieren.",
     "description": "Übersetzungshinweis für einen nicht gespeicherten Bereich."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Bezeichnung des Markdown-Blocktyps."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "Bezeichnung des HTML-Blocktyps."
+  },
+  "homeSections.htmlTip": {
+    "message": "HTML wird vom Website-Administrator direkt verfasst und unverändert angezeigt.",
+    "description": "Hinweis zum HTML-Format."
+  },
+  "homeSections.tip": {
+    "message": "Markdown- oder benutzerdefinierten HTML-Block hinzufügen.",
+    "description": "Hinweis zu den Einstellungen benutzerdefinierter Blöcke."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown wird unterstützt; rohes HTML, Skripte und eingebettete Inhalte sind nicht zulässig.",
+    "description": "Hinweis zum Markdown-Format."
   }
 }

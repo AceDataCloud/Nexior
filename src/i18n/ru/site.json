@@ -1642,10 +1642,6 @@
     "message": "Пользовательские блоки",
     "description": "Заголовок настроек пользовательских блоков на главной странице."
   },
-  "homeSections.tip": {
-    "message": "Добавляйте управляемые блоки с изображением и текстом, кнопкой действия, входами в функции или форматированным текстом.",
-    "description": "Описание настроек пользовательских блоков."
-  },
   "homeSections.add": {
     "message": "Добавить блок",
     "description": "Кнопка добавления блока на главную страницу."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "Пользовательских блоков пока нет",
     "description": "Пустое состояние списка пользовательских блоков."
-  },
-  "homeSections.kind.image_text": {
-    "message": "Блок с изображением и текстом",
-    "description": "Название типа блока с изображением и текстом."
-  },
-  "homeSections.kind.cta": {
-    "message": "Кнопка действия",
-    "description": "Название типа блока с кнопкой действия."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "Входы в функции",
-    "description": "Название типа блока со входами в функции."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "Форматированный текст",
-    "description": "Название типа блока с форматированным текстом Markdown."
   },
   "homeSections.edit": {
     "message": "Редактировать пользовательский блок",
@@ -1686,29 +1666,9 @@
     "message": "Заголовок",
     "description": "Поле заголовка блока."
   },
-  "homeSections.field.subtitle": {
-    "message": "Подзаголовок",
-    "description": "Поле подзаголовка блока."
-  },
   "homeSections.field.body": {
     "message": "Основной текст",
     "description": "Поле основного текста блока."
-  },
-  "homeSections.field.image": {
-    "message": "Изображение",
-    "description": "Поле изображения блока."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "Текст кнопки",
-    "description": "Поле текста кнопки блока."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "Ссылка кнопки",
-    "description": "Поле ссылки кнопки блока."
-  },
-  "homeSections.field.capabilities": {
-    "message": "Отображаемые функции",
-    "description": "Поле выбора входов в функции."
   },
   "homeSections.field.startAt": {
     "message": "Время начала",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "Показывать сразу",
     "description": "Поле видимости блока."
-  },
-  "homeSections.uploadImage": {
-    "message": "Загрузить изображение",
-    "description": "Кнопка загрузки изображения блока."
-  },
-  "homeSections.markdownTip": {
-    "message": "Поддерживается Markdown; HTML, скрипты и встраиваемый контент запрещены.",
-    "description": "Предупреждение о безопасности форматированного текста."
-  },
-  "homeSections.urlTip": {
-    "message": "Поддерживаются только ссылки на сайт вида /path или HTTPS-ссылки",
-    "description": "Подсказка о безопасном формате ссылок."
   },
   "homeSections.scheduled": {
     "message": "Ожидает активации",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "Сначала сохраните блок, затем включите автоматический перевод.",
     "description": "Подсказка о необходимости сохранить блок перед переводом."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Название типа блока Markdown."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "Название типа блока HTML."
+  },
+  "homeSections.htmlTip": {
+    "message": "HTML будет написан владельцем сайта и отображён без изменений.",
+    "description": "Подсказка по формату HTML."
+  },
+  "homeSections.tip": {
+    "message": "Добавьте блок Markdown или пользовательского HTML.",
+    "description": "Описание настройки пользовательского блока."
+  },
+  "homeSections.markdownTip": {
+    "message": "Поддерживается Markdown; необработанный HTML, скрипты и встраиваемый контент не разрешены.",
+    "description": "Подсказка по формату Markdown."
   }
 }

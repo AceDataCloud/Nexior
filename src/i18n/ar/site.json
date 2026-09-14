@@ -1642,10 +1642,6 @@
     "message": "الأقسام المخصصة",
     "description": "عنوان إعدادات الأقسام المخصصة في الصفحة الرئيسية."
   },
-  "homeSections.tip": {
-    "message": "أضف أقسامًا مُدارة للصور والنصوص أو أزرار الإجراءات أو مداخل الميزات أو النصوص المنسقة.",
-    "description": "وصف إعدادات الأقسام المخصصة."
-  },
   "homeSections.add": {
     "message": "إضافة قسم",
     "description": "زر إضافة قسم إلى الصفحة الرئيسية."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "لا توجد أقسام مخصصة بعد",
     "description": "حالة عدم وجود أقسام مخصصة."
-  },
-  "homeSections.kind.image_text": {
-    "message": "قسم صورة ونص",
-    "description": "اسم نوع قسم الصورة والنص."
-  },
-  "homeSections.kind.cta": {
-    "message": "زر إجراء",
-    "description": "اسم نوع قسم زر الإجراء."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "مداخل الميزات",
-    "description": "اسم نوع قسم مداخل الميزات."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "نص منسق",
-    "description": "اسم نوع قسم النص المنسق بتنسيق Markdown."
   },
   "homeSections.edit": {
     "message": "تعديل القسم المخصص",
@@ -1686,29 +1666,9 @@
     "message": "العنوان",
     "description": "حقل عنوان القسم."
   },
-  "homeSections.field.subtitle": {
-    "message": "العنوان الفرعي",
-    "description": "حقل العنوان الفرعي للقسم."
-  },
   "homeSections.field.body": {
     "message": "النص الأساسي",
     "description": "حقل النص الأساسي للقسم."
-  },
-  "homeSections.field.image": {
-    "message": "الصورة",
-    "description": "حقل صورة القسم."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "نص الزر",
-    "description": "حقل نص زر القسم."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "رابط الزر",
-    "description": "حقل رابط زر القسم."
-  },
-  "homeSections.field.capabilities": {
-    "message": "عرض الميزات",
-    "description": "حقل اختيار مداخل الميزات."
   },
   "homeSections.field.startAt": {
     "message": "وقت البدء",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "عرض الآن",
     "description": "حقل مستوى ظهور القسم."
-  },
-  "homeSections.uploadImage": {
-    "message": "رفع صورة",
-    "description": "زر رفع صورة القسم."
-  },
-  "homeSections.markdownTip": {
-    "message": "يدعم Markdown، ولا يُسمح بمحتوى HTML أو البرامج النصية أو المحتوى المضمّن.",
-    "description": "تنبيه أمان للنصوص المنسقة."
-  },
-  "homeSections.urlTip": {
-    "message": "يُسمح فقط بالمسار الداخلي /path أو بروابط HTTPS",
-    "description": "تنبيه حول تنسيق الروابط الآمن."
   },
   "homeSections.scheduled": {
     "message": "مجدول",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "يرجى حفظ القسم أولًا قبل تفعيل الترجمة التلقائية.",
     "description": "تنبيه الترجمة للقسم غير المحفوظ."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "اسم نوع قسم Markdown."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "اسم نوع قسم HTML."
+  },
+  "homeSections.htmlTip": {
+    "message": "سيكتب مدير الموقع HTML مباشرةً وسيُعرض كما هو.",
+    "description": "تلميح حول تنسيق HTML."
+  },
+  "homeSections.tip": {
+    "message": "أضف قسم Markdown أو HTML مخصصًا.",
+    "description": "إرشادات إعداد الأقسام المخصصة."
+  },
+  "homeSections.markdownTip": {
+    "message": "يدعم Markdown، ولا يُسمح باستخدام HTML الخام أو البرامج النصية أو المحتوى المضمّن.",
+    "description": "تلميح حول تنسيق Markdown."
   }
 }

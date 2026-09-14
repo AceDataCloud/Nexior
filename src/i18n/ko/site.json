@@ -1642,10 +1642,6 @@
     "message": "사용자 지정 섹션",
     "description": "홈페이지 사용자 지정 섹션 설정 제목입니다."
   },
-  "homeSections.tip": {
-    "message": "관리되는 이미지·텍스트, 행동 버튼, 기능 바로가기 또는 서식 있는 텍스트 섹션을 추가하세요.",
-    "description": "사용자 지정 섹션 설정 안내입니다."
-  },
   "homeSections.add": {
     "message": "섹션 추가",
     "description": "홈페이지 섹션 추가 버튼입니다."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "아직 사용자 지정 섹션이 없습니다",
     "description": "사용자 지정 섹션의 빈 상태입니다."
-  },
-  "homeSections.kind.image_text": {
-    "message": "이미지·텍스트 섹션",
-    "description": "이미지·텍스트 섹션 유형 이름입니다."
-  },
-  "homeSections.kind.cta": {
-    "message": "행동 버튼",
-    "description": "행동 버튼 섹션 유형 이름입니다."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "기능 바로가기",
-    "description": "기능 바로가기 섹션 유형 이름입니다."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "서식 있는 텍스트",
-    "description": "Markdown 서식 있는 텍스트 섹션 유형 이름입니다."
   },
   "homeSections.edit": {
     "message": "사용자 지정 섹션 편집",
@@ -1686,29 +1666,9 @@
     "message": "제목",
     "description": "섹션 제목 필드입니다."
   },
-  "homeSections.field.subtitle": {
-    "message": "부제목",
-    "description": "섹션 부제목 필드입니다."
-  },
   "homeSections.field.body": {
     "message": "본문",
     "description": "섹션 본문 필드입니다."
-  },
-  "homeSections.field.image": {
-    "message": "이미지",
-    "description": "섹션 이미지 필드입니다."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "버튼 텍스트",
-    "description": "섹션 버튼 텍스트 필드입니다."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "버튼 링크",
-    "description": "섹션 버튼 링크 필드입니다."
-  },
-  "homeSections.field.capabilities": {
-    "message": "표시할 기능",
-    "description": "기능 바로가기 선택 필드입니다."
   },
   "homeSections.field.startAt": {
     "message": "시작 시간",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "즉시 표시",
     "description": "섹션 공개 여부 필드입니다."
-  },
-  "homeSections.uploadImage": {
-    "message": "이미지 업로드",
-    "description": "섹션 이미지 업로드 버튼입니다."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown을 지원하며 HTML, 스크립트 또는 삽입 콘텐츠는 허용되지 않습니다.",
-    "description": "서식 있는 텍스트의 보안 안내입니다."
-  },
-  "homeSections.urlTip": {
-    "message": "사이트 내 /path 또는 HTTPS 링크만 지원됩니다",
-    "description": "안전한 링크 형식 안내입니다."
   },
   "homeSections.scheduled": {
     "message": "적용 예정",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "자동 번역을 시작하기 전에 먼저 섹션을 저장하세요.",
     "description": "저장되지 않은 섹션에 대한 번역 안내입니다."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Markdown 블록 유형 이름."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "HTML 블록 유형 이름."
+  },
+  "homeSections.htmlTip": {
+    "message": "HTML은 사이트 관리자가 직접 작성하며 원본 그대로 표시됩니다.",
+    "description": "HTML 형식 안내."
+  },
+  "homeSections.tip": {
+    "message": "Markdown 또는 사용자 지정 HTML 블록을 추가하세요.",
+    "description": "사용자 지정 블록 설정 안내."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown을 지원하며, 원시 HTML, 스크립트 또는 삽입 콘텐츠는 허용되지 않습니다.",
+    "description": "Markdown 형식 안내."
   }
 }

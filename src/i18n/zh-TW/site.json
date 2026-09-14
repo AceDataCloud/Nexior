@@ -1642,10 +1642,6 @@
     "message": "自訂區塊",
     "description": "首頁自訂區塊設定標題。"
   },
-  "homeSections.tip": {
-    "message": "新增可管理的圖文、行動按鈕、功能入口或富文字區塊。",
-    "description": "自訂區塊設定說明。"
-  },
   "homeSections.add": {
     "message": "新增區塊",
     "description": "新增首頁區塊按鈕。"
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "尚未建立自訂區塊",
     "description": "自訂區塊空白狀態。"
-  },
-  "homeSections.kind.image_text": {
-    "message": "圖文區塊",
-    "description": "圖文區塊類型名稱。"
-  },
-  "homeSections.kind.cta": {
-    "message": "行動按鈕",
-    "description": "行動按鈕區塊類型名稱。"
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "功能入口",
-    "description": "功能入口區塊類型名稱。"
-  },
-  "homeSections.kind.rich_text": {
-    "message": "富文字",
-    "description": "Markdown 富文字區塊類型名稱。"
   },
   "homeSections.edit": {
     "message": "編輯自訂區塊",
@@ -1686,29 +1666,9 @@
     "message": "標題",
     "description": "區塊標題欄位。"
   },
-  "homeSections.field.subtitle": {
-    "message": "副標題",
-    "description": "區塊副標題欄位。"
-  },
   "homeSections.field.body": {
     "message": "內文",
     "description": "區塊內文欄位。"
-  },
-  "homeSections.field.image": {
-    "message": "圖片",
-    "description": "區塊圖片欄位。"
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "按鈕文字",
-    "description": "區塊按鈕文字欄位。"
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "按鈕連結",
-    "description": "區塊按鈕連結欄位。"
-  },
-  "homeSections.field.capabilities": {
-    "message": "顯示功能",
-    "description": "功能入口選擇欄位。"
   },
   "homeSections.field.startAt": {
     "message": "開始時間",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "立即顯示",
     "description": "區塊可見性欄位。"
-  },
-  "homeSections.uploadImage": {
-    "message": "上傳圖片",
-    "description": "上傳區塊圖片按鈕。"
-  },
-  "homeSections.markdownTip": {
-    "message": "支援 Markdown，不允許 HTML、指令碼或嵌入內容。",
-    "description": "富文字安全提示。"
-  },
-  "homeSections.urlTip": {
-    "message": "僅支援站內 /path 或 HTTPS 連結",
-    "description": "安全連結格式提示。"
   },
   "homeSections.scheduled": {
     "message": "待生效",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "請先儲存區塊，再開啟自動翻譯。",
     "description": "未儲存區塊的翻譯提示。"
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Markdown 區塊類型名稱。"
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "HTML 區塊類型名稱。"
+  },
+  "homeSections.htmlTip": {
+    "message": "HTML 將由站長直接編寫並原樣顯示。",
+    "description": "HTML 格式提示。"
+  },
+  "homeSections.tip": {
+    "message": "新增 Markdown 或自訂 HTML 區塊。",
+    "description": "自訂區塊設定說明。"
+  },
+  "homeSections.markdownTip": {
+    "message": "支援 Markdown，不允許原始 HTML、指令碼或嵌入內容。",
+    "description": "Markdown 格式提示。"
   }
 }

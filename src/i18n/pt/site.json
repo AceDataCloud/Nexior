@@ -1642,10 +1642,6 @@
     "message": "Seções personalizadas",
     "description": "Título das configurações de seções personalizadas da página inicial."
   },
-  "homeSections.tip": {
-    "message": "Adicione seções controladas de imagem e texto, botões de ação, acessos a funcionalidades ou texto rico.",
-    "description": "Descrição das configurações de seções personalizadas."
-  },
   "homeSections.add": {
     "message": "Adicionar seção",
     "description": "Botão para adicionar uma seção à página inicial."
@@ -1653,22 +1649,6 @@
   "homeSections.empty": {
     "message": "Ainda não há seções personalizadas",
     "description": "Estado vazio das seções personalizadas."
-  },
-  "homeSections.kind.image_text": {
-    "message": "Seção de imagem e texto",
-    "description": "Nome do tipo de seção de imagem e texto."
-  },
-  "homeSections.kind.cta": {
-    "message": "Botão de ação",
-    "description": "Nome do tipo de seção de botão de ação."
-  },
-  "homeSections.kind.capability_grid": {
-    "message": "Acessos a funcionalidades",
-    "description": "Nome do tipo de seção de acessos a funcionalidades."
-  },
-  "homeSections.kind.rich_text": {
-    "message": "Texto rico",
-    "description": "Nome do tipo de seção de texto rico em Markdown."
   },
   "homeSections.edit": {
     "message": "Editar seção personalizada",
@@ -1686,29 +1666,9 @@
     "message": "Título",
     "description": "Campo de título da seção."
   },
-  "homeSections.field.subtitle": {
-    "message": "Subtítulo",
-    "description": "Campo de subtítulo da seção."
-  },
   "homeSections.field.body": {
     "message": "Texto principal",
     "description": "Campo de texto principal da seção."
-  },
-  "homeSections.field.image": {
-    "message": "Imagem",
-    "description": "Campo de imagem da seção."
-  },
-  "homeSections.field.buttonLabel": {
-    "message": "Texto do botão",
-    "description": "Campo de texto do botão da seção."
-  },
-  "homeSections.field.buttonUrl": {
-    "message": "Link do botão",
-    "description": "Campo de link do botão da seção."
-  },
-  "homeSections.field.capabilities": {
-    "message": "Funcionalidades exibidas",
-    "description": "Campo de seleção de acessos a funcionalidades."
   },
   "homeSections.field.startAt": {
     "message": "Data de início",
@@ -1725,18 +1685,6 @@
   "homeSections.field.visible": {
     "message": "Exibir imediatamente",
     "description": "Campo de visibilidade da seção."
-  },
-  "homeSections.uploadImage": {
-    "message": "Carregar imagem",
-    "description": "Botão para carregar a imagem da seção."
-  },
-  "homeSections.markdownTip": {
-    "message": "Compatível com Markdown; HTML, scripts e conteúdo incorporado não são permitidos.",
-    "description": "Aviso de segurança sobre texto rico."
-  },
-  "homeSections.urlTip": {
-    "message": "Compatível apenas com /path interno ou links HTTPS",
-    "description": "Aviso sobre o formato seguro dos links."
   },
   "homeSections.scheduled": {
     "message": "Programada",
@@ -1789,5 +1737,25 @@
   "homeSections.saveBeforeTranslate": {
     "message": "Salve a seção antes de ativar a tradução automática.",
     "description": "Aviso de seção não salva para a tradução."
+  },
+  "homeSections.kind.markdown": {
+    "message": "Markdown",
+    "description": "Nome do tipo de bloco Markdown."
+  },
+  "homeSections.kind.html": {
+    "message": "HTML",
+    "description": "Nome do tipo de bloco HTML."
+  },
+  "homeSections.htmlTip": {
+    "message": "O HTML será escrito diretamente pelo administrador do site e exibido exatamente como fornecido.",
+    "description": "Dica sobre o formato HTML."
+  },
+  "homeSections.tip": {
+    "message": "Adicione um bloco Markdown ou HTML personalizado.",
+    "description": "Instrução para configurar um bloco personalizado."
+  },
+  "homeSections.markdownTip": {
+    "message": "Compatível com Markdown; HTML bruto, scripts e conteúdo incorporado não são permitidos.",
+    "description": "Dica sobre o formato Markdown."
   }
 }
