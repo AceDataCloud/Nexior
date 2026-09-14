@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 13 Sep 2026 20:21:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 14 Sep 2026 20:22:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.1
+
+Mon, 14 Sep 2026 20:22:27 GMT
+
+### Patches
+
+- Show actionable validation messages for nested API errors in site settings. (dev@acedata.cloud)
+- Simplify custom homepage sections to Markdown and administrator-authored HTML. (dev@acedata.cloud)
+- Remove migration-only Site delivery status from the canonical settings UI. (dev@acedata.cloud)
+- Move Site delivery settings to the unified Site API and gate custom GitHub OAuth credentials behind a toggle. (dev@acedata.cloud)
+- Fix Site GitHub OAuth credential saving and preserve custom mode after refresh. (dev@acedata.cloud)
 
 ## 3.371.0
 
