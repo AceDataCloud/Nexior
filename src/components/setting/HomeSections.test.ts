@@ -13,6 +13,13 @@ vi.mock('@/operators', () => ({
   }
 }));
 
+const messages = vi.hoisted(() => ({ success: vi.fn(), error: vi.fn() }));
+
+vi.mock('element-plus', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('element-plus')>();
+  return { ...actual, ElMessage: messages };
+});
+
 const mountSetting = () =>
   shallowMount(HomeSections, {
     props: { site: { id: 'site-1' } },
@@ -42,6 +49,29 @@ describe('setting/HomeSections', () => {
       button_url: null,
       capability_keys: ['chatgpt']
     });
+  });
+
+  it('shows only actionable text from nested validation errors', async () => {
+    const traceId = '53c5415d-c842-4fda-859f-9ec7ab475fd7';
+    vi.mocked(siteHomeSectionOperator.create).mockRejectedValue({
+      response: {
+        data: {
+          detail: { detail: 'rich_text body must not contain raw HTML' },
+          code: 'invalid',
+          trace_id: traceId
+        }
+      }
+    });
+    const wrapper = mountSetting();
+    Object.assign((wrapper.vm as any).form, { kind: 'rich_text', body: '<p>hello</p>' });
+
+    await (wrapper.vm as any).submit();
+
+    expect(messages.error).toHaveBeenCalledWith('rich_text body must not contain raw HTML');
+    const rendered = String(messages.error.mock.calls[0]?.[0]);
+    expect(rendered).not.toContain('[object Object]');
+    expect(rendered).not.toContain('invalid');
+    expect(rendered).not.toContain(traceId);
   });
 
   it('creates a section for the current site', async () => {

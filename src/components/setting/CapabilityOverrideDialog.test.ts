@@ -131,4 +131,13 @@ describe('CapabilityOverrideDialog', () => {
     expect(wrapper.emitted('saved')).toHaveLength(1);
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([false]);
   });
+
+  it('extracts nested API errors without envelope metadata', () => {
+    const wrapper = mountDialog();
+    const message = (wrapper.vm as any).extractError({
+      response: { data: { detail: { detail: 'Actionable message' }, code: 'invalid', trace_id: 'request-id' } }
+    });
+
+    expect(message).toBe('Actionable message');
+  });
 });

@@ -207,6 +207,7 @@ import ImageCropper from '@/components/common/ImageCropper.vue';
 import type { ISite, ISiteHomeSection, SiteHomeSectionKind } from '@/models';
 import { siteHomeSectionOperator } from '@/operators';
 import { HOME_CAPABILITY_DEFINITIONS } from '@/pages/home/data';
+import { extractApiErrorMessage } from '@/utils/apiError';
 
 interface SectionForm {
   kind: SiteHomeSectionKind;
@@ -382,10 +383,8 @@ export default defineComponent({
         await this.fetchRows();
         this.openEdit(this.rows.find((row) => row.id === response.data.id) || response.data);
         ElMessage.success(this.$t('common.message.saved'));
-      } catch (error: any) {
-        const data = error?.response?.data;
-        const detail = data && typeof data === 'object' ? Object.values(data).flat().join('; ') : '';
-        ElMessage.error(detail || this.$t('site.homeSections.saveFailed'));
+      } catch (error: unknown) {
+        ElMessage.error(extractApiErrorMessage(error) || this.$t('site.homeSections.saveFailed'));
       } finally {
         this.submitting = false;
       }
