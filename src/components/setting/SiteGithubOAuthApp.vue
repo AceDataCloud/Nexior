@@ -11,6 +11,11 @@
         type="info"
         :closable="false"
       />
+      <el-switch
+        :model-value="customVisible"
+        :aria-label="$t('site.field.authGithubOAuthApp')"
+        @change="toggleCustomApp"
+      />
       <el-alert
         :title="
           usingPlatformDefault
@@ -20,7 +25,7 @@
         :type="usingPlatformDefault ? 'info' : 'success'"
         :closable="false"
       />
-      <el-form label-position="top" class="github-oauth__form">
+      <el-form v-if="customVisible" label-position="top" class="github-oauth__form">
         <el-form-item :label="$t('site.field.authGithubOAuthClientId')">
           <el-input v-model.trim="draft.clientId" autocomplete="off" />
         </el-form-item>
@@ -44,12 +49,9 @@
           <span class="github-oauth__hint">{{ $t('site.message.authGithubOAuthCallbackTip') }}</span>
         </el-form-item>
       </el-form>
-      <div class="github-oauth__actions">
+      <div v-if="customVisible" class="github-oauth__actions">
         <el-button type="primary" :disabled="!canSave" @click="save">
           {{ $t('common.button.save') }}
-        </el-button>
-        <el-button v-if="!usingPlatformDefault" type="danger" plain @click="reset">
-          {{ $t('site.button.authGithubOAuthRestoreDefault') }}
         </el-button>
       </div>
     </div>
@@ -58,7 +60,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElMessageBox } from 'element-plus';
+import { ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElMessageBox, ElSwitch } from 'element-plus';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { getBaseUrlAuth } from '@/utils';
 
@@ -71,7 +73,7 @@ export interface GithubCredentialsDraft {
 
 export default defineComponent({
   name: 'SiteGithubOAuthApp',
-  components: { CopyToClipboard, ElAlert, ElButton, ElForm, ElFormItem, ElInput },
+  components: { CopyToClipboard, ElAlert, ElButton, ElForm, ElFormItem, ElInput, ElSwitch },
   props: {
     credentials: { type: Object, default: () => ({ mode: 'platform' }) },
     providerEnabled: { type: Boolean, required: true }
@@ -82,7 +84,8 @@ export default defineComponent({
     return {
       draft: { clientId: credentials.config?.client_id || '', clientSecret: '' },
       callbackUrl: CALLBACK_URL,
-      mode: credentials.mode === 'custom' ? 'custom' : 'platform'
+      mode: credentials.mode === 'custom' ? 'custom' : 'platform',
+      configuring: false
     };
   },
   computed: {
@@ -91,6 +94,9 @@ export default defineComponent({
     },
     usingPlatformDefault(): boolean {
       return this.mode === 'platform';
+    },
+    customVisible(): boolean {
+      return this.mode === 'custom' || this.configuring;
     },
     canSave(): boolean {
       return Boolean(this.draft.clientId && (this.draft.clientSecret || this.configured));
@@ -107,7 +113,16 @@ export default defineComponent({
       } as GithubCredentialsDraft);
       this.draft.clientSecret = '';
     },
-    async reset(): Promise<void> {
+    async toggleCustomApp(value: string | number | boolean): Promise<void> {
+      if (value === true) {
+        this.configuring = true;
+        return;
+      }
+      if (this.mode === 'platform') {
+        this.configuring = false;
+        this.draft = { clientId: '', clientSecret: '' };
+        return;
+      }
       try {
         await ElMessageBox.confirm(
           this.$t('site.message.authGithubOAuthDeleteConfirm'),
@@ -118,6 +133,7 @@ export default defineComponent({
         return;
       }
       this.mode = 'platform';
+      this.configuring = false;
       this.draft = { clientId: '', clientSecret: '' };
       this.$emit('change', { mode: 'platform' } as GithubCredentialsDraft);
     }
