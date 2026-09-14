@@ -8,6 +8,8 @@ test('Site auth saves one PATCH with If-Match', () => {
   assert.match(auth, /siteOperator\.get\(siteId\)/);
   assert.match(auth, /this\.configurationRevision/);
   assert.match(auth, /siteOperator\.update/);
+  assert.match(auth, /this\.updateQueue\.then\(operation, operation\)/);
+  assert.match(auth, /data\.configuration_revision/);
   assert.doesNotMatch(auth, /toWritableSitePayload/);
   assert.match(operator, /httpClient\.patch/);
   assert.match(operator, /If-Match/);

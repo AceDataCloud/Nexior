@@ -98,7 +98,7 @@ HTTP 204
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 import {
   ElAlert,
   ElButton,
@@ -112,7 +112,6 @@ import {
 } from 'element-plus';
 import type { ISiteAuthDelivery, ISiteAuthPhoneWebhook } from '@/models/site';
 import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
-import { siteOperator } from '@/operators/site';
 
 const emptyWebhook = (): ISiteAuthPhoneWebhook => ({ url: '', secret: '' });
 
@@ -121,11 +120,16 @@ export default defineComponent({
   components: { ElAlert, ElButton, ElDialog, ElForm, ElFormItem, ElInput, ElSwitch },
   props: {
     siteId: { type: String, required: true },
-    providerEnabled: { type: Boolean, required: true }
+    providerEnabled: { type: Boolean, required: true },
+    deliveryConfig: { type: Object as PropType<ISiteAuthDelivery>, required: true },
+    updateDelivery: {
+      type: Function as PropType<(delivery: ISiteAuthDelivery) => Promise<ISiteAuthDelivery>>,
+      required: true
+    }
   },
   data() {
     return {
-      delivery: { type: 'platform' } as ISiteAuthDelivery,
+      delivery: JSON.parse(JSON.stringify(this.deliveryConfig)) as ISiteAuthDelivery,
       docsVisible: false,
       draft: emptyWebhook(),
       savedSnapshot: '',
@@ -138,8 +142,7 @@ export default defineComponent({
       saving: false,
       testing: false,
       changing: false,
-      deleting: false,
-      configurationRevision: undefined as number | undefined
+      deleting: false
     };
   },
   computed: {
@@ -187,13 +190,16 @@ export default defineComponent({
       return Boolean(this.dirty && this.draft.url && (this.draft.secret || this.webhook?.secret_configured));
     }
   },
-  async mounted() {
-    await this.load();
+  mounted() {
+    this.apply(this.deliveryConfig);
   },
   methods: {
     safeDraft(): ISiteAuthPhoneWebhook {
       const value = { ...this.draft };
       if (!value.secret) delete value.secret;
+      delete value.secret_configured;
+      delete value.verified;
+      delete value.verified_at;
       delete value.test_proof;
       return value;
     },
@@ -204,24 +210,23 @@ export default defineComponent({
       this.testProof = '';
       this.resultMessage = '';
     },
-    async load() {
-      this.loading = true;
-      try {
-        const { data } = await siteOperator.get(this.siteId);
-        this.configurationRevision = data.configuration_revision;
-        this.apply(data.auth?.providers?.phone?.delivery || { type: 'platform' });
-      } finally {
-        this.loading = false;
+    writableDelivery(delivery: ISiteAuthDelivery, testProof?: string): ISiteAuthDelivery {
+      const value: ISiteAuthDelivery = { type: delivery.type };
+      if (delivery.webhook === null) value.webhook = null;
+      if (delivery.webhook) {
+        value.webhook = { ...delivery.webhook };
+        if (!value.webhook.secret) delete value.webhook.secret;
+        delete value.webhook.secret_configured;
+        delete value.webhook.verified;
+        delete value.webhook.verified_at;
+        delete value.webhook.test_proof;
+        if (testProof) value.webhook.test_proof = testProof;
       }
+      return value;
     },
-    async update(delivery: ISiteAuthDelivery) {
-      const { data } = await siteOperator.update(
-        this.siteId,
-        { auth: { providers: { phone: { delivery } } } },
-        this.configurationRevision
-      );
-      this.configurationRevision = data.configuration_revision;
-      this.apply(data.auth?.providers?.phone?.delivery || { type: 'platform' });
+    async update(delivery: ISiteAuthDelivery, testProof?: string) {
+      const saved = await this.updateDelivery(this.writableDelivery(delivery, testProof));
+      this.apply(saved);
     },
     async saveDraft() {
       if (!this.canSave) return;
@@ -251,10 +256,13 @@ export default defineComponent({
       if (!webhook) return;
       this.changing = true;
       try {
-        await this.update({
-          type: 'webhook',
-          webhook: { ...webhook, test_proof: this.testProof || undefined }
-        });
+        await this.update(
+          {
+            type: 'webhook',
+            webhook
+          },
+          this.testProof || undefined
+        );
         this.configuring = false;
         ElMessage.success(this.$t('site.message.authDeliveryActivated'));
       } catch {

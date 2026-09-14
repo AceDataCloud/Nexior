@@ -159,6 +159,103 @@ describe('Auth settings', () => {
 
     expect((wrapper.vm as any).githubCredentialsDraft).toEqual(staged);
     expect((wrapper.vm as any).dirty).toBe(true);
-    expect(messages.error).toHaveBeenCalledWith('site.error.save');
+    expect(messages.error).toHaveBeenCalledWith('site.error.authGithubOAuthSave');
+  });
+
+  it('serializes delivery updates and uses the revision returned by the previous save', async () => {
+    const { wrapper } = mountComponent();
+    await flushPromises();
+    let resolveEmail: (value: unknown) => void = () => undefined;
+    siteApi.update.mockReturnValueOnce(new Promise((resolve) => (resolveEmail = resolve))).mockResolvedValueOnce(
+      response(
+        {
+          ...managedAuth,
+          providers: {
+            ...managedAuth.providers,
+            phone: { enabled: true, delivery: { type: 'platform', webhook: null } }
+          }
+        },
+        9
+      )
+    );
+
+    const emailSave = (wrapper.vm as any).updateEmailDelivery({ type: 'platform', smtp: null });
+    const phoneSave = (wrapper.vm as any).updatePhoneDelivery({ type: 'platform', webhook: null });
+    await Promise.resolve();
+
+    expect(siteApi.update).toHaveBeenCalledTimes(1);
+    expect(siteApi.update.mock.calls[0][2]).toBe(7);
+
+    resolveEmail(
+      response(
+        {
+          ...managedAuth,
+          providers: {
+            ...managedAuth.providers,
+            email: { enabled: true, delivery: { type: 'platform', smtp: null } }
+          }
+        },
+        8
+      )
+    );
+    await emailSave;
+    await phoneSave;
+
+    expect(siteApi.update).toHaveBeenCalledTimes(2);
+    expect(siteApi.update.mock.calls[1][2]).toBe(8);
+    expect((wrapper.vm as any).configurationRevision).toBe(9);
+  });
+
+  it('continues the update queue after a failed save without advancing its revision', async () => {
+    const { wrapper } = mountComponent();
+    await flushPromises();
+    siteApi.update.mockRejectedValueOnce({ response: { status: 409 } }).mockResolvedValueOnce(
+      response(
+        {
+          ...managedAuth,
+          providers: {
+            ...managedAuth.providers,
+            phone: { enabled: true, delivery: { type: 'platform', webhook: null } }
+          }
+        },
+        8
+      )
+    );
+
+    const failed = (wrapper.vm as any).updateEmailDelivery({ type: 'platform', smtp: null });
+    const retry = (wrapper.vm as any).updatePhoneDelivery({ type: 'platform', webhook: null });
+    await expect(failed).rejects.toMatchObject({ response: { status: 409 } });
+    await retry;
+
+    expect(siteApi.update).toHaveBeenCalledTimes(2);
+    expect(siteApi.update.mock.calls[0][2]).toBe(7);
+    expect(siteApi.update.mock.calls[1][2]).toBe(7);
+    expect((wrapper.vm as any).configurationRevision).toBe(8);
+  });
+
+  it('uses the revision advanced by delivery changes for the next auth save', async () => {
+    const { wrapper } = mountComponent();
+    await flushPromises();
+    siteApi.update
+      .mockResolvedValueOnce(
+        response(
+          {
+            ...managedAuth,
+            providers: {
+              ...managedAuth.providers,
+              email: { enabled: true, delivery: { type: 'platform', smtp: null } }
+            }
+          },
+          8
+        )
+      )
+      .mockResolvedValueOnce(response({ ...managedAuth, login_mode: 'redirect' }, 9));
+
+    await (wrapper.vm as any).updateEmailDelivery({ type: 'platform', smtp: null });
+    (wrapper.vm as any).onLoginModeChange('redirect');
+    await (wrapper.vm as any).save();
+
+    expect(siteApi.update.mock.calls[1][2]).toBe(8);
+    expect(messages.success).toHaveBeenCalledWith('common.message.saved');
   });
 });

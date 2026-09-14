@@ -88,4 +88,39 @@ describe('SiteGithubOAuthApp', () => {
     expect((wrapper.vm as any).mode).toBe('custom');
     expect((wrapper.vm as any).draft.clientId).toBe('saved-client');
   });
+
+  it('preserves an unsaved draft when a sibling save returns unchanged credentials', async () => {
+    const wrapper = mountComponent(custom);
+    (wrapper.vm as any).draft = { clientId: 'edited-client', clientSecret: 'unsaved-secret' };
+
+    await wrapper.setProps({ credentials: { ...custom } });
+
+    expect((wrapper.vm as any).draft).toEqual({ clientId: 'edited-client', clientSecret: 'unsaved-secret' });
+  });
+
+  it('clears the secret only after the server confirms the staged credentials', async () => {
+    const wrapper = mountComponent(custom);
+    (wrapper.vm as any).draft = { clientId: 'edited-client', clientSecret: 'replacement-secret' };
+    (wrapper.vm as any).save();
+
+    await wrapper.setProps({
+      credentials: {
+        ...custom,
+        config: { client_id: 'edited-client' }
+      }
+    });
+
+    expect((wrapper.vm as any).draft).toEqual({ clientId: 'edited-client', clientSecret: '' });
+    expect((wrapper.vm as any).pendingSave).toBeUndefined();
+  });
+
+  it('preserves a pending platform switch across an older sibling response', async () => {
+    const wrapper = mountComponent(custom);
+    await (wrapper.vm as any).toggleCustomApp(false);
+
+    await wrapper.setProps({ credentials: { ...custom } });
+
+    expect((wrapper.vm as any).pendingSave).toEqual({ mode: 'platform', clientId: '' });
+    expect((wrapper.vm as any).mode).toBe('custom');
+  });
 });

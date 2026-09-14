@@ -144,7 +144,24 @@ def find_stale(
     return sorted(stale)
 
 
+def validate_translator_contract() -> list[str]:
+    """Keep JSON-mode requests compatible with strict API gateways."""
+    source = (REPO_ROOT / "scripts" / "translate_i18n.py").read_text(encoding="utf-8")
+    required = (
+        '"response_format": {"type": "json_object"}',
+        "Return a strict json object",
+        'user_prompt = "Return a json object for these entries:\\n"',
+    )
+    return [fragment for fragment in required if fragment not in source]
+
+
 def main() -> int:
+    contract_errors = validate_translator_contract()
+    if contract_errors:
+        for fragment in contract_errors:
+            print(f"::error file=scripts/translate_i18n.py::missing translator contract fragment: {fragment}")
+        return 1
+
     base_dir = I18N_ROOT / BASE_LOCALE
     if not base_dir.is_dir():
         print(f"::error::base locale dir missing: {base_dir}", file=sys.stderr)

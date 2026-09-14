@@ -17,6 +17,10 @@ const sourceModules = import.meta.glob('../{components,pages}/**/*.{vue,ts}', {
 const localePaths = Object.keys(localeModules);
 const monitoredSourceSuffixes = [
   '/components/setting/Analytics.vue',
+  '/components/setting/Auth.vue',
+  '/components/setting/SiteGithubOAuthApp.vue',
+  '/components/setting/SiteEmailTransport.vue',
+  '/components/setting/SitePhoneDelivery.vue',
   '/components/setting/SiteServices.vue',
   '/components/setting/Byok.vue',
   '/components/setting/byok/Dialog.vue',
