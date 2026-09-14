@@ -21,7 +21,7 @@
             <span class="auth-providers-row__label">{{ option.label }}</span>
             <el-switch
               :model-value="isProviderEnabled(option.value)"
-              :disabled="isOnlyEnabledProvider(option.value)"
+              :disabled="!managementLoaded || isOnlyEnabledProvider(option.value)"
               @change="(checked: boolean | string | number) => onProviderToggle(option.value, Boolean(checked))"
             />
           </li>
@@ -46,6 +46,7 @@
       <div class="settings-content">
         <el-select
           :model-value="defaultProvider"
+          :disabled="!managementLoaded"
           class="auth-default-provider-select"
           :placeholder="$t('site.placeholder.authDefaultProvider')"
           @change="onDefaultProviderChange"
@@ -72,7 +73,12 @@
         <p class="settings-title">{{ $t('common.settings.loginMode') }}</p>
       </div>
       <div class="settings-content">
-        <el-select :model-value="loginMode" class="auth-default-provider-select" @change="onLoginModeChange">
+        <el-select
+          :model-value="loginMode"
+          :disabled="!managementLoaded"
+          class="auth-default-provider-select"
+          @change="onLoginModeChange"
+        >
           <el-option :value="'redirect'" :label="$t('common.loginMode.redirect')" />
           <el-option :value="'iframe'" :label="$t('common.loginMode.iframe')" />
         </el-select>
@@ -80,15 +86,16 @@
     </section>
 
     <site-github-o-auth-app
-      v-if="site?.id"
+      v-if="managementLoaded"
       :credentials="githubCredentials"
       :provider-enabled="isProviderEnabled('github')"
-      @change="onGithubCredentialsChange"
+      :saving="saving"
+      @change="saveGithubCredentials"
     />
     <site-email-transport v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('email')" />
     <site-phone-delivery v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('phone')" />
     <div class="auth-save-actions">
-      <el-button type="primary" :loading="saving" :disabled="!dirty" @click="save">
+      <el-button type="primary" :loading="saving" :disabled="!managementLoaded || !dirty" @click="save">
         {{ $t('common.button.save') }}
       </el-button>
     </div>
@@ -135,6 +142,9 @@ export default defineComponent({
   data() {
     return {
       authDraft: undefined as ISiteAuth | undefined,
+      savedAuthSnapshot: '',
+      configurationRevision: undefined as number | undefined,
+      managementSiteId: undefined as string | undefined,
       githubCredentialsDraft: undefined as GithubCredentialsDraft | undefined,
       saving: false
     };
@@ -144,15 +154,17 @@ export default defineComponent({
       return this.$store.getters.site || {};
     },
     auth(): ISiteAuth {
-      return this.authDraft || (this.site?.auth as ISiteAuth) || {};
+      return this.authDraft || {};
     },
     githubCredentials(): ISiteGithubCredentials {
-      return this.site?.auth?.providers?.github?.credentials || { mode: 'platform' };
+      return this.auth.providers?.github?.credentials || { mode: 'platform' };
+    },
+    managementLoaded(): boolean {
+      return Boolean(this.site?.id && this.managementSiteId === this.site.id);
     },
     dirty(): boolean {
       return (
-        JSON.stringify(this.authDraft || {}) !== JSON.stringify(this.site?.auth || {}) ||
-        this.githubCredentialsDraft !== undefined
+        JSON.stringify(this.authDraft || {}) !== this.savedAuthSnapshot || this.githubCredentialsDraft !== undefined
       );
     },
     providers(): Record<string, ISiteAuthProvider> {
@@ -191,15 +203,49 @@ export default defineComponent({
     }
   },
   watch: {
-    'site.auth': {
+    'site.id': {
       immediate: true,
-      deep: true,
-      handler(value: ISiteAuth) {
-        if (!this.saving) this.authDraft = JSON.parse(JSON.stringify(value || {}));
+      handler(siteId?: string) {
+        this.managementSiteId = undefined;
+        this.authDraft = undefined;
+        this.savedAuthSnapshot = '';
+        this.configurationRevision = undefined;
+        this.githubCredentialsDraft = undefined;
+        if (siteId) void this.load(siteId);
       }
     }
   },
   methods: {
+    apply(siteId: string, auth: ISiteAuth, configurationRevision?: number): void {
+      this.managementSiteId = siteId;
+      this.authDraft = JSON.parse(JSON.stringify(auth || {}));
+      this.savedAuthSnapshot = JSON.stringify(this.authDraft);
+      this.configurationRevision = configurationRevision;
+      this.githubCredentialsDraft = undefined;
+    },
+    async load(siteId: string): Promise<void> {
+      try {
+        const { data } = await siteOperator.get(siteId);
+        if (this.site?.id === siteId) this.apply(siteId, data.auth || {}, data.configuration_revision);
+      } catch {
+        ElMessage.error(this.$t('site.error.save'));
+      }
+    },
+    writableAuth(): ISiteAuth {
+      const auth = JSON.parse(JSON.stringify(this.authDraft || {})) as ISiteAuth;
+      for (const provider of Object.values(auth.providers || {})) {
+        delete provider.credentials;
+        delete provider.delivery;
+      }
+      if (this.githubCredentialsDraft) {
+        auth.providers = auth.providers || {};
+        auth.providers.github = {
+          ...(auth.providers.github || {}),
+          credentials: this.githubCredentialsDraft
+        };
+      }
+      return auth;
+    },
     isProviderEnabled(id: ProviderId): boolean {
       return this.providers?.[id]?.enabled === true;
     },
@@ -274,24 +320,21 @@ export default defineComponent({
     stageAuth(nextAuth: ISiteAuth): void {
       this.authDraft = nextAuth;
     },
-    onGithubCredentialsChange(credentials: GithubCredentialsDraft): void {
+    async saveGithubCredentials(credentials: GithubCredentialsDraft): Promise<void> {
       this.githubCredentialsDraft = credentials;
+      await this.save();
     },
     async save(): Promise<void> {
-      if (!this.site?.id || !this.dirty || this.saving) return;
+      if (!this.managementLoaded || !this.dirty || this.saving) return;
       this.saving = true;
       try {
-        const auth = JSON.parse(JSON.stringify(this.authDraft || this.site.auth || {}));
-        if (this.githubCredentialsDraft) {
-          auth.providers = auth.providers || {};
-          auth.providers.github = {
-            ...(auth.providers.github || {}),
-            credentials: this.githubCredentialsDraft
-          };
-        }
-        await siteOperator.update(this.site.id, { auth }, this.site.configuration_revision);
+        const { data } = await siteOperator.update(
+          this.site.id,
+          { auth: this.writableAuth() },
+          this.configurationRevision
+        );
+        this.apply(this.site.id, data.auth || {}, data.configuration_revision);
         await this.$store.dispatch('getSite');
-        this.githubCredentialsDraft = undefined;
         ElMessage.success(this.$t('site.message.saved'));
       } catch {
         ElMessage.error(this.$t('site.error.save'));
