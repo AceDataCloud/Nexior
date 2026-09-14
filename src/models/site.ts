@@ -68,7 +68,6 @@ export interface ISiteDistribution {
 // JSONField (see ``PlatformBackend/app/models/site.py``).
 export type SiteEmailTransportSecurity = 'starttls' | 'implicit_tls';
 export type SiteAuthDeliveryType = 'platform' | 'smtp' | 'webhook';
-export type SiteAuthVerificationSource = 'saved_config_test';
 
 export interface ISiteAuthEmailSmtp {
   host: string;
@@ -79,7 +78,6 @@ export interface ISiteAuthEmailSmtp {
   password_configured?: boolean;
   verified?: boolean;
   verified_at?: number | null;
-  verification_source?: SiteAuthVerificationSource | null;
   test_proof?: string;
   from_email: string;
   from_name: string;
@@ -92,7 +90,6 @@ export interface ISiteAuthPhoneWebhook {
   secret_configured?: boolean;
   verified?: boolean;
   verified_at?: number | null;
-  verification_source?: SiteAuthVerificationSource | null;
   test_proof?: string;
 }
 

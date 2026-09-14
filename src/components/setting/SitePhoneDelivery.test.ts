@@ -18,8 +18,7 @@ import SitePhoneDelivery from './SitePhoneDelivery.vue';
 const webhook = {
   url: 'https://sms.example.com/send',
   secret_configured: true,
-  verified: false,
-  verification_source: 'saved_config_test' as const
+  verified: false
 };
 
 const siteResponse = (delivery: unknown, configurationRevision = 7) => ({
