@@ -68,7 +68,7 @@ export interface ISiteDistribution {
 // JSONField (see ``PlatformBackend/app/models/site.py``).
 export type SiteEmailTransportSecurity = 'starttls' | 'implicit_tls';
 export type SiteAuthDeliveryType = 'platform' | 'smtp' | 'webhook';
-export type SiteAuthVerificationSource = 'saved_config_test' | 'legacy_migration';
+export type SiteAuthVerificationSource = 'saved_config_test';
 
 export interface ISiteAuthEmailSmtp {
   host: string;

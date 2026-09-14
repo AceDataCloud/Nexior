@@ -12,3 +12,11 @@ test('delivery config uses Site API while test actions remain', () => {
   assert.match(components, /siteOperator\.update/);
   assert.doesNotMatch(components, /siteAuthDeliveryOperator\.(get|update|remove)/);
 });
+
+test('Site auth delivery exposes only canonical verification state', () => {
+  const models = read('src/models/site.ts');
+  const components =
+    read('src/components/setting/SiteEmailTransport.vue') + read('src/components/setting/SitePhoneDelivery.vue');
+  assert.match(models, /SiteAuthVerificationSource = 'saved_config_test';/);
+  assert.doesNotMatch(components, /verification_source ===/);
+});

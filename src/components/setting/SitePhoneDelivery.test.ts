@@ -19,7 +19,7 @@ const webhook = {
   url: 'https://sms.example.com/send',
   secret_configured: true,
   verified: false,
-  verification_source: 'legacy_migration' as const
+  verification_source: 'saved_config_test' as const
 };
 
 const siteResponse = (delivery: unknown, configurationRevision = 7) => ({

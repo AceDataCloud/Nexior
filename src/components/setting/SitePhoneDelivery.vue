@@ -22,12 +22,6 @@
         <el-button link type="primary" class="phone-delivery__docs-link" @click="docsVisible = true">
           {{ $t('site.field.authSmsWebhookDoc') }}
         </el-button>
-        <el-alert
-          v-if="webhook?.verification_source === 'legacy_migration'"
-          :title="$t('site.message.authDeliveryMigrated')"
-          type="warning"
-          :closable="false"
-        />
         <el-form label-position="top">
           <el-form-item :label="$t('site.placeholder.authSmsWebhookUrl')">
             <el-input v-model="draft.url" />
