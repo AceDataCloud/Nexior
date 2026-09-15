@@ -86,7 +86,9 @@ export default defineComponent({
       draft: { clientId: credentials.config?.client_id || '', clientSecret: '' },
       callbackUrl: CALLBACK_URL,
       mode: credentials.mode === 'custom' ? 'custom' : 'platform',
+      loadedMode: credentials.mode === 'custom' ? 'custom' : 'platform',
       loadedClientId: credentials.config?.client_id || '',
+      pendingSave: undefined as { mode: 'platform' | 'custom'; clientId: string } | undefined,
       configuring: false
     };
   },
@@ -110,22 +112,34 @@ export default defineComponent({
       immediate: true,
       deep: true,
       handler(value: unknown) {
-        this.applyCredentials(value);
+        this.syncCredentials(value);
       }
     }
   },
   methods: {
-    applyCredentials(value: unknown): void {
+    syncCredentials(value: unknown): void {
       const credentials = (value || { mode: 'platform' }) as any;
+      const mode = credentials.mode === 'custom' ? 'custom' : 'platform';
       const clientId = credentials.config?.client_id || '';
-      this.mode = credentials.mode === 'custom' ? 'custom' : 'platform';
+      const pendingSaved = this.pendingSave?.mode === mode && this.pendingSave.clientId === clientId;
+      const hasDraft =
+        Boolean(this.pendingSave) ||
+        this.configuring ||
+        Boolean(this.draft.clientSecret) ||
+        this.mode !== this.loadedMode ||
+        this.draft.clientId !== this.loadedClientId;
+      if (hasDraft && !pendingSaved) return;
+      this.mode = mode;
+      this.loadedMode = mode;
       this.loadedClientId = clientId;
+      this.pendingSave = undefined;
       this.draft = { clientId, clientSecret: '' };
       this.configuring = false;
     },
     save(): void {
       if (!this.canSave) return;
       this.mode = 'custom';
+      this.pendingSave = { mode: 'custom', clientId: this.draft.clientId };
       this.$emit('change', {
         mode: 'custom',
         config: { client_id: this.draft.clientId },
@@ -151,6 +165,7 @@ export default defineComponent({
       } catch {
         return;
       }
+      this.pendingSave = { mode: 'platform', clientId: '' };
       this.$emit('change', { mode: 'platform' } as GithubCredentialsDraft);
     }
   }

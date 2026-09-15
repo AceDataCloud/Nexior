@@ -82,7 +82,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 import {
   ElAlert,
   ElButton,
@@ -97,7 +97,6 @@ import {
 } from 'element-plus';
 import type { ISiteAuthDelivery, ISiteAuthEmailSmtp, SiteEmailTransportSecurity } from '@/models/site';
 import { siteAuthDeliveryOperator } from '@/operators/siteAuthDelivery';
-import { siteOperator } from '@/operators/site';
 
 const emptySmtp = (): ISiteAuthEmailSmtp => ({
   host: '',
@@ -124,11 +123,16 @@ export default defineComponent({
   },
   props: {
     siteId: { type: String, required: true },
-    providerEnabled: { type: Boolean, required: true }
+    providerEnabled: { type: Boolean, required: true },
+    deliveryConfig: { type: Object as PropType<ISiteAuthDelivery>, required: true },
+    updateDelivery: {
+      type: Function as PropType<(delivery: ISiteAuthDelivery) => Promise<ISiteAuthDelivery>>,
+      required: true
+    }
   },
   data() {
     return {
-      delivery: { type: 'platform' } as ISiteAuthDelivery,
+      delivery: JSON.parse(JSON.stringify(this.deliveryConfig)) as ISiteAuthDelivery,
       draft: emptySmtp(),
       savedSnapshot: '',
       configuring: false,
@@ -139,8 +143,7 @@ export default defineComponent({
       saving: false,
       testing: false,
       changing: false,
-      deleting: false,
-      configurationRevision: undefined as number | undefined
+      deleting: false
     };
   },
   computed: {
@@ -169,13 +172,16 @@ export default defineComponent({
       );
     }
   },
-  async mounted() {
-    await this.load();
+  mounted() {
+    this.apply(this.deliveryConfig);
   },
   methods: {
     safeDraft(): ISiteAuthEmailSmtp {
       const value = { ...this.draft };
       if (!value.password) delete value.password;
+      delete value.password_configured;
+      delete value.verified;
+      delete value.verified_at;
       delete value.test_proof;
       return value;
     },
@@ -186,27 +192,26 @@ export default defineComponent({
       this.testProof = '';
       this.resultMessage = '';
     },
-    async load() {
-      this.loading = true;
-      try {
-        const { data } = await siteOperator.get(this.siteId);
-        this.configurationRevision = data.configuration_revision;
-        this.apply(data.auth?.providers?.email?.delivery || { type: 'platform' });
-      } finally {
-        this.loading = false;
-      }
-    },
     onSecurityChange(value: SiteEmailTransportSecurity) {
       this.draft.port = value === 'implicit_tls' ? 465 : 587;
     },
-    async update(delivery: ISiteAuthDelivery) {
-      const { data } = await siteOperator.update(
-        this.siteId,
-        { auth: { providers: { email: { delivery } } } },
-        this.configurationRevision
-      );
-      this.configurationRevision = data.configuration_revision;
-      this.apply(data.auth?.providers?.email?.delivery || { type: 'platform' });
+    writableDelivery(delivery: ISiteAuthDelivery, testProof?: string): ISiteAuthDelivery {
+      const value: ISiteAuthDelivery = { type: delivery.type };
+      if (delivery.smtp === null) value.smtp = null;
+      if (delivery.smtp) {
+        value.smtp = { ...delivery.smtp };
+        if (!value.smtp.password) delete value.smtp.password;
+        delete value.smtp.password_configured;
+        delete value.smtp.verified;
+        delete value.smtp.verified_at;
+        delete value.smtp.test_proof;
+        if (testProof) value.smtp.test_proof = testProof;
+      }
+      return value;
+    },
+    async update(delivery: ISiteAuthDelivery, testProof?: string) {
+      const saved = await this.updateDelivery(this.writableDelivery(delivery, testProof));
+      this.apply(saved);
     },
     async saveDraft() {
       if (!this.canSave) return;
@@ -236,10 +241,13 @@ export default defineComponent({
       if (!smtp) return;
       this.changing = true;
       try {
-        await this.update({
-          type: 'smtp',
-          smtp: { ...smtp, test_proof: this.testProof || undefined }
-        });
+        await this.update(
+          {
+            type: 'smtp',
+            smtp
+          },
+          this.testProof || undefined
+        );
         this.configuring = false;
         ElMessage.success(this.$t('site.message.authDeliveryActivated'));
       } catch {

@@ -92,8 +92,20 @@
       :saving="saving"
       @change="saveGithubCredentials"
     />
-    <site-email-transport v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('email')" />
-    <site-phone-delivery v-if="site?.id" :site-id="site.id" :provider-enabled="isProviderEnabled('phone')" />
+    <site-email-transport
+      v-if="managementLoaded"
+      :site-id="site.id"
+      :provider-enabled="isProviderEnabled('email')"
+      :delivery-config="emailDelivery"
+      :update-delivery="updateEmailDelivery"
+    />
+    <site-phone-delivery
+      v-if="managementLoaded"
+      :site-id="site.id"
+      :provider-enabled="isProviderEnabled('phone')"
+      :delivery-config="phoneDelivery"
+      :update-delivery="updatePhoneDelivery"
+    />
     <div class="auth-save-actions">
       <el-button type="primary" :loading="saving" :disabled="!managementLoaded || !dirty" @click="save">
         {{ $t('common.button.save') }}
@@ -110,7 +122,7 @@ import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
 import SiteGithubOAuthApp, { type GithubCredentialsDraft } from '@/components/setting/SiteGithubOAuthApp.vue';
 import SitePhoneDelivery from '@/components/setting/SitePhoneDelivery.vue';
 import { siteOperator } from '@/operators';
-import type { ISiteAuth, ISiteAuthProvider, ISiteGithubCredentials } from '@/models';
+import type { ISiteAuth, ISiteAuthDelivery, ISiteAuthProvider, ISiteGithubCredentials } from '@/models';
 
 // Provider IDs we surface in this tab. The IDs match
 // ``IUserPublicRegistrationMethod`` in ``src/models/user.ts`` so the
@@ -146,6 +158,7 @@ export default defineComponent({
       configurationRevision: undefined as number | undefined,
       managementSiteId: undefined as string | undefined,
       githubCredentialsDraft: undefined as GithubCredentialsDraft | undefined,
+      updateQueue: Promise.resolve() as Promise<void>,
       saving: false
     };
   },
@@ -159,12 +172,18 @@ export default defineComponent({
     githubCredentials(): ISiteGithubCredentials {
       return this.auth.providers?.github?.credentials || { mode: 'platform' };
     },
+    emailDelivery(): ISiteAuthDelivery {
+      return this.auth.providers?.email?.delivery || { type: 'platform' };
+    },
+    phoneDelivery(): ISiteAuthDelivery {
+      return this.auth.providers?.phone?.delivery || { type: 'platform' };
+    },
     managementLoaded(): boolean {
       return Boolean(this.site?.id && this.managementSiteId === this.site.id);
     },
     dirty(): boolean {
       return (
-        JSON.stringify(this.authDraft || {}) !== this.savedAuthSnapshot || this.githubCredentialsDraft !== undefined
+        JSON.stringify(this.writableAuthBase()) !== this.savedAuthSnapshot || this.githubCredentialsDraft !== undefined
       );
     },
     providers(): Record<string, ISiteAuthProvider> {
@@ -219,7 +238,7 @@ export default defineComponent({
     apply(siteId: string, auth: ISiteAuth, configurationRevision?: number): void {
       this.managementSiteId = siteId;
       this.authDraft = JSON.parse(JSON.stringify(auth || {}));
-      this.savedAuthSnapshot = JSON.stringify(this.authDraft);
+      this.savedAuthSnapshot = JSON.stringify(this.writableAuthBase());
       this.configurationRevision = configurationRevision;
       this.githubCredentialsDraft = undefined;
     },
@@ -228,15 +247,19 @@ export default defineComponent({
         const { data } = await siteOperator.get(siteId);
         if (this.site?.id === siteId) this.apply(siteId, data.auth || {}, data.configuration_revision);
       } catch {
-        ElMessage.error(this.$t('site.error.save'));
+        ElMessage.error(this.$t('site.error.authSettingsLoad'));
       }
     },
-    writableAuth(): ISiteAuth {
+    writableAuthBase(): ISiteAuth {
       const auth = JSON.parse(JSON.stringify(this.authDraft || {})) as ISiteAuth;
       for (const provider of Object.values(auth.providers || {})) {
         delete provider.credentials;
         delete provider.delivery;
       }
+      return auth;
+    },
+    writableAuth(): ISiteAuth {
+      const auth = this.writableAuthBase();
       if (this.githubCredentialsDraft) {
         auth.providers = auth.providers || {};
         auth.providers.github = {
@@ -320,24 +343,60 @@ export default defineComponent({
     stageAuth(nextAuth: ISiteAuth): void {
       this.authDraft = nextAuth;
     },
+    enqueueUpdate(auth: ISiteAuth): Promise<ISiteAuth> {
+      const siteId = this.site.id as string;
+      const operation = async () => {
+        if (this.site?.id !== siteId || this.managementSiteId !== siteId) {
+          throw new Error('Site changed before updating auth settings');
+        }
+        const { data } = await siteOperator.update(siteId, { auth }, this.configurationRevision);
+        if (this.site?.id !== siteId || this.managementSiteId !== siteId) {
+          throw new Error('Site changed while updating auth settings');
+        }
+        this.configurationRevision = data.configuration_revision;
+        return data.auth || {};
+      };
+      const result = this.updateQueue.then(operation, operation);
+      this.updateQueue = result.then(
+        () => undefined,
+        () => undefined
+      );
+      return result;
+    },
+    mergeDelivery(providerId: 'email' | 'phone', delivery: ISiteAuthDelivery): void {
+      const providers = { ...(this.authDraft?.providers || {}) };
+      providers[providerId] = { ...(providers[providerId] || {}), delivery };
+      this.authDraft = { ...(this.authDraft || {}), providers };
+    },
+    async updateEmailDelivery(delivery: ISiteAuthDelivery): Promise<ISiteAuthDelivery> {
+      const auth = await this.enqueueUpdate({ providers: { email: { delivery } } });
+      const saved = auth.providers?.email?.delivery || { type: 'platform' };
+      this.mergeDelivery('email', saved);
+      return saved;
+    },
+    async updatePhoneDelivery(delivery: ISiteAuthDelivery): Promise<ISiteAuthDelivery> {
+      const auth = await this.enqueueUpdate({ providers: { phone: { delivery } } });
+      const saved = auth.providers?.phone?.delivery || { type: 'platform' };
+      this.mergeDelivery('phone', saved);
+      return saved;
+    },
     async saveGithubCredentials(credentials: GithubCredentialsDraft): Promise<void> {
       this.githubCredentialsDraft = credentials;
-      await this.save();
+      await this.saveAuth(true);
     },
     async save(): Promise<void> {
+      await this.saveAuth(false);
+    },
+    async saveAuth(githubSave: boolean): Promise<void> {
       if (!this.managementLoaded || !this.dirty || this.saving) return;
       this.saving = true;
       try {
-        const { data } = await siteOperator.update(
-          this.site.id,
-          { auth: this.writableAuth() },
-          this.configurationRevision
-        );
-        this.apply(this.site.id, data.auth || {}, data.configuration_revision);
+        const auth = await this.enqueueUpdate(this.writableAuth());
+        this.apply(this.site.id, auth, this.configurationRevision);
         await this.$store.dispatch('getSite');
-        ElMessage.success(this.$t('site.message.saved'));
+        ElMessage.success(this.$t(githubSave ? 'site.message.authGithubOAuthSaved' : 'common.message.saved'));
       } catch {
-        ElMessage.error(this.$t('site.error.save'));
+        ElMessage.error(this.$t(githubSave ? 'site.error.authGithubOAuthSave' : 'site.error.authSettingsSave'));
       } finally {
         this.saving = false;
       }
