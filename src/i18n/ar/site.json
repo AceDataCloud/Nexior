@@ -75,6 +75,10 @@
     "message": "عند التفعيل، يتم إخفاء جميع أزرار إعادة الشحن في هذا الموقع ولا يمكن للمستخدمين إعادة شحن رصيدهم.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "إظهار مدخل التسويق بالعمولة",
+    "description": "إعدادات الموقع: التحكم في ما إذا كان بإمكان المستخدمين العاديين والزوار رؤية مدخل التسويق بالعمولة"
+  },
   "field.distributionDefaultInviterId": {
     "message": "معرف المدعو الافتراضي",
     "description": "عرض في مربع التحرير"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "يجب الاحتفاظ بمدير واحد على الأقل",
     "description": "تنبيه للاحتفاظ بمدير واحد على الأقل"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "بعد الإيقاف، لن يتمكن المستخدمون العاديون والزوار غير المسجلين من رؤية مدخل التسويق بالعمولة أو محتوى الترويج في هذا الموقع؛ وسيظل بإمكان مسؤولي الموقع الاطلاع عليه وإعادة تفعيله. لا يتأثر إسناد الدعوات أو العمولات.",
+    "description": "نص توضيحي لمفتاح مدخل التسويق بالعمولة"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "معرف المستخدم للمدعو الافتراضي، إذا لم يحمل رابط التوزيع معلمة inviter_id، سيتم استخدام هذا المعرف كمدعو افتراضي.",
@@ -1514,14 +1522,6 @@
     "message": "فشل في حفظ إعدادات التسليم",
     "description": "فشل في حفظ إعدادات التسليم المخصصة."
   },
-  "field.referralEntryEnabled": {
-    "message": "إظهار مدخل التسويق بالعمولة",
-    "description": "إعدادات الموقع: التحكم في ما إذا كان بإمكان المستخدمين العاديين والزوار رؤية مدخل التسويق بالعمولة"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "بعد الإيقاف، لن يتمكن المستخدمون العاديون والزوار غير المسجلين من رؤية مدخل التسويق بالعمولة أو محتوى الترويج في هذا الموقع؛ وسيظل بإمكان مسؤولي الموقع الاطلاع عليه وإعادة تفعيله. لا يتأثر إسناد الدعوات أو العمولات.",
-    "description": "نص توضيحي لمفتاح مدخل التسويق بالعمولة"
-  },
   "homeLayout.title": {
     "message": "تخطيط الصفحة الرئيسية",
     "description": "عنوان إعداد كتل الصفحة الرئيسية بواسطة مسؤول الموقع الفرعي."
@@ -1638,9 +1638,121 @@
     "message": "تعذّرت استعادة تطبيق GitHub OAuth الافتراضي للمنصة",
     "description": "رسالة فشل استعادة الإعدادات الافتراضية"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "عميل Google OAuth",
+    "description": "عنوان إعداد عميل Google OAuth للموقع"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "استخدم الإعداد الافتراضي للمنصة لتسجيل الدخول إلى هذا الموقع، أو أدخل عميل تطبيق الويب الخاص بك من Google.",
+    "description": "شرح إعداد Google OAuth للموقع"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "تسجيل الدخول باستخدام Google متوقف حاليًا، ويمكنك إعداد عميل OAuth مسبقًا ثم تفعيله لاحقًا.",
+    "description": "تنبيه بشأن إيقاف تسجيل الدخول باستخدام Google"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "يستخدم هذا الموقع عميل Google OAuth الافتراضي للمنصة.",
+    "description": "حالة إعداد Google الافتراضي للمنصة"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "يستخدم هذا الموقع عميل Google OAuth مخصصًا.",
+    "description": "حالة إعداد Google المخصص"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "معرّف العميل",
+    "description": "تسمية معرّف العميل لتطبيق الويب من Google"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "سر العميل",
+    "description": "تسمية سر العميل لتطبيق الويب من Google"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "اتركه فارغًا للاحتفاظ بالسر المحفوظ",
+    "description": "نص العنصر النائب لحقل سر عميل Google فقط"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "تم حفظ سر العميل، اتركه فارغًا للإبقاء عليه دون تغيير.",
+    "description": "تنبيه يفيد بحفظ سر Google"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "معرّف URI لإعادة التوجيه المصرّح به",
+    "description": "تسمية عنوان رد الاتصال لـ Google OAuth"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "أضف هذا العنوان الكامل إلى معرّفات URI لإعادة التوجيه المصرّح بها لعميل Google OAuth.",
+    "description": "إرشادات إعداد رد الاتصال لـ Google"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "تم حفظ عميل Google OAuth",
+    "description": "تنبيه بنجاح حفظ إعداد Google"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "تعذّر حفظ عميل Google OAuth",
+    "description": "تنبيه بفشل حفظ إعداد Google"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "هل تريد استعادة عميل Google OAuth الافتراضي للمنصة؟",
+    "description": "عنوان تأكيد استعادة إعداد Google الافتراضي"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "سيتم حذف معرّف العميل وسر العميل المحفوظين نهائيًا.",
+    "description": "محتوى تأكيد استعادة إعداد Google الافتراضي"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "تسجيل الدخول إلى Apple عبر الويب",
+    "description": "عنوان إعداد تسجيل الدخول إلى Apple عبر الويب للموقع"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "استخدم الإعداد الافتراضي للمنصة لتسجيل الدخول إلى هذا الموقع عبر الويب، أو أدخل Web Services ID الخاص بك. لا تدخل معرّف حزمة التطبيق الأصلي.",
+    "description": "شرح إعداد Web Services ID لـ Apple للموقع"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "تسجيل الدخول باستخدام Apple متوقف حاليًا، ويمكنك إعداد Web Services ID مسبقًا ثم تفعيله لاحقًا.",
+    "description": "تنبيه بشأن إيقاف تسجيل الدخول باستخدام Apple"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "يستخدم هذا الموقع إعداد تسجيل الدخول إلى Apple عبر الويب الافتراضي للمنصة.",
+    "description": "حالة إعداد Apple الافتراضي للمنصة"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "يستخدم هذا الموقع Web Services ID مخصصًا من Apple.",
+    "description": "حالة إعداد Apple المخصص"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "تسمية Web Services ID من Apple"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "عنوان العودة",
+    "description": "تسمية عنوان رد الاتصال لتسجيل الدخول إلى Apple عبر الويب"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "أضف هذا العنوان الكامل إلى Return URLs لمعرّف Services ID هذا. لا يمكن استخدام معرّف حزمة التطبيق الأصلي هنا.",
+    "description": "إرشادات إعداد رد الاتصال لتسجيل الدخول إلى Apple عبر الويب"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "تم حفظ Web Services ID من Apple",
+    "description": "تنبيه بنجاح حفظ إعداد Apple"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "تعذّر حفظ Web Services ID من Apple",
+    "description": "تنبيه بفشل حفظ إعداد Apple"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "هل تريد استعادة إعداد تسجيل الدخول إلى Apple عبر الويب الافتراضي للمنصة؟",
+    "description": "عنوان تأكيد استعادة إعداد Apple الافتراضي"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "سيتم حذف Web Services ID المحفوظ نهائيًا.",
+    "description": "محتوى تأكيد استعادة إعداد Apple الافتراضي"
+  },
   "homeSections.title": {
     "message": "الأقسام المخصصة",
     "description": "عنوان إعدادات الأقسام المخصصة في الصفحة الرئيسية."
+  },
+  "homeSections.tip": {
+    "message": "أضف قسم Markdown أو HTML مخصصًا.",
+    "description": "إرشادات إعداد الأقسام المخصصة."
   },
   "homeSections.add": {
     "message": "إضافة قسم",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "عرض الآن",
     "description": "حقل مستوى ظهور القسم."
+  },
+  "homeSections.markdownTip": {
+    "message": "يدعم Markdown، ولا يُسمح باستخدام HTML الخام أو البرامج النصية أو المحتوى المضمّن.",
+    "description": "تلميح حول تنسيق Markdown."
   },
   "homeSections.scheduled": {
     "message": "مجدول",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "سيكتب مدير الموقع HTML مباشرةً وسيُعرض كما هو.",
     "description": "تلميح حول تنسيق HTML."
-  },
-  "homeSections.tip": {
-    "message": "أضف قسم Markdown أو HTML مخصصًا.",
-    "description": "إرشادات إعداد الأقسام المخصصة."
-  },
-  "homeSections.markdownTip": {
-    "message": "يدعم Markdown، ولا يُسمح باستخدام HTML الخام أو البرامج النصية أو المحتوى المضمّن.",
-    "description": "تلميح حول تنسيق Markdown."
   },
   "error.authSettingsLoad": {
     "message": "فشل تحميل إعدادات المصادقة",

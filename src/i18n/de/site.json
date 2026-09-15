@@ -75,6 +75,10 @@
     "message": "Wenn aktiviert, werden alle Auflade-Schaltflächen auf dieser Website ausgeblendet und Benutzer können ihr Guthaben nicht mehr aufladen.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "Affiliate-Bereich anzeigen",
+    "description": "Website-Einstellung: Steuert, ob normale Nutzer und Besucher den Affiliate-Bereich sehen können"
+  },
   "field.distributionDefaultInviterId": {
     "message": "Standard-Einladungs-ID",
     "description": "Anzeige im Bearbeitungsfeld"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "Mindestens einen Administrator behalten",
     "description": "Hinweis, dass mindestens ein Administrator erforderlich ist"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "Nach dem Deaktivieren sehen normale Nutzer und nicht angemeldete Besucher den Affiliate-Bereich und die Werbeinhalte dieser Website nicht mehr. Website-Administratoren können sie weiterhin anzeigen und wiederherstellen. Die Zuordnung von Einladungen und Provisionsauszahlungen bleibt davon unberührt.",
+    "description": "Hinweistext zum Schalter für den Affiliate-Bereich"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "Benutzer-ID des Standard Einladenden. Wenn der Verteilungslink keinen inviter_id Parameter enthält, wird diese Benutzer-ID standardmäßig als Einladender verwendet.",
@@ -1514,14 +1522,6 @@
     "message": "Speichern der Lieferkonfiguration fehlgeschlagen",
     "description": "Fehler beim Speichern der benutzerdefinierten Lieferkonfiguration."
   },
-  "field.referralEntryEnabled": {
-    "message": "Affiliate-Bereich anzeigen",
-    "description": "Website-Einstellung: Steuert, ob normale Nutzer und Besucher den Affiliate-Bereich sehen können"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "Nach dem Deaktivieren sehen normale Nutzer und nicht angemeldete Besucher den Affiliate-Bereich und die Werbeinhalte dieser Website nicht mehr. Website-Administratoren können sie weiterhin anzeigen und wiederherstellen. Die Zuordnung von Einladungen und Provisionsauszahlungen bleibt davon unberührt.",
-    "description": "Hinweistext zum Schalter für den Affiliate-Bereich"
-  },
   "homeLayout.title": {
     "message": "Layout der Startseite",
     "description": "Titel für den Bereich, in dem der Administrator der Unterseite die integrierten Bereiche der Startseite konfiguriert."
@@ -1638,9 +1638,121 @@
     "message": "Wiederherstellung der standardmäßigen GitHub-OAuth-App der Plattform fehlgeschlagen",
     "description": "Hinweis auf eine fehlgeschlagene Wiederherstellung"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Google-OAuth-Client",
+    "description": "Titel der Konfiguration des Google-OAuth-Clients für die Website"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "Verwende für die Anmeldung auf dieser Website die Standardkonfiguration der Plattform oder trage deinen eigenen Google-Webanwendungsclient ein.",
+    "description": "Hinweis zur Google-OAuth-Konfiguration der Website"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "Die Google-Anmeldung ist derzeit deaktiviert. Du kannst den OAuth-Client trotzdem vorab konfigurieren und später aktivieren.",
+    "description": "Hinweis zur deaktivierten Google-Anmeldung"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "Diese Website verwendet derzeit den Google-OAuth-Client der Plattform.",
+    "description": "Status der Verwendung der Google-Standardkonfiguration der Plattform"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "Diese Website verwendet derzeit einen benutzerdefinierten Google-OAuth-Client.",
+    "description": "Status der Verwendung einer benutzerdefinierten Google-Konfiguration"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "Client-ID",
+    "description": "Bezeichnung für die Client-ID der Google-Webanwendung"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Client-Secret",
+    "description": "Bezeichnung für das Client-Secret der Google-Webanwendung"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "Leer lassen, um das gespeicherte Secret beizubehalten",
+    "description": "Platzhalterhinweis ausschließlich für das Google-Client-Secret"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "Das Client-Secret wurde gespeichert. Leer lassen, um es unverändert beizubehalten.",
+    "description": "Hinweis, dass das Google-Secret gespeichert wurde"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "Autorisierte Weiterleitungs-URI",
+    "description": "Bezeichnung für die Google-OAuth-Callback-URL"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "Füge diese vollständige Adresse zu den autorisierten Weiterleitungs-URIs des Google-OAuth-Clients hinzu.",
+    "description": "Hinweis zur Konfiguration des Google-Callbacks"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Google-OAuth-Client gespeichert",
+    "description": "Erfolgshinweis zum Speichern der Google-Konfiguration"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Google-OAuth-Client konnte nicht gespeichert werden",
+    "description": "Fehlerhinweis zum Speichern der Google-Konfiguration"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "Google-OAuth-Client der Plattform wiederherstellen?",
+    "description": "Bestätigungstitel zum Wiederherstellen der Google-Standardkonfiguration"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "Die gespeicherte Client-ID und das Client-Secret werden dauerhaft gelöscht.",
+    "description": "Bestätigungsinhalt zum Wiederherstellen der Google-Standardkonfiguration"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Apple-Webanmeldung",
+    "description": "Titel der Konfiguration für die Apple-Webanmeldung der Website"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "Verwende für die Webanmeldung auf dieser Website die Standardkonfiguration der Plattform oder trage deine eigene Web Services ID ein. Keine native App-Bundle-ID eintragen.",
+    "description": "Hinweis zur Konfiguration der Apple Web Services ID für die Website"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "Die Apple-Anmeldung ist derzeit deaktiviert. Du kannst die Web Services ID trotzdem vorab konfigurieren und später aktivieren.",
+    "description": "Hinweis zur deaktivierten Apple-Anmeldung"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "Diese Website verwendet derzeit die Apple-Webanmeldekonfiguration der Plattform.",
+    "description": "Status der Verwendung der Apple-Standardkonfiguration der Plattform"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "Diese Website verwendet derzeit eine benutzerdefinierte Apple Web Services ID.",
+    "description": "Status der Verwendung einer benutzerdefinierten Apple-Konfiguration"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Bezeichnung für die Apple Web Services ID"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "Rückgabe-URL",
+    "description": "Bezeichnung für die Callback-URL der Apple-Webanmeldung"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "Füge diese vollständige Adresse zu den Rückgabe-URLs dieser Services ID hinzu. Eine native App-Bundle-ID kann hier nicht verwendet werden.",
+    "description": "Hinweis zur Konfiguration des Apple-Webcallbacks"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Apple Web Services ID gespeichert",
+    "description": "Erfolgshinweis zum Speichern der Apple-Konfiguration"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Apple Web Services ID konnte nicht gespeichert werden",
+    "description": "Fehlerhinweis zum Speichern der Apple-Konfiguration"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "Apple-Webanmeldekonfiguration der Plattform wiederherstellen?",
+    "description": "Bestätigungstitel zum Wiederherstellen der Apple-Standardkonfiguration"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "Die gespeicherte Web Services ID wird dauerhaft gelöscht.",
+    "description": "Bestätigungsinhalt zum Wiederherstellen der Apple-Standardkonfiguration"
+  },
   "homeSections.title": {
     "message": "Benutzerdefinierte Bereiche",
     "description": "Titel der Einstellungen für benutzerdefinierte Bereiche auf der Startseite."
+  },
+  "homeSections.tip": {
+    "message": "Markdown- oder benutzerdefinierten HTML-Block hinzufügen.",
+    "description": "Hinweis zu den Einstellungen benutzerdefinierter Blöcke."
   },
   "homeSections.add": {
     "message": "Bereich hinzufügen",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "Sofort anzeigen",
     "description": "Feld für die Sichtbarkeit des Bereichs."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown wird unterstützt; rohes HTML, Skripte und eingebettete Inhalte sind nicht zulässig.",
+    "description": "Hinweis zum Markdown-Format."
   },
   "homeSections.scheduled": {
     "message": "Ausstehend",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "HTML wird vom Website-Administrator direkt verfasst und unverändert angezeigt.",
     "description": "Hinweis zum HTML-Format."
-  },
-  "homeSections.tip": {
-    "message": "Markdown- oder benutzerdefinierten HTML-Block hinzufügen.",
-    "description": "Hinweis zu den Einstellungen benutzerdefinierter Blöcke."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown wird unterstützt; rohes HTML, Skripte und eingebettete Inhalte sind nicht zulässig.",
-    "description": "Hinweis zum Markdown-Format."
   },
   "error.authSettingsLoad": {
     "message": "Authentifizierungseinstellungen konnten nicht geladen werden",

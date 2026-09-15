@@ -75,6 +75,10 @@
     "message": "Когда включено, все кнопки пополнения скрыты на этом сайте, и пользователи больше не могут пополнять баланс.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "Показывать вход в партнёрскую программу",
+    "description": "Настройка сайта: определяет, могут ли обычные пользователи и гости видеть вход в партнёрскую программу"
+  },
   "field.distributionDefaultInviterId": {
     "message": "ID приглашенного по умолчанию",
     "description": "展示在编辑框的标题"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "Должен быть хотя бы один администратор",
     "description": "至少保留一个管理员的提示"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "После отключения обычные пользователи и неавторизованные гости не будут видеть вход в партнёрскую программу и рекламные материалы сайта; администратор сайта по-прежнему сможет просматривать их и восстановить доступ. Атрибуция приглашений и начисление вознаграждений не затрагиваются.",
+    "description": "Текст-пояснение к переключателю входа в партнёрскую программу"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID пользователя по умолчанию для пригласителя. Если ссылка на распределение не содержит параметр inviter_id, будет использоваться этот ID как пригласитель.",
@@ -1514,14 +1522,6 @@
     "message": "Не удалось сохранить конфигурацию доставки",
     "description": "Не удалось сохранить пользовательскую конфигурацию доставки."
   },
-  "field.referralEntryEnabled": {
-    "message": "Показывать вход в партнёрскую программу",
-    "description": "Настройка сайта: определяет, могут ли обычные пользователи и гости видеть вход в партнёрскую программу"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "После отключения обычные пользователи и неавторизованные гости не будут видеть вход в партнёрскую программу и рекламные материалы сайта; администратор сайта по-прежнему сможет просматривать их и восстановить доступ. Атрибуция приглашений и начисление вознаграждений не затрагиваются.",
-    "description": "Текст-пояснение к переключателю входа в партнёрскую программу"
-  },
   "homeLayout.title": {
     "message": "Макет главной страницы",
     "description": "Заголовок настройки встроенных блоков главной страницы администратором дочернего сайта."
@@ -1638,9 +1638,121 @@
     "message": "Не удалось восстановить GitHub OAuth App платформы по умолчанию",
     "description": "Сообщение о сбое восстановления настроек по умолчанию"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Клиент Google OAuth",
+    "description": "Заголовок настройки клиента Google OAuth для сайта"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "Используйте конфигурацию платформы по умолчанию для входа на сайт или укажите собственный клиент веб-приложения Google.",
+    "description": "Описание настройки Google OAuth для сайта"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "Вход через Google сейчас отключён. Вы можете заранее настроить клиент OAuth и включить его позже.",
+    "description": "Уведомление об отключённом входе через Google"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "Сайт использует клиент Google OAuth платформы по умолчанию.",
+    "description": "Статус конфигурации Google по умолчанию"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "Сайт использует пользовательский клиент Google OAuth.",
+    "description": "Статус пользовательской конфигурации Google"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "Client ID",
+    "description": "Метка Client ID веб-приложения Google"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "Метка Client Secret веб-приложения Google"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "Оставьте пустым, чтобы сохранить текущий ключ",
+    "description": "Заполнитель для поля Google Client Secret"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "Client Secret сохранён. Оставьте поле пустым, чтобы сохранить его без изменений.",
+    "description": "Уведомление о сохранённом ключе Google"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "Разрешённые URI перенаправления",
+    "description": "Метка URL обратного вызова Google OAuth"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "Добавьте этот полный адрес в список разрешённых URI перенаправления клиента Google OAuth.",
+    "description": "Подсказка по настройке обратного вызова Google"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Клиент Google OAuth сохранён",
+    "description": "Уведомление об успешном сохранении Google"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Не удалось сохранить клиент Google OAuth",
+    "description": "Уведомление об ошибке сохранения Google"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "Восстановить клиент Google OAuth платформы по умолчанию?",
+    "description": "Заголовок подтверждения восстановления настроек Google по умолчанию"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "Сохранённые Client ID и Client Secret будут удалены навсегда.",
+    "description": "Текст подтверждения восстановления настроек Google по умолчанию"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Вход через Apple в веб-приложении",
+    "description": "Заголовок настройки входа через Apple в веб-приложении для сайта"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "Используйте конфигурацию платформы по умолчанию для входа на сайт или укажите собственный Web Services ID. Не указывайте Bundle ID нативного приложения.",
+    "description": "Описание настройки Apple Web Services ID для сайта"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "Вход через Apple сейчас отключён. Вы можете заранее настроить Web Services ID и включить его позже.",
+    "description": "Уведомление об отключённом входе через Apple"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "Сайт использует конфигурацию входа через Apple платформы по умолчанию.",
+    "description": "Статус конфигурации Apple по умолчанию"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "Сайт использует пользовательский Apple Web Services ID.",
+    "description": "Статус пользовательской конфигурации Apple"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Метка Apple Web Services ID"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "Return URL",
+    "description": "Метка URL обратного вызова входа через Apple в веб-приложении"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "Добавьте этот полный адрес в Return URLs для данного Services ID. Bundle ID нативного приложения нельзя использовать здесь.",
+    "description": "Подсказка по настройке обратного вызова Apple в веб-приложении"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Apple Web Services ID сохранён",
+    "description": "Уведомление об успешном сохранении Apple"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Не удалось сохранить Apple Web Services ID",
+    "description": "Уведомление об ошибке сохранения Apple"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "Восстановить конфигурацию входа через Apple в веб-приложении платформы по умолчанию?",
+    "description": "Заголовок подтверждения восстановления настроек Apple по умолчанию"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "Сохранённый Web Services ID будет удалён навсегда.",
+    "description": "Текст подтверждения восстановления настроек Apple по умолчанию"
+  },
   "homeSections.title": {
     "message": "Пользовательские блоки",
     "description": "Заголовок настроек пользовательских блоков на главной странице."
+  },
+  "homeSections.tip": {
+    "message": "Добавьте блок Markdown или пользовательского HTML.",
+    "description": "Описание настройки пользовательского блока."
   },
   "homeSections.add": {
     "message": "Добавить блок",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "Показывать сразу",
     "description": "Поле видимости блока."
+  },
+  "homeSections.markdownTip": {
+    "message": "Поддерживается Markdown; необработанный HTML, скрипты и встраиваемый контент не разрешены.",
+    "description": "Подсказка по формату Markdown."
   },
   "homeSections.scheduled": {
     "message": "Ожидает активации",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "HTML будет написан владельцем сайта и отображён без изменений.",
     "description": "Подсказка по формату HTML."
-  },
-  "homeSections.tip": {
-    "message": "Добавьте блок Markdown или пользовательского HTML.",
-    "description": "Описание настройки пользовательского блока."
-  },
-  "homeSections.markdownTip": {
-    "message": "Поддерживается Markdown; необработанный HTML, скрипты и встраиваемый контент не разрешены.",
-    "description": "Подсказка по формату Markdown."
   },
   "error.authSettingsLoad": {
     "message": "Не удалось загрузить настройки аутентификации",

@@ -85,13 +85,17 @@
       </div>
     </section>
 
-    <site-github-o-auth-app
-      v-if="managementLoaded"
-      :credentials="githubCredentials"
-      :provider-enabled="isProviderEnabled('github')"
-      :saving="saving"
-      @change="saveGithubCredentials"
-    />
+    <template v-if="managementLoaded">
+      <site-o-auth-app-editor
+        v-for="descriptor in oauthProviderDescriptors"
+        :key="descriptor.id"
+        :descriptor="descriptor"
+        :credentials="oauthCredentials(descriptor.id)"
+        :provider-enabled="isProviderEnabled(descriptor.id)"
+        :saving="saving"
+        @change="saveOAuthCredentials(descriptor.id, $event)"
+      />
+    </template>
     <site-email-transport
       v-if="managementLoaded"
       :site-id="site.id"
@@ -107,7 +111,7 @@
       :update-delivery="updatePhoneDelivery"
     />
     <div class="auth-save-actions">
-      <el-button type="primary" :loading="saving" :disabled="!managementLoaded || !dirty" @click="save">
+      <el-button type="primary" :loading="saving" :disabled="!managementLoaded || !authDirty" @click="save">
         {{ $t('common.button.save') }}
       </el-button>
     </div>
@@ -119,10 +123,21 @@ import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import SiteEmailTransport from '@/components/setting/SiteEmailTransport.vue';
-import SiteGithubOAuthApp, { type GithubCredentialsDraft } from '@/components/setting/SiteGithubOAuthApp.vue';
+import SiteOAuthAppEditor from '@/components/setting/SiteOAuthAppEditor.vue';
 import SitePhoneDelivery from '@/components/setting/SitePhoneDelivery.vue';
 import { siteOperator } from '@/operators';
-import type { ISiteAuth, ISiteAuthDelivery, ISiteAuthProvider, ISiteGithubCredentials } from '@/models';
+import type {
+  ISiteAuth,
+  ISiteAuthDelivery,
+  ISiteAuthProvider,
+  ISiteOAuthCredentials,
+  SiteOAuthCredentialsDraft
+} from '@/models';
+import {
+  SITE_OAUTH_PROVIDER_IDS,
+  SITE_OAUTH_PROVIDERS,
+  type SiteOAuthProviderId
+} from '@/constants/siteOAuthProviders';
 
 // Provider IDs we surface in this tab. The IDs match
 // ``IUserPublicRegistrationMethod`` in ``src/models/user.ts`` so the
@@ -148,7 +163,7 @@ export default defineComponent({
     ElSwitch,
     SectionNotice,
     SiteEmailTransport,
-    SiteGithubOAuthApp,
+    SiteOAuthAppEditor,
     SitePhoneDelivery
   },
   data() {
@@ -157,7 +172,7 @@ export default defineComponent({
       savedAuthSnapshot: '',
       configurationRevision: undefined as number | undefined,
       managementSiteId: undefined as string | undefined,
-      githubCredentialsDraft: undefined as GithubCredentialsDraft | undefined,
+      oauthCredentialDrafts: {} as Partial<Record<SiteOAuthProviderId, SiteOAuthCredentialsDraft>>,
       updateQueue: Promise.resolve() as Promise<void>,
       saving: false
     };
@@ -169,8 +184,8 @@ export default defineComponent({
     auth(): ISiteAuth {
       return this.authDraft || {};
     },
-    githubCredentials(): ISiteGithubCredentials {
-      return this.auth.providers?.github?.credentials || { mode: 'platform' };
+    oauthProviderDescriptors() {
+      return SITE_OAUTH_PROVIDER_IDS.map((id) => SITE_OAUTH_PROVIDERS[id]);
     },
     emailDelivery(): ISiteAuthDelivery {
       return this.auth.providers?.email?.delivery || { type: 'platform' };
@@ -181,10 +196,11 @@ export default defineComponent({
     managementLoaded(): boolean {
       return Boolean(this.site?.id && this.managementSiteId === this.site.id);
     },
+    authDirty(): boolean {
+      return JSON.stringify(this.writableAuthBase()) !== this.savedAuthSnapshot;
+    },
     dirty(): boolean {
-      return (
-        JSON.stringify(this.writableAuthBase()) !== this.savedAuthSnapshot || this.githubCredentialsDraft !== undefined
-      );
+      return this.authDirty || Object.keys(this.oauthCredentialDrafts).length > 0;
     },
     providers(): Record<string, ISiteAuthProvider> {
       return this.auth.providers || {};
@@ -229,7 +245,7 @@ export default defineComponent({
         this.authDraft = undefined;
         this.savedAuthSnapshot = '';
         this.configurationRevision = undefined;
-        this.githubCredentialsDraft = undefined;
+        this.oauthCredentialDrafts = {};
         if (siteId) void this.load(siteId);
       }
     }
@@ -240,7 +256,7 @@ export default defineComponent({
       this.authDraft = JSON.parse(JSON.stringify(auth || {}));
       this.savedAuthSnapshot = JSON.stringify(this.writableAuthBase());
       this.configurationRevision = configurationRevision;
-      this.githubCredentialsDraft = undefined;
+      this.oauthCredentialDrafts = {};
     },
     async load(siteId: string): Promise<void> {
       try {
@@ -258,16 +274,20 @@ export default defineComponent({
       }
       return auth;
     },
-    writableAuth(): ISiteAuth {
+    writableOAuthAuth(providerId: SiteOAuthProviderId): ISiteAuth {
       const auth = this.writableAuthBase();
-      if (this.githubCredentialsDraft) {
+      const credentials = this.oauthCredentialDrafts[providerId];
+      if (credentials) {
         auth.providers = auth.providers || {};
-        auth.providers.github = {
-          ...(auth.providers.github || {}),
-          credentials: this.githubCredentialsDraft
+        auth.providers[providerId] = {
+          ...(auth.providers[providerId] || {}),
+          credentials
         };
       }
       return auth;
+    },
+    oauthCredentials(providerId: SiteOAuthProviderId): ISiteOAuthCredentials {
+      return this.auth.providers?.[providerId]?.credentials || { mode: 'platform' };
     },
     isProviderEnabled(id: ProviderId): boolean {
       return this.providers?.[id]?.enabled === true;
@@ -380,23 +400,39 @@ export default defineComponent({
       this.mergeDelivery('phone', saved);
       return saved;
     },
-    async saveGithubCredentials(credentials: GithubCredentialsDraft): Promise<void> {
-      this.githubCredentialsDraft = credentials;
-      await this.saveAuth(true);
+    async saveOAuthCredentials(providerId: SiteOAuthProviderId, credentials: SiteOAuthCredentialsDraft): Promise<void> {
+      this.oauthCredentialDrafts = { ...this.oauthCredentialDrafts, [providerId]: credentials };
+      await this.saveAuth(providerId);
     },
     async save(): Promise<void> {
-      await this.saveAuth(false);
+      await this.saveAuth();
     },
-    async saveAuth(githubSave: boolean): Promise<void> {
-      if (!this.managementLoaded || !this.dirty || this.saving) return;
+    applySavedAuth(auth: ISiteAuth, providerId?: SiteOAuthProviderId): void {
+      this.authDraft = JSON.parse(JSON.stringify(auth || {}));
+      this.savedAuthSnapshot = JSON.stringify(this.writableAuthBase());
+      if (providerId) {
+        const drafts = { ...this.oauthCredentialDrafts };
+        delete drafts[providerId];
+        this.oauthCredentialDrafts = drafts;
+      }
+    },
+    async saveAuth(providerId?: SiteOAuthProviderId): Promise<void> {
+      if (
+        !this.managementLoaded ||
+        this.saving ||
+        (providerId ? !this.oauthCredentialDrafts[providerId] : !this.authDirty)
+      )
+        return;
       this.saving = true;
+      const descriptor = providerId ? SITE_OAUTH_PROVIDERS[providerId] : undefined;
       try {
-        const auth = await this.enqueueUpdate(this.writableAuth());
-        this.apply(this.site.id, auth, this.configurationRevision);
+        const payload = providerId ? this.writableOAuthAuth(providerId) : this.writableAuthBase();
+        const auth = await this.enqueueUpdate(payload);
+        this.applySavedAuth(auth, providerId);
         await this.$store.dispatch('getSite');
-        ElMessage.success(this.$t(githubSave ? 'site.message.authGithubOAuthSaved' : 'common.message.saved'));
+        ElMessage.success(this.$t(descriptor?.savedKey || 'common.message.saved'));
       } catch {
-        ElMessage.error(this.$t(githubSave ? 'site.error.authGithubOAuthSave' : 'site.error.authSettingsSave'));
+        ElMessage.error(this.$t(descriptor?.saveErrorKey || 'site.error.authSettingsSave'));
       } finally {
         this.saving = false;
       }

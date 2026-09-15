@@ -75,6 +75,10 @@
     "message": "Lorsqu'elle est activée, tous les boutons de recharge sont masqués sur ce site et les utilisateurs ne peuvent plus recharger leur solde.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "Afficher l’accès à l’affiliation",
+    "description": "Paramètre du site : contrôle si les utilisateurs standard et les visiteurs peuvent voir l’accès à l’affiliation"
+  },
   "field.distributionDefaultInviterId": {
     "message": "ID de l'inviteur par défaut",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "Au moins un administrateur doit être conservé",
     "description": "Alerte pour conserver au moins un administrateur"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "Après désactivation, les utilisateurs standard et les visiteurs non connectés ne verront plus l’accès à l’affiliation ni les contenus promotionnels du site. Les administrateurs du site peuvent toujours les consulter et les réactiver. L’attribution des invitations et les commissions ne sont pas affectées.",
+    "description": "Texte explicatif du bouton d’activation de l’accès à l’affiliation"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invité.",
@@ -1517,14 +1525,6 @@
     "message": "Échec de l'enregistrement de la configuration de livraison",
     "description": "Échec de l'enregistrement de la configuration de livraison personnalisée."
   },
-  "field.referralEntryEnabled": {
-    "message": "Afficher l’accès à l’affiliation",
-    "description": "Paramètre du site : contrôle si les utilisateurs standard et les visiteurs peuvent voir l’accès à l’affiliation"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "Après désactivation, les utilisateurs standard et les visiteurs non connectés ne verront plus l’accès à l’affiliation ni les contenus promotionnels du site. Les administrateurs du site peuvent toujours les consulter et les réactiver. L’attribution des invitations et les commissions ne sont pas affectées.",
-    "description": "Texte explicatif du bouton d’activation de l’accès à l’affiliation"
-  },
   "homeLayout.title": {
     "message": "Mise en page de l’accueil",
     "description": "Titre de la section permettant à l’administrateur du site secondaire de configurer les blocs intégrés à la page d’accueil."
@@ -1641,9 +1641,121 @@
     "message": "Échec du rétablissement de l’application GitHub OAuth par défaut de la plateforme",
     "description": "Message d’échec du rétablissement de la configuration par défaut"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Client OAuth Google",
+    "description": "Titre de la configuration du client OAuth Google du site"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "Utilisez la configuration par défaut de la plateforme pour la connexion à ce site, ou renseignez votre propre client d’application Web Google.",
+    "description": "Description de la configuration OAuth Google du site"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "La connexion Google est actuellement désactivée. Vous pouvez tout de même préconfigurer le client OAuth avant de l’activer.",
+    "description": "Message indiquant que la connexion Google est désactivée"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "Ce site utilise actuellement le client OAuth Google par défaut de la plateforme.",
+    "description": "État indiquant l’utilisation de la configuration Google par défaut de la plateforme"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "Ce site utilise actuellement un client OAuth Google personnalisé.",
+    "description": "État indiquant l’utilisation d’une configuration Google personnalisée"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "ID client",
+    "description": "Libellé de l’ID client de l’application Web Google"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Secret client",
+    "description": "Libellé du secret client de l’application Web Google"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "Laisser vide pour conserver le secret enregistré",
+    "description": "Texte d’espace réservé pour le secret client Google uniquement"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "Le secret client est enregistré. Laissez ce champ vide pour le conserver.",
+    "description": "Message indiquant que le secret client Google est enregistré"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "URI de redirection autorisé",
+    "description": "Libellé de l’URI de rappel OAuth Google"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "Ajoutez cette adresse complète aux URI de redirection autorisés du client OAuth Google.",
+    "description": "Instructions de configuration de l’URL de rappel Google"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Client OAuth Google enregistré",
+    "description": "Message indiquant que l’enregistrement Google a réussi"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Échec de l’enregistrement du client OAuth Google",
+    "description": "Message indiquant que l’enregistrement Google a échoué"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "Restaurer le client OAuth Google par défaut de la plateforme ?",
+    "description": "Titre de confirmation de la restauration de la configuration Google par défaut"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "L’ID client et le secret client enregistrés seront définitivement supprimés.",
+    "description": "Contenu de la confirmation de restauration de la configuration Google par défaut"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Connexion Web Apple",
+    "description": "Titre de la configuration de la connexion Web Apple du site"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "Utilisez la configuration par défaut de la plateforme pour la connexion Web à ce site, ou renseignez votre propre ID de services Web. N’indiquez pas l’ID de bundle d’une app native.",
+    "description": "Description de la configuration de l’ID de services Web Apple du site"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "La connexion Apple est actuellement désactivée. Vous pouvez tout de même préconfigurer l’ID de services Web avant de l’activer.",
+    "description": "Message indiquant que la connexion Apple est désactivée"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "Ce site utilise actuellement la configuration de connexion Web Apple par défaut de la plateforme.",
+    "description": "État indiquant l’utilisation de la configuration Apple par défaut de la plateforme"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "Ce site utilise actuellement un ID de services Web Apple personnalisé.",
+    "description": "État indiquant l’utilisation d’une configuration Apple personnalisée"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "ID de services Web",
+    "description": "Libellé de l’ID de services Web Apple"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "URL de retour",
+    "description": "Libellé de l’URL de rappel de la connexion Web Apple"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "Ajoutez cette adresse complète aux URL de retour de cet ID de services. L’ID de bundle d’une app native ne peut pas être utilisé ici.",
+    "description": "Instructions de configuration de l’URL de rappel Apple"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "ID de services Web Apple enregistré",
+    "description": "Message indiquant que l’enregistrement Apple a réussi"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Échec de l’enregistrement de l’ID de services Web Apple",
+    "description": "Message indiquant que l’enregistrement Apple a échoué"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "Restaurer la configuration de connexion Web Apple par défaut de la plateforme ?",
+    "description": "Titre de confirmation de la restauration de la configuration Apple par défaut"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "L’ID de services Web enregistré sera définitivement supprimé.",
+    "description": "Contenu de la confirmation de restauration de la configuration Apple par défaut"
+  },
   "homeSections.title": {
     "message": "Sections personnalisées",
     "description": "Titre des paramètres des sections personnalisées de la page d’accueil."
+  },
+  "homeSections.tip": {
+    "message": "Ajoutez une section Markdown ou HTML personnalisée.",
+    "description": "Explication des paramètres des sections personnalisées."
   },
   "homeSections.add": {
     "message": "Ajouter une section",
@@ -1688,6 +1800,10 @@
   "homeSections.field.visible": {
     "message": "Afficher immédiatement",
     "description": "Champ de visibilité de la section."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown est pris en charge, mais le HTML brut, les scripts et le contenu intégré sont interdits.",
+    "description": "Indication sur le format Markdown."
   },
   "homeSections.scheduled": {
     "message": "À venir",
@@ -1752,14 +1868,6 @@
   "homeSections.htmlTip": {
     "message": "Le HTML est rédigé directement par l’administrateur du site et affiché tel quel.",
     "description": "Indication sur le format HTML."
-  },
-  "homeSections.tip": {
-    "message": "Ajoutez une section Markdown ou HTML personnalisée.",
-    "description": "Explication des paramètres des sections personnalisées."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown est pris en charge, mais le HTML brut, les scripts et le contenu intégré sont interdits.",
-    "description": "Indication sur le format Markdown."
   },
   "error.authSettingsLoad": {
     "message": "Échec du chargement des paramètres d’authentification",

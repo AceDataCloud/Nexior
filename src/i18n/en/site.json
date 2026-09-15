@@ -1639,6 +1639,114 @@
     "message": "Failed to restore the platform GitHub OAuth App",
     "description": "Reset failure message"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Google OAuth client",
+    "description": "Title for per-site Google OAuth client settings"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "Use the platform client or your own Google Web application client for sign-in on this site.",
+    "description": "Explains per-site Google OAuth configuration"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "Google sign-in is disabled. You can still configure the OAuth client before enabling it.",
+    "description": "Shown when the Google login provider is disabled"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "This site uses the platform Google OAuth client.",
+    "description": "Platform Google client status"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "This site uses its own Google OAuth client.",
+    "description": "Custom Google client status"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "Client ID",
+    "description": "Google Web application client ID label"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "Google Web application client secret label"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "Leave blank to keep the saved secret",
+    "description": "Write-only Google Client Secret placeholder"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "A Client Secret is saved. Leave this field blank to keep it.",
+    "description": "Saved Google secret hint"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "Authorized redirect URI",
+    "description": "Google OAuth callback URL label"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "Add this exact URL to the authorized redirect URIs for the Google OAuth client.",
+    "description": "Google callback setup hint"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Google OAuth client saved",
+    "description": "Google save success message"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Failed to save the Google OAuth client",
+    "description": "Google save failure message"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "Restore the platform Google OAuth client?",
+    "description": "Google reset confirmation title"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "The saved Client ID and Client Secret will be permanently deleted.",
+    "description": "Google reset confirmation body"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Apple web sign-in",
+    "description": "Title for per-site Apple web sign-in settings"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "Use the platform configuration or your own Web Services ID for web sign-in. Do not enter a native app bundle ID.",
+    "description": "Explains per-site Apple Web Services ID configuration"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "Apple sign-in is disabled. You can still configure the Web Services ID before enabling it.",
+    "description": "Shown when the Apple login provider is disabled"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "This site uses the platform Apple web sign-in configuration.",
+    "description": "Platform Apple configuration status"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "This site uses its own Apple Web Services ID.",
+    "description": "Custom Apple configuration status"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Apple Web Services ID label"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "Return URL",
+    "description": "Apple web sign-in callback URL label"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "Add this exact URL to the Return URLs for the Services ID. A native app bundle ID cannot be used here.",
+    "description": "Apple web callback setup hint"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Apple Web Services ID saved",
+    "description": "Apple save success message"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Failed to save the Apple Web Services ID",
+    "description": "Apple save failure message"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "Restore the platform Apple web sign-in configuration?",
+    "description": "Apple reset confirmation title"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "The saved Web Services ID will be permanently deleted.",
+    "description": "Apple reset confirmation body"
+  },
   "homeSections.title": {
     "message": "Custom sections",
     "description": "Custom homepage section settings heading."

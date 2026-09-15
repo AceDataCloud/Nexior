@@ -99,16 +99,22 @@ export interface ISiteAuthDelivery {
   webhook?: ISiteAuthPhoneWebhook | null;
 }
 
-export interface ISiteGithubCredentials {
+export interface ISiteOAuthCredentials {
   mode: 'platform' | 'custom';
   config?: { client_id: string };
   secret_status?: { client_secret?: { configured: boolean; updated_at?: string | null } };
   callback?: { path: string };
 }
 
+export interface SiteOAuthCredentialsDraft {
+  mode: 'platform' | 'custom';
+  config?: { client_id: string };
+  secret_values?: { client_secret: string };
+}
+
 export interface ISiteAuthProvider {
   enabled?: boolean;
-  credentials?: ISiteGithubCredentials;
+  credentials?: ISiteOAuthCredentials;
   delivery?: ISiteAuthDelivery;
   [key: string]: unknown;
 }
