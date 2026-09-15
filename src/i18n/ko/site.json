@@ -75,6 +75,10 @@
     "message": "활성화하면 이 사이트의 모든 충전 버튼이 숨겨지고 사용자가 잔액을 충전할 수 없습니다.",
     "description": "충전 비활성화 토글 도움말"
   },
+  "field.referralEntryEnabled": {
+    "message": "제휴 마케팅 메뉴 표시",
+    "description": "사이트 설정: 일반 사용자와 방문자에게 제휴 마케팅 메뉴를 표시할지 제어합니다"
+  },
   "field.distributionDefaultInviterId": {
     "message": "기본 초대자 ID",
     "description": "편집 상자에 표시되는 제목"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "최소 한 명의 관리자를 유지해야 합니다",
     "description": "최소 한 명의 관리자를 유지해야 한다는 알림"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "끄면 일반 사용자와 로그인하지 않은 방문자는 이 사이트의 제휴 마케팅 메뉴와 홍보 콘텐츠를 볼 수 없습니다. 사이트 관리자는 계속 확인하고 복원할 수 있습니다. 초대 어트리뷰션과 커미션에는 영향을 주지 않습니다.",
+    "description": "제휴 마케팅 메뉴 표시 설정에 대한 안내 문구"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "기본 초대자의 사용자 ID, 분배 링크에 inviter_id 매개변수가 없으면 이 사용자 ID가 초대자로 사용됩니다.",
@@ -1514,14 +1522,6 @@
     "message": "전달 구성 저장 실패",
     "description": "사용자 정의 전달 구성 저장 실패."
   },
-  "field.referralEntryEnabled": {
-    "message": "제휴 마케팅 메뉴 표시",
-    "description": "사이트 설정: 일반 사용자와 방문자에게 제휴 마케팅 메뉴를 표시할지 제어합니다"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "끄면 일반 사용자와 로그인하지 않은 방문자는 이 사이트의 제휴 마케팅 메뉴와 홍보 콘텐츠를 볼 수 없습니다. 사이트 관리자는 계속 확인하고 복원할 수 있습니다. 초대 어트리뷰션과 커미션에는 영향을 주지 않습니다.",
-    "description": "제휴 마케팅 메뉴 표시 설정에 대한 안내 문구"
-  },
   "homeLayout.title": {
     "message": "홈 레이아웃",
     "description": "서브사이트 관리자가 홈 페이지의 기본 제공 섹션 제목을 구성합니다."
@@ -1638,9 +1638,121 @@
     "message": "플랫폼 기본 GitHub OAuth App으로 복원하지 못했습니다",
     "description": "기본 설정 복원 실패 안내"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Google OAuth 클라이언트",
+    "description": "사이트 Google OAuth 클라이언트 구성 제목"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "이 사이트 로그인에 플랫폼 기본 구성을 사용하거나 직접 Google 웹 애플리케이션 클라이언트를 입력하세요.",
+    "description": "사이트 Google OAuth 구성 안내"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "현재 Google 로그인이 꺼져 있습니다. OAuth 클라이언트를 미리 구성한 후 활성화할 수 있습니다.",
+    "description": "Google 로그인 비활성화 안내"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "이 사이트는 플랫폼 기본 Google OAuth 클라이언트를 사용하고 있습니다.",
+    "description": "플랫폼 기본 Google 구성 상태"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "이 사이트는 사용자 지정 Google OAuth 클라이언트를 사용하고 있습니다.",
+    "description": "사용자 지정 Google 구성 상태"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "Client ID",
+    "description": "Google 웹 애플리케이션 Client ID 레이블"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "Google 웹 애플리케이션 Client Secret 레이블"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "비워 두면 저장된 키가 유지됩니다",
+    "description": "Google Client Secret 전용 자리 표시자 안내"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "Client Secret이 저장되었습니다. 비워 두면 변경되지 않습니다.",
+    "description": "Google 키 저장 완료 안내"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "승인된 리디렉션 URI",
+    "description": "Google OAuth 콜백 주소 레이블"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "이 전체 주소를 Google OAuth 클라이언트의 승인된 리디렉션 URI에 추가하세요.",
+    "description": "Google 콜백 구성 안내"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Google OAuth 클라이언트가 저장되었습니다",
+    "description": "Google 저장 성공 안내"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Google OAuth 클라이언트를 저장하지 못했습니다",
+    "description": "Google 저장 실패 안내"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "플랫폼 기본 Google OAuth 클라이언트로 복원하시겠습니까?",
+    "description": "Google 기본값 복원 확인 제목"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "저장된 Client ID와 Client Secret이 영구적으로 삭제됩니다.",
+    "description": "Google 기본값 복원 확인 내용"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Apple 웹 로그인",
+    "description": "사이트 Apple 웹 로그인 구성 제목"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "이 사이트의 웹 로그인에 플랫폼 기본 구성을 사용하거나 직접 Web Services ID를 입력하세요. 네이티브 앱 Bundle ID는 입력하지 마세요.",
+    "description": "사이트 Apple Web Services ID 구성 안내"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "현재 Apple 로그인이 꺼져 있습니다. Web Services ID를 미리 구성한 후 활성화할 수 있습니다.",
+    "description": "Apple 로그인 비활성화 안내"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "이 사이트는 플랫폼 기본 Apple 웹 로그인 구성을 사용하고 있습니다.",
+    "description": "플랫폼 기본 Apple 구성 상태"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "이 사이트는 사용자 지정 Apple Web Services ID를 사용하고 있습니다.",
+    "description": "사용자 지정 Apple 구성 상태"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Apple Web Services ID 레이블"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "Return URL",
+    "description": "Apple 웹 로그인 콜백 주소 레이블"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "이 전체 주소를 해당 Services ID의 Return URLs에 추가하세요. 네이티브 앱 Bundle ID는 여기에 사용할 수 없습니다.",
+    "description": "Apple 웹 콜백 구성 안내"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Apple Web Services ID가 저장되었습니다",
+    "description": "Apple 저장 성공 안내"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Apple Web Services ID를 저장하지 못했습니다",
+    "description": "Apple 저장 실패 안내"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "플랫폼 기본 Apple 웹 로그인 구성으로 복원하시겠습니까?",
+    "description": "Apple 기본값 복원 확인 제목"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "저장된 Web Services ID가 영구적으로 삭제됩니다.",
+    "description": "Apple 기본값 복원 확인 내용"
+  },
   "homeSections.title": {
     "message": "사용자 지정 섹션",
     "description": "홈페이지 사용자 지정 섹션 설정 제목입니다."
+  },
+  "homeSections.tip": {
+    "message": "Markdown 또는 사용자 지정 HTML 블록을 추가하세요.",
+    "description": "사용자 지정 블록 설정 안내."
   },
   "homeSections.add": {
     "message": "섹션 추가",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "즉시 표시",
     "description": "섹션 공개 여부 필드입니다."
+  },
+  "homeSections.markdownTip": {
+    "message": "Markdown을 지원하며, 원시 HTML, 스크립트 또는 삽입 콘텐츠는 허용되지 않습니다.",
+    "description": "Markdown 형식 안내."
   },
   "homeSections.scheduled": {
     "message": "적용 예정",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "HTML은 사이트 관리자가 직접 작성하며 원본 그대로 표시됩니다.",
     "description": "HTML 형식 안내."
-  },
-  "homeSections.tip": {
-    "message": "Markdown 또는 사용자 지정 HTML 블록을 추가하세요.",
-    "description": "사용자 지정 블록 설정 안내."
-  },
-  "homeSections.markdownTip": {
-    "message": "Markdown을 지원하며, 원시 HTML, 스크립트 또는 삽입 콘텐츠는 허용되지 않습니다.",
-    "description": "Markdown 형식 안내."
   },
   "error.authSettingsLoad": {
     "message": "인증 설정을 불러오지 못했습니다",

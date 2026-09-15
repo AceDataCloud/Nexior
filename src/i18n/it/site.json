@@ -75,6 +75,10 @@
     "message": "Se attivato, tutti i pulsanti di ricarica vengono nascosti su questo sito e gli utenti non possono più ricaricare il loro saldo.",
     "description": "Help text for the disable-recharge toggle"
   },
+  "field.referralEntryEnabled": {
+    "message": "Mostra l'accesso al programma di affiliazione",
+    "description": "Impostazione del sito: controlla se gli utenti standard e i visitatori possono vedere l'accesso al programma di affiliazione"
+  },
   "field.distributionDefaultInviterId": {
     "message": "ID invitante predefinito",
     "description": "Mostrato nel campo di modifica del titolo"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "Devi mantenere almeno un amministratore",
     "description": "Messaggio di avviso per mantenere almeno un amministratore"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "Dopo la disattivazione, gli utenti standard e i visitatori non autenticati non vedranno più l'accesso al programma di affiliazione né i contenuti promozionali del sito; gli amministratori del sito potranno comunque visualizzarli e ripristinarli. L'attribuzione degli inviti e le commissioni non saranno interessate.",
+    "description": "Testo descrittivo dell'interruttore per l'accesso al programma di affiliazione"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID utente dell'invitante predefinito. Se il link di distribuzione non include il parametro inviter_id, verrà utilizzato questo ID utente come invitante.",
@@ -1514,14 +1522,6 @@
     "message": "Salvataggio della configurazione di consegna fallito",
     "description": "Salvataggio della configurazione di consegna personalizzata fallito."
   },
-  "field.referralEntryEnabled": {
-    "message": "Mostra l'accesso al programma di affiliazione",
-    "description": "Impostazione del sito: controlla se gli utenti standard e i visitatori possono vedere l'accesso al programma di affiliazione"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "Dopo la disattivazione, gli utenti standard e i visitatori non autenticati non vedranno più l'accesso al programma di affiliazione né i contenuti promozionali del sito; gli amministratori del sito potranno comunque visualizzarli e ripristinarli. L'attribuzione degli inviti e le commissioni non saranno interessate.",
-    "description": "Testo descrittivo dell'interruttore per l'accesso al programma di affiliazione"
-  },
   "homeLayout.title": {
     "message": "Layout della home page",
     "description": "Titolo della sezione in cui l'amministratore del sottosito configura i blocchi integrati nella home page."
@@ -1638,9 +1638,121 @@
     "message": "Impossibile ripristinare l'app GitHub OAuth predefinita della piattaforma",
     "description": "Messaggio di errore durante il ripristino della configurazione predefinita"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Client OAuth Google",
+    "description": "Titolo della configurazione del client OAuth Google del sito"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "Usa la configurazione predefinita della piattaforma per l'accesso al sito oppure inserisci il tuo client dell'app web Google.",
+    "description": "Istruzioni per la configurazione di Google OAuth del sito"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "L'accesso con Google è attualmente disattivato, ma puoi comunque configurare in anticipo il client OAuth e abilitarlo in seguito.",
+    "description": "Avviso relativo all'accesso con Google disattivato"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "Questo sito utilizza il client OAuth Google predefinito della piattaforma.",
+    "description": "Stato della configurazione Google predefinita della piattaforma"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "Questo sito utilizza un client OAuth Google personalizzato.",
+    "description": "Stato della configurazione Google personalizzata"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "Client ID",
+    "description": "Etichetta del Client ID dell'app web Google"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "Client Secret",
+    "description": "Etichetta del Client Secret dell'app web Google"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "Lascia vuoto per mantenere il segreto salvato",
+    "description": "Testo segnaposto per il solo Client Secret Google"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "Il Client Secret è stato salvato; lascia vuoto per mantenerlo invariato.",
+    "description": "Avviso che il segreto Google è già stato salvato"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "URI di reindirizzamento autorizzato",
+    "description": "Etichetta dell'indirizzo di callback Google OAuth"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "Aggiungi questo indirizzo completo agli URI di reindirizzamento autorizzati del client OAuth Google.",
+    "description": "Istruzioni per la configurazione del callback Google"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Client OAuth Google salvato",
+    "description": "Avviso di salvataggio riuscito di Google"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "Impossibile salvare il client OAuth Google",
+    "description": "Avviso di salvataggio non riuscito di Google"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "Ripristinare il client OAuth Google predefinito della piattaforma?",
+    "description": "Titolo della conferma per il ripristino delle impostazioni predefinite Google"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "Il Client ID e il Client Secret salvati verranno eliminati definitivamente.",
+    "description": "Contenuto della conferma per il ripristino delle impostazioni predefinite Google"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Accesso web Apple",
+    "description": "Titolo della configurazione dell'accesso web Apple del sito"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "Usa la configurazione predefinita della piattaforma per l'accesso web al sito oppure inserisci il tuo Web Services ID. Non inserire l'ID bundle dell'app nativa.",
+    "description": "Istruzioni per la configurazione del Web Services ID Apple del sito"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "L'accesso con Apple è attualmente disattivato, ma puoi comunque configurare in anticipo il Web Services ID e abilitarlo in seguito.",
+    "description": "Avviso relativo all'accesso con Apple disattivato"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "Questo sito utilizza la configurazione predefinita della piattaforma per l'accesso web Apple.",
+    "description": "Stato della configurazione Apple predefinita della piattaforma"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "Questo sito utilizza un Web Services ID Apple personalizzato.",
+    "description": "Stato della configurazione Apple personalizzata"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Etichetta del Web Services ID Apple"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "URL di ritorno",
+    "description": "Etichetta dell'indirizzo di callback per l'accesso web Apple"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "Aggiungi questo indirizzo completo agli URL di ritorno del Web Services ID. L'ID bundle dell'app nativa non può essere utilizzato qui.",
+    "description": "Istruzioni per la configurazione del callback web Apple"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Web Services ID Apple salvato",
+    "description": "Avviso di salvataggio riuscito di Apple"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "Impossibile salvare il Web Services ID Apple",
+    "description": "Avviso di salvataggio non riuscito di Apple"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "Ripristinare la configurazione predefinita della piattaforma per l'accesso web Apple?",
+    "description": "Titolo della conferma per il ripristino delle impostazioni predefinite Apple"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "Il Web Services ID salvato verrà eliminato definitivamente.",
+    "description": "Contenuto della conferma per il ripristino delle impostazioni predefinite Apple"
+  },
   "homeSections.title": {
     "message": "Sezioni personalizzate",
     "description": "Titolo delle impostazioni delle sezioni personalizzate della home page."
+  },
+  "homeSections.tip": {
+    "message": "Aggiungi una sezione Markdown o HTML personalizzato.",
+    "description": "Istruzioni per la configurazione delle sezioni personalizzate."
   },
   "homeSections.add": {
     "message": "Aggiungi sezione",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "Mostra subito",
     "description": "Campo della visibilità della sezione."
+  },
+  "homeSections.markdownTip": {
+    "message": "Supporta Markdown; HTML grezzo, script e contenuti incorporati non sono consentiti.",
+    "description": "Suggerimento sul formato Markdown."
   },
   "homeSections.scheduled": {
     "message": "In attesa di attivazione",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "L'HTML sarà scritto direttamente dal webmaster e visualizzato così com'è.",
     "description": "Suggerimento sul formato HTML."
-  },
-  "homeSections.tip": {
-    "message": "Aggiungi una sezione Markdown o HTML personalizzato.",
-    "description": "Istruzioni per la configurazione delle sezioni personalizzate."
-  },
-  "homeSections.markdownTip": {
-    "message": "Supporta Markdown; HTML grezzo, script e contenuti incorporati non sono consentiti.",
-    "description": "Suggerimento sul formato Markdown."
   },
   "error.authSettingsLoad": {
     "message": "Impossibile caricare le impostazioni di autenticazione",

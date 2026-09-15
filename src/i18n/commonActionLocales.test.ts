@@ -1,6 +1,7 @@
 import { createI18n } from 'vue-i18n';
 import { describe, expect, it } from 'vitest';
 import { makeFlatLoader } from '@acedatacloud/core/i18n';
+import { SITE_OAUTH_PROVIDERS } from '@/constants/siteOAuthProviders';
 
 const localeModules = import.meta.glob('./*/common.json', { eager: true }) as Record<
   string,
@@ -18,7 +19,7 @@ const localePaths = Object.keys(localeModules);
 const monitoredSourceSuffixes = [
   '/components/setting/Analytics.vue',
   '/components/setting/Auth.vue',
-  '/components/setting/SiteGithubOAuthApp.vue',
+  '/components/setting/SiteOAuthAppEditor.vue',
   '/components/setting/SiteEmailTransport.vue',
   '/components/setting/SitePhoneDelivery.vue',
   '/components/setting/SiteServices.vue',
@@ -123,6 +124,44 @@ describe('static translation references', () => {
         const [, namespace, key] = match;
         expect(namespaces[namespace], `${path}: unknown namespace ${namespace}`).toBeDefined();
         expect(namespaces[namespace], `${path}: missing ${namespace}.${key}`).toHaveProperty(key);
+      }
+    }
+  });
+});
+
+const siteLocaleModules = import.meta.glob('./*/site.json', { eager: true }) as Record<
+  string,
+  { default: Record<string, unknown> }
+>;
+
+describe('Site OAuth provider locales', () => {
+  it('resolves every descriptor key in every locale', () => {
+    const keys = Object.values(SITE_OAUTH_PROVIDERS).flatMap((descriptor) =>
+      [
+        descriptor.titleKey,
+        descriptor.tipKey,
+        descriptor.disabledKey,
+        descriptor.usingPlatformKey,
+        descriptor.usingCustomKey,
+        descriptor.clientIdKey,
+        descriptor.clientSecretKey,
+        descriptor.clientSecretPlaceholderKey,
+        descriptor.secretConfiguredKey,
+        descriptor.callbackUrlKey,
+        descriptor.callbackTipKey,
+        descriptor.savedKey,
+        descriptor.saveErrorKey,
+        descriptor.deleteTitleKey,
+        descriptor.deleteConfirmKey
+      ]
+        .filter((key): key is string => Boolean(key))
+        .map((key) => key.replace(/^site\./, ''))
+    );
+
+    expect(Object.keys(siteLocaleModules)).toHaveLength(12);
+    for (const [path, module] of Object.entries(siteLocaleModules)) {
+      for (const key of keys) {
+        expect(module.default, `${path}: ${key}`).toHaveProperty(key);
       }
     }
   });

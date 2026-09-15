@@ -75,6 +75,10 @@
     "message": "啟用後，本站將隱藏所有儲值/購買按鈕，使用者無法自行儲值額度。",
     "description": "禁用充值開關的說明文字"
   },
+  "field.referralEntryEnabled": {
+    "message": "顯示分銷入口",
+    "description": "網站設定：控制一般使用者和訪客是否能看到分銷入口"
+  },
   "field.distributionDefaultInviterId": {
     "message": "預設邀請人 ID",
     "description": "展示在編輯框的標題"
@@ -590,6 +594,10 @@
   "message.atLeastOneAdmin": {
     "message": "至少保留一位管理員",
     "description": "至少保留一位管理員的提示"
+  },
+  "message.referralEntryEnabledTip": {
+    "message": "關閉後，一般使用者和未登入訪客將看不到本站的分銷入口和推廣內容；網站管理員仍可查看並恢復。邀請歸因與返傭不受影響。",
+    "description": "分銷入口開關的說明文字"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "預設邀請人的使用者 ID，分銷連結如果不攜帶 inviter_id 引數，則預設使用該使用者 ID 作為邀請人。",
@@ -1514,14 +1522,6 @@
     "message": "保存投遞配置失敗",
     "description": "自定義投遞配置保存失敗。"
   },
-  "field.referralEntryEnabled": {
-    "message": "顯示分銷入口",
-    "description": "網站設定：控制一般使用者和訪客是否能看到分銷入口"
-  },
-  "message.referralEntryEnabledTip": {
-    "message": "關閉後，一般使用者和未登入訪客將看不到本站的分銷入口和推廣內容；網站管理員仍可查看並恢復。邀請歸因與返傭不受影響。",
-    "description": "分銷入口開關的說明文字"
-  },
   "homeLayout.title": {
     "message": "首頁佈局",
     "description": "分站管理員配置首頁內建區塊的標題。"
@@ -1638,9 +1638,121 @@
     "message": "恢復平台預設 GitHub OAuth App 失敗",
     "description": "恢復預設失敗提示"
   },
+  "field.authGoogleOAuthApp": {
+    "message": "Google OAuth 用戶端",
+    "description": "網站 Google OAuth 用戶端設定標題"
+  },
+  "message.authGoogleOAuthAppTip": {
+    "message": "本站登入可使用平台預設設定，或填寫您自己的 Google 網頁應用程式用戶端。",
+    "description": "網站 Google OAuth 設定說明"
+  },
+  "message.authGoogleOAuthProviderDisabled": {
+    "message": "Google 登入目前已關閉，您仍可預先設定 OAuth 用戶端，之後再啟用。",
+    "description": "Google 登入關閉提示"
+  },
+  "message.authGoogleOAuthUsingPlatform": {
+    "message": "本站正在使用平台預設的 Google OAuth 用戶端。",
+    "description": "平台預設 Google 設定狀態"
+  },
+  "message.authGoogleOAuthUsingCustom": {
+    "message": "本站正在使用自訂的 Google OAuth 用戶端。",
+    "description": "自訂 Google 設定狀態"
+  },
+  "field.authGoogleOAuthClientId": {
+    "message": "用戶端 ID",
+    "description": "Google 網頁應用程式用戶端 ID 標籤"
+  },
+  "field.authGoogleOAuthClientSecret": {
+    "message": "用戶端密鑰",
+    "description": "Google 網頁應用程式用戶端密鑰標籤"
+  },
+  "placeholder.authGoogleOAuthClientSecret": {
+    "message": "留空則保留已儲存的密鑰",
+    "description": "僅用於 Google 用戶端密鑰的佔位提示"
+  },
+  "message.authGoogleOAuthSecretConfigured": {
+    "message": "用戶端密鑰已儲存，留空即可保持不變。",
+    "description": "Google 密鑰已儲存提示"
+  },
+  "field.authGoogleOAuthCallbackUrl": {
+    "message": "已授權的重新導向 URI",
+    "description": "Google OAuth 回呼位址標籤"
+  },
+  "message.authGoogleOAuthCallbackTip": {
+    "message": "請將此完整位址新增至 Google OAuth 用戶端的已授權重新導向 URI。",
+    "description": "Google 回呼設定提示"
+  },
+  "message.authGoogleOAuthSaved": {
+    "message": "Google OAuth 用戶端已儲存",
+    "description": "Google 儲存成功提示"
+  },
+  "error.authGoogleOAuthSave": {
+    "message": "儲存 Google OAuth 用戶端失敗",
+    "description": "Google 儲存失敗提示"
+  },
+  "field.authGoogleOAuthDeleteTitle": {
+    "message": "要還原為平台預設的 Google OAuth 用戶端嗎？",
+    "description": "Google 還原預設值確認標題"
+  },
+  "message.authGoogleOAuthDeleteConfirm": {
+    "message": "已儲存的用戶端 ID 和用戶端密鑰將永久刪除。",
+    "description": "Google 還原預設值確認內容"
+  },
+  "field.authAppleOAuthApp": {
+    "message": "Apple 網頁登入",
+    "description": "網站 Apple 網頁登入設定標題"
+  },
+  "message.authAppleOAuthAppTip": {
+    "message": "本站網頁登入可使用平台預設設定，或填寫您自己的 Web Services ID。請勿填寫原生 App Bundle ID。",
+    "description": "網站 Apple Web Services ID 設定說明"
+  },
+  "message.authAppleOAuthProviderDisabled": {
+    "message": "Apple 登入目前已關閉，您仍可預先設定 Web Services ID，之後再啟用。",
+    "description": "Apple 登入關閉提示"
+  },
+  "message.authAppleOAuthUsingPlatform": {
+    "message": "本站正在使用平台預設的 Apple 網頁登入設定。",
+    "description": "平台預設 Apple 設定狀態"
+  },
+  "message.authAppleOAuthUsingCustom": {
+    "message": "本站正在使用自訂的 Apple Web Services ID。",
+    "description": "自訂 Apple 設定狀態"
+  },
+  "field.authAppleOAuthServicesId": {
+    "message": "Web Services ID",
+    "description": "Apple Web Services ID 標籤"
+  },
+  "field.authAppleOAuthCallbackUrl": {
+    "message": "返回 URL",
+    "description": "Apple 網頁登入回呼位址標籤"
+  },
+  "message.authAppleOAuthCallbackTip": {
+    "message": "請將此完整位址新增至該 Services ID 的 Return URLs。原生 App Bundle ID 不可用於此處。",
+    "description": "Apple 網頁回呼設定提示"
+  },
+  "message.authAppleOAuthSaved": {
+    "message": "Apple Web Services ID 已儲存",
+    "description": "Apple 儲存成功提示"
+  },
+  "error.authAppleOAuthSave": {
+    "message": "儲存 Apple Web Services ID 失敗",
+    "description": "Apple 儲存失敗提示"
+  },
+  "field.authAppleOAuthDeleteTitle": {
+    "message": "要還原為平台預設的 Apple 網頁登入設定嗎？",
+    "description": "Apple 還原預設值確認標題"
+  },
+  "message.authAppleOAuthDeleteConfirm": {
+    "message": "已儲存的 Web Services ID 將永久刪除。",
+    "description": "Apple 還原預設值確認內容"
+  },
   "homeSections.title": {
     "message": "自訂區塊",
     "description": "首頁自訂區塊設定標題。"
+  },
+  "homeSections.tip": {
+    "message": "新增 Markdown 或自訂 HTML 區塊。",
+    "description": "自訂區塊設定說明。"
   },
   "homeSections.add": {
     "message": "新增區塊",
@@ -1685,6 +1797,10 @@
   "homeSections.field.visible": {
     "message": "立即顯示",
     "description": "區塊可見性欄位。"
+  },
+  "homeSections.markdownTip": {
+    "message": "支援 Markdown，不允許原始 HTML、指令碼或嵌入內容。",
+    "description": "Markdown 格式提示。"
   },
   "homeSections.scheduled": {
     "message": "待生效",
@@ -1749,14 +1865,6 @@
   "homeSections.htmlTip": {
     "message": "HTML 將由站長直接編寫並原樣顯示。",
     "description": "HTML 格式提示。"
-  },
-  "homeSections.tip": {
-    "message": "新增 Markdown 或自訂 HTML 區塊。",
-    "description": "自訂區塊設定說明。"
-  },
-  "homeSections.markdownTip": {
-    "message": "支援 Markdown，不允許原始 HTML、指令碼或嵌入內容。",
-    "description": "Markdown 格式提示。"
   },
   "error.authSettingsLoad": {
     "message": "載入驗證設定失敗",

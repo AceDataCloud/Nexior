@@ -30,6 +30,23 @@ const managedAuth = {
         callback: { path: '/oauth/callback/github' }
       }
     },
+    google: {
+      enabled: true,
+      credentials: {
+        mode: 'custom' as const,
+        config: { client_id: 'saved-google' },
+        secret_status: { client_secret: { configured: true } },
+        callback: { path: '/oauth/callback/google' }
+      }
+    },
+    apple: {
+      enabled: true,
+      credentials: {
+        mode: 'custom' as const,
+        config: { client_id: 'com.example.web' },
+        callback: { path: '/oauth/callback/apple' }
+      }
+    },
     email: { enabled: true, delivery: { type: 'platform' } }
   }
 };
@@ -51,7 +68,7 @@ const mountComponent = () => {
       stubs: {
         SectionNotice: true,
         SiteEmailTransport: true,
-        SiteGithubOAuthApp: true,
+        SiteOAuthAppEditor: true,
         SitePhoneDelivery: true
       }
     }
@@ -72,8 +89,8 @@ describe('Auth settings', () => {
     const { wrapper } = mountComponent();
 
     expect((wrapper.vm as any).managementLoaded).toBe(false);
-    expect(wrapper.findComponent({ name: 'SiteGithubOAuthApp' }).exists()).toBe(false);
-    await (wrapper.vm as any).saveGithubCredentials({ mode: 'custom', config: { client_id: 'unsafe' } });
+    expect(wrapper.findComponent({ name: 'SiteOAuthAppEditor' }).exists()).toBe(false);
+    await (wrapper.vm as any).saveOAuthCredentials('github', { mode: 'custom', config: { client_id: 'unsafe' } });
     expect(siteApi.update).not.toHaveBeenCalled();
 
     resolveDetail(response(managedAuth, 7));
@@ -86,7 +103,7 @@ describe('Auth settings', () => {
     await flushPromises();
 
     expect(siteApi.get).toHaveBeenCalledWith('site-1');
-    expect((wrapper.vm as any).githubCredentials).toMatchObject({
+    expect((wrapper.vm as any).oauthCredentials('github')).toMatchObject({
       mode: 'custom',
       config: { client_id: 'saved-client' },
       secret_status: { client_secret: { configured: true } }
@@ -98,7 +115,7 @@ describe('Auth settings', () => {
   it('saves staged credentials once with the detail revision and no blank secret', async () => {
     const { wrapper } = mountComponent();
     await flushPromises();
-    await (wrapper.vm as any).saveGithubCredentials({
+    await (wrapper.vm as any).saveOAuthCredentials('github', {
       mode: 'custom',
       config: { client_id: 'saved-client' }
     });
@@ -121,7 +138,7 @@ describe('Auth settings', () => {
     expect(JSON.stringify(siteApi.update.mock.calls[0][1])).not.toContain('secret_status');
     expect(JSON.stringify(siteApi.update.mock.calls[0][1])).not.toContain('client_secret');
     expect((wrapper.vm as any).configurationRevision).toBe(8);
-    expect((wrapper.vm as any).githubCredentials.mode).toBe('custom');
+    expect((wrapper.vm as any).oauthCredentials('github').mode).toBe('custom');
   });
 
   it('does not echo credential or delivery projections for ordinary auth edits', async () => {
@@ -139,14 +156,14 @@ describe('Auth settings', () => {
   it('keeps the management response after the public store refresh', async () => {
     const { wrapper, store } = mountComponent();
     await flushPromises();
-    await (wrapper.vm as any).saveGithubCredentials({
+    await (wrapper.vm as any).saveOAuthCredentials('github', {
       mode: 'custom',
       config: { client_id: 'saved-client' }
     });
 
     expect(store.dispatch).toHaveBeenCalledWith('getSite');
-    expect((wrapper.vm as any).githubCredentials.mode).toBe('custom');
-    expect((wrapper.vm as any).githubCredentials.secret_status.client_secret.configured).toBe(true);
+    expect((wrapper.vm as any).oauthCredentials('github').mode).toBe('custom');
+    expect((wrapper.vm as any).oauthCredentials('github').secret_status.client_secret.configured).toBe(true);
   });
 
   it('preserves staged credentials when a conflicting save fails', async () => {
@@ -155,11 +172,49 @@ describe('Auth settings', () => {
     const staged = { mode: 'custom' as const, config: { client_id: 'saved-client' } };
     siteApi.update.mockRejectedValueOnce({ response: { status: 409 } });
 
-    await (wrapper.vm as any).saveGithubCredentials(staged);
+    await (wrapper.vm as any).saveOAuthCredentials('github', staged);
 
-    expect((wrapper.vm as any).githubCredentialsDraft).toEqual(staged);
+    expect((wrapper.vm as any).oauthCredentialDrafts.github).toEqual(staged);
     expect((wrapper.vm as any).dirty).toBe(true);
     expect(messages.error).toHaveBeenCalledWith('site.error.authGithubOAuthSave');
+  });
+
+  it('isolates sibling OAuth drafts and strips management projections from the saved provider', async () => {
+    const { wrapper } = mountComponent();
+    await flushPromises();
+    const appleDraft = { mode: 'custom' as const, config: { client_id: 'com.changed.web' } };
+    (wrapper.vm as any).oauthCredentialDrafts = { apple: appleDraft };
+
+    await (wrapper.vm as any).saveOAuthCredentials('google', {
+      mode: 'custom',
+      config: { client_id: 'saved-google' }
+    });
+
+    const payload = siteApi.update.mock.calls[0][1];
+    expect(payload.auth.providers.google).toEqual({
+      enabled: true,
+      credentials: { mode: 'custom', config: { client_id: 'saved-google' } }
+    });
+    expect(payload.auth.providers.github).toEqual({ enabled: true });
+    expect(payload.auth.providers.apple).toEqual({ enabled: true });
+    expect(JSON.stringify(payload)).not.toContain('secret_status');
+    expect(JSON.stringify(payload)).not.toContain('callback');
+    expect((wrapper.vm as any).oauthCredentialDrafts.apple).toEqual(appleDraft);
+    expect((wrapper.vm as any).oauthCredentialDrafts.google).toBeUndefined();
+  });
+
+  it('clears every provider draft when the Site changes', async () => {
+    const { wrapper, store } = mountComponent();
+    await flushPromises();
+    (wrapper.vm as any).oauthCredentialDrafts = {
+      google: { mode: 'custom', config: { client_id: 'draft-google' } },
+      apple: { mode: 'custom', config: { client_id: 'draft-apple' } }
+    };
+
+    store.getters.site = { id: 'site-2', auth: publicAuth };
+    await (wrapper.vm as any).$options.watch['site.id'].handler.call(wrapper.vm, 'site-2');
+
+    expect((wrapper.vm as any).oauthCredentialDrafts).toEqual({});
   });
 
   it('serializes delivery updates and uses the revision returned by the previous save', async () => {
