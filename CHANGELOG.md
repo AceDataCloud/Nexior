@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 14 Sep 2026 20:22:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 15 Sep 2026 20:22:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.2
+
+Tue, 15 Sep 2026 20:22:47 GMT
+
+### Patches
+
+- Add per-site Google and Apple OAuth App management with isolated credential drafts. (dev@acedata.cloud)
+- Fix Site authentication save messages, serialize configuration revisions, and sanitize custom email and SMS delivery payloads. (dev@acedata.cloud)
 
 ## 3.371.1
 
