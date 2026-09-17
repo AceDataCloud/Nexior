@@ -6,6 +6,7 @@ import {
   getApplicationMarkupRatio,
   getApplicationCallerOrderDiscountRate,
   applyMarkup,
+  resolveUsagePackagePricing,
   isBrandingHidden,
   getBrandName,
   replaceBrandName,
@@ -134,6 +135,62 @@ describe('applyMarkup', () => {
     expect(applyMarkup(10, -1)).toBe(10);
     expect(applyMarkup(undefined, 0.3)).toBe(0);
     expect(applyMarkup(NaN, 0.3)).toBe(0);
+  });
+});
+
+describe('resolveUsagePackagePricing', () => {
+  it('uses the backend quote without applying markup twice', () => {
+    const pricing = resolveUsagePackagePricing(
+      { id: 'package-1', amount: 530, list_price: 66.5, price: 79.8, final_price: 79.8 },
+      0.2,
+      0
+    );
+
+    expect(pricing).toEqual({ packagePrice: 79.8, finalPrice: 79.8 });
+    expect(pricing?.finalPrice).not.toBeCloseTo(95.76);
+  });
+
+  it('calculates the quote for an older backend response', () => {
+    const pricing = resolveUsagePackagePricing({ id: 'package-1', amount: 530, price: 66.5 }, 0.2, 0);
+
+    expect(pricing?.packagePrice).toBeCloseTo(79.8);
+    expect(pricing?.finalPrice).toBeCloseTo(79.8);
+  });
+
+  it('keeps new and legacy discounted quotes aligned', () => {
+    const resolved = resolveUsagePackagePricing(
+      { id: 'package-1', amount: 530, list_price: 66.5, price: 79.8, final_price: 71.82 },
+      0.2,
+      0.1
+    );
+    const legacy = resolveUsagePackagePricing({ id: 'package-1', amount: 530, price: 66.5 }, 0.2, 0.1);
+
+    expect(resolved?.finalPrice).toBeCloseTo(71.82);
+    expect(legacy?.finalPrice).toBeCloseTo(71.82);
+  });
+
+  it('ignores the ordinary order discount for Apple IAP', () => {
+    const pricing = resolveUsagePackagePricing(
+      { id: 'package-1', amount: 530, list_price: 66.5, price: 79.8, final_price: 71.82 },
+      0.2,
+      0.1,
+      false
+    );
+
+    expect(pricing).toEqual({ packagePrice: 79.8, finalPrice: 79.8 });
+  });
+
+  it('fails closed for malformed resolved quotes', () => {
+    expect(
+      resolveUsagePackagePricing(
+        { id: 'package-1', amount: 530, list_price: 66.5, price: 79.8, final_price: Number.NaN },
+        0.2,
+        0
+      )
+    ).toBeUndefined();
+    expect(
+      resolveUsagePackagePricing({ id: 'package-1', amount: 530, list_price: 66.5, price: -1, final_price: 0 }, 0.2, 0)
+    ).toBeUndefined();
   });
 });
 

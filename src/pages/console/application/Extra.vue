@@ -143,7 +143,12 @@ import {
 } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
-import { getPriceString, applyMarkup, getApplicationMarkupRatio, getApplicationCallerOrderDiscountRate } from '@/utils';
+import {
+  getPriceString,
+  getApplicationMarkupRatio,
+  getApplicationCallerOrderDiscountRate,
+  resolveUsagePackagePricing
+} from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import ServiceEstimation from '@/components/service/Estimation.vue';
@@ -246,26 +251,22 @@ export default defineComponent({
       if (isIOS()) return 0;
       return getApplicationCallerOrderDiscountRate(this.application);
     },
-    pricingAvailable(): boolean {
-      return this.markupRatio !== undefined && this.orderDiscountRate !== undefined;
+    resolvedPackagePricing() {
+      return resolveUsagePackagePricing(this.package, this.markupRatio, this.orderDiscountRate, !isIOS());
     },
-    // Backend-resolved markup keeps this preview aligned with order billing
-    // when a service overrides the site-wide default.
+    pricingAvailable(): boolean {
+      return this.resolvedPackagePricing !== undefined;
+    },
     displayPackagePrice(): number | undefined {
-      return this.package && this.markupRatio !== undefined
-        ? applyMarkup(this.package.price, this.markupRatio)
-        : undefined;
+      return this.resolvedPackagePricing?.packagePrice;
     },
     displayUnitPrice(): number | undefined {
-      return this.package && this.markupRatio !== undefined
-        ? applyMarkup(this.package.price, this.markupRatio) / this.package.amount
+      return this.package && this.displayPackagePrice !== undefined
+        ? this.displayPackagePrice / this.package.amount
         : undefined;
     },
     displayFinalPrice(): number | undefined {
-      if (this.displayPackagePrice === undefined || this.orderDiscountRate === undefined) {
-        return undefined;
-      }
-      return this.displayPackagePrice * (1 - this.orderDiscountRate);
+      return this.resolvedPackagePricing?.finalPrice;
     },
     hasOrderDiscount(): boolean {
       return (this.orderDiscountRate ?? 0) > 0;

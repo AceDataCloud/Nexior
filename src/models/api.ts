@@ -54,6 +54,8 @@ export interface IPackage {
   id: string;
   amount: number;
   price: number;
+  list_price?: number;
+  final_price?: number;
   duration?: number;
   type?: IPackageType;
   service?: IService;

@@ -21,13 +21,14 @@ describe('application purchase pricing contract', () => {
     const source = readSibling('Extra.vue');
     expect(source).toContain(':disabled="!pricingAvailable || !package"');
     expect(source).toContain('!this.pricingAvailable || !this.package');
-    expect(source).toContain('this.markupRatio !== undefined && this.orderDiscountRate !== undefined');
+    expect(source).toContain('this.resolvedPackagePricing !== undefined');
   });
 
-  it('usage preview applies the backend-resolved order discount after markup', () => {
+  it('usage preview consumes the backend-resolved package quote', () => {
     const source = readSibling('Extra.vue');
     expect(source).toContain('getApplicationCallerOrderDiscountRate');
-    expect(source).toContain('this.displayPackagePrice * (1 - this.orderDiscountRate)');
+    expect(source).toContain('resolveUsagePackagePricing');
+    expect(source).not.toContain('applyMarkup(this.package.price');
     expect(source).toContain("$t('order.message.discountTag'");
     expect(source).toContain("$t('order.message.discountHint'");
     expect(source).toContain('if (isIOS()) return 0');
