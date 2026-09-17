@@ -45,7 +45,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { isOfficial } from '@/utils';
+import { isMainOfficial } from '@/utils';
 
 interface ILink {
   key: string;
@@ -62,9 +62,6 @@ export default defineComponent({
     ExternalLinkIcon
   },
   computed: {
-    isOfficial() {
-      return isOfficial();
-    },
     active() {
       return this.$route.matched[0].path;
     },
@@ -90,29 +87,33 @@ export default defineComponent({
           text: this.$t('console.menu.usageList'),
           name: ROUTE_CONSOLE_USAGE_LIST,
           icon: HistoryIcon
-        },
-        {
-          key: 'connectors',
-          text: this.$t('console.menu.connectors'),
-          name: ROUTE_CONSOLE_CONNECTORS,
-          icon: ConnectionIcon
-        },
-        {
-          key: 'skills',
-          text: this.$t('console.menu.skills'),
-          name: ROUTE_CONSOLE_SKILLS,
-          icon: SkillIcon
-        },
-        {
-          key: 'browser-devices',
-          text: this.$t('console.menu.browserDevices'),
-          name: ROUTE_CONSOLE_BROWSER_DEVICES,
-          icon: DesktopIcon
         }
       ];
 
       // Order history stays visible on iOS — purchases now happen in-app via
       // Apple IAP, so users should see their orders.
+      if (isMainOfficial()) {
+        links.push(
+          {
+            key: 'connectors',
+            text: this.$t('console.menu.connectors'),
+            name: ROUTE_CONSOLE_CONNECTORS,
+            icon: ConnectionIcon
+          },
+          {
+            key: 'skills',
+            text: this.$t('console.menu.skills'),
+            name: ROUTE_CONSOLE_SKILLS,
+            icon: SkillIcon
+          },
+          {
+            key: 'browser-devices',
+            text: this.$t('console.menu.browserDevices'),
+            name: ROUTE_CONSOLE_BROWSER_DEVICES,
+            icon: DesktopIcon
+          }
+        );
+      }
 
       return links;
     }
