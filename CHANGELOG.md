@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 15 Sep 2026 20:22:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 17 Sep 2026 20:23:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.3
+
+Thu, 17 Sep 2026 20:23:50 GMT
+
+### Patches
+
+- Fix white-label top-up previews to avoid applying package markup twice. (dev@acedata.cloud)
+- Hide connectors, skills, and browser devices from white-label and subsite consoles. (dev@acedata.cloud)
 
 ## 3.371.2
 
