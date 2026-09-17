@@ -1,4 +1,4 @@
-import { IApplication, ISite, ISiteContact, IUser } from '@/models';
+import { IApplication, IPackage, ISite, ISiteContact, IUser } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { isNative, isDesktop } from './surface';
 import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
@@ -169,4 +169,41 @@ export const applyMarkup = (price?: number | null, ratio?: number | null): numbe
   let r = typeof ratio === 'number' && Number.isFinite(ratio) ? ratio : 0;
   if (r < 0) r = 0;
   return base * (1 + r);
+};
+
+export interface IUsagePackagePricing {
+  packagePrice: number;
+  finalPrice: number;
+}
+
+const isValidPrice = (value: unknown): value is number =>
+  typeof value === 'number' && Number.isFinite(value) && value >= 0;
+
+export const resolveUsagePackagePricing = (
+  pkg?: IPackage,
+  markupRatio?: number,
+  orderDiscountRate?: number,
+  applyOrderDiscount = true
+): IUsagePackagePricing | undefined => {
+  if (!pkg) return undefined;
+  const hasResolvedQuote = pkg.list_price !== undefined || pkg.final_price !== undefined;
+
+  if (hasResolvedQuote) {
+    if (!isValidPrice(pkg.price)) return undefined;
+    if (!applyOrderDiscount) return { packagePrice: pkg.price, finalPrice: pkg.price };
+    if (pkg.final_price !== undefined) {
+      if (!isValidPrice(pkg.final_price)) return undefined;
+      return { packagePrice: pkg.price, finalPrice: pkg.final_price };
+    }
+    if (orderDiscountRate === undefined) return undefined;
+    return { packagePrice: pkg.price, finalPrice: pkg.price * (1 - orderDiscountRate) };
+  }
+
+  // Older backends return only the unmarked package price.
+  if (markupRatio === undefined || orderDiscountRate === undefined || !isValidPrice(pkg.price)) return undefined;
+  const packagePrice = applyMarkup(pkg.price, markupRatio);
+  return {
+    packagePrice,
+    finalPrice: packagePrice * (1 - (applyOrderDiscount ? orderDiscountRate : 0))
+  };
 };
