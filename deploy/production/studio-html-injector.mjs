@@ -1,6 +1,7 @@
 import http from 'node:http';
 import { Readable } from 'node:stream';
-import { pathToFileURL } from 'node:url';
+import { realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const listenPort = Number(process.env.PORT || 3000);
 const upstream = process.env.STUDIO_UPSTREAM || 'http://studio-frontend.acedatacloud.svc.cluster.local:8085';
@@ -243,4 +244,4 @@ export function startServer() {
     .listen(listenPort, '0.0.0.0');
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) startServer();
+if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) startServer();

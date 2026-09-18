@@ -11,3 +11,5 @@ kubectl create configmap studio-html-injector \
   --dry-run=client -o yaml | kubectl apply -f -
 injector_sha=$(openssl dgst -sha256 "$INJECTOR" | awk '{print $NF}')
 sed "s/\${INJECTOR_SHA}/$injector_sha/g" "$MANIFEST" | kubectl apply -f -
+
+kubectl rollout status deployment/caddy-studio-proxy --namespace "$NAMESPACE" --timeout=5m

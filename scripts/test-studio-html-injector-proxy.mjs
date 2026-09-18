@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
+import { mkdtemp, mkdir, symlink, copyFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 import http from 'node:http';
 import test from 'node:test';
 
@@ -179,4 +182,20 @@ test('coalesces concurrent lookups and uses only same-host stale metadata', asyn
   assert.equal(lookups, 3);
   assert.match(other.body, /<title>other\.example\.com<\/title>/);
   assert.doesNotMatch(other.body, /Cached Tenant|Ace Data Cloud/);
+});
+
+test('starts through a Kubernetes ConfigMap-style symlink', async (context) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'studio-injector-configmap-'));
+  const data = path.join(root, '..data');
+  await mkdir(data);
+  await copyFile('deploy/production/studio-html-injector.mjs', path.join(data, 'server.mjs'));
+  await symlink('..data/server.mjs', path.join(root, 'server.mjs'));
+  const port = await reservePort();
+  const child = spawn(process.execPath, [path.join(root, 'server.mjs')], {
+    env: { ...process.env, PORT: String(port) },
+    stdio: ['ignore', 'pipe', 'pipe']
+  });
+  context.after(() => child.kill('SIGTERM'));
+  await waitForHealth(port);
+  assert.equal((await request(port, '/healthz')).status, 200);
 });
