@@ -42,3 +42,23 @@ assert 'test-compatible-images.sh studio-frontend' in ci
 prepare = (ROOT / 'deploy/prepare-previous-assets.sh').read_text()
 assert 'docker pull "$PREVIOUS_IMAGE"' in prepare
 assert 'kubectl exec' not in prepare
+
+proxy_path = ROOT / 'deploy/production/studio-proxy.yaml'
+proxy_source = proxy_path.read_text()
+proxy_docs = list(yaml.safe_load_all(proxy_source))
+proxy_deployment = next(doc for doc in proxy_docs if doc.get('kind') == 'Deployment')
+proxy_template = proxy_deployment['spec']['template']
+injector = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'html-injector')
+injector_env = {item['name']: item['value'] for item in injector['env']}
+apply_proxy = (ROOT / 'deploy/apply-studio-proxy.sh').read_text()
+run_script = (ROOT / 'deploy/run.sh').read_text()
+assert 'reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085' in proxy_source
+assert 'reverse_proxy localhost:3000' in proxy_source
+assert injector_env['SITE_HEAD_API'] == 'https://platform.acedata.cloud/api/v1/site-head/'
+assert proxy_template['metadata']['annotations']['acedata.cloud/html-injector-sha'] == '${INJECTOR_SHA}'
+assert injector['readinessProbe']['httpGet']['path'] == '/healthz'
+assert injector['livenessProbe']['httpGet']['path'] == '/healthz'
+assert 'kubectl create configmap studio-html-injector' in apply_proxy
+assert 'openssl dgst -sha256' in apply_proxy
+assert 'deploy/apply-studio-proxy.sh' in run_script
+assert 'deploy/apply-studio-proxy.sh' in cutover
