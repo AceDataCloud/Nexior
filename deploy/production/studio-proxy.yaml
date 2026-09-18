@@ -9,6 +9,7 @@
 #   * 80/443 LoadBalancer (separate public CLB; do NOT share with nginx-router)
 #   * Caddy 2 with `tls { on_demand }` and an `ask` callback that consults
 #     PlatformBackend (/api/v1/site-domains/check) before signing a cert.
+#   * A local HTML injector that writes tenant metadata into raw HTML.
 #   * cbs PVC at /data so ACME account, certs, and locks survive pod restarts.
 #
 # Tenant flow:
@@ -59,9 +60,19 @@ data:
         on_demand
       }
 
-      # Reverse-proxy to studio-frontend with the original Host header
-      # preserved so Nexior's per-origin Site lookup keeps working.
-      reverse_proxy studio-frontend.acedatacloud.svc.cluster.local:8085 {
+      # WebSocket upgrades bypass the HTML-only sidecar. All regular HTTP
+      # responses pass through it so the first HTML response is tenant-aware.
+      @websocket {
+        header Connection *Upgrade*
+        header Upgrade websocket
+      }
+      reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto https
+      }
+      reverse_proxy localhost:3000 {
         header_up Host {host}
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-For {remote_host}
@@ -140,6 +151,8 @@ spec:
     metadata:
       labels:
         app: caddy-studio-proxy
+      annotations:
+        acedata.cloud/html-injector-sha: '${INJECTOR_SHA}'
     spec:
       containers:
         - name: caddy
@@ -185,6 +198,41 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 30
             failureThreshold: 3
+        - name: html-injector
+          image: node:22.20.0-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["node", "/app/server.mjs"]
+          ports:
+            - { name: injector, containerPort: 3000, protocol: TCP }
+          env:
+            - { name: PORT, value: "3000" }
+            - { name: STUDIO_UPSTREAM, value: "http://studio-frontend.acedatacloud.svc.cluster.local:8085" }
+            - { name: SITE_HEAD_API, value: "https://platform.acedata.cloud/api/v1/site-head/" }
+            - { name: SITE_CACHE_TTL_MS, value: "60000" }
+            - { name: SITE_STALE_TTL_MS, value: "300000" }
+            - { name: SITE_LOOKUP_TIMEOUT_MS, value: "3000" }
+            - { name: MAX_HTML_BYTES, value: "4194304" }
+          volumeMounts:
+            - { name: html-injector, mountPath: /app, readOnly: true }
+          resources:
+            requests:
+              cpu: 25m
+              memory: 48Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
       volumes:
         - name: caddyfile
           configMap:
@@ -197,6 +245,9 @@ spec:
             claimName: caddy-studio
         - name: config
           emptyDir: {}
+        - name: html-injector
+          configMap:
+            name: studio-html-injector
 ---
 apiVersion: v1
 kind: Service

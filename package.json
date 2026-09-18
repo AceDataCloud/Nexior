@@ -39,7 +39,8 @@
     "prepare": "husky",
     "analyze": "vite-bundle-visualizer",
     "build:ssg": "cross-env VITE_SURFACE=web vite-ssg build",
-    "prebuild": "node --test scripts/check_site_auth_management_ui.mjs scripts/check_site_auth_delivery_contract.mjs"
+    "prebuild": "node --test scripts/check_site_auth_management_ui.mjs scripts/check_site_auth_delivery_contract.mjs",
+    "test:studio-html-injector": "node --test scripts/check-studio-html-injector.mjs scripts/test-studio-html-injector-proxy.mjs"
   },
   "dependencies": {
     "@acedatacloud/core": "0.22.0",

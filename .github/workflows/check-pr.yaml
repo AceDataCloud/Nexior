@@ -55,7 +55,9 @@ jobs:
         run: python3 scripts/check_release_workflows.py
 
       - name: Studio deployment contract
-        run: python3 scripts/check_studio_deployment.py
+        run: |
+          python3 scripts/check_studio_deployment.py
+          npm run test:studio-html-injector
 
       - name: Release asset manifest tests
         run: python3 -m unittest scripts/test_release_assets.py
