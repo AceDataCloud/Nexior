@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 17 Sep 2026 20:23:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 18 Sep 2026 20:22:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.4
+
+Fri, 18 Sep 2026 20:22:26 GMT
+
+### Patches
+
+- Render tenant branding in the first HTML response for social link previews. (dev@acedata.cloud)
+- Start the tenant HTML injector from Kubernetes ConfigMap mounts and verify its rollout. (dev@acedata.cloud)
 
 ## 3.371.3
 
