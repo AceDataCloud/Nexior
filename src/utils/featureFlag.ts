@@ -137,6 +137,18 @@ export function isFeatureEnabled(name: string): boolean {
   return readServerFlag(name) === true;
 }
 
+export function getStickyFeatureOverrides(): string {
+  const set = cachedFeatures ?? readStoredFeatures();
+  if (set.size === 0) return '';
+  const tokens: string[] = [];
+  if (set.has(ALL_TOKEN)) tokens.push('all');
+  for (const flag of set) {
+    if (flag === ALL_TOKEN) continue;
+    tokens.push(flag.startsWith(OFF_PREFIX) ? `-${flag.slice(OFF_PREFIX.length)}` : flag);
+  }
+  return tokens.join(',');
+}
+
 export function syncFeaturesFromUrl(): Set<string> {
   if (typeof window === 'undefined') {
     cachedFeatures = new Set();

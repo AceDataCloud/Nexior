@@ -11,6 +11,7 @@ import { load as loadLocalConfig, rootsWithWorkingDir } from './local/config';
 import { daemon } from './scheduler/daemon';
 import { initTray, refreshTray, setOpenAtLogin, isOpenAtLogin } from './scheduler/tray';
 import { getDeviceId, getDeviceName, setDeviceName, setCredentials, clearCredentials } from './scheduler/credentials';
+import { normalizeAirwallexCheckoutUrl } from './payment';
 
 const DESKTOP_SCHEME = 'acedata-desktop';
 
@@ -40,6 +41,14 @@ const allowedHost = (u: string, set: Set<string>): boolean => {
     return false;
   }
 };
+const isAppOrigin = (url: string | undefined): boolean => {
+  try {
+    return !!url && new URL(url).origin === new URL(APP_ORIGIN).origin;
+  } catch {
+    return false;
+  }
+};
+
 const allowedExternal = (u: string): boolean => {
   if (allowedHost(u, EXTERNAL_HOSTS) || allowedHost(u, AUTH_HOSTS)) return true;
   try {
@@ -323,6 +332,12 @@ ipcMain.handle('auth:openOAuth', (_e, authUrl: string) => {
 
 ipcMain.handle('shell:openExternal', (_e, url: string) => {
   if (allowedExternal(url)) return shell.openExternal(url);
+});
+
+ipcMain.handle('payments:openAirwallexCheckout', (event, url: string) => {
+  if (event.senderFrame !== event.sender.mainFrame || !isAppOrigin(event.senderFrame?.url)) return;
+  const checkoutUrl = normalizeAirwallexCheckoutUrl(url);
+  if (checkoutUrl) return shell.openExternal(checkoutUrl);
 });
 
 /**

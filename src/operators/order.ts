@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from './common';
-import { IOrder, IOrderDetailResponse, IOrderListResponse } from '@/models';
+import { anonymousHttpClient, httpClient } from './common';
+import { IOrder, IOrderDetailResponse, IOrderListResponse, IOrderPayRequest, IOrderPayResponse } from '@/models';
+import { getStickyFeatureOverrides, isFeatureEnabled } from '@/utils/featureFlag';
 
 export interface IOrderQuery {
   user_id?: string;
@@ -35,6 +36,10 @@ class OrderService {
     return await httpClient.get(`/${this.key}/${id}`);
   }
 
+  async getPublic(id: string): Promise<AxiosResponse<IOrderDetailResponse>> {
+    return await anonymousHttpClient.get(`/${this.key}/${id}`);
+  }
+
   async create(data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/`, data);
   }
@@ -47,8 +52,26 @@ class OrderService {
     return await httpClient.post(`/${this.key}/${id}/refresh/`);
   }
 
-  async pay(id: string, data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {
-    return await httpClient.post(`/${this.key}/${id}/pay/`, data);
+  private paymentConfig() {
+    const tokens = getStickyFeatureOverrides()
+      .split(',')
+      .filter(Boolean)
+      .filter((token) => token !== 'all');
+    if (isFeatureEnabled('airwallex') && !tokens.includes('-airwallex') && !tokens.includes('airwallex')) {
+      tokens.push('airwallex');
+    }
+    const overrides = tokens.join(',');
+    return { headers: overrides ? { 'x-feature-overrides': overrides } : undefined };
+  }
+
+  async pay(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/pay/`, data, this.paymentConfig());
+  }
+
+  // Backend AllowAny endpoint: the unguessable order UUID is the capability,
+  // and the server restricts anonymous callers to hosted payment methods.
+  async payPublic(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
+    return await anonymousHttpClient.post(`/${this.key}/${id}/pay/`, data, this.paymentConfig());
   }
 
   async payX402WithHeader(

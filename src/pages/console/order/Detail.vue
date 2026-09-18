@@ -198,7 +198,7 @@
                     $t('common.button.pay')
                   }}</el-button>
                 </div>
-                <div v-else-if="showPayment">
+                <div v-else-if="showPayment && !(isIos && order?.pay_way === PayWay.Airwallex)">
                   <el-button type="primary" round size="large" class="btn-repay" @click="onRepay">{{
                     $t('common.button.repay')
                   }}</el-button>
@@ -274,8 +274,16 @@ import AlipayPayOrder from '@/components/order/AliPay.vue';
 import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import ApplePayOrder from '@/components/order/ApplePay.vue';
-import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
-import { getPriceString } from '@/utils';
+import {
+  IConfigResponse,
+  IOrder,
+  IOrderDetailResponse,
+  IOrderPayRequest,
+  IOrderPayResponse,
+  OrderState
+} from '@/models';
+import { getPriceString, isFeatureEnabled } from '@/utils';
+import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
 import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -291,7 +299,8 @@ enum PayWay {
   X402 = 'X402',
   PayPal = 'PayPal',
   Apple = 'AppleIAP',
-  Card = 'Card'
+  Card = 'Card',
+  Airwallex = 'Airwallex'
 }
 
 interface IData {
@@ -350,7 +359,7 @@ export default defineComponent({
     },
     // When ENABLE_CARD is on, Card replaces Stripe in the payment picker.
     enableCard(): boolean {
-      return !!this.config?.features?.ENABLE_CARD;
+      return !!this.config?.features?.ENABLE_CARD || isFeatureEnabled('airwallex');
     },
     isIos(): boolean {
       return isIOS();
@@ -537,10 +546,10 @@ export default defineComponent({
     },
     order: {
       handler(val, oldVal) {
-        if (val?.state === OrderState.PAID) {
+        if (val?.state === OrderState.PAID || val?.state === OrderState.FINISHED) {
           // Fire once on the PENDING→PAID transition (the polling watcher
           // re-runs on every refresh tick).
-          if (oldVal?.state !== OrderState.PAID) {
+          if (oldVal?.state !== OrderState.PAID && oldVal?.state !== OrderState.FINISHED) {
             track('payment_success', {
               order_id: val?.id,
               pay_way: val?.pay_way,
@@ -590,6 +599,7 @@ export default defineComponent({
         case PayWay.Stripe:
           return this.$t('order.title.stripe') as string;
         case PayWay.Card:
+        case PayWay.Airwallex:
           return this.$t('order.title.card') as string;
         case PayWay.AliPay:
           return this.$t('order.title.aliPay') as string;
@@ -612,6 +622,7 @@ export default defineComponent({
           this.order = data;
           if (
             data?.state === OrderState.PAID ||
+            data?.state === OrderState.FINISHED ||
             data?.state === OrderState.FAILED ||
             data?.state === OrderState.EXPIRED
           ) {
@@ -649,11 +660,21 @@ export default defineComponent({
         });
     },
     onRepay() {
+      if (this.order?.pay_way === PayWay.Airwallex) {
+        this.onPay();
+        return;
+      }
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;
       }
       this.paying = true;
       this.startOrderPolling();
+    },
+    selectedPayWay(): PayWay {
+      if (this.order?.pay_way === PayWay.Airwallex) return PayWay.Airwallex;
+      return this.payWay === PayWay.Card && isFeatureEnabled('airwallex')
+        ? PayWay.Airwallex
+        : this.payWay || PayWay.WechatPay;
     },
     onPay() {
       this.prepaying = true;
@@ -674,18 +695,26 @@ export default defineComponent({
       // so the field is required to keep mobile users out of the desktop form.
       // Android Stripe uses the native PaymentSheet, which needs a
       // PaymentIntent (not a PaymentLink). The backend routes on this hint.
-      const payload: Record<string, unknown> = { pay_way: this.payWay };
-      if (this.payWay === PayWay.AliPay) {
+      const selectedPayWay = this.selectedPayWay();
+      const payload: Record<string, unknown> = { pay_way: selectedPayWay };
+      if (selectedPayWay === PayWay.AliPay) {
         payload.surface = getPaymentSurface();
-      } else if (this.payWay === PayWay.Stripe && isAndroid()) {
+      } else if (selectedPayWay === PayWay.Stripe && isAndroid()) {
         payload.surface = 'android';
       }
       orderOperator
-        .pay(this.id, payload as unknown as IOrder)
-        .then(({ data: data }: { data: IOrderDetailResponse }) => {
+        .pay(this.id, payload as unknown as IOrderPayRequest)
+        .then(async ({ data }: { data: IOrderPayResponse }) => {
           this.prepaying = false;
-          if (data?.id) {
-            this.order = data;
+          const { payment, ...orderData } = data;
+          if (orderData?.id) {
+            this.order = orderData;
+            this.payWay = (orderData.pay_way || this.payWay) as PayWay;
+          }
+          if (selectedPayWay === PayWay.Airwallex && payment) {
+            this.paying = true;
+            await redirectToAirwallexCheckout(payment);
+            return;
           }
           if (this.payWay === PayWay.X402 && data) {
             const sessionCandidate = data as unknown as Record<string, any>;
@@ -700,6 +729,7 @@ export default defineComponent({
         })
         .catch((error: any) => {
           this.prepaying = false;
+          this.paying = false;
           const session = error?.response?.data;
           if (this.payWay === PayWay.X402 && isX402Challenge(error)) {
             this.x402Session = session;

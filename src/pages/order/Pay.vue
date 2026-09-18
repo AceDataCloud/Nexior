@@ -132,7 +132,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { orderOperator } from '@/operators';
-import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
+import {
+  IConfigResponse,
+  IOrder,
+  IOrderDetailResponse,
+  IOrderPayRequest,
+  IOrderPayResponse,
+  OrderState
+} from '@/models';
 import {
   ElRow,
   ElCol,
@@ -149,7 +156,8 @@ import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
 import PublicAlipayPay from '@/components/order/public/AliPay.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { getPaymentSurface, getPriceString, isIOS } from '@/utils';
+import { getPaymentSurface, getPriceString, isFeatureEnabled, isIOS } from '@/utils';
+import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
 
 // Polls the AllowAny GET /orders/<id> endpoint — POST /orders/<id>/refresh/
 // is IsAuthenticated and would 401 here.
@@ -163,7 +171,8 @@ enum PayWay {
   WechatPay = 'WechatPay',
   Stripe = 'Stripe',
   AliPay = 'AliPay',
-  Card = 'Card'
+  Card = 'Card',
+  Airwallex = 'Airwallex'
 }
 
 interface IData {
@@ -214,7 +223,7 @@ export default defineComponent({
     },
     // When ENABLE_CARD is on, Card replaces Stripe on the anonymous page too.
     enableCard(): boolean {
-      return !!this.config?.features?.ENABLE_CARD;
+      return !!this.config?.features?.ENABLE_CARD || isFeatureEnabled('airwallex');
     },
     // App Store Review Guideline 3.1.1: no non-IAP payment UI on iOS.
     showPayment(): boolean {
@@ -243,7 +252,8 @@ export default defineComponent({
         WechatPay: this.$t('order.title.wechatPay') as string,
         Stripe: this.$t('order.title.stripe') as string,
         AliPay: this.$t('order.title.aliPay') as string,
-        Card: this.$t('order.title.card') as string
+        Card: this.$t('order.title.card') as string,
+        Airwallex: this.$t('order.title.card') as string
       };
       return map[payWay] || payWay;
     },
@@ -251,7 +261,7 @@ export default defineComponent({
       if (!this.id) return;
       this.loading = true;
       orderOperator
-        .get(this.id)
+        .getPublic(this.id)
         .then(({ data }: { data: IOrderDetailResponse }) => {
           this.order = data;
           if (data?.pay_way && (data.pay_way as any) in PayWay) {
@@ -268,7 +278,7 @@ export default defineComponent({
       this.stopOrderPolling();
       const poll = async () => {
         try {
-          const { data } = await orderOperator.get(this.id);
+          const { data } = await orderOperator.getPublic(this.id);
           this.order = data;
           if (
             data?.state === OrderState.PAID ||
@@ -297,7 +307,15 @@ export default defineComponent({
       }
     },
     onRepay() {
+      if (this.order?.pay_way === PayWay.Airwallex) {
+        this.onPay();
+        return;
+      }
       this.paying = true;
+    },
+    selectedPayWay(): PayWay {
+      if (this.order?.pay_way === PayWay.Airwallex) return PayWay.Airwallex;
+      return this.payWay === PayWay.Card && isFeatureEnabled('airwallex') ? PayWay.Airwallex : this.payWay;
     },
     onPay() {
       if (!this.id) return;
@@ -306,16 +324,24 @@ export default defineComponent({
       // the `surface` hint. WeChat Pay is pinned to Native QR on our
       // merchant so we omit surface there. Stripe doesn't have a native
       // app variant on the anonymous page so 'pc' / 'wap' is moot.
-      const payload: Record<string, unknown> = { pay_way: this.payWay };
-      if (this.payWay === PayWay.AliPay) {
+      const selectedPayWay = this.selectedPayWay();
+      const payload: Record<string, unknown> = { pay_way: selectedPayWay };
+      if (selectedPayWay === PayWay.AliPay) {
         payload.surface = getPaymentSurface();
       }
       orderOperator
-        .pay(this.id, payload as any)
-        .then(({ data }: { data: IOrderDetailResponse }) => {
+        .payPublic(this.id, payload as unknown as IOrderPayRequest)
+        .then(async ({ data }: { data: IOrderPayResponse }) => {
           this.prepaying = false;
-          if (data?.id) {
-            this.order = data;
+          const { payment, ...orderData } = data;
+          if (orderData?.id) {
+            this.order = orderData;
+            this.payWay = (orderData.pay_way || this.payWay) as PayWay;
+          }
+          if (selectedPayWay === PayWay.Airwallex && payment) {
+            this.paying = true;
+            await redirectToAirwallexCheckout(payment);
+            return;
           }
           if (this.order && this.order.price && this.order.price > 0) {
             this.paying = true;
@@ -323,6 +349,7 @@ export default defineComponent({
         })
         .catch(() => {
           this.prepaying = false;
+          this.paying = false;
         });
     }
   }
