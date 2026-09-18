@@ -60,5 +60,6 @@ assert injector['readinessProbe']['httpGet']['path'] == '/healthz'
 assert injector['livenessProbe']['httpGet']['path'] == '/healthz'
 assert 'kubectl create configmap studio-html-injector' in apply_proxy
 assert 'openssl dgst -sha256' in apply_proxy
+assert 'kubectl rollout status deployment/caddy-studio-proxy' in apply_proxy
 assert 'deploy/apply-studio-proxy.sh' in run_script
 assert 'deploy/apply-studio-proxy.sh' in cutover
