@@ -282,7 +282,7 @@ import {
   IOrderPayResponse,
   OrderState
 } from '@/models';
-import { getPriceString, isFeatureEnabled } from '@/utils';
+import { getPriceString } from '@/utils';
 import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
 import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
@@ -357,9 +357,12 @@ export default defineComponent({
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
     },
+    airwallexEnabled(): boolean {
+      return this.config?.features?.airwallex === true;
+    },
     // When ENABLE_CARD is on, Card replaces Stripe in the payment picker.
     enableCard(): boolean {
-      return !!this.config?.features?.ENABLE_CARD || isFeatureEnabled('airwallex');
+      return !!this.config?.features?.ENABLE_CARD || this.airwallexEnabled;
     },
     isIos(): boolean {
       return isIOS();
@@ -672,9 +675,7 @@ export default defineComponent({
     },
     selectedPayWay(): PayWay {
       if (this.order?.pay_way === PayWay.Airwallex) return PayWay.Airwallex;
-      return this.payWay === PayWay.Card && isFeatureEnabled('airwallex')
-        ? PayWay.Airwallex
-        : this.payWay || PayWay.WechatPay;
+      return this.payWay === PayWay.Card && this.airwallexEnabled ? PayWay.Airwallex : this.payWay || PayWay.WechatPay;
     },
     onPay() {
       this.prepaying = true;

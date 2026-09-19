@@ -1,7 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { anonymousHttpClient, httpClient } from './common';
 import { IOrder, IOrderDetailResponse, IOrderListResponse, IOrderPayRequest, IOrderPayResponse } from '@/models';
-import { getStickyFeatureOverrides, isFeatureEnabled } from '@/utils/featureFlag';
 
 export interface IOrderQuery {
   user_id?: string;
@@ -52,26 +51,14 @@ class OrderService {
     return await httpClient.post(`/${this.key}/${id}/refresh/`);
   }
 
-  private paymentConfig() {
-    const tokens = getStickyFeatureOverrides()
-      .split(',')
-      .filter(Boolean)
-      .filter((token) => token !== 'all');
-    if (isFeatureEnabled('airwallex') && !tokens.includes('-airwallex') && !tokens.includes('airwallex')) {
-      tokens.push('airwallex');
-    }
-    const overrides = tokens.join(',');
-    return { headers: overrides ? { 'x-feature-overrides': overrides } : undefined };
-  }
-
   async pay(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
-    return await httpClient.post(`/${this.key}/${id}/pay/`, data, this.paymentConfig());
+    return await httpClient.post(`/${this.key}/${id}/pay/`, data);
   }
 
   // Backend AllowAny endpoint: the unguessable order UUID is the capability,
   // and the server restricts anonymous callers to hosted payment methods.
   async payPublic(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
-    return await anonymousHttpClient.post(`/${this.key}/${id}/pay/`, data, this.paymentConfig());
+    return await anonymousHttpClient.post(`/${this.key}/${id}/pay/`, data);
   }
 
   async payX402WithHeader(

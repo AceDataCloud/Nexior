@@ -53,7 +53,7 @@ describe('request auth coverage', () => {
         "auth.ts:anonymousHttpClient.post:'/auth/refresh/', payload);",
         "auth.ts:anonymousHttpClient.post:'/token', payload, {",
         "exchange.ts:anonymousHttpClient.post:'/exchange-rate', payload);",
-        'order.ts:anonymousHttpClient.post:`/${this.key}/${id}/pay/`, data, this.paymentConfig());',
+        'order.ts:anonymousHttpClient.post:`/${this.key}/${id}/pay/`, data);',
         'site.ts:optionalHttpClient.post:`/${this.key}/initialize/`, data);'
       ].sort()
     );

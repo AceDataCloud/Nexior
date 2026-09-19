@@ -10,7 +10,7 @@ describe('Airwallex card routing contract', () => {
     (path) => {
       const page = source(path);
       expect(page).toContain('PayWay.Airwallex');
-      expect(page).toContain("this.payWay === PayWay.Card && isFeatureEnabled('airwallex')");
+      expect(page).toContain('this.payWay === PayWay.Card && this.airwallexEnabled');
       expect(page).toContain('redirectToAirwallexCheckout(payment)');
       expect(page).toContain('this.order?.pay_way === PayWay.Airwallex');
     }
@@ -48,5 +48,10 @@ describe('Electron Airwallex checkout boundary', () => {
     expect(main).toContain('event.senderFrame !== event.sender.mainFrame');
     expect(main).toContain('!isAppOrigin(event.senderFrame?.url)');
     expect(main).toContain('normalizeAirwallexCheckoutUrl(url)');
+  });
+  it('never adds a feature-override header to cross-origin payment requests', () => {
+    const operator = source('src/operators/order.ts');
+    expect(operator).not.toContain('x-feature-overrides');
+    expect(operator).not.toContain('getStickyFeatureOverrides');
   });
 });
