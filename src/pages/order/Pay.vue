@@ -156,7 +156,7 @@ import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
 import PublicAlipayPay from '@/components/order/public/AliPay.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { getPaymentSurface, getPriceString, isFeatureEnabled, isIOS } from '@/utils';
+import { getPaymentSurface, getPriceString, isIOS } from '@/utils';
 import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
 
 // Polls the AllowAny GET /orders/<id> endpoint — POST /orders/<id>/refresh/
@@ -221,9 +221,12 @@ export default defineComponent({
     config(): IConfigResponse | undefined {
       return this.$store.getters.config as IConfigResponse | undefined;
     },
+    airwallexEnabled(): boolean {
+      return this.config?.features?.airwallex === true;
+    },
     // When ENABLE_CARD is on, Card replaces Stripe on the anonymous page too.
     enableCard(): boolean {
-      return !!this.config?.features?.ENABLE_CARD || isFeatureEnabled('airwallex');
+      return !!this.config?.features?.ENABLE_CARD || this.airwallexEnabled;
     },
     // App Store Review Guideline 3.1.1: no non-IAP payment UI on iOS.
     showPayment(): boolean {
@@ -315,7 +318,7 @@ export default defineComponent({
     },
     selectedPayWay(): PayWay {
       if (this.order?.pay_way === PayWay.Airwallex) return PayWay.Airwallex;
-      return this.payWay === PayWay.Card && isFeatureEnabled('airwallex') ? PayWay.Airwallex : this.payWay;
+      return this.payWay === PayWay.Card && this.airwallexEnabled ? PayWay.Airwallex : this.payWay;
     },
     onPay() {
       if (!this.id) return;
