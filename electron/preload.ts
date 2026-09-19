@@ -34,6 +34,7 @@ contextBridge.exposeInMainWorld('desktop', {
 
   // Open an external https link (payment Page, docs) in the system browser.
   openExternal: (url: string): Promise<void> => ipcRenderer.invoke('shell:openExternal', url),
+  openAirwallexCheckout: (url: string): Promise<void> => ipcRenderer.invoke('payments:openAirwallexCheckout', url),
 
   createConnectorCallback: (): Promise<{ requestId: string; returnUrl: string }> =>
     ipcRenderer.invoke('connections:createCallback'),

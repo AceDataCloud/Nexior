@@ -27,6 +27,8 @@ export interface DesktopBridge {
   ): () => void;
   /** Open an external https link (payment Page, docs) in the system browser. */
   openExternal(url: string): Promise<void>;
+  /** Open a validated Airwallex hosted checkout in the system browser. */
+  openAirwallexCheckout?(url: string): Promise<void>;
   /**
    * Open a connector's OAuth consent page in the system browser.
    *

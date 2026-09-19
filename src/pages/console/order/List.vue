@@ -143,7 +143,7 @@
                 label-class-name="hidden md:table-cell"
               >
                 <template #default="scope">
-                  <span class="text-gray-500">{{ scope.row.pay_way || '-' }}</span>
+                  <span class="text-gray-500">{{ payWayLabel(scope.row.pay_way) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -321,6 +321,7 @@ export default defineComponent({
         { value: 'WechatPay', label: this.$t('order.title.wechatPay') },
         { value: 'Stripe', label: this.$t('order.title.stripe') },
         { value: 'Card', label: this.$t('order.title.card') },
+        { value: 'Airwallex', label: this.$t('order.title.card') },
         { value: 'AliPay', label: this.$t('order.title.aliPay') },
         { value: 'X402', label: this.$t('order.title.x402') },
         { value: 'PayPal', label: this.$t('order.title.paypal') }
@@ -349,6 +350,11 @@ export default defineComponent({
     this.onFetchSummary();
   },
   methods: {
+    payWayLabel(payWay?: string): string {
+      if (!payWay) return '-';
+      if (payWay === 'Airwallex') return this.$t('order.title.card') as string;
+      return payWay;
+    },
     getPriceString,
     stateTagType(state: string) {
       if (state === OrderState.FINISHED || state === OrderState.PAID) return 'success';

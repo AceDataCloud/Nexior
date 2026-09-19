@@ -41,6 +41,22 @@ export interface IOrder {
   metadata?: Record<string, any>;
 }
 
+export interface IOrderPayRequest {
+  pay_way: string;
+  surface?: string;
+}
+
+export interface IAirwallexBillingCheckoutPayment {
+  provider: 'airwallex';
+  flow: 'billing_checkout';
+  checkout_id: string;
+  url: string;
+}
+
+export interface IOrderPayResponse extends IOrder {
+  payment?: IAirwallexBillingCheckoutPayment;
+}
+
 export interface IOrderListResponse {
   count: number;
   items: IOrder[];
