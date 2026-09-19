@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 18 Sep 2026 20:22:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 19 Sep 2026 20:21:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.5
+
+Sat, 19 Sep 2026 20:21:23 GMT
+
+### Patches
+
+- Route feature-gated card checkout through Airwallex while preserving native payment flows. (dev@acedata.cloud)
+- Remove the cross-origin feature override header from card checkout requests. (dev@acedata.cloud)
 
 ## 3.371.4
 
