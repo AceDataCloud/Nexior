@@ -44,6 +44,7 @@ export interface IOrder {
 export interface IOrderPayRequest {
   pay_way: string;
   surface?: string;
+  payment_contract?: 'airwallex_payment_intent';
 }
 
 export interface IAirwallexBillingCheckoutPayment {
@@ -53,8 +54,20 @@ export interface IAirwallexBillingCheckoutPayment {
   url: string;
 }
 
+export interface IAirwallexPaymentIntentPayment {
+  provider: 'airwallex';
+  flow: 'payment_intent_hpp';
+  intent_id: string;
+  client_secret: string;
+  currency: 'USD';
+  environment: 'demo' | 'prod';
+  success_url: string;
+}
+
+export type IAirwallexPayment = IAirwallexBillingCheckoutPayment | IAirwallexPaymentIntentPayment;
+
 export interface IOrderPayResponse extends IOrder {
-  payment?: IAirwallexBillingCheckoutPayment;
+  payment?: IAirwallexPayment;
 }
 
 export interface IOrderListResponse {

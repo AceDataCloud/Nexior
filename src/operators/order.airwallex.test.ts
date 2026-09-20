@@ -24,6 +24,12 @@ describe('order Airwallex requests', () => {
     expect(mocks.authenticatedPost).toHaveBeenCalledWith('/orders/order-id/pay/', { pay_way: 'Airwallex' });
   });
 
+  it('passes the PaymentIntent contract through the request body', async () => {
+    const payload = { pay_way: 'Airwallex', payment_contract: 'airwallex_payment_intent' as const };
+    await orderOperator.pay('order-id', payload);
+    expect(mocks.authenticatedPost).toHaveBeenCalledWith('/orders/order-id/pay/', payload);
+  });
+
   it('uses the anonymous client to load public payment links', async () => {
     await orderOperator.getPublic('order-id');
     expect(mocks.anonymousGet).toHaveBeenCalledWith('/orders/order-id');

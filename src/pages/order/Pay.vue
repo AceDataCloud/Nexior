@@ -156,7 +156,7 @@ import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
 import PublicAlipayPay from '@/components/order/public/AliPay.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { getPaymentSurface, getPriceString, isIOS } from '@/utils';
+import { getPaymentSurface, getPriceString, isIOS, supportsAirwallexPaymentIntent } from '@/utils';
 import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
 
 // Polls the AllowAny GET /orders/<id> endpoint — POST /orders/<id>/refresh/
@@ -329,6 +329,9 @@ export default defineComponent({
       // app variant on the anonymous page so 'pc' / 'wap' is moot.
       const selectedPayWay = this.selectedPayWay();
       const payload: Record<string, unknown> = { pay_way: selectedPayWay };
+      if (selectedPayWay === PayWay.Airwallex && supportsAirwallexPaymentIntent()) {
+        payload.payment_contract = 'airwallex_payment_intent';
+      }
       if (selectedPayWay === PayWay.AliPay) {
         payload.surface = getPaymentSurface();
       }

@@ -75,6 +75,10 @@ export function isWeb(): boolean {
   return getSurface() === SURFACE_WEB;
 }
 
+export function supportsAirwallexPaymentIntent(): boolean {
+  return isWeb() && typeof window !== 'undefined' && window.location.protocol === 'https:';
+}
+
 export function isMobile(): boolean {
   const ua = navigator.userAgent.toLowerCase();
   return /iphone|ipad|ipod|android|windows phone/i.test(ua);
