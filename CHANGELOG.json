@@ -2,6 +2,41 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 20 Sep 2026 20:21:37 GMT",
+      "version": "3.371.6",
+      "tag": "@acedatacloud/nexior_v3.371.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "52e525341615715f3988609de3e6810af68afdca",
+            "comment": "Upgrade the custom-domain proxy to atomic certificate storage and add a guarded two-replica rollout."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "9c9efff555dcc29de81a21c27218cdfa641a3510",
+            "comment": "Keep exhausted-credit recovery friendly and local to the active site."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1f476b51f462398f48bf75fe162d02790cb3465e",
+            "comment": "Use Airwallex PaymentIntent checkout for supported web card payments."
+          }
+        ],
+        "none": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f29a997d2f7448b0cb5620b76433791768ec3f88",
+            "comment": "Remove the completed one-time Caddy migration state machine and retain steady-state verification only."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 19 Sep 2026 20:21:23 GMT",
       "version": "3.371.5",
       "tag": "@acedatacloud/nexior_v3.371.5",

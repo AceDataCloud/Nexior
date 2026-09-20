@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 19 Sep 2026 20:21:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 20 Sep 2026 20:21:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.6
+
+Sun, 20 Sep 2026 20:21:37 GMT
+
+### Patches
+
+- Upgrade the custom-domain proxy to atomic certificate storage and add a guarded two-replica rollout. (dev@acedata.cloud)
+- Keep exhausted-credit recovery friendly and local to the active site. (dev@acedata.cloud)
+- Use Airwallex PaymentIntent checkout for supported web card payments. (dev@acedata.cloud)
 
 ## 3.371.5
 
