@@ -13,6 +13,9 @@ describe('Airwallex card routing contract', () => {
       expect(page).toContain('this.payWay === PayWay.Card && this.airwallexEnabled');
       expect(page).toContain('redirectToAirwallexCheckout(payment)');
       expect(page).toContain('this.order?.pay_way === PayWay.Airwallex');
+      expect(page).toContain("payload.payment_contract = 'airwallex_payment_intent'");
+      expect(page).toContain('supportsAirwallexPaymentIntent()');
+      expect(page).not.toContain('ENABLE_AIRWALLEX_3DS');
     }
   );
 
@@ -38,6 +41,21 @@ describe('Airwallex card routing contract', () => {
       expect(page).toContain('payWay === PayWay.Stripe || payWay === PayWay.Card');
       expect(page).not.toContain('MAX_ORDER_POLL_ATTEMPTS');
       expect(page).not.toContain('payWay === PayWay.Airwallex)"');
+    }
+  });
+
+  it('keeps the PaymentIntent secret transient', () => {
+    const models = source('src/models/order.ts');
+    const order = models.match(/export interface IOrder \{[\s\S]*?\n\}/)?.[0] || '';
+    expect(order).not.toContain('client_secret');
+    for (const path of [
+      'src/pages/console/order/Detail.vue',
+      'src/pages/order/Pay.vue',
+      'src/operators/order.ts',
+      'electron/main.ts',
+      'electron/payment.ts'
+    ]) {
+      expect(source(path)).not.toContain('client_secret');
     }
   });
 });

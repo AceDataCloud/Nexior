@@ -284,7 +284,7 @@ import {
 } from '@/models';
 import { getPriceString } from '@/utils';
 import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
-import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
+import { getPaymentSurface, isAndroid, isIOS, supportsAirwallexPaymentIntent } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isX402Challenge, resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
@@ -698,6 +698,9 @@ export default defineComponent({
       // PaymentIntent (not a PaymentLink). The backend routes on this hint.
       const selectedPayWay = this.selectedPayWay();
       const payload: Record<string, unknown> = { pay_way: selectedPayWay };
+      if (selectedPayWay === PayWay.Airwallex && supportsAirwallexPaymentIntent()) {
+        payload.payment_contract = 'airwallex_payment_intent';
+      }
       if (selectedPayWay === PayWay.AliPay) {
         payload.surface = getPaymentSurface();
       } else if (selectedPayWay === PayWay.Stripe && isAndroid()) {
