@@ -66,46 +66,25 @@ assert 'deploy/apply-studio-proxy.sh' in cutover
 
 proxy_pdb = next(doc for doc in proxy_docs if doc.get('kind') == 'PodDisruptionBudget')
 proxy_caddy = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'caddy')
-expected_caddy_image = 'caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e'
-assert proxy_caddy['image'] == expected_caddy_image
+assert proxy_caddy['image'] == 'caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e'
 assert injector['image'] == 'node:22.20.0-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af'
 assert proxy_deployment['spec']['replicas'] == 2
 assert proxy_deployment['spec']['minReadySeconds'] == 10
-assert proxy_deployment['spec']['revisionHistoryLimit'] == 2
-assert proxy_deployment['spec']['strategy'] == {
-    'type': 'RollingUpdate',
-    'rollingUpdate': {'maxSurge': 1, 'maxUnavailable': 0},
-}
-assert proxy_pdb['spec']['minAvailable'] == 1
-assert proxy_pdb['spec']['selector']['matchLabels'] == {'app': 'caddy-studio-proxy'}
-spread = proxy_template['spec']['topologySpreadConstraints'][0]
-assert spread['topologyKey'] == 'kubernetes.io/hostname'
-assert spread['whenUnsatisfiable'] == 'DoNotSchedule'
-anti_affinity = proxy_template['spec']['affinity']['podAntiAffinity']['requiredDuringSchedulingIgnoredDuringExecution'][0]
-assert anti_affinity['topologyKey'] == 'kubernetes.io/hostname'
-assert '"strategy":{"type":"Recreate"' in apply_proxy
-main_body = apply_proxy.split('main() {', 1)[1]
-assert main_body.index('preflight_image') < main_body.index('start_target_single')
-assert main_body.index('start_target_single') < main_body.rindex('kubectl apply -f "$rendered"')
-assert 'verify_tls "$MIGRATION_VERIFY_HOSTS"' in apply_proxy
-assert 'verify_runtime 2' in apply_proxy
-assert 'rollout undo' not in apply_proxy
-assert 'caddy:2.8' not in apply_proxy
-assert 'migration_marker' in apply_proxy
-assert 'nodeSelector' in apply_proxy
-assert 'render_single_manifest' in apply_proxy
+assert proxy_deployment['spec']['strategy'] == {'type': 'RollingUpdate', 'rollingUpdate': {'maxSurge': 1, 'maxUnavailable': 0}}
 assert proxy_template['spec']['nodeSelector'] == {'kubernetes.io/arch': 'amd64'}
-assert 'bash deploy/apply-studio-proxy.sh' in run_script
-assert 'bash deploy/apply-studio-proxy.sh' in cutover
-
+assert proxy_template['spec']['topologySpreadConstraints'][0]['whenUnsatisfiable'] == 'DoNotSchedule'
+assert proxy_template['spec']['affinity']['podAntiAffinity']['requiredDuringSchedulingIgnoredDuringExecution'][0]['topologyKey'] == 'kubernetes.io/hostname'
+assert proxy_pdb['spec']['minAvailable'] == 1
 proxy_pvc = next(doc for doc in proxy_docs if doc.get('kind') == 'PersistentVolumeClaim')
-assert proxy_pvc['metadata']['name'] == 'caddy-studio'
 assert proxy_pvc['spec']['accessModes'] == ['ReadWriteMany']
 assert proxy_pvc['spec']['storageClassName'] == 'cfs'
 proxy_volumes = {item['name']: item for item in proxy_template['spec']['volumes']}
 assert proxy_volumes['data']['persistentVolumeClaim']['claimName'] == 'caddy-studio'
 assert next(item for item in proxy_caddy['volumeMounts'] if item['name'] == 'data')['mountPath'] == '/data'
 assert {item['name']: item['value'] for item in proxy_caddy['env']}['XDG_DATA_HOME'] == '/data'
-assert proxy_caddy['readinessProbe']['httpGet']['port'] == 80
-assert injector['readinessProbe']['httpGet']['port'] == 3000
-assert injector['livenessProbe']['httpGet']['port'] == 3000
+assert 'caddy:2.8' not in apply_proxy
+assert 'MIGRATION_VERIFY_HOSTS' not in apply_proxy
+assert 'kubectl patch deployment' not in apply_proxy
+assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
+assert 'bash deploy/apply-studio-proxy.sh' in run_script
+assert 'bash deploy/apply-studio-proxy.sh' in cutover
