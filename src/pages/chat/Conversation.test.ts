@@ -209,6 +209,26 @@ describe('chat/Conversation interrupted tools', () => {
     });
   });
 
+  it('drops backend recharge copy from exhausted-credit errors', async () => {
+    const { wrapper } = mountComponent({ credentialToken: 'token' });
+    const vm = wrapper.vm as unknown as {
+      messages: any[];
+      handleRequestError: (error: unknown, targetIndex?: number) => Promise<void>;
+    };
+    vm.messages = [{ role: 'assistant', state: IChatMessageState.ANSWERING }];
+
+    await vm.handleRequestError(
+      new BaseError(403, 'used_up', 'Please buy more in Ace Data Cloud https://platform.acedata.cloud'),
+      0
+    );
+
+    expect(vm.messages[0]).toMatchObject({
+      state: IChatMessageState.FAILED,
+      error: { code: 'used_up' }
+    });
+    expect(vm.messages[0].error).not.toHaveProperty('message');
+  });
+
   it('settles a user-stopped browser tool without attaching a service error', async () => {
     const { wrapper } = mountComponent({ credentialToken: 'token' });
     const vm = wrapper.vm as unknown as {

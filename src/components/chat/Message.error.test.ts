@@ -1,16 +1,25 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
-import { IChatMessageState } from '@/models';
+import { describe, expect, it, vi } from 'vitest';
+import { IApplicationScope, IApplicationType, IChatMessageState } from '@/models';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
 import Message from './Message.vue';
 
-const mountMessage = (message: Record<string, unknown>) =>
+const mountMessage = (
+  message: Record<string, unknown>,
+  {
+    application = {},
+    site = {},
+    push = vi.fn()
+  }: { application?: Record<string, unknown>; site?: Record<string, unknown>; push?: ReturnType<typeof vi.fn> } = {}
+) =>
   shallowMount(Message, {
-    props: { application: {}, message, messages: [message] },
+    props: { application, message, messages: [message] },
     global: {
       mocks: {
         $t: (key: string) => key,
-        $store: { state: { chat: {} }, getters: { site: {} } }
+        $router: { push },
+        $store: { state: { chat: {} }, getters: { site } }
       },
       directives: { motion: () => undefined },
       stubs: {
@@ -82,5 +91,82 @@ describe('Message partial response errors', () => {
     expect(wrapper.text()).toContain('Partial response');
     expect(wrapper.find('.partial-error').exists()).toBe(false);
     expect(wrapper.find('.error-card').exists()).toBe(false);
+  });
+});
+
+describe('Message exhausted-credit recovery', () => {
+  const rawBackendMessage = 'Please buy more in Ace Data Cloud https://platform.acedata.cloud';
+
+  it('replaces branded backend copy in a full failure', () => {
+    const wrapper = mountMessage({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      content: '',
+      error: { code: 'used_up', message: rawBackendMessage }
+    });
+
+    expect(wrapper.get('.error-card').text()).toContain('common.quotaDialog.message');
+    expect(wrapper.text()).not.toContain(rawBackendMessage);
+  });
+
+  it('replaces branded backend copy while preserving partial output', () => {
+    const wrapper = mountMessage({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      content: 'Partial response',
+      error: { code: 'used_up', message: rawBackendMessage }
+    });
+
+    expect(wrapper.text()).toContain('Partial response');
+    expect(wrapper.get('.partial-error').text()).toContain('common.quotaDialog.message');
+    expect(wrapper.text()).not.toContain(rawBackendMessage);
+  });
+
+  it.each([
+    [IApplicationType.USAGE, ROUTE_CONSOLE_APPLICATION_EXTRA],
+    [IApplicationType.PERIOD, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE]
+  ])('routes %s purchases inside the current site', async (type, routeName) => {
+    const push = vi.fn();
+    const wrapper = mountMessage(
+      {
+        role: 'assistant',
+        state: IChatMessageState.FAILED,
+        content: '',
+        error: { code: 'used_up' }
+      },
+      {
+        application: { id: 'application-1', type, scope: IApplicationScope.INDIVIDUAL },
+        push
+      }
+    );
+
+    await wrapper.get('.btn-topup').trigger('click');
+
+    expect(push).toHaveBeenCalledWith({ name: routeName, params: { id: 'application-1' } });
+  });
+
+  it.each([
+    [{ role: 'grantee' }, {}],
+    [{}, { commerce: { recharge: { enabled: false } } }]
+  ])('hides purchase when the application or site is ineligible', (applicationOverrides, site) => {
+    const wrapper = mountMessage(
+      {
+        role: 'assistant',
+        state: IChatMessageState.FAILED,
+        content: '',
+        error: { code: 'used_up' }
+      },
+      {
+        application: {
+          id: 'application-1',
+          type: IApplicationType.USAGE,
+          scope: IApplicationScope.INDIVIDUAL,
+          ...applicationOverrides
+        },
+        site
+      }
+    );
+
+    expect(wrapper.find('.btn-topup').exists()).toBe(false);
   });
 });

@@ -126,7 +126,12 @@ import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import ConversationActions, { type ConversationCommand } from '@/components/chat/ConversationActions.vue';
-import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
+import {
+  ERROR_CODE_CANCELED,
+  ERROR_CODE_NOT_APPLIED,
+  ERROR_CODE_UNKNOWN,
+  ERROR_CODE_USED_UP
+} from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
@@ -1753,10 +1758,13 @@ export default defineComponent({
       } else if (error instanceof BaseError) {
         console.debug('BaseError', error);
         if (msg) {
-          msg.error = {
-            code: error.code,
-            message: error.detail
-          };
+          msg.error =
+            error.code === ERROR_CODE_USED_UP
+              ? { code: ERROR_CODE_USED_UP }
+              : {
+                  code: error.code,
+                  message: error.detail
+                };
         }
       } else if (axios.isCancel(error)) {
         if (msg) {

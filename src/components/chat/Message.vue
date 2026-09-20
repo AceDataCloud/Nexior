@@ -404,12 +404,13 @@ export default defineComponent({
       if (!this.message.error || !this.message.error?.code) {
         return undefined;
       }
-      if (this.message.error?.message) {
+      if (this.message.error.code === ERROR_CODE_USED_UP) {
+        return this.$t('common.quotaDialog.message');
+      }
+      if (this.message.error.message) {
         return this.message.error.message;
       }
-      switch (this.message.error?.code) {
-        case ERROR_CODE_USED_UP:
-          return this.$t('chat.message.errorUsedUp');
+      switch (this.message.error.code) {
         case ERROR_CODE_API_ERROR:
           return this.$t('chat.message.errorApiError');
         case ERROR_CODE_BAD_REQUEST:
