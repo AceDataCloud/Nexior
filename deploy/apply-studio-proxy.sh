@@ -9,6 +9,8 @@ INJECTOR=deploy/production/studio-html-injector.mjs
 MANIFEST=deploy/production/studio-proxy.yaml
 TARGET_IMAGE='caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e'
 TARGET_RUNTIME_DIGEST='sha256:040e9f7480b80b6d4a7e5013a21159b950a63dcbdb956e38abe2387fb28d9ec0'
+INJECTOR_IMAGE='node:22.20.0-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af'
+INJECTOR_RUNTIME_DIGEST='sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af'
 STEADY_VERIFY_HOSTS=${STEADY_VERIFY_HOSTS:-'studio-proxy.acedata.cloud'}
 MIGRATION_VERIFY_HOSTS=${MIGRATION_VERIFY_HOSTS:-'apia.aipark.vip huyangy.xin juheai.ai studio-proxy.acedata.cloud studio.fesilent.com'}
 
@@ -86,7 +88,7 @@ wait_for_replicas() {
 }
 
 verify_runtime() {
-  local expected=$1 pods pod node image image_id version nodes
+  local expected=$1 pods pod node image image_id version nodes injector_image injector_image_id injector_version ready
   pods=$(kubectl get pods -n "$NAMESPACE" -l "$SELECTOR" -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}') || return 1
   [ "$(printf '%s\n' "$pods" | grep -c . || true)" = "$expected" ] || return 1
   nodes=''
@@ -95,9 +97,17 @@ verify_runtime() {
     image_id=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{.status.containerStatuses[?(@.name=="caddy")].imageID}') || return 1
     node=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{.spec.nodeName}') || return 1
     version=$(kubectl exec "$pod" -n "$NAMESPACE" -c caddy -- caddy version) || return 1
+    injector_image=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{.spec.containers[?(@.name=="html-injector")].image}') || return 1
+    injector_image_id=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{.status.containerStatuses[?(@.name=="html-injector")].imageID}') || return 1
+    injector_version=$(kubectl exec "$pod" -n "$NAMESPACE" -c html-injector -- node --version) || return 1
+    ready=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{range .status.containerStatuses[*]}{.ready}{"\n"}{end}') || return 1
+    [ "$(printf '%s\n' "$ready" | grep -c '^true$' || true)" = 2 ] || { echo "$pod does not have two ready containers" >&2; return 1; }
     [ "$image" = "$TARGET_IMAGE" ] || { echo "$pod has unexpected image $image" >&2; return 1; }
     case "$image_id" in *"$TARGET_RUNTIME_DIGEST") ;; *) echo "$pod has unexpected runtime image $image_id" >&2; return 1 ;; esac
     case "$version" in v2.11.4*) ;; *) echo "$pod has unexpected Caddy version $version" >&2; return 1 ;; esac
+    [ "$injector_image" = "$INJECTOR_IMAGE" ] || { echo "$pod has unexpected injector image $injector_image" >&2; return 1; }
+    case "$injector_image_id" in *"$INJECTOR_RUNTIME_DIGEST") ;; *) echo "$pod has unexpected injector runtime image $injector_image_id" >&2; return 1 ;; esac
+    [ "$injector_version" = v22.20.0 ] || { echo "$pod has unexpected Node version $injector_version" >&2; return 1; }
     nodes="$nodes$node\n"
     echo "$pod node=$node image_id=$image_id version=$version"
   done

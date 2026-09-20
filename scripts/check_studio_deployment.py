@@ -68,6 +68,7 @@ proxy_pdb = next(doc for doc in proxy_docs if doc.get('kind') == 'PodDisruptionB
 proxy_caddy = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'caddy')
 expected_caddy_image = 'caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e'
 assert proxy_caddy['image'] == expected_caddy_image
+assert injector['image'] == 'node:22.20.0-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af'
 assert proxy_deployment['spec']['replicas'] == 2
 assert proxy_deployment['spec']['minReadySeconds'] == 10
 assert proxy_deployment['spec']['revisionHistoryLimit'] == 2
