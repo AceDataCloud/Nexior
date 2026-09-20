@@ -81,7 +81,7 @@ roll_stage() {
 
 kubectl apply -f deploy/production/studio-service.yaml
 kubectl apply -f deploy/production/studio-ingress.yaml
-deploy/apply-studio-proxy.sh
+bash deploy/apply-studio-proxy.sh
 kubectl apply -f deploy/production/legacy-hub-redirect.yaml
 roll_stage "${RELEASE_TAG}-bridge" "$PREVIOUS_TAGGED_IMAGE"
 roll_stage "$RELEASE_TAG" "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge"

@@ -115,9 +115,7 @@ spec:
   # Sharing /data between two Caddy deployments would mean one proxy's
   # outage / rollback could corrupt the other's cert cache.
   #
-  # cfs RWX matches caddy-platform's profile so future HA scaling can
-  # attach the same volume to multiple replicas without ReadWriteOnce
-  # contention.
+  # cfs RWX lets both HA replicas share ACME state and CertMagic locks.
   accessModes:
     - ReadWriteMany
   storageClassName: cfs
@@ -133,12 +131,11 @@ metadata:
   labels:
     app: caddy-studio-proxy
 spec:
-  # Single replica today. The mounted PVC (`caddy-studio`, RWX cfs)
-  # supports multiple attachments, so future HA can scale this up if
-  # traffic ever justifies it -- Caddy will share `/data` (ACME
-  # account, certs, locks) across pods. RollingUpdate is fine because
-  # RWX volumes don't deadlock on pod transition.
-  replicas: 1
+  # CertMagic 0.21.4+ serializes ARI refreshes and atomically commits
+  # certificate metadata, so both replicas can safely share this RWX PVC.
+  replicas: 2
+  revisionHistoryLimit: 2
+  minReadySeconds: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -154,9 +151,25 @@ spec:
       annotations:
         acedata.cloud/html-injector-sha: '${INJECTOR_SHA}'
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: caddy-studio-proxy
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  app: caddy-studio-proxy
       containers:
         - name: caddy
-          image: caddy:2.8-alpine
+          image: caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e
           imagePullPolicy: IfNotPresent
           args: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
           ports:
@@ -199,7 +212,7 @@ spec:
             periodSeconds: 30
             failureThreshold: 3
         - name: html-injector
-          image: node:22.20.0-alpine
+          image: node:22.20.0-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af
           imagePullPolicy: IfNotPresent
           command: ["node", "/app/server.mjs"]
           ports:
@@ -248,6 +261,19 @@ spec:
         - name: html-injector
           configMap:
             name: studio-html-injector
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: caddy-studio-proxy
+  namespace: acedatacloud
+  labels:
+    app: caddy-studio-proxy
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: caddy-studio-proxy
 ---
 apiVersion: v1
 kind: Service

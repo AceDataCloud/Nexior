@@ -57,6 +57,7 @@ jobs:
       - name: Studio deployment contract
         run: |
           python3 scripts/check_studio_deployment.py
+          bash scripts/test_apply_studio_proxy.sh
           npm run test:studio-html-injector
 
       - name: Release asset manifest tests

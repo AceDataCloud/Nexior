@@ -6,5 +6,5 @@ set -eu
 sed 's/\${TAG}/'"$BUILD_NUMBER"'/g' deploy/production/studio-deployment.yaml | kubectl apply -f -
 kubectl apply -f deploy/production/studio-service.yaml
 kubectl apply -f deploy/production/studio-ingress.yaml
-deploy/apply-studio-proxy.sh
+bash deploy/apply-studio-proxy.sh
 kubectl apply -f deploy/production/legacy-hub-redirect.yaml
