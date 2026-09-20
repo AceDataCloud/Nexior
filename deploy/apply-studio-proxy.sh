@@ -183,7 +183,7 @@ PY
 }
 
 single_replica_patch() {
-  python3 -c 'import json,sys; print(json.dumps({"spec":{"replicas":1,"strategy":{"type":"Recreate","rollingUpdate":None},"template":{"metadata":{"annotations":{"acedata.cloud/html-injector-sha":sys.argv[2]}},"spec":{"nodeSelector":{"kubernetes.io/arch":"amd64"},"containers":[{"name":"caddy","image":sys.argv[1]}]}}}}))' "$TARGET_IMAGE" "$injector_sha"
+  python3 -c 'import json,sys; print(json.dumps({"spec":{"replicas":1,"strategy":{"type":"Recreate","rollingUpdate":None},"template":{"metadata":{"annotations":{"acedata.cloud/html-injector-sha":sys.argv[3]}},"spec":{"nodeSelector":{"kubernetes.io/arch":"amd64"},"containers":[{"name":"caddy","image":sys.argv[1]},{"name":"html-injector","image":sys.argv[2]}]}}}}))' "$TARGET_IMAGE" "$INJECTOR_IMAGE" "$injector_sha"
 }
 
 recover_target_replica() {
@@ -201,8 +201,8 @@ start_target_single() {
   kubectl patch deployment "$DEPLOYMENT" -n "$NAMESPACE" --type=strategic -p "$patch" || return 1
   wait_for_replicas 1 || return 1
   verify_runtime 1 || return 1
-  verify_metadata || return 1
-  verify_tls "$MIGRATION_VERIFY_HOSTS"
+  verify_tls "$MIGRATION_VERIFY_HOSTS" || return 1
+  verify_metadata
 }
 
 wait_for_pdb() {
@@ -230,8 +230,8 @@ main() {
     rm -f "$migration_manifest"
     wait_for_replicas 1 || return 1
     verify_runtime 1 || return 1
-    verify_metadata || return 1
     verify_tls "$MIGRATION_VERIFY_HOSTS" || return 1
+    verify_metadata || return 1
     kubectl apply -f "$rendered" || return 1
   else
     current_image=$(deployment_image) || return 1
