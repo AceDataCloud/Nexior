@@ -1,3 +1,5 @@
+export type OpenAIImageQuality = 'auto' | 'low' | 'medium' | 'high';
+
 export interface IOpenAIImageConfig {
   prompt?: string;
   image_urls?: string[];
@@ -5,6 +7,7 @@ export interface IOpenAIImageConfig {
   callback_url?: string;
   async?: boolean;
   model?: string;
+  quality?: OpenAIImageQuality;
 }
 
 export interface IOpenAIImageGenerateRequest {
@@ -16,7 +19,7 @@ export interface IOpenAIImageGenerateRequest {
   callback_url?: string;
   async?: boolean;
   background?: 'transparent' | 'opaque' | 'auto';
-  quality?: 'auto' | 'high' | 'medium' | 'low' | 'standard';
+  quality?: OpenAIImageQuality;
 }
 
 export interface IOpenAIImageEditRequest {
@@ -27,6 +30,7 @@ export interface IOpenAIImageEditRequest {
   image_urls?: string[];
   callback_url?: string;
   async?: boolean;
+  quality?: OpenAIImageQuality;
 }
 
 export interface IOpenAIImageImage {
