@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 20 Sep 2026 20:21:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 20:24:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.7
+
+Wed, 23 Sep 2026 20:24:07 GMT
+
+### Patches
+
+- Add quality controls to GPT Image generation and editing in Studio. (dev@acedata.cloud)
 
 ## 3.371.6
 
