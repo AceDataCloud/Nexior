@@ -3,6 +3,7 @@
     <div class="flex-1 overflow-y-auto p-5">
       <model-selector class="mb-4" />
       <resolution-selector class="mb-4" />
+      <quality-selector class="mb-4" />
       <prompt-input class="mb-4" />
       <image-urls-input class="mb-4" />
     </div>
@@ -35,6 +36,7 @@ import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { getConsumption } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
+import QualitySelector from './config/QualitySelector.vue';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildOpenAIImageGenerateRequest } from '@/utils/x402/imageRequests';
@@ -53,6 +55,7 @@ export default defineComponent({
     ImageUrlsInput,
     ModelSelector,
     ResolutionSelector,
+    QualitySelector,
     ScenarioPaymentMode
   },
   props: {

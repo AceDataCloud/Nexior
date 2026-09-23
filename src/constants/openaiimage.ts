@@ -1,4 +1,5 @@
 import { CHAT_MODEL_ICON_CHATGPT } from './chat';
+import type { OpenAIImageQuality } from '@/models';
 
 export const OPENAIIMAGE_SERVICE_ID = '06f2acb7-e4d4-43de-9909-76e27b4e2355';
 export const OPENAIIMAGE_LOGO = CHAT_MODEL_ICON_CHATGPT;
@@ -23,6 +24,18 @@ export const isOpenAIImageOfficialModel = (model?: string): boolean =>
 
 export const OPENAIIMAGE_DEFAULT_MODEL = OPENAIIMAGE_MODEL_GPT_IMAGE_2;
 
+export const OPENAIIMAGE_QUALITY_AUTO: OpenAIImageQuality = 'auto';
+export const OPENAIIMAGE_QUALITY_LOW: OpenAIImageQuality = 'low';
+export const OPENAIIMAGE_QUALITY_MEDIUM: OpenAIImageQuality = 'medium';
+export const OPENAIIMAGE_QUALITY_HIGH: OpenAIImageQuality = 'high';
+export const OPENAIIMAGE_DEFAULT_QUALITY = OPENAIIMAGE_QUALITY_AUTO;
+export const OPENAIIMAGE_QUALITIES: OpenAIImageQuality[] = [
+  OPENAIIMAGE_QUALITY_AUTO,
+  OPENAIIMAGE_QUALITY_LOW,
+  OPENAIIMAGE_QUALITY_MEDIUM,
+  OPENAIIMAGE_QUALITY_HIGH
+];
+
 export const OPENAIIMAGE_MODELS = [
   OPENAIIMAGE_MODEL_GPT_IMAGE_1,
   OPENAIIMAGE_MODEL_GPT_IMAGE_15,
@@ -33,6 +46,10 @@ export const OPENAIIMAGE_MODELS = [
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 ];
+
+export const OPENAIIMAGE_MODEL_QUALITIES: Record<string, OpenAIImageQuality[]> = Object.fromEntries(
+  OPENAIIMAGE_MODELS.map((model) => [model, OPENAIIMAGE_QUALITIES])
+);
 
 // Reference images accepted by /openai/images/edits.
 export const OPENAIIMAGE_MAX_REFERENCE_IMAGES = 16;

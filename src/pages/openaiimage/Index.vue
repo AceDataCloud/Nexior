@@ -210,6 +210,7 @@ export default defineComponent({
         model: cfg?.model,
         prompt: cfg?.prompt,
         size: cfg?.size,
+        quality: cfg?.quality,
         image_urls: cfg?.image_urls || [],
         async: true
       } as IOpenAIImageEditRequest;

@@ -3,6 +3,7 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import ConfigPanel from './ConfigPanel.vue';
+import QualitySelector from './config/QualitySelector.vue';
 import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
@@ -31,6 +32,11 @@ function mountPanel(model: string) {
 }
 
 describe('OpenAI Image ConfigPanel pricing', () => {
+  it('renders the quality selector', () => {
+    const panel = mountPanel(OPENAIIMAGE_MODEL_GPT_IMAGE_2);
+    expect(panel.findComponent(QualitySelector).exists()).toBe(true);
+  });
+
   it.each([
     OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
     OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,

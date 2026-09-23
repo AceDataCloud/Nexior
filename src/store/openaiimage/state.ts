@@ -1,6 +1,6 @@
 import { IOpenAIImageState } from './models';
 import { Status } from '@/models';
-import { OPENAIIMAGE_DEFAULT_MODEL, OPENAIIMAGE_DEFAULT_SIZE } from '@/constants';
+import { OPENAIIMAGE_DEFAULT_MODEL, OPENAIIMAGE_DEFAULT_QUALITY, OPENAIIMAGE_DEFAULT_SIZE } from '@/constants';
 
 export default (): IOpenAIImageState => {
   return {
@@ -11,7 +11,8 @@ export default (): IOpenAIImageState => {
     credential: undefined,
     config: {
       model: OPENAIIMAGE_DEFAULT_MODEL,
-      size: OPENAIIMAGE_DEFAULT_SIZE
+      size: OPENAIIMAGE_DEFAULT_SIZE,
+      quality: OPENAIIMAGE_DEFAULT_QUALITY
     },
     status: {
       getService: Status.None,

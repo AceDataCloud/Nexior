@@ -49,15 +49,34 @@ describe('x402 image request builders', () => {
       buildOpenAIImageGenerateRequest({
         model,
         prompt: '  draw a cat  ',
-        size: '2048x1152'
+        size: '2048x1152',
+        quality: 'high'
       })
     ).toEqual({
       model,
       prompt: 'draw a cat',
       size: '2048x1152',
+      quality: 'high',
       action: 'generate',
       async: true
     });
+  });
+
+  it('preserves quality without mutating the source config', () => {
+    const config = {
+      model: 'gpt-image-2.5-sunburst:official',
+      prompt: '  draw a detailed portrait  ',
+      quality: 'medium' as const
+    };
+
+    expect(buildOpenAIImageGenerateRequest(config)).toEqual({
+      model: 'gpt-image-2.5-sunburst:official',
+      prompt: 'draw a detailed portrait',
+      quality: 'medium',
+      action: 'generate',
+      async: true
+    });
+    expect(config.prompt).toBe('  draw a detailed portrait  ');
   });
 
   it('builds a trimmed GPT Image generation payload without edit images', () => {
