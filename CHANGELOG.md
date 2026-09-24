@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 23 Sep 2026 20:24:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 24 Sep 2026 20:25:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.371.8
+
+Thu, 24 Sep 2026 20:25:18 GMT
+
+### Patches
+
+- Add GPT-6 Sol, GPT-6 Luna, Grok 4.7, and Gemini 3.8 Flash to the chat model picker. (dev@acedata.cloud)
+- Fix Base wallet payments in Studio order checkout. (dev@acedata.cloud)
 
 ## 3.371.7
 
