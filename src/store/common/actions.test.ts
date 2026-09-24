@@ -1,18 +1,29 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const siteOperatorMock = vi.hoisted(() => ({
-  getAll: vi.fn()
+const mocks = vi.hoisted(() => ({
+  getAll: vi.fn(),
+  logout: vi.fn()
 }));
 
 vi.mock('@/operators', () => ({
-  siteOperator: siteOperatorMock
+  siteOperator: { getAll: mocks.getAll },
+  authOperator: { logout: mocks.logout }
+}));
+
+vi.mock('@/utils/surface', () => ({
+  isNative: () => true,
+  isDesktop: () => false
+}));
+
+vi.mock('@/utils/loginMethod', () => ({
+  isIframeLoginEnabled: () => false
 }));
 
 vi.mock('@/store/lazy', () => ({
   getRegisteredLazyModules: () => ['nanobanana', 'chat']
 }));
 
-import { getSite, resetAll } from './actions';
+import { getSite, logout, resetAll } from './actions';
 
 describe('store/common getSite', () => {
   const commit = vi.fn();
@@ -24,17 +35,48 @@ describe('store/common getSite', () => {
 
   it('returns the site committed to the store', async () => {
     const site = { id: 'site-1', origin: 'https://example.com' };
-    siteOperatorMock.getAll.mockResolvedValue({ data: { items: [site] } });
+    mocks.getAll.mockResolvedValue({ data: { items: [site] } });
 
     await expect(getSite({ state, commit } as never)).resolves.toBe(site);
     expect(commit).toHaveBeenCalledWith('setSite', site);
   });
 
   it('returns undefined without replacing state when refresh fails', async () => {
-    siteOperatorMock.getAll.mockRejectedValue(new Error('network failure'));
+    mocks.getAll.mockRejectedValue(new Error('network failure'));
 
     await expect(getSite({ state, commit } as never)).resolves.toBeUndefined();
     expect(commit).not.toHaveBeenCalled();
+  });
+});
+
+describe('store/common logout', () => {
+  const state = { token: { refresh: 'refresh-token' } };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.stubGlobal('window', { location: { pathname: '/account', search: '' } });
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+
+  it('revokes the refresh token before clearing local state', async () => {
+    mocks.logout.mockResolvedValue(undefined);
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+    const commit = vi.fn();
+
+    await logout({ state, dispatch, commit } as any);
+
+    expect(mocks.logout).toHaveBeenCalledWith('refresh-token');
+    expect(dispatch).toHaveBeenCalledWith('resetAll');
+  });
+
+  it('clears local state when token revocation fails', async () => {
+    mocks.logout.mockRejectedValue(new Error('network failure'));
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+    const commit = vi.fn();
+
+    await logout({ state, dispatch, commit } as any);
+
+    expect(dispatch).toHaveBeenCalledWith('resetAll');
   });
 });
 

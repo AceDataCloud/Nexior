@@ -8,7 +8,8 @@ import {
   configOperator,
   exchangeOperator,
   applicationOperator,
-  credentialOperator
+  credentialOperator,
+  authOperator
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, ISite, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
@@ -262,8 +263,15 @@ export const login = async (
   }
 };
 
-export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
-  await dispatch('resetAll');
+export const logout = async ({ state, dispatch, commit }: ActionContext<IRootState, IRootState>) => {
+  const refreshToken = state.token?.refresh;
+  try {
+    if (refreshToken) await authOperator.logout(refreshToken);
+  } catch (error) {
+    console.warn('Failed to revoke refresh token during logout', error);
+  } finally {
+    await dispatch('resetAll');
+  }
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // On native AND desktop, show the in-app login popup instead of navigating
     // to an external auth URL (which on native opens Chrome → localhost, and on

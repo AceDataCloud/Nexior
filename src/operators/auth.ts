@@ -8,6 +8,10 @@ class AuthOperator {
     return anonymousHttpClient.post('/auth/refresh/', payload);
   }
 
+  async logout(refreshToken: string): Promise<AxiosResponse<void>> {
+    return anonymousHttpClient.post('/auth/logout/', { refresh_token: refreshToken }, { timeout: 3000 });
+  }
+
   async getCode(): Promise<AxiosResponse<IAuthCodeResponse>> {
     return httpClient.post('/auth/code/', {});
   }
