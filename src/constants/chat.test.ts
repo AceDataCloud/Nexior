@@ -4,9 +4,15 @@ import {
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
   CHAT_MODEL_DEEPSEEK_V4_PRO,
   CHAT_MODEL_GPT_6_ASTRA,
+  CHAT_MODEL_GPT_6_SOL,
+  CHAT_MODEL_GPT_6_LUNA,
+  CHAT_MODEL_GROK_4_7,
+  CHAT_MODEL_GEMINI_3_8_FLASH,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
+  CHAT_MODEL_GROUP_GROK,
+  CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K3,
@@ -18,12 +24,33 @@ describe('chat models', () => {
   it('exposes Astra before GPT 5.6 tiers and makes Luna free', () => {
     expect(CHAT_MODEL_GROUP_CHATGPT.models.map((model) => model.name)).toEqual([
       'gpt-6-astra',
+      'gpt-6-sol',
+      'gpt-6-luna',
       'gpt-5.6-luna',
       'gpt-5.6-sol',
       'gpt-5.6-terra'
     ]);
     expect(CHAT_MODEL_GPT_5_6_LUNA.isFree).toBe(true);
     expect(CHAT_MODEL_GROUP_CHATGPT.models.filter((model) => model.isFree)).toEqual([CHAT_MODEL_GPT_5_6_LUNA]);
+  });
+
+  it('registers the new models in their provider groups', () => {
+    expect(CHAT_MODEL_GROUP_CHATGPT.models.slice(0, 3)).toEqual([
+      CHAT_MODEL_GPT_6_ASTRA,
+      CHAT_MODEL_GPT_6_SOL,
+      CHAT_MODEL_GPT_6_LUNA
+    ]);
+    expect(CHAT_MODEL_GROUP_GROK.models[0]).toBe(CHAT_MODEL_GROK_4_7);
+    expect(CHAT_MODEL_GROUP_GEMINI.models[0]).toBe(CHAT_MODEL_GEMINI_3_8_FLASH);
+    for (const model of [
+      CHAT_MODEL_GPT_6_SOL,
+      CHAT_MODEL_GPT_6_LUNA,
+      CHAT_MODEL_GROK_4_7,
+      CHAT_MODEL_GEMINI_3_8_FLASH
+    ]) {
+      expect(CHAT_MODELS).toContain(model);
+      expect(model).toMatchObject({ isImageSupported: true, isReasoningSupported: true });
+    }
   });
 
   it('defaults the ChatGPT group to Astra', () => {
