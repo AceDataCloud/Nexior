@@ -73,10 +73,12 @@ describe('x402 image scenario contract', () => {
 
   it('uses the canonical v2 payment header for order checkout', () => {
     const payment = source('components/order/X402Pay.vue');
+    const x402 = source('operators/x402.ts');
     const order = source('operators/order.ts');
-    expect(payment).toContain('x402Version: 2');
-    expect(payment).toContain('accepted: requirements');
+    expect(payment).toContain('buildEVMPaymentSignatureHeader(');
     expect(payment).not.toContain('x402Version: 1');
+    expect(x402).toContain('signEVMPayment(requirement, provider, address)');
+    expect(x402).toContain("Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64')");
     expect(order).toContain("'PAYMENT-SIGNATURE': xPaymentHeader");
     expect(order).not.toContain("'X-PAYMENT': xPaymentHeader");
   });

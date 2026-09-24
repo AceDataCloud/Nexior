@@ -37,7 +37,14 @@ vi.mock('@/utils/x402/continuousPayment', () => ({
   continuousPaymentHeaders: mocks.continuousPaymentHeaders
 }));
 
-import { formatAtomicUsdc, postWithX402, quoteX402, resolveX402WalletContext, X402PaymentCancelledError } from './x402';
+import {
+  buildEVMPaymentSignatureHeader,
+  formatAtomicUsdc,
+  postWithX402,
+  quoteX402,
+  resolveX402WalletContext,
+  X402PaymentCancelledError
+} from './x402';
 
 const requirement = {
   scheme: 'exact',
@@ -98,6 +105,25 @@ describe('resolveX402WalletContext', () => {
   it('rejects an incomplete Solana wallet store', () => {
     expect(resolveX402WalletContext({ signTransaction: { value: vi.fn() } })).toBeUndefined();
     expect(resolveX402WalletContext({ publicKey: { value: wallet.publicKey } })).toBeUndefined();
+  });
+});
+
+describe('buildEVMPaymentSignatureHeader', () => {
+  it('preserves a canonical Base requirement and UTF-8 fields', async () => {
+    const provider = { request: vi.fn() };
+    const canonical = {
+      ...baseRequirement,
+      description: '订单充值',
+      amount: '14250000'
+    };
+
+    const header = await buildEVMPaymentSignatureHeader(canonical, provider, '0xpayer');
+    const envelope = JSON.parse(Buffer.from(header, 'base64').toString('utf8'));
+
+    expect(mocks.signEVMPayment).toHaveBeenCalledWith(canonical, provider, '0xpayer');
+    expect(envelope).toEqual(expect.objectContaining({ x402Version: 2, accepted: canonical }));
+    expect(envelope.accepted.description).toBe('订单充值');
+    expect(envelope.accepted.amount).toBe('14250000');
   });
 });
 

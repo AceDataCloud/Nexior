@@ -38,6 +38,28 @@ const normalizeTaskId = (value: unknown): string | undefined => {
   return taskId || undefined;
 };
 
+export type X402OrderPaymentStage =
+  | 'challenge_received'
+  | 'signature_created'
+  | 'signed_post_started'
+  | 'payment_succeeded'
+  | 'payment_failed'
+  | 'wallet_rejected';
+
+export function trackX402OrderPaymentStage(
+  stage: X402OrderPaymentStage,
+  rail: X402WalletRail,
+  network?: string,
+  error?: string
+): void {
+  track('x402_order_payment_stage', {
+    id: stage,
+    provider: rail,
+    ...(network ? { network } : {}),
+    ...(error ? { error } : {})
+  });
+}
+
 export function trackWalletConnected(rail: X402WalletRail, entrypoint: X402WalletEntrypoint): void {
   track('x402_wallet_connected', { provider: rail, id: entrypoint });
 }

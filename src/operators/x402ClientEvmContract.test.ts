@@ -5,7 +5,6 @@ const requirement: PaymentRequirement = {
   scheme: 'exact',
   network: 'eip155:8453',
   amount: '12263',
-  maxAmountRequired: '12263',
   maxTimeoutSeconds: 3600,
   resource: 'https://x402.acedata.cloud/nano-banana/images',
   description: 'AceDataCloud API call',
@@ -35,6 +34,7 @@ describe('@acedatacloud/x402-client EVM contract', () => {
       { name: 'chainId', type: 'uint256' },
       { name: 'verifyingContract', type: 'address' }
     ]);
+    expect(typedData.message.value).toBe('12263');
     expect(typedData.domain).toEqual({
       name: 'USD Coin',
       version: '2',
