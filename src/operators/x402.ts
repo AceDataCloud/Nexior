@@ -166,6 +166,17 @@ async function fetchSolanaBlockhash(network: string): Promise<string> {
   return response.data.blockhash;
 }
 
+export async function buildEVMPaymentSignatureHeader(
+  requirement: PaymentRequirement,
+  provider: { request(args: { method: string; params?: unknown[] }): Promise<unknown> },
+  address: string
+): Promise<string> {
+  const { Buffer } = await import('buffer');
+  const { signEVMPayment } = await import('@acedatacloud/x402-client');
+  const envelope = await signEVMPayment(requirement, provider, address);
+  return Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
+}
+
 export async function postWithX402<T>(
   path: string,
   data: unknown,
@@ -214,19 +225,18 @@ export async function postWithX402<T>(
     if (!approved) throw new X402PaymentCancelledError();
 
     try {
-      const { Buffer } = await import('buffer');
-      if (!(globalThis as any).Buffer) (globalThis as any).Buffer = Buffer;
-      let envelope: unknown;
+      let paymentSignature: string;
       if (rail === 'base') {
         if (!evmWallet) throw { code: 'signer_unavailable' };
-        const { signEVMPayment } = await import('@acedatacloud/x402-client');
-        envelope = await signEVMPayment(requirement, evmWallet.provider, evmWallet.address);
+        paymentSignature = await buildEVMPaymentSignatureHeader(requirement, evmWallet.provider, evmWallet.address);
       } else {
+        const { Buffer } = await import('buffer');
+        globalThis.Buffer ??= Buffer;
         const { buildSolanaPayment } = await import('@acedatacloud/x402-client/solana');
         const blockhash = await fetchSolanaBlockhash(requirement.network);
-        envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
+        const envelope = await buildSolanaPayment(requirement, options.wallet, blockhash);
+        paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
       }
-      const paymentSignature = Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64');
       const response = await axios.post<T>(path, data, {
         baseURL: BASE_URL_X402,
         headers: {

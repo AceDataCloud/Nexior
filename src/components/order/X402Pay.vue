@@ -203,11 +203,13 @@ import {
 import SolanaWalletPickerDialog from '@/components/common/SolanaWalletPickerDialog.vue';
 import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
-import { trackWalletConnected } from '@/plugins/telemetry';
+import { buildEVMPaymentSignatureHeader } from '@/operators/x402';
+import { trackWalletConnected, trackX402OrderPaymentStage } from '@/plugins/telemetry';
 import { isMobile } from '@/utils';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
 import { resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
+import type { PaymentRequirement } from '@acedatacloud/x402-client';
 
 type IEvmWalletInfo = EvmWalletInfo;
 
@@ -326,7 +328,9 @@ export default defineComponent({
     expectedChainIdHex(): string | undefined {
       const mapping: Record<string, string> = {
         base: '0x2105',
+        'eip155:8453': '0x2105',
         'base-sepolia': '0x14A34',
+        'eip155:84532': '0x14A34',
         ethereum: '0x1',
         sepolia: '0xAA36A7',
         polygon: '0x89',
@@ -365,7 +369,7 @@ export default defineComponent({
       }
 
       const weight = (network: string) => {
-        if (network === 'base') return 0;
+        if (network === 'base' || network === 'eip155:8453') return 0;
         if (network.startsWith('solana')) return 1;
         return 2;
       };
@@ -508,8 +512,9 @@ export default defineComponent({
     },
     formatNetworkLabel(network?: string): string {
       const lower = String(network || '').toLowerCase();
-      if (lower === 'base') return 'Base';
-      if (lower === 'solana') return 'Solana';
+      if (lower === 'base' || lower === 'eip155:8453') return 'Base';
+      if (lower === 'base-sepolia' || lower === 'eip155:84532') return 'Base Sepolia';
+      if (lower === 'solana' || lower === 'solana:5eykt4usfv8p8njdtrepy1vzqkqzkvdp') return 'Solana';
       if (lower === 'solana-devnet') return 'Solana Devnet';
       if (lower === 'skale') return 'SKALE';
       if (lower === 'ethereum') return 'Ethereum';
@@ -723,47 +728,9 @@ export default defineComponent({
           blockExplorerUrls: ['https://skale-base-explorer.skalenodes.com']
         }
       };
+      const aliases: Record<string, string> = { 'eip155:8453': 'base', 'eip155:84532': 'base-sepolia' };
       const key = (this.expectedNetwork || '').toLowerCase();
-      return map[key] || { chainId: this.expectedChainIdHex };
-    },
-    buildTypedData(requirements: Record<string, any>, authorization: Record<string, any>) {
-      const extra = requirements?.extra || {};
-      return {
-        types: {
-          EIP712Domain: [
-            { name: 'name', type: 'string' },
-            { name: 'version', type: 'string' },
-            { name: 'chainId', type: 'uint256' },
-            { name: 'verifyingContract', type: 'address' }
-          ],
-          TransferWithAuthorization: [
-            { name: 'from', type: 'address' },
-            { name: 'to', type: 'address' },
-            { name: 'value', type: 'uint256' },
-            { name: 'validAfter', type: 'uint256' },
-            { name: 'validBefore', type: 'uint256' },
-            { name: 'nonce', type: 'bytes32' }
-          ]
-        },
-        primaryType: 'TransferWithAuthorization',
-        domain: {
-          name: extra?.name || 'USD Coin',
-          version: extra?.version || '2',
-          chainId: parseInt((this.expectedChainIdHex || '0x0') as string, 16),
-          verifyingContract: requirements.asset
-        },
-        message: authorization
-      } as Record<string, any>;
-    },
-    randomNonce32(): string {
-      const bytes = new Uint8Array(32);
-      crypto.getRandomValues(bytes);
-      return (
-        '0x' +
-        Array.from(bytes)
-          .map((b) => b.toString(16).padStart(2, '0'))
-          .join('')
-      );
+      return map[aliases[key] || key] || { chainId: this.expectedChainIdHex };
     },
     async onPayWithSolanaWallet() {
       if (!this.modelValue?.id) return;
@@ -869,6 +836,7 @@ export default defineComponent({
       return blockhash;
     },
     async onPayWithWallet() {
+      if (this.signing || this.paying) return;
       if (!this.modelValue?.id || !this.evmProvider || !this.evmAddress) {
         const fallback =
           (this.$t && (this.$t('order.message.x402PaymentFailed') as string)) ||
@@ -879,6 +847,7 @@ export default defineComponent({
 
       this.paymentError = undefined;
       this.signing = true;
+      let stage: 'challenge' | 'sign' | 'submit' = 'challenge';
       try {
         // Always fetch fresh requirements from backend to avoid stale caps
         let requirements = await this.getFreshRequirements();
@@ -903,43 +872,38 @@ export default defineComponent({
           );
           return;
         }
+        const network = String(requirements.network || this.expectedNetwork || '');
+        trackX402OrderPaymentStage('challenge_received', 'base', network);
         const ok = await this.confirmPay(this.expectedNetworkLabel);
         if (!ok) return;
-        const now = Math.floor(Date.now() / 1000);
-        const maxTimeout = Number(requirements?.maxTimeoutSeconds || requirements?.max_timeout_seconds || 120);
-        const valueStr = BigInt(requirements?.maxAmountRequired || requirements?.max_amount_required || 0).toString();
-        const authorization: any = {
-          from: this.evmAddress,
-          to: requirements.payTo || requirements.pay_to,
-          value: valueStr,
-          validAfter: now,
-          validBefore: now + maxTimeout,
-          nonce: this.randomNonce32()
-        };
-        const typedData = this.buildTypedData(requirements, authorization);
-        const signature: string = await this.evmProvider.request({
-          method: 'eth_signTypedData_v4',
-          params: [this.evmAddress, JSON.stringify(typedData)]
-        });
-        const headerAuthorization = {
-          from: authorization.from,
-          to: authorization.to,
-          value: authorization.value,
-          validAfter: String(authorization.validAfter),
-          validBefore: String(authorization.validBefore),
-          nonce: authorization.nonce
-        };
-        const payload = {
-          x402Version: 2,
-          accepted: requirements,
-          payload: { authorization: headerAuthorization, signature }
-        };
-        const header = btoa(JSON.stringify(payload));
+        stage = 'sign';
+        const header = await buildEVMPaymentSignatureHeader(
+          requirements as PaymentRequirement,
+          this.evmProvider,
+          this.evmAddress
+        );
+        trackX402OrderPaymentStage('signature_created', 'base', network);
+        stage = 'submit';
         this.paying = true;
+        trackX402OrderPaymentStage('signed_post_started', 'base', network);
         const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
+        trackX402OrderPaymentStage('payment_succeeded', 'base', network);
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
+        const rejected = err?.code === 4001 || err?.code === '4001' || err?.name === 'X402PaymentCancelledError';
+        trackX402OrderPaymentStage(
+          rejected ? 'wallet_rejected' : 'payment_failed',
+          'base',
+          this.expectedNetwork,
+          rejected
+            ? 'user_rejected'
+            : stage === 'sign'
+              ? 'signing_error'
+              : err?.response
+                ? 'server_error'
+                : 'network_or_cors'
+        );
         this.paymentError = resolveX402PaymentError(err, this.$t.bind(this), 'order');
       } finally {
         this.signing = false;
