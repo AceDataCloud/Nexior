@@ -50,6 +50,7 @@ describe('request auth coverage', () => {
     expect(found).toEqual(
       [
         "attribution.ts:anonymousHttpClient.post:'/attribution/resolve/', payload);",
+        "auth.ts:anonymousHttpClient.post:'/auth/logout/', { refresh_token: refreshToken }, { timeout: 3000 });",
         "auth.ts:anonymousHttpClient.post:'/auth/refresh/', payload);",
         "auth.ts:anonymousHttpClient.post:'/token', payload, {",
         "exchange.ts:anonymousHttpClient.post:'/exchange-rate', payload);",
