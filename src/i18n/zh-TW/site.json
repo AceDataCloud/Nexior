@@ -1863,7 +1863,7 @@
     "description": "HTML 區塊類型名稱。"
   },
   "homeSections.htmlTip": {
-    "message": "HTML 將由站長直接編寫並原樣顯示。",
+    "message": "HTML 預設直接嵌入頁面；如需執行指令碼，請啟用 iframe 隔離模式。",
     "description": "HTML 格式提示。"
   },
   "error.authSettingsLoad": {
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "儲存驗證設定失敗",
     "description": "儲存網站驗證管理設定失敗提示。"
+  },
+  "homeSections.iframe.label": {
+    "message": "在隔離 iframe 中執行",
+    "description": "自訂 HTML 的 iframe 隔離模式開關。"
+  },
+  "homeSections.iframe.tip": {
+    "message": "允許指令碼、表單和點擊跳轉，但無法存取主頁面及其登入資訊。",
+    "description": "iframe 隔離模式的安全功能說明。"
   }
 }

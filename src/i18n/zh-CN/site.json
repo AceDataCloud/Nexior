@@ -1864,8 +1864,16 @@
     "description": "HTML 区块类型名称。"
   },
   "homeSections.htmlTip": {
-    "message": "HTML 将由站长直接编写并原样展示。",
+    "message": "HTML 默认直接嵌入页面；如需运行脚本，请开启 iframe 隔离模式。",
     "description": "HTML 格式提示。"
+  },
+  "homeSections.iframe.label": {
+    "message": "在隔离 iframe 中运行",
+    "description": "自定义 HTML 的 iframe 隔离模式开关。"
+  },
+  "homeSections.iframe.tip": {
+    "message": "允许脚本、表单和点击跳转，但无法访问主页面及其登录信息。",
+    "description": "iframe 隔离模式的安全能力说明。"
   },
   "error.authSettingsLoad": {
     "message": "加载认证设置失败",

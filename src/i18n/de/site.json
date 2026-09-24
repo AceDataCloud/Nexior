@@ -1863,7 +1863,7 @@
     "description": "Bezeichnung des HTML-Blocktyps."
   },
   "homeSections.htmlTip": {
-    "message": "HTML wird vom Website-Administrator direkt verfasst und unverändert angezeigt.",
+    "message": "HTML wird standardmäßig direkt in die Seite eingebettet; aktivieren Sie den isolierten iframe-Modus, wenn Skripte ausgeführt werden sollen.",
     "description": "Hinweis zum HTML-Format."
   },
   "error.authSettingsLoad": {
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "Authentifizierungseinstellungen konnten nicht gespeichert werden",
     "description": "Hinweis, dass die Authentifizierungseinstellungen der Website nicht gespeichert werden konnten."
+  },
+  "homeSections.iframe.label": {
+    "message": "In isoliertem iframe ausführen",
+    "description": "Schalter für den isolierten iframe-Modus von benutzerdefiniertem HTML."
+  },
+  "homeSections.iframe.tip": {
+    "message": "Erlaubt Skripte, Formulare und Klick-Navigation, kann aber nicht auf die Hauptseite und deren Anmeldeinformationen zugreifen.",
+    "description": "Sicherheitshinweis zum isolierten iframe-Modus."
   }
 }

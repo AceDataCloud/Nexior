@@ -1866,8 +1866,8 @@
     "description": "Nom du type de section HTML."
   },
   "homeSections.htmlTip": {
-    "message": "Le HTML est rédigé directement par l’administrateur du site et affiché tel quel.",
-    "description": "Indication sur le format HTML."
+    "message": "Le HTML est intégré directement à la page par défaut ; pour exécuter des scripts, activez le mode d’isolation par iframe.",
+    "description": "Conseil concernant le format HTML."
   },
   "error.authSettingsLoad": {
     "message": "Échec du chargement des paramètres d’authentification",
@@ -1876,5 +1876,13 @@
   "error.authSettingsSave": {
     "message": "Échec de l’enregistrement des paramètres d’authentification",
     "description": "Message indiquant l’échec de l’enregistrement des paramètres de gestion de l’authentification du site."
+  },
+  "homeSections.iframe.label": {
+    "message": "Exécuter dans un iframe isolé",
+    "description": "Interrupteur du mode d’isolation par iframe pour le HTML personnalisé."
+  },
+  "homeSections.iframe.tip": {
+    "message": "Autorise les scripts, les formulaires et les redirections au clic, mais ne peut pas accéder à la page principale ni à ses informations de connexion.",
+    "description": "Explication des fonctionnalités de sécurité du mode d’isolation par iframe."
   }
 }

@@ -6,6 +6,7 @@ export interface ISiteHomeSection {
   kind: SiteHomeSectionKind;
   title: string;
   body: string;
+  render_in_iframe?: boolean;
   visible?: boolean;
   sort_order?: number;
   start_at?: string | null;

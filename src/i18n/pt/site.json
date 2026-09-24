@@ -1863,7 +1863,7 @@
     "description": "Nome do tipo de bloco HTML."
   },
   "homeSections.htmlTip": {
-    "message": "O HTML será escrito diretamente pelo administrador do site e exibido exatamente como fornecido.",
+    "message": "O HTML é incorporado diretamente à página por padrão; para executar scripts, ative o modo isolado em iframe.",
     "description": "Dica sobre o formato HTML."
   },
   "error.authSettingsLoad": {
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "Falha ao salvar as configurações de autenticação",
     "description": "Mensagem exibida quando ocorre uma falha ao salvar as configurações de gerenciamento da autenticação do site."
+  },
+  "homeSections.iframe.label": {
+    "message": "Executar em iframe isolado",
+    "description": "Alternância do modo isolado em iframe para HTML personalizado."
+  },
+  "homeSections.iframe.tip": {
+    "message": "Permite scripts, formulários e navegação por cliques, mas não pode acessar a página principal nem suas informações de login.",
+    "description": "Descrição dos recursos de segurança do modo isolado em iframe."
   }
 }

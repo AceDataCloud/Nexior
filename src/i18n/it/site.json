@@ -1863,7 +1863,7 @@
     "description": "Nome del tipo di sezione HTML."
   },
   "homeSections.htmlTip": {
-    "message": "L'HTML sarà scritto direttamente dal webmaster e visualizzato così com'è.",
+    "message": "Per impostazione predefinita, l’HTML viene incorporato direttamente nella pagina; per eseguire script, attiva la modalità di isolamento iframe.",
     "description": "Suggerimento sul formato HTML."
   },
   "error.authSettingsLoad": {
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "Impossibile salvare le impostazioni di autenticazione",
     "description": "Messaggio visualizzato quando non è stato possibile salvare le impostazioni di gestione dell'autenticazione del sito."
+  },
+  "homeSections.iframe.label": {
+    "message": "Esegui in un iframe isolato",
+    "description": "Interruttore per la modalità di isolamento iframe dell’HTML personalizzato."
+  },
+  "homeSections.iframe.tip": {
+    "message": "Consente l’esecuzione di script, l’uso di moduli e la navigazione tramite clic, ma non permette di accedere alla pagina principale né alle relative informazioni di accesso.",
+    "description": "Descrizione delle funzionalità di sicurezza della modalità di isolamento iframe."
   }
 }

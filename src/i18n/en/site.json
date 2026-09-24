@@ -1864,8 +1864,16 @@
     "description": "HTML section type."
   },
   "homeSections.htmlTip": {
-    "message": "HTML is written by site administrators and displayed as entered.",
+    "message": "HTML is embedded directly by default. Enable isolated iframe mode when scripts are required.",
     "description": "HTML format guidance."
+  },
+  "homeSections.iframe.label": {
+    "message": "Run in an isolated iframe",
+    "description": "Isolated iframe mode toggle for custom HTML."
+  },
+  "homeSections.iframe.tip": {
+    "message": "Allows scripts, forms, and user-initiated navigation without access to the parent page or its sign-in data.",
+    "description": "Security capabilities of isolated iframe mode."
   },
   "error.authSettingsLoad": {
     "message": "Failed to load authentication settings",

@@ -1863,8 +1863,8 @@
     "description": "HTML 블록 유형 이름."
   },
   "homeSections.htmlTip": {
-    "message": "HTML은 사이트 관리자가 직접 작성하며 원본 그대로 표시됩니다.",
-    "description": "HTML 형식 안내."
+    "message": "HTML은 기본적으로 페이지에 직접 삽입됩니다. 스크립트를 실행하려면 iframe 격리 모드를 켜세요.",
+    "description": "HTML 형식 안내입니다."
   },
   "error.authSettingsLoad": {
     "message": "인증 설정을 불러오지 못했습니다",
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "인증 설정을 저장하지 못했습니다",
     "description": "사이트 인증 관리 설정을 저장하지 못했을 때 표시하는 오류 메시지입니다."
+  },
+  "homeSections.iframe.label": {
+    "message": "격리된 iframe에서 실행",
+    "description": "사용자 지정 HTML의 iframe 격리 모드 토글입니다."
+  },
+  "homeSections.iframe.tip": {
+    "message": "스크립트, 양식 및 클릭을 통한 이동을 허용하지만 상위 페이지와 해당 로그인 정보에는 액세스할 수 없습니다.",
+    "description": "iframe 격리 모드의 보안 기능 안내입니다."
   }
 }
