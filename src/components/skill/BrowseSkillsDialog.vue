@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    append-to-body
     :model-value="modelValue"
     :title="$t('skill.dialog.directoryTitle')"
     width="min(960px, 94vw)"

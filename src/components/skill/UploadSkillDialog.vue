@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    append-to-body
     :model-value="modelValue"
     :title="$t('skill.dialog.uploadTitle')"
     width="min(520px, 94vw)"

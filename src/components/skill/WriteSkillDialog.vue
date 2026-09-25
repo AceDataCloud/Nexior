@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    append-to-body
     :model-value="modelValue"
     :title="$t('skill.dialog.writeTitle')"
     width="min(720px, 94vw)"
