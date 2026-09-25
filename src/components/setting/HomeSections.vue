@@ -90,6 +90,13 @@
           <span class="field-tip">{{ $t(`site.homeSections.${form.kind}Tip`) }}</span>
         </el-form-item>
 
+        <el-form-item v-if="form.kind === 'html'" :label="$t('site.homeSections.iframe.label')">
+          <div class="iframe-option">
+            <el-switch v-model="form.renderInIframe" :aria-label="$t('site.homeSections.iframe.label')" />
+            <span class="field-tip">{{ $t('site.homeSections.iframe.tip') }}</span>
+          </div>
+        </el-form-item>
+
         <div class="form-grid">
           <el-form-item :label="$t('site.homeSections.field.startAt')"
             ><el-date-picker v-model="form.startAt" type="datetime" value-format="YYYY-MM-DDTHH:mm:ss" clearable
@@ -143,6 +150,7 @@ interface SectionForm {
   kind: SiteHomeSectionKind;
   title: string;
   body: string;
+  renderInIframe: boolean;
   visible: boolean;
   sortOrder: number;
   startAt: string;
@@ -154,6 +162,7 @@ const emptyForm = (): SectionForm => ({
   kind: 'markdown',
   title: '',
   body: '',
+  renderInIframe: false,
   visible: true,
   sortOrder: 0,
   startAt: '',
@@ -242,6 +251,7 @@ export default defineComponent({
         kind: row.kind,
         title: this.source(row, 'title'),
         body: this.source(row, 'body'),
+        renderInIframe: row.render_in_iframe === true,
         visible: row.visible !== false,
         sortOrder: row.sort_order ?? 0,
         startAt: fromIso(row.start_at),
@@ -263,6 +273,7 @@ export default defineComponent({
         kind: this.form.kind,
         title: title(this.form.title),
         body: this.form.body,
+        render_in_iframe: this.form.kind === 'html' && this.form.renderInIframe,
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),
@@ -400,6 +411,11 @@ export default defineComponent({
 }
 .translation-below {
   margin-top: 6px;
+}
+.iframe-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 .field-tip {
   display: block;

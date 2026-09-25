@@ -34,6 +34,7 @@ describe('setting/HomeSections', () => {
 
     expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html']);
     expect((wrapper.vm as any).form.kind).toBe('markdown');
+    expect((wrapper.vm as any).form.renderInIframe).toBe(false);
   });
 
   it('builds a payload with only content and operational fields', () => {
@@ -42,6 +43,7 @@ describe('setting/HomeSections', () => {
       kind: 'html',
       title: 'Custom HTML',
       body: '<section data-kind="custom">Body</section>',
+      renderInIframe: true,
       visible: false,
       sortOrder: 9,
       startAt: '2026-09-14T08:00:00',
@@ -52,6 +54,7 @@ describe('setting/HomeSections', () => {
       kind: 'html',
       title: 'Custom HTML',
       body: '<section data-kind="custom">Body</section>',
+      render_in_iframe: true,
       visible: false,
       sort_order: 9,
       start_at: '2026-09-14T08:00:00Z',
@@ -92,7 +95,12 @@ describe('setting/HomeSections', () => {
       data: { id: 'new', kind: 'html', title: 'Custom HTML', body }
     } as any);
     const wrapper = mountSetting();
-    Object.assign((wrapper.vm as any).form, { kind: 'html', title: 'Custom HTML', body });
+    Object.assign((wrapper.vm as any).form, {
+      kind: 'html',
+      title: 'Custom HTML',
+      body,
+      renderInIframe: true
+    });
 
     await (wrapper.vm as any).submit();
 
@@ -101,10 +109,23 @@ describe('setting/HomeSections', () => {
       kind: 'html',
       title: 'Custom HTML',
       body,
+      render_in_iframe: true,
       visible: true,
       sort_order: 0,
       start_at: null,
       end_at: null
     });
+  });
+
+  it('never enables iframe rendering for Markdown payloads', () => {
+    const wrapper = mountSetting();
+    Object.assign((wrapper.vm as any).form, {
+      kind: 'markdown',
+      title: 'Markdown',
+      body: '# Body',
+      renderInIframe: true
+    });
+
+    expect((wrapper.vm as any).buildPayload().render_in_iframe).toBe(false);
   });
 });

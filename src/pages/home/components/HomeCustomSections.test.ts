@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 import { mount, shallowMount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { HOME_HTML_IFRAME_RESIZE_MESSAGE } from '@/utils/homeHtmlIframe';
 import HomeCustomSections from './HomeCustomSections.vue';
 import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
@@ -53,5 +55,27 @@ describe('HomeCustomSections', () => {
 
     expect(wrapper.get('.tenant-home-content').html()).toContain(body);
     expect(wrapper.get('[data-custom="yes"]').text()).toBe('Raw HTML');
+  });
+
+  it('runs opted-in HTML in a sandboxed iframe and accepts its resize messages', async () => {
+    const body = '<button onclick="document.body.dataset.clicked=\'yes\'">Run</button><script>run()</script>';
+    const wrapper = mount(HomeHtmlSection, {
+      props: { section: { kind: 'html', title: 'HTML', body, render_in_iframe: true } }
+    });
+    const iframe = wrapper.get('iframe');
+
+    expect(iframe.attributes('sandbox')).toContain('allow-scripts');
+    expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
+    expect(iframe.attributes('srcdoc')).toContain(body);
+
+    window.dispatchEvent(
+      new MessageEvent('message', {
+        data: { type: HOME_HTML_IFRAME_RESIZE_MESSAGE, height: 640 },
+        source: (iframe.element as HTMLIFrameElement).contentWindow
+      })
+    );
+    await nextTick();
+
+    expect(iframe.attributes('style')).toContain('height: 640px');
   });
 });

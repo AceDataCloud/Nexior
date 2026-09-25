@@ -1863,8 +1863,8 @@
     "description": "HTML ブロックの種類名。"
   },
   "homeSections.htmlTip": {
-    "message": "HTML はサイト管理者が直接記述し、そのまま表示されます。",
-    "description": "HTML 形式に関するヒント。"
+    "message": "HTML はデフォルトでページに直接埋め込まれます。スクリプトを実行する場合は、iframe 分離モードを有効にしてください。",
+    "description": "HTML 形式のヒント。"
   },
   "error.authSettingsLoad": {
     "message": "認証設定の読み込みに失敗しました",
@@ -1873,5 +1873,13 @@
   "error.authSettingsSave": {
     "message": "認証設定の保存に失敗しました",
     "description": "サイトの認証管理設定の保存に失敗したことを示すメッセージ。"
+  },
+  "homeSections.iframe.label": {
+    "message": "分離 iframe で実行",
+    "description": "カスタム HTML の iframe 分離モード切り替え。"
+  },
+  "homeSections.iframe.tip": {
+    "message": "スクリプト、フォーム、クリックによる遷移を許可しますが、親ページやそのログイン情報にはアクセスできません。",
+    "description": "iframe 分離モードのセキュリティ機能の説明。"
   }
 }
