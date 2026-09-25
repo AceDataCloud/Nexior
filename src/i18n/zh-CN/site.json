@@ -1752,7 +1752,7 @@
     "description": "首页自定义区块设置标题。"
   },
   "homeSections.tip": {
-    "message": "添加 Markdown 或自定义 HTML 区块。",
+    "message": "添加 Markdown、自定义 HTML 或内嵌网页区块。",
     "description": "自定义区块设置说明。"
   },
   "homeSections.add": {
@@ -1771,6 +1771,10 @@
     "message": "创建自定义区块",
     "description": "创建区块弹窗标题。"
   },
+  "homeSections.kind.website": {
+    "message": "Website",
+    "description": "Website section type label."
+  },
   "homeSections.kindLabel": {
     "message": "区块类型",
     "description": "区块类型字段标签。"
@@ -1782,6 +1786,22 @@
   "homeSections.field.body": {
     "message": "正文",
     "description": "区块正文字段。"
+  },
+  "homeSections.field.websiteUrl": {
+    "message": "Website URL",
+    "description": "Website URL field."
+  },
+  "homeSections.websitePlaceholder": {
+    "message": "https://example.com",
+    "description": "Website URL placeholder."
+  },
+  "homeSections.websiteTip": {
+    "message": "请输入完整的 HTTP 或 HTTPS 地址（推荐 HTTPS）。部分网站可能禁止被嵌入。",
+    "description": "Website embedding guidance."
+  },
+  "homeSections.websiteOpenExternal": {
+    "message": "在新窗口打开 {host}",
+    "description": "Website fallback link."
   },
   "homeSections.field.startAt": {
     "message": "开始时间",

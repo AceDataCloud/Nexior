@@ -1751,8 +1751,8 @@
     "description": "ホームページのカスタムセクション設定のタイトル。"
   },
   "homeSections.tip": {
-    "message": "Markdown またはカスタム HTML ブロックを追加します。",
-    "description": "カスタムブロックの設定に関する説明。"
+    "message": "Markdown、カスタムHTML、または埋め込みWebページのセクションを追加します。",
+    "description": "カスタムセクションの設定に関する説明。"
   },
   "homeSections.add": {
     "message": "セクションを追加",
@@ -1770,6 +1770,10 @@
     "message": "カスタムセクションを作成",
     "description": "セクション作成ダイアログのタイトル。"
   },
+  "homeSections.kind.website": {
+    "message": "Website",
+    "description": "Website section type label."
+  },
   "homeSections.kindLabel": {
     "message": "セクションタイプ",
     "description": "セクションタイプ項目のラベル。"
@@ -1781,6 +1785,22 @@
   "homeSections.field.body": {
     "message": "本文",
     "description": "セクション本文の項目。"
+  },
+  "homeSections.field.websiteUrl": {
+    "message": "Website URL",
+    "description": "Website URL field."
+  },
+  "homeSections.websitePlaceholder": {
+    "message": "https://example.com",
+    "description": "Website URL placeholder."
+  },
+  "homeSections.websiteTip": {
+    "message": "完全な HTTP または HTTPS アドレスを入力してください（HTTPS を推奨）。一部のウェブサイトは埋め込みを禁止している場合があります。",
+    "description": "ウェブサイト埋め込みに関するガイダンス。"
+  },
+  "homeSections.websiteOpenExternal": {
+    "message": "新しいウィンドウで {host} を開く",
+    "description": "ウェブサイトのフォールバックリンク。"
   },
   "homeSections.field.startAt": {
     "message": "開始日時",
