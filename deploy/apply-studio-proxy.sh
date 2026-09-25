@@ -25,8 +25,16 @@ kubectl create configmap studio-html-injector -n "$NAMESPACE" \
 kubectl apply -f "$rendered"
 kubectl rollout status "deployment/$DEPLOYMENT" -n "$NAMESPACE" --timeout=10m
 
-pods=$(kubectl get pods -n "$NAMESPACE" -l "$SELECTOR" -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}')
-[ "$(printf '%s\n' "$pods" | grep -c . || true)" = 2 ] || { echo "Expected two Caddy pods" >&2; exit 1; }
+pods=$(kubectl get pods -n "$NAMESPACE" -l "$SELECTOR" -o json | python3 -c '
+import json, sys
+for pod in json.load(sys.stdin)["items"]:
+    if pod["metadata"].get("deletionTimestamp"):
+        continue
+    statuses = pod.get("status", {}).get("containerStatuses", [])
+    if statuses and all(item.get("ready") for item in statuses):
+        print(pod["metadata"]["name"])
+')
+[ "$(printf '%s\n' "$pods" | grep -c . || true)" = 2 ] || { echo "Expected two ready, non-terminating Caddy pods" >&2; exit 1; }
 nodes=''
 for pod in $pods; do
   image=$(kubectl get pod "$pod" -n "$NAMESPACE" -o jsonpath='{.spec.containers[?(@.name=="caddy")].image}')
