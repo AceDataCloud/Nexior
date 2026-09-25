@@ -19,7 +19,7 @@ class SiteDomainService {
   }
 
   async get(id: string): Promise<AxiosResponse<ISiteDomainDetailResponse>> {
-    return await httpClient.get(`/${this.key}/${id}`);
+    return await httpClient.get(`/${this.key}/${id}/`);
   }
 
   async create(data: { site: string; hostname: string }): Promise<AxiosResponse<ISiteDomainDetailResponse>> {
@@ -31,7 +31,7 @@ class SiteDomainService {
   }
 
   async delete(id: string): Promise<AxiosResponse<void>> {
-    return await httpClient.delete(`/${this.key}/${id}`);
+    return await httpClient.delete(`/${this.key}/${id}/`);
   }
 }
 
