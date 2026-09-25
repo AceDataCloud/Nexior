@@ -173,7 +173,20 @@
         <answering-mark v-if="message.state === messageState.PENDING" />
         <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
           <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-          <span>{{ partialErrorText }}</span>
+          <span class="error-text">{{ partialErrorText }}</span>
+          <el-button
+            v-if="canRetry"
+            class="btn-retry"
+            round
+            type="primary"
+            size="small"
+            :loading="retrying"
+            :disabled="answering || retrying"
+            @click="onRestart"
+          >
+            <refresh-icon v-if="!retrying" :size="14" class="mr-1" aria-hidden="true" />
+            {{ $t('chat.message.retry') }}
+          </el-button>
           <el-button v-if="showBuyMore && !readonly" round type="primary" size="small" @click="onBuyMore">
             {{ $t('common.button.buyMore') }}
           </el-button>
@@ -203,12 +216,7 @@
           class="btn-copy"
         />
         <restart-to-generate
-          v-if="
-            !readonly &&
-            (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
-            message.role === 'assistant' &&
-            message === messages[messages.length - 1]
-          "
+          v-if="canRestart && !canRetry && !answering && !retrying"
           class="btn-restart"
           :messages="messages"
           @restart="onRestart"
@@ -225,11 +233,24 @@
         />
       </div>
     </div>
-    <div v-else class="error-card">
+    <div v-else class="error-card" role="alert">
       <div class="error-content">
         <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="error-text">{{ errorText }}</span>
       </div>
+      <el-button
+        v-if="canRetry"
+        class="btn-retry"
+        round
+        type="primary"
+        size="small"
+        :loading="retrying"
+        :disabled="answering || retrying"
+        @click="onRestart"
+      >
+        <refresh-icon v-if="!retrying" :size="14" class="mr-1" aria-hidden="true" />
+        {{ $t('chat.message.retry') }}
+      </el-button>
       <el-button v-if="showBuyMore && !readonly" round type="primary" class="btn-topup" size="small" @click="onBuyMore">
         {{ $t('common.button.buyMore') }}
       </el-button>
@@ -238,7 +259,7 @@
 </template>
 
 <script lang="ts">
-import { ErrorIcon } from '@acedatacloud/core/icons/components';
+import { ErrorIcon, RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import { ElButton, ElImage, ElInput } from 'element-plus';
@@ -289,6 +310,7 @@ export default defineComponent({
   name: 'Message',
   components: {
     ErrorIcon,
+    RefreshIcon,
     EditMessage,
     CopyToClipboard,
     RestartToGenerate,
@@ -330,6 +352,14 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    answering: {
+      type: Boolean,
+      default: false
+    },
+    retrying: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Assistant-avatar model group for contexts where the chat store isn't
      * the source of truth (the shared page has no active chat session).
@@ -361,6 +391,23 @@ export default defineComponent({
     };
   },
   computed: {
+    canRestart(): boolean {
+      return (
+        !this.readonly &&
+        this.message.role === ROLE_ASSISTANT &&
+        this.message === this.messages[this.messages.length - 1] &&
+        (this.message.state === IChatMessageState.FINISHED || this.message.state === IChatMessageState.FAILED)
+      );
+    },
+    canRetry(): boolean {
+      return (
+        this.canRestart &&
+        this.message.state === IChatMessageState.FAILED &&
+        !!this.errorText &&
+        this.message.error?.code !== ERROR_CODE_USED_UP &&
+        this.message.error?.code !== ERROR_CODE_NOT_APPLIED
+      );
+    },
     modelGroup() {
       // Prefer an explicit override (shared page); otherwise read the active
       // chat session. Optional chaining guards the case where the chat store
@@ -456,6 +503,7 @@ export default defineComponent({
       this.isEditing = false;
     },
     onRestart() {
+      if (!this.canRestart || this.answering || this.retrying) return;
       this.$emit('restart', this.message);
     },
     onEdit() {
@@ -522,6 +570,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .partial-error {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   margin-top: 12px;
@@ -536,10 +585,21 @@ export default defineComponent({
   .error-icon {
     flex-shrink: 0;
   }
+  .error-text {
+    flex: 1 1 180px;
+    overflow-wrap: anywhere;
+  }
+}
+
+.btn-retry {
+  flex-shrink: 0;
+  min-height: 32px;
+  margin-left: auto;
 }
 
 .error-card {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
@@ -548,8 +608,11 @@ export default defineComponent({
   border: 1px solid var(--el-color-danger-light-7);
   width: fit-content;
   max-width: 100%;
+  min-width: 0;
   .error-content {
     display: flex;
+    flex: 1 1 220px;
+    min-width: 0;
     align-items: center;
     gap: 8px;
     .error-icon {
@@ -561,6 +624,7 @@ export default defineComponent({
       font-size: 14px;
       color: var(--el-color-danger);
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
   }
   .btn-topup {

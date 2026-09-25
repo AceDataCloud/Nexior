@@ -72,6 +72,8 @@
             :messages="messages"
             :question="question"
             :application="application"
+            :answering="answering"
+            :retrying="restarting"
             class="message"
             @update:question="question = $event"
             @edit="onEdit"
@@ -176,6 +178,7 @@ export interface IData {
    */
   references: IChatReference[];
   answering: boolean;
+  restarting: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
   restoringConversationId: string | undefined;
@@ -250,6 +253,7 @@ export default defineComponent({
       clientToolRunId: 0,
       upload: false,
       answering: false,
+      restarting: false,
       canceler: undefined,
       restoringConversationId: undefined,
       skipNextRestoreId: undefined,
@@ -308,7 +312,7 @@ export default defineComponent({
       return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
     },
     ready(): boolean {
-      if (this.restoringConversation) return false;
+      if (this.restoringConversation || this.restarting) return false;
       // Guests may compose & "send" — the submit handler triggers login
       // (deferred auth), so the composer must not be disabled for them.
       if (!this.$store.getters.authenticated) {
@@ -567,82 +571,82 @@ export default defineComponent({
       this.$router.push({ name: 'settings-index', query: { browserRecovery: action } });
     },
     async onRestart(targetMessage: IChatMessage) {
-      // 1. Clear the following message
+      if (this.answering || this.restarting) return;
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
       const problemMessage = this.messages[targetIndex - 1];
-      // @ts-ignore
-      let updatedMessages = [];
-      if (targetIndex !== -1) {
-        // @ts-ignore
-        updatedMessages = this.messages.slice(0, targetIndex - 1);
-        this.messages = this.messages.slice(0, targetIndex);
-        this.references = [];
-        if (typeof problemMessage.content === 'string') {
-          this.question = problemMessage.content;
-        } else if (Array.isArray(problemMessage.content)) {
-          for (const item of problemMessage.content) {
-            if (item.type === 'image_url' || item.type === 'file_url') {
-              const ref = item.type === 'image_url' ? item.image_url : item.file_url;
-              const url = typeof ref === 'string' ? ref : ref?.url;
-              if (url) {
-                const reference: IChatReference = item.name ? { url, name: item.name } : { url };
-                if (item.file_id && item.sha256 && item.mime && typeof item.size === 'number') {
-                  Object.assign(reference, {
-                    file_id: item.file_id,
-                    sha256: item.sha256,
-                    mime: item.mime,
-                    size: item.size
-                  });
-                }
-                this.references.push(reference);
-              }
-            } else if (item.type === 'text' && item.text) {
-              this.question = item.text;
-            }
-          }
-        }
-      }
-      console.debug('onRestart!', this.question, JSON.stringify(this.references));
-      // 2. Update the messages
-      const token = this.credential?.token;
-      const question = this.question.trim();
-      // reset question and references
-      if (!token || !question) {
-        console.error('no token or endpoint or question');
-        this.messages.push({
-          error: {
-            code: ERROR_CODE_NOT_APPLIED
-          },
-          role: ROLE_ASSISTANT,
-          state: IChatMessageState.FAILED
-        });
+      if (
+        targetIndex !== this.messages.length - 1 ||
+        targetMessage.role !== ROLE_ASSISTANT ||
+        problemMessage?.role !== ROLE_USER
+      ) {
+        console.warn('Cannot restart a response without its latest user message');
         return;
       }
-      let conversationId = this.conversationId;
-      chatOperator
-        .updateConversation(
-          {
-            id: this.conversationId,
-            // @ts-ignore
-            messages: updatedMessages
-          },
-          {
-            token
+
+      let question = '';
+      const references: IChatReference[] = [];
+      if (typeof problemMessage.content === 'string') {
+        question = problemMessage.content;
+      } else if (Array.isArray(problemMessage.content)) {
+        const text: string[] = [];
+        for (const item of problemMessage.content) {
+          if (item.type === 'image_url' || item.type === 'file_url') {
+            const ref = item.type === 'image_url' ? item.image_url : item.file_url;
+            const url = typeof ref === 'string' ? ref : ref?.url;
+            if (url) {
+              const reference: IChatReference = item.name ? { url, name: item.name } : { url };
+              if (item.file_id && item.sha256 && item.mime && typeof item.size === 'number') {
+                Object.assign(reference, {
+                  file_id: item.file_id,
+                  sha256: item.sha256,
+                  mime: item.mime,
+                  size: item.size
+                });
+              }
+              references.push(reference);
+            }
+          } else if (item.type === 'text' && item.text) {
+            text.push(item.text);
           }
-        )
-        .then(async () => {
-          await this.$store.dispatch('chat/setConversation', {
-            id: conversationId,
-            messages: this.messages
-          });
-          console.debug('finished update conversation', this.messages);
-          // 3. Send restart questions
-          console.debug('onRestart', this.question);
-          await this.onRequest();
-        })
-        .catch((error) => {
-          this.handleRequestError(error);
-        });
+        }
+        question = text.join('\n');
+      }
+      const token = this.credential?.token;
+      if (!token || !question.trim()) {
+        console.error('Cannot restart without a credential and question');
+        await this.handleRequestError(new BaseError(400, ERROR_CODE_NOT_APPLIED, ''), targetIndex);
+        return;
+      }
+      const conversationId = this.conversationId;
+      const originalMessages = this.messages;
+      const remainingMessages = this.messages.slice(0, targetIndex);
+      let replacementMessages: IChatMessage[] | undefined;
+      const isCurrent = () => this.conversationId === conversationId && this.messages[targetIndex] === targetMessage;
+      this.restarting = true;
+      try {
+        // A first-byte failure may leave the new conversation without a server ID.
+        if (conversationId) {
+          await chatOperator.updateConversation(
+            { id: conversationId, messages: this.messages.slice(0, targetIndex - 1) },
+            { token }
+          );
+          if (!isCurrent()) return;
+          await this.$store.dispatch('chat/setConversation', { id: conversationId, messages: remainingMessages });
+          if (!isCurrent()) return;
+        }
+        this.messages = remainingMessages;
+        replacementMessages = this.messages;
+        this.question = question;
+        this.references = references;
+        await this.onRequest();
+      } catch (error) {
+        if (this.conversationId === conversationId && this.messages === replacementMessages) {
+          this.messages = originalMessages;
+        }
+        if (isCurrent()) await this.handleRequestError(error, targetIndex);
+      } finally {
+        this.restarting = false;
+      }
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
       // 1. Clear the following message
