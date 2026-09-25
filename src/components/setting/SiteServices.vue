@@ -24,17 +24,17 @@
 
     <section class="default-price-section">
       <div>
-        <p class="settings-title">{{ $t('site.field.disableRecharge') }}</p>
-        <p class="settings-tip">{{ $t('site.message.disableRechargeTip') }}</p>
+        <p class="settings-title">{{ $t('site.field.rechargeEnabled') }}</p>
+        <p class="settings-tip">{{ $t('site.message.rechargeEnabledTip') }}</p>
       </div>
       <el-switch
-        :model-value="disableRecharge"
+        :model-value="rechargeEnabled"
         inline-prompt
-        :loading="disableRechargeSaving"
-        :disabled="disableRechargeSaving || !siteId"
+        :loading="rechargeEnabledSaving"
+        :disabled="rechargeEnabledSaving || !siteId"
         :active-text="$t('site.button.enabled')"
         :inactive-text="$t('site.button.disabled')"
-        @update:model-value="onToggleDisableRecharge($event as boolean)"
+        @update:model-value="onToggleRecharge($event as boolean)"
       />
     </section>
 
@@ -327,7 +327,7 @@ export default defineComponent({
       siteMarkupConfirmedPercent: 0,
       siteMarkupSaving: false,
       pendingSiteMarkupPercent: undefined as number | undefined,
-      disableRechargeSaving: false,
+      rechargeEnabledSaving: false,
       loading: false,
       catalogLoading: false,
       submitting: false,
@@ -348,8 +348,8 @@ export default defineComponent({
     siteId(): string | undefined {
       return this.site?.id;
     },
-    disableRecharge(): boolean {
-      return isRechargeDisabled(this.site);
+    rechargeEnabled(): boolean {
+      return !isRechargeDisabled(this.site);
     },
     // Site-wide default a blank per-service markup inherits.
     siteDefaultRatio(): number {
@@ -419,21 +419,21 @@ export default defineComponent({
     onResize() {
       this.mobile = window.innerWidth < 768;
     },
-    async onToggleDisableRecharge(enabled: boolean): Promise<void> {
-      if (!this.siteId || this.disableRechargeSaving) return;
-      this.disableRechargeSaving = true;
+    async onToggleRecharge(enabled: boolean): Promise<void> {
+      if (!this.siteId || this.rechargeEnabledSaving) return;
+      this.rechargeEnabledSaving = true;
       try {
         await siteOperator.update(this.siteId, {
           commerce: {
             ...(this.site.commerce || {}),
-            recharge: { enabled: !enabled }
+            recharge: { enabled }
           }
         });
         await this.$store.dispatch('getSite');
       } catch {
         ElMessage.error(this.$t('site.services.message.saveFailed'));
       } finally {
-        this.disableRechargeSaving = false;
+        this.rechargeEnabledSaving = false;
       }
     },
     async onSaveSiteMarkup(percent: number | undefined): Promise<void> {

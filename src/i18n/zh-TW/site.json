@@ -67,13 +67,13 @@
     "message": "示例：官方價 {from} → 你的售價 {to}",
     "description": "加價比例設定項下方的實時示例，{from} 是官方原價，{to} 是加價後的售價"
   },
-  "field.disableRecharge": {
-    "message": "停用儲值",
-    "description": "站臺設定：開啟後隱藏本站所有充值/購買入口"
+  "field.rechargeEnabled": {
+    "message": "允許使用者充值",
+    "description": "網站設定：控制使用者能否看到和使用充值／購買入口"
   },
-  "message.disableRechargeTip": {
-    "message": "啟用後，本站將隱藏所有儲值/購買按鈕，使用者無法自行儲值額度。",
-    "description": "禁用充值開關的說明文字"
+  "message.rechargeEnabledTip": {
+    "message": "開啟後，本網站將顯示充值／購買入口，使用者可以自行充值額度。",
+    "description": "允許使用者充值開關的說明文字"
   },
   "field.referralEntryEnabled": {
     "message": "顯示分銷入口",
@@ -1886,14 +1886,6 @@
     "message": "HTML 預設直接嵌入頁面；如需執行指令碼，請啟用 iframe 隔離模式。",
     "description": "HTML 格式提示。"
   },
-  "error.authSettingsLoad": {
-    "message": "載入驗證設定失敗",
-    "description": "載入網站驗證管理設定失敗提示。"
-  },
-  "error.authSettingsSave": {
-    "message": "儲存驗證設定失敗",
-    "description": "儲存網站驗證管理設定失敗提示。"
-  },
   "homeSections.iframe.label": {
     "message": "在隔離 iframe 中執行",
     "description": "自訂 HTML 的 iframe 隔離模式開關。"
@@ -1901,5 +1893,13 @@
   "homeSections.iframe.tip": {
     "message": "允許指令碼、表單和點擊跳轉，但無法存取主頁面及其登入資訊。",
     "description": "iframe 隔離模式的安全功能說明。"
+  },
+  "error.authSettingsLoad": {
+    "message": "載入驗證設定失敗",
+    "description": "載入網站驗證管理設定失敗提示。"
+  },
+  "error.authSettingsSave": {
+    "message": "儲存驗證設定失敗",
+    "description": "儲存網站驗證管理設定失敗提示。"
   }
 }

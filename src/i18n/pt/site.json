@@ -45,7 +45,7 @@
   },
   "field.url": {
     "message": "Link",
-    "description": "Título exibido na caixa de edição"
+    "description": "Título exibido no campo de edição"
   },
   "field.admins": {
     "message": "ID dos administradores do site",
@@ -67,13 +67,13 @@
     "message": "Exemplo: preço oficial {from} → seu preço {to}",
     "description": "Exemplo em tempo real abaixo da configuração da proporção de aumento, {from} é o preço original oficial, {to} é o preço após o aumento"
   },
-  "field.disableRecharge": {
-    "message": "Desativar recarga",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "Permitir que os usuários adicionem créditos",
+    "description": "Configuração do site: controla se os usuários podem ver e usar a entrada de recarga/compra"
   },
-  "message.disableRechargeTip": {
-    "message": "Quando ativado, todos os botões de recarga ficam ocultos neste site e os usuários não podem mais recarregar o saldo.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "Após ativar, este site exibirá a entrada de recarga/compra, permitindo que os usuários adicionem créditos por conta própria.",
+    "description": "Texto explicativo da opção de permitir que os usuários adicionem créditos"
   },
   "field.referralEntryEnabled": {
     "message": "Mostrar entrada de afiliados",
@@ -117,7 +117,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Nome do método de login: login de terceiros WeChat"
+    "description": "Nome do método de login: login de terceiros via WeChat"
   },
   "field.authSmsWebhook": {
     "message": "Endereço de envio de SMS personalizado",
@@ -1886,14 +1886,6 @@
     "message": "O HTML é incorporado diretamente à página por padrão; para executar scripts, ative o modo isolado em iframe.",
     "description": "Dica sobre o formato HTML."
   },
-  "error.authSettingsLoad": {
-    "message": "Falha ao carregar as configurações de autenticação",
-    "description": "Mensagem exibida quando ocorre uma falha ao carregar as configurações de gerenciamento da autenticação do site."
-  },
-  "error.authSettingsSave": {
-    "message": "Falha ao salvar as configurações de autenticação",
-    "description": "Mensagem exibida quando ocorre uma falha ao salvar as configurações de gerenciamento da autenticação do site."
-  },
   "homeSections.iframe.label": {
     "message": "Executar em iframe isolado",
     "description": "Alternância do modo isolado em iframe para HTML personalizado."
@@ -1901,5 +1893,13 @@
   "homeSections.iframe.tip": {
     "message": "Permite scripts, formulários e navegação por cliques, mas não pode acessar a página principal nem suas informações de login.",
     "description": "Descrição dos recursos de segurança do modo isolado em iframe."
+  },
+  "error.authSettingsLoad": {
+    "message": "Falha ao carregar as configurações de autenticação",
+    "description": "Mensagem exibida quando ocorre uma falha ao carregar as configurações de gerenciamento da autenticação do site."
+  },
+  "error.authSettingsSave": {
+    "message": "Falha ao salvar as configurações de autenticação",
+    "description": "Mensagem exibida quando ocorre uma falha ao salvar as configurações de gerenciamento da autenticação do site."
   }
 }

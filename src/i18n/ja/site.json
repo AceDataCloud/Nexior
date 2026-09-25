@@ -67,13 +67,13 @@
     "message": "例：公式価格 {from} → あなたの販売価格 {to}",
     "description": "加価率設定項目の下にあるリアルタイムの例で、{from} は公式の元の価格、{to} は加価後の販売価格です"
   },
-  "field.disableRecharge": {
-    "message": "チャージを無効化",
-    "description": "サイト設定：オンにすると、このサイトのすべてのチャージ/チャージアップエントリを非表示にする"
+  "field.rechargeEnabled": {
+    "message": "ユーザーによるチャージを許可",
+    "description": "サイト設定：ユーザーがチャージ／購入の入口を表示して利用できるかどうかを制御します"
   },
-  "message.disableRechargeTip": {
-    "message": "有効にすると、このサイトのすべてのチャージボタンが非表示になり、ユーザーは残高をチャージできなくなります。",
-    "description": "チャージ無効化トグルのヘルプテキスト"
+  "message.rechargeEnabledTip": {
+    "message": "有効にすると、サイトにチャージ／購入の入口が表示され、ユーザーが自分で残高をチャージできるようになります。",
+    "description": "ユーザーによるチャージ設定の説明文"
   },
   "field.referralEntryEnabled": {
     "message": "アフィリエイト入口を表示",
@@ -1886,14 +1886,6 @@
     "message": "HTML はデフォルトでページに直接埋め込まれます。スクリプトを実行する場合は、iframe 分離モードを有効にしてください。",
     "description": "HTML 形式のヒント。"
   },
-  "error.authSettingsLoad": {
-    "message": "認証設定の読み込みに失敗しました",
-    "description": "サイトの認証管理設定の読み込みに失敗したことを示すメッセージ。"
-  },
-  "error.authSettingsSave": {
-    "message": "認証設定の保存に失敗しました",
-    "description": "サイトの認証管理設定の保存に失敗したことを示すメッセージ。"
-  },
   "homeSections.iframe.label": {
     "message": "分離 iframe で実行",
     "description": "カスタム HTML の iframe 分離モード切り替え。"
@@ -1901,5 +1893,13 @@
   "homeSections.iframe.tip": {
     "message": "スクリプト、フォーム、クリックによる遷移を許可しますが、親ページやそのログイン情報にはアクセスできません。",
     "description": "iframe 分離モードのセキュリティ機能の説明。"
+  },
+  "error.authSettingsLoad": {
+    "message": "認証設定の読み込みに失敗しました",
+    "description": "サイトの認証管理設定の読み込みに失敗したことを示すメッセージ。"
+  },
+  "error.authSettingsSave": {
+    "message": "認証設定の保存に失敗しました",
+    "description": "サイトの認証管理設定の保存に失敗したことを示すメッセージ。"
   }
 }
