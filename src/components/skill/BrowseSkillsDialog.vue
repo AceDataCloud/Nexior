@@ -274,6 +274,7 @@ export default defineComponent({
   },
   directives: { loading: vLoading },
   props: {
+    siteId: { type: String, default: '' },
     modelValue: {
       type: Boolean,
       default: false
@@ -409,7 +410,7 @@ export default defineComponent({
       }
       this.installing = true;
       try {
-        const { data } = await skillCatalogOperator.install(item.id);
+        const { data } = await skillCatalogOperator.install(item.id, this.siteId ? { site_id: this.siteId } : {});
         ElMessage.success(this.$t('skill.directory.installSuccess', { name: item.slug }));
         this.$emit('installed', data.id);
         // Bump the local state so the card flips to "installed" without a refetch.

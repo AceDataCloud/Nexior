@@ -67,6 +67,7 @@ export default defineComponent({
   name: 'UploadSkillDialog',
   components: { ElDialog, ElButton, AddFileIcon, CloudUploadIcon },
   props: {
+    siteId: { type: String, default: '' },
     modelValue: {
       type: Boolean,
       default: false
@@ -142,11 +143,11 @@ export default defineComponent({
         // For raw .md uploads, send as text body; for archives use multipart.
         if (/\.md$/i.test(this.file.name)) {
           const content = await this.file.text();
-          const { data } = await skillOperator.createMarkdown({ content });
+          const { data } = await skillOperator.createMarkdown({ content }, this.siteId || undefined);
           ElMessage.success(this.$t('skill.message.createSuccess'));
           this.$emit('created', data.id);
         } else {
-          const { data } = await skillOperator.createTarball(this.file);
+          const { data } = await skillOperator.createTarball(this.file, this.siteId || undefined);
           ElMessage.success(this.$t('skill.message.createSuccess'));
           this.$emit('created', data.id);
         }

@@ -32,13 +32,14 @@
       </div>
     </section>
     <capability-override-dialog
-      v-if="editingCapability && site.id"
+      v-if="editingCapability && managementSite?.id"
       v-model="dialogVisible"
-      :site-id="site.id"
+      :site-id="managementSite.id"
       :capability="editingCapability"
       :default-name="defaultFeatureLabel(editingCapability)"
       :default-icon="CAPABILITY_ICONS[editingCapability]"
       :override="overrides[editingCapability] || null"
+      :site="managementSite"
       @saved="onOverrideSaved"
     />
   </div>
@@ -68,6 +69,7 @@ export default defineComponent({
   data() {
     return {
       overrides: {} as Partial<Record<CapabilityKey, ISiteCapabilityOverride>>,
+      managementSite: null as import('@/models').ISite | null,
       editingCapability: null as CapabilityKey | null,
       dialogVisible: false,
       failedIcons: {} as Partial<Record<CapabilityKey, boolean>>,
@@ -123,13 +125,20 @@ export default defineComponent({
         ElMessage.error(this.$t('site.capabilityOverride.fetchFailed') as string);
       }
     },
-    onEdit(feature: CapabilityKey): void {
-      this.editingCapability = feature;
-      this.dialogVisible = true;
+    async onEdit(feature: CapabilityKey): Promise<void> {
+      if (!this.site.id) return;
+      try {
+        this.managementSite = (await siteOperator.get(this.site.id)).data;
+        this.editingCapability = feature;
+        this.dialogVisible = true;
+      } catch {
+        ElMessage.error(this.$t('site.capabilityOverride.fetchFailed') as string);
+      }
     },
     async onOverrideSaved(): Promise<void> {
       this.failedIcons = {};
       await Promise.all([this.fetchOverrides(), this.$store.dispatch('getSite')]);
+      if (this.site.id) this.managementSite = (await siteOperator.get(this.site.id)).data;
     },
     updateFeature(feature: string, updates: Record<string, unknown>) {
       this.onSave({

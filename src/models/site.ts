@@ -1,7 +1,18 @@
 import type { CapabilityKey } from '@/constants/capabilities';
 
+export interface ISiteAssistantSkillBinding {
+  id: string;
+}
+
+export interface ISiteAssistantConfig {
+  instructions?: string;
+  skills?: ISiteAssistantSkillBinding[];
+}
+
 export interface ISiteCapabilityFeature {
   enabled?: boolean;
+  service_id?: string;
+  assistant?: ISiteAssistantConfig;
   [key: string]: unknown;
 }
 
