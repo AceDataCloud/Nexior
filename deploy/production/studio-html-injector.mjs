@@ -11,6 +11,7 @@ const staleMs = Number(process.env.SITE_STALE_TTL_MS || 300_000);
 const lookupTimeoutMs = Number(process.env.SITE_LOOKUP_TIMEOUT_MS || 3_000);
 const upstreamTimeoutMs = Number(process.env.UPSTREAM_TIMEOUT_MS || 300_000);
 const maxHtmlBytes = Number(process.env.MAX_HTML_BYTES || 4 * 1024 * 1024);
+const officialHost = normalizeHost(process.env.OFFICIAL_STUDIO_HOST || 'studio.acedata.cloud');
 const metadataCache = new Map();
 const pendingLookups = new Map();
 
@@ -220,7 +221,11 @@ async function proxyRequest(request, response) {
     copyHeaders(upstreamResponse, response, isHtml);
     if (isHtml) {
       const [html, metadata] = await Promise.all([readLimited(upstreamResponse), getMetadata(host)]);
-      response.end(injectTenantHead(html, metadata, `https://${host}${request.url || '/'}`));
+      response.end(
+        metadata === null && host === officialHost
+          ? html
+          : injectTenantHead(html, metadata, `https://${host}${request.url || '/'}`)
+      );
     } else if (!upstreamResponse.body || method === 'HEAD') {
       response.end();
     } else {
