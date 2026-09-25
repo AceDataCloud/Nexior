@@ -1,5 +1,4 @@
 import { getCookie, setCookie } from 'typescript-cookie';
-import favicon from '@/assets/images/favicon.ico';
 import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
@@ -115,11 +114,14 @@ export const initializeKeywords = async () => {
 /**
  * Initialize favicon.
  */
+const DEFAULT_FAVICON = 'https://cdn.acedata.cloud/favicon.ico';
+const DEFAULT_APPLE_TOUCH_ICON = 'https://cdn.acedata.cloud/apple-touch-icon.png';
+
 export const initializeFavicon = async () => {
   const favIconUrl = store.state.site?.favicon || '';
   const assets = [
-    { rel: 'icon', href: favIconUrl || favicon },
-    { rel: 'apple-touch-icon', href: favIconUrl || '/apple-touch-icon.png' }
+    { rel: 'icon', href: favIconUrl || DEFAULT_FAVICON },
+    { rel: 'apple-touch-icon', href: favIconUrl || DEFAULT_APPLE_TOUCH_ICON }
   ];
 
   assets.forEach(({ rel, href }) => {

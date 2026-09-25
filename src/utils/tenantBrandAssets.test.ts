@@ -6,8 +6,8 @@ const source = (path: string) => readFileSync(new URL(`../../${path}`, import.me
 describe('tenant brand discovery routes', () => {
   it('keeps all discovery links in the initial HTML', () => {
     const html = source('index.html');
-    expect(html).toContain('rel="icon" href="/favicon.ico"');
-    expect(html).toContain('rel="apple-touch-icon" href="/apple-touch-icon.png"');
+    expect(html).toContain('rel="icon" href="https://cdn.acedata.cloud/favicon.ico"');
+    expect(html).toContain('rel="apple-touch-icon" href="https://cdn.acedata.cloud/apple-touch-icon.png"');
     expect(html).not.toContain('querySelectorAll(\'link[rel="icon"],link[rel="apple-touch-icon"]\')');
   });
 

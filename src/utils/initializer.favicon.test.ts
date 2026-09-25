@@ -41,12 +41,14 @@ describe('initializeFavicon', () => {
     );
   });
 
-  it('keeps the same-origin Apple fallback when no tenant icon exists', async () => {
+  it('uses the canonical CDN fallback when no tenant icon exists', async () => {
     await initializeFavicon();
 
-    expect(document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href).toBeTruthy();
+    expect(document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href).toBe(
+      'https://cdn.acedata.cloud/favicon.ico'
+    );
     expect(document.querySelector<HTMLLinkElement>('link[rel="apple-touch-icon"]')?.getAttribute('href')).toBe(
-      '/apple-touch-icon.png'
+      'https://cdn.acedata.cloud/apple-touch-icon.png'
     );
   });
 });

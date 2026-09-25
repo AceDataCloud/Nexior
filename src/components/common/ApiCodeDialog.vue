@@ -138,7 +138,7 @@ const LANGUAGES: { name: Lang; icon: string }[] = [
 
 const PLATFORM_URL = 'https://platform.acedata.cloud/';
 
-const PLATFORM_FAVICON = 'https://platform.acedata.cloud/favicon.ico';
+const PLATFORM_FAVICON = 'https://cdn.acedata.cloud/favicon.ico';
 
 // Persisted opt-out for the "running here consumes extra credits" warning.
 const RUN_CONFIRM_SKIP_KEY = 'nexior:api-run:skip-confirm';
