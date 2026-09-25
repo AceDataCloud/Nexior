@@ -1,8 +1,8 @@
 # --------------------------------------------------------------------------
 # studio-proxy.yaml
 #
-# Caddy reverse proxy that fronts ALL tenant custom domains whose parent
-# Site is studio.acedata.cloud (mybrand.com -> studio-frontend) with
+# Caddy reverse proxy for Studio metadata injection. It fronts tenant custom
+# domains and provides an internal listener for *.studio.acedata.cloud, with
 # on-demand Let's Encrypt TLS.
 #
 # Provides:
@@ -52,38 +52,58 @@ data:
       }
     }
 
-    # Catch-all HTTPS site. tls { on_demand } makes Caddy issue a cert
-    # via Let's Encrypt the first time any unknown SNI hits the listener,
-    # gated by the `ask` callback above.
+    (studio_routes) {
+      route {
+        @websocket {
+          header Connection *Upgrade*
+          header Upgrade websocket
+        }
+        reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085 {
+          header_up Host {host}
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto https
+        }
+
+        @direct {
+          path /assets/* /api/v1/* /favicon.ico /apple-touch-icon.png
+          path /.well-known/* /robots.txt /sitemap.xml /llms.txt /sw.js
+          path /recorder-worklet.js /poivelle-logo.png
+        }
+        reverse_proxy @direct studio-frontend.acedatacloud.svc.cluster.local:8085 {
+          header_up Host {host}
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto https
+        }
+
+        reverse_proxy localhost:3000 {
+          header_up Host {host}
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto https
+        }
+      }
+    }
+
+    # Catch-all HTTPS site for tenant custom domains.
     https:// {
       tls {
         on_demand
       }
-
-      # WebSocket upgrades bypass the HTML-only sidecar. All regular HTTP
-      # responses pass through it so the first HTML response is tenant-aware.
-      @websocket {
-        header Connection *Upgrade*
-        header Upgrade websocket
-      }
-      reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085 {
-        header_up Host {host}
-        header_up X-Real-IP {remote_host}
-        header_up X-Forwarded-For {remote_host}
-        header_up X-Forwarded-Proto https
-      }
-      reverse_proxy localhost:3000 {
-        header_up Host {host}
-        header_up X-Real-IP {remote_host}
-        header_up X-Forwarded-For {remote_host}
-        header_up X-Forwarded-Proto https
-      }
+      import studio_routes
 
       # JSON access log to stdout; CLS picks it up automatically.
       log {
         output stdout
         format json
       }
+    }
+
+    # nginx-router terminates TLS for studio.acedata.cloud and its wildcard.
+    # This listener is cluster-internal and must never redirect back to HTTPS.
+    :8080 {
+      import studio_routes
     }
 
     # Plain HTTP: serves /.well-known/acme-challenge/* for HTTP-01
@@ -150,6 +170,7 @@ spec:
         app: caddy-studio-proxy
       annotations:
         acedata.cloud/html-injector-sha: '${INJECTOR_SHA}'
+        acedata.cloud/studio-proxy-config-sha: '${PROXY_CONFIG_SHA}'
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -171,21 +192,22 @@ spec:
         - name: caddy
           image: caddy:2.11.4-alpine@sha256:de23def33b17fb5d1290b0f6c2add1d70780e52341896c00a4c8a2a2fe9d355e
           imagePullPolicy: IfNotPresent
-          args: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+          args: ['caddy', 'run', '--config', '/etc/caddy/Caddyfile', '--adapter', 'caddyfile']
           ports:
-            - { name: http,  containerPort: 80,   protocol: TCP }
-            - { name: https, containerPort: 443,  protocol: TCP }
+            - { name: http, containerPort: 80, protocol: TCP }
+            - { name: https, containerPort: 443, protocol: TCP }
+            - { name: ingress-http, containerPort: 8080, protocol: TCP }
             - { name: admin, containerPort: 2019, protocol: TCP }
           env:
             # Caddy stores everything (ACME account, certs, locks) under
             # $XDG_DATA_HOME/caddy by default. Pin it to /data so the
             # PVC mount actually catches it.
-            - { name: XDG_DATA_HOME,   value: /data }
+            - { name: XDG_DATA_HOME, value: /data }
             - { name: XDG_CONFIG_HOME, value: /config }
           volumeMounts:
             - { name: caddyfile, mountPath: /etc/caddy }
-            - { name: data,      mountPath: /data }
-            - { name: config,    mountPath: /config }
+            - { name: data, mountPath: /data }
+            - { name: config, mountPath: /config }
           resources:
             requests:
               cpu: 100m
@@ -214,17 +236,18 @@ spec:
         - name: html-injector
           image: node:22.20.0-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af
           imagePullPolicy: IfNotPresent
-          command: ["node", "/app/server.mjs"]
+          command: ['node', '/app/server.mjs']
           ports:
             - { name: injector, containerPort: 3000, protocol: TCP }
           env:
-            - { name: PORT, value: "3000" }
-            - { name: STUDIO_UPSTREAM, value: "http://studio-frontend.acedatacloud.svc.cluster.local:8085" }
-            - { name: SITE_HEAD_API, value: "https://platform.acedata.cloud/api/v1/site-head/" }
-            - { name: SITE_CACHE_TTL_MS, value: "60000" }
-            - { name: SITE_STALE_TTL_MS, value: "300000" }
-            - { name: SITE_LOOKUP_TIMEOUT_MS, value: "3000" }
-            - { name: MAX_HTML_BYTES, value: "4194304" }
+            - { name: PORT, value: '3000' }
+            - { name: STUDIO_UPSTREAM, value: 'http://studio-frontend.acedatacloud.svc.cluster.local:8085' }
+            - { name: SITE_HEAD_API, value: 'https://platform.acedata.cloud/api/v1/site-head/' }
+            - { name: SITE_CACHE_TTL_MS, value: '60000' }
+            - { name: SITE_STALE_TTL_MS, value: '300000' }
+            - { name: SITE_LOOKUP_TIMEOUT_MS, value: '3000' }
+            - { name: MAX_HTML_BYTES, value: '4194304' }
+            - { name: OFFICIAL_STUDIO_HOST, value: 'studio.acedata.cloud' }
           volumeMounts:
             - { name: html-injector, mountPath: /app, readOnly: true }
           resources:
@@ -287,12 +310,30 @@ metadata:
     # the nginx-router LB; that one already terminates 80/443 and would
     # collide). Postpaid traffic + standard accounting.
     service.kubernetes.io/qcloud-loadbalancer-internet-charge-type: TRAFFIC_POSTPAID_BY_HOUR
-    service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: "200"
+    service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: '200'
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   ports:
-    - { name: http,  port: 80,  targetPort: 80,  protocol: TCP }
+    - { name: http, port: 80, targetPort: 80, protocol: TCP }
     - { name: https, port: 443, targetPort: 443, protocol: TCP }
+  selector:
+    app: caddy-studio-proxy
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caddy-studio-internal
+  namespace: acedatacloud
+  labels:
+    app: caddy-studio-proxy
+spec:
+  type: ClusterIP
+  ports:
+    - name: ingress-http
+      port: 8080
+      targetPort: ingress-http
+      protocol: TCP
   selector:
     app: caddy-studio-proxy

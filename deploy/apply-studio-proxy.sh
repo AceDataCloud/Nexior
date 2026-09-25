@@ -4,6 +4,7 @@ set -euo pipefail
 NAMESPACE=acedatacloud
 DEPLOYMENT=caddy-studio-proxy
 SERVICE=caddy-studio-proxy
+INTERNAL_SERVICE=caddy-studio-internal
 SELECTOR=app=caddy-studio-proxy
 INJECTOR=deploy/production/studio-html-injector.mjs
 MANIFEST=deploy/production/studio-proxy.yaml
@@ -14,7 +15,10 @@ VERIFY_HOST=studio-proxy.acedata.cloud
 rendered=$(mktemp)
 trap 'rm -f "$rendered"' EXIT
 injector_sha=$(openssl dgst -sha256 "$INJECTOR" | awk '{print $NF}')
-sed "s/\${INJECTOR_SHA}/$injector_sha/g" "$MANIFEST" >"$rendered"
+proxy_config_sha=$(openssl dgst -sha256 "$MANIFEST" | awk '{print $NF}')
+sed -e "s/\${INJECTOR_SHA}/$injector_sha/g" \
+  -e "s/\${PROXY_CONFIG_SHA}/$proxy_config_sha/g" \
+  "$MANIFEST" >"$rendered"
 
 kubectl create configmap studio-html-injector -n "$NAMESPACE" \
   --from-file="server.mjs=$INJECTOR" --dry-run=client -o yaml | kubectl apply -f -
@@ -35,6 +39,19 @@ for pod in $pods; do
   nodes="$nodes$node\n"
 done
 [ "$(printf '%b' "$nodes" | sort -u | grep -c . || true)" = 2 ] || { echo "Caddy replicas are not on distinct nodes" >&2; exit 1; }
-[ "$(kubectl get endpoints "$SERVICE" -n "$NAMESPACE" -o jsonpath='{range .subsets[*].addresses[*]}{.ip}{"\n"}{end}' | grep -c . || true)" = 2 ]
+for service in "$SERVICE" "$INTERNAL_SERVICE"; do
+  [ "$(kubectl get endpoints "$service" -n "$NAMESPACE" -o jsonpath='{range .subsets[*].addresses[*]}{.ip}{"\n"}{end}' | grep -c . || true)" = 2 ]
+done
 [ "$(kubectl get pdb "$DEPLOYMENT" -n "$NAMESPACE" -o jsonpath='{.status.disruptionsAllowed}')" -ge 1 ]
+
+pod=$(printf '%s\n' "$pods" | head -n 1)
+kubectl exec "$pod" -n "$NAMESPACE" -c html-injector -- node -e '
+const host = "apio.studio.acedata.cloud";
+Promise.all([
+  fetch(`https://platform.acedata.cloud/api/v1/site-head/${host}`).then(response => response.json()),
+  fetch("http://caddy-studio-internal:8080/", { headers: { host } }).then(async response => ({ ok: response.ok, html: await response.text() }))
+]).then(([metadata, page]) => {
+  if (!page.ok || !page.html.includes(`<title>${metadata.title}</title>`) || !page.html.includes(metadata.favicon)) process.exit(1);
+}).catch(() => process.exit(1));
+'
 curl --silent --show-error --head --connect-timeout 10 --max-time 20 "https://$VERIFY_HOST/" >/dev/null

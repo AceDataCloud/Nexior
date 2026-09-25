@@ -79,17 +79,33 @@ roll_stage() {
   fi
 }
 
+rollback_ingress() {
+  sed -e 's/name: caddy-studio-internal/name: studio-frontend/g' \
+    -e 's/number: 8080/number: 8085/g' \
+    deploy/production/studio-ingress.yaml | kubectl apply -f -
+}
+
 kubectl apply -f deploy/production/studio-service.yaml
-kubectl apply -f deploy/production/studio-ingress.yaml
 bash deploy/apply-studio-proxy.sh
 kubectl apply -f deploy/production/legacy-hub-redirect.yaml
 roll_stage "${RELEASE_TAG}-bridge" "$PREVIOUS_TAGGED_IMAGE"
 roll_stage "$RELEASE_TAG" "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge"
+kubectl apply -f deploy/production/studio-ingress.yaml
 
 if ! python3 deploy/verify-html-assets.py "https://studio.acedata.cloud/"; then
+  rollback_ingress
   rollback "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge"
   exit 1
 fi
+
+for host in studio.acedata.cloud apio.studio.acedata.cloud; do
+  if ! python3 deploy/verify-site-head.py "$host"; then
+    rollback_ingress
+    rollback "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge"
+    exit 1
+  fi
+done
+
 for legacy_url in \
   'https://hub.acedata.cloud/retired-check?keep=1' \
   'https://retired-check.hub.acedata.cloud/retired-check?keep=1'; do

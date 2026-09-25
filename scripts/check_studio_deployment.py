@@ -55,6 +55,7 @@ run_script = (ROOT / 'deploy/run.sh').read_text()
 assert 'reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085' in proxy_source
 assert 'reverse_proxy localhost:3000' in proxy_source
 assert injector_env['SITE_HEAD_API'] == 'https://platform.acedata.cloud/api/v1/site-head/'
+assert injector_env['OFFICIAL_STUDIO_HOST'] == 'studio.acedata.cloud'
 assert proxy_template['metadata']['annotations']['acedata.cloud/html-injector-sha'] == '${INJECTOR_SHA}'
 assert injector['readinessProbe']['httpGet']['path'] == '/healthz'
 assert injector['livenessProbe']['httpGet']['path'] == '/healthz'
@@ -88,3 +89,33 @@ assert 'kubectl patch deployment' not in apply_proxy
 assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
 assert 'bash deploy/apply-studio-proxy.sh' in run_script
 assert 'bash deploy/apply-studio-proxy.sh' in cutover
+
+
+studio_ingress = yaml.safe_load((ROOT / 'deploy/production/studio-ingress.yaml').read_text())
+studio_rules = studio_ingress['spec']['rules']
+assert [rule['host'] for rule in studio_rules] == ['studio.acedata.cloud', '*.studio.acedata.cloud']
+for rule in studio_rules:
+    routes = {path['path']: (path['pathType'], path['backend']['service']['name'], path['backend']['service']['port']['number']) for path in rule['http']['paths']}
+    assert routes['/'] == ('Prefix', 'caddy-studio-internal', 8080)
+    assert routes['/assets/'] == ('Prefix', 'studio-frontend', 8085)
+    assert routes['/api/v1/'] == ('Prefix', 'studio-frontend', 8085)
+    assert routes['/favicon.ico'] == ('Exact', 'studio-frontend', 8085)
+    assert routes['/apple-touch-icon.png'] == ('Exact', 'studio-frontend', 8085)
+
+internal_service = next(doc for doc in proxy_docs if doc.get('kind') == 'Service' and doc['metadata']['name'] == 'caddy-studio-internal')
+assert internal_service['spec']['type'] == 'ClusterIP'
+assert internal_service['spec']['selector'] == {'app': 'caddy-studio-proxy'}
+assert internal_service['spec']['ports'] == [{'name': 'ingress-http', 'port': 8080, 'targetPort': 'ingress-http', 'protocol': 'TCP'}]
+caddy_ports = {item['name']: item['containerPort'] for item in proxy_caddy['ports']}
+assert caddy_ports['ingress-http'] == 8080
+assert ':8080 {' in proxy_source
+assert 'import studio_routes' in proxy_source
+assert proxy_source.index('@websocket {') < proxy_source.index('@direct {') < proxy_source.index('reverse_proxy localhost:3000')
+assert proxy_template['metadata']['annotations']['acedata.cloud/studio-proxy-config-sha'] == '${PROXY_CONFIG_SHA}'
+assert 'proxy_config_sha=$(openssl dgst -sha256 "$MANIFEST"' in apply_proxy
+assert 'INTERNAL_SERVICE=caddy-studio-internal' in apply_proxy
+assert run_script.index('bash deploy/apply-studio-proxy.sh') < run_script.index('kubectl apply -f deploy/production/studio-ingress.yaml')
+assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
+assert 'verify-site-head.py' in cutover
+assert 'rollback_ingress' in cutover
+assert cutover.index('roll_stage "$RELEASE_TAG"') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml') < cutover.index('verify-site-head.py')

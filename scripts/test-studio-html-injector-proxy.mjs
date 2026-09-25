@@ -136,7 +136,7 @@ test('coalesces concurrent lookups and uses only same-host stale metadata', asyn
   const metadataServer = http.createServer(async (_req, res) => {
     lookups += 1;
     await new Promise((resolve) => setTimeout(resolve, 25));
-    if (fail) {
+    if (fail || _req.url.endsWith('/studio.acedata.cloud')) {
       res.writeHead(503).end();
       return;
     }
@@ -182,6 +182,10 @@ test('coalesces concurrent lookups and uses only same-host stale metadata', asyn
   assert.equal(lookups, 3);
   assert.match(other.body, /<title>other\.example\.com<\/title>/);
   assert.doesNotMatch(other.body, /Cached Tenant|Ace Data Cloud/);
+
+  const official = await request(injectorPort, '/', 'studio.acedata.cloud');
+  assert.equal(lookups, 4);
+  assert.match(official.body, /<title>Ace Data Cloud<\/title>/);
 });
 
 test('starts through a Kubernetes ConfigMap-style symlink', async (context) => {
