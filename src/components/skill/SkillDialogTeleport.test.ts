@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 
 for (const file of ['UploadSkillDialog.vue', 'WriteSkillDialog.vue', 'BrowseSkillsDialog.vue']) {
