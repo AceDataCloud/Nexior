@@ -290,10 +290,16 @@ export default defineComponent({
       if (!d.id) return;
       this.busy = { id: d.id, action: 'refresh' };
       try {
-        const { data } = await siteDomainOperator.get(d.id);
+        const { data } = await siteDomainOperator.verify(d.id);
         this.replaceRow(data);
-      } catch (e) {
-        console.error('refresh failed', e);
+        if (data.status === 'Active') {
+          ElMessage.success(this.$t('subsite.message.domainActive'));
+        } else if (data.status === 'Failed') {
+          ElMessage.error(data.status_reason || this.$t('subsite.message.domainFailed'));
+        }
+      } catch (e: any) {
+        const detail = e?.response?.data?.detail || e?.message;
+        ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.domainVerifyFailed'));
       } finally {
         this.busy = { id: null, action: null };
       }
