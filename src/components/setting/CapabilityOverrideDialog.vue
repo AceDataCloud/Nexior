@@ -62,7 +62,7 @@
           <div class="field-tip">{{ $t('site.capabilityOverride.instructionsTip') }}</div>
         </el-form-item>
         <el-form-item :label="$t('site.capabilityOverride.skills')">
-          <skill-picker v-model="skills" :site-id="siteId" @manage="onManageSkills" />
+          <skill-picker v-model="skills" :site-id="siteId" />
           <div class="field-tip">{{ $t('site.capabilityOverride.skillsTip') }}</div>
         </el-form-item>
       </template>
@@ -106,7 +106,6 @@ import { siteOperator } from '@/operators/site';
 import SkillPicker from '@/components/skill/SkillPicker.vue';
 import type { CapabilityKey } from '@/constants/capabilities';
 import { extractApiErrorMessage } from '@/utils/apiError';
-import { openSkillsManager } from '@/utils/skills/openSkillsManager';
 
 export default defineComponent({
   name: 'CapabilityOverrideDialog',
@@ -185,10 +184,6 @@ export default defineComponent({
     },
     extractError(error: unknown): string {
       return extractApiErrorMessage(error);
-    },
-    onManageSkills(): void {
-      this.visible = false;
-      openSkillsManager(this.$router);
     },
     async saveAssistant(): Promise<void> {
       if (!this.supportsAssistant || !this.site.id) return;

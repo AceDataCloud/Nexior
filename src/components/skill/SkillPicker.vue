@@ -29,8 +29,13 @@
       <el-empty v-if="!loading && filteredSkills.length === 0" :description="$t('site.capabilityOverride.noSkills')" />
     </div>
     <div class="skill-actions">
-      <el-button size="small" @click="$emit('manage')">{{ $t('site.capabilityOverride.manageSkills') }}</el-button>
+      <el-button size="small" @click="uploadVisible = true">{{ $t('site.capabilityOverride.uploadSkill') }}</el-button>
+      <el-button size="small" @click="writeVisible = true">{{ $t('site.capabilityOverride.writeSkill') }}</el-button>
+      <el-button size="small" @click="browseVisible = true">{{ $t('site.capabilityOverride.browseSkills') }}</el-button>
     </div>
+    <upload-skill-dialog v-model="uploadVisible" :site-id="siteId" @created="onCreated" />
+    <write-skill-dialog v-model="writeVisible" :site-id="siteId" @created="onCreated" />
+    <browse-skills-dialog v-model="browseVisible" :site-id="siteId" @installed="onCreated" />
   </div>
 </template>
 
@@ -39,28 +44,37 @@ import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElCheckbox, ElEmpty, ElInput, ElMessage, ElMessageBox, ElTag, vLoading } from 'element-plus';
 import type { ISkill } from '@/operators/skill';
 import { skillOperator } from '@/operators/skill';
+import BrowseSkillsDialog from './BrowseSkillsDialog.vue';
+import UploadSkillDialog from './UploadSkillDialog.vue';
+import WriteSkillDialog from './WriteSkillDialog.vue';
 
 export default defineComponent({
   name: 'SkillPicker',
   components: {
+    BrowseSkillsDialog,
     ElButton,
     ElCheckbox,
     ElEmpty,
     ElInput,
-    ElTag
+    ElTag,
+    UploadSkillDialog,
+    WriteSkillDialog
   },
   directives: { loading: vLoading },
   props: {
     modelValue: { type: Array as PropType<Array<{ id: string }>>, default: () => [] },
     siteId: { type: String, required: true }
   },
-  emits: ['update:modelValue', 'manage'],
+  emits: ['update:modelValue'],
   data() {
     return {
       skills: [] as ISkill[],
       loading: false,
       query: '',
-      deletingId: ''
+      deletingId: '',
+      uploadVisible: false,
+      writeVisible: false,
+      browseVisible: false
     };
   },
   computed: {
@@ -93,6 +107,10 @@ export default defineComponent({
         ? this.modelValue.filter((item) => item.id !== id)
         : [...this.modelValue, { id }];
       this.$emit('update:modelValue', next);
+    },
+    async onCreated(id: string) {
+      await this.refresh();
+      if (!this.selectedIds.includes(id)) this.$emit('update:modelValue', [...this.modelValue, { id }]);
     },
     async removeSkill(skill: ISkill) {
       try {

@@ -38,14 +38,14 @@ describe('SkillPicker', () => {
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([[{ id: 'site-1' }]]);
   });
 
-  it('emits manage instead of nesting another dialog', async () => {
+  it('refreshes and selects a newly created Site Skill', async () => {
     const wrapper = shallowMount(SkillPicker, {
       props: { modelValue: [], siteId: 'site-id' },
       global: { mocks: { $t: (key: string) => key } }
     });
     await flushPromises();
-    (wrapper.vm as any).$emit('manage');
-    expect(wrapper.emitted('manage')).toHaveLength(1);
+    await (wrapper.vm as any).onCreated('site-1');
+    expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([[{ id: 'site-1' }]]);
   });
   it('deletes only Site-owned Skills and removes their binding', async () => {
     const wrapper = shallowMount(SkillPicker, {
