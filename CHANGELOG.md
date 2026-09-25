@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 25 Sep 2026 15:26:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 25 Sep 2026 20:21:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.372.1
+
+Fri, 25 Sep 2026 20:21:28 GMT
+
+### Patches
+
+- Preserve the tenant Host header in the Studio metadata rollout smoke test. (dev@acedata.cloud)
+- Restore in-context Skill creation actions without nesting dialog layouts. (dev@acedata.cloud)
 
 ## 3.372.0
 
