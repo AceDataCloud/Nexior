@@ -91,6 +91,7 @@ export interface ISkillCatalogItem {
 export type SkillCatalogSort = 'popular' | 'recent' | 'name';
 
 export interface ISkillCatalogListParams {
+  site_id?: string;
   q?: string;
   namespace?: string;
   category?: string;
@@ -214,8 +215,11 @@ class SkillCatalogOperator {
     return optionalHttpClient.get(`/${this.key}/`, { ...authApi(), params });
   }
 
-  async get(id: string): Promise<AxiosResponse<ISkillCatalogItem>> {
-    return optionalHttpClient.get(`/${this.key}/${id}/`, authApi());
+  async get(id: string, siteId?: string): Promise<AxiosResponse<ISkillCatalogItem>> {
+    return optionalHttpClient.get(`/${this.key}/${id}/`, {
+      ...authApi(),
+      params: siteId ? { site_id: siteId } : undefined
+    });
   }
 
   async categories(): Promise<AxiosResponse<{ namespaces: ISkillCatalogFacet[] }>> {
