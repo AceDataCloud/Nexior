@@ -114,6 +114,9 @@ assert proxy_source.index('@websocket {') < proxy_source.index('@direct {') < pr
 assert proxy_template['metadata']['annotations']['acedata.cloud/studio-proxy-config-sha'] == '${PROXY_CONFIG_SHA}'
 assert 'proxy_config_sha=$(openssl dgst -sha256 "$MANIFEST"' in apply_proxy
 assert 'INTERNAL_SERVICE=caddy-studio-internal' in apply_proxy
+assert 'deletionTimestamp' in apply_proxy
+assert 'all(item.get("ready") for item in statuses)' in apply_proxy
+assert 'Expected two ready, non-terminating Caddy pods' in apply_proxy
 assert run_script.index('bash deploy/apply-studio-proxy.sh') < run_script.index('kubectl apply -f deploy/production/studio-ingress.yaml')
 assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
 assert 'verify-site-head.py' in cutover
