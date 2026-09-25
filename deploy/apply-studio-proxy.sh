@@ -54,10 +54,19 @@ done
 
 pod=$(printf '%s\n' "$pods" | head -n 1)
 kubectl exec "$pod" -n "$NAMESPACE" -c html-injector -- node -e '
+const http = require("node:http");
 const host = "apio.studio.acedata.cloud";
+const internal = new Promise((resolve, reject) => {
+  const request = http.get({ hostname: "caddy-studio-internal", port: 8080, path: "/", headers: { Host: host } }, response => {
+    const chunks = [];
+    response.on("data", chunk => chunks.push(chunk));
+    response.on("end", () => resolve({ ok: response.statusCode === 200, html: Buffer.concat(chunks).toString() }));
+  });
+  request.on("error", reject);
+});
 Promise.all([
   fetch(`https://platform.acedata.cloud/api/v1/site-head/${host}`).then(response => response.json()),
-  fetch("http://caddy-studio-internal:8080/", { headers: { host } }).then(async response => ({ ok: response.ok, html: await response.text() }))
+  internal
 ]).then(([metadata, page]) => {
   if (!page.ok || !page.html.includes(`<title>${metadata.title}</title>`) || !page.html.includes(metadata.favicon)) process.exit(1);
 }).catch(() => process.exit(1));
