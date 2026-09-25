@@ -2,6 +2,89 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2026 15:26:41 GMT",
+      "version": "3.372.0",
+      "tag": "@acedatacloud/nexior_v3.372.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "b822de9b6b2e6436f8014fb2c27a3cb82e7127f3",
+            "comment": "Use canonical CDN favicon assets for the Studio default icon and metadata."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "1a684219d47febe7cac26c0b01db528bd7ab31a4",
+            "comment": "Clarify the site recharge setting with a positive allow-user-top-ups toggle."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "dc6347211be61093aed8d6c3cb023f3ba029b68f",
+            "comment": "Fix custom-domain refresh and delete requests returning 404 by matching the backend's trailing-slash routes."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "9f1189d65cdd5724a284a041c930764a41aa354f",
+            "comment": "Re-verify active custom domains when refreshing so stale DNS status is corrected."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "d5276bc6ab7adb1043f3029fa6eb868b9f62b712",
+            "comment": "Simplify model-group Skill management and add Site Skill deletion."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "334ac563819c45ee5b05bcf322c239f655c6611e",
+            "comment": "Add an isolated iframe mode for custom homepage HTML that needs scripts."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "b2a5169ba632e7c9cc297f840091499838be6d9a",
+            "comment": "Add sandboxed Website embeds to custom homepage sections."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "81ee8fd227e41e604d8afc864c3f9b6ffd0176bb",
+            "comment": "Preserve host-based favicon discovery during the first paint on tenant sites."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "66dc5dc5659a48d3da39c51c7b47e5b4b107689e",
+            "comment": "Ignore terminating Caddy pods when validating a completed Studio metadata rollout."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "de9b05d5a1eafd9a473bba8d96346d651ce9275d",
+            "comment": "Render host-specific title, description, and favicon metadata for Studio main and tenant domains."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "7c76ff744f6e78e147ebe9f42d5c424518bffe5e",
+            "comment": "Add visible retry actions for failed chat replies and preserve prompts and attachments when retrying."
+          }
+        ],
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "18a64acab8ae32bb627dffe84dd0d26ded1f8669",
+            "comment": "Let Site administrators configure per-model-group assistant instructions and shared Skills."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2026 20:25:18 GMT",
       "version": "3.371.8",
       "tag": "@acedatacloud/nexior_v3.371.8",

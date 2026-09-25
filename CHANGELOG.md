@@ -1,8 +1,30 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 24 Sep 2026 20:25:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 25 Sep 2026 15:26:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.372.0
+
+Fri, 25 Sep 2026 15:26:41 GMT
+
+### Minor changes
+
+- Let Site administrators configure per-model-group assistant instructions and shared Skills. (dev@acedata.cloud)
+
+### Patches
+
+- Use canonical CDN favicon assets for the Studio default icon and metadata. (dev@acedata.cloud)
+- Clarify the site recharge setting with a positive allow-user-top-ups toggle. (dev@acedata.cloud)
+- Fix custom-domain refresh and delete requests returning 404 by matching the backend's trailing-slash routes. (dev@acedata.cloud)
+- Re-verify active custom domains when refreshing so stale DNS status is corrected. (dev@acedata.cloud)
+- Simplify model-group Skill management and add Site Skill deletion. (dev@acedata.cloud)
+- Add an isolated iframe mode for custom homepage HTML that needs scripts. (dev@acedata.cloud)
+- Add sandboxed Website embeds to custom homepage sections. (dev@acedata.cloud)
+- Preserve host-based favicon discovery during the first paint on tenant sites. (dev@acedata.cloud)
+- Ignore terminating Caddy pods when validating a completed Studio metadata rollout. (dev@acedata.cloud)
+- Render host-specific title, description, and favicon metadata for Studio main and tenant domains. (dev@acedata.cloud)
+- Add visible retry actions for failed chat replies and preserve prompts and attachments when retrying. (dev@acedata.cloud)
 
 ## 3.371.8
 
