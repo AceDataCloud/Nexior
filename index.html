@@ -98,11 +98,12 @@
       content="AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek."
     />
     <meta name="twitter:image" content="https://platform.acedata.cloud/api/v1/og/__OG_HOST__.png" />
-    <link rel="icon" href="https://cdn.acedata.cloud/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="https://cdn.acedata.cloud/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!--
-      The static fallback uses canonical CDN assets. Tenant hosts replace these
-      links from site data before application bootstrap.
+      White-label first paint. Nginx resolves icon paths by request host, so
+      browsers and crawlers receive tenant assets before application bootstrap.
+      Other static metadata waits for getSite().
     -->
     <script>
       (function () {
