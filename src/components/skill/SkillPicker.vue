@@ -15,55 +15,52 @@
         <el-tag v-if="!skill.enabled" size="small" type="info">{{
           $t('site.capabilityOverride.skillDisabled')
         }}</el-tag>
+        <el-button
+          v-if="skill.owner_scope === 'site'"
+          link
+          type="danger"
+          :loading="deletingId === skill.id"
+          :aria-label="$t('common.button.delete')"
+          @click.prevent.stop="removeSkill(skill)"
+        >
+          {{ $t('common.button.delete') }}
+        </el-button>
       </label>
       <el-empty v-if="!loading && filteredSkills.length === 0" :description="$t('site.capabilityOverride.noSkills')" />
     </div>
     <div class="skill-actions">
-      <el-button size="small" @click="uploadVisible = true">{{ $t('site.capabilityOverride.uploadSkill') }}</el-button>
-      <el-button size="small" @click="writeVisible = true">{{ $t('site.capabilityOverride.writeSkill') }}</el-button>
-      <el-button size="small" @click="browseVisible = true">{{ $t('site.capabilityOverride.browseSkills') }}</el-button>
+      <el-button size="small" @click="$emit('manage')">{{ $t('site.capabilityOverride.manageSkills') }}</el-button>
     </div>
-    <upload-skill-dialog v-model="uploadVisible" :site-id="siteId" @created="onCreated" />
-    <write-skill-dialog v-model="writeVisible" :site-id="siteId" @created="onCreated" />
-    <browse-skills-dialog v-model="browseVisible" :site-id="siteId" @installed="onCreated" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
-import { ElButton, ElCheckbox, ElEmpty, ElInput, ElTag, vLoading } from 'element-plus';
+import { ElButton, ElCheckbox, ElEmpty, ElInput, ElMessage, ElMessageBox, ElTag, vLoading } from 'element-plus';
 import type { ISkill } from '@/operators/skill';
 import { skillOperator } from '@/operators/skill';
-import BrowseSkillsDialog from './BrowseSkillsDialog.vue';
-import UploadSkillDialog from './UploadSkillDialog.vue';
-import WriteSkillDialog from './WriteSkillDialog.vue';
 
 export default defineComponent({
   name: 'SkillPicker',
   components: {
-    BrowseSkillsDialog,
     ElButton,
     ElCheckbox,
     ElEmpty,
     ElInput,
-    ElTag,
-    UploadSkillDialog,
-    WriteSkillDialog
+    ElTag
   },
   directives: { loading: vLoading },
   props: {
     modelValue: { type: Array as PropType<Array<{ id: string }>>, default: () => [] },
     siteId: { type: String, required: true }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'manage'],
   data() {
     return {
       skills: [] as ISkill[],
       loading: false,
       query: '',
-      uploadVisible: false,
-      writeVisible: false,
-      browseVisible: false
+      deletingId: ''
     };
   },
   computed: {
@@ -97,9 +94,28 @@ export default defineComponent({
         : [...this.modelValue, { id }];
       this.$emit('update:modelValue', next);
     },
-    async onCreated(id: string) {
-      await this.refresh();
-      if (!this.selectedIds.includes(id)) this.$emit('update:modelValue', [...this.modelValue, { id }]);
+    async removeSkill(skill: ISkill) {
+      try {
+        await ElMessageBox.confirm(
+          this.$t('skill.message.deleteConfirm', { slug: skill.slug }) as string,
+          this.$t('common.button.delete') as string,
+          { type: 'warning' }
+        );
+      } catch {
+        return;
+      }
+      this.deletingId = skill.id;
+      try {
+        await skillOperator.remove(skill.id, this.siteId);
+        this.skills = this.skills.filter((item) => item.id !== skill.id);
+        this.$emit(
+          'update:modelValue',
+          this.modelValue.filter((item) => item.id !== skill.id)
+        );
+        ElMessage.success(this.$t('skill.message.deleteSuccess') as string);
+      } finally {
+        this.deletingId = '';
+      }
     }
   }
 });
