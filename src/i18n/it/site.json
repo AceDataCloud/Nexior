@@ -67,13 +67,13 @@
     "message": "Esempio: prezzo ufficiale {from} → tuo prezzo {to}",
     "description": "Esempio in tempo reale sotto l'impostazione della percentuale di sovrapprezzo, {from} è il prezzo ufficiale, {to} è il prezzo dopo il sovrapprezzo"
   },
-  "field.disableRecharge": {
-    "message": "Disattiva ricarica",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "Consenti agli utenti di ricaricare il saldo",
+    "description": "Impostazione del sito: controlla se gli utenti possono visualizzare e utilizzare l'ingresso per la ricarica o l'acquisto"
   },
-  "message.disableRechargeTip": {
-    "message": "Se attivato, tutti i pulsanti di ricarica vengono nascosti su questo sito e gli utenti non possono più ricaricare il loro saldo.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "Dopo l'attivazione, sul sito verrà mostrato l'ingresso per la ricarica o l'acquisto e gli utenti potranno ricaricare autonomamente il proprio credito.",
+    "description": "Testo descrittivo dell'opzione per consentire agli utenti di ricaricare il saldo"
   },
   "field.referralEntryEnabled": {
     "message": "Mostra l'accesso al programma di affiliazione",
@@ -1866,14 +1866,6 @@
     "message": "Per impostazione predefinita, l’HTML viene incorporato direttamente nella pagina; per eseguire script, attiva la modalità di isolamento iframe.",
     "description": "Suggerimento sul formato HTML."
   },
-  "error.authSettingsLoad": {
-    "message": "Impossibile caricare le impostazioni di autenticazione",
-    "description": "Messaggio visualizzato quando non è stato possibile caricare le impostazioni di gestione dell'autenticazione del sito."
-  },
-  "error.authSettingsSave": {
-    "message": "Impossibile salvare le impostazioni di autenticazione",
-    "description": "Messaggio visualizzato quando non è stato possibile salvare le impostazioni di gestione dell'autenticazione del sito."
-  },
   "homeSections.iframe.label": {
     "message": "Esegui in un iframe isolato",
     "description": "Interruttore per la modalità di isolamento iframe dell’HTML personalizzato."
@@ -1881,5 +1873,13 @@
   "homeSections.iframe.tip": {
     "message": "Consente l’esecuzione di script, l’uso di moduli e la navigazione tramite clic, ma non permette di accedere alla pagina principale né alle relative informazioni di accesso.",
     "description": "Descrizione delle funzionalità di sicurezza della modalità di isolamento iframe."
+  },
+  "error.authSettingsLoad": {
+    "message": "Impossibile caricare le impostazioni di autenticazione",
+    "description": "Messaggio visualizzato quando non è stato possibile caricare le impostazioni di gestione dell'autenticazione del sito."
+  },
+  "error.authSettingsSave": {
+    "message": "Impossibile salvare le impostazioni di autenticazione",
+    "description": "Messaggio visualizzato quando non è stato possibile salvare le impostazioni di gestione dell'autenticazione del sito."
   }
 }

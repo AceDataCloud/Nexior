@@ -67,13 +67,13 @@
     "message": "예시: 공식 가격 {from} → 당신의 판매가 {to}",
     "description": "가산 비율 설정 항목 아래의 실시간 예시로, {from}은 공식 원가이고, {to}는 가산된 판매가입니다."
   },
-  "field.disableRecharge": {
-    "message": "충전 비활성화",
-    "description": "사이트 설정: 활성화 시 이 사이트의 모든 충전 항목 숨김"
+  "field.rechargeEnabled": {
+    "message": "사용자 충전 허용",
+    "description": "사이트 설정: 사용자가 충전/구매 메뉴를 보고 사용할 수 있는지 제어합니다"
   },
-  "message.disableRechargeTip": {
-    "message": "활성화하면 이 사이트의 모든 충전 버튼이 숨겨지고 사용자가 잔액을 충전할 수 없습니다.",
-    "description": "충전 비활성화 토글 도움말"
+  "message.rechargeEnabledTip": {
+    "message": "활성화하면 이 사이트에 충전/구매 메뉴가 표시되며, 사용자가 직접 잔액을 충전할 수 있습니다.",
+    "description": "사용자 충전 허용 스위치에 대한 설명"
   },
   "field.referralEntryEnabled": {
     "message": "제휴 마케팅 메뉴 표시",
@@ -1866,14 +1866,6 @@
     "message": "HTML은 기본적으로 페이지에 직접 삽입됩니다. 스크립트를 실행하려면 iframe 격리 모드를 켜세요.",
     "description": "HTML 형식 안내입니다."
   },
-  "error.authSettingsLoad": {
-    "message": "인증 설정을 불러오지 못했습니다",
-    "description": "사이트 인증 관리 설정을 불러오지 못했을 때 표시하는 오류 메시지입니다."
-  },
-  "error.authSettingsSave": {
-    "message": "인증 설정을 저장하지 못했습니다",
-    "description": "사이트 인증 관리 설정을 저장하지 못했을 때 표시하는 오류 메시지입니다."
-  },
   "homeSections.iframe.label": {
     "message": "격리된 iframe에서 실행",
     "description": "사용자 지정 HTML의 iframe 격리 모드 토글입니다."
@@ -1881,5 +1873,13 @@
   "homeSections.iframe.tip": {
     "message": "스크립트, 양식 및 클릭을 통한 이동을 허용하지만 상위 페이지와 해당 로그인 정보에는 액세스할 수 없습니다.",
     "description": "iframe 격리 모드의 보안 기능 안내입니다."
+  },
+  "error.authSettingsLoad": {
+    "message": "인증 설정을 불러오지 못했습니다",
+    "description": "사이트 인증 관리 설정을 불러오지 못했을 때 표시하는 오류 메시지입니다."
+  },
+  "error.authSettingsSave": {
+    "message": "인증 설정을 저장하지 못했습니다",
+    "description": "사이트 인증 관리 설정을 저장하지 못했을 때 표시하는 오류 메시지입니다."
   }
 }

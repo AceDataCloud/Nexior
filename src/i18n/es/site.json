@@ -67,13 +67,13 @@
     "message": "Ejemplo: precio oficial {from} → tu precio {to}",
     "description": "Ejemplo en tiempo real debajo de la configuración de proporción de aumento, {from} es el precio original oficial, {to} es el precio después del aumento"
   },
-  "field.disableRecharge": {
-    "message": "Desactivar recarga",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "Permitir que los usuarios recarguen saldo",
+    "description": "Configuración del sitio: controla si los usuarios pueden ver y utilizar la entrada de recarga o compra"
   },
-  "message.disableRechargeTip": {
-    "message": "Cuando está activado, todos los botones de recarga se ocultan en este sitio y los usuarios ya no pueden recargar su saldo.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "Una vez activada, el sitio mostrará la entrada de recarga o compra y los usuarios podrán recargar saldo por su cuenta.",
+    "description": "Texto explicativo del interruptor para permitir que los usuarios recarguen saldo"
   },
   "field.referralEntryEnabled": {
     "message": "Mostrar acceso de afiliados",
@@ -117,7 +117,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Nombre del método de inicio de sesión: inicio de sesión de terceros de WeChat"
+    "description": "Nombre del método de inicio de sesión: inicio de sesión de terceros mediante WeChat"
   },
   "field.authSmsWebhook": {
     "message": "Dirección de envío de SMS personalizada",
@@ -1867,14 +1867,6 @@
     "message": "El HTML se incrusta directamente en la página de forma predeterminada; para ejecutar scripts, activa el modo aislado mediante iframe.",
     "description": "Indicación sobre el formato HTML."
   },
-  "error.authSettingsLoad": {
-    "message": "Error al cargar la configuración de autenticación",
-    "description": "Mensaje que indica que no se pudo cargar la configuración de gestión de autenticación del sitio."
-  },
-  "error.authSettingsSave": {
-    "message": "Error al guardar la configuración de autenticación",
-    "description": "Mensaje que indica que no se pudo guardar la configuración de gestión de autenticación del sitio."
-  },
   "homeSections.iframe.label": {
     "message": "Ejecutar en un iframe aislado",
     "description": "Interruptor del modo aislado mediante iframe para HTML personalizado."
@@ -1882,5 +1874,13 @@
   "homeSections.iframe.tip": {
     "message": "Permite scripts, formularios y redirecciones al hacer clic, pero no puede acceder a la página principal ni a su información de inicio de sesión.",
     "description": "Explicación de las funciones de seguridad del modo aislado mediante iframe."
+  },
+  "error.authSettingsLoad": {
+    "message": "Error al cargar la configuración de autenticación",
+    "description": "Mensaje que indica que no se pudo cargar la configuración de gestión de autenticación del sitio."
+  },
+  "error.authSettingsSave": {
+    "message": "Error al guardar la configuración de autenticación",
+    "description": "Mensaje que indica que no se pudo guardar la configuración de gestión de autenticación del sitio."
   }
 }

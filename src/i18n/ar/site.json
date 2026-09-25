@@ -67,13 +67,13 @@
     "message": "على سبيل المثال، إذا كان السعر الرسمي 20 دولارًا وأدخلت 10، فسيصبح سعرك 22 دولارًا.",
     "description": "مثال ثابت أسفل إعداد نسبة زيادة السعر"
   },
-  "field.disableRecharge": {
-    "message": "تعطيل إعادة الشحن",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "السماح للمستخدمين بشحن الرصيد",
+    "description": "إعداد الموقع: يتحكم في ما إذا كان بإمكان المستخدمين رؤية واستخدام مدخل شحن الرصيد/الشراء"
   },
-  "message.disableRechargeTip": {
-    "message": "عند التفعيل، يتم إخفاء جميع أزرار إعادة الشحن في هذا الموقع ولا يمكن للمستخدمين إعادة شحن رصيدهم.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "عند التفعيل، سيعرض هذا الموقع مدخل شحن الرصيد/الشراء، ويمكن للمستخدمين شحن رصيدهم بأنفسهم.",
+    "description": "نص توضيحي لمفتاح السماح للمستخدمين بشحن الرصيد"
   },
   "field.referralEntryEnabled": {
     "message": "إظهار مدخل التسويق بالعمولة",
@@ -1866,14 +1866,6 @@
     "message": "يتم تضمين HTML مباشرةً في الصفحة تلقائيًا؛ لتشغيل البرامج النصية، فعّل وضع العزل عبر iframe.",
     "description": "تلميح حول تنسيق HTML."
   },
-  "error.authSettingsLoad": {
-    "message": "فشل تحميل إعدادات المصادقة",
-    "description": "رسالة تفيد بفشل تحميل إعدادات إدارة مصادقة الموقع."
-  },
-  "error.authSettingsSave": {
-    "message": "فشل حفظ إعدادات المصادقة",
-    "description": "رسالة تفيد بفشل حفظ إعدادات إدارة مصادقة الموقع."
-  },
   "homeSections.iframe.label": {
     "message": "التشغيل في iframe معزول",
     "description": "مفتاح تشغيل وضع عزل iframe لملف HTML المخصص."
@@ -1881,5 +1873,13 @@
   "homeSections.iframe.tip": {
     "message": "يسمح بالبرامج النصية والنماذج والتنقل عند النقر، لكنه لا يستطيع الوصول إلى الصفحة الرئيسية أو معلومات تسجيل الدخول إليها.",
     "description": "شرح إمكانات الأمان في وضع عزل iframe."
+  },
+  "error.authSettingsLoad": {
+    "message": "فشل تحميل إعدادات المصادقة",
+    "description": "رسالة تفيد بفشل تحميل إعدادات إدارة مصادقة الموقع."
+  },
+  "error.authSettingsSave": {
+    "message": "فشل حفظ إعدادات المصادقة",
+    "description": "رسالة تفيد بفشل حفظ إعدادات إدارة مصادقة الموقع."
   }
 }

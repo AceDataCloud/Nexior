@@ -67,13 +67,13 @@
     "message": "Exemple : prix officiel {from} → votre prix {to}",
     "description": "Exemple en temps réel sous l'option de taux de majoration, {from} est le prix officiel, {to} est le prix après majoration"
   },
-  "field.disableRecharge": {
-    "message": "Désactiver la recharge",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "Autoriser les utilisateurs à recharger leur solde",
+    "description": "Paramètre du site : contrôle si les utilisateurs peuvent voir et utiliser l’entrée de recharge/d’achat"
   },
-  "message.disableRechargeTip": {
-    "message": "Lorsqu'elle est activée, tous les boutons de recharge sont masqués sur ce site et les utilisateurs ne peuvent plus recharger leur solde.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "Une fois activée, l’entrée de recharge/d’achat s’affichera sur ce site et les utilisateurs pourront recharger eux-mêmes leur solde.",
+    "description": "Texte explicatif de l’option permettant aux utilisateurs de recharger leur solde"
   },
   "field.referralEntryEnabled": {
     "message": "Afficher l’accès à l’affiliation",
@@ -96,8 +96,8 @@
     "description": "Titre de l'onglet Paramètres du site / Méthode de connexion : méthode de connexion par défaut sélectionnée lorsque la page de connexion s'ouvre"
   },
   "field.authProvider_email": {
-    "message": "Email",
-    "description": "Nom de la méthode de connexion : Email (Email + mot de passe ou code de vérification)"
+    "message": "E-mail",
+    "description": "Nom du mode de connexion : e-mail (e-mail + mot de passe ou code de vérification)"
   },
   "field.authProvider_phone": {
     "message": "Numéro de téléphone",
@@ -117,7 +117,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Nom de la méthode de connexion : Connexion tierce via WeChat"
+    "description": "Nom du mode de connexion : connexion via un compte tiers WeChat"
   },
   "field.authSmsWebhook": {
     "message": "Adresse d'envoi de SMS personnalisée",
@@ -1869,14 +1869,6 @@
     "message": "Le HTML est intégré directement à la page par défaut ; pour exécuter des scripts, activez le mode d’isolation par iframe.",
     "description": "Conseil concernant le format HTML."
   },
-  "error.authSettingsLoad": {
-    "message": "Échec du chargement des paramètres d’authentification",
-    "description": "Message indiquant l’échec du chargement des paramètres de gestion de l’authentification du site."
-  },
-  "error.authSettingsSave": {
-    "message": "Échec de l’enregistrement des paramètres d’authentification",
-    "description": "Message indiquant l’échec de l’enregistrement des paramètres de gestion de l’authentification du site."
-  },
   "homeSections.iframe.label": {
     "message": "Exécuter dans un iframe isolé",
     "description": "Interrupteur du mode d’isolation par iframe pour le HTML personnalisé."
@@ -1884,5 +1876,13 @@
   "homeSections.iframe.tip": {
     "message": "Autorise les scripts, les formulaires et les redirections au clic, mais ne peut pas accéder à la page principale ni à ses informations de connexion.",
     "description": "Explication des fonctionnalités de sécurité du mode d’isolation par iframe."
+  },
+  "error.authSettingsLoad": {
+    "message": "Échec du chargement des paramètres d’authentification",
+    "description": "Message indiquant l’échec du chargement des paramètres de gestion de l’authentification du site."
+  },
+  "error.authSettingsSave": {
+    "message": "Échec de l’enregistrement des paramètres d’authentification",
+    "description": "Message indiquant l’échec de l’enregistrement des paramètres de gestion de l’authentification du site."
   }
 }

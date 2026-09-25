@@ -67,13 +67,13 @@
     "message": "Beispiel: offizieller Preis {from} → dein Verkaufspreis {to}",
     "description": "Echtzeitbeispiel unter dem Aufschlagsquote-Einstellungsfeld, {from} ist der offizielle Preis, {to} ist der Preis nach Aufschlag"
   },
-  "field.disableRecharge": {
-    "message": "Aufladen deaktivieren",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+  "field.rechargeEnabled": {
+    "message": "Benutzern das Aufladen ermöglichen",
+    "description": "Website-Einstellung: Steuert, ob Benutzer die Optionen zum Aufladen und Kaufen sehen und verwenden können"
   },
-  "message.disableRechargeTip": {
-    "message": "Wenn aktiviert, werden alle Auflade-Schaltflächen auf dieser Website ausgeblendet und Benutzer können ihr Guthaben nicht mehr aufladen.",
-    "description": "Help text for the disable-recharge toggle"
+  "message.rechargeEnabledTip": {
+    "message": "Nach der Aktivierung werden auf dieser Website Optionen zum Aufladen und Kaufen angezeigt, sodass Benutzer ihr Guthaben selbst aufladen können.",
+    "description": "Hinweistext für die Einstellung zum Ermöglichen des Aufladens durch Benutzer"
   },
   "field.referralEntryEnabled": {
     "message": "Affiliate-Bereich anzeigen",
@@ -117,7 +117,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Name der Anmeldemethode: WeChat-Drittanbieteranmeldung"
+    "description": "Name der Anmeldemethode: Anmeldung über WeChat eines Drittanbieters"
   },
   "field.authSmsWebhook": {
     "message": "Benutzerdefinierte SMS-Absenderadresse",
@@ -144,8 +144,8 @@
     "description": "Link, der den Dialog zur SMS-Webhook-Spezifikation öffnet"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Schaltfläche, die den Testdialog für das SMS-Webhook öffnet"
+    "message": "Testen",
+    "description": "Schaltfläche zum Öffnen des Dialogs zum Testen des SMS-Webhooks"
   },
   "message.authSmsWebhookNeedsPhone": {
     "message": "Sie müssen die „Telefonnummer“-Anmeldemethode aktivieren, um die benutzerdefinierte SMS-Absenderadresse zu konfigurieren.",
@@ -1866,14 +1866,6 @@
     "message": "HTML wird standardmäßig direkt in die Seite eingebettet; aktivieren Sie den isolierten iframe-Modus, wenn Skripte ausgeführt werden sollen.",
     "description": "Hinweis zum HTML-Format."
   },
-  "error.authSettingsLoad": {
-    "message": "Authentifizierungseinstellungen konnten nicht geladen werden",
-    "description": "Hinweis, dass die Authentifizierungseinstellungen der Website nicht geladen werden konnten."
-  },
-  "error.authSettingsSave": {
-    "message": "Authentifizierungseinstellungen konnten nicht gespeichert werden",
-    "description": "Hinweis, dass die Authentifizierungseinstellungen der Website nicht gespeichert werden konnten."
-  },
   "homeSections.iframe.label": {
     "message": "In isoliertem iframe ausführen",
     "description": "Schalter für den isolierten iframe-Modus von benutzerdefiniertem HTML."
@@ -1881,5 +1873,13 @@
   "homeSections.iframe.tip": {
     "message": "Erlaubt Skripte, Formulare und Klick-Navigation, kann aber nicht auf die Hauptseite und deren Anmeldeinformationen zugreifen.",
     "description": "Sicherheitshinweis zum isolierten iframe-Modus."
+  },
+  "error.authSettingsLoad": {
+    "message": "Authentifizierungseinstellungen konnten nicht geladen werden",
+    "description": "Hinweis, dass die Authentifizierungseinstellungen der Website nicht geladen werden konnten."
+  },
+  "error.authSettingsSave": {
+    "message": "Authentifizierungseinstellungen konnten nicht gespeichert werden",
+    "description": "Hinweis, dass die Authentifizierungseinstellungen der Website nicht gespeichert werden konnten."
   }
 }
