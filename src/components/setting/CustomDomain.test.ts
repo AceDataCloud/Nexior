@@ -99,4 +99,23 @@ describe('setting/CustomDomain', () => {
       hostname: 'studio.example.com'
     });
   });
+  it('re-verifies an active domain when refreshing its status', async () => {
+    const activeDomain = { ...pendingDomain, status: SiteDomainStatus.Active };
+    const failedDomain = {
+      ...activeDomain,
+      status: SiteDomainStatus.Failed,
+      status_reason: 'DNS does not point to tenant-proxy.acedata.cloud'
+    };
+    siteDomainOperatorMock.getAll.mockResolvedValueOnce({ data: { items: [activeDomain] } });
+    siteDomainOperatorMock.verify.mockResolvedValueOnce({ data: failedDomain });
+
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as unknown as { onRefresh: (domain: ISiteDomain) => Promise<void> }).onRefresh(activeDomain);
+
+    expect(siteDomainOperatorMock.verify).toHaveBeenCalledWith('domain-1');
+    expect(siteDomainOperatorMock.get).not.toHaveBeenCalled();
+    const domains = (wrapper.vm as unknown as { domains: ISiteDomain[] }).domains;
+    expect(domains[0]).toMatchObject(failedDomain);
+  });
 });
