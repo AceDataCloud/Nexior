@@ -9,7 +9,8 @@ const mocks = vi.hoisted(() => ({
   success: vi.fn(),
   error: vi.fn(),
   warning: vi.fn(),
-  confirm: vi.fn()
+  confirm: vi.fn(),
+  updateSite: vi.fn()
 }));
 
 vi.mock('@/operators', () => ({
@@ -17,8 +18,11 @@ vi.mock('@/operators', () => ({
     create: mocks.create,
     update: mocks.update,
     delete: mocks.delete
-  }
+  },
+  siteOperator: { update: mocks.updateSite }
 }));
+
+vi.mock('@/operators/site', () => ({ siteOperator: { update: mocks.updateSite } }));
 
 vi.mock('element-plus', async (importOriginal) => {
   const actual = await importOriginal<typeof import('element-plus')>();
@@ -33,7 +37,10 @@ import CapabilityOverrideDialog from './CapabilityOverrideDialog.vue';
 
 const translate = (key: string) => key;
 
-const mountDialog = (override: Record<string, unknown> | null = null) =>
+const mountDialog = (
+  override: Record<string, unknown> | null = null,
+  site: Record<string, unknown> = { features: {} }
+) =>
   shallowMount(CapabilityOverrideDialog, {
     props: {
       modelValue: true,
@@ -41,7 +48,8 @@ const mountDialog = (override: Record<string, unknown> | null = null) =>
       capability: 'chatgpt',
       defaultName: 'ChatGPT',
       defaultIcon: '/chatgpt.png',
-      override
+      override,
+      site
     },
     global: {
       mocks: { $t: translate },
@@ -139,5 +147,32 @@ describe('CapabilityOverrideDialog', () => {
     });
 
     expect(message).toBe('Actionable message');
+  });
+  it('saves object Skill bindings without replacing sibling feature fields', async () => {
+    mocks.updateSite.mockResolvedValue({ data: {} });
+    const site = {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: { chatgpt: { enabled: true, service_id: 'service-1' }, grok: { enabled: true } }
+    };
+    const wrapper = mountDialog(null, site);
+    await wrapper.setData({ instructions: '  Tenant support  ', skills: [{ id: 'skill-1' }] });
+
+    await (wrapper.vm as any).saveAssistant();
+
+    expect(mocks.updateSite).toHaveBeenCalledWith(
+      'site-1',
+      {
+        features: {
+          chatgpt: {
+            enabled: true,
+            service_id: 'service-1',
+            assistant: { instructions: 'Tenant support', skills: [{ id: 'skill-1' }] }
+          },
+          grok: { enabled: true }
+        }
+      },
+      7
+    );
   });
 });

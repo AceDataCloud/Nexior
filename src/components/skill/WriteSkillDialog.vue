@@ -40,6 +40,7 @@ export default defineComponent({
   name: 'WriteSkillDialog',
   components: { ElDialog, ElButton, ElInput, CloudUploadIcon },
   props: {
+    siteId: { type: String, default: '' },
     modelValue: {
       type: Boolean,
       default: false
@@ -73,7 +74,7 @@ export default defineComponent({
       if (!this.content.trim()) return;
       this.saving = true;
       try {
-        const { data } = await skillOperator.createMarkdown({ content: this.content });
+        const { data } = await skillOperator.createMarkdown({ content: this.content }, this.siteId || undefined);
         ElMessage.success(this.$t('skill.message.createSuccess'));
         this.$emit('created', data.id);
         this.$emit('update:modelValue', false);

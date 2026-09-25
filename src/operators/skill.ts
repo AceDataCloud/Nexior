@@ -10,10 +10,14 @@ import { getBaseUrlAuth } from '@/utils';
 const authApi = () => ({ baseURL: `${getBaseUrlAuth()}/api/v1` });
 
 export type SkillSource = 'upload' | 'global' | 'catalog';
+export type SkillOwnerScope = 'personal' | 'site' | 'platform';
 
 export interface ISkill {
   id: string;
   user: string | null;
+  owner_scope: SkillOwnerScope;
+  site_id: string | null;
+  created_by: string | null;
   slug: string;
   name: string;
   description: string;
@@ -87,6 +91,7 @@ export interface ISkillCatalogItem {
 export type SkillCatalogSort = 'popular' | 'recent' | 'name';
 
 export interface ISkillCatalogListParams {
+  site_id?: string;
   q?: string;
   namespace?: string;
   category?: string;
@@ -118,8 +123,8 @@ class SkillOperator {
   key = 'skills/installed';
 
   /** List the user's own uploads + every enabled global. */
-  async list(): Promise<AxiosResponse<ISkill[]>> {
-    return httpClient.get(`/${this.key}/`, authApi());
+  async list(siteId?: string): Promise<AxiosResponse<ISkill[]>> {
+    return httpClient.get(`/${this.key}/`, { ...authApi(), params: siteId ? { site_id: siteId } : undefined });
   }
 
   async get(id: string): Promise<AxiosResponse<ISkill>> {
@@ -127,8 +132,8 @@ class SkillOperator {
   }
 
   /** Create from raw SKILL.md text. */
-  async createMarkdown(payload: ISkillCreateMarkdownPayload): Promise<AxiosResponse<ISkill>> {
-    return httpClient.post(`/${this.key}/`, payload, authApi());
+  async createMarkdown(payload: ISkillCreateMarkdownPayload, siteId?: string): Promise<AxiosResponse<ISkill>> {
+    return httpClient.post(`/${this.key}/`, siteId ? { ...payload, site_id: siteId } : payload, authApi());
   }
 
   /**
@@ -136,9 +141,10 @@ class SkillOperator {
    * the top of the archive and uploads the bundle to private COS. Returns
    * the parsed Skill row.
    */
-  async createTarball(file: File): Promise<AxiosResponse<ISkill>> {
+  async createTarball(file: File, siteId?: string): Promise<AxiosResponse<ISkill>> {
     const formData = new FormData();
     formData.append('tarball', file);
+    if (siteId) formData.append('site_id', siteId);
     return httpClient.post(`/${this.key}/`, formData, {
       ...authApi(),
       headers: { 'Content-Type': 'multipart/form-data' }
@@ -146,20 +152,29 @@ class SkillOperator {
   }
 
   /** Replace the SKILL.md content. Cannot edit the asset bundle in place. */
-  async update(id: string, payload: { content: string }): Promise<AxiosResponse<ISkill>> {
-    return httpClient.patch(`/${this.key}/${id}/`, payload, authApi());
+  async update(id: string, payload: { content: string }, siteId?: string): Promise<AxiosResponse<ISkill>> {
+    return httpClient.patch(`/${this.key}/${id}/`, payload, {
+      ...authApi(),
+      params: siteId ? { site_id: siteId } : undefined
+    });
   }
 
-  async remove(id: string): Promise<AxiosResponse<void>> {
-    return httpClient.delete(`/${this.key}/${id}/`, authApi());
+  async remove(id: string, siteId?: string): Promise<AxiosResponse<void>> {
+    return httpClient.delete(`/${this.key}/${id}/`, { ...authApi(), params: siteId ? { site_id: siteId } : undefined });
   }
 
-  async enable(id: string): Promise<AxiosResponse<ISkill>> {
-    return httpClient.post(`/${this.key}/${id}/enable/`, undefined, authApi());
+  async enable(id: string, siteId?: string): Promise<AxiosResponse<ISkill>> {
+    return httpClient.post(`/${this.key}/${id}/enable/`, undefined, {
+      ...authApi(),
+      params: siteId ? { site_id: siteId } : undefined
+    });
   }
 
-  async disable(id: string): Promise<AxiosResponse<ISkill>> {
-    return httpClient.post(`/${this.key}/${id}/disable/`, undefined, authApi());
+  async disable(id: string, siteId?: string): Promise<AxiosResponse<ISkill>> {
+    return httpClient.post(`/${this.key}/${id}/disable/`, undefined, {
+      ...authApi(),
+      params: siteId ? { site_id: siteId } : undefined
+    });
   }
 
   /**
@@ -167,10 +182,10 @@ class SkillOperator {
    * Returns the raw bytes plus the server-guessed content type.
    * `path` must be one of `skill.asset_bundle_files` (server enforces).
    */
-  async fetchFile(id: string, path: string): Promise<{ blob: Blob; contentType: string }> {
+  async fetchFile(id: string, path: string, siteId?: string): Promise<{ blob: Blob; contentType: string }> {
     const resp = await httpClient.get(`/${this.key}/${id}/files/`, {
       ...authApi(),
-      params: { path },
+      params: { path, ...(siteId ? { site_id: siteId } : {}) },
       // ArrayBuffer rather than text so binary (PNG, etc.) survives.
       responseType: 'arraybuffer'
     });
@@ -200,8 +215,11 @@ class SkillCatalogOperator {
     return optionalHttpClient.get(`/${this.key}/`, { ...authApi(), params });
   }
 
-  async get(id: string): Promise<AxiosResponse<ISkillCatalogItem>> {
-    return optionalHttpClient.get(`/${this.key}/${id}/`, authApi());
+  async get(id: string, siteId?: string): Promise<AxiosResponse<ISkillCatalogItem>> {
+    return optionalHttpClient.get(`/${this.key}/${id}/`, {
+      ...authApi(),
+      params: siteId ? { site_id: siteId } : undefined
+    });
   }
 
   async categories(): Promise<AxiosResponse<{ namespaces: ISkillCatalogFacet[] }>> {
@@ -213,7 +231,7 @@ class SkillCatalogOperator {
    * collision with an existing personal skill.
    * Returns the freshly-created personal Skill row.
    */
-  async install(id: string, payload: { slug?: string } = {}): Promise<AxiosResponse<ISkill>> {
+  async install(id: string, payload: { slug?: string; site_id?: string } = {}): Promise<AxiosResponse<ISkill>> {
     return httpClient.post(`/${this.key}/${id}/install/`, payload, authApi());
   }
 }

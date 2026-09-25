@@ -46,6 +46,26 @@
         </div>
         <div class="field-tip">{{ $t('site.capabilityOverride.iconTip') }}</div>
       </el-form-item>
+
+      <template v-if="supportsAssistant">
+        <el-divider />
+        <h3 class="section-title">{{ $t('site.capabilityOverride.assistantTitle') }}</h3>
+        <el-form-item :label="$t('site.capabilityOverride.instructions')">
+          <el-input
+            v-model="instructions"
+            type="textarea"
+            :rows="7"
+            maxlength="16000"
+            show-word-limit
+            :placeholder="$t('site.capabilityOverride.instructionsPlaceholder')"
+          />
+          <div class="field-tip">{{ $t('site.capabilityOverride.instructionsTip') }}</div>
+        </el-form-item>
+        <el-form-item :label="$t('site.capabilityOverride.skills')">
+          <skill-picker v-model="skills" :site-id="siteId" />
+          <div class="field-tip">{{ $t('site.capabilityOverride.skillsTip') }}</div>
+        </el-form-item>
+      </template>
     </el-form>
 
     <image-cropper
@@ -76,12 +96,14 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
-import { ElButton, ElDialog, ElForm, ElFormItem, ElInput, ElMessage, ElMessageBox } from 'element-plus';
+import { ElButton, ElDialog, ElDivider, ElForm, ElFormItem, ElInput, ElMessage, ElMessageBox } from 'element-plus';
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import ImageCropper from '@/components/common/ImageCropper.vue';
 import { siteCapabilityOverrideOperator } from '@/operators';
-import type { ISiteCapabilityOverride } from '@/models';
+import type { ISite, ISiteAssistantSkillBinding, ISiteCapabilityOverride } from '@/models';
+import { siteOperator } from '@/operators/site';
+import SkillPicker from '@/components/skill/SkillPicker.vue';
 import type { CapabilityKey } from '@/constants/capabilities';
 import { extractApiErrorMessage } from '@/utils/apiError';
 
@@ -91,10 +113,12 @@ export default defineComponent({
     AutoTranslateToggle,
     ElButton,
     ElDialog,
+    ElDivider,
     ElForm,
     ElFormItem,
     ElInput,
     ImageCropper,
+    SkillPicker,
     UploadIcon
   },
   props: {
@@ -103,7 +127,8 @@ export default defineComponent({
     capability: { type: String as PropType<CapabilityKey>, required: true },
     defaultName: { type: String, required: true },
     defaultIcon: { type: String, required: true },
-    override: { type: Object as PropType<ISiteCapabilityOverride | null>, default: null }
+    override: { type: Object as PropType<ISiteCapabilityOverride | null>, default: null },
+    site: { type: Object as PropType<ISite>, default: () => ({ features: {} }) }
   },
   emits: ['update:modelValue', 'saved'],
   data() {
@@ -111,6 +136,8 @@ export default defineComponent({
       record: null as ISiteCapabilityOverride | null,
       displayName: '',
       iconUrl: '',
+      instructions: '',
+      skills: [] as ISiteAssistantSkillBinding[],
       autoTranslatedFields: [] as string[],
       iconEditorVisible: false,
       submitting: false,
@@ -128,6 +155,9 @@ export default defineComponent({
     },
     mobile(): boolean {
       return typeof window !== 'undefined' && window.innerWidth < 640;
+    },
+    supportsAssistant(): boolean {
+      return ['chatgpt', 'claude', 'gemini', 'grok', 'deepseek', 'kimi', 'glm'].includes(this.capability);
     }
   },
   watch: {
@@ -146,35 +176,47 @@ export default defineComponent({
       this.record = this.override ? { ...this.override } : null;
       this.displayName = this.override?.display_name_source ?? this.override?.display_name ?? '';
       this.iconUrl = this.override?.icon_url ?? '';
+      const assistant = this.site.features?.[this.capability]?.assistant;
+      this.instructions = assistant?.instructions ?? '';
+      this.skills = [...(assistant?.skills ?? [])];
       this.autoTranslatedFields = [...(this.override?.auto_translated_fields ?? [])];
       this.iconEditorVisible = false;
     },
     extractError(error: unknown): string {
       return extractApiErrorMessage(error);
     },
+    async saveAssistant(): Promise<void> {
+      if (!this.supportsAssistant || !this.site.id) return;
+      const feature = this.site.features?.[this.capability] || {};
+      await siteOperator.update(
+        this.site.id,
+        {
+          features: {
+            ...(this.site.features || {}),
+            [this.capability]: {
+              ...feature,
+              assistant: { instructions: this.instructions.trim(), skills: this.skills }
+            }
+          }
+        },
+        this.site.configuration_revision
+      );
+    },
     async onSave(): Promise<void> {
       const displayName = this.displayName.trim() || null;
       const iconUrl = this.iconUrl.trim() || null;
-      if (!displayName && !iconUrl) {
-        if (this.record?.id) {
-          await this.onReset();
-        } else {
-          ElMessage.warning(this.$t('site.capabilityOverride.empty') as string);
-        }
-        return;
-      }
-
       this.submitting = true;
       try {
-        if (this.record?.id) {
+        let createdAppearance = false;
+        if (this.supportsAssistant) await this.saveAssistant();
+        if (!displayName && !iconUrl) {
+          if (this.record?.id) await siteCapabilityOverrideOperator.delete(this.record.id);
+        } else if (this.record?.id) {
           const { data } = await siteCapabilityOverrideOperator.update(this.record.id, {
             display_name: displayName,
             icon_url: iconUrl
           });
           this.record = data;
-          ElMessage.success(this.$t('site.capabilityOverride.saved') as string);
-          this.$emit('saved');
-          this.visible = false;
         } else {
           const { data } = await siteCapabilityOverrideOperator.create({
             site: this.siteId,
@@ -186,9 +228,11 @@ export default defineComponent({
           this.displayName = data.display_name_source ?? data.display_name ?? '';
           this.iconUrl = data.icon_url ?? '';
           this.autoTranslatedFields = [...(data.auto_translated_fields ?? [])];
-          ElMessage.success(this.$t('site.capabilityOverride.savedEnableTranslation') as string);
-          this.$emit('saved');
+          createdAppearance = true;
         }
+        ElMessage.success(this.$t('site.capabilityOverride.saved') as string);
+        this.$emit('saved');
+        if (!createdAppearance) this.visible = false;
       } catch (error) {
         ElMessage.error(this.extractError(error) || (this.$t('site.capabilityOverride.saveFailed') as string));
       } finally {
@@ -249,6 +293,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.section-title {
+  margin: 6px 0 16px;
+  font-size: 16px;
+}
+
 .field-tip {
   margin-top: 6px;
   color: var(--el-text-color-secondary);
