@@ -182,7 +182,7 @@ export async function connectBaseWalletConnect(onUri: (uri: string) => void): Pr
       name: 'Nexior',
       description: 'Nexior Base USDC payments',
       url: typeof window === 'undefined' ? 'https://studio.acedata.cloud' : window.location.origin,
-      icons: ['https://studio.acedata.cloud/favicon.ico']
+      icons: ['https://cdn.acedata.cloud/favicon.ico']
     }
   })) as unknown as Eip1193Provider & {
     connect(options: unknown): Promise<unknown>;
