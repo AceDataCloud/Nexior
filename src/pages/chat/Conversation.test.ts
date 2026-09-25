@@ -1,15 +1,23 @@
 // @vitest-environment jsdom
-import { shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
+import { AxiosHeaders, type AxiosResponse } from 'axios';
 import { nextTick } from 'vue';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { BaseError, IChatMessageState, Status } from '@/models';
+import { BaseError, IChatMessageState, Status, type IChatConversation, type IChatMessage } from '@/models';
+import { chatOperator } from '@/operators';
+import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
 
 const mountComponent = ({
   credentialToken,
-  fetchedConversation
-}: { credentialToken?: string; fetchedConversation?: Record<string, unknown> } = {}) => {
+  fetchedConversation,
+  conversationId = 'conversation-1'
+}: {
+  credentialToken?: string;
+  fetchedConversation?: Record<string, unknown>;
+  conversationId?: string | null;
+} = {}) => {
   const pendingConversation = new Promise(() => undefined);
   const dispatch = vi.fn((action: string) =>
     action === 'chat/getConversation'
@@ -31,8 +39,8 @@ const mountComponent = ({
           $t: (key: string) => (key === 'common.status.loading' ? 'Loading...' : key),
           $route: {
             matched: [{ path: '/chatgpt' }],
-            params: { id: 'conversation-1' },
-            path: '/chatgpt/conversations/conversation-1',
+            params: conversationId ? { id: conversationId } : {},
+            path: `/chatgpt/conversations${conversationId ? `/${conversationId}` : ''}`,
             query: {}
           },
           $router: {
@@ -62,6 +70,185 @@ const mountComponent = ({
     })
   };
 };
+
+describe('chat/Conversation retry', () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  const updateResponse: AxiosResponse<IChatConversation> = {
+    data: { id: 'conversation-1' },
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: { headers: new AxiosHeaders() }
+  };
+  const failedMessages = (): IChatMessage[] => [
+    { role: 'user', content: 'Hello' },
+    { role: 'assistant', content: '', state: IChatMessageState.FAILED, error: { code: 'unknown' } }
+  ];
+  const setup = async (conversationId: string | null = 'conversation-1') => {
+    const mounted = mountComponent({
+      credentialToken: 'token',
+      conversationId,
+      fetchedConversation: { id: conversationId, messages: [] }
+    });
+    await flushPromises();
+    await mounted.wrapper.setData({ messages: failedMessages() });
+    return mounted;
+  };
+
+  it('retries a first-byte failure without trying to update an unknown conversation ID', async () => {
+    const { wrapper, dispatch } = await setup(null);
+    const update = vi.spyOn(chatOperator, 'updateConversation').mockResolvedValue(updateResponse);
+    const send = vi.spyOn(wrapper.vm, 'onRequest').mockResolvedValue(undefined);
+
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+
+    expect(update).not.toHaveBeenCalled();
+    expect(dispatch).not.toHaveBeenCalledWith('chat/setConversation', expect.anything());
+    expect(send).toHaveBeenCalledOnce();
+    expect(wrapper.vm.question).toBe('Hello');
+    expect(wrapper.vm.messages).toEqual([{ role: 'user', content: 'Hello' }]);
+    expect(wrapper.vm.restarting).toBe(false);
+  });
+
+  it('preserves history, original text, and attachment identity without duplicating the user turn', async () => {
+    const { wrapper } = await setup();
+    const history: IChatMessage[] = [
+      { role: 'user', content: 'Earlier question' },
+      { role: 'assistant', content: 'Earlier answer', state: IChatMessageState.FINISHED }
+    ];
+    await wrapper.setData({
+      messages: [
+        ...history,
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: 'Summarize' },
+            {
+              type: 'image_url',
+              image_url: { url: 'https://example.com/photo.png' },
+              name: 'photo.png',
+              file_id: 'file-1',
+              sha256: 'sha256:photo',
+              mime: 'image/png',
+              size: 1024
+            },
+            { type: 'file_url', file_url: 'https://example.com/report.pdf', name: 'report.pdf' },
+            { type: 'text', text: 'these files' }
+          ]
+        },
+        failedMessages()[1]
+      ],
+      question: 'Unrelated draft',
+      references: [{ url: 'https://example.com/draft.png' }]
+    });
+    const update = vi.spyOn(chatOperator, 'updateConversation').mockResolvedValue(updateResponse);
+    const send = vi.spyOn(wrapper.vm, 'onRequest').mockResolvedValue(undefined);
+
+    await wrapper.vm.onRestart(wrapper.vm.messages[3]);
+
+    expect(update).toHaveBeenCalledWith({ id: 'conversation-1', messages: history }, { token: 'token' });
+    expect(send).toHaveBeenCalledOnce();
+    expect(wrapper.vm.question).toBe('Summarize\nthese files');
+    expect(wrapper.vm.references).toEqual([
+      {
+        url: 'https://example.com/photo.png',
+        name: 'photo.png',
+        file_id: 'file-1',
+        sha256: 'sha256:photo',
+        mime: 'image/png',
+        size: 1024
+      },
+      { url: 'https://example.com/report.pdf', name: 'report.pdf' }
+    ]);
+    expect(wrapper.vm.messages).toHaveLength(3);
+  });
+
+  it('keeps the failure visible and blocks repeated clicks while preparing the retry', async () => {
+    const { wrapper } = await setup();
+    let finish: (() => void) | undefined;
+    const update = vi.spyOn(chatOperator, 'updateConversation').mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finish = () => resolve(updateResponse);
+        })
+    );
+    const send = vi.spyOn(wrapper.vm, 'onRequest').mockResolvedValue(undefined);
+    const target = wrapper.vm.messages[1];
+
+    const pending = wrapper.vm.onRestart(target);
+    await wrapper.vm.onRestart(target);
+    await nextTick();
+
+    expect(update).toHaveBeenCalledOnce();
+    expect(wrapper.vm.messages[1]).toBe(target);
+    expect(wrapper.findAllComponents(Message)[1].props('retrying')).toBe(true);
+    expect(wrapper.vm.ready).toBe(false);
+    finish!();
+    await pending;
+    expect(send).toHaveBeenCalledOnce();
+    expect(wrapper.vm.restarting).toBe(false);
+  });
+
+  it('keeps a failed history update attached to the assistant and permits another attempt', async () => {
+    const { wrapper } = await setup();
+    const update = vi
+      .spyOn(chatOperator, 'updateConversation')
+      .mockRejectedValueOnce(new BaseError(503, 'busy', 'Please retry'))
+      .mockResolvedValue(updateResponse);
+    const send = vi.spyOn(wrapper.vm, 'onRequest').mockResolvedValue(undefined);
+
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+
+    expect(send).not.toHaveBeenCalled();
+    expect(wrapper.vm.messages[0]).toEqual({ role: 'user', content: 'Hello' });
+    expect(wrapper.vm.messages[1]).toMatchObject({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      error: { code: 'busy' }
+    });
+    expect(wrapper.vm.restarting).toBe(false);
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+    expect(update).toHaveBeenCalledTimes(2);
+    expect(send).toHaveBeenCalledOnce();
+  });
+
+  it('does not send a stale retry into a different conversation', async () => {
+    const { wrapper } = await setup();
+    let finish: (() => void) | undefined;
+    vi.spyOn(chatOperator, 'updateConversation').mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finish = () => resolve(updateResponse);
+        })
+    );
+    const send = vi.spyOn(wrapper.vm, 'onRequest').mockResolvedValue(undefined);
+    const pending = wrapper.vm.onRestart(wrapper.vm.messages[1]);
+    await wrapper.setData({ messages: [{ role: 'user', content: 'Different conversation' }] });
+    finish!();
+    await pending;
+
+    expect(send).not.toHaveBeenCalled();
+    expect(wrapper.vm.messages).toEqual([{ role: 'user', content: 'Different conversation' }]);
+    expect(wrapper.vm.restarting).toBe(false);
+  });
+
+  it('restores the assistant failure if send preparation rejects', async () => {
+    const { wrapper } = await setup();
+    vi.spyOn(chatOperator, 'updateConversation').mockResolvedValue(updateResponse);
+    vi.spyOn(wrapper.vm, 'onRequest').mockRejectedValue(new Error('Local tool preparation failed'));
+
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+
+    expect(wrapper.vm.messages[0]).toEqual({ role: 'user', content: 'Hello' });
+    expect(wrapper.vm.messages[1]).toMatchObject({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      error: { code: 'unknown' }
+    });
+    expect(wrapper.vm.restarting).toBe(false);
+  });
+});
 
 describe('chat/Conversation loading state', () => {
   it('shows a status skeleton instead of the centered empty layout while history restores', async () => {

@@ -10,11 +10,23 @@ const mountMessage = (
   {
     application = {},
     site = {},
-    push = vi.fn()
-  }: { application?: Record<string, unknown>; site?: Record<string, unknown>; push?: ReturnType<typeof vi.fn> } = {}
+    push = vi.fn(),
+    readonly = false,
+    answering = false,
+    retrying = false,
+    messages = [message]
+  }: {
+    application?: Record<string, unknown>;
+    site?: Record<string, unknown>;
+    push?: ReturnType<typeof vi.fn>;
+    readonly?: boolean;
+    answering?: boolean;
+    retrying?: boolean;
+    messages?: Record<string, unknown>[];
+  } = {}
 ) =>
   shallowMount(Message, {
-    props: { application, message, messages: [message] },
+    props: { application, message, messages, readonly, answering, retrying },
     global: {
       mocks: {
         $t: (key: string) => key,
@@ -23,10 +35,73 @@ const mountMessage = (
       },
       directives: { motion: () => undefined },
       stubs: {
+        ElButton: false,
         MarkdownRenderer: { props: ['content'], template: '<div class="markdown">{{ content }}</div>' }
       }
     }
   });
+
+describe('Message failure retry', () => {
+  const failure = (content = '') => ({
+    role: 'assistant',
+    state: IChatMessageState.FAILED,
+    content,
+    error: { code: 'unknown' }
+  });
+
+  it('offers a labeled retry directly in an empty-response error card', async () => {
+    const message = failure();
+    const wrapper = mountMessage(message);
+
+    expect(wrapper.get('.error-card').attributes('role')).toBe('alert');
+    expect(wrapper.get('.btn-retry').text()).toContain('chat.message.retry');
+    await wrapper.get('.btn-retry').trigger('click');
+
+    expect(wrapper.emitted('restart')).toEqual([[message]]);
+  });
+
+  it('keeps partial output and offers only one retry action', async () => {
+    const message = failure('Partial answer');
+    const wrapper = mountMessage(message);
+
+    expect(wrapper.text()).toContain('Partial answer');
+    expect(wrapper.get('.partial-error .btn-retry').text()).toContain('chat.message.retry');
+    expect(wrapper.find('.btn-restart').exists()).toBe(false);
+    await wrapper.get('.btn-retry').trigger('click');
+    expect(wrapper.emitted('restart')).toEqual([[message]]);
+  });
+
+  it.each(['answering', 'retrying'] as const)('disables retry while %s', async (flag) => {
+    const wrapper = mountMessage(failure(), { [flag]: true });
+
+    expect(wrapper.get('.btn-retry').attributes('disabled')).toBeDefined();
+    await wrapper.get('.btn-retry').trigger('click');
+    expect(wrapper.emitted('restart')).toBeUndefined();
+  });
+
+  it('does not offer retry on a read-only transcript or an older failure', () => {
+    const message = failure();
+    expect(mountMessage(message, { readonly: true }).find('.btn-retry').exists()).toBe(false);
+    const wrapper = mountMessage(message, { messages: [message, { role: 'user', content: 'Next question' }] });
+    expect(wrapper.find('.btn-retry').exists()).toBe(false);
+  });
+
+  it.each(['used_up', 'not_applied'])('does not replace %s recovery with a retry', (code) => {
+    const wrapper = mountMessage({ ...failure(), error: { code } });
+    expect(wrapper.find('.btn-retry').exists()).toBe(false);
+  });
+
+  it.each([IChatMessageState.PENDING, IChatMessageState.ANSWERING, IChatMessageState.FINISHED])(
+    'does not label a %s response as retryable',
+    (state) => {
+      expect(
+        mountMessage({ ...failure(), state })
+          .find('.btn-retry')
+          .exists()
+      ).toBe(false);
+    }
+  );
+});
 
 describe('Message partial response errors', () => {
   it('keeps streamed text visible and appends an interrupted notice', () => {
