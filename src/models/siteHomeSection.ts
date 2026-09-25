@@ -1,4 +1,4 @@
-export type SiteHomeSectionKind = 'markdown' | 'html';
+export type SiteHomeSectionKind = 'markdown' | 'html' | 'website';
 
 export interface ISiteHomeSection {
   id?: string;

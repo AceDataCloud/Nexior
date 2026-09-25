@@ -10,11 +10,13 @@ import type { Component } from 'vue';
 import type { ISite, ISiteHomeSection, SiteHomeSectionKind } from '@/models';
 import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
+import HomeWebsiteSection from './custom/HomeWebsiteSection.vue';
 
 const props = defineProps<{ sections: ISiteHomeSection[]; site?: ISite }>();
 const componentByKind: Record<SiteHomeSectionKind, Component> = {
   markdown: HomeMarkdownSection,
-  html: HomeHtmlSection
+  html: HomeHtmlSection,
+  website: HomeWebsiteSection
 };
 const renderable = computed(() => props.sections.filter((section) => componentByKind[section.kind]));
 </script>

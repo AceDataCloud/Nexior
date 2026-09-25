@@ -6,23 +6,26 @@ import { HOME_HTML_IFRAME_RESIZE_MESSAGE } from '@/utils/homeHtmlIframe';
 import HomeCustomSections from './HomeCustomSections.vue';
 import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
+import HomeWebsiteSection from './custom/HomeWebsiteSection.vue';
 
 const site = { id: 'site-1', features: {} };
 
 describe('HomeCustomSections', () => {
-  it('dispatches exactly the Markdown and HTML renderers', () => {
+  it('dispatches the Markdown, HTML, and Website renderers', () => {
     const wrapper = shallowMount(HomeCustomSections, {
       props: {
         site,
         sections: [
           { id: 'markdown', kind: 'markdown', title: 'Markdown', body: '# Content' },
-          { id: 'html', kind: 'html', title: 'HTML', body: '<strong>Content</strong>' }
+          { id: 'html', kind: 'html', title: 'HTML', body: '<strong>Content</strong>' },
+          { id: 'website', kind: 'website', title: 'Website', body: 'https://example.com' }
         ]
       }
     });
 
     expect(wrapper.findAllComponents({ name: 'HomeMarkdownSection' })).toHaveLength(1);
     expect(wrapper.findAllComponents({ name: 'HomeHtmlSection' })).toHaveLength(1);
+    expect(wrapper.findAllComponents({ name: 'HomeWebsiteSection' })).toHaveLength(1);
   });
 
   it('does not render an unknown kind', () => {
@@ -55,6 +58,27 @@ describe('HomeCustomSections', () => {
 
     expect(wrapper.get('.tenant-home-content').html()).toContain(body);
     expect(wrapper.get('[data-custom="yes"]').text()).toBe('Raw HTML');
+  });
+
+  it('renders Website URLs in a sandboxed iframe with an external fallback', () => {
+    const url = 'https://example.com/embed';
+    const wrapper = mount(HomeWebsiteSection, {
+      props: { section: { kind: 'website', title: 'Website', body: url, render_in_iframe: true } },
+      global: { mocks: { $t: (_key: string, values: { host: string }) => `Open ${values.host}` } }
+    });
+    const iframe = wrapper.get('iframe');
+    const link = wrapper.get('a');
+
+    expect(iframe.attributes('src')).toBe(url);
+    expect(iframe.attributes('srcdoc')).toBeUndefined();
+    expect(iframe.attributes('sandbox')).toContain('allow-scripts');
+    expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
+    expect(iframe.attributes('loading')).toBe('lazy');
+    expect(iframe.attributes('referrerpolicy')).toBe('no-referrer');
+    expect(link.attributes('href')).toBe(url);
+    expect(link.attributes('target')).toBe('_blank');
+    expect(link.attributes('rel')).toBe('noopener noreferrer');
+    expect(link.text()).toContain('example.com');
   });
 
   it('runs opted-in HTML in a sandboxed iframe and accepts its resize messages', async () => {

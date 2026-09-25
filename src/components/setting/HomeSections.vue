@@ -74,9 +74,19 @@
             /></template>
           </el-input>
         </el-form-item>
-        <el-form-item :label="$t('site.homeSections.field.body')">
-          <el-input v-model="form.body" type="textarea" :rows="10" :maxlength="12000" show-word-limit />
+        <el-form-item
+          :label="$t(form.kind === 'website' ? 'site.homeSections.field.websiteUrl' : 'site.homeSections.field.body')"
+        >
+          <el-input
+            v-if="form.kind === 'website'"
+            v-model="form.body"
+            type="url"
+            maxlength="2048"
+            :placeholder="$t('site.homeSections.websitePlaceholder')"
+          />
+          <el-input v-else v-model="form.body" type="textarea" :rows="10" :maxlength="12000" show-word-limit />
           <auto-translate-toggle
+            v-if="form.kind !== 'website'"
             class="translation-below"
             model="site_home_section"
             field="body"
@@ -157,7 +167,7 @@ interface SectionForm {
   endAt: string;
 }
 
-const kinds: SiteHomeSectionKind[] = ['markdown', 'html'];
+const kinds: SiteHomeSectionKind[] = ['markdown', 'html', 'website'];
 const emptyForm = (): SectionForm => ({
   kind: 'markdown',
   title: '',
@@ -272,8 +282,8 @@ export default defineComponent({
       return {
         kind: this.form.kind,
         title: title(this.form.title),
-        body: this.form.body,
-        render_in_iframe: this.form.kind === 'html' && this.form.renderInIframe,
+        body: this.form.kind === 'website' ? this.form.body.trim() : this.form.body,
+        render_in_iframe: this.form.kind === 'website' || (this.form.kind === 'html' && this.form.renderInIframe),
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),

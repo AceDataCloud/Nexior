@@ -29,10 +29,10 @@ const mountSetting = () =>
 describe('setting/HomeSections', () => {
   beforeEach(() => vi.clearAllMocks());
 
-  it('offers exactly Markdown and HTML and defaults to Markdown', () => {
+  it('offers Markdown, HTML, and Website and defaults to Markdown', () => {
     const wrapper = mountSetting();
 
-    expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html']);
+    expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html', 'website']);
     expect((wrapper.vm as any).form.kind).toBe('markdown');
     expect((wrapper.vm as any).form.renderInIframe).toBe(false);
   });
@@ -127,5 +127,21 @@ describe('setting/HomeSections', () => {
     });
 
     expect((wrapper.vm as any).buildPayload().render_in_iframe).toBe(false);
+  });
+
+  it('trims Website URLs and always enables iframe rendering', () => {
+    const wrapper = mountSetting();
+    Object.assign((wrapper.vm as any).form, {
+      kind: 'website',
+      title: 'Website',
+      body: '  https://example.com/embed  ',
+      renderInIframe: false
+    });
+
+    expect((wrapper.vm as any).buildPayload()).toMatchObject({
+      kind: 'website',
+      body: 'https://example.com/embed',
+      render_in_iframe: true
+    });
   });
 });
