@@ -1850,5 +1850,49 @@
   "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
     "message": "لا توجد فيديوهات مؤهلة للنشر",
     "description": "تجاوز آمن عند عدم وجود فيديوهات قابلة للنشر"
+  },
+  "model.claudeOpus55": {
+    "message": "Claude Opus 5.5",
+    "description": "Name of the Claude Opus 5.5 model"
+  },
+  "model.claudeOpus55Description": {
+    "message": "أحدث نموذج Claude رائد للمهام الوكيلة المعقّدة",
+    "description": "وصف نموذج Claude Opus 5.5"
+  },
+  "earlyAccess.badge": {
+    "message": "وصول مبكر بأولوية لحاملي ACE",
+    "description": "شارة تشير إلى أولوية الوصول إلى النموذج لحاملي ACE"
+  },
+  "earlyAccess.locked": {
+    "message": "Tier 1+",
+    "description": "Locked ACE holder tier badge"
+  },
+  "earlyAccess.reason.config_unavailable": {
+    "message": "جارٍ التحقق من أهلية النموذج، يُرجى إعادة المحاولة لاحقًا.",
+    "description": "提示 عند تعذّر التحقق من أهلية النموذج"
+  },
+  "earlyAccess.reason.not_started": {
+    "message": "لم يبدأ الوصول المبكر بأولوية لحاملي ACE بعد.",
+    "description": "提示 قبل بدء نافذة الوصول المبكر بأولوية"
+  },
+  "earlyAccess.reason.anonymous": {
+    "message": "سجّل الدخول وتحقّق من محفظة ACE للتحقق من الأهلية.",
+    "description": "提示 للمستخدم غير المسجّل دخوله"
+  },
+  "earlyAccess.reason.wallet_unverified": {
+    "message": "يُرجى التحقّق من محفظة ACE للتحقق من الأهلية.",
+    "description": "提示 عند عدم التحقق من المحفظة"
+  },
+  "earlyAccess.reason.balance_stale": {
+    "message": "جارٍ تحديث رصيد ACE، يُرجى إعادة المحاولة لاحقًا.",
+    "description": "提示 عند انتهاء صلاحية رصيد حيازة الرموز"
+  },
+  "earlyAccess.reason.tier_too_low": {
+    "message": "هذا النموذج متاح أولًا لحاملي ACE من المستوى Tier 1+ الذين تم التحقق منهم.",
+    "description": "提示 عند عدم استيفاء مستوى حيازة الرموز المطلوب"
+  },
+  "earlyAccess.reason.disabled": {
+    "message": "هذا النموذج غير متاح مؤقتًا.",
+    "description": "提示 عند تعطيل الإصدار"
   }
 }

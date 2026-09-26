@@ -1811,5 +1811,49 @@
   "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
     "message": "沒有符合條件的待發布影片",
     "description": "沒有可發布影片時的安全跳過"
+  },
+  "model.claudeOpus55": {
+    "message": "Claude Opus 5.5",
+    "description": "Name of the Claude Opus 5.5 model"
+  },
+  "model.claudeOpus55Description": {
+    "message": "面向複雜智慧體任務的最新旗艦 Claude 模型",
+    "description": "Claude Opus 5.5 模型描述"
+  },
+  "earlyAccess.badge": {
+    "message": "ACE 優先體驗",
+    "description": "ACE 持幣者優先體驗模型標記"
+  },
+  "earlyAccess.locked": {
+    "message": "Tier 1+",
+    "description": "Locked ACE holder tier badge"
+  },
+  "earlyAccess.reason.config_unavailable": {
+    "message": "正在確認模型資格，請稍後重試。",
+    "description": "無法確認模型資格時的提示"
+  },
+  "earlyAccess.reason.not_started": {
+    "message": "ACE 持幣者優先體驗尚未開始。",
+    "description": "優先體驗期間開始前的提示"
+  },
+  "earlyAccess.reason.anonymous": {
+    "message": "請登入並驗證 ACE 錢包以檢查資格。",
+    "description": "未登入使用者提示"
+  },
+  "earlyAccess.reason.wallet_unverified": {
+    "message": "請驗證 ACE 錢包以檢查資格。",
+    "description": "錢包未驗證提示"
+  },
+  "earlyAccess.reason.balance_stale": {
+    "message": "正在重新整理 ACE 餘額，請稍後重試。",
+    "description": "持幣餘額過期提示"
+  },
+  "earlyAccess.reason.tier_too_low": {
+    "message": "該模型優先向已驗證的 ACE Tier 1+ 持幣者開放。",
+    "description": "未達到持幣等級提示"
+  },
+  "earlyAccess.reason.disabled": {
+    "message": "該模型暫時無法使用。",
+    "description": "發布停用時的提示"
   }
 }

@@ -23,6 +23,7 @@ import {
   CHAT_MODEL_NAME_GEMINI_3_5_FLASH,
   CHAT_MODEL_NAME_GEMINI_3_8_FLASH,
   CHAT_MODEL_NAME_GEMINI_3_6_FLASH,
+  CHAT_MODEL_NAME_CLAUDE_OPUS_5_5,
   CHAT_MODEL_NAME_CLAUDE_OPUS_5,
   CHAT_MODEL_NAME_CLAUDE_OPUS_4_8,
   CHAT_MODEL_NAME_CLAUDE_SONNET_4_6,
@@ -58,6 +59,7 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GEMINI_3_6_FLASH
   | typeof CHAT_MODEL_NAME_GEMINI_2_5_PRO
   | typeof CHAT_MODEL_NAME_GEMINI_2_5_FLASH
+  | typeof CHAT_MODEL_NAME_CLAUDE_OPUS_5_5
   | typeof CHAT_MODEL_NAME_CLAUDE_OPUS_5
   | typeof CHAT_MODEL_NAME_CLAUDE_OPUS_4_8
   | typeof CHAT_MODEL_NAME_CLAUDE_SONNET_4_6
@@ -74,6 +76,7 @@ export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
+  earlyAccessFeature?: string;
   modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
   getDisplayName: () => string;
   getDescription: () => string;
