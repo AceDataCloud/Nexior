@@ -2,7 +2,7 @@ name: Release · Desktop
 
 # Build the Nexior desktop client for GitHub downloads:
 #   - workflow_dispatch → E2E + Windows/macOS installers as Actions artifacts
-#   - workflow_call     → attach installers to the daily GitHub Release
+#   - workflow_call     → return installers as workflow artifacts
 #   - pull_request      → E2E smoke only
 #
 # Required repo secrets:
@@ -34,7 +34,7 @@ on:
   workflow_call:
     inputs:
       release_tag:
-        description: 'Existing draft Release to receive the installers.'
+        description: 'Release tag whose source is being packaged.'
         required: true
         type: string
   workflow_dispatch:
@@ -123,7 +123,12 @@ jobs:
               SIGN=true
             fi
           else
-            if [ -n "$MAC_CSC_LINK" ]; then
+            FORMAL_RELEASE=${{ inputs.release_tag != '' }}
+            if [ "$FORMAL_RELEASE" = true ] && { [ -z "$MAC_CSC_LINK" ] || [ -z "$MAC_CSC_KEY_PASSWORD" ] || [ -z "$APP_STORE_CONNECT_KEY_BASE64" ] || [ -z "$APP_STORE_CONNECT_KEY_ID" ] || [ -z "$APP_STORE_CONNECT_ISSUER_ID" ] || [ -z "$APPLE_TEAM_ID" ]; }; then
+              echo "::error::formal macOS Releases require Developer ID signing and notarization credentials"
+              exit 1
+            fi
+            if [ -n "$MAC_CSC_LINK" ] && [ -n "$MAC_CSC_KEY_PASSWORD" ] && [ -n "$APP_STORE_CONNECT_KEY_BASE64" ] && [ -n "$APP_STORE_CONNECT_KEY_ID" ] && [ -n "$APP_STORE_CONNECT_ISSUER_ID" ] && [ -n "$APPLE_TEAM_ID" ]; then
               export CSC_LINK="$MAC_CSC_LINK" CSC_KEY_PASSWORD="$MAC_CSC_KEY_PASSWORD"
               SIGN=true
               echo "$APP_STORE_CONNECT_KEY_BASE64" | base64 -d > "$RUNNER_TEMP/AuthKey.p8"
@@ -181,30 +186,7 @@ jobs:
       - name: Upload installers as workflow artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: nexior-desktop-${{ matrix.os }}-${{ matrix.arch }}
-          path: |
-            release/*.exe
-            release/*.dmg
+          name: nexior-release-desktop-${{ matrix.os }}-${{ matrix.arch }}
+          path: ${{ runner.os == 'Windows' && 'release/*.exe' || matrix.arch == 'arm64' && 'release/*-arm64.dmg' || 'release/AceData-[0-9]*.dmg' }}
           retention-days: 30
           if-no-files-found: error
-
-      - name: Verify draft Release exists
-        if: inputs.release_tag != ''
-        env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          REL_TAG: ${{ inputs.release_tag }}
-        shell: bash
-        run: |
-          IS_DRAFT=$(gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
-          test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
-
-      - name: Attach installer to draft GitHub Release
-        if: inputs.release_tag != ''
-        uses: softprops/action-gh-release@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-        with:
-          tag_name: ${{ inputs.release_tag }}
-          draft: true
-          files: ${{ runner.os == 'Windows' && 'release/*.exe' || 'release/*.dmg' }}
-          fail_on_unmatched_files: true

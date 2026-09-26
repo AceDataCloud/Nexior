@@ -60,6 +60,9 @@ def main() -> None:
     require("workflow_call:" in assets, "asset assembly must be reusable")
     for child in ("release-desktop.yaml", "release-android.yaml"):
         require(f"uses: ./.github/workflows/{child}" in assets, f"asset assembly must call {child}")
+    require("actions/download-artifact@" in assets, "asset assembly must download child workflow artifacts")
+    require("gh release create" in assets and "--latest" in assets, "asset assembly must create one public Latest Release")
+    require("--draft" not in assets, "asset assembly must never create a draft Release")
 
     android = read("release-android.yaml")
     ios = read("release-ios.yaml")
@@ -74,7 +77,11 @@ def main() -> None:
     require("ref: ${{ inputs.release_tag || github.sha }}" in desktop, "desktop assets must checkout their release tag")
     require("github.event_name != 'workflow_call'" not in android, "Android mode must not depend on the caller event name")
     require("github.event_name == 'workflow_call'" not in desktop, "desktop attachment must use the explicit release tag")
-    require("if: inputs.release_tag != ''" in desktop, "desktop installers must attach when a release tag is supplied")
+    require("softprops/action-gh-release" not in desktop, "desktop workflow must not create or mutate Releases")
+    require("softprops/action-gh-release" not in android, "Android workflow must not create or mutate Releases")
+    require("nexior-release-desktop-" in desktop, "desktop workflow must return versioned artifacts")
+    require("nexior-release-android-" in android, "Android workflow must return a versioned artifact")
+    require("formal macOS Releases require Developer ID signing and notarization credentials" in desktop, "formal Mac Releases must fail closed without signing credentials")
     require("os: macos-15-intel" in desktop, "desktop workflow must use the supported Intel macOS runner")
     require("os: macos-13" not in desktop, "desktop workflow still uses the retired macOS 13 runner")
     require("Publish to COS" not in desktop, "desktop workflow must publish through GitHub only")
