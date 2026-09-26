@@ -1,7 +1,7 @@
 name: Release · Assets
 
-# Assemble one complete, public Release from the daily Beachball version. The
-# Release stays draft until every downloadable platform asset is present.
+# Build every platform into workflow artifacts, then create one public Latest
+# Release only after the complete versioned asset set is present.
 on:
   workflow_call:
     inputs:
@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   prepare:
-    name: Build web dist and create draft
+    name: Build web dist
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.meta.outputs.version }}
@@ -71,25 +71,15 @@ jobs:
           tar -czf "$ASSET" dist
           sha256sum "$ASSET" > "${ASSET}.sha256"
 
-      - name: Create draft Release with web assets
-        env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          RELEASE_TAG: ${{ inputs.release_tag }}
-          VERSION: ${{ steps.meta.outputs.version }}
-        run: |
-          set -euo pipefail
-          if gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            IS_DRAFT=$(gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
-            test "$IS_DRAFT" = "true" || {
-              echo "::error::$RELEASE_TAG is already public; refusing to replace it"
-              exit 1
-            }
-          else
-            gh release create "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
-              --verify-tag --draft --generate-notes --title "v$VERSION"
-          fi
-          gh release upload "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
-            nexior-dist-*.tar.gz nexior-dist-*.tar.gz.sha256 --clobber
+      - name: Upload web release artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: nexior-release-web-${{ steps.meta.outputs.version }}
+          path: |
+            nexior-dist-*.tar.gz
+            nexior-dist-*.tar.gz.sha256
+          retention-days: 30
+          if-no-files-found: error
 
   desktop:
     name: Build desktop installers
@@ -109,55 +99,65 @@ jobs:
     secrets: inherit
 
   publish:
-    name: Verify assets and publish Release
+    name: Verify assets and publish Latest Release
     needs: [prepare, desktop, android]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout release tag
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.release_tag }}
 
-      - name: Verify complete asset set
+      - name: Download all release artifacts
+        uses: actions/download-artifact@v5
+        with:
+          pattern: nexior-release-*
+          path: release-assets
+          merge-multiple: true
+
+      - name: Verify complete versioned asset set
         env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
           RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
           set -euo pipefail
-          ASSETS=$(gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
-          printf '%s\n' "$ASSETS"
-
-          require_count() {
-            PATTERN=$1
-            EXPECTED=$2
-            COUNT=$(printf '%s\n' "$ASSETS" | grep -Ec "$PATTERN" || true)
-            if [ "$COUNT" -ne "$EXPECTED" ]; then
-              echo "::error::expected $EXPECTED asset(s) matching $PATTERN, found $COUNT"
+          VERSION=${RELEASE_TAG#@acedatacloud/nexior_v}
+          find release-assets -maxdepth 1 -type f -print
+          for EXPECTED in \
+            "nexior-dist-@acedatacloud-nexior_v${VERSION}.tar.gz" \
+            "nexior-dist-@acedatacloud-nexior_v${VERSION}.tar.gz.sha256" \
+            "nexior-${VERSION}.apk" \
+            "AceData.Setup.${VERSION}.exe" \
+            "AceData-${VERSION}.dmg" \
+            "AceData-${VERSION}-arm64.dmg"; do
+            test "$(find release-assets -maxdepth 1 -type f -name "$EXPECTED" | wc -l | tr -d ' ')" = "1" || {
+              echo "::error::expected exactly one $EXPECTED"
               exit 1
-            fi
+            }
+          done
+          test "$(find release-assets -maxdepth 1 -type f | wc -l | tr -d ' ')" = "6" || {
+            echo "::error::unexpected files in the release asset set"
+            exit 1
           }
 
-          require_count '^nexior-dist-.*\.tar\.gz$' 1
-          require_count '^nexior-dist-.*\.tar\.gz\.sha256$' 1
-          require_count '^nexior-[0-9]+\.[0-9]+\.[0-9]+\.apk$' 1
-          require_count '^AceData\.Setup\..*\.exe$' 1
-          require_count '^AceData-[0-9]+\.[0-9]+\.[0-9]+\.dmg$' 1
-          require_count '^AceData-[0-9]+\.[0-9]+\.[0-9]+-arm64\.dmg$' 1
-
-      - name: Publish completed Release
+      - name: Create public Latest Release
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
           RELEASE_TAG: ${{ inputs.release_tag }}
+          VERSION: ${{ needs.prepare.outputs.version }}
           IOS_APP_STORE_URL_OVERRIDE: ${{ vars.IOS_APP_STORE_URL }}
         run: |
           set -euo pipefail
+          if gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::error::$RELEASE_TAG already has a GitHub Release; refusing to replace it"
+            exit 1
+          fi
           IOS_URL=${IOS_APP_STORE_URL_OVERRIDE:-}
           if [ -z "$IOS_URL" ]; then
             IOS_URL=$(sed -nE "s/.*MOBILE_IOS_APP_STORE_URL *= *'([^']+)'.*/\1/p" src/constants/mobile.ts | head -n1)
           fi
-          gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json body --jq .body > release-notes.md
-          cat >> release-notes.md <<EOF
-
+          cat > release-notes.md <<EOF
           ## 📦 Downloads
 
           | Platform | How to get it |
@@ -168,7 +168,8 @@ jobs:
           | 📱 **iOS** | [App Store](${IOS_URL}) |
           | 🌐 **Web** | The \`nexior-dist-*.tar.gz\` below (self-host) |
 
-          > ⚠️ Desktop signing depends on the configured platform certificates. If an OS warns about an unsigned beta, use macOS right-click → Open or Windows "Run anyway".
+          > macOS downloads are Developer ID signed and Apple notarized.
           EOF
-          gh release edit "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
-            --notes-file release-notes.md --draft=false --latest
+          gh release create "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
+            --verify-tag --generate-notes --notes-file release-notes.md \
+            --title "v$VERSION" --latest release-assets/*

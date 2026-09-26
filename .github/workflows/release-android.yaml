@@ -7,7 +7,7 @@ on:
   workflow_call:
     inputs:
       release_tag:
-        description: 'Optional draft Release to receive the sideload APK.'
+        description: 'Optional Release tag whose source is being packaged.'
         required: false
         default: ''
         type: string
@@ -298,11 +298,16 @@ jobs:
             -PRELEASE_KEY_ALIAS='${{ secrets.ANDROID_KEY_ALIAS }}' \
             -PRELEASE_KEY_PASSWORD='${{ secrets.ANDROID_KEY_PASSWORD }}'
 
+      - name: Stage versioned APK
+        if: inputs.release_tag != ''
+        run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v7
         with:
-          name: nexior-${{ needs.preflight.outputs.version-name }}.apk
-          path: android/app/build/outputs/apk/full/release/app-full-release.apk
+          name: ${{ inputs.release_tag != '' && format('nexior-release-android-{0}', needs.preflight.outputs.version-name) || format('nexior-{0}.apk', needs.preflight.outputs.version-name) }}
+          path: ${{ inputs.release_tag != '' && format('nexior-{0}.apk', needs.preflight.outputs.version-name) || 'android/app/build/outputs/apk/full/release/app-full-release.apk' }}
+          if-no-files-found: error
 
       - name: Upload AAB artifact
         if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
@@ -311,29 +316,6 @@ jobs:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
 
-      - name: Verify draft Release exists
-        if: inputs.release_tag != ''
-        env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-          REL_TAG: ${{ inputs.release_tag }}
-        run: |
-          IS_DRAFT=$(gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)
-          test "$IS_DRAFT" = "true" || { echo "::error::$REL_TAG is missing or is not a draft"; exit 1; }
-
-      - name: Stage versioned APK
-        if: inputs.release_tag != ''
-        run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
-
-      - name: Attach APK to draft GitHub Release
-        if: inputs.release_tag != ''
-        uses: softprops/action-gh-release@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
-        with:
-          tag_name: ${{ inputs.release_tag }}
-          draft: true
-          files: nexior-${{ needs.preflight.outputs.version-name }}.apk
-          fail_on_unmatched_files: true
 
       - name: Block direct production upload during policy remediation
         if: (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')) && needs.preflight.outputs.track == 'production'

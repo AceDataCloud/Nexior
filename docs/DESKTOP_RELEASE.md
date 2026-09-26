@@ -49,10 +49,10 @@ The workflow generates:
 ## Cutting a public release
 
 The normal product release is aggregated once per day. **Release · Daily** runs
-Beachball, creates a draft GitHub Release, and calls the desktop workflow to
-attach Windows and both macOS installers. The Release becomes public only after
-the web archive, Android APK, Windows EXE, Intel DMG, and Apple Silicon DMG all
-exist.
+Beachball and builds the web archive, Android APK, Windows EXE, Intel DMG, and
+Apple Silicon DMG as Actions artifacts. Only after all six files pass validation
+does the final job create one public GitHub Release and mark it as Latest. Failed
+builds never leave a draft Release behind.
 
 Run **Release · Daily** manually for an urgent full release. Users upgrade by
 downloading the desired installer from the GitHub Release and running it.
