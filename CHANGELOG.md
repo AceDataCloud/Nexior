@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 25 Sep 2026 20:21:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 26 Sep 2026 20:21:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.372.2
+
+Sat, 26 Sep 2026 20:21:59 GMT
+
+### Patches
+
+- Show when scheduled tasks pause because unattended authorization expired. (dev@acedata.cloud)
 
 ## 3.372.1
 
