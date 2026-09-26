@@ -1826,5 +1826,29 @@
   "model.gemini38FlashDescription": {
     "message": "نموذج سريع متعدد الوسائط، مناسب للسياق الطويل وفهم الصور واستدعاء الأدوات.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "انتهت صلاحية التفويض، وتم إيقاف المهمة مؤقتًا تلقائيًا",
+    "description": "حالة المهمة التي تظهر عند انتهاء صلاحية التفويض دون مراقبة"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "انتهت صلاحية التفويض دون مراقبة",
+    "description": "انتهت صلاحية تفويض المهمة المجدولة"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "الحساب المرتبط غير مطابق، ولم يتم تنفيذ أي إجراء",
+    "description": "تجاوز آمن عند عدم تطابق هوية الحساب المرتبط"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "لم يتم تسجيل الدخول إلى WeChat، ولم تُرسل الرسالة",
+    "description": "تجاوز آمن عند عدم اتصال حساب WeChat الشخصي"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "تعذّر الحصول على المحتوى المصدر، ولم يتم النشر",
+    "description": "تجاوز آمن عند تعذّر تحميل المحتوى المصدر المطلوب"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "لا توجد فيديوهات مؤهلة للنشر",
+    "description": "تجاوز آمن عند عدم وجود فيديوهات قابلة للنشر"
   }
 }

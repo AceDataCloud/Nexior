@@ -1787,5 +1787,29 @@
   "model.gemini38FlashDescription": {
     "message": "高速なマルチモーダルモデル。長いコンテキスト、画像理解、ツール呼び出しに適しています。",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "認証の有効期限が切れたため、タスクは自動的に一時停止されました",
+    "description": "無人実行の認証期限切れ時に表示されるタスクの状態"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "無人実行の認証の有効期限が切れています",
+    "description": "スケジュールタスクの認証の有効期限切れ"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "接続アカウントが一致しないため、操作は実行されませんでした",
+    "description": "連携アカウントの本人確認が一致しない場合の安全なスキップ"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChatにログインしていないため、メッセージは送信されませんでした",
+    "description": "個人用WeChatがオフラインの場合の安全なスキップ"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "ソースコンテンツを取得できないため、公開されませんでした",
+    "description": "必要なソースコンテンツを読み込めない場合の安全なスキップ"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "条件を満たす公開待ち動画がありません",
+    "description": "公開可能な動画がない場合の安全なスキップ"
   }
 }

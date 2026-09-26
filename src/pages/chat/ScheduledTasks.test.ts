@@ -404,6 +404,18 @@ describe('chat/ScheduledTasks', () => {
     );
   });
 
+  it('explains an automatic authorization-expired pause', async () => {
+    errorMessages['chat.scheduledTasks.state.authorizationExpired'] = 'Authorization expired; task paused';
+    const wrapper = mountComponent();
+
+    await wrapper.setData({
+      tasks: [{ ...editedTask, state: 'disabled', state_reason: 'authorization_expired', last_error: 'old_error' }]
+    });
+
+    expect(wrapper.find('.error-hint').text()).toBe('Authorization expired; task paused');
+    expect(wrapper.text()).not.toContain('old error');
+  });
+
   it.each([
     ['internal_error', 'Internal error'],
     ['billing_gate_failed', 'Billing authorization failed']

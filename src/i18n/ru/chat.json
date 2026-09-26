@@ -1826,5 +1826,29 @@
   "model.gemini38FlashDescription": {
     "message": "Быстрая мультимодальная модель для работы с длинным контекстом, понимания изображений и вызова инструментов.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "Срок действия авторизации истёк, задача автоматически приостановлена",
+    "description": "Статус задачи, отображаемый при истечении срока действия авторизации для выполнения без присмотра"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "Срок действия авторизации для выполнения без присмотра истёк",
+    "description": "Срок действия авторизации для запланированной задачи истёк"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "Подключённая учётная запись не совпадает, действия не выполнены",
+    "description": "Безопасный пропуск при несовпадении данных привязанной учётной записи"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "Вход в WeChat не выполнен, сообщение не отправлено",
+    "description": "Безопасный пропуск, если личный аккаунт WeChat не в сети"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "Не удалось получить исходный контент, публикация не выполнена",
+    "description": "Безопасный пропуск при невозможности загрузить необходимый исходный контент"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "Нет подходящих видео для публикации",
+    "description": "Безопасный пропуск при отсутствии видео для публикации"
   }
 }

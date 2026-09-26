@@ -1826,5 +1826,29 @@
   "model.gemini38FlashDescription": {
     "message": "Schnelles multimodales Modell, geeignet für lange Kontexte, Bildverständnis und Tool-Aufrufe.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "Autorisierung abgelaufen, Aufgabe wurde automatisch pausiert",
+    "description": "Angezeigter Aufgabenstatus, wenn die Autorisierung für den unbeaufsichtigten Betrieb abläuft"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "Die Autorisierung für die geplante Aufgabe ist abgelaufen",
+    "description": "Die Autorisierung für die geplante Aufgabe ist abgelaufen"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "Das verbundene Konto stimmt nicht überein, keine Aktion ausgeführt",
+    "description": "Sicherheitsüberspringen bei nicht übereinstimmender Identität des verknüpften Kontos"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChat ist nicht angemeldet, keine Nachricht gesendet",
+    "description": "Sicherheitsüberspringen, wenn das persönliche WeChat-Konto offline ist"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "Quellinhalt konnte nicht abgerufen werden, nichts veröffentlicht",
+    "description": "Sicherheitsüberspringen, wenn der erforderliche Quellinhalt nicht geladen werden kann"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "Keine geeigneten Videos zur Veröffentlichung",
+    "description": "Sicherheitsüberspringen, wenn keine veröffentlichbaren Videos vorhanden sind"
   }
 }

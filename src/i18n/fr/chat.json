@@ -1826,5 +1826,29 @@
   "model.gemini38FlashDescription": {
     "message": "Modèle multimodal rapide, adapté aux longs contextes, à la compréhension des images et à l’appel d’outils.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "Autorisation expirée, tâche automatiquement suspendue",
+    "description": "État de la tâche affiché lorsque l’autorisation sans surveillance expire"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "L’autorisation sans surveillance a expiré",
+    "description": "L’autorisation de la tâche planifiée a expiré"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "Le compte connecté ne correspond pas, aucune opération effectuée",
+    "description": "Ignorer en toute sécurité lorsque l’identité du compte associé ne correspond pas"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChat n’est pas connecté, message non envoyé",
+    "description": "Ignorer en toute sécurité lorsque le compte WeChat personnel est hors ligne"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "Impossible d’obtenir le contenu source, rien n’a été publié",
+    "description": "Ignorer en toute sécurité lorsque le contenu source requis ne peut pas être chargé"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "Aucune vidéo à publier ne répond aux critères",
+    "description": "Ignorer en toute sécurité lorsqu’aucune vidéo ne peut être publiée"
   }
 }

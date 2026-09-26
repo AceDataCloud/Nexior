@@ -1735,5 +1735,29 @@
   },
   "model.gemini38FlashDescription": {
     "message": "Fast multimodal model for long context, image understanding, and tool use."
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "Authorization expired; task paused",
+    "description": "Task state shown when unattended authorization expires"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "Authorization expired",
+    "description": "Scheduled task authorization expired"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "Connected account does not match; no changes made",
+    "description": "Safe skip when the bound account identity differs"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChat is not signed in; no message sent",
+    "description": "Safe skip when Personal WeChat is offline"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "Source content unavailable; nothing published",
+    "description": "Safe skip when required source content cannot be loaded"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "No eligible video to publish",
+    "description": "Safe skip when no unpublished video qualifies"
   }
 }

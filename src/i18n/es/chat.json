@@ -1827,5 +1827,29 @@
   "model.gemini38FlashDescription": {
     "message": "Modelo multimodal rápido, ideal para contextos largos, comprensión de imágenes y uso de herramientas.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "La autorización ha caducado; la tarea se ha pausado automáticamente",
+    "description": "Estado de la tarea que se muestra cuando caduca la autorización desatendida"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "La autorización desatendida ha caducado",
+    "description": "La autorización de la tarea programada ha caducado"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "Las cuentas conectadas no coinciden; no se realizó ninguna acción",
+    "description": "Omisión segura cuando la identidad de la cuenta vinculada no coincide"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChat no ha iniciado sesión; no se enviaron mensajes",
+    "description": "Omisión segura cuando la cuenta personal de WeChat está desconectada"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "No se pudo obtener el contenido de origen; no se publicó",
+    "description": "Omisión segura cuando no se puede cargar el contenido de origen necesario"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "No hay vídeos aptos pendientes de publicación",
+    "description": "Omisión segura cuando no hay vídeos que publicar"
   }
 }

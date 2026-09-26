@@ -24,6 +24,7 @@ export interface IScheduledTask {
   name: string;
   description?: string;
   state: 'enabled' | 'disabled' | 'error';
+  state_reason?: 'authorization_expired';
   /** Where runs fire from. Absent on tasks created before local mode — they
    *  are all cloud tasks, which is why this is optional rather than migrated. */
   execution?: IScheduledExecution;
