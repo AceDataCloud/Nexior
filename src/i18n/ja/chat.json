@@ -1811,5 +1811,49 @@
   "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
     "message": "条件を満たす公開待ち動画がありません",
     "description": "公開可能な動画がない場合の安全なスキップ"
+  },
+  "model.claudeOpus55": {
+    "message": "Claude Opus 5.5",
+    "description": "Name of the Claude Opus 5.5 model"
+  },
+  "model.claudeOpus55Description": {
+    "message": "複雑なエージェントタスク向けの最新フラッグシップ Claude モデル",
+    "description": "Claude Opus 5.5 モデルの説明"
+  },
+  "earlyAccess.badge": {
+    "message": "ACE 優先アクセス",
+    "description": "ACE 保有者向けの優先アクセスモデルバッジ"
+  },
+  "earlyAccess.locked": {
+    "message": "Tier 1+",
+    "description": "Locked ACE holder tier badge"
+  },
+  "earlyAccess.reason.config_unavailable": {
+    "message": "モデルの利用資格を確認中です。しばらくしてからもう一度お試しください。",
+    "description": "モデルの利用資格を確認できない場合の案内"
+  },
+  "earlyAccess.reason.not_started": {
+    "message": "ACE 保有者向けの優先アクセスはまだ開始されていません。",
+    "description": "優先アクセス期間の開始前に表示する案内"
+  },
+  "earlyAccess.reason.anonymous": {
+    "message": "ログインして ACE ウォレットを認証し、資格を確認してください。",
+    "description": "未ログインユーザーへの案内"
+  },
+  "earlyAccess.reason.wallet_unverified": {
+    "message": "ACE ウォレットを認証して、資格を確認してください。",
+    "description": "ウォレットが未認証の場合の案内"
+  },
+  "earlyAccess.reason.balance_stale": {
+    "message": "ACE 残高を更新中です。しばらくしてからもう一度お試しください。",
+    "description": "保有残高の情報が古い場合の案内"
+  },
+  "earlyAccess.reason.tier_too_low": {
+    "message": "このモデルは、認証済みの ACE Tier 1 以上の保有者を対象に優先公開されています。",
+    "description": "保有ティアが条件を満たしていない場合の案内"
+  },
+  "earlyAccess.reason.disabled": {
+    "message": "このモデルは現在ご利用いただけません。",
+    "description": "提供が無効になっている場合の案内"
   }
 }

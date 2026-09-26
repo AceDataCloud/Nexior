@@ -1850,5 +1850,49 @@
   "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
     "message": "Não há vídeos pendentes de publicação que atendam aos critérios",
     "description": "Ignorar com segurança quando não houver vídeos publicáveis"
+  },
+  "model.claudeOpus55": {
+    "message": "Claude Opus 5.5",
+    "description": "Name of the Claude Opus 5.5 model"
+  },
+  "model.claudeOpus55Description": {
+    "message": "The latest flagship Claude model for complex agentic tasks",
+    "description": "Description of the Claude Opus 5.5 model"
+  },
+  "earlyAccess.badge": {
+    "message": "Acesso antecipado ACE",
+    "description": "Indica acesso antecipado ao modelo para detentores de ACE"
+  },
+  "earlyAccess.locked": {
+    "message": "Tier 1+",
+    "description": "Locked ACE holder tier badge"
+  },
+  "earlyAccess.reason.config_unavailable": {
+    "message": "Confirming model eligibility. Please try again later.",
+    "description": "Prompt shown when model eligibility cannot be confirmed"
+  },
+  "earlyAccess.reason.not_started": {
+    "message": "ACE token holder early access has not started yet.",
+    "description": "Prompt shown before the early access window begins"
+  },
+  "earlyAccess.reason.anonymous": {
+    "message": "Please sign in and verify your ACE wallet to check eligibility.",
+    "description": "Prompt shown to users who are not signed in"
+  },
+  "earlyAccess.reason.wallet_unverified": {
+    "message": "Please verify your ACE wallet to check eligibility.",
+    "description": "Prompt shown when the wallet is not verified"
+  },
+  "earlyAccess.reason.balance_stale": {
+    "message": "Refreshing your ACE balance. Please try again later.",
+    "description": "Prompt shown when the token holder balance is outdated"
+  },
+  "earlyAccess.reason.tier_too_low": {
+    "message": "This model is initially available to verified ACE Tier 1+ token holders.",
+    "description": "Prompt shown when the token holder tier is insufficient"
+  },
+  "earlyAccess.reason.disabled": {
+    "message": "Este modelo está temporariamente indisponível.",
+    "description": "Mensagem exibida quando o lançamento está desativado"
   }
 }

@@ -11,7 +11,7 @@
           <el-dropdown-item
             v-for="(option, optionKey) in modelGroup?.models?.filter((m) => m.enabled)"
             :key="optionKey"
-            :class="{ active: model?.name === option?.name }"
+            :class="{ active: model?.name === option?.name, locked: !modelAccess(option).allowed }"
             @click="onModelChange(option)"
           >
             <div class="item">
@@ -20,6 +20,9 @@
                 <p v-if="option?.getDisplayName" class="item-name">
                   {{ option?.getDisplayName() }}
                   <span v-if="option?.isFree" class="item-free-tag">{{ $t('chat.model.freeTag') }}</span>
+                  <span v-if="option.earlyAccessFeature" class="item-early-tag">{{
+                    modelAccess(option).allowed ? $t('chat.earlyAccess.badge') : $t('chat.earlyAccess.locked')
+                  }}</span>
                 </p>
                 <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
               </div>
@@ -41,8 +44,9 @@
 <script lang="ts">
 import { ConfirmIcon, ExpandDownIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
-import { IChatModelGroup } from '@/models';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
+import { IChatModel, IChatModelGroup } from '@/models';
+import { resolveChatModelAccess } from '@/utils/chatModelAccess';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -55,6 +59,8 @@ import {
 
 interface IData {
   options: IChatModelGroup[];
+  accessNow: number;
+  accessTimer?: number;
 }
 
 export default defineComponent({
@@ -69,6 +75,8 @@ export default defineComponent({
   emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {
     return {
+      accessNow: Date.now(),
+      accessTimer: undefined,
       options: [
         CHAT_MODEL_GROUP_CHATGPT,
         CHAT_MODEL_GROUP_DEEPSEEK,
@@ -97,6 +105,11 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.accessTimer = window.setInterval(() => {
+      this.accessNow = Date.now();
+    }, 30_000);
+    window.addEventListener('focus', this.refreshAccess);
+
     // Sync the route-derived modelGroup into the store on first mount.
     // `chat.modelGroup` is intentionally not persisted (see persist.ts);
     // the route is the source of truth and the store mirror only exists
@@ -116,12 +129,28 @@ export default defineComponent({
       this.$store.dispatch('chat/setModel', getDefaultChatModel(route));
     }
   },
+  beforeUnmount() {
+    if (this.accessTimer !== undefined) window.clearInterval(this.accessTimer);
+    window.removeEventListener('focus', this.refreshAccess);
+  },
   methods: {
+    refreshAccess() {
+      this.accessNow = Date.now();
+      void this.$store.dispatch('fetchConfig');
+    },
     onModelGroupChange(modelGroup: IChatModelGroup) {
       this.$store.dispatch('chat/setModelGroup', modelGroup);
       this.$emit('model-group-changed', modelGroup);
     },
+    modelAccess(model: IChatModel) {
+      return resolveChatModelAccess(model, this.$store.getters.config, this.accessNow);
+    },
     onModelChange(model: IChatModelGroup['models'][number]) {
+      const access = this.modelAccess(model);
+      if (!access.allowed) {
+        ElMessage.warning(this.$t(`chat.earlyAccess.reason.${access.reason || 'config_unavailable'}`) as string);
+        return;
+      }
       this.$store.dispatch('chat/setModel', model);
       this.$emit('model-changed', model);
     }
@@ -208,7 +237,8 @@ export default defineComponent({
     gap: 6px;
   }
 
-  .item-free-tag {
+  .item-free-tag,
+  .item-early-tag {
     display: inline-flex;
     align-items: center;
     padding: 1px 6px;
@@ -219,6 +249,11 @@ export default defineComponent({
     color: var(--el-color-success);
     background-color: var(--el-color-success-light-9);
     border: 1px solid var(--el-color-success-light-7);
+  }
+
+  .item-early-tag {
+    color: var(--el-color-warning);
+    border-color: var(--el-color-warning-light-5);
   }
 
   .item-desc {
