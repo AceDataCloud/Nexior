@@ -150,7 +150,10 @@
                   <refresh-icon :size="16" class="footer-icon" aria-hidden="true" focusable="false" />
                   {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
                 </span>
-                <span v-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
+                <span v-if="task.state_reason === 'authorization_expired'" class="error-hint">{{
+                  $t('chat.scheduledTasks.state.authorizationExpired')
+                }}</span>
+                <span v-else-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
                 <span class="open-hint">
                   {{ $t('chat.scheduledTasks.viewRuns') }}
                   <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />

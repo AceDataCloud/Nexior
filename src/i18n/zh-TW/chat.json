@@ -1787,5 +1787,29 @@
   "model.gemini38FlashDescription": {
     "message": "快速多模態模型，適合長上下文、影像理解和工具呼叫。",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "授權已過期，任務已自動暫停",
+    "description": "無人值守授權到期時顯示的任務狀態"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "無人值守授權已過期",
+    "description": "排程任務授權已過期"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "連線帳號不相符，未執行任何操作",
+    "description": "綁定帳號身分不符時的安全跳過"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "微信未登入，未傳送訊息",
+    "description": "個人微信離線時的安全跳過"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "無法取得來源內容，未發布",
+    "description": "無法載入必要來源內容時的安全跳過"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "沒有符合條件的待發布影片",
+    "description": "沒有可發布影片時的安全跳過"
   }
 }

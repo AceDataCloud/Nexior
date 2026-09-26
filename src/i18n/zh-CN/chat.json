@@ -1803,5 +1803,29 @@
   },
   "model.gemini38FlashDescription": {
     "message": "快速多模态模型，适合长上下文、图像理解和工具调用。"
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "授权已过期，任务已自动暂停",
+    "description": "无人值守授权到期时显示的任务状态"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "无人值守授权已过期",
+    "description": "Scheduled task authorization expired"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "连接账号不匹配，未执行任何操作",
+    "description": "绑定账号身份不符时的安全跳过"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "微信未登录，未发送消息",
+    "description": "个人微信离线时的安全跳过"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "无法获取源内容，未发布",
+    "description": "无法加载必要源内容时的安全跳过"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "没有符合条件的待发布视频",
+    "description": "没有可发布视频时的安全跳过"
   }
 }

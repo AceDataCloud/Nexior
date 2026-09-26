@@ -1826,5 +1826,29 @@
   "model.gemini38FlashDescription": {
     "message": "Modello multimodale rapido, ideale per contesto esteso, comprensione delle immagini e chiamate agli strumenti.",
     "description": ""
+  },
+  "scheduledTasks.state.authorizationExpired": {
+    "message": "L'autorizzazione è scaduta, l'attività è stata messa automaticamente in pausa",
+    "description": "Stato dell'attività mostrato quando scade l'autorizzazione per l'esecuzione senza supervisione"
+  },
+  "scheduledTasks.run.reason.authorization_expired": {
+    "message": "L'autorizzazione per l'esecuzione senza supervisione è scaduta",
+    "description": "L'autorizzazione dell'attività pianificata è scaduta"
+  },
+  "scheduledTasks.run.reason.ACCOUNT_MISMATCH_SAFE_STOP": {
+    "message": "L'account collegato non corrisponde; nessuna operazione eseguita",
+    "description": "Salto sicuro quando l'identità dell'account associato non corrisponde"
+  },
+  "scheduledTasks.run.reason.WECHAT_NOT_LOGGED_IN": {
+    "message": "WeChat non ha effettuato l'accesso; messaggio non inviato",
+    "description": "Salto sicuro quando l'account WeChat personale è offline"
+  },
+  "scheduledTasks.run.reason.SOURCE_UNAVAILABLE_NO_PUBLISH": {
+    "message": "Impossibile recuperare il contenuto sorgente; pubblicazione non effettuata",
+    "description": "Salto sicuro quando non è possibile caricare il contenuto sorgente necessario"
+  },
+  "scheduledTasks.run.reason.NO_ELIGIBLE_VIDEO": {
+    "message": "Nessun video idoneo in attesa di pubblicazione",
+    "description": "Salto sicuro quando non ci sono video pubblicabili"
   }
 }
