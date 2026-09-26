@@ -842,7 +842,7 @@ export default defineComponent({
     modelGroups(): IChatModelGroup[] {
       const features = (this.$store.state.site?.features ?? {}) as Record<string, { enabled?: boolean }>;
       return CHAT_MODEL_GROUPS.filter((g) => features[g.name]?.enabled !== false)
-        .map((g) => ({ ...g, models: g.models.filter((m) => m.enabled !== false) }))
+        .map((g) => ({ ...g, models: g.models.filter((m) => m.enabled !== false && !m.earlyAccessFeature) }))
         .filter((g) => g.models.length > 0);
     },
     pagedTasks(): IScheduledTask[] {

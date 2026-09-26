@@ -7,6 +7,20 @@ export interface IConfigFeatures {
   airwallex?: boolean;
 }
 
+export interface IEarlyAccessModelConfig {
+  eligible: boolean;
+  phase: 'disabled' | 'scheduled' | 'holder_access' | 'general_availability';
+  reason: string;
+  starts_at?: string;
+  ga_at?: string;
+  minimum_ace_tier: number;
+  current_ace_tier: number;
+  attribution_key?: string;
+}
+
 export interface IConfigResponse {
   features?: IConfigFeatures;
+  early_access?: Record<string, IEarlyAccessModelConfig>;
+  server_time?: string;
+  client_received_at?: number;
 }
