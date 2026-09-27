@@ -937,6 +937,7 @@ export default defineComponent({
   },
   async mounted() {
     document.addEventListener('visibilitychange', this.onVisibilityChange);
+    await this.$store.dispatch('chat/refreshModelAccess');
     await this.loadTasks();
     if (this.$route?.query?.template_category) this.openTemplateGallery();
   },
