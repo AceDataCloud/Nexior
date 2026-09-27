@@ -9,19 +9,25 @@ export interface ISiteAssistantConfig {
   skills?: ISiteAssistantSkillBinding[];
 }
 
+export interface ISiteModelConfig {
+  display_name?: string;
+}
+
 export interface ISiteCapabilityFeature {
   enabled?: boolean;
   service_id?: string;
   assistant?: ISiteAssistantConfig;
+  models?: Record<string, ISiteModelConfig>;
   [key: string]: unknown;
 }
 
 export interface ISiteFeatures {
-  chatgpt?: any;
-  deepseek?: any;
-  grok?: any;
-  gemini?: any;
-  claude?: any;
+  [key: string]: ISiteCapabilityFeature | any;
+  chatgpt?: ISiteCapabilityFeature;
+  deepseek?: ISiteCapabilityFeature;
+  grok?: ISiteCapabilityFeature;
+  gemini?: ISiteCapabilityFeature;
+  claude?: ISiteCapabilityFeature;
   midjourney?: any;
   flux?: any;
   qrart?: any;
@@ -46,7 +52,8 @@ export interface ISiteFeatures {
   omni?: any;
   wan?: any;
   producer?: any;
-  kimi?: any;
+  kimi?: ISiteCapabilityFeature;
+  glm?: ISiteCapabilityFeature;
   serp?: any;
   fish?: any;
   webextrator?: any;

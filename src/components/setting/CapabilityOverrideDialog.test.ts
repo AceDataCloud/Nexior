@@ -49,7 +49,23 @@ const mountDialog = (
       defaultName: 'ChatGPT',
       defaultIcon: '/chatgpt.png',
       override,
-      site
+      site,
+      modelGroup: {
+        name: 'chatgpt',
+        icon: '/chatgpt.png',
+        getDisplayName: () => 'ChatGPT',
+        getDescription: () => '',
+        models: [
+          {
+            enabled: true,
+            name: 'gpt-5.5' as any,
+            modelGroup: 'chatgpt',
+            icon: '/gpt.png',
+            getDisplayName: () => 'GPT-5.5',
+            getDescription: () => ''
+          }
+        ]
+      }
     },
     global: {
       mocks: { $t: translate },
@@ -148,18 +164,31 @@ describe('CapabilityOverrideDialog', () => {
 
     expect(message).toBe('Actionable message');
   });
-  it('saves object Skill bindings without replacing sibling feature fields', async () => {
-    mocks.updateSite.mockResolvedValue({ data: {} });
+  it('saves assistant and nested model names in one revision-guarded Site patch', async () => {
+    const updatedSite = { id: 'site-1', configuration_revision: 8, features: {} };
+    mocks.updateSite.mockResolvedValue({ data: updatedSite });
     const site = {
       id: 'site-1',
       configuration_revision: 7,
-      features: { chatgpt: { enabled: true, service_id: 'service-1' }, grok: { enabled: true } }
+      features: {
+        chatgpt: {
+          enabled: true,
+          service_id: 'service-1',
+          models: { 'retired-model': { display_name: 'Legacy' } }
+        },
+        grok: { enabled: true }
+      }
     };
     const wrapper = mountDialog(null, site);
-    await wrapper.setData({ instructions: '  Tenant support  ', skills: [{ id: 'skill-1' }] });
+    await wrapper.setData({
+      instructions: '  Tenant support  ',
+      skills: [{ id: 'skill-1' }],
+      modelAliasDrafts: { 'gpt-5.5': '  XXAI-Pro  ' }
+    });
 
-    await (wrapper.vm as any).saveAssistant();
+    const result = await (wrapper.vm as any).saveSiteConfiguration();
 
+    expect(mocks.updateSite).toHaveBeenCalledTimes(1);
     expect(mocks.updateSite).toHaveBeenCalledWith(
       'site-1',
       {
@@ -167,12 +196,54 @@ describe('CapabilityOverrideDialog', () => {
           chatgpt: {
             enabled: true,
             service_id: 'service-1',
-            assistant: { instructions: 'Tenant support', skills: [{ id: 'skill-1' }] }
+            assistant: { instructions: 'Tenant support', skills: [{ id: 'skill-1' }] },
+            models: {
+              'retired-model': { display_name: 'Legacy' },
+              'gpt-5.5': { display_name: 'XXAI-Pro' }
+            }
           },
           grok: { enabled: true }
         }
       },
       7
     );
+    expect(result).toEqual(updatedSite);
+  });
+
+  it('clears only the edited model and preserves unrendered model nodes', async () => {
+    mocks.updateSite.mockResolvedValue({ data: { id: 'site-1', configuration_revision: 8 } });
+    const site = {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: {
+        chatgpt: {
+          models: {
+            'gpt-5.5': { display_name: 'Old name' },
+            'retired-model': { display_name: 'Legacy' }
+          }
+        }
+      }
+    };
+    const wrapper = mountDialog(null, site);
+    await wrapper.setData({ modelAliasDrafts: { 'gpt-5.5': '' } });
+
+    await (wrapper.vm as any).saveSiteConfiguration();
+
+    expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models).toEqual({
+      'retired-model': { display_name: 'Legacy' }
+    });
+  });
+
+  it('does not write appearance after a Site revision conflict', async () => {
+    mocks.updateSite.mockRejectedValue({ response: { status: 409, data: { detail: 'Site configuration changed' } } });
+    const wrapper = mountDialog(null, { id: 'site-1', configuration_revision: 7, features: {} });
+    await wrapper.setData({ displayName: 'Custom app', modelAliasDrafts: { 'gpt-5.5': 'XXAI-Pro' } });
+
+    await (wrapper.vm as any).onSave();
+
+    expect(mocks.create).not.toHaveBeenCalled();
+    expect(wrapper.emitted('refresh-needed')).toHaveLength(1);
+    expect(wrapper.emitted('saved')).toBeUndefined();
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined();
   });
 });

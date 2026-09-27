@@ -39,8 +39,10 @@
       :default-name="defaultFeatureLabel(editingCapability)"
       :default-icon="CAPABILITY_ICONS[editingCapability]"
       :override="overrides[editingCapability] || null"
+      :model-group="editingModelGroup"
       :site="managementSite"
       @saved="onOverrideSaved"
+      @refresh-needed="onRefreshNeeded"
     />
   </div>
 </template>
@@ -53,7 +55,8 @@ import SectionNotice from '@/components/setting/SectionNotice.vue';
 import CapabilityOverrideDialog from '@/components/setting/CapabilityOverrideDialog.vue';
 import { siteCapabilityOverrideOperator, siteOperator } from '@/operators';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
-import type { ISiteCapabilityOverride } from '@/models';
+import { CHAT_MODEL_GROUPS } from '@/constants/chat';
+import type { IChatModelGroup, ISite, ISiteCapabilityOverride } from '@/models';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 
 export default defineComponent({
@@ -82,6 +85,9 @@ export default defineComponent({
     },
     featureKeys(): CapabilityKey[] {
       return [...CAPABILITY_KEYS];
+    },
+    editingModelGroup(): IChatModelGroup | null {
+      return CHAT_MODEL_GROUPS.find((group) => group.name === this.editingCapability) ?? null;
     }
   },
   watch: {
@@ -135,33 +141,41 @@ export default defineComponent({
         ElMessage.error(this.$t('site.capabilityOverride.fetchFailed') as string);
       }
     },
-    async onOverrideSaved(): Promise<void> {
+    async onOverrideSaved(updatedSite?: ISite): Promise<void> {
       this.failedIcons = {};
+      if (updatedSite?.id) this.managementSite = updatedSite;
       await Promise.all([this.fetchOverrides(), this.$store.dispatch('getSite')]);
-      if (this.site.id) this.managementSite = (await siteOperator.get(this.site.id)).data;
+      if (!updatedSite?.id && this.site.id) this.managementSite = (await siteOperator.get(this.site.id)).data;
     },
-    updateFeature(feature: string, updates: Record<string, unknown>) {
-      this.onSave({
-        features: {
-          ...(this.site.features || {}),
-          [feature]: {
-            ...(this.site.features?.[feature] || {}),
-            ...updates
-          }
-        }
-      });
+    async onRefreshNeeded(): Promise<void> {
+      if (this.site.id) this.managementSite = (await siteOperator.get(this.site.id)).data;
+      await this.$store.dispatch('getSite');
+    },
+    async updateFeature(feature: string, updates: Record<string, unknown>): Promise<void> {
+      if (!this.site.id) return;
+      try {
+        const current = (await siteOperator.get(this.site.id)).data;
+        const { data } = await siteOperator.update(
+          this.site.id,
+          {
+            features: {
+              ...(current.features || {}),
+              [feature]: {
+                ...(current.features?.[feature] || {}),
+                ...updates
+              }
+            }
+          },
+          current.configuration_revision
+        );
+        this.managementSite = data;
+        await this.$store.dispatch('getSite');
+      } catch {
+        ElMessage.error(this.$t('site.capabilityOverride.saveFailed') as string);
+      }
     },
     onToggleFeature(feature: string, enabled: boolean) {
-      this.updateFeature(feature, { enabled });
-    },
-    onSave(data: any) {
-      const payload = {
-        ...data
-      };
-      siteOperator.update(this.site?.id, payload).then(() => {
-        console.debug('getSite for id', this.site?.id);
-        this.$store.dispatch('getSite');
-      });
+      void this.updateFeature(feature, { enabled });
     }
   }
 });
