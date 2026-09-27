@@ -1894,25 +1894,29 @@
     "message": "スクリプト、フォーム、クリックによる遷移を許可しますが、親ページやそのログイン情報にはアクセスできません。",
     "description": "iframe 分離モードのセキュリティ機能の説明。"
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "埋め込み高さ",
-    "description": "HTML と Website iframe の高さ設定。"
+  "homeSections.height.label": {
+    "message": "セクションの高さ",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "自動",
     "description": "自動高さモードのラベル。"
   },
-  "homeSections.iframe.fixed": {
-    "message": "固定高さ（px）",
+  "homeSections.height.fixed": {
+    "message": "固定の高さ（px）",
     "description": "固定高さモードのラベル。"
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "自動モードでは HTML コンテンツの増減に合わせて高さが変わります。固定モードでは指定した高さを維持します。",
     "description": "HTML iframe の高さモードに関する説明。"
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "自動モードではレスポンシブに推奨される高さを使用します。クロスオリジンのウェブページでは実際のコンテンツの高さを読み取れません。",
     "description": "Website iframe の高さモードに関する説明。"
+  },
+  "homeSections.height.contentTip": {
+    "message": "自動モードでは内容に合わせて高さが変わります。固定の高さでは、はみ出した内容をセクション内でスクロールできます。",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "カスタムエージェントの言語",

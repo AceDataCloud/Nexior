@@ -7,7 +7,7 @@
       :src="section.body"
       :title="section.title"
       :sandbox="HOME_HTML_IFRAME_SANDBOX"
-      :style="section.iframe_height ? { height: `${section.iframe_height}px` } : undefined"
+      :style="section.height ? { height: `${section.height}px` } : undefined"
       loading="lazy"
       referrerpolicy="no-referrer"
     />

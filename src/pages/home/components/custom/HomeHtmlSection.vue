@@ -14,8 +14,14 @@
       referrerpolicy="strict-origin-when-cross-origin"
       @load="requestHeight"
     />
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-else class="tenant-home-content" v-html="section.body"></div>
+    <!-- eslint-disable vue/no-v-html -->
+    <div
+      v-else
+      class="tenant-home-content"
+      :style="section.height != null ? { height: `${section.height}px`, overflowY: 'auto' } : undefined"
+      v-html="section.body"
+    ></div>
+    <!-- eslint-enable vue/no-v-html -->
   </article>
 </template>
 
@@ -32,7 +38,7 @@ import {
 
 const props = defineProps<{ section: ISiteHomeSection; locale?: string }>();
 const frame = ref<HTMLIFrameElement>();
-const fixedHeight = computed(() => props.section.iframe_height ?? null);
+const fixedHeight = computed(() => props.section.height ?? null);
 const automaticHeight = computed(() => fixedHeight.value === null);
 const frameHeight = ref(fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT);
 const iframeDocument = computed(() =>
@@ -50,7 +56,7 @@ const requestHeight = (): void => {
 };
 
 watch(
-  () => [props.section.body, props.section.iframe_height, props.locale] as const,
+  () => [props.section.body, props.section.height, props.locale] as const,
   () => {
     frameHeight.value = fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT;
   }

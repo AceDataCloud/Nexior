@@ -1894,25 +1894,29 @@
     "message": "스크립트, 양식 및 클릭을 통한 이동을 허용하지만 상위 페이지와 해당 로그인 정보에는 액세스할 수 없습니다.",
     "description": "iframe 격리 모드의 보안 기능 안내입니다."
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "임베드 높이",
-    "description": "HTML 및 Website iframe의 높이 설정."
+  "homeSections.height.label": {
+    "message": "섹션 높이",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "자동",
     "description": "자동 높이 모드 라벨."
   },
-  "homeSections.iframe.fixed": {
-    "message": "고정 높이（px）",
+  "homeSections.height.fixed": {
+    "message": "고정 높이(px)",
     "description": "고정 높이 모드 라벨."
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "자동 모드는 HTML 콘텐츠에 따라 높이가 조정되고, 고정 모드는 지정된 높이를 유지합니다.",
     "description": "HTML iframe 높이 모드 설명."
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "자동 모드는 반응형 권장 높이를 사용하며, 크로스 도메인 웹 페이지의 실제 콘텐츠 높이는 읽을 수 없습니다.",
     "description": "Website iframe 높이 모드 설명."
+  },
+  "homeSections.height.contentTip": {
+    "message": "자동 모드에서는 콘텐츠에 맞춰 높이가 바뀝니다. 고정 높이에서는 넘치는 콘텐츠를 섹션 안에서 스크롤할 수 있습니다.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "사용자 지정 에이전트 언어",

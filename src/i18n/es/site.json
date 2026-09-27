@@ -1895,25 +1895,29 @@
     "message": "Permite scripts, formularios y redirecciones al hacer clic, pero no puede acceder a la página principal ni a su información de inicio de sesión.",
     "description": "Explicación de las funciones de seguridad del modo aislado mediante iframe."
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "Altura de inserción",
-    "description": "Configuración de la altura del HTML y del iframe del sitio web."
+  "homeSections.height.label": {
+    "message": "Altura de la sección",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "Automática",
     "description": "Etiqueta del modo de altura automática."
   },
-  "homeSections.iframe.fixed": {
+  "homeSections.height.fixed": {
     "message": "Altura fija (px)",
     "description": "Etiqueta del modo de altura fija."
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "El modo automático se ajusta según aumente o disminuya el contenido HTML; el modo fijo mantiene la altura especificada.",
     "description": "Descripción de los modos de altura del iframe HTML."
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "El modo automático utiliza una altura recomendada adaptable; las páginas web de otros dominios no pueden leer la altura real de su contenido.",
     "description": "Descripción de los modos de altura del iframe del sitio web."
+  },
+  "homeSections.height.contentTip": {
+    "message": "En modo automático, la altura se adapta al contenido; con una altura fija, el contenido excedente se desplaza dentro de la sección.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "Idioma personalizado del agente inteligente",

@@ -1894,25 +1894,29 @@
     "message": "允許指令碼、表單和點擊跳轉，但無法存取主頁面及其登入資訊。",
     "description": "iframe 隔離模式的安全功能說明。"
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "嵌入高度",
-    "description": "HTML 與 Website iframe 的高度設定。"
+  "homeSections.height.label": {
+    "message": "區塊高度",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "自動",
     "description": "自動高度模式標籤。"
   },
-  "homeSections.iframe.fixed": {
+  "homeSections.height.fixed": {
     "message": "固定高度（px）",
     "description": "固定高度模式標籤。"
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "自動模式會隨 HTML 內容增減；固定模式保持指定高度。",
     "description": "HTML iframe 高度模式說明。"
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "自動模式使用響應式建議高度；跨網域網頁無法讀取實際內容高度。",
     "description": "Website iframe 高度模式說明。"
+  },
+  "homeSections.height.contentTip": {
+    "message": "自動模式會隨內容自然增減；固定高度時，超出部分可在區塊內捲動。",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "自訂智能體語言",

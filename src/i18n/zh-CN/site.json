@@ -1895,25 +1895,29 @@
     "message": "允许脚本、表单和点击跳转，但无法访问主页面及其登录信息。",
     "description": "iframe 隔离模式的安全能力说明。"
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "嵌入高度",
-    "description": "HTML 与 Website iframe 的高度设置。"
+  "homeSections.height.label": {
+    "message": "区块高度",
+    "description": "自定义首页区块内容高度。"
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "自动",
     "description": "自动高度模式标签。"
   },
-  "homeSections.iframe.fixed": {
+  "homeSections.height.fixed": {
     "message": "固定高度（px）",
     "description": "固定高度模式标签。"
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "自动模式会随 HTML 内容增减；固定模式保持指定高度。",
     "description": "HTML iframe 高度模式说明。"
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "自动模式使用响应式推荐高度；跨域网页无法读取真实内容高度。",
     "description": "Website iframe 高度模式说明。"
+  },
+  "homeSections.height.contentTip": {
+    "message": "自动模式随内容自然增减；固定高度时超出部分可在区块内滚动。",
+    "description": "Markdown 与直接 HTML 区块固定高度的滚动说明。"
   },
   "homeSections.iframe.localeTitle": {
     "message": "自定义智能体语言",

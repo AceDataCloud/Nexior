@@ -1895,25 +1895,29 @@
     "message": "Allows scripts, forms, and user-initiated navigation without access to the parent page or its sign-in data.",
     "description": "Security capabilities of isolated iframe mode."
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "Embed height",
-    "description": "Height setting for HTML and Website iframes."
+  "homeSections.height.label": {
+    "message": "Section height",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "Automatic",
     "description": "Automatic height mode label."
   },
-  "homeSections.iframe.fixed": {
+  "homeSections.height.fixed": {
     "message": "Fixed height (px)",
     "description": "Fixed height mode label."
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "Automatic mode follows HTML content as it grows or shrinks; fixed mode keeps the chosen height.",
     "description": "HTML iframe height mode guidance."
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "Automatic mode uses a responsive recommended height; cross-origin websites cannot expose their true content height.",
     "description": "Website iframe height mode guidance."
+  },
+  "homeSections.height.contentTip": {
+    "message": "Automatic mode follows the content; with a fixed height, overflowing content scrolls inside the section.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "Custom agent language",

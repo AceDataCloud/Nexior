@@ -1894,25 +1894,29 @@
     "message": "Erlaubt Skripte, Formulare und Klick-Navigation, kann aber nicht auf die Hauptseite und deren Anmeldeinformationen zugreifen.",
     "description": "Sicherheitshinweis zum isolierten iframe-Modus."
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "Höhe der Einbettung",
-    "description": "Einstellung der Höhe für HTML- und Website-Iframes."
+  "homeSections.height.label": {
+    "message": "Abschnittshöhe",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
+  "homeSections.height.auto": {
     "message": "Automatisch",
     "description": "Bezeichnung für den Modus mit automatischer Höhe."
   },
-  "homeSections.iframe.fixed": {
+  "homeSections.height.fixed": {
     "message": "Feste Höhe (px)",
     "description": "Bezeichnung für den Modus mit fester Höhe."
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "Der automatische Modus passt sich an die Zu- oder Abnahme des HTML-Inhalts an; der feste Modus behält die angegebene Höhe bei.",
     "description": "Beschreibung der Höhenmodi für HTML-Iframes."
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "Der automatische Modus verwendet eine empfohlene responsive Höhe; bei Webseiten aus anderen Ursprüngen kann die tatsächliche Inhaltshöhe nicht ausgelesen werden.",
     "description": "Beschreibung der Höhenmodi für Website-Iframes."
+  },
+  "homeSections.height.contentTip": {
+    "message": "Im Automatikmodus passt sich die Höhe dem Inhalt an; bei fester Höhe lässt sich überlaufender Inhalt im Abschnitt scrollen.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "Sprache des benutzerdefinierten Agenten",

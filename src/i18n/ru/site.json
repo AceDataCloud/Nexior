@@ -1894,25 +1894,29 @@
     "message": "Разрешает скрипты, формы и переходы по кликам, но не позволяет получать доступ к основной странице и данным её авторизации.",
     "description": "Описание возможностей безопасности режима изоляции iframe."
   },
-  "homeSections.iframe.heightLabel": {
-    "message": "Высота встраивания",
-    "description": "Настройка высоты HTML- и веб-сайтного iframe."
+  "homeSections.height.label": {
+    "message": "Высота раздела",
+    "description": "Height of custom homepage section content."
   },
-  "homeSections.iframe.auto": {
-    "message": "Автоматическая",
+  "homeSections.height.auto": {
+    "message": "Автоматически",
     "description": "Метка режима автоматической высоты."
   },
-  "homeSections.iframe.fixed": {
-    "message": "Фиксированная высота (px)",
+  "homeSections.height.fixed": {
+    "message": "Фиксированная высота (пикс.)",
     "description": "Метка режима фиксированной высоты."
   },
-  "homeSections.iframe.htmlHeightTip": {
+  "homeSections.height.htmlTip": {
     "message": "В автоматическом режиме высота изменяется вместе с содержимым HTML; в фиксированном режиме сохраняется заданная высота.",
     "description": "Описание режимов высоты HTML iframe."
   },
-  "homeSections.iframe.websiteHeightTip": {
+  "homeSections.height.websiteTip": {
     "message": "В автоматическом режиме используется рекомендуемая адаптивная высота; веб-страницы из другого домена не позволяют определить фактическую высоту содержимого.",
     "description": "Описание режимов высоты iframe веб-сайта."
+  },
+  "homeSections.height.contentTip": {
+    "message": "В автоматическом режиме высота подстраивается под содержимое; при фиксированной высоте лишнее содержимое прокручивается внутри раздела.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
   },
   "homeSections.iframe.localeTitle": {
     "message": "Язык пользовательского агента",

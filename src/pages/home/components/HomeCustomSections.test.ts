@@ -60,6 +60,23 @@ describe('HomeCustomSections', () => {
     expect(wrapper.get('[data-custom="yes"]').text()).toBe('Raw HTML');
   });
 
+  it('scrolls overflowing Markdown and direct HTML within their configured height', () => {
+    const markdown = shallowMount(HomeMarkdownSection, {
+      props: { section: { kind: 'markdown', title: 'Markdown', body: '# Content', height: 320 } }
+    });
+    const markdownStyle = markdown.getComponent({ name: 'VueMarkdown' }).attributes('style');
+    expect(markdownStyle).toContain('height: 320px');
+    expect(markdownStyle).toContain('overflow-y: auto');
+
+    const html = mount(HomeHtmlSection, {
+      props: { section: { kind: 'html', title: 'HTML', body: '<p>Content</p>', height: 480 } }
+    });
+    const contentStyle = html.get('.tenant-home-content').attributes('style');
+    expect(contentStyle).toContain('height: 480px');
+    expect(contentStyle).toContain('overflow-y: auto');
+    expect(html.find('iframe').exists()).toBe(false);
+  });
+
   it('renders Website URLs in a sandboxed iframe with an external fallback', () => {
     const url = 'https://example.com/embed';
     const wrapper = mount(HomeWebsiteSection, {
@@ -113,7 +130,7 @@ describe('HomeCustomSections', () => {
           title: 'Fixed HTML',
           body: '<p>Content</p>',
           render_in_iframe: true,
-          iframe_height: 480
+          height: 480
         },
         locale: 'en'
       }
@@ -140,7 +157,7 @@ describe('HomeCustomSections', () => {
           title: 'Website',
           body: 'https://example.com/embed',
           render_in_iframe: true,
-          iframe_height: 520
+          height: 520
         }
       },
       global: { mocks: { $t: () => 'Open externally' } }
