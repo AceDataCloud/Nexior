@@ -47,6 +47,29 @@
         <div class="field-tip">{{ $t('site.capabilityOverride.iconTip') }}</div>
       </el-form-item>
 
+      <template v-if="aliasModels.length">
+        <el-divider />
+        <h3 class="section-title">{{ $t('site.capabilityOverride.modelNamesTitle') }}</h3>
+        <div class="field-tip model-names-tip">{{ $t('site.capabilityOverride.modelNamesTip') }}</div>
+        <div class="model-name-list">
+          <div v-for="model in aliasModels" :key="model.name" class="model-name-row">
+            <div class="model-name-default">
+              <img :src="model.icon" alt="" />
+              <div>
+                <strong>{{ model.getDisplayName() }}</strong>
+                <small>{{ model.name }}</small>
+              </div>
+            </div>
+            <el-input
+              v-model="modelAliasDrafts[model.name]"
+              clearable
+              maxlength="120"
+              :placeholder="$t('site.capabilityOverride.modelNamePlaceholder')"
+            />
+          </div>
+        </div>
+      </template>
+
       <template v-if="supportsAssistant">
         <el-divider />
         <h3 class="section-title">{{ $t('site.capabilityOverride.assistantTitle') }}</h3>
@@ -101,7 +124,7 @@ import { UploadIcon } from '@acedatacloud/core/icons/components';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import ImageCropper from '@/components/common/ImageCropper.vue';
 import { siteCapabilityOverrideOperator } from '@/operators';
-import type { ISite, ISiteAssistantSkillBinding, ISiteCapabilityOverride } from '@/models';
+import type { IChatModelGroup, ISite, ISiteAssistantSkillBinding, ISiteCapabilityOverride } from '@/models';
 import { siteOperator } from '@/operators/site';
 import SkillPicker from '@/components/skill/SkillPicker.vue';
 import type { CapabilityKey } from '@/constants/capabilities';
@@ -128,9 +151,10 @@ export default defineComponent({
     defaultName: { type: String, required: true },
     defaultIcon: { type: String, required: true },
     override: { type: Object as PropType<ISiteCapabilityOverride | null>, default: null },
+    modelGroup: { type: Object as PropType<IChatModelGroup | null>, default: null },
     site: { type: Object as PropType<ISite>, default: () => ({ features: {} }) }
   },
-  emits: ['update:modelValue', 'saved'],
+  emits: ['update:modelValue', 'saved', 'refresh-needed'],
   data() {
     return {
       record: null as ISiteCapabilityOverride | null,
@@ -138,6 +162,7 @@ export default defineComponent({
       iconUrl: '',
       instructions: '',
       skills: [] as ISiteAssistantSkillBinding[],
+      modelAliasDrafts: {} as Record<string, string>,
       autoTranslatedFields: [] as string[],
       iconEditorVisible: false,
       submitting: false,
@@ -158,6 +183,9 @@ export default defineComponent({
     },
     supportsAssistant(): boolean {
       return ['chatgpt', 'claude', 'gemini', 'grok', 'deepseek', 'kimi', 'glm'].includes(this.capability);
+    },
+    aliasModels(): IChatModelGroup['models'] {
+      return (this.modelGroup?.models ?? []).filter((model) => model.enabled !== false);
     }
   },
   watch: {
@@ -179,36 +207,53 @@ export default defineComponent({
       const assistant = this.site.features?.[this.capability]?.assistant;
       this.instructions = assistant?.instructions ?? '';
       this.skills = [...(assistant?.skills ?? [])];
+      const models = this.site.features?.[this.capability]?.models ?? {};
+      this.modelAliasDrafts = Object.fromEntries(
+        this.aliasModels.map((model) => [model.name, models[model.name]?.display_name ?? ''])
+      );
       this.autoTranslatedFields = [...(this.override?.auto_translated_fields ?? [])];
       this.iconEditorVisible = false;
     },
     extractError(error: unknown): string {
       return extractApiErrorMessage(error);
     },
-    async saveAssistant(): Promise<void> {
-      if (!this.supportsAssistant || !this.site.id) return;
+    async saveSiteConfiguration(): Promise<ISite | null> {
+      if ((!this.supportsAssistant && !this.aliasModels.length) || !this.site.id) return null;
       const feature = this.site.features?.[this.capability] || {};
-      await siteOperator.update(
+      const models = { ...(feature.models ?? {}) };
+      for (const model of this.aliasModels) {
+        const displayName = (this.modelAliasDrafts[model.name] ?? '').trim();
+        if (displayName) models[model.name] = { display_name: displayName };
+        else delete models[model.name];
+      }
+
+      const updatedFeature = { ...feature };
+      if (this.supportsAssistant) {
+        updatedFeature.assistant = { instructions: this.instructions.trim(), skills: this.skills };
+      }
+      if (Object.keys(models).length) updatedFeature.models = models;
+      else delete updatedFeature.models;
+
+      const { data } = await siteOperator.update(
         this.site.id,
         {
           features: {
             ...(this.site.features || {}),
-            [this.capability]: {
-              ...feature,
-              assistant: { instructions: this.instructions.trim(), skills: this.skills }
-            }
+            [this.capability]: updatedFeature
           }
         },
         this.site.configuration_revision
       );
+      return data;
     },
     async onSave(): Promise<void> {
       const displayName = this.displayName.trim() || null;
       const iconUrl = this.iconUrl.trim() || null;
       this.submitting = true;
+      let updatedSite: ISite | null = null;
       try {
         let createdAppearance = false;
-        if (this.supportsAssistant) await this.saveAssistant();
+        updatedSite = await this.saveSiteConfiguration();
         if (!displayName && !iconUrl) {
           if (this.record?.id) await siteCapabilityOverrideOperator.delete(this.record.id);
         } else if (this.record?.id) {
@@ -231,9 +276,13 @@ export default defineComponent({
           createdAppearance = true;
         }
         ElMessage.success(this.$t('site.capabilityOverride.saved') as string);
-        this.$emit('saved');
+        this.$emit('saved', updatedSite ?? undefined);
         if (!createdAppearance) this.visible = false;
-      } catch (error) {
+      } catch (error: any) {
+        if (updatedSite?.id) this.$emit('saved', updatedSite);
+        if (error?.response?.status === 409 || error?.response?.status === 412) {
+          this.$emit('refresh-needed');
+        }
         ElMessage.error(this.extractError(error) || (this.$t('site.capabilityOverride.saveFailed') as string));
       } finally {
         this.submitting = false;
@@ -355,7 +404,55 @@ export default defineComponent({
   flex: 1;
 }
 
+.model-names-tip {
+  margin: -10px 0 12px;
+}
+
+.model-name-list {
+  display: grid;
+  gap: 12px;
+}
+
+.model-name-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1.2fr);
+  align-items: center;
+  gap: 14px;
+}
+
+.model-name-default {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.model-name-default img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.model-name-default div {
+  display: grid;
+  min-width: 0;
+}
+
+.model-name-default strong,
+.model-name-default small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.model-name-default small {
+  color: var(--el-text-color-secondary);
+}
+
 @media (max-width: 479px) {
+  .model-name-row {
+    grid-template-columns: 1fr;
+  }
   .icon-comparison {
     gap: 14px;
   }

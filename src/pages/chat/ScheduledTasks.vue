@@ -135,7 +135,7 @@
                 </span>
                 <span class="meta-chip">
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                  {{ task.template.model }}
+                  {{ modelIdDisplayName(task.template.model) }}
                 </span>
                 <span v-if="task.execution === 'local'" class="meta-chip">
                   {{ task.device_name || $t('chat.scheduledTasks.execution.local') }}
@@ -283,7 +283,7 @@
         </div>
         <div class="run-context-meta">
           <span>{{ scheduleLabel(selectedTask.schedule) }}</span>
-          <span>{{ selectedTask.template.model }}</span>
+          <span>{{ modelIdDisplayName(selectedTask.template.model) }}</span>
           <span>{{ $t('chat.scheduledTasks.runCount', { count: selectedTask.run_count }) }}</span>
         </div>
         <div class="run-context-prompt">{{ selectedTask.template.question }}</div>
@@ -376,7 +376,7 @@
         <el-form-item :label="$t('chat.scheduledTasks.form.model')">
           <el-select v-model="form.model" style="width: 100%" filterable>
             <el-option-group v-for="g in modelGroups" :key="g.name" :label="g.getDisplayName()">
-              <el-option v-for="m in g.models" :key="m.name" :label="m.getDisplayName()" :value="m.name" />
+              <el-option v-for="m in g.models" :key="m.name" :label="modelDisplayName(m)" :value="m.name" />
             </el-option-group>
           </el-select>
         </el-form-item>
@@ -662,10 +662,11 @@ import type {
   IScheduledBrowserBinding,
   IScheduledExecution
 } from '@/operators/scheduledTasks';
-import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
+import { CHAT_MODELS, CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
-import { IChatModelGroup } from '@/models';
+import type { IChatModel, IChatModelGroup, ISite } from '@/models';
+import { resolveModelDisplayName } from '@/utils/modelPresentation';
 import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
 import ScheduledTemplateWizard from '@/components/scheduledTemplates/ScheduledTemplateWizard.vue';
 
@@ -948,6 +949,13 @@ export default defineComponent({
     this.stopRunPolling();
   },
   methods: {
+    modelDisplayName(model: IChatModel): string {
+      return resolveModelDisplayName(this.$store.getters?.site as ISite | undefined, model);
+    },
+    modelIdDisplayName(modelId: string): string {
+      const model = CHAT_MODELS.find((item) => item.name === modelId);
+      return model ? this.modelDisplayName(model) : modelId;
+    },
     emptyForm(): TaskForm {
       return {
         name: '',
