@@ -10,25 +10,44 @@ import {
 } from './homeHtmlIframe';
 
 describe('homeHtmlIframe', () => {
-  it('wraps HTML fragments with an isolated document and resize bridge', () => {
-    const source = '<button onclick="document.body.dataset.clicked=\'yes\'">Run</button><script>run()</script>';
-    const document = buildHomeHtmlIframeDocument(source);
+  it('wraps fragments with locale context and an intrinsic resize bridge', () => {
+    const source = '<button onclick="run()">Run</button>';
+    const document = buildHomeHtmlIframeDocument(source, 'zh-CN');
 
-    expect(document).toContain('<base target="_top">');
+    expect(document).toContain('<html lang="zh-CN" dir="ltr">');
+    expect(document).toContain("Object.defineProperty(window, '__ACEDATACLOUD__'");
+    expect(document).toContain('"locale":"zh-CN"');
     expect(document).toContain(HOME_HTML_IFRAME_RESIZE_MESSAGE);
     expect(document).toContain(HOME_HTML_IFRAME_MEASURE_MESSAGE);
     expect(document).toContain(source);
+    expect(document).not.toContain('root?.scrollHeight');
+    expect(document).not.toContain('document.documentElement');
   });
 
-  it('injects the bridge into a complete document without nesting it', () => {
+  it('updates locale attributes in a complete document without nesting it', () => {
     const source =
-      '<!DOCTYPE html><html lang="zh-CN"><head><style>.x{color:red}</style></head><body>正文</body></html>';
-    const document = buildHomeHtmlIframeDocument(source);
+      '<!DOCTYPE html><html lang="en" dir="ltr"><head><style>.x{color:red}</style></head><body>正文</body></html>';
+    const document = buildHomeHtmlIframeDocument(source, 'ar');
 
     expect(document.match(/<!DOCTYPE html>/gi)).toHaveLength(1);
     expect(document.match(/<html\b/gi)).toHaveLength(1);
+    expect(document).toContain('<html lang="ar" dir="rtl">');
     expect(document.indexOf('<base target="_top">')).toBeLessThan(document.indexOf('<style>.x{color:red}</style>'));
-    expect(document).toContain('<body>正文</body>');
+    expect(document).toContain('"dir":"rtl"');
+  });
+
+  it('falls back safely for invalid locales', () => {
+    const document = buildHomeHtmlIframeDocument('<p>Body</p>', '</script><script>alert(1)</script>');
+
+    expect(document).toContain('<html lang="en" dir="ltr">');
+    expect(document).not.toContain('</script><script>alert(1)</script>');
+  });
+
+  it('omits the resize bridge for fixed-height frames', () => {
+    const document = buildHomeHtmlIframeDocument('<p>Body</p>', 'en', false);
+
+    expect(document).toContain('data-acedatacloud-context');
+    expect(document).not.toContain('data-acedatacloud-resize');
   });
 
   it('allows scripts without granting access to the parent origin', () => {

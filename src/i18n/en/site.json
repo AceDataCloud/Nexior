@@ -1895,6 +1895,38 @@
     "message": "Allows scripts, forms, and user-initiated navigation without access to the parent page or its sign-in data.",
     "description": "Security capabilities of isolated iframe mode."
   },
+  "homeSections.height.label": {
+    "message": "Section height",
+    "description": "Height of custom homepage section content."
+  },
+  "homeSections.height.auto": {
+    "message": "Automatic",
+    "description": "Automatic height mode label."
+  },
+  "homeSections.height.fixed": {
+    "message": "Fixed height (px)",
+    "description": "Fixed height mode label."
+  },
+  "homeSections.height.htmlTip": {
+    "message": "Automatic mode follows HTML content as it grows or shrinks; fixed mode keeps the chosen height.",
+    "description": "HTML iframe height mode guidance."
+  },
+  "homeSections.height.websiteTip": {
+    "message": "Automatic mode uses a responsive recommended height; cross-origin websites cannot expose their true content height.",
+    "description": "Website iframe height mode guidance."
+  },
+  "homeSections.height.contentTip": {
+    "message": "Automatic mode follows the content; with a fixed height, overflowing content scrolls inside the section.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "Custom agent language",
+    "description": "Custom HTML iframe language context heading."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "HTML can read window.__ACEDATACLOUD__.locale. In your own system/developer prompt, require replies to follow the user's current input language, falling back to the interface locale when it cannot be determined. The platform does not rewrite third-party model requests.",
+    "description": "Custom agent language policy and responsibility boundary."
+  },
   "error.authSettingsLoad": {
     "message": "Failed to load authentication settings",
     "description": "Shown when Site authentication management settings cannot be loaded."

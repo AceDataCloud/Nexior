@@ -107,6 +107,32 @@
           </div>
         </el-form-item>
 
+        <el-form-item :label="$t('site.homeSections.height.label')">
+          <div class="iframe-height-option">
+            <el-switch v-model="form.fixedHeight" :aria-label="$t('site.homeSections.height.label')" />
+            <span>
+              {{ $t(form.fixedHeight ? 'site.homeSections.height.fixed' : 'site.homeSections.height.auto') }}
+            </span>
+            <el-input-number
+              v-if="form.fixedHeight"
+              v-model="form.heightValue"
+              :min="160"
+              :max="12000"
+              :precision="0"
+            />
+          </div>
+          <span class="field-tip">{{ $t(heightTipKey) }}</span>
+        </el-form-item>
+
+        <el-alert
+          v-if="form.kind === 'html' && form.renderInIframe"
+          :title="$t('site.homeSections.iframe.localeTitle')"
+          :description="$t('site.homeSections.iframe.localeTip')"
+          type="info"
+          :closable="false"
+          show-icon
+        />
+
         <div class="form-grid">
           <el-form-item :label="$t('site.homeSections.field.startAt')"
             ><el-date-picker v-model="form.startAt" type="datetime" value-format="YYYY-MM-DDTHH:mm:ss" clearable
@@ -135,6 +161,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import {
+  ElAlert,
   ElButton,
   ElDatePicker,
   ElDialog,
@@ -161,6 +188,8 @@ interface SectionForm {
   title: string;
   body: string;
   renderInIframe: boolean;
+  fixedHeight: boolean;
+  heightValue: number;
   visible: boolean;
   sortOrder: number;
   startAt: string;
@@ -173,6 +202,8 @@ const emptyForm = (): SectionForm => ({
   title: '',
   body: '',
   renderInIframe: false,
+  fixedHeight: false,
+  heightValue: 480,
   visible: true,
   sortOrder: 0,
   startAt: '',
@@ -187,6 +218,7 @@ export default defineComponent({
   name: 'HomeSectionsSetting',
   components: {
     AddIcon,
+    ElAlert,
     ElButton,
     ElDatePicker,
     ElDialog,
@@ -214,6 +246,13 @@ export default defineComponent({
       editing: null as ISiteHomeSection | null,
       form: emptyForm()
     };
+  },
+  computed: {
+    heightTipKey(): string {
+      if (this.form.kind === 'website') return 'site.homeSections.height.websiteTip';
+      if (this.form.kind === 'html' && this.form.renderInIframe) return 'site.homeSections.height.htmlTip';
+      return 'site.homeSections.height.contentTip';
+    }
   },
   watch: {
     'site.id': {
@@ -262,6 +301,8 @@ export default defineComponent({
         title: this.source(row, 'title'),
         body: this.source(row, 'body'),
         renderInIframe: row.render_in_iframe === true,
+        fixedHeight: row.height != null,
+        heightValue: row.height ?? 480,
         visible: row.visible !== false,
         sortOrder: row.sort_order ?? 0,
         startAt: fromIso(row.start_at),
@@ -284,6 +325,7 @@ export default defineComponent({
         title: title(this.form.title),
         body: this.form.kind === 'website' ? this.form.body.trim() : this.form.body,
         render_in_iframe: this.form.kind === 'website' || (this.form.kind === 'html' && this.form.renderInIframe),
+        height: this.form.fixedHeight ? this.form.heightValue : null,
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),
@@ -422,10 +464,14 @@ export default defineComponent({
 .translation-below {
   margin-top: 6px;
 }
-.iframe-option {
+.iframe-option,
+.iframe-height-option {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
+}
+.iframe-height-option {
+  flex-wrap: wrap;
 }
 .field-tip {
   display: block;

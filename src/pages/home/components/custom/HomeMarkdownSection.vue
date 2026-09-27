@@ -1,7 +1,12 @@
 <template>
   <article class="tenant-home-block tenant-home-markdown">
     <h2>{{ section.title }}</h2>
-    <vue-markdown class="tenant-home-content" :source="section.body" sanitize />
+    <vue-markdown
+      class="tenant-home-content"
+      :source="section.body"
+      :style="section.height != null ? { height: `${section.height}px`, overflowY: 'auto' } : undefined"
+      sanitize
+    />
   </article>
 </template>
 

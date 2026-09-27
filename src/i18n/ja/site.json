@@ -1894,6 +1894,38 @@
     "message": "スクリプト、フォーム、クリックによる遷移を許可しますが、親ページやそのログイン情報にはアクセスできません。",
     "description": "iframe 分離モードのセキュリティ機能の説明。"
   },
+  "homeSections.height.label": {
+    "message": "セクションの高さ",
+    "description": "Height of custom homepage section content."
+  },
+  "homeSections.height.auto": {
+    "message": "自動",
+    "description": "自動高さモードのラベル。"
+  },
+  "homeSections.height.fixed": {
+    "message": "固定の高さ（px）",
+    "description": "固定高さモードのラベル。"
+  },
+  "homeSections.height.htmlTip": {
+    "message": "自動モードでは HTML コンテンツの増減に合わせて高さが変わります。固定モードでは指定した高さを維持します。",
+    "description": "HTML iframe の高さモードに関する説明。"
+  },
+  "homeSections.height.websiteTip": {
+    "message": "自動モードではレスポンシブに推奨される高さを使用します。クロスオリジンのウェブページでは実際のコンテンツの高さを読み取れません。",
+    "description": "Website iframe の高さモードに関する説明。"
+  },
+  "homeSections.height.contentTip": {
+    "message": "自動モードでは内容に合わせて高さが変わります。固定の高さでは、はみ出した内容をセクション内でスクロールできます。",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "カスタムエージェントの言語",
+    "description": "カスタム HTML iframe の言語コンテキストに関する説明のタイトル。"
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "HTML から window.__ACEDATACLOUD__.locale を読み取れます。独自の system/developer prompt で、ユーザーが現在入力している言語を優先し、判断できない場合はこのインターフェースの言語を使用するよう要求してください。プラットフォームがサードパーティモデルへのリクエストを自動的に書き換えることはありません。",
+    "description": "カスタムエージェントの言語方針と責任範囲に関する説明。"
+  },
   "error.authSettingsLoad": {
     "message": "認証設定の読み込みに失敗しました",
     "description": "サイトの認証管理設定の読み込みに失敗したことを示すメッセージ。"

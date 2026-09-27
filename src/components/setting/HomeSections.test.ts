@@ -35,6 +35,8 @@ describe('setting/HomeSections', () => {
     expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html', 'website']);
     expect((wrapper.vm as any).form.kind).toBe('markdown');
     expect((wrapper.vm as any).form.renderInIframe).toBe(false);
+    expect((wrapper.vm as any).form.fixedHeight).toBe(false);
+    expect((wrapper.vm as any).form.heightValue).toBe(480);
   });
 
   it('builds a payload with only content and operational fields', () => {
@@ -55,6 +57,7 @@ describe('setting/HomeSections', () => {
       title: 'Custom HTML',
       body: '<section data-kind="custom">Body</section>',
       render_in_iframe: true,
+      height: null,
       visible: false,
       sort_order: 9,
       start_at: '2026-09-14T08:00:00Z',
@@ -110,6 +113,7 @@ describe('setting/HomeSections', () => {
       title: 'Custom HTML',
       body,
       render_in_iframe: true,
+      height: null,
       visible: true,
       sort_order: 0,
       start_at: null,
@@ -117,16 +121,46 @@ describe('setting/HomeSections', () => {
     });
   });
 
-  it('never enables iframe rendering for Markdown payloads', () => {
+  it('keeps height for Markdown while never enabling iframe rendering', () => {
     const wrapper = mountSetting();
     Object.assign((wrapper.vm as any).form, {
       kind: 'markdown',
       title: 'Markdown',
       body: '# Body',
-      renderInIframe: true
+      renderInIframe: true,
+      fixedHeight: true,
+      heightValue: 640
     });
 
-    expect((wrapper.vm as any).buildPayload().render_in_iframe).toBe(false);
+    expect((wrapper.vm as any).buildPayload()).toMatchObject({ render_in_iframe: false, height: 640 });
+  });
+
+  it('saves a fixed height for direct HTML without enabling an iframe', () => {
+    const wrapper = mountSetting();
+    Object.assign((wrapper.vm as any).form, {
+      kind: 'html',
+      body: '<p>Content</p>',
+      renderInIframe: false,
+      fixedHeight: true,
+      heightValue: 480
+    });
+    expect((wrapper.vm as any).buildPayload()).toMatchObject({ render_in_iframe: false, height: 480 });
+  });
+
+  it('restores and saves a fixed section height', () => {
+    const wrapper = mountSetting();
+    (wrapper.vm as any).openEdit({
+      id: 'html-1',
+      kind: 'html',
+      title: 'HTML',
+      body: '<p>Body</p>',
+      render_in_iframe: true,
+      height: 720
+    });
+
+    expect((wrapper.vm as any).form.fixedHeight).toBe(true);
+    expect((wrapper.vm as any).form.heightValue).toBe(720);
+    expect((wrapper.vm as any).buildPayload().height).toBe(720);
   });
 
   it('trims Website URLs and always enables iframe rendering', () => {

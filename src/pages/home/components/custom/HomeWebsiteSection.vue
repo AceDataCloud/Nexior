@@ -7,6 +7,7 @@
       :src="section.body"
       :title="section.title"
       :sandbox="HOME_HTML_IFRAME_SANDBOX"
+      :style="section.height ? { height: `${section.height}px` } : undefined"
       loading="lazy"
       referrerpolicy="no-referrer"
     />

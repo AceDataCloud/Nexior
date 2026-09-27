@@ -1897,6 +1897,38 @@
     "message": "Autorise les scripts, les formulaires et les redirections au clic, mais ne peut pas accéder à la page principale ni à ses informations de connexion.",
     "description": "Explication des fonctionnalités de sécurité du mode d’isolation par iframe."
   },
+  "homeSections.height.label": {
+    "message": "Hauteur de la section",
+    "description": "Height of custom homepage section content."
+  },
+  "homeSections.height.auto": {
+    "message": "Automatique",
+    "description": "Libellé du mode de hauteur automatique."
+  },
+  "homeSections.height.fixed": {
+    "message": "Hauteur fixe (px)",
+    "description": "Libellé du mode de hauteur fixe."
+  },
+  "homeSections.height.htmlTip": {
+    "message": "Le mode automatique s’adapte à la quantité de contenu HTML ; le mode fixe conserve la hauteur spécifiée.",
+    "description": "Explication des modes de hauteur de l’iframe HTML."
+  },
+  "homeSections.height.websiteTip": {
+    "message": "Le mode automatique utilise une hauteur recommandée et réactive ; les pages web interdomaines ne permettent pas de lire la hauteur réelle de leur contenu.",
+    "description": "Explication des modes de hauteur de l’iframe de site web."
+  },
+  "homeSections.height.contentTip": {
+    "message": "En mode automatique, la hauteur suit le contenu ; avec une hauteur fixe, le contenu excédentaire défile dans la section.",
+    "description": "Fixed height scrolling behavior for Markdown and direct HTML sections."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "Langue de l’agent personnalisé",
+    "description": "Titre expliquant le contexte linguistique de l’iframe HTML personnalisé."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "Le HTML peut lire window.__ACEDATACLOUD__.locale. Dans vos propres prompts system/developer, demandez d’utiliser en priorité la langue de la saisie actuelle de l’utilisateur ; si elle ne peut pas être déterminée, utilisez la langue de cette interface. La plateforme ne réécrit pas automatiquement les requêtes adressées aux modèles tiers.",
+    "description": "Explication de la stratégie linguistique de l’agent personnalisé et de la responsabilité de l’utilisateur."
+  },
   "error.authSettingsLoad": {
     "message": "Échec du chargement des paramètres d’authentification",
     "description": "Message indiquant l’échec du chargement des paramètres de gestion de l’authentification du site."
