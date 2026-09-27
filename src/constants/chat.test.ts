@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import enChat from '@/i18n/en/chat.json';
 
 import {
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
@@ -17,6 +18,7 @@ import {
   CHAT_MODEL_KIMI_K2_6,
   CHAT_MODEL_KIMI_K3,
   CHAT_MODELS,
+  CHAT_MODEL_GROUPS,
   getDefaultChatModel
 } from './chat';
 
@@ -92,5 +94,44 @@ describe('chat models', () => {
       isFileSupported: true,
       isReasoningSupported: true
     });
+  });
+});
+
+describe('chat model catalog invariants', () => {
+  const groupedModels = CHAT_MODEL_GROUPS.flatMap((group) => group.models);
+
+  it('keeps the flat registry aligned with provider groups', () => {
+    expect(new Set(CHAT_MODELS)).toEqual(new Set(groupedModels));
+    expect(CHAT_MODELS).toHaveLength(groupedModels.length);
+  });
+
+  it('uses distinct human-readable names and descriptions', () => {
+    const wireIds = new Set<string>(CHAT_MODELS.map((model) => model.name));
+    const englishModelEntries = Object.entries(enChat).filter(
+      ([key]) => key.startsWith('model.') && key !== 'model.freeTag'
+    );
+    const englishNames = englishModelEntries
+      .filter(([key]) => !key.endsWith('Description'))
+      .map(([, value]) => (value as { message: string }).message);
+    const englishDescriptions = englishModelEntries
+      .filter(([key]) => key.endsWith('Description'))
+      .map(([, value]) => (value as { message: string }).message);
+
+    expect(englishNames).toHaveLength(CHAT_MODELS.length);
+    expect(new Set(englishNames).size).toBe(CHAT_MODELS.length);
+    expect(englishNames.every((name) => !wireIds.has(name))).toBe(true);
+    expect(new Set(englishDescriptions).size).toBe(CHAT_MODELS.length);
+    expect(englishDescriptions.join(' ')).not.toMatch(/currently|latest|most advanced|suitable for most tasks/i);
+  });
+
+  it('registers every wire ID exactly once in the matching group', () => {
+    expect(new Set(CHAT_MODELS.map((model) => model.name)).size).toBe(CHAT_MODELS.length);
+
+    for (const group of CHAT_MODEL_GROUPS) {
+      for (const model of group.models) {
+        expect(model.modelGroup).toBe(group.name);
+        expect(groupedModels.filter((candidate) => candidate.name === model.name)).toHaveLength(1);
+      }
+    }
   });
 });
