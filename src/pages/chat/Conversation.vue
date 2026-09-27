@@ -1459,14 +1459,6 @@ export default defineComponent({
       token: string,
       initialConversationId: string | undefined
     ) {
-      const targetModel = CHAT_MODELS.find((model) => model.name === body.model);
-      if (targetModel) {
-        const access = resolveChatModelAccess(targetModel, this.$store.getters.config);
-        if (!access.allowed) {
-          ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
-          return;
-        }
-      }
       let conversationId = initialConversationId;
       // Capture the target assistant message slot NOW. A client-tool auto-resume
       // ({@link _runClientTools} -> {@link _resumeWithToolResults}) can push a
