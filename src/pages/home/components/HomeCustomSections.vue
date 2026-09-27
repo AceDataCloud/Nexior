@@ -1,6 +1,12 @@
 <template>
   <section v-if="renderable.length" class="custom-sections">
-    <component :is="componentByKind[section.kind]" v-for="section in renderable" :key="section.id" :section="section" />
+    <component
+      :is="componentByKind[section.kind]"
+      v-for="section in renderable"
+      :key="section.id"
+      :section="section"
+      :locale="section.kind === 'html' ? locale : undefined"
+    />
   </section>
 </template>
 
@@ -12,7 +18,7 @@ import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
 import HomeWebsiteSection from './custom/HomeWebsiteSection.vue';
 
-const props = defineProps<{ sections: ISiteHomeSection[]; site?: ISite }>();
+const props = defineProps<{ sections: ISiteHomeSection[]; site?: ISite; locale?: string }>();
 const componentByKind: Record<SiteHomeSectionKind, Component> = {
   markdown: HomeMarkdownSection,
   html: HomeHtmlSection,

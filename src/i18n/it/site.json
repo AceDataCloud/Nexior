@@ -1894,6 +1894,34 @@
     "message": "Consente l’esecuzione di script, l’uso di moduli e la navigazione tramite clic, ma non permette di accedere alla pagina principale né alle relative informazioni di accesso.",
     "description": "Descrizione delle funzionalità di sicurezza della modalità di isolamento iframe."
   },
+  "homeSections.iframe.heightLabel": {
+    "message": "Altezza incorporata",
+    "description": "Impostazione dell’altezza dell’iframe HTML e Website."
+  },
+  "homeSections.iframe.auto": {
+    "message": "Automatica",
+    "description": "Etichetta della modalità di altezza automatica."
+  },
+  "homeSections.iframe.fixed": {
+    "message": "Altezza fissa (px)",
+    "description": "Etichetta della modalità di altezza fissa."
+  },
+  "homeSections.iframe.htmlHeightTip": {
+    "message": "La modalità automatica si adatta alla quantità di contenuti HTML; la modalità fissa mantiene l’altezza specificata.",
+    "description": "Descrizione delle modalità di altezza dell’iframe HTML."
+  },
+  "homeSections.iframe.websiteHeightTip": {
+    "message": "La modalità automatica usa un’altezza consigliata responsiva; le pagine web cross-origin non possono leggere l’altezza reale dei contenuti.",
+    "description": "Descrizione delle modalità di altezza dell’iframe Website."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "Lingua dell’agente personalizzato",
+    "description": "Titolo della spiegazione del contesto linguistico per l’iframe HTML personalizzato."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "HTML può leggere window.__ACEDATACLOUD__.locale. Nel tuo system/developer prompt, richiedi: usa preferibilmente la lingua dell’input corrente dell’utente; se non è possibile determinarla, usa la lingua dell’interfaccia. La piattaforma non riscrive automaticamente le richieste ai modelli di terze parti.",
+    "description": "Spiegazione della strategia linguistica dell’agente personalizzato e dei relativi limiti di responsabilità."
+  },
   "error.authSettingsLoad": {
     "message": "Impossibile caricare le impostazioni di autenticazione",
     "description": "Messaggio visualizzato quando non è stato possibile caricare le impostazioni di gestione dell'autenticazione del sito."

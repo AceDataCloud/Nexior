@@ -7,6 +7,7 @@ export interface ISiteHomeSection {
   title: string;
   body: string;
   render_in_iframe?: boolean;
+  iframe_height?: number | null;
   visible?: boolean;
   sort_order?: number;
   start_at?: string | null;

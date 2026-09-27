@@ -1894,6 +1894,34 @@
     "message": "스크립트, 양식 및 클릭을 통한 이동을 허용하지만 상위 페이지와 해당 로그인 정보에는 액세스할 수 없습니다.",
     "description": "iframe 격리 모드의 보안 기능 안내입니다."
   },
+  "homeSections.iframe.heightLabel": {
+    "message": "임베드 높이",
+    "description": "HTML 및 Website iframe의 높이 설정."
+  },
+  "homeSections.iframe.auto": {
+    "message": "자동",
+    "description": "자동 높이 모드 라벨."
+  },
+  "homeSections.iframe.fixed": {
+    "message": "고정 높이（px）",
+    "description": "고정 높이 모드 라벨."
+  },
+  "homeSections.iframe.htmlHeightTip": {
+    "message": "자동 모드는 HTML 콘텐츠에 따라 높이가 조정되고, 고정 모드는 지정된 높이를 유지합니다.",
+    "description": "HTML iframe 높이 모드 설명."
+  },
+  "homeSections.iframe.websiteHeightTip": {
+    "message": "자동 모드는 반응형 권장 높이를 사용하며, 크로스 도메인 웹 페이지의 실제 콘텐츠 높이는 읽을 수 없습니다.",
+    "description": "Website iframe 높이 모드 설명."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "사용자 지정 에이전트 언어",
+    "description": "사용자 지정 HTML iframe의 언어 컨텍스트 설명 제목."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "HTML에서 window.__ACEDATACLOUD__.locale을 읽을 수 있습니다. 자체 system/developer prompt에서 다음을 요구하세요: 사용자의 현재 입력 언어를 우선 사용하고, 판단할 수 없을 때는 해당 인터페이스 언어를 사용합니다. 플랫폼은 서드파티 모델 요청을 자동으로 다시 작성하지 않습니다.",
+    "description": "사용자 지정 에이전트 언어 전략 및 책임 범위 설명."
+  },
   "error.authSettingsLoad": {
     "message": "인증 설정을 불러오지 못했습니다",
     "description": "사이트 인증 관리 설정을 불러오지 못했을 때 표시하는 오류 메시지입니다."

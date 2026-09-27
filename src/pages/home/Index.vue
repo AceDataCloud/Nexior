@@ -8,7 +8,12 @@
         @category-image-error="onCategoryImageError"
         @icon-error="onIconError"
       />
-      <home-custom-sections v-if="rawHomeSections.length" :sections="rawHomeSections" :site="site" />
+      <home-custom-sections
+        v-if="rawHomeSections.length"
+        :sections="rawHomeSections"
+        :site="site"
+        :locale="String($i18n.locale || 'en')"
+      />
       <showcase-grid
         v-if="showcaseEnabled && visibleShowcases.length"
         :items="visibleShowcases"

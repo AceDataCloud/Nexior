@@ -30,24 +30,29 @@ import {
   homeHtmlIframeHeight
 } from '@/utils/homeHtmlIframe';
 
-const props = defineProps<{ section: ISiteHomeSection }>();
+const props = defineProps<{ section: ISiteHomeSection; locale?: string }>();
 const frame = ref<HTMLIFrameElement>();
-const frameHeight = ref(HOME_HTML_IFRAME_MIN_HEIGHT);
-const iframeDocument = computed(() => buildHomeHtmlIframeDocument(props.section.body));
+const fixedHeight = computed(() => props.section.iframe_height ?? null);
+const automaticHeight = computed(() => fixedHeight.value === null);
+const frameHeight = ref(fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT);
+const iframeDocument = computed(() =>
+  buildHomeHtmlIframeDocument(props.section.body, props.locale || 'en', automaticHeight.value)
+);
 
 const onMessage = (event: MessageEvent): void => {
-  if (event.source !== frame.value?.contentWindow) return;
+  if (!automaticHeight.value || event.source !== frame.value?.contentWindow) return;
   const height = homeHtmlIframeHeight(event.data);
   if (height !== null) frameHeight.value = height;
 };
 const requestHeight = (): void => {
+  if (!automaticHeight.value) return;
   frame.value?.contentWindow?.postMessage({ type: HOME_HTML_IFRAME_MEASURE_MESSAGE }, '*');
 };
 
 watch(
-  () => props.section.body,
+  () => [props.section.body, props.section.iframe_height, props.locale] as const,
   () => {
-    frameHeight.value = HOME_HTML_IFRAME_MIN_HEIGHT;
+    frameHeight.value = fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT;
   }
 );
 onMounted(() => {

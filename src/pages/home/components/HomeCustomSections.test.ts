@@ -84,13 +84,15 @@ describe('HomeCustomSections', () => {
   it('runs opted-in HTML in a sandboxed iframe and accepts its resize messages', async () => {
     const body = '<button onclick="document.body.dataset.clicked=\'yes\'">Run</button><script>run()</script>';
     const wrapper = mount(HomeHtmlSection, {
-      props: { section: { kind: 'html', title: 'HTML', body, render_in_iframe: true } }
+      props: { section: { kind: 'html', title: 'HTML', body, render_in_iframe: true }, locale: 'zh-CN' }
     });
     const iframe = wrapper.get('iframe');
 
     expect(iframe.attributes('sandbox')).toContain('allow-scripts');
     expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
     expect(iframe.attributes('srcdoc')).toContain(body);
+    expect(iframe.attributes('srcdoc')).toContain('<html lang="zh-CN" dir="ltr">');
+    expect(iframe.attributes('srcdoc')).toContain('"locale":"zh-CN"');
 
     window.dispatchEvent(
       new MessageEvent('message', {
@@ -101,5 +103,51 @@ describe('HomeCustomSections', () => {
     await nextTick();
 
     expect(iframe.attributes('style')).toContain('height: 640px');
+  });
+
+  it('keeps configured HTML height and ignores automatic resize messages', async () => {
+    const wrapper = mount(HomeHtmlSection, {
+      props: {
+        section: {
+          kind: 'html',
+          title: 'Fixed HTML',
+          body: '<p>Content</p>',
+          render_in_iframe: true,
+          iframe_height: 480
+        },
+        locale: 'en'
+      }
+    });
+    const iframe = wrapper.get('iframe');
+
+    expect(iframe.attributes('style')).toContain('height: 480px');
+    expect(iframe.attributes('srcdoc')).not.toContain('data-acedatacloud-resize');
+    window.dispatchEvent(
+      new MessageEvent('message', {
+        data: { type: HOME_HTML_IFRAME_RESIZE_MESSAGE, height: 900 },
+        source: (iframe.element as HTMLIFrameElement).contentWindow
+      })
+    );
+    await nextTick();
+    expect(iframe.attributes('style')).toContain('height: 480px');
+  });
+
+  it('applies a configured Website height without weakening its sandbox', () => {
+    const wrapper = mount(HomeWebsiteSection, {
+      props: {
+        section: {
+          kind: 'website',
+          title: 'Website',
+          body: 'https://example.com/embed',
+          render_in_iframe: true,
+          iframe_height: 520
+        }
+      },
+      global: { mocks: { $t: () => 'Open externally' } }
+    });
+    const iframe = wrapper.get('iframe');
+
+    expect(iframe.attributes('style')).toContain('height: 520px');
+    expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
   });
 });

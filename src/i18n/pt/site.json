@@ -45,7 +45,7 @@
   },
   "field.url": {
     "message": "Link",
-    "description": "Título exibido no campo de edição"
+    "description": "Título exibido no editor"
   },
   "field.admins": {
     "message": "ID dos administradores do site",
@@ -1893,6 +1893,34 @@
   "homeSections.iframe.tip": {
     "message": "Permite scripts, formulários e navegação por cliques, mas não pode acessar a página principal nem suas informações de login.",
     "description": "Descrição dos recursos de segurança do modo isolado em iframe."
+  },
+  "homeSections.iframe.heightLabel": {
+    "message": "Altura de incorporação",
+    "description": "Configuração da altura do HTML e do iframe do Website."
+  },
+  "homeSections.iframe.auto": {
+    "message": "Automática",
+    "description": "Rótulo do modo de altura automática."
+  },
+  "homeSections.iframe.fixed": {
+    "message": "Altura fixa (px)",
+    "description": "Rótulo do modo de altura fixa."
+  },
+  "homeSections.iframe.htmlHeightTip": {
+    "message": "O modo automático se ajusta conforme o conteúdo HTML aumenta ou diminui; o modo fixo mantém a altura especificada.",
+    "description": "Explicação dos modos de altura do iframe HTML."
+  },
+  "homeSections.iframe.websiteHeightTip": {
+    "message": "O modo automático usa uma altura responsiva recomendada; páginas da Web de outra origem não podem ter sua altura real de conteúdo lida.",
+    "description": "Explicação dos modos de altura do iframe do Website."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "Idioma personalizado do agente",
+    "description": "Título da explicação sobre o contexto de idioma do iframe HTML personalizado."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "O HTML pode ler window.__ACEDATACLOUD__.locale. No seu próprio prompt de sistema/desenvolvedor, solicite: priorizar o idioma da entrada atual do usuário; quando não for possível determiná-lo, usar o idioma desta interface. A plataforma não reescreve automaticamente as solicitações aos modelos de terceiros.",
+    "description": "Explicação da estratégia de idioma do agente personalizado e dos limites de responsabilidade."
   },
   "error.authSettingsLoad": {
     "message": "Falha ao carregar as configurações de autenticação",

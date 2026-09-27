@@ -117,7 +117,7 @@
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
-    "description": "Name der Anmeldemethode: Anmeldung über WeChat eines Drittanbieters"
+    "description": "Name der Anmeldemethode: Anmeldung über WeChat"
   },
   "field.authSmsWebhook": {
     "message": "Benutzerdefinierte SMS-Absenderadresse",
@@ -1893,6 +1893,34 @@
   "homeSections.iframe.tip": {
     "message": "Erlaubt Skripte, Formulare und Klick-Navigation, kann aber nicht auf die Hauptseite und deren Anmeldeinformationen zugreifen.",
     "description": "Sicherheitshinweis zum isolierten iframe-Modus."
+  },
+  "homeSections.iframe.heightLabel": {
+    "message": "Höhe der Einbettung",
+    "description": "Einstellung der Höhe für HTML- und Website-Iframes."
+  },
+  "homeSections.iframe.auto": {
+    "message": "Automatisch",
+    "description": "Bezeichnung für den Modus mit automatischer Höhe."
+  },
+  "homeSections.iframe.fixed": {
+    "message": "Feste Höhe (px)",
+    "description": "Bezeichnung für den Modus mit fester Höhe."
+  },
+  "homeSections.iframe.htmlHeightTip": {
+    "message": "Der automatische Modus passt sich an die Zu- oder Abnahme des HTML-Inhalts an; der feste Modus behält die angegebene Höhe bei.",
+    "description": "Beschreibung der Höhenmodi für HTML-Iframes."
+  },
+  "homeSections.iframe.websiteHeightTip": {
+    "message": "Der automatische Modus verwendet eine empfohlene responsive Höhe; bei Webseiten aus anderen Ursprüngen kann die tatsächliche Inhaltshöhe nicht ausgelesen werden.",
+    "description": "Beschreibung der Höhenmodi für Website-Iframes."
+  },
+  "homeSections.iframe.localeTitle": {
+    "message": "Sprache des benutzerdefinierten Agenten",
+    "description": "Titel der Erklärung zum Sprachkontext eines benutzerdefinierten HTML-Iframes."
+  },
+  "homeSections.iframe.localeTip": {
+    "message": "HTML kann window.__ACEDATACLOUD__.locale auslesen. Fordern Sie in Ihrem eigenen system/developer prompt Folgendes an: Verwenden Sie bevorzugt die Sprache der aktuellen Benutzereingabe; wenn diese nicht ermittelt werden kann, verwenden Sie die Sprache der Benutzeroberfläche. Die Plattform schreibt Anfragen an Drittanbieter-Modelle nicht automatisch um.",
+    "description": "Beschreibung der Sprachstrategie und des Verantwortungsumfangs für benutzerdefinierte Agenten."
   },
   "error.authSettingsLoad": {
     "message": "Authentifizierungseinstellungen konnten nicht geladen werden",
