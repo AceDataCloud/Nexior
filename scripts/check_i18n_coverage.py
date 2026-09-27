@@ -235,6 +235,16 @@ def main() -> int:
                 )
 
             missing = sorted(zh_keys - target_keys)
+            if namespace == "chat.json":
+                source_model_keys = {key for key in zh_keys if key.startswith("model.")}
+                target_model_keys = {key for key in target_keys if key.startswith("model.")}
+                stale_model_keys = sorted(target_model_keys - source_model_keys)
+                if stale_model_keys:
+                    failures += 1
+                    rel = target_path.relative_to(REPO_ROOT)
+                    preview = ", ".join(stale_model_keys[:5])
+                    print(f"::error file={rel}::stale model key(s): {preview}")
+
             if missing:
                 failures += 1
                 rel = target_path.relative_to(REPO_ROOT)

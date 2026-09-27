@@ -81,7 +81,6 @@ export default defineComponent({
   },
   computed: {
     model() {
-      console.log('model', this.$store.state.chat.model);
       return this.$store.state.chat.model;
     },
     modelGroup(): IChatModelGroup {
@@ -93,7 +92,8 @@ export default defineComponent({
     modelGroup(newValue: IChatModelGroup) {
       console.debug('modelGroup from route changed', newValue);
       this.$store.dispatch('chat/setModelGroup', newValue);
-      this.$store.dispatch('chat/setModel', getDefaultChatModel(newValue));
+      const currentModel = newValue.models.find((model) => model.name === this.model?.name);
+      this.$store.dispatch('chat/setModel', currentModel ?? getDefaultChatModel(newValue));
     }
   },
   mounted() {
@@ -112,9 +112,8 @@ export default defineComponent({
       this.$store.dispatch('chat/setModelGroup', route);
     }
     const persistedModel = this.$store.state.chat?.model;
-    if (!route.models.some((m) => m.name === persistedModel?.name)) {
-      this.$store.dispatch('chat/setModel', getDefaultChatModel(route));
-    }
+    const canonicalModel = route.models.find((model) => model.name === persistedModel?.name);
+    this.$store.dispatch('chat/setModel', canonicalModel ?? getDefaultChatModel(route));
   },
   methods: {
     onModelGroupChange(modelGroup: IChatModelGroup) {
