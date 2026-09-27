@@ -39,6 +39,32 @@ describe('setting/HomeSections', () => {
     expect((wrapper.vm as any).form.heightValue).toBe(480);
   });
 
+  it('shows the numeric input only when custom height is enabled', async () => {
+    const wrapper = shallowMount(HomeSections, {
+      props: { site: { id: 'site-1' } },
+      global: {
+        mocks: { $t: (key: string) => key },
+        stubs: {
+          Teleport: true,
+          ElDialog: { template: '<div><slot /></div>' },
+          ElForm: { template: '<form><slot /></form>' },
+          ElFormItem: { template: '<div><slot /></div>' }
+        }
+      }
+    });
+    (wrapper.vm as any).openCreate();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.iframe-height-option').find('el-input-number-stub').exists()).toBe(false);
+    expect((wrapper.vm as any).buildPayload().height).toBeNull();
+
+    (wrapper.vm as any).form.fixedHeight = true;
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.iframe-height-option').find('el-input-number-stub').exists()).toBe(true);
+    expect((wrapper.vm as any).buildPayload().height).toBe(480);
+  });
+
   it('builds a payload with only content and operational fields', () => {
     const wrapper = mountSetting();
     Object.assign((wrapper.vm as any).form, {

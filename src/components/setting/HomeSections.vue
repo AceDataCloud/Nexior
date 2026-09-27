@@ -108,20 +108,16 @@
         </el-form-item>
 
         <el-form-item :label="$t('site.homeSections.height.label')">
-          <div class="iframe-height-option">
-            <el-switch v-model="form.fixedHeight" :aria-label="$t('site.homeSections.height.label')" />
-            <span>
-              {{ $t(form.fixedHeight ? 'site.homeSections.height.fixed' : 'site.homeSections.height.auto') }}
-            </span>
-            <el-input-number
-              v-if="form.fixedHeight"
-              v-model="form.heightValue"
-              :min="160"
-              :max="12000"
-              :precision="0"
-            />
+          <div class="height-setting">
+            <div class="iframe-height-option">
+              <el-switch v-model="form.fixedHeight" :aria-label="$t('site.homeSections.height.label')" />
+              <template v-if="form.fixedHeight">
+                <el-input-number v-model="form.heightValue" :min="160" :max="12000" :precision="0" />
+                <span>px</span>
+              </template>
+            </div>
+            <span class="field-tip">{{ $t(heightTipKey) }}</span>
           </div>
-          <span class="field-tip">{{ $t(heightTipKey) }}</span>
         </el-form-item>
 
         <el-alert
@@ -469,6 +465,11 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.height-setting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .iframe-height-option {
   flex-wrap: wrap;
