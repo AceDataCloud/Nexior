@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 26 Sep 2026 20:21:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 27 Sep 2026 20:22:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.373.0
+
+Sun, 27 Sep 2026 20:22:54 GMT
+
+### Minor changes
+
+- Add ACE holder early access states for upcoming Studio chat models. (dev@acedata.cloud)
+
+### Patches
+
+- Add Site-level aliases for chat model display names. (41898282+github-actions[bot]@users.noreply.github.com)
+- Standardize chat model names and descriptions and preserve localized names after reload. (dev@acedata.cloud)
+- Fix custom homepage iframe resizing, configurable embed height, and locale context. (41898282+github-actions[bot]@users.noreply.github.com)
 
 ## 3.372.2
 
