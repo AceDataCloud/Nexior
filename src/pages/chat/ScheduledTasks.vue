@@ -842,7 +842,12 @@ export default defineComponent({
     modelGroups(): IChatModelGroup[] {
       const features = (this.$store.state.site?.features ?? {}) as Record<string, { enabled?: boolean }>;
       return CHAT_MODEL_GROUPS.filter((g) => features[g.name]?.enabled !== false)
-        .map((g) => ({ ...g, models: g.models.filter((m) => m.enabled !== false) }))
+        .map((g) => ({
+          ...g,
+          models: g.models.filter(
+            (m) => m.enabled !== false && this.$store.state.chat.modelAccess[m.name]?.allowed !== false
+          )
+        }))
         .filter((g) => g.models.length > 0);
     },
     pagedTasks(): IScheduledTask[] {
@@ -932,6 +937,9 @@ export default defineComponent({
   },
   async mounted() {
     document.addEventListener('visibilitychange', this.onVisibilityChange);
+    if (typeof this.$store?.dispatch === 'function') {
+      void this.$store.dispatch('chat/refreshModelAccess');
+    }
     await this.loadTasks();
     if (this.$route?.query?.template_category) this.openTemplateGallery();
   },

@@ -164,6 +164,7 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
+import { resolveChatModelAccess } from '@/utils/chatModelAccess';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
@@ -743,7 +744,9 @@ export default defineComponent({
         const targetModel = CHAT_MODELS.find((m) => m.name === model);
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
         if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-        if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
+        if (targetModel && resolveChatModelAccess(targetModel, this.$store.state.chat.modelAccess).allowed) {
+          this.$store.dispatch('chat/setModel', targetModel);
+        }
         this.messages = (conversation?.messages || []).map((message) => {
           if (message.role !== ROLE_ASSISTANT || message.state !== IChatMessageState.ANSWERING) return message;
           if (
@@ -785,6 +788,12 @@ export default defineComponent({
       }
       await this.$router.push(this.conversationsPath(target));
     },
+    ensureCurrentModelAccess(): boolean {
+      const access = resolveChatModelAccess(this.model, this.$store.state.chat.modelAccess);
+      if (access.allowed) return true;
+      ElMessage.warning(access.message || (this.$t('chat.earlyAccess.holder_required') as string));
+      return false;
+    },
     async onSubmit() {
       if (this.restoringConversation) return;
       // Belt-and-braces: `ready` already disables the composer, but onDraft /
@@ -795,6 +804,7 @@ export default defineComponent({
       if (!ensureLoggedIn()) {
         return;
       }
+      if (!this.ensureCurrentModelAccess()) return;
       if (this.references.length > 0) {
         const content: IChatMessageContentItem[] = [
           {
@@ -840,6 +850,7 @@ export default defineComponent({
       if (!ensureLoggedIn()) {
         return;
       }
+      if (!this.ensureCurrentModelAccess()) return;
       // Refresh the desktop local-tool list at the start of each user turn so a
       // Settings change (e.g. toggling Computer Use on/off) takes effect on the
       // very next message. Without this, `localTools` is cached from mount and a

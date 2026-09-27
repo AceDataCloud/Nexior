@@ -26,6 +26,7 @@ export const CHAT_MODEL_NAME_GEMINI_3_8_FLASH = 'gemini-3.8-flash';
 export const CHAT_MODEL_NAME_GEMINI_3_6_FLASH = 'gemini-3.6-flash';
 export const CHAT_MODEL_NAME_GEMINI_2_5_PRO = 'gemini-2.5-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_FLASH = 'gemini-2.5-flash';
+export const CHAT_MODEL_NAME_CLAUDE_OPUS_5_5 = 'claude-opus-5-5';
 export const CHAT_MODEL_NAME_CLAUDE_OPUS_5 = 'claude-opus-5';
 export const CHAT_MODEL_NAME_CLAUDE_OPUS_4_8 = 'claude-opus-4-8';
 export const CHAT_MODEL_NAME_CLAUDE_SONNET_4_6 = 'claude-sonnet-4-6';
@@ -49,6 +50,7 @@ export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/57ebgy.png';
 export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
+export const CHAT_API_ID = '3769e83e-88f8-4e2c-8f38-6bf20391b094';
 
 export const CHAT_MODEL_GPT_6_ASTRA: IChatModel = {
   enabled: true,
@@ -279,6 +281,18 @@ export const CHAT_MODEL_GEMINI_2_5_FLASH: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.gemini25FlashDescription')
 };
 
+export const CHAT_MODEL_CLAUDE_OPUS_5_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_CLAUDE_OPUS_5_5,
+  icon: CHAT_MODEL_ICON_CLAUDE,
+  modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.claudeOpus55'),
+  getDescription: () => i18n.global.t('chat.model.claudeOpus55Description')
+};
+
 export const CHAT_MODEL_CLAUDE_OPUS_5: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_CLAUDE_OPUS_5,
@@ -459,6 +473,7 @@ export const CHAT_MODEL_GROUP_CLAUDE: IChatModelGroup = {
   getDisplayName: () => i18n.global.t('chat.modelGroup.claude'),
   getDescription: () => i18n.global.t('chat.modelGroup.claudeDescription'),
   models: [
+    CHAT_MODEL_CLAUDE_OPUS_5_5,
     CHAT_MODEL_CLAUDE_OPUS_5,
     CHAT_MODEL_CLAUDE_OPUS_4_8,
     CHAT_MODEL_CLAUDE_SONNET_4_6,
@@ -510,6 +525,7 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GEMINI_3_5_FLASH,
   CHAT_MODEL_GEMINI_2_5_PRO,
   CHAT_MODEL_GEMINI_2_5_FLASH,
+  CHAT_MODEL_CLAUDE_OPUS_5_5,
   CHAT_MODEL_CLAUDE_OPUS_5,
   CHAT_MODEL_CLAUDE_OPUS_4_8,
   CHAT_MODEL_CLAUDE_SONNET_4_6,

@@ -11,7 +11,7 @@
           <el-dropdown-item
             v-for="(option, optionKey) in modelGroup?.models?.filter((m) => m.enabled)"
             :key="optionKey"
-            :class="{ active: model?.name === option?.name }"
+            :class="{ active: model?.name === option?.name, locked: !modelAccess(option).allowed }"
             @click="onModelChange(option)"
           >
             <div class="item">
@@ -20,6 +20,9 @@
                 <p v-if="option?.getDisplayName" class="item-name">
                   {{ option?.getDisplayName() }}
                   <span v-if="option?.isFree" class="item-free-tag">{{ $t('chat.model.freeTag') }}</span>
+                  <span v-if="modelAccess(option).restricted" class="item-early-tag">{{
+                    modelAccess(option).allowed ? $t('chat.earlyAccess.badge') : $t('chat.earlyAccess.locked')
+                  }}</span>
                 </p>
                 <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
               </div>
@@ -41,8 +44,9 @@
 <script lang="ts">
 import { ConfirmIcon, ExpandDownIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
-import { IChatModelGroup } from '@/models';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
+import { IChatModel, IChatModelGroup } from '@/models';
+import { resolveChatModelAccess } from '@/utils/chatModelAccess';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -97,6 +101,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    void this.$store.dispatch('chat/refreshModelAccess');
     // Sync the route-derived modelGroup into the store on first mount.
     // `chat.modelGroup` is intentionally not persisted (see persist.ts);
     // the route is the source of truth and the store mirror only exists
@@ -120,7 +125,15 @@ export default defineComponent({
       this.$store.dispatch('chat/setModelGroup', modelGroup);
       this.$emit('model-group-changed', modelGroup);
     },
+    modelAccess(model: IChatModel) {
+      return resolveChatModelAccess(model, this.$store.state.chat.modelAccess);
+    },
     onModelChange(model: IChatModelGroup['models'][number]) {
+      const access = this.modelAccess(model);
+      if (!access.allowed) {
+        ElMessage.warning(access.message || (this.$t('chat.earlyAccess.holder_required') as string));
+        return;
+      }
       this.$store.dispatch('chat/setModel', model);
       this.$emit('model-changed', model);
     }
@@ -207,7 +220,8 @@ export default defineComponent({
     gap: 6px;
   }
 
-  .item-free-tag {
+  .item-free-tag,
+  .item-early-tag {
     display: inline-flex;
     align-items: center;
     padding: 1px 6px;
@@ -218,6 +232,11 @@ export default defineComponent({
     color: var(--el-color-success);
     background-color: var(--el-color-success-light-9);
     border: 1px solid var(--el-color-success-light-7);
+  }
+
+  .item-early-tag {
+    color: var(--el-color-warning);
+    border-color: var(--el-color-warning-light-5);
   }
 
   .item-desc {
