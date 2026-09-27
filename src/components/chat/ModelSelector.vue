@@ -59,8 +59,6 @@ import {
 
 interface IData {
   options: IChatModelGroup[];
-  accessNow: number;
-  accessTimer?: number;
 }
 
 export default defineComponent({
@@ -75,8 +73,6 @@ export default defineComponent({
   emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {
     return {
-      accessNow: Date.now(),
-      accessTimer: undefined,
       options: [
         CHAT_MODEL_GROUP_CHATGPT,
         CHAT_MODEL_GROUP_DEEPSEEK,
@@ -105,11 +101,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.accessTimer = window.setInterval(() => {
-      this.accessNow = Date.now();
-    }, 30_000);
-    window.addEventListener('focus', this.refreshAccess);
-
     // Sync the route-derived modelGroup into the store on first mount.
     // `chat.modelGroup` is intentionally not persisted (see persist.ts);
     // the route is the source of truth and the store mirror only exists
@@ -128,26 +119,18 @@ export default defineComponent({
     const canonicalModel = route.models.find((model) => model.name === persistedModel?.name);
     this.$store.dispatch('chat/setModel', canonicalModel ?? getDefaultChatModel(route));
   },
-  beforeUnmount() {
-    if (this.accessTimer !== undefined) window.clearInterval(this.accessTimer);
-    window.removeEventListener('focus', this.refreshAccess);
-  },
   methods: {
-    refreshAccess() {
-      this.accessNow = Date.now();
-      void this.$store.dispatch('fetchConfig');
-    },
     onModelGroupChange(modelGroup: IChatModelGroup) {
       this.$store.dispatch('chat/setModelGroup', modelGroup);
       this.$emit('model-group-changed', modelGroup);
     },
     modelAccess(model: IChatModel) {
-      return resolveChatModelAccess(model, this.$store.getters.config, this.accessNow);
+      return resolveChatModelAccess(model, this.$store.getters.config);
     },
     onModelChange(model: IChatModelGroup['models'][number]) {
       const access = this.modelAccess(model);
       if (!access.allowed) {
-        ElMessage.warning(this.$t(`chat.earlyAccess.reason.${access.reason || 'config_unavailable'}`) as string);
+        ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
         return;
       }
       this.$store.dispatch('chat/setModel', model);

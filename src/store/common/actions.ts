@@ -169,7 +169,7 @@ export const fetchConfig = async ({ commit }: ActionContext<IRootState, IRootSta
   console.debug('start to fetch config');
   try {
     const { data } = await configOperator.get();
-    commit('setConfig', { ...data, client_received_at: Date.now() });
+    commit('setConfig', data);
     return data;
   } catch (error) {
     console.error('fetch config failed', error);

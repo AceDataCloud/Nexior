@@ -791,7 +791,7 @@ export default defineComponent({
     ensureCurrentModelAccess(): boolean {
       const access = resolveChatModelAccess(this.model, this.$store.getters.config);
       if (access.allowed) return true;
-      ElMessage.warning(this.$t(`chat.earlyAccess.reason.${access.reason || 'config_unavailable'}`) as string);
+      ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
       return false;
     },
     async onSubmit() {
@@ -1463,7 +1463,7 @@ export default defineComponent({
       if (targetModel) {
         const access = resolveChatModelAccess(targetModel, this.$store.getters.config);
         if (!access.allowed) {
-          ElMessage.warning(this.$t(`chat.earlyAccess.reason.${access.reason || 'config_unavailable'}`) as string);
+          ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
           return;
         }
       }
