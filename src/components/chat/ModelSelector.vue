@@ -20,7 +20,7 @@
                 <p v-if="option?.getDisplayName" class="item-name">
                   {{ option?.getDisplayName() }}
                   <span v-if="option?.isFree" class="item-free-tag">{{ $t('chat.model.freeTag') }}</span>
-                  <span v-if="option.earlyAccessFeature" class="item-early-tag">{{
+                  <span v-if="modelAccess(option).restricted" class="item-early-tag">{{
                     modelAccess(option).allowed ? $t('chat.earlyAccess.badge') : $t('chat.earlyAccess.locked')
                   }}</span>
                 </p>
@@ -101,6 +101,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    void this.$store.dispatch('chat/refreshModelAccess');
     // Sync the route-derived modelGroup into the store on first mount.
     // `chat.modelGroup` is intentionally not persisted (see persist.ts);
     // the route is the source of truth and the store mirror only exists
@@ -125,12 +126,12 @@ export default defineComponent({
       this.$emit('model-group-changed', modelGroup);
     },
     modelAccess(model: IChatModel) {
-      return resolveChatModelAccess(model, this.$store.getters.config);
+      return resolveChatModelAccess(model, this.$store.state.chat.modelAccess);
     },
     onModelChange(model: IChatModelGroup['models'][number]) {
       const access = this.modelAccess(model);
       if (!access.allowed) {
-        ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
+        ElMessage.warning(access.message || (this.$t('chat.earlyAccess.holder_required') as string));
         return;
       }
       this.$store.dispatch('chat/setModel', model);

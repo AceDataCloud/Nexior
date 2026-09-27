@@ -1,14 +1,9 @@
-import type { IChatModel, IConfigResponse } from '@/models';
+import type { IChatModel } from '@/models';
+import type { IRequestAccessResult } from '@/operators/apiRequestAccess';
 
-export interface ChatModelAccess {
-  allowed: boolean;
-  reason?: 'holder_required' | 'config_unavailable';
-}
-
-export function resolveChatModelAccess(model: IChatModel, config?: IConfigResponse): ChatModelAccess {
-  if (!model.earlyAccessFeature) return { allowed: true };
-  if (!config?.features) return { allowed: false, reason: 'config_unavailable' };
-  return config.features[model.earlyAccessFeature as keyof typeof config.features] === true
-    ? { allowed: true }
-    : { allowed: false, reason: 'holder_required' };
+export function resolveChatModelAccess(
+  model: IChatModel,
+  access: Record<string, IRequestAccessResult> = {}
+): IRequestAccessResult {
+  return access[model.name] ?? { allowed: true, restricted: false };
 }

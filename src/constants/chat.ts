@@ -50,6 +50,7 @@ export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/57ebgy.png';
 export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
+export const CHAT_API_ID = '3769e83e-88f8-4e2c-8f38-6bf20391b094';
 
 export const CHAT_MODEL_GPT_6_ASTRA: IChatModel = {
   enabled: true,
@@ -285,7 +286,6 @@ export const CHAT_MODEL_CLAUDE_OPUS_5_5: IChatModel = {
   name: CHAT_MODEL_NAME_CLAUDE_OPUS_5_5,
   icon: CHAT_MODEL_ICON_CLAUDE,
   modelGroup: 'claude',
-  earlyAccessFeature: 'STUDIO_CLAUDE_OPUS_5_5_EARLY_ACCESS',
   isImageSupported: true,
   isFileSupported: true,
   isReasoningSupported: true,

@@ -12,6 +12,7 @@ export default (): IChatState => {
     service: undefined,
     credential: undefined,
     memoryEnabled: true,
+    modelAccess: {},
     workingDirectory: '',
     pendingDraft: '',
     status: {

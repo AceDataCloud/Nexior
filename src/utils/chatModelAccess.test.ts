@@ -1,25 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import type { IChatModel, IConfigResponse } from '@/models';
+import type { IChatModel } from '@/models';
 import { resolveChatModelAccess } from './chatModelAccess';
 
-const ordinary = { name: 'claude-opus-5' } as IChatModel;
-const gated = { name: 'claude-opus-5-5', earlyAccessFeature: 'STUDIO_CLAUDE_OPUS_5_5_EARLY_ACCESS' } as IChatModel;
+const model = { name: 'claude-opus-5-5' } as IChatModel;
 
-function config(enabled: boolean): IConfigResponse {
-  return { features: { STUDIO_CLAUDE_OPUS_5_5_EARLY_ACCESS: enabled } };
-}
-
-describe('chat model early access', () => {
-  it('always allows ordinary models', () => {
-    expect(resolveChatModelAccess(ordinary).allowed).toBe(true);
+describe('chat model request access', () => {
+  it('does not lock models when advisory data is unavailable', () => {
+    expect(resolveChatModelAccess(model)).toEqual({ allowed: true, restricted: false });
   });
 
-  it('fails closed without config', () => {
-    expect(resolveChatModelAccess(gated)).toEqual({ allowed: false, reason: 'config_unavailable' });
-  });
-
-  it('uses the server-evaluated feature boolean', () => {
-    expect(resolveChatModelAccess(gated, config(true)).allowed).toBe(true);
-    expect(resolveChatModelAccess(gated, config(false))).toEqual({ allowed: false, reason: 'holder_required' });
+  it('uses generic keyed eligibility results', () => {
+    const result = { allowed: false, restricted: true, minimum_ace_tier: 1, message: 'Tier 1 preview' };
+    expect(resolveChatModelAccess(model, { 'claude-opus-5-5': result })).toEqual(result);
   });
 });

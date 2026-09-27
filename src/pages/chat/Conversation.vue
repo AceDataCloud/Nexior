@@ -744,7 +744,7 @@ export default defineComponent({
         const targetModel = CHAT_MODELS.find((m) => m.name === model);
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
         if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-        if (targetModel && resolveChatModelAccess(targetModel, this.$store.getters.config).allowed) {
+        if (targetModel && resolveChatModelAccess(targetModel, this.$store.state.chat.modelAccess).allowed) {
           this.$store.dispatch('chat/setModel', targetModel);
         }
         this.messages = (conversation?.messages || []).map((message) => {
@@ -789,9 +789,9 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     ensureCurrentModelAccess(): boolean {
-      const access = resolveChatModelAccess(this.model, this.$store.getters.config);
+      const access = resolveChatModelAccess(this.model, this.$store.state.chat.modelAccess);
       if (access.allowed) return true;
-      ElMessage.warning(this.$t(`chat.earlyAccess.${access.reason || 'config_unavailable'}`) as string);
+      ElMessage.warning(access.message || (this.$t('chat.earlyAccess.holder_required') as string));
       return false;
     },
     async onSubmit() {

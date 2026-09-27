@@ -1,4 +1,5 @@
 import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService, Status } from '@/models';
+import type { IRequestAccessResult } from '@/operators/apiRequestAccess';
 
 export interface IChatState {
   model: IChatModel;
@@ -9,6 +10,7 @@ export interface IChatState {
   conversations: IChatConversation[] | undefined;
   credential: ICredential | undefined;
   memoryEnabled: boolean;
+  modelAccess: Record<string, IRequestAccessResult>;
   /** The desktop app's current project directory — a mirror of the value the
    *  Electron main process owns (`local-tools.json`). Held here only so the
    *  composer and the picker can render reactively; the main process remains

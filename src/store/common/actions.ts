@@ -20,7 +20,6 @@ export const resetAll = async ({ commit, dispatch }: ActionContext<IRootState, I
   commit('resetToken');
   commit('resetUser');
   commit('setApplications', undefined);
-  commit('setConfig', undefined);
 
   const { getRegisteredLazyModules } = await import('@/store/lazy');
   for (const name of getRegisteredLazyModules()) {
@@ -40,9 +39,8 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
   commit('resetToken');
 };
 
-export const setToken = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>, payload: IToken) => {
+export const setToken = ({ commit }: ActionContext<IRootState, IRootState>, payload: IToken) => {
   commit('setToken', payload);
-  await dispatch('fetchConfig');
 };
 
 export const setUser = ({ commit }: ActionContext<IRootState, IRootState>, payload: IUser) => {
@@ -88,7 +86,7 @@ export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRoot
   return visitorId;
 };
 
-export const getToken = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>, code: string) => {
+export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string) => {
   console.debug('start to get token using code', code);
   try {
     commit('resetToken');
@@ -102,7 +100,6 @@ export const getToken = async ({ commit, dispatch }: ActionContext<IRootState, I
       expiration: data.expires_in
     };
     commit('setToken', token);
-    await dispatch('fetchConfig');
     console.debug('get token success', data);
     return token;
   } catch (error) {
@@ -212,7 +209,6 @@ export const getApplications = async ({
     console.error('get applications failed for global', error);
     state.status.getApplications = Status.Error;
     commit('setApplications', undefined);
-    commit('setConfig', undefined);
   }
 };
 

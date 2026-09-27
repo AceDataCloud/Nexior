@@ -76,7 +76,6 @@ export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  earlyAccessFeature?: string;
   modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
   getDisplayName: () => string;
   getDescription: () => string;
