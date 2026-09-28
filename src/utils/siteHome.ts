@@ -1,4 +1,4 @@
-import type { ISite, ISiteHome } from '@/models';
+import type { ISite, ISiteHome, ISiteHomeScene } from '@/models';
 
 export const HOME_CATEGORY_IDS = ['chat', 'image', 'video', 'music'] as const;
 export type HomeCategoryId = (typeof HOME_CATEGORY_IDS)[number];
@@ -50,5 +50,20 @@ export const withHiddenCategoryIds = (site: ISite | null | undefined, ids: Itera
     ...(home.sections!.categories || {}),
     disabled_item_ids: [...new Set(ids)].filter((id) => HOME_CATEGORY_IDS.includes(id))
   };
+  return home;
+};
+
+export const withHomeScenes = (
+  site: ISite | null | undefined,
+  scenes: ISiteHomeScene[],
+  heading?: string,
+  subtitle?: string
+): ISiteHome => {
+  const home = copyHome(site);
+  if (heading) home.heading = heading;
+  else delete home.heading;
+  if (subtitle) home.subtitle = subtitle;
+  else delete home.subtitle;
+  home.scenes = scenes;
   return home;
 };

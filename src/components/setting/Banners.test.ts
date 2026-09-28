@@ -13,7 +13,7 @@ vi.mock('element-plus', async (importOriginal) => {
 
 vi.mock('@/operators', () => ({
   siteBannerOperator: { getAll: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
-  siteOperator: { update: vi.fn() }
+  siteOperator: { get: vi.fn(), update: vi.fn() }
 }));
 
 const site = {
@@ -64,6 +64,7 @@ describe('setting/Banners', () => {
     vi.mocked(siteBannerOperator.create).mockResolvedValue({ data: banner } as any);
     vi.mocked(siteBannerOperator.delete).mockResolvedValue({ data: undefined } as any);
     vi.mocked(siteOperator.update).mockResolvedValue({ data: site } as any);
+    vi.mocked(siteOperator.get).mockResolvedValue({ data: { ...site, configuration_revision: 3 } } as any);
   });
 
   it('loads every custom row for management, including hidden and scheduled records', async () => {

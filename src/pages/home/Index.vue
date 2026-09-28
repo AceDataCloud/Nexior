@@ -5,6 +5,8 @@
       <category-tiles
         v-if="categoriesEnabled && categories.length"
         :items="categories"
+        :heading="site?.home?.heading || $t('intro.home.quick.title')"
+        :subtitle="site?.home?.subtitle || $t('intro.home.quick.subtitle')"
         @category-image-error="onCategoryImageError"
         @icon-error="onIconError"
       />
@@ -61,6 +63,7 @@ import HomeCustomSections from './components/HomeCustomSections.vue';
 import {
   HOME_BANNERS,
   HOME_CATEGORIES,
+  HOME_CAPABILITY_DEFINITIONS,
   type HomeCapability,
   type ResolvedHomeBanner,
   type ResolvedHomeCapability,
@@ -160,6 +163,28 @@ export default defineComponent({
     categories(): ResolvedHomeCategory[] {
       const resolved: ResolvedHomeCategory[] = [];
       const hiddenCategories = getHiddenCategoryIds(this.site);
+      const configured = this.site?.home?.scenes;
+      if (configured != null) {
+        for (const scene of configured) {
+          if (scene.visible === false) continue;
+          const items = scene.tools.flatMap((tool) => {
+            const definition = HOME_CAPABILITY_DEFINITIONS.get(tool.capability);
+            if (!definition || !this.enabledKeys.has(tool.capability)) return [];
+            return [
+              { ...this.resolve(definition), description: tool.description || this.$t(definition.descriptionKey) }
+            ];
+          });
+          if (!items.length) continue;
+          resolved.push({
+            id: scene.id,
+            title: scene.title,
+            description: scene.description,
+            imageUrl: this.failedCategoryImages[scene.id] ? '' : scene.image_url || '',
+            items
+          });
+        }
+        return resolved;
+      }
       for (const category of HOME_CATEGORIES) {
         if (hiddenCategories.has(category.id as any)) continue;
         const items = category.candidates

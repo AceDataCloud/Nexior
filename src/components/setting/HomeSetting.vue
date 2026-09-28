@@ -33,6 +33,7 @@
         </div>
       </div>
     </section>
+    <home-scenes :site="site" @saved="onScenesSaved" />
     <banners-setting :site="site" />
     <home-sections-setting :site="site" />
   </div>
@@ -43,6 +44,7 @@ import { defineComponent } from 'vue';
 import { ElCheckbox, ElMessage, ElSwitch } from 'element-plus';
 import BannersSetting from './Banners.vue';
 import HomeSectionsSetting from './HomeSections.vue';
+import HomeScenes from './HomeScenes.vue';
 import { HOME_CATEGORIES } from '@/pages/home/data';
 import { siteOperator } from '@/operators';
 import {
@@ -62,7 +64,7 @@ const SECTIONS: Array<{ key: HomeSectionKey; titleKey: string; tipKey: string }>
 
 export default defineComponent({
   name: 'HomeSetting',
-  components: { BannersSetting, ElCheckbox, ElSwitch, HomeSectionsSetting },
+  components: { BannersSetting, ElCheckbox, ElSwitch, HomeSectionsSetting, HomeScenes },
   data() {
     return { HOME_CATEGORIES, sections: SECTIONS, busyKey: '' };
   },
@@ -75,14 +77,22 @@ export default defineComponent({
     }
   },
   methods: {
+    async onScenesSaved(): Promise<void> {
+      await this.$store.dispatch('getSite');
+    },
     sectionEnabled(key: HomeSectionKey): boolean {
       return isHomeSectionEnabled(this.site, key);
     },
-    async save(home: ReturnType<typeof withHomeSectionEnabled>, busyKey: HomeSectionKey): Promise<void> {
+    async save(
+      change: (site: typeof this.site) => ReturnType<typeof withHomeSectionEnabled>,
+      busyKey: HomeSectionKey
+    ): Promise<void> {
       if (!this.site?.id) return;
       this.busyKey = busyKey;
       try {
-        await siteOperator.update(this.site.id, { home });
+        const { data: latest } = await siteOperator.get(this.site.id);
+        const source = { ...latest, home: latest.home_source || latest.home };
+        await siteOperator.update(this.site.id, { home: change(source) }, latest.configuration_revision);
         await this.$store.dispatch('getSite');
       } catch {
         ElMessage.error(this.$t('site.homeLayout.updateFailed'));
@@ -91,7 +101,7 @@ export default defineComponent({
       }
     },
     async toggleSection(key: HomeSectionKey, enabled: boolean): Promise<void> {
-      await this.save(withHomeSectionEnabled(this.site, key, enabled), key);
+      await this.save((source) => withHomeSectionEnabled(source, key, enabled), key);
     },
     categoryVisible(id: string): boolean {
       return !this.hiddenCategoryIds.has(id as HomeCategoryId);
@@ -101,7 +111,7 @@ export default defineComponent({
       const categoryId = id as HomeCategoryId;
       if (visible) hidden.delete(categoryId);
       else hidden.add(categoryId);
-      await this.save(withHiddenCategoryIds(this.site, hidden), 'categories');
+      await this.save((source) => withHiddenCategoryIds(source, hidden), 'categories');
     }
   }
 });

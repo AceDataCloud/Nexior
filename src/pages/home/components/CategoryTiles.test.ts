@@ -45,7 +45,7 @@ const items: ResolvedHomeCategory[] = [
 
 function mountTiles() {
   return mount(CategoryTiles, {
-    props: { items },
+    props: { items, heading: 'Create', subtitle: 'Try tools' },
     attachTo: document.body,
     global: {
       stubs: { RouterLink: { props: ['to'], template: '<a class="router-link"><slot /></a>' } },
@@ -63,6 +63,10 @@ describe('CategoryTiles', () => {
     expect(buttons[0].attributes('aria-expanded')).toBe('true');
     expect(wrapper.get('.capability-panel').attributes('id')).toBe('home-category-panel-chat');
     expect(wrapper.get('.router-link').text()).toContain('ChatGPT');
+    expect(wrapper.findAll('.category-grid')).toHaveLength(1);
+    expect(wrapper.get('.category-grid').element.lastElementChild?.querySelector('.capability-panel')).toBe(
+      wrapper.get('.capability-panel').element
+    );
 
     await buttons[1].trigger('click');
     expect(buttons[0].attributes('aria-expanded')).toBe('false');
@@ -72,6 +76,22 @@ describe('CategoryTiles', () => {
     expect(wrapper.find('.capability-panel').exists()).toBe(false);
   });
 
+  it('places the expanded panel directly after the tapped tile on a one-column screen', async () => {
+    const previous = window.matchMedia;
+    window.matchMedia = ((query: string) => ({ matches: query.includes('430px') })) as typeof window.matchMedia;
+    try {
+      const wrapper = mountTiles();
+      const button = wrapper.findAll('.category-card')[0];
+      await button.trigger('click');
+      expect(wrapper.findAll('.category-grid')).toHaveLength(2);
+      expect(button.element.nextElementSibling?.querySelector('.capability-panel')).toBe(
+        wrapper.get('.capability-panel').element
+      );
+      wrapper.unmount();
+    } finally {
+      window.matchMedia = previous;
+    }
+  });
   it('keeps child titles and descriptions light on the always-dark panel', () => {
     const source = readFileSync(resolve(process.cwd(), 'src/pages/home/components/CategoryTiles.vue'), 'utf8');
     expect(source).toContain('color: #fff;');
