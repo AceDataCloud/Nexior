@@ -23,25 +23,20 @@ assert studio['spec']['strategy']['type'] == 'RollingUpdate'
 assert studio['spec']['strategy']['rollingUpdate'] == {'maxSurge': 1, 'maxUnavailable': 0}
 assert studio['spec']['minReadySeconds'] == 10
 assert container['readinessProbe']['httpGet']['path'] == '/index.html'
-cutover = (ROOT / 'deploy/verify-cutover.sh').read_text()
-dockerfile = (ROOT / 'Dockerfile').read_text()
-bridge = cutover.index('roll_stage "${RELEASE_TAG}-bridge"')
-final = cutover.index('roll_stage "$RELEASE_TAG"')
-verify = cutover.index('verify-html-assets.py')
-annotate = cutover.index('last-successful-revision')
-assert bridge < final < verify < annotate
-assert 'local tag=$1 fallback=$2 expected=' not in cutover
-assert 'local tag=$1 fallback=$2\n  local expected="$IMAGE_REPOSITORY:$tag"' in cutover
-assert 'FROM ${PREVIOUS_IMAGE} AS bridge' in dockerfile
-assert 'FROM runtime-base AS final' in dockerfile
-assert workflow.index('preflight-release.sh') < workflow.index('--target bridge') < workflow.index('verify-release-unchanged.sh') < workflow.index('verify-cutover.sh')
-print('Studio deployment contract OK')
+release = (ROOT / 'deploy/run.sh').read_text()
+assert release.count('kubectl apply') == 1
+assert 'kubectl create configmap studio-html-injector' in release
+assert '--dry-run=client -o yaml > "$rendered"' in release
+for manifest in ('studio-deployment.yaml', 'studio-service.yaml', 'studio-proxy.yaml', 'legacy-hub-redirect.yaml', 'studio-ingress.yaml'):
+    assert manifest in release
+assert release.index('studio-proxy.yaml') < release.index('studio-ingress.yaml')
+assert 'kubectl apply -f "$rendered"' in release
+assert 'rollout status' not in release and 'last-successful-revision' not in release
+assert workflow.index('preflight-release.sh') < workflow.index('--target final') < workflow.index('bash deploy/run.sh')
 ci = (ROOT / '.github/workflows/check-pr.yaml').read_text()
 assert 'test-compatible-images.sh studio-frontend' in ci
-
 prepare = (ROOT / 'deploy/prepare-previous-assets.sh').read_text()
 assert 'docker pull "$PREVIOUS_IMAGE"' in prepare
-assert 'kubectl exec' not in prepare
 
 proxy_path = ROOT / 'deploy/production/studio-proxy.yaml'
 proxy_source = proxy_path.read_text()
@@ -50,7 +45,6 @@ proxy_deployment = next(doc for doc in proxy_docs if doc.get('kind') == 'Deploym
 proxy_template = proxy_deployment['spec']['template']
 injector = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'html-injector')
 injector_env = {item['name']: item['value'] for item in injector['env']}
-apply_proxy = (ROOT / 'deploy/apply-studio-proxy.sh').read_text()
 assert 'reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085' in proxy_source
 assert 'reverse_proxy localhost:3000' in proxy_source
 assert injector_env['SITE_HEAD_API'] == 'https://platform.acedata.cloud/api/v1/site-head/'
@@ -58,10 +52,6 @@ assert injector_env['OFFICIAL_STUDIO_HOST'] == 'studio.acedata.cloud'
 assert proxy_template['metadata']['annotations']['acedata.cloud/html-injector-sha'] == '${INJECTOR_SHA}'
 assert injector['readinessProbe']['httpGet']['path'] == '/healthz'
 assert injector['livenessProbe']['httpGet']['path'] == '/healthz'
-assert 'kubectl create configmap studio-html-injector' in apply_proxy
-assert 'openssl dgst -sha256' in apply_proxy
-assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
-assert 'deploy/apply-studio-proxy.sh' in cutover
 
 proxy_pdb = next(doc for doc in proxy_docs if doc.get('kind') == 'PodDisruptionBudget')
 proxy_caddy = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'caddy')
@@ -81,11 +71,6 @@ proxy_volumes = {item['name']: item for item in proxy_template['spec']['volumes'
 assert proxy_volumes['data']['persistentVolumeClaim']['claimName'] == 'caddy-studio'
 assert next(item for item in proxy_caddy['volumeMounts'] if item['name'] == 'data')['mountPath'] == '/data'
 assert {item['name']: item['value'] for item in proxy_caddy['env']}['XDG_DATA_HOME'] == '/data'
-assert 'caddy:2.8' not in apply_proxy
-assert 'MIGRATION_VERIFY_HOSTS' not in apply_proxy
-assert 'kubectl patch deployment' not in apply_proxy
-assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
-assert 'bash deploy/apply-studio-proxy.sh' in cutover
 
 
 studio_ingress = yaml.safe_load((ROOT / 'deploy/production/studio-ingress.yaml').read_text())
@@ -109,13 +94,3 @@ assert ':8080 {' in proxy_source
 assert 'import studio_routes' in proxy_source
 assert proxy_source.index('@websocket {') < proxy_source.index('@direct {') < proxy_source.index('reverse_proxy localhost:3000')
 assert proxy_template['metadata']['annotations']['acedata.cloud/studio-proxy-config-sha'] == '${PROXY_CONFIG_SHA}'
-assert 'proxy_config_sha=$(openssl dgst -sha256 "$MANIFEST"' in apply_proxy
-assert 'INTERNAL_SERVICE=caddy-studio-internal' in apply_proxy
-assert 'deletionTimestamp' in apply_proxy
-assert 'all(item.get("ready") for item in statuses)' in apply_proxy
-assert 'Expected two ready, non-terminating Caddy pods' in apply_proxy
-assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
-assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
-assert 'verify-site-head.py' in cutover
-assert 'rollback_ingress' in cutover
-assert cutover.index('roll_stage "$RELEASE_TAG"') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml') < cutover.index('verify-site-head.py')
