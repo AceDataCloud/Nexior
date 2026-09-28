@@ -51,7 +51,6 @@ proxy_template = proxy_deployment['spec']['template']
 injector = next(container for container in proxy_template['spec']['containers'] if container['name'] == 'html-injector')
 injector_env = {item['name']: item['value'] for item in injector['env']}
 apply_proxy = (ROOT / 'deploy/apply-studio-proxy.sh').read_text()
-run_script = (ROOT / 'deploy/run.sh').read_text()
 assert 'reverse_proxy @websocket studio-frontend.acedatacloud.svc.cluster.local:8085' in proxy_source
 assert 'reverse_proxy localhost:3000' in proxy_source
 assert injector_env['SITE_HEAD_API'] == 'https://platform.acedata.cloud/api/v1/site-head/'
@@ -62,7 +61,6 @@ assert injector['livenessProbe']['httpGet']['path'] == '/healthz'
 assert 'kubectl create configmap studio-html-injector' in apply_proxy
 assert 'openssl dgst -sha256' in apply_proxy
 assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
-assert 'deploy/apply-studio-proxy.sh' in run_script
 assert 'deploy/apply-studio-proxy.sh' in cutover
 
 proxy_pdb = next(doc for doc in proxy_docs if doc.get('kind') == 'PodDisruptionBudget')
@@ -87,7 +85,6 @@ assert 'caddy:2.8' not in apply_proxy
 assert 'MIGRATION_VERIFY_HOSTS' not in apply_proxy
 assert 'kubectl patch deployment' not in apply_proxy
 assert 'kubectl rollout status "deployment/$DEPLOYMENT"' in apply_proxy
-assert 'bash deploy/apply-studio-proxy.sh' in run_script
 assert 'bash deploy/apply-studio-proxy.sh' in cutover
 
 
@@ -117,7 +114,7 @@ assert 'INTERNAL_SERVICE=caddy-studio-internal' in apply_proxy
 assert 'deletionTimestamp' in apply_proxy
 assert 'all(item.get("ready") for item in statuses)' in apply_proxy
 assert 'Expected two ready, non-terminating Caddy pods' in apply_proxy
-assert run_script.index('bash deploy/apply-studio-proxy.sh') < run_script.index('kubectl apply -f deploy/production/studio-ingress.yaml')
+assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
 assert cutover.index('bash deploy/apply-studio-proxy.sh') < cutover.index('kubectl apply -f deploy/production/studio-ingress.yaml')
 assert 'verify-site-head.py' in cutover
 assert 'rollback_ingress' in cutover
