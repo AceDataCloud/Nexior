@@ -5,8 +5,8 @@
       <category-tiles
         v-if="categoriesEnabled && categories.length"
         :items="categories"
-        :heading="site?.home?.heading || $t('intro.home.quick.title')"
-        :subtitle="site?.home?.subtitle || $t('intro.home.quick.subtitle')"
+        :heading="$t('intro.home.quick.title')"
+        :subtitle="$t('intro.home.quick.subtitle')"
         @category-image-error="onCategoryImageError"
         @icon-error="onIconError"
       />
@@ -170,9 +170,7 @@ export default defineComponent({
           const items = scene.tools.flatMap((tool) => {
             const definition = HOME_CAPABILITY_DEFINITIONS.get(tool.capability);
             if (!definition || !this.enabledKeys.has(tool.capability)) return [];
-            return [
-              { ...this.resolve(definition), description: tool.description || this.$t(definition.descriptionKey) }
-            ];
+            return [this.resolve(definition)];
           });
           if (!items.length) continue;
           resolved.push({

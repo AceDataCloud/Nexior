@@ -5,149 +5,111 @@
         <h3>{{ $t('site.homeScenes.title') }}</h3>
         <p>{{ $t('site.homeScenes.tip') }}</p>
       </div>
-      <el-button type="primary" :disabled="!management || saving" @click="addScene">
+      <el-button type="primary" :disabled="!management || saving" @click="openCreate">
         {{ $t('site.homeScenes.add') }}
       </el-button>
     </header>
-    <div class="scene-copy">
-      <label for="scene-heading">{{ $t('site.homeScenes.heading') }}</label>
-      <el-input id="scene-heading" v-model="heading" :placeholder="$t('intro.home.quick.title')" maxlength="120" />
-      <auto-translate-toggle
-        v-if="site?.id && heading"
-        model="site"
-        field="home.heading"
-        :object-id="site.id"
-        :enabled="autoFields.includes('heading')"
-        :current-value="heading"
-        @enabled-success="refresh"
-        @disabled-success="refresh"
-      />
-      <label for="scene-subtitle">{{ $t('site.homeScenes.subtitle') }}</label>
-      <el-input id="scene-subtitle" v-model="subtitle" :placeholder="$t('intro.home.quick.subtitle')" maxlength="240" />
-      <auto-translate-toggle
-        v-if="site?.id && subtitle"
-        model="site"
-        field="home.subtitle"
-        :object-id="site.id"
-        :enabled="autoFields.includes('subtitle')"
-        :current-value="subtitle"
-        @enabled-success="refresh"
-        @disabled-success="refresh"
-      />
-    </div>
+
     <div class="scene-list">
-      <article v-for="(scene, index) in scenes" :key="scene.id" class="scene-editor">
-        <div class="scene-toolbar">
-          <strong>{{ scene.title || $t('site.homeScenes.untitled') }}</strong>
-          <div>
-            <el-button :disabled="index === 0" :aria-label="$t('site.homeScenes.up')" @click="moveScene(index, -1)"
-              >↑</el-button
-            >
-            <el-button
-              :disabled="index === scenes.length - 1"
-              :aria-label="$t('site.homeScenes.down')"
-              @click="moveScene(index, 1)"
-              >↓</el-button
-            >
-            <el-switch v-model="scene.visible" :aria-label="$t('site.homeScenes.visible')" />
-            <el-button type="danger" plain @click="removeScene(index)">{{ $t('site.homeScenes.remove') }}</el-button>
-          </div>
+      <article v-for="(scene, index) in scenes" :key="scene.id" class="scene-row">
+        <img v-if="scene.image_url" :src="scene.image_url" :alt="scene.title" />
+        <div v-else class="scene-cover" aria-hidden="true" />
+        <div class="scene-summary">
+          <strong>{{ scene.title }}</strong>
+          <span>{{ scene.description }}</span>
+          <small>{{ $t('site.homeScenes.toolCount', { count: scene.tools.length }) }}</small>
         </div>
-        <div class="scene-fields">
-          <label :for="`scene-title-${scene.id}`">{{ $t('site.homeScenes.sceneTitle') }}</label>
-          <div class="scene-input">
-            <el-input :id="`scene-title-${scene.id}`" v-model="scene.title" maxlength="120" />
-            <auto-translate-toggle
-              v-if="site?.id && scene.title && savedIds.has(scene.id)"
-              model="site"
-              :field="`home.scenes.${scene.id}.title`"
-              :object-id="site.id"
-              :enabled="autoFields.includes(`scenes.${scene.id}.title`)"
-              :current-value="scene.title"
-              @enabled-success="refresh"
-              @disabled-success="refresh"
-            />
+        <div class="scene-actions">
+          <el-button :aria-label="$t('site.homeScenes.up')" :disabled="index === 0" @click="moveScene(index, -1)"
+            >↑</el-button
+          >
+          <el-button
+            :aria-label="$t('site.homeScenes.down')"
+            :disabled="index === scenes.length - 1"
+            @click="moveScene(index, 1)"
+            >↓</el-button
+          >
+          <el-switch v-model="scene.visible" :aria-label="$t('site.homeScenes.visible')" />
+          <el-button @click="openEdit(index)">{{ $t('site.homeScenes.edit') }}</el-button>
+        </div>
+      </article>
+    </div>
+    <div class="scenes-footer">
+      <el-button :disabled="!management || saving" @click="resetDefaults">{{
+        $t('site.homeScenes.defaults')
+      }}</el-button>
+      <el-button type="primary" :loading="saving" :disabled="!management || editing" @click="save">
+        {{ $t('site.homeScenes.save') }}
+      </el-button>
+    </div>
+
+    <el-dialog
+      v-model="editing"
+      :title="$t('site.homeScenes.edit')"
+      width="min(680px, 94vw)"
+      append-to-body
+      :close-on-click-modal="false"
+    >
+      <el-form v-if="draft" label-position="top" @submit.prevent>
+        <el-form-item :label="$t('site.homeScenes.sceneTitle')">
+          <el-input id="home-scene-title" v-model="draft.title" maxlength="120" />
+        </el-form-item>
+        <el-form-item :label="$t('site.homeScenes.sceneDescription')">
+          <el-input id="home-scene-description" v-model="draft.description" maxlength="240" />
+        </el-form-item>
+        <el-form-item :label="$t('site.homeScenes.image')">
+          <div class="cover-picker">
+            <el-button @click="cropperVisible = true">{{ $t('site.homeScenes.upload') }}</el-button>
+            <el-input id="home-scene-image" v-model="draft.image_url" placeholder="https://" maxlength="2048" />
           </div>
-          <label :for="`scene-description-${scene.id}`">{{ $t('site.homeScenes.sceneDescription') }}</label>
-          <div class="scene-input">
-            <el-input :id="`scene-description-${scene.id}`" v-model="scene.description" maxlength="240" />
-            <auto-translate-toggle
-              v-if="site?.id && scene.description && savedIds.has(scene.id)"
-              model="site"
-              :field="`home.scenes.${scene.id}.description`"
-              :object-id="site.id"
-              :enabled="autoFields.includes(`scenes.${scene.id}.description`)"
-              :current-value="scene.description"
-              @enabled-success="refresh"
-              @disabled-success="refresh"
-            />
-          </div>
-          <label :for="`scene-image-${scene.id}`">{{ $t('site.homeScenes.image') }}</label>
-          <div class="scene-input">
-            <el-input
-              :id="`scene-image-${scene.id}`"
-              v-model="scene.image_url"
-              maxlength="2048"
-              placeholder="https://"
-            />
-            <el-button @click="editingImageId = scene.id">{{ $t('site.homeScenes.upload') }}</el-button>
-          </div>
-          <img v-if="scene.image_url" :src="scene.image_url" class="scene-preview" :alt="scene.title" />
-          <label :for="`scene-tools-${scene.id}`">{{ $t('site.homeScenes.tools') }}</label>
+        </el-form-item>
+        <el-form-item :label="$t('site.homeScenes.tools')">
           <el-select
-            :id="`scene-tools-${scene.id}`"
-            :model-value="scene.tools.map((tool) => tool.capability)"
+            id="home-scene-tools"
+            :model-value="draft.tools.map((tool) => tool.capability)"
             multiple
             filterable
             :placeholder="$t('site.homeScenes.chooseTools')"
-            @change="selectTools(scene, $event as CapabilityKey[])"
+            @change="selectTools($event as CapabilityKey[])"
           >
             <el-option
               v-for="tool in catalog"
               :key="tool.capability"
-              :label="`${tool.name}${tool.enabled ? '' : ` (${$t('site.homeScenes.disabled')})`}`"
               :value="tool.capability"
+              :label="`${tool.name}${tool.enabled ? '' : ` (${$t('site.homeScenes.disabled')})`}`"
             />
           </el-select>
-        </div>
-        <div v-for="(tool, toolIndex) in scene.tools" :key="tool.capability" class="tool-row">
-          <strong>{{ toolName(tool.capability) }}</strong>
-          <el-input v-model="tool.description" :placeholder="$t('site.homeScenes.toolDescription')" maxlength="240" />
-          <auto-translate-toggle
-            v-if="
-              site?.id && tool.description && savedIds.has(scene.id) && savedTools[scene.id]?.includes(tool.capability)
-            "
-            model="site"
-            :field="`home.scenes.${scene.id}.tools.${tool.capability}.description`"
-            :object-id="site.id"
-            :enabled="autoFields.includes(`scenes.${scene.id}.tools.${tool.capability}.description`)"
-            :current-value="tool.description"
-            @enabled-success="refresh"
-            @disabled-success="refresh"
-          />
-          <el-button
-            :disabled="toolIndex === 0"
-            :aria-label="$t('site.homeScenes.up')"
-            @click="moveTool(scene, toolIndex, -1)"
+        </el-form-item>
+        <div v-for="(tool, index) in draft.tools" :key="tool.capability" class="tool-row">
+          <span>{{ toolName(tool.capability) }}</span>
+          <el-button :aria-label="$t('site.homeScenes.up')" :disabled="index === 0" @click="moveTool(index, -1)"
             >↑</el-button
           >
           <el-button
-            :disabled="toolIndex === scene.tools.length - 1"
             :aria-label="$t('site.homeScenes.down')"
-            @click="moveTool(scene, toolIndex, 1)"
+            :disabled="index === draft.tools.length - 1"
+            @click="moveTool(index, 1)"
             >↓</el-button
           >
         </div>
-      </article>
-    </div>
-    <div class="scenes-actions">
-      <el-button :disabled="saving || !management" @click="resetDefaults">{{
-        $t('site.homeScenes.defaults')
-      }}</el-button>
-      <el-button type="primary" :loading="saving" :disabled="!management" @click="save">{{
-        $t('site.homeScenes.save')
-      }}</el-button>
-    </div>
+        <div class="preview-label">{{ $t('site.homeScenes.preview') }}</div>
+        <div class="scene-preview">
+          <img v-if="draft.image_url" :src="draft.image_url" alt="" />
+          <div class="preview-copy">
+            <strong>{{ draft.title }}</strong
+            ><span>{{ draft.description }}</span>
+          </div>
+        </div>
+      </el-form>
+      <template #footer>
+        <el-button v-if="editIndex !== null" type="danger" plain @click="removeScene">{{
+          $t('site.homeScenes.remove')
+        }}</el-button>
+        <span class="footer-spacer" />
+        <el-button @click="editing = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button type="primary" @click="finishEdit">{{ $t('site.homeScenes.finishEdit') }}</el-button>
+      </template>
+    </el-dialog>
     <image-cropper
       v-model="cropperVisible"
       :title="$t('site.homeScenes.image')"
@@ -162,41 +124,38 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { ElButton, ElInput, ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
-import type { CapabilityKey } from '@/constants/capabilities';
+import {
+  ElButton,
+  ElDialog,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElMessage,
+  ElMessageBox,
+  ElOption,
+  ElSelect,
+  ElSwitch
+} from 'element-plus';
+import { CAPABILITY_ICONS, type CapabilityKey } from '@/constants/capabilities';
 import type { ISite, ISiteHomeScene } from '@/models';
 import { HOME_CATEGORIES, HOME_CAPABILITY_DEFINITIONS } from '@/pages/home/data';
 import { siteOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
-import { CAPABILITY_ICONS } from '@/constants/capabilities';
 import { withHomeScenes } from '@/utils/siteHome';
 import { extractApiErrorMessage } from '@/utils/apiError';
 import ImageCropper from '@/components/common/ImageCropper.vue';
-import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 
 const props = defineProps<{ site: ISite | null | undefined }>();
 const emit = defineEmits<{ saved: [] }>();
 const { t } = useI18n();
-const scenes = ref<ISiteHomeScene[]>([]);
 const management = ref<ISite | null>(null);
-const heading = ref('');
-const subtitle = ref('');
+const scenes = ref<ISiteHomeScene[]>([]);
+const editing = ref(false);
+const draft = ref<ISiteHomeScene | null>(null);
+const editIndex = ref<number | null>(null);
 const saving = ref(false);
 const restoreDefaults = ref(false);
-const editingImageId = ref<string>();
-const cropperVisible = computed({
-  get: () => Boolean(editingImageId.value),
-  set: (value: boolean) => {
-    if (!value) editingImageId.value = undefined;
-  }
-});
-const autoFields = computed(() => management.value?.home_auto_translated_fields || []);
-const savedIds = computed(() => new Set(management.value?.home_source?.scenes?.map((scene) => scene.id) || []));
-const savedTools = computed(() =>
-  Object.fromEntries(
-    (management.value?.home_source?.scenes || []).map((scene) => [scene.id, scene.tools.map((tool) => tool.capability)])
-  )
-);
+const cropperVisible = ref(false);
 const catalog = computed(() =>
   [...HOME_CAPABILITY_DEFINITIONS.values()].map((tool) => ({
     capability: tool.capability,
@@ -216,21 +175,17 @@ function defaults(): ISiteHomeScene[] {
     title: t(category.titleKey),
     description: t(category.descriptionKey),
     image_url: category.imageUrl,
-    visible: !(management.value?.home_source?.sections?.categories?.disabled_item_ids || []).includes(category.id),
+    visible: !(management.value?.home?.sections?.categories?.disabled_item_ids || []).includes(category.id),
     tools: category.candidates.map((tool) => ({ capability: tool.capability }))
   }));
 }
-
-function copyScenes(rows: ISiteHomeScene[]): ISiteHomeScene[] {
-  return rows.map((scene) => ({ ...scene, tools: scene.tools.map((tool) => ({ ...tool })) }));
+function copyScene(scene: ISiteHomeScene): ISiteHomeScene {
+  return { ...scene, tools: scene.tools.map((tool) => ({ capability: tool.capability })) };
 }
-
 function hydrate() {
-  const source = management.value?.home_source || management.value?.home;
+  scenes.value = management.value?.home?.scenes?.map(copyScene) || defaults();
   restoreDefaults.value = false;
-  scenes.value = source?.scenes ? copyScenes(source.scenes) : defaults();
-  heading.value = source?.heading || '';
-  subtitle.value = source?.subtitle || '';
+  editing.value = false;
 }
 async function refresh() {
   if (!props.site?.id) return;
@@ -251,48 +206,66 @@ watch(
   { immediate: true }
 );
 
-function addScene() {
+function openCreate() {
   if (scenes.value.length >= 16) return;
-  restoreDefaults.value = false;
-  scenes.value.push({ id: crypto.randomUUID(), title: '', description: '', visible: true, tools: [] });
+  draft.value = { id: crypto.randomUUID(), title: '', description: '', visible: true, tools: [] };
+  editIndex.value = null;
+  editing.value = true;
 }
-function removeScene(index: number) {
-  scenes.value.splice(index, 1);
+function openEdit(index: number) {
+  draft.value = copyScene(scenes.value[index]);
+  editIndex.value = index;
+  editing.value = true;
+}
+function finishEdit() {
+  if (!draft.value?.title.trim()) {
+    ElMessage.warning(t('site.homeScenes.titleRequired'));
+    return;
+  }
+  const item = copyScene(draft.value);
+  if (!item.image_url?.trim()) delete item.image_url;
+  if (editIndex.value === null) scenes.value.push(item);
+  else scenes.value[editIndex.value] = item;
+  restoreDefaults.value = false;
+  editing.value = false;
+}
+function removeScene() {
+  if (editIndex.value !== null) scenes.value.splice(editIndex.value, 1);
+  restoreDefaults.value = false;
+  editing.value = false;
 }
 function moveScene(index: number, delta: number) {
   const [scene] = scenes.value.splice(index, 1);
   scenes.value.splice(index + delta, 0, scene);
+  restoreDefaults.value = false;
 }
-function moveTool(scene: ISiteHomeScene, index: number, delta: number) {
-  const [tool] = scene.tools.splice(index, 1);
-  scene.tools.splice(index + delta, 0, tool);
+function selectTools(selected: CapabilityKey[]) {
+  if (!draft.value) return;
+  draft.value.tools = selected.map((capability) => ({ capability }));
 }
-function selectTools(scene: ISiteHomeScene, selected: CapabilityKey[]) {
-  scene.tools = selected.map(
-    (capability) => scene.tools.find((tool) => tool.capability === capability) || { capability }
-  );
+function moveTool(index: number, delta: number) {
+  if (!draft.value) return;
+  const [tool] = draft.value.tools.splice(index, 1);
+  draft.value.tools.splice(index + delta, 0, tool);
 }
 function toolName(capability: CapabilityKey): string {
-  return catalog.value.find((item) => item.capability === capability)?.name || capability;
+  return catalog.value.find((tool) => tool.capability === capability)?.name || capability;
 }
 function onImageUploaded(url: string) {
-  const scene = scenes.value.find((item) => item.id === editingImageId.value);
-  if (scene) scene.image_url = url;
-  editingImageId.value = undefined;
+  if (draft.value) draft.value.image_url = url;
 }
 async function resetDefaults() {
-  restoreDefaults.value = true;
+  try {
+    await ElMessageBox.confirm(t('site.homeScenes.resetConfirm'), t('site.homeScenes.defaults'), { type: 'warning' });
+  } catch {
+    return;
+  }
   scenes.value = defaults();
-  heading.value = '';
-  subtitle.value = '';
-  await save();
+  restoreDefaults.value = true;
+  editing.value = false;
 }
 async function save() {
   if (!props.site?.id || !management.value) return;
-  if (!restoreDefaults.value && scenes.value.some((scene) => !scene.title.trim())) {
-    ElMessage.warning(t('site.homeScenes.titleRequired'));
-    return;
-  }
   saving.value = true;
   try {
     const { data: current } = await siteOperator.get(props.site.id);
@@ -301,22 +274,8 @@ async function save() {
       await refresh();
       return;
     }
-    const cleanedScenes = copyScenes(scenes.value).map((scene) => {
-      if (!scene.image_url?.trim()) delete scene.image_url;
-      scene.tools = scene.tools.map((tool) => (tool.description?.trim() ? tool : { capability: tool.capability }));
-      return scene;
-    });
-    const home = withHomeScenes(
-      { ...current, home: current.home_source || current.home },
-      cleanedScenes,
-      heading.value,
-      subtitle.value
-    );
-    if (restoreDefaults.value) {
-      home.scenes = null;
-    }
-    if (!heading.value.trim()) home.heading = null;
-    if (!subtitle.value.trim()) home.subtitle = null;
+    const home = withHomeScenes(current, scenes.value.map(copyScene));
+    if (restoreDefaults.value) home.scenes = null;
     await siteOperator.update(props.site.id, { home }, current.configuration_revision);
     await refresh();
     ElMessage.success(t('site.homeScenes.saved'));
@@ -333,87 +292,125 @@ async function save() {
 </script>
 
 <style lang="scss" scoped>
-.scenes-setting {
+.scenes-setting,
+.scene-list {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 .scenes-heading,
-.scene-toolbar,
-.scenes-actions {
+.scene-row,
+.scenes-footer,
+.scene-actions,
+.tool-row,
+.cover-picker {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
+}
+.scenes-heading,
+.scenes-footer {
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .scenes-heading h3 {
   margin: 0;
   font-size: 16px;
 }
+.scenes-heading p,
+.scene-summary span,
+.scene-summary small {
+  color: var(--el-text-color-secondary);
+}
 .scenes-heading p {
   margin: 4px 0 0;
-  color: var(--el-text-color-secondary);
 }
-.scene-copy,
-.scene-fields {
-  display: grid;
-  gap: 8px;
-}
-.scene-copy label,
-.scene-fields label {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-}
-.scene-list {
-  display: grid;
-  gap: 12px;
-}
-.scene-editor {
-  padding: 16px;
+.scene-row {
   border: 1px solid var(--el-border-color);
   border-radius: 12px;
+  padding: 12px;
   min-width: 0;
 }
-.scene-toolbar > div,
-.scene-input,
-.tool-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.scene-row > img,
+.scene-cover {
+  width: 96px;
+  height: 66px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--el-fill-color);
+  flex: none;
+}
+.scene-summary {
+  display: grid;
+  gap: 3px;
+  flex: 1;
   min-width: 0;
+}
+.scene-summary strong,
+.scene-summary span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.scene-actions {
+  flex: none;
+}
+.cover-picker {
+  width: 100%;
   flex-wrap: wrap;
 }
-.scene-toolbar {
-  margin-bottom: 12px;
-}
-.scene-input .el-input {
-  flex: 1 1 220px;
-}
-.scene-preview {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-block: 8px;
+.cover-picker .el-input,
+.el-select {
+  flex: 1;
+  min-width: 180px;
 }
 .tool-row {
-  padding-block: 8px;
   border-top: 1px solid var(--el-border-color-lighter);
+  padding-block: 8px;
 }
-.tool-row strong {
-  min-width: 120px;
+.tool-row span {
+  flex: 1;
 }
-.tool-row .el-input {
-  flex: 1 1 220px;
+.preview-label {
+  margin-block: 18px 8px;
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+}
+.scene-preview {
+  position: relative;
+  height: 160px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111a27;
+  color: #fff;
+}
+.scene-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.preview-copy {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: grid;
+  gap: 4px;
+  text-shadow: 0 2px 8px #000;
+}
+.preview-copy strong {
+  font-size: 20px;
+}
+.footer-spacer {
+  flex: 1;
 }
 @media (max-width: 600px) {
-  .scene-editor {
-    padding: 12px;
+  .scene-row {
+    flex-wrap: wrap;
   }
-  .tool-row strong {
+  .scene-actions {
     width: 100%;
+    justify-content: flex-end;
   }
 }
 </style>

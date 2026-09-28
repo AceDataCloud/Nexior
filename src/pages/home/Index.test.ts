@@ -91,7 +91,7 @@ describe('Studio workbench home', () => {
             id: 'video',
             title: 'Product ad',
             description: 'Campaigns',
-            tools: [{ capability: 'kling' }, { capability: 'seedance', description: 'Our video tool' }]
+            tools: [{ capability: 'kling' }, { capability: 'seedance' }]
           },
           { id: 'chat', title: 'Plan', description: 'Scripts', tools: [{ capability: 'kimi' }] }
         ]
@@ -100,7 +100,7 @@ describe('Studio workbench home', () => {
     const categories = wrapper.getComponent({ name: 'CategoryTiles' }).props('items');
     expect(categories.map((category: any) => category.title)).toEqual(['Product ad', 'Plan']);
     expect(categories[0].items.map((tool: any) => tool.capability)).toEqual(['seedance']);
-    expect(categories[0].items[0].description).toBe('Our video tool');
+    expect(categories[0].items[0].description).toBe('intro.model.seedance');
     expect(categories[1].items[0].routeName).toBe(HOME_CAPABILITY_DEFINITIONS.get('kimi')?.routeName);
   });
 

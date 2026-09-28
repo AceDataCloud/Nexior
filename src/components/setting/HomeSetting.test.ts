@@ -34,11 +34,4 @@ describe('setting/HomeSetting', () => {
     );
     expect(dispatch).toHaveBeenCalledWith('getSite');
   });
-  it('writes canonical category disabled ids', async () => {
-    const { wrapper } = mountSetting();
-    await (wrapper.vm as any).toggleCategory('music', false);
-    expect(vi.mocked(siteOperator.update).mock.calls.at(-1)?.[1]).toEqual({
-      home: { sections: { banner: { enabled: true }, categories: { disabled_item_ids: ['music'] } } }
-    });
-  });
 });

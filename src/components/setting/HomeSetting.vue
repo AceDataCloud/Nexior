@@ -18,20 +18,6 @@
           />
         </article>
       </div>
-      <div v-if="sectionEnabled('categories')" class="category-options">
-        <span>{{ $t('site.homeLayout.categoriesSelect') }}</span>
-        <div class="category-grid">
-          <el-checkbox
-            v-for="category in HOME_CATEGORIES"
-            :key="category.id"
-            :model-value="categoryVisible(category.id)"
-            :disabled="busyKey === 'categories'"
-            @change="toggleCategory(category.id, $event as boolean)"
-          >
-            {{ $t(category.titleKey) }}
-          </el-checkbox>
-        </div>
-      </div>
     </section>
     <home-scenes :site="site" @saved="onScenesSaved" />
     <banners-setting :site="site" />
@@ -41,20 +27,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElCheckbox, ElMessage, ElSwitch } from 'element-plus';
+import { ElMessage, ElSwitch } from 'element-plus';
 import BannersSetting from './Banners.vue';
 import HomeSectionsSetting from './HomeSections.vue';
 import HomeScenes from './HomeScenes.vue';
-import { HOME_CATEGORIES } from '@/pages/home/data';
 import { siteOperator } from '@/operators';
-import {
-  getHiddenCategoryIds,
-  isHomeSectionEnabled,
-  withHiddenCategoryIds,
-  withHomeSectionEnabled,
-  type HomeCategoryId,
-  type HomeSectionKey
-} from '@/utils/siteHome';
+import { isHomeSectionEnabled, withHomeSectionEnabled, type HomeSectionKey } from '@/utils/siteHome';
 
 const SECTIONS: Array<{ key: HomeSectionKey; titleKey: string; tipKey: string }> = [
   { key: 'banner', titleKey: 'site.homeLayout.banner', tipKey: 'site.homeLayout.bannerTip' },
@@ -64,16 +42,13 @@ const SECTIONS: Array<{ key: HomeSectionKey; titleKey: string; tipKey: string }>
 
 export default defineComponent({
   name: 'HomeSetting',
-  components: { BannersSetting, ElCheckbox, ElSwitch, HomeSectionsSetting, HomeScenes },
+  components: { BannersSetting, ElSwitch, HomeSectionsSetting, HomeScenes },
   data() {
-    return { HOME_CATEGORIES, sections: SECTIONS, busyKey: '' };
+    return { sections: SECTIONS, busyKey: '' };
   },
   computed: {
     site() {
       return this.$store.state.site;
-    },
-    hiddenCategoryIds(): Set<HomeCategoryId> {
-      return getHiddenCategoryIds(this.site);
     }
   },
   methods: {
@@ -91,7 +66,7 @@ export default defineComponent({
       this.busyKey = busyKey;
       try {
         const { data: latest } = await siteOperator.get(this.site.id);
-        const source = { ...latest, home: latest.home_source || latest.home };
+        const source = { ...latest, home: latest.home };
         await siteOperator.update(this.site.id, { home: change(source) }, latest.configuration_revision);
         await this.$store.dispatch('getSite');
       } catch {
@@ -102,16 +77,6 @@ export default defineComponent({
     },
     async toggleSection(key: HomeSectionKey, enabled: boolean): Promise<void> {
       await this.save((source) => withHomeSectionEnabled(source, key, enabled), key);
-    },
-    categoryVisible(id: string): boolean {
-      return !this.hiddenCategoryIds.has(id as HomeCategoryId);
-    },
-    async toggleCategory(id: string, visible: boolean): Promise<void> {
-      const hidden = new Set(this.hiddenCategoryIds);
-      const categoryId = id as HomeCategoryId;
-      if (visible) hidden.delete(categoryId);
-      else hidden.add(categoryId);
-      await this.save((source) => withHiddenCategoryIds(source, hidden), 'categories');
     }
   }
 });

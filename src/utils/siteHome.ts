@@ -53,17 +53,7 @@ export const withHiddenCategoryIds = (site: ISite | null | undefined, ids: Itera
   return home;
 };
 
-export const withHomeScenes = (
-  site: ISite | null | undefined,
-  scenes: ISiteHomeScene[],
-  heading?: string,
-  subtitle?: string
-): ISiteHome => {
-  const home = copyHome(site);
-  if (heading) home.heading = heading;
-  else delete home.heading;
-  if (subtitle) home.subtitle = subtitle;
-  else delete home.subtitle;
-  home.scenes = scenes;
-  return home;
-};
+export const withHomeScenes = (site: ISite | null | undefined, scenes: ISiteHomeScene[]): ISiteHome => ({
+  ...copyHome(site),
+  scenes
+});

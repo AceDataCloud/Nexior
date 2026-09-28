@@ -183,7 +183,6 @@ export interface ISiteHomeSectionConfig {
 
 export interface ISiteHomeTool {
   capability: CapabilityKey;
-  description?: string;
 }
 
 export interface ISiteHomeScene {
@@ -196,8 +195,6 @@ export interface ISiteHomeScene {
 }
 
 export interface ISiteHome {
-  heading?: string | null;
-  subtitle?: string | null;
   scenes?: ISiteHomeScene[] | null;
   sections?: {
     banner?: ISiteHomeSectionConfig;
@@ -279,8 +276,6 @@ export interface ISite {
   updated_at?: string;
   commerce?: ISiteCommerce | null;
   home?: ISiteHome | null;
-  home_source?: ISiteHome | null;
-  home_auto_translated_fields?: string[];
   theme?: ISiteTheme | null;
   branding?: ISiteBranding;
   analytics?: ISiteAnalytics;

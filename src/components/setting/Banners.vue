@@ -314,7 +314,7 @@ export default defineComponent({
       this.savingDefaultId = id;
       try {
         const { data: latest } = await siteOperator.get(this.site.id);
-        const source = { ...latest, home: latest.home_source || latest.home };
+        const source = { ...latest, home: latest.home };
         const hidden = getHiddenDefaultBannerIds(source);
         if (shown) hidden.delete(id);
         else hidden.add(id);
