@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 27 Sep 2026 20:22:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 28 Sep 2026 20:23:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.373.1
+
+Mon, 28 Sep 2026 20:23:46 GMT
+
+### Patches
+
+- Pass the active language and visual theme to custom HTML and Website homepage sections. (dev@acedata.cloud)
 
 ## 3.373.0
 
