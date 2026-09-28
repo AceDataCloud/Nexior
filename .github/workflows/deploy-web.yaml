@@ -142,13 +142,13 @@ jobs:
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}" --push \
             --cache-from type=gha --cache-to type=gha,mode=max .
 
-      - name: Apply manifests
-        if: steps.changes.outputs.deploy == 'true'
-        run: bash deploy/run.sh
-
       - name: Publish final image to Docker Hub
         if: steps.changes.outputs.deploy == 'true'
         run: |
           docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
             --tag acedatacloud/nexior:latest --push --cache-from type=gha .
+
+      - name: Apply manifests
+        if: steps.changes.outputs.deploy == 'true'
+        run: bash deploy/run.sh

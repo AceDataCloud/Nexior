@@ -32,7 +32,7 @@ for manifest in ('studio-deployment.yaml', 'studio-service.yaml', 'studio-proxy.
 assert release.index('studio-proxy.yaml') < release.index('studio-ingress.yaml')
 assert 'kubectl apply -f "$rendered"' in release
 assert 'rollout status' not in release and 'last-successful-revision' not in release
-assert workflow.index('preflight-release.sh') < workflow.index('--target final') < workflow.index('bash deploy/run.sh')
+assert workflow.index('preflight-release.sh') < workflow.index('Build and push final image') < workflow.index('Publish final image to Docker Hub') < workflow.index('bash deploy/run.sh')
 ci = (ROOT / '.github/workflows/check-pr.yaml').read_text()
 assert 'test-compatible-images.sh studio-frontend' in ci
 prepare = (ROOT / 'deploy/prepare-previous-assets.sh').read_text()
