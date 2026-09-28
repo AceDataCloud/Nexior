@@ -5,20 +5,33 @@
       v-for="section in renderable"
       :key="section.id"
       :section="section"
-      :locale="section.kind === 'html' ? locale : undefined"
+      :locale="section.kind === 'html' || section.kind === 'website' ? locale : undefined"
+      :theme="section.kind === 'html' || section.kind === 'website' ? theme : undefined"
     />
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import type { Component } from 'vue';
 import type { ISite, ISiteHomeSection, SiteHomeSectionKind } from '@/models';
+import type { HomeTheme } from '@/utils/homeHtmlIframe';
 import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
 import HomeWebsiteSection from './custom/HomeWebsiteSection.vue';
 
 const props = defineProps<{ sections: ISiteHomeSection[]; site?: ISite; locale?: string }>();
+const effectiveTheme = (): HomeTheme => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+const theme = ref<HomeTheme>(effectiveTheme());
+let themeObserver: MutationObserver | undefined;
+onMounted(() => {
+  theme.value = effectiveTheme();
+  themeObserver = new MutationObserver(() => {
+    theme.value = effectiveTheme();
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+});
+onBeforeUnmount(() => themeObserver?.disconnect());
 const componentByKind: Record<SiteHomeSectionKind, Component> = {
   markdown: HomeMarkdownSection,
   html: HomeHtmlSection,

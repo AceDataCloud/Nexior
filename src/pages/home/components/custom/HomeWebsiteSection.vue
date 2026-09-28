@@ -3,15 +3,16 @@
     <h2>{{ section.title }}</h2>
     <!-- Never add allow-same-origin: embedded sites must not inherit the parent session. -->
     <iframe
+      v-if="url"
       class="tenant-home-content tenant-home-website-frame"
-      :src="section.body"
+      :src="url"
       :title="section.title"
       :sandbox="HOME_HTML_IFRAME_SANDBOX"
       :style="section.height ? { height: `${section.height}px` } : undefined"
       loading="lazy"
       referrerpolicy="no-referrer"
     />
-    <a class="tenant-home-website-link" :href="section.body" target="_blank" rel="noopener noreferrer">
+    <a v-if="url" class="tenant-home-website-link" :href="url" target="_blank" rel="noopener noreferrer">
       {{ $t('site.homeSections.websiteOpenExternal', { host }) }}
     </a>
   </article>
@@ -20,16 +21,22 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { ISiteHomeSection } from '@/models';
-import { HOME_HTML_IFRAME_SANDBOX } from '@/utils/homeHtmlIframe';
+import { HOME_HTML_IFRAME_SANDBOX, normalizeHomeLocale } from '@/utils/homeHtmlIframe';
+import type { HomeTheme } from '@/utils/homeHtmlIframe';
 
-const props = defineProps<{ section: ISiteHomeSection }>();
-const host = computed(() => {
+const props = defineProps<{ section: ISiteHomeSection; locale?: string; theme?: HomeTheme }>();
+const url = computed(() => {
   try {
-    return new URL(props.section.body).hostname;
+    const target = new URL(props.section.body);
+    if (target.protocol !== 'https:' && target.protocol !== 'http:') return '';
+    target.searchParams.set('lang', normalizeHomeLocale(props.locale || 'en'));
+    target.searchParams.set('theme', props.theme || 'light');
+    return target.toString();
   } catch {
-    return props.section.body;
+    return '';
   }
 });
+const host = computed(() => (url.value ? new URL(url.value).hostname : ''));
 </script>
 
 <style scoped>

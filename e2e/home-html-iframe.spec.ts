@@ -8,7 +8,7 @@ test('shrinks after fixed overlays close and grows with intrinsic content', asyn
   const srcdoc = buildHomeHtmlIframeDocument(
     `<main id="content" style="height:900px;background:#222"></main>
      <div id="modal" style="position:fixed;inset:0;background:#0008"></div>`,
-    'zh-CN'
+    'zh-CN', true, 'dark'
   );
 
   await page.setContent('<iframe id="frame" style="display:block;width:500px;border:0"></iframe>');
@@ -47,7 +47,13 @@ test('shrinks after fixed overlays close and grows with intrinsic content', asyn
     .evaluate(() => ({
       lang: document.documentElement.lang,
       dir: document.documentElement.dir,
+      dataLang: document.documentElement.dataset.lang,
+      dataTheme: document.documentElement.dataset.theme,
+      colorScheme: getComputedStyle(document.documentElement).colorScheme,
       platform: (window as Window & { __ACEDATACLOUD__?: unknown }).__ACEDATACLOUD__
     }));
-  expect(context).toEqual({ lang: 'zh-CN', dir: 'ltr', platform: { locale: 'zh-CN', dir: 'ltr' } });
+  expect(context).toEqual({
+    lang: 'zh-CN', dir: 'ltr', dataLang: 'zh-CN', dataTheme: 'dark', colorScheme: 'dark',
+    platform: { locale: 'zh-CN', dir: 'ltr', theme: 'dark' }
+  });
 });
