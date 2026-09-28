@@ -11,12 +11,13 @@ export const HOME_HTML_IFRAME_SANDBOX = [
 ].join(' ');
 
 const RTL_LANGUAGES = new Set(['ar']);
-const normalizeLocale = (locale: string): string => {
+export const normalizeHomeLocale = (locale: string): string => {
   const normalized = locale.trim().replace('_', '-').slice(0, 35);
   return /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/.test(normalized) ? normalized : 'en';
 };
-const localeDirection = (locale: string): 'ltr' | 'rtl' =>
+export const homeLocaleDirection = (locale: string): 'ltr' | 'rtl' =>
   RTL_LANGUAGES.has(locale.split('-')[0].toLowerCase()) ? 'rtl' : 'ltr';
+export type HomeTheme = 'light' | 'dark';
 const scriptJson = (value: unknown): string =>
   JSON.stringify(value)
     .replace(/</g, '\\u003c')
@@ -98,23 +99,33 @@ const resizeBridge = `<script data-acedatacloud-resize>
 })();
 </script>`;
 
-const contextScript = (locale: string, dir: 'ltr' | 'rtl'): string => `<script data-acedatacloud-context>
+const contextScript = (
+  locale: string,
+  dir: 'ltr' | 'rtl',
+  theme: HomeTheme
+): string => `<script data-acedatacloud-context>
 Object.defineProperty(window, '__ACEDATACLOUD__', {
-  value: Object.freeze(${scriptJson({ locale, dir })}),
+  value: Object.freeze(${scriptJson({ locale, dir, theme })}),
   writable: false,
   configurable: false
 });
 </script>`;
 
-const headContent = (locale: string, dir: 'ltr' | 'rtl', autoResize: boolean): string => `<meta charset="UTF-8">
+const headContent = (
+  locale: string,
+  dir: 'ltr' | 'rtl',
+  theme: HomeTheme,
+  autoResize: boolean
+): string => `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base target="_top">
 <style data-acedatacloud-frame>
+html { color-scheme: ${theme}; }
 html, body { width: 100%; height: auto !important; min-height: 0 !important; margin: 0; overflow-x: hidden; }
 *, *::before, *::after { box-sizing: border-box; }
 img, video, svg, canvas, iframe { max-width: 100%; }
 </style>
-${contextScript(locale, dir)}
+${contextScript(locale, dir, theme)}
 ${autoResize ? resizeBridge : ''}`;
 
 const injectAfterOpeningTag = (source: string, tag: string, content: string): string => {
@@ -124,23 +135,28 @@ const injectAfterOpeningTag = (source: string, tag: string, content: string): st
   return `${source.slice(0, offset)}${content}${source.slice(offset)}`;
 };
 
-const applyHtmlLocale = (source: string, locale: string, dir: 'ltr' | 'rtl'): string =>
+const applyHtmlContext = (source: string, locale: string, dir: 'ltr' | 'rtl', theme: HomeTheme): string =>
   source.replace(/<html\b([^>]*)>/i, (_tag, attributes: string) => {
-    const cleaned = attributes.replace(/\s(?:lang|dir)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '');
-    return `<html${cleaned} lang="${locale}" dir="${dir}">`;
+    const cleaned = attributes.replace(/\s(?:lang|dir|data-lang|data-theme)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+    return `<html${cleaned} lang="${locale}" dir="${dir}" data-lang="${locale}" data-theme="${theme}">`;
   });
 
-export const buildHomeHtmlIframeDocument = (source: string, requestedLocale = 'en', autoResize = true): string => {
-  const locale = normalizeLocale(requestedLocale);
-  const dir = localeDirection(locale);
+export const buildHomeHtmlIframeDocument = (
+  source: string,
+  requestedLocale = 'en',
+  autoResize = true,
+  theme: HomeTheme = 'light'
+): string => {
+  const locale = normalizeHomeLocale(requestedLocale);
+  const dir = homeLocaleDirection(locale);
   if (!/<html\b[^>]*>/i.test(source)) {
-    return `<!DOCTYPE html><html lang="${locale}" dir="${dir}"><head>${headContent(locale, dir, autoResize)}</head><body>${source}</body></html>`;
+    return `<!DOCTYPE html><html lang="${locale}" dir="${dir}" data-lang="${locale}" data-theme="${theme}"><head>${headContent(locale, dir, theme, autoResize)}</head><body>${source}</body></html>`;
   }
-  const localized = applyHtmlLocale(source, locale, dir);
+  const localized = applyHtmlContext(source, locale, dir, theme);
   if (/<head\b[^>]*>/i.test(localized)) {
-    return injectAfterOpeningTag(localized, 'head', headContent(locale, dir, autoResize));
+    return injectAfterOpeningTag(localized, 'head', headContent(locale, dir, theme, autoResize));
   }
-  return injectAfterOpeningTag(localized, 'html', `<head>${headContent(locale, dir, autoResize)}</head>`);
+  return injectAfterOpeningTag(localized, 'html', `<head>${headContent(locale, dir, theme, autoResize)}</head>`);
 };
 
 export const homeHtmlIframeHeight = (data: unknown): number | null => {

@@ -18,6 +18,10 @@
     <div
       v-else
       class="tenant-home-content"
+      :lang="normalizedLocale"
+      :dir="direction"
+      :data-lang="normalizedLocale"
+      :data-theme="theme || 'light'"
       :style="section.height != null ? { height: `${section.height}px`, overflowY: 'auto' } : undefined"
       v-html="section.body"
     ></div>
@@ -33,16 +37,21 @@ import {
   HOME_HTML_IFRAME_MEASURE_MESSAGE,
   HOME_HTML_IFRAME_MIN_HEIGHT,
   HOME_HTML_IFRAME_SANDBOX,
-  homeHtmlIframeHeight
+  homeHtmlIframeHeight,
+  normalizeHomeLocale,
+  homeLocaleDirection
 } from '@/utils/homeHtmlIframe';
+import type { HomeTheme } from '@/utils/homeHtmlIframe';
 
-const props = defineProps<{ section: ISiteHomeSection; locale?: string }>();
+const props = defineProps<{ section: ISiteHomeSection; locale?: string; theme?: HomeTheme }>();
+const normalizedLocale = computed(() => normalizeHomeLocale(props.locale || 'en'));
+const direction = computed(() => homeLocaleDirection(normalizedLocale.value));
 const frame = ref<HTMLIFrameElement>();
 const fixedHeight = computed(() => props.section.height ?? null);
 const automaticHeight = computed(() => fixedHeight.value === null);
 const frameHeight = ref(fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT);
 const iframeDocument = computed(() =>
-  buildHomeHtmlIframeDocument(props.section.body, props.locale || 'en', automaticHeight.value)
+  buildHomeHtmlIframeDocument(props.section.body, normalizedLocale.value, automaticHeight.value, props.theme || 'light')
 );
 
 const onMessage = (event: MessageEvent): void => {
@@ -56,7 +65,7 @@ const requestHeight = (): void => {
 };
 
 watch(
-  () => [props.section.body, props.section.height, props.locale] as const,
+  () => [props.section.body, props.section.height, props.locale, props.theme] as const,
   () => {
     frameHeight.value = fixedHeight.value ?? HOME_HTML_IFRAME_MIN_HEIGHT;
   }
