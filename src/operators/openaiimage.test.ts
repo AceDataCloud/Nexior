@@ -47,3 +47,27 @@ describe('OpenAIImageOperator edit', () => {
     expect(form.has('quality')).toBe(false);
   });
 });
+
+describe('OpenAIImageOperator task summaries', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mocks.post.mockResolvedValue({ data: { items: [], count: 0 } });
+  });
+
+  it('requests summaries for paged history and pending ids', async () => {
+    await openaiimageOperator.tasks({ userId: 'user-1', limit: 20 }, { token: 'test-token' });
+    expect(mocks.post.mock.calls[0][1]).toEqual({
+      action: 'retrieve_batch',
+      user_id: 'user-1',
+      limit: 20,
+      view: 'summary'
+    });
+    await openaiimageOperator.tasks({ ids: ['task-1'] }, { token: 'test-token' });
+    expect(mocks.post.mock.calls[1][1]).toEqual({ action: 'retrieve_batch', ids: ['task-1'], view: 'summary' });
+  });
+
+  it('keeps single-task retrieval full', async () => {
+    await openaiimageOperator.task('task-1', { token: 'test-token' });
+    expect(mocks.post.mock.calls[0][1]).toEqual({ action: 'retrieve', id: 'task-1' });
+  });
+});
