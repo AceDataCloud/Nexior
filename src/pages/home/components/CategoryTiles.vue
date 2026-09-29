@@ -3,77 +3,98 @@
     <div class="section-heading">
       <div>
         <span>{{ $t('intro.home.quick.eyebrow') }}</span>
-        <h2 id="home-categories-title">{{ $t('intro.home.quick.title') }}</h2>
+        <h2 id="home-categories-title">{{ heading }}</h2>
       </div>
-      <p>{{ $t('intro.home.quick.subtitle') }}</p>
+      <p>{{ subtitle }}</p>
     </div>
-    <div class="category-grid">
-      <button
-        v-for="item in items"
-        :key="item.id"
-        :ref="(element) => rememberButton(item.id, element)"
-        type="button"
-        class="category-card"
-        :aria-expanded="openId === item.id"
-        :aria-controls="`home-category-panel-${item.id}`"
-        @click="toggle(item.id)"
-      >
-        <img
-          v-if="item.imageUrl"
-          :src="item.imageUrl"
-          :alt="item.title"
-          loading="lazy"
-          decoding="async"
-          :style="{ objectPosition: item.focalPoint || 'center' }"
-          @error="$emit('category-image-error', item.id)"
-        />
-        <span class="shade" />
-        <span class="category-copy">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.description }}</span>
-          <b>{{ $t(openId === item.id ? 'intro.home.quick.close' : 'intro.home.quick.explore') }} ↓</b>
-        </span>
-      </button>
-    </div>
-
-    <transition name="panel">
-      <div
-        v-if="activeCategory"
-        :id="`home-category-panel-${activeCategory.id}`"
-        class="capability-panel"
-        role="region"
-        :aria-label="$t('intro.home.quick.panelLabel', { category: activeCategory.title })"
-      >
-        <router-link
-          v-for="item in activeCategory.items"
-          :key="item.capability"
-          :to="{ name: item.routeName }"
-          class="capability-card"
-        >
-          <img :src="item.icon" alt="" @error="$emit('icon-error', item)" />
-          <span>
-            <strong>{{ item.name }}</strong>
-            <small>{{ item.description }}</small>
-          </span>
-          <b>{{ $t('intro.home.createNow') }} <span aria-hidden="true">→</span></b>
-        </router-link>
+    <div class="category-rows">
+      <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="category-grid">
+        <template v-for="item in row" :key="item.id">
+          <button
+            :ref="(element) => rememberButton(item.id, element)"
+            type="button"
+            class="category-card"
+            :aria-expanded="openId === item.id"
+            :aria-controls="`home-category-panel-${item.id}`"
+            @click="toggle(item.id)"
+          >
+            <img
+              v-if="item.imageUrl"
+              :src="item.imageUrl"
+              :alt="item.title"
+              loading="lazy"
+              decoding="async"
+              :style="{ objectPosition: item.focalPoint || 'center' }"
+              @error="$emit('category-image-error', item.id)"
+            />
+            <span class="shade" />
+            <span class="category-copy">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.description }}</span>
+              <b>{{ $t(openId === item.id ? 'intro.home.quick.close' : 'intro.home.quick.explore') }} ↓</b>
+            </span>
+          </button>
+        </template>
+        <transition name="panel">
+          <div
+            v-if="row.some((item) => item.id === openId) && activeCategory"
+            :id="`home-category-panel-${activeCategory.id}`"
+            class="capability-panel"
+            role="region"
+            :aria-label="$t('intro.home.quick.panelLabel', { category: activeCategory?.title })"
+          >
+            <router-link
+              v-for="tool in activeCategory?.items || []"
+              :key="tool.capability"
+              :to="{ name: tool.routeName }"
+              class="capability-card"
+            >
+              <img :src="tool.icon" alt="" @error="$emit('icon-error', tool)" />
+              <span>
+                <strong>{{ tool.name }}</strong>
+                <small>{{ tool.description }}</small>
+              </span>
+              <b>{{ $t('intro.home.createNow') }} <span aria-hidden="true">→</span></b>
+            </router-link>
+          </div>
+        </transition>
       </div>
-    </transition>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import type { ResolvedHomeCapability, ResolvedHomeCategory } from '../data';
 
-const props = defineProps<{ items: ResolvedHomeCategory[] }>();
+const props = defineProps<{ items: ResolvedHomeCategory[]; heading: string; subtitle: string }>();
 defineEmits<{
   'category-image-error': [id: string];
   'icon-error': [item: ResolvedHomeCapability];
 }>();
 
 const openId = ref<string>();
+const columns = ref(4);
+const rows = computed(() => {
+  const result: ResolvedHomeCategory[][] = [];
+  for (let index = 0; index < props.items.length; index += columns.value) {
+    result.push(props.items.slice(index, index + columns.value));
+  }
+  return result;
+});
+function updateColumns() {
+  columns.value = window.matchMedia?.('(max-width: 430px)').matches
+    ? 1
+    : window.matchMedia?.('(max-width: 1120px)').matches
+      ? 2
+      : 4;
+}
+onMounted(() => {
+  updateColumns();
+  window.addEventListener('resize', updateColumns);
+});
+onBeforeUnmount(() => window.removeEventListener('resize', updateColumns));
 const buttons = new Map<string, HTMLButtonElement>();
 const activeCategory = computed(() => props.items.find((item) => item.id === openId.value));
 
@@ -84,6 +105,16 @@ function rememberButton(id: string, element: Element | ComponentPublicInstance |
 
 function toggle(id: string): void {
   openId.value = openId.value === id ? undefined : id;
+  if (openId.value) {
+    void nextTick(() => {
+      if (window.matchMedia?.('(max-width: 430px)').matches) {
+        buttons.get(id)?.scrollIntoView?.({
+          behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  }
 }
 
 function closePanel(): void {
@@ -92,6 +123,13 @@ function closePanel(): void {
   openId.value = undefined;
   button?.focus();
 }
+
+watch(
+  () => props.items,
+  (items) => {
+    if (openId.value && !items.some((item) => item.id === openId.value)) openId.value = undefined;
+  }
+);
 
 defineExpose({ openId, activeCategory, toggle, closePanel });
 </script>
@@ -129,6 +167,11 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
     font-size: 13px;
     line-height: 1.55;
   }
+}
+
+.category-rows {
+  display: grid;
+  gap: 13px;
 }
 
 .category-grid {
@@ -226,6 +269,7 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 11px;
+  grid-column: 1 / -1;
   margin-top: 13px;
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -355,6 +399,7 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
   }
 
   .capability-panel {
+    margin-top: 0;
     padding: 10px;
   }
 }

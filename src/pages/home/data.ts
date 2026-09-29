@@ -1,4 +1,5 @@
 import type { CapabilityKey } from '@/constants/capabilities';
+import { ROUTE_SERP_INDEX } from '@/constants/serp';
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
   ROUTE_CLAUDE_CONVERSATION_NEW,
@@ -8,6 +9,22 @@ import {
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GROKVIDEO_INDEX,
   ROUTE_KLING_INDEX,
+  ROUTE_MIDJOURNEY_INDEX,
+  ROUTE_QRART_INDEX,
+  ROUTE_LUMA_INDEX,
+  ROUTE_PIKA_INDEX,
+  ROUTE_SORA_INDEX,
+  ROUTE_PIXVERSE_INDEX,
+  ROUTE_FLUX_INDEX,
+  ROUTE_HAILUO_INDEX,
+  ROUTE_MINIMAX_INDEX,
+  ROUTE_OMNI_INDEX,
+  ROUTE_POIVELLE_INDEX,
+  ROUTE_DIGITALHUMAN_INDEX,
+  ROUTE_WAN_INDEX,
+  ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_WEBEXTRATOR_INDEX,
+  ROUTE_CODING_BRIDGE_INDEX,
   ROUTE_MAESTRO_INDEX,
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
@@ -185,14 +202,31 @@ export const HOME_CATEGORIES: HomeCategory[] = [
 ];
 
 export const HOME_CAPABILITY_DEFINITIONS = new Map<CapabilityKey, HomeCapability>(
-  HOME_CATEGORIES.flatMap((category) => category.candidates.map((item) => [item.capability, item] as const))
+  [
+    ...HOME_CATEGORIES.flatMap((category) => category.candidates),
+    capability('kimi', ROUTE_KIMI_CONVERSATION_NEW, 'Kimi', 'intro.model.kimi', ''),
+    capability('midjourney', ROUTE_MIDJOURNEY_INDEX, 'Midjourney', 'intro.model.midjourney', ''),
+    capability('qrart', ROUTE_QRART_INDEX, 'QR Art', 'intro.model.qrart', ''),
+    capability('flux', ROUTE_FLUX_INDEX, 'Flux', 'intro.model.flux', ''),
+    capability('luma', ROUTE_LUMA_INDEX, 'Luma', 'intro.model.luma', ''),
+    capability('pika', ROUTE_PIKA_INDEX, 'Pika', 'intro.model.pika', ''),
+    capability('sora', ROUTE_SORA_INDEX, 'Sora', 'intro.model.sora', ''),
+    capability('pixverse', ROUTE_PIXVERSE_INDEX, 'Pixverse', 'intro.model.pixverse', ''),
+    capability('hailuo', ROUTE_HAILUO_INDEX, 'Hailuo', 'intro.model.hailuo', ''),
+    capability('minimax', ROUTE_MINIMAX_INDEX, 'MiniMax', 'intro.model.minimax', ''),
+    capability('omni', ROUTE_OMNI_INDEX, 'Omni', 'intro.model.omni', ''),
+    capability('maestro', ROUTE_MAESTRO_INDEX, 'Maestro', 'intro.model.maestro', ''),
+    capability('poivelle', ROUTE_POIVELLE_INDEX, 'Poivelle', 'intro.model.poivelle', ''),
+    capability('digitalhuman', ROUTE_DIGITALHUMAN_INDEX, 'Digital Human', 'intro.model.digitalhuman', ''),
+    capability('wan', ROUTE_WAN_INDEX, 'Wan', 'intro.model.wan', ''),
+    capability('serp', ROUTE_SERP_INDEX, 'SERP', 'intro.model.serp', ''),
+    capability('webextrator', ROUTE_WEBEXTRATOR_INDEX, 'Web Extractor', 'intro.model.webextrator', ''),
+    capability('codingBridge', ROUTE_CODING_BRIDGE_INDEX, 'Coding Bridge', 'intro.model.codingbridge', '')
+  ].map((item) => [item.capability, item] as const)
 );
 
 export const HOME_CAPABILITY_ROUTES = new Map<CapabilityKey, string>(
   [...HOME_CAPABILITY_DEFINITIONS].map(([key, item]) => [key, item.routeName])
 );
 
-export const HOME_CAPABILITY_KEYS = [
-  ...HOME_BANNERS.map((item) => item.capability),
-  ...HOME_CATEGORIES.flatMap((item) => item.candidates.map((candidate) => candidate.capability))
-];
+export const HOME_CAPABILITY_KEYS = [...HOME_CAPABILITY_DEFINITIONS.keys()];

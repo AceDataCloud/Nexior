@@ -311,12 +311,18 @@ export default defineComponent({
     },
     async onToggleDefault(id: string, shown: boolean) {
       if (!this.site?.id) return;
-      const hidden = new Set(this.hiddenDefaultIds);
-      if (shown) hidden.delete(id);
-      else hidden.add(id);
       this.savingDefaultId = id;
       try {
-        await siteOperator.update(this.site.id, { home: withHiddenDefaultBannerIds(this.site, hidden) });
+        const { data: latest } = await siteOperator.get(this.site.id);
+        const source = { ...latest, home: latest.home };
+        const hidden = getHiddenDefaultBannerIds(source);
+        if (shown) hidden.delete(id);
+        else hidden.add(id);
+        await siteOperator.update(
+          this.site.id,
+          { home: withHiddenDefaultBannerIds(source, hidden) },
+          latest.configuration_revision
+        );
         await this.$store.dispatch('getSite');
       } catch {
         ElMessage.error(this.$t('site.banner.updateFailed'));

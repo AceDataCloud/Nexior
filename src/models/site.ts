@@ -181,7 +181,21 @@ export interface ISiteHomeSectionConfig {
   disabled_item_ids?: string[];
 }
 
+export interface ISiteHomeTool {
+  capability: CapabilityKey;
+}
+
+export interface ISiteHomeScene {
+  id: string;
+  title: string;
+  description: string;
+  image_url?: string;
+  visible?: boolean;
+  tools: ISiteHomeTool[];
+}
+
 export interface ISiteHome {
+  scenes?: ISiteHomeScene[] | null;
   sections?: {
     banner?: ISiteHomeSectionConfig;
     categories?: ISiteHomeSectionConfig;
@@ -262,6 +276,8 @@ export interface ISite {
   updated_at?: string;
   commerce?: ISiteCommerce | null;
   home?: ISiteHome | null;
+  home_source?: ISiteHome | null;
+  home_auto_translated_fields?: string[];
   theme?: ISiteTheme | null;
   branding?: ISiteBranding;
   analytics?: ISiteAnalytics;

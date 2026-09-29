@@ -58,6 +58,10 @@ export default defineComponent({
     disabledReason: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:enabled', 'enabled-success', 'disabled-success'],
@@ -68,7 +72,7 @@ export default defineComponent({
   },
   computed: {
     isDisabled(): boolean {
-      return !this.objectId;
+      return this.disabled || !this.objectId;
     },
     tooltipContent(): string {
       if (this.isDisabled) {

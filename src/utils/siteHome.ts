@@ -1,4 +1,4 @@
-import type { ISite, ISiteHome } from '@/models';
+import type { ISite, ISiteHome, ISiteHomeScene } from '@/models';
 
 export const HOME_CATEGORY_IDS = ['chat', 'image', 'video', 'music'] as const;
 export type HomeCategoryId = (typeof HOME_CATEGORY_IDS)[number];
@@ -52,3 +52,8 @@ export const withHiddenCategoryIds = (site: ISite | null | undefined, ids: Itera
   };
   return home;
 };
+
+export const withHomeScenes = (site: ISite | null | undefined, scenes: ISiteHomeScene[]): ISiteHome => ({
+  ...copyHome(site),
+  scenes
+});

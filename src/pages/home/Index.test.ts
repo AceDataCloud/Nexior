@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { CAPABILITY_ICONS } from '@/constants/capabilities';
+import { CAPABILITY_ICONS, CAPABILITY_KEYS } from '@/constants/capabilities';
 import { showcaseOperator, siteBannerOperator, siteHomeSectionOperator } from '@/operators';
 import Home from './Index.vue';
-import { HOME_BANNERS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
+import { HOME_BANNERS, HOME_CAPABILITY_DEFINITIONS, HOME_CAPABILITY_KEYS, HOME_CATEGORIES } from './data';
 
 vi.mock('@/operators', () => ({
   showcaseOperator: { list: vi.fn() },
@@ -74,6 +74,39 @@ describe('Studio workbench home', () => {
     expect(new Set(HOME_CAPABILITY_KEYS).size).toBeGreaterThanOrEqual(15);
     expect(destinations.every((item) => item.routeName)).toBe(true);
     expect(destinations.some((item) => 'path' in item)).toBe(false);
+  });
+
+  it('registers every navigable capability without changing default four groups', () => {
+    expect([...HOME_CAPABILITY_DEFINITIONS.keys()].sort()).toEqual([...CAPABILITY_KEYS].sort());
+    expect(HOME_CATEGORIES.map((category) => category.candidates.length)).toEqual([5, 4, 4, 3]);
+  });
+
+  it('renders configured scenes in tenant order and filters disabled tools', () => {
+    const wrapper = mountHome({
+      id: 'tenant',
+      features: { seedance: { enabled: true }, kling: { enabled: false }, kimi: { enabled: true } },
+      home: {
+        scenes: [
+          {
+            id: 'video',
+            title: 'Product ad',
+            description: 'Campaigns',
+            tools: [{ capability: 'kling' }, { capability: 'seedance' }]
+          },
+          { id: 'chat', title: 'Plan', description: 'Scripts', tools: [{ capability: 'kimi' }] }
+        ]
+      }
+    });
+    const categories = wrapper.getComponent({ name: 'CategoryTiles' }).props('items');
+    expect(categories.map((category: any) => category.title)).toEqual(['Product ad', 'Plan']);
+    expect(categories[0].items.map((tool: any) => tool.capability)).toEqual(['seedance']);
+    expect(categories[0].items[0].description).toBe('intro.model.seedance');
+    expect(categories[1].items[0].routeName).toBe(HOME_CAPABILITY_DEFINITIONS.get('kimi')?.routeName);
+  });
+
+  it('treats explicitly empty scenes as an empty section', () => {
+    const wrapper = mountHome({ id: 'tenant', features: studioFeatures, home: { scenes: [] } });
+    expect(wrapper.findComponent({ name: 'CategoryTiles' }).exists()).toBe(false);
   });
 
   it('uses Qwen-specific copy for the image capability', () => {
