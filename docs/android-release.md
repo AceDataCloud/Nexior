@@ -47,21 +47,22 @@ src/constants/mobile.ts        (MOBILE_APP_VERSION)
         │  git tag android-v<version> && git push
         ▼
 .github/workflows/release-android.yaml
-   ├── checkout
-   ├── setup-node@v6  (Node 22)
-   ├── setup-java@v5  (Temurin 21)            ← Capacitor 8 requires Java 21
-   ├── npm ci
-   ├── npm run pack:android                   (web build → android/app/src/main/assets)
-   ├── npx cap sync android
-   ├── decode keystore (from ANDROID_KEYSTORE_BASE64)
-   ├── ./gradlew bundleRelease -P<creds>      (signed AAB)
-   ├── ./gradlew assembleRelease              (signed APK, artifact only)
+   ├── resolve version and store/package-only mode
+   ├── check all tracks' review lifecycles (skip when any is IN_REVIEW)
+   ├── setup Node 22 / Temurin 21 / npm ci
+   ├── build and stage separate full and Play web assets
+   ├── bundlePlayRelease / assembleFullRelease (signed AAB + sideload APK)
    ├── upload APK + AAB as workflow artifacts
-   ├── pick track  (push tag → internal, dispatch → input)
-   └── r0adkll/upload-google-play@v1          (tracks: <chosen>)
+   └── serialized Play submission
+       ├── recheck review state and reuse an existing bundle when possible
+       ├── upload a new Play AAB if needed
+       ├── update beta and, when requested, production in one edit
+       ├── recheck for a review started during upload
+       └── commit once (automatic review; 100% production by default)
 ```
 
-Total runtime ≈ 4 minutes on a `ubuntu-latest` runner.
+Build time varies by runner and Gradle cache. Package-only GitHub Release runs
+only build the full APK; dry runs only read the lifecycle/version decision.
 
 ## Daily release flow
 
