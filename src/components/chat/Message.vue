@@ -7,7 +7,7 @@
     :role="message.role"
   >
     <div class="author">
-      <el-image v-if="message.role === 'assistant'" :src="modelGroup?.icon" fit="cover" class="avatar" />
+      <el-image v-if="message.role === 'assistant'" :src="assistantAvatar" fit="cover" class="avatar" />
     </div>
     <div v-if="!errorText || hasRenderableAssistantContent" class="main">
       <div
@@ -299,6 +299,7 @@ import {
 } from '@/constants';
 
 import { canPurchaseApplication, getApplicationPurchaseRoute, isIOS } from '@/utils';
+import { resolveAssistantAvatar } from '@/utils/modelPresentation';
 
 interface IData {
   isEditing: boolean;
@@ -360,10 +361,14 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    modelName: {
+      type: String,
+      default: undefined
+    },
     /**
      * Assistant-avatar model group for contexts where the chat store isn't
      * the source of truth (the shared page has no active chat session).
-     * Falls back to the store when absent.
+     * Live chats fall back to the store when absent; read-only shares do not.
      */
     modelGroupOverride: {
       type: Object as () => IChatModelGroup | undefined,
@@ -409,10 +414,12 @@ export default defineComponent({
       );
     },
     modelGroup() {
-      // Prefer an explicit override (shared page); otherwise read the active
-      // chat session. Optional chaining guards the case where the chat store
-      // module isn't registered (anonymous /share/:id route).
+      // Public shares must not inherit the viewer's active chat group.
+      if (this.readonly) return this.modelGroupOverride;
       return this.modelGroupOverride || this.$store.state.chat?.modelGroup;
+    },
+    assistantAvatar(): string {
+      return resolveAssistantAvatar(this.$store.getters?.site, this.modelGroup, this.modelName);
     },
     // Plain-text view of `message.content` for the copy button. Assistant
     // messages are now stored as IChatMessageContentItem[] (text + tool_use

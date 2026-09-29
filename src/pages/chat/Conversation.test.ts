@@ -6,17 +6,20 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { BaseError, IChatMessageState, Status, type IChatConversation, type IChatMessage } from '@/models';
 import { chatOperator } from '@/operators';
+import { CHAT_MODEL_GPT_6_ASTRA } from '@/constants';
 import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
 
 const mountComponent = ({
   credentialToken,
   fetchedConversation,
-  conversationId = 'conversation-1'
+  conversationId = 'conversation-1',
+  model = undefined
 }: {
   credentialToken?: string;
   fetchedConversation?: Record<string, unknown>;
   conversationId?: string | null;
+  model?: typeof CHAT_MODEL_GPT_6_ASTRA;
 } = {}) => {
   const pendingConversation = new Promise(() => undefined);
   const dispatch = vi.fn((action: string) =>
@@ -58,7 +61,7 @@ const mountComponent = ({
                 conversations: [],
                 credential: credentialToken ? { token: credentialToken } : undefined,
                 memoryEnabled: true,
-                model: undefined,
+                model,
                 modelGroup: undefined,
                 service: undefined,
                 status: { getApplications: Status.None }
@@ -251,6 +254,21 @@ describe('chat/Conversation retry', () => {
 });
 
 describe('chat/Conversation loading state', () => {
+  it('passes the conversation model to restored assistant replies', async () => {
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      model: CHAT_MODEL_GPT_6_ASTRA,
+      fetchedConversation: {
+        id: 'conversation-1',
+        model: 'gpt-6-astra',
+        messages: [{ role: 'assistant', content: 'Earlier reply' }]
+      }
+    });
+    await flushPromises();
+    expect(wrapper.getComponent(Message).props('modelName')).toBe('gpt-6-astra');
+    wrapper.unmount();
+  });
+
   it('shows a status skeleton instead of the centered empty layout while history restores', async () => {
     const { dispatch, wrapper } = mountComponent({ credentialToken: 'token' });
     await vi.waitFor(() => expect(dispatch).toHaveBeenCalledWith('chat/getConversation', 'conversation-1'));

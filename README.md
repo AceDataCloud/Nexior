@@ -91,6 +91,7 @@ Create an API key and review current pricing at **[platform.acedata.cloud](https
 Nexior isn't just a client — it's a complete **AI-SaaS starter**. Every deployment ships with:
 
 - 👤 **User system** — email login/registration, out of the box.
+- 🎨 **Site branding** — assistant replies and shared conversations use your custom model icon, then your custom capability icon, with the default avatar used when neither is set.
 - 💳 **Payments** — accept payments with zero extra config.
 - 🤝 **Referral / distribution** — registered users bind permanently to the site owner; their spend pays you a commission. Withdraw anytime.
 

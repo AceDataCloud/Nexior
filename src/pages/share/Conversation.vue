@@ -23,7 +23,7 @@
         <div class="conversation-head">
           <h1 class="conversation-title">{{ title }}</h1>
           <div class="conversation-meta">
-            <img v-if="modelGroup?.icon" :src="modelGroup.icon" class="meta-icon" alt="model" />
+            <img v-if="assistantAvatar" :src="assistantAvatar" class="meta-icon" alt="model" />
             <span v-if="modelGroupName" class="meta-model">{{ modelGroupName }}</span>
             <span class="meta-badge">
               <view-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -37,6 +37,7 @@
             v-for="(message, index) in messages"
             :key="index"
             :message="message"
+            :model-name="conversation?.model"
             :messages="messages"
             :application="undefined"
             :readonly="true"
@@ -66,6 +67,7 @@ import { chatOperator } from '@/operators';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS } from '@/constants';
 import { IChatConversation, IChatMessage, IChatModelGroup } from '@/models';
 import { MARKDOWN_SANITIZE_KEY } from '@/components/common/VueMarkdown.vue';
+import { resolveAssistantAvatar } from '@/utils/modelPresentation';
 
 interface IData {
   loading: boolean;
@@ -120,6 +122,9 @@ export default defineComponent({
     },
     modelGroupName(): string {
       return this.modelGroup?.getDisplayName?.() || '';
+    },
+    assistantAvatar(): string {
+      return resolveAssistantAvatar(this.$store.getters?.site, this.modelGroup, this.conversation?.model);
     }
   },
   async mounted() {
