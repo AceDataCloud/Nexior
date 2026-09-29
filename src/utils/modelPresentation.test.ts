@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { IChatModel } from '@/models';
-import { resolveModelDisplayName } from './modelPresentation';
+import { resolveModelDisplayName, resolveModelIcon } from './modelPresentation';
 
 function model(group: IChatModel['modelGroup'] = 'chatgpt'): IChatModel {
   return {
@@ -40,5 +40,30 @@ describe('resolveModelDisplayName', () => {
     expect(
       resolveModelDisplayName({ features: { chatgpt: { models: { 'gpt-5.5': { display_name: ' ' } } } } }, item)
     ).toBe('GPT-5.5');
+  });
+});
+
+describe('resolveModelIcon', () => {
+  it('uses the current Site model icon without changing the canonical model', () => {
+    const item = model();
+    expect(
+      resolveModelIcon(
+        { features: { chatgpt: { models: { 'gpt-5.5': { icon_url: ' https://example.com/custom.png ' } } } } },
+        item
+      )
+    ).toBe('https://example.com/custom.png');
+    expect(item.icon).toBe('/gpt.png');
+    expect(item.name).toBe('gpt-5.5');
+  });
+
+  it('ignores other model groups and falls back for missing or blank icons', () => {
+    const item = model();
+    expect(resolveModelIcon(undefined, item)).toBe('/gpt.png');
+    expect(resolveModelIcon({ features: { grok: { models: { 'gpt-5.5': { icon_url: '/wrong.png' } } } } }, item)).toBe(
+      '/gpt.png'
+    );
+    expect(resolveModelIcon({ features: { chatgpt: { models: { 'gpt-5.5': { icon_url: ' ' } } } } }, item)).toBe(
+      '/gpt.png'
+    );
   });
 });

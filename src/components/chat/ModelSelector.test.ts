@@ -14,7 +14,7 @@ import type { IChatModel } from '@/models';
 
 const persistedModel = (model: IChatModel): IChatModel => JSON.parse(JSON.stringify(model));
 
-function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GROUP_CHATGPT) {
+function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GROUP_CHATGPT, site?: unknown) {
   const state = reactive({
     chat: {
       model,
@@ -29,7 +29,7 @@ function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GR
     global: {
       mocks: {
         $route: { meta: { modelGroup } },
-        $store: { state, dispatch },
+        $store: { state, dispatch, getters: { site } },
         $t: (key: string) => key
       },
       stubs: {
@@ -53,6 +53,17 @@ describe('ModelSelector', () => {
     expect(toRaw(state.chat.model)).toBe(CHAT_MODEL_GPT_5_6_SOL);
     expect(toRaw(state.chat.model)).not.toBe(CHAT_MODEL_GPT_6_ASTRA);
     expect(wrapper.find('.trigger-name').text()).toBe(CHAT_MODEL_GPT_5_6_SOL.getDisplayName());
+  });
+
+  it('shows the Site icon for the selected model and dropdown without changing the model ID', async () => {
+    const icon = 'https://example.com/my-model.png';
+    const { state, wrapper } = mountSelector(CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GROUP_CHATGPT, {
+      features: { chatgpt: { models: { [CHAT_MODEL_GPT_5_6_SOL.name]: { icon_url: icon } } } }
+    });
+    await nextTick();
+    expect(wrapper.find('.trigger-icon').attributes('src')).toBe(icon);
+    expect(wrapper.findAll('.item-icon').some((item) => item.attributes('src') === icon)).toBe(true);
+    expect(state.chat.model?.name).toBe(CHAT_MODEL_GPT_5_6_SOL.name);
   });
 
   it('preserves the selected model when the same route group is rebound', async () => {
