@@ -136,19 +136,6 @@
                     <span class="payname">{{ $t('order.title.aliPay') }}</span>
                   </div>
                   <div
-                    v-if="!enableCard"
-                    :class="{
-                      payway: true,
-                      stripe: true,
-                      active: payWay === PayWay.Stripe
-                    }"
-                    @click="payWay = PayWay.Stripe"
-                  >
-                    <span class="payicon stripe"></span>
-                    <span class="payname">{{ $t('order.title.stripe') }}</span>
-                  </div>
-                  <div
-                    v-if="enableCard"
                     :class="{
                       payway: true,
                       creditcard: true,
@@ -356,13 +343,6 @@ export default defineComponent({
     },
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
-    },
-    airwallexEnabled(): boolean {
-      return this.config?.features?.airwallex === true;
-    },
-    // When ENABLE_CARD is on, Card replaces Stripe in the payment picker.
-    enableCard(): boolean {
-      return !!this.config?.features?.ENABLE_CARD || this.airwallexEnabled;
     },
     isIos(): boolean {
       return isIOS();
@@ -675,7 +655,7 @@ export default defineComponent({
     },
     selectedPayWay(): PayWay {
       if (this.order?.pay_way === PayWay.Airwallex) return PayWay.Airwallex;
-      return this.payWay === PayWay.Card && this.airwallexEnabled ? PayWay.Airwallex : this.payWay || PayWay.WechatPay;
+      return this.payWay === PayWay.Card ? PayWay.Airwallex : this.payWay || PayWay.WechatPay;
     },
     onPay() {
       this.prepaying = true;

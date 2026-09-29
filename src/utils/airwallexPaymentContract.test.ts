@@ -6,11 +6,11 @@ const source = (path: string) => readFileSync(resolve(process.cwd(), path), 'utf
 
 describe('Airwallex card routing contract', () => {
   it.each(['src/pages/console/order/Detail.vue', 'src/pages/order/Pay.vue'])(
-    'routes feature-gated Card checkout through Airwallex in %s',
+    'routes Card checkout through Airwallex in %s',
     (path) => {
       const page = source(path);
       expect(page).toContain('PayWay.Airwallex');
-      expect(page).toContain('this.payWay === PayWay.Card && this.airwallexEnabled');
+      expect(page).toContain('this.payWay === PayWay.Card ? PayWay.Airwallex');
       expect(page).toContain('redirectToAirwallexCheckout(payment)');
       expect(page).toContain('this.order?.pay_way === PayWay.Airwallex');
       expect(page).toContain("payload.payment_contract = 'airwallex_payment_intent'");
