@@ -25,13 +25,9 @@ Before submitting a remediation build, verify that blocked AI results render no 
 
 ## Daily review guard
 
-Android automatically submits at 09:00 Asia/Shanghai (GitHub may start it later), updating beta and production together. The 05:47 testing schedule now only submits iOS: starting another Android beta review first would occupy the review slot and repeatedly block the production schedule. Manually dispatched testing and Android-tag releases still use the same `scripts/play_release.py` guard. GitHub Release package-only builds do not contact Play.
+Android checks Google Play every day at 09:00 Asia/Shanghai. If any track is `IN_REVIEW`, it waits; otherwise it submits a newer version, updating beta and production together in one review with 100% production rollout by default. The 05:47 schedule only runs iOS, so an earlier Android beta review cannot block production each day. Manual Android releases use the same check.
 
-The helper discovers all configured tracks and reads Google's [release summaries](https://developers.google.com/android-publisher/api-ref/rest/v3/applications.tracks.releases/list). `releaseLifecycleState=RELEASE_LIFECYCLE_STATE_IN_REVIEW` on **any** track blocks the entire submission, even if `package.json` has a newer version. Once no review is pending, a newer version can be submitted automatically. A rejected binary is not resubmitted under its old version code; a corrected new version can proceed. Missing/unknown lifecycle data and API failures stop the run instead of guessing.
-
-All Play-bound runs share one concurrency group and are queued without canceling the active run. The review check runs before building and again immediately before committing. Testing and production track changes for one release are committed in a single edit, so promotion does not replace the beta review created earlier in the same run. `force` and the parent's legacy `bypass_gate` input never override Android's review guard. Full rollout remains the default.
-
-Use `Release · Android` with `dry_run=true` to query the actual lifecycle and decision without building, uploading, updating tracks, or committing. The query creates and discards a temporary API edit to discover tracks and uploaded version codes; it does not alter a release. `ANDROID_POLICY_HOLD=cleared` is still required for production.
+`scripts/play_release.py` reads Google's [release lifecycle summaries](https://developers.google.com/android-publisher/api-ref/rest/v3/applications.tracks.releases/list), checks again before committing, and stops on API errors. Play runs are serialized. The production policy hold still applies. Use `dry_run=true` to check the decision without uploading or submitting.
 
 ## Pipeline overview
 

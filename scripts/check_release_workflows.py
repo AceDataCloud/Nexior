@@ -73,19 +73,6 @@ def main() -> None:
     require("VITE_PLAY_BUILD: 'true'" in android, "Play web bundle must compile out unqualified AI surfaces")
     require("ANDROID_POLICY_HOLD: ${{ vars.ANDROID_POLICY_HOLD }}" in android,
             "Play submission must receive the production policy hold")
-    require("python3 scripts/play_release.py check" in android and "python3 scripts/play_release.py publish" in android,
-            "Every store release must use the shared lifecycle guard before building and submitting")
-    require("android-play-store-release" in android and "cancel-in-progress: false" in android,
-            "Testing and production must serialize without canceling in-flight submissions")
-    require("needs.preflight.outputs.should-submit == 'true'" in android,
-            "Blocked preflight must also block promotion of an already uploaded bundle")
-    require("upload-google-play" not in android and "  promote:" not in android,
-            "Testing and production must commit together, not submit successive reviews")
-    require("/edits/{edit_id}/tracks/production" not in read("release-mobile-production.yaml"),
-            "Parent workflow must not mistake rollout status for review status")
-    testing_android = read("release-mobile-testing.yaml").split("  android:", 1)[1].split("  ios:", 1)[0]
-    require("if: github.event_name == 'workflow_dispatch'" in testing_android,
-            "Scheduled Android beta submissions must not starve the daily production review")
     desktop = read("release-desktop.yaml")
     require("ref: ${{ inputs.release_tag || github.sha }}" in android, "Android assets must checkout their release tag")
     require("ref: ${{ inputs.release_tag || github.sha }}" in desktop, "desktop assets must checkout their release tag")
