@@ -1,7 +1,8 @@
 name: Release · Mobile testing
 
-# Publish the current version to Google Play beta and external TestFlight once
-# per day. Reusable platform jobs are awaited, so failures propagate here.
+# Schedule external TestFlight daily. Android's daily production workflow commits
+# beta + production together; a separate morning beta review could starve it.
+# Manual testing still supports Android through the same review guard.
 on:
   schedule:
     # 05:47 Beijing time (UTC 21:47), after the daily asset release window.
@@ -18,6 +19,7 @@ concurrency:
 jobs:
   android:
     name: Android · Play beta
+    if: github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/release-android.yaml
     with:
       upload_to_play: true

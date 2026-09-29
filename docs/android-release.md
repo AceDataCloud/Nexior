@@ -25,7 +25,7 @@ Before submitting a remediation build, verify that blocked AI results render no 
 
 ## Daily review guard
 
-Both the 05:47 testing job and the 09:00 production job (Asia/Shanghai; GitHub may start them later) use `scripts/play_release.py`. Manual and Android-tag releases use the same guard. GitHub Release package-only builds do not contact Play.
+Android automatically submits at 09:00 Asia/Shanghai (GitHub may start it later), updating beta and production together. The 05:47 testing schedule now only submits iOS: starting another Android beta review first would occupy the review slot and repeatedly block the production schedule. Manually dispatched testing and Android-tag releases still use the same `scripts/play_release.py` guard. GitHub Release package-only builds do not contact Play.
 
 The helper discovers all configured tracks and reads Google's [release summaries](https://developers.google.com/android-publisher/api-ref/rest/v3/applications.tracks.releases/list). `releaseLifecycleState=RELEASE_LIFECYCLE_STATE_IN_REVIEW` on **any** track blocks the entire submission, even if `package.json` has a newer version. Once no review is pending, a newer version can be submitted automatically. A rejected binary is not resubmitted under its old version code; a corrected new version can proceed. Missing/unknown lifecycle data and API failures stop the run instead of guessing.
 

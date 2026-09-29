@@ -83,6 +83,9 @@ def main() -> None:
             "Testing and production must commit together, not submit successive reviews")
     require("/edits/{edit_id}/tracks/production" not in read("release-mobile-production.yaml"),
             "Parent workflow must not mistake rollout status for review status")
+    testing_android = read("release-mobile-testing.yaml").split("  android:", 1)[1].split("  ios:", 1)[0]
+    require("if: github.event_name == 'workflow_dispatch'" in testing_android,
+            "Scheduled Android beta submissions must not starve the daily production review")
     desktop = read("release-desktop.yaml")
     require("ref: ${{ inputs.release_tag || github.sha }}" in android, "Android assets must checkout their release tag")
     require("ref: ${{ inputs.release_tag || github.sha }}" in desktop, "desktop assets must checkout their release tag")
