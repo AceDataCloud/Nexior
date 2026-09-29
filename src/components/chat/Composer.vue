@@ -78,11 +78,11 @@
               <file-text-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               <span>{{ $t('chat.composer.addFiles') }}</span>
             </el-dropdown-item>
-            <el-dropdown-item @click="onOpenSkills">
+            <el-dropdown-item v-if="showOfficialTools" @click="onOpenSkills">
               <magic-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               <span>{{ $t('chat.composer.skills') }}</span>
             </el-dropdown-item>
-            <el-dropdown-item @click="onOpenConnections">
+            <el-dropdown-item v-if="showOfficialTools" @click="onOpenConnections">
               <connection-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
               <span>{{ $t('chat.composer.connections') }}</span>
             </el-dropdown-item>
@@ -166,6 +166,8 @@ import { IChatModel, IChatReference } from '@/models';
 import {
   getBaseUrlPlatform,
   isImageUrl,
+  isMainOfficial,
+  isWeb,
   openConnectionsManager,
   pasteUploadMixin,
   dropUploadMixin,
@@ -231,6 +233,9 @@ export default defineComponent({
     };
   },
   computed: {
+    showOfficialTools(): boolean {
+      return isMainOfficial() || !isWeb();
+    },
     model(): IChatModel {
       return this.$store.state.chat.model;
     },

@@ -10,7 +10,7 @@
           {{ $t('chat.message.startNewChat') }}
         </div>
       </div>
-      <div class="conversation" @click="onScheduledTasks">
+      <div v-if="showOfficialTools" class="conversation" @click="onScheduledTasks">
         <div class="icons">
           <time-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </div>
@@ -18,7 +18,7 @@
           {{ $t('chat.scheduledTasks.navTitle') }}
         </div>
       </div>
-      <div class="conversation" @click="onArtifacts">
+      <div v-if="showOfficialTools" class="conversation" @click="onArtifacts">
         <div class="icons">
           <file-archive-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </div>
@@ -102,6 +102,7 @@ import { defineComponent } from 'vue';
 import { ElSkeleton, ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
+import { isMainOfficial, isWeb } from '@/utils';
 import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_ARTIFACTS } from '@/router/constants';
 import ConversationActions, { type ConversationCommand } from './ConversationActions.vue';
 
@@ -127,6 +128,9 @@ export default defineComponent({
     return {};
   },
   computed: {
+    showOfficialTools(): boolean {
+      return isMainOfficial() || !isWeb();
+    },
     conversationId() {
       console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();

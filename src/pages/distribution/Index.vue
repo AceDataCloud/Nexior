@@ -75,7 +75,7 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="mb-4">
+      <el-row v-if="showOfficialTools" :gutter="15" class="mb-4">
         <el-col :span="24">
           <el-card shadow="hover" class="automation-card">
             <div>
@@ -213,7 +213,7 @@ import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
-import { getPriceString, isOfficial } from '@/utils';
+import { getPriceString, isMainOfficial, isOfficial, isWeb } from '@/utils';
 
 interface IData {
   invitees: IUser[];
@@ -256,6 +256,9 @@ export default defineComponent({
     };
   },
   computed: {
+    showOfficialTools(): boolean {
+      return isMainOfficial() || !isWeb();
+    },
     redirect() {
       return this.$route.query.redirect;
     },

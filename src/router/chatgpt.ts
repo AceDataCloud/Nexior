@@ -1,11 +1,15 @@
 import { CHAT_MODEL_GROUP_CHATGPT } from '@/constants';
+import { isMainOfficial, isWeb } from '@/utils';
 import {
   ROUTE_CHATGPT_CALL,
   ROUTE_CHATGPT_CONVERSATION,
   ROUTE_CHATGPT_CONVERSATION_NEW,
   ROUTE_CHAT_SCHEDULED_TASKS,
-  ROUTE_CHAT_ARTIFACTS
+  ROUTE_CHAT_ARTIFACTS,
+  ROUTE_INDEX
 } from './constants';
+
+const mainOfficialOnly = () => (isMainOfficial() || !isWeb() ? true : { name: ROUTE_INDEX, replace: true });
 
 export default {
   path: '/chatgpt',
@@ -41,11 +45,13 @@ export default {
     {
       path: 'scheduled',
       name: ROUTE_CHAT_SCHEDULED_TASKS,
+      beforeEnter: mainOfficialOnly,
       component: () => import('@/pages/chat/ScheduledTasks.vue')
     },
     {
       path: 'artifacts',
       name: ROUTE_CHAT_ARTIFACTS,
+      beforeEnter: mainOfficialOnly,
       component: () => import('@/pages/chat/Artifacts.vue')
     }
   ]
