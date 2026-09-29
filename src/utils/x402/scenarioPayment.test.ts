@@ -3,10 +3,9 @@
 import { effectScope, watchEffect } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const gates = vi.hoisted(() => ({ web: true, enabled: true }));
+const gates = vi.hoisted(() => ({ web: true }));
 
 vi.mock('@/utils/surface', () => ({ isWeb: () => gates.web }));
-vi.mock('@/utils/featureFlag', () => ({ isFeatureEnabled: () => gates.enabled }));
 
 const STORAGE_KEY = 'nexior:x402:payment-mode';
 const loadModule = () => import('./scenarioPayment');
@@ -17,7 +16,6 @@ describe('scenario payment preference', () => {
     vi.resetModules();
     localStorage.clear();
     gates.web = true;
-    gates.enabled = true;
   });
 
   it('defaults to credits without a stored preference', async () => {
@@ -163,17 +161,13 @@ describe('scenario payment preference', () => {
     expect(payment.scenarioPaymentState('nanobanana').mode).toBe('wallet');
   });
 
-  it('uses credits while x402 is unavailable without erasing wallet preference', async () => {
+  it('uses credits outside the web surface without erasing wallet preference', async () => {
     const payment = await loadModule();
     payment.setPreferredPaymentMode('wallet');
 
-    gates.enabled = false;
-    expect(payment.scenarioPaymentState('openaiimage').mode).toBe('credits');
-    expect(localStorage.getItem(STORAGE_KEY)).toBe('wallet');
-
-    gates.enabled = true;
     gates.web = false;
     expect(payment.scenarioPaymentState('nanobanana').mode).toBe('credits');
+    expect(localStorage.getItem(STORAGE_KEY)).toBe('wallet');
 
     gates.web = true;
     expect(payment.scenarioPaymentState('nanobanana').mode).toBe('wallet');
