@@ -60,12 +60,27 @@
                 <small>{{ model.name }}</small>
               </div>
             </div>
-            <el-input
-              v-model="modelAliasDrafts[model.name]"
-              clearable
-              maxlength="120"
-              :placeholder="$t('site.capabilityOverride.modelNamePlaceholder')"
-            />
+            <div class="model-customization">
+              <el-input
+                v-model="modelAliasDrafts[model.name]"
+                clearable
+                maxlength="120"
+                :placeholder="$t('site.capabilityOverride.modelNamePlaceholder')"
+              />
+              <div class="model-icon-actions">
+                <img :src="modelIconDrafts[model.name] || model.icon" class="model-icon-preview" alt="" />
+                <el-button link type="primary" @click="editModelIcon(model.name)">
+                  {{
+                    modelIconDrafts[model.name]
+                      ? $t('site.capabilityOverride.modelReplaceIcon')
+                      : $t('site.capabilityOverride.modelUploadIcon')
+                  }}
+                </el-button>
+                <el-button v-if="modelIconDrafts[model.name]" link @click="modelIconDrafts[model.name] = ''">
+                  {{ $t('site.capabilityOverride.modelDefaultIcon') }}
+                </el-button>
+              </div>
+            </div>
           </div>
         </div>
       </template>
@@ -100,6 +115,17 @@
       accept="image/png,image/jpeg,image/webp"
       shape="rectangle"
       @uploaded="iconUrl = $event"
+    />
+
+    <image-cropper
+      v-model="modelIconEditorVisible"
+      :title="$t('site.capabilityOverride.editModelIcon')"
+      :format-hint="$t('site.capabilityOverride.iconTip')"
+      :aspect-ratio="1"
+      :output-width="512"
+      accept="image/png,image/jpeg,image/webp"
+      shape="rectangle"
+      @uploaded="onModelIconUploaded"
     />
 
     <template #footer>
@@ -163,6 +189,9 @@ export default defineComponent({
       instructions: '',
       skills: [] as ISiteAssistantSkillBinding[],
       modelAliasDrafts: {} as Record<string, string>,
+      modelIconDrafts: {} as Record<string, string>,
+      editingModelIcon: '' as string,
+      modelIconEditorVisible: false,
       autoTranslatedFields: [] as string[],
       iconEditorVisible: false,
       submitting: false,
@@ -211,8 +240,21 @@ export default defineComponent({
       this.modelAliasDrafts = Object.fromEntries(
         this.aliasModels.map((model) => [model.name, models[model.name]?.display_name ?? ''])
       );
+      this.modelIconDrafts = Object.fromEntries(
+        this.aliasModels.map((model) => [model.name, models[model.name]?.icon_url ?? ''])
+      );
+      this.editingModelIcon = '';
+      this.modelIconEditorVisible = false;
       this.autoTranslatedFields = [...(this.override?.auto_translated_fields ?? [])];
       this.iconEditorVisible = false;
+    },
+    editModelIcon(modelId: string): void {
+      this.editingModelIcon = modelId;
+      this.modelIconEditorVisible = true;
+    },
+    onModelIconUploaded(url: string): void {
+      if (this.editingModelIcon) this.modelIconDrafts[this.editingModelIcon] = url;
+      this.editingModelIcon = '';
     },
     extractError(error: unknown): string {
       return extractApiErrorMessage(error);
@@ -223,7 +265,13 @@ export default defineComponent({
       const models = { ...(feature.models ?? {}) };
       for (const model of this.aliasModels) {
         const displayName = (this.modelAliasDrafts[model.name] ?? '').trim();
-        if (displayName) models[model.name] = { display_name: displayName };
+        const iconUrl = (this.modelIconDrafts[model.name] ?? '').trim();
+        const updatedModel = { ...(models[model.name] ?? {}) };
+        if (displayName) updatedModel.display_name = displayName;
+        else delete updatedModel.display_name;
+        if (iconUrl) updatedModel.icon_url = iconUrl;
+        else delete updatedModel.icon_url;
+        if (Object.keys(updatedModel).length) models[model.name] = updatedModel;
         else delete models[model.name];
       }
 
@@ -447,6 +495,30 @@ export default defineComponent({
 
 .model-name-default small {
   color: var(--el-text-color-secondary);
+}
+
+.model-customization {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.model-icon-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.model-icon-actions .el-button + .el-button {
+  margin-left: 0;
+}
+
+.model-icon-preview {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 @media (max-width: 479px) {

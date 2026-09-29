@@ -234,6 +234,53 @@ describe('CapabilityOverrideDialog', () => {
     });
   });
 
+  it('saves a model icon while preserving its name and unrelated model fields', async () => {
+    mocks.updateSite.mockResolvedValue({ data: { id: 'site-1' } });
+    const wrapper = mountDialog(null, {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: {
+        chatgpt: {
+          models: { 'gpt-5.5': { display_name: 'My Model', extra: 'kept' }, other: { icon_url: '/other.png' } }
+        }
+      }
+    });
+    const vm = wrapper.vm as any;
+    vm.editModelIcon('gpt-5.5');
+    vm.onModelIconUploaded('https://example.com/custom.png');
+    await vm.saveSiteConfiguration();
+
+    expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models).toEqual({
+      'gpt-5.5': { display_name: 'My Model', icon_url: 'https://example.com/custom.png', extra: 'kept' },
+      other: { icon_url: '/other.png' }
+    });
+    expect(mocks.updateSite.mock.calls[0][2]).toBe(7);
+  });
+
+  it('clears only the edited icon and keeps its display name', async () => {
+    mocks.updateSite.mockResolvedValue({ data: { id: 'site-1' } });
+    const wrapper = mountDialog(null, {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: { chatgpt: { models: { 'gpt-5.5': { display_name: 'My Model', icon_url: '/old.png' } } } }
+    });
+    await wrapper.setData({ modelIconDrafts: { 'gpt-5.5': '' } });
+    await (wrapper.vm as any).saveSiteConfiguration();
+    expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models['gpt-5.5']).toEqual({ display_name: 'My Model' });
+  });
+
+  it('clears only the edited name and keeps its custom icon', async () => {
+    mocks.updateSite.mockResolvedValue({ data: { id: 'site-1' } });
+    const wrapper = mountDialog(null, {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: { chatgpt: { models: { 'gpt-5.5': { display_name: 'Old', icon_url: '/icon.png' } } } }
+    });
+    await wrapper.setData({ modelAliasDrafts: { 'gpt-5.5': '' } });
+    await (wrapper.vm as any).saveSiteConfiguration();
+    expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models['gpt-5.5']).toEqual({ icon_url: '/icon.png' });
+  });
+
   it('does not write appearance after a Site revision conflict', async () => {
     mocks.updateSite.mockRejectedValue({ response: { status: 409, data: { detail: 'Site configuration changed' } } });
     const wrapper = mountDialog(null, { id: 'site-1', configuration_revision: 7, features: {} });

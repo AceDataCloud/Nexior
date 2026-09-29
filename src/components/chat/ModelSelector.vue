@@ -2,7 +2,7 @@
   <div class="selector">
     <el-dropdown trigger="click" popper-class="model-selector-popper">
       <div class="trigger">
-        <img v-if="model?.icon" :src="model.icon" class="trigger-icon" />
+        <img v-if="model && modelIcon(model)" :src="modelIcon(model)" class="trigger-icon" />
         <span class="trigger-name">{{ model ? modelDisplayName(model) : '' }}</span>
         <expand-down-icon class="trigger-arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
       </div>
@@ -15,7 +15,7 @@
             @click="onModelChange(option)"
           >
             <div class="item">
-              <img v-if="option?.icon" :src="option.icon" class="item-icon" />
+              <img v-if="modelIcon(option)" :src="modelIcon(option)" class="item-icon" />
               <div class="item-info">
                 <p class="item-name">
                   {{ modelDisplayName(option) }}
@@ -47,7 +47,7 @@ import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
 import { resolveChatModelAccess } from '@/utils/chatModelAccess';
-import { resolveModelDisplayName } from '@/utils/modelPresentation';
+import { resolveModelDisplayName, resolveModelIcon } from '@/utils/modelPresentation';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -124,6 +124,9 @@ export default defineComponent({
   methods: {
     modelDisplayName(model: IChatModel): string {
       return resolveModelDisplayName(this.$store.getters?.site as ISite | undefined, model);
+    },
+    modelIcon(model: IChatModel): string {
+      return resolveModelIcon(this.$store.getters?.site as ISite | undefined, model);
     },
     onModelGroupChange(modelGroup: IChatModelGroup) {
       this.$store.dispatch('chat/setModelGroup', modelGroup);

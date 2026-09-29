@@ -8,3 +8,8 @@ export function resolveModelDisplayName(site: ISite | null | undefined, model: I
     model.name
   );
 }
+
+export function resolveModelIcon(site: ISite | null | undefined, model: IChatModel): string {
+  const group = model.modelGroup;
+  return (group ? site?.features?.[group]?.models?.[model.name]?.icon_url?.trim() : '') || model.icon;
+}
