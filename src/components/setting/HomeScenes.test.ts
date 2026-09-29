@@ -81,6 +81,26 @@ describe('HomeScenes', () => {
     wrapper.unmount();
   });
 
+  it('offers saved scene translation and image upload without an exposed URL field', async () => {
+    const wrapper = mountEditor();
+    await vi.waitFor(() => expect(wrapper.find('.scene-row').exists()).toBe(true));
+    (wrapper.vm as any).$?.setupState?.openEdit(0);
+    await wrapper.vm.$nextTick();
+    const state = (wrapper.vm as any).$?.setupState;
+    expect(state.canTranslate('title')).toBe(true);
+    expect(state.canTranslate('description')).toBe(true);
+    expect(wrapper.find('#home-scene-image').exists()).toBe(false);
+    state.draft.title = 'Edited title';
+    expect(state.canTranslate('title')).toBe(false);
+    state.draft.title = 'Product video';
+    state.onImageUploaded('https://cdn.example.com/new-cover.webp');
+    await wrapper.vm.$nextTick();
+    expect(state.draft.image_url).toBe('https://cdn.example.com/new-cover.webp');
+    expect(state.canTranslate('title')).toBe(false);
+    expect(siteOperator.update).not.toHaveBeenCalled();
+    wrapper.unmount();
+  });
+
   it('restores defaults only in the draft until Save home page is clicked', async () => {
     const wrapper = mountEditor();
     await vi.waitFor(() => expect(wrapper.find('.scene-row').exists()).toBe(true));

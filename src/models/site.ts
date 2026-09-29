@@ -276,6 +276,8 @@ export interface ISite {
   updated_at?: string;
   commerce?: ISiteCommerce | null;
   home?: ISiteHome | null;
+  home_source?: ISiteHome | null;
+  home_auto_translated_fields?: string[];
   theme?: ISiteTheme | null;
   branding?: ISiteBranding;
   analytics?: ISiteAnalytics;
