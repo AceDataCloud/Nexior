@@ -68,11 +68,11 @@ def main() -> None:
     ios = read("release-ios.yaml")
     require("workflow_call:" in android, "Android release must be reusable")
     require("workflow_call:" in ios, "iOS release must be reusable")
-    require("changesNotSentForReview: ${{ vars.ANDROID_CHANGES_NOT_SENT_FOR_REVIEW == 'true' }}" in android,
-            "Play review staging must be opt-in for active policy cases, not permanently enabled")
+    require("CHANGES_NOT_SENT_FOR_REVIEW: ${{ vars.ANDROID_CHANGES_NOT_SENT_FOR_REVIEW }}" in android,
+            "Play review staging must remain explicit")
     require("VITE_PLAY_BUILD: 'true'" in android, "Play web bundle must compile out unqualified AI surfaces")
-    require("vars.ANDROID_POLICY_HOLD == 'cleared'" in android, "Play promotion must require explicit policy clearance")
-    require("Block direct production upload during policy remediation" in android, "direct Play production upload must remain blocked")
+    require("ANDROID_POLICY_HOLD: ${{ vars.ANDROID_POLICY_HOLD }}" in android,
+            "Play submission must receive the production policy hold")
     desktop = read("release-desktop.yaml")
     require("ref: ${{ inputs.release_tag || github.sha }}" in android, "Android assets must checkout their release tag")
     require("ref: ${{ inputs.release_tag || github.sha }}" in desktop, "desktop assets must checkout their release tag")
@@ -89,7 +89,8 @@ def main() -> None:
     require("desktop-release" not in desktop, "desktop workflow still uses the retired COS approval environment")
     require("publish_desktop_release" not in desktop, "desktop workflow still invokes the retired COS uploader")
     require("dry_run" not in desktop and "inputs.channel" not in desktop, "desktop workflow still exposes feed inputs")
-    require("if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')" in android, "Play steps must require an explicit store release mode")
+    require("if: needs.preflight.outputs.play-enabled == 'true'" in android,
+            "Play artifacts must require the resolved store release mode")
 
     for parent in ("release-mobile-testing.yaml", "release-mobile-production.yaml", "release-mobile-manual.yaml"):
         text = read(parent)

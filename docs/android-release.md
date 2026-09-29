@@ -23,6 +23,12 @@ The Google Play bundle compiles out Nano Banana navigation, routes, home cards, 
 
 Before submitting a remediation build, verify that blocked AI results render no media, every visible generated result has an in-app Report action, and the content-report moderation queue is operational.
 
+## Daily review guard
+
+Android checks Google Play every day at 09:00 Asia/Shanghai. If any track is `IN_REVIEW`, it waits; otherwise it submits a newer version, updating beta and production together in one review with 100% production rollout by default. The 05:47 schedule only runs iOS, so an earlier Android beta review cannot block production each day. Manual Android releases use the same check.
+
+`scripts/play_release.py` reads Google's [release lifecycle summaries](https://developers.google.com/android-publisher/api-ref/rest/v3/applications.tracks.releases/list), checks again before committing, and stops on API errors. Play runs are serialized. The production policy hold still applies. Use `dry_run=true` to check the decision without uploading or submitting.
+
 ## Pipeline overview
 
 ```
@@ -37,21 +43,22 @@ src/constants/mobile.ts        (MOBILE_APP_VERSION)
         │  git tag android-v<version> && git push
         ▼
 .github/workflows/release-android.yaml
-   ├── checkout
-   ├── setup-node@v6  (Node 22)
-   ├── setup-java@v5  (Temurin 21)            ← Capacitor 8 requires Java 21
-   ├── npm ci
-   ├── npm run pack:android                   (web build → android/app/src/main/assets)
-   ├── npx cap sync android
-   ├── decode keystore (from ANDROID_KEYSTORE_BASE64)
-   ├── ./gradlew bundleRelease -P<creds>      (signed AAB)
-   ├── ./gradlew assembleRelease              (signed APK, artifact only)
+   ├── resolve version and store/package-only mode
+   ├── check all tracks' review lifecycles (skip when any is IN_REVIEW)
+   ├── setup Node 22 / Temurin 21 / npm ci
+   ├── build and stage separate full and Play web assets
+   ├── bundlePlayRelease / assembleFullRelease (signed AAB + sideload APK)
    ├── upload APK + AAB as workflow artifacts
-   ├── pick track  (push tag → internal, dispatch → input)
-   └── r0adkll/upload-google-play@v1          (tracks: <chosen>)
+   └── serialized Play submission
+       ├── recheck review state and reuse an existing bundle when possible
+       ├── upload a new Play AAB if needed
+       ├── update beta and, when requested, production in one edit
+       ├── recheck for a review started during upload
+       └── commit once (automatic review; 100% production by default)
 ```
 
-Total runtime ≈ 4 minutes on a `ubuntu-latest` runner.
+Build time varies by runner and Gradle cache. Package-only GitHub Release runs
+only build the full APK; dry runs only read the lifecycle/version decision.
 
 ## Daily release flow
 

@@ -5,7 +5,19 @@ on:
     tags:
       - 'android-v*'
   workflow_call:
+    outputs:
+      submitted:
+        description: 'Whether this run sent a release for review.'
+        value: ${{ jobs.publish.outputs.submitted }}
+      reason:
+        description: 'Google Play review/submission decision.'
+        value: ${{ jobs.publish.outputs.reason || jobs.preflight.outputs.reason }}
     inputs:
+      dry_run:
+        description: 'Read Play review state without building or submitting.'
+        required: false
+        default: false
+        type: boolean
       release_tag:
         description: 'Optional Release tag whose source is being packaged.'
         required: false
@@ -32,12 +44,17 @@ on:
         default: '1.0'
         type: string
       force:
-        description: 'Build even if this versionCode already exists on Google Play.'
+        description: 'Legacy input; existing version codes are reused and active reviews are never bypassed.'
         required: false
         default: false
         type: boolean
   workflow_dispatch:
     inputs:
+      dry_run:
+        description: 'Read Play review state without building or submitting.'
+        required: false
+        default: false
+        type: boolean
       track:
         description: 'Initial Play Store track to upload to (default: beta = Open testing)'
         required: true
@@ -59,7 +76,7 @@ on:
         default: '1.0'
         type: string
       force:
-        description: 'Build even if this versionCode is already uploaded to Play (default: skip duplicates).'
+        description: 'Legacy input; existing version codes are reused and active reviews are never bypassed.'
         required: false
         default: false
         type: boolean
@@ -68,11 +85,10 @@ permissions:
   contents: read
 
 concurrency:
-  # Include promote_to_production so a testing build (04:07, promote=false) and a
-  # production release build (09:32, promote=true) — both on --ref main — never
-  # cancel each other. Same-type re-dispatches still coalesce.
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.promote_to_production }}
-  cancel-in-progress: true
+  # All store entry points share one lock, including the build-to-commit interval.
+  # Package-only GitHub Release builds never reserve the Play submission lock.
+  group: ${{ (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v') || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '')) && 'android-play-store-release' || format('android-package-{0}-{1}', github.workflow, github.ref) }}
+  cancel-in-progress: false
 
 env:
   NODE_VERSION: '22'
@@ -80,10 +96,13 @@ env:
 
 jobs:
   preflight:
-    name: Preflight (skip if Play already has this versionCode)
+    name: Check Play review lifecycle and version
     runs-on: ubuntu-latest
     outputs:
       should-build: ${{ steps.package_only.outputs.should-build || steps.check.outputs.should-build }}
+      should-submit: ${{ steps.check.outputs.should-submit }}
+      play-enabled: ${{ steps.mode.outputs.play-enabled }}
+      reason: ${{ steps.check.outputs.reason }}
       version-name: ${{ steps.version.outputs.name }}
       version-code: ${{ steps.version.outputs.code }}
       track: ${{ steps.track.outputs.track }}
@@ -114,96 +133,39 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Resolve store release mode
+        id: mode
+        env:
+          PLAY_ENABLED: ${{ inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v') || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '') }}
+        run: echo "play-enabled=$PLAY_ENABLED" >> "$GITHUB_OUTPUT"
+
       - name: Build without Play preflight
-        if: inputs.release_tag != '' && !inputs.upload_to_play
+        if: steps.mode.outputs.play-enabled != 'true'
         run: echo "should-build=true" >> "$GITHUB_OUTPUT"
         id: package_only
 
-      - name: Check Play Console for existing AAB/APK
+      - name: Check review lifecycle across all Play tracks
         id: check
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: steps.mode.outputs.play-enabled == 'true'
         env:
-          FORCE: ${{ inputs.force }}
           SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           PACKAGE_NAME: com.acedatacloud.nexior
           VERSION_CODE: ${{ steps.version.outputs.code }}
-        # Opens a Play Console edit, lists all previously uploaded bundles/apks,
-        # and aborts the edit. If the target versionCode already appears, we set
-        # should-build=false so the heavy build job is skipped. Fail-open on any
-        # API failure so a flaky preflight never blocks a release.
+          VERSION_NAME: ${{ steps.version.outputs.name }}
+          PLAY_TRACK: ${{ steps.track.outputs.track }}
+          PROMOTE: ${{ inputs.promote_to_production || startsWith(github.ref, 'refs/tags/android-v') }}
+          ANDROID_POLICY_HOLD: ${{ vars.ANDROID_POLICY_HOLD }}
+          ROLLOUT: ${{ inputs.rollout_percent || '1.0' }}
+        # Errors fail closed. force/bypass_gate never bypass an active review.
         run: |
-          if [ "$FORCE" = "true" ]; then
-            echo "::notice::force=true → skipping Play duplicate check."
-            echo "should-build=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
           python3 -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
-          python3 <<'PY'
-          import json, os, time, requests, jwt
-          try:
-              sa = json.loads(os.environ['SA_JSON'])
-              package = os.environ['PACKAGE_NAME']
-              wanted = int(os.environ['VERSION_CODE'])
-
-              # Exchange the service-account JWT for an access token.
-              now = int(time.time())
-              assertion = jwt.encode(
-                  {
-                      'iss': sa['client_email'],
-                      'scope': 'https://www.googleapis.com/auth/androidpublisher',
-                      'aud': 'https://oauth2.googleapis.com/token',
-                      'iat': now, 'exp': now + 3600,
-                  },
-                  sa['private_key'], algorithm='RS256',
-              )
-              tok = requests.post(
-                  'https://oauth2.googleapis.com/token',
-                  data={
-                      'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-                      'assertion': assertion,
-                  }, timeout=30,
-              )
-              tok.raise_for_status()
-              access = tok.json()['access_token']
-              h = {'Authorization': f'Bearer {access}'}
-              base = f'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}'
-
-              edit = requests.post(f'{base}/edits', headers=h, json={}, timeout=30)
-              edit.raise_for_status()
-              edit_id = edit.json()['id']
-              try:
-                  codes = set()
-                  for kind in ('bundles', 'apks'):
-                      r = requests.get(f'{base}/edits/{edit_id}/{kind}', headers=h, timeout=30)
-                      if r.status_code == 200:
-                          for item in r.json().get(kind, []):
-                              codes.add(int(item['versionCode']))
-              finally:
-                  requests.delete(f'{base}/edits/{edit_id}', headers=h, timeout=30)
-
-              if wanted in codes:
-                  print(f"::notice::Play already has versionCode {wanted} for {package} (uploaded: {sorted(codes)[-10:]}) — skipping.")
-                  should = 'false'
-              else:
-                  print(f"versionCode {wanted} not yet uploaded (last 10 uploaded: {sorted(codes)[-10:]}) — proceeding.")
-                  should = 'true'
-          except Exception as e:
-              print(f"::warning::Play preflight check failed ({e!r}) — letting build proceed.")
-              should = 'true'
-          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-              f.write(f'should-build={should}\n')
-          print(f'should-build={should}')
-          PY
+          python3 scripts/play_release.py check
 
   build:
     name: Build Android package
     needs: preflight
-    if: needs.preflight.outputs.should-build == 'true'
+    if: needs.preflight.outputs.should-build == 'true' && !inputs.dry_run
     runs-on: ubuntu-latest
-    # Only this job attaches the APK to the GitHub Release; preflight/promote
-    # stay read-only so the write token never reaches other jobs.
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout
@@ -245,7 +207,7 @@ jobs:
           mv android/app/src/main/assets/public android/app/src/full/assets/public
 
       - name: Build web assets (play flavor, Computer Use OFF, tree-shaken)
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: needs.preflight.outputs.play-enabled == 'true'
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
           VITE_COMPUTER_USE: 'false'
@@ -253,7 +215,7 @@ jobs:
         run: npm run build:android
 
       - name: Stage play-flavor web assets
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: needs.preflight.outputs.play-enabled == 'true'
         # The Play web bundle is compiled with no Local Tools entry and no
         # Computer Use / AccessibilityService adapter code; it lives only in the
         # `play` flavor. cap copy re-processes dist into the main source set the
@@ -279,7 +241,7 @@ jobs:
         shell: bash
 
       - name: Build Play AAB (play flavor, no Computer Use)
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: needs.preflight.outputs.play-enabled == 'true'
         working-directory: android
         run: |
           chmod +x gradlew
@@ -310,144 +272,56 @@ jobs:
           if-no-files-found: error
 
       - name: Upload AAB artifact
-        if: inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')
+        if: needs.preflight.outputs.play-enabled == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
 
 
-      - name: Block direct production upload during policy remediation
-        if: (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')) && needs.preflight.outputs.track == 'production'
-        run: |
-          echo '::error::Direct production upload is disabled during Google Play policy remediation. Upload to internal or beta, then submit manually.'
-          exit 1
-
-      - name: Upload to Play Store
-        if: (inputs.upload_to_play || startsWith(github.ref, 'refs/tags/android-v')) && needs.preflight.outputs.track != 'production'
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.acedatacloud.nexior
-          releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
-          tracks: ${{ needs.preflight.outputs.track }}
-          status: completed
-          # Google requires staging only while a policy case prevents automatic
-          # review. After clearance, forcing true makes the edit commit fail.
-          changesNotSentForReview: ${{ vars.ANDROID_CHANGES_NOT_SENT_FOR_REVIEW == 'true' }}
-
-  promote:
-    name: Promote to Production
+  publish:
+    name: Submit Play release (one review)
     needs: [preflight, build]
-    # Run when preflight finished AND either the build job uploaded a fresh AAB
-    # or it was skipped because Play already had this versionCode (so the
-    # promote step can still push it from beta → production).
-    if: |
-      always()
+    if: >-
+      always() && !cancelled() && !inputs.dry_run
       && needs.preflight.result == 'success'
+      && needs.preflight.outputs.should-submit == 'true'
       && (needs.build.result == 'success' || needs.build.result == 'skipped')
-      && needs.preflight.outputs.track != 'production'
-      && vars.ANDROID_POLICY_HOLD == 'cleared'
-      && (inputs.promote_to_production || startsWith(github.ref, 'refs/tags/android-v'))
     runs-on: ubuntu-latest
+    outputs:
+      submitted: ${{ steps.publish.outputs.submitted }}
+      reason: ${{ steps.publish.outputs.reason }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
-      - name: Promote release to Production track
+      - name: Download Play AAB
+        if: needs.build.result == 'success'
+        uses: actions/download-artifact@v5
+        with:
+          name: nexior-${{ needs.preflight.outputs.version-name }}.aab
+          path: play-artifact
+
+      - name: Recheck review state and commit testing plus production together
+        id: publish
         env:
           SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           PACKAGE_NAME: com.acedatacloud.nexior
           VERSION_CODE: ${{ needs.preflight.outputs.version-code }}
           VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
+          PLAY_TRACK: ${{ needs.preflight.outputs.track }}
+          PROMOTE: ${{ inputs.promote_to_production || startsWith(github.ref, 'refs/tags/android-v') }}
+          ANDROID_POLICY_HOLD: ${{ vars.ANDROID_POLICY_HOLD }}
           ROLLOUT: ${{ inputs.rollout_percent || '1.0' }}
-        # Creates a Play Console edit, points the production track at the same versionCode
-        # uploaded in the previous job, and commits. Uses staged rollout when ROLLOUT < 1.
+          CHANGES_NOT_SENT_FOR_REVIEW: ${{ vars.ANDROID_CHANGES_NOT_SENT_FOR_REVIEW }}
+          AAB_PATH: play-artifact/app-play-release.aab
         run: |
           python3 -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
-          python3 <<'PY'
-          import json, os, time, requests, jwt
-
-          sa = json.loads(os.environ['SA_JSON'])
-          package = os.environ['PACKAGE_NAME']
-          wanted = int(os.environ['VERSION_CODE'])
-          version_name = os.environ.get('VERSION_NAME') or str(wanted)
-          try:
-              rollout = float(os.environ.get('ROLLOUT', '1.0'))
-          except ValueError:
-              rollout = 1.0
-          rollout = max(0.0, min(1.0, rollout))
-
-          now = int(time.time())
-          assertion = jwt.encode(
-              {
-                  'iss': sa['client_email'],
-                  'scope': 'https://www.googleapis.com/auth/androidpublisher',
-                  'aud': 'https://oauth2.googleapis.com/token',
-                  'iat': now, 'exp': now + 3600,
-              },
-              sa['private_key'], algorithm='RS256',
-          )
-          tok = requests.post(
-              'https://oauth2.googleapis.com/token',
-              data={
-                  'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-                  'assertion': assertion,
-              }, timeout=30,
-          )
-          tok.raise_for_status()
-          access = tok.json()['access_token']
-          h = {'Authorization': f'Bearer {access}', 'Content-Type': 'application/json'}
-          base = f'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}'
-
-          edit = requests.post(f'{base}/edits', headers=h, json={}, timeout=30)
-          edit.raise_for_status()
-          edit_id = edit.json()['id']
-          try:
-              bundles = requests.get(f'{base}/edits/{edit_id}/bundles', headers=h, timeout=30)
-              bundles.raise_for_status()
-              codes = {int(b['versionCode']) for b in bundles.json().get('bundles', [])}
-              if wanted not in codes:
-                  raise SystemExit(
-                      f'::error::versionCode {wanted} not found in uploaded bundles '
-                      f'(last 10: {sorted(codes)[-10:]})'
-                  )
-
-              release = {
-                  'name': version_name,
-                  'versionCodes': [str(wanted)],
-              }
-              if rollout >= 1.0:
-                  release['status'] = 'completed'
-              elif rollout > 0:
-                  release['status'] = 'inProgress'
-                  release['userFraction'] = rollout
-              else:
-                  release['status'] = 'draft'
-
-              r = requests.put(
-                  f'{base}/edits/{edit_id}/tracks/production',
-                  headers=h,
-                  json={'track': 'production', 'releases': [release]},
-                  timeout=30,
-              )
-              if r.status_code >= 400:
-                  print(f'::error::production track update failed: {r.status_code} {r.text}')
-                  r.raise_for_status()
-
-              c = requests.post(f'{base}/edits/{edit_id}:commit', headers=h, timeout=60)
-              if c.status_code >= 400:
-                  print(f'::error::commit failed: {c.status_code} {c.text}')
-                  c.raise_for_status()
-
-              print(f'::notice::Promoted versionCode {wanted} ({version_name}) to '
-                    f'production (rollout={rollout}).')
-          except Exception:
-              try:
-                  requests.delete(f'{base}/edits/{edit_id}', headers=h, timeout=30)
-              except Exception:
-                  pass
-              raise
-          PY
+          python3 scripts/play_release.py publish
