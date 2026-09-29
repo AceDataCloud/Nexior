@@ -38,23 +38,23 @@ jobs:
           last_revision=""
           runs=$(gh api --method GET \
             "repos/$GITHUB_REPOSITORY/actions/workflows/deploy-web.yaml/runs" \
-            -f branch=main -f status=success -F per_page=30 \
-            --jq '.workflow_runs[].id')
+            -F per_page=30 \
+            --jq '.workflow_runs[] | select(.head_branch == "main" and .conclusion == "success") | .id')
           for run_id in $runs; do
             candidate=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/jobs?per_page=100" \
-              --jq '.jobs[] | select(.conclusion == "success") | select(any(.steps[]?; .name == "Apply manifests" and .conclusion == "success")) | .head_sha' | head -1)
+              --jq '.jobs[] | select(.conclusion == "success") | select(any(.steps[]?; .name == "Deploy compatible release" and .conclusion == "success")) | .head_sha' | head -1)
             if [[ "$candidate" =~ ^[0-9a-f]{40}$ ]]; then
               last_revision=$candidate
               break
             fi
           done
           if ! [[ "$last_revision" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "No previous successful apply run; deploying $GITHUB_SHA"
+            echo "No previous verified release; deploying $GITHUB_SHA"
             echo "deploy=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           if [ "$last_revision" = "$GITHUB_SHA" ]; then
-            echo "Already applied revision $last_revision"
+            echo "Already verified revision $last_revision"
             echo "deploy=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -63,7 +63,7 @@ jobs:
           fi
           if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null || \
              ! git merge-base --is-ancestor "$last_revision" "$GITHUB_SHA"; then
-            echo "Last applied revision cannot be compared safely; deploying $GITHUB_SHA"
+            echo "Last verified revision cannot be compared safely; deploying $GITHUB_SHA"
             echo "deploy=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -135,9 +135,12 @@ jobs:
           MAX_RELEASE_BYTES: '268435456'
         run: bash deploy/prepare-previous-assets.sh
 
-      - name: Build and push final image
+      - name: Build and push bridge and final images
         if: steps.changes.outputs.deploy == 'true'
         run: |
+          docker buildx build --target bridge --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
+            --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge" --push \
+            --cache-from type=gha .
           docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}" --push \
             --cache-from type=gha --cache-to type=gha,mode=max .
@@ -149,6 +152,16 @@ jobs:
             --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
             --tag acedatacloud/nexior:latest --push --cache-from type=gha .
 
-      - name: Apply manifests
+      - name: Verify production stayed unchanged during build
+        if: steps.changes.outputs.deploy == 'true'
+        env:
+          EXPECTED_IMAGE: ${{ env.PREVIOUS_IMAGE }}
+          EXPECTED_TAGGED_IMAGE: ${{ env.PREVIOUS_TAGGED_IMAGE }}
+          DEPLOYMENT: studio-frontend
+          SERVICE: studio-frontend
+          IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
+        run: bash deploy/verify-release-unchanged.sh
+
+      - name: Deploy compatible release
         if: steps.changes.outputs.deploy == 'true'
         run: bash deploy/run.sh

@@ -21,6 +21,22 @@ COPY --from=build-stage /app/release-assets /opt/acedata/release-assets
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
+FROM ${PREVIOUS_IMAGE} AS bridge
+RUN rm -rf /usr/share/nginx/html/assets && mkdir -p /usr/share/nginx/html/assets
+COPY .previous-assets/ /usr/share/nginx/html/assets/
+COPY --from=build-stage /app/current-assets/ /tmp/current-assets/
+RUN set -eu; \
+    cd /tmp/current-assets; \
+    find . -type f -print | while IFS= read -r asset; do \
+      destination="/usr/share/nginx/html/assets/${asset#./}"; \
+      if [ -f "$destination" ]; then cmp -s "$asset" "$destination" || { echo "conflicting immutable asset: ${asset#./}" >&2; exit 1; }; \
+      else mkdir -p "$(dirname "$destination")"; cp "$asset" "$destination"; fi; \
+    done; \
+    rm -rf /tmp/current-assets; \
+    test "$(find /usr/share/nginx/html/assets -type f | wc -l)" -le 8000; \
+    test "$(du -sb /usr/share/nginx/html/assets | cut -f1)" -le 536870912
+COPY .previous-release-assets /opt/acedata/release-assets
+
 FROM runtime-base AS final
 COPY .previous-assets/ /tmp/previous-assets/
 COPY --from=build-stage /app/dist /usr/share/nginx/html
