@@ -554,6 +554,7 @@
 </template>
 
 <script lang="ts">
+import { buildUsageAnalytics, formatUsageAmount, formatUsageElapsed } from '@acedatacloud/core/usage';
 import { ApplicationsIcon, ExportIcon, ExternalLinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
@@ -612,36 +613,6 @@ import {
 } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, DoughnutController, Title, Tooltip, Legend);
-
-// Curated categorical palette — top spenders get distinct, readable hues
-// instead of the old hsl(idx*57) generator that collided past ~6 series.
-const CHART_PALETTE = [
-  '#5B8FF9',
-  '#5AD8A6',
-  '#5D7092',
-  '#F6BD16',
-  '#6F5EF9',
-  '#6DC8EC',
-  '#945FB9',
-  '#FF9845',
-  '#1E9493',
-  '#FF99C3'
-];
-const OTHERS_COLOR = '#C0C4CC';
-// "Others" must stay negligible: include as many top APIs (ranked by spend) as
-// needed so the folded tail is ≤ OTHERS_MAX_SHARE of the total — N is dynamic,
-// not a fixed Top-N. MAX_SERIES is only a sanity backstop for the pathological
-// "every API ~2%" case (the breakdown table still lists every API).
-const OTHERS_MAX_SHARE = 0.01;
-const MAX_SERIES = 20;
-
-// Distinct colors for the given series count: the curated palette for a handful
-// of series, else evenly-spaced hues (with alternating lightness) so adjacent
-// stacks/slices never collide.
-function seriesColors(n: number): string[] {
-  if (n <= CHART_PALETTE.length) return CHART_PALETTE.slice(0, n);
-  return Array.from({ length: n }, (_, i) => `hsl(${Math.round((i * 360) / n)}, 62%, ${i % 2 === 0 ? 55 : 45}%)`);
-}
 
 // Auto-refresh cadence for the usage table (ms).
 const AUTO_REFRESH_INTERVAL_MS = 15000;
@@ -866,7 +837,7 @@ export default defineComponent({
       };
     },
     barChartOptions() {
-      const fmt = (v: number) => new Intl.NumberFormat().format(Math.round(((v || 0) + Number.EPSILON) * 100) / 100);
+      const fmt = formatUsageAmount;
       return {
         responsive: true,
         maintainAspectRatio: false,
@@ -1183,15 +1154,7 @@ export default defineComponent({
         this.statusCodeOptionsLoading = false;
       }
     },
-    formatElapsed(elapsed?: number) {
-      if (elapsed === undefined || elapsed === null || Number.isNaN(elapsed)) {
-        return '-';
-      }
-      if (elapsed < 1) {
-        return `${Math.round(elapsed * 1000)} ms`;
-      }
-      return `${elapsed.toFixed(2)} s`;
-    },
+    formatElapsed: formatUsageElapsed,
     isX402Usage,
     getX402Payment: getX402UsagePayment,
     getX402Transaction: getX402CopyableTransaction,
@@ -1447,9 +1410,7 @@ export default defineComponent({
         this.exporting = false;
       }
     },
-    fmtAmount(v: number) {
-      return new Intl.NumberFormat().format(Math.round(((v || 0) + Number.EPSILON) * 100) / 100);
-    },
+    fmtAmount: formatUsageAmount,
     async onFetchAggregate() {
       if (this.type !== this.serviceType.API) return;
       this.aggLoading = true;
@@ -1465,89 +1426,7 @@ export default defineComponent({
       try {
         const { data } = await apiUsageOperator.getAggregate(params);
         this.totalUsed = data.total || 0;
-        const labels = Array.from(new Set((data.items || []).map((i: any) => i.date))).sort();
-        // date -> api_id -> amount (single pass; also collapses any duplicates)
-        const grid: Record<string, Record<string, number>> = {};
-        const totals: Record<string, number> = {};
-        (data.items || []).forEach((i: any) => {
-          const amount = i.amount || 0;
-          (grid[i.date] || (grid[i.date] = {}))[i.api_id] = (grid[i.date]?.[i.api_id] || 0) + amount;
-          totals[i.api_id] = (totals[i.api_id] || 0) + amount;
-        });
-        // Rank APIs by total spend (desc) and compute the grand total.
-        const rankedIds = Object.keys(totals).sort((a, b) => totals[b] - totals[a]);
-        const grand = rankedIds.reduce((s, id) => s + totals[id], 0);
-        // Dynamic Top-N: include as many top APIs as needed so the folded "Others"
-        // tail stays ≤ OTHERS_MAX_SHARE of the total (N is NOT fixed). Walk the
-        // cumulative share until the remainder is negligible; MAX_SERIES only guards
-        // the pathological "every API ~2%" case.
-        let topCount = rankedIds.length;
-        if (grand > 0) {
-          const limit = grand * (1 - OTHERS_MAX_SHARE);
-          let cum = 0;
-          for (let i = 0; i < rankedIds.length; i++) {
-            cum += totals[rankedIds[i]];
-            if (cum >= limit) {
-              topCount = i + 1;
-              break;
-            }
-          }
-          topCount = Math.min(topCount, MAX_SERIES);
-        }
-        // Folding a single leftover API into "Others" is pointless — just show it.
-        if (rankedIds.length - topCount === 1) topCount = rankedIds.length;
-        const topIds = rankedIds.slice(0, topCount);
-        const topSet = new Set(topIds);
-        const colors = seriesColors(topIds.length);
-        const tailIds = rankedIds.slice(topCount);
-        const othersLabel = `${this.$t('usage.value.others')} (${tailIds.length})`;
-
-        // Stacked-bar series (one per top API) + a folded "Others" series.
-        const series = topIds.map((id: string, idx: number) => ({
-          key: id,
-          label: data.apis?.[id]?.title || id,
-          data: labels.map((d: string) => grid[d]?.[id] || 0),
-          color: colors[idx]
-        }));
-        if (tailIds.length) {
-          const otherData = labels.map((d: string) =>
-            Object.entries(grid[d] || {}).reduce((sum, [id, amt]) => (topSet.has(id) ? sum : sum + amt), 0)
-          );
-          if (otherData.some((v) => v > 0)) {
-            series.push({ key: '__others__', label: othersLabel, data: otherData, color: OTHERS_COLOR });
-          }
-        }
-
-        // Breakdown table: ALL APIs, exact numbers + share (nothing hidden). Top rows
-        // get their chart color; the folded tail rows share the neutral "Others" grey.
-        this.apiBreakdown = rankedIds.map((id: string, idx: number) => ({
-          key: id,
-          label: data.apis?.[id]?.title || id,
-          amount: totals[id],
-          color: idx < topIds.length ? colors[idx] : OTHERS_COLOR,
-          share: grand > 0 ? totals[id] / grand : 0
-        }));
-
-        // Doughnut: one slice per top API + a single folded "Others" slice (≤ 1%).
-        const pieLabels: string[] = [];
-        const pieData: number[] = [];
-        const pieColors: string[] = [];
-        topIds.forEach((id: string, idx: number) => {
-          pieLabels.push(data.apis?.[id]?.title || id);
-          pieData.push(totals[id]);
-          pieColors.push(colors[idx]);
-        });
-        const othersTotal = tailIds.reduce((s, id) => s + totals[id], 0);
-        if (othersTotal > 0) {
-          pieLabels.push(othersLabel);
-          pieData.push(othersTotal);
-          pieColors.push(OTHERS_COLOR);
-        }
-        this.pieLabels = pieLabels;
-        this.pieData = pieData;
-        this.pieColors = pieColors;
-        this.barChartLabels = labels;
-        this.barChartSeries = series;
+        Object.assign(this, buildUsageAnalytics(data, this.$t('usage.value.others')));
       } finally {
         this.aggLoading = false;
       }
