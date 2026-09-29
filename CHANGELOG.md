@@ -1,8 +1,25 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 28 Sep 2026 20:23:46 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 29 Sep 2026 20:26:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.374.0
+
+Tue, 29 Sep 2026 20:26:36 GMT
+
+### Minor changes
+
+- Let tenant admins arrange home scenes and tools, and show expanded tools beside the selected card on mobile. (dev@acedata.cloud)
+- Let Site admins customize each chat model icon alongside its display name. (dev@acedata.cloud)
+
+### Patches
+
+- Keep Airwallex card checkout available without payment rollout flags. (dev@acedata.cloud)
+- Hide official-only skills, connectors, scheduled tasks, and artifact entry points on tenant sites. (dev@acedata.cloud)
+- Reuse shared usage chart aggregation and formatting without changing service filters or API requests. (dev@acedata.cloud)
+- Use Site-customized model and capability icons for assistant replies and shared conversations. (dev@acedata.cloud)
+- Keep the web X402 scenario wallet option available without a rollout flag. (dev@acedata.cloud)
 
 ## 3.373.1
 
