@@ -13,7 +13,11 @@ the pipeline end-to-end on **2026-05-23 (run [26324168813][run-3351])**.
 
 ## Google Play policy hold
 
-Automatic Play production promotion is currently fail-closed while the AI-generated content policy remediation is under review. Play uploads set `changesNotSentForReview: true` because Google rejects automatic review submission while a policy case is open; submit the staged edit manually in Play Console. Remediation builds may be uploaded only to an internal or testing track and are left unsent for review. Set the repository variable `ANDROID_POLICY_HOLD=cleared` only after the Play Console policy case is cleared for the new version code; production submission remains a deliberate manual action.
+Automatic Play production promotion remains fail-closed unless `ANDROID_POLICY_HOLD=cleared`. Set this variable only after the Play Console policy case is cleared for the new version code; production submission remains a deliberate manual action during remediation.
+
+Play uploads normally use automatic review submission. Set `ANDROID_CHANGES_NOT_SENT_FOR_REVIEW=true` only when Google explicitly requires staging for an active policy case, then submit the staged edit manually in Play Console. Remediation builds may be uploaded only to an internal or testing track. Remove this variable or set it to `false` after clearance: Google rejects `changesNotSentForReview=true` once automatic review is restored. This setting is independent of the production policy hold.
+
+On 2026-09-29, the Android build in run [36488727248](https://github.com/AceDataCloud/Nexior/actions/runs/36488727248) produced both packages but failed at the Play edit commit with `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.` Do not treat a successful package build or an overall canceled mobile workflow as proof of a successful Play submission.
 
 The Google Play bundle compiles out Nano Banana navigation, routes, home cards, and showcases until its provider safety contract is deterministic. Web, iOS, desktop, and the full sideload Android APK remain unchanged.
 

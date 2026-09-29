@@ -68,7 +68,8 @@ def main() -> None:
     ios = read("release-ios.yaml")
     require("workflow_call:" in android, "Android release must be reusable")
     require("workflow_call:" in ios, "iOS release must be reusable")
-    require("changesNotSentForReview: true" in android, "Play uploads must remain staged during policy remediation")
+    require("changesNotSentForReview: ${{ vars.ANDROID_CHANGES_NOT_SENT_FOR_REVIEW == 'true' }}" in android,
+            "Play review staging must be opt-in for active policy cases, not permanently enabled")
     require("VITE_PLAY_BUILD: 'true'" in android, "Play web bundle must compile out unqualified AI surfaces")
     require("vars.ANDROID_POLICY_HOLD == 'cleared'" in android, "Play promotion must require explicit policy clearance")
     require("Block direct production upload during policy remediation" in android, "direct Play production upload must remain blocked")
