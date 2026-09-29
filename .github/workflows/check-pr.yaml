@@ -54,6 +54,9 @@ jobs:
       - name: Release workflow contract
         run: python3 scripts/check_release_workflows.py
 
+      - name: Play review guard tests
+        run: python3 -m unittest scripts/test_play_release.py
+
       - name: Studio deployment contract
         run: python3 scripts/check_studio_deployment.py
 
