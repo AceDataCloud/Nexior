@@ -1,5 +1,4 @@
 import { reactive } from 'vue';
-import { isFeatureEnabled } from '@/utils/featureFlag';
 import { isWeb } from '@/utils/surface';
 import { clearAllScenarioPaymentErrors } from '@/utils/x402/paymentErrorState';
 
@@ -63,7 +62,7 @@ const availability = reactive<Record<string, boolean | undefined>>({});
 const states = reactive<Record<string, ScenarioPaymentState>>({});
 
 export function isScenarioX402Enabled(): boolean {
-  return isWeb() && isFeatureEnabled('x402');
+  return isWeb();
 }
 
 export function isScenarioX402Supported(scenario: unknown): scenario is string {
