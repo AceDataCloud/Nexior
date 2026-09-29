@@ -23,12 +23,18 @@ assert studio['spec']['strategy']['type'] == 'RollingUpdate'
 assert studio['spec']['strategy']['rollingUpdate'] == {'maxSurge': 1, 'maxUnavailable': 0}
 assert studio['spec']['minReadySeconds'] == 10
 assert container['readinessProbe']['httpGet']['path'] == '/index.html'
-release = (ROOT / 'deploy/verify-cutover.sh').read_text()
-assert 'deploy/verify-cutover.sh' in (ROOT / 'deploy/run.sh').read_text()
-assert 'bash deploy/apply-studio-proxy.sh' in release
-for manifest in ('studio-deployment.yaml', 'studio-service.yaml', 'legacy-hub-redirect.yaml', 'studio-ingress.yaml'):
+release = (ROOT / 'deploy/run.sh').read_text()
+assert release.count('kubectl apply') == 1
+assert 'studio-deployment.yaml' in (ROOT / 'deploy/verify-cutover.sh').read_text()
+assert 'bash deploy/verify-cutover.sh' in release
+assert 'kubectl create configmap studio-html-injector' in release
+assert '--dry-run=client -o yaml > "$rendered"' in release
+for manifest in ('studio-service.yaml', 'studio-proxy.yaml', 'legacy-hub-redirect.yaml', 'studio-ingress.yaml'):
     assert manifest in release
-assert workflow.index('preflight-release.sh') < workflow.index('Build and push bridge and final images') < workflow.index('bash deploy/run.sh') < workflow.index('Publish verified final image to Docker Hub')
+assert release.index('studio-proxy.yaml') < release.index('studio-ingress.yaml')
+assert 'kubectl apply -f "$rendered"' in release
+assert 'rollout status' not in release and 'last-successful-revision' not in release
+assert workflow.index('preflight-release.sh') < workflow.index('Build and push bridge and final images') < workflow.index('Publish final image to Docker Hub') < workflow.index('bash deploy/run.sh')
 ci = (ROOT / '.github/workflows/check-pr.yaml').read_text()
 assert 'test-compatible-images.sh studio-frontend' in ci
 prepare = (ROOT / 'deploy/prepare-previous-assets.sh').read_text()

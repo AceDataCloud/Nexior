@@ -10,6 +10,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
+  actions: read
   contents: write
   packages: write
 
@@ -22,14 +23,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set Kubectl
-        uses: Azure/k8s-set-context@v5
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-
       - name: Check for deployable changes
         id: changes
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
@@ -37,15 +35,26 @@ jobs:
             exit 0
           fi
 
-          last_revision=$(kubectl get deployment studio-frontend -n acedatacloud \
-            -o jsonpath='{.metadata.annotations.acedata\.cloud/last-successful-revision}' 2>/dev/null || true)
+          last_revision=""
+          runs=$(gh api --method GET \
+            "repos/$GITHUB_REPOSITORY/actions/workflows/deploy-web.yaml/runs" \
+            -F per_page=30 \
+            --jq '.workflow_runs[] | select(.head_branch == "main" and .conclusion == "success") | .id')
+          for run_id in $runs; do
+            candidate=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/jobs?per_page=100" \
+              --jq '.jobs[] | select(.conclusion == "success") | select(any(.steps[]?; .name == "Deploy compatible release" and .conclusion == "success")) | .head_sha' | head -1)
+            if [[ "$candidate" =~ ^[0-9a-f]{40}$ ]]; then
+              last_revision=$candidate
+              break
+            fi
+          done
           if ! [[ "$last_revision" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "No Studio successful revision; deploying $GITHUB_SHA"
+            echo "No previous verified release; deploying $GITHUB_SHA"
             echo "deploy=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           if [ "$last_revision" = "$GITHUB_SHA" ]; then
-            echo "No changes since successful deployment $last_revision"
+            echo "Already verified revision $last_revision"
             echo "deploy=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -54,7 +63,7 @@ jobs:
           fi
           if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null || \
              ! git merge-base --is-ancestor "$last_revision" "$GITHUB_SHA"; then
-            echo "Successful revision cannot be compared safely; deploying $GITHUB_SHA"
+            echo "Last verified revision cannot be compared safely; deploying $GITHUB_SHA"
             echo "deploy=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -105,6 +114,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set Kubectl
+        if: steps.changes.outputs.deploy == 'true'
+        uses: Azure/k8s-set-context@v5
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
       - name: Lock current production release
         if: steps.changes.outputs.deploy == 'true'
         env:
@@ -125,10 +140,17 @@ jobs:
         run: |
           docker buildx build --target bridge --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge" --push \
-            --cache-from type=gha --cache-to type=gha,mode=max .
+            --cache-from type=gha .
           docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}" --push \
-            --cache-from type=gha .
+            --cache-from type=gha --cache-to type=gha,mode=max .
+
+      - name: Publish final image to Docker Hub
+        if: steps.changes.outputs.deploy == 'true'
+        run: |
+          docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
+            --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
+            --tag acedatacloud/nexior:latest --push --cache-from type=gha .
 
       - name: Verify production stayed unchanged during build
         if: steps.changes.outputs.deploy == 'true'
@@ -140,13 +162,6 @@ jobs:
           IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
         run: bash deploy/verify-release-unchanged.sh
 
-      - name: Apply and verify compatible rollout
+      - name: Deploy compatible release
         if: steps.changes.outputs.deploy == 'true'
         run: bash deploy/run.sh
-
-      - name: Publish verified final image to Docker Hub
-        if: steps.changes.outputs.deploy == 'true'
-        run: |
-          docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
-            --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
-            --tag acedatacloud/nexior:latest --push --cache-from type=gha .
