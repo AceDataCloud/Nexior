@@ -4,7 +4,7 @@
        Display-first: clicking any chip (or the +N overflow) opens the
        connections manager. Renders nothing when there are no active
        connections or the user is logged out. -->
-  <div v-if="visibleConnectors.length > 0" class="connector-strip">
+  <div v-if="showOfficialTools && visibleConnectors.length > 0" class="connector-strip">
     <el-tooltip v-for="c in visibleConnectors" :key="c.id" effect="dark" :content="c.name" placement="top">
       <span class="connector-chip" role="button" @click="onOpen">
         <img class="connector-icon" :src="c.icon_url" :alt="c.name" loading="lazy" />
@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue';
 import { ElTooltip } from 'element-plus';
 import { listEnabledConnectors, type IEnabledConnector } from './connectorCatalogCache';
-import { openConnectionsManager } from '@/utils';
+import { isMainOfficial, isWeb, openConnectionsManager } from '@/utils';
 
 // Show at most this many connector chips; beyond it the last slot becomes a
 // "+N" overflow chip so the row never exceeds MAX_CONNECTORS items.
@@ -41,6 +41,9 @@ export default defineComponent({
     };
   },
   computed: {
+    showOfficialTools(): boolean {
+      return isMainOfficial() || !isWeb();
+    },
     visibleConnectors(): IEnabledConnector[] {
       if (this.enabledConnectors.length <= MAX_CONNECTORS) {
         return this.enabledConnectors;
@@ -66,6 +69,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    if (!this.showOfficialTools) return;
     void this.loadConnectors();
     // The user manages connections in another tab (auth.acedata.cloud);
     // refetch when they return so connects/disconnects reflect without a
@@ -77,6 +81,7 @@ export default defineComponent({
   },
   methods: {
     async loadConnectors(force = false) {
+      if (!this.showOfficialTools) return;
       // listEnabledConnectors() never throws (returns [] on error / when
       // logged out) so the strip just stays hidden rather than breaking.
       const requestedUserId = this.userId;
