@@ -69,6 +69,7 @@
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
             :message="message"
+            :model-name="model?.name"
             :messages="messages"
             :question="question"
             :application="application"
