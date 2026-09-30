@@ -27,7 +27,9 @@
         @keydown.down.prevent="openWithKeyboard"
         @keydown.esc.stop.prevent="visible = false"
       >
-        <span class="truncate">{{ user.email || user.nickname || user.username || $t('common.account.switch') }}</span>
+        <span class="min-w-0 truncate">{{
+          user.email || user.nickname || user.username || $t('common.account.switch')
+        }}</span>
         <chevron-right :size="16" class="account-switcher-chevron" aria-hidden="true" />
       </button>
     </template>

@@ -1,6 +1,11 @@
 <template>
   <div class="center">
-    <el-dropdown ref="dropdown" trigger="click" @visible-change="accountMenuVisible = $event">
+    <el-dropdown
+      ref="dropdown"
+      trigger="click"
+      popper-class="user-center-menu"
+      @visible-change="accountMenuVisible = $event"
+    >
       <user-avatar class="cursor-pointer" />
       <template #dropdown>
         <account-switcher
@@ -205,3 +210,10 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.user-center-menu.el-dropdown__popper {
+  width: 280px;
+  max-width: calc(100vw - 24px);
+}
+</style>
