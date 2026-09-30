@@ -105,7 +105,6 @@ export default defineComponent({
     MagicIcon,
     ServicePricingSummary,
     ElButton,
-    ElInput,
     ElOption,
     ElSelect,
     FieldTitle,
