@@ -79,6 +79,8 @@ export default defineComponent({
         path: '/',
         domain: getDomain()
       });
+      // Site copy is resolved by the API using the LOCALE cookie.
+      await this.$store.dispatch('getSite');
     }
   }
 });
