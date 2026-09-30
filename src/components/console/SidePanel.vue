@@ -45,7 +45,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { isMainOfficial } from '@/utils';
+import { canAccessManagedConsole } from '@/utils/consoleAccess';
 
 interface ILink {
   key: string;
@@ -92,7 +92,7 @@ export default defineComponent({
 
       // Order history stays visible on iOS — purchases now happen in-app via
       // Apple IAP, so users should see their orders.
-      if (isMainOfficial()) {
+      if (canAccessManagedConsole()) {
         links.push(
           {
             key: 'connectors',

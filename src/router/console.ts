@@ -11,7 +11,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from './constants';
-import { isMainOfficial } from '@/utils';
+import { canAccessManagedConsole } from '@/utils/consoleAccess';
 
 // Which shape of `.panel` the layout gives a page. There is no single mode
 // that serves both: `document` lets the panel scroll (a workspace page would
@@ -22,7 +22,7 @@ import { isMainOfficial } from '@/utils';
 const DOCUMENT = { layout: 'document' };
 const WORKSPACE = { layout: 'workspace' };
 
-export const mainOfficialConsoleOnly = () => (isMainOfficial() ? true : { name: ROUTE_INDEX, replace: true });
+export const managedConsoleOnly = () => (canAccessManagedConsole() ? true : { name: ROUTE_INDEX, replace: true });
 
 export default {
   path: '/console',
@@ -81,7 +81,7 @@ export default {
       path: 'connectors',
       name: ROUTE_CONSOLE_CONNECTORS,
       meta: WORKSPACE,
-      beforeEnter: mainOfficialConsoleOnly,
+      beforeEnter: managedConsoleOnly,
       component: () => import('@/pages/console/connectors/Index.vue')
     },
     // Agent Skills — same split: UI here, data still owned by AuthBackend.
@@ -89,7 +89,7 @@ export default {
       path: 'skills',
       name: ROUTE_CONSOLE_SKILLS,
       meta: WORKSPACE,
-      beforeEnter: mainOfficialConsoleOnly,
+      beforeEnter: managedConsoleOnly,
       component: () => import('@/pages/console/skills/Index.vue')
     },
     // Browser devices — the extensions paired to run browser work locally.
@@ -99,7 +99,7 @@ export default {
       path: 'browser-devices',
       name: ROUTE_CONSOLE_BROWSER_DEVICES,
       meta: DOCUMENT,
-      beforeEnter: mainOfficialConsoleOnly,
+      beforeEnter: managedConsoleOnly,
       component: () => import('@/pages/console/browserDevices/Index.vue')
     }
   ]
