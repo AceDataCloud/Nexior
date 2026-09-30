@@ -5,7 +5,8 @@ export enum IServiceType {
   API = 'Api',
   Agent = 'Agent',
   Proxy = 'Proxy',
-  Dataset = 'Dataset'
+  Dataset = 'Dataset',
+  Deployment = 'Deployment'
 }
 
 export interface IProxy {

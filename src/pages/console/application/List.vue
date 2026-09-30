@@ -229,7 +229,7 @@
                   <span class="truncate">{{ $t('application.field.id') }}: {{ app.id }}</span>
                   <copy-to-clipboard :content="app.id" class="inline-block shrink-0" />
                 </div>
-                <div class="application-card__row">
+                <div v-if="hasBalance(app)" class="application-card__row">
                   <span class="label">{{ $t('application.field.remainingAmount') }}</span>
                   <span class="value">{{ getRemainingAmount(app) }}</span>
                 </div>
@@ -529,7 +529,13 @@ export default defineComponent({
           this.onFetchApplications(IApplicationScope.GLOBAL);
         });
     },
+    hasBalance(application: IApplication): boolean {
+      return (
+        application.service?.type !== IServiceType.Dataset && application.service?.type !== IServiceType.Deployment
+      );
+    },
     getRemainingAmount(application: IApplication) {
+      if (!this.hasBalance(application)) return '-';
       if (application.remaining_amount === undefined || application.remaining_amount === null) {
         return '';
       }
@@ -537,6 +543,7 @@ export default defineComponent({
       return `${application.remaining_amount?.toFixed(6)} ${unit}`;
     },
     getUsedAmount(application: IApplication) {
+      if (!this.hasBalance(application)) return '-';
       if (application.used_amount === undefined || application.used_amount === null) {
         return '';
       }
