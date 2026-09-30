@@ -268,6 +268,22 @@ export default defineComponent({
         return;
       }
       const request = buildSunoAudioRequest(this.config);
+      if (
+        request.action === 'inspo' &&
+        (!request.audio_urls?.length ||
+          request.audio_urls.length > 4 ||
+          request.audio_urls.some((url) => !/^https?:\/\/\S+$/i.test(url)))
+      ) {
+        ElMessage.error(this.$t('suno.message.inspoReferencesRequired'));
+        return;
+      }
+      if (
+        request.action === 'mashup' &&
+        (request.mashup_audio_ids?.length !== 2 || new Set(request.mashup_audio_ids).size !== 2)
+      ) {
+        ElMessage.error(this.$t('suno.message.mashupReferencesRequired'));
+        return;
+      }
       if (!this.hasSunoInput(request)) {
         ElMessage.error(this.$t('suno.message.promptRequired'));
         return;
@@ -373,7 +389,8 @@ export default defineComponent({
       return (
         textFields.some((value) => this.hasText(value)) ||
         this.hasText(request.audio_id) ||
-        (Array.isArray(request.mashup_audio_ids) && request.mashup_audio_ids.length > 0)
+        (Array.isArray(request.mashup_audio_ids) && request.mashup_audio_ids.length > 0) ||
+        (Array.isArray(request.audio_urls) && request.audio_urls.length > 0)
       );
     }
   }

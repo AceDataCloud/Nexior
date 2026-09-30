@@ -69,7 +69,8 @@ export interface ISunoConfig {
   audio?: ISunoAudio | undefined;
   audio_id?: string;
   mashup_audio_ids?: string[];
-  continue_at: number;
+  audio_urls?: string[];
+  continue_at?: number;
   vocal_gender?: string;
   weirdness?: number;
   style_influence?: number;
@@ -110,6 +111,7 @@ export interface ISunoAudioRequest {
   persona_id?: string;
   audio_id?: string;
   mashup_audio_ids?: string[];
+  audio_urls?: string[];
   continue_at?: number;
   replace_section_start?: number;
   replace_section_end?: number;
@@ -133,6 +135,7 @@ export interface ISunoMp4Request {
 
 export interface ISunoLyricRequest {
   prompt?: string;
+  model?: 'default' | 'remi-v1';
 }
 
 export interface ISunoUploadRequest {
@@ -212,10 +215,19 @@ export interface ISunoVoxRequest {
   async?: boolean;
 }
 
+export interface ISunoVox {
+  id?: string;
+  source_clip_id?: string;
+  status?: string;
+  vocal_audio_url?: string;
+  vocal_start_s?: number;
+  vocal_end_s?: number;
+}
+
 export interface ISunoVoxResponse {
   success?: boolean;
   task_id: string;
-  data: { audio_url?: string };
+  data: ISunoVox;
 }
 
 export interface ISunoTimingRequest {

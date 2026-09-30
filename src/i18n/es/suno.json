@@ -121,7 +121,7 @@
   },
   "button.addAudio": {
     "message": "+ Audio",
-    "description": "Botón para abrir el cuadro de diálogo para agregar audio (navegar o grabar)"
+    "description": "Botón para abrir el diálogo de añadir audio (explorar o grabar)"
   },
   "button.startRecord": {
     "message": "Iniciar Grabación",
@@ -172,8 +172,8 @@
     "description": "El usuario ha denegado el permiso del micrófono"
   },
   "button.video": {
-    "message": "Video",
-    "description": "Texto del botón de video"
+    "message": "Vídeo",
+    "description": "Texto del botón de vídeo"
   },
   "button.download_video": {
     "message": "Descargar Video",
@@ -212,7 +212,7 @@
     "description": "Texto del botón para reemplazar una sección de la canción"
   },
   "button.mashup": {
-    "message": "Mashup",
+    "message": "Mezcla",
     "description": "Texto del botón para mezclar varias canciones"
   },
   "button.generate_lyrics": {
@@ -493,7 +493,7 @@
   },
   "lyricsMode.manual": {
     "message": "Manual",
-    "description": "Proporcionar letras manualmente"
+    "description": "Proporcionar las letras manualmente"
   },
   "lyricsMode.auto": {
     "message": "Automático",
@@ -849,7 +849,7 @@
   },
   "filter.typeInstrumental": {
     "message": "Instrumental",
-    "description": "Tipo: música instrumental"
+    "description": "Tipo: instrumental"
   },
   "filter.duration": {
     "message": "Duración",
@@ -872,8 +872,8 @@
     "description": "Duración: Más de 3 minutos"
   },
   "filter.video": {
-    "message": "Video",
-    "description": "Filtro de sección: si incluye video"
+    "message": "Vídeo",
+    "description": "Sección de filtros: si contiene vídeo"
   },
   "filter.videoAll": {
     "message": "Todo",
@@ -1078,5 +1078,101 @@
   "customModel.status.archived": {
     "message": "Archivado",
     "description": "Estado de archivo del modelo"
+  },
+  "button.failureDetails": {
+    "message": "Detalles del error",
+    "description": "Detalles del error"
+  },
+  "name.untitledSong": {
+    "message": "Canción sin título",
+    "description": "Canción sin título"
+  },
+  "message.songPlaceholder": {
+    "message": "Tu creación musical",
+    "description": "Tu creación musical"
+  },
+  "name.lyricTiming": {
+    "message": "Línea de tiempo de letras",
+    "description": "Línea de tiempo de letras"
+  },
+  "button.downloadSubtitles": {
+    "message": "Descargar subtítulos (.srt)",
+    "description": "Descargar subtítulos (.srt)"
+  },
+  "message.noTiming": {
+    "message": "Esta canción no tiene una línea de tiempo de letras disponible.",
+    "description": "Esta canción no tiene una línea de tiempo de letras disponible."
+  },
+  "description.vocalRange": {
+    "message": "Selecciona un fragmento vocal de menos de 30 segundos. Puedes preescucharlo, descargarlo y guardarlo como voz para usarlo en creaciones posteriores.",
+    "description": "Selecciona un fragmento vocal de menos de 30 segundos. Puedes preescucharlo, descargarlo y guardarlo como voz para usarlo en creaciones posteriores."
+  },
+  "name.rangeStart": {
+    "message": "Hora de inicio (segundos)",
+    "description": "Hora de inicio (segundos)"
+  },
+  "name.rangeEnd": {
+    "message": "Hora de finalización (segundos)",
+    "description": "Hora de finalización (segundos)"
+  },
+  "voice.selectSong": {
+    "message": "Selecciona una canción o introduce el ID de la canción",
+    "description": "Selecciona una canción o introduce el ID de la canción"
+  },
+  "button.newSong": {
+    "message": "Volver a crear una canción",
+    "description": "Volver a crear una canción"
+  },
+  "button.inspo": {
+    "message": "Inspiración",
+    "description": "Inspiración"
+  },
+  "name.inspirationTracks": {
+    "message": "Audios de inspiración",
+    "description": "Audios de inspiración"
+  },
+  "name.mashupTracks": {
+    "message": "Canciones para mezclar",
+    "description": "Canciones para mezclar"
+  },
+  "placeholder.referenceSongs": {
+    "message": "Seleccionar una canción",
+    "description": "Seleccionar una canción"
+  },
+  "description.inspo": {
+    "message": "Selecciona entre 1 y 4 canciones o pega un enlace de audio. Inspiración usa v5.",
+    "description": "Selecciona entre 1 y 4 canciones o pega un enlace de audio. Inspiración usa v5."
+  },
+  "description.mashupTracks": {
+    "message": "Selecciona dos canciones diferentes para combinar sus letras en el editor de letras.",
+    "description": "Selecciona dos canciones diferentes para combinar sus letras en el editor de letras."
+  },
+  "message.inspoReferencesRequired": {
+    "message": "Selecciona entre 1 y 4 audios. Los enlaces deben comenzar por http:// o https://.",
+    "description": "Selecciona entre 1 y 4 audios. Los enlaces deben comenzar por http:// o https://."
+  },
+  "message.mashupReferencesRequired": {
+    "message": "Selecciona dos canciones diferentes para crear una mezcla.",
+    "description": "Selecciona dos canciones diferentes para crear una mezcla."
+  },
+  "description.mashupLyrics": {
+    "message": "Combina las letras de dos canciones en una letra nueva. Después de generarla, puedes seguir editándola y recuperar las letras originales mediante Deshacer.",
+    "description": "Combina las letras de dos canciones en una letra nueva. Después de generarla, puedes seguir editándola y recuperar las letras originales mediante Deshacer."
+  },
+  "placeholder.lyricsA": {
+    "message": "Letras de la primera canción",
+    "description": "Letras de la primera canción"
+  },
+  "placeholder.lyricsB": {
+    "message": "Letras de la segunda canción",
+    "description": "Letras de la segunda canción"
+  },
+  "name.lyricsModel": {
+    "message": "Modelo de letras",
+    "description": "Modelo de letras"
+  },
+  "lyricsModel.default": {
+    "message": "Letras estándar",
+    "description": "Letras estándar"
   }
 }

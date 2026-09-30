@@ -26,7 +26,16 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item v-if="sourceType === 'song'" :label="$t('suno.voice.audioId')">
-        <el-input v-model="form.audio_id" :placeholder="$t('suno.voice.audioIdPlaceholder')" />
+        <el-select
+          v-model="form.audio_id"
+          filterable
+          allow-create
+          default-first-option
+          class="w-full"
+          :placeholder="$t('suno.voice.selectSong')"
+        >
+          <el-option v-for="song in songs" :key="song.id" :value="song.id || ''" :label="song.title || song.id || ''" />
+        </el-select>
       </el-form-item>
       <el-form-item v-if="sourceType === 'upload'" :label="$t('suno.voice.audioUrl')">
         <el-input v-model="form.audio_url" :placeholder="$t('suno.voice.audioUrlPlaceholder')" />
@@ -43,7 +52,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElForm, ElFormItem, ElInput, ElButton, ElRadioGroup, ElRadio, ElMessage } from 'element-plus';
+import {
+  ElDialog,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElButton,
+  ElRadioGroup,
+  ElRadio,
+  ElMessage,
+  ElSelect,
+  ElOption
+} from 'element-plus';
+import type { ISunoAudio } from '@/models';
 import { sunoOperator } from '@/operators/suno';
 import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
 import { X402PaymentCancelledError } from '@/operators/x402';
@@ -57,9 +78,12 @@ export default defineComponent({
     ElInput,
     ElButton,
     ElRadioGroup,
-    ElRadio
+    ElRadio,
+    ElSelect,
+    ElOption
   },
   props: {
+    sourceAudio: { type: Object as () => ISunoAudio, default: undefined },
     modelValue: {
       type: Boolean,
       default: false
@@ -87,6 +111,12 @@ export default defineComponent({
         this.$emit('update:modelValue', val);
       }
     },
+    songs(): ISunoAudio[] {
+      const songs = (this.$store.state.suno?.tasks?.items || []).flatMap((task) =>
+        Array.isArray(task.response?.data) ? task.response.data : []
+      );
+      return songs.filter((audio: ISunoAudio) => audio.id && audio.audio_url);
+    },
     token(): string | undefined {
       return this.$store.state.suno?.credential?.token;
     },
@@ -95,6 +125,18 @@ export default defineComponent({
       if (this.sourceType === 'song' && !this.form.audio_id) return false;
       if (this.sourceType === 'upload' && !this.form.audio_url) return false;
       return true;
+    }
+  },
+  watch: {
+    modelValue: {
+      immediate: true,
+      handler(open: boolean) {
+        if (open && this.sourceAudio?.id) {
+          this.sourceType = 'song';
+          this.form.audio_id = this.sourceAudio.id;
+          this.form.name = this.sourceAudio.title || '';
+        }
+      }
     }
   },
   methods: {

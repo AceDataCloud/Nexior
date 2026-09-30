@@ -96,17 +96,16 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.continue_at;
       },
-      set(val: string) {
-        console.debug('set continue_at', val);
+      set(val: number | undefined) {
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          continue_at: val ? parseInt(val) : undefined
+          continue_at: val
         });
       }
     }
   },
   mounted() {
-    if (!this.value) {
+    if (this.value === undefined) {
       this.value = undefined;
     }
   },
