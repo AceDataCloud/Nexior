@@ -126,6 +126,31 @@ package** — you cannot reuse it on another track.
 
 ## Common CI failures (and what they actually mean)
 
+### Startup hangs during install attribution
+
+First launch waits for `InstallReferrerPlugin` before mounting the UI. Its
+one-shot read must reject on service disconnection or after 3 seconds without a
+result, close the Play service connection, and ignore late callbacks. The
+existing JavaScript handler then continues startup without an inviter; successful
+reads still populate the inviter cookie before login is available.
+
+Run the native regression cases on an attached Android device or emulator after
+`npm run pack:android` and `npx cap sync android`:
+
+```bash
+cd android
+./gradlew connectedPlayDebugAndroidTest \
+  -Pandroid.testInstrumentationRunnerArguments.class=com.acedatacloud.nexior.InstallReferrerPluginTest
+```
+
+These cases inject Play service responses and silence to verify timeout,
+disconnection, cleanup, and successful attribution on the Android runtime. Also
+test an actual Play-flavor package with a clean install and a subsequent cold
+start. Record the first usable page separately from `am start -W`: Android's
+activity display time does not mean the WebView has finished loading. Keep system
+ANRs and emulator rendering stalls separate from application timing. Passing a
+local test does not establish the cause of a Google Play rejection.
+
 ### 1. `Version code 33XXX has already been used`
 
 **Not a pipeline bug.** The build, signing, and Android Publisher API
