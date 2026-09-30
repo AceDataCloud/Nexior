@@ -9,3 +9,9 @@ it('preserves explicit false and omits absent personalization for new generation
 it('drops a persisted generation-only setting on non-generation actions', () => {
   expect(buildSunoAudioRequest({ action: 'extend', personalization: true })).not.toHaveProperty('personalization');
 });
+
+it('omits personalization for the separate custom-model generation flow', () => {
+  expect(buildSunoAudioRequest({ custom: true, custom_model_id: 'owned', personalization: true })).not.toHaveProperty(
+    'personalization'
+  );
+});

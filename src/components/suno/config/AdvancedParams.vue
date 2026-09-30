@@ -1,7 +1,10 @@
 <template>
   <el-collapse v-model="activeNames" class="advanced-collapse">
     <el-collapse-item :title="$t('suno.name.advancedParams')" name="advanced">
-      <div v-if="(config?.action || 'generate') === 'generate'" class="mb-3">
+      <div
+        v-if="(config?.action || 'generate') === 'generate' && !(config?.custom && config?.custom_model_id)"
+        class="mb-3"
+      >
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.personalization') }}</span>
         </div>

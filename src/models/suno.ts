@@ -352,7 +352,6 @@ export interface ISunoCustomModelGenerateRequest {
   title?: string;
   instrumental?: boolean;
   vocal_gender?: string;
-  personalization?: boolean;
   weirdness?: number;
   style_influence?: number;
   duration?: number;
