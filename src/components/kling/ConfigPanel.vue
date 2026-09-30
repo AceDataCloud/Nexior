@@ -7,7 +7,7 @@
       <reference-images v-if="capabilities.referenceImages" class="mb-3" />
       <reference-video v-if="capabilities.referenceVideo" class="mb-4" />
       <start-image class="mb-4" />
-      <end-image class="mb-4" />
+      <end-image v-if="config?.model !== 'kling-v3-turbo'" class="mb-4" />
       <duration-selector class="mb-4" />
       <mode-selector class="mb-4" />
       <generate-audio-selector class="mb-4" />
