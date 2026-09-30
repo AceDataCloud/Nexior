@@ -48,7 +48,11 @@
             <span class="account-switcher-name">{{
               account.user.nickname || account.user.username || account.user.email
             }}</span>
-            <span v-if="account.user.email" class="account-switcher-email">{{ account.user.email }}</span>
+            <span
+              v-if="account.user.email && (account.user.nickname || account.user.username)"
+              class="account-switcher-email"
+              >{{ account.user.email }}</span
+            >
           </span>
           <check v-if="account.user.id === user.id" :size="16" class="shrink-0" aria-hidden="true" />
         </button>
