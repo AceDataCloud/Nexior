@@ -41,7 +41,7 @@ export async function exchangeSsoCode(code: string, { store, router, source }: E
       refresh: data.refresh_token,
       expiration: data.expires_in
     };
-    await store.dispatch('setToken', token);
+    if (await store.dispatch('setToken', token)) return;
     await store.dispatch('getUser');
     track('apple_login_success', { action: 'sso_exchange', source });
     store.commit('setAuth', { visible: false });

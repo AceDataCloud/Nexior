@@ -7,4 +7,15 @@
 // rehydrate the OLD site object from localStorage on next visit and
 // the new flag never reaches the UI until they manually clear storage.
 // Site rows are tiny (<5 KB), so refetching on every load is cheap.
-export default ['user', 'token', 'setting', 'locale', 'dark', 'config', 'currency', 'exchange', 'fingerprint'];
+export default [
+  'accounts',
+  'user',
+  'token',
+  'setting',
+  'locale',
+  'dark',
+  'config',
+  'currency',
+  'exchange',
+  'fingerprint'
+];

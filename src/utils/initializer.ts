@@ -1,3 +1,4 @@
+import { isAddingAccount } from './auth/accountSessions';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
@@ -165,7 +166,7 @@ export const initializeToken = async () => {
   // avoid exchanging the same code multiple times (e.g., page re-render)
   const usedCodeKey = 'oauth_code_used';
   if (!code) return;
-  if (store.state.token?.access) {
+  if (store.state.token?.access && !isAddingAccount()) {
     console.debug('access token already exists, skip code exchange');
     return;
   }

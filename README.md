@@ -59,6 +59,12 @@ If the latest chat reply fails or is interrupted, use **Retry** beside the error
 and attachments. Partial output remains visible until you retry. Retries are manual, start a new generation,
 and may incur additional usage charges; shared read-only conversations do not offer this action.
 
+Saved accounts are available from the email row in the avatar menu. Hover or tap to
+open the account list, then choose **Add account** or select a saved login. Accounts
+are saved in this browser for the current site. Switching opens the home page with a
+fresh session; open tabs follow the selected account. **Log Out** removes the current
+saved login, while other saved accounts remain available in the avatar menu.
+
 ---
 
 ## ⚡ Quick start

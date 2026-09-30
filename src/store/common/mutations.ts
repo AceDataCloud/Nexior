@@ -1,3 +1,4 @@
+import { rememberAccount } from '@/utils/auth/accountSessions';
 import { IApplication, IUser } from '@/models';
 import { IRootState, ISetting } from './models';
 
@@ -6,6 +7,16 @@ export const setUser = (state: IRootState, payload: IUser): void => {
     ...state.user,
     ...payload
   };
+};
+
+export const rememberCurrentAccount = (state: IRootState): void => {
+  state.accounts = rememberAccount(state.accounts || [], state.user, state.token);
+};
+
+export const forgetCurrentAccount = (state: IRootState): void => {
+  state.accounts = (state.accounts || []).filter(
+    (account) => account.user.id !== state.user?.id && account.token.access !== state.token.access
+  );
 };
 
 export const setToken = (state: IRootState, payload: any): void => {
@@ -73,6 +84,8 @@ export const setSetting = (state: IRootState, payload: Partial<ISetting>): void 
 };
 
 export default {
+  rememberCurrentAccount,
+  forgetCurrentAccount,
   setUser,
   setSite,
   setConfig,

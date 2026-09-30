@@ -17,10 +17,12 @@ export const getInviterId = () => {
 
 export const loginRedirect = ({
   redirect = '/',
-  site = window.location.origin
+  site = window.location.origin,
+  addAccount = false
 }: {
   redirect?: string;
   site?: string;
+  addAccount?: boolean;
 }) => {
   const studioBaseUrl = getBaseUrlStudio();
   const authBaseUrl = getBaseUrlAuth();
@@ -38,7 +40,9 @@ export const loginRedirect = ({
     ...(callbackUrl ? { redirect: callbackUrl } : {})
   };
   const targetUrl = `${targetBaseUrl}?${new URLSearchParams(targetQuery).toString()}`;
-  window.location.href = targetUrl;
+  window.location.href = addAccount
+    ? `${authBaseUrl}/auth/logout?${new URLSearchParams({ redirect: targetUrl }).toString()}`
+    : targetUrl;
 };
 
 /**
