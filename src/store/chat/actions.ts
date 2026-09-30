@@ -1,15 +1,9 @@
-import {
-  apiRequestAccessOperator,
-  applicationOperator,
-  chatOperator,
-  credentialOperator,
-  serviceOperator
-} from '@/operators';
+import { applicationOperator, chatOperator, credentialOperator, serviceOperator } from '@/operators';
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { IChatState } from './models';
 import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService, Status } from '@/models';
-import { CHAT_API_ID, CHAT_SERVICE_ID } from '@/constants';
+import { CHAT_SERVICE_ID } from '@/constants';
 import { stripConversationMessages } from './summarize';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
@@ -132,29 +126,6 @@ export const getApplications = async ({
   }
 };
 
-export const refreshModelAccess = async ({ commit, rootState }: ActionContext<IChatState, IRootState>) => {
-  if (!rootState.token?.access) {
-    commit('setModelAccess', {});
-    return {};
-  }
-  try {
-    const { CHAT_MODELS } = await import('@/constants');
-    const payloads = Object.fromEntries(
-      CHAT_MODELS.filter((model) => model.enabled !== false).map((model) => [
-        model.name,
-        { action: 'chat', model: model.name }
-      ])
-    );
-    const { data } = await apiRequestAccessOperator.evaluate(CHAT_API_ID, payloads);
-    commit('setModelAccess', data.results || {});
-    return data.results || {};
-  } catch (error) {
-    console.warn('model access eligibility unavailable', error);
-    commit('setModelAccess', {});
-    return {};
-  }
-};
-
 export const setModel = async ({ commit }: any, payload: IChatModel): Promise<void> => {
   commit('setModel', payload);
 };
@@ -256,7 +227,6 @@ export const getConversation = async (
 export default {
   resetAll,
   createCredential,
-  refreshModelAccess,
   setModel,
   setModelGroup,
   getService,
