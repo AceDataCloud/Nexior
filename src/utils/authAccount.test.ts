@@ -24,7 +24,8 @@ vi.mock('./crossSiteUser', () => ({
   }
 }));
 vi.mock('./surface', () => ({
-  isNative: () => native.value
+  isNative: () => native.value,
+  isDesktop: () => false
 }));
 
 import { openAuthAccountPage } from './authAccount';
@@ -75,5 +76,6 @@ describe('Auth account SSO navigation', () => {
     expect(open).not.toHaveBeenCalled();
     expect(browserOpen).toHaveBeenCalledOnce();
     expect(browserOpen.mock.calls[0][0].url).toContain('code=native-code');
+    expect(new URL(browserOpen.mock.calls[0][0].url).searchParams.has('site')).toBe(false);
   });
 });
