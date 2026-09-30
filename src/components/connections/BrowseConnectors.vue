@@ -670,7 +670,7 @@ export default defineComponent({
 
 .browse-shell {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px minmax(0, 1fr);
   gap: 16px;
   min-height: 420px;
 }
@@ -739,6 +739,7 @@ export default defineComponent({
 }
 
 .browse-grid-wrapper {
+  min-width: 0;
   min-height: 0;
   max-height: 60vh;
   overflow-y: auto;
@@ -990,5 +991,56 @@ export default defineComponent({
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .browse-toolbar {
+    gap: 8px;
+  }
+
+  .search-input {
+    min-width: 0;
+    width: 0;
+  }
+
+  .sort-select {
+    width: 110px;
+  }
+
+  .browse-shell {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    gap: 12px;
+  }
+
+  .browse-sidebar {
+    min-width: 0;
+    padding: 0 0 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--el-border-color-lighter);
+  }
+
+  .sidebar-section {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-item,
+  .sidebar-heading {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .sidebar-divider {
+    display: none;
+  }
+
+  .browse-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .browse-grid-wrapper {
+    max-height: 55vh;
+  }
 }
 </style>

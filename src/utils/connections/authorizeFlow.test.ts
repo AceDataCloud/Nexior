@@ -1,7 +1,11 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-const surface = vi.hoisted(() => ({ isNative: vi.fn(() => false), isDesktop: vi.fn(() => false) }));
+const surface = vi.hoisted(() => ({
+  isNative: vi.fn(() => false),
+  isDesktop: vi.fn(() => false),
+  isMobile: vi.fn(() => false)
+}));
 const capBrowser = vi.hoisted(() => ({ open: vi.fn(), addListener: vi.fn() }));
 const bridge = vi.hoisted(() => ({ desktopBridge: vi.fn() }));
 const popup = vi.hoisted(() => ({ openAuthorizePopup: vi.fn() }));
@@ -40,6 +44,7 @@ function stubBrowserFinished() {
 describe('openAuthorizeFlow', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    surface.isMobile.mockReturnValue(false);
     surface.isNative.mockReturnValue(false);
     surface.isDesktop.mockReturnValue(false);
     handoff.isAuthFrontendUrl.mockImplementation((url: string) => new URL(url).origin === 'https://auth.acedata.cloud');
@@ -135,6 +140,33 @@ describe('openAuthorizeFlow', () => {
       expect(popup.openAuthorizePopup).not.toHaveBeenCalled();
     });
 
+    it('waits for listener registration before opening the browser', async () => {
+      let register!: (handle: { remove: () => Promise<void> }) => void;
+      let finish!: () => void;
+      const remove = vi.fn().mockResolvedValue(undefined);
+      capBrowser.addListener.mockImplementation((_event, cb) => {
+        finish = cb;
+        return new Promise((resolve) => {
+          register = resolve;
+        });
+      });
+      capBrowser.open.mockResolvedValue(undefined);
+      const pending = openAuthorizeFlow(URL_UNDER_TEST);
+      await Promise.resolve();
+      expect(capBrowser.open).not.toHaveBeenCalled();
+      register({ remove });
+      await vi.waitFor(() => expect(capBrowser.open).toHaveBeenCalled());
+      finish();
+      await pending;
+      expect(remove).toHaveBeenCalledOnce();
+    });
+
+    it('rejects a failed listener registration without opening or hanging', async () => {
+      capBrowser.addListener.mockRejectedValue(new Error('listener unavailable'));
+      await expect(openAuthorizeFlow(URL_UNDER_TEST)).rejects.toThrow('listener unavailable');
+      expect(capBrowser.open).not.toHaveBeenCalled();
+    });
+
     it('hands Auth-hosted authorization through the white-label SSO login', async () => {
       const { finish } = stubBrowserFinished();
       capBrowser.open.mockResolvedValue(undefined);
@@ -175,12 +207,50 @@ describe('openAuthorizeFlow', () => {
       expect(remove).toHaveBeenCalled();
     });
 
-    it('resolves rather than hanging when the browser fails to open', async () => {
-      stubBrowserFinished();
+    it('reports opening failures and cleans up the listener', async () => {
+      const { remove } = stubBrowserFinished();
       capBrowser.open.mockRejectedValue(new Error('no browser'));
-      // A rejection that swallowed the promise would leave the caller's
-      // spinner up forever.
-      await expect(openAuthorizeFlow(URL_UNDER_TEST)).resolves.toBeUndefined();
+      await expect(openAuthorizeFlow(URL_UNDER_TEST)).rejects.toThrow('no browser');
+      expect(remove).toHaveBeenCalledOnce();
+    });
+  });
+
+  describe('mobile web', () => {
+    const originalLocation = window.location;
+    let navigate = vi.fn<(url: string) => void>();
+    beforeEach(() => {
+      surface.isMobile.mockReturnValue(true);
+      navigate = vi.fn();
+      Object.defineProperty(window, 'location', {
+        configurable: true,
+        value: {
+          origin: 'https://studio.acedata.cloud',
+          href: 'https://studio.acedata.cloud/console/connectors?connect=github',
+          setHref: navigate
+        }
+      });
+      Object.defineProperty(window.location, 'href', { set: navigate });
+    });
+    afterEach(() => Object.defineProperty(window, 'location', { configurable: true, value: originalLocation }));
+
+    it('returns to the manager without replaying an install deep link', async () => {
+      await expect(prepareAuthorizeFlow('https://auth.acedata.cloud/connections/popup-return')).resolves.toEqual({
+        returnUrl: 'https://studio.acedata.cloud/console/connectors'
+      });
+    });
+    it('opens external OAuth in the current tab without a popup', async () => {
+      await openAuthorizeFlow(URL_UNDER_TEST);
+      expect(navigate).toHaveBeenCalledWith(URL_UNDER_TEST);
+      expect(popup.openAuthorizePopup).not.toHaveBeenCalled();
+    });
+    it('preserves the session handoff for MCP OAuth', async () => {
+      await openAuthorizeFlow(MCP_URL_UNDER_TEST, 'signed-handoff');
+      expect(handoff.prepareConnectorAuthorizationUrl).toHaveBeenCalledWith(MCP_URL_UNDER_TEST, 'signed-handoff');
+      expect(navigate).toHaveBeenCalledWith(expect.stringContaining('/auth/login/'));
+    });
+    it('keeps native returns on the dismissible Auth lander', async () => {
+      surface.isNative.mockReturnValue(true);
+      await expect(prepareAuthorizeFlow(AUTH_URL_UNDER_TEST)).resolves.toEqual({ returnUrl: AUTH_URL_UNDER_TEST });
     });
   });
 

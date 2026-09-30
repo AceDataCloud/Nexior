@@ -55,6 +55,17 @@ describe('AuthFrontend session handoff', () => {
     expect(getConnectorSiteOrigin()).toBeUndefined();
   });
 
+  it.each(['native', 'desktop'])('does not send a local app origin to AuthFrontend on %s', (surface) => {
+    native.value = surface === 'native';
+    desktop.value = surface === 'desktop';
+    const continuation = new URL(buildConnectorContinuationUrl('signed-token') || '');
+    const login = new URL(buildAuthLoginUrl(continuation.toString()));
+    const redirect = new URL(login.searchParams.get('redirect') || '', login.origin);
+    expect(continuation.searchParams.has('site')).toBe(false);
+    expect(login.searchParams.has('site')).toBe(false);
+    expect(redirect.searchParams.has('site')).toBe(false);
+  });
+
   it('builds a token-only Auth continuation without exposing the target', () => {
     const continuation = new URL(buildConnectorContinuationUrl('signed-token') || '');
     expect(continuation.origin).toBe('https://auth.acedata.cloud');

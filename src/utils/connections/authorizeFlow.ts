@@ -5,13 +5,13 @@
  * same single bit — *the flow ended, go refetch* — because the server is the
  * authority on what actually connected. What differs is how we learn it:
  *
- *  - **web**: a popup, watched via `popup.closed` (see `authorizePopup.ts`).
+ *  - **web**: a popup watched via `popup.closed`; mobile web uses same-tab
+ *    navigation and returns to the manager to refetch.
  *  - **native**: the Capacitor in-app browser, watched via `browserFinished`.
- *  - **desktop**: the system browser, watched via window `focus` — Electron
- *    opens a real browser, so there is no in-app close event to listen for.
+ *  - **desktop**: the system browser with a nonce-bound callback over IPC.
  *
- * None of these is a message channel; each is something the app can observe on
- * its own, which is why none needs cross-origin trust.
+ * Native/web close events trigger a refetch, never prove authorization success.
+ * Desktop additionally verifies its callback and the resulting connection.
  *
  * ## Why native can't just use `window.open`
  *
@@ -34,7 +34,7 @@
  */
 
 import { Browser } from '@capacitor/browser';
-import { isNative, isDesktop } from '../surface';
+import { isNative, isDesktop, isMobile } from '../surface';
 import { desktopBridge } from '../desktop';
 import { isAuthFrontendUrl, prepareConnectorAuthorizationUrl } from '../authHandoff';
 import { openAuthorizePopup } from './authorizePopup';
@@ -52,6 +52,11 @@ export interface PreparedAuthorizeFlow {
 }
 
 export async function prepareAuthorizeFlow(fallbackReturnUrl: string): Promise<PreparedAuthorizeFlow> {
+  if (!isNative() && !isDesktop() && isMobile()) {
+    // Mobile browsers commonly block popups opened after the install request.
+    // Return to the manager without carrying a `connect` query and reinstalling.
+    return { returnUrl: new URL('/console/connectors', window.location.origin).toString() };
+  }
   if (!isDesktop()) return { returnUrl: fallbackReturnUrl };
   const bridge = desktopBridge();
   if (!bridge?.createConnectorCallback) throw new Error('desktop-authorize-unsupported');
@@ -62,9 +67,8 @@ export async function prepareAuthorizeFlow(fallbackReturnUrl: string): Promise<P
 /**
  * Run the consent flow on whatever surface we are, and resolve once it ends.
  *
- * Always resolves — callers refetch rather than branching on an outcome. A
- * surface that cannot open the URL at all still resolves, so a spinner never
- * outlives the click.
+ * Native/web callers refetch when the browser closes. Opening failures reject
+ * so the caller can show an error and clear its loading state.
  */
 export async function openAuthorizeFlow(
   authorizationUrl: string,
@@ -80,10 +84,14 @@ export async function openAuthorizeFlow(
   return undefined;
 }
 
-/** Web: popup, falling back to a full-page navigation when it's blocked. */
+/** Web: mobile uses the current tab; desktop browsers prefer a popup. */
 async function openOnWeb(authorizationUrl: string, handoffToken?: string): Promise<void> {
   const needsHandoff = !!handoffToken || isAuthFrontendUrl(authorizationUrl);
   const target = needsHandoff ? prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken) : authorizationUrl;
+  if (isMobile()) {
+    window.location.href = await target;
+    return;
+  }
   const pending = openAuthorizePopup(target);
   if (!pending) {
     // Navigating away — this page is about to be replaced, so there is
@@ -105,18 +113,16 @@ async function openOnWeb(authorizationUrl: string, handoffToken?: string): Promi
 async function openOnNative(authorizationUrl: string, handoffToken?: string): Promise<void> {
   let handle: { remove: () => Promise<void> } | undefined;
   try {
+    let finish!: () => void;
     const finished = new Promise<void>((resolve) => {
-      void Browser.addListener('browserFinished', () => resolve()).then((h) => {
-        handle = h;
-      });
+      finish = resolve;
     });
+    // Register before opening so failure cannot hang the flow and a quickly
+    // dismissed browser cannot finish before the listener exists.
+    handle = await Browser.addListener('browserFinished', finish);
     const target = await prepareConnectorAuthorizationUrl(authorizationUrl, handoffToken);
     await Browser.open({ url: target });
     await finished;
-  } catch (error) {
-    // A browser that never opened has nothing to wait for; resolving lets the
-    // caller refetch, which is harmless and clears the spinner.
-    console.warn('in-app browser failed for connector authorize', error);
   } finally {
     await handle?.remove();
   }

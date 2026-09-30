@@ -9,8 +9,16 @@
   >
     <!-- Extension cookie-capture path (metadata.credential_source === 'extension') -->
     <template v-if="isExtension">
+      <div v-if="isMobileExtension" class="byoc-missing">
+        <warning-icon class="byoc-missing-icon" size="1em" aria-hidden="true" focusable="false" />
+        <div class="byoc-missing-body">
+          <p class="byoc-missing-title">{{ $t('connection.byoc.mobileDesktopTitle') }}</p>
+          <p class="byoc-missing-text">{{ $t('connection.byoc.mobileDesktopBody') }}</p>
+          <p class="byoc-missing-text">{{ desktopConnectUrl }}</p>
+        </div>
+      </div>
       <!-- Electron cannot inspect extensions installed in the system browser. -->
-      <div v-if="isDesktopExtension" class="byoc-missing">
+      <div v-else-if="isDesktopExtension" class="byoc-missing">
         <warning-icon class="byoc-missing-icon" size="1em" aria-hidden="true" focusable="false" />
         <div class="byoc-missing-body">
           <p class="byoc-missing-title">{{ $t('connection.byoc.desktopBrowserTitle') }}</p>
@@ -99,7 +107,16 @@
       <el-button @click="onClose">{{ $t('common.button.cancel') }}</el-button>
       <template v-if="isExtension">
         <el-button
-          v-if="isDesktopExtension"
+          v-if="isMobileExtension"
+          class="byoc-mobile-refresh"
+          type="primary"
+          :loading="submitting"
+          @click="refreshMobileConnection"
+        >
+          {{ $t('common.button.refresh') }}
+        </el-button>
+        <el-button
+          v-else-if="isDesktopExtension"
           class="byoc-browser-open"
           type="primary"
           :loading="submitting"
@@ -128,7 +145,7 @@ import type { FormInstance, FormRules } from 'element-plus';
 import { SecurityIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { desktopBridge } from '@/utils/desktop';
 import { getBaseUrlStudio } from '@/utils/baseUrl';
-import { isDesktop } from '@/utils/surface';
+import { isDesktop, isNative, isMobile } from '@/utils/surface';
 import {
   IConnectorConnectionMethod,
   IConnectorCatalogItem,
@@ -221,6 +238,14 @@ export default defineComponent({
     isExtension(): boolean {
       return this.activeMethod?.credential.source === 'extension';
     },
+    isMobileExtension(): boolean {
+      return this.isExtension && !isDesktop() && (isNative() || isMobile());
+    },
+    desktopConnectUrl(): string {
+      const target = new URL('/console/connectors', getBaseUrlStudio());
+      if (this.item) target.searchParams.set('connect', this.item.identifier);
+      return target.toString();
+    },
     isDesktopExtension(): boolean {
       return this.isExtension && isDesktop();
     },
@@ -255,7 +280,7 @@ export default defineComponent({
       if (v) {
         this.resetForm();
         // Content scripts inject ~after page load, so poll briefly on web.
-        if (this.isExtension && !this.isDesktopExtension) this.pollDetect(8);
+        if (this.isExtension && !this.isDesktopExtension && !this.isMobileExtension) this.pollDetect(8);
       }
     },
     visible(v: boolean) {
@@ -292,6 +317,29 @@ export default defineComponent({
     },
     openLogin() {
       if (this.loginUrl) window.open(this.loginUrl, '_blank', 'noopener');
+    },
+    async refreshMobileConnection() {
+      if (!this.item) return;
+      this.submitting = true;
+      try {
+        const { data } = await connectionOperator.list();
+        const connection = data.find(
+          (c) =>
+            c.connector_identifier === this.item?.identifier &&
+            c.method_id === this.activeMethod?.id &&
+            String(c.status).toLowerCase() === 'active'
+        );
+        if (!connection) {
+          ElMessage.info(this.$t('connection.byoc.mobileDesktopBody') as string);
+          return;
+        }
+        this.$emit('installed', { item: this.item, connection_id: connection.id });
+        this.onClose();
+      } catch {
+        ElMessage.error(this.$t('connection.message.refreshFailed') as string);
+      } finally {
+        this.submitting = false;
+      }
     },
     async openInBrowser() {
       if (!this.item) return;
@@ -509,6 +557,7 @@ export default defineComponent({
   font-size: 13px;
   line-height: 1.6;
   color: var(--el-text-color-regular);
+  overflow-wrap: anywhere;
 }
 
 .byoc-doc-link {
