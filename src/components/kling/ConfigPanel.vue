@@ -11,9 +11,9 @@
       <duration-selector class="mb-4" />
       <mode-selector class="mb-4" />
       <generate-audio-selector class="mb-4" />
-      <camera-control-selector v-if="!omniActive" class="mb-4" />
-      <cfg-scale-selector v-if="!omniActive" class="mb-4" />
-      <negative-prompt-input v-if="!omniActive" class="mb-4" />
+      <camera-control-selector v-if="!restrictedControls" class="mb-4" />
+      <cfg-scale-selector v-if="!restrictedControls" class="mb-4" />
+      <negative-prompt-input v-if="!restrictedControls" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <summary-chip />
@@ -107,9 +107,10 @@ export default defineComponent({
     capabilities() {
       return getKlingCapabilities(this.config?.model, this.config?.mode, this.config?.duration);
     },
-    omniActive(): boolean {
+    restrictedControls(): boolean {
       return (
-        this.config?.model === 'kling-o1' || Boolean(this.config?.image_list?.length || this.config?.video_list?.length)
+        ['kling-o1', 'kling-v3-omni', 'kling-v3-turbo'].includes(this.config?.model || '') ||
+        Boolean(this.config?.image_list?.length || this.config?.video_list?.length)
       );
     },
     consumption() {

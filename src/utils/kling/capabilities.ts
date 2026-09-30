@@ -47,6 +47,8 @@ export function getKlingCapabilities(model?: string, mode?: string, duration?: n
   const d = duration ?? 5;
   switch (model) {
     // Legacy v1: only 5s combos support start/end-frame and motion brush.
+    case 'kling-v3-turbo':
+      return { ...FALLBACK, audio: true };
     case 'kling-v1':
       return {
         text2video: true,
@@ -202,7 +204,9 @@ export function findKlingConflicts(
   if (config.image_list?.length && !caps.referenceImages) {
     conflicts.push({ field: 'image_list', i18nLabel: 'kling.name.referenceImages' });
   }
-  const nextUsesOmni = model === 'kling-o1' || Boolean(config.image_list?.length || config.video_list?.length);
+  const nextUsesOmni =
+    ['kling-o1', 'kling-v3-omni', 'kling-v3-turbo'].includes(model) ||
+    Boolean(config.image_list?.length || config.video_list?.length);
   if (nextUsesOmni && config.cfg_scale !== undefined) {
     conflicts.push({ field: 'cfg_scale', i18nLabel: 'kling.name.cfgScale' });
   }

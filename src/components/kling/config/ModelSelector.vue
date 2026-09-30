@@ -38,6 +38,7 @@ export default defineComponent({
       // when the user cancels a model switch.
       revertKey: 0,
       options: [
+        { value: 'kling-v3-turbo', label: 'v3-Turbo' },
         {
           value: 'kling-v3',
           label: 'v3'

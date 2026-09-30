@@ -5,7 +5,7 @@
         <span class="text-sm font-bold">{{ $t('kling.name.generateAudio') }}</span>
         <info-icon :content="tooltipContent" />
       </div>
-      <el-switch v-model="value" class="value" :disabled="!supported" />
+      <el-switch v-model="value" class="value" :disabled="!supported || fixedAudio" />
     </div>
   </div>
 </template>
@@ -29,7 +29,11 @@ export default defineComponent({
     selectedMode(): string {
       return this.$store.state.kling?.config?.mode || '';
     },
+    fixedAudio(): boolean {
+      return this.selectedModel === 'kling-v3-turbo';
+    },
     supported(): boolean {
+      if (this.fixedAudio) return true;
       if (KLING_V3_MODELS.includes(this.selectedModel)) {
         return true;
       }
@@ -39,12 +43,14 @@ export default defineComponent({
       return false;
     },
     tooltipContent(): string {
+      if (this.fixedAudio) return this.$t('kling.description.generateAudioIncluded');
       return this.supported
         ? this.$t('kling.description.generateAudio')
         : this.$t('kling.description.generateAudioUnsupported');
     },
     value: {
       get(): boolean {
+        if (this.fixedAudio) return true;
         if (!this.supported) return false;
         return this.$store.state.kling?.config?.generate_audio ?? KLING_DEFAULT_GENERATE_AUDIO;
       },

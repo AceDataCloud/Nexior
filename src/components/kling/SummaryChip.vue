@@ -19,6 +19,7 @@ import { defineComponent } from 'vue';
 
 const MODEL_LABELS: Record<string, string> = {
   'kling-v3': 'v3',
+  'kling-v3-turbo': 'v3-Turbo',
   'kling-v3-omni': 'v3-Omni',
   'kling-v2-6': 'v2.6',
   'kling-v2-5-turbo': 'v2.5-Turbo',
@@ -60,7 +61,7 @@ export default defineComponent({
       return MODE_RESOLUTION[m] || m;
     },
     generateAudio(): boolean {
-      return Boolean(this.config?.generate_audio);
+      return this.config?.model === 'kling-v3-turbo' || Boolean(this.config?.generate_audio);
     }
   }
 });
