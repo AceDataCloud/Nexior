@@ -38,6 +38,8 @@
 - 💸 **Turn it into a business (optional)** — built-in user accounts, payments, and a referral/distribution system. Zero extra config.
 - 📦 **MIT licensed** — fork it, brand it, ship it.
 
+Custom capability names configured in site settings also appear in browser tab titles and sharing titles.
+
 > Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud).
 
 **Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用,几分钟上线。
