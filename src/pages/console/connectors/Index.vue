@@ -1293,6 +1293,16 @@ export default defineComponent({
   async mounted() {
     await Promise.all([this.fetchConnections(), this.fetchCatalog()]);
     this.firstLoadComplete = true;
+    // Same-tab mobile OAuth returns here. Report failures without treating a
+    // callback query as proof of connection; the refreshed list is authoritative.
+    if (this.$route.query.status === 'error') {
+      ElMessage.error(this.$t('connection.message.installFailed') as string);
+    }
+    const returnedConnectionId = this.$route.query.connection_id?.toString();
+    const returnedItem = returnedConnectionId
+      ? this.orderedItems.find((it) => it.connection?.id === returnedConnectionId)
+      : undefined;
+    if (returnedItem) this.selectedKey = returnedItem.key;
     if (!this.selectedKey && this.orderedItems.length) {
       this.selectedKey = this.orderedItems[0].key;
     }
@@ -1674,6 +1684,7 @@ export default defineComponent({
           await this.runAuthorizePopup(data.authorization_url, data.handoff_token, prepared.requestId);
         } else if (data && (data as any).type === 'active') {
           // Zero-step flow (public) — refresh the list.
+          this.pendingCreateNew = false;
           await this.fetchConnections();
         }
       } catch (error: any) {

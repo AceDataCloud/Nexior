@@ -16,19 +16,24 @@ export function getConnectorSiteOrigin(): string | undefined {
   return ['http:', 'https:'].includes(window.location.protocol) ? window.location.origin : undefined;
 }
 
+// App pseudo-origins must never become AuthFrontend tenant/branding context.
+function withConnectorSite(url: string): string {
+  return getConnectorSiteOrigin() ? withCurrentSite(url) : url;
+}
+
 export function buildConnectorContinuationUrl(handoffToken: string): string | undefined {
   if (!handoffToken) return undefined;
   const continuation = new URL('/connections/continue', getBaseUrlAuth());
   continuation.searchParams.set('handoff', handoffToken);
-  return withCurrentSite(continuation.toString());
+  return withConnectorSite(continuation.toString());
 }
 
 export function buildAuthLoginUrl(targetUrl: string): string {
-  const target = new URL(withCurrentSite(targetUrl));
+  const target = new URL(withConnectorSite(targetUrl));
   const redirect = `${target.pathname}${target.search}${target.hash}`;
   const login = new URL('/auth/login/', getBaseUrlAuth());
   login.searchParams.set('redirect', redirect);
-  return withCurrentSite(login.toString());
+  return withConnectorSite(login.toString());
 }
 
 export async function withAuthFrontendSession(targetUrl: string): Promise<string> {

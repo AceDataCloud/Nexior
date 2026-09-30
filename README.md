@@ -119,6 +119,19 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product without separat
 
 ---
 
+### Connectors on mobile
+
+Open **Profile → Console → Connectors**, or **+ → Connectors** in the chat composer.
+OAuth connectors (including custom MCP servers), API-key connectors, and public
+connectors are available on iOS, Android, and the official mobile website. Mobile
+web authorization returns to the connector manager in the same tab. In the app,
+finish authorization in the browser sheet, then dismiss it to refresh your connections.
+
+Connections that capture browser login cookies require the ACE extension on a
+computer. Complete setup there using the same account, then tap **Refresh** in
+the phone's connection dialog. Browser-device methods can use a compatible paired
+computer; that computer must be online when running browser actions.
+
 ## 🧩 Tech stack
 
 Vue 3.5 · Vite 7 · TypeScript · Vuex 4 (per-service namespaced modules) · Element Plus · Capacitor 6 (iOS + Android) · OAuth SSO.

@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const hostState = vi.hoisted(() => ({ mainOfficial: false }));
-vi.mock('@/utils', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@/utils')>();
+vi.mock('@/utils/is', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/utils/is')>();
   return { ...actual, isMainOfficial: () => hostState.mainOfficial };
 });
 
@@ -28,7 +28,9 @@ const linkKeys = (wrapper: ReturnType<typeof mountSidePanel>): string[] =>
   (wrapper.vm as unknown as { links: { key: string }[] }).links.map((link) => link.key);
 
 describe('ConsoleSidePanel host visibility', () => {
+  afterEach(() => vi.unstubAllEnvs());
   beforeEach(() => {
+    vi.stubEnv('VITE_SURFACE', 'web');
     hostState.mainOfficial = false;
     push.mockReset();
   });
@@ -40,6 +42,18 @@ describe('ConsoleSidePanel host visibility', () => {
   it('shows managed capabilities on the main official host', () => {
     hostState.mainOfficial = true;
 
+    expect(linkKeys(mountSidePanel())).toEqual([
+      'application-list',
+      'order-list',
+      'usage-list',
+      'connectors',
+      'skills',
+      'browser-devices'
+    ]);
+  });
+
+  it.each(['ios', 'android', 'desktop'])('shows managed capabilities inside the %s app', (surface) => {
+    vi.stubEnv('VITE_SURFACE', surface);
     expect(linkKeys(mountSidePanel())).toEqual([
       'application-list',
       'order-list',
