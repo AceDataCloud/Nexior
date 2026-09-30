@@ -37,7 +37,7 @@ export interface ISetting {
 
 export interface ICommonState {
   token: IToken;
-  savedAccounts: SavedAccount[];
+  accounts: SavedAccount[];
   user?: IUser;
   setting?: ISetting;
   site?: ISite;

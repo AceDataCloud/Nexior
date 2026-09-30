@@ -43,7 +43,7 @@ export function accountSessionState(state: Record<string, any>, account: SavedAc
   return {
     token: account.token,
     user: account.user,
-    savedAccounts: rememberAccount(state.savedAccounts || [], account.user, account.token),
+    accounts: rememberAccount(state.accounts || [], account.user, account.token),
     setting: state.setting,
     locale: state.locale,
     dark: state.dark,

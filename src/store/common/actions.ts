@@ -271,7 +271,7 @@ export const addAccount = async ({ commit, dispatch }: ActionContext<IRootState,
 
 export const switchAccount = async ({ state, commit }: ActionContext<IRootState, IRootState>, id: string) => {
   if (id === state.user?.id) return;
-  const account = state.savedAccounts.find((item) => item.user.id === id);
+  const account = state.accounts.find((item) => item.user.id === id);
   if (!account) return;
   const user = await validateAccountToken(account.token);
   if (user.id !== id) throw new Error('Account identity mismatch');

@@ -4,6 +4,7 @@
     trigger="hover"
     placement="right-start"
     :width="288"
+    :offset="0"
     :show-arrow="false"
     :show-after="100"
     :hide-after="180"
@@ -92,7 +93,7 @@ watch(
 );
 const keyboardRequested = ref(false);
 const user = computed(() => store.state.user || {});
-const accounts = computed(() => rememberAccount(store.state.savedAccounts || [], user.value, store.state.token));
+const accounts = computed(() => rememberAccount(store.state.accounts || [], user.value, store.state.token));
 
 function close() {
   visible.value = false;

@@ -10,11 +10,11 @@ export const setUser = (state: IRootState, payload: IUser): void => {
 };
 
 export const rememberCurrentAccount = (state: IRootState): void => {
-  state.savedAccounts = rememberAccount(state.savedAccounts || [], state.user, state.token);
+  state.accounts = rememberAccount(state.accounts || [], state.user, state.token);
 };
 
 export const forgetCurrentAccount = (state: IRootState): void => {
-  state.savedAccounts = (state.savedAccounts || []).filter(
+  state.accounts = (state.accounts || []).filter(
     (account) => account.user.id !== state.user?.id && account.token.access !== state.token.access
   );
 };

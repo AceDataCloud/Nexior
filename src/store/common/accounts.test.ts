@@ -16,7 +16,7 @@ import { forgetCurrentAccount } from './mutations';
 const a = { user: { id: 'a' }, token: { access: 'a-token' } };
 const b = { user: { id: 'b' }, token: { access: 'b-token' } };
 function context() {
-  return { state: { user: a.user, token: a.token, savedAccounts: [a, b] }, commit: vi.fn(), dispatch: vi.fn() };
+  return { state: { user: a.user, token: a.token, accounts: [a, b] }, commit: vi.fn(), dispatch: vi.fn() };
 }
 beforeEach(() => {
   vi.clearAllMocks();
@@ -78,6 +78,6 @@ describe('account actions', () => {
     expect(ctx.commit.mock.calls[0]).toEqual(['forgetCurrentAccount']);
     const state = { ...ctx.state, user: {} };
     forgetCurrentAccount(state as never);
-    expect(state.savedAccounts).toEqual([b]);
+    expect(state.accounts).toEqual([b]);
   });
 });

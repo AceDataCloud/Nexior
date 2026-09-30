@@ -4,7 +4,7 @@
       <user-avatar class="cursor-pointer" />
       <template #dropdown>
         <account-switcher
-          v-if="authenticated || $store.state.savedAccounts?.length"
+          v-if="authenticated || $store.state.accounts?.length"
           :parent-visible="accountMenuVisible"
           @close="closeDropdown"
         />

@@ -33,7 +33,7 @@ describe('saved account sessions', () => {
     beginAddingAccount();
     activateAccount(
       {
-        savedAccounts: [a],
+        accounts: [a],
         token: a.token,
         setting: { dockCollapsed: true },
         chat: { conversations: ['secret'], credential: 'a-key' },
@@ -43,7 +43,7 @@ describe('saved account sessions', () => {
       b
     );
     const saved = JSON.parse(localStorage.getItem('vuex')!);
-    expect(saved).toEqual({ token: b.token, user: b.user, savedAccounts: [a, b], setting: { dockCollapsed: true } });
+    expect(saved).toEqual({ token: b.token, user: b.user, accounts: [a, b], setting: { dockCollapsed: true } });
     expect(window.location.replace).toHaveBeenCalledWith('https://studio.example/');
     expect(isAccountTransitioning()).toBe(true);
     expect(isAddingAccount()).toBe(false);
@@ -54,7 +54,7 @@ describe('saved account sessions', () => {
     vi.mocked(localStorage.setItem).mockImplementation(() => {
       throw new Error('quota');
     });
-    expect(() => activateAccount({ savedAccounts: [a] }, b)).toThrow('quota');
+    expect(() => activateAccount({ accounts: [a] }, b)).toThrow('quota');
     expect(window.location.replace).not.toHaveBeenCalled();
     expect(isAccountTransitioning()).toBe(false);
   });
