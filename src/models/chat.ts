@@ -450,6 +450,7 @@ export interface IChatConversationRequest {
   message?: string | IChatMessageContentItem[];
   references?: Array<string | IChatReference>;
   stateful?: boolean;
+  memory_enabled?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
   model: IChatModelName;

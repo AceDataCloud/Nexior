@@ -253,7 +253,11 @@ export default defineComponent({
           onPlayback: (playing: boolean) => {
             if (live()) this.aiSpeaking = playing;
           },
-          onDelegation: createVoiceBackend(this.token, this.$store.state.chat.model.name),
+          onDelegation: createVoiceBackend(
+            this.token,
+            this.$store.state.chat.model.name,
+            this.$store.state.chat.memoryEnabled
+          ),
           onAudioLevel: (lvl: number) => {
             if (live()) this.level = lvl;
           },
