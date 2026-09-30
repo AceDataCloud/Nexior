@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue';
 import type { CapabilityKey } from '@/constants/capabilities';
 import { consumeShowcase } from './showcaseRecreate';
+import { openTaskDrawer } from './taskDrawerMixin';
 
 export function showcaseRecreateMixin(capability: CapabilityKey) {
   return defineComponent({
@@ -17,7 +18,7 @@ export function showcaseRecreateMixin(capability: CapabilityKey) {
     },
     methods: {
       async onConsumeShowcase() {
-        await consumeShowcase({
+        const result = await consumeShowcase({
           capability,
           route: this.$route,
           router: this.$router,
@@ -26,6 +27,9 @@ export function showcaseRecreateMixin(capability: CapabilityKey) {
           locale: String(this.$i18n.locale || 'en'),
           t: (key, params) => this.$t(key, params || {}) as string
         });
+        if (result === 'applied' && window.matchMedia('(max-width: 767px)').matches) {
+          openTaskDrawer();
+        }
       }
     }
   });
