@@ -71,6 +71,12 @@ export class RealtimeClient {
     const Ctx = window.AudioContext || (window as any).webkitAudioContext;
     this.audioCtx = new Ctx({ sampleRate: REALTIME_SAMPLE_RATE });
     console.debug('[voice] Starting audio', this.audioCtx.state);
+    if (this.audioCtx.state === 'suspended' && navigator.userActivation?.isActive === false) {
+      // Auto-entry can lose activation while provisioning. Show the existing
+      // localized start prompt; the next explicit click can unlock audio.
+      this.stop();
+      return;
+    }
     // Call resume before yielding so a retry from a click retains user activation.
     await Promise.all([this.audioCtx.resume(), this.audioCtx.audioWorklet.addModule('/recorder-worklet.js')]);
     if (this.disposed) return this.teardownAudio(); // user hit End/Back mid-startup

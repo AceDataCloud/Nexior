@@ -47,7 +47,16 @@
 
     <!-- stage: the audio-reactive orb -->
     <main class="rtc-stage">
-      <div class="orb-stage" @click="onOrbTap">
+      <div
+        class="orb-stage"
+        role="button"
+        tabindex="0"
+        :aria-label="$t('realtime.start')"
+        :aria-disabled="running || connecting"
+        @click="onOrbTap"
+        @keydown.enter.prevent="onOrbTap"
+        @keydown.space.prevent="onOrbTap"
+      >
         <div class="orb-halo" :style="haloStyle"></div>
         <div class="orb-breathe" :class="{ paused: !running }">
           <div class="orb" :class="orbClass" :style="{ transform: `scale(${orbScale})` }">

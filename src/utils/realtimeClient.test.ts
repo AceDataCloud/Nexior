@@ -96,6 +96,21 @@ afterEach(() => {
 });
 
 describe('GPT-Live voice transport', () => {
+  it('returns to the start prompt when auto-entry lacks audio activation', async () => {
+    vi.stubGlobal('window', {
+      AudioContext: class extends Audio {
+        state = 'suspended';
+      }
+    });
+    Object.assign(navigator, { userActivation: { isActive: false } });
+    const status = vi.fn();
+    const client = new RealtimeClient('token', 'gpt-live-1', { onStatus: status });
+    await client.start();
+    expect(status).toHaveBeenLastCalledWith('disconnected');
+    expect(navigator.mediaDevices.getUserMedia).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
   it('exits connecting when microphone permission remains unanswered and releases a late stream', async () => {
     let grant!: (stream: MediaStream) => void;
     vi.mocked(navigator.mediaDevices.getUserMedia).mockReturnValue(new Promise((resolve) => (grant = resolve)));
