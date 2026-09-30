@@ -60,7 +60,7 @@
       </div>
 
       <transition name="fade">
-        <p v-if="showInfo && !captionsOn" class="rtc-info">{{ modelName }}</p>
+        <p v-if="showInfo && !captionsOn" class="rtc-info">{{ modelName }} · 0.6 Credits/min</p>
       </transition>
 
       <!-- captions: large transcript, dark theme (ChatGPT CC mode) -->
@@ -110,6 +110,7 @@ import {
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
+import { createVoiceBackend } from '@/utils/voiceBackend';
 import { REALTIME_DEFAULT_MODEL, REALTIME_DEFAULT_VOICE, REALTIME_VOICES } from '@/constants';
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from '@/router/constants';
 
@@ -247,8 +248,12 @@ export default defineComponent({
             this.errorMsg = '';
           },
           onAiTranscriptDelta: (d: string) => {
-            if (live()) this.aiText += d;
+            if (live()) this.aiText = (this.aiText + d).slice(-600);
           },
+          onPlayback: (playing: boolean) => {
+            if (live()) this.aiSpeaking = playing;
+          },
+          onDelegation: createVoiceBackend(this.token, this.$store.state.chat.model.name),
           onAudioLevel: (lvl: number) => {
             if (live()) this.level = lvl;
           },
