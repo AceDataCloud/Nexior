@@ -183,6 +183,8 @@ export default defineComponent({
       return { speaking: this.aiSpeaking, live: this.running, idle: !this.running };
     },
     captionText(): string {
+      if (this.errorMsg) return this.errorMsg;
+      if (!this.running || this.connecting) return this.stageText;
       if (this.aiText) return this.aiText;
       if (this.running && !this.userText) return this.$t('realtime.listening');
       return '';
