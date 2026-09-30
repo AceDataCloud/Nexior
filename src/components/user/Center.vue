@@ -8,11 +8,9 @@
     >
       <user-avatar class="cursor-pointer" />
       <template #dropdown>
-        <account-switcher
-          v-if="authenticated || $store.state.accounts?.length"
-          :parent-visible="accountMenuVisible"
-          @close="closeDropdown"
-        />
+        <div v-if="authenticated || $store.state.accounts?.length" class="p-2">
+          <account-switcher :parent-visible="accountMenuVisible" @close="closeDropdown" />
+        </div>
         <el-divider v-if="authenticated" class="mb-1 mt-1" />
         <el-dropdown-menu>
           <el-dropdown-item v-if="!authenticated" class="py-2" @click="onLogin">

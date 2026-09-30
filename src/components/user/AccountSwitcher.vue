@@ -182,12 +182,13 @@ function onMenuKeydown(event: KeyboardEvent) {
   gap: 20px;
   width: 100%;
   max-width: min(320px, calc(100vw - 32px));
-  padding: 16px;
+  padding: 8px 16px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   color: var(--el-text-color-primary);
   font-size: 14px;
+  line-height: 22px;
   font-weight: 500;
   text-align: left;
   cursor: pointer;
