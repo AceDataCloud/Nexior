@@ -92,6 +92,9 @@ import { loginRedirect } from '@/utils/login';
 import { isNative, isDesktop } from '@/utils/surface';
 import { requiresLogin } from './authPolicy';
 import { trackSitePageView } from '@/utils/siteAnalytics';
+import { CAPABILITY_KEYS } from '@/constants/capabilities';
+import type { IChatModelGroup } from '@/models';
+import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -512,11 +515,16 @@ export function setupRouterGuards(router: Router) {
     trackSitePageView(to.fullPath);
     // Determine the route prefix (e.g., /chatgpt/conversations/123 → chatgpt)
     const prefix = to.path.split('/').filter(Boolean)[0] || '';
-    const seoData = ROUTE_SEO[prefix];
+    const capabilityName = (to.meta.modelGroup as IChatModelGroup | undefined)?.name || to.meta.appName;
+    const capability = CAPABILITY_KEYS.find((key) => key === capabilityName);
+    const seoData = ROUTE_SEO[prefix] || (capability && ROUTE_SEO[capability]);
 
     if (seoData) {
+      const title = capability
+        ? resolveCapabilityPresentation(store.state.site, capability, seoData.title, '').displayName
+        : seoData.title;
       updateSeo({
-        title: seoData.title,
+        title,
         description: seoData.description,
         keywords: seoData.keywords
       });
@@ -524,7 +532,7 @@ export function setupRouterGuards(router: Router) {
       // hostname the visitor is actually on (studio.acedata.cloud and its white-label subdomains).
       const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://studio.acedata.cloud';
       setWebApplicationSchema({
-        name: seoData.title,
+        name: title,
         description: seoData.description,
         url: `${origin}/${prefix}`,
         category: seoData.category
