@@ -35,7 +35,7 @@
                   <el-form-item :label="$t('application.field.package')" class="mb-0">
                     <el-radio-group v-if="packages.length > 0" v-model="form.packageId" class="package-options">
                       <el-radio-button v-for="(pkg, pkgIndex) in packages" :key="pkgIndex" :label="pkg.id" class="mb-2">
-                        <span v-show="pkgIndex !== 0" class="corner">
+                        <span v-show="!isApplePurchase && pkgIndex !== 0" class="corner">
                           {{ getDiscount(pkg) }}
                         </span>
                         {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit || 'credit'}s`) }}
@@ -147,7 +147,8 @@ import {
   getPriceString,
   getApplicationMarkupRatio,
   getApplicationCallerOrderDiscountRate,
-  resolveUsagePackagePricing
+  resolveUsagePackagePricing,
+  resolveApplePackagePricing
 } from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
@@ -199,6 +200,9 @@ export default defineComponent({
     };
   },
   computed: {
+    isApplePurchase(): boolean {
+      return isIOS();
+    },
     applicationId() {
       return this.$route.params?.id?.toString();
     },
@@ -252,7 +256,8 @@ export default defineComponent({
       return getApplicationCallerOrderDiscountRate(this.application);
     },
     resolvedPackagePricing() {
-      return resolveUsagePackagePricing(this.package, this.markupRatio, this.orderDiscountRate, !isIOS());
+      if (isIOS()) return resolveApplePackagePricing(this.package);
+      return resolveUsagePackagePricing(this.package, this.markupRatio, this.orderDiscountRate);
     },
     pricingAvailable(): boolean {
       return this.resolvedPackagePricing !== undefined;
@@ -357,6 +362,7 @@ export default defineComponent({
       orderOperator
         .create({
           application_id: this.application?.id,
+          ...(isIOS() ? { pay_way: 'AppleIAP' } : {}),
           amount: this.package?.amount,
           ...(this.form.packageId !== 'custom' && this.package
             ? {

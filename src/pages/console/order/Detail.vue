@@ -14,7 +14,7 @@
                 <div v-if="loading" class="pt-5">
                   <el-skeleton animated />
                 </div>
-                <div v-else class="order">
+                <div v-else-if="order" class="order">
                   <el-descriptions :column="1">
                     <el-descriptions-item :label="$t('order.field.id')">
                       <span>{{ order?.id }} </span>
@@ -73,6 +73,7 @@
                     </el-descriptions-item>
                   </el-descriptions>
                 </div>
+                <el-empty v-else :description="$t('common.message.noData')" />
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PAID || order?.state === OrderState.FINISHED" class="mb-5">
@@ -180,7 +181,7 @@
                     <span class="payname">{{ $t('order.title.paypal') }}</span>
                   </div>
                 </div>
-                <div v-if="showPayment && !order?.pay_way">
+                <div v-if="showPayment && (!order?.pay_way || payWay === PayWay.Apple)">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
                     $t('common.button.pay')
                   }}</el-button>
@@ -253,7 +254,8 @@ import {
   ElDescriptionsItem,
   ElButton,
   ElCard,
-  ElTag
+  ElTag,
+  ElEmpty
 } from 'element-plus';
 import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
@@ -316,6 +318,7 @@ export default defineComponent({
     ElDescriptions,
     ElDescriptionsItem,
     ElTag,
+    ElEmpty,
     WechatPayOrder,
     StripePayOrder,
     AlipayPayOrder,
@@ -631,19 +634,25 @@ export default defineComponent({
       this.loading = true;
       orderOperator
         .refresh(this.id)
-        .then(({ data: data }: { data: IOrderDetailResponse }) => {
-          this.order = data;
-          if (data.pay_way) {
+        .then(async ({ data }: { data: IOrderDetailResponse }) => {
+          if (isIOS() && data.state === OrderState.PENDING) {
+            this.order = (await orderOperator.pay(this.id, { pay_way: PayWay.Apple })).data;
+            this.payWay = PayWay.Apple;
+          } else {
+            this.order = data;
+          }
+          if (!isIOS() && data.pay_way) {
             this.payWay = data.pay_way as PayWay;
           }
           this.loading = false;
         })
         .catch(() => {
+          this.order = undefined;
           this.loading = false;
         });
     },
     onRepay() {
-      if (this.order?.pay_way === PayWay.Airwallex) {
+      if (this.payWay === PayWay.Apple || this.order?.pay_way === PayWay.Airwallex) {
         this.onPay();
         return;
       }
@@ -659,14 +668,6 @@ export default defineComponent({
     },
     onPay() {
       this.prepaying = true;
-      // Apple IAP: no PSP session / pay_url. The ApplePay dialog drives the
-      // StoreKit purchase and calls apple-verify; just open it and poll.
-      if (this.payWay === PayWay.Apple) {
-        this.prepaying = false;
-        this.paying = true;
-        this.startOrderPolling(POLL_INITIAL_DELAY_MS);
-        return;
-      }
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;
       }
