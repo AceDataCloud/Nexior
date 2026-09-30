@@ -1,8 +1,31 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 30 Sep 2026 07:58:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 30 Sep 2026 20:25:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.376.0
+
+Wed, 30 Sep 2026 20:25:54 GMT
+
+### Minor changes
+
+- Add multiple saved accounts and switch between them from the user menu. (dev@acedata.cloud)
+
+### Patches
+
+- Keep the account menu readable on mobile instead of shrinking and wrapping its labels. (dev@acedata.cloud)
+- Submit model requests to the backend and show persistent early-access recovery with an ACE Integration link. (dev@acedata.cloud)
+- Use Apple-specific iOS credit prices without discounts and prepare pending orders before native payment. (dev@acedata.cloud)
+- Restore connector management in apps, fix mobile OAuth return flows, and guide mobile cookie connections through computer setup. (dev@acedata.cloud)
+- Match the account switcher spacing and hover shape to the user menu items. (dev@acedata.cloud)
+- Use custom site capability names in browser tab titles, sharing titles, and application structured data. (dev@acedata.cloud)
+- Describe reasoning, image understanding, and long-context capabilities without repeating the model name in any locale. (dev@acedata.cloud)
+- Hide inapplicable balance fields for dataset and deployment applications in the application list. (dev@acedata.cloud)
+- Open the mobile creation panel after applying a curated Create Similar example. (dev@acedata.cloud)
+- Shorten all chat model descriptions across languages for easier model selection. (dev@acedata.cloud)
+- Refresh translated subsite copy immediately after switching languages. (dev@acedata.cloud)
+- Make Suno task failures consistent with songs, simplify the list and complete inspiration, vocal reference, lyric timing and export workflows. (dev@acedata.cloud)
 
 ## 3.375.0
 
