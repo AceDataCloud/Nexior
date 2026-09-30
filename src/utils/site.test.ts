@@ -6,6 +6,7 @@ import {
   getApplicationMarkupRatio,
   getApplicationCallerOrderDiscountRate,
   applyMarkup,
+  resolveApplePackagePricing,
   resolveUsagePackagePricing,
   isBrandingHidden,
   getBrandName,
@@ -285,5 +286,37 @@ describe('isReferralEntryVisible', () => {
   it('keeps the entry visible for site admins and superusers', () => {
     expect(isReferralEntryVisible(hiddenSite, { id: 'admin-1' })).toBe(true);
     expect(isReferralEntryVisible(hiddenSite, { id: 'root', is_superuser: true })).toBe(true);
+  });
+});
+
+describe('Apple consumable pricing', () => {
+  it('uses the Apple preset independently of web quotes and discounts', () => {
+    const pkg = {
+      id: 'apple-package',
+      amount: 100,
+      price: 15,
+      list_price: 15,
+      final_price: 13.5,
+      metadata: { apple_product_id: 'credits.100', apple_price: 18.99 }
+    };
+    expect(resolveApplePackagePricing(pkg)).toEqual({ packagePrice: 18.99, finalPrice: 18.99 });
+    expect(resolveUsagePackagePricing(pkg, 0, 0.1)).toEqual({ packagePrice: 15, finalPrice: 13.5 });
+  });
+
+  it.each([undefined, 0, -1, NaN, Infinity, '18.99'])('fails closed for invalid Apple preset %s', (price) => {
+    expect(
+      resolveApplePackagePricing({
+        id: 'apple-package',
+        amount: 100,
+        price: 15,
+        metadata: { apple_product_id: 'credits.100', apple_price: price }
+      })
+    ).toBeUndefined();
+  });
+
+  it('requires a mapped Apple product', () => {
+    expect(
+      resolveApplePackagePricing({ id: 'apple-package', amount: 100, price: 15, metadata: { apple_price: 18.99 } })
+    ).toBeUndefined();
   });
 });

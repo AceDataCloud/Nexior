@@ -179,6 +179,12 @@ export interface IUsagePackagePricing {
 const isValidPrice = (value: unknown): value is number =>
   typeof value === 'number' && Number.isFinite(value) && value >= 0;
 
+export const resolveApplePackagePricing = (pkg?: IPackage): IUsagePackagePricing | undefined => {
+  const price = pkg?.metadata?.apple_price;
+  if (!pkg?.metadata?.apple_product_id || !isValidPrice(price) || price <= 0) return undefined;
+  return { packagePrice: price, finalPrice: price };
+};
+
 export const resolveUsagePackagePricing = (
   pkg?: IPackage,
   markupRatio?: number,
