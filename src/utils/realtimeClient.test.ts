@@ -53,6 +53,8 @@ class Worklet {
 const track = { enabled: true, stop: vi.fn() };
 const source = { connect: vi.fn(), start: vi.fn(), stop: vi.fn(), onended: null as (() => void) | null };
 class Audio {
+  state = 'running';
+  resume = vi.fn().mockResolvedValue(undefined);
   currentTime = 0;
   destination = {};
   audioWorklet = { addModule: vi.fn().mockResolvedValue(undefined) };
@@ -94,6 +96,22 @@ afterEach(() => {
 });
 
 describe('GPT-Live voice transport', () => {
+  it('exits connecting when microphone permission remains unanswered and releases a late stream', async () => {
+    let grant!: (stream: MediaStream) => void;
+    vi.mocked(navigator.mediaDevices.getUserMedia).mockReturnValue(new Promise((resolve) => (grant = resolve)));
+    const status = vi.fn(),
+      error = vi.fn();
+    const client = new RealtimeClient('token', 'gpt-live-1', { onStatus: status, onError: error });
+    const start = client.start();
+    await vi.advanceTimersByTimeAsync(30000);
+    expect(error).toHaveBeenCalledWith(expect.stringContaining('startup timed out'));
+    expect(status).toHaveBeenLastCalledWith('disconnected');
+    grant({ getTracks: () => [track], getAudioTracks: () => [track] } as unknown as MediaStream);
+    await start;
+    expect(track.stop).toHaveBeenCalled();
+    expect(client.isRunning).toBe(false);
+  });
+
   it('keeps credentials out of URL and waits for session.started before audio', async () => {
     const status = vi.fn();
     const client = new RealtimeClient('token', 'gpt-live-1', { onStatus: status });

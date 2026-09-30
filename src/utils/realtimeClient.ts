@@ -58,11 +58,25 @@ export class RealtimeClient {
 
   async start(): Promise<void> {
     this.handlers.onStatus?.('connecting');
+    // Cover capture/worklet startup too: a pending permission prompt or suspended
+    // audio context must not leave the call connecting forever.
+    let stage = 'audio';
+    this.startupTimer = setTimeout(() => {
+      if (!this.running && !this.disposed) {
+        console.warn('[voice] Startup timed out', stage);
+        this.handlers.onError?.('Voice session startup timed out. Check microphone permission and tap to retry.');
+        this.stop();
+      }
+    }, 30000);
     const Ctx = window.AudioContext || (window as any).webkitAudioContext;
     this.audioCtx = new Ctx({ sampleRate: REALTIME_SAMPLE_RATE });
-    await this.audioCtx.audioWorklet.addModule('/recorder-worklet.js');
+    console.debug('[voice] Starting audio', this.audioCtx.state);
+    // Call resume before yielding so a retry from a click retains user activation.
+    await Promise.all([this.audioCtx.resume(), this.audioCtx.audioWorklet.addModule('/recorder-worklet.js')]);
     if (this.disposed) return this.teardownAudio(); // user hit End/Back mid-startup
 
+    stage = 'microphone';
+    console.debug('[voice] Requesting microphone');
     this.micStream = await navigator.mediaDevices.getUserMedia({
       audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
     });
@@ -83,13 +97,9 @@ export class RealtimeClient {
     sink.gain.value = 0;
     this.workletNode.connect(sink).connect(this.audioCtx.destination);
 
+    stage = 'connection';
+    console.debug('[voice] Connecting');
     this.ws = new WebSocket(WS_URL_REALTIME, ['live', `acedata-token.${requireServiceToken(this.token)}`]);
-    this.startupTimer = setTimeout(() => {
-      if (!this.running && !this.disposed) {
-        this.handlers.onError?.('Voice session startup timed out');
-        this.stop();
-      }
-    }, 30000);
     this.ws.onopen = () => {
       if (this.disposed) {
         this.ws?.close();
@@ -190,6 +200,7 @@ export class RealtimeClient {
     if (this.disposed) return;
     switch (evt.type) {
       case 'session.started':
+        console.debug('[voice] Session started');
         clearTimeout(this.startupTimer);
         this.started = true;
         this.running = true;

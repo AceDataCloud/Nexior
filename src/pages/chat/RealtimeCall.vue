@@ -108,7 +108,7 @@ import {
   MicrophoneIcon,
   MicrophoneOffIcon
 } from '@acedatacloud/core/icons/components';
-import { defineComponent } from 'vue';
+import { defineComponent, markRaw } from 'vue';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
 import { createVoiceBackend } from '@/utils/voiceBackend';
 import { REALTIME_DEFAULT_MODEL, REALTIME_DEFAULT_VOICE, REALTIME_VOICES } from '@/constants';
@@ -267,7 +267,8 @@ export default defineComponent({
         },
         this.voice
       );
-      this.client = client;
+      // Keep identity checks stable across awaits; Vue must not proxy the transport.
+      this.client = markRaw(client);
       // a fresh call should honour the current mute state
       try {
         await client.start();
