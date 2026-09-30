@@ -140,3 +140,14 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 ## 📄 License
 
 MIT © [AceDataCloud](https://platform.acedata.cloud)
+
+## Automated tests
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_*.py'
+```
+
+CI discovers tests by filename instead of maintaining a per-file list. Add Python
+tests as `test_*.py` in `scripts/`; no workflow change is needed.
+Vue and Electron unit tests are discovered separately by `npm run test:run`;
+desktop browser tests remain under `npm run test:e2e:desktop`.
