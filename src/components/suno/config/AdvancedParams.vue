@@ -1,6 +1,16 @@
 <template>
   <el-collapse v-model="activeNames" class="advanced-collapse">
     <el-collapse-item :title="$t('suno.name.advancedParams')" name="advanced">
+      <div v-if="(config?.action || 'generate') === 'generate'" class="mb-3">
+        <div class="flex items-center mb-1">
+          <span class="text-xs font-bold">{{ $t('suno.name.personalization') }}</span>
+        </div>
+        <el-radio-group v-model="personalizationMode">
+          <el-radio-button value="default">{{ $t('suno.gender.auto') }}</el-radio-button>
+          <el-radio-button value="enabled">{{ $t('common.settings.localToolsMcpEnabled') }}</el-radio-button>
+          <el-radio-button value="disabled">{{ $t('common.settings.localToolsMcpDisabled') }}</el-radio-button>
+        </el-radio-group>
+      </div>
       <!-- Style Negative -->
       <div v-if="config?.custom" class="mb-3">
         <div class="flex items-center mb-1">
@@ -115,6 +125,21 @@ export default defineComponent({
   computed: {
     config() {
       return this.$store.state.suno?.config;
+    },
+    personalizationMode: {
+      get(): string {
+        return this.config?.personalization === undefined
+          ? 'default'
+          : this.config.personalization
+            ? 'enabled'
+            : 'disabled';
+      },
+      set(value: string) {
+        this.$store.commit('suno/setConfig', {
+          ...this.config,
+          personalization: value === 'default' ? undefined : value === 'enabled'
+        });
+      }
     },
     isV5OrAbove() {
       const model = this.config?.model || '';

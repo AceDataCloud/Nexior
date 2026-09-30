@@ -72,6 +72,7 @@ export interface ISunoConfig {
   audio_urls?: string[];
   continue_at?: number;
   vocal_gender?: string;
+  personalization?: boolean;
   weirdness?: number;
   style_influence?: number;
   variation_category?: string;
@@ -103,6 +104,7 @@ export interface ISunoAudioRequest {
   /** @deprecated Read only for reusing tasks created before negative_tags. */
   style_negative?: string;
   vocal_gender?: string;
+  personalization?: boolean;
   weirdness?: number;
   style_influence?: number;
   variation_category?: string;
@@ -350,6 +352,7 @@ export interface ISunoCustomModelGenerateRequest {
   title?: string;
   instrumental?: boolean;
   vocal_gender?: string;
+  personalization?: boolean;
   weirdness?: number;
   style_influence?: number;
   duration?: number;

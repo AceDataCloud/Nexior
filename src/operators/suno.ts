@@ -41,6 +41,8 @@ export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
     custom_model_id?: string;
   };
   delete request.custom_model_id;
+  if ((request.action || 'generate') !== 'generate' || request.personalization === undefined)
+    delete request.personalization;
   if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   return request;
 }
