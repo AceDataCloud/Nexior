@@ -5,7 +5,9 @@
       <section ref="face" class="field-block mb-6">
         <div class="field-head">
           <h2 class="field-title font-bold">{{ $t('digitalhuman.name.step1') }}</h2>
-          <span v-if="isMissing('face')" class="required-badge">{{ $t('digitalhuman.name.required') }}</span>
+          <meta-tag v-if="isMissing('face')" class="required-badge" density="compact" tone="warning">{{
+            $t('digitalhuman.name.required')
+          }}</meta-tag>
           <info-icon :content="$t('digitalhuman.description.step1')" class="ml-1" />
         </div>
         <el-radio-group v-model="faceMode" class="mode-switch mb-3" @change="onFaceModeChange">
@@ -34,9 +36,14 @@
       <section ref="voice" class="field-block mb-6">
         <div class="field-head">
           <h2 class="field-title font-bold">{{ $t('digitalhuman.name.step2') }}</h2>
-          <span v-if="isMissing('text') || isMissing('timbre') || isMissing('audio')" class="required-badge">
+          <meta-tag
+            v-if="isMissing('text') || isMissing('timbre') || isMissing('audio')"
+            class="required-badge"
+            density="compact"
+            tone="warning"
+          >
             {{ $t('digitalhuman.name.required') }}
-          </span>
+          </meta-tag>
           <info-icon :content="$t('digitalhuman.description.step2')" class="ml-1" />
         </div>
         <el-radio-group v-model="voiceMode" class="mode-switch mb-3" @change="onVoiceModeChange">
@@ -103,6 +110,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { MagicIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
@@ -145,6 +153,7 @@ interface IData {
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    MetaTag,
     ServicePricingSummary,
     ElButton,
     ElCollapse,
@@ -329,6 +338,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.required-badge {
+  margin-left: var(--adc-space-2);
+}
+
 .field-head {
   display: flex;
   flex-direction: row;
@@ -361,17 +374,6 @@ export default defineComponent({
   :deep(.el-radio-button__inner) {
     width: 100%;
   }
-}
-
-.required-badge {
-  margin-left: 6px;
-  padding: 0 6px;
-  font-size: 11px;
-  line-height: 16px;
-  border-radius: 8px;
-  color: var(--el-color-warning);
-  background-color: var(--el-color-warning-light-9);
-  border: 1px solid var(--el-color-warning-light-7);
 }
 
 .hint-missing {

@@ -30,21 +30,21 @@
                   class="custom-domain origin-link"
                 >
                   {{ dom.hostname }}
-                  <el-tag size="small" type="success" effect="plain" round>
+                  <status-badge tone="success" density="compact">
                     {{ $t('subsite.status.active') }}
-                  </el-tag>
+                  </status-badge>
                 </a>
                 <div v-else-if="dom.status === SiteDomainStatus.Pending" class="custom-domain muted">
                   <span class="hostname">{{ dom.hostname }}</span>
-                  <el-tag size="small" type="warning" effect="plain" round>
+                  <status-badge tone="warning" density="compact">
                     {{ $t('subsite.status.pending') }}
-                  </el-tag>
+                  </status-badge>
                 </div>
                 <div v-else-if="dom.status === SiteDomainStatus.Failed" class="custom-domain muted">
                   <span class="hostname">{{ dom.hostname }}</span>
-                  <el-tag size="small" type="danger" effect="plain" round>
+                  <status-badge tone="danger" density="compact">
                     {{ $t('subsite.status.failed') }}
-                  </el-tag>
+                  </status-badge>
                 </div>
               </template>
             </div>
@@ -134,6 +134,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { AddIcon as Plus } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
 import {
@@ -148,7 +149,6 @@ import {
   ElInput,
   ElMessage,
   ElMessageBox,
-  ElTag,
   vLoading
 } from 'element-plus';
 
@@ -172,6 +172,7 @@ const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
 export default defineComponent({
   name: 'SubsiteSetting',
   components: {
+    StatusBadge,
     ElCard,
     ElButton,
     ElTable,
@@ -181,7 +182,6 @@ export default defineComponent({
     ElForm,
     ElFormItem,
     ElInput,
-    ElTag,
     SectionNotice
   },
   directives: {

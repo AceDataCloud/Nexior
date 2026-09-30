@@ -16,9 +16,9 @@
       <div v-for="d in displayDomains" :key="d.id" class="domain-row">
         <div class="domain-row-head">
           <strong class="hostname">{{ d.hostname }}</strong>
-          <el-tag :type="statusTagType(d.status)" size="small" class="status-tag" round>
+          <status-badge :tone="statusTagType(d.status)" class="status-tag" density="compact">
             {{ statusLabel(d.status) }}
-          </el-tag>
+          </status-badge>
           <span class="row-actions">
             <el-button
               v-if="d.status !== 'Active'"
@@ -104,6 +104,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import {
   ElButton,
@@ -111,7 +112,6 @@ import {
   ElForm,
   ElFormItem,
   ElInput,
-  ElTag,
   ElDivider,
   ElMessage,
   ElMessageBox,
@@ -171,12 +171,12 @@ function clientValidateHostname(raw: string): { ok: true; value: string } | { ok
 export default defineComponent({
   name: 'CustomDomainSetting',
   components: {
+    StatusBadge,
     ElButton,
     ElEmpty,
     ElForm,
     ElFormItem,
     ElInput,
-    ElTag,
     ElDivider,
     SectionNotice
   },

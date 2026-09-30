@@ -8,7 +8,7 @@
       </el-row>
       <el-row :gutter="15" class="mb-3">
         <el-col :md="12" :xs="24">
-          <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
+          <el-card shadow="never" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="summary-card">
               <div class="icon-wrapper">
@@ -25,7 +25,7 @@
           </el-card>
         </el-col>
         <el-col v-if="showGlobalPayment && globalApplications?.length > 0" :md="12" :xs="24">
-          <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
+          <el-card shadow="never" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="flex flex-row justify-between items-center gap-3">
               <div class="summary-card min-w-0 flex-1">
@@ -74,7 +74,7 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover" class="applications-table-card hidden sm:block">
+          <el-card shadow="never" class="applications-table-card hidden sm:block">
             <el-table
               v-loading="loading"
               :data="individualApplications"
@@ -98,20 +98,20 @@
                 label-class-name="hidden sm:table-cell"
               >
                 <template #default="scope">
-                  <el-tag v-if="scope.row?.type === 'Period'" type="success" effect="dark" round>
+                  <meta-tag v-if="scope.row?.type === 'Period'" tone="success" density="compact">
                     {{ $t('application.type.period') }}
-                  </el-tag>
-                  <el-tag v-else-if="scope.row?.type === 'Usage'" effect="dark" round>
+                  </meta-tag>
+                  <meta-tag v-else-if="scope.row?.type === 'Usage'" density="compact">
                     {{ $t('application.type.usage') }}
-                  </el-tag>
+                  </meta-tag>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('application.field.name')" width="180px">
                 <template #default="scope">
                   <span>{{ scope.row?.service?.title }}</span>
-                  <el-tag v-if="scope.row?.role === 'grantee'" type="info" size="small" round class="ml-2">
+                  <meta-tag v-if="scope.row?.role === 'grantee'" tone="info" class="ml-2" density="compact">
                     {{ $t('application.badge.shared') }}
-                  </el-tag>
+                  </meta-tag>
                 </template>
               </el-table-column>
               <el-table-column
@@ -209,21 +209,21 @@
                 v-for="app in individualApplications"
                 v-else
                 :key="app.id"
-                shadow="hover"
+                shadow="never"
                 class="application-card mb-2"
                 :body-style="{ padding: '14px 16px' }"
               >
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="application-card__name">{{ app?.service?.title }}</span>
-                  <el-tag v-if="app?.type === 'Period'" type="success" effect="dark" size="small" round>
+                  <meta-tag v-if="app?.type === 'Period'" tone="success" density="compact">
                     {{ $t('application.type.period') }}
-                  </el-tag>
-                  <el-tag v-else-if="app?.type === 'Usage'" effect="dark" size="small" round>
+                  </meta-tag>
+                  <meta-tag v-else-if="app?.type === 'Usage'" density="compact">
                     {{ $t('application.type.usage') }}
-                  </el-tag>
-                  <el-tag v-if="app?.role === 'grantee'" type="info" size="small" round>
+                  </meta-tag>
+                  <meta-tag v-if="app?.role === 'grantee'" tone="info" density="compact">
                     {{ $t('application.badge.shared') }}
-                  </el-tag>
+                  </meta-tag>
                 </div>
                 <div class="application-card__id">
                   <span class="truncate">{{ $t('application.field.id') }}: {{ app.id }}</span>
@@ -300,6 +300,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { AnalyticsIcon, ApplicationsIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { applicationOperator } from '@/operators';
@@ -312,7 +313,6 @@ import {
   ElTableColumn,
   ElCard,
   ElButton,
-  ElTag,
   ElSkeleton,
   ElSwitch,
   ElEmpty,
@@ -354,6 +354,7 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleApplicationList',
   components: {
+    MetaTag,
     AnalyticsIcon,
     ApplicationsIcon,
     CreditsIcon,
@@ -364,7 +365,6 @@ export default defineComponent({
     ElRow,
     ElButton,
     ElCol,
-    ElTag,
     ElSkeleton,
     ElSwitch,
     ElEmpty,

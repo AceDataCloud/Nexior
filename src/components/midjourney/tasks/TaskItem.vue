@@ -384,9 +384,9 @@
           <div class="mb-2">
             <div v-for="(description, index) in modelValue.response.descriptions" :key="index" class="flex items-start">
               <div v-if="description !== ''">
-                <el-tag effect="dark" size="small" type="primary" round class="mr-1">
+                <meta-tag tone="brand" class="mr-1" density="compact">
                   {{ index + 1 }}
-                </el-tag>
+                </meta-tag>
                 <span class="text-sm text-[var(--el-text-color-primary)]">
                   {{ description }}
                   <copy-to-clipboard :content="description" />
@@ -444,6 +444,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import {
   BackIcon,
   ChannelIcon,
@@ -459,7 +460,7 @@ import {
   UpIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw, type Component } from 'vue';
-import { ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
+import { ElButton, ElTooltip, ElAlert } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
@@ -478,6 +479,7 @@ interface IData {
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    MetaTag,
     ChannelIcon,
     ImageIcon,
     InfoIcon,
@@ -491,7 +493,6 @@ export default defineComponent({
     ElButton,
     ElTooltip,
     ElAlert,
-    ElTag,
     CopyToClipboard,
     VideoPlayer,
     ApiCodeButton,

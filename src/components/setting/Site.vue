@@ -175,7 +175,7 @@
       </div>
       <div class="settings-content">
         <div v-if="hasContacts" class="contacts-summary">
-          <el-tag v-for="(c, i) in contacts" :key="i" size="small" round class="contact-chip">
+          <meta-tag v-for="(c, i) in contacts" :key="i" class="contact-chip" density="compact">
             <font-awesome-icon v-if="contactUsesFontAwesome(c.type)" :icon="contactIconFor(c.type)" class="chip-icon" />
             <component
               :is="contactIconFor(c.type)"
@@ -186,7 +186,7 @@
               focusable="false"
             />
             {{ contactSummary(c) }}
-          </el-tag>
+          </meta-tag>
         </div>
         <span v-else class="settings-value">{{ $t('site.message.contactsEmpty') }}</span>
         <edit-contacts :model-value="contacts" :title="$t('site.title.editContacts')" @confirm="onSaveContacts" />
@@ -196,8 +196,9 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElColorPicker, ElImage, ElOption, ElSelect, ElTag } from 'element-plus';
+import { ElButton, ElColorPicker, ElImage, ElOption, ElSelect } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
 import BrandAssetStudio, { type BrandAssetStudioResult } from '@/components/site/BrandAssetStudio.vue';
@@ -233,6 +234,7 @@ const PRIMARY_COLOR_PRESETS = [
 export default defineComponent({
   name: 'SiteSetting',
   components: {
+    MetaTag,
     EditText,
     BrandAssetStudio,
     EditUsers,
@@ -245,7 +247,6 @@ export default defineComponent({
     ElImage,
     ElOption,
     ElSelect,
-    ElTag,
     FontAwesomeIcon,
     SectionNotice
   },

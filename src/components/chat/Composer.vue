@@ -96,18 +96,15 @@
         :content="$t('realtime.callTooltip')"
         placement="top"
       >
-        <span
+        <button
+          type="button"
           :class="{ btn: true, 'btn-voice': true }"
-          role="button"
-          tabindex="0"
           :aria-label="$t('realtime.callTooltip')"
           :title="$t('realtime.callTooltip')"
           @click="onStartCall"
-          @keydown.enter.prevent="onStartCall"
-          @keydown.space.prevent="onStartCall"
         >
           <microphone-icon class="icon icon-voice" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        </span>
+        </button>
       </el-tooltip>
     </div>
     <el-button
@@ -571,8 +568,8 @@ html:root body textarea.input:focus-visible {
       cursor: pointer;
       user-select: none;
       &.btn-plus {
-        width: 36px;
-        height: 36px;
+        width: var(--adc-icon-target-size);
+        height: var(--adc-icon-target-size);
         border-radius: 50%;
         background-color: var(--el-fill-color-light);
         color: var(--el-text-color-primary);
@@ -594,8 +591,8 @@ html:root body textarea.input:focus-visible {
         }
       }
       &.btn-voice {
-        width: 36px;
-        height: 36px;
+        width: var(--adc-icon-target-size);
+        height: var(--adc-icon-target-size);
         border-radius: 50%;
         background-color: var(--el-fill-color-light);
         color: var(--el-text-color-primary);
@@ -626,8 +623,8 @@ html:root body textarea.input:focus-visible {
     bottom: 12px;
     right: 12px;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: var(--adc-icon-target-size);
+    height: var(--adc-icon-target-size);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -656,8 +653,8 @@ html:root body textarea.input:focus-visible {
       left: 10px;
       bottom: 10px;
       .btn.btn-plus {
-        width: 32px;
-        height: 32px;
+        width: 44px;
+        height: 44px;
         font-size: 14px;
       }
     }
@@ -666,8 +663,8 @@ html:root body textarea.input:focus-visible {
     .btn-stop {
       right: 10px;
       bottom: 10px;
-      width: 32px;
-      height: 32px;
+      width: 44px;
+      height: 44px;
     }
   }
 }

@@ -1,9 +1,7 @@
 <template>
   <header class="studio-header">
     <div class="identity">
-      <button class="home-button" type="button" :title="$t('poivelle.discovery.back')" @click="$emit('home')">
-        <ArrowLeft :size="16" aria-hidden="true" />
-      </button>
+      <back-navigation icon-only :aria-label="$t('poivelle.discovery.back')" @click="$emit('home')" />
       <span class="wordmark"><Clapperboard :size="15" aria-hidden="true" /> POIVELLE</span>
       <button class="project-button" type="button" @click="$emit('open-projects')">
         <span>{{ projectTitle || $t('poivelle.project.noProject') }}</span>
@@ -34,7 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowLeft, ChevronDown, Clapperboard, GitCommitHorizontal, Play } from '@lucide/vue';
+import { BackNavigation } from '@acedatacloud/core/components';
+import { ChevronDown, Clapperboard, GitCommitHorizontal, Play } from '@lucide/vue';
 
 defineProps<{
   projectTitle?: string;
@@ -94,7 +93,6 @@ defineEmits<{
 }
 
 .project-button,
-.home-button,
 .icon-button,
 .primary-button {
   border: 1px solid var(--poivelle-line-strong);
@@ -114,18 +112,6 @@ defineEmits<{
   font-size: 13px;
   font-weight: 650;
   background: var(--poivelle-canvas);
-}
-.home-button {
-  display: grid;
-  width: 34px;
-  height: 36px;
-  place-items: center;
-  padding: 0;
-  border: 1px solid var(--poivelle-line-strong);
-  border-radius: var(--poivelle-radius-small);
-  color: var(--poivelle-muted);
-  background: transparent;
-  cursor: pointer;
 }
 
 .project-button span {
@@ -180,7 +166,6 @@ defineEmits<{
 }
 
 .project-button:hover,
-.home-button:hover,
 .icon-button:hover {
   border-color: var(--app-brand-hex);
   color: var(--app-brand-hex);
@@ -193,7 +178,6 @@ defineEmits<{
 }
 
 .project-button:focus-visible,
-.home-button:focus-visible,
 .icon-button:focus-visible,
 .primary-button:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--app-brand-hex) 38%, transparent);
@@ -215,11 +199,6 @@ defineEmits<{
 
   .project-button {
     max-width: 180px;
-    height: 44px;
-  }
-
-  .home-button {
-    width: 44px;
     height: 44px;
   }
 

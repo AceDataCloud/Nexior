@@ -8,7 +8,7 @@
       <template #label>
         <span class="tab-label" :title="tab.disabled ? tab.disabledReason : undefined">
           <span class="text">{{ tab.label }}</span>
-          <el-tag v-if="tab.badge" size="small" type="warning" class="badge">{{ tab.badge }}</el-tag>
+          <meta-tag v-if="tab.badge" tone="warning" class="badge" density="compact">{{ tab.badge }}</meta-tag>
         </span>
       </template>
     </el-tab-pane>
@@ -16,8 +16,9 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent, PropType } from 'vue';
-import { ElTabs, ElTabPane, ElTag } from 'element-plus';
+import { ElTabs, ElTabPane } from 'element-plus';
 import { IKlingTaskType } from '@/models';
 
 interface ITab {
@@ -31,9 +32,9 @@ interface ITab {
 export default defineComponent({
   name: 'KlingTabSwitcher',
   components: {
+    MetaTag,
     ElTabs,
-    ElTabPane,
-    ElTag
+    ElTabPane
   },
   props: {
     modelValue: {
@@ -103,10 +104,6 @@ export default defineComponent({
     .badge {
       flex: none;
       margin-left: 4px;
-      font-size: 9px;
-      height: 16px;
-      line-height: 14px;
-      padding: 0 4px;
     }
   }
 }

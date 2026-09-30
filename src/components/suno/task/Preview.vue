@@ -10,12 +10,14 @@
       <div class="info">
         <div class="title-row">
           <h2 class="title">{{ placeholderTitle }}</h2>
-          <span v-if="placeholderModel" class="model-chip">{{ placeholderModel }}</span>
+          <meta-tag v-if="placeholderModel" class="model-chip" tone="brand" density="compact">{{
+            placeholderModel
+          }}</meta-tag>
         </div>
         <p class="style">{{ placeholderDescription }}</p>
-        <span class="task-status" :class="{ 'failed-status': isFailure }" role="status">
+        <status-badge class="task-status" :tone="isFailure ? 'danger' : 'info'" density="compact" role="status">
           {{ $t(isFailure ? 'suno.name.failure' : 'suno.name.generating') }}
-        </span>
+        </status-badge>
       </div>
       <div v-if="isFailure" class="placeholder-actions">
         <el-tooltip :content="$t('suno.button.reuse_prompt')">
@@ -112,7 +114,9 @@
         </div>
         <div v-else class="title-row">
           <h2 class="title">{{ audio?.title }}</h2>
-          <span v-if="shortModel(audio)" class="model-chip">{{ shortModel(audio) }}</span>
+          <meta-tag v-if="shortModel(audio)" class="model-chip" tone="brand" density="compact">{{
+            shortModel(audio)
+          }}</meta-tag>
           <button
             v-if="audio?.audio_url"
             type="button"
@@ -337,6 +341,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import {
   AudioIcon,
   CodeIcon,
@@ -400,6 +405,8 @@ import VoiceCreateDialog from '../voice/VoiceCreateDialog.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    MetaTag,
+    StatusBadge,
     AudioIcon,
     CodeIcon,
     CollectionIcon,
@@ -1182,17 +1189,10 @@ export default defineComponent({
         text-overflow: ellipsis;
         min-width: 0;
       }
+
       .model-chip {
         flex-shrink: 0;
         margin-top: 5px;
-        padding: 0 6px;
-        height: 16px;
-        line-height: 16px;
-        border-radius: 8px;
-        font-size: 10px;
-        font-weight: 600;
-        color: var(--el-color-primary);
-        background: var(--el-color-primary-light-9);
       }
       .edit-icon {
         font-size: 10px;
@@ -1326,13 +1326,7 @@ export default defineComponent({
     color: var(--el-color-danger);
   }
   .task-status {
-    display: inline-block;
     margin-top: 3px;
-    color: var(--el-text-color-secondary);
-    font-size: 11px;
-  }
-  .failed-status {
-    color: var(--el-color-danger);
   }
   .pending-cover {
     animation: suno-pulse 1.4s ease-in-out infinite;

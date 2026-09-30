@@ -25,10 +25,10 @@
           <div class="conversation-meta">
             <img v-if="assistantAvatar" :src="assistantAvatar" class="meta-icon" alt="model" />
             <span v-if="modelGroupName" class="meta-model">{{ modelGroupName }}</span>
-            <span class="meta-badge">
+            <meta-tag class="meta-badge" density="compact">
               <view-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ $t('chat.share.viewOnly') }}
-            </span>
+            </meta-tag>
           </div>
         </div>
 
@@ -58,6 +58,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { UnlinkIcon, ViewIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, provide } from 'vue';
 import { ElButton, ElSkeleton } from 'element-plus';
@@ -78,6 +79,7 @@ interface IData {
 export default defineComponent({
   name: 'SharedConversation',
   components: {
+    MetaTag,
     UnlinkIcon,
     ViewIcon,
     Message,
@@ -269,13 +271,6 @@ export default defineComponent({
       height: 18px;
       width: 18px;
       border-radius: 4px;
-    }
-    .meta-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 10px;
-      background-color: var(--el-fill-color-light, #f5f7fa);
     }
   }
 }

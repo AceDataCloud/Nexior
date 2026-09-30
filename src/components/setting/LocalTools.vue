@@ -14,9 +14,9 @@
         <p class="muted">{{ $t('common.settings.localToolsAndroidPermHint') }}</p>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermAccessibility') }}</span>
-          <el-tag size="small" :type="a11yEnabled ? 'success' : 'info'" effect="plain">
+          <status-badge :tone="a11yEnabled ? 'success' : 'info'" density="compact">
             {{ a11yEnabled ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted') }}
-          </el-tag>
+          </status-badge>
           <el-button size="small" type="primary" @click="openAndroidAccessibility">{{
             $t('common.settings.localToolsOpen')
           }}</el-button>
@@ -91,7 +91,7 @@
           <li v-for="(m, i) in mcpServers" :key="m._uid" class="row mcp-row">
             <div class="mcp-fields">
               <div class="mcp-head">
-                <el-tag size="small" effect="plain" :type="mcpBadgeType(m.id)">{{ mcpBadgeText(m.id) }}</el-tag>
+                <status-badge :tone="mcpBadgeType(m.id)" density="compact">{{ mcpBadgeText(m.id) }}</status-badge>
                 <span class="mcp-spacer" />
                 <el-switch
                   v-model="m.enabled"
@@ -190,9 +190,9 @@
             <span class="cu-action">
               <span class="cu-action-name">
                 <code class="grant-name">{{ t.name }}</code>
-                <el-tag v-if="t.name === 'shell.run_command'" size="small" type="danger" effect="plain">{{
+                <meta-tag v-if="t.name === 'shell.run_command'" tone="danger" density="compact">{{
                   $t('common.settings.localToolsBuiltinRisky')
-                }}</el-tag>
+                }}</meta-tag>
               </span>
               <span class="cu-action-desc">{{ t.description }}</span>
             </span>
@@ -219,9 +219,9 @@
             <span class="cu-action">
               <span class="cu-action-name">
                 <code class="grant-name">{{ t.name }}</code>
-                <el-tag v-if="t.writes" size="small" type="danger" effect="plain">{{
+                <meta-tag v-if="t.writes" tone="danger" density="compact">{{
                   $t('common.settings.localToolsBuiltinRisky')
-                }}</el-tag>
+                }}</meta-tag>
               </span>
               <span class="cu-action-desc">{{ t.description }}</span>
             </span>
@@ -246,9 +246,9 @@
              is actually running. Reflect the TRUE, live state + a fix button. -->
         <div v-if="android && computerUse" class="perm-row cu-ready-row">
           <span class="perm-name">{{ $t('common.settings.localToolsCuA11yLabel') }}</span>
-          <el-tag size="small" :type="a11yEnabled ? 'success' : 'danger'" effect="plain">
+          <status-badge :tone="a11yEnabled ? 'success' : 'danger'" density="compact">
             {{ a11yEnabled ? $t('common.settings.localToolsCuReady') : $t('common.settings.localToolsCuA11yMissing') }}
-          </el-tag>
+          </status-badge>
           <el-button v-if="!a11yEnabled" size="small" type="primary" @click="openAndroidAccessibility">
             {{ $t('common.settings.localToolsOpen') }}
           </el-button>
@@ -298,9 +298,9 @@
               <span class="cu-action-name">{{ $t('common.settings.localToolsAndroidSkillsXhsName') }}</span>
               <span class="cu-action-desc">{{ $t('common.settings.localToolsAndroidSkillsXhsDesc') }}</span>
             </span>
-            <el-tag v-if="xhsSkill.installed" size="small" type="success" effect="plain">
+            <status-badge v-if="xhsSkill.installed" tone="success" density="compact">
               {{ $t('common.settings.localToolsAndroidSkillsInstalled') }}
-            </el-tag>
+            </status-badge>
             <el-button
               v-else
               size="small"
@@ -336,33 +336,33 @@
         <p class="muted">{{ $t('common.settings.localToolsPermsHint') }}</p>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermFullDisk') }}</span>
-          <el-tag size="small" :type="perm.fullDisk ? 'success' : 'info'" effect="plain">
+          <status-badge :tone="perm.fullDisk ? 'success' : 'info'" density="compact">
             {{ perm.fullDisk ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted') }}
-          </el-tag>
+          </status-badge>
           <el-button size="small" type="primary" @click="open('fullDisk')">{{
             $t('common.settings.localToolsOpen')
           }}</el-button>
         </div>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermScreen') }}</span>
-          <el-tag size="small" :type="perm.screen === 'granted' ? 'success' : 'info'" effect="plain">
+          <status-badge :tone="perm.screen === 'granted' ? 'success' : 'info'" density="compact">
             {{
               perm.screen === 'granted'
                 ? $t('common.settings.localToolsGranted')
                 : $t('common.settings.localToolsNotGranted')
             }}
-          </el-tag>
+          </status-badge>
           <el-button size="small" type="primary" @click="open('screen')">{{
             $t('common.settings.localToolsOpen')
           }}</el-button>
         </div>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermAccessibility') }}</span>
-          <el-tag size="small" :type="perm.accessibility ? 'success' : 'info'" effect="plain">
+          <status-badge :tone="perm.accessibility ? 'success' : 'info'" density="compact">
             {{
               perm.accessibility ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted')
             }}
-          </el-tag>
+          </status-badge>
           <el-button size="small" type="primary" @click="open('accessibility')">{{
             $t('common.settings.localToolsOpen')
           }}</el-button>
@@ -373,6 +373,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import {
   AddIcon,
   CameraIcon,
@@ -388,7 +389,7 @@ import {
   TerminalIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent, type Component } from 'vue';
-import { ElButton, ElTag, ElSwitch, ElInput } from 'element-plus';
+import { ElButton, ElSwitch, ElInput } from 'element-plus';
 import { localExec, type IMcpServerStatus } from '@/utils/desktop';
 import { isAndroid } from '@/utils/surface';
 import { httpClient } from '@/operators/common';
@@ -424,7 +425,17 @@ interface McpDraft {
 
 export default defineComponent({
   name: 'LocalToolsSetting',
-  components: { AddIcon, ElButton, ElTag, ElSwitch, ElInput, FolderIcon, MagicIcon, SecurityIcon },
+  components: {
+    MetaTag,
+    StatusBadge,
+    AddIcon,
+    ElButton,
+    ElSwitch,
+    ElInput,
+    FolderIcon,
+    MagicIcon,
+    SecurityIcon
+  },
   data() {
     return {
       roots: [] as string[],

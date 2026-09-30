@@ -10,7 +10,7 @@
       <!-- Summary Cards -->
       <el-row :gutter="16">
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini mb-3">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -22,7 +22,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini mb-3">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -34,7 +34,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini mb-3">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -46,7 +46,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini mb-3">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -97,7 +97,7 @@
       <!-- Table -->
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="never">
             <el-table
               v-loading="loading"
               :data="orders"
@@ -130,9 +130,9 @@
               </el-table-column>
               <el-table-column prop="state" :label="$t('order.field.state')" width="130px" align="center">
                 <template #default="scope">
-                  <el-tag :type="stateTagType(scope.row.state)" class="mx-1" effect="dark" round size="small">
+                  <status-badge :tone="stateTagType(scope.row.state)" class="mx-1" density="compact">
                     {{ stateLabel(scope.row.state) }}
-                  </el-tag>
+                  </status-badge>
                 </template>
               </el-table-column>
               <el-table-column
@@ -191,6 +191,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { ExportIcon, MoneyIcon, ReceiptIcon, SuccessIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { orderOperator, IOrderSummary } from '@/operators/order';
@@ -202,7 +203,6 @@ import {
   ElTable,
   ElTableColumn,
   ElButton,
-  ElTag,
   ElCard,
   ElSelect,
   ElOption,
@@ -232,6 +232,7 @@ const DEFAULT_SUMMARY: IOrderSummary = { total_count: 0, total_spent: 0, state_c
 export default defineComponent({
   name: 'ConsoleOrderList',
   components: {
+    StatusBadge,
     ExportIcon,
     MoneyIcon,
     ReceiptIcon,
@@ -244,7 +245,6 @@ export default defineComponent({
     ElTable,
     ElTableColumn,
     ElButton,
-    ElTag,
     ElCard,
     ElSelect,
     ElOption,
@@ -358,8 +358,8 @@ export default defineComponent({
     getPriceString,
     stateTagType(state: string) {
       if (state === OrderState.FINISHED || state === OrderState.PAID) return 'success';
-      if (state === OrderState.EXPIRED || state === OrderState.FAILED) return 'danger';
-      if (state === OrderState.REFUNDED) return 'warning';
+      if (state === OrderState.FAILED) return 'danger';
+      if (state === OrderState.EXPIRED || state === OrderState.REFUNDED) return 'warning';
       return 'info';
     },
     stateLabel(state: string) {

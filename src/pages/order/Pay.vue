@@ -8,7 +8,7 @@
       </el-row>
       <el-row class="panel">
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="never">
             <el-row>
               <el-col :xs="{ span: 22, offset: 1 }" :sm="{ span: 16, offset: 4 }">
                 <div v-if="loading" class="pt-5">
@@ -27,9 +27,9 @@
                       {{ order.description }}
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order.pay_way" :label="$t('order.field.payWay')">
-                      <el-tag type="info" effect="dark" round size="small">
+                      <meta-tag tone="info" density="compact">
                         {{ payWayLabel(order.pay_way) }}
-                      </el-tag>
+                      </meta-tag>
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order.created_at || '') }}
@@ -121,6 +121,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import { orderOperator } from '@/operators';
 import { IOrder, IOrderDetailResponse, IOrderPayRequest, IOrderPayResponse, OrderState } from '@/models';
@@ -133,8 +134,7 @@ import {
   ElAlert,
   ElDescriptions,
   ElDescriptionsItem,
-  ElButton,
-  ElTag
+  ElButton
 } from 'element-plus';
 import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
@@ -171,6 +171,7 @@ interface IData {
 export default defineComponent({
   name: 'OrderPublicPay',
   components: {
+    MetaTag,
     ElButton,
     ElRow,
     ElCol,
@@ -180,7 +181,6 @@ export default defineComponent({
     ElAlert,
     ElDescriptions,
     ElDescriptionsItem,
-    ElTag,
     PublicWechatPay,
     PublicStripePay,
     PublicAlipayPay,

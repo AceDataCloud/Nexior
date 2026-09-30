@@ -12,20 +12,18 @@
       </div>
 
       <div class="filters" role="group" :aria-label="$t('chat.artifacts.title')">
-        <button
+        <filter-chip
           v-for="opt in visibleKindFilters"
           :key="opt"
-          type="button"
-          class="filter-chip"
-          :class="{ active: activeKind === opt }"
-          :aria-pressed="activeKind === opt"
+          :selected="activeKind === opt"
+          class="artifact-filter-chip"
           @click="onFilter(opt)"
         >
           <span>{{ opt === 'all' ? $t('chat.artifacts.filterAll') : $t('chat.artifacts.kind.' + opt) }}</span>
-          <span v-if="summary" class="filter-count">
+          <meta-tag v-if="summary" density="compact">
             {{ opt === 'all' ? summary.total : (summary.by_kind[opt] ?? 0) }}
-          </span>
-        </button>
+          </meta-tag>
+        </filter-chip>
       </div>
 
       <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
@@ -34,7 +32,7 @@
 
       <template v-else>
         <div class="artifact-list">
-          <el-card v-for="item in items" :key="item.id" class="artifact-card" shadow="hover">
+          <el-card v-for="item in items" :key="item.id" class="artifact-card" shadow="never">
             <div class="artifact-body">
               <a
                 v-if="item.preview_url"
@@ -47,13 +45,13 @@
               </a>
               <div class="artifact-main">
                 <div class="artifact-top">
-                  <el-tag size="small" round class="kind-tag">{{ $t('chat.artifacts.kind.' + item.kind) }}</el-tag>
-                  <el-tag v-if="item.source === 'auto'" size="small" type="info" round class="source-tag">
+                  <meta-tag class="kind-tag" density="compact">{{ $t('chat.artifacts.kind.' + item.kind) }}</meta-tag>
+                  <meta-tag v-if="item.source === 'auto'" tone="info" class="source-tag" density="compact">
                     {{ $t('chat.artifacts.sourceAuto') }}
-                  </el-tag>
-                  <el-tag v-if="item.hidden" size="small" type="warning" round class="hidden-tag">
+                  </meta-tag>
+                  <status-badge v-if="item.hidden" tone="warning" class="hidden-tag" density="compact">
                     {{ $t('chat.artifacts.hiddenBadge') }}
-                  </el-tag>
+                  </status-badge>
                   <span v-if="item.channel" class="channel">{{ item.channel }}</span>
                   <span class="time">{{ formatTime(item.created_at) }}</span>
                 </div>
@@ -102,9 +100,10 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge, FilterChip } from '@acedatacloud/core/components';
 import { DeleteIcon, ExternalLinkIcon, ViewIcon, ViewOffIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch, ElMessage, ElMessageBox } from 'element-plus';
+import { ElButton, ElCard, ElSkeleton, ElEmpty, ElSwitch, ElMessage, ElMessageBox } from 'element-plus';
 import { artifactsOperator, IArtifact, IArtifactKind } from '@/operators/artifacts';
 
 const PAGE_SIZE = 30;
@@ -125,12 +124,14 @@ const KIND_FILTERS: (IArtifactKind | 'all')[] = [
 export default defineComponent({
   name: 'Artifacts',
   components: {
+    FilterChip,
+    MetaTag,
+    StatusBadge,
     DeleteIcon,
     ElButton,
     ElCard,
     ElSkeleton,
     ElEmpty,
-    ElTag,
     ElSwitch,
     ExternalLinkIcon,
     ViewIcon,
@@ -329,59 +330,6 @@ export default defineComponent({
   margin-bottom: 20px;
 }
 
-.filter-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 28px;
-  padding: 4px 12px;
-  border: 1px solid var(--app-border-subtle, var(--el-border-color));
-  border-radius: var(--el-border-radius-round);
-  background: var(--app-bg-surface, var(--el-bg-color-overlay));
-  color: var(--el-text-color-secondary);
-  font: inherit;
-  font-size: 12px;
-  line-height: 18px;
-  cursor: pointer;
-  transition:
-    color 0.16s,
-    border-color 0.16s,
-    background-color 0.16s;
-}
-
-.filter-chip:hover:not(.active) {
-  border-color: var(--el-color-primary);
-  background: rgba(var(--app-brand-rgb), 0.06);
-  color: var(--el-color-primary);
-}
-
-.filter-chip:focus-visible {
-  outline: 2px solid var(--el-color-primary);
-  outline-offset: 2px;
-}
-
-.filter-chip.active {
-  border-color: var(--el-color-primary);
-  background: var(--el-color-primary);
-  color: #ffffff;
-}
-
-.filter-count {
-  min-width: 18px;
-  padding: 0 5px;
-  border-radius: var(--el-border-radius-round);
-  background: var(--el-fill-color-light);
-  color: var(--el-text-color-secondary);
-  font-size: 11px;
-  line-height: 18px;
-  text-align: center;
-}
-
-.filter-chip.active .filter-count {
-  background: rgba(0, 0, 0, 0.2);
-  color: #ffffff;
-}
-
 .loading-block {
   padding: 12px 4px;
 }
@@ -515,7 +463,7 @@ export default defineComponent({
     display: none;
   }
 
-  .filter-chip {
+  .artifact-filter-chip {
     flex-shrink: 0;
   }
 

@@ -20,9 +20,9 @@
           <div class="device-content">
             <div class="device-heading">
               <strong>{{ device.name }}</strong>
-              <el-tag :type="compatibilityTagType(device)" size="small">
+              <status-badge :tone="compatibilityTagType(device)" density="compact">
                 {{ compatibilityLabel(device) }}
-              </el-tag>
+              </status-badge>
             </div>
             <dl class="device-meta">
               <div>
@@ -94,8 +94,9 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElCard, ElEmpty, ElMessage, ElMessageBox, ElSkeleton, ElTag } from 'element-plus';
+import { ElButton, ElCard, ElEmpty, ElMessage, ElMessageBox, ElSkeleton } from 'element-plus';
 import { AddIcon, DesktopIcon } from '@acedatacloud/core/icons/components';
 import ConsolePageHeader from '@/components/console/PageHeader.vue';
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
@@ -113,6 +114,7 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleBrowserDevices',
   components: {
+    StatusBadge,
     AddIcon,
     BrowserPairingDialog,
     ConsolePageHeader,
@@ -120,8 +122,7 @@ export default defineComponent({
     ElButton,
     ElCard,
     ElEmpty,
-    ElSkeleton,
-    ElTag
+    ElSkeleton
   },
   data(): IData {
     return { devices: [], loading: false, busyId: null, pairingVisible: false };

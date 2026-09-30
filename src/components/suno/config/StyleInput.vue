@@ -16,22 +16,23 @@
     </div>
     <!-- Style Tag Cloud -->
     <div class="style-tags">
-      <button v-for="tag in visibleTags" :key="tag" class="style-tag" @click="onTagClick(tag)">
+      <action-chip v-for="tag in visibleTags" :key="tag" class="style-tag" @click="onTagClick(tag)">
         {{ tag }}
-      </button>
-      <button
+      </action-chip>
+      <action-chip
         class="style-tag style-tag-refresh"
         :aria-label="$t('common.button.refresh')"
         :title="$t('common.button.refresh')"
         @click="onRefreshTags"
       >
         <refresh-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-      </button>
+      </action-chip>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { ActionChip } from '@acedatacloud/core/components';
 import { MagicIcon, RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElMessage } from 'element-plus';
@@ -107,6 +108,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 export default defineComponent({
   name: 'StyleInput',
   components: {
+    ActionChip,
     MagicIcon,
     RefreshIcon,
     ElInput,
@@ -177,34 +179,5 @@ export default defineComponent({
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 8px;
-}
-
-.style-tag {
-  padding: 3px 10px;
-  border: 1px solid var(--el-border-color);
-  border-radius: 14px;
-  background: var(--el-bg-color);
-  color: var(--el-text-color-regular);
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-
-  &:hover {
-    border-color: var(--el-color-primary);
-    color: var(--el-color-primary);
-    background: var(--el-color-primary-light-9);
-  }
-}
-
-.style-tag-refresh {
-  border-style: dashed;
-  color: var(--el-text-color-placeholder);
-  padding: 3px 8px;
-
-  &:hover {
-    border-color: var(--el-color-primary);
-    color: var(--el-color-primary);
-  }
 }
 </style>

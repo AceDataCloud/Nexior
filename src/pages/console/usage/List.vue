@@ -96,7 +96,7 @@
         <el-col :span="24">
           <el-row v-if="type === serviceType.API" :gutter="24" class="mb-5">
             <el-col :md="6" :xs="24">
-              <el-card shadow="hover" class="h-full">
+              <el-card shadow="never" class="h-full">
                 <el-skeleton v-if="aggLoading" />
                 <div v-else class="summary-card">
                   <div class="icon-wrapper">
@@ -110,7 +110,7 @@
               </el-card>
             </el-col>
             <el-col :md="18" :xs="24">
-              <el-card shadow="hover" class="h-full">
+              <el-card shadow="never" class="h-full">
                 <template #header>
                   <div class="flex flex-wrap items-center justify-between gap-2">
                     <span class="text-[15px] font-medium text-[var(--el-text-color-primary)]">
@@ -176,7 +176,7 @@
               </el-card>
             </el-col>
           </el-row>
-          <el-card shadow="hover">
+          <el-card shadow="never">
             <div class="flex items-center justify-end gap-2 mb-4">
               <span class="text-sm text-[var(--el-text-color-regular)]">{{ $t('usage.field.autoRefresh') }}</span>
               <el-switch v-model="autoRefresh" />
@@ -211,7 +211,9 @@
               <el-table-column :label="$t('usage.field.statusCode')" width="120px">
                 <template #default="scope">
                   <span v-if="scope.row.status_code">{{ scope.row.status_code }}</span>
-                  <el-tag v-else type="warning" size="small">{{ $t('usage.value.processing') }}</el-tag>
+                  <status-badge v-else tone="warning" density="compact">{{
+                    $t('usage.value.processing')
+                  }}</status-badge>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('usage.field.elapsed')" width="120px">
@@ -234,9 +236,9 @@
                           {{ getX402Payment(scope.row)?.originalAmount }} {{ getX402Payment(scope.row)?.currency }}
                         </del>
                       </div>
-                      <el-tag v-if="getX402Payment(scope.row)?.discountPercent" type="success" size="small">
+                      <meta-tag v-if="getX402Payment(scope.row)?.discountPercent" tone="success" density="compact">
                         {{ getX402DiscountLabel(scope.row) }}
-                      </el-tag>
+                      </meta-tag>
                     </template>
                     <span v-else class="text-gray-400">{{ $t('usage.value.paymentUnavailable') }}</span>
                   </div>
@@ -301,19 +303,14 @@
               >
                 <template #default="scope">
                   <div class="flex flex-wrap gap-2">
-                    <el-tag
+                    <meta-tag
                       v-if="
                         !isX402Usage(scope.row) &&
                         scope.row.original_amount > scope.row.deducted_amount &&
                         scope.row.original_amount > 0
                       "
-                      type="success"
-                      :style="{
-                        textWrap: 'wrap',
-                        height: 'fit-content',
-                        lineHeight: '20px',
-                        borderRadius: '10px'
-                      }"
+                      tone="success"
+                      class="usage-metadata-tag"
                     >
                       {{
                         (
@@ -321,22 +318,19 @@
                           scope.row.original_amount
                         ).toFixed(0) + '% OFF'
                       }}
-                    </el-tag>
+                    </meta-tag>
                     <div v-if="isX402Usage(scope.row)" class="flex min-w-0 items-center gap-1">
-                      <el-tag :type="getX402StatusType(scope.row)">{{ $t(getX402StatusKey(scope.row)) }}</el-tag>
+                      <status-badge :tone="getX402StatusType(scope.row)">{{
+                        $t(getX402StatusKey(scope.row))
+                      }}</status-badge>
                     </div>
-                    <el-tag
+                    <meta-tag
                       v-for="(name, key) in getSimpleMetadata(scope.row.metadata)"
                       :key="key"
-                      :style="{
-                        textWrap: 'wrap',
-                        height: 'fit-content',
-                        lineHeight: '20px',
-                        borderRadius: '10px'
-                      }"
+                      class="usage-metadata-tag"
                     >
                       {{ key }}: {{ name }}
-                    </el-tag>
+                    </meta-tag>
                   </div>
                 </template>
               </el-table-column>
@@ -436,9 +430,9 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <el-tag v-for="(name, key) in scope.row.metadata" :key="key" class="mb-2">
+                  <meta-tag v-for="(name, key) in scope.row.metadata" :key="key" class="mb-2">
                     {{ key }}: {{ name }}
-                  </el-tag>
+                  </meta-tag>
                 </template>
               </el-table-column>
               <el-table-column
@@ -479,7 +473,7 @@
             <dl v-else class="payment-details">
               <dt>{{ $t('usage.field.status') }}</dt>
               <dd>
-                <el-tag :type="getX402StatusType(detailRow)">{{ $t(getX402StatusKey(detailRow)) }}</el-tag>
+                <status-badge :tone="getX402StatusType(detailRow)">{{ $t(getX402StatusKey(detailRow)) }}</status-badge>
                 <span v-if="detailRow.metadata?.x402_settle_error" class="ml-2 text-danger">
                   {{ detailRow.metadata.x402_settle_error }}
                 </span>
@@ -490,9 +484,14 @@
                 <del v-if="getX402Payment(detailRow)?.originalAmount" class="ml-2">
                   {{ getX402Payment(detailRow)?.originalAmount }} {{ getX402Payment(detailRow)?.currency }}
                 </del>
-                <el-tag v-if="getX402Payment(detailRow)?.discountPercent" type="success" size="small" class="ml-2">
+                <meta-tag
+                  v-if="getX402Payment(detailRow)?.discountPercent"
+                  tone="success"
+                  class="ml-2"
+                  density="compact"
+                >
                   {{ getX402DiscountLabel(detailRow) }}
-                </el-tag>
+                </meta-tag>
               </dd>
               <dd v-else>{{ $t('usage.value.paymentUnavailable') }}</dd>
               <dt>{{ $t('usage.field.network') }}</dt>
@@ -554,6 +553,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import { buildUsageAnalytics, formatUsageAmount, formatUsageElapsed } from '@acedatacloud/core/usage';
 import { ApplicationsIcon, ExportIcon, ExternalLinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
@@ -579,7 +579,6 @@ import {
   ElCol,
   ElTableColumn,
   ElCard,
-  ElTag,
   ElSelect,
   ElDatePicker,
   ElOption,
@@ -668,11 +667,12 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleUsageList',
   components: {
+    MetaTag,
+    StatusBadge,
     ApplicationsIcon,
     ExportIcon,
     ExternalLinkIcon,
     Pagination,
-    ElTag,
     ElDatePicker,
     ElTable,
     ElSelect,
@@ -1436,6 +1436,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.usage-metadata-tag {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .usage-service-label {
   display: inline-flex;
   min-width: 0;

@@ -19,16 +19,9 @@
         <p class="description">
           <span v-if="!application.service">{{ $t('application.title.globalBalance') }}</span>
           <span v-else>{{ $t('application.title.applicationBalance', { service: application.service?.title }) }}</span>
-          <el-tag
-            v-if="application.role === 'grantee'"
-            class="shared-badge"
-            size="small"
-            type="warning"
-            effect="dark"
-            round
-          >
+          <meta-tag v-if="application.role === 'grantee'" class="shared-badge" tone="warning" density="compact">
             {{ $t('application.badge.shared') }}
-          </el-tag>
+          </meta-tag>
         </p>
         <p class="value">
           {{ remainingAmountText }}
@@ -58,9 +51,10 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { IApplication, IServiceType } from '@/models';
 import { defineComponent } from 'vue';
-import { ElButton, ElIcon, ElTag } from 'element-plus';
+import { ElButton, ElIcon } from 'element-plus';
 import { AnalyticsIcon, ConfirmIcon, CreditsIcon, WalletIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { canPurchaseApplication, isIOS } from '@/utils';
@@ -68,12 +62,12 @@ import { canPurchaseApplication, isIOS } from '@/utils';
 export default defineComponent({
   name: 'ApplicationInfo',
   components: {
+    MetaTag,
     AnalyticsIcon,
     ConfirmIcon,
     CreditsIcon,
     ElButton,
     ElIcon,
-    ElTag,
     CopyToClipboard,
     WalletIcon
   },

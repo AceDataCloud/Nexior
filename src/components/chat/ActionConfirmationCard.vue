@@ -25,9 +25,9 @@
           <span class="header-title">{{ headerTitle }}</span>
         </div>
       </div>
-      <span v-if="isTikTokPublish && !resolved" class="acc-review-badge">
+      <status-badge v-if="isTikTokPublish && !resolved" class="acc-review-badge" tone="warning" density="compact">
         {{ $t('chat.actionConfirmation.tiktok.reviewBadge') }}
-      </span>
+      </status-badge>
     </div>
 
     <p v-if="summary" class="acc-summary">{{ summary }}</p>
@@ -114,6 +114,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { ConfirmIcon, ExternalLinkIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -135,6 +136,7 @@ interface IData {
 export default defineComponent({
   name: 'ActionConfirmationCard',
   components: {
+    StatusBadge,
     GenericFieldList,
     TikTokPublishForm,
     ConfirmIcon,
@@ -369,16 +371,6 @@ export default defineComponent({
   font-weight: 650;
   line-height: 1.35;
   word-break: break-word;
-}
-
-.acc-review-badge {
-  padding: 4px 9px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  color: var(--el-color-warning-dark-2);
-  font-size: 11px;
-  font-weight: 600;
-  background: var(--el-color-warning-light-9);
 }
 
 .acc-summary {

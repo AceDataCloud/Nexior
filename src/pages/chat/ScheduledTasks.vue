@@ -123,23 +123,23 @@
                 </div>
               </div>
               <div class="task-meta">
-                <el-tag v-if="task.template_source" size="small" type="primary" round>
+                <meta-tag v-if="task.template_source" tone="brand" density="compact">
                   {{ task.template_source.snapshot.title }}
-                </el-tag>
-                <el-tag size="small" :type="stateTagType(task.state)" effect="dark" round>
+                </meta-tag>
+                <status-badge :tone="stateTagType(task.state)" density="compact">
                   {{ $t(`chat.scheduledTasks.state.${task.state}`) }}
-                </el-tag>
-                <span class="meta-chip">
+                </status-badge>
+                <meta-tag class="meta-chip" density="compact">
                   <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ scheduleLabel(task.schedule) }}
-                </span>
-                <span class="meta-chip">
+                </meta-tag>
+                <meta-tag class="meta-chip" density="compact">
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ modelIdDisplayName(task.template.model) }}
-                </span>
-                <span v-if="task.execution === 'local'" class="meta-chip">
+                </meta-tag>
+                <meta-tag v-if="task.execution === 'local'" class="meta-chip" density="compact">
                   {{ task.device_name || $t('chat.scheduledTasks.execution.local') }}
-                </span>
+                </meta-tag>
               </div>
               <div class="task-prompt">{{ task.template.question }}</div>
               <div v-if="task.last_output_snippet" class="task-last-output">
@@ -170,17 +170,14 @@
 
       <template v-else>
         <div class="filters" role="group" :aria-label="$t('chat.scheduledTasks.tab.runs')">
-          <button
+          <filter-chip
             v-for="opt in statusFilters"
             :key="opt"
-            type="button"
-            class="filter-chip"
-            :class="{ active: allRunsStatus === opt }"
-            :aria-pressed="allRunsStatus === opt"
+            :selected="allRunsStatus === opt"
             @click="onStatusFilter(opt)"
           >
             {{ opt === 'all' ? $t('chat.scheduledTasks.filterAll') : $t(`chat.scheduledTasks.run.${opt}`) }}
-          </button>
+          </filter-chip>
         </div>
 
         <el-skeleton v-if="allRunsLoading" :rows="4" animated class="loading-block" />
@@ -203,28 +200,27 @@
               <div class="run-body">
                 <div class="run-line">
                   <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
-                  <el-tag size="small" :type="runTagType(run.status)" effect="dark" round class="run-tag">
+                  <status-badge :tone="runTagType(run.status)" class="run-tag" density="compact">
                     {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
-                  </el-tag>
+                  </status-badge>
                 </div>
                 <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
                 <div class="run-sub">
-                  <el-tag v-if="run.task_name" size="small" type="info" round class="run-task-tag">
+                  <meta-tag v-if="run.task_name" tone="info" class="run-task-tag" density="compact">
                     {{ run.task_name }}
-                  </el-tag>
-                  <el-tag v-if="run.execution === 'local'" size="small" type="info" round class="run-task-tag">
+                  </meta-tag>
+                  <meta-tag v-if="run.execution === 'local'" tone="info" class="run-task-tag" density="compact">
                     {{ run.device_name || $t('chat.scheduledTasks.execution.local') }}
-                  </el-tag>
-                  <el-tag
+                  </meta-tag>
+                  <meta-tag
                     v-for="(account, index) in run.run_accounts"
                     :key="`${account.connector_identifier}-${index}`"
-                    size="small"
-                    type="info"
-                    round
+                    tone="info"
                     class="run-account-tag"
+                    density="compact"
                   >
                     {{ accountTagText(account) }}
-                  </el-tag>
+                  </meta-tag>
                   <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
                   <span
                     v-if="runOutcomeText(run)"
@@ -305,22 +301,21 @@
           <div class="run-body">
             <div class="run-line">
               <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
-              <el-tag size="small" :type="runTagType(run.status)" effect="dark" round class="run-tag">
+              <status-badge :tone="runTagType(run.status)" class="run-tag" density="compact">
                 {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
-              </el-tag>
+              </status-badge>
             </div>
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
             <div class="run-sub">
-              <el-tag
+              <meta-tag
                 v-for="(account, index) in run.run_accounts"
                 :key="`${account.connector_identifier}-${index}`"
-                size="small"
-                type="info"
-                round
+                tone="info"
                 class="run-account-tag"
+                density="compact"
               >
                 {{ accountTagText(account) }}
-              </el-tag>
+              </meta-tag>
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
               <span
                 v-if="runOutcomeText(run)"
@@ -607,6 +602,7 @@
 </template>
 
 <script lang="ts">
+import { FilterChip, MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import { AiIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { defineComponent } from 'vue';
@@ -616,7 +612,6 @@ import {
   ElSkeleton,
   ElEmpty,
   ElSwitch,
-  ElTag,
   ElTooltip,
   ElDrawer,
   ElDialog,
@@ -721,6 +716,9 @@ interface TaskForm {
 export default defineComponent({
   name: 'ScheduledTasks',
   components: {
+    FilterChip,
+    MetaTag,
+    StatusBadge,
     AiIcon,
     ExpandRightIcon,
     PlayIcon,
@@ -735,7 +733,6 @@ export default defineComponent({
     ElSkeleton,
     ElEmpty,
     ElSwitch,
-    ElTag,
     ElTooltip,
     ElDrawer,
     ElDialog,
@@ -1838,32 +1835,7 @@ export default defineComponent({
   gap: 8px;
   margin-bottom: 16px;
 }
-.filter-chip {
-  appearance: none;
-  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
-  background: var(--app-bg-surface, var(--el-bg-color-overlay));
-  border-radius: 999px;
-  padding: 5px 14px;
-  font-size: 13px;
-  color: var(--el-text-color-regular);
-  cursor: pointer;
-  transition:
-    background 0.16s,
-    border-color 0.16s,
-    color 0.16s;
-}
-.filter-chip:hover:not(.active) {
-  background: var(--el-fill-color-lighter);
-}
-.filter-chip:focus-visible {
-  outline: 2px solid var(--el-color-primary);
-  outline-offset: 2px;
-}
-.filter-chip.active {
-  background: var(--el-color-primary);
-  border-color: var(--el-color-primary);
-  color: #fff;
-}
+
 .run-task-tag,
 .run-account-tag {
   flex-shrink: 0;
@@ -1944,16 +1916,7 @@ export default defineComponent({
   align-items: center;
   margin-bottom: 10px;
 }
-.meta-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-  background: var(--el-fill-color-light);
-  border-radius: 8px;
-  padding: 3px 9px;
-}
+
 .meta-icon {
   font-size: 11px;
   opacity: 0.85;

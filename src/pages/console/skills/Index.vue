@@ -44,7 +44,7 @@
                         <el-dropdown-item disabled>
                           <ai-create-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
                           {{ $t('skill.menu.createWithClaude') }}
-                          <span class="badge-soon">{{ $t('skill.menu.soon') }}</span>
+                          <meta-tag class="badge-soon" density="compact">{{ $t('skill.menu.soon') }}</meta-tag>
                         </el-dropdown-item>
                         <el-dropdown-item @click="openWrite">
                           <write-icon class="menu-icon" :size="14" aria-hidden="true" focusable="false" />
@@ -170,9 +170,14 @@
               <div v-if="selectedSkill.required_connections.length" class="meta-cell">
                 <span class="meta-label">{{ $t('skill.field.requiredConnections') }}</span>
                 <div class="meta-tags">
-                  <el-tag v-for="conn in selectedSkill.required_connections" :key="conn" size="small" type="info">
+                  <meta-tag
+                    v-for="conn in selectedSkill.required_connections"
+                    :key="conn"
+                    tone="info"
+                    density="compact"
+                  >
                     {{ conn }}
-                  </el-tag>
+                  </meta-tag>
                 </div>
               </div>
             </div>
@@ -226,11 +231,11 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import {
   ElInput,
   ElSwitch,
-  ElTag,
   ElTooltip,
   ElDropdown,
   ElDropdownMenu,
@@ -283,10 +288,10 @@ interface IData {
 export default defineComponent({
   name: 'UserSkills',
   components: {
+    MetaTag,
     ConsolePageHeader,
     ElInput,
     ElSwitch,
-    ElTag,
     ElTooltip,
     ElDropdown,
     ElDropdownMenu,
@@ -781,15 +786,6 @@ html.dark .skills-shell {
   padding-left: 16px;
   font-size: 10px;
   color: var(--el-text-color-secondary);
-}
-
-.badge-soon {
-  margin-left: 8px;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: var(--el-fill-color);
-  color: var(--el-text-color-secondary);
-  font-size: 10px;
 }
 
 /* ---- Responsive ---- */

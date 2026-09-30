@@ -5,7 +5,13 @@
        functional differences (URL params, in-app OAuth) below. -->
   <div class="auth-frame-modal" role="dialog" aria-modal="true">
     <div class="auth-frame-modal__panel">
-      <button class="auth-frame-modal__close" type="button" aria-label="Close" title="Close" @click="closeWebLogin">
+      <button
+        class="auth-frame-modal__close"
+        type="button"
+        :aria-label="$t('common.button.close')"
+        :title="$t('common.button.close')"
+        @click="closeWebLogin"
+      >
         <close-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
       <div v-if="useBrowser" class="auth-frame-modal__loading">
@@ -388,9 +394,9 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     border: 0;
-    border-radius: 18px;
+    border-radius: var(--adc-radius-dialog);
     background: transparent;
-    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+    box-shadow: var(--adc-shadow-lg);
   }
 
   &__loading {
@@ -399,15 +405,10 @@ export default defineComponent({
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-radius: 18px;
-    background: #ffffff;
-    color: #666;
+    border-radius: var(--adc-radius-dialog);
+    background: var(--adc-color-surface);
+    color: var(--adc-color-text-regular);
     font-size: 16px;
-
-    @media (prefers-color-scheme: dark) {
-      background: #1a1a1a;
-      color: #bbb;
-    }
   }
 
   &__close {
@@ -415,10 +416,10 @@ export default defineComponent({
     top: 10px;
     right: 10px;
     z-index: 1;
-    width: 32px;
-    height: 32px;
+    width: var(--adc-icon-target-size);
+    height: var(--adc-icon-target-size);
     border: 0;
-    border-radius: 999px;
+    border-radius: var(--adc-radius-round);
     background: rgba(15, 23, 42, 0.68);
     color: #fff;
     display: inline-flex;
@@ -430,6 +431,13 @@ export default defineComponent({
       width: 20px;
       height: 20px;
     }
+  }
+}
+
+@media (pointer: coarse) {
+  .auth-frame-modal__close {
+    width: 44px;
+    height: 44px;
   }
 }
 </style>

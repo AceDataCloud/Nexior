@@ -3,9 +3,9 @@
     <div class="flex min-h-8 items-center pr-20">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('seedance.name.firstFrame') }}</span>
-        <span v-if="capability.requiresImage" class="required-badge">
+        <meta-tag v-if="capability.requiresImage" class="required-badge" density="compact" tone="warning">
           {{ $t('seedance.name.required') }}
-        </span>
+        </meta-tag>
         <info-icon :content="$t('seedance.description.firstFrame')" />
       </div>
     </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
@@ -72,6 +73,7 @@ interface IData {
 export default defineComponent({
   name: 'SeedanceFirstFrameImage',
   components: {
+    MetaTag,
     UploadIcon,
     ElUpload,
     ElButton,
@@ -164,20 +166,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.required-badge {
+  margin-left: var(--adc-space-2);
+}
+
 .btn.btn-upload {
   position: absolute;
   top: 5px;
   right: 0;
-}
-.required-badge {
-  margin-left: 6px;
-  padding: 0 6px;
-  font-size: 11px;
-  line-height: 16px;
-  border-radius: 8px;
-  color: var(--el-color-warning);
-  background-color: var(--el-color-warning-light-9);
-  border: 1px solid var(--el-color-warning-light-7);
 }
 </style>
 

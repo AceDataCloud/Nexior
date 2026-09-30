@@ -75,7 +75,8 @@ const mountComponent = (credential: { token: string } | null = null, extraStubs:
       stubs: {
         ElCard: { template: '<div><slot /></div>' },
         ElDrawer: { template: '<div><slot /></div>' },
-        ElTag: { template: '<span><slot /></span>' },
+        MetaTag: false,
+        StatusBadge: false,
         ...extraStubs
       },
       mocks: {
@@ -1072,7 +1073,8 @@ describe('chat/ScheduledTasks', () => {
           stubs: {
             ElCard: { template: '<div><slot /></div>' },
             ElDrawer: { template: '<div><slot /></div>' },
-            ElTag: { template: '<span><slot /></span>' }
+            MetaTag: false,
+            StatusBadge: false
           },
           mocks: {
             $t: (key: string) => errorMessages[key] ?? key,
@@ -1295,7 +1297,8 @@ describe('chat/ScheduledTasks', () => {
           stubs: {
             ElCard: { template: '<div><slot /></div>' },
             ElDrawer: { template: '<div><slot /></div>' },
-            ElTag: { template: '<span><slot /></span>' }
+            MetaTag: false,
+            StatusBadge: false
           },
           mocks: {
             $t: (key: string) => errorMessages[key] ?? key,
@@ -1731,7 +1734,8 @@ describe('chat/ScheduledTasks', () => {
           stubs: {
             ElCard: { template: '<div><slot /></div>' },
             ElDrawer: { template: '<div><slot /></div>' },
-            ElTag: { template: '<span><slot /></span>' }
+            MetaTag: false,
+            StatusBadge: false
           },
           mocks: {
             $t: (key: string) => errorMessages[key] ?? key,

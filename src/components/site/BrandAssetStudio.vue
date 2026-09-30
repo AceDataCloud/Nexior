@@ -78,13 +78,13 @@
           <strong>{{ $t('site.logoStudio.analysisReady') }}</strong>
           <span>{{ analysisSummary }}</span>
         </div>
-        <el-tag :type="analysis?.background.removable ? 'success' : 'info'" effect="light">
+        <status-badge :tone="analysis?.background.removable ? 'success' : 'info'">
           {{
             analysis?.background.removable
               ? $t('site.logoStudio.backgroundDetected')
               : $t('site.logoStudio.transparentOrComplex')
           }}
-        </el-tag>
+        </status-badge>
       </div>
 
       <div class="controls">
@@ -147,6 +147,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import {
   EditIcon,
   ImageIcon,
@@ -171,7 +172,6 @@ import {
   ElRadioGroup,
   ElSlider,
   ElSwitch,
-  ElTag,
   ElTooltip
 } from 'element-plus';
 import { Cropper, RectangleStencil } from 'vue-advanced-cropper';
@@ -216,6 +216,7 @@ export interface BrandAssetStudioResult {
 export default defineComponent({
   name: 'BrandAssetStudio',
   components: {
+    StatusBadge,
     Cropper,
     EditIcon,
     ElAlert,
@@ -228,7 +229,6 @@ export default defineComponent({
     ElRadioGroup,
     ElSlider,
     ElSwitch,
-    ElTag,
     ElTooltip,
     ImageIcon,
     RedoIcon,

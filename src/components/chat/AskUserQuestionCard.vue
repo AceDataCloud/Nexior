@@ -16,7 +16,7 @@
       <!-- Progress header -->
       <div class="progress">
         <div class="progress-meta">
-          <span class="chip">{{ headerFor(currentQuestion) }}</span>
+          <meta-tag tone="brand" density="compact">{{ headerFor(currentQuestion) }}</meta-tag>
           <span class="step">
             <span class="step-current">{{ currentIndex + 1 }}</span>
             <span class="step-divider">/</span>
@@ -132,6 +132,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { BackIcon, ConfirmIcon, ContinueIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElInput, ElRadio, ElRadioGroup } from 'element-plus';
@@ -151,6 +152,7 @@ interface IData {
 export default defineComponent({
   name: 'AskUserQuestionCard',
   components: {
+    MetaTag,
     BackIcon,
     ConfirmIcon,
     ContinueIcon,
@@ -386,19 +388,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.chip {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
 }
 
 .step {
