@@ -28,6 +28,11 @@ export default defineComponent({
   data() {
     return {
       options: [
+        { value: 'pixverse-c1', label: 'C1' },
+        { value: 'v6', label: 'v6' },
+        { value: 'v5.6', label: 'v5.6' },
+        { value: 'v5.5', label: 'v5.5' },
+        { value: 'v5', label: 'v5' },
         {
           value: 'v3.5',
           label: 'v3.5'
