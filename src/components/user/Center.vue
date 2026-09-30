@@ -1,12 +1,14 @@
 <template>
   <div class="center">
-    <el-dropdown trigger="click">
+    <el-dropdown ref="dropdown" trigger="click" @visible-change="accountMenuVisible = $event">
       <user-avatar class="cursor-pointer" />
       <template #dropdown>
-        <div v-if="user.email" class="px-4 py-4 text-sm font-medium">
-          {{ user?.email }}
-        </div>
-        <el-divider v-if="user.email" class="mb-1 mt-1" />
+        <account-switcher
+          v-if="authenticated || $store.state.savedAccounts?.length"
+          :parent-visible="accountMenuVisible"
+          @close="closeDropdown"
+        />
+        <el-divider v-if="authenticated" class="mb-1 mt-1" />
         <el-dropdown-menu>
           <el-dropdown-item v-if="!authenticated" class="py-2" @click="onLogin">
             <user-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -56,6 +58,7 @@ import {
   UserRemoveIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
+import AccountSwitcher from '@/components/user/AccountSwitcher.vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
@@ -76,6 +79,7 @@ export default defineComponent({
     UserIcon,
     UserRemoveIcon,
     UserAvatar,
+    AccountSwitcher,
     UserSetting,
     DeleteAccountDialog,
     ElDivider,
@@ -86,6 +90,7 @@ export default defineComponent({
   data() {
     return {
       showMenu: false,
+      accountMenuVisible: false,
       showSetting: false,
       showDeleteAccount: false,
       settingTab: ''
@@ -131,6 +136,9 @@ export default defineComponent({
     window.removeEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
   },
   methods: {
+    closeDropdown() {
+      (this.$refs.dropdown as InstanceType<typeof ElDropdown>)?.handleClose();
+    },
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },

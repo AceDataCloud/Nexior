@@ -1,3 +1,4 @@
+import { followAccountChange, isAccountTransitioning } from '@/utils/auth/accountSessions';
 import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import root from './common';
@@ -48,6 +49,7 @@ const safeStorage: Storage = {
   getItem: (key: string) => window.localStorage.getItem(key),
   removeItem: (key: string) => window.localStorage.removeItem(key),
   setItem: (key: string, value: string) => {
+    if (isAccountTransitioning()) return;
     try {
       window.localStorage.setItem(key, value);
     } catch (err) {
@@ -111,5 +113,9 @@ const store = createStore({
         })
       ]
 });
+
+if (!import.meta.env.SSR) {
+  window.addEventListener('storage', (event) => followAccountChange(event, store.state.token?.access));
+}
 
 export default store;

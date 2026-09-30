@@ -1,3 +1,4 @@
+import { isAccountTransitioning } from '@/utils/auth/accountSessions';
 import { ViteSSG } from 'vite-ssg';
 import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
@@ -134,6 +135,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   await applyBootLocale();
   await resolveDeferredInviterId();
   await initializeToken();
+  if (isAccountTransitioning()) return;
   await initializeLocalizedBootstrap({
     initializeSite,
     applySiteLocale: () => applyBootLocale(store.state.site),

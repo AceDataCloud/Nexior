@@ -1,3 +1,4 @@
+import type { SavedAccount } from '@/utils/auth/accountSessions';
 import { IApplication, IConfigResponse, ISite, IToken, IUser, Status } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
@@ -36,6 +37,7 @@ export interface ISetting {
 
 export interface ICommonState {
   token: IToken;
+  savedAccounts: SavedAccount[];
   user?: IUser;
   setting?: ISetting;
   site?: ISite;

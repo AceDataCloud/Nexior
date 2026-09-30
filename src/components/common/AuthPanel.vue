@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import { cancelAddingAccount } from '@/utils/auth/accountSessions';
 import { CloseIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import axios from 'axios';
@@ -219,7 +220,7 @@ export default defineComponent({
               refresh: data.refresh_token,
               expiration: data.expires_in
             };
-            await this.$store.dispatch('setToken', token);
+            if (await this.$store.dispatch('setToken', token)) return;
             await this.$store.dispatch('getUser');
             if (!this.$store.state.site?.origin) {
               await this.$store.dispatch('initializeSite');
@@ -275,7 +276,12 @@ export default defineComponent({
           refresh: data.refresh_token,
           expiration: data.expires_in
         };
-        await this.$store.dispatch('setToken', token);
+        try {
+          if (await this.$store.dispatch('setToken', token)) return;
+        } catch {
+          ElMessage.error(this.$t('common.account.switchFailed').toString());
+          return;
+        }
         await this.$store.dispatch('getUser');
         // if the site is not initialized, initialize it
         let openedSettings = false;
@@ -344,6 +350,7 @@ export default defineComponent({
   },
   methods: {
     closeWebLogin() {
+      cancelAddingAccount();
       this.$store.commit('setAuth', { visible: false });
     },
     resolveLocalRedirect(target: string | undefined, fallback = '/') {

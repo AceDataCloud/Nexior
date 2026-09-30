@@ -1,3 +1,11 @@
+import axios from 'axios';
+import {
+  activateAccount,
+  beginAddingAccount,
+  cancelAddingAccount,
+  isAddingAccount
+} from '@/utils/auth/accountSessions';
+import { getBaseUrlPlatform } from '@/utils/baseUrl';
 import { ActionContext } from 'vuex';
 import { createFingerprintResolver } from '@acedatacloud/core/fingerprint';
 import { IRootState } from './models';
@@ -39,7 +47,13 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
   commit('resetToken');
 };
 
-export const setToken = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>, payload: IToken) => {
+export const setToken = async ({ state, commit, dispatch }: ActionContext<IRootState, IRootState>, payload: IToken) => {
+  if (isAddingAccount() || (state.token?.access && state.token.access !== payload.access)) {
+    const user = await validateAccountToken(payload);
+    commit('rememberCurrentAccount');
+    activateAccount(state, { user, token: payload });
+    return true;
+  }
   commit('setToken', payload);
   await dispatch('chat/refreshModelAccess');
 };
@@ -60,12 +74,15 @@ export const setFingerprint = ({ commit }: ActionContext<IRootState, IRootState>
   commit('setFingerprint', payload);
 };
 
-export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser | undefined> => {
+export const getUser = async ({ state, commit }: ActionContext<IRootState, IRootState>): Promise<IUser | undefined> => {
   console.debug('start to get user');
+  const access = state.token.access;
   try {
     commit('resetUser');
     const { data: user } = await userOperator.getMe();
+    if (state.token.access !== access) return undefined;
     commit('setUser', user);
+    commit('rememberCurrentAccount');
     console.debug('get user success', user);
     return user;
   } catch (error) {
@@ -87,10 +104,10 @@ export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRoot
   return visitorId;
 };
 
-export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string) => {
+export const getToken = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>, code: string) => {
   console.debug('start to get token using code', code);
   try {
-    commit('resetToken');
+    if (!isAddingAccount()) commit('resetToken');
     const { data } = await ssoOperator.token({
       code
     });
@@ -100,6 +117,10 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
       refresh: data.refresh_token,
       expiration: data.expires_in
     };
+    if (isAddingAccount()) {
+      await dispatch('setToken', token);
+      return;
+    }
     commit('setToken', token);
     console.debug('get token success', data);
     return token;
@@ -231,9 +252,36 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
   return credential;
 };
 
+// Validate the selected token independently: a stale saved login must not log out
+// the active account through the shared client's onUnauthorized interceptor.
+async function validateAccountToken(token: IToken): Promise<IUser> {
+  const { data } = await axios.get<IUser>(`${getBaseUrlPlatform()}/api/v1/users/me`, {
+    headers: { Authorization: `Bearer ${token.access}` },
+    timeout: 20000
+  });
+  if (!data?.id) throw new Error('Invalid account response');
+  return data;
+}
+
+export const addAccount = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>) => {
+  commit('rememberCurrentAccount');
+  beginAddingAccount();
+  await dispatch('login', { redirect: '/', addAccount: true });
+};
+
+export const switchAccount = async ({ state, commit }: ActionContext<IRootState, IRootState>, id: string) => {
+  if (id === state.user?.id) return;
+  const account = state.savedAccounts.find((item) => item.user.id === id);
+  if (!account) return;
+  const user = await validateAccountToken(account.token);
+  if (user.id !== id) throw new Error('Account identity mismatch');
+  commit('rememberCurrentAccount');
+  activateAccount(state, { user, token: account.token });
+};
+
 export const login = async (
   { state, commit }: ActionContext<IRootState, IRootState>,
-  payload: { redirect?: string } = {}
+  payload: { redirect?: string; addAccount?: boolean } = {}
 ) => {
   const site = state?.site?.origin;
   const redirect = payload.redirect || window.location.pathname + window.location.search;
@@ -244,7 +292,7 @@ export const login = async (
       flow: 'popup',
       visible: true,
       redirect,
-      action: 'login'
+      action: payload.addAccount ? 'logout' : 'login'
     });
     console.debug('login popup');
   } else {
@@ -259,11 +307,13 @@ export const login = async (
     // it survives the auth round-trip and is still present when the user
     // lands back on Nexior. inviter_id is also forwarded as a top-level
     // query param by loginRedirect itself.
-    loginRedirect({ redirect, site });
+    loginRedirect({ redirect, site, addAccount: payload.addAccount });
   }
 };
 
 export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
+  cancelAddingAccount();
+  commit('forgetCurrentAccount');
   await dispatch('resetAll');
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // On native AND desktop, show the in-app login popup instead of navigating
@@ -302,6 +352,8 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
 };
 
 export default {
+  addAccount,
+  switchAccount,
   login,
   logout,
   resetToken,

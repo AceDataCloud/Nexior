@@ -31,6 +31,7 @@ import codingBridgeState from '../codingBridge/state';
 export default (): IRootState => {
   return {
     applications: [],
+    savedAccounts: [],
     fingerprint: undefined,
     currency: 'usd',
     exchange: undefined,
