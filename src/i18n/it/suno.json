@@ -121,7 +121,7 @@
   },
   "button.addAudio": {
     "message": "+ Audio",
-    "description": "Pulsante per aprire la finestra di dialogo per aggiungere audio (sfoglia o registra)"
+    "description": "Pulsante per aprire la finestra di dialogo per aggiungere audio (sfogliare o registrare)"
   },
   "button.startRecord": {
     "message": "Inizia Registrazione",
@@ -173,7 +173,7 @@
   },
   "button.video": {
     "message": "Video",
-    "description": "Testo del pulsante per il video"
+    "description": "Testo del pulsante Video"
   },
   "button.download_video": {
     "message": "Scarica Video",
@@ -193,7 +193,7 @@
   },
   "button.cover_music": {
     "message": "Cover",
-    "description": "Testo del pulsante per la cover"
+    "description": "Testo del pulsante per creare una cover"
   },
   "button.concat_music": {
     "message": "Unisci",
@@ -204,8 +204,8 @@
     "description": "Testo del pulsante per scaricare la musica"
   },
   "button.remaster": {
-    "message": "Remaster",
-    "description": "Testo del pulsante per migliorare la qualità audio della traccia master"
+    "message": "Rimasterizza",
+    "description": "Testo del pulsante per rimasterizzare e migliorare la qualità audio"
   },
   "button.replace_section": {
     "message": "Sostituisci Sezione",
@@ -213,7 +213,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Testo del pulsante per mescolare più canzoni"
+    "description": "Testo del pulsante per combinare più brani"
   },
   "button.generate_lyrics": {
     "message": "Genera Testo",
@@ -873,7 +873,7 @@
   },
   "filter.video": {
     "message": "Video",
-    "description": "Filtro per la sezione: se contiene video"
+    "description": "Sezione del filtro: presenza o assenza di video"
   },
   "filter.videoAll": {
     "message": "Tutti",
@@ -1078,5 +1078,101 @@
   "customModel.status.archived": {
     "message": "Archiviato",
     "description": "Stato di archiviazione del modello"
+  },
+  "button.failureDetails": {
+    "message": "Dettagli dell'errore",
+    "description": "Dettagli dell'errore"
+  },
+  "name.untitledSong": {
+    "message": "Canzone senza titolo",
+    "description": "Canzone senza titolo"
+  },
+  "message.songPlaceholder": {
+    "message": "La tua creazione musicale",
+    "description": "La tua creazione musicale"
+  },
+  "name.lyricTiming": {
+    "message": "Timeline dei testi",
+    "description": "Timeline dei testi"
+  },
+  "button.downloadSubtitles": {
+    "message": "Scarica sottotitoli (.srt)",
+    "description": "Scarica sottotitoli (.srt)"
+  },
+  "message.noTiming": {
+    "message": "Questa canzone non ha una timeline dei testi disponibile.",
+    "description": "Questa canzone non ha una timeline dei testi disponibile."
+  },
+  "description.vocalRange": {
+    "message": "Scegli un frammento vocale di durata inferiore a 30 secondi. Puoi ascoltarlo in anteprima, scaricarlo e salvarlo come voce da usare per creazioni future.",
+    "description": "Scegli un frammento vocale di durata inferiore a 30 secondi. Puoi ascoltarlo in anteprima, scaricarlo e salvarlo come voce da usare per creazioni future."
+  },
+  "name.rangeStart": {
+    "message": "Ora di inizio (secondi)",
+    "description": "Ora di inizio (secondi)"
+  },
+  "name.rangeEnd": {
+    "message": "Ora di fine (secondi)",
+    "description": "Ora di fine (secondi)"
+  },
+  "voice.selectSong": {
+    "message": "Seleziona una canzone o inserisci l'ID della canzone",
+    "description": "Seleziona una canzone o inserisci l'ID della canzone"
+  },
+  "button.newSong": {
+    "message": "Torna a crea nuova canzone",
+    "description": "Torna a crea nuova canzone"
+  },
+  "button.inspo": {
+    "message": "Crea con ispirazione",
+    "description": "Crea con ispirazione"
+  },
+  "name.inspirationTracks": {
+    "message": "Audio di ispirazione",
+    "description": "Audio di ispirazione"
+  },
+  "name.mashupTracks": {
+    "message": "Canzoni per il mashup",
+    "description": "Canzoni per il mashup"
+  },
+  "placeholder.referenceSongs": {
+    "message": "Seleziona canzoni",
+    "description": "Seleziona canzoni"
+  },
+  "description.inspo": {
+    "message": "Scegli da 1 a 4 brani oppure incolla un link audio. Crea con ispirazione utilizza v5.",
+    "description": "Scegli da 1 a 4 brani oppure incolla un link audio. Crea con ispirazione utilizza v5."
+  },
+  "description.mashupTracks": {
+    "message": "Scegli due canzoni diverse per unire i relativi testi nell'editor dei testi.",
+    "description": "Scegli due canzoni diverse per unire i relativi testi nell'editor dei testi."
+  },
+  "message.inspoReferencesRequired": {
+    "message": "Seleziona da 1 a 4 file audio. I link devono iniziare con http:// o https://.",
+    "description": "Seleziona da 1 a 4 file audio. I link devono iniziare con http:// o https://."
+  },
+  "message.mashupReferencesRequired": {
+    "message": "Seleziona due canzoni diverse per creare un mashup.",
+    "description": "Seleziona due canzoni diverse per creare un mashup."
+  },
+  "description.mashupLyrics": {
+    "message": "Unisci i testi di due canzoni in un nuovo testo. Dopo la generazione puoi continuare a modificarlo; puoi ripristinare i testi originali annullando l'operazione.",
+    "description": "Unisci i testi di due canzoni in un nuovo testo. Dopo la generazione puoi continuare a modificarlo; puoi ripristinare i testi originali annullando l'operazione."
+  },
+  "placeholder.lyricsA": {
+    "message": "Testo della prima canzone",
+    "description": "Testo della prima canzone"
+  },
+  "placeholder.lyricsB": {
+    "message": "Testo della seconda canzone",
+    "description": "Testo della seconda canzone"
+  },
+  "name.lyricsModel": {
+    "message": "Modello dei testi",
+    "description": "Modello dei testi"
+  },
+  "lyricsModel.default": {
+    "message": "Testo standard",
+    "description": "Testo standard"
   }
 }

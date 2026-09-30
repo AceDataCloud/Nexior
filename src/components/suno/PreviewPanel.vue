@@ -1,5 +1,5 @@
 <template>
-  <div v-if="audio?.object" class="size-full overflow-hidden">
+  <div v-if="audio?.object" class="size-full overflow-y-auto">
     <div class="relative h-[300px]">
       <el-image :src="audio.image_url" fit="cover" class="size-full">
         <template #error>

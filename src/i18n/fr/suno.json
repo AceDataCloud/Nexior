@@ -25,7 +25,7 @@
   },
   "voice.description": {
     "message": "Description",
-    "description": "Étiquette pour la description de la voix"
+    "description": "Libellé de description de la voix"
   },
   "voice.descriptionPlaceholder": {
     "message": "Décrivez les caractéristiques de ce son...",
@@ -121,7 +121,7 @@
   },
   "button.addAudio": {
     "message": "+ Audio",
-    "description": "Bouton pour ouvrir la boîte de dialogue d'ajout d'audio (parcourir ou enregistrer)"
+    "description": "Bouton ouvrant la boîte de dialogue d’ajout d’un fichier audio (parcourir ou enregistrer)"
   },
   "button.startRecord": {
     "message": "Commencer l'enregistrement",
@@ -213,7 +213,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Texte du bouton pour mélanger plusieurs chansons"
+    "description": "Libellé du bouton permettant de mélanger plusieurs chansons"
   },
   "button.generate_lyrics": {
     "message": "Générer des paroles avec l'IA",
@@ -289,7 +289,7 @@
   },
   "name.style": {
     "message": "Style",
-    "description": "Indication pour le contenu d'entrée du style de la chanson"
+    "description": "Invite de saisie du style musical de la chanson"
   },
   "name.styleNegative": {
     "message": "Styles à exclure",
@@ -721,7 +721,7 @@
   },
   "mode.simple": {
     "message": "Simple",
-    "description": "Étiquette du mode de création simple"
+    "description": "Libellé du mode de création simple"
   },
   "mode.custom": {
     "message": "Personnalisé",
@@ -837,7 +837,7 @@
   },
   "filter.type": {
     "message": "Type",
-    "description": "Filtre de catégorie : voix/musique instrumentale"
+    "description": "Section de filtrage : voix/instrumental"
   },
   "filter.typeAll": {
     "message": "Tout",
@@ -864,7 +864,7 @@
     "description": "Durée : moins de 1 minute"
   },
   "filter.durationMedium": {
-    "message": "1-3 minutes",
+    "message": "1–3 minutes",
     "description": "Durée : de 1 à 3 minutes"
   },
   "filter.durationLong": {
@@ -1078,5 +1078,101 @@
   "customModel.status.archived": {
     "message": "Archivé",
     "description": "État du modèle archivé"
+  },
+  "button.failureDetails": {
+    "message": "Détails de l’échec",
+    "description": "Détails de l’échec"
+  },
+  "name.untitledSong": {
+    "message": "Chanson sans titre",
+    "description": "Chanson sans titre"
+  },
+  "message.songPlaceholder": {
+    "message": "Votre création musicale",
+    "description": "Votre création musicale"
+  },
+  "name.lyricTiming": {
+    "message": "Synchronisation des paroles",
+    "description": "Synchronisation des paroles"
+  },
+  "button.downloadSubtitles": {
+    "message": "Télécharger les sous-titres (.srt)",
+    "description": "Télécharger les sous-titres (.srt)"
+  },
+  "message.noTiming": {
+    "message": "Aucune synchronisation des paroles n’est disponible pour cette chanson.",
+    "description": "Aucune synchronisation des paroles n’est disponible pour cette chanson."
+  },
+  "description.vocalRange": {
+    "message": "Sélectionnez un extrait vocal de moins de 30 secondes. Vous pouvez l’écouter en aperçu, le télécharger et l’enregistrer comme voix pour vos prochaines créations.",
+    "description": "Sélectionnez un extrait vocal de moins de 30 secondes. Vous pouvez l’écouter en aperçu, le télécharger et l’enregistrer comme voix pour vos prochaines créations."
+  },
+  "name.rangeStart": {
+    "message": "Temps de début (secondes)",
+    "description": "Temps de début (secondes)"
+  },
+  "name.rangeEnd": {
+    "message": "Heure de fin (secondes)",
+    "description": "Heure de fin (secondes)"
+  },
+  "voice.selectSong": {
+    "message": "Sélectionner une chanson ou saisir son ID",
+    "description": "Sélectionner une chanson ou saisir son ID"
+  },
+  "button.newSong": {
+    "message": "Retourner à la création d’une chanson",
+    "description": "Retourner à la création d’une chanson"
+  },
+  "button.inspo": {
+    "message": "Création inspirée",
+    "description": "Création inspirée"
+  },
+  "name.inspirationTracks": {
+    "message": "Audio d’inspiration",
+    "description": "Audio d’inspiration"
+  },
+  "name.mashupTracks": {
+    "message": "Chansons à mélanger",
+    "description": "Chansons à mélanger"
+  },
+  "placeholder.referenceSongs": {
+    "message": "Sélectionner une chanson",
+    "description": "Sélectionner une chanson"
+  },
+  "description.inspo": {
+    "message": "Sélectionnez 1–4 chansons ou collez un lien audio. La création inspirée utilise v5.",
+    "description": "Sélectionnez 1–4 chansons ou collez un lien audio. La création inspirée utilise v5."
+  },
+  "description.mashupTracks": {
+    "message": "Sélectionnez deux chansons différentes pour fusionner leurs paroles dans l’éditeur de paroles.",
+    "description": "Sélectionnez deux chansons différentes pour fusionner leurs paroles dans l’éditeur de paroles."
+  },
+  "message.inspoReferencesRequired": {
+    "message": "Sélectionnez 1–4 fichiers audio. Les liens doivent commencer par http:// ou https://.",
+    "description": "Sélectionnez 1–4 fichiers audio. Les liens doivent commencer par http:// ou https://."
+  },
+  "message.mashupReferencesRequired": {
+    "message": "Sélectionnez deux chansons différentes à mélanger.",
+    "description": "Sélectionnez deux chansons différentes à mélanger."
+  },
+  "description.mashupLyrics": {
+    "message": "Fusionnez les paroles de deux chansons pour créer de nouvelles paroles. Vous pouvez continuer à les modifier après la génération et restaurer les paroles d’origine avec Annuler.",
+    "description": "Fusionnez les paroles de deux chansons pour créer de nouvelles paroles. Vous pouvez continuer à les modifier après la génération et restaurer les paroles d’origine avec Annuler."
+  },
+  "placeholder.lyricsA": {
+    "message": "Paroles de la première chanson",
+    "description": "Paroles de la première chanson"
+  },
+  "placeholder.lyricsB": {
+    "message": "Paroles de la deuxième chanson",
+    "description": "Paroles de la deuxième chanson"
+  },
+  "name.lyricsModel": {
+    "message": "Modèle de paroles",
+    "description": "Modèle de paroles"
+  },
+  "lyricsModel.default": {
+    "message": "Paroles standard",
+    "description": "Paroles standard"
   }
 }

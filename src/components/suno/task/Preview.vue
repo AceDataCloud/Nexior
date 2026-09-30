@@ -1,26 +1,49 @@
 <template>
   <div class="task">
-    <el-alert v-if="isFailure" :closable="false" class="task-failure">
-      <template #title>
-        <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('suno.name.failure') }}
-      </template>
-      <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-        <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('suno.name.taskId') }}: {{ modelValue?.id }}
-        <copy-to-clipboard :content="modelValue?.id" />
-      </p>
-      <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-        <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('suno.name.failureReason') }}: {{ failureReason }}
-        <copy-to-clipboard :content="failureReason" />
-      </p>
-      <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-        <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('suno.name.traceId') }}: {{ traceId }}
-        <copy-to-clipboard :content="traceId" />
-      </p>
-    </el-alert>
+    <div v-if="isFailure || isPending" class="audio placeholder-row" :class="{ 'failed-row': isFailure }">
+      <div class="left placeholder-cover" :class="{ 'pending-cover': isPending }">
+        <music-icon :size="'24' as any" aria-hidden="true" focusable="false" />
+        <span v-if="isFailure" class="cover-status">
+          <warning-icon :size="'12' as any" aria-hidden="true" focusable="false" />
+        </span>
+      </div>
+      <div class="info">
+        <div class="title-row">
+          <h2 class="title">{{ placeholderTitle }}</h2>
+          <span v-if="placeholderModel" class="model-chip">{{ placeholderModel }}</span>
+        </div>
+        <p class="style">{{ placeholderDescription }}</p>
+        <span class="task-status" :class="{ 'failed-status': isFailure }" role="status">
+          {{ $t(isFailure ? 'suno.name.failure' : 'suno.name.generating') }}
+        </span>
+      </div>
+      <div v-if="isFailure" class="placeholder-actions">
+        <el-tooltip :content="$t('suno.button.reuse_prompt')">
+          <button
+            type="button"
+            class="icon-button"
+            :aria-label="$t('suno.button.reuse_prompt')"
+            @click="onReusePrompt({})"
+          >
+            <undo-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </button>
+        </el-tooltip>
+        <el-popover trigger="click" placement="bottom-end" :width="320">
+          <template #reference>
+            <button type="button" class="icon-button" :aria-label="$t('suno.button.failureDetails')">
+              <info-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </button>
+          </template>
+          <div class="suno-failure-details">
+            <p v-if="failureReason">
+              {{ $t('suno.name.failureReason') }}: {{ failureReason }} <copy-to-clipboard :content="failureReason" />
+            </p>
+            <p>{{ $t('suno.name.taskId') }}: {{ modelValue.id }} <copy-to-clipboard :content="modelValue.id" /></p>
+            <p v-if="traceId">{{ $t('suno.name.traceId') }}: {{ traceId }} <copy-to-clipboard :content="traceId" /></p>
+          </div>
+        </el-popover>
+      </div>
+    </div>
     <div
       v-for="(audio, index) in audios"
       :key="audio.id"
@@ -232,11 +255,11 @@
                 <sort-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.all_stems') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio.id)">
+              <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio)">
                 <magic-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.remaster') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onExtractVocals(audio.id)">
+              <el-dropdown-item v-if="audio?.id" @click.stop="onExtractVocals(audio)">
                 <audio-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.extract_vocals') }}
               </el-dropdown-item>
@@ -244,9 +267,18 @@
                 <palette-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.artist_consistency') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onAdjustSpeed(audio)">
-                <performance-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ $t('suno.button.adjust_speed') }}
+
+              <el-dropdown-item v-if="audio?.id" @click.stop="onArtistConsistencyVox(audio)">
+                <microphone-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ $t('suno.button.artist_consistency_vox') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onCreatePersona(audio)">
+                <microphone-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ $t('suno.button.create_persona') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.audio_url" @click.stop="onInspire(audio)">
+                <magic-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ $t('suno.button.inspo') }}
               </el-dropdown-item>
 
               <!-- Utility group -->
@@ -255,7 +287,7 @@
                 <undo-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.reuse_prompt') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onGetTiming(audio.id)">
+              <el-dropdown-item v-if="audio?.id" :disabled="isFetchingTiming" @click.stop="onGetTiming(audio)">
                 <time-icon class="menu-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
@@ -281,6 +313,13 @@
         </el-dropdown>
       </div>
     </div>
+    <timing-dialog v-model="timingVisible" :audio="timingAudio" :data="timingData" />
+    <vocal-dialog v-model="vocalVisible" :audio="sourceAudio" />
+    <voice-create-dialog
+      v-model="voiceVisible"
+      :source-audio="sourceAudio"
+      @created="$store.dispatch('suno/getPersonas')"
+    />
     <api-code-dialog
       v-model:visible="apiCodeVisible"
       method="POST"
@@ -300,7 +339,6 @@
 <script lang="ts">
 import {
   AudioIcon,
-  ChannelIcon,
   CodeIcon,
   CollectionIcon,
   CutIcon,
@@ -318,7 +356,6 @@ import {
   MoreIcon,
   MusicIcon,
   PaletteIcon,
-  PerformanceIcon,
   ShuffleIcon,
   SortIcon,
   TimeIcon,
@@ -327,7 +364,7 @@ import {
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
-import { ISunoAudio, ISunoTask } from '@/models';
+import { ISunoAudio, ISunoTask, ISunoConfig } from '@/models';
 import {
   ElImage,
   ElIcon,
@@ -340,7 +377,7 @@ import {
   ElMessageBox,
   ElProgress,
   ElCheckbox,
-  ElAlert
+  ElPopover
 } from 'element-plus';
 
 import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/core/icons/components';
@@ -353,11 +390,17 @@ import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import ReportDialog from '@/components/common/ReportDialog.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isMainOfficial } from '@/utils';
+import { hasExplicitTaskFailure } from '@/store/factories/taskPolling';
+import { openTaskDrawer } from '@/utils/taskDrawerMixin';
+import { encodeSunoMidi } from '@/utils/suno/midi';
+import { clearSunoOperation } from '@/utils/suno/operation';
+import TimingDialog from './TimingDialog.vue';
+import VocalDialog from './VocalDialog.vue';
+import VoiceCreateDialog from '../voice/VoiceCreateDialog.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
     AudioIcon,
-    ChannelIcon,
     CodeIcon,
     CollectionIcon,
     CutIcon,
@@ -374,7 +417,6 @@ export default defineComponent({
     MoreIcon,
     MusicIcon,
     PaletteIcon,
-    PerformanceIcon,
     ShuffleIcon,
     SortIcon,
     TimeIcon,
@@ -391,11 +433,14 @@ export default defineComponent({
     ElInput,
     ElProgress,
     ElCheckbox,
-    ElAlert,
+    ElPopover,
     Loading,
     ApiCodeDialog,
     ReportDialog,
-    CopyToClipboard
+    CopyToClipboard,
+    TimingDialog,
+    VocalDialog,
+    VoiceCreateDialog
   },
   props: {
     modelValue: {
@@ -409,6 +454,13 @@ export default defineComponent({
       isFetchingVideoUrl: false,
       isFetchingWav: false,
       isFetchingMidi: false,
+      isFetchingTiming: false,
+      timingVisible: false,
+      timingData: undefined as unknown,
+      timingAudio: {} as ISunoAudio,
+      vocalVisible: false,
+      voiceVisible: false,
+      sourceAudio: {} as ISunoAudio,
       editingAudioId: null as string | null,
       editingTitle: '',
       apiCodeVisible: false,
@@ -436,15 +488,28 @@ export default defineComponent({
       return this.$store.state.suno?.tasks;
     },
     audios(): ISunoAudio[] {
-      const data = (this.modelValue?.response?.data ?? []) as ISunoAudio[];
+      const result = this.modelValue?.response?.data;
+      const data = (Array.isArray(result) ? result : []) as ISunoAudio[];
       // @ts-ignore
       const action = this.modelValue?.request?.action as ISunoAudio['action'] | undefined;
       return action ? data.map((a) => ({ ...a, action })) : data;
     },
     isFailure(): boolean {
-      return (
-        this.audios.length === 0 && (this.modelValue?.response?.success === false || !!this.modelValue?.response?.error)
-      );
+      return this.audios.length === 0 && hasExplicitTaskFailure(this.modelValue);
+    },
+    isPending(): boolean {
+      return this.audios.length === 0 && !this.isFailure && !this.modelValue.response;
+    },
+    placeholderTitle(): string {
+      const request = this.modelValue.request as ISunoAudioRequest | undefined;
+      return request?.title || this.$t('suno.name.untitledSong');
+    },
+    placeholderDescription(): string {
+      const request = this.modelValue.request as ISunoAudioRequest | undefined;
+      return request?.style || request?.prompt || request?.lyric_prompt || this.$t('suno.message.songPlaceholder');
+    },
+    placeholderModel(): string {
+      return this.shortModel({ model: (this.modelValue.request as ISunoAudioRequest | undefined)?.model });
     },
     failureReason(): string | undefined {
       const error = this.modelValue?.response?.error;
@@ -467,6 +532,10 @@ export default defineComponent({
     }
   },
   methods: {
+    setOperation(config: ISunoConfig) {
+      this.$store.commit('suno/setConfig', config);
+      if (window.matchMedia('(max-width: 767px)').matches) openTaskDrawer();
+    },
     onReport(audio: any) {
       this.reportTargetId = audio?.id || '';
       this.reportSnapshot = { prompt: audio?.prompt, title: audio?.title };
@@ -479,6 +548,8 @@ export default defineComponent({
       if (!m) return '';
       const match = /v(\d+)(?:-(\d+))?(-plus)?/i.exec(m);
       if (!match) return m;
+      if (m === 'chirp-v6-wild') return 'v6 Wild';
+      if (m === 'chirp-v6-mini') return 'v6 Mini';
       const minor = match[2] && match[2] !== '0' ? '.' + match[2] : '';
       return `v${match[1]}${minor}${match[3] ? '+' : ''}`;
     },
@@ -511,6 +582,7 @@ export default defineComponent({
       });
     },
     onClick(audio: ISunoAudio) {
+      if (!audio.audio_url) return;
       if (this.$store.state?.suno?.audio?.id !== audio.id) {
         this.onPlay({
           ...audio,
@@ -520,8 +592,8 @@ export default defineComponent({
     },
     onExtend(event: MouseEvent, audio: ISunoAudio) {
       event?.stopPropagation();
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         instrumental: false,
@@ -602,8 +674,8 @@ export default defineComponent({
       await this.onGenerateAudioUrl('stems', audioId);
     },
     onCover(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         instrumental: false,
@@ -616,15 +688,23 @@ export default defineComponent({
     async onConcatMusic(audioId: string) {
       await this.onGenerateAudioUrl('concat', audioId);
     },
-    async onRemaster(audioId: string) {
-      await this.onGenerateAudioUrl('remaster', audioId);
+    onRemaster(audio: ISunoAudio) {
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno.config),
+        action: 'remaster',
+        audio,
+        audio_id: audio.id,
+        model: audio.model,
+        custom: true,
+        variation_category: 'normal'
+      });
     },
     async onGetAllStems(audioId: string) {
       await this.onGenerateAudioUrl('all_stems', audioId);
     },
     onReplaceSection(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         instrumental: false,
@@ -637,8 +717,9 @@ export default defineComponent({
       });
     },
     onMashup(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      if (!audio.id) return;
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         style: audio.style,
@@ -649,8 +730,8 @@ export default defineComponent({
       });
     },
     onOverpainting(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         style: audio.style,
@@ -662,8 +743,8 @@ export default defineComponent({
       });
     },
     onUnderpainting(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         style: audio.style,
@@ -675,8 +756,8 @@ export default defineComponent({
       });
     },
     onSamples(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         style: audio.style,
@@ -688,26 +769,14 @@ export default defineComponent({
       });
     },
     onArtistConsistency(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno?.config),
         model: audio.model,
         custom: true,
         style: audio.style,
         action: 'artist_consistency',
         audio: audio,
         audio_id: audio.id
-      });
-    },
-    onAdjustSpeed(audio: ISunoAudio) {
-      this.$store.commit('suno/setConfig', {
-        ...this.$store.state.suno?.config,
-        model: audio.model,
-        custom: true,
-        style: audio.style,
-        action: 'adjust_speed',
-        audio: audio,
-        audio_id: audio.id,
-        speed: 1
       });
     },
     onReusePrompt(audio: ISunoAudio) {
@@ -744,6 +813,8 @@ export default defineComponent({
         audio_weight: req.audio_weight,
         duration: req.duration,
         persona_id: req.persona_id,
+        custom_model_id: undefined,
+        audio_urls: undefined,
         // reset to a fresh generation
         action: undefined,
         audio: undefined,
@@ -760,41 +831,34 @@ export default defineComponent({
         samples_start: undefined,
         samples_end: undefined
       });
+      if (window.matchMedia('(max-width: 767px)').matches) openTaskDrawer();
       ElMessage.success(this.$t('suno.message.reusePromptSuccess'));
     },
-    async onExtractVocals(audioId: string) {
-      const options = sunoPaymentOptions(this);
-      if (!options) return;
-      ElMessage.info(this.$t('suno.message.extractingVocals'));
-      sunoOperator
-        .vox({ audio_id: audioId, async: true }, options)
-        .then((response) => {
-          const taskId = response?.data?.task_id;
-          if (taskId) this.$emit('wallet-task', taskId);
-          ElMessage.success(this.$t('suno.message.extractVocalsSuccess'));
-        })
-        .catch((error) => {
-          if (error instanceof X402PaymentCancelledError) return;
-          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.extractVocalsFailed'));
-        })
-        .finally(async () => {
-          await this.onGetTasks();
-          await this.onScrollDown();
-        });
+    onExtractVocals(audio: ISunoAudio) {
+      this.sourceAudio = audio;
+      this.vocalVisible = true;
     },
-    async onGetTiming(audioId: string) {
+    onCreatePersona(audio: ISunoAudio) {
+      this.sourceAudio = audio;
+      this.voiceVisible = true;
+    },
+    async onGetTiming(audio: ISunoAudio) {
+      if (!audio.id || this.isFetchingTiming) return;
       const options = sunoPaymentOptions(this);
       if (!options) return;
-      ElMessage.info(this.$t('suno.message.fetchingTiming'));
-      sunoOperator
-        .timing({ audio_id: audioId }, options)
-        .then(() => {
-          ElMessage.success(this.$t('suno.message.fetchTimingSuccess'));
-        })
-        .catch((error) => {
-          if (error instanceof X402PaymentCancelledError) return;
-          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.fetchTimingFailed'));
-        });
+      this.isFetchingTiming = true;
+      try {
+        const response = await sunoOperator.timing({ audio_id: audio.id }, options);
+        if (response.data.success === false) throw new Error('Timing failed');
+        this.timingData = response.data.data;
+        this.timingAudio = audio;
+        this.timingVisible = true;
+      } catch (error) {
+        if (error instanceof X402PaymentCancelledError) return;
+        ElMessage.error(this.$t('suno.message.fetchTimingFailed'));
+      } finally {
+        this.isFetchingTiming = false;
+      }
     },
     async handleWavDownload(audio: ISunoAudio) {
       if (!audio?.id || this.isFetchingWav) return;
@@ -828,15 +892,9 @@ export default defineComponent({
         this.isFetchingMidi = true;
         ElMessage.info(this.$t('suno.message.fetchingMidi'));
         const response = await sunoOperator.midi({ audio_id: audio.id }, options);
-        // Worker returns structured note data, no URL — save raw JSON for the user.
-        const data = response.data?.data;
-        if (!data?.length) {
-          ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
-          return;
-        }
-        const filename = (audio.title || audio.id || 'suno').replace(/[^\w.-]+/g, '_') + '.json';
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        saveAs(blob, filename);
+        const bytes = encodeSunoMidi(response.data?.data || []);
+        const filename = (audio.title || audio.id || 'suno').replace(/[/\\:*?"<>|]+/g, '_') + '.mid';
+        saveAs(new Blob([bytes], { type: 'audio/midi' }), filename);
       } catch (error) {
         if (error instanceof X402PaymentCancelledError) return;
         const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
@@ -881,11 +939,30 @@ export default defineComponent({
       if (idx !== -1) {
         ids.splice(idx, 1);
       } else {
+        if (ids.length >= 2) {
+          ElMessage.warning(this.$t('suno.message.mashupReferencesRequired'));
+          return;
+        }
         ids.push(audio.id);
       }
       this.$store.commit('suno/setConfig', {
         ...this.$store.state.suno?.config,
         mashup_audio_ids: ids
+      });
+    },
+    onArtistConsistencyVox(audio: ISunoAudio) {
+      this.onArtistConsistency(audio);
+      this.$store.commit('suno/setConfig', { ...this.$store.state.suno.config, action: 'artist_consistency_vox' });
+    },
+    onInspire(audio: ISunoAudio) {
+      if (!audio.audio_url) return;
+      this.setOperation({
+        ...clearSunoOperation(this.$store.state.suno.config),
+        action: 'inspo',
+        style: audio.style || this.$store.state.suno.config?.style,
+        model: 'chirp-v5',
+        custom: true,
+        audio_urls: [audio.audio_url]
       });
     },
     async onScrollDown() {
@@ -995,9 +1072,7 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid transparent;
   transition: border-color 0.2s;
-  .task-failure {
-    border-left: 2px solid var(--el-color-danger);
-  }
+
   &:hover {
     border-color: var(--el-border-color-lighter);
   }
@@ -1226,6 +1301,66 @@ export default defineComponent({
     color: var(--el-color-danger);
     .delete-icon {
       color: var(--el-color-danger);
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.placeholder-row {
+  align-items: center;
+  min-height: 72px;
+  cursor: default;
+  .placeholder-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--el-text-color-placeholder);
+    background: linear-gradient(145deg, var(--el-fill-color-light), var(--el-fill-color));
+  }
+  .cover-status {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    color: var(--el-color-danger);
+  }
+  .task-status {
+    display: inline-block;
+    margin-top: 3px;
+    color: var(--el-text-color-secondary);
+    font-size: 11px;
+  }
+  .failed-status {
+    color: var(--el-color-danger);
+  }
+  .pending-cover {
+    animation: suno-pulse 1.4s ease-in-out infinite;
+  }
+  .placeholder-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    color: var(--el-text-color-secondary);
+    button {
+      cursor: pointer;
+      padding: 4px;
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+}
+</style>
+<style lang="scss">
+.suno-failure-details {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  p {
+    margin: 0 0 10px;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }

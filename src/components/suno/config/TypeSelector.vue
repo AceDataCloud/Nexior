@@ -7,6 +7,7 @@
       </div>
       <el-select
         v-model="model"
+        :disabled="$store.state.suno?.config?.action === 'inspo'"
         class="w-full model-select"
         size="default"
         :placeholder="$t('suno.placeholder.select')"
@@ -29,7 +30,7 @@
     </div>
 
     <!-- Instrumental Toggle (custom mode only) -->
-    <div v-if="custom" class="flex items-center justify-between mb-3">
+    <div class="flex items-center justify-between mb-3">
       <span class="text-sm font-bold">{{ $t('suno.name.instrumental') }}</span>
       <el-switch v-model="instrumental" />
     </div>

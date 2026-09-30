@@ -5,21 +5,30 @@
         <el-tab-pane :label="$t('suno.mode.simple')" name="simple">
           <div class="p-5">
             <type-selector class="mb-4" />
+            <div v-if="config?.action && config.action !== 'generate'" class="operation-context mb-4">
+              <span>{{ generateButtonText }}</span>
+              <el-button size="small" text @click="onCancelOperation">{{ $t('suno.button.newSong') }}</el-button>
+            </div>
+            <audio-references-input class="mb-4" />
             <upload-audio class="mb-4" />
             <prompt-input class="mb-4" />
-            <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
+            <extend-from-input v-if="['extend', 'upload_extend'].includes(config?.action || '')" class="mb-4" />
             <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
             <replace-section-input v-if="config?.action === 'replace_section'" class="mb-4" />
             <overpainting-input v-if="config?.action === 'overpainting'" class="mb-4" />
             <underpainting-input v-if="config?.action === 'underpainting'" class="mb-4" />
             <samples-input v-if="config?.action === 'samples'" class="mb-4" />
-            <adjust-speed-input v-if="config?.action === 'adjust_speed'" class="mb-4" />
             <advanced-params class="mb-4" />
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('suno.mode.custom')" name="custom">
           <div class="p-5">
             <type-selector class="mb-4" />
+            <div v-if="config?.action && config.action !== 'generate'" class="operation-context mb-4">
+              <span>{{ generateButtonText }}</span>
+              <el-button size="small" text @click="onCancelOperation">{{ $t('suno.button.newSong') }}</el-button>
+            </div>
+            <audio-references-input class="mb-4" />
             <upload-audio class="mb-4" />
             <lyric-input v-if="!config?.instrumental" class="mb-4" />
             <style-input class="mb-4" />
@@ -27,13 +36,12 @@
             <vocal-gender-selector v-if="!config?.instrumental && supportsVocalGender" class="mb-4" />
             <custom-model-input v-if="supportsCustomModels" class="mb-4" />
             <persona-input v-if="supportsPersona && !config?.custom_model_id" class="mb-4" />
-            <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
+            <extend-from-input v-if="['extend', 'upload_extend'].includes(config?.action || '')" class="mb-4" />
             <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
             <replace-section-input v-if="config?.action === 'replace_section'" class="mb-4" />
             <overpainting-input v-if="config?.action === 'overpainting'" class="mb-4" />
             <underpainting-input v-if="config?.action === 'underpainting'" class="mb-4" />
             <samples-input v-if="config?.action === 'samples'" class="mb-4" />
-            <adjust-speed-input v-if="config?.action === 'adjust_speed'" class="mb-4" />
             <advanced-params class="mb-4" />
           </div>
         </el-tab-pane>
@@ -60,6 +68,8 @@
 import { CleanupIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus';
+import AudioReferencesInput from './config/AudioReferencesInput.vue';
+import { clearSunoOperation } from '@/utils/suno/operation';
 import TypeSelector from './config/TypeSelector.vue';
 import UploadAudio from './config/UploadAudio.vue';
 import PromptInput from './config/PromptInput.vue';
@@ -74,7 +84,6 @@ import ReplaceSectionInput from './config/ReplaceSectionInput.vue';
 import OverpaintingInput from './config/OverpaintingInput.vue';
 import UnderpaintingInput from './config/UnderpaintingInput.vue';
 import SamplesInput from './config/SamplesInput.vue';
-import AdjustSpeedInput from './config/AdjustSpeedInput.vue';
 import PersonaInput from './config/PersonaInput.vue';
 import CustomModelInput from './config/CustomModelInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
@@ -89,6 +98,7 @@ export default defineComponent({
     CleanupIcon,
     MagicIcon,
     TypeSelector,
+    AudioReferencesInput,
     PromptInput,
     LyricInput,
     StyleInput,
@@ -102,7 +112,6 @@ export default defineComponent({
     OverpaintingInput,
     UnderpaintingInput,
     SamplesInput,
-    AdjustSpeedInput,
     PersonaInput,
     CustomModelInput,
     ElButton,
@@ -161,6 +170,9 @@ export default defineComponent({
     },
     generateButtonText() {
       const action = this.config?.action;
+      if (action === 'inspo') return this.$t('suno.button.inspo');
+      if (action === 'upload_extend') return this.$t('suno.button.upload_extend');
+      if (action === 'all_stems') return this.$t('suno.button.all_stems');
       if (action === 'extend') return this.$t('suno.button.extend');
       if (action === 'cover') return this.$t('suno.button.cover_music');
       if (action === 'remaster') return this.$t('suno.button.remaster');
@@ -174,7 +186,6 @@ export default defineComponent({
       if (action === 'overpainting') return this.$t('suno.button.overpainting');
       if (action === 'underpainting') return this.$t('suno.button.underpainting');
       if (action === 'samples') return this.$t('suno.button.samples');
-      if (action === 'adjust_speed') return this.$t('suno.button.adjust_speed');
       return this.$t('suno.button.generate');
     }
   },
@@ -197,6 +208,9 @@ export default defineComponent({
     this.quoteRunId += 1;
   },
   methods: {
+    onCancelOperation() {
+      this.$store.commit('suno/setConfig', clearSunoOperation(this.config));
+    },
     scheduleQuote() {
       window.clearTimeout(this.quoteTimer);
       this.quoteTimer = window.setTimeout(this.refreshQuote, 350);
@@ -235,6 +249,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.operation-context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
+  font-size: 12px;
+}
 .suno-mode-tabs {
   :deep(.el-tabs__item) {
     // Width follows the label with fixed whitespace; no wrap.

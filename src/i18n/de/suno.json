@@ -17,7 +17,7 @@
   },
   "voice.name": {
     "message": "Name",
-    "description": "Label für den Namen der Stimme"
+    "description": "Bezeichnung für den Namen der Stimme"
   },
   "voice.namePlaceholder": {
     "message": "Geben Sie einen Namen für die Stimme ein...",
@@ -173,7 +173,7 @@
   },
   "button.video": {
     "message": "Video",
-    "description": "Text für die Video-Schaltfläche"
+    "description": "Text der Video-Schaltfläche"
   },
   "button.download_video": {
     "message": "Video herunterladen",
@@ -193,7 +193,7 @@
   },
   "button.cover_music": {
     "message": "Cover",
-    "description": "Text für die Cover-Schaltfläche"
+    "description": "Text der Cover-Schaltfläche"
   },
   "button.concat_music": {
     "message": "Zusammenfügen",
@@ -204,8 +204,8 @@
     "description": "Text für den Button zum Herunterladen von Musik"
   },
   "button.remaster": {
-    "message": "Remaster",
-    "description": "Text für die Schaltfläche zum Remastern und Verbessern der Audioqualität"
+    "message": "Master neu erstellen",
+    "description": "Text der Schaltfläche zum Remastern und Verbessern der Audioqualität"
   },
   "button.replace_section": {
     "message": "Abschnitt ersetzen",
@@ -213,7 +213,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Text für die Schaltfläche zum Mischen mehrerer Songs"
+    "description": "Text der Schaltfläche zum Kombinieren mehrerer Songs"
   },
   "button.generate_lyrics": {
     "message": "AI-generierte Lyrics",
@@ -237,7 +237,7 @@
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Erzeugt instrumentale Musik ohne Gesang"
+    "description": "Generiert Instrumentalmusik ohne Gesang"
   },
   "name.referenceAudios": {
     "message": "Referenzmusik",
@@ -832,8 +832,8 @@
     "description": "Nach Alter sortieren"
   },
   "filter.title": {
-    "message": "Filter",
-    "description": "Schaltfläche zum Filtern"
+    "message": "Filtern",
+    "description": "Filterschaltfläche"
   },
   "filter.type": {
     "message": "Typ",
@@ -873,7 +873,7 @@
   },
   "filter.video": {
     "message": "Video",
-    "description": "Filterbereich: Enthält Video oder nicht"
+    "description": "Filterbereich: ob ein Video enthalten ist"
   },
   "filter.videoAll": {
     "message": "Alle",
@@ -1078,5 +1078,101 @@
   "customModel.status.archived": {
     "message": "Archiviert",
     "description": "Archivierungsstatus des Modells"
+  },
+  "button.failureDetails": {
+    "message": "Fehlerdetails",
+    "description": "Fehlerdetails"
+  },
+  "name.untitledSong": {
+    "message": "Unbenannter Song",
+    "description": "Unbenannter Song"
+  },
+  "message.songPlaceholder": {
+    "message": "Deine Musikkreation",
+    "description": "Deine Musikkreation"
+  },
+  "name.lyricTiming": {
+    "message": "Songtext-Zeitachse",
+    "description": "Songtext-Zeitachse"
+  },
+  "button.downloadSubtitles": {
+    "message": "Untertitel herunterladen (.srt)",
+    "description": "Untertitel herunterladen (.srt)"
+  },
+  "message.noTiming": {
+    "message": "Für diesen Song ist derzeit keine Songtext-Zeitachse verfügbar.",
+    "description": "Für diesen Song ist derzeit keine Songtext-Zeitachse verfügbar."
+  },
+  "description.vocalRange": {
+    "message": "Wähle einen weniger als 30 Sekunden langen Gesangsausschnitt aus. Du kannst ihn vorhören, herunterladen und als Stimme für spätere Kreationen speichern.",
+    "description": "Wähle einen weniger als 30 Sekunden langen Gesangsausschnitt aus. Du kannst ihn vorhören, herunterladen und als Stimme für spätere Kreationen speichern."
+  },
+  "name.rangeStart": {
+    "message": "Startzeit (Sekunden)",
+    "description": "Startzeit (Sekunden)"
+  },
+  "name.rangeEnd": {
+    "message": "Endzeit (Sekunden)",
+    "description": "Endzeit (Sekunden)"
+  },
+  "voice.selectSong": {
+    "message": "Song auswählen oder Song-ID eingeben",
+    "description": "Song auswählen oder Song-ID eingeben"
+  },
+  "button.newSong": {
+    "message": "Zurück zu „Neuen Song erstellen“",
+    "description": "Zurück zu „Neuen Song erstellen“"
+  },
+  "button.inspo": {
+    "message": "Inspiration",
+    "description": "Inspiration"
+  },
+  "name.inspirationTracks": {
+    "message": "Inspirationsaudio",
+    "description": "Inspirationsaudio"
+  },
+  "name.mashupTracks": {
+    "message": "Mashup-Tracks",
+    "description": "Mashup-Tracks"
+  },
+  "placeholder.referenceSongs": {
+    "message": "Songs auswählen",
+    "description": "Songs auswählen"
+  },
+  "description.inspo": {
+    "message": "Wähle 1–4 Songs aus oder füge einen Audio-Link ein. Für die Inspirationserstellung wird v5 verwendet.",
+    "description": "Wähle 1–4 Songs aus oder füge einen Audio-Link ein. Für die Inspirationserstellung wird v5 verwendet."
+  },
+  "description.mashupTracks": {
+    "message": "Wähle zwei verschiedene Songs aus, um ihre Songtexte im Songtext-Editor zusammenzuführen.",
+    "description": "Wähle zwei verschiedene Songs aus, um ihre Songtexte im Songtext-Editor zusammenzuführen."
+  },
+  "message.inspoReferencesRequired": {
+    "message": "Wähle 1–4 Audioquellen aus. Links müssen mit http:// oder https:// beginnen.",
+    "description": "Wähle 1–4 Audioquellen aus. Links müssen mit http:// oder https:// beginnen."
+  },
+  "message.mashupReferencesRequired": {
+    "message": "Wähle zwei verschiedene Songs für ein Mashup aus.",
+    "description": "Wähle zwei verschiedene Songs für ein Mashup aus."
+  },
+  "description.mashupLyrics": {
+    "message": "Führe die Songtexte von zwei Songs zu einem neuen Songtext zusammen. Nach der Generierung kannst du ihn weiter bearbeiten; die ursprünglichen Songtexte lassen sich durch Rückgängigmachen wiederherstellen.",
+    "description": "Führe die Songtexte von zwei Songs zu einem neuen Songtext zusammen. Nach der Generierung kannst du ihn weiter bearbeiten; die ursprünglichen Songtexte lassen sich durch Rückgängigmachen wiederherstellen."
+  },
+  "placeholder.lyricsA": {
+    "message": "Songtext des ersten Songs",
+    "description": "Songtext des ersten Songs"
+  },
+  "placeholder.lyricsB": {
+    "message": "Songtext des zweiten Songs",
+    "description": "Songtext des zweiten Songs"
+  },
+  "name.lyricsModel": {
+    "message": "Songtextmodell",
+    "description": "Songtextmodell"
+  },
+  "lyricsModel.default": {
+    "message": "Standard-Songtext",
+    "description": "Standard-Songtext"
   }
 }

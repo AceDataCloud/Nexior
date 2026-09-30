@@ -70,6 +70,16 @@
       />
       <div class="text-xs text-right text-[var(--el-text-color-secondary)] mt-1">{{ lyric?.length || 0 }}/5000</div>
     </div>
+    <div class="flex items-center justify-between gap-2 mt-2">
+      <el-select v-model="lyricModel" size="small" class="w-[120px]" :aria-label="$t('suno.name.lyricsModel')">
+        <el-option :label="$t('suno.lyricsModel.default')" value="default" />
+        <el-option label="Remi" value="remi-v1" />
+      </el-select>
+      <el-button v-if="!walletMode && credential?.token" size="small" text @click="mashupVisible = true">{{
+        $t('suno.button.mashup_lyrics')
+      }}</el-button>
+    </div>
+    <mashup-lyrics-dialog v-model="mashupVisible" @generated="onMashupLyrics" />
     <!-- Enhance lyrics -->
     <div v-if="lyric && config?.action !== 'extend'" class="enhance-bar">
       <el-input
@@ -171,7 +181,9 @@
 <script lang="ts">
 import { ClearIcon, FullscreenIcon, MagicIcon, UndoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElMessage, ElMessageBox, ElTooltip, ElDialog } from 'element-plus';
+import { ElInput, ElButton, ElMessage, ElMessageBox, ElTooltip, ElDialog, ElSelect, ElOption } from 'element-plus';
+import MashupLyricsDialog from './MashupLyricsDialog.vue';
+import { isSunoWalletMode } from '@/utils/x402/sunoPayment';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { sunoOperator } from '@/operators/suno';
 import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
@@ -190,7 +202,10 @@ export default defineComponent({
     ElButton,
     ElTooltip,
     ElDialog,
-    InfoIcon
+    InfoIcon,
+    ElSelect,
+    ElOption,
+    MashupLyricsDialog
   },
   data() {
     return {
@@ -198,10 +213,15 @@ export default defineComponent({
       enhancingLyrics: false,
       enhancePrompt: '',
       lyricHistory: [] as string[],
-      expanded: false
+      expanded: false,
+      mashupVisible: false,
+      lyricModel: 'default' as 'default' | 'remi-v1'
     };
   },
   computed: {
+    walletMode(): boolean {
+      return isSunoWalletMode();
+    },
     lyric: {
       get() {
         return this.$store.state.suno?.config?.lyric;
@@ -226,6 +246,10 @@ export default defineComponent({
     }
   },
   methods: {
+    onMashupLyrics(text: string) {
+      this.pushHistory();
+      this.lyric = text;
+    },
     pushHistory() {
       if (this.lyric) {
         this.lyricHistory.push(this.lyric);
@@ -251,7 +275,7 @@ export default defineComponent({
       ElMessage.info(this.$t('suno.message.enhancingLyrics'));
       try {
         const prompt = `${this.enhancePrompt}\n\nOriginal lyrics:\n${this.lyric}`;
-        const response = await sunoOperator.lyric({ prompt }, options);
+        const response = await sunoOperator.lyric({ prompt, model: this.lyricModel }, options);
         const data = response.data?.data;
         if (data?.text) {
           this.lyric = data.text;
@@ -295,7 +319,7 @@ export default defineComponent({
       ElMessage.info(this.$t('suno.message.generatingLyrics'));
 
       try {
-        const response = await sunoOperator.lyric({ prompt: theme }, options);
+        const response = await sunoOperator.lyric({ prompt: theme, model: this.lyricModel }, options);
         const data = response.data?.data;
         if (data?.text) {
           this.lyric = data.text;

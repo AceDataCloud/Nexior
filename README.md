@@ -55,6 +55,14 @@ Custom capability names configured in site settings also appear in browser tab t
 | 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS) |
 | 🎬 **AI Video** | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 
+Suno includes Simple and Custom song creation, audio upload/recording, covers and extensions,
+section replacement, vocals/accompaniment, mashups, Inspiration from 1–4 audio references,
+remastering, stems, reusable voices, and custom models. Its lyrics editor supports Standard/Remi
+and lyric mashups. Song exports include MP3, WAV, MP4, a standard `.mid` file, and aligned
+lyrics with subtitle export. Vocal reference extraction uses a selected excerpt shorter than
+30 seconds; full vocal/instrumental separation is available through stems. Failed generations
+stay in the song list as compact placeholders; diagnostic details are available on demand.
+
 AI usage is metered unless a capability is explicitly marked free. Check the current service pricing before generating.
 
 If the latest chat reply fails or is interrupted, use **Retry** beside the error to resend the original question

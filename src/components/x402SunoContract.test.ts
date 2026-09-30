@@ -18,13 +18,17 @@ describe('Suno x402 contract', () => {
     const style = source('components/suno/config/StyleInput.vue');
     const voice = source('components/suno/voice/VoiceCreateDialog.vue');
     const preview = source('components/suno/task/Preview.vue');
+    const vocals = source('components/suno/task/VocalDialog.vue');
+    expect(vocals).toContain('sunoOperator.vox(');
+    expect(vocals).toContain('sunoPaymentOptions(');
+    expect(vocals).toContain('$wallet: wallet');
 
-    expect(lyrics).toContain('sunoOperator.lyric({ prompt }, options)');
-    expect(lyrics).toContain('sunoOperator.lyric({ prompt: theme }, options)');
+    expect(lyrics).toContain('sunoOperator.lyric({ prompt, model: this.lyricModel }, options)');
+    expect(lyrics).toContain('sunoOperator.lyric({ prompt: theme, model: this.lyricModel }, options)');
     expect(style).toContain('sunoOperator.style({ prompt: this.style }, options)');
     expect(voice).toContain('sunoOperator.persona(');
     expect(voice).toContain('sunoOperator.voices(');
-    ['.vox(', '.timing(', '.wav(', '.midi(', '.audio('].forEach((call) => expect(preview).toContain(call));
+    ['.timing(', '.wav(', '.midi(', '.audio('].forEach((call) => expect(preview).toContain(call));
   });
 
   it('keeps upload and persona reads/deletes authenticated Credits-only', () => {

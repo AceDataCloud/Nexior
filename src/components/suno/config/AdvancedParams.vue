@@ -41,14 +41,14 @@
           <span class="text-xs font-bold">{{ $t('suno.name.variationCategory') }}</span>
         </div>
         <el-radio-group v-model="variationCategory">
-          <el-radio-button value="">{{ $t('suno.gender.auto') }}</el-radio-button>
+          <el-radio-button value="normal">{{ $t('suno.gender.auto') }}</el-radio-button>
           <el-radio-button value="high">{{ $t('suno.variation.high') }}</el-radio-button>
-          <el-radio-button value="low">{{ $t('suno.variation.low') }}</el-radio-button>
+          <el-radio-button value="subtle">{{ $t('suno.variation.low') }}</el-radio-button>
         </el-radio-group>
       </div>
 
       <!-- Audio Weight (for cover action) -->
-      <div v-if="config?.action === 'cover'" class="mb-3">
+      <div v-if="['cover', 'upload_cover', 'inspo'].includes(config?.action || '')" class="mb-3">
         <div class="flex items-center justify-between mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.audioWeight') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ audioWeight ?? 0.5 }}</span>
@@ -171,7 +171,7 @@ export default defineComponent({
       set(val: number) {
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          weirdness: val || undefined
+          weirdness: val
         });
       }
     },
@@ -188,7 +188,7 @@ export default defineComponent({
     },
     variationCategory: {
       get() {
-        return this.$store.state.suno?.config?.variation_category || '';
+        return this.$store.state.suno?.config?.variation_category || 'normal';
       },
       set(val: string) {
         this.$store.commit('suno/setConfig', {
