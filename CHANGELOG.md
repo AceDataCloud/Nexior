@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 29 Sep 2026 20:26:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 30 Sep 2026 07:58:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.375.0
+
+Wed, 30 Sep 2026 07:58:15 GMT
+
+### Minor changes
+
+- Add GPT-6.1 Sol to the ChatGPT model picker. (dev@acedata.cloud)
+
+### Patches
+
+- Prevent Android first launch from waiting indefinitely for install attribution. (dev@acedata.cloud)
 
 ## 3.374.0
 
