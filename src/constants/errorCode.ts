@@ -10,3 +10,4 @@ export const ERROR_CODE_TIMEOUT = 'timeout';
 export const ERROR_CODE_CONTENT_TOO_LARGE = 'content_too_large';
 export const ERROR_CODE_TOO_MANY_REQUESTS = 'too_many_requests';
 export const ERROR_CODE_NOT_APPLIED = 'not_applied';
+export const ERROR_CODE_API_EARLY_ACCESS_REQUIRED = 'api_early_access_required';

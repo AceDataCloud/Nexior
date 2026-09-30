@@ -245,3 +245,27 @@ describe('Message exhausted-credit recovery', () => {
     expect(wrapper.find('.btn-topup').exists()).toBe(false);
   });
 });
+
+describe('Message backend early-access rejection', () => {
+  it.each(['', 'Partial answer'])('shows persistent recovery after a backend rejection with %s output', (content) => {
+    const wrapper = mountMessage({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      content,
+      error: { code: 'api_early_access_required', message: 'Verified ACE Tier 1+ required.' }
+    });
+    expect(wrapper.text()).toContain('Verified ACE Tier 1+ required.');
+    expect(wrapper.get('.ace-access-link').attributes('href')).toBe('https://platform.acedata.cloud/console/coin');
+    expect(wrapper.get('.ace-access-link').text()).toBe('chat.earlyAccess.openIntegration');
+    expect(wrapper.find('.btn-retry').exists()).toBe(true);
+  });
+  it('does not advertise ACE recovery for unrelated errors', () => {
+    const wrapper = mountMessage({
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      content: '',
+      error: { code: 'busy' }
+    });
+    expect(wrapper.find('.ace-access-link').exists()).toBe(false);
+  });
+});

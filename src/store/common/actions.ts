@@ -47,7 +47,7 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
   commit('resetToken');
 };
 
-export const setToken = async ({ state, commit, dispatch }: ActionContext<IRootState, IRootState>, payload: IToken) => {
+export const setToken = async ({ state, commit }: ActionContext<IRootState, IRootState>, payload: IToken) => {
   if (isAddingAccount() || (state.token?.access && state.token.access !== payload.access)) {
     const user = await validateAccountToken(payload);
     commit('rememberCurrentAccount');
@@ -55,7 +55,6 @@ export const setToken = async ({ state, commit, dispatch }: ActionContext<IRootS
     return true;
   }
   commit('setToken', payload);
-  await dispatch('chat/refreshModelAccess');
 };
 
 export const setUser = ({ commit }: ActionContext<IRootState, IRootState>, payload: IUser) => {

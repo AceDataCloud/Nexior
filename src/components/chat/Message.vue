@@ -174,6 +174,15 @@
         <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
           <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span class="error-text">{{ partialErrorText }}</span>
+          <a
+            v-if="isEarlyAccessError && !readonly"
+            class="ace-access-link"
+            :href="aceIntegrationUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('chat.earlyAccess.openIntegration') }}
+          </a>
           <el-button
             v-if="canRetry"
             class="btn-retry"
@@ -236,8 +245,21 @@
     <div v-else class="error-card" role="alert">
       <div class="error-content">
         <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        <span class="error-text">{{ errorText }}</span>
+        <div class="error-text">
+          <strong v-if="isEarlyAccessError" class="access-title">{{ $t('chat.earlyAccess.requestDenied') }}</strong>
+          <span>{{ errorText }}</span>
+          <p v-if="isEarlyAccessError" class="access-help">{{ $t('chat.earlyAccess.recoveryHint') }}</p>
+        </div>
       </div>
+      <a
+        v-if="isEarlyAccessError && !readonly"
+        class="ace-access-link"
+        :href="aceIntegrationUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ $t('chat.earlyAccess.openIntegration') }}
+      </a>
       <el-button
         v-if="canRetry"
         class="btn-retry"
@@ -286,6 +308,8 @@ import ConnectorConsentCard from './ConnectorConsentCard.vue';
 import ActionConfirmationCard from './ActionConfirmationCard.vue';
 import {
   ERROR_CODE_API_ERROR,
+  ERROR_CODE_API_EARLY_ACCESS_REQUIRED,
+  BASE_URL_PLATFORM,
   ERROR_CODE_BAD_REQUEST,
   ERROR_CODE_CONTENT_TOO_LARGE,
   ERROR_CODE_NOT_APPLIED,
@@ -396,6 +420,12 @@ export default defineComponent({
     };
   },
   computed: {
+    isEarlyAccessError(): boolean {
+      return this.message.error?.code === ERROR_CODE_API_EARLY_ACCESS_REQUIRED;
+    },
+    aceIntegrationUrl(): string {
+      return `${BASE_URL_PLATFORM}/console/coin`;
+    },
     canRestart(): boolean {
       return (
         !this.readonly &&
@@ -575,6 +605,34 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.access-title {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--el-text-color-primary);
+  font-size: 15px;
+}
+.access-help {
+  margin-top: 8px;
+  color: var(--el-text-color-secondary);
+}
+.ace-access-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--el-color-primary);
+  color: var(--el-color-white);
+  font-weight: 500;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--el-color-primary);
+    outline-offset: 3px;
+  }
+}
+
 .partial-error {
   display: flex;
   flex-wrap: wrap;

@@ -40,10 +40,6 @@ export const setConversations = (state: IChatState, payload: IChatConversation[]
   state.conversations = payload;
 };
 
-export const setModelAccess = (state: IChatState, payload: IChatState['modelAccess']): void => {
-  state.modelAccess = payload || {};
-};
-
 export const setMemoryEnabled = (state: IChatState, payload: boolean): void => {
   state.memoryEnabled = payload;
 };
@@ -64,7 +60,6 @@ export default {
   setConversations,
   setApplication,
   setApplications,
-  setModelAccess,
   setMemoryEnabled,
   setWorkingDirectory,
   setPendingDraft,

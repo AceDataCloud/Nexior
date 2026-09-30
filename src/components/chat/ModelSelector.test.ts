@@ -87,3 +87,13 @@ describe('ModelSelector', () => {
     expect(toRaw(state.chat.model)).toBe(CHAT_MODEL_GPT_6_ASTRA);
   });
 });
+
+it('lets a model selection reach the backend even with a stale denied eligibility snapshot', () => {
+  const { wrapper, state, dispatch } = mountSelector(undefined);
+  const target = CHAT_MODEL_GROUP_CHATGPT.models[1];
+  Object.assign(state.chat, { modelAccess: { [target.name]: { allowed: false, restricted: true } } });
+  wrapper.vm.onModelChange(target);
+  expect(dispatch).toHaveBeenCalledWith('chat/setModel', target);
+  expect(wrapper.emitted('model-changed')).toEqual([[target]]);
+  expect(dispatch).not.toHaveBeenCalledWith('chat/refreshModelAccess');
+});

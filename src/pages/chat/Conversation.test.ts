@@ -9,6 +9,7 @@ import { chatOperator } from '@/operators';
 import { CHAT_MODEL_GPT_6_ASTRA } from '@/constants';
 import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
+vi.mock('@/utils/login', () => ({ ensureLoggedIn: () => true }));
 
 const mountComponent = ({
   credentialToken,
@@ -462,4 +463,22 @@ describe('chat/Conversation interrupted tools', () => {
     });
     expect(vm.messages[0].error).toBeUndefined();
   });
+});
+
+it('sends the chosen model and records the backend access rejection as a failed turn', async () => {
+  const { wrapper } = mountComponent({ credentialToken: 'token', conversationId: null, model: CHAT_MODEL_GPT_6_ASTRA });
+  await wrapper.setData({ question: 'Hello', messages: [{ role: 'user', content: 'Hello' }] });
+  const send = vi
+    .spyOn(chatOperator, 'chatConversation')
+    .mockRejectedValue(new BaseError(403, 'api_early_access_required', 'ACE Tier 1 required'));
+  await wrapper.vm.onRequest();
+  await flushPromises();
+  expect(send).toHaveBeenCalledOnce();
+  expect(wrapper.vm.messages.at(-1)?.error).toEqual({
+    code: 'api_early_access_required',
+    message: 'ACE Tier 1 required'
+  });
+  expect(wrapper.vm.messages[0].content).toBe('Hello');
+  expect(wrapper.vm.answering).toBe(false);
+  vi.restoreAllMocks();
 });
