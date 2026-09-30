@@ -87,7 +87,7 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElMessage, ElOption, ElSelect } from 'element-plus';
+import { ElButton, ElMessage, ElOption, ElSelect } from 'element-plus';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
