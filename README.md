@@ -144,7 +144,7 @@ MIT © [AceDataCloud](https://platform.acedata.cloud)
 ## Automated tests
 
 ```sh
-python3 -m unittest discover -s scripts -p 'test_*.py'
+python3 -m unittest
 ```
 
 CI discovers tests by filename instead of maintaining a per-file list. Add Python
