@@ -24,9 +24,7 @@
       <div class="top">
         <div v-if="direction === 'row'" :class="{ link: true, active: isHome }">
           <el-tooltip effect="dark" :content="$t('common.nav.home')" placement="top">
-            <button type="button" class="home-button" :aria-label="$t('common.nav.home')" @click="onHome">
-              <span aria-hidden="true">⌂</span>
-            </button>
+            <logo collapsed class="home-button" :aria-label="$t('common.nav.home')" @click="onHome" />
           </el-tooltip>
         </div>
         <div ref="linksContainer" class="links">
@@ -758,7 +756,7 @@ $dock-handle-height: 22px;
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      justify-content: space-evenly;
+      justify-content: flex-start;
       // Only the icon strip scrolls. Keeping the scroll off .dock-body leaves
       // the user avatar in .bottom pinned to the right edge instead of
       // sliding out of view with the icons.
@@ -766,6 +764,9 @@ $dock-handle-height: 22px;
       min-width: 0;
       overflow-x: auto;
       overflow-y: hidden;
+      > .link {
+        flex: none;
+      }
       .home-button {
         display: grid;
         width: 36px;
@@ -777,7 +778,12 @@ $dock-handle-height: 22px;
         color: var(--el-text-color-primary);
         background: var(--el-bg-color);
         cursor: pointer;
-        font-size: 22px;
+
+        :deep(.brand-logo__image) {
+          width: 28px;
+          height: 28px;
+          padding: 0;
+        }
 
         &:focus-visible {
           outline: 2px solid var(--el-color-primary);
@@ -790,6 +796,7 @@ $dock-handle-height: 22px;
       }
       .links {
         display: flex;
+        flex: none;
         flex-direction: row;
         align-items: center;
         gap: 10px;
