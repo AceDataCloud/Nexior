@@ -1,12 +1,22 @@
 <template>
-  <div class="mark"></div>
+  <span v-if="loadingOptions" role="status" :aria-label="$t('common.status.loading')">
+    <loading-indicator :options="loadingOptions" :stage="stage" />
+  </span>
+  <div v-else class="mark"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineAsyncComponent, defineComponent, type PropType } from 'vue';
+const LoadingIndicator = defineAsyncComponent(() => import('@/components/loading/LoadingIndicator.vue'));
+import type { LoadingOptions } from '@/components/loading/catalog';
 
 export default defineComponent({
   name: 'AnsweringMark',
+  components: { LoadingIndicator },
+  props: {
+    loadingOptions: { type: Object as PropType<LoadingOptions>, default: undefined },
+    stage: { type: String, default: 'waiting' }
+  },
   data() {
     return {};
   },

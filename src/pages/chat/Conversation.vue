@@ -45,6 +45,13 @@
         :active-conversation-id="conversationId"
         @change-conversation="onChangeConversation"
       />
+      <chat-loading-review
+        v-if="showLoadingReview && chatLoadingOptions"
+        :options="chatLoadingOptions"
+        :model-name="model?.name"
+        :model-group="modelGroup"
+        @select-tool="loadingTool = $event"
+      />
       <div :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation }">
         <div
           v-if="restoringConversation"
@@ -75,6 +82,7 @@
             :application="application"
             :answering="answering"
             :retrying="restarting"
+            :loading-options="chatLoadingOptions"
             class="message"
             @update:question="question = $event"
             @edit="onEdit"
@@ -112,7 +120,12 @@
 <script lang="ts">
 import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
-import { defineComponent } from 'vue';
+import { defineAsyncComponent, defineComponent } from 'vue';
+import { previewOptions, type LoadingOptions, type LoadingTool } from '@/components/loading/catalog';
+const ChatLoadingReview =
+  import.meta.env.VITE_LOADING_PREVIEW === '1'
+    ? defineAsyncComponent(() => import('@/components/chat/ChatLoadingReview.vue'))
+    : { render: () => null };
 import Message from '@/components/chat/Message.vue';
 import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
@@ -168,6 +181,7 @@ import { chatOperator } from '@/operators';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
+  loadingTool: LoadingTool;
   drawer: boolean;
   question: string;
   upload: boolean;
@@ -235,6 +249,7 @@ export default defineComponent({
     'byok-badge': BYOKBadge,
     ConversationActions,
     Message,
+    ChatLoadingReview,
     Layout,
     ElDropdown,
     ElDropdownItem,
@@ -244,6 +259,10 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      loadingTool:
+        import.meta.env.VITE_LOADING_PREVIEW === '1'
+          ? previewOptions(location.search)?.tool || 'dot-matrix'
+          : 'dot-matrix',
       drawer: false,
       question: '',
       references: [],
@@ -263,6 +282,13 @@ export default defineComponent({
     };
   },
   computed: {
+    chatLoadingOptions(): LoadingOptions | undefined {
+      if (this.modelGroup?.name !== 'chatgpt') return undefined;
+      return { tool: this.loadingTool, size: 28, color: '#71b847' };
+    },
+    showLoadingReview(): boolean {
+      return import.meta.env.VITE_LOADING_PREVIEW === '1' && this.modelGroup?.name === 'chatgpt';
+    },
     modelGroup() {
       return this.$store.state.chat.modelGroup;
     },

@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { BaseError, IChatMessageState, Status, type IChatConversation, type IChatMessage } from '@/models';
 import { chatOperator } from '@/operators';
-import { CHAT_MODEL_GPT_6_ASTRA } from '@/constants';
+import { CHAT_MODEL_GPT_6_ASTRA, CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_CLAUDE } from '@/constants';
 import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
 vi.mock('@/utils/login', () => ({ ensureLoggedIn: () => true }));
@@ -15,12 +15,14 @@ const mountComponent = ({
   credentialToken,
   fetchedConversation,
   conversationId = 'conversation-1',
-  model = undefined
+  model = undefined,
+  modelGroup = undefined
 }: {
   credentialToken?: string;
   fetchedConversation?: Record<string, unknown>;
   conversationId?: string | null;
   model?: typeof CHAT_MODEL_GPT_6_ASTRA;
+  modelGroup?: typeof CHAT_MODEL_GROUP_CHATGPT;
 } = {}) => {
   const pendingConversation = new Promise(() => undefined);
   const dispatch = vi.fn((action: string) =>
@@ -63,7 +65,7 @@ const mountComponent = ({
                 credential: credentialToken ? { token: credentialToken } : undefined,
                 memoryEnabled: true,
                 model,
-                modelGroup: undefined,
+                modelGroup,
                 service: undefined,
                 status: { getApplications: Status.None }
               }
@@ -255,6 +257,25 @@ describe('chat/Conversation retry', () => {
 });
 
 describe('chat/Conversation loading state', () => {
+  it.each([CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_CLAUDE])(
+    'wires the ChatGPT default into actual conversation rows ($name)',
+    async (modelGroup) => {
+      const { wrapper } = mountComponent({ modelGroup, conversationId: null });
+      await wrapper.setData({
+        answering: true,
+        messages: [{ role: 'assistant', content: '', state: IChatMessageState.PENDING }]
+      });
+      const options = wrapper.getComponent(Message).props('loadingOptions');
+      if (modelGroup.name === 'chatgpt') {
+        expect(options).toEqual({ tool: 'dot-matrix', size: 28, color: '#71b847' });
+      } else {
+        expect(options).toBeUndefined();
+      }
+      expect(wrapper.getComponent(Message).props('answering')).toBe(true);
+      expect(wrapper.findComponent({ name: 'ChatLoadingReview' }).exists()).toBe(false);
+      wrapper.unmount();
+    }
+  );
   it('passes the conversation model to restored assistant replies', async () => {
     const { wrapper } = mountComponent({
       credentialToken: 'token',
