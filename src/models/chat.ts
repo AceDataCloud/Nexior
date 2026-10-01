@@ -450,12 +450,15 @@ export interface IChatConversationRequest {
   message?: string | IChatMessageContentItem[];
   references?: Array<string | IChatReference>;
   stateful?: boolean;
+  memory_enabled?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
   model: IChatModelName;
   tools_enabled?: boolean;
   tools_filter?: string[];
   mcp_servers?: string[];
+  /** Limit unattended voice delegation to reasoning; connector actions stay in text chat. */
+  unattended_policy?: { allowed_skills: string[]; allowed_mcp_servers: string[] };
   // Desktop local tools (run on the user's machine). The worker registers each
   // as a client-executed tool; the model can call it, the worker pauses with
   // execution:'client', and the desktop runs it then resumes via tool_results.

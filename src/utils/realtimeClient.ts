@@ -9,18 +9,15 @@ export interface IRealtimeHandlers {
   onAiTranscriptDelta?: (delta: string) => void;
   onAiResponseStart?: () => void;
   onUserSpeechStarted?: () => void;
+  onPlayback?: (playing: boolean) => void;
+  onDelegation?: (id: string, context: string) => Promise<string>;
   onError?: (message: string) => void;
   /** Smoothed combined mic+assistant loudness (0–1) for UI animation. */
   onAudioLevel?: (level: number) => void;
 }
 
-/**
- * Browser realtime voice client: captures the mic as 24kHz PCM16 via an
- * AudioWorklet, streams it to wss://…/v1/realtime, plays the assistant audio
- * back with a scheduled queue, and barges-in (stops playback) when the server
- * VAD reports the user started speaking. Speaks the OpenAI Realtime GA event
- * format directly; the relay injects the session config + upstream key.
- */
+/** GPT-Live PCM24k voice transport. The relay owns authentication and duration
+ * billing; client delegation uses the app's existing chat backend. */
 export class RealtimeClient {
   private readonly token: string;
   private readonly model: string;
@@ -39,8 +36,14 @@ export class RealtimeClient {
   private playHead = 0;
   private activeSources: AudioBufferSourceNode[] = [];
   private disposed = false; // set by stop(); aborts an in-flight start()
-  private suppressAudio = false; // drop in-flight deltas after a barge-in
-  private aiResponding = false; // a response is streaming (so barge-in can cancel it)
+  private closeTimer: ReturnType<typeof setTimeout> | undefined;
+  private startupTimer: ReturnType<typeof setTimeout> | undefined;
+  private finalized = false;
+  private started = false;
+  private userTranscript = '';
+  private transcript: { speaker: string; text: string; start: number; end: number }[] = [];
+  private delegationIds = new Set<string>();
+  private delegationQueue = Promise.resolve();
 
   constructor(token: string, model: string, handlers: IRealtimeHandlers, voice: string = REALTIME_DEFAULT_VOICE) {
     this.token = token;
@@ -55,11 +58,31 @@ export class RealtimeClient {
 
   async start(): Promise<void> {
     this.handlers.onStatus?.('connecting');
+    // Cover capture/worklet startup too: a pending permission prompt or suspended
+    // audio context must not leave the call connecting forever.
+    let stage = 'audio';
+    this.startupTimer = setTimeout(() => {
+      if (!this.running && !this.disposed) {
+        console.warn('[voice] Startup timed out', stage);
+        this.handlers.onError?.('Voice session startup timed out. Check microphone permission and tap to retry.');
+        this.stop();
+      }
+    }, 30000);
     const Ctx = window.AudioContext || (window as any).webkitAudioContext;
     this.audioCtx = new Ctx({ sampleRate: REALTIME_SAMPLE_RATE });
-    await this.audioCtx.audioWorklet.addModule('/recorder-worklet.js');
+    console.debug('[voice] Starting audio', this.audioCtx.state);
+    if (this.audioCtx.state === 'suspended' && navigator.userActivation?.isActive === false) {
+      // Auto-entry can lose activation while provisioning. Show the existing
+      // localized start prompt; the next explicit click can unlock audio.
+      this.stop();
+      return;
+    }
+    // Call resume before yielding so a retry from a click retains user activation.
+    await Promise.all([this.audioCtx.resume(), this.audioCtx.audioWorklet.addModule('/recorder-worklet.js')]);
     if (this.disposed) return this.teardownAudio(); // user hit End/Back mid-startup
 
+    stage = 'microphone';
+    console.debug('[voice] Requesting microphone');
     this.micStream = await navigator.mediaDevices.getUserMedia({
       audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
     });
@@ -80,22 +103,32 @@ export class RealtimeClient {
     sink.gain.value = 0;
     this.workletNode.connect(sink).connect(this.audioCtx.destination);
 
-    // Voice is a connect-time param: the relay injects it into its initial
-    // (GA-valid) session.update. A client session.update can't set it — the relay
-    // sanitizer drops the required session.type and GA nests voice under audio.output.
-    const url =
-      `${WS_URL_REALTIME}?model=${encodeURIComponent(this.model)}` + `&voice=${encodeURIComponent(this.voice)}`;
-    this.ws = new WebSocket(url, ['realtime', `acedata-token.${requireServiceToken(this.token)}`]);
-
+    stage = 'connection';
+    console.debug('[voice] Connecting');
+    this.ws = new WebSocket(WS_URL_REALTIME, ['live', `acedata-token.${requireServiceToken(this.token)}`]);
     this.ws.onopen = () => {
       if (this.disposed) {
         this.ws?.close();
         return;
       }
-      this.running = true;
-      this.handlers.onStatus?.('connected');
+      this.send({
+        type: 'session.start',
+        session: {
+          model: this.model,
+          instructions:
+            "Be concise and friendly. Speak in the user's language. Delegate questions that need reasoning, current information or tools to the backend. Do not claim an action succeeded until the backend confirms it.",
+          audio: { format: { type: 'audio/pcm', rate: REALTIME_SAMPLE_RATE }, output: { voice: this.voice } },
+          delegation: { type: 'client' },
+          store: false
+        }
+      });
     };
     this.ws.onclose = () => {
+      clearTimeout(this.startupTimer);
+      clearTimeout(this.closeTimer);
+      if (this.started && !this.finalized)
+        this.handlers.onError?.('Voice connection closed before final usage was confirmed');
+      this.disposed = true;
       this.handlers.onStatus?.('disconnected');
       this.teardownAudio();
       this.running = false;
@@ -104,14 +137,15 @@ export class RealtimeClient {
     this.ws.onmessage = (e) => this.onServerEvent(e);
 
     this.workletNode.port.onmessage = (e) => {
-      if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
-      this.ws.send(JSON.stringify({ type: 'input_audio_buffer.append', audio: b64FromArrayBuffer(e.data) }));
+      if (!this.running || this.disposed || !this.ws || this.ws.readyState !== WebSocket.OPEN) return;
+      this.ws.send(JSON.stringify({ type: 'session.input_audio.append', audio: b64FromArrayBuffer(e.data) }));
     };
   }
 
   /** Mute/unmute the microphone without tearing down the call. */
   setMuted(muted: boolean): void {
     this.micStream?.getAudioTracks().forEach((t) => (t.enabled = !muted));
+    if (this.running) this.send({ type: muted ? 'session.input_audio.mute' : 'session.input_audio.unmute' });
   }
 
   private startLevelLoop(): void {
@@ -135,12 +169,19 @@ export class RealtimeClient {
   }
 
   stop(): void {
+    if (this.disposed) return;
     this.disposed = true;
-    // Close whether the socket is still CONNECTING or already OPEN.
-    if (this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) {
-      this.ws.close();
-    }
+    clearTimeout(this.startupTimer);
     this.teardownAudio();
+    if (this.ws?.readyState === WebSocket.OPEN) {
+      this.send({ type: 'session.close' });
+      this.closeTimer = setTimeout(() => {
+        if (!this.finalized) this.handlers.onError?.('Voice session final usage could not be confirmed');
+        this.ws?.close();
+      }, 15000);
+    } else {
+      this.ws?.close();
+    }
     this.running = false;
     this.handlers.onStatus?.('disconnected');
   }
@@ -156,59 +197,86 @@ export class RealtimeClient {
     } catch {
       return;
     }
+    if (evt.type === 'session.closed') {
+      this.finalized = true;
+      clearTimeout(this.closeTimer);
+      this.ws?.close();
+      return;
+    }
+    if (this.disposed) return;
     switch (evt.type) {
-      case 'session.created':
-      case 'session.updated':
+      case 'session.started':
+        console.debug('[voice] Session started');
+        clearTimeout(this.startupTimer);
+        this.started = true;
+        this.running = true;
+        this.handlers.onStatus?.('connected');
         break;
-      case 'input_audio_buffer.speech_started':
-        // Barge-in: stop local playback, cancel the upstream response so it
-        // stops generating, and drop any deltas still in flight until the next
-        // response starts.
-        this.stopPlayback();
-        if (this.aiResponding) this.send({ type: 'response.cancel' });
-        this.suppressAudio = true;
-        this.handlers.onUserSpeechStarted?.();
-        break;
-      case 'conversation.item.input_audio_transcription.completed':
-        this.handlers.onUserTranscript?.(evt.transcript || '');
-        break;
-      case 'response.created':
-        this.aiResponding = true;
-        this.suppressAudio = false;
-        this.handlers.onAiResponseStart?.();
-        break;
-      case 'response.done':
-        this.aiResponding = false;
-        break;
-      // Handle GA names plus legacy aliases so audio always plays.
-      case 'response.output_audio.delta':
-      case 'response.audio.delta':
-        if (evt.delta && !this.suppressAudio) this.enqueuePcm16(evt.delta);
-        break;
-      case 'response.output_audio_transcript.delta':
-      case 'response.audio_transcript.delta':
-        if (evt.delta) this.handlers.onAiTranscriptDelta?.(evt.delta);
-        break;
-      case 'error': {
-        const err = evt.error || {};
-        // Barge-in race: we fire `response.cancel` on speech-start, but the
-        // response may have just finished — upstream then replies "Cancellation
-        // failed: no active response found". It's harmless; never surface it.
-        const code = String(err.code || '');
-        const message = String(err.message || '');
-        // Don't touch `aiResponding` here: `response.done` owns that flag, and a
-        // late cancel-error can arrive after the NEXT response.created — clearing
-        // it then would silently disable barge-in for that new turn. Match the
-        // specific benign message, not any "cancellation failed", so genuine
-        // cancel/protocol failures still surface.
-        if (code === 'response_cancel_not_active' || /no active response/i.test(message)) {
-          break;
+      case 'session.input_transcript.delta':
+      case 'session.output_transcript.delta': {
+        if (typeof evt.delta !== 'string') break;
+        const user = evt.type === 'session.input_transcript.delta';
+        this.transcript.push({
+          speaker: user ? 'user' : 'assistant',
+          text: evt.delta,
+          start: evt.start_ms,
+          end: evt.end_ms
+        });
+        // Bound memory for long calls; preserve each received fragment verbatim.
+        if (this.transcript.length > 2000) this.transcript.splice(0, 100);
+        if (user) {
+          this.userTranscript = (this.userTranscript + evt.delta).slice(-600);
+          this.handlers.onUserTranscript?.(this.userTranscript);
+        } else {
+          this.handlers.onAiTranscriptDelta?.(evt.delta);
         }
-        this.handlers.onError?.(message || 'realtime error');
         break;
       }
-      default:
+      case 'session.output_audio.delta':
+        if (evt.delta) this.enqueuePcm16(evt.delta);
         break;
+      case 'session.delegation.created': {
+        const id = evt.delegation?.id ?? evt.delegation_id;
+        if (typeof id !== 'string' || this.delegationIds.has(id)) break;
+        this.delegationIds.add(id);
+        // Serial backend requests retain context and cannot overwrite newer results.
+        this.delegationQueue = this.delegationQueue.then(async () => {
+          if (this.disposed) return;
+          const context = [...this.transcript]
+            .sort((a, b) => a.start - b.start)
+            .map((part) => `${part.speaker} [${part.start}-${part.end}ms]: ${part.text}`)
+            .join('\n')
+            .slice(-24000);
+          try {
+            const result = await this.handlers.onDelegation?.(id, context);
+            if (!this.disposed) this.sendBackendResult(id, result || 'The backend did not return an answer.');
+          } catch {
+            if (!this.disposed)
+              this.sendBackendResult(
+                id,
+                'The backend could not complete this request. Do not claim success. Ask the user to retry in the text conversation.'
+              );
+          }
+        });
+        break;
+      }
+      case 'error':
+        this.handlers.onError?.(evt.error?.message || 'Voice session error');
+        if (!this.running) this.stop();
+        break;
+    }
+  }
+
+  private sendBackendResult(id: string, result: string): void {
+    // Conservative Unicode chunks stay below Live's 500-token append limit,
+    // including CJK text. Only the final chunk requests a spoken response.
+    const chars = Array.from(result.slice(0, 6000));
+    for (let i = 0; i < chars.length; i += 120) {
+      this.send({
+        type: i + 120 >= chars.length ? 'session.commentary.append' : 'session.thinking.append',
+        delegation_id: id,
+        content: chars.slice(i, i + 120).join('')
+      });
     }
   }
 
@@ -231,9 +299,12 @@ export class RealtimeClient {
     if (this.playHead < now) this.playHead = now + 0.02;
     src.start(this.playHead);
     this.playHead += audioBuffer.duration;
+    const wasPlaying = this.activeSources.length > 0;
     this.activeSources.push(src);
+    if (!wasPlaying) this.handlers.onPlayback?.(true);
     src.onended = () => {
       this.activeSources = this.activeSources.filter((s) => s !== src);
+      if (!this.activeSources.length) this.handlers.onPlayback?.(false);
     };
   }
 
@@ -247,6 +318,7 @@ export class RealtimeClient {
       }
     }
     this.activeSources = [];
+    this.handlers.onPlayback?.(false);
     this.playHead = 0;
   }
 

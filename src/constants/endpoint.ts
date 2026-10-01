@@ -22,7 +22,7 @@ export const WS_URL_CODING_BRIDGE = `${BASE_URL_CODING_BRIDGE.replace(/^http/, '
 // (like coding-bridge); the relay self-auths from the Sec-WebSocket-Protocol token.
 // Path /aichat2/realtime bills the aichat service (same balance as ChatGPT).
 // (Developers use api.acedata.cloud/v1/realtime with an Authorization header.)
-export const WS_URL_REALTIME = 'wss://realtime.acedata.cloud/aichat2/realtime';
+export const WS_URL_REALTIME = 'wss://realtime.acedata.cloud/aichat2/live';
 
 export const BASE_HOST_PLATFORM = new URL(BASE_URL_PLATFORM).host;
 export const BASE_HOST_STUDIO = new URL(BASE_URL_STUDIO).host;

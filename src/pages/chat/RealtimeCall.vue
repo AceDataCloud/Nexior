@@ -47,7 +47,16 @@
 
     <!-- stage: the audio-reactive orb -->
     <main class="rtc-stage">
-      <div class="orb-stage" @click="onOrbTap">
+      <div
+        class="orb-stage"
+        role="button"
+        tabindex="0"
+        :aria-label="$t('realtime.start')"
+        :aria-disabled="running || connecting"
+        @click="onOrbTap"
+        @keydown.enter.prevent="onOrbTap"
+        @keydown.space.prevent="onOrbTap"
+      >
         <div class="orb-halo" :style="haloStyle"></div>
         <div class="orb-breathe" :class="{ paused: !running }">
           <div class="orb" :class="orbClass" :style="{ transform: `scale(${orbScale})` }">
@@ -60,7 +69,7 @@
       </div>
 
       <transition name="fade">
-        <p v-if="showInfo && !captionsOn" class="rtc-info">{{ modelName }}</p>
+        <p v-if="showInfo && !captionsOn" class="rtc-info">{{ modelName }} · 0.6 Credits/min</p>
       </transition>
 
       <!-- captions: large transcript, dark theme (ChatGPT CC mode) -->
@@ -108,8 +117,9 @@ import {
   MicrophoneIcon,
   MicrophoneOffIcon
 } from '@acedatacloud/core/icons/components';
-import { defineComponent } from 'vue';
+import { defineComponent, markRaw } from 'vue';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
+import { createVoiceBackend } from '@/utils/voiceBackend';
 import { REALTIME_DEFAULT_MODEL, REALTIME_DEFAULT_VOICE, REALTIME_VOICES } from '@/constants';
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from '@/router/constants';
 
@@ -173,6 +183,8 @@ export default defineComponent({
       return { speaking: this.aiSpeaking, live: this.running, idle: !this.running };
     },
     captionText(): string {
+      if (this.errorMsg) return this.errorMsg;
+      if (!this.running || this.connecting) return this.stageText;
       if (this.aiText) return this.aiText;
       if (this.running && !this.userText) return this.$t('realtime.listening');
       return '';
@@ -247,8 +259,16 @@ export default defineComponent({
             this.errorMsg = '';
           },
           onAiTranscriptDelta: (d: string) => {
-            if (live()) this.aiText += d;
+            if (live()) this.aiText = (this.aiText + d).slice(-600);
           },
+          onPlayback: (playing: boolean) => {
+            if (live()) this.aiSpeaking = playing;
+          },
+          onDelegation: createVoiceBackend(
+            this.token,
+            this.$store.state.chat.model.name,
+            this.$store.state.chat.memoryEnabled
+          ),
           onAudioLevel: (lvl: number) => {
             if (live()) this.level = lvl;
           },
@@ -258,7 +278,8 @@ export default defineComponent({
         },
         this.voice
       );
-      this.client = client;
+      // Keep identity checks stable across awaits; Vue must not proxy the transport.
+      this.client = markRaw(client);
       // a fresh call should honour the current mute state
       try {
         await client.start();
