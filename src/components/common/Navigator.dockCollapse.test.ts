@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -92,24 +92,27 @@ describe('Navigator mobile dock collapse', () => {
     expect(source).toContain('-webkit-app-region: no-drag;');
   });
 
-  it('keeps a fixed Home action in the mobile dock', async () => {
+  it('uses the shared collapsed Site logo for the mobile Home action', async () => {
     const push = vi.fn();
-    const wrapper = shallowMount(Navigator, {
+    const wrapper = mount(Navigator, {
       props: { direction: 'row' },
       global: {
         stubs: {
           ElTooltip: { template: '<div><slot /></div>' },
           ElImage: true,
           ElPopover: true,
-          UserCenter: true,
-          Logo: true
+          UserCenter: true
         },
         mocks: {
           $t: (key: string) => key,
           $route: { name: 'chatgpt-conversation-new' },
           $router: { push },
           $store: {
-            state: { token: {}, site: { features: {} }, setting: { dockCollapsed: false } },
+            state: {
+              token: {},
+              site: { features: {}, favicon: 'https://cdn.example.com/tenant-favicon.png' },
+              setting: { dockCollapsed: false }
+            },
             commit: vi.fn()
           }
         }
@@ -118,6 +121,9 @@ describe('Navigator mobile dock collapse', () => {
 
     const button = wrapper.get('.home-button');
     expect(button.attributes('aria-label')).toBe('common.nav.home');
+    expect(button.classes()).toContain('brand-logo');
+    expect(button.find('.brand-logo__wordmark').exists()).toBe(false);
+    expect(button.get('.brand-logo__image--light').attributes('src')).toContain('tenant-favicon.png');
     await button.trigger('click');
     expect(push).toHaveBeenCalledWith({ name: ROUTE_INDEX });
   });
