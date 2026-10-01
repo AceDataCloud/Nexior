@@ -1,8 +1,14 @@
 <template>
   <loading-lab system="Nexior" component-name="Message / AnsweringMark">
-    <template #default="{ options, stage }">
+    <template #default="{ options, stage, busy }">
       <p class="fixture-title">{{ $t('common.loadingLab.conversation') }}</p>
-      <chat-message :message="message(stage)" :application="undefined" :loading-options="options" readonly />
+      <chat-message
+        :message="message(stage)"
+        :application="undefined"
+        :loading-options="options"
+        :answering="busy"
+        readonly
+      />
     </template>
   </loading-lab>
 </template>

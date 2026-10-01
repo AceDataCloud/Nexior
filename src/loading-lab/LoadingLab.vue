@@ -86,7 +86,7 @@
       </section>
     </div>
     <footer>
-      {{ $t('common.loadingLab.boundary') }}<span>{{ selected.format }}</span>
+      {{ $t('common.loadingLab.local') }}<span>{{ selected.format }}</span>
     </footer>
   </main>
 </template>

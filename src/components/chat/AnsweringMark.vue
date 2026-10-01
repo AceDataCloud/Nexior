@@ -1,6 +1,6 @@
 <template>
   <span v-if="loadingOptions" role="status" :aria-label="$t('common.status.loading')">
-    <loading-indicator :options="loadingOptions" />
+    <loading-indicator :options="loadingOptions" :stage="stage" />
   </span>
   <div v-else class="mark"></div>
 </template>
@@ -13,7 +13,10 @@ import type { LoadingOptions } from '@/components/loading/catalog';
 export default defineComponent({
   name: 'AnsweringMark',
   components: { LoadingIndicator },
-  props: { loadingOptions: { type: Object as PropType<LoadingOptions>, default: undefined } },
+  props: {
+    loadingOptions: { type: Object as PropType<LoadingOptions>, default: undefined },
+    stage: { type: String, default: 'waiting' }
+  },
   data() {
     return {};
   },

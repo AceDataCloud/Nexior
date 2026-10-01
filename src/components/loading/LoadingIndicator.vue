@@ -92,7 +92,7 @@ const svg = computed(() => {
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
   image-rendering: pixelated;
-  animation: adc-piskel-frames calc(0.5s / var (--loader-speed)) steps(4) infinite;
+  animation: adc-piskel-frames calc(0.5s / var(--loader-speed)) steps(4) infinite;
 }
 @keyframes adc-piskel-frames {
   to {

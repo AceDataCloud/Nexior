@@ -170,13 +170,7 @@
             }}</el-button>
           </div>
         </div>
-        <answering-mark
-          v-if="
-            message.state === messageState.PENDING ||
-            (effectiveLoadingOptions && message.state === messageState.ANSWERING)
-          "
-          :loading-options="effectiveLoadingOptions"
-        />
+        <answering-mark v-if="showAnsweringMark" :loading-options="effectiveLoadingOptions" :stage="loadingStage" />
         <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
           <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span class="error-text">{{ partialErrorText }}</span>
@@ -434,6 +428,24 @@ export default defineComponent({
   computed: {
     effectiveLoadingOptions(): LoadingOptions | undefined {
       return this.loadingOptions || this.injectedLoadingOptions;
+    },
+    showAnsweringMark(): boolean {
+      if (!this.effectiveLoadingOptions) return this.message.state === IChatMessageState.PENDING;
+      const awaitingInput =
+        Array.isArray(this.message.content) &&
+        this.message.content.some((item) => item.type === 'tool_use' && item.status === 'awaiting_input');
+      return (
+        this.message.role === ROLE_ASSISTANT &&
+        this.answering &&
+        (this.messages.length === 0 || this.message === this.messages[this.messages.length - 1]) &&
+        !this.message.error &&
+        !awaitingInput &&
+        (this.message.state === IChatMessageState.PENDING || this.message.state === IChatMessageState.ANSWERING)
+      );
+    },
+    loadingStage(): string {
+      if (this.message.state === IChatMessageState.PENDING) return 'waiting';
+      return this.copyableText.trim() ? 'replying' : 'reasoning';
     },
     isEarlyAccessError(): boolean {
       return this.message.error?.code === ERROR_CODE_API_EARLY_ACCESS_REQUIRED;
