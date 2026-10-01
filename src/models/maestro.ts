@@ -1,4 +1,25 @@
 export type IMaestroAction = 'generate' | 'remix' | 'edit' | 'extend';
+export type IMaestroAudioMode = 'auto' | 'narration' | 'music' | 'silent';
+export type IMaestroAssetRole =
+  | 'reference'
+  | 'logo'
+  | 'product_image'
+  | 'ui_screenshot'
+  | 'product_video'
+  | 'style_reference'
+  | 'music';
+export interface IMaestroAsset {
+  id: string;
+  role: IMaestroAssetRole;
+  url: string;
+  name?: string;
+}
+export interface IMaestroBrand {
+  name?: string;
+  colors?: { background?: string; foreground?: string; accent?: string };
+  font_set?: 'inter-noto-sc';
+  cta?: { text?: string; url?: string };
+}
 
 export interface IMaestroConfig {
   /** Legacy in-memory flag; normalized into the three field flags. */
@@ -10,6 +31,10 @@ export interface IMaestroConfig {
   action?: IMaestroAction;
   ref_task_id?: string;
   file_urls?: string[];
+  assets?: IMaestroAsset[];
+  brand?: IMaestroBrand | null;
+  website_url?: string | null;
+  audio_mode?: IMaestroAudioMode;
   langs?: string[];
   aspect?: string; // '9:16' | '16:9' | '1:1'
   duration?: number;

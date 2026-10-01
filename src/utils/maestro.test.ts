@@ -4,6 +4,49 @@ import { MAESTRO_ALLOWED_SCENARIOS, MAESTRO_ALLOWED_STYLES, MAESTRO_ALLOWED_VOIC
 import { buildMaestroGenerateRequest, buildMaestroRemixConfig, normalizeMaestroConfig } from './maestro';
 
 describe('buildMaestroGenerateRequest', () => {
+  it('turning customization off during an edit explicitly resets the inherited values', () => {
+    expect(
+      buildMaestroGenerateRequest({
+        action: 'edit',
+        ref_task_id: 'source',
+        style_customization_enabled: false,
+        scenario_customization_enabled: false,
+        voice_customization_enabled: false
+      })
+    ).toMatchObject({ style: 'auto', scenario: 'auto', voice: 'auto' });
+  });
+  it('sends real launch inputs and suppresses a stale narrator selection for music-only', () => {
+    const request = buildMaestroGenerateRequest({
+      prompt: 'Launch',
+      style: 'apple-launch',
+      style_customization_enabled: true,
+      voice_customization_enabled: true,
+      voice: 'warm-female',
+      audio_mode: 'music',
+      website_url: 'https://example.com',
+      assets: [{ id: 'hero', role: 'ui_screenshot', url: 'https://example.com/ui.png' }],
+      brand: { name: 'Acme', colors: { accent: '#FF0000' } }
+    });
+    expect(request).toMatchObject({ style: 'apple-launch', audio_mode: 'music', brand: { name: 'Acme' } });
+    expect(request.voice).toBeUndefined();
+    expect(request.assets?.[0].role).toBe('ui_screenshot');
+  });
+  it('remix preserves labeled sources and copies brand overrides independently', () => {
+    const source = {
+      id: 'source',
+      request: {
+        audio_mode: 'music' as const,
+        style: 'apple-launch',
+        assets: [{ id: 'hero', role: 'logo' as const, url: 'https://example.com/logo.png' }],
+        brand: { colors: { accent: '#123456' } }
+      }
+    };
+    const config = buildMaestroRemixConfig(undefined, source);
+    expect(config.assets).toEqual(source.request.assets);
+    expect(config.audio_mode).toBe('music');
+    config.brand!.colors!.accent = '#FF0000';
+    expect(source.request.brand.colors.accent).toBe('#123456');
+  });
   it.each([
     [false, false, false, {}],
     [true, false, false, { scenario: 'avatar' }],

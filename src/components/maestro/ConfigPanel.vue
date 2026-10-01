@@ -28,6 +28,7 @@
         </div>
         <file-urls-input />
       </div>
+      <product-inputs />
 
       <!-- Languages -->
       <div class="field-block mb-5">
@@ -182,10 +183,40 @@
         >
           <el-option v-for="s in MAESTRO_ALLOWED_STYLES" :key="s" :label="$t(`maestro.option.style.${s}`)" :value="s" />
         </el-select>
+        <p
+          v-if="styleCustomizationEnabled && style === 'apple-launch'"
+          class="text-xs text-[var(--el-text-color-secondary)] mt-2"
+        >
+          {{ $t('maestro.description.appleLaunch') }}
+        </p>
+        <el-alert
+          v-if="launchScenarioConflict"
+          class="mt-2"
+          type="warning"
+          :closable="false"
+          :title="$t('maestro.message.launchScenario')"
+        />
       </div>
 
-      <!-- Voice (narration timbre) + preview -->
-      <div class="custom-field">
+      <div class="field-block mb-4">
+        <label class="block font-bold mb-2">{{ $t('maestro.name.audioMode') }}</label>
+        <el-select v-model="audioMode" class="w-full" :aria-label="$t('maestro.name.audioMode')">
+          <el-option
+            v-for="mode in MAESTRO_AUDIO_MODES"
+            :key="mode"
+            :value="mode"
+            :label="$t(`maestro.option.audioMode.${mode}`)"
+          />
+        </el-select>
+        <el-alert
+          v-if="silentScenarioConflict"
+          class="mt-2"
+          type="warning"
+          :closable="false"
+          :title="$t('maestro.message.silentScenario')"
+        />
+      </div>
+      <div v-if="audioMode === 'auto' || audioMode === 'narration'" class="custom-field">
         <div class="custom-field-header mb-2">
           <div class="field-head">
             <h2 class="field-title font-bold">{{ $t('maestro.name.customizeVoice') }}</h2>
@@ -240,6 +271,7 @@ import { ElButton, ElSelect, ElOption, ElInputNumber, ElAlert, ElSwitch } from '
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FileUrlsInput from './config/FileUrlsInput.vue';
+import ProductInputs from './config/ProductInputs.vue';
 import {
   MAESTRO_ALLOWED_ASPECTS,
   MAESTRO_MIN_DURATION,
@@ -252,11 +284,13 @@ import {
   MAESTRO_SCENARIO_THUMBNAILS,
   MAESTRO_UPLOAD_REQUIRED_SCENARIOS,
   MAESTRO_ALLOWED_STYLES,
+  MAESTRO_AUDIO_MODES,
   MAESTRO_DEFAULT_STYLE,
   MAESTRO_ALLOWED_VOICES,
   MAESTRO_DEFAULT_VOICE
 } from '@/constants';
-import { IMaestroConfig } from '@/models';
+import { IMaestroConfig, IMaestroAudioMode } from '@/models';
+import { getMaestroMediaUrls } from '@/utils/maestro';
 import { isImageUrl, isVideoUrl } from '@/utils/is';
 import {
   getMaestroLanguageOptions,
@@ -294,6 +328,7 @@ export default defineComponent({
     PlayIcon,
     PromptTextarea,
     FileUrlsInput,
+    ProductInputs,
     ScenarioPaymentMode,
     ServicePricingSummary
   },
@@ -305,6 +340,7 @@ export default defineComponent({
       MAESTRO_ALLOWED_SCENARIOS,
       MAESTRO_SCENARIO_THUMBNAILS,
       MAESTRO_ALLOWED_STYLES,
+      MAESTRO_AUDIO_MODES,
       MAESTRO_ALLOWED_VOICES,
       playing: false,
       audioEl: null as HTMLAudioElement | null,
@@ -336,11 +372,32 @@ export default defineComponent({
       if (!this.scenarioCustomizationEnabled) return false;
       const scenario = this.config?.scenario;
       if (!scenario || !MAESTRO_UPLOAD_REQUIRED_SCENARIOS.includes(scenario)) return false;
-      const urls = this.config?.file_urls || [];
+      const urls = getMaestroMediaUrls(this.config);
       return scenario === 'captions' ? !urls.some((url) => isVideoUrl(url)) : !urls.some((url) => isImageUrl(url));
     },
     canGenerate(): boolean {
-      return canSubmitGeneration('maestro', buildMaestroRequest(this.config)) && !this.needsRequiredUpload;
+      return (
+        canSubmitGeneration('maestro', buildMaestroRequest(this.config)) &&
+        !this.needsRequiredUpload &&
+        !this.launchScenarioConflict &&
+        !this.silentScenarioConflict
+      );
+    },
+    launchScenarioConflict(): boolean {
+      return !!(
+        this.styleCustomizationEnabled &&
+        this.style === 'apple-launch' &&
+        this.scenarioCustomizationEnabled &&
+        this.scenario &&
+        this.scenario !== 'narrated'
+      );
+    },
+    silentScenarioConflict(): boolean {
+      return (
+        this.audioMode === 'silent' &&
+        this.scenarioCustomizationEnabled &&
+        ['avatar', 'drama'].includes(this.scenario || '')
+      );
     },
     prompt: {
       get(): string | undefined {
@@ -443,7 +500,19 @@ export default defineComponent({
       },
       set(val: string) {
         const normalized = val?.trim();
-        this.update({ style: !normalized || normalized.toLowerCase() === 'auto' ? MAESTRO_DEFAULT_STYLE : normalized });
+        this.update({
+          style: !normalized || normalized.toLowerCase() === 'auto' ? MAESTRO_DEFAULT_STYLE : normalized,
+          style_customization_enabled: true
+        });
+      }
+    },
+    audioMode: {
+      get(): IMaestroAudioMode {
+        return this.config?.audio_mode || 'auto';
+      },
+      set(value: IMaestroAudioMode) {
+        this.stopSample();
+        this.update({ audio_mode: value });
       }
     },
     voice: {

@@ -27,6 +27,7 @@ export const MAESTRO_SCENARIO_THUMBNAILS: Record<string, string> = {
 // Visual style presets — each maps to a real named capability on the backend (a visual-styles
 // identity, a palette, or a recipe like glass/retro). Freeform text still works. Orthogonal to scenario.
 export const MAESTRO_ALLOWED_STYLES = [
+  'apple-launch',
   'cinematic',
   'glass',
   'luxury',
@@ -43,6 +44,17 @@ export const MAESTRO_ALLOWED_STYLES = [
   'futuristic',
   'retro'
 ];
+
+export const MAESTRO_AUDIO_MODES = ['auto', 'narration', 'music', 'silent'] as const;
+export const MAESTRO_ASSET_ROLES = [
+  'reference',
+  'logo',
+  'product_image',
+  'ui_screenshot',
+  'product_video',
+  'style_reference',
+  'music'
+] as const;
 
 // Accepted reference media for file_urls (images / video / audio).
 export const MAESTRO_FILE_ACCEPT = '.png,.jpg,.jpeg,.gif,.bmp,.webp,.mp4,.mov,.webm,.mp3,.wav,.m4a';

@@ -71,7 +71,13 @@ export function buildMaestroRemixConfig(config: IMaestroConfig | undefined, task
     scenario: request?.scenario,
     style: request?.style,
     voice: request?.voice,
-    file_urls: explicitValue(request?.scenario)?.toLowerCase() === 'captions' ? request?.file_urls || [] : []
+    file_urls: request?.file_urls || [],
+    ...(request?.assets !== undefined ? { assets: request.assets.map((asset) => ({ ...asset })) } : {}),
+    ...(request?.brand !== undefined
+      ? { brand: request.brand ? JSON.parse(JSON.stringify(request.brand)) : null }
+      : {}),
+    ...(request?.website_url !== undefined ? { website_url: request.website_url } : {}),
+    ...(request?.audio_mode !== undefined ? { audio_mode: request.audio_mode } : {})
   });
 }
 
@@ -89,8 +95,16 @@ export function buildMaestroGenerateRequest(config?: IMaestroConfig): IMaestroGe
 
   return {
     ...request,
-    ...(scenarioCustomizationEnabled && scenario ? { scenario } : {}),
-    ...(styleCustomizationEnabled && style ? { style } : {}),
-    ...(voiceCustomizationEnabled && voice ? { voice } : {})
+    ...(scenarioCustomizationEnabled && scenario ? { scenario } : request.ref_task_id ? { scenario: 'auto' } : {}),
+    ...(styleCustomizationEnabled && style ? { style } : request.ref_task_id ? { style: 'auto' } : {}),
+    ...(voiceCustomizationEnabled && voice && source.audio_mode !== 'music' && source.audio_mode !== 'silent'
+      ? { voice }
+      : request.ref_task_id
+        ? { voice: 'auto' }
+        : {})
   };
+}
+
+export function getMaestroMediaUrls(config?: IMaestroConfig): string[] {
+  return [...(config?.file_urls || []), ...(config?.assets || []).map((asset) => asset.url)];
 }
