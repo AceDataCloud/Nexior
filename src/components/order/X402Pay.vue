@@ -52,9 +52,9 @@
           <div class="x402-wallet-card">
             <div class="x402-wallet-card-head">
               <span class="x402-wallet-card-title">{{ $t('order.message.x402WalletTitleSolana') }}</span>
-              <el-tag v-if="solanaConnected" class="x402-wallet-card-tag">{{
+              <status-badge v-if="solanaConnected" class="x402-wallet-card-tag" tone="success">{{
                 $t('order.message.x402WalletConnected')
-              }}</el-tag>
+              }}</status-badge>
             </div>
             <div v-if="solanaConnected && selectedSolanaWalletName" class="x402-wallet-card-sub x402-wallet-name">
               <img
@@ -93,9 +93,9 @@
           <div class="x402-wallet-card">
             <div class="x402-wallet-card-head">
               <span class="x402-wallet-card-title">{{ $t('order.message.x402WalletTitleEvm') }}</span>
-              <el-tag v-if="evmConnected" class="x402-wallet-card-tag">{{
+              <status-badge v-if="evmConnected" class="x402-wallet-card-tag" tone="success">{{
                 $t('order.message.x402WalletConnected')
-              }}</el-tag>
+              }}</status-badge>
             </div>
             <div v-if="evmConnected && selectedEvmWalletName" class="x402-wallet-card-sub x402-wallet-name">
               <img
@@ -186,6 +186,7 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { PaymentCardIcon as CreditCard } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
 import {
@@ -195,7 +196,6 @@ import {
   ElMessageBox,
   ElDialog,
   ElIcon,
-  ElTag,
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
@@ -234,10 +234,10 @@ interface IData {
 export default defineComponent({
   name: 'X402PayOrderDialog',
   components: {
+    StatusBadge,
     ElDialog,
     ElButton,
     ElAlert,
-    ElTag,
     ElIcon,
     ElRadioGroup,
     ElRadioButton,
@@ -915,6 +915,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.x402-wallet-card-tag {
+  margin-left: auto;
+}
+
 .x402-dialog {
   :deep(.el-dialog__body) {
     padding: 20px 22px 10px;
@@ -1039,14 +1043,6 @@ export default defineComponent({
   font-size: 14px;
   font-weight: 600;
   color: var(--el-text-color-primary);
-}
-
-.x402-wallet-card-tag {
-  margin-left: auto;
-  font-size: 12px;
-  border: none;
-  background: rgba(103, 194, 58, 0.14);
-  color: var(--el-color-success);
 }
 
 .x402-wallet-card-sub {

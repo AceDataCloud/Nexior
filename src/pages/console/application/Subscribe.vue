@@ -3,12 +3,15 @@
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
+          <back-navigation :as="backLinkComponent" :to="backRoute" class="mb-4">{{
+            $t('common.title.allApplications')
+          }}</back-navigation>
           <h2 class="title">{{ $t('common.title.buyMore') }}</h2>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover" class="card">
+          <el-card shadow="never" class="card">
             <el-row>
               <el-col v-if="!showPayment" class="max-w-4xl mx-auto">
                 <el-empty :description="$t('common.message.noData')" />
@@ -42,7 +45,7 @@
                     >
                       <h4 class="name">
                         {{ item.label }}
-                        <el-tag v-if="item.tag" type="warning">{{ item.tag }}</el-tag>
+                        <meta-tag v-if="item.tag" tone="warning">{{ item.tag }}</meta-tag>
                       </h4>
                       <h2 class="price">
                         <template v-if="item.price !== undefined">{{ getPriceString({ value: item.price }) }}</template>
@@ -107,10 +110,12 @@
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router';
+import { MetaTag, BackNavigation } from '@acedatacloud/core/components';
 import { CloseIcon, ConfirmIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
-import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
+import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElEmpty } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
@@ -145,11 +150,12 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleSubscriptionBuy',
   components: {
+    BackNavigation,
+    MetaTag,
     CloseIcon,
     ConfirmIcon,
     ElSkeleton,
     ElRow,
-    ElTag,
     ElCol,
     ElCard,
     ElEmpty,
@@ -171,6 +177,12 @@ export default defineComponent({
     };
   },
   computed: {
+    backLinkComponent() {
+      return RouterLink;
+    },
+    backRoute() {
+      return { name: ROUTE_CONSOLE_APPLICATION_LIST };
+    },
     site() {
       return this.$store.getters.site;
     },

@@ -3,12 +3,15 @@
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
+          <back-navigation :as="backLinkComponent" :to="backRoute" class="mb-4">{{
+            $t('common.title.allApplications')
+          }}</back-navigation>
           <h2 class="title">{{ $t('common.title.buyMore') }}</h2>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover" class="min-h-[500px]">
+          <el-card shadow="never" class="min-h-[500px]">
             <el-row>
               <el-col :xs="{ span: 22, offset: 1 }" :sm="{ span: 20, offset: 2 }" :md="{ span: 16, offset: 4 }">
                 <el-skeleton v-if="loading" />
@@ -71,9 +74,9 @@
                         <span :class="{ price: true, unfree: displayFinalPrice > 0, free: displayFinalPrice === 0 }">
                           {{ getPriceString({ value: displayFinalPrice }) }}
                         </span>
-                        <el-tag v-if="hasOrderDiscount" class="discount-tag" effect="light" size="small" type="success">
+                        <meta-tag v-if="hasOrderDiscount" class="discount-tag" tone="success" density="compact">
                           {{ $t('order.message.discountTag', { percent: discountPercent }) }}
-                        </el-tag>
+                        </meta-tag>
                       </div>
                       <p v-if="hasOrderDiscount" class="discount-hint">
                         {{ $t('order.message.discountHint', { percent: discountPercent }) }}
@@ -113,6 +116,8 @@
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router';
+import { MetaTag, BackNavigation } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import {
   IApplication,
@@ -133,8 +138,7 @@ import {
   ElDivider,
   ElEmpty,
   ElRadioGroup,
-  ElRadioButton,
-  ElTag
+  ElRadioButton
 } from 'element-plus';
 import {
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
@@ -170,6 +174,8 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleApplicationBuy',
   components: {
+    BackNavigation,
+    MetaTag,
     ElSkeleton,
     ElRow,
     ElCol,
@@ -181,7 +187,6 @@ export default defineComponent({
     ElEmpty,
     ElRadioGroup,
     ElRadioButton,
-    ElTag,
     Price,
     ServiceEstimation
   },
@@ -200,6 +205,12 @@ export default defineComponent({
     };
   },
   computed: {
+    backLinkComponent() {
+      return RouterLink;
+    },
+    backRoute() {
+      return { name: ROUTE_CONSOLE_APPLICATION_LIST };
+    },
     isApplePurchase(): boolean {
       return isIOS();
     },
@@ -442,9 +453,7 @@ export default defineComponent({
       flex-wrap: wrap;
       gap: 12px;
     }
-    .discount-tag {
-      border-radius: 999px;
-    }
+
     .discount-hint {
       margin: 0;
       font-size: 13px;

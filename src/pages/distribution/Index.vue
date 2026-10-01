@@ -8,7 +8,7 @@
       </el-row>
       <el-row :gutter="15">
         <el-col :md="6" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -25,7 +25,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -44,7 +44,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -58,7 +58,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="hover" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -77,7 +77,7 @@
       </el-row>
       <el-row v-if="showOfficialTools" :gutter="15" class="mb-4">
         <el-col :span="24">
-          <el-card shadow="hover" class="automation-card">
+          <el-card shadow="never" class="automation-card">
             <div>
               <h3>{{ $t('distribution.title.promotionAutomation') }}</h3>
               <p>{{ $t('distribution.message.promotionAutomation') }}</p>
@@ -90,7 +90,7 @@
       </el-row>
       <el-row :gutter="15">
         <el-col :md="12" :xs="24">
-          <el-card shadow="hover" class="level-info mb-4">
+          <el-card shadow="never" class="level-info mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <h4 class="title">
@@ -144,7 +144,7 @@
           </el-card>
         </el-col>
         <el-col :md="12" :xs="24">
-          <el-card shadow="hover" class="distribution-info mb-4">
+          <el-card shadow="never" class="distribution-info mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <h4 class="title">

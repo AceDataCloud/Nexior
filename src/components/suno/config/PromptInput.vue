@@ -10,23 +10,24 @@
     <template #after>
       <!-- Inspiration Tags -->
       <div class="inspo-tags">
-        <button v-for="tag in visibleTags" :key="tag.key" class="inspo-tag" @click="onTagClick(tag)">
+        <action-chip v-for="tag in visibleTags" :key="tag.key" class="inspo-tag" @click="onTagClick(tag)">
           {{ tag.label }}
-        </button>
-        <button
+        </action-chip>
+        <action-chip
           class="inspo-tag inspo-tag-refresh"
           :aria-label="$t('common.button.refresh')"
           :title="$t('common.button.refresh')"
           @click="onRefreshTags"
         >
           <refresh-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-        </button>
+        </action-chip>
       </div>
     </template>
   </prompt-textarea>
 </template>
 
 <script lang="ts">
+import { ActionChip } from '@acedatacloud/core/components';
 import { RefreshIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
@@ -86,6 +87,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 export default defineComponent({
   name: 'PromptInput',
   components: {
+    ActionChip,
     RefreshIcon,
     PromptTextarea
   },
@@ -132,34 +134,5 @@ export default defineComponent({
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 8px;
-}
-
-.inspo-tag {
-  padding: 4px 10px;
-  border: 1px solid var(--el-border-color);
-  border-radius: 14px;
-  background: var(--el-bg-color);
-  color: var(--el-text-color-regular);
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-
-  &:hover {
-    border-color: var(--el-color-primary);
-    color: var(--el-color-primary);
-    background: var(--el-color-primary-light-9);
-  }
-}
-
-.inspo-tag-refresh {
-  border-style: dashed;
-  color: var(--el-text-color-placeholder);
-  padding: 4px 8px;
-
-  &:hover {
-    border-color: var(--el-color-primary);
-    color: var(--el-color-primary);
-  }
 }
 </style>

@@ -16,20 +16,21 @@
       <div v-if="secondaryText" class="entry-context">{{ secondaryText }}</div>
     </div>
     <div class="entry-action">
-      <span v-if="entry.status === 'connected'" class="status-pill connected">
+      <status-badge v-if="entry.status === 'connected'" class="status-pill" tone="success" density="compact">
         {{ $t('chat.consent.statusConnected') }}
-      </span>
+      </status-badge>
       <el-button v-else-if="entry.install_url" type="primary" size="small" :disabled="disabled" @click="onAuthorize">
         {{ $t('chat.consent.authorize') }}
       </el-button>
-      <span v-else class="status-pill unconnected">
+      <status-badge v-else class="status-pill" density="compact">
         {{ $t('chat.consent.statusUnconnected') }}
-      </span>
+      </status-badge>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { ConnectionIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton } from 'element-plus';
@@ -38,7 +39,12 @@ import type { IConnectorCatalogSummary } from './connectorCatalogCache';
 
 export default defineComponent({
   name: 'ConnectorEntryRow',
-  components: { ConnectionIcon, ElButton, SuccessIcon },
+  components: {
+    StatusBadge,
+    ConnectionIcon,
+    ElButton,
+    SuccessIcon
+  },
   props: {
     entry: {
       type: Object as PropType<IConsentRequestEntry>,
@@ -186,24 +192,5 @@ export default defineComponent({
 
 .entry-action {
   flex: 0 0 auto;
-}
-
-.status-pill {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.status-pill.connected {
-  background: var(--el-color-success-light-8);
-  color: var(--el-color-success);
-}
-
-.status-pill.unconnected {
-  background: var(--el-fill-color);
-  color: var(--el-text-color-secondary);
 }
 </style>

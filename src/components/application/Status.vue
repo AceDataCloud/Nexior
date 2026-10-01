@@ -35,7 +35,7 @@
         <template v-if="walletRail === 'base'">
           <template v-if="evmAddress">
             <div class="wallet-connected">
-              <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+              <status-badge tone="success">{{ $t('order.message.x402WalletConnected') }}</status-badge>
               <span class="wallet-address">{{ shortEvmAddress }}</span>
             </div>
             <el-button @click="disconnectEvmWallet">{{ $t('coin.button.disconnect') }}</el-button>
@@ -47,7 +47,7 @@
         <template v-else>
           <template v-if="solanaConnected && solanaAddress">
             <div class="wallet-connected">
-              <el-tag type="success">{{ $t('order.message.x402WalletConnected') }}</el-tag>
+              <status-badge tone="success">{{ $t('order.message.x402WalletConnected') }}</status-badge>
               <span class="wallet-address">{{ shortSolanaAddress }}</span>
             </div>
             <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
@@ -124,10 +124,11 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { WalletIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
 import QrCode from 'vue-qrcode';
-import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs, ElTag } from 'element-plus';
+import { ElButton, ElDialog, ElMessage, ElRadioButton, ElRadioGroup, ElTabPane, ElTabs } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import { trackWalletConnected } from '@/plugins/telemetry';
@@ -162,6 +163,7 @@ export interface IData {
 export default defineComponent({
   name: 'ApplicationStatus',
   components: {
+    StatusBadge,
     WalletIcon,
     QrCode,
     ElButton,
@@ -170,7 +172,6 @@ export default defineComponent({
     ElRadioGroup,
     ElTabPane,
     ElTabs,
-    ElTag,
     ApplicationInfo,
     ContinuousPaymentCard,
     CopyToClipboard,

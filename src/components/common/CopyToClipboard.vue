@@ -78,12 +78,12 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  margin-inline-start: 4px;
+  width: var(--adc-icon-target-size);
+  height: var(--adc-icon-target-size);
+  margin-inline-start: var(--adc-space-1);
   padding: 0;
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--adc-radius-small);
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -98,14 +98,21 @@ export default defineComponent({
   }
 
   &:focus-visible {
-    outline: var(--adc-focus-outline);
+    outline: var(--adc-focus-outline-width) solid var(--adc-focus-outline-color);
     outline-offset: var(--adc-focus-outline-offset);
   }
 }
 
 .copy-control__button :deep(svg) {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
+}
+
+@media (pointer: coarse) {
+  .copy-control__button {
+    width: 44px;
+    height: 44px;
+  }
 }
 </style>

@@ -99,13 +99,15 @@
                     <down-icon :size="14" aria-hidden="true" focusable="false" />
                     {{ formatCount(item.install_count) }}
                   </span>
-                  <span
+                  <meta-tag
                     v-if="surfaceLabels(item)"
                     class="directory-card-surface"
                     :title="$t('skill.directory.surfaceHint')"
+                    density="compact"
+                    tone="warning"
                   >
                     {{ surfaceLabels(item) }}
-                  </span>
+                  </meta-tag>
                 </div>
                 <p class="directory-card-desc">{{ item.description }}</p>
               </article>
@@ -127,10 +129,7 @@
 
         <template v-else>
           <header class="directory-detail-head">
-            <button class="directory-back-btn" @click="selectedItem = null">
-              <back-icon :size="16" aria-hidden="true" focusable="false" />
-              {{ $t('skill.directory.back') }}
-            </button>
+            <back-navigation @click="selectedItem = null">{{ $t('skill.directory.back') }}</back-navigation>
             <div class="directory-detail-actions">
               <a v-if="selectedItem.source_url" :href="selectedItem.source_url" target="_blank" class="directory-link">
                 <font-awesome-icon icon="fa-brands fa-github" />
@@ -173,13 +172,15 @@
                 ><strong>{{ $t('skill.directory.license') }}:</strong> {{ selectedItem.license }}</span
               >
               <span v-if="selectedItem.version">v{{ selectedItem.version }}</span>
-              <span
+              <meta-tag
                 v-if="surfaceLabels(selectedItem)"
                 class="directory-detail-surface"
                 :title="$t('skill.directory.surfaceHint')"
+                density="compact"
+                tone="warning"
               >
                 {{ $t('skill.directory.surfaceOnly', { platforms: surfaceLabels(selectedItem) }) }}
-              </span>
+              </meta-tag>
             </div>
             <p class="directory-detail-desc">{{ selectedItem.description }}</p>
             <vue-markdown class="directory-detail-content" :source="detailBody" sanitize />
@@ -191,18 +192,11 @@
 </template>
 
 <script lang="ts">
+import { BackNavigation, MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElInput, ElButton, ElMessage, ElPagination, ElSelect, ElOption, vLoading } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-  AddIcon,
-  BackIcon,
-  DownIcon,
-  InstallIcon,
-  LockIcon,
-  SearchIcon,
-  SuccessIcon
-} from '@acedatacloud/core/icons/components';
+import { AddIcon, DownIcon, InstallIcon, LockIcon, SearchIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
 import hljs from 'highlight.js/lib/core';
 import bash from 'highlight.js/lib/languages/bash';
@@ -257,6 +251,8 @@ const PAGE_SIZE = 12;
 export default defineComponent({
   name: 'BrowseSkillsDialog',
   components: {
+    MetaTag,
+    BackNavigation,
     VueMarkdown,
     ElDialog,
     ElInput,
@@ -266,7 +262,6 @@ export default defineComponent({
     ElOption,
     FontAwesomeIcon,
     AddIcon,
-    BackIcon,
     DownIcon,
     InstallIcon,
     LockIcon,
@@ -609,27 +604,7 @@ export default defineComponent({
   align-items: center;
   gap: 3px;
 }
-.directory-card-surface {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 7px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--el-color-warning);
-  background: var(--el-color-warning-light-9);
-  border: 1px solid var(--el-color-warning-light-7);
-}
-.directory-detail-surface {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  color: var(--el-color-warning);
-  background: var(--el-color-warning-light-9);
-  border: 1px solid var(--el-color-warning-light-7);
-}
+
 .directory-card-desc {
   font-size: 13px;
   color: var(--el-text-color-regular);
@@ -648,16 +623,7 @@ export default defineComponent({
   padding: 14px 20px;
   border-bottom: 1px solid var(--el-border-color-lighter);
 }
-.directory-back-btn {
-  border: none;
-  background: transparent;
-  color: var(--el-text-color-primary);
-  cursor: pointer;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+
 .directory-detail-actions {
   display: flex;
   gap: 8px;

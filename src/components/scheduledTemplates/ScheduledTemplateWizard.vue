@@ -37,13 +37,15 @@
         >
           <div class="template-card-top">
             <strong>{{ item.title }}</strong>
-            <el-tag v-if="item.featured" size="small" type="warning">{{
+            <meta-tag v-if="item.featured" tone="warning" density="compact">{{
               $t('chat.scheduledTemplates.featured')
-            }}</el-tag>
+            }}</meta-tag>
           </div>
           <p>{{ item.summary }}</p>
           <div class="template-tags">
-            <el-tag v-for="tag in item.categories" :key="tag" size="small" type="info">{{ categoryLabel(tag) }}</el-tag>
+            <meta-tag v-for="tag in item.categories" :key="tag" tone="info" density="compact">{{
+              categoryLabel(tag)
+            }}</meta-tag>
           </div>
           <span :class="['availability', { ready: item.available }]">
             {{
@@ -107,7 +109,7 @@
           <h3>{{ $t('chat.scheduledTemplates.connectionTitle') }}</h3>
           <p>{{ $t('chat.scheduledTemplates.connectionDescription') }}</p>
         </div>
-        <el-tag type="info" round>{{ selected.requirements.connections.length }}</el-tag>
+        <meta-tag tone="info">{{ selected.requirements.connections.length }}</meta-tag>
       </div>
       <div v-if="!selected.requirements.connections.length" class="requirement-empty ready">
         <success-icon :size="20" />
@@ -128,13 +130,13 @@
           <div class="requirement-content">
             <div class="requirement-title-row">
               <strong>{{ connectionName(connection) }}</strong>
-              <el-tag :type="connectionReady(connection) ? 'success' : 'warning'" size="small" round>
+              <status-badge :tone="connectionReady(connection) ? 'success' : 'warning'" density="compact">
                 {{
                   connectionReady(connection)
                     ? $t('chat.scheduledTemplates.connected')
                     : $t('chat.scheduledTemplates.notConnected')
                 }}
-              </el-tag>
+              </status-badge>
             </div>
             <p>{{ connectionDescription(connection) }}</p>
             <div v-if="connectionReady(connection)" class="account-summary">
@@ -179,6 +181,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import { defineComponent, type PropType } from 'vue';
 import {
   ElButton,
@@ -192,7 +195,6 @@ import {
   ElStep,
   ElSteps,
   ElSwitch,
-  ElTag,
   ElTimePicker
 } from 'element-plus';
 import { ConnectionIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
@@ -207,6 +209,8 @@ import {
 export default defineComponent({
   name: 'ScheduledTemplateWizard',
   components: {
+    MetaTag,
+    StatusBadge,
     BrowseConnectors,
     ConnectionIcon,
     ElButton,
@@ -219,7 +223,6 @@ export default defineComponent({
     ElStep,
     ElSteps,
     ElSwitch,
-    ElTag,
     ElTimePicker,
     SuccessIcon
   },

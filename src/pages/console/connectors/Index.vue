@@ -104,17 +104,25 @@
                   <span v-if="item.accountLabel" class="list-item-account" :title="item.accountLabel">{{
                     item.accountLabel
                   }}</span>
-                  <span v-if="item.isDefault" class="list-item-badge list-item-badge-default">{{
-                    $t('connection.label.defaultAccount')
-                  }}</span>
-                  <span v-if="item.byo" class="list-item-badge">{{ $t('connection.label.custom') }}</span>
-                  <span
+                  <meta-tag
+                    v-if="item.isDefault"
+                    class="list-item-badge list-item-badge-default"
+                    density="compact"
+                    tone="success"
+                    >{{ $t('connection.label.defaultAccount') }}</meta-tag
+                  >
+                  <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
+                    $t('connection.label.custom')
+                  }}</meta-tag>
+                  <meta-tag
                     v-else-if="group.key === 'available'"
                     class="list-item-badge list-item-badge-hint"
                     :title="$t('connection.message.notConnectedYet')"
+                    density="compact"
+                    tone="brand"
                   >
                     {{ $t('connection.label.notConnected') }}
-                  </span>
+                  </meta-tag>
                 </li>
               </ul>
             </div>
@@ -178,9 +186,9 @@
                 <connection-icon v-else :size="20" aria-hidden="true" focusable="false" />
               </span>
               <h3 class="detail-title">{{ selectedItem.name }}</h3>
-              <el-tag v-if="selectedItem.byo" size="small" type="info" class="detail-custom-tag">
+              <meta-tag v-if="selectedItem.byo" tone="info" class="detail-custom-tag" density="compact">
                 {{ $t('connection.label.custom') }}
-              </el-tag>
+              </meta-tag>
               <div class="detail-actions">
                 <!-- Primary action stays in the open; everything else lives in
                      the overflow menu. Eight buttons could surface at once,
@@ -260,9 +268,9 @@
                   {{ connectionAccountSubtext(selectedItem.connection) }}
                 </span>
               </div>
-              <el-tag :type="statusTagType(selectedItem.connection.status)" size="small">
+              <status-badge :tone="statusTagType(selectedItem.connection.status)" density="compact">
                 {{ statusLabel(selectedItem.connection.status) }}
-              </el-tag>
+              </status-badge>
             </div>
           </div>
 
@@ -275,9 +283,9 @@
                 <strong>{{ selectedItem.connection.browser_device?.name || $t('user.browserDevice.title') }}</strong>
                 <span>{{ $t('user.browserDevice.localApprovalOnly') }}</span>
               </div>
-              <el-tag :type="browserDeviceStatusTagType(selectedItem.connection)" size="small">
+              <status-badge :tone="browserDeviceStatusTagType(selectedItem.connection)" density="compact">
                 {{ browserDeviceCompatibilityLabel(selectedItem.connection) }}
-              </el-tag>
+              </status-badge>
             </div>
             <dl class="meta-grid browser-session-meta">
               <div>
@@ -323,14 +331,13 @@
             <div v-if="selectedItem.connection.browser_device?.capabilities?.length" class="browser-capabilities">
               <span class="browser-capabilities-label">{{ $t('user.browserDevice.capabilities') }}</span>
               <div class="browser-capability-list">
-                <el-tag
+                <meta-tag
                   v-for="capability in selectedItem.connection.browser_device.capabilities"
                   :key="capability"
-                  size="small"
-                  effect="plain"
+                  density="compact"
                 >
                   {{ capability.replaceAll('_', ' ') }}
-                </el-tag>
+                </meta-tag>
               </div>
             </div>
           </div>
@@ -341,9 +348,9 @@
               <div>
                 <dt>{{ $t('connection.field.status') }}</dt>
                 <dd>
-                  <el-tag :type="statusTagType(selectedItem.connection.status)" size="small">
+                  <status-badge :tone="statusTagType(selectedItem.connection.status)" density="compact">
                     {{ statusLabel(selectedItem.connection.status) }}
-                  </el-tag>
+                  </status-badge>
                 </dd>
               </div>
               <div v-if="customAuthSummary(selectedItem.connection)">
@@ -361,9 +368,9 @@
               <div v-if="!showsAccountIdentity">
                 <dt>{{ $t('connection.field.status') }}</dt>
                 <dd>
-                  <el-tag :type="statusTagType(selectedItem.connection.status)" size="small">
+                  <status-badge :tone="statusTagType(selectedItem.connection.status)" density="compact">
                     {{ statusLabel(selectedItem.connection.status) }}
-                  </el-tag>
+                  </status-badge>
                 </dd>
               </div>
               <div v-if="byocCredentialSummary(selectedItem)">
@@ -608,10 +615,10 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import {
   ElButton,
-  ElTag,
   ElAvatar,
   ElDialog,
   ElInput,
@@ -808,9 +815,10 @@ interface IData {
 export default defineComponent({
   name: 'UserConnections',
   components: {
+    MetaTag,
+    StatusBadge,
     ConsolePageHeader,
     ElButton,
-    ElTag,
     ElAvatar,
     ElDialog,
     ElInput,
@@ -2295,28 +2303,6 @@ html.dark .connectors-shell {
   transition:
     color 0.15s,
     font-weight 0.15s;
-}
-
-.list-item-badge {
-  flex-shrink: 0;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--el-text-color-secondary);
-  background: var(--el-fill-color);
-  padding: 2px 6px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.list-item-badge-hint {
-  color: var(--el-color-primary);
-  background: var(--el-color-primary-light-9);
-}
-
-.list-item-badge-default {
-  color: var(--el-color-success);
-  background: var(--el-color-success-light-9);
 }
 
 .list-item-account {

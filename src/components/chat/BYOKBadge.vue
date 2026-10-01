@@ -4,14 +4,15 @@
     :content="`${$t('byok.badge.tooltip', { provider: providerLabel })} — ${$t('byok.badge.manage')}`"
     placement="bottom"
   >
-    <button type="button" class="byok-badge" @click="onClickManage">
+    <action-chip class="byok-badge" :aria-label="$t('byok.badge.manage')" @click="onClickManage">
       <key-icon class="badge-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="badge-text">{{ $t('byok.badge.active', { provider: providerLabel }) }}</span>
-    </button>
+    </action-chip>
   </el-tooltip>
 </template>
 
 <script lang="ts">
+import { ActionChip } from '@acedatacloud/core/components';
 import { KeyIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElTooltip } from 'element-plus';
@@ -39,6 +40,7 @@ const PROVIDER_FOR_GROUP: Record<string, IBYOKProvider> = {
 export default defineComponent({
   name: 'BYOKBadge',
   components: {
+    ActionChip,
     KeyIcon,
     ElTooltip
   },
@@ -108,38 +110,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.byok-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border: none;
-  border-radius: 999px;
-  background-color: var(--el-color-primary-light-9, rgba(64, 158, 255, 0.12));
-  color: var(--el-color-primary, #409eff);
-  font-size: 12px;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  font-family: inherit;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: var(--el-color-primary-light-8, rgba(64, 158, 255, 0.18));
-  }
-
-  .badge-icon {
-    font-size: 10px;
-  }
-}
-
 @media (max-width: 640px) {
   .byok-badge .badge-text {
     display: none;
-  }
-  .byok-badge {
-    padding: 4px 6px;
   }
 }
 </style>

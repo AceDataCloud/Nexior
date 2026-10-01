@@ -65,9 +65,9 @@
         </el-table-column>
         <el-table-column :label="$t('site.services.field.visible')" width="96" align="center">
           <template #default="{ row }">
-            <el-tag :type="row.visible === false ? 'info' : 'success'" size="small" round effect="plain">
+            <status-badge :tone="row.visible === false ? 'info' : 'success'" density="compact">
               {{ row.visible === false ? $t('site.services.status.hidden') : $t('site.services.status.visible') }}
-            </el-tag>
+            </status-badge>
           </template>
         </el-table-column>
         <el-table-column :label="$t('site.services.field.customMarkupRatio')" width="150" align="right">
@@ -129,9 +129,9 @@
                 <img v-if="svc.icon_url" :src="svc.icon_url" class="option-favicon" alt="" />
                 <span class="option-title">{{ svc.title || svc.id }}</span>
                 <span v-if="svc.alias" class="option-alias">{{ svc.alias }}</span>
-                <el-tag v-if="isAlreadyOverridden(svc.id)" size="small" type="info" round>
+                <meta-tag v-if="isAlreadyOverridden(svc.id)" tone="info" density="compact">
                   {{ $t('site.services.message.alreadyOverridden') }}
-                </el-tag>
+                </meta-tag>
               </span>
             </el-option>
           </el-select>
@@ -232,6 +232,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag, StatusBadge } from '@acedatacloud/core/components';
 import { AddIcon as Plus } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
 import {
@@ -248,7 +249,6 @@ import {
   ElSelect,
   ElOption,
   ElSwitch,
-  ElTag,
   ElMessage,
   ElMessageBox,
   vLoading
@@ -299,6 +299,8 @@ function emptyForm(): IForm {
 export default defineComponent({
   name: 'SiteServicesSetting',
   components: {
+    MetaTag,
+    StatusBadge,
     ElButton,
     ElCard,
     ElTable,
@@ -312,7 +314,6 @@ export default defineComponent({
     ElSelect,
     ElOption,
     ElSwitch,
-    ElTag,
     SectionNotice,
     AutoTranslateToggle
   },

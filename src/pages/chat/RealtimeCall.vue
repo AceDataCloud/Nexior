@@ -5,7 +5,13 @@
       <!-- left group: back + voice picker (kept LEFT so it never sits under the
            right-pinned floating wallet pill, which would otherwise block taps) -->
       <div class="rtc-top-left">
-        <button class="ic" :title="$t('realtime.title')" :aria-label="$t('realtime.title')" @click="goBack">
+        <button
+          type="button"
+          class="ic"
+          :title="$t('common.button.close')"
+          :aria-label="$t('common.button.close')"
+          @click="goBack"
+        >
           <expand-down-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </button>
         <div class="voice-pick">
@@ -394,8 +400,8 @@ export default defineComponent({
   gap: 6px;
 }
 .ic {
-  width: 36px;
-  height: 36px;
+  width: var(--adc-icon-target-size);
+  height: var(--adc-icon-target-size);
   border: none;
   border-radius: 50%;
   background: transparent;
@@ -731,6 +737,13 @@ export default defineComponent({
   }
   .rtc-captions .cap.ai {
     font-size: 26px;
+  }
+}
+
+@media (pointer: coarse) {
+  .ic {
+    width: 44px;
+    height: 44px;
   }
 }
 </style>

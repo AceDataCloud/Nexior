@@ -13,15 +13,16 @@
       @update:model-value="onQuotaVisibility"
       @top-up="onQuotaTopUp"
     />
-    <el-tag v-if="isTest" size="large" class="fixed bottom-4 right-4 z-50" type="warning">
+    <meta-tag v-if="isTest" class="fixed bottom-4 right-4 z-50" tone="warning">
       {{ $t('index.button.testEnv') }}
-    </el-tag>
+    </meta-tag>
   </el-config-provider>
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
-import { ElConfigProvider, ElTag } from 'element-plus';
+import { ElConfigProvider } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
 import DesktopDragBar from './components/common/DesktopDragBar.vue';
 import QuotaExhaustedDialog from './components/common/QuotaExhaustedDialog.vue';
@@ -62,8 +63,8 @@ const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
 export default defineComponent({
   name: 'App',
   components: {
+    MetaTag,
     ElConfigProvider,
-    ElTag,
     AuthPanel,
     DesktopDragBar,
     QuotaExhaustedDialog

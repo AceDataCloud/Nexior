@@ -72,20 +72,29 @@
                   <h4 class="card-title">{{ item.name }}</h4>
                 </div>
                 <div class="card-meta">
-                  <span
+                  <meta-tag
                     v-if="item.is_featured"
                     class="card-pill card-pill-featured"
                     :title="$t('connection.label.featured')"
+                    density="compact"
+                    tone="brand"
                   >
                     {{ $t('connection.label.featured') }}
-                  </span>
-                  <span v-else-if="item.is_new" class="card-pill card-pill-new">
+                  </meta-tag>
+                  <meta-tag v-else-if="item.is_new" class="card-pill card-pill-new" density="compact" tone="success">
                     {{ $t('connection.label.new') }}
-                  </span>
-                  <span v-else-if="item.is_trending" class="card-pill card-pill-trending">
+                  </meta-tag>
+                  <meta-tag
+                    v-else-if="item.is_trending"
+                    class="card-pill card-pill-trending"
+                    density="compact"
+                    tone="warning"
+                  >
                     {{ $t('connection.label.trending') }}
-                  </span>
-                  <span :class="['source-badge', `source-${item.source}`]">{{ sourceLabel(item.source) }}</span>
+                  </meta-tag>
+                  <meta-tag density="compact" :tone="item.source === 'official' ? 'brand' : 'neutral'">{{
+                    sourceLabel(item.source)
+                  }}</meta-tag>
                   <span v-if="item.publisher" class="card-publisher">{{ item.publisher }}</span>
                 </div>
               </div>
@@ -173,6 +182,7 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent, PropType } from 'vue';
 import {
   ElDialog,
@@ -286,6 +296,7 @@ function buildConnectorSearchText(item: IConnectorCatalogItem): string {
 export default defineComponent({
   name: 'BrowseConnectors',
   components: {
+    MetaTag,
     ElDialog,
     ElInput,
     ElSelect,
@@ -834,32 +845,6 @@ export default defineComponent({
   overflow-wrap: anywhere;
 }
 
-.card-pill {
-  flex-shrink: 0;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 1px 6px;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-}
-
-.card-pill-featured {
-  background: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
-}
-
-.card-pill-new {
-  background: var(--el-color-success-light-9);
-  color: var(--el-color-success);
-}
-
-.card-pill-trending {
-  background: var(--el-color-warning-light-9);
-  color: var(--el-color-warning);
-}
-
 .card-meta {
   display: flex;
   align-items: center;
@@ -868,31 +853,6 @@ export default defineComponent({
   margin-top: 4px;
   font-size: 12px;
   color: var(--el-text-color-secondary);
-}
-
-.source-badge {
-  font-size: 10px;
-  font-weight: 500;
-  padding: 1px 6px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-
-  &.source-official {
-    background: var(--el-color-primary-light-9);
-    color: var(--el-color-primary);
-  }
-
-  &.source-partner {
-    background: var(--el-fill-color);
-    color: var(--el-text-color-secondary);
-  }
-
-  &.source-public {
-    background: var(--el-fill-color);
-    color: var(--el-text-color-secondary);
-  }
 }
 
 .card-publisher {

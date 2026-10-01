@@ -12,9 +12,9 @@
           <strong>{{ skill.name || skill.slug }}</strong>
           <small>{{ skill.description }}</small>
         </span>
-        <el-tag v-if="!skill.enabled" size="small" type="info">{{
+        <status-badge v-if="!skill.enabled" tone="info" density="compact">{{
           $t('site.capabilityOverride.skillDisabled')
-        }}</el-tag>
+        }}</status-badge>
         <el-button
           v-if="skill.owner_scope === 'site'"
           link
@@ -40,8 +40,9 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { defineComponent, type PropType } from 'vue';
-import { ElButton, ElCheckbox, ElEmpty, ElInput, ElMessage, ElMessageBox, ElTag, vLoading } from 'element-plus';
+import { ElButton, ElCheckbox, ElEmpty, ElInput, ElMessage, ElMessageBox, vLoading } from 'element-plus';
 import type { ISkill } from '@/operators/skill';
 import { skillOperator } from '@/operators/skill';
 import BrowseSkillsDialog from './BrowseSkillsDialog.vue';
@@ -51,12 +52,12 @@ import WriteSkillDialog from './WriteSkillDialog.vue';
 export default defineComponent({
   name: 'SkillPicker',
   components: {
+    StatusBadge,
     BrowseSkillsDialog,
     ElButton,
     ElCheckbox,
     ElEmpty,
     ElInput,
-    ElTag,
     UploadSkillDialog,
     WriteSkillDialog
   },

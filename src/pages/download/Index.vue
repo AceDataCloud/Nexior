@@ -3,10 +3,7 @@
     <div class="download-page__glow" aria-hidden="true"></div>
     <div class="download-page__inner">
       <!-- Bare layout has no app chrome (native/desktop have no browser back) — always offer a way back. -->
-      <button type="button" class="download-back" @click="goBack">
-        <back-icon class="download-back__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        <span>{{ $t('common.button.goBack') }}</span>
-      </button>
+      <back-navigation class="download-back" @click="goBack">{{ $t('common.button.goBack') }}</back-navigation>
 
       <!-- Hero -->
       <header class="hero">
@@ -18,10 +15,8 @@
         <p class="hero__subtitle">{{ $t('common.message.mobileAppDescription') }}</p>
 
         <div class="hero__badges">
-          <span class="badge badge--live">
-            <span class="badge__dot"></span>{{ $t('common.message.mobileAvailableNow') }}
-          </span>
-          <span class="badge">{{ $t('common.message.mobileSharedAccount') }}</span>
+          <status-badge tone="success">{{ $t('common.message.mobileAvailableNow') }}</status-badge>
+          <meta-tag>{{ $t('common.message.mobileSharedAccount') }}</meta-tag>
         </div>
 
         <div class="hero__actions">
@@ -62,9 +57,7 @@
               </span>
               Chrome &amp; Edge
             </span>
-            <span class="chip chip--live">
-              <span class="chip__dot"></span>{{ $t('common.message.extensionAvailableNow') }}
-            </span>
+            <status-badge tone="success">{{ $t('common.message.extensionAvailableNow') }} </status-badge>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadBrowserExtension') }}</h2>
           <p class="platform__text">{{ $t('common.message.extensionHint') }}</p>
@@ -89,9 +82,7 @@
               <font-awesome-icon :icon="faAndroid" class="platform__os-icon" />
               Android
             </span>
-            <span class="chip chip--live">
-              <span class="chip__dot"></span>{{ $t('common.message.mobileAvailableNow') }}
-            </span>
+            <status-badge tone="success">{{ $t('common.message.mobileAvailableNow') }} </status-badge>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadAndroid') }}</h2>
           <p class="platform__text">{{ $t('common.message.mobileAndroidHint') }}</p>
@@ -149,10 +140,9 @@
               <font-awesome-icon :icon="faApple" class="platform__os-icon" />
               iOS
             </span>
-            <span :class="['chip', hasIos ? 'chip--live' : 'chip--pending']">
-              <span class="chip__dot"></span>
+            <status-badge :tone="hasIos ? 'success' : 'warning'">
               {{ hasIos ? $t('common.message.mobileNowOnAppStore') : $t('common.message.mobileComingSoon') }}
-            </span>
+            </status-badge>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadIos') }}</h2>
           <p class="platform__text">
@@ -228,7 +218,7 @@
               <font-awesome-icon :icon="faWindows" class="platform__os-icon" />
               Windows
             </span>
-            <span class="chip chip--beta"> <span class="chip__dot"></span>Beta </span>
+            <status-badge tone="info">Beta</status-badge>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadWindows') }}</h2>
           <p class="platform__text">{{ $t('common.message.desktopWindowsHint') }}</p>
@@ -248,7 +238,7 @@
               <font-awesome-icon :icon="faApple" class="platform__os-icon" />
               macOS
             </span>
-            <span class="chip chip--beta"> <span class="chip__dot"></span>Beta </span>
+            <status-badge tone="info">Beta</status-badge>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadMac') }}</h2>
           <p class="platform__text">{{ $t('common.message.desktopMacHint') }}</p>
@@ -298,7 +288,8 @@
 </template>
 
 <script lang="ts">
-import { BackIcon, DownloadIcon, InfoIcon } from '@acedatacloud/core/icons/components';
+import { BackNavigation, MetaTag, StatusBadge } from '@acedatacloud/core/components';
+import { DownloadIcon, InfoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
@@ -319,7 +310,9 @@ import {
 export default defineComponent({
   name: 'DownloadIndex',
   components: {
-    BackIcon,
+    MetaTag,
+    StatusBadge,
+    BackNavigation,
     DownloadIcon,
     ElButton,
     InfoIcon,
@@ -399,6 +392,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.download-back {
+  margin-bottom: calc(var(--adc-space-6) + var(--adc-space-1));
+}
+
 .download-page {
   position: relative;
   overflow: hidden;
@@ -426,35 +423,6 @@ export default defineComponent({
   max-width: 1080px;
   margin: 0 auto;
   padding: 72px 24px 96px;
-}
-
-.download-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 28px;
-  padding: 9px 16px 9px 13px;
-  border-radius: 999px;
-  background: var(--app-bg-section);
-  border: 1px solid var(--app-border-subtle);
-  color: var(--el-text-color-regular);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-
-  &:hover {
-    color: var(--app-brand-hex);
-    border-color: rgba(var(--app-brand-rgb), 0.4);
-    transform: translateX(-2px);
-  }
-}
-
-.download-back__icon {
-  font-size: 13px;
 }
 
 /* Hero */
@@ -510,33 +478,6 @@ export default defineComponent({
   justify-content: center;
   gap: 12px;
   margin-bottom: 36px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  background: var(--app-bg-section);
-  border: 1px solid var(--app-border-subtle);
-  color: var(--el-text-color-regular);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.badge--live {
-  background: rgba(var(--app-brand-rgb), 0.1);
-  border-color: rgba(var(--app-brand-rgb), 0.22);
-  color: var(--app-brand-hex);
-}
-
-.badge__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
 }
 
 .hero__actions {
@@ -614,50 +555,6 @@ export default defineComponent({
 .platform--ios .platform__os-icon,
 .platform--mac .platform__os-icon {
   color: var(--el-text-color-primary);
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.chip__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.chip--live {
-  background: rgba(16, 185, 129, 0.14);
-  color: #047857;
-}
-
-.chip--live .chip__dot {
-  background: #10b981;
-}
-
-.chip--pending {
-  background: rgba(245, 158, 11, 0.16);
-  color: #b45309;
-}
-
-.chip--pending .chip__dot {
-  background: #f59e0b;
-}
-
-.chip--beta {
-  background: rgba(var(--app-brand-rgb), 0.14);
-  color: var(--app-brand-hex);
-}
-
-.chip--beta .chip__dot {
-  background: var(--app-brand-hex);
 }
 
 .platform__title {

@@ -3,12 +3,15 @@
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
+          <back-navigation :as="backLinkComponent" :to="backRoute" class="mb-4">{{
+            $t('common.title.allOrders')
+          }}</back-navigation>
           <h2 class="title">{{ $t('order.title.info') }}</h2>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="never">
             <el-row>
               <el-col :span="16" :offset="4">
                 <div v-if="loading" class="pt-5">
@@ -27,9 +30,9 @@
                       {{ order?.application?.service?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
-                      <el-tag :type="payWayTagType(order.pay_way)" effect="dark" round size="small">
+                      <meta-tag :tone="payWayTagType(order.pay_way)" density="compact">
                         {{ payWayLabel(order.pay_way) }}
-                      </el-tag>
+                      </meta-tag>
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order?.amount && order.amount > 0" :label="$t('order.field.amount')">
                       {{ $t('order.message.creditsValue', { value: formatCredits(order.amount) }) }}
@@ -54,16 +57,15 @@
                               })
                             }}
                           </span>
-                          <el-tag
+                          <meta-tag
                             v-for="badge in discountBadges"
                             :key="badge.key"
                             class="discount-tag"
-                            effect="light"
-                            size="small"
-                            :type="badge.type"
+                            :tone="badge.type"
+                            density="compact"
                           >
                             {{ badge.text }}
-                          </el-tag>
+                          </meta-tag>
                         </div>
                         <p v-for="(hint, index) in discountHints" :key="index" class="discount-hint">
                           {{ hint }}
@@ -158,15 +160,14 @@
                   >
                     <span class="payicon x402"></span>
                     <span class="payname">{{ $t('order.title.x402') }}</span>
-                    <el-tag
+                    <meta-tag
                       v-if="x402DiscountRate > 0"
                       class="absolute -top-2 right-0"
-                      effect="light"
-                      size="small"
-                      type="success"
+                      tone="success"
+                      density="compact"
                     >
                       {{ $t('order.message.x402DiscountTag', { percent: x402BadgePercent }) }}
-                    </el-tag>
+                    </meta-tag>
                   </div>
                   <div
                     v-if="enablePaypal"
@@ -242,6 +243,9 @@
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router';
+import { ROUTE_CONSOLE_ORDER_LIST } from '@/router';
+import { MetaTag, BackNavigation } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
 import { orderOperator } from '@/operators/order';
 import {
@@ -254,7 +258,6 @@ import {
   ElDescriptionsItem,
   ElButton,
   ElCard,
-  ElTag,
   ElEmpty
 } from 'element-plus';
 import WechatPayOrder from '@/components/order/WechatPay.vue';
@@ -307,6 +310,8 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleOrderDetail',
   components: {
+    BackNavigation,
+    MetaTag,
     ElButton,
     CopyToClipboard,
     ElRow,
@@ -317,7 +322,6 @@ export default defineComponent({
     ElAlert,
     ElDescriptions,
     ElDescriptionsItem,
-    ElTag,
     ElEmpty,
     WechatPayOrder,
     StripePayOrder,
@@ -341,6 +345,12 @@ export default defineComponent({
     };
   },
   computed: {
+    backLinkComponent() {
+      return RouterLink;
+    },
+    backRoute() {
+      return { name: ROUTE_CONSOLE_ORDER_LIST };
+    },
     config(): IConfigResponse | undefined {
       return this.$store.getters.config as IConfigResponse | undefined;
     },
@@ -764,9 +774,7 @@ export default defineComponent({
       color: #29c287;
     }
   }
-  .discount-tag {
-    border-radius: 999px;
-  }
+
   .discount-hint {
     margin: 0;
     font-size: 13px;

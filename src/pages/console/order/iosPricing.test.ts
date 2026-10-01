@@ -11,7 +11,7 @@ vi.mock('@/utils', () => ({
   getPaymentSurface: () => 'ios',
   getPriceString: () => ''
 }));
-vi.mock('@/plugins/telemetry', () => ({ track: vi.fn() }));
+vi.mock('@/plugins/telemetry', () => ({ track: vi.fn(), trackApiFailure: vi.fn() }));
 vi.mock('@/components/order/WechatPay.vue', () => ({ default: {} }));
 vi.mock('@/components/order/StripePay.vue', () => ({ default: {} }));
 vi.mock('@/components/order/AliPay.vue', () => ({ default: {} }));

@@ -8,7 +8,7 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="never">
             <el-table v-loading="loading" :data="invitees" stripe>
               <el-table-column prop="id" :label="$t('user.field.id')" class-name="text-center" width="350px">
                 <template #default="scope">

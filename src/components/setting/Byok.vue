@@ -21,9 +21,9 @@
     >
       <el-table-column :label="$t('byok.field.provider')" width="130px">
         <template #default="scope">
-          <el-tag :type="scope.row.is_active ? 'success' : 'info'" effect="dark" round>
+          <status-badge :tone="scope.row.is_active ? 'success' : 'info'">
             {{ scope.row.provider_label }}
-          </el-tag>
+          </status-badge>
         </template>
       </el-table-column>
       <el-table-column :label="$t('byok.field.label')" min-width="120px">
@@ -76,9 +76,10 @@
 </template>
 
 <script lang="ts">
+import { StatusBadge } from '@acedatacloud/core/components';
 import { AddIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElMessage, ElMessageBox, ElSwitch, ElTable, ElTableColumn, ElTag, vLoading } from 'element-plus';
+import { ElButton, ElMessage, ElMessageBox, ElSwitch, ElTable, ElTableColumn, vLoading } from 'element-plus';
 import { byokCredentialOperator } from '@/operators';
 import type { IBYOKCredential, IBYOKProviderInfo, ICredential } from '@/models';
 import BYOKDialog from '@/components/setting/byok/Dialog.vue';
@@ -86,12 +87,12 @@ import BYOKDialog from '@/components/setting/byok/Dialog.vue';
 export default defineComponent({
   name: 'ByokSetting',
   components: {
+    StatusBadge,
     AddIcon,
     ElButton,
     ElSwitch,
     ElTable,
     ElTableColumn,
-    ElTag,
     'byok-dialog': BYOKDialog
   },
   directives: {
