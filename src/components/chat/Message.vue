@@ -27,7 +27,9 @@
           <thinking-block
             v-if="message.role === 'assistant' && message.thinking"
             :content="message.thinking"
-            :done="message.state === messageState.FINISHED || message.state === messageState.FAILED"
+            :done="
+              message.state === messageState.FINISHED || message.state === messageState.FAILED || !!copyableText.trim()
+            "
           />
           <div v-if="!Array.isArray(message.content)">
             <markdown-renderer
@@ -170,7 +172,9 @@
             }}</el-button>
           </div>
         </div>
-        <answering-mark v-if="message.state === messageState.PENDING" />
+        <answering-mark
+          v-if="message.role === 'assistant' && message.state === messageState.PENDING && !message.thinking"
+        />
         <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
           <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span class="error-text">{{ partialErrorText }}</span>

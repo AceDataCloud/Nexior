@@ -143,6 +143,7 @@ export default defineConfig((config: ConfigEnv) => {
       // `computing gzip size` step).
       reportCompressedSize: false,
       rollupOptions: {
+        input: { app: path.resolve(__dirname, 'index.html'), motion: path.resolve(__dirname, 'motion.html') },
         output: {
           manualChunks(id) {
             const normalizedId = normalizeModuleId(id);

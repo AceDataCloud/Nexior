@@ -1,40 +1,22 @@
 <template>
-  <div class="mark"></div>
+  <div class="answering-mark" role="status" aria-live="polite">
+    <motion-orb :size="28" />
+    <span>{{ $t('chat.thinking.inProgress') }}</span>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'AnsweringMark',
-  data() {
-    return {};
-  },
-  computed: {
-    conversationId() {
-      return this.$route.params?.id?.toString();
-    }
-  }
-});
+<script setup lang="ts">
+import MotionOrb from '@/components/common/MotionOrb.vue';
 </script>
 
-<style lang="scss">
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.mark {
-  width: 2px;
-  height: 16px;
+<style scoped>
+.answering-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
   margin-top: 3px;
-  background-color: var(--el-text-color-primary);
-  animation: blink 1s infinite;
+  color: var(--el-text-color-regular);
+  font-size: 13px;
 }
 </style>
