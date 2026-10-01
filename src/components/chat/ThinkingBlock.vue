@@ -4,7 +4,7 @@
       <el-icon class="caret" :class="{ 'rotate-90': !collapsed }"
         ><ArrowRight :size="'1em' as any" aria-hidden="true" focusable="false"
       /></el-icon>
-      <particle-sphere v-if="!done" :size="24" />
+      <particle-sphere v-if="!done" :size="14" />
       <ai-icon v-else class="brain" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="thinking-label">{{ label }}</span>
     </div>
@@ -72,7 +72,7 @@ export default defineComponent({
   padding: 4px 0 4px 12px;
 }
 .thinking-block.active .thinking-header {
-  color: var(--el-color-primary, #6366f1);
+  color: var(--el-text-color-secondary);
 }
 .thinking-header {
   cursor: pointer;

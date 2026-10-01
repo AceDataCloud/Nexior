@@ -24,7 +24,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { createParticleRenderer, projectSphere, type ParticleRenderer } from './particleSphereRenderer';
 
-const props = withDefaults(defineProps<{ size?: number; animated?: boolean }>(), { size: 32, animated: true });
+const props = withDefaults(defineProps<{ size?: number; animated?: boolean }>(), { size: 18, animated: true });
 const staticPoints = projectSphere(0);
 const canvas = ref<HTMLCanvasElement>();
 const ready = ref(false);

@@ -6,7 +6,7 @@ export interface SpherePoint {
   radius: number;
   opacity: number;
 }
-const count = 96;
+const count = 48;
 const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 const particles = Array.from({ length: count }, (_, index) => {
   const y = 1 - (2 * (index + 0.5)) / count;
