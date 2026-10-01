@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
   display: inline-block;
   position: relative;
   flex-shrink: 0;
-  color: inherit;
+  color: var(--el-text-color-regular);
 }
 canvas,
 .static-sphere {

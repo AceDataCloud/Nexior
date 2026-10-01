@@ -29,7 +29,7 @@ export function projectSphere(seconds: number): SpherePoint[] {
         x: 20 + x * 16.2 * breathe * perspective,
         y: 20 + y * 16.2 * breathe * perspective,
         depth,
-        radius: 0.24 + depth * 0.69,
+        radius: 0.4 + depth * 0.85,
         opacity: 0.13 + depth * 0.77
       };
     })
