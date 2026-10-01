@@ -14,6 +14,11 @@ export const getSiteOrigin = (site?: ISite) => {
   if (site?.origin) {
     return site.origin;
   }
+  // Review builds use the existing public first-party configuration rather
+  // than trying to initialize a new Site for an ephemeral workers.dev host.
+  if (import.meta.env.VITE_LOADING_PREVIEW === '1') {
+    return STUDIO_HOST;
+  }
   // On native shells (Capacitor on Android / iOS) window.location.host
   // is "localhost" and useless; on desktop (Electron) it is the custom
   // scheme authority "bundle" (app://bundle) which is equally useless.

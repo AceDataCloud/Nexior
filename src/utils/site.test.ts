@@ -43,6 +43,10 @@ describe('getSiteOrigin', () => {
     vi.stubEnv('VITE_SURFACE', 'desktop');
     expect(getSiteOrigin({ origin: 'tenant.example.com' } as never)).toBe('tenant.example.com');
   });
+  it('resolves the existing Studio site for the opt-in review build', () => {
+    vi.stubEnv('VITE_LOADING_PREVIEW', '1');
+    expect(getSiteOrigin()).toBe('studio.acedata.cloud');
+  });
 });
 
 describe('getSiteMarkupRatio', () => {

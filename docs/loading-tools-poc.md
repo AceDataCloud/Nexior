@@ -23,3 +23,5 @@ Select `?tool=dot-matrix`, `dot-animator`, `ldrs`, `css-loaders`, `loading-io`, 
 - SVGator: unmodified geometry of its official CSS sample from https://cdn.svgator.com/samples/SVGator-Animation-formats.zip. Its copyright/export-format notice is retained. This is an evaluation sample, not an assertion of a commercial artwork license. Replace it with an owned exported asset before production use. Account creation, paid export, and MCP connection were not performed.
 
 The comparison is an opt-in component integration. Choosing a production design or purchasing an editor subscription remains a separate decision.
+
+The review build resolves its ephemeral hostname against the existing first-party Studio/platform Site configuration. It does not initialize a new Site row for workers.dev. Normal production and customer-domain resolution remain unchanged.
