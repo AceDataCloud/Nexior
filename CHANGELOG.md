@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 30 Sep 2026 20:25:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 01 Oct 2026 20:26:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.377.0
+
+Thu, 01 Oct 2026 20:26:49 GMT
+
+### Minor changes
+
+- Upgrade Studio voice calls to GPT-Live with full-duplex audio, independent captions, graceful session closure and existing chat backend delegation. (dev@acedata.cloud)
+- Add Kling V3 Turbo with fixed native audio and supported generation controls. (dev@acedata.cloud)
+
+### Patches
+
+- Add a compact localized particle sphere to chat waiting/reasoning states, centered on the model avatar with efficient animation lifecycle handling. (dev@acedata.cloud)
+- Keep the mobile application dock's Home and first capability reachable at the start of its scroll range, and use the shared Site brand logo for Home. (dev@acedata.cloud)
+- Unify Studio return navigation, status and metadata labels, clickable chips, copy targets and application-theme presentation through shared core controls. (dev@acedata.cloud)
 
 ## 3.376.0
 
