@@ -65,6 +65,10 @@ const applyBootLocale = async (site?: Parameters<typeof resolveBootLocaleCookie>
 export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }, async ({ app, router, isClient }) => {
   app.use(store);
   app.use(i18n);
+  if (isClient && import.meta.env.VITE_LOADING_PREVIEW === '1') {
+    const { installLoadingPreview } = await import('./components/loading/catalog');
+    installLoadingPreview(app);
+  }
   app.use(MotionPlugin);
   app.use(dayjs, { formatString: 'YYYY-MM-DD HH:mm:ss' });
   app.component('CapabilityPresentation', CapabilityPresentation);

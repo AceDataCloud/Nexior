@@ -1,0 +1,12 @@
+.adc-css-dots {
+  width: var(--loader-size);
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side, var(--loader-color) 90%, #0000) 0 / calc(100% / 3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: adc-css-dots calc(1s / var(--loader-speed)) steps(4) infinite;
+}
+@keyframes adc-css-dots {
+  to {
+    clip-path: inset(0 -34% 0 0);
+  }
+}
