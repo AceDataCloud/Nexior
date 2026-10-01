@@ -23,11 +23,13 @@
         }"
         class="content"
       >
-        <div v-if="!isEditing" class="message-content">
+        <div v-if="!isEditing && !waitingOnly" class="message-content">
           <thinking-block
             v-if="message.role === 'assistant' && message.thinking"
             :content="message.thinking"
-            :done="message.state === messageState.FINISHED || message.state === messageState.FAILED"
+            :done="
+              message.state === messageState.FINISHED || message.state === messageState.FAILED || !!copyableText.trim()
+            "
           />
           <div v-if="!Array.isArray(message.content)">
             <markdown-renderer
@@ -156,7 +158,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="edits">
+        <div v-else-if="isEditing" class="edits">
           <el-input
             v-model="questionValue"
             type="textarea"
@@ -170,7 +172,7 @@
             }}</el-button>
           </div>
         </div>
-        <answering-mark v-if="message.state === messageState.PENDING" />
+        <answering-mark v-if="waitingOnly" />
         <div v-if="errorText && hasRenderableAssistantContent" class="partial-error" role="alert">
           <error-icon class="error-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span class="error-text">{{ partialErrorText }}</span>
@@ -420,6 +422,13 @@ export default defineComponent({
     };
   },
   computed: {
+    waitingOnly(): boolean {
+      return (
+        this.message.role === ROLE_ASSISTANT &&
+        this.message.state === IChatMessageState.PENDING &&
+        !this.hasRenderableAssistantContent
+      );
+    },
     isEarlyAccessError(): boolean {
       return this.message.error?.code === ERROR_CODE_API_EARLY_ACCESS_REQUIRED;
     },
@@ -704,6 +713,7 @@ export default defineComponent({
 }
 
 .message {
+  --chat-avatar-size: 32px;
   display: flex;
   flex-direction: row;
   margin-bottom: 24px;
@@ -721,8 +731,8 @@ export default defineComponent({
     padding: 4px 8px 4px 0;
     flex-shrink: 0;
     .avatar {
-      width: 32px;
-      height: 32px;
+      width: var(--chat-avatar-size);
+      height: var(--chat-avatar-size);
       border-radius: 50%;
       box-shadow: var(--app-shadow-xs);
     }
@@ -744,13 +754,10 @@ export default defineComponent({
   // width on a 360px viewport, which gets rid of the awkward 1-2 word
   // last line that the audit flagged on iPhone SE.
   @media (max-width: 640px) {
+    --chat-avatar-size: 28px;
     .author {
       width: 36px;
       padding-right: 4px;
-      .avatar {
-        width: 28px;
-        height: 28px;
-      }
     }
     .main {
       width: calc(100% - 36px);
