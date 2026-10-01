@@ -4,7 +4,7 @@
       <el-icon class="caret" :class="{ 'rotate-90': !collapsed }"
         ><ArrowRight :size="'1em' as any" aria-hidden="true" focusable="false"
       /></el-icon>
-      <motion-orb v-if="!done" :size="20" />
+      <particle-sphere v-if="!done" :size="24" />
       <ai-icon v-else class="brain" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="thinking-label">{{ label }}</span>
     </div>
@@ -21,14 +21,14 @@ import { defineComponent, ref, computed, watch } from 'vue';
 import { ElIcon } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import MotionOrb from '@/components/common/MotionOrb.vue';
+import ParticleSphere from '@/components/common/ParticleSphere.vue';
 
 /**
  * Renders a model's chain-of-thought stream emitted by aichat2 as
  * `type:"thinking"` SSE events.
  *
  * UX:
- *  - While `done === false`: auto-expanded, brain icon pulses, header
+ *  - While `done === false`: auto-expanded, particle sphere rotates, header
  *    reads "Thinking…".
  *  - Once `done === true` and content is non-empty: auto-collapses to a
  *    one-line "Thought" header that the user can click to re-expand.
@@ -39,7 +39,7 @@ import MotionOrb from '@/components/common/MotionOrb.vue';
  */
 export default defineComponent({
   name: 'ThinkingBlock',
-  components: { AiIcon, ArrowRight, ElIcon, MarkdownRenderer, MotionOrb },
+  components: { AiIcon, ArrowRight, ElIcon, MarkdownRenderer, ParticleSphere },
   props: {
     content: { type: String, required: true },
     /** True once the model has switched from thinking to answering. */

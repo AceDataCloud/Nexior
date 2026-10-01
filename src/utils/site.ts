@@ -2,6 +2,7 @@ import { IApplication, IPackage, ISite, ISiteContact, IUser } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { isNative, isDesktop } from './surface';
 import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
+import { getChatLoadingPreviewMode } from './chatLoadingPreview';
 
 /**
  * Resolve the bare hostname used for PlatformBackend Site lookup. Native
@@ -10,6 +11,8 @@ import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
 const STUDIO_HOST = 'studio.acedata.cloud';
 
 export const getSiteOrigin = (site?: ISite) => {
+  // Explicit preview builds read the existing public Studio site; never create a tenant for a preview hostname.
+  if (getChatLoadingPreviewMode()) return STUDIO_HOST;
   // If we already have a Site row, trust its stored origin.
   if (site?.origin) {
     return site.origin;

@@ -69,13 +69,31 @@ function mountConversation(workingDirectory = '') {
   });
 }
 
-type Vm = { ready: boolean; needsWorkingDirectory: boolean; onSubmit: () => Promise<void>; messages: unknown[] };
+type Vm = {
+  loadingPreview?: 'waiting' | 'thinking';
+  ready: boolean;
+  needsWorkingDirectory: boolean;
+  onSubmit: () => Promise<void>;
+  messages: unknown[];
+};
 
 describe('working directory gate', () => {
   afterEach(() => {
     surface.desktop = false;
     bridge.value = null;
     vi.clearAllMocks();
+  });
+
+  it('cannot submit a model request from the loading fixture', async () => {
+    const wrapper = mountConversation('/Users/me/proj');
+    const vm = wrapper.vm as unknown as Vm;
+    vm.loadingPreview = 'waiting';
+    const request = vi.spyOn(wrapper.vm as any, 'onRequest');
+    expect(vm.ready).toBe(false);
+    await vm.onSubmit();
+    expect(request).not.toHaveBeenCalled();
+    expect(vm.messages).toEqual([]);
+    wrapper.unmount();
   });
 
   it('blocks sending on desktop until a directory is chosen', () => {

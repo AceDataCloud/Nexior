@@ -3,6 +3,7 @@
     <template #chat>
       <div class="toolbar">
         <div class="toolbar-left">
+          <meta-tag v-if="loadingPreview" tone="warning">{{ $t('index.button.testEnv') }}</meta-tag>
           <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
           <byok-badge class="byok-badge" />
           <el-dropdown
@@ -73,6 +74,8 @@
             :messages="messages"
             :question="question"
             :application="application"
+            :readonly="!!loadingPreview"
+            :model-group-override="loadingPreview ? modelGroup : undefined"
             :answering="answering"
             :retrying="restarting"
             class="message"
@@ -110,6 +113,8 @@
 </template>
 
 <script lang="ts">
+import { MetaTag } from '@acedatacloud/core/components';
+import { getChatLoadingPreviewMode } from '@/utils/chatLoadingPreview';
 import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
@@ -168,6 +173,7 @@ import { chatOperator } from '@/operators';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
+  loadingPreview: 'waiting' | 'thinking' | undefined;
   drawer: boolean;
   question: string;
   upload: boolean;
@@ -223,6 +229,7 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
+    MetaTag,
     DeleteIcon,
     EditIcon,
     MoreIcon,
@@ -244,6 +251,7 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      loadingPreview: getChatLoadingPreviewMode(),
       drawer: false,
       question: '',
       references: [],
@@ -313,7 +321,7 @@ export default defineComponent({
       return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
     },
     ready(): boolean {
-      if (this.restoringConversation || this.restarting) return false;
+      if (this.loadingPreview || this.restoringConversation || this.restarting) return false;
       // Guests may compose & "send" — the submit handler triggers login
       // (deferred auth), so the composer must not be disabled for them.
       if (!this.$store.getters.authenticated) {
@@ -388,6 +396,17 @@ export default defineComponent({
     }
   },
   async mounted() {
+    if (this.loadingPreview) {
+      this.messages = [
+        {
+          role: ROLE_ASSISTANT,
+          state: this.loadingPreview === 'waiting' ? IChatMessageState.PENDING : IChatMessageState.ANSWERING,
+          content: '',
+          thinking: this.loadingPreview === 'thinking' ? this.$t('chat.thinking.inProgress').toString() : undefined
+        }
+      ];
+      return;
+    }
     // Stash the deep-link return params BEFORE anything else touches the
     // route — `onApplyQueryFromUrl` (further down) strips `connector` from
     // the URL as part of Studio's Try-It chip cleanup, so we have to grab
@@ -789,6 +808,7 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
+      if (this.loadingPreview) return;
       if (this.restoringConversation) return;
       // Belt-and-braces: `ready` already disables the composer, but onDraft /
       // deep-links call onSubmit directly and would bypass it.

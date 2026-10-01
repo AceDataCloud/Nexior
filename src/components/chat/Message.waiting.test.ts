@@ -17,7 +17,7 @@ const mountMessage = () =>
   });
 describe('assistant waiting state', () => {
   it.each([IChatMessageState.ANSWERING, IChatMessageState.FINISHED, IChatMessageState.FAILED])(
-    'removes the orb after pending becomes %s',
+    'removes the particle indicator after pending becomes %s',
     async (state) => {
       const wrapper = mountMessage();
       expect(wrapper.findComponent(AnsweringMark).exists()).toBe(true);

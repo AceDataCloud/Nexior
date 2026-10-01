@@ -2,10 +2,13 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { createOrbRenderer } from './motionOrbRenderer';
-import MotionOrb from './MotionOrb.vue';
+import { createParticleRenderer } from './particleSphereRenderer';
+import ParticleSphere from './ParticleSphere.vue';
 
-vi.mock('./motionOrbRenderer', () => ({ createOrbRenderer: vi.fn() }));
+vi.mock('./particleSphereRenderer', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('./particleSphereRenderer')>()),
+  createParticleRenderer: vi.fn()
+}));
 const draw = vi.fn();
 const dispose = vi.fn();
 let reduced = false;
@@ -44,14 +47,14 @@ beforeEach(() => {
       disconnect = disconnect;
     }
   );
-  vi.mocked(createOrbRenderer).mockReturnValue({ draw, dispose });
+  vi.mocked(createParticleRenderer).mockReturnValue({ draw, dispose });
 });
 afterEach(() => vi.unstubAllGlobals());
 
-describe('MotionOrb lifecycle', () => {
+describe('ParticleSphere lifecycle', () => {
   it('renders once but never starts a loop with reduced motion', () => {
     reduced = true;
-    const wrapper = mount(MotionOrb);
+    const wrapper = mount(ParticleSphere);
     expect(draw).toHaveBeenCalledOnce();
     expect(requestAnimationFrame).not.toHaveBeenCalled();
     expect(wrapper.attributes('aria-hidden')).toBe('true');
@@ -60,7 +63,7 @@ describe('MotionOrb lifecycle', () => {
   });
 
   it('stops when hidden or offscreen and resumes only when visible', () => {
-    const wrapper = mount(MotionOrb);
+    const wrapper = mount(ParticleSphere);
     expect(requestAnimationFrame).toHaveBeenCalledOnce();
     intersection([{ isIntersecting: false } as IntersectionObserverEntry], {} as IntersectionObserver);
     expect(cancelAnimationFrame).toHaveBeenCalledWith(12);
@@ -78,7 +81,7 @@ describe('MotionOrb lifecycle', () => {
   });
 
   it('reacts to the motion preference and pause prop', async () => {
-    const wrapper = mount(MotionOrb);
+    const wrapper = mount(ParticleSphere);
     reduced = true;
     mediaChange();
     expect(cancelAnimationFrame).toHaveBeenCalledWith(12);
@@ -90,25 +93,25 @@ describe('MotionOrb lifecycle', () => {
     wrapper.unmount();
   });
 
-  it('uses the static fallback when WebGL is unavailable', () => {
-    vi.mocked(createOrbRenderer).mockReturnValue(undefined);
-    const wrapper = mount(MotionOrb);
+  it('uses the static fallback when Canvas is unavailable', () => {
+    vi.mocked(createParticleRenderer).mockReturnValue(undefined);
+    const wrapper = mount(ParticleSphere);
     expect(wrapper.attributes('data-renderer')).toBe('static');
     expect(requestAnimationFrame).not.toHaveBeenCalled();
     wrapper.unmount();
   });
 
   it('switches to a fallback on context loss and restores without a duplicate loop', async () => {
-    const wrapper = mount(MotionOrb);
-    const lost = new Event('webglcontextlost', { cancelable: true });
+    const wrapper = mount(ParticleSphere);
+    const lost = new Event('contextlost', { cancelable: true });
     wrapper.get('canvas').element.dispatchEvent(lost);
     await nextTick();
     expect(lost.defaultPrevented).toBe(true);
     expect(wrapper.attributes('data-renderer')).toBe('static');
-    wrapper.get('canvas').element.dispatchEvent(new Event('webglcontextrestored'));
+    wrapper.get('canvas').element.dispatchEvent(new Event('contextrestored'));
     await nextTick();
-    expect(wrapper.attributes('data-renderer')).toBe('webgl');
-    expect(createOrbRenderer).toHaveBeenCalledTimes(2);
+    expect(wrapper.attributes('data-renderer')).toBe('canvas');
+    expect(createParticleRenderer).toHaveBeenCalledTimes(2);
     expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
     wrapper.unmount();
   });
