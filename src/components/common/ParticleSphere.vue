@@ -4,6 +4,8 @@
     :style="{ width: `${size}px`, height: `${size}px` }"
     aria-hidden="true"
     :data-renderer="ready ? 'canvas' : 'static'"
+    :data-variant="variant"
+    :data-speed="speed"
   >
     <svg v-if="!ready" viewBox="0 0 40 40" class="static-sphere">
       <circle
@@ -21,11 +23,23 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { createParticleRenderer, projectSphere, type ParticleRenderer } from './particleSphereRenderer';
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import {
+  createParticleRenderer,
+  projectSphere,
+  type ParticleRenderer,
+  type ParticleOptions,
+  type ParticleVariant
+} from './particleSphereRenderer';
 
-const props = withDefaults(defineProps<{ size?: number; animated?: boolean }>(), { size: 18, animated: true });
-const staticPoints = projectSphere(0);
+const props = withDefaults(
+  defineProps<{ size?: number; animated?: boolean; variant?: ParticleVariant; speed?: number }>(),
+  { size: 18, animated: true }
+);
+const preview = inject<ParticleOptions | undefined>('nexior-particle-preview', undefined);
+const variant = computed(() => props.variant ?? preview?.variant ?? 'sphere');
+const speed = computed(() => props.speed ?? preview?.speed ?? 1);
+const staticPoints = computed(() => projectSphere(0, variant.value));
 const canvas = ref<HTMLCanvasElement>();
 const ready = ref(false);
 let renderer: ParticleRenderer | undefined;
@@ -49,7 +63,7 @@ function draw(now: number) {
   if (previousTime) elapsed += Math.min(now - previousTime, 100);
   previousTime = now;
   if (now - lastFrame >= 32) {
-    renderer.draw(elapsed / 1000, getComputedStyle(canvas.value!).color);
+    renderStill();
     lastFrame = now;
   }
   frame = requestAnimationFrame(draw);
@@ -60,13 +74,16 @@ function sync() {
     frame = requestAnimationFrame(draw);
   }
 }
+function renderStill() {
+  renderer?.draw(elapsed / 1000, getComputedStyle(canvas.value!).color, variant.value, speed.value);
+}
 function initialize() {
   renderer?.dispose();
   renderer = canvas.value
     ? createParticleRenderer(canvas.value, Math.min(props.size * Math.min(window.devicePixelRatio || 1, 2), 384))
     : undefined;
   ready.value = !!renderer;
-  renderer?.draw(elapsed / 1000, getComputedStyle(canvas.value!).color);
+  renderStill();
   sync();
 }
 function contextLost(event: Event) {
@@ -77,6 +94,7 @@ function contextLost(event: Event) {
 }
 watch(() => props.animated, sync);
 watch(() => props.size, initialize);
+watch([variant, speed], renderStill);
 onMounted(() => {
   media = window.matchMedia('(prefers-reduced-motion: reduce)');
   media.addEventListener('change', sync);
@@ -91,7 +109,7 @@ onMounted(() => {
     observer.observe(canvas.value);
   }
   themeObserver = new MutationObserver(() => {
-    renderer?.draw(elapsed / 1000, getComputedStyle(canvas.value!).color);
+    renderStill();
   });
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] });
   initialize();

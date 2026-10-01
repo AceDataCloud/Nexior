@@ -93,6 +93,18 @@ describe('ParticleSphere lifecycle', () => {
     wrapper.unmount();
   });
 
+  it('updates style and speed without creating a second animation loop', async () => {
+    const wrapper = mount(ParticleSphere);
+    const frameCount = vi.mocked(requestAnimationFrame).mock.calls.length;
+    await wrapper.setProps({ variant: 'helix', speed: 2 });
+    expect(draw).toHaveBeenLastCalledWith(0, expect.any(String), 'helix', 2);
+    expect(wrapper.attributes('data-variant')).toBe('helix');
+    expect(wrapper.attributes('data-speed')).toBe('2');
+    expect(createParticleRenderer).toHaveBeenCalledOnce();
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(frameCount);
+    wrapper.unmount();
+  });
+
   it('uses the static fallback when Canvas is unavailable', () => {
     vi.mocked(createParticleRenderer).mockReturnValue(undefined);
     const wrapper = mount(ParticleSphere);

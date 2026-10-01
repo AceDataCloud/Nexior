@@ -114,7 +114,7 @@
 
 <script lang="ts">
 import { MetaTag } from '@acedatacloud/core/components';
-import { getChatLoadingPreviewMode } from '@/utils/chatLoadingPreview';
+import { getChatLoadingPreviewMode, getChatParticlePreviewOptions } from '@/utils/chatLoadingPreview';
 import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
@@ -248,6 +248,9 @@ export default defineComponent({
     ElDropdownMenu,
     ElSkeleton,
     ElSkeletonItem
+  },
+  provide() {
+    return { 'nexior-particle-preview': this.loadingPreview ? getChatParticlePreviewOptions() : undefined };
   },
   data(): IData {
     return {
