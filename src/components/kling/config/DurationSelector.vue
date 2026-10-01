@@ -25,7 +25,7 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 import { KLING_DEFAULT_DURATION, KLING_V3_MODELS } from '@/constants';
 import { findKlingConflicts, clearKlingConflicts } from '@/utils/kling/capabilities';
 
-const V3_VALUES = [3, 5, 8, 10, 12, 15];
+const V3_VALUES = Array.from({ length: 13 }, (_, index) => index + 3);
 const STANDARD_VALUES = [5, 10];
 const O1_VALUES = [5];
 
@@ -49,7 +49,7 @@ export default defineComponent({
       return this.$store.state.kling?.config?.model || '';
     },
     isV3Model(): boolean {
-      return KLING_V3_MODELS.includes(this.selectedModel);
+      return this.selectedModel === 'kling-v3-turbo' || KLING_V3_MODELS.includes(this.selectedModel);
     },
     allowedDurations(): number[] {
       if (this.selectedModel === 'kling-o1') return O1_VALUES;

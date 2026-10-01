@@ -37,6 +37,15 @@ export function buildKlingVideoRequest(config?: IKlingConfig): IKlingGenerateReq
         : {})
     };
   }
+  if (request.model === 'kling-v3-turbo') {
+    request.generate_audio = true;
+    delete request.end_image_url;
+    delete request.negative_prompt;
+    delete request.cfg_scale;
+    delete request.camera_control;
+    delete request.image_list;
+    delete request.video_list;
+  }
   return request;
 }
 
