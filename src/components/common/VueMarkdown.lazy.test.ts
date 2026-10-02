@@ -23,6 +23,7 @@ describe('Markdown loading boundary', () => {
     await vi.dynamicImportSettled();
     await flushPromises();
     expect(boundary.loaded).toBe(true);
+    await vi.waitFor(() => expect(wrapper.find('strong').exists()).toBe(true));
     expect(wrapper.find('strong').text()).toBe('loaded');
     wrapper.unmount();
   });
