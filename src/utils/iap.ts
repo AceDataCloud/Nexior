@@ -146,7 +146,7 @@ async function runPurchase(orderId: string, productId: string, signal?: AbortSig
   const pending = readPending()[orderId];
   if (pending) {
     try {
-      const refreshed = await orderOperator.refresh(orderId);
+      const refreshed = await orderOperator.get(orderId);
       if (!credited(refreshed.data, pending.transactionId)) {
         const verified = await orderOperator.appleVerify(orderId, pending.transactionId);
         if (!credited(verified.data, pending.transactionId)) throw new Error('verify_pending');

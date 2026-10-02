@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-const api = vi.hoisted(() => ({ appleVerify: vi.fn(), refresh: vi.fn() }));
+const api = vi.hoisted(() => ({ appleVerify: vi.fn(), get: vi.fn() }));
 vi.mock('@/operators', () => ({ orderOperator: api }));
 vi.mock('./surface', () => ({ isIOS: () => true }));
 
@@ -52,7 +52,7 @@ beforeEach(async () => {
     })
   };
   api.appleVerify.mockImplementation(async (_id, tx) => ({ data: { state: 'Finished', pay_id: tx } }));
-  api.refresh.mockResolvedValue({ data: { state: 'Pending' } });
+  api.get.mockResolvedValue({ data: { state: 'Pending' } });
   vi.stubGlobal('window', {
     CdvPurchase: {
       store,
@@ -172,7 +172,7 @@ describe('Apple IAP order isolation', () => {
     store.localTransactions.push(actual);
     await [...approved][0](actual);
     expect(await result).toMatchObject({ verificationPending: true });
-    api.refresh.mockResolvedValue({ data: { state: 'Finished', pay_id: actual.transactionId } });
+    api.get.mockResolvedValue({ data: { state: 'Finished', pay_id: actual.transactionId } });
     expect(await purchase(current, sku)).toMatchObject({ ok: true });
     expect(api.appleVerify).toHaveBeenCalledOnce();
     expect(store.order).toHaveBeenCalledOnce();
