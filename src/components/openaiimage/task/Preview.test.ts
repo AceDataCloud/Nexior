@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import type { IOpenAIImageTask } from '@/models';
 
 vi.mock('@/components/common/ImageWrapper.vue', () => ({
@@ -8,6 +8,11 @@ vi.mock('@/components/common/ImageWrapper.vue', () => ({
 }));
 
 const confirm = vi.fn();
+const task = vi.fn();
+vi.mock('@/operators/openaiimage', () => ({ openaiimageOperator: { task: (...args: unknown[]) => task(...args) } }));
+let observerCallback: ((entries: Array<{ isIntersecting: boolean }>) => void) | undefined;
+const disconnect = vi.fn();
+
 vi.mock('element-plus', async (importOriginal) => {
   const actual = await importOriginal<typeof import('element-plus')>();
   return {
@@ -42,6 +47,24 @@ const mountPreview = (response?: IOpenAIImageTask['response'], dispatch = vi.fn(
   });
 
 describe('openaiimage/task/Preview', () => {
+  beforeEach(() => {
+    task.mockReset();
+    disconnect.mockReset();
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(callback: typeof observerCallback) {
+          observerCallback = callback;
+        }
+        observe() {}
+        disconnect() {
+          disconnect();
+        }
+      }
+    );
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
   it('labels tasks without a response as pending', () => {
     const wrapper = mountPreview();
 
@@ -84,5 +107,125 @@ describe('openaiimage/task/Preview', () => {
     await Promise.resolve();
 
     expect(dispatch).not.toHaveBeenCalled();
+  });
+});
+
+describe('summary detail hydration', () => {
+  const mountSummary = (store?: any) =>
+    shallowMount(Preview, {
+      props: {
+        modelValue: {
+          id: 'task-1',
+          summary: true,
+          type: 'images',
+          request: { prompt: 'A lighthouse' },
+          response: { success: true, task_id: 'task-1' }
+        }
+      },
+      global: {
+        stubs: {
+          ElAlert: { template: '<div><slot name="template" /><slot /></div>' },
+          ElTooltip: { template: '<div><slot /></div>' }
+        },
+        mocks: {
+          $t: (key: string) => key,
+          $dayjs: { format: () => '2026-07-19' },
+          $store: store || {
+            state: { openaiimage: { credential: { token: 'test-token' }, config: {} } },
+            commit: vi.fn()
+          }
+        }
+      }
+    });
+
+  beforeEach(() => {
+    task.mockReset();
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(callback: typeof observerCallback) {
+          observerCallback = callback;
+        }
+        observe() {}
+        disconnect() {
+          disconnect();
+        }
+      }
+    );
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('fetches only when visible and retains detail through summary refresh', async () => {
+    task.mockResolvedValue({
+      data: {
+        id: 'task-1',
+        response: { success: true, task_id: 'task-1', data: [{ b64_json: 'abc' }] },
+        request: { prompt: 'A lighthouse' }
+      }
+    });
+    const wrapper = mountSummary();
+    expect(task).not.toHaveBeenCalled();
+    observerCallback?.([{ isIntersecting: true }]);
+    await vi.waitFor(() => expect(wrapper.vm.detail?.id).toBe('task-1'));
+    expect(task).toHaveBeenCalledTimes(1);
+    expect(wrapper.vm.images[0].url).toBe('data:image/png;base64,abc');
+    await wrapper.setProps({
+      modelValue: { id: 'task-1', summary: true, response: { success: true, task_id: 'task-1' } }
+    });
+    expect(wrapper.vm.images[0].url).toBe('data:image/png;base64,abc');
+    expect(task).toHaveBeenCalledTimes(1);
+    observerCallback?.([{ isIntersecting: false }]);
+    expect(wrapper.vm.detail).toBeUndefined();
+    wrapper.unmount();
+  });
+
+  it('waits for an edit task to finish before loading its reference images', async () => {
+    const wrapper = mountSummary();
+    await wrapper.setProps({
+      modelValue: {
+        id: 'task-1',
+        summary: true,
+        type: 'images_edits',
+        request: { prompt: 'edit' },
+        response: { task_id: 'task-1' }
+      }
+    });
+    observerCallback?.([{ isIntersecting: true }]);
+    expect(task).not.toHaveBeenCalled();
+    task.mockResolvedValue({
+      data: {
+        id: 'task-1',
+        response: { success: false, task_id: 'task-1' },
+        request: { image_urls: ['https://example.com/reference.png'] }
+      }
+    });
+    await wrapper.setProps({
+      modelValue: {
+        id: 'task-1',
+        summary: true,
+        type: 'images_edits',
+        finished_at: 100,
+        request: { prompt: 'edit' },
+        response: { success: false, task_id: 'task-1' }
+      }
+    });
+    await vi.waitFor(() => expect(task).toHaveBeenCalledTimes(1));
+    wrapper.unmount();
+  });
+
+  it('does not automatically retry a failed detail request', async () => {
+    task
+      .mockRejectedValueOnce(new Error('unavailable'))
+      .mockResolvedValueOnce({ data: { id: 'task-1', response: { success: true, task_id: 'task-1' } } });
+    const wrapper = mountSummary();
+    observerCallback?.([{ isIntersecting: true }]);
+    await vi.waitFor(() => expect(wrapper.vm.detailError).toBe(true));
+    await wrapper.setProps({
+      modelValue: { id: 'task-1', summary: true, response: { success: true, task_id: 'task-1' } }
+    });
+    expect(task).toHaveBeenCalledTimes(1);
+    wrapper.vm.retryDetail();
+    await vi.waitFor(() => expect(task).toHaveBeenCalledTimes(2));
+    wrapper.unmount();
   });
 });
