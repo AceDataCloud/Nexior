@@ -169,12 +169,7 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   color: inherit;
-}
-
-.copy-small :deep(.icon-copy),
-.copy-small :deep(.icon-check) {
-  margin-left: 0;
-  font-size: 11px;
+  margin-inline-start: 0;
 }
 
 .actions {

@@ -18,25 +18,20 @@ svg.lucide {
   vertical-align: -0.125em;
 }
 
+// Task metadata is flowing text. Flex turns its bare text into an anonymous
+// item and separates the trailing copy control from the value it belongs to.
 .preview .content .el-alert p.text-xs {
-  display: flex;
   min-width: 0;
-  align-items: flex-start;
-  gap: 0;
+  overflow-wrap: anywhere;
   line-height: 1.5;
 
   > svg:first-child,
   > .el-icon:first-child {
+    display: inline-block;
     width: 14px;
     height: 14px;
-    flex: 0 0 14px;
-    margin: 2px 0 0;
-    margin-inline-end: 6px;
-  }
-
-  > .btn-copy,
-  > .icon-copy,
-  > .icon-check {
-    flex: 0 0 auto;
+    margin: 0;
+    margin-inline-end: 4px;
+    vertical-align: -2px;
   }
 }

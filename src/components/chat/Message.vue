@@ -852,14 +852,11 @@ export default defineComponent({
     .btn-edit {
       visibility: hidden;
     }
-    // CopyToClipboard / RestartToGenerate ship with their own
-    // `margin-left: 5px`; null it out so the parent `gap` is the single
-    // source of truth for spacing and the icons line up cleanly.
-    :deep(.icon-copy),
-    :deep(.icon-check),
+    // The toolbar gap owns spacing between controls.
+    :deep(.copy-control),
     :deep(.icon-sync),
     :deep(.btn-report) {
-      margin-left: 0;
+      margin-inline-start: 0;
     }
     // ReportButton is sized for the 24px action chips on result cards; here
     // the row is icon-only, so drop that sizing and inherit this row's.
