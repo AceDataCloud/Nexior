@@ -17,6 +17,8 @@ interface IData {
   refreshTimer: number | undefined;
   launched: boolean;
   statusText: string;
+  disposed: boolean;
+  purchaseController: AbortController | undefined;
 }
 
 export default defineComponent({
@@ -40,6 +42,8 @@ export default defineComponent({
     return {
       refreshTimer: undefined,
       launched: false,
+      disposed: false,
+      purchaseController: undefined,
       statusText: this.$t('order.message.applePayProcessing')
     };
   },
@@ -57,7 +61,10 @@ export default defineComponent({
     visible: {
       handler(val) {
         if (!val) {
+          this.purchaseController?.abort();
           this.launched = false;
+          if (this.refreshTimer) clearTimeout(this.refreshTimer);
+          this.refreshTimer = undefined;
           return;
         }
         this.startPurchase();
@@ -65,13 +72,15 @@ export default defineComponent({
     }
   },
   unmounted() {
+    this.disposed = true;
+    this.purchaseController?.abort();
     if (this.refreshTimer) {
       clearTimeout(this.refreshTimer);
     }
   },
   methods: {
     async startPurchase() {
-      if (this.launched) return;
+      if (this.launched || this.disposed || !this.visible) return;
       this.launched = true;
       if (!this.modelValue.id) {
         return;
@@ -82,7 +91,20 @@ export default defineComponent({
         return;
       }
       this.statusText = this.$t('order.message.applePayProcessing');
-      const result = await purchaseAndVerify(this.modelValue.id, this.productId);
+      const orderId = this.modelValue.id;
+      const controller = new AbortController();
+      this.purchaseController = controller;
+      const result = await purchaseAndVerify(orderId, this.productId, controller.signal);
+      if (this.purchaseController === controller) this.purchaseController = undefined;
+      if (this.disposed || !this.visible || this.modelValue.id !== orderId) return;
+      if (result.verificationPending) {
+        // Keep payment controls covered while confirming an already paid
+        // receipt. The next attempt verifies the saved transaction only.
+        this.statusText = this.$t('order.message.applePayProcessing');
+        this.launched = false;
+        if (this.visible) this.refreshTimer = window.setTimeout(() => this.startPurchase(), 5000);
+        return;
+      }
       if (result.cancelled) {
         this.$emit('hide');
         return;
@@ -99,12 +121,14 @@ export default defineComponent({
       this.onRefresh();
     },
     onRefresh() {
-      if (!this.modelValue.id) {
+      if (!this.modelValue.id || this.disposed || !this.visible) {
         return;
       }
+      const orderId = this.modelValue.id;
       orderOperator
-        .refresh(this.modelValue.id)
+        .refresh(orderId)
         .then(({ data }: { data: IOrderDetailResponse }) => {
+          if (this.disposed || !this.visible || this.modelValue.id !== orderId) return;
           this.$emit('update:modelValue', data);
           if (data.state !== OrderState.PAID && data.state !== OrderState.FINISHED) {
             this.refreshTimer = window.setTimeout(() => this.onRefresh(), 2000);
@@ -113,6 +137,7 @@ export default defineComponent({
           }
         })
         .catch(() => {
+          if (this.disposed || !this.visible || this.modelValue.id !== orderId) return;
           this.refreshTimer = window.setTimeout(() => this.onRefresh(), 5000);
         });
     }
