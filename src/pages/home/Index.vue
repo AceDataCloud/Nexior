@@ -1,5 +1,5 @@
 <template>
-  <main v-if="siteLoaded" class="studio-home">
+  <main v-if="siteLoaded" ref="homeScroll" class="studio-home" tabindex="-1" @scroll.passive="onHomeScroll">
     <div class="dashboard">
       <home-carousel v-if="bannerEnabled && banners.length" :slides="banners" @image-error="onImageError" />
       <category-tiles
@@ -37,6 +37,18 @@
         {{ $t('intro.home.showcase.loadMore') }}
       </button>
     </div>
+    <Transition name="back-to-top">
+      <button
+        v-if="showBackToTop"
+        type="button"
+        class="home-back-to-top"
+        :aria-label="$t('intro.home.backToTop')"
+        :title="$t('intro.home.backToTop')"
+        @click="scrollToTop"
+      >
+        <ArrowUpToLine :size="14" :stroke-width="1.8" aria-hidden="true" />
+      </button>
+    </Transition>
     <showcase-detail-dialog :item="selectedShowcase" @close="selectedShowcase = undefined" />
   </main>
   <div v-else class="home-loading" role="status" :aria-label="$t('common.status.loading')">
@@ -46,6 +58,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ArrowUpToLine } from '@lucide/vue';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import type { ISiteBanner, ISiteHomeSection, IShowcase, ResolvedShowcase } from '@/models';
 import { showcaseOperator, siteBannerOperator, siteHomeSectionOperator } from '@/operators';
@@ -75,6 +88,7 @@ const SHOWCASE_BATCH_SIZE = 12;
 export default defineComponent({
   name: 'StudioHome',
   components: {
+    ArrowUpToLine,
     CategoryTiles,
     ShowcaseGrid,
     ShowcaseDetailDialog,
@@ -83,6 +97,7 @@ export default defineComponent({
   },
   data() {
     return {
+      showBackToTop: false,
       failedIcons: {} as Partial<Record<CapabilityKey, boolean>>,
       failedBannerImages: {} as Record<string, boolean>,
       failedCategoryImages: {} as Record<string, boolean>,
@@ -266,6 +281,17 @@ export default defineComponent({
     this.showcaseLoadObserver?.disconnect();
   },
   methods: {
+    onHomeScroll(event: Event): void {
+      this.showBackToTop = (event.currentTarget as HTMLElement).scrollTop > 300;
+    },
+    scrollToTop(): void {
+      const container = this.$refs.homeScroll as HTMLElement;
+      container.focus({ preventScroll: true });
+      container.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+      });
+    },
     resolve(item: HomeCapability): ResolvedHomeCapability {
       const defaultIcon = CAPABILITY_ICONS[item.capability];
       const presentation = resolveCapabilityPresentation(this.site, item.capability, item.defaultName, defaultIcon);
@@ -397,6 +423,65 @@ export default defineComponent({
   padding: 18px 0 8px;
 }
 
+.home-back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  color: #e2e8f0;
+  background: rgba(22, 27, 38, 0.88);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    bottom 180ms ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: rgba(var(--app-brand-rgb), 0.6);
+      background: rgba(38, 44, 58, 0.96);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--el-color-primary);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    background: rgba(38, 44, 58, 0.96);
+  }
+}
+
+.back-to-top-enter-active,
+.back-to-top-leave-active {
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.back-to-top-enter-from,
+.back-to-top-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
 .home-loading {
   display: grid;
   height: 100%;
@@ -420,6 +505,11 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
+  .home-back-to-top {
+    right: 16px;
+    bottom: calc(var(--app-dock-height) + var(--app-safe-area-bottom) + 16px);
+  }
+
   .dashboard {
     width: calc(100% - 24px);
     padding-top: 12px;
@@ -427,6 +517,12 @@ export default defineComponent({
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-back-to-top,
+  .back-to-top-enter-active,
+  .back-to-top-leave-active {
+    transition: none;
+  }
+
   .home-loading span {
     animation-duration: 1.8s;
   }
