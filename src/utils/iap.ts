@@ -15,9 +15,59 @@ export interface IapResult {
   transactionId?: string;
   cancelled?: boolean;
   error?: string;
+  verificationPending?: boolean;
 }
 
 let initialized = false;
+const registeredProducts = new Set<string>();
+let activePurchase: { orderId: string; promise: Promise<IapResult> } | undefined;
+const pendingKey = 'apple-iap-pending-transactions';
+type PendingPurchase = { orderId: string; productId: string; transactionId: string };
+let pendingPurchases: Record<string, PendingPurchase> = {};
+
+function readPending(): Record<string, PendingPurchase> {
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(pendingKey) || '{}');
+    for (const [id, value] of Object.entries(saved)) {
+      const item = value as PendingPurchase;
+      if (item?.orderId === id && item.productId && /^\d+$/.test(item.transactionId)) {
+        pendingPurchases[id] = item;
+      }
+    }
+  } catch {
+    // Keep the in-memory receipt when device storage is unavailable.
+  }
+  return pendingPurchases;
+}
+
+function savePending(item: PendingPurchase) {
+  pendingPurchases[item.orderId] = item;
+  persistPending();
+}
+
+function clearPending(orderId: string) {
+  delete pendingPurchases[orderId];
+  persistPending();
+}
+
+function persistPending() {
+  try {
+    window.localStorage.setItem(pendingKey, JSON.stringify(pendingPurchases));
+  } catch {
+    // Verification still retries against the original order in this session.
+  }
+}
+
+function credited(data: any, transactionId: string): boolean {
+  return data?.state === 'Finished' && data?.pay_id === transactionId;
+}
+
+function matchesProduct(transaction: any, productId: string): boolean {
+  return (
+    /^\d+$/.test(String(transaction?.transactionId || '')) &&
+    transaction?.products?.some((product: any) => product.id === productId)
+  );
+}
 
 function getCdv(): any | undefined {
   return (window as any).CdvPurchase;
@@ -42,7 +92,22 @@ async function waitForCdv(timeoutMs = 8000): Promise<any | undefined> {
  * backend for `orderId`. Resolves once the order is verified (or fails /
  * is cancelled). Never throws.
  */
-export async function purchaseAndVerify(orderId: string, productId: string): Promise<IapResult> {
+export async function purchaseAndVerify(orderId: string, productId: string, signal?: AbortSignal): Promise<IapResult> {
+  if (signal?.aborted) return { ok: false, cancelled: true };
+  if (activePurchase) {
+    if (activePurchase.orderId === orderId) return activePurchase.promise;
+    return { ok: false, error: 'purchase_in_progress' };
+  }
+  const promise = runPurchase(orderId, productId, signal);
+  activePurchase = { orderId, promise };
+  try {
+    return await promise;
+  } finally {
+    if (activePurchase?.promise === promise) activePurchase = undefined;
+  }
+}
+
+async function runPurchase(orderId: string, productId: string, signal?: AbortSignal): Promise<IapResult> {
   if (!isIOS()) {
     return { ok: false, error: 'iap_only_ios' };
   }
@@ -50,46 +115,107 @@ export async function purchaseAndVerify(orderId: string, productId: string): Pro
     return { ok: false, error: 'missing_product_id' };
   }
   const CdvPurchase = await waitForCdv();
+  if (signal?.aborted) return { ok: false, cancelled: true };
   if (!CdvPurchase?.store) {
     return { ok: false, error: 'iap_unavailable' };
   }
   const { store, ProductType, Platform, ErrorCode } = CdvPurchase;
+  try {
+    store.register([{ id: productId, type: ProductType.CONSUMABLE, platform: Platform.APPLE_APPSTORE }]);
+    if (!initialized) {
+      const errors = await store.initialize([Platform.APPLE_APPSTORE]);
+      if (errors?.length) return { ok: false, error: errors[0].message || 'iap_unavailable' };
+      initialized = true;
+    } else if (!registeredProducts.has(productId)) {
+      // update() normally skips calls for ten minutes after initialization.
+      // A newly selected package needs its offer loaded before checkout.
+      const previousInterval = store.minTimeBetweenUpdates;
+      try {
+        store.minTimeBetweenUpdates = 0;
+        await store.update();
+      } finally {
+        store.minTimeBetweenUpdates = previousInterval;
+      }
+    }
+    registeredProducts.add(productId);
+  } catch (e: any) {
+    return { ok: false, error: e?.message || 'iap_unavailable' };
+  }
+  if (signal?.aborted) return { ok: false, cancelled: true };
+
+  const pending = readPending()[orderId];
+  if (pending) {
+    try {
+      const refreshed = await orderOperator.get(orderId);
+      if (!credited(refreshed.data, pending.transactionId)) {
+        const verified = await orderOperator.appleVerify(orderId, pending.transactionId);
+        if (!credited(verified.data, pending.transactionId)) throw new Error('verify_pending');
+      }
+      const transaction = store.localTransactions?.find((item: any) => item.transactionId === pending.transactionId);
+      if (transaction && (await transaction.finish())) throw new Error('finish_pending');
+      clearPending(orderId);
+      return { ok: true, transactionId: pending.transactionId };
+    } catch {
+      return { ok: false, transactionId: pending.transactionId, verificationPending: true, error: 'verify_pending' };
+    }
+  }
+  if (Object.values(readPending()).some((item) => item.productId === productId)) {
+    return { ok: false, verificationPending: true, error: 'purchase_pending_verification' };
+  }
 
   return new Promise<IapResult>((resolve) => {
     let settled = false;
+    let verifying = false;
+    let purchaseStarted = false;
     const finish = (r: IapResult) => {
       if (!settled) {
         settled = true;
+        store.off(onApproved);
+        store.off(onError);
+        signal?.removeEventListener('abort', onAbort);
         resolve(r);
       }
     };
 
-    store.register([{ id: productId, type: ProductType.CONSUMABLE, platform: Platform.APPLE_APPSTORE }]);
-
     // Approved → verify with our backend → finish the StoreKit transaction so
     // the consumable can be bought again later.
-    store.when().approved(async (transaction: any) => {
-      const txId = transaction?.transactionId || transaction?.id;
+    const onApproved = async (transaction: any) => {
+      // Application receipts and other products are also broadcast here.
+      // Never let an old or completed purchase callback claim a new payment.
+      if (settled || verifying || !purchaseStarted || !matchesProduct(transaction, productId)) return;
+      if (transaction.appAccountToken && String(transaction.appAccountToken).toLowerCase() !== orderId.toLowerCase())
+        return;
+      verifying = true;
+      const txId = String(transaction.transactionId);
+      savePending({ orderId, productId, transactionId: txId });
       try {
-        await orderOperator.appleVerify(orderId, txId);
-        await transaction.finish();
+        const verified = await orderOperator.appleVerify(orderId, txId);
+        if (!credited(verified.data, txId)) throw new Error('verify_pending');
+        if (await transaction.finish()) throw new Error('finish_pending');
+        clearPending(orderId);
         finish({ ok: true, transactionId: txId });
-      } catch (e: any) {
-        finish({ ok: false, transactionId: txId, error: e?.response?.data?.error?.message || 'verify_failed' });
+      } catch {
+        // A paid receipt must be retried for this order, never purchased again.
+        finish({ ok: false, transactionId: txId, verificationPending: true, error: 'verify_pending' });
       }
-    });
+    };
 
-    store.error((err: any) => {
+    const onError = (err: any) => {
+      if (settled || verifying || (err?.productId && err.productId !== productId)) return;
       const cancelled = err?.code === ErrorCode?.PAYMENT_CANCELLED;
       finish({ ok: false, cancelled, error: err?.message || 'iap_error' });
-    });
+    };
+    const onAbort = () => {
+      // Once the native payment starts it still belongs to this order, even
+      // if the user leaves its page. Cancel only before opening checkout.
+      if (!purchaseStarted && !verifying) finish({ ok: false, cancelled: true });
+    };
+    store.when().approved(onApproved);
+    store.error(onError);
+    signal?.addEventListener('abort', onAbort, { once: true });
 
     (async () => {
       try {
-        if (!initialized) {
-          await store.initialize([Platform.APPLE_APPSTORE]);
-          initialized = true;
-        }
         // Products load asynchronously from Apple after initialize/update —
         // poll until the offer is available (race + sandbox propagation),
         // up to ~15s, before giving up.
@@ -97,17 +223,40 @@ export async function purchaseAndVerify(orderId: string, productId: string): Pro
         let waited = 0;
         while (!offer && waited < 15000) {
           await store.update().catch(() => {});
+          if (settled || signal?.aborted) {
+            onAbort();
+            return;
+          }
           await new Promise((r) => setTimeout(r, 1500));
           waited += 1500;
           offer = store.get(productId, Platform.APPLE_APPSTORE)?.getOffer();
+        }
+        if (settled || signal?.aborted) {
+          onAbort();
+          return;
         }
         if (!offer) {
           finish({ ok: false, error: 'product_not_found' });
           return;
         }
-        await store.order(offer);
+        // Do not attach restored/unconfirmed receipts to a new order.
+        if (
+          store.localTransactions?.some(
+            (item: any) => matchesProduct(item, productId) && item.state === CdvPurchase.TransactionState?.APPROVED
+          )
+        ) {
+          finish({ ok: false, verificationPending: true, error: 'purchase_pending_verification' });
+          return;
+        }
+        // In this SDK version Apple reads the username from the store. A raw
+        // order UUID becomes the signed appAccountToken for this purchase.
+        store.applicationUsername = orderId;
+        store.obfuscator = 'disabled';
+        purchaseStarted = true;
+        const error = await store.order(offer);
+        if (error && !verifying) onError(error);
       } catch (e: any) {
-        finish({ ok: false, error: e?.message || 'order_failed' });
+        if (!verifying) finish({ ok: false, error: e?.message || 'order_failed' });
       }
     })();
   });

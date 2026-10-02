@@ -142,6 +142,11 @@ computer; that computer must be online when running browser actions.
 
 ## 🧩 Tech stack
 
+On iOS, Apple purchases are confirmed against their original order before credits
+are delivered. If confirmation is delayed after payment, keep the order open;
+the app retries confirmation of that purchase without starting another charge.
+Avoid creating another order for the same credit pack while confirmation is pending.
+
 Vue 3.5 · Vite 7 · TypeScript · Vuex 4 (per-service namespaced modules) · Element Plus · Capacitor 6 (iOS + Android) · OAuth SSO.
 
 ---
