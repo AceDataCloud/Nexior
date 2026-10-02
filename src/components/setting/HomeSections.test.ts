@@ -58,6 +58,7 @@ describe('setting/HomeSections', () => {
       body: '<section data-kind="custom">Body</section>',
       render_in_iframe: true,
       height: null,
+      oauth: null,
       visible: false,
       sort_order: 9,
       start_at: '2026-09-14T08:00:00Z',
@@ -114,6 +115,7 @@ describe('setting/HomeSections', () => {
       body,
       render_in_iframe: true,
       height: null,
+      oauth: null,
       visible: true,
       sort_order: 0,
       start_at: null,
@@ -178,4 +180,21 @@ describe('setting/HomeSections', () => {
       render_in_iframe: true
     });
   });
+});
+
+it('saves OAuth public configuration and clears it when changing away from a Website', () => {
+  const wrapper = mountSetting();
+  Object.assign((wrapper.vm as any).form, {
+    kind: 'website',
+    body: 'https://abc.example/embed',
+    oauthEnabled: true,
+    oauthClientId: ' app-id ',
+    oauthRedirectUri: ' https://abc.example/callback '
+  });
+  expect((wrapper.vm as any).buildPayload().oauth).toEqual({
+    client_id: 'app-id',
+    redirect_uri: 'https://abc.example/callback'
+  });
+  (wrapper.vm as any).form.kind = 'html';
+  expect((wrapper.vm as any).buildPayload().oauth).toBeNull();
 });

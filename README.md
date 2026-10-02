@@ -185,3 +185,7 @@ CI discovers tests by filename instead of maintaining a per-file list. Add Pytho
 tests as `test_*.py` in `scripts/`; no workflow change is needed.
 Vue and Electron unit tests are discovered separately by `npm run test:run`;
 desktop browser tests remain under `npm run test:e2e:desktop`.
+
+## Homepage OAuth applications
+
+Website homepage sections can request explicit user authorization to read existing ACE Data Cloud API Keys. See the [third-party integration guide](docs/integrations/studio-home-oauth.md) for Settings, PKCE and the embedded consent bridge.

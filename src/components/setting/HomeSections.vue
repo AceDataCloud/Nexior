@@ -107,6 +107,21 @@
           </div>
         </el-form-item>
 
+        <template v-if="form.kind === 'website'">
+          <el-form-item :label="$t('site.homeSections.oauth.enabled')">
+            <el-switch v-model="form.oauthEnabled" />
+          </el-form-item>
+          <template v-if="form.oauthEnabled">
+            <el-form-item :label="$t('site.homeSections.oauth.clientId')">
+              <el-input v-model="form.oauthClientId" maxlength="255" />
+            </el-form-item>
+            <el-form-item :label="$t('site.homeSections.oauth.redirectUri')">
+              <el-input v-model="form.oauthRedirectUri" placeholder="https://abc.com/oauth/callback" />
+            </el-form-item>
+            <el-alert :closable="false" type="info" :title="$t('site.homeSections.oauth.tip')" />
+          </template>
+        </template>
+
         <el-form-item :label="$t('site.homeSections.height.label')">
           <div class="iframe-height-option">
             <el-switch v-model="form.fixedHeight" :aria-label="$t('site.homeSections.height.label')" />
@@ -188,6 +203,9 @@ interface SectionForm {
   title: string;
   body: string;
   renderInIframe: boolean;
+  oauthEnabled: boolean;
+  oauthClientId: string;
+  oauthRedirectUri: string;
   fixedHeight: boolean;
   heightValue: number;
   visible: boolean;
@@ -202,6 +220,9 @@ const emptyForm = (): SectionForm => ({
   title: '',
   body: '',
   renderInIframe: false,
+  oauthEnabled: false,
+  oauthClientId: '',
+  oauthRedirectUri: '',
   fixedHeight: false,
   heightValue: 480,
   visible: true,
@@ -301,6 +322,9 @@ export default defineComponent({
         title: this.source(row, 'title'),
         body: this.source(row, 'body'),
         renderInIframe: row.render_in_iframe === true,
+        oauthEnabled: !!row.oauth,
+        oauthClientId: row.oauth?.client_id || '',
+        oauthRedirectUri: row.oauth?.redirect_uri || '',
         fixedHeight: row.height != null,
         heightValue: row.height ?? 480,
         visible: row.visible !== false,
@@ -326,6 +350,10 @@ export default defineComponent({
         body: this.form.kind === 'website' ? this.form.body.trim() : this.form.body,
         render_in_iframe: this.form.kind === 'website' || (this.form.kind === 'html' && this.form.renderInIframe),
         height: this.form.fixedHeight ? this.form.heightValue : null,
+        oauth:
+          this.form.kind === 'website' && this.form.oauthEnabled
+            ? { client_id: this.form.oauthClientId.trim(), redirect_uri: this.form.oauthRedirectUri.trim() }
+            : null,
         visible: this.form.visible,
         sort_order: this.form.sortOrder,
         start_at: toIso(this.form.startAt),
