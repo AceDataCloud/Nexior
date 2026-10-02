@@ -86,7 +86,7 @@ window.addEventListener('message', async (event) => {
     });
     if (!response.ok) throw new Error('Token exchange failed');
     const token = await response.json();
-    const keysResponse = await fetch('https://api.acedata.cloud/api/v1/credentials/?user_id=me&limit=100', {
+    const keysResponse = await fetch('https://platform.acedata.cloud/api/v1/credentials/?user_id=me&limit=100', {
       headers: { Authorization: `Bearer ${token.access_token}` }
     });
     if (!keysResponse.ok) throw new Error('Credential access failed');
