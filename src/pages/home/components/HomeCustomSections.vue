@@ -1,7 +1,7 @@
 <template>
   <section v-if="renderable.length" class="custom-sections">
     <component
-      :is="componentByKind[section.kind]"
+      :is="section.kind === 'website' && section.oauth ? HomeOAuthWebsiteSection : componentByKind[section.kind]"
       v-for="section in renderable"
       :key="section.id"
       :section="section"
@@ -19,6 +19,7 @@ import type { HomeTheme } from '@/utils/homeHtmlIframe';
 import HomeHtmlSection from './custom/HomeHtmlSection.vue';
 import HomeMarkdownSection from './custom/HomeMarkdownSection.vue';
 import HomeWebsiteSection from './custom/HomeWebsiteSection.vue';
+import HomeOAuthWebsiteSection from './custom/HomeOAuthWebsiteSection.vue';
 
 const props = defineProps<{ sections: ISiteHomeSection[]; site?: ISite; locale?: string }>();
 const effectiveTheme = (): HomeTheme => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
