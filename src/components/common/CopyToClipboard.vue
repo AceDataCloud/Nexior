@@ -11,7 +11,9 @@
         <copy-icon v-else :size="16" aria-hidden="true" focusable="false" />
       </button>
     </el-tooltip>
-    <span class="sr-only" role="status" aria-live="polite">{{ copied ? $t('common.message.copied') : '' }}</span>
+    <span class="copy-control__status" role="status" aria-live="polite">{{
+      copied ? $t('common.message.copied') : ''
+    }}</span>
   </span>
 </template>
 
@@ -68,19 +70,29 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .copy-control {
-  display: inline-flex;
+  position: relative;
+  display: inline;
+  flex: 0 0 auto;
   align-items: center;
+  margin-inline-start: 4px;
   vertical-align: middle;
+  white-space: nowrap;
   line-height: 1;
+
+  // Prevent an orphaned copy button after a wrapping value. Generated content
+  // participates in line breaking without adding a character to copied text.
+  &::before {
+    content: '\2060';
+  }
 }
 
 .copy-control__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--adc-icon-target-size);
-  height: var(--adc-icon-target-size);
-  margin-inline-start: var(--adc-space-1);
+  width: 20px;
+  height: 20px;
+  margin: 0;
   padding: 0;
   border: 0;
   border-radius: var(--adc-radius-small);
@@ -105,14 +117,20 @@ export default defineComponent({
 
 .copy-control__button :deep(svg) {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
-@media (pointer: coarse) {
-  .copy-control__button {
-    width: 44px;
-    height: 44px;
-  }
+// Keep announcements out of layout even without the global utility stylesheet.
+.copy-control__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 </style>
