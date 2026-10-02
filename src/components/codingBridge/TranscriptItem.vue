@@ -521,12 +521,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-/* Unscoped: VueMarkdown emits raw HTML, so the base github-markdown
-   styles must reach those elements. Bundler dedupes the shared import. */
-@import 'github-markdown-css/github-markdown.css';
-</style>
-
 <style lang="scss" scoped>
 .cb-edit-btn {
   display: inline-flex;
