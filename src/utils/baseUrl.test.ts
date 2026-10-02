@@ -20,4 +20,10 @@ describe('getBaseUrlStudio', () => {
     vi.stubEnv('VITE_BASE_URL_STUDIO', 'https://preview.studio.example');
     expect(getBaseUrlStudio()).toBe('https://preview.studio.example');
   });
+
+  it('keeps the initiating web origin even with a canonical build override', () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    vi.stubEnv('VITE_BASE_URL_STUDIO', 'https://studio.acedata.cloud');
+    expect(getBaseUrlStudio()).toBe(window.location.origin);
+  });
 });

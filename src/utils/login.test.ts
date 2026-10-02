@@ -13,7 +13,7 @@ vi.mock('./baseUrl', () => ({
 }));
 vi.mock('typescript-cookie', () => ({ getCookie: vi.fn() }));
 
-import { ensureLoggedIn } from './login';
+import { ensureLoggedIn, loginRedirect } from './login';
 
 describe('ensureLoggedIn', () => {
   beforeEach(() => {
@@ -38,5 +38,17 @@ describe('ensureLoggedIn', () => {
     store.state.auth.visible = true;
     expect(ensureLoggedIn()).toBe(false);
     expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('encodes the complete return path inside the callback URL', () => {
+    const location = { origin: 'https://20261002.studio.acedata.cloud', search: '', href: '' };
+    vi.stubGlobal('window', { location });
+    const redirect = '/chat/123?mode=music&lang=zh-CN#draft';
+    loginRedirect({ redirect });
+    const callback = new URL(new URL(location.href).searchParams.get('redirect')!);
+    expect(callback.searchParams.get('redirect')).toBe(redirect);
+    expect(callback.hash).toBe('');
+    expect(callback.searchParams.has('lang')).toBe(false);
+    vi.unstubAllGlobals();
   });
 });

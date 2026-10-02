@@ -28,7 +28,7 @@ export const loginRedirect = ({
   const authBaseUrl = getBaseUrlAuth();
   const inviterId = getInviterId();
   // callback url used to init access token and then redirect back of `redirect`
-  const callbackUrl = `${studioBaseUrl}/auth/callback?redirect=${redirect}`;
+  const callbackUrl = `${studioBaseUrl}/auth/callback?${new URLSearchParams({ redirect }).toString()}`;
   // redirect to auth service to get access token then redirect back
   // Trailing slash is required: `/auth/login` 301-redirects to a cleartext
   // `http://.../auth/login/`, which iOS ATS blocks (white screen in the native

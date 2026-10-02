@@ -17,6 +17,9 @@ export const getBaseUrlPlatform = () => {
  * @returns
  */
 export const getBaseUrlStudio = () => {
+  if (!isNative() && !isDesktop() && typeof window !== 'undefined') {
+    return window.location.origin || BASE_URL_STUDIO;
+  }
   if (import.meta.env.VITE_BASE_URL_STUDIO) {
     return import.meta.env.VITE_BASE_URL_STUDIO;
   }

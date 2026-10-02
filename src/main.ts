@@ -25,6 +25,7 @@ import { getDomain } from '@/utils';
 import { resolveBootLocaleCookie } from '@/utils/siteLocales';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { initializeSiteAnalytics } from '@/utils/siteAnalytics';
+import { restoreSession } from '@/utils/auth/session';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
 import { configureRequestAuth, installServiceRequestAuthGuard, isAuthTransitionError } from '@/utils/requestAuth';
@@ -135,6 +136,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   await applyBootLocale();
   await resolveDeferredInviterId();
   await initializeToken();
+  await restoreSession();
   if (isAccountTransitioning()) return;
   await initializeLocalizedBootstrap({
     initializeSite,

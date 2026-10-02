@@ -26,6 +26,16 @@
 
 </div>
 
+## WeChat login origins
+
+Web visits retain `YYYYMMDD.studio.acedata.cloud` isolation. Date aliases resolve
+the canonical Site identity, while login callbacks stay on the initiating
+origin and preserve path, query and fragment. An anonymous first-party web
+origin attempts one bounded, noninteractive Auth session handshake using the
+existing SSO code endpoint. Deploy AuthFrontend's `/auth/session` bridge first.
+Saved active accounts and explicit account additions are not overwritten.
+Native/desktop login and existing local-account logout semantics are unchanged.
+
 ---
 
 ## 🎯 What is Nexior
