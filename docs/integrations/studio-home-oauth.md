@@ -86,7 +86,15 @@ window.addEventListener('message', async (event) => {
     });
     if (!response.ok) throw new Error('Token exchange failed');
     const token = await response.json();
-    const keysResponse = await fetch('https://api.acedata.cloud/api/v1/credentials/?user_id=me&limit=100', {
+    const profileResponse = await fetch(`${AUTH_ORIGIN}/api/v1/users/me`, {
+      headers: { Authorization: `Bearer ${token.access_token}` }
+    });
+    if (!profileResponse.ok) throw new Error('Profile access failed');
+    const profile = await profileResponse.json();
+    const keysUrl = new URL('https://platform.acedata.cloud/api/v1/credentials/');
+    keysUrl.searchParams.set('user_id', profile.id);
+    keysUrl.searchParams.set('limit', '100');
+    const keysResponse = await fetch(keysUrl, {
       headers: { Authorization: `Bearer ${token.access_token}` }
     });
     if (!keysResponse.ok) throw new Error('Credential access failed');
@@ -106,7 +114,8 @@ window.parent.postMessage({ type: 'acedatacloud:oauth:ready' }, STUDIO_ORIGIN);
 
 Provide an element with ID `status` and a button that calls `connect()`. Listen for
 `ace-credentials` to use the returned keys. Keep the PKCE verifier in this page's
-memory until the exchange completes; Studio never receives it.
+memory until the exchange completes; Studio never receives it. Use the `id` returned
+by UserInfo as the credential list's `user_id`; this endpoint does not accept `me`.
 
 ## Consent and isolation
 
