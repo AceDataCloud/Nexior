@@ -211,7 +211,14 @@ export default defineComponent({
 
 <style lang="scss">
 .user-center-menu.el-dropdown__popper {
-  width: 280px;
+  width: 224px;
   max-width: calc(100vw - 24px);
+  border-radius: 12px;
+
+  .el-dropdown-menu__item {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
 }
 </style>
