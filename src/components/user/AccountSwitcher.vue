@@ -3,7 +3,7 @@
     v-model:visible="visible"
     trigger="hover"
     placement="right-start"
-    :width="288"
+    :width="240"
     :offset="0"
     :show-arrow="false"
     :show-after="100"
@@ -62,7 +62,7 @@
       </div>
       <div class="account-switcher-divider" />
       <button type="button" class="account-switcher-row" role="menuitem" :disabled="busy" @click="add">
-        <span class="account-switcher-add"><plus :size="18" aria-hidden="true" /></span>
+        <span class="account-switcher-add"><plus :size="16" aria-hidden="true" /></span>
         <span>{{ $t('common.account.add') }}</span>
       </button>
     </div>
@@ -170,7 +170,7 @@ function onMenuKeydown(event: KeyboardEvent) {
 .account-switcher-popover.el-popover {
   padding: 6px;
   max-width: calc(100vw - 24px);
-  border-radius: 14px;
+  border-radius: 12px;
 }
 </style>
 
@@ -179,16 +179,16 @@ function onMenuKeydown(event: KeyboardEvent) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 12px;
   width: 100%;
-  max-width: min(320px, calc(100vw - 32px));
-  padding: 8px 16px;
+  min-width: 0;
+  padding: 6px 10px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   background: transparent;
   color: var(--el-text-color-primary);
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 13px;
+  line-height: 20px;
   font-weight: 500;
   text-align: left;
   cursor: pointer;
@@ -207,7 +207,7 @@ function onMenuKeydown(event: KeyboardEvent) {
   opacity: 1;
 }
 .account-switcher-heading {
-  padding: 8px 10px;
+  padding: 6px 10px;
   font-size: 12px;
   color: var(--el-text-color-secondary);
 }
@@ -220,13 +220,14 @@ function onMenuKeydown(event: KeyboardEvent) {
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 10px;
+  min-height: 44px;
+  padding: 7px 10px;
   border: 0;
-  border-radius: 9px;
+  border-radius: 8px;
   color: var(--el-text-color-primary);
   background: transparent;
   text-align: left;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   &:hover,
   &:focus-visible {
@@ -243,8 +244,8 @@ function onMenuKeydown(event: KeyboardEvent) {
 }
 .account-switcher-avatar,
 .account-switcher-add {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
@@ -258,7 +259,7 @@ function onMenuKeydown(event: KeyboardEvent) {
   flex: 1;
   min-width: 0;
   display: grid;
-  gap: 2px;
+  gap: 0;
 }
 .account-switcher-name,
 .account-switcher-email {
@@ -268,13 +269,15 @@ function onMenuKeydown(event: KeyboardEvent) {
 }
 .account-switcher-name {
   font-weight: 500;
+  line-height: 18px;
 }
 .account-switcher-email {
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 16px;
   color: var(--el-text-color-secondary);
 }
 .account-switcher-divider {
-  margin: 5px 4px;
+  margin: 4px 6px;
   border-top: 1px solid var(--el-border-color-lighter);
 }
 </style>
