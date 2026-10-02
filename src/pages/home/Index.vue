@@ -46,7 +46,7 @@
         :title="$t('intro.home.backToTop')"
         @click="scrollToTop"
       >
-        <ArrowUpToLine :size="16" :stroke-width="1.8" aria-hidden="true" />
+        <ArrowUpToLine :size="14" :stroke-width="1.8" aria-hidden="true" />
       </button>
     </Transition>
     <showcase-detail-dialog :item="selectedShowcase" @close="selectedShowcase = undefined" />
@@ -429,8 +429,8 @@ export default defineComponent({
   bottom: 24px;
   z-index: 10;
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -448,7 +448,7 @@ export default defineComponent({
   &::after {
     content: '';
     position: absolute;
-    inset: -5px;
+    inset: -9px;
     border-radius: 50%;
   }
 
