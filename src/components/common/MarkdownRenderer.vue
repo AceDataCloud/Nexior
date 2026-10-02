@@ -35,7 +35,6 @@ import VueMarkdown from './VueMarkdown.vue';
 import CitationCard from '@/components/chat/CitationCard.vue';
 import { highlight } from '@/utils';
 import type { IChatCitation } from '@/models';
-import 'highlight.js/styles/night-owl.css';
 
 /**
  * Marker token the worker injects in place of every `<acite>` tag. We
@@ -200,8 +199,6 @@ function renderChip(id: string, c: IChatCitation): string {
 </script>
 
 <style lang="scss">
-@import 'github-markdown-css/github-markdown.css';
-
 /* Element Plus mounts the popover content under document.body, so the
    styles MUST be unscoped to apply. Kept narrow to `.citation-popover`
    to avoid leaking into other popovers. */
