@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 01 Oct 2026 20:26:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Oct 2026 04:46:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.377.1
+
+Fri, 02 Oct 2026 04:46:44 GMT
+
+### Patches
+
+- Fix iOS credit fulfillment by isolating order callbacks and retrying paid receipts without another purchase. (dev@acedata.cloud)
 
 ## 3.377.0
 
