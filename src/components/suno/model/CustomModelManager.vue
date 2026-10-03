@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between mb-3">
       <span class="text-sm text-gray-500">{{ $t('suno.customModel.betaNotice') }}</span>
       <div class="flex gap-2">
-        <el-button size="small" :loading="loading" @click="loadModels">{{ $t('common.button.refresh') }}</el-button>
+        <refresh-button size="small" :loading="loading" @click="loadModels" />
         <el-button type="primary" size="small" @click="showCreate = true">
           <add-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('suno.customModel.create') }}
@@ -43,12 +43,13 @@
 import { AddIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElEmpty, ElMessage, ElMessageBox, ElProgress } from 'element-plus';
+import RefreshButton from '@/components/common/RefreshButton.vue';
 import { ISunoCustomModel } from '@/models';
 import CustomModelCreateDialog from './CustomModelCreateDialog.vue';
 
 export default defineComponent({
   name: 'CustomModelManager',
-  components: { AddIcon, CustomModelCreateDialog, ElButton, ElEmpty, ElProgress },
+  components: { AddIcon, CustomModelCreateDialog, ElButton, ElEmpty, ElProgress, RefreshButton },
   emits: ['selected'],
   data() {
     return { loading: false, showCreate: false, archivingId: '' };

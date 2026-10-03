@@ -90,8 +90,8 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: var(--adc-control-height-sm);
+  height: var(--adc-control-height-sm);
   margin: 0;
   padding: 0;
   border: 0;
@@ -119,6 +119,13 @@ export default defineComponent({
   display: block;
   width: 14px;
   height: 14px;
+}
+
+@media (pointer: coarse) {
+  .copy-control__button {
+    width: var(--adc-icon-target-size);
+    height: var(--adc-icon-target-size);
+  }
 }
 
 // Keep announcements out of layout even without the global utility stylesheet.

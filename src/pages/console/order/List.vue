@@ -89,7 +89,7 @@
           @change="onFilterChange"
         />
         <el-button type="primary" plain :loading="exporting" @click="onExport">
-          <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <export-icon v-if="!exporting" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('order.button.export') }}
         </el-button>
       </div>
@@ -463,9 +463,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .title {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--el-text-color-primary);
 }
 

@@ -61,7 +61,7 @@
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsWorkingDirTitle') }}</h3>
           <el-button size="small" type="primary" :loading="pickingWorkingDir" @click="chooseWorkingDir">
-            <folder-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <folder-icon v-if="!pickingWorkingDir" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{
               workingDir ? $t('common.settings.localToolsWorkingDirChange') : $t('common.settings.localToolsAddFolder')
             }}

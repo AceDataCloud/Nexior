@@ -21,7 +21,7 @@
         :headers="headers"
       >
         <el-button round type="primary" size="small" :loading="uploading">
-          <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <upload-icon v-if="!uploading" class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('producer.button.uploadAudios') }}
         </el-button>
       </el-upload>

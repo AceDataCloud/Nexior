@@ -6,7 +6,7 @@
        Self-contained + placement-agnostic, like <connector-strip>. -->
   <div v-if="supported" class="working-dir" :class="{ 'working-dir--unset': !workingDirectory }">
     <el-button v-if="!workingDirectory" size="small" type="primary" :loading="picking" @click="onPick">
-      <folder-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+      <folder-icon v-if="!picking" :size="'1em' as any" aria-hidden="true" focusable="false" />
       {{ $t('chat.workingDir.choose') }}
     </el-button>
     <el-tooltip v-else effect="dark" placement="top">

@@ -165,18 +165,16 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-.console {
-  .panel {
-    // Bare heading used by the document-style pages. Workspace pages render
-    // <console-page-header>, which owns its own typography.
-    .title {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var(--el-text-color-primary);
-    }
-  }
+:where(.console .panel) .title {
+  // Keep this fallback less specific than a page's scoped title rule.
+  // Workspace pages render <console-page-header> with their own typography.
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--el-text-color-primary);
+}
 
+.console {
   .pagination {
     margin: auto;
     width: fit-content;

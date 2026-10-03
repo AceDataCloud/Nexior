@@ -7,15 +7,12 @@
       </div>
       <div class="flex items-center gap-1">
         <notification-toggle />
-        <el-button
-          circle
+        <refresh-button
           size="small"
-          :aria-label="$t('codingBridge.nodeList.refresh')"
-          :title="$t('codingBridge.nodeList.refresh')"
+          :loading="refreshing"
+          :label="$t('codingBridge.nodeList.refresh')"
           @click="onRefresh"
-        >
-          <redo-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-        </el-button>
+        />
         <el-button
           type="primary"
           circle
@@ -98,19 +95,13 @@
 </template>
 
 <script lang="ts">
-import {
-  AddIcon,
-  DeleteIcon,
-  DesktopIcon,
-  DeveloperIcon,
-  EditIcon,
-  RedoIcon
-} from '@acedatacloud/core/icons/components';
+import { AddIcon, DeleteIcon, DesktopIcon, DeveloperIcon, EditIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElMessageBox } from 'element-plus';
-import { ICodingBridgeConnectionStatus, ICodingBridgeNode } from '@/models';
+import { ICodingBridgeConnectionStatus, ICodingBridgeNode, Status } from '@/models';
 import { CB_NODE_NAME_MAX_LENGTH } from '@/constants';
 import NotificationToggle from './NotificationToggle.vue';
+import RefreshButton from '@/components/common/RefreshButton.vue';
 
 export default defineComponent({
   name: 'CodingBridgeNodeList',
@@ -120,7 +111,7 @@ export default defineComponent({
     DesktopIcon,
     DeveloperIcon,
     EditIcon,
-    RedoIcon,
+    RefreshButton,
     ElButton,
     NotificationToggle
   },
@@ -134,6 +125,9 @@ export default defineComponent({
     },
     connection(): ICodingBridgeConnectionStatus {
       return this.$store.state.codingBridge?.connection ?? 'disconnected';
+    },
+    refreshing(): boolean {
+      return this.$store.state.codingBridge?.status?.getNodes === Status.Request;
     },
     connectionLabel(): string {
       return this.$t(`codingBridge.connection.${this.connection}`) as string;

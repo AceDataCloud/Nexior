@@ -12,10 +12,12 @@
       :type="enabled ? 'primary' : 'default'"
       @click="onClick"
     >
-      <span class="icon-wrap">
-        <globe-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-        <span v-if="enabled" class="dot" />
-      </span>
+      <template #icon>
+        <span class="icon-wrap">
+          <globe-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <span v-if="enabled" class="dot" />
+        </span>
+      </template>
     </el-button>
   </el-tooltip>
 </template>

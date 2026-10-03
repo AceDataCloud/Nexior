@@ -43,7 +43,7 @@
         @keyup.enter="onClaim"
       />
       <el-button type="primary" round class="w-full" :loading="claiming" :disabled="!code.trim()" @click="onClaim">
-        <link-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <link-icon v-if="!claiming" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('codingBridge.pair.claim') }}
       </el-button>
     </div>

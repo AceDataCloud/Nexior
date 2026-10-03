@@ -87,7 +87,7 @@
         </el-col>
         <el-col v-if="type === serviceType.API" :lg="4" :md="6" :xs="24" class="usage-filter usage-filter-export">
           <el-button type="primary" plain :loading="exporting" class="w-full whitespace-nowrap" @click="onExport">
-            <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <export-icon v-if="!exporting" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('usage.button.export') }}
           </el-button>
         </el-col>

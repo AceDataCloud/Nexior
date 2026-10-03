@@ -102,7 +102,7 @@
             <el-slider v-model="tolerance" :min="20" :max="96" :step="1" />
           </label>
           <el-button :loading="processing" :disabled="!controlsDirty" @click="processCurrent">
-            <refresh-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <refresh-icon v-if="!processing" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('site.logoStudio.refreshPreview') }}
           </el-button>
         </div>

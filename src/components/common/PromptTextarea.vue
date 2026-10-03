@@ -170,9 +170,17 @@ export default defineComponent({
       gap: 4px;
     }
     .expand-btn {
-      width: 24px;
-      height: 24px;
-      min-height: 24px;
+      width: var(--adc-control-height-sm);
+      height: var(--adc-control-height-sm);
+      min-height: var(--adc-control-height-sm);
+    }
+
+    @media (pointer: coarse) {
+      .expand-btn {
+        width: var(--adc-icon-target-size);
+        height: var(--adc-icon-target-size);
+        min-height: var(--adc-icon-target-size);
+      }
     }
   }
   .textarea {

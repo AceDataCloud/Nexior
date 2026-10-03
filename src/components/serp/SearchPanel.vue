@@ -10,7 +10,7 @@
       <scenario-payment-mode scenario="serp" />
       <service-pricing-summary v-if="!walletMode" :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :loading="searching" @click="onSearch">
-        <search-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <search-icon v-if="!searching" class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('serp.button.search') }}
       </el-button>
     </div>

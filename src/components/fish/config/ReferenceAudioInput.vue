@@ -21,7 +21,7 @@
           :headers="uploadHeaders"
         >
           <el-button type="primary" plain round :loading="uploading">
-            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <upload-icon v-if="!uploading" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.button.uploadAudio') }}
           </el-button>
         </el-upload>

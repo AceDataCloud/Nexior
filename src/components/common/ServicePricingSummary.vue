@@ -101,7 +101,8 @@ export default defineComponent({
 .pricing-summary__button {
   appearance: none;
   border: 0;
-  padding: 0;
+  min-height: var(--adc-control-height-sm);
+  padding: 0 var(--adc-space-2);
   background: transparent;
   color: var(--el-color-primary);
   font: inherit;
@@ -109,6 +110,12 @@ export default defineComponent({
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+}
+
+@media (pointer: coarse) {
+  .pricing-summary__button {
+    min-height: var(--adc-icon-target-size);
+  }
 }
 
 .pricing-summary__button:hover,

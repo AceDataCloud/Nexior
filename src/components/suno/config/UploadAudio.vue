@@ -88,7 +88,13 @@
                   {{ $t('suno.button.reRecord') }}
                 </el-button>
                 <el-button type="primary" round :loading="uploadingRecord" @click="uploadRecording">
-                  <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                  <upload-icon
+                    v-if="!uploadingRecord"
+                    class="mr-1"
+                    :size="'1em' as any"
+                    aria-hidden="true"
+                    focusable="false"
+                  />
                   {{ $t('suno.button.useRecording') }}
                 </el-button>
               </template>
