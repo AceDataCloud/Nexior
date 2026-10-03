@@ -1,8 +1,18 @@
 name: Deploy · Web
 
 on:
-  schedule:
-    - cron: '47 * * * *'
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.gitignore'
+      - 'README.md'
+      - '.github/ISSUE_TEMPLATE/**'
+      - 'SECURITY.md'
+      - 'LICENSE'
+      - 'CHANGELOG.md'
+      - 'CHANGELOG.json'
+      - 'docs/**'
+      - '.vscode/**'
   workflow_dispatch:
 
 concurrency:
@@ -10,97 +20,31 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  actions: read
-  contents: write
+  contents: read
   packages: write
+
+env:
+  RELEASE_TAG: ${{ github.run_id }}-${{ github.run_attempt }}
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Check for deployable changes
-        id: changes
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          last_revision=""
-          runs=$(gh api --method GET \
-            "repos/$GITHUB_REPOSITORY/actions/workflows/deploy-web.yaml/runs" \
-            -F per_page=30 \
-            --jq '.workflow_runs[] | select(.head_branch == "main" and .conclusion == "success") | .id')
-          for run_id in $runs; do
-            candidate=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/jobs?per_page=100" \
-              --jq '.jobs[] | select(.conclusion == "success") | select(any(.steps[]?; .name == "Deploy compatible release" and .conclusion == "success")) | .head_sha' | head -1)
-            if [[ "$candidate" =~ ^[0-9a-f]{40}$ ]]; then
-              last_revision=$candidate
-              break
-            fi
-          done
-          if ! [[ "$last_revision" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "No previous verified release; deploying $GITHUB_SHA"
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if [ "$last_revision" = "$GITHUB_SHA" ]; then
-            echo "Already verified revision $last_revision"
-            echo "deploy=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null; then
-            git fetch --no-tags origin "$last_revision" || true
-          fi
-          if ! git cat-file -e "$last_revision^{commit}" 2>/dev/null || \
-             ! git merge-base --is-ancestor "$last_revision" "$GITHUB_SHA"; then
-            echo "Last verified revision cannot be compared safely; deploying $GITHUB_SHA"
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          deploy=false
-          while IFS= read -r path; do
-            case "$path" in
-              .gitignore | README.md | SECURITY.md | LICENSE | CHANGELOG.md | CHANGELOG.json | docs/* | .vscode/* | .github/ISSUE_TEMPLATE/*) ;;
-              *) deploy=true; break ;;
-            esac
-          done < <(git diff --name-only "$last_revision" "$GITHUB_SHA")
-          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
-          [ "$deploy" = true ] || echo "Only deploy-ignored files changed since $last_revision"
-
-      - name: Generate Build Number
-        if: steps.changes.outputs.deploy == 'true'
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{ secrets.github_token }}
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-
-      - name: Set release tag
-        if: steps.changes.outputs.deploy == 'true'
-        run: echo "RELEASE_TAG=${BUILD_NUMBER}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_ENV"
+          fetch-depth: 1
 
       - name: Compute Docker Hub version tag
-        if: steps.changes.outputs.deploy == 'true'
         id: docker_tag
         run: echo "version=$(date +'%Y.%-m.%-d')-$(echo ${GITHUB_SHA} | cut -c1-7)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
-        if: steps.changes.outputs.deploy == 'true'
         uses: docker/setup-buildx-action@v3
 
       - name: Login to GHCR
-        if: steps.changes.outputs.deploy == 'true'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -108,20 +52,17 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to Docker Hub
-        if: steps.changes.outputs.deploy == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set Kubectl
-        if: steps.changes.outputs.deploy == 'true'
         uses: Azure/k8s-set-context@v5
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
       - name: Lock current production release
-        if: steps.changes.outputs.deploy == 'true'
         env:
           DEPLOYMENT: studio-frontend
           SERVICE: studio-frontend
@@ -129,14 +70,12 @@ jobs:
         run: bash deploy/preflight-release.sh
 
       - name: Prepare previous release assets
-        if: steps.changes.outputs.deploy == 'true'
         env:
           MAX_RELEASE_FILES: '4000'
           MAX_RELEASE_BYTES: '268435456'
         run: bash deploy/prepare-previous-assets.sh
 
       - name: Build and push bridge and final images
-        if: steps.changes.outputs.deploy == 'true'
         run: |
           docker buildx build --target bridge --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "ghcr.io/acedatacloud/studio-frontend:${RELEASE_TAG}-bridge" --push \
@@ -146,14 +85,12 @@ jobs:
             --cache-from type=gha --cache-to type=gha,mode=max .
 
       - name: Publish final image to Docker Hub
-        if: steps.changes.outputs.deploy == 'true'
         run: |
           docker buildx build --target final --build-arg "PREVIOUS_IMAGE=$PREVIOUS_IMAGE" \
             --tag "acedatacloud/nexior:${{ steps.docker_tag.outputs.version }}" \
             --tag acedatacloud/nexior:latest --push --cache-from type=gha .
 
       - name: Verify production stayed unchanged during build
-        if: steps.changes.outputs.deploy == 'true'
         env:
           EXPECTED_IMAGE: ${{ env.PREVIOUS_IMAGE }}
           EXPECTED_TAGGED_IMAGE: ${{ env.PREVIOUS_TAGGED_IMAGE }}
@@ -163,5 +100,4 @@ jobs:
         run: bash deploy/verify-release-unchanged.sh
 
       - name: Deploy compatible release
-        if: steps.changes.outputs.deploy == 'true'
         run: bash deploy/run.sh
