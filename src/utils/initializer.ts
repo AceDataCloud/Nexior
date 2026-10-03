@@ -6,7 +6,6 @@ import { IToken } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
 import { BASE_HOST_STUDIO } from '@/constants';
 import { isWechatBrowser } from './is';
-import { wechatRedirect } from './officialHost';
 import { getLocale } from '@/i18n';
 
 import { getDomain } from './domain';
@@ -250,9 +249,10 @@ export const initializeExchangeRate = async () => {
 };
 
 export const initializeRedirect = async (): Promise<boolean> => {
-  const target = isWechatBrowser() ? wechatRedirect(window.location.href, BASE_HOST_STUDIO) : undefined;
-  if (!target) return false;
-  window.location.replace(target);
+  const url = new URL(window.location.href);
+  if (!isWechatBrowser() || url.hostname !== BASE_HOST_STUDIO || url.pathname.startsWith('/auth/')) return false;
+  url.hostname = `${new Date().toISOString().slice(0, 10).replace(/-/g, '')}.${BASE_HOST_STUDIO}`;
+  window.location.replace(url.toString());
   return true;
 };
 

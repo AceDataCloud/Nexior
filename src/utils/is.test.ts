@@ -21,7 +21,7 @@ describe('Studio host ownership', () => {
     setHost(host);
     expect(isOfficial()).toBe(official);
     expect(isSubOfficial()).toBe(sub);
-    expect(isMainOfficial()).toBe(host === 'studio.acedata.cloud');
+    expect(isMainOfficial()).toBe(['studio.acedata.cloud', '20260824.studio.acedata.cloud'].includes(host));
   });
 });
 

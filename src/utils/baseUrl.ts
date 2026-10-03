@@ -20,16 +20,7 @@ export const getBaseUrlStudio = () => {
   if (!isNative() && !isDesktop() && typeof window !== 'undefined') {
     return window.location.origin || BASE_URL_STUDIO;
   }
-  if (import.meta.env.VITE_BASE_URL_STUDIO) {
-    return import.meta.env.VITE_BASE_URL_STUDIO;
-  }
-  // On native platforms (Capacitor) window.location.origin is http://localhost,
-  // and on desktop (Electron) it is app://bundle — neither is the real Studio URL,
-  // so use the hardcoded constant instead.
-  if (isNative() || isDesktop()) {
-    return BASE_URL_STUDIO;
-  }
-  return window.location.origin || BASE_URL_STUDIO;
+  return import.meta.env.VITE_BASE_URL_STUDIO || BASE_URL_STUDIO;
 };
 
 /**

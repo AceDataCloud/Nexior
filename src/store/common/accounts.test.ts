@@ -72,6 +72,15 @@ describe('account actions', () => {
     expect(await setToken(ctx as never, b.token)).toBe(true);
     expect(mocks.activate).toHaveBeenCalledWith(ctx.state, b);
   });
+  it('renews the same account without replacing the requested return page', async () => {
+    const ctx = context();
+    const token = { access: 'a-renewed' };
+    mocks.get.mockResolvedValue({ data: a.user });
+    await setToken(ctx as never, token);
+    expect(mocks.activate).not.toHaveBeenCalled();
+    expect(ctx.commit).toHaveBeenCalledWith('setToken', token);
+    expect(ctx.commit).toHaveBeenCalledWith('rememberCurrentAccount');
+  });
   it('removes only the signed-out account even while its profile is being fetched', async () => {
     const ctx = context();
     await logout(ctx as never);

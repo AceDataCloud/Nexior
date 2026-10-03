@@ -50,6 +50,12 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
 export const setToken = async ({ state, commit }: ActionContext<IRootState, IRootState>, payload: IToken) => {
   if (isAddingAccount() || (state.token?.access && state.token.access !== payload.access)) {
     const user = await validateAccountToken(payload);
+    if (!isAddingAccount() && user.id === state.user?.id) {
+      commit('setToken', payload);
+      commit('setUser', user);
+      commit('rememberCurrentAccount');
+      return;
+    }
     commit('rememberCurrentAccount');
     activateAccount(state, { user, token: payload });
     return true;
