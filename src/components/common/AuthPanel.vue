@@ -111,7 +111,9 @@ export default defineComponent({
       return new URL(getBaseUrlAuth()).origin;
     },
     redirect() {
-      return this.$store.state.auth?.redirect || window.location.pathname + window.location.search;
+      return (
+        this.$store.state.auth?.redirect || window.location.pathname + window.location.search + window.location.hash
+      );
     },
     authAction() {
       return this.$store.state.auth?.action || 'login';

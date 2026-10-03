@@ -50,6 +50,12 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
 export const setToken = async ({ state, commit }: ActionContext<IRootState, IRootState>, payload: IToken) => {
   if (isAddingAccount() || (state.token?.access && state.token.access !== payload.access)) {
     const user = await validateAccountToken(payload);
+    if (!isAddingAccount() && user.id === state.user?.id) {
+      commit('setToken', payload);
+      commit('setUser', user);
+      commit('rememberCurrentAccount');
+      return;
+    }
     commit('rememberCurrentAccount');
     activateAccount(state, { user, token: payload });
     return true;
@@ -283,7 +289,7 @@ export const login = async (
   payload: { redirect?: string; addAccount?: boolean } = {}
 ) => {
   const site = state?.site?.origin;
-  const redirect = payload.redirect || window.location.pathname + window.location.search;
+  const redirect = payload.redirect || window.location.pathname + window.location.search + window.location.hash;
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
     // app://bundle window navigated to the external auth host cannot return.
@@ -321,7 +327,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
     commit('setAuth', {
       flow: 'popup',
       visible: true,
-      redirect: window.location.pathname + window.location.search,
+      redirect: window.location.pathname + window.location.search + window.location.hash,
       action: isNative() || isDesktop() ? 'login' : 'logout'
     });
   } else {
@@ -337,7 +343,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
     const site = window.location.origin;
     const inviterId = getInviterId();
     const callbackUrl = `${baseUrlStudio}/auth/callback?${new URLSearchParams({
-      redirect: window.location.pathname + window.location.search
+      redirect: window.location.pathname + window.location.search + window.location.hash
     }).toString()}`;
     const loginQuery: Record<string, string> = {
       site,

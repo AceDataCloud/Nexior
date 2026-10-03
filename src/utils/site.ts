@@ -2,6 +2,7 @@ import { IApplication, IPackage, ISite, ISiteContact, IUser } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { isNative, isDesktop } from './surface';
 import { replaceBrandText } from '@acedatacloud/core/brand-spacing';
+import { isMainOfficial } from './is';
 
 /**
  * Resolve the bare hostname used for PlatformBackend Site lookup. Native
@@ -12,7 +13,7 @@ const STUDIO_HOST = 'studio.acedata.cloud';
 export const getSiteOrigin = (site?: ISite) => {
   // If we already have a Site row, trust its stored origin.
   if (site?.origin) {
-    return site.origin;
+    return isMainOfficial(site.origin) ? STUDIO_HOST : site.origin;
   }
   // On native shells (Capacitor on Android / iOS) window.location.host
   // is "localhost" and useless; on desktop (Electron) it is the custom
@@ -33,7 +34,7 @@ export const getSiteOrigin = (site?: ISite) => {
   }
   // Strip an accidental ":port" if the visitor is on a non-standard
   // port; PlatformBackend never stores ports either.
-  return host.split(':')[0];
+  return isMainOfficial(host.split(':')[0]) ? STUDIO_HOST : host.split(':')[0];
 };
 
 /**

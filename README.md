@@ -26,6 +26,14 @@
 
 </div>
 
+## WeChat login origins
+
+Web visits retain `YYYYMMDD.studio.acedata.cloud` isolation. Date aliases resolve
+the canonical Site identity, while login callbacks stay on the initiating
+origin and preserve path, query and fragment. Reopening on the same day reuses
+that origin's saved login. Different date origins keep separate browser storage
+and use the existing Auth login flow when the user signs in.
+
 ---
 
 ## 🎯 What is Nexior

@@ -5,7 +5,7 @@ import store from '@/store';
 import { IToken } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
 import { BASE_HOST_STUDIO } from '@/constants';
-import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
+import { isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
 
 import { getDomain } from './domain';
@@ -249,16 +249,11 @@ export const initializeExchangeRate = async () => {
 };
 
 export const initializeRedirect = async (): Promise<boolean> => {
-  if (isOfficial() && !isSubOfficial() && isWechatBrowser()) {
-    console.debug('redirect to sub domain with prefix');
-    // Isolate WeChat traffic on a dated Studio subdomain.
-    const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
-    const newUrl = window.location.href.replace(BASE_HOST_STUDIO, `${date}.${BASE_HOST_STUDIO}`);
-    console.debug('redirect to', newUrl);
-    window.location.href = newUrl;
-    return true;
-  }
-  return false;
+  const url = new URL(window.location.href);
+  if (!isWechatBrowser() || url.hostname !== BASE_HOST_STUDIO || url.pathname.startsWith('/auth/')) return false;
+  url.hostname = `${new Date().toISOString().slice(0, 10).replace(/-/g, '')}.${BASE_HOST_STUDIO}`;
+  window.location.replace(url.toString());
+  return true;
 };
 
 export const initializeFingerprint = async () => {

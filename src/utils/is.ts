@@ -43,21 +43,9 @@ export const isSubOfficial = (): boolean => {
   return isOfficial() && window.location.hostname.toLowerCase() !== BASE_HOST_STUDIO;
 };
 
-/**
- * isMainOfficial
- *
- * Strict check for the bare official main host (currently
- * ``studio.acedata.cloud``). Unlike ``isOfficial()``, this returns
- * ``false`` for any subsite (``*.studio.acedata.cloud``) and for
- * white-label tenants on custom domains. Use this for surfaces that
- * should ONLY appear on the parent / commercial origin — e.g. the
- * subsite-management entry in the user-settings dialog.
- */
-export const isMainOfficial = (): boolean => {
-  if (typeof window === 'undefined' || !window.location?.host) return false;
-  const host = window.location.host.split(':')[0].toLowerCase();
-  return host === 'studio.acedata.cloud';
-};
+export const isMainOfficial = (
+  host = typeof window === 'undefined' ? '' : window.location.host.split(':')[0]
+): boolean => /^(?:20\d{6}\.)?studio\.acedata\.cloud$/.test(host.toLowerCase());
 
 /**
  * currentSiteOrigin
