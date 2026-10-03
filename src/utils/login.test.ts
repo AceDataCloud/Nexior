@@ -14,6 +14,7 @@ vi.mock('./baseUrl', () => ({
 vi.mock('typescript-cookie', () => ({ getCookie: vi.fn() }));
 
 import { ensureLoggedIn, loginRedirect } from './login';
+import { getCookie } from 'typescript-cookie';
 
 describe('ensureLoggedIn', () => {
   beforeEach(() => {
@@ -51,4 +52,25 @@ describe('ensureLoggedIn', () => {
     expect(callback.searchParams.has('lang')).toBe(false);
     vi.unstubAllGlobals();
   });
+});
+
+it('carries all campaign labels outside the encoded callback without altering the return path', () => {
+  const location = { origin: 'https://studio.acedata.cloud', search: '', href: '' };
+  const tags: Record<string, string> = {
+    UTM_SOURCE: 'github',
+    UTM_MEDIUM: 'readme',
+    UTM_CAMPAIGN: 'opensource_activation',
+    UTM_CONTENT: 'quick_start'
+  };
+  vi.mocked(getCookie).mockImplementation((name) => tags[name]);
+  vi.stubGlobal('window', { location });
+  loginRedirect({ redirect: '/suno?draft=1#music' });
+  const target = new URL(location.href);
+  expect(target.searchParams.get('utm_content')).toBe('quick_start');
+  expect(target.searchParams.get('utm_source')).toBe('github');
+  const callback = new URL(target.searchParams.get('redirect')!);
+  expect(callback.searchParams.get('redirect')).toBe('/suno?draft=1#music');
+  expect(callback.searchParams.has('utm_content')).toBe(false);
+  vi.mocked(getCookie).mockReset();
+  vi.unstubAllGlobals();
 });

@@ -4,14 +4,14 @@
 
 ### The open-source, self-hostable **all-in-one AI app**
 
-**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi · Midjourney · Flux · Suno · Veo · Kling · Hailuo · Wan — deploy your own in minutes. BYOK or one-key. MIT licensed.**
+**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi · Midjourney · Flux · Suno · Veo · Kling · Hailuo · Wan — deploy your own. BYOK or one-key. MIT licensed.**
 
-一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,BYOK 或一键直用,MIT 协议。
+一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。部署你自己的,BYOK 或一键直用,MIT 协议。
 
 <p>
-  <a href="https://studio.acedata.cloud">🚀 Live Demo</a> ·
-  <a href="#-quick-start">⚡ Deploy in minutes</a> ·
-  <a href="https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior">🔑 Get an API key</a> ·
+  <a href="https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=github&utm_medium=readme&utm_campaign=opensource_activation&utm_content=live_demo">🚀 Live Demo</a> ·
+  <a href="#-quick-start">⚡ Self-host setup</a> ·
+  <a href="https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=github&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token">🔑 Get an API key</a> ·
   <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
   <a href="#-star-us">⭐ Star us</a>
 </p>
@@ -36,6 +36,18 @@ and use the existing Auth login flow when the user signs in.
 
 ---
 
+## Try a complete workflow
+
+[Open the hosted Studio](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=github&utm_medium=readme&utm_campaign=opensource_activation&utm_content=quick_start), sign in, choose Suno, check its current price,
+and request an instrumental lo-fi track. Wait for completion, then play the audio. A submitted
+task or visible spinner is not the finished result. This is an example to reproduce, not a
+promised latency or free trial. See your usage and balance before starting another generation.
+
+Nexior is an application: hosted users sign in normally. Self-hosting and BYOK have their own
+configuration below; installing Nexior does not authorize a remote MCP client. For 401, sign
+in again or check your configured key; for insufficient balance, inspect billing; for pending
+media, keep the existing task open; for failures, read the error before retrying a billable call.
+
 ## 🎯 What is Nexior
 
 **Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — point it at your own keys (BYOK) or use a single [AceData](https://platform.acedata.cloud) key for all of them, and you're live.
@@ -50,7 +62,7 @@ Custom capability names configured in site settings also appear in browser tab t
 
 > Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud).
 
-**Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用,几分钟上线。
+**Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用。
 
 ---
 
@@ -106,7 +118,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)**. Full guides → [`docs/deploy/`](docs/deploy/).
+Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=github&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)**. Full guides → [`docs/deploy/`](docs/deploy/).
 
 ---
 
@@ -172,7 +184,7 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 
 ## 🤝 Community & support
 
-- 🔑 API key, pricing & docs: [platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)
+- 🔑 API key, pricing & docs: [platform.acedata.cloud](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=github&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)
 - 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
 - 📧 Email: office@acedata.cloud
