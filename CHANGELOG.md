@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Oct 2026 20:23:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 03 Oct 2026 21:09:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.378.1
+
+Sat, 03 Oct 2026 21:09:46 GMT
+
+### Patches
+
+- Keep WeChat pages and login callbacks on the same date origin, preserving full return URLs and official Site identity. (dev@acedata.cloud)
 
 ## 3.378.0
 
