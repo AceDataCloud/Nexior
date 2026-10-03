@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Oct 2026 04:46:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Oct 2026 20:23:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.378.0
+
+Fri, 02 Oct 2026 20:23:40 GMT
+
+### Minor changes
+
+- Add explicit OAuth consent for third-party homepage websites to read user API Keys. (dev@acedata.cloud)
+
+### Patches
+
+- Make the account switcher and user menu more compact (dev@acedata.cloud)
+- Restore compact copy controls and flowing task metadata across desktop and mobile. (dev@acedata.cloud)
+- Use the shared Markdown renderer for chat, including lazy loading of the engine, styles and math fonts; safe audio/video, LaTeX, task lists and rich text preserve citations and streaming. (dev@acedata.cloud)
+- Add a compact back-to-top icon to the Studio homepage (dev@acedata.cloud)
 
 ## 3.377.1
 
