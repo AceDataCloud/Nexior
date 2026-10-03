@@ -9,9 +9,9 @@
 一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。部署你自己的,BYOK 或一键直用,MIT 协议。
 
 <p>
-  <a href="https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=live_demo">🚀 Live Demo</a> ·
+  <a href="https://studio.acedata.cloud/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=live_demo">🚀 Live Demo</a> ·
   <a href="#-quick-start">⚡ Self-host setup</a> ·
-  <a href="https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token">🔑 Get an API key</a> ·
+  <a href="https://platform.acedata.cloud/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token">🔑 Get an API key</a> ·
   <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
   <a href="#-star-us">⭐ Star us</a>
 </p>
@@ -38,7 +38,7 @@ and use the existing Auth login flow when the user signs in.
 
 ## Try a complete workflow
 
-[Open the hosted Studio](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=quick_start), sign in, choose Suno, check its current price,
+[Open the hosted Studio](https://studio.acedata.cloud/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=quick_start), sign in, choose Suno, check its current price,
 and request an instrumental lo-fi track. Wait for completion, then play the audio. A submitted
 task or visible spinner is not the finished result. This is an example to reproduce, not a
 promised latency or free trial. See your usage and balance before starting another generation.
@@ -118,7 +118,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)**. Full guides → [`docs/deploy/`](docs/deploy/).
+Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)**. Full guides → [`docs/deploy/`](docs/deploy/).
 
 ---
 
@@ -184,7 +184,7 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 
 ## 🤝 Community & support
 
-- 🔑 API key, pricing & docs: [platform.acedata.cloud](https://platform.acedata.cloud/api/v1/marketing-attribution/entry/nexior/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)
+- 🔑 API key, pricing & docs: [platform.acedata.cloud](https://platform.acedata.cloud/?utm_source=nexior&utm_medium=readme&utm_campaign=opensource_activation&utm_content=api_token)
 - 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
 - 📧 Email: office@acedata.cloud

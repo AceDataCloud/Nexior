@@ -1,4 +1,4 @@
-import { bindMarketingTouch } from './marketingTouch';
+import { bindMarketingTouch, captureMarketingTouch } from './marketingTouch';
 import { isAddingAccount } from './auth/accountSessions';
 import { getCookie, removeCookie, setCookie } from 'typescript-cookie';
 import { applyAccentColor, applyThemePreference } from './theme';
@@ -20,6 +20,7 @@ if (typeof window !== 'undefined') {
 export const initializeCookies = async () => {
   // parse the query string and set to cookies
   const query = new URLSearchParams(window.location.search);
+  void captureMarketingTouch(query);
 
   // set the inviter id to cookies
   const inviterId = query.get('inviter_id');
