@@ -16,14 +16,14 @@
         </el-button>
       </div>
       <el-button link type="danger" class="share-disable" :loading="disabling" @click="onDisable">
-        <unlink-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <unlink-icon v-if="!disabling" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('chat.share.disable') }}
       </el-button>
     </div>
 
     <div v-else class="share-create">
       <el-button type="primary" round :loading="creating" @click="onCreate">
-        <link-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <link-icon v-if="!creating" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('chat.share.createLink') }}
       </el-button>
     </div>

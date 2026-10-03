@@ -43,16 +43,13 @@
             </el-button>
           </template>
         </el-input>
-        <el-button
+        <refresh-button
           size="small"
-          circle
+          :loading="loading"
           :disabled="loading"
-          :title="$t('codingBridge.directory.refresh')"
-          :aria-label="$t('codingBridge.directory.refresh')"
+          :label="$t('codingBridge.directory.refresh')"
           @click="refresh"
-        >
-          <redo-icon :class="{ 'adc-icon-spin': loading }" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        </el-button>
+        />
       </div>
 
       <!-- Listing -->
@@ -120,10 +117,11 @@
 </template>
 
 <script lang="ts">
-import { ContinueIcon, FileIcon, FolderIcon, RedoIcon, UpIcon } from '@acedatacloud/core/icons/components';
+import { ContinueIcon, FileIcon, FolderIcon, UpIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElButton, ElInput } from 'element-plus';
 import { ICodingBridgeDirEntry, ICodingBridgeDirListing } from '@/models';
+import RefreshButton from '@/components/common/RefreshButton.vue';
 
 export default defineComponent({
   name: 'CodingBridgeDirectoryDialog',
@@ -131,7 +129,7 @@ export default defineComponent({
     ContinueIcon,
     FileIcon,
     FolderIcon,
-    RedoIcon,
+    RefreshButton,
     UpIcon,
     ElDialog,
     ElButton,

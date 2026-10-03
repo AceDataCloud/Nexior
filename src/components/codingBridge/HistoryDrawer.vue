@@ -11,10 +11,7 @@
         <p class="text-xs text-[var(--app-text-subtle)] m-0">
           {{ $t('codingBridge.history.intro') }}
         </p>
-        <el-button size="small" round :loading="loading" @click="refresh">
-          <redo-icon v-if="!loading" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-          {{ $t('codingBridge.history.refresh') }}
-        </el-button>
+        <refresh-button size="small" :loading="loading" :label="$t('codingBridge.history.refresh')" @click="refresh" />
       </div>
 
       <!-- Only worth showing once more than one provider is actually present. -->
@@ -116,13 +113,14 @@
 </template>
 
 <script lang="ts">
-import { CodeIcon, RedoIcon } from '@acedatacloud/core/icons/components';
+import { CodeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { ICodingBridgeHistorySummary, Status } from '@/models';
 import claudeIcon from '@/assets/images/logos/claude.svg';
 import openaiIcon from '@/assets/images/logos/openai.svg';
 import copilotIcon from '@/assets/images/logos/github-copilot.svg';
+import RefreshButton from '@/components/common/RefreshButton.vue';
 
 const PROVIDER_ICONS: Record<string, { src: string; invertOnDark: boolean }> = {
   claude: { src: claudeIcon, invertOnDark: false },
@@ -144,7 +142,7 @@ export default defineComponent({
   name: 'CodingBridgeHistoryDrawer',
   components: {
     CodeIcon,
-    RedoIcon,
+    RefreshButton,
     ElDrawer,
     ElButton
   },

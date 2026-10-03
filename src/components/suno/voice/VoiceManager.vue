@@ -70,7 +70,9 @@
             :title="$t('common.button.delete')"
             @click="onDelete(persona)"
           >
-            <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <template #icon>
+              <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </template>
           </el-button>
         </div>
       </div>

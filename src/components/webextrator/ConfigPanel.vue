@@ -12,7 +12,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <service-pricing-summary :value="consumption" :service="service" />
       <el-button type="primary" class="w-full" round :loading="running" :disabled="!canRun" @click="onRun">
-        <lightning-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <lightning-icon v-if="!running" class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t(isExtract ? 'webextrator.button.extract' : 'webextrator.button.render') }}
       </el-button>
     </div>

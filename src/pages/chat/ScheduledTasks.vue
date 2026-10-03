@@ -86,12 +86,9 @@
                       :title="$t('chat.scheduledTasks.triggerNow')"
                       @click="triggerNow(task)"
                     >
-                      <play-icon
-                        v-if="triggeringId !== task.id"
-                        :size="'1em' as any"
-                        aria-hidden="true"
-                        focusable="false"
-                      />
+                      <template #icon>
+                        <play-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                      </template>
                     </el-button>
                   </el-tooltip>
                   <el-tooltip :content="$t('common.button.edit')" placement="top">

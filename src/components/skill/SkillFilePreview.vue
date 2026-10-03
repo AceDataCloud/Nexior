@@ -17,7 +17,7 @@
         :loading="saving"
         @click="onSave"
       >
-        <save-icon class="mr-1" :size="16" aria-hidden="true" focusable="false" />
+        <save-icon v-if="!saving" class="mr-1" :size="16" aria-hidden="true" focusable="false" />
         {{ $t('common.button.save') }}
       </el-button>
 

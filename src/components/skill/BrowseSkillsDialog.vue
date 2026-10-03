@@ -153,7 +153,7 @@
                 :loading="installing"
                 @click="onInstall(selectedItem!)"
               >
-                <install-icon class="mr-1" :size="16" aria-hidden="true" focusable="false" />
+                <install-icon v-if="!installing" class="mr-1" :size="16" aria-hidden="true" focusable="false" />
                 {{ $t('skill.directory.install') }}
               </el-button>
               <el-button v-else disabled :title="selectedItem.license">

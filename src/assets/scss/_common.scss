@@ -48,6 +48,9 @@ html:root {
   --el-border-radius-base: var(--adc-radius-control);
   --el-border-radius-small: var(--adc-radius-small);
   --el-border-radius-round: var(--adc-radius-full);
+  --el-component-size-small: var(--adc-control-height-sm);
+  --el-component-size: var(--adc-control-height);
+  --el-component-size-large: var(--adc-control-height-lg);
 
   --app-safe-area-top: env(safe-area-inset-top, 0px);
   --app-safe-area-bottom: env(safe-area-inset-bottom, 0px);
@@ -208,8 +211,8 @@ w3m-modal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: var(--adc-control-height-sm);
+  height: var(--adc-control-height-sm);
   padding: 0;
   border: 0;
   border-radius: 8px;
@@ -251,6 +254,25 @@ w3m-modal {
 .el-button {
   font-weight: var(--adc-font-weight-medium);
   letter-spacing: var(--adc-letter-spacing);
+  --el-button-size: var(--adc-control-height);
+}
+
+.el-button:not(.is-link, .is-text) {
+  height: var(--el-button-size);
+}
+
+.el-button--small {
+  --el-button-size: var(--adc-control-height-sm);
+}
+
+.el-button--large {
+  --el-button-size: var(--adc-control-height-lg);
+}
+
+@media (pointer: coarse) {
+  .el-button--small {
+    --el-button-size: var(--adc-icon-target-size);
+  }
 }
 
 // Drop the gradient (its 100% stop is `--el-color-primary-light-3`, which makes
@@ -280,6 +302,11 @@ w3m-modal {
 
 .el-button + .el-button {
   margin-left: 8px;
+}
+
+// Element Plus sibling margins must not add to a parent's Tailwind gap.
+:is([class^='gap-'], [class*=' gap-']) > .el-button + .el-button {
+  margin-left: 0;
 }
 
 .el-dropdown {

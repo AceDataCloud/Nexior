@@ -38,7 +38,13 @@
             :headers="uploadHeaders"
           >
             <el-button type="primary" plain round :loading="uploading">
-              <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+              <upload-icon
+                v-if="!uploading"
+                class="icon mr-1"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
               {{ $t('fish.button.uploadAudio') }}
             </el-button>
           </el-upload>
@@ -125,7 +131,7 @@
         :loading="creating"
         @click="onCreate"
       >
-        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <magic-icon v-if="!creating" class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('fish.button.createModel') }}
       </el-button>
     </div>

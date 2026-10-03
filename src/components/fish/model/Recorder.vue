@@ -60,7 +60,7 @@
           {{ $t('fish.button.reRecord') }}
         </el-button>
         <el-button size="small" type="primary" :loading="uploading" @click="useRecording">
-          <confirm-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <confirm-icon v-if="!uploading" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.button.useRecording') }}
         </el-button>
       </div>
