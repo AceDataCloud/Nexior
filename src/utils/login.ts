@@ -34,7 +34,13 @@ export const loginRedirect = ({
   // `http://.../auth/login/`, which iOS ATS blocks (white screen in the native
   // login iframe). The canonical `/auth/login/` returns 200 directly.
   const targetBaseUrl = `${authBaseUrl}/auth/login/`;
+  const campaign = Object.fromEntries(
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']
+      .map((key) => [key, getCookie(key.toUpperCase()) || ''])
+      .filter(([, value]) => value)
+  );
   const targetQuery = {
+    ...campaign,
     site,
     ...(inviterId ? { inviter_id: inviterId } : {}),
     ...(callbackUrl ? { redirect: callbackUrl } : {})

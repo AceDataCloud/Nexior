@@ -1,5 +1,6 @@
+import { bindMarketingTouch, captureMarketingTouch } from './marketingTouch';
 import { isAddingAccount } from './auth/accountSessions';
-import { getCookie, setCookie } from 'typescript-cookie';
+import { getCookie, removeCookie, setCookie } from 'typescript-cookie';
 import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
@@ -19,6 +20,7 @@ if (typeof window !== 'undefined') {
 export const initializeCookies = async () => {
   // parse the query string and set to cookies
   const query = new URLSearchParams(window.location.search);
+  void captureMarketingTouch(query);
 
   // set the inviter id to cookies
   const inviterId = query.get('inviter_id');
@@ -32,6 +34,18 @@ export const initializeCookies = async () => {
       path: '/',
       domain: getDomain()
     });
+  }
+
+  // Replace the campaign as a unit so partial links cannot mix visits.
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  if (utmKeys.some((key) => query.has(key))) {
+    const expires = new Date(Date.now() + 7 * 86400000);
+    for (const key of utmKeys) {
+      const options = { expires, path: '/', domain: getDomain() };
+      const value = query.get(key)?.trim().slice(0, 255);
+      if (value) setCookie(key.toUpperCase(), value, options);
+      else removeCookie(key.toUpperCase(), { path: '/', domain: getDomain() });
+    }
   }
 
   // set the theme to cookies
@@ -220,6 +234,7 @@ export const initializeUser = async () => {
   }
   console.debug('start to get user');
   const user = await store.dispatch('getUser');
+  void bindMarketingTouch(token.access);
   console.debug('get user', user);
 };
 
