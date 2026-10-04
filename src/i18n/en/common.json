@@ -392,12 +392,8 @@
     "description": "Windows desktop download card description"
   },
   "message.desktopMacHint": {
-    "message": "For macOS 11 and later. Choose the build that matches your Mac — Apple Silicon (M-series) or Intel.",
-    "description": "macOS desktop download card description"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "The desktop apps are unsigned beta builds. On Windows, choose ‘More info → Run anyway’ at the SmartScreen prompt; on macOS, right-click the app and choose ‘Open’ to bypass Gatekeeper.",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "message": "For macOS 12 and later. Choose the installer for your Mac: Apple Silicon (M-series) or Intel.",
+    "description": "Desktop download requirements and platform signing status"
   },
   "button.getOnGooglePlay": {
     "message": "Get it on Google Play",
@@ -1943,5 +1939,9 @@
   "bootstrap.failed": {
     "message": "Unable to load this site",
     "description": "Site startup failure recovery screen: failed"
+  },
+  "message.desktopSigningNote": {
+    "message": "macOS installers are Developer ID signed and Apple notarized. The Windows installer is currently unsigned and may display a SmartScreen prompt.",
+    "description": "Desktop download requirements and platform signing status"
   }
 }

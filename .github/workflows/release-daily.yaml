@@ -58,7 +58,7 @@ jobs:
           set -euo pipefail
           PKG=$(node -p "require('./package.json').name")
           LOCAL=$(node -p "require('./package.json').version")
-          NPM_LATEST=$(npm view "$PKG" version 2>/dev/null || true)
+          NPM_LATEST=$(npm view "$PKG" version --prefer-online 2>/dev/null || true)
           if [ -z "$NPM_LATEST" ]; then
             echo "::warning::Could not fetch npm latest for $PKG; skipping baseline sync."
             exit 0
@@ -82,7 +82,7 @@ jobs:
         run: |
           set -euo pipefail
           PKG=$(node -p "require('./package.json').name")
-          NPM_LATEST=$(npm view "$PKG" version)
+          NPM_LATEST=$(npm view "$PKG" version --prefer-online)
           TAGS=$(git ls-remote --tags --refs origin 'refs/tags/@acedatacloud/nexior_v*' \
             | sed 's#.*refs/tags/@acedatacloud/nexior_v##')
           LATEST_TAG_VERSION=$(printf '%s\n' "$TAGS" | node -e '
@@ -92,6 +92,17 @@ jobs:
             if (!versions.length) process.exit(1)
             process.stdout.write(versions.sort(semver.rcompare)[0])
           ')
+
+          # The baseline query immediately before publishing caches npm metadata.
+          # Revalidate it and allow bounded registry propagation before comparing
+          # the newly pushed tag with the public dist-tag.
+          for ATTEMPT in $(seq 1 12); do
+            TAG_AHEAD=$(node -e "const s=require('semver'); console.log(s.gt(process.argv[1], process.argv[2]) ? '1' : '0')" "$LATEST_TAG_VERSION" "$NPM_LATEST")
+            [ "$TAG_AHEAD" = "1" ] || break
+            echo "::notice::Waiting for npm latest to reach $LATEST_TAG_VERSION ($ATTEMPT/12)."
+            sleep 5
+            NPM_LATEST=$(npm view "$PKG" version --prefer-online)
+          done
 
           if [ "$LATEST_TAG_VERSION" != "$NPM_LATEST" ]; then
             HIGHER=$(node -e "const s=require('semver'); console.log(s.gt(process.argv[1], process.argv[2]) ? '1' : '0')" "$NPM_LATEST" "$LATEST_TAG_VERSION")

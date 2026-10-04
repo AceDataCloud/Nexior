@@ -104,11 +104,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    concurrency:
+      group: nexior-installer-publish
+      cancel-in-progress: false
     steps:
-      - name: Checkout release tag
+      - name: Checkout release tooling
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag }}
+          ref: ${{ github.sha }}
 
       - name: Download all release artifacts
         uses: actions/download-artifact@v5
@@ -117,29 +120,14 @@ jobs:
           path: release-assets
           merge-multiple: true
 
-      - name: Verify complete versioned asset set
+      - name: Verify complete versioned asset set and prepare stable downloads
         env:
           RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
           set -euo pipefail
           VERSION=${RELEASE_TAG#@acedatacloud/nexior_v}
-          find release-assets -maxdepth 1 -type f -print
-          for EXPECTED in \
-            "nexior-dist-@acedatacloud-nexior_v${VERSION}.tar.gz" \
-            "nexior-dist-@acedatacloud-nexior_v${VERSION}.tar.gz.sha256" \
-            "nexior-${VERSION}.apk" \
-            "AceData.Setup.${VERSION}.exe" \
-            "AceData-${VERSION}.dmg" \
-            "AceData-${VERSION}-arm64.dmg"; do
-            test "$(find release-assets -maxdepth 1 -type f -name "$EXPECTED" | wc -l | tr -d ' ')" = "1" || {
-              echo "::error::expected exactly one $EXPECTED"
-              exit 1
-            }
-          done
-          test "$(find release-assets -maxdepth 1 -type f | wc -l | tr -d ' ')" = "6" || {
-            echo "::error::unexpected files in the release asset set"
-            exit 1
-          }
+          python3 scripts/prepare_installer_assets.py release-assets "$VERSION"
+          (cd release-assets && sha256sum --check SHA256SUMS)
 
       - name: Create public Latest Release
         env:
@@ -152,6 +140,13 @@ jobs:
           if gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "::error::$RELEASE_TAG already has a GitHub Release; refusing to replace it"
             exit 1
+          fi
+          LATEST=true
+          PUBLISHED_TAG=$(gh release view -R "$GITHUB_REPOSITORY" --json tagName --jq .tagName)
+          PUBLISHED_VERSION=${PUBLISHED_TAG#@acedatacloud/nexior_v}
+          if [ "$(printf '%s\n' "$VERSION" "$PUBLISHED_VERSION" | sort -V | tail -n1)" != "$VERSION" ]; then
+            LATEST=false
+            echo "::notice::A newer release is already public; preserving Latest."
           fi
           IOS_URL=${IOS_APP_STORE_URL_OVERRIDE:-}
           if [ -z "$IOS_URL" ]; then
@@ -168,8 +163,22 @@ jobs:
           | 📱 **iOS** | [App Store](${IOS_URL}) |
           | 🌐 **Web** | The \`nexior-dist-*.tar.gz\` below (self-host) |
 
-          > macOS downloads are Developer ID signed and Apple notarized.
+          > macOS 12+ downloads are Developer ID signed and Apple notarized. Windows signing status is reported by the installer.
+          > Stable download filenames always resolve through the latest complete Release. SHA256SUMS covers every download.
           EOF
           gh release create "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" \
             --verify-tag --generate-notes --notes-file release-notes.md \
-            --title "v$VERSION" --latest release-assets/*
+            --title "v$VERSION" --latest=false release-assets/*
+          # Do not move stable links until every upload has completed.
+          gh release view "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --json assets > uploaded-assets.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          expected = {p.name: p.stat().st_size for p in Path('release-assets').iterdir()}
+          actual = {a['name']: a['size'] for a in json.loads(Path('uploaded-assets.json').read_text())['assets']}
+          if actual != expected:
+              raise SystemExit('Uploaded release assets do not match the verified local set')
+          PY
+          if [ "$LATEST" = true ]; then
+            gh release edit "$RELEASE_TAG" -R "$GITHUB_REPOSITORY" --latest
+          fi

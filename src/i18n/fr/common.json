@@ -388,12 +388,8 @@
     "description": "Windows desktop download card description"
   },
   "message.desktopMacHint": {
-    "message": "Pour macOS 11 et versions ultérieures. Choisissez la version adaptée à votre Mac — Apple Silicon (série M) ou Intel.",
-    "description": "macOS desktop download card description"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "Les applications de bureau sont des versions bêta non signées. Sous Windows, choisissez « Informations complémentaires → Exécuter quand même » dans l’invite SmartScreen ; sous macOS, faites un clic droit sur l’application et choisissez « Ouvrir » pour contourner Gatekeeper.",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "message": "Compatible avec macOS 12 et les versions ultérieures. Choisissez le programme d’installation pour puce Apple (série M) ou Intel selon votre modèle.",
+    "description": "Exigences de téléchargement de l’application de bureau et état de la signature de la plateforme"
   },
   "button.getOnGooglePlay": {
     "message": "Disponible sur Google Play",
@@ -1942,5 +1938,9 @@
   "bootstrap.failed": {
     "message": "La page ne peut pas être chargée pour le moment",
     "description": "Écran de récupération après un échec du démarrage du site : échec"
+  },
+  "message.desktopSigningNote": {
+    "message": "Le programme d’installation macOS a été signé par le développeur et notarié par Apple. Le programme d’installation Windows n’est actuellement pas signé ; une alerte SmartScreen peut s’afficher lors de l’installation.",
+    "description": "Exigences de téléchargement de l’application de bureau et état de la signature de la plateforme"
   }
 }

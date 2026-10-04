@@ -388,12 +388,8 @@
     "description": "Windowsデスクトップダウンロードカードの説明"
   },
   "message.desktopMacHint": {
-    "message": "macOS 11 以降向け。お使いの Mac に合うビルドを選択してください —— Apple Silicon（M シリーズ）または Intel。",
-    "description": "macOSデスクトップダウンロードカードの説明"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "デスクトップ版は未署名のベータビルドです。Windows では SmartScreen の警告で「詳細情報 → 実行」を選択してください。macOS ではアプリを右クリックして「開く」を選ぶと Gatekeeper を回避できます。",
-    "description": "デスクトップビルドが未署名のベータ版であることと開き方を説明するノート"
+    "message": "macOS 12以降に対応しています。モデルに応じて、Appleシリコン（Mシリーズ）またはIntelのインストーラーを選択してください。",
+    "description": "デスクトップ版のダウンロード要件とプラットフォームの署名状況"
   },
   "button.getOnGooglePlay": {
     "message": "Google Play で手に入れよう",
@@ -1942,5 +1938,9 @@
   "bootstrap.failed": {
     "message": "ページを一時的に読み込めません",
     "description": "サイト起動失敗時の復旧画面：失敗"
+  },
+  "message.desktopSigningNote": {
+    "message": "macOSのインストーラーは開発者署名とAppleの公証を取得済みです。Windowsのインストーラーは現在署名されていないため、インストール時にSmartScreenの警告が表示される場合があります。",
+    "description": "デスクトップ版のダウンロード要件とプラットフォームの署名状況"
   }
 }

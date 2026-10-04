@@ -36,6 +36,7 @@ protocols:
       - acedata-desktop
 
 win:
+  artifactName: AceData.Setup.${version}.${ext}
   # build/icon.ico (multi-resolution AceData brand icon). NSIS also derives the
   # installer/uninstaller icons from this by default.
   icon: build/icon.ico

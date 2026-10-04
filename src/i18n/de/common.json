@@ -388,12 +388,8 @@
     "description": "Windows desktop download card description"
   },
   "message.desktopMacHint": {
-    "message": "Für macOS 11 und neuer. Wähle die passende Version für deinen Mac — Apple Silicon (M-Serie) oder Intel.",
-    "description": "macOS desktop download card description"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "Die Desktop-Apps sind unsignierte Beta-Builds. Wähle unter Windows bei der SmartScreen-Meldung „Weitere Informationen → Trotzdem ausführen“; unter macOS klicke mit der rechten Maustaste auf die App und wähle „Öffnen“, um Gatekeeper zu umgehen.",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "message": "Für macOS 12 und höher. Wählen Sie je nach Modell das Installationspaket für Apple-Chips (M-Serie) oder Intel aus.",
+    "description": "Anforderungen für Desktop-Downloads und Status der Plattform-Signierung"
   },
   "button.getOnGooglePlay": {
     "message": "Jetzt bei Google Play",
@@ -1942,5 +1938,9 @@
   "bootstrap.failed": {
     "message": "Die Seite kann momentan nicht geladen werden",
     "description": "Fehlermeldung des Wiederherstellungsbildschirms bei einem Fehler beim Starten der Website"
+  },
+  "message.desktopSigningNote": {
+    "message": "Das macOS-Installationspaket wurde mit einem Entwicklerzertifikat signiert und von Apple notarisiert. Das Windows-Installationspaket ist derzeit nicht signiert; bei der Installation kann ein SmartScreen-Hinweis angezeigt werden.",
+    "description": "Anforderungen für Desktop-Downloads und Status der Plattform-Signierung"
   }
 }

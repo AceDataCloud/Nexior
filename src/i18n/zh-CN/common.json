@@ -396,12 +396,8 @@
     "description": "Windows desktop download card description"
   },
   "message.desktopMacHint": {
-    "message": "适用于 macOS 11 及以上版本。请按你的机型选择 —— Apple 芯片（M 系列）或 Intel。",
-    "description": "macOS desktop download card description"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "桌面版目前为未签名的 Beta 版本。Windows 在 SmartScreen 提示中选择“更多信息 → 仍要运行”；macOS 请右键点按应用并选择“打开”以绕过 Gatekeeper。",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "message": "适用于 macOS 12 及以上版本。请按机型选择 Apple 芯片（M 系列）或 Intel 安装包。",
+    "description": "Desktop download requirements and platform signing status"
   },
   "button.getOnGooglePlay": {
     "message": "在 Google Play 上获取",
@@ -1943,5 +1939,9 @@
   "bootstrap.failed": {
     "message": "页面暂时无法加载",
     "description": "Site startup failure recovery screen: failed"
+  },
+  "message.desktopSigningNote": {
+    "message": "macOS 安装包已通过开发者签名和 Apple 公证。Windows 安装包目前未签名，安装时可能出现 SmartScreen 提示。",
+    "description": "Desktop download requirements and platform signing status"
   }
 }
