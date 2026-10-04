@@ -1122,6 +1122,19 @@ export default defineComponent({
       // Seed the composer (provider/model/cwd) from the session we switched to.
       this.syncSessionSettings();
     },
+    currentSession(session: ICodingBridgeSession | undefined, previous: ICodingBridgeSession | undefined) {
+      // History metadata arrives after selecting its ID. Apply it when it lands
+      // so a resume cannot inherit the previous conversation's working folder.
+      if (
+        session &&
+        !session.started &&
+        ['cwd', 'model', 'provider', 'effort', 'permission_mode'].some(
+          (key) => session[key as keyof ICodingBridgeSession] !== previous?.[key as keyof ICodingBridgeSession]
+        )
+      ) {
+        this.syncSessionSettings();
+      }
+    },
     currentNodeId() {
       void this.cancelSpeechRecognition?.();
       // Refresh capabilities when switching devices.
