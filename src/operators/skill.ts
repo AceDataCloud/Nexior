@@ -111,6 +111,7 @@ export interface ISkillCatalogPage {
 
 export interface ISkillCatalogFacet {
   namespace: string;
+  publisher?: string;
   category: string;
   count: number;
 }

@@ -55,7 +55,12 @@
         :aria-label="$t('skill.directory.allPublishers')"
         @change="resetAndLoad"
       >
-        <el-option v-for="publisher in publishers" :key="publisher" :label="publisher" :value="publisher" />
+        <el-option
+          v-for="publisher in publishers"
+          :key="publisher.namespace"
+          :label="publisher.label"
+          :value="publisher.namespace"
+        />
       </el-select>
       <el-select v-model="sort" class="market-sort" :aria-label="$t('skill.marketplace.sort')" @change="resetAndLoad">
         <el-option
@@ -285,7 +290,7 @@ const selectedItem = ref<Item | null>(null);
 const query = ref('');
 const sort = ref<'popular' | 'recent'>('popular');
 const namespace = ref('');
-const publishers = ref<string[]>([]);
+const publishers = ref<{ namespace: string; label: string }[]>([]);
 const collection = ref('trending');
 const page = ref(1);
 const total = ref(0);
@@ -329,7 +334,14 @@ async function loadSources() {
 async function loadPublishers() {
   try {
     const { data } = await skillCatalogOperator.categories();
-    publishers.value = [...new Set(data.namespaces.map((item) => item.namespace))].sort();
+    publishers.value = [
+      ...new Map(
+        data.namespaces.map((item) => [
+          item.namespace,
+          { namespace: item.namespace, label: item.publisher || item.namespace }
+        ])
+      ).values()
+    ].sort((a, b) => a.label.localeCompare(b.label));
   } catch {
     /* Search remains available if publisher facets cannot load. */
   }
