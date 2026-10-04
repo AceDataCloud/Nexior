@@ -110,6 +110,7 @@ export interface ISkillCatalogPage {
 
 export interface ISkillCatalogFacet {
   namespace: string;
+  publisher?: string;
   category: string;
   count: number;
 }
@@ -237,3 +238,48 @@ class SkillCatalogOperator {
 }
 
 export const skillCatalogOperator = new SkillCatalogOperator();
+
+export interface ISkillMarketplaceEntry {
+  id: string;
+  marketplace: string;
+  name: string;
+  slug: string;
+  description: string;
+  publisher: string;
+  source_repo: string;
+  source_url: string;
+  marketplace_url: string;
+  metric: 'installs' | 'stars';
+  metric_count: number;
+  upstream_updated_at: string | null;
+  reference: string;
+  installed: boolean;
+}
+
+export const skillMarketplaceOperator = {
+  list: (params: {
+    marketplace: string;
+    q?: string;
+    collection?: string;
+    sort?: string;
+    page: number;
+    site_id?: string;
+  }) =>
+    optionalHttpClient.get<{ items: ISkillMarketplaceEntry[]; has_more: boolean; page: number }>(
+      '/skills/marketplaces/',
+      {
+        ...authApi(),
+        params,
+        timeout: 35000
+      }
+    ),
+  install: (reference: string, siteId?: string) =>
+    httpClient.post<ISkill>(
+      '/skills/marketplaces/install/',
+      { reference, ...(siteId ? { site_id: siteId } : {}) },
+      {
+        ...authApi(),
+        timeout: 100000
+      }
+    )
+};
