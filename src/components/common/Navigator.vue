@@ -782,12 +782,18 @@ $dock-handle-height: 22px;
         background: transparent;
         cursor: pointer;
 
-        :deep(.brand-logo__image),
-        :deep(.brand-logo__mark) {
+        :deep(.brand-logo__image) {
           box-sizing: border-box;
-          width: 20px;
-          height: 20px;
+          // Account for the Site favicon's transparent margins and vertical inset.
+          width: 32px;
+          height: 32px;
           padding: 0;
+          transform: translateY(2px);
+        }
+
+        :deep(.brand-logo__mark) {
+          width: var(--dock-icon-size);
+          height: var(--dock-icon-size);
         }
 
         &:focus-visible {
