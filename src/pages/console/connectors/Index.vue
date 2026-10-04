@@ -89,50 +89,44 @@
                 <span class="group-title" @click="toggleGroup(group.key)">{{ group.label }}</span>
               </div>
               <ul v-show="!group.collapsed" class="group-items">
-                <el-tooltip v-for="item in group.items" :key="item.key" placement="top" :show-after="300">
-                  <template #content>
-                    <div class="list-item-tooltip">
-                      <span class="list-item-tooltip-name">{{ item.name }}</span>
-                      <span v-if="item.accountLabel">{{ item.accountLabel }}</span>
-                    </div>
-                  </template>
-                  <li :class="{ 'list-item': true, active: selectedKey === item.key }" @click="onSelect(item)">
-                    <span class="list-item-icon">
-                      <img
-                        v-if="item.faviconUrl"
-                        :src="item.faviconUrl"
-                        :alt="item.name"
-                        @error="onFaviconError(item)"
-                      />
-                      <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
-                      <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
-                    </span>
-                    <span class="list-item-content" :class="{ 'has-account': item.accountLabel }">
-                      <span class="list-item-name">{{ item.name }}</span>
-                      <span v-if="item.accountLabel" class="list-item-separator" aria-hidden="true">·</span>
-                      <span v-if="item.accountLabel" class="list-item-account">{{ item.accountLabel }}</span>
-                    </span>
-                    <meta-tag
-                      v-if="item.isDefault"
-                      class="list-item-badge list-item-badge-default"
-                      density="compact"
-                      tone="success"
-                      >{{ $t('connection.label.defaultAccount') }}</meta-tag
-                    >
-                    <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
-                      $t('connection.label.custom')
-                    }}</meta-tag>
-                    <meta-tag
-                      v-else-if="group.key === 'available'"
-                      class="list-item-badge list-item-badge-hint"
-                      :title="$t('connection.message.notConnectedYet')"
-                      density="compact"
-                      tone="brand"
-                    >
-                      {{ $t('connection.label.notConnected') }}
-                    </meta-tag>
-                  </li>
-                </el-tooltip>
+                <li
+                  v-for="item in group.items"
+                  :key="item.key"
+                  :class="{ 'list-item': true, active: selectedKey === item.key }"
+                  @click="onSelect(item)"
+                >
+                  <span class="list-item-icon">
+                    <img v-if="item.faviconUrl" :src="item.faviconUrl" :alt="item.name" @error="onFaviconError(item)" />
+                    <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
+                    <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
+                  </span>
+                  <span class="list-item-content" :class="{ 'has-account': item.accountLabel }">
+                    <span class="list-item-name">{{ item.name }}</span>
+                    <span v-if="item.accountLabel" class="list-item-separator" aria-hidden="true">·</span>
+                    <el-tooltip v-if="item.accountLabel" :content="item.accountLabel" placement="top">
+                      <span class="list-item-account">{{ item.accountLabel }}</span>
+                    </el-tooltip>
+                  </span>
+                  <meta-tag
+                    v-if="item.isDefault"
+                    class="list-item-badge list-item-badge-default"
+                    density="compact"
+                    tone="success"
+                    >{{ $t('connection.label.defaultAccount') }}</meta-tag
+                  >
+                  <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
+                    $t('connection.label.custom')
+                  }}</meta-tag>
+                  <meta-tag
+                    v-else-if="group.key === 'available'"
+                    class="list-item-badge list-item-badge-hint"
+                    :title="$t('connection.message.notConnectedYet')"
+                    density="compact"
+                    tone="brand"
+                  >
+                    {{ $t('connection.label.notConnected') }}
+                  </meta-tag>
+                </li>
               </ul>
             </div>
           </template>
@@ -2355,19 +2349,6 @@ html.dark .connectors-shell {
 .list-item-separator {
   flex: 0 0 auto;
   color: var(--el-text-color-placeholder);
-}
-
-.list-item-tooltip {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  max-width: min(320px, calc(100vw - 40px));
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
-.list-item-tooltip-name {
-  font-weight: 600;
 }
 
 .list-footer {
