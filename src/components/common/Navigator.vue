@@ -728,6 +728,9 @@ $dock-handle-height: 22px;
   }
 
   &[direction='row'] {
+    --dock-icon-size: 24px;
+    --dock-target-size: 36px;
+
     flex-direction: row;
     border-right: none;
     border-top: 1px solid var(--app-border-subtle);
@@ -751,11 +754,11 @@ $dock-handle-height: 22px;
       transition: opacity 0.18s ease;
     }
     .top {
-      padding-left: 10px;
+      padding-left: 4px;
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 10px;
+      gap: 2px;
       justify-content: flex-start;
       // Only the icon strip scrolls. Keeping the scroll off .dock-body leaves
       // the user avatar in .bottom pinned to the right edge instead of
@@ -769,20 +772,24 @@ $dock-handle-height: 22px;
       }
       .home-button {
         display: grid;
-        width: 36px;
-        height: 36px;
+        width: var(--dock-target-size);
+        height: var(--dock-target-size);
         place-items: center;
         flex: none;
-        border: 1px solid var(--app-border-subtle);
+        border: none;
         border-radius: 50%;
         color: var(--el-text-color-primary);
-        background: var(--el-bg-color);
+        background: transparent;
         cursor: pointer;
 
-        :deep(.brand-logo__image) {
-          width: 28px;
-          height: 28px;
+        :deep(.brand-logo__image),
+        :deep(.brand-logo__mark) {
+          box-sizing: border-box;
+          width: var(--dock-icon-size);
+          height: var(--dock-icon-size);
           padding: 0;
+          border: 1px solid transparent;
+          border-radius: 50%;
         }
 
         &:focus-visible {
@@ -792,14 +799,26 @@ $dock-handle-height: 22px;
       }
       > .link.active .home-button {
         color: var(--el-color-primary);
-        border-color: var(--el-color-primary);
+        :deep(img) {
+          border-color: var(--el-color-primary);
+        }
+      }
+      .avatar {
+        box-sizing: border-box;
+        width: var(--dock-target-size);
+        height: var(--dock-target-size);
+        padding: calc((var(--dock-target-size) - var(--dock-icon-size)) / 2);
+
+        :deep(.el-image__inner) {
+          border-radius: 50%;
+        }
       }
       .links {
         display: flex;
         flex: none;
         flex-direction: row;
         align-items: center;
-        gap: 10px;
+        gap: 2px;
         .link {
           text-align: center;
           .description {
@@ -813,10 +832,18 @@ $dock-handle-height: 22px;
       }
     }
     .bottom {
-      padding: 0 10px;
+      padding: 0 4px;
       display: flex;
       flex: none;
       justify-content: flex-end;
+
+      // Keep the dropdown's touch target while matching the visible icons.
+      :deep(.center > .el-dropdown > .avatar) {
+        box-sizing: border-box;
+        width: var(--dock-target-size);
+        height: var(--dock-target-size);
+        padding: calc((var(--dock-target-size) - var(--dock-icon-size)) / 2);
+      }
     }
 
     &.dock-collapsed {
