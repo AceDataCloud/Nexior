@@ -1,6 +1,7 @@
 import { IOrder } from './order';
 
 export interface IDistributionHistory {
+  metadata?: { calculation?: { version: number; referral_reward: string; markup_reward: string } };
   id: string;
   user_id: string;
   invitee_id: string;
