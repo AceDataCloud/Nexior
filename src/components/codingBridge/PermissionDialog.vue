@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :model-value="!!request"
-    width="480px"
+    width="min(480px, 94vw)"
     :title="$t('codingBridge.permission.title')"
     :close-on-click-modal="false"
     :show-close="false"

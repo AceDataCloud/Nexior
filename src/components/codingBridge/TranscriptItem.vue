@@ -449,7 +449,9 @@ export default defineComponent({
     },
     resultLabel(): string {
       const parts: string[] = [];
-      if (this.event.is_error) {
+      if (this.event.subtype === 'interrupted') {
+        parts.push(this.$t('codingBridge.transcript.interrupted') as string);
+      } else if (this.event.is_error) {
         parts.push(this.$t('codingBridge.transcript.turnFailed') as string);
       } else {
         parts.push(this.$t('codingBridge.transcript.turnDone') as string);

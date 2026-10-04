@@ -313,7 +313,7 @@
   },
   "history.messages": {
     "message": "{count} messages",
-    "description": "Nombre de messages dans l'historique"
+    "description": "Nombre de messages dans l’entrée d’historique"
   },
   "history.readonly": {
     "message": "Cette conversation Codex est en lecture seule et ne peut pas être poursuivie. Démarrez une nouvelle session pour continuer à coder.",
@@ -360,8 +360,8 @@
     "description": "Permission mode: bypass all permission prompts"
   },
   "session.providerLabel": {
-    "message": "Backend",
-    "description": "Étiquette du sélecteur d'agent backend"
+    "message": "Back-end",
+    "description": "Libellé du sélecteur de back-end de l’agent"
   },
   "session.providerClaude": {
     "message": "Claude Code",
@@ -538,5 +538,17 @@
   "notify.failed": {
     "message": "Impossible de mettre à jour les paramètres de notification.",
     "description": "Toast when enabling or disabling notifications errors"
+  },
+  "session.working": {
+    "message": "En cours d’exécution…",
+    "description": "Indique que la session est en cours d’exécution"
+  },
+  "session.permissionModeWorkspace": {
+    "message": "Autorisations de l’espace de travail (sans confirmation à chaque fois)",
+    "description": "Mode d’autorisation de l’espace de travail de la session"
+  },
+  "transcript.interrupted": {
+    "message": "Arrêté",
+    "description": "Indique que la transcription a été arrêtée"
   }
 }

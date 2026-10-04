@@ -92,3 +92,16 @@ describe('coding bridge composer settings breakpoint', () => {
     expect(self.settingsMql).toBeUndefined();
   });
 });
+
+describe('coding bridge permission defaults', () => {
+  it('uses local approval rules for a new device', () => {
+    expect(SessionView.data().permissionMode).toBe('default');
+  });
+
+  it('does not promise per-tool prompts for Codex', () => {
+    const self = { activeProviderName: 'codex', $t: (key: string) => key } as unknown as Ctx;
+    expect(SessionView.methods.permissionModeLabel.call(self, 'default')).toBe(
+      'codingBridge.session.permissionModeWorkspace'
+    );
+  });
+});
