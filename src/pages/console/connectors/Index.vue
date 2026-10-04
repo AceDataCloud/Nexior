@@ -100,33 +100,32 @@
                     <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
                     <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
                   </span>
-                  <span class="list-item-content">
-                    <span class="list-item-heading">
-                      <span class="list-item-name" :title="item.name">{{ item.name }}</span>
-                      <meta-tag
-                        v-if="item.isDefault"
-                        class="list-item-badge list-item-badge-default"
-                        density="compact"
-                        tone="success"
-                        >{{ $t('connection.label.defaultAccount') }}</meta-tag
-                      >
-                      <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
-                        $t('connection.label.custom')
-                      }}</meta-tag>
-                      <meta-tag
-                        v-else-if="group.key === 'available'"
-                        class="list-item-badge list-item-badge-hint"
-                        :title="$t('connection.message.notConnectedYet')"
-                        density="compact"
-                        tone="brand"
-                      >
-                        {{ $t('connection.label.notConnected') }}
-                      </meta-tag>
-                    </span>
-                    <span v-if="item.accountLabel" class="list-item-account" :title="item.accountLabel">{{
-                      item.accountLabel
-                    }}</span>
+                  <span class="list-item-content" :class="{ 'has-account': item.accountLabel }">
+                    <span class="list-item-name">{{ item.name }}</span>
+                    <span v-if="item.accountLabel" class="list-item-separator" aria-hidden="true">·</span>
+                    <el-tooltip v-if="item.accountLabel" :content="item.accountLabel" placement="top">
+                      <span class="list-item-account">{{ item.accountLabel }}</span>
+                    </el-tooltip>
                   </span>
+                  <meta-tag
+                    v-if="item.isDefault"
+                    class="list-item-badge list-item-badge-default"
+                    density="compact"
+                    tone="success"
+                    >{{ $t('connection.label.defaultAccount') }}</meta-tag
+                  >
+                  <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
+                    $t('connection.label.custom')
+                  }}</meta-tag>
+                  <meta-tag
+                    v-else-if="group.key === 'available'"
+                    class="list-item-badge list-item-badge-hint"
+                    :title="$t('connection.message.notConnectedYet')"
+                    density="compact"
+                    tone="brand"
+                  >
+                    {{ $t('connection.label.notConnected') }}
+                  </meta-tag>
                 </li>
               </ul>
             </div>
@@ -2251,9 +2250,11 @@ html.dark .connectors-shell {
 }
 
 .list-item {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 44px;
   padding: 8px 10px;
   margin: 1px 0;
   // Match the console sidebar's nav rows (SidePanel.vue): same radius, same
@@ -2306,19 +2307,16 @@ html.dark .connectors-shell {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.list-item-heading {
-  display: flex;
   align-items: center;
   gap: 6px;
-  min-width: 0;
+
+  &.has-account .list-item-name {
+    max-width: 55%;
+  }
 }
 
 .list-item-name {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   font-size: 13px;
   line-height: 20px;
@@ -2338,6 +2336,7 @@ html.dark .connectors-shell {
 }
 
 .list-item-account {
+  flex: 1 1 0;
   min-width: 0;
   font-size: 12px;
   line-height: 18px;
@@ -2345,6 +2344,11 @@ html.dark .connectors-shell {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.list-item-separator {
+  flex: 0 0 auto;
+  color: var(--el-text-color-placeholder);
 }
 
 .list-footer {
