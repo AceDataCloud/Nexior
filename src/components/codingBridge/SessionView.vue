@@ -875,7 +875,7 @@ export default defineComponent({
         return '';
       }
       if (this.currentSession.provider === 'codex') {
-        return this.$t('codingBridge.history.codexLabel') as string;
+        return this.$t('codingBridge.session.providerCodex') as string;
       }
       if (this.currentSession.provider === 'claude') {
         return this.$t('codingBridge.history.claudeLabel') as string;
