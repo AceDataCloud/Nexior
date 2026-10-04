@@ -61,11 +61,11 @@
   },
   "status.online": {
     "message": "Online",
-    "description": "Estado do dispositivo online"
+    "description": "Estado online do dispositivo"
   },
   "status.offline": {
     "message": "Offline",
-    "description": "Estado do dispositivo offline"
+    "description": "Estado offline do dispositivo"
   },
   "connection.disconnected": {
     "message": "Desconectado",
@@ -344,8 +344,8 @@
     "description": "Permission-mode selector label"
   },
   "session.permissionModeDefault": {
-    "message": "Padrão (perguntar sempre)",
-    "description": "Permission mode: ask before each tool use"
+    "message": "Padrão (segue as regras de aprovação deste dispositivo)",
+    "description": "Modo de permissão: perguntar antes de cada uso de ferramenta"
   },
   "session.permissionModeAcceptEdits": {
     "message": "Aceitar edições automaticamente",
@@ -360,8 +360,8 @@
     "description": "Permission mode: bypass all permission prompts"
   },
   "session.providerLabel": {
-    "message": "Backend",
-    "description": "Rótulo do seletor de backend do agente"
+    "message": "Back-end",
+    "description": "Rótulo do seletor de back-end do agente"
   },
   "session.providerClaude": {
     "message": "Claude Code",
@@ -538,5 +538,17 @@
   "notify.failed": {
     "message": "Não foi possível atualizar as configurações de notificação.",
     "description": "Toast when enabling or disabling notifications errors"
+  },
+  "session.working": {
+    "message": "Em execução…",
+    "description": "Sessão em execução"
+  },
+  "session.permissionModeWorkspace": {
+    "message": "Permissões do espaço de trabalho (sem confirmação a cada vez)",
+    "description": "Permissões do espaço de trabalho da sessão"
+  },
+  "transcript.interrupted": {
+    "message": "Interrompido",
+    "description": "Transcrição interrompida"
   }
 }

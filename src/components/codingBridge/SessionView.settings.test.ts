@@ -14,6 +14,7 @@ vi.mock('@/assets/images/logos/github-copilot.svg', () => ({ default: 'copilot.s
 const SessionView = (await import('./SessionView.vue')).default as unknown as {
   methods: Record<string, (this: Ctx, ...args: unknown[]) => void>;
   data: () => Record<string, unknown>;
+  watch: Record<string, (this: Ctx, ...args: unknown[]) => void>;
 };
 
 type Ctx = Record<string, unknown> & {
@@ -91,4 +92,28 @@ describe('coding bridge composer settings breakpoint', () => {
     expect(self.mobileSettings).toBe(false);
     expect(self.settingsMql).toBeUndefined();
   });
+});
+
+describe('coding bridge permission defaults', () => {
+  it('uses local approval rules for a new device', () => {
+    expect(SessionView.data().permissionMode).toBe('default');
+  });
+
+  it('does not promise per-tool prompts for Codex', () => {
+    const self = { activeProviderName: 'codex', $t: (key: string) => key } as unknown as Ctx;
+    expect(SessionView.methods.permissionModeLabel.call(self, 'default')).toBe(
+      'codingBridge.session.permissionModeWorkspace'
+    );
+  });
+});
+
+it('applies late history metadata before resuming in the wrong folder', () => {
+  const syncSessionSettings = vi.fn();
+  const self = { syncSessionSettings } as unknown as Ctx;
+  SessionView.watch.currentSession.call(
+    self,
+    { session_id: 'history', started: false, provider: 'codex', cwd: '/codex-project' },
+    { session_id: 'history', started: false, provider: 'codex' }
+  );
+  expect(syncSessionSettings).toHaveBeenCalledOnce();
 });

@@ -344,8 +344,8 @@
     "description": "Permission-mode selector label"
   },
   "session.permissionModeDefault": {
-    "message": "Predefinito (chiedi ogni volta)",
-    "description": "Permission mode: ask before each tool use"
+    "message": "Predefinito (segue le regole di approvazione di questo dispositivo)",
+    "description": "Modalità autorizzazioni: chiedi prima di ogni utilizzo dello strumento"
   },
   "session.permissionModeAcceptEdits": {
     "message": "Accetta automaticamente le modifiche",
@@ -361,7 +361,7 @@
   },
   "session.providerLabel": {
     "message": "Backend",
-    "description": "Etichetta per il selettore del backend dell'agente"
+    "description": "Etichetta del selettore del backend dell'agente"
   },
   "session.providerClaude": {
     "message": "Claude Code",
@@ -538,5 +538,17 @@
   "notify.failed": {
     "message": "Impossibile aggiornare le impostazioni delle notifiche.",
     "description": "Toast when enabling or disabling notifications errors"
+  },
+  "session.working": {
+    "message": "In esecuzione…",
+    "description": "Stato di esecuzione della sessione"
+  },
+  "session.permissionModeWorkspace": {
+    "message": "Permessi dell'area di lavoro (senza conferma ogni volta)",
+    "description": "Modalità dei permessi dell'area di lavoro"
+  },
+  "transcript.interrupted": {
+    "message": "Interrotto",
+    "description": "Stato della trascrizione interrotta"
   }
 }

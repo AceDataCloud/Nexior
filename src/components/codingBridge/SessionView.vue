@@ -63,17 +63,19 @@
         {{ $t('codingBridge.session.deviceOffline') }}
       </div>
 
-      <!-- Diagnostic ids: copyable identifiers for issue reports / log lookups. -->
-      <div
+      <details
         v-if="diagnostics.length"
-        class="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-1.5 text-[11px] text-[var(--app-text-subtle)] border-b border-[var(--app-border-subtle)]"
+        class="px-5 py-1 text-xs text-[var(--app-text-subtle)] border-b border-[var(--app-border-subtle)]"
       >
-        <span v-for="item in diagnostics" :key="item.label" class="inline-flex items-center gap-1 min-w-0">
-          <span class="opacity-70 flex-none">{{ item.label }}:</span>
-          <span class="font-mono break-all" :title="item.value">{{ item.value }}</span>
-          <copy-to-clipboard :content="item.value" class="inline-block flex-none" />
-        </span>
-      </div>
+        <summary class="cursor-pointer w-fit">{{ $t('common.button.detail') }}</summary>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 py-2">
+          <span v-for="item in diagnostics" :key="item.label" class="inline-flex items-center gap-1 min-w-0">
+            <span class="opacity-70 flex-none">{{ item.label }}:</span>
+            <span class="font-mono break-all" :title="item.value">{{ item.value }}</span>
+            <copy-to-clipboard :content="item.value" class="inline-block flex-none" />
+          </span>
+        </div>
+      </details>
 
       <!-- Transcript -->
       <div
@@ -749,10 +751,7 @@ export default defineComponent({
       cwd: '',
       model: '',
       customModelDraft: '',
-      // Default to bypass: this is the user's own paired machine, so the agent
-      // runs without per-tool approval prompts unless a stricter mode is picked
-      // (which then persists per device via lastComposer).
-      permissionMode: 'bypassPermissions',
+      permissionMode: 'default',
       provider: 'claude',
       effort: '',
       directoryVisible: false,
@@ -876,7 +875,7 @@ export default defineComponent({
         return '';
       }
       if (this.currentSession.provider === 'codex') {
-        return this.$t('codingBridge.history.codexLabel') as string;
+        return this.$t('codingBridge.session.providerCodex') as string;
       }
       if (this.currentSession.provider === 'claude') {
         return this.$t('codingBridge.history.claudeLabel') as string;
@@ -1033,7 +1032,9 @@ export default defineComponent({
     permissionModeOptions(): { label: string; value: string }[] {
       const modes = this.currentProviderCap?.permission_modes;
       const tokens = modes && modes.length ? modes : ['default', 'acceptEdits', 'plan', 'bypassPermissions'];
-      return tokens.map((token) => ({ value: token, label: this.permissionModeLabel(token) }));
+      return tokens
+        .filter((token) => this.activeProviderName !== 'codex' || token !== 'acceptEdits')
+        .map((token) => ({ value: token, label: this.permissionModeLabel(token) }));
     },
     sessionMeta(): string {
       const session = this.currentSession;
@@ -1120,6 +1121,19 @@ export default defineComponent({
       this.restoreCode = false;
       // Seed the composer (provider/model/cwd) from the session we switched to.
       this.syncSessionSettings();
+    },
+    currentSession(session: ICodingBridgeSession | undefined, previous: ICodingBridgeSession | undefined) {
+      // History metadata arrives after selecting its ID. Apply it when it lands
+      // so a resume cannot inherit the previous conversation's working folder.
+      if (
+        session &&
+        !session.started &&
+        ['cwd', 'model', 'provider', 'effort', 'permission_mode'].some(
+          (key) => session[key as keyof ICodingBridgeSession] !== previous?.[key as keyof ICodingBridgeSession]
+        )
+      ) {
+        this.syncSessionSettings();
+      }
     },
     currentNodeId() {
       void this.cancelSpeechRecognition?.();
@@ -1327,6 +1341,9 @@ export default defineComponent({
       return key ? (this.$t(key) as string) : token;
     },
     permissionModeLabel(token: string): string {
+      if (this.activeProviderName === 'codex' && (token === 'default' || token === 'acceptEdits')) {
+        return this.$t('codingBridge.session.permissionModeWorkspace') as string;
+      }
       const keys: Record<string, string> = {
         default: 'codingBridge.session.permissionModeDefault',
         acceptEdits: 'codingBridge.session.permissionModeAcceptEdits',
@@ -1376,7 +1393,7 @@ export default defineComponent({
       this.customModelDraft = '';
       this.cwd = session.cwd ?? prefs.cwd ?? '';
       this.effort = session.effort ?? prefs.effort ?? '';
-      this.permissionMode = session.permission_mode ?? prefs.permissionMode ?? 'bypassPermissions';
+      this.permissionMode = session.permission_mode ?? prefs.permissionMode ?? 'default';
     },
     // Pick a listed model (or the empty default) and close the popover.
     selectModel(value: string) {
@@ -1670,7 +1687,7 @@ export default defineComponent({
       const prefs = this.lastComposer;
       this.cwd = prefs.cwd ?? '';
       this.provider = prefs.provider ?? 'claude';
-      this.permissionMode = prefs.permissionMode ?? 'bypassPermissions';
+      this.permissionMode = prefs.permissionMode ?? 'default';
       this.customModelDraft = '';
       this.$nextTick(() => {
         this.model = prefs.model ?? '';
