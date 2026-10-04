@@ -1,7 +1,29 @@
 <template>
   <div class="skills-page">
     <console-page-header :title="$t('skill.title.skills')" :subtitle="$t('skill.message.pageDescription')" />
-    <div class="skills-shell">
+    <div class="skills-tabs" role="tablist" :aria-label="$t('skill.title.skills')">
+      <button
+        role="tab"
+        :aria-selected="activeTab === 'marketplace'"
+        :class="{ active: activeTab === 'marketplace' }"
+        @click="activeTab = 'marketplace'"
+      >
+        <marketplace-icon :size="16" aria-hidden="true" />{{ $t('skill.marketplace.title') }}
+      </button>
+      <button
+        role="tab"
+        :aria-selected="activeTab === 'mine'"
+        :class="{ active: activeTab === 'mine' }"
+        @click="activeTab = 'mine'"
+      >
+        <skill-icon :size="16" aria-hidden="true" />{{ $t('skill.marketplace.mySkills')
+        }}<span>{{ personalSkills.length }}</span>
+      </button>
+    </div>
+    <div v-show="activeTab === 'marketplace'" class="marketplace-page-content">
+      <skill-marketplace @installed="onCreated" />
+    </div>
+    <div v-show="activeTab === 'mine'" class="skills-shell">
       <!-- Left pane: skill list -->
       <aside class="left-pane">
         <header class="left-header">
@@ -226,7 +248,6 @@
     <!-- Dialogs -->
     <upload-skill-dialog v-model="uploadVisible" @created="onCreated" />
     <write-skill-dialog v-model="writeVisible" @created="onCreated" />
-    <browse-skills-dialog v-model="browseVisible" @installed="onCreated" />
   </div>
 </template>
 
@@ -259,7 +280,7 @@ import {
   WriteIcon
 } from '@acedatacloud/core/icons/components';
 import { ISkill, skillOperator } from '@/operators/skill';
-import BrowseSkillsDialog from '@/components/skill/BrowseSkillsDialog.vue';
+import SkillMarketplace from '@/components/skill/SkillMarketplace.vue';
 import ConsolePageHeader from '@/components/console/PageHeader.vue';
 import SkillFilePreview from '@/components/skill/SkillFilePreview.vue';
 import SkillRow from '@/components/skill/SkillRow.vue';
@@ -267,6 +288,7 @@ import UploadSkillDialog from '@/components/skill/UploadSkillDialog.vue';
 import WriteSkillDialog from '@/components/skill/WriteSkillDialog.vue';
 
 interface IData {
+  activeTab: string;
   loading: boolean;
   skills: ISkill[];
   togglingId: string | null;
@@ -282,7 +304,6 @@ interface IData {
 
   uploadVisible: boolean;
   writeVisible: boolean;
-  browseVisible: boolean;
 }
 
 export default defineComponent({
@@ -308,7 +329,7 @@ export default defineComponent({
     SkillIcon,
     UploadIcon,
     WriteIcon,
-    BrowseSkillsDialog,
+    SkillMarketplace,
     SkillFilePreview,
     SkillRow,
     UploadSkillDialog,
@@ -317,6 +338,7 @@ export default defineComponent({
   directives: { loading: vLoading },
   data(): IData {
     return {
+      activeTab: 'marketplace',
       loading: false,
       skills: [],
       togglingId: null,
@@ -331,8 +353,7 @@ export default defineComponent({
       searchQuery: '',
 
       uploadVisible: false,
-      writeVisible: false,
-      browseVisible: false
+      writeVisible: false
     };
   },
   computed: {
@@ -424,8 +445,8 @@ export default defineComponent({
     },
 
     onBrowse() {
-      // Open the public skills directory dialog.
-      this.browseVisible = true;
+      // Bring the marketplace into view without hiding it behind a menu.
+      this.activeTab = 'marketplace';
     },
 
     async onCreated(id: string) {
@@ -500,6 +521,42 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.skills-tabs {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--app-border-subtle);
+}
+.skills-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  color: var(--el-text-color-secondary);
+  cursor: pointer;
+}
+.skills-tabs button.active {
+  color: var(--el-text-color-primary);
+  border-bottom-color: var(--el-color-primary);
+  font-weight: 600;
+}
+.skills-tabs button span {
+  font-size: 11px;
+  padding: 1px 6px;
+  background: var(--el-fill-color);
+  border-radius: 5px;
+}
+.marketplace-page-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
 /* The full-height flex column comes from the layout (`.panel--workspace`,
    selected by this route's `meta.layout`), so the page only lays out its
    own content. */

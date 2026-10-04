@@ -442,5 +442,177 @@
   "preview.selectSkill": {
     "message": "從左側列表選擇一個技能查看詳情",
     "description": "提示用户从左侧选择技能查看详细信息"
+  },
+  "marketplace.eyebrow": {
+    "message": "能力，從這裡擴展",
+    "description": "技能市場：眉標"
+  },
+  "marketplace.title": {
+    "message": "技能市場",
+    "description": "技能市場：標題"
+  },
+  "marketplace.description": {
+    "message": "發現社群裡的好技能，把成熟的方法和工作流程帶進你的 AI。",
+    "description": "技能市場：說明文字"
+  },
+  "marketplace.sources": {
+    "message": "選擇技能來源",
+    "description": "技能市場：來源選擇"
+  },
+  "marketplace.source.catalog": {
+    "message": "平台目錄 · 直接安裝",
+    "description": "技能市場：平台目錄來源"
+  },
+  "marketplace.source.skills-sh": {
+    "message": "Vercel 生態系 · 趨勢與精選",
+    "description": "技能市場：skills.sh 來源"
+  },
+  "marketplace.source.skillsmp": {
+    "message": "社群發現 · 更多領域",
+    "description": "技能市場：SkillsMP 來源"
+  },
+  "marketplace.status.ready": {
+    "message": "已連接",
+    "description": "技能市場：已連接狀態"
+  },
+  "marketplace.status.pending": {
+    "message": "等待同步",
+    "description": "技能市場：等待同步狀態"
+  },
+  "marketplace.status.error": {
+    "message": "同步異常",
+    "description": "技能市場：同步異常狀態"
+  },
+  "marketplace.status.not_configured": {
+    "message": "尚未連接",
+    "description": "技能市場：尚未設定連接狀態"
+  },
+  "marketplace.search": {
+    "message": "搜尋技能、工作流程或發布者",
+    "description": "技能市場：搜尋欄位"
+  },
+  "marketplace.searchButton": {
+    "message": "搜尋",
+    "description": "技能市場：搜尋按鈕"
+  },
+  "marketplace.sort": {
+    "message": "排序方式",
+    "description": "技能市場：排序選項"
+  },
+  "marketplace.popularLocal": {
+    "message": "本站熱門",
+    "description": "技能市場：本站熱門排序"
+  },
+  "marketplace.popularExternal": {
+    "message": "社群熱度",
+    "description": "技能市場：社群熱門排序"
+  },
+  "marketplace.updated": {
+    "message": "內容更新",
+    "description": "技能市場：內容更新排序"
+  },
+  "marketplace.discovered": {
+    "message": "新發現",
+    "description": "技能市場：新發現排序"
+  },
+  "marketplace.collection.trending": {
+    "message": "趨勢",
+    "description": "技能市場：趨勢分類"
+  },
+  "marketplace.collection.hot": {
+    "message": "正在升溫",
+    "description": "技能市場：熱門上升分類"
+  },
+  "marketplace.collection.official": {
+    "message": "官方精選",
+    "description": "技能市場：官方精選分類"
+  },
+  "marketplace.collection.all": {
+    "message": "全部",
+    "description": "技能市場：全部分類"
+  },
+  "marketplace.results": {
+    "message": "{count} 個技能",
+    "description": "技能市場：搜尋結果數量"
+  },
+  "marketplace.synced": {
+    "message": "最近同步",
+    "description": "技能市場：最近同步時間"
+  },
+  "marketplace.visit": {
+    "message": "訪問市場",
+    "description": "技能市場：造訪市場按鈕"
+  },
+  "marketplace.stale": {
+    "message": "此來源暫時未更新，以下保留上次同步結果。",
+    "description": "技能市場：內容過時"
+  },
+  "marketplace.retry": {
+    "message": "重試",
+    "description": "技能市場：重試"
+  },
+  "marketplace.notConnected": {
+    "message": "這個市場尚未連接",
+    "description": "技能市場：尚未連接"
+  },
+  "marketplace.notConnectedHint": {
+    "message": "連接後會在這裡展示趨勢和精選技能。你也可以先造訪原市場。",
+    "description": "技能市場：尚未連接提示"
+  },
+  "marketplace.emptyHint": {
+    "message": "試試更短的關鍵詞，或切換技能來源。",
+    "description": "技能市場：空白結果提示"
+  },
+  "marketplace.sourceDescription": {
+    "message": "來自社群的工作流程與實用方法，開啟原始來源了解詳情。",
+    "description": "技能市場：來源描述"
+  },
+  "marketplace.detailsFor": {
+    "message": "查看 {name} 詳情",
+    "description": "技能市場：查看指定技能詳情"
+  },
+  "marketplace.details": {
+    "message": "查看",
+    "description": "技能市場：查看詳情"
+  },
+  "marketplace.localInstalls": {
+    "message": "本站安裝",
+    "description": "技能市場：本站安裝數"
+  },
+  "marketplace.repoStars": {
+    "message": "儲存庫 Stars",
+    "description": "技能市場：儲存庫星標數"
+  },
+  "marketplace.marketInstalls": {
+    "message": "市場安裝",
+    "description": "技能市場：市場安裝數"
+  },
+  "marketplace.repository": {
+    "message": "原始碼儲存庫",
+    "description": "技能市場：原始碼儲存庫"
+  },
+  "marketplace.importHint": {
+    "message": "這是外部社群技能。安裝會匯入它的說明與附件，請先查看原始來源，確認所需工具和執行環境適合你的任務。",
+    "description": "技能市場：匯入提示"
+  },
+  "marketplace.originalListing": {
+    "message": "原市場詳情",
+    "description": "技能市場：原市場詳情"
+  },
+  "marketplace.import": {
+    "message": "匯入並安裝",
+    "description": "技能市場：匯入"
+  },
+  "marketplace.licenseBlocked": {
+    "message": "該技能的授權不支援直接匯入，請查看原始來源。",
+    "description": "技能市場：授權限制匯入"
+  },
+  "marketplace.importFailed": {
+    "message": "安裝未完成。請查看原始來源及相依需求，稍後重試。",
+    "description": "技能市場：匯入失敗"
+  },
+  "marketplace.mySkills": {
+    "message": "我的技能",
+    "description": "技能市場：我的技能"
   }
 }
