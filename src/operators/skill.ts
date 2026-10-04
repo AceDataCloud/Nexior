@@ -86,7 +86,6 @@ export interface ISkillCatalogItem {
   installed: boolean;
   created_at: string;
   last_synced_at: string;
-  content_updated_at?: string | null;
 }
 
 export type SkillCatalogSort = 'popular' | 'recent' | 'name';
@@ -240,17 +239,6 @@ class SkillCatalogOperator {
 
 export const skillCatalogOperator = new SkillCatalogOperator();
 
-export interface ISkillMarketplaceSource {
-  key: 'catalog' | 'skills-sh' | 'skillsmp';
-  name: string;
-  url: string;
-  count: number;
-  status: 'ready' | 'pending' | 'error' | 'not_configured';
-  last_success_at: string | null;
-  stale: boolean;
-  error_code: string;
-}
-
 export interface ISkillMarketplaceEntry {
   id: string;
   marketplace: string;
@@ -263,33 +251,35 @@ export interface ISkillMarketplaceEntry {
   marketplace_url: string;
   metric: 'installs' | 'stars';
   metric_count: number;
-  collections: string[];
   upstream_updated_at: string | null;
-  discovered_at: string;
-  last_synced_at: string;
-  catalog_skill: string | null;
+  reference: string;
   installed: boolean;
 }
 
 export const skillMarketplaceOperator = {
-  sources: () =>
-    optionalHttpClient.get<{ sources: ISkillMarketplaceSource[] }>('/skills/marketplaces/sources/', authApi()),
   list: (params: {
     marketplace: string;
     q?: string;
     collection?: string;
     sort?: string;
-    limit: number;
-    offset: number;
+    page: number;
     site_id?: string;
   }) =>
-    optionalHttpClient.get<{ items: ISkillMarketplaceEntry[]; total: number }>('/skills/marketplaces/', {
-      ...authApi(),
-      params
-    }),
-  install: (id: string, siteId?: string) =>
-    httpClient.post<ISkill>(`/skills/marketplaces/${id}/install/`, siteId ? { site_id: siteId } : {}, {
-      ...authApi(),
-      timeout: 100000
-    })
+    optionalHttpClient.get<{ items: ISkillMarketplaceEntry[]; has_more: boolean; page: number }>(
+      '/skills/marketplaces/',
+      {
+        ...authApi(),
+        params,
+        timeout: 35000
+      }
+    ),
+  install: (reference: string, siteId?: string) =>
+    httpClient.post<ISkill>(
+      '/skills/marketplaces/install/',
+      { reference, ...(siteId ? { site_id: siteId } : {}) },
+      {
+        ...authApi(),
+        timeout: 100000
+      }
+    )
 };

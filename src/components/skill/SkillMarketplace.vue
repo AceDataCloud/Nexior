@@ -26,10 +26,6 @@
           ><strong>{{ source.name }}</strong
           ><span>{{ $t(`skill.marketplace.source.${source.key}`) }}</span></span
         >
-        <span class="source-status"
-          ><span v-if="source.status === 'ready' || source.count">{{ source.count.toLocaleString() }}</span
-          ><span v-else>{{ $t(`skill.marketplace.status.${source.status}`) }}</span></span
-        >
       </button>
     </div>
 
@@ -62,7 +58,13 @@
           :value="publisher.namespace"
         />
       </el-select>
-      <el-select v-model="sort" class="market-sort" :aria-label="$t('skill.marketplace.sort')" @change="resetAndLoad">
+      <el-select
+        v-if="selectedSource !== 'skills-sh'"
+        v-model="sort"
+        class="market-sort"
+        :aria-label="$t('skill.marketplace.sort')"
+        @change="resetAndLoad"
+      >
         <el-option
           :label="
             $t(selectedSource === 'catalog' ? 'skill.marketplace.popularLocal' : 'skill.marketplace.popularExternal')
@@ -70,7 +72,7 @@
           value="popular"
         />
         <el-option
-          :label="$t(selectedSource === 'catalog' ? 'skill.marketplace.updated' : 'skill.marketplace.discovered')"
+          :label="$t(selectedSource === 'catalog' ? 'skill.marketplace.discovered' : 'skill.marketplace.updated')"
           value="recent"
         />
       </el-select>
@@ -85,22 +87,17 @@
       >
     </div>
     <div class="market-summary">
-      <span>{{ $t('skill.marketplace.results', { count: total }) }}</span>
-      <span v-if="currentSource?.last_success_at"
-        >{{ $t('skill.marketplace.synced') }} {{ formatDate(currentSource.last_success_at) }}</span
-      >
-      <a :href="currentSource?.url || sourceDefaults[selectedSource].url" target="_blank" rel="noopener noreferrer"
+      <span v-if="selectedSource === 'catalog'">{{ $t('skill.marketplace.results', { count: total }) }}</span>
+      <a :href="sourceDefaults[selectedSource].url" target="_blank" rel="noopener noreferrer"
         >{{ $t('skill.marketplace.visit') }} ↗</a
       >
     </div>
-    <p
-      v-if="currentSource && (currentSource.status === 'error' || currentSource.stale)"
-      class="market-notice"
-      role="status"
-    >
-      {{ $t('skill.marketplace.stale') }}
-    </p>
-    <div v-if="loadError" class="market-empty" role="alert">
+    <div v-if="loadError === 'not_configured'" class="market-empty">
+      <marketplace-icon :size="32" aria-hidden="true" />
+      <h3>{{ $t('skill.marketplace.notConnected') }}</h3>
+      <p>{{ $t('skill.marketplace.notConnectedHint') }}</p>
+    </div>
+    <div v-else-if="loadError" class="market-empty" role="alert">
       <p>{{ $t('skill.directory.loadFailed') }}</p>
       <el-button @click="load">{{ $t('skill.marketplace.retry') }}</el-button>
     </div>
@@ -109,20 +106,8 @@
     </div>
     <div v-else-if="!items.length" class="market-empty">
       <marketplace-icon :size="32" aria-hidden="true" />
-      <h3>
-        {{
-          $t(currentSource?.status === 'not_configured' ? 'skill.marketplace.notConnected' : 'skill.directory.empty')
-        }}
-      </h3>
-      <p>
-        {{
-          $t(
-            currentSource?.status === 'not_configured'
-              ? 'skill.marketplace.notConnectedHint'
-              : 'skill.marketplace.emptyHint'
-          )
-        }}
-      </p>
+      <h3>{{ $t('skill.directory.empty') }}</h3>
+      <p>{{ $t('skill.marketplace.emptyHint') }}</p>
     </div>
     <div v-else class="market-grid">
       <article v-for="item in items" :key="item.id" class="skill-card">
@@ -151,13 +136,23 @@
       </article>
     </div>
     <el-pagination
-      v-if="total > pageSize"
+      v-if="selectedSource === 'catalog' && total > pageSize"
       class="market-pagination"
       :current-page="page"
       :page-size="pageSize"
       :total="total"
       :pager-count="5"
       layout="prev, pager, next"
+      @current-change="changePage"
+    />
+
+    <el-pagination
+      v-if="selectedSource !== 'catalog' && !loadError && (page > 1 || hasMore)"
+      class="market-pagination"
+      :current-page="page"
+      :page-count="hasMore ? page + 1 : page"
+      :disabled="loading"
+      layout="prev, next"
       @current-change="changePage"
     />
 
@@ -188,17 +183,13 @@
               >
             </dd>
           </div>
-          <div>
+          <div v-if="isCatalog(selectedItem)">
             <dt>{{ $t('skill.marketplace.synced') }}</dt>
             <dd>{{ formatDate(selectedItem.last_synced_at) }}</dd>
           </div>
-          <div v-if="isCatalog(selectedItem) && selectedItem.content_updated_at">
+          <div v-if="!isCatalog(selectedItem) && selectedItem.upstream_updated_at">
             <dt>{{ $t('skill.marketplace.updated') }}</dt>
-            <dd>{{ formatDate(selectedItem.content_updated_at) }}</dd>
-          </div>
-          <div v-if="!isCatalog(selectedItem)">
-            <dt>{{ $t('skill.marketplace.discovered') }}</dt>
-            <dd>{{ formatDate(selectedItem.discovered_at) }}</dd>
+            <dd>{{ formatDate(selectedItem.upstream_updated_at) }}</dd>
           </div>
           <div v-if="isCatalog(selectedItem) && restrictedSurfaces(selectedItem).length">
             <dt>{{ $t('skill.directory.surfaceHint') }}</dt>
@@ -252,8 +243,7 @@ import {
   skillCatalogOperator,
   skillMarketplaceOperator,
   type ISkillCatalogItem,
-  type ISkillMarketplaceEntry,
-  type ISkillMarketplaceSource
+  type ISkillMarketplaceEntry
 } from '@/operators/skill';
 import { isSurfaceSupported } from '@/utils/skills/surfaceGate';
 
@@ -261,7 +251,7 @@ const props = defineProps<{ siteId?: string; compact?: boolean }>();
 const emit = defineEmits<{ installed: [id: string] }>();
 const t = (key: string, params?: Record<string, unknown>) => i18n.global.t(key, params || {});
 const locale = computed(() => i18n.global.locale as string);
-type SourceKey = ISkillMarketplaceSource['key'];
+type SourceKey = 'catalog' | 'skills-sh' | 'skillsmp';
 type Item = ISkillCatalogItem | ISkillMarketplaceEntry;
 const sourceDefaults = {
   catalog: { name: 'AceDataCloud', url: 'https://studio.acedata.cloud/console/skills' },
@@ -269,22 +259,7 @@ const sourceDefaults = {
   skillsmp: { name: 'SkillsMP', url: 'https://skillsmp.com' }
 };
 const selectedSource = ref<SourceKey>('catalog');
-const sources = ref<ISkillMarketplaceSource[]>([]);
-const sourceCards = computed(() =>
-  (Object.keys(sourceDefaults) as SourceKey[]).map(
-    (key) =>
-      sources.value.find((s) => s.key === key) || {
-        key,
-        ...sourceDefaults[key],
-        count: 0,
-        status: 'pending' as const,
-        last_success_at: null,
-        stale: false,
-        error_code: ''
-      }
-  )
-);
-const currentSource = computed(() => sources.value.find((s) => s.key === selectedSource.value));
+const sourceCards = (Object.keys(sourceDefaults) as SourceKey[]).map((key) => ({ key, ...sourceDefaults[key] }));
 const items = ref<Item[]>([]);
 const selectedItem = ref<Item | null>(null);
 const query = ref('');
@@ -294,10 +269,11 @@ const publishers = ref<{ namespace: string; label: string }[]>([]);
 const collection = ref('trending');
 const page = ref(1);
 const total = ref(0);
+const hasMore = ref(false);
 const pageSize = 12;
 const loading = ref(false);
 const installing = ref(false);
-const loadError = ref(false);
+const loadError = ref('');
 const installError = ref('');
 let requestId = 0;
 const isCatalog = (item: Item): item is ISkillCatalogItem => 'identifier' in item;
@@ -324,13 +300,6 @@ const formatDate = (date: string) =>
     hour: '2-digit',
     minute: '2-digit'
   }).format(new Date(date));
-async function loadSources() {
-  try {
-    sources.value = (await skillMarketplaceOperator.sources()).data.sources;
-  } catch {
-    /* The catalog remains usable during a backend rollout. */
-  }
-}
 async function loadPublishers() {
   try {
     const { data } = await skillCatalogOperator.categories();
@@ -349,7 +318,7 @@ async function loadPublishers() {
 async function load() {
   const id = ++requestId;
   loading.value = true;
-  loadError.value = false;
+  loadError.value = '';
   try {
     const params = {
       namespace: namespace.value || undefined,
@@ -359,22 +328,32 @@ async function load() {
       offset: (page.value - 1) * pageSize,
       site_id: props.siteId || undefined
     };
-    const { data } =
-      selectedSource.value === 'catalog'
-        ? await skillCatalogOperator.list(params)
-        : await skillMarketplaceOperator.list({
-            ...params,
-            marketplace: selectedSource.value,
-            collection: selectedSource.value === 'skills-sh' ? collection.value || undefined : undefined
-          });
-    if (id !== requestId) return;
-    items.value = data.items;
-    total.value = data.total;
-  } catch {
+    if (selectedSource.value === 'catalog') {
+      const { data } = await skillCatalogOperator.list(params);
+      if (id !== requestId) return;
+      items.value = data.items;
+      total.value = data.total;
+      hasMore.value = false;
+    } else {
+      const { data } = await skillMarketplaceOperator.list({
+        q: params.q,
+        sort: params.sort,
+        site_id: params.site_id,
+        page: page.value,
+        marketplace: selectedSource.value,
+        collection: selectedSource.value === 'skills-sh' ? collection.value || undefined : undefined
+      });
+      if (id !== requestId) return;
+      items.value = data.items;
+      total.value = 0;
+      hasMore.value = data.has_more;
+    }
+  } catch (error) {
     if (id === requestId) {
       items.value = [];
       total.value = 0;
-      loadError.value = true;
+      hasMore.value = false;
+      loadError.value = (error as { response?: { data?: { code?: string } } }).response?.data?.code || 'unavailable';
     }
   } finally {
     if (id === requestId) loading.value = false;
@@ -414,7 +393,7 @@ async function install(item: Item) {
   try {
     const { data } = isCatalog(item)
       ? await skillCatalogOperator.install(item.id, props.siteId ? { site_id: props.siteId } : {})
-      : await skillMarketplaceOperator.install(item.id, props.siteId);
+      : await skillMarketplaceOperator.install(item.reference, props.siteId);
     item.installed = true;
     ElMessage.success(t('skill.directory.installSuccess', { name: item.name }));
     emit('installed', data.id);
@@ -428,7 +407,6 @@ async function install(item: Item) {
   }
 }
 onMounted(() => {
-  void loadSources();
   void loadPublishers();
   void load();
 });
@@ -547,11 +525,6 @@ onMounted(() => {
   font-size: 11px;
   line-height: 1.4;
 }
-.source-status {
-  color: var(--el-text-color-secondary);
-  font-size: 11px;
-  white-space: nowrap;
-}
 .market-toolbar {
   display: flex;
   gap: 12px;
@@ -588,13 +561,6 @@ a {
 }
 a:hover {
   color: var(--el-color-primary);
-}
-.market-notice {
-  padding: 12px 16px;
-  background: var(--el-color-warning-light-9);
-  color: var(--el-color-warning-dark-2);
-  border-radius: 8px;
-  font-size: 13px;
 }
 .market-grid {
   display: grid;
@@ -717,6 +683,9 @@ a:hover {
   line-height: 1.7;
 }
 .market-pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
   margin-top: 24px;
   justify-content: center;
 }
@@ -814,9 +783,6 @@ a:focus-visible {
   .market-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .source-status {
-    display: none;
-  }
 }
 @media (max-width: 680px) {
   .market-hero {
@@ -832,9 +798,6 @@ a:focus-visible {
   }
   .source-card {
     padding: 12px;
-  }
-  .source-status {
-    display: block;
   }
   .source-copy {
     gap: 2px;

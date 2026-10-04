@@ -1,25 +1,21 @@
 # Skill marketplace
 
-The Skills console now opens a full marketplace with a separate **My skills**
-view. The same marketplace component is reused in skill picker dialogs.
+The Skills console opens a marketplace alongside **My skills**. The same
+component is reused in skill picker dialogs. Source names, links and supported
+views are fixed in code: AceDataCloud, skills.sh and SkillsMP.
 
-- AceDataCloud: the platform's mirrored catalog, publisher filtering, local
-  installation counts, content updates and direct installation.
-- skills.sh: trending, hot and official discovery, with marketplace install
-  counts. An unconnected source is explicitly labelled.
-- SkillsMP: a daily discovery collection across marketing, design, development
-  and research. Stars refer to the source repository, not skill installations.
+- The platform catalog keeps publisher filtering and direct installation.
+- External search and ranking come from the selected marketplace's API, with a
+  short cache. Browsing does not create database records.
+- Only an explicit install imports into the existing Skill/UserSkill tables.
+- Repository stars, marketplace installs and local installs remain separate.
+- An unavailable/unconfigured source shows an explicit state and an original
+  marketplace link. skills.sh still needs a rotating Vercel project identity.
 
-Search runs against the locally synchronized collection. Each source shows its
-last successful sync; stale or failed refreshes keep their previous results.
-Skill details link to the original source. External imports check licensing and
-packaging, but still require the user to review runtime/tool requirements.
+Requires the AuthBackend marketplace adapter endpoints. No schema migration or
+additional scheduled job is needed. Existing six-hour skill sync also refreshes
+skills explicitly imported from a marketplace.
 
-Requires AuthBackend's `/api/v1/skills/marketplaces/` endpoints and migrations.
-Deploy the backend before this frontend. skills.sh additionally requires a
-rotating Vercel project identity configured on the backend.
-
-The screenshot below is a local preview using real SkillsMP discovery data and
-a local test database. It does not indicate a production deployment.
+The screenshot is a local UI preview and does not indicate a production release.
 
 ![Local skill marketplace preview](images/skill-marketplace.jpg)

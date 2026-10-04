@@ -3,14 +3,14 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 const api = vi.hoisted(() => ({
   list: vi.fn(),
-  sources: vi.fn(),
+  categories: vi.fn(),
   externalList: vi.fn(),
   install: vi.fn(),
   externalInstall: vi.fn()
 }));
 vi.mock('@/operators/skill', () => ({
-  skillCatalogOperator: { list: api.list, install: api.install },
-  skillMarketplaceOperator: { sources: api.sources, list: api.externalList, install: api.externalInstall }
+  skillCatalogOperator: { list: api.list, install: api.install, categories: api.categories },
+  skillMarketplaceOperator: { list: api.externalList, install: api.externalInstall }
 }));
 vi.mock('@/i18n', () => ({ default: { global: { t: (key: string) => key, locale: 'en' } } }));
 vi.mock('@/utils/skills/surfaceGate', () => ({ isSurfaceSupported: () => true }));
@@ -65,15 +65,15 @@ const external = {
   source_url: 'https://github.com/example/skills',
   source_repo: 'example/skills',
   marketplace_url: 'https://skillsmp.com/skills/external',
-  last_synced_at: '2026-10-04T10:00:00Z',
-  discovered_at: '2026-10-04T10:00:00Z'
+  reference: 'signed-listing',
+  upstream_updated_at: '2026-10-04T10:00:00Z'
 };
 const mountMarket = () => mount(SkillMarketplace, { global: { mocks: { $t: (key: string) => key } } });
 beforeEach(() => {
   vi.clearAllMocks();
-  api.sources.mockResolvedValue({ data: { sources: [{ key: 'skills-sh', status: 'not_configured', count: 0 }] } });
+  api.categories.mockResolvedValue({ data: { namespaces: [] } });
   api.list.mockResolvedValue({ data: { items: [structuredClone(catalog)], total: 1 } });
-  api.externalList.mockResolvedValue({ data: { items: [structuredClone(external)], total: 1 } });
+  api.externalList.mockResolvedValue({ data: { items: [structuredClone(external)], page: 1, has_more: false } });
 });
 describe('SkillMarketplace', () => {
   it('keeps a slow catalog response from replacing the selected external source', async () => {
@@ -93,7 +93,7 @@ describe('SkillMarketplace', () => {
     wrapper.unmount();
   });
   it('shows an unconfigured source without fake skills', async () => {
-    api.externalList.mockResolvedValue({ data: { items: [], total: 0 } });
+    api.externalList.mockRejectedValue({ response: { data: { code: 'not_configured' } } });
     const wrapper = mountMarket();
     await flushPromises();
     await wrapper.get('.source-card.skills-sh').trigger('click');
