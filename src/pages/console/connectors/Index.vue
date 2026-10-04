@@ -103,12 +103,7 @@
                   <span class="list-item-content" :class="{ 'has-account': item.accountLabel }">
                     <span class="list-item-name">{{ item.name }}</span>
                     <span v-if="item.accountLabel" class="list-item-separator" aria-hidden="true">·</span>
-                    <el-tooltip
-                      v-if="item.accountLabel"
-                      :content="item.accountLabel"
-                      placement="top"
-                      popper-class="connection-account-tooltip"
-                    >
+                    <el-tooltip v-if="item.accountLabel" :content="item.accountLabel" placement="top">
                       <span class="list-item-account">{{ item.accountLabel }}</span>
                     </el-tooltip>
                   </span>
@@ -2930,14 +2925,6 @@ html.dark .connectors-shell {
      onto its `<li>`. A scoped rule therefore cannot reach it — this block is
      intentionally unscoped and namespaced by the menu class instead. -->
 <style lang="scss">
-// Use the shared control radius while keeping the tooltip arrow visible;
-// the global .el-popper card treatment otherwise clips it.
-.connection-account-tooltip.el-popper {
-  border-radius: var(--adc-radius-control);
-  overflow: visible;
-  backdrop-filter: none;
-}
-
 // Element Plus ships a 4px popper radius, which reads noticeably squarer than
 // the 8px this page uses everywhere else (cards, list rows, the toolbar
 // buttons). Match the surrounding language instead.
