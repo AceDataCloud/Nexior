@@ -117,6 +117,16 @@ describe('SkillMarketplace', () => {
     expect(wrapper.emitted('installed')).toEqual([['installed1']]);
     wrapper.unmount();
   });
+  it('requests the all-time feed when All is selected', async () => {
+    const wrapper = mountMarket();
+    await flushPromises();
+    await wrapper.get('.source-card.skills-sh').trigger('click');
+    await flushPromises();
+    await wrapper.findAll('.market-collections button').at(-1)!.trigger('click');
+    await flushPromises();
+    expect(api.externalList.mock.lastCall?.[0].collection).toBe('all-time');
+    wrapper.unmount();
+  });
   it('clears old rows and shows a retry on request failure', async () => {
     const wrapper = mountMarket();
     await flushPromises();

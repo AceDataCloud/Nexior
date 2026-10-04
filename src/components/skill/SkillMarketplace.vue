@@ -341,7 +341,7 @@ async function load() {
         site_id: params.site_id,
         page: page.value,
         marketplace: selectedSource.value,
-        collection: selectedSource.value === 'skills-sh' ? collection.value || undefined : undefined
+        collection: selectedSource.value === 'skills-sh' ? collection.value || 'all-time' : undefined
       });
       if (id !== requestId) return;
       items.value = data.items;
