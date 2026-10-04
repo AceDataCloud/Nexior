@@ -2935,6 +2935,9 @@ html.dark .connectors-shell {
   padding: 4px;
 
   .el-dropdown-menu {
+    // Dark mode adds a border to every dropdown menu. The popper already has
+    // one, and its 4px padding makes both borders visible here.
+    border: 0;
     padding: 0;
   }
 
