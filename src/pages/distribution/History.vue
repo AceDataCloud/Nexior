@@ -36,9 +36,20 @@
                   <span class="price">{{ getPriceString({ value: scope.row?.price }) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('distribution.field.reward')" width="100px">
+              <el-table-column :label="$t('distribution.field.reward')" min-width="220px">
                 <template #default="scope">
                   <span class="description">{{ getPriceString({ value: scope.row?.reward }) }}</span>
+                  <div
+                    v-if="scope.row.metadata?.calculation?.version === 2"
+                    class="text-xs text-[var(--el-text-color-secondary)] mt-1"
+                  >
+                    {{
+                      $t('distribution.message.rewardBreakdown', {
+                        referral: getPriceString({ value: Number(scope.row.metadata.calculation.referral_reward) }),
+                        markup: getPriceString({ value: Number(scope.row.metadata.calculation.markup_reward) })
+                      })
+                    }}
+                  </div>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('distribution.field.percentage')" width="120px">
