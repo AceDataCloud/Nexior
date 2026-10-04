@@ -155,15 +155,25 @@ export const getExchangeRate = async (
   }
 };
 
-export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
+interface SiteLoadOptions {
+  timeout?: number;
+  throwOnError?: boolean;
+}
+
+export const initializeSite = async (
+  { state, commit }: ActionContext<IRootState, IRootState>,
+  options: SiteLoadOptions = {}
+) => {
   console.debug('start to initialize site');
   const origin = getSiteOrigin(state?.site);
   try {
-    const { data } = await siteOperator.initialize({ origin });
+    const { data } = await siteOperator.initialize({ origin }, { timeout: options.timeout });
     commit('setSite', data);
     console.debug('initialize site success', data);
+    return data;
   } catch (error) {
     console.error('initialize site failed', error);
+    if (options.throwOnError) throw error;
     // No `dispatch('login')` here: with `state.site` still empty,
     // `isIframeLoginEnabled()` reads undefined and silently falls back to the
     // full-page redirect — so an iframe-login site would bounce users to
@@ -171,20 +181,27 @@ export const initializeSite = async ({ state, commit }: ActionContext<IRootState
   }
 };
 
-export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>): Promise<ISite | undefined> => {
+export const getSite = async (
+  { state, commit }: ActionContext<IRootState, IRootState>,
+  options: SiteLoadOptions = {}
+): Promise<ISite | undefined> => {
   console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
-    const site = (
-      await siteOperator.getAll({
-        origin
-      })
-    )?.data?.items?.[0];
+    const { data } = await siteOperator.getAll({ origin }, { timeout: options.timeout });
+    const site = data?.items?.[0];
+    if (
+      options.throwOnError &&
+      (!Array.isArray(data?.items) || (data.items.length > 0 && (!site?.id || !site.origin)))
+    ) {
+      throw new Error('Invalid site configuration response');
+    }
     commit('setSite', site);
     console.debug('get site success', site);
     return site;
   } catch (error) {
     console.error('get site failed', error);
+    if (options.throwOnError) throw error;
     return undefined;
   }
 };

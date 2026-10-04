@@ -2,7 +2,8 @@
   <el-config-provider :locale="epLocale">
     <auth-panel v-if="authPopup" />
     <desktop-drag-bar />
-    <router-view />
+    <site-bootstrap-error v-if="siteBootstrapFailed" />
+    <router-view v-else />
     <quota-exhausted-dialog
       :model-value="quotaState.visible"
       :estimated-consumption="quotaState.estimatedConsumption"
@@ -25,6 +26,8 @@ import { defineComponent } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
 import DesktopDragBar from './components/common/DesktopDragBar.vue';
+import SiteBootstrapError from './components/common/SiteBootstrapError.vue';
+import { siteBootstrapState } from '@/utils/siteBootstrap';
 import QuotaExhaustedDialog from './components/common/QuotaExhaustedDialog.vue';
 import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
@@ -67,6 +70,7 @@ export default defineComponent({
     ElConfigProvider,
     AuthPanel,
     DesktopDragBar,
+    SiteBootstrapError,
     QuotaExhaustedDialog
   },
   data() {
@@ -82,6 +86,9 @@ export default defineComponent({
     };
   },
   computed: {
+    siteBootstrapFailed() {
+      return siteBootstrapState.failed;
+    },
     authPopup() {
       return this.$store.state.auth.flow === 'popup' && this.$store.state.auth.visible;
     },
@@ -107,6 +114,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    if (this.siteBootstrapFailed) return;
     this.offUploadAuthGuard = installUploadAuthGuard(document, ensureLoggedIn);
 
     // Listen for deep link callbacks from the native (Capacitor) OAuth flow.

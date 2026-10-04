@@ -30,6 +30,7 @@ import { runLiveUpdate } from '@/utils/liveUpdate';
 import { configureRequestAuth, installServiceRequestAuthGuard, isAuthTransitionError } from '@/utils/requestAuth';
 import { ensureLoggedIn } from '@/utils/login';
 import { initializeLocalizedBootstrap } from '@/utils/localizedBootstrap';
+import { siteBootstrapState } from '@/utils/siteBootstrap';
 import {
   initializeCookies,
   initializeDescription,
@@ -52,8 +53,10 @@ setBrandSiteResolver(() => store.state.site);
 const applyBootLocale = async (site?: Parameters<typeof resolveBootLocaleCookie>[1]) => {
   const savedLocale = getCookie('LOCALE');
   const { locale, shouldPersist } = resolveBootLocaleCookie(savedLocale, site);
-  if (!shouldPersist) return false;
+  // The failure screen can mount before router guards load translations,
+  // including when a returning visitor already has a valid locale cookie.
   await setI18nLanguage(locale);
+  if (!shouldPersist) return false;
   setCookie('LOCALE', locale, { path: '/', domain: getDomain() });
   return true;
 };
@@ -133,15 +136,33 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   // Normalize stale cookies before bootstrap requests use them as
   // Accept-Language, then apply the site's locale policy after it loads.
   await applyBootLocale();
+  // Start reporting before bootstrap requests; SDK loading must not hold up
+  // the page. The failure handler below also waits for it in the background.
+  const telemetryReady = initTelemetry({
+    release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
+  });
   await resolveDeferredInviterId();
   await initializeToken();
   if (isAccountTransitioning()) return;
-  await initializeLocalizedBootstrap({
-    initializeSite,
-    applySiteLocale: () => applyBootLocale(store.state.site),
-    initializeUser,
-    initializeConfig
-  });
+  try {
+    await initializeLocalizedBootstrap({
+      initializeSite,
+      applySiteLocale: () => applyBootLocale(store.state.site),
+      initializeUser,
+      initializeConfig
+    });
+  } catch (error: any) {
+    siteBootstrapState.failed = true;
+    initializeTheme();
+    void telemetryReady.then(() => {
+      captureError(new Error(`Site bootstrap failed (${error?.response?.status || error?.code || 'unavailable'})`), {
+        source: 'site-bootstrap',
+        route: window.location.pathname,
+        trace_id: error?.response?.headers?.['x-request-id']
+      });
+    });
+    return;
+  }
 
   if (isNative() || isDesktop()) {
     const blocked = await runVersionGate();
@@ -150,14 +171,10 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   void runLiveUpdate();
   initializeSiteAnalytics(store.state.site || undefined);
 
-  await initTelemetry({
-    uin: store.getters.user?.id,
-    // __APP_VERSION__ is injected by vite.config `define` for all surfaces.
-    // (Previously this read import.meta.env.VITE_APP_VERSION, which was never
-    // defined anywhere → the telemetry release tag was always undefined.)
-    release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
+  void telemetryReady.then(() => {
+    setUser(store.getters.user?.id);
+    trackVerifiedSubsiteLoaded(store.state.site, window.location.hostname);
   });
-  trackVerifiedSubsiteLoaded(store.state.site, window.location.hostname);
 
   initializeCurrency();
   initializeTheme();

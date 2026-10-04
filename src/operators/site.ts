@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, type AxiosRequestConfig } from 'axios';
 import { httpClient, optionalHttpClient } from './common';
 import { ISite, ISiteDetailResponse, ISiteListResponse } from '@/models';
 
@@ -14,12 +14,19 @@ export interface ISiteQuery {
 class SiteService {
   key = 'sites';
 
-  async initialize(data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
-    return await optionalHttpClient.post(`/${this.key}/initialize/`, data);
+  async initialize(
+    data: ISite,
+    config?: Pick<AxiosRequestConfig, 'timeout'>
+  ): Promise<AxiosResponse<ISiteDetailResponse>> {
+    return await optionalHttpClient.post(`/${this.key}/initialize/`, data, config);
   }
 
-  async getAll(query: ISiteQuery): Promise<AxiosResponse<ISiteListResponse>> {
+  async getAll(
+    query: ISiteQuery,
+    config?: Pick<AxiosRequestConfig, 'timeout'>
+  ): Promise<AxiosResponse<ISiteListResponse>> {
     return await optionalHttpClient.get(`/${this.key}/`, {
+      ...config,
       params: query
     });
   }

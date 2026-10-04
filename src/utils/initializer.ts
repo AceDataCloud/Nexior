@@ -7,6 +7,7 @@ import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
 import { BASE_HOST_STUDIO } from '@/constants';
 import { isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
+import { bootstrapSite } from './siteBootstrap';
 
 import { getDomain } from './domain';
 
@@ -140,16 +141,11 @@ export const initializeFavicon = async () => {
  * Need to initialize site before render contents
  */
 export const initializeSite = async () => {
-  await store.dispatch('getSite');
-  // after getSite, the site should have been set
-  const site = store.state.site;
-  console.debug('site', site);
-  // if site is not set, try to initialize site
-  const shouldClaimEmptyAdminSite =
-    !!store.state.token?.access && site?.origin && (!site.admins || site.admins.length === 0);
-  if (!site?.origin || shouldClaimEmptyAdminSite) {
-    await store.dispatch('initializeSite');
-  }
+  await bootstrapSite({
+    getSite: (timeout) => store.dispatch('getSite', { timeout, throwOnError: true }),
+    initializeSite: (timeout) => store.dispatch('initializeSite', { timeout, throwOnError: true }),
+    isAuthenticated: () => !!store.state.token?.access
+  });
 };
 
 export const initializeConfig = async () => {
