@@ -21,17 +21,28 @@ describe('site initialization', () => {
     store.state.token.access = 'test-token';
   });
 
-  it('never runs setup after a failed lookup', async () => {
+  it.each([undefined, 'test-token'])('never logs in or runs setup after a failed lookup', async (token) => {
+    store.state.token.access = token;
     store.state.status.getSite = Status.Error;
     await initializeSite();
     expect(store.dispatch).toHaveBeenCalledExactlyOnceWith('getSite');
   });
 
-  it('does not run setup for an anonymous visitor', async () => {
+  it('starts login when a successful lookup finds no site for an anonymous visitor', async () => {
     store.state.token.access = undefined;
     await initializeSite();
-    expect(store.dispatch).toHaveBeenCalledExactlyOnceWith('getSite');
+    expect(store.dispatch.mock.calls).toEqual([['getSite'], ['login']]);
   });
+
+  it.each([{ admins: ['owner'] }, { admins: [] }])(
+    'keeps anonymous visitors on an existing site',
+    async ({ admins }) => {
+      store.state.token.access = undefined;
+      store.dispatch.mockResolvedValueOnce({ id: 'site-1', origin: 'tenant.example.com', admins });
+      await initializeSite();
+      expect(store.dispatch).toHaveBeenCalledExactlyOnceWith('getSite');
+    }
+  );
 
   it.each([undefined, { origin: 'tenant.example.com', admins: [] }])(
     'keeps authenticated setup after a successful lookup of an unconfigured site',

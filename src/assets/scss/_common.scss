@@ -54,9 +54,8 @@ html:root {
 
   /* Mobile bottom app dock. `--app-dock-height` is what the layouts reserve;
      collapsing shrinks it to just the grab handle (see html.dock-collapsed).
-     The expanded height is unchanged from before the handle existed — the
-     28px icons fit under it with room to spare. Keep --app-dock-handle-height
-     in sync with $dock-handle-height in Navigator.vue. */
+     The expanded height fits the handle and the 36px icon touch targets.
+     Keep --app-dock-handle-height in sync with $dock-handle-height in Navigator.vue. */
   --app-dock-handle-height: 22px;
   --app-dock-height: 60px;
 
