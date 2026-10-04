@@ -90,8 +90,8 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: var(--adc-button-height-xs);
+  height: var(--adc-button-height-xs);
   margin: 0;
   padding: 0;
   border: 0;
