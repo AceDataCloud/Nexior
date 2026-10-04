@@ -1,8 +1,32 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 03 Oct 2026 21:09:46 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 04 Oct 2026 21:03:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.379.0
+
+Sun, 04 Oct 2026 21:03:27 GMT
+
+### Minor changes
+
+- Remove personal provider API keys from Studio settings and chat. (dev@acedata.cloud)
+- Discover and install skills from fixed marketplace sources with a dedicated marketplace UI. (dev@acedata.cloud)
+
+### Patches
+
+- Simplify Coding Bridge controls and show accurate permission modes and stopped session states. (dev@acedata.cloud)
+- Keep connector names, account labels and badges readable in the console list. (dev@acedata.cloud)
+- Show a single border around the connector actions menu in dark mode. (dev@acedata.cloud)
+- Use uniform single-line connector rows with inline account labels and standard account-name tooltips. (dev@acedata.cloud)
+- Keep installer downloads on the latest complete signed release and correct macOS requirements. (dev@acedata.cloud)
+- Compact mobile dock icons while preserving the existing Site logo, and restore login-led setup for new site origins. (dev@acedata.cloud)
+- Balance mobile Home logo artwork and give dock icons subtle outlines directly against their image edges. (dev@acedata.cloud)
+- Preserve unrelated assistant and commerce settings when changing referral visibility, recharge, or markup. (dev@acedata.cloud)
+- Show a refresh action when site configuration cannot load and avoid initializing a site after a failed lookup. (dev@acedata.cloud)
+- Use shared button size levels for compact Copy and prompt actions without changing their dimensions. (dev@acedata.cloud)
+- Show referral and site markup components in distribution history. (dev@acedata.cloud)
+- Default Suno music creation to v6. (dev@acedata.cloud)
 
 ## 3.378.1
 
