@@ -100,29 +100,33 @@
                     <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
                     <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
                   </span>
-                  <span class="list-item-name">{{ item.name }}</span>
-                  <span v-if="item.accountLabel" class="list-item-account" :title="item.accountLabel">{{
-                    item.accountLabel
-                  }}</span>
-                  <meta-tag
-                    v-if="item.isDefault"
-                    class="list-item-badge list-item-badge-default"
-                    density="compact"
-                    tone="success"
-                    >{{ $t('connection.label.defaultAccount') }}</meta-tag
-                  >
-                  <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
-                    $t('connection.label.custom')
-                  }}</meta-tag>
-                  <meta-tag
-                    v-else-if="group.key === 'available'"
-                    class="list-item-badge list-item-badge-hint"
-                    :title="$t('connection.message.notConnectedYet')"
-                    density="compact"
-                    tone="brand"
-                  >
-                    {{ $t('connection.label.notConnected') }}
-                  </meta-tag>
+                  <span class="list-item-content">
+                    <span class="list-item-heading">
+                      <span class="list-item-name" :title="item.name">{{ item.name }}</span>
+                      <meta-tag
+                        v-if="item.isDefault"
+                        class="list-item-badge list-item-badge-default"
+                        density="compact"
+                        tone="success"
+                        >{{ $t('connection.label.defaultAccount') }}</meta-tag
+                      >
+                      <meta-tag v-if="item.byo" class="list-item-badge" density="compact" tone="neutral">{{
+                        $t('connection.label.custom')
+                      }}</meta-tag>
+                      <meta-tag
+                        v-else-if="group.key === 'available'"
+                        class="list-item-badge list-item-badge-hint"
+                        :title="$t('connection.message.notConnectedYet')"
+                        density="compact"
+                        tone="brand"
+                      >
+                        {{ $t('connection.label.notConnected') }}
+                      </meta-tag>
+                    </span>
+                    <span v-if="item.accountLabel" class="list-item-account" :title="item.accountLabel">{{
+                      item.accountLabel
+                    }}</span>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -268,7 +272,11 @@
                   {{ connectionAccountSubtext(selectedItem.connection) }}
                 </span>
               </div>
-              <status-badge :tone="statusTagType(selectedItem.connection.status)" density="compact">
+              <status-badge
+                class="account-status"
+                :tone="statusTagType(selectedItem.connection.status)"
+                density="compact"
+              >
                 {{ statusLabel(selectedItem.connection.status) }}
               </status-badge>
             </div>
@@ -2096,7 +2104,7 @@ export default defineComponent({
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px minmax(0, 1fr);
   gap: 0;
   // `--adc-radius-card` / `--app-border-subtle` are global tokens (see
   // @acedatacloud/core styles.css and _common.scss). The previous
@@ -2124,6 +2132,7 @@ html.dark .connectors-shell {
   border-right: 1px solid var(--el-border-color-lighter);
   background: var(--el-bg-color);
   min-height: 0;
+  min-width: 0;
 }
 
 .list-toolbar {
@@ -2293,9 +2302,26 @@ html.dark .connectors-shell {
   }
 }
 
+.list-item-content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.list-item-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
 .list-item-name {
   flex: 1 1 auto;
+  min-width: 0;
   font-size: 13px;
+  line-height: 20px;
   color: var(--el-text-color-primary);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2305,10 +2331,16 @@ html.dark .connectors-shell {
     font-weight 0.15s;
 }
 
+.list-item-badge,
+.account-status {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 .list-item-account {
-  flex: 0 1 auto;
   min-width: 0;
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 18px;
   color: var(--el-text-color-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
