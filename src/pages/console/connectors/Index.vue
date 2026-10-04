@@ -2930,10 +2930,10 @@ html.dark .connectors-shell {
      onto its `<li>`. A scoped rule therefore cannot reach it — this block is
      intentionally unscoped and namespaced by the menu class instead. -->
 <style lang="scss">
-// Keep Element Plus's standard tooltip geometry instead of the global
-// .el-popper card treatment, which rounds the bubble and clips its arrow.
+// Use the shared control radius while keeping the tooltip arrow visible;
+// the global .el-popper card treatment otherwise clips it.
 .connection-account-tooltip.el-popper {
-  border-radius: var(--el-popper-border-radius);
+  border-radius: var(--adc-radius-control);
   overflow: visible;
   backdrop-filter: none;
 }
