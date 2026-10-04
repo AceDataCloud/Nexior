@@ -6,12 +6,13 @@ const operatorMocks = vi.hoisted(() => ({
   getCatalog: vi.fn(),
   getOverrides: vi.fn(),
   updateSite: vi.fn(),
+  getSite: vi.fn(),
   showError: vi.fn()
 }));
 
 vi.mock('@/operators', () => ({
   serviceOperator: { getAll: operatorMocks.getCatalog },
-  siteOperator: { update: operatorMocks.updateSite },
+  siteOperator: { update: operatorMocks.updateSite, get: operatorMocks.getSite },
   siteServiceOverrideOperator: {
     getAll: operatorMocks.getOverrides,
     create: vi.fn(),
@@ -88,6 +89,7 @@ describe('setting/SiteServices pricing', () => {
     operatorMocks.getCatalog.mockResolvedValue({ data: { items: [] } });
     operatorMocks.getOverrides.mockResolvedValue({ data: { items: [] } });
     operatorMocks.updateSite.mockResolvedValue({ data: site });
+    operatorMocks.getSite.mockResolvedValue({ data: site });
     dispatch.mockResolvedValue(site);
     translate.mockClear();
   });
@@ -132,6 +134,42 @@ describe('setting/SiteServices pricing', () => {
       }
     });
     expect(dispatch).toHaveBeenCalledWith('getSite');
+  });
+
+  it('changing markup preserves the recharge setting from the saved configuration', async () => {
+    operatorMocks.getSite.mockResolvedValue({
+      data: {
+        ...site,
+        commerce: { pricing: { ...site.commerce.pricing, currency: 'USD' }, recharge: { enabled: false } }
+      }
+    });
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as any).onSaveSiteMarkup(20);
+    expect(operatorMocks.updateSite).toHaveBeenCalledWith('site-1', {
+      commerce: {
+        pricing: { applies_to: 'all', currency: 'USD', markup_ratio: 0.2 },
+        recharge: { enabled: false }
+      }
+    });
+  });
+
+  it('changing recharge preserves saved pricing instead of the displayed copy', async () => {
+    operatorMocks.getSite.mockResolvedValue({
+      data: {
+        ...site,
+        commerce: { pricing: { applies_to: 'all', currency: 'USD', markup_ratio: 0.3 } }
+      }
+    });
+    const wrapper = mountComponent();
+    await flushPromises();
+    await (wrapper.vm as any).onToggleRecharge(false);
+    expect(operatorMocks.updateSite).toHaveBeenCalledWith('site-1', {
+      commerce: {
+        pricing: { applies_to: 'all', currency: 'USD', markup_ratio: 0.3 },
+        recharge: { enabled: false }
+      }
+    });
   });
 
   it('serializes rapid changes so the latest markup is persisted last', async () => {

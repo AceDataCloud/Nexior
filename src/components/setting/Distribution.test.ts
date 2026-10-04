@@ -6,16 +6,29 @@ import { siteOperator } from '@/operators';
 import Distribution from './Distribution.vue';
 
 vi.mock('@/operators', () => ({
-  siteOperator: { update: vi.fn() }
+  siteOperator: { get: vi.fn(), update: vi.fn() }
 }));
 
 const site = {
   id: 'site-1',
   features: {
-    chatgpt: { enabled: true, service_id: 'service-1' },
+    chatgpt: { enabled: true, service_id: 'service-1', assistant_configured: true },
     referral: { enabled: true, campaign: 'custom' }
   },
   distribution: { default_inviter_id: 'admin-1' }
+};
+
+const managementSite = {
+  ...site,
+  configuration_revision: 7,
+  features: {
+    chatgpt: {
+      enabled: true,
+      service_id: 'service-1',
+      assistant: { instructions: 'Private site guidance', skills: [{ id: 'skill-1' }] }
+    },
+    referral: { enabled: true, campaign: 'latest' }
+  }
 };
 
 const mountSetting = () => {
@@ -34,26 +47,52 @@ const mountSetting = () => {
 
 describe('Distribution settings referral switch', () => {
   beforeEach(() => {
+    vi.mocked(siteOperator.get)
+      .mockReset()
+      .mockResolvedValue({ data: managementSite } as never);
     vi.mocked(siteOperator.update)
       .mockReset()
       .mockResolvedValue(site as never);
   });
 
-  it('deep-merges the referral toggle without replacing other features or referral keys', async () => {
+  it('preserves private assistants and latest referral settings using the management revision', async () => {
     const { wrapper, dispatch } = mountSetting();
 
     await (wrapper.vm as any).onToggleReferralEntry(false);
 
+    expect(siteOperator.get).toHaveBeenCalledWith('site-1');
     expect(siteOperator.update).toHaveBeenCalledWith(
       'site-1',
       expect.objectContaining({
         features: {
-          chatgpt: { enabled: true, service_id: 'service-1' },
-          referral: { enabled: false, campaign: 'custom' }
+          chatgpt: managementSite.features.chatgpt,
+          referral: { enabled: false, campaign: 'latest' }
         }
-      })
+      }),
+      7
     );
     expect(dispatch).toHaveBeenCalledWith('getSite');
+    expect((wrapper.vm as any).referralEntrySaving).toBe(false);
+  });
+
+  it('does not fall back to public configuration when the management read fails', async () => {
+    vi.mocked(siteOperator.get).mockRejectedValue(new Error('Unavailable'));
+    const { wrapper } = mountSetting();
+
+    await (wrapper.vm as any).onToggleReferralEntry(false);
+
+    expect(siteOperator.update).not.toHaveBeenCalled();
+    expect((wrapper.vm as any).referralEntrySaving).toBe(false);
+  });
+
+  it('does not retry a revision conflict with stale configuration', async () => {
+    vi.mocked(siteOperator.update).mockRejectedValue({ response: { status: 409 } });
+    const { wrapper, dispatch } = mountSetting();
+
+    await (wrapper.vm as any).onToggleReferralEntry(false);
+
+    expect(siteOperator.update).toHaveBeenCalledTimes(1);
+    expect(dispatch).not.toHaveBeenCalled();
     expect((wrapper.vm as any).referralEntrySaving).toBe(false);
   });
 
