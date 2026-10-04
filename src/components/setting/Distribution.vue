@@ -103,15 +103,20 @@ export default defineComponent({
       if (!this.site.id || this.referralEntrySaving) return;
       this.referralEntrySaving = true;
       try {
-        await siteOperator.update(this.site.id, {
-          features: {
-            ...this.site.features,
-            referral: {
-              ...this.site.features?.referral,
-              enabled
+        const current = (await siteOperator.get(this.site.id)).data;
+        await siteOperator.update(
+          this.site.id,
+          {
+            features: {
+              ...current.features,
+              referral: {
+                ...current.features?.referral,
+                enabled
+              }
             }
-          }
-        });
+          },
+          current.configuration_revision
+        );
         await this.$store.dispatch('getSite');
       } catch {
         ElMessage.error(this.$t('site.services.message.saveFailed'));

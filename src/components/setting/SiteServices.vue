@@ -424,9 +424,10 @@ export default defineComponent({
       if (!this.siteId || this.rechargeEnabledSaving) return;
       this.rechargeEnabledSaving = true;
       try {
+        const { data: current } = await siteOperator.get(this.siteId);
         await siteOperator.update(this.siteId, {
           commerce: {
-            ...(this.site.commerce || {}),
+            ...(current.commerce || {}),
             recharge: { enabled }
           }
         });
@@ -453,11 +454,12 @@ export default defineComponent({
           this.pendingSiteMarkupPercent = undefined;
           const siteId = this.siteId;
           if (!siteId) break;
+          const { data: current } = await siteOperator.get(siteId);
           await siteOperator.update(siteId, {
             commerce: {
-              ...(this.site.commerce || {}),
+              ...(current.commerce || {}),
               pricing: {
-                ...(this.site.commerce?.pricing || {}),
+                ...(current.commerce?.pricing || {}),
                 markup_ratio: nextPercent / 100
               }
             }
