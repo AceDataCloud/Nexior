@@ -24,13 +24,7 @@
       <div class="top">
         <div v-if="direction === 'row'" :class="{ link: true, active: isHome }">
           <el-tooltip effect="dark" :content="$t('common.nav.home')" placement="top">
-            <logo
-              collapsed
-              :mark-src="homeMarkSrc"
-              class="home-button"
-              :aria-label="$t('common.nav.home')"
-              @click="onHome"
-            />
+            <logo collapsed class="home-button" :aria-label="$t('common.nav.home')" @click="onHome" />
           </el-tooltip>
         </div>
         <div ref="linksContainer" class="links">
@@ -186,7 +180,6 @@ import {
   CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import Logo from './Logo.vue';
-import { isMainOfficial } from '@/utils/is';
 import UserCenter from '@/components/user/Center.vue';
 import { isCapabilityAvailableOnBuild, isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
@@ -273,11 +266,6 @@ export default defineComponent({
     };
   },
   computed: {
-    homeMarkSrc(): string {
-      return isMainOfficial(this.$store.state.site?.origin)
-        ? 'https://cdn.acedata.cloud/uploads/035587cc-3867-412b-8d75-2a4fc161ce81'
-        : '';
-    },
     links(): NavLink[] {
       const result: NavLink[] = [];
       // Chat category
