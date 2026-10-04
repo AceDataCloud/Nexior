@@ -2,7 +2,10 @@
   <el-config-provider :locale="epLocale">
     <auth-panel v-if="authPopup" />
     <desktop-drag-bar />
-    <router-view />
+    <el-empty v-if="siteLoadFailed" class="h-full" :description="$t('common.bootstrap.failed')">
+      <el-button type="primary" @click="reloadSite">{{ $t('common.button.refresh') }}</el-button>
+    </el-empty>
+    <router-view v-else />
     <quota-exhausted-dialog
       :model-value="quotaState.visible"
       :estimated-consumption="quotaState.estimatedConsumption"
@@ -22,7 +25,8 @@
 <script lang="ts">
 import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
-import { ElConfigProvider } from 'element-plus';
+import { ElButton, ElConfigProvider, ElEmpty } from 'element-plus';
+import { Status } from '@/models';
 import AuthPanel from './components/common/AuthPanel.vue';
 import DesktopDragBar from './components/common/DesktopDragBar.vue';
 import QuotaExhaustedDialog from './components/common/QuotaExhaustedDialog.vue';
@@ -65,6 +69,8 @@ export default defineComponent({
   components: {
     MetaTag,
     ElConfigProvider,
+    ElButton,
+    ElEmpty,
     AuthPanel,
     DesktopDragBar,
     QuotaExhaustedDialog
@@ -82,6 +88,10 @@ export default defineComponent({
     };
   },
   computed: {
+    siteLoadFailed(): boolean {
+      const { site, status } = this.$store.state;
+      return !site?.id && (status.getSite === Status.Error || status.getSite === Status.Success);
+    },
     authPopup() {
       return this.$store.state.auth.flow === 'popup' && this.$store.state.auth.visible;
     },
@@ -197,6 +207,9 @@ export default defineComponent({
     this.offUploadAuthGuard?.();
   },
   methods: {
+    reloadSite() {
+      window.location.reload();
+    },
     onQuotaVisibility(visible: boolean) {
       if (!visible) closeQuotaExhausted();
     },

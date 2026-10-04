@@ -48,6 +48,7 @@ export default (): IRootState => {
       expiration: undefined
     },
     status: {
+      getSite: undefined,
       getService: undefined,
       getApplications: undefined,
       getTasks: undefined

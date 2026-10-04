@@ -157,12 +157,15 @@ export const getExchangeRate = async (
 
 export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   console.debug('start to initialize site');
+  state.status.getSite = Status.Request;
   const origin = getSiteOrigin(state?.site);
   try {
     const { data } = await siteOperator.initialize({ origin });
     commit('setSite', data);
+    state.status.getSite = Status.Success;
     console.debug('initialize site success', data);
   } catch (error) {
+    state.status.getSite = Status.Error;
     console.error('initialize site failed', error);
     // No `dispatch('login')` here: with `state.site` still empty,
     // `isIframeLoginEnabled()` reads undefined and silently falls back to the
@@ -173,17 +176,18 @@ export const initializeSite = async ({ state, commit }: ActionContext<IRootState
 
 export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>): Promise<ISite | undefined> => {
   console.debug('start to get site');
+  state.status.getSite = Status.Request;
   try {
     const origin = getSiteOrigin(state?.site);
-    const site = (
-      await siteOperator.getAll({
-        origin
-      })
-    )?.data?.items?.[0];
+    const { data } = await siteOperator.getAll({ origin });
+    if (!Array.isArray(data?.items)) throw new Error('Invalid site response');
+    const site = data.items[0];
     commit('setSite', site);
+    state.status.getSite = Status.Success;
     console.debug('get site success', site);
     return site;
   } catch (error) {
+    state.status.getSite = Status.Error;
     console.error('get site failed', error);
     return undefined;
   }

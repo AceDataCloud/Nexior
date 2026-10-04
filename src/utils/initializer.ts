@@ -2,7 +2,7 @@ import { isAddingAccount } from './auth/accountSessions';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
-import { IToken } from '@/models';
+import { IToken, Status } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
 import { BASE_HOST_STUDIO } from '@/constants';
 import { isWechatBrowser } from './is';
@@ -140,14 +140,11 @@ export const initializeFavicon = async () => {
  * Need to initialize site before render contents
  */
 export const initializeSite = async () => {
-  await store.dispatch('getSite');
-  // after getSite, the site should have been set
-  const site = store.state.site;
-  console.debug('site', site);
-  // if site is not set, try to initialize site
-  const shouldClaimEmptyAdminSite =
-    !!store.state.token?.access && site?.origin && (!site.admins || site.admins.length === 0);
-  if (!site?.origin || shouldClaimEmptyAdminSite) {
+  const site = await store.dispatch('getSite');
+  // Only a successful lookup can enter authenticated site setup.
+  // Network failures do not mean the site is missing.
+  if (store.state.status.getSite !== Status.Success || !store.state.token?.access) return;
+  if (!site || (site.origin && !site.admins?.length)) {
     await store.dispatch('initializeSite');
   }
 };
