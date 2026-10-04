@@ -728,7 +728,7 @@ $dock-handle-height: 22px;
   }
 
   &[direction='row'] {
-    --dock-icon-size: 24px;
+    --dock-icon-size: 32px;
     --dock-target-size: 36px;
 
     flex-direction: row;
@@ -791,8 +791,8 @@ $dock-handle-height: 22px;
         }
 
         :deep(.brand-logo__mark) {
-          width: var(--dock-icon-size);
-          height: var(--dock-icon-size);
+          width: 24px;
+          height: 24px;
         }
       }
       .avatar {
