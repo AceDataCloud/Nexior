@@ -155,20 +155,34 @@ jobs:
           npm run build:electron
           npm run compile:electron
           node scripts/copy-renderer.js
-          npx electron-builder --${{ matrix.arch }} ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          # An architecture flag alone still expands both mac.target.arch entries.
+          # Explicit targets keep this matrix job on exactly its selected arch.
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            npx electron-builder --win nsis --${{ matrix.arch }} ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          else
+            npx electron-builder --mac dmg --${{ matrix.arch }} ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          fi
           echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
       - name: Verify desktop installers
+        id: installer
         shell: bash
         run: |
           set -euo pipefail
+          VERSION=$(node -p "require('./package.json').version")
           if [ "${{ runner.os }}" = "Windows" ]; then
-            compgen -G 'release/*.exe' >/dev/null
+            INSTALLER="release/AceData.Setup.${VERSION}.exe"
+            # Tags created before the naming fix used electron-builder's default.
+            if [ ! -f "$INSTALLER" ] && [ -f "release/AceData Setup ${VERSION}.exe" ]; then
+              mv "release/AceData Setup ${VERSION}.exe" "$INSTALLER"
+            fi
           elif [ "${{ matrix.arch }}" = arm64 ]; then
-            compgen -G 'release/*-arm64.dmg' >/dev/null
+            INSTALLER="release/AceData-${VERSION}-arm64.dmg"
           else
-            compgen -G 'release/AceData-[0-9]*.dmg' >/dev/null
+            INSTALLER="release/AceData-${VERSION}.dmg"
           fi
+          test -s "$INSTALLER"
+          echo "path=$INSTALLER" >> "$GITHUB_OUTPUT"
 
       - name: Verify signed desktop package
         if: env.DESKTOP_SIGNED == 'true'
@@ -180,7 +194,13 @@ jobs:
             # shellcheck disable=SC2016
             powershell.exe -NoProfile -Command '$files = Get-ChildItem release/*.exe; foreach ($file in $files) { if ((Get-AuthenticodeSignature $file).Status -ne "Valid") { exit 1 } }'
           else
-            APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1)
+            APP=release/mac/AceData.app
+            EXPECTED_ARCH=x86_64
+            if [ "${{ matrix.arch }}" = arm64 ]; then
+              APP=release/mac-arm64/AceData.app
+              EXPECTED_ARCH=arm64
+            fi
+            test "$(lipo -archs "$APP/Contents/MacOS/AceData")" = "$EXPECTED_ARCH"
             codesign --verify --deep --strict --verbose=2 "$APP"
             xcrun stapler validate "$APP"
           fi
@@ -189,6 +209,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: nexior-release-desktop-${{ matrix.os }}-${{ matrix.arch }}
-          path: ${{ runner.os == 'Windows' && 'release/*.exe' || matrix.arch == 'arm64' && 'release/*-arm64.dmg' || 'release/AceData-[0-9]*.dmg' }}
+          path: ${{ steps.installer.outputs.path }}
           retention-days: 30
           if-no-files-found: error

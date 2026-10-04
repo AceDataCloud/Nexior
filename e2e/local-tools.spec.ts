@@ -59,6 +59,23 @@ test.beforeEach(async () => {
 
   app = await electron.launch({ args: [MAIN, `--user-data-dir=${userDataDir}`] });
   win = await app.firstWindow();
+  // This test owns local settings rendering, not production API availability.
+  // Freeze startup data and reload after installing routes so even the first
+  // bootstrap request cannot race these fixtures. Electron/preload/local tools
+  // and all render-error assertions below remain real.
+  await win.route('**/api/v1/sites/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        items: [{ id: 'local-tools-e2e', origin: 'studio.acedata.cloud', title: 'AceData' }],
+        count: 1
+      })
+    })
+  );
+  await win.route('**/api/v1/config/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: '{"features":{}}' })
+  );
   await win.route('**/api/v1/showcases/**', (route) =>
     route.fulfill({ status: 200, contentType: 'application/json', body: '[]' })
   );
@@ -66,6 +83,7 @@ test.beforeEach(async () => {
   win.on('console', (m) => {
     if (m.type() === 'error') errors.push(`console.error: ${m.text()}`);
   });
+  await win.reload({ waitUntil: 'domcontentloaded' });
   await win.waitForLoadState('domcontentloaded');
   await expect(win.locator('#app')).toBeAttached();
 });

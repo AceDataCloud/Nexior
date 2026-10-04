@@ -224,7 +224,7 @@
           <p class="platform__text">{{ $t('common.message.desktopWindowsHint') }}</p>
 
           <div class="platform__foot platform__foot--stack">
-            <el-button type="primary" round size="large" tag="a" :href="desktopReleasesUrl" target="_blank">
+            <el-button type="primary" round size="large" tag="a" :href="windowsDownloadUrl" target="_blank">
               <font-awesome-icon :icon="faWindows" class="btn-icon" />
               {{ $t('common.button.downloadWindows') }}
             </el-button>
@@ -244,11 +244,15 @@
           <p class="platform__text">{{ $t('common.message.desktopMacHint') }}</p>
 
           <div class="platform__foot platform__foot--stack">
-            <el-button type="primary" round size="large" tag="a" :href="desktopReleasesUrl" target="_blank">
+            <el-button type="primary" round size="large" tag="a" :href="macArm64DownloadUrl" target="_blank">
               <font-awesome-icon :icon="faApple" class="btn-icon" />
-              {{ $t('common.button.downloadMac') }}
+              Apple Silicon
             </el-button>
-            <span class="platform__meta">Beta · Apple Silicon &amp; Intel</span>
+            <el-button round size="large" tag="a" :href="macIntelDownloadUrl" target="_blank">
+              <font-awesome-icon :icon="faApple" class="btn-icon" />
+              Intel
+            </el-button>
+            <span class="platform__meta">Beta · macOS 12+</span>
           </div>
         </article>
       </section>
@@ -278,10 +282,10 @@
         <p class="note__text">{{ $t('common.message.mobileInstallNote') }}</p>
       </aside>
 
-      <!-- Desktop unsigned-beta note -->
+      <!-- Platform-specific signing status -->
       <aside class="note">
         <info-icon class="note__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-        <p class="note__text">{{ $t('common.message.desktopUnsignedNote') }}</p>
+        <p class="note__text">{{ $t('common.message.desktopSigningNote') }}</p>
       </aside>
     </div>
   </div>
@@ -299,7 +303,9 @@ import defaultLogo from '@/assets/images/logo.png';
 import {
   BROWSER_EXTENSION_DOWNLOAD_URL,
   BROWSER_EXTENSION_GUIDE_URL,
-  DESKTOP_RELEASES_URL,
+  DESKTOP_WINDOWS_DOWNLOAD_URL,
+  DESKTOP_MAC_ARM64_DOWNLOAD_URL,
+  DESKTOP_MAC_INTEL_DOWNLOAD_URL,
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_ANDROID_PLAY_STORE_URL,
   MOBILE_IOS_APP_STORE_URL,
@@ -372,8 +378,14 @@ export default defineComponent({
     hasIos() {
       return this.hasAppStore || this.hasIosDownload;
     },
-    desktopReleasesUrl() {
-      return DESKTOP_RELEASES_URL;
+    windowsDownloadUrl() {
+      return DESKTOP_WINDOWS_DOWNLOAD_URL;
+    },
+    macArm64DownloadUrl() {
+      return DESKTOP_MAC_ARM64_DOWNLOAD_URL;
+    },
+    macIntelDownloadUrl() {
+      return DESKTOP_MAC_INTEL_DOWNLOAD_URL;
     }
   },
   methods: {
@@ -634,6 +646,10 @@ export default defineComponent({
   flex-direction: column;
   align-items: stretch;
   gap: 12px;
+
+  > .el-button + .el-button {
+    margin-left: 0;
+  }
 }
 
 // The extension card spans both columns, so its buttons sit side by side and

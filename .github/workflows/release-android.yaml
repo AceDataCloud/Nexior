@@ -260,6 +260,21 @@ jobs:
             -PRELEASE_KEY_ALIAS='${{ secrets.ANDROID_KEY_ALIAS }}' \
             -PRELEASE_KEY_PASSWORD='${{ secrets.ANDROID_KEY_PASSWORD }}'
 
+      - name: Verify release APK identity and signature
+        env:
+          EXPECTED_VERSION: ${{ needs.preflight.outputs.version-name }}
+        run: |
+          set -euo pipefail
+          APK=android/app/build/outputs/apk/full/release/app-full-release.apk
+          BUILD_TOOLS=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n1)
+          BADGING=$("$BUILD_TOOLS/aapt" dump badging "$APK")
+          printf '%s\n' "$BADGING" | grep -F "package: name='com.acedatacloud.nexior'" | grep -F "versionName='$EXPECTED_VERSION'"
+          "$BUILD_TOOLS/apksigner" verify --print-certs "$APK" > apk-signature.txt
+          if grep -qi 'CN=Android Debug' apk-signature.txt; then
+            echo "::error::Refusing to publish a debug-signed APK"
+            exit 1
+          fi
+
       - name: Stage versioned APK
         if: inputs.release_tag != ''
         run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
@@ -277,7 +292,6 @@ jobs:
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
-
 
   publish:
     name: Submit Play release (one review)

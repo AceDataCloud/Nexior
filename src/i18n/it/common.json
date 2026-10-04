@@ -388,12 +388,8 @@
     "description": "Windows desktop download card description"
   },
   "message.desktopMacHint": {
-    "message": "Per macOS 11 e versioni successive. Scegli la versione adatta al tuo Mac — Apple Silicon (serie M) o Intel.",
-    "description": "macOS desktop download card description"
-  },
-  "message.desktopUnsignedNote": {
-    "message": "Le app desktop sono versioni beta non firmate. Su Windows scegli «Maggiori informazioni → Esegui comunque» nell’avviso SmartScreen; su macOS fai clic con il tasto destro sull’app e scegli «Apri» per ignorare Gatekeeper.",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "message": "Compatibile con macOS 12 e versioni successive. Scegli il pacchetto di installazione Apple Silicon (serie M) o Intel in base al modello.",
+    "description": "Requisiti per il download desktop e stato della firma della piattaforma"
   },
   "button.getOnGooglePlay": {
     "message": "Disponibile su Google Play",
@@ -1938,5 +1934,9 @@
   "bootstrap.failed": {
     "message": "Impossibile caricare la pagina al momento",
     "description": "Schermata di recupero in caso di errore all'avvio del sito: errore"
+  },
+  "message.desktopSigningNote": {
+    "message": "I pacchetti di installazione per macOS sono firmati dallo sviluppatore e notarizzati da Apple. I pacchetti Windows al momento non sono firmati; durante l'installazione potrebbe essere visualizzato un avviso SmartScreen.",
+    "description": "Requisiti per il download desktop e stato della firma della piattaforma"
   }
 }
