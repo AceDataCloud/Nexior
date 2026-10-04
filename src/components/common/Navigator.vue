@@ -24,7 +24,13 @@
       <div class="top">
         <div v-if="direction === 'row'" :class="{ link: true, active: isHome }">
           <el-tooltip effect="dark" :content="$t('common.nav.home')" placement="top">
-            <logo collapsed class="home-button" :aria-label="$t('common.nav.home')" @click="onHome" />
+            <logo
+              collapsed
+              :mark-src="homeMarkSrc"
+              class="home-button"
+              :aria-label="$t('common.nav.home')"
+              @click="onHome"
+            />
           </el-tooltip>
         </div>
         <div ref="linksContainer" class="links">
@@ -180,6 +186,7 @@ import {
   CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import Logo from './Logo.vue';
+import { isMainOfficial } from '@/utils/is';
 import UserCenter from '@/components/user/Center.vue';
 import { isCapabilityAvailableOnBuild, isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
@@ -266,6 +273,11 @@ export default defineComponent({
     };
   },
   computed: {
+    homeMarkSrc(): string {
+      return isMainOfficial(this.$store.state.site?.origin)
+        ? 'https://cdn.acedata.cloud/uploads/d0f2038b-c337-4cee-82d4-2f90f6cba8dd'
+        : '';
+    },
     links(): NavLink[] {
       const result: NavLink[] = [];
       // Chat category
@@ -785,22 +797,14 @@ $dock-handle-height: 22px;
         :deep(.brand-logo__image),
         :deep(.brand-logo__mark) {
           box-sizing: border-box;
-          width: var(--dock-icon-size);
-          height: var(--dock-icon-size);
+          width: 20px;
+          height: 20px;
           padding: 0;
-          border: 1px solid transparent;
-          border-radius: 50%;
         }
 
         &:focus-visible {
           outline: 2px solid var(--el-color-primary);
           outline-offset: 2px;
-        }
-      }
-      > .link.active .home-button {
-        color: var(--el-color-primary);
-        :deep(img) {
-          border-color: var(--el-color-primary);
         }
       }
       .avatar {

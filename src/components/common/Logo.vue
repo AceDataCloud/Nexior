@@ -24,6 +24,10 @@ export default defineComponent({
     collapsed: {
       type: Boolean,
       default: false
+    },
+    markSrc: {
+      type: String,
+      default: ''
     }
   },
   emits: ['click'],
@@ -34,12 +38,12 @@ export default defineComponent({
     siteTitle() {
       return this.$store.state.site?.title || 'AceData';
     },
-    // Site branding is authoritative on every host. The built-in mark is only
-    // a final fallback when the initialized Site has no logo or favicon.
+    // A compact placement can supply a dedicated mark. Otherwise Site branding
+    // stays authoritative, with the built-in mark as the final fallback.
     tenantLogoLight(): string {
       const site = this.$store.state.site;
       if (this.collapsed) {
-        return site?.favicon || site?.logo || '';
+        return this.markSrc || site?.favicon || site?.logo || '';
       }
       return site?.logo_light || site?.logo || site?.favicon || '';
     },
