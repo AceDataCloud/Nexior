@@ -784,21 +784,15 @@ $dock-handle-height: 22px;
 
         :deep(.brand-logo__image) {
           box-sizing: border-box;
-          // Account for the Site favicon's transparent margins and vertical inset.
+          // Account for the Site favicon's transparent margins around the artwork.
           width: 32px;
           height: 32px;
           padding: 0;
-          transform: translateY(2px);
         }
 
         :deep(.brand-logo__mark) {
           width: var(--dock-icon-size);
           height: var(--dock-icon-size);
-        }
-
-        &:focus-visible {
-          outline: 2px solid var(--el-color-primary);
-          outline-offset: 2px;
         }
       }
       .avatar {
@@ -841,6 +835,18 @@ $dock-handle-height: 22px;
         width: var(--dock-target-size);
         height: var(--dock-target-size);
         padding: calc((var(--dock-target-size) - var(--dock-icon-size)) / 2);
+      }
+    }
+
+    .home-button,
+    .top .avatar,
+    :deep(.bottom .center > .el-dropdown > .avatar) {
+      border-radius: 50%;
+      outline: 1px solid var(--app-glass-border);
+      outline-offset: -3px;
+
+      &:focus-visible {
+        outline: 2px solid var(--el-color-primary);
       }
     }
 
