@@ -2,7 +2,9 @@
   <el-config-provider :locale="epLocale">
     <auth-panel v-if="authPopup" />
     <desktop-drag-bar />
-    <site-bootstrap-error v-if="siteBootstrapFailed" />
+    <el-empty v-if="siteLoadFailed" class="h-full" :description="$t('common.bootstrap.failed')">
+      <el-button type="primary" @click="reloadSite">{{ $t('common.button.refresh') }}</el-button>
+    </el-empty>
     <router-view v-else />
     <quota-exhausted-dialog
       :model-value="quotaState.visible"
@@ -23,11 +25,10 @@
 <script lang="ts">
 import { MetaTag } from '@acedatacloud/core/components';
 import { defineComponent } from 'vue';
-import { ElConfigProvider } from 'element-plus';
+import { ElButton, ElConfigProvider, ElEmpty } from 'element-plus';
+import { Status } from '@/models';
 import AuthPanel from './components/common/AuthPanel.vue';
 import DesktopDragBar from './components/common/DesktopDragBar.vue';
-import SiteBootstrapError from './components/common/SiteBootstrapError.vue';
-import { siteBootstrapState } from '@/utils/siteBootstrap';
 import QuotaExhaustedDialog from './components/common/QuotaExhaustedDialog.vue';
 import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
@@ -68,9 +69,10 @@ export default defineComponent({
   components: {
     MetaTag,
     ElConfigProvider,
+    ElButton,
+    ElEmpty,
     AuthPanel,
     DesktopDragBar,
-    SiteBootstrapError,
     QuotaExhaustedDialog
   },
   data() {
@@ -86,8 +88,9 @@ export default defineComponent({
     };
   },
   computed: {
-    siteBootstrapFailed() {
-      return siteBootstrapState.failed;
+    siteLoadFailed(): boolean {
+      const { site, status } = this.$store.state;
+      return !site?.id && (status.getSite === Status.Error || status.getSite === Status.Success);
     },
     authPopup() {
       return this.$store.state.auth.flow === 'popup' && this.$store.state.auth.visible;
@@ -114,7 +117,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (this.siteBootstrapFailed) return;
     this.offUploadAuthGuard = installUploadAuthGuard(document, ensureLoggedIn);
 
     // Listen for deep link callbacks from the native (Capacitor) OAuth flow.
@@ -205,6 +207,9 @@ export default defineComponent({
     this.offUploadAuthGuard?.();
   },
   methods: {
+    reloadSite() {
+      window.location.reload();
+    },
     onQuotaVisibility(visible: boolean) {
       if (!visible) closeQuotaExhausted();
     },

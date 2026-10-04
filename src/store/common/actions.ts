@@ -155,25 +155,18 @@ export const getExchangeRate = async (
   }
 };
 
-interface SiteLoadOptions {
-  timeout?: number;
-  throwOnError?: boolean;
-}
-
-export const initializeSite = async (
-  { state, commit }: ActionContext<IRootState, IRootState>,
-  options: SiteLoadOptions = {}
-) => {
+export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   console.debug('start to initialize site');
+  state.status.getSite = Status.Request;
   const origin = getSiteOrigin(state?.site);
   try {
-    const { data } = await siteOperator.initialize({ origin }, { timeout: options.timeout });
+    const { data } = await siteOperator.initialize({ origin });
     commit('setSite', data);
+    state.status.getSite = Status.Success;
     console.debug('initialize site success', data);
-    return data;
   } catch (error) {
+    state.status.getSite = Status.Error;
     console.error('initialize site failed', error);
-    if (options.throwOnError) throw error;
     // No `dispatch('login')` here: with `state.site` still empty,
     // `isIframeLoginEnabled()` reads undefined and silently falls back to the
     // full-page redirect — so an iframe-login site would bounce users to
@@ -181,27 +174,21 @@ export const initializeSite = async (
   }
 };
 
-export const getSite = async (
-  { state, commit }: ActionContext<IRootState, IRootState>,
-  options: SiteLoadOptions = {}
-): Promise<ISite | undefined> => {
+export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>): Promise<ISite | undefined> => {
   console.debug('start to get site');
+  state.status.getSite = Status.Request;
   try {
     const origin = getSiteOrigin(state?.site);
-    const { data } = await siteOperator.getAll({ origin }, { timeout: options.timeout });
-    const site = data?.items?.[0];
-    if (
-      options.throwOnError &&
-      (!Array.isArray(data?.items) || (data.items.length > 0 && (!site?.id || !site.origin)))
-    ) {
-      throw new Error('Invalid site configuration response');
-    }
+    const { data } = await siteOperator.getAll({ origin });
+    if (!Array.isArray(data?.items)) throw new Error('Invalid site response');
+    const site = data.items[0];
     commit('setSite', site);
+    state.status.getSite = Status.Success;
     console.debug('get site success', site);
     return site;
   } catch (error) {
+    state.status.getSite = Status.Error;
     console.error('get site failed', error);
-    if (options.throwOnError) throw error;
     return undefined;
   }
 };

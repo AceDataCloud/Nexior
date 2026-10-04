@@ -57,6 +57,7 @@ export interface ICommonState {
     | undefined;
   applications: IApplication[] | undefined;
   status: {
+    getSite?: Status;
     getService: Status | undefined;
     getApplications: Status | undefined;
     getTasks: Status | undefined;

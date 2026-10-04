@@ -88,7 +88,6 @@ import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@
 import { ensureStoreModule } from '@/store/lazy';
 import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
 import { handleChunkLoadError } from '@/utils/chunkLoadError';
-import { siteBootstrapState } from '@/utils/siteBootstrap';
 import { loginRedirect } from '@/utils/login';
 import { isNative, isDesktop } from '@/utils/surface';
 import { requiresLogin } from './authPolicy';
@@ -450,7 +449,7 @@ export function setupRouterGuards(router: Router) {
   router.beforeEach(async (to, from, next) => {
     // SSG build navigates the router to render each route; no cookies/i18n DOM
     // then, so skip the client-only guard body and just proceed.
-    if (import.meta.env.SSR || siteBootstrapState.failed) {
+    if (import.meta.env.SSR) {
       return next();
     }
     // A site-wide pin outranks the cookie (and therefore `?lang=`, which only
@@ -510,7 +509,7 @@ export function setupRouterGuards(router: Router) {
   });
 
   router.afterEach((to) => {
-    if (import.meta.env.SSR || siteBootstrapState.failed) {
+    if (import.meta.env.SSR) {
       return;
     }
     trackSitePageView(to.fullPath);

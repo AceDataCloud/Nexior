@@ -24,13 +24,6 @@ const makeDependencies = (localeChanged: boolean) => {
 };
 
 describe('initializeLocalizedBootstrap', () => {
-  it('stops before account/config reads when the site cannot be loaded', async () => {
-    const { dependencies } = makeDependencies(false);
-    dependencies.initializeSite.mockRejectedValue(new Error('site unavailable'));
-    await expect(initializeLocalizedBootstrap(dependencies)).rejects.toThrow('site unavailable');
-    expect(dependencies.initializeUser).not.toHaveBeenCalled();
-    expect(dependencies.initializeConfig).not.toHaveBeenCalled();
-  });
   it('loads localized bootstrap data once when the site keeps the saved locale', async () => {
     const { calls, dependencies } = makeDependencies(false);
 

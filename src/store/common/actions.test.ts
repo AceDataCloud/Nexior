@@ -13,14 +13,16 @@ vi.mock('@/store/lazy', () => ({
   getRegisteredLazyModules: () => ['nanobanana', 'chat']
 }));
 
+import { Status } from '@/models';
 import { getSite, initializeSite, resetAll } from './actions';
 
 describe('store/common getSite', () => {
   const commit = vi.fn();
-  const state = { site: { origin: 'https://example.com' } };
+  const state = { site: { origin: 'https://example.com' }, status: { getSite: undefined as Status | undefined } };
 
   beforeEach(() => {
     vi.clearAllMocks();
+    state.status.getSite = undefined;
   });
 
   it('returns the site committed to the store', async () => {
@@ -29,6 +31,7 @@ describe('store/common getSite', () => {
 
     await expect(getSite({ state, commit } as never)).resolves.toBe(site);
     expect(commit).toHaveBeenCalledWith('setSite', site);
+    expect(state.status.getSite).toBe(Status.Success);
   });
 
   it('returns undefined without replacing state when refresh fails', async () => {
@@ -36,29 +39,29 @@ describe('store/common getSite', () => {
 
     await expect(getSite({ state, commit } as never)).resolves.toBeUndefined();
     expect(commit).not.toHaveBeenCalled();
+    expect(state.status.getSite).toBe(Status.Error);
   });
 
-  it('propagates startup failures and passes its bounded timeout to the request', async () => {
-    const error = new Error('network failure');
-    siteOperatorMock.getAll.mockRejectedValue(error);
-    await expect(getSite({ state, commit } as never, { timeout: 2000, throwOnError: true })).rejects.toBe(error);
-    expect(siteOperatorMock.getAll.mock.calls[0][1]).toEqual({ timeout: 2000 });
+  it('distinguishes a successful empty lookup from a failed request', async () => {
+    siteOperatorMock.getAll.mockResolvedValue({ data: { items: [] } });
+    await expect(getSite({ state, commit } as never)).resolves.toBeUndefined();
+    expect(state.status.getSite).toBe(Status.Success);
+  });
+
+  it('does not treat a malformed response as an empty site list', async () => {
+    siteOperatorMock.getAll.mockResolvedValue({ data: '<html>error</html>' });
+    await expect(getSite({ state, commit } as never)).resolves.toBeUndefined();
+    expect(state.status.getSite).toBe(Status.Error);
     expect(commit).not.toHaveBeenCalled();
   });
 
-  it('propagates setup failures to the startup error boundary', async () => {
-    const error = new Error('network failure');
-    siteOperatorMock.initialize.mockRejectedValue(error);
-    await expect(initializeSite({ state, commit } as never, { timeout: 5000, throwOnError: true })).rejects.toBe(error);
-    expect(commit).not.toHaveBeenCalled();
-  });
-
-  it.each([{}, { items: [{ id: 'site-1' }] }])('does not treat a malformed success as an absent site', async (data) => {
-    siteOperatorMock.getAll.mockResolvedValue({ data });
-    await expect(getSite({ state, commit } as never, { throwOnError: true })).rejects.toThrow(
-      'Invalid site configuration response'
-    );
-    expect(commit).not.toHaveBeenCalled();
+  it('exposes setup failure and clears the error when a later lookup succeeds', async () => {
+    siteOperatorMock.initialize.mockRejectedValue(new Error('connection refused'));
+    await initializeSite({ state, commit } as never);
+    expect(state.status.getSite).toBe(Status.Error);
+    siteOperatorMock.getAll.mockResolvedValue({ data: { items: [{ id: 'site-1' }] } });
+    await getSite({ state, commit } as never);
+    expect(state.status.getSite).toBe(Status.Success);
   });
 });
 

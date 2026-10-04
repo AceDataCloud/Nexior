@@ -2,12 +2,11 @@ import { isAddingAccount } from './auth/accountSessions';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
-import { IToken } from '@/models';
+import { IToken, Status } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
 import { BASE_HOST_STUDIO } from '@/constants';
 import { isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
-import { bootstrapSite } from './siteBootstrap';
 
 import { getDomain } from './domain';
 
@@ -141,11 +140,13 @@ export const initializeFavicon = async () => {
  * Need to initialize site before render contents
  */
 export const initializeSite = async () => {
-  await bootstrapSite({
-    getSite: (timeout) => store.dispatch('getSite', { timeout, throwOnError: true }),
-    initializeSite: (timeout) => store.dispatch('initializeSite', { timeout, throwOnError: true }),
-    isAuthenticated: () => !!store.state.token?.access
-  });
+  const site = await store.dispatch('getSite');
+  // Only a successful lookup can enter authenticated site setup.
+  // Network failures do not mean the site is missing.
+  if (store.state.status.getSite !== Status.Success || !store.state.token?.access) return;
+  if (!site || (site.origin && !site.admins?.length)) {
+    await store.dispatch('initializeSite');
+  }
 };
 
 export const initializeConfig = async () => {
