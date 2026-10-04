@@ -92,6 +92,7 @@ describe('chat/Conversation retry', () => {
   const setup = async (conversationId: string | null = 'conversation-1') => {
     const mounted = mountComponent({
       credentialToken: 'token',
+      model: CHAT_MODEL_GPT_6_ASTRA,
       conversationId,
       fetchedConversation: { id: conversationId, messages: [] }
     });
@@ -99,6 +100,79 @@ describe('chat/Conversation retry', () => {
     await mounted.wrapper.setData({ messages: failedMessages() });
     return mounted;
   };
+
+  const asyncFailure = (): IChatMessage[] => [
+    { role: 'user', content: 'Draw a car' },
+    {
+      role: 'assistant',
+      state: IChatMessageState.FAILED,
+      error: { code: 'api_error' },
+      content: [
+        { type: 'text', text: 'Generating your image.' },
+        {
+          type: 'tool_use',
+          tool_id: 'original-call',
+          tool_name: 'mcp__OpenAI__openai_generate_image',
+          status: 'done',
+          input: { prompt: 'car' },
+          output: JSON.stringify({
+            task_id: 'original-task',
+            mcp_async_submission: { task_id: 'original-task', poll_tool: 'openai_get_task' }
+          })
+        }
+      ]
+    }
+  ];
+
+  it('recovers accepted jobs without deleting history, resending the question, or replaying generation', async () => {
+    const { wrapper } = await setup();
+    await wrapper.setData({ messages: asyncFailure(), question: 'Unsubmitted draft' });
+    const update = vi.spyOn(chatOperator, 'updateConversation');
+    const send = vi.spyOn(wrapper.vm, 'onRequest');
+    const stream = vi.spyOn(wrapper.vm, '_streamAssistantTurn').mockImplementation(() => undefined);
+    const target = wrapper.vm.messages[1];
+    await wrapper.vm.onRestart(target);
+    await wrapper.vm.onRestart(target);
+    expect(update).not.toHaveBeenCalled();
+    expect(send).not.toHaveBeenCalled();
+    expect(stream).toHaveBeenCalledOnce();
+    expect(stream).toHaveBeenCalledWith(
+      { id: 'conversation-1', model: 'gpt-6-astra', stateful: true, resume_async_tasks: true },
+      'token',
+      'conversation-1'
+    );
+    expect(wrapper.vm.messages).toHaveLength(2);
+    expect(JSON.stringify(wrapper.vm.messages)).toContain('original-task');
+    expect(wrapper.vm.question).toBe('Unsubmitted draft');
+  });
+
+  it('keeps original tool cards when the recovered image is streamed back', async () => {
+    const { wrapper } = await setup();
+    await wrapper.setData({ messages: asyncFailure() });
+    vi.spyOn(chatOperator, 'chatConversation').mockImplementation(async (_body, options) => {
+      options.stream?.({
+        answer: '![car](https://example.com/car.png)',
+        delta_answer: '![car](https://example.com/car.png)'
+      });
+      return { answer: '![car](https://example.com/car.png)', delta_answer: '' };
+    });
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+    await flushPromises();
+    expect(JSON.stringify(wrapper.vm.messages)).toContain('original-call');
+    expect(JSON.stringify(wrapper.vm.messages)).toContain('https://example.com/car.png');
+  });
+
+  it('preserves accepted task evidence if the recovery request also fails', async () => {
+    const { wrapper } = await setup();
+    await wrapper.setData({ messages: asyncFailure() });
+    vi.spyOn(chatOperator, 'chatConversation').mockRejectedValue(
+      new BaseError(503, 'upstream_connection_failed', 'Temporarily unavailable')
+    );
+    await wrapper.vm.onRestart(wrapper.vm.messages[1]);
+    await flushPromises();
+    expect(wrapper.vm.messages[1].state).toBe(IChatMessageState.FAILED);
+    expect(JSON.stringify(wrapper.vm.messages)).toContain('original-task');
+  });
 
   it('retries a first-byte failure without trying to update an unknown conversation ID', async () => {
     const { wrapper, dispatch } = await setup(null);

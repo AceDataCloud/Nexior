@@ -73,9 +73,11 @@ stay in the song list as compact placeholders; diagnostic details are available 
 
 AI usage is metered unless a capability is explicitly marked free. Check the current service pricing before generating.
 
-If the latest chat reply fails or is interrupted, use **Retry** beside the error to resend the original question
-and attachments. Partial output remains visible until you retry. Retries are manual, start a new generation,
-and may incur additional usage charges; shared read-only conversations do not offer this action.
+If the latest chat reply fails or is interrupted, use **Retry** beside the error. When the failed turn
+already submitted an asynchronous media task, Retry preserves the conversation and retrieves that original
+task instead of generating another image, video, or audio result. Recovery can incur chat usage, but does
+not submit replacement media tasks. Otherwise Retry resends the original question and attachments and may
+incur new generation charges. Partial output remains visible; shared read-only conversations do not offer Retry.
 
 Saved accounts are available from the email row in the avatar menu. Hover or tap to
 open the account list, then choose **Add account** or select a saved login. Accounts

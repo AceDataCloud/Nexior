@@ -445,6 +445,8 @@ export interface IChatConversationOptions {
 }
 
 export interface IChatConversationRequest {
+  /** Recover accepted async tasks from the latest failed turn without creating replacements. */
+  resume_async_tasks?: boolean;
   id?: string;
   question?: string;
   message?: string | IChatMessageContentItem[];

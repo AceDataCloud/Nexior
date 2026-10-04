@@ -110,6 +110,7 @@
 </template>
 
 <script lang="ts">
+import { hasSubmittedAsyncTask } from '@/utils/asyncTaskRecovery';
 import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
@@ -574,6 +575,28 @@ export default defineComponent({
     async onRestart(targetMessage: IChatMessage) {
       if (this.answering || this.restarting) return;
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
+      // Recover submitted jobs before the destructive regenerate path below.
+      if (
+        targetIndex === this.messages.length - 1 &&
+        targetMessage.role === ROLE_ASSISTANT &&
+        targetMessage.state === IChatMessageState.FAILED &&
+        hasSubmittedAsyncTask(this.messages)
+      ) {
+        const token = this.credential?.token;
+        const conversationId = this.conversationId;
+        const model = this.model?.name;
+        if (!token || !conversationId || !model || !ensureLoggedIn()) return;
+        this.answering = true;
+        this.canceler = new AbortController();
+        targetMessage.state = IChatMessageState.PENDING;
+        delete targetMessage.error;
+        this._streamAssistantTurn(
+          { id: conversationId, model, stateful: true, resume_async_tasks: true },
+          token,
+          conversationId
+        );
+        return;
+      }
       const problemMessage = this.messages[targetIndex - 1];
       if (
         targetIndex !== this.messages.length - 1 ||
@@ -1460,7 +1483,9 @@ export default defineComponent({
       // the slot we own.
       const targetIndex = this.messages.length - 1;
       // Track content parts for tool-calling interleaving
-      const contentParts: IChatMessageContentItem[] = [];
+      const previousContent = this.messages[targetIndex]?.content;
+      const contentParts: IChatMessageContentItem[] =
+        body.resume_async_tasks && Array.isArray(previousContent) ? [...previousContent] : [];
       const toolMap = new Map<string, IChatMessageContentItem>();
       const pendingBrowserUpdates = new Map<
         string,
