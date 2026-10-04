@@ -141,10 +141,14 @@ export const initializeFavicon = async () => {
  */
 export const initializeSite = async () => {
   const site = await store.dispatch('getSite');
-  // Only a successful lookup can enter authenticated site setup.
   // Network failures do not mean the site is missing.
-  if (store.state.status.getSite !== Status.Success || !store.state.token?.access) return;
-  if (!site || (site.origin && !site.admins?.length)) {
+  if (store.state.status.getSite !== Status.Success) return;
+  // New origins need an authenticated owner before setup can create the Site.
+  if (!site && !store.state.token?.access) {
+    await store.dispatch('login');
+    return;
+  }
+  if (store.state.token?.access && (!site || (site.origin && !site.admins?.length))) {
     await store.dispatch('initializeSite');
   }
 };
