@@ -32,9 +32,9 @@ describe('suno/config/TypeSelector', () => {
     expect(options.slice(0, 3).map((option) => option.value)).toEqual(['chirp-v6', 'chirp-v6-wild', 'chirp-v6-mini']);
   });
 
-  it('preserves the existing default when no model is configured', () => {
+  it('defaults to v6 when no model is configured', () => {
     const { commit } = mountSelector();
 
-    expect(commit).toHaveBeenCalledWith('suno/setConfig', expect.objectContaining({ model: 'chirp-v5-5' }));
+    expect(commit).toHaveBeenCalledWith('suno/setConfig', expect.objectContaining({ model: 'chirp-v6' }));
   });
 });
