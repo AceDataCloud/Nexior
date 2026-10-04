@@ -164,7 +164,7 @@ const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
  * Site row. Logic mirrors what used to live at the standalone
  * `/subsite` page, but reframed to fit inside the user-settings dialog
  * so subsite management is just another setting (alongside General /
- * BYOK / Distribution / etc.) instead of an out-of-band route.
+ * Memory / Distribution / etc.) instead of an out-of-band route.
  *
  * Visibility is gated upstream by `Setting.vue` to the official main
  * host only; subsites themselves never see this tab.

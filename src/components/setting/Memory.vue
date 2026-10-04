@@ -127,7 +127,7 @@ export default defineComponent({
     },
     // Chat-Application credential token. The chat module is lazy-loaded
     // elsewhere; until it resolves the token can be undefined and we keep
-    // the list empty (mirrors the BYOK settings tab).
+    // the list empty.
     token(): string | undefined {
       const credential = this.$store?.state?.chat?.credential as ICredential | undefined;
       return credential?.token;

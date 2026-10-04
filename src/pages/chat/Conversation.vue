@@ -4,7 +4,6 @@
       <div class="toolbar">
         <div class="toolbar-left">
           <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
-          <byok-badge class="byok-badge" />
           <el-dropdown
             v-if="conversationId"
             trigger="click"
@@ -127,7 +126,6 @@ import {
 } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import ConversationActions, { type ConversationCommand } from '@/components/chat/ConversationActions.vue';
 import {
   ERROR_CODE_CANCELED,
@@ -232,7 +230,6 @@ export default defineComponent({
     ConnectorStrip,
     WorkingDirectoryBar,
     ModelSelector,
-    'byok-badge': BYOKBadge,
     ConversationActions,
     Message,
     Layout,
@@ -1819,7 +1816,6 @@ export default defineComponent({
   // and `pointer-events`, so controls under it must opt out or they can't be
   // clicked at all (same fix as the Credits pill in application/Status.vue).
   .selector,
-  .byok-badge,
   .toolbar-more {
     -webkit-app-region: no-drag;
   }
@@ -1853,10 +1849,6 @@ export default defineComponent({
   align-items: center;
   gap: 8px;
   min-width: 0;
-}
-
-.byok-badge {
-  flex-shrink: 0;
 }
 
 .toolbar-more {

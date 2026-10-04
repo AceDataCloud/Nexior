@@ -50,7 +50,6 @@ export const I18N_SCOPES = [
   'connector',
   'connection',
   'skill',
-  'byok',
   'subsite',
   'webextrator',
   'codingBridge',

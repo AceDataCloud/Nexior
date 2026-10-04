@@ -23,9 +23,7 @@ import {
 } from '@/utils/x402/continuousPayment';
 
 /**
- * Headers carrying the calling Site's bare host. Shared with
- * `byokCredential.ts` via `@/utils.currentSiteOrigin` so the chat and
- * BYOK CRUD paths cannot disagree on what "current Site" means.
+ * Headers carrying the calling Site's bare host for per-site chat state.
  */
 function siteHeaders(): Record<string, string> {
   const origin = currentSiteOrigin();

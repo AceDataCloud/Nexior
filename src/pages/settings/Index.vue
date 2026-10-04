@@ -8,8 +8,7 @@ import { defineComponent } from 'vue';
 // `/settings` has no real page of its own — it just opens the user
 // settings dialog (`@/components/user/Setting.vue`) that's already
 // mounted inside `UserCenter` in the Main layout's Navigator. We dispatch
-// the same `open-user-settings` CustomEvent that the in-chat BYOK badge
-// uses (see `src/components/chat/BYOKBadge.vue`).
+// the `open-user-settings` CustomEvent with the requested tab.
 export default defineComponent({
   name: 'SettingsIndex',
   mounted() {

@@ -4,9 +4,9 @@
 
 ### The open-source, self-hostable **all-in-one AI app**
 
-**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi · Midjourney · Flux · Suno · Veo · Kling · Hailuo · Wan — deploy your own in minutes. BYOK or one-key. MIT licensed.**
+**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi · Midjourney · Flux · Suno · Veo · Kling · Hailuo · Wan — deploy your own in minutes. One AceData key. MIT licensed.**
 
-一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,BYOK 或一键直用,MIT 协议。
+一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,一个 AceData key 即可使用,MIT 协议。
 
 <p>
   <a href="https://studio.acedata.cloud">🚀 Live Demo</a> ·
@@ -38,11 +38,11 @@ and use the existing Auth login flow when the user signs in.
 
 ## 🎯 What is Nexior
 
-**Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — point it at your own keys (BYOK) or use a single [AceData](https://platform.acedata.cloud) key for all of them, and you're live.
+**Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — use a single [AceData](https://platform.acedata.cloud) key for all of them, and you're live.
 
 - 🧠 **40+ models, 4 modalities, one app** — chat, image, music, video.
 - 🖥️ **Self-host anywhere** — one-click Vercel, or `docker compose up`. Your data, your domain.
-- 🔑 **BYOK or one-key** — bring your own provider keys, or use a single AceData key for all of them.
+- 🔑 **One AceData key** — access all supported models with a single platform key.
 - 💸 **Turn it into a business (optional)** — built-in user accounts, payments, and a referral/distribution system. Zero extra config.
 - 📦 **MIT licensed** — fork it, brand it, ship it.
 
@@ -50,7 +50,7 @@ Custom capability names configured in site settings also appear in browser tab t
 
 > Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud).
 
-**Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用,几分钟上线。
+**Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用一个 AceData key 直接全用,几分钟上线。
 
 ---
 
@@ -94,7 +94,7 @@ saved login, while other saved accounts remain available in the avatar menu.
 ```bash
 git clone https://github.com/AceDataCloud/Nexior.git
 cd Nexior
-cp .env.example .env        # set your AceData key (or BYOK provider keys)
+cp .env.example .env        # set your AceData key
 docker compose up -d
 # → http://localhost:8084
 ```

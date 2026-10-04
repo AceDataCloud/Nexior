@@ -41,9 +41,6 @@
         <div v-if="currentTab === SETTING_TAB_GENERAL">
           <general-setting />
         </div>
-        <div v-else-if="currentTab === SETTING_TAB_API_KEY">
-          <byok-setting />
-        </div>
         <div v-else-if="currentTab === SETTING_TAB_MEMORY">
           <memory-setting />
         </div>
@@ -94,7 +91,6 @@ import {
   AnalyticsIcon,
   AnnouncementIcon,
   ContinueIcon,
-  CredentialIcon,
   DeveloperIcon,
   GlobeIcon,
   InfoIcon,
@@ -109,7 +105,6 @@ import {
 import { defineComponent, defineAsyncComponent, markRaw, type Component } from 'vue';
 import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import GeneralSetting from '@/components/setting/General.vue';
-import ByokSetting from '@/components/setting/Byok.vue';
 import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
@@ -124,7 +119,6 @@ import AuthSetting from '@/components/setting/Auth.vue';
 import AboutSetting from '@/components/setting/About.vue';
 import {
   SETTING_TAB_ABOUT,
-  SETTING_TAB_API_KEY,
   SETTING_TAB_MEMORY,
   SETTING_TAB_BANNERS,
   SETTING_TAB_AUTH,
@@ -151,7 +145,6 @@ export default defineComponent({
     ElMenu,
     ElMenuItem,
     GeneralSetting,
-    ByokSetting,
     MemorySetting,
     SiteSetting,
     SiteServicesSetting,
@@ -186,7 +179,6 @@ export default defineComponent({
       // Expose the tab-key constants to the template so the v-if branches
       // and the navItems list refer to one source of truth.
       SETTING_TAB_GENERAL,
-      SETTING_TAB_API_KEY,
       SETTING_TAB_MEMORY,
       SETTING_TAB_SITE,
       SETTING_TAB_SITE_SERVICES,
@@ -212,12 +204,6 @@ export default defineComponent({
           key: SETTING_TAB_GENERAL,
           label: this.$t('common.settings.general'),
           icon: markRaw(SettingsIcon),
-          visible: true
-        },
-        {
-          key: SETTING_TAB_API_KEY,
-          label: this.$t('common.settings.apiKey'),
-          icon: markRaw(CredentialIcon),
           visible: true
         },
         {
@@ -361,10 +347,9 @@ export default defineComponent({
       // Phone-sized viewports: take almost full width so the 450px-min
       // sidebar layout can't push the dialog past the screen edge.
       if (this.mobile) return '94vw';
-      // BYOK and Subsites both render multi-column tables that don't fit
+      // Site settings render multi-column tables that don't fit
       // the default 50% dialog width on most laptops.
-      return this.currentTab === SETTING_TAB_API_KEY ||
-        this.currentTab === SETTING_TAB_SITE_SERVICES ||
+      return this.currentTab === SETTING_TAB_SITE_SERVICES ||
         this.currentTab === SETTING_TAB_BANNERS ||
         this.currentTab === SETTING_TAB_AUTH ||
         this.currentTab === SETTING_TAB_SUBSITES

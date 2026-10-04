@@ -30,7 +30,7 @@ import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
  * shell or the desktop (Electron) app. Consumer tabs stay available on every
  * surface.
  */
-const CONSUMER_TABS = ['general', 'apiKey', 'about'];
+const CONSUMER_TABS = ['general', 'about'];
 const ALL_OPERATOR_TABS = [
   'site',
   'siteServices',
