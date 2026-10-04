@@ -646,6 +646,10 @@ export default defineComponent({
   flex-direction: column;
   align-items: stretch;
   gap: 12px;
+
+  > .el-button + .el-button {
+    margin-left: 0;
+  }
 }
 
 // The extension card spans both columns, so its buttons sit side by side and
