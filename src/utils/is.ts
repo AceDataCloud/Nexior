@@ -55,9 +55,7 @@ export const isMainOfficial = (
  * stripped. Returns the empty string in non-browser contexts.
  *
  * The aichat2 worker uses this value (sent via the ``x-site-origin``
- * header) to scope per-Site state such as BYOK credentials, so the
- * same user can keep separate keys on the main site and on each
- * subsite they administer.
+ * header) to isolate per-site state such as memories and conversations.
  */
 export const currentSiteOrigin = (): string => {
   if (typeof window === 'undefined' || !window.location?.host) return '';

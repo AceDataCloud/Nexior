@@ -7,7 +7,7 @@ const localeModules = import.meta.glob('./*/common.json', { eager: true }) as Re
   string,
   { default: Record<string, unknown> }
 >;
-const scopedLocaleModules = import.meta.glob('./*/{byok,skill,grokvideo,omni,producer,suno,subsite}.json', {
+const scopedLocaleModules = import.meta.glob('./*/{skill,grokvideo,omni,producer,suno,subsite}.json', {
   eager: true
 }) as Record<string, { default: Record<string, unknown> }>;
 const sourceModules = import.meta.glob('../{components,pages}/**/*.{vue,ts}', {
@@ -23,8 +23,6 @@ const monitoredSourceSuffixes = [
   '/components/setting/SiteEmailTransport.vue',
   '/components/setting/SitePhoneDelivery.vue',
   '/components/setting/SiteServices.vue',
-  '/components/setting/Byok.vue',
-  '/components/setting/byok/Dialog.vue',
   '/components/setting/CustomDomain.vue',
   '/components/skill/SkillFilePreview.vue',
   '/components/skill/UploadSkillDialog.vue',
@@ -42,7 +40,6 @@ const monitoredSourceModules = Object.fromEntries(
 const canonicalActions = ['save', 'cancel', 'delete', 'edit', 'download', 'refresh'];
 const canonicalMessages = ['saved'];
 const removedScopedKeys: Record<string, string[]> = {
-  byok: ['button.save', 'button.cancel', 'button.delete', 'button.edit'],
   skill: ['button.save', 'button.cancel', 'button.delete', 'button.edit'],
   grokvideo: ['button.download'],
   omni: ['button.download'],

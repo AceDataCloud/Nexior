@@ -122,7 +122,7 @@ export default defineComponent({
   },
   mounted() {
     document.addEventListener('click', this.closeMenu);
-    // Other components (e.g. the in-chat BYOK badge) ask UserCenter to
+    // Other components ask UserCenter to
     // open the settings dialog at a specific tab via this CustomEvent
     // — we own the only mounted `<user-setting>` instance.
     window.addEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
