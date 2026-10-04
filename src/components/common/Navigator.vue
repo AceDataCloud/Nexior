@@ -275,7 +275,7 @@ export default defineComponent({
   computed: {
     homeMarkSrc(): string {
       return isMainOfficial(this.$store.state.site?.origin)
-        ? 'https://cdn.acedata.cloud/uploads/d0f2038b-c337-4cee-82d4-2f90f6cba8dd'
+        ? 'https://cdn.acedata.cloud/uploads/035587cc-3867-412b-8d75-2a4fc161ce81'
         : '';
     },
     links(): NavLink[] {
