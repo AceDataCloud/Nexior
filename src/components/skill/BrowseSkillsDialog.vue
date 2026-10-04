@@ -1,7 +1,7 @@
 <template>
   <el-dialog
-    :model-value="modelValue"
     append-to-body
+    :model-value="modelValue"
     width="min(1060px, 94vw)"
     :title="$t('skill.marketplace.title')"
     @update:model-value="$emit('update:modelValue', $event)"
