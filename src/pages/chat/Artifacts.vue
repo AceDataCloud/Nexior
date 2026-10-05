@@ -31,7 +31,7 @@
       <el-empty v-else-if="!items.length" :description="$t('chat.artifacts.empty')" class="empty" />
 
       <template v-else>
-        <div class="artifact-list">
+        <div class="artifact-list card-gap">
           <el-card v-for="item in items" :key="item.id" class="artifact-card" shadow="never">
             <div class="artifact-body">
               <a
@@ -341,7 +341,6 @@ export default defineComponent({
 .artifact-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
 .artifact-card {

@@ -54,7 +54,7 @@
         </div>
 
         <template v-else>
-          <div class="task-list">
+          <div class="task-list card-gap">
             <el-card
               v-for="task in pagedTasks"
               :key="task.id"
@@ -1854,7 +1854,6 @@ export default defineComponent({
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 .task-card {
   border-radius: 16px;

@@ -8,9 +8,9 @@
       </el-row>
 
       <!-- Summary Cards -->
-      <el-row :gutter="16">
+      <el-row :gutter="16" class="card-gap mb-5">
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="never" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -22,7 +22,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="never" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -34,7 +34,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="never" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">
@@ -46,7 +46,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :sm="12" :xs="24">
-          <el-card shadow="never" class="item-mini mb-3">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="summaryLoading" />
             <div v-else class="card-content">
               <div class="icon-wrapper">

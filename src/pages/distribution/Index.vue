@@ -6,9 +6,9 @@
           <h2 class="title">{{ $t('common.title.distribution') }}</h2>
         </el-col>
       </el-row>
-      <el-row :gutter="15">
+      <el-row :gutter="15" class="card-gap mb-5">
         <el-col :md="6" :xs="24">
-          <el-card shadow="never" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -25,7 +25,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="never" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -44,7 +44,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="never" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -58,7 +58,7 @@
           </el-card>
         </el-col>
         <el-col :md="6" :xs="24">
-          <el-card shadow="never" class="item-mini mb-4">
+          <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="loading" />
             <div v-else>
               <div class="icon-wrapper">
@@ -88,9 +88,9 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-row :gutter="15">
+      <el-row :gutter="15" class="card-gap mb-5">
         <el-col :md="12" :xs="24">
-          <el-card shadow="never" class="level-info mb-4">
+          <el-card shadow="never" class="level-info">
             <el-skeleton v-if="loading" />
             <div v-else>
               <h4 class="title">
@@ -144,7 +144,7 @@
           </el-card>
         </el-col>
         <el-col :md="12" :xs="24">
-          <el-card shadow="never" class="distribution-info mb-4">
+          <el-card shadow="never" class="distribution-info">
             <el-skeleton v-if="loading" />
             <div v-else>
               <h4 class="title">
