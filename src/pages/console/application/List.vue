@@ -6,9 +6,9 @@
           <h2 class="title">{{ $t('common.title.allApplications') }}</h2>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="mb-3">
+      <el-row :gutter="15" class="card-row">
         <el-col :md="12" :xs="24">
-          <el-card shadow="never" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
+          <el-card shadow="never" class="relative min-h-[180px]" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="summary-card">
               <div class="icon-wrapper">
@@ -25,7 +25,7 @@
           </el-card>
         </el-col>
         <el-col v-if="showGlobalPayment && globalApplications?.length > 0" :md="12" :xs="24">
-          <el-card shadow="never" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
+          <el-card shadow="never" class="relative min-h-[180px]" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="flex flex-row justify-between items-center gap-3">
               <div class="summary-card min-w-0 flex-1">
@@ -201,7 +201,7 @@
               </el-table-column>
             </el-table>
           </el-card>
-          <div class="application-cards block sm:hidden">
+          <div class="application-cards grid gap-4 sm:hidden">
             <el-skeleton v-if="loading" :rows="4" animated />
             <template v-else>
               <el-empty v-if="!individualApplications?.length" :description="$t('common.message.noData')" />
@@ -210,7 +210,7 @@
                 v-else
                 :key="app.id"
                 shadow="never"
-                class="application-card mb-2"
+                class="application-card"
                 :body-style="{ padding: '14px 16px' }"
               >
                 <div class="flex items-center gap-2 flex-wrap">
