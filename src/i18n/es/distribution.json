@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "Recomendación {referral} + margen del sitio {markup}",
     "description": "Desglose de una recompensa de distribución en comisión por recomendación y margen del sitio."
+  },
+  "field.totalEarnings": {
+    "message": "Ingresos totales",
+    "description": "Total de un registro del historial, incluida la comisión por recomendación y cualquier recargo del sitio."
+  },
+  "field.commissionRate": {
+    "message": "Porcentaje de comisión",
+    "description": "El porcentaje se aplica únicamente a la base de la comisión, no al pedido completo ni al recargo."
+  },
+  "message.commissionBase": {
+    "message": "Base de la comisión {amount}",
+    "description": "Importe utilizado para calcular la comisión por recomendación, excluido el recargo del sitio en los pedidos con recargo."
+  },
+  "message.commissionBasisHint": {
+    "message": "Los ingresos totales incluyen la comisión por recomendación y el recargo del sitio; el porcentaje de comisión solo se aplica a la base de la comisión, no al recargo.",
+    "description": "Explica por qué los ingresos totales difieren del importe del pedido multiplicado por el porcentaje de comisión."
   }
 }

@@ -9,40 +9,26 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="never">
+            <p class="mb-4 text-sm leading-relaxed text-[var(--el-text-color-secondary)]">
+              {{ $t('distribution.message.commissionBasisHint') }}
+            </p>
             <el-table v-loading="loading" :data="distributionHistories" stripe>
-              <el-table-column prop="id" :label="$t('distribution.field.id')" class-name="text-center" width="350px">
+              <el-table-column :label="$t('distribution.field.price')" min-width="140px">
                 <template #default="scope">
-                  <span class="key">{{ scope.row.id }}</span>
-                  <span class="copy">
-                    <copy-to-clipboard :content="scope.row.id" />
+                  <span class="earnings-amount">
+                    {{ scope.row.order?.price == null ? '—' : getPriceString({ value: scope.row.order.price }) }}
                   </span>
+                  <div class="earnings-detail">
+                    {{
+                      $t('distribution.message.commissionBase', { amount: getPriceString({ value: scope.row.price }) })
+                    }}
+                  </div>
                 </template>
               </el-table-column>
-              <el-table-column
-                prop="id"
-                :label="$t('distribution.field.userId')"
-                class-name="text-center"
-                width="350px"
-              >
+              <el-table-column :label="$t('distribution.field.totalEarnings')" min-width="165px">
                 <template #default="scope">
-                  <span class="key">{{ scope.row.user_id }}</span>
-                  <span class="copy">
-                    <copy-to-clipboard :content="scope.row.user_id" />
-                  </span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('distribution.field.price')" width="100px">
-                <template #default="scope">
-                  <span class="price">{{ getPriceString({ value: scope.row?.price }) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('distribution.field.reward')" min-width="220px">
-                <template #default="scope">
-                  <span class="description">{{ getPriceString({ value: scope.row?.reward }) }}</span>
-                  <div
-                    v-if="scope.row.metadata?.calculation?.version === 2"
-                    class="text-xs text-[var(--el-text-color-secondary)] mt-1"
-                  >
+                  <span class="earnings-amount">{{ getPriceString({ value: scope.row.reward }) }}</span>
+                  <div v-if="scope.row.metadata?.calculation?.version === 2" class="earnings-detail">
                     {{
                       $t('distribution.message.rewardBreakdown', {
                         referral: getPriceString({ value: Number(scope.row.metadata.calculation.referral_reward) }),
@@ -52,7 +38,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('distribution.field.percentage')" width="120px">
+              <el-table-column :label="$t('distribution.field.commissionRate')" width="120px">
                 <template #default="scope">
                   <span class="description">{{ scope.row.percentage }}%</span>
                 </template>
@@ -60,6 +46,34 @@
               <el-table-column :label="$t('distribution.field.createdAt')" width="200px">
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="id"
+                :label="$t('distribution.field.id')"
+                class-name="text-center"
+                min-width="220px"
+                show-overflow-tooltip
+              >
+                <template #default="scope">
+                  <div class="earnings-reference">
+                    <span class="earnings-reference-value" :title="scope.row.id">{{ scope.row.id }}</span>
+                    <copy-to-clipboard :content="scope.row.id" />
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="id"
+                :label="$t('distribution.field.userId')"
+                class-name="text-center"
+                min-width="220px"
+                show-overflow-tooltip
+              >
+                <template #default="scope">
+                  <div class="earnings-reference">
+                    <span class="earnings-reference-value" :title="scope.row.user_id">{{ scope.row.user_id }}</span>
+                    <copy-to-clipboard :content="scope.row.user_id" />
+                  </div>
                 </template>
               </el-table-column>
             </el-table>
@@ -177,7 +191,8 @@ export default defineComponent({
 
 .panel {
   padding: 30px;
-  width: calc(100% - 200px);
+  width: 100%;
+  min-width: 0;
   background-color: var(--el-bg-color-page);
   height: 100%;
   overflow-y: scroll;
@@ -192,5 +207,39 @@ export default defineComponent({
 
 .pagination {
   float: right;
+}
+@media (max-width: 640px) {
+  .panel {
+    padding: 16px;
+  }
+}
+
+.earnings-amount {
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.earnings-detail {
+  margin-top: 4px;
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.earnings-reference {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.earnings-reference-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.earnings-reference :deep(button) {
+  flex-shrink: 0;
 }
 </style>

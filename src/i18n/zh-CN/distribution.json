@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "推荐 {referral} + 分站加价 {markup}",
     "description": "Breakdown of one distribution reward into referral commission and site markup."
+  },
+  "field.totalEarnings": {
+    "message": "总收益",
+    "description": "One history record total, including referral commission and any site markup."
+  },
+  "field.commissionRate": {
+    "message": "分佣比例",
+    "description": "Percentage applies only to the commission base, not the whole order or markup."
+  },
+  "message.commissionBase": {
+    "message": "分佣基数 {amount}",
+    "description": "Amount used to calculate referral commission, excluding site markup for markup orders."
+  },
+  "message.commissionBasisHint": {
+    "message": "总收益包含推荐佣金与分站加价；分佣比例仅用于分佣基数，不作用于加价。",
+    "description": "Explains why total earnings differ from order amount multiplied by commission rate."
   }
 }

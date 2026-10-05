@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "推薦 {referral} + 分站加價 {markup}",
     "description": "將單筆分銷獎勵拆分為推薦佣金和分站加價。"
+  },
+  "field.totalEarnings": {
+    "message": "總收益",
+    "description": "單筆歷史記錄的總額，包括推薦分潤和任何分站加價。"
+  },
+  "field.commissionRate": {
+    "message": "分潤比例",
+    "description": "百分比僅適用於分潤基數，不適用於整筆訂單或加價部分。"
+  },
+  "message.commissionBase": {
+    "message": "分潤基數 {amount}",
+    "description": "用於計算推薦分潤的金額；對於加價訂單，不包括分站加價。"
+  },
+  "message.commissionBasisHint": {
+    "message": "總收益包含推薦分潤與分站加價；分潤比例僅適用於分潤基數，不適用於加價部分。",
+    "description": "說明總收益為何不同於訂單金額乘以分潤比例。"
   }
 }
