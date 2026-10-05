@@ -52,16 +52,20 @@ describe('ConsoleSidePanel host visibility', () => {
     ]);
   });
 
-  it.each(['ios', 'android', 'desktop'])('shows managed capabilities inside the %s app', (surface) => {
+  it.each(['ios', 'android'])('hides browser devices inside the %s app', (surface) => {
     vi.stubEnv('VITE_SURFACE', surface);
     expect(linkKeys(mountSidePanel())).toEqual([
       'application-list',
       'order-list',
       'usage-list',
       'connectors',
-      'skills',
-      'browser-devices'
+      'skills'
     ]);
+  });
+
+  it('shows browser devices inside the desktop app', () => {
+    vi.stubEnv('VITE_SURFACE', 'desktop');
+    expect(linkKeys(mountSidePanel())).toContain('browser-devices');
   });
 
   it('keeps navigation working for a regular console page', async () => {
