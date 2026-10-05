@@ -27,7 +27,7 @@
                     {{ $t('common.button.refresh') }}
                   </el-button>
                 </div>
-                <el-row v-else :gutter="15" class="subscriptions card-row">
+                <el-row v-else :gutter="15" class="subscriptions adc-card-gap">
                   <el-col
                     v-for="(item, index) in subscriptions"
                     :key="index"

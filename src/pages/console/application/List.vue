@@ -6,7 +6,7 @@
           <h2 class="title">{{ $t('common.title.allApplications') }}</h2>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="card-row">
+      <el-row :gutter="15" class="adc-card-gap mb-5">
         <el-col :md="12" :xs="24">
           <el-card shadow="never" class="relative min-h-[180px]" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
@@ -201,7 +201,7 @@
               </el-table-column>
             </el-table>
           </el-card>
-          <div class="application-cards grid gap-4 sm:hidden">
+          <div class="application-cards grid adc-card-gap sm:hidden">
             <el-skeleton v-if="loading" :rows="4" animated />
             <template v-else>
               <el-empty v-if="!individualApplications?.length" :description="$t('common.message.noData')" />
