@@ -3,6 +3,8 @@
     :class="['settings-dialog', mobile ? 'is-mobile' : '']"
     :model-value="visible"
     :width="dialogWidth"
+    append-to-body
+    destroy-on-close
     @close="onClose"
   >
     <div :class="['settings', mobile ? 'flex flex-col' : 'flex h-[450px]']">
@@ -11,10 +13,11 @@
           :class="['border-r-0 settings-menu', mobile ? 'is-mobile flex flex-row overflow-x-auto' : '']"
           :mode="mobile ? 'horizontal' : 'vertical'"
           :default-active="currentTab"
+          :ellipsis="false"
         >
-          <!-- Render only the visible tabs; CSS-hiding leaks admin-only items
-               into the mobile el-menu overflow. Key by stable tab key (not the
-               array index) so el-menu can't reuse a stale item on set change. -->
+          <!-- The phone tab strip scrolls horizontally. Element Plus' ellipsis
+               would replace hidden tabs with a second popup. Render only visible
+               tabs and key them so hidden admin tabs never leak into the strip. -->
           <el-menu-item
             v-for="item in visibleNavItems"
             :key="item.key"

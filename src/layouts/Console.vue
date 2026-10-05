@@ -123,7 +123,8 @@ export default defineComponent({
       padding-bottom: var(--console-safe-bottom);
       position: fixed;
       bottom: 0;
-      z-index: 10000;
+      // Element Plus popups and dialogs must render above the dock.
+      z-index: var(--adc-layer-navigation);
       transition: height 0.18s ease;
     }
     .main {
