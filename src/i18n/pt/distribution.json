@@ -151,5 +151,21 @@
   "message.rewardBreakdown": {
     "message": "Indicação {referral} + acréscimo do site {markup}",
     "description": "Detalhamento de uma recompensa de distribuição em comissão por indicação e acréscimo do site."
+  },
+  "field.totalEarnings": {
+    "message": "Ganhos totais",
+    "description": "Total de um registo do histórico, incluindo a comissão de recomendação e qualquer margem adicionada pelo site."
+  },
+  "field.commissionRate": {
+    "message": "Percentual de comissão",
+    "description": "A percentagem aplica-se apenas à base de comissão, não ao pedido inteiro nem à margem."
+  },
+  "message.commissionBase": {
+    "message": "Base de comissão {amount}",
+    "description": "Valor utilizado para calcular a comissão de recomendação, excluindo a margem adicionada pelo site em pedidos com margem."
+  },
+  "message.commissionBasisHint": {
+    "message": "Os ganhos totais incluem a comissão de recomendação e a margem adicionada pelo site; a percentagem de comissão aplica-se apenas à base de comissão, não à margem.",
+    "description": "Explica por que motivo os ganhos totais diferem do valor do pedido multiplicado pela percentagem de comissão."
   }
 }

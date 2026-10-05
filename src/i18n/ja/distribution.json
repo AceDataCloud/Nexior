@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "紹介報酬 {referral} + サイト上乗せ {markup}",
     "description": "1件の分配報酬を紹介コミッションとサイト上乗せに分けた内訳。"
+  },
+  "field.totalEarnings": {
+    "message": "総収益",
+    "description": "紹介コミッションとサイトの上乗せ額を含む、1件の履歴レコードの合計額です。"
+  },
+  "field.commissionRate": {
+    "message": "コミッション率",
+    "description": "割合は注文全体や上乗せ額ではなく、コミッション基準額にのみ適用されます。"
+  },
+  "message.commissionBase": {
+    "message": "コミッション基準額 {amount}",
+    "description": "紹介コミッションの計算に使用する金額です。上乗せがある注文では、サイトの上乗せ額を除きます。"
+  },
+  "message.commissionBasisHint": {
+    "message": "総収益には紹介コミッションとサイトの上乗せ額が含まれます。コミッション率はコミッション基準額にのみ適用され、上乗せ額には適用されません。",
+    "description": "総収益が注文金額にコミッション率を掛けた額と異なる理由を説明します。"
   }
 }

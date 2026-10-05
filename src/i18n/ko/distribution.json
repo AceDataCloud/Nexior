@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "추천 {referral} + 사이트 마크업 {markup}",
     "description": "하나의 유통 보상을 추천 수수료와 사이트 마크업으로 나눈 내역입니다."
+  },
+  "field.totalEarnings": {
+    "message": "총 수익",
+    "description": "추천 커미션과 사이트 가산 금액을 포함한 단일 내역의 총액입니다."
+  },
+  "field.commissionRate": {
+    "message": "추천 커미션 비율",
+    "description": "전체 주문 금액이나 가산 금액이 아닌, 커미션 기준 금액에만 적용되는 비율입니다."
+  },
+  "message.commissionBase": {
+    "message": "커미션 기준 금액 {amount}",
+    "description": "추천 커미션을 계산하는 데 사용되는 금액으로, 가산 금액이 적용된 주문에서는 사이트 가산 금액을 제외합니다."
+  },
+  "message.commissionBasisHint": {
+    "message": "총 수익에는 추천 커미션과 사이트 가산 금액이 포함되며, 커미션 비율은 커미션 기준 금액에만 적용되고 가산 금액에는 적용되지 않습니다.",
+    "description": "총 수익이 주문 금액에 커미션 비율을 곱한 금액과 다른 이유를 설명합니다."
   }
 }

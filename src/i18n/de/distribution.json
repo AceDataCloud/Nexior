@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "Empfehlungsprovision {referral} + Unterseitenaufschlag {markup}",
     "description": "Aufschlüsselung einer Vertriebsvergütung in Empfehlungsprovision und Aufschlag der Unterseite."
+  },
+  "field.totalEarnings": {
+    "message": "Gesamtertrag",
+    "description": "Gesamtsumme eines Verlaufseintrags, einschließlich Empfehlungsprovision und etwaigem Website-Aufschlag."
+  },
+  "field.commissionRate": {
+    "message": "Provisionssatz",
+    "description": "Der Prozentsatz gilt nur für die Provisionsbasis, nicht für die gesamte Bestellung oder den Aufschlag."
+  },
+  "message.commissionBase": {
+    "message": "Provisionsbasis {amount}",
+    "description": "Betrag zur Berechnung der Empfehlungsprovision, ohne den Website-Aufschlag bei Bestellungen mit Aufschlag."
+  },
+  "message.commissionBasisHint": {
+    "message": "Der Gesamtertrag umfasst die Empfehlungsprovision und den Website-Aufschlag; der Provisionssatz gilt nur für die Provisionsbasis, nicht für den Aufschlag.",
+    "description": "Erklärt, warum der Gesamtertrag nicht dem Bestellbetrag multipliziert mit dem Provisionssatz entspricht."
   }
 }

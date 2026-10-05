@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "Referral {referral} + site markup {markup}",
     "description": "Breakdown of one distribution reward into referral commission and site markup."
+  },
+  "field.totalEarnings": {
+    "message": "Total earnings",
+    "description": "One history record total, including referral commission and any site markup."
+  },
+  "field.commissionRate": {
+    "message": "Commission rate",
+    "description": "Percentage applies only to the commission base, not the whole order or markup."
+  },
+  "message.commissionBase": {
+    "message": "Commission base {amount}",
+    "description": "Amount used to calculate referral commission, excluding site markup for markup orders."
+  },
+  "message.commissionBasisHint": {
+    "message": "Total earnings include referral commission and site markup. The commission rate applies to the commission base only.",
+    "description": "Explains why total earnings differ from order amount multiplied by commission rate."
   }
 }

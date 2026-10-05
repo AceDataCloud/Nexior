@@ -150,5 +150,21 @@
   "message.rewardBreakdown": {
     "message": "Segnalazione {referral} + maggiorazione del sito {markup}",
     "description": "Dettaglio di un premio di distribuzione suddiviso in commissione di segnalazione e maggiorazione del sito."
+  },
+  "field.totalEarnings": {
+    "message": "Guadagni totali",
+    "description": "Totale di un singolo record dello storico, incluse la commissione per segnalazione e l'eventuale maggiorazione del sito."
+  },
+  "field.commissionRate": {
+    "message": "Percentuale di commissione",
+    "description": "La percentuale si applica solo alla base della commissione, non all'intero ordine o alla maggiorazione."
+  },
+  "message.commissionBase": {
+    "message": "Base della commissione {amount}",
+    "description": "Importo utilizzato per calcolare la commissione per segnalazione, esclusa la maggiorazione del sito per gli ordini con maggiorazione."
+  },
+  "message.commissionBasisHint": {
+    "message": "I guadagni totali includono la commissione per segnalazione e la maggiorazione del sito; la percentuale di commissione si applica solo alla base della commissione, non alla maggiorazione.",
+    "description": "Spiega perché i guadagni totali differiscono dall'importo dell'ordine moltiplicato per la percentuale di commissione."
   }
 }
