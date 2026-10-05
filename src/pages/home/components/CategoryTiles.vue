@@ -171,13 +171,13 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
 
 .category-rows {
   display: grid;
-  gap: 13px;
+  gap: var(--app-card-gap);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
+  gap: var(--app-card-gap);
 }
 
 .category-card {
@@ -378,7 +378,9 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
     }
   }
 
-  .category-grid,
+  .category-grid {
+    gap: var(--app-card-gap);
+  }
   .capability-panel {
     gap: 10px;
   }

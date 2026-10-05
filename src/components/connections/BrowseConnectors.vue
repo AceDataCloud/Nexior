@@ -767,7 +767,7 @@ export default defineComponent({
 .browse-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--app-card-gap);
 }
 
 .card {

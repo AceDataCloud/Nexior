@@ -92,7 +92,7 @@ export default defineComponent({
 .layout-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--app-card-gap);
 }
 .layout-section header h3 {
   margin: 0;

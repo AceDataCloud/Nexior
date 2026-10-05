@@ -565,7 +565,7 @@ a:hover {
 .market-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--app-card-gap);
 }
 .skill-card {
   min-width: 0;

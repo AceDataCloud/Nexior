@@ -245,12 +245,12 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
     .showcase-grid {
       display: block;
       columns: 300px;
-      column-gap: 13px;
+      column-gap: var(--app-card-gap);
     }
 
     .showcase-card {
       width: 100%;
-      margin-bottom: 13px;
+      margin-bottom: var(--app-card-gap);
       break-inside: avoid;
 
       &.landscape {
@@ -303,7 +303,7 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
   grid-auto-flow: dense;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: 185px;
-  gap: 13px;
+  gap: var(--app-card-gap);
 }
 
 .showcase-card {
@@ -482,7 +482,7 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
 
   .showcase-grid {
     grid-auto-rows: 190px;
-    gap: 10px;
+    gap: var(--app-card-gap);
   }
 
   .showcase-card {
