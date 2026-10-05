@@ -24,7 +24,7 @@
         <send-shortcut />
       </div>
     </section>
-    <section v-if="canDeleteAccount" class="settings-item account-settings">
+    <section v-if="canDeleteAccount" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.account') }}</p>
       </div>
@@ -61,13 +61,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.account-settings {
-  margin-top: 6px;
-  padding-top: 18px;
-  border-top: 1px solid var(--el-border-color-lighter);
-}
-
 .delete-account-action {
+  display: inline-flex;
+  align-items: flex-start;
   min-height: 44px;
   padding: 0;
   border: 0;
