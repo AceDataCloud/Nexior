@@ -483,7 +483,7 @@ export default defineComponent({
   }
 
   .subscriptions {
-    margin-bottom: 20px;
+    margin-bottom: var(--app-card-gap);
     .subscription {
       border: 1px solid transparent !important;
       .benefits {

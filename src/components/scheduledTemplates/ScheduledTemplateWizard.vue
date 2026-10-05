@@ -472,7 +472,7 @@ export default defineComponent({
 .template-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--app-card-gap);
 }
 .template-card {
   text-align: left;
@@ -529,7 +529,7 @@ export default defineComponent({
 }
 .requirement-list {
   display: grid;
-  gap: 12px;
+  gap: var(--app-card-gap);
 }
 .requirement-card,
 .requirement-empty {

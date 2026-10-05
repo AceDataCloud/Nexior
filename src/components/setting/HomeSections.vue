@@ -439,7 +439,7 @@ export default defineComponent({
 .section-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--app-card-gap);
 }
 .section-header,
 .section-row {

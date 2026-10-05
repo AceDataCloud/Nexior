@@ -466,7 +466,7 @@ export default defineComponent({
 .system-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--app-card-gap);
 }
 .system-card,
 .custom-card {
@@ -512,7 +512,7 @@ export default defineComponent({
 .custom-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--app-card-gap);
 }
 .custom-card > img,
 .image-placeholder {

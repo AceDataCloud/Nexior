@@ -353,7 +353,7 @@ async function save() {
 .scenes-setting,
 .scene-list {
   display: grid;
-  gap: 14px;
+  gap: var(--app-card-gap);
 }
 .scenes-heading,
 .scene-row,

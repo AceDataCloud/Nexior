@@ -20,6 +20,20 @@ html.dark body {
   color-scheme: dark;
 }
 
+// Card-to-card spacing is 15px in Studio. Core's .card-gap defaults to 20px;
+// keep the override limited to card groups and preserve Element row gutters.
+:root body {
+  --app-card-gap: 15px;
+}
+
+:root body .card-gap[class] {
+  gap: var(--app-card-gap);
+}
+
+:root body .el-row.card-gap {
+  column-gap: 0;
+}
+
 * {
   box-sizing: border-box;
 }

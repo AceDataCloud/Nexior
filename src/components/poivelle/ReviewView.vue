@@ -211,7 +211,7 @@ const formatCredits = (microcredits: number) => (microcredits / 1_000_000).toFix
 }
 
 .review-columns {
-  gap: 18px;
+  gap: var(--app-card-gap);
   margin-top: 18px;
 }
 

@@ -985,7 +985,7 @@ export default defineComponent({
 .creation-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: var(--app-card-gap);
 }
 
 .creation-item {

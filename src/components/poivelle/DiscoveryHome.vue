@@ -520,7 +520,7 @@ onMounted(bootstrap);
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--app-card-gap);
 }
 .work-card {
   overflow: hidden;
