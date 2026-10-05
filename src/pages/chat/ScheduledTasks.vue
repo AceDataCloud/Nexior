@@ -54,7 +54,7 @@
         </div>
 
         <template v-else>
-          <div class="task-list adc-card-gap">
+          <div class="task-list card-gap">
             <el-card
               v-for="task in pagedTasks"
               :key="task.id"
