@@ -24,6 +24,16 @@
         <send-shortcut />
       </div>
     </section>
+    <section v-if="canDeleteAccount" class="settings-item account-settings">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.account') }}</p>
+      </div>
+      <div class="settings-content">
+        <button type="button" class="delete-account-action" @click="$emit('delete-account')">
+          {{ $t('common.nav.deleteAccount') }}
+        </button>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -32,6 +42,7 @@ import { defineComponent } from 'vue';
 import ThemeSwitcher from '@/components/user/Theme.vue';
 import LocaleSwitcher from '@/components/user/Locale.vue';
 import SendShortcut from '@/components/user/SendShortcut.vue';
+import { isIOS } from '@/utils/surface';
 
 export default defineComponent({
   name: 'GeneralSettings',
@@ -39,6 +50,40 @@ export default defineComponent({
     ThemeSwitcher,
     LocaleSwitcher,
     SendShortcut
+  },
+  emits: ['delete-account'],
+  computed: {
+    canDeleteAccount(): boolean {
+      return isIOS() && !!this.$store.getters?.authenticated;
+    }
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.account-settings {
+  margin-top: 6px;
+  padding-top: 18px;
+  border-top: 1px solid var(--el-border-color-lighter);
+}
+
+.delete-account-action {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--el-text-color-regular);
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--el-color-danger);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--el-color-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+</style>
