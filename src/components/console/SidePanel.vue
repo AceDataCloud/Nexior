@@ -46,6 +46,7 @@ import {
   ROUTE_INDEX
 } from '@/router';
 import { canAccessManagedConsole } from '@/utils/consoleAccess';
+import { isNative } from '@/utils/surface';
 
 interface ILink {
   key: string;
@@ -105,14 +106,16 @@ export default defineComponent({
             text: this.$t('console.menu.skills'),
             name: ROUTE_CONSOLE_SKILLS,
             icon: SkillIcon
-          },
-          {
+          }
+        );
+        if (!isNative()) {
+          links.push({
             key: 'browser-devices',
             text: this.$t('console.menu.browserDevices'),
             name: ROUTE_CONSOLE_BROWSER_DEVICES,
             icon: DesktopIcon
-          }
-        );
+          });
+        }
       }
 
       return links;
