@@ -34,10 +34,6 @@
             <globe-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.console') }}
           </el-dropdown-item>
-          <el-dropdown-item v-if="isIOS" class="py-2" @click="onDeleteAccount">
-            <user-remove-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('common.nav.deleteAccount') }}
-          </el-dropdown-item>
           <el-dropdown-item v-if="authenticated" class="py-2" @click="onLogout">
             <logout-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.nav.logOut') }}
@@ -46,7 +42,7 @@
       </template>
     </el-dropdown>
   </div>
-  <user-setting v-model:visible="showSetting" :initial-tab="settingTab" />
+  <user-setting v-model:visible="showSetting" :initial-tab="settingTab" @delete-account="onDeleteAccount" />
   <delete-account-dialog v-model:visible="showDeleteAccount" />
 </template>
 
@@ -57,8 +53,7 @@ import {
   LogoutIcon,
   MobileIcon,
   SettingsIcon,
-  UserIcon,
-  UserRemoveIcon
+  UserIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import AccountSwitcher from '@/components/user/AccountSwitcher.vue';
@@ -66,7 +61,7 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
-import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
+import { isNative as isNativeSurface } from '@/utils/surface';
 import { isMainOfficial, isReferralEntryVisible } from '@/utils';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
@@ -80,7 +75,6 @@ export default defineComponent({
     MobileIcon,
     SettingsIcon,
     UserIcon,
-    UserRemoveIcon,
     UserAvatar,
     AccountSwitcher,
     UserSetting,
@@ -115,9 +109,6 @@ export default defineComponent({
     // The mobile-app download page only exists on the official main host.
     isMainOfficialHost() {
       return isMainOfficial();
-    },
-    isIOS() {
-      return isIOSSurface();
     }
   },
   mounted() {

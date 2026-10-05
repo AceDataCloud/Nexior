@@ -4,6 +4,7 @@
     :model-value="visible"
     :width="dialogWidth"
     @close="onClose"
+    @closed="onDialogClosed"
   >
     <div :class="['settings', mobile ? 'flex flex-col' : 'flex h-[450px]']">
       <aside :class="mobile ? 'border-b w-full' : 'h-full min-h-0 overflow-y-auto border-r'">
@@ -39,7 +40,7 @@
       </aside>
       <main :class="['flex-1 overflow-y-auto', mobile ? 'p-4' : 'p-6']">
         <div v-if="currentTab === SETTING_TAB_GENERAL">
-          <general-setting />
+          <general-setting @delete-account="onDeleteAccount" />
         </div>
         <div v-else-if="currentTab === SETTING_TAB_MEMORY">
           <memory-setting />
@@ -173,7 +174,7 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['update:visible'],
+  emits: ['update:visible', 'delete-account'],
   data() {
     return {
       // Expose the tab-key constants to the template so the v-if branches
@@ -194,6 +195,7 @@ export default defineComponent({
       SETTING_TAB_LOCAL_TOOLS,
       activeTab: SETTING_TAB_GENERAL as SettingTabKey,
       autoOpenCreateSubsite: false,
+      pendingDeleteAccount: false,
       mobile: typeof window !== 'undefined' && window.innerWidth < 768
     };
   },
@@ -379,6 +381,15 @@ export default defineComponent({
     },
     onClose() {
       this.$emit('update:visible', false);
+    },
+    onDeleteAccount() {
+      this.pendingDeleteAccount = true;
+      this.onClose();
+    },
+    onDialogClosed() {
+      if (!this.pendingDeleteAccount) return;
+      this.pendingDeleteAccount = false;
+      this.$emit('delete-account');
     },
     /**
      * Switch to a different tab from a child component. Used by the

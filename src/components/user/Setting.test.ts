@@ -12,6 +12,7 @@ vi.mock('@/utils', async (importOriginal) => {
 });
 
 import Setting from './Setting.vue';
+import GeneralSetting from '@/components/setting/General.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SiteServicesSetting from '@/components/setting/SiteServices.vue';
 import BannersSetting from '@/components/setting/Banners.vue';
@@ -80,6 +81,18 @@ const tabKeys = (wrapper: ReturnType<typeof mountSetting>): string[] =>
   (wrapper.vm as unknown as { visibleNavItems: { key: string }[] }).visibleNavItems.map((i) => i.key);
 
 describe('user/Setting layout', () => {
+  it('closes Settings before opening the account-deletion confirmation', async () => {
+    vi.stubEnv('VITE_SURFACE', 'ios');
+    const wrapper = mountSetting();
+    wrapper.findComponent(GeneralSetting).vm.$emit('delete-account');
+    expect(wrapper.emitted('update:visible')).toEqual([[false]]);
+    expect(wrapper.emitted('delete-account')).toBeUndefined();
+
+    (wrapper.vm as unknown as { onDialogClosed: () => void }).onDialogClosed();
+    expect(wrapper.emitted('delete-account')).toHaveLength(1);
+    vi.unstubAllEnvs();
+  });
+
   it('keeps the desktop navigation inside its scroll container', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     const wrapper = mountSetting();
