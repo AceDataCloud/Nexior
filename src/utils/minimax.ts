@@ -10,3 +10,11 @@ export const validateMinimaxConfig = (
   if (!hasMedia && config.ratio === 'adaptive') return 'textRatioRequired';
   return undefined;
 };
+
+export function getMinimaxGenerationOptions(model: IMinimaxConfig['model']) {
+  const max = model === 'MiniMax-H3-Max';
+  return {
+    resolutions: max ? (['480P', '768P'] as const) : (['768P', '2K'] as const),
+    durations: Array.from({ length: max ? 11 : 12 }, (_, index) => index + (max ? 5 : 4))
+  };
+}
