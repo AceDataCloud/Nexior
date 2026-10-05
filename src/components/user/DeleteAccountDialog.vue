@@ -5,6 +5,7 @@
     width="90%"
     align-center
     class="delete-account-dialog"
+    append-to-body
     @update:model-value="$emit('update:visible', $event)"
     @closed="onClosed"
   >
