@@ -1,5 +1,5 @@
 <template>
-  <section class="scenes-setting">
+  <section class="scenes-setting card-gap">
     <header class="scenes-heading">
       <div>
         <h3>{{ $t('site.homeScenes.title') }}</h3>
@@ -10,7 +10,7 @@
       </el-button>
     </header>
 
-    <div class="scene-list">
+    <div class="scene-list card-gap">
       <article v-for="(scene, index) in scenes" :key="scene.id" class="scene-row">
         <img v-if="scene.image_url" :src="scene.image_url" :alt="scene.title" />
         <div v-else class="scene-cover" aria-hidden="true" />
@@ -353,7 +353,6 @@ async function save() {
 .scenes-setting,
 .scene-list {
   display: grid;
-  gap: var(--app-card-gap);
 }
 .scenes-heading,
 .scene-row,

@@ -128,7 +128,7 @@
           <p>{{ $t('index.subtitle.creation') }}</p>
         </div>
 
-        <div class="creation-grid">
+        <div class="creation-grid card-gap">
           <article v-for="item in creationShowcases" :key="item.key" class="creation-item">
             <div class="screen-pair" :class="{ 'screen-pair--with-phone': item.mobile }">
               <div class="macbook-frame screen-pair__desktop">
@@ -985,7 +985,6 @@ export default defineComponent({
 .creation-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 
 .creation-item {

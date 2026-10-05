@@ -47,7 +47,7 @@
       </header>
 
       <!-- Platform download cards -->
-      <section class="platforms">
+      <section class="platforms card-gap">
         <article class="platform platform--extension">
           <div class="platform__head">
             <span class="platform__os">
@@ -520,7 +520,6 @@ export default defineComponent({
 .platforms {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--app-card-gap);
   margin-bottom: 56px;
 }
 

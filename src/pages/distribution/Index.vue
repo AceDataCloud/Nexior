@@ -6,7 +6,7 @@
           <h2 class="title">{{ $t('common.title.distribution') }}</h2>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="card-gap mb-[15px]">
+      <el-row :gutter="15" class="card-gap card-section-gap">
         <el-col :md="6" :xs="24">
           <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="loading" />
@@ -75,7 +75,7 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-row v-if="showOfficialTools" :gutter="15" class="mb-[15px]">
+      <el-row v-if="showOfficialTools" :gutter="15" class="card-section-gap">
         <el-col :span="24">
           <el-card shadow="never" class="automation-card">
             <div>
@@ -88,7 +88,7 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="card-gap mb-[15px]">
+      <el-row :gutter="15" class="card-gap card-section-gap">
         <el-col :md="12" :xs="24">
           <el-card shadow="never" class="level-info">
             <el-skeleton v-if="loading" />

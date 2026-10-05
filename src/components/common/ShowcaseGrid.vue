@@ -9,7 +9,7 @@
         <p v-if="subtitle">{{ subtitle }}</p>
       </div>
     </slot>
-    <div class="showcase-grid">
+    <div class="showcase-grid card-gap">
       <article
         v-for="item in items"
         :key="item.id"
@@ -245,7 +245,6 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
     .showcase-grid {
       display: block;
       columns: 300px;
-      column-gap: var(--app-card-gap);
     }
 
     .showcase-card {
@@ -303,7 +302,6 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
   grid-auto-flow: dense;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: 185px;
-  gap: var(--app-card-gap);
 }
 
 .showcase-card {
@@ -482,7 +480,6 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
 
   .showcase-grid {
     grid-auto-rows: 190px;
-    gap: var(--app-card-gap);
   }
 
   .showcase-card {

@@ -101,7 +101,7 @@
       <p>{{ $t('skill.directory.loadFailed') }}</p>
       <el-button @click="load">{{ $t('skill.marketplace.retry') }}</el-button>
     </div>
-    <div v-else-if="loading" class="market-grid" aria-busy="true">
+    <div v-else-if="loading" class="market-grid card-gap" aria-busy="true">
       <div v-for="n in 6" :key="n" class="skill-card skeleton"><span /><span /><span /></div>
     </div>
     <div v-else-if="!items.length" class="market-empty">
@@ -109,7 +109,7 @@
       <h3>{{ $t('skill.directory.empty') }}</h3>
       <p>{{ $t('skill.marketplace.emptyHint') }}</p>
     </div>
-    <div v-else class="market-grid">
+    <div v-else class="market-grid card-gap">
       <article v-for="item in items" :key="item.id" class="skill-card">
         <div class="skill-card-top">
           <span class="publisher-monogram" aria-hidden="true">{{ item.publisher.slice(0, 1).toUpperCase() }}</span
@@ -565,7 +565,6 @@ a:hover {
 .market-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 .skill-card {
   min-width: 0;

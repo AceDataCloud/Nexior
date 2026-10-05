@@ -94,7 +94,7 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-row v-if="type === serviceType.API" :gutter="15" class="card-gap mb-[15px]">
+          <el-row v-if="type === serviceType.API" :gutter="15" class="card-gap card-section-gap">
             <el-col :md="6" :xs="24">
               <el-card shadow="never" class="h-full">
                 <el-skeleton v-if="aggLoading" />

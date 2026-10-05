@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list local-tools-setting">
+  <div class="settings-list card-gap local-tools-setting">
     <p v-if="!desktop" class="hint muted">
       {{ $t('common.settings.localToolsDesktopOnly') }}
     </p>

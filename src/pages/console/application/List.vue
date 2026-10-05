@@ -6,7 +6,7 @@
           <h2 class="title">{{ $t('common.title.allApplications') }}</h2>
         </el-col>
       </el-row>
-      <el-row :gutter="15" class="card-gap mb-[15px]">
+      <el-row :gutter="15" class="card-gap card-section-gap">
         <el-col :md="12" :xs="24">
           <el-card shadow="never" class="relative min-h-[180px]" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />

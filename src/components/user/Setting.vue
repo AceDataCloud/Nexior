@@ -412,7 +412,6 @@ export default defineComponent({
 :deep(.settings-list) {
   display: flex;
   flex-direction: column;
-  gap: var(--app-card-gap);
 }
 
 :deep(.settings-menu .el-menu-item) {
