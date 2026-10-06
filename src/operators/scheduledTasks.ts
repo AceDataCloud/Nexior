@@ -340,6 +340,11 @@ class ScheduledTasksOperator {
     return data?.items ?? [];
   }
 
+  async getTask(token: string, id: string): Promise<IScheduledTask> {
+    const { data } = await axios.post(BASE, { action: 'retrieve', id }, { headers: headers(token) });
+    return data;
+  }
+
   async createTask(token: string, payload: ScheduledTaskPayload, force = false): Promise<IScheduledTask> {
     const { data } = await axios.post(
       BASE,

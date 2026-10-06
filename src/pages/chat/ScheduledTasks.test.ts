@@ -247,6 +247,86 @@ describe('chat/ScheduledTasks — local execution', () => {
 describe('chat/ScheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
 
+  describe('task detail links', () => {
+    const mountAt = (id: string) => {
+      const route = reactive({ params: { id }, query: {} });
+      const router = {
+        push: vi.fn(async (target: { params?: { id: string } }) => {
+          route.params.id = target.params?.id ?? '';
+        }),
+        replace: vi.fn(async () => {
+          route.params.id = '';
+        })
+      };
+      const wrapper = shallowMount(ScheduledTasks, {
+        global: {
+          stubs: {
+            ElCard: { template: '<div><slot /></div>' },
+            ElDrawer: { template: '<div><slot /></div>' },
+            MetaTag: false,
+            StatusBadge: false
+          },
+          mocks: {
+            $t: (key: string) => key,
+            $te: () => false,
+            $route: route,
+            $router: router,
+            $store: { state: { chat: { credential: { token: 'tok' } }, site: { features: {} } } }
+          }
+        }
+      });
+      return { wrapper, route, router };
+    };
+
+    it('loads a task directly from its URL and opens its run history', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      const getTask = vi.spyOn(scheduledTasksOperator, 'getTask').mockResolvedValue(editedTask);
+      const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
+      const { wrapper } = mountAt(editedTask.id);
+      await flushPromises();
+
+      const vm = wrapper.vm as unknown as { selectedTask: IScheduledTask | null; showRunHistory: boolean };
+      expect(getTask).toHaveBeenCalledWith('tok', editedTask.id);
+      expect(listRuns).toHaveBeenCalledWith('tok', editedTask.id);
+      expect(vm.selectedTask?.id).toBe(editedTask.id);
+      expect(vm.showRunHistory).toBe(true);
+    });
+
+    it('changes the URL when a task is opened and returns to the list when closed', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
+      vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
+      const { wrapper, route, router } = mountAt('');
+      await flushPromises();
+      const vm = wrapper.vm as unknown as {
+        openTask: (task: IScheduledTask) => Promise<void>;
+        onRunHistoryChange: (open: boolean) => void;
+        selectedTask: IScheduledTask | null;
+      };
+
+      await vm.openTask(editedTask);
+      await flushPromises();
+      expect(router.push).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: editedTask.id } });
+      expect(vm.selectedTask?.id).toBe(editedTask.id);
+
+      vm.onRunHistoryChange(false);
+      await flushPromises();
+      expect(router.replace).toHaveBeenCalledWith({ name: 'chat-scheduled-tasks' });
+      expect(route.params.id).toBe('');
+      expect(vm.selectedTask).toBeNull();
+    });
+
+    it('shows a missing-task state for an ID the signed-in user cannot retrieve', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
+      vi.spyOn(scheduledTasksOperator, 'getTask').mockRejectedValue(new Error('not found'));
+      const { wrapper } = mountAt('another-user-task');
+      await flushPromises();
+      const vm = wrapper.vm as unknown as { taskLinkNotFound: boolean; showRunHistory: boolean };
+      expect(vm.taskLinkNotFound).toBe(true);
+      expect(vm.showRunHistory).toBe(false);
+      expect(wrapper.text()).not.toContain(editedTask.name);
+    });
+  });
+
   it.each(['marketing', 'sales', 'customer'])(
     'opens the template wizard automatically for a %s category deep link',
     async (category) => {

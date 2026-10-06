@@ -38,7 +38,7 @@ describe('official tool direct navigation', () => {
     async (surface) => {
       vi.stubEnv('VITE_SURFACE', surface);
       Object.defineProperty(window, 'location', { configurable: true, value: new URL('https://localhost') });
-      for (const path of ['/chatgpt/scheduled', '/chatgpt/artifacts']) {
+      for (const path of ['/chatgpt/scheduled', '/chatgpt/scheduled/task-1', '/chatgpt/artifacts']) {
         const router = makeRouter();
         await router.push(path);
         expect(router.currentRoute.value.path).toBe(path);
@@ -52,7 +52,13 @@ describe('official tool direct navigation', () => {
     ['foy-ai.studio.acedata.cloud', false]
   ] as const)('%s allows official pages: %s', async (host, allowed) => {
     Object.defineProperty(window, 'location', { configurable: true, value: new URL(`https://${host}`) });
-    for (const path of ['/chatgpt/scheduled', '/chatgpt/artifacts', '/console/skills', '/console/connectors']) {
+    for (const path of [
+      '/chatgpt/scheduled',
+      '/chatgpt/scheduled/task-1',
+      '/chatgpt/artifacts',
+      '/console/skills',
+      '/console/connectors'
+    ]) {
       const router = makeRouter();
       await router.push(path);
       expect(router.currentRoute.value.path).toBe(allowed ? path : '/');

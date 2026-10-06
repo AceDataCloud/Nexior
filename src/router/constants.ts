@@ -14,6 +14,7 @@ export const ROUTE_CHATGPT_CONVERSATION = 'chatgpt-conversation';
 export const ROUTE_CHATGPT_CONVERSATION_NEW = 'chatgpt-conversation-new';
 export const ROUTE_CHATGPT_CALL = 'chatgpt-call';
 export const ROUTE_CHAT_SCHEDULED_TASKS = 'chat-scheduled-tasks';
+export const ROUTE_CHAT_SCHEDULED_TASK_DETAIL = 'chat-scheduled-task-detail';
 export const ROUTE_CHAT_ARTIFACTS = 'chat-artifacts';
 
 export const ROUTE_DEEPSEEK_CONVERSATION = 'deepseek-conversation';

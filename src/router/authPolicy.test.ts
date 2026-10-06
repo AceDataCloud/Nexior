@@ -11,6 +11,7 @@ describe('requiresLogin', () => {
     '/poivelle',
     '/chatgpt/call',
     '/chatgpt/scheduled',
+    '/chatgpt/scheduled/task-1',
     '/chatgpt/artifacts'
   ])('protects account-owned route %s', (path) => {
     expect(requiresLogin(path)).toBe(true);
