@@ -266,6 +266,7 @@ describe('chat/ScheduledTasks', () => {
             ElCard: { template: '<div><slot /></div>' },
             ElDrawer: { template: '<div><slot /></div>' },
             ElTooltip: { template: '<span><slot /></span>' },
+            BackNavigation: false,
             MetaTag: false,
             StatusBadge: false
           },
@@ -281,7 +282,7 @@ describe('chat/ScheduledTasks', () => {
       return { wrapper, route, router };
     };
 
-    it('loads a task directly from its URL in the full page with run history and task list', async () => {
+    it('loads a task directly from its URL in the full page with run history', async () => {
       vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
       const getTask = vi.spyOn(scheduledTasksOperator, 'getTask').mockResolvedValue(editedTask);
       const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
@@ -306,7 +307,6 @@ describe('chat/ScheduledTasks', () => {
       await flushPromises();
       const vm = wrapper.vm as unknown as {
         openTask: (task: IScheduledTask) => Promise<void>;
-        closeTaskLink: () => void;
         selectedTask: IScheduledTask | null;
       };
 
@@ -315,7 +315,7 @@ describe('chat/ScheduledTasks', () => {
       expect(router.push).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: editedTask.id } });
       expect(vm.selectedTask?.id).toBe(editedTask.id);
 
-      vm.closeTaskLink();
+      await wrapper.get('.adc-back-navigation').trigger('click');
       await flushPromises();
       expect(router.replace).toHaveBeenCalledWith({ name: 'chat-scheduled-tasks' });
       expect(route.params.id).toBe('');
@@ -333,19 +333,34 @@ describe('chat/ScheduledTasks', () => {
       expect(wrapper.text()).not.toContain(editedTask.name);
     });
 
-    it('shows the selected task above the list with an icon edit action', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
-      vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
+    it('keeps the detail focused on configuration and shows outcomes only in run history', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([
+        { ...editedTask, last_output_snippet: 'Outdated task summary', last_error: 'goal_not_achieved' },
+        { ...editedTask, id: 'other-task', name: 'Another scheduled task' }
+      ]);
+      vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([
+        {
+          id: 'run-1',
+          task_id: editedTask.id,
+          scheduled_at: 1,
+          status: 'failed',
+          conversation_preview: 'Latest run output',
+          outcome_reason: 'Needs account login'
+        }
+      ]);
       const { wrapper } = mountAt(editedTask.id);
       await flushPromises();
 
       expect(wrapper.find('.detail-card').exists()).toBe(true);
       expect(wrapper.find('.detail-actions .icon-action[aria-label="common.button.edit"]').exists()).toBe(true);
       expect(wrapper.find('.detail-actions .el-button--primary').exists()).toBe(false);
-      expect(wrapper.find('.task-list').text()).toContain(editedTask.name);
+      expect(wrapper.find('.task-list').exists()).toBe(false);
       expect(wrapper.find('.detail-card').text()).toContain(editedTask.template.question);
-      // Compact cards intentionally omit the prompt; the full detail preserves it.
-      expect(wrapper.find('.task-prompt').exists()).toBe(false);
+      expect(wrapper.text()).not.toContain('Another scheduled task');
+      expect(wrapper.text()).not.toContain('Outdated task summary');
+      expect(wrapper.text()).not.toContain('goal not achieved');
+      expect(wrapper.find('.detail-runs').text()).toContain('Latest run output');
+      expect(wrapper.find('.detail-runs').text()).toContain('Needs account login');
     });
   });
 

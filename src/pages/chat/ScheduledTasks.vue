@@ -3,10 +3,9 @@
     <div class="inner" :class="{ 'inner-detail': isTaskDetail }">
       <template v-if="isTaskDetail">
         <div class="detail-navigation">
-          <el-button text @click="closeTaskLink">
-            <back-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          <back-navigation @click="closeTaskLink">
             {{ $t('chat.scheduledTasks.title') }}
-          </el-button>
+          </back-navigation>
         </div>
         <el-skeleton v-if="taskLoading" :rows="7" animated class="loading-block" />
         <el-empty v-else-if="taskLinkNotFound" :description="$t('chat.scheduledTasks.loadError')" class="empty">
@@ -85,6 +84,9 @@
               <status-badge :tone="stateTagType(selectedTask.state)" density="compact">{{
                 $t(`chat.scheduledTasks.state.${selectedTask.state}`)
               }}</status-badge>
+              <meta-tag v-if="selectedTask.state_reason === 'authorization_expired'" tone="warning" density="compact">
+                {{ $t('chat.scheduledTasks.state.authorizationExpired') }}
+              </meta-tag>
               <meta-tag class="meta-chip" density="compact">
                 <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ scheduleLabel(selectedTask.schedule) }}
@@ -96,25 +98,18 @@
               <meta-tag v-if="selectedTask.execution === 'local'" class="meta-chip" density="compact">
                 {{ selectedTask.device_name || $t('chat.scheduledTasks.execution.local') }}
               </meta-tag>
+            </div>
+            <div class="detail-section-label">{{ $t('chat.scheduledTasks.form.prompt') }}</div>
+            <div class="detail-prompt">{{ selectedTask.template.question }}</div>
+          </el-card>
+
+          <section class="detail-runs" :aria-label="$t('chat.scheduledTasks.viewRuns')">
+            <div class="detail-runs-header">
+              <h2 class="section-title">{{ $t('chat.scheduledTasks.viewRuns') }}</h2>
               <span class="detail-run-count">{{
                 $t('chat.scheduledTasks.runCount', { count: selectedTask.run_count })
               }}</span>
             </div>
-            <div class="detail-section-label">{{ $t('chat.scheduledTasks.form.prompt') }}</div>
-            <div class="detail-prompt">{{ selectedTask.template.question }}</div>
-            <div v-if="selectedTask.last_output_snippet" class="detail-output">
-              {{ selectedTask.last_output_snippet }}
-            </div>
-            <div v-if="selectedTask.state_reason === 'authorization_expired'" class="error-hint detail-error">
-              {{ $t('chat.scheduledTasks.state.authorizationExpired') }}
-            </div>
-            <div v-else-if="selectedTask.last_error" class="error-hint detail-error">
-              {{ errorCodeText(selectedTask.last_error) }}
-            </div>
-          </el-card>
-
-          <section class="detail-runs" :aria-label="$t('chat.scheduledTasks.viewRuns')">
-            <h2 class="section-title">{{ $t('chat.scheduledTasks.viewRuns') }}</h2>
             <el-skeleton v-if="runsLoading" :rows="3" animated />
             <el-empty v-else-if="!runs.length" :description="$t('chat.scheduledTasks.noRuns')" />
             <template v-else>
@@ -224,10 +219,7 @@
         </button>
       </div>
 
-      <template v-if="(isTaskDetail && !!selectedTask) || (!isTaskDetail && activeTab === 'tasks')">
-        <h2 v-if="isTaskDetail && tasks.length && !loading" class="section-title detail-list-title">
-          {{ $t('chat.scheduledTasks.title') }}
-        </h2>
+      <template v-if="!isTaskDetail && activeTab === 'tasks'">
         <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
 
         <div v-else-if="!tasks.length && !isTaskDetail" class="template-empty">
@@ -247,10 +239,7 @@
               v-for="task in pagedTasks"
               :key="task.id"
               class="task-card"
-              :class="{
-                'task-card-compact': taskView === 'compact',
-                'task-card-selected': selectedTask?.id === task.id && isTaskDetail
-              }"
+              :class="{ 'task-card-compact': taskView === 'compact' }"
               shadow="hover"
               @click="openTask(task)"
             >
@@ -747,15 +736,8 @@
 </template>
 
 <script lang="ts">
-import { FilterChip, MetaTag, StatusBadge } from '@acedatacloud/core/components';
-import {
-  AiIcon,
-  BackIcon,
-  ConnectionIcon,
-  ExpandRightIcon,
-  PlayIcon,
-  TimeIcon
-} from '@acedatacloud/core/icons/components';
+import { BackNavigation, FilterChip, MetaTag, StatusBadge } from '@acedatacloud/core/components';
+import { AiIcon, ConnectionIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { defineComponent } from 'vue';
 import {
@@ -877,7 +859,7 @@ export default defineComponent({
     StatusBadge,
     AiIcon,
     ConnectionIcon,
-    BackIcon,
+    BackNavigation,
     ExpandRightIcon,
     PlayIcon,
     TimeIcon,
@@ -2057,76 +2039,88 @@ export default defineComponent({
 .detail-navigation {
   margin-bottom: 16px;
 }
-.detail-navigation .el-button {
-  gap: 6px;
-  margin-left: -12px;
-}
 .detail-card {
   border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
-  border-radius: 18px;
+  border-radius: 16px;
   box-shadow: none;
   :deep(.el-card__body) {
-    padding: 28px 32px;
+    padding: 24px;
   }
 }
 .detail-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
+  gap: 16px;
 }
 .detail-title {
   margin: 0;
-  font-size: 24px;
-  line-height: 1.35;
+  font-size: var(--adc-font-size-xl, 20px);
+  font-weight: var(--adc-font-weight-semibold, 600);
+  line-height: var(--adc-line-height-normal, 1.5);
   color: var(--el-text-color-primary);
   overflow-wrap: anywhere;
+}
+.detail-card .task-id {
+  margin-top: 8px;
+  font-family: inherit;
+  font-size: var(--adc-font-size-sm, 14px);
+  line-height: var(--adc-line-height-normal, 1.5);
+  color: var(--el-text-color-secondary);
 }
 .detail-card .task-id-text {
   white-space: normal;
   overflow-wrap: anywhere;
 }
-.detail-meta {
-  margin: 24px 0;
+.detail-card .detail-meta {
+  margin: 16px 0 20px;
 }
 .detail-run-count {
-  margin-left: auto;
   color: var(--el-text-color-secondary);
-  font-size: 13px;
+  font-size: var(--adc-font-size-xs, 12px);
+  line-height: var(--adc-line-height-normal, 1.5);
 }
 .detail-section-label {
-  margin-bottom: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--el-text-color-secondary);
+  margin-bottom: 8px;
+  font-size: var(--adc-font-size-sm, 14px);
+  font-weight: var(--adc-font-weight-medium, 500);
+  line-height: var(--adc-line-height-normal, 1.5);
+  color: var(--el-text-color-regular);
 }
 .detail-prompt {
-  padding: 20px 22px;
-  border-radius: 12px;
+  padding: 16px;
+  border-radius: var(--adc-radius-small, 8px);
   background: var(--el-fill-color-lighter);
   color: var(--el-text-color-primary);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: var(--adc-font-size-sm, 14px);
+  line-height: var(--adc-line-height-relaxed, 1.75);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-}
-.detail-output {
-  margin-top: 20px;
-  padding: 16px 18px;
-  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
-  border-radius: 12px;
-  color: var(--el-text-color-secondary);
-  font-size: 13px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.detail-error {
-  margin-top: 16px;
-  white-space: normal;
 }
 .detail-runs {
-  margin-top: 30px;
+  margin-top: 24px;
+}
+.detail-runs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.detail-runs .run-item {
+  padding: 16px;
+  border-radius: 16px;
+}
+.detail-runs .run-preview {
+  font-size: var(--adc-font-size-sm, 14px);
+  line-height: var(--adc-line-height-normal, 1.5);
+  color: var(--el-text-color-regular);
+}
+.detail-runs .run-error,
+.detail-runs .run-outcome {
+  font-size: var(--adc-font-size-xs, 12px);
+  line-height: var(--adc-line-height-normal, 1.5);
 }
 .detail-runs .run-title,
 .detail-runs .run-preview,
@@ -2138,12 +2132,11 @@ export default defineComponent({
   overflow-wrap: anywhere;
 }
 .section-title {
-  margin: 0 0 16px;
-  font-size: 18px;
+  margin: 0;
+  font-size: var(--adc-font-size-sm, 14px);
+  font-weight: var(--adc-font-weight-semibold, 600);
+  line-height: var(--adc-line-height-normal, 1.5);
   color: var(--el-text-color-primary);
-}
-.detail-list-title {
-  margin: 36px 0 16px;
 }
 .header {
   display: flex;
@@ -2238,12 +2231,6 @@ export default defineComponent({
   .detail-actions {
     flex-wrap: wrap;
   }
-  .detail-meta {
-    margin: 18px 0;
-  }
-  .detail-run-count {
-    margin-left: 0;
-  }
   .detail-prompt {
     padding: 16px;
   }
@@ -2284,9 +2271,6 @@ export default defineComponent({
   .task-meta {
     margin-bottom: 0;
   }
-}
-.task-card-selected {
-  border: 1px solid var(--el-color-primary-light-5);
 }
 .task-top {
   display: flex;
@@ -2438,6 +2422,9 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  font-size: var(--adc-font-size-xs, 12px);
+  font-weight: var(--adc-font-weight-regular, 400);
+  line-height: var(--adc-line-height-normal, 1.5);
   color: var(--el-color-primary);
   flex-shrink: 0;
 }
