@@ -1,7 +1,178 @@
 <template>
   <div class="scheduled-tasks">
-    <div class="inner">
-      <div class="header">
+    <div class="inner" :class="{ 'inner-detail': isTaskDetail }">
+      <template v-if="isTaskDetail">
+        <div class="detail-navigation">
+          <el-button text @click="closeTaskLink">
+            <back-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            {{ $t('chat.scheduledTasks.title') }}
+          </el-button>
+        </div>
+        <el-skeleton v-if="taskLoading" :rows="7" animated class="loading-block" />
+        <el-empty v-else-if="taskLinkNotFound" :description="$t('chat.scheduledTasks.loadError')" class="empty">
+          <el-button @click="closeTaskLink">{{ $t('chat.scheduledTasks.title') }}</el-button>
+        </el-empty>
+        <template v-else-if="selectedTask">
+          <el-card class="detail-card" shadow="never">
+            <div class="detail-header">
+              <div class="task-heading">
+                <h1 class="detail-title">{{ selectedTask.name }}</h1>
+                <div class="task-id">
+                  <span class="task-id-text">{{ $t('common.entity.id') }}: {{ selectedTask.id }}</span>
+                  <copy-to-clipboard :content="selectedTask.id" class="inline-block shrink-0" />
+                </div>
+              </div>
+              <div class="task-actions detail-actions">
+                <el-switch
+                  :model-value="selectedTask.state === 'enabled'"
+                  :loading="togglingIds.includes(selectedTask.id)"
+                  :disabled="togglingIds.includes(selectedTask.id)"
+                  @change="(v: string | number | boolean) => toggleState(selectedTask!, v === true)"
+                />
+                <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
+                  <el-button
+                    text
+                    class="icon-action"
+                    :loading="triggeringId === selectedTask.id"
+                    :aria-label="$t('chat.scheduledTasks.triggerNow')"
+                    @click="triggerNow(selectedTask)"
+                  >
+                    <play-icon
+                      v-if="triggeringId !== selectedTask.id"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
+                  </el-button>
+                </el-tooltip>
+                <el-button type="primary" plain class="detail-edit" @click="openEdit(selectedTask)">
+                  <edit-icon :size="16" aria-hidden="true" focusable="false" />
+                  {{ $t('common.button.edit') }}
+                </el-button>
+                <el-tooltip :content="$t('chat.scheduledTasks.duplicate')" placement="top">
+                  <el-button
+                    text
+                    class="icon-action"
+                    :aria-label="$t('chat.scheduledTasks.duplicate')"
+                    @click="openDuplicate(selectedTask)"
+                  >
+                    <copy-icon :size="16" aria-hidden="true" focusable="false" />
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip :content="$t('common.button.delete')" placement="top">
+                  <el-button
+                    text
+                    type="danger"
+                    class="icon-action"
+                    :aria-label="$t('common.button.delete')"
+                    @click="confirmDelete(selectedTask)"
+                  >
+                    <delete-icon :size="16" aria-hidden="true" focusable="false" />
+                  </el-button>
+                </el-tooltip>
+              </div>
+            </div>
+            <div class="task-meta detail-meta">
+              <meta-tag v-if="selectedTask.template_source" tone="brand" density="compact">{{
+                selectedTask.template_source.snapshot.title
+              }}</meta-tag>
+              <status-badge :tone="stateTagType(selectedTask.state)" density="compact">{{
+                $t(`chat.scheduledTasks.state.${selectedTask.state}`)
+              }}</status-badge>
+              <meta-tag class="meta-chip" density="compact">
+                <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ scheduleLabel(selectedTask.schedule) }}
+              </meta-tag>
+              <meta-tag class="meta-chip" density="compact">
+                <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                {{ modelIdDisplayName(selectedTask.template.model) }}
+              </meta-tag>
+              <meta-tag v-if="selectedTask.execution === 'local'" class="meta-chip" density="compact">
+                {{ selectedTask.device_name || $t('chat.scheduledTasks.execution.local') }}
+              </meta-tag>
+              <span class="detail-run-count">{{
+                $t('chat.scheduledTasks.runCount', { count: selectedTask.run_count })
+              }}</span>
+            </div>
+            <div class="detail-section-label">{{ $t('chat.scheduledTasks.form.prompt') }}</div>
+            <div class="detail-prompt">{{ selectedTask.template.question }}</div>
+            <div v-if="selectedTask.last_output_snippet" class="detail-output">
+              {{ selectedTask.last_output_snippet }}
+            </div>
+            <div v-if="selectedTask.state_reason === 'authorization_expired'" class="error-hint detail-error">
+              {{ $t('chat.scheduledTasks.state.authorizationExpired') }}
+            </div>
+            <div v-else-if="selectedTask.last_error" class="error-hint detail-error">
+              {{ errorCodeText(selectedTask.last_error) }}
+            </div>
+          </el-card>
+
+          <section class="detail-runs" :aria-label="$t('chat.scheduledTasks.viewRuns')">
+            <h2 class="section-title">{{ $t('chat.scheduledTasks.viewRuns') }}</h2>
+            <el-skeleton v-if="runsLoading" :rows="3" animated />
+            <el-empty v-else-if="!runs.length" :description="$t('chat.scheduledTasks.noRuns')" />
+            <template v-else>
+              <div class="run-list">
+                <div
+                  v-for="run in pagedRuns"
+                  :key="run.id"
+                  class="run-item"
+                  :class="{ clickable: !!run.conversation_id }"
+                  :tabindex="run.conversation_id ? 0 : -1"
+                  :role="run.conversation_id ? 'button' : undefined"
+                  @click="openRun(run)"
+                  @keydown.enter="openRun(run)"
+                  @keydown.space.prevent="openRun(run)"
+                >
+                  <div class="run-body">
+                    <div class="run-line">
+                      <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
+                      <status-badge :tone="runTagType(run.status)" class="run-tag" density="compact">{{
+                        $t(`chat.scheduledTasks.run.${run.status}`)
+                      }}</status-badge>
+                    </div>
+                    <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
+                    <div class="run-sub">
+                      <meta-tag
+                        v-for="(account, index) in run.run_accounts"
+                        :key="`${account.connector_identifier}-${index}`"
+                        tone="info"
+                        class="run-account-tag"
+                        density="compact"
+                        >{{ accountTagText(account) }}</meta-tag
+                      >
+                      <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
+                      <span v-if="runOutcomeText(run)" :class="run.status === 'failed' ? 'run-error' : 'run-outcome'">{{
+                        runOutcomeText(run)
+                      }}</span>
+                    </div>
+                  </div>
+                  <div class="run-action">
+                    <expand-right-icon
+                      v-if="run.conversation_id"
+                      class="run-arrow"
+                      :size="'1em' as any"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
+                    <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
+                  </div>
+                </div>
+              </div>
+              <div v-if="runs.length > runPageSize" class="pager run-pager">
+                <pagination
+                  :current-page="runPage"
+                  :page-size="runPageSize"
+                  :total="runs.length"
+                  @change="onRunPageChange"
+                />
+              </div>
+            </template>
+          </section>
+        </template>
+      </template>
+
+      <div v-if="!isTaskDetail" class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
         <div v-if="activeTab === 'tasks'" class="header-actions">
           <div class="task-view-control">
@@ -32,7 +203,7 @@
         </div>
       </div>
 
-      <div class="tabs" role="tablist" :aria-label="$t('chat.scheduledTasks.title')">
+      <div v-if="!isTaskDetail" class="tabs" role="tablist" :aria-label="$t('chat.scheduledTasks.title')">
         <button
           v-for="tab in tabs"
           :key="tab"
@@ -47,14 +218,13 @@
         </button>
       </div>
 
-      <template v-if="activeTab === 'tasks'">
+      <template v-if="(isTaskDetail && !!selectedTask) || (!isTaskDetail && activeTab === 'tasks')">
+        <h2 v-if="isTaskDetail && tasks.length && !loading" class="section-title detail-list-title">
+          {{ $t('chat.scheduledTasks.title') }}
+        </h2>
         <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
 
-        <el-empty v-else-if="taskLinkNotFound" :description="$t('chat.scheduledTasks.loadError')" class="empty">
-          <el-button @click="closeTaskLink">{{ $t('chat.scheduledTasks.title') }}</el-button>
-        </el-empty>
-
-        <div v-else-if="!tasks.length" class="template-empty">
+        <div v-else-if="!tasks.length && !isTaskDetail" class="template-empty">
           <h3>{{ $t('chat.scheduledTemplates.emptyTitle') }}</h3>
           <p>{{ $t('chat.scheduledTemplates.emptyDescription') }}</p>
           <div class="template-empty-actions">
@@ -65,13 +235,16 @@
           </div>
         </div>
 
-        <template v-else>
+        <template v-else-if="tasks.length">
           <div class="task-list card-gap">
             <el-card
               v-for="task in pagedTasks"
               :key="task.id"
               class="task-card"
-              :class="{ 'task-card-compact': taskView === 'compact' }"
+              :class="{
+                'task-card-compact': taskView === 'compact',
+                'task-card-selected': selectedTask?.id === task.id && isTaskDetail
+              }"
               shadow="hover"
               @click="openTask(task)"
             >
@@ -213,7 +386,7 @@
         </template>
       </template>
 
-      <template v-else>
+      <template v-else-if="!isTaskDetail">
         <div class="filters" role="group" :aria-label="$t('chat.scheduledTasks.tab.runs')">
           <filter-chip
             v-for="opt in statusFilters"
@@ -308,86 +481,6 @@
       :initial-category="templateInitialCategory"
       @created="onTemplateCreated"
     />
-
-    <!-- Run history drawer -->
-    <el-drawer
-      :model-value="showRunHistory"
-      :title="selectedTask?.name"
-      direction="rtl"
-      size="min(560px, 92vw)"
-      class="run-history-drawer"
-      @update:model-value="onRunHistoryChange"
-    >
-      <div v-if="selectedTask" class="run-context">
-        <div class="task-id run-context-id">
-          <span class="task-id-text">{{ $t('common.entity.id') }}: {{ selectedTask.id }}</span>
-          <copy-to-clipboard :content="selectedTask.id" class="inline-block shrink-0" />
-        </div>
-        <div class="run-context-meta">
-          <span>{{ scheduleLabel(selectedTask.schedule) }}</span>
-          <span>{{ modelIdDisplayName(selectedTask.template.model) }}</span>
-          <span>{{ $t('chat.scheduledTasks.runCount', { count: selectedTask.run_count }) }}</span>
-        </div>
-        <div class="run-context-prompt">{{ selectedTask.template.question }}</div>
-      </div>
-      <el-skeleton v-if="runsLoading" :rows="3" animated />
-      <el-empty v-else-if="!runs.length" :description="$t('chat.scheduledTasks.noRuns')" />
-      <div v-else class="run-list">
-        <div
-          v-for="run in pagedRuns"
-          :key="run.id"
-          class="run-item"
-          :class="{ clickable: !!run.conversation_id }"
-          :tabindex="run.conversation_id ? 0 : -1"
-          :role="run.conversation_id ? 'button' : undefined"
-          @click="openRun(run)"
-          @keydown.enter="openRun(run)"
-          @keydown.space.prevent="openRun(run)"
-        >
-          <div class="run-body">
-            <div class="run-line">
-              <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
-              <status-badge :tone="runTagType(run.status)" class="run-tag" density="compact">
-                {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
-              </status-badge>
-            </div>
-            <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
-            <div class="run-sub">
-              <meta-tag
-                v-for="(account, index) in run.run_accounts"
-                :key="`${account.connector_identifier}-${index}`"
-                tone="info"
-                class="run-account-tag"
-                density="compact"
-              >
-                {{ accountTagText(account) }}
-              </meta-tag>
-              <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
-              <span
-                v-if="runOutcomeText(run)"
-                :class="run.status === 'failed' ? 'run-error' : 'run-outcome'"
-                :title="runOutcomeText(run)"
-              >
-                {{ runOutcomeText(run) }}
-              </span>
-            </div>
-          </div>
-          <div class="run-action">
-            <expand-right-icon
-              v-if="run.conversation_id"
-              class="run-arrow"
-              :size="'1em' as any"
-              aria-hidden="true"
-              focusable="false"
-            />
-            <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
-          </div>
-        </div>
-      </div>
-      <div v-if="!runsLoading && runs.length > runPageSize" class="pager run-pager">
-        <pagination :current-page="runPage" :page-size="runPageSize" :total="runs.length" @change="onRunPageChange" />
-      </div>
-    </el-drawer>
 
     <!-- Create / edit dialog -->
     <el-dialog
@@ -649,7 +742,14 @@
 
 <script lang="ts">
 import { FilterChip, MetaTag, StatusBadge } from '@acedatacloud/core/components';
-import { AiIcon, ConnectionIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
+import {
+  AiIcon,
+  BackIcon,
+  ConnectionIcon,
+  ExpandRightIcon,
+  PlayIcon,
+  TimeIcon
+} from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { defineComponent } from 'vue';
 import {
@@ -659,7 +759,6 @@ import {
   ElEmpty,
   ElSwitch,
   ElTooltip,
-  ElDrawer,
   ElDialog,
   ElForm,
   ElFormItem,
@@ -772,6 +871,7 @@ export default defineComponent({
     StatusBadge,
     AiIcon,
     ConnectionIcon,
+    BackIcon,
     ExpandRightIcon,
     PlayIcon,
     TimeIcon,
@@ -786,7 +886,6 @@ export default defineComponent({
     ElEmpty,
     ElSwitch,
     ElTooltip,
-    ElDrawer,
     ElDialog,
     ElForm,
     ElFormItem,
@@ -836,8 +935,8 @@ export default defineComponent({
       showCreateDialog: false,
       showTemplateWizard: false,
       templateInitialCategory: '',
-      showRunHistory: false,
       taskLinkNotFound: false,
+      taskLoading: false,
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
@@ -859,7 +958,7 @@ export default defineComponent({
       // leaving the pending rows on screen, which would otherwise keep the
       // timer armed forever on an error nobody is being told about.
       runPollFailures: 0,
-      // Bumped per drawer request so a stale response can't clear the skeleton
+      // Bumped per detail request so a stale response can't clear the skeleton
       // or overwrite rows belonging to a task the user has since moved on from.
       runsRequestId: 0,
       form: this.emptyForm() as TaskForm,
@@ -923,6 +1022,9 @@ export default defineComponent({
     pagedTasks(): IScheduledTask[] {
       const start = (this.page - 1) * this.pageSize;
       return this.tasks.slice(start, start + this.pageSize);
+    },
+    isTaskDetail(): boolean {
+      return !!this.$route?.params?.id;
     },
     pagedRuns(): IScheduledRun[] {
       const start = (this.runPage - 1) * this.runPageSize;
@@ -1005,30 +1107,16 @@ export default defineComponent({
       this.connectorMcpServers = [];
       this.connectorTemplates = [];
       if (!token) {
+        this.selectedTask = null;
+        this.runs = [];
+        this.runsRequestId += 1;
+        this.stopRunPolling();
         return;
       }
       void this.loadTasks();
       if (this.$route?.params?.id) {
         void this.openTaskFromRoute(this.$route.params.id as string);
       }
-    },
-    // The drawer sits above the feed, so closing it hands polling back to
-    // whatever the feed shows (or stops it on the tasks tab). Keyed on
-    // `showRunHistory` rather than the drawer's `@closed` transition event:
-    // every visibility decision reads this flag, and a close path that skips
-    // the transition would strand `selectedTask` and keep polling a drawer
-    // nobody can see.
-    showRunHistory(open: boolean) {
-      if (open) return;
-      this.selectedTask = null;
-      // Belt-and-braces: the `showRunHistory` / task-id checks already reject a
-      // response that lands after this, and reopening bumps the id anyway.
-      this.runsRequestId += 1;
-      this.runsLoading = false;
-      // The breaker is shared with the feed, so a task whose runs endpoint is
-      // failing must not leave the healthy feed stuck when the drawer closes.
-      this.runPollFailures = 0;
-      this.syncRunPolling();
     }
   },
   async mounted() {
@@ -1118,16 +1206,29 @@ export default defineComponent({
       }
     },
     async openTask(task: IScheduledTask) {
+      if (this.selectedTask?.id === task.id && this.isTaskDetail) return;
       await this.$router.push({ name: ROUTE_CHAT_SCHEDULED_TASK_DETAIL, params: { id: task.id } });
     },
     async openTaskFromRoute(id: string | undefined) {
       if (!id) {
         this.taskLinkNotFound = false;
-        this.showRunHistory = false;
+        this.taskLoading = false;
+        this.selectedTask = null;
+        this.runs = [];
+        this.runsRequestId += 1;
+        this.runsLoading = false;
+        this.runPollFailures = 0;
+        this.syncRunPolling();
         return;
       }
       if (!this.token) return;
       this.taskLinkNotFound = false;
+      this.taskLoading = true;
+      this.selectedTask = null;
+      this.runs = [];
+      this.runsRequestId += 1;
+      this.runPollFailures = 0;
+      this.syncRunPolling();
       try {
         // Retrieve is owner-scoped on the server. It also supports direct URLs
         // for tasks outside the first 100 rows returned by the list endpoint.
@@ -1135,27 +1236,23 @@ export default defineComponent({
           this.tasks.find((item) => item.id === id) ?? (await scheduledTasksOperator.getTask(this.token, id));
         if (this.$route.params.id !== id) return;
         this.activeTab = 'tasks';
+        this.taskLoading = false;
+        void this.$nextTick(() => this.$el?.scrollTo?.({ top: 0 }));
         await this.selectTask(task);
       } catch {
         if (this.$route.params.id === id) {
-          this.showRunHistory = false;
+          this.selectedTask = null;
           this.taskLinkNotFound = true;
         }
+      } finally {
+        if (this.$route.params.id === id) this.taskLoading = false;
       }
     },
     closeTaskLink() {
       void this.$router.replace({ name: ROUTE_CHAT_SCHEDULED_TASKS });
     },
-    onRunHistoryChange(open: boolean) {
-      if (open) return;
-      this.showRunHistory = false;
-      if (this.$route.params.id) {
-        void this.$router.replace({ name: ROUTE_CHAT_SCHEDULED_TASKS });
-      }
-    },
     async selectTask(task: IScheduledTask) {
       this.selectedTask = task;
-      this.showRunHistory = true;
       this.runPage = 1;
       await this.loadTaskRuns(task.id);
     },
@@ -1170,10 +1267,10 @@ export default defineComponent({
       }
       try {
         const items = await scheduledTasksOperator.listRuns(this.token, taskId);
-        // Drop the response if the drawer closed, moved to another task, or a
+        // Drop the response if the detail route closed, moved to another task, or a
         // newer request overtook this one mid-flight.
         if (requestId !== this.runsRequestId) return;
-        if (!this.showRunHistory || this.selectedTask?.id !== taskId) return;
+        if (this.selectedTask?.id !== taskId) return;
         this.runs = items;
         this.runPollFailures = 0;
       } catch {
@@ -1247,10 +1344,9 @@ export default defineComponent({
     onRunPageChange(p: number) {
       this.runPage = p;
     },
-    /** Rows currently on screen — the drawer wins when open, since it sits
-     *  above the feed. */
+    /** Rows currently on screen. */
     visibleRuns(): IScheduledRun[] {
-      return this.showRunHistory ? this.runs : this.activeTab === 'runs' ? this.allRuns : [];
+      return this.selectedTask ? this.runs : this.activeTab === 'runs' ? this.allRuns : [];
     },
     /** Start or stop polling to match what's on screen. Safe to call often —
      *  it's the single owner of the timer's lifecycle. */
@@ -1287,7 +1383,7 @@ export default defineComponent({
       const seq = ++this.runPollSeq;
       this.runPollInFlight = true;
       try {
-        if (this.showRunHistory && this.selectedTask) {
+        if (this.selectedTask) {
           await this.loadTaskRuns(this.selectedTask.id, true);
         } else if (this.activeTab === 'runs') {
           await this.loadAllRuns(true);
@@ -1641,6 +1737,7 @@ export default defineComponent({
           // Patch the edited row in place — no full reload / skeleton flash.
           const idx = this.tasks.findIndex((t) => t.id === editId);
           if (idx !== -1) this.tasks[idx] = updated;
+          if (this.selectedTask?.id === editId) this.selectedTask = updated;
         } else {
           const created = await scheduledTasksOperator.createTask(this.token!, payload, force);
           // Prepend the newcomer (backend lists newest-first) and jump to page 1.
@@ -1756,14 +1853,17 @@ export default defineComponent({
       // Reflect the switch immediately and patch just this row in place — no
       // full-list reload / skeleton flash. Revert if the backend rejects it.
       if (idx !== -1) this.tasks[idx] = { ...task, state: nextState };
+      if (this.selectedTask?.id === task.id) this.selectedTask = { ...task, state: nextState };
       try {
         const updated =
           enabled && task.template_source
             ? await scheduledTasksOperator.enableTemplateTask(this.token!, task.id)
             : await scheduledTasksOperator.updateTask(this.token!, task.id, { state: nextState });
         if (idx !== -1) this.tasks[idx] = updated;
+        if (this.selectedTask?.id === task.id) this.selectedTask = updated;
       } catch {
         if (idx !== -1) this.tasks[idx] = { ...task, state: task.state };
+        if (this.selectedTask?.id === task.id) this.selectedTask = task;
         const key =
           enabled && task.template_source ? 'chat.scheduledTemplates.enableFailed' : 'chat.scheduledTasks.loadError';
         ElMessage.error(this.$t(key) as string);
@@ -1809,9 +1909,9 @@ export default defineComponent({
           await scheduledTasksOperator.triggerTask(this.token!, task.id);
         }
         ElMessage.success(this.$t('chat.scheduledTasks.triggerSuccess') as string);
-        // If the run-history drawer is open on this task, refresh it so the
+        // If the detail page is open on this task, refresh it so the
         // freshly-queued run shows up right away.
-        if (this.showRunHistory && this.selectedTask?.id === task.id) {
+        if (this.selectedTask?.id === task.id) {
           this.runPage = 1;
           await this.loadTaskRuns(task.id);
         } else if (this.activeTab === 'runs') {
@@ -1832,6 +1932,7 @@ export default defineComponent({
         await scheduledTasksOperator.deleteTask(this.token!, task.id);
         // Drop the row locally — no full reload / skeleton flash.
         this.tasks = this.tasks.filter((t) => t.id !== task.id);
+        if (this.selectedTask?.id === task.id) this.closeTaskLink();
         const maxPage = Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
         if (this.page > maxPage) this.page = maxPage;
       } catch {
@@ -1944,6 +2045,106 @@ export default defineComponent({
   margin: 0 auto;
   padding: 24px 20px 48px;
 }
+.inner-detail {
+  max-width: 1240px;
+}
+.detail-navigation {
+  margin-bottom: 16px;
+}
+.detail-navigation .el-button {
+  gap: 6px;
+  margin-left: -12px;
+}
+.detail-card {
+  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+  border-radius: 18px;
+  box-shadow: none;
+  :deep(.el-card__body) {
+    padding: 28px 32px;
+  }
+}
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.detail-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--el-text-color-primary);
+  overflow-wrap: anywhere;
+}
+.detail-card .task-id-text {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.detail-actions {
+  gap: 8px;
+}
+.detail-edit {
+  gap: 6px;
+}
+.detail-meta {
+  margin: 24px 0;
+}
+.detail-run-count {
+  margin-left: auto;
+  color: var(--el-text-color-secondary);
+  font-size: 13px;
+}
+.detail-section-label {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--el-text-color-secondary);
+}
+.detail-prompt {
+  padding: 20px 22px;
+  border-radius: 12px;
+  background: var(--el-fill-color-lighter);
+  color: var(--el-text-color-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.detail-output {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+  border-radius: 12px;
+  color: var(--el-text-color-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.detail-error {
+  margin-top: 16px;
+  white-space: normal;
+}
+.detail-runs {
+  margin-top: 30px;
+}
+.detail-runs .run-title,
+.detail-runs .run-preview,
+.detail-runs .run-error,
+.detail-runs .run-outcome {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+.section-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: var(--el-text-color-primary);
+}
+.detail-list-title {
+  margin: 36px 0 16px;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -2027,6 +2228,35 @@ export default defineComponent({
   .inner {
     padding-top: 56px;
   }
+  .detail-card :deep(.el-card__body) {
+    padding: 20px 16px;
+  }
+  .detail-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .detail-actions {
+    flex-wrap: wrap;
+  }
+  .detail-meta {
+    margin: 18px 0;
+  }
+  .detail-run-count {
+    margin-left: 0;
+  }
+  .detail-prompt {
+    padding: 16px;
+  }
+  .detail-runs .run-item {
+    flex-wrap: wrap;
+  }
+  .detail-runs .run-body {
+    flex-basis: 100%;
+  }
+  .detail-runs .run-action {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 .loading-block {
   padding: 12px 4px;
@@ -2054,6 +2284,9 @@ export default defineComponent({
   .task-meta {
     margin-bottom: 0;
   }
+}
+.task-card-selected {
+  border: 1px solid var(--el-color-primary-light-5);
 }
 .task-top {
   display: flex;
@@ -2266,35 +2499,6 @@ export default defineComponent({
 .run-pager {
   margin-top: 8px;
 }
-.run-context {
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
-}
-.run-context-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-}
-.run-context-id {
-  margin: 0 0 6px;
-}
-.run-context-meta span + span::before {
-  content: '·';
-  margin-right: 8px;
-  color: var(--el-text-color-placeholder);
-}
-.run-context-prompt {
-  margin-top: 8px;
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--el-text-color-secondary);
-  white-space: pre-line;
-  max-height: 48px;
-  overflow: hidden;
-}
 .run-list {
   display: flex;
   flex-direction: column;
@@ -2443,14 +2647,7 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-/* Teleported overlays (drawer / dialog) — larger, softer corners.
-   Non-scoped + uniquely-named classes so the rules reach the panels. */
-.run-history-drawer.el-drawer,
-.run-history-drawer .el-drawer {
-  border-top-left-radius: 18px;
-  border-bottom-left-radius: 18px;
-  overflow: hidden;
-}
+/* Teleported edit dialog. */
 .scheduled-task-dialog.el-dialog,
 .scheduled-task-dialog .el-dialog {
   border-radius: 16px;

@@ -280,18 +280,22 @@ describe('chat/ScheduledTasks', () => {
       return { wrapper, route, router };
     };
 
-    it('loads a task directly from its URL and opens its run history', async () => {
+    it('loads a task directly from its URL in the full page with run history and task list', async () => {
       vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
       const getTask = vi.spyOn(scheduledTasksOperator, 'getTask').mockResolvedValue(editedTask);
       const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
       const { wrapper } = mountAt(editedTask.id);
       await flushPromises();
 
-      const vm = wrapper.vm as unknown as { selectedTask: IScheduledTask | null; showRunHistory: boolean };
+      const vm = wrapper.vm as unknown as { selectedTask: IScheduledTask | null; isTaskDetail: boolean };
       expect(getTask).toHaveBeenCalledWith('tok', editedTask.id);
       expect(listRuns).toHaveBeenCalledWith('tok', editedTask.id);
       expect(vm.selectedTask?.id).toBe(editedTask.id);
-      expect(vm.showRunHistory).toBe(true);
+      expect(vm.isTaskDetail).toBe(true);
+      expect(wrapper.find('.detail-card').exists()).toBe(true);
+      expect(wrapper.find('.detail-prompt').text()).toContain(editedTask.template.question);
+      expect(wrapper.find('.detail-runs').exists()).toBe(true);
+      expect(wrapper.find('.task-list').exists()).toBe(false);
     });
 
     it('changes the URL when a task is opened and returns to the list when closed', async () => {
@@ -301,7 +305,7 @@ describe('chat/ScheduledTasks', () => {
       await flushPromises();
       const vm = wrapper.vm as unknown as {
         openTask: (task: IScheduledTask) => Promise<void>;
-        onRunHistoryChange: (open: boolean) => void;
+        closeTaskLink: () => void;
         selectedTask: IScheduledTask | null;
       };
 
@@ -310,7 +314,7 @@ describe('chat/ScheduledTasks', () => {
       expect(router.push).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: editedTask.id } });
       expect(vm.selectedTask?.id).toBe(editedTask.id);
 
-      vm.onRunHistoryChange(false);
+      vm.closeTaskLink();
       await flushPromises();
       expect(router.replace).toHaveBeenCalledWith({ name: 'chat-scheduled-tasks' });
       expect(route.params.id).toBe('');
@@ -322,10 +326,24 @@ describe('chat/ScheduledTasks', () => {
       vi.spyOn(scheduledTasksOperator, 'getTask').mockRejectedValue(new Error('not found'));
       const { wrapper } = mountAt('another-user-task');
       await flushPromises();
-      const vm = wrapper.vm as unknown as { taskLinkNotFound: boolean; showRunHistory: boolean };
+      const vm = wrapper.vm as unknown as { taskLinkNotFound: boolean; selectedTask: IScheduledTask | null };
       expect(vm.taskLinkNotFound).toBe(true);
-      expect(vm.showRunHistory).toBe(false);
+      expect(vm.selectedTask).toBeNull();
       expect(wrapper.text()).not.toContain(editedTask.name);
+    });
+
+    it('shows the selected task above the list and retains the edit action', async () => {
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
+      vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
+      const { wrapper } = mountAt(editedTask.id);
+      await flushPromises();
+
+      expect(wrapper.find('.detail-card').exists()).toBe(true);
+      expect(wrapper.find('.detail-edit').exists()).toBe(true);
+      expect(wrapper.find('.task-list').text()).toContain(editedTask.name);
+      expect(wrapper.find('.detail-card').text()).toContain(editedTask.template.question);
+      // Compact cards intentionally omit the prompt; the full detail preserves it.
+      expect(wrapper.find('.task-prompt').exists()).toBe(false);
     });
   });
 
@@ -511,9 +529,9 @@ describe('chat/ScheduledTasks', () => {
     expect(wrapper.text()).not.toContain(errorCode);
   });
 
-  it('labels the task id and copies it without opening the run drawer', async () => {
+  it('labels the task id and copies it without opening the detail page', async () => {
     // Render the real CopyToClipboard rather than a stub — the click guard that
-    // keeps the copy from opening the drawer lives inside it. Its button sits in
+    // keeps the copy from opening the detail page lives inside it. Its button sits in
     // an ElTooltip slot, so that has to pass its children through too.
     const wrapper = mountComponent(null, {
       CopyToClipboard: false,
@@ -529,7 +547,7 @@ describe('chat/ScheduledTasks', () => {
     await wrapper.get('.task-id button[aria-label="common.button.copy"]').trigger('click');
 
     expect(copyToClipboard).toHaveBeenCalledWith('task-1', expect.anything());
-    expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
+    expect(wrapper.find('.detail-card').exists()).toBe(false);
   });
 
   it('defaults to compact cards and switches to the rich details', async () => {
@@ -1191,7 +1209,6 @@ describe('chat/ScheduledTasks', () => {
       const wrapper = mountComponent();
       await wrapper.setData({
         selectedTask: editedTask,
-        showRunHistory: true,
         runs: [
           {
             id: 'run-1',
@@ -1203,8 +1220,15 @@ describe('chat/ScheduledTasks', () => {
         ]
       });
 
-      expect(wrapper.text()).toContain(errorCode.replace(/_/g, ' '));
-      expect(wrapper.text()).not.toContain('waiting');
+      expect(
+        (wrapper.vm as unknown as { runErrorText: (run: IScheduledRun) => string }).runErrorText({
+          id: 'run-1',
+          task_id: editedTask.id,
+          status: 'failed',
+          scheduled_at: 1,
+          error_code: errorCode
+        })
+      ).toBe(errorCode.replace(/_/g, ' '));
     }
   );
 
@@ -1593,7 +1617,7 @@ describe('chat/ScheduledTasks', () => {
       expect(remove).toHaveBeenCalledWith('visibilitychange', expect.any(Function));
     });
 
-    it('refreshes the drawer, not the feed, while it is open on a task', async () => {
+    it('refreshes the selected task, not the feed, while its detail is open', async () => {
       freshClock();
       const feedSpy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
       const runsSpy = listRuns().mockResolvedValue([pending]);
@@ -1606,11 +1630,11 @@ describe('chat/ScheduledTasks', () => {
 
       await vi.advanceTimersByTimeAsync(12_000);
       expect(runsSpy).toHaveBeenCalledTimes(2);
-      // The drawer sits above the feed, so the feed must stay untouched.
+      // The detail route displays this task, so the feed must stay untouched.
       expect(feedSpy).not.toHaveBeenCalled();
     });
 
-    it('stops polling and drops the task when the drawer closes', async () => {
+    it('stops polling and drops the task when leaving the detail route', async () => {
       freshClock();
       const feedSpy = listAllRuns().mockResolvedValue({ items: [], count: 0 });
       const runsSpy = listRuns().mockResolvedValue([pending]);
@@ -1621,9 +1645,7 @@ describe('chat/ScheduledTasks', () => {
       await flushPromises();
       expect(runsSpy).toHaveBeenCalledTimes(1);
 
-      // Close the way `v-model` does — no `@closed` transition event, which a
-      // stubbed or transition-less drawer never emits.
-      await wrapper.setData({ showRunHistory: false });
+      await (vm as unknown as { openTaskFromRoute: (id?: string) => Promise<void> }).openTaskFromRoute(undefined);
       await flushPromises();
       expect(vm.selectedTask).toBeNull();
 
@@ -1722,7 +1744,7 @@ describe('chat/ScheduledTasks', () => {
       await flushPromises();
     });
 
-    it('drops a stale drawer response that lands after the user switched tasks', async () => {
+    it('drops a stale detail response that lands after the user switched tasks', async () => {
       freshClock();
       const otherTask = { ...editedTask, id: 'task-2', name: 'Second task' };
       let releaseFirst: (v: IScheduledRun[]) => void = () => undefined;
@@ -1749,7 +1771,7 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.runsLoading).toBe(false);
     });
 
-    it('ignores an out-of-order drawer response for the task still on screen', async () => {
+    it('ignores an out-of-order detail response for the task still on screen', async () => {
       freshClock();
       let releaseOld: (v: IScheduledRun[]) => void = () => undefined;
       listRuns()
@@ -1766,7 +1788,7 @@ describe('chat/ScheduledTasks', () => {
       await flushPromises();
       expect(vm.runs.map((r) => r.status)).toEqual(['success']);
 
-      // The older response now lands. Task id and drawer state both still
+      // The older response now lands. Task id and detail state both still
       // match, so only the request-ordering guard can reject it — without one
       // the row would flip back to 运行中 and re-arm the timer.
       releaseOld([pending]);
@@ -1776,7 +1798,7 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.runPollTimer).toBeNull();
     });
 
-    it('keeps the drawer skeleton off during a background refresh', async () => {
+    it('keeps the detail skeleton off during a background refresh', async () => {
       freshClock();
       const runsSpy = listRuns().mockResolvedValue([pending]);
 
@@ -1823,7 +1845,7 @@ describe('chat/ScheduledTasks', () => {
       expect(spy.mock.calls.length).toBeGreaterThan(afterRetry);
     });
 
-    it('resets the shared breaker when the drawer closes, freeing the feed', async () => {
+    it('resets the shared breaker when leaving the detail route, freeing the feed', async () => {
       freshClock();
       const feedSpy = listAllRuns().mockResolvedValue({ items: [pending], count: 1 });
       listRuns().mockResolvedValueOnce([pending]).mockRejectedValue(new Error('500 on this one task'));
@@ -1838,9 +1860,9 @@ describe('chat/ScheduledTasks', () => {
       await vi.advanceTimersByTimeAsync(12_000 * 5);
       expect(vm.runPollFailures).toBe(3);
 
-      // The feed is healthy — closing the drawer must not leave it stuck.
+      // The feed is healthy — leaving the detail route must not leave it stuck.
       const beforeClose = feedSpy.mock.calls.length;
-      await wrapper.setData({ showRunHistory: false });
+      await (vm as unknown as { openTaskFromRoute: (id?: string) => Promise<void> }).openTaskFromRoute(undefined);
       await flushPromises();
       expect(vm.runPollFailures).toBe(0);
       expect(vm.runPollTimer).not.toBeNull();
@@ -1935,7 +1957,7 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.runPollTimer).not.toBeNull();
     });
 
-    it('holds the skeleton for the newer drawer request when a stale one lands', async () => {
+    it('holds the skeleton for the newer detail request when a stale one lands', async () => {
       freshClock();
       const otherTask = { ...editedTask, id: 'task-2', name: 'Second task' };
       let releaseFirst: (v: IScheduledRun[]) => void = () => undefined;
@@ -1965,26 +1987,28 @@ describe('chat/ScheduledTasks', () => {
       expect(vm.runs.map((r) => r.id)).toEqual(['r1']);
     });
 
-    it('abandons an in-flight drawer request when the drawer closes', async () => {
+    it('abandons an in-flight detail request when leaving and reopening the route', async () => {
       freshClock();
       listAllRuns().mockResolvedValue({ items: [], count: 0 });
       let release: (v: IScheduledRun[]) => void = () => undefined;
-      listRuns().mockImplementationOnce(() => new Promise((resolve) => (release = resolve)));
+      listRuns()
+        .mockImplementationOnce(() => new Promise((resolve) => (release = resolve)))
+        .mockResolvedValue([]);
 
       const wrapper = withToken();
       const vm = wrapper.vm as unknown as Vm;
       void vm.selectTask(editedTask);
       await flushPromises();
 
-      await wrapper.setData({ showRunHistory: false });
+      await (vm as unknown as { openTaskFromRoute: (id?: string) => Promise<void> }).openTaskFromRoute(undefined);
       await flushPromises();
       // Reopening on the same task is what makes the id bump load-bearing:
-      // without it the abandoned response still matches task + drawer state.
+      // without it the abandoned response still matches the task state.
       await vm.selectTask(editedTask);
       await flushPromises();
 
       // The first response lands last; its rows belong to a request the user
-      // dismissed and must not be adopted by the reopened drawer.
+      // dismissed and must not be adopted by the reopened detail page.
       release([pending]);
       await flushPromises();
       expect(vm.runs).toEqual([]);
