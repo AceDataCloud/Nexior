@@ -672,7 +672,7 @@ describe('chat/ScheduledTasks', () => {
       execution: 'cloud',
       authorizedLocalTools: [],
       authorizationExpiresAt: expect.any(Number),
-      maxTurns: 50
+      maxTurns: 500
     });
   });
 

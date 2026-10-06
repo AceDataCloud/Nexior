@@ -58,7 +58,7 @@ export async function executeRun(
   const startedAt = Date.now();
   // A local tool handoff pauses the server loop and needs another HTTP call.
   // Give the daemon the task's configured turn budget for those handoffs too.
-  const maxToolRounds = Math.min(Math.max(1, Math.floor(claim.max_turns ?? 50)), 500);
+  const maxToolRounds = Math.min(Math.max(1, Math.floor(claim.max_turns ?? 500)), 500);
   const allowed = claim.unattended_policy?.allowed_local_tools ?? [];
   // Declare only what the task pre-authorized. The worker enforces the same
   // list, so sending more would be pointless; sending exactly this keeps the
