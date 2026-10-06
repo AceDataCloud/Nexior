@@ -3,25 +3,33 @@
     <div class="inner">
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
-        <el-dropdown
-          v-if="activeTab === 'tasks'"
-          split-button
-          type="primary"
-          :disabled="saving"
-          @click="openTemplateGallery"
-          @command="onCreateCommand"
-        >
-          <add-icon :size="16" class="icon" aria-hidden="true" focusable="false" />
-          {{ $t('chat.scheduledTasks.create') }}
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item command="template">{{
-                $t('chat.scheduledTemplates.createFromTemplate')
-              }}</el-dropdown-item>
-              <el-dropdown-item command="custom">{{ $t('chat.scheduledTemplates.createCustom') }}</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+        <div v-if="activeTab === 'tasks'" class="header-actions">
+          <div class="task-view-control">
+            <label for="scheduled-task-view">{{ $t('chat.scheduledTasks.view') }}</label>
+            <el-select v-model="taskView" class="task-view-select" size="small" input-id="scheduled-task-view">
+              <el-option :label="$t('chat.scheduledTasks.view.compact')" value="compact" />
+              <el-option :label="$t('chat.scheduledTasks.view.rich')" value="rich" />
+            </el-select>
+          </div>
+          <el-dropdown
+            split-button
+            type="primary"
+            :disabled="saving"
+            @click="openTemplateGallery"
+            @command="onCreateCommand"
+          >
+            <add-icon :size="16" class="icon" aria-hidden="true" focusable="false" />
+            {{ $t('chat.scheduledTasks.create') }}
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="template">{{
+                  $t('chat.scheduledTemplates.createFromTemplate')
+                }}</el-dropdown-item>
+                <el-dropdown-item command="custom">{{ $t('chat.scheduledTemplates.createCustom') }}</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
       </div>
 
       <div class="tabs" role="tablist" :aria-label="$t('chat.scheduledTasks.title')">
@@ -59,11 +67,43 @@
 
         <template v-else>
           <div class="task-list card-gap">
-            <el-card v-for="task in pagedTasks" :key="task.id" class="task-card" shadow="hover" @click="openTask(task)">
+            <el-card
+              v-for="task in pagedTasks"
+              :key="task.id"
+              class="task-card"
+              :class="{ 'task-card-compact': taskView === 'compact' }"
+              shadow="hover"
+              @click="openTask(task)"
+            >
               <div class="task-top">
                 <div class="task-heading">
-                  <div class="task-name">{{ task.name }}</div>
-                  <div class="task-id">
+                  <div class="task-title-row">
+                    <span
+                      v-if="connectorIconsByTask[task.id]?.length"
+                      class="task-connector-icons"
+                      :title="connectorIconsByTask[task.id].map((icon) => icon.name).join(', ')"
+                    >
+                      <span
+                        v-for="icon in connectorIconsByTask[task.id].slice(0, 3)"
+                        :key="icon.identifier"
+                        class="task-connector-icon"
+                      >
+                        <img
+                          v-if="icon.icon_url && !brokenConnectorIcons[icon.icon_url]"
+                          :src="icon.icon_url"
+                          alt=""
+                          loading="lazy"
+                          @error="brokenConnectorIcons[icon.icon_url] = true"
+                        />
+                        <connection-icon v-else :size="13" aria-hidden="true" focusable="false" />
+                      </span>
+                      <span v-if="connectorIconsByTask[task.id].length > 3" class="task-connector-more"
+                        >+{{ connectorIconsByTask[task.id].length - 3 }}</span
+                      >
+                    </span>
+                    <div class="task-name" :title="task.name">{{ task.name }}</div>
+                  </div>
+                  <div v-if="taskView === 'rich'" class="task-id">
                     <span class="task-id-text">{{ $t('common.entity.id') }}: {{ task.id }}</span>
                     <copy-to-clipboard :content="task.id" class="inline-block shrink-0" />
                   </div>
@@ -121,7 +161,7 @@
                 </div>
               </div>
               <div class="task-meta">
-                <meta-tag v-if="task.template_source" tone="brand" density="compact">
+                <meta-tag v-if="taskView === 'rich' && task.template_source" tone="brand" density="compact">
                   {{ task.template_source.snapshot.title }}
                 </meta-tag>
                 <status-badge :tone="stateTagType(task.state)" density="compact">
@@ -131,20 +171,27 @@
                   <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ scheduleLabel(task.schedule) }}
                 </meta-tag>
-                <meta-tag class="meta-chip" density="compact">
+                <meta-tag v-if="taskView === 'rich'" class="meta-chip" density="compact">
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ modelIdDisplayName(task.template.model) }}
                 </meta-tag>
                 <meta-tag v-if="task.execution === 'local'" class="meta-chip" density="compact">
                   {{ task.device_name || $t('chat.scheduledTasks.execution.local') }}
                 </meta-tag>
+                <span v-if="taskView === 'compact'" class="open-hint">
+                  {{ $t('chat.scheduledTasks.viewRuns') }}
+                  <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+                </span>
               </div>
-              <div class="task-prompt">{{ task.template.question }}</div>
-              <div v-if="task.last_output_snippet" class="task-last-output">
+              <div v-if="taskView === 'rich'" class="task-prompt">{{ task.template.question }}</div>
+              <div v-if="taskView === 'rich' && task.last_output_snippet" class="task-last-output">
                 {{ task.last_output_snippet }}
               </div>
-              <div class="task-footer">
-                <span class="run-count">
+              <div
+                v-if="taskView === 'rich' || task.state_reason === 'authorization_expired' || task.last_error"
+                class="task-footer"
+              >
+                <span v-if="taskView === 'rich'" class="run-count">
                   <refresh-icon :size="16" class="footer-icon" aria-hidden="true" focusable="false" />
                   {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
                 </span>
@@ -152,7 +199,7 @@
                   $t('chat.scheduledTasks.state.authorizationExpired')
                 }}</span>
                 <span v-else-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
-                <span class="open-hint">
+                <span v-if="taskView === 'rich'" class="open-hint">
                   {{ $t('chat.scheduledTasks.viewRuns') }}
                   <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 </span>
@@ -602,7 +649,7 @@
 
 <script lang="ts">
 import { FilterChip, MetaTag, StatusBadge } from '@acedatacloud/core/components';
-import { AiIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
+import { AiIcon, ConnectionIcon, ExpandRightIcon, PlayIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { defineComponent } from 'vue';
 import {
@@ -636,6 +683,7 @@ import { CopyIcon } from '@acedatacloud/core/icons/copy';
 import { DeleteIcon } from '@acedatacloud/core/icons/delete';
 import { EditIcon } from '@acedatacloud/core/icons/edit';
 import { RefreshIcon } from '@acedatacloud/core/icons/refresh';
+import { connectionOperator, type IConnectorCatalogItem } from '@/operators/connection';
 import {
   scheduledTasksOperator,
   IScheduledTask,
@@ -644,6 +692,7 @@ import {
   IScheduleSpec,
   IAuthorizableSkill,
   IAuthorizableMcpServer,
+  IScheduledTaskTemplateDefinition,
   ScheduledTaskPayload,
   IScheduledTaskCapabilityDetail,
   extractSkillNotActive,
@@ -664,11 +713,13 @@ import { resolveModelDisplayName } from '@/utils/modelPresentation';
 import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_SCHEDULED_TASK_DETAIL } from '@/router/constants';
 import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
 import ScheduledTemplateWizard from '@/components/scheduledTemplates/ScheduledTemplateWizard.vue';
+import { taskConnectorIcons, type ITaskConnectorIcon } from './scheduledTaskConnectors';
 
 const USER_TZ = detectedTimeZone();
 
 type ScheduledTab = 'tasks' | 'runs';
 type RunStatusFilter = 'all' | IScheduledRunStatus;
+type TaskView = 'compact' | 'rich';
 
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
 // DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
@@ -720,6 +771,7 @@ export default defineComponent({
     MetaTag,
     StatusBadge,
     AiIcon,
+    ConnectionIcon,
     ExpandRightIcon,
     PlayIcon,
     TimeIcon,
@@ -756,6 +808,13 @@ export default defineComponent({
   data() {
     return {
       tasks: [] as IScheduledTask[],
+      taskView: 'compact' as TaskView,
+      connectorCatalog: [] as IConnectorCatalogItem[],
+      connectorSkills: [] as IAuthorizableSkill[],
+      connectorMcpServers: [] as IAuthorizableMcpServer[],
+      connectorTemplates: [] as IScheduledTaskTemplateDefinition[],
+      brokenConnectorIcons: {} as Record<string, boolean>,
+      connectorIconLoadId: 0,
       runs: [] as IScheduledRun[],
       activeTab: 'tasks' as ScheduledTab,
       tabs: ['tasks', 'runs'] as ScheduledTab[],
@@ -812,6 +871,20 @@ export default defineComponent({
     };
   },
   computed: {
+    connectorIconsByTask(): Record<string, ITaskConnectorIcon[]> {
+      return Object.fromEntries(
+        this.pagedTasks.map((task) => [
+          task.id,
+          taskConnectorIcons(
+            task,
+            this.connectorSkills,
+            this.connectorMcpServers,
+            this.connectorTemplates,
+            this.connectorCatalog
+          )
+        ])
+      );
+    },
     /**
      * Can this client run a task on the machine it is on?
      *
@@ -913,13 +986,27 @@ export default defineComponent({
     }
   },
   watch: {
+    taskView(value: TaskView) {
+      try {
+        localStorage.setItem('scheduled-tasks-view', value);
+      } catch {
+        // Private browsing may disable storage; the current view still works.
+      }
+    },
     '$route.params.id': {
       handler(id: string | undefined) {
         void this.openTaskFromRoute(id);
       }
     },
     token(token: string | undefined) {
-      if (!token) return;
+      this.connectorIconLoadId += 1;
+      this.connectorCatalog = [];
+      this.connectorSkills = [];
+      this.connectorMcpServers = [];
+      this.connectorTemplates = [];
+      if (!token) {
+        return;
+      }
       void this.loadTasks();
       if (this.$route?.params?.id) {
         void this.openTaskFromRoute(this.$route.params.id as string);
@@ -946,6 +1033,11 @@ export default defineComponent({
   },
   async mounted() {
     document.addEventListener('visibilitychange', this.onVisibilityChange);
+    try {
+      if (localStorage.getItem('scheduled-tasks-view') === 'rich') this.taskView = 'rich';
+    } catch {
+      // Keep the compact default when storage is unavailable.
+    }
     if (typeof this.$store?.dispatch === 'function') {
     }
     await this.loadTasks();
@@ -959,6 +1051,22 @@ export default defineComponent({
     this.stopRunPolling();
   },
   methods: {
+    async loadConnectorIcons() {
+      const loadId = ++this.connectorIconLoadId;
+      if (!this.token || !this.tasks.length) return;
+      const token = this.token;
+      const needsTemplates = this.tasks.some((task) => !!task.template_source);
+      const [catalog, capabilities, templates] = await Promise.allSettled([
+        connectionOperator.listCatalog({ sort: 'popular', limit: 200 }),
+        scheduledTasksOperator.listAuthorizableCapabilities(token),
+        needsTemplates ? scheduledTasksOperator.listTemplates(token) : Promise.resolve({ items: [] })
+      ]);
+      if (this.token !== token || this.connectorIconLoadId !== loadId) return;
+      this.connectorCatalog = catalog.status === 'fulfilled' ? (catalog.value.data?.items ?? []) : [];
+      this.connectorSkills = capabilities.status === 'fulfilled' ? capabilities.value.skills : [];
+      this.connectorMcpServers = capabilities.status === 'fulfilled' ? capabilities.value.mcp_servers : [];
+      this.connectorTemplates = templates.status === 'fulfilled' ? templates.value.items : [];
+    },
     modelDisplayName(model: IChatModel): string {
       return resolveModelDisplayName(this.$store.getters?.site as ISite | undefined, model);
     },
@@ -999,6 +1107,7 @@ export default defineComponent({
       this.loading = true;
       try {
         this.tasks = await scheduledTasksOperator.listTasks(this.token);
+        void this.loadConnectorIcons();
         // Clamp the page in case deletions shrank the list past the current page.
         const maxPage = Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
         if (this.page > maxPage) this.page = maxPage;
@@ -1222,6 +1331,7 @@ export default defineComponent({
     onTemplateCreated(task: IScheduledTask) {
       this.tasks = [task, ...this.tasks.filter((item) => item.id !== task.id)];
       this.page = 1;
+      void this.loadConnectorIcons();
     },
     openCreate() {
       if (this.saving) return;
@@ -1538,6 +1648,7 @@ export default defineComponent({
           this.page = 1;
         }
         ElMessage.success((this.$t('chat.scheduledTasks.create') as string) + ' OK');
+        void this.loadConnectorIcons();
         this.showCreateDialog = false;
         this.editingTask = null;
         this.form = this.emptyForm();
@@ -1837,7 +1948,24 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 20px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.task-view-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  white-space: nowrap;
+}
+.task-view-select {
+  width: 112px;
 }
 .title {
   font-size: 20px;
@@ -1915,6 +2043,18 @@ export default defineComponent({
     padding: 16px 18px;
   }
 }
+.task-card-compact {
+  :deep(.el-card__body) {
+    padding: 12px 16px;
+  }
+  .task-top {
+    align-items: center;
+    margin-bottom: 7px;
+  }
+  .task-meta {
+    margin-bottom: 0;
+  }
+}
 .task-top {
   display: flex;
   justify-content: space-between;
@@ -1924,13 +2064,50 @@ export default defineComponent({
 }
 .task-heading {
   min-width: 0;
+  flex: 1;
+}
+.task-title-row {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 7px;
+}
+.task-connector-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.task-connector-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-secondary);
+}
+.task-connector-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.task-connector-more {
+  font-size: 10px;
+  color: var(--el-text-color-secondary);
 }
 .task-name {
+  min-width: 0;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.4;
   color: var(--el-text-color-primary);
-  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .task-id {
   display: flex;
@@ -1966,6 +2143,9 @@ export default defineComponent({
   gap: 8px;
   align-items: center;
   margin-bottom: 10px;
+}
+.task-card-compact .open-hint {
+  margin-left: auto;
 }
 
 .meta-icon {
@@ -2027,6 +2207,30 @@ export default defineComponent({
   gap: 5px;
   color: var(--el-color-primary);
   flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .header-actions {
+    margin-left: auto;
+  }
+  .task-top {
+    flex-wrap: wrap;
+  }
+  .task-heading {
+    flex-basis: 100%;
+  }
+  .task-card-compact .task-top {
+    margin-bottom: 0;
+  }
+  .task-card-compact .task-meta {
+    margin-top: 6px;
+  }
+  .task-actions {
+    margin-left: auto;
+  }
 }
 .template-empty {
   margin-top: 20px;
