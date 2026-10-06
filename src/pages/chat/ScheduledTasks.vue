@@ -45,10 +45,16 @@
                     />
                   </el-button>
                 </el-tooltip>
-                <el-button type="primary" plain class="detail-edit" @click="openEdit(selectedTask)">
-                  <edit-icon :size="16" aria-hidden="true" focusable="false" />
-                  {{ $t('common.button.edit') }}
-                </el-button>
+                <el-tooltip :content="$t('common.button.edit')" placement="top">
+                  <el-button
+                    text
+                    class="icon-action"
+                    :aria-label="$t('common.button.edit')"
+                    @click="openEdit(selectedTask)"
+                  >
+                    <edit-icon :size="16" aria-hidden="true" focusable="false" />
+                  </el-button>
+                </el-tooltip>
                 <el-tooltip :content="$t('chat.scheduledTasks.duplicate')" placement="top">
                   <el-button
                     text
@@ -2079,12 +2085,6 @@ export default defineComponent({
 .detail-card .task-id-text {
   white-space: normal;
   overflow-wrap: anywhere;
-}
-.detail-actions {
-  gap: 8px;
-}
-.detail-edit {
-  gap: 6px;
 }
 .detail-meta {
   margin: 24px 0;
