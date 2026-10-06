@@ -47,7 +47,6 @@ export interface RunOutcome {
  * Without it a looping task would hold its run row open until the reaper
  * eventually failed it 45 minutes later.
  */
-const MAX_TOOL_ROUNDS = 24;
 const MAX_RUN_MS = 20 * 60 * 1000;
 
 export async function executeRun(
@@ -57,6 +56,9 @@ export async function executeRun(
   }
 ): Promise<RunOutcome> {
   const startedAt = Date.now();
+  // A local tool handoff pauses the server loop and needs another HTTP call.
+  // Give the daemon the task's configured turn budget for those handoffs too.
+  const maxToolRounds = Math.min(Math.max(1, Math.floor(claim.max_turns ?? 50)), 500);
   const allowed = claim.unattended_policy?.allowed_local_tools ?? [];
   // Declare only what the task pre-authorized. The worker enforces the same
   // list, so sending more would be pointless; sending exactly this keeps the
@@ -101,7 +103,7 @@ export async function executeRun(
 
   let conversationId = response.conversation_id ?? response.id;
 
-  for (let round = 0; round < MAX_TOOL_ROUNDS; round += 1) {
+  for (let round = 0; round < maxToolRounds; round += 1) {
     const pending = response.pending_client_tools ?? [];
     if (!pending.length) break;
     if (opts.signal?.aborted) return { conversationId, errorCode: 'run_cancelled' };
@@ -146,8 +148,14 @@ export async function executeRun(
           id: conversationId,
           model: claim.model,
           stateful: true,
+          max_turns: claim.max_turns,
           tool_results: toolResults,
           unattended_policy: claim.unattended_policy,
+          metadata: {
+            source: 'scheduled_task',
+            scheduled_task_id: opts.scheduledTaskId,
+            run_id: claim.run_id
+          },
           // Re-send: the worker registers client tools per request, so a resume
           // that omits them leaves the model unable to call one on the NEXT
           // turn of the same run.

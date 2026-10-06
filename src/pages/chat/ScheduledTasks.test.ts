@@ -676,6 +676,30 @@ describe('chat/ScheduledTasks', () => {
     });
   });
 
+  it('sends a configured 500-turn budget when creating a task', async () => {
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({ skills: [], mcp_servers: [] });
+    const create = vi.spyOn(scheduledTasksOperator, 'createTask').mockResolvedValue(editedTask);
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as {
+      openCreate: () => void;
+      saveTask: () => Promise<void>;
+      form: { question: string; maxTurns: number };
+    };
+    vm.openCreate();
+    vm.form.question = 'Summarize the news';
+    vm.form.maxTurns = 500;
+
+    await vm.saveTask();
+
+    expect(create).toHaveBeenCalledWith(
+      'tok',
+      expect.objectContaining({ template: expect.objectContaining({ max_turns: 500 }) }),
+      false
+    );
+  });
+
   it('keeps the saved time zone when editing instead of replacing it with this device zone', () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {

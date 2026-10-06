@@ -720,7 +720,7 @@
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.maxTurns')">
-          <el-input-number v-model="form.maxTurns" :min="1" :max="50" :step="1" controls-position="right" />
+          <el-input-number v-model="form.maxTurns" :min="1" :max="500" :step="1" controls-position="right" />
           <div class="hint">{{ $t('chat.scheduledTasks.form.maxTurnsHint') }}</div>
         </el-form-item>
       </el-form>
@@ -809,7 +809,7 @@ type RunStatusFilter = 'all' | IScheduledRunStatus;
 type TaskView = 'compact' | 'rich';
 
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
-// DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
+// DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 500].
 const DEFAULT_SCHEDULED_MAX_TURNS = 50;
 
 // A run holds no `conversation_id` until the worker backfills it after the
