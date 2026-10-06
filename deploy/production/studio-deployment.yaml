@@ -9,7 +9,7 @@ spec:
   replicas: 2
   revisionHistoryLimit: 5
   minReadySeconds: 10
-  progressDeadlineSeconds: 1200
+  progressDeadlineSeconds: 1800
   strategy:
     type: RollingUpdate
     rollingUpdate:

@@ -14,7 +14,7 @@ wait_converged() {
   local deployment=$1 service=$2 expected_image=$3 expected_repository snapshot deadline
   expected_repository=${expected_image%@*}
   if [ "$expected_repository" = "$expected_image" ]; then expected_repository=${expected_image%:*}; fi
-  kubectl rollout status "deployment/$deployment" -n "$NAMESPACE" --timeout=20m || return 1
+  kubectl rollout status "deployment/$deployment" -n "$NAMESPACE" --timeout=30m || return 1
   snapshot=$(mktemp)
   deadline=$(( $(date +%s) + 300 ))
   while :; do
