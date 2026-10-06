@@ -809,7 +809,7 @@ type RunStatusFilter = 'all' | IScheduledRunStatus;
 type TaskView = 'compact' | 'rich';
 
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
-// DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 500].
+// DEFAULT_MAX_TURNS; the worker clamps to [1, 500].
 const DEFAULT_SCHEDULED_MAX_TURNS = 500;
 
 // A run holds no `conversation_id` until the worker backfills it after the
