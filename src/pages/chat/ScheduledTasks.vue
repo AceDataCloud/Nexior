@@ -933,7 +933,7 @@ export default defineComponent({
       triggeringId: '' as string,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
-      pageSize: 6,
+      pageSize: 10,
       runPage: 1,
       runPageSize: 8,
       // One timer serves both run lists; whichever is on screen refreshes.
