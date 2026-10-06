@@ -42,6 +42,10 @@
       <template v-if="activeTab === 'tasks'">
         <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
 
+        <el-empty v-else-if="taskLinkNotFound" :description="$t('chat.scheduledTasks.loadError')" class="empty">
+          <el-button @click="closeTaskLink">{{ $t('chat.scheduledTasks.title') }}</el-button>
+        </el-empty>
+
         <div v-else-if="!tasks.length" class="template-empty">
           <h3>{{ $t('chat.scheduledTemplates.emptyTitle') }}</h3>
           <p>{{ $t('chat.scheduledTemplates.emptyDescription') }}</p>
@@ -55,13 +59,7 @@
 
         <template v-else>
           <div class="task-list card-gap">
-            <el-card
-              v-for="task in pagedTasks"
-              :key="task.id"
-              class="task-card"
-              shadow="hover"
-              @click="selectTask(task)"
-            >
+            <el-card v-for="task in pagedTasks" :key="task.id" class="task-card" shadow="hover" @click="openTask(task)">
               <div class="task-top">
                 <div class="task-heading">
                   <div class="task-name">{{ task.name }}</div>
@@ -266,11 +264,12 @@
 
     <!-- Run history drawer -->
     <el-drawer
-      v-model="showRunHistory"
+      :model-value="showRunHistory"
       :title="selectedTask?.name"
       direction="rtl"
       size="min(560px, 92vw)"
       class="run-history-drawer"
+      @update:model-value="onRunHistoryChange"
     >
       <div v-if="selectedTask" class="run-context">
         <div class="task-id run-context-id">
@@ -662,6 +661,7 @@ import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
 import { resolveModelDisplayName } from '@/utils/modelPresentation';
+import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_SCHEDULED_TASK_DETAIL } from '@/router/constants';
 import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
 import ScheduledTemplateWizard from '@/components/scheduledTemplates/ScheduledTemplateWizard.vue';
 
@@ -778,6 +778,7 @@ export default defineComponent({
       showTemplateWizard: false,
       templateInitialCategory: '',
       showRunHistory: false,
+      taskLinkNotFound: false,
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
@@ -912,6 +913,18 @@ export default defineComponent({
     }
   },
   watch: {
+    '$route.params.id': {
+      handler(id: string | undefined) {
+        void this.openTaskFromRoute(id);
+      }
+    },
+    token(token: string | undefined) {
+      if (!token) return;
+      void this.loadTasks();
+      if (this.$route?.params?.id) {
+        void this.openTaskFromRoute(this.$route.params.id as string);
+      }
+    },
     // The drawer sits above the feed, so closing it hands polling back to
     // whatever the feed shows (or stops it on the tasks tab). Keyed on
     // `showRunHistory` rather than the drawer's `@closed` transition event:
@@ -936,6 +949,9 @@ export default defineComponent({
     if (typeof this.$store?.dispatch === 'function') {
     }
     await this.loadTasks();
+    if (this.$route?.params?.id) {
+      await this.openTaskFromRoute(this.$route.params.id as string);
+    }
     if (this.$route?.query?.template_category) this.openTemplateGallery();
   },
   unmounted() {
@@ -990,6 +1006,42 @@ export default defineComponent({
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       } finally {
         this.loading = false;
+      }
+    },
+    async openTask(task: IScheduledTask) {
+      await this.$router.push({ name: ROUTE_CHAT_SCHEDULED_TASK_DETAIL, params: { id: task.id } });
+    },
+    async openTaskFromRoute(id: string | undefined) {
+      if (!id) {
+        this.taskLinkNotFound = false;
+        this.showRunHistory = false;
+        return;
+      }
+      if (!this.token) return;
+      this.taskLinkNotFound = false;
+      try {
+        // Retrieve is owner-scoped on the server. It also supports direct URLs
+        // for tasks outside the first 100 rows returned by the list endpoint.
+        const task =
+          this.tasks.find((item) => item.id === id) ?? (await scheduledTasksOperator.getTask(this.token, id));
+        if (this.$route.params.id !== id) return;
+        this.activeTab = 'tasks';
+        await this.selectTask(task);
+      } catch {
+        if (this.$route.params.id === id) {
+          this.showRunHistory = false;
+          this.taskLinkNotFound = true;
+        }
+      }
+    },
+    closeTaskLink() {
+      void this.$router.replace({ name: ROUTE_CHAT_SCHEDULED_TASKS });
+    },
+    onRunHistoryChange(open: boolean) {
+      if (open) return;
+      this.showRunHistory = false;
+      if (this.$route.params.id) {
+        void this.$router.replace({ name: ROUTE_CHAT_SCHEDULED_TASKS });
       }
     },
     async selectTask(task: IScheduledTask) {

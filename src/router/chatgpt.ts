@@ -5,6 +5,7 @@ import {
   ROUTE_CHATGPT_CONVERSATION,
   ROUTE_CHATGPT_CONVERSATION_NEW,
   ROUTE_CHAT_SCHEDULED_TASKS,
+  ROUTE_CHAT_SCHEDULED_TASK_DETAIL,
   ROUTE_CHAT_ARTIFACTS,
   ROUTE_INDEX
 } from './constants';
@@ -45,6 +46,12 @@ export default {
     {
       path: 'scheduled',
       name: ROUTE_CHAT_SCHEDULED_TASKS,
+      beforeEnter: mainOfficialOnly,
+      component: () => import('@/pages/chat/ScheduledTasks.vue')
+    },
+    {
+      path: 'scheduled/:id',
+      name: ROUTE_CHAT_SCHEDULED_TASK_DETAIL,
       beforeEnter: mainOfficialOnly,
       component: () => import('@/pages/chat/ScheduledTasks.vue')
     },

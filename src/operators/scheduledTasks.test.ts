@@ -8,6 +8,18 @@ import type { IScheduledRun } from './scheduledTasks';
 describe('operators/scheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
 
+  it('retrieves a single task by ID for a direct link', async () => {
+    const task = { id: 'task-1', name: 'My task' };
+    const post = vi.spyOn(axios, 'post').mockResolvedValue({ data: task });
+
+    await expect(scheduledTasksOperator.getTask('tok', task.id)).resolves.toEqual(task);
+    expect(post).toHaveBeenCalledWith(
+      expect.stringContaining('/aichat2/scheduled-tasks'),
+      { action: 'retrieve', id: task.id },
+      expect.objectContaining({ headers: expect.objectContaining({ Authorization: 'Bearer tok' }) })
+    );
+  });
+
   describe('run list requests', () => {
     // These two are the only requests the UI issues on a timer. A stalled
     // mobile connection would otherwise leave the promise pending forever and
