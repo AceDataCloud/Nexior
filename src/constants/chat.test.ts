@@ -32,6 +32,7 @@ describe('chat models', () => {
       'gpt-6-luna',
       'gpt-5.6-luna',
       'gpt-5.6-sol',
+      'gpt-5.6-sol-fast',
       'gpt-5.6-terra'
     ]);
     expect(CHAT_MODEL_GPT_5_6_LUNA.isFree).toBe(true);

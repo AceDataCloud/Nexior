@@ -10,6 +10,7 @@ export const CHAT_MODEL_NAME_GPT_6_1_SOL = 'gpt-6.1-sol';
 export const CHAT_MODEL_NAME_GPT_6_SOL = 'gpt-6-sol';
 export const CHAT_MODEL_NAME_GPT_6_LUNA = 'gpt-6-luna';
 export const CHAT_MODEL_NAME_GPT_5_6_SOL = 'gpt-5.6-sol';
+export const CHAT_MODEL_NAME_GPT_5_6_SOL_FAST = 'gpt-5.6-sol-fast';
 export const CHAT_MODEL_NAME_GPT_5_6_TERRA = 'gpt-5.6-terra';
 export const CHAT_MODEL_NAME_GPT_5_6_LUNA = 'gpt-5.6-luna';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
@@ -110,6 +111,18 @@ export const CHAT_MODEL_GPT_5_6_SOL: IChatModel = {
   isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.56Sol'),
   getDescription: () => i18n.global.t('chat.model.56SolDescription')
+};
+
+export const CHAT_MODEL_GPT_5_6_SOL_FAST: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_6_SOL_FAST,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.56SolFast'),
+  getDescription: () => i18n.global.t('chat.model.56SolFastDescription')
 };
 
 export const CHAT_MODEL_GPT_5_6_TERRA: IChatModel = {
@@ -437,6 +450,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
     CHAT_MODEL_GPT_6_LUNA,
     CHAT_MODEL_GPT_5_6_LUNA,
     CHAT_MODEL_GPT_5_6_SOL,
+    CHAT_MODEL_GPT_5_6_SOL_FAST,
     CHAT_MODEL_GPT_5_6_TERRA
   ],
   defaultModel: CHAT_MODEL_GPT_6_ASTRA,
@@ -524,6 +538,7 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_6_LUNA,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GPT_5_6_SOL,
+  CHAT_MODEL_GPT_5_6_SOL_FAST,
   CHAT_MODEL_GPT_5_6_TERRA,
   CHAT_MODEL_DEEPSEEK_V4_PRO,
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
