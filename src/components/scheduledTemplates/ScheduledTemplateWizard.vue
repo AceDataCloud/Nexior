@@ -26,7 +26,7 @@
           <el-option v-for="item in categories" :key="item" :label="categoryLabel(item)" :value="item" />
         </el-select>
       </div>
-      <div class="template-grid">
+      <div class="template-grid card-gap">
         <button
           v-for="item in templates"
           :key="`${item.id}-${item.version}`"
@@ -118,7 +118,7 @@
           <p>{{ $t('chat.scheduledTemplates.noConnectionsHint') }}</p>
         </div>
       </div>
-      <div class="requirement-list">
+      <div class="requirement-list card-gap">
         <article
           v-for="connection in selected.requirements.connections"
           :key="connection"
@@ -472,7 +472,6 @@ export default defineComponent({
 .template-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 .template-card {
   text-align: left;
@@ -529,7 +528,6 @@ export default defineComponent({
 }
 .requirement-list {
   display: grid;
-  gap: var(--app-card-gap);
 }
 .requirement-card,
 .requirement-empty {

@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list auth-settings">
+  <div class="settings-list card-gap auth-settings">
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
 
     <!--

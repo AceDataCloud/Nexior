@@ -7,8 +7,8 @@
       </div>
       <p>{{ subtitle }}</p>
     </div>
-    <div class="category-rows">
-      <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="category-grid">
+    <div class="category-rows card-gap">
+      <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="category-grid card-gap">
         <template v-for="item in row" :key="item.id">
           <button
             :ref="(element) => rememberButton(item.id, element)"
@@ -171,13 +171,11 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
 
 .category-rows {
   display: grid;
-  gap: var(--app-card-gap);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 
 .category-card {
@@ -378,9 +376,6 @@ defineExpose({ openId, activeCategory, toggle, closePanel });
     }
   }
 
-  .category-grid {
-    gap: var(--app-card-gap);
-  }
   .capability-panel {
     gap: 10px;
   }

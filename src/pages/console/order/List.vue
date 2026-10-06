@@ -8,7 +8,7 @@
       </el-row>
 
       <!-- Summary Cards -->
-      <el-row :gutter="15" class="card-gap mb-[15px]">
+      <el-row :gutter="15" class="card-gap card-section-gap">
         <el-col :md="6" :sm="12" :xs="24">
           <el-card shadow="never" class="item-mini">
             <el-skeleton v-if="summaryLoading" />

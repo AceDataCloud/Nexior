@@ -97,7 +97,7 @@
           {{ $t(category.label) }}
         </button>
       </div>
-      <div class="work-grid">
+      <div class="work-grid card-gap">
         <article v-for="work in filteredWorks" :key="work.id" class="work-card">
           <div class="cover">
             <img
@@ -520,7 +520,6 @@ onMounted(bootstrap);
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 .work-card {
   overflow: hidden;

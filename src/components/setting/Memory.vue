@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list memory-setting">
+  <div class="settings-list card-gap memory-setting">
     <p class="hint muted">{{ $t('common.settings.memoryIntro') }}</p>
 
     <div class="memory-toggle-row">

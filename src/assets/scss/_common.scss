@@ -30,6 +30,10 @@ html.dark body {
   gap: var(--app-card-gap);
 }
 
+:root body .card-section-gap[class] {
+  margin-bottom: var(--app-card-gap);
+}
+
 :root body .el-row.card-gap {
   column-gap: 0;
 }

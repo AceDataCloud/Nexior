@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list">
+  <div class="settings-list card-gap">
     <section class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.theme') }}</p>

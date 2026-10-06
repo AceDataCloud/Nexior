@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-list">
+  <div class="settings-list card-gap">
     <!--
       The first-party attribution + one-click build trio (Nexior source,
       Ace Data Cloud API, Build-your-own) is shown only on our own

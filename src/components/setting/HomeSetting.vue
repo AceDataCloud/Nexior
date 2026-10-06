@@ -1,11 +1,11 @@
 <template>
   <div class="home-settings">
-    <section class="layout-section">
+    <section class="layout-section card-gap">
       <header>
         <h3>{{ $t('site.homeLayout.title') }}</h3>
         <p>{{ $t('site.homeLayout.tip') }}</p>
       </header>
-      <div class="layout-list">
+      <div class="layout-list card-gap">
         <article v-for="section in sections" :key="section.key" class="layout-row">
           <div>
             <strong>{{ $t(section.titleKey) }}</strong>
@@ -92,7 +92,6 @@ export default defineComponent({
 .layout-list {
   display: flex;
   flex-direction: column;
-  gap: var(--app-card-gap);
 }
 .layout-section header h3 {
   margin: 0;

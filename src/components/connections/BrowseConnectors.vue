@@ -60,7 +60,7 @@
         <div v-if="!loading && filteredItems.length === 0" class="browse-empty">
           {{ $t('connection.message.browseEmpty') }}
         </div>
-        <div v-else class="browse-grid">
+        <div v-else class="browse-grid card-gap">
           <article v-for="item in filteredItems" :key="item.id" class="card">
             <div class="card-head">
               <span class="card-icon">
@@ -767,7 +767,6 @@ export default defineComponent({
 .browse-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 
 .card {

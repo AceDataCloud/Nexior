@@ -34,7 +34,7 @@
         >
       </div>
     </section>
-    <section class="review-columns">
+    <section class="review-columns card-gap">
       <div>
         <h3>{{ $t('poivelle.review.pendingProposals') }}</h3>
         <article v-for="proposal in pendingProposals" :key="proposal.id" class="review-item">
@@ -211,7 +211,6 @@ const formatCredits = (microcredits: number) => (microcredits / 1_000_000).toFix
 }
 
 .review-columns {
-  gap: var(--app-card-gap);
   margin-top: 18px;
 }
 

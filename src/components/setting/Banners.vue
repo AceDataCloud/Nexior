@@ -7,7 +7,7 @@
           <p>{{ $t('site.banner.systemTip') }}</p>
         </div>
       </header>
-      <div class="system-grid">
+      <div class="system-grid card-gap">
         <article v-for="banner in HOME_BANNERS" :key="banner.id" class="system-card">
           <img :src="banner.imageUrl" :alt="$t(banner.titleKey)" />
           <div class="system-copy">
@@ -37,7 +37,7 @@
       </header>
 
       <el-empty v-if="!rows.length" :description="$t('site.banner.empty')" :image-size="72" />
-      <div v-else class="custom-list">
+      <div v-else class="custom-list card-gap">
         <article v-for="row in rows" :key="row.id" class="custom-card">
           <img v-if="row.image_url" :src="row.image_url" :alt="bannerText(row.title)" />
           <div v-else class="image-placeholder"><image-icon :size="'1.4em' as any" /></div>
@@ -466,7 +466,6 @@ export default defineComponent({
 .system-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--app-card-gap);
 }
 .system-card,
 .custom-card {
@@ -512,7 +511,6 @@ export default defineComponent({
 .custom-list {
   display: flex;
   flex-direction: column;
-  gap: var(--app-card-gap);
 }
 .custom-card > img,
 .image-placeholder {

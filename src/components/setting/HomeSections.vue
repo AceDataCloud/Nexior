@@ -1,5 +1,5 @@
 <template>
-  <section v-loading="loading" class="home-section-settings">
+  <section v-loading="loading" class="home-section-settings card-gap">
     <header class="section-header">
       <div>
         <h3>{{ $t('site.homeSections.title') }}</h3>
@@ -11,7 +11,7 @@
     </header>
 
     <el-empty v-if="!rows.length" :description="$t('site.homeSections.empty')" :image-size="72" />
-    <div v-else class="section-list">
+    <div v-else class="section-list card-gap">
       <article v-for="(row, index) in rows" :key="row.id" class="section-row">
         <div class="section-copy">
           <strong>{{ source(row, 'title') || $t(`site.homeSections.kind.${row.kind}`) }}</strong>
@@ -439,7 +439,6 @@ export default defineComponent({
 .section-list {
   display: flex;
   flex-direction: column;
-  gap: var(--app-card-gap);
 }
 .section-header,
 .section-row {
