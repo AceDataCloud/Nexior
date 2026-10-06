@@ -1,35 +1,30 @@
 <template>
-  <section class="marketplace" :class="{ compact }">
-    <header class="market-hero">
-      <div>
-        <span class="eyebrow">{{ $t('skill.marketplace.eyebrow') }}</span>
-        <h2>{{ $t('skill.marketplace.title') }}</h2>
-        <p>{{ $t('skill.marketplace.description') }}</p>
-      </div>
-      <span class="hero-symbol" aria-hidden="true"><marketplace-icon :size="38" /></span>
-    </header>
-
-    <div class="market-sources" :aria-label="$t('skill.marketplace.sources')">
+  <section ref="marketRoot" class="marketplace" :class="{ compact }">
+    <div class="market-sources" role="tablist" :aria-label="$t('skill.marketplace.sources')">
       <button
         v-for="source in sourceCards"
         :key="source.key"
         type="button"
-        class="source-card"
+        role="tab"
+        class="source-tab"
         :class="[source.key, { active: selectedSource === source.key }]"
-        :aria-pressed="selectedSource === source.key"
+        :aria-selected="selectedSource === source.key"
         @click="selectSource(source.key)"
       >
-        <span class="source-mark" aria-hidden="true">{{
-          source.key === 'catalog' ? 'A' : source.key === 'skills-sh' ? '▲' : 'S'
-        }}</span>
-        <span class="source-copy"
-          ><strong>{{ source.name }}</strong
-          ><span>{{ $t(`skill.marketplace.source.${source.key}`) }}</span></span
+        <span>{{ source.name }}</span>
+        <span v-if="source.key === 'catalog' && catalogTotal" class="source-count">{{ catalogTotal }}</span>
+        <meta-tag
+          v-if="source.key === 'skills-sh' && unavailableSources.has(source.key)"
+          density="compact"
+          tone="neutral"
+          >{{ $t('skill.marketplace.notConnectedShort') }}</meta-tag
         >
       </button>
     </div>
 
-    <div class="market-toolbar">
+    <p class="market-intro">{{ $t(`skill.marketplace.source.${selectedSource}`) }}</p>
+
+    <div v-if="loadError !== 'not_configured'" class="market-toolbar">
       <form class="market-search" @submit.prevent="resetAndLoad">
         <el-input
           v-model="query"
@@ -49,7 +44,7 @@
         class="market-sort"
         :placeholder="$t('skill.directory.allPublishers')"
         :aria-label="$t('skill.directory.allPublishers')"
-        @change="resetAndLoad"
+        @change="onPublisherChange"
       >
         <el-option
           v-for="publisher in publishers"
@@ -57,6 +52,17 @@
           :label="publisher.label"
           :value="publisher.namespace"
         />
+      </el-select>
+      <el-select
+        v-if="selectedSource === 'catalog' && categories.length"
+        v-model="category"
+        clearable
+        class="market-sort"
+        :placeholder="$t('skill.marketplace.allCategories')"
+        :aria-label="$t('skill.marketplace.allCategories')"
+        @change="resetAndLoad"
+      >
+        <el-option v-for="item in categories" :key="item" :label="item" :value="item" />
       </el-select>
       <el-select
         v-if="selectedSource !== 'skills-sh'"
@@ -77,7 +83,7 @@
         />
       </el-select>
     </div>
-    <div v-if="selectedSource === 'skills-sh'" class="market-collections">
+    <div v-if="selectedSource === 'skills-sh' && loadError !== 'not_configured'" class="market-collections">
       <filter-chip
         v-for="value in ['trending', 'hot', 'official', '']"
         :key="value"
@@ -86,9 +92,19 @@
         >{{ $t(`skill.marketplace.collection.${value || 'all'}`) }}</filter-chip
       >
     </div>
-    <div class="market-summary">
-      <span v-if="selectedSource === 'catalog'">{{ $t('skill.marketplace.results', { count: total }) }}</span>
-      <a :href="sourceDefaults[selectedSource].url" target="_blank" rel="noopener noreferrer"
+    <div class="market-summary" aria-live="polite">
+      <span v-if="selectedSource === 'catalog' && !loadError && !loading">
+        {{ $t('skill.marketplace.results', { count: total }) }}
+        <span v-if="total"> · {{ $t('skill.marketplace.showing', { start: pageStart, end: pageEnd }) }}</span>
+      </span>
+      <span v-else-if="selectedSource !== 'catalog' && !loadError && !loading && items.length">{{
+        $t('skill.marketplace.externalPage', { page })
+      }}</span>
+      <a
+        v-if="selectedSource !== 'catalog' && loadError !== 'not_configured'"
+        :href="sourceDefaults[selectedSource].url"
+        target="_blank"
+        rel="noopener noreferrer"
         >{{ $t('skill.marketplace.visit') }} ↗</a
       >
     </div>
@@ -96,6 +112,9 @@
       <marketplace-icon :size="32" aria-hidden="true" />
       <h3>{{ $t('skill.marketplace.notConnected') }}</h3>
       <p>{{ $t('skill.marketplace.notConnectedHint') }}</p>
+      <a :href="sourceDefaults[selectedSource].url" target="_blank" rel="noopener noreferrer"
+        >{{ $t('skill.marketplace.visit') }} ↗</a
+      >
     </div>
     <div v-else-if="loadError" class="market-empty" role="alert">
       <p>{{ $t('skill.directory.loadFailed') }}</p>
@@ -135,20 +154,24 @@
         </div>
       </article>
     </div>
-    <el-pagination
-      v-if="selectedSource === 'catalog' && total > pageSize"
-      class="market-pagination"
-      :current-page="page"
-      :page-size="pageSize"
-      :total="total"
-      :pager-count="5"
-      layout="prev, pager, next"
-      @current-change="changePage"
-    />
+    <div v-if="selectedSource === 'catalog' && total > pageSize" class="market-pagination">
+      <span>{{ $t('skill.marketplace.pageOf', { page, pages: Math.ceil(total / pageSize) }) }}</span>
+      <el-pagination
+        class="adc-pagination"
+        background
+        :current-page="page"
+        :page-size="pageSize"
+        :total="total"
+        :pager-count="5"
+        layout="prev, pager, next"
+        @current-change="changePage"
+      />
+    </div>
 
     <el-pagination
       v-if="selectedSource !== 'catalog' && !loadError && (page > 1 || hasMore)"
-      class="market-pagination"
+      class="market-pagination adc-pagination"
+      background
       :current-page="page"
       :page-count="hasMore ? page + 1 : page"
       :disabled="loading"
@@ -249,12 +272,13 @@ import { isSurfaceSupported } from '@/utils/skills/surfaceGate';
 
 const props = defineProps<{ siteId?: string; compact?: boolean }>();
 const emit = defineEmits<{ installed: [id: string] }>();
+const marketRoot = ref<HTMLElement | null>(null);
 const t = (key: string, params?: Record<string, unknown>) => i18n.global.t(key, params || {});
 const locale = computed(() => i18n.global.locale as string);
 type SourceKey = 'catalog' | 'skills-sh' | 'skillsmp';
 type Item = ISkillCatalogItem | ISkillMarketplaceEntry;
 const sourceDefaults = {
-  catalog: { name: 'AceDataCloud', url: 'https://studio.acedata.cloud/console/skills' },
+  catalog: { name: 'AceDataCloud', url: '' },
   'skills-sh': { name: 'skills.sh', url: 'https://skills.sh' },
   skillsmp: { name: 'SkillsMP', url: 'https://skillsmp.com' }
 };
@@ -265,16 +289,31 @@ const selectedItem = ref<Item | null>(null);
 const query = ref('');
 const sort = ref<'popular' | 'recent'>('popular');
 const namespace = ref('');
+const category = ref('');
+const facets = ref<{ namespace: string; category: string; count: number }[]>([]);
 const publishers = ref<{ namespace: string; label: string }[]>([]);
+const categories = computed(() =>
+  [
+    ...new Set(
+      facets.value.filter((item) => !namespace.value || item.namespace === namespace.value).map((item) => item.category)
+    )
+  ]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b))
+);
 const collection = ref('trending');
+const pageSize = 24;
 const page = ref(1);
 const total = ref(0);
+const catalogTotal = ref(0);
+const pageStart = computed(() => (total.value ? (page.value - 1) * pageSize + 1 : 0));
+const pageEnd = computed(() => Math.min(page.value * pageSize, total.value));
 const hasMore = ref(false);
-const pageSize = 12;
 const loading = ref(false);
 const installing = ref(false);
 const loadError = ref('');
 const installError = ref('');
+const unavailableSources = ref(new Set<SourceKey>());
 let requestId = 0;
 const isCatalog = (item: Item): item is ISkillCatalogItem => 'identifier' in item;
 const restrictedSurfaces = (item: ISkillCatalogItem) =>
@@ -303,6 +342,7 @@ const formatDate = (date: string) =>
 async function loadPublishers() {
   try {
     const { data } = await skillCatalogOperator.categories();
+    facets.value = data.namespaces;
     publishers.value = [
       ...new Map(
         data.namespaces.map((item) => [
@@ -322,6 +362,7 @@ async function load() {
   try {
     const params = {
       namespace: namespace.value || undefined,
+      category: category.value || undefined,
       q: query.value.trim() || undefined,
       sort: sort.value,
       limit: pageSize,
@@ -333,6 +374,7 @@ async function load() {
       if (id !== requestId) return;
       items.value = data.items;
       total.value = data.total;
+      if (!namespace.value && !category.value && !params.q) catalogTotal.value = data.total;
       hasMore.value = false;
     } else {
       const { data } = await skillMarketplaceOperator.list({
@@ -348,12 +390,18 @@ async function load() {
       total.value = 0;
       hasMore.value = data.has_more;
     }
+    unavailableSources.value = new Set(
+      [...unavailableSources.value].filter((source) => source !== selectedSource.value)
+    );
   } catch (error) {
     if (id === requestId) {
       items.value = [];
       total.value = 0;
       hasMore.value = false;
       loadError.value = (error as { response?: { data?: { code?: string } } }).response?.data?.code || 'unavailable';
+      if (loadError.value === 'not_configured') {
+        unavailableSources.value = new Set([...unavailableSources.value, selectedSource.value]);
+      }
     }
   } finally {
     if (id === requestId) loading.value = false;
@@ -363,9 +411,15 @@ function resetAndLoad() {
   page.value = 1;
   void load();
 }
+function onPublisherChange() {
+  category.value = '';
+  resetAndLoad();
+}
 function selectSource(key: SourceKey) {
+  if (selectedSource.value === key) return;
   selectedSource.value = key;
   namespace.value = '';
+  category.value = '';
   query.value = '';
   sort.value = 'popular';
   resetAndLoad();
@@ -377,6 +431,7 @@ function selectCollection(value: string) {
 function changePage(value: number) {
   page.value = value;
   void load();
+  marketRoot.value?.closest('.marketplace-page-content, .market-dialog-content')?.scrollTo({ top: 0 });
 }
 function closeDetail(value: boolean) {
   if (!value && !installing.value) selectedItem.value = null;
@@ -414,128 +469,64 @@ onMounted(() => {
 
 <style scoped>
 .marketplace {
-  --market-accent: #1d766b;
   min-width: 0;
   color: var(--el-text-color-primary);
   padding-bottom: 24px;
 }
-.market-hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 28px 30px;
-  border: 1px solid var(--app-border-subtle);
-  border-radius: var(--adc-radius-card, 16px);
-  background: var(--el-bg-color);
-}
-.eyebrow {
-  color: var(--market-accent);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.market-hero h2 {
-  margin: 8px 0 10px;
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 650;
-  letter-spacing: -0.035em;
-  line-height: 1.2;
-}
-.market-hero p {
-  margin: 0;
-  color: var(--el-text-color-secondary);
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 650px;
-}
-.hero-symbol {
-  width: 76px;
-  height: 76px;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  border-radius: 22px;
-  color: var(--market-accent);
-  background: color-mix(in srgb, var(--market-accent) 9%, transparent);
-  transform: rotate(-6deg);
-}
 .market-sources {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 20px 0 24px;
-}
-.source-card {
-  --source-color: #277467;
   display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--app-border-subtle);
+}
+.source-tab {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
-  padding: 17px 16px;
-  text-align: left;
-  background: var(--el-bg-color);
-  border: 1px solid var(--app-border-subtle);
-  border-radius: 12px;
-  color: inherit;
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
-}
-.source-card.skills-sh {
-  --source-color: var(--el-text-color-primary);
-}
-.source-card.skillsmp {
-  --source-color: #996124;
-}
-.source-card.active {
-  border-color: var(--source-color);
-  background: color-mix(in srgb, var(--source-color) 5%, var(--el-bg-color));
-  box-shadow: inset 0 -2px var(--source-color);
-}
-.source-card:hover {
-  border-color: var(--source-color);
-}
-.source-mark {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  background: color-mix(in srgb, var(--source-color) 10%, transparent);
-  color: var(--source-color);
-  border-radius: 9px;
-  font-size: 21px;
-  font-weight: 750;
-}
-.source-copy {
-  display: flex;
-  flex: 1;
-  min-width: 0;
-  flex-direction: column;
-  gap: 4px;
-}
-.source-copy strong {
-  font-size: 14px;
-}
-.source-copy > span {
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 11px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
   color: var(--el-text-color-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.source-tab:hover {
+  color: var(--el-text-color-primary);
+}
+.source-tab.active {
+  color: var(--el-text-color-primary);
+  border-bottom-color: var(--el-color-primary);
+  font-weight: 600;
+}
+.source-count {
+  padding: 1px 7px;
+  border-radius: var(--adc-radius-full);
+  background: var(--el-fill-color);
+  color: var(--el-text-color-regular);
   font-size: 11px;
-  line-height: 1.4;
+  font-weight: 500;
+}
+.market-intro {
+  margin: 12px 0 18px;
+  color: var(--el-text-color-secondary);
+  font-size: 13px;
 }
 .market-toolbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 .market-search {
   display: flex;
-  flex: 1;
+  flex: 1 1 310px;
   gap: 8px;
+  min-width: 0;
 }
 .market-sort {
-  width: 165px;
+  width: 150px;
 }
 .market-collections {
   display: flex;
@@ -547,9 +538,9 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 18px 0 14px;
+  padding: 18px 0 12px;
   color: var(--el-text-color-secondary);
-  font-size: 12px;
+  font-size: 13px;
   flex-wrap: wrap;
 }
 .market-summary a {
@@ -570,14 +561,18 @@ a:hover {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: var(--el-bg-color);
-  padding: 19px 20px 15px;
+  background: var(--el-card-bg-color);
+  padding: 18px;
   border: 1px solid var(--app-border-subtle);
-  border-radius: 12px;
-  transition: border-color 0.15s;
+  border-radius: var(--adc-radius-control);
+  box-shadow: var(--app-shadow-xs);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 .skill-card:hover {
-  border-color: var(--el-border-color-darker);
+  border-color: var(--el-border-color);
+  box-shadow: var(--app-shadow-sm);
 }
 .skill-card-top {
   display: flex;
@@ -683,10 +678,20 @@ a:hover {
 }
 .market-pagination {
   display: flex;
-  gap: 12px;
   align-items: center;
-  margin-top: 24px;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px solid var(--app-border-subtle);
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+}
+.market-pagination :deep(.adc-pagination) {
+  margin-left: auto;
+}
+.market-pagination.adc-pagination {
+  justify-content: flex-end;
 }
 .skeleton {
   min-height: 218px;
@@ -767,9 +772,6 @@ a:hover {
 .install-error {
   color: var(--el-color-danger);
 }
-.compact .market-hero {
-  padding: 20px;
-}
 .compact .market-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -784,22 +786,11 @@ a:focus-visible {
   }
 }
 @media (max-width: 680px) {
-  .market-hero {
-    padding: 22px 20px;
-  }
-  .hero-symbol {
-    display: none;
-  }
   .market-sources {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin: 14px 0 18px;
+    margin-right: -2px;
   }
-  .source-card {
-    padding: 12px;
-  }
-  .source-copy {
-    gap: 2px;
+  .source-tab {
+    padding: 11px 10px;
   }
   .market-toolbar {
     flex-wrap: wrap;
@@ -808,7 +799,8 @@ a:focus-visible {
     flex-basis: 100%;
   }
   .market-sort {
-    width: 100%;
+    flex: 1 1 calc(50% - 6px);
+    min-width: 130px;
   }
   .market-grid,
   .compact .market-grid {
@@ -822,6 +814,12 @@ a:focus-visible {
   }
   .detail-facts {
     grid-template-columns: 1fr;
+  }
+  .market-pagination {
+    flex-wrap: wrap;
+  }
+  .market-pagination :deep(.adc-pagination) {
+    margin: 0 auto;
   }
 }
 </style>

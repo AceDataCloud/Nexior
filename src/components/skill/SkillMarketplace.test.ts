@@ -84,7 +84,7 @@ describe('SkillMarketplace', () => {
       })
     );
     const wrapper = mountMarket();
-    await wrapper.get('.source-card.skillsmp').trigger('click');
+    await wrapper.get('.source-tab.skillsmp').trigger('click');
     await flushPromises();
     resolveCatalog({ data: { items: [catalog], total: 1 } });
     await flushPromises();
@@ -96,10 +96,21 @@ describe('SkillMarketplace', () => {
     api.externalList.mockRejectedValue({ response: { data: { code: 'not_configured' } } });
     const wrapper = mountMarket();
     await flushPromises();
-    await wrapper.get('.source-card.skills-sh').trigger('click');
+    await wrapper.get('.source-tab.skills-sh').trigger('click');
     await flushPromises();
     expect(wrapper.text()).toContain('skill.marketplace.notConnected');
+    expect(wrapper.get('.source-tab.skills-sh').text()).toContain('skill.marketplace.notConnectedShort');
+    expect(wrapper.find('.market-toolbar').exists()).toBe(false);
     expect(wrapper.findAll('.skill-card')).toHaveLength(0);
+    wrapper.unmount();
+  });
+  it('exposes the full catalog count and uses the Studio pagination style', async () => {
+    api.list.mockResolvedValue({ data: { items: [structuredClone(catalog)], total: 429 } });
+    const wrapper = mountMarket();
+    await flushPromises();
+    expect(api.list.mock.calls[0][0]).toMatchObject({ limit: 24, offset: 0 });
+    expect(wrapper.get('.source-count').text()).toBe('429');
+    expect(wrapper.find('.market-pagination .adc-pagination').exists()).toBe(true);
     wrapper.unmount();
   });
   it('passes site ownership to catalog browsing and install', async () => {
@@ -120,7 +131,7 @@ describe('SkillMarketplace', () => {
   it('requests the all-time feed when All is selected', async () => {
     const wrapper = mountMarket();
     await flushPromises();
-    await wrapper.get('.source-card.skills-sh').trigger('click');
+    await wrapper.get('.source-tab.skills-sh').trigger('click');
     await flushPromises();
     await wrapper.findAll('.market-collections button').at(-1)!.trigger('click');
     await flushPromises();
@@ -131,7 +142,7 @@ describe('SkillMarketplace', () => {
     const wrapper = mountMarket();
     await flushPromises();
     api.externalList.mockRejectedValue(new Error('unavailable'));
-    await wrapper.get('.source-card.skillsmp').trigger('click');
+    await wrapper.get('.source-tab.skillsmp').trigger('click');
     await flushPromises();
     expect(wrapper.findAll('.skill-card')).toHaveLength(0);
     expect(wrapper.get('[role="alert"]').text()).toContain('skill.marketplace.retry');
