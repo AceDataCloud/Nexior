@@ -1599,6 +1599,10 @@ describe('chat/ScheduledTasks', () => {
 
       const wrapper = withToken();
       const vm = wrapper.vm as unknown as Vm;
+      await flushPromises();
+      // This test cares about the explicit runs load. An unrelated task-list
+      // failure during mount must not count as that load's error toast.
+      toast.mockClear();
 
       let sawSkeleton = false;
       const stopWatch = wrapper.vm.$watch('allRunsLoading', (v: boolean) => {
