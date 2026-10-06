@@ -178,7 +178,7 @@
         <div v-if="activeTab === 'tasks'" class="header-actions">
           <div class="task-view-control">
             <label for="scheduled-task-view">{{ $t('chat.scheduledTasks.view') }}</label>
-            <el-select v-model="taskView" class="task-view-select" size="small" input-id="scheduled-task-view">
+            <el-select v-model="taskView" class="task-view-select" input-id="scheduled-task-view">
               <el-option :label="$t('chat.scheduledTasks.view.compact')" value="compact" />
               <el-option :label="$t('chat.scheduledTasks.view.rich')" value="rich" />
             </el-select>
@@ -2153,13 +2153,13 @@ export default defineComponent({
 .task-view-control {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 8px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
   white-space: nowrap;
 }
 .task-view-select {
-  width: 112px;
+  width: 144px;
 }
 .title {
   font-size: 20px;
@@ -2435,6 +2435,9 @@ export default defineComponent({
   }
   .header-actions {
     margin-left: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .task-top {
     flex-wrap: wrap;
