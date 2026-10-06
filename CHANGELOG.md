@@ -1,8 +1,36 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 04 Oct 2026 21:03:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 06 Oct 2026 20:26:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.0
+
+Tue, 06 Oct 2026 20:26:27 GMT
+
+### Minor changes
+
+- Add ACE Tier 4 access to GPT-5.6 Sol Fast in the chat model picker. (dev@acedata.cloud)
+
+### Patches
+
+- Render AI Chat plans as a live checklist with clear pending, active, and completed steps. (dev@acedata.cloud)
+- Use consistent 15px spacing between Studio cards and card sections across desktop and mobile layouts. (dev@acedata.cloud)
+- Use shared card spacing classes for Studio card layouts and section margins. (dev@acedata.cloud)
+- Hide the Browser Devices console menu item in the iOS and Android Studio apps. (dev@acedata.cloud)
+- Move iOS account deletion from the avatar menu into General Settings. (dev@acedata.cloud)
+- Keep Studio console cards separated when their columns stack on mobile screens. (dev@acedata.cloud)
+- Keep settings dropdowns and account menus visible above mobile dialogs and the bottom dock. (dev@acedata.cloud)
+- Open scheduled task details directly from a URL and restore the task after reload. (dev@acedata.cloud)
+- Match the scheduled task detail edit action to the adjacent icon controls. (dev@acedata.cloud)
+- Simplify scheduled task details with shared back navigation, consistent typography, and dedicated run history. (dev@acedata.cloud)
+- Show scheduled task details as a full-width page with the task list below. (dev@acedata.cloud)
+- Make the scheduled task view selector easier to read and use. (dev@acedata.cloud)
+- Show connector icons beside scheduled task titles and add compact and rich task views. (dev@acedata.cloud)
+- Show ten scheduled tasks per page in Studio. (dev@acedata.cloud)
+- Use shared card spacing styles from core 0.28.2 while keeping Studio card gaps at 15px. (dev@acedata.cloud)
+- Show more skills per page and align Studio marketplace tabs, cards, and pagination with console styling. (dev@acedata.cloud)
+- Clarify actual order amounts, commission bases, and total earnings in referral history. (dev@acedata.cloud)
 
 ## 3.379.0
 
