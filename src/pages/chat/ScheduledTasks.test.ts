@@ -14,6 +14,8 @@ import {
 } from '@/operators/scheduledTasks';
 import type { IAuthorizableSkill, IScheduledRun, IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
+import { taskConnectorIcons } from './scheduledTaskConnectors';
+import type { IConnectorCatalogItem } from '@/operators/connection';
 
 const copyToClipboard = vi.hoisted(() => vi.fn());
 vi.mock('copy-to-clipboard', () => ({ default: copyToClipboard }));
@@ -520,12 +522,76 @@ describe('chat/ScheduledTasks', () => {
 
     await wrapper.setData({ tasks: [editedTask] });
 
+    await wrapper.setData({ taskView: 'rich' });
+
     expect(wrapper.find('.task-id-text').text()).toBe('common.entity.id: task-1');
 
     await wrapper.get('.task-id button[aria-label="common.button.copy"]').trigger('click');
 
     expect(copyToClipboard).toHaveBeenCalledWith('task-1', expect.anything());
     expect((wrapper.vm as unknown as { showRunHistory: boolean }).showRunHistory).toBe(false);
+  });
+
+  it('defaults to compact cards and switches to the rich details', async () => {
+    localStorage.removeItem('scheduled-tasks-view');
+    const wrapper = mountComponent();
+    await wrapper.setData({ tasks: [editedTask] });
+
+    expect((wrapper.vm as unknown as { taskView: string }).taskView).toBe('compact');
+    expect(wrapper.find('.task-id').exists()).toBe(false);
+    expect(wrapper.find('.task-prompt').exists()).toBe(false);
+    expect(wrapper.find('.task-actions').exists()).toBe(true);
+
+    await wrapper.setData({ taskView: 'rich' });
+    expect((wrapper.vm as unknown as { taskView: string }).taskView).toBe('rich');
+    expect(wrapper.get('.task-id').text()).toContain('task-1');
+    expect(wrapper.get('.task-prompt').text()).toBe(editedTask.template.question);
+  });
+
+  it('shows declared connector icons without guessing from prompt text', () => {
+    const catalog = [
+      {
+        identifier: 'google/gmail',
+        slug: 'gmail',
+        name: 'Gmail',
+        icon_url: '/gmail.svg',
+        acedata_service_alias: '',
+        connection_methods: []
+      },
+      {
+        identifier: 'github/github',
+        slug: 'github',
+        name: 'GitHub',
+        icon_url: '/github.svg',
+        acedata_service_alias: '',
+        connection_methods: []
+      }
+    ] as unknown as IConnectorCatalogItem[];
+    const task = {
+      ...editedTask,
+      template: { ...editedTask.template, question: 'Read Gmail and GitHub', skills: ['daily-report'] },
+      unattended_policy: {
+        allowed_skills: ['daily-report'],
+        connection_bindings: [{ connector_identifier: 'google/gmail', connection_id: 'mail-1' }]
+      }
+    } satisfies IScheduledTask;
+    const skills = [
+      {
+        slug: 'daily-report',
+        name: 'Daily report',
+        description: '',
+        required_connections: ['github'],
+        allowed_tools: [],
+        source: 'user',
+        connected: true,
+        missing_connections: []
+      }
+    ] as IAuthorizableSkill[];
+
+    expect(taskConnectorIcons(task, skills, [], [], catalog).map((icon) => icon.name)).toEqual(['Gmail', 'GitHub']);
+    expect(
+      taskConnectorIcons({ ...editedTask, template: { ...editedTask.template, skills: [] } }, [], [], [], catalog)
+    ).toEqual([]);
   });
 
   it('opens a fresh form when New is clicked after editing a task', async () => {
