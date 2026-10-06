@@ -249,7 +249,7 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
 
     .showcase-card {
       width: 100%;
-      margin-bottom: var(--app-card-gap);
+      margin-bottom: var(--adc-card-gap);
       break-inside: avoid;
 
       &.landscape {
