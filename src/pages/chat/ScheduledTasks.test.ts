@@ -265,6 +265,7 @@ describe('chat/ScheduledTasks', () => {
           stubs: {
             ElCard: { template: '<div><slot /></div>' },
             ElDrawer: { template: '<div><slot /></div>' },
+            ElTooltip: { template: '<span><slot /></span>' },
             MetaTag: false,
             StatusBadge: false
           },
@@ -332,14 +333,15 @@ describe('chat/ScheduledTasks', () => {
       expect(wrapper.text()).not.toContain(editedTask.name);
     });
 
-    it('shows the selected task above the list and retains the edit action', async () => {
+    it('shows the selected task above the list with an icon edit action', async () => {
       vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
       vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
       const { wrapper } = mountAt(editedTask.id);
       await flushPromises();
 
       expect(wrapper.find('.detail-card').exists()).toBe(true);
-      expect(wrapper.find('.detail-edit').exists()).toBe(true);
+      expect(wrapper.find('.detail-actions .icon-action[aria-label="common.button.edit"]').exists()).toBe(true);
+      expect(wrapper.find('.detail-actions .el-button--primary').exists()).toBe(false);
       expect(wrapper.find('.task-list').text()).toContain(editedTask.name);
       expect(wrapper.find('.detail-card').text()).toContain(editedTask.template.question);
       // Compact cards intentionally omit the prompt; the full detail preserves it.
