@@ -121,9 +121,8 @@ export type IScheduledRunStatus = 'queued' | 'running' | 'success' | 'failed' | 
  *  would never end. Seconds, matching `scheduled_at`. */
 export const RUN_PENDING_MAX_AGE_SECONDS = 55 * 60;
 
-/** Is this run still expected to change on its own? A pending run has no
- *  `conversation_id` — the worker backfills it only once the agent loop
- *  returns — so the UI polls while any of these are on screen.
+/** Is this run still expected to change on its own? Older pending runs have
+ *  no `conversation_id`; new ones link to a conversation from the start.
  *
  *  Every other status is terminal — `indeterminate` (the judge abstained) and
  *  `skipped` (the device was off) included. Neither will ever change on its
@@ -374,9 +373,9 @@ class ScheduledTasksOperator {
     await axios.post(BASE, { action: 'delete', id }, { headers: headers(token) });
   }
 
-  // Fire a task immediately, out of band from its schedule. Returns the id of
-  // the freshly-spawned run so the caller can refresh the run history.
-  async triggerTask(token: string, id: string): Promise<{ run_id?: string }> {
+  // Fire a task immediately, out of band from its schedule. New workers return
+  // the reserved conversation id so the caller can open it at once.
+  async triggerTask(token: string, id: string): Promise<{ run_id?: string; conversation_id?: string }> {
     const { data } = await axios.post(BASE, { action: 'trigger', id }, { headers: headers(token) });
     return data ?? {};
   }

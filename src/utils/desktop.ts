@@ -79,7 +79,7 @@ export interface SchedulerBridge {
   /** Run a device-bound task now, through the daemon. The cloud's own trigger
    *  runs the loop server-side with no client attached, so it cannot execute
    *  local tools. Optional: older desktop shells don't have it. */
-  runNow?(taskId: string): Promise<{ ok: boolean; reason?: string }>;
+  runNow?(taskId: string): Promise<{ ok: boolean; reason?: string; conversation_id?: string }>;
 }
 
 declare global {

@@ -63,6 +63,7 @@ export interface LocalTaskSummary {
 
 export interface ClaimedRun {
   run_id: string;
+  conversation_id?: string;
   question: string;
   model: string;
   max_turns?: number;

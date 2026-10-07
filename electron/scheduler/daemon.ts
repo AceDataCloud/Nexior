@@ -1,4 +1,4 @@
-import { api, UnauthorizedError, type LocalTaskSummary } from './api';
+import { api, UnauthorizedError, type ClaimedRun, type LocalTaskSummary } from './api';
 import { getDeviceId, getSiteOrigin, getToken, getLastSeenAt, setLastSeenAt } from './credentials';
 import { missedTicks, nextTick } from './schedule';
 import { executeRun } from './runner';
@@ -176,27 +176,35 @@ export class SchedulerDaemon {
     try {
       const claim = await api.claimRun(task.id, deviceId, scheduledAt, siteOrigin, manual);
       if (claim.already_running) return;
-
-      const outcome = await executeRun(claim, { siteOrigin: claim.site_origin ?? siteOrigin, scheduledTaskId: task.id });
-      await api.finishRun(
-        {
-          run_id: claim.run_id,
-          device_id: deviceId,
-          conversation_id: outcome.conversationId,
-          terminal_reason: outcome.terminalReason,
-          usage: outcome.usage,
-          answer: outcome.answer,
-          error_code: outcome.errorCode,
-          trace_id: outcome.traceId
-        },
-        siteOrigin
-      );
+      await this.finishClaimedRun(task, claim, deviceId, siteOrigin);
     } catch (err) {
       if (err instanceof UnauthorizedError) this.setState('signed_out');
       else console.warn(`[scheduler] task ${task.id} failed:`, err instanceof Error ? err.message : err);
     } finally {
       this.inFlight.delete(task.id);
     }
+  }
+
+  private async finishClaimedRun(
+    task: LocalTaskSummary,
+    claim: ClaimedRun,
+    deviceId: string,
+    siteOrigin: string | undefined
+  ): Promise<void> {
+    const outcome = await executeRun(claim, { siteOrigin: claim.site_origin ?? siteOrigin, scheduledTaskId: task.id });
+    await api.finishRun(
+      {
+        run_id: claim.run_id,
+        device_id: deviceId,
+        conversation_id: outcome.conversationId,
+        terminal_reason: outcome.terminalReason,
+        usage: outcome.usage,
+        answer: outcome.answer,
+        error_code: outcome.errorCode,
+        trace_id: outcome.traceId
+      },
+      siteOrigin
+    );
   }
 
   /** Does this device hold any local task? Drives whether the app stays
@@ -222,7 +230,7 @@ export class SchedulerDaemon {
    * Refreshes first so a task created moments ago — before the next poll — is
    * already known here.
    */
-  async runNow(taskId: string): Promise<{ ok: boolean; reason?: string }> {
+  async runNow(taskId: string): Promise<{ ok: boolean; reason?: string; conversation_id?: string }> {
     if (!getToken()) return { ok: false, reason: 'signed_out' };
     if (!this.tracked.has(taskId)) {
       try {
@@ -234,8 +242,29 @@ export class SchedulerDaemon {
     const entry = this.tracked.get(taskId);
     if (!entry) return { ok: false, reason: 'not_on_this_device' };
     if (this.inFlight.has(taskId)) return { ok: false, reason: 'already_running' };
-    void this.runOne(entry.task, nowSec(), true);
-    return { ok: true };
+    this.inFlight.add(taskId);
+    const deviceId = getDeviceId();
+    const siteOrigin = getSiteOrigin();
+    try {
+      // Claim is quick and returns the reserved conversation. The agent loop
+      // continues in the daemon after the renderer navigates to that URL.
+      const claim = await api.claimRun(taskId, deviceId, nowSec(), siteOrigin, true);
+      if (claim.already_running) {
+        this.inFlight.delete(taskId);
+        return { ok: false, reason: 'already_running' };
+      }
+      void this.finishClaimedRun(entry.task, claim, deviceId, siteOrigin)
+        .catch((err) => {
+          if (err instanceof UnauthorizedError) this.setState('signed_out');
+          else console.warn(`[scheduler] task ${taskId} failed:`, err instanceof Error ? err.message : err);
+        })
+        .finally(() => this.inFlight.delete(taskId));
+      return { ok: true, conversation_id: claim.conversation_id };
+    } catch (err) {
+      this.inFlight.delete(taskId);
+      if (err instanceof UnauthorizedError) this.setState('signed_out');
+      return { ok: false, reason: err instanceof UnauthorizedError ? 'signed_out' : 'trigger_error' };
+    }
   }
 }
 

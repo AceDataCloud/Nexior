@@ -78,6 +78,7 @@ export async function executeRun(
     response = await api.chat(
       {
         action: 'chat',
+        ...(claim.conversation_id ? { id: claim.conversation_id } : {}),
         model: claim.model,
         message: claim.question,
         messages: [{ role: 'user', content: claim.question }],
@@ -101,7 +102,7 @@ export async function executeRun(
     return { errorCode: classifyError(err) };
   }
 
-  let conversationId = response.conversation_id ?? response.id;
+  let conversationId = response.conversation_id ?? response.id ?? claim.conversation_id;
 
   for (let round = 0; round < maxToolRounds; round += 1) {
     const pending = response.pending_client_tools ?? [];

@@ -18,6 +18,7 @@ import { taskConnectorIcons } from './scheduledTaskConnectors';
 import type { IConnectorCatalogItem } from '@/operators/connection';
 
 const copyToClipboard = vi.hoisted(() => vi.fn());
+const routerPush = vi.fn();
 vi.mock('copy-to-clipboard', () => ({ default: copyToClipboard }));
 
 // Surface + desktop bridge are module-level singletons, so local-execution
@@ -84,6 +85,7 @@ const mountComponent = (credential: { token: string } | null = null, extraStubs:
       mocks: {
         $t: (key: string) => errorMessages[key] ?? key,
         $te: (key: string) => key in errorMessages,
+        $router: { push: routerPush },
         $store: {
           state: {
             // `token` is a computed off the store — setData('token') is a no-op.
@@ -105,6 +107,7 @@ describe('chat/ScheduledTasks — local execution', () => {
   };
 
   afterEach(() => {
+    routerPush.mockClear();
     surfaceMocks.isDesktop.mockReturnValue(false);
     surfaceMocks.getSurface.mockReturnValue('web');
     desktopMocks.desktopBridge.mockReturnValue(undefined);
@@ -203,6 +206,33 @@ describe('chat/ScheduledTasks — local execution', () => {
 
       expect(triggerTask).toHaveBeenCalledWith('tok', editedTask.id);
       expect(runNow).not.toHaveBeenCalled();
+    });
+
+    it('opens the new cloud conversation as soon as trigger returns', async () => {
+      vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue({
+        run_id: 'manual-1',
+        conversation_id: 'manual-1'
+      });
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(editedTask);
+
+      expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/manual-1');
+    });
+
+    it('opens the reserved local conversation after the daemon claims it', async () => {
+      asDesktop();
+      desktopMocks.desktopBridge.mockReturnValue({
+        scheduler: {
+          identity: vi.fn().mockResolvedValue(IDENTITY),
+          runNow: vi.fn().mockResolvedValue({ ok: true, conversation_id: 'local-run-1' })
+        }
+      });
+      const wrapper = mountComponent({ token: 'tok' });
+
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(localTask);
+
+      expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/local-run-1');
     });
 
     it('refuses rather than running a local task from the wrong machine', async () => {

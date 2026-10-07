@@ -812,10 +812,8 @@ type TaskView = 'compact' | 'rich';
 // DEFAULT_MAX_TURNS; the worker clamps to [1, 500].
 const DEFAULT_SCHEDULED_MAX_TURNS = 500;
 
-// A run holds no `conversation_id` until the worker backfills it after the
-// agent loop returns, so a pending row is neither clickable nor accurate until
-// then. Nothing pushes that transition to the client, so poll while any
-// pending row is on screen. The give-up rule lives with `isRunWorthPolling`.
+// Poll pending rows for status and transcript updates. Older runs may also gain
+// their conversation link only after the agent loop returns.
 const RUN_POLL_INTERVAL_MS = 12 * 1000;
 // Stop after this many consecutive failures. A poll is silent by design, so
 // without a circuit breaker an expired token would retry unseen every 12s for
@@ -1872,6 +1870,7 @@ export default defineComponent({
       if (this.triggeringId) return;
       this.triggeringId = task.id;
       try {
+        let conversationId: string | undefined;
         if (task.execution === 'local') {
           const runNow = desktopBridge()?.scheduler?.runNow;
           if (!runNow) {
@@ -1893,8 +1892,15 @@ export default defineComponent({
             ElMessage.warning(this.$t(key) as string);
             return;
           }
+          conversationId = result.conversation_id;
         } else {
-          await scheduledTasksOperator.triggerTask(this.token!, task.id);
+          const result = await scheduledTasksOperator.triggerTask(this.token!, task.id);
+          conversationId = result?.conversation_id;
+        }
+        if (conversationId) {
+          const modelGroup = CHAT_MODELS.find((model) => model.name === task.template.model)?.modelGroup;
+          this.openConversation(conversationId, modelGroup);
+          return;
         }
         ElMessage.success(this.$t('chat.scheduledTasks.triggerSuccess') as string);
         // If the detail page is open on this task, refresh it so the
@@ -1929,15 +1935,17 @@ export default defineComponent({
     },
     openRun(run: IScheduledRun) {
       if (!run.conversation_id) return;
+      this.openConversation(run.conversation_id, run.conversation_model_group);
+    },
+    openConversation(conversationId: string, runGroup?: string) {
       // The route prefix must be a chat group that actually owns a
       // /<group>/conversations/:id route. Prefer the run's own conversation
       // group when it is one we can open; otherwise fall back to the current
       // chat group (a modelGroup object — use its `.name`), then to chatgpt.
       const known: string[] = this.modelGroups.map((g) => g.name);
-      const runGroup = run.conversation_model_group;
       const fallback = this.$store.state.chat?.modelGroup?.name || 'chatgpt';
       const modelGroup = runGroup && (known.length === 0 || known.includes(runGroup)) ? runGroup : fallback;
-      this.$router.push(`/${modelGroup}/conversations/${run.conversation_id}`);
+      void this.$router.push(`/${modelGroup}/conversations/${encodeURIComponent(conversationId)}`);
     },
     stateTagType(state: string) {
       return state === 'enabled' ? 'success' : state === 'error' ? 'danger' : 'info';
