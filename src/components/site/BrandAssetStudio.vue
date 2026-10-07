@@ -22,6 +22,7 @@
   >
     <template v-if="step === 'crop'">
       <div v-if="imageSrc" class="cropper-shell">
+        <!-- Let artwork fit the fixed output ratio with transparent margins. -->
         <Cropper
           ref="cropperRef"
           class="cropper"
@@ -30,7 +31,7 @@
           :stencil-component="rectangleStencil"
           :default-size="defaultSizePercent"
           :resize-image="{ adjustStencil: false }"
-          image-restriction="fit-area"
+          image-restriction="none"
         />
         <el-button-group class="toolbar">
           <el-tooltip :content="$t('site.imageCropper.zoomIn')">
@@ -174,7 +175,7 @@ import {
   ElSwitch,
   ElTooltip
 } from 'element-plus';
-import { Cropper, RectangleStencil } from 'vue-advanced-cropper';
+import { Cropper, RectangleStencil, type CropperResult } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
 import { httpClient } from '@/operators/common';
@@ -343,10 +344,17 @@ export default defineComponent({
       );
     },
     async croppedBlob(): Promise<Blob> {
-      const result = (
-        this.$refs.cropperRef as { getResult?: () => { canvas: HTMLCanvasElement | null } } | undefined
-      )?.getResult?.();
+      const result = (this.$refs.cropperRef as { getResult?: () => CropperResult } | undefined)?.getResult?.();
       if (!result?.canvas) throw new Error(this.$t('site.imageCropper.noImage') as string);
+      const { coordinates, image } = result;
+      if (
+        coordinates.left >= image.width ||
+        coordinates.top >= image.height ||
+        coordinates.left + coordinates.width <= 0 ||
+        coordinates.top + coordinates.height <= 0
+      ) {
+        throw new Error(this.$t('site.imageCropper.noImage') as string);
+      }
       const output = document.createElement('canvas');
       const scale = Math.max(3, Math.ceil(512 / Math.max(this.width, this.height)));
       output.width = this.width * scale;
@@ -461,9 +469,22 @@ export default defineComponent({
 .cropper {
   width: 100%;
   height: 380px;
-  background: #151719;
+  background: #f3f4f6;
   border-radius: 6px;
   overflow: hidden;
+
+  :deep(.vue-advanced-cropper__background) {
+    background-color: #f3f4f6;
+    background-image:
+      linear-gradient(45deg, #d5d9de 25%, transparent 25%), linear-gradient(-45deg, #d5d9de 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d5d9de 75%), linear-gradient(-45deg, transparent 75%, #d5d9de 75%);
+    background-size: 20px 20px;
+    background-position:
+      0 0,
+      0 10px,
+      10px -10px,
+      10px 0;
+  }
 }
 
 .toolbar,
