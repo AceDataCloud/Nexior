@@ -7,82 +7,18 @@
     append-to-body
     @closed="onClosed"
   >
-    <div v-if="imageSrc" class="cropper-shell">
-      <Cropper
-        ref="cropperRef"
-        class="cropper"
-        :src="imageSrc"
-        :stencil-props="stencilProps"
-        :stencil-component="stencilComponent"
-        :default-size="defaultSizePercent"
-        :resize-image="{ adjustStencil: false }"
-        image-restriction="fit-area"
-      />
-      <div class="toolbar">
-        <el-button-group>
-          <el-tooltip :content="$t('site.imageCropper.zoomIn')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.zoomIn')"
-              :title="$t('site.imageCropper.zoomIn')"
-              @click="onZoom(1.25)"
-            >
-              <zoom-in :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('site.imageCropper.zoomOut')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.zoomOut')"
-              :title="$t('site.imageCropper.zoomOut')"
-              @click="onZoom(0.8)"
-            >
-              <zoom-out :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('site.imageCropper.rotateLeft')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.rotateLeft')"
-              :title="$t('site.imageCropper.rotateLeft')"
-              @click="onRotate(-90)"
-            >
-              <refresh-left :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('site.imageCropper.rotateRight')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.rotateRight')"
-              :title="$t('site.imageCropper.rotateRight')"
-              @click="onRotate(90)"
-            >
-              <refresh-right :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('site.imageCropper.flipHorizontal')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.flipHorizontal')"
-              :title="$t('site.imageCropper.flipHorizontal')"
-              @click="onFlip(true, false)"
-            >
-              <sort :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('site.imageCropper.replace')" placement="top">
-            <el-button
-              size="large"
-              :aria-label="$t('site.imageCropper.replace')"
-              :title="$t('site.imageCropper.replace')"
-              @click="openPicker"
-            >
-              <image-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-            </el-button>
-          </el-tooltip>
-        </el-button-group>
-      </div>
-    </div>
+    <image-cropper-viewport
+      v-if="imageSrc"
+      ref="cropperRef"
+      class="image-cropper"
+      :src="imageSrc"
+      :shape="shape"
+      :aspect-ratio="aspectRatio"
+      :labels="cropperLabels"
+      control-size="large"
+      checkerboard
+      @replace="openPicker"
+    />
     <div v-else class="dropzone" @click="openPicker" @drop.prevent="onDrop" @dragover.prevent>
       <el-icon class="dropzone-icon"><Upload :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
       <p class="dropzone-text">{{ $t('site.imageCropper.dropHere') }}</p>
@@ -101,18 +37,14 @@
 
 <script lang="ts">
 import {
-  ZoomInIcon as ZoomIn,
-  ZoomOutIcon as ZoomOut,
-  UndoIcon as RefreshLeft,
-  RedoIcon as RefreshRight,
-  ImageIcon,
-  UploadIcon as Upload,
-  SortIcon as Sort
-} from '@acedatacloud/core/icons/components';
+  ImageCropperViewport,
+  type ImageCropperViewportHandle
+} from '@acedatacloud/core/components/image-cropper-viewport';
+import { UploadIcon as Upload } from '@acedatacloud/core/icons/components';
+import '@acedatacloud/core/image-cropper.css';
 import { defineComponent, PropType } from 'vue';
-import { ElDialog, ElButton, ElButtonGroup, ElIcon, ElTooltip, ElMessage } from 'element-plus';
+import { ElDialog, ElButton, ElIcon, ElMessage } from 'element-plus';
 
-import { Cropper, CircleStencil, RectangleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 import { httpClient } from '@/operators/common';
 
@@ -123,17 +55,9 @@ export default defineComponent({
   components: {
     ElDialog,
     ElButton,
-    ElButtonGroup,
     ElIcon,
-    ElTooltip,
-    ZoomIn,
-    ZoomOut,
-    RefreshLeft,
-    RefreshRight,
-    ImageIcon,
-    Upload,
-    Sort,
-    Cropper
+    ImageCropperViewport,
+    Upload
   },
   props: {
     modelValue: {
@@ -199,25 +123,14 @@ export default defineComponent({
         this.$emit('update:modelValue', value);
       }
     },
-    stencilComponent() {
-      return this.shape === 'circle' ? CircleStencil : RectangleStencil;
-    },
-    stencilProps() {
-      // Circle stencil ignores aspect ratio. Rectangle uses provided ratio.
-      if (this.shape === 'circle') {
-        return { aspectRatio: 1 };
-      }
-      return { aspectRatio: this.aspectRatio };
-    },
-    defaultSizePercent() {
-      // Start with the stencil filling 90 % of the image's longer edge.
-      return ({ imageSize }: { imageSize: { width: number; height: number } }) => {
-        const ratio = this.aspectRatio;
-        const w = imageSize.width * 0.9;
-        const h = w / ratio;
-        if (h <= imageSize.height * 0.9) return { width: w, height: h };
-        const h2 = imageSize.height * 0.9;
-        return { width: h2 * ratio, height: h2 };
+    cropperLabels() {
+      return {
+        zoomIn: this.$t('site.imageCropper.zoomIn') as string,
+        zoomOut: this.$t('site.imageCropper.zoomOut') as string,
+        rotateLeft: this.$t('site.imageCropper.rotateLeft') as string,
+        rotateRight: this.$t('site.imageCropper.rotateRight') as string,
+        flipHorizontal: this.$t('site.imageCropper.flipHorizontal') as string,
+        replace: this.$t('site.imageCropper.replace') as string
       };
     },
     resolvedFormatHint(): string {
@@ -263,26 +176,13 @@ export default defineComponent({
       const m = this.sourceMime;
       return m === 'image/png' || m === 'image/webp' || m === 'image/gif';
     },
-    onZoom(factor: number) {
-      const cropper = this.$refs.cropperRef as { zoom?: (f: number) => void } | undefined;
-      cropper?.zoom?.(factor);
-    },
-    onRotate(angle: number) {
-      const cropper = this.$refs.cropperRef as { rotate?: (a: number) => void } | undefined;
-      cropper?.rotate?.(angle);
-    },
-    onFlip(horizontal: boolean, vertical: boolean) {
-      const cropper = this.$refs.cropperRef as { flip?: (h: boolean, v: boolean) => void } | undefined;
-      cropper?.flip?.(horizontal, vertical);
-    },
     onClosed() {
       this.imageSrc = '';
       this.sourceMime = '';
       this.uploading = false;
     },
     async onConfirm() {
-      const cropper = this.$refs.cropperRef as { getResult?: () => { canvas: HTMLCanvasElement | null } } | undefined;
-      const result = cropper?.getResult?.();
+      const result = (this.$refs.cropperRef as ImageCropperViewportHandle | undefined)?.getResult();
       const canvas = result?.canvas;
       if (!canvas) {
         ElMessage.error(this.$t('site.imageCropper.noImage') as string);
@@ -337,40 +237,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.cropper-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  .cropper {
-    width: 100%;
-    height: 360px;
-    // Checkerboard so transparent PNGs (e.g. favicons) read as transparent
-    // instead of looking like they have a black background.
-    background-color: #fafafa;
-    background-image:
-      linear-gradient(45deg, #d8d8d8 25%, transparent 25%), linear-gradient(-45deg, #d8d8d8 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #d8d8d8 75%), linear-gradient(-45deg, transparent 75%, #d8d8d8 75%);
-    background-size: 16px 16px;
-    background-position:
-      0 0,
-      0 8px,
-      8px -8px,
-      8px 0;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .toolbar {
-    display: flex;
-    justify-content: center;
-    :deep(.el-button) {
-      min-width: 56px;
-      height: 44px;
-      padding: 0 18px;
-    }
-    :deep(.el-button .el-icon) {
-      font-size: 22px;
-    }
-  }
+.image-cropper {
+  --adc-image-cropper-height: 360px;
+  --adc-image-cropper-radius: 8px;
 }
 
 .dropzone {
