@@ -5,7 +5,7 @@
         <div class="toolbar-left">
           <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
           <el-dropdown
-            v-if="conversationId"
+            v-if="conversationId && !isScheduledConversation"
             trigger="click"
             placement="bottom-start"
             :teleported="true"
@@ -44,7 +44,23 @@
         :active-conversation-id="conversationId"
         @change-conversation="onChangeConversation"
       />
-      <div :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation }">
+      <div
+        :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation && !isScheduledConversation }"
+      >
+        <div v-if="isScheduledConversation" class="scheduled-run-status" role="status" aria-live="polite">
+          <strong>{{ scheduledConversation?.title || $t('chat.scheduledTasks.title') }}</strong>
+          <el-tag
+            v-if="scheduledRun"
+            size="small"
+            round
+            :type="scheduledRun.status === 'success' ? 'success' : scheduledRun.status === 'failed' ? 'danger' : 'info'"
+          >
+            {{ $t(`chat.scheduledTasks.run.${scheduledRun.status}`) }}
+          </el-tag>
+          <span v-if="!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running'">
+            {{ $t('chat.scheduledTasks.conversationPending') }}
+          </span>
+        </div>
         <div
           v-if="restoringConversation"
           class="conversation-loading"
@@ -74,6 +90,7 @@
             :application="application"
             :answering="answering"
             :retrying="restarting"
+            :readonly="isScheduledConversation"
             class="message"
             @update:question="question = $event"
             @edit="onEdit"
@@ -87,7 +104,19 @@
             @browser-recovery="onBrowserRecovery"
           />
         </div>
-        <div class="starter">
+        <div v-else-if="isScheduledConversation" class="scheduled-run-pending">
+          <div v-if="scheduledConversation?.metadata?.question" class="scheduled-run-question">
+            {{ scheduledConversation.metadata.question }}
+          </div>
+          <div
+            v-if="!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running'"
+            class="scheduled-run-waiting"
+          >
+            <span>{{ $t(`chat.scheduledTasks.run.${scheduledRun?.status || 'running'}`) }}</span>
+            <el-skeleton :rows="3" animated />
+          </div>
+        </div>
+        <div v-if="!isScheduledConversation" class="starter">
           <div class="composer-connectors"><connector-strip /></div>
           <composer
             v-model:question="question"
@@ -163,7 +192,8 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import { isRunWorthPolling, scheduledTasksOperator, type IScheduledRun } from '@/operators/scheduledTasks';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem, ElTag } from 'element-plus';
 
 export interface IData {
   drawer: boolean;
@@ -179,6 +209,10 @@ export interface IData {
   answering: boolean;
   restarting: boolean;
   messages: IChatMessage[];
+  scheduledConversation: IChatConversation | null;
+  scheduledRun: IScheduledRun | null;
+  scheduledRunPollTimer: ReturnType<typeof setInterval> | null;
+  scheduledRunPollInFlight: boolean;
   canceler: AbortController | undefined;
   restoringConversationId: string | undefined;
   /**
@@ -237,7 +271,8 @@ export default defineComponent({
     ElDropdownItem,
     ElDropdownMenu,
     ElSkeleton,
-    ElSkeletonItem
+    ElSkeletonItem,
+    ElTag
   },
   data(): IData {
     return {
@@ -256,6 +291,10 @@ export default defineComponent({
       restoringConversationId: undefined,
       skipNextRestoreId: undefined,
       messages: [],
+      scheduledConversation: null,
+      scheduledRun: null,
+      scheduledRunPollTimer: null,
+      scheduledRunPollInFlight: false,
       pendingConsentReturn: null
     };
   },
@@ -270,12 +309,20 @@ export default defineComponent({
       return this.$route.params.id?.toString();
     },
     conversation() {
+      if (this.scheduledConversation && this.scheduledConversation.id === this.conversationId)
+        return this.scheduledConversation;
       return this.$store.state.chat.conversations?.find(
         (conversation: IChatConversation) => conversation.id === this.conversationId
       );
     },
     restoringConversation(): boolean {
       return !!this.conversationId && this.restoringConversationId === this.conversationId;
+    },
+    isScheduledConversation(): boolean {
+      const conversation = this.scheduledConversation;
+      return (
+        !!conversation && conversation.id === this.conversationId && conversation.metadata?.source === 'scheduled_task'
+      );
     },
     service() {
       return this.$store.state.chat.service;
@@ -310,6 +357,7 @@ export default defineComponent({
       return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
     },
     ready(): boolean {
+      if (this.isScheduledConversation) return false;
       if (this.restoringConversation || this.restarting) return false;
       // Guests may compose & "send" — the submit handler triggers login
       // (deferred auth), so the composer must not be disabled for them.
@@ -400,6 +448,9 @@ export default defineComponent({
       void this.onProbeWorkerFeatures();
     }
   },
+  unmounted() {
+    this.clearScheduledRunPolling();
+  },
   methods: {
     /**
      * Ask the worker which optional body fields it understands. Only gates the
@@ -426,6 +477,9 @@ export default defineComponent({
       }
     },
     resetConversation() {
+      this.clearScheduledRunPolling();
+      this.scheduledConversation = null;
+      this.scheduledRun = null;
       this.restoringConversationId = undefined;
       this.messages = [];
       this.question = '';
@@ -569,6 +623,7 @@ export default defineComponent({
       this.$router.push({ name: 'settings-index', query: { browserRecovery: action } });
     },
     async onRestart(targetMessage: IChatMessage) {
+      if (this.isScheduledConversation) return;
       if (this.answering || this.restarting) return;
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
       const problemMessage = this.messages[targetIndex - 1];
@@ -647,6 +702,7 @@ export default defineComponent({
       }
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
+      if (this.isScheduledConversation) return;
       // 1. Clear the following message
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
       if (targetIndex !== -1) {
@@ -719,14 +775,22 @@ export default defineComponent({
         this.resetConversation();
       }
     },
-    async onRestoreConversation(id: string) {
+    async onRestoreConversation(id: string, refresh = false) {
       console.debug('onRestoreConversation id', id);
+      if (this.scheduledConversation?.id !== id) {
+        this.clearScheduledRunPolling();
+        this.scheduledConversation = null;
+        this.scheduledRun = null;
+      }
       // 1. Pull from store cache, or lazy-fetch full history from aichat2.
       //    Side-panel summaries do NOT include `messages`, so we always
       //    need a `retrieve` call the first time a conversation is opened.
-      let conversation: IChatConversation | undefined = this.conversations?.find((c: IChatConversation) => c.id === id);
-      const needsFetch = !hasLoadedConversationMessages(conversation);
-      if (needsFetch) {
+      let conversation: IChatConversation | undefined =
+        this.scheduledConversation?.id === id
+          ? this.scheduledConversation
+          : this.conversations?.find((c: IChatConversation) => c.id === id);
+      const needsFetch = refresh || !hasLoadedConversationMessages(conversation);
+      if (needsFetch && !refresh) {
         this.messages = [];
         this.restoringConversationId = id;
       }
@@ -736,12 +800,17 @@ export default defineComponent({
           if (fetched) conversation = fetched;
         }
         if (this.conversationId !== id) return;
+        if (conversation?.metadata?.source === 'scheduled_task') {
+          this.scheduledConversation = conversation;
+        }
         // 2. Switch model + model group to whatever this conversation used.
         const model = conversation?.model;
         const targetModel = CHAT_MODELS.find((m) => m.name === model);
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
-        if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-        if (targetModel) {
+        if (targetModelGroup && this.modelGroup?.name !== targetModelGroup.name) {
+          this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+        }
+        if (targetModel && this.model?.name !== targetModel.name) {
           this.$store.dispatch('chat/setModel', targetModel);
         }
         this.messages = (conversation?.messages || []).map((message) => {
@@ -764,8 +833,43 @@ export default defineComponent({
           return interrupted;
         });
         this.onScrollDown();
+        if (this.isScheduledConversation) this.startScheduledRunPolling();
       } finally {
         if (this.restoringConversationId === id) this.restoringConversationId = undefined;
+      }
+    },
+    clearScheduledRunPolling() {
+      if (this.scheduledRunPollTimer) clearInterval(this.scheduledRunPollTimer);
+      this.scheduledRunPollTimer = null;
+    },
+    startScheduledRunPolling() {
+      if (this.scheduledRunPollTimer || !this.scheduledConversation?.metadata?.scheduled_task_id) return;
+      if (this.scheduledRun && !isRunWorthPolling(this.scheduledRun, Date.now())) return;
+      void this.pollScheduledRun();
+      this.scheduledRunPollTimer = setInterval(() => void this.pollScheduledRun(), 5000);
+    },
+    async pollScheduledRun() {
+      const id = this.conversationId;
+      const taskId = this.scheduledConversation?.metadata?.scheduled_task_id;
+      const runId = this.scheduledConversation?.metadata?.run_id;
+      if (!id || !taskId || !runId || !this.credential?.token || this.scheduledRunPollInFlight) return;
+      this.scheduledRunPollInFlight = true;
+      try {
+        const runs = await scheduledTasksOperator.listRuns(this.credential.token, taskId);
+        if (this.conversationId !== id) return;
+        const run = runs.find((item) => item.id === runId);
+        if (!run) {
+          this.clearScheduledRunPolling();
+          return;
+        }
+        this.scheduledRun = run;
+        // The agent saves its transcript during and at the end of the run.
+        await this.onRestoreConversation(id, true);
+        if (!isRunWorthPolling(run, Date.now())) this.clearScheduledRunPolling();
+      } catch {
+        // Keep the visible transcript and retry on the next poll.
+      } finally {
+        this.scheduledRunPollInFlight = false;
       }
     },
     async onChangeConversation(id?: string) {
@@ -786,6 +890,7 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
+      if (this.isScheduledConversation) return;
       if (this.restoringConversation) return;
       // Belt-and-braces: `ready` already disables the composer, but onDraft /
       // deep-links call onSubmit directly and would bypass it.
@@ -1881,6 +1986,37 @@ export default defineComponent({
 }
 
 .dialogue {
+  .scheduled-run-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px auto;
+    padding: 12px 16px;
+    width: min(800px, calc(100% - 32px));
+    border: 1px solid var(--el-border-color-light);
+    border-radius: 12px;
+    color: var(--el-text-color-secondary);
+    background: var(--el-fill-color-light);
+  }
+  .scheduled-run-pending {
+    width: min(800px, calc(100% - 32px));
+    margin: 8px auto 24px;
+  }
+  .scheduled-run-question {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: var(--el-fill-color-light);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .scheduled-run-waiting {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border: 1px solid var(--el-border-color-light);
+    border-radius: 14px;
+    color: var(--el-text-color-secondary);
+  }
   display: flex;
   flex-direction: column;
   width: 100%;

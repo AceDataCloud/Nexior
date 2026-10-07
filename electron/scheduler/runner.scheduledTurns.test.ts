@@ -26,6 +26,7 @@ describe('local scheduled run turn budget', () => {
     const result = await executeRun(
       {
         run_id: 'run-1',
+        conversation_id: 'conversation-1',
         question: 'Read the file',
         model: 'gpt-6.1-sol',
         max_turns: 500,
@@ -36,6 +37,7 @@ describe('local scheduled run turn budget', () => {
 
     expect(result.answer).toBe('done');
     expect(api.chat).toHaveBeenCalledTimes(2);
+    expect(api.chat).toHaveBeenNthCalledWith(1, expect.objectContaining({ id: 'conversation-1' }), undefined);
     expect(api.chat).toHaveBeenNthCalledWith(
       2,
       expect.objectContaining({

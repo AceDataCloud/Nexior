@@ -408,6 +408,13 @@ export interface IChatMessage {
 
 export interface IChatConversation {
   id?: string;
+  metadata?: {
+    source?: string;
+    scheduled_task_id?: string;
+    run_id?: string;
+    question?: string;
+    [key: string]: unknown;
+  };
   model?: string;
   /**
    * Provider bucket the conversation belongs to (chatgpt | claude | gemini |
