@@ -25,13 +25,22 @@ function manager() {
   const vm: any = {
     $t: (key: string) => key,
     pendingCreateNew: false,
+    pendingReconnectId: null,
+    authorizing: false,
+    customAuthorizing: false,
     connections: [],
     fetchConnections: vi.fn().mockResolvedValue(true),
     customName: 'My MCP',
     customServerUrl: 'https://mcp.example.com',
     customDialogVisible: true
   };
-  for (const name of ['startAuthorize', 'runAuthorizePopup', 'connectWithMethod', 'onConnectCustom']) {
+  for (const name of [
+    'startAuthorize',
+    'runAuthorizePopup',
+    'connectWithMethod',
+    'onConnectCustom',
+    'clearCreateNewIntent'
+  ]) {
     vm[name] = (Manager as any).methods[name].bind(vm);
   }
   return vm;
