@@ -323,8 +323,8 @@ export interface IConnectorCatalogInstallRequest {
   return_url?: string;
   site_origin?: string;
   /** Raw upstream OAuth scope strings to request at consent time
-   *  (subset of the row's ``permissions[].id``). When omitted the
-   *  preset adapter falls back to its ``default_scopes``. */
+   *  (subset of the row's ``permissions[].id``). When omitted, the
+   *  connector method's declared scopes are requested. */
   scopes?: string[];
   /** Which of the connector's ``connection_methods`` to install. Omit for
    *  single-method connectors; the backend defaults to the recommended
@@ -334,6 +334,8 @@ export interface IConnectorCatalogInstallRequest {
   /** Add another account of this connector instead of re-authorizing the
    *  existing one. Omitted/false keeps the historical overwrite behaviour. */
   create_new?: boolean;
+  /** Reconnect this exact account row. Mutually exclusive with create_new. */
+  connection_id?: string;
 }
 
 /** Three-shape install response: redirect (OAuth flows), form
@@ -375,6 +377,8 @@ export interface IConnectorCatalogCredentialsRequest {
    *  account is named afterwards via ``rename`` — at submit time the upstream
    *  identity isn't known yet, so there is nothing sensible to name it. */
   create_new?: boolean;
+  /** Replace credentials on this exact account row. */
+  connection_id?: string;
 }
 
 /** Pick the effective connection method for a catalog item: an explicit

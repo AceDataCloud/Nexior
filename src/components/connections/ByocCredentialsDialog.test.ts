@@ -143,4 +143,66 @@ describe('mobile credentials', () => {
       expect((wrapper.vm as any).formModel).toEqual({});
     }
   );
+
+  it('submits replacement credentials for the selected account row', async () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    const keyMethod = {
+      ...method,
+      id: 'api-key',
+      credential: { type: 'user_secret', credential_schema: [{ key: 'api_key', type: 'password', required: true }] }
+    } as IConnectorConnectionMethod;
+    const wrapper = mountDialog(keyMethod);
+    await wrapper.setProps({ connectionId: 'selected-account' });
+    await wrapper.setData({ formModel: { api_key: 'replacement' } });
+    submit.mockResolvedValue({ data: { type: 'active', connection_id: 'selected-account' } });
+
+    await (wrapper.vm as any).onSubmit();
+
+    expect(submit).toHaveBeenCalledWith('catalog-id', {
+      payload: { api_key: 'replacement' },
+      method_id: 'api-key',
+      connection_id: 'selected-account'
+    });
+  });
+
+  it('waits for the selected mobile account to change before claiming reconnection', async () => {
+    vi.stubEnv('VITE_SURFACE', 'ios');
+    const wrapper = mountDialog();
+    await wrapper.setProps({ connectionId: 'selected-account', connectionUpdatedAt: 'before' });
+    list.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'default',
+          connector_identifier: item.identifier,
+          method_id: method.id,
+          status: 'active',
+          updated_at: 'after'
+        },
+        {
+          id: 'selected-account',
+          connector_identifier: item.identifier,
+          method_id: method.id,
+          status: 'active',
+          updated_at: 'before'
+        }
+      ]
+    });
+
+    await (wrapper.vm as any).refreshMobileConnection();
+    expect(wrapper.emitted('installed')).toBeUndefined();
+
+    list.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'selected-account',
+          connector_identifier: item.identifier,
+          method_id: method.id,
+          status: 'active',
+          updated_at: 'after'
+        }
+      ]
+    });
+    await (wrapper.vm as any).refreshMobileConnection();
+    expect(wrapper.emitted('installed')).toEqual([[{ item, connection_id: 'selected-account' }]]);
+  });
 });

@@ -208,7 +208,9 @@ export default defineComponent({
     method: { type: Object as PropType<IConnectorConnectionMethod | null>, default: null },
     /** Add another account of this connector instead of replacing the one
      *  already connected. Only set by the "Add account" entry point. */
-    createNew: { type: Boolean as PropType<boolean>, default: false }
+    createNew: { type: Boolean as PropType<boolean>, default: false },
+    connectionId: { type: String as PropType<string | null>, default: null },
+    connectionUpdatedAt: { type: String as PropType<string | null>, default: null }
   },
   emits: ['update:modelValue', 'installed'],
   data(): IData {
@@ -327,7 +329,9 @@ export default defineComponent({
           (c) =>
             c.connector_identifier === this.item?.identifier &&
             c.method_id === this.activeMethod?.id &&
-            String(c.status).toLowerCase() === 'active'
+            String(c.status).toLowerCase() === 'active' &&
+            (!this.connectionId ||
+              (c.id === this.connectionId && !!c.updated_at && c.updated_at !== this.connectionUpdatedAt))
         );
         if (!connection) {
           ElMessage.info(this.$t('connection.byoc.mobileDesktopBody') as string);
@@ -426,7 +430,8 @@ export default defineComponent({
         const { data } = await connectionOperator.submitCatalogCredentials(this.item.id, {
           payload: { cookies },
           method_id: this.activeMethod?.id,
-          ...(this.createNew ? { create_new: true } : {})
+          ...(this.createNew ? { create_new: true } : {}),
+          ...(this.connectionId ? { connection_id: this.connectionId } : {})
         });
         ElMessage.success(this.$t('connection.message.installed', { name: this.item.name }) as string);
         this.$emit('installed', { item: this.item, connection_id: data.connection_id });
@@ -457,7 +462,8 @@ export default defineComponent({
           // would silently break signed requests.
           payload: Object.fromEntries(Object.entries(this.formModel).map(([k, v]) => [k, (v ?? '').trim()])),
           method_id: this.activeMethod?.id,
-          ...(this.createNew ? { create_new: true } : {})
+          ...(this.createNew ? { create_new: true } : {}),
+          ...(this.connectionId ? { connection_id: this.connectionId } : {})
         });
         ElMessage.success(this.$t('connection.message.installed', { name: this.item.name }) as string);
         this.$emit('installed', { item: this.item, connection_id: data.connection_id });

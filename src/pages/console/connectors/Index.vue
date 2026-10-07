@@ -533,6 +533,8 @@
       :item="byocDialogCatalog"
       :method="byocDialogMethod"
       :create-new="pendingCreateNew"
+      :connection-id="pendingReconnectId"
+      :connection-updated-at="connections.find((connection) => connection.id === pendingReconnectId)?.updated_at"
       @installed="onCatalogInstalled"
       @update:model-value="(v: boolean) => !v && clearCreateNewIntent()"
     />
@@ -543,7 +545,7 @@
       v-model="pickerVisible"
       :item="pickerCatalog"
       @select="onMethodSelected"
-      @update:model-value="(v: boolean) => !v && clearCreateNewIntent()"
+      @update:model-value="onPickerVisibility"
     />
     <browser-pairing-dialog v-model="pairingDialogVisible" @paired="onBrowserPaired" @closed="onBrowserPairingClosed" />
     <browser-device-picker
@@ -767,6 +769,7 @@ interface IData {
    *  the catalog request is still in flight. */
   firstLoadComplete: boolean;
   refreshingId: string | null;
+  authorizing: boolean;
   searchQuery: string;
   selectedKey: string | null;
   collapsedGroups: Record<string, boolean>;
@@ -804,11 +807,14 @@ interface IData {
    *  point that isn't that flow, otherwise a later reconnect would silently
    *  create a duplicate account. */
   pendingCreateNew: boolean;
+  /** Exact account row selected by Reconnect; absent for new installs. */
+  pendingReconnectId: string | null;
   byocDialogCatalog: IConnectorCatalogItem | null;
   /** The method the credential dialog is collecting credentials for. */
   byocDialogMethod: IConnectorConnectionMethod | null;
   /** Multi-method picker state. */
   pickerVisible: boolean;
+  pickerConfirmed: boolean;
   pickerCatalog: IConnectorCatalogItem | null;
   pairingDialogVisible: boolean;
   browserDevicePickerVisible: boolean;
@@ -864,6 +870,7 @@ export default defineComponent({
       loadingCatalog: false,
       firstLoadComplete: false,
       refreshingId: null,
+      authorizing: false,
       searchQuery: '',
       selectedKey: null,
       collapsedGroups: {},
@@ -883,10 +890,12 @@ export default defineComponent({
       mcpToolsState: {},
       browseDialogVisible: false,
       pendingCreateNew: false,
+      pendingReconnectId: null,
       byocDialogVisible: false,
       byocDialogCatalog: null,
       byocDialogMethod: null,
       pickerVisible: false,
+      pickerConfirmed: false,
       pickerCatalog: null,
       pairingDialogVisible: false,
       browserDevicePickerVisible: false,
@@ -937,7 +946,7 @@ export default defineComponent({
       // The menu closes on select, so the old inline button spinners have
       // nowhere to live. Disable the in-flight entries instead, otherwise
       // reopening the menu lets the same request be fired twice.
-      const busy = this.refreshingId === conn.id;
+      const busy = this.refreshingId === conn.id || this.authorizing || this.customAuthorizing;
 
       if (conn.supports_refresh) {
         actions.push({
@@ -960,16 +969,16 @@ export default defineComponent({
           });
         }
       }
-      if (item.catalog && !item.browserSession) {
+      if (item.catalog && !item.browserSession && conn.credential_type !== 'none') {
         actions.push({
           command: 'reconnect',
           label: String(this.$t('connection.button.reconnect')),
-          disabled: !installable
+          disabled: !installable || busy
         });
         actions.push({
           command: 'addAccount',
           label: String(this.$t('connection.button.addAccount')),
-          disabled: !installable
+          disabled: !installable || busy
         });
       }
       // Shown for every connector-backed account, not just multi-account ones:
@@ -1579,18 +1588,23 @@ export default defineComponent({
         }
       });
     },
-    async onConnect(catalog: IConnectorCatalogItem, createNew = false) {
-      if (!catalog.installable) return;
+    async onConnect(catalog: IConnectorCatalogItem, createNew = false, reconnectId: string | null = null) {
+      if (!catalog.installable || this.authorizing || this.customAuthorizing) return;
       this.pendingCreateNew = createNew;
+      this.pendingReconnectId = reconnectId;
       // Multi-method connectors: let the user pick how to connect
       // first. Single-method connectors skip the picker.
       if (getConnectorMethods(catalog).length > 1) {
         this.pickerCatalog = catalog;
+        this.pickerConfirmed = false;
         this.pickerVisible = true;
         return;
       }
       const method = resolveConnectorMethod(catalog);
-      if (!method) return;
+      if (!method) {
+        this.clearCreateNewIntent();
+        return;
+      }
       await this.connectWithMethod(catalog, method);
     },
     /** Drop a pending add-account intent. Called from every path that ends a
@@ -1598,10 +1612,17 @@ export default defineComponent({
      *  inherit `create_new` and silently duplicate an account. */
     clearCreateNewIntent() {
       this.pendingCreateNew = false;
+      this.pendingReconnectId = null;
     },
     onMethodSelected(payload: { item: IConnectorCatalogItem; method: IConnectorConnectionMethod }) {
+      this.pickerConfirmed = true;
       this.pickerVisible = false;
       this.connectWithMethod(payload.item, payload.method);
+    },
+    onPickerVisibility(visible: boolean) {
+      if (visible) return;
+      if (!this.pickerConfirmed) this.clearCreateNewIntent();
+      this.pickerConfirmed = false;
     },
     async connectWithMethod(catalog: IConnectorCatalogItem, method: IConnectorConnectionMethod) {
       if (method.execution.type === 'browser_device') {
@@ -1644,6 +1665,7 @@ export default defineComponent({
           }
         );
       } catch {
+        this.clearCreateNewIntent();
         return;
       }
       await this.startAuthorize(catalog, method, undefined);
@@ -1666,10 +1688,17 @@ export default defineComponent({
       method: IConnectorConnectionMethod,
       scopes: string[] | undefined
     ) {
+      if (this.authorizing || this.customAuthorizing) return;
+      this.authorizing = true;
       // Funnel through the catalog install endpoint — same code path
       // BrowseConnectors uses — so the resulting connection is
       // stamped with ``connector_identifier`` and the right-pane join
       // picks up display fields from the catalog row.
+      const reconnectId = this.pendingReconnectId;
+      const createNew = this.pendingCreateNew;
+      const previousRefreshedAt = this.connections.find(
+        (connection) => connection.id === reconnectId
+      )?.last_refreshed_at;
       try {
         const prepared =
           method.credential.type === 'oauth2'
@@ -1679,10 +1708,8 @@ export default defineComponent({
           scopes: scopes && scopes.length ? scopes : undefined,
           return_url: prepared.returnUrl,
           method_id: method.id,
-          // Only set when the user explicitly chose "add another account";
-          // omitting it keeps the backend on slot 0, i.e. re-authorizing
-          // overwrites the existing account instead of duplicating it.
-          ...(this.pendingCreateNew ? { create_new: true } : {})
+          ...(createNew ? { create_new: true } : {}),
+          ...(reconnectId ? { connection_id: reconnectId } : {})
         });
         if (data?.type === 'form') {
           // Defensive: an OAuth/public method shouldn't return a form,
@@ -1696,15 +1723,25 @@ export default defineComponent({
           return;
         }
         if (data?.type === 'redirect' && data.authorization_url) {
-          await this.runAuthorizePopup(data.authorization_url, data.handoff_token, prepared.requestId);
+          await this.runAuthorizePopup(
+            data.authorization_url,
+            data.handoff_token,
+            prepared.requestId,
+            reconnectId || undefined,
+            previousRefreshedAt
+          );
         } else if (data && (data as any).type === 'active') {
           // Zero-step flow (public) — refresh the list.
-          this.pendingCreateNew = false;
+          this.clearCreateNewIntent();
           await this.fetchConnections();
+        } else {
+          throw new Error(this.$t('connection.message.installFailed') as string);
         }
       } catch (error: any) {
-        this.pendingCreateNew = false;
+        this.clearCreateNewIntent();
         ElMessage.error(error?.response?.data?.detail || error?.message || 'Failed to start authorization');
+      } finally {
+        this.authorizing = false;
       }
     },
     /**
@@ -1713,16 +1750,34 @@ export default defineComponent({
      * resolve on "the flow ended", and the server is the authority on what
      * actually connected, so we always refetch.
      */
-    async runAuthorizePopup(authorizationUrl: string, handoffToken?: string, requestId?: string) {
+    async runAuthorizePopup(
+      authorizationUrl: string,
+      handoffToken?: string,
+      requestId?: string,
+      reconnectId?: string,
+      previousRefreshedAt?: string | null
+    ) {
       try {
         const result = await openAuthorizeFlow(authorizationUrl, handoffToken, requestId);
         if (result?.status === 'error') throw new Error(result.errorCode || 'connector-authorization-failed');
         if (result?.status === 'cancelled') {
-          this.pendingCreateNew = false;
+          this.clearCreateNewIntent();
           return;
         }
-        this.pendingCreateNew = false;
-        await this.fetchConnections();
+        this.clearCreateNewIntent();
+        if (!(await this.fetchConnections())) throw new Error(this.$t('connection.message.refreshFailed') as string);
+        if (reconnectId) {
+          const refreshed = this.connections.find((connection) => connection.id === reconnectId);
+          if (
+            !refreshed ||
+            this.normalizedStatus(refreshed.status) !== 'active' ||
+            (result?.status === 'success'
+              ? result.connectionId !== reconnectId
+              : !refreshed.last_refreshed_at || refreshed.last_refreshed_at === previousRefreshedAt)
+          ) {
+            throw new Error(this.$t('connection.message.installFailed') as string);
+          }
+        }
         if (
           result?.status === 'success' &&
           (!result.connectionId ||
@@ -1735,7 +1790,7 @@ export default defineComponent({
         }
         return;
       } catch (error: any) {
-        this.pendingCreateNew = false;
+        this.clearCreateNewIntent();
         ElMessage.error(
           error?.message === 'desktop-authorize-unsupported'
             ? (this.$t('connection.message.desktopUpdateRequired') as string)
@@ -1762,7 +1817,7 @@ export default defineComponent({
       // The add-account intent is single-use: clear it once the install
       // resolves, so a later reconnect can't inherit a stale `true` and
       // silently create a duplicate account.
-      this.pendingCreateNew = false;
+      this.clearCreateNewIntent();
       await Promise.all([this.fetchConnections(), this.fetchCatalog()]);
     },
     openBrowserPairing() {
@@ -1865,7 +1920,7 @@ export default defineComponent({
       }
     },
     async onConnectCustom() {
-      if (!this.customServerUrl) {
+      if (!this.customServerUrl || this.authorizing || this.customAuthorizing) {
         return;
       }
       this.customAuthorizing = true;
@@ -1902,16 +1957,17 @@ export default defineComponent({
      *  drive ``connectWithMethod`` directly (scope dialog / BYOC form / OAuth
      *  confirm+redirect, no picker). Fall back to ``onConnect`` only when the
      *  method can't be resolved (legacy connection with no ``method_id``). */
-    async onReconnect(catalog: IConnectorCatalogItem) {
-      if (!catalog.installable) return;
+    async onReconnect(catalog: IConnectorCatalogItem, connection: IConnection) {
+      if (!catalog.installable || this.authorizing || this.customAuthorizing) return;
       this.pendingCreateNew = false;
-      const methodId = this.selectedItem?.connection?.method_id;
+      this.pendingReconnectId = connection.id;
+      const methodId = connection.method_id;
       const method = resolveConnectorMethod(catalog, methodId);
       if (method && methodId && method.id === methodId) {
         await this.connectWithMethod(catalog, method);
         return;
       }
-      await this.onConnect(catalog);
+      await this.onConnect(catalog, false, connection.id);
     },
     /** Start a second (third, …) account of an already-connected connector. */
     onDetailAction(command: string) {
@@ -1929,7 +1985,7 @@ export default defineComponent({
           void this.stopBrowserSessions(conn);
           break;
         case 'reconnect':
-          if (item.catalog) void this.onReconnect(item.catalog);
+          if (item.catalog) void this.onReconnect(item.catalog, conn);
           break;
         case 'addAccount':
           if (item.catalog) void this.onAddAccount(item.catalog);
