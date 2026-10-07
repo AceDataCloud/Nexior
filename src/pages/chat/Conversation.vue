@@ -862,6 +862,13 @@ export default defineComponent({
           this.clearScheduledRunPolling();
           return;
         }
+        if (run.conversation_id && run.conversation_id !== id) {
+          // An older desktop shell may create its own conversation ID after
+          // claim. Follow the run's final link when that shell reports it.
+          this.clearScheduledRunPolling();
+          void this.$router.replace(this.conversationsPath(run.conversation_id));
+          return;
+        }
         this.scheduledRun = run;
         // The agent saves its transcript during and at the end of the run.
         await this.onRestoreConversation(id, true);

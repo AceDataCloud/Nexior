@@ -113,6 +113,31 @@ describe('scheduled conversation', () => {
     expect(wrapper.vm.scheduledRunPollTimer).toBeNull();
     wrapper.unmount();
   });
+
+  it('follows a legacy desktop run when its final conversation ID differs', async () => {
+    vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([
+      {
+        id: 'run-1',
+        task_id: 'task-1',
+        status: 'success',
+        scheduled_at: Date.now() / 1000,
+        conversation_id: 'legacy-conversation'
+      }
+    ]);
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      conversationId: 'run-1',
+      fetchedConversation: {
+        id: 'run-1',
+        messages: [],
+        metadata: { source: 'scheduled_task', scheduled_task_id: 'task-1', run_id: 'run-1' }
+      }
+    });
+    await flushPromises();
+
+    expect(wrapper.vm.$router.replace).toHaveBeenCalledWith('/chatgpt/conversations/legacy-conversation');
+    wrapper.unmount();
+  });
 });
 
 describe('chat/Conversation retry', () => {
