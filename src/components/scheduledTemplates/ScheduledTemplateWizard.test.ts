@@ -20,7 +20,7 @@ const template = {
     { key: 'audience', type: 'text' as const, label: 'Audience', required: true }
   ],
   requirements: { skills: [], mcp_servers: [], connections: [], local_tools: [] },
-  defaults: { model: 'gpt-5.6-sol', schedule: { type: 'cron' as const, cron: '0 9 * * *', tz: 'UTC' }, max_turns: 50 },
+  defaults: { model: 'gpt-5.6-sol', schedule: { type: 'cron' as const, cron: '0 9 * * *', tz: 'UTC' }, max_turns: 500 },
   test_strategy: { mode: 'preview_only' as const },
   available: true,
   missing_connections: []
