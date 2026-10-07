@@ -103,6 +103,17 @@
             @stop-browser-session="onStopBrowserSession"
             @browser-recovery="onBrowserRecovery"
           />
+          <div
+            v-if="
+              isScheduledConversation &&
+              !messages.some((message) => message.role === 'assistant') &&
+              (!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running')
+            "
+            class="scheduled-run-waiting"
+          >
+            <span>{{ $t(`chat.scheduledTasks.run.${scheduledRun?.status || 'running'}`) }}</span>
+            <el-skeleton :rows="3" animated />
+          </div>
         </div>
         <div v-else-if="isScheduledConversation" class="scheduled-run-pending">
           <div v-if="scheduledConversation?.metadata?.question" class="scheduled-run-question">
@@ -816,6 +827,12 @@ export default defineComponent({
         this.messages = (conversation?.messages || []).map((message) => {
           if (message.role !== ROLE_ASSISTANT || message.state !== IChatMessageState.ANSWERING) return message;
           if (
+            this.isScheduledConversation &&
+            (!this.scheduledRun || isRunWorthPolling(this.scheduledRun, Date.now()))
+          ) {
+            return message;
+          }
+          if (
             Array.isArray(message.content) &&
             message.content.some((item) => item.type === 'tool_use' && item.status === 'awaiting_input')
           ) {
@@ -846,7 +863,7 @@ export default defineComponent({
       if (this.scheduledRunPollTimer || !this.scheduledConversation?.metadata?.scheduled_task_id) return;
       if (this.scheduledRun && !isRunWorthPolling(this.scheduledRun, Date.now())) return;
       void this.pollScheduledRun();
-      this.scheduledRunPollTimer = setInterval(() => void this.pollScheduledRun(), 5000);
+      this.scheduledRunPollTimer = setInterval(() => void this.pollScheduledRun(), 3000);
     },
     async pollScheduledRun() {
       const id = this.conversationId;

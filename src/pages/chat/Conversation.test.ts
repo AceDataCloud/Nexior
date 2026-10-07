@@ -79,6 +79,36 @@ const mountComponent = ({
 describe('scheduled conversation', () => {
   afterEach(() => vi.restoreAllMocks());
 
+  it('keeps a live assistant checkpoint in answering state', async () => {
+    vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([
+      {
+        id: 'run-1',
+        task_id: 'task-1',
+        status: 'running',
+        scheduled_at: Date.now() / 1000,
+        conversation_id: 'run-1'
+      }
+    ]);
+    const partial = {
+      id: 'run-1',
+      model: 'gpt-6.1-sol',
+      messages: [
+        { role: 'user', content: 'Do the work' },
+        { role: 'assistant', content: [{ type: 'text', text: 'First result' }], state: IChatMessageState.ANSWERING }
+      ],
+      metadata: { source: 'scheduled_task', scheduled_task_id: 'task-1', run_id: 'run-1' }
+    };
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      conversationId: 'run-1',
+      fetchedConversation: partial
+    });
+    await flushPromises();
+
+    expect(wrapper.vm.messages[1]).toMatchObject({ state: IChatMessageState.ANSWERING });
+    wrapper.unmount();
+  });
+
   it('opens while running, stays read only, and refreshes when the run finishes', async () => {
     const pending = {
       id: 'run-1',
