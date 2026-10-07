@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 06 Oct 2026 20:26:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 07 Oct 2026 20:26:02 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.1
+
+Wed, 07 Oct 2026 20:26:02 GMT
+
+### Patches
+
+- Reconnect the selected connector account and refresh its identity after authorization. (dev@acedata.cloud)
+- Default scheduled tasks to 500 agent turns and allow up to 500 per run. (dev@acedata.cloud)
+- Open scheduled run conversations immediately after triggering and show live run status. (dev@acedata.cloud)
+- Use the shared image cropper viewport for site branding and image uploads. (dev@acedata.cloud)
+- Let long logos zoom out fully in the site branding editor. (dev@acedata.cloud)
 
 ## 3.380.0
 
