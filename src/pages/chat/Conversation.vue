@@ -2014,6 +2014,8 @@ export default defineComponent({
     padding: 16px 18px;
     border-radius: 14px;
     background: var(--el-fill-color-light);
+    max-height: 240px;
+    overflow-y: auto;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
