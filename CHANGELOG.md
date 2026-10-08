@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 07 Oct 2026 20:26:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 08 Oct 2026 20:26:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.2
+
+Thu, 08 Oct 2026 20:26:42 GMT
+
+### Patches
+
+- Simplify scheduled run conversations and show the correct assistant model icon. (dev@acedata.cloud)
 
 ## 3.380.1
 
