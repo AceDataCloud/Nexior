@@ -210,14 +210,14 @@ describe('chat/ScheduledTasks — local execution', () => {
 
     it('opens the new cloud conversation as soon as trigger returns', async () => {
       vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue({
-        run_id: 'manual-1',
-        conversation_id: 'manual-1'
+        run_id: '550e8400-e29b-41d4-a716-446655440000',
+        conversation_id: '550e8400-e29b-41d4-a716-446655440000'
       });
       const wrapper = mountComponent({ token: 'tok' });
 
       await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(editedTask);
 
-      expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/manual-1');
+      expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/550e8400-e29b-41d4-a716-446655440000');
     });
 
     it('opens the reserved local conversation after the daemon claims it', async () => {

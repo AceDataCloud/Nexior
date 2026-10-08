@@ -92,6 +92,7 @@ describe('scheduled conversation', () => {
     const partial = {
       id: 'run-1',
       model: 'gpt-6.1-sol',
+      model_group: 'chatgpt',
       messages: [
         { role: 'user', content: 'Do the work' },
         { role: 'assistant', content: [{ type: 'text', text: 'First result' }], state: IChatMessageState.ANSWERING }
@@ -106,6 +107,8 @@ describe('scheduled conversation', () => {
     await flushPromises();
 
     expect(wrapper.vm.messages[1]).toMatchObject({ state: IChatMessageState.ANSWERING });
+    expect(wrapper.getComponent(Message).props('modelName')).toBe('gpt-6.1-sol');
+    expect(wrapper.getComponent(Message).props('modelGroupOverride')?.name).toBe('chatgpt');
     wrapper.unmount();
   });
 
@@ -127,6 +130,8 @@ describe('scheduled conversation', () => {
 
     expect(wrapper.vm.scheduledRun?.status).toBe('running');
     expect(wrapper.find('.scheduled-run-question').text()).toBe('Do the work');
+    expect(wrapper.find('.scheduled-run-status').text()).not.toContain('conversationPending');
+    expect(wrapper.find('.scheduled-run-waiting').exists()).toBe(false);
     expect(wrapper.find('.starter').exists()).toBe(false);
     expect(wrapper.vm.ready).toBe(false);
 

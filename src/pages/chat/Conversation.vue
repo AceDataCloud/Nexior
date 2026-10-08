@@ -57,9 +57,6 @@
           >
             {{ $t(`chat.scheduledTasks.run.${scheduledRun.status}`) }}
           </el-tag>
-          <span v-if="!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running'">
-            {{ $t('chat.scheduledTasks.conversationPending') }}
-          </span>
         </div>
         <div
           v-if="restoringConversation"
@@ -84,7 +81,8 @@
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
             :message="message"
-            :model-name="model?.name"
+            :model-name="isScheduledConversation ? scheduledConversation?.model : model?.name"
+            :model-group-override="isScheduledConversation ? scheduledConversationModelGroup : undefined"
             :messages="messages"
             :question="question"
             :application="application"
@@ -103,28 +101,10 @@
             @stop-browser-session="onStopBrowserSession"
             @browser-recovery="onBrowserRecovery"
           />
-          <div
-            v-if="
-              isScheduledConversation &&
-              !messages.some((message) => message.role === 'assistant') &&
-              (!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running')
-            "
-            class="scheduled-run-waiting"
-          >
-            <span>{{ $t(`chat.scheduledTasks.run.${scheduledRun?.status || 'running'}`) }}</span>
-            <el-skeleton :rows="3" animated />
-          </div>
         </div>
         <div v-else-if="isScheduledConversation" class="scheduled-run-pending">
           <div v-if="scheduledConversation?.metadata?.question" class="scheduled-run-question">
             {{ scheduledConversation.metadata.question }}
-          </div>
-          <div
-            v-if="!scheduledRun || scheduledRun.status === 'queued' || scheduledRun.status === 'running'"
-            class="scheduled-run-waiting"
-          >
-            <span>{{ $t(`chat.scheduledTasks.run.${scheduledRun?.status || 'running'}`) }}</span>
-            <el-skeleton :rows="3" animated />
           </div>
         </div>
         <div v-if="!isScheduledConversation" class="starter">
@@ -334,6 +314,12 @@ export default defineComponent({
       return (
         !!conversation && conversation.id === this.conversationId && conversation.metadata?.source === 'scheduled_task'
       );
+    },
+    scheduledConversationModelGroup() {
+      const conversation = this.scheduledConversation;
+      const groupName =
+        conversation?.model_group || CHAT_MODELS.find((model) => model.name === conversation?.model)?.modelGroup;
+      return CHAT_MODEL_GROUPS.find((group) => group.name === groupName);
     },
     service() {
       return this.$store.state.chat.service;
@@ -2035,13 +2021,6 @@ export default defineComponent({
     overflow-y: auto;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-  }
-  .scheduled-run-waiting {
-    margin-top: 18px;
-    padding: 16px 18px;
-    border: 1px solid var(--el-border-color-light);
-    border-radius: 14px;
-    color: var(--el-text-color-secondary);
   }
   display: flex;
   flex-direction: column;
