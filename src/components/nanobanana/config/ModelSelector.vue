@@ -20,7 +20,8 @@ import {
   NANOBANANA_MODEL_NANO_BANANA,
   NANOBANANA_MODEL_NANO_BANANA_2_LITE,
   NANOBANANA_MODEL_NANO_BANANA_PRO,
-  NANOBANANA_MODEL_NANO_BANANA_2
+  NANOBANANA_MODEL_NANO_BANANA_2,
+  NANOBANANA_MODEL_NANO_BANANA_2_1
 } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
@@ -49,6 +50,10 @@ export default defineComponent({
         {
           value: NANOBANANA_MODEL_NANO_BANANA_2,
           label: this.$t('nanobanana.model.nanoBanana2')
+        },
+        {
+          value: NANOBANANA_MODEL_NANO_BANANA_2_1,
+          label: NANOBANANA_MODEL_NANO_BANANA_2_1
         }
       ]
     };
