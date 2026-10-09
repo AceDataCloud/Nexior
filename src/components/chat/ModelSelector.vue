@@ -7,10 +7,10 @@
         <expand-down-icon class="trigger-arrow" :size="'1em' as any" aria-hidden="true" focusable="false" />
       </div>
       <template #dropdown>
-        <el-dropdown-menu v-if="modelGroup && modelGroup?.models">
+        <el-dropdown-menu v-if="visibleModels.length">
           <el-dropdown-item
-            v-for="(option, optionKey) in modelGroup?.models?.filter((m) => m.enabled)"
-            :key="optionKey"
+            v-for="option in visibleModels"
+            :key="option.name"
             :class="{ active: model?.name === option?.name }"
             @click="onModelChange(option)"
           >
@@ -43,7 +43,7 @@ import { ConfirmIcon, ExpandDownIcon } from '@acedatacloud/core/icons/components
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
-import { resolveModelDisplayName, resolveModelIcon } from '@/utils/modelPresentation';
+import { resolveModelDisplayName, resolveModelIcon, selectableChatModels } from '@/utils/modelPresentation';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -86,6 +86,9 @@ export default defineComponent({
     },
     modelGroup(): IChatModelGroup {
       return (this.$route.meta?.modelGroup as IChatModelGroup) || CHAT_MODEL_GROUP_CHATGPT;
+    },
+    visibleModels(): IChatModel[] {
+      return selectableChatModels(this.$store.getters?.site as ISite | undefined, this.modelGroup);
     }
   },
   watch: {
@@ -93,8 +96,17 @@ export default defineComponent({
     modelGroup(newValue: IChatModelGroup) {
       console.debug('modelGroup from route changed', newValue);
       this.$store.dispatch('chat/setModelGroup', newValue);
-      const currentModel = newValue.models.find((model) => model.name === this.model?.name);
-      this.$store.dispatch('chat/setModel', currentModel ?? getDefaultChatModel(newValue));
+      this.$store.dispatch('chat/setModel', this.preferredModel(newValue, this.model));
+    },
+    visibleModels(models: IChatModel[]) {
+      // Restored conversations keep their original model, even if it is now hidden from new selections.
+      if (this.$route.params?.id || models.some((model) => model.name === this.model?.name)) return;
+      this.$store.dispatch('chat/setModel', this.preferredModel(this.modelGroup, this.model));
+    },
+    '$route.params.id'(id?: string) {
+      if (!id && !this.visibleModels.some((model) => model.name === this.model?.name)) {
+        this.$store.dispatch('chat/setModel', this.preferredModel(this.modelGroup, this.model));
+      }
     }
   },
   mounted() {
@@ -113,10 +125,19 @@ export default defineComponent({
       this.$store.dispatch('chat/setModelGroup', route);
     }
     const persistedModel = this.$store.state.chat?.model;
-    const canonicalModel = route.models.find((model) => model.name === persistedModel?.name);
-    this.$store.dispatch('chat/setModel', canonicalModel ?? getDefaultChatModel(route));
+    this.$store.dispatch('chat/setModel', this.preferredModel(route, persistedModel));
   },
   methods: {
+    preferredModel(group: IChatModelGroup, current?: IChatModel): IChatModel {
+      const models = selectableChatModels(this.$store.getters?.site as ISite | undefined, group);
+      const defaultName = getDefaultChatModel(group).name;
+      return (
+        models.find((model) => model.name === current?.name) ??
+        models.find((model) => model.name === defaultName) ??
+        models[0] ??
+        getDefaultChatModel(group)
+      );
+    },
     modelDisplayName(model: IChatModel): string {
       return resolveModelDisplayName(this.$store.getters?.site as ISite | undefined, model);
     },

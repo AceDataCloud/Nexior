@@ -1983,7 +1983,7 @@
     "description": "モデルグループのポップアップでSkillマーケットを閲覧する"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "モデルの表示名",
+    "message": "モデルの表示設定",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2149,5 +2149,17 @@
   "homeSections.oauth.tip": {
     "message": "ユーザーが明示的に同意すると、このアプリは基本情報と既存のAPIキーを読み取れます。OAuthアプリにこのコールバックURLを登録し、ここにはアプリシークレットを入力しないでください。",
     "description": "埋め込み型のサードパーティ製Studioウェブサイト向けOAuth認可"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "非表示のモデルは、新しいチャットやスケジュール済みタスクの選択肢に表示されません。既存の会話や API 呼び出しには影響しません。各グループで少なくとも 1 つのモデルを表示してください。",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "モデル選択に表示",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "各チャットアプリで少なくとも 1 つのモデルを表示してください",
+    "description": "Shown when all models are hidden"
   }
 }

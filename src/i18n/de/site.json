@@ -1983,7 +1983,7 @@
     "description": "Skill-Marktplatz im Dialogfeld der Modellgruppe durchsuchen"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "Anzeigenamen der Modelle",
+    "message": "Einstellungen für die Modellanzeige",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2149,5 +2149,17 @@
   "homeSections.oauth.tip": {
     "message": "Nach der ausdrücklichen Zustimmung des Nutzers kann diese App grundlegende Profildaten und vorhandene API-Schlüssel lesen. Registrieren Sie diese Callback-URL in der OAuth-App. Geben Sie den App-Schlüssel nicht hier ein.",
     "description": "OAuth-Autorisierung für eine eingebettete Studio-Website eines Drittanbieters"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "Ausgeblendete Modelle erscheinen nicht in der Auswahl für neue Chats oder geplante Aufgaben. Bestehende Unterhaltungen und API-Aufrufe bleiben unverändert. Pro Gruppe muss mindestens ein Modell sichtbar bleiben.",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "Im Modellmenü anzeigen",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "Pro Chat-App muss mindestens ein Modell sichtbar bleiben",
+    "description": "Shown when all models are hidden"
   }
 }

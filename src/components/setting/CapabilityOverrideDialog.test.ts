@@ -281,6 +281,37 @@ describe('CapabilityOverrideDialog', () => {
     expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models['gpt-5.5']).toEqual({ icon_url: '/icon.png' });
   });
 
+  it('saves and restores model visibility without losing the alias or icon', async () => {
+    mocks.updateSite.mockResolvedValue({ data: { id: 'site-1' } });
+    const wrapper = mountDialog(null, {
+      id: 'site-1',
+      configuration_revision: 7,
+      features: { chatgpt: { models: { 'gpt-5.5': { display_name: 'My Model', icon_url: '/icon.png' } } } }
+    });
+    await wrapper.setData({ modelVisibilityDrafts: { 'gpt-5.5': false } });
+    await (wrapper.vm as any).saveSiteConfiguration();
+    expect(mocks.updateSite.mock.calls[0][1].features.chatgpt.models['gpt-5.5']).toEqual({
+      display_name: 'My Model',
+      icon_url: '/icon.png',
+      visible: false
+    });
+
+    await wrapper.setData({ modelVisibilityDrafts: { 'gpt-5.5': true } });
+    await (wrapper.vm as any).saveSiteConfiguration();
+    expect(mocks.updateSite.mock.calls[1][1].features.chatgpt.models['gpt-5.5']).toEqual({
+      display_name: 'My Model',
+      icon_url: '/icon.png'
+    });
+  });
+
+  it('does not save when every model is hidden', async () => {
+    const wrapper = mountDialog(null, { id: 'site-1', configuration_revision: 7, features: {} });
+    await wrapper.setData({ modelVisibilityDrafts: { 'gpt-5.5': false } });
+    await (wrapper.vm as any).onSave();
+    expect(mocks.warning).toHaveBeenCalledWith('site.capabilityOverride.modelAtLeastOne');
+    expect(mocks.updateSite).not.toHaveBeenCalled();
+  });
+
   it('does not write appearance after a Site revision conflict', async () => {
     mocks.updateSite.mockRejectedValue({ response: { status: 409, data: { detail: 'Site configuration changed' } } });
     const wrapper = mountDialog(null, { id: 'site-1', configuration_revision: 7, features: {} });

@@ -15,6 +15,15 @@ export function resolveModelIcon(site: ISite | null | undefined, model: IChatMod
   return (group ? site?.features?.[group]?.models?.[model.name]?.icon_url?.trim() : '') || model.icon;
 }
 
+export function selectableChatModels(site: ISite | null | undefined, group: IChatModelGroup): IChatModel[] {
+  const enabled = group.models.filter((model) => model.enabled !== false);
+  const visible = enabled.filter((model) => site?.features?.[group.name]?.models?.[model.name]?.visible !== false);
+  // A stale or externally written all-hidden configuration must still leave a usable model.
+  if (visible.length) return visible;
+  const fallback = enabled.find((model) => model.name === group.defaultModel?.name) ?? enabled[0];
+  return fallback ? [fallback] : [];
+}
+
 export function resolveAssistantAvatar(
   site: ISite | null | undefined,
   group: IChatModelGroup | undefined,

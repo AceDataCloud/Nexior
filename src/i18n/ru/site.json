@@ -1983,7 +1983,7 @@
     "description": "Просмотр каталога навыков в окне группы моделей"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "Отображаемые имена моделей",
+    "message": "Настройки отображения моделей",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2149,5 +2149,17 @@
   "homeSections.oauth.tip": {
     "message": "После явного согласия пользователя это приложение сможет читать основные сведения профиля и существующие API-ключи. Зарегистрируйте этот адрес обратного вызова в OAuth-приложении. Не вводите секрет приложения здесь.",
     "description": "OAuth-авторизация для встроенного стороннего сайта Studio"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "Скрытые модели не отображаются при выборе модели для новых чатов и запланированных задач. Существующие диалоги и вызовы API не меняются. Оставьте хотя бы одну видимую модель в каждой группе.",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "Показывать в списке моделей",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "Оставьте хотя бы одну видимую модель для каждого чат-приложения",
+    "description": "Shown when all models are hidden"
   }
 }

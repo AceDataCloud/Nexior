@@ -51,6 +51,7 @@
         <el-divider />
         <h3 class="section-title">{{ $t('site.capabilityOverride.modelNamesTitle') }}</h3>
         <div class="field-tip model-names-tip">{{ $t('site.capabilityOverride.modelNamesTip') }}</div>
+        <div class="field-tip model-visibility-tip">{{ $t('site.capabilityOverride.modelVisibilityTip') }}</div>
         <div class="model-name-list">
           <div v-for="model in aliasModels" :key="model.name" class="model-name-row">
             <div class="model-name-default">
@@ -80,6 +81,13 @@
                   {{ $t('site.capabilityOverride.modelDefaultIcon') }}
                 </el-button>
               </div>
+              <label class="model-visibility">
+                <span>{{ $t('site.capabilityOverride.modelVisible') }}</span>
+                <el-switch
+                  v-model="modelVisibilityDrafts[model.name]"
+                  :aria-label="`${model.getDisplayName()}: ${$t('site.capabilityOverride.modelVisible')}`"
+                />
+              </label>
             </div>
           </div>
         </div>
@@ -145,7 +153,17 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
-import { ElButton, ElDialog, ElDivider, ElForm, ElFormItem, ElInput, ElMessage, ElMessageBox } from 'element-plus';
+import {
+  ElButton,
+  ElDialog,
+  ElDivider,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElMessage,
+  ElMessageBox,
+  ElSwitch
+} from 'element-plus';
 import { UploadIcon } from '@acedatacloud/core/icons/components';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import ImageCropper from '@/components/common/ImageCropper.vue';
@@ -166,6 +184,7 @@ export default defineComponent({
     ElForm,
     ElFormItem,
     ElInput,
+    ElSwitch,
     ImageCropper,
     SkillPicker,
     UploadIcon
@@ -190,6 +209,7 @@ export default defineComponent({
       skills: [] as ISiteAssistantSkillBinding[],
       modelAliasDrafts: {} as Record<string, string>,
       modelIconDrafts: {} as Record<string, string>,
+      modelVisibilityDrafts: {} as Record<string, boolean>,
       editingModelIcon: '' as string,
       modelIconEditorVisible: false,
       autoTranslatedFields: [] as string[],
@@ -243,6 +263,9 @@ export default defineComponent({
       this.modelIconDrafts = Object.fromEntries(
         this.aliasModels.map((model) => [model.name, models[model.name]?.icon_url ?? ''])
       );
+      this.modelVisibilityDrafts = Object.fromEntries(
+        this.aliasModels.map((model) => [model.name, models[model.name]?.visible !== false])
+      );
       this.editingModelIcon = '';
       this.modelIconEditorVisible = false;
       this.autoTranslatedFields = [...(this.override?.auto_translated_fields ?? [])];
@@ -271,6 +294,8 @@ export default defineComponent({
         else delete updatedModel.display_name;
         if (iconUrl) updatedModel.icon_url = iconUrl;
         else delete updatedModel.icon_url;
+        if (this.modelVisibilityDrafts[model.name] === false) updatedModel.visible = false;
+        else delete updatedModel.visible;
         if (Object.keys(updatedModel).length) models[model.name] = updatedModel;
         else delete models[model.name];
       }
@@ -295,6 +320,13 @@ export default defineComponent({
       return data;
     },
     async onSave(): Promise<void> {
+      if (
+        this.aliasModels.length &&
+        this.aliasModels.every((model) => this.modelVisibilityDrafts[model.name] === false)
+      ) {
+        ElMessage.warning(this.$t('site.capabilityOverride.modelAtLeastOne') as string);
+        return;
+      }
       const displayName = this.displayName.trim() || null;
       const iconUrl = this.iconUrl.trim() || null;
       this.submitting = true;
@@ -456,6 +488,10 @@ export default defineComponent({
   margin: -10px 0 12px;
 }
 
+.model-visibility-tip {
+  margin: -6px 0 12px;
+}
+
 .model-name-list {
   display: grid;
   gap: 12px;
@@ -519,6 +555,15 @@ export default defineComponent({
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.model-visibility {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--el-text-color-regular);
+  font-size: 13px;
 }
 
 @media (max-width: 479px) {
