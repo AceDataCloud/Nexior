@@ -12,6 +12,7 @@ export interface ISiteAssistantConfig {
 export interface ISiteModelConfig {
   display_name?: string;
   icon_url?: string;
+  visible?: boolean;
 }
 
 export interface ISiteCapabilityFeature {

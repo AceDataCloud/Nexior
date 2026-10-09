@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { IChatModel } from '@/models';
-import { resolveModelDisplayName, resolveModelIcon } from './modelPresentation';
+import { resolveModelDisplayName, resolveModelIcon, selectableChatModels } from './modelPresentation';
 
 function model(group: IChatModel['modelGroup'] = 'chatgpt'): IChatModel {
   return {
@@ -65,5 +65,31 @@ describe('resolveModelIcon', () => {
     expect(resolveModelIcon({ features: { chatgpt: { models: { 'gpt-5.5': { icon_url: ' ' } } } } }, item)).toBe(
       '/gpt.png'
     );
+  });
+});
+
+describe('selectableChatModels', () => {
+  const group = {
+    name: 'chatgpt' as const,
+    icon: '/gpt.png',
+    getDisplayName: () => 'ChatGPT',
+    getDescription: () => '',
+    models: [model(), { ...model(), name: 'gpt-6-sol' as IChatModel['name'] }]
+  };
+
+  it('hides only the configured model in its own group', () => {
+    const site = { features: { chatgpt: { models: { 'gpt-5.5': { visible: false } } } } };
+    expect(selectableChatModels(site, group).map((item) => item.name)).toEqual(['gpt-6-sol']);
+    expect(selectableChatModels(site, { ...group, name: 'grok' }).map((item) => item.name)).toEqual([
+      'gpt-5.5',
+      'gpt-6-sol'
+    ]);
+  });
+
+  it('keeps one usable model for an externally written all-hidden configuration', () => {
+    const site = {
+      features: { chatgpt: { models: { 'gpt-5.5': { visible: false }, 'gpt-6-sol': { visible: false } } } }
+    };
+    expect(selectableChatModels(site, group).map((item) => item.name)).toEqual(['gpt-5.5']);
   });
 });

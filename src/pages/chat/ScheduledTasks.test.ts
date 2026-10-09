@@ -16,6 +16,7 @@ import type { IAuthorizableSkill, IScheduledRun, IScheduledTask } from '@/operat
 import ScheduledTasks from './ScheduledTasks.vue';
 import { taskConnectorIcons } from './scheduledTaskConnectors';
 import type { IConnectorCatalogItem } from '@/operators/connection';
+import type { IChatModel } from '@/models';
 
 const copyToClipboard = vi.hoisted(() => vi.fn());
 const routerPush = vi.fn();
@@ -72,7 +73,11 @@ const errorMessages: Record<string, string> = {
   'chat.scheduledTasks.run.reason.billing_gate_failed': 'Billing authorization failed'
 };
 
-const mountComponent = (credential: { token: string } | null = null, extraStubs: Record<string, unknown> = {}) =>
+const mountComponent = (
+  credential: { token: string } | null = null,
+  extraStubs: Record<string, unknown> = {},
+  site: Record<string, unknown> = { features: {} }
+) =>
   shallowMount(ScheduledTasks, {
     global: {
       stubs: {
@@ -90,7 +95,7 @@ const mountComponent = (credential: { token: string } | null = null, extraStubs:
           state: {
             // `token` is a computed off the store — setData('token') is a no-op.
             chat: { credential },
-            site: { features: {} }
+            site
           }
         }
       }
@@ -704,6 +709,25 @@ describe('chat/ScheduledTasks', () => {
       authorizationExpiresAt: expect.any(Number),
       maxTurns: 500
     });
+  });
+
+  it('omits hidden models from new tasks while retaining an existing task model for editing', () => {
+    const wrapper = mountComponent(
+      null,
+      {},
+      {
+        features: { chatgpt: { models: { [CHAT_MODEL_NAME_GPT_5_6_SOL]: { visible: false } } } }
+      }
+    );
+    const vm = wrapper.vm as any;
+    vm.openCreate();
+    expect(vm.form.model).not.toBe(CHAT_MODEL_NAME_GPT_5_6_SOL);
+    expect(vm.modelGroups[0].models.some((model: IChatModel) => model.name === CHAT_MODEL_NAME_GPT_5_6_SOL)).toBe(
+      false
+    );
+    vm.openEdit(editedTask);
+    expect(vm.form.model).toBe(CHAT_MODEL_NAME_GPT_5_6_SOL);
+    expect(vm.modelGroups[0].models.some((model: IChatModel) => model.name === CHAT_MODEL_NAME_GPT_5_6_SOL)).toBe(true);
   });
 
   it('sends a configured 500-turn budget when creating a task', async () => {

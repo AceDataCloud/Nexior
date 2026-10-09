@@ -14,13 +14,19 @@ import type { IChatModel } from '@/models';
 
 const persistedModel = (model: IChatModel): IChatModel => JSON.parse(JSON.stringify(model));
 
-function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GROUP_CHATGPT, site?: unknown) {
+function mountSelector(
+  model: IChatModel | undefined,
+  modelGroup = CHAT_MODEL_GROUP_CHATGPT,
+  site?: unknown,
+  conversationId?: string
+) {
   const state = reactive({
     chat: {
       model,
       modelGroup
     }
   });
+  const route = reactive({ meta: { modelGroup }, params: { id: conversationId } });
   const dispatch = vi.fn((action: string, payload: unknown) => {
     if (action === 'chat/setModel') state.chat.model = payload as IChatModel;
     if (action === 'chat/setModelGroup') state.chat.modelGroup = payload as typeof modelGroup;
@@ -28,7 +34,7 @@ function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GR
   const wrapper = shallowMount(ModelSelector, {
     global: {
       mocks: {
-        $route: { meta: { modelGroup } },
+        $route: route,
         $store: { state, dispatch, getters: { site } },
         $t: (key: string) => key
       },
@@ -41,7 +47,7 @@ function mountSelector(model: IChatModel | undefined, modelGroup = CHAT_MODEL_GR
       }
     }
   });
-  return { dispatch, state, wrapper };
+  return { dispatch, route, state, wrapper };
 }
 
 describe('ModelSelector', () => {
@@ -64,6 +70,37 @@ describe('ModelSelector', () => {
     expect(wrapper.find('.trigger-icon').attributes('src')).toBe(icon);
     expect(wrapper.findAll('.item-icon').some((item) => item.attributes('src') === icon)).toBe(true);
     expect(state.chat.model?.name).toBe(CHAT_MODEL_GPT_5_6_SOL.name);
+  });
+
+  it('hides a Site model from the picker and replaces a stale new-chat selection', async () => {
+    const { state, wrapper } = mountSelector(CHAT_MODEL_GPT_5_6_SOL, CHAT_MODEL_GROUP_CHATGPT, {
+      features: { chatgpt: { models: { [CHAT_MODEL_GPT_5_6_SOL.name]: { visible: false } } } }
+    });
+    await nextTick();
+    expect(wrapper.findAll('.item-name').map((item) => item.text())).not.toContain(
+      CHAT_MODEL_GPT_5_6_SOL.getDisplayName()
+    );
+    expect(state.chat.model?.name).toBe(CHAT_MODEL_GPT_6_ASTRA.name);
+  });
+
+  it('keeps the original model when an existing conversation is restored', async () => {
+    const { dispatch, route, wrapper } = mountSelector(
+      CHAT_MODEL_GPT_6_ASTRA,
+      CHAT_MODEL_GROUP_CHATGPT,
+      {
+        features: { chatgpt: { models: { [CHAT_MODEL_GPT_5_6_SOL.name]: { visible: false } } } }
+      },
+      'conversation-1'
+    );
+    await nextTick();
+    dispatch('chat/setModel', CHAT_MODEL_GPT_5_6_SOL);
+    dispatch.mockClear();
+    (wrapper.vm as any).$options.watch.visibleModels.call(wrapper.vm, wrapper.vm.visibleModels);
+    expect(dispatch).not.toHaveBeenCalled();
+
+    route.params.id = undefined;
+    await nextTick();
+    expect(dispatch).toHaveBeenCalledWith('chat/setModel', CHAT_MODEL_GPT_6_ASTRA);
   });
 
   it('preserves the selected model when the same route group is rebound', async () => {

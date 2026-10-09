@@ -1984,7 +1984,7 @@
     "description": "Explorar el mercado de Skills en la ventana emergente del grupo de modelos"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "Nombres visibles de los modelos",
+    "message": "Configuración de visualización de modelos",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2150,5 +2150,17 @@
   "homeSections.oauth.tip": {
     "message": "Después de que el usuario dé su consentimiento explícito, esta aplicación podrá leer los datos básicos y las claves de API existentes. Registra esta URL de devolución de llamada en la aplicación de OAuth; no introduzcas aquí el secreto de la aplicación.",
     "description": "Autorización de OAuth para un sitio web de Studio de terceros integrado"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "Los modelos ocultos no aparecen entre las opciones para chats nuevos o tareas programadas. Las conversaciones existentes y las llamadas a la API no cambian. Deja al menos un modelo visible por grupo.",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "Mostrar en el selector de modelos",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "Deja al menos un modelo visible en cada aplicación de chat",
+    "description": "Shown when all models are hidden"
   }
 }

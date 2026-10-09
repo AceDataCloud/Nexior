@@ -1983,7 +1983,7 @@
     "description": "استعراض سوق المهارات في نافذة مجموعة النماذج"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "أسماء عرض النماذج",
+    "message": "إعدادات عرض النماذج",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2149,5 +2149,17 @@
   "homeSections.oauth.tip": {
     "message": "بعد موافقة المستخدم صراحةً، يمكن لهذا التطبيق قراءة المعلومات الأساسية ومفاتيح API الحالية. سجّل عنوان إعادة التوجيه هذا في تطبيق OAuth، ولا تُدخل سر التطبيق هنا.",
     "description": "تفويض OAuth لموقع Studio مضمّن تابع لجهة خارجية"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "لن تظهر النماذج المخفية ضمن خيارات المحادثات الجديدة أو المهام المجدولة. تبقى المحادثات الحالية وطلبات API دون تغيير. أبقِ نموذجًا واحدًا على الأقل ظاهرًا في كل مجموعة.",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "إظهار في قائمة النماذج",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "أبقِ نموذجًا واحدًا على الأقل ظاهرًا لكل تطبيق محادثة",
+    "description": "Shown when all models are hidden"
   }
 }

@@ -796,7 +796,7 @@ import { CHAT_MODELS, CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/c
 import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
-import { resolveModelDisplayName } from '@/utils/modelPresentation';
+import { resolveModelDisplayName, selectableChatModels } from '@/utils/modelPresentation';
 import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_SCHEDULED_TASK_DETAIL } from '@/router/constants';
 import { detectedTimeZone, isValidTimeZone, listTimeZones, timeZoneLabel } from '@/utils/timezones';
 import ScheduledTemplateWizard from '@/components/scheduledTemplates/ScheduledTemplateWizard.vue';
@@ -997,12 +997,16 @@ export default defineComponent({
     },
     // Models from site-enabled chat services, grouped by provider (mirrors nav gating).
     modelGroups(): IChatModelGroup[] {
-      const features = (this.$store.state.site?.features ?? {}) as Record<string, { enabled?: boolean }>;
+      const site = (this.$store.getters?.site ?? this.$store.state.site) as ISite | undefined;
+      const features = site?.features ?? {};
       return CHAT_MODEL_GROUPS.filter((g) => features[g.name]?.enabled !== false)
-        .map((g) => ({
-          ...g,
-          models: g.models.filter((m) => m.enabled !== false)
-        }))
+        .map((g) => {
+          const models = selectableChatModels(site, g);
+          // Keep the saved model visible when editing a task that predates this Site setting.
+          const saved = g.models.find((model) => model.name === this.editingTask?.template.model);
+          if (saved && !models.some((model) => model.name === saved.name)) models.push(saved);
+          return { ...g, models };
+        })
         .filter((g) => g.models.length > 0);
     },
     pagedTasks(): IScheduledTask[] {
@@ -1419,8 +1423,13 @@ export default defineComponent({
       if (this.saving) return;
       this.editingTask = null;
       this.form = this.emptyForm();
+      this.ensureVisibleFormModel();
       this.showCreateDialog = true;
       void this.loadDesktopContext();
+    },
+    ensureVisibleFormModel() {
+      const models = this.modelGroups.flatMap((group) => group.models);
+      if (!models.some((model) => model.name === this.form.model)) this.form.model = models[0]?.name ?? this.form.model;
     },
     /**
      * Load this machine's identity and local tool inventory.
@@ -1538,6 +1547,7 @@ export default defineComponent({
         // time with nothing surfaced to the user.
         authorizationExpiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60
       };
+      this.ensureVisibleFormModel();
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
       void this.loadDesktopContext();

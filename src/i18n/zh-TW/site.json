@@ -1983,7 +1983,7 @@
     "description": "在模型組彈窗瀏覽 Skill 市場"
   },
   "capabilityOverride.modelNamesTitle": {
-    "message": "模型顯示名稱",
+    "message": "模型顯示設定",
     "description": "Title for Site-level model aliases in the capability editor"
   },
   "capabilityOverride.modelNamesTip": {
@@ -2149,5 +2149,17 @@
   "homeSections.oauth.tip": {
     "message": "使用者明確同意後，此應用程式可讀取基本資料和現有 API 金鑰。請在 OAuth 應用程式中登記此回呼網址，不要在這裡填寫應用程式密鑰。",
     "description": "嵌入式第三方 Studio 網站的 OAuth 授權"
+  },
+  "capabilityOverride.modelVisibilityTip": {
+    "message": "隱藏的模型不會出現在新對話和排程任務的模型選項中；現有對話與 API 呼叫不受影響。每組至少保留一個可見模型。",
+    "description": "Explains the scope of Site model visibility"
+  },
+  "capabilityOverride.modelVisible": {
+    "message": "在模型選單中顯示",
+    "description": "Visibility switch for one chat model"
+  },
+  "capabilityOverride.modelAtLeastOne": {
+    "message": "每個聊天應用程式至少保留一個可見模型",
+    "description": "Shown when all models are hidden"
   }
 }
