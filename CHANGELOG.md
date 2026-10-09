@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 08 Oct 2026 20:26:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 09 Oct 2026 20:24:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.3
+
+Fri, 09 Oct 2026 20:24:11 GMT
+
+### Patches
+
+- Let site owners hide individual chat models from new chat and scheduled task model choices. (dev@acedata.cloud)
+- Add Nano Banana 2.1 to image generation and resolution selection. (dev@acedata.cloud)
 
 ## 3.380.2
 
