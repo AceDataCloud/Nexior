@@ -12,6 +12,7 @@ export const NANOBANANA_DEFAULT_RESOLUTION = NANOBANANA_RESOLUTION_1K;
 export const NANOBANANA_MODEL_NANO_BANANA = 'nano-banana';
 export const NANOBANANA_MODEL_NANO_BANANA_2_LITE = 'nano-banana-2-lite';
 export const NANOBANANA_MODEL_NANO_BANANA_2 = 'nano-banana-2';
+export const NANOBANANA_MODEL_NANO_BANANA_2_1 = 'nano-banana-2.1';
 export const NANOBANANA_MODEL_NANO_BANANA_PRO = 'nano-banana-pro';
 
 export const NANOBANANA_DEFAULT_MODEL = NANOBANANA_MODEL_NANO_BANANA;

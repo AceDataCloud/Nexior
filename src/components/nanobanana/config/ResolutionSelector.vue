@@ -24,6 +24,7 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   NANOBANANA_DEFAULT_RESOLUTION,
   NANOBANANA_MODEL_NANO_BANANA_2,
+  NANOBANANA_MODEL_NANO_BANANA_2_1,
   NANOBANANA_MODEL_NANO_BANANA_PRO,
   NANOBANANA_RESOLUTION_1K,
   NANOBANANA_RESOLUTION_2K,
@@ -70,7 +71,11 @@ export default defineComponent({
     },
     supportsResolution(): boolean {
       const model = this.$store.state.nanobanana?.config?.model;
-      return model === NANOBANANA_MODEL_NANO_BANANA_2 || model === NANOBANANA_MODEL_NANO_BANANA_PRO;
+      return (
+        model === NANOBANANA_MODEL_NANO_BANANA_2 ||
+        model === NANOBANANA_MODEL_NANO_BANANA_2_1 ||
+        model === NANOBANANA_MODEL_NANO_BANANA_PRO
+      );
     }
   },
   watch: {
