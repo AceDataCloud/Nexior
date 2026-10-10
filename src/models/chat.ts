@@ -455,6 +455,9 @@ export interface IChatConversationOptions {
 
 export interface IChatConversationRequest {
   id?: string;
+  /** Preserve a scheduled run's linkage when its owner continues the chat. */
+  metadata?: IChatConversation['metadata'];
+  title?: string;
   question?: string;
   message?: string | IChatMessageContentItem[];
   references?: Array<string | IChatReference>;

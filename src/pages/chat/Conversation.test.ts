@@ -8,6 +8,7 @@ import { BaseError, IChatMessageState, Status, type IChatConversation, type ICha
 import { chatOperator } from '@/operators';
 import { scheduledTasksOperator } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GPT_6_ASTRA } from '@/constants';
+import Composer from '@/components/chat/Composer.vue';
 import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
 vi.mock('@/utils/login', () => ({ ensureLoggedIn: () => true }));
@@ -16,11 +17,13 @@ const mountComponent = ({
   credentialToken,
   fetchedConversation,
   conversationId = 'conversation-1',
+  application,
   model = undefined
 }: {
   credentialToken?: string;
   fetchedConversation?: Record<string, unknown>;
   conversationId?: string | null;
+  application?: Record<string, unknown>;
   model?: typeof CHAT_MODEL_GPT_6_ASTRA;
 } = {}) => {
   const pendingConversation = new Promise(() => undefined);
@@ -58,7 +61,7 @@ const mountComponent = ({
             getters: { authenticated: !!credentialToken },
             state: {
               chat: {
-                application: undefined,
+                application,
                 applications: undefined,
                 conversations: [],
                 credential: credentialToken ? { token: credentialToken } : undefined,
@@ -112,30 +115,42 @@ describe('scheduled conversation', () => {
     wrapper.unmount();
   });
 
-  it('opens while running, stays read only, and refreshes when the run finishes', async () => {
+  it('shows the normal composer and allows a follow-up after the run finishes', async () => {
     const pending = {
       id: 'run-1',
-      model: 'gpt-6.1-sol',
+      title: 'Scheduled task',
+      model: 'gpt-6-astra',
       messages: [],
       metadata: { source: 'scheduled_task', scheduled_task_id: 'task-1', run_id: 'run-1', question: 'Do the work' }
     };
     const running = { id: 'run-1', task_id: 'task-1', status: 'running' as const, scheduled_at: Date.now() / 1000 };
     const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([running]);
+    const send = vi.spyOn(chatOperator, 'chatConversation').mockResolvedValue({
+      id: 'run-1',
+      answer: 'Follow-up answer',
+      delta_answer: ''
+    });
     const { wrapper, dispatch } = mountComponent({
       credentialToken: 'token',
       conversationId: 'run-1',
-      fetchedConversation: pending
+      fetchedConversation: pending,
+      application: { id: 'app-1' },
+      model: CHAT_MODEL_GPT_6_ASTRA
     });
     await flushPromises();
 
     expect(wrapper.vm.scheduledRun?.status).toBe('running');
     expect(wrapper.find('.scheduled-run-question').text()).toBe('Do the work');
-    expect(wrapper.find('.scheduled-run-status').text()).not.toContain('conversationPending');
+    expect(wrapper.find('.scheduled-run-status').exists()).toBe(false);
     expect(wrapper.find('.scheduled-run-waiting').exists()).toBe(false);
-    expect(wrapper.find('.starter').exists()).toBe(false);
+    expect(wrapper.find('.starter').exists()).toBe(true);
     expect(wrapper.vm.ready).toBe(false);
+    await wrapper.setData({ question: 'What happened?' });
+    await wrapper.vm.onSubmit();
+    expect(send).not.toHaveBeenCalled();
+    expect(wrapper.vm.messages).toEqual([]);
 
-    listRuns.mockResolvedValue([{ ...running, status: 'success' }]);
+    listRuns.mockResolvedValue([{ ...running, status: 'failed' }]);
     dispatch.mockImplementation((action: string) =>
       Promise.resolve(
         action === 'chat/getConversation' ? { ...pending, messages: [{ role: 'user', content: 'Done' }] } : undefined
@@ -146,6 +161,20 @@ describe('scheduled conversation', () => {
 
     expect(wrapper.vm.messages).toEqual([{ role: 'user', content: 'Done' }]);
     expect(wrapper.vm.scheduledRunPollTimer).toBeNull();
+    expect(wrapper.vm.ready).toBe(true);
+    expect(wrapper.getComponent(Composer).props('ready')).toBe(true);
+    await wrapper.vm.onSubmit();
+    expect(send).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: 'run-1',
+        question: 'What happened?',
+        title: 'Scheduled task',
+        metadata: { source: 'scheduled_task', scheduled_task_id: 'task-1', run_id: 'run-1' }
+      }),
+      expect.anything()
+    );
+    await flushPromises();
+    expect(dispatch).not.toHaveBeenCalledWith('chat/setConversation', expect.anything());
     wrapper.unmount();
   });
 
