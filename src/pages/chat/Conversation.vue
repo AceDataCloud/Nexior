@@ -47,17 +47,6 @@
       <div
         :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation && !isScheduledConversation }"
       >
-        <div v-if="isScheduledConversation" class="scheduled-run-status" role="status" aria-live="polite">
-          <strong>{{ scheduledConversation?.title || $t('chat.scheduledTasks.title') }}</strong>
-          <el-tag
-            v-if="scheduledRun"
-            size="small"
-            round
-            :type="scheduledRun.status === 'success' ? 'success' : scheduledRun.status === 'failed' ? 'danger' : 'info'"
-          >
-            {{ $t(`chat.scheduledTasks.run.${scheduledRun.status}`) }}
-          </el-tag>
-        </div>
         <div
           v-if="restoringConversation"
           class="conversation-loading"
@@ -107,7 +96,7 @@
             {{ scheduledConversation.metadata.question }}
           </div>
         </div>
-        <div v-if="!isScheduledConversation" class="starter">
+        <div class="starter">
           <div class="composer-connectors"><connector-strip /></div>
           <composer
             v-model:question="question"
@@ -184,7 +173,7 @@ import { hasLoadedConversationMessages } from '@/components/chat/conversationRes
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
 import { isRunWorthPolling, scheduledTasksOperator, type IScheduledRun } from '@/operators/scheduledTasks';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem, ElTag } from 'element-plus';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
   drawer: boolean;
@@ -262,8 +251,7 @@ export default defineComponent({
     ElDropdownItem,
     ElDropdownMenu,
     ElSkeleton,
-    ElSkeletonItem,
-    ElTag
+    ElSkeletonItem
   },
   data(): IData {
     return {
@@ -354,7 +342,9 @@ export default defineComponent({
       return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
     },
     ready(): boolean {
-      if (this.isScheduledConversation) return false;
+      // A scheduled run owns this transcript until it finishes. Keep the
+      // composer visible, then allow a normal follow-up once polling stops.
+      if (this.isScheduledConversation && this.scheduledRunPollTimer) return false;
       if (this.restoringConversation || this.restarting) return false;
       // Guests may compose & "send" — the submit handler triggers login
       // (deferred auth), so the composer must not be disabled for them.
@@ -900,7 +890,7 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
-      if (this.isScheduledConversation) return;
+      if (this.isScheduledConversation && this.scheduledRunPollTimer) return;
       if (this.restoringConversation) return;
       // Belt-and-braces: `ready` already disables the composer, but onDraft /
       // deep-links call onSubmit directly and would bypass it.
@@ -1587,8 +1577,16 @@ export default defineComponent({
       // *remaining* text instead of duplicating everything we already
       // pushed.
       let answerOffset = 0;
+      const scheduledConversation = this.isScheduledConversation ? this.scheduledConversation : null;
+      const metadata = scheduledConversation
+        ? {
+            source: 'scheduled_task',
+            scheduled_task_id: scheduledConversation.metadata?.scheduled_task_id,
+            run_id: scheduledConversation.metadata?.run_id
+          }
+        : undefined;
       chatOperator
-        .chatConversation(body, {
+        .chatConversation(metadata ? { ...body, metadata, title: scheduledConversation?.title } : body, {
           token,
           stream: (response: IChatConversationResponse) => {
             console.debug('stream response', response);
@@ -1813,10 +1811,14 @@ export default defineComponent({
           console.debug('finished fetch answer', this.messages);
           this.messages[targetIndex].state = IChatMessageState.FINISHED;
           console.debug('finished fetch answer', JSON.stringify(this.messages));
-          await this.$store.dispatch('chat/setConversation', {
-            id: conversationId,
-            messages: this.messages
-          });
+          // Run conversations live under Scheduled Tasks, outside the normal
+          // sidebar list. Keep their streamed messages local to this page.
+          if (!this.isScheduledConversation) {
+            await this.$store.dispatch('chat/setConversation', {
+              id: conversationId,
+              messages: this.messages
+            });
+          }
           // Keep `answering` true if we're about to auto-resume deferred
           // desktop client tools, so the composer/stop button stay in the
           // streaming state across the resume instead of flickering enabled.
@@ -1996,22 +1998,10 @@ export default defineComponent({
 }
 
 .dialogue {
-  .scheduled-run-status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 16px auto;
-    padding: 12px 16px;
-    width: min(800px, calc(100% - 32px));
-    border: 1px solid var(--el-border-color-light);
-    border-radius: 12px;
-    color: var(--el-text-color-secondary);
-    background: var(--el-fill-color-light);
-  }
   .scheduled-run-pending {
     width: min(800px, calc(100% - 32px));
     margin: 8px auto 24px;
+    flex: 1;
   }
   .scheduled-run-question {
     padding: 16px 18px;
