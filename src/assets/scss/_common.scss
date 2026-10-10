@@ -282,6 +282,50 @@ w3m-modal {
   margin-left: 8px;
 }
 
+// Keep the visible close chip compact while giving attachment previews a full
+// icon-sized click target, including on touch screens.
+.preview-remove-button {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  width: var(--adc-icon-target-size);
+  height: var(--adc-icon-target-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--adc-radius-small);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.72);
+    content: '';
+  }
+
+  &:hover::before {
+    background: rgba(0, 0, 0, 0.88);
+  }
+
+  .icon-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+#app .preview-remove-button:focus-visible {
+  outline-offset: -2px;
+}
+
 .el-dropdown {
   color: var(--el-text-color-primary);
 }
