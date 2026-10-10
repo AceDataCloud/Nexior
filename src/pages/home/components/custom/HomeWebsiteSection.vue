@@ -12,9 +12,6 @@
       loading="lazy"
       referrerpolicy="no-referrer"
     />
-    <a v-if="url" class="tenant-home-website-link" :href="url" target="_blank" rel="noopener noreferrer">
-      {{ $t('site.homeSections.websiteOpenExternal', { host }) }}
-    </a>
   </article>
 </template>
 
@@ -36,7 +33,6 @@ const url = computed(() => {
     return '';
   }
 });
-const host = computed(() => (url.value ? new URL(url.value).hostname : ''));
 </script>
 
 <style scoped>
@@ -47,11 +43,6 @@ const host = computed(() => (url.value ? new URL(url.value).hostname : ''));
   border: 0;
   border-radius: 12px;
   background: var(--el-bg-color);
-}
-.tenant-home-website-link {
-  display: inline-flex;
-  margin-top: 12px;
-  color: var(--el-color-primary);
 }
 @media (max-width: 760px) {
   .tenant-home-website-frame {

@@ -112,14 +112,12 @@ describe('HomeCustomSections', () => {
     expect(html.find('iframe').exists()).toBe(false);
   });
 
-  it('renders Website URLs in a sandboxed iframe with an external fallback', () => {
+  it('renders Website URLs in a sandboxed iframe without an external link', () => {
     const url = 'https://example.com/embed';
     const wrapper = mount(HomeWebsiteSection, {
-      props: { section: { kind: 'website', title: 'Website', body: url, render_in_iframe: true } },
-      global: { mocks: { $t: (_key: string, values: { host: string }) => `Open ${values.host}` } }
+      props: { section: { kind: 'website', title: 'Website', body: url, render_in_iframe: true } }
     });
     const iframe = wrapper.get('iframe');
-    const link = wrapper.get('a');
 
     expect(iframe.attributes('src')).toBe(`${url}?lang=en&theme=light`);
     expect(iframe.attributes('srcdoc')).toBeUndefined();
@@ -127,24 +125,19 @@ describe('HomeCustomSections', () => {
     expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
     expect(iframe.attributes('loading')).toBe('lazy');
     expect(iframe.attributes('referrerpolicy')).toBe('no-referrer');
-    expect(link.attributes('href')).toBe(`${url}?lang=en&theme=light`);
-    expect(link.attributes('target')).toBe('_blank');
-    expect(link.attributes('rel')).toBe('noopener noreferrer');
-    expect(link.text()).toContain('example.com');
+    expect(wrapper.find('a').exists()).toBe(false);
   });
 
   it('replaces stale Website context while preserving other parameters and hash', async () => {
     const body = 'https://example.com/embed?ref=a%20b&lang=old&theme=dark#section';
     const wrapper = mount(HomeWebsiteSection, {
-      props: { section: { kind: 'website', title: 'Website', body }, locale: 'zh-CN', theme: 'light' },
-      global: { mocks: { $t: () => 'Open externally' } }
+      props: { section: { kind: 'website', title: 'Website', body }, locale: 'zh-CN', theme: 'light' }
     });
     const current = new URL(wrapper.get('iframe').attributes('src')!);
     expect(current.searchParams.get('ref')).toBe('a b');
     expect(current.searchParams.getAll('lang')).toEqual(['zh-CN']);
     expect(current.searchParams.getAll('theme')).toEqual(['light']);
     expect(current.hash).toBe('#section');
-    expect(wrapper.get('a').attributes('href')).toBe(current.toString());
     await wrapper.setProps({ locale: 'ar', theme: 'dark' });
     expect(new URL(wrapper.get('iframe').attributes('src')!).searchParams.get('lang')).toBe('ar');
     expect(new URL(wrapper.get('iframe').attributes('src')!).searchParams.get('theme')).toBe('dark');
@@ -222,8 +215,7 @@ describe('HomeCustomSections', () => {
           render_in_iframe: true,
           height: 520
         }
-      },
-      global: { mocks: { $t: () => 'Open externally' } }
+      }
     });
     const iframe = wrapper.get('iframe');
 
