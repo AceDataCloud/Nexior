@@ -25,7 +25,7 @@
     <button
       v-if="closable"
       type="button"
-      class="close absolute cursor-pointer top-[5px] right-[5px] bg-[rgba(0,0,0,0.7)] text-white w-[15px] rounded-full h-[15px] flex text-[10px] text-center items-center justify-center"
+      class="preview-remove-button"
       :aria-label="$t('common.button.close')"
       :title="$t('common.button.close')"
       @click="$emit('remove')"
