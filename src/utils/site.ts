@@ -11,7 +11,13 @@ import { isMainOfficial } from './is';
 const STUDIO_HOST = 'studio.acedata.cloud';
 
 export const getSiteOrigin = (site?: ISite) => {
-  // If we already have a Site row, trust its stored origin.
+  // A web visitor's current hostname is the Site identity. The stored Site
+  // origin can be a canonical alias or a stale persisted value.
+  const host = typeof window === 'undefined' ? '' : window.location?.host?.split(':')[0] || '';
+  if (!isNative() && !isDesktop() && host && !host.includes('localhost')) {
+    return isMainOfficial(host) ? STUDIO_HOST : host;
+  }
+  // Native/desktop shells and local previews have no public Site hostname.
   if (site?.origin) {
     return isMainOfficial(site.origin) ? STUDIO_HOST : site.origin;
   }
@@ -20,21 +26,12 @@ export const getSiteOrigin = (site?: ISite) => {
   // scheme authority "bundle" (app://bundle) which is equally useless.
   // Both fall back to studio's bare host so the app boots against the
   // canonical first-party Site row.
-  if (isNative() || isDesktop()) {
+  if (isNative() || isDesktop() || !host) {
     return STUDIO_HOST;
   }
-  if (typeof window === 'undefined' || !window.location?.host) {
-    return STUDIO_HOST;
-  }
-  const host = window.location.host;
   // Local dev: synthesize a unique fake host so we don't collide with
   // any real Site row.
-  if (host.includes('localhost')) {
-    return `localhost-${uuid()}`;
-  }
-  // Strip an accidental ":port" if the visitor is on a non-standard
-  // port; PlatformBackend never stores ports either.
-  return isMainOfficial(host.split(':')[0]) ? STUDIO_HOST : host.split(':')[0];
+  return `localhost-${uuid()}`;
 };
 
 /**

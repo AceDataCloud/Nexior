@@ -289,10 +289,9 @@ export const switchAccount = async ({ state, commit }: ActionContext<IRootState,
 };
 
 export const login = async (
-  { state, commit }: ActionContext<IRootState, IRootState>,
+  { commit }: ActionContext<IRootState, IRootState>,
   payload: { redirect?: string; addAccount?: boolean } = {}
 ) => {
-  const site = state?.site?.origin;
   const redirect = payload.redirect || window.location.pathname + window.location.search + window.location.hash;
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
@@ -316,7 +315,7 @@ export const login = async (
     // it survives the auth round-trip and is still present when the user
     // lands back on Nexior. inviter_id is also forwarded as a top-level
     // query param by loginRedirect itself.
-    loginRedirect({ redirect, site, addAccount: payload.addAccount });
+    loginRedirect({ redirect, addAccount: payload.addAccount });
   }
 };
 
