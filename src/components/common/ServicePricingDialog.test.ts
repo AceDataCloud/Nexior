@@ -55,6 +55,22 @@ function mountDialog(service: any) {
 }
 
 describe('ServicePricingDialog', () => {
+  it('shows Maestro as a per-second price instead of an opaque calculation', () => {
+    const wrapper = mountDialog({
+      id: 'maestro',
+      title: 'Maestro',
+      cost: [
+        {
+          conditions: { '==': [1, 1] },
+          consumption: { '*': [0.7, { max: [1, { min: [300, { var: ['duration', 30] }] }] }] },
+          unit: 'Second'
+        }
+      ]
+    });
+    const vm = wrapper.vm as any;
+    expect(vm.priceLabel(vm.rows[0])).toBe('0.70 Credits / second');
+  });
+
   it('normalizes and renders pricing without exposing JsonLogic', () => {
     const wrapper = mountDialog({
       id: 'service-1',

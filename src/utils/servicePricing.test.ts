@@ -132,6 +132,26 @@ describe('normalizeServicePricing', () => {
     expect(rows[1]).toMatchObject({ billingKind: 'linear', amount: 0.5, rateField: 'count' });
   });
 
+  it('shows the rate when billable duration is clamped', () => {
+    const [row] = normalizeServicePricing([
+      {
+        conditions: { '==': [1, 1] },
+        consumption: { '*': [0.7, { max: [1, { min: [300, { var: ['duration', 30] }] }] }] },
+        unit: 'Second'
+      }
+    ]);
+
+    expect(row).toMatchObject({ billingKind: 'linear', amount: 0.7, rateField: 'duration', unit: 'Second' });
+  });
+
+  it('does not treat formulas with two variable bounds as one rate', () => {
+    const [row] = normalizeServicePricing([
+      { conditions: {}, consumption: { '*': [0.7, { max: [{ var: 'duration' }, { var: 'minimum' }] }] } }
+    ]);
+
+    expect(row.billingKind).toBe('calculated');
+  });
+
   it('uses safe fallbacks for unsupported conditions and formulas', () => {
     const [row] = normalizeServicePricing([
       {
