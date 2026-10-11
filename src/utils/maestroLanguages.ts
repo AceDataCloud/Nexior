@@ -41,17 +41,12 @@ export const getMaestroLanguageOptions = (locale: string): IMaestroLanguageOptio
   }));
 
 export const normalizeMaestroLanguages = (languages?: string[]): string[] => {
-  const normalized = Array.from(new Set((languages || []).filter((language) => ALLOWED_LANGUAGES.has(language))));
-  return normalized.length ? normalized : [...MAESTRO_DEFAULT_LANGS];
+  const language = languages?.find((candidate) => ALLOWED_LANGUAGES.has(candidate));
+  return [language || MAESTRO_DEFAULT_LANGS[0]];
 };
 
 export const setMaestroPrimaryLanguage = (languages: string[], primaryLanguage: string): string[] => {
   const normalized = normalizeMaestroLanguages(languages);
   const nextPrimary = ALLOWED_LANGUAGES.has(primaryLanguage) ? primaryLanguage : normalized[0];
-  return [nextPrimary, ...normalized.filter((language) => language !== nextPrimary)];
-};
-
-export const setMaestroAdditionalLanguages = (languages: string[], additionalLanguages: string[]): string[] => {
-  const primaryLanguage = normalizeMaestroLanguages(languages)[0];
-  return normalizeMaestroLanguages([primaryLanguage, ...additionalLanguages]);
+  return [nextPrimary];
 };

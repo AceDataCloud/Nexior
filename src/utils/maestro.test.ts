@@ -4,6 +4,10 @@ import { MAESTRO_ALLOWED_SCENARIOS, MAESTRO_ALLOWED_STYLES, MAESTRO_ALLOWED_VOIC
 import { buildMaestroGenerateRequest, buildMaestroRemixConfig, normalizeMaestroConfig } from './maestro';
 
 describe('buildMaestroGenerateRequest', () => {
+  it('sends only one language from a saved multi-language config', () => {
+    expect(buildMaestroGenerateRequest({ prompt: 'Video', langs: ['en', 'ja'] }).langs).toEqual(['en']);
+  });
+
   it.each([
     [false, false, false, {}],
     [true, false, false, { scenario: 'avatar' }],

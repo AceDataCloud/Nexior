@@ -1,4 +1,5 @@
 import { IMaestroConfig, IMaestroGenerateRequest, IMaestroTask } from '@/models';
+import { normalizeMaestroLanguages } from './maestroLanguages';
 import {
   MAESTRO_ACTION_REMIX,
   MAESTRO_ALLOWED_SCENARIOS,
@@ -89,6 +90,7 @@ export function buildMaestroGenerateRequest(config?: IMaestroConfig): IMaestroGe
 
   return {
     ...request,
+    ...(request.langs?.length ? { langs: normalizeMaestroLanguages(request.langs) } : {}),
     ...(scenarioCustomizationEnabled && scenario ? { scenario } : {}),
     ...(styleCustomizationEnabled && style ? { style } : {}),
     ...(voiceCustomizationEnabled && voice ? { voice } : {})

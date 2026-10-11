@@ -4,7 +4,6 @@ import {
   getMaestroLanguageName,
   getMaestroLanguageOptions,
   normalizeMaestroLanguages,
-  setMaestroAdditionalLanguages,
   setMaestroPrimaryLanguage
 } from './maestroLanguages';
 
@@ -23,20 +22,12 @@ describe('Maestro language picker helpers', () => {
     ]);
   });
 
-  it('promotes a language to primary without dropping the previous primary', () => {
-    expect(setMaestroPrimaryLanguage(['zh-cn', 'en', 'ja'], 'en')).toEqual(['en', 'zh-cn', 'ja']);
+  it('selects one output language', () => {
+    expect(setMaestroPrimaryLanguage(['zh-cn', 'en', 'ja'], 'en')).toEqual(['en']);
   });
 
   it('normalizes empty, duplicate, and unsupported persisted languages', () => {
     expect(normalizeMaestroLanguages()).toEqual(['zh-cn']);
-    expect(normalizeMaestroLanguages(['it', 'en', 'en', 'ja'])).toEqual(['en', 'ja']);
-  });
-
-  it('keeps the primary first and de-duplicates additional languages', () => {
-    expect(setMaestroAdditionalLanguages(['zh-cn', 'en'], ['ja', 'en', 'ja', 'zh-cn', 'it'])).toEqual([
-      'zh-cn',
-      'ja',
-      'en'
-    ]);
+    expect(normalizeMaestroLanguages(['it', 'en', 'en', 'ja'])).toEqual(['en']);
   });
 });
