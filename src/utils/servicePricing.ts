@@ -35,6 +35,26 @@ function getVariable(value: unknown): string | undefined {
   return undefined;
 }
 
+function getClampedVariable(value: unknown): string | undefined {
+  let current = value;
+  for (let depth = 0; depth < 4; depth++) {
+    const variable = getVariable(current);
+    if (variable) return variable;
+    if (!isRecord(current)) return undefined;
+    const entries = Object.entries(current);
+    if (entries.length !== 1) return undefined;
+    const [operator, operands] = entries[0];
+    if ((operator !== 'min' && operator !== 'max') || !Array.isArray(operands) || operands.length !== 2) {
+      return undefined;
+    }
+    const [left, right] = operands;
+    if (typeof left === 'number' && typeof right !== 'number') current = right;
+    else if (typeof right === 'number' && typeof left !== 'number') current = left;
+    else return undefined;
+  }
+  return getVariable(current);
+}
+
 function displayValue(value: unknown): string | undefined {
   if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') return String(value);
   if (Array.isArray(value) && value.every((item) => ['string', 'number', 'boolean'].includes(typeof item))) {
@@ -109,11 +129,11 @@ function parseLinearConsumption(value: unknown): { amount: number; rateField: st
   if (!isRecord(value) || !Array.isArray(value['*']) || value['*'].length !== 2) return undefined;
   const [left, right] = value['*'];
   if (typeof left === 'number') {
-    const rateField = getVariable(right);
+    const rateField = getClampedVariable(right);
     return rateField ? { amount: left, rateField } : undefined;
   }
   if (typeof right === 'number') {
-    const rateField = getVariable(left);
+    const rateField = getClampedVariable(left);
     return rateField ? { amount: right, rateField } : undefined;
   }
   return undefined;
