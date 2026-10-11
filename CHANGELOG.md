@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 10 Oct 2026 20:23:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 11 Oct 2026 20:24:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.5
+
+Sun, 11 Oct 2026 20:24:30 GMT
+
+### Patches
+
+- Show Maestro per-second pricing in Studio dialog (dev@acedata.cloud)
+- Simplify Maestro to one language and a flat per-second estimate (dev@acedata.cloud)
 
 ## 3.380.4
 
