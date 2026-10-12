@@ -9,7 +9,7 @@ const store = vi.hoisted(() => ({
 vi.mock('@/store', () => ({ default: store }));
 vi.mock('./baseUrl', () => ({
   getBaseUrlAuth: () => 'https://auth.example.com',
-  getBaseUrlStudio: () => 'https://studio.example.com'
+  getBaseUrlStudio: () => window.location.origin
 }));
 vi.mock('typescript-cookie', () => ({ getCookie: vi.fn() }));
 
@@ -45,7 +45,10 @@ describe('ensureLoggedIn', () => {
     vi.stubGlobal('window', { location });
     const redirect = '/chat/123?mode=music&lang=zh-CN#draft';
     loginRedirect({ redirect });
-    const callback = new URL(new URL(location.href).searchParams.get('redirect')!);
+    const login = new URL(location.href);
+    const callback = new URL(login.searchParams.get('redirect')!);
+    expect(login.searchParams.get('site')).toBe(location.origin);
+    expect(callback.origin).toBe(location.origin);
     expect(callback.searchParams.get('redirect')).toBe(redirect);
     expect(callback.hash).toBe('');
     expect(callback.searchParams.has('lang')).toBe(false);
