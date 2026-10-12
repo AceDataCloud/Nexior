@@ -1,3 +1,4 @@
+import { assertX402NetworkEnabled, isX402NetworkEnabled } from './featureGate';
 import { shallowRef } from 'vue';
 import { EVM_PAYMENT_NETWORKS, paymentNetworkForRail, type EvmWalletRail, type WalletRail } from './networks';
 
@@ -45,11 +46,12 @@ export function activeWalletRail(): WalletRail {
 
 export function setActiveWalletRail(value: WalletRail): void {
   if (value !== rail.value) connection.value = undefined;
+  assertX402NetworkEnabled(value);
   rail.value = value;
 }
 
 export function activeEvmWallet(): EvmWalletConnection | undefined {
-  return connection.value;
+  return isX402NetworkEnabled(rail.value) ? connection.value : undefined;
 }
 
 export function setActiveEvmWallet(value: EvmWalletConnection | undefined): void {
@@ -154,6 +156,7 @@ export async function connectEvmWallet(
   provider: Eip1193Provider,
   target: EvmWalletRail = 'base'
 ): Promise<EvmWalletConnection> {
+  assertX402NetworkEnabled(target);
   const selectedRail = activeWalletRail();
   const config = EVM_PAYMENT_NETWORKS[target];
   const accounts = (await provider.request({ method: 'eth_requestAccounts' })) as string[];
@@ -173,6 +176,7 @@ export async function connectEvmWallet(
   if (chainId !== config.chainId || selectedRail !== activeWalletRail()) {
     throw new Error('Wallet network changed while connecting');
   }
+  assertX402NetworkEnabled(target);
   connection.value = { address, provider, kind: 'injected', network: paymentNetworkForRail(target) };
   watchProvider(provider);
   return connection.value;
@@ -184,6 +188,7 @@ export async function connectEvmWalletConnect(
   onUri: (uri: string) => void,
   target: EvmWalletRail = 'base'
 ): Promise<EvmWalletConnection> {
+  assertX402NetworkEnabled(target);
   const selectedRail = activeWalletRail();
   const config = EVM_PAYMENT_NETWORKS[target];
   const caipChain = paymentNetworkForRail(target);
@@ -222,6 +227,7 @@ export async function connectEvmWalletConnect(
     await provider.disconnect?.();
     throw new Error('Wallet network changed while connecting');
   }
+  assertX402NetworkEnabled(target);
   connection.value = { address, provider, kind: 'walletconnect', network: caipChain };
   watchProvider(provider, 'walletconnect');
   return connection.value;

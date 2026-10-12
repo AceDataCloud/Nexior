@@ -163,6 +163,7 @@ import {
   setActiveWalletRail,
   type EvmWalletInfo
 } from '@/utils/x402/evmWallet';
+import { isX402NetworkEnabled } from '@/utils/x402/featureGate';
 import { EVM_PAYMENT_NETWORKS, type WalletRail } from '@/utils/x402/networks';
 
 export interface IData {
@@ -226,7 +227,7 @@ export default defineComponent({
   },
   computed: {
     evmNetworks() {
-      return EVM_PAYMENT_NETWORKS;
+      return Object.fromEntries(Object.entries(EVM_PAYMENT_NETWORKS).filter(([alias]) => isX402NetworkEnabled(alias)));
     },
     selectedEvmNetworkName(): string {
       return this.walletRail === 'solana' ? 'Solana' : EVM_PAYMENT_NETWORKS[this.walletRail].chainName;
@@ -331,6 +332,7 @@ export default defineComponent({
   },
   methods: {
     async openEvmWalletPicker() {
+      if (!isX402NetworkEnabled(this.walletRail)) return;
       this.evmWallets = await discoverEvmWallets();
       this.evmWalletPickerVisible = true;
     },

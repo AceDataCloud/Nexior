@@ -41,3 +41,17 @@ export function evmWalletRailForNetwork(network: string): EvmWalletRail | undefi
     ([alias, config]) => network === alias || network === `eip155:${parseInt(config.chainId, 16)}`
   )?.[0] as EvmWalletRail | undefined;
 }
+
+export function x402NetworkFeature(network: string): string | undefined {
+  const key = network.toLowerCase();
+  const alias = Object.entries(EVM_PAYMENT_NETWORKS).find(
+    ([alias, config]) => key === alias || key === `eip155:${parseInt(config.chainId, 16)}`
+  )?.[0];
+  return alias && alias !== 'base' ? `x402-${alias}` : undefined;
+}
+
+export function x402NetworkFeatures(): string[] {
+  return Object.keys(EVM_PAYMENT_NETWORKS)
+    .filter((alias) => alias !== 'base')
+    .map((alias) => `x402-${alias}`);
+}

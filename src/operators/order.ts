@@ -1,3 +1,4 @@
+import { getX402FeatureHeaders } from '@/utils/x402/featureGate';
 import { AxiosResponse } from 'axios';
 import { anonymousHttpClient, httpClient } from './common';
 import { IOrder, IOrderDetailResponse, IOrderListResponse, IOrderPayRequest, IOrderPayResponse } from '@/models';
@@ -52,7 +53,7 @@ class OrderService {
   }
 
   async pay(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
-    return await httpClient.post(`/${this.key}/${id}/pay/`, data);
+    return await httpClient.post(`/${this.key}/${id}/pay/`, data, { headers: getX402FeatureHeaders() });
   }
 
   // Backend AllowAny endpoint: the unguessable order UUID is the capability,
@@ -68,6 +69,7 @@ class OrderService {
   ): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/pay/`, data, {
       headers: {
+        ...getX402FeatureHeaders(),
         'PAYMENT-SIGNATURE': xPaymentHeader
       }
     });

@@ -1,3 +1,4 @@
+import { isX402NetworkEnabled, assertX402NetworkEnabled } from '@/utils/x402/featureGate';
 import axios, { AxiosResponse } from 'axios';
 import type { PaymentRequirement } from '@acedatacloud/x402-client';
 import { BASE_URL_PLATFORM, BASE_URL_X402 } from '@/constants';
@@ -102,6 +103,7 @@ export class X402PaymentCancelledError extends Error {
 
 function selectExact(accepts: PaymentRequirement[], rail: WalletRail = 'base'): PaymentRequirement | undefined {
   const network = paymentNetworkForRail(rail);
+  if (!isX402NetworkEnabled(network)) return undefined;
   return accepts.find((item) => item.network === network && item.scheme === 'exact');
 }
 
@@ -180,6 +182,7 @@ export async function buildEVMPaymentSignatureHeader(
   provider: { request(args: { method: string; params?: unknown[] }): Promise<unknown> },
   address: string
 ): Promise<string> {
+  assertX402NetworkEnabled(requirement.network);
   const chainId = Number(/^eip155:([1-9][0-9]*)$/.exec(requirement.network)?.[1]);
   const actual = Number(await provider.request({ method: 'eth_chainId' }));
   if (!Number.isSafeInteger(chainId) || chainId !== actual || requirement.extra?.chainId !== chainId) {

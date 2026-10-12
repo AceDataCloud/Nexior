@@ -186,6 +186,7 @@
 </template>
 
 <script lang="ts">
+import { isX402NetworkEnabled, filterX402Requirements, assertX402NetworkEnabled } from '@/utils/x402/featureGate';
 import { StatusBadge } from '@acedatacloud/core/components';
 import { PaymentCardIcon as CreditCard } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
@@ -275,6 +276,9 @@ export default defineComponent({
       return isMobile() ? '100%' : '680px';
     },
     acceptsList(): Array<Record<string, any>> {
+      return filterX402Requirements(this.rawAcceptsList);
+    },
+    rawAcceptsList(): Array<Record<string, any>> {
       const accepts = this.session?.accepts;
       if (Array.isArray(accepts) && accepts.length > 0) {
         return accepts.filter((x): x is Record<string, any> => Boolean(x && typeof x === 'object'));
@@ -293,6 +297,7 @@ export default defineComponent({
     },
     selectedRequirements(): Record<string, any> | undefined {
       const selected = String(this.selectedNetworkResolved || '').toLowerCase();
+      if (!isX402NetworkEnabled(selected)) return undefined;
       if (!selected) return this.acceptsList[0];
       const runtime = this.runtimeRequirementsByNetwork[selected];
       if (runtime) return runtime;
@@ -619,7 +624,7 @@ export default defineComponent({
       try {
         const res = await orderOperator.pay(this.modelValue.id as any, { pay_way: 'X402' } as any);
         const data: any = res?.data;
-        const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+        const accepts = Array.isArray(data?.accepts) ? filterX402Requirements(data.accepts) : undefined;
         const target = String(this.selectedNetworkResolved || '').toLowerCase();
         if (Array.isArray(accepts) && accepts.length) {
           const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
@@ -627,19 +632,21 @@ export default defineComponent({
           if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
           return undefined;
         }
-        const pr = data?.payment_requirements;
+        const raw = data?.payment_requirements;
+        const pr = Array.isArray(raw) ? filterX402Requirements(raw) : raw;
         if (Array.isArray(pr) && pr.length) {
           const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
           if (found) return found as Record<string, any>;
           if (!this.selectedNetwork) return pr[0] as Record<string, any>;
           return undefined;
         }
-        if (pr && typeof pr === 'object') return pr as Record<string, any>;
+        if (pr && typeof pr === 'object' && isX402NetworkEnabled(String(pr.network || '')))
+          return pr as Record<string, any>;
         return undefined;
       } catch (err: any) {
         const data = err?.response?.data;
         if (data) {
-          const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+          const accepts = Array.isArray(data?.accepts) ? filterX402Requirements(data.accepts) : undefined;
           const target = String(this.selectedNetworkResolved || '').toLowerCase();
           if (Array.isArray(accepts) && accepts.length) {
             const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
@@ -647,14 +654,16 @@ export default defineComponent({
             if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
             return undefined;
           }
-          const pr = data?.payment_requirements;
+          const raw = data?.payment_requirements;
+          const pr = Array.isArray(raw) ? filterX402Requirements(raw) : raw;
           if (Array.isArray(pr) && pr.length) {
             const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
             if (found) return found as Record<string, any>;
             if (!this.selectedNetwork) return pr[0] as Record<string, any>;
             return undefined;
           }
-          if (pr && typeof pr === 'object') return pr as Record<string, any>;
+          if (pr && typeof pr === 'object' && isX402NetworkEnabled(String(pr.network || '')))
+            return pr as Record<string, any>;
         }
         return undefined;
       }
@@ -887,6 +896,7 @@ export default defineComponent({
         const ok = await this.confirmPay(this.expectedNetworkLabel);
         if (!ok) return;
         stage = 'sign';
+        assertX402NetworkEnabled(String(requirements.network || ''));
         const header = await buildEVMPaymentSignatureHeader(
           requirements as PaymentRequirement,
           this.evmProvider,

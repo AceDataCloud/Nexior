@@ -32,3 +32,20 @@ recipient, settlement status and recovery. No real payment was made for these PR
 Validation: `npm run test:run`, `npm run build`, `python3 -m unittest`, and
 `python3 scripts/check_i18n_coverage.py`. New labels are network proper names and
 reuse existing localized wallet controls; no new translation keys are introduced.
+
+
+## Per-network feature gates
+
+New rails are hidden by default in both order checkout and Studio. Opt in with
+`?features=x402-arbitrum` (use the matching alias for each supported network).
+Multiple flags are comma-separated; `?features=-x402-arbitrum` explicitly turns
+that rail off, including when server rollout or `all` is on. `features=none`
+clears host-local overrides. Use the flag on each frontend host separately.
+The existing host-only feature cookie keeps the opt-in through navigation.
+
+Order quote and signed retry forward the same `X-Feature-Overrides` header.
+The order backend independently evaluates the matching flag. Cached quotes and
+wallet state do not bypass a disabled gate. Receipt history remains readable.
+This is a preview/rollout gate: it cannot enable an unconfigured service rail,
+change pricing or skip signature verification. Direct API/SDK operational
+availability still follows Gateway/Facilitator configuration.
