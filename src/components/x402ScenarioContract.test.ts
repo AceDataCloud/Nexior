@@ -12,10 +12,10 @@ describe('x402 image scenario contract', () => {
     expect(status).toContain('setPreferredPaymentMode(value)');
     expect(status).toContain('scenarioPaymentState(this.scenario!).walletAvailable');
     expect(status).toContain('solana-wallet-picker-dialog');
-    expect(status).toContain('value="base"');
+    expect(status).toContain('EVM_PAYMENT_NETWORKS');
     expect(status).toContain('value="solana"');
     expect(status).toContain('discoverEvmWallets');
-    expect(status).toContain('connectBaseWalletConnect');
+    expect(status).toContain('connectEvmWalletConnect');
     expect(status).toContain("wallet.kind === 'walletconnect'");
     expect(status).toContain("wallet.readyState === 'Detected'");
     expect(status).toContain('order.message.x402NoWalletDesc');
@@ -83,10 +83,10 @@ describe('x402 image scenario contract', () => {
     expect(order).not.toContain("'X-PAYMENT': xPaymentHeader");
   });
 
-  it('uses one shared wallet resolver and prefers Base EIP-3009', () => {
+  it('uses one shared wallet resolver and the selected EVM network', () => {
     const operator = source('operators/x402.ts');
     expect(operator).toContain('signEVMPayment');
-    expect(operator).toContain("BASE_NETWORK = 'eip155:8453'");
+    expect(operator).toContain('paymentNetworkForRail(rail)');
     expect(operator).toContain('resolveX402WalletContext');
     const roots = ['pages', 'components'];
     const legacy = roots.flatMap((root) =>

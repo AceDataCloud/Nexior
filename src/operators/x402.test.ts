@@ -110,7 +110,7 @@ describe('resolveX402WalletContext', () => {
 
 describe('buildEVMPaymentSignatureHeader', () => {
   it('preserves a canonical Base requirement and UTF-8 fields', async () => {
-    const provider = { request: vi.fn() };
+    const provider = { request: vi.fn().mockResolvedValue('0x2105') };
     const canonical = {
       ...baseRequirement,
       description: '订单充值',
@@ -230,7 +230,7 @@ describe('postWithX402', () => {
   });
 
   it('prefers Base exact when an EVM wallet is connected', async () => {
-    const provider = { request: vi.fn() };
+    const provider = { request: vi.fn().mockResolvedValue('0x2105') };
     mocks.activeWalletRail.mockReturnValue('base');
     mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider });
     mocks.post
@@ -291,7 +291,10 @@ it('exposes a canonical payment error instead of the Axios message', async () =>
     }
   });
   mocks.activeWalletRail.mockReturnValue('base');
-  mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider: { request: vi.fn() } });
+  mocks.activeEvmWallet.mockReturnValue({
+    address: '0xpayer',
+    provider: { request: vi.fn().mockResolvedValue('0x2105') }
+  });
 
   await expect(
     postWithX402('/openai/images/generations', {}, { wallet, confirm: async () => true })
@@ -310,7 +313,7 @@ it('treats a wallet rejection as cancellation without a terminal payment error',
   mocks.activeWalletRail.mockReturnValue('base');
   mocks.activeEvmWallet.mockReturnValue({
     address: '0xpayer',
-    provider: { request: vi.fn() }
+    provider: { request: vi.fn().mockResolvedValue('0x2105') }
   });
   mocks.signEVMPayment.mockRejectedValueOnce({ code: 4001 });
 
@@ -334,7 +337,10 @@ it('stores canonical errors for the Omni Gemini path', async () => {
     }
   });
   mocks.activeWalletRail.mockReturnValue('base');
-  mocks.activeEvmWallet.mockReturnValue({ address: '0xpayer', provider: { request: vi.fn() } });
+  mocks.activeEvmWallet.mockReturnValue({
+    address: '0xpayer',
+    provider: { request: vi.fn().mockResolvedValue('0x2105') }
+  });
 
   await expect(postWithX402('/gemini/videos', {}, { wallet, confirm: async () => true })).rejects.toMatchObject({
     name: 'X402PaymentError'

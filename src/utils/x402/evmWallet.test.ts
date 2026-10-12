@@ -9,7 +9,9 @@ const walletConnect = vi.hoisted(() => {
     connect: vi.fn(async () => {
       listeners.display_uri?.('wc:test-uri');
     }),
-    request: vi.fn(async ({ method }: { method: string }) => (method === 'eth_accounts' ? ['0xwalletconnect'] : [])),
+    request: vi.fn(async ({ method }: { method: string }) =>
+      method === 'eth_accounts' ? ['0xwalletconnect'] : '0x2105'
+    ),
     disconnect: vi.fn()
   };
   return { init: vi.fn(async () => provider), listeners, provider };
@@ -39,7 +41,8 @@ describe('Base EVM wallet', () => {
       .fn()
       .mockResolvedValueOnce(['0x1234567890abcdef'])
       .mockResolvedValueOnce('0x1')
-      .mockResolvedValueOnce(null);
+      .mockResolvedValueOnce(null)
+      .mockResolvedValueOnce('0x2105');
 
     const connection = await connectBaseWallet({ request });
 

@@ -1,4 +1,5 @@
 import { shallowRef } from 'vue';
+import { EVM_PAYMENT_NETWORKS, paymentNetworkForRail, type EvmWalletRail, type WalletRail } from './networks';
 
 export interface Eip1193Provider {
   request(args: { method: string; params?: unknown[] }): Promise<unknown>;
@@ -10,6 +11,7 @@ export interface EvmWalletConnection {
   address: string;
   provider: Eip1193Provider;
   kind?: 'injected' | 'walletconnect';
+  network?: string;
 }
 
 export interface EvmWalletInfo {
@@ -22,8 +24,6 @@ export interface EvmWalletInfo {
   installUrl?: string;
 }
 
-const BASE_CHAIN_ID = '0x2105';
-const BASE_CAIP_CHAIN = 'eip155:8453';
 const WALLETCONNECT_PROJECT_ID = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '8442ba82a50e5d4a993fc9d82ba15c59';
 const KNOWN_WALLETS = [
   { name: 'MetaMask', installUrl: 'https://metamask.io/download/' },
@@ -37,13 +37,14 @@ const KNOWN_WALLETS = [
 
 const connection = shallowRef<EvmWalletConnection>();
 const watchedProviders = new WeakSet<object>();
-const rail = shallowRef<'base' | 'solana'>('base');
+const rail = shallowRef<WalletRail>('base');
 
-export function activeWalletRail(): 'base' | 'solana' {
+export function activeWalletRail(): WalletRail {
   return rail.value;
 }
 
-export function setActiveWalletRail(value: 'base' | 'solana'): void {
+export function setActiveWalletRail(value: WalletRail): void {
+  if (value !== rail.value) connection.value = undefined;
   rail.value = value;
 }
 
@@ -134,10 +135,13 @@ function watchProvider(provider: Eip1193Provider, kind: EvmWalletConnection['kin
   watchedProviders.add(provider as object);
   provider.on('accountsChanged', (...args: any[]) => {
     const accounts = args[0] as string[] | undefined;
-    connection.value = accounts?.[0] ? { address: accounts[0], provider, kind } : undefined;
+    if (connection.value?.provider !== provider) return;
+    connection.value = accounts?.[0] ? { ...connection.value, address: accounts[0] } : undefined;
   });
   provider.on('chainChanged', (...args: any[]) => {
-    if (String(args[0]).toLowerCase() !== BASE_CHAIN_ID) connection.value = undefined;
+    if (connection.value?.provider !== provider) return;
+    const expected = connection.value.network || 'eip155:8453';
+    if (`eip155:${parseInt(String(args[0]), 16)}` !== expected) connection.value = undefined;
   });
   const clearConnection = () => {
     if (connection.value?.provider === provider) connection.value = undefined;
@@ -146,41 +150,50 @@ function watchProvider(provider: Eip1193Provider, kind: EvmWalletConnection['kin
   if (kind === 'walletconnect') provider.on('session_delete', clearConnection);
 }
 
-export async function connectBaseWallet(provider: Eip1193Provider): Promise<EvmWalletConnection> {
+export async function connectEvmWallet(
+  provider: Eip1193Provider,
+  target: EvmWalletRail = 'base'
+): Promise<EvmWalletConnection> {
+  const selectedRail = activeWalletRail();
+  const config = EVM_PAYMENT_NETWORKS[target];
   const accounts = (await provider.request({ method: 'eth_requestAccounts' })) as string[];
   const address = accounts?.[0];
   if (!address) throw new Error('No EVM wallet account is available');
-  const chainId = String(await provider.request({ method: 'eth_chainId' })).toLowerCase();
-  if (chainId !== BASE_CHAIN_ID) {
+  let chainId = String(await provider.request({ method: 'eth_chainId' })).toLowerCase();
+  if (chainId !== config.chainId) {
     try {
-      await provider.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: BASE_CHAIN_ID }] });
-    } catch {
-      await provider.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: BASE_CHAIN_ID,
-            chainName: 'Base',
-            nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-            rpcUrls: ['https://mainnet.base.org'],
-            blockExplorerUrls: ['https://basescan.org']
-          }
-        ]
-      });
+      await provider.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: config.chainId }] });
+    } catch (error: any) {
+      if (Number(error?.code) !== 4902) throw error;
+      await provider.request({ method: 'wallet_addEthereumChain', params: [config] });
+      await provider.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: config.chainId }] });
     }
+    chainId = String(await provider.request({ method: 'eth_chainId' })).toLowerCase();
   }
-  connection.value = { address, provider, kind: 'injected' };
+  if (chainId !== config.chainId || selectedRail !== activeWalletRail()) {
+    throw new Error('Wallet network changed while connecting');
+  }
+  connection.value = { address, provider, kind: 'injected', network: paymentNetworkForRail(target) };
   watchProvider(provider);
   return connection.value;
 }
 
-export async function connectBaseWalletConnect(onUri: (uri: string) => void): Promise<EvmWalletConnection> {
+export const connectBaseWallet = (provider: Eip1193Provider) => connectEvmWallet(provider, 'base');
+
+export async function connectEvmWalletConnect(
+  onUri: (uri: string) => void,
+  target: EvmWalletRail = 'base'
+): Promise<EvmWalletConnection> {
+  const selectedRail = activeWalletRail();
+  const config = EVM_PAYMENT_NETWORKS[target];
+  const caipChain = paymentNetworkForRail(target);
+  const chainId = parseInt(config.chainId, 16);
   const { default: UniversalProvider } = await import('@walletconnect/universal-provider');
   const provider = (await UniversalProvider.init({
     projectId: WALLETCONNECT_PROJECT_ID,
     metadata: {
       name: 'Nexior',
-      description: 'Nexior Base USDC payments',
+      description: `Nexior ${config.chainName} USDC payments`,
       url: typeof window === 'undefined' ? 'https://studio.acedata.cloud' : window.location.origin,
       icons: ['https://cdn.acedata.cloud/favicon.ico']
     }
@@ -193,10 +206,10 @@ export async function connectBaseWalletConnect(onUri: (uri: string) => void): Pr
     namespaces: {
       eip155: {
         methods: ['eth_accounts', 'eth_chainId', 'eth_signTypedData_v4'],
-        chains: [BASE_CAIP_CHAIN],
+        chains: [caipChain],
         events: ['accountsChanged', 'chainChanged'],
         rpcMap: {
-          8453: `https://rpc.walletconnect.org?chainId=${BASE_CAIP_CHAIN}&projectId=${WALLETCONNECT_PROJECT_ID}`
+          [chainId]: `https://rpc.walletconnect.org?chainId=${caipChain}&projectId=${WALLETCONNECT_PROJECT_ID}`
         }
       }
     }
@@ -204,10 +217,17 @@ export async function connectBaseWalletConnect(onUri: (uri: string) => void): Pr
   const accounts = (await provider.request({ method: 'eth_accounts' })) as string[];
   const address = accounts?.[0];
   if (!address) throw new Error('No EVM wallet account is available');
-  connection.value = { address, provider, kind: 'walletconnect' };
+  const actualChain = String(await provider.request({ method: 'eth_chainId' })).toLowerCase();
+  if (actualChain !== config.chainId || selectedRail !== activeWalletRail()) {
+    await provider.disconnect?.();
+    throw new Error('Wallet network changed while connecting');
+  }
+  connection.value = { address, provider, kind: 'walletconnect', network: caipChain };
   watchProvider(provider, 'walletconnect');
   return connection.value;
 }
+
+export const connectBaseWalletConnect = (onUri: (uri: string) => void) => connectEvmWalletConnect(onUri, 'base');
 
 export async function disconnectBaseWallet(): Promise<void> {
   const current = connection.value;
