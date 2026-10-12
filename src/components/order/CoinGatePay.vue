@@ -5,6 +5,12 @@
     width="min(500px, 94vw)"
     @close="$emit('hide')"
   >
+    <template #header="{ titleId, titleClass }">
+      <h2 :id="titleId" :class="[titleClass, 'coingate-title']">
+        <coins-icon :size="22" aria-hidden="true" />
+        {{ $t('order.title.cryptoPay') }}
+      </h2>
+    </template>
     <el-alert v-if="payment?.environment === 'sandbox'" type="warning" :closable="false" class="mb-4">
       {{ $t(payment.status === 'paid' ? 'order.message.coingateSandboxPaid' : 'order.message.coingateSandbox') }}
     </el-alert>
@@ -30,12 +36,13 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import { ElAlert, ElButton, ElDialog } from 'element-plus';
+import { CoinsIcon } from '@lucide/vue';
 import type { IOrder } from '@/models';
 import { coingateCheckoutUrl } from '@/utils/coingateCheckout';
 
 export default defineComponent({
   name: 'CoinGatePayOrder',
-  components: { ElAlert, ElButton, ElDialog },
+  components: { ElAlert, ElButton, ElDialog, CoinsIcon },
   props: {
     modelValue: { type: Object as PropType<IOrder>, required: true },
     visible: { type: Boolean, default: false }
@@ -58,3 +65,16 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.coingate-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.coingate-title svg {
+  flex-shrink: 0;
+  color: var(--el-color-primary);
+}
+</style>

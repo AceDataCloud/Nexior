@@ -31,6 +31,8 @@
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
                       <meta-tag :tone="payWayTagType(order.pay_way)" density="compact">
+                        <coins-icon v-if="order.pay_way === PayWay.CoinGate" :size="16" aria-hidden="true" />
+                        <wallet-icon v-else-if="order.pay_way === PayWay.X402" :size="16" aria-hidden="true" />
                         {{ payWayLabel(order.pay_way) }}
                       </meta-tag>
                     </el-descriptions-item>
@@ -158,7 +160,7 @@
                     }"
                     @click="payWay = PayWay.X402"
                   >
-                    <span class="payicon x402"></span>
+                    <wallet-icon class="payicon wallet" :size="22" aria-hidden="true" />
                     <span class="payname">{{ $t('order.title.x402') }}</span>
                     <meta-tag
                       v-if="x402DiscountRate > 0"
@@ -175,6 +177,7 @@
                     :class="{ payway: true, active: payWay === PayWay.CoinGate }"
                     @click="payWay = PayWay.CoinGate"
                   >
+                    <coins-icon class="payicon coingate" :size="22" aria-hidden="true" />
                     <span class="payname">{{ $t('order.title.cryptoPay') }}</span>
                   </button>
                   <div
@@ -278,6 +281,8 @@
 
 <script lang="ts">
 import CoinGatePayOrder from '@/components/order/CoinGatePay.vue';
+import { CoinsIcon } from '@lucide/vue';
+import { WalletIcon } from '@acedatacloud/core/icons/components';
 import { RouterLink } from 'vue-router';
 import { ROUTE_CONSOLE_ORDER_LIST } from '@/router';
 import { MetaTag, BackNavigation } from '@acedatacloud/core/components';
@@ -362,6 +367,8 @@ export default defineComponent({
     WechatPayOrder,
     StripePayOrder,
     CoinGatePayOrder,
+    CoinsIcon,
+    WalletIcon,
     AlipayPayOrder,
     X402PayOrder,
     PaypalPayOrder,
@@ -926,12 +933,10 @@ export default defineComponent({
       background-image: url(//cdn.acedata.cloud/jensvf.png);
       background-size: contain;
     }
-    &.x402 {
-      width: 22px;
-      height: 22px;
-      background-image: url(https://cdn.acedata.cloud/mf6rzl.jpg);
-      background-size: contain;
-      border-radius: 4px;
+    &.wallet,
+    &.coingate {
+      color: var(--el-color-primary);
+      flex-shrink: 0;
     }
     &.paypal {
       width: 22px;
