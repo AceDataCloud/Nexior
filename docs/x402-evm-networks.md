@@ -9,6 +9,7 @@ network. A missing quote stops payment; Studio never chooses another chain.
 | Arbitrum One | `arbitrum` | `eip155:42161` | Native Circle USDC |
 | Polygon PoS | `polygon` | `eip155:137` | Native Circle USDC |
 | OP Mainnet | `optimism` | `eip155:10` | Native Circle USDC |
+| Avalanche C-Chain | `avalanche` | `eip155:43114` | Native Circle USDC |
 
 The wallet dialog uses the selected network for injected wallets and WalletConnect.
 It rechecks a completed network switch and checks the wallet chain again immediately
@@ -51,3 +52,9 @@ wallet state do not bypass a disabled gate. Receipt history remains readable.
 This is a preview/rollout gate: it cannot enable an unconfigured service rail,
 change pricing or skip signature verification. Direct API/SDK operational
 availability still follows Gateway/Facilitator configuration.
+
+## Component preview
+
+Local preview with all four new chain flags enabled; production availability still comes from the server quote.
+
+![Studio wallet network selector](images/x402-wallet-preview.png)

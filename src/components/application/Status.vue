@@ -603,5 +603,14 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 6px;
+}
+.wallet-networks :deep(.el-radio-button__inner) {
+  border: 1px solid var(--el-border-color);
+  border-radius: 4px;
+  box-shadow: none;
+}
+.wallet-networks :deep(.el-radio-button.is-active .el-radio-button__inner) {
+  border-color: var(--el-color-primary);
 }
 </style>
