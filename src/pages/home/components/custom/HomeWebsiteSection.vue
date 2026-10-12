@@ -12,6 +12,15 @@
       loading="lazy"
       referrerpolicy="no-referrer"
     />
+    <a
+      v-if="url && section.presentation?.open_external !== false"
+      class="tenant-home-open-button"
+      :href="url"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ $t('site.homeSections.websiteOpenExternal') }}
+    </a>
   </article>
 </template>
 

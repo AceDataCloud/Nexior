@@ -8,9 +8,9 @@
       </p>
       <div class="oauth-frame-region">
         <iframe
+          v-show="!pending"
           :key="appKey"
           ref="appFrame"
-          v-show="!pending"
           :src="appUrl"
           :title="section.title"
           :sandbox="HOME_OAUTH_APP_SANDBOX"
@@ -31,8 +31,14 @@
       <el-button v-if="pending" class="oauth-cancel" @click="finish({ error: 'access_denied' })">
         {{ $t('site.homeSections.oauth.cancel') }}
       </el-button>
-      <a :href="section.body" target="_blank" rel="noopener noreferrer">
-        {{ $t('site.homeSections.websiteOpenExternal', { host: config.origin }) }}
+      <a
+        v-if="section.presentation?.open_external !== false"
+        class="tenant-home-open-button"
+        :href="appUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ $t('site.homeSections.websiteOpenExternal') }}
       </a>
     </template>
   </article>
@@ -167,10 +173,5 @@ onBeforeUnmount(() => {
 .oauth-login,
 .oauth-cancel {
   margin-bottom: 16px;
-}
-.tenant-home-oauth > a {
-  display: inline-block;
-  margin-top: 12px;
-  color: var(--el-color-primary);
 }
 </style>

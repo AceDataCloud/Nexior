@@ -19,14 +19,19 @@ const request = {
   code_challenge_method: 'S256'
 };
 const wrappers: ReturnType<typeof mount>[] = [];
-const setup = (loggedIn = true) => {
+const setup = (loggedIn = true, showExternalButton?: boolean) => {
   const store = createStore({
     state: { token: loggedIn ? { access: 'studio-session' } : null, user: { id: 'alice' } },
     getters: { token: (state) => state.token, user: (state) => state.user }
   });
   const wrapper = mount(HomeOAuthWebsiteSection, {
     attachTo: document.body,
-    props: { section },
+    props: {
+      section: {
+        ...section,
+        presentation: showExternalButton === undefined ? undefined : { open_external: showExternalButton }
+      }
+    },
     global: { plugins: [store], mocks: { $t: (key: string) => key } }
   });
   wrappers.push(wrapper);
@@ -40,6 +45,18 @@ afterEach(() => {
 });
 
 describe('Studio OAuth website', () => {
+  it('uses the same new-tab button setting for OAuth websites', () => {
+    const { wrapper } = setup();
+    const button = wrapper.get('.tenant-home-open-button');
+    expect(button.attributes('href')).toContain('https://abc.example/embed');
+    expect(button.attributes('target')).toBe('_blank');
+    expect(button.attributes('rel')).toBe('noopener noreferrer');
+
+    const hidden = setup(true, false);
+    expect(hidden.wrapper.find('.tenant-home-open-button').exists()).toBe(false);
+    expect(hidden.wrapper.find('iframe').exists()).toBe(true);
+  });
+
   it('rejects messages from a different origin or window', async () => {
     const { wrapper, app } = setup();
     send(app.contentWindow, 'https://evil.example', request);

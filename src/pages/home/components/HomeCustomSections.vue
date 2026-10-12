@@ -66,6 +66,27 @@ const renderable = computed(() => props.sections.filter((section) => componentBy
   max-width: 100%;
   overflow-x: auto;
 }
+.tenant-home-open-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  margin-top: 12px;
+  padding: 0 10px;
+  border: 1px solid var(--el-border-color);
+  border-radius: 6px;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-regular);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+}
+.tenant-home-open-button:hover,
+.tenant-home-open-button:focus-visible {
+  border-color: var(--el-color-primary);
+  color: var(--el-color-primary);
+}
 @media (prefers-reduced-motion: reduce) {
   .tenant-home-block {
     scroll-behavior: auto;
