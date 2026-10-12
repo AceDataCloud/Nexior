@@ -206,6 +206,7 @@ import { httpClient, orderOperator } from '@/operators';
 import { buildEVMPaymentSignatureHeader } from '@/operators/x402';
 import { trackWalletConnected, trackX402OrderPaymentStage } from '@/plugins/telemetry';
 import { isMobile } from '@/utils';
+import { evmWalletRailForNetwork, getEvmPaymentNetwork, type EvmWalletRail } from '@/utils/x402/networks';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
 import { resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
@@ -325,7 +326,12 @@ export default defineComponent({
           .startsWith('solana')
       );
     },
+    evmRail(): EvmWalletRail {
+      return evmWalletRailForNetwork(this.expectedNetwork || '') || 'base';
+    },
     expectedChainIdHex(): string | undefined {
+      const network = getEvmPaymentNetwork(this.expectedNetwork || '');
+      if (network) return network.chainId;
       const mapping: Record<string, string> = {
         base: '0x2105',
         'eip155:8453': '0x2105',
@@ -511,6 +517,8 @@ export default defineComponent({
       throw lastError;
     },
     formatNetworkLabel(network?: string): string {
+      const configured = getEvmPaymentNetwork(network || '');
+      if (configured) return configured.chainName;
       const lower = String(network || '').toLowerCase();
       if (lower === 'base' || lower === 'eip155:8453') return 'Base';
       if (lower === 'base-sepolia' || lower === 'eip155:84532') return 'Base Sepolia';
@@ -588,7 +596,7 @@ export default defineComponent({
         this.evmAddress = address;
         await this.refreshChainId();
         await this.ensureNetwork();
-        trackWalletConnected('base', 'order_checkout');
+        trackWalletConnected(this.evmRail, 'order_checkout');
       } catch (error) {
         console.warn('EVM wallet connect failed', error);
         ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));
@@ -705,6 +713,8 @@ export default defineComponent({
       await this.refreshChainId();
     },
     getExpectedChainParams() {
+      const configured = getEvmPaymentNetwork(this.expectedNetwork || '');
+      if (configured) return configured;
       const map: Record<string, any> = {
         base: {
           chainId: '0x2105',
@@ -873,7 +883,7 @@ export default defineComponent({
           return;
         }
         const network = String(requirements.network || this.expectedNetwork || '');
-        trackX402OrderPaymentStage('challenge_received', 'base', network);
+        trackX402OrderPaymentStage('challenge_received', this.evmRail, network);
         const ok = await this.confirmPay(this.expectedNetworkLabel);
         if (!ok) return;
         stage = 'sign';
@@ -882,19 +892,19 @@ export default defineComponent({
           this.evmProvider,
           this.evmAddress
         );
-        trackX402OrderPaymentStage('signature_created', 'base', network);
+        trackX402OrderPaymentStage('signature_created', this.evmRail, network);
         stage = 'submit';
         this.paying = true;
-        trackX402OrderPaymentStage('signed_post_started', 'base', network);
+        trackX402OrderPaymentStage('signed_post_started', this.evmRail, network);
         const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
-        trackX402OrderPaymentStage('payment_succeeded', 'base', network);
+        trackX402OrderPaymentStage('payment_succeeded', this.evmRail, network);
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
         const rejected = err?.code === 4001 || err?.code === '4001' || err?.name === 'X402PaymentCancelledError';
         trackX402OrderPaymentStage(
           rejected ? 'wallet_rejected' : 'payment_failed',
-          'base',
+          this.evmRail,
           this.expectedNetwork,
           rejected
             ? 'user_rejected'

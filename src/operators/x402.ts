@@ -6,8 +6,7 @@ import { continuousPaymentActive, continuousPaymentHeaders } from '@/utils/x402/
 import { extractX402PaymentError, type CanonicalX402PaymentError } from '@acedatacloud/core/x402';
 import { clearScenarioPaymentError, setScenarioPaymentError } from '@/utils/x402/paymentErrorState';
 
-const BASE_NETWORK = 'eip155:8453';
-const SOLANA_NETWORK = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
+import { paymentNetworkForRail, type WalletRail } from '@/utils/x402/networks';
 const USDC_DECIMALS = 6;
 
 export type PaymentMode = 'credits' | 'x402';
@@ -18,13 +17,13 @@ export interface X402WalletContext {
 }
 
 export function resolveX402WalletContext(walletApi: any): X402WalletContext | undefined {
-  if (activeWalletRail() === 'base') {
+  if (activeWalletRail() !== 'solana') {
     const evm = activeEvmWallet();
     if (!evm) return undefined;
     return {
       publicKey: { toBase58: () => evm.address, toString: () => evm.address },
       signTransaction: async () => {
-        throw new Error('Solana signing is unavailable while Base is selected');
+        throw new Error('Solana signing is unavailable while an EVM network is selected');
       }
     };
   }
@@ -101,8 +100,8 @@ export class X402PaymentCancelledError extends Error {
   }
 }
 
-function selectExact(accepts: PaymentRequirement[], rail: 'base' | 'solana' = 'base'): PaymentRequirement | undefined {
-  const network = rail === 'base' ? BASE_NETWORK : SOLANA_NETWORK;
+function selectExact(accepts: PaymentRequirement[], rail: WalletRail = 'base'): PaymentRequirement | undefined {
+  const network = paymentNetworkForRail(rail);
   return accepts.find((item) => item.network === network && item.scheme === 'exact');
 }
 
@@ -128,10 +127,20 @@ function paymentRequired(error: unknown): { accepts: PaymentRequirement[] } {
   return error.response.data as { accepts: PaymentRequirement[] };
 }
 
+function missingQuoteError(): X402PaymentError {
+  return new X402PaymentError({
+    code: 'payment_requirements_unavailable',
+    params: { network: paymentNetworkForRail(activeWalletRail()) },
+    stage: 'verify',
+    retryable: true,
+    charged: false
+  });
+}
+
 function quoteFromChallenge(challenge: { accepts: PaymentRequirement[] }): X402PaymentQuote {
   const requirement = selectExact(challenge.accepts || [], activeWalletRail());
   const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
-  if (!requirement || !amountAtomic) throw new Error('No supported exact payment option is available');
+  if (!requirement || !amountAtomic) throw missingQuoteError();
   return {
     amountAtomic,
     amountUsdc: formatAtomicUsdc(amountAtomic),
@@ -171,6 +180,17 @@ export async function buildEVMPaymentSignatureHeader(
   provider: { request(args: { method: string; params?: unknown[] }): Promise<unknown> },
   address: string
 ): Promise<string> {
+  const chainId = Number(/^eip155:([1-9][0-9]*)$/.exec(requirement.network)?.[1]);
+  const actual = Number(await provider.request({ method: 'eth_chainId' }));
+  if (!Number.isSafeInteger(chainId) || chainId !== actual || requirement.extra?.chainId !== chainId) {
+    throw {
+      code: 'network_mismatch',
+      params: { network: requirement.network },
+      stage: 'sign',
+      retryable: true,
+      charged: false
+    };
+  }
   const { Buffer } = await import('buffer');
   const { signEVMPayment } = await import('@acedatacloud/x402-client');
   const envelope = await signEVMPayment(requirement, provider, address);
@@ -213,7 +233,11 @@ export async function postWithX402<T>(
     const rail = activeWalletRail();
     const requirement = selectExact(challenge.accepts || [], rail);
     const amountAtomic = requirement?.amount || requirement?.maxAmountRequired;
-    if (!requirement || !amountAtomic) throw new Error('No supported exact payment option is available');
+    if (!requirement || !amountAtomic) {
+      const error = missingQuoteError();
+      if (scenario) setScenarioPaymentError(scenario, error.paymentError);
+      throw error;
+    }
     const quote: X402PaymentQuote = {
       amountAtomic,
       amountUsdc: formatAtomicUsdc(amountAtomic),
@@ -226,7 +250,15 @@ export async function postWithX402<T>(
 
     try {
       let paymentSignature: string;
-      if (rail === 'base') {
+      if (rail !== activeWalletRail())
+        throw {
+          code: 'network_mismatch',
+          params: { network: requirement.network },
+          stage: 'sign',
+          retryable: true,
+          charged: false
+        };
+      if (rail !== 'solana') {
         if (!evmWallet) throw { code: 'signer_unavailable' };
         paymentSignature = await buildEVMPaymentSignatureHeader(requirement, evmWallet.provider, evmWallet.address);
       } else {

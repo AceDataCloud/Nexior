@@ -1,0 +1,43 @@
+/** Client wallet metadata. The request's 402 challenge decides payable rails. */
+export const EVM_PAYMENT_NETWORKS = {
+  base: {
+    chainId: '0x2105',
+    chainName: 'Base',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://mainnet.base.org'],
+    blockExplorerUrls: ['https://basescan.org']
+  },
+  arbitrum: {
+    chainId: '0xa4b1',
+    chainName: 'Arbitrum One',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://arb1.arbitrum.io/rpc'],
+    blockExplorerUrls: ['https://arbiscan.io']
+  }
+};
+
+export type EvmWalletRail = keyof typeof EVM_PAYMENT_NETWORKS;
+export type WalletRail = EvmWalletRail | 'solana';
+
+export function getEvmPaymentNetwork(network: string) {
+  return Object.entries(EVM_PAYMENT_NETWORKS).find(
+    ([alias, config]) => network === alias || network === `eip155:${parseInt(config.chainId, 16)}`
+  )?.[1];
+}
+
+export function paymentNetworkForRail(rail: WalletRail): string {
+  if (rail === 'solana') return 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
+  return `eip155:${parseInt(EVM_PAYMENT_NETWORKS[rail].chainId, 16)}`;
+}
+
+export function evmTransactionUrl(network: string, hash: string): string | undefined {
+  const config = getEvmPaymentNetwork(network);
+  if (!config || !/^0x[0-9a-fA-F]{64}$/.test(hash)) return undefined;
+  return `${config.blockExplorerUrls[0]}/tx/${hash}`;
+}
+
+export function evmWalletRailForNetwork(network: string): EvmWalletRail | undefined {
+  return Object.entries(EVM_PAYMENT_NETWORKS).find(
+    ([alias, config]) => network === alias || network === `eip155:${parseInt(config.chainId, 16)}`
+  )?.[0] as EvmWalletRail | undefined;
+}
