@@ -1,4 +1,8 @@
-vi.mock('@/utils/featureFlag', () => ({ isFeatureEnabled: () => true, getStickyFeatureOverrides: () => '' }));
+vi.mock('@/utils/featureFlag', () => ({
+  isFeatureEnabled: () => true,
+  getStickyFeatureOverrides: () => '',
+  setFeatureConfigReader: () => {}
+}));
 import { afterEach, expect, it, vi } from 'vitest';
 import { setActiveWalletRail } from '@/utils/x402/evmWallet';
 

@@ -21,7 +21,7 @@ vi.mock('@/store', () => ({
 }));
 vi.mock('@/operators/common', () => ({ httpClient: { post: state.post }, anonymousHttpClient: { get: state.get } }));
 
-import { syncFeaturesFromUrl } from '../featureFlag';
+import { setFeatureConfigReader, syncFeaturesFromUrl } from '../featureFlag';
 import { EVM_PAYMENT_NETWORKS } from './networks';
 import {
   assertX402NetworkEnabled,
@@ -44,6 +44,7 @@ beforeEach(() => {
   vi.stubGlobal('document', {});
   state.cookie = '';
   state.flags = {};
+  setFeatureConfigReader(() => ({ features: state.flags }));
   vi.clearAllMocks();
   url('none');
 });
