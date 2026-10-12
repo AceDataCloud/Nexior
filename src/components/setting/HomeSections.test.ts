@@ -179,7 +179,7 @@ describe('setting/HomeSections', () => {
       kind: 'website',
       body: 'https://example.com/embed',
       render_in_iframe: true,
-      show_external_button: true
+      presentation: { open_external: true }
     });
   });
 
@@ -190,11 +190,11 @@ describe('setting/HomeSections', () => {
       kind: 'website',
       title: 'Website',
       body: 'https://example.com',
-      show_external_button: false
+      presentation: { open_external: false }
     });
 
     expect((wrapper.vm as any).form.showExternalButton).toBe(false);
-    expect((wrapper.vm as any).buildPayload().show_external_button).toBe(false);
+    expect((wrapper.vm as any).buildPayload().presentation).toEqual({ open_external: false });
   });
 });
 

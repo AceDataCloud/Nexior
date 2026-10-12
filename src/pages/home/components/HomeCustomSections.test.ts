@@ -136,7 +136,12 @@ describe('HomeCustomSections', () => {
   it('hides the Website open button when disabled without removing the iframe', () => {
     const wrapper = mount(HomeWebsiteSection, {
       props: {
-        section: { kind: 'website', title: 'Website', body: 'https://example.com', show_external_button: false }
+        section: {
+          kind: 'website',
+          title: 'Website',
+          body: 'https://example.com',
+          presentation: { open_external: false }
+        }
       }
     });
     expect(wrapper.find('iframe').exists()).toBe(true);

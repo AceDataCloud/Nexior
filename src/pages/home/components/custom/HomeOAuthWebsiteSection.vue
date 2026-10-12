@@ -32,7 +32,7 @@
         {{ $t('site.homeSections.oauth.cancel') }}
       </el-button>
       <a
-        v-if="section.show_external_button !== false"
+        v-if="section.presentation?.open_external !== false"
         class="tenant-home-open-button"
         :href="appUrl"
         target="_blank"

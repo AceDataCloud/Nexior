@@ -330,7 +330,7 @@ export default defineComponent({
         title: this.source(row, 'title'),
         body: this.source(row, 'body'),
         renderInIframe: row.render_in_iframe === true,
-        showExternalButton: row.show_external_button !== false,
+        showExternalButton: row.presentation?.open_external !== false,
         oauthEnabled: !!row.oauth,
         oauthClientId: row.oauth?.client_id || '',
         oauthRedirectUri: row.oauth?.redirect_uri || '',
@@ -358,7 +358,7 @@ export default defineComponent({
         title: title(this.form.title),
         body: this.form.kind === 'website' ? this.form.body.trim() : this.form.body,
         render_in_iframe: this.form.kind === 'website' || (this.form.kind === 'html' && this.form.renderInIframe),
-        ...(this.form.kind === 'website' ? { show_external_button: this.form.showExternalButton } : {}),
+        ...(this.form.kind === 'website' ? { presentation: { open_external: this.form.showExternalButton } } : {}),
         height: this.form.fixedHeight ? this.form.heightValue : null,
         oauth:
           this.form.kind === 'website' && this.form.oauthEnabled

@@ -13,7 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <a
-      v-if="url && section.show_external_button !== false"
+      v-if="url && section.presentation?.open_external !== false"
       class="tenant-home-open-button"
       :href="url"
       target="_blank"

@@ -26,7 +26,12 @@ const setup = (loggedIn = true, showExternalButton?: boolean) => {
   });
   const wrapper = mount(HomeOAuthWebsiteSection, {
     attachTo: document.body,
-    props: { section: { ...section, show_external_button: showExternalButton } },
+    props: {
+      section: {
+        ...section,
+        presentation: showExternalButton === undefined ? undefined : { open_external: showExternalButton }
+      }
+    },
     global: { plugins: [store], mocks: { $t: (key: string) => key } }
   });
   wrappers.push(wrapper);
