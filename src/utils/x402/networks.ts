@@ -20,6 +20,13 @@ export const EVM_PAYMENT_NETWORKS = {
     nativeCurrency: { name: 'POL', symbol: 'POL', decimals: 18 },
     rpcUrls: ['https://polygon-bor-rpc.publicnode.com'],
     blockExplorerUrls: ['https://polygonscan.com']
+  },
+  optimism: {
+    chainId: '0xa',
+    chainName: 'OP Mainnet',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://mainnet.optimism.io'],
+    blockExplorerUrls: ['https://optimistic.etherscan.io']
   }
 };
 
