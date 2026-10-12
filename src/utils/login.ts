@@ -15,15 +15,7 @@ export const getInviterId = () => {
   return result;
 };
 
-export const loginRedirect = ({
-  redirect = '/',
-  site = window.location.origin,
-  addAccount = false
-}: {
-  redirect?: string;
-  site?: string;
-  addAccount?: boolean;
-}) => {
+export const loginRedirect = ({ redirect = '/', addAccount = false }: { redirect?: string; addAccount?: boolean }) => {
   const studioBaseUrl = getBaseUrlStudio();
   const authBaseUrl = getBaseUrlAuth();
   const inviterId = getInviterId();
@@ -35,7 +27,7 @@ export const loginRedirect = ({
   // login iframe). The canonical `/auth/login/` returns 200 directly.
   const targetBaseUrl = `${authBaseUrl}/auth/login/`;
   const targetQuery = {
-    site,
+    site: studioBaseUrl,
     ...(inviterId ? { inviter_id: inviterId } : {}),
     ...(callbackUrl ? { redirect: callbackUrl } : {})
   };
