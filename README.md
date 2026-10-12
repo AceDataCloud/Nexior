@@ -56,12 +56,12 @@ Custom capability names configured in site settings also appear in browser tab t
 
 ## ✨ Models in the box
 
-| Modality | Models |
-|---|---|
-| 💬 **AI Chat** | ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi |
-| 🖼️ **AI Image** | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art |
-| 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS) |
-| 🎬 **AI Video** | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
+| Modality                | Models                                                                      |
+| ----------------------- | --------------------------------------------------------------------------- |
+| 💬 **AI Chat**          | ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi                          |
+| 🖼️ **AI Image**         | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art           |
+| 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS)                                                |
+| 🎬 **AI Video**         | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 
 Suno includes Simple and Custom song creation, audio upload/recording, covers and extensions,
 section replacement, vocals/accompaniment, mashups, Inspiration from 1–4 audio references,
@@ -88,9 +88,11 @@ saved login, while other saved accounts remain available in the avatar menu.
 ## ⚡ Quick start
 
 ### Option A — One-click deploy to Vercel
+
 [![Deploy with Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069)
 
 ### Option B — Docker (self-host)
+
 ```bash
 git clone https://github.com/AceDataCloud/Nexior.git
 cd Nexior
@@ -100,6 +102,7 @@ docker compose up -d
 ```
 
 ### Option C — Local dev
+
 ```bash
 npm install
 cp .env.example .env.local
@@ -127,8 +130,8 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product without separat
 
 ## 🖼️ Preview
 
-| 💬 Chat (ChatGPT) | 🖼️ Image (NanoBanana) | 🎬 Video (Seedance) | 🎵 Music (Suno) |
-|---|---|---|---|
+| 💬 Chat (ChatGPT)                                 | 🖼️ Image (NanoBanana)                                   | 🎬 Video (Seedance)                                   | 🎵 Music (Suno)                                   |
+| ------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------- |
 | ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![nanobanana](https://cdn.acedata.cloud/930d011b58.png) | ![seedance](https://cdn.acedata.cloud/f0bf58571a.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
 
 > Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud)**
@@ -197,7 +200,6 @@ desktop browser tests remain under `npm run test:e2e:desktop`.
 ## Homepage OAuth applications
 
 Website homepage sections can request explicit user authorization to read existing ACE Data Cloud API Keys. See the [third-party integration guide](docs/integrations/studio-home-oauth.md) for Settings, PKCE and the embedded consent bridge.
-
 
 ## CoinGate private checkout
 

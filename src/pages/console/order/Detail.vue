@@ -212,7 +212,7 @@
                     $t('common.button.pay')
                   }}</el-button>
                 </div>
-                <div v-else-if="showPayment && !(isIos && order?.pay_way === PayWay.Airwallex)">
+                <div v-else-if="showPayment && !(isIos && order?.pay_way === PayWay.Airwallex) && coingateRepayAllowed">
                   <el-button type="primary" round size="large" class="btn-repay" @click="onRepay">{{
                     $t('common.button.repay')
                   }}</el-button>
@@ -220,6 +220,9 @@
               </el-col>
             </el-row>
           </el-card>
+          <el-alert v-if="order?.coingate_payment?.burn_preview_usdc" type="info" :closable="false" class="mt-4">
+            {{ $t('order.message.coingateBurnPending', { amount: order.coingate_payment.burn_preview_usdc }) }}
+          </el-alert>
         </el-col>
       </el-row>
       <el-row>
@@ -387,6 +390,14 @@ export default defineComponent({
     },
     config(): IConfigResponse | undefined {
       return this.$store.getters.config as IConfigResponse | undefined;
+    },
+    coingateRepayAllowed(): boolean {
+      return (
+        this.order?.pay_way !== PayWay.CoinGate ||
+        (this.enableCoinGate &&
+          this.order.coingate_payment?.status !== 'paid' &&
+          !this.order.coingate_payment?.review_required)
+      );
     },
     enableCoinGate(): boolean {
       return (
