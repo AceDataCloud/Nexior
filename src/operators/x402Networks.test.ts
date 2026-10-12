@@ -1,3 +1,4 @@
+vi.mock('@/utils/featureFlag', () => ({ isFeatureEnabled: () => true, getStickyFeatureOverrides: () => '' }));
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { setActiveEvmWallet, setActiveWalletRail } from '@/utils/x402/evmWallet';
 import type { EvmWalletRail } from '@/utils/x402/networks';

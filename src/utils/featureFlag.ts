@@ -170,3 +170,10 @@ export function syncFeaturesFromUrl(): Set<string> {
   cachedFeatures = features;
   return features;
 }
+
+export function getStickyFeatureOverrides(): string {
+  const set = cachedFeatures ?? readStoredFeatures();
+  return Array.from(set)
+    .map((token) => (token === ALL_TOKEN ? 'all' : token.startsWith(OFF_PREFIX) ? `-${token.slice(1)}` : token))
+    .join(',');
+}
