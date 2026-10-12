@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 11 Oct 2026 20:24:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 12 Oct 2026 20:26:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.6
+
+Mon, 12 Oct 2026 20:26:33 GMT
+
+### Patches
+
+- Show a compact, configurable new-tab button below embedded website sections. (dev@acedata.cloud)
+- Use the current Studio origin for redirect login branding (dev@acedata.cloud)
 
 ## 3.380.5
 
