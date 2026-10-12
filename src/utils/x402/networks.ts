@@ -27,6 +27,13 @@ export const EVM_PAYMENT_NETWORKS = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     rpcUrls: ['https://mainnet.optimism.io'],
     blockExplorerUrls: ['https://optimistic.etherscan.io']
+  },
+  avalanche: {
+    chainId: '0xa86a',
+    chainName: 'Avalanche C-Chain',
+    nativeCurrency: { name: 'AVAX', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
+    blockExplorerUrls: ['https://snowtrace.io']
   }
 };
 
