@@ -108,6 +108,12 @@
         </el-form-item>
 
         <template v-if="form.kind === 'website'">
+          <el-form-item :label="$t('site.homeSections.websiteOpenButtonVisible')">
+            <el-switch
+              v-model="form.showExternalButton"
+              :aria-label="$t('site.homeSections.websiteOpenButtonVisible')"
+            />
+          </el-form-item>
           <el-form-item :label="$t('site.homeSections.oauth.enabled')">
             <el-switch v-model="form.oauthEnabled" />
           </el-form-item>
@@ -203,6 +209,7 @@ interface SectionForm {
   title: string;
   body: string;
   renderInIframe: boolean;
+  showExternalButton: boolean;
   oauthEnabled: boolean;
   oauthClientId: string;
   oauthRedirectUri: string;
@@ -220,6 +227,7 @@ const emptyForm = (): SectionForm => ({
   title: '',
   body: '',
   renderInIframe: false,
+  showExternalButton: true,
   oauthEnabled: false,
   oauthClientId: '',
   oauthRedirectUri: '',
@@ -322,6 +330,7 @@ export default defineComponent({
         title: this.source(row, 'title'),
         body: this.source(row, 'body'),
         renderInIframe: row.render_in_iframe === true,
+        showExternalButton: row.show_external_button !== false,
         oauthEnabled: !!row.oauth,
         oauthClientId: row.oauth?.client_id || '',
         oauthRedirectUri: row.oauth?.redirect_uri || '',
@@ -349,6 +358,7 @@ export default defineComponent({
         title: title(this.form.title),
         body: this.form.kind === 'website' ? this.form.body.trim() : this.form.body,
         render_in_iframe: this.form.kind === 'website' || (this.form.kind === 'html' && this.form.renderInIframe),
+        ...(this.form.kind === 'website' ? { show_external_button: this.form.showExternalButton } : {}),
         height: this.form.fixedHeight ? this.form.heightValue : null,
         oauth:
           this.form.kind === 'website' && this.form.oauthEnabled

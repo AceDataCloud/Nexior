@@ -7,6 +7,7 @@ export interface ISiteHomeSection {
   title: string;
   body: string;
   render_in_iframe?: boolean;
+  show_external_button?: boolean;
   height?: number | null;
   oauth?: { client_id: string; redirect_uri: string } | null;
   visible?: boolean;

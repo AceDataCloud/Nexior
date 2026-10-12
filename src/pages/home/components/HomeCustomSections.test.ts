@@ -112,12 +112,14 @@ describe('HomeCustomSections', () => {
     expect(html.find('iframe').exists()).toBe(false);
   });
 
-  it('renders Website URLs in a sandboxed iframe without an external link', () => {
+  it('renders Website URLs in a sandboxed iframe with a compact new-tab button', () => {
     const url = 'https://example.com/embed';
     const wrapper = mount(HomeWebsiteSection, {
-      props: { section: { kind: 'website', title: 'Website', body: url, render_in_iframe: true } }
+      props: { section: { kind: 'website', title: 'Website', body: url, render_in_iframe: true } },
+      global: { mocks: { $t: () => 'Open in new tab' } }
     });
     const iframe = wrapper.get('iframe');
+    const button = wrapper.get('.tenant-home-open-button');
 
     expect(iframe.attributes('src')).toBe(`${url}?lang=en&theme=light`);
     expect(iframe.attributes('srcdoc')).toBeUndefined();
@@ -125,13 +127,27 @@ describe('HomeCustomSections', () => {
     expect(iframe.attributes('sandbox')).not.toContain('allow-same-origin');
     expect(iframe.attributes('loading')).toBe('lazy');
     expect(iframe.attributes('referrerpolicy')).toBe('no-referrer');
-    expect(wrapper.find('a').exists()).toBe(false);
+    expect(button.text()).toBe('Open in new tab');
+    expect(button.attributes('href')).toBe(iframe.attributes('src'));
+    expect(button.attributes('target')).toBe('_blank');
+    expect(button.attributes('rel')).toBe('noopener noreferrer');
+  });
+
+  it('hides the Website open button when disabled without removing the iframe', () => {
+    const wrapper = mount(HomeWebsiteSection, {
+      props: {
+        section: { kind: 'website', title: 'Website', body: 'https://example.com', show_external_button: false }
+      }
+    });
+    expect(wrapper.find('iframe').exists()).toBe(true);
+    expect(wrapper.find('.tenant-home-open-button').exists()).toBe(false);
   });
 
   it('replaces stale Website context while preserving other parameters and hash', async () => {
     const body = 'https://example.com/embed?ref=a%20b&lang=old&theme=dark#section';
     const wrapper = mount(HomeWebsiteSection, {
-      props: { section: { kind: 'website', title: 'Website', body }, locale: 'zh-CN', theme: 'light' }
+      props: { section: { kind: 'website', title: 'Website', body }, locale: 'zh-CN', theme: 'light' },
+      global: { mocks: { $t: () => 'Open in new tab' } }
     });
     const current = new URL(wrapper.get('iframe').attributes('src')!);
     expect(current.searchParams.get('ref')).toBe('a b');
@@ -215,7 +231,8 @@ describe('HomeCustomSections', () => {
           render_in_iframe: true,
           height: 520
         }
-      }
+      },
+      global: { mocks: { $t: () => 'Open in new tab' } }
     });
     const iframe = wrapper.get('iframe');
 

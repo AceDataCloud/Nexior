@@ -35,6 +35,7 @@ describe('setting/HomeSections', () => {
     expect((wrapper.vm as any).kinds).toEqual(['markdown', 'html', 'website']);
     expect((wrapper.vm as any).form.kind).toBe('markdown');
     expect((wrapper.vm as any).form.renderInIframe).toBe(false);
+    expect((wrapper.vm as any).form.showExternalButton).toBe(true);
     expect((wrapper.vm as any).form.fixedHeight).toBe(false);
     expect((wrapper.vm as any).form.heightValue).toBe(480);
   });
@@ -177,8 +178,23 @@ describe('setting/HomeSections', () => {
     expect((wrapper.vm as any).buildPayload()).toMatchObject({
       kind: 'website',
       body: 'https://example.com/embed',
-      render_in_iframe: true
+      render_in_iframe: true,
+      show_external_button: true
     });
+  });
+
+  it('restores and saves the Website open button setting', () => {
+    const wrapper = mountSetting();
+    (wrapper.vm as any).openEdit({
+      id: 'website-1',
+      kind: 'website',
+      title: 'Website',
+      body: 'https://example.com',
+      show_external_button: false
+    });
+
+    expect((wrapper.vm as any).form.showExternalButton).toBe(false);
+    expect((wrapper.vm as any).buildPayload().show_external_button).toBe(false);
   });
 });
 
