@@ -37,6 +37,8 @@ function normalizeChatError(status: number, code?: string, message?: string): Ba
   return new BaseError(status || 500, code || ERROR_CODE_API_ERROR, message || 'An error occurred');
 }
 
+import { activeWalletRail } from '@/utils/x402/evmWallet';
+
 class ChatOperator {
   async chatConversation(
     data: IChatConversationRequest,
@@ -45,6 +47,9 @@ class ChatOperator {
     return new Promise(async (resolve, reject) => {
       try {
         const walletMode = scenarioPaymentState('chat').mode === 'wallet';
+        if (walletMode && activeWalletRail() !== 'solana') {
+          throw new BaseError(402, 'payment_authorization_required', '');
+        }
         if (walletMode && !continuousPaymentActive()) {
           await refreshContinuousPaymentAuthorization(options.token).catch(() => undefined);
           selectContinuousPayment(true);

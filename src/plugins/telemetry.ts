@@ -27,7 +27,8 @@ export const captureError = telemetry.captureError;
 export const trackApiFailure = telemetry.trackApiFailure;
 export const isInitialized = telemetry.isInitialized;
 
-export type X402WalletRail = 'base' | 'solana';
+export type { WalletRail as X402WalletRail } from '@/utils/x402/networks';
+import type { WalletRail as X402WalletRail } from '@/utils/x402/networks';
 export type X402WalletEntrypoint = 'scenario_status' | 'order_checkout';
 
 const pendingGenerationServices = new Map<string, string>();
