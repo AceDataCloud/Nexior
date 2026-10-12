@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "Check the wallet and network, then submit the request again. If it keeps failing, contact support with the technical code.",
     "description": "Localized nextStepRequest copy for X402 payment_failed."
+  },
+  "title.cryptoPay": {
+    "message": "Crypto payment",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "button.openCryptoCheckout": {
+    "message": "Open crypto checkout",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateSandbox": {
+    "message": "Sandbox payment. No real Credits will be added.",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "Sandbox payment confirmed. No real Credits were added.",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateReview": {
+    "message": "This payment needs review. Please contact support.",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateBurnPending": {
+    "message": "The buyback budget preview is {amount} USDC, pending settlement verification. No ACE has been bought or burned yet.",
+    "description": "CoinGate checkout and settlement status"
   }
 }

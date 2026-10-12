@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "请检查钱包和网络后重新发起请求；持续失败时请联系客服并提供技术代码。",
     "description": "X402 payment_failed 的 nextStepRequest 本地化文案。"
+  },
+  "title.cryptoPay": {
+    "message": "加密货币支付",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "button.openCryptoCheckout": {
+    "message": "打开加密货币收银台",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateSandbox": {
+    "message": "当前为沙盒支付，不会增加真实额度。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "沙盒付款已确认，未增加真实额度。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateReview": {
+    "message": "此笔支付需要复核，请联系客服。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateBurnPending": {
+    "message": "本次回购预算预览为 {amount} USDC，等待结算确认；尚未回购或销毁 ACE。",
+    "description": "CoinGate checkout and settlement status"
   }
 }

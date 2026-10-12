@@ -197,3 +197,20 @@ desktop browser tests remain under `npm run test:e2e:desktop`.
 ## Homepage OAuth applications
 
 Website homepage sections can request explicit user authorization to read existing ACE Data Cloud API Keys. See the [third-party integration guide](docs/integrations/studio-home-oauth.md) for Settings, PKCE and the embedded consent bridge.
+
+
+## CoinGate private checkout
+
+The web order page reads `config.features.ENABLE_COINGATE` directly and shows
+crypto checkout only to the signed-in order owner. URL/cookie opt-ins are not
+used for this payment gate; Backend remains authoritative. The checkout dialog
+validates the provider URL against its frozen sandbox/live environment and opens
+it only after an explicit button click. Sandbox status says that no real Credits
+are added; the 3% burn figure is a pending-settlement preview, never a completed
+burn. Mobile native checkout is not part of this rollout.
+
+Deploy PayBackend's authenticated CoinGate adapter and PlatformBackend's private
+payment table, flag evaluation and order endpoints first. Configure the existing
+FeatureFlag with zero ordinary rollout and only the intended account in
+`targeting.user_ids`; leave time-window auto-release unset. Channel credentials
+and actual sandbox/merchant validation are required separately.

@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "Verifique sua carteira e rede antes de reenviar o pedido; se continuar falhando, entre em contato com o suporte e forneça o código técnico.",
     "description": "Texto de localização para nextStepRequest de payment_failed do X402."
+  },
+  "title.cryptoPay": {
+    "message": "Pagamento com criptomoedas",
+    "description": "Status do checkout e da liquidação da CoinGate"
+  },
+  "button.openCryptoCheckout": {
+    "message": "Abrir checkout de criptomoedas",
+    "description": "Status do checkout e da liquidação da CoinGate"
+  },
+  "message.coingateSandbox": {
+    "message": "Este é um pagamento em sandbox; ele não aumentará o saldo real.",
+    "description": "Status do checkout e da liquidação da CoinGate"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "O pagamento em sandbox foi confirmado; o saldo real não foi aumentado.",
+    "description": "Status do checkout e da liquidação da CoinGate"
+  },
+  "message.coingateReview": {
+    "message": "Este pagamento precisa ser revisado. Entre em contato com o suporte ao cliente.",
+    "description": "Status do checkout e da liquidação da CoinGate"
+  },
+  "message.coingateBurnPending": {
+    "message": "A prévia do orçamento desta recompra é de {amount} USDC, aguardando confirmação da liquidação; o ACE ainda não foi recomprado nem destruído.",
+    "description": "Status do checkout e da liquidação da CoinGate"
   }
 }

@@ -169,6 +169,14 @@
                       {{ $t('order.message.x402DiscountTag', { percent: x402BadgePercent }) }}
                     </meta-tag>
                   </div>
+                  <button
+                    v-if="enableCoinGate"
+                    type="button"
+                    :class="{ payway: true, active: payWay === PayWay.CoinGate }"
+                    @click="payWay = PayWay.CoinGate"
+                  >
+                    <span class="payname">{{ $t('order.title.cryptoPay') }}</span>
+                  </button>
                   <div
                     v-if="enablePaypal"
                     :class="{
@@ -182,6 +190,23 @@
                     <span class="payname">{{ $t('order.title.paypal') }}</span>
                   </div>
                 </div>
+                <el-alert
+                  v-if="order?.coingate_payment?.environment === 'sandbox'"
+                  type="warning"
+                  :closable="false"
+                  class="mb-4"
+                >
+                  {{
+                    $t(
+                      order.coingate_payment.status === 'paid'
+                        ? 'order.message.coingateSandboxPaid'
+                        : 'order.message.coingateSandbox'
+                    )
+                  }}
+                </el-alert>
+                <el-alert v-if="order?.coingate_payment?.review_required" type="error" :closable="false" class="mb-4">
+                  {{ $t('order.message.coingateReview') }}
+                </el-alert>
                 <div v-if="showPayment && (!order?.pay_way || payWay === PayWay.Apple)">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
                     $t('common.button.pay')
@@ -201,6 +226,12 @@
         <el-col :span="24">
           <wechat-pay-order
             v-if="order && payWay === PayWay.WechatPay"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
+          <coin-gate-pay-order
+            v-if="order && payWay === PayWay.CoinGate"
             v-model="order"
             :visible="paying"
             @hide="paying = false"
@@ -243,6 +274,7 @@
 </template>
 
 <script lang="ts">
+import CoinGatePayOrder from '@/components/order/CoinGatePay.vue';
 import { RouterLink } from 'vue-router';
 import { ROUTE_CONSOLE_ORDER_LIST } from '@/router';
 import { MetaTag, BackNavigation } from '@acedatacloud/core/components';
@@ -276,7 +308,7 @@ import {
 } from '@/models';
 import { getPriceString } from '@/utils';
 import { redirectToAirwallexCheckout } from '@/utils/airwallexCheckout';
-import { getPaymentSurface, isAndroid, isIOS, supportsAirwallexPaymentIntent } from '@/utils';
+import { getPaymentSurface, isAndroid, isIOS, isDesktop, supportsAirwallexPaymentIntent } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { isX402Challenge, resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
@@ -292,7 +324,8 @@ enum PayWay {
   PayPal = 'PayPal',
   Apple = 'AppleIAP',
   Card = 'Card',
-  Airwallex = 'Airwallex'
+  Airwallex = 'Airwallex',
+  CoinGate = 'CoinGate'
 }
 
 interface IData {
@@ -325,6 +358,7 @@ export default defineComponent({
     ElEmpty,
     WechatPayOrder,
     StripePayOrder,
+    CoinGatePayOrder,
     AlipayPayOrder,
     X402PayOrder,
     PaypalPayOrder,
@@ -353,6 +387,15 @@ export default defineComponent({
     },
     config(): IConfigResponse | undefined {
       return this.$store.getters.config as IConfigResponse | undefined;
+    },
+    enableCoinGate(): boolean {
+      return (
+        this.config?.features?.ENABLE_COINGATE === true &&
+        String(this.order?.user_id || '') === String(this.$store.state.user?.id || '') &&
+        !isIOS() &&
+        !isAndroid() &&
+        !isDesktop()
+      );
     },
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
@@ -662,6 +705,10 @@ export default defineComponent({
         });
     },
     onRepay() {
+      if (this.payWay === PayWay.CoinGate) {
+        if (this.enableCoinGate) this.onPay();
+        return;
+      }
       if (this.payWay === PayWay.Apple || this.order?.pay_way === PayWay.Airwallex) {
         this.onPay();
         return;
@@ -677,6 +724,7 @@ export default defineComponent({
       return this.payWay === PayWay.Card ? PayWay.Airwallex : this.payWay || PayWay.WechatPay;
     },
     onPay() {
+      if (this.payWay === PayWay.CoinGate && !this.enableCoinGate) return;
       this.prepaying = true;
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;

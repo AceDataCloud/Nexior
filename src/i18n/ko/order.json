@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "지갑과 네트워크를 확인한 후 요청을 다시 시도하세요; 계속 실패할 경우 고객 지원에 문의하고 기술 코드를 제공하세요.",
     "description": "X402 payment_failed의 nextStepRequest 로컬라이제이션 문구입니다."
+  },
+  "title.cryptoPay": {
+    "message": "암호화폐 결제",
+    "description": "CoinGate 결제 및 정산 상태"
+  },
+  "button.openCryptoCheckout": {
+    "message": "암호화폐 결제창 열기",
+    "description": "CoinGate 결제 및 정산 상태"
+  },
+  "message.coingateSandbox": {
+    "message": "현재는 샌드박스 결제이므로 실제 잔액이 증가하지 않습니다.",
+    "description": "CoinGate 결제 및 정산 상태"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "샌드박스 결제가 확인되었으며, 실제 잔액은 증가하지 않았습니다.",
+    "description": "CoinGate 결제 및 정산 상태"
+  },
+  "message.coingateReview": {
+    "message": "이 결제는 검토가 필요합니다. 고객센터에 문의해 주세요.",
+    "description": "CoinGate 결제 및 정산 상태"
+  },
+  "message.coingateBurnPending": {
+    "message": "이번 바이백 예산 미리보기는 {amount} USDC이며, 정산 확인을 기다리는 중입니다. 아직 ACE를 바이백하거나 소각하지 않았습니다.",
+    "description": "CoinGate 결제 및 정산 상태"
   }
 }
