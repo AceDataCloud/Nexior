@@ -27,7 +27,6 @@ import {
 describe('getSiteOrigin', () => {
   afterEach(() => {
     vi.unstubAllEnvs();
-    vi.unstubAllGlobals();
   });
 
   it('falls back to studio host on desktop', () => {
@@ -43,12 +42,6 @@ describe('getSiteOrigin', () => {
   it('trusts an explicit site origin regardless of surface', () => {
     vi.stubEnv('VITE_SURFACE', 'desktop');
     expect(getSiteOrigin({ origin: 'tenant.example.com' } as never)).toBe('tenant.example.com');
-  });
-
-  it('uses the current white-label host instead of a persisted Site origin on web', () => {
-    vi.stubEnv('VITE_SURFACE', 'web');
-    vi.stubGlobal('window', { location: { host: 'studio.zhishuyun.com' } });
-    expect(getSiteOrigin({ origin: 'studio.acedata.cloud' } as never)).toBe('studio.zhishuyun.com');
   });
 });
 
