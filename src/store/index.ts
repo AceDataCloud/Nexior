@@ -1,4 +1,5 @@
 import { followAccountChange, isAccountTransitioning } from '@/utils/auth/accountSessions';
+import { setFeatureConfigReader } from '@/utils/featureFlag';
 import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import root from './common';
@@ -117,5 +118,7 @@ const store = createStore({
 if (!import.meta.env.SSR) {
   window.addEventListener('storage', (event) => followAccountChange(event, store.state.token?.access));
 }
+
+setFeatureConfigReader(() => store.getters.config);
 
 export default store;

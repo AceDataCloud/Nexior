@@ -29,10 +29,13 @@
 // force-OFF wins so a tester can still disable a broken server flag.
 
 import { getCookie, removeCookie, setCookie } from 'typescript-cookie';
-// `store` is dereferenced lazily inside `readServerFlag` at call time — never
-// at module top level — so this stays safe even if a future consumer creates a
-// `store → … → featureFlag` import cycle. Keep it that way.
-import store from '@/store';
+// Installed by the store after creation. Keeping this module independent of
+// the store avoids operator → feature flag → store → operator import cycles.
+let configReader: (() => { features?: Record<string, unknown> } | undefined) | undefined;
+
+export function setFeatureConfigReader(reader: () => { features?: Record<string, unknown> } | undefined): void {
+  configReader = reader;
+}
 
 const COOKIE_NAME = 'FEATURES';
 const ALL_TOKEN = '__all__';
@@ -114,7 +117,7 @@ function parseTokens(raw: string): {
 function readServerFlag(name: string): boolean | undefined {
   let features: Record<string, unknown> | undefined;
   try {
-    features = (store.getters.config as { features?: Record<string, unknown> } | undefined)?.features;
+    features = configReader?.()?.features;
   } catch {
     return undefined;
   }
