@@ -52,3 +52,9 @@ state do not bypass a disabled UI gate. Receipt history remains readable.
 This is a preview/rollout gate: it cannot enable an unconfigured service rail,
 change pricing or skip signature verification. Direct API/SDK operational
 availability still follows Gateway/Facilitator configuration.
+
+## Component preview
+
+Local preview with all four new chain flags enabled; production availability still comes from the server quote.
+
+![Studio wallet network selector](images/x402-wallet-preview.png)
