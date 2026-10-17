@@ -28,6 +28,7 @@ import { httpClient } from '@/operators/common';
 import { getBaseUrlAuth } from '@/utils/baseUrl';
 import { getConnectorSiteOrigin } from '@/utils/authHandoff';
 import type { AxiosResponse } from 'axios';
+import type { IConnectorConnectionMethod } from '@/operators/connection';
 
 /** Localized permission entry on a catalog row — mirrors AuthBackend's
  *  `IConnectorPermission` (server-side translated via Accept-Language). */
@@ -49,6 +50,8 @@ export interface IConnectorCatalogSummary {
   publisher: string;
   publisher_logo_url: string;
   permissions: IConnectorPermission[];
+  connection_methods?: IConnectorConnectionMethod[];
+  recommended_method_id?: string;
   auth_mode: string;
   /** `true` when the catalog row is in a state where the install endpoint
    *  will provision a connection (currently always `true` for visible

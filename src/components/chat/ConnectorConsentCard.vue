@@ -83,6 +83,7 @@ import { SecurityIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton, ElCheckbox, ElCheckboxGroup, ElDialog, ElMessage } from 'element-plus';
 import type { IConsentRequestEntry, IConsentRequestPayload, IConsentRequestRequirement } from '@/models';
+import { initialConnectorScopes, resolveConnectorMethod } from '@/operators/connection';
 import ConnectorEntryRow from './ConnectorEntryRow.vue';
 import { buildConsentOutput, unsatisfiedConnectors } from './connectorConsent';
 import {
@@ -324,9 +325,7 @@ export default defineComponent({
       if (perms.length > 1) {
         this.scopeDialogEntry = entry;
         this.scopeDialogCatalog = catalog;
-        // Default-check every scope so the user has to opt OUT of perms
-        // rather than opt IN — matches AuthFrontend behavior.
-        this.selectedScopes = perms.map((p) => p.id);
+        this.selectedScopes = initialConnectorScopes(perms, resolveConnectorMethod(catalog));
         this.scopeDialogVisible = true;
         return;
       }

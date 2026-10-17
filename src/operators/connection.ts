@@ -227,6 +227,7 @@ export interface IConnectorConnectionMethod {
     cookie_domains?: string[];
     login_url?: string;
     scopes?: string[];
+    default_scopes?: string[];
   };
   permissions?: IConnectorPermission[];
 }
@@ -324,7 +325,7 @@ export interface IConnectorCatalogInstallRequest {
   site_origin?: string;
   /** Raw upstream OAuth scope strings to request at consent time
    *  (subset of the row's ``permissions[].id``). When omitted, the
-   *  connector method's declared scopes are requested. */
+   *  connector method's default scopes (or all declared scopes) are requested. */
   scopes?: string[];
   /** Which of the connector's ``connection_methods`` to install. Omit for
    *  single-method connectors; the backend defaults to the recommended
@@ -387,7 +388,7 @@ export interface IConnectorCatalogCredentialsRequest {
  *  or (defensively) has no methods — callers should treat that as "not
  *  installable". */
 export function resolveConnectorMethod(
-  item: IConnectorCatalogItem | null | undefined,
+  item: { connection_methods?: IConnectorConnectionMethod[]; recommended_method_id?: string } | null | undefined,
   methodId?: string
 ): IConnectorConnectionMethod | undefined {
   const methods = getConnectorMethods(item);
@@ -403,8 +404,20 @@ export function resolveConnectorMethod(
   return methods.find((m) => m.recommended) || methods[0];
 }
 
-export function getConnectorMethods(item: IConnectorCatalogItem | null | undefined): IConnectorConnectionMethod[] {
+export function getConnectorMethods(
+  item: { connection_methods?: IConnectorConnectionMethod[] } | null | undefined
+): IConnectorConnectionMethod[] {
   return item?.connection_methods || [];
+}
+
+/** Use a method's server-declared least-privilege default when it has one;
+ * older catalog methods keep their historical all-permissions default. */
+export function initialConnectorScopes(
+  permissions: IConnectorPermission[],
+  method?: IConnectorConnectionMethod
+): string[] {
+  const defaults = method?.credential.default_scopes;
+  return defaults?.length ? [...defaults] : permissions.map((permission) => permission.id);
 }
 
 function withSiteOrigin<T extends { site_origin?: string }>(payload: T): T {

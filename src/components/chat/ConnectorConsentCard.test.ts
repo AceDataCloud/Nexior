@@ -196,6 +196,46 @@ describe('ConnectorConsentCard', () => {
   });
 });
 
+describe('ConnectorConsentCard OAuth scope defaults', () => {
+  it('starts the chat consent picker with the server-declared read-only default', () => {
+    const entry = PAYLOAD_TWO_OPTIONS.requirements[0].entries[0];
+    const permissions = [
+      { id: 'openid', label: 'Login', desc: '' },
+      { id: 'https://www.googleapis.com/auth/youtube.upload', label: 'Upload', desc: '' },
+      { id: 'https://www.googleapis.com/auth/youtube.readonly', label: 'Read', desc: '' }
+    ];
+    const catalog = {
+      identifier: 'google/youtube',
+      auth_mode: 'oauth2',
+      installable: true,
+      permissions,
+      connection_methods: [
+        {
+          id: 'oauth',
+          execution: { type: 'skill' },
+          credential: { type: 'oauth2', default_scopes: ['openid', permissions[2].id] }
+        }
+      ]
+    };
+    const context = {
+      catalogFor: () => catalog,
+      scopeDialogEntry: null,
+      scopeDialogCatalog: null,
+      selectedScopes: [],
+      scopeDialogVisible: false,
+      performInstall: vi.fn(),
+      $emit: vi.fn()
+    };
+
+    (ConnectorConsentCard as any).methods.onAuthorize.call(context, entry);
+
+    expect(context.selectedScopes).toEqual(['openid', permissions[2].id]);
+    expect(context.selectedScopes).not.toContain(permissions[1].id);
+    expect(context.scopeDialogVisible).toBe(true);
+    expect(context.performInstall).not.toHaveBeenCalled();
+  });
+});
+
 describe('ConnectorConsentCard — post-OAuth status refresh', () => {
   // jsdom's default URL (``about:blank``) refuses ``replaceState`` to
   // any cross-origin target, so we stub ``window.location`` directly
