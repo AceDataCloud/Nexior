@@ -105,3 +105,48 @@ describe('connector reconnect', () => {
     expect(showError).toHaveBeenCalledWith('connection.message.installFailed');
   });
 });
+
+describe('connector OAuth scope defaults', () => {
+  it('starts the YouTube account picker with the server-declared read-only default', async () => {
+    const permissions = [
+      { id: 'openid' },
+      { id: 'https://www.googleapis.com/auth/userinfo.email' },
+      { id: 'https://www.googleapis.com/auth/youtube.upload' },
+      { id: 'https://www.googleapis.com/auth/youtube.readonly' }
+    ];
+    const youtubeMethod = {
+      ...method,
+      credential: {
+        ...method.credential,
+        default_scopes: ['openid', permissions[1].id, permissions[3].id]
+      },
+      permissions
+    };
+    const context = {
+      scopeDialogCatalog: null,
+      scopeDialogMethod: null,
+      selectedScopes: [],
+      scopeDialogVisible: false
+    };
+
+    await methods.connectWithMethod.call(context, catalog, youtubeMethod);
+
+    expect(context.selectedScopes).toEqual(youtubeMethod.credential.default_scopes);
+    expect(context.selectedScopes).not.toContain(permissions[2].id);
+    expect(context.scopeDialogVisible).toBe(true);
+  });
+
+  it('keeps the historical default for methods without default_scopes', async () => {
+    const permissions = [{ id: 'openid' }, { id: 'scope.write' }];
+    const context = {
+      scopeDialogCatalog: null,
+      scopeDialogMethod: null,
+      selectedScopes: [],
+      scopeDialogVisible: false
+    };
+
+    await methods.connectWithMethod.call(context, catalog, { ...method, permissions });
+
+    expect(context.selectedScopes).toEqual(['openid', 'scope.write']);
+  });
+});

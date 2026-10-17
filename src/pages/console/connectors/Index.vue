@@ -665,6 +665,7 @@ import {
   ConnectionStatus,
   connectionOperator,
   getConnectorMethods,
+  initialConnectorScopes,
   resolveConnectorMethod
 } from '@/operators/connection';
 import BrowseConnectors from '@/components/connections/BrowseConnectors.vue';
@@ -1650,7 +1651,7 @@ export default defineComponent({
       if (perms.length > 1) {
         this.scopeDialogCatalog = catalog;
         this.scopeDialogMethod = method;
-        this.selectedScopes = perms.map((p) => p.id);
+        this.selectedScopes = initialConnectorScopes(perms, method);
         this.scopeDialogVisible = true;
         return;
       }
