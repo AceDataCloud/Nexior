@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 12 Oct 2026 20:26:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 17 Oct 2026 20:21:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.7
+
+Sat, 17 Oct 2026 20:21:34 GMT
+
+### Patches
+
+- Default Google YouTube connection prompts to read-only in Studio and chat (dev@acedata.cloud)
 
 ## 3.380.6
 
