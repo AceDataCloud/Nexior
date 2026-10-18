@@ -25,7 +25,7 @@ vi.mock('@/utils', async (importOriginal) => ({
 const payload = {
   title: 'My voice',
   voices: 'https://cdn.acedata.cloud/audio.mp3',
-  visibility: 'private' as const,
+  visibility: 'public' as const,
   train_mode: 'fast' as const
 };
 

@@ -117,6 +117,9 @@
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
+      <el-checkbox v-model="publicConsent" class="public-consent mb-3">
+        {{ $t('fish.description.publicVoiceConsent') }}
+      </el-checkbox>
       <el-button
         type="primary"
         class="btn w-full"
@@ -135,7 +138,7 @@
 <script lang="ts">
 import { MagicIcon, MicrophoneIcon, UndoIcon, UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElMessage, ElSwitch, ElUpload, UploadFile, UploadFiles } from 'element-plus';
+import { ElButton, ElCheckbox, ElInput, ElMessage, ElSwitch, ElUpload, UploadFile, UploadFiles } from 'element-plus';
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import Recorder from './model/Recorder.vue';
 
@@ -145,21 +148,18 @@ export interface IFishCreatePayload {
   title: string;
   voices: string;
   description?: string;
-  visibility: 'public' | 'unlist' | 'private';
+  visibility: 'public';
   train_mode: 'fast';
   texts?: string[];
   enhance_audio_quality?: boolean;
   generate_sample?: boolean;
 }
 
-type Visibility = 'public' | 'unlist' | 'private';
-
 interface IForm {
   title: string;
   description: string;
   texts: string;
   voicesUrl: string;
-  visibility: Visibility;
   enhanceAudio: boolean;
   generateSample: boolean;
 }
@@ -171,6 +171,7 @@ interface IData {
   creating: boolean;
   recording: boolean;
   textsAuto: boolean;
+  publicConsent: boolean;
 }
 
 const defaultForm = (): IForm => ({
@@ -178,7 +179,6 @@ const defaultForm = (): IForm => ({
   description: '',
   texts: '',
   voicesUrl: '',
-  visibility: 'private',
   enhanceAudio: true,
   generateSample: false
 });
@@ -191,6 +191,7 @@ export default defineComponent({
     UndoIcon,
     UploadIcon,
     ElButton,
+    ElCheckbox,
     ElInput,
     ElSwitch,
     ElUpload,
@@ -205,7 +206,8 @@ export default defineComponent({
       uploading: false,
       creating: false,
       recording: false,
-      textsAuto: true
+      textsAuto: true,
+      publicConsent: false
     };
   },
   computed: {
@@ -216,7 +218,9 @@ export default defineComponent({
       return { Authorization: `Bearer ${this.$store.state.token?.access}` };
     },
     canCreate(): boolean {
-      return !!this.form.title.trim() && !!this.form.voicesUrl && !this.uploading && !this.creating;
+      return (
+        !!this.form.title.trim() && !!this.form.voicesUrl && this.publicConsent && !this.uploading && !this.creating
+      );
     },
     supportsRecorder(): boolean {
       const md = typeof navigator !== 'undefined' ? navigator.mediaDevices : undefined;
@@ -289,6 +293,7 @@ export default defineComponent({
     },
     async onCreate() {
       if (this.creating) return;
+      if (!this.publicConsent) return;
       const title = this.form.title.trim();
       if (!title) {
         ElMessage.warning(this.$t('fish.message.titleRequired'));
@@ -301,7 +306,7 @@ export default defineComponent({
       const payload: IFishCreatePayload = {
         title,
         voices: this.form.voicesUrl,
-        visibility: this.form.visibility,
+        visibility: 'public',
         train_mode: 'fast',
         enhance_audio_quality: this.form.enhanceAudio,
         generate_sample: this.form.generateSample
@@ -316,6 +321,7 @@ export default defineComponent({
         });
         this.form = defaultForm();
         this.fileList = [];
+        this.publicConsent = false;
       } catch {
         // The parent displays the request error; keep the form ready to retry.
       } finally {
@@ -383,5 +389,15 @@ export default defineComponent({
   display: flex;
   gap: 8px;
   margin-top: 4px;
+}
+
+.public-consent {
+  align-self: stretch;
+  height: auto;
+
+  :deep(.el-checkbox__label) {
+    white-space: normal;
+    line-height: 1.4;
+  }
 }
 </style>

@@ -23,11 +23,11 @@ const fillForm = async (wrapper: ReturnType<typeof mountPanel>) => {
       description: ' Description ',
       texts: ' Transcript ',
       voicesUrl: 'https://cdn.acedata.cloud/audio.mp3',
-      visibility: 'private',
       enhanceAudio: true,
       generateSample: false
     },
-    fileList: [{ name: 'audio.mp3' }]
+    fileList: [{ name: 'audio.mp3' }],
+    publicConsent: true
   });
 };
 
@@ -45,6 +45,7 @@ describe('fish/ModelConfigPanel', () => {
       voices: 'https://cdn.acedata.cloud/audio.mp3',
       description: 'Description',
       texts: ['Transcript'],
+      visibility: 'public',
       train_mode: 'fast'
     });
     expect((wrapper.vm as any).creating).toBe(true);
@@ -57,6 +58,18 @@ describe('fish/ModelConfigPanel', () => {
     expect((wrapper.vm as any).form.title).toBe('');
     expect((wrapper.vm as any).form.voicesUrl).toBe('');
     expect((wrapper.vm as any).fileList).toEqual([]);
+    expect((wrapper.vm as any).publicConsent).toBe(false);
+  });
+
+  it('requires public visibility consent before creating a voice', async () => {
+    const wrapper = mountPanel();
+    await fillForm(wrapper);
+    await wrapper.setData({ publicConsent: false });
+
+    await (wrapper.vm as any).onCreate();
+
+    expect((wrapper.vm as any).canCreate).toBe(false);
+    expect(wrapper.emitted('create')).toBeUndefined();
   });
 
   it('restores the button but preserves the form when creation fails', async () => {

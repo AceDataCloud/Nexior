@@ -73,7 +73,7 @@ export default defineComponent({
         title: string;
         voices: string;
         description?: string;
-        visibility?: 'public' | 'unlist' | 'private';
+        visibility: 'public';
         train_mode?: 'fast';
         texts?: string[];
         enhance_audio_quality?: boolean;

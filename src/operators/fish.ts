@@ -102,7 +102,7 @@ class FishOperator extends BaseTaskOperator<
       cover_image?: string;
       train_mode?: 'fast';
       type?: 'tts';
-      visibility?: 'public' | 'unlist' | 'private';
+      visibility: 'public';
       tags?: string[];
       texts?: string[];
       enhance_audio_quality?: boolean;
