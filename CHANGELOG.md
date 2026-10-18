@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 17 Oct 2026 20:21:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 18 Oct 2026 20:21:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.380.8
+
+Sun, 18 Oct 2026 20:21:25 GMT
+
+### Patches
+
+- Upload Fish voice recordings as MP3 and show audio format errors in Studio (dev@acedata.cloud)
 
 ## 3.380.7
 
