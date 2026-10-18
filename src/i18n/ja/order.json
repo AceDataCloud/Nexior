@@ -168,7 +168,7 @@
     "description": "ウェブサイトのタイトルとして表示されるタイトルで、注文管理を示します。"
   },
   "title.x402": {
-    "message": "暗号通貨",
+    "message": "ウォレット決済",
     "description": "ウェブサイトのタイトルとして表示されるタイトルで、暗号通貨支払い（X402支払いプランに基づく）を示します。"
   },
   "title.paypal": {
@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "ウォレットとネットワークを確認した後、リクエストを再送信してください。継続的に失敗する場合は、カスタマーサポートに連絡し、技術コードを提供してください。",
     "description": "X402 payment_failed の nextStepRequest のローカライズ文です。"
+  },
+  "title.cryptoPay": {
+    "message": "CoinGate決済",
+    "description": "CoinGateの決済および精算ステータス"
+  },
+  "button.openCryptoCheckout": {
+    "message": "CoinGateへ進む",
+    "description": "CoinGateの決済および精算ステータス"
+  },
+  "message.coingateSandbox": {
+    "message": "現在はサンドボックス決済のため、実際の残高は増加しません。",
+    "description": "CoinGateの決済および精算ステータス"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "サンドボックスでの支払いが確認されました。実際の残高は増加していません。",
+    "description": "CoinGateの決済および精算ステータス"
+  },
+  "message.coingateReview": {
+    "message": "この支払いは確認が必要です。カスタマーサポートにお問い合わせください。",
+    "description": "CoinGateの決済および精算ステータス"
+  },
+  "message.coingateBurnPending": {
+    "message": "今回の買い戻し予算のプレビューは {amount} USDCです。決済確認待ちで、ACEはまだ買い戻しも焼却もされていません。",
+    "description": "CoinGateの決済および精算ステータス"
   }
 }
