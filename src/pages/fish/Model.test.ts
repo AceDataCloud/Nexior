@@ -108,6 +108,16 @@ describe('fish/Model', () => {
     expect(result.resolve).not.toHaveBeenCalled();
   });
 
+  it('translates the Fish audio rejection instead of hiding its message', async () => {
+    const error = { response: { data: { status: 500, message: 'voice file must be an audio file' } } };
+    mocks.createModel.mockRejectedValue(error);
+    const { wrapper } = mountPage();
+
+    await (wrapper.vm as any).onCreate(payload, callbacks());
+
+    expect(ElMessage.error).toHaveBeenCalledWith('fish.message.unsupportedAudioFormat');
+  });
+
   it('delegates exhausted credits to the shared quota dialog', async () => {
     const error = { response: { data: { error: { code: 'used_up' } } } };
     mocks.createModel.mockRejectedValue(error);

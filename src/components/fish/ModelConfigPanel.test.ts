@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import { describe, expect, it } from 'vitest';
+import { ElMessage } from 'element-plus';
+import { describe, expect, it, vi } from 'vitest';
 
 import ModelConfigPanel from './ModelConfigPanel.vue';
 
@@ -105,5 +106,17 @@ describe('fish/ModelConfigPanel', () => {
 
     callbacks.resolve();
     await submission;
+  });
+
+  it('rejects browser WebM uploads before a model can be created', () => {
+    const wrapper = mountPanel();
+    const warning = vi.spyOn(ElMessage, 'warning').mockImplementation(() => undefined as never);
+
+    expect((wrapper.vm as any).onBeforeUpload(new File(['webm'], 'recording.webm', { type: 'audio/webm' }))).toBe(
+      false
+    );
+    expect(warning).toHaveBeenCalledWith('fish.message.unsupportedAudioFormat');
+    expect((wrapper.vm as any).uploading).toBe(false);
+    warning.mockRestore();
   });
 });

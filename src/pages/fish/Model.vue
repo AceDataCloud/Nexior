@@ -103,7 +103,14 @@ export default defineComponent({
         const response = error?.response?.data;
         const quotaHandled = showQuotaExhausted(error, 'fish');
         if (!quotaHandled) {
-          ElMessage.error(response?.error?.message || this.$t('fish.message.createModelFailed'));
+          const detail = response?.message || response?.error?.message;
+          ElMessage.error(
+            typeof detail === 'string' && detail.toLowerCase().includes('voice file must be an audio file')
+              ? this.$t('fish.message.unsupportedAudioFormat')
+              : typeof detail === 'string' && detail
+                ? detail
+                : this.$t('fish.message.createModelFailed')
+          );
         }
         callbacks.reject(error);
       } finally {

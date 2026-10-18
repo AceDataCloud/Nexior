@@ -29,7 +29,7 @@
             :limit="1"
             class="upload-wrapper"
             :action="uploadUrl"
-            accept=".mp3,.wav,.m4a,.ogg,.webm,audio/*"
+            accept=".mp3,.wav"
             :show-file-list="false"
             :on-exceed="onExceed"
             :on-error="onUploadError"
@@ -225,6 +225,10 @@ export default defineComponent({
   },
   methods: {
     onBeforeUpload(file: File): boolean {
+      if (!/\.(mp3|wav)$/i.test(file.name)) {
+        ElMessage.warning(this.$t('fish.message.unsupportedAudioFormat'));
+        return false;
+      }
       if (file.size > MAX_AUDIO_SIZE_BYTES) {
         ElMessage.warning(this.$t('fish.message.audioSizeExceed'));
         return false;

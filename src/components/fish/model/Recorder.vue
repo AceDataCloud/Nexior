@@ -89,6 +89,7 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElButton, ElMessage } from 'element-plus';
 import { getBaseUrlPlatform } from '@/utils';
+import { recordingToWav } from '@/utils/fishRecordingWav';
 
 const SCRIPT_COUNT = 4;
 const MAX_RECORDING_SECONDS = 90;
@@ -234,13 +235,6 @@ export default defineComponent({
       }
       return undefined;
     },
-    extensionForMime(mime: string): string {
-      if (mime.includes('webm')) return 'webm';
-      if (mime.includes('mp4')) return 'm4a';
-      if (mime.includes('ogg')) return 'ogg';
-      if (mime.includes('wav')) return 'wav';
-      return 'mp3';
-    },
     async useRecording() {
       if (!this.recordedBlob) return;
       if (this.seconds < 3) {
@@ -251,10 +245,8 @@ export default defineComponent({
       this.uploading = true;
       try {
         const token = requireAccountToken();
-        const ext = this.extensionForMime(this.recordedBlob.type || '');
-        const file = new File([this.recordedBlob], `recording-${Date.now()}.${ext}`, {
-          type: this.recordedBlob.type || 'audio/webm'
-        });
+        const wav = await recordingToWav(this.recordedBlob);
+        const file = new File([wav], `recording-${Date.now()}.wav`, { type: 'audio/wav' });
         const fd = new FormData();
         fd.append('file', file);
         const { data } = await axios.post(`${getBaseUrlPlatform()}/api/v1/files/`, fd, {
