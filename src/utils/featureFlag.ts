@@ -131,13 +131,13 @@ function readServerFlag(name: string): boolean | undefined {
   return Boolean(v);
 }
 
-export function isFeatureEnabled(name: string): boolean {
+export function isFeatureEnabled(name: string, localOnly = false): boolean {
   const set = cachedFeatures ?? readStoredFeatures();
   const key = name.toLowerCase();
   if (set.has(OFF_PREFIX + key)) return false;
   if (set.has(ALL_TOKEN)) return true;
   if (set.has(key)) return true;
-  return readServerFlag(name) === true;
+  return !localOnly && readServerFlag(name) === true;
 }
 
 export function syncFeaturesFromUrl(): Set<string> {
@@ -172,11 +172,4 @@ export function syncFeaturesFromUrl(): Set<string> {
   writeStoredFeatures(features);
   cachedFeatures = features;
   return features;
-}
-
-export function getStickyFeatureOverrides(): string {
-  const set = cachedFeatures ?? readStoredFeatures();
-  return Array.from(set)
-    .map((token) => (token === ALL_TOKEN ? 'all' : token.startsWith(OFF_PREFIX) ? `-${token.slice(1)}` : token))
-    .join(',');
 }

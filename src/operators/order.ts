@@ -1,4 +1,3 @@
-import { getX402FeatureHeaders } from '@/utils/x402/featureGate';
 import { AxiosResponse } from 'axios';
 import { anonymousHttpClient, httpClient } from './common';
 import { IOrder, IOrderDetailResponse, IOrderListResponse, IOrderPayRequest, IOrderPayResponse } from '@/models';
@@ -53,9 +52,6 @@ class OrderService {
   }
 
   async pay(id: string, data: IOrderPayRequest): Promise<AxiosResponse<IOrderPayResponse>> {
-    if (data.pay_way === 'X402') {
-      return await httpClient.post(`/${this.key}/${id}/pay/`, data, { headers: getX402FeatureHeaders() });
-    }
     return await httpClient.post(`/${this.key}/${id}/pay/`, data);
   }
 
@@ -72,7 +68,6 @@ class OrderService {
   ): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/pay/`, data, {
       headers: {
-        ...getX402FeatureHeaders(),
         'PAYMENT-SIGNATURE': xPaymentHeader
       }
     });

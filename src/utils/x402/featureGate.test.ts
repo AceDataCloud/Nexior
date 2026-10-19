@@ -26,7 +26,6 @@ import { EVM_PAYMENT_NETWORKS } from './networks';
 import {
   assertX402NetworkEnabled,
   filterX402Requirements,
-  getX402FeatureHeaders,
   isX402NetworkEnabled
 } from './featureGate';
 import { activeEvmWallet, connectEvmWallet, setActiveEvmWallet, setActiveWalletRail } from './evmWallet';
@@ -60,14 +59,12 @@ describe.each(Object.entries(EVM_PAYMENT_NETWORKS).filter(([alias]) => alias !==
       url(flag);
       expect(isX402NetworkEnabled(network)).toBe(true);
       expect(isX402NetworkEnabled(alias)).toBe(true);
-      expect(getX402FeatureHeaders()['x-feature-overrides']).toBe(flag);
       url(`all,-${flag}`);
       expect(isX402NetworkEnabled(network)).toBe(false);
-      expect(getX402FeatureHeaders()['x-feature-overrides']).toContain(`-${flag}`);
       state.flags[flag] = true;
       expect(isX402NetworkEnabled(network)).toBe(false);
       url('none');
-      expect(isX402NetworkEnabled(network)).toBe(true);
+      expect(isX402NetworkEnabled(network)).toBe(false);
       state.flags = {};
       expect(isX402NetworkEnabled(network)).toBe(false);
     });
@@ -97,15 +94,14 @@ describe.each(Object.entries(EVM_PAYMENT_NETWORKS).filter(([alias]) => alias !==
       url(`-${flag}`);
       expect(filterX402Requirements([accepts[1]])).toEqual([]);
     });
-    it('forwards the same flags on config, order quote and signed retry', async () => {
+    it('keeps config and payment request headers independent of UI flags', async () => {
       url(flag);
       await configOperator.get();
       await orderOperator.pay('test', { pay_way: 'X402' } as never);
       await orderOperator.payX402WithHeader('test', {} as never, 'signed');
-      expect(state.get.mock.calls[0][1].headers['x-feature-overrides']).toBe(flag);
-      expect(state.post.mock.calls[0][2].headers['x-feature-overrides']).toBe(flag);
+      expect(state.get.mock.calls[0]).toEqual(['/config/']);
+      expect(state.post.mock.calls[0]).toEqual(['/orders/test/pay/', { pay_way: 'X402' }]);
       expect(state.post.mock.calls[1][2].headers).toEqual({
-        'x-feature-overrides': flag,
         'PAYMENT-SIGNATURE': 'signed'
       });
     });
