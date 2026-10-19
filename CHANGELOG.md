@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 18 Oct 2026 20:21:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 19 Oct 2026 20:23:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.381.0
+
+Mon, 19 Oct 2026 20:23:42 GMT
+
+### Minor changes
+
+- Support Arbitrum USDC in Studio checkout and fixed-price wallet payments. (dev@acedata.cloud)
 
 ## 3.380.8
 
