@@ -186,6 +186,7 @@
 </template>
 
 <script lang="ts">
+import { isX402NetworkEnabled, filterX402Requirements, assertX402NetworkEnabled } from '@/utils/x402/featureGate';
 import { StatusBadge } from '@acedatacloud/core/components';
 import { PaymentCardIcon as CreditCard } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
@@ -206,6 +207,7 @@ import { httpClient, orderOperator } from '@/operators';
 import { buildEVMPaymentSignatureHeader } from '@/operators/x402';
 import { trackWalletConnected, trackX402OrderPaymentStage } from '@/plugins/telemetry';
 import { isMobile } from '@/utils';
+import { evmWalletRailForNetwork, getEvmPaymentNetwork, type EvmWalletRail } from '@/utils/x402/networks';
 import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 import { discoverEvmWallets, type EvmWalletInfo } from '@/utils/x402/evmWallet';
 import { resolveX402PaymentError, type X402ErrorPresentation } from '@acedatacloud/core/x402';
@@ -274,6 +276,9 @@ export default defineComponent({
       return isMobile() ? '100%' : '680px';
     },
     acceptsList(): Array<Record<string, any>> {
+      return filterX402Requirements(this.rawAcceptsList);
+    },
+    rawAcceptsList(): Array<Record<string, any>> {
       const accepts = this.session?.accepts;
       if (Array.isArray(accepts) && accepts.length > 0) {
         return accepts.filter((x): x is Record<string, any> => Boolean(x && typeof x === 'object'));
@@ -292,6 +297,7 @@ export default defineComponent({
     },
     selectedRequirements(): Record<string, any> | undefined {
       const selected = String(this.selectedNetworkResolved || '').toLowerCase();
+      if (!isX402NetworkEnabled(selected)) return undefined;
       if (!selected) return this.acceptsList[0];
       const runtime = this.runtimeRequirementsByNetwork[selected];
       if (runtime) return runtime;
@@ -325,7 +331,12 @@ export default defineComponent({
           .startsWith('solana')
       );
     },
+    evmRail(): EvmWalletRail {
+      return evmWalletRailForNetwork(this.expectedNetwork || '') || 'base';
+    },
     expectedChainIdHex(): string | undefined {
+      const network = getEvmPaymentNetwork(this.expectedNetwork || '');
+      if (network) return network.chainId;
       const mapping: Record<string, string> = {
         base: '0x2105',
         'eip155:8453': '0x2105',
@@ -511,6 +522,8 @@ export default defineComponent({
       throw lastError;
     },
     formatNetworkLabel(network?: string): string {
+      const configured = getEvmPaymentNetwork(network || '');
+      if (configured) return configured.chainName;
       const lower = String(network || '').toLowerCase();
       if (lower === 'base' || lower === 'eip155:8453') return 'Base';
       if (lower === 'base-sepolia' || lower === 'eip155:84532') return 'Base Sepolia';
@@ -588,7 +601,7 @@ export default defineComponent({
         this.evmAddress = address;
         await this.refreshChainId();
         await this.ensureNetwork();
-        trackWalletConnected('base', 'order_checkout');
+        trackWalletConnected(this.evmRail, 'order_checkout');
       } catch (error) {
         console.warn('EVM wallet connect failed', error);
         ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));
@@ -611,7 +624,7 @@ export default defineComponent({
       try {
         const res = await orderOperator.pay(this.modelValue.id as any, { pay_way: 'X402' } as any);
         const data: any = res?.data;
-        const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+        const accepts = Array.isArray(data?.accepts) ? filterX402Requirements(data.accepts) : undefined;
         const target = String(this.selectedNetworkResolved || '').toLowerCase();
         if (Array.isArray(accepts) && accepts.length) {
           const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
@@ -619,19 +632,21 @@ export default defineComponent({
           if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
           return undefined;
         }
-        const pr = data?.payment_requirements;
+        const raw = data?.payment_requirements;
+        const pr = Array.isArray(raw) ? filterX402Requirements(raw) : raw;
         if (Array.isArray(pr) && pr.length) {
           const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
           if (found) return found as Record<string, any>;
           if (!this.selectedNetwork) return pr[0] as Record<string, any>;
           return undefined;
         }
-        if (pr && typeof pr === 'object') return pr as Record<string, any>;
+        if (pr && typeof pr === 'object' && isX402NetworkEnabled(String(pr.network || '')))
+          return pr as Record<string, any>;
         return undefined;
       } catch (err: any) {
         const data = err?.response?.data;
         if (data) {
-          const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+          const accepts = Array.isArray(data?.accepts) ? filterX402Requirements(data.accepts) : undefined;
           const target = String(this.selectedNetworkResolved || '').toLowerCase();
           if (Array.isArray(accepts) && accepts.length) {
             const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
@@ -639,14 +654,16 @@ export default defineComponent({
             if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
             return undefined;
           }
-          const pr = data?.payment_requirements;
+          const raw = data?.payment_requirements;
+          const pr = Array.isArray(raw) ? filterX402Requirements(raw) : raw;
           if (Array.isArray(pr) && pr.length) {
             const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
             if (found) return found as Record<string, any>;
             if (!this.selectedNetwork) return pr[0] as Record<string, any>;
             return undefined;
           }
-          if (pr && typeof pr === 'object') return pr as Record<string, any>;
+          if (pr && typeof pr === 'object' && isX402NetworkEnabled(String(pr.network || '')))
+            return pr as Record<string, any>;
         }
         return undefined;
       }
@@ -705,6 +722,8 @@ export default defineComponent({
       await this.refreshChainId();
     },
     getExpectedChainParams() {
+      const configured = getEvmPaymentNetwork(this.expectedNetwork || '');
+      if (configured) return configured;
       const map: Record<string, any> = {
         base: {
           chainId: '0x2105',
@@ -873,28 +892,29 @@ export default defineComponent({
           return;
         }
         const network = String(requirements.network || this.expectedNetwork || '');
-        trackX402OrderPaymentStage('challenge_received', 'base', network);
+        trackX402OrderPaymentStage('challenge_received', this.evmRail, network);
         const ok = await this.confirmPay(this.expectedNetworkLabel);
         if (!ok) return;
         stage = 'sign';
+        assertX402NetworkEnabled(String(requirements.network || ''));
         const header = await buildEVMPaymentSignatureHeader(
           requirements as PaymentRequirement,
           this.evmProvider,
           this.evmAddress
         );
-        trackX402OrderPaymentStage('signature_created', 'base', network);
+        trackX402OrderPaymentStage('signature_created', this.evmRail, network);
         stage = 'submit';
         this.paying = true;
-        trackX402OrderPaymentStage('signed_post_started', 'base', network);
+        trackX402OrderPaymentStage('signed_post_started', this.evmRail, network);
         const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
-        trackX402OrderPaymentStage('payment_succeeded', 'base', network);
+        trackX402OrderPaymentStage('payment_succeeded', this.evmRail, network);
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
         const rejected = err?.code === 4001 || err?.code === '4001' || err?.name === 'X402PaymentCancelledError';
         trackX402OrderPaymentStage(
           rejected ? 'wallet_rejected' : 'payment_failed',
-          'base',
+          this.evmRail,
           this.expectedNetwork,
           rejected
             ? 'user_rejected'

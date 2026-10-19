@@ -1,3 +1,4 @@
+import { evmTransactionUrl } from './x402/networks';
 import { formatAtomicTokenAmount, getX402TransactionExplorerUrl } from '@acedatacloud/core/x402';
 import { IApiUsage, IX402UsageMetadata } from '@/models/usage';
 
@@ -46,7 +47,9 @@ export function getX402UsagePayment(usage: IApiUsage): X402UsagePayment | undefi
       network: metadata.x402_network,
       transaction: metadata.x402_tx,
       payer: typeof metadata.x402_payer === 'string' ? metadata.x402_payer : undefined,
-      explorerUrl: getX402TransactionExplorerUrl(metadata.x402_network, metadata.x402_tx)
+      explorerUrl:
+        getX402TransactionExplorerUrl(metadata.x402_network, metadata.x402_tx) ||
+        evmTransactionUrl(metadata.x402_network, metadata.x402_tx)
     };
   } catch {
     return undefined;
