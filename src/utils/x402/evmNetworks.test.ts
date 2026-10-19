@@ -24,7 +24,8 @@ vi.mock('@walletconnect/universal-provider', () => ({ default: { init: async () 
 const cases = [
   ['arbitrum', 42161, 'ETH', 'https://arbiscan.io'],
   ['polygon', 137, 'POL', 'https://polygonscan.com'],
-  ['optimism', 10, 'ETH', 'https://optimistic.etherscan.io']
+  ['optimism', 10, 'ETH', 'https://optimistic.etherscan.io'],
+  ['avalanche', 43114, 'AVAX', 'https://snowtrace.io']
 ] as const;
 
 beforeEach(() => {
