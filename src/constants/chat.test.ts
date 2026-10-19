@@ -91,6 +91,9 @@ describe('chat models', () => {
     ]);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_PRO);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_FLASH);
+    expect(CHAT_MODEL_GROUP_DEEPSEEK.models).toHaveLength(2);
+    expect(CHAT_MODEL_DEEPSEEK_V4_PRO.isReasoningSupported).toBe(true);
+    expect(CHAT_MODEL_DEEPSEEK_V4_FLASH.isReasoningSupported).toBe(true);
   });
 
   it('advertises K3 multimodal and reasoning capabilities', () => {
