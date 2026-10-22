@@ -47,6 +47,8 @@ import share from './share';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_CHATGPT_CALL,
+  ROUTE_INDEX,
   ROUTE_DEEPSEEK_CONVERSATION_NEW,
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GEMINI_CONVERSATION_NEW,
@@ -95,6 +97,7 @@ import { trackSitePageView } from '@/utils/siteAnalytics';
 import { CAPABILITY_KEYS } from '@/constants/capabilities';
 import type { IChatModelGroup } from '@/models';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
+import { chatGroupAvailable } from '@/utils/chatRegion';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -364,10 +367,18 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['webextrator', ROUTE_WEBEXTRATOR_INDEX]
 ];
 
+const OVERSEAS_CHAT_ENTRY_ROUTES = new Set([
+  ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_CLAUDE_CONVERSATION_NEW,
+  ROUTE_GEMINI_CONVERSATION_NEW,
+  ROUTE_GROK_CONVERSATION_NEW,
+  ROUTE_CHATGPT_CALL
+]);
+
 export const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
   for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
-    if (features[key]?.enabled) {
+    if (features[key]?.enabled && chatGroupAvailable(key, store.state.config)) {
       // IMPORTANT: must return { name } — returning a bare string makes
       // vue-router treat it as a *path*, which would navigate to e.g.
       // /chatgpt-conversation-new (the route name) instead of the actual
@@ -375,8 +386,9 @@ export const getDefaultRoute = (): { name: string } => {
       return { name };
     }
   }
-  // Fallback: if no priority feature is enabled, use chatgpt.
-  return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
+  // A tenant can have only overseas chat features enabled. Its home page can
+  // still explain the available capabilities without redirecting in a loop.
+  return { name: chatGroupAvailable('chatgpt', store.state.config) ? ROUTE_CHATGPT_CONVERSATION_NEW : ROUTE_INDEX };
 };
 
 export const routes = [
@@ -458,6 +470,15 @@ export function setupRouterGuards(router: Router) {
     const forcedLocale = getForcedLocale(store.state.site);
     const locale = forcedLocale ?? getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
     await setI18nLanguage(locale);
+
+    const modelGroup = to.meta.modelGroup as IChatModelGroup | undefined;
+    if (
+      modelGroup &&
+      OVERSEAS_CHAT_ENTRY_ROUTES.has(String(to.name)) &&
+      !chatGroupAvailable(modelGroup.name, store.state.config)
+    ) {
+      return next({ ...getDefaultRoute(), replace: true });
+    }
 
     // Cross-site identity guard: handle `?user_id=<id>` query param attached by
     // outbound links from sibling sub-sites (auth / platform). See

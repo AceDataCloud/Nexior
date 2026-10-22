@@ -60,6 +60,7 @@
 import { defineComponent } from 'vue';
 import { ArrowUpToLine } from '@lucide/vue';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
+import { chatGroupAvailable } from '@/utils/chatRegion';
 import type { ISiteBanner, ISiteHomeSection, IShowcase, ResolvedShowcase } from '@/models';
 import { showcaseOperator, siteBannerOperator, siteHomeSectionOperator } from '@/operators';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
@@ -144,7 +145,14 @@ export default defineComponent({
     enabledKeys(): Set<CapabilityKey> {
       if (!this.siteLoaded) return new Set();
       const features = (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
-      return new Set(CAPABILITY_KEYS.filter((key) => features[key]?.enabled && isCapabilityAvailableOnBuild(key)));
+      return new Set(
+        CAPABILITY_KEYS.filter(
+          (key) =>
+            features[key]?.enabled &&
+            isCapabilityAvailableOnBuild(key) &&
+            chatGroupAvailable(key, this.$store.state.config)
+        )
+      );
     },
     banners(): ResolvedHomeBanner[] {
       const hiddenDefaults = getHiddenDefaultBannerIds(this.site);

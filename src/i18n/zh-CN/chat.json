@@ -869,6 +869,14 @@
     "message": "计费授权失败",
     "description": "凭证无效或余额不足导致计费授权失败"
   },
+  "scheduledTasks.run.reason.region_unavailable": {
+    "message": "当前地区暂不支持使用此聊天模型",
+    "description": "本次运行未调用模型，也不会产生模型使用费用"
+  },
+  "scheduledTasks.run.reason.client_region_unknown": {
+    "message": "暂时无法确认访问地区，请稍后重试",
+    "description": "本次运行未调用模型，也不会产生模型使用费用"
+  },
   "scheduledTasks.run.reason.unauthorized": {
     "message": "未授权",
     "description": "凭证未授权"

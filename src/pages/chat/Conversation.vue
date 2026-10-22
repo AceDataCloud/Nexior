@@ -77,7 +77,7 @@
             :application="application"
             :answering="answering"
             :retrying="restarting"
-            :readonly="isScheduledConversation"
+            :readonly="isScheduledConversation || foreignChatRestricted"
             class="message"
             @update:question="question = $event"
             @edit="onEdit"
@@ -125,6 +125,7 @@ import Message from '@/components/chat/Message.vue';
 import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { BASE_URL_API } from '@/constants/endpoint';
+import { chatGroupAvailable } from '@/utils/chatRegion';
 import {
   IChatMessageState,
   IChatConversationResponse,
@@ -281,6 +282,10 @@ export default defineComponent({
     modelGroup() {
       return this.$store.state.chat.modelGroup;
     },
+    foreignChatRestricted(): boolean {
+      const group = this.$route?.meta?.modelGroup as { name?: string } | undefined;
+      return !!group?.name && !chatGroupAvailable(group.name, this.$store.state.config);
+    },
     model() {
       return this.$store.state.chat.model;
     },
@@ -342,6 +347,7 @@ export default defineComponent({
       return isDesktop() && !!localExec() && !this.$store.state.chat?.workingDirectory;
     },
     ready(): boolean {
+      if (this.foreignChatRestricted) return false;
       // A scheduled run owns this transcript until it finishes. Keep the
       // composer visible, then allow a normal follow-up once polling stops.
       if (this.isScheduledConversation && this.scheduledRunPollTimer) return false;
@@ -890,6 +896,7 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
+      if (this.foreignChatRestricted) return;
       if (this.isScheduledConversation && this.scheduledRunPollTimer) return;
       if (this.restoringConversation) return;
       // Belt-and-braces: `ready` already disables the composer, but onDraft /

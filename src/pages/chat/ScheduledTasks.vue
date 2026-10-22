@@ -793,6 +793,7 @@ import type {
   IScheduledExecution
 } from '@/operators/scheduledTasks';
 import { CHAT_MODELS, CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
+import { chatGroupAvailable } from '@/utils/chatRegion';
 import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
@@ -999,7 +1000,9 @@ export default defineComponent({
     modelGroups(): IChatModelGroup[] {
       const site = (this.$store.getters?.site ?? this.$store.state.site) as ISite | undefined;
       const features = site?.features ?? {};
-      return CHAT_MODEL_GROUPS.filter((g) => features[g.name]?.enabled !== false)
+      return CHAT_MODEL_GROUPS.filter(
+        (g) => features[g.name]?.enabled !== false && chatGroupAvailable(g.name, this.$store.state.config)
+      )
         .map((g) => {
           const models = selectableChatModels(site, g);
           // Keep the saved model visible when editing a task that predates this Site setting.

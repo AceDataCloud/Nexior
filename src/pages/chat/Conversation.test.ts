@@ -18,13 +18,15 @@ const mountComponent = ({
   fetchedConversation,
   conversationId = 'conversation-1',
   application,
-  model = undefined
+  model = undefined,
+  config
 }: {
   credentialToken?: string;
   fetchedConversation?: Record<string, unknown>;
   conversationId?: string | null;
   application?: Record<string, unknown>;
   model?: typeof CHAT_MODEL_GPT_6_ASTRA;
+  config?: { country: string; features: { CN_FOREIGN_CHAT_RESTRICTION: boolean } };
 } = {}) => {
   const pendingConversation = new Promise(() => undefined);
   const dispatch = vi.fn((action: string) =>
@@ -46,6 +48,7 @@ const mountComponent = ({
         mocks: {
           $t: (key: string) => (key === 'common.status.loading' ? 'Loading...' : key),
           $route: {
+            meta: config ? { modelGroup: { name: 'chatgpt' } } : {},
             matched: [{ path: '/chatgpt' }],
             params: conversationId ? { id: conversationId } : {},
             path: `/chatgpt/conversations${conversationId ? `/${conversationId}` : ''}`,
@@ -60,6 +63,7 @@ const mountComponent = ({
             dispatch,
             getters: { authenticated: !!credentialToken },
             state: {
+              config,
               chat: {
                 application,
                 applications: undefined,
@@ -78,6 +82,30 @@ const mountComponent = ({
     })
   };
 };
+
+describe('mainland chat history', () => {
+  it('keeps an existing transcript readable while disabling new foreign-model calls', async () => {
+    const send = vi.spyOn(chatOperator, 'chatConversation');
+    const { wrapper } = mountComponent({
+      credentialToken: 'token',
+      model: CHAT_MODEL_GPT_6_ASTRA,
+      config: { country: 'cn', features: { CN_FOREIGN_CHAT_RESTRICTION: true } },
+      fetchedConversation: {
+        id: 'conversation-1',
+        model: 'gpt-6-astra',
+        messages: [{ role: 'assistant', content: 'Earlier answer' }]
+      }
+    });
+    await flushPromises();
+    expect(wrapper.vm.foreignChatRestricted).toBe(true);
+    expect(wrapper.vm.ready).toBe(false);
+    expect(wrapper.getComponent(Message).props('readonly')).toBe(true);
+    await wrapper.vm.onSubmit();
+    expect(send).not.toHaveBeenCalled();
+    wrapper.unmount();
+    send.mockRestore();
+  });
+});
 
 describe('scheduled conversation', () => {
   afterEach(() => vi.restoreAllMocks());

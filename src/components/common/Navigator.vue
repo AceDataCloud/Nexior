@@ -185,6 +185,7 @@ import { isCapabilityAvailableOnBuild, isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
 import { CAPABILITY_ICONS, type CapabilityKey } from '@/constants/capabilities';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
+import { chatGroupAvailable } from '@/utils/chatRegion';
 
 interface NavLink {
   route: { name: string };
@@ -269,7 +270,10 @@ export default defineComponent({
     links(): NavLink[] {
       const result: NavLink[] = [];
       // Chat category
-      if (this.$store?.state?.site?.features?.chatgpt?.enabled) {
+      if (
+        this.$store?.state?.site?.features?.chatgpt?.enabled &&
+        chatGroupAvailable('chatgpt', this.$store.state.config)
+      ) {
         result.push({
           route: { name: ROUTE_CHATGPT_CONVERSATION_NEW },
           displayName: this.$t('common.nav.chatgpt'),
@@ -287,7 +291,7 @@ export default defineComponent({
           category: 'chat'
         });
       }
-      if (this.$store?.state?.site?.features?.grok?.enabled) {
+      if (this.$store?.state?.site?.features?.grok?.enabled && chatGroupAvailable('grok', this.$store.state.config)) {
         result.push({
           route: { name: ROUTE_GROK_CONVERSATION_NEW },
           displayName: this.$t('common.nav.grok'),
@@ -296,7 +300,10 @@ export default defineComponent({
           category: 'chat'
         });
       }
-      if (this.$store?.state?.site?.features?.gemini?.enabled) {
+      if (
+        this.$store?.state?.site?.features?.gemini?.enabled &&
+        chatGroupAvailable('gemini', this.$store.state.config)
+      ) {
         result.push({
           route: { name: ROUTE_GEMINI_CONVERSATION_NEW },
           displayName: this.$t('common.nav.gemini'),
@@ -305,7 +312,10 @@ export default defineComponent({
           category: 'chat'
         });
       }
-      if (this.$store?.state?.site?.features?.claude?.enabled) {
+      if (
+        this.$store?.state?.site?.features?.claude?.enabled &&
+        chatGroupAvailable('claude', this.$store.state.config)
+      ) {
         result.push({
           route: { name: ROUTE_CLAUDE_CONVERSATION_NEW },
           displayName: this.$t('common.nav.claude'),
