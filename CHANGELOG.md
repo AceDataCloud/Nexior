@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 19 Oct 2026 20:23:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 25 Oct 2026 20:20:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.382.0
+
+Sun, 25 Oct 2026 20:20:48 GMT
+
+### Minor changes
+
+- Add Kimi K3.1 Pro to chat model picker (dev@acedata.cloud)
 
 ## 3.381.0
 
