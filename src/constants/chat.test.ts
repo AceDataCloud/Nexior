@@ -17,6 +17,7 @@ import {
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_KIMI_K2_6,
+  CHAT_MODEL_KIMI_K3_1_PRO,
   CHAT_MODEL_KIMI_K3,
   CHAT_MODELS,
   CHAT_MODEL_GROUPS,
@@ -77,9 +78,11 @@ describe('chat models', () => {
     expect(getDefaultChatModel(CHAT_MODEL_GROUP_KIMI)).toBe(CHAT_MODEL_GROUP_KIMI.models[0]);
   });
 
-  it('lists K3 first and registers both current Kimi models', () => {
-    expect(CHAT_MODEL_GROUP_KIMI.models[0]).toBe(CHAT_MODEL_KIMI_K3);
+  it('lists K3.1 Pro first and keeps K3 and K2.6 available', () => {
+    expect(CHAT_MODEL_GROUP_KIMI.models[0]).toBe(CHAT_MODEL_KIMI_K3_1_PRO);
+    expect(CHAT_MODEL_GROUP_KIMI.models).toContain(CHAT_MODEL_KIMI_K3);
     expect(CHAT_MODEL_GROUP_KIMI.models).toContain(CHAT_MODEL_KIMI_K2_6);
+    expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K3_1_PRO);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K3);
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K2_6);
   });
