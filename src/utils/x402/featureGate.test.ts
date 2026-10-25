@@ -23,11 +23,7 @@ vi.mock('@/operators/common', () => ({ httpClient: { post: state.post }, anonymo
 
 import { setFeatureConfigReader, syncFeaturesFromUrl } from '../featureFlag';
 import { EVM_PAYMENT_NETWORKS } from './networks';
-import {
-  assertX402NetworkEnabled,
-  filterX402Requirements,
-  isX402NetworkEnabled
-} from './featureGate';
+import { assertX402NetworkEnabled, filterX402Requirements, isX402NetworkEnabled } from './featureGate';
 import { activeEvmWallet, connectEvmWallet, setActiveEvmWallet, setActiveWalletRail } from './evmWallet';
 import { buildEVMPaymentSignatureHeader } from '@/operators/x402';
 import type { EvmWalletRail } from './networks';
