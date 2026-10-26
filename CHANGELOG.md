@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 25 Oct 2026 20:20:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 26 Oct 2026 20:24:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.382.1
+
+Mon, 26 Oct 2026 20:24:33 GMT
+
+### Patches
+
+- Temporarily hide Kimi K3.1 Pro until an upstream channel is available (dev@acedata.cloud)
 
 ## 3.382.0
 
