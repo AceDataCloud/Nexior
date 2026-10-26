@@ -369,7 +369,7 @@ export const CHAT_MODEL_CLAUDE_HAIKU_4_5: IChatModel = {
 };
 
 export const CHAT_MODEL_KIMI_K3_1_PRO: IChatModel = {
-  enabled: true,
+  enabled: false,
   name: CHAT_MODEL_NAME_KIMI_K3_1_PRO,
   icon: CHAT_MODEL_ICON_KIMI,
   modelGroup: 'kimi',
@@ -527,6 +527,7 @@ export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
   name: 'kimi',
   getDisplayName: () => i18n.global.t('chat.modelGroup.kimi'),
   getDescription: () => i18n.global.t('chat.modelGroup.kimiDescription'),
+  defaultModel: CHAT_MODEL_KIMI_K3,
   models: [
     CHAT_MODEL_KIMI_K3_1_PRO,
     CHAT_MODEL_KIMI_K3,
