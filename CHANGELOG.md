@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 26 Oct 2026 20:24:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 28 Oct 2026 20:17:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.382.2
+
+Wed, 28 Oct 2026 20:17:48 GMT
+
+### Patches
+
+- Add Gemini 4 Argon to the chat model picker (dev@acedata.cloud)
 
 ## 3.382.1
 
