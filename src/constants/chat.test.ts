@@ -10,6 +10,7 @@ import {
   CHAT_MODEL_GPT_6_LUNA,
   CHAT_MODEL_GROK_4_7,
   CHAT_MODEL_GEMINI_3_8_FLASH,
+  CHAT_MODEL_GEMINI_4_ARGON,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -49,12 +50,14 @@ describe('chat models', () => {
     ]);
     expect(CHAT_MODEL_GROUP_GROK.models[0]).toBe(CHAT_MODEL_GROK_4_7);
     expect(CHAT_MODEL_GROUP_GEMINI.models[0]).toBe(CHAT_MODEL_GEMINI_3_8_FLASH);
+    expect(CHAT_MODEL_GROUP_GEMINI.models[1]).toBe(CHAT_MODEL_GEMINI_4_ARGON);
     for (const model of [
       CHAT_MODEL_GPT_6_1_SOL,
       CHAT_MODEL_GPT_6_SOL,
       CHAT_MODEL_GPT_6_LUNA,
       CHAT_MODEL_GROK_4_7,
-      CHAT_MODEL_GEMINI_3_8_FLASH
+      CHAT_MODEL_GEMINI_3_8_FLASH,
+      CHAT_MODEL_GEMINI_4_ARGON
     ]) {
       expect(CHAT_MODELS).toContain(model);
       expect(model).toMatchObject({ isImageSupported: true, isReasoningSupported: true });
