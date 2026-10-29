@@ -168,7 +168,7 @@
     "description": "作為網站標題顯示的標題，表示管理訂單。"
   },
   "title.x402": {
-    "message": "加密貨幣",
+    "message": "錢包支付",
     "description": "作為網站標題顯示的標題，表示加密貨幣支付（基於 X402 支付方案）。"
   },
   "title.paypal": {
@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "請檢查錢包和網路後重新發起請求；持續失敗時請聯繫客服並提供技術代碼。",
     "description": "X402 payment_failed 的 nextStepRequest 本地化文案。"
+  },
+  "title.cryptoPay": {
+    "message": "CoinGate 支付",
+    "description": "CoinGate 結帳與結算狀態"
+  },
+  "button.openCryptoCheckout": {
+    "message": "前往 CoinGate",
+    "description": "CoinGate 結帳與結算狀態"
+  },
+  "message.coingateSandbox": {
+    "message": "目前為沙盒付款，不會增加實際額度。",
+    "description": "CoinGate 結帳與結算狀態"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "沙盒付款已確認，未增加實際額度。",
+    "description": "CoinGate 結帳與結算狀態"
+  },
+  "message.coingateReview": {
+    "message": "此筆付款需要複核，請聯絡客服。",
+    "description": "CoinGate 結帳與結算狀態"
+  },
+  "message.coingateBurnPending": {
+    "message": "本次回購預算預覽為 {amount} USDC，等待結算確認；尚未回購或銷毀 ACE。",
+    "description": "CoinGate 結帳與結算狀態"
   }
 }

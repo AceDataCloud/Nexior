@@ -168,8 +168,8 @@
     "description": "作为网站标题显示的标题，表示管理订单。"
   },
   "title.x402": {
-    "message": "加密货币",
-    "description": "作为网站标题显示的标题，表示加密货币支付（基于 X402 支付方案）。"
+    "message": "钱包支付",
+    "description": "直接连接钱包支付的入口和弹窗标题，与跳转 CoinGate 收银台的支付方式区分。"
   },
   "title.paypal": {
     "message": "PayPal",
@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "请检查钱包和网络后重新发起请求；持续失败时请联系客服并提供技术代码。",
     "description": "X402 payment_failed 的 nextStepRequest 本地化文案。"
+  },
+  "title.cryptoPay": {
+    "message": "CoinGate 支付",
+    "description": "通过 CoinGate 托管收银台付款的入口和弹窗标题。保留 CoinGate 品牌名称，与钱包支付区分。"
+  },
+  "button.openCryptoCheckout": {
+    "message": "前往 CoinGate",
+    "description": "打开 CoinGate 托管收银台的按钮。保留 CoinGate 品牌名称。"
+  },
+  "message.coingateSandbox": {
+    "message": "当前为沙盒支付，不会增加真实额度。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "沙盒付款已确认，未增加真实额度。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateReview": {
+    "message": "此笔支付需要复核，请联系客服。",
+    "description": "CoinGate checkout and settlement status"
+  },
+  "message.coingateBurnPending": {
+    "message": "本次回购预算预览为 {amount} USDC，等待结算确认；尚未回购或销毁 ACE。",
+    "description": "CoinGate checkout and settlement status"
   }
 }
