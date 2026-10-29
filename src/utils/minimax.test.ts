@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateMinimaxConfig } from './minimax';
+import { getMinimaxGenerationOptions, validateMinimaxConfig } from './minimax';
 
 const base = {
   model: 'MiniMax-H3' as const,
@@ -42,5 +42,16 @@ describe('MiniMax request helpers', () => {
         ]
       })
     ).toBe('audioLimit');
+  });
+});
+
+it('provides model-specific resolution and duration ranges without changing H3 defaults', () => {
+  expect(getMinimaxGenerationOptions('MiniMax-H3')).toEqual({
+    resolutions: ['768P', '2K'],
+    durations: Array.from({ length: 12 }, (_, i) => i + 4)
+  });
+  expect(getMinimaxGenerationOptions('MiniMax-H3-Max')).toEqual({
+    resolutions: ['480P', '768P'],
+    durations: Array.from({ length: 11 }, (_, i) => i + 5)
   });
 });
