@@ -8,6 +8,7 @@ import {
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 import { BaseTaskOperator, ITaskListFilter } from './baseTaskOperator';
+import type { OperatorRequestOptions } from './x402';
 
 class OpenAIImageOperator extends BaseTaskOperator<
   IOpenAIImageGenerateRequest,
@@ -18,6 +19,13 @@ class OpenAIImageOperator extends BaseTaskOperator<
 > {
   constructor() {
     super({ tasksPath: '/openai/tasks', generatePath: '/openai/images/generations' });
+  }
+
+  async tasks(
+    filter: ITaskListFilter,
+    options: OperatorRequestOptions
+  ): Promise<AxiosResponse<IOpenAIImageTasksResponse>> {
+    return super.tasks(options.mode === 'x402' ? filter : { ...filter, view: 'summary' }, options);
   }
 
   async edit(
