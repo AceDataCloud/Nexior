@@ -13,6 +13,13 @@ export const EVM_PAYMENT_NETWORKS = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     rpcUrls: ['https://arb1.arbitrum.io/rpc'],
     blockExplorerUrls: ['https://arbiscan.io']
+  },
+  polygon: {
+    chainId: '0x89',
+    chainName: 'Polygon PoS',
+    nativeCurrency: { name: 'POL', symbol: 'POL', decimals: 18 },
+    rpcUrls: ['https://polygon-bor-rpc.publicnode.com'],
+    blockExplorerUrls: ['https://polygonscan.com']
   }
 };
 

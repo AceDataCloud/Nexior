@@ -16,7 +16,10 @@ vi.mock('@/utils/x402/continuousPayment', () => ({ continuousPaymentActive: () =
 
 import { postWithX402, resolveX402WalletContext } from './x402';
 
-const cases = [['arbitrum', 42161, '0xaf88d065e77c8cC2239327C5EDb3A432268e5831']] as const;
+const cases = [
+  ['arbitrum', 42161, '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'],
+  ['polygon', 137, '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359']
+] as const;
 
 beforeEach(() => {
   vi.resetAllMocks();
