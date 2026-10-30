@@ -1,4 +1,4 @@
-export type OpenAIImageQuality = 'auto' | 'low' | 'medium' | 'high';
+export type OpenAIImageQuality = 'auto' | 'low' | 'medium' | 'high' | 'xhigh' | 'max';
 
 export interface IOpenAIImageConfig {
   prompt?: string;

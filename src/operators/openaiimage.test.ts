@@ -18,7 +18,7 @@ describe('OpenAIImageOperator edit', () => {
         model: 'gpt-image-2.5-sunburst:official',
         prompt: 'edit the portrait',
         size: '2448x3264',
-        quality: 'high',
+        quality: 'max',
         async: true,
         image_urls: ['https://example.com/a.png', 'https://example.com/b.png']
       },
@@ -30,7 +30,7 @@ describe('OpenAIImageOperator edit', () => {
       ['model', 'gpt-image-2.5-sunburst:official'],
       ['prompt', 'edit the portrait'],
       ['size', '2448x3264'],
-      ['quality', 'high'],
+      ['quality', 'max'],
       ['async', 'true'],
       ['image', 'https://example.com/a.png'],
       ['image', 'https://example.com/b.png']

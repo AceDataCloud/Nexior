@@ -34,7 +34,7 @@ vi.mock('@/utils', async (importOriginal) => ({
 
 import OpenAIImageIndex from './Index.vue';
 
-function mountPage(imageUrls?: string[]) {
+function mountPage(imageUrls?: string[], quality = 'xhigh') {
   return shallowMount(OpenAIImageIndex, {
     global: {
       provide: { initialized: false },
@@ -49,7 +49,7 @@ function mountPage(imageUrls?: string[]) {
                 model: 'gpt-image-2.5-sunburst:official',
                 prompt: '  draw a detailed portrait  ',
                 size: '2448x3264',
-                quality: 'high',
+                quality,
                 image_urls: imageUrls
               },
               status: { getApplications: Status.Success, getTasks: Status.Success }
@@ -92,7 +92,7 @@ describe('OpenAI Image quality requests', () => {
         model: 'gpt-image-2.5-sunburst:official',
         prompt: 'draw a detailed portrait',
         size: '2448x3264',
-        quality: 'high',
+        quality: 'xhigh',
         action: 'generate',
         async: true
       }),
@@ -102,7 +102,7 @@ describe('OpenAI Image quality requests', () => {
   });
 
   it('passes quality to image editing', async () => {
-    const wrapper = mountPage(['https://example.com/reference.png']);
+    const wrapper = mountPage(['https://example.com/reference.png'], 'max');
 
     await (wrapper.vm as any).onGenerate();
     await flushPromises();
@@ -112,7 +112,7 @@ describe('OpenAI Image quality requests', () => {
         model: 'gpt-image-2.5-sunburst:official',
         prompt: 'draw a detailed portrait',
         size: '2448x3264',
-        quality: 'high',
+        quality: 'max',
         image_urls: ['https://example.com/reference.png'],
         action: 'edit',
         async: true
