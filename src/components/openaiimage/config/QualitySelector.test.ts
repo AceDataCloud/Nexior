@@ -59,17 +59,34 @@ describe('OpenAIImageQualitySelector', () => {
     });
   });
 
-  it.each(OPENAIIMAGE_MODELS)('offers the GPT Image quality options for %s', (model) => {
-    const { wrapper } = mountSelector({ model, quality: 'medium' });
-    expect((wrapper.vm as any).qualities).toEqual(['auto', 'low', 'medium', 'high']);
-    expect((wrapper.vm as any).qualities).not.toContain('standard');
-    expect((wrapper.vm as any).qualities).not.toContain('hd');
+  it.each(OPENAIIMAGE_MODELS.filter((model) => !GPT_IMAGE_25_MODELS.includes(model)))(
+    'offers the standard GPT Image quality options for %s',
+    (model) => {
+      const { wrapper } = mountSelector({ model, quality: 'medium' });
+      expect((wrapper.vm as any).qualities).toEqual(['auto', 'low', 'medium', 'high']);
+      expect((wrapper.vm as any).qualities).not.toContain('standard');
+      expect((wrapper.vm as any).qualities).not.toContain('hd');
+    }
+  );
+
+  it.each(GPT_IMAGE_25_MODELS)('offers the extra quality options for GPT Image 2.5 model %s', (model) => {
+    const { wrapper, commit } = mountSelector({ model, quality: 'max' });
+    expect((wrapper.vm as any).qualities).toEqual(['auto', 'low', 'medium', 'high', 'xhigh', 'max']);
+    expect((wrapper.vm as any).quality).toBe('max');
+    expect(commit).not.toHaveBeenCalled();
   });
 
-  it.each(GPT_IMAGE_25_MODELS)('preserves a valid quality for GPT Image 2.5 model %s', (model) => {
-    const { wrapper, commit } = mountSelector({ model, quality: 'high' });
-    expect((wrapper.vm as any).quality).toBe('high');
-    expect(commit).not.toHaveBeenCalled();
+  it('resets a 2.5-only quality when switching to GPT Image 2', async () => {
+    const config = reactive<Record<string, unknown>>({
+      model: OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+      quality: 'xhigh'
+    });
+    const { wrapper, commit } = mountSelector(config);
+
+    config.model = OPENAIIMAGE_MODEL_GPT_IMAGE_2;
+    await wrapper.vm.$nextTick();
+
+    expect(committedConfig(commit)).toEqual({ model: OPENAIIMAGE_MODEL_GPT_IMAGE_2, quality: 'auto' });
   });
 
   it('normalizes a historical invalid quality when the model changes', async () => {
