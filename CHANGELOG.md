@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 28 Oct 2026 20:17:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 30 Oct 2026 20:14:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.382.3
+
+Fri, 30 Oct 2026 20:14:03 GMT
+
+### Patches
+
+- Show extra quality tiers for GPT Image 2.5 in Studio (dev@acedata.cloud)
 
 ## 3.382.2
 
