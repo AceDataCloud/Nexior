@@ -24,6 +24,16 @@
         <send-shortcut />
       </div>
     </section>
+    <section v-if="$store.getters.authenticated" class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('common.button.twoStepVerification') }}</p>
+      </div>
+      <div class="settings-content">
+        <button type="button" class="account-security-action" @click="openSecurity">
+          {{ $t('common.button.twoStepVerification') }}
+        </button>
+      </div>
+    </section>
     <section v-if="canDeleteAccount" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.account') }}</p>
@@ -43,6 +53,7 @@ import ThemeSwitcher from '@/components/user/Theme.vue';
 import LocaleSwitcher from '@/components/user/Locale.vue';
 import SendShortcut from '@/components/user/SendShortcut.vue';
 import { isIOS } from '@/utils/surface';
+import { openAuthAccountPage } from '@/utils/authAccount';
 
 export default defineComponent({
   name: 'GeneralSettings',
@@ -52,6 +63,11 @@ export default defineComponent({
     SendShortcut
   },
   emits: ['delete-account'],
+  methods: {
+    openSecurity() {
+      void openAuthAccountPage('/user/profile#mfa');
+    }
+  },
   computed: {
     canDeleteAccount(): boolean {
       return isIOS() && !!this.$store.getters?.authenticated;
@@ -61,6 +77,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.account-security-action,
 .delete-account-action {
   display: inline-flex;
   align-items: flex-start;

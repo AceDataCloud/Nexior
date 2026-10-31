@@ -60,6 +60,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
+              <el-dropdown-item @click="onSecurity">{{ $t('common.button.twoStepVerification') }}</el-dropdown-item>
               <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -180,6 +181,9 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_DOWNLOAD
       });
+    },
+    onSecurity() {
+      void openAuthAccountPage('/user/profile#mfa');
     },
     onProfile() {
       void openAuthAccountPage('/user/profile');
