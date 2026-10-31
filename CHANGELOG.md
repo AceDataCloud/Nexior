@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 30 Oct 2026 20:14:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 31 Oct 2026 20:13:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.382.4
+
+Sat, 31 Oct 2026 20:13:37 GMT
+
+### Patches
+
+- Add GPT-6.1 Terra to the chat model picker (dev@acedata.cloud)
 
 ## 3.382.3
 
