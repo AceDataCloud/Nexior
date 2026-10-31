@@ -7,6 +7,7 @@ export const ROLE_USER = 'user';
 
 export const CHAT_MODEL_NAME_GPT_6_ASTRA = 'gpt-6-astra';
 export const CHAT_MODEL_NAME_GPT_6_1_SOL = 'gpt-6.1-sol';
+export const CHAT_MODEL_NAME_GPT_6_1_TERRA = 'gpt-6.1-terra';
 export const CHAT_MODEL_NAME_GPT_6_SOL = 'gpt-6-sol';
 export const CHAT_MODEL_NAME_GPT_6_LUNA = 'gpt-6-luna';
 export const CHAT_MODEL_NAME_GPT_5_6_SOL = 'gpt-5.6-sol';
@@ -78,6 +79,18 @@ export const CHAT_MODEL_GPT_6_1_SOL: IChatModel = {
   isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gpt61Sol'),
   getDescription: () => i18n.global.t('chat.model.gpt61SolDescription')
+};
+
+export const CHAT_MODEL_GPT_6_1_TERRA: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_6_1_TERRA,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.gpt61Terra'),
+  getDescription: () => i18n.global.t('chat.model.gpt61TerraDescription')
 };
 
 export const CHAT_MODEL_GPT_6_SOL: IChatModel = {
@@ -472,6 +485,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   models: [
     CHAT_MODEL_GPT_6_ASTRA,
     CHAT_MODEL_GPT_6_1_SOL,
+    CHAT_MODEL_GPT_6_1_TERRA,
     CHAT_MODEL_GPT_6_SOL,
     CHAT_MODEL_GPT_6_LUNA,
     CHAT_MODEL_GPT_5_6_LUNA,
@@ -563,6 +577,7 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GPT_6_1_SOL,
+  CHAT_MODEL_GPT_6_1_TERRA,
   CHAT_MODEL_GPT_6_SOL,
   CHAT_MODEL_GPT_6_LUNA,
   CHAT_MODEL_GPT_5_6_LUNA,
