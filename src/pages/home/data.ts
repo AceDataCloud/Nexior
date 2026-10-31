@@ -23,6 +23,7 @@ import {
   ROUTE_DIGITALHUMAN_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_MIMO_CONVERSATION_NEW,
   ROUTE_WEBEXTRATOR_INDEX,
   ROUTE_CODING_BRIDGE_INDEX,
   ROUTE_MAESTRO_INDEX,
@@ -205,6 +206,7 @@ export const HOME_CAPABILITY_DEFINITIONS = new Map<CapabilityKey, HomeCapability
   [
     ...HOME_CATEGORIES.flatMap((category) => category.candidates),
     capability('kimi', ROUTE_KIMI_CONVERSATION_NEW, 'Kimi', 'intro.model.kimi', ''),
+    capability('mimo', ROUTE_MIMO_CONVERSATION_NEW, 'MiMo', 'chat.modelGroup.mimoDescription', ''),
     capability('midjourney', ROUTE_MIDJOURNEY_INDEX, 'Midjourney', 'intro.model.midjourney', ''),
     capability('qrart', ROUTE_QRART_INDEX, 'QR Art', 'intro.model.qrart', ''),
     capability('flux', ROUTE_FLUX_INDEX, 'Flux', 'intro.model.flux', ''),

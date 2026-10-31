@@ -10,6 +10,7 @@ import gemini from './gemini';
 import claude from './claude';
 import deepseek from './deepseek';
 import kimi from './kimi';
+import mimo from './mimo';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
@@ -52,6 +53,7 @@ import {
   ROUTE_GEMINI_CONVERSATION_NEW,
   ROUTE_CLAUDE_CONVERSATION_NEW,
   ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_MIMO_CONVERSATION_NEW,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_FLUX_INDEX,
   ROUTE_NANOBANANA_INDEX,
@@ -132,6 +134,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'Kimi',
     description: 'Chat with Kimi AI — advanced AI conversations powered by Moonshot AI.',
     keywords: ['Kimi', 'Moonshot AI', 'AI Chat', 'Kimi AI'],
+    category: 'AI Chat'
+  },
+  mimo: {
+    title: 'MiMo',
+    description: 'Xiaomi MiMo 2.6 chat and reasoning. Availability follows the service status.',
+    keywords: ['MiMo', 'Xiaomi', 'AI Chat'],
     category: 'AI Chat'
   },
   midjourney: {
@@ -335,6 +343,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['grok', ROUTE_GROK_CONVERSATION_NEW],
   ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW],
   ['kimi', ROUTE_KIMI_CONVERSATION_NEW],
+  ['mimo', ROUTE_MIMO_CONVERSATION_NEW],
   ['midjourney', ROUTE_MIDJOURNEY_INDEX],
   ...(isCapabilityAvailableOnBuild('nanobanana')
     ? ([['nanobanana', ROUTE_NANOBANANA_INDEX]] as Array<[string, string]>)
@@ -392,6 +401,7 @@ export const routes = [
   claude,
   deepseek,
   kimi,
+  mimo,
   qrart,
   luma,
   pika,

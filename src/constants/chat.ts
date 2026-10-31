@@ -644,7 +644,7 @@ export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
   CHAT_MODEL_GROUP_CLAUDE,
   CHAT_MODEL_GROUP_KIMI,
   CHAT_MODEL_GROUP_GLM,
-  ...[CHAT_MODEL_GROUP_MIMO].filter((group) => group.models.some((model) => model.enabled !== false))
+  CHAT_MODEL_GROUP_MIMO
 ];
 
 export const getDefaultChatModel = (group: IChatModelGroup): IChatModel => group.defaultModel ?? group.models[0];

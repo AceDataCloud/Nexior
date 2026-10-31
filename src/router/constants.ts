@@ -108,3 +108,6 @@ export const ROUTE_CONSOLE_SKILLS = 'console-skills';
 export const ROUTE_CONSOLE_BROWSER_DEVICES = 'console-browser-devices';
 
 export const ROUTE_NOT_FOUND = 'not-found';
+
+export const ROUTE_MIMO_CONVERSATION = 'mimo-conversation';
+export const ROUTE_MIMO_CONVERSATION_NEW = 'mimo-conversation-new';

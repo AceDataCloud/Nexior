@@ -55,6 +55,7 @@ export interface ISiteFeatures {
   wan?: any;
   producer?: any;
   kimi?: ISiteCapabilityFeature;
+  mimo?: ISiteCapabilityFeature;
   glm?: ISiteCapabilityFeature;
   serp?: any;
   fish?: any;
