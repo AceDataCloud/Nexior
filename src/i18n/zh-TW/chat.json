@@ -909,7 +909,7 @@
     "description": "每小時分鐘說明"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "從上次執行起，每隔固定時間執行一次（最短 1 分鐘）",
+    "message": "按固定基準間隔重複執行（最短 1 分鐘）；隨機偏移不會累積到下一輪。",
     "description": "固定間隔說明"
   },
   "scheduledTasks.form.cronHint": {
@@ -1927,5 +1927,37 @@
   "model.mimoFlashDescription": {
     "message": "小米 MiMo 日常對話與輕量任務",
     "description": "MiMo 模型名稱或說明"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "隨機偏移（秒）",
+    "description": "用於設定排程執行時間隨機提前或延後的秒數。"
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "在每個計畫時間前後隨機偏移；設為 0 可關閉。實際執行可能因服務延遲而推遲。",
+    "description": "說明隨機偏移的作用，以及將數值設為 0 可停用此功能；實際執行時間可能因服務延遲而延後。"
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "此間隔下實際最多提前或延後 {seconds} 秒。",
+    "description": "說明在目前排程間隔下，任務實際執行時間最多可能提前或延後的秒數。"
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "隨機偏移必須為大於或等於 0 的整數秒。",
+    "description": "當使用者輸入的隨機偏移不是大於或等於 0 的整數秒時顯示的驗證錯誤。"
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "隨機 ±{seconds} 秒",
+    "description": "顯示排程執行時間會在計畫時間前後隨機偏移的秒數。"
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "無隨機偏移",
+    "description": "表示排程未啟用隨機提前或延後執行時間的功能。"
+  },
+  "scheduledTasks.nextRun": {
+    "message": "下次計畫執行：{time}",
+    "description": "顯示排程任務預計下次執行的時間。"
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "下次計畫執行時間暫不可用",
+    "description": "當系統目前無法取得排程任務下次執行時間時顯示。"
   }
 }

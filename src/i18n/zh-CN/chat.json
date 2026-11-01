@@ -952,7 +952,7 @@
     "description": "每小时分钟说明"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "从上次运行起，每隔固定时间执行一次（最短 1 分钟）",
+    "message": "按固定基准间隔重复执行（最短 1 分钟）；随机偏移不会累积到下一轮。",
     "description": "固定间隔说明"
   },
   "scheduledTasks.form.cronHint": {
@@ -1949,5 +1949,29 @@
   "model.mimoFlashDescription": {
     "message": "小米 MiMo 日常对话与轻量任务",
     "description": "MiMo model name or description"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "随机偏移（秒）"
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "在每个计划时间前后随机偏移；设为 0 可关闭。实际执行可能因服务延迟而推迟。"
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "此间隔下实际最多提前或延后 {seconds} 秒。"
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "随机偏移必须为大于或等于 0 的整数秒。"
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "随机 ±{seconds} 秒"
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "无随机偏移"
+  },
+  "scheduledTasks.nextRun": {
+    "message": "下次计划执行：{time}"
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "下次计划执行时间暂不可用"
   }
 }

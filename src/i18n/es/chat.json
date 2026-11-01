@@ -938,7 +938,7 @@
     "description": "Descripción del minuto de cada hora"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Ejecutar una vez cada intervalo fijo desde la última ejecución (mínimo 1 minuto)",
+    "message": "Se repite según un intervalo fijo (mínimo 1 minuto); el desfase aleatorio no se acumula en la siguiente ronda.",
     "description": "Descripción del intervalo fijo"
   },
   "scheduledTasks.form.cronHint": {
@@ -1967,5 +1967,37 @@
   "model.mimoFlashDescription": {
     "message": "Conversaciones cotidianas y tareas ligeras de Xiaomi MiMo",
     "description": "Nombre o descripción del modelo MiMo"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Desplazamiento aleatorio (segundos)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Desplazamiento aleatorio antes o después de cada hora programada; establece 0 para desactivarlo. La ejecución real puede retrasarse debido a la latencia del servicio.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "Con este intervalo, el máximo desplazamiento real es de {seconds} segundos antes o después.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "El desplazamiento aleatorio debe ser un número entero de segundos mayor o igual que 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "±{seconds} segundos aleatorios",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Sin desplazamiento aleatorio",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Próxima ejecución programada: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "La próxima hora de ejecución programada no está disponible temporalmente",
+    "description": ""
   }
 }

@@ -937,8 +937,8 @@
     "description": "Spiegazione del minuto orario"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Esegui ogni volta a intervalli fissi dal precedente (minimo 1 minuto)",
-    "description": "Spiegazione dell'intervallo fisso"
+    "message": "Ripeti l'esecuzione a intervalli fissi (minimo 1 minuto); lo scostamento casuale non si accumula al ciclo successivo.",
+    "description": "Descrizione dell'intervallo fisso"
   },
   "scheduledTasks.form.cronHint": {
     "message": "Espressione Cron standard a 5 segmenti: minuti ore giorno mese settimana",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo per conversazioni quotidiane e attività leggere",
     "description": "Nome o descrizione del modello MiMo"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Offset casuale (secondi)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Offset casuale prima o dopo ogni orario pianificato; imposta su 0 per disattivarlo. L'esecuzione effettiva potrebbe essere posticipata a causa della latenza del servizio.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "Con questo intervallo, l'anticipo o il ritardo effettivo è al massimo di {seconds} secondi.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "L'offset casuale deve essere un numero intero di secondi maggiore o uguale a 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "Casuale ±{seconds} secondi",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Nessun offset casuale",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Prossima esecuzione pianificata: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "L'orario della prossima esecuzione pianificata non è al momento disponibile",
+    "description": ""
   }
 }

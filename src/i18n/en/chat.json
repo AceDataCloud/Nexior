@@ -903,7 +903,7 @@
     "description": "Hourly minute hint"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
+    "message": "Repeat on a fixed schedule (minimum 1 minute). Random offsets do not accumulate between runs.",
     "description": "Interval hint"
   },
   "scheduledTasks.form.cronHint": {
@@ -1877,5 +1877,29 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo for everyday chat and lightweight tasks",
     "description": "MiMo model name or description"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Random offset (seconds)"
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Randomize each planned time in either direction; set 0 to turn it off. Execution may start later if the service is delayed."
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "For this interval, the effective offset is at most {seconds} seconds in either direction."
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "Random offset must be a non-negative whole number of seconds."
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "Random ±{seconds}s"
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "No random offset"
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Next planned run: {time}"
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "Next planned run is temporarily unavailable"
   }
 }

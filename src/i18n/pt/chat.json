@@ -937,8 +937,8 @@
     "description": "Descrição do minuto a cada hora"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Executar uma vez a cada intervalo fixo desde a última execução (mínimo de 1 minuto)",
-    "description": "Descrição do intervalo fixo"
+    "message": "Executa repetidamente em intervalos de referência fixos (mínimo de 1 minuto); o deslocamento aleatório não se acumula no próximo ciclo.",
+    "description": "Explicação do intervalo fixo"
   },
   "scheduledTasks.form.cronHint": {
     "message": "Expressão Cron padrão de 5 segmentos: minuto hora dia mês dia da semana",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo para conversas do dia a dia e tarefas leves",
     "description": "Nome ou descrição do modelo MiMo"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Deslocamento aleatório (segundos)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Deslocamento aleatório antes ou depois de cada horário agendado; defina como 0 para desativar. A execução real pode sofrer atrasos devido à latência do serviço.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "Com este intervalo, a execução pode ocorrer no máximo {seconds} segundos antes ou depois.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "O deslocamento aleatório deve ser um número inteiro de segundos maior ou igual a 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "±{seconds} segundos aleatórios",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Sem deslocamento aleatório",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Próxima execução agendada: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "O horário da próxima execução agendada está temporariamente indisponível",
+    "description": ""
   }
 }

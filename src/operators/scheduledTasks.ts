@@ -35,6 +35,9 @@ export interface IScheduledTask {
    *  (that is `execution`'s job); a desktop-created task may well be cloud. */
   created_surface?: IScheduledSurface;
   schedule: IScheduleSpec;
+  jitter_seconds?: number;
+  /** Sampled next cloud trigger, read from the scheduler; absent/null is unknown. */
+  next_run_at?: number | null;
   template_source?: {
     id: string;
     version: number;
@@ -147,8 +150,8 @@ export interface IScheduledRunFilter {
 }
 
 export type IScheduleSpec =
-  | { type: 'cron'; cron: string; tz: string; ends_at?: number }
-  | { type: 'interval'; interval_seconds: number; tz: string; ends_at?: number }
+  | { type: 'cron'; cron: string; tz: string; starts_at?: number; ends_at?: number }
+  | { type: 'interval'; interval_seconds: number; tz: string; starts_at?: number; ends_at?: number }
   | { type: 'once'; at: number; tz: string };
 
 export interface IScheduledTaskUnattendedPolicy {
@@ -321,6 +324,7 @@ export type ScheduledTaskPayload = {
   name: string;
   description?: string;
   schedule: IScheduleSpec;
+  jitter_seconds?: number;
   template: IScheduledTask['template'];
   unattended_policy?: IScheduledTaskUnattendedPolicy;
   /** Omit for a normal cloud task. `local` also requires `device_id`; the
@@ -360,7 +364,10 @@ class ScheduledTasksOperator {
     token: string,
     id: string,
     patch: Partial<
-      Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule' | 'unattended_policy'>
+      Pick<
+        IScheduledTask,
+        'name' | 'description' | 'state' | 'template' | 'schedule' | 'jitter_seconds' | 'unattended_policy'
+      >
     >,
     force = false
   ): Promise<IScheduledTask> {

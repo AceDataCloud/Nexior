@@ -909,8 +909,8 @@
     "description": "毎時分ヒント"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "前回の実行から一定間隔ごとに1回実行（最短1分）",
-    "description": "間隔ヒント"
+    "message": "固定の基準間隔で繰り返し実行します（最短1分）。ランダムなずれは次回に累積されません。",
+    "description": "固定間隔の説明"
   },
   "scheduledTasks.form.cronHint": {
     "message": "標準5フィールドのCron式：分 時 日 月 曜日",
@@ -1927,5 +1927,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo 日常会話と軽量タスク",
     "description": "MiMoモデルの名前または説明"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "ランダムなずれ（秒）",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "各予定時刻の前後にランダムなずれを設定します。0にすると無効になります。実際の実行はサービスの遅延により遅れる場合があります。",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "この間隔では、実際の実行時刻が最大で{seconds}秒早まる、または遅くなります。",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "ランダムなずれは0以上の整数秒で指定してください。",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "ランダムに±{seconds}秒",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "ランダムなずれなし",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "次回の予定実行：{time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "次回の予定実行時刻は現在利用できません",
+    "description": ""
   }
 }
