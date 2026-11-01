@@ -464,7 +464,7 @@ export const CHAT_MODEL_KIMI_K2_THINKING_TURBO: IChatModel = {
 };
 
 export const CHAT_MODEL_MIMO_PRO: IChatModel = {
-  enabled: false,
+  enabled: true,
   name: CHAT_MODEL_NAME_MIMO_PRO,
   icon: CHAT_MODEL_ICON_MIMO,
   modelGroup: 'mimo',
@@ -474,7 +474,7 @@ export const CHAT_MODEL_MIMO_PRO: IChatModel = {
 };
 
 export const CHAT_MODEL_MIMO_FLASH: IChatModel = {
-  enabled: false,
+  enabled: true,
   name: CHAT_MODEL_NAME_MIMO_FLASH,
   icon: CHAT_MODEL_ICON_MIMO,
   modelGroup: 'mimo',
