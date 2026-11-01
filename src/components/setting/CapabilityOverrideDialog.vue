@@ -231,7 +231,7 @@ export default defineComponent({
       return typeof window !== 'undefined' && window.innerWidth < 640;
     },
     supportsAssistant(): boolean {
-      return ['chatgpt', 'claude', 'gemini', 'grok', 'deepseek', 'kimi', 'glm'].includes(this.capability);
+      return ['chatgpt', 'claude', 'gemini', 'grok', 'deepseek', 'kimi', 'glm', 'mimo'].includes(this.capability);
     },
     aliasModels(): IChatModelGroup['models'] {
       return (this.modelGroup?.models ?? []).filter((model) => model.enabled !== false);

@@ -1,4 +1,6 @@
 import {
+  CHAT_MODEL_NAME_MIMO_PRO,
+  CHAT_MODEL_NAME_MIMO_FLASH,
   ROLE_ASSISTANT,
   ROLE_SYSTEM,
   ROLE_USER,
@@ -43,6 +45,8 @@ import {
 } from '@/constants';
 
 export type IChatModelName =
+  | typeof CHAT_MODEL_NAME_MIMO_PRO
+  | typeof CHAT_MODEL_NAME_MIMO_FLASH
   | typeof CHAT_MODEL_NAME_GPT_6_ASTRA
   | typeof CHAT_MODEL_NAME_GPT_6_1_SOL
   | typeof CHAT_MODEL_NAME_GPT_6_1_TERRA
@@ -86,7 +90,7 @@ export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm' | 'mimo';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
@@ -98,7 +102,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
+  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm' | 'mimo';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;

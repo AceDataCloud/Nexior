@@ -43,6 +43,9 @@ export const CHAT_MODEL_NAME_KIMI_K2_5 = 'kimi-k2.5';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
 
+export const CHAT_MODEL_NAME_MIMO_PRO = 'mimo-v2.6-pro';
+export const CHAT_MODEL_NAME_MIMO_FLASH = 'mimo-v2.6-flash';
+
 export const CHAT_MODEL_NAME_GLM_5_1 = 'glm-5.1';
 export const CHAT_MODEL_NAME_GLM_4_7 = 'glm-4.7';
 
@@ -53,6 +56,8 @@ export const CHAT_MODEL_ICON_GEMINI = 'https://cdn.acedata.cloud/psfx0g.jpg';
 export const CHAT_MODEL_ICON_CLAUDE = 'https://cdn.acedata.cloud/8fnw4v.jpg';
 export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/57ebgy.png';
 export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
+
+export const CHAT_MODEL_ICON_MIMO = 'https://cdn.acedata.cloud/uploads/4a3cfcb5-0e88-4fa8-aa9b-3deffa5fb12a.svg';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 export const CHAT_API_ID = '3769e83e-88f8-4e2c-8f38-6bf20391b094';
@@ -458,6 +463,26 @@ export const CHAT_MODEL_KIMI_K2_THINKING_TURBO: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.kimiK2ThinkingTurboDescription')
 };
 
+export const CHAT_MODEL_MIMO_PRO: IChatModel = {
+  enabled: false,
+  name: CHAT_MODEL_NAME_MIMO_PRO,
+  icon: CHAT_MODEL_ICON_MIMO,
+  modelGroup: 'mimo',
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.mimoPro'),
+  getDescription: () => i18n.global.t('chat.model.mimoProDescription')
+};
+
+export const CHAT_MODEL_MIMO_FLASH: IChatModel = {
+  enabled: false,
+  name: CHAT_MODEL_NAME_MIMO_FLASH,
+  icon: CHAT_MODEL_ICON_MIMO,
+  modelGroup: 'mimo',
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.mimoFlash'),
+  getDescription: () => i18n.global.t('chat.model.mimoFlashDescription')
+};
+
 export const CHAT_MODEL_GLM_5_1: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_GLM_5_1,
@@ -574,7 +599,18 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
   models: [CHAT_MODEL_GLM_5_1, CHAT_MODEL_GLM_4_7]
 };
 
+export const CHAT_MODEL_GROUP_MIMO: IChatModelGroup = {
+  icon: CHAT_MODEL_ICON_MIMO,
+  name: 'mimo',
+  getDisplayName: () => i18n.global.t('chat.modelGroup.mimo'),
+  getDescription: () => i18n.global.t('chat.modelGroup.mimoDescription'),
+  defaultModel: CHAT_MODEL_MIMO_PRO,
+  models: [CHAT_MODEL_MIMO_PRO, CHAT_MODEL_MIMO_FLASH]
+};
+
 export const CHAT_MODELS: IChatModel[] = [
+  CHAT_MODEL_MIMO_PRO,
+  CHAT_MODEL_MIMO_FLASH,
   CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GPT_6_1_SOL,
   CHAT_MODEL_GPT_6_1_TERRA,
@@ -622,7 +658,8 @@ export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_CLAUDE,
   CHAT_MODEL_GROUP_KIMI,
-  CHAT_MODEL_GROUP_GLM
+  CHAT_MODEL_GROUP_GLM,
+  CHAT_MODEL_GROUP_MIMO
 ];
 
 export const getDefaultChatModel = (group: IChatModelGroup): IChatModel => group.defaultModel ?? group.models[0];
