@@ -23,6 +23,7 @@ spec:
       labels:
         app: studio-frontend
     spec:
+      automountServiceAccountToken: false
       containers:
         - image: ghcr.io/acedatacloud/studio-frontend:${TAG}
           name: studio-frontend
