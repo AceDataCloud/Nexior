@@ -937,8 +937,8 @@
     "description": "شرح دقيقة كل ساعة"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "تنفيذ مرة واحدة كل فترة ثابتة منذ آخر تشغيل (أقل فترة 1 دقيقة)",
-    "description": "شرح الفترات الثابتة"
+    "message": "التنفيذ بشكل متكرر وفق فاصل زمني أساسي ثابت (الحد الأدنى دقيقة واحدة)؛ لا يتراكم الانحراف العشوائي في الجولة التالية.",
+    "description": "توضيح الفاصل الزمني الثابت"
   },
   "scheduledTasks.form.cronHint": {
     "message": "تعبير كرون القياسي 5 أجزاء: دقيقة ساعة يوم شهر أسبوع",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "MiMo من Xiaomi للمحادثات اليومية والمهام الخفيفة",
     "description": "اسم نموذج MiMo أو وصفه"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "الإزاحة العشوائية (بالثواني)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "إزاحة عشوائية قبل وقت الجدولة المحدد أو بعده؛ اضبطها على 0 لتعطيلها. قد يتأخر التنفيذ الفعلي بسبب تأخر الخدمة.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "في هذا الفاصل الزمني، الحد الأقصى للتقديم أو التأخير الفعلي هو {seconds} ثانية.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "يجب أن تكون الإزاحة العشوائية عددًا صحيحًا بالثواني أكبر من أو يساوي 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "عشوائي ±{seconds} ثانية",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "بدون إزاحة عشوائية",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "التنفيذ المجدول التالي: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "وقت التنفيذ المجدول التالي غير متاح مؤقتًا",
+    "description": ""
   }
 }

@@ -937,8 +937,8 @@
     "description": "Подсказка для минуты ежечасного запуска."
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Запуск через фиксированный интервал после предыдущего запуска (минимум 1 минута)",
-    "description": "Подсказка для интервального расписания."
+    "message": "Повторять выполнение через фиксированный базовый интервал (минимум 1 минута); случайное смещение не переносится на следующий цикл.",
+    "description": "Описание фиксированного интервала"
   },
   "scheduledTasks.form.cronHint": {
     "message": "Стандартное 5-польное cron-выражение: минута час день месяц день-недели",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo для повседневных диалогов и лёгких задач",
     "description": "Название или описание модели MiMo"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Случайное смещение (секунды)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Случайное смещение до и после каждого запланированного времени; установите 0, чтобы отключить. Фактическое выполнение может задержаться из-за задержки сервиса.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "При этом интервале фактическое выполнение может быть максимум на {seconds} секунд раньше или позже.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "Случайное смещение должно быть целым числом секунд, большим или равным 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "Случайное смещение ±{seconds} секунд",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Без случайного смещения",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Следующее запланированное выполнение: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "Время следующего запланированного выполнения пока недоступно",
+    "description": ""
   }
 }

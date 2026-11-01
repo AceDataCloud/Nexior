@@ -940,8 +940,8 @@
     "description": "Erklärung zur Stundenminute"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Führt alle festen Zeitintervalle nach der letzten Ausführung aus (mindestens 1 Minute)",
-    "description": "Erklärung zu festen Intervallen"
+    "message": "Wird in einem festen Basisintervall wiederholt (mindestens 1 Minute); zufällige Verschiebungen werden nicht auf den nächsten Durchlauf übertragen.",
+    "description": "Beschreibung des festen Intervalls"
   },
   "scheduledTasks.form.cronHint": {
     "message": "Standard 5-teiliger Cron-Ausdruck: Minute Stunde Tag Monat Wochentag",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo für alltägliche Dialoge und leichte Aufgaben",
     "description": "Name oder Beschreibung des MiMo-Modells"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Zufällige Verschiebung (Sekunden)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Zufällige Verschiebung vor und nach jedem geplanten Zeitpunkt; auf 0 setzen, um sie zu deaktivieren. Die tatsächliche Ausführung kann sich aufgrund von Dienstverzögerungen verspäten.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "Bei diesem Intervall kann die tatsächliche Ausführung höchstens {seconds} Sekunden früher oder später erfolgen.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "Die zufällige Verschiebung muss eine ganze Zahl von mindestens 0 Sekunden sein.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "Zufällig ±{seconds} Sekunden",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Keine zufällige Verschiebung",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Nächste geplante Ausführung: {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "Zeitpunkt der nächsten geplanten Ausführung derzeit nicht verfügbar",
+    "description": ""
   }
 }

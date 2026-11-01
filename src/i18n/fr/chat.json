@@ -937,8 +937,8 @@
     "description": "Explication des minutes par heure"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Exécute une fois à intervalles fixes depuis la dernière exécution (minimum 1 minute)",
-    "description": "Explication des intervalles fixes"
+    "message": "Répète l’exécution à intervalles fixes (minimum : 1 minute) ; le décalage aléatoire ne se cumule pas au cycle suivant.",
+    "description": "Description de l’intervalle fixe"
   },
   "scheduledTasks.form.cronHint": {
     "message": "Expression Cron standard à 5 segments : minute heure jour mois semaine",
@@ -1966,5 +1966,37 @@
   "model.mimoFlashDescription": {
     "message": "Xiaomi MiMo pour les conversations quotidiennes et les tâches légères",
     "description": "Nom ou description du modèle MiMo"
+  },
+  "scheduledTasks.form.jitterSeconds": {
+    "message": "Décalage aléatoire (secondes)",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterHelp": {
+    "message": "Décalage aléatoire avant ou après chaque heure planifiée ; définissez 0 pour le désactiver. L’exécution réelle peut être retardée par la latence du service.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterLimit": {
+    "message": "Avec cet intervalle, l’exécution peut effectivement avoir jusqu’à {seconds} secondes d’avance ou de retard.",
+    "description": ""
+  },
+  "scheduledTasks.form.jitterInvalid": {
+    "message": "Le décalage aléatoire doit être un nombre entier de secondes supérieur ou égal à 0.",
+    "description": ""
+  },
+  "scheduledTasks.jitterValue": {
+    "message": "±{seconds} secondes aléatoires",
+    "description": ""
+  },
+  "scheduledTasks.jitterDisabled": {
+    "message": "Aucun décalage aléatoire",
+    "description": ""
+  },
+  "scheduledTasks.nextRun": {
+    "message": "Prochaine exécution planifiée : {time}",
+    "description": ""
+  },
+  "scheduledTasks.nextRunUnavailable": {
+    "message": "L’heure de la prochaine exécution planifiée est momentanément indisponible",
+    "description": ""
   }
 }

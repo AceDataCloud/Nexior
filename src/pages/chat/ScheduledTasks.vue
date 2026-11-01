@@ -91,6 +91,9 @@
                 <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ scheduleLabel(selectedTask.schedule) }}
               </meta-tag>
+              <meta-tag v-if="selectedTask.execution !== 'local'" density="compact">
+                {{ jitterLabel(selectedTask) }}
+              </meta-tag>
               <meta-tag class="meta-chip" density="compact">
                 <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ modelIdDisplayName(selectedTask.template.model) }}
@@ -98,6 +101,9 @@
               <meta-tag v-if="selectedTask.execution === 'local'" class="meta-chip" density="compact">
                 {{ selectedTask.device_name || $t('chat.scheduledTasks.execution.local') }}
               </meta-tag>
+            </div>
+            <div v-if="showNextRun(selectedTask)" class="task-next-run" data-testid="next-run">
+              {{ nextRunLabel(selectedTask) }}
             </div>
             <div class="detail-section-label">{{ $t('chat.scheduledTasks.form.prompt') }}</div>
             <div class="detail-prompt">{{ selectedTask.template.question }}</div>
@@ -352,6 +358,9 @@
                   <time-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ scheduleLabel(task.schedule) }}
                 </meta-tag>
+                <meta-tag v-if="task.execution !== 'local'" density="compact">
+                  {{ jitterLabel(task) }}
+                </meta-tag>
                 <meta-tag v-if="taskView === 'rich'" class="meta-chip" density="compact">
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   {{ modelIdDisplayName(task.template.model) }}
@@ -363,6 +372,9 @@
                   {{ $t('chat.scheduledTasks.viewRuns') }}
                   <expand-right-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 </span>
+              </div>
+              <div v-if="showNextRun(task)" class="task-next-run" data-testid="next-run">
+                {{ nextRunLabel(task) }}
               </div>
               <div v-if="taskView === 'rich'" class="task-prompt">{{ task.template.question }}</div>
               <div v-if="taskView === 'rich' && task.last_output_snippet" class="task-last-output">
@@ -608,7 +620,6 @@
 
         <el-form-item v-if="form.scheduleType === 'daily'" :label="$t('chat.scheduledTasks.form.time')">
           <el-time-picker v-model="form.dailyTime" format="HH:mm" value-format="HH:mm" />
-          <span class="jitter-hint">{{ $t('chat.scheduledTasks.jitterHint') }}</span>
         </el-form-item>
 
         <el-form-item v-if="form.scheduleType === 'weekly'" :label="$t('chat.scheduledTasks.form.weekday')">
@@ -621,6 +632,25 @@
         <el-form-item v-if="form.scheduleType === 'cron'" :label="$t('chat.scheduledTasks.form.cron')">
           <el-input v-model="form.cronExpr" placeholder="0 9 * * *" />
           <div class="hint">{{ $t('chat.scheduledTasks.form.cronHint') }}</div>
+        </el-form-item>
+
+        <el-form-item v-if="form.execution === 'cloud'" :label="$t('chat.scheduledTasks.form.jitterSeconds')">
+          <el-input-number
+            v-model="form.jitterSeconds"
+            :min="0"
+            :precision="0"
+            :step="60"
+            controls-position="right"
+            :aria-label="$t('chat.scheduledTasks.form.jitterSeconds')"
+          />
+          <div class="hint">{{ $t('chat.scheduledTasks.form.jitterHelp') }}</div>
+          <div v-if="effectiveJitter(buildSchedule(), form.jitterSeconds) < form.jitterSeconds" class="hint">
+            {{
+              $t('chat.scheduledTasks.form.jitterLimit', {
+                seconds: effectiveJitter(buildSchedule(), form.jitterSeconds)
+              })
+            }}
+          </div>
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.skills')">
@@ -846,6 +876,7 @@ interface TaskForm {
   weekday: number;
   cronExpr: string;
   timezone: string;
+  jitterSeconds: number;
   authorizedSkills: string[];
   authorizedMcpServers: string[];
   browserConnectionId: string;
@@ -1201,6 +1232,7 @@ export default defineComponent({
         weekday: 1,
         cronExpr: '0 9 * * *',
         timezone: USER_TZ,
+        jitterSeconds: 60,
         authorizedSkills: [],
         authorizedMcpServers: [],
         browserConnectionId: '',
@@ -1566,6 +1598,7 @@ export default defineComponent({
         weekday,
         cronExpr,
         timezone: s.tz || USER_TZ,
+        jitterSeconds: task.jitter_seconds ?? 60,
         authorizedSkills: task.unattended_policy?.allowed_skills || [],
         authorizedMcpServers: task.unattended_policy?.allowed_mcp_servers || [],
         browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
@@ -1659,6 +1692,33 @@ export default defineComponent({
       }
       return { type: 'cron', cron: cronExpr, tz: timezone };
     },
+    preserveScheduleWindow(schedule: IScheduleSpec): IScheduleSpec {
+      const task = this.editingTask;
+      if (!task) return schedule;
+      const previous = this.taskToForm(task);
+      const fields: (keyof TaskForm)[] = [
+        'scheduleType',
+        'intervalValue',
+        'intervalUnit',
+        'hourlyMinute',
+        'dailyTime',
+        'weekday',
+        'cronExpr'
+      ];
+      // Preserve precise intervals, one-shot times and staggered start/end
+      // bounds when editing only the prompt, jitter or other metadata.
+      if (fields.every((field) => this.form[field] === previous[field])) {
+        return { ...task.schedule, tz: this.form.timezone };
+      }
+      if (schedule.type !== 'once' && task.schedule.type !== 'once') {
+        return {
+          ...schedule,
+          ...(task.schedule.starts_at !== undefined ? { starts_at: task.schedule.starts_at } : {}),
+          ...(task.schedule.ends_at !== undefined ? { ends_at: task.schedule.ends_at } : {})
+        };
+      }
+      return schedule;
+    },
     async saveTask() {
       if (!this.form.question.trim()) {
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
@@ -1666,6 +1726,13 @@ export default defineComponent({
       }
       if (!isValidTimeZone(this.form.timezone)) {
         ElMessage.warning(this.$t('chat.scheduledTasks.form.timezoneInvalid') as string);
+        return;
+      }
+      if (
+        this.form.execution === 'cloud' &&
+        (!Number.isSafeInteger(this.form.jitterSeconds) || this.form.jitterSeconds < 0)
+      ) {
+        ElMessage.warning(this.$t('chat.scheduledTasks.form.jitterInvalid') as string);
         return;
       }
       // Connection/browser bindings below are rebuilt from authorizableSkills;
@@ -1743,7 +1810,8 @@ export default defineComponent({
       const authorizedLocalTools = this.form.execution === 'local' ? [...this.form.authorizedLocalTools] : [];
       const payload: ScheduledTaskPayload = {
         name: this.form.name.trim() || this.deriveName(this.form.question),
-        schedule: this.buildSchedule(),
+        schedule: this.preserveScheduleWindow(this.buildSchedule()),
+        ...(this.form.execution === 'cloud' ? { jitter_seconds: this.form.jitterSeconds } : {}),
         template: {
           model: this.form.model,
           question: this.form.question,
@@ -2082,6 +2150,33 @@ export default defineComponent({
     scheduleLabel(s: IScheduleSpec) {
       return `${this.humanizeSchedule(s)} · ${timeZoneLabel(s.tz)}`;
     },
+    effectiveJitter(schedule: IScheduleSpec, seconds: number) {
+      return schedule.type === 'interval' ? Math.min(seconds, Math.floor(schedule.interval_seconds / 4)) : seconds;
+    },
+    jitterLabel(task: IScheduledTask) {
+      const seconds = this.effectiveJitter(task.schedule, task.jitter_seconds ?? 60);
+      return seconds > 0
+        ? this.$t('chat.scheduledTasks.jitterValue', { seconds })
+        : this.$t('chat.scheduledTasks.jitterDisabled');
+    },
+    showNextRun(task: IScheduledTask) {
+      return task.execution !== 'local' && task.state === 'enabled';
+    },
+    nextRunLabel(task: IScheduledTask) {
+      if (typeof task.next_run_at === 'number' && Number.isFinite(task.next_run_at)) {
+        try {
+          const locale = this.$i18n?.locale;
+          const time = new Date(task.next_run_at * 1000).toLocaleString(
+            typeof locale === 'string' ? locale : undefined,
+            { timeZone: task.schedule.tz }
+          );
+          return this.$t('chat.scheduledTasks.nextRun', { time });
+        } catch {
+          /* Invalid legacy timestamps/timezones are unavailable, never estimated. */
+        }
+      }
+      return this.$t('chat.scheduledTasks.nextRunUnavailable');
+    },
     timeZoneLabel(timeZone: string) {
       return timeZoneLabel(timeZone);
     },
@@ -2097,6 +2192,12 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   background-color: var(--el-bg-color-page) !important;
+}
+.task-next-run {
+  margin-top: 8px;
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
 }
 .inner {
   max-width: 880px;

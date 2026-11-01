@@ -102,6 +102,98 @@ const mountComponent = (
     }
   });
 
+describe('chat/ScheduledTasks — cloud timing', () => {
+  beforeEach(() => {
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
+    vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({ skills: [], mcp_servers: [] });
+  });
+  afterEach(() => vi.restoreAllMocks());
+
+  it.each([0, 300])('round-trips jitter=%s and the exact schedule when editing only the prompt', async (jitter) => {
+    const saved: IScheduledTask = {
+      ...editedTask,
+      jitter_seconds: jitter,
+      schedule: {
+        type: 'interval',
+        interval_seconds: 91,
+        tz: 'Asia/Shanghai',
+        starts_at: 1700000100,
+        ends_at: 1900000000
+      },
+      unattended_policy: { allowed_skills: [], allowed_mcp_servers: [] }
+    };
+    const update = vi.spyOn(scheduledTasksOperator, 'updateTask').mockResolvedValue(saved);
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as {
+      openEdit: (task: IScheduledTask) => void;
+      saveTask: () => Promise<void>;
+      form: { jitterSeconds: number; question: string };
+    };
+    vm.openEdit(saved);
+    expect(vm.form.jitterSeconds).toBe(jitter);
+    vm.form.question = 'Updated prompt only';
+    await vm.saveTask();
+    expect(update.mock.calls[0]?.[2]).toMatchObject({ jitter_seconds: jitter, schedule: saved.schedule });
+  });
+
+  it('saves an explicit zero instead of falling back to the default', async () => {
+    const create = vi.spyOn(scheduledTasksOperator, 'createTask').mockResolvedValue(editedTask);
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as {
+      openCreate: () => void;
+      saveTask: () => Promise<void>;
+      form: { question: string; jitterSeconds: number };
+    };
+    vm.openCreate();
+    expect(vm.form.jitterSeconds).toBe(60);
+    vm.form.question = 'Read the news';
+    vm.form.jitterSeconds = 0;
+    await vm.saveTask();
+    expect(create.mock.calls[0]?.[1].jitter_seconds).toBe(0);
+  });
+
+  it('copies the jitter setting but starts a fresh schedule window', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openDuplicate: (task: IScheduledTask) => void;
+      buildSchedule: () => IScheduledTask['schedule'];
+      preserveScheduleWindow: (schedule: IScheduledTask['schedule']) => IScheduledTask['schedule'];
+      form: { jitterSeconds: number };
+    };
+    vm.openDuplicate({
+      ...editedTask,
+      jitter_seconds: 300,
+      schedule: {
+        type: 'interval',
+        interval_seconds: 21600,
+        tz: 'Asia/Shanghai',
+        starts_at: 1700000100,
+        ends_at: 1900000000
+      }
+    });
+    expect(vm.form.jitterSeconds).toBe(300);
+    expect(vm.preserveScheduleWindow(vm.buildSchedule())).not.toHaveProperty('starts_at');
+  });
+
+  it('shows effective jitter and does not invent a missing next execution time', () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      effectiveJitter: (schedule: IScheduledTask['schedule'], seconds: number) => number;
+      nextRunLabel: (task: IScheduledTask) => string;
+      jitterLabel: (task: IScheduledTask) => string;
+      showNextRun: (task: IScheduledTask) => boolean;
+    };
+    expect(vm.effectiveJitter({ type: 'interval', interval_seconds: 1800, tz: 'UTC' }, 600)).toBe(450);
+    expect(vm.jitterLabel({ ...editedTask, jitter_seconds: 0 })).toBe('chat.scheduledTasks.jitterDisabled');
+    expect(vm.nextRunLabel(editedTask)).toBe('chat.scheduledTasks.nextRunUnavailable');
+    expect(vm.nextRunLabel({ ...editedTask, next_run_at: 1800000000 })).toBe('chat.scheduledTasks.nextRun');
+    expect(vm.showNextRun({ ...editedTask, state: 'disabled' })).toBe(false);
+    expect(vm.showNextRun({ ...editedTask, execution: 'local' })).toBe(false);
+  });
+});
+
 describe('chat/ScheduledTasks — local execution', () => {
   const IDENTITY = { device_id: 'dev-1', device_name: "Qingcai's MacBook", open_at_login: false };
   const asDesktop = (tools: { name: string; description: string }[] = []) => {
@@ -697,6 +789,7 @@ describe('chat/ScheduledTasks', () => {
       model: CHAT_MODEL_NAME_GPT_5_6_SOL,
       scheduleType: 'daily',
       intervalValue: 4,
+      jitterSeconds: 60,
       intervalUnit: 'hour',
       hourlyMinute: 0,
       dailyTime: '09:00',
