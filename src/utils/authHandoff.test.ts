@@ -1,11 +1,14 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { getCode, native, desktop } = vi.hoisted(() => ({
+const { getCode, native, desktop, mfa } = vi.hoisted(() => ({
   getCode: vi.fn(),
   native: { value: false },
-  desktop: { value: false }
+  desktop: { value: false },
+  mfa: { value: false }
 }));
+
+vi.mock('./featureFlag', () => ({ isFeatureEnabled: () => mfa.value }));
 
 vi.mock('@/operators/auth', () => ({ authOperator: { getCode } }));
 vi.mock('./baseUrl', () => ({ getBaseUrlAuth: () => 'https://auth.acedata.cloud' }));
@@ -38,6 +41,13 @@ describe('AuthFrontend session handoff', () => {
     getCode.mockReset();
     native.value = false;
     desktop.value = false;
+    mfa.value = false;
+  });
+
+  it('carries explicit MFA canary eligibility across the Auth origin', () => {
+    expect(new URL(buildAuthLoginUrl(AUTH_TARGET)).searchParams.has('features')).toBe(false);
+    mfa.value = true;
+    expect(new URL(buildAuthLoginUrl(AUTH_TARGET)).searchParams.get('features')).toBe('mfa');
   });
 
   it('recognizes only the exact AuthFrontend origin', () => {
