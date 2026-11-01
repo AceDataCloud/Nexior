@@ -8,6 +8,19 @@ import type { IScheduledRun } from './scheduledTasks';
 describe('operators/scheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
 
+  it('sends title search and pagination to the server and preserves the total count', async () => {
+    const result = { items: [{ id: 'old-task', name: 'Weekly report' }], count: 151 };
+    const post = vi.spyOn(axios, 'post').mockResolvedValue({ data: result });
+    await expect(
+      scheduledTasksOperator.listTasks('tok', { search: 'Weekly', offset: 140, limit: 10 })
+    ).resolves.toEqual(result);
+    expect(post).toHaveBeenCalledWith(
+      expect.stringContaining('/aichat2/scheduled-tasks'),
+      { action: 'retrieve_batch', search: 'Weekly', offset: 140, limit: 10 },
+      expect.objectContaining({ headers: expect.objectContaining({ Authorization: 'Bearer tok' }) })
+    );
+  });
+
   it('retrieves a single task by ID for a direct link', async () => {
     const task = { id: 'task-1', name: 'My task' };
     const post = vi.spyOn(axios, 'post').mockResolvedValue({ data: task });
