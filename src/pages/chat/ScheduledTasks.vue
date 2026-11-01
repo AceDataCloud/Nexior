@@ -1766,6 +1766,8 @@ export default defineComponent({
           const idx = this.tasks.findIndex((t) => t.id === editId);
           if (idx !== -1) this.tasks[idx] = updated;
           if (this.selectedTask?.id === editId) this.selectedTask = updated;
+          const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
+          if (this.page > maxPage) this.page = maxPage;
         } else {
           const created = await scheduledTasksOperator.createTask(this.token!, payload, force);
           // Prepend the newcomer (backend lists newest-first) and jump to page 1.
