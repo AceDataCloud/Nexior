@@ -24,7 +24,7 @@
         <send-shortcut />
       </div>
     </section>
-    <section v-if="$store.getters.authenticated" class="settings-item">
+    <section v-if="$store.getters.authenticated && mfaEnabled" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.button.twoStepVerification') }}</p>
       </div>
@@ -49,6 +49,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { isFeatureEnabled } from '@/utils/featureFlag';
 import ThemeSwitcher from '@/components/user/Theme.vue';
 import LocaleSwitcher from '@/components/user/Locale.vue';
 import SendShortcut from '@/components/user/SendShortcut.vue';
@@ -69,6 +70,9 @@ export default defineComponent({
     }
   },
   computed: {
+    mfaEnabled(): boolean {
+      return isFeatureEnabled('mfa');
+    },
     canDeleteAccount(): boolean {
       return isIOS() && !!this.$store.getters?.authenticated;
     }

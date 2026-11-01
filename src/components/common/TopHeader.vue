@@ -60,7 +60,9 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
-              <el-dropdown-item @click="onSecurity">{{ $t('common.button.twoStepVerification') }}</el-dropdown-item>
+              <el-dropdown-item v-if="mfaEnabled" @click="onSecurity">{{
+                $t('common.button.twoStepVerification')
+              }}</el-dropdown-item>
               <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -72,6 +74,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { isFeatureEnabled } from '@/utils/featureFlag';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { isMainOfficial, isReferralEntryVisible, openAuthAccountPage } from '@/utils';
 import { ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
@@ -111,6 +114,9 @@ export default defineComponent({
     };
   },
   computed: {
+    mfaEnabled(): boolean {
+      return isFeatureEnabled('mfa');
+    },
     site() {
       return this.$store.state?.site;
     },

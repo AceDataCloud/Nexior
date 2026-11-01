@@ -1,5 +1,6 @@
 import { authOperator } from '@/operators/auth';
 import { getBaseUrlAuth } from './baseUrl';
+import { isFeatureEnabled } from './featureFlag';
 import { withCurrentSite } from './crossSiteUser';
 import { isDesktop, isNative } from './surface';
 
@@ -33,6 +34,7 @@ export function buildAuthLoginUrl(targetUrl: string): string {
   const redirect = `${target.pathname}${target.search}${target.hash}`;
   const login = new URL('/auth/login/', getBaseUrlAuth());
   login.searchParams.set('redirect', redirect);
+  if (isFeatureEnabled('mfa', true)) login.searchParams.set('features', 'mfa');
   return withConnectorSite(login.toString());
 }
 
