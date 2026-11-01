@@ -334,9 +334,12 @@ export type ScheduledTaskPayload = {
 };
 
 class ScheduledTasksOperator {
-  async listTasks(token: string): Promise<IScheduledTask[]> {
-    const { data } = await axios.post(BASE, { action: 'retrieve_batch' }, { headers: headers(token) });
-    return data?.items ?? [];
+  async listTasks(
+    token: string,
+    options: { search?: string; offset?: number; limit?: number } = {}
+  ): Promise<{ items: IScheduledTask[]; count: number }> {
+    const { data } = await axios.post(BASE, { action: 'retrieve_batch', ...options }, { headers: headers(token) });
+    return { items: data?.items ?? [], count: data?.count ?? 0 };
   }
 
   async getTask(token: string, id: string): Promise<IScheduledTask> {

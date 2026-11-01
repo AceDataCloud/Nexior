@@ -233,7 +233,7 @@
       <template v-if="!isTaskDetail && activeTab === 'tasks'">
         <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
 
-        <div v-else-if="!tasks.length && !isTaskDetail" class="template-empty">
+        <div v-else-if="!tasks.length && !taskSearch.trim()" class="template-empty">
           <h3>{{ $t('chat.scheduledTemplates.emptyTitle') }}</h3>
           <p>{{ $t('chat.scheduledTemplates.emptyDescription') }}</p>
           <div class="template-empty-actions">
@@ -244,16 +244,12 @@
           </div>
         </div>
 
-        <el-empty
-          v-else-if="!filteredTasks.length"
-          :description="$t('chat.scheduledTasks.noSearchResults')"
-          class="empty"
-        />
+        <el-empty v-else-if="!tasks.length" :description="$t('chat.scheduledTasks.noSearchResults')" class="empty" />
 
         <template v-else-if="tasks.length">
           <div class="task-list card-gap">
             <el-card
-              v-for="task in pagedTasks"
+              v-for="task in tasks"
               :key="task.id"
               class="task-card"
               :class="{ 'task-card-compact': taskView === 'compact' }"
@@ -392,13 +388,8 @@
             </el-card>
           </div>
 
-          <div v-if="filteredTasks.length > pageSize" class="pager">
-            <pagination
-              :current-page="page"
-              :page-size="pageSize"
-              :total="filteredTasks.length"
-              @change="onPageChange"
-            />
+          <div v-if="taskCount > pageSize" class="pager">
+            <pagination :current-page="page" :page-size="pageSize" :total="taskCount" @change="onPageChange" />
           </div>
         </template>
       </template>
@@ -917,7 +908,10 @@ export default defineComponent({
   data() {
     return {
       tasks: [] as IScheduledTask[],
+      taskCount: 0,
       taskSearch: '',
+      taskSearchTimer: null as ReturnType<typeof setTimeout> | null,
+      tasksRequestId: 0,
       taskView: 'compact' as TaskView,
       connectorCatalog: [] as IConnectorCatalogItem[],
       connectorSkills: [] as IAuthorizableSkill[],
@@ -983,7 +977,7 @@ export default defineComponent({
   computed: {
     connectorIconsByTask(): Record<string, ITaskConnectorIcon[]> {
       return Object.fromEntries(
-        this.pagedTasks.map((task) => [
+        this.tasks.map((task) => [
           task.id,
           taskConnectorIcons(
             task,
@@ -1033,14 +1027,6 @@ export default defineComponent({
           return { ...g, models };
         })
         .filter((g) => g.models.length > 0);
-    },
-    filteredTasks(): IScheduledTask[] {
-      const query = this.taskSearch.trim().toLowerCase();
-      return query ? this.tasks.filter((task) => task.name.toLowerCase().includes(query)) : this.tasks;
-    },
-    pagedTasks(): IScheduledTask[] {
-      const start = (this.page - 1) * this.pageSize;
-      return this.filteredTasks.slice(start, start + this.pageSize);
     },
     isTaskDetail(): boolean {
       return !!this.$route?.params?.id;
@@ -1109,6 +1095,15 @@ export default defineComponent({
   watch: {
     taskSearch() {
       this.page = 1;
+      // Invalidate immediately, before the debounce, so an older response cannot
+      // replace results for the text the user is currently typing.
+      this.tasksRequestId += 1;
+      if (this.taskSearchTimer) clearTimeout(this.taskSearchTimer);
+      this.loading = true;
+      this.taskSearchTimer = setTimeout(() => {
+        this.taskSearchTimer = null;
+        void this.loadTasks();
+      }, 250);
     },
     taskView(value: TaskView) {
       try {
@@ -1123,6 +1118,13 @@ export default defineComponent({
       }
     },
     token(token: string | undefined) {
+      this.tasksRequestId += 1;
+      if (this.taskSearchTimer) clearTimeout(this.taskSearchTimer);
+      this.taskSearchTimer = null;
+      this.tasks = [];
+      this.taskCount = 0;
+      this.page = 1;
+      this.loading = false;
       this.connectorIconLoadId += 1;
       this.connectorCatalog = [];
       this.connectorSkills = [];
@@ -1157,6 +1159,8 @@ export default defineComponent({
     if (this.$route?.query?.template_category) this.openTemplateGallery();
   },
   unmounted() {
+    this.tasksRequestId += 1;
+    if (this.taskSearchTimer) clearTimeout(this.taskSearchTimer);
     document.removeEventListener('visibilitychange', this.onVisibilityChange);
     this.stopRunPolling();
   },
@@ -1212,19 +1216,38 @@ export default defineComponent({
       const firstLine = (question || '').trim().split('\n')[0].trim();
       return firstLine.length > 40 ? `${firstLine.slice(0, 40)}…` : firstLine || 'Scheduled Task';
     },
-    async loadTasks() {
-      if (!this.token) return;
-      this.loading = true;
-      try {
-        this.tasks = await scheduledTasksOperator.listTasks(this.token);
-        void this.loadConnectorIcons();
-        // Clamp the page in case deletions shrank the list past the current page.
-        const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
-        if (this.page > maxPage) this.page = maxPage;
-      } catch {
-        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
-      } finally {
+    async loadTasks(silent = false) {
+      if (!this.token) {
         this.loading = false;
+        return;
+      }
+      const requestId = ++this.tasksRequestId;
+      if (!silent) this.loading = true;
+      try {
+        const { items, count } = await scheduledTasksOperator.listTasks(this.token, {
+          search: this.taskSearch.trim() || undefined,
+          offset: (this.page - 1) * this.pageSize,
+          limit: this.pageSize
+        });
+        if (requestId !== this.tasksRequestId) return;
+        const maxPage = Math.max(1, Math.ceil(count / this.pageSize));
+        if (this.page > maxPage) {
+          this.page = maxPage;
+          await this.loadTasks(silent);
+          return;
+        }
+        this.tasks = items;
+        this.taskCount = count;
+        if (
+          !this.connectorCatalog.length ||
+          (items.some((task) => task.template_source) && !this.connectorTemplates.length)
+        ) {
+          void this.loadConnectorIcons();
+        }
+      } catch {
+        if (requestId === this.tasksRequestId) ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      } finally {
+        if (requestId === this.tasksRequestId) this.loading = false;
       }
     },
     async openTask(task: IScheduledTask) {
@@ -1253,7 +1276,7 @@ export default defineComponent({
       this.syncRunPolling();
       try {
         // Retrieve is owner-scoped on the server. It also supports direct URLs
-        // for tasks outside the first 100 rows returned by the list endpoint.
+        // for tasks outside the currently loaded page.
         const task =
           this.tasks.find((item) => item.id === id) ?? (await scheduledTasksOperator.getTask(this.token, id));
         if (this.$route.params.id !== id) return;
@@ -1310,6 +1333,7 @@ export default defineComponent({
     },
     onPageChange(p: number) {
       this.page = p;
+      void this.loadTasks();
     },
     switchTab(tab: ScheduledTab) {
       if (this.activeTab === tab) return;
@@ -1446,10 +1470,9 @@ export default defineComponent({
       if (command === 'custom') this.openCreate();
       else this.openTemplateGallery();
     },
-    onTemplateCreated(task: IScheduledTask) {
-      this.tasks = [task, ...this.tasks.filter((item) => item.id !== task.id)];
+    onTemplateCreated() {
       this.page = 1;
-      void this.loadConnectorIcons();
+      void this.loadTasks(true);
     },
     openCreate() {
       if (this.saving) return;
@@ -1766,16 +1789,12 @@ export default defineComponent({
           const idx = this.tasks.findIndex((t) => t.id === editId);
           if (idx !== -1) this.tasks[idx] = updated;
           if (this.selectedTask?.id === editId) this.selectedTask = updated;
-          const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
-          if (this.page > maxPage) this.page = maxPage;
         } else {
-          const created = await scheduledTasksOperator.createTask(this.token!, payload, force);
-          // Prepend the newcomer (backend lists newest-first) and jump to page 1.
-          this.tasks = [created, ...this.tasks];
+          await scheduledTasksOperator.createTask(this.token!, payload, force);
           this.page = 1;
         }
         ElMessage.success((this.$t('chat.scheduledTasks.create') as string) + ' OK');
-        void this.loadConnectorIcons();
+        await this.loadTasks(true);
         this.showCreateDialog = false;
         this.editingTask = null;
         this.form = this.emptyForm();
@@ -1971,8 +1990,7 @@ export default defineComponent({
         // Drop the row locally — no full reload / skeleton flash.
         this.tasks = this.tasks.filter((t) => t.id !== task.id);
         if (this.selectedTask?.id === task.id) this.closeTaskLink();
-        const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
-        if (this.page > maxPage) this.page = maxPage;
+        await this.loadTasks(true);
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       }

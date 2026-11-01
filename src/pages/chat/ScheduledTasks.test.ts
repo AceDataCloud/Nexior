@@ -318,7 +318,7 @@ describe('chat/ScheduledTasks', () => {
     };
 
     it('loads a task directly from its URL in the full page with run history', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
       const getTask = vi.spyOn(scheduledTasksOperator, 'getTask').mockResolvedValue(editedTask);
       const listRuns = vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
       const { wrapper } = mountAt(editedTask.id);
@@ -336,7 +336,7 @@ describe('chat/ScheduledTasks', () => {
     });
 
     it('changes the URL when a task is opened and returns to the list when closed', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [editedTask], count: 1 });
       vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([]);
       const { wrapper, route, router } = mountAt('');
       await flushPromises();
@@ -358,7 +358,7 @@ describe('chat/ScheduledTasks', () => {
     });
 
     it('shows a missing-task state for an ID the signed-in user cannot retrieve', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([editedTask]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [editedTask], count: 1 });
       vi.spyOn(scheduledTasksOperator, 'getTask').mockRejectedValue(new Error('not found'));
       const { wrapper } = mountAt('another-user-task');
       await flushPromises();
@@ -369,10 +369,13 @@ describe('chat/ScheduledTasks', () => {
     });
 
     it('keeps the detail focused on configuration and shows outcomes only in run history', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([
-        { ...editedTask, last_output_snippet: 'Outdated task summary', last_error: 'goal_not_achieved' },
-        { ...editedTask, id: 'other-task', name: 'Another scheduled task' }
-      ]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({
+        items: [
+          { ...editedTask, last_output_snippet: 'Outdated task summary', last_error: 'goal_not_achieved' },
+          { ...editedTask, id: 'other-task', name: 'Another scheduled task' }
+        ],
+        count: 2
+      });
       vi.spyOn(scheduledTasksOperator, 'listRuns').mockResolvedValue([
         {
           id: 'run-1',
@@ -402,7 +405,7 @@ describe('chat/ScheduledTasks', () => {
   it.each(['marketing', 'sales', 'customer'])(
     'opens the template wizard automatically for a %s category deep link',
     async (category) => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
       const wrapper = shallowMount(ScheduledTasks, {
         global: {
           stubs: { ScheduledTemplateWizard: true },
@@ -731,7 +734,7 @@ describe('chat/ScheduledTasks', () => {
   });
 
   it('sends a configured 500-turn budget when creating a task', async () => {
-    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
     vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({ skills: [], mcp_servers: [] });
     const create = vi.spyOn(scheduledTasksOperator, 'createTask').mockResolvedValue(editedTask);
     const wrapper = mountComponent({ token: 'tok' });
@@ -988,7 +991,7 @@ describe('chat/ScheduledTasks', () => {
       const update = vi
         .spyOn(scheduledTasksOperator, 'updateTask')
         .mockResolvedValue({ ...editedTask } as IScheduledTask);
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
       vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({
         skills: [],
         mcp_servers: []
@@ -1032,7 +1035,7 @@ describe('chat/ScheduledTasks', () => {
     const update = vi
       .spyOn(scheduledTasksOperator, 'updateTask')
       .mockResolvedValue({ ...editedTask } as IScheduledTask);
-    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
     // Resolve only after openEdit returns, so saveTask starts while in flight.
     let release: (v: { skills: IAuthorizableSkill[]; mcp_servers: [] }) => void = () => undefined;
     vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockReturnValue(
@@ -1116,7 +1119,7 @@ describe('chat/ScheduledTasks', () => {
     /** Mounts with a capability request the test resolves/rejects by hand. */
     const arrange = async () => {
       vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue(CONFIRMED);
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
       const update = vi
         .spyOn(scheduledTasksOperator, 'updateTask')
         .mockResolvedValue({ ...editedTask } as IScheduledTask);
@@ -1159,7 +1162,7 @@ describe('chat/ScheduledTasks', () => {
     });
 
     it('still saves when there is no token, so the auth failure surfaces', async () => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
       const update = vi.spyOn(scheduledTasksOperator, 'updateTask').mockRejectedValue(new Error('401'));
       const error = vi.spyOn(ElMessage, 'error');
       const wrapper = mountComponent(null);
@@ -1533,7 +1536,7 @@ describe('chat/ScheduledTasks', () => {
 
     // Prevent real XHR from loadTasks() leaking into subsequent tests.
     beforeEach(() => {
-      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue([]);
+      vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
     });
 
     afterEach(() => {
@@ -2168,5 +2171,120 @@ describe('chat/ScheduledTasks', () => {
       await vi.advanceTimersByTimeAsync(12_000);
       expect(spy).toHaveBeenCalledTimes(3);
     });
+  });
+});
+
+describe('scheduled task server search', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.spyOn(ScheduledTasks.methods!, 'loadConnectorIcons').mockResolvedValue(undefined);
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  type Vm = {
+    taskSearch: string;
+    tasks: IScheduledTask[];
+    taskCount: number;
+    page: number;
+    loading: boolean;
+    editingTask: IScheduledTask | null;
+    onPageChange: (page: number) => void;
+    submitTask: (payload: Record<string, unknown>, force: boolean) => Promise<void>;
+  };
+
+  it('loads pages past 100 tasks using the server count, without slicing the returned page again', async () => {
+    const oldTask = { ...editedTask, id: 'old-task', name: 'Older task' };
+    const list = vi
+      .spyOn(scheduledTasksOperator, 'listTasks')
+      .mockResolvedValueOnce({ items: [editedTask], count: 151 })
+      .mockResolvedValueOnce({ items: [oldTask], count: 151 });
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as Vm;
+    vm.onPageChange(15);
+    await flushPromises();
+    expect(list).toHaveBeenLastCalledWith('tok', { search: undefined, offset: 140, limit: 10 });
+    expect(wrapper.find('.task-name').text()).toBe('Older task');
+    expect(wrapper.findComponent({ name: 'Pagination' }).props('total')).toBe(151);
+    wrapper.unmount();
+  });
+
+  it('queries titles absent from the loaded page and clears back to the full list', async () => {
+    const oldTask = { ...editedTask, id: 'old-task', name: 'Older weekly report' };
+    const list = vi
+      .spyOn(scheduledTasksOperator, 'listTasks')
+      .mockResolvedValueOnce({ items: [editedTask], count: 151 })
+      .mockResolvedValueOnce({ items: [oldTask], count: 1 })
+      .mockResolvedValueOnce({ items: [editedTask], count: 151 });
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as Vm;
+    await wrapper.setData({ page: 15, taskSearch: '  weekly  ' });
+    expect(vm.page).toBe(1);
+    await vi.advanceTimersByTimeAsync(250);
+    await flushPromises();
+    expect(list).toHaveBeenLastCalledWith('tok', { search: 'weekly', offset: 0, limit: 10 });
+    expect(wrapper.find('.task-name').text()).toBe('Older weekly report');
+    expect(vm.taskCount).toBe(1);
+    await wrapper.setData({ taskSearch: '' });
+    await vi.advanceTimersByTimeAsync(250);
+    await flushPromises();
+    expect(list).toHaveBeenLastCalledWith('tok', { search: undefined, offset: 0, limit: 10 });
+    expect(vm.taskCount).toBe(151);
+    wrapper.unmount();
+  });
+
+  it('discards an old search response even before the next debounced request starts', async () => {
+    let resolveOld!: (result: { items: IScheduledTask[]; count: number }) => void;
+    const list = vi
+      .spyOn(scheduledTasksOperator, 'listTasks')
+      .mockResolvedValueOnce({ items: [editedTask], count: 151 })
+      .mockReturnValueOnce(
+        new Promise((resolve) => {
+          resolveOld = resolve;
+        })
+      )
+      .mockResolvedValueOnce({ items: [], count: 0 });
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as Vm;
+    await wrapper.setData({ taskSearch: 'old' });
+    await vi.advanceTimersByTimeAsync(250);
+    await wrapper.setData({ taskSearch: 'missing' });
+    resolveOld({ items: [{ ...editedTask, name: 'Stale result' }], count: 1 });
+    await flushPromises();
+    expect(list).toHaveBeenCalledTimes(2);
+    expect(vm.tasks[0].name).toBe(editedTask.name);
+    expect(vm.loading).toBe(true);
+    await vi.advanceTimersByTimeAsync(250);
+    await flushPromises();
+    expect(vm.tasks).toEqual([]);
+    expect(vm.loading).toBe(false);
+    expect(wrapper.find('.template-empty').exists()).toBe(false);
+    expect(wrapper.findComponent({ name: 'ElEmpty' }).props('description')).toBe('chat.scheduledTasks.noSearchResults');
+    wrapper.unmount();
+  });
+
+  it('refetches the last valid page when renaming removes the last result from page two', async () => {
+    const list = vi
+      .spyOn(scheduledTasksOperator, 'listTasks')
+      .mockResolvedValueOnce({ items: [editedTask], count: 11 })
+      .mockResolvedValueOnce({ items: [], count: 10 })
+      .mockResolvedValueOnce({ items: [editedTask], count: 10 });
+    vi.spyOn(scheduledTasksOperator, 'updateTask').mockResolvedValue({ ...editedTask, name: 'Renamed' });
+    vi.spyOn(ElMessage, 'success').mockImplementation(() => ({ close: vi.fn() }));
+    const wrapper = mountComponent({ token: 'tok' });
+    await flushPromises();
+    const vm = wrapper.vm as unknown as Vm;
+    await wrapper.setData({ page: 2, editingTask: editedTask });
+    await vm.submitTask({ name: 'Renamed' }, false);
+    expect(list.mock.calls.slice(1).map((call) => call[1]?.offset)).toEqual([10, 0]);
+    expect(vm.page).toBe(1);
+    expect(vm.taskCount).toBe(10);
+    expect(vm.tasks).toHaveLength(1);
+    wrapper.unmount();
   });
 });
