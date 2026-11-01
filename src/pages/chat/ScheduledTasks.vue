@@ -176,6 +176,17 @@
       <div v-if="!isTaskDetail" class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
         <div v-if="activeTab === 'tasks'" class="header-actions">
+          <el-input
+            v-model="taskSearch"
+            class="task-search"
+            clearable
+            :placeholder="$t('chat.scheduledTasks.searchPlaceholder')"
+            :aria-label="$t('chat.scheduledTasks.searchPlaceholder')"
+          >
+            <template #prefix>
+              <search-icon :size="16" aria-hidden="true" focusable="false" />
+            </template>
+          </el-input>
           <div class="task-view-control">
             <label for="scheduled-task-view">{{ $t('chat.scheduledTasks.view') }}</label>
             <el-select v-model="taskView" class="task-view-select" input-id="scheduled-task-view">
@@ -232,6 +243,12 @@
             <el-button round @click="openCreate">{{ $t('chat.scheduledTemplates.createCustom') }}</el-button>
           </div>
         </div>
+
+        <el-empty
+          v-else-if="!filteredTasks.length"
+          :description="$t('chat.scheduledTasks.noSearchResults')"
+          class="empty"
+        />
 
         <template v-else-if="tasks.length">
           <div class="task-list card-gap">
@@ -375,8 +392,13 @@
             </el-card>
           </div>
 
-          <div v-if="tasks.length > pageSize" class="pager">
-            <pagination :current-page="page" :page-size="pageSize" :total="tasks.length" @change="onPageChange" />
+          <div v-if="filteredTasks.length > pageSize" class="pager">
+            <pagination
+              :current-page="page"
+              :page-size="pageSize"
+              :total="filteredTasks.length"
+              @change="onPageChange"
+            />
           </div>
         </template>
       </template>
@@ -770,6 +792,7 @@ import { CopyIcon } from '@acedatacloud/core/icons/copy';
 import { DeleteIcon } from '@acedatacloud/core/icons/delete';
 import { EditIcon } from '@acedatacloud/core/icons/edit';
 import { RefreshIcon } from '@acedatacloud/core/icons/refresh';
+import { SearchIcon } from '@acedatacloud/core/icons/search';
 import { connectionOperator, type IConnectorCatalogItem } from '@/operators/connection';
 import {
   scheduledTasksOperator,
@@ -866,6 +889,7 @@ export default defineComponent({
     DeleteIcon,
     EditIcon,
     RefreshIcon,
+    SearchIcon,
     ElButton,
     ElCard,
     ElSkeleton,
@@ -893,6 +917,7 @@ export default defineComponent({
   data() {
     return {
       tasks: [] as IScheduledTask[],
+      taskSearch: '',
       taskView: 'compact' as TaskView,
       connectorCatalog: [] as IConnectorCatalogItem[],
       connectorSkills: [] as IAuthorizableSkill[],
@@ -1009,9 +1034,13 @@ export default defineComponent({
         })
         .filter((g) => g.models.length > 0);
     },
+    filteredTasks(): IScheduledTask[] {
+      const query = this.taskSearch.trim().toLowerCase();
+      return query ? this.tasks.filter((task) => task.name.toLowerCase().includes(query)) : this.tasks;
+    },
     pagedTasks(): IScheduledTask[] {
       const start = (this.page - 1) * this.pageSize;
-      return this.tasks.slice(start, start + this.pageSize);
+      return this.filteredTasks.slice(start, start + this.pageSize);
     },
     isTaskDetail(): boolean {
       return !!this.$route?.params?.id;
@@ -1078,6 +1107,9 @@ export default defineComponent({
     }
   },
   watch: {
+    taskSearch() {
+      this.page = 1;
+    },
     taskView(value: TaskView) {
       try {
         localStorage.setItem('scheduled-tasks-view', value);
@@ -1187,7 +1219,7 @@ export default defineComponent({
         this.tasks = await scheduledTasksOperator.listTasks(this.token);
         void this.loadConnectorIcons();
         // Clamp the page in case deletions shrank the list past the current page.
-        const maxPage = Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
+        const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
         if (this.page > maxPage) this.page = maxPage;
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
@@ -1937,7 +1969,7 @@ export default defineComponent({
         // Drop the row locally — no full reload / skeleton flash.
         this.tasks = this.tasks.filter((t) => t.id !== task.id);
         if (this.selectedTask?.id === task.id) this.closeTaskLink();
-        const maxPage = Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
+        const maxPage = Math.max(1, Math.ceil(this.filteredTasks.length / this.pageSize));
         if (this.page > maxPage) this.page = maxPage;
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
@@ -2158,6 +2190,7 @@ export default defineComponent({
 }
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
@@ -2166,7 +2199,14 @@ export default defineComponent({
 .header-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 10px;
+  max-width: 100%;
+  margin-left: auto;
+}
+.task-search {
+  width: 220px;
 }
 .task-view-control {
   display: flex;
@@ -2452,10 +2492,10 @@ export default defineComponent({
     flex-wrap: wrap;
   }
   .header-actions {
-    margin-left: auto;
-    max-width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    width: 100%;
+  }
+  .task-search {
+    width: 100%;
   }
   .task-top {
     flex-wrap: wrap;
