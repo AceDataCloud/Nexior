@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 31 Oct 2026 20:13:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 01 Nov 2026 20:15:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.383.0
+
+Sun, 01 Nov 2026 20:15:25 GMT
+
+### Minor changes
+
+- Prepare Xiaomi MiMo 2.6 models behind availability gates (dev@acedata.cloud)
+
+### Patches
+
+- Add two-step verification links to account and general settings. (dev@acedata.cloud)
+- Show and edit scheduled-task random offsets and the next planned cloud run while preserving existing schedule windows. (dev@acedata.cloud)
+- Add title search to the scheduled task list. (dev@acedata.cloud)
+- Enable MiMo Pro and Flash in the chat model selector. (dev@acedata.cloud)
 
 ## 3.382.4
 
