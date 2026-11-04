@@ -168,7 +168,7 @@
     "description": "Заголовок, отображаемый на сайте, указывающий на управление заказом."
   },
   "title.x402": {
-    "message": "Криптовалюта",
+    "message": "Оплата через кошелёк",
     "description": "Заголовок, отображаемый на сайте, указывающий на оплату криптовалютой (на основе схемы оплаты X402)."
   },
   "title.paypal": {
@@ -758,5 +758,29 @@
   "x402Errors.codes.payment_failed.nextStepRequest": {
     "message": "Пожалуйста, проверьте кошелек и сеть, затем повторите запрос; если ошибка повторяется, свяжитесь с поддержкой и предоставьте технический код.",
     "description": "Локализованный текст для nextStepRequest при ошибке X402 payment_failed."
+  },
+  "title.cryptoPay": {
+    "message": "Оплата через CoinGate",
+    "description": "Статус оплаты и расчётов через CoinGate"
+  },
+  "button.openCryptoCheckout": {
+    "message": "Перейти к CoinGate",
+    "description": "Статус оплаты и расчётов через CoinGate"
+  },
+  "message.coingateSandbox": {
+    "message": "Сейчас используется тестовая оплата — реальный баланс не увеличится.",
+    "description": "Статус оплаты и расчётов через CoinGate"
+  },
+  "message.coingateSandboxPaid": {
+    "message": "Тестовая оплата подтверждена. Реальный баланс не увеличен.",
+    "description": "Статус оплаты и расчётов через CoinGate"
+  },
+  "message.coingateReview": {
+    "message": "Этот платёж требует проверки. Обратитесь в службу поддержки.",
+    "description": "Статус оплаты и расчётов через CoinGate"
+  },
+  "message.coingateBurnPending": {
+    "message": "Предварительный бюджет этого выкупа — {amount} USDC. Ожидается подтверждение расчёта; ACE ещё не выкуплены и не сожжены.",
+    "description": "Статус оплаты и расчётов через CoinGate"
   }
 }

@@ -15,7 +15,19 @@ export enum OrderScope {
   GLOBAL = 'Global'
 }
 
+export interface ICoinGatePayment {
+  environment: 'sandbox' | 'live';
+  status: string;
+  review_required: boolean;
+  receive_currency: 'USDC';
+  receive_amount: string | null;
+  burn_preview_usdc: string | null;
+  burn_state: 'awaiting_settlement' | null;
+  burn_executed: false;
+}
+
 export interface IOrder {
+  coingate_payment?: ICoinGatePayment | null;
   id?: string;
   description?: string;
   scope?: OrderScope;
