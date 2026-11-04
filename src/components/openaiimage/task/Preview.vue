@@ -4,6 +4,12 @@
       <capability-presentation capability="openaiimage" part="avatar" class="avatar" />
     </div>
     <div class="main">
+      <div v-if="needsDetail && visible && !detail" class="detail-state" role="status">
+        <el-button v-if="detailError" link type="primary" @click="retryDetail">{{
+          $t('intro.serviceGallery.retry')
+        }}</el-button>
+        <span v-else>{{ $t('intro.serviceGallery.loading') }}</span>
+      </div>
       <div class="bot">
         <capability-presentation capability="openaiimage" part="name" />
         <span class="datetime">
@@ -34,13 +40,13 @@
             :closable="false"
           />
         </div>
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('openaiimage.status.pending') }}) </span>
+        <p v-if="task?.request?.prompt" class="prompt mt-2">
+          {{ task?.request?.prompt }}
+          <span v-if="!task?.response"> - ({{ $t('openaiimage.status.pending') }}) </span>
         </p>
       </div>
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
+      <div v-if="task?.response?.success === true" :class="{ content: true, failed: true }">
+        <div v-if="!needsDetail || detail" class="flex justify-start items-center gap-4 w-full overflow-x-auto">
           <image-wrapper
             v-for="(image, imageIndex) in images"
             :key="imageIndex"
@@ -48,7 +54,7 @@
             :raw-src="image?.image_url || image?.url || ''"
           />
         </div>
-        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
+        <div v-if="!needsDetail || detail" :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('common.button.edit')" placement="top-start">
             <el-button
               type="info"
@@ -63,19 +69,19 @@
           <report-button
             service="openaiimage"
             :target-id="modelValue?.id"
-            :snapshot="{ prompt: modelValue?.request?.prompt }"
+            :snapshot="{ prompt: task?.request?.prompt }"
           />
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="task?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.model') }}:
-            {{ modelValue?.request?.model }}
+            {{ task?.request?.model }}
           </p>
-          <p v-if="(modelValue?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="(task?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <image-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.size') }}:
-            {{ (modelValue?.request as any)?.size }}
+            {{ (task?.request as any)?.size }}
           </p>
           <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -88,33 +94,33 @@
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="task?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('openaiimage.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+            {{ $t('openaiimage.name.elapsed') }}: {{ task?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="task?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy inline-block" />
+            {{ task?.response?.trace_id }}
+            <copy-to-clipboard :content="task?.response?.trace_id" class="btn-copy inline-block" />
           </p>
         </el-alert>
       </div>
-      <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div v-else-if="task?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.failure') }}
           </template>
-          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="task?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.model') }}:
-            {{ modelValue?.request?.model }}
+            {{ task?.request?.model }}
           </p>
-          <p v-if="(modelValue?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="(task?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <image-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.size') }}:
-            {{ (modelValue?.request as any)?.size }}
+            {{ (task?.request as any)?.size }}
           </p>
           <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -130,43 +136,37 @@
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.failureReason') }}:
-            {{ modelValue?.response?.error?.message }}
-            <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+            {{ task?.response?.error?.message }}
+            <copy-to-clipboard :content="task?.response?.error?.message!" class="btn-copy" />
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="task?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t('openaiimage.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+            {{ $t('openaiimage.name.elapsed') }}: {{ task?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="task?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+            {{ task?.response?.trace_id }}
+            <copy-to-clipboard :content="task?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
       </div>
       <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <time-icon
-              v-if="!modelValue?.response"
-              class="mr-1"
-              :size="'1em' as any"
-              aria-hidden="true"
-              focusable="false"
-            />
+            <time-icon v-if="!task?.response" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <info-icon v-else class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
-            {{ $t(modelValue?.response ? 'openaiimage.name.status' : 'openaiimage.status.pending') }}
+            {{ $t(task?.response ? 'openaiimage.name.status' : 'openaiimage.status.pending') }}
           </template>
-          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="task?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <application-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.model') }}:
-            {{ modelValue?.request?.model }}
+            {{ task?.request?.model }}
           </p>
-          <p v-if="(modelValue?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="(task?.request as any)?.size" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <image-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('openaiimage.name.size') }}:
-            {{ (modelValue?.request as any)?.size }}
+            {{ (task?.request as any)?.size }}
           </p>
           <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -200,6 +200,8 @@ import {
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton, ElMessageBox, ElMessage, ElTooltip } from 'element-plus';
 import { IOpenAIImageTask, IOpenAIImageImage } from '@/models';
+import { openaiimageOperator } from '@/operators/openaiimage';
+import { queueImageTaskDetail } from './detailQueue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -233,13 +235,36 @@ export default defineComponent({
       required: true
     }
   },
+  data() {
+    return {
+      detail: undefined as IOpenAIImageTask | undefined,
+      detailError: false,
+      visible: false,
+      observer: undefined as IntersectionObserver | undefined,
+      detailController: undefined as AbortController | undefined
+    };
+  },
   computed: {
+    credentialToken(): string | undefined {
+      return this.$store.state.openaiimage?.credential?.token;
+    },
+    task(): IOpenAIImageTask | undefined {
+      return this.detail || this.modelValue;
+    },
+    needsDetail(): boolean {
+      return Boolean(
+        this.modelValue?.summary &&
+        this.modelValue?.response &&
+        (this.modelValue.response.success === true ||
+          (this.modelValue.finished_at && (this.modelValue.response.success !== false || this.isEditRequest)))
+      );
+    },
     isEditRequest(): boolean {
-      const req: any = this.modelValue?.request;
-      return this.modelValue?.type === 'images_edits' || req?.action === 'edit' || this.referenceImages.length > 0;
+      const req: any = this.task?.request;
+      return this.task?.type === 'images_edits' || req?.action === 'edit' || this.referenceImages.length > 0;
     },
     showTaskType(): boolean {
-      return Boolean(this.modelValue?.request?.action || this.modelValue?.type || this.referenceImages.length > 0);
+      return Boolean(this.task?.request?.action || this.task?.type || this.referenceImages.length > 0);
     },
     taskTypeLabel() {
       return this.isEditRequest ? this.$t('openaiimage.name.edits') : this.$t('openaiimage.name.generate');
@@ -248,7 +273,7 @@ export default defineComponent({
       return this.isEditRequest ? '/openai/images/edits' : '/openai/images/generations';
     },
     openaiimageCodeBody(): Record<string, unknown> | undefined {
-      const req = this.modelValue?.request as Record<string, unknown> | undefined;
+      const req = this.task?.request as Record<string, unknown> | undefined;
       if (!req) return undefined;
       const body: Record<string, unknown> = { ...req };
       delete body.action;
@@ -270,8 +295,8 @@ export default defineComponent({
     },
     images(): IOpenAIImageImage[] {
       const result: IOpenAIImageImage[] = [];
-      if (Array.isArray(this.modelValue?.response?.data)) {
-        this.modelValue?.response?.data?.forEach((item: any) => {
+      if (Array.isArray(this.task?.response?.data)) {
+        this.task?.response?.data?.forEach((item: any) => {
           const image = item as IOpenAIImageImage;
           if (image?.image_url || image?.url) {
             result.push(image);
@@ -295,7 +320,7 @@ export default defineComponent({
     //     field 1:1 (singular for one ref, array for multiple). This branch
     //     keeps history rendering correct for tasks already in MongoDB.
     referenceImages(): string[] {
-      const req: any = this.modelValue?.request;
+      const req: any = this.task?.request;
       if (!req) return [];
       const fromUrls = Array.isArray(req.image_urls) ? (req.image_urls as string[]) : [];
       if (fromUrls.length > 0) return fromUrls.filter((u) => typeof u === 'string' && u.length > 0);
@@ -314,7 +339,67 @@ export default defineComponent({
       return [];
     }
   },
+  watch: {
+    'modelValue.id'() {
+      this.clearDetail();
+      if (this.visible) this.loadDetail();
+    },
+    'modelValue.response'() {
+      if (this.visible) this.loadDetail();
+    },
+    credentialToken() {
+      this.clearDetail();
+      if (this.visible) this.loadDetail();
+    }
+  },
+  mounted() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        this.visible = Boolean(entry?.isIntersecting);
+        if (this.visible) this.loadDetail();
+        else this.clearDetail();
+      },
+      { root: (this.$el as HTMLElement).closest('.tasks') }
+    );
+    this.observer.observe(this.$el as HTMLElement);
+  },
+  beforeUnmount() {
+    this.observer?.disconnect();
+    this.clearDetail();
+  },
   methods: {
+    clearDetail() {
+      this.detailController?.abort();
+      this.detailController = undefined;
+      this.detail = undefined;
+      this.detailError = false;
+    },
+    retryDetail() {
+      this.detailError = false;
+      this.loadDetail();
+    },
+    loadDetail() {
+      if (!this.visible || !this.needsDetail || this.detail || this.detailController || this.detailError) return;
+      const id = this.modelValue?.id;
+      const token = this.credentialToken;
+      if (!id || !token) return;
+      const controller = new AbortController();
+      this.detailController = controller;
+      queueImageTaskDetail(async () => {
+        try {
+          const response = await openaiimageOperator.task(id, { token, signal: controller.signal });
+          if (!controller.signal.aborted) {
+            if (response.data?.id === id) this.detail = response.data;
+            else this.detailError = true;
+          }
+        } catch {
+          if (!controller.signal.aborted) this.detailError = true;
+        } finally {
+          if (this.detailController === controller) this.detailController = undefined;
+        }
+      }, controller.signal);
+    },
     onEdit(imageUrl?: string) {
       if (!imageUrl) return;
       console.debug('Edit image:', imageUrl);

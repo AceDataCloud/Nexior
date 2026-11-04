@@ -29,7 +29,7 @@ describe('ImageWrapper spacing ownership', () => {
   it.each(TASKS_WITH_SPACED_OPERATIONS)('%s owns its result-to-actions gap', (family) => {
     const source = readSource(`../${family}/task/Preview.vue`);
 
-    expect(source).toMatch(/<image-wrapper[\s\S]*?<div :class="\{ operations: true, 'mt-2': true,/u);
+    expect(source).toMatch(/<image-wrapper[\s\S]*?<div(?: v-if="[^"]*")? :class="\{ operations: true, 'mt-2': true,/u);
   });
 
   it('keeps Seedance last-frame spacing on the parent result block', () => {

@@ -55,8 +55,10 @@ export interface IOpenAIImageTask {
   type?: string;
   created_at?: number;
   elapsed?: number;
+  finished_at?: number;
   request?: IOpenAIImageGenerateRequest | IOpenAIImageEditRequest;
-  response?: IOpenAIImageGenerateResponse;
+  response?: Partial<IOpenAIImageGenerateResponse>;
+  summary?: boolean;
 }
 
 export type IOpenAIImageTaskResponse = IOpenAIImageTask;
