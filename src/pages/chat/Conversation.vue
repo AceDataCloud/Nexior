@@ -65,14 +65,14 @@
             </template>
           </el-skeleton>
         </div>
-        <div v-else-if="messages.length > 0" class="messages">
+        <div v-else-if="displayMessages.length > 0" class="messages">
           <message
-            v-for="(message, messageIndex) in messages"
+            v-for="(message, messageIndex) in displayMessages"
             :key="messageIndex"
             :message="message"
             :model-name="isScheduledConversation ? scheduledConversation?.model : model?.name"
             :model-group-override="isScheduledConversation ? scheduledConversationModelGroup : undefined"
-            :messages="messages"
+            :messages="displayMessages"
             :question="question"
             :application="application"
             :answering="answering"
@@ -90,11 +90,6 @@
             @stop-browser-session="onStopBrowserSession"
             @browser-recovery="onBrowserRecovery"
           />
-        </div>
-        <div v-else-if="isScheduledConversation" class="scheduled-run-pending">
-          <div v-if="scheduledConversation?.metadata?.question" class="scheduled-run-question">
-            {{ scheduledConversation.metadata.question }}
-          </div>
         </div>
         <div class="starter">
           <div class="composer-connectors"><connector-strip /></div>
@@ -302,6 +297,13 @@ export default defineComponent({
       return (
         !!conversation && conversation.id === this.conversationId && conversation.metadata?.source === 'scheduled_task'
       );
+    },
+    displayMessages(): IChatMessage[] {
+      if (this.messages.length > 0) return this.messages;
+      const question = this.isScheduledConversation && this.scheduledConversation?.metadata?.question;
+      // Render the seed prompt like a normal user turn until the first transcript
+      // is saved, without adding a synthetic message to the conversation history.
+      return question ? [{ role: ROLE_USER, content: question }] : [];
     },
     scheduledConversationModelGroup() {
       const conversation = this.scheduledConversation;
@@ -1998,20 +2000,6 @@ export default defineComponent({
 }
 
 .dialogue {
-  .scheduled-run-pending {
-    width: min(800px, calc(100% - 32px));
-    margin: 8px auto 24px;
-    flex: 1;
-  }
-  .scheduled-run-question {
-    padding: 16px 18px;
-    border-radius: 14px;
-    background: var(--el-fill-color-light);
-    max-height: 240px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
   display: flex;
   flex-direction: column;
   width: 100%;
