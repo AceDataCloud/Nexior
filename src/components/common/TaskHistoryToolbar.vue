@@ -18,6 +18,7 @@
       trigger="click"
       placement="bottom-end"
       :width="280"
+      :popper-style="{ overflow: 'visible' }"
       :persistent="false"
       :show-arrow="false"
       :hide-after="0"
