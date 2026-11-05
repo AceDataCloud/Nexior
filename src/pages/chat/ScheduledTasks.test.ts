@@ -317,6 +317,19 @@ describe('chat/ScheduledTasks — local execution', () => {
       expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/550e8400-e29b-41d4-a716-446655440000');
     });
 
+    it('opens the task run list when multiple accounts were triggered', async () => {
+      vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue({
+        conversation_id: 'one',
+        runs: [
+          { run_id: 'one', conversation_id: 'one' },
+          { run_id: 'two', conversation_id: 'two' }
+        ]
+      });
+      const wrapper = mountComponent({ token: 'tok' });
+      await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow(editedTask);
+      expect(routerPush).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: 'task-1' } });
+    });
+
     it('opens the reserved local conversation after the daemon claims it', async () => {
       asDesktop();
       desktopMocks.desktopBridge.mockReturnValue({
@@ -1123,7 +1136,11 @@ describe('chat/ScheduledTasks', () => {
     }
   );
 
-  it('keeps the saved account binding when confirm is clicked before capabilities load', async () => {
+  it.each([1, 10])('preserves %s selected accounts when saving before capabilities finish loading', async (count) => {
+    const selected = Array.from({ length: count }, (_, i) => ({
+      connector_identifier: 'zhihu/zhihu',
+      connection_id: `conn-${i}`
+    }));
     vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue(CONFIRMED);
     const update = vi
       .spyOn(scheduledTasksOperator, 'updateTask')
@@ -1150,7 +1167,7 @@ describe('chat/ScheduledTasks', () => {
       unattended_policy: {
         allowed_skills: ['multi'],
         allowed_mcp_servers: [],
-        connection_bindings: [{ connector_identifier: 'zhihu/zhihu', connection_id: 'conn-a' }]
+        connection_bindings: selected
       }
     };
     vm.openEdit(boundTask);
@@ -1168,22 +1185,13 @@ describe('chat/ScheduledTasks', () => {
           connected: true,
           missing_connections: [],
           connection_accounts: {
-            zhihu: [
-              {
-                connection_id: 'conn-a',
-                connector_identifier: 'zhihu/zhihu',
-                label: 'A',
-                is_default: true,
-                account_name: 'a'
-              },
-              {
-                connection_id: 'conn-b',
-                connector_identifier: 'zhihu/zhihu',
-                label: 'B',
-                is_default: false,
-                account_name: 'b'
-              }
-            ]
+            zhihu: Array.from({ length: 10 }, (_, i) => ({
+              connection_id: `conn-${i}`,
+              connector_identifier: 'zhihu/zhihu',
+              label: `Account ${i}`,
+              is_default: i === 0,
+              account_name: `name-${i}`
+            }))
           }
         } as unknown as IAuthorizableSkill
       ],
@@ -1193,9 +1201,7 @@ describe('chat/ScheduledTasks', () => {
     await flushPromises();
 
     const [, , payload] = update.mock.calls[0];
-    expect(payload.unattended_policy?.connection_bindings).toEqual([
-      { connector_identifier: 'zhihu/zhihu', connection_id: 'conn-a' }
-    ]);
+    expect(payload.unattended_policy?.connection_bindings).toEqual(selected);
   });
 
   describe('save while capabilities are still loading', () => {
@@ -1233,7 +1239,7 @@ describe('chat/ScheduledTasks', () => {
         closeTaskDialog: () => void;
         saveTask: () => Promise<void>;
         saving: boolean;
-        form: { connectionAccounts: Record<string, string> } & Record<string, unknown>;
+        form: { connectionAccounts: Record<string, string[]> } & Record<string, unknown>;
       };
       return { vm, update, create, settle };
     };
@@ -1251,7 +1257,7 @@ describe('chat/ScheduledTasks', () => {
       expect(update).not.toHaveBeenCalled();
       // Aborted for THIS reason — not incidentally via some other early return.
       expect(error).toHaveBeenCalledWith('chat.scheduledTasks.loadError');
-      expect(vm.form.connectionAccounts).toEqual({ 'zhihu/zhihu': 'conn-a' });
+      expect(vm.form.connectionAccounts).toEqual({ 'zhihu/zhihu': ['conn-a'] });
     });
 
     it('still saves when there is no token, so the auth failure surfaces', async () => {
@@ -1311,7 +1317,7 @@ describe('chat/ScheduledTasks', () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
       authorizableSkills: unknown[];
-      form: { connectionAccounts: Record<string, string> } & Record<string, unknown>;
+      form: { connectionAccounts: Record<string, string[]> } & Record<string, unknown>;
       accountChoices: Array<{ identifier: string; label: string; accounts: Array<{ connection_id: string }> }>;
     };
     await wrapper.setData({
@@ -1372,18 +1378,18 @@ describe('chat/ScheduledTasks', () => {
     await wrapper.setData({
       form: {
         ...(wrapper.vm as unknown as { form: Record<string, unknown> }).form,
-        connectionAccounts: { 'zhihu/zhihu': 'z2', 'gone/gone': 'x1' }
+        connectionAccounts: { 'zhihu/zhihu': ['z2'], 'gone/gone': ['x1'] }
       }
     });
     const bindings = (
       wrapper.vm as unknown as {
         accountChoices: Array<{ identifier: string; accounts: Array<{ connection_id: string }> }>;
-        form: { connectionAccounts: Record<string, string> };
+        form: { connectionAccounts: Record<string, string[]> };
       }
     ).accountChoices
       .map((choice) => ({
         connector_identifier: choice.identifier,
-        connection_id: vm.form.connectionAccounts[choice.identifier] || ''
+        connection_id: vm.form.connectionAccounts[choice.identifier]?.[0] || ''
       }))
       .filter(
         (b) =>

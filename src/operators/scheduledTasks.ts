@@ -167,8 +167,9 @@ export interface IScheduledTaskUnattendedPolicy {
    *  offered to the model rather than prompting a machine with no one at it. */
   allowed_local_tools?: string[];
   browser_connections?: IScheduledBrowserBinding[];
-  /** Which account of each connector this task runs as. Omit to use the
-   *  connector's default account (what interactive chat always does). */
+  /** Selected connector accounts. Cloud tasks run once per selected account
+   *  of one connector, with independent jitter. Other connectors stay fixed.
+   *  Omit to use the connector's default account. */
   connection_bindings?: IScheduledConnectionBinding[];
   expires_at?: number;
 }
@@ -385,7 +386,10 @@ class ScheduledTasksOperator {
 
   // Fire a task immediately, out of band from its schedule. New workers return
   // the reserved conversation id so the caller can open it at once.
-  async triggerTask(token: string, id: string): Promise<{ run_id?: string; conversation_id?: string }> {
+  async triggerTask(
+    token: string,
+    id: string
+  ): Promise<{ run_id?: string; conversation_id?: string; runs?: Array<{ run_id: string; conversation_id: string }> }> {
     const { data } = await axios.post(BASE, { action: 'trigger', id }, { headers: headers(token) });
     return data ?? {};
   }

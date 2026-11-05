@@ -1998,5 +1998,13 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "Время следующего запланированного выполнения пока недоступно",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "В облачной задаче можно выбрать несколько аккаунтов для одного коннектора; остальные коннекторы используют по одному аккаунту. Каждый аккаунт запускается и оплачивается отдельно, с независимым случайным временем запуска. «Запустить сейчас» запускает все выбранные аккаунты.",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "Аккаунтов: {count}",
+    "description": "Scheduled tasks with multiple connector accounts"
   }
 }

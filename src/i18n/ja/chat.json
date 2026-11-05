@@ -1959,5 +1959,13 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "次回の予定実行時刻は現在利用できません",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "クラウドタスクでは、1つのコネクターで複数のアカウントを選択できます。他のコネクターはそれぞれ1つのアカウントを使用します。各アカウントは独立したランダムな時刻に実行され、個別に課金されます。「今すぐ実行」は選択したすべてのアカウントを実行します。",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "{count} アカウント",
+    "description": "Scheduled tasks with multiple connector accounts"
   }
 }
