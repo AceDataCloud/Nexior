@@ -65,7 +65,7 @@
             </template>
           </el-skeleton>
         </div>
-        <div v-else-if="displayMessages.length > 0" class="messages">
+        <div v-else-if="displayMessages.length > 0 || isScheduledConversation" class="messages">
           <message
             v-for="(message, messageIndex) in displayMessages"
             :key="messageIndex"
