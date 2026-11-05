@@ -5,7 +5,7 @@
     </template>
     <template #result>
       <showcase-result-tabs service="seedance">
-        <template #tasks>
+        <template #task-actions>
           <task-history-toolbar
             :date="historyDate"
             :busy="historyBusy"
@@ -14,6 +14,8 @@
             @date-change="onHistoryDateChange"
             @load-more="onReachTop"
           />
+        </template>
+        <template #tasks>
           <recent-panel ref="recentPanel" :loading="loadingMore || historyChanging" @reach-top="onReachTop" />
         </template>
       </showcase-result-tabs>

@@ -54,7 +54,10 @@ const showcase = {
 function mountTabs() {
   return mount(ShowcaseResultTabs, {
     props: { service: 'nano-banana' },
-    slots: { tasks: '<div class="task-sentinel">Current task instance</div>' },
+    slots: {
+      tasks: '<div class="task-sentinel">Current task instance</div>',
+      'task-actions': '<button class="history-action-sentinel">History</button>'
+    },
     global: {
       stubs: { ElTabs: ElTabsStub, ElTabPane: ElTabPaneStub, ElButton: true },
       mocks: { $t: (key: string) => key }
@@ -73,6 +76,7 @@ describe('ShowcaseResultTabs', () => {
     expect((wrapper.vm as any).activeTab).toBe('tasks');
     expect(wrapper.find('.task-sentinel').exists()).toBe(true);
     expect(showcaseOperator.list).not.toHaveBeenCalled();
+    expect(wrapper.get('.task-actions').isVisible()).toBe(true);
   });
 
   it('loads the exact service once when Gallery is first selected and keeps tasks mounted', async () => {
@@ -89,7 +93,10 @@ describe('ShowcaseResultTabs', () => {
       detailPreview: true
     });
     expect(wrapper.find('.task-sentinel').exists()).toBe(true);
+    expect(wrapper.get('.task-actions').isVisible()).toBe(false);
     (wrapper.vm as any).activeTab = 'tasks';
+    await wrapper.vm.$nextTick();
+    expect(wrapper.get('.task-actions').attributes('style')).not.toContain('display: none');
     (wrapper.vm as any).activeTab = 'gallery';
     await wrapper.vm.$nextTick();
     expect(showcaseOperator.list).toHaveBeenCalledOnce();

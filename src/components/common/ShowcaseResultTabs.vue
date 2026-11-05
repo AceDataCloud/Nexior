@@ -1,27 +1,32 @@
 <template>
-  <el-tabs v-model="activeTab" class="showcase-result-tabs">
-    <el-tab-pane :label="$t('intro.serviceGallery.currentTasks')" name="tasks" class="result-pane tasks-pane">
-      <slot name="tasks" />
-    </el-tab-pane>
-    <el-tab-pane :label="$t('intro.serviceGallery.gallery')" name="gallery" class="result-pane gallery-pane">
-      <div v-if="loading" class="gallery-state" role="status">{{ $t('intro.serviceGallery.loading') }}</div>
-      <div v-else-if="error" class="gallery-state error" role="alert">
-        <span>{{ $t('intro.serviceGallery.loadFailed') }}</span>
-        <el-button link type="primary" @click="load">{{ $t('intro.serviceGallery.retry') }}</el-button>
-      </div>
-      <showcase-grid
-        v-else-if="resolvedItems.length"
-        :items="resolvedItems"
-        :show-capability="false"
-        compact
-        masonry
-        detail-preview
-        @select="selectedItem = $event"
-        @icon-error="$emit('icon-error', $event)"
-      />
-      <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>
-    </el-tab-pane>
-  </el-tabs>
+  <div class="showcase-result-shell">
+    <el-tabs v-model="activeTab" class="showcase-result-tabs">
+      <el-tab-pane :label="$t('intro.serviceGallery.currentTasks')" name="tasks" class="result-pane tasks-pane">
+        <slot name="tasks" />
+      </el-tab-pane>
+      <el-tab-pane :label="$t('intro.serviceGallery.gallery')" name="gallery" class="result-pane gallery-pane">
+        <div v-if="loading" class="gallery-state" role="status">{{ $t('intro.serviceGallery.loading') }}</div>
+        <div v-else-if="error" class="gallery-state error" role="alert">
+          <span>{{ $t('intro.serviceGallery.loadFailed') }}</span>
+          <el-button link type="primary" @click="load">{{ $t('intro.serviceGallery.retry') }}</el-button>
+        </div>
+        <showcase-grid
+          v-else-if="resolvedItems.length"
+          :items="resolvedItems"
+          :show-capability="false"
+          compact
+          masonry
+          detail-preview
+          @select="selectedItem = $event"
+          @icon-error="$emit('icon-error', $event)"
+        />
+        <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>
+      </el-tab-pane>
+    </el-tabs>
+    <div v-if="$slots['task-actions']" v-show="activeTab === 'tasks'" class="task-actions">
+      <slot name="task-actions" />
+    </div>
+  </div>
   <showcase-detail-dialog :item="selectedItem" @close="selectedItem = undefined" />
 </template>
 
@@ -87,27 +92,57 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
 </script>
 
 <style lang="scss" scoped>
-.showcase-result-tabs {
-  display: flex;
+.showcase-result-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
   min-height: 0;
   flex: 1;
-  flex-direction: column;
+}
+
+.showcase-result-tabs {
+  // Keep the native tab/panel semantics while sharing its header row with actions.
+  display: contents;
 
   :deep(.el-tabs__header) {
-    flex: none;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
     margin: 0;
-    padding: 0 18px;
+    padding: 0 12px;
   }
 
-  :deep(.el-tabs__content),
+  :deep(.el-tabs__content) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
   :deep(.el-tab-pane) {
     min-height: 0;
     flex: 1;
   }
+}
 
-  :deep(.el-tabs__content) {
-    display: flex;
-    flex-direction: column;
+.task-actions {
+  display: flex;
+  grid-column: 2;
+  grid-row: 1;
+  align-items: center;
+  padding: 0 8px 0 0;
+  border-bottom: 2px solid var(--el-border-color-light);
+  :deep(.task-history-toolbar) {
+    margin: 0;
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .showcase-result-tabs :deep(.el-tabs__item) {
+    padding-inline: 10px;
   }
 }
 
