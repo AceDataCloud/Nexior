@@ -75,6 +75,8 @@ export interface ClaimedRun {
   title?: string;
   /** Present instead of the rest when this tick is already running elsewhere. */
   already_running?: boolean;
+  /** Terminal probability decision: no model call or local tools. */
+  skipped?: boolean;
 }
 
 export const api = {

@@ -1973,5 +1973,37 @@
   },
   "scheduledTasks.nextRunUnavailable": {
     "message": "下次计划执行时间暂不可用"
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "云端任务可多选一个连接器的账号，其他连接器各选一个。每个账号独立运行、独立计费，并分别应用随机时间。",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "{count} 个账号",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "触发概率",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "每个账号在启动前独立抽签。0 永不启动，1 每次启动，0.8 表示 80% 的概率启动；未命中的运行会跳过且不计费。默认 1，立即运行也遵循此设置。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "请输入 0 到 1 之间的数字。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "触发概率 {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "本次未命中触发概率，已跳过。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "本次启动 {triggered} 个账号，跳过 {skipped} 个账号。",
+    "description": "Per-account scheduled trigger probability"
   }
 }

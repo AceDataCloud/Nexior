@@ -1998,5 +1998,37 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "Время следующего запланированного выполнения пока недоступно",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "В облачной задаче можно выбрать несколько аккаунтов для одного коннектора; остальные коннекторы используют по одному аккаунту. Каждый аккаунт запускается и оплачивается отдельно, с независимым случайным временем запуска.",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "Аккаунтов: {count}",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Вероятность запуска",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Перед запуском каждый аккаунт проходит независимый случайный выбор. 0 — никогда, 1 — всегда, 0.8 — вероятность 80%. Невыбранные запуски пропускаются без оплаты. По умолчанию 1; настройка действует и для «Запустить сейчас».",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Введите число от 0 до 1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Вероятность запуска {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Запуск пропущен: он не был выбран с заданной вероятностью.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "Запущено аккаунтов: {triggered}; пропущено: {skipped}.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

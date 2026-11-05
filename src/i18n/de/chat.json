@@ -1998,5 +1998,37 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "Zeitpunkt der nächsten geplanten Ausführung derzeit nicht verfügbar",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "Für einen Connector einer Cloud-Aufgabe können Sie mehrere Konten auswählen; andere Connectoren verwenden jeweils ein Konto. Jedes Konto wird separat ausgeführt und abgerechnet, mit unabhängig zufälligen Ausführungszeiten.",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "{count} Konten",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Ausführungswahrscheinlichkeit",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Vor jedem Start wird für jedes Konto unabhängig ausgelost. 0 startet nie, 1 immer, 0.8 mit 80% Wahrscheinlichkeit. Nicht ausgewählte Ausführungen werden kostenlos übersprungen. Standard: 1. Gilt auch für „Jetzt ausführen“.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Geben Sie eine Zahl zwischen 0 und 1 ein.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Ausführungswahrscheinlichkeit {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Übersprungen, da diese Ausführung bei der Zufallsauswahl nicht ausgewählt wurde.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "{triggered} Konten gestartet; {skipped} Konten übersprungen.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

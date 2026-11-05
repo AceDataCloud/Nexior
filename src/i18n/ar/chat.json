@@ -1998,5 +1998,37 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "وقت التنفيذ المجدول التالي غير متاح مؤقتًا",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "يمكن اختيار حسابات متعددة لموصل واحد في مهمة سحابية؛ ويستخدم كل موصل آخر حسابًا واحدًا. يُنفّذ كل حساب وتُحتسب تكلفته بشكل منفصل، مع توقيت عشوائي مستقل.",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "{count} حسابات",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "احتمال التشغيل",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "يُجرى اختيار عشوائي مستقل لكل حساب قبل البدء. 0 يعني عدم التشغيل مطلقًا، و1 التشغيل دائمًا، و0.8 احتمال تشغيل بنسبة 80%. تُتخطى المحاولات غير المحددة دون رسوم. القيمة الافتراضية 1، ويسري الإعداد أيضًا على التشغيل الآن.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "أدخل رقمًا بين 0 و1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "احتمال التشغيل {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "تم التخطي لأن المحاولة لم تُحدّد وفق احتمال التشغيل.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "تم تشغيل {triggered} حسابات وتخطي {skipped} حسابات.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

@@ -94,6 +94,12 @@
               <meta-tag v-if="selectedTask.execution !== 'local'" density="compact">
                 {{ jitterLabel(selectedTask) }}
               </meta-tag>
+              <meta-tag v-if="accountRunCount(selectedTask) > 1" tone="info" density="compact">
+                {{ $t('chat.scheduledTasks.accountCount', { count: accountRunCount(selectedTask) }) }}
+              </meta-tag>
+              <meta-tag v-if="(selectedTask.trigger_probability ?? 1) < 1" density="compact">
+                {{ $t('chat.scheduledTasks.probabilityBadge', { percent: probabilityPercent(selectedTask) }) }}
+              </meta-tag>
               <meta-tag class="meta-chip" density="compact">
                 <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ modelIdDisplayName(selectedTask.template.model) }}
@@ -360,6 +366,12 @@
                 </meta-tag>
                 <meta-tag v-if="task.execution !== 'local'" density="compact">
                   {{ jitterLabel(task) }}
+                </meta-tag>
+                <meta-tag v-if="accountRunCount(task) > 1" tone="info" density="compact">
+                  {{ $t('chat.scheduledTasks.accountCount', { count: accountRunCount(task) }) }}
+                </meta-tag>
+                <meta-tag v-if="(task.trigger_probability ?? 1) < 1" density="compact">
+                  {{ $t('chat.scheduledTasks.probabilityBadge', { percent: probabilityPercent(task) }) }}
                 </meta-tag>
                 <meta-tag v-if="taskView === 'rich'" class="meta-chip" density="compact">
                   <ai-icon class="meta-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -653,6 +665,18 @@
           </div>
         </el-form-item>
 
+        <el-form-item :label="$t('chat.scheduledTasks.form.triggerProbability')">
+          <el-input-number
+            v-model="form.triggerProbability"
+            :min="0"
+            :max="1"
+            :step="0.1"
+            controls-position="right"
+            :aria-label="$t('chat.scheduledTasks.form.triggerProbability')"
+          />
+          <div class="hint">{{ $t('chat.scheduledTasks.form.triggerProbabilityHelp') }}</div>
+        </el-form-item>
+
         <el-form-item :label="$t('chat.scheduledTasks.form.skills')">
           <el-select
             v-model="form.authorizedSkills"
@@ -723,6 +747,11 @@
         >
           <el-select
             v-model="form.connectionAccounts[choice.identifier]"
+            multiple
+            filterable
+            collapse-tags
+            collapse-tags-tooltip
+            :multiple-limit="accountSelectionLimit(choice.identifier)"
             clearable
             :placeholder="$t('chat.scheduledTasks.form.connectionAccountDefault')"
             style="width: 100%"
@@ -738,6 +767,9 @@
               :value="account.connection_id"
             />
           </el-select>
+          <div v-if="form.execution === 'cloud'" class="hint">
+            {{ $t('chat.scheduledTasks.form.multipleAccountsHelp') }}
+          </div>
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.mcpServers')">
@@ -877,12 +909,12 @@ interface TaskForm {
   cronExpr: string;
   timezone: string;
   jitterSeconds: number;
+  triggerProbability: number;
   authorizedSkills: string[];
   authorizedMcpServers: string[];
   browserConnectionId: string;
-  /** connector_identifier → chosen connection_id. Empty value = use that
-   *  connector's default account. */
-  connectionAccounts: Record<string, string>;
+  /** Selected accounts per connector; empty means its default account. */
+  connectionAccounts: Record<string, string[]>;
   authorizationExpiresAt: number;
   maxTurns: number;
   /** Where the task runs. `local` is only offered on desktop — see
@@ -1115,8 +1147,9 @@ export default defineComponent({
       for (const skill of this.authorizableSkills) {
         if (!selected.has(skill.slug)) continue;
         for (const [key, accounts] of Object.entries(skill.connection_accounts ?? {})) {
-          if ((accounts?.length ?? 0) < 2) continue;
+          if (!accounts?.length) continue;
           const identifier = accounts[0].connector_identifier || key;
+          if (accounts.length < 2 && !this.form.connectionAccounts[identifier]?.length) continue;
           if (!byConnector.has(identifier)) byConnector.set(identifier, { label: key, accounts });
         }
       }
@@ -1233,6 +1266,7 @@ export default defineComponent({
         cronExpr: '0 9 * * *',
         timezone: USER_TZ,
         jitterSeconds: 60,
+        triggerProbability: 1,
         authorizedSkills: [],
         authorizedMcpServers: [],
         browserConnectionId: '',
@@ -1599,11 +1633,16 @@ export default defineComponent({
         cronExpr,
         timezone: s.tz || USER_TZ,
         jitterSeconds: task.jitter_seconds ?? 60,
+        triggerProbability: task.trigger_probability ?? 1,
         authorizedSkills: task.unattended_policy?.allowed_skills || [],
         authorizedMcpServers: task.unattended_policy?.allowed_mcp_servers || [],
         browserConnectionId: task.unattended_policy?.browser_connections?.[0]?.connection_id ?? '',
-        connectionAccounts: Object.fromEntries(
-          (task.unattended_policy?.connection_bindings ?? []).map((b) => [b.connector_identifier, b.connection_id])
+        connectionAccounts: (task.unattended_policy?.connection_bindings ?? []).reduce<Record<string, string[]>>(
+          (accounts, binding) => {
+            (accounts[binding.connector_identifier] ??= []).push(binding.connection_id);
+            return accounts;
+          },
+          {}
         ),
         authorizationExpiresAt: task.unattended_policy?.expires_at ?? Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS,
@@ -1735,6 +1774,14 @@ export default defineComponent({
         ElMessage.warning(this.$t('chat.scheduledTasks.form.jitterInvalid') as string);
         return;
       }
+      if (
+        !Number.isFinite(this.form.triggerProbability) ||
+        this.form.triggerProbability < 0 ||
+        this.form.triggerProbability > 1
+      ) {
+        ElMessage.warning(this.$t('chat.scheduledTasks.form.triggerProbabilityInvalid') as string);
+        return;
+      }
       // Connection/browser bindings below are rebuilt from authorizableSkills;
       // saving before openEdit's load lands would ship none and wipe the ones
       // already stored (the server $sets the policy wholesale). Hold `saving`
@@ -1795,23 +1842,17 @@ export default defineComponent({
       // deselecting a skill drops its binding instead of shipping a stale one.
       // Also drops a saved account that no longer exists — otherwise the task
       // would be unsavable with no picker rendered to clear it.
-      const connectionBindings = this.accountChoices
-        .map((choice) => ({
-          connector_identifier: choice.identifier,
-          connection_id: this.form.connectionAccounts[choice.identifier] || ''
-        }))
-        .filter(
-          (binding) =>
-            !!binding.connection_id &&
-            this.accountChoices
-              .find((choice) => choice.identifier === binding.connector_identifier)
-              ?.accounts.some((account) => account.connection_id === binding.connection_id)
-        );
+      const connectionBindings = this.accountChoices.flatMap((choice) =>
+        (this.form.connectionAccounts[choice.identifier] ?? [])
+          .filter((id) => choice.accounts.some((account) => account.connection_id === id))
+          .map((id) => ({ connector_identifier: choice.identifier, connection_id: id }))
+      );
       const authorizedLocalTools = this.form.execution === 'local' ? [...this.form.authorizedLocalTools] : [];
       const payload: ScheduledTaskPayload = {
         name: this.form.name.trim() || this.deriveName(this.form.question),
         schedule: this.preserveScheduleWindow(this.buildSchedule()),
         ...(this.form.execution === 'cloud' ? { jitter_seconds: this.form.jitterSeconds } : {}),
+        trigger_probability: this.form.triggerProbability,
         template: {
           model: this.form.model,
           question: this.form.question,
@@ -2023,9 +2064,23 @@ export default defineComponent({
             ElMessage.warning(this.$t(key) as string);
             return;
           }
+          if (result.skipped) {
+            ElMessage.info(this.$t('chat.scheduledTasks.run.reason.probability_skipped') as string);
+            await this.showTriggeredTaskRuns(task);
+            return;
+          }
           conversationId = result.conversation_id;
         } else {
           const result = await scheduledTasksOperator.triggerTask(this.token!, task.id);
+          if ((result?.runs?.length ?? 0) > 1 || (result?.skipped_count ?? 0) > 0) {
+            const triggered = result.triggered_count ?? result.runs?.length ?? 0;
+            const skipped = result.skipped_count ?? 0;
+            const message = this.$t('chat.scheduledTasks.triggerSummary', { triggered, skipped }) as string;
+            if (triggered) ElMessage.success(message);
+            else ElMessage.info(message);
+            await this.showTriggeredTaskRuns(task);
+            return;
+          }
           conversationId = result?.conversation_id;
         }
         if (conversationId) {
@@ -2090,6 +2145,32 @@ export default defineComponent({
       if (status === 'indeterminate') return 'info';
       if (status === 'skipped') return 'info';
       return 'warning';
+    },
+    probabilityPercent(task: IScheduledTask) {
+      return Math.round((task.trigger_probability ?? 1) * 10000) / 100;
+    },
+    async showTriggeredTaskRuns(task: IScheduledTask) {
+      if (this.selectedTask?.id === task.id) {
+        this.runPage = 1;
+        await this.loadTaskRuns(task.id);
+      } else {
+        await this.openTask(task);
+      }
+    },
+    accountSelectionLimit(identifier: string) {
+      const anotherMultiple = Object.entries(this.form.connectionAccounts).some(
+        ([connector, accounts]) => connector !== identifier && accounts.length > 1
+      );
+      return this.form.execution === 'local' || anotherMultiple ? 1 : 100;
+    },
+    accountRunCount(task: IScheduledTask) {
+      const counts = new Map<string, Set<string>>();
+      for (const binding of task.unattended_policy?.connection_bindings ?? []) {
+        const ids = counts.get(binding.connector_identifier) ?? new Set<string>();
+        ids.add(binding.connection_id);
+        counts.set(binding.connector_identifier, ids);
+      }
+      return Math.max(1, ...[...counts.values()].map((ids) => ids.size));
     },
     // Which account the run posted as, e.g. `zhihu · Germey`. The name half is
     // resolved server-side and disappears once the account is deleted, so fall

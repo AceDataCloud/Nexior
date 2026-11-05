@@ -1959,5 +1959,37 @@
   "scheduledTasks.nextRunUnavailable": {
     "message": "次回の予定実行時刻は現在利用できません",
     "description": ""
+  },
+  "scheduledTasks.form.multipleAccountsHelp": {
+    "message": "クラウドタスクでは、1つのコネクターで複数のアカウントを選択できます。他のコネクターはそれぞれ1つのアカウントを使用します。各アカウントは独立したランダムな時刻に実行され、個別に課金されます。",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.accountCount": {
+    "message": "{count} アカウント",
+    "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "実行確率",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "各アカウントの開始前に個別に抽選します。0 は実行せず、1 は必ず実行し、0.8 は 80% の確率で実行します。選ばれなかった実行はスキップされ、課金されません。既定値は 1 で、「今すぐ実行」にも適用されます。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "0 から 1 の数値を入力してください。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "実行確率 {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "実行確率による抽選で選ばれなかったため、スキップしました。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "{triggered} アカウントを開始し、{skipped} アカウントをスキップしました。",
+    "description": "Per-account scheduled trigger probability"
   }
 }
