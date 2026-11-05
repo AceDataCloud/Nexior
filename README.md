@@ -71,6 +71,10 @@ lyrics with subtitle export. Vocal reference extraction uses a selected excerpt 
 30 seconds; full vocal/instrumental separation is available through stems. Failed generations
 stay in the song list as compact placeholders; diagnostic details are available on demand.
 
+Media task history includes a **Jump to date** calendar (or type `YYYY-MM-DD`), **Load earlier**, and
+**Back to latest** above the results. A date opens records through that day in your local timezone;
+continue scrolling up to browse earlier records. Loading older records preserves your reading position.
+
 AI usage is metered unless a capability is explicitly marked free. Check the current service pricing before generating.
 
 If the latest chat reply fails or is interrupted, use **Retry** beside the error to resend the original question

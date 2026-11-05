@@ -182,3 +182,23 @@ describe('createTaskActions/getTasks payment mode', () => {
     ]);
   });
 });
+
+describe('createTaskActions history replacement', () => {
+  it('replaces only after success and keeps pagination merging', async () => {
+    const old = [{ id: 'latest', created_at: 200 }];
+    const earlier = [{ id: 'earlier', created_at: 100 }];
+    const tasks = vi.fn().mockResolvedValue({ data: { items: earlier, count: 1 } });
+    const actions: any = makeActions({ tasks });
+    const commits: Array<[string, unknown]> = [];
+    const ctx = { state: { credential: { token: 't' }, tasks: { items: old } }, commits };
+    await invoke(actions.getTasks, ctx, { createdAtMax: 150, replace: true });
+    expect(commits[0]).toEqual(['setTasksItems', earlier]);
+    commits.length = 0;
+    await invoke(actions.getTasks, ctx, { createdAtMax: 150 });
+    expect(commits[0]).toEqual(['setTasksItems', [...earlier, ...old]]);
+    commits.length = 0;
+    tasks.mockRejectedValueOnce(new Error('offline'));
+    await expect(invoke(actions.getTasks, ctx, { replace: true })).rejects.toThrow('offline');
+    expect(commits).toEqual([]);
+  });
+});

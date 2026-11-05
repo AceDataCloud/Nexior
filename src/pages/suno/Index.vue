@@ -6,10 +6,18 @@
     <template #result>
       <showcase-result-tabs service="suno">
         <template #tasks>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
           <recent-panel
             ref="recentPanel"
             class="panel recent"
-            :loading="loadingMore || loadingAll"
+            :loading="loadingMore || loadingAll || historyChanging"
             @reach-top="onReachTop"
             @load-all="onLoadAll"
             @wallet-task="onWalletTask"
@@ -37,7 +45,7 @@ import ConfigPanel from '@/components/suno/ConfigPanel.vue';
 import RecentPanel from '@/components/suno/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
@@ -68,7 +76,12 @@ export default defineComponent({
     ShowcaseResultTabs,
     PreviewPanel
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('suno'), taskPollingMixin('suno')],
+  mixins: [
+    taskHistoryMixin('suno'),
+    uploadTrackerProviderMixin,
+    showcaseRecreateMixin('suno'),
+    taskPollingMixin('suno')
+  ],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -143,7 +156,7 @@ export default defineComponent({
     initialized: {
       async handler(newValue) {
         if (newValue) {
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
@@ -158,20 +171,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loadingMore,
-        setLoading: (v) => (this.loadingMore = v),
-        isBlocked: () => this.tasksLoading || this.applicationsLoading,
-        fetch: (createdAtMax) =>
-          this.onGetTasks({
-            createdAtMax
-          }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     // Pull the user's full task history (older pages) so client-side
     // search/filter cover everything, not just the loaded pages. Triggered
     // once when the user first searches/filters.
@@ -183,7 +182,7 @@ export default defineComponent({
       this.loadingAll = true;
       try {
         // Bounded loop — each pass fetches the page older than the current
-        // oldest item; stop at total, when no progress is made, or at the cap.
+        // oldest item; stop when no progress is made or at the cap.
         for (let guard = 0; guard < 100; guard++) {
           // Wait for any in-flight fetch (the 5s poll or pagination) to settle,
           // otherwise onGetTasks early-returns on its fetchingTasks guard and we
@@ -192,10 +191,6 @@ export default defineComponent({
             await new Promise((resolve) => setTimeout(resolve, 100));
           }
           const items = this.tasks?.items ?? [];
-          const total = this.tasks?.total;
-          if (total !== undefined && items.length >= total) {
-            break;
-          }
           const oldest = items[0];
           if (!oldest?.created_at) {
             break;
@@ -203,6 +198,7 @@ export default defineComponent({
           const before = items.length;
           await this.onGetTasks({ createdAtMax: oldest.created_at });
           if ((this.tasks?.items?.length ?? 0) <= before) {
+            this.historyExhausted = true;
             break;
           }
         }
@@ -240,17 +236,18 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.fetchingTasks) {
         return;
       }
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 5, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       this.fetchingTasks = true;
       try {
-        await this.$store.dispatch('suno/getTasks', {
+        return await this.$store.dispatch('suno/getTasks', {
           limit,
           createdAtMin,
           createdAtMax,
+          replace,
           ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {

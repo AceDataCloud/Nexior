@@ -6,6 +6,14 @@
     <template #result>
       <showcase-result-tabs service="nano-banana">
         <template #tasks>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
           <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
         </template>
       </showcase-result-tabs>
@@ -26,7 +34,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { INanobananaTask } from '@/models';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn, hasMeaningfulText } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { isAndroid } from '@/utils/surface';
@@ -55,7 +63,12 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('nanobanana'), taskPollingMixin('nanobanana')],
+  mixins: [
+    taskHistoryMixin('nanobanana'),
+    uploadTrackerProviderMixin,
+    showcaseRecreateMixin('nanobanana'),
+    taskPollingMixin('nanobanana')
+  ],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -109,7 +122,7 @@ export default defineComponent({
       async handler(newValue) {
         if (newValue) {
           console.debug('layout initialized');
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           this.job = window.setInterval(() => {
             void this.onPollTasks();
@@ -126,17 +139,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loading,
-        setLoading: (v) => (this.loading = v),
-        isBlocked: () => this.tasksLoading,
-        fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('nanobanana/getService');
@@ -155,16 +157,17 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.tasksLoading) {
         console.debug('loading');
         return;
       }
-      const { limit = 20, createdAtMin, createdAtMax } = payload || {};
-      await this.$store.dispatch('nanobanana/getTasks', {
+      const { limit = 20, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
+      return await this.$store.dispatch('nanobanana/getTasks', {
         limit,
         createdAtMin,
         createdAtMax,
+        replace,
         ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
       });
     },

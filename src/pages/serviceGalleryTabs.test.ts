@@ -32,7 +32,7 @@ describe('service Gallery tabs integration', () => {
 
   it('preserves Suno task events and its independent preview slot', () => {
     const source = readPage('suno/Index.vue');
-    expect(source).toContain(':loading="loadingMore || loadingAll"');
+    expect(source).toContain(':loading="loadingMore || loadingAll || historyChanging"');
     expect(source).toContain('@reach-top="onReachTop"');
     expect(source).toContain('@load-all="onLoadAll"');
     expect(source).toContain('@wallet-task="onWalletTask"');

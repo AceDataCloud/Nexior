@@ -6,7 +6,15 @@
     <template #result>
       <showcase-result-tabs service="maestro">
         <template #tasks>
-          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
+          <recent-panel ref="recentPanel" :loading="loadingMore || historyChanging" @reach-top="onReachTop" />
         </template>
       </showcase-result-tabs>
     </template>
@@ -27,7 +35,7 @@ import { instrumentGeneration } from '@/plugins/telemetry';
 import { Status } from '@/models';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
   X402PaymentCancelledError,
@@ -53,7 +61,7 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [showcaseRecreateMixin('maestro'), taskPollingMixin('maestro', false)],
+  mixins: [taskHistoryMixin('maestro'), showcaseRecreateMixin('maestro'), taskPollingMixin('maestro', false)],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -102,7 +110,7 @@ export default defineComponent({
     initialized: {
       async handler(newValue) {
         if (newValue) {
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
@@ -117,17 +125,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loadingMore,
-        setLoading: (v) => (this.loadingMore = v),
-        isBlocked: () => this.tasksLoading || this.applicationsLoading,
-        fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       await this.$store.dispatch('maestro/getService');
     },
@@ -138,17 +135,18 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.fetchingTasks) {
         return;
       }
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 5, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       this.fetchingTasks = true;
       try {
-        await this.$store.dispatch('maestro/getTasks', {
+        return await this.$store.dispatch('maestro/getTasks', {
           limit,
           createdAtMin,
           createdAtMax,
+          replace,
           ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {

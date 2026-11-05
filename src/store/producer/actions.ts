@@ -140,6 +140,7 @@ export const setAudio = ({ commit }: any, payload: any) => {
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<IProducerState, IRootState>,
   {
+    replace,
     offset,
     limit,
     createdAtMin,
@@ -147,6 +148,7 @@ export const getTasks = async (
     mode = 'credits',
     ids
   }: {
+    replace?: boolean;
     offset?: number;
     limit?: number;
     createdAtMin?: number;
@@ -175,7 +177,7 @@ export const getTasks = async (
       .then((response) => {
         console.debug('get producer tasks success', response.data.items);
         // merge with existing tasks
-        const existingItems = state?.tasks?.items || [];
+        const existingItems = replace ? [] : state?.tasks?.items || [];
         console.debug('existing items', existingItems);
         const newItems = response.data.items || [];
         console.debug('new items', newItems);
