@@ -1,5 +1,6 @@
 <template>
   <div class="showcase-result-shell" :class="{ 'has-task-actions': $slots['task-actions'] && activeTab === 'tasks' }">
+    <div class="result-header-line" aria-hidden="true" />
     <el-tabs v-model="activeTab" class="showcase-result-tabs">
       <el-tab-pane :label="$t('intro.serviceGallery.currentTasks')" name="tasks" class="result-pane tasks-pane">
         <slot name="tasks" />
@@ -106,6 +107,16 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
   grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
 }
 
+.result-header-line {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  align-self: end;
+  height: 2px;
+  margin: 0 12px;
+  background: var(--el-border-color-light);
+  pointer-events: none;
+}
+
 .showcase-result-tabs {
   // Keep the native tab/panel semantics while sharing its header row with actions.
   display: contents;
@@ -113,9 +124,19 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
   :deep(.el-tabs__header) {
     grid-column: 1;
     grid-row: 1;
+    height: 40px;
     min-width: 0;
     margin: 0;
     padding: 0 12px;
+  }
+
+  // Element Plus's -1px margin offsets the tab baseline from sibling actions.
+  :deep(.el-tabs__nav-wrap) {
+    margin-bottom: 0;
+  }
+
+  :deep(.el-tabs__nav-wrap::after) {
+    display: none;
   }
 
   :deep(.el-tabs__content) {
@@ -137,8 +158,8 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
   grid-column: 2;
   grid-row: 1;
   align-items: center;
+  min-height: 40px;
   padding: 0 140px 0 0;
-  border-bottom: 2px solid var(--el-border-color-light);
   :deep(.task-history-toolbar) {
     margin: 0;
     align-self: center;
@@ -156,7 +177,6 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
     grid-column: 1 / -1;
     grid-row: 2;
     padding: 0 12px;
-    border-bottom: 0;
   }
 }
 
