@@ -175,7 +175,7 @@ export class SchedulerDaemon {
     const siteOrigin = getSiteOrigin();
     try {
       const claim = await api.claimRun(task.id, deviceId, scheduledAt, siteOrigin, manual);
-      if (claim.already_running) return;
+      if (claim.skipped || claim.already_running) return;
       await this.finishClaimedRun(task, claim, deviceId, siteOrigin);
     } catch (err) {
       if (err instanceof UnauthorizedError) this.setState('signed_out');
@@ -230,7 +230,7 @@ export class SchedulerDaemon {
    * Refreshes first so a task created moments ago — before the next poll — is
    * already known here.
    */
-  async runNow(taskId: string): Promise<{ ok: boolean; reason?: string; conversation_id?: string }> {
+  async runNow(taskId: string): Promise<{ ok: boolean; reason?: string; conversation_id?: string; skipped?: boolean }> {
     if (!getToken()) return { ok: false, reason: 'signed_out' };
     if (!this.tracked.has(taskId)) {
       try {
@@ -249,6 +249,10 @@ export class SchedulerDaemon {
       // Claim is quick and returns the reserved conversation. The agent loop
       // continues in the daemon after the renderer navigates to that URL.
       const claim = await api.claimRun(taskId, deviceId, nowSec(), siteOrigin, true);
+      if (claim.skipped) {
+        this.inFlight.delete(taskId);
+        return { ok: true, skipped: true };
+      }
       if (claim.already_running) {
         this.inFlight.delete(taskId);
         return { ok: false, reason: 'already_running' };

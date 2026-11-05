@@ -36,6 +36,8 @@ export interface IScheduledTask {
   created_surface?: IScheduledSurface;
   schedule: IScheduleSpec;
   jitter_seconds?: number;
+  /** Independent chance of starting each run; absent means 1. */
+  trigger_probability?: number;
   /** Sampled next cloud trigger, read from the scheduler; absent/null is unknown. */
   next_run_at?: number | null;
   template_source?: {
@@ -326,6 +328,8 @@ export type ScheduledTaskPayload = {
   description?: string;
   schedule: IScheduleSpec;
   jitter_seconds?: number;
+  /** Independent chance of starting each run; absent means 1. */
+  trigger_probability?: number;
   template: IScheduledTask['template'];
   unattended_policy?: IScheduledTaskUnattendedPolicy;
   /** Omit for a normal cloud task. `local` also requires `device_id`; the
@@ -367,7 +371,14 @@ class ScheduledTasksOperator {
     patch: Partial<
       Pick<
         IScheduledTask,
-        'name' | 'description' | 'state' | 'template' | 'schedule' | 'jitter_seconds' | 'unattended_policy'
+        | 'name'
+        | 'description'
+        | 'state'
+        | 'template'
+        | 'schedule'
+        | 'jitter_seconds'
+        | 'trigger_probability'
+        | 'unattended_policy'
       >
     >,
     force = false
@@ -389,7 +400,13 @@ class ScheduledTasksOperator {
   async triggerTask(
     token: string,
     id: string
-  ): Promise<{ run_id?: string; conversation_id?: string; runs?: Array<{ run_id: string; conversation_id: string }> }> {
+  ): Promise<{
+    run_id?: string;
+    conversation_id?: string;
+    runs?: Array<{ run_id: string; conversation_id?: string; status?: 'queued' | 'skipped' }>;
+    triggered_count?: number;
+    skipped_count?: number;
+  }> {
     const { data } = await axios.post(BASE, { action: 'trigger', id }, { headers: headers(token) });
     return data ?? {};
   }

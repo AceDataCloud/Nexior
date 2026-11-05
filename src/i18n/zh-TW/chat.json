@@ -1961,11 +1961,35 @@
     "description": "當系統目前無法取得排程任務下次執行時間時顯示。"
   },
   "scheduledTasks.form.multipleAccountsHelp": {
-    "message": "雲端任務可多選一個連接器的帳號，其他連接器各選一個。每個帳號獨立執行、獨立計費，並分別套用隨機時間；立即執行會觸發所有所選帳號。",
+    "message": "雲端任務可多選一個連接器的帳號，其他連接器各選一個。每個帳號獨立執行、獨立計費，並分別套用隨機時間。",
     "description": "Scheduled tasks with multiple connector accounts"
   },
   "scheduledTasks.accountCount": {
     "message": "{count} 個帳號",
     "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "觸發機率",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "每個帳號在啟動前獨立抽籤。0 永不啟動，1 每次啟動，0.8 表示 80% 的機率啟動；未命中的執行會跳過且不計費。預設 1，立即執行也遵循此設定。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "請輸入 0 到 1 之間的數字。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "觸發機率 {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "本次未命中觸發機率，已跳過。",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "本次啟動 {triggered} 個帳號，跳過 {skipped} 個帳號。",
+    "description": "Per-account scheduled trigger probability"
   }
 }

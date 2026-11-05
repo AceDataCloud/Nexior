@@ -2000,11 +2000,35 @@
     "description": ""
   },
   "scheduledTasks.form.multipleAccountsHelp": {
-    "message": "Seleziona più account per un connettore in un’attività cloud; gli altri connettori usano un account ciascuno. Ogni account viene eseguito e fatturato separatamente, con orari casuali indipendenti. Esegui ora avvia tutti gli account selezionati.",
+    "message": "Seleziona più account per un connettore in un’attività cloud; gli altri connettori usano un account ciascuno. Ogni account viene eseguito e fatturato separatamente, con orari casuali indipendenti.",
     "description": "Scheduled tasks with multiple connector accounts"
   },
   "scheduledTasks.accountCount": {
     "message": "{count} account",
     "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Probabilità di esecuzione",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Ogni account viene estratto indipendentemente prima dell’avvio. 0 non avvia mai, 1 avvia sempre e 0.8 dà l’80% di probabilità. Le esecuzioni non selezionate vengono saltate senza addebiti. Il valore predefinito è 1; vale anche per Esegui ora.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Inserisci un numero tra 0 e 1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Probabilità di esecuzione {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Esecuzione saltata perché non è stata selezionata in base alla probabilità.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "Avviati {triggered} account; saltati {skipped} account.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

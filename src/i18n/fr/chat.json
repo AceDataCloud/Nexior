@@ -2000,11 +2000,35 @@
     "description": ""
   },
   "scheduledTasks.form.multipleAccountsHelp": {
-    "message": "Sélectionnez plusieurs comptes pour un connecteur dans une tâche cloud ; les autres connecteurs utilisent chacun un compte. Chaque compte est exécuté et facturé séparément, avec des horaires aléatoires indépendants. Exécuter maintenant lance tous les comptes sélectionnés.",
+    "message": "Sélectionnez plusieurs comptes pour un connecteur dans une tâche cloud ; les autres connecteurs utilisent chacun un compte. Chaque compte est exécuté et facturé séparément, avec des horaires aléatoires indépendants.",
     "description": "Scheduled tasks with multiple connector accounts"
   },
   "scheduledTasks.accountCount": {
     "message": "{count} comptes",
     "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Probabilité d’exécution",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Chaque compte fait l’objet d’un tirage indépendant avant le démarrage. 0 ne démarre jamais, 1 démarre toujours et 0.8 donne 80% de chances. Les exécutions non sélectionnées sont ignorées sans frais. Valeur par défaut : 1. S’applique aussi à Exécuter maintenant.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Saisissez un nombre entre 0 et 1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Probabilité d’exécution {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Exécution ignorée car elle n’a pas été sélectionnée selon sa probabilité.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "{triggered} comptes démarrés ; {skipped} comptes ignorés.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

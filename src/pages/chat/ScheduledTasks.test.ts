@@ -803,6 +803,7 @@ describe('chat/ScheduledTasks', () => {
       scheduleType: 'daily',
       intervalValue: 4,
       jitterSeconds: 60,
+      triggerProbability: 1,
       intervalUnit: 'hour',
       hourlyMinute: 0,
       dailyTime: '09:00',
@@ -1163,6 +1164,7 @@ describe('chat/ScheduledTasks', () => {
 
     const boundTask: IScheduledTask = {
       ...editedTask,
+      trigger_probability: count === 1 ? 0 : 0.5,
       template: { ...editedTask.template, skills: ['multi'] },
       unattended_policy: {
         allowed_skills: ['multi'],
@@ -1202,6 +1204,7 @@ describe('chat/ScheduledTasks', () => {
 
     const [, , payload] = update.mock.calls[0];
     expect(payload.unattended_policy?.connection_bindings).toEqual(selected);
+    expect(payload.trigger_probability).toBe(count === 1 ? 0 : 0.5);
   });
 
   describe('save while capabilities are still loading', () => {
@@ -2385,5 +2388,38 @@ describe('scheduled task server search', () => {
     expect(vm.taskCount).toBe(10);
     expect(vm.tasks).toHaveLength(1);
     wrapper.unmount();
+  });
+});
+
+describe('trigger probability configuration', () => {
+  it.each([-0.1, 1.1, NaN, undefined])('rejects invalid form probability %s before saving', async (probability) => {
+    const warning = vi.spyOn(ElMessage, 'warning');
+    const update = vi.spyOn(scheduledTasksOperator, 'updateTask');
+    const wrapper = mountComponent({ token: 'tok' });
+    const vm = wrapper.vm as unknown as {
+      form: { question: string; triggerProbability?: number };
+      saveTask: () => Promise<void>;
+    };
+    vm.form.question = 'Digest';
+    vm.form.triggerProbability = probability;
+    await vm.saveTask();
+    expect(warning).toHaveBeenCalledWith('chat.scheduledTasks.form.triggerProbabilityInvalid');
+    expect(update).not.toHaveBeenCalled();
+  });
+  it('shows skipped attempts in history without opening a nonexistent conversation', async () => {
+    vi.spyOn(scheduledTasksOperator, 'triggerTask').mockResolvedValue({
+      run_id: 'skip-1',
+      triggered_count: 0,
+      skipped_count: 1,
+      runs: [{ run_id: 'skip-1', status: 'skipped' }]
+    });
+    const info = vi.spyOn(ElMessage, 'info');
+    const wrapper = mountComponent({ token: 'tok' });
+    await (wrapper.vm as unknown as { triggerNow: (t: IScheduledTask) => Promise<void> }).triggerNow({
+      ...editedTask,
+      trigger_probability: 0
+    });
+    expect(info).toHaveBeenCalledWith('chat.scheduledTasks.triggerSummary');
+    expect(routerPush).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: 'task-1' } });
   });
 });

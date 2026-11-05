@@ -2000,11 +2000,35 @@
     "description": ""
   },
   "scheduledTasks.form.multipleAccountsHelp": {
-    "message": "Selecione várias contas para um conector numa tarefa na nuvem; os outros conectores usam uma conta cada. Cada conta executa e é cobrada separadamente, com horários aleatórios independentes. Executar agora aciona todas as contas selecionadas.",
+    "message": "Selecione várias contas para um conector numa tarefa na nuvem; os outros conectores usam uma conta cada. Cada conta executa e é cobrada separadamente, com horários aleatórios independentes.",
     "description": "Scheduled tasks with multiple connector accounts"
   },
   "scheduledTasks.accountCount": {
     "message": "{count} contas",
     "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Probabilidade de execução",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Cada conta é sorteada de forma independente antes de iniciar. 0 nunca inicia, 1 inicia sempre e 0.8 dá 80% de probabilidade. Execuções não selecionadas são ignoradas sem cobrança. O padrão é 1; Executar agora também segue esta configuração.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Introduza um número entre 0 e 1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Probabilidade de execução {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Execução ignorada por não ter sido selecionada pela probabilidade configurada.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "{triggered} contas iniciadas; {skipped} contas ignoradas.",
+    "description": "Per-account scheduled trigger probability"
   }
 }

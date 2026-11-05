@@ -66,3 +66,22 @@ describe('local scheduled run now', () => {
     );
   });
 });
+
+it('treats a probability skip as terminal and releases the local run slot', async () => {
+  vi.clearAllMocks();
+  const task = {
+    id: 'task-1',
+    name: 'Local',
+    schedule: { type: 'interval' as const, interval_seconds: 3600, tz: 'UTC' },
+    state: 'enabled',
+    updated_at: 1
+  };
+  mocks.listLocalTasks.mockResolvedValue({ items: [task] });
+  mocks.claimRun.mockResolvedValue({ run_id: 'skipped-run', skipped: true, already_running: true });
+  const daemon = new SchedulerDaemon();
+  await expect(daemon.runNow('task-1')).resolves.toEqual({ ok: true, skipped: true });
+  await expect(daemon.runNow('task-1')).resolves.toEqual({ ok: true, skipped: true });
+  await daemon.runOne(task, Math.floor(Date.now() / 1000));
+  expect(mocks.executeRun).not.toHaveBeenCalled();
+  expect(mocks.finishRun).not.toHaveBeenCalled();
+});

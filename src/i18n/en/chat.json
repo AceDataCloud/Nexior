@@ -1903,11 +1903,35 @@
     "message": "Next planned run is temporarily unavailable"
   },
   "scheduledTasks.form.multipleAccountsHelp": {
-    "message": "Select multiple accounts for one connector in a cloud task; other connectors use one account each. Each account runs and is billed separately, with independent random timing. Run now triggers all selected accounts.",
+    "message": "Select multiple accounts for one connector in a cloud task; other connectors use one account each. Each account runs and is billed separately, with independent random timing.",
     "description": "Scheduled tasks with multiple connector accounts"
   },
   "scheduledTasks.accountCount": {
     "message": "{count} accounts",
     "description": "Scheduled tasks with multiple connector accounts"
+  },
+  "scheduledTasks.form.triggerProbability": {
+    "message": "Trigger probability",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityHelp": {
+    "message": "Each account is sampled independently before starting. 0 never starts, 1 always starts, and 0.8 gives an 80% chance. Unselected runs are skipped without charges. Defaults to 1; Run now also follows this setting.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.form.triggerProbabilityInvalid": {
+    "message": "Enter a number between 0 and 1.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.probabilityBadge": {
+    "message": "Trigger probability {percent}%",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.run.reason.probability_skipped": {
+    "message": "Skipped because this run was not selected by its trigger probability.",
+    "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerSummary": {
+    "message": "Started {triggered} accounts; skipped {skipped} accounts.",
+    "description": "Per-account scheduled trigger probability"
   }
 }
