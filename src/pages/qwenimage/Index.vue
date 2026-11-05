@@ -5,6 +5,16 @@
     </template>
     <template #result>
       <showcase-result-tabs service="qwenimage">
+        <template #task-actions>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
+        </template>
         <template #tasks>
           <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
         </template>
@@ -26,7 +36,7 @@ import { ElMessage } from 'element-plus';
 
 import RecentPanel from '@/components/qwenimage/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IQwenImageTask } from '@/models';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
@@ -47,7 +57,12 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('qwenimage'), taskPollingMixin('qwenimage')],
+  mixins: [
+    taskHistoryMixin('qwenimage'),
+    uploadTrackerProviderMixin,
+    showcaseRecreateMixin('qwenimage'),
+    taskPollingMixin('qwenimage')
+  ],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -89,7 +104,7 @@ export default defineComponent({
       async handler(newValue) {
         if (newValue) {
           console.debug('layout initialized');
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           this.job = window.setInterval(() => {
             void this.onPollTasks();
@@ -106,17 +121,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loading,
-        setLoading: (v) => (this.loading = v),
-        isBlocked: () => this.tasksLoading,
-        fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('qwenimage/getService');
@@ -135,18 +139,19 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.tasksLoading) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
-      const { limit = 20, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 20, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
-      await this.$store.dispatch('qwenimage/getTasks', {
+      return await this.$store.dispatch('qwenimage/getTasks', {
         limit,
         createdAtMin,
-        createdAtMax
+        createdAtMax,
+        replace
       });
     },
     async onGenerate() {

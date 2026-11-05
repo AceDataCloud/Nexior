@@ -25,6 +25,8 @@ describe('service Gallery tabs integration', () => {
     expect(source).toContain("import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';");
     expect(source).toContain('    ShowcaseResultTabs');
     expect(source).toContain('<template #tasks>');
+    expect(source).toContain('<template #task-actions>');
+    expect(source.indexOf('<task-history-toolbar')).toBeLessThan(source.indexOf('<template #tasks>'));
     expect(source).toMatch(/<recent-panel[^>]*ref="recentPanel"/);
     expect(source.indexOf('<template #config>')).toBeLessThan(source.indexOf('<showcase-result-tabs'));
     expect(source.match(/<showcase-result-tabs/g)).toHaveLength(1);
@@ -32,7 +34,7 @@ describe('service Gallery tabs integration', () => {
 
   it('preserves Suno task events and its independent preview slot', () => {
     const source = readPage('suno/Index.vue');
-    expect(source).toContain(':loading="loadingMore || loadingAll"');
+    expect(source).toContain(':loading="loadingMore || loadingAll || historyChanging"');
     expect(source).toContain('@reach-top="onReachTop"');
     expect(source).toContain('@load-all="onLoadAll"');
     expect(source).toContain('@wallet-task="onWalletTask"');

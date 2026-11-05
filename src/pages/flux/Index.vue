@@ -4,7 +4,15 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+      <task-history-toolbar
+        :date="historyDate"
+        :busy="historyBusy"
+        :has-more="historyHasMore"
+        :error="historyError"
+        @date-change="onHistoryDateChange"
+        @load-more="onReachTop"
+      />
+      <recent-panel ref="recentPanel" :loading="loadingMore || historyChanging" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -22,7 +30,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 
 import RecentPanel from '@/components/flux/RecentPanel.vue';
 import { IFluxTask } from '@/models';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import {
@@ -48,7 +56,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
-  mixins: [uploadTrackerProviderMixin, taskPollingMixin('flux')],
+  mixins: [taskHistoryMixin('flux'), uploadTrackerProviderMixin, taskPollingMixin('flux')],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -105,7 +113,7 @@ export default defineComponent({
       async handler(newValue) {
         if (newValue) {
           console.debug('layout initialized');
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           this.job = window.setInterval(() => {
             void this.onPollTasks();
@@ -122,20 +130,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loadingMore,
-        setLoading: (v) => (this.loadingMore = v),
-        isBlocked: () => this.tasksLoading || this.applicationsLoading,
-        fetch: (createdAtMax) =>
-          this.onGetTasks({
-            createdAtMax
-          }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('flux/getService');
@@ -154,20 +148,21 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.fetchingTasks) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 5, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       this.fetchingTasks = true;
       try {
-        await this.$store.dispatch('flux/getTasks', {
+        return await this.$store.dispatch('flux/getTasks', {
           limit,
           createdAtMin,
           createdAtMax,
+          replace,
           ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {

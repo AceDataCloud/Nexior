@@ -19,7 +19,12 @@ export function taskPollingMixin(storeModule: string, targeted = true) {
           if (targeted && !walletMode) {
             requests.push(self.$store.dispatch(`${storeModule}/refreshPendingTasks`, { mode: 'credits' }));
           }
-          if (now - this.taskHistoryPolledAt >= HISTORY_INTERVAL_MS) {
+          if (
+            !self.historyDate &&
+            !self.loadingMore &&
+            !self.historyChanging &&
+            now - this.taskHistoryPolledAt >= HISTORY_INTERVAL_MS
+          ) {
             this.taskHistoryPolledAt = now;
             requests.push(self.onGetTasks());
           }

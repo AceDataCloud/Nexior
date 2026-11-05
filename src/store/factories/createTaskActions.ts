@@ -48,6 +48,7 @@ export interface ITaskOperator<TFilter, TTask> {
 
 /** Optional argument bag the page-level `dispatch('xxx/getTasks', ...)` passes. */
 export interface IGetTasksArgs {
+  replace?: boolean;
   offset?: number;
   limit?: number;
   createdAtMin?: number;
@@ -213,7 +214,7 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
             ...(opts.type ? { type: opts.type } : {})
           } as unknown as TFilter)
         : buildFilter(rootState, args);
-    const requestKey = JSON.stringify([mode, token || '', filter]);
+    const requestKey = JSON.stringify([mode, token || '', filter, Boolean(args.replace)]);
     const activeRequest = taskRequests.get(requestKey);
     if (activeRequest) return activeRequest;
     const request = (async () => {
@@ -221,7 +222,7 @@ export function createTaskActions<TConfig, TTask extends { id?: string }, TFilte
       try {
         const requestOptions: OperatorRequestOptions = mode === 'x402' ? { mode: 'x402' } : { token };
         const response = await opts.operator.tasks(filter, requestOptions);
-        const existingItems = state?.tasks?.items || [];
+        const existingItems = args.replace ? [] : state?.tasks?.items || [];
         const newItems = response.data.items || [];
         commit('setTasksItems', mergeAndSortLists(existingItems, newItems));
         const total = response.data.count ?? response.data.total;

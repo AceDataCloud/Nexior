@@ -10,8 +10,18 @@
     </template>
     <template #result>
       <showcase-result-tabs service="fish">
+        <template #task-actions>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
+        </template>
         <template #tasks>
-          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+          <recent-panel ref="recentPanel" :loading="loadingMore || historyChanging" @reach-top="onReachTop" />
         </template>
       </showcase-result-tabs>
     </template>
@@ -31,7 +41,7 @@ import { instrumentGeneration } from '@/plugins/telemetry';
 import { IFishTask, IFishTtsConfig, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { FISH_DEFAULT_TTS_MODEL } from '@/constants';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { taskPollingMixin } from '@/utils/taskPollingMixin';
@@ -64,7 +74,12 @@ export default defineComponent({
     ShowcaseResultTabs,
     TabSwitcher
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('fish'), taskPollingMixin('fish')],
+  mixins: [
+    taskHistoryMixin('fish'),
+    uploadTrackerProviderMixin,
+    showcaseRecreateMixin('fish'),
+    taskPollingMixin('fish')
+  ],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -98,7 +113,7 @@ export default defineComponent({
     initialized: {
       async handler(newValue) {
         if (newValue) {
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           this.job = window.setInterval(() => {
             void this.onPollTasks();
@@ -121,20 +136,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        getTasks: () => this.tasks,
-        loading: this.loadingMore,
-        setLoading: (v) => (this.loadingMore = v),
-        isBlocked: () => this.tasksLoading || this.applicationsLoading,
-        fetch: (createdAtMax) =>
-          this.onGetTasks({
-            createdAtMax
-          }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       await this.$store.dispatch('fish/getService');
     },
@@ -145,17 +146,18 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.fetchingTasks) {
         return;
       }
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 5, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       this.fetchingTasks = true;
       try {
-        await this.$store.dispatch('fish/getTasks', {
+        return await this.$store.dispatch('fish/getTasks', {
           limit,
           createdAtMin,
-          createdAtMax
+          createdAtMax,
+          replace
         });
       } finally {
         this.fetchingTasks = false;

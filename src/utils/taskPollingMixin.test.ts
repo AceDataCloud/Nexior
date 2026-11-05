@@ -48,3 +48,12 @@ describe('taskPollingMixin', () => {
     expect(state.taskPollRunning).toBe(false);
   });
 });
+
+it('does not inject latest records while viewing a selected date, but refreshes pending tasks', async () => {
+  const dispatch = vi.fn().mockResolvedValue(undefined);
+  const onGetTasks = vi.fn();
+  const state: any = { historyDate: '2026-10-11', taskHistoryPolledAt: 0, $store: { dispatch }, onGetTasks };
+  await methods().onPollTasks.call(state);
+  expect(onGetTasks).not.toHaveBeenCalled();
+  expect(dispatch).toHaveBeenCalledWith('demo/refreshPendingTasks', { mode: 'credits' });
+});

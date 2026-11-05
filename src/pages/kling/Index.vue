@@ -12,8 +12,18 @@
     </template>
     <template #result>
       <showcase-result-tabs service="kling">
+        <template #task-actions>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
+        </template>
         <template #tasks>
-          <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
+          <recent-panel ref="recentPanel" :loading="loadingMore || historyChanging" @reach-top="onReachTop" />
         </template>
       </showcase-result-tabs>
     </template>
@@ -36,7 +46,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import { IKlingTask } from '@/models';
-import { loadPreviousPage } from '@/utils/pagination';
+import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { isScenarioX402Enabled, scenarioPaymentState, setScenarioWalletAvailable } from '@/utils/x402/scenarioPayment';
@@ -69,7 +79,12 @@ export default defineComponent({
     RecentPanel,
     ShowcaseResultTabs
   },
-  mixins: [uploadTrackerProviderMixin, showcaseRecreateMixin('kling'), taskPollingMixin('kling')],
+  mixins: [
+    taskHistoryMixin('kling'),
+    uploadTrackerProviderMixin,
+    showcaseRecreateMixin('kling'),
+    taskPollingMixin('kling')
+  ],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -145,7 +160,7 @@ export default defineComponent({
       async handler(newValue) {
         if (newValue) {
           console.debug('layout initialized');
-          await this.onGetTasks();
+          await this.onGetTasks({ replace: true });
           await this.onScrollDown();
           if (!this.job) this.job = window.setInterval(this.onPollTasks, 5000);
         }
@@ -160,19 +175,6 @@ export default defineComponent({
     window.clearInterval(this.job);
   },
   methods: {
-    async onReachTop() {
-      await loadPreviousPage({
-        tasks: this.tasks,
-        loading: this.loadingMore,
-        setLoading: (v) => (this.loadingMore = v),
-        isBlocked: () => this.tasksLoading || this.applicationsLoading,
-        fetch: (createdAtMax) =>
-          this.onGetTasks({
-            createdAtMax
-          }),
-        getScrollElement: () => this.getTasksScrollElement()
-      });
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('kling/getService');
@@ -191,20 +193,21 @@ export default defineComponent({
         el.scrollTop = el.scrollHeight;
       }
     },
-    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number; replace?: boolean }) {
       if (this.applicationsLoading || this.fetchingTasks) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 5, createdAtMin, createdAtMax, replace } = this.historyQuery(payload);
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       this.fetchingTasks = true;
       try {
-        await this.$store.dispatch('kling/getTasks', {
+        return await this.$store.dispatch('kling/getTasks', {
           limit,
           createdAtMin,
           createdAtMax,
+          replace,
           ...(this.walletMode && !this.credential?.token ? { mode: 'x402', ids: this.walletTaskIds } : {})
         });
       } finally {

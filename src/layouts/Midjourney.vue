@@ -55,7 +55,7 @@ export default defineComponent({
       display: none;
     }
     .results {
-      display: block;
+      display: flex;
       width: 100%;
     }
     .menu {
