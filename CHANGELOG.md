@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 01 Nov 2026 20:15:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 05 Nov 2026 20:15:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.384.0
+
+Thu, 05 Nov 2026 20:15:24 GMT
+
+### Minor changes
+
+- Add a floating support dialog with site contacts, feedback links, and shared content reporting. (dev@acedata.cloud)
+- Add GPT Image 2.6 Flare and Sunburst with standard and official billing modes. (dev@acedata.cloud)
+- Allow scheduled tasks to select multiple accounts, with independent random timing and configurable trigger probability. (dev@acedata.cloud)
+
+### Patches
+
+- Render scheduled task prompts with the normal chat bubble from the start. (dev@acedata.cloud)
+- Fix media history pagination and add date navigation in a compact, collapsed history menu. (dev@acedata.cloud)
 
 ## 3.383.0
 
