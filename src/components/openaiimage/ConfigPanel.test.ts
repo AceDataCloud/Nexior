@@ -7,9 +7,13 @@ import QualitySelector from './config/QualitySelector.vue';
 import {
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 } from '@/constants';
 
@@ -40,7 +44,9 @@ describe('OpenAI Image ConfigPanel pricing', () => {
   it.each([
     OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
     OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
-    OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL
+    OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL
   ])('shows the token-settlement note for official model %s', (model) => {
     const official = mountPanel(model);
 
@@ -59,13 +65,15 @@ describe('OpenAI Image ConfigPanel pricing', () => {
     expect(standard.findComponent({ name: 'ServicePricingSummary' }).props('note')).toBe('');
   });
 
-  it.each([OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE, OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST])(
-    'uses fixed pricing display for %s',
-    (model) => {
-      const panel = mountPanel(model);
+  it.each([
+    OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
+    OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST
+  ])('uses fixed pricing display for %s', (model) => {
+    const panel = mountPanel(model);
 
-      expect((panel.vm as any).pricingNote).toBe('');
-      expect((panel.vm as any).displayConsumption).toBe(0);
-    }
-  );
+    expect((panel.vm as any).pricingNote).toBe('');
+    expect((panel.vm as any).displayConsumption).toBe(0);
+  });
 });
