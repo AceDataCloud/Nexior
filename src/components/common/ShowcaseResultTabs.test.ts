@@ -93,10 +93,10 @@ describe('ShowcaseResultTabs', () => {
       detailPreview: true
     });
     expect(wrapper.find('.task-sentinel').exists()).toBe(true);
-    expect(wrapper.get('.task-actions').isVisible()).toBe(false);
+    expect(wrapper.find('.task-actions').exists()).toBe(false);
     (wrapper.vm as any).activeTab = 'tasks';
     await wrapper.vm.$nextTick();
-    expect(wrapper.get('.task-actions').attributes('style')).not.toContain('display: none');
+    expect(wrapper.get('.task-actions').isVisible()).toBe(true);
     (wrapper.vm as any).activeTab = 'gallery';
     await wrapper.vm.$nextTick();
     expect(showcaseOperator.list).toHaveBeenCalledOnce();

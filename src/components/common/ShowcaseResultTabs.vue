@@ -23,7 +23,7 @@
         <div v-else class="gallery-state">{{ $t('intro.serviceGallery.empty') }}</div>
       </el-tab-pane>
     </el-tabs>
-    <div v-if="$slots['task-actions']" v-show="activeTab === 'tasks'" class="task-actions">
+    <div v-if="$slots['task-actions'] && activeTab === 'tasks'" class="task-actions">
       <slot name="task-actions" />
     </div>
   </div>
