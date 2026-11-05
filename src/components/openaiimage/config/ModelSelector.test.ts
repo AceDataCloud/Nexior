@@ -6,9 +6,13 @@ import ModelSelector from './ModelSelector.vue';
 import {
   OPENAIIMAGE_DEFAULT_MODEL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL,
   OPENAIIMAGE_MODELS
 } from '@/constants';
 
@@ -27,27 +31,31 @@ function mountSelector(model?: string) {
 }
 
 describe('OpenAIImageModelSelector', () => {
-  it('exposes both exact GPT Image 2.5 models without invented aliases', () => {
+  it('exposes exact GPT Image 2.5 and 2.6 models without invented aliases', () => {
     const { wrapper } = mountSelector(OPENAIIMAGE_DEFAULT_MODEL);
     const values = (wrapper.vm as any).options.map((option: { value: string }) => option.value);
 
     expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE);
+    expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE);
     expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL);
+    expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL);
     expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST);
+    expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST);
     expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL);
+    expect(values).toContain(OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL);
     expect(values).toEqual(OPENAIIMAGE_MODELS);
     expect(values).not.toContain('gpt-image-2.5');
     expect(values).not.toContain('gpt-image-2.5:official');
     expect(values).not.toContain('gpt-image-2.5:reverse');
   });
 
-  it('exposes the exact selected model as the truncated label title', () => {
-    const { wrapper } = mountSelector(OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST);
-
-    expect(wrapper.findComponent({ name: 'ElSelect' }).attributes('title')).toBe(
-      OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST
-    );
-  });
+  it.each([OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST, OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST])(
+    'exposes the selected model %s as the truncated label title',
+    (model) => {
+      const { wrapper } = mountSelector(model);
+      expect(wrapper.findComponent({ name: 'ElSelect' }).attributes('title')).toBe(model);
+    }
+  );
 
   it('preserves gpt-image-2 as the default', () => {
     const { commit } = mountSelector();

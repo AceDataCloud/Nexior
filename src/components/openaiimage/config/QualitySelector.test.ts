@@ -8,9 +8,13 @@ import {
   OPENAIIMAGE_MODELS,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
-  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL
 } from '@/constants';
 
 function mountSelector(config: Record<string, unknown>) {
@@ -27,11 +31,15 @@ function mountSelector(config: Record<string, unknown>) {
   return { wrapper, commit };
 }
 
-const GPT_IMAGE_25_MODELS = [
+const EXTENDED_QUALITY_MODELS = [
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST,
-  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL
 ];
 
 const committedConfig = (commit: ReturnType<typeof vi.fn>) => commit.mock.calls.at(-1)?.[1];
@@ -59,7 +67,7 @@ describe('OpenAIImageQualitySelector', () => {
     });
   });
 
-  it.each(OPENAIIMAGE_MODELS.filter((model) => !GPT_IMAGE_25_MODELS.includes(model)))(
+  it.each(OPENAIIMAGE_MODELS.filter((model) => !EXTENDED_QUALITY_MODELS.includes(model)))(
     'offers the standard GPT Image quality options for %s',
     (model) => {
       const { wrapper } = mountSelector({ model, quality: 'medium' });
@@ -69,7 +77,7 @@ describe('OpenAIImageQualitySelector', () => {
     }
   );
 
-  it.each(GPT_IMAGE_25_MODELS)('offers the extra quality options for GPT Image 2.5 model %s', (model) => {
+  it.each(EXTENDED_QUALITY_MODELS)('offers the extra quality options for GPT Image 2.5/2.6 model %s', (model) => {
     const { wrapper, commit } = mountSelector({ model, quality: 'max' });
     expect((wrapper.vm as any).qualities).toEqual(['auto', 'low', 'medium', 'high', 'xhigh', 'max']);
     expect((wrapper.vm as any).quality).toBe('max');
