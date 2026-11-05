@@ -140,7 +140,10 @@ describe('scheduled conversation', () => {
     await flushPromises();
 
     expect(wrapper.vm.scheduledRun?.status).toBe('running');
-    expect(wrapper.find('.scheduled-run-question').text()).toBe('Do the work');
+    const initialMessage = wrapper.getComponent(Message);
+    expect(initialMessage.props('message')).toEqual({ role: 'user', content: 'Do the work' });
+    expect(initialMessage.props('readonly')).toBe(true);
+    expect(wrapper.find('.scheduled-run-question').exists()).toBe(false);
     expect(wrapper.find('.scheduled-run-status').exists()).toBe(false);
     expect(wrapper.find('.scheduled-run-waiting').exists()).toBe(false);
     expect(wrapper.find('.starter').exists()).toBe(true);
@@ -160,6 +163,9 @@ describe('scheduled conversation', () => {
     await flushPromises();
 
     expect(wrapper.vm.messages).toEqual([{ role: 'user', content: 'Done' }]);
+    expect(wrapper.findAllComponents(Message)).toHaveLength(1);
+    expect(wrapper.getComponent(Message).vm).toBe(initialMessage.vm);
+    expect(initialMessage.props('message')).toEqual({ role: 'user', content: 'Done' });
     expect(wrapper.vm.scheduledRunPollTimer).toBeNull();
     expect(wrapper.vm.ready).toBe(true);
     expect(wrapper.getComponent(Composer).props('ready')).toBe(true);
