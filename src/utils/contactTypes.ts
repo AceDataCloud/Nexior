@@ -70,11 +70,22 @@ export const contactBrand = (type?: string): string => contactMeta(type).brand |
 // Channels whose display name is translatable via an i18n key
 // `common.settings.contactType_<type>`. Returns that key, or '' when the type
 // has no localized name (caller should fall back to brand / capitalized slug).
-const I18N_TYPES = new Set(['phone', 'email', 'website', 'wechat']);
+const I18N_TYPES = new Set(['phone', 'email', 'website', 'wechat', 'hours', 'feedback']);
 export const contactTypeI18nKey = (type?: string): string => {
   const t = normalize(type);
   return I18N_TYPES.has(t) ? `common.settings.contactType_${t}` : '';
 };
 
 // Presets offered in the editor's type picker (order = list order there).
-export const CONTACT_TYPE_PRESETS = ['wechat', 'phone', 'email', 'discord', 'x', 'telegram', 'whatsapp', 'website'];
+export const CONTACT_TYPE_PRESETS = [
+  'wechat',
+  'phone',
+  'email',
+  'hours',
+  'feedback',
+  'discord',
+  'x',
+  'telegram',
+  'whatsapp',
+  'website'
+];

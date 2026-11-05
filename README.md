@@ -115,6 +115,13 @@ Create an API key and review current pricing at **[platform.acedata.cloud](https
 
 ---
 
+## Help and feedback / 帮助与反馈
+
+Configure the floating Support dialog in **Settings → Site → Customer support contacts**.
+在“设置 → 站点 → 客服联系方式”配置右下角客服弹窗。[Configuration guide / 配置说明](docs/deploy/support.md)
+
+---
+
 ## 🚀 Launch your own AI product (optional)
 
 Nexior isn't just a client — it's a complete **AI-SaaS starter**. Every deployment ships with:

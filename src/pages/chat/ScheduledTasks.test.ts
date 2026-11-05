@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { flushPromises, shallowMount } from '@vue/test-utils';
+import { enableAutoUnmount, flushPromises, shallowMount } from '@vue/test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
@@ -17,6 +17,10 @@ import ScheduledTasks from './ScheduledTasks.vue';
 import { taskConnectorIcons } from './scheduledTaskConnectors';
 import type { IConnectorCatalogItem } from '@/operators/connection';
 import type { IChatModel } from '@/models';
+
+// Stop each fixture's requests/listeners from leaking error toasts into later
+// polling tests. Unmount invalidates in-flight task loads via tasksRequestId.
+enableAutoUnmount(afterEach);
 
 const copyToClipboard = vi.hoisted(() => vi.fn());
 const routerPush = vi.fn();

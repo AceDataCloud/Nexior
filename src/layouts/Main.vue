@@ -14,12 +14,14 @@
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
     />
     <application-confirm v-if="hasApplicationContext" v-model.visible="applying" @apply="onApply" />
+    <support-entry />
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
+import SupportEntry from '@/components/common/SupportEntry.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
 import { IApplicationScope, IApplicationType, Status, type IApplication } from '@/models';
 import { IAppState } from '@/store/common/models';
@@ -39,6 +41,7 @@ const BALANCE_REFRESH_INTERVAL_MS = 15000;
 export default defineComponent({
   name: 'LayoutMain',
   components: {
+    SupportEntry,
     Navigator,
     ApplicationStatus,
     ApplicationConfirm

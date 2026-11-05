@@ -170,7 +170,7 @@
       <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.contacts') }}</p>
         <p class="settings-tip">
-          {{ $t('site.message.contactsTip') }}
+          {{ $t('common.support.settingsHint') }}
         </p>
       </div>
       <div class="settings-content">
