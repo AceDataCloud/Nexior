@@ -1,5 +1,5 @@
 <template>
-  <div class="showcase-result-shell">
+  <div class="showcase-result-shell" :class="{ 'has-task-actions': $slots['task-actions'] && activeTab === 'tasks' }">
     <el-tabs v-model="activeTab" class="showcase-result-tabs">
       <el-tab-pane :label="$t('intro.serviceGallery.currentTasks')" name="tasks" class="result-pane tasks-pane">
         <slot name="tasks" />
@@ -95,10 +95,15 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
 .showcase-result-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  container-type: inline-size;
   min-width: 0;
   min-height: 0;
   flex: 1;
+}
+
+.showcase-result-shell.has-task-actions {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
 }
 
 .showcase-result-tabs {
@@ -115,7 +120,7 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
 
   :deep(.el-tabs__content) {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 3;
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -132,11 +137,26 @@ defineExpose({ activeTab, resolvedItems, loading, error, loaded, selectedItem, l
   grid-column: 2;
   grid-row: 1;
   align-items: center;
-  padding: 0 8px 0 0;
+  padding: 0 140px 0 0;
   border-bottom: 2px solid var(--el-border-color-light);
   :deep(.task-history-toolbar) {
     margin: 0;
     align-self: center;
+  }
+}
+
+// The app's fixed balance badge occupies the far right of the first row.
+// Keep history beside the tabs; narrow result panes put the compact controls below it.
+@container (max-width: 520px) {
+  .showcase-result-tabs :deep(.el-tabs__header) {
+    grid-column: 1 / -1;
+    padding-right: 140px;
+  }
+  .task-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding: 0 12px;
+    border-bottom: 0;
   }
 }
 
