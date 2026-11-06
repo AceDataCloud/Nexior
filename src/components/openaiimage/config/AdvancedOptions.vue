@@ -13,7 +13,10 @@
       <div class="field">
         <h2 class="title">{{ $t('openaiimage.name.markup') }}</h2>
         <el-upload
+          ref="markupUploader"
           v-model:file-list="fileList"
+          :disabled="uploading"
+          :limit="1"
           accept="image/png"
           name="file"
           :show-file-list="false"
@@ -23,7 +26,9 @@
           :on-success="onSuccess"
           :on-error="onError"
         >
-          <el-button size="small" round>{{ $t('openaiimage.button.uploadImageUrls') }}</el-button>
+          <el-button size="small" round :loading="uploading" :disabled="uploading">{{
+            $t('openaiimage.button.uploadImageUrls')
+          }}</el-button>
         </el-upload>
       </div>
       <p class="hint">{{ $t('openaiimage.description.markup') }}</p>
@@ -39,7 +44,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElMessage, ElOption, ElSelect, ElUpload, type UploadFiles, type UploadRawFile } from 'element-plus';
+import {
+  ElButton,
+  ElMessage,
+  ElOption,
+  ElSelect,
+  ElUpload,
+  type UploadFiles,
+  type UploadFile,
+  type UploadInstance,
+  type UploadRawFile
+} from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { isOpenAIImage26Model } from '@/constants';
@@ -53,6 +68,8 @@ export default defineComponent({
   data() {
     return {
       fileList: [] as UploadFiles,
+      uploadUid: undefined as number | undefined,
+      uploadReference: undefined as string | undefined,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
       levels: ['low', 'medium', 'high'] as OpenAIImageComplexity[]
     };
@@ -66,6 +83,12 @@ export default defineComponent({
     },
     canMarkup(): boolean {
       return this.supported && this.config.output_format !== 'gif' && !!this.config.image_urls?.length;
+    },
+    firstReference(): string | undefined {
+      return this.config.image_urls?.[0];
+    },
+    uploading(): boolean {
+      return this.fileList.some((file) => file.status === 'ready' || file.status === 'uploading');
     },
     headers() {
       return { Authorization: `Bearer ${this.$store.state.token.access}` };
@@ -87,10 +110,19 @@ export default defineComponent({
           this.$store.commit('openaiimage/setConfig', { ...this.config, complexity: undefined });
       }
     },
+    firstReference(value: string | undefined, previous: string | undefined) {
+      if (previous !== undefined && value !== previous) {
+        this.cancelUpload();
+        if (this.config.markup) this.setMarkup(undefined);
+      }
+    },
     canMarkup: {
       immediate: true,
       handler(value: boolean) {
-        if (!value && this.config.markup) this.setMarkup(undefined);
+        if (!value) {
+          this.cancelUpload();
+          if (this.config.markup) this.setMarkup(undefined);
+        }
       }
     }
   },
@@ -99,18 +131,34 @@ export default defineComponent({
       this.$store.commit('openaiimage/setConfig', { ...this.config, markup });
     },
     beforeUpload(file: UploadRawFile) {
+      if (!this.canMarkup) return false;
       if (file.type !== 'image/png' || file.size > 40 * 1024 * 1024) {
         ElMessage.error(this.$t('openaiimage.message.invalidMarkup'));
         return false;
       }
-      return this.beforeUploadSizeGuard(file);
+      if (!this.beforeUploadSizeGuard(file)) return false;
+      this.uploadUid = file.uid;
+      this.uploadReference = this.firstReference;
+      return true;
     },
-    onSuccess(response: { file_url?: string }) {
+    resetUpload() {
+      this.uploadUid = undefined;
+      this.uploadReference = undefined;
+      this.fileList = [];
+    },
+    cancelUpload() {
+      const pending = this.fileList[0];
+      this.resetUpload();
+      if (pending) (this.$refs.markupUploader as UploadInstance | undefined)?.abort?.(pending);
+    },
+    onSuccess(response: { file_url?: string }, file: UploadFile) {
+      if (file.uid !== this.uploadUid || this.uploadReference !== this.firstReference) return;
       if (this.canMarkup && response.file_url) this.setMarkup(response.file_url);
-      this.fileList = [];
+      this.resetUpload();
     },
-    onError() {
-      this.fileList = [];
+    onError(_error: unknown, file: UploadFile) {
+      if (file.uid !== this.uploadUid) return;
+      this.resetUpload();
       ElMessage.error(this.$t('openaiimage.message.uploadImageError'));
     }
   }
