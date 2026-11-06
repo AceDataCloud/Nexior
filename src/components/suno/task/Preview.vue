@@ -1,5 +1,11 @@
 <template>
   <div class="task">
+    <div v-if="modelValue?.id" class="task-actions">
+      <button type="button" class="icon-button btn-delete" :disabled="deleting" @click.stop="onDelete">
+        <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.button.deleteTask') }}
+      </button>
+    </div>
     <div v-if="isFailure || isPending" class="audio placeholder-row" :class="{ 'failed-row': isFailure }">
       <div class="left placeholder-cover" :class="{ 'pending-cover': isPending }">
         <music-icon :size="'24' as any" aria-hidden="true" focusable="false" />
@@ -305,13 +311,6 @@
 
                 {{ $t('common.button.report') }}
               </el-dropdown-item>
-
-              <!-- Delete group -->
-              <div class="menu-divider" />
-              <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
-                <delete-icon class="menu-icon delete-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ $t('common.button.delete') }}
-              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -470,6 +469,7 @@ export default defineComponent({
       sourceAudio: {} as ISunoAudio,
       editingAudioId: null as string | null,
       editingTitle: '',
+      deleting: false,
       apiCodeVisible: false,
       reportVisible: false,
       reportTargetId: '',
@@ -1012,40 +1012,33 @@ export default defineComponent({
       this.editingAudioId = null;
       this.editingTitle = '';
     },
-    async onDelete(audio: ISunoAudio) {
+    async onDelete() {
+      const id = this.modelValue?.id;
+      if (!id || this.deleting) return;
+      this.deleting = true;
       try {
-        await ElMessageBox.confirm(this.$t('suno.message.confirmDelete') as string, {
+        await ElMessageBox.confirm(this.$t('suno.message.confirmDeleteTask') as string, {
           confirmButtonText: this.$t('common.button.delete') as string,
           cancelButtonText: this.$t('common.button.cancel') as string,
+          confirmButtonClass: 'el-button--danger',
           type: 'warning'
         });
       } catch {
+        this.deleting = false;
         return; // User cancelled
       }
-      // Remove from local state
-      const tasks = this.$store.state.suno?.tasks;
-      if (tasks?.items) {
-        for (const task of tasks.items) {
-          const data = (task?.response?.data ?? []) as ISunoAudio[];
-          const idx = data.findIndex((a: ISunoAudio) => a.id === audio.id);
-          if (idx !== -1) {
-            data.splice(idx, 1);
-            // If task has no more audios, remove the task too
-            if (data.length === 0) {
-              const taskIdx = tasks.items.indexOf(task);
-              if (taskIdx !== -1) {
-                tasks.items.splice(taskIdx, 1);
-              }
-            }
-            break;
-          }
+      const audioIds = this.audios.map((audio) => audio.id);
+      try {
+        await this.$store.dispatch('suno/deleteTask', { id });
+        if (audioIds.includes(this.$store.state.suno?.audio?.id)) {
+          this.$store.dispatch('suno/setAudio', null);
         }
+        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
+      } catch {
+        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
+      } finally {
+        this.deleting = false;
       }
-      // Stop player if deleted audio is playing
-      if (this.$store.state?.suno?.audio?.id === audio.id) {
-        this.$store.dispatch('suno/setAudio', null);
-      }
-      ElMessage.success(this.$t('suno.message.deleteSuccess'));
     },
     async onGetTasks() {
       if (this.loading) {
@@ -1079,6 +1072,25 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid transparent;
   transition: border-color 0.2s;
+  .task-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2px 6px 6px;
+    .btn-delete {
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--el-text-color-secondary);
+      cursor: pointer;
+      &:hover {
+        color: var(--el-color-danger);
+      }
+      &:disabled {
+        cursor: wait;
+        opacity: 0.5;
+      }
+    }
+  }
 
   &:hover {
     border-color: var(--el-border-color-lighter);
@@ -1295,13 +1307,6 @@ export default defineComponent({
     height: 1px;
     background: var(--el-border-color-lighter);
     margin: 4px 12px;
-  }
-
-  .delete-item {
-    color: var(--el-color-danger);
-    .delete-icon {
-      color: var(--el-color-danger);
-    }
   }
 }
 </style>

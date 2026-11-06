@@ -7,6 +7,13 @@ import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
 import { pendingUntilResponse, refreshPendingTaskItems } from '@/store/factories/taskPolling';
+import { createTaskActions } from '@/store/factories/createTaskActions';
+import type { ITaskListFilter } from '@/operators/baseTaskOperator';
+
+export const { deleteTask } = createTaskActions<ISunoConfig, ISunoTask, ITaskListFilter>({
+  serviceId: SUNO_SERVICE_ID,
+  operator: sunoOperator
+});
 
 export const resetAll = ({ commit }: ActionContext<ISunoState, IRootState>): void => {
   commit('resetAll');
@@ -287,6 +294,7 @@ export const refreshPendingTasks = async (
 };
 
 export default {
+  deleteTask,
   refreshPendingTasks,
   setService,
   getService,

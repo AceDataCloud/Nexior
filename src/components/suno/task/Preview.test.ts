@@ -1,11 +1,12 @@
 // @vitest-environment jsdom
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import type { ISunoTask } from '@/models';
 import Preview from './Preview.vue';
 
 vi.stubGlobal('matchMedia', () => ({ matches: false }));
-const mountTask = (modelValue: ISunoTask) => {
+const mountTask = (modelValue: ISunoTask, dispatch = vi.fn(), playingId?: string) => {
   const commit = vi.fn();
   return {
     commit,
@@ -14,7 +15,7 @@ const mountTask = (modelValue: ISunoTask) => {
       global: {
         mocks: {
           $t: (key: string) => key,
-          $store: { state: { suno: { audio: {}, config: {}, status: {}, tasks: {} } }, dispatch: vi.fn(), commit }
+          $store: { state: { suno: { audio: { id: playingId }, config: {}, status: {}, tasks: {} } }, dispatch, commit }
         },
         stubs: {
           ApiCodeDialog: true,
@@ -31,6 +32,57 @@ const mountTask = (modelValue: ISunoTask) => {
 };
 
 describe('suno/task/Preview', () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  it('has one task-level delete button for a two-song generation', async () => {
+    const confirm = vi
+      .spyOn(ElMessageBox, 'confirm')
+      .mockResolvedValue('confirm' as Awaited<ReturnType<typeof ElMessageBox.confirm>>);
+    const success = vi.spyOn(ElMessage, 'success').mockImplementation(() => ({ close: vi.fn() }));
+    const dispatch = vi.fn().mockResolvedValue(undefined);
+    const { wrapper } = mountTask(
+      { id: 'task-1', map: () => [], response: { data: [{ id: 'a' }, { id: 'b' }] } },
+      dispatch,
+      'b'
+    );
+    expect(wrapper.findAll('.btn-delete')).toHaveLength(1);
+    expect(wrapper.find('.audio .btn-delete').exists()).toBe(false);
+    await wrapper.find('.btn-delete').trigger('click');
+    await Promise.resolve();
+    expect(confirm).toHaveBeenCalledWith('suno.message.confirmDeleteTask', expect.any(Object));
+    expect(dispatch).toHaveBeenCalledWith('suno/deleteTask', { id: 'task-1' });
+    expect(dispatch).toHaveBeenCalledWith('suno/setAudio', null);
+    expect(success).toHaveBeenCalledWith('common.message.deleteTaskSuccess');
+  });
+
+  it('keeps playback and reports an error when task deletion fails', async () => {
+    vi.spyOn(ElMessageBox, 'confirm').mockResolvedValue('confirm' as Awaited<ReturnType<typeof ElMessageBox.confirm>>);
+    const error = vi.spyOn(ElMessage, 'error').mockImplementation(() => ({ close: vi.fn() }));
+    const success = vi.spyOn(ElMessage, 'success');
+    const dispatch = vi.fn().mockRejectedValue(new Error('offline'));
+    const { wrapper } = mountTask({ id: 'task-1', map: () => [], response: { data: [{ id: 'a' }] } }, dispatch, 'a');
+    await wrapper.find('.btn-delete').trigger('click');
+    await Promise.resolve();
+    expect(error).toHaveBeenCalledWith('common.message.deleteTaskFailed');
+    expect(success).not.toHaveBeenCalled();
+    expect(dispatch).not.toHaveBeenCalledWith('suno/setAudio', null);
+  });
+
+  it('does not delete a task when confirmation is cancelled', async () => {
+    vi.spyOn(ElMessageBox, 'confirm').mockRejectedValue('cancel');
+    const dispatch = vi.fn();
+    const { wrapper } = mountTask({ id: 'task-1', map: () => [] }, dispatch);
+    await wrapper.find('.btn-delete').trigger('click');
+    await Promise.resolve();
+    expect(dispatch).not.toHaveBeenCalled();
+  });
+
+  it('lets failed and pending tasks use the same task delete action', () => {
+    for (const response of [undefined, { success: false, error: 'failed' }]) {
+      const { wrapper } = mountTask({ id: 'task-1', map: () => [], response });
+      expect(wrapper.find('.btn-delete').exists()).toBe(true);
+    }
+  });
   it('keeps failed tasks in the song layout with details hidden until requested', async () => {
     const { wrapper, commit } = mountTask({
       id: 'task-1',
