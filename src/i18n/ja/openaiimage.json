@@ -264,8 +264,8 @@
     "description": "GPT Image 2.6の出力形式とネイティブなアニメーション制御"
   },
   "description.outputFormat": {
-    "message": "GIFはGPT Image 2.6 Flareの通常版と公式版、およびSunburstの公式版に対応しています。アニメーションGIFでは、すべてのアニメーションフレームと再生時間が保持されます。",
-    "description": "GPT Image 2.6の出力形式とネイティブなアニメーション制御"
+    "message": "GPT Image 2.6はPNG、JPEG、WebP、GIFアニメーションに対応しています。GIFは2～16フレームで、各フレームは20～655350ミリ秒、10ミリ秒単位で調整されます。",
+    "description": "GPT Image 2.6の出力形式とネイティブアニメーション制御"
   },
   "name.frameCount": {
     "message": "アニメーションフレーム数",
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "GIFは512 × 512のプリセットを使用します。実際のサイズはモデルによって調整される場合があります。4Kは静止画に適しています。",
     "description": "GPT Image 2.6の出力形式とネイティブなアニメーション制御"
+  },
+  "name.complexity": {
+    "message": "構図の複雑さ",
+    "description": "GPT Image 2.6の高度な画像パラメータ：name.complexity"
+  },
+  "description.complexity": {
+    "message": "GPT Image 2.6の計画処理への投入量で、レンダリング画質とは独立しており、デフォルトは高です。",
+    "description": "GPT Image 2.6の高度な画像パラメータ：description.complexity"
+  },
+  "name.markup": {
+    "message": "注釈画像（任意）",
+    "description": "GPT Image 2.6の高度な画像パラメータ：name.markup"
+  },
+  "description.markup": {
+    "message": "1枚目の参照画像と同じサイズの透明PNGをアップロードし、変更箇所を示してください。プロンプトには変更内容も記載してください。静止画の編集にのみ使用します。",
+    "description": "GPT Image 2.6の高度な画像パラメータ：description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "40MB以下のPNG注釈画像を使用してください。",
+    "description": "GPT Image 2.6の高度な画像パラメータ：message.invalidMarkup"
   }
 }

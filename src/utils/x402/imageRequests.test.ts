@@ -114,3 +114,14 @@ describe('x402 image request builders', () => {
     });
   });
 });
+
+it('keeps generation complexity and strips stale edit markup', () => {
+  const request = buildOpenAIImageGenerateRequest({
+    model: 'gpt-image-2.6-flare',
+    prompt: 'paint',
+    complexity: 'low',
+    markup: 'https://example.com/overlay.png'
+  });
+  expect(request.complexity).toBe('low');
+  expect(request.markup).toBeUndefined();
+});

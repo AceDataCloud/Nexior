@@ -216,6 +216,8 @@ export default defineComponent({
         prompt: cfg?.prompt,
         size: cfg?.size,
         quality: cfg?.quality,
+        complexity: cfg?.complexity,
+        markup: cfg?.markup,
         output_format: cfg?.output_format,
         frame_count: cfg?.frame_count,
         frame_duration_ms: cfg?.frame_duration_ms,

@@ -264,7 +264,7 @@
     "description": "GPT Image 2.6 output format and native animation control"
   },
   "description.outputFormat": {
-    "message": "GIF is available for GPT Image 2.6 Flare standard and official variants, and Sunburst official. Animation frames and timing are preserved.",
+    "message": "GPT Image 2.6 supports PNG, JPEG, WebP and animated GIF. GIF: 2–16 frames; frame delay 20–655350 ms, rounded to 10 ms.",
     "description": "GPT Image 2.6 output format and native animation control"
   },
   "name.frameCount": {
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "GIF uses the 512 × 512 preset; the model may adjust actual dimensions. Use a static format for 4K images.",
     "description": "GPT Image 2.6 output format and native animation control"
+  },
+  "name.complexity": {
+    "message": "Planning complexity",
+    "description": "GPT Image 2.6 advanced image parameter: name.complexity"
+  },
+  "description.complexity": {
+    "message": "GPT Image 2.6 planning effort, separate from rendering quality. Default: high.",
+    "description": "GPT Image 2.6 advanced image parameter: description.complexity"
+  },
+  "name.markup": {
+    "message": "Annotation image (optional)",
+    "description": "GPT Image 2.6 advanced image parameter: name.markup"
+  },
+  "description.markup": {
+    "message": "Upload a transparent PNG with the same dimensions as the first reference image. Mark the area to edit and describe the change in your prompt. Static images only.",
+    "description": "GPT Image 2.6 advanced image parameter: description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "Use a PNG annotation image up to 40 MB.",
+    "description": "GPT Image 2.6 advanced image parameter: message.invalidMarkup"
   }
 }

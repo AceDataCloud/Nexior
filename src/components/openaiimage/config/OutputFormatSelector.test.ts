@@ -24,11 +24,26 @@ describe('OpenAI Image output formats', () => {
     'gpt-image-2.6-flare',
     'gpt-image-2.6-flare:reverse',
     'gpt-image-2.6-flare:official',
+    'gpt-image-2.6-sunburst',
+    'gpt-image-2.6-sunburst:reverse',
     'gpt-image-2.6-sunburst:official'
   ])('exposes native GIF for %s', (model) => {
     const { wrapper } = mountSelector({ model });
     expect((wrapper.vm as any).formats).toContain('gif');
     expect((wrapper.vm as any).visible).toBe(true);
+  });
+
+  it('refuses invalid persisted or programmatic frame settings', () => {
+    const { wrapper, state } = mountSelector({
+      model: 'gpt-image-2.6-flare',
+      output_format: 'gif',
+      frame_count: 9,
+      frame_duration_ms: 200
+    });
+    for (const value of [1, 17, 2.5]) (wrapper.vm as any).frameCount = value;
+    for (const value of [19, 655351, 20.5]) (wrapper.vm as any).frameDuration = value;
+    expect(state.openaiimage.config.frame_count).toBe(9);
+    expect(state.openaiimage.config.frame_duration_ms).toBe(200);
   });
 
   it('uses the verified GIF preset and restores the previous static 4K size', async () => {
@@ -51,7 +66,7 @@ describe('OpenAI Image output formats', () => {
     expect(state.openaiimage.config.frame_duration_ms).toBeUndefined();
   });
 
-  it.each(['gpt-image-2.6-sunburst', 'gpt-image-2.6-sunburst:reverse', 'gpt-image-2.5-flare'])(
+  it.each(['gpt-image-2', 'gpt-image-2.5-flare'])(
     'clears incompatible GIF settings when selecting %s',
     async (model) => {
       const { wrapper, state } = mountSelector({

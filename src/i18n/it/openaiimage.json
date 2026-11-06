@@ -264,8 +264,8 @@
     "description": "Formato di output di GPT Image 2.6 e controllo nativo dell'animazione"
   },
   "description.outputFormat": {
-    "message": "Le GIF supportano GPT Image 2.6 Flare nelle versioni standard e ufficiale, nonché Sunburst nella versione ufficiale. Le immagini animate mantengono tutti i fotogrammi e la durata di riproduzione.",
-    "description": "Formato di output di GPT Image 2.6 e controllo nativo dell'animazione"
+    "message": "GPT Image 2.6 supporta PNG, JPEG, WebP e GIF animate. Le GIF contengono da 2 a 16 fotogrammi, con una durata per fotogramma compresa tra 20 e 655350 millisecondi, arrotondata ai 10 ms.",
+    "description": "Formato di output di GPT Image 2.6 e controllo dell'animazione nativa"
   },
   "name.frameCount": {
     "message": "Numero di fotogrammi",
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "Le GIF utilizzano il preset 512 × 512; le dimensioni effettive possono essere adattate dal modello. 4K è adatto alle immagini statiche.",
     "description": "Formato di output di GPT Image 2.6 e controllo nativo dell'animazione"
+  },
+  "name.complexity": {
+    "message": "Complessità della composizione",
+    "description": "Parametro immagine avanzato di GPT Image 2.6: name.complexity"
+  },
+  "description.complexity": {
+    "message": "L'impegno di pianificazione di GPT Image 2.6 è indipendente dalla qualità di rendering ed è impostato su alto per impostazione predefinita.",
+    "description": "Parametro immagine avanzato di GPT Image 2.6: description.complexity"
+  },
+  "name.markup": {
+    "message": "Immagine annotata (facoltativa)",
+    "description": "Parametro immagine avanzato di GPT Image 2.6: name.markup"
+  },
+  "description.markup": {
+    "message": "Carica un PNG trasparente delle stesse dimensioni della prima immagine di riferimento, indica le aree da modificare e specifica i requisiti della modifica nel prompt. Utilizzato solo per la modifica di immagini statiche.",
+    "description": "Parametro immagine avanzato di GPT Image 2.6: description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "Usa un'immagine PNG annotata di massimo 40 MB.",
+    "description": "Parametro immagine avanzato di GPT Image 2.6: message.invalidMarkup"
   }
 }
