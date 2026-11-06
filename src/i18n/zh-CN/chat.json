@@ -2005,5 +2005,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "本次启动 {triggered} 个账号，跳过 {skipped} 个账号。",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "触发 {count} 个账号",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "仅尝试运行勾选的账号，不改变定时任务配置。本次不等待随机延迟；每个账号仍按 {percent}% 的触发概率独立抽签，未命中会跳过。",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "选择本次执行账号",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "全选账号",
+    "description": "Account selection for one manual scheduled-task trigger"
   }
 }

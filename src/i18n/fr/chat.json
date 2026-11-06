@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "{triggered} comptes démarrés ; {skipped} comptes ignorés.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Déclencher pour {count} comptes",
+    "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Tente uniquement d’exécuter les comptes sélectionnés, sans modifier la configuration de la tâche planifiée. Aucun délai aléatoire n’est appliqué cette fois-ci ; chaque compte fait toujours l’objet d’un tirage indépendant avec une probabilité de déclenchement de {percent} %, et les comptes non retenus sont ignorés.",
+    "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Sélectionner les comptes pour cette exécution",
+    "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Sélectionner tous les comptes",
+    "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
   }
 }

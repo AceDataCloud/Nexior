@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "Запущено аккаунтов: {triggered}; пропущено: {skipped}.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Запустить для {count} аккаунтов",
+    "description": "Выбор аккаунтов для одного ручного запуска задачи по расписанию"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Будет предпринята попытка запустить только выбранные аккаунты, настройки задачи по расписанию не изменятся. При этом запуске случайная задержка не ожидается; для каждого аккаунта по-прежнему независимо определяется вероятность запуска {percent}%, а аккаунты, не прошедшие отбор, пропускаются.",
+    "description": "Выбор аккаунтов для одного ручного запуска задачи по расписанию"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Выберите аккаунты для этого запуска",
+    "description": "Выбор аккаунтов для одного ручного запуска задачи по расписанию"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Выбрать все аккаунты",
+    "description": "Выбор аккаунтов для одного ручного запуска задачи по расписанию"
   }
 }

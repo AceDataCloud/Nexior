@@ -399,7 +399,8 @@ class ScheduledTasksOperator {
   // the reserved conversation id so the caller can open it at once.
   async triggerTask(
     token: string,
-    id: string
+    id: string,
+    connectionIds?: string[]
   ): Promise<{
     run_id?: string;
     conversation_id?: string;
@@ -407,7 +408,15 @@ class ScheduledTasksOperator {
     triggered_count?: number;
     skipped_count?: number;
   }> {
-    const { data } = await axios.post(BASE, { action: 'trigger', id }, { headers: headers(token) });
+    const { data } = await axios.post(
+      BASE,
+      {
+        action: connectionIds !== undefined ? 'trigger_selected' : 'trigger',
+        id,
+        ...(connectionIds !== undefined ? { connection_ids: connectionIds } : {})
+      },
+      { headers: headers(token) }
+    );
     return data ?? {};
   }
 

@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "Avviati {triggered} account; saltati {skipped} account.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Attiva {count} account",
+    "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Verrà tentata l'esecuzione solo per gli account selezionati; la configurazione dell'attività pianificata non verrà modificata. Questa volta non si attende il ritardo casuale; per ogni account viene comunque effettuata un'estrazione indipendente con probabilità di attivazione del {percent}%; se non viene selezionato, l'account viene ignorato.",
+    "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Seleziona gli account per questa esecuzione",
+    "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Seleziona tutti gli account",
+    "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
   }
 }

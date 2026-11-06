@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "계정 {triggered}개를 시작하고 {skipped}개를 건너뛰었습니다.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "{count}개 계정 트리거",
+    "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "선택한 계정만 실행을 시도하며 예약 작업 설정은 변경하지 않습니다. 이번 실행에서는 무작위 지연을 기다리지 않으며, 각 계정은 여전히 {percent}%의 트리거 확률로 독립적으로 추첨됩니다. 당첨되지 않으면 건너뜁니다.",
+    "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "이번 실행 계정 선택",
+    "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "모든 계정 선택",
+    "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
   }
 }

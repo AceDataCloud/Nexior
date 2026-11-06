@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "تم تشغيل {triggered} حسابات وتخطي {skipped} حسابات.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "تشغيل {count} حسابًا",
+    "description": "اختيار الحسابات لتشغيل مهمة مجدولة يدويًا مرة واحدة"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "ستتم محاولة تشغيل الحسابات المحددة فقط، من دون تغيير إعدادات المهمة المجدولة. لن يتم انتظار التأخير العشوائي هذه المرة؛ ومع ذلك، سيُجرى سحب مستقل لكل حساب باحتمال تشغيل قدره {percent}%، وسيتم تخطي الحسابات التي لا تفوز.",
+    "description": "اختيار الحسابات لتشغيل مهمة مجدولة يدويًا مرة واحدة"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "اختيار حسابات هذا التشغيل",
+    "description": "اختيار الحسابات لتشغيل مهمة مجدولة يدويًا مرة واحدة"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "تحديد جميع الحسابات",
+    "description": "اختيار الحسابات لتشغيل مهمة مجدولة يدويًا مرة واحدة"
   }
 }
