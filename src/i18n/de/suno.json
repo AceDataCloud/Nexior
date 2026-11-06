@@ -912,16 +912,16 @@
     "description": "Nachricht bei fehlenden Filterergebnissen"
   },
   "message.confirmDelete": {
-    "message": "Diesen Song aus dem Verlauf entfernen? Er wird auch nach einer Aktualisierung nicht wieder angezeigt. Dabei werden weder Mediendateien gelöscht noch Konto, Guthaben, API-Schlüssel, Stimmen oder benutzerdefinierte Modelle beeinflusst.",
-    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
+    "message": "Möchten Sie dieses Lied wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "description": "Bestätigungsnachricht zum Löschen eines Songs"
   },
   "message.deleteSuccess": {
-    "message": "Song aus dem Verlauf entfernt",
-    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
+    "message": "Song wurde gelöscht",
+    "description": "Nachricht bei erfolgreichem Löschen eines Songs"
   },
   "message.deleteFailed": {
-    "message": "Aus dem Verlauf entfernen fehlgeschlagen. Bitte versuche es erneut.",
-    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
+    "message": "Löschen des Songs fehlgeschlagen",
+    "description": "Nachricht bei fehlgeschlagenem Löschen eines Songs"
   },
   "name.generating": {
     "message": "Wird generiert",
@@ -1175,8 +1175,12 @@
     "message": "Standard-Songtext",
     "description": "Standard-Songtext"
   },
-  "button.removeFromHistory": {
-    "message": "Aus Verlauf entfernen",
-    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
+  "button.deleteTask": {
+    "message": "Aufgabe löschen",
+    "description": "Eine vollständige Suno-Generierungsaufgabe einschließlich aller darin enthaltenen Songs aus dem Verlauf entfernen"
+  },
+  "message.confirmDeleteTask": {
+    "message": "Diese Generierungsaufgabe und alle darin enthaltenen Songs aus dem Verlauf entfernen? Dieser Vorgang löscht keine Mediendateien und bricht die Generierung nicht ab.",
+    "description": "Eine vollständige Suno-Generierungsaufgabe einschließlich aller darin enthaltenen Songs aus dem Verlauf entfernen"
   }
 }

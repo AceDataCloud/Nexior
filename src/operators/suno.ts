@@ -32,6 +32,7 @@ import {
 } from '@/models';
 import { BASE_URL_API, BASE_URL_X402 } from '@/constants';
 import { postWithX402, quoteX402, type OperatorRequestOptions } from './x402';
+import { BaseTaskOperator } from './baseTaskOperator';
 
 const HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
 const TASK_HEADERS = { ...HEADERS, 'x-record-exempt': 'true' };
@@ -45,13 +46,14 @@ export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
   return request;
 }
 
-class SunoOperator {
-  async deleteAudio(id: string, audioId: string, options: { token: string }) {
-    return axios.post<{ id: string; audio_id: string; deleted: boolean }>(
-      '/suno/tasks',
-      { action: 'delete_audio', id, audio_id: audioId },
-      { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
-    );
+class SunoOperator extends BaseTaskOperator<
+  ISunoAudioRequest,
+  ISunoAudioResponse,
+  ISunoTaskResponse,
+  ISunoTasksResponse
+> {
+  constructor() {
+    super({ tasksPath: '/suno/tasks', generatePath: '/suno/audios' });
   }
 
   async task(id: string, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoTaskResponse>> {

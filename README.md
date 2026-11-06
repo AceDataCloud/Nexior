@@ -71,6 +71,11 @@ lyrics with subtitle export. Vocal reference extraction uses a selected excerpt 
 30 seconds; full vocal/instrumental separation is available through stems. Failed generations
 stay in the song list as compact placeholders; diagnostic details are available on demand.
 
+Use **Delete task** on a Suno generation group to remove that task and all of its songs
+from history, including after a refresh, just like GPT Image's generation-record deletion.
+This retains media files, account credits, API keys, voices and custom models, and does
+not cancel generation. A failed deletion restores the task so you can retry.
+
 Open the **⋯** menu above media task results to **Jump to date** (or type `YYYY-MM-DD`),
 **Load earlier**, or go **Back to latest**. A date opens records through that day in your local timezone;
 continue scrolling up to browse earlier records, or clear the date chip to return to the latest.

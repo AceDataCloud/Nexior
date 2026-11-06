@@ -912,16 +912,16 @@
     "description": "Mensaje cuando no hay resultados de filtrado"
   },
   "message.confirmDelete": {
-    "message": "¿Quitar esta canción del historial? No volverá a aparecer después de actualizar. Esta acción no elimina los archivos multimedia ni afecta a la cuenta, el saldo, las claves de API, las voces ni los modelos personalizados.",
-    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
+    "message": "¿Estás seguro de que deseas eliminar esta canción? Esta acción no se puede deshacer.",
+    "description": "Mensaje de confirmación para eliminar una canción"
   },
   "message.deleteSuccess": {
-    "message": "Canción quitada del historial",
-    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
+    "message": "Canción eliminada",
+    "description": "Mensaje cuando la canción se elimina con éxito"
   },
   "message.deleteFailed": {
-    "message": "No se pudo quitar del historial. Inténtalo de nuevo.",
-    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
+    "message": "Error al eliminar la canción",
+    "description": "Mensaje cuando falla la eliminación de la canción"
   },
   "name.generating": {
     "message": "Generando",
@@ -1175,8 +1175,12 @@
     "message": "Letras estándar",
     "description": "Letras estándar"
   },
-  "button.removeFromHistory": {
-    "message": "Quitar del historial",
-    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
+  "button.deleteTask": {
+    "message": "Eliminar tarea",
+    "description": "Eliminar una tarea de generación completa de Suno, incluidas todas sus canciones, del historial"
+  },
+  "message.confirmDeleteTask": {
+    "message": "¿Quitar esta tarea de generación y todas las canciones que contiene del historial? Esta acción no elimina los archivos multimedia ni cancela la generación.",
+    "description": "Eliminar una tarea de generación completa de Suno, incluidas todas sus canciones, del historial"
   }
 }

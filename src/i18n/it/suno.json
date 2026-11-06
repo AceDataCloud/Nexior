@@ -912,16 +912,16 @@
     "description": "Messaggio quando non ci sono risultati di filtro"
   },
   "message.confirmDelete": {
-    "message": "Rimuovere questo brano dalla cronologia? Non ricomparirà nemmeno dopo l'aggiornamento. Questa operazione non elimina i file multimediali e non influisce sull'account, sul saldo, sulle chiavi API, sulle voci o sui modelli personalizzati.",
-    "description": "Rimozione di un brano dalla cronologia di Suno; i file multimediali vengono conservati"
+    "message": "Sei sicuro di voler eliminare questa canzone? Questa operazione non può essere annullata.",
+    "description": "Messaggio di conferma per l'eliminazione della canzone"
   },
   "message.deleteSuccess": {
-    "message": "Brano rimosso dalla cronologia",
-    "description": "Rimozione di un brano dalla cronologia di Suno; i file multimediali vengono conservati"
+    "message": "Canzone eliminata",
+    "description": "Messaggio quando la canzone è stata eliminata con successo"
   },
   "message.deleteFailed": {
-    "message": "Impossibile rimuovere dalla cronologia. Riprova.",
-    "description": "Rimozione di un brano dalla cronologia di Suno; i file multimediali vengono conservati"
+    "message": "Eliminazione della canzone fallita",
+    "description": "Messaggio quando l'eliminazione della canzone fallisce"
   },
   "name.generating": {
     "message": "Generando",
@@ -1175,8 +1175,12 @@
     "message": "Testo standard",
     "description": "Testo standard"
   },
-  "button.removeFromHistory": {
-    "message": "Rimuovi dalla cronologia",
-    "description": "Rimozione di un brano dalla cronologia di Suno; i file multimediali vengono conservati"
+  "button.deleteTask": {
+    "message": "Elimina attività",
+    "description": "Rimuove dalla cronologia un'intera attività di generazione Suno, incluse tutte le relative canzoni"
+  },
+  "message.confirmDeleteTask": {
+    "message": "Rimuovere questa attività di generazione e tutte le canzoni incluse dalla cronologia? Questa azione non elimina i file multimediali né annulla la generazione.",
+    "description": "Rimuove dalla cronologia un'intera attività di generazione Suno, incluse tutte le relative canzoni"
   }
 }

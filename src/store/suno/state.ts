@@ -15,7 +15,6 @@ export default (): ISunoState => {
     personas: undefined,
     customModels: undefined,
     favoritePersonaIds: [],
-    removedAudioIds: {},
     status: {
       getService: Status.None,
       getApplications: Status.None,

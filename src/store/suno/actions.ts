@@ -7,7 +7,13 @@ import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
 import { pendingUntilResponse, refreshPendingTaskItems } from '@/store/factories/taskPolling';
-import { filterRemovedAudios } from './history';
+import { createTaskActions } from '@/store/factories/createTaskActions';
+import type { ITaskListFilter } from '@/operators/baseTaskOperator';
+
+export const { deleteTask } = createTaskActions<ISunoConfig, ISunoTask, ITaskListFilter>({
+  serviceId: SUNO_SERVICE_ID,
+  operator: sunoOperator
+});
 
 export const resetAll = ({ commit }: ActionContext<ISunoState, IRootState>): void => {
   commit('resetAll');
@@ -140,18 +146,6 @@ export const setAudio = ({ commit }: any, payload: any) => {
   commit('setAudio', payload);
 };
 
-export const deleteAudio = async (
-  { commit, state }: ActionContext<ISunoState, IRootState>,
-  { taskId, audioId }: { taskId: string; audioId: string }
-): Promise<void> => {
-  const token = state.credential?.token;
-  if (!token || !taskId || !audioId) throw new Error('Authenticated song and task are required');
-  const { data } = await sunoOperator.deleteAudio(taskId, audioId, { token });
-  if (data.deleted !== true) throw new Error('Song removal was not confirmed');
-  if (state.credential?.token !== token) throw new Error('Account changed during removal');
-  commit('removeAudio', { taskId, audioId });
-};
-
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<ISunoState, IRootState>,
   {
@@ -194,14 +188,13 @@ export const getTasks = async (
         // merge with existing tasks
         const existingItems = replace ? [] : state?.tasks?.items || [];
         console.debug('existing items', existingItems);
-        const receivedItems = response.data.items || [];
-        const newItems = filterRemovedAudios(receivedItems, state.removedAudioIds);
+        const newItems = response.data.items || [];
         console.debug('new items', newItems);
         // sort and de-duplicate using created_at
         const mergedItems = mergeAndSortLists(existingItems, newItems);
         commit('setTasksItems', mergedItems);
-        commit('setTasksTotal', Math.max(0, response.data.count - (receivedItems.length - newItems.length)));
-        resolve(newItems);
+        commit('setTasksTotal', response.data.count);
+        resolve(response.data.items);
       })
       .catch((error) => {
         return reject(error);
@@ -301,7 +294,7 @@ export const refreshPendingTasks = async (
 };
 
 export default {
-  deleteAudio,
+  deleteTask,
   refreshPendingTasks,
   setService,
   getService,

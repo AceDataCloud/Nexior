@@ -912,16 +912,16 @@
     "description": "Mensagem quando não há resultados de filtro"
   },
   "message.confirmDelete": {
-    "message": "Remover esta música do histórico? Ela não reaparecerá após atualizar. Esta ação não exclui arquivos de mídia nem afeta a conta, o saldo, as chaves de API, as vozes ou os modelos personalizados.",
-    "description": "Remoção de músicas do histórico do Suno; os arquivos de mídia são mantidos"
+    "message": "Tem certeza de que deseja excluir esta música? Esta ação não pode ser desfeita.",
+    "description": "Mensagem de confirmação para excluir a música"
   },
   "message.deleteSuccess": {
-    "message": "Música removida do histórico",
-    "description": "Remoção de músicas do histórico do Suno; os arquivos de mídia são mantidos"
+    "message": "Música excluída",
+    "description": "Mensagem quando a música é excluída com sucesso"
   },
   "message.deleteFailed": {
-    "message": "Falha ao remover do histórico. Tente novamente.",
-    "description": "Remoção de músicas do histórico do Suno; os arquivos de mídia são mantidos"
+    "message": "Falha ao excluir a música",
+    "description": "Mensagem quando a exclusão da música falha"
   },
   "name.generating": {
     "message": "Gerando",
@@ -1175,8 +1175,12 @@
     "message": "Letras padrão",
     "description": "Letras padrão"
   },
-  "button.removeFromHistory": {
-    "message": "Remover do histórico",
-    "description": "Remoção de músicas do histórico do Suno; os arquivos de mídia são mantidos"
+  "button.deleteTask": {
+    "message": "Excluir tarefa",
+    "description": "Remover uma tarefa de geração inteira do Suno, incluindo todas as suas músicas, do histórico"
+  },
+  "message.confirmDeleteTask": {
+    "message": "Remover esta tarefa de geração e todas as músicas nela do histórico? Esta ação não exclui os arquivos de mídia nem cancela a geração.",
+    "description": "Remover uma tarefa de geração inteira do Suno, incluindo todas as suas músicas, do histórico"
   }
 }

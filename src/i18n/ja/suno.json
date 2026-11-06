@@ -912,16 +912,16 @@
     "description": "フィルター結果がないときのメッセージ"
   },
   "message.confirmDelete": {
-    "message": "この曲を履歴から削除しますか？更新後も再表示されません。この操作でメディアファイルは削除されず、アカウント、残高、APIキー、音声、カスタムモデルにも影響しません。",
-    "description": "Sunoの曲を履歴から削除します。メディアファイルは保持されます"
+    "message": "この曲を削除してもよろしいですか？この操作は元に戻せません。",
+    "description": "曲を削除する確認メッセージ"
   },
   "message.deleteSuccess": {
-    "message": "曲を履歴から削除しました",
-    "description": "Sunoの曲を履歴から削除します。メディアファイルは保持されます"
+    "message": "曲が削除されました",
+    "description": "曲削除成功時のメッセージ"
   },
   "message.deleteFailed": {
-    "message": "履歴からの削除に失敗しました。もう一度お試しください。",
-    "description": "Sunoの曲を履歴から削除します。メディアファイルは保持されます"
+    "message": "曲の削除に失敗しました",
+    "description": "曲削除失敗時のメッセージ"
   },
   "name.generating": {
     "message": "生成中",
@@ -1175,8 +1175,12 @@
     "message": "標準歌詞",
     "description": "標準歌詞"
   },
-  "button.removeFromHistory": {
-    "message": "履歴から削除",
-    "description": "Sunoの曲を履歴から削除します。メディアファイルは保持されます"
+  "button.deleteTask": {
+    "message": "タスクを削除",
+    "description": "すべての曲を含むSuno生成タスク全体を履歴から削除します"
+  },
+  "message.confirmDeleteTask": {
+    "message": "この生成タスクと含まれるすべての曲を履歴から削除しますか？この操作ではメディアファイルは削除されず、生成もキャンセルされません。",
+    "description": "すべての曲を含むSuno生成タスク全体を履歴から削除します"
   }
 }

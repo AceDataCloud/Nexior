@@ -1,5 +1,11 @@
 <template>
   <div class="task">
+    <div v-if="modelValue?.id" class="task-actions">
+      <button type="button" class="icon-button btn-delete" :disabled="deleting" @click.stop="onDelete">
+        <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+        {{ $t('suno.button.deleteTask') }}
+      </button>
+    </div>
     <div v-if="isFailure || isPending" class="audio placeholder-row" :class="{ 'failed-row': isFailure }">
       <div class="left placeholder-cover" :class="{ 'pending-cover': isPending }">
         <music-icon :size="'24' as any" aria-hidden="true" focusable="false" />
@@ -305,18 +311,6 @@
 
                 {{ $t('common.button.report') }}
               </el-dropdown-item>
-
-              <!-- Delete group -->
-              <div v-if="canRemoveHistory" class="menu-divider" />
-              <el-dropdown-item
-                v-if="audio?.id && canRemoveHistory"
-                class="delete-item"
-                :disabled="deletingAudioIds.includes(audio.id)"
-                @click.stop="onDelete(audio)"
-              >
-                <delete-icon class="menu-icon delete-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ $t('suno.button.removeFromHistory') }}
-              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -394,7 +388,7 @@ import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/co
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators/suno';
-import { isSunoWalletMode, sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
 import { X402PaymentCancelledError } from '@/operators/x402';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import ReportDialog from '@/components/common/ReportDialog.vue';
@@ -475,7 +469,7 @@ export default defineComponent({
       sourceAudio: {} as ISunoAudio,
       editingAudioId: null as string | null,
       editingTitle: '',
-      deletingAudioIds: [] as string[],
+      deleting: false,
       apiCodeVisible: false,
       reportVisible: false,
       reportTargetId: '',
@@ -485,9 +479,6 @@ export default defineComponent({
     };
   },
   computed: {
-    canRemoveHistory(): boolean {
-      return !!this.credential?.token && !isSunoWalletMode();
-    },
     loading() {
       return this.$store.state.suno?.status?.getApplications === Status.Request;
     },
@@ -1021,27 +1012,32 @@ export default defineComponent({
       this.editingAudioId = null;
       this.editingTitle = '';
     },
-    async onDelete(audio: ISunoAudio) {
-      const taskId = this.modelValue.id;
-      if (!this.canRemoveHistory || !taskId || !audio.id || this.deletingAudioIds.includes(audio.id)) return;
-      this.deletingAudioIds.push(audio.id);
+    async onDelete() {
+      const id = this.modelValue?.id;
+      if (!id || this.deleting) return;
+      this.deleting = true;
       try {
-        await ElMessageBox.confirm(this.$t('suno.message.confirmDelete') as string, {
-          confirmButtonText: this.$t('suno.button.removeFromHistory') as string,
+        await ElMessageBox.confirm(this.$t('suno.message.confirmDeleteTask') as string, {
+          confirmButtonText: this.$t('common.button.delete') as string,
           cancelButtonText: this.$t('common.button.cancel') as string,
+          confirmButtonClass: 'el-button--danger',
           type: 'warning'
         });
       } catch {
-        this.deletingAudioIds = this.deletingAudioIds.filter((id) => id !== audio.id);
+        this.deleting = false;
         return; // User cancelled
       }
+      const audioIds = this.audios.map((audio) => audio.id);
       try {
-        await this.$store.dispatch('suno/deleteAudio', { taskId, audioId: audio.id });
-        ElMessage.success(this.$t('suno.message.deleteSuccess'));
+        await this.$store.dispatch('suno/deleteTask', { id });
+        if (audioIds.includes(this.$store.state.suno?.audio?.id)) {
+          this.$store.dispatch('suno/setAudio', null);
+        }
+        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
       } catch {
-        ElMessage.error(this.$t('suno.message.deleteFailed'));
+        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
       } finally {
-        this.deletingAudioIds = this.deletingAudioIds.filter((id) => id !== audio.id);
+        this.deleting = false;
       }
     },
     async onGetTasks() {
@@ -1076,6 +1072,25 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid transparent;
   transition: border-color 0.2s;
+  .task-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2px 6px 6px;
+    .btn-delete {
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--el-text-color-secondary);
+      cursor: pointer;
+      &:hover {
+        color: var(--el-color-danger);
+      }
+      &:disabled {
+        cursor: wait;
+        opacity: 0.5;
+      }
+    }
+  }
 
   &:hover {
     border-color: var(--el-border-color-lighter);
@@ -1292,13 +1307,6 @@ export default defineComponent({
     height: 1px;
     background: var(--el-border-color-lighter);
     margin: 4px 12px;
-  }
-
-  .delete-item {
-    color: var(--el-color-danger);
-    .delete-icon {
-      color: var(--el-color-danger);
-    }
   }
 }
 </style>

@@ -1,6 +1,5 @@
 import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoCustomModel, ISunoTask, IService } from '@/models';
 import { ISunoState } from './models';
-import { filterRemovedAudios } from './history';
 
 export const resetAll = (state: ISunoState): void => {
   state.service = undefined;
@@ -9,7 +8,6 @@ export const resetAll = (state: ISunoState): void => {
   state.config = undefined;
   state.credential = undefined;
   state.tasks = undefined;
-  state.removedAudioIds = {};
   state.personas = undefined;
   state.customModels = undefined;
 };
@@ -37,7 +35,7 @@ export const setConfig = (state: ISunoState, payload: ISunoConfig): void => {
 export const setTasksItems = (state: ISunoState, payload: ISunoTask[]): void => {
   const newPayload = {
     ...state.tasks,
-    items: filterRemovedAudios(payload, state.removedAudioIds)
+    items: payload
   } as typeof state.tasks;
   state.tasks = newPayload;
 };
@@ -63,20 +61,7 @@ export const setAudio = (state: ISunoState, payload: any): void => {
 };
 
 export const setTasks = (state: ISunoState, payload: any): void => {
-  state.tasks = payload
-    ? { ...payload, items: filterRemovedAudios(payload.items || [], state.removedAudioIds) }
-    : payload;
-};
-
-export const removeAudio = (state: ISunoState, { taskId, audioId }: { taskId: string; audioId: string }): void => {
-  const removed = state.removedAudioIds || {};
-  state.removedAudioIds = { ...removed, [taskId]: [...new Set([...(removed[taskId] || []), audioId])] };
-  const before = state.tasks?.items || [];
-  const after = filterRemovedAudios(before, state.removedAudioIds);
-  setTasksItems(state, after);
-  if (state.tasks?.total !== undefined)
-    state.tasks.total = Math.max(0, state.tasks.total - (before.length - after.length));
-  if (state.audio?.id === audioId) state.audio = undefined;
+  state.tasks = payload;
 };
 
 export const setCustomModels = (state: ISunoState, payload: ISunoCustomModel[]): void => {
@@ -101,7 +86,6 @@ export const togglePersonaFavorite = (state: ISunoState, personaId: string): voi
 };
 
 export default {
-  removeAudio,
   setTasks,
   setApplication,
   setApplications,

@@ -912,16 +912,16 @@
     "description": "Message when no results are found in filter"
   },
   "message.confirmDelete": {
-    "message": "Remove this song from your history? It will stay removed after a refresh. Media files are not deleted, and your account, credits, API keys, personas and custom models are unchanged.",
-    "description": "Suno song history removal; media files are retained"
+    "message": "Are you sure you want to delete this song? This action cannot be undone.",
+    "description": "Confirmation message for deleting a song"
   },
   "message.deleteSuccess": {
-    "message": "Song removed from history",
-    "description": "Suno song history removal; media files are retained"
+    "message": "Song deleted",
+    "description": "Message when song deletion is successful"
   },
   "message.deleteFailed": {
-    "message": "Could not remove song from history. Please try again.",
-    "description": "Suno song history removal; media files are retained"
+    "message": "Failed to delete song",
+    "description": "Message when song deletion fails"
   },
   "name.generating": {
     "message": "Generating",
@@ -1175,8 +1175,12 @@
     "message": "Standard lyrics",
     "description": "标准歌词"
   },
-  "button.removeFromHistory": {
-    "message": "Remove from history",
-    "description": "Suno song history removal; media files are retained"
+  "button.deleteTask": {
+    "message": "Delete task",
+    "description": "Remove an entire Suno generation task, including all its songs, from history"
+  },
+  "message.confirmDeleteTask": {
+    "message": "Remove this generation task and all its songs from your history? This does not delete media files or cancel generation.",
+    "description": "Remove an entire Suno generation task, including all its songs, from history"
   }
 }

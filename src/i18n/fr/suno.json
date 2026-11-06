@@ -912,16 +912,16 @@
     "description": "Message lorsque le filtrage ne donne aucun résultat"
   },
   "message.confirmDelete": {
-    "message": "Retirer cette chanson de l’historique ? Elle ne réapparaîtra pas après actualisation. Cette action ne supprime pas les fichiers multimédias et n’affecte pas le compte, le solde, les clés API, les voix ni les modèles personnalisés.",
-    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
+    "message": "Êtes-vous sûr de vouloir supprimer cette chanson ? Cette action est irréversible.",
+    "description": "Message de confirmation pour la suppression d'une chanson"
   },
   "message.deleteSuccess": {
-    "message": "Chanson retirée de l’historique",
-    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
+    "message": "Chanson supprimée",
+    "description": "Message lors de la suppression réussie d'une chanson"
   },
   "message.deleteFailed": {
-    "message": "Échec du retrait de l’historique. Veuillez réessayer.",
-    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
+    "message": "Échec de la suppression de la chanson",
+    "description": "Message lors de l'échec de la suppression d'une chanson"
   },
   "name.generating": {
     "message": "Génération en cours",
@@ -1175,8 +1175,12 @@
     "message": "Paroles standard",
     "description": "Paroles standard"
   },
-  "button.removeFromHistory": {
-    "message": "Retirer de l’historique",
-    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
+  "button.deleteTask": {
+    "message": "Supprimer la tâche",
+    "description": "Supprimer une tâche de génération Suno entière, y compris toutes ses chansons, de l’historique"
+  },
+  "message.confirmDeleteTask": {
+    "message": "Retirer cette tâche de génération et toutes les chansons qu’elle contient de l’historique ? Cette action ne supprime pas les fichiers multimédias et n’annule pas la génération.",
+    "description": "Supprimer une tâche de génération Suno entière, y compris toutes ses chansons, de l’historique"
   }
 }

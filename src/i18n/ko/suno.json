@@ -912,16 +912,16 @@
     "description": "필터 결과가 없을 때 메시지"
   },
   "message.confirmDelete": {
-    "message": "이 노래를 기록에서 삭제하시겠습니까? 새로고침해도 다시 표시되지 않습니다. 이 작업은 미디어 파일을 삭제하지 않으며 계정, 잔액, API 키, 음색 또는 사용자 지정 모델에 영향을 주지 않습니다.",
-    "description": "Suno 노래 기록에서 삭제하며 미디어 파일은 유지됩니다."
+    "message": "이 곡을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "description": "곡 삭제 확인 메시지"
   },
   "message.deleteSuccess": {
-    "message": "노래가 기록에서 삭제되었습니다",
-    "description": "Suno 노래 기록에서 삭제하며 미디어 파일은 유지됩니다."
+    "message": "곡이 삭제되었습니다",
+    "description": "곡 삭제 성공 시 메시지"
   },
   "message.deleteFailed": {
-    "message": "기록에서 삭제하지 못했습니다. 다시 시도해 주세요.",
-    "description": "Suno 노래 기록에서 삭제하며 미디어 파일은 유지됩니다."
+    "message": "곡 삭제 실패",
+    "description": "곡 삭제 실패 시 메시지"
   },
   "name.generating": {
     "message": "생성 중",
@@ -1175,8 +1175,12 @@
     "message": "기본 가사",
     "description": "기본 가사"
   },
-  "button.removeFromHistory": {
-    "message": "기록에서 삭제",
-    "description": "Suno 노래 기록에서 삭제하며 미디어 파일은 유지됩니다."
+  "button.deleteTask": {
+    "message": "작업 삭제",
+    "description": "모든 곡을 포함한 전체 Suno 생성 작업을 기록에서 제거"
+  },
+  "message.confirmDeleteTask": {
+    "message": "이 생성 작업과 포함된 모든 곡을 기록에서 제거하시겠습니까? 이 작업은 미디어 파일을 삭제하거나 생성을 취소하지 않습니다.",
+    "description": "모든 곡을 포함한 전체 Suno 생성 작업을 기록에서 제거"
   }
 }

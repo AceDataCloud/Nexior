@@ -912,16 +912,16 @@
     "description": "筛选无结果时的消息"
   },
   "message.confirmDelete": {
-    "message": "将这首歌曲移出历史？刷新后也不会重新出现。此操作不删除媒体文件，也不影响账号、余额、API 密钥、音色或自定义模型。",
-    "description": "Suno song history removal; media files are retained"
+    "message": "确定要删除这首歌吗？此操作不可撤销。",
+    "description": "删除歌曲的确认消息"
   },
   "message.deleteSuccess": {
-    "message": "歌曲已移出历史",
-    "description": "Suno song history removal; media files are retained"
+    "message": "歌曲已删除",
+    "description": "歌曲删除成功时的消息"
   },
   "message.deleteFailed": {
-    "message": "移出历史失败，请重试。",
-    "description": "Suno song history removal; media files are retained"
+    "message": "删除歌曲失败",
+    "description": "歌曲删除失败时的消息"
   },
   "name.generating": {
     "message": "生成中",
@@ -1175,8 +1175,12 @@
     "message": "标准歌词",
     "description": "标准歌词"
   },
-  "button.removeFromHistory": {
-    "message": "移出历史",
-    "description": "Suno song history removal; media files are retained"
+  "button.deleteTask": {
+    "message": "删除任务",
+    "description": "Remove an entire Suno generation task, including all its songs, from history"
+  },
+  "message.confirmDeleteTask": {
+    "message": "将这次生成任务及其中的所有歌曲移出历史？此操作不删除媒体文件，也不取消生成。",
+    "description": "Remove an entire Suno generation task, including all its songs, from history"
   }
 }

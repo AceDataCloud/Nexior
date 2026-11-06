@@ -18,7 +18,6 @@ export interface ISunoState {
   personas: ISunoPersona[] | undefined;
   customModels: ISunoCustomModel[] | undefined;
   favoritePersonaIds: string[];
-  removedAudioIds: Record<string, string[]>;
   status: {
     getService: Status;
     getApplications: Status;
