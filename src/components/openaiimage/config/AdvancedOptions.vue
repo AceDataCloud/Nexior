@@ -27,7 +27,12 @@
         </el-upload>
       </div>
       <p class="hint">{{ $t('openaiimage.description.markup') }}</p>
-      <image-preview v-if="config.markup" :url="config.markup" @remove="setMarkup(undefined)" />
+      <image-preview
+        v-if="config.markup"
+        :url="config.markup"
+        :name="$t('openaiimage.name.markup')"
+        @remove="setMarkup(undefined)"
+      />
     </template>
   </div>
 </template>
