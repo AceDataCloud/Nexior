@@ -30,24 +30,49 @@
     <div v-if="view === 'contacts'" class="support-content">
       <p class="welcome">{{ $t('common.support.welcome', { brand: brandName }) }}</p>
       <div v-if="contacts.length" class="support-contacts">
-        <div v-for="(contact, index) in contacts" :key="contact.id || index" class="support-contact">
-          <div class="contact-heading">
-            <font-awesome-icon v-if="contactUsesFontAwesome(contact.type)" :icon="contactIcon(contact.type)" />
-            <component
-              :is="contactIcon(contact.type)"
-              v-else
-              :size="'18px' as any"
-              aria-hidden="true"
-              focusable="false"
-            />
-            <span>{{ contactLabel(contact) }}</span>
+        <component
+          :is="contactHref(contact) ? 'a' : 'div'"
+          v-for="(contact, index) in contacts"
+          :key="contact.id || index"
+          class="support-contact"
+          :class="{ 'support-contact--qr': httpUrl(contact.qr), 'support-contact--link': contactHref(contact) }"
+          :href="contactHref(contact) || undefined"
+          v-bind="linkAttrs(contactHref(contact))"
+        >
+          <div class="contact-copy">
+            <div class="contact-heading">
+              <font-awesome-icon v-if="contactUsesFontAwesome(contact.type)" :icon="contactIcon(contact.type)" />
+              <component
+                :is="contactIcon(contact.type)"
+                v-else
+                :size="'18px' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
+              <span>{{ contactLabel(contact) }}</span>
+            </div>
+            <p v-if="contact.value" class="contact-value">{{ contact.value }}</p>
+            <p v-else-if="contactHref(contact)" class="contact-value">{{ $t('common.support.openChannel') }}</p>
+            <p v-if="httpUrl(contact.qr)" class="qr-hint">
+              {{ $t(contact.type === 'wechat' ? 'common.support.wechatScanHint' : 'common.support.scanHint') }}
+            </p>
           </div>
-          <a v-if="contactHref(contact)" :href="contactHref(contact)" v-bind="linkAttrs(contactHref(contact))">
-            {{ contact.value || $t('common.support.openChannel') }}
-          </a>
-          <p v-else-if="contact.value" class="contact-value">{{ contact.value }}</p>
-          <img v-if="httpUrl(contact.qr)" :src="httpUrl(contact.qr)" :alt="contactLabel(contact)" class="contact-qr" />
-        </div>
+          <img
+            v-if="httpUrl(contact.qr)"
+            :src="httpUrl(contact.qr)"
+            :alt="contactLabel(contact)"
+            width="144"
+            height="144"
+            class="contact-qr"
+          />
+          <next-icon
+            v-else-if="contactHref(contact)"
+            class="contact-arrow"
+            :size="'18px' as any"
+            aria-hidden="true"
+            focusable="false"
+          />
+        </component>
       </div>
       <p v-else class="support-empty">{{ $t('common.support.noContacts') }}</p>
       <p v-if="feedbackHint" class="feedback-hint" role="status">{{ $t('common.support.feedbackHint') }}</p>
@@ -90,7 +115,7 @@
 import { defineComponent, watch, type WatchStopHandle } from 'vue';
 import { ElButton, ElDialog } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { MessageIcon, SupportIcon, WarningIcon } from '@acedatacloud/core/icons/components';
+import { MessageIcon, NextIcon, SupportIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import type { ISite, ISiteContact } from '@/models';
 import { getBrandContacts, getBrandName } from '@/utils/site';
 import { contactBrand, contactIcon, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
@@ -100,7 +125,16 @@ import ContentReportForm from './ContentReportForm.vue';
 
 export default defineComponent({
   name: 'SupportEntry',
-  components: { ElButton, ElDialog, FontAwesomeIcon, MessageIcon, SupportIcon, WarningIcon, ContentReportForm },
+  components: {
+    ElButton,
+    ElDialog,
+    FontAwesomeIcon,
+    MessageIcon,
+    NextIcon,
+    SupportIcon,
+    WarningIcon,
+    ContentReportForm
+  },
   data() {
     return {
       visible: false,
@@ -250,17 +284,40 @@ export default defineComponent({
   line-height: 1.6;
 }
 .support-contacts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .support-contact {
   min-width: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 12px;
+  color: var(--el-text-color-primary);
+  text-decoration: none;
   overflow-wrap: anywhere;
+}
+.support-contact--qr {
+  background: var(--el-fill-color-light);
+  padding: 16px;
+}
+.support-contact--link:hover {
+  border-color: var(--el-border-color);
+  background: var(--el-fill-color-light);
+}
+.support-contact--link:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+}
+.contact-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .contact-heading {
   display: flex;
@@ -268,22 +325,29 @@ export default defineComponent({
   gap: 8px;
   color: var(--el-text-color-primary);
 }
-.support-contact a {
-  color: var(--el-color-primary);
-}
 .contact-value {
   color: var(--el-text-color-regular);
   white-space: pre-line;
 }
+.qr-hint {
+  color: var(--el-text-color-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
 .contact-qr {
-  width: 160px;
-  max-width: 100%;
-  height: auto;
+  width: 144px;
+  flex: 0 0 144px;
+  height: 144px;
   object-fit: contain;
+  border-radius: 8px;
+}
+.contact-arrow {
+  flex-shrink: 0;
+  color: var(--el-text-color-secondary);
 }
 .support-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--el-border-color-lighter);
   padding-top: 16px;
   gap: 12px;
@@ -291,6 +355,9 @@ export default defineComponent({
 .support-action {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
   gap: 7px;
   padding: 10px 12px;
   border: 1px solid var(--el-border-color);
@@ -300,9 +367,13 @@ export default defineComponent({
   cursor: pointer;
   font: inherit;
   text-decoration: none;
+  text-align: center;
 }
 .support-action:hover {
   background: var(--el-fill-color-light);
+}
+.support-action svg {
+  flex-shrink: 0;
 }
 .feedback-hint {
   color: var(--el-text-color-regular);
@@ -333,6 +404,19 @@ export default defineComponent({
   }
   .support-launcher {
     padding: 0 12px;
+  }
+}
+@media (max-width: 400px) {
+  .support-contact--qr {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .support-contact--qr .contact-heading {
+    justify-content: center;
+  }
+  .contact-qr {
+    flex-basis: auto;
   }
 }
 </style>
