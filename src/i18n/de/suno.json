@@ -912,16 +912,16 @@
     "description": "Nachricht bei fehlenden Filterergebnissen"
   },
   "message.confirmDelete": {
-    "message": "Möchten Sie dieses Lied wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
-    "description": "Bestätigungsnachricht zum Löschen eines Songs"
+    "message": "Diesen Song aus dem Verlauf entfernen? Er wird auch nach einer Aktualisierung nicht wieder angezeigt. Dabei werden weder Mediendateien gelöscht noch Konto, Guthaben, API-Schlüssel, Stimmen oder benutzerdefinierte Modelle beeinflusst.",
+    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
   },
   "message.deleteSuccess": {
-    "message": "Song wurde gelöscht",
-    "description": "Nachricht bei erfolgreichem Löschen eines Songs"
+    "message": "Song aus dem Verlauf entfernt",
+    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
   },
   "message.deleteFailed": {
-    "message": "Löschen des Songs fehlgeschlagen",
-    "description": "Nachricht bei fehlgeschlagenem Löschen eines Songs"
+    "message": "Aus dem Verlauf entfernen fehlgeschlagen. Bitte versuche es erneut.",
+    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
   },
   "name.generating": {
     "message": "Wird generiert",
@@ -1174,5 +1174,9 @@
   "lyricsModel.default": {
     "message": "Standard-Songtext",
     "description": "Standard-Songtext"
+  },
+  "button.removeFromHistory": {
+    "message": "Aus Verlauf entfernen",
+    "description": "Suno-Songverlauf entfernen; Mediendateien bleiben erhalten"
   }
 }

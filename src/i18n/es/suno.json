@@ -912,16 +912,16 @@
     "description": "Mensaje cuando no hay resultados de filtrado"
   },
   "message.confirmDelete": {
-    "message": "¿Estás seguro de que deseas eliminar esta canción? Esta acción no se puede deshacer.",
-    "description": "Mensaje de confirmación para eliminar una canción"
+    "message": "¿Quitar esta canción del historial? No volverá a aparecer después de actualizar. Esta acción no elimina los archivos multimedia ni afecta a la cuenta, el saldo, las claves de API, las voces ni los modelos personalizados.",
+    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
   },
   "message.deleteSuccess": {
-    "message": "Canción eliminada",
-    "description": "Mensaje cuando la canción se elimina con éxito"
+    "message": "Canción quitada del historial",
+    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
   },
   "message.deleteFailed": {
-    "message": "Error al eliminar la canción",
-    "description": "Mensaje cuando falla la eliminación de la canción"
+    "message": "No se pudo quitar del historial. Inténtalo de nuevo.",
+    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
   },
   "name.generating": {
     "message": "Generando",
@@ -1174,5 +1174,9 @@
   "lyricsModel.default": {
     "message": "Letras estándar",
     "description": "Letras estándar"
+  },
+  "button.removeFromHistory": {
+    "message": "Quitar del historial",
+    "description": "Eliminación de canciones del historial de Suno; los archivos multimedia se conservan"
   }
 }

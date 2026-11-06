@@ -912,16 +912,16 @@
     "description": "Message lorsque le filtrage ne donne aucun résultat"
   },
   "message.confirmDelete": {
-    "message": "Êtes-vous sûr de vouloir supprimer cette chanson ? Cette action est irréversible.",
-    "description": "Message de confirmation pour la suppression d'une chanson"
+    "message": "Retirer cette chanson de l’historique ? Elle ne réapparaîtra pas après actualisation. Cette action ne supprime pas les fichiers multimédias et n’affecte pas le compte, le solde, les clés API, les voix ni les modèles personnalisés.",
+    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
   },
   "message.deleteSuccess": {
-    "message": "Chanson supprimée",
-    "description": "Message lors de la suppression réussie d'une chanson"
+    "message": "Chanson retirée de l’historique",
+    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
   },
   "message.deleteFailed": {
-    "message": "Échec de la suppression de la chanson",
-    "description": "Message lors de l'échec de la suppression d'une chanson"
+    "message": "Échec du retrait de l’historique. Veuillez réessayer.",
+    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
   },
   "name.generating": {
     "message": "Génération en cours",
@@ -1174,5 +1174,9 @@
   "lyricsModel.default": {
     "message": "Paroles standard",
     "description": "Paroles standard"
+  },
+  "button.removeFromHistory": {
+    "message": "Retirer de l’historique",
+    "description": "Suppression d’une chanson de l’historique Suno ; les fichiers multimédias sont conservés"
   }
 }

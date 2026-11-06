@@ -307,10 +307,15 @@
               </el-dropdown-item>
 
               <!-- Delete group -->
-              <div class="menu-divider" />
-              <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
+              <div v-if="canRemoveHistory" class="menu-divider" />
+              <el-dropdown-item
+                v-if="audio?.id && canRemoveHistory"
+                class="delete-item"
+                :disabled="deletingAudioIds.includes(audio.id)"
+                @click.stop="onDelete(audio)"
+              >
                 <delete-icon class="menu-icon delete-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
-                {{ $t('common.button.delete') }}
+                {{ $t('suno.button.removeFromHistory') }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -389,7 +394,7 @@ import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/co
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators/suno';
-import { sunoPaymentOptions } from '@/utils/x402/sunoPayment';
+import { isSunoWalletMode, sunoPaymentOptions } from '@/utils/x402/sunoPayment';
 import { X402PaymentCancelledError } from '@/operators/x402';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 import ReportDialog from '@/components/common/ReportDialog.vue';
@@ -470,6 +475,7 @@ export default defineComponent({
       sourceAudio: {} as ISunoAudio,
       editingAudioId: null as string | null,
       editingTitle: '',
+      deletingAudioIds: [] as string[],
       apiCodeVisible: false,
       reportVisible: false,
       reportTargetId: '',
@@ -479,6 +485,9 @@ export default defineComponent({
     };
   },
   computed: {
+    canRemoveHistory(): boolean {
+      return !!this.credential?.token && !isSunoWalletMode();
+    },
     loading() {
       return this.$store.state.suno?.status?.getApplications === Status.Request;
     },
@@ -1013,39 +1022,27 @@ export default defineComponent({
       this.editingTitle = '';
     },
     async onDelete(audio: ISunoAudio) {
+      const taskId = this.modelValue.id;
+      if (!this.canRemoveHistory || !taskId || !audio.id || this.deletingAudioIds.includes(audio.id)) return;
+      this.deletingAudioIds.push(audio.id);
       try {
         await ElMessageBox.confirm(this.$t('suno.message.confirmDelete') as string, {
-          confirmButtonText: this.$t('common.button.delete') as string,
+          confirmButtonText: this.$t('suno.button.removeFromHistory') as string,
           cancelButtonText: this.$t('common.button.cancel') as string,
           type: 'warning'
         });
       } catch {
+        this.deletingAudioIds = this.deletingAudioIds.filter((id) => id !== audio.id);
         return; // User cancelled
       }
-      // Remove from local state
-      const tasks = this.$store.state.suno?.tasks;
-      if (tasks?.items) {
-        for (const task of tasks.items) {
-          const data = (task?.response?.data ?? []) as ISunoAudio[];
-          const idx = data.findIndex((a: ISunoAudio) => a.id === audio.id);
-          if (idx !== -1) {
-            data.splice(idx, 1);
-            // If task has no more audios, remove the task too
-            if (data.length === 0) {
-              const taskIdx = tasks.items.indexOf(task);
-              if (taskIdx !== -1) {
-                tasks.items.splice(taskIdx, 1);
-              }
-            }
-            break;
-          }
-        }
+      try {
+        await this.$store.dispatch('suno/deleteAudio', { taskId, audioId: audio.id });
+        ElMessage.success(this.$t('suno.message.deleteSuccess'));
+      } catch {
+        ElMessage.error(this.$t('suno.message.deleteFailed'));
+      } finally {
+        this.deletingAudioIds = this.deletingAudioIds.filter((id) => id !== audio.id);
       }
-      // Stop player if deleted audio is playing
-      if (this.$store.state?.suno?.audio?.id === audio.id) {
-        this.$store.dispatch('suno/setAudio', null);
-      }
-      ElMessage.success(this.$t('suno.message.deleteSuccess'));
     },
     async onGetTasks() {
       if (this.loading) {

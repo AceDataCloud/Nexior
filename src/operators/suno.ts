@@ -46,6 +46,14 @@ export function buildSunoAudioRequest(config?: ISunoConfig): ISunoAudioRequest {
 }
 
 class SunoOperator {
+  async deleteAudio(id: string, audioId: string, options: { token: string }) {
+    return axios.post<{ id: string; audio_id: string; deleted: boolean }>(
+      '/suno/tasks',
+      { action: 'delete_audio', id, audio_id: audioId },
+      { headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }, baseURL: BASE_URL_API }
+    );
+  }
+
   async task(id: string, options: OperatorRequestOptions): Promise<AxiosResponse<ISunoTaskResponse>> {
     return await axios.post(
       `/suno/tasks`,

@@ -912,16 +912,16 @@
     "description": "篩選無結果時的訊息"
   },
   "message.confirmDelete": {
-    "message": "確定要刪除這首歌嗎？此操作不可撤銷。",
-    "description": "刪除歌曲的確認訊息"
+    "message": "將這首歌曲移出歷史？重新整理後也不會再次出現。此操作不會刪除媒體檔案，也不會影響帳號、餘額、API 金鑰、音色或自訂模型。",
+    "description": "Suno 歌曲歷史記錄移除；媒體檔案會保留"
   },
   "message.deleteSuccess": {
-    "message": "歌曲已刪除",
-    "description": "歌曲刪除成功時的訊息"
+    "message": "歌曲已移出歷史",
+    "description": "Suno 歌曲歷史記錄移除；媒體檔案會保留"
   },
   "message.deleteFailed": {
-    "message": "刪除歌曲失敗",
-    "description": "歌曲刪除失敗時的訊息"
+    "message": "移出歷史失敗，請重試。",
+    "description": "Suno 歌曲歷史記錄移除；媒體檔案會保留"
   },
   "name.generating": {
     "message": "生成中",
@@ -1174,5 +1174,9 @@
   "lyricsModel.default": {
     "message": "標準歌詞",
     "description": "標準歌詞"
+  },
+  "button.removeFromHistory": {
+    "message": "移出歷史",
+    "description": "Suno 歌曲歷史記錄移除；媒體檔案會保留"
   }
 }
