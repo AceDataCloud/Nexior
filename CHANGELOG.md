@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 05 Nov 2026 20:15:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 06 Nov 2026 20:15:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.384.1
+
+Fri, 06 Nov 2026 20:15:41 GMT
+
+### Patches
+
+- Fix GPT Image 2.6 GIF boundaries, planning complexity and annotation editing controls. (dev@acedata.cloud)
+- Add native GIF controls for verified GPT Image 2.6 models and preserve GIF media types in previews. (dev@acedata.cloud)
+- Align Suno history deletion with GPT Image by using the shared persistent task deletion flow. (dev@acedata.cloud)
+- Keep Suno and GPT Image deletion feedback available after optimistic task-card removal. (dev@acedata.cloud)
+- Make the support dialog compact with complete contact rows and balanced QR layouts. (dev@acedata.cloud)
 
 ## 3.384.0
 
