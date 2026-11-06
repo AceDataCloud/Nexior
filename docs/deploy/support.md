@@ -2,6 +2,8 @@
 
 Studio displays a **Support** button at the bottom right of its main pages. It opens a single dialog with the current site's contacts, visible QR codes, feedback access, and content reporting. The button moves above the chat composer when they would overlap and hides while a mobile keyboard is open.
 
+QR codes appear beside scanning instructions, with a centered layout on narrow screens. Other contact channels use full-width clickable rows, and the feedback/report actions share the footer width.
+
 In **Settings → Site → Customer support contacts**, configure the channels you operate:
 
 - **WeChat**: upload the QR code. It appears immediately when the dialog opens.
@@ -18,6 +20,8 @@ Configuring a link here does not enable the destination service. Configure the F
 ## 帮助与反馈
 
 Studio 主页面右下角显示“客服”悬浮按钮，点击后以一个弹窗直接展示当前站点的联系方式和二维码，并提供意见反馈与内容举报。
+
+二维码与扫码说明组合展示，窄屏居中排版；其他联系方式以整行入口展示，底部反馈和举报按钮等宽排列。
 
 在 **设置 → 站点 → 客服联系方式** 中配置微信、电话、邮箱；新增的“工作时间”类型用于填写实际时间及时区，“意见反馈”类型用于填写已开通的反馈表单或服务台链接。没有专用反馈链接时，使用本站支持链接或邮箱；只有二维码时，引导用户通过该客服渠道反馈。
 
