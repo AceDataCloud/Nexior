@@ -332,6 +332,10 @@ export default defineComponent({
     async onDelete() {
       const id = this.modelValue?.id;
       if (!id) return;
+      // Optimistic removal unmounts this card before the request settles.
+      const store = this.$store;
+      const successMessage = this.$t('common.message.deleteTaskSuccess');
+      const failureMessage = this.$t('common.message.deleteTaskFailed');
       try {
         await ElMessageBox.confirm(this.$t('common.message.deleteTaskConfirm'), this.$t('common.button.delete'), {
           type: 'warning',
@@ -343,10 +347,10 @@ export default defineComponent({
         return; // user cancelled
       }
       try {
-        await this.$store.dispatch('openaiimage/deleteTask', { id });
-        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
+        await store.dispatch('openaiimage/deleteTask', { id });
+        ElMessage.success(successMessage);
       } catch {
-        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
+        ElMessage.error(failureMessage);
       }
     }
   }

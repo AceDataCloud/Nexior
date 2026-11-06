@@ -1015,6 +1015,10 @@ export default defineComponent({
     async onDelete() {
       const id = this.modelValue?.id;
       if (!id || this.deleting) return;
+      // Optimistic removal unmounts this card before the request settles.
+      const store = this.$store;
+      const successMessage = this.$t('common.message.deleteTaskSuccess');
+      const failureMessage = this.$t('common.message.deleteTaskFailed');
       this.deleting = true;
       try {
         await ElMessageBox.confirm(this.$t('suno.message.confirmDeleteTask') as string, {
@@ -1029,13 +1033,13 @@ export default defineComponent({
       }
       const audioIds = this.audios.map((audio) => audio.id);
       try {
-        await this.$store.dispatch('suno/deleteTask', { id });
-        if (audioIds.includes(this.$store.state.suno?.audio?.id)) {
-          this.$store.dispatch('suno/setAudio', null);
+        await store.dispatch('suno/deleteTask', { id });
+        if (audioIds.includes(store.state.suno?.audio?.id)) {
+          store.dispatch('suno/setAudio', null);
         }
-        ElMessage.success(this.$t('common.message.deleteTaskSuccess'));
+        ElMessage.success(successMessage);
       } catch {
-        ElMessage.error(this.$t('common.message.deleteTaskFailed'));
+        ElMessage.error(failureMessage);
       } finally {
         this.deleting = false;
       }
