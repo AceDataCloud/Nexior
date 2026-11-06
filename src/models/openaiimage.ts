@@ -1,4 +1,5 @@
 export type OpenAIImageQuality = 'auto' | 'low' | 'medium' | 'high' | 'xhigh' | 'max';
+export type OpenAIImageComplexity = 'low' | 'medium' | 'high';
 export type OpenAIImageOutputFormat = 'png' | 'jpeg' | 'webp' | 'gif';
 
 export interface IOpenAIImageOutputConfig {
@@ -15,6 +16,8 @@ export interface IOpenAIImageConfig extends IOpenAIImageOutputConfig {
   async?: boolean;
   model?: string;
   quality?: OpenAIImageQuality;
+  complexity?: OpenAIImageComplexity;
+  markup?: string;
 }
 
 export interface IOpenAIImageGenerateRequest extends IOpenAIImageOutputConfig {
@@ -27,6 +30,8 @@ export interface IOpenAIImageGenerateRequest extends IOpenAIImageOutputConfig {
   async?: boolean;
   background?: 'transparent' | 'opaque' | 'auto';
   quality?: OpenAIImageQuality;
+  complexity?: OpenAIImageComplexity;
+  markup?: string;
 }
 
 export interface IOpenAIImageEditRequest extends IOpenAIImageOutputConfig {
@@ -38,6 +43,8 @@ export interface IOpenAIImageEditRequest extends IOpenAIImageOutputConfig {
   callback_url?: string;
   async?: boolean;
   quality?: OpenAIImageQuality;
+  complexity?: OpenAIImageComplexity;
+  markup?: string;
 }
 
 export interface IOpenAIImageImage {

@@ -264,8 +264,8 @@
     "description": "تنسيق إخراج GPT Image 2.6 والتحكم الأصلي في الرسوم المتحركة"
   },
   "description.outputFormat": {
-    "message": "يدعم GIF إصدار GPT Image 2.6 Flare العادي والرسمي، بالإضافة إلى إصدار Sunburst الرسمي. تحتفظ الصور المتحركة بجميع الإطارات ومدة التشغيل كاملةً.",
-    "description": "تنسيق إخراج GPT Image 2.6 والتحكم الأصلي في الرسوم المتحركة"
+    "message": "يدعم GPT Image 2.6 تنسيقات PNG وJPEG وWebP وصور GIF المتحركة. تتكون صور GIF من 2–16 إطارًا، وتتراوح مدة كل إطار بين 20 و655350 مللي ثانية، مع التقريب إلى أقرب 10 مللي ثوانٍ.",
+    "description": "تنسيق الإخراج والتحكم الأصلي في الرسوم المتحركة في GPT Image 2.6"
   },
   "name.frameCount": {
     "message": "عدد إطارات الرسوم المتحركة",
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "يستخدم GIF إعدادًا مسبقًا بحجم 512 × 512، وقد يضبط النموذج الأبعاد الفعلية. دقة 4K مناسبة للصور الثابتة.",
     "description": "تنسيق إخراج GPT Image 2.6 والتحكم الأصلي في الرسوم المتحركة"
+  },
+  "name.complexity": {
+    "message": "تعقيد التكوين",
+    "description": "مَعلمة متقدمة للصور في GPT Image 2.6: name.complexity"
+  },
+  "description.complexity": {
+    "message": "مستوى التخطيط في GPT Image 2.6 مستقل عن جودة العرض، والقيمة الافتراضية هي مرتفع.",
+    "description": "مَعلمة متقدمة للصور في GPT Image 2.6: description.complexity"
+  },
+  "name.markup": {
+    "message": "الصورة المشروحة (اختياري)",
+    "description": "مَعلمة متقدمة للصور في GPT Image 2.6: name.markup"
+  },
+  "description.markup": {
+    "message": "ارفع صورة PNG شفافة بالحجم نفسه للصورة المرجعية الأولى، وحدد مواضع التعديل، واشرح متطلبات التعديل في النص التوجيهي. تُستخدم لتحرير الصور الثابتة فقط.",
+    "description": "مَعلمة متقدمة للصور في GPT Image 2.6: description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "يرجى استخدام صورة PNG مشروحة لا يتجاوز حجمها 40MB.",
+    "description": "مَعلمة متقدمة للصور في GPT Image 2.6: message.invalidMarkup"
   }
 }

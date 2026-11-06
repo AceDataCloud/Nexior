@@ -32,6 +32,7 @@ export function buildNanobananaRequest(config?: INanobananaConfig): INanobananaG
 export function buildOpenAIImageGenerateRequest(config?: IOpenAIImageConfig): IOpenAIImageGenerateRequest {
   const request: IOpenAIImageGenerateRequest = { ...(config || {}) };
   delete request.image_urls;
+  delete request.markup;
   if (!request.size) delete request.size;
   if (typeof request.prompt === 'string') request.prompt = request.prompt.trim();
   return { ...request, action: 'generate', async: true };

@@ -18,14 +18,22 @@
       <p class="hint">{{ $t('openaiimage.description.gifSize') }}</p>
       <div class="field">
         <h2 class="title font-bold">{{ $t('openaiimage.name.frameCount') }}</h2>
-        <el-input-number v-model="frameCount" class="value" :min="1" :precision="0" controls-position="right" />
+        <el-input-number
+          v-model="frameCount"
+          class="value"
+          :min="2"
+          :max="16"
+          :precision="0"
+          controls-position="right"
+        />
       </div>
       <div class="field">
         <h2 class="title font-bold">{{ $t('openaiimage.name.frameDuration') }}</h2>
         <el-input-number
           v-model="frameDuration"
           class="value"
-          :min="1"
+          :min="20"
+          :max="655350"
           :step="10"
           :precision="0"
           controls-position="right"
@@ -73,6 +81,7 @@ export default defineComponent({
         if (value === 'gif') {
           if (previous !== 'gif') this.previousRasterSize = this.config.size;
           next.size = OPENAIIMAGE_GIF_SIZE;
+          next.markup = undefined;
           next.frame_count = this.config.frame_count || 9;
           next.frame_duration_ms = this.config.frame_duration_ms || 200;
         } else {
@@ -88,7 +97,8 @@ export default defineComponent({
         return this.config.frame_count || 9;
       },
       set(value: number | undefined) {
-        this.$store.commit('openaiimage/setConfig', { ...this.config, frame_count: value || 9 });
+        if (value !== undefined && (!Number.isInteger(value) || value < 2 || value > 16)) return;
+        this.$store.commit('openaiimage/setConfig', { ...this.config, frame_count: value ?? 9 });
       }
     },
     frameDuration: {
@@ -96,7 +106,8 @@ export default defineComponent({
         return this.config.frame_duration_ms || 200;
       },
       set(value: number | undefined) {
-        this.$store.commit('openaiimage/setConfig', { ...this.config, frame_duration_ms: value || 200 });
+        if (value !== undefined && (!Number.isInteger(value) || value < 20 || value > 655350)) return;
+        this.$store.commit('openaiimage/setConfig', { ...this.config, frame_duration_ms: value ?? 200 });
       }
     }
   },

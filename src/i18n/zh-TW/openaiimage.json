@@ -264,7 +264,7 @@
     "description": "GPT Image 2.6 輸出格式與原生動畫控制"
   },
   "description.outputFormat": {
-    "message": "GIF 支援 GPT Image 2.6 Flare 普通版和官方版，以及 Sunburst 官方版。動圖保留完整動畫幀和播放時長。",
+    "message": "GPT Image 2.6 支援 PNG、JPEG、WebP 和 GIF 動圖。GIF 為 2–16 幀，每幀 20–655350 毫秒，以 10ms 為單位取整。",
     "description": "GPT Image 2.6 輸出格式與原生動畫控制"
   },
   "name.frameCount": {
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "GIF 使用 512 × 512 預設，實際尺寸可能由模型調整。4K 適用於靜態圖片。",
     "description": "GPT Image 2.6 輸出格式與原生動畫控制"
+  },
+  "name.complexity": {
+    "message": "構圖複雜度",
+    "description": "GPT Image 2.6 進階影像參數：name.complexity"
+  },
+  "description.complexity": {
+    "message": "GPT Image 2.6 的規劃投入，與渲染畫質獨立，預設為高。",
+    "description": "GPT Image 2.6 進階影像參數：description.complexity"
+  },
+  "name.markup": {
+    "message": "標註圖（可選）",
+    "description": "GPT Image 2.6 進階影像參數：name.markup"
+  },
+  "description.markup": {
+    "message": "上傳與第一張參考圖同尺寸的透明 PNG，標出修改位置，並在提示詞中說明修改要求。僅用於靜態圖片編輯。",
+    "description": "GPT Image 2.6 進階影像參數：description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "請使用不超過 40MB 的 PNG 標註圖。",
+    "description": "GPT Image 2.6 進階影像參數：message.invalidMarkup"
   }
 }

@@ -7,6 +7,7 @@
       <quality-selector class="mb-4" />
       <prompt-input class="mb-4" />
       <image-urls-input class="mb-4" />
+      <advanced-options class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <scenario-payment-mode scenario="openaiimage" />
@@ -31,6 +32,7 @@
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
+import AdvancedOptions from './config/AdvancedOptions.vue';
 import PromptInput from './config/PromptInput.vue';
 import ImageUrlsInput from './config/ImageUrlsInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
@@ -51,6 +53,7 @@ export default defineComponent({
   name: 'ConfigPanel',
   components: {
     MagicIcon,
+    AdvancedOptions,
     ElButton,
     PromptInput,
     ServicePricingSummary,

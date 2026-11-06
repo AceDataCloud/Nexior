@@ -66,4 +66,19 @@ describe('OpenAIImageOperator edit', () => {
     expect(form.get('frame_duration_ms')).toBe('200');
     expect(form.get('image')).toBe('https://example.com/a.png');
   });
+  it('sends complexity and markup with static reference edits', async () => {
+    await openaiimageOperator.edit(
+      {
+        model: 'gpt-image-2.6-sunburst',
+        prompt: 'edit annotation',
+        image_urls: ['https://example.com/base.png'],
+        complexity: 'low',
+        markup: 'https://example.com/overlay.png'
+      },
+      { token: 'fixture' }
+    );
+    const form = mocks.post.mock.calls[0][1] as FormData;
+    expect(form.get('complexity')).toBe('low');
+    expect(form.get('markup')).toBe('https://example.com/overlay.png');
+  });
 });

@@ -264,8 +264,8 @@
     "description": "Formato de saída do GPT Image 2.6 e controle nativo de animação"
   },
   "description.outputFormat": {
-    "message": "O GIF é compatível com as versões padrão e oficial do GPT Image 2.6 Flare, além da versão oficial do Sunburst. As imagens animadas preservam todos os quadros da animação e a duração da reprodução.",
-    "description": "Formato de saída do GPT Image 2.6 e controle nativo de animação"
+    "message": "O GPT Image 2.6 é compatível com PNG, JPEG, WebP e GIF animado. O GIF pode ter de 2 a 16 quadros, com duração de 20 a 655350 milissegundos por quadro, arredondada para incrementos de 10 ms.",
+    "description": "Formato de saída e controle de animação nativo do GPT Image 2.6"
   },
   "name.frameCount": {
     "message": "Número de quadros da animação",
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "O GIF usa a predefinição 512 × 512; as dimensões reais podem ser ajustadas pelo modelo. 4K é adequado para imagens estáticas.",
     "description": "Formato de saída do GPT Image 2.6 e controle nativo de animação"
+  },
+  "name.complexity": {
+    "message": "Complexidade da composição",
+    "description": "Parâmetro avançado de imagem do GPT Image 2.6: name.complexity"
+  },
+  "description.complexity": {
+    "message": "O esforço de planejamento do GPT Image 2.6 é independente da qualidade de renderização e, por padrão, é alto.",
+    "description": "Parâmetro avançado de imagem do GPT Image 2.6: description.complexity"
+  },
+  "name.markup": {
+    "message": "Imagem de marcação (opcional)",
+    "description": "Parâmetro avançado de imagem do GPT Image 2.6: name.markup"
+  },
+  "description.markup": {
+    "message": "Envie um PNG transparente do mesmo tamanho da primeira imagem de referência, indicando as áreas a modificar e explicando os requisitos da alteração no prompt. Usado apenas para edição de imagens estáticas.",
+    "description": "Parâmetro avançado de imagem do GPT Image 2.6: description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "Use uma imagem PNG de marcação com no máximo 40 MB.",
+    "description": "Parâmetro avançado de imagem do GPT Image 2.6: message.invalidMarkup"
   }
 }

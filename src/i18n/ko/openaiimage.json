@@ -264,7 +264,7 @@
     "description": "GPT Image 2.6 출력 형식 및 네이티브 애니메이션 제어"
   },
   "description.outputFormat": {
-    "message": "GIF는 GPT Image 2.6 Flare 일반 버전과 공식 버전, 그리고 Sunburst 공식 버전을 지원합니다. 애니메이션은 전체 프레임과 재생 시간을 유지합니다.",
+    "message": "GPT Image 2.6은 PNG, JPEG, WebP 및 GIF 애니메이션을 지원합니다. GIF는 2–16프레임이며, 프레임당 20–655350밀리초이고 10ms 단위로 반올림됩니다.",
     "description": "GPT Image 2.6 출력 형식 및 네이티브 애니메이션 제어"
   },
   "name.frameCount": {
@@ -282,5 +282,25 @@
   "description.gifSize": {
     "message": "GIF는 512 × 512 사전 설정을 사용하며, 실제 크기는 모델에 의해 조정될 수 있습니다. 4K는 정적 이미지에 적합합니다.",
     "description": "GPT Image 2.6 출력 형식 및 네이티브 애니메이션 제어"
+  },
+  "name.complexity": {
+    "message": "구성 복잡도",
+    "description": "GPT Image 2.6 고급 이미지 매개변수: name.complexity"
+  },
+  "description.complexity": {
+    "message": "GPT Image 2.6의 계획 처리량은 렌더링 화질과 독립적이며 기본값은 높음입니다.",
+    "description": "GPT Image 2.6 고급 이미지 매개변수: description.complexity"
+  },
+  "name.markup": {
+    "message": "표시 이미지(선택 사항)",
+    "description": "GPT Image 2.6 고급 이미지 매개변수: name.markup"
+  },
+  "description.markup": {
+    "message": "첫 번째 참조 이미지와 같은 크기의 투명 PNG를 업로드하고 수정할 위치를 표시한 다음, 프롬프트에 수정 요구 사항을 설명하세요. 정적 이미지 편집에만 사용됩니다.",
+    "description": "GPT Image 2.6 고급 이미지 매개변수: description.markup"
+  },
+  "message.invalidMarkup": {
+    "message": "40MB 이하의 PNG 표시 이미지를 사용하세요.",
+    "description": "GPT Image 2.6 고급 이미지 매개변수: message.invalidMarkup"
   }
 }
