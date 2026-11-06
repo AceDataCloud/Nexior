@@ -29,6 +29,9 @@ class OpenAIImageOperator extends BaseTaskOperator<
     if (data.prompt) formData.append('prompt', data.prompt);
     if (data.size) formData.append('size', data.size);
     if (data.quality) formData.append('quality', data.quality);
+    if (data.output_format) formData.append('output_format', data.output_format);
+    if (data.frame_count !== undefined) formData.append('frame_count', String(data.frame_count));
+    if (data.frame_duration_ms !== undefined) formData.append('frame_duration_ms', String(data.frame_duration_ms));
     if (data.async) formData.append('async', 'true');
     (data.image_urls || []).forEach((url) => {
       formData.append('image', url);

@@ -121,4 +121,26 @@ describe('OpenAI Image quality requests', () => {
     );
     expect(mocks.generate).not.toHaveBeenCalled();
   });
+
+  it('passes GIF format and frame settings from config to image editing', async () => {
+    const wrapper = mountPage(['https://example.com/reference.png'], 'medium');
+    Object.assign((wrapper.vm as any).$store.state.openaiimage.config, {
+      model: 'gpt-image-2.6-sunburst:official',
+      size: '512x512',
+      output_format: 'gif',
+      frame_count: 9,
+      frame_duration_ms: 200
+    });
+    await (wrapper.vm as any).onGenerate();
+    await flushPromises();
+    expect(mocks.edit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        model: 'gpt-image-2.6-sunburst:official',
+        output_format: 'gif',
+        frame_count: 9,
+        frame_duration_ms: 200
+      }),
+      { token: 'credential-token' }
+    );
+  });
 });

@@ -1,6 +1,13 @@
 export type OpenAIImageQuality = 'auto' | 'low' | 'medium' | 'high' | 'xhigh' | 'max';
+export type OpenAIImageOutputFormat = 'png' | 'jpeg' | 'webp' | 'gif';
 
-export interface IOpenAIImageConfig {
+export interface IOpenAIImageOutputConfig {
+  output_format?: OpenAIImageOutputFormat;
+  frame_count?: number;
+  frame_duration_ms?: number;
+}
+
+export interface IOpenAIImageConfig extends IOpenAIImageOutputConfig {
   prompt?: string;
   image_urls?: string[];
   size?: string;
@@ -10,7 +17,7 @@ export interface IOpenAIImageConfig {
   quality?: OpenAIImageQuality;
 }
 
-export interface IOpenAIImageGenerateRequest {
+export interface IOpenAIImageGenerateRequest extends IOpenAIImageOutputConfig {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
@@ -22,7 +29,7 @@ export interface IOpenAIImageGenerateRequest {
   quality?: OpenAIImageQuality;
 }
 
-export interface IOpenAIImageEditRequest {
+export interface IOpenAIImageEditRequest extends IOpenAIImageOutputConfig {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;

@@ -278,9 +278,16 @@ export default defineComponent({
             return;
           }
           if (image?.b64_json) {
+            const format = this.modelValue?.request?.output_format || 'png';
+            const mime =
+              (
+                { png: 'image/png', jpeg: 'image/jpeg', webp: 'image/webp', gif: 'image/gif' } as Record<string, string>
+              )[format] || 'image/png';
             result.push({
               ...image,
-              url: `data:image/png;base64,${image.b64_json}`
+              url: /^data:image\/(png|jpeg|webp|gif);base64,/.test(image.b64_json)
+                ? image.b64_json
+                : `data:${mime};base64,${image.b64_json}`
             });
           }
         });

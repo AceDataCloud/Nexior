@@ -17,6 +17,16 @@ export const OPENAIIMAGE_MODEL_GPT_IMAGE_25_SUNBURST_OFFICIAL = 'gpt-image-2.5-s
 export const OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL = 'gpt-image-2.6-sunburst:official';
 export const OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL = 'gpt-image-2:official';
 
+export const OPENAIIMAGE_GIF_MODELS: string[] = [
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE,
+  'gpt-image-2.6-flare:reverse',
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_FLARE_OFFICIAL,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_26_SUNBURST_OFFICIAL
+];
+export const OPENAIIMAGE_GIF_SIZE = '512x512';
+export const isOpenAIImage26Model = (model?: string): boolean =>
+  !!model && /^gpt-image-2\.6-(flare|sunburst)(?::reverse|:official)?$/.test(model);
+
 export const OPENAIIMAGE_OFFICIAL_MODELS: string[] = [
   OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_25_FLARE_OFFICIAL,
