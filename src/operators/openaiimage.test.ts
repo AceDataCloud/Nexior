@@ -46,4 +46,24 @@ describe('OpenAIImageOperator edit', () => {
     const form = mocks.post.mock.calls[0][1] as FormData;
     expect(form.has('quality')).toBe(false);
   });
+
+  it('preserves GIF controls in multipart edits', async () => {
+    await openaiimageOperator.edit(
+      {
+        model: 'gpt-image-2.6-flare',
+        prompt: 'animate',
+        size: '512x512',
+        output_format: 'gif',
+        frame_count: 9,
+        frame_duration_ms: 200,
+        image_urls: ['https://example.com/a.png']
+      },
+      { token: 'credential-token' }
+    );
+    const form = mocks.post.mock.calls[0][1] as FormData;
+    expect(form.get('output_format')).toBe('gif');
+    expect(form.get('frame_count')).toBe('9');
+    expect(form.get('frame_duration_ms')).toBe('200');
+    expect(form.get('image')).toBe('https://example.com/a.png');
+  });
 });

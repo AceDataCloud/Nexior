@@ -9,6 +9,25 @@ const GPT_IMAGE_25_MODELS = [
 ];
 
 describe('x402 image request builders', () => {
+  it('keeps native GIF controls in generation and quote payloads', () => {
+    expect(
+      buildOpenAIImageGenerateRequest({
+        model: 'gpt-image-2.6-flare:official',
+        prompt: ' animate ',
+        size: '512x512',
+        output_format: 'gif',
+        frame_count: 9,
+        frame_duration_ms: 200
+      })
+    ).toMatchObject({
+      model: 'gpt-image-2.6-flare:official',
+      prompt: 'animate',
+      output_format: 'gif',
+      frame_count: 9,
+      frame_duration_ms: 200,
+      async: true
+    });
+  });
   it('builds the same trimmed Nano Banana payload for quote and generation without mutating config', () => {
     const config = {
       model: 'nano-banana-2',

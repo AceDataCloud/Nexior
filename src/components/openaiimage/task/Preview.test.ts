@@ -42,6 +42,17 @@ const mountPreview = (response?: IOpenAIImageTask['response'], dispatch = vi.fn(
   });
 
 describe('openaiimage/task/Preview', () => {
+  it('uses the GIF MIME type for an inline animated result', async () => {
+    const wrapper = mountPreview({ task_id: 'task-1', success: true, data: [{ b64_json: 'R0lGODlh' }] });
+    await wrapper.setProps({
+      modelValue: {
+        id: 'task-1',
+        request: { model: 'gpt-image-2.6-flare', output_format: 'gif' },
+        response: { task_id: 'task-1', success: true, data: [{ b64_json: 'R0lGODlh' }] }
+      }
+    });
+    expect((wrapper.vm as any).images[0].url).toBe('data:image/gif;base64,R0lGODlh');
+  });
   it('labels tasks without a response as pending', () => {
     const wrapper = mountPreview();
 
