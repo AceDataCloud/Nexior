@@ -243,7 +243,13 @@ export default defineComponent({
   },
   computed: {
     video(): ISeedanceVideo | undefined {
-      return this.modelValue?.response?.data;
+      const video = this.modelValue?.response?.data;
+      if (!video) return undefined;
+      return {
+        ...video,
+        video_url: video.video_url || video.content?.video_url,
+        last_frame_url: video.last_frame_url || video.content?.last_frame_url
+      };
     },
     // Drop the deprecated Ark `service_tier` from the copy/run "API code" body:
     // an old task may have stored `flex`, which batch-queues and times out on
