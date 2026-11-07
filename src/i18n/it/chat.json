@@ -2012,8 +2012,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "Ogni account viene estratto indipendentemente prima dell’avvio. 0 non avvia mai, 1 avvia sempre e 0.8 dà l’80% di probabilità. Le esecuzioni non selezionate vengono saltate senza addebiti. Il valore predefinito è 1; vale anche per Esegui ora.",
-    "description": "Per-account scheduled trigger probability"
+    "message": "Utilizzato solo per l’esecuzione automatica pianificata; ogni account effettua un’estrazione indipendente. 0 significa saltare tutte le esecuzioni pianificate, 1 avviare ogni volta, 0.8 avviare con una probabilità dell’80%; i tentativi non riusciti non vengono addebitati. Valore predefinito: 1. L’attivazione manuale immediata non effettua l’estrazione e viene comunque addebitata secondo le regole normali.",
+    "description": "Probabilità di attivazione pianificata per account"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "Inserisci un numero tra 0 e 1.",
@@ -2036,8 +2036,8 @@
     "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "Verrà tentata l'esecuzione solo per gli account selezionati; la configurazione dell'attività pianificata non verrà modificata. Questa volta non si attende il ritardo casuale; per ogni account viene comunque effettuata un'estrazione indipendente con probabilità di attivazione del {percent}%; se non viene selezionato, l'account viene ignorato.",
-    "description": "Selezione degli account per un'esecuzione manuale di un'attività pianificata"
+    "message": "Gli account selezionati verranno avviati immediatamente questa volta, senza attendere un ritardo casuale né effettuare l’estrazione in base alla probabilità di attivazione. Gli account salvati, la probabilità di attivazione e il piano di esecuzione restano invariati; l’operazione viene comunque addebitata secondo le regole normali.",
+    "description": "Selezione degli account per un’attivazione manuale di un’attività pianificata"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "Seleziona gli account per questa esecuzione",

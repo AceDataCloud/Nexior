@@ -1973,8 +1973,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "每個帳號在啟動前獨立抽籤。0 永不啟動，1 每次啟動，0.8 表示 80% 的機率啟動；未命中的執行會跳過且不計費。預設 1，立即執行也遵循此設定。",
-    "description": "Per-account scheduled trigger probability"
+    "message": "僅用於自動定時執行，每個帳號獨立抽籤。0 表示定時執行全部略過，1 表示每次啟動，0.8 表示 80% 的機率啟動；未命中不計費。預設為 1。手動立即觸發不抽籤，仍按正常規則計費。",
+    "description": "每個帳號的定時觸發機率"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "請輸入 0 到 1 之間的數字。",
@@ -1997,8 +1997,8 @@
     "description": "用於手動觸發一次排程任務時選擇帳號"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "僅嘗試執行勾選的帳號，不變更定時任務設定。本次不等待隨機延遲；每個帳號仍依 {percent}% 的觸發機率獨立抽籤，未命中會略過。",
-    "description": "用於手動觸發一次排程任務時選擇帳號"
+    "message": "本次立即啟動勾選的帳號，不等待隨機延遲，也不按觸發機率抽籤。已儲存的帳號、觸發機率和定時排程不變，仍按正常規則計費。",
+    "description": "單次手動觸發定時任務的帳號選擇"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "選擇本次執行帳號",

@@ -2012,8 +2012,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "Vor jedem Start wird für jedes Konto unabhängig ausgelost. 0 startet nie, 1 immer, 0.8 mit 80% Wahrscheinlichkeit. Nicht ausgewählte Ausführungen werden kostenlos übersprungen. Standard: 1. Gilt auch für „Jetzt ausführen“.",
-    "description": "Per-account scheduled trigger probability"
+    "message": "Nur für die automatische zeitgesteuerte Ausführung. Für jedes Konto wird separat gelost. 0 bedeutet, dass alle zeitgesteuerten Ausführungen übersprungen werden, 1 bedeutet Start bei jedem Mal, 0,8 bedeutet eine Startwahrscheinlichkeit von 80 %; nicht ausgewählte Ausführungen werden nicht berechnet. Standardwert: 1. Bei manueller sofortiger Auslösung wird nicht gelost; es gelten weiterhin die normalen Abrechnungsregeln.",
+    "description": "Wahrscheinlichkeit für die zeitgesteuerte Auslösung pro Konto"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "Geben Sie eine Zahl zwischen 0 und 1 ein.",
@@ -2036,8 +2036,8 @@
     "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "Es werden nur die ausgewählten Konten ausgeführt; die Konfiguration der geplanten Aufgabe bleibt unverändert. Diesmal wird keine zufällige Verzögerung abgewartet; für jedes Konto wird weiterhin unabhängig mit einer Auslösewahrscheinlichkeit von {percent}% gelost. Konten ohne Treffer werden übersprungen.",
-    "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
+    "message": "Die für diesen sofortigen Start ausgewählten Konten werden ohne zufällige Verzögerung gestartet und nicht anhand der Auslösewahrscheinlichkeit ausgelost. Gespeicherte Konten, Auslösewahrscheinlichkeit und Zeitplan bleiben unverändert; es gelten weiterhin die normalen Abrechnungsregeln.",
+    "description": "Kontenauswahl für eine manuelle Auslösung einer geplanten Aufgabe"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "Konten für diese Ausführung auswählen",
