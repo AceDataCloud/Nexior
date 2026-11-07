@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 06 Nov 2026 20:15:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 07 Nov 2026 20:14:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.384.2
+
+Sat, 07 Nov 2026 20:14:37 GMT
+
+### Patches
+
+- Display and download Seedance videos from historical tasks with nested output URLs. (dev@acedata.cloud)
+- Clarify that Run now starts selected accounts without probability sampling; scheduled runs retain their configured probability. (dev@acedata.cloud)
+- Choose which configured accounts to run when manually triggering a multi-account scheduled task. (dev@acedata.cloud)
 
 ## 3.384.1
 
