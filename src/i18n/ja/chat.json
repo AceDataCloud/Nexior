@@ -1991,5 +1991,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "{triggered} アカウントを開始し、{skipped} アカウントをスキップしました。",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "{count}個のアカウントを実行",
+    "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "チェックしたアカウントのみ実行を試み、スケジュールタスクの設定は変更しません。今回はランダム遅延を待機せず、各アカウントは引き続き{percent}%の実行確率で個別に抽選され、当選しなかった場合はスキップされます。",
+    "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "今回実行するアカウントを選択",
+    "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "すべてのアカウントを選択",
+    "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
   }
 }

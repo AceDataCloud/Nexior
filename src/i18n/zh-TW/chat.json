@@ -1991,5 +1991,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "本次啟動 {triggered} 個帳號，跳過 {skipped} 個帳號。",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "觸發 {count} 個帳號",
+    "description": "用於手動觸發一次排程任務時選擇帳號"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "僅嘗試執行勾選的帳號，不變更定時任務設定。本次不等待隨機延遲；每個帳號仍依 {percent}% 的觸發機率獨立抽籤，未命中會略過。",
+    "description": "用於手動觸發一次排程任務時選擇帳號"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "選擇本次執行帳號",
+    "description": "用於手動觸發一次排程任務時選擇帳號"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "全選帳號",
+    "description": "用於手動觸發一次排程任務時選擇帳號"
   }
 }

@@ -807,6 +807,46 @@
         </el-button>
       </template>
     </el-dialog>
+    <el-dialog
+      v-model="showTriggerDialog"
+      class="scheduled-trigger-dialog"
+      :title="$t('chat.scheduledTasks.triggerAccountsTitle')"
+      width="min(480px, 92vw)"
+      @close="resetTriggerSelection"
+    >
+      <template v-if="triggerSelectionTask">
+        <p>{{ triggerSelectionTask.name }}</p>
+        <p class="hint">
+          {{ $t('chat.scheduledTasks.triggerAccountsHint', { percent: probabilityPercent(triggerSelectionTask) }) }}
+        </p>
+        <el-checkbox
+          :model-value="triggerConnectionIds.length === triggerAccountChoices.length"
+          :indeterminate="triggerConnectionIds.length > 0 && triggerConnectionIds.length < triggerAccountChoices.length"
+          @change="triggerConnectionIds = $event ? triggerAccountChoices.map((account) => account.connection_id) : []"
+        >
+          {{ $t('chat.scheduledTasks.triggerAccountsSelectAll') }}
+        </el-checkbox>
+        <el-checkbox-group
+          v-model="triggerConnectionIds"
+          class="trigger-account-list"
+          :aria-label="$t('chat.scheduledTasks.triggerAccountsTitle')"
+        >
+          <el-checkbox
+            v-for="account in triggerAccountChoices"
+            :key="account.connection_id"
+            :value="account.connection_id"
+          >
+            {{ account.label }}
+          </el-checkbox>
+        </el-checkbox-group>
+      </template>
+      <template #footer>
+        <el-button @click="showTriggerDialog = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button type="primary" :disabled="!triggerConnectionIds.length" @click="confirmTriggerAccounts">
+          {{ $t('chat.scheduledTasks.triggerAccountsConfirm', { count: triggerConnectionIds.length }) }}
+        </el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -818,6 +858,8 @@ import { defineComponent } from 'vue';
 import {
   ElButton,
   ElCard,
+  ElCheckbox,
+  ElCheckboxGroup,
   ElSkeleton,
   ElEmpty,
   ElSwitch,
@@ -850,6 +892,7 @@ import { connectionOperator, type IConnectorCatalogItem } from '@/operators/conn
 import {
   scheduledTasksOperator,
   IScheduledTask,
+  IScheduledConnectionBinding,
   IScheduledRun,
   IScheduledRunStatus,
   IScheduleSpec,
@@ -946,6 +989,8 @@ export default defineComponent({
     SearchIcon,
     ElButton,
     ElCard,
+    ElCheckbox,
+    ElCheckboxGroup,
     ElSkeleton,
     ElEmpty,
     ElSwitch,
@@ -1011,6 +1056,9 @@ export default defineComponent({
       authorizableMcpServers: [] as IAuthorizableMcpServer[],
       togglingIds: [] as string[],
       triggeringId: '' as string,
+      showTriggerDialog: false,
+      triggerSelectionTask: null as IScheduledTask | null,
+      triggerConnectionIds: [] as string[],
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
       pageSize: 10,
@@ -1133,6 +1181,22 @@ export default defineComponent({
         (connection) => connection.connection_id === this.form.browserConnectionId
       );
     },
+    triggerAccountChoices(): Array<{ connection_id: string; label: string }> {
+      if (!this.triggerSelectionTask) return [];
+      const accounts = this.authorizableSkills.flatMap((skill) =>
+        Object.values(skill.connection_accounts ?? {}).flat()
+      );
+      return this.multipleAccountBindings(this.triggerSelectionTask).map((binding) => {
+        const account = accounts.find(
+          (item) =>
+            item.connection_id === binding.connection_id && item.connector_identifier === binding.connector_identifier
+        );
+        return {
+          connection_id: binding.connection_id,
+          label: account?.label || account?.account_name || binding.connection_id
+        };
+      });
+    },
     /** Connectors the selected skills need where the user holds MORE THAN ONE
      *  account — only those need a picker; a single account needs no choice
      *  and stays on the connector's default. */
@@ -1182,6 +1246,8 @@ export default defineComponent({
       }
     },
     token(token: string | undefined) {
+      this.showTriggerDialog = false;
+      this.resetTriggerSelection();
       this.tasksRequestId += 1;
       if (this.taskSearchTimer) clearTimeout(this.taskSearchTimer);
       this.taskSearchTimer = null;
@@ -2040,6 +2106,29 @@ export default defineComponent({
      */
     async triggerNow(task: IScheduledTask) {
       if (this.triggeringId) return;
+      if (task.execution !== 'local' && this.multipleAccountBindings(task).length > 1) {
+        this.triggerSelectionTask = task;
+        this.triggerConnectionIds = [];
+        this.showTriggerDialog = true;
+        void this.loadAuthorizableSkills(true);
+        return;
+      }
+      await this.runTaskNow(task);
+    },
+    resetTriggerSelection() {
+      this.triggerSelectionTask = null;
+      this.triggerConnectionIds = [];
+    },
+    async confirmTriggerAccounts() {
+      const task = this.triggerSelectionTask;
+      if (!task || !this.triggerConnectionIds.length || this.triggeringId) return;
+      const ids = [...this.triggerConnectionIds];
+      this.showTriggerDialog = false;
+      this.resetTriggerSelection();
+      await this.runTaskNow(task, ids);
+    },
+    async runTaskNow(task: IScheduledTask, connectionIds?: string[]) {
+      if (this.triggeringId) return;
       this.triggeringId = task.id;
       try {
         let conversationId: string | undefined;
@@ -2071,7 +2160,9 @@ export default defineComponent({
           }
           conversationId = result.conversation_id;
         } else {
-          const result = await scheduledTasksOperator.triggerTask(this.token!, task.id);
+          const result = connectionIds
+            ? await scheduledTasksOperator.triggerTask(this.token!, task.id, connectionIds)
+            : await scheduledTasksOperator.triggerTask(this.token!, task.id);
           if ((result?.runs?.length ?? 0) > 1 || (result?.skipped_count ?? 0) > 0) {
             const triggered = result.triggered_count ?? result.runs?.length ?? 0;
             const skipped = result.skipped_count ?? 0;
@@ -2172,6 +2263,15 @@ export default defineComponent({
       }
       return Math.max(1, ...[...counts.values()].map((ids) => ids.size));
     },
+    multipleAccountBindings(task: IScheduledTask) {
+      const groups = new Map<string, IScheduledConnectionBinding[]>();
+      for (const binding of task.unattended_policy?.connection_bindings ?? []) {
+        const group = groups.get(binding.connector_identifier) ?? [];
+        if (!group.some((item) => item.connection_id === binding.connection_id)) group.push(binding);
+        groups.set(binding.connector_identifier, group);
+      }
+      return [...groups.values()].find((group) => group.length > 1) ?? [];
+    },
     // Which account the run posted as, e.g. `zhihu · Germey`. The name half is
     // resolved server-side and disappears once the account is deleted, so fall
     // back to the connector alone rather than rendering a dangling separator.
@@ -2269,6 +2369,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.trigger-account-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow: auto;
+
+  :deep(.el-checkbox__label) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  :deep(.el-checkbox) {
+    height: auto;
+    min-height: 36px;
+    margin-right: 0;
+  }
+}
+
 .scheduled-tasks {
   height: 100%;
   overflow-y: auto;

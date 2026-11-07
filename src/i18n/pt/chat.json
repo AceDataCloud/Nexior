@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "{triggered} contas iniciadas; {skipped} contas ignoradas.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Acionar {count} contas",
+    "description": "Seleção de contas para uma execução manual de tarefa agendada"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Tentará executar apenas as contas selecionadas, sem alterar a configuração da tarefa agendada. Desta vez, não aguardará o atraso aleatório; cada conta ainda será sorteada independentemente, com probabilidade de acionamento de {percent}%, e será ignorada se não for selecionada.",
+    "description": "Seleção de contas para uma execução manual de tarefa agendada"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Selecionar contas para esta execução",
+    "description": "Seleção de contas para uma execução manual de tarefa agendada"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Selecionar todas as contas",
+    "description": "Seleção de contas para uma execução manual de tarefa agendada"
   }
 }

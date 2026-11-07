@@ -2030,5 +2030,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "{triggered} Konten gestartet; {skipped} Konten übersprungen.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "{count} Konten auslösen",
+    "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Es werden nur die ausgewählten Konten ausgeführt; die Konfiguration der geplanten Aufgabe bleibt unverändert. Diesmal wird keine zufällige Verzögerung abgewartet; für jedes Konto wird weiterhin unabhängig mit einer Auslösewahrscheinlichkeit von {percent}% gelost. Konten ohne Treffer werden übersprungen.",
+    "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Konten für diese Ausführung auswählen",
+    "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Alle Konten auswählen",
+    "description": "Kontenauswahl für eine manuelle Ausführung einer geplanten Aufgabe"
   }
 }

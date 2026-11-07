@@ -1076,8 +1076,9 @@ describe('chat/ScheduledTasks', () => {
     await wrapper.setData({ saving: true, showCreateDialog: true });
 
     const newButton = wrapper.find('.header el-dropdown-stub');
-    const dialogs = wrapper.findAllComponents({ name: 'ElDialog' });
-    const dialog = dialogs[dialogs.length - 1];
+    const dialog = wrapper
+      .findAllComponents({ name: 'ElDialog' })
+      .find((item) => item.classes().includes('scheduled-task-dialog'))!;
 
     expect(newButton.attributes('disabled')).toBe('true');
     expect(dialog.props('showClose')).toBe(false);
@@ -2425,5 +2426,123 @@ describe('trigger probability configuration', () => {
     });
     expect(info).toHaveBeenCalledWith('chat.scheduledTasks.triggerSummary');
     expect(routerPush).toHaveBeenCalledWith({ name: 'chat-scheduled-task-detail', params: { id: 'task-1' } });
+  });
+});
+
+describe('manual multi-account picker', () => {
+  const multiTask: IScheduledTask = {
+    ...editedTask,
+    trigger_probability: 0.5,
+    unattended_policy: {
+      allowed_skills: ['daily'],
+      connection_bindings: [
+        ...Array.from({ length: 20 }, (_, i) => ({ connector_identifier: 'x/x', connection_id: `account-${i}` })),
+        { connector_identifier: 'mail/mail', connection_id: 'inbox' }
+      ]
+    }
+  };
+  type PickerVm = {
+    triggerNow: (task: IScheduledTask) => Promise<void>;
+    confirmTriggerAccounts: () => Promise<void>;
+    resetTriggerSelection: () => void;
+    showTriggerDialog: boolean;
+    triggerConnectionIds: string[];
+    triggerAccountChoices: Array<{ connection_id: string; label: string }>;
+  };
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    vi.clearAllMocks();
+    vi.spyOn(scheduledTasksOperator, 'listTasks').mockResolvedValue({ items: [], count: 0 });
+    vi.spyOn(scheduledTasksOperator, 'listAuthorizableCapabilities').mockResolvedValue({
+      skills: [
+        {
+          slug: 'daily',
+          connection_accounts: {
+            x: [{ connection_id: 'account-17', connector_identifier: 'x/x', label: 'Debug account' }]
+          }
+        }
+      ],
+      mcp_servers: []
+    } as never);
+  });
+  afterEach(() => vi.restoreAllMocks());
+
+  it('opens empty and does not send anything on open, empty confirmation, or cancel', async () => {
+    const trigger = vi.spyOn(scheduledTasksOperator, 'triggerTask');
+    const wrapper = mountComponent({ token: 'tok' });
+    const vm = wrapper.vm as unknown as PickerVm;
+    await vm.triggerNow(multiTask);
+    await flushPromises();
+    expect(vm.showTriggerDialog).toBe(true);
+    expect(vm.triggerConnectionIds).toEqual([]);
+    expect(vm.triggerAccountChoices).toHaveLength(20);
+    expect(vm.triggerAccountChoices[17].label).toBe('Debug account');
+    expect(vm.triggerAccountChoices[0].label).toBe('account-0');
+    await vm.confirmTriggerAccounts();
+    vm.showTriggerDialog = false;
+    vm.resetTriggerSelection();
+    expect(trigger).not.toHaveBeenCalled();
+  });
+
+  it('runs only checked accounts once without saving new task settings', async () => {
+    let resolve!: (value: { conversation_id: string }) => void;
+    const trigger = vi.spyOn(scheduledTasksOperator, 'triggerTask').mockReturnValue(
+      new Promise((done) => {
+        resolve = done;
+      })
+    );
+    const update = vi.spyOn(scheduledTasksOperator, 'updateTask');
+    const wrapper = mountComponent({ token: 'tok' });
+    const vm = wrapper.vm as unknown as PickerVm;
+    await vm.triggerNow(multiTask);
+    vm.triggerConnectionIds = ['account-17'];
+    const first = vm.confirmTriggerAccounts();
+    await vm.confirmTriggerAccounts();
+    expect(trigger).toHaveBeenCalledExactlyOnceWith('tok', multiTask.id, ['account-17']);
+    expect(vm.showTriggerDialog).toBe(false);
+    resolve({ conversation_id: 'chosen-run' });
+    await first;
+    expect(routerPush).toHaveBeenCalledWith('/chatgpt/conversations/chosen-run');
+    expect(update).not.toHaveBeenCalled();
+    expect(multiTask.unattended_policy?.connection_bindings).toHaveLength(21);
+    await vm.triggerNow(multiTask);
+    expect(vm.triggerConnectionIds).toEqual([]);
+  });
+
+  it('wires checkboxes, select all, and the disabled confirmation button', async () => {
+    const trigger = vi
+      .spyOn(scheduledTasksOperator, 'triggerTask')
+      .mockResolvedValue({ conversation_id: 'chosen-run' });
+    const wrapper = mountComponent(
+      { token: 'tok' },
+      {
+        ElDialog: {
+          props: ['modelValue'],
+          template:
+            '<div v-if="modelValue"><div class="el-dialog__body"><slot /></div><div class="el-dialog__footer"><slot name="footer" /></div></div>'
+        },
+        ElCheckbox: false,
+        ElCheckboxGroup: false,
+        ElButton: false
+      }
+    );
+    await (wrapper.vm as unknown as PickerVm).triggerNow(multiTask);
+    await flushPromises();
+    const dialog = wrapper.get('.scheduled-trigger-dialog');
+    const confirm = dialog.get('.el-dialog__footer .el-button--primary');
+    expect(confirm.attributes('disabled')).toBeDefined();
+    const accounts = dialog.findAll('.trigger-account-list input[type="checkbox"]');
+    expect(accounts).toHaveLength(20);
+    await accounts[17].setValue(true);
+    expect(confirm.attributes('disabled')).toBeUndefined();
+    const selectAll = dialog.get('.el-dialog__body > .el-checkbox input');
+    await selectAll.setValue(true);
+    expect((wrapper.vm as unknown as PickerVm).triggerConnectionIds).toHaveLength(20);
+    await selectAll.setValue(false);
+    expect(confirm.attributes('disabled')).toBeDefined();
+    await accounts[17].setValue(true);
+    await confirm.trigger('click');
+    await flushPromises();
+    expect(trigger).toHaveBeenCalledExactlyOnceWith('tok', multiTask.id, ['account-17']);
   });
 });

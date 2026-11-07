@@ -1933,5 +1933,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "Started {triggered} accounts; skipped {skipped} accounts.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Trigger {count} accounts",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Only checked accounts will be attempted. This does not change the saved task. No random delay is applied; each account still has an independent {percent}% chance of running and may be skipped.",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Choose accounts to run now",
+    "description": "Account selection for one manual scheduled-task trigger"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Select all accounts",
+    "description": "Account selection for one manual scheduled-task trigger"
   }
 }

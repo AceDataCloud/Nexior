@@ -8,6 +8,16 @@ import type { IScheduledRun } from './scheduledTasks';
 describe('operators/scheduledTasks', () => {
   afterEach(() => vi.restoreAllMocks());
 
+  it('sends the one-time account selection without updating the task', async () => {
+    const post = vi.spyOn(axios, 'post').mockResolvedValue({ data: { triggered_count: 1 } });
+    await scheduledTasksOperator.triggerTask('tok', 'task-1', ['account-17']);
+    expect(post).toHaveBeenCalledExactlyOnceWith(
+      expect.stringContaining('/aichat2/scheduled-tasks'),
+      { action: 'trigger_selected', id: 'task-1', connection_ids: ['account-17'] },
+      expect.objectContaining({ headers: expect.objectContaining({ Authorization: 'Bearer tok' }) })
+    );
+  });
+
   it('sends title search and pagination to the server and preserves the total count', async () => {
     const result = { items: [{ id: 'old-task', name: 'Weekly report' }], count: 151 };
     const post = vi.spyOn(axios, 'post').mockResolvedValue({ data: result });

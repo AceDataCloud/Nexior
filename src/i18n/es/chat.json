@@ -2031,5 +2031,21 @@
   "scheduledTasks.triggerSummary": {
     "message": "Se iniciaron {triggered} cuentas y se omitieron {skipped}.",
     "description": "Per-account scheduled trigger probability"
+  },
+  "scheduledTasks.triggerAccountsConfirm": {
+    "message": "Activar {count} cuentas",
+    "description": "Selección de cuentas para una ejecución manual de una tarea programada"
+  },
+  "scheduledTasks.triggerAccountsHint": {
+    "message": "Solo se intentará ejecutar en las cuentas seleccionadas; no se modificará la configuración de la tarea programada. Esta vez no se esperará el retraso aleatorio; cada cuenta seguirá sorteándose de forma independiente con una probabilidad de activación del {percent}%; las que no resulten seleccionadas se omitirán.",
+    "description": "Selección de cuentas para una ejecución manual de una tarea programada"
+  },
+  "scheduledTasks.triggerAccountsTitle": {
+    "message": "Seleccionar cuentas para esta ejecución",
+    "description": "Selección de cuentas para una ejecución manual de una tarea programada"
+  },
+  "scheduledTasks.triggerAccountsSelectAll": {
+    "message": "Seleccionar todas las cuentas",
+    "description": "Selección de cuentas para una ejecución manual de una tarea programada"
   }
 }
