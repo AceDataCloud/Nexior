@@ -80,6 +80,11 @@ export interface ISeedanceVideo {
   status?: string;
   video_url?: string;
   last_frame_url?: string;
+  // Older stored tasks can carry output URLs inside content.
+  content?: {
+    video_url?: string;
+    last_frame_url?: string;
+  };
   model?: string;
   prompt?: string;
   duration?: number;
