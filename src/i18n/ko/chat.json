@@ -2012,8 +2012,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "각 계정은 시작 전에 독립적으로 추첨합니다. 0은 실행하지 않음, 1은 항상 실행, 0.8은 80% 확률로 실행을 의미합니다. 선택되지 않은 실행은 건너뛰며 요금이 부과되지 않습니다. 기본값은 1이며 지금 실행에도 적용됩니다.",
-    "description": "Per-account scheduled trigger probability"
+    "message": "자동 예약 실행에만 적용되며, 계정별로 독립적으로 추첨합니다. 0은 예약 실행을 모두 건너뛰고, 1은 매번 실행하며, 0.8은 80% 확률로 실행합니다. 추첨에 당첨되지 않으면 과금되지 않습니다. 기본값은 1입니다. 수동으로 즉시 실행할 때는 추첨하지 않으며, 정상 규칙에 따라 과금됩니다.",
+    "description": "계정별 예약 트리거 확률"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "0에서 1 사이의 숫자를 입력하세요.",
@@ -2036,8 +2036,8 @@
     "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "선택한 계정만 실행을 시도하며 예약 작업 설정은 변경하지 않습니다. 이번 실행에서는 무작위 지연을 기다리지 않으며, 각 계정은 여전히 {percent}%의 트리거 확률로 독립적으로 추첨됩니다. 당첨되지 않으면 건너뜁니다.",
-    "description": "수동으로 예약 작업을 한 번 실행할 때 계정 선택"
+    "message": "이번에 즉시 시작할 계정을 선택합니다. 무작위 지연을 기다리지 않으며 트리거 확률 추첨도 하지 않습니다. 저장된 계정, 트리거 확률 및 예약 계획은 변경되지 않고, 정상 규칙에 따라 과금됩니다.",
+    "description": "예약 작업을 한 번 수동으로 트리거할 때의 계정 선택"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "이번 실행 계정 선택",

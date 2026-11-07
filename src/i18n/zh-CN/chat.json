@@ -1987,7 +1987,7 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "每个账号在启动前独立抽签。0 永不启动，1 每次启动，0.8 表示 80% 的概率启动；未命中的运行会跳过且不计费。默认 1，立即运行也遵循此设置。",
+    "message": "仅用于自动定时运行，每个账号独立抽签。0 表示定时运行全部跳过，1 每次启动，0.8 表示 80% 的概率启动；未命中不计费。默认 1。手动立即触发不抽签，仍按正常规则计费。",
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
@@ -2011,7 +2011,7 @@
     "description": "Account selection for one manual scheduled-task trigger"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "仅尝试运行勾选的账号，不改变定时任务配置。本次不等待随机延迟；每个账号仍按 {percent}% 的触发概率独立抽签，未命中会跳过。",
+    "message": "本次立即启动勾选的账号，不等待随机延迟，也不按触发概率抽签。已保存的账号、触发概率和定时计划不变，仍按正常规则计费。",
     "description": "Account selection for one manual scheduled-task trigger"
   },
   "scheduledTasks.triggerAccountsTitle": {

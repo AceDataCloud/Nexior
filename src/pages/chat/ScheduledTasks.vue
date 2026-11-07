@@ -817,7 +817,7 @@
       <template v-if="triggerSelectionTask">
         <p>{{ triggerSelectionTask.name }}</p>
         <p class="hint">
-          {{ $t('chat.scheduledTasks.triggerAccountsHint', { percent: probabilityPercent(triggerSelectionTask) }) }}
+          {{ $t('chat.scheduledTasks.triggerAccountsHint') }}
         </p>
         <el-checkbox
           :model-value="triggerConnectionIds.length === triggerAccountChoices.length"

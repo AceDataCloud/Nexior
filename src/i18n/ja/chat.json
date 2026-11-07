@@ -1973,8 +1973,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "各アカウントの開始前に個別に抽選します。0 は実行せず、1 は必ず実行し、0.8 は 80% の確率で実行します。選ばれなかった実行はスキップされ、課金されません。既定値は 1 で、「今すぐ実行」にも適用されます。",
-    "description": "Per-account scheduled trigger probability"
+    "message": "自動スケジュール実行にのみ使用され、アカウントごとに個別に抽選されます。0 はスケジュール実行をすべてスキップ、1 は毎回起動、0.8 は 80% の確率で起動することを意味します。抽選に外れた場合は課金されません。デフォルトは 1 です。手動で今すぐ実行する場合は抽選されず、通常のルールに従って課金されます。",
+    "description": "アカウントごとのスケジュール実行トリガー確率"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "0 から 1 の数値を入力してください。",
@@ -1997,8 +1997,8 @@
     "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "チェックしたアカウントのみ実行を試み、スケジュールタスクの設定は変更しません。今回はランダム遅延を待機せず、各アカウントは引き続き{percent}%の実行確率で個別に抽選され、当選しなかった場合はスキップされます。",
-    "description": "手動でスケジュールタスクを1回実行する際のアカウント選択"
+    "message": "今回すぐに起動するために選択したアカウントは、ランダムな遅延を待たず、トリガー確率の抽選も行いません。保存済みのアカウント、トリガー確率、スケジュール設定は変更されず、通常のルールに従って課金されます。",
+    "description": "スケジュールタスクを手動で1回実行する際のアカウント選択"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "今回実行するアカウントを選択",

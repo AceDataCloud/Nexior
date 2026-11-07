@@ -1915,7 +1915,7 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "Each account is sampled independently before starting. 0 never starts, 1 always starts, and 0.8 gives an 80% chance. Unselected runs are skipped without charges. Defaults to 1; Run now also follows this setting.",
+    "message": "Applies only to automatic scheduled runs, independently for each account. 0 skips every scheduled run, 1 always starts, and 0.8 gives an 80% chance. Skipped draws are not charged. Defaults to 1. Manual Run now bypasses the draw; normal charges apply.",
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
@@ -1939,7 +1939,7 @@
     "description": "Account selection for one manual scheduled-task trigger"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "Only checked accounts will be attempted. This does not change the saved task. No random delay is applied; each account still has an independent {percent}% chance of running and may be skipped.",
+    "message": "Start the checked accounts now, without random delay or a probability draw. Saved accounts, trigger probability, and schedule stay unchanged. Normal charges apply.",
     "description": "Account selection for one manual scheduled-task trigger"
   },
   "scheduledTasks.triggerAccountsTitle": {

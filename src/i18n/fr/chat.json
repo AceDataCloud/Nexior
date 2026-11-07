@@ -2012,8 +2012,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "Chaque compte fait l’objet d’un tirage indépendant avant le démarrage. 0 ne démarre jamais, 1 démarre toujours et 0.8 donne 80% de chances. Les exécutions non sélectionnées sont ignorées sans frais. Valeur par défaut : 1. S’applique aussi à Exécuter maintenant.",
-    "description": "Per-account scheduled trigger probability"
+    "message": "Utilisé uniquement pour les exécutions automatiques planifiées, avec un tirage indépendant pour chaque compte. 0 signifie que toutes les exécutions planifiées sont ignorées, 1 que l’exécution a lieu à chaque lancement, 0.8 qu’il y a 80 % de chances de lancer l’exécution ; une exécution non déclenchée n’est pas facturée. Valeur par défaut : 1. Un déclenchement manuel immédiat ne fait pas l’objet d’un tirage et reste facturé selon les règles normales.",
+    "description": "Probabilité de déclenchement planifié par compte"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "Saisissez un nombre entre 0 et 1.",
@@ -2036,7 +2036,7 @@
     "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "Tente uniquement d’exécuter les comptes sélectionnés, sans modifier la configuration de la tâche planifiée. Aucun délai aléatoire n’est appliqué cette fois-ci ; chaque compte fait toujours l’objet d’un tirage indépendant avec une probabilité de déclenchement de {percent} %, et les comptes non retenus sont ignorés.",
+    "message": "Les comptes sélectionnés sont lancés immédiatement cette fois-ci, sans attendre de délai aléatoire ni effectuer de tirage selon la probabilité de déclenchement. Les comptes enregistrés, la probabilité de déclenchement et le planning restent inchangés ; la facturation suit les règles normales.",
     "description": "Sélection des comptes pour un déclenchement manuel unique d’une tâche planifiée"
   },
   "scheduledTasks.triggerAccountsTitle": {

@@ -2012,8 +2012,8 @@
     "description": "Per-account scheduled trigger probability"
   },
   "scheduledTasks.form.triggerProbabilityHelp": {
-    "message": "Cada conta é sorteada de forma independente antes de iniciar. 0 nunca inicia, 1 inicia sempre e 0.8 dá 80% de probabilidade. Execuções não selecionadas são ignoradas sem cobrança. O padrão é 1; Executar agora também segue esta configuração.",
-    "description": "Per-account scheduled trigger probability"
+    "message": "Usado apenas para execuções automáticas agendadas; cada conta faz um sorteio independente. 0 significa que todas as execuções agendadas serão ignoradas; 1 significa iniciar sempre; 0,8 significa 80% de probabilidade de iniciar. Quando não for selecionado, não haverá cobrança. O padrão é 1. O acionamento manual imediato não faz sorteio e continua sujeito às regras normais de cobrança.",
+    "description": "Probabilidade de acionamento agendado por conta"
   },
   "scheduledTasks.form.triggerProbabilityInvalid": {
     "message": "Introduza um número entre 0 e 1.",
@@ -2036,8 +2036,8 @@
     "description": "Seleção de contas para uma execução manual de tarefa agendada"
   },
   "scheduledTasks.triggerAccountsHint": {
-    "message": "Tentará executar apenas as contas selecionadas, sem alterar a configuração da tarefa agendada. Desta vez, não aguardará o atraso aleatório; cada conta ainda será sorteada independentemente, com probabilidade de acionamento de {percent}%, e será ignorada se não for selecionada.",
-    "description": "Seleção de contas para uma execução manual de tarefa agendada"
+    "message": "As contas selecionadas serão iniciadas imediatamente desta vez, sem aguardar um atraso aleatório nem fazer um sorteio com base na probabilidade de acionamento. As contas salvas, a probabilidade de acionamento e o plano agendado não serão alterados; as regras normais de cobrança continuam valendo.",
+    "description": "Seleção de contas para um acionamento manual de tarefa agendada"
   },
   "scheduledTasks.triggerAccountsTitle": {
     "message": "Selecionar contas para esta execução",
