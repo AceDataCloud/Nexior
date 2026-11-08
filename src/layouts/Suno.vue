@@ -5,7 +5,7 @@
     >
       <slot name="config" />
     </div>
-    <div class="result h-full flex flex-col flex-1 min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
+    <div class="result h-full p-4 flex flex-col flex-1 min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="result" />
     </div>
     <div class="preview h-full w-[300px] flex flex-col">
