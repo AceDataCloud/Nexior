@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 07 Nov 2026 20:14:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 08 Nov 2026 20:13:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.384.3
+
+Sun, 08 Nov 2026 20:13:48 GMT
+
+### Patches
+
+- Align Suno Studio result padding with other generators. (dev@acedata.cloud)
 
 ## 3.384.2
 
