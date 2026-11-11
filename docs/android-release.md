@@ -23,6 +23,12 @@ The Google Play bundle compiles out Nano Banana navigation, routes, home cards, 
 
 Before submitting a remediation build, verify that blocked AI results render no media, every visible generated result has an in-app Report action, and the content-report moderation queue is operational.
 
+The Play flavor removes `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO` from the
+merged Android manifest. Uploads use Capacitor's existing Android system file
+picker and access only the files selected by the user. Verify the merged Play
+release manifest before uploading an AAB, and replace affected bundles in every
+active Play track when resolving the photo/video permissions policy warning.
+
 ## Daily review guard
 
 Android checks Google Play every day at 09:00 Asia/Shanghai. If any track is `IN_REVIEW`, it waits; otherwise it submits a newer version, updating beta and production together in one review with 100% production rollout by default. The 05:47 schedule only runs iOS, so an earlier Android beta review cannot block production each day. Manual Android releases use the same check.
