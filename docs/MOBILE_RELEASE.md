@@ -289,7 +289,7 @@ acedatacloud2-1256437459/      # COS bucket
    - 上传 `ios.json` 和 `android.json`（同一份 manifest 内容）到 `cos://.../<channel>/<platform>.json`（`Cache-Control: public, max-age=60`，让回滚秒级生效）。
 4. 同时把 zip 作为 workflow artifact 保留 30 天，便于排查。
 
-**需要的 repo secrets：** `TENCENT_CLOUD_SECRET_ID`、`TENCENT_CLOUD_SECRET_KEY`。
+**需要的 repo secrets：** `TENCENT_CLOUD_COS_SECRET_ID`、`TENCENT_CLOUD_COS_SECRET_KEY`。
 
 > dist 是同一份 web bundle，iOS WKWebView 和 Android WebView 直接复用，所以两端共享同一个 zip URL，只是 manifest 文件名不同。需要让 iOS 单独停留在某个旧版本时，把 `platforms` 改成 `android` 单跑即可。
 
