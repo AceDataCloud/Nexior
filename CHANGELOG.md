@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 13 Nov 2026 20:15:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 14 Nov 2026 20:13:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.385.1
+
+Sat, 14 Nov 2026 20:13:45 GMT
+
+### Patches
+
+- Use dedicated Tencent COS credentials for OTA artifact publication. (dev@acedata.cloud)
+- Remove the retired Proxy service type, usage UI and client contracts. (dev@acedata.cloud)
+- Preserve file MIME types when renaming pasted or dropped uploads so documents are not treated as images. (dev@acedata.cloud)
 
 ## 3.385.0
 
