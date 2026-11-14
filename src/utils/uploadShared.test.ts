@@ -42,8 +42,26 @@ describe('renameForDedup', () => {
     expect(a.name).not.toBe(b.name);
   });
 
-  it('gives extension-less files a .png fallback', () => {
+  it('preserves unknown extension-less files without inventing image metadata', () => {
     const out = renameForDedup(makeFile('clipboard'));
-    expect(out.name.endsWith('.png')).toBe(true);
+    expect(out.name).toMatch(/^clipboard-[a-z0-9]+$/);
+    expect(out.type).toBe('');
+  });
+
+  it('keeps Markdown with an empty browser MIME type as a document across repeated renames', () => {
+    const original = new File(['# Report\nDocument text'], 'report.md', { type: '' });
+    const first = renameForDedup(original);
+    const second = renameForDedup(first);
+    expect(first.name.endsWith('.md')).toBe(true);
+    expect(second.name.endsWith('.md')).toBe(true);
+    expect(first.type).toBe('');
+    expect(second.type).toBe('');
+    expect(first.size).toBe(original.size);
+    expect(second.size).toBe(original.size);
+  });
+
+  it('preserves the declared document type and known image type', () => {
+    expect(renameForDedup(makeFile('report.pdf', 'application/pdf')).type).toBe('application/pdf');
+    expect(renameForDedup(makeFile('clipboard', 'image/png')).type).toBe('image/png');
   });
 });
