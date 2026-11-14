@@ -38,8 +38,10 @@ export const renameForDedup = (file: File): File => {
     const base = dot > 0 ? file.name.slice(0, dot) : file.name || 'upload';
     const ext = dot > 0 ? file.name.slice(dot) : '';
     const stamp = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-    return new File([file], `${base}-${stamp}${ext || '.png'}`, {
-      type: file.type || 'image/png',
+    // A missing browser MIME type is common for Markdown and other documents.
+    // Renaming must not invent image metadata that changes downstream handling.
+    return new File([file], `${base}-${stamp}${ext}`, {
+      type: file.type,
       lastModified: Date.now()
     });
   } catch (_e) {
