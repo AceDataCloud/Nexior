@@ -39,7 +39,6 @@ export const I18N_SCOPES = [
   'credential',
   'distribution',
   'order',
-  'proxy',
   'service',
   'usage',
   'user',

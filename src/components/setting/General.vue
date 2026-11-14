@@ -64,17 +64,17 @@ export default defineComponent({
     SendShortcut
   },
   emits: ['delete-account'],
-  methods: {
-    openSecurity() {
-      void openAuthAccountPage('/user/profile#mfa');
-    }
-  },
   computed: {
     mfaEnabled(): boolean {
       return isFeatureEnabled('mfa');
     },
     canDeleteAccount(): boolean {
       return isIOS() && !!this.$store.getters?.authenticated;
+    }
+  },
+  methods: {
+    openSecurity() {
+      void openAuthAccountPage('/user/profile#mfa');
     }
   }
 });

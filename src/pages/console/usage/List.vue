@@ -9,7 +9,7 @@
         </el-col>
       </el-row>
       <el-row class="usage-filters">
-        <el-col v-if="type === serviceType.API" :lg="5" :md="12" :xs="24" class="usage-filter">
+        <el-col :lg="5" :md="12" :xs="24" class="usage-filter">
           <span class="usage-filter-label">{{ $t('usage.field.service') }}</span>
           <el-select
             v-model="serviceIds"
@@ -37,7 +37,7 @@
             </el-option>
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :lg="5" :md="12" :xs="24" class="usage-filter">
+        <el-col :lg="5" :md="12" :xs="24" class="usage-filter">
           <span class="usage-filter-label">{{ $t('usage.field.operation') }}</span>
           <el-select
             v-model="apiIds"
@@ -55,7 +55,7 @@
             <el-option v-for="item in apis" :key="item.id" :label="item.title || item.id" :value="item.id" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :lg="7" :md="12" :xs="24" class="usage-filter">
+        <el-col :lg="7" :md="12" :xs="24" class="usage-filter">
           <el-date-picker
             v-model="createdAtRange"
             type="datetimerange"
@@ -70,7 +70,7 @@
         <!-- Status-code filter — narrow because values are 3-digit codes.
              `filterable` + `allow-create` lets the user pick from discovered
              codes or type an unseen one (e.g. a future 503). -->
-        <el-col v-if="type === serviceType.API" :lg="3" :md="6" :xs="24" class="usage-filter">
+        <el-col :lg="3" :md="6" :xs="24" class="usage-filter">
           <el-select
             v-model="statusCodeFilter"
             :placeholder="$t('usage.option.statusCodeAll')"
@@ -85,7 +85,7 @@
             <el-option v-for="code in statusCodeOptions" :key="code" :label="String(code)" :value="String(code)" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :lg="4" :md="6" :xs="24" class="usage-filter usage-filter-export">
+        <el-col :lg="4" :md="6" :xs="24" class="usage-filter usage-filter-export">
           <el-button type="primary" plain :loading="exporting" class="w-full whitespace-nowrap" @click="onExport">
             <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('usage.button.export') }}
@@ -94,7 +94,7 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-row v-if="type === serviceType.API" :gutter="15" class="card-gap card-section-gap">
+          <el-row :gutter="15" class="card-gap card-section-gap">
             <el-col :md="6" :xs="24">
               <el-card shadow="never" class="h-full">
                 <el-skeleton v-if="aggLoading" />
@@ -182,7 +182,6 @@
               <el-switch v-model="autoRefresh" />
             </div>
             <el-table
-              v-if="type === serviceType.API"
               v-loading="loading"
               :data="apiUsages"
               stripe
@@ -383,80 +382,6 @@
                 </template>
               </el-table-column>
             </el-table>
-            <el-table
-              v-if="type === serviceType.Proxy"
-              v-loading="loading"
-              :data="proxyUsages"
-              stripe
-              table-layout="fixed"
-              :empty-text="$t('common.message.noData')"
-              class="min-h-[calc(100vh-350px)] mb-5"
-            >
-              <el-table-column :label="$t('application.field.name')" width="160px">
-                <template #default="scope">
-                  <span>{{ scope.row?.service?.title }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column
-                prop="remaining_amount"
-                :label="$t('usage.field.remainingAmount')"
-                width="160px"
-                class-name="text-center"
-              >
-                <template #default="scope">
-                  <span>{{ getRemainingAmount(scope.row) }}</span>
-                  <span>{{ getOriginalAmount(scope.row) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column
-                prop="deducted_amount"
-                :label="$t('usage.field.deductedAmount')"
-                width="150px"
-                class-name="text-center"
-              >
-                <template #default="scope">
-                  <span>{{ getDeductedAmount(scope.row) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('usage.field.balanceAfter')" width="160px" class-name="text-center">
-                <template #default="scope">
-                  <span>{{ getRemainingAmount(scope.row) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column
-                prop="metadata"
-                :label="$t('usage.field.metadata')"
-                width="200px"
-                class-name="text-center"
-              >
-                <template #default="scope">
-                  <meta-tag v-for="(name, key) in scope.row.metadata" :key="key" class="mb-2">
-                    {{ key }}: {{ name }}
-                  </meta-tag>
-                </template>
-              </el-table-column>
-              <el-table-column
-                prop="credential_id"
-                :label="$t('usage.field.credential')"
-                width="200px"
-                class-name="text-center"
-              >
-                <template #default="scope">
-                  <span class="key">{{ getCredentialLabel(scope.row) }}</span>
-                  <span v-if="scope.row.credential?.id || scope.row.credential_id" class="cursor-pointer">
-                    <copy-to-clipboard
-                      :content="scope.row.credential?.id || scope.row.credential_id"
-                      class="inline-block"
-                    />
-                  </span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('usage.field.createdAt')" width="200px">
-                <template #default="scope">
-                  <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
-                </template>
-              </el-table-column>
-            </el-table>
           </el-card>
         </el-col>
       </el-row>
@@ -567,11 +492,9 @@ import {
   IServiceListResponse,
   IServiceType,
   IApiUsage,
-  IApiUsageListResponse,
-  IProxyUsage,
-  IProxyUsageListResponse
+  IApiUsageListResponse
 } from '@/models';
-import { apiUsageOperator, applicationOperator, apiOperator, proxyUsageOperator, serviceOperator } from '@/operators';
+import { apiUsageOperator, applicationOperator, apiOperator, serviceOperator } from '@/operators';
 import { Pagination } from '@acedatacloud/core/components';
 import {
   ElTable,
@@ -618,7 +541,6 @@ const AUTO_REFRESH_INTERVAL_MS = 15000;
 
 interface IData {
   apiUsages: IApiUsage[];
-  proxyUsages: IProxyUsage[];
   loading: boolean;
   total: number | undefined;
   shortcuts: { text: string; value: () => [Date, Date] }[];
@@ -633,8 +555,6 @@ interface IData {
   credentialType: typeof ICredentialType;
   applicationIds: string[];
   apiIds: string[];
-  type: string | IServiceType;
-  serviceType: typeof IServiceType;
   // aggregate
   totalUsed: number;
   barChartLabels: string[];
@@ -709,9 +629,7 @@ export default defineComponent({
       apis: [],
       apisLoading: false,
       credentialType: ICredentialType,
-      serviceType: IServiceType,
       apiUsages: [],
-      proxyUsages: [],
       createdAtRange: (() => {
         const toStr = this.$route.query.created_at_to?.toString();
         const fromStr = this.$route.query.created_at_from?.toString();
@@ -781,7 +699,6 @@ export default defineComponent({
           }
         }
       ],
-      type: IServiceType.API,
       loading: false,
       total: undefined,
       limit: 15,
@@ -932,21 +849,6 @@ export default defineComponent({
         this.onFetchUsages();
       }
     },
-    type: {
-      handler() {
-        // reset multi-selects when switching type
-        this.applicationIds = [];
-        this.serviceIds = [];
-        this.apiIds = [];
-        this.onApplicationsChange(this.applicationIds);
-        this.onFetchApplications();
-        this.onFetchServices();
-        this.onFetchApis();
-        this.onFetchUsages();
-        this.onFetchAggregate();
-        this.onFetchStatusCodeOptions();
-      }
-    },
     autoRefresh: {
       handler(enabled: boolean) {
         if (enabled) {
@@ -973,11 +875,7 @@ export default defineComponent({
   },
   methods: {
     async onFetchUsages(silent = false) {
-      if (this.type === IServiceType.API) {
-        this.onFetchApiUsages(silent);
-      } else if (this.type === IServiceType.Proxy) {
-        this.onFetchProxyUsages(silent);
-      }
+      this.onFetchApiUsages(silent);
     },
     startAutoRefresh() {
       this.stopAutoRefresh();
@@ -1092,21 +990,21 @@ export default defineComponent({
       const unit = this.$t(`service.unit.${apiUsage?.service?.unit || 'credit'}s`);
       return `${apiUsage.remaining_amount?.toFixed(6)} ${unit}`;
     },
-    getUsedAmount(usage: IApiUsage | IProxyUsage) {
+    getUsedAmount(usage: IApiUsage) {
       if (usage.used_amount === undefined || usage.used_amount === null) {
         return '';
       }
       const unit = this.$t(`service.unit.${usage?.service?.unit || 'credit'}s`);
       return `${usage.used_amount?.toFixed(6)} ${unit}`;
     },
-    getDeductedAmount(usage: IApiUsage | IProxyUsage) {
+    getDeductedAmount(usage: IApiUsage) {
       if (usage?.deducted_amount === undefined || usage?.deducted_amount === null) {
         return '';
       }
       const unit = this.$t(`service.unit.${usage?.service?.unit || 'credit'}s`);
       return `${usage.deducted_amount?.toFixed(6)} ${unit}`;
     },
-    getOriginalAmount(usage: IApiUsage | IProxyUsage) {
+    getOriginalAmount(usage: IApiUsage) {
       if (usage?.original_amount === undefined || usage?.original_amount === null) {
         return '';
       }
@@ -1183,7 +1081,7 @@ export default defineComponent({
     getSimpleMetadata(metadata: IApiUsage['metadata']) {
       return omitX402Metadata(metadata);
     },
-    getCredentialLabel(usage: IApiUsage | IProxyUsage) {
+    getCredentialLabel(usage: IApiUsage) {
       const name = usage.credential?.name?.trim();
       if (name) return name;
       // Fall back to the full credential id (shown like the trace id column).
@@ -1224,7 +1122,7 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items.filter(
-            (application: IApplication) => application?.service?.type === this.type
+            (application: IApplication) => application?.service?.type === IServiceType.API
           );
         })
         .catch(() => {});
@@ -1325,27 +1223,6 @@ export default defineComponent({
           if (!silent) this.loading = false;
         });
     },
-    onFetchProxyUsages(silent = false) {
-      if (!silent) this.loading = true;
-      const seq = ++this.fetchSeq;
-      proxyUsageOperator
-        .getAll({
-          limit: this.limit,
-          offset: (this.page - 1) * this.limit,
-          user_id: this.$store.getters.user.id,
-          ordering: '-created_at',
-          ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {})
-        })
-        .then(({ data: data }: { data: IProxyUsageListResponse }) => {
-          if (seq !== this.fetchSeq) return;
-          this.proxyUsages = data.items;
-          this.total = data.count;
-        })
-        .catch(() => {})
-        .finally(() => {
-          if (!silent) this.loading = false;
-        });
-    },
     async onExport() {
       const token = this.$store.state.token?.access;
       if (!token) {
@@ -1412,7 +1289,6 @@ export default defineComponent({
     },
     fmtAmount: formatUsageAmount,
     async onFetchAggregate() {
-      if (this.type !== this.serviceType.API) return;
       this.aggLoading = true;
       const params: any = {
         user_id: this.$store.getters.user.id,

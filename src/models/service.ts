@@ -4,18 +4,8 @@ import { IApi, IPackage } from './api';
 export enum IServiceType {
   API = 'Api',
   Agent = 'Agent',
-  Proxy = 'Proxy',
   Dataset = 'Dataset',
   Deployment = 'Deployment'
-}
-
-export interface IProxy {
-  id: string;
-  title?: string;
-  service?: IService;
-  service_id?: string;
-  created_at?: string;
-  updated_at?: string;
 }
 
 export interface IDataset {
@@ -54,8 +44,6 @@ export interface IService {
   // Catalog-private services are hidden from the public site picker.
   private?: boolean;
   introduction?: string;
-  proxies?: IProxy[];
-  proxy_ids?: string[];
   apis?: IApi[];
   api_ids?: string[];
   datasets?: IDataset[];

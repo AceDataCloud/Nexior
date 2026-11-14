@@ -48,24 +48,3 @@ export interface IApiUsageListResponse {
 }
 
 export type IApiUsageDetailResponse = IApiUsage;
-
-export interface IProxyUsage {
-  id?: string;
-  proxy_id?: string;
-  credential_id?: string;
-  credential?: IUsageCredential;
-  elapsed?: number;
-  trace_id?: string;
-  created_at?: string;
-  remaining_amount?: number;
-  used_amount?: number;
-  deducted_amount?: number;
-  original_amount?: number;
-  metadata?: Record<string, any>;
-  service?: IService;
-}
-
-export interface IProxyUsageListResponse {
-  count: number;
-  items: IProxyUsage[];
-}

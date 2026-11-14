@@ -58,10 +58,7 @@ describe('API usage page contract', () => {
     expect(usageSource).toContain("scope.row?.api?.title || '-'");
   });
 
-  it('retains dormant proxy compatibility and API-only usage actions', () => {
-    expect(usageSource).toContain('type: IServiceType.API,');
-    expect(usageSource).toContain('proxyUsageOperator');
-    expect(usageSource).toContain('onFetchProxyUsages');
+  it('keeps usage actions scoped to API applications', () => {
     expect(applicationListSource).toContain('v-if="scope.row?.service?.type === serviceType.API"');
     expect(applicationListSource).toContain('v-if="app?.service?.type === serviceType.API"');
     expect(applicationInfoSource).toContain(
