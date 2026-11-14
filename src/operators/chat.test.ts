@@ -1,3 +1,4 @@
+import { connectionRuntime } from './connectionRuntime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { chatOperator } from './chat';
 import type { IChatConversationResponse } from '@/models';
@@ -28,6 +29,38 @@ afterEach(() => {
 });
 
 describe('chatOperator.chatConversation SSE forwarding', () => {
+  it('sends a single-use user ticket outside the prompt and revokes it on completion', async () => {
+    vi.spyOn(connectionRuntime, 'create').mockResolvedValue({
+      grant_id: 'g',
+      ticket: 'opaque-ticket',
+      expires_at: 'later'
+    });
+    const revoke = vi.spyOn(connectionRuntime, 'revoke').mockResolvedValue();
+    const fetchSpy = vi.fn().mockResolvedValue(sseResponse(['data: [DONE]\n']));
+    vi.stubGlobal('fetch', fetchSpy);
+    await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'hello' } as never, {
+      token: 'model-key',
+      connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'] }
+    });
+    expect(connectionRuntime.create).toHaveBeenCalledWith('a', 'c', ['selected']);
+    expect(fetchSpy.mock.calls[0][1].headers['x-connector-ticket']).toBe('opaque-ticket');
+    expect(fetchSpy.mock.calls[0][1].body).not.toContain('opaque-ticket');
+    expect(revoke).toHaveBeenCalledWith('g');
+  });
+
+  it('does not submit chat if selected connection authorization fails', async () => {
+    vi.spyOn(connectionRuntime, 'create').mockRejectedValue(new Error('authorization failed'));
+    const fetchSpy = vi.fn();
+    vi.stubGlobal('fetch', fetchSpy);
+    await expect(
+      chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'hello' } as never, {
+        token: 'model-key',
+        connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'] }
+      })
+    ).rejects.toThrow();
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
   it('forwards tool_progress `progress` fragments to the stream callback', async () => {
     // The worker streams tool-call argument text as `tool_progress` events
     // while the model writes a (possibly large) tool call. Regression guard:

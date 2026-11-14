@@ -2054,5 +2054,21 @@
   "model.claudeFable52Description": {
     "message": "Сложное рассуждение и задачи, требующие длительной работы",
     "description": "Описание модели Claude Fable 5.2"
+  },
+  "runtime.connections": {
+    "message": "Подключения для этого ответа",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "Использовать выбранные аккаунты только для этого ответа, не более 10 минут. Разрешены только перечисленные операции.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "Авторизация подключений недоступна. Повторите попытку перед отправкой.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "Пока нет подключений с поддержкой защищённого выполнения.",
+    "description": "Studio per-reply connector authorization"
   }
 }

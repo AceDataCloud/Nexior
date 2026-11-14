@@ -2054,5 +2054,21 @@
   "model.claudeFable52Description": {
     "message": "복잡한 추론 및 장기 작업",
     "description": "Claude Fable 5.2 모델 설명"
+  },
+  "runtime.connections": {
+    "message": "이 답변에 사용할 연결",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "선택한 계정은 이 답변에만 최대 10분 동안 사용합니다. 나열된 작업만 허용됩니다.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "연결 권한을 가져올 수 없습니다. 전송 전에 다시 시도하세요.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "아직 보호된 실행을 지원하는 연결이 없습니다.",
+    "description": "Studio per-reply connector authorization"
   }
 }

@@ -2029,5 +2029,21 @@
   "model.claudeFable52Description": {
     "message": "复杂推理与长程任务",
     "description": "Claude Fable 5.2 model description"
+  },
+  "runtime.connections": {
+    "message": "本次回复使用的连接",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "仅为本次回复使用所选账号，最长 10 分钟，只允许列出的操作。",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "暂时无法获取连接授权，请稍后重试。",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "暂无支持受保护执行的连接。",
+    "description": "Studio per-reply connector authorization"
   }
 }
