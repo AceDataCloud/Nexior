@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { IApiUsageDetailResponse, IApiUsageListResponse, IProxyUsageListResponse } from '@/models';
+import { IApiUsageDetailResponse, IApiUsageListResponse } from '@/models';
 
 export interface IApiUsageQuery {
   user_id?: string;
@@ -67,23 +67,3 @@ class ApiUsageOperator {
 }
 
 export const apiUsageOperator = new ApiUsageOperator();
-
-export interface IProxyUsageQuery {
-  user_id?: string;
-  limit?: number;
-  offset?: number;
-  ordering?: string;
-  application_id?: string | string[];
-}
-
-class ProxyUsageOperator {
-  key = 'usage/proxies';
-
-  async getAll(query: IProxyUsageQuery): Promise<AxiosResponse<IProxyUsageListResponse>> {
-    return await httpClient.get(`/${this.key}/`, {
-      params: query
-    });
-  }
-}
-
-export const proxyUsageOperator = new ProxyUsageOperator();
