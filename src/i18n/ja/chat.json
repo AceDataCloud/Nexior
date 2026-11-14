@@ -2015,5 +2015,21 @@
   "model.claudeFable52Description": {
     "message": "複雑な推論と長期タスク",
     "description": "Claude Fable 5.2モデルの説明"
+  },
+  "runtime.connections": {
+    "message": "今回の回答で使用する接続",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "選択したアカウントを今回の回答でのみ、最大10分間使用します。表示された操作だけが許可されます。",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "接続の承認を取得できません。送信前にもう一度お試しください。",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "保護された実行に対応する接続はまだありません。",
+    "description": "Studio per-reply connector authorization"
   }
 }

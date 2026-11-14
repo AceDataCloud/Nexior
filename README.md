@@ -222,3 +222,14 @@ Website homepage sections can request explicit user authorization to read existi
 
 The retired Proxy service type and usage client are removed. The console shows
 API usage only; existing API filters, details and export remain available.
+
+## Protected Studio connection execution
+
+Workers advertising `connector_runtime_tickets` expose a per-reply connection
+picker. Selecting accounts authorizes only that reply for up to ten minutes;
+the app obtains a one-use ticket using the signed-in user's session, carries it
+outside the model prompt, and revokes the grant on completion or Stop. The model
+API key remains separate from personal connection authorization. No account is
+selected automatically, and unsupported workers do not display this option.
+Requires companion AuthBackend runtime-grant and PlatformService isolated-runtime
+services. No runtime feature or server configuration is enabled by this UI change.

@@ -1,3 +1,4 @@
+import { connectionRuntime } from './connectionRuntime';
 import axios, { AxiosResponse } from 'axios';
 import {
   ApiError,
@@ -45,6 +46,22 @@ class ChatOperator {
     options: IChatConversationOptions
   ): Promise<IChatConversationResponse> {
     return new Promise(async (resolve, reject) => {
+      let grantId: string | undefined;
+      let revokeInFlight = false;
+      const revoke = async () => {
+        if (!grantId || revokeInFlight) return;
+        revokeInFlight = true;
+        try {
+          await connectionRuntime.revoke(grantId);
+        } catch {
+          console.error('Connection authorization revocation requires retry');
+        } finally {
+          revokeInFlight = false;
+        }
+      };
+      const onAbort = () => {
+        void revoke();
+      };
       try {
         const walletMode = scenarioPaymentState('chat').mode === 'wallet';
         if (walletMode && activeWalletRail() !== 'solana') {
@@ -57,6 +74,24 @@ class ChatOperator {
         const continuous = walletMode && continuousPaymentActive();
         if (walletMode && !continuous) throw new BaseError(402, 'payment_authorization_required', '');
         const token = continuous ? options.token : requireServiceToken(options.token);
+        const selected = options.connectorAuthorization;
+        let connectorTicket: string | undefined;
+        if (selected?.connectionIds.length) {
+          if (continuous || options.signal?.aborted)
+            throw new BaseError(403, 'connector_authorization_unavailable', '');
+          const grant = await connectionRuntime.create(
+            selected.applicationId,
+            selected.credentialId,
+            selected.connectionIds
+          );
+          grantId = grant.grant_id;
+          connectorTicket = grant.ticket;
+          options.signal?.addEventListener('abort', onAbort, { once: true });
+          if (options.signal?.aborted) {
+            await revoke();
+            throw new DOMException('Aborted', 'AbortError');
+          }
+        }
         const response = await fetch(`${continuous ? BASE_URL_X402 : BASE_URL_API}/aichat2/conversations`, {
           method: 'POST',
           headers: {
@@ -64,7 +99,8 @@ class ChatOperator {
             ...(continuous ? continuousPaymentHeaders(options.token) : {}),
             'Content-Type': 'application/json',
             Accept: 'text/event-stream',
-            ...siteHeaders()
+            ...siteHeaders(),
+            ...(connectorTicket ? { 'x-connector-ticket': connectorTicket } : {})
           },
           signal: options.signal,
           body: JSON.stringify(data)
@@ -178,6 +214,9 @@ class ChatOperator {
       } catch (error) {
         console.error('Error:', error);
         reject(error);
+      } finally {
+        options.signal?.removeEventListener('abort', onAbort);
+        await revoke();
       }
     });
   }

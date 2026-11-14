@@ -2055,5 +2055,21 @@
   "model.claudeFable52Description": {
     "message": "Razonamiento complejo y tareas de largo recorrido",
     "description": "Descripción del modelo Claude Fable 5.2"
+  },
+  "runtime.connections": {
+    "message": "Conexiones para esta respuesta",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "Usar las cuentas seleccionadas solo para esta respuesta, durante un máximo de 10 minutos. Solo se permiten las operaciones indicadas.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "La autorización de conexiones no está disponible. Inténtalo de nuevo antes de enviar.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "Aún no hay conexiones compatibles con la ejecución protegida.",
+    "description": "Studio per-reply connector authorization"
   }
 }

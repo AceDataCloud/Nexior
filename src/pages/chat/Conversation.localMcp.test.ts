@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, flushPromises } from '@vue/test-utils';
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 
 import Conversation from './Conversation.vue';
@@ -63,7 +63,12 @@ describe('Conversation._localToolInjection — local MCP is deferred', () => {
   let wrapper: ReturnType<typeof mountComponent>;
 
   beforeEach(() => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => ({ ok: true, json: async () => ({ features: [] }) }))
+    );
     wrapper = mountComponent();
+    (wrapper.vm as unknown as { localMcpProbed: boolean }).localMcpProbed = false;
   });
   afterEach(() => wrapper?.unmount());
 
@@ -139,8 +144,15 @@ describe('Conversation._localToolInjection — local MCP is deferred', () => {
 
 describe('Conversation.onProbeWorkerFeatures', () => {
   let wrapper: ReturnType<typeof mountComponent>;
-  beforeEach(() => {
+  beforeEach(async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => ({ ok: true, json: async () => ({ features: [] }) }))
+    );
     wrapper = mountComponent();
+    await flushPromises();
+    (wrapper.vm as unknown as { localMcpProbed: boolean; localMcpDeferSupported: boolean }).localMcpProbed = false;
+    (wrapper.vm as unknown as { localMcpDeferSupported: boolean }).localMcpDeferSupported = false;
   });
   afterEach(() => {
     wrapper?.unmount();
@@ -177,13 +189,14 @@ describe('Conversation.onProbeWorkerFeatures', () => {
     expect(await probe()).toBe(false);
   });
 
-  it('does not fire at all without a local MCP server to defer', async () => {
+  it('also discovers connector authorization without a local MCP server', async () => {
     // A pointless request shows up as a console error wherever the endpoint
     // isn't reachable — which broke the Local Tools E2E smoke test.
-    const fetchSpy = vi.fn();
+    const fetchSpy = vi.fn(async () => ({ ok: true, json: async () => ({ features: ['connector_runtime_tickets'] }) }));
     vi.stubGlobal('fetch', fetchSpy);
     expect(await probe([spec('fs.read_file', 'builtin')])).toBe(false);
-    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(fetchSpy).toHaveBeenCalledOnce();
+    expect((wrapper.vm as unknown as { connectorRuntimeSupported: boolean }).connectorRuntimeSupported).toBe(true);
   });
 
   it('probes at most once per session', async () => {

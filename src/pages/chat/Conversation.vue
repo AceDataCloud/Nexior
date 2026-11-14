@@ -92,7 +92,15 @@
           />
         </div>
         <div v-support-obstacle class="starter">
-          <div class="composer-connectors"><connector-strip /></div>
+          <div class="composer-connectors">
+            <connector-strip />
+            <runtime-connection-picker
+              v-if="connectorRuntimeSupported"
+              v-model="runtimeConnectionIds"
+              :disabled="answering"
+              :user-id="$store.getters.user?.id"
+            />
+          </div>
           <composer
             v-model:question="question"
             :answering="answering"
@@ -168,11 +176,14 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
+import RuntimeConnectionPicker from '@/components/chat/RuntimeConnectionPicker.vue';
 import { isRunWorthPolling, scheduledTasksOperator, type IScheduledRun } from '@/operators/scheduledTasks';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export interface IData {
   drawer: boolean;
+  runtimeConnectionIds: string[];
+  connectorRuntimeSupported: boolean;
   question: string;
   upload: boolean;
   /**
@@ -239,6 +250,7 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ConnectorStrip,
+    RuntimeConnectionPicker,
     WorkingDirectoryBar,
     ModelSelector,
     ConversationActions,
@@ -258,6 +270,8 @@ export default defineComponent({
       localTools: [],
       localMcpDeferSupported: false,
       localMcpProbed: false,
+      runtimeConnectionIds: [],
+      connectorRuntimeSupported: false,
       pendingClientTools: [],
       clientToolRunId: 0,
       upload: false,
@@ -398,6 +412,7 @@ export default defineComponent({
     // panel clicks dispatch onChangeConversation -> router.push -> here.
     async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
+      this.runtimeConnectionIds = [];
       if (!val) {
         this.resetConversation();
         return;
@@ -432,6 +447,7 @@ export default defineComponent({
     this.onCaptureConsentReturnFromUrl();
     await this.onGetService();
     await this.onGetApplication();
+    void this.onProbeWorkerFeatures();
     this.onConsumePendingDraft();
     this.onApplyQueryFromUrl();
     if (supportsClientTools()) {
@@ -456,13 +472,15 @@ export default defineComponent({
      */
     async onProbeWorkerFeatures() {
       if (this.localMcpProbed || this.localMcpDeferSupported) return;
-      if (!this.localTools.some((t) => t.source === 'mcp')) return;
+
       this.localMcpProbed = true;
       try {
         const res = await fetch(`${BASE_URL_API}/aichat2/health`);
         if (!res.ok) return;
         const body = (await res.json()) as { features?: unknown };
         this.localMcpDeferSupported = Array.isArray(body?.features) && body.features.includes('local_mcp_servers');
+        this.connectorRuntimeSupported =
+          Array.isArray(body?.features) && body.features.includes('connector_runtime_tickets');
       } catch {
         /* offline / old worker / blocked — keep sending schemas eagerly */
       }
@@ -473,6 +491,7 @@ export default defineComponent({
       this.scheduledRun = null;
       this.restoringConversationId = undefined;
       this.messages = [];
+      this.runtimeConnectionIds = [];
       this.question = '';
       this.references = [];
       // Drop any deferred desktop client tool from a prior turn so a new chat
@@ -954,6 +973,7 @@ export default defineComponent({
       // very next message. Without this, `localTools` is cached from mount and a
       // disabled tool would keep being advertised as `client_tools` — wasting
       // prompt tokens — until the chat remounts.
+      await this.onProbeWorkerFeatures();
       if (supportsClientTools()) {
         this.localTools = (await localExec()?.listTools()) ?? [];
         // Re-checked here, not just on mount: an MCP server added in Settings
@@ -1557,6 +1577,8 @@ export default defineComponent({
       token: string,
       initialConversationId: string | undefined
     ) {
+      const selectedRuntimeConnections = [...this.runtimeConnectionIds];
+      this.runtimeConnectionIds = [];
       let conversationId = initialConversationId;
       // Capture the target assistant message slot NOW. A client-tool auto-resume
       // ({@link _runClientTools} -> {@link _resumeWithToolResults}) can push a
@@ -1592,6 +1614,15 @@ export default defineComponent({
       chatOperator
         .chatConversation(metadata ? { ...body, metadata, title: scheduledConversation?.title } : body, {
           token,
+          ...(selectedRuntimeConnections.length && this.application?.id && this.credential?.id
+            ? {
+                connectorAuthorization: {
+                  applicationId: this.application.id,
+                  credentialId: this.credential.id,
+                  connectionIds: selectedRuntimeConnections
+                }
+              }
+            : {}),
           stream: (response: IChatConversationResponse) => {
             console.debug('stream response', response);
             const lastMessage = this.messages[targetIndex];

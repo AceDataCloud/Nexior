@@ -1957,5 +1957,21 @@
   "model.claudeFable52Description": {
     "message": "Complex reasoning and long-running tasks",
     "description": "Claude Fable 5.2 model description"
+  },
+  "runtime.connections": {
+    "message": "Connections for this reply",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.scope": {
+    "message": "Use the selected accounts for this reply only, for up to 10 minutes. Only the listed operations are allowed.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.unavailable": {
+    "message": "Connection authorization is unavailable. Try again before sending.",
+    "description": "Studio per-reply connector authorization"
+  },
+  "runtime.empty": {
+    "message": "No connections support protected execution yet.",
+    "description": "Studio per-reply connector authorization"
   }
 }
