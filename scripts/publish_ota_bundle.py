@@ -14,7 +14,7 @@ later diverge bundle policy (e.g. iOS lagging on a problematic build) without
 changing the publish pipeline.
 
 Designed to run from the `Release · OTA` GitHub Actions workflow. Reads COS
-credentials from env vars `TENCENT_CLOUD_SECRET_ID` / `TENCENT_CLOUD_SECRET_KEY`.
+credentials from env vars `TENCENT_CLOUD_COS_SECRET_ID` / `TENCENT_CLOUD_COS_SECRET_KEY`.
 """
 
 from __future__ import annotations
@@ -48,10 +48,10 @@ def get_client(region: str):
     except ImportError:
         print("ERROR: cos-python-sdk-v5 not installed (pip install cos-python-sdk-v5)", file=sys.stderr)
         sys.exit(2)
-    secret_id = os.environ.get("TENCENT_CLOUD_SECRET_ID")
-    secret_key = os.environ.get("TENCENT_CLOUD_SECRET_KEY")
+    secret_id = os.environ.get("TENCENT_CLOUD_COS_SECRET_ID")
+    secret_key = os.environ.get("TENCENT_CLOUD_COS_SECRET_KEY")
     if not secret_id or not secret_key:
-        print("ERROR: TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY must be set", file=sys.stderr)
+        print("ERROR: TENCENT_CLOUD_COS_SECRET_ID / TENCENT_CLOUD_COS_SECRET_KEY must be set", file=sys.stderr)
         sys.exit(2)
     # Global Accelerate endpoint — uploads from GH Actions runners (US/EU)
     # to ap-beijing time out without this. The bucket has Accelerate
