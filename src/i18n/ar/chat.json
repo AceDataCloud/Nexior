@@ -2056,12 +2056,12 @@
     "description": "وصف نموذج Claude Fable 5.2"
   },
   "runtime.connections": {
-    "message": "الاتصالات لهذا الرد",
-    "description": "Studio per-reply connector authorization"
+    "message": "اتصالات هذه المهمة",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.scope": {
-    "message": "استخدم الحسابات المحددة لهذا الرد فقط، لمدة لا تتجاوز 10 دقائق. يُسمح بالعمليات المدرجة فقط.",
-    "description": "Studio per-reply connector authorization"
+    "message": "استخدم الحسابات المحددة لهذه المهمة ومتابعاتها لمدة تصل إلى 10 دقائق. يُسمح بالعمليات المدرجة فقط.",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.unavailable": {
     "message": "تعذّر الحصول على تفويض الاتصالات. حاول مجددًا قبل الإرسال.",
@@ -2070,5 +2070,13 @@
   "runtime.empty": {
     "message": "لا توجد اتصالات تدعم التنفيذ المحمي بعد.",
     "description": "Studio per-reply connector authorization"
+  },
+  "runtime.reauthorize": {
+    "message": "انتهت صلاحية تفويض الاتصالات أو فُقد. اختر الحسابات مجددًا، ثم تابع المهمة.",
+    "description": "Studio bounded task connection authorization"
+  },
+  "runtime.continue": {
+    "message": "متابعة المهمة",
+    "description": "Continue a paused task after explicit connection reauthorization"
   }
 }

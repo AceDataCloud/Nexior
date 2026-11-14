@@ -2031,12 +2031,12 @@
     "description": "Claude Fable 5.2 model description"
   },
   "runtime.connections": {
-    "message": "本次回复使用的连接",
-    "description": "Studio per-reply connector authorization"
+    "message": "本任务的连接",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.scope": {
-    "message": "仅为本次回复使用所选账号，最长 10 分钟，只允许列出的操作。",
-    "description": "Studio per-reply connector authorization"
+    "message": "为本任务及后续继续执行授权所选账号，最长 10 分钟。仅允许列出的操作。",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.unavailable": {
     "message": "暂时无法获取连接授权，请稍后重试。",
@@ -2045,5 +2045,13 @@
   "runtime.empty": {
     "message": "暂无支持受保护执行的连接。",
     "description": "Studio per-reply connector authorization"
+  },
+  "runtime.reauthorize": {
+    "message": "连接授权已过期或丢失。请重新选择账号，再继续任务。",
+    "description": "Studio bounded task connection authorization"
+  },
+  "runtime.continue": {
+    "message": "继续任务",
+    "description": "Continue a paused task after explicit connection reauthorization"
   }
 }

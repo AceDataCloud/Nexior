@@ -460,7 +460,13 @@ export interface IChatConversation {
 }
 
 export interface IChatConversationOptions {
-  connectorAuthorization?: { applicationId: string; credentialId: string; connectionIds: string[] };
+  connectorAuthorization?: {
+    applicationId: string;
+    credentialId: string;
+    connectionIds: string[];
+    /** Original task deadline; continuations must not extend it. */
+    expiresAt?: string;
+  };
   stream?: (response: IChatConversationResponse) => void;
   token: string;
   signal?: AbortController['signal'];

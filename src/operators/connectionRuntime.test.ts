@@ -39,4 +39,9 @@ describe('explicit connection authorization', () => {
     await connectionRuntime.revoke(grant.grant_id);
     expect(del.mock.calls[0][0]).toBe('/connections/runtime-grants/g/');
   });
+  it('carries the original task deadline when creating a continuation ticket', async () => {
+    post.mockResolvedValue({ data: { grant_id: 'g', ticket: 'opaque', expires_at: '2026-11-15T01:00:00Z' } });
+    await connectionRuntime.create('app', 'cred', ['selected'], '2026-11-15T01:00:00Z');
+    expect(post.mock.calls[0][1]).toMatchObject({ expires_at: '2026-11-15T01:00:00Z', duration_seconds: 600 });
+  });
 });

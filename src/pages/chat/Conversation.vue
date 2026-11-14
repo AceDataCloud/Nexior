@@ -100,6 +100,13 @@
               :disabled="answering"
               :user-id="$store.getters.user?.id"
             />
+            <el-button
+              v-if="pendingRuntimeResume"
+              :disabled="!runtimeConnectionIds.length || answering"
+              @click="continueConnectionTask"
+            >
+              {{ $t('chat.runtime.continue') }}
+            </el-button>
           </div>
           <composer
             v-model:question="question"
@@ -178,11 +185,32 @@ import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
 import RuntimeConnectionPicker from '@/components/chat/RuntimeConnectionPicker.vue';
 import { isRunWorthPolling, scheduledTasksOperator, type IScheduledRun } from '@/operators/scheduledTasks';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import {
+  ElButton,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElMessage,
+  ElSkeleton,
+  ElSkeletonItem
+} from 'element-plus';
+
+interface TaskConnectionAuthorization {
+  applicationId: string;
+  credentialId: string;
+  connectionIds: string[];
+  expiresAt: string;
+  userId: string;
+}
 
 export interface IData {
   drawer: boolean;
   runtimeConnectionIds: string[];
+  taskConnectionAuthorization: TaskConnectionAuthorization | null;
+  pendingRuntimeResume: {
+    results: NonNullable<Parameters<typeof chatOperator.chatConversation>[0]['tool_results']>;
+    conversationId: string;
+  } | null;
   connectorRuntimeSupported: boolean;
   question: string;
   upload: boolean;
@@ -257,6 +285,7 @@ export default defineComponent({
     Message,
     Layout,
     ElDropdown,
+    ElButton,
     ElDropdownItem,
     ElDropdownMenu,
     ElSkeleton,
@@ -271,6 +300,8 @@ export default defineComponent({
       localMcpDeferSupported: false,
       localMcpProbed: false,
       runtimeConnectionIds: [],
+      taskConnectionAuthorization: null,
+      pendingRuntimeResume: null,
       connectorRuntimeSupported: false,
       pendingClientTools: [],
       clientToolRunId: 0,
@@ -289,6 +320,9 @@ export default defineComponent({
     };
   },
   computed: {
+    runtimeUserId(): string {
+      return this.$store.getters.user?.id || '';
+    },
     modelGroup() {
       return this.$store.state.chat.modelGroup;
     },
@@ -376,6 +410,9 @@ export default defineComponent({
     }
   },
   watch: {
+    runtimeUserId() {
+      void this.onStop();
+    },
     /**
      * Mirror the unsubmitted composer text into vuex on every
      * keystroke so a route-level remount (clicking ChatGPT in the
@@ -412,7 +449,9 @@ export default defineComponent({
     // panel clicks dispatch onChangeConversation -> router.push -> here.
     async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
-      this.runtimeConnectionIds = [];
+      // The first reply pins the same task to its new conversation URL.
+      // Actual navigation starts another scope and must cancel the old one.
+      if (val !== this.skipNextRestoreId) await this.onStop();
       if (!val) {
         this.resetConversation();
         return;
@@ -457,6 +496,7 @@ export default defineComponent({
   },
   unmounted() {
     this.clearScheduledRunPolling();
+    void this.onStop();
   },
   methods: {
     /**
@@ -492,6 +532,9 @@ export default defineComponent({
       this.restoringConversationId = undefined;
       this.messages = [];
       this.runtimeConnectionIds = [];
+      this.taskConnectionAuthorization = null;
+      this.pendingRuntimeResume = null;
+      sessionStorage.removeItem(this.connectionResumeMarker());
       this.question = '';
       this.references = [];
       // Drop any deferred desktop client tool from a prior turn so a new chat
@@ -616,6 +659,9 @@ export default defineComponent({
       // the run token too, so a deferred run already past the pending check
       // (localExec.invoke() in flight) skips its resume.
       this.pendingClientTools = [];
+      this.runtimeConnectionIds = [];
+      this.taskConnectionAuthorization = null;
+      this.pendingRuntimeResume = null;
       this.clientToolRunId++;
       if (this.canceler) {
         this.canceler.abort();
@@ -968,6 +1014,11 @@ export default defineComponent({
       if (!ensureLoggedIn()) {
         return;
       }
+      // A fresh user message starts a new task; only an explicit picker choice
+      // may authorize it. Pending tool-result resumes use the existing task.
+      this.taskConnectionAuthorization = null;
+      this.pendingRuntimeResume = null;
+      sessionStorage.removeItem(this.connectionResumeMarker());
       // Refresh the desktop local-tool list at the start of each user turn so a
       // Settings change (e.g. toggling Computer Use on/off) takes effect on the
       // very next message. Without this, `localTools` is cached from mount and a
@@ -1047,6 +1098,11 @@ export default defineComponent({
         console.error('cannot resume: no token / conversation id / results');
         return;
       }
+      if (!this.canResumeConnectionTask()) {
+        this.pendingRuntimeResume = { results: toolResults, conversationId: convId };
+        return;
+      }
+      this.pendingRuntimeResume = null;
       // Locally fold each pending block so its card flips to the collapsed
       // summary instantly (the worker folds its own copy on the resume — both
       // stay in sync). `pending_consent_request` is intentionally left intact
@@ -1374,45 +1430,7 @@ export default defineComponent({
      * runs the next streaming turn against `tool_results`.
      */
     async onRespondConnectorConsent(payload: { tool_use_id: string; output: string }) {
-      const token = this.credential?.token;
-      if (!token || !this.conversationId) {
-        console.error('cannot resume: no token or no conversation id');
-        return;
-      }
-      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
-      if (lastAssistant && Array.isArray(lastAssistant.content)) {
-        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
-          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
-        );
-        if (block) {
-          block.status = 'done';
-          block.output = payload.output;
-          // Keep `pending_consent_request` so the resolved card can still
-          // render the requirements list. (`pending_question` resume strips
-          // its sentinel; `pending_consent_request` is the only handle the
-          // collapsed view has to the original requirements list.)
-        }
-      }
-      this.messages.push({
-        content: '',
-        role: ROLE_ASSISTANT,
-        state: IChatMessageState.PENDING
-      });
-      this.onScrollDown();
-      this.answering = true;
-      this.canceler = new AbortController();
-      this._streamAssistantTurn(
-        {
-          id: this.conversationId,
-          model: this.model.name,
-          stateful: true,
-          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }],
-          // Re-send local tools so post-resume turns can still call them.
-          ...this._localToolInjection()
-        },
-        token,
-        this.conversationId
-      );
+      this._resumeWithToolResults([{ tool_use_id: payload.tool_use_id, output: payload.output }]);
     },
     /**
      * Resume after the user confirms or cancels an irreversible action.
@@ -1420,43 +1438,7 @@ export default defineComponent({
      * result object is what the worker re-validates before acting.
      */
     async onRespondActionConfirmation(payload: { tool_use_id: string; result: IActionConfirmationResult }) {
-      const token = this.credential?.token;
-      if (!token || !this.conversationId) {
-        console.error('cannot resume: no token or no conversation id');
-        return;
-      }
-      const output = JSON.stringify(payload.result);
-      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
-      if (lastAssistant && Array.isArray(lastAssistant.content)) {
-        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
-          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
-        );
-        if (block) {
-          block.status = 'done';
-          block.output = output;
-          // Keep `pending_action_confirmation` so the resolved card can
-          // still render its preview and title.
-        }
-      }
-      this.messages.push({
-        content: '',
-        role: ROLE_ASSISTANT,
-        state: IChatMessageState.PENDING
-      });
-      this.onScrollDown();
-      this.answering = true;
-      this.canceler = new AbortController();
-      this._streamAssistantTurn(
-        {
-          id: this.conversationId,
-          model: this.model.name,
-          stateful: true,
-          tool_results: [{ tool_use_id: payload.tool_use_id, output }],
-          ...this._localToolInjection()
-        },
-        token,
-        this.conversationId
-      );
+      this._resumeWithToolResults([{ tool_use_id: payload.tool_use_id, output: JSON.stringify(payload.result) }]);
     },
     /**
      * Open the connector's OAuth install URL. PR-6: navigate the
@@ -1488,6 +1470,11 @@ export default defineComponent({
       if (isWeb()) {
         // `return_to` navigates the tab back here, so a full-page hop is
         // still the right shape on web.
+        if (this.taskConnectionAuthorization) {
+          // Persist only a reauthorization marker across the redirect, never a
+          // ticket or account list. A remounted renderer must ask before resume.
+          sessionStorage.setItem(this.connectionResumeMarker(), 'required');
+        }
         window.location.href = await withAuthFrontendSession(target);
         return;
       }
@@ -1566,6 +1553,31 @@ export default defineComponent({
       }
       this.$router.replace({ path: this.$route.path, query });
     },
+    connectionResumeMarker(conversationId?: string) {
+      return `connector-task-reauthorize:${this.runtimeUserId}:${conversationId ?? this.conversationId ?? ''}`;
+    },
+    continueConnectionTask() {
+      const pending = this.pendingRuntimeResume;
+      if (pending) this._resumeWithToolResults(pending.results, pending.conversationId);
+    },
+    canResumeConnectionTask(): boolean {
+      if (this.runtimeConnectionIds.length) return true;
+      const authorization = this.taskConnectionAuthorization;
+      const lostRendererState = !authorization && sessionStorage.getItem(this.connectionResumeMarker()) === 'required';
+      if (
+        lostRendererState ||
+        (authorization &&
+          (Date.parse(authorization.expiresAt) <= Date.now() ||
+            authorization.userId !== this.runtimeUserId ||
+            authorization.applicationId !== this.application?.id ||
+            authorization.credentialId !== this.credential?.id))
+      ) {
+        ElMessage.error(this.$t('chat.runtime.reauthorize') as string);
+        this.answering = false;
+        return false;
+      }
+      return true;
+    },
     /**
      * Shared SSE-driven assistant-turn streamer. Handles deltas, tool_use,
      * cards, citations, ask_user_question, and final state transitions.
@@ -1578,7 +1590,25 @@ export default defineComponent({
       initialConversationId: string | undefined
     ) {
       const selectedRuntimeConnections = [...this.runtimeConnectionIds];
+      if (!body.tool_results?.length) this.taskConnectionAuthorization = null;
+      if (selectedRuntimeConnections.length) {
+        if (!this.application?.id || !this.credential?.id || !this.runtimeUserId) {
+          void this.handleRequestError(
+            new BaseError(403, 'connector_authorization_unavailable', this.$t('chat.runtime.unavailable') as string)
+          );
+          return;
+        }
+        this.taskConnectionAuthorization = {
+          applicationId: this.application.id,
+          credentialId: this.credential.id,
+          connectionIds: selectedRuntimeConnections,
+          expiresAt: new Date(Date.now() + 600_000).toISOString(),
+          userId: this.runtimeUserId
+        };
+        sessionStorage.removeItem(this.connectionResumeMarker());
+      }
       this.runtimeConnectionIds = [];
+      const taskAuthorization = this.taskConnectionAuthorization;
       let conversationId = initialConversationId;
       // Capture the target assistant message slot NOW. A client-tool auto-resume
       // ({@link _runClientTools} -> {@link _resumeWithToolResults}) can push a
@@ -1614,12 +1644,13 @@ export default defineComponent({
       chatOperator
         .chatConversation(metadata ? { ...body, metadata, title: scheduledConversation?.title } : body, {
           token,
-          ...(selectedRuntimeConnections.length && this.application?.id && this.credential?.id
+          ...(taskAuthorization
             ? {
                 connectorAuthorization: {
-                  applicationId: this.application.id,
-                  credentialId: this.credential.id,
-                  connectionIds: selectedRuntimeConnections
+                  applicationId: taskAuthorization.applicationId,
+                  credentialId: taskAuthorization.credentialId,
+                  connectionIds: taskAuthorization.connectionIds,
+                  expiresAt: taskAuthorization.expiresAt
                 }
               }
             : {}),
@@ -1845,6 +1876,23 @@ export default defineComponent({
         .then(async () => {
           console.debug('finished fetch answer', this.messages);
           this.messages[targetIndex].state = IChatMessageState.FINISHED;
+          const content = this.messages[targetIndex].content;
+          const awaitingInput =
+            Array.isArray(content) &&
+            content.some((part) => part.type === 'tool_use' && part.status === 'awaiting_input');
+          if (taskAuthorization && (awaitingInput || this.pendingClientTools.length)) {
+            // Reload/OAuth navigation loses the in-memory choice. Preserve only
+            // a marker so resuming then requires an explicit new choice.
+            sessionStorage.setItem(this.connectionResumeMarker(conversationId), 'required');
+          }
+          if (
+            !awaitingInput &&
+            !this.pendingClientTools.length &&
+            this.taskConnectionAuthorization === taskAuthorization
+          ) {
+            this.taskConnectionAuthorization = null;
+            sessionStorage.removeItem(this.connectionResumeMarker(conversationId));
+          }
           console.debug('finished fetch answer', JSON.stringify(this.messages));
           // Run conversations live under Scheduled Tasks, outside the normal
           // sidebar list. Keep their streamed messages local to this page.
@@ -1875,6 +1923,7 @@ export default defineComponent({
           }
         })
         .catch((error) => {
+          if (this.taskConnectionAuthorization === taskAuthorization) this.taskConnectionAuthorization = null;
           this.handleRequestError(error, targetIndex);
         });
     },

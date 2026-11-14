@@ -2056,12 +2056,12 @@
     "description": "Descrizione del modello Claude Fable 5.2"
   },
   "runtime.connections": {
-    "message": "Connessioni per questa risposta",
-    "description": "Studio per-reply connector authorization"
+    "message": "Connessioni per questa attività",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.scope": {
-    "message": "Usa gli account selezionati solo per questa risposta, per un massimo di 10 minuti. Sono consentite solo le operazioni elencate.",
-    "description": "Studio per-reply connector authorization"
+    "message": "Usa gli account selezionati per questa attività e le sue continuazioni, per un massimo di 10 minuti. Sono consentite solo le operazioni elencate.",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.unavailable": {
     "message": "Autorizzazione delle connessioni non disponibile. Riprova prima di inviare.",
@@ -2070,5 +2070,13 @@
   "runtime.empty": {
     "message": "Nessuna connessione supporta ancora l’esecuzione protetta.",
     "description": "Studio per-reply connector authorization"
+  },
+  "runtime.reauthorize": {
+    "message": "L’autorizzazione delle connessioni è scaduta o è stata persa. Seleziona di nuovo gli account, poi continua l’attività.",
+    "description": "Studio bounded task connection authorization"
+  },
+  "runtime.continue": {
+    "message": "Continua attività",
+    "description": "Continue a paused task after explicit connection reauthorization"
   }
 }

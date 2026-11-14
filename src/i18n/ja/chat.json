@@ -2017,12 +2017,12 @@
     "description": "Claude Fable 5.2モデルの説明"
   },
   "runtime.connections": {
-    "message": "今回の回答で使用する接続",
-    "description": "Studio per-reply connector authorization"
+    "message": "このタスクの接続",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.scope": {
-    "message": "選択したアカウントを今回の回答でのみ、最大10分間使用します。表示された操作だけが許可されます。",
-    "description": "Studio per-reply connector authorization"
+    "message": "選択したアカウントをこのタスクとその再開で最大10分間使用します。表示された操作のみ許可されます。",
+    "description": "Studio bounded task connection authorization"
   },
   "runtime.unavailable": {
     "message": "接続の承認を取得できません。送信前にもう一度お試しください。",
@@ -2031,5 +2031,13 @@
   "runtime.empty": {
     "message": "保護された実行に対応する接続はまだありません。",
     "description": "Studio per-reply connector authorization"
+  },
+  "runtime.reauthorize": {
+    "message": "接続の認証が期限切れ、または失われました。アカウントを選択し直してからタスクを続行してください。",
+    "description": "Studio bounded task connection authorization"
+  },
+  "runtime.continue": {
+    "message": "タスクを続行",
+    "description": "Continue a paused task after explicit connection reauthorization"
   }
 }

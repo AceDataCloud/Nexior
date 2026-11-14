@@ -27,14 +27,20 @@ export const connectionRuntime = {
       permissions: c.runtime_auth.routes.map((r) => `${r.method} ${new URL(r.origin).hostname}${r.path_prefix}`)
     }));
   },
-  async create(applicationId: string, credentialId: string, connectionIds: string[]): Promise<RuntimeGrant> {
+  async create(
+    applicationId: string,
+    credentialId: string,
+    connectionIds: string[],
+    expiresAt?: string
+  ): Promise<RuntimeGrant> {
     const { data } = await httpClient.post<RuntimeGrant>(
       '/connections/runtime-grants/',
       {
         application_id: applicationId,
         credential_id: credentialId,
         connection_ids: connectionIds,
-        duration_seconds: 600
+        duration_seconds: 600,
+        ...(expiresAt ? { expires_at: expiresAt } : {})
       },
       config()
     );

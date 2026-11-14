@@ -225,10 +225,15 @@ API usage only; existing API filters, details and export remain available.
 
 ## Protected Studio connection execution
 
-Workers advertising `connector_runtime_tickets` expose a per-reply connection
-picker. Selecting accounts authorizes only that reply for up to ten minutes;
-the app obtains a one-use ticket using the signed-in user's session, carries it
-outside the model prompt, and revokes the grant on completion or Stop. The model
+Workers advertising `connector_runtime_tickets` expose a connection picker.
+Selecting accounts authorizes the current task, including question, confirmation
+and desktop-tool continuations, for up to ten minutes from the initial selection.
+Each request gets a fresh one-use ticket using the signed-in user's session and
+the original absolute deadline; a continuation never renews it. Tickets stay
+outside the model prompt and are revoked when their request completes or stops.
+The task selection is cleared on completion, Stop, navigation or account change.
+Expired authorization, or a full-page OAuth return that lost the renderer state,
+requires an explicit new selection before continuation. The model
 API key remains separate from personal connection authorization. No account is
 selected automatically, and unsupported workers do not display this option.
 Requires companion AuthBackend runtime-grant and PlatformService isolated-runtime

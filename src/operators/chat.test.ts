@@ -42,7 +42,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
       token: 'model-key',
       connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'] }
     });
-    expect(connectionRuntime.create).toHaveBeenCalledWith('a', 'c', ['selected']);
+    expect(connectionRuntime.create).toHaveBeenCalledWith('a', 'c', ['selected'], undefined);
     expect(fetchSpy.mock.calls[0][1].headers['x-connector-ticket']).toBe('opaque-ticket');
     expect(fetchSpy.mock.calls[0][1].body).not.toContain('opaque-ticket');
     expect(revoke).toHaveBeenCalledWith('g');
@@ -59,6 +59,42 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
       })
     ).rejects.toThrow();
     expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('refuses an expired continuation before acquiring a ticket or submitting chat', async () => {
+    const create = vi.spyOn(connectionRuntime, 'create');
+    const fetchSpy = vi.fn();
+    vi.stubGlobal('fetch', fetchSpy);
+    await expect(
+      chatOperator.chatConversation({ tool_results: [{ tool_use_id: 'q', output: 'yes' }] } as never, {
+        token: 'model-key',
+        connectorAuthorization: {
+          applicationId: 'a',
+          credentialId: 'c',
+          connectionIds: ['selected'],
+          expiresAt: new Date(Date.now() - 1).toISOString()
+        }
+      })
+    ).rejects.toMatchObject({ code: 'connector_authorization_expired' });
+    expect(create).not.toHaveBeenCalled();
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('keeps a continuation deadline out of the model body and does not renew it', async () => {
+    const expiresAt = new Date(Date.now() + 60_000).toISOString();
+    const create = vi
+      .spyOn(connectionRuntime, 'create')
+      .mockResolvedValue({ grant_id: 'g', ticket: 'opaque-ticket', expires_at: expiresAt });
+    vi.spyOn(connectionRuntime, 'revoke').mockResolvedValue();
+    const fetchSpy = vi.fn().mockResolvedValue(sseResponse(['data: [DONE]\n']));
+    vi.stubGlobal('fetch', fetchSpy);
+    await chatOperator.chatConversation({ tool_results: [{ tool_use_id: 'q', output: 'yes' }] } as never, {
+      token: 'model-key',
+      connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'], expiresAt }
+    });
+    expect(create).toHaveBeenCalledWith('a', 'c', ['selected'], expiresAt);
+    expect(fetchSpy.mock.calls[0][1].body).not.toContain(expiresAt);
+    expect(fetchSpy.mock.calls[0][1].body).not.toContain('selected');
   });
 
   it('forwards tool_progress `progress` fragments to the stream callback', async () => {

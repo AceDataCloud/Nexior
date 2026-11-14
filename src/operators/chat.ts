@@ -79,10 +79,13 @@ class ChatOperator {
         if (selected?.connectionIds.length) {
           if (continuous || options.signal?.aborted)
             throw new BaseError(403, 'connector_authorization_unavailable', '');
+          if (selected.expiresAt && !(Date.parse(selected.expiresAt) > Date.now()))
+            throw new BaseError(403, 'connector_authorization_expired', 'Select the connections again to continue.');
           const grant = await connectionRuntime.create(
             selected.applicationId,
             selected.credentialId,
-            selected.connectionIds
+            selected.connectionIds,
+            selected.expiresAt
           );
           grantId = grant.grant_id;
           connectorTicket = grant.ticket;
@@ -90,6 +93,10 @@ class ChatOperator {
           if (options.signal?.aborted) {
             await revoke();
             throw new DOMException('Aborted', 'AbortError');
+          }
+          if (selected.expiresAt && Date.parse(selected.expiresAt) <= Date.now()) {
+            await revoke();
+            throw new BaseError(403, 'connector_authorization_expired', 'Select the connections again to continue.');
           }
         }
         const response = await fetch(`${continuous ? BASE_URL_X402 : BASE_URL_API}/aichat2/conversations`, {
