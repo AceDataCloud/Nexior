@@ -81,12 +81,7 @@ class ChatOperator {
             throw new BaseError(403, 'connector_authorization_unavailable', '');
           if (selected.expiresAt && !(Date.parse(selected.expiresAt) > Date.now()))
             throw new BaseError(403, 'connector_authorization_expired', 'Select the connections again to continue.');
-          const grant = await connectionRuntime.create(
-            selected.applicationId,
-            selected.credentialId,
-            selected.connectionIds,
-            selected.expiresAt
-          );
+          const grant = await connectionRuntime.create(token, selected.connectionIds, selected.expiresAt);
           grantId = grant.grant_id;
           connectorTicket = grant.ticket;
           options.signal?.addEventListener('abort', onAbort, { once: true });
@@ -107,7 +102,7 @@ class ChatOperator {
             'Content-Type': 'application/json',
             Accept: 'text/event-stream',
             ...siteHeaders(),
-            ...(connectorTicket ? { 'x-connector-ticket': connectorTicket } : {})
+            ...(connectorTicket ? { 'x-auth-token': connectorTicket } : {})
           },
           signal: options.signal,
           body: JSON.stringify(data)

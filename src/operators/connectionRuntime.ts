@@ -27,17 +27,15 @@ export const connectionRuntime = {
       permissions: c.runtime_auth.routes.map((r) => `${r.method} ${new URL(r.origin).hostname}${r.path_prefix}`)
     }));
   },
-  async create(
-    applicationId: string,
-    credentialId: string,
-    connectionIds: string[],
-    expiresAt?: string
-  ): Promise<RuntimeGrant> {
+  async create(modelToken: string, connectionIds: string[], expiresAt?: string): Promise<RuntimeGrant> {
+    // Bind the ticket to this execution credential without resolving billing IDs
+    // or sending the raw model token to Auth.
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(modelToken));
+    const executionBinding = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
     const { data } = await httpClient.post<RuntimeGrant>(
       '/connections/runtime-grants/',
       {
-        application_id: applicationId,
-        credential_id: credentialId,
+        execution_binding: executionBinding,
         connection_ids: connectionIds,
         duration_seconds: 600,
         ...(expiresAt ? { expires_at: expiresAt } : {})

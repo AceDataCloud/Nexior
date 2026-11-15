@@ -1,13 +1,16 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { createHash, webcrypto } from 'node:crypto';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 const { get, post, del } = vi.hoisted(() => ({ get: vi.fn(), post: vi.fn(), del: vi.fn() }));
 vi.mock('./common', () => ({ httpClient: { get, post, delete: del } }));
 vi.mock('@/utils/baseUrl', () => ({ getBaseUrlAuth: () => 'https://auth.example' }));
 import { connectionRuntime } from './connectionRuntime';
 beforeEach(() => {
+  vi.stubGlobal('crypto', webcrypto);
   get.mockReset();
   post.mockReset();
   del.mockReset();
 });
+afterEach(() => vi.unstubAllGlobals());
 describe('explicit connection authorization', () => {
   it('lists policy-backed owned accounts without credentials', async () => {
     get.mockResolvedValue({
@@ -30,18 +33,23 @@ describe('explicit connection authorization', () => {
   it('creates a user-authenticated grant only for selected IDs and revokes it', async () => {
     post.mockResolvedValue({ data: { grant_id: 'g', ticket: 'opaque', expires_at: 'later' } });
     del.mockResolvedValue({});
-    const grant = await connectionRuntime.create('app', 'cred', ['selected']);
+    const grant = await connectionRuntime.create('model-key', ['selected']);
     expect(post).toHaveBeenCalledWith(
       '/connections/runtime-grants/',
-      { application_id: 'app', credential_id: 'cred', connection_ids: ['selected'], duration_seconds: 600 },
+      {
+        execution_binding: createHash('sha256').update('model-key').digest('hex'),
+        connection_ids: ['selected'],
+        duration_seconds: 600
+      },
       { baseURL: 'https://auth.example/api/v1' }
     );
+    expect(JSON.stringify(post.mock.calls[0][1])).not.toContain('model-key');
     await connectionRuntime.revoke(grant.grant_id);
     expect(del.mock.calls[0][0]).toBe('/connections/runtime-grants/g/');
   });
   it('carries the original task deadline when creating a continuation ticket', async () => {
     post.mockResolvedValue({ data: { grant_id: 'g', ticket: 'opaque', expires_at: '2026-11-15T01:00:00Z' } });
-    await connectionRuntime.create('app', 'cred', ['selected'], '2026-11-15T01:00:00Z');
+    await connectionRuntime.create('model-key', ['selected'], '2026-11-15T01:00:00Z');
     expect(post.mock.calls[0][1]).toMatchObject({ expires_at: '2026-11-15T01:00:00Z', duration_seconds: 600 });
   });
 });

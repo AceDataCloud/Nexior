@@ -22,6 +22,7 @@ function mount() {
     query: {}
   });
   const getters = reactive({ authenticated: true, user: { id: 'u1' } });
+  const credential = reactive({ id: 'cred', token: 'token' });
   const wrapper = shallowMount(Conversation, {
     global: {
       stubs: { Layout: { template: '<main><slot name="chat" /></main>' } },
@@ -36,7 +37,7 @@ function mount() {
           state: {
             chat: {
               application: { id: 'app' },
-              credential: { id: 'cred', token: 'token' },
+              credential,
               conversations: [],
               model: { name: 'gpt' },
               status: { getApplications: Status.None }
@@ -46,7 +47,7 @@ function mount() {
       }
     }
   });
-  return { wrapper, route, getters };
+  return { wrapper, route, getters, credential };
 }
 
 let active: ReturnType<typeof mount>;
@@ -172,14 +173,18 @@ describe('bounded task connector authorization', () => {
     expect(vm.taskConnectionAuthorization?.connectionIds).toEqual(['selected']);
   });
 
-  it.each(['stop', 'reset', 'user-switch', 'navigation'] as const)('clears the task on %s', async (action) => {
-    const vm = start();
-    if (action === 'stop') await vm.onStop();
-    if (action === 'reset') vm.resetConversation();
-    if (action === 'user-switch') active.getters.user.id = 'u2';
-    if (action === 'navigation') active.route.params.id = 'c2';
-    await flushPromises();
-    expect(vm.taskConnectionAuthorization).toBeNull();
-    expect(vm.runtimeConnectionIds).toEqual([]);
-  });
+  it.each(['stop', 'reset', 'user-switch', 'navigation', 'credential-switch'] as const)(
+    'clears the task on %s',
+    async (action) => {
+      const vm = start();
+      if (action === 'stop') await vm.onStop();
+      if (action === 'reset') vm.resetConversation();
+      if (action === 'user-switch') active.getters.user.id = 'u2';
+      if (action === 'navigation') active.route.params.id = 'c2';
+      if (action === 'credential-switch') active.credential.token = 'new-token';
+      await flushPromises();
+      expect(vm.taskConnectionAuthorization).toBeNull();
+      expect(vm.runtimeConnectionIds).toEqual([]);
+    }
+  );
 });

@@ -40,10 +40,10 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     vi.stubGlobal('fetch', fetchSpy);
     await chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'hello' } as never, {
       token: 'model-key',
-      connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'] }
+      connectorAuthorization: { connectionIds: ['selected'] }
     });
-    expect(connectionRuntime.create).toHaveBeenCalledWith('a', 'c', ['selected'], undefined);
-    expect(fetchSpy.mock.calls[0][1].headers['x-connector-ticket']).toBe('opaque-ticket');
+    expect(connectionRuntime.create).toHaveBeenCalledWith('model-key', ['selected'], undefined);
+    expect(fetchSpy.mock.calls[0][1].headers['x-auth-token']).toBe('opaque-ticket');
     expect(fetchSpy.mock.calls[0][1].body).not.toContain('opaque-ticket');
     expect(revoke).toHaveBeenCalledWith('g');
   });
@@ -55,7 +55,7 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     await expect(
       chatOperator.chatConversation({ model: 'gpt-5.6-sol', message: 'hello' } as never, {
         token: 'model-key',
-        connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'] }
+        connectorAuthorization: { connectionIds: ['selected'] }
       })
     ).rejects.toThrow();
     expect(fetchSpy).not.toHaveBeenCalled();
@@ -69,8 +69,6 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
       chatOperator.chatConversation({ tool_results: [{ tool_use_id: 'q', output: 'yes' }] } as never, {
         token: 'model-key',
         connectorAuthorization: {
-          applicationId: 'a',
-          credentialId: 'c',
           connectionIds: ['selected'],
           expiresAt: new Date(Date.now() - 1).toISOString()
         }
@@ -90,9 +88,9 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     vi.stubGlobal('fetch', fetchSpy);
     await chatOperator.chatConversation({ tool_results: [{ tool_use_id: 'q', output: 'yes' }] } as never, {
       token: 'model-key',
-      connectorAuthorization: { applicationId: 'a', credentialId: 'c', connectionIds: ['selected'], expiresAt }
+      connectorAuthorization: { connectionIds: ['selected'], expiresAt }
     });
-    expect(create).toHaveBeenCalledWith('a', 'c', ['selected'], expiresAt);
+    expect(create).toHaveBeenCalledWith('model-key', ['selected'], expiresAt);
     expect(fetchSpy.mock.calls[0][1].body).not.toContain(expiresAt);
     expect(fetchSpy.mock.calls[0][1].body).not.toContain('selected');
   });

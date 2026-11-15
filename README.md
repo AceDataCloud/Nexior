@@ -234,7 +234,10 @@ outside the model prompt and are revoked when their request completes or stops.
 The task selection is cleared on completion, Stop, navigation or account change.
 Expired authorization, or a full-page OAuth return that lost the renderer state,
 requires an explicit new selection before continuation. The model
-API key remains separate from personal connection authorization. No account is
+API key remains separate from personal connection ownership: the browser sends
+only its SHA-256 binding to Auth, which derives the connection owner from the
+existing user session. No Gateway identity lookup or app/credential IDs are added.
+Changing that model credential clears task authority. No account is
 selected automatically, and unsupported workers do not display this option.
-Requires companion AuthBackend runtime-grant and PlatformService isolated-runtime
-services. No runtime feature or server configuration is enabled by this UI change.
+Requires companion AuthBackend runtime-grant support and the existing PlatformService
+sandbox executor with protected process channels. No runtime feature or server configuration is enabled by this UI change.

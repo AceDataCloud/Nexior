@@ -196,8 +196,6 @@ import {
 } from 'element-plus';
 
 interface TaskConnectionAuthorization {
-  applicationId: string;
-  credentialId: string;
   connectionIds: string[];
   expiresAt: string;
   userId: string;
@@ -437,7 +435,8 @@ export default defineComponent({
     // rather than running in mounted().
     'credential.token': {
       immediate: true,
-      async handler(val: string | undefined) {
+      async handler(val: string | undefined, previous: string | undefined) {
+        if (previous && val !== previous) await this.onStop();
         if (!val) return;
         if (this.modelGroup?.name) {
           await this.$store.dispatch('chat/getConversations');
@@ -1567,10 +1566,7 @@ export default defineComponent({
       if (
         lostRendererState ||
         (authorization &&
-          (Date.parse(authorization.expiresAt) <= Date.now() ||
-            authorization.userId !== this.runtimeUserId ||
-            authorization.applicationId !== this.application?.id ||
-            authorization.credentialId !== this.credential?.id))
+          (Date.parse(authorization.expiresAt) <= Date.now() || authorization.userId !== this.runtimeUserId))
       ) {
         ElMessage.error(this.$t('chat.runtime.reauthorize') as string);
         this.answering = false;
@@ -1592,15 +1588,13 @@ export default defineComponent({
       const selectedRuntimeConnections = [...this.runtimeConnectionIds];
       if (!body.tool_results?.length) this.taskConnectionAuthorization = null;
       if (selectedRuntimeConnections.length) {
-        if (!this.application?.id || !this.credential?.id || !this.runtimeUserId) {
+        if (!token || !this.runtimeUserId) {
           void this.handleRequestError(
             new BaseError(403, 'connector_authorization_unavailable', this.$t('chat.runtime.unavailable') as string)
           );
           return;
         }
         this.taskConnectionAuthorization = {
-          applicationId: this.application.id,
-          credentialId: this.credential.id,
           connectionIds: selectedRuntimeConnections,
           expiresAt: new Date(Date.now() + 600_000).toISOString(),
           userId: this.runtimeUserId
@@ -1647,8 +1641,6 @@ export default defineComponent({
           ...(taskAuthorization
             ? {
                 connectorAuthorization: {
-                  applicationId: taskAuthorization.applicationId,
-                  credentialId: taskAuthorization.credentialId,
                   connectionIds: taskAuthorization.connectionIds,
                   expiresAt: taskAuthorization.expiresAt
                 }

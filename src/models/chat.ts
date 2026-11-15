@@ -461,8 +461,6 @@ export interface IChatConversation {
 
 export interface IChatConversationOptions {
   connectorAuthorization?: {
-    applicationId: string;
-    credentialId: string;
     connectionIds: string[];
     /** Original task deadline; continuations must not extend it. */
     expiresAt?: string;
