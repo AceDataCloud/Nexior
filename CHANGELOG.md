@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 14 Nov 2026 20:13:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 16 Nov 2026 20:15:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.385.2
+
+Mon, 16 Nov 2026 20:15:41 GMT
+
+### Patches
+
+- Support fresh authentication for browser pairing and binding, preserving safe return paths without replaying requests. (dev@acedata.cloud)
 
 ## 3.385.1
 
