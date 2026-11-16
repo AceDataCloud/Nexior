@@ -42,6 +42,7 @@
 
 <script lang="ts">
 import { cancelAddingAccount } from '@/utils/auth/accountSessions';
+import { authReturnPath } from '@/utils/auth/returnPath';
 import { CloseIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import axios from 'axios';
@@ -118,6 +119,9 @@ export default defineComponent({
     authAction() {
       return this.$store.state.auth?.action || 'login';
     },
+    reauthenticate() {
+      return !!this.$store.state.auth?.reauthenticate;
+    },
     iframeUrl() {
       if (this.authAction === 'logout') {
         return new URL('/auth/logout', getBaseUrlAuth()).toString();
@@ -125,6 +129,7 @@ export default defineComponent({
       // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
       // URL that iOS ATS blocks, leaving this iframe blank (white screen).
       const url = new URL('/auth/login/', getBaseUrlAuth());
+      if (this.reauthenticate) url.searchParams.set('reauthenticate', '1');
       if (this.inviterId) {
         url.searchParams.set('inviter_id', this.inviterId);
       }
@@ -135,7 +140,7 @@ export default defineComponent({
         url.searchParams.set(
           'redirect',
           `${getBaseUrlStudio()}/auth/callback?${new URLSearchParams({
-            redirect: this.redirect
+            redirect: authReturnPath(this.redirect, this.reauthenticate)
           }).toString()}`
         );
       }
@@ -191,7 +196,9 @@ export default defineComponent({
         // SFSafariViewController lacks the system bridge that Apple's JS SDK
         // needs, so it falls back to a webpage that asks for the iCloud
         // password instead of using Face ID.
-        if (provider === 'apple' && isIOS()) {
+        // Fresh authentication stays in AuthFrontend so its MFA challenge UI
+        // completes before any token/code is returned to the app.
+        if (provider === 'apple' && isIOS() && !this.reauthenticate) {
           track('apple_login_submit', { action: 'native_ios' });
           try {
             const { response } = await SignInWithApple.authorize({
@@ -234,7 +241,7 @@ export default defineComponent({
               await this.$store.dispatch('initializeSite');
             }
             track('apple_login_success', { action: 'native_ios' });
-            this.$store.commit('setAuth', { visible: false });
+            this.$store.commit('setAuth', { visible: false, reauthenticate: false });
             await this.$router.push('/');
           } catch (error: unknown) {
             // ASAuthorizationError code 1001 = the user dismissed the sheet.
@@ -261,9 +268,13 @@ export default defineComponent({
         // AuthFrontend in iframe can't do OAuth popups/redirects (X-Frame-Options).
         // Open the auth page with the provider pre-selected, using the
         // per-surface redirect scheme.
-        const authUrl = withCurrentSite(
-          `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}&native_redirect=${this.nativeRedirect}&provider=${provider}`
-        );
+        if (typeof provider !== 'string') return;
+        const loginUrl = new URL('/auth/login/', getBaseUrlAuth());
+        if (this.inviterId) loginUrl.searchParams.set('inviter_id', this.inviterId);
+        loginUrl.searchParams.set('native_redirect', this.nativeRedirect);
+        loginUrl.searchParams.set('provider', provider);
+        if (this.reauthenticate) loginUrl.searchParams.set('reauthenticate', '1');
+        const authUrl = withCurrentSite(loginUrl.toString());
         if (isDesktop()) {
           // Desktop has no Capacitor in-app browser. Hand off to the Electron
           // main process, which appends + stores a `state` nonce and opens the
@@ -307,14 +318,16 @@ export default defineComponent({
           // instead of reloading — window.location.reload() in Capacitor
           // WKWebView can fail to re-trigger the auth check, and on desktop it
           // would reload the app://bundle (the navigation we avoid everywhere).
-          this.$store.commit('setAuth', { visible: false });
-          await this.$router.push('/');
+          const target = this.reauthenticate ? authReturnPath(this.redirect, true) : '/';
+          this.$store.commit('setAuth', { visible: false, reauthenticate: false });
+          await this.$router.push(target);
         } else {
-          this.$store.commit('setAuth', { visible: false });
-          const target = openedSettings
-            ? this.$router.resolve({ name: ROUTE_SETTINGS_INDEX }).href
-            : this.redirect || '/';
-          const targetUrl = new URL(this.resolveLocalRedirect(target), window.location.origin).toString();
+          const target =
+            openedSettings && !this.reauthenticate
+              ? this.$router.resolve({ name: ROUTE_SETTINGS_INDEX }).href
+              : this.redirect || '/';
+          const targetUrl = new URL(authReturnPath(target, this.reauthenticate), window.location.origin).toString();
+          this.$store.commit('setAuth', { visible: false, reauthenticate: false });
           if (targetUrl === window.location.href) {
             window.location.reload();
           } else {
@@ -359,16 +372,7 @@ export default defineComponent({
   methods: {
     closeWebLogin() {
       cancelAddingAccount();
-      this.$store.commit('setAuth', { visible: false });
-    },
-    resolveLocalRedirect(target: string | undefined, fallback = '/') {
-      try {
-        const url = new URL(target || fallback, window.location.origin);
-        if (url.origin !== window.location.origin) return fallback;
-        return `${url.pathname}${url.search}${url.hash}`;
-      } catch {
-        return fallback;
-      }
+      this.$store.commit('setAuth', { visible: false, reauthenticate: false });
     }
   }
 });

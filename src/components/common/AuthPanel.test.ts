@@ -4,10 +4,36 @@ import axios from 'axios';
 import AuthPanel, { classifyNativeAppleLoginError } from './AuthPanel.vue';
 
 const addBrowserListenerMock = vi.hoisted(() => vi.fn());
+const reauth = vi.hoisted(() => ({
+  native: false,
+  desktop: false,
+  ios: false,
+  openBrowser: vi.fn(),
+  openOAuth: vi.fn(),
+  appleAuthorize: vi.fn()
+}));
+
+vi.mock('@/utils', () => ({
+  getBaseUrlAuth: () => 'https://auth.example.com',
+  getBaseUrlStudio: () => 'https://studio.example.com',
+  withCurrentSite: (url: string) => url
+}));
+vi.mock('@/utils/surface', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/utils/surface')>()),
+  isNative: () => reauth.native,
+  isDesktop: () => reauth.desktop,
+  isIOS: () => reauth.ios
+}));
+vi.mock('@/router', () => ({ ROUTE_SETTINGS_INDEX: 'settings' }));
+vi.mock('@/utils/desktop', () => ({ desktopBridge: () => ({ openOAuth: reauth.openOAuth }) }));
+vi.mock('@capacitor-community/apple-sign-in', () => ({
+  SignInWithApple: { authorize: reauth.appleAuthorize }
+}));
 
 vi.mock('@capacitor/browser', () => ({
   Browser: {
-    addListener: addBrowserListenerMock
+    addListener: addBrowserListenerMock,
+    open: reauth.openBrowser
   }
 }));
 
@@ -31,6 +57,80 @@ describe('classifyNativeAppleLoginError', () => {
   it('classifies other failures as generic', () => {
     expect(classifyNativeAppleLoginError(new Error('network unavailable'))).toBe('failed');
   });
+});
+
+describe('AuthPanel fresh authentication', () => {
+  afterEach(() => {
+    reauth.native = reauth.desktop = reauth.ios = false;
+    reauth.openBrowser.mockClear();
+    reauth.openOAuth.mockClear();
+    reauth.appleAuthorize.mockClear();
+  });
+
+  it.each(['com.acedatacloud.nexior', 'acedata-desktop'])('passes fresh auth to the %s iframe', (scheme) => {
+    const url = new URL(
+      (AuthPanel.computed!.iframeUrl as () => string).call({
+        authAction: 'login',
+        reauthenticate: true,
+        isInAppLogin: true,
+        nativeRedirect: scheme,
+        inviterId: undefined
+      })
+    );
+    expect(url.searchParams.get('reauthenticate')).toBe('1');
+    expect(url.searchParams.get('native_redirect')).toBe(scheme);
+    expect(url.searchParams.has('code')).toBe(false);
+  });
+
+  it('keeps the web iframe callback local and removes the install trigger', () => {
+    const url = new URL(
+      (AuthPanel.computed!.iframeUrl as () => string).call({
+        authAction: 'login',
+        reauthenticate: true,
+        isInAppLogin: false,
+        redirect: '/console/connectors?connect=github#devices',
+        inviterId: undefined
+      })
+    );
+    expect(url.searchParams.get('reauthenticate')).toBe('1');
+    const callback = new URL(url.searchParams.get('redirect')!);
+    expect(callback.origin).toBe('https://studio.example.com');
+    expect(callback.searchParams.get('redirect')).toBe('/console/connectors#devices');
+  });
+
+  it.each(['native', 'desktop'] as const)(
+    'keeps %s provider authentication in the AuthFrontend MFA flow',
+    async (surface) => {
+      reauth.native = reauth.ios = surface === 'native';
+      reauth.desktop = surface === 'desktop';
+      const frame = {} as Window;
+      const context = {
+        isNative: false,
+        isInAppLogin: true,
+        reauthenticate: true,
+        authOrigin: 'https://auth.example.com',
+        nativeRedirect: surface === 'desktop' ? 'acedata-desktop' : 'com.acedatacloud.nexior',
+        inviterId: undefined,
+        useBrowser: false,
+        unmounted: false,
+        $refs: { iframe: { contentWindow: frame } },
+        messageHandler: null as ((event: MessageEvent) => Promise<void>) | null,
+        browserFinishedHandle: null
+      };
+      await (AuthPanel.mounted as () => Promise<void>).call(context);
+      await context.messageHandler!({
+        origin: context.authOrigin,
+        source: frame,
+        data: { name: 'nativeOAuth', data: { provider: 'apple' } }
+      } as MessageEvent);
+      const target =
+        surface === 'desktop' ? reauth.openOAuth.mock.calls[0][0] : reauth.openBrowser.mock.calls[0][0].url;
+      expect(new URL(target).searchParams.get('reauthenticate')).toBe('1');
+      expect(new URL(target).searchParams.get('native_redirect')).toBe(context.nativeRedirect);
+      expect(reauth.appleAuthorize).not.toHaveBeenCalled();
+      await (AuthPanel.beforeUnmount as () => Promise<void>).call(context);
+    }
+  );
 });
 
 describe('AuthPanel message listener lifecycle', () => {

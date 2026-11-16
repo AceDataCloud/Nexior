@@ -1,6 +1,7 @@
 import store from '@/store';
 import { getBaseUrlAuth, getBaseUrlStudio } from './baseUrl';
 import { getCookie } from 'typescript-cookie';
+import { authReturnPath } from './auth/returnPath';
 
 export const getInviterId = () => {
   // if forceInviterId is set, then use forceInviterId
@@ -15,12 +16,22 @@ export const getInviterId = () => {
   return result;
 };
 
-export const loginRedirect = ({ redirect = '/', addAccount = false }: { redirect?: string; addAccount?: boolean }) => {
+export const loginRedirect = ({
+  redirect = '/',
+  addAccount = false,
+  reauthenticate = false
+}: {
+  redirect?: string;
+  addAccount?: boolean;
+  reauthenticate?: boolean;
+}) => {
   const studioBaseUrl = getBaseUrlStudio();
   const authBaseUrl = getBaseUrlAuth();
   const inviterId = getInviterId();
   // callback url used to init access token and then redirect back of `redirect`
-  const callbackUrl = `${studioBaseUrl}/auth/callback?${new URLSearchParams({ redirect }).toString()}`;
+  const callbackUrl = `${studioBaseUrl}/auth/callback?${new URLSearchParams({
+    redirect: authReturnPath(redirect, reauthenticate)
+  }).toString()}`;
   // redirect to auth service to get access token then redirect back
   // Trailing slash is required: `/auth/login` 301-redirects to a cleartext
   // `http://.../auth/login/`, which iOS ATS blocks (white screen in the native
@@ -28,6 +39,7 @@ export const loginRedirect = ({ redirect = '/', addAccount = false }: { redirect
   const targetBaseUrl = `${authBaseUrl}/auth/login/`;
   const targetQuery = {
     site: studioBaseUrl,
+    ...(reauthenticate ? { reauthenticate: '1' } : {}),
     ...(inviterId ? { inviter_id: inviterId } : {}),
     ...(callbackUrl ? { redirect: callbackUrl } : {})
   };
@@ -35,6 +47,12 @@ export const loginRedirect = ({ redirect = '/', addAccount = false }: { redirect
   window.location.href = addAccount
     ? `${authBaseUrl}/auth/logout?${new URLSearchParams({ redirect: targetUrl }).toString()}`
     : targetUrl;
+};
+
+/** Start a fresh identity/MFA ceremony; the rejected operation remains rejected. */
+export const requestReauthentication = (): void => {
+  if (store.state.auth?.visible && store.state.auth.reauthenticate) return;
+  void store.dispatch('login', { reauthenticate: true });
 };
 
 /**

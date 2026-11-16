@@ -23,6 +23,7 @@ import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlStudio, getInviterId, loginRedirect } from '@/utils';
 import { isIframeLoginEnabled } from '@/utils/loginMethod';
 import { isNative, isDesktop } from '@/utils/surface';
+import { authReturnPath } from '@/utils/auth/returnPath';
 
 export const resetAll = async ({ commit, dispatch }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -290,9 +291,12 @@ export const switchAccount = async ({ state, commit }: ActionContext<IRootState,
 
 export const login = async (
   { commit }: ActionContext<IRootState, IRootState>,
-  payload: { redirect?: string; addAccount?: boolean } = {}
+  payload: { redirect?: string; addAccount?: boolean; reauthenticate?: boolean } = {}
 ) => {
-  const redirect = payload.redirect || window.location.pathname + window.location.search + window.location.hash;
+  const redirect = authReturnPath(
+    payload.redirect || window.location.pathname + window.location.search + window.location.hash,
+    payload.reauthenticate
+  );
   if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
     // app://bundle window navigated to the external auth host cannot return.
@@ -300,6 +304,7 @@ export const login = async (
       flow: 'popup',
       visible: true,
       redirect,
+      reauthenticate: !!payload.reauthenticate,
       action: payload.addAccount ? 'logout' : 'login'
     });
     console.debug('login popup');
@@ -308,6 +313,7 @@ export const login = async (
       flow: 'redirect',
       visible: true,
       redirect,
+      reauthenticate: !!payload.reauthenticate,
       action: 'login'
     });
     console.debug('login redirect');
@@ -315,7 +321,7 @@ export const login = async (
     // it survives the auth round-trip and is still present when the user
     // lands back on Nexior. inviter_id is also forwarded as a top-level
     // query param by loginRedirect itself.
-    loginRedirect({ redirect, addAccount: payload.addAccount });
+    loginRedirect({ redirect, addAccount: payload.addAccount, reauthenticate: payload.reauthenticate });
   }
 };
 
@@ -330,6 +336,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
     commit('setAuth', {
       flow: 'popup',
       visible: true,
+      reauthenticate: false,
       redirect: window.location.pathname + window.location.search + window.location.hash,
       action: isNative() || isDesktop() ? 'login' : 'logout'
     });

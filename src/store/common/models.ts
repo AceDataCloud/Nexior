@@ -49,6 +49,7 @@ export interface ICommonState {
     visible: boolean;
     redirect?: string;
     action?: 'login' | 'logout';
+    reauthenticate?: boolean;
   };
   exchange:
     | {

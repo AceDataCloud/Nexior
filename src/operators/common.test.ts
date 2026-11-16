@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const state = vi.hoisted(() => ({
   token: undefined as string | undefined,
   login: vi.fn(),
+  reauthenticate: vi.fn(),
   logout: vi.fn()
 }));
 
@@ -25,6 +26,7 @@ vi.mock('@/store', () => ({
 }));
 
 vi.mock('@/utils/login', () => ({
+  requestReauthentication: state.reauthenticate,
   ensureLoggedIn: () => {
     state.login();
     return false;
@@ -64,6 +66,7 @@ beforeEach(() => {
   state.token = undefined;
   state.login.mockClear();
   state.logout.mockClear();
+  state.reauthenticate.mockClear();
   configureRequestAuth({
     getAccountToken: () => state.token,
     isAuthenticated: () => !!state.token,
@@ -72,6 +75,47 @@ beforeEach(() => {
 });
 
 describe('Platform HTTP auth modes', () => {
+  const forbidden =
+    (code: string, send = vi.fn()): AxiosAdapter =>
+    async (config) => {
+      send(config);
+      throw new AxiosError('forbidden', 'ERR_BAD_REQUEST', config, undefined, {
+        data: { code },
+        status: 403,
+        statusText: 'Forbidden',
+        headers: {},
+        config
+      });
+    };
+
+  it('starts fresh authentication without replaying the rejected mutation', async () => {
+    state.token = 'stale-session';
+    const send = vi.fn();
+    httpClient.defaults.adapter = forbidden('reauthentication_required', send);
+    await expect(httpClient.post('/browser-devices/pairing-challenges/', {})).rejects.toMatchObject({
+      response: { status: 403, data: { code: 'reauthentication_required' } }
+    });
+    expect(send).toHaveBeenCalledOnce();
+    expect(state.reauthenticate).toHaveBeenCalledOnce();
+    expect(state.logout).not.toHaveBeenCalled();
+  });
+
+  it('keeps unrelated permission failures non-interactive', async () => {
+    state.token = 'session';
+    httpClient.defaults.adapter = forbidden('permission_denied');
+    await expect(httpClient.get('/resource')).rejects.toMatchObject({ response: { status: 403 } });
+    expect(state.reauthenticate).not.toHaveBeenCalled();
+  });
+
+  it.each([optionalHttpClient, anonymousHttpClient])(
+    'does not reauthenticate a non-required client',
+    async (client) => {
+      client.defaults.adapter = forbidden('reauthentication_required');
+      await expect(client.get('/resource')).rejects.toMatchObject({ response: { status: 403 } });
+      expect(state.reauthenticate).not.toHaveBeenCalled();
+    }
+  );
+
   it('blocks required requests before the adapter and starts login', async () => {
     const { promise, send } = run(httpClient);
     await expect(promise).rejects.toBeInstanceOf(AuthRequiredError);

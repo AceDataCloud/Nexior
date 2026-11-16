@@ -13,9 +13,13 @@ function makeCtx(source: 'native' | 'desktop' = 'desktop') {
   const dispatch = vi.fn().mockResolvedValue(undefined);
   const commit = vi.fn();
   const push = vi.fn().mockResolvedValue(undefined);
-  const store = { dispatch, commit, state: { site: { origin: 'studio.acedata.cloud' } } };
+  const store = {
+    dispatch,
+    commit,
+    state: { site: { origin: 'studio.acedata.cloud' }, auth: { reauthenticate: false, redirect: '/' } }
+  };
   const router = { push };
-  return { store: store as never, router: router as never, source, dispatch, commit, push };
+  return { store: store as never, router: router as never, source, dispatch, commit, push, auth: store.state.auth };
 }
 
 describe('exchangeSsoCode', () => {
@@ -40,7 +44,7 @@ describe('exchangeSsoCode', () => {
       expiration: 3600
     });
     expect(ctx.dispatch).toHaveBeenCalledWith('getUser');
-    expect(ctx.commit).toHaveBeenCalledWith('setAuth', { visible: false });
+    expect(ctx.commit).toHaveBeenCalledWith('setAuth', { visible: false, reauthenticate: false });
     expect(ctx.push).toHaveBeenCalledWith('/');
   });
 
@@ -76,5 +80,28 @@ describe('exchangeSsoCode', () => {
     const ctx = makeCtx();
     await exchangeSsoCode('', ctx);
     expect(tokenMock).not.toHaveBeenCalled();
+  });
+
+  it.each(['native', 'desktop'] as const)(
+    'returns %s reauthentication to the safe app route without replay',
+    async (source) => {
+      tokenMock.mockResolvedValue({ data: { access_token: 'fresh', refresh_token: 'refresh', expires_in: 3600 } });
+      const ctx = makeCtx(source);
+      ctx.auth.reauthenticate = true;
+      ctx.auth.redirect = '/console/connectors?connect=github&tab=mine#devices';
+      await exchangeSsoCode(`reauth-${source}`, ctx);
+      expect(ctx.push).toHaveBeenCalledWith('/console/connectors?tab=mine#devices');
+      expect(ctx.commit).toHaveBeenCalledWith('setAuth', { visible: false, reauthenticate: false });
+      expect(ctx.dispatch.mock.calls.map(([action]) => action)).toEqual(['setToken', 'getUser']);
+    }
+  );
+
+  it('keeps the fresh-auth requirement when a code exchange fails', async () => {
+    tokenMock.mockRejectedValue(new Error('expired code'));
+    const ctx = makeCtx();
+    ctx.auth.reauthenticate = true;
+    ctx.auth.redirect = '/console/connectors';
+    await exchangeSsoCode('failed-reauth', ctx);
+    expect(ctx.dispatch).toHaveBeenCalledWith('login', { reauthenticate: true, redirect: '/console/connectors' });
   });
 });
