@@ -1,6 +1,6 @@
 import store from '@/store';
 import { getBaseUrlPlatform } from '@/utils/baseUrl';
-import { ensureLoggedIn } from '@/utils/login';
+import { ensureLoggedIn, requestReauthentication } from '@/utils/login';
 import { requireAccountToken } from '@/utils/requestAuth';
 import { trackApiFailure } from '@/plugins/telemetry';
 import { createHttpClient } from '@acedatacloud/core/http';
@@ -32,6 +32,13 @@ const createClient = (mode: AuthMode): AxiosInstance => {
     client.interceptors.request.use((config) => {
       requireAccountToken();
       return config;
+    });
+    client.interceptors.response.use(undefined, (error) => {
+      if (error?.response?.status === 403 && error.response.data?.code === 'reauthentication_required') {
+        requestReauthentication();
+      }
+      // Do not retry pairing, binding or other authority-changing requests.
+      return Promise.reject(error);
     });
   }
   return client;

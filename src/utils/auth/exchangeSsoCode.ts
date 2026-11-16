@@ -2,6 +2,7 @@ import type { Store } from 'vuex';
 import type { Router } from 'vue-router';
 import { ssoOperator } from '@/operators';
 import { track } from '@/plugins/telemetry';
+import { authReturnPath } from './returnPath';
 
 /**
  * Shared SSO `code → token` exchange used by BOTH the native (Capacitor
@@ -33,6 +34,9 @@ export async function exchangeSsoCode(code: string, { store, router, source }: E
   // consumed code 4xxs and would kick the user back to login.
   if (code === lastHandledCode) return;
   lastHandledCode = code;
+  const auth = (store.state as { auth?: { reauthenticate?: boolean; redirect?: string } }).auth;
+  const reauthenticate = !!auth?.reauthenticate;
+  const redirect = reauthenticate ? authReturnPath(auth?.redirect, true) : '/';
   track('apple_login_deeplink', { action: 'sso_exchange', source });
   try {
     const { data } = await ssoOperator.token({ code });
@@ -44,8 +48,8 @@ export async function exchangeSsoCode(code: string, { store, router, source }: E
     if (await store.dispatch('setToken', token)) return;
     await store.dispatch('getUser');
     track('apple_login_success', { action: 'sso_exchange', source });
-    store.commit('setAuth', { visible: false });
-    await router.push('/');
+    store.commit('setAuth', { visible: false, reauthenticate: false });
+    await router.push(redirect);
   } catch (e) {
     // Reset dedup ONLY if we still own this code, so a concurrent attempt's
     // newer code (set into lastHandledCode while we awaited) isn't wiped —
@@ -53,6 +57,7 @@ export async function exchangeSsoCode(code: string, { store, router, source }: E
     if (lastHandledCode === code) lastHandledCode = '';
     track('apple_login_failed', { action: 'sso_exchange', source, error: String(e) });
     store.commit('setAuth', { visible: false });
-    await store.dispatch('login');
+    if (reauthenticate) await store.dispatch('login', { reauthenticate: true, redirect });
+    else await store.dispatch('login');
   }
 }

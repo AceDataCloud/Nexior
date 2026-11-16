@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const store = vi.hoisted(() => ({
   getters: { authenticated: false },
-  state: { auth: { visible: false } },
+  state: { auth: { visible: false, reauthenticate: false } },
   dispatch: vi.fn()
 }));
 
@@ -13,12 +13,13 @@ vi.mock('./baseUrl', () => ({
 }));
 vi.mock('typescript-cookie', () => ({ getCookie: vi.fn() }));
 
-import { ensureLoggedIn, loginRedirect } from './login';
+import { ensureLoggedIn, loginRedirect, requestReauthentication } from './login';
 
 describe('ensureLoggedIn', () => {
   beforeEach(() => {
     store.getters.authenticated = false;
     store.state.auth.visible = false;
+    store.state.auth.reauthenticate = false;
     store.dispatch.mockClear();
   });
 
@@ -52,6 +53,28 @@ describe('ensureLoggedIn', () => {
     expect(callback.searchParams.get('redirect')).toBe(redirect);
     expect(callback.hash).toBe('');
     expect(callback.searchParams.has('lang')).toBe(false);
+    vi.unstubAllGlobals();
+  });
+
+  it('starts fresh login for an authenticated session and deduplicates an open ceremony', () => {
+    store.getters.authenticated = true;
+    requestReauthentication();
+    expect(store.dispatch).toHaveBeenCalledWith('login', { reauthenticate: true });
+    store.state.auth = { visible: true, reauthenticate: true };
+    requestReauthentication();
+    expect(store.dispatch).toHaveBeenCalledOnce();
+  });
+
+  it('uses the existing callback with fresh auth and a safe manual-retry return', () => {
+    const location = { origin: 'https://studio.example.com', search: '', href: '' };
+    vi.stubGlobal('window', { location });
+    loginRedirect({ redirect: '/console/connectors?connect=github&tab=mine#devices', reauthenticate: true });
+    const login = new URL(location.href);
+    const callback = new URL(login.searchParams.get('redirect')!);
+    expect(login.searchParams.get('reauthenticate')).toBe('1');
+    expect(login.searchParams.has('code')).toBe(false);
+    expect(callback.origin).toBe(location.origin);
+    expect(callback.searchParams.get('redirect')).toBe('/console/connectors?tab=mine#devices');
     vi.unstubAllGlobals();
   });
 });
