@@ -11,6 +11,12 @@
         :title="$t('acemusic.message.disabled')"
         type="info"
       />
+      <div v-if="pendingGeneration && !submitting" class="m-3 p-3 rounded-lg bg-[var(--el-color-warning-light-9)]">
+        <p class="text-sm mb-2">{{ $t('acemusic.message.recover') }}</p>
+        <el-button size="small" :loading="submitting" @click="generate(true)">{{
+          $t('acemusic.button.recoverAudio')
+        }}</el-button>
+      </div>
       <div class="history-header">
         <task-history-toolbar
           :date="historyDate"
@@ -63,6 +69,12 @@ import { taskPollingMixin } from '@/utils/taskPollingMixin';
 import taskDrawerMixin from '@/utils/taskDrawerMixin';
 import { showcaseRecreateMixin } from '@/utils/showcaseRecreateMixin';
 import { instrumentGeneration } from '@/plugins/telemetry';
+import {
+  pendingAcemusicSubmission,
+  prepareAcemusicSubmission,
+  settleAcemusicSubmission,
+  isDefiniteAcemusicRejection
+} from '@/utils/acemusicSubmission';
 
 export default defineComponent({
   name: 'AcemusicIndex',
@@ -84,6 +96,9 @@ export default defineComponent({
     };
   },
   computed: {
+    pendingGeneration() {
+      return pendingAcemusicSubmission(this.$store, 'audios');
+    },
     enabled(): boolean {
       return Boolean(this.$store.state.site?.features?.acemusic?.enabled);
     },
@@ -175,18 +190,27 @@ export default defineComponent({
       if (window.innerWidth < 768) this.drawer = true;
       ElMessage.success(this.$t('acemusic.message.reused'));
     },
-    async generate() {
-      if (this.submitting || !this.enabled || !ensureLoggedIn()) return;
+    async generate(recover = false) {
+      if (this.submitting || (!this.enabled && !recover) || (!recover && this.pendingGeneration) || !ensureLoggedIn())
+        return;
       const token = this.credential?.token;
-      if (!token) {
+      if (!token || !this.$store.state.user?.id || !this.$store.state.acemusic.application?.id) {
         ElMessage.warning(this.$t('acemusic.message.credential'));
         return;
       }
-      const request = buildAcemusicAudioRequest(this.$store.state.acemusic.config);
+      const request =
+        recover && this.pendingGeneration
+          ? (this.pendingGeneration.request as import('@/models').IAcemusicAudioRequest)
+          : buildAcemusicAudioRequest(this.$store.state.acemusic.config);
       if (request.custom ? !(request.lyric && request.style && request.title) : !request.prompt) return;
+      const submission = prepareAcemusicSubmission(this.$store, 'audios', request);
       this.submitting = true;
       try {
-        const { data } = await instrumentGeneration('acemusic', acemusicOperator.audio(request, { token }));
+        const { data } = await instrumentGeneration(
+          'acemusic',
+          acemusicOperator.audio(request, { token, idempotencyKey: submission.key })
+        );
+        if (data.task_id) settleAcemusicSubmission(this.$store, submission);
         if (token !== this.credential?.token) return;
         if (!data.task_id || data.success === false) throw new Error(this.$t('acemusic.message.failed'));
         const task: IAcemusicTask = {
@@ -203,7 +227,9 @@ export default defineComponent({
         this.drawer = false;
         ElMessage.success(this.$t('acemusic.message.accepted'));
         await this.onScrollDown();
-      } catch {
+      } catch (error: any) {
+        if (error?.response?.data?.task_id || isDefiniteAcemusicRejection(error))
+          settleAcemusicSubmission(this.$store, submission);
         ElMessage.error(this.$t('acemusic.message.failed'));
       } finally {
         this.submitting = false;

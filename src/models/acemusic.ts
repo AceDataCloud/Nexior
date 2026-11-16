@@ -51,3 +51,10 @@ export interface IAcemusicTaskFilter {
   createdAtMin?: number;
   createdAtMax?: number;
 }
+
+export interface IAcemusicSubmission {
+  key: string;
+  scope: string;
+  operation: 'audios' | 'lyrics';
+  request: IAcemusicAudioRequest | { prompt: string; style?: string };
+}

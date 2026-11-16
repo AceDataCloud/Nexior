@@ -7,6 +7,10 @@
         <el-tab-pane :label="$t('acemusic.mode.idea')" name="idea" />
         <el-tab-pane :label="$t('acemusic.mode.custom')" name="custom" />
       </el-tabs>
+      <div v-if="pendingLyricsSubmission && !writingLyrics" class="lyrics-recovery mb-4">
+        <p class="text-xs mb-2">{{ $t('acemusic.message.recover') }}</p>
+        <el-button size="small" @click="generateLyrics(true)">{{ $t('acemusic.button.recoverLyrics') }}</el-button>
+      </div>
       <div v-if="pendingLyrics" class="lyrics-recovery mb-4">
         <p class="text-xs mb-2">{{ $t('acemusic.message.unknown') }}</p>
         <p class="text-xs break-all mb-2">{{ $t('acemusic.field.taskId') }}: {{ pendingLyrics.id }}</p>
@@ -59,7 +63,7 @@
         class="w-full"
         round
         :loading="submitting"
-        :disabled="!valid"
+        :disabled="!valid || Boolean(pendingAudioSubmission)"
         @click="$emit('generate')"
         >{{ $t('acemusic.button.generate') }}</el-button
       >
@@ -87,8 +91,8 @@
         ><el-button
           type="primary"
           :loading="writingLyrics"
-          :disabled="!lyricsPrompt.trim() || Boolean(pendingLyrics)"
-          @click="generateLyrics"
+          :disabled="!lyricsPrompt.trim() || Boolean(pendingLyrics) || Boolean(pendingLyricsSubmission)"
+          @click="generateLyrics()"
           >{{ $t('acemusic.button.lyrics') }}</el-button
         ></template
       >
@@ -105,6 +109,12 @@ import { acemusicOperator, buildAcemusicAudioRequest } from '@/operators/acemusi
 import { ensureLoggedIn, getConsumption } from '@/utils';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { t } from '@/i18n';
+import {
+  pendingAcemusicSubmission,
+  prepareAcemusicSubmission,
+  settleAcemusicSubmission,
+  isDefiniteAcemusicRejection
+} from '@/utils/acemusicSubmission';
 import ServicePricingSummary from '@/components/common/ServicePricingSummary.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
@@ -143,6 +153,8 @@ const generationCost = computed(() =>
 const lyricsCost = computed(() =>
   service.value?.cost?.length ? getConsumption({ action: 'lyrics' }, service.value.cost) : undefined
 );
+const pendingAudioSubmission = computed(() => pendingAcemusicSubmission(store, 'audios'));
+const pendingLyricsSubmission = computed(() => pendingAcemusicSubmission(store, 'lyrics'));
 const pendingLyrics = computed(() => {
   const task = store.state.acemusic.lyricsTask;
   return task && task.userId === store.state.user?.id && task.applicationId === store.state.acemusic.application?.id
@@ -154,19 +166,30 @@ const lyricsVisible = ref(false),
   writingLyrics = ref(false),
   lyricsPrompt = ref(''),
   lyricsStyle = ref('');
-async function generateLyrics() {
-  if (writingLyrics.value || pendingLyrics.value || !lyricsPrompt.value.trim() || !ensureLoggedIn()) return;
+async function generateLyrics(recover = false) {
+  if (
+    writingLyrics.value ||
+    pendingLyrics.value ||
+    (!recover && (pendingLyricsSubmission.value || !lyricsPrompt.value.trim())) ||
+    !ensureLoggedIn()
+  )
+    return;
   const token = store.state.acemusic.credential?.token;
-  if (!token) {
+  if (!token || !store.state.user?.id || !store.state.acemusic.application?.id) {
     ElMessage.warning(t('acemusic.message.credential'));
     return;
   }
+  const submission = prepareAcemusicSubmission(store, 'lyrics', {
+    prompt: lyricsPrompt.value.trim(),
+    style: lyricsStyle.value.trim() || undefined
+  });
   writingLyrics.value = true;
   try {
-    const { data } = await acemusicOperator.lyrics(
-      { prompt: lyricsPrompt.value.trim(), style: lyricsStyle.value.trim() || undefined },
-      { token }
-    );
+    const { data } = await acemusicOperator.lyrics(submission.request as { prompt: string; style?: string }, {
+      token,
+      idempotencyKey: submission.key
+    });
+    if (data.task_id || data.success === true) settleAcemusicSubmission(store, submission);
     if (token !== store.state.acemusic.credential?.token) return;
     const result = data.data?.[0];
     if (data.success !== true || !result?.text) {
@@ -185,10 +208,13 @@ async function generateLyrics() {
       custom: true,
       lyric: result.text,
       title: result.title || title.value,
-      style: lyricsStyle.value || style.value
+      style: submission.request.style || style.value
     });
     lyricsVisible.value = false;
-  } catch {
+  } catch (error: any) {
+    if (error?.response?.data?.task_id || isDefiniteAcemusicRejection(error))
+      settleAcemusicSubmission(store, submission);
+    else lyricsVisible.value = false;
     ElMessage.error(t('acemusic.message.lyricsFailed'));
   } finally {
     writingLyrics.value = false;

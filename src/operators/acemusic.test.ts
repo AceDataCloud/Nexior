@@ -53,4 +53,12 @@ describe('ACE Music API contract', () => {
     expect(axios.post).toHaveBeenCalledWith('/acemusic/lyrics', { prompt: 'home', style: 'folk' }, expect.anything());
     expect(() => acemusicOperator.audio(buildAcemusicAudioRequest(), { mode: 'x402' })).toThrow();
   });
+  it('forwards a durable idempotency key for generation recovery', async () => {
+    await acemusicOperator.audio(buildAcemusicAudioRequest(), { token: 'test-key', idempotencyKey: 'original-key' });
+    expect(axios.post).toHaveBeenCalledWith(
+      '/acemusic/audios',
+      expect.anything(),
+      expect.objectContaining({ headers: expect.objectContaining({ 'Idempotency-Key': 'original-key' }) })
+    );
+  });
 });

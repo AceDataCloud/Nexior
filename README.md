@@ -81,7 +81,7 @@ Open the **⋯** menu above media task results to **Jump to date** (or type `YYY
 continue scrolling up to browse earlier records, or clear the date chip to return to the latest.
 The controls stay collapsed while browsing, and loading older records preserves your reading position.
 
-ACE Music has a separate `/acemusic` workspace for idea-based songs, custom lyrics, a separately billed lyrics assistant, and paired MP3 results. Existing tasks recover from history after a refresh, and completed tracks remain playable when only part of a task succeeds. Site administrators can enable the capability; existing sites keep it disabled until configured. This interface requires the companion ACE Music API/catalog release.
+ACE Music has a separate `/acemusic` workspace for idea-based songs, custom lyrics, a separately billed lyrics assistant, and paired MP3 results. Unconfirmed submissions retain their original idempotency key and settings for explicit recovery without duplicate tasks. Existing tasks recover from history after a refresh, and completed tracks remain playable when only part of a task succeeds. Site administrators can enable the capability; existing sites keep it disabled until configured. This interface requires the companion ACE Music API/catalog release.
 
 AI usage is metered unless a capability is explicitly marked free. Check the current service pricing before generating.
 

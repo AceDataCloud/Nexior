@@ -3,6 +3,7 @@ import { IAcemusicState } from './models';
 
 export const resetAll = (state: IAcemusicState): void => {
   state.lyricsTask = undefined;
+  state.submissions = {};
   state.service = undefined;
   state.application = undefined;
   state.applications = undefined;
@@ -66,6 +67,15 @@ export const setTasks = (state: IAcemusicState, payload: any): void => {
 };
 
 export default {
+  setSubmission: (state: IAcemusicState, submission: import('@/models').IAcemusicSubmission) => {
+    state.submissions = { ...state.submissions, [submission.scope]: submission };
+  },
+  clearSubmission: (state: IAcemusicState, submission: import('@/models').IAcemusicSubmission) => {
+    if (state.submissions?.[submission.scope]?.key !== submission.key) return;
+    const next = { ...state.submissions };
+    delete next[submission.scope];
+    state.submissions = next;
+  },
   setLyricsTask: (state: IAcemusicState, payload: IAcemusicState['lyricsTask']) => {
     state.lyricsTask = payload;
   },

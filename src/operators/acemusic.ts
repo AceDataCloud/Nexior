@@ -8,6 +8,7 @@ import type {
   IAcemusicTaskFilter
 } from '@/models';
 import type { OperatorRequestOptions } from './x402';
+type AcemusicRequestOptions = OperatorRequestOptions & { idempotencyKey?: string };
 
 export function buildAcemusicAudioRequest(config?: IAcemusicConfig): IAcemusicAudioRequest {
   const common = {
@@ -22,17 +23,21 @@ export function buildAcemusicAudioRequest(config?: IAcemusicConfig): IAcemusicAu
 }
 
 class AcemusicOperator {
-  private post<T>(path: string, data: unknown, options: OperatorRequestOptions) {
+  private post<T>(path: string, data: unknown, options: AcemusicRequestOptions) {
     if (options.mode === 'x402' || !options.token) throw new Error('An application API key is required');
     return axios.post<T>(path, data, {
       baseURL: BASE_URL_API,
-      headers: { authorization: `Bearer ${options.token}`, 'content-type': 'application/json' }
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json',
+        ...(options.idempotencyKey ? { 'Idempotency-Key': options.idempotencyKey } : {})
+      }
     });
   }
-  audio(data: IAcemusicAudioRequest, options: OperatorRequestOptions) {
+  audio(data: IAcemusicAudioRequest, options: AcemusicRequestOptions) {
     return this.post<IAcemusicResponse>('/acemusic/audios', data, options);
   }
-  lyrics(data: { prompt: string; style?: string }, options: OperatorRequestOptions) {
+  lyrics(data: { prompt: string; style?: string }, options: AcemusicRequestOptions) {
     return this.post<{
       success?: boolean;
       task_id?: string;
@@ -40,10 +45,10 @@ class AcemusicOperator {
       error?: { message?: string };
     }>('/acemusic/lyrics', data, options);
   }
-  task<T = IAcemusicTask>(id: string, options: OperatorRequestOptions) {
+  task<T = IAcemusicTask>(id: string, options: AcemusicRequestOptions) {
     return this.post<T>('/acemusic/tasks', { action: 'retrieve', id }, options);
   }
-  tasks(filter: IAcemusicTaskFilter, options: OperatorRequestOptions) {
+  tasks(filter: IAcemusicTaskFilter, options: AcemusicRequestOptions) {
     return this.post<{ count: number; items: IAcemusicTask[] }>(
       '/acemusic/tasks',
       {

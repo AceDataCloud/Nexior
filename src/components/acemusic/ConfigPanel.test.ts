@@ -4,6 +4,7 @@ import { createStore } from 'vuex';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ConfigPanel from './ConfigPanel.vue';
 import { acemusicOperator } from '@/operators/acemusic';
+import mutations from '@/store/acemusic/mutations';
 vi.mock('@/components/common/ApiCodeButton.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/components/common/ServicePricingSummary.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/i18n', () => ({ t: (key: string) => key }));
@@ -22,6 +23,7 @@ const setup = () => {
       user: { id: 'test-user' },
       acemusic: {
         application: { id: 'test-app' },
+        submissions: {},
         lyricsTask: undefined as { id: string; userId: string; applicationId: string } | undefined,
         credential: { token: 'test-key' },
         service: { cost: [] },
@@ -35,6 +37,8 @@ const setup = () => {
       }
     },
     mutations: {
+      'acemusic/setSubmission': (state, value) => mutations.setSubmission(state.acemusic as any, value),
+      'acemusic/clearSubmission': (state, value) => mutations.clearSubmission(state.acemusic as any, value),
       'acemusic/setLyricsTask': (state, value) => {
         state.acemusic.lyricsTask = value;
       },
@@ -79,7 +83,7 @@ describe('ACE Music lyrics assistant', () => {
     await flushPromises();
     expect(acemusicOperator.lyrics).toHaveBeenCalledWith(
       { prompt: 'A song about home', style: 'folk' },
-      { token: 'test-key' }
+      expect.objectContaining({ token: 'test-key', idempotencyKey: expect.any(String) })
     );
     expect(store.state.acemusic.config).toMatchObject({ custom: true, title: 'Home', lyric: '[Verse]\nNew lyrics' });
     expect(wrapper.emitted('generate')).toBeUndefined();
@@ -120,6 +124,39 @@ describe('ACE Music lyrics assistant', () => {
     expect(acemusicOperator.lyrics).toHaveBeenCalledTimes(1);
     expect(store.state.acemusic.lyricsTask).toBeUndefined();
     expect(store.state.acemusic.config.lyric).toBe('Recovered lyrics');
+    wrapper.unmount();
+  });
+  it('resubmits a lost lyrics response with the same idempotency key and original body', async () => {
+    vi.mocked(acemusicOperator.lyrics).mockRejectedValueOnce(new Error('Connection lost'));
+    const { wrapper } = setup();
+    await wrapper
+      .findAll('button')
+      .find((b) => b.text() === 'acemusic.button.lyrics')!
+      .trigger('click');
+    await wrapper.find('#acemusic-lyrics-prompt').setValue('Original lyrics idea');
+    await wrapper
+      .findAll('button')
+      .filter((b) => b.text() === 'acemusic.button.lyrics')
+      .at(-1)!
+      .trigger('click');
+    await flushPromises();
+    const originalCall = vi.mocked(acemusicOperator.lyrics).mock.calls[0];
+    await wrapper
+      .findAll('button')
+      .find((b) => b.text() === 'acemusic.button.lyrics')!
+      .trigger('click');
+    await wrapper.find('#acemusic-lyrics-prompt').setValue('Changed idea after disconnect');
+    vi.mocked(acemusicOperator.lyrics).mockResolvedValueOnce({
+      data: { success: true, task_id: 'recovered-task', data: [{ title: 'Recovered', text: 'Original result' }] }
+    } as any);
+    await wrapper
+      .findAll('button')
+      .find((b) => b.text() === 'acemusic.button.recoverLyrics')!
+      .trigger('click');
+    await flushPromises();
+    expect(vi.mocked(acemusicOperator.lyrics).mock.calls[1]).toEqual(originalCall);
+    expect(originalCall[1]).toMatchObject({ idempotencyKey: expect.any(String) });
+    expect(wrapper.text()).not.toContain('acemusic.button.recoverLyrics');
     wrapper.unmount();
   });
 });

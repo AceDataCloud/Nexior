@@ -2,6 +2,7 @@ import { IApplication, ICredential, IService, IAcemusicAudio, Status } from '@/m
 import { IAcemusicConfig, IAcemusicTask } from '@/models';
 
 export interface IAcemusicState {
+  submissions?: Record<string, import('@/models').IAcemusicSubmission>;
   lyricsTask?: { id: string; userId?: string; applicationId?: string };
   application: IApplication | undefined;
   applications: IApplication[] | undefined;
