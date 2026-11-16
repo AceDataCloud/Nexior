@@ -31,6 +31,7 @@ import hailuo from './hailuo';
 import minimax from './minimax';
 import suno from './suno';
 import producer from './producer';
+import acemusic from './acemusic';
 import nanobanana from './nanobanana';
 import openaiimage from './openaiimage';
 import seedream from './seedream';
@@ -62,6 +63,7 @@ import {
   ROUTE_QWENIMAGE_INDEX,
   ROUTE_SUNO_INDEX,
   ROUTE_PRODUCER_INDEX,
+  ROUTE_ACEMUSIC_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_GROKVIDEO_INDEX,
   ROUTE_OMNI_INDEX,
@@ -285,6 +287,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Suno', 'AI Music', 'Music Generation', 'AI Song', 'Text to Music'],
     category: 'AI Music Generation'
   },
+  acemusic: {
+    title: 'ACE Music',
+    description: 'Create songs from an idea or custom lyrics with ACE Music.',
+    keywords: ['ACE Music', 'AI Music', 'Music Generation'],
+    category: 'AI Music Generation'
+  },
   producer: {
     title: 'Producer',
     description: 'Create AI music with Producer — generate songs, lyrics, and music with FUZZ models.',
@@ -354,6 +362,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['openaiimage', ROUTE_OPENAIIMAGE_INDEX],
   ['suno', ROUTE_SUNO_INDEX],
   ['producer', ROUTE_PRODUCER_INDEX],
+  ['acemusic', ROUTE_ACEMUSIC_INDEX],
   ['fish', ROUTE_FISH_TTS_INDEX],
   ['veo', ROUTE_VEO_INDEX],
   ['sora', ROUTE_SORA_INDEX],
@@ -417,6 +426,7 @@ export const routes = [
   minimax,
   suno,
   producer,
+  acemusic,
   ...(isCapabilityAvailableOnBuild('nanobanana') ? [nanobanana] : []),
   openaiimage,
   seedream,

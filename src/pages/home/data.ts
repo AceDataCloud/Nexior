@@ -30,6 +30,7 @@ import {
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_PRODUCER_INDEX,
+  ROUTE_ACEMUSIC_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_QWENIMAGE_INDEX,
@@ -196,6 +197,7 @@ export const HOME_CATEGORIES: HomeCategory[] = [
     focalPoint: 'center 45%',
     candidates: [
       capability('suno', ROUTE_SUNO_INDEX, 'Suno', 'intro.model.suno', ''),
+      capability('acemusic', ROUTE_ACEMUSIC_INDEX, 'ACE Music', 'acemusic.description', ''),
       capability('producer', ROUTE_PRODUCER_INDEX, 'Producer', 'intro.model.producer', ''),
       capability('fish', ROUTE_FISH_TTS_INDEX, 'Fish Audio', 'intro.model.fish', '')
     ]

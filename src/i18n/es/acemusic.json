@@ -1,0 +1,170 @@
+{
+  "mode.custom": {
+    "message": "Modo personalizado",
+    "description": "Etiqueta de la pestaña para el modo de generación personalizada"
+  },
+  "field.model": {
+    "message": "Modelo",
+    "description": "Seleccionar versión del modelo"
+  },
+  "field.prompt": {
+    "message": "Descripción de la canción",
+    "description": "Sugerencia para la entrada de contenido"
+  },
+  "field.lyric": {
+    "message": "Letras",
+    "description": "Sugerencia para la entrada de contenido de letras"
+  },
+  "field.style": {
+    "message": "Estilo",
+    "description": "Sugerencia para la entrada de contenido del estilo de la canción"
+  },
+  "field.title": {
+    "message": "Título",
+    "description": "Sugerencia para la entrada de contenido del título de la canción"
+  },
+  "field.taskId": {
+    "message": "ID de tarea",
+    "description": "ID de la tarea"
+  },
+  "placeholder.prompt": {
+    "message": "Describe la música que deseas, por ejemplo: una cálida balada sobre la nostalgia del otoño...",
+    "description": "Placeholder para la entrada de descripción de la canción"
+  },
+  "placeholder.lyric": {
+    "message": "[Verso]\nEn esta noche silenciosa\nLas estrellas brillan en el cielo\n\n[Estribillo]\nCantemos juntos\nHasta que amanezca...",
+    "description": "Placeholder para la entrada de letras"
+  },
+  "placeholder.style": {
+    "message": "Por ejemplo: pop acústico, jazz, R&B, electrónico...",
+    "description": "Placeholder para la entrada de estilo"
+  },
+  "placeholder.title": {
+    "message": "Ingresa el nombre de la canción...",
+    "description": "Placeholder para la entrada de título"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "Describe el tema de la letra, la IA generará automáticamente...",
+    "description": "Placeholder para la entrada de aviso de letra"
+  },
+  "button.lyrics": {
+    "message": "Generar letras con IA",
+    "description": "Texto del botón para generar letras automáticamente con IA"
+  },
+  "button.generate": {
+    "message": "Generar",
+    "description": "Texto del botón de generación"
+  },
+  "button.download": {
+    "message": "Descargar música",
+    "description": "Texto del botón para descargar música"
+  },
+  "message.lyricsFailed": {
+    "message": "Error al generar letras",
+    "description": "Mensaje al fallar la generación de letras"
+  },
+  "description": {
+    "message": "Convierte una idea o tus propias letras en dos versiones de una canción.",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "Idea musical",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "Cada generación produce dos canciones.",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "Las letras se cobran por separado. Puedes editarlas antes de crear música.",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "Reutilizar ajustes",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "Detalles de la tarea",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "Crear música",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "Empieza con una idea musical",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "Describe una canción o escribe tus letras. Tus canciones aparecerán aquí.",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "Canción {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "Procesando",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "Preparando audio",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "Completado",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "Completado parcialmente",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "Error",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "Requiere revisión",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "Es posible que la tarea se haya aceptado. Conserva su ID y comprueba su estado antes de enviarla de nuevo.",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "No se pudieron entregar ambas canciones. Las pistas completadas siguen disponibles.",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "Espera a que la clave de la aplicación esté lista o selecciona una aplicación.",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "Ajustes restaurados. Genera cuando quieras.",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "Tarea enviada. Puedes consultarla en el historial.",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "No se confirmó el envío. Revisa el historial antes de reintentar.",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "La creación musical no está habilitada en este sitio. Los resultados existentes siguen disponibles.",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "Habilitar la creación de canciones con ACE Music.",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "No se pudo descargar el audio. Inténtalo de nuevo.",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "Consultar la tarea de letra original",
+    "description": "Query the original lyrics task without resubmitting"
+  }
+}

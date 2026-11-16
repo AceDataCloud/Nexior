@@ -33,6 +33,7 @@ export * from './siteAuthDelivery';
 export * from './translation';
 export * from './suno';
 export * from './producer';
+export * from './acemusic';
 export * from './exchange';
 export * from './nanobanana';
 export * from './openaiimage';

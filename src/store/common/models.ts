@@ -17,6 +17,7 @@ import { IHailuoState } from '../hailuo/models';
 import { IMinimaxState } from '../minimax/models';
 import { ISunoState } from '../suno/models';
 import { IProducerState } from '../producer/models';
+import { IAcemusicState } from '../acemusic/models';
 import { INanobananaState } from '../nanobanana/models';
 import { IOpenAIImageState } from '../openaiimage/models';
 import { ISeedreamState } from '../seedream/models';
@@ -85,6 +86,7 @@ export interface IAppState {
   minimax: IMinimaxState;
   suno: ISunoState;
   producer: IProducerState;
+  acemusic: IAcemusicState;
   nanobanana: INanobananaState;
   openaiimage: IOpenAIImageState;
   seedream: ISeedreamState;

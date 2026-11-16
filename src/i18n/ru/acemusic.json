@@ -1,0 +1,170 @@
+{
+  "mode.custom": {
+    "message": "Режим настройки",
+    "description": "Метка вкладки для настраиваемого режима генерации"
+  },
+  "field.model": {
+    "message": "Модель",
+    "description": "Выбор версии модели"
+  },
+  "field.prompt": {
+    "message": "Описание песни",
+    "description": "Подсказка для ввода содержимого"
+  },
+  "field.lyric": {
+    "message": "Текст",
+    "description": "Подсказка для ввода текста"
+  },
+  "field.style": {
+    "message": "Стиль",
+    "description": "Подсказка для ввода стиля песни"
+  },
+  "field.title": {
+    "message": "Заголовок",
+    "description": "Подсказка для ввода заголовка песни"
+  },
+  "field.taskId": {
+    "message": "ID задачи",
+    "description": "ID задачи"
+  },
+  "placeholder.prompt": {
+    "message": "Опишите желаемую музыку, например: теплая народная песня о ностальгии по осени...",
+    "description": "Заполнитель для ввода описания песни"
+  },
+  "placeholder.lyric": {
+    "message": "[Куплет]\nВ эту тихую ночь\nЗвезды мерцают на небе\n\n[Припев]\nДавайте споем вместе\nДо рассвета...",
+    "description": "Заполнитель для ввода текста"
+  },
+  "placeholder.style": {
+    "message": "Например: акустический поп, джаз, R&B, электронная музыка...",
+    "description": "Заполнитель для ввода стиля"
+  },
+  "placeholder.title": {
+    "message": "Введите название песни...",
+    "description": "Заполнитель для ввода заголовка"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "Опишите тему текста, ИИ автоматически сгенерирует...",
+    "description": "Заполнитель для ввода подсказки текста"
+  },
+  "button.lyrics": {
+    "message": "Сгенерировать текст",
+    "description": "Текст кнопки для автоматической генерации текста"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Текст кнопки генерации"
+  },
+  "button.download": {
+    "message": "Скачать музыку",
+    "description": "Текст кнопки для скачивания музыки"
+  },
+  "message.lyricsFailed": {
+    "message": "Ошибка генерации текста",
+    "description": "Сообщение об ошибке при неудачной генерации текста"
+  },
+  "description": {
+    "message": "Создайте два варианта песни из идеи или собственного текста.",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "Идея",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "Одна генерация создаёт две песни.",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "Создание текста оплачивается отдельно. Его можно отредактировать перед генерацией музыки.",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "Использовать настройки",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "Сведения о задании",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "Создать музыку",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "Начните с музыкальной идеи",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "Опишите песню или введите свой текст. Созданные песни появятся здесь.",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "Песня {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "В процессе",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "Подготовка аудио",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "Завершено",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "Частично завершено",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "Ошибка",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "Требует проверки",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "Задание могло быть принято. Сохраните его ID и проверьте статус перед повторной отправкой.",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "Не удалось получить обе песни. Готовые треки остаются доступными.",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "Дождитесь готовности ключа приложения или выберите приложение.",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "Настройки восстановлены. Запустите генерацию, когда будете готовы.",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "Задание отправлено. Его можно найти в истории.",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "Отправка не подтверждена. Проверьте историю перед повторной попыткой.",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "Создание музыки на этом сайте не включено. Существующие результаты остаются доступными.",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "Включить создание песен с ACE Music.",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "Не удалось скачать аудио. Повторите попытку.",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "Проверить исходное задание текста",
+    "description": "Query the original lyrics task without resubmitting"
+  }
+}

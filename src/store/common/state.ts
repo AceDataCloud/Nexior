@@ -15,6 +15,7 @@ import hailuoState from '../hailuo/state';
 import minimaxState from '../minimax/state';
 import sunoState from '../suno/state';
 import producerState from '../producer/state';
+import acemusicState from '../acemusic/state';
 import nanobananaState from '../nanobanana/state';
 import openaiimageState from '../openaiimage/state';
 import seedreamState from '../seedream/state';
@@ -71,6 +72,7 @@ export default (): IRootState => {
     minimax: minimaxState(),
     suno: sunoState(),
     producer: producerState(),
+    acemusic: acemusicState(),
     nanobanana: nanobananaState(),
     openaiimage: openaiimageState(),
     seedream: seedreamState(),

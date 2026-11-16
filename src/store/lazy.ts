@@ -40,6 +40,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   minimax: () => import('./minimax'),
   suno: () => import('./suno'),
   producer: () => import('./producer'),
+  acemusic: () => import('./acemusic'),
   nanobanana: () => import('./nanobanana'),
   openaiimage: () => import('./openaiimage'),
   seedream: () => import('./seedream'),
