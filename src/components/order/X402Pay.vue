@@ -348,8 +348,7 @@ export default defineComponent({
         arbitrum: '0xA4B1',
         optimism: '0xA',
         bsc: '0x38',
-        avalanche: '0xA86A',
-        skale: '0x46CEA59D'
+        avalanche: '0xA86A'
       };
       const key = (this.expectedNetwork || '').toLowerCase();
       return mapping[key];
@@ -529,7 +528,6 @@ export default defineComponent({
       if (lower === 'base-sepolia' || lower === 'eip155:84532') return 'Base Sepolia';
       if (lower === 'solana' || lower === 'solana:5eykt4usfv8p8njdtrepy1vzqkqzkvdp') return 'Solana';
       if (lower === 'solana-devnet') return 'Solana Devnet';
-      if (lower === 'skale') return 'SKALE';
       if (lower === 'ethereum') return 'Ethereum';
       if (lower === 'sepolia') return 'Sepolia';
       if (lower === 'polygon') return 'Polygon';
@@ -738,13 +736,6 @@ export default defineComponent({
           nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
           rpcUrls: ['https://sepolia.base.org'],
           blockExplorerUrls: ['https://sepolia.basescan.org']
-        },
-        skale: {
-          chainId: '0x46CEA59D',
-          chainName: 'SKALE Base',
-          nativeCurrency: { name: 'CREDIT', symbol: 'CREDIT', decimals: 18 },
-          rpcUrls: ['https://skale-base.skalenodes.com/v1/base'],
-          blockExplorerUrls: ['https://skale-base-explorer.skalenodes.com']
         }
       };
       const aliases: Record<string, string> = { 'eip155:8453': 'base', 'eip155:84532': 'base-sepolia' };
