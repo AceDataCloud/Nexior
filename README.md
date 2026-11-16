@@ -60,7 +60,7 @@ Custom capability names configured in site settings also appear in browser tab t
 | ----------------------- | --------------------------------------------------------------------------- |
 | 💬 **AI Chat**          | ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi                          |
 | 🖼️ **AI Image**         | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art           |
-| 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS)                                                |
+| 🎵 **AI Music & Voice** | Suno · ACE Music · Producer · Fish (TTS)                                                |
 | 🎬 **AI Video**         | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 
 Suno includes Simple and Custom song creation, audio upload/recording, covers and extensions,
