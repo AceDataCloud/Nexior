@@ -123,6 +123,24 @@ npm run dev
 
 Create an API key and review current pricing at **[platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)**. Full guides → [`docs/deploy/`](docs/deploy/).
 
+### Hosted web deployment
+
+The production workflow applies `sh deploy/run.sh bridge`, waits for compatible
+serving endpoints, then applies `sh deploy/run.sh final`. Both phases require
+explicit `RELEASE_TAG` and `KUBE_CONTEXT` inputs and render their listed files
+separately before applying. The final phase preserves the Studio workload,
+services, proxy configuration, injector content/checksums and legacy redirect.
+
+The bridge serves old HTML with old/new hashed assets. Its barrier checks rollout,
+ready Service endpoints and image identity, and remaining active old Pods,
+including terminating ones, before allowing final HTML. Image compatibility tests
+check the old/new asset matrix and static route behavior; Ready alone is not that
+proof. Existing release snapshots and build consistency checks remain.
+
+Final success means **applied**. Deployment no longer waits for final readiness,
+calls the public site, or changes the image automatically on failure. Verify
+rollout and user behavior separately; a failed deployment stops for diagnosis.
+
 ---
 
 ## Help and feedback / 帮助与反馈

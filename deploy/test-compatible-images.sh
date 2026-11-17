@@ -46,17 +46,7 @@ run_image() {
 bridge_container="${app}-compat-bridge"
 final_container="${app}-compat-final"
 run_image "$bridge_container" "$bridge_image"
-if [ "$app" = platform-frontend ]; then
-  run_image "$final_container" "$final_image" \
-    -e AUTH_BACKEND_URL=http://127.0.0.1 \
-    -e PLATFORM_BACKEND_URL=http://127.0.0.1 \
-    -e DEBUG_AGENT_URL=http://127.0.0.1 \
-    -e SHORTURL_BACKEND_URL=http://127.0.0.1 \
-    -e AICHAT_BACKEND_URL=http://127.0.0.1 \
-    -e EXCHANGE_RATE_BACKEND_URL=http://127.0.0.1
-else
-  run_image "$final_container" "$final_image"
-fi
+run_image "$final_container" "$final_image"
 
 docker exec "$bridge_container" wget -qO- http://127.0.0.1/ | grep -q previous-release-marker
 if docker exec "$final_container" wget -qO- http://127.0.0.1/ | grep -q previous-release-marker; then
@@ -68,8 +58,11 @@ for container in "$bridge_container" "$final_container"; do
 done
 current_asset=$(docker exec "$final_container" sed -n '1p' /opt/acedata/release-assets)
 [ -n "$current_asset" ]
+docker exec "$final_container" cat /opt/acedata/release-assets > "$tmp_dir/current-assets"
 for container in "$bridge_container" "$final_container"; do
   docker exec "$container" wget -qO- "http://127.0.0.1/assets/$current_asset" >/dev/null
+  docker exec -i "$container" sh -ec \
+    'cd /usr/share/nginx/html/assets; while IFS= read -r asset; do test -f "$asset"; done' < "$tmp_dir/current-assets"
 done
 
 # A missing lazy chunk must remain an uncacheable 404, never an HTML success.

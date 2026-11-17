@@ -1,25 +1,38 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+set -eu
+cd "$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 
 : "${RELEASE_TAG:?RELEASE_TAG is required}"
-: "${PREVIOUS_TAGGED_IMAGE:?PREVIOUS_TAGGED_IMAGE is required}"
-rendered=$(mktemp)
-trap 'rm -f "$rendered"' EXIT
-injector=deploy/production/studio-html-injector.mjs
-proxy=deploy/production/studio-proxy.yaml
-injector_sha=$(openssl dgst -sha256 "$injector" | awk '{print $NF}')
-proxy_sha=$(openssl dgst -sha256 "$proxy" | awk '{print $NF}')
+: "${KUBE_CONTEXT:?KUBE_CONTEXT is required}"
+case "$RELEASE_TAG" in [.-]*|*[!A-Za-z0-9_.-]*|latest) echo "Invalid RELEASE_TAG" >&2; exit 2 ;; esac
+phase=${1:-}
+case "$phase" in
+  bridge) tag="$RELEASE_TAG-bridge"; manifests='studio-deployment.yaml' ;;
+  final) tag="$RELEASE_TAG"; manifests='studio-service.yaml studio-proxy.yaml legacy-hub-redirect.yaml studio-ingress.yaml studio-deployment.yaml' ;;
+  *) echo "Usage: $0 bridge|final" >&2; exit 2 ;;
+esac
+[ "${#tag}" -le 128 ] || { echo "Image tag is too long" >&2; exit 2; }
 
-kubectl create configmap studio-html-injector -n acedatacloud \
-  --from-file="server.mjs=$injector" --dry-run=client -o yaml > "$rendered"
-for manifest in studio-service.yaml studio-proxy.yaml legacy-hub-redirect.yaml studio-ingress.yaml; do
-  printf '%s\n' '---' >> "$rendered"
-  sed -e "s|\${TAG}|$RELEASE_TAG|g" \
-    -e "s|\${INJECTOR_SHA}|$injector_sha|g" \
-    -e "s|\${PROXY_CONFIG_SHA}|$proxy_sha|g" \
-    "deploy/production/$manifest" >> "$rendered"
+rendered=$(mktemp -d)
+trap 'rm -rf "$rendered"' EXIT
+set --
+injector_sha=
+proxy_sha=
+if [ "$phase" = final ]; then
+  injector=deploy/production/studio-html-injector.mjs
+  proxy=deploy/production/studio-proxy.yaml
+  injector_sha=$(openssl dgst -sha256 -r "$injector")
+  injector_sha=${injector_sha%% *}
+  proxy_sha=$(openssl dgst -sha256 -r "$proxy")
+  proxy_sha=${proxy_sha%% *}
+  python3 -c 'import json,pathlib,sys; print(json.dumps({"apiVersion":"v1","kind":"ConfigMap","metadata":{"name":"studio-html-injector","namespace":"acedatacloud"},"data":{"server.mjs":pathlib.Path(sys.argv[1]).read_text()}}))' "$injector" > "$rendered/studio-html-injector.yaml"
+  set -- -f "$rendered/studio-html-injector.yaml"
+fi
+for manifest in $manifests; do
+  sed -e 's/${TAG}/'"$tag"'/g' \
+    -e 's/${INJECTOR_SHA}/'"$injector_sha"'/g' \
+    -e 's/${PROXY_CONFIG_SHA}/'"$proxy_sha"'/g' \
+    "deploy/production/$manifest" > "$rendered/$manifest"
+  set -- "$@" -f "$rendered/$manifest"
 done
-kubectl apply -f "$rendered"
-
-# Only the application images need the staged asset-compatible cutover.
-bash deploy/verify-cutover.sh
+kubectl --context "$KUBE_CONTEXT" apply "$@"

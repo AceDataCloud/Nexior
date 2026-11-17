@@ -62,7 +62,10 @@ jobs:
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Lock current production release
+      - name: Select deployment context
+        run: echo "KUBE_CONTEXT=$(kubectl config current-context)" >> "$GITHUB_ENV"
+
+      - name: Snapshot current production release
         env:
           DEPLOYMENT: studio-frontend
           SERVICE: studio-frontend
@@ -99,5 +102,15 @@ jobs:
           IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
         run: bash deploy/verify-release-unchanged.sh
 
-      - name: Deploy compatible release
-        run: bash deploy/run.sh
+      - name: Apply compatible bridge
+        run: sh deploy/run.sh bridge
+
+      - name: Wait for compatible endpoints
+        env:
+          DEPLOYMENT: studio-frontend
+          SERVICE: studio-frontend
+          IMAGE_REPOSITORY: ghcr.io/acedatacloud/studio-frontend
+        run: bash deploy/wait-bridge.sh
+
+      - name: Apply final release
+        run: sh deploy/run.sh final
