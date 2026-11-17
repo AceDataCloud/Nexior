@@ -1,11 +1,17 @@
 <template>
-  <div class="task music-task">
-    <div v-if="modelValue?.id" class="task-actions">
-      <button type="button" class="icon-button btn-delete" :disabled="deleting" @click.stop="onDelete">
-        <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
-        {{ $t('suno.button.deleteTask') }}
-      </button>
-    </div>
+  <div class="task music-task suno-task">
+    <button
+      v-if="modelValue?.id"
+      type="button"
+      class="icon-button btn-delete"
+      :class="{ 'is-deleting': deleting }"
+      :disabled="deleting"
+      :aria-label="$t('suno.button.deleteTask')"
+      :title="$t('suno.button.deleteTask')"
+      @click.stop="onDelete"
+    >
+      <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+    </button>
     <div v-if="isFailure || isPending" class="audio placeholder-row" :class="{ 'failed-row': isFailure }">
       <div class="left placeholder-cover" :class="{ 'pending-cover': isPending }">
         <music-icon :size="'24' as any" aria-hidden="true" focusable="false" />
@@ -1038,6 +1044,59 @@ export default defineComponent({
 </style>
 
 <style lang="scss" scoped>
+.suno-task {
+  position: relative;
+  padding-right: 40px;
+
+  > .btn-delete {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--el-text-color-secondary);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.15s,
+      color 0.15s,
+      background-color 0.15s;
+
+    &:hover {
+      color: var(--el-color-danger);
+      background: var(--el-color-danger-light-9);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--el-color-primary);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      cursor: wait;
+    }
+  }
+
+  &:hover > .btn-delete,
+  &:focus-within > .btn-delete,
+  > .btn-delete.is-deleting {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .suno-task > .btn-delete {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .placeholder-row {
   align-items: center;
   min-height: 72px;

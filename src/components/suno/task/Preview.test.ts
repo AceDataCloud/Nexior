@@ -46,6 +46,9 @@ describe('suno/task/Preview', () => {
       'b'
     );
     expect(wrapper.findAll('.btn-delete')).toHaveLength(1);
+    expect(wrapper.find('.btn-delete').attributes('aria-label')).toBe('suno.button.deleteTask');
+    expect(wrapper.find('.btn-delete').text()).toBe('');
+    expect(wrapper.find('.task-actions').exists()).toBe(false);
     expect(wrapper.find('.audio .btn-delete').exists()).toBe(false);
     await wrapper.find('.btn-delete').trigger('click');
     await Promise.resolve();

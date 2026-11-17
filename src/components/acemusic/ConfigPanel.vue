@@ -94,7 +94,6 @@
           {{ $t('acemusic.button.generate') }}
         </el-button>
       </div>
-      <api-code-button path="/acemusic/audios" :body="request" button-type="" />
     </div>
     <el-dialog
       v-model="lyricsVisible"
@@ -143,7 +142,6 @@ import {
   isDefiniteAcemusicRejection
 } from '@/utils/acemusicSubmission';
 import ServicePricingSummary from '@/components/common/ServicePricingSummary.vue';
-import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 defineProps<{ submitting: boolean }>();
