@@ -1,8 +1,25 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 16 Nov 2026 20:15:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 17 Nov 2026 20:16:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.386.0
+
+Tue, 17 Nov 2026 20:16:36 GMT
+
+### Minor changes
+
+- Add ACE Music song creation, lyrics assistance, paired results and recoverable task history with site controls. (dev@acedata.cloud)
+
+### Patches
+
+- Align ACE Music with Suno by reusing the music layout, track rows, inputs and selected-song preview. (dev@acedata.cloud)
+- Remove the retired checkout network from wallet setup. (dev@acedata.cloud)
+- Keep music playback controls and timing visible on narrow mobile screens. (dev@acedata.cloud)
+- Center the shared music player's progress handle on its track in every interaction state. (dev@acedata.cloud)
+- Show a centered Suno task delete icon on hover and simplify the ACE Music creation footer. (dev@acedata.cloud)
+- Remove retired SKALE payment metadata from bundled dependencies. (dev@acedata.cloud)
 
 ## 3.385.2
 
