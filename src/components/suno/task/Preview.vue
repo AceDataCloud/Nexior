@@ -1,5 +1,5 @@
 <template>
-  <div class="task">
+  <div class="task music-task">
     <div v-if="modelValue?.id" class="task-actions">
       <button type="button" class="icon-button btn-delete" :disabled="deleting" @click.stop="onDelete">
         <delete-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -52,61 +52,29 @@
         </el-popover>
       </div>
     </div>
-    <div
+    <music-track
       v-for="(audio, index) in audios"
       :key="audio.id"
-      class="audio"
-      :class="{
-        'mashup-selected': isMashupSelected(audio),
-        active: $store.state?.suno?.audio?.id === audio.id,
-        generating: !audio?.audio_url
-      }"
-      @click.stop="onClick(audio)"
+      :image-url="audio.image_url"
+      :duration="audio.duration"
+      :track-style="audio.style"
+      :variation="audios.length > 1 ? index + 1 : undefined"
+      :active="$store.state?.suno?.audio?.id === audio.id"
+      :playing="$store.state?.suno?.audio?.id === audio.id && $store.state?.suno?.audio?.state === 'playing'"
+      :playable="Boolean(audio.audio_url)"
+      :generating="!audio.audio_url"
+      :class="{ 'mashup-selected': isMashupSelected(audio) }"
+      @select="onClick(audio)"
+      @play="onPlay(audio)"
+      @pause="onPause(audio)"
     >
-      <!-- Mashup selection checkbox -->
-      <div v-if="isMashupMode && audio?.audio_url" class="mashup-check" @click.stop="onToggleMashup(audio)">
-        <el-checkbox :model-value="isMashupSelected(audio)" @click.stop />
-      </div>
-      <div v-loading="!audio?.audio_url" class="left">
-        <el-image :src="audio?.image_url" class="cover" fit="cover" lazy />
-        <!-- Variation index — one generation returns 2 songs; label them so they don't read as duplicates -->
-        <div v-if="audios.length > 1" class="variation-badge">{{ index + 1 }}</div>
-        <!-- Always-visible play/pause control (hover-only was invisible on touch) -->
-        <div
-          v-if="
-            audio?.audio_url &&
-            $store.state?.suno?.audio?.id === audio.id &&
-            $store.state?.suno?.audio?.state === 'playing'
-          "
-          class="play-btn"
-          role="button"
-          tabindex="0"
-          :aria-label="$t('common.player.pause')"
-          :title="$t('common.player.pause')"
-          @click.stop="onPause(audio)"
-          @keydown.enter.stop.prevent="onPause(audio)"
-          @keydown.space.stop.prevent="onPause(audio)"
-        >
-          <el-icon><video-pause :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
+      <template #selection>
+        <!-- Mashup selection checkbox -->
+        <div v-if="isMashupMode && audio?.audio_url" class="mashup-check" @click.stop="onToggleMashup(audio)">
+          <el-checkbox :model-value="isMashupSelected(audio)" @click.stop />
         </div>
-        <div
-          v-else-if="audio?.audio_url"
-          class="play-btn"
-          role="button"
-          tabindex="0"
-          :aria-label="$t('common.player.play')"
-          :title="$t('common.player.play')"
-          @click.stop="onPlay(audio)"
-          @keydown.enter.stop.prevent="onPlay(audio)"
-          @keydown.space.stop.prevent="onPlay(audio)"
-        >
-          <el-icon><video-play :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
-        </div>
-        <div v-if="audio?.duration" class="duration">
-          {{ useFormatDuring(audio?.duration) }}
-        </div>
-      </div>
-      <div class="info">
+      </template>
+      <template #title>
         <!-- Inline title editing -->
         <div v-if="editingAudioId === audio.id" class="title-edit" @click.stop>
           <el-input
@@ -134,7 +102,8 @@
             <edit-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </button>
         </div>
-        <p class="style">{{ audio?.style }}</p>
+      </template>
+      <template #details>
         <!-- Generation progress bar -->
         <div v-if="!audio?.audio_url && audio?.progress != null && audio?.progress < 100" class="progress-row">
           <el-progress
@@ -146,8 +115,8 @@
           />
           <span class="progress-text">{{ $t('suno.name.generating') }} {{ Math.round(audio.progress) }}%</span>
         </div>
-      </div>
-      <div class="right">
+      </template>
+      <template #actions>
         <!-- Quick Extend — the most common re-use action, surfaced out of the "…" menu -->
         <el-tooltip v-if="audio?.audio_url" effect="dark" :content="$t('suno.button.extend')" placement="top">
           <button
@@ -314,8 +283,8 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
-      </div>
-    </div>
+      </template>
+    </music-track>
     <timing-dialog v-model="timingVisible" :audio="timingAudio" :data="timingData" />
     <vocal-dialog v-model="vocalVisible" :audio="sourceAudio" />
     <voice-create-dialog
@@ -367,10 +336,9 @@ import {
   WarningIcon
 } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { useFormatDuring } from '@/utils/number';
+import MusicTrack from '@/components/common/music/MusicTrack.vue';
 import { ISunoAudio, ISunoTask, ISunoConfig } from '@/models';
 import {
-  ElImage,
   ElIcon,
   ElTooltip,
   ElDropdown,
@@ -384,7 +352,6 @@ import {
   ElPopover
 } from 'element-plus';
 
-import { PauseIcon as VideoPause, PlayIcon as VideoPlay } from '@acedatacloud/core/icons/components';
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators/suno';
@@ -404,6 +371,7 @@ import VoiceCreateDialog from '../voice/VoiceCreateDialog.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    MusicTrack,
     MetaTag,
     StatusBadge,
     AudioIcon,
@@ -428,11 +396,8 @@ export default defineComponent({
     TimeIcon,
     UndoIcon,
     WarningIcon,
-    ElImage,
     ElIcon,
     ElTooltip,
-    VideoPlay,
-    VideoPause,
     ElDropdown,
     ElDropdownMenu,
     ElDropdownItem,
@@ -548,7 +513,6 @@ export default defineComponent({
       this.reportSnapshot = { prompt: audio?.prompt, title: audio?.title };
       this.reportVisible = true;
     },
-    useFormatDuring,
     shortModel(audio: ISunoAudio): string {
       // "chirp-v5-5" -> "v5.5", "chirp-v3-0" -> "v3" (matches the model selector labels)
       const m = audio?.model;
@@ -1058,248 +1022,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.icon-button {
-  display: inline-flex;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-}
-
-.task {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  // Group the variations of one generation so the pair reads as a unit
-  padding: 4px;
-  margin-bottom: 8px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  transition: border-color 0.2s;
-  .task-actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 2px 6px 6px;
-    .btn-delete {
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      color: var(--el-text-color-secondary);
-      cursor: pointer;
-      &:hover {
-        color: var(--el-color-danger);
-      }
-      &:disabled {
-        cursor: wait;
-        opacity: 0.5;
-      }
-    }
-  }
-
-  &:hover {
-    border-color: var(--el-border-color-lighter);
-  }
-  .audio {
-    display: flex;
-    padding: 6px;
-    margin-bottom: 2px;
-    border-radius: 10px;
-    transition: background-color 0.2s;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &:hover {
-      background-color: var(--el-bg-color-page);
-    }
-
-    &.active {
-      background-color: var(--el-color-primary-light-9);
-    }
-
-    .left {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      margin-right: 16px;
-      flex-shrink: 0;
-
-      .cover {
-        width: 100%;
-        height: 100%;
-        border-radius: 6px;
-      }
-
-      .duration {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 2px 4px;
-        color: white;
-        border-radius: 2px;
-        font-size: 10px;
-      }
-
-      .variation-badge {
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        min-width: 16px;
-        height: 16px;
-        padding: 0 4px;
-        border-radius: 8px;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        font-size: 10px;
-        line-height: 16px;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      // Always-visible play/pause control (works on touch; brightens on hover)
-      .play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.55);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        opacity: 0.92;
-        transition:
-          background-color 0.2s,
-          opacity 0.2s;
-        .el-icon {
-          font-size: 16px;
-          color: white;
-        }
-      }
-
-      &:hover .play-btn {
-        background-color: var(--el-color-primary);
-        opacity: 1;
-      }
-    }
-    .info {
-      flex: 1;
-      min-width: 0;
-      overflow: hidden;
-      .title-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .title {
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-      }
-
-      .model-chip {
-        flex-shrink: 0;
-        margin-top: 5px;
-      }
-      .edit-icon {
-        font-size: 10px;
-        color: var(--el-text-color-placeholder);
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.2s;
-        flex-shrink: 0;
-        margin-top: 4px;
-      }
-      .title-edit {
-        margin-top: 4px;
-        margin-bottom: 2px;
-      }
-      .style {
-        font-size: 12px;
-        margin-top: 2px;
-        margin-bottom: 0;
-        color: var(--el-text-color-secondary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .progress-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 2px;
-        .progress-bar {
-          flex: 1;
-          max-width: 100px;
-        }
-        .progress-text {
-          font-size: 10px;
-          color: var(--el-text-color-placeholder);
-          white-space: nowrap;
-        }
-      }
-    }
-    &:hover .edit-icon {
-      opacity: 1;
-    }
-    .mashup-check {
-      display: flex;
-      align-items: center;
-      padding: 0 4px 0 8px;
-      flex-shrink: 0;
-    }
-    &.mashup-selected {
-      background-color: var(--el-color-primary-light-9);
-      border-radius: 8px;
-    }
-    .right {
-      width: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 1px;
-      .icon {
-        display: block;
-        z-index: 100;
-        cursor: pointer;
-        margin-right: 15px;
-        color: var(--el-text-color-secondary);
-        transition: color 0.2s;
-        &:hover {
-          color: var(--el-color-primary);
-        }
-      }
-      .el-button {
-        margin-right: 15px; /* Add margin to the right of the button */
-      }
-    }
-
-    // Pulse the cover while a generation is still in flight (~2 min wait)
-    &.generating .left .cover {
-      animation: suno-pulse 1.4s ease-in-out infinite;
-    }
-  }
-}
-
-@keyframes suno-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.55;
-  }
-}
-
 .suno-action-menu {
   .menu-icon {
     width: 14px;

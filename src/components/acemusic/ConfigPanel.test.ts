@@ -3,8 +3,10 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { createStore } from 'vuex';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ConfigPanel from './ConfigPanel.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import { acemusicOperator } from '@/operators/acemusic';
 import mutations from '@/store/acemusic/mutations';
+import { prepareAcemusicSubmission } from '@/utils/acemusicSubmission';
 vi.mock('@/components/common/ApiCodeButton.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/components/common/ServicePricingSummary.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/i18n', () => ({ t: (key: string) => key }));
@@ -55,6 +57,13 @@ const setup = () => {
       stubs: {
         ApiCodeButton: true,
         ServicePricingSummary: true,
+        PromptTextarea: {
+          name: 'PromptTextarea',
+          props: ['modelValue', 'title'],
+          emits: ['update:modelValue'],
+          template:
+            '<section><h2>{{ title }}</h2><textarea :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)"/><slot name="actions"/></section>'
+        },
         ElDialog: { props: ['modelValue'], template: '<div v-if="modelValue"><slot/><slot name="footer"/></div>' }
       }
     }
@@ -63,6 +72,55 @@ const setup = () => {
 };
 describe('ACE Music lyrics assistant', () => {
   beforeEach(() => vi.clearAllMocks());
+  it('keeps the shared textareas bound to ACE draft fields without submitting', async () => {
+    const { wrapper, store } = setup();
+    const fields = wrapper.findAllComponents(PromptTextarea);
+    fields.find((field) => field.props('title') === 'acemusic.field.prompt')!.vm.$emit('update:modelValue', 'New idea');
+    fields
+      .find((field) => field.props('title') === 'acemusic.field.lyric')!
+      .vm.$emit('update:modelValue', 'New lyrics');
+    fields.find((field) => field.props('title') === 'acemusic.field.style')!.vm.$emit('update:modelValue', 'New style');
+    await flushPromises();
+    expect(store.state.acemusic.config).toMatchObject({ prompt: 'New idea', lyric: 'New lyrics', style: 'New style' });
+    expect(acemusicOperator.lyrics).not.toHaveBeenCalled();
+    expect(wrapper.emitted('generate')).toBeUndefined();
+    wrapper.unmount();
+  });
+  it('clears only the draft while preserving pending submissions and lyrics recovery', async () => {
+    const { wrapper, store } = setup();
+    prepareAcemusicSubmission(store, 'audios', { action: 'generate', model: 'acemusic-v1.1', prompt: 'Original idea' });
+    prepareAcemusicSubmission(store, 'lyrics', { prompt: 'Original lyrics idea' });
+    const submissions = JSON.parse(JSON.stringify(store.state.acemusic.submissions));
+    store.commit('acemusic/setLyricsTask', {
+      id: 'existing-lyrics-task',
+      userId: 'test-user',
+      applicationId: 'test-app'
+    });
+    await flushPromises();
+    await wrapper
+      .findAll('button')
+      .find((button) => button.text() === 'suno.button.clear_all')!
+      .trigger('click');
+    expect(store.state.acemusic.config).toEqual({
+      model: 'acemusic-v1.1',
+      custom: false,
+      prompt: '',
+      lyric: '',
+      style: '',
+      title: ''
+    });
+    expect(store.state.acemusic.submissions).toEqual(submissions);
+    expect(store.state.acemusic.lyricsTask?.id).toBe('existing-lyrics-task');
+    expect(wrapper.text()).toContain('existing-lyrics-task');
+    expect(
+      wrapper
+        .findAll('button')
+        .find((button) => button.text() === 'acemusic.button.generate')!
+        .attributes('disabled')
+    ).toBeDefined();
+    expect(acemusicOperator.lyrics).not.toHaveBeenCalled();
+    wrapper.unmount();
+  });
   it('only writes lyrics on an explicit action and fills editable custom fields', async () => {
     vi.mocked(acemusicOperator.lyrics).mockResolvedValue({
       data: { success: true, data: [{ title: 'Home', text: '[Verse]\nNew lyrics' }] }

@@ -1,73 +1,100 @@
 <template>
-  <div class="acemusic-config">
-    <div class="config-fields">
-      <h1 class="text-xl font-semibold mb-1">{{ displayName }}</h1>
-      <p class="text-xs text-[var(--el-text-color-secondary)] mb-5">{{ $t('acemusic.description') }}</p>
-      <el-tabs v-model="mode" class="scenario-tabs mb-4">
-        <el-tab-pane :label="$t('acemusic.mode.idea')" name="idea" />
-        <el-tab-pane :label="$t('acemusic.mode.custom')" name="custom" />
+  <div class="flex flex-col h-full min-h-0">
+    <div class="flex-1 min-h-0 overflow-hidden">
+      <el-tabs v-model="mode" class="scenario-tabs scenario-tabs--scrollable">
+        <el-tab-pane v-for="tab in modes" :key="tab.name" :label="$t(tab.label)" :name="tab.name">
+          <div class="p-5">
+            <div class="mb-4">
+              <label class="block text-sm font-bold mb-1" :for="`acemusic-model-${tab.name}`">{{
+                $t('acemusic.field.model')
+              }}</label>
+              <el-select
+                :id="`acemusic-model-${tab.name}`"
+                v-model="model"
+                class="w-full model-select"
+                size="default"
+                :aria-label="$t('acemusic.field.model')"
+              >
+                <el-option v-for="item in models" :key="item" :value="item" :label="item" />
+              </el-select>
+            </div>
+            <prompt-textarea
+              v-if="tab.name === 'idea'"
+              v-model="prompt"
+              :title="$t('acemusic.field.prompt')"
+              :placeholder="$t('acemusic.placeholder.prompt')"
+              :min-rows="5"
+              :max-rows="14"
+              class="mb-4"
+            />
+            <template v-else>
+              <prompt-textarea
+                v-model="lyric"
+                :title="$t('acemusic.field.lyric')"
+                :placeholder="$t('acemusic.placeholder.lyric')"
+                :min-rows="5"
+                :max-rows="14"
+                class="mb-4"
+              >
+                <template #actions>
+                  <el-button size="small" round @click="lyricsVisible = true">
+                    <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+                    {{ $t('acemusic.button.lyrics') }}
+                  </el-button>
+                </template>
+              </prompt-textarea>
+              <prompt-textarea
+                v-model="style"
+                :title="$t('acemusic.field.style')"
+                :placeholder="$t('acemusic.placeholder.style')"
+                :min-rows="2"
+                :max-rows="6"
+                class="mb-4"
+              />
+              <div class="mb-4">
+                <label class="block text-sm font-bold mb-1" for="acemusic-title">{{
+                  $t('acemusic.field.title')
+                }}</label>
+                <el-input id="acemusic-title" v-model="title" :placeholder="$t('acemusic.placeholder.title')" />
+              </div>
+            </template>
+          </div>
+        </el-tab-pane>
       </el-tabs>
-      <div v-if="pendingLyricsSubmission && !writingLyrics" class="lyrics-recovery mb-4">
+    </div>
+    <div v-if="(pendingLyricsSubmission && !writingLyrics) || pendingLyrics" class="px-5 pb-3 shrink-0">
+      <div v-if="pendingLyricsSubmission && !writingLyrics" class="lyrics-recovery mb-2">
         <p class="text-xs mb-2">{{ $t('acemusic.message.recover') }}</p>
         <el-button size="small" @click="generateLyrics(true)">{{ $t('acemusic.button.recoverLyrics') }}</el-button>
       </div>
-      <div v-if="pendingLyrics" class="lyrics-recovery mb-4">
+      <div v-if="pendingLyrics" class="lyrics-recovery">
         <p class="text-xs mb-2">{{ $t('acemusic.message.unknown') }}</p>
         <p class="text-xs break-all mb-2">{{ $t('acemusic.field.taskId') }}: {{ pendingLyrics.id }}</p>
         <el-button size="small" :loading="checkingLyrics" @click="checkLyrics">{{
           $t('acemusic.button.checkLyrics')
         }}</el-button>
       </div>
-      <label class="field-label" for="acemusic-model">{{ $t('acemusic.field.model') }}</label>
-      <el-select id="acemusic-model" v-model="model" class="w-full mb-4" :aria-label="$t('acemusic.field.model')">
-        <el-option v-for="item in models" :key="item" :value="item" :label="item" />
-      </el-select>
-      <template v-if="!config.custom">
-        <label class="field-label" for="acemusic-prompt">{{ $t('acemusic.field.prompt') }}</label>
-        <el-input
-          id="acemusic-prompt"
-          v-model="prompt"
-          type="textarea"
-          :rows="7"
-          :placeholder="$t('acemusic.placeholder.prompt')"
-        />
-      </template>
-      <template v-else>
-        <div class="flex items-center justify-between mb-2">
-          <label class="field-label !mb-0" for="acemusic-lyric">{{ $t('acemusic.field.lyric') }}</label>
-          <el-button size="small" @click="lyricsVisible = true">{{ $t('acemusic.button.lyrics') }}</el-button>
-        </div>
-        <el-input
-          id="acemusic-lyric"
-          v-model="lyric"
-          type="textarea"
-          :rows="9"
-          :placeholder="$t('acemusic.placeholder.lyric')"
-        />
-        <label class="field-label mt-4" for="acemusic-style">{{ $t('acemusic.field.style') }}</label>
-        <el-input
-          id="acemusic-style"
-          v-model="style"
-          type="textarea"
-          :rows="2"
-          :placeholder="$t('acemusic.placeholder.style')"
-        />
-        <label class="field-label mt-4" for="acemusic-title">{{ $t('acemusic.field.title') }}</label>
-        <el-input id="acemusic-title" v-model="title" :placeholder="$t('acemusic.placeholder.title')" />
-      </template>
     </div>
-    <div class="config-footer">
+    <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2 shrink-0">
       <service-pricing-summary :value="generationCost" :service="service" :note="$t('acemusic.price.generation')" />
-      <el-button
-        type="primary"
-        class="w-full"
-        round
-        :loading="submitting"
-        :disabled="!valid || Boolean(pendingAudioSubmission)"
-        @click="$emit('generate')"
-        >{{ $t('acemusic.button.generate') }}</el-button
-      >
-      <api-code-button path="/acemusic/audios" :body="request" button-type="" class="mt-2" />
+      <div class="flex gap-2 w-full">
+        <el-button class="flex-1" :disabled="submitting || writingLyrics" @click="clearDraft">
+          <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('suno.button.clear_all') }}
+        </el-button>
+        <el-button
+          type="primary"
+          class="flex-1"
+          round
+          :loading="submitting"
+          :disabled="!valid || Boolean(pendingAudioSubmission)"
+          @click="$emit('generate')"
+        >
+          <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('acemusic.button.generate') }}
+        </el-button>
+      </div>
+      <api-code-button path="/acemusic/audios" :body="request" button-type="" />
     </div>
     <el-dialog
       v-model="lyricsVisible"
@@ -100,6 +127,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { CleanupIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import { ElButton, ElDialog, ElInput, ElMessage, ElOption, ElSelect, ElTabPane, ElTabs } from 'element-plus';
@@ -107,7 +135,6 @@ import { ACEMUSIC_MODELS } from '@/constants';
 import type { AcemusicModel, IAcemusicConfig } from '@/models';
 import { acemusicOperator, buildAcemusicAudioRequest } from '@/operators/acemusic';
 import { ensureLoggedIn, getConsumption } from '@/utils';
-import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 import { t } from '@/i18n';
 import {
   pendingAcemusicSubmission,
@@ -117,11 +144,16 @@ import {
 } from '@/utils/acemusicSubmission';
 import ServicePricingSummary from '@/components/common/ServicePricingSummary.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 defineProps<{ submitting: boolean }>();
 defineEmits<{ generate: [] }>();
 const store = useStore();
 const models = ACEMUSIC_MODELS;
+const modes = [
+  { name: 'idea', label: 'acemusic.mode.idea' },
+  { name: 'custom', label: 'acemusic.mode.custom' }
+];
 const config = computed<IAcemusicConfig>(
   () => store.state.acemusic.config || { model: 'acemusic-v1.1', custom: false }
 );
@@ -138,9 +170,6 @@ const mode = computed({
 });
 const model = computed({ get: () => config.value.model, set: (value: AcemusicModel) => patch({ model: value }) });
 const service = computed(() => store.state.acemusic.service);
-const displayName = computed(
-  () => resolveCapabilityPresentation(store.state.site, 'acemusic', 'ACE Music', '').displayName
-);
 const request = computed(() => buildAcemusicAudioRequest(config.value));
 const valid = computed(() =>
   config.value.custom
@@ -166,6 +195,11 @@ const lyricsVisible = ref(false),
   writingLyrics = ref(false),
   lyricsPrompt = ref(''),
   lyricsStyle = ref('');
+function clearDraft() {
+  patch({ custom: false, prompt: '', lyric: '', style: '', title: '' });
+  lyricsPrompt.value = '';
+  lyricsStyle.value = '';
+}
 async function generateLyrics(recover = false) {
   if (
     writingLyrics.value ||
@@ -248,23 +282,6 @@ async function checkLyrics() {
 }
 </script>
 <style scoped>
-.acemusic-config {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  height: 100%;
-}
-.config-fields {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 20px;
-}
-.config-footer {
-  padding: 12px 20px 20px;
-  border-top: 1px solid var(--app-border-subtle);
-  text-align: center;
-}
 .lyrics-recovery {
   padding: 10px;
   background: var(--el-color-warning-light-9);
@@ -272,8 +289,8 @@ async function checkLyrics() {
 }
 .field-label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 </style>
