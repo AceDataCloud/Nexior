@@ -1,69 +1,62 @@
 <template>
-  <div class="acemusic-page">
-    <aside v-if="enabled && !mobile" class="config-column">
-      <config-panel :submitting="submitting" @generate="generate" />
-    </aside>
-    <section class="results-column">
-      <el-alert
-        v-if="!enabled"
-        class="m-3 !w-auto"
-        :closable="false"
-        :title="$t('acemusic.message.disabled')"
-        type="info"
-      />
-      <div v-if="pendingGeneration && !submitting" class="m-3 p-3 rounded-lg bg-[var(--el-color-warning-light-9)]">
-        <p class="text-sm mb-2">{{ $t('acemusic.message.recover') }}</p>
-        <el-button size="small" :loading="submitting" @click="generate(true)">{{
-          $t('acemusic.button.recoverAudio')
-        }}</el-button>
-      </div>
-      <div class="history-header">
-        <task-history-toolbar
-          :date="historyDate"
-          :busy="historyBusy"
-          :has-more="historyHasMore"
-          :error="historyError"
-          @date-change="onHistoryDateChange"
-          @load-more="onReachTop"
-        />
-        <el-button v-if="enabled" class="mobile-create" type="primary" @click="drawer = true">{{
-          $t('acemusic.button.create')
-        }}</el-button>
-      </div>
-      <recent-panel
-        ref="recentPanel"
-        :loading="fetchingTasks || historyChanging"
-        @reach-top="onReachTop"
-        @reuse="reuse"
-      />
-      <div v-show="Boolean(audio?.audio_url)" class="player">
-        <audio-player namespace="acemusic" :tracks="playableTracks" />
-      </div>
-    </section>
-    <el-drawer
-      v-if="enabled && mobile"
-      v-model="drawer"
-      :title="displayName"
-      direction="ltr"
-      size="min(360px, 94vw)"
-      class="generator-drawer"
-    >
-      <config-panel :submitting="submitting" @generate="generate" />
-    </el-drawer>
-  </div>
+  <layout>
+    <template #config>
+      <config-panel v-if="enabled" :submitting="submitting" @generate="generate" />
+      <el-alert v-else class="m-3 !w-auto" :closable="false" :title="$t('acemusic.message.disabled')" type="info" />
+    </template>
+    <template #result>
+      <showcase-result-tabs service="acemusic">
+        <template #task-actions>
+          <task-history-toolbar
+            :date="historyDate"
+            :busy="historyBusy"
+            :has-more="historyHasMore"
+            :error="historyError"
+            @date-change="onHistoryDateChange"
+            @load-more="onReachTop"
+          />
+        </template>
+        <template #tasks>
+          <el-alert
+            v-if="!enabled"
+            class="m-3 !w-auto"
+            :closable="false"
+            :title="$t('acemusic.message.disabled')"
+            type="info"
+          />
+          <div v-if="pendingGeneration && !submitting" class="m-3 p-3 rounded-lg bg-[var(--el-color-warning-light-9)]">
+            <p class="text-sm mb-2">{{ $t('acemusic.message.recover') }}</p>
+            <el-button size="small" :loading="submitting" @click="generate(true)">{{
+              $t('acemusic.button.recoverAudio')
+            }}</el-button>
+          </div>
+          <recent-panel
+            ref="recentPanel"
+            :loading="fetchingTasks || historyChanging"
+            @reach-top="onReachTop"
+            @reuse="reuse"
+          />
+        </template>
+      </showcase-result-tabs>
+    </template>
+    <template #preview>
+      <preview-panel namespace="acemusic" />
+    </template>
+  </layout>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElAlert, ElButton, ElDrawer, ElMessage } from 'element-plus';
+import { ElAlert, ElButton, ElMessage } from 'element-plus';
+import Layout from '@/layouts/Suno.vue';
+import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
+import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import ConfigPanel from '@/components/acemusic/ConfigPanel.vue';
 import RecentPanel from '@/components/acemusic/RecentPanel.vue';
-import AudioPlayer from '@/components/common/player/Player.vue';
 import { acemusicOperator, buildAcemusicAudioRequest } from '@/operators/acemusic';
-import type { IAcemusicAudio, IAcemusicTask } from '@/models';
+import type { IAcemusicTask } from '@/models';
 import { Status } from '@/models';
 import { ensureLoggedIn } from '@/utils';
-import { isAcemusicAudioPlayable, mergeAcemusicTasks } from '@/utils/acemusic';
-import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
+import { mergeAcemusicTasks } from '@/utils/acemusic';
 import { taskHistoryMixin } from '@/utils/taskHistoryMixin';
 import { taskPollingMixin } from '@/utils/taskPollingMixin';
 import taskDrawerMixin from '@/utils/taskDrawerMixin';
@@ -78,7 +71,7 @@ import {
 
 export default defineComponent({
   name: 'AcemusicIndex',
-  components: { ConfigPanel, RecentPanel, AudioPlayer, ElAlert, ElButton, ElDrawer },
+  components: { Layout, ConfigPanel, RecentPanel, ShowcaseResultTabs, PreviewPanel, ElAlert, ElButton },
   mixins: [
     taskHistoryMixin('acemusic'),
     taskPollingMixin('acemusic'),
@@ -88,7 +81,6 @@ export default defineComponent({
   inject: ['initialized'],
   data() {
     return {
-      mobile: typeof window !== 'undefined' && window.innerWidth < 768,
       submitting: false,
       fetchingTasks: false,
       loadingMore: false,
@@ -101,9 +93,6 @@ export default defineComponent({
     },
     enabled(): boolean {
       return Boolean(this.$store.state.site?.features?.acemusic?.enabled);
-    },
-    displayName(): string {
-      return resolveCapabilityPresentation(this.$store.state.site, 'acemusic', 'ACE Music', '').displayName;
     },
     credential() {
       return this.$store.state.acemusic?.credential;
@@ -119,11 +108,6 @@ export default defineComponent({
     },
     tasksLoading(): boolean {
       return this.$store.state.acemusic?.status.getTasks === Status.Request;
-    },
-    playableTracks(): IAcemusicAudio[] {
-      return (this.tasks?.items || [])
-        .flatMap((task: IAcemusicTask) => task.response?.data || [])
-        .filter(isAcemusicAudioPlayable);
     }
   },
   watch: {
@@ -143,21 +127,16 @@ export default defineComponent({
     }
   },
   mounted() {
-    window.addEventListener('resize', this.onResize);
     void this.$store.dispatch('acemusic/getService');
     this.job = window.setInterval(() => {
       if (this.credential?.token && !document.hidden) void this.onPollTasks();
     }, 5000);
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.onResize);
     window.clearInterval(this.job);
     this.$store.commit('acemusic/setAudio', { id: '', volume: 100 });
   },
   methods: {
-    onResize() {
-      this.mobile = window.innerWidth < 768;
-    },
     async loadHistory() {
       try {
         await this.onGetTasks({ replace: true });
@@ -241,51 +220,3 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
-.acemusic-page {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  height: 100%;
-  background: var(--app-content-bg);
-}
-.config-column {
-  width: 340px;
-  flex-shrink: 0;
-  min-height: 0;
-  background: var(--app-sidebar-bg);
-  border-right: 1px solid var(--app-border-subtle);
-}
-.results-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-}
-.history-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.player {
-  flex-shrink: 0;
-  border-top: 1px solid var(--app-border-subtle);
-  background: var(--app-sidebar-bg);
-}
-.mobile-create {
-  display: none;
-}
-@media (max-width: 767px) {
-  .config-column {
-    display: none;
-  }
-  .mobile-create {
-    display: inline-flex;
-    margin: 8px 12px;
-  }
-  .history-header {
-    min-height: 48px;
-  }
-}
-</style>

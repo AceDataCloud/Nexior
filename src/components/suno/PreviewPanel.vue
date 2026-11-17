@@ -35,7 +35,8 @@
 
 <script lang="ts">
 import { ImageIcon as IconPicture, AudioIcon as Headset } from '@acedatacloud/core/icons/components';
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
+import type { AudioNamespace } from '@/components/common/player/useAudioState';
 import { ElImage, ElAvatar, ElIcon } from 'element-plus';
 
 export default defineComponent({
@@ -47,9 +48,12 @@ export default defineComponent({
     ElAvatar,
     ElIcon
   },
+  props: {
+    namespace: { type: String as PropType<AudioNamespace>, default: 'suno' }
+  },
   computed: {
     audio() {
-      return this.$store.state.suno?.audio;
+      return this.$store.state[this.namespace]?.audio;
     }
   }
 });
