@@ -46,8 +46,11 @@ for pod in $pods; do
   image_id=$pod_image_id
 done
 
-first_pod=$(printf '%s\n' "$pods" | sed -n '1p')
+if { [ -n "${EXPECTED_IMAGE:-}" ] && [ "$image_id" != "$EXPECTED_IMAGE" ]; } ||
+   { [ -n "${EXPECTED_TAGGED_IMAGE:-}" ] && [ "$spec_image" != "$EXPECTED_TAGGED_IMAGE" ]; }; then
+  echo "$DEPLOYMENT image differs from the expected release" >&2
+  exit 1
+fi
 printf '%s_IMAGE=%s\n' "$OUTPUT_PREFIX" "$image_id" >> "$ENV_FILE"
-printf '%s_POD=%s\n' "$OUTPUT_PREFIX" "$first_pod" >> "$ENV_FILE"
 printf '%s_TAGGED_IMAGE=%s\n' "$OUTPUT_PREFIX" "$spec_image" >> "$ENV_FILE"
 printf 'previous_image=%s\n' "$image_id"

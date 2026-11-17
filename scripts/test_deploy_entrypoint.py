@@ -34,6 +34,20 @@ if args[:2] == ['get', 'pods']:
               'spec': {'containers': [{'image': 'old-image' if old else expected}]}}]
     print(json.dumps({'items': items}))
     sys.exit(0)
+if args[:2] == ['get', 'deployment']:
+    fields = {'{.spec.replicas}': '2', '{.metadata.generation}': '4',
+              '{.status.observedGeneration}': '4', '{.status.updatedReplicas}': '2',
+              '{.status.readyReplicas}': '2', '{.status.availableReplicas}': '2',
+              '{.status.unavailableReplicas}': ''}
+    print(fields[args[-1].removeprefix('jsonpath=')])
+    sys.exit(0)
+if args[:2] == ['get', 'endpoints']:
+    print('pod-a\npod-b')
+    sys.exit(0)
+if args[:2] == ['get', 'pod']:
+    repository = os.environ['IMAGE_REPOSITORY']
+    print(repository + ('@sha256:abc' if 'imageID' in args[-1] else ':12345-2'))
+    sys.exit(0)
 raise AssertionError(args)
 '''
 
@@ -119,9 +133,26 @@ class DeployEntrypointTest(unittest.TestCase):
                 self.assertEqual(self.calls(), [])
                 self.env = original
 
+    def test_snapshot_rejects_tag_or_digest_drift_before_exporting(self):
+        repository = self.env['IMAGE_REPOSITORY']
+        for digest, tag, succeeds in [('@sha256:abc', ':12345-2', True),
+                                      ('@sha256:other', ':12345-2', False),
+                                      ('@sha256:abc', ':old-release', False)]:
+            with self.subTest(digest=digest, tag=tag):
+                exported = self.path / 'exported'
+                exported.unlink(missing_ok=True)
+                self.env.update(EXPECTED_IMAGE=repository + digest,
+                                EXPECTED_TAGGED_IMAGE=repository + tag,
+                                GITHUB_ENV=str(exported))
+                result = self.run_script('preflight-release.sh')
+                self.assertEqual(result.returncode == 0, succeeds, result.stderr)
+                self.assertEqual(exported.exists(), succeeds)
+        for key in ('EXPECTED_IMAGE', 'EXPECTED_TAGGED_IMAGE', 'GITHUB_ENV'):
+            self.env.pop(key)
+
     def bridge_preflight(self, image):
         (self.path / 'deploy/preflight-release.sh').write_text(
-            f'#!/bin/sh\nprintf "%s\n" "BRIDGE_TAGGED_IMAGE={image}" >> "$GITHUB_ENV"\n'
+            f'#!/bin/sh\n[ "$EXPECTED_TAGGED_IMAGE" = "{image}" ]\n'
         )
         # Two date calls: initialize deadline, then expire after the first failed observation.
         self.fake('date', '#!/bin/sh\nif [ -f "$CLOCK_MARK" ]; then echo 1000; else touch "$CLOCK_MARK"; echo 0; fi\n')

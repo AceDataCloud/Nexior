@@ -125,6 +125,10 @@ Create an API key and review current pricing at **[platform.acedata.cloud](https
 
 ### Hosted web deployment
 
+`preflight-release.sh` takes the initial image snapshot and checks the expected
+image after the build. The bridge uses the same check with its expected tag;
+there is no separate snapshot wrapper or temporary environment file.
+
 The production workflow applies `sh deploy/run.sh bridge`, waits for compatible
 serving endpoints, then applies `sh deploy/run.sh final`. Both phases require
 explicit `RELEASE_TAG` and `KUBE_CONTEXT` inputs and render their listed files
