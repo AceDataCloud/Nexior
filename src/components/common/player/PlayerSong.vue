@@ -1,8 +1,8 @@
 <template>
   <div class="flex player-song">
     <img alt="" class="w-11 h-11 rounded" :src="audio?.image_url || OpticalDisk" />
-    <div class="ml-2 text-xs flex flex-col justify-between">
-      <div class="w-52 2xl:w-96 cursor-pointer truncate">
+    <div class="player-song-info ml-2 text-xs flex flex-col justify-between">
+      <div class="player-song-title w-52 2xl:w-96 cursor-pointer truncate">
         <div class="flex">
           <span>{{ audio?.title || 'Music' }}</span>
           <span v-if="audio?.style" class="ml-2 text-dc">- {{ audio.style }}</span>
@@ -109,3 +109,26 @@ watch(audio, (value, oldValue) => {
 
 onBeforeUnmount(teardown);
 </script>
+
+<style scoped>
+@media (max-width: 767px) {
+  .player-song img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .player-song {
+    align-items: center;
+  }
+
+  .player-song-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .player-song-title {
+    width: 100%;
+  }
+}
+</style>

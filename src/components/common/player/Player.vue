@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-col items-stretch h-20">
     <player-slider />
-    <div class="flex grow px-5 items-center">
-      <div class="flex-1">
+    <div class="player-content flex grow px-5 items-center">
+      <div class="player-track flex-1">
         <player-song />
       </div>
-      <div class="flex-1">
+      <div class="player-buttons flex-1">
         <player-controller />
       </div>
-      <div class="flex-1">
+      <div class="player-timing flex-1">
         <player-action />
       </div>
     </div>
@@ -33,3 +33,33 @@ provide(
   computed(() => props.tracks ?? [])
 );
 </script>
+
+<style scoped>
+@media (max-width: 767px) {
+  .player-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 20px minmax(0, 1fr);
+    grid-template-areas:
+      'track timing'
+      'buttons buttons';
+    column-gap: 12px;
+    min-height: 0;
+    padding: 0 12px;
+  }
+
+  .player-track {
+    grid-area: track;
+    min-width: 0;
+  }
+
+  .player-buttons {
+    grid-area: buttons;
+  }
+
+  .player-timing {
+    grid-area: timing;
+    white-space: nowrap;
+  }
+}
+</style>
