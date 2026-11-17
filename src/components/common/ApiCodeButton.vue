@@ -59,6 +59,7 @@ const PATH_TO_STORE: Record<string, string> = {
   openai: 'openaiimage',
   suno: 'suno',
   producer: 'producer',
+  acemusic: 'acemusic',
   serp: 'serp'
 };
 

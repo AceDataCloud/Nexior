@@ -8,6 +8,7 @@ import {
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_PRODUCER_INDEX,
+  ROUTE_ACEMUSIC_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SUNO_INDEX,
@@ -80,6 +81,13 @@ const definitions: ShowcaseServiceDefinition[] = [
     routeName: ROUTE_SUNO_INDEX,
     defaultName: 'Suno',
     descriptionKey: 'intro.model.suno'
+  },
+  {
+    service: 'acemusic',
+    capability: 'acemusic',
+    routeName: ROUTE_ACEMUSIC_INDEX,
+    defaultName: 'ACE Music',
+    descriptionKey: 'acemusic.description'
   },
   {
     service: 'producer',

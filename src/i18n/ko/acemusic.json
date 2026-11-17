@@ -1,0 +1,182 @@
+{
+  "mode.custom": {
+    "message": "맞춤 모드",
+    "description": "맞춤 생성 모드 탭의 레이블"
+  },
+  "field.model": {
+    "message": "모델",
+    "description": "모델 버전 선택"
+  },
+  "field.prompt": {
+    "message": "노래 설명",
+    "description": "내용 입력의 프롬프트"
+  },
+  "field.lyric": {
+    "message": "가사",
+    "description": "가사 내용 입력의 프롬프트"
+  },
+  "field.style": {
+    "message": "스타일",
+    "description": "노래 스타일 내용 입력의 프롬프트"
+  },
+  "field.title": {
+    "message": "제목",
+    "description": "노래 제목 내용 입력의 프롬프트"
+  },
+  "field.taskId": {
+    "message": "작업 ID",
+    "description": "작업의 ID"
+  },
+  "placeholder.prompt": {
+    "message": "원하는 음악을 설명하세요, 예: 따뜻한 포크송, 가을에 대한 그리움...",
+    "description": "곡 설명 입력의 자리 표시자"
+  },
+  "placeholder.lyric": {
+    "message": "[Verse]\n이 고요한 밤에\n별들이 하늘에서 반짝이고\n\n[Chorus]\n함께 노래하자\n날이 밝을 때까지...",
+    "description": "가사 입력의 자리 표시자"
+  },
+  "placeholder.style": {
+    "message": "예: 어쿠스틱 팝, 재즈, R&B, 전자 음악...",
+    "description": "스타일 입력의 자리 표시자"
+  },
+  "placeholder.title": {
+    "message": "곡 제목을 입력하세요...",
+    "description": "제목 입력의 자리 표시자"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "가사 주제를 설명하세요. AI가 자동으로 생성합니다...",
+    "description": "가사 프롬프트 입력의 자리 표시자"
+  },
+  "button.lyrics": {
+    "message": "AI로 가사 생성",
+    "description": "AI를 사용하여 자동으로 가사를 생성하는 버튼 텍스트"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "생성 버튼 텍스트"
+  },
+  "button.download": {
+    "message": "음악 다운로드",
+    "description": "음악 다운로드 버튼 텍스트"
+  },
+  "message.lyricsFailed": {
+    "message": "가사 생성 실패",
+    "description": "가사 생성 실패 시의 메시지"
+  },
+  "description": {
+    "message": "아이디어나 직접 쓴 가사로 두 곡의 후보를 만드세요.",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "아이디어",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "한 번 생성하면 두 곡이 만들어집니다.",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "가사 작성은 별도로 과금됩니다. 결과를 편집한 후 음악을 생성할 수 있습니다.",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "설정 재사용",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "작업 상세",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "음악 만들기",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "음악 아이디어로 시작하세요",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "원하는 곡을 설명하거나 가사를 입력하세요. 생성한 곡이 여기에 표시됩니다.",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "곡 {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "생성 중",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "오디오 준비 중",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "완료",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "일부 완료",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "실패",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "확인 필요",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "작업이 이미 접수되었을 수 있습니다. 작업 ID를 보관하고 상태를 확인한 후 다시 제출하세요.",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "두 곡을 모두 제공하지 못했습니다. 완료된 트랙은 계속 사용할 수 있습니다.",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "앱 키가 준비될 때까지 기다리거나 앱을 선택하세요.",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "설정을 복원했습니다. 준비되면 생성하세요.",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "작업을 제출했습니다. 기록에서 확인할 수 있습니다.",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "제출 결과를 확인하지 못했습니다. 다시 시도하기 전에 기록을 확인하세요.",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "이 사이트에서는 음악 생성이 활성화되어 있지 않습니다. 기존 결과는 계속 사용할 수 있습니다.",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "ACE Music으로 노래 만들기를 활성화합니다.",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "오디오를 다운로드하지 못했습니다. 다시 시도하세요.",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "원래 가사 작업 확인",
+    "description": "Query the original lyrics task without resubmitting"
+  },
+  "button.recoverAudio": {
+    "message": "원래 음악 요청 복구",
+    "description": "ACE Music lost-response recovery"
+  },
+  "button.recoverLyrics": {
+    "message": "원래 가사 요청 복구",
+    "description": "ACE Music lost-response recovery"
+  },
+  "message.recover": {
+    "message": "이전 요청이 확인되지 않았습니다. 접수된 작업이 중복되지 않도록 원래 설정으로 요청을 복구하세요.",
+    "description": "ACE Music lost-response recovery"
+  }
+}

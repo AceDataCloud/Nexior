@@ -1,0 +1,182 @@
+{
+  "mode.custom": {
+    "message": "カスタムモード",
+    "description": "カスタム生成モードタブのラベル"
+  },
+  "field.model": {
+    "message": "モデル",
+    "description": "モデルバージョンを選択"
+  },
+  "field.prompt": {
+    "message": "曲の説明",
+    "description": "内容入力のプロンプト"
+  },
+  "field.lyric": {
+    "message": "歌詞",
+    "description": "歌詞内容入力のプロンプト"
+  },
+  "field.style": {
+    "message": "スタイル",
+    "description": "曲のスタイル内容入力のプロンプト"
+  },
+  "field.title": {
+    "message": "タイトル",
+    "description": "曲のタイトル内容入力のプロンプト"
+  },
+  "field.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "placeholder.prompt": {
+    "message": "望む音楽を説明してください。例：秋の思い出に関する温かいフォークソング...",
+    "description": "曲の説明入力のプレースホルダー"
+  },
+  "placeholder.lyric": {
+    "message": "[Verse]\nこの静かな夜に\n星が空で輝いている\n\n[Chorus]\n一緒に歌おう\n夜明けまで...",
+    "description": "歌詞入力のプレースホルダー"
+  },
+  "placeholder.style": {
+    "message": "例：アコースティックポップ、ジャズ、R&B、エレクトロニック...",
+    "description": "スタイル入力のプレースホルダー"
+  },
+  "placeholder.title": {
+    "message": "曲名を入力してください...",
+    "description": "タイトル入力のプレースホルダー"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "歌詞のテーマを説明してください。AIが自動的に生成します...",
+    "description": "歌詞プロンプト入力のプレースホルダー"
+  },
+  "button.lyrics": {
+    "message": "AIによる歌詞生成",
+    "description": "AIを使用して自動的に歌詞を生成するボタンのテキスト"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタンのテキスト"
+  },
+  "button.download": {
+    "message": "音楽をダウンロード",
+    "description": "音楽をダウンロードするボタンのテキスト"
+  },
+  "message.lyricsFailed": {
+    "message": "歌詞の生成に失敗しました",
+    "description": "歌詞生成失敗時のメッセージ"
+  },
+  "description": {
+    "message": "アイデアや自作の歌詞から、2曲の候補を作成します。",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "アイデア",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "1回の生成で2曲を作成します。",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "歌詞作成は別途課金されます。編集してから曲を生成できます。",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "設定を再利用",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "タスクの詳細",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "音楽を作成",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "音楽のアイデアから始めましょう",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "作りたい曲を説明するか、歌詞を入力してください。生成した曲はここに表示されます。",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "曲 {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "生成中",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "音声を準備中",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "完了",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "一部完了",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "失敗",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "確認が必要",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "このタスクは受け付け済みの可能性があります。タスク ID を保存し、状態を確認してから再送信してください。",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "2曲すべてを提供できませんでした。完成した曲は引き続き利用できます。",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "アプリのキーが準備されるまで待つか、アプリを選択してください。",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "設定を復元しました。準備ができたら生成してください。",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "タスクを送信しました。履歴から確認できます。",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "送信結果を確認できませんでした。再試行する前に履歴を確認してください。",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "このサイトでは音楽作成が有効になっていません。既存の結果は引き続き利用できます。",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "ACE Music による楽曲作成を有効にします。",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "音声をダウンロードできませんでした。もう一度お試しください。",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "元の歌詞タスクを確認",
+    "description": "Query the original lyrics task without resubmitting"
+  },
+  "button.recoverAudio": {
+    "message": "元の楽曲リクエストを復元",
+    "description": "ACE Music lost-response recovery"
+  },
+  "button.recoverLyrics": {
+    "message": "元の歌詞リクエストを復元",
+    "description": "ACE Music lost-response recovery"
+  },
+  "message.recover": {
+    "message": "前回の送信結果を確認できませんでした。受け付け済みのタスクが重複しないよう、元の設定でリクエストを復元してください。",
+    "description": "ACE Music lost-response recovery"
+  }
+}

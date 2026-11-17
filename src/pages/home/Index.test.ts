@@ -78,7 +78,7 @@ describe('Studio workbench home', () => {
 
   it('registers every navigable capability without changing default four groups', () => {
     expect([...HOME_CAPABILITY_DEFINITIONS.keys()].sort()).toEqual([...CAPABILITY_KEYS].sort());
-    expect(HOME_CATEGORIES.map((category) => category.candidates.length)).toEqual([5, 4, 4, 3]);
+    expect(HOME_CATEGORIES.map((category) => category.candidates.length)).toEqual([5, 4, 4, 4]);
   });
 
   it('renders configured scenes in tenant order and filters disabled tools', () => {

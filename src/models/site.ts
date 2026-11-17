@@ -54,6 +54,7 @@ export interface ISiteFeatures {
   omni?: any;
   wan?: any;
   producer?: any;
+  acemusic?: any;
   kimi?: ISiteCapabilityFeature;
   mimo?: ISiteCapabilityFeature;
   glm?: ISiteCapabilityFeature;

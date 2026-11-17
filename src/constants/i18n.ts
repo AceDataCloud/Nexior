@@ -32,6 +32,7 @@ export const I18N_SCOPES = [
   'wan',
   'suno',
   'producer',
+  'acemusic',
   'fish',
   'coin',
   'common',

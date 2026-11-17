@@ -29,6 +29,7 @@ describe('common/ApiCodeButton', () => {
   // for some services while the Vuex module name never is.
   it.each([
     ['/digital-human/videos', 'digitalhuman'],
+    ['/acemusic/audios', 'acemusic'],
     ['/nano-banana/images', 'nanobanana'],
     ['/seedance/videos', 'seedance'],
     ['/openai/images/generations', 'openaiimage']

@@ -1,0 +1,182 @@
+{
+  "mode.custom": {
+    "message": "定制模式",
+    "description": "定制生成模式 Tab 的标签"
+  },
+  "field.model": {
+    "message": "模型",
+    "description": "选择模型版本"
+  },
+  "field.prompt": {
+    "message": "歌曲描述",
+    "description": "内容输入的提示"
+  },
+  "field.lyric": {
+    "message": "歌词",
+    "description": "歌词内容输入的提示"
+  },
+  "field.style": {
+    "message": "风格",
+    "description": "歌曲风格内容输入的提示"
+  },
+  "field.title": {
+    "message": "标题",
+    "description": "歌曲标题内容输入的提示"
+  },
+  "field.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "placeholder.prompt": {
+    "message": "描述你想要的音乐，例如：一首温暖的民谣，关于秋天的思念...",
+    "description": "歌曲描述输入的占位符"
+  },
+  "placeholder.lyric": {
+    "message": "[Verse]\n在这个寂静的夜里\n星星在天空闪烁\n\n[Chorus]\n让我们一起唱歌\n直到天亮...",
+    "description": "歌词输入的占位符"
+  },
+  "placeholder.style": {
+    "message": "例如：acoustic pop, jazz, R&B, electronic...",
+    "description": "风格输入的占位符"
+  },
+  "placeholder.title": {
+    "message": "输入歌曲名称...",
+    "description": "标题输入的占位符"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "描述歌词主题，AI 将自动生成...",
+    "description": "歌词提示输入的占位符"
+  },
+  "button.lyrics": {
+    "message": "AI 生成歌词",
+    "description": "使用AI自动生成歌词按钮文本"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按钮文本"
+  },
+  "button.download": {
+    "message": "下载音乐",
+    "description": "下载音乐按钮文本"
+  },
+  "message.lyricsFailed": {
+    "message": "歌词生成失败",
+    "description": "歌词生成失败时的消息"
+  },
+  "description": {
+    "message": "从一句灵感或自定义歌词，创作两首候选歌曲。",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "灵感",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "每次生成包含两首歌曲。",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "写词单独计费；生成后可以编辑，再创作歌曲。",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "复用参数",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "任务详情",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "创作音乐",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "从一个音乐灵感开始",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "描述你想要的歌曲，或填入自己的歌词，作品会出现在这里。",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "歌曲 {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "生成中",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "准备音频",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "已完成",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "部分完成",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "失败",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "待核查",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "此任务可能已被受理。请保留任务 ID，查询状态后再决定是否重新提交。",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "未能完整交付两首歌曲，已完成的音轨仍可使用。",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "请等待应用密钥准备完成，或选择一个应用。",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "参数已填入，准备好后点击生成。",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "任务已提交，可在历史记录中继续查看。",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "未能确认提交结果，请先检查历史记录再重试。",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "本站尚未开启音乐创作，已有结果仍可查看。",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "开启 ACE Music 歌曲创作。",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "音频下载失败，请重试。",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "查询原写词任务",
+    "description": "Query the original lyrics task without resubmitting"
+  },
+  "button.recoverAudio": {
+    "message": "恢复原生成请求",
+    "description": "ACE Music lost-response recovery"
+  },
+  "button.recoverLyrics": {
+    "message": "恢复原写词请求",
+    "description": "ACE Music lost-response recovery"
+  },
+  "message.recover": {
+    "message": "上次提交结果尚未确认。请恢复原请求，沿用原参数，避免重复创建已受理的任务。",
+    "description": "ACE Music lost-response recovery"
+  }
+}

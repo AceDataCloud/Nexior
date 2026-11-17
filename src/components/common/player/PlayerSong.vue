@@ -5,7 +5,7 @@
       <div class="w-52 2xl:w-96 cursor-pointer truncate">
         <div class="flex">
           <span>{{ audio?.title || 'Music' }}</span>
-          <span class="ml-2 text-dc">- {{ audio?.style || `SmallRuralDog` }}</span>
+          <span v-if="audio?.style" class="ml-2 text-dc">- {{ audio.style }}</span>
         </div>
       </div>
     </div>

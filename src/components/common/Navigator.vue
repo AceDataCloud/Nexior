@@ -139,6 +139,7 @@ import {
   ROUTE_OMNI_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
+  ROUTE_ACEMUSIC_INDEX,
   ROUTE_FISH_TTS_INDEX,
   ROUTE_FISH_MODEL_INDEX,
   ROUTE_KIMI_CONVERSATION,
@@ -178,6 +179,7 @@ import {
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
+  ACEMUSIC_LOGO,
   FISH_LOGO,
   CHAT_MODEL_ICON_KIMI,
   CHAT_MODEL_ICON_MIMO,
@@ -217,6 +219,7 @@ const NAV_CAPABILITY_BY_ROUTE: Partial<Record<string, CapabilityKey>> = {
   [ROUTE_SEEDREAM_INDEX]: 'seedream',
   [ROUTE_SUNO_INDEX]: 'suno',
   [ROUTE_PRODUCER_INDEX]: 'producer',
+  [ROUTE_ACEMUSIC_INDEX]: 'acemusic',
   [ROUTE_FISH_TTS_INDEX]: 'fish',
   [ROUTE_SEEDANCE_INDEX]: 'seedance',
   [ROUTE_GROKVIDEO_INDEX]: 'grokvideo',
@@ -402,6 +405,15 @@ export default defineComponent({
           displayName: this.$t('common.nav.suno'),
           logo: SUNO_LOGO,
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY],
+          category: 'music'
+        });
+      }
+      if (this.$store?.state?.site?.features?.acemusic?.enabled) {
+        result.push({
+          route: { name: ROUTE_ACEMUSIC_INDEX },
+          displayName: this.$t('common.nav.acemusic'),
+          logo: ACEMUSIC_LOGO,
+          routes: [ROUTE_ACEMUSIC_INDEX],
           category: 'music'
         });
       }

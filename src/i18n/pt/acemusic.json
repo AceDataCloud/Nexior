@@ -1,0 +1,182 @@
+{
+  "mode.custom": {
+    "message": "Modo personalizado",
+    "description": "Rótulo da aba de modo de geração personalizada"
+  },
+  "field.model": {
+    "message": "Modelo",
+    "description": "Escolha da versão do modelo"
+  },
+  "field.prompt": {
+    "message": "Descrição da música",
+    "description": "Prompt para entrada de conteúdo"
+  },
+  "field.lyric": {
+    "message": "Letras",
+    "description": "Prompt para entrada de conteúdo das letras"
+  },
+  "field.style": {
+    "message": "Estilo",
+    "description": "Prompt para entrada de conteúdo do estilo da música"
+  },
+  "field.title": {
+    "message": "Título",
+    "description": "Prompt para entrada de conteúdo do título da música"
+  },
+  "field.taskId": {
+    "message": "ID da tarefa",
+    "description": "ID da tarefa"
+  },
+  "placeholder.prompt": {
+    "message": "Descreva a música que você deseja, por exemplo: uma balada aconchegante sobre a saudade do outono...",
+    "description": "Placeholder para a entrada de descrição da música"
+  },
+  "placeholder.lyric": {
+    "message": "[Verso]\nNesta noite silenciosa\nAs estrelas brilham no céu\n\n[Refrão]\nVamos cantar juntos\nAté o amanhecer...",
+    "description": "Placeholder para a entrada de letras"
+  },
+  "placeholder.style": {
+    "message": "Por exemplo: pop acústico, jazz, R&B, eletrônico...",
+    "description": "Placeholder para a entrada de estilo"
+  },
+  "placeholder.title": {
+    "message": "Insira o nome da música...",
+    "description": "Placeholder para a entrada de título"
+  },
+  "placeholder.lyricsPrompt": {
+    "message": "Descreva o tema das letras, a IA gerará automaticamente...",
+    "description": "Placeholder para a entrada de prompt de letras"
+  },
+  "button.lyrics": {
+    "message": "Gerar letras com IA",
+    "description": "Texto do botão para gerar letras automaticamente com IA"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Texto do botão de geração"
+  },
+  "button.download": {
+    "message": "Baixar música",
+    "description": "Texto do botão para baixar música"
+  },
+  "message.lyricsFailed": {
+    "message": "Falha ao gerar letras",
+    "description": "Mensagem ao falhar ao gerar letras"
+  },
+  "description": {
+    "message": "Transforme uma ideia ou suas letras em duas versões de uma música.",
+    "description": "ACE Music description"
+  },
+  "mode.idea": {
+    "message": "Ideia",
+    "description": "ACE Music mode.idea"
+  },
+  "price.generation": {
+    "message": "Cada geração produz duas músicas.",
+    "description": "ACE Music price.generation"
+  },
+  "price.lyrics": {
+    "message": "As letras são cobradas separadamente. Você pode editá-las antes de criar a música.",
+    "description": "ACE Music price.lyrics"
+  },
+  "button.reuse": {
+    "message": "Reutilizar configurações",
+    "description": "ACE Music button.reuse"
+  },
+  "button.details": {
+    "message": "Detalhes da tarefa",
+    "description": "ACE Music button.details"
+  },
+  "button.create": {
+    "message": "Criar música",
+    "description": "ACE Music button.create"
+  },
+  "empty.title": {
+    "message": "Comece com uma ideia musical",
+    "description": "ACE Music empty.title"
+  },
+  "empty.description": {
+    "message": "Descreva uma música ou digite suas letras. Suas músicas aparecerão aqui.",
+    "description": "ACE Music empty.description"
+  },
+  "track": {
+    "message": "Música {number}",
+    "description": "ACE Music track"
+  },
+  "state.processing": {
+    "message": "Processando",
+    "description": "ACE Music state.processing"
+  },
+  "state.storing": {
+    "message": "Preparando áudio",
+    "description": "ACE Music state.storing"
+  },
+  "state.succeeded": {
+    "message": "Concluído",
+    "description": "ACE Music state.succeeded"
+  },
+  "state.partial_failed": {
+    "message": "Parcialmente concluído",
+    "description": "ACE Music state.partial_failed"
+  },
+  "state.failed": {
+    "message": "Falhou",
+    "description": "ACE Music state.failed"
+  },
+  "state.submission_unknown": {
+    "message": "Precisa de verificação",
+    "description": "ACE Music state.submission_unknown"
+  },
+  "message.unknown": {
+    "message": "Esta tarefa pode ter sido aceita. Guarde o ID e verifique o estado antes de enviar novamente.",
+    "description": "ACE Music message.unknown"
+  },
+  "message.partial": {
+    "message": "Não foi possível entregar as duas músicas. As faixas concluídas continuam disponíveis.",
+    "description": "ACE Music message.partial"
+  },
+  "message.credential": {
+    "message": "Aguarde a chave do aplicativo ficar pronta ou selecione um aplicativo.",
+    "description": "ACE Music message.credential"
+  },
+  "message.reused": {
+    "message": "Configurações restauradas. Gere quando estiver pronto.",
+    "description": "ACE Music message.reused"
+  },
+  "message.accepted": {
+    "message": "Tarefa enviada. Você pode consultá-la no histórico.",
+    "description": "ACE Music message.accepted"
+  },
+  "message.failed": {
+    "message": "O envio não foi confirmado. Verifique o histórico antes de tentar novamente.",
+    "description": "ACE Music message.failed"
+  },
+  "message.disabled": {
+    "message": "A criação de música não está habilitada neste site. Os resultados existentes continuam disponíveis.",
+    "description": "ACE Music message.disabled"
+  },
+  "setting.enabled": {
+    "message": "Habilitar a criação de músicas com ACE Music.",
+    "description": "ACE Music setting.enabled"
+  },
+  "message.downloadFailed": {
+    "message": "Não foi possível baixar o áudio. Tente novamente.",
+    "description": "ACE Music audio download failure"
+  },
+  "button.checkLyrics": {
+    "message": "Consultar a tarefa original de letras",
+    "description": "Query the original lyrics task without resubmitting"
+  },
+  "button.recoverAudio": {
+    "message": "Recuperar o pedido original de música",
+    "description": "ACE Music lost-response recovery"
+  },
+  "button.recoverLyrics": {
+    "message": "Recuperar o pedido original de letras",
+    "description": "ACE Music lost-response recovery"
+  },
+  "message.recover": {
+    "message": "O pedido anterior não foi confirmado. Recupere-o com as configurações originais para evitar duplicar uma tarefa aceita.",
+    "description": "ACE Music lost-response recovery"
+  }
+}

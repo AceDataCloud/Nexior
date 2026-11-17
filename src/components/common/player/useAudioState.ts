@@ -1,7 +1,7 @@
 import { computed, inject, type ComputedRef, type InjectionKey, type WritableComputedRef } from 'vue';
 import { useStore } from 'vuex';
 
-export type AudioNamespace = 'suno' | 'producer';
+export type AudioNamespace = 'suno' | 'producer' | 'acemusic';
 
 export const AudioNamespaceKey: InjectionKey<AudioNamespace> = Symbol('AudioNamespace');
 

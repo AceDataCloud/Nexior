@@ -20,6 +20,7 @@ export * from './hailuo';
 export * from './minimax';
 export * from './suno';
 export * from './producer';
+export * from './acemusic';
 export * from './nanobanana';
 export * from './openaiimage';
 export * from './seedream';

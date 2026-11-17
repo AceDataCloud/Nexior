@@ -274,6 +274,21 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
         continue_at: 0
       })
   },
+  acemusic: {
+    allowed: new Set(['action', 'model', 'custom', 'prompt', 'lyric', 'style', 'title', 'async']),
+    activeKeys: ['prompt', 'lyric', 'style', 'title'],
+    build: (c) => {
+      if (c.action !== undefined && c.action !== 'generate') throw new Error('action is invalid');
+      const custom = boolean(c.custom, 'custom') || false;
+      return compact({
+        model: enumValue(c.model, 'model', ['acemusic-v1.1', 'acemusic-v1']) || 'acemusic-v1.1',
+        custom,
+        ...(custom
+          ? { lyric: text(c.lyric, 'lyric'), style: text(c.style, 'style'), title: text(c.title, 'title') }
+          : { prompt: text(c.prompt, 'prompt') })
+      });
+    }
+  },
   producer: {
     allowed: musicAllowed,
     activeKeys: ['prompt', 'lyric', 'style', 'title', 'audio', 'audio_id'],
