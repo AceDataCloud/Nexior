@@ -38,7 +38,16 @@ const onSliderChange = (val: number | number[]) => dispatchAudio({ progress: Arr
     .el-slider__button-wrapper {
       width: 16px;
       height: 16px;
-      top: -12px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // Center the handle geometrically instead of Element Plus's inline baseline spacer.
+      &::after {
+        display: none;
+      }
     }
 
     // Handle stays small until hover/drag, so the bar reads clean but is grabbable
