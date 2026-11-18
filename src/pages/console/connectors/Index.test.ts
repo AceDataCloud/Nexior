@@ -5,20 +5,23 @@ const installFromCatalog = vi.hoisted(() => vi.fn());
 const prepareAuthorizeFlow = vi.hoisted(() => vi.fn());
 const openAuthorizeFlow = vi.hoisted(() => vi.fn());
 const showError = vi.hoisted(() => vi.fn());
+const showSuccess = vi.hoisted(() => vi.fn());
+const refreshProfile = vi.hoisted(() => vi.fn());
 
 vi.mock('@/operators/connection', async (original) => ({
   ...(await original<typeof import('@/operators/connection')>()),
-  connectionOperator: { installFromCatalog }
+  connectionOperator: { installFromCatalog, refreshProfile }
 }));
 vi.mock('@/utils/connections/authorizeFlow', () => ({ prepareAuthorizeFlow, openAuthorizeFlow }));
 vi.mock('element-plus', async (original) => ({
   ...(await original<typeof import('element-plus')>()),
-  ElMessage: { error: showError }
+  ElMessage: { error: showError, success: showSuccess }
 }));
 
 import ConnectorPage from './Index.vue';
 
 const methods = (ConnectorPage as any).methods;
+const computed = (ConnectorPage as any).computed;
 const method = {
   id: 'oauth',
   execution: { type: 'skill' },
@@ -148,5 +151,56 @@ describe('connector OAuth scope defaults', () => {
     await methods.connectWithMethod.call(context, catalog, { ...method, permissions });
 
     expect(context.selectedScopes).toEqual(['openid', 'scope.write']);
+  });
+});
+
+describe('connector account profiles', () => {
+  it('shows a cookie or token account when the provider returns only username or account ID', () => {
+    for (const profile of [{ username: 'writer' }, { id: 'public-account' }]) {
+      expect(computed.showsAccountIdentity.call({ selectedItem: { byoc: true, connection: { profile } } })).toBe(true);
+    }
+    expect(computed.showsAccountIdentity.call({ selectedItem: { byoc: true, connection: { profile: {} } } })).toBe(
+      false
+    );
+  });
+
+  it('offers profile refresh only for an active account with server support', () => {
+    const context = {
+      selectedItem: { connection: { id: 'account', status: 'active', supports_profile_refresh: true } },
+      normalizedStatus: (status: string) => status,
+      $t: (key: string) => key
+    };
+    expect(computed.detailActions.call(context).map((action: any) => action.command)).toContain('refreshProfile');
+    context.selectedItem.connection.supports_profile_refresh = false;
+    expect(computed.detailActions.call(context).map((action: any) => action.command)).not.toContain('refreshProfile');
+    context.selectedItem.connection.supports_profile_refresh = true;
+    context.selectedItem.connection.status = 'expired';
+    expect(computed.detailActions.call(context).map((action: any) => action.command)).not.toContain('refreshProfile');
+  });
+
+  it('updates only the selected account after refreshing its profile', async () => {
+    const other = { id: 'other', profile: { name: 'Other' } };
+    const old = { id: 'account', profile: { name: 'Before' } };
+    const updated = { id: 'account', profile: { name: 'After' } };
+    const context = { connections: [old, other], refreshingId: null, $t: (key: string) => key };
+    refreshProfile.mockResolvedValue({ data: updated });
+
+    await methods.onRefreshProfile.call(context, old);
+
+    expect(refreshProfile).toHaveBeenCalledWith('account');
+    expect(context.connections).toEqual([updated, other]);
+    expect(context.refreshingId).toBeNull();
+  });
+
+  it('keeps the previous identity when the upstream profile cannot be resolved', async () => {
+    const old = { id: 'account', profile: { name: 'Before' } };
+    const context = { connections: [old], refreshingId: null, $t: (key: string) => key };
+    refreshProfile.mockRejectedValue({ response: { data: { detail: 'Profile temporarily unavailable' } } });
+
+    await methods.onRefreshProfile.call(context, old);
+
+    expect(context.connections).toEqual([old]);
+    expect(showError).toHaveBeenCalledWith('Profile temporarily unavailable');
+    expect(context.refreshingId).toBeNull();
   });
 });
