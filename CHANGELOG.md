@@ -1,8 +1,24 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 17 Nov 2026 20:16:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 18 Nov 2026 20:16:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.387.0
+
+Wed, 18 Nov 2026 20:16:09 GMT
+
+### Minor changes
+
+- Add Gemini 4 Carbon and Hydrogen to the Gemini model picker (dev@acedata.cloud)
+- Add GPT-6.2 Astra and Sol to the chat model picker (dev@acedata.cloud)
+- Add ACE Music audio import, cover and mashup using the existing music workspace. (dev@acedata.cloud)
+
+### Patches
+
+- Show connected account avatars, public profiles and an account profile refresh action across credential types. (dev@acedata.cloud)
+- Keep the Studio support entry in the bottom-right corner as an icon button with a tooltip. (dev@acedata.cloud)
+- Preserve mobile chat composer clearance for the support icon while keeping desktop support fixed in the corner. (dev@acedata.cloud)
 
 ## 3.386.0
 
