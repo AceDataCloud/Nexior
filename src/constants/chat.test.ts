@@ -14,6 +14,8 @@ import {
   CHAT_MODEL_GROK_4_7,
   CHAT_MODEL_GEMINI_3_8_FLASH,
   CHAT_MODEL_GEMINI_4_ARGON,
+  CHAT_MODEL_GEMINI_4_CARBON,
+  CHAT_MODEL_GEMINI_4_HYDROGEN,
   CHAT_MODEL_GPT_5_6_LUNA,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
@@ -69,7 +71,9 @@ describe('chat models', () => {
       CHAT_MODEL_GPT_6_LUNA,
       CHAT_MODEL_GROK_4_7,
       CHAT_MODEL_GEMINI_3_8_FLASH,
-      CHAT_MODEL_GEMINI_4_ARGON
+      CHAT_MODEL_GEMINI_4_ARGON,
+      CHAT_MODEL_GEMINI_4_CARBON,
+      CHAT_MODEL_GEMINI_4_HYDROGEN
     ]) {
       expect(CHAT_MODELS).toContain(model);
       expect(model).toMatchObject({ isImageSupported: true, isReasoningSupported: true });
