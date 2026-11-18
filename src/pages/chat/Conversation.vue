@@ -91,7 +91,7 @@
             @browser-recovery="onBrowserRecovery"
           />
         </div>
-        <div v-support-obstacle class="starter">
+        <div class="starter">
           <div class="composer-connectors"><connector-strip /></div>
           <composer
             v-model:question="question"
@@ -115,7 +115,6 @@
 <script lang="ts">
 import { DeleteIcon, EditIcon, MoreIcon, ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
-import { supportObstacle } from '@/utils/supportObstacle';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
@@ -230,7 +229,6 @@ export interface IData {
 
 export default defineComponent({
   name: 'ChatConversation',
-  directives: { supportObstacle },
   components: {
     DeleteIcon,
     EditIcon,
