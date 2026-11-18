@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import axios from 'axios';
-import { acemusicOperator, buildAcemusicAudioRequest } from './acemusic';
+import { acemusicOperator, buildAcemusicAudioRequest, isAcemusicRequestValid } from './acemusic';
 vi.mock('axios', () => ({ default: { post: vi.fn().mockResolvedValue({ data: {} }) } }));
 describe('ACE Music API contract', () => {
   beforeEach(() => vi.clearAllMocks());
@@ -60,5 +60,59 @@ describe('ACE Music API contract', () => {
       expect.anything(),
       expect.objectContaining({ headers: expect.objectContaining({ 'Idempotency-Key': 'original-key' }) })
     );
+  });
+  it('keeps imports separate from paid generation and omits stale generation fields', () => {
+    const request = buildAcemusicAudioRequest({
+      model: 'acemusic-v1',
+      custom: true,
+      action: 'upload',
+      audio_url: ' https://example.com/owned.mp3 ',
+      name: ' Own audio ',
+      audio_id: 'source',
+      lyric: 'old',
+      style: 'old'
+    });
+    expect(request).toEqual({
+      action: 'upload',
+      audio_url: 'https://example.com/owned.mp3',
+      name: 'Own audio',
+      audio_id: 'source',
+      async: true
+    });
+    expect(isAcemusicRequestValid(request)).toBe(true);
+    expect(isAcemusicRequestValid({ ...request, audio_url: 'http://example.com/a.mp3' })).toBe(false);
+  });
+  it('requires explicit public references and preserves the action when preparing covers and mashups', () => {
+    const config = {
+      model: 'acemusic-v1' as const,
+      custom: false,
+      prompt: 'old',
+      action: 'cover' as const,
+      lyric: 'words',
+      style: 'folk',
+      audio_id: 'public-source'
+    };
+    const cover = buildAcemusicAudioRequest(config);
+    expect(cover).toEqual({
+      action: 'cover',
+      model: 'acemusic-v1.1',
+      lyric: 'words',
+      style: 'folk',
+      audio_id: 'public-source',
+      audio_influence: 60,
+      async: true
+    });
+    expect(isAcemusicRequestValid(cover)).toBe(true);
+    const mashup = buildAcemusicAudioRequest({
+      ...config,
+      action: 'mashup',
+      mashup_audio_ids: ['one', 'two'],
+      audio_influence: 72
+    });
+    expect(mashup).not.toHaveProperty('audio_id');
+    expect(mashup.audio_influence).toBe(72);
+    expect(isAcemusicRequestValid(mashup)).toBe(true);
+    expect(isAcemusicRequestValid({ ...mashup, mashup_audio_ids: ['one', 'one'] })).toBe(false);
+    expect(isAcemusicRequestValid({ ...mashup, mashup_audio_ids: ['one'] })).toBe(false);
   });
 });

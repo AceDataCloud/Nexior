@@ -12,7 +12,7 @@
     <div v-if="audioPreviewUrl" class="mb-2">
       <audio :src="audioPreviewUrl" controls class="w-full" />
     </div>
-    <div v-if="hasUploadedAudio" class="mt-2">
+    <div v-if="importOnSelect && hasUploadedAudio" class="mt-2">
       <el-radio-group v-model="uploadAction" size="small">
         <el-radio-button value="upload_extend">{{ $t('suno.button.extend') }}</el-radio-button>
         <el-radio-button value="upload_cover">{{ $t('suno.button.upload_cover') }}</el-radio-button>
@@ -22,7 +22,7 @@
     <el-dialog
       v-model="dialogVisible"
       :title="$t('suno.name.addAudio')"
-      width="520px"
+      width="min(520px, 94vw)"
       :close-on-click-modal="false"
       append-to-body
     >
@@ -36,7 +36,7 @@
               class="upload-wrapper"
               :before-upload="beforeUploadSizeGuard"
               :action="uploadUrl"
-              accept=".mp3,.wav,.m4a,audio/*"
+              :accept="acceptedFormats"
               :show-file-list="true"
               :on-exceed="onExceed"
               :on-error="onError"
@@ -57,7 +57,7 @@
             </el-upload>
           </div>
         </el-tab-pane>
-        <el-tab-pane name="record" :label="$t('suno.tab.record')">
+        <el-tab-pane v-if="allowRecording" name="record" :label="$t('suno.tab.record')">
           <div class="py-4 text-center">
             <div class="recorder-display mb-4">
               <div v-if="recording" class="text-red-500 flex items-center justify-center gap-2">
@@ -157,7 +157,12 @@ export default defineComponent({
     ElRadioButton
   },
   mixins: [uploadTrackerMixin, uploadSizeGuardMixin],
-  emits: ['change'],
+  props: {
+    importOnSelect: { type: Boolean, default: true },
+    acceptedFormats: { type: String, default: '.mp3,.wav,.m4a,audio/*' },
+    allowRecording: { type: Boolean, default: true }
+  },
+  emits: ['change', 'uploaded'],
   data(): IData {
     return {
       fileList: [],
@@ -183,10 +188,10 @@ export default defineComponent({
       };
     },
     credential() {
-      return this.$store.state.suno.credential;
+      return this.$store.state.suno?.credential;
     },
     config() {
-      return this.$store.state.suno.config;
+      return this.$store.state.suno?.config;
     },
     urls() {
       // @ts-ignore
@@ -247,6 +252,10 @@ export default defineComponent({
       }
     },
     async onGenerateAudioId(audio_url: string) {
+      if (!this.importOnSelect) {
+        this.$emit('uploaded', audio_url);
+        return;
+      }
       const request = {
         audio_url
       } as ISunoUploadRequest;

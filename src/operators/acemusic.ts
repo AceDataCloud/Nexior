@@ -11,6 +11,26 @@ import type { OperatorRequestOptions } from './x402';
 type AcemusicRequestOptions = OperatorRequestOptions & { idempotencyKey?: string };
 
 export function buildAcemusicAudioRequest(config?: IAcemusicConfig): IAcemusicAudioRequest {
+  const action = config?.action || 'generate';
+  if (action === 'upload')
+    return {
+      action,
+      audio_url: config?.audio_url?.trim(),
+      ...(config?.name?.trim() ? { name: config.name.trim() } : {}),
+      ...(config?.audio_id ? { audio_id: config.audio_id } : {}),
+      async: true
+    };
+  if (action === 'cover' || action === 'mashup')
+    return {
+      action,
+      model: 'acemusic-v1.1',
+      lyric: config?.lyric?.trim(),
+      style: config?.style?.trim(),
+      ...(config?.title?.trim() ? { title: config.title.trim() } : {}),
+      ...(action === 'cover' ? { audio_id: config?.audio_id } : { mashup_audio_ids: config?.mashup_audio_ids || [] }),
+      audio_influence: config?.audio_influence ?? 60,
+      async: true
+    };
   const common = {
     action: 'generate' as const,
     model: config?.model || ACEMUSIC_DEFAULT_MODEL,
@@ -20,6 +40,26 @@ export function buildAcemusicAudioRequest(config?: IAcemusicConfig): IAcemusicAu
   return common.custom
     ? { ...common, lyric: config?.lyric?.trim(), title: config?.title?.trim(), style: config?.style?.trim() }
     : { ...common, prompt: config?.prompt?.trim() };
+}
+
+export function isAcemusicRequestValid(request: IAcemusicAudioRequest): boolean {
+  if (request.action === 'upload') {
+    try {
+      const url = new URL(request.audio_url || '');
+      return url.protocol === 'https:' && !url.username && !url.password && !url.hash;
+    } catch {
+      return false;
+    }
+  }
+  if (request.action === 'cover' || request.action === 'mashup')
+    return Boolean(
+      request.lyric &&
+      request.style &&
+      (request.action === 'cover'
+        ? request.audio_id
+        : request.mashup_audio_ids?.length === 2 && new Set(request.mashup_audio_ids).size === 2)
+    );
+  return Boolean(request.custom ? request.lyric && request.style && request.title : request.prompt);
 }
 
 class AcemusicOperator {

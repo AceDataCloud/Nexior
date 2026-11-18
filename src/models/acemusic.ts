@@ -1,5 +1,12 @@
 export type AcemusicModel = 'acemusic-v1.1' | 'acemusic-v1';
+export type AcemusicAction = 'generate' | 'upload' | 'cover' | 'mashup';
 export interface IAcemusicConfig {
+  action?: AcemusicAction;
+  audio_url?: string;
+  name?: string;
+  audio_id?: string;
+  mashup_audio_ids?: string[];
+  audio_influence?: number;
   model: AcemusicModel;
   custom: boolean;
   prompt?: string;
@@ -8,7 +15,7 @@ export interface IAcemusicConfig {
   style?: string;
 }
 export interface IAcemusicAudioRequest extends Partial<IAcemusicConfig> {
-  action: 'generate';
+  action: AcemusicAction;
   async: true;
 }
 export interface IAcemusicAudio {

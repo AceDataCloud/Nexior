@@ -144,7 +144,7 @@ const currentAudio = computed(() => store.state.acemusic.audio);
 const playableTracks = computed(() => tasks.value.flatMap((task) => task.response?.data || []).filter(playable));
 const tracks = (task: IAcemusicTask): IAcemusicAudio[] => {
   const result = Array.isArray(task.response?.data) ? task.response.data : [];
-  return [0, 1].map(
+  return (task.request?.action === 'upload' ? [0] : [0, 1]).map(
     (index) =>
       result[index] || {
         id: `${task.id}-${index}`,
