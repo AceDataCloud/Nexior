@@ -1,22 +1,21 @@
 <template>
   <div
     v-if="site?.id && site.features?.support?.enabled !== false"
-    ref="anchor"
     class="support-anchor"
     :class="{ 'keyboard-open': keyboardOpen }"
   >
-    <el-button
-      class="support-launcher"
-      round
-      :style="{ transform: `translateY(-${raise}px)` }"
-      :aria-label="$t('common.support.title')"
-      aria-haspopup="dialog"
-      :aria-expanded="visible"
-      @click="onOpen"
-    >
-      <support-icon :size="'18px' as any" aria-hidden="true" focusable="false" />
-      <span>{{ $t('common.support.launcher') }}</span>
-    </el-button>
+    <el-tooltip :content="$t('common.support.launcher')" placement="top">
+      <el-button
+        class="support-launcher"
+        circle
+        :aria-label="$t('common.support.launcher')"
+        aria-haspopup="dialog"
+        :aria-expanded="visible"
+        @click="onOpen"
+      >
+        <support-icon :size="'18px' as any" aria-hidden="true" focusable="false" />
+      </el-button>
+    </el-tooltip>
   </div>
   <el-dialog
     v-model="visible"
@@ -112,15 +111,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, type WatchStopHandle } from 'vue';
-import { ElButton, ElDialog } from 'element-plus';
+import { defineComponent } from 'vue';
+import { ElButton, ElDialog, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { MessageIcon, NextIcon, SupportIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import type { ISite, ISiteContact } from '@/models';
 import { getBrandContacts, getBrandName } from '@/utils/site';
 import { contactBrand, contactIcon, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
 import { feedbackHref, supportContactHref, supportHttpUrl } from '@/utils/support';
-import { supportObstacleElement } from '@/utils/supportObstacle';
 import ContentReportForm from './ContentReportForm.vue';
 
 export default defineComponent({
@@ -128,6 +126,7 @@ export default defineComponent({
   components: {
     ElButton,
     ElDialog,
+    ElTooltip,
     FontAwesomeIcon,
     MessageIcon,
     NextIcon,
@@ -141,11 +140,7 @@ export default defineComponent({
       view: 'contacts' as 'contacts' | 'report' | 'receipt',
       feedbackHint: false,
       reportId: '',
-      raise: 0,
-      keyboardOpen: false,
-      frame: 0,
-      observer: undefined as ResizeObserver | undefined,
-      stopObstacleWatch: undefined as WatchStopHandle | undefined
+      keyboardOpen: false
     };
   },
   computed: {
@@ -173,35 +168,16 @@ export default defineComponent({
   watch: {
     '$route.fullPath'() {
       this.visible = false;
-      this.schedulePosition();
-    },
-    site() {
-      this.$nextTick(this.schedulePosition);
-    },
-    '$store.state.setting.dockCollapsed'() {
-      this.schedulePosition();
     }
   },
   mounted() {
-    if (typeof ResizeObserver !== 'undefined') this.observer = new ResizeObserver(this.schedulePosition);
-    this.stopObstacleWatch = watch(
-      supportObstacleElement,
-      (element) => {
-        this.observer?.disconnect();
-        if (element) this.observer?.observe(element);
-        this.schedulePosition();
-      },
-      { immediate: true, flush: 'post' }
-    );
-    window.addEventListener('resize', this.schedulePosition);
-    window.visualViewport?.addEventListener('resize', this.schedulePosition);
+    this.updateKeyboardState();
+    window.addEventListener('resize', this.updateKeyboardState);
+    window.visualViewport?.addEventListener('resize', this.updateKeyboardState);
   },
   beforeUnmount() {
-    this.stopObstacleWatch?.();
-    this.observer?.disconnect();
-    window.cancelAnimationFrame(this.frame);
-    window.removeEventListener('resize', this.schedulePosition);
-    window.visualViewport?.removeEventListener('resize', this.schedulePosition);
+    window.removeEventListener('resize', this.updateKeyboardState);
+    window.visualViewport?.removeEventListener('resize', this.updateKeyboardState);
   },
   methods: {
     contactIcon,
@@ -233,23 +209,9 @@ export default defineComponent({
       this.reportId = id;
       this.view = 'receipt';
     },
-    schedulePosition() {
-      window.cancelAnimationFrame(this.frame);
-      this.frame = window.requestAnimationFrame(() => {
-        this.keyboardOpen =
-          window.innerWidth < 768 && (window.visualViewport?.height || window.innerHeight) < window.innerHeight - 120;
-        const anchor = (this.$refs.anchor as HTMLElement | undefined)?.getBoundingClientRect();
-        const obstacle = supportObstacleElement.value?.getBoundingClientRect();
-        this.raise =
-          anchor &&
-          obstacle &&
-          anchor.left < obstacle.right &&
-          anchor.right > obstacle.left &&
-          anchor.bottom > obstacle.top &&
-          anchor.top < obstacle.bottom
-            ? Math.max(0, anchor.bottom - obstacle.top + 12)
-            : 0;
-      });
+    updateKeyboardState() {
+      this.keyboardOpen =
+        window.innerWidth < 768 && (window.visualViewport?.height || window.innerHeight) < window.innerHeight - 120;
     }
   }
 });
@@ -262,16 +224,12 @@ export default defineComponent({
   bottom: calc(24px + var(--app-safe-area-bottom, 0px));
   z-index: 190;
 }
-.support-launcher {
+.support-launcher.el-button {
+  width: 44px;
   height: 44px;
   margin: 0;
-  padding: 0 16px;
+  padding: 0;
   box-shadow: var(--app-shadow-md);
-}
-.support-launcher :deep(span) {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
 }
 .support-content {
   display: flex;
@@ -401,9 +359,6 @@ export default defineComponent({
   .support-anchor {
     right: 12px;
     bottom: calc(var(--app-dock-height, 60px) + var(--app-safe-area-bottom, 0px) + 12px);
-  }
-  .support-launcher {
-    padding: 0 12px;
   }
 }
 @media (max-width: 400px) {
