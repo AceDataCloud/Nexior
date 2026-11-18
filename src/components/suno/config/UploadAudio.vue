@@ -36,7 +36,7 @@
               class="upload-wrapper"
               :before-upload="beforeUploadSizeGuard"
               :action="uploadUrl"
-              accept=".mp3,.wav,.m4a,audio/*"
+              :accept="acceptedFormats"
               :show-file-list="true"
               :on-exceed="onExceed"
               :on-error="onError"
@@ -57,7 +57,7 @@
             </el-upload>
           </div>
         </el-tab-pane>
-        <el-tab-pane name="record" :label="$t('suno.tab.record')">
+        <el-tab-pane v-if="allowRecording" name="record" :label="$t('suno.tab.record')">
           <div class="py-4 text-center">
             <div class="recorder-display mb-4">
               <div v-if="recording" class="text-red-500 flex items-center justify-center gap-2">
@@ -157,7 +157,11 @@ export default defineComponent({
     ElRadioButton
   },
   mixins: [uploadTrackerMixin, uploadSizeGuardMixin],
-  props: { importOnSelect: { type: Boolean, default: true } },
+  props: {
+    importOnSelect: { type: Boolean, default: true },
+    acceptedFormats: { type: String, default: '.mp3,.wav,.m4a,audio/*' },
+    allowRecording: { type: Boolean, default: true }
+  },
   emits: ['change', 'uploaded'],
   data(): IData {
     return {

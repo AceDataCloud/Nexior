@@ -33,7 +33,13 @@
               class="mb-4"
             />
             <template v-else-if="tab.name === 'upload'">
-              <upload-audio :import-on-select="false" class="mb-4" @uploaded="setUploadUrl" />
+              <upload-audio
+                :import-on-select="false"
+                :allow-recording="false"
+                accepted-formats=".mp3,audio/mpeg,audio/mp3"
+                class="mb-4"
+                @uploaded="setUploadUrl"
+              />
               <label class="field-label" for="acemusic-audio-url">{{ $t('acemusic.field.audioUrl') }}</label>
               <el-input id="acemusic-audio-url" v-model="audioUrl" placeholder="https://…" />
               <label class="field-label mt-4" for="acemusic-upload-name">{{ $t('acemusic.field.uploadName') }}</label>
