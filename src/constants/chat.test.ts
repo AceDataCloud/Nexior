@@ -4,6 +4,8 @@ import enChat from '@/i18n/en/chat.json';
 import {
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
   CHAT_MODEL_DEEPSEEK_V4_PRO,
+  CHAT_MODEL_GPT_6_2_ASTRA,
+  CHAT_MODEL_GPT_6_2_SOL,
   CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GPT_6_1_SOL,
   CHAT_MODEL_GPT_6_1_TERRA,
@@ -27,8 +29,10 @@ import {
 } from './chat';
 
 describe('chat models', () => {
-  it('exposes Astra before GPT 5.6 tiers and makes Luna free', () => {
+  it('exposes GPT 6.2 before earlier tiers and makes Luna free', () => {
     expect(CHAT_MODEL_GROUP_CHATGPT.models.map((model) => model.name)).toEqual([
+      'gpt-6.2-astra',
+      'gpt-6.2-sol',
       'gpt-6-astra',
       'gpt-6.1-sol',
       'gpt-6.1-terra',
@@ -44,7 +48,9 @@ describe('chat models', () => {
   });
 
   it('registers the new models in their provider groups', () => {
-    expect(CHAT_MODEL_GROUP_CHATGPT.models.slice(0, 5)).toEqual([
+    expect(CHAT_MODEL_GROUP_CHATGPT.models.slice(0, 7)).toEqual([
+      CHAT_MODEL_GPT_6_2_ASTRA,
+      CHAT_MODEL_GPT_6_2_SOL,
       CHAT_MODEL_GPT_6_ASTRA,
       CHAT_MODEL_GPT_6_1_SOL,
       CHAT_MODEL_GPT_6_1_TERRA,
@@ -55,6 +61,8 @@ describe('chat models', () => {
     expect(CHAT_MODEL_GROUP_GEMINI.models[0]).toBe(CHAT_MODEL_GEMINI_3_8_FLASH);
     expect(CHAT_MODEL_GROUP_GEMINI.models[1]).toBe(CHAT_MODEL_GEMINI_4_ARGON);
     for (const model of [
+      CHAT_MODEL_GPT_6_2_ASTRA,
+      CHAT_MODEL_GPT_6_2_SOL,
       CHAT_MODEL_GPT_6_1_SOL,
       CHAT_MODEL_GPT_6_1_TERRA,
       CHAT_MODEL_GPT_6_SOL,
