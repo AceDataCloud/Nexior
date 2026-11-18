@@ -95,10 +95,28 @@
                   :class="{ 'list-item': true, active: selectedKey === item.key }"
                   @click="onSelect(item)"
                 >
-                  <span class="list-item-icon">
-                    <img v-if="item.faviconUrl" :src="item.faviconUrl" :alt="item.name" @error="onFaviconError(item)" />
-                    <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
-                    <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
+                  <span
+                    class="list-item-icon"
+                    :class="{ 'has-account-avatar': item.connection && connectionAvatar(item.connection) }"
+                  >
+                    <el-avatar
+                      v-if="item.connection && connectionAvatar(item.connection)"
+                      class="list-account-avatar"
+                      :src="connectionAvatar(item.connection)"
+                      :size="24"
+                    >
+                      {{ connectionAccountInitial(item.connection) }}
+                    </el-avatar>
+                    <span class="list-provider-icon">
+                      <img
+                        v-if="item.faviconUrl"
+                        :src="item.faviconUrl"
+                        :alt="item.name"
+                        @error="onFaviconError(item)"
+                      />
+                      <desktop-icon v-else-if="item.browserSession" :size="16" aria-hidden="true" focusable="false" />
+                      <connection-icon v-else :size="16" aria-hidden="true" focusable="false" />
+                    </span>
                   </span>
                   <span class="list-item-content" :class="{ 'has-account': item.accountLabel }">
                     <span class="list-item-name">{{ item.name }}</span>
@@ -258,15 +276,23 @@
           <div v-if="selectedItem!.connection && !selectedItem.custom && showsAccountIdentity" class="detail-section">
             <div class="account-row">
               <el-avatar
-                v-if="connectionAvatar(selectedItem.connection)"
-                :src="connectionAvatar(selectedItem.connection)"
+                :src="connectionAvatar(selectedItem.connection) || undefined"
                 :size="40"
-              />
-              <el-avatar v-else :size="40" class="account-avatar-fallback">
+                class="account-avatar-fallback"
+              >
                 {{ connectionAccountInitial(selectedItem.connection) }}
               </el-avatar>
               <div class="account-info">
-                <span class="account-name">{{ connectionAccountName(selectedItem.connection) }}</span>
+                <a
+                  v-if="connectionAccountUrl(selectedItem.connection)"
+                  class="account-name account-link"
+                  :href="connectionAccountUrl(selectedItem.connection)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >{{ connectionAccountName(selectedItem.connection) }}
+                  <external-link-icon :size="12" aria-hidden="true"
+                /></a>
+                <span v-else class="account-name">{{ connectionAccountName(selectedItem.connection) }}</span>
                 <span v-if="connectionAccountSubtext(selectedItem.connection)" class="account-sub">
                   {{ connectionAccountSubtext(selectedItem.connection) }}
                 </span>
@@ -671,6 +697,7 @@ import {
 import BrowseConnectors from '@/components/connections/BrowseConnectors.vue';
 import ByocCredentialsDialog from '@/components/connections/ByocCredentialsDialog.vue';
 import ConsolePageHeader from '@/components/console/PageHeader.vue';
+import { connectionProfile } from '@/utils/connectionProfile';
 import ConnectorMethodPicker from '@/components/connections/ConnectorMethodPicker.vue';
 import BrowserPairingDialog from '@/components/browser/BrowserPairingDialog.vue';
 import BrowserDevicePicker from '@/components/browser/BrowserDevicePicker.vue';
@@ -697,11 +724,8 @@ interface IListItem {
    *  metadata, live ``tools/list`` fetch, hide preset OAuth-scope catalog).
    *  NOT used to gate the user-facing "Custom" badge — see ``byo`` below. */
   custom: boolean;
-  /** ``true`` for user-secret or cookie-jar rows — Tencent Cloud and
-   *  any future SecretId/SecretKey connector. There is no upstream
-   *  "account" to show, so the detail pane skips the OAuth-style
-   *  avatar+name row and renders a meta grid (status + credentials list)
-   *  instead. */
+  /** User-secret and cookie rows show credential metadata, plus the same
+   * account card as OAuth when the upstream identity is available. */
   byoc: boolean;
   /** Local browser execution session backed by a paired BrowserDevice. */
   browserSession: boolean;
@@ -953,6 +977,13 @@ export default defineComponent({
         actions.push({
           command: 'refresh',
           label: String(this.$t('connection.button.refresh')),
+          disabled: busy
+        });
+      }
+      if (conn.supports_profile_refresh && active) {
+        actions.push({
+          command: 'refreshProfile',
+          label: String(this.$t('connection.button.refreshProfile')),
           disabled: busy
         });
       }
@@ -1244,7 +1275,7 @@ export default defineComponent({
       const connection = this.selectedItem?.connection;
       if (!connection || this.selectedItem?.browserSession) return false;
       if (!this.selectedItem?.byoc) return true;
-      return Boolean(connection.profile?.name || connection.profile?.login || connection.profile?.email);
+      return Boolean(connectionProfile(connection.profile).name);
     },
     scopeDialogPermissions(): IConnectorPermission[] {
       // Permission catalog of the row currently in the
@@ -1406,30 +1437,20 @@ export default defineComponent({
      *  Empty when nothing identifies the account (the rail has no room for a
      *  placeholder dash). */
     connectionAccountLabel(connection: IConnection): string {
-      return (
-        connection.label ||
-        (connection.profile?.name as string) ||
-        (connection.profile?.login as string) ||
-        (connection.profile?.email as string) ||
-        ''
-      );
+      return connection.label || connectionProfile(connection.profile).name;
     },
     /** The upstream account as the provider reports it, for the detail pane's
      *  identity card. Deliberately ignores `label`: that card answers "whose
      *  account did I authorize", and renaming a connection must not appear to
      *  rename the Google/Microsoft account behind it. */
     connectionAccountName(connection: IConnection): string {
-      return (
-        (connection.profile?.name as string) ||
-        (connection.profile?.login as string) ||
-        (connection.profile?.email as string) ||
-        '—'
-      );
+      return connectionProfile(connection.profile).name || '—';
     },
     connectionAvatar(connection: IConnection): string {
-      return (
-        ((connection.profile?.avatar || connection.profile?.avatar_url || connection.profile?.picture) as string) || ''
-      );
+      return connectionProfile(connection.profile).avatar;
+    },
+    connectionAccountUrl(connection: IConnection): string {
+      return connectionProfile(connection.profile).url;
     },
     connectionAccountInitial(connection: IConnection): string {
       // Fallback glyph when the upstream provider returns no profile
@@ -1440,11 +1461,7 @@ export default defineComponent({
       return ch ? ch.toUpperCase() : '?';
     },
     connectionAccountSubtext(connection: IConnection): string {
-      const email = connection.profile?.email as string;
-      if (email && email !== connection.profile?.name) {
-        return email;
-      }
-      return (connection.profile?.login as string) || '';
+      return connectionProfile(connection.profile).subtext;
     },
     customAuthSummary(connection: IConnection): string {
       const metadata = this.oauthMetadata(connection);
@@ -1979,6 +1996,9 @@ export default defineComponent({
         case 'refresh':
           void this.onRefresh(conn);
           break;
+        case 'refreshProfile':
+          void this.onRefreshProfile(conn);
+          break;
         case 'rebind':
           this.openBrowserRebind(conn);
           break;
@@ -2110,6 +2130,18 @@ export default defineComponent({
         await connectionOperator.refresh(row.id);
         ElMessage.success(this.$t('connection.message.refreshed'));
         await this.fetchConnections();
+      } catch (error: any) {
+        ElMessage.error(error?.response?.data?.detail || this.$t('connection.message.refreshFailed'));
+      } finally {
+        this.refreshingId = null;
+      }
+    },
+    async onRefreshProfile(row: IConnection) {
+      this.refreshingId = row.id;
+      try {
+        const { data } = await connectionOperator.refreshProfile(row.id);
+        this.connections = this.connections.map((connection) => (connection.id === row.id ? data : connection));
+        ElMessage.success(this.$t('connection.message.refreshed'));
       } catch (error: any) {
         ElMessage.error(error?.response?.data?.detail || this.$t('connection.message.refreshFailed'));
       } finally {
@@ -2342,6 +2374,7 @@ html.dark .connectors-shell {
 }
 
 .list-item-icon {
+  position: relative;
   width: 24px;
   height: 24px;
   display: flex;
@@ -2357,6 +2390,32 @@ html.dark .connectors-shell {
     height: 20px;
     border-radius: 4px;
     object-fit: contain;
+  }
+
+  &.has-account-avatar {
+    width: 26px;
+    height: 26px;
+
+    .list-provider-icon {
+      position: absolute;
+      right: -2px;
+      bottom: -2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 13px;
+      height: 13px;
+      border: 1px solid var(--el-bg-color);
+      border-radius: 4px;
+      background: var(--el-bg-color);
+
+      img,
+      svg {
+        width: 11px;
+        height: 11px;
+        border-radius: 2px;
+      }
+    }
   }
 }
 
@@ -2720,6 +2779,22 @@ html.dark .connectors-shell {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.account-link {
+  width: fit-content;
+  max-width: 100%;
+  text-decoration: none;
+
+  svg {
+    vertical-align: middle;
+    margin-left: 3px;
+  }
+
+  &:hover {
+    color: var(--el-color-primary);
+    text-decoration: underline;
+  }
 }
 
 .permission-list {

@@ -170,6 +170,10 @@ computer. Complete setup there using the same account, then tap **Refresh** in
 the phone's connection dialog. Browser-device methods can use a compatible paired
 computer; that computer must be online when running browser actions.
 
+Where the provider supports account lookup, connected OAuth, Cookie and personal-token
+accounts show their name, avatar and public profile link. Choose **Refresh account profile**
+from the account's **⋯** menu to update those details using the saved connection.
+
 ## 🧩 Tech stack
 
 On iOS, Apple purchases are confirmed against their original order before credits

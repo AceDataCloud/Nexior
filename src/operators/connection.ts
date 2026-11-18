@@ -74,6 +74,8 @@ export interface IConnection {
   profile: IConnectionProfile;
   status: ConnectionStatus;
   supports_refresh: boolean;
+  /** Whether the saved credentials can resolve the upstream account identity. */
+  supports_profile_refresh?: boolean;
   expires_at: string | null;
   last_refreshed_at: string | null;
   last_used_at: string | null;
@@ -451,6 +453,10 @@ class ConnectionOperator {
 
   async refresh(id: string): Promise<AxiosResponse<IConnectionRefreshResponse>> {
     return httpClient.post(`/${this.key}/${id}/refresh/`, undefined, authApi());
+  }
+
+  async refreshProfile(id: string): Promise<AxiosResponse<IConnection>> {
+    return httpClient.post(`/${this.key}/${id}/refresh-profile/`, undefined, authApi());
   }
 
   async setDefault(id: string): Promise<AxiosResponse<{ id: string; is_default: boolean }>> {
