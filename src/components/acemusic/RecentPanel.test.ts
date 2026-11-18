@@ -5,13 +5,13 @@ import { describe, expect, it, vi } from 'vitest';
 import RecentPanel from './RecentPanel.vue';
 vi.mock('@/i18n', () => ({ t: (key: string) => key }));
 vi.mock('file-saver', () => ({ saveAs: vi.fn() }));
-function render(state: string, data: any[] = []) {
+function render(state: string, data: any[] = [], action = 'generate') {
   const dispatch = vi.fn();
   const store = createStore({
     state: {
       acemusic: {
         credential: {},
-        tasks: { items: [{ id: 'task-1', state, response: { data }, request: { title: 'Home' } }] },
+        tasks: { items: [{ id: 'task-1', state, response: { data }, request: { title: 'Home', action } }] },
         audio: {}
       }
     },
@@ -47,6 +47,18 @@ describe('ACE Music results', () => {
     expect(wrapper.findAll('.play-btn')).toHaveLength(1);
     wrapper.find('.play-btn').trigger('click');
     expect(dispatch).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ id: 'track-1', state: 'playing' }));
+    wrapper.unmount();
+  });
+  it('renders an imported audio as one track without a phantom second candidate', () => {
+    const { wrapper, dispatch } = render(
+      'succeeded',
+      [{ id: 'import-1', title: 'Own audio', state: 'succeeded', audio_url: 'https://example.com/own.mp3' }],
+      'upload'
+    );
+    expect(wrapper.findAll('.audio')).toHaveLength(1);
+    expect(wrapper.findAll('.play-btn')).toHaveLength(1);
+    wrapper.find('.play-btn').trigger('click');
+    expect(dispatch).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ id: 'import-1', state: 'playing' }));
     wrapper.unmount();
   });
   it('does not turn submission-unknown candidates into a loading or playable result', () => {

@@ -52,7 +52,7 @@ import ShowcaseResultTabs from '@/components/common/ShowcaseResultTabs.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import ConfigPanel from '@/components/acemusic/ConfigPanel.vue';
 import RecentPanel from '@/components/acemusic/RecentPanel.vue';
-import { acemusicOperator, buildAcemusicAudioRequest } from '@/operators/acemusic';
+import { acemusicOperator, buildAcemusicAudioRequest, isAcemusicRequestValid } from '@/operators/acemusic';
 import type { IAcemusicTask } from '@/models';
 import { Status } from '@/models';
 import { ensureLoggedIn } from '@/utils';
@@ -164,8 +164,11 @@ export default defineComponent({
     },
     reuse(task: IAcemusicTask) {
       if (!this.enabled || !task.request) return;
-      const { model = 'acemusic-v1.1', custom = false, prompt, lyric, title, style } = task.request;
-      this.$store.commit('acemusic/setConfig', { model, custom, prompt, lyric, title, style });
+      this.$store.commit('acemusic/setConfig', {
+        ...task.request,
+        model: task.request.model || 'acemusic-v1.1',
+        custom: Boolean(task.request.custom)
+      });
       if (window.innerWidth < 768) this.drawer = true;
       ElMessage.success(this.$t('acemusic.message.reused'));
     },
@@ -181,7 +184,7 @@ export default defineComponent({
         recover && this.pendingGeneration
           ? (this.pendingGeneration.request as import('@/models').IAcemusicAudioRequest)
           : buildAcemusicAudioRequest(this.$store.state.acemusic.config);
-      if (request.custom ? !(request.lyric && request.style && request.title) : !request.prompt) return;
+      if (!isAcemusicRequestValid(request)) return;
       const submission = prepareAcemusicSubmission(this.$store, 'audios', request);
       this.submitting = true;
       try {
@@ -209,7 +212,7 @@ export default defineComponent({
       } catch (error: any) {
         if (error?.response?.data?.task_id || isDefiniteAcemusicRejection(error))
           settleAcemusicSubmission(this.$store, submission);
-        ElMessage.error(this.$t('acemusic.message.failed'));
+        ElMessage.error(error?.response?.data?.error?.message || this.$t('acemusic.message.failed'));
       } finally {
         this.submitting = false;
         void this.onGetTasks().catch(() => {

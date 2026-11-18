@@ -4,7 +4,7 @@
       <el-tabs v-model="mode" class="scenario-tabs scenario-tabs--scrollable">
         <el-tab-pane v-for="tab in modes" :key="tab.name" :label="$t(tab.label)" :name="tab.name">
           <div class="p-5">
-            <div class="mb-4">
+            <div v-if="tab.name !== 'upload'" class="mb-4">
               <label class="block text-sm font-bold mb-1" :for="`acemusic-model-${tab.name}`">{{
                 $t('acemusic.field.model')
               }}</label>
@@ -15,7 +15,12 @@
                 size="default"
                 :aria-label="$t('acemusic.field.model')"
               >
-                <el-option v-for="item in models" :key="item" :value="item" :label="item" />
+                <el-option
+                  v-for="item in ['cover', 'mashup'].includes(tab.name) ? ['acemusic-v1.1'] : models"
+                  :key="item"
+                  :value="item"
+                  :label="item"
+                />
               </el-select>
             </div>
             <prompt-textarea
@@ -27,7 +32,68 @@
               :max-rows="14"
               class="mb-4"
             />
+            <template v-else-if="tab.name === 'upload'">
+              <upload-audio :import-on-select="false" class="mb-4" @uploaded="setUploadUrl" />
+              <label class="field-label" for="acemusic-audio-url">{{ $t('acemusic.field.audioUrl') }}</label>
+              <el-input id="acemusic-audio-url" v-model="audioUrl" placeholder="https://…" />
+              <label class="field-label mt-4" for="acemusic-upload-name">{{ $t('acemusic.field.uploadName') }}</label>
+              <el-input id="acemusic-upload-name" v-model="uploadName" />
+              <p class="text-xs mt-3 text-[var(--el-text-color-secondary)]">
+                {{ $t('acemusic.message.uploadExplicit') }}
+              </p>
+            </template>
             <template v-else>
+              <div v-if="['cover', 'mashup'].includes(tab.name)" class="mb-4">
+                <label class="field-label" :for="`acemusic-reference-${tab.name}`">{{
+                  $t('acemusic.field.references')
+                }}</label>
+                <el-select
+                  v-if="tab.name === 'cover'"
+                  :id="`acemusic-reference-${tab.name}`"
+                  v-model="sourceAudio"
+                  class="w-full"
+                  filterable
+                >
+                  <el-option
+                    v-for="audio in referenceTracks"
+                    :key="audio.id"
+                    :value="audio.id"
+                    :label="referenceLabel(audio)"
+                  />
+                </el-select>
+                <el-select
+                  v-else
+                  :id="`acemusic-reference-${tab.name}`"
+                  v-model="sourceAudios"
+                  class="w-full"
+                  multiple
+                  :multiple-limit="2"
+                  filterable
+                >
+                  <el-option
+                    v-for="audio in referenceTracks"
+                    :key="audio.id"
+                    :value="audio.id"
+                    :label="referenceLabel(audio)"
+                  />
+                </el-select>
+                <p class="text-xs mt-2 text-[var(--el-text-color-secondary)]">
+                  {{
+                    $t(tab.name === 'mashup' ? 'acemusic.message.mashupReferences' : 'acemusic.message.coverReference')
+                  }}
+                </p>
+                <label class="field-label mt-4" :for="`acemusic-audio-influence-${tab.name}`">{{
+                  $t('acemusic.field.audioInfluence')
+                }}</label>
+                <el-slider
+                  :id="`acemusic-audio-influence-${tab.name}`"
+                  v-model="audioInfluence"
+                  :min="1"
+                  :max="100"
+                  :step="1"
+                  :aria-label="$t('acemusic.field.audioInfluence')"
+                />
+              </div>
               <prompt-textarea
                 v-model="lyric"
                 :title="$t('acemusic.field.lyric')"
@@ -62,6 +128,12 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <div v-if="mode === 'upload'" class="px-5 pb-3 shrink-0">
+      <label class="field-label" for="acemusic-upload-anchor">{{ $t('acemusic.field.uploadAnchor') }}</label>
+      <el-select id="acemusic-upload-anchor" v-model="sourceAudio" class="w-full" clearable filterable>
+        <el-option v-for="audio in referenceTracks" :key="audio.id" :value="audio.id" :label="referenceLabel(audio)" />
+      </el-select>
+    </div>
     <div v-if="(pendingLyricsSubmission && !writingLyrics) || pendingLyrics" class="px-5 pb-3 shrink-0">
       <div v-if="pendingLyricsSubmission && !writingLyrics" class="lyrics-recovery mb-2">
         <p class="text-xs mb-2">{{ $t('acemusic.message.recover') }}</p>
@@ -76,7 +148,11 @@
       </div>
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2 shrink-0">
-      <service-pricing-summary :value="generationCost" :service="service" :note="$t('acemusic.price.generation')" />
+      <service-pricing-summary
+        :value="generationCost"
+        :service="service"
+        :note="$t(mode === 'upload' ? 'acemusic.price.upload' : 'acemusic.price.generation')"
+      />
       <div class="flex gap-2 w-full">
         <el-button class="flex-1" :disabled="submitting || writingLyrics" @click="clearDraft">
           <cleanup-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
@@ -91,7 +167,7 @@
           @click="$emit('generate')"
         >
           <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
-          {{ $t('acemusic.button.generate') }}
+          {{ $t(mode === 'upload' ? 'acemusic.button.upload' : 'acemusic.button.generate') }}
         </el-button>
       </div>
     </div>
@@ -129,10 +205,10 @@
 import { CleanupIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import { ElButton, ElDialog, ElInput, ElMessage, ElOption, ElSelect, ElTabPane, ElTabs } from 'element-plus';
+import { ElButton, ElDialog, ElInput, ElMessage, ElOption, ElSelect, ElSlider, ElTabPane, ElTabs } from 'element-plus';
 import { ACEMUSIC_MODELS } from '@/constants';
-import type { AcemusicModel, IAcemusicConfig } from '@/models';
-import { acemusicOperator, buildAcemusicAudioRequest } from '@/operators/acemusic';
+import type { AcemusicModel, IAcemusicAudio, IAcemusicConfig } from '@/models';
+import { acemusicOperator, buildAcemusicAudioRequest, isAcemusicRequestValid } from '@/operators/acemusic';
 import { ensureLoggedIn, getConsumption } from '@/utils';
 import { t } from '@/i18n';
 import {
@@ -143,6 +219,8 @@ import {
 } from '@/utils/acemusicSubmission';
 import ServicePricingSummary from '@/components/common/ServicePricingSummary.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
+import UploadAudio from '@/components/suno/config/UploadAudio.vue';
+import { isAcemusicAudioPlayable } from '@/utils/acemusic';
 
 defineProps<{ submitting: boolean }>();
 defineEmits<{ generate: [] }>();
@@ -150,30 +228,61 @@ const store = useStore();
 const models = ACEMUSIC_MODELS;
 const modes = [
   { name: 'idea', label: 'acemusic.mode.idea' },
-  { name: 'custom', label: 'acemusic.mode.custom' }
+  { name: 'custom', label: 'acemusic.mode.custom' },
+  { name: 'upload', label: 'acemusic.mode.upload' },
+  { name: 'cover', label: 'acemusic.mode.cover' },
+  { name: 'mashup', label: 'acemusic.mode.mashup' }
 ];
 const config = computed<IAcemusicConfig>(
   () => store.state.acemusic.config || { model: 'acemusic-v1.1', custom: false }
 );
 const patch = (value: Partial<IAcemusicConfig>) => store.commit('acemusic/setConfig', { ...config.value, ...value });
-const field = (key: 'prompt' | 'lyric' | 'style' | 'title') =>
+const field = (key: 'prompt' | 'lyric' | 'style' | 'title' | 'audio_url' | 'name') =>
   computed({ get: () => config.value[key] || '', set: (value: string) => patch({ [key]: value }) });
 const prompt = field('prompt'),
   lyric = field('lyric'),
   style = field('style'),
-  title = field('title');
+  title = field('title'),
+  audioUrl = field('audio_url'),
+  uploadName = field('name');
 const mode = computed({
-  get: () => (config.value.custom ? 'custom' : 'idea'),
-  set: (value: string) => patch({ custom: value === 'custom' })
+  get: () =>
+    config.value.action && config.value.action !== 'generate'
+      ? config.value.action
+      : config.value.custom
+        ? 'custom'
+        : 'idea',
+  set: (value: string) =>
+    patch({
+      action: ['idea', 'custom'].includes(value) ? 'generate' : (value as IAcemusicConfig['action']),
+      custom: value === 'custom',
+      ...(['cover', 'mashup'].includes(value) ? { model: 'acemusic-v1.1' as const } : {})
+    })
 });
 const model = computed({ get: () => config.value.model, set: (value: AcemusicModel) => patch({ model: value }) });
 const service = computed(() => store.state.acemusic.service);
 const request = computed(() => buildAcemusicAudioRequest(config.value));
-const valid = computed(() =>
-  config.value.custom
-    ? Boolean(lyric.value.trim() && title.value.trim() && style.value.trim())
-    : Boolean(prompt.value.trim())
+const valid = computed(() => isAcemusicRequestValid(request.value));
+const referenceTracks = computed<IAcemusicAudio[]>(() =>
+  (store.state.acemusic.tasks?.items || [])
+    .flatMap((task: any) => task.response?.data || [])
+    .filter(isAcemusicAudioPlayable)
 );
+const referenceLabel = (audio: IAcemusicAudio) =>
+  `${audio.title || audio.id.slice(0, 8)} · ${audio.duration ? Math.round(audio.duration) + 's · ' : ''}${audio.id.slice(0, 8)}`;
+const sourceAudio = computed({
+  get: () => config.value.audio_id || '',
+  set: (value: string) => patch({ audio_id: value || undefined })
+});
+const sourceAudios = computed({
+  get: () => config.value.mashup_audio_ids || [],
+  set: (value: string[]) => patch({ mashup_audio_ids: value })
+});
+const audioInfluence = computed({
+  get: () => config.value.audio_influence ?? 60,
+  set: (value: number) => patch({ audio_influence: value })
+});
+const setUploadUrl = (value: string) => patch({ audio_url: value });
 const generationCost = computed(() =>
   service.value?.cost?.length ? getConsumption(request.value, service.value.cost) : undefined
 );
@@ -194,7 +303,14 @@ const lyricsVisible = ref(false),
   lyricsPrompt = ref(''),
   lyricsStyle = ref('');
 function clearDraft() {
-  patch({ custom: false, prompt: '', lyric: '', style: '', title: '' });
+  store.commit('acemusic/setConfig', {
+    model: config.value.model,
+    custom: false,
+    prompt: '',
+    lyric: '',
+    style: '',
+    title: ''
+  });
   lyricsPrompt.value = '';
   lyricsStyle.value = '';
 }

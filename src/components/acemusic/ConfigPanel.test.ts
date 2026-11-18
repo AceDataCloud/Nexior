@@ -7,6 +7,7 @@ import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import { acemusicOperator } from '@/operators/acemusic';
 import mutations from '@/store/acemusic/mutations';
 import { prepareAcemusicSubmission } from '@/utils/acemusicSubmission';
+vi.mock('@/components/suno/config/UploadAudio.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/components/common/ServicePricingSummary.vue', () => ({ default: { template: '<div />' } }));
 vi.mock('@/i18n', () => ({ t: (key: string) => key }));
 vi.mock('@/utils', () => ({
@@ -55,6 +56,7 @@ const setup = () => {
       mocks: { $t: (key: string) => key },
       stubs: {
         ServicePricingSummary: true,
+        UploadAudio: true,
         PromptTextarea: {
           name: 'PromptTextarea',
           props: ['modelValue', 'title'],
