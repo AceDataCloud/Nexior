@@ -21,7 +21,10 @@ const walletConnect = vi.hoisted(() => ({
 }));
 vi.mock('@walletconnect/universal-provider', () => ({ default: { init: async () => walletConnect } }));
 
-const cases = [['arbitrum', 42161, 'ETH', 'https://arbiscan.io']] as const;
+const cases = [
+  ['arbitrum', 42161, 'ETH', 'https://arbiscan.io'],
+  ['polygon', 137, 'POL', 'https://polygonscan.com']
+] as const;
 
 beforeEach(() => {
   vi.clearAllMocks();
