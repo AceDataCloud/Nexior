@@ -59,13 +59,21 @@ function safeHttpsUrl(value) {
   }
 }
 
+function isOfficialAceMusic(url) {
+  return normalizeHost(url.hostname) === officialHost && /^\/acemusic\/?$/.test(url.pathname);
+}
+
 export function injectTenantHead(html, metadata, requestUrl) {
   const url = new URL(requestUrl);
   const host = normalizeHost(url.hostname);
   if (!host) return html;
 
-  const title = String(metadata?.title || host).trim() || host;
-  const description = String(metadata?.description || '').trim();
+  const isAceMusic = isOfficialAceMusic(url);
+  const siteTitle = String(metadata?.title || (isAceMusic ? 'Ace Data Cloud' : host)).trim() || host;
+  const title = isAceMusic ? `ACE Music - ${siteTitle}` : siteTitle;
+  const description = isAceMusic
+    ? 'Create songs from ideas or custom lyrics, import reference audio, cover a track, or blend two tracks with ACE Music.'
+    : String(metadata?.description || '').trim();
   const keywords = Array.isArray(metadata?.keywords)
     ? metadata.keywords
         .filter((value) => typeof value === 'string' && value.trim())
@@ -75,7 +83,7 @@ export function injectTenantHead(html, metadata, requestUrl) {
   const favicon = safeHttpsUrl(metadata?.favicon);
   const image =
     safeHttpsUrl(metadata?.image) || `https://platform.acedata.cloud/api/v1/og/${encodeURIComponent(host)}.png`;
-  const canonical = `${url.origin}${url.pathname}`;
+  const canonical = `${url.origin}${isAceMusic ? '/acemusic' : url.pathname}`;
 
   let result = html;
   result = removeTag(result, /<title\b[^>]*>[\s\S]*?<\/title\s*>\s*/gi);
@@ -221,10 +229,11 @@ async function proxyRequest(request, response) {
     copyHeaders(upstreamResponse, response, isHtml);
     if (isHtml) {
       const [html, metadata] = await Promise.all([readLimited(upstreamResponse), getMetadata(host)]);
+      const pageUrl = new URL(`https://${host}${request.url || '/'}`);
       response.end(
-        metadata === null && host === officialHost
+        metadata === null && host === officialHost && !isOfficialAceMusic(pageUrl)
           ? html
-          : injectTenantHead(html, metadata, `https://${host}${request.url || '/'}`)
+          : injectTenantHead(html, metadata, pageUrl)
       );
     } else if (!upstreamResponse.body || method === 'HEAD') {
       response.end();
