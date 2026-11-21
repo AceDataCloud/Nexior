@@ -289,7 +289,8 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   },
   acemusic: {
     title: 'ACE Music',
-    description: 'Create songs from an idea or custom lyrics with ACE Music.',
+    description:
+      'Create songs from ideas or custom lyrics, import reference audio, cover a track, or blend two tracks with ACE Music.',
     keywords: ['ACE Music', 'AI Music', 'Music Generation'],
     category: 'AI Music Generation'
   },
