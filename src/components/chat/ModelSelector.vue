@@ -51,6 +51,7 @@ import {
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_CLAUDE,
   CHAT_MODEL_GROUP_KIMI,
+  findSavedChatModel,
   getDefaultChatModel
 } from '@/constants';
 
@@ -129,6 +130,10 @@ export default defineComponent({
   },
   methods: {
     preferredModel(group: IChatModelGroup, current?: IChatModel): IChatModel {
+      if (this.$route.params?.id) {
+        const saved = findSavedChatModel(current?.name);
+        if (saved?.modelGroup === group.name) return saved;
+      }
       const models = selectableChatModels(this.$store.getters?.site as ISite | undefined, group);
       const defaultName = getDefaultChatModel(group).name;
       return (

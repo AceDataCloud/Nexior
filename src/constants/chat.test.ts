@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import enChat from '@/i18n/en/chat.json';
+import { selectableChatModels } from '@/utils/modelPresentation';
 
 import {
+  findSavedChatModel,
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
   CHAT_MODEL_DEEPSEEK_V4_PRO,
   CHAT_MODEL_GPT_6_2_ASTRA,
@@ -108,13 +110,36 @@ describe('chat models', () => {
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K2_6);
   });
 
-  it('lists and registers both DeepSeek V4 tiers with Pro first', () => {
-    expect(CHAT_MODEL_GROUP_DEEPSEEK.models.slice(0, 2)).toEqual([
-      CHAT_MODEL_DEEPSEEK_V4_PRO,
-      CHAT_MODEL_DEEPSEEK_V4_FLASH
+  it('offers five DeepSeek wire IDs for new chats and schedules with Pro first', () => {
+    const models = selectableChatModels(undefined, CHAT_MODEL_GROUP_DEEPSEEK);
+    expect(models.map((model) => model.name)).toEqual([
+      'deepseek-v4-pro',
+      'deepseek-v4-flash',
+      'deepseek-v4.1-flash',
+      'deepseek-flash',
+      'deepseek-v3.2'
     ]);
-    expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_PRO);
-    expect(CHAT_MODELS).toContain(CHAT_MODEL_DEEPSEEK_V4_FLASH);
+    expect(models[0]).toBe(CHAT_MODEL_DEEPSEEK_V4_PRO);
+    expect(models[1]).toBe(CHAT_MODEL_DEEPSEEK_V4_FLASH);
+    for (const model of models) expect(findSavedChatModel(model.name)).toBe(model);
+  });
+
+  it('resolves historical DeepSeek IDs for saved records without offering them for new requests', () => {
+    const models = selectableChatModels(undefined, CHAT_MODEL_GROUP_DEEPSEEK);
+    for (const name of [
+      'deepseek-v3',
+      'deepseek-r1',
+      'deepseek-v3.2-exp',
+      'deepseek-chat',
+      'deepseek-reasoner',
+      'deepseek-0324',
+      'deepseek-250324',
+      'deepseek-v3-250324',
+      'deepseek-r1-0528'
+    ]) {
+      expect(findSavedChatModel(name)).toMatchObject({ name, modelGroup: 'deepseek', enabled: false });
+      expect(models.some((model) => model.name === name)).toBe(false);
+    }
   });
 
   it('advertises K3 multimodal and reasoning capabilities', () => {

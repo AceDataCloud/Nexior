@@ -119,7 +119,7 @@ import { supportObstacle } from '@/utils/supportObstacle';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { shouldExecuteWithLocalExec } from '@/utils/browserToolExecution';
-import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { CHAT_MODEL_GROUPS, findSavedChatModel, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { BASE_URL_API } from '@/constants/endpoint';
 import {
   IChatMessageState,
@@ -309,8 +309,7 @@ export default defineComponent({
     },
     scheduledConversationModelGroup() {
       const conversation = this.scheduledConversation;
-      const groupName =
-        conversation?.model_group || CHAT_MODELS.find((model) => model.name === conversation?.model)?.modelGroup;
+      const groupName = conversation?.model_group || findSavedChatModel(conversation?.model)?.modelGroup;
       return CHAT_MODEL_GROUPS.find((group) => group.name === groupName);
     },
     service() {
@@ -796,7 +795,7 @@ export default defineComponent({
         }
         // 2. Switch model + model group to whatever this conversation used.
         const model = conversation?.model;
-        const targetModel = CHAT_MODELS.find((m) => m.name === model);
+        const targetModel = findSavedChatModel(model);
         const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
         if (targetModelGroup && this.modelGroup?.name !== targetModelGroup.name) {
           this.$store.dispatch('chat/setModelGroup', targetModelGroup);
