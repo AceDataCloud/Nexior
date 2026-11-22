@@ -3,7 +3,9 @@
     <div class="flex-1 overflow-y-auto p-5">
       <div class="mb-4">
         <field-title :title="$t('minimax.name.model')" :description="$t('minimax.description.model')" />
-        <el-input model-value="MiniMax-H3" disabled />
+        <el-select v-model="form.model" class="w-full"
+          ><el-option v-for="model in ['MiniMax-H3', 'MiniMax-H3-Max']" :key="model" :value="model" :label="model"
+        /></el-select>
       </div>
       <prompt-textarea
         v-model="form.prompt"
@@ -85,14 +87,14 @@
 <script lang="ts">
 import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElMessage, ElOption, ElSelect } from 'element-plus';
+import { ElButton, ElMessage, ElOption, ElSelect } from 'element-plus';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FieldTitle from './config/FieldTitle.vue';
 import ReferenceMediaInput from './config/ReferenceMediaInput.vue';
 import ServicePricingSummary from '../common/ServicePricingSummary.vue';
 import { IMinimaxConfig, IMinimaxContentItem, IMinimaxRatio } from '@/models';
 import { getConsumption } from '@/utils';
-import { validateMinimaxConfig } from '@/utils/minimax';
+import { getMinimaxGenerationOptions, validateMinimaxConfig } from '@/utils/minimax';
 import ScenarioPaymentMode from '../common/ScenarioPaymentMode.vue';
 import { isScenarioX402Enabled, scenarioPaymentState } from '@/utils/x402/scenarioPayment';
 import { buildMinimaxRequest, minimaxOperator } from '@/operators/minimax';
@@ -103,7 +105,6 @@ export default defineComponent({
     MagicIcon,
     ServicePricingSummary,
     ElButton,
-    ElInput,
     ElOption,
     ElSelect,
     FieldTitle,
@@ -116,13 +117,13 @@ export default defineComponent({
     return {
       form: {
         prompt: '',
+        model: 'MiniMax-H3' as IMinimaxConfig['model'],
         imageUrls: [] as string[],
         audioUrls: [] as string[],
-        resolution: '2K' as '768P' | '2K',
+        resolution: '2K' as IMinimaxConfig['resolution'],
         ratio: '16:9' as IMinimaxRatio,
         duration: 4
       },
-      resolutions: ['768P', '2K'] as const,
       ratios: [
         { value: 'adaptive' as const, width: '21px', height: '21px' },
         { value: '21:9' as const, width: '28px', height: '12px' },
@@ -132,12 +133,17 @@ export default defineComponent({
         { value: '3:4' as const, width: '17px', height: '22px' },
         { value: '9:16' as const, width: '13px', height: '25px' }
       ],
-      durations: Array.from({ length: 12 }, (_, index) => index + 4),
       quoteTimer: 0,
       quoteRunId: 0
     };
   },
   computed: {
+    resolutions() {
+      return getMinimaxGenerationOptions(this.form.model).resolutions;
+    },
+    durations() {
+      return getMinimaxGenerationOptions(this.form.model).durations;
+    },
     config(): IMinimaxConfig {
       const content: IMinimaxContentItem[] = [];
       const prompt = this.form.prompt.trim();
@@ -154,7 +160,7 @@ export default defineComponent({
         content.push({ type: 'audio_url', audio_url: { url }, role: 'reference_audio' });
       });
       return {
-        model: 'MiniMax-H3',
+        model: this.form.model,
         content,
         resolution: this.form.resolution,
         ratio: this.form.imageUrls.length === 1 && !this.form.audioUrls.length ? 'adaptive' : this.form.ratio,
@@ -172,6 +178,11 @@ export default defineComponent({
     }
   },
   watch: {
+    'form.model'() {
+      const options = getMinimaxGenerationOptions(this.form.model);
+      if (!(options.resolutions as readonly string[]).includes(this.form.resolution)) this.form.resolution = '768P';
+      if (!options.durations.includes(this.form.duration)) this.form.duration = options.durations[0];
+    },
     walletMode: {
       handler(enabled: boolean) {
         if (enabled) this.scheduleQuote();

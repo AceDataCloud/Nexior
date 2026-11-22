@@ -13,9 +13,9 @@ export type IMinimaxContentItem =
   | { type: 'audio_url'; audio_url: { url: string }; role: 'reference_audio' };
 
 export interface IMinimaxConfig {
-  model: 'MiniMax-H3';
+  model: 'MiniMax-H3' | 'MiniMax-H3-Max';
   content: IMinimaxContentItem[];
-  resolution: '768P' | '2K';
+  resolution: '480P' | '768P' | '2K';
   ratio?: IMinimaxRatio;
   duration: number;
   callback_url?: string;
@@ -36,13 +36,13 @@ export interface IMinimaxTaskUsage {
 
 export interface IMinimaxVideoTask {
   id: string;
-  model: 'MiniMax-H3';
+  model: 'MiniMax-H3' | 'MiniMax-H3-Max';
   status: 'queued' | 'running' | 'succeeded' | 'failed' | 'cancelled';
   error?: { code?: string; message?: string };
   created_at?: number;
   updated_at?: number;
   content?: { url?: string };
-  resolution?: '768P' | '2K';
+  resolution?: '480P' | '768P' | '2K';
   duration?: number;
   usage?: IMinimaxTaskUsage;
   ratio?: string;
