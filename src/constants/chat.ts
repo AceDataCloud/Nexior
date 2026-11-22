@@ -20,6 +20,7 @@ export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
 export const CHAT_MODEL_NAME_DEEPSEEK32_CHAT = 'deepseek-v3.2-exp';
 export const CHAT_MODEL_NAME_DEEPSEEK_FLASH = 'deepseek-flash';
 export const CHAT_MODEL_NAME_DEEPSEEK_V41_FLASH = 'deepseek-v4.1-flash';
+export const CHAT_MODEL_NAME_DEEPSEEK_V41_FLASH_1017 = 'deepseek-v4.1-flash-1017';
 export const CHAT_MODEL_NAME_DEEPSEEK_V32 = 'deepseek-v3.2';
 export const HISTORICAL_DEEPSEEK_NAMES = [
   'deepseek-chat',
@@ -256,6 +257,13 @@ export const CHAT_MODEL_DEEPSEEK_V41_FLASH: IChatModel = {
   name: CHAT_MODEL_NAME_DEEPSEEK_V41_FLASH,
   getDisplayName: () => i18n.global.t('chat.model.deepseekV41Flash'),
   getDescription: () => i18n.global.t('chat.model.deepseekV41FlashDescription')
+};
+
+export const CHAT_MODEL_DEEPSEEK_V41_FLASH_1017: IChatModel = {
+  ...CHAT_MODEL_DEEPSEEK_V4_FLASH,
+  name: CHAT_MODEL_NAME_DEEPSEEK_V41_FLASH_1017,
+  getDisplayName: () => i18n.global.t('chat.model.deepseekV41Flash1017'),
+  getDescription: () => i18n.global.t('chat.model.deepseekV41Flash1017Description')
 };
 
 export const CHAT_MODEL_DEEPSEEK_V32: IChatModel = {
@@ -630,6 +638,7 @@ export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
     CHAT_MODEL_DEEPSEEK_V4_PRO,
     CHAT_MODEL_DEEPSEEK_V4_FLASH,
     CHAT_MODEL_DEEPSEEK_V41_FLASH,
+    CHAT_MODEL_DEEPSEEK_V41_FLASH_1017,
     CHAT_MODEL_DEEPSEEK_FLASH,
     CHAT_MODEL_DEEPSEEK_V32,
     CHAT_MODEL_DEEPSEEK_CHAT,
@@ -730,6 +739,7 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_DEEPSEEK_V4_PRO,
   CHAT_MODEL_DEEPSEEK_V4_FLASH,
   CHAT_MODEL_DEEPSEEK_V41_FLASH,
+  CHAT_MODEL_DEEPSEEK_V41_FLASH_1017,
   CHAT_MODEL_DEEPSEEK_FLASH,
   CHAT_MODEL_DEEPSEEK_V32,
   CHAT_MODEL_DEEPSEEK_CHAT,

@@ -62,7 +62,7 @@ Nexior 整合了全球最强的 5 家 AI 厂商的最新模型：
 - **O1 / O3 / O4-mini** — 高级推理模型，擅长数学和逻辑
 
 **DeepSeek**
-- **DeepSeek Flash** — 可使用 `deepseek-flash`、`deepseek-v4-flash` 和 `deepseek-v4.1-flash` 三个兼容名称
+- **DeepSeek Flash** — 可使用 `deepseek-flash`、`deepseek-v4-flash`、`deepseek-v4.1-flash` 和 `deepseek-v4.1-flash-1017` 四个兼容名称
 - **DeepSeek V4 Pro** — `deepseek-v4-pro`
 - **DeepSeek V3.2** — `deepseek-v3.2`
 

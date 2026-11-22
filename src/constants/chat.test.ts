@@ -110,12 +110,13 @@ describe('chat models', () => {
     expect(CHAT_MODELS).toContain(CHAT_MODEL_KIMI_K2_6);
   });
 
-  it('offers five DeepSeek wire IDs for new chats and schedules with Pro first', () => {
+  it('offers six DeepSeek wire IDs for new chats and schedules with Pro first', () => {
     const models = selectableChatModels(undefined, CHAT_MODEL_GROUP_DEEPSEEK);
     expect(models.map((model) => model.name)).toEqual([
       'deepseek-v4-pro',
       'deepseek-v4-flash',
       'deepseek-v4.1-flash',
+      'deepseek-v4.1-flash-1017',
       'deepseek-flash',
       'deepseek-v3.2'
     ]);

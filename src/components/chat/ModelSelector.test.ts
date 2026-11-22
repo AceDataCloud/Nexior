@@ -74,7 +74,7 @@ describe('ModelSelector', () => {
     await nextTick();
     expect(state.chat.model?.name).toBe('deepseek-0324');
     expect(wrapper.get('.trigger-name').text()).toBe('deepseek-0324');
-    expect(wrapper.findAll('.item-name')).toHaveLength(5);
+    expect(wrapper.findAll('.item-name')).toHaveLength(6);
     expect(wrapper.findAll('.item-name').map((item) => item.text())).not.toContain('deepseek-0324');
     route.params.id = undefined;
     await nextTick();
