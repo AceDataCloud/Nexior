@@ -387,10 +387,12 @@ export default defineComponent({
       immediate: true,
       async handler(val: string | undefined) {
         if (!val) return;
-        if (this.modelGroup?.name) {
-          await this.$store.dispatch('chat/getConversations');
-        }
-        await this.onRestoreCurrentConversation();
+        // The URL identifies the conversation; sidebar loading must not delay
+        // restoring its messages or enabling the composer.
+        await Promise.all([
+          this.onRestoreCurrentConversation(),
+          this.modelGroup?.name ? this.$store.dispatch('chat/getConversations') : undefined
+        ]);
       }
     },
     // URL is the source of truth for which conversation is open. Side-
