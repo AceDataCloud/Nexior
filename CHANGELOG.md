@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 18 Nov 2026 20:16:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 22 Nov 2026 20:15:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.387.1
+
+Sun, 22 Nov 2026 20:15:20 GMT
+
+### Patches
+
+- Restore the current chat without waiting for the sidebar conversation list to finish loading. (dev@acedata.cloud)
+- Update DeepSeek model choices for chats and scheduled tasks and preserve retired model IDs in saved conversations. (dev@acedata.cloud)
+- Keep four Kimi models and add K2.7 Code to the model picker. (dev@acedata.cloud)
+- Show a localized save confirmation after creating or editing a scheduled task. (dev@acedata.cloud)
+- Preserve the visitor IP for API and invitation traffic on hosted Studio. (dev@acedata.cloud)
+- Add ACE Music to Studio discovery and use shared route metadata for official Studio service landing pages. (dev@acedata.cloud)
 
 ## 3.387.0
 
