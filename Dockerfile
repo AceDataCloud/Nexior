@@ -13,6 +13,8 @@ RUN npm run build:ssg && node scripts/ssg-shell.mjs && \
 
 FROM nginx:stable-alpine AS runtime-base
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY deploy/platform-public.inc /etc/nginx/conf.d/platform-proxy.inc
+COPY deploy/production/platform-proxy.inc /etc/nginx/studio-templates/platform-proxy.inc.template
 COPY security-headers.conf /etc/nginx/security-headers.conf
 
 FROM runtime-base AS production-stage
