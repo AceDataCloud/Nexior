@@ -9,6 +9,7 @@ import { isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
 
 import { getDomain } from './domain';
+import { marketingAttribution } from './marketingAttribution';
 
 // Debug helper — client only (no window during the SSG build).
 if (typeof window !== 'undefined') {
@@ -19,6 +20,8 @@ if (typeof window !== 'undefined') {
 export const initializeCookies = async () => {
   // parse the query string and set to cookies
   const query = new URLSearchParams(window.location.search);
+
+  marketingAttribution.capture(query);
 
   // set the inviter id to cookies
   const inviterId = query.get('inviter_id');

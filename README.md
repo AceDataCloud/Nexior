@@ -34,6 +34,14 @@ origin and preserve path, query and fragment. Reopening on the same day reuses
 that origin's saved login. Different date origins keep separate browser storage
 and use the existing Auth login flow when the user signs in.
 
+Official web visits retain safe UTM signup context in the same seven-day
+first-party cookie used by Platform and Auth. Untagged navigation keeps the
+original capture time; a later tagged visit replaces the source. The shared
+privacy guard respects DNT, GPC and denied analytics consent and excludes
+custom domains and native/desktop app origins. This sends no analytics event,
+does not change inviter or Site ownership, and does not rewrite an existing
+account's registration source.
+
 ---
 
 ## 🎯 What is Nexior
