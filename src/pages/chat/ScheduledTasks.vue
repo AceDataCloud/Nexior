@@ -911,7 +911,7 @@ import type {
   IScheduledBrowserBinding,
   IScheduledExecution
 } from '@/operators/scheduledTasks';
-import { CHAT_MODELS, CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
+import { findSavedChatModel, CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_6_SOL } from '@/constants';
 import { getSurface, isDesktop } from '@/utils/surface';
 import { desktopBridge, localExec, type LocalToolSpec } from '@/utils/desktop';
 import type { IChatModel, IChatModelGroup, ISite } from '@/models';
@@ -1133,8 +1133,8 @@ export default defineComponent({
         .map((g) => {
           const models = selectableChatModels(site, g);
           // Keep the saved model visible when editing a task that predates this Site setting.
-          const saved = g.models.find((model) => model.name === this.editingTask?.template.model);
-          if (saved && !models.some((model) => model.name === saved.name)) models.push(saved);
+          const saved = findSavedChatModel(this.editingTask?.template.model);
+          if (saved?.modelGroup === g.name && !models.some((model) => model.name === saved.name)) models.push(saved);
           return { ...g, models };
         })
         .filter((g) => g.models.length > 0);
@@ -1315,7 +1315,7 @@ export default defineComponent({
       return resolveModelDisplayName(this.$store.getters?.site as ISite | undefined, model);
     },
     modelIdDisplayName(modelId: string): string {
-      const model = CHAT_MODELS.find((item) => item.name === modelId);
+      const model = findSavedChatModel(modelId);
       return model ? this.modelDisplayName(model) : modelId;
     },
     emptyForm(): TaskForm {
@@ -2175,7 +2175,7 @@ export default defineComponent({
           conversationId = result?.conversation_id;
         }
         if (conversationId) {
-          const modelGroup = CHAT_MODELS.find((model) => model.name === task.template.model)?.modelGroup;
+          const modelGroup = findSavedChatModel(task.template.model)?.modelGroup;
           this.openConversation(conversationId, modelGroup);
           return;
         }

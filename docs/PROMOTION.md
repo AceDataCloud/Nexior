@@ -38,7 +38,7 @@ Nexior 是一个开源的一站式 AI 消费平台，集成了当下最前沿的
 
 | 类别 | 服务 | 说明 |
 |------|------|------|
-| 🤖 **AI 聊天** | ChatGPT (GPT-5/4o)、DeepSeek (V3/R1)、Grok (4/3)、Gemini (3.0/2.5)、Claude (Opus 4/Sonnet 4) | 24 个模型，支持联网、图片识别、文件上传、深度推理 |
+| 🤖 **AI 聊天** | ChatGPT (GPT-5/4o)、DeepSeek (Flash、V4 Pro、V3.2)、Grok (4/3)、Gemini (3.0/2.5)、Claude (Opus 4/Sonnet 4) | 24 个模型，支持联网、图片识别、文件上传、深度推理 |
 | 🎨 **AI 绘画** | Midjourney、Flux、NanoBanana、Seedream | 多种风格一键生成高质量图片 |
 | 📱 **AI 二维码** | QRArt | 将二维码变成艺术品，多种风格可选 |
 | 🎵 **AI 音乐** | Suno (v2~v5) | 输入描述即可生成完整歌曲，支持翻唱、混搭、声曲分离 |
@@ -62,9 +62,9 @@ Nexior 整合了全球最强的 5 家 AI 厂商的最新模型：
 - **O1 / O3 / O4-mini** — 高级推理模型，擅长数学和逻辑
 
 **DeepSeek**
-- **DeepSeek V3** — 国产之光，性能比肩 GPT-4
-- **DeepSeek V3.2 Exp** — 最新实验版本
-- **DeepSeek R1 推理** — 专为深度思考和复杂推理设计
+- **DeepSeek Flash** — 可使用 `deepseek-flash`、`deepseek-v4-flash` 和 `deepseek-v4.1-flash` 三个兼容名称
+- **DeepSeek V4 Pro** — `deepseek-v4-pro`
+- **DeepSeek V3.2** — `deepseek-v3.2`
 
 **xAI (Grok)**
 - **Grok-4** — 最先进的模型，支持深度搜索

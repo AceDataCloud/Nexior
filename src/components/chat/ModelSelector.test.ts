@@ -8,6 +8,8 @@ import {
   CHAT_MODEL_GPT_5_6_SOL,
   CHAT_MODEL_GPT_6_ASTRA,
   CHAT_MODEL_GROUP_CHATGPT,
+  CHAT_MODEL_GROUP_DEEPSEEK,
+  findSavedChatModel,
   CHAT_MODEL_GROUP_GEMINI
 } from '@/constants';
 import type { IChatModel } from '@/models';
@@ -59,6 +61,24 @@ describe('ModelSelector', () => {
     expect(toRaw(state.chat.model)).toBe(CHAT_MODEL_GPT_5_6_SOL);
     expect(toRaw(state.chat.model)).not.toBe(CHAT_MODEL_GPT_6_ASTRA);
     expect(wrapper.find('.trigger-name').text()).toBe(CHAT_MODEL_GPT_5_6_SOL.getDisplayName());
+  });
+
+  it('displays a retired DeepSeek ID in history and switches to Pro for a new chat', async () => {
+    const historical = findSavedChatModel('deepseek-0324')!;
+    const { route, state, wrapper } = mountSelector(
+      persistedModel(historical),
+      CHAT_MODEL_GROUP_DEEPSEEK,
+      undefined,
+      'old'
+    );
+    await nextTick();
+    expect(state.chat.model?.name).toBe('deepseek-0324');
+    expect(wrapper.get('.trigger-name').text()).toBe('deepseek-0324');
+    expect(wrapper.findAll('.item-name')).toHaveLength(5);
+    expect(wrapper.findAll('.item-name').map((item) => item.text())).not.toContain('deepseek-0324');
+    route.params.id = undefined;
+    await nextTick();
+    expect(state.chat.model?.name).toBe('deepseek-v4-pro');
   });
 
   it('shows the Site icon for the selected model and dropdown without changing the model ID', async () => {
