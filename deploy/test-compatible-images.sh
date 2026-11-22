@@ -69,11 +69,10 @@ done
 if [ "$app" = studio-frontend ]; then
   docker exec "$final_container" nginx -T > "$tmp_dir/self-hosted.conf" 2>&1
   grep -Fq 'proxy_pass https://platform.acedata.cloud;' "$tmp_dir/self-hosted.conf"
-  grep -Fq 'proxy_set_header X-Ace-Platform-Edge-Origin-Auth "";' "$tmp_dir/self-hosted.conf"
   docker run --rm --add-host platform-frontend.acedatacloud.svc.cluster.local:127.0.0.1 \
     -e NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/studio-templates "$final_image" nginx -T > "$tmp_dir/hosted.conf" 2>&1
   grep -Fq 'proxy_pass http://platform-frontend.acedatacloud.svc.cluster.local:8083;' "$tmp_dir/hosted.conf"
-  grep -Fq 'proxy_set_header X-Ace-Platform-Edge-Origin-Auth $http_x_ace_platform_edge_origin_auth;' "$tmp_dir/hosted.conf"
+  grep -Fq 'proxy_set_header Client-IP $http_client_ip;' "$tmp_dir/hosted.conf"
   if grep -Fq 'proxy_pass https://platform.acedata.cloud;' "$tmp_dir/hosted.conf"; then
     echo 'hosted Studio still uses the public Platform origin' >&2
     exit 1

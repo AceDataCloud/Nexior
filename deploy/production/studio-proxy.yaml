@@ -54,9 +54,6 @@ data:
 
     (studio_routes) {
       route {
-        # First-party API and invitation routes go straight from ingress to
-        # Studio NGINX. Caddy also accepts public custom-domain traffic.
-        request_header -X-Ace-Platform-Edge-Origin-Auth
         @websocket {
           header Connection *Upgrade*
           header Upgrade websocket
@@ -99,12 +96,7 @@ data:
       # JSON access log to stdout; CLS picks it up automatically.
       log {
         output stdout
-        format filter {
-          wrap json
-          fields {
-            request>headers>X-Ace-Platform-Edge-Origin-Auth delete
-          }
-        }
+        format json
       }
     }
 
