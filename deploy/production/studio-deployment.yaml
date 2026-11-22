@@ -27,6 +27,9 @@ spec:
       containers:
         - image: ghcr.io/acedatacloud/studio-frontend:${TAG}
           name: studio-frontend
+          env:
+            - name: NGINX_ENVSUBST_TEMPLATE_DIR
+              value: /etc/nginx/studio-templates
           ports:
             - containerPort: 80
           readinessProbe:

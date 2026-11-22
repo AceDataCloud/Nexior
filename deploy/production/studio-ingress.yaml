@@ -31,6 +31,13 @@ spec:
                 name: studio-frontend
                 port:
                   number: 8085
+          - path: /i/
+            pathType: Prefix
+            backend:
+              service:
+                name: studio-frontend
+                port:
+                  number: 8085
           - path: /favicon.ico
             pathType: Exact
             backend:
@@ -63,6 +70,13 @@ spec:
                 port:
                   number: 8085
           - path: /api/v1/
+            pathType: Prefix
+            backend:
+              service:
+                name: studio-frontend
+                port:
+                  number: 8085
+          - path: /i/
             pathType: Prefix
             backend:
               service:

@@ -19,6 +19,7 @@ assert 'delete service hub-frontend' not in workflow
 assert 'ghcr.io/acedatacloud/hub-frontend' not in workflow
 
 container = studio['spec']['template']['spec']['containers'][0]
+assert {env['name']: env['value'] for env in container['env']}['NGINX_ENVSUBST_TEMPLATE_DIR'] == '/etc/nginx/studio-templates'
 assert studio['spec']['strategy']['type'] == 'RollingUpdate'
 assert studio['spec']['strategy']['rollingUpdate'] == {'maxSurge': 1, 'maxUnavailable': 0}
 assert studio['spec']['minReadySeconds'] == 10
@@ -86,6 +87,7 @@ for rule in studio_rules:
     assert routes['/'] == ('Prefix', 'caddy-studio-internal', 8080)
     assert routes['/assets/'] == ('Prefix', 'studio-frontend', 8085)
     assert routes['/api/v1/'] == ('Prefix', 'studio-frontend', 8085)
+    assert routes['/i/'] == ('Prefix', 'studio-frontend', 8085)
     assert routes['/favicon.ico'] == ('Exact', 'studio-frontend', 8085)
     assert routes['/apple-touch-icon.png'] == ('Exact', 'studio-frontend', 8085)
 

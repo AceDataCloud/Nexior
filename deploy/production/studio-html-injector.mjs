@@ -151,7 +151,14 @@ function requestHeaders(request, host) {
   for (const [name, value] of Object.entries(request.headers)) {
     if (
       value !== undefined &&
-      !['connection', 'content-length', 'host', 'if-none-match', 'if-modified-since'].includes(name.toLowerCase())
+      ![
+        'connection',
+        'content-length',
+        'host',
+        'if-none-match',
+        'if-modified-since',
+        'x-ace-platform-edge-origin-auth'
+      ].includes(name.toLowerCase())
     ) {
       headers.set(name, Array.isArray(value) ? value.join(', ') : value);
     }
