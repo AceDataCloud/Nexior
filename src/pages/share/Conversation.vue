@@ -65,7 +65,7 @@ import { ElButton, ElSkeleton } from 'element-plus';
 import Message from '@/components/chat/Message.vue';
 import Logo from '@/components/common/Logo.vue';
 import { chatOperator } from '@/operators';
-import { CHAT_MODEL_GROUPS, CHAT_MODELS } from '@/constants';
+import { CHAT_MODEL_GROUPS, findSavedChatModel } from '@/constants';
 import { IChatConversation, IChatMessage, IChatModelGroup } from '@/models';
 import { MARKDOWN_SANITIZE_KEY } from '@/components/common/VueMarkdown.vue';
 import { resolveAssistantAvatar } from '@/utils/modelPresentation';
@@ -119,7 +119,7 @@ export default defineComponent({
         if (byGroup) return byGroup;
       }
       const model = this.conversation?.model;
-      const targetModel = CHAT_MODELS.find((m) => m.name === model);
+      const targetModel = findSavedChatModel(model);
       return CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
     },
     modelGroupName(): string {
