@@ -7,6 +7,7 @@ network. A missing quote stops payment; Studio never chooses another chain.
 | Network | Alias | CAIP-2 | USDC |
 | --- | --- | --- | --- |
 | Arbitrum One | `arbitrum` | `eip155:42161` | Native Circle USDC |
+| Polygon PoS | `polygon` | `eip155:137` | Native Circle USDC |
 
 The wallet dialog uses the selected network for injected wallets and WalletConnect.
 It rechecks a completed network switch and checks the wallet chain again immediately
