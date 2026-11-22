@@ -95,13 +95,19 @@ describe('chat models', () => {
     expect(CHAT_MODELS).toContain(CHAT_MODEL_GPT_6_ASTRA);
   });
 
-  it('defaults Kimi to K3 while K3.1 Pro has no upstream channel', () => {
+  it('preserves K3 as the default Kimi model', () => {
     expect(getDefaultChatModel(CHAT_MODEL_GROUP_KIMI)).toBe(CHAT_MODEL_KIMI_K3);
   });
 
-  it('keeps K3.1 Pro registered but unavailable for selection', () => {
+  it('offers exactly the four supported Kimi models', () => {
     expect(CHAT_MODEL_GROUP_KIMI.models[0]).toBe(CHAT_MODEL_KIMI_K3_1_PRO);
-    expect(CHAT_MODEL_KIMI_K3_1_PRO.enabled).toBe(false);
+    expect(CHAT_MODEL_KIMI_K3_1_PRO.enabled).toBe(true);
+    expect(CHAT_MODEL_GROUP_KIMI.models.map((model) => model.name)).toEqual([
+      'kimi-k3.1-pro',
+      'kimi-k3',
+      'kimi-k2.6',
+      'kimi-k2.7-code'
+    ]);
     expect(CHAT_MODEL_KIMI_K3.enabled).toBe(true);
     expect(CHAT_MODEL_GROUP_KIMI.models).toContain(CHAT_MODEL_KIMI_K3);
     expect(CHAT_MODEL_GROUP_KIMI.models).toContain(CHAT_MODEL_KIMI_K2_6);
