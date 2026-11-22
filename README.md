@@ -9,7 +9,7 @@
 一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,一个 AceData key 即可使用,MIT 协议。
 
 <p>
-  <a href="https://studio.acedata.cloud">🚀 Live Demo</a> ·
+  <a href="https://studio.acedata.cloud?utm_source=github">🚀 Live Demo</a> ·
   <a href="#-quick-start">⚡ Deploy in minutes</a> ·
   <a href="https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior">🔑 Get an API key</a> ·
   <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
@@ -38,7 +38,7 @@ and use the existing Auth login flow when the user signs in.
 
 ## 🎯 What is Nexior
 
-**Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — use a single [AceData](https://platform.acedata.cloud) key for all of them, and you're live.
+**Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — use a single [AceData](https://platform.acedata.cloud?utm_source=github) key for all of them, and you're live.
 
 - 🧠 **40+ models, 4 modalities, one app** — chat, image, music, video.
 - 🖥️ **Self-host anywhere** — one-click Vercel, or `docker compose up`. Your data, your domain.
@@ -48,7 +48,7 @@ and use the existing Auth login flow when the user signs in.
 
 Custom capability names configured in site settings also appear in browser tab titles and sharing titles.
 
-> Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud).
+> Built and maintained by [AceDataCloud](https://platform.acedata.cloud?utm_source=github). Powers the live consumer app at [studio.acedata.cloud](https://studio.acedata.cloud?utm_source=github).
 
 **Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用一个 AceData key 直接全用,几分钟上线。
 
@@ -101,7 +101,7 @@ saved login, while other saved accounts remain available in the avatar menu.
 
 ### Option A — One-click deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069)
+[![Deploy with Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069?utm_source=github)
 
 ### Option B — Docker (self-host)
 
@@ -153,7 +153,7 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product without separat
 | ------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------- |
 | ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![nanobanana](https://cdn.acedata.cloud/930d011b58.png) | ![seedance](https://cdn.acedata.cloud/f0bf58571a.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
 
-> Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud)**
+> Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud?utm_source=github)**
 
 ---
 
@@ -202,12 +202,12 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 - 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
 - 📧 Email: office@acedata.cloud
-- 🆘 Support: <https://platform.acedata.cloud/support>
+- 🆘 Support: <https://platform.acedata.cloud/support?utm_source=github>
 - 🐛 Issues & PRs welcome.
 
 ## 📄 License
 
-MIT © [AceDataCloud](https://platform.acedata.cloud)
+MIT © [AceDataCloud](https://platform.acedata.cloud?utm_source=github)
 
 ## Automated tests
 
