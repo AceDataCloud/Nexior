@@ -7,7 +7,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { BaseError, IChatMessageState, Status, type IChatConversation, type IChatMessage } from '@/models';
 import { chatOperator } from '@/operators';
 import { scheduledTasksOperator } from '@/operators/scheduledTasks';
-import { CHAT_MODEL_GPT_6_ASTRA } from '@/constants';
+import { CHAT_MODEL_GPT_6_ASTRA, CHAT_MODEL_GROUP_CHATGPT } from '@/constants';
 import Composer from '@/components/chat/Composer.vue';
 import Message from '@/components/chat/Message.vue';
 import Conversation from './Conversation.vue';
@@ -18,22 +18,26 @@ const mountComponent = ({
   fetchedConversation,
   conversationId = 'conversation-1',
   application,
-  model = undefined
+  model = undefined,
+  modelGroup = undefined,
+  conversationList = Promise.resolve(undefined)
 }: {
   credentialToken?: string;
   fetchedConversation?: Record<string, unknown>;
   conversationId?: string | null;
   application?: Record<string, unknown>;
   model?: typeof CHAT_MODEL_GPT_6_ASTRA;
+  modelGroup?: typeof CHAT_MODEL_GROUP_CHATGPT;
+  conversationList?: Promise<unknown>;
 } = {}) => {
   const pendingConversation = new Promise(() => undefined);
-  const dispatch = vi.fn((action: string) =>
-    action === 'chat/getConversation'
-      ? fetchedConversation
-        ? Promise.resolve(fetchedConversation)
-        : pendingConversation
-      : Promise.resolve(undefined)
-  );
+  const dispatch = vi.fn((action: string) => {
+    if (action === 'chat/getConversations') return conversationList;
+    if (action === 'chat/getConversation') {
+      return fetchedConversation ? Promise.resolve(fetchedConversation) : pendingConversation;
+    }
+    return Promise.resolve(undefined);
+  });
   return {
     dispatch,
     wrapper: shallowMount(Conversation, {
@@ -67,7 +71,7 @@ const mountComponent = ({
                 credential: credentialToken ? { token: credentialToken } : undefined,
                 memoryEnabled: true,
                 model,
-                modelGroup: undefined,
+                modelGroup,
                 service: undefined,
                 status: { getApplications: Status.None }
               }
@@ -390,6 +394,40 @@ describe('chat/Conversation retry', () => {
 });
 
 describe('chat/Conversation loading state', () => {
+  it('restores messages and enables the composer before the sidebar list finishes', async () => {
+    let finishList!: () => void;
+    const conversationList = new Promise<void>((resolve) => {
+      finishList = resolve;
+    });
+    const messages = [{ role: 'assistant', content: 'Earlier reply' }];
+    const { wrapper, dispatch } = mountComponent({
+      credentialToken: 'token',
+      application: { id: 'app-1' },
+      model: CHAT_MODEL_GPT_6_ASTRA,
+      modelGroup: CHAT_MODEL_GROUP_CHATGPT,
+      conversationList,
+      fetchedConversation: { id: 'conversation-1', model: CHAT_MODEL_GPT_6_ASTRA.name, messages }
+    });
+    try {
+      await flushPromises();
+
+      expect(dispatch).toHaveBeenCalledWith('chat/getConversations');
+      expect(dispatch).toHaveBeenCalledWith('chat/getConversation', 'conversation-1');
+      expect(wrapper.getComponent(Message).props('message')).toEqual(messages[0]);
+      expect(wrapper.find('.conversation-loading').exists()).toBe(false);
+      expect(wrapper.getComponent(Composer).props('ready')).toBe(true);
+
+      finishList();
+      await flushPromises();
+      expect(wrapper.vm.messages).toEqual(messages);
+      expect(dispatch.mock.calls.filter(([action]) => action === 'chat/getConversation')).toHaveLength(1);
+    } finally {
+      finishList();
+      await flushPromises();
+      wrapper.unmount();
+    }
+  });
+
   it('passes the conversation model to restored assistant replies', async () => {
     const { wrapper } = mountComponent({
       credentialToken: 'token',
@@ -432,10 +470,12 @@ describe('chat/Conversation loading state', () => {
   });
 
   it('does not leave a guest direct link in an infinite loading state', () => {
-    const { wrapper } = mountComponent();
+    const { wrapper, dispatch } = mountComponent({ modelGroup: CHAT_MODEL_GROUP_CHATGPT });
 
     expect(wrapper.find('.conversation-loading').exists()).toBe(false);
     expect(wrapper.get('.dialogue').classes()).toContain('empty');
+    expect(dispatch).not.toHaveBeenCalledWith('chat/getConversations');
+    expect(dispatch).not.toHaveBeenCalledWith('chat/getConversation', 'conversation-1');
   });
 
   it('preserves a checkpointed awaiting-input pause for resume', async () => {
