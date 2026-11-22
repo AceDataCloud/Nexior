@@ -2,6 +2,7 @@ import http from 'node:http';
 import { Readable } from 'node:stream';
 import { realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import studioRouteSeo from './studio-route-seo.json' with { type: 'json' };
 
 const listenPort = Number(process.env.PORT || 3000);
 const upstream = process.env.STUDIO_UPSTREAM || 'http://studio-frontend.acedatacloud.svc.cluster.local:8085';
@@ -12,6 +13,7 @@ const lookupTimeoutMs = Number(process.env.SITE_LOOKUP_TIMEOUT_MS || 3_000);
 const upstreamTimeoutMs = Number(process.env.UPSTREAM_TIMEOUT_MS || 300_000);
 const maxHtmlBytes = Number(process.env.MAX_HTML_BYTES || 4 * 1024 * 1024);
 const officialHost = normalizeHost(process.env.OFFICIAL_STUDIO_HOST || 'studio.acedata.cloud');
+const landingPages = new Map(Object.entries(studioRouteSeo).map(([slug, seo]) => [`/${slug}`, seo]));
 const metadataCache = new Map();
 const pendingLookups = new Map();
 
@@ -59,31 +61,27 @@ function safeHttpsUrl(value) {
   }
 }
 
-function isOfficialAceMusic(url) {
-  return normalizeHost(url.hostname) === officialHost && /^\/acemusic\/?$/.test(url.pathname);
-}
-
 export function injectTenantHead(html, metadata, requestUrl) {
   const url = new URL(requestUrl);
   const host = normalizeHost(url.hostname);
   if (!host) return html;
 
-  const isAceMusic = isOfficialAceMusic(url);
-  const siteTitle = String(metadata?.title || (isAceMusic ? 'Ace Data Cloud' : host)).trim() || host;
-  const title = isAceMusic ? `ACE Music - ${siteTitle}` : siteTitle;
-  const description = isAceMusic
-    ? 'Create songs from ideas or custom lyrics, import reference audio, cover a track, or blend two tracks with ACE Music.'
-    : String(metadata?.description || '').trim();
-  const keywords = Array.isArray(metadata?.keywords)
-    ? metadata.keywords
-        .filter((value) => typeof value === 'string' && value.trim())
-        .map((value) => value.trim())
-        .join(', ')
-    : '';
+  const landingPath = url.pathname.replace(/\/$/, '').toLowerCase();
+  const page = host === officialHost ? landingPages.get(landingPath) : undefined;
+  if (host === officialHost && metadata === null && !page) return html;
+
+  const siteTitle = String(metadata?.title || (page ? 'Ace Data Cloud' : host)).trim() || host;
+  const title = page ? `${page.title} - ${siteTitle}` : siteTitle;
+  const description = page?.description || String(metadata?.description || '').trim();
+  const siteKeywords = Array.isArray(metadata?.keywords) ? metadata.keywords : [];
+  const keywords = (page?.keywords || siteKeywords)
+    .filter((value) => typeof value === 'string' && value.trim())
+    .map((value) => value.trim())
+    .join(', ');
   const favicon = safeHttpsUrl(metadata?.favicon);
   const image =
     safeHttpsUrl(metadata?.image) || `https://platform.acedata.cloud/api/v1/og/${encodeURIComponent(host)}.png`;
-  const canonical = `${url.origin}${isAceMusic ? '/acemusic' : url.pathname}`;
+  const canonical = `${url.origin}${page ? landingPath : url.pathname}`;
 
   let result = html;
   result = removeTag(result, /<title\b[^>]*>[\s\S]*?<\/title\s*>\s*/gi);
@@ -100,7 +98,7 @@ export function injectTenantHead(html, metadata, requestUrl) {
   if (description) result = addMeta(result, 'name', 'description', description);
   if (keywords) result = addMeta(result, 'name', 'keywords', keywords);
   result = addMeta(result, 'property', 'og:type', 'website');
-  result = addMeta(result, 'property', 'og:site_name', title);
+  result = addMeta(result, 'property', 'og:site_name', siteTitle);
   result = addMeta(result, 'property', 'og:title', title);
   if (description) result = addMeta(result, 'property', 'og:description', description);
   result = addMeta(result, 'property', 'og:url', canonical);
@@ -229,12 +227,7 @@ async function proxyRequest(request, response) {
     copyHeaders(upstreamResponse, response, isHtml);
     if (isHtml) {
       const [html, metadata] = await Promise.all([readLimited(upstreamResponse), getMetadata(host)]);
-      const pageUrl = new URL(`https://${host}${request.url || '/'}`);
-      response.end(
-        metadata === null && host === officialHost && !isOfficialAceMusic(pageUrl)
-          ? html
-          : injectTenantHead(html, metadata, pageUrl)
-      );
+      response.end(injectTenantHead(html, metadata, `https://${host}${request.url || '/'}`));
     } else if (!upstreamResponse.body || method === 'HEAD') {
       response.end();
     } else {
