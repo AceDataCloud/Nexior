@@ -28,6 +28,9 @@ assert release.count('kubectl apply') == 1
 assert 'studio-deployment.yaml' in (ROOT / 'deploy/verify-cutover.sh').read_text()
 assert 'bash deploy/verify-cutover.sh' in release
 assert 'kubectl create configmap studio-html-injector' in release
+assert '--from-file=deploy/production/studio-route-seo.json' in release
+config_hash = release.index('injector_sha=$(openssl dgst -sha256 "$rendered"')
+assert release.index('kubectl create configmap studio-html-injector') < config_hash < release.index('for manifest in')
 assert '--dry-run=client -o yaml > "$rendered"' in release
 for manifest in ('studio-service.yaml', 'studio-proxy.yaml', 'legacy-hub-redirect.yaml', 'studio-ingress.yaml'):
     assert manifest in release

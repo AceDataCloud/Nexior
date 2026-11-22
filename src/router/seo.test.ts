@@ -18,6 +18,7 @@ vi.mock('@/store', () => ({
 vi.mock('@/utils/siteAnalytics', () => ({ trackSitePageView: vi.fn() }));
 
 import { routes, setupRouterGuards } from './index';
+import studioRouteSeo from '../../deploy/production/studio-route-seo.json';
 
 describe('capability route SEO titles', () => {
   let router: Router;
@@ -70,6 +71,18 @@ describe('capability route SEO titles', () => {
       expect(document.title).toBe('ChatGPT - FOYTEA');
     }
   );
+
+  it('resolves every shared landing page and uses its metadata for client navigation', () => {
+    mocks.site = { title: 'Ace Data Cloud' } as ISite;
+    for (const [slug, seo] of Object.entries(studioRouteSeo)) {
+      const path = `/${slug}`;
+      const route = router.resolve(path);
+      expect(route.matched[0]?.path).toBe(path);
+      afterEach(route);
+      expect(document.title).toBe(`${seo.title} - Ace Data Cloud`);
+      expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toBe(seo.description);
+    }
+  });
 
   it('reads the current site configuration on the next navigation', () => {
     afterEach(router.resolve('/chatgpt/conversations'));
