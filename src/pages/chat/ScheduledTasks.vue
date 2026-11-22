@@ -1968,7 +1968,7 @@ export default defineComponent({
           await scheduledTasksOperator.createTask(this.token!, payload, force);
           this.page = 1;
         }
-        ElMessage.success((this.$t('chat.scheduledTasks.create') as string) + ' OK');
+        ElMessage.success(this.$t('chat.scheduledTasks.saveSuccess') as string);
         await this.loadTasks(true);
         this.showCreateDialog = false;
         this.editingTask = null;
