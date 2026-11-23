@@ -76,7 +76,7 @@
     "description": "image_urls 引數說明"
   },
   "description.aspectRatio": {
-    "message": "生成影象的寬高比。支援的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。預設值為 `1:1`。僅當 `action` 為 `generate` 時生效；若 `action` 為 `edit`，則以 `image_urls` 中第一張圖片的比例為準。",
+    "message": "選「自動」時，根據提示詞中的比例、方向或版式要求選擇寬高比。修改圖片時，未指定尺寸要求則沿用第一張參考圖。",
     "description": "aspect_ratio 引數說明"
   },
   "status.pending": {

@@ -76,7 +76,7 @@
     "description": "Description du paramètre image_urls"
   },
   "description.aspectRatio": {
-    "message": "Ratio largeur/hauteur de l'image. Valeurs possibles : `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Par défaut : `1:1`. Ne s'applique qu'à `generate` ; pour `edit`, le ratio de la première image est utilisé.",
+    "message": "Lorsque « Automatique » est sélectionné, le rapport hauteur/largeur est choisi selon les indications de proportion, d’orientation ou de mise en page du prompt. Pour la modification d’une image, si aucune taille n’est spécifiée, celle de la première image de référence est utilisée.",
     "description": "Description du paramètre aspect_ratio"
   },
   "status.pending": {

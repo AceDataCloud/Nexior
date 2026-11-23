@@ -76,7 +76,7 @@
     "description": "Description of the image_urls parameter"
   },
   "description.aspectRatio": {
-    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Default is `1:1`. Effective only when `action` is `generate`; if `action` is `edit`, it will follow the aspect ratio of the first image in `image_urls`.",
+    "message": "Auto uses the aspect ratio, orientation, or layout requested in your prompt. Without a size request, edits follow the first reference image.",
     "description": "Description of the aspect_ratio parameter"
   },
   "status.pending": {

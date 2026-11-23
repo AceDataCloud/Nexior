@@ -76,7 +76,7 @@
     "description": "Erläuterung des image_urls-Parameters"
   },
   "description.aspectRatio": {
-    "message": "Seitenverhältnis des zu generierenden Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
+    "message": "Bei Auswahl von „Automatisch“ wird das Seitenverhältnis anhand der im Prompt genannten Verhältnis-, Ausrichtungs- oder Layoutanforderungen gewählt. Beim Bearbeiten eines Bildes wird, sofern keine Größenangabe vorliegt, das Format des ersten Referenzbilds übernommen.",
     "description": "Erläuterung des aspect_ratio-Parameters"
   },
   "status.pending": {

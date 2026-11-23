@@ -37,6 +37,32 @@ vi.mock('@/utils/x402/scenarioPayment', () => ({
 }));
 
 import ConfigPanel from './ConfigPanel.vue';
+import AspectRatioSelector from './config/AspectRatioSelector.vue';
+import { buildNanobananaRequest } from '@/utils/x402/imageRequests';
+
+it('sends an explicit auto aspect ratio when selected', async () => {
+  const state = reactive({ nanobanana: { config: { prompt: 'a YouTube thumbnail', aspect_ratio: undefined } } });
+  const commit = vi.fn((_mutation, config) => {
+    state.nanobanana.config = config;
+  });
+  const wrapper = shallowMount(AspectRatioSelector, {
+    global: {
+      mocks: {
+        $t: (key: string) => (key === 'openaiimage.size.auto' ? 'Auto' : key),
+        $store: { state, commit }
+      }
+    }
+  });
+
+  const auto = wrapper.get('[role="radio"][aria-label="Auto"]');
+  await auto.trigger('click');
+  expect(auto.attributes('aria-checked')).toBe('true');
+  expect(buildNanobananaRequest(state.nanobanana.config)).toMatchObject({ action: 'generate', aspect_ratio: 'auto' });
+
+  await auto.trigger('click');
+  expect(auto.attributes('aria-checked')).toBe('false');
+  expect(buildNanobananaRequest(state.nanobanana.config)).not.toHaveProperty('aspect_ratio');
+});
 
 const mountPanel = (prompt = '') => {
   const config = reactive({ model: 'nano-banana', prompt });
