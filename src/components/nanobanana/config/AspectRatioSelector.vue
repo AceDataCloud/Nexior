@@ -19,7 +19,11 @@
         @keydown.space.prevent="onSelect(opt.value)"
       >
         <div class="preview">
-          <div class="rect" :style="{ width: opt.width + 'px', height: opt.height + 'px' }"></div>
+          <div
+            class="rect"
+            :class="{ 'rect-auto': opt.value === 'auto' }"
+            :style="{ width: opt.width + 'px', height: opt.height + 'px' }"
+          ></div>
         </div>
         <p class="name">{{ opt.label }}</p>
       </div>
@@ -41,9 +45,10 @@ interface IRatioOption {
 export default defineComponent({
   name: 'AspectRatioSelector',
   components: { InfoIcon },
-  data() {
-    return {
-      options: [
+  computed: {
+    options(): IRatioOption[] {
+      return [
+        { value: 'auto', label: this.$t('openaiimage.size.auto'), width: 20, height: 20 },
         { value: '1:1', label: '1:1', width: 20, height: 20 },
         { value: '3:2', label: '3:2', width: 27, height: 18 },
         { value: '2:3', label: '2:3', width: 18, height: 27 },
@@ -51,10 +56,8 @@ export default defineComponent({
         { value: '9:16', label: '9:16', width: 13, height: 25 },
         { value: '4:3', label: '4:3', width: 24, height: 18 },
         { value: '3:4', label: '3:4', width: 18, height: 24 }
-      ] as IRatioOption[]
-    };
-  },
-  computed: {
+      ];
+    },
     value(): string | undefined {
       return this.$store.state.nanobanana?.config?.aspect_ratio;
     }
@@ -66,9 +69,9 @@ export default defineComponent({
       const next = this.value === val ? undefined : val;
       const nextConfig = { ...(this.$store.state.nanobanana?.config || {}) };
       if (!next) {
-        delete (nextConfig as any).aspect_ratio;
+        delete nextConfig.aspect_ratio;
       } else {
-        (nextConfig as any).aspect_ratio = next;
+        nextConfig.aspect_ratio = next;
       }
       this.$store.commit('nanobanana/setConfig', nextConfig);
     }
@@ -122,6 +125,10 @@ export default defineComponent({
         .rect {
           border: 1px solid var(--el-text-color-placeholder);
           border-radius: 2px;
+
+          &.rect-auto {
+            border-style: dashed;
+          }
         }
       }
 

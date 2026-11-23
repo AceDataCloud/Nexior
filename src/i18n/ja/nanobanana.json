@@ -76,7 +76,7 @@
     "description": "image_urls パラメータの説明"
   },
   "description.aspectRatio": {
-    "message": "生成画像のアスペクト比。サポートされる値は `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4` です。デフォルト値は `1:1` です。`action` が `generate` の場合にのみ有効；`action` が `edit` の場合は `image_urls` の最初の画像の比率が適用されます。",
+    "message": "「自動」を選択すると、テキストからの画像生成ではプロンプトに応じてアスペクト比が選択され、画像編集では最初の参照画像に合わせられます。",
     "description": "aspect_ratio パラメータの説明"
   },
   "status.pending": {

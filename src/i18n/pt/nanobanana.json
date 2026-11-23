@@ -76,7 +76,7 @@
     "description": "Descrição do parâmetro image_urls"
   },
   "description.aspectRatio": {
-    "message": "Proporção da imagem gerada. Os valores suportados são `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. O valor padrão é `1:1`. Somente válido quando `action` é `generate`; se `action` for `edit`, a proporção da primeira imagem em `image_urls` será utilizada.",
+    "message": "Ao selecionar “Automático”, a geração de imagens a partir de texto escolhe a proporção com base no prompt; a edição de imagens segue a primeira imagem de referência.",
     "description": "Descrição do parâmetro aspect_ratio"
   },
   "status.pending": {
