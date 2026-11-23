@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 22 Nov 2026 20:15:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 23 Nov 2026 20:14:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.387.2
+
+Mon, 23 Nov 2026 20:14:41 GMT
+
+### Patches
+
+- Add an automatic aspect ratio option to the Nano Banana image studio. (dev@acedata.cloud)
 
 ## 3.387.1
 
