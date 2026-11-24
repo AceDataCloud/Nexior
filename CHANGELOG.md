@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 23 Nov 2026 20:14:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 20:14:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.387.3
+
+Tue, 24 Nov 2026 20:14:59 GMT
+
+### Patches
+
+- Add Seedream 5.5 and 5.0 Flash to the image studio with layer decomposition and 5.5 text recognition. (dev@acedata.cloud)
 
 ## 3.387.2
 
