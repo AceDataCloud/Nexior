@@ -58,6 +58,7 @@
               <strong>{{ layerTitle(image, imageIndex) }}</strong>
               <span v-if="image.size">{{ image.size }} · {{ image.output_format?.toUpperCase() }}</span>
               <span v-if="image.description">{{ image.description }}</span>
+              <span v-if="image.text_recognition?.text">{{ image.text_recognition.text }}</span>
               <code v-if="image.bounding_box?.absolute">{{ image.bounding_box.absolute.join(', ') }}</code>
               <span v-if="image.error" class="layer-error">{{ image.error.message || image.error.code }}</span>
             </div>

@@ -1,5 +1,5 @@
 import type { ISeedreamConfig, ISeedreamGenerateRequest } from '@/models';
-import { SEEDREAM_MODEL_5_0_PRO } from '@/constants';
+import { SEEDREAM_MODEL_5_0_PRO, SEEDREAM_MODEL_5_5 } from '@/constants';
 import { getSeedreamCapabilities } from './capabilities';
 
 export const buildSeedreamRequest = (config?: ISeedreamConfig): ISeedreamGenerateRequest => {
@@ -12,17 +12,20 @@ export const buildSeedreamRequest = (config?: ISeedreamConfig): ISeedreamGenerat
   request.watermark = false;
 
   const capabilities = getSeedreamCapabilities(request.model);
-  const decomposing = request.model === SEEDREAM_MODEL_5_0_PRO && request.layer_decomposition === true;
+  const decomposing = capabilities.layerDecomposition && request.layer_decomposition === true;
+  const v55 = request.model === SEEDREAM_MODEL_5_5;
+  if (!v55 || !decomposing) delete request.layer_decomposition_options;
   if (!request.image?.length) delete request.image;
   if (!request.size) delete request.size;
   if (decomposing) {
-    request.image = request.image?.slice(0, 1);
+    if (Array.isArray(request.image)) request.image = request.image.slice(0, 1);
     request.size = request.size || 'auto';
     if (!request.prompt) delete request.prompt;
     delete request.background;
     delete request.sequential_image_generation;
     delete request.sequential_image_generation_options;
     delete request.tools;
+    if (request.model !== SEEDREAM_MODEL_5_0_PRO) request.response_format = 'url';
   } else {
     delete request.layer_decomposition;
     if (!capabilities.transparentBackground) delete request.background;

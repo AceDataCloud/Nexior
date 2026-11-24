@@ -2,8 +2,10 @@ import {
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
   SEEDREAM_MODEL_5_0_ALIAS,
+  SEEDREAM_MODEL_5_0_FLASH,
   SEEDREAM_MODEL_5_0_LITE,
   SEEDREAM_MODEL_5_0_PRO,
+  SEEDREAM_MODEL_5_5,
   SEEDREAM_SIZE_1_5K,
   SEEDREAM_SIZE_1K,
   SEEDREAM_SIZE_2K,
@@ -50,6 +52,8 @@ const FALLBACK: ISeedreamCapability = {
 
 export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
   switch (model) {
+    case SEEDREAM_MODEL_5_5:
+    case SEEDREAM_MODEL_5_0_FLASH:
     case SEEDREAM_MODEL_5_0_PRO:
       return {
         image: true,
@@ -64,7 +68,7 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
         guidanceScale: false,
         outputFormat: true,
         webSearch: false,
-        promptOptimization: ['standard', 'fast'],
+        promptOptimization: model === SEEDREAM_MODEL_5_0_PRO ? ['standard', 'fast'] : ['standard'],
         layerDecomposition: true,
         transparentBackground: true
       };
@@ -149,6 +153,7 @@ export type SeedreamConflictField =
   | 'tools'
   | 'optimize_prompt_options'
   | 'layer_decomposition'
+  | 'layer_decomposition_options'
   | 'background';
 
 export interface ISeedreamConflict {
@@ -195,7 +200,18 @@ export function findSeedreamConflicts(
   if (config.layer_decomposition && !capabilities.layerDecomposition) {
     conflicts.push({ field: 'layer_decomposition', i18nLabel: 'seedream.name.layerDecomposition' });
   }
-  if (config.background && !capabilities.transparentBackground) {
+  const model = next.model ?? config.model;
+  if (config.layer_decomposition_options && model !== SEEDREAM_MODEL_5_5) {
+    conflicts.push({ field: 'layer_decomposition_options', i18nLabel: 'seedream.name.layerDecomposition' });
+  }
+  const inputCount = Array.isArray(config.image) ? config.image.length : config.image ? 1 : 0;
+  if (
+    config.background &&
+    (!capabilities.transparentBackground ||
+      (model !== SEEDREAM_MODEL_5_5 &&
+        (config.background === 'auto' ||
+          ((config.background === 'transparent' || model === SEEDREAM_MODEL_5_0_PRO) && inputCount !== 1))))
+  ) {
     conflicts.push({ field: 'background', i18nLabel: 'seedream.name.background' });
   }
   return conflicts;
@@ -225,6 +241,7 @@ export function clearSeedreamConflicts(
       case 'tools':
       case 'optimize_prompt_options':
       case 'layer_decomposition':
+      case 'layer_decomposition_options':
       case 'background':
         delete result[conflict.field];
         break;

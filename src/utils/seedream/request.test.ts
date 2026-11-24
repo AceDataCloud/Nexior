@@ -87,6 +87,26 @@ it('keeps transparent Pro edits in PNG', () => {
   ).toMatchObject({ background: 'transparent', output_format: 'png' });
 });
 
+it('preserves Seedream 5.5 OCR options and the full reference URL', () => {
+  const image = 'https://cdn.example/poster.png';
+  const request = buildSeedreamRequest({
+    model: 'doubao-seedream-5-5-261028',
+    image,
+    layer_decomposition: true,
+    layer_decomposition_options: { max_images: 8, text_recognition: true },
+    response_format: 'b64_json'
+  });
+  expect(request).toMatchObject({
+    image,
+    layer_decomposition: true,
+    layer_decomposition_options: { max_images: 8, text_recognition: true },
+    response_format: 'url'
+  });
+  const flash = buildSeedreamRequest({ ...request, model: 'doubao-seedream-5-0-flash-260915' });
+  expect(flash.layer_decomposition).toBe(true);
+  expect(flash).not.toHaveProperty('layer_decomposition_options');
+});
+
 it('keeps Lite groups and web search but drops Pro-only fields', () => {
   const request = buildSeedreamRequest({
     model: 'doubao-seedream-5-0-lite-260128',

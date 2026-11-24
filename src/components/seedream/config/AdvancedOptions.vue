@@ -9,7 +9,19 @@
         <el-option :label="$t('seedream.mode.layers')" value="layers" />
       </el-select>
     </div>
-    <div v-if="capabilities.transparentBackground && mode === 'image' && hasSingleImage" class="field">
+    <div v-if="seedream55 && mode === 'layers'" class="field">
+      <div class="label">
+        <h2 class="title font-bold">{{ $t('seedream.name.maxImages') }}</h2>
+      </div>
+      <el-input-number v-model="maxLayerImages" :min="2" :max="100" :step-strictly="true" class="value" />
+    </div>
+    <div v-if="seedream55 && mode === 'layers'" class="field">
+      <div class="label">
+        <h2 class="title font-bold">OCR</h2>
+      </div>
+      <el-switch v-model="textRecognition" aria-label="OCR" />
+    </div>
+    <div v-if="capabilities.transparentBackground && mode === 'image' && (seedream55 || hasSingleImage)" class="field">
       <div class="label">
         <h2 class="title font-bold">{{ $t('seedream.name.background') }}</h2>
       </div>
@@ -37,18 +49,22 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElOption, ElSelect, ElSwitch } from 'element-plus';
+import { ElInputNumber, ElOption, ElSelect, ElSwitch } from 'element-plus';
+import { SEEDREAM_MODEL_5_5 } from '@/constants';
 import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamAdvancedOptions',
-  components: { ElOption, ElSelect, ElSwitch },
+  components: { ElInputNumber, ElOption, ElSelect, ElSwitch },
   computed: {
     config(): any {
       return this.$store.state.seedream?.config || {};
     },
     capabilities() {
       return getSeedreamCapabilities(this.config.model);
+    },
+    seedream55(): boolean {
+      return this.config.model === SEEDREAM_MODEL_5_5;
     },
     hasSingleImage(): boolean {
       return Array.isArray(this.config.image) && this.config.image.length === 1;
@@ -61,7 +77,7 @@ export default defineComponent({
         const config = { ...this.config };
         if (value === 'layers') {
           config.layer_decomposition = true;
-          config.image = (config.image || []).slice(0, 1);
+          if (Array.isArray(config.image)) config.image = config.image.slice(0, 1);
           config.size = 'auto';
           delete config.background;
           delete config.sequential_image_generation;
@@ -69,9 +85,32 @@ export default defineComponent({
           delete config.tools;
         } else {
           delete config.layer_decomposition;
+          delete config.layer_decomposition_options;
           if (config.size === 'auto') delete config.size;
         }
         this.$store.commit('seedream/setConfig', config);
+      }
+    },
+    maxLayerImages: {
+      get(): number {
+        return this.config.layer_decomposition_options?.max_images ?? 30;
+      },
+      set(max_images: number | undefined) {
+        this.$store.commit('seedream/setConfig', {
+          ...this.config,
+          layer_decomposition_options: { ...this.config.layer_decomposition_options, max_images }
+        });
+      }
+    },
+    textRecognition: {
+      get(): boolean {
+        return this.config.layer_decomposition_options?.text_recognition === true;
+      },
+      set(text_recognition: boolean) {
+        this.$store.commit('seedream/setConfig', {
+          ...this.config,
+          layer_decomposition_options: { ...this.config.layer_decomposition_options, text_recognition }
+        });
       }
     },
     background: {
