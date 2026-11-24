@@ -7,6 +7,8 @@ export const SEEDREAM_MODEL_4_5 = 'doubao-seedream-4-5-251128';
 export const SEEDREAM_MODEL_5_0_LITE = 'doubao-seedream-5-0-lite-260128';
 export const SEEDREAM_MODEL_5_0_ALIAS = 'doubao-seedream-5-0-260128';
 export const SEEDREAM_MODEL_5_0_PRO = 'doubao-seedream-5-0-pro-260628';
+export const SEEDREAM_MODEL_5_5 = 'doubao-seedream-5-5-261028';
+export const SEEDREAM_MODEL_5_0_FLASH = 'doubao-seedream-5-0-flash-260915';
 
 export const SEEDREAM_DEFAULT_MODEL = SEEDREAM_MODEL_5_0_LITE;
 
@@ -45,6 +47,8 @@ export const SEEDREAM_MAX_IMAGES_LIMIT = 15;
 export const SEEDREAM_DEFAULT_MAX_IMAGES = 1;
 
 export const SEEDREAM_MODEL_FULL_TO_SHORT: Record<string, string> = {
+  [SEEDREAM_MODEL_5_5]: 'doubao-seedream-5.5',
+  [SEEDREAM_MODEL_5_0_FLASH]: 'doubao-seedream-5.0-flash',
   [SEEDREAM_MODEL_5_0_PRO]: 'doubao-seedream-5.0-pro',
   [SEEDREAM_MODEL_5_0_LITE]: 'doubao-seedream-5.0-lite',
   [SEEDREAM_MODEL_5_0_ALIAS]: 'doubao-seedream-5.0',

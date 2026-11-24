@@ -2,13 +2,19 @@ export interface ISeedreamSequentialOptions {
   max_images?: number;
 }
 
+export interface ISeedreamLayerOptions {
+  max_images?: number;
+  text_recognition?: boolean;
+}
+
 export interface ISeedreamConfig {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
   image?: string | string[];
   layer_decomposition?: boolean;
-  background?: 'transparent' | 'opaque';
+  layer_decomposition_options?: ISeedreamLayerOptions;
+  background?: 'auto' | 'transparent' | 'opaque';
   optimize_prompt_options?: { mode: 'standard' | 'fast' };
   tools?: Array<{ type: 'web_search' }>;
   size?: string;
@@ -29,7 +35,8 @@ export interface ISeedreamGenerateRequest {
   prompt?: string;
   image?: string | string[];
   layer_decomposition?: boolean;
-  background?: 'transparent' | 'opaque';
+  layer_decomposition_options?: ISeedreamLayerOptions;
+  background?: 'auto' | 'transparent' | 'opaque';
   optimize_prompt_options?: { mode: 'standard' | 'fast' };
   tools?: Array<{ type: 'web_search' }>;
   size?: string;
@@ -51,6 +58,8 @@ export interface ISeedreamImage {
   image_url?: string;
   b64_json?: string;
   output_format?: 'jpeg' | 'png';
+  background?: 'transparent' | 'opaque';
+  text_recognition?: { text?: string; lines?: Array<Record<string, unknown>> };
   z_index?: number;
   name?: string;
   description?: string;

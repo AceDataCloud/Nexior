@@ -68,7 +68,9 @@ export default defineComponent({
     },
     canGenerate(): boolean {
       const request = buildSeedreamRequest(this.config);
-      if (request.layer_decomposition) return request.image?.length === 1;
+      if (request.layer_decomposition) {
+        return Array.isArray(request.image) ? request.image.length === 1 : Boolean(request.image);
+      }
       return canSubmitGeneration('seedream', request);
     },
     config() {
@@ -79,20 +81,23 @@ export default defineComponent({
       // Per-image billing: cost/api/86ad30f3-…json multiplies the unit price by
       // `count`. When the user opts into group generation we forward the
       // selected `max_images`; otherwise default to 1 to match the upstream.
+      const pro = request.model === 'doubao-seedream-5-0-pro-260628';
+      const flash = request.model === 'doubao-seedream-5-0-flash-260915';
       const requestedCount =
         request.sequential_image_generation === 'auto'
           ? Math.max(1, Math.floor(request.sequential_image_generation_options?.max_images || 1))
-          : 1;
+          : request.layer_decomposition && flash
+            ? 17
+            : 1;
       const pixels =
         typeof request.size === 'string' && /^\d+x\d+$/i.test(request.size)
           ? request.size
               .split('x')
               .map(Number)
               .reduce((width, height) => width * height)
-          : request.size === '2K'
+          : !request.size || request.size === '2K' || request.size === 'auto'
             ? 4_194_304
             : 1_000_000;
-      const pro = request.model === 'doubao-seedream-5-0-pro-260628';
       return getConsumption(
         {
           ...request,
@@ -100,8 +105,9 @@ export default defineComponent({
           model: getSeedreamShortModel(request.model),
           input_image_count: Array.isArray(request.image) ? request.image.length : request.image ? 1 : 0,
           count: requestedCount,
+          output_pixels: pixels,
           layer_decomposition: request.layer_decomposition === true,
-          layer_low_count: request.layer_decomposition ? 1 : 0,
+          layer_low_count: pro && request.layer_decomposition ? 1 : 0,
           regular_low_count: pro && !request.layer_decomposition && pixels <= 2_610_000 ? 1 : 0,
           regular_high_count: pro && !request.layer_decomposition && pixels > 2_610_000 ? 1 : 0
         },

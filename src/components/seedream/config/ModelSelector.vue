@@ -27,8 +27,10 @@ import {
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
   SEEDREAM_MODEL_5_0_ALIAS,
+  SEEDREAM_MODEL_5_0_FLASH,
   SEEDREAM_MODEL_5_0_LITE,
-  SEEDREAM_MODEL_5_0_PRO
+  SEEDREAM_MODEL_5_0_PRO,
+  SEEDREAM_MODEL_5_5
 } from '@/constants';
 import { findSeedreamConflicts, clearSeedreamConflicts } from '@/utils/seedream/capabilities';
 
@@ -45,6 +47,8 @@ export default defineComponent({
       // when the user cancels a model switch.
       revertKey: 0,
       options: [
+        { value: SEEDREAM_MODEL_5_5, label: 'Seedream 5.5' },
+        { value: SEEDREAM_MODEL_5_0_FLASH, label: 'Seedream 5.0 Flash' },
         { value: SEEDREAM_MODEL_5_0_PRO, label: this.$t('seedream.model.seedream50pro') },
         { value: SEEDREAM_MODEL_5_0_LITE, label: this.$t('seedream.model.seedream50') },
         { value: SEEDREAM_MODEL_4_5, label: this.$t('seedream.model.seedream45') },
