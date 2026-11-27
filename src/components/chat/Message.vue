@@ -81,6 +81,10 @@
                 "
                 :item="item"
               />
+              <tripo-result
+                v-if="item.type === 'tool_use' && item.status === 'done' && !item.is_error"
+                :output="item.output"
+              />
               <browser-tool-activity
                 v-if="item.type === 'tool_use' && item.execution === 'browser'"
                 :item="item"
@@ -302,6 +306,7 @@ import ReportButton from '@/components/common/ReportButton.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
+import TripoResult from './TripoResult.vue';
 import BrowserToolActivity from './BrowserToolActivity.vue';
 import EntityCard from './EntityCard.vue';
 import ThinkingBlock from './ThinkingBlock.vue';
@@ -346,6 +351,7 @@ export default defineComponent({
     MarkdownRenderer,
     FilePreview,
     ToolActivity,
+    TripoResult,
     BrowserToolActivity,
     EntityCard,
     ThinkingBlock,
