@@ -29,9 +29,13 @@
         </div>
         <div ref="linksContainer" class="links">
           <div
-            v-for="(link, linkIndex) in visibleLinks"
-            :key="linkIndex"
+            v-for="link in visibleLinks"
+            :key="link.route.name"
+            :draggable="direction === 'column'"
             :class="{ link: true, active: link.routes.includes($route.name as string) }"
+            @dragstart="startNavigationDrag($event, link)"
+            @dragover.prevent
+            @drop.prevent="reorderNavigation($event, link)"
           >
             <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
               <el-image
@@ -68,9 +72,13 @@
               </template>
               <div class="overflow-menu">
                 <div
-                  v-for="(link, linkIndex) in overflowLinks"
-                  :key="linkIndex"
+                  v-for="link in overflowLinks"
+                  :key="link.route.name"
+                  :draggable="direction === 'column'"
                   :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
+                  @dragstart="startNavigationDrag($event, link)"
+                  @dragover.prevent
+                  @drop.prevent="reorderNavigation($event, link)"
                   @click="onOverflowItemClick(link)"
                 >
                   <el-image
@@ -190,6 +198,12 @@ import UserCenter from '@/components/user/Center.vue';
 import { isCapabilityAvailableOnBuild, isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
 import { CAPABILITY_ICONS, type CapabilityKey } from '@/constants/capabilities';
+import {
+  dropStudioNavigation,
+  loadStudioNavigationOrder,
+  startStudioNavigationDrag,
+  studioNavigationOrder
+} from '@/utils/studioNavigationOrder';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 
 interface NavLink {
@@ -601,6 +615,11 @@ export default defineComponent({
           category: 'data'
         });
       }
+      const positions = new Map(studioNavigationOrder.value.map((key, index) => [key, index]));
+      const navigationKey = (link: NavLink) => NAV_CAPABILITY_BY_ROUTE[link.route.name] ?? link.route.name;
+      result.sort(
+        (a, b) => (positions.get(navigationKey(a)) ?? Infinity) - (positions.get(navigationKey(b)) ?? Infinity)
+      );
       return result.map((link) => {
         const capability = NAV_CAPABILITY_BY_ROUTE[link.route.name];
         if (!capability || !link.logo) return link;
@@ -665,6 +684,8 @@ export default defineComponent({
     }
   },
   mounted() {
+    loadStudioNavigationOrder();
+
     if (this.$refs.linksContainer) {
       const el = this.$refs.linksContainer as HTMLElement;
       this.containerHeight = el.clientHeight;
@@ -697,6 +718,16 @@ export default defineComponent({
     // tracks persisted store state, and the incoming Navigator re-syncs it.
   },
   methods: {
+    startNavigationDrag(event: DragEvent, link: NavLink) {
+      startStudioNavigationDrag(event, link.capability ?? link.route.name);
+    },
+    reorderNavigation(event: DragEvent, target: NavLink) {
+      dropStudioNavigation(
+        event,
+        target.capability ?? target.route.name,
+        this.links.map((link) => link.capability ?? link.route.name)
+      );
+    },
     // The layouts reserve the dock's height with `var(--app-dock-height)`.
     // Publishing the collapsed state on <html> keeps that single source of
     // truth instead of threading a prop through Main/Console/Poivelle.

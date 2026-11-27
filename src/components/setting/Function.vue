@@ -1,36 +1,47 @@
 <template>
   <div class="settings-list card-gap">
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
-    <section v-for="feature in featureKeys" :key="feature" class="settings-item">
-      <div class="settings-label">
-        <div class="capability-heading">
-          <img :src="featureIcon(feature)" class="capability-favicon" alt="" @error="failedIcons[feature] = true" />
-          <p class="settings-title">{{ featureLabel(feature) }}</p>
+    <template v-for="group in featureGroups" :key="group.label">
+      <h3>{{ $t(group.label) }}</h3>
+      <section
+        v-for="feature in group.keys"
+        :key="feature"
+        class="settings-item"
+        draggable="true"
+        @dragstart="startStudioNavigationDrag($event, feature)"
+        @dragover.prevent
+        @drop.prevent="reorderFeature($event, feature, group.keys)"
+      >
+        <div class="settings-label">
+          <div class="capability-heading">
+            <img :src="featureIcon(feature)" class="capability-favicon" alt="" @error="failedIcons[feature] = true" />
+            <p class="settings-title">{{ featureLabel(feature) }}</p>
+          </div>
+          <p class="settings-tip">
+            {{ featureTip(feature) }}
+          </p>
         </div>
-        <p class="settings-tip">
-          {{ featureTip(feature) }}
-        </p>
-      </div>
-      <div class="settings-content">
-        <el-tooltip :content="$t('site.capabilityOverride.edit')" placement="top">
-          <el-button
-            circle
-            size="small"
-            :aria-label="$t('site.capabilityOverride.edit')"
-            @click="onEdit(feature as CapabilityKey)"
-          >
-            <EditIcon :size="'1em' as any" aria-hidden="true" focusable="false" />
-          </el-button>
-        </el-tooltip>
-        <el-switch
-          :model-value="site.features?.[feature]?.enabled || false"
-          inline-prompt
-          :active-text="$t('site.button.enabled')"
-          :inactive-text="$t('site.button.disabled')"
-          @update:model-value="onToggleFeature(feature, $event as boolean)"
-        />
-      </div>
-    </section>
+        <div class="settings-content">
+          <el-tooltip :content="$t('site.capabilityOverride.edit')" placement="top">
+            <el-button
+              circle
+              size="small"
+              :aria-label="$t('site.capabilityOverride.edit')"
+              @click="onEdit(feature as CapabilityKey)"
+            >
+              <EditIcon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
+          </el-tooltip>
+          <el-switch
+            :model-value="site.features?.[feature]?.enabled || false"
+            inline-prompt
+            :active-text="$t('site.button.enabled')"
+            :inactive-text="$t('site.button.disabled')"
+            @update:model-value="onToggleFeature(feature, $event as boolean)"
+          />
+        </div>
+      </section>
+    </template>
     <capability-override-dialog
       v-if="editingCapability && managementSite?.id"
       v-model="dialogVisible"
@@ -57,7 +68,47 @@ import { siteCapabilityOverrideOperator, siteOperator } from '@/operators';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { CHAT_MODEL_GROUPS } from '@/constants/chat';
 import type { IChatModelGroup, ISite, ISiteCapabilityOverride } from '@/models';
+import {
+  dropStudioNavigation,
+  loadStudioNavigationOrder,
+  startStudioNavigationDrag,
+  studioNavigationOrder
+} from '@/utils/studioNavigationOrder';
 import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
+
+const featureGroups: { label: string; keys: CapabilityKey[] }[] = [
+  { label: 'common.nav.chat', keys: ['chatgpt', 'grok', 'gemini', 'claude', 'deepseek', 'kimi', 'mimo'] },
+  {
+    label: 'common.nav.image',
+    keys: ['midjourney', 'qrart', 'flux', 'nanobanana', 'openaiimage', 'seedream', 'qwenimage']
+  },
+  {
+    label: 'common.nav.video',
+    keys: [
+      'luma',
+      'pika',
+      'kling',
+      'veo',
+      'sora',
+      'pixverse',
+      'hailuo',
+      'minimax',
+      'seedance',
+      'omni',
+      'grokvideo',
+      'maestro',
+      'poivelle',
+      'digitalhuman',
+      'wan'
+    ]
+  },
+  { label: 'service.condition.audio', keys: ['suno', 'producer', 'acemusic', 'fish'] }
+];
+const groupedKeys = new Set(featureGroups.flatMap((group) => group.keys));
+featureGroups.push({
+  label: 'chat.artifacts.kind.other',
+  keys: CAPABILITY_KEYS.filter((key) => !groupedKeys.has(key))
+});
 
 export default defineComponent({
   name: 'FunctionSetting',
@@ -86,6 +137,13 @@ export default defineComponent({
     featureKeys(): CapabilityKey[] {
       return [...CAPABILITY_KEYS];
     },
+    featureGroups() {
+      const positions = new Map(studioNavigationOrder.value.map((key, index) => [key, index]));
+      return featureGroups.map(({ label, keys }) => ({
+        label,
+        keys: [...keys].sort((a, b) => (positions.get(a) ?? Infinity) - (positions.get(b) ?? Infinity))
+      }));
+    },
     editingModelGroup(): IChatModelGroup | null {
       return CHAT_MODEL_GROUPS.find((group) => group.name === this.editingCapability) ?? null;
     }
@@ -98,7 +156,14 @@ export default defineComponent({
       }
     }
   },
+  mounted() {
+    loadStudioNavigationOrder();
+  },
   methods: {
+    startStudioNavigationDrag,
+    reorderFeature(event: DragEvent, target: CapabilityKey, group: CapabilityKey[]) {
+      dropStudioNavigation(event, target, this.featureKeys, group);
+    },
     defaultFeatureLabel(feature: CapabilityKey): string {
       return this.$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
     },

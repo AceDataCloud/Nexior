@@ -2,6 +2,7 @@
   <div class="wrapper">
     <router-view class="main" />
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
+    <theme-selector class="theme-floating" />
     <application-status
       v-if="showApplicationStatus"
       class="status-floating fixed right-2 z-[200]"
@@ -20,6 +21,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
+import ThemeSelector from '@/components/user/Theme.vue';
 import Navigator from '@/components/common/Navigator.vue';
 import SupportEntry from '@/components/common/SupportEntry.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
@@ -43,6 +45,7 @@ export default defineComponent({
   components: {
     SupportEntry,
     Navigator,
+    ThemeSelector,
     ApplicationStatus,
     ApplicationConfirm
   },
@@ -283,6 +286,21 @@ export default defineComponent({
 }
 
 // Keep the wallet / balance pill below native status bars.
+.theme-floating {
+  position: fixed;
+  top: calc(0.5rem + var(--app-safe-area-top));
+  right: 0.5rem;
+  z-index: 200;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--el-border-color);
+  border-radius: 0.5rem;
+  background: var(--el-bg-color);
+}
+
+.theme-floating + .status-floating {
+  top: calc(3rem + var(--app-safe-area-top));
+}
+
 .status-floating {
   top: calc(0.5rem + var(--app-safe-area-top));
 }
@@ -291,8 +309,12 @@ export default defineComponent({
 // the window drag region visually. Keep the right offset at the base value
 // (`right-2` = 0.5rem) — the min/max/close buttons occupy top 0..40px, so a
 // pill starting at top: 44px sits *below* them, not next to them.
-html.surface-desktop .status-floating {
+html.surface-desktop .theme-floating {
   top: 44px;
+}
+
+html.surface-desktop .theme-floating + .status-floating {
+  top: 84px;
 }
 
 @media (max-width: 767px) {
