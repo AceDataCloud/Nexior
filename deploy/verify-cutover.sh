@@ -9,12 +9,19 @@ CONTAINER=studio-frontend
 SERVICE=studio-frontend
 MANIFEST=deploy/production/studio-deployment.yaml
 IMAGE_REPOSITORY=ghcr.io/acedatacloud/studio-frontend
+# Each compatibility stage can require two serial pod scheduling cycles.
+# The workflow may allow more total time without weakening the convergence checks.
+rollout_timeout=${ROLLOUT_TIMEOUT_SECONDS:-1800}
+if ! [[ "$rollout_timeout" =~ ^[1-9][0-9]*$ ]]; then
+  echo "ROLLOUT_TIMEOUT_SECONDS must be a positive integer" >&2
+  exit 1
+fi
 
 wait_converged() {
   local deployment=$1 service=$2 expected_image=$3 expected_repository snapshot deadline
   expected_repository=${expected_image%@*}
   if [ "$expected_repository" = "$expected_image" ]; then expected_repository=${expected_image%:*}; fi
-  kubectl rollout status "deployment/$deployment" -n "$NAMESPACE" --timeout=30m || return 1
+  kubectl rollout status "deployment/$deployment" -n "$NAMESPACE" --timeout="${rollout_timeout}s" || return 1
   snapshot=$(mktemp)
   deadline=$(( $(date +%s) + 300 ))
   while :; do

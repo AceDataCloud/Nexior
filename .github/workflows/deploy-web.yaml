@@ -25,12 +25,13 @@ permissions:
 
 env:
   RELEASE_TAG: ${{ github.run_id }}-${{ github.run_attempt }}
+  ROLLOUT_TIMEOUT_SECONDS: 5400
 
 jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 330
     steps:
       - name: Checkout
         uses: actions/checkout@v4
