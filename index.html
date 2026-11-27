@@ -168,12 +168,8 @@
       />
     </noscript>
     <script>
-      // Resolve the user's chosen theme BEFORE first paint and toggle
-      // `html.dark` accordingly. Without this, users who picked dark mode
-      // (or fall through to Nexior's `dark` cookie default — see
-      // `src/utils/initializer.ts` `initializeTheme`) get a white-flash
-      // boot screen until the Vue app boots and re-applies the cookie.
-      // Mirrors the pattern used in PlatformFrontend's index.html.
+      // Apply the browser theme before first paint. The Studio can apply a
+      // site-specific default once its configuration has loaded.
       (() => {
         try {
           const normalizeTheme = (value) => {
@@ -181,21 +177,20 @@
             const lower = String(value).trim().toLowerCase();
             if (lower === 'dark') return 'dark';
             if (lower === 'light') return 'light';
+            if (lower === 'system') return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             return null;
           };
 
           const query = new URLSearchParams(window.location.search);
           const queryTheme = normalizeTheme(query.get('theme'));
-          const cookieMatch = document.cookie.match(/(?:^|;\s*)THEME=([^;]+)/);
+          const cookieMatch = document.cookie.match(/(?:^|;\s*)STUDIO_THEME=([^;]+)/);
           const cookieTheme = normalizeTheme(cookieMatch ? decodeURIComponent(cookieMatch[1]) : null);
+          const legacyCookie = document.cookie.match(/(?:^|;\s*)THEME=([^;]+)/);
+          const legacyTheme = normalizeTheme(legacyCookie ? decodeURIComponent(legacyCookie[1]) : null);
           const localTheme = normalizeTheme(localStorage.getItem('vueuse-color-scheme'));
 
-          // Priority: query > cookie > localStorage > Nexior default (`dark`).
-          // We do NOT fall back to OS preference here, because Nexior's app-
-          // level `initializeTheme` defaults missing cookies to `dark`; if we
-          // honored the OS we'd flicker from light → dark on first boot for
-          // light-OS users.
-          const resolvedTheme = queryTheme || cookieTheme || localTheme || 'dark';
+          // Site defaults are applied once the configuration loads.
+          const resolvedTheme = queryTheme || cookieTheme || legacyTheme || localTheme || 'dark';
           document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
           document.documentElement.style.colorScheme = resolvedTheme === 'dark' ? 'dark' : 'light';
         } catch (e) {

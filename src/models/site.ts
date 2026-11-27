@@ -166,6 +166,7 @@ export interface ISitePhoneDeliveryTestRequest {
 }
 
 export interface ISiteTheme {
+  default_mode?: 'light' | 'dark' | 'system';
   primary_color?: string;
 }
 

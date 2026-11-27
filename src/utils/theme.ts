@@ -17,6 +17,11 @@
  * Plus's compiled-in primaries via CSS specificity.
  */
 
+import { shallowRef } from 'vue';
+
+export const STUDIO_THEME_COOKIE = 'STUDIO_THEME';
+export const activeThemePreference = shallowRef<'light' | 'dark' | 'system'>('light');
+
 export function applyTheme(theme: string) {
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
@@ -43,6 +48,7 @@ let systemThemeListener: ((e: MediaQueryListEvent) => void) | null = null;
  *  it resolves against the OS now AND subscribes to live OS changes; any
  *  previous system subscription is detached first so we never stack listeners. */
 export function applyThemePreference(pref: string): void {
+  activeThemePreference.value = pref === 'system' || pref === 'dark' ? pref : 'light';
   if (systemThemeMql && systemThemeListener) {
     systemThemeMql.removeEventListener('change', systemThemeListener);
     systemThemeMql = null;

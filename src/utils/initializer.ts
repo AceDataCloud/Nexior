@@ -1,6 +1,6 @@
 import { isAddingAccount } from './auth/accountSessions';
 import { getCookie, setCookie } from 'typescript-cookie';
-import { applyAccentColor, applyThemePreference } from './theme';
+import { applyAccentColor, applyThemePreference, STUDIO_THEME_COOKIE } from './theme';
 import store from '@/store';
 import { IToken, Status } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
@@ -29,22 +29,6 @@ export const initializeCookies = async () => {
     console.debug('set INVITER_ID to cookies', inviterId);
     setCookie('INVITER_ID', inviterId, {
       expires: expiration,
-      path: '/',
-      domain: getDomain()
-    });
-  }
-
-  // set the theme to cookies
-  const theme = query.get('theme');
-  if (theme) {
-    console.log('set THEME to cookies', theme);
-    setCookie('THEME', theme, {
-      path: '/',
-      domain: getDomain()
-    });
-  } else if (!getCookie('THEME')) {
-    console.debug('set THEME to cookies', 'dark');
-    setCookie('THEME', 'dark', {
       path: '/',
       domain: getDomain()
     });
@@ -194,7 +178,7 @@ export const initializeToken = async () => {
 /**
  * Initialize theme — light/dark mode AND the runtime accent (primary) colour.
  *
- * Light/dark is per-user (cookie); accent colour is per-site (admin-picked,
+ * A browser preference can override the site default. Accent colour is per-site (admin-picked,
  * stored at `Site.theme.primary_color`). When the site has no custom
  * colour set, `applyAccentColor(null)` no-ops and the compiled-in default
  * teal from `_element.scss` + `_common.scss :root` is used.
@@ -202,7 +186,14 @@ export const initializeToken = async () => {
  * Depends on `initializeSite()` having already populated `store.state.site`.
  */
 export const initializeTheme = async () => {
-  const theme = getCookie('THEME') || 'dark';
+  const previewTheme = new URLSearchParams(window.location.search).get('theme')?.trim().toLowerCase();
+  const theme =
+    previewTheme === 'light' || previewTheme === 'dark'
+      ? previewTheme
+      : getCookie(STUDIO_THEME_COOKIE) ||
+        store.state.site?.theme?.default_mode ||
+        getCookie('THEME') ||
+        (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
   console.debug('initialize theme', theme);
   applyThemePreference(theme);
   const primaryColor = store.state.site?.theme?.primary_color;

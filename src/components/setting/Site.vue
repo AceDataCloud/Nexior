@@ -84,6 +84,25 @@
 
     <section class="settings-item">
       <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.theme') }}</p>
+      </div>
+      <div class="settings-content">
+        <el-select
+          :model-value="site?.theme?.default_mode"
+          :disabled="savingDefaultTheme"
+          :aria-label="$t('common.settings.theme')"
+          clearable
+          @update:model-value="onDefaultThemeChange"
+        >
+          <el-option :label="$t('common.theme.light')" value="light" />
+          <el-option :label="$t('common.theme.dark')" value="dark" />
+          <el-option :label="$t('common.theme.system')" value="system" />
+        </el-select>
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.primaryColor') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.primaryColorTip') }}
@@ -211,8 +230,9 @@ import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import { getBrandContacts, hasBrandContacts } from '@/utils';
 import { contactIcon, contactBrand, contactTypeI18nKey, contactUsesFontAwesome } from '@/utils/contactTypes';
-import { ISiteContact } from '@/models';
+import { ISiteContact, type ISiteTheme } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
+import { initializeTheme } from '@/utils/initializer';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import { getSiteLocaleOptions, getSiteLocaleValues, serializeSiteLocales } from '@/utils/siteLocales';
 
@@ -252,6 +272,7 @@ export default defineComponent({
   },
   data() {
     return {
+      savingDefaultTheme: false,
       primaryColorPresets: PRIMARY_COLOR_PRESETS
     };
   },
@@ -325,6 +346,22 @@ export default defineComponent({
     },
     onFaviconProcessed(result: BrandAssetStudioResult) {
       this.onSave({ favicon: result.color });
+    },
+    async onDefaultThemeChange(mode: ISiteTheme['default_mode'] | '') {
+      const id = this.site?.id;
+      if (!id || this.savingDefaultTheme) return;
+      this.savingDefaultTheme = true;
+      try {
+        const current = (await siteOperator.get(id)).data;
+        const theme = { ...current.theme };
+        if (mode) theme.default_mode = mode;
+        else delete theme.default_mode;
+        await siteOperator.update(id, { theme }, current.configuration_revision);
+        await this.$store.dispatch('getSite');
+        await initializeTheme();
+      } finally {
+        this.savingDefaultTheme = false;
+      }
     },
     onSave(data: any) {
       const payload = {

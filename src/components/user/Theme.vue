@@ -1,9 +1,9 @@
 <template>
   <el-dropdown trigger="click" @command="onSelect">
-    <span class="el-dropdown-link">
+    <button type="button" class="el-dropdown-link" :aria-label="$t('common.settings.theme')">
       {{ currentLabel }}
       <el-icon class="el-icon--right"><arrow-down :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
-    </span>
+    </button>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item command="light">{{ $t('common.theme.light') }}</el-dropdown-item>
@@ -19,8 +19,8 @@ import { ExpandDownIcon as ArrowDown } from '@acedatacloud/core/icons/components
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { getDomain } from '@/utils';
-import { applyThemePreference } from '@/utils/theme';
-import { getCookie, setCookie } from 'typescript-cookie';
+import { activeThemePreference, applyThemePreference, STUDIO_THEME_COOKIE } from '@/utils/theme';
+import { setCookie } from 'typescript-cookie';
 
 export default defineComponent({
   name: 'ThemeSelector',
@@ -31,46 +31,22 @@ export default defineComponent({
     ElDropdownItem,
     ElIcon
   },
-  data() {
-    return {
-      theme: 'light' as 'light' | 'dark' | 'system'
-    };
-  },
   computed: {
     currentLabel(): string {
-      if (this.theme === 'dark') {
+      if (activeThemePreference.value === 'dark') {
         return this.$t('common.theme.dark') as string;
       }
-      if (this.theme === 'system') {
+      if (activeThemePreference.value === 'system') {
         return this.$t('common.theme.system') as string;
       }
       return this.$t('common.theme.light') as string;
     }
   },
-  mounted() {
-    // Prefer an explicit stored preference ('dark' or 'system') so the System
-    // option round-trips; otherwise mirror the theme already applied at startup
-    // by `initializeTheme` via the live <html> class (avoids the old bug where a
-    // missing/non-canonical cookie flipped the theme on Settings open).
-    const pref = getCookie('THEME');
-    this.theme =
-      pref === 'dark' || pref === 'system'
-        ? pref
-        : document.documentElement.classList.contains('dark')
-          ? 'dark'
-          : 'light';
-  },
   methods: {
     onSelect(command: 'light' | 'dark' | 'system') {
-      this.theme = command;
-      this.applyTheme();
-    },
-    applyTheme() {
-      setCookie('THEME', this.theme, {
-        path: '/',
-        domain: getDomain()
-      });
-      applyThemePreference(this.theme);
+      setCookie(STUDIO_THEME_COOKIE, command, { path: '/' });
+      setCookie('THEME', command, { path: '/', domain: getDomain() });
+      applyThemePreference(command);
     }
   }
 });
