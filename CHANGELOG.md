@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 24 Nov 2026 20:14:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 27 Nov 2026 20:16:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.388.0
+
+Fri, 27 Nov 2026 20:16:29 GMT
+
+### Minor changes
+
+- Preview and download delivered Tripo 3D models in Studio chat (261699522+acedatacloud-dev@users.noreply.github.com)
+- Add Gemini 4 Neon to the Gemini model picker (dev@acedata.cloud)
 
 ## 3.387.3
 
