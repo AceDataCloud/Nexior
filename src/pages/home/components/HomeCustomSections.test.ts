@@ -78,21 +78,23 @@ describe('HomeCustomSections', () => {
     expect(markdown.props('source')).toBe('<img src=x onerror=alert(1)>');
   });
 
-  it('renders administrator-authored HTML directly', async () => {
-    const body = '<section data-custom="yes"><strong>Raw HTML</strong></section>';
+  it('keeps inline HTML and its styles inside the section', async () => {
+    const body = '<style>div { max-width: 100% !important; }</style><section>Raw HTML</section>';
     const wrapper = mount(HomeHtmlSection, {
       props: { section: { kind: 'html', title: 'HTML', body } }
     });
 
-    expect(wrapper.get('.tenant-home-content').html()).toContain(body);
-    expect(wrapper.get('[data-custom="yes"]').text()).toBe('Raw HTML');
+    await nextTick();
+    const host = wrapper.get('.tenant-home-content').element;
+    const content = host.shadowRoot?.querySelector('.tenant-home-content');
+    expect(wrapper.find('iframe').exists()).toBe(false);
+    expect(host.querySelector('style')).toBeNull();
+    expect(content?.innerHTML).toBe(body);
     await wrapper.setProps({ locale: 'ar', theme: 'dark' });
-    expect(wrapper.get('.tenant-home-content').attributes()).toMatchObject({
-      lang: 'ar',
-      dir: 'rtl',
-      'data-lang': 'ar',
-      'data-theme': 'dark'
-    });
+    expect(content?.getAttribute('lang')).toBe('ar');
+    expect(content?.getAttribute('dir')).toBe('rtl');
+    expect(content?.getAttribute('data-lang')).toBe('ar');
+    expect(content?.getAttribute('data-theme')).toBe('dark');
   });
 
   it('scrolls overflowing Markdown and direct HTML within their configured height', () => {
