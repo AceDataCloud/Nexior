@@ -81,7 +81,7 @@ const accept = computed(
 );
 const price = computed(() =>
   type.value && service.value?.cost?.length
-    ? getConsumption({ action: 'asset_upload', type: type.value }, service.value.cost)
+    ? getConsumption({ action: 'upload', type: type.value }, service.value.cost)
     : undefined
 );
 const page = ref(1),
