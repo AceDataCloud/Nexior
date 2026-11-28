@@ -115,4 +115,30 @@ describe('ACE Music API contract', () => {
     expect(isAcemusicRequestValid({ ...mashup, mashup_audio_ids: ['one', 'one'] })).toBe(false);
     expect(isAcemusicRequestValid({ ...mashup, mashup_audio_ids: ['one'] })).toBe(false);
   });
+  it('keeps reference IDs on idea generation and asset reads on their own path', async () => {
+    const draft = {
+      model: 'acemusic-v1.1' as const,
+      custom: false,
+      prompt: 'A song',
+      asset_id: 'a',
+      asset_type: 'midi' as const
+    };
+    const request = buildAcemusicAudioRequest(draft);
+    expect(isAcemusicRequestValid(request)).toBe(true);
+    expect(isAcemusicRequestValid({ ...request, asset_id: undefined })).toBe(false);
+    expect(isAcemusicRequestValid({ ...request, model: 'acemusic-v1' })).toBe(false);
+    expect(buildAcemusicAudioRequest({ ...draft, custom: true })).not.toHaveProperty('asset_type');
+    const opts = { token: 'test-key' };
+    await acemusicOperator.uploadAsset(
+      { action: 'upload', type: 'midi', url: 'https://example.com/song.mid', async: true },
+      opts
+    );
+    await acemusicOperator.asset('a', opts);
+    await acemusicOperator.assets(2, opts, 'image');
+    expect(vi.mocked(axios.post).mock.calls.map(([url, body]) => [url, body])).toEqual([
+      ['/acemusic/assets', { action: 'upload', type: 'midi', url: 'https://example.com/song.mid', async: true }],
+      ['/acemusic/assets', { action: 'retrieve', id: 'a' }],
+      ['/acemusic/assets', { action: 'retrieve', page: 2, page_size: 20, type: 'image' }]
+    ]);
+  });
 });
