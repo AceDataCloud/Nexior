@@ -58,7 +58,7 @@ import type { AcemusicAssetType, IAcemusicAsset, IAcemusicAssetUpload, IAcemusic
 import { acemusicOperator } from '@/operators/acemusic';
 import { httpClient } from '@/operators/common';
 import { ensureLoggedIn, getConsumption } from '@/utils';
-import { formatBytes, isUploadSizeAllowed, MAX_UPLOAD_BYTES } from '@/utils/uploadSize';
+import { formatBytes, isUploadSizeAllowed } from '@/utils/uploadSize';
 import {
   isDefiniteAcemusicRejection,
   pendingAcemusicSubmission,
@@ -76,8 +76,12 @@ const selectedId = computed(() => store.state.acemusic.config?.asset_id);
 const pending = computed(() => pendingAcemusicSubmission(store, 'assets'));
 const type = ref<AcemusicAssetType>();
 const typeLabel = (kind: AcemusicAssetType) => (kind === 'midi' ? 'MIDI' : t('common.nav.' + kind));
+const maxAssetBytes = 32 * 1024 * 1024;
 const accept = computed(
-  () => ({ midi: '.mid,.midi', image: 'image/*', video: 'video/mp4,.mp4' })[type.value || 'midi']
+  () =>
+    ({ midi: '.mid,.midi', image: 'image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp', video: 'video/mp4,.mp4' })[
+      type.value || 'midi'
+    ]
 );
 const price = computed(() =>
   type.value && service.value?.cost?.length
@@ -158,9 +162,9 @@ async function prepareFile(event: Event) {
     file = input.files?.[0];
   input.value = '';
   if (!file || !ensureLoggedIn()) return;
-  if (!isUploadSizeAllowed(file.size)) {
+  if (!isUploadSizeAllowed(file.size, maxAssetBytes)) {
     ElMessage.warning(
-      t('common.message.uploadTooLarge', { size: formatBytes(file.size), max: formatBytes(MAX_UPLOAD_BYTES) })
+      t('common.message.uploadTooLarge', { size: formatBytes(file.size), max: formatBytes(maxAssetBytes) })
     );
     return;
   }
