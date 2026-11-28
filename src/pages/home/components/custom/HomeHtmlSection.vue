@@ -14,23 +14,34 @@
       referrerpolicy="strict-origin-when-cross-origin"
       @load="requestHeight"
     />
-    <!-- eslint-disable vue/no-v-html -->
     <div
       v-else
+      ref="inlineHost"
       class="tenant-home-content"
       :lang="normalizedLocale"
       :dir="direction"
       :data-lang="normalizedLocale"
       :data-theme="theme || 'light'"
       :style="section.height != null ? { height: `${section.height}px`, overflowY: 'auto' } : undefined"
-      v-html="section.body"
-    ></div>
-    <!-- eslint-enable vue/no-v-html -->
+    >
+      <teleport v-if="inlineRoot" :to="inlineRoot">
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="tenant-home-content"
+          :lang="normalizedLocale"
+          :dir="direction"
+          :data-lang="normalizedLocale"
+          :data-theme="theme || 'light'"
+          v-html="section.body"
+        ></div>
+        <!-- eslint-enable vue/no-v-html -->
+      </teleport>
+    </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue';
 import type { ISiteHomeSection } from '@/models';
 import {
   buildHomeHtmlIframeDocument,
@@ -46,6 +57,8 @@ import type { HomeTheme } from '@/utils/homeHtmlIframe';
 const props = defineProps<{ section: ISiteHomeSection; locale?: string; theme?: HomeTheme }>();
 const normalizedLocale = computed(() => normalizeHomeLocale(props.locale || 'en'));
 const direction = computed(() => homeLocaleDirection(normalizedLocale.value));
+const inlineHost = ref<HTMLDivElement>();
+const inlineRoot = shallowRef<ShadowRoot>();
 const frame = ref<HTMLIFrameElement>();
 const fixedHeight = computed(() => props.section.height ?? null);
 const automaticHeight = computed(() => fixedHeight.value === null);
@@ -63,6 +76,19 @@ const requestHeight = (): void => {
   if (!automaticHeight.value) return;
   frame.value?.contentWindow?.postMessage({ type: HOME_HTML_IFRAME_MEASURE_MESSAGE }, '*');
 };
+
+watch(inlineHost, (host) => {
+  if (!host) {
+    inlineRoot.value = undefined;
+    return;
+  }
+  // Keep author styles inside this section so broad selectors cannot restyle Studio.
+  const root = host.attachShadow({ mode: 'open' });
+  const style = document.createElement('style');
+  style.textContent = ':is(pre, table) { max-width: 100%; overflow-x: auto; }';
+  root.appendChild(style);
+  inlineRoot.value = root;
+});
 
 watch(
   () => [props.section.body, props.section.height, props.locale, props.theme] as const,
