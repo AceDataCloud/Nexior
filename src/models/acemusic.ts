@@ -1,6 +1,25 @@
 export type AcemusicModel = 'acemusic-v1.1' | 'acemusic-v1';
 export type AcemusicAction = 'generate' | 'upload' | 'cover' | 'mashup';
+export const ACEMUSIC_ASSET_TYPES = ['midi', 'image', 'video'] as const;
+export type AcemusicAssetType = (typeof ACEMUSIC_ASSET_TYPES)[number];
+export interface IAcemusicAsset {
+  id: string;
+  type: AcemusicAssetType;
+  name: string;
+  status: 'available' | 'expired';
+  expires_at?: number;
+  duration_seconds?: number;
+}
+export interface IAcemusicAssetUpload {
+  action: 'upload';
+  type: AcemusicAssetType;
+  url: string;
+  name?: string;
+  async: true;
+}
 export interface IAcemusicConfig {
+  asset_id?: string;
+  asset_type?: AcemusicAssetType;
   action?: AcemusicAction;
   audio_url?: string;
   name?: string;
@@ -62,6 +81,7 @@ export interface IAcemusicTaskFilter {
 export interface IAcemusicSubmission {
   key: string;
   scope: string;
-  operation: 'audios' | 'lyrics';
-  request: IAcemusicAudioRequest | { prompt: string; style?: string };
+  operation: 'audios' | 'lyrics' | 'assets';
+  taskId?: string;
+  request: IAcemusicAudioRequest | IAcemusicAssetUpload | { prompt: string; style?: string };
 }

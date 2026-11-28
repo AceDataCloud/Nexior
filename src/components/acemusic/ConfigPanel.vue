@@ -16,22 +16,26 @@
                 :aria-label="$t('acemusic.field.model')"
               >
                 <el-option
-                  v-for="item in ['cover', 'mashup'].includes(tab.name) ? ['acemusic-v1.1'] : models"
+                  v-for="item in ['cover', 'mashup'].includes(tab.name) || (tab.name === 'idea' && config.asset_id)
+                    ? ['acemusic-v1.1']
+                    : models"
                   :key="item"
                   :value="item"
                   :label="item"
                 />
               </el-select>
             </div>
-            <prompt-textarea
-              v-if="tab.name === 'idea'"
-              v-model="prompt"
-              :title="$t('acemusic.field.prompt')"
-              :placeholder="$t('acemusic.placeholder.prompt')"
-              :min-rows="5"
-              :max-rows="14"
-              class="mb-4"
-            />
+            <template v-if="tab.name === 'idea'">
+              <prompt-textarea
+                v-model="prompt"
+                :title="$t('acemusic.field.prompt')"
+                :placeholder="$t('acemusic.placeholder.prompt')"
+                :min-rows="5"
+                :max-rows="14"
+                class="mb-4"
+              />
+              <asset-panel v-if="assetTypes.length || pendingAsset" :types="assetTypes" />
+            </template>
             <template v-else-if="tab.name === 'upload'">
               <upload-audio
                 :import-on-select="false"
@@ -225,6 +229,8 @@ import {
 } from '@/utils/acemusicSubmission';
 import ServicePricingSummary from '@/components/common/ServicePricingSummary.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
+import AssetPanel from './AssetPanel.vue';
+import { ACEMUSIC_ASSET_TYPES } from '@/models/acemusic';
 import UploadAudio from '@/components/suno/config/UploadAudio.vue';
 import { isAcemusicAudioPlayable } from '@/utils/acemusic';
 
@@ -268,7 +274,11 @@ const mode = computed({
 const model = computed({ get: () => config.value.model, set: (value: AcemusicModel) => patch({ model: value }) });
 const service = computed(() => store.state.acemusic.service);
 const request = computed(() => buildAcemusicAudioRequest(config.value));
-const valid = computed(() => isAcemusicRequestValid(request.value));
+const valid = computed(
+  () =>
+    isAcemusicRequestValid(request.value) &&
+    (!request.value.asset_type || assetTypes.value.includes(request.value.asset_type))
+);
 const referenceTracks = computed<IAcemusicAudio[]>(() =>
   (store.state.acemusic.tasks?.items || [])
     .flatMap((task: any) => task.response?.data || [])
@@ -289,6 +299,13 @@ const audioInfluence = computed({
   set: (value: number) => patch({ audio_influence: value })
 });
 const setUploadUrl = (value: string) => patch({ audio_url: value });
+const assetTypes = computed(() =>
+  ACEMUSIC_ASSET_TYPES.filter((type) => {
+    const enabled = service.value?.metadata?.reference_asset_types;
+    return Array.isArray(enabled) && enabled.includes(type);
+  })
+);
+const pendingAsset = computed(() => pendingAcemusicSubmission(store, 'assets'));
 const generationCost = computed(() =>
   service.value?.cost?.length ? getConsumption(request.value, service.value.cost) : undefined
 );
@@ -362,7 +379,7 @@ async function generateLyrics(recover = false) {
       custom: true,
       lyric: result.text,
       title: result.title || title.value,
-      style: submission.request.style || style.value
+      style: ('style' in submission.request && submission.request.style) || style.value
     });
     lyricsVisible.value = false;
   } catch (error: any) {

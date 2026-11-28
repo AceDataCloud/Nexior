@@ -1,6 +1,10 @@
 import axios from 'axios';
+import { ACEMUSIC_ASSET_TYPES } from '@/models/acemusic';
 import { BASE_URL_API, ACEMUSIC_DEFAULT_MODEL } from '@/constants';
 import type {
+  IAcemusicAsset,
+  IAcemusicAssetUpload,
+  AcemusicAssetType,
   IAcemusicAudioRequest,
   IAcemusicConfig,
   IAcemusicResponse,
@@ -39,7 +43,11 @@ export function buildAcemusicAudioRequest(config?: IAcemusicConfig): IAcemusicAu
   };
   return common.custom
     ? { ...common, lyric: config?.lyric?.trim(), title: config?.title?.trim(), style: config?.style?.trim() }
-    : { ...common, prompt: config?.prompt?.trim() };
+    : {
+        ...common,
+        prompt: config?.prompt?.trim(),
+        ...(config?.asset_id || config?.asset_type ? { asset_id: config.asset_id, asset_type: config.asset_type } : {})
+      };
 }
 
 export function isAcemusicRequestValid(request: IAcemusicAudioRequest): boolean {
@@ -59,6 +67,16 @@ export function isAcemusicRequestValid(request: IAcemusicAudioRequest): boolean 
         ? request.audio_id
         : request.mashup_audio_ids?.length === 2 && new Set(request.mashup_audio_ids).size === 2)
     );
+  if (request.asset_id !== undefined || request.asset_type !== undefined) {
+    return Boolean(
+      request.asset_id?.trim() &&
+      request.asset_type &&
+      ACEMUSIC_ASSET_TYPES.includes(request.asset_type) &&
+      !request.custom &&
+      request.model === 'acemusic-v1.1' &&
+      request.prompt?.trim()
+    );
+  }
   return Boolean(request.custom ? request.lyric && request.style && request.title : request.prompt);
 }
 
@@ -76,6 +94,23 @@ class AcemusicOperator {
   }
   audio(data: IAcemusicAudioRequest, options: AcemusicRequestOptions) {
     return this.post<IAcemusicResponse>('/acemusic/audios', data, options);
+  }
+  uploadAsset(data: IAcemusicAssetUpload, options: AcemusicRequestOptions) {
+    return this.post<{ task_id: string; status: string; data?: IAcemusicAsset }>('/acemusic/assets', data, options);
+  }
+  asset(id: string, options: AcemusicRequestOptions) {
+    return this.post<{ success: boolean; data: IAcemusicAsset }>(
+      '/acemusic/assets',
+      { action: 'retrieve', id },
+      options
+    );
+  }
+  assets(page: number, options: AcemusicRequestOptions, type?: AcemusicAssetType) {
+    return this.post<{ items: IAcemusicAsset[]; count: number }>(
+      '/acemusic/assets',
+      { action: 'retrieve', page, page_size: 20, ...(type ? { type } : {}) },
+      options
+    );
   }
   lyrics(data: { prompt: string; style?: string }, options: AcemusicRequestOptions) {
     return this.post<{
