@@ -1,5 +1,9 @@
 <template>
-  <section class="dashboard-section showcase-section" :class="{ compact, masonry }" :aria-label="ariaLabel">
+  <section
+    class="dashboard-section showcase-section"
+    :class="{ compact, masonry, 'preserve-order': preserveOrder }"
+    :aria-label="ariaLabel"
+  >
     <slot name="heading">
       <div v-if="title" class="section-heading">
         <div>
@@ -92,6 +96,7 @@ withDefaults(
     compact?: boolean;
     masonry?: boolean;
     detailPreview?: boolean;
+    preserveOrder?: boolean;
   }>(),
   {
     title: '',
@@ -101,7 +106,8 @@ withDefaults(
     showCapability: true,
     compact: false,
     masonry: false,
-    detailPreview: false
+    detailPreview: false,
+    preserveOrder: false
   }
 );
 const emit = defineEmits<{ 'icon-error': [item: ResolvedShowcase]; select: [item: ResolvedShowcase] }>();
@@ -309,6 +315,10 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
   grid-auto-rows: 185px;
 }
 
+.preserve-order .showcase-grid {
+  grid-auto-flow: row;
+}
+
 .showcase-card {
   position: relative;
   min-width: 0;
@@ -463,6 +473,10 @@ defineExpose({ playingId, loadedMediaIds, startPreview, stopPreview, togglePrevi
 @media (max-width: 820px) {
   .showcase-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .preserve-order .showcase-card.landscape {
+    grid-column: span 1;
   }
 }
 

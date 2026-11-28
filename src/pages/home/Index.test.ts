@@ -167,10 +167,9 @@ describe('Studio workbench home', () => {
     };
     const wrapper = mountHome({ id: 'studio', origin: 'studio.acedata.cloud', features });
     await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
-    const visibleIds = wrapper
-      .getComponent({ name: 'ShowcaseGrid' })
-      .props('items')
-      .map((item: any) => item.id);
+    const flagshipGallery = wrapper.getComponent({ name: 'ShowcaseGrid' });
+    expect(flagshipGallery.props('preserveOrder')).toBe(true);
+    const visibleIds = flagshipGallery.props('items').map((item: any) => item.id);
     expect(visibleIds).toEqual([seedanceId, imageId, musicId, letterId, 'existing-1', 'existing-2']);
 
     vi.mocked(showcaseOperator.list).mockResolvedValue({
@@ -178,10 +177,9 @@ describe('Studio workbench home', () => {
     } as any);
     const tenant = mountHome({ id: 'tenant', origin: 'example.com', features });
     await vi.waitFor(() => expect(tenant.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
-    const tenantIds = tenant
-      .getComponent({ name: 'ShowcaseGrid' })
-      .props('items')
-      .map((item: any) => item.id);
+    const tenantGallery = tenant.getComponent({ name: 'ShowcaseGrid' });
+    expect(tenantGallery.props('preserveOrder')).toBe(false);
+    const tenantIds = tenantGallery.props('items').map((item: any) => item.id);
     expect(tenantIds).toEqual(['existing-1', letterId, musicId, seedanceId, imageId, posterId]);
   });
 

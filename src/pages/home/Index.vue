@@ -23,6 +23,7 @@
         :title="$t('intro.home.showcase.title')"
         :subtitle="$t('intro.home.showcase.subtitle')"
         :aria-label="$t('intro.home.showcase.title')"
+        :preserve-order="preserveShowcaseOrder"
         detail-preview
         @select="selectedShowcase = $event"
         @icon-error="onShowcaseIconError"
@@ -137,6 +138,9 @@ export default defineComponent({
     showcaseEnabled(): boolean {
       return isHomeSectionEnabled(this.site, 'showcase');
     },
+    preserveShowcaseOrder(): boolean {
+      return isWeb() && this.site?.origin === 'studio.acedata.cloud';
+    },
     bannerRequestKey(): string {
       if (!this.siteLoaded || !this.bannerEnabled) return '';
       return `${this.site?.id || ''}|${getSiteOrigin(this.site)}|${String(this.$i18n.locale || 'en')}`;
@@ -233,7 +237,7 @@ export default defineComponent({
           ...item,
           icon: this.failedIcons[item.capability] ? item.defaultIcon : item.icon
         }));
-      if (!isWeb() || site.origin !== 'studio.acedata.cloud') return items;
+      if (!this.preserveShowcaseOrder) return items;
 
       const remaining = new Map(items.map((item) => [item.id, item]));
       const featured = FEATURED_STUDIO_SHOWCASE_IDS.flatMap((id) => {
