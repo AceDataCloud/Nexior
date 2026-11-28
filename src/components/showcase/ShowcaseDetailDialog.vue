@@ -24,7 +24,17 @@
         <close-icon aria-hidden="true" />
       </button>
       <section class="media-stage">
-        <img v-if="item.mediaType === 'Image'" :src="item.posterUrl" :alt="item.altText" />
+        <div v-if="item.referenceImageUrl" class="image-comparison">
+          <figure>
+            <img :src="item.referenceImageUrl" alt="" />
+            <figcaption>{{ $t('openaiimage.name.imageUrls') }}</figcaption>
+          </figure>
+          <figure>
+            <img :src="item.posterUrl" :alt="item.altText" />
+            <figcaption>{{ $t('openaiimage.name.edits') }}</figcaption>
+          </figure>
+        </div>
+        <img v-else-if="item.mediaType === 'Image'" :src="item.posterUrl" :alt="item.altText" />
         <video-player v-else-if="item.mediaType === 'Video'" :src="item.previewUrl" />
         <showcase-audio-player
           v-else
@@ -112,6 +122,7 @@ let resizeObserver: ResizeObserver | undefined;
 const promptDialogId = computed(() => `showcase-prompt-dialog-${props.item?.id || 'empty'}`);
 const dialogWidth = computed(() => {
   if (!props.item) return 'min(1180px, calc(100vw - 32px))';
+  if (props.item.referenceImageUrl) return 'min(1180px, calc(100vw - 32px))';
   if (props.item.mediaType === 'Audio') return 'min(920px, calc(100vw - 32px))';
   if (props.item.layout === 'Portrait') return 'min(880px, calc(100vw - 32px))';
   if (props.item.layout === 'Square') return 'min(1020px, calc(100vw - 32px))';
@@ -290,6 +301,36 @@ function parameterLabel(key: string): string {
   }
 }
 
+.image-comparison {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 16px;
+
+  figure {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 8px;
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: calc(100dvh - 128px);
+    align-self: center;
+    object-fit: contain;
+  }
+
+  figcaption {
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
 .detail-copy {
   display: flex;
   min-width: 0;
@@ -458,6 +499,14 @@ function parameterLabel(key: string): string {
   .media-stage {
     > img {
       max-height: 52dvh;
+    }
+  }
+
+  .image-comparison {
+    grid-template-columns: 1fr;
+
+    img {
+      max-height: 36dvh;
     }
   }
 

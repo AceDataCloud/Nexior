@@ -231,6 +231,12 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
   const prompt = stringValue(request.prompt, request.text, request.lyric);
   const title = stringValue(localizedPresentation.title, result.title, capabilityPresentation.displayName);
   const description = stringValue(localizedPresentation.description, prompt);
+  const referenceImageUrl =
+    item.service === 'openai' && Array.isArray(request.images) ? stringValue(request.images[0]) : '';
+  const audioExcerptUrl = media.mediaType === 'Audio' ? stringValue(result.preview_audio_url) : '';
+  const parameters = deriveParameters(
+    media.mediaType === 'Audio' ? { ...request, duration: result.duration ?? request.duration } : request
+  );
   return {
     id: item.id,
     service: item.service,
@@ -244,7 +250,9 @@ export function resolveShowcase(item: IShowcase, site: ISite): ResolvedShowcase 
     altText: title || description || capabilityPresentation.displayName,
     prompt,
     model: stringValue(request.model, result.model),
-    parameters: deriveParameters(request),
+    parameters,
+    ...(referenceImageUrl ? { referenceImageUrl } : {}),
+    ...(audioExcerptUrl ? { audioExcerptUrl } : {}),
     ...media
   };
 }

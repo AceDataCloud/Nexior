@@ -84,6 +84,14 @@ import {
 } from './data';
 
 const SHOWCASE_BATCH_SIZE = 12;
+const FEATURED_STUDIO_SHOWCASE_IDS = [
+  '7bc26596-8a3f-5e21-835d-aae932306d62', // Seedance 2.5 flower shop
+  '2a2a500f-7836-5adf-8899-5de42624b116', // GPT Image 2.6 product edit
+  '71d9040e-7843-55a8-a3a1-035922da9672', // ACE Music 1.1 flower shop theme
+  '0a02e896-9c61-5be8-9333-97af4775779b', // Kling mechanical watch orbit
+  '693dae43-f06b-5b1d-888f-f17d7547db59', // GPT Image bilingual poster
+  '75609374-ce6f-4db8-a1fa-90cfd035bc16' // Maestro The Last Letter
+];
 
 export default defineComponent({
   name: 'StudioHome',
@@ -218,13 +226,22 @@ export default defineComponent({
     resolvedShowcases(): ResolvedShowcase[] {
       const site = this.site;
       if (!site) return [];
-      return this.rawShowcases
+      const items = this.rawShowcases
         .map((item) => resolveShowcase(item, site))
         .filter((item): item is ResolvedShowcase => Boolean(item))
         .map((item) => ({
           ...item,
           icon: this.failedIcons[item.capability] ? item.defaultIcon : item.icon
         }));
+      if (!isWeb() || site.origin !== 'studio.acedata.cloud') return items;
+
+      const remaining = new Map(items.map((item) => [item.id, item]));
+      const featured = FEATURED_STUDIO_SHOWCASE_IDS.flatMap((id) => {
+        const item = remaining.get(id);
+        remaining.delete(id);
+        return item ? [item] : [];
+      });
+      return [...featured, ...remaining.values()];
     },
     visibleShowcases(): ResolvedShowcase[] {
       return this.resolvedShowcases.slice(0, this.visibleShowcaseCount);

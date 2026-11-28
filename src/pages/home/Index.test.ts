@@ -140,6 +140,51 @@ describe('Studio workbench home', () => {
     expect(wrapper.getComponent({ name: 'ShowcaseGrid' }).props('items')[0].capability).toBe('seedance');
   });
 
+  it('pins available featured work once on the flagship home and preserves the remaining feed order', async () => {
+    const seedanceId = '7bc26596-8a3f-5e21-835d-aae932306d62';
+    const imageId = '2a2a500f-7836-5adf-8899-5de42624b116';
+    const musicId = '71d9040e-7843-55a8-a3a1-035922da9672';
+    const watchId = '0a02e896-9c61-5be8-9333-97af4775779b';
+    const posterId = '693dae43-f06b-5b1d-888f-f17d7547db59';
+    const letterId = '75609374-ce6f-4db8-a1fa-90cfd035bc16';
+    const feed = [
+      { ...showcase, id: 'existing-1' },
+      { ...showcase, id: letterId, service: 'maestro' },
+      { ...showcase, id: musicId, service: 'acemusic' },
+      { ...showcase, id: watchId, service: 'kling' },
+      { ...showcase, id: seedanceId },
+      { ...showcase, id: imageId, service: 'openai' },
+      { ...showcase, id: seedanceId },
+      { ...showcase, id: 'existing-2' }
+    ];
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);
+    const features = {
+      seedance: { enabled: true },
+      acemusic: { enabled: true },
+      openaiimage: { enabled: true },
+      kling: { enabled: false },
+      maestro: { enabled: true }
+    };
+    const wrapper = mountHome({ id: 'studio', origin: 'studio.acedata.cloud', features });
+    await vi.waitFor(() => expect(wrapper.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    const visibleIds = wrapper
+      .getComponent({ name: 'ShowcaseGrid' })
+      .props('items')
+      .map((item: any) => item.id);
+    expect(visibleIds).toEqual([seedanceId, imageId, musicId, letterId, 'existing-1', 'existing-2']);
+
+    vi.mocked(showcaseOperator.list).mockResolvedValue({
+      data: [...feed.slice(0, -2), { ...showcase, id: posterId, service: 'openai' }]
+    } as any);
+    const tenant = mountHome({ id: 'tenant', origin: 'example.com', features });
+    await vi.waitFor(() => expect(tenant.findComponent({ name: 'ShowcaseGrid' }).exists()).toBe(true));
+    const tenantIds = tenant
+      .getComponent({ name: 'ShowcaseGrid' })
+      .props('items')
+      .map((item: any) => item.id);
+    expect(tenantIds).toEqual(['existing-1', letterId, musicId, seedanceId, imageId, posterId]);
+  });
+
   it('renders Showcases in twelve-item batches with an accessible fallback button', async () => {
     const feed = Array.from({ length: 30 }, (_, index) => ({ ...showcase, id: `showcase-${index}` }));
     vi.mocked(showcaseOperator.list).mockResolvedValue({ data: feed } as any);

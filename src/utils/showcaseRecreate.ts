@@ -5,7 +5,12 @@ import {
   MAESTRO_ALLOWED_SCENARIOS,
   MAESTRO_ALLOWED_STYLES,
   MAESTRO_ALLOWED_VOICES,
-  MAESTRO_FILE_LIMIT
+  MAESTRO_FILE_LIMIT,
+  OPENAIIMAGE_25_QUALITIES,
+  OPENAIIMAGE_DEFAULT_QUALITY,
+  OPENAIIMAGE_QUALITIES,
+  SEEDANCE_MODEL_2_5,
+  isOpenAIImage26Model
 } from '@/constants';
 import type { IShowcase, ISite } from '@/models';
 import { showcaseOperator } from '@/operators';
@@ -104,6 +109,7 @@ const imageAllowed = new Set([
   'output_format'
 ]);
 const nanoBananaAllowed = new Set([...imageAllowed, 'action']);
+const openaiImageAllowed = new Set([...imageAllowed, 'quality']);
 const seedreamAllowed = new Set([...imageAllowed, 'watermark']);
 const videoAllowed = new Set([
   'prompt',
@@ -164,15 +170,29 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
       })
   },
   openaiimage: {
-    allowed: imageAllowed,
-    activeKeys: ['prompt', 'image_urls'],
-    build: (c) =>
-      compact({
+    allowed: openaiImageAllowed,
+    activeKeys: ['prompt', 'image_urls', 'markup'],
+    build: (c) => {
+      const model = text(c.model, 'model', 100);
+      const isImage26 = isOpenAIImage26Model(model);
+      const config = compact({
         prompt: text(c.prompt, 'prompt'),
-        model: text(c.model, 'model', 100),
+        model,
         image_urls: urls(c.images, 'images'),
-        size: text(c.size, 'size', 32)
-      })
+        size: text(c.size, 'size', 32),
+        quality: enumValue(c.quality, 'quality', isImage26 ? OPENAIIMAGE_25_QUALITIES : OPENAIIMAGE_QUALITIES)
+      });
+      if (!isImage26) return config;
+
+      return {
+        ...config,
+        quality: config.quality ?? OPENAIIMAGE_DEFAULT_QUALITY,
+        output_format: enumValue(c.output_format, 'output_format', ['png', 'jpeg', 'webp']) || 'png',
+        complexity: undefined,
+        frame_count: undefined,
+        frame_duration_ms: undefined
+      };
+    }
   },
   seedream: {
     allowed: seedreamAllowed,
@@ -194,10 +214,11 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
   seedance: {
     allowed: videoAllowed,
     activeKeys: ['prompt', 'images', 'audios', 'videos'],
-    build: (c) =>
-      compact({
+    build: (c) => {
+      const model = text(c.model, 'model', 100);
+      const config = compact({
         prompt: text(c.prompt, 'prompt'),
-        model: text(c.model, 'model', 100),
+        model,
         images: urls(c.images, 'images')?.map((url) => ({ url, role: 'reference_image' })),
         ratio: enumValue(c.ratio, 'ratio', ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive']),
         duration: number(c.duration, 'duration', 1, 30),
@@ -206,7 +227,11 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
         camerafixed: boolean(c.camerafixed, 'camerafixed'),
         generate_audio: boolean(c.generate_audio, 'generate_audio'),
         return_last_frame: boolean(c.return_last_frame, 'return_last_frame')
-      })
+      });
+      if (model !== SEEDANCE_MODEL_2_5) return config;
+
+      return { ...config, omni_reference_task_type: undefined, output_format: undefined, web_search: undefined };
+    }
   },
   kling: {
     allowed: videoAllowed,
@@ -276,11 +301,12 @@ const adapters: Partial<Record<CapabilityKey, Adapter>> = {
   },
   acemusic: {
     allowed: new Set(['action', 'model', 'custom', 'prompt', 'lyric', 'style', 'title', 'async']),
-    activeKeys: ['prompt', 'lyric', 'style', 'title'],
+    activeKeys: ['prompt', 'lyric', 'style', 'title', 'audio_url', 'name', 'audio_id', 'mashup_audio_ids'],
     build: (c) => {
       if (c.action !== undefined && c.action !== 'generate') throw new Error('action is invalid');
       const custom = boolean(c.custom, 'custom') || false;
       return compact({
+        action: 'generate',
         model: enumValue(c.model, 'model', ['acemusic-v1.1', 'acemusic-v1']) || 'acemusic-v1.1',
         custom,
         ...(custom

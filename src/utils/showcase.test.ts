@@ -5,7 +5,9 @@ const site = {
   id: 'site',
   features: {
     nanobanana: { enabled: true },
+    openaiimage: { enabled: true },
     seedance: { enabled: true },
+    acemusic: { enabled: true },
     suno: { enabled: true },
     maestro: { enabled: true }
   }
@@ -48,6 +50,36 @@ describe('resolveShowcase', () => {
       previewUrl: '',
       title: 'Nano Banana',
       description: 'Crystal garden'
+    });
+  });
+
+  it('keeps the edited image as its cover and supplies the source for comparison', () => {
+    const result = resolveShowcase(
+      item('openai', 'images', { images: ['source.jpg'] }, { data: [{ image_url: 'edit.jpg' }] }),
+      site
+    );
+    expect(result).toMatchObject({ posterUrl: 'edit.jpg', referenceImageUrl: 'source.jpg' });
+  });
+
+  it('resolves the full ACE Music track separately from its card excerpt', () => {
+    const result = resolveShowcase(
+      item(
+        'acemusic',
+        'audios',
+        { custom: true, lyric: 'At the flower shop' },
+        { data: [{ audio_url: 'song.mp3', image_url: 'cover.jpg', preview_audio_url: 'excerpt.mp3', duration: 143 }] }
+      ),
+      site
+    );
+    expect(result).toMatchObject({
+      mediaType: 'Audio',
+      previewUrl: 'song.mp3',
+      posterUrl: 'cover.jpg',
+      audioExcerptUrl: 'excerpt.mp3',
+      parameters: [
+        { key: 'duration', value: '143' },
+        { key: 'custom', value: 'true' }
+      ]
     });
   });
 

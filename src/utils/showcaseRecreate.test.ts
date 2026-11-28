@@ -17,6 +17,7 @@ const SERVICES: Record<string, string> = {
   veo: 'veo',
   grokvideo: 'grok',
   suno: 'suno',
+  acemusic: 'acemusic',
   producer: 'producer',
   fish: 'fish',
   maestro: 'maestro'
@@ -26,12 +27,11 @@ const item = (capability: string, request: Record<string, unknown>, service = SE
   service,
   task_id: null,
   data: {
-    type:
-      service === 'suno' || service === 'producer' || service === 'fish'
-        ? 'audios'
-        : ['nano-banana', 'openai', 'seedream'].includes(service)
-          ? 'images'
-          : 'videos',
+    type: ['suno', 'acemusic', 'producer', 'fish'].includes(service)
+      ? 'audios'
+      : ['nano-banana', 'openai', 'seedream'].includes(service)
+        ? 'images'
+        : 'videos',
     request,
     response: {}
   }
@@ -181,6 +181,87 @@ describe('showcase recreate consumer', () => {
       'nanobanana/setConfig',
       expect.objectContaining({ image_urls: ['https://cdn.acedata.cloud/reference.png'] })
     );
+  });
+
+  it('loads GPT Image 2.6 reference editing as static output from an empty GIF form', async () => {
+    const request = {
+      prompt: 'Restyle the same can',
+      model: 'gpt-image-2.6-flare',
+      images: ['https://cdn.acedata.cloud/original.png'],
+      size: '1536x1024',
+      quality: 'auto',
+      output_format: 'png'
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('openaiimage', request)] } as any);
+    const { options, commit } = context('openaiimage', {
+      output_format: 'gif',
+      size: '512x512',
+      frame_count: 9,
+      frame_duration_ms: 200
+    });
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith(
+      'openaiimage/setConfig',
+      expect.objectContaining({
+        prompt: request.prompt,
+        model: request.model,
+        image_urls: request.images,
+        size: request.size,
+        quality: 'auto',
+        output_format: 'png',
+        frame_count: undefined,
+        frame_duration_ms: undefined
+      })
+    );
+    expect(ElMessageBox.confirm).not.toHaveBeenCalled();
+  });
+
+  it('loads the Seedance 2.5 image reference and recipe parameters', async () => {
+    const request = {
+      prompt: 'The shop opens in the rain',
+      model: 'doubao-seedance-2-5-260628',
+      images: ['https://cdn.acedata.cloud/shop.png'],
+      ratio: '9:16',
+      resolution: '720p',
+      duration: 12,
+      generate_audio: false
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('seedance', request)] } as any);
+    const { options, commit } = context('seedance', { omni_reference_task_type: 'edit', output_format: 'mov' });
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith('seedance/setConfig', {
+      ...request,
+      images: [{ url: request.images[0], role: 'reference_image' }],
+      omni_reference_task_type: undefined,
+      output_format: undefined,
+      web_search: undefined
+    });
+  });
+
+  it('switches an empty ACE Music cover form to custom generation', async () => {
+    const request = {
+      action: 'generate',
+      model: 'acemusic-v1.1',
+      custom: true,
+      lyric: 'The street is full of rain',
+      style: 'Warm indie pop',
+      title: 'After the rain'
+    };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('acemusic', request)] } as any);
+    const { options, commit, dispatch } = context('acemusic', { action: 'cover', custom: false });
+    expect(await consumeShowcase(options)).toBe('applied');
+    expect(commit).toHaveBeenCalledWith('acemusic/setConfig', request);
+    expect(ElMessageBox.confirm).not.toHaveBeenCalled();
+    expect(dispatch).not.toHaveBeenCalled();
+  });
+
+  it('keeps selected ACE Music mashup tracks when the user cancels replacement', async () => {
+    const request = { action: 'generate', prompt: 'Late night jazz' };
+    vi.mocked(showcaseOperator.list).mockResolvedValue({ data: [item('acemusic', request)] } as any);
+    vi.mocked(ElMessageBox.confirm).mockRejectedValueOnce(new Error('cancel'));
+    const { options, commit } = context('acemusic', { action: 'mashup', mashup_audio_ids: ['track'] });
+    expect(await consumeShowcase(options)).toBe('cancelled');
+    expect(commit).not.toHaveBeenCalled();
   });
 
   it('preserves the task-shaped lyric field for a Suno vocal', async () => {

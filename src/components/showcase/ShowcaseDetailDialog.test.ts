@@ -90,6 +90,14 @@ describe('ShowcaseDetailDialog', () => {
     expect(wrapper.findAll('.parameters dt').map((node) => node.text())).toEqual(['Aspect ratio', 'Seed']);
   });
 
+  it('shows a reference and its edited image together', () => {
+    const wrapper = mountDialog({ ...baseItem, referenceImageUrl: 'source.webp' });
+    expect(wrapper.findAll('.image-comparison img').map((image) => image.attributes('src'))).toEqual([
+      'source.webp',
+      'image.webp'
+    ]);
+  });
+
   it('navigates to recreate the item and closes the detail Dialog', async () => {
     const wrapper = mountDialog(baseItem);
 

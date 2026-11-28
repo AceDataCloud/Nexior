@@ -41,6 +41,8 @@ export interface ResolvedShowcase {
   mediaType: ShowcaseMediaType;
   posterUrl: string;
   previewUrl: string;
+  referenceImageUrl?: string;
+  audioExcerptUrl?: string;
   layout: ShowcaseLayout;
   prompt: string;
   model: string;

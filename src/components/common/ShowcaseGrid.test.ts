@@ -112,6 +112,13 @@ describe('ShowcaseGrid', () => {
     expect(video.pause).toHaveBeenCalled();
   });
 
+  it('plays the excerpt on the card when an excerpt is supplied', async () => {
+    const { wrapper } = mountGrid();
+    await wrapper.setProps({ items: [items[0], { ...items[1], audioExcerptUrl: 'excerpt.mp3' }] });
+    await wrapper.get('.preview-button').trigger('click');
+    await vi.waitFor(() => expect(wrapper.get('audio').attributes('src')).toBe('excerpt.mp3'));
+  });
+
   it('binds media sources only when cards approach the viewport and keeps them after exit', async () => {
     let callback: IntersectionObserverCallback = () => undefined;
     const observe = vi.fn();

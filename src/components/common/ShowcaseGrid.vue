@@ -36,7 +36,7 @@
         <audio
           v-else-if="item.mediaType === 'Audio' && item.previewUrl && !failedMedia.has(item.id)"
           :ref="(element) => rememberMedia(item.id, element)"
-          :src="loadedMediaIds.has(item.id) ? item.previewUrl : undefined"
+          :src="loadedMediaIds.has(item.id) ? item.audioExcerptUrl || item.previewUrl : undefined"
           :preload="loadedMediaIds.has(item.id) ? 'metadata' : 'none'"
           loop
           @error="onMediaError(item.id)"
@@ -47,7 +47,7 @@
           type="button"
           class="detail-trigger"
           :aria-label="$t('intro.home.showcase.preview', { title: item.title })"
-          @click="$emit('select', item)"
+          @click="selectItem(item)"
         />
         <button
           v-if="item.mediaType === 'Audio' || reducedMotion"
@@ -104,7 +104,7 @@ withDefaults(
     detailPreview: false
   }
 );
-defineEmits<{ 'icon-error': [item: ResolvedShowcase]; select: [item: ResolvedShowcase] }>();
+const emit = defineEmits<{ 'icon-error': [item: ResolvedShowcase]; select: [item: ResolvedShowcase] }>();
 
 const media = new Map<string, HTMLMediaElement>();
 const cards = new Map<string, HTMLElement>();
@@ -146,6 +146,11 @@ function stopAll(except?: string): void {
     if (element instanceof HTMLVideoElement) element.currentTime = 0;
   }
   if (playingId.value !== except) playingId.value = undefined;
+}
+
+function selectItem(item: ResolvedShowcase): void {
+  stopAll();
+  emit('select', item);
 }
 
 async function startPreview(id: string, force = false): Promise<void> {
